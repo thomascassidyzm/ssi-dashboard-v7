@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { getLanguageName, getGoldenSeedCount, getLangFamily, PREPOSITIONS } = require('./language-config.cjs');
 const { classifySeedPattern, formatDecompositionPatterns } = require('./validation.cjs');
-const { claudeConfigExport } = require('../../shared/claude-config.cjs');
+const { claudeSpawnSetup } = require('../../shared/claude-config.cjs');
 
 const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
 
@@ -17,8 +17,14 @@ const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
  * Spawn a process in the configured terminal mode.
  * Returns the child process (or null for osascript).
  * Enforces MAX_CONCURRENT_AGENTS cap before spawning.
+ *
+ * opts.excludeAccounts — SSi accounts not to bill (a restart after a usage limit, job #482).
+ * The returned child carries what the caller needs to supervise the run later:
+ *   cbAccount  the account email billed (null = default token)
+ *   cbLogFile / cbLogOffset  headless only: the log and its size before this run
+ *   cbPid      headless only: the detached bash's pid (its own process group)
  */
-function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
+function spawnInTerminal(ctx, cmd, label, courseCode, terminal, opts = {}) {
   const running = getRunningAgentCount();
   if (running >= MAX_CONCURRENT_AGENTS) {
     throw new Error(`Agent cap reached: ${running}/${MAX_CONCURRENT_AGENTS} agents running. Not spawning "${label}" for ${courseCode}.`);
@@ -26,7 +32,8 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
   // Pin the claude@ account for every spawned CLI. Injected into the command
   // string (not just env) because iTerm/Terminal write-text launches a fresh
   // login shell that does not inherit this process's env.
-  cmd = `${claudeConfigExport()} && ${cmd}`;
+  const setup = claudeSpawnSetup({ exclude: opts.excludeAccounts || [] });
+  cmd = `${setup.exportCmd} && ${cmd}`;
   const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : (terminal || ctx.SPAWN_MODE || 'iTerm2');
 
   if (effectiveTerminal === 'headless') {
@@ -34,6 +41,8 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
     if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
 
     const logFile = `${logsDir}/${label}-${courseCode}.log`;
+    let logOffset = 0;
+    try { logOffset = fs.statSync(logFile).size; } catch { /* new log */ }
     const out = fs.openSync(logFile, 'a');
     const err = fs.openSync(logFile, 'a');
 
@@ -44,6 +53,10 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
     agent.on('error', (e) => console.error(`[SPAWN] ${label} error:`, e.message));
     agent.on('exit', (code) => console.log(`[SPAWN] ${label} exited (code: ${code})`));
 
+    agent.cbAccount = setup.email;
+    agent.cbLogFile = logFile;
+    agent.cbLogOffset = logOffset;
+    agent.cbPid = agent.pid;
     return agent;
   } else {
     // Write command to a temp shell script to avoid osascript escaping issues
@@ -104,6 +117,7 @@ end tell`;
       }
     });
 
+    agent.cbAccount = setup.email;
     return agent;
   }
 }

@@ -33,3 +33,10 @@ assert.strictEqual(pickAccount([C, K], { usage: u(93, 3), steer: { [C.email]: 'h
 // Two hammers fill equally: the less-filled one takes the next spawn, whatever the headroom figure says.
 assert.strictEqual(pickAccount([C, K], { usage: { [C.email]: { five_hour_pct: 50, headroom: 0.9 }, [K.email]: { five_hour_pct: 20, headroom: 0.1 } }, steer: { [C.email]: 'hammer', [K.email]: 'hammer' } }).email, K.email)
 console.log('claude-config pickAccount: 11/11 ok')
+
+// #482: every spawned CLI waits for its background builder instead of reaping it at 10 min
+// (CLI default ceiling 600000 ms; fry_for_eng stopped at 4/300 on 28 Oct that way).
+{
+  const { claudeConfigExport } = require('./claude-config.cjs')
+  assert.match(claudeConfigExport(), /export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0(\s|$)/)
+}

@@ -2594,9 +2594,12 @@ app.post('/api/mission-control/jobs/:jobId/stop', requireDashboardUserOrLoopback
   if (jobType === 'build') {
     // Proxy to course-builder
     try {
+      // Say who stopped it (job #482): the build row and the page show "Stopped by …".
+      const u = req.dashboardUser || null
+      const by = (u && (u.email || u.name || u.display_name)) || req.get('x-agent-id') || null
       const response = await fetch(`${COURSE_BUILDER_URL}/api/build/stop/${courseCode}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json', ...(by ? { 'x-stopped-by': String(by) } : {}) }
       })
       const data = await response.json()
       return res.json({ success: data.ok, ...data })
