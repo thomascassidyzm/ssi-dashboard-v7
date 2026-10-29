@@ -2446,22 +2446,27 @@ async function allPages(build) {
 }
 
 /**
- * Every row of a read ordered by `id`, a page at a time by KEYSET (`id > last`), not OFFSET: each
- * page is an index range, so page 30 costs what page 1 does. An OFFSET page re-sorts everything
- * before it, which is what the course_audio read in buildPhrasePlan did on every attempt.
- * `build(afterId)` returns the query for one page (already ordered by id, limited to 1000).
+ * The voice of each named clip: primary-key lookups, 100 ids a read, six reads at a time, each
+ * retried twice. (audioVoicesById fires every chunk at once — fine for a few hundred ids, a flood
+ * for the thousands a course's filled phrase slots can name.)
  */
-async function allKeyset(build) {
-  const out = []
-  let last = null
-  for (;;) {
-    let { data, error } = await build(last)
-    for (let again = 0; error && again < 2; again += 1) ({ data, error } = await build(last))
-    if (error) throw new Error(error.message)
-    out.push(...(data || []))
-    if (!data || data.length < 1000) return out
-    last = data[data.length - 1].id
+async function clipVoicesById(db, ids) {
+  const out = new Map()
+  const chunks = []
+  for (let i = 0; i < ids.length; i += 100) chunks.push(ids.slice(i, i + 100))
+  let next = 0
+  const read = (chunk) => db.from('course_audio').select('id, voice_id').in('id', chunk)
+  const worker = async () => {
+    while (next < chunks.length) {
+      const chunk = chunks[next++]
+      let { data, error } = await read(chunk)
+      for (let again = 0; error && again < 2; again += 1) ({ data, error } = await read(chunk))
+      if (error) throw new Error(error.message)
+      for (const row of data || []) out.set(row.id, row.voice_id)
+    }
   }
+  await Promise.all(Array.from({ length: Math.min(6, chunks.length) }, worker))
+  return out
 }
 
 /**
@@ -2552,17 +2557,12 @@ async function buildPhrasePlan(db, memo = new Map()) {
     if (Object.keys(roles).length) casts.push({ course, roles })
   }
 
-  // WHOSE TAKE A FILLED SLOT HOLDS, for the cast voices only: every clip by any
-  // spelling of them. A slot holding a clip not in this map is somebody else's
-  // (an imported original, a synthetic clip) and is never this queue's work.
-  const ownClips = new Map()
-  if (allSpellings.size) {
-    const rows = await stage('own-clips', () => allKeyset((after) => {
-      const q = db.from('course_audio').select('id, voice_id').in('voice_id', [...allSpellings]).order('id').limit(1000)
-      return after === null ? q : q.gt('id', after)
-    }))
-    for (const r of rows) ownClips.set(r.id, r.voice_id)
-  }
+  // WHOSE TAKE A FILLED SLOT HOLDS, for the cast voices only (ownClips, per course below): a slot
+  // holding a clip by any other voice (an imported original, a synthetic clip) is 'other' and is
+  // never this queue's work. Read by the id each phrase slot names — a primary-key lookup — and
+  // NOT by scanning course_audio for the cast voices' clips: nothing indexes voice_id, so that scan
+  // walked the table in id order and hit the 8 s statement cap the day the database turned slow
+  // (Eleri, 2026-10-29); the plan then never built and every practice-phrase batch opened empty.
 
   const byVoice = new Map()
   const knownByVoice = new Map()
@@ -2582,6 +2582,11 @@ async function buildPhrasePlan(db, memo = new Map()) {
     for (const o of order) if (!positions.has(o.seed_number)) positions.set(o.seed_number, o.position)
     const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
     const phrases = maxSeed ? await stage(`phrases:${code}`, () => readCoursePhrases(db, code, maxSeed)) : []
+    const slotIds = new Set()
+    for (const p of phrases) for (const col of ['known_audio_id', 'target1_audio_id', 'target2_audio_id']) if (p[col]) slotIds.add(p[col])
+    const voiceOf = await stage(`clips:${code}`, () => clipVoicesById(db, [...slotIds]))
+    const ownClips = new Map()
+    for (const [id, voice] of voiceOf) if (allSpellings.has(voice)) ownClips.set(id, voice)
     const planRoles = {}
     for (const [role, r] of Object.entries(roles)) {
       planRoles[role] = {

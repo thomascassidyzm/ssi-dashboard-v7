@@ -514,3 +514,14 @@ test('a phrase batch opened while the plan cannot be read is a 503 to retry, nev
   assert.equal(out.body.retryable, true)
   afterCourseContentEdit()
 })
+
+test('the phrase plan reads clips by the ids its slots name, never by scanning course_audio for a voice (Eleri, 2026-10-29)', async () => {
+  const { getPhrasePlan } = require('./recordist-queue.cjs')
+  const inner = stubDb(fixture())
+  const scans = []
+  const db = { from(table) { const q = inner.from(table); const inOf = q.in; q.in = (col, vals) => { if (table === 'course_audio') scans.push(col); return inOf(col, vals) }; return q } }
+  const plan = await getPhrasePlan(db)
+  assert.ok(plan.byVoice.size > 0)
+  assert.ok(!scans.includes('voice_id'), 'no scan of the clip table by voice: nothing indexes it')
+  afterCourseContentEdit()
+})
