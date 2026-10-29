@@ -116,6 +116,7 @@ const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const podEnglish = require('./pod-english-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -2889,7 +2890,7 @@ async function sameWordsGaps({ db, recordist }) {
  * already counts as recorded by its words. Never throws — the take is already safe.
  */
 async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger = console }) {
-  const out = { seeds: 0, legos: 0, phrases: 0 }
+  const out = { seeds: 0, legos: 0, phrases: 0, pods: 0 }
   if (!audioId || !spokenWordsKey(text)) return out
   const roles = role === 'known' ? ['known'] : SEED_TARGET_ROLES
   const step = async (name, fn) => {
@@ -2900,8 +2901,10 @@ async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger =
     if (r !== 'known') await step('legos', () => linkLegoSlotsByWords({ db, recordist, role: r, text, audioId, fillOnly: true, logger }))
   }
   await step('phrases', () => linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logger }))
-  if (out.seeds + out.legos + out.phrases) {
-    logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase slot(s) now play this take`)
+  // The Pod 1 English card's known slots (job #537): the pod's own English, filled by any card's take of its words.
+  if (role === 'known') await step('pods', () => linkPodEnglishSlotsByWords({ db, recordist, text, audioId, logger }))
+  if (out.seeds + out.legos + out.phrases + out.pods) {
+    logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase, ${out.pods} pod English slot(s) now play this take`)
   }
   return out
 }
@@ -2979,6 +2982,62 @@ async function fetchEnglishLegoInputs(db, recordist) {
 }
 
 /**
+ * The reads behind the Pod 1 English card (job #537, pod-english-lines.cjs): the card's pods this reader is cast on,
+ * their sentences, and who voices each known slot. Cached like the English LEGO inputs; a card that cannot be read is
+ * an absence, never a booth that will not open.
+ */
+const podEnglishInputCache = new Map()
+async function fetchPodEnglishInputs(db, recordist) {
+  const { voices } = await policyVoicesForLanguage(db, recordist.language)
+  const podIds = podEnglish.podEnglishPodsFor(recordist, voices)
+  if (!podIds.length) return {}
+  const key = `${podIds.join(',')}|${(recordist.spellings || [recordist.voiceId]).join(',')}`
+  const hit = podEnglishInputCache.get(key)
+  if (hit && Date.now() - hit.at < ENGLISH_LEGO_TTL_MS) return hit.value
+  try {
+    const { data: pods, error } = await db.from('listening_pods').select('id, course_code, slug, title').in('id', podIds)
+    if (error) throw new Error(`pod list failed: ${error.message}`)
+    const sentences = await pagedRead((from, to) => db.from('listening_pod_sentences')
+      .select('id, pod_id, global_order, speaker, target_text, known_text, known_audio_id')
+      .in('pod_id', podIds).order('id').range(from, to))
+    const slotVoiceById = await fetchClipVoices(db, sentences.map((s) => s.known_audio_id))
+    const value = { podIds, pods: pods || [], sentences, slotVoiceById }
+    podEnglishInputCache.set(key, { at: Date.now(), value })
+    return value
+  } catch (err) {
+    console.warn(`[Recordist] Pod English card unavailable for ${recordist.voiceId}: ${err.message}`)
+    return hit ? hit.value : {}
+  }
+}
+
+/**
+ * ONE ENGLISH TAKE, EVERY POD 1 ENGLISH SLOT OF THE SAME WORDS (job #537). Every EMPTY known slot of the card's pods
+ * this voice is cast on whose words are the take's spoken words is pointed at the take — North and South alike, whichever
+ * card the take came from (a seed sentence of exactly those words fills the pod too). FILL-ONLY by a conditional write
+ * (`known_audio_id IS NULL`, words unchanged): a slot holding any clip — North's synthetic English today — is left as it
+ * is; replacing that is a separate, approved act (castOnEntries, #619). No course version bump, like every booth linker:
+ * the course's own pod release carries the version. Never throws for one slot; the take is already safe.
+ */
+async function linkPodEnglishSlotsByWords({ db, recordist, text, audioId, logger = console }) {
+  const out = { linked: [] }
+  const key = spokenWordsKey(text)
+  if (!audioId || !key) return out
+  const { podIds, sentences } = await fetchPodEnglishInputs(db, recordist)
+  if (!podIds || !podIds.length) return out
+  for (const s of sentences || []) {
+    if (s.known_audio_id || spokenWordsKey(s.known_text) !== key) continue
+    const { data, error } = await db.from('listening_pod_sentences')
+      .update({ known_audio_id: audioId })
+      .eq('id', s.id).is('known_audio_id', null).eq('known_text', s.known_text)
+      .select('id')
+    if (error) { logger.error(`[Recordist] pod English link failed for ${s.id}: ${error.message}`); continue }
+    for (const row of data || []) out.linked.push({ sentenceId: row.id, courseCode: String(row.id).split(':')[0] })
+  }
+  if (out.linked.length) podEnglishInputCache.clear()
+  return out
+}
+
+/**
  * Build the language-wide queue for one recordist.
  *
  * @param {object} db supabase client
@@ -2994,7 +3053,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   // course's LEGO intros also reads that course's once-recorded intro pieces first (job #210, intro-piece-lines.cjs).
   // Their English LEGO cards follow (job #255, english-lego-lines.cjs): one English take per new LEGO still owed.
   const englishLegoLines = englishLegos.englishLegoLinesFor(recordist, await fetchEnglishLegoInputs(db, recordist))
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines]
+  // The Pod 1 English card (job #537, pod-english-lines.cjs): North and South Pod 1's English, one line per spoken words.
+  const podEnglishLines = podEnglish.podEnglishLinesFor(recordist, await fetchPodEnglishInputs(db, recordist))
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -3994,6 +4055,9 @@ module.exports = {
   seedCastEntry,
   castOnEntries,
   castOnKnownSideCourses,
+  fetchPodEnglishInputs,
+  linkPodEnglishSlotsByWords,
+  policyVoicesForLanguage,
   isRecordableSeed,
   seedPosition,
   policyVoiceList,

@@ -83,6 +83,8 @@ function trackKeyOf(line) {
   // A Take G line is the same pod line read with gaps, queued straight after it, so it is part
   // of its pod's script rather than a card of its own.
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
+  // Pod 1 English (job #537): one card for North and South, whichever course a line's first copy is in.
+  if (kind === 'podknown' && line.podSlug) return `podknown.${line.podSlug}`
   return `${kind}.${line.courseCode || 'all'}`
 }
 

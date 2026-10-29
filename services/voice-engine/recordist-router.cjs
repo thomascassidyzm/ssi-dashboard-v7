@@ -36,6 +36,7 @@ const Busboy = require('busboy')
 const {
   resolveRecordist,
   voicesForEmail,
+  policyVoicesForLanguage,
   buildQueue,
   buildCoverage,
   loadPolicies,
@@ -73,6 +74,7 @@ const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const podEnglish = require('./pod-english-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1625,6 +1627,31 @@ module.exports = function createRecordistRouter({
       afterFiled: (audioId) => fillSameWordsSlots({ db: db(), recordist, role: 'known', text: resolved.text, audioId, logger }) })
   }
 
+  /**
+   * A POD 1 ENGLISH line (job #537, pod-english-lines.cjs): the English of a Pod 1 line, North and South. Filed as an
+   * English known take like an English LEGO; then every EMPTY Pod 1 English slot of the same words — both pods — and
+   * every empty seed / phrase known slot of the same words is pointed at it (fillSameWordsSlots). Fill-only.
+   */
+  async function recordPodEnglishTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolvePodEnglishLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'podknown', metaKind: 'pod-english', text, audioBase64, mimeType, device,
+      afterFiled: (audioId) => fillSameWordsSlots({ db: db(), recordist, role: 'known', text: resolved.text, audioId, logger }) })
+  }
+
+  async function resolvePodEnglishLine(parsed, recordist) {
+    const { data, error } = await db().from('listening_pod_sentences').select('id, pod_id, known_text').eq('id', parsed.sentenceId).limit(1)
+    if (error) throw new Error(`pod English lookup failed: ${error.message}`)
+    const { voices } = await policyVoicesForLanguage(db(), recordist.language)
+    return podEnglish.resolvePodEnglish(data && data[0], recordist, voices)
+  }
+
+  async function podEnglishClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolvePodEnglishLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return knownWordsClipResponse(req, res, recordist, resolved.text)
+  }
+
   async function resolveEnglishLegoLine(parsed, recordist) {
     const { data, error } = await db().from('course_legos').select('id, course_code, lego_id, known_text').eq('id', parsed.legoRowId).limit(1)
     if (error) throw new Error(`english LEGO lookup failed: ${error.message}`)
@@ -2213,6 +2240,11 @@ module.exports = function createRecordistRouter({
       if (englishLegoLine) {
         return await recordEnglishLegoTake({ req, res, recordist, parsed: { ...englishLegoLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // POD 1 ENGLISH (job #537). `podeng:...` must never reach the pod lookup below, which would file it as the target.
+      const podEnglishLine = podEnglish.parsePodEnglishLineId(lineId)
+      if (podEnglishLine) {
+        return await recordPodEnglishTake({ req, res, recordist, parsed: { ...podEnglishLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
 
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
@@ -2464,6 +2496,8 @@ module.exports = function createRecordistRouter({
       if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
+      const podEnglishLine = podEnglish.parsePodEnglishLineId(req.params.lineId)
+      if (podEnglishLine) return await podEnglishClipResponse(req, res, recordist, { ...podEnglishLine, raw: req.params.lineId })
 
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
@@ -2710,6 +2744,13 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'That is a piece of a sentence, not a line of its own -- its words come from the course and are changed there.',
           reason: 'quarry_line',
+        })
+      }
+      // A POD 1 ENGLISH line is the shared English of two live pods' lines; its words change on the pod page.
+      if (podEnglish.parsePodEnglishLineId(lineId)) {
+        return res.status(403).json({
+          error: 'That is the English of a Pod 1 line in North and South -- its words are changed on the pod page, not from the booth.',
+          reason: 'pod_english_line',
         })
       }
       // A TAKE G is the same sentence read a second way. Its text is the

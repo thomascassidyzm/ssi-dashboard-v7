@@ -19,8 +19,9 @@
 /** A batch's own id in the tick list. */
 export const batchTickId = (trackKey, n) => `${trackKey}#${n}`
 
+// Pod 1 English (job #537) is new reading too: its card sits with the new work, after the phrases.
 export const isNewWork = (t) =>
-  t.kind === 'phrase' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
+  t.kind === 'phrase' || t.kind === 'podknown' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
 
 /** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs). */
 export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego') && (t.batches || []).length > 1
