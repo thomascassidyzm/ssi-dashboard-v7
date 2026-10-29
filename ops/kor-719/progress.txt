@@ -1,0 +1,6 @@
+job #719 kor_for_eng 33 held seeds (re-record old Azure clips in cast voices, then apply with the #703 tool)
+dump: ~/ssi-evidence/ssi-dashboard-v7/kor719/seeds-pre.json (GET /api/production/kor_for_eng/seeds, 29 Oct 21:12Z)
+21:12Z plan for the 33 seeds: 38 LEGOs, 471 phrases (49 knock-on), 54 component rows, 1 delete, 38 seeds to unapprove, 0 skipped. gate: 38 LEGOs, 0 regressions.
+21:23Z grant #110 (kor_for_eng target1,target2, max 68, 1 day) made; dry run with RERECORD_PERMITTED=1: 722 asks, 0 refused, 0 existing-clip (all 68 would re-render).
+21:33Z real render run STOPPED by the TTS spend guard: DAILY_CAP, today at 999,995 / 1,000,000 chars. 1 clip rendered (6 chars). Nothing applied. Resume after the day rolls (00:00Z) or on Tom's signed raise.
+Resume: RENDER=1 MAX_CLIPS=800 RERECORD_PERMITTED=1 DRY_CACHE=<dry2.jsonl> node tools/course-optimization/kor-lego-follow-seed-565-2026-10-29.cjs run <seeds.json> --seeds <33>  (library-first, so a re-run never pays twice); APPLY_CONFIRM=1 to apply.

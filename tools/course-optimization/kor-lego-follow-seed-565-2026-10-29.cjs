@@ -338,6 +338,10 @@ async function postSigned(urlPath, body) {
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
 }
+// RERECORD_PERMITTED=1 (job #719): a tts_rerecord_permissions row (Tom r-2026-10-29: new work records in the CAST voices) covers the strings that
+// already carry an old-voice clip, so the door renders them in the cast voice instead of this tool linking the old clip back in. The old clip is
+// never touched: the new clip is linked only to the rows this pass edits (their text change nulled the slots), so untouched content keeps its clip.
+const REREC = process.env.RERECORD_PERMITTED === '1';
 const existingClipOf = (message) => { const m = /already has a working clip \(([0-9a-f-]{36}) in ([^)\s]+)\)/.exec(String(message || '')); return m ? { audioId: m[1], voiceId: m[2] } : null; };
 
 async function main() {
@@ -378,7 +382,7 @@ async function main() {
       const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
       if (d.status === 0) { await new Promise((r) => setTimeout(r, 3000 * (t + 1))); continue; }
       const ok = d.status === 200 && d.body.ok;
-      const existing = !ok && d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
+      const existing = !ok && !REREC && d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
       dry = { status: d.status, source: existing ? 'existing-clip' : d.body.source, voiceId: d.body.voiceId, chars: ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0, existing, audioId: d.body.audioId, error: ok || existing ? undefined : d.body };
       fs.appendFileSync(cacheFile, JSON.stringify({ k, dry }) + '\n');
     }
@@ -407,7 +411,7 @@ async function main() {
       else if (chk.status === 200 && chk.body.source === 'would-render') r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
     }
     // The door refuses to re-record words that already have a working clip (Tom 2026-10-11): that clip, filed by an earlier pass of THIS run, is the one to link.
-    const had = r.status === 403 && r.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(r.body.error) : null;
+    const had = r.status === 403 && !REREC && r.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(r.body.error) : null;
     if (had) r = { status: 200, body: { ok: true, source: 'existing-clip', audioId: had.audioId, voiceId: had.voiceId, charsSpent: 0 } };
     a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
     if (a.real.error) { console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 300)); return console.log(save('render-refused', log)); }
