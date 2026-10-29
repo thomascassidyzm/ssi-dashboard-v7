@@ -15,6 +15,10 @@
  * take all exist; an intro already linked is never touched (the route fills empty slots only). Reads by key through
  * services/shared/agent-db.cjs; writes nothing itself — every intro is made by the one audio route, which renders nothing
  * for these courses (a missing piece is INTRO_WAITING, never a TTS fallback). Env: POPTY_URL, AGENT_ID.
+ *
+ * SPLICE OFF (Aran 2026-10-29, job #587): with `splice: false` (the config now) intros are his whole-sentence takes from
+ * the Introductions card, filed and linked by the booth take route itself — this census's piece counts then describe a
+ * splice that is not going to run, and --build answers INTRO_WAITING (kind 'sentence') for every LEGO without a take.
  */
 'use strict'
 const db = require('../../services/shared/agent-db.cjs')
@@ -92,6 +96,7 @@ async function main() {
   try { result = await census(pg, courseCodes) } finally { await pg.end() }
   const list = opt('--list')
   for (const { summary, rows } of result) {
+    if (!hi.humanIntroConfig(summary.courseCode).splice) console.log(`${summary.courseCode}: splice OFF — intros come from the whole-sentence Introductions card (job #587); the piece counts below are for the retired splice.`)
     console.log(JSON.stringify(summary, null, 1))
     if (list) for (const r of rows) if (list === 'all' || (list === 'ready') === r.ready) {
       console.log(`${summary.courseCode} ${r.legoId} ${r.ready ? 'READY' : 'waits on ' + r.waitingOn.map((w) => `${w.kind} "${w.text}"`).join(', ')}`)

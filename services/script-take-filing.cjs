@@ -131,8 +131,11 @@ function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null, co
   if (!voiceId) return { file: false, filing: reasonPayload('no_voice', `slot ${role}`) }
 
   // Same split the engine makes (synthesis-job.cjs): the known slot speaks the
-  // course's known language, every target slot speaks its target language.
-  const language = role === 'known' ? course.known_lang : course.target_lang
+  // course's known language, every target slot speaks its target language. A
+  // LEGO intro (role 'presentation': Aran's whole-sentence intros, job #587) is
+  // filed under the known language too — "The Welsh for … is …" is told to an
+  // English learner, and the spliced and rendered intros were always 'eng'.
+  const language = (role === 'known' || role === 'presentation') ? course.known_lang : course.target_lang
   if (!language) return { file: false, filing: reasonPayload('no_course', `no ${role === 'known' ? 'known_lang' : 'target_lang'} on the course row`) }
 
   return { file: true, text, role, language, voiceId }

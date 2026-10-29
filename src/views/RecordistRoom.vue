@@ -220,8 +220,9 @@
                next unrecorded, and shown like any other line with one small reason under it. The only
                thing up here is this ONE slim bar, and it never sits over the line. It replaced a
                stack of red notices, one per refused take, that hid the line being read (#679). -->
-          <p v-if="refusedInBatch.length" class="refused-summary" role="status" data-test="refused-summary">
-            <span>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
+          <p v-if="refusedInBatch.length" class="refused-summary" :class="{ quiet: refusedAllNoSpeech }" role="status" data-test="refused-summary">
+            <span v-if="refusedAllNoSpeech">No speech heard on {{ refusedInBatch.length === 1 ? '1 line' : refusedInBatch.length + ' lines' }}</span>
+            <span v-else>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
             <template v-if="firstRefusedIndex !== index">
               ·
               <button type="button" class="refused-go" data-test="refused-go-first"
@@ -282,7 +283,7 @@
                    2026-09-02). A refusal is not a verdict on a stored take — nothing was stored —
                    so a refused line says why in one small line, under the words, never over them
                    (Aran, 2026-10-15). -->
-              <p v-if="currentRefusedWhy" class="refused-why" data-test="refused-why"
+              <p v-if="currentRefusedWhy" class="refused-why" :class="{ quiet: currentRefusedNoSpeech }" data-test="refused-why"
                  :title="queue.failed.get(current.id) || (textCheckFails.get(current.id) || {}).reason || null">{{ currentRefusedWhy }}</p>
             </div>
             <!-- AND THE LINE AFTER IT. Same rules. -->
@@ -724,7 +725,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, onActivated, onDeactivated, watch, nextTick, inject } from 'vue'
 import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
-import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
+import { useTapRecorder, resolveCaptureProfile, MIN_VOICED_MS } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
@@ -743,7 +744,7 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import { refusedLineWords, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
+import { refusedLineWords, isNoSpeechRefusal, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 import { applyFailures, mismatchLineWords } from './recordist/text-check-failures.js'
@@ -1083,6 +1084,15 @@ const SECTION_ORDER = [
   { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
   // THE ONCE-RECORDED INTRO PIECES (job #210): every LEGO intro of the new North and South courses is spliced from these
   // two takes, his English take of the LEGO and the Welsh — read once each, for both courses.
+  // A VIDEO'S NARRATION (job #572, video-voiceover-lines.cjs): one line per step of the video, each timed.
+  { key: 'voiceover', heading: 'Video voiceover', blurb: 'The voiceover for a short video, one line per step. Under each line is roughly how long it should take, and the most it can run.' },
+  // POD 1 ENGLISH (job #537): the English side of the Pod 1 conversations, North and South on one card.
+  // POD 1 NEW WORDS (job #551): pod lines whose words are changing; the pod takes the new words with this take.
+  { key: 'podswap', heading: 'POD 1 · NEW WORDS', blurb: 'Pod 1 lines with new words. The pod keeps the old words and recording until you record these, then changes, North and South at once.' },
+  { key: 'podknown', heading: 'POD 1 ENGLISH', blurb: 'The English of every Pod 1 line, read once each at your natural pace. One take serves both North and South.' },
+  // THE INTRODUCTIONS (Aran, 2026-10-29, job #587): each LEGO intro of the new North and South courses, read WHOLE —
+  // English and Welsh in one sentence. His take is that LEGO's intro. Replaces the intro pieces + splice below.
+  { key: 'introsentence', heading: 'Introductions', blurb: 'Every LEGO introduction in the new North and South courses, in course order, earliest first. Read each whole sentence — the English and the Welsh together — the way you would say it to a learner. Your take is that LEGO\'s introduction.' },
   { key: 'intro', heading: 'Intro pieces', blurb: 'Two short pieces, read once each: every LEGO intro in the new North and South courses is put together from them — "The Welsh for" + your English LEGO + "is" + the Welsh. Read them the way you would say them in an intro.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
@@ -1314,6 +1324,20 @@ function kindWordsFor(l) {
     const side = l.role === 'known' ? ' - English side' : (l.role === 'target2' ? ' - second voice' : '')
     const where = phrasePlaceWords(l.phrasePass, l.phraseBatch)
     return `Practice phrase${where ? ` · ${where}` : ''}${side}`
+  }
+  // A VIDEO VOICEOVER line (job #572): which step it is and how long it may run, e.g.
+  // "Neath video · Staff, step 1 · about 7 s, no more than 11 s".
+  if (l.kind === 'voiceover' && l.voiceover) {
+    const v = l.voiceover
+    return `${v.video} · ${v.label} · about ${v.aimSec} s, no more than ${v.fitSec} s`
+  }
+  if (l.kind === 'podknown') return `Pod 1 English${l.speaker ? ` · ${l.speaker}` : ''} - North and South`
+  if (l.kind === 'podswap') return `Pod 1 new words${l.speaker ? ` · ${l.speaker}` : ''}${l.replacesText ? ` - replaces "${l.replacesText}"` : ''}`
+  if (l.kind === 'introsentence') {
+    const course = l.courseCode === 'cym_sv2_for_eng' ? 'South' : (l.courseCode === 'cym_nv2_for_eng' ? 'North' : null)
+    const n = Number(l.alsoFills) || 0
+    const also = course ? ` (${course}${n ? `, and ${n} more LEGO${n > 1 ? 's' : ''} with the same words` : ''})` : ''
+    return `Introduction${l.legoId ? ` ${l.legoId}` : ''}${also} - the whole sentence, English and Welsh together`
   }
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
@@ -2143,6 +2167,11 @@ const refusedInBatch = computed(() =>
   lines.value.map((l, i) => ({ l, i })).filter(({ l }) => (hasFailed(l.id) && !isRecorded(l) && !isPending(l.id)) || hasMismatch(l.id))
 )
 const firstRefusedIndex = computed(() => (refusedInBatch.value.length ? refusedInBatch.value[0].i : -1))
+// Every refused line here was refused for having no speech on it (a blip moved it on, or only the
+// room was heard): nothing was lost, so the bar is a small grey note, not a red one (job #915).
+const isNoSpeechLine = (l) => hasFailed(l.id) && !hasMismatch(l.id) && isNoSpeechRefusal(queue.failed.get(l.id))
+const refusedAllNoSpeech = computed(() => refusedInBatch.value.length > 0 && refusedInBatch.value.every(({ l }) => isNoSpeechLine(l)))
+const currentRefusedNoSpeech = computed(() => !!current.value && isNoSpeechLine(current.value))
 const currentRefusedWhy = computed(() => {
   const l = current.value
   if (l && hasMismatch(l.id) && !(hasFailed(l.id) && !isRecorded(l))) return mismatchLineWords(textCheckFails.value.get(l.id))
@@ -2558,6 +2587,10 @@ watch(() => recorder.quietMs.value, (ms) => {
   // take coming out of the phone speaker would advance the queue for them.
   if (micHeld.value || playingId.value) return
   if (!recorder.lineHasSpeech.value) return
+  // A BLIP IS NOT A READ (Aran, 2026-10-28, job #915): one loud frame sets
+  // lineHasSpeech; a quiet may only end the line once MIN_VOICED_MS of it was
+  // voiced. Taps are untouched — this is the auto-advance gate alone.
+  if (recorder.voicedMs.value < MIN_VOICED_MS) return
   // A SILENCE NEVER ENDS THE BATCH (Aran, live, 2026-10-15 15:09 BST, batch 5): on
   // the last line he pressed Again, began reading, drew breath — and the booth
   // jumped to the finished screen mid-sentence, because a quiet on the LAST line
@@ -3023,12 +3056,46 @@ function describeTrack(t) {
       what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
     }
   }
+  // A VIDEO'S NARRATION (job #572): the card is the video's own name ("Neath video"), carried as podTitle.
+  if (t.kind === 'voiceover') {
+    return {
+      short: 'Video', cls: 'k-other',
+      title: t.podTitle || 'Video voiceover',
+      what: 'The voiceover for a short video, one line per step. Read each at a relaxed, friendly pace; under each line is roughly how long it should take, and the most it can run before it spills into the next step.',
+    }
+  }
+  // THE INTRODUCTIONS (job #587): one card for North and South, the whole intro sentence read in one take.
+  if (t.kind === 'introsentence') {
+    return {
+      short: 'Introductions', cls: 'k-lego',
+      title: 'Introductions: New Welsh — North and South',
+      what: 'Each LEGO introduction, in course order: "The Welsh for … is …", the English and the Welsh read together in one sentence. Your take becomes that LEGO\'s introduction.',
+    }
+  }
   // THE ENGLISH OF THE NEW LEGOs (job #255): read once each; his LEGO intros are spliced from these takes.
   if (t.kind === 'lego' && t.role === 'known') {
     return {
       short: 'English LEGOs', cls: 'k-lego',
       title: `${courseWordsFor(t.courseCode)}: English LEGOs`,
       what: 'The English of each new LEGO, read once each at your natural pace. Your LEGO intros are put together from these.',
+    }
+  }
+  // POD 1 ENGLISH (Aran, 2026-10-29, job #537): the English of every Pod 1 line, one take serving North and South.
+  // POD 1 NEW WORDS (Aran, 2026-10-29, job #551): read first; each take changes the pod's words and recording together.
+  if (t.kind === 'podswap') {
+    return {
+      short: 'Pod 1 new words', cls: 'k-sent',
+      title: 'Pod 1 — new words, North and South',
+      what: 'Pod 1 lines whose words are changing. The pod keeps its old words and recording until you record these; then both change together, North and South.',
+    }
+  }
+  // Read by the speaker's gender (Aran, 2026-10-29, job #562): the women's lines are Catrin's card.
+  if (t.kind === 'podknown') {
+    const which = t.speakerGender === 'f' ? 'female' : t.speakerGender === 'm' ? 'male' : null
+    return {
+      short: which ? `Pod 1 English (${which} lines)` : 'Pod 1 English', cls: 'k-sent',
+      title: which ? `Pod 1 English (${which} lines)` : 'Pod 1 English — North and South',
+      what: `The English of the Pod 1 lines${which ? ` spoken by ${which === 'female' ? 'women' : 'men'}` : ''}, read once each at your natural pace. One take serves North and South wherever both have this line.`,
     }
   }
   if (t.kind === 'lego') {
@@ -3287,7 +3354,8 @@ const batchHeader = computed(() => {
   if (batchScope.value && batchScope.value.track === RERECORD_TRACK) return `Re-record · ${left}`
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
-  const parts = [courseWordsFor(t.courseCode), t.short]
+  // Pod 1 English spans North and South, so no one course's words head it (job #537).
+  const parts = [t.kind === 'podknown' || t.kind === 'podswap' ? null : courseWordsFor(t.courseCode), t.short]
   // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
   // says it, unless the course words already begin with it ("English for New Welsh — North").
   const h = homeSummary.value
@@ -3690,6 +3758,10 @@ onDeactivated(() => {
 .refused-why { margin: 0.5rem 0 0; font-size: 0.85rem; color: #fca5a5; }
 :root[data-theme="light"] .refused-summary { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
 :root[data-theme="light"] .refused-why { color: #b91c1c; }
+/* No speech heard (job #915): plain small grey text, no pill, no red — in either theme. */
+.refused-summary.quiet { color: #a3a3a3; background: none; border-color: transparent; }
+.refused-why.quiet { color: #a3a3a3; }
+:root[data-theme="light"] .refused-summary.quiet, :root[data-theme="light"] .refused-why.quiet { color: #525252; background: none; border-color: transparent; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
 /* ONE BATCH (job #347): where he is and the way back to the home screen. */
 .batch-head { margin: -0.4rem 0 0.9rem; }

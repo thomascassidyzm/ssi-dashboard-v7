@@ -75,7 +75,9 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
     expect(w.text()).not.toContain('1ms after silence trimming')
     const bars = w.findAll('[data-test="refused-summary"]')
     expect(bars).toHaveLength(1)
-    expect(bars[0].text()).toContain('3 lines need re-recording')
+    // All three were refused for no speech, so the one bar is the small grey note (job #915).
+    expect(bars[0].text()).toContain('No speech heard on 3 lines')
+    expect(bars[0].classes()).toContain('quiet')
     // ...and no second notice about the same takes at the top of the page.
     expect(w.find('.safety-banner.refused').exists()).toBe(false)
     // The line he is on is still the line on screen.
@@ -99,7 +101,7 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
     rec.failed.set('line-5', SILENT)
     await flushPromises()
     expect(w.find('[data-test="refused-why"]').exists()).toBe(false)
-    expect(w.find('[data-test="refused-summary"]').text()).toContain('1 line needs re-recording')
+    expect(w.find('[data-test="refused-summary"]').text()).toContain('No speech heard on 1 line')
   })
 })
 

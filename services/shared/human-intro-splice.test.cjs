@@ -13,12 +13,16 @@ const LEGO = { lego_id: 'S0001L01', known_text: 'I want', target_text: 'dw i isi
 const take = (id, text) => ({ id, s3_key: `mastered/${id}.mp3`, text })
 const ALL_TAKES = new Map([['the welsh for', take('F', 'The Welsh for')], ['i want', take('X', 'I want')], ['is', take('J', 'is')]])
 const WELSH = { id: 'T1', s3_key: 'mastered/T1.mp3', text: 'dw i isio', origin: 'human' }
+// The splice switched ON, as it was from job #210 to job #587. The live config has it OFF ('whole-sentence intros').
+const rule = { voiceId: 'human_aran_eng', fragment: 'The Welsh for', joiner: 'is', withTarget: true, splice: true }
+const SPLICE_ON = { cym_nv2_for_eng: rule, cym_sv2_for_eng: rule }
 
-function hooks({ lego = LEGO, takes = ALL_TAKES, target = WELSH, intro = null } = {}) {
+function hooks({ lego = LEGO, takes = ALL_TAKES, target = WELSH, intro = null, table = SPLICE_ON } = {}) {
   const calls = { stored: [], linked: [] }
   return {
     calls,
     deps: {
+      table,
       loadLego: async () => lego,
       findTakes: async (_v, texts) => new Map([...takes].filter(([k]) => texts.some((t) => normalizeForAudio(t) === k))),
       loadClip: async (id) => (target && target.id === id ? target : null),
@@ -37,18 +41,39 @@ const req = (o = {}) => ({ courseCode: 'cym_nv2_for_eng', legoId: 'S0001L01', ..
 
 describe('the rule is data', () => {
   it('both v2 Welsh courses are human-spliced in human_aran_eng; nothing else is', () => {
-    for (const c of ['cym_nv2_for_eng', 'cym_sv2_for_eng']) expect(hi.humanIntroConfig(c)).toMatchObject({ voiceId: 'human_aran_eng', fragment: 'The Welsh for', joiner: 'is', withTarget: true })
+    for (const c of ['cym_nv2_for_eng', 'cym_sv2_for_eng']) expect(hi.humanIntroConfig(c)).toMatchObject({ voiceId: 'human_aran_eng', fragment: 'The Welsh for', joiner: 'is', withTarget: true, splice: false })
     for (const c of ['cym_n_for_eng', 'spa_for_eng', 'toString', '']) expect(hi.humanIntroConfig(c)).toBeNull()
   })
   it('the stored text is the old cym markup', () => {
     expect(hi.humanIntroText(hi.humanIntroConfig('cym_nv2_for_eng'), LEGO)).toBe('The Welsh for <src>I want</src> is <tgt>dw i isio</tgt>.')
   })
   it('the booth owes one fragment and one joiner, shared by North and South', () => {
-    expect(hi.fixedPiecesFor(['human_aran_eng'])).toEqual([
+    expect(hi.fixedPiecesFor(['human_aran_eng'], SPLICE_ON)).toEqual([
       { key: 'fragment', text: 'The Welsh for', courseCodes: ['cym_nv2_for_eng', 'cym_sv2_for_eng'] },
       { key: 'joiner', text: 'is', courseCodes: ['cym_nv2_for_eng', 'cym_sv2_for_eng'] },
     ])
-    expect(hi.fixedPiecesFor(['human_dan_cym_n'])).toEqual([])
+    expect(hi.fixedPiecesFor(['human_dan_cym_n'], SPLICE_ON)).toEqual([])
+    // Whole-sentence intros (job #587): no pieces to read.
+    expect(hi.fixedPiecesFor(['human_aran_eng'])).toEqual([])
+  })
+})
+
+describe('whole-sentence intros: the splice is off (Aran 2026-10-29, job #587)', () => {
+  const live = (o = {}) => hooks({ ...o, table: null }) // null = the live voicing-policy config
+  it('a LEGO with no intro WAITS on his whole-sentence take — never spliced, even with every piece recorded', async () => {
+    const { deps, calls } = live()
+    const err = await hi.buildHumanIntro(req(), deps).catch((e) => e)
+    expect(err.code).toBe('INTRO_WAITING')
+    expect(err.waitingOn).toEqual([expect.objectContaining({ kind: 'sentence', text: 'The Welsh for <src>I want</src> is <tgt>dw i isio</tgt>.' })])
+    expect(calls.stored).toEqual([])
+    expect(calls.linked).toEqual([])
+  })
+  it('his take of the intro words, once filed, is what the route links (library), and a linked slot is left alone', async () => {
+    const a = live({ intro: { id: 'TAKE', s3_key: 'mastered/TAKE.mp3' } })
+    expect(await hi.buildHumanIntro(req(), a.deps)).toMatchObject({ source: 'library', audioId: 'TAKE' })
+    expect(a.calls.linked).toEqual([['cym_nv2_for_eng', 'S0001L01', 'TAKE']])
+    const b = live({ lego: { ...LEGO, presentation_audio_id: 'THERE' } })
+    expect(await hi.buildHumanIntro(req(), b.deps)).toMatchObject({ source: 'already-linked', audioId: 'THERE' })
   })
 })
 

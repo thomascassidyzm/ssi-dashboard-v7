@@ -226,3 +226,33 @@ describe('pod sentence KNOWN segment array (job #357)', () => {
     expect(t.listening_pod_sentences[0].sentence_known_audio_ids).toEqual([N1])
   })
 })
+
+// Job #570: North Pod 1 SC01-S004's third English clip said "Goodbye." for "See you later." A known split clip with the
+// wrong words is replaced by a clip saying the line's own sentence at that position — and by nothing else.
+describe('pod sentence KNOWN segment with the wrong words (job #570)', () => {
+  const S1 = 'a1111111-aaaa-4aaa-8aaa-aaaaaaaaaaaa', S2 = 'a2222222-aaaa-4aaa-8aaa-aaaaaaaaaaaa', BYE = 'a3333333-aaaa-4aaa-8aaa-aaaaaaaaaaaa'
+  const LATER = 'c1111111-cccc-4ccc-8ccc-cccccccccccc', BUSY = 'c2222222-cccc-4ccc-8ccc-cccccccccccc'
+  const id = 'cym_n_for_eng:pod-1:SC01-S004'
+  const w = () => ({
+    listening_pods: [{ id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng' }],
+    listening_pod_sentences: [{ id, pod_id: 'cym_n_for_eng:pod-1', target_text: 'Ydw.', target_text_draft: null,
+      known_text: "Yes, I've got a busy day today. I hope you have a good day. See you later.", sentence_known_audio_ids: [S1, S2, BYE] }],
+    course_audio: [
+      { id: S1, text: "Yes, I've got a busy day today.", voice_id: 'xai_bedd6226' }, { id: S2, text: 'I hope you have a good day.', voice_id: 'bedd6226' },
+      { id: BYE, text: 'Goodbye.', voice_id: 'bedd6226' },
+      { id: LATER, text: 'See you later.', voice_id: 'xai_bedd6226' }, { id: BUSY, text: "Yes, I've got a busy day today.", voice_id: 'xai_bedd6226' },
+    ],
+  })
+  it("replaces 'Goodbye.' with the line's own third sentence", async () => {
+    const t = w(); const db = fakeDb(t)
+    const out = await linkClips({ db, courseCode: 'cym_n_for_eng', bump, links: [{ podSentenceId: id, role: 'knownsegment', audioId: LATER, replace: true, expectCurrent: BYE }] })
+    expect(out.results[0]).toMatchObject({ ok: true, changed: true })
+    expect(t.listening_pod_sentences[0].sentence_known_audio_ids).toEqual([S1, S2, LATER])
+  })
+  it("refuses a clip saying another sentence of the line in that place", async () => {
+    const t = w(); const db = fakeDb(t)
+    const out = await linkClips({ db, courseCode: 'cym_n_for_eng', bump, links: [{ podSentenceId: id, role: 'knownsegment', audioId: BUSY, replace: true, expectCurrent: BYE }] })
+    expect(out.results[0].code).toBe('TEXT_MISMATCH')
+    expect(t.listening_pod_sentences[0].sentence_known_audio_ids).toEqual([S1, S2, BYE])
+  })
+})

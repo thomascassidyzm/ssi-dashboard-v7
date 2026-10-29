@@ -19,13 +19,22 @@
  *     takes — job #210) are refused as before;
  *   - English only: a known-role call that names any other language is refused (silence is resolved to
  *     the role's own side, English, by the caller — never treated as permission here);
- *   - one voice: the clone. Nothing else may be cast there by this rule.
+ *   - one voice: STANDIN_VOICE below. Nothing else may be cast there by this rule.
  * Pod lines are not course slots and never reach this (the render route takes course slots only).
  */
 
-const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // aran_english_003
+const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // aran_english_003 (instant clone)
+
+/**
+ * THE SWITCH — the one voice that stands in. Aran 2026-10-29 14:46Z: HOLD the fill; Tom is having a Cartesia PRO
+ * clone of Aran built (Tom's Watson job #560·AA) and the fill uses whichever voice Aran and Tom pick from its
+ * side-by-side. To switch: put the chosen voice here (provider-prefixed, e.g. 'cartesia_<uuid>'), make sure it is
+ * a consented, registered owned clone (the TTS consent gate refuses anything else), and nothing else changes —
+ * resolveVoice, the render door and the booth's take-replaces-stand-in rule all read this value.
+ */
+const STANDIN_VOICE = ARAN_ENGLISH_CLONE
 const ARAN_CLONE_STANDIN_COURSES = Object.freeze(['cym_nv2_for_eng', 'cym_sv2_for_eng'])
-const RULING = 'Aran 2026-10-29 14:41Z (job #557): aran_english_003 stands in on the nv2/sv2 English known side until his real take replaces it'
+const RULING = 'Aran 2026-10-29 14:41Z (job #557): his own clone (STANDIN_VOICE) stands in on the nv2/sv2 English known side until his real take replaces it'
 
 const bare = (v) => String(v || '').trim().toLowerCase().replace(/^(cartesia|xai|elevenlabs|azure)_/, '')
 const isEnglish = (lang) => ['eng', 'en'].includes(String(lang || '').trim().toLowerCase().split(/[-_]/)[0])
@@ -44,9 +53,9 @@ function isCloneStandInSlot({ courseCode, course, role, language } = {}) {
   return isCloneStandInCourse(courseCode || course) && role === 'known' && isEnglish(language)
 }
 
-/** Is this voice id Aran's English clone (any provider-prefix spelling)? */
-function isAranEnglishClone(voiceId) {
-  return !!voiceId && bare(voiceId) === bare(ARAN_ENGLISH_CLONE)
+/** Is this voice id the stand-in voice (any provider-prefix spelling)? */
+function isStandInVoice(voiceId) {
+  return !!voiceId && bare(voiceId) === bare(STANDIN_VOICE)
 }
 
 /**
@@ -54,7 +63,7 @@ function isAranEnglishClone(voiceId) {
  * known slot. Anything else — a human take, another synthetic voice, any other course — is not.
  */
 function isReplaceableStandIn({ courseCode, role, voiceId }) {
-  return isCloneStandInCourse(courseCode) && role === 'known' && isAranEnglishClone(voiceId)
+  return isCloneStandInCourse(courseCode) && role === 'known' && isStandInVoice(voiceId)
 }
 
 module.exports = {
@@ -63,6 +72,7 @@ module.exports = {
   RULING,
   isCloneStandInCourse,
   isCloneStandInSlot,
-  isAranEnglishClone,
+  isStandInVoice,
+  STANDIN_VOICE,
   isReplaceableStandIn,
 }

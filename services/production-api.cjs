@@ -5199,6 +5199,27 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
   }
 })
 
+// GET|POST /api/admin/pod-text-swaps — make-before-break pod word changes (job #551,
+// voice-engine/pod-text-swaps.cjs). GET: where each swap stands and whether its take
+// exists. POST {"apply":true}: apply every pending swap whose take already exists
+// (the same one-statement text+audio write a booth take triggers); without apply,
+// a dry run that is the GET. The booth applies them by itself; this is the fallback.
+async function podTextSwapsRoute(req, res) {
+  const who = await requireAdmin(req, res)
+  if (!who) return
+  const apply = req.method === 'POST' && req.body && req.body.apply === true
+  try {
+    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, logger })
+    if (apply) logger.info(`[PodSwap] admin apply by ${who.email || who.agentId || who.id || '?'}: ${swaps.filter((s) => s.applied && s.applied.length).length} applied`)
+    res.json({ ok: true, apply, swaps })
+  } catch (e) {
+    logger.error('[PodSwap] route error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+}
+app.get('/api/admin/pod-text-swaps', podTextSwapsRoute)
+app.post('/api/admin/pod-text-swaps', podTextSwapsRoute)
+
 // GET /api/admin/pods/:courseCode/audio-plan — what pod audio is missing.
 // Thin passthrough to Phase 8's /plan-pods (port 3465). Optional ?slug=<slug>
 // scopes to one pod (Phase 8's route takes a comma-separated ?pods=<id> list,
@@ -5814,7 +5835,9 @@ async function handleRecordingUpload(req, res) {
     // original, so nothing said into the microphone is lost to this branch.
     // An UNCHECKED result (no script text, no decoder) is logged and let
     // through: an infrastructure absence must never cost a recordist a read.
-    const gateText = metadata.text || (podContext && podContext.text) || null
+    // metadata.spokenText: the words as SAID, when the filed text carries display markup (a whole-sentence
+    // LEGO intro, "The Welsh for <src>X</src> is <tgt>Y</tgt>.", job #587) — the gates listen for words, not tags.
+    const gateText = metadata.spokenText || metadata.text || (podContext && podContext.text) || null
     const speech = await speechGate.checkTakeHasSpeech({
       buffer: processedBuffer,
       expectedText: gateText,
@@ -5913,7 +5936,7 @@ async function handleRecordingUpload(req, res) {
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
     // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
     // only short identifiers on the object.
-    const { text: _metaText, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
+    const { text: _metaText, spokenText: _metaSpoken, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...s3SafeMetadata,
       recordedBy: 'human',

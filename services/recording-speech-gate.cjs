@@ -150,7 +150,8 @@ const syllables = require('./audio-intelligence/syllables.cjs')
 function languageForTake (courseCode, kind) {
   const parts = String(courseCode || '').split('_for_')
   if (parts.length !== 2) return null
-  return kind === 'known' ? parts[1] : parts[0].split('_')[0]
+  // A whole-sentence LEGO intro (job #587) is an English sentence with the Welsh inside it: checked as the known side.
+  return kind === 'known' || kind === 'intro-sentence' ? parts[1] : parts[0].split('_')[0]
 }
 
 /**

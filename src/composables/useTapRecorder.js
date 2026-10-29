@@ -231,6 +231,31 @@ export const ROLL_QUIET_MS = 1000
 // property the forensics wanted and never had.
 export const COLD_START_SETTLE_MS = PRE_ROLL_MIN_MS
 
+// A LINE HAS SPEECH ON IT, FOR AUTO-ADVANCE, ONLY ONCE THIS MUCH OF IT WAS VOICED.
+//
+// Aran, staging, 2026-10-28 12:45:44 GMT, line S1271L02U03 (job #909): one
+// -30 dB blip and no read, and the line moved on by itself 1.2 s later. In his
+// room the speech and quiet floors both sit at the FLOOR_PEAK cap (-34 dBFS), so
+// a single ~16 ms meter frame over it set lineHasSpeech, and the quiet clock did
+// the rest. The server refused the take (steady_noise_no_speech) and he had to
+// read the line again.
+//
+// So the AUTO-ADVANCE decision alone also asks for this many ms of frames over
+// the speech floor, summed across the line (not consecutive: a read is syllables
+// and gaps). Nothing else reads it — capture, upload, commit(), Next, Again and
+// the 1.2 s quiet gap are exactly as they were; a tap still moves on from any
+// line. Replayed over his 2,800 raw staging takes of 25-28 Oct
+// (tools/recording/booth-take-meter-frames.cjs + useTapRecorder.replay.test.js):
+// of the 2,548 accepted takes that moved on by themselves, the least-voiced had
+// 560 ms by its advance (0.5th percentile 896, median 2,368); the four takes the
+// server refused as no speech / a cut-off blip that had moved on by themselves
+// had 32, 32, 80 and 96 ms. 250 sits between the two with room either side.
+export const MIN_VOICED_MS = 250
+// A meter frame counts for at most this long towards voicedMs. requestAnimation
+// Frame runs at ~16 ms, but a throttled tab can deliver one frame after a long
+// pause, and one loud frame must never count as a quarter of a second of voice.
+const MAX_VOICED_FRAME_MS = 50
+
 // Peak-level bars, on the raw meter peak. Only ever used for timing decisions,
 // never to gate audio.
 //
@@ -357,6 +382,9 @@ export function useTapRecorder() {
   // Below the floor for this long, having already spoken on this line. This is
   // what drives auto-advance in the surface; it is NOT what ends the capture.
   const quietMs = ref(0)
+  // How long, summed, the open line has sat over the speech floor (ms). What
+  // the surface asks for before a quiet may end the line — see MIN_VOICED_MS.
+  const voicedMs = ref(0)
 
   let stream = null
   let mime = ''
@@ -383,6 +411,8 @@ export function useTapRecorder() {
   // The last frame on this line the meter called speech; 0 = none yet. Read only
   // by advanceSnapshot(), the booth's advance telemetry.
   let lastSpeechAt = 0
+  // The previous meter frame's time, so a voiced frame counts for as long as it lasted.
+  let lastFrameAt = 0
   let lineOpenedAt = 0
   // The warm recorder waiting to be promoted at the next boundary, and whether
   // it has heard anything since it was spawned. A dirty standby is never
@@ -634,6 +664,7 @@ export function useTapRecorder() {
     const db = (x) => (x > 0 ? Math.round(200 * Math.log10(x)) / 10 : null)
     return {
       gapMs: lastSpeechAt ? Math.max(0, now() - lastSpeechAt) : null,
+      voicedMs: Math.round(voicedMs.value),
       thrSpeech: db(speechFloor()),
       thrQuiet: db(quietFloor()),
     }
@@ -641,8 +672,13 @@ export function useTapRecorder() {
 
   function onMeterFrame(p) {
     const t = now()
+    const frameMs = lastFrameAt ? Math.min(MAX_VOICED_FRAME_MS, Math.max(0, t - lastFrameAt)) : 0
+    lastFrameAt = t
     if (p > quietFloor()) lastQuietSince = t
-    if (p > speechFloor() && isRecording.value) { lineHasSpeech.value = true; lastSpeechAt = t }
+    if (p > speechFloor() && isRecording.value) {
+      lineHasSpeech.value = true; lastSpeechAt = t
+      voicedMs.value += frameMs
+    }
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
@@ -721,6 +757,7 @@ export function useTapRecorder() {
     if (!active) active = spawnRecorder()
     lineHasSpeech.value = false
     quietMs.value = 0
+    voicedMs.value = 0
     lineOpenedAt = now()
     lastQuietSince = now()
     lastSpeechAt = 0
@@ -774,6 +811,7 @@ export function useTapRecorder() {
     const outgoing = handOver()
     lineHasSpeech.value = false
     quietMs.value = 0
+    voicedMs.value = 0
     return harvest(outgoing).then(() => {})
   }
 
@@ -782,6 +820,7 @@ export function useTapRecorder() {
     isRecording.value = false
     lineHasSpeech.value = false
     quietMs.value = 0
+    voicedMs.value = 0
     const all = [active, standby, ...retiring].filter(Boolean)
     active = null
     standby = null
@@ -802,7 +841,7 @@ export function useTapRecorder() {
 
   return {
     isRecording, level, clipping, devices, appliedSettings, profile, error,
-    lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
+    lineHasSpeech, quietMs, voicedMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
     activeAgeMs, awaitLeadIn, advanceSnapshot,
   }

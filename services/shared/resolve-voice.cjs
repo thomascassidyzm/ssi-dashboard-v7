@@ -140,7 +140,7 @@ function resolveVoiceUnguarded({ course, role, language = null, gender = null } 
   }
   if (role === 'known') {
     // Before english-known: on the two stand-in courses the English known side is Aran's clone, never Tom-006 (which the Welsh rule refuses).
-    if (lang === 'eng' && aranStandIn.isCloneStandInSlot({ course, role, language: lang })) return voice(aranStandIn.ARAN_ENGLISH_CLONE, 'aran-clone-standin')
+    if (lang === 'eng' && aranStandIn.isCloneStandInSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-clone-standin')
     if (lang === 'eng') return voice(TOM_006, 'english-known')
     return noRuling(`known side in ${lang} — no ruling covers a non-English known voice`)
   }

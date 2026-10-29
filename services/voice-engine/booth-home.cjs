@@ -72,6 +72,8 @@ const LEGO_BATCH_LINES = 100
 function batchSizeOf(key) {
   if (key.startsWith('seed.')) return SEED_BATCH_LINES
   if (key.startsWith('lego.')) return LEGO_BATCH_LINES
+  // The Introductions card (job #587): ~2,000 whole-sentence intros, cut like LEGOs.
+  if (key.startsWith('introsentence.')) return LEGO_BATCH_LINES
   return 0
 }
 
@@ -83,6 +85,12 @@ function trackKeyOf(line) {
   // A Take G line is the same pod line read with gaps, queued straight after it, so it is part
   // of its pod's script rather than a card of its own.
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
+  // Pod 1 English (job #537): one card for North and South, whichever course a line's first copy is in.
+  if (kind === 'podknown' && line.podSlug) return `podknown.${line.podSlug}`
+  // Pod lines waiting on new words (job #551): one card, North and South, ahead of the pod change.
+  if (kind === 'podswap' && line.podSlug) return `podswap.${line.podSlug}`
+  // ONE Introductions card for North and South together, in running order (Aran, job #587).
+  if (kind === 'introsentence') return 'introsentence.all'
   return `${kind}.${line.courseCode || 'all'}`
 }
 
@@ -149,6 +157,8 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
       podTitle: first.podTitle || null,
       // Which side the card reads: 'known' on Aran's English LEGO cards (job #255), so the booth can name them.
       role: first.role || null,
+      // Pod 1 English is read by gender (job #562): 'f' names Catrin's card "Pod 1 English (female lines)".
+      ...(first.kind === 'podknown' ? { speakerGender: first.speakerGender || null } : {}),
       // A sentence of a course whose phrases this booth records (the v2 relaunch sandboxes) is
       // NEW reading, even though its seed row already exists in that course. #335 found these
       // 640 new North sentences filed under "seeds already in the course — not new".

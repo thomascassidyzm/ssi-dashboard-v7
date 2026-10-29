@@ -221,7 +221,7 @@ function batchWords(t, b) {
     if (b.recorded >= b.total) return `${n(b.total)} phrases · all recorded`
     return `${done}${b.current ? ' · current batch' : ''}${b.held ? ` · ${b.held} held back for proofing` : ''}`
   }
-  if (t.batches.length > 1) return `${t.kind === 'lego' ? 'LEGOs' : 'Sentences'} ${n(b.from)}–${n(b.to)} · ${done}`
+  if (t.batches.length > 1) return `${t.kind === 'lego' ? 'LEGOs' : t.kind === 'introsentence' ? 'Introductions' : 'Sentences'} ${n(b.from)}–${n(b.to)} · ${done}`
   return done
 }
 function cardPill(t) {
