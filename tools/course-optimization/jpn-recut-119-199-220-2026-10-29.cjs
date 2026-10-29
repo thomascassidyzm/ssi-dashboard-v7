@@ -113,6 +113,26 @@ function decompose(segs, lookup, newLego) {
   return tiles;
 }
 
+function mkRow({ tmpl, base, seed, legoIndex, lookup, newLego }, id, role, position, known, segs, extra = {}) {
+  const row = { ...(base || tmpl) };
+  for (const c of STRIP) delete row[c];
+  const ja = jaOf(segs), tiles = decompose(segs, lookup, newLego), newTarget = newLego.target;
+  const pos = ja.indexOf(newTarget);
+  const md = { ...((base && base.metadata) || {}), format: 'build_use', source: `${AGENT} (Kai 29 Oct, job #564)` };
+  delete md.scored_at; delete md.score; delete md.target_score;
+  if (extra.buildup) md.buildup = 'lego'; else delete md.buildup;
+  return { ...row, id: `${COURSE}:${id}`, seed_number: seed, lego_index: legoIndex, phrase_role: role, position, known_text: known, target_text: ja, target_text_roman: roOf(segs),
+    decomposition: tiles, decomposition_course_version: null, lego_position: pos === 0 ? (ja === newTarget ? 'middle' : 'start') : (pos + newTarget.length >= ja.replace(/[。？]$/, '').length ? 'end' : 'middle'),
+    connected_lego_ids: [], metadata: md, status: 'draft', word_count: ja.length, lego_count: tiles.filter((t) => !t.isGhost).length || 1, introduce: true };
+}
+
+/** Knock-on repairs: phrases ELSEWHERE that stop tiling once the old LEGO is gone (the vocab replay in the job's census found exactly one). */
+const KNOCKON = [
+  // S0138L02U07 "彼女に聞く予定だったけど、聞かなかった" leaned on the old 119 component 聞 (+ かなかった) to spell 聞かなかった, which S0381 teaches properly.
+  { id: 'S0138L02U07', legoId: 'S0138L02', known: "I was planning to ask her, but I didn't have time",
+    segs: [P('彼女に', 'kanojo ni'), P('聞く', 'kiku'), P('予定だった', 'yotei datta'), P('けど', 'kedo'), COMMA, P('時間なかった', 'jikan nakatta')] },
+];
+
 function build(dump, seedsLive) {
   const legos = Object.fromEntries(dump.legos.map((l) => [l.lego_id, l]));
   const phr = Object.fromEntries(dump.phrases.map((p) => [sid(p.id), p]));
@@ -141,18 +161,7 @@ function build(dump, seedsLive) {
     // rows
     const oldRows = Object.keys(phr).filter((k) => k.startsWith(legoId)).sort();
     const tmpl = phr[`${legoId}B01`] || phr[oldRows[0]];
-    const mk = (id, role, position, known, segs, extra = {}, base = null) => {
-      const row = { ...(base || tmpl) };
-      for (const c of STRIP) delete row[c];
-      const ja = jaOf(segs), tiles = decompose(segs, lookup, newLego);
-      const pos = ja.indexOf(newTarget);
-      const md = { ...((base && base.metadata) || {}), format: 'build_use', source: `${AGENT} (Kai 29 Oct, job #564)` };
-      delete md.scored_at; delete md.score; delete md.target_score;
-      if (extra.buildup) md.buildup = 'lego'; else delete md.buildup;
-      return { ...row, id: `${COURSE}:${id}`, seed_number: seed, lego_index: L.index, phrase_role: role, position, known_text: known, target_text: ja, target_text_roman: roOf(segs),
-        decomposition: tiles, decomposition_course_version: null, lego_position: pos === 0 ? (ja === newTarget ? 'middle' : 'start') : (pos + newTarget.length >= ja.replace(/[。？]$/, '').length ? 'end' : 'middle'),
-        connected_lego_ids: [], metadata: md, status: 'draft', word_count: ja.length, lego_count: tiles.filter((t) => !t.isGhost).length || 1, introduce: true };
-    };
+    const mk = (id, role, position, known, segs, extra = {}, base = null) => mkRow({ tmpl, base, seed, legoIndex: L.index, lookup, newLego }, id, role, position, known, segs, extra);
     const seedKnown = seedRow.known_text, seedTarget = seedRow.target_text;
     const gateRows = [];
     const addRow = (id, role, position, known, segs, extra) => {
@@ -195,6 +204,20 @@ function build(dump, seedsLive) {
     }
     // 119 only: the old C01 (聞) is replaced above; 199 C01/C02 stay untouched (昔, 働いてた are still exactly what they were).
     gate.push({ courseCode: COURSE, seedNumber: seed, legoIndex: L.index, legoId, legoKnown: L.known, legoTarget: newTarget, seedTarget, phrases: gateRows });
+  }
+
+  for (const K of KNOCKON) {
+    const seed = Number(K.legoId.slice(1, 5)), lego = legos[K.legoId], oldRow = phr[K.id];
+    const newLego = { legoId: K.legoId, known: lego.known_text, target: lego.target_text, components: (lego.components || []).map((c) => [c.known, c.target]) };
+    const row = mkRow({ tmpl: oldRow, base: oldRow, seed, legoIndex: lego.lego_index, lookup: tileLookup(dump, seed, newLego), newLego }, K.id, oldRow.phrase_role, oldRow.position, K.known, K.segs);
+    plan.push(`\n=== KNOCK-ON ${K.id}: ${oldRow.known_text} | ${oldRow.target_text}  ->  ${K.known} | ${row.target_text}`);
+    ops.push({ op: 'phrase.delete', phrase_id: oldRow.id, expect: { target_text: oldRow.target_text } });
+    ops.push({ op: 'phrase.insert', row });
+    ops.push({ op: 'audio.link', target: 'phrase', phrase_id: row.id, slot: 'known', audio_id: { $ask: ask('known', K.known, K.id) } });
+    for (const slot of ['target1', 'target2']) ops.push({ op: 'audio.link', target: 'phrase', phrase_id: row.id, slot, audio_id: { $ask: ask(slot, row.target_text, K.id) } });
+    const sib = dump.phrases.filter((p) => p.seed_number === seed && p.lego_index === lego.lego_index && p.phrase_role !== 'component')
+      .map((p) => (p.id === oldRow.id ? { role: p.phrase_role, known: K.known, target: row.target_text } : { role: p.phrase_role, known: p.known_text, target: p.target_text }));
+    gate.push({ courseCode: COURSE, seedNumber: seed, legoIndex: lego.lego_index, legoId: K.legoId, legoKnown: lego.known_text, legoTarget: lego.target_text, knockOn: K.id, phrases: sib });
   }
   return { ops, plan, gate, asks: [...asks.values()] };
 }
