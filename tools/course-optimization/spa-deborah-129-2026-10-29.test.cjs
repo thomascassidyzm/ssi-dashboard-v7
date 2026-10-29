@@ -3,7 +3,7 @@
 // The rules and gates of the job #425 apply tool (Deborah's 129 spa_for_eng answers), on a hand-built course.
 const test = require('node:test');
 const assert = require('node:assert');
-const { plan, applyRules, untaughtNew } = require('./spa-deborah-129-2026-10-29.cjs');
+const { plan, applyRules, untaughtNew, editBatches } = require('./spa-deborah-129-2026-10-29.cjs');
 const tw = require('../../services/course-builder/lib/taught-words.cjs');
 
 test('item 1: "pienso que" becomes "creo que" only where the English says "I think"; "no pienso + verb" (not planning) is left', () => {
@@ -55,4 +55,11 @@ test('gates: one English over two Spanish is refused; two Englishes over one Spa
   assert.ok(p.notes.some((n) => n.id === 'S0104L01U01' && /allowed/.test(n.why)));
   assert.ok(p.skipped.some((s) => s.id === 'S0104L01U03' && /ZUT new clash: EN→2ES S0104L01U14/.test(s.why)));
   assert.deepStrictEqual(p.unapprove, [104]);
+});
+
+test('a LEGO whose target moves keeps its introduction: the same presentation clip is relinked in the same batch', () => {
+  const p = { legoGo: [{ id: 'S0047L01', by: ['G1'], set: { target_text: 'creo que' }, before: { target_text: 'pienso que', presentation_audio_id: '2c305c43-0822-427e-b5a1-8773896ca374' } }], seedGo: [], go: [], unapprove: [] };
+  const ops = editBatches(p).flatMap((b) => b.ops);
+  assert.deepStrictEqual(ops.map((o) => o.op), ['lego.update', 'audio.link']);
+  assert.deepStrictEqual({ slot: ops[1].slot, audio_id: ops[1].audio_id, lego_id: ops[1].lego_id }, { slot: 'presentation', audio_id: '2c305c43-0822-427e-b5a1-8773896ca374', lego_id: 'S0047L01' });
 });

@@ -323,7 +323,13 @@ function classOf(by) {
 }
 function editBatches(p) {
   const groups = new Map(); const add = (c, op) => { if (!groups.has(c)) groups.set(c, []); groups.get(c).push(op); };
-  for (const l of p.legoGo) add(classOf(l.by), { op: 'lego.update', lego_id: l.id, set: l.set, expect: { target_text: l.before.target_text } });
+  for (const l of p.legoGo) {
+    add(classOf(l.by), { op: 'lego.update', lego_id: l.id, set: l.set, expect: { target_text: l.before.target_text } });
+    // The LEGO text-change trigger drops presentation_audio_id on a TARGET edit too, though an intro is English only and
+    // quotes the (unchanged) known text. Put the same clip back in the same transaction. (Job #425's own run lost 15
+    // intros this way before this line existed; they were relinked to the same clips, event 469a3ea1.)
+    if (l.before.presentation_audio_id) add(classOf(l.by), { op: 'audio.link', target: 'lego', lego_id: l.id, slot: 'presentation', audio_id: l.before.presentation_audio_id });
+  }
   for (const s of p.seedGo) {
     const set = {}; if (s.known !== s.before.known_text) set.known_text = s.known; if (s.target !== s.before.target_text) set.target_text = s.target;
     add(classOf(s.by), { op: 'seed.update', seed_number: s.before.seed_number, set, expect: { known_text: s.before.known_text, target_text: s.before.target_text } });
