@@ -283,7 +283,7 @@ function selectProvider(input = {}, opts = {}) {
   // The slot-level form: the nv2/sv2 English known side spoken by Aran's own clone (Aran 2026-10-29, job #557,
   // services/shared/aran-clone-standin.cjs) is the one slot of a human-voice course that passes, and only in that voice.
   const standIn = !!courseCode && isHumanVoiceCourse(courseCode) && !isHumanVoiceSlotBlocked({ courseCode, role: input.role, language })
-    && aranCloneStandIn.isAranEnglishClone(voiceId)
+    && aranCloneStandIn.isStandInVoice(voiceId)
   if ((isHumanVoiceCourse(courseCode) && !standIn) || isHumanVoiceLang(language)) {
     throw new ProviderPolicyError(
       `Human-voice content (403): ${courseCode || language} is human-recorded only — ` +
