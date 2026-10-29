@@ -1714,8 +1714,10 @@ async function fetchBuildStatus() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return null
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const resp = await fetch(`${builderApiUrl}/api/build/status/${code}`)
+    // Through the production-api proxy (/api/build/* → course builder), like the Production
+    // Suite: VITE_COURSE_BUILDER_API_URL is unset on Vercel, so the builder URL this page uses
+    // elsewhere is http://localhost:3471 — unreachable from anyone's browser but watson-1's.
+    const resp = await fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}/api/build/status/${code}`)
     if (!resp.ok) throw new Error(`status ${resp.status}`)
     const data = await resp.json()
     jobStatus.value = nextJobStatus(jobStatus.value, data)
@@ -1757,8 +1759,8 @@ async function startCourseBuilder() {
   starting.value = true
   startError.value = null
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const response = await fetch(`${builderApiUrl}/api/build/team-start/${code}`, {
+    // Proxy, not localhost:3471 — see fetchBuildStatus.
+    const response = await fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}/api/build/team-start/${code}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1874,7 +1874,10 @@ async function proxyCourseBuilder(req, res) {
         }),
         ...(req.headers['x-agent-id'] ? { 'x-agent-id': req.headers['x-agent-id'] } : {}),
         ...(req.headers['x-agent-role'] ? { 'x-agent-role': req.headers['x-agent-role'] } : {}),
-        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {})
+        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {}),
+        // Who is at the keyboard, as THIS gate verified it (never the client's own claim): the
+        // course builder records it on build starts/stops so "Stopped by …" names a person (job #482).
+        ...(req.dashboardUser?.email ? { 'x-dashboard-user': String(req.dashboardUser.email) } : {})
       },
       body
     }

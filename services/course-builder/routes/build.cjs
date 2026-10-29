@@ -135,7 +135,7 @@ module.exports = function (ctx) {
   router.post('/build/stop/:courseCode', async (req, res) => {
     // Who pressed Stop: production-api's proxy forwards the signed-in dashboard user as
     // x-stopped-by; an agent names itself with x-agent-id. Unknown stays null, never guessed.
-    const by = req.get('x-stopped-by') || req.get('x-agent-id') || req.body?.by || null;
+    const by = req.get('x-stopped-by') || req.get('x-dashboard-user') || req.get('x-agent-id') || req.body?.by || null;
     const result = await stopBuild(ctx, req.params.courseCode, { by });
     ctx.emitPipelineEvent(req.params.courseCode, 'build:status', { active: false });
     res.json(result);
@@ -874,7 +874,7 @@ module.exports = function (ctx) {
         terminal: req.body?.terminal || req.query.terminal || 'iTerm2',
         targetSeeds: req.body?.targetSeeds ?? null,
         dryRun: req.body?.dryRun === true,
-        requestedBy: req.get('x-agent-id') || 'dashboard',
+        requestedBy: req.get('x-dashboard-user') || req.get('x-agent-id') || 'dashboard',
       });
       res.status(r.status).json(r.body);
     } catch (err) {
