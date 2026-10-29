@@ -47,12 +47,18 @@ const call = async (path, body) => {
   }
   if (mode === 'dry' || mode === 'render') {
     const log = a, set = b, li = process.argv.indexOf('--limit'), limit = li > 0 ? Number(process.argv[li + 1]) : Infinity;
-    const seen = new Set(fs.existsSync(log) ? fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l).k) : []);
+    const seen = new Set(fs.existsSync(log) ? fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)).filter((l) => l.status === 200).map((l) => l.k) : []);
     const asks = new Map(); for (const x of await slots(set, process.argv[process.argv.indexOf(set) + 1])) asks.set(`${x.course}\0${x.role}\0${x.text}`, x);
     let n = 0;
     for (const [k, x] of asks) {
       if (seen.has(k)) continue; if (n++ >= limit) break;
-      let r; try { r = await call('/api/audio/render', { courseCode: x.course, role: x.role, text: x.text, purpose: PURPOSE, dryRun: mode === 'dry' }); } catch (e) { r = { status: 0, body: { error: String(e.name) } }; }
+      let r; // Popty restarts on every deploy. A dropped connection (status 0) waits and asks the SAME words again: the route is library-first, so a clip
+      // that was in fact rendered before the drop is linked free, never paid twice. A refusal or 402 is an answer and is never retried.
+      for (let t = 0; t < 10; t++) {
+        try { r = await call('/api/audio/render', { courseCode: x.course, role: x.role, text: x.text, purpose: PURPOSE, dryRun: mode === 'dry' }); } catch (e) { r = { status: 0, body: { error: String(e.name) } }; }
+        if (r.status !== 0) break;
+        await new Promise((res) => setTimeout(res, 45000));
+      }
       fs.appendFileSync(log, JSON.stringify({ k, course: x.course, role: x.role, text: x.text, status: r.status, body: r.body }) + '\n');
       if (r.status !== 200) { console.log('STOP', r.status, JSON.stringify(r.body).slice(0, 300)); break; }
     }
