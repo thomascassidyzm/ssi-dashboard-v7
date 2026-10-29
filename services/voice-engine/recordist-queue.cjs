@@ -117,6 +117,7 @@ const phraseQueue = require('./phrase-queue.cjs')
 const { isReplaceableStandIn } = require('../shared/aran-clone-standin.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -3069,7 +3070,8 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   // course's LEGO intros also reads that course's once-recorded intro pieces first (job #210, intro-piece-lines.cjs).
   // Their English LEGO cards follow (job #255, english-lego-lines.cjs): one English take per new LEGO still owed.
   const englishLegoLines = englishLegos.englishLegoLinesFor(recordist, await fetchEnglishLegoInputs(db, recordist))
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines]
+  // A video's narration (job #572, video-voiceover-lines.cjs) is its own card, read by the voice the script names.
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -3194,6 +3196,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: line.kind === 'lego' ? (line.legoId || null) : null,
+        // A video voiceover line (job #572): which step of which video, and how long the take may run. Null elsewhere.
+        voiceover: line.kind === 'voiceover' ? (line.voiceover || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
         // straight off the sentence's own atom_map_fine. On the wire because the
         // booth draws them as the pause marks, and because the aligner gates on
