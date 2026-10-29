@@ -98,6 +98,14 @@ describe('spliceIntro — only what exists nowhere is rendered', () => {
     expect(out.charsSpent).toBe('The Spanish for'.length)
     expect(out.pieces.find(p => p.kind === 'fragment').reused).toBe(false)
   })
+  it("renders a missing English word as role 'presentation', never 'known' (the voice policy refuses 'known' for hin_for_eng)", async () => {
+    const d = deps(['The Spanish for', 'as in', 'I have five', 'is'])
+    await spliceIntro(req(), d)
+    expect(d.renderPiece).toHaveBeenCalledWith({ text: 'five', role: 'presentation' })
+    const d2 = deps(['The Spanish for', 'five'])
+    await spliceIntro(req(), d2)
+    for (const c of d2.renderPiece.mock.calls) expect(c[0].role).toBe('presentation')
+  })
   it('a dry run spends and writes nothing and says what it would render', async () => {
     const d = deps(['five', 'is'])
     const out = await spliceIntro(req({ dryRun: true }), d)
