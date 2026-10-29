@@ -491,7 +491,12 @@ test('a phrase plan that timed out half way resumes: the reads it made are not m
   await assert.rejects(() => getPhrasePlan(db), /phrase plan read 'phrases:/)
   const legosAfterFailure = db.calls.course_legos
   state.failTable = null
-  const plan = await getPhrasePlan(db)
+  // Inside the 30 s cooldown after a cold failure the failure is replayed at once (job #602); the next attempt
+  // after it is the one that resumes.
+  const realNow = Date.now
+  Date.now = () => realNow() + 31_000
+  let plan
+  try { plan = await getPhrasePlan(db) } finally { Date.now = realNow }
   assert.ok(plan.byVoice.size > 0, 'the second attempt finishes')
   assert.equal(db.calls.course_legos, legosAfterFailure, 'and does not read the LEGOs again')
   afterCourseContentEdit()
