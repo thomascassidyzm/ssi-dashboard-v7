@@ -39,3 +39,38 @@ test('the LEGO takes the seed Korean, its users follow, the seed is untouched', 
   assert.deepStrictEqual(ops.find((o) => o.op === 'seed.update').set, { approved_at: null }); // seed text never edited; O5 unapprove only
   assert.ok(ops.some((o) => o.op === 'audio.link' && o.slot === 'presentation' && o.audio_id === 'p1')); // intro put back
 });
+
+// Job #703: the gate comparison counts offending rows per basket, so a WORSENED existing failure is a regression
+// (the first version compared failing gate NAMES only and let it through).
+test('gate: a failure that was already there but gets worse is a regression', () => {
+  const { worsened } = require('./kor-lego-follow-seed-565-2026-10-29.gate.cjs');
+  const mk = (n) => ({ failingGates: ['bareLego'], gates: { bareLego: { pass: false, dropped: n } } });
+  const nameOnly = (b, a) => a.failingGates.filter((x) => !b.failingGates.includes(x)); // the old rule
+  assert.deepStrictEqual(nameOnly(mk(2), mk(3)), []);
+  assert.deepStrictEqual(worsened(mk(2), mk(3)), [{ gate: 'bareLego', before: 2, after: 3 }]);
+  assert.deepStrictEqual(worsened(mk(2), mk(2)), []);
+  assert.deepStrictEqual(worsened(mk(2), mk(1)), []);
+  assert.deepStrictEqual(worsened({ failingGates: [], gates: {} }, mk(1)), [{ gate: 'bareLego', before: 0, after: 1 }]);
+});
+
+// verify: reads the planned rows back from a fresh dump and checks the text AND what the clips say.
+test('verify: flags a wrong clip, a stale LEGO, a changed seed; passes the right rows', async () => {
+  const { verify } = require('./kor-lego-follow-seed-565-2026-10-29.cjs');
+  const p = plan(db, { only: [74] });
+  p.seedText = { 74: db.seeds[0].target_text };
+  const text = { c1: '이해하게 도와줘서', c2: '이해하게 도와줘서', c3: '이해하게 도와줘서 고마워요', c4: '이해하게 도와줘서 고마워요', wrong: '다른 말' };
+  const live = (over = {}) => ({
+    seeds: [{ ...db.seeds[0], approved_at: null, ...(over.seed || {}) }],
+    legos: [{ ...db.legos[0], target_text: '이해하게 도와줘서', components: [{ known: 'to understand', target: '이해하게' }, { known: 'for helping', target: '도와줘서' }], target1_audio_id: 'c1', target2_audio_id: 'c2', presentation_audio_id: 'p1', ...(over.lego || {}) }],
+    phrases: [{ ...db.phrases[0], target_text: '이해하게 도와줘서 고마워요', target1_audio_id: 'c3', target2_audio_id: 'c4' }, { ...db.phrases[3], target_text: '이해하게 도와줘서 고마워요', target1_audio_id: 'c3', target2_audio_id: over.badClip || 'c4' },
+      { ...db.phrases[1], known_text: 'to understand', target_text: '이해하게' }, { ...db.phrases[2], target_text: '도와줘서' }],
+  });
+  const say = async (a) => text[a] ?? null;
+  const good = await verify(live(), p, say);
+  assert.deepStrictEqual(good.bad, []);
+  assert.ok(good.ok.length >= 5);
+  assert.ok((await verify(live({ badClip: 'wrong' }), p, say)).bad.some((b) => b.id === 'S0099L01U01'));
+  assert.ok((await verify(live({ lego: { target_text: '이해할 수 있게 도와줘서' } }), p, say)).bad.some((b) => b.id === 'S0074L01'));
+  assert.ok((await verify(live({ seed: { target_text: '바뀜' } }), p, say)).bad.some((b) => b.id === 'seed 74 text'));
+  assert.ok((await verify(live({ seed: { approved_at: '2026-10-29' } }), p, say)).bad.some((b) => b.id === 'seed 74'));
+});
