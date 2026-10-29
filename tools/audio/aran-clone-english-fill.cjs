@@ -139,8 +139,10 @@ async function buildPlan() {
   const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
   const recordist = await q.resolveRecordist(db, VOICE)
   if (!recordist) throw new Error(`${VOICE} is not a recordist`)
-  const queue = await q.buildQueue(db, recordist)
-  const seedLines = queue.lines.filter((l) => l.kind === 'seed' && l.role === 'known')
+  // The INTERNAL seed lines (seedId + duplicateOf), not buildQueue's wire lines: the wire shape carries the seed only
+  // inside its line id and drops a seed line's duplicates, so a plan built from it finds no seed slot at all.
+  const lang = await q.buildLanguageLines(db, 'eng', { cache: new Map() })
+  const seedLines = [...lang.byBucket.values()].flat().filter((l) => l.kind === 'seed' && l.role === 'known' && recordist.spellings.includes(l.voiceId))
   const seedRows = new Map()
   for (const c of COURSES) {
     const r = await fetch(`${POPTY}/api/production/${c}/seeds`, { signal: AbortSignal.timeout(300000) })
