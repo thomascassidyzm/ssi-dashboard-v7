@@ -17,7 +17,8 @@ const U = Object.fromEntries(['take-james', 'take-narr', 'take-sarah', 'tts-whol
 const clip = (id, voice_id, text, origin) => ({ id, voice_id, origin, text, s3_key: `mastered/${id}.mp3` })
 const piece = (dur) => ({ dur })
 const CAST = { cym_n_for_eng: { James: { gender: 'm' }, Narrator: { gender: 'm' }, Sarah: { gender: 'f' }, Neighbour: { gender: 'm' } } }
-const castEntryFor = (podCast, speaker) => (podCast && podCast[String(speaker).replace(/\s*\(.*\)$/, '')]) || null
+const { podSpeakerGender } = require('./pod-english-lines.cjs')
+const genderOf = (s) => podSpeakerGender(s, CAST)
 
 describe('judgeCut — refuse rather than guess', () => {
   const two = ["I'm James.", 'Pleased to meet you.']
@@ -88,15 +89,25 @@ describe('planSplitCuts — which lines are cut from his take', () => {
     const t = fixture()
     const clipById = new Map(t.course_audio.map((c) => [c.id, c]))
     const { cuts: planned, skipped } = cuts.planSplitCuts({ podIds: [N], sentences: t.listening_pod_sentences, clipById,
-      podCastByCourse: CAST, castEntryFor, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
+      genderOf, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
     expect(planned.map((c) => [c.sentenceId.slice(-9), c.replace.map((r) => r.index)])).toEqual([['SC06-S003', [0]], ['SC06-S013', [0, 1, 2, 3, 4]]])
     expect(skipped).toMatchObject({ otherGender: 1, leftToOtherJob: 1, notSplit: 1 })
+  })
+  it('a woman\'s line is not cut even from a woman reader\'s take: only the men\'s lines are ruled on', () => {
+    const t = fixture()
+    const sarah = t.listening_pod_sentences.find((s) => s.id.endsWith('SC01-S002'))
+    const her = clip('dddddddd-dddd-4ddd-8ddd-dddddddddddd', 'human_catrinlliar_eng', 'Good morning. How are you?', 'human')
+    const clipById = new Map([...t.course_audio, her].map((c) => [c.id, c]))
+    const { cuts: planned, skipped } = cuts.planSplitCuts({ podIds: [N], sentences: [{ ...sarah, known_audio_id: her.id }], clipById,
+      genderOf, recordist: { voiceId: her.voice_id, spellings: [her.voice_id], gender: 'f' } })
+    expect(planned).toEqual([])
+    expect(skipped.otherGender).toBe(1)
   })
   it('a speaker the cast does not name is nobody\'s', () => {
     const t = fixture()
     const s = { ...t.listening_pod_sentences[0], speaker: 'Stranger' }
     const { cuts: planned, skipped } = cuts.planSplitCuts({ podIds: [N], sentences: [s], clipById: new Map(t.course_audio.map((c) => [c.id, c])),
-      podCastByCourse: CAST, castEntryFor, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
+      genderOf, recordist: { voiceId: ARAN, spellings: [ARAN], gender: 'm' } })
     expect(planned).toEqual([])
     expect(skipped.uncast).toBe(1)
   })

@@ -3221,7 +3221,8 @@ async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = 
     for (const c of data || []) clipById.set(c.id, c)
   }
   const gender = recordist.gender || ((voices.find((v) => v.voiceId === recordist.voiceId) || {}).gender) || null
-  const { cuts } = podSplitCuts.planSplitCuts({ podIds, sentences, clipById, podCastByCourse, castEntryFor, recordist: { ...recordist, gender } })
+  const genderOf = (s) => podEnglish.podSpeakerGender(s, podCastByCourse)
+  const { cuts } = podSplitCuts.planSplitCuts({ podIds, sentences, clipById, genderOf, recordist: { ...recordist, gender } })
   const cutIds = new Set(cuts.map((c) => c.sentenceId))
   const { repairs } = podSplitCuts.planWrongWordRepairs({ podIds, sentences, clipById })
   const work = [...cuts, ...repairs.filter((r) => !cutIds.has(r.sentenceId))]

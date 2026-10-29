@@ -15,8 +15,8 @@
  *
  * WHICH LINES (planSplitCuts): a line of a replace pod (pod-english-lines POD_ENGLISH_REPLACE_PODS), not owned by another
  * job, that the learner actually hears in sentences (known and target arrays the same length, two or more), whose speaker
- * the course cast gives the reader's own gender (voice_config.podCast — job #562 moves the women's lines to Catrin; a
- * speaker the cast does not name is nobody's), whose whole English slot holds a HUMAN take of this reader's, and whose
+ * is a MAN by the course cast (pod-english-lines podSpeakerGender, job #562's rule; a speaker the cast does not name is
+ * nobody's) and is the reader's own gender, whose whole English slot holds a HUMAN take of this reader's, and whose
  * text splits into exactly as many sentences as the array has clips. Only synthetic sentence clips move; a human one —
  * his or anybody's — is never replaced.
  *
@@ -40,6 +40,13 @@ const { POD_ENGLISH_REPLACE_LEFT_TO } = require('./pod-english-lines.cjs')
  * pause hands one piece another sentence's words and pushes this far out (short words are said slowly, so the band is wide: 0.63-2.30 over 196 sentences of North Pod 1's English, 29 Oct).
  */
 const SPLIT_CUT_GATES = Object.freeze({ minMargin: 1.5, minPieceS: 0.35, shareRatio: Object.freeze([0.5, 2.5]) })
+
+/**
+ * Whose lines are cut. Aran's ruling covers his takes, and his are the men's lines: job #562 moves the women's to Catrin,
+ * and the job #570 brief excluded them. Her takes reach the women's WHOLE slots (#562), but on a line heard in sentences
+ * the player plays the sentence clips, so those stay synthetic until someone rules that her takes are cut too.
+ */
+const SPLIT_CUT_SPEAKER_GENDERS = Object.freeze(['m'])
 
 const courseOfPod = (podId) => String(podId).split(':')[0]
 
@@ -108,12 +115,11 @@ function judgeCut(sentences, splice, gates = SPLIT_CUT_GATES) {
  * @param {string[]} input.podIds            replace pods this reader reads
  * @param {object[]} input.sentences         rows {id, pod_id, speaker, known_text, known_audio_id, sentence_audio_ids, sentence_known_audio_ids}
  * @param {Map} input.clipById               course_audio id -> {id, voice_id, origin, text, s3_key}
- * @param {object} input.podCastByCourse     course_code -> voice_config.podCast
- * @param {Function} input.castEntryFor      (podCast, speaker) -> cast entry | null (recordist-queue's)
+ * @param {Function} input.genderOf          row -> 'm' | 'f' | null, the speaker's gender by the course cast (podSpeakerGender)
  * @param {object} input.recordist           {voiceId, spellings, gender}
  * @returns {{cuts: object[], skipped: object}} cuts: {sentenceId, courseCode, source, sentences, replace:[{index, current}]}
  */
-function planSplitCuts({ podIds = [], sentences = [], clipById = new Map(), podCastByCourse = {}, castEntryFor, recordist } = {}) {
+function planSplitCuts({ podIds = [], sentences = [], clipById = new Map(), genderOf, recordist, genders = SPLIT_CUT_SPEAKER_GENDERS } = {}) {
   const pods = new Set(podIds)
   const mine = new Set((recordist && (recordist.spellings || [recordist.voiceId])) || [])
   const gender = String((recordist && recordist.gender) || '').toLowerCase()
@@ -123,10 +129,9 @@ function planSplitCuts({ podIds = [], sentences = [], clipById = new Map(), podC
     if (!pods.has(s.pod_id)) continue
     if (POD_ENGLISH_REPLACE_LEFT_TO[s.id]) { skipped.leftToOtherJob++; continue }
     if (!playsInSentences(s)) { skipped.notSplit++; continue }
-    const entry = castEntryFor(podCastByCourse[courseOfPod(s.pod_id)], s.speaker)
-    const g = entry && String(entry.gender || '').toLowerCase()
+    const g = genderOf(s)
     if (!g) { skipped.uncast++; continue }
-    if (!gender || g !== gender) { skipped.otherGender++; continue }
+    if (!gender || g !== gender || !genders.includes(g)) { skipped.otherGender++; continue }
     const take = clipById.get(s.known_audio_id)
     if (!take || !isHumanClip(take) || !mine.has(take.voice_id)) { skipped.noTake++; continue }
     const known = s.sentence_known_audio_ids
@@ -167,4 +172,4 @@ function planWrongWordRepairs({ podIds = [], sentences = [], clipById = new Map(
   return { repairs }
 }
 
-module.exports = { SPLIT_CUT_GATES, playsInSentences, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }
+module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }
