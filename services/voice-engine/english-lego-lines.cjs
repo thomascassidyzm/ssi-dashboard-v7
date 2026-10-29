@@ -22,6 +22,11 @@
  * English known take of this voice and fills no LEGO slot itself: the intro splice finds it by voice and words.
  *
  * Pure: no I/O. The reads are recordist-queue fetchEnglishLegoInputs.
+ *
+ * SPLICE-ONLY, SO OFF WITH THE SPLICE (Aran, 2026-10-29, job #587): these takes exist only to be spliced into an intro.
+ * He now reads each intro whole (intro-sentence-lines.cjs), so a course with `splice: false` lists no English LEGO lines.
+ * The take route still RESOLVES them (englishLegoCoursesFor with { listing: false }), so a take already on his phone's
+ * shelf for one of these lines files rather than being refused 404.
  */
 'use strict'
 
@@ -40,10 +45,14 @@ function parseEnglishLegoLineId(lineId) {
   return legoRowId && !legoRowId.includes(':') ? { legoRowId } : null
 }
 
-/** The intro courses this reader's English LEGOs are for, in config order (North first), cast-filtered. */
-function englishLegoCoursesFor(recordist, table) {
+/**
+ * The intro courses this reader's English LEGOs are for, in config order (North first), cast-filtered. Listing (the
+ * card) needs the splice on; resolving a take does not.
+ */
+function englishLegoCoursesFor(recordist, table, { listing = true } = {}) {
   const cast = Array.isArray(recordist.castCourses) ? new Set(recordist.castCourses) : null
   return humanIntro.humanIntroCoursesFor(recordist.spellings || [recordist.voiceId], table)
+    .filter((c) => !listing || c.splice)
     .map((c) => c.courseCode)
     .filter((c) => !cast || cast.has(c))
 }
@@ -112,7 +121,7 @@ function englishLegoLinesFor(recordist, { legos = [], otherKnownTexts = [], ownI
  */
 function resolveEnglishLego(lego, recordist, table) {
   if (!lego || !recordist) return null
-  if (!englishLegoCoursesFor(recordist, table).includes(lego.course_code)) return null
+  if (!englishLegoCoursesFor(recordist, table, { listing: false }).includes(lego.course_code)) return null
   const text = String(lego.known_text || '').trim()
   return text ? { courseCode: lego.course_code, legoId: lego.lego_id || null, text } : null
 }

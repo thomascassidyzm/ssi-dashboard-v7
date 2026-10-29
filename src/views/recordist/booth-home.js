@@ -19,13 +19,14 @@
 /** A batch's own id in the tick list. */
 export const batchTickId = (trackKey, n) => `${trackKey}#${n}`
 
+// The Introductions card (job #587) is new work too: every intro of the new Welsh courses.
 // Pod 1 English (job #537) is new reading too: its card sits with the new work, after the phrases.
 // Pod lines waiting on new words (job #551) are new reading too, and go first: the pod changes when they are read.
 export const isNewWork = (t) =>
-  t.kind === 'phrase' || t.kind === 'podknown' || t.kind === 'podswap' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
+  t.kind === 'phrase' || t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'introsentence' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
 
-/** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs). */
-export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego') && (t.batches || []).length > 1
+/** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs, introductions). */
+export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego' || t.kind === 'introsentence') && (t.batches || []).length > 1
 
 // A line read on this device and still uploading is NOT left to read (job #791): `uploading` is
 // set by withDeviceTakes below, and counts as done everywhere a batch is judged.

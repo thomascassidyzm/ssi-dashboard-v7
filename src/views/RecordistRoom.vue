@@ -1088,6 +1088,9 @@ const SECTION_ORDER = [
   // POD 1 NEW WORDS (job #551): pod lines whose words are changing; the pod takes the new words with this take.
   { key: 'podswap', heading: 'POD 1 · NEW WORDS', blurb: 'Pod 1 lines with new words. The pod keeps the old words and recording until you record these, then changes, North and South at once.' },
   { key: 'podknown', heading: 'POD 1 ENGLISH', blurb: 'The English of every Pod 1 line, read once each at your natural pace. One take serves both North and South.' },
+  // THE INTRODUCTIONS (Aran, 2026-10-29, job #587): each LEGO intro of the new North and South courses, read WHOLE —
+  // English and Welsh in one sentence. His take is that LEGO's intro. Replaces the intro pieces + splice below.
+  { key: 'introsentence', heading: 'Introductions', blurb: 'Every LEGO introduction in the new North and South courses, in course order, earliest first. Read each whole sentence — the English and the Welsh together — the way you would say it to a learner. Your take is that LEGO\'s introduction.' },
   { key: 'intro', heading: 'Intro pieces', blurb: 'Two short pieces, read once each: every LEGO intro in the new North and South courses is put together from them — "The Welsh for" + your English LEGO + "is" + the Welsh. Read them the way you would say them in an intro.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
@@ -1322,6 +1325,12 @@ function kindWordsFor(l) {
   }
   if (l.kind === 'podknown') return `Pod 1 English${l.speaker ? ` · ${l.speaker}` : ''} - North and South`
   if (l.kind === 'podswap') return `Pod 1 new words${l.speaker ? ` · ${l.speaker}` : ''}${l.replacesText ? ` - replaces "${l.replacesText}"` : ''}`
+  if (l.kind === 'introsentence') {
+    const course = l.courseCode === 'cym_sv2_for_eng' ? 'South' : (l.courseCode === 'cym_nv2_for_eng' ? 'North' : null)
+    const n = Number(l.alsoFills) || 0
+    const also = course ? ` (${course}${n ? `, and ${n} more LEGO${n > 1 ? 's' : ''} with the same words` : ''})` : ''
+    return `Introduction${l.legoId ? ` ${l.legoId}` : ''}${also} - the whole sentence, English and Welsh together`
+  }
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
     return `LEGO${which ? ` ${which}` : ''}${l.role === 'target2' ? ' - second voice' : (l.role === 'known' ? ' - English side' : '')}`
@@ -3037,6 +3046,14 @@ function describeTrack(t) {
       short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
       title: `${courseWordsFor(t.courseCode)}: whole sentences`,
       what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  // THE INTRODUCTIONS (job #587): one card for North and South, the whole intro sentence read in one take.
+  if (t.kind === 'introsentence') {
+    return {
+      short: 'Introductions', cls: 'k-lego',
+      title: 'Introductions: New Welsh — North and South',
+      what: 'Each LEGO introduction, in course order: "The Welsh for … is …", the English and the Welsh read together in one sentence. Your take becomes that LEGO\'s introduction.',
     }
   }
   // THE ENGLISH OF THE NEW LEGOs (job #255): read once each; his LEGO intros are spliced from these takes.

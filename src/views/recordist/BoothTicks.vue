@@ -22,7 +22,7 @@
         <div v-for="b in openBatches(t)" :key="b.n" class="bt-row bt-sub-row">
           <label class="bt-chk">
             <input type="checkbox" :checked="ticked(batchTickId(t.key, b.n))" @change="$emit('tick', batchTickId(t.key, b.n), $event.target.checked)" />
-            <span class="bt-grow">{{ batchName(t, b) }}<small>{{ t.kind === 'lego' ? 'LEGOs' : 'Sentences' }} {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
+            <span class="bt-grow">{{ batchName(t, b) }}<small>{{ t.kind === 'lego' ? 'LEGOs' : t.kind === 'introsentence' ? 'Introductions' : 'Sentences' }} {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
           </label>
           <!-- Outside the label: a tap opens the batch (job #697), it never ticks it. -->
           <button type="button" class="bt-fold" :data-test="`open-${t.key}-${b.n}`" @click="$emit('open', t.key, b.n)">Open ›</button>

@@ -10,6 +10,9 @@
  * English words, and the splice finds it by voice and words in any course, so North and South share one recording.
  * A take files as role 'known' (English, his language) through the ordinary booth upload; it fills no LEGO slot itself.
  * Recorded = this voice has any English take of these words (knownByText), the same test every known line uses.
+ *
+ * OFF WITH THE SPLICE (job #587): fixedPiecesFor lists no pieces for a `splice: false` course, so the card is empty; a
+ * piece take already on a phone still resolves and files (resolveIntroPiece does not ask about the splice).
  */
 'use strict'
 

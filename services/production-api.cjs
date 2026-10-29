@@ -5829,7 +5829,9 @@ async function handleRecordingUpload(req, res) {
     // original, so nothing said into the microphone is lost to this branch.
     // An UNCHECKED result (no script text, no decoder) is logged and let
     // through: an infrastructure absence must never cost a recordist a read.
-    const gateText = metadata.text || (podContext && podContext.text) || null
+    // metadata.spokenText: the words as SAID, when the filed text carries display markup (a whole-sentence
+    // LEGO intro, "The Welsh for <src>X</src> is <tgt>Y</tgt>.", job #587) — the gates listen for words, not tags.
+    const gateText = metadata.spokenText || metadata.text || (podContext && podContext.text) || null
     const speech = await speechGate.checkTakeHasSpeech({
       buffer: processedBuffer,
       expectedText: gateText,
@@ -5928,7 +5930,7 @@ async function handleRecordingUpload(req, res) {
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
     // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
     // only short identifiers on the object.
-    const { text: _metaText, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
+    const { text: _metaText, spokenText: _metaSpoken, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...s3SafeMetadata,
       recordedBy: 'human',

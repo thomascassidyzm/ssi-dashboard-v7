@@ -69,6 +69,8 @@ const {
   sameWordsGaps,
   warmLanguageQueues,
   voiceTakes,
+  fetchIntroSentenceInputs,
+  invalidateIntroSentenceInputs,
 } = require('./recordist-queue.cjs')
 const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
 const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
@@ -78,6 +80,8 @@ const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
+const introSentences = require('./intro-sentence-lines.cjs')
+const { linkClips } = require('../shared/link-clip.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1692,8 +1696,88 @@ module.exports = function createRecordistRouter({
     return englishLegos.resolveEnglishLego(data && data[0], recordist)
   }
 
-  /** One English known-side take of fixed words (an intro piece, an English LEGO), through the seed upload seam. */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known' }) {
+  /**
+   * AN INTRODUCTION, READ WHOLE (job #587, intro-sentence-lines.cjs): "The Welsh for X is Y." in one take by the voice
+   * whose voice a course's LEGO intros are in. Filed as that LEGO's intro clip — role 'presentation', the course's known
+   * language, his voice, under exactly the intro text (so it swaps a spliced intro of the same words in place, versioned)
+   * — then linked into the presentation slot of every LEGO the line stands for (fill, or replace a clip of HIS voice;
+   * another voice's intro is never displaced). Nothing is rendered and nothing is deleted.
+   */
+  async function recordIntroSentenceTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const lego = await readIntroSentenceLego(parsed.legoRowId)
+    const resolved = introSentences.resolveIntroSentence(lego, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: introSentences.INTRO_SENTENCE_KIND, metaKind: 'intro-sentence', text, audioBase64, mimeType, device,
+      role: 'presentation', spokenText: plainIntroWords(resolved.text), ownVoice: true,
+      afterFiled: (audioId) => linkIntroSentenceTake({ recordist, raw: parsed.raw, lego, audioId }) })
+  }
+
+  async function readIntroSentenceLego(legoRowId) {
+    const { data, error } = await db().from('course_legos').select('id, course_code, lego_id, known_text, target_text, presentation_audio_id').eq('id', legoRowId).limit(1)
+    if (error) throw new Error(`intro LEGO lookup failed: ${error.message}`)
+    return (data && data[0]) || null
+  }
+
+  /** The words he says, without the <src>/<tgt> display markup — what the speech and script checks listen for. */
+  const plainIntroWords = (t) => String(t || '').replace(/<\/?(?:src|tgt)>/g, '').replace(/\s+/g, ' ').trim()
+
+  /**
+   * After the intro take is filed: it is a whole-sentence take, not a splice (a spliced row of the same words that it
+   * swapped in place loses its spliced_from), and it goes into every copy's presentation slot. Never throws: the take
+   * is stored either way, and a slot it missed is still on the card as unrecorded.
+   */
+  async function linkIntroSentenceTake({ recordist, raw, lego, audioId }) {
+    const out = { linked: 0, leftAlone: 0, errors: [] }
+    try {
+      const { error: spErr } = await db().from('course_audio').update({ spliced_from: null }).eq('id', audioId).not('spliced_from', 'is', null)
+      if (spErr) out.errors.push(`spliced_from: ${spErr.message}`)
+      const inputs = await fetchIntroSentenceInputs(db(), recordist)
+      const line = introSentences.introSentenceLinesFor(recordist, inputs).find((l) => l.id === raw)
+      const rowIds = [lego.id, ...((line && line.duplicateOf) || []).map((d) => d.legoRowId)]
+      // The slots as they are NOW, not as the five-minute card read saw them.
+      const { data: rows, error: rowErr } = await db().from('course_legos').select('id, course_code, lego_id, presentation_audio_id').in('id', rowIds)
+      if (rowErr) throw new Error(`intro slot read failed: ${rowErr.message}`)
+      const heldIds = [...new Set((rows || []).map((r) => r.presentation_audio_id).filter(Boolean).map(String))]
+      const heldVoice = new Map()
+      if (heldIds.length) {
+        const { data: clips, error: clipErr } = await db().from('course_audio').select('id, voice_id').in('id', heldIds)
+        if (clipErr) throw new Error(`intro slot clip read failed: ${clipErr.message}`)
+        for (const c of clips || []) heldVoice.set(String(c.id), c.voice_id)
+      }
+      const copies = (rows || []).map((r) => ({ courseCode: r.course_code, legoId: r.lego_id, presentationAudioId: r.presentation_audio_id }))
+      const plan = introSentences.planIntroSentenceLinks(copies, audioId, heldVoice, recordist.spellings || [recordist.voiceId])
+      out.leftAlone = plan.leftAlone.length
+      for (const [courseCode, links] of plan.links) {
+        const r = await linkClips({ db: db(), courseCode, links })
+        out.linked += r.linked || 0
+        for (const x of r.results || []) if (!x.ok) out.errors.push(`${courseCode} ${x.slot}: ${x.code}`)
+      }
+      if (plan.leftAlone.length) logger.warn(`[Recordist] intro take ${raw}: ${plan.leftAlone.length} slot(s) hold another voice's intro and were left alone`)
+    } catch (err) {
+      out.errors.push(err.message)
+    }
+    invalidateIntroSentenceInputs()
+    if (out.errors.length) logger.error(`[Recordist] intro take ${raw} (clip ${audioId}) filed, but linking was incomplete: ${out.errors.join('; ')}`)
+    else logger.log(`[Recordist] intro take ${raw} → clip ${audioId}, ${out.linked} presentation slot(s) linked`)
+    return out
+  }
+
+  /** Play back an introduction: this voice's newest clip of the intro words (his take, or a splice of his until he reads it). */
+  async function introSentenceClipResponse(req, res, recordist, parsed) {
+    const lego = await readIntroSentenceLego(parsed.legoRowId)
+    const resolved = introSentences.resolveIntroSentence(lego, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return knownWordsClipResponse(req, res, recordist, resolved.text)
+  }
+
+  /**
+   * One take of fixed words (an intro piece, an English LEGO: English known-side; an introduction: the presentation
+   * role), through the seed upload seam.
+   *   spokenText  what the speech/script checks listen for, when the filed text carries display markup
+   *   ownVoice    file under THIS recordist's voice whatever the course's slot casts (the presentation slot of the v2
+   *               Welsh courses is a TTS slot: resolveTakeVoiceId would otherwise leave the take unstamped)
+   */
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known', spokenText = null, ownVoice = false }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1704,10 +1788,11 @@ module.exports = function createRecordistRouter({
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
       recordistLineId: raw,
+      ...(ownVoice ? { libraryArtistVoiceId: recordist.voiceId } : {}),
       body: {
         audioData: audioBase64,
         mimeType,
-        metadata: { mode: 'script', cadence: 'natural', role, kind: metaKind, text: resolved.text, voiceId: recordist.voiceId, ...(resolved.legoId ? { legoId: resolved.legoId } : {}) },
+        metadata: { mode: 'script', cadence: 'natural', role, kind: metaKind, text: resolved.text, voiceId: recordist.voiceId, ...(spokenText ? { spokenText } : {}), ...(resolved.legoId ? { legoId: resolved.legoId } : {}) },
         provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist', recording_device: device || null },
       },
     }, innerRes)
@@ -1722,6 +1807,7 @@ module.exports = function createRecordistRouter({
     return res.json({
       ok: true, audioId, kind, role,
       ...(after && after.swaps ? { podSwaps: after.swaps } : {}),
+      ...(after && kind === introSentences.INTRO_SENTENCE_KIND ? { introLinked: after.linked, introLeftAlone: after.leftAlone } : {}),
       clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(raw)}/clip`,
       rawKey: captured.body.rawKey || null,
       filing,
@@ -2270,6 +2356,11 @@ module.exports = function createRecordistRouter({
       if (introPieceLine) {
         return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // An INTRODUCTION read whole (job #587). `introsentence:...` is not a uuid either.
+      const introSentenceLine = introSentences.parseIntroSentenceLineId(lineId)
+      if (introSentenceLine) {
+        return await recordIntroSentenceTake({ req, res, recordist, parsed: { ...introSentenceLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
       // An ENGLISH LEGO (job #255). `englego:...` is not a uuid either.
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(lineId)
       if (englishLegoLine) {
@@ -2540,6 +2631,8 @@ module.exports = function createRecordistRouter({
       if (podEnglishLine) return await podEnglishClipResponse(req, res, recordist, { ...podEnglishLine, raw: req.params.lineId })
       const podSwapLine = podTextSwaps.parsePodSwapLineId(req.params.lineId)
       if (podSwapLine) return await podSwapClipResponse(req, res, recordist, { ...podSwapLine, raw: req.params.lineId })
+      const introSentenceLine = introSentences.parseIntroSentenceLineId(req.params.lineId)
+      if (introSentenceLine) return await introSentenceClipResponse(req, res, recordist, { ...introSentenceLine, raw: req.params.lineId })
 
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)

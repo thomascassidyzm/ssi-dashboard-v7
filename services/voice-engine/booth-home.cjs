@@ -72,6 +72,8 @@ const LEGO_BATCH_LINES = 100
 function batchSizeOf(key) {
   if (key.startsWith('seed.')) return SEED_BATCH_LINES
   if (key.startsWith('lego.')) return LEGO_BATCH_LINES
+  // The Introductions card (job #587): ~2,000 whole-sentence intros, cut like LEGOs.
+  if (key.startsWith('introsentence.')) return LEGO_BATCH_LINES
   return 0
 }
 
@@ -87,6 +89,8 @@ function trackKeyOf(line) {
   if (kind === 'podknown' && line.podSlug) return `podknown.${line.podSlug}`
   // Pod lines waiting on new words (job #551): one card, North and South, ahead of the pod change.
   if (kind === 'podswap' && line.podSlug) return `podswap.${line.podSlug}`
+  // ONE Introductions card for North and South together, in running order (Aran, job #587).
+  if (kind === 'introsentence') return 'introsentence.all'
   return `${kind}.${line.courseCode || 'all'}`
 }
 

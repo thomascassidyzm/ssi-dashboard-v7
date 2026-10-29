@@ -18,6 +18,14 @@
  *
  * Reached through the ONE audio route: POST /api/audio/render, role 'presentation', with legoId (audio-render-entry.cjs
  * asks deps.humanIntro before anything else). The batch command is tools/audio/human-intros.cjs.
+ *
+ * THE SPLICE IS OFF (Aran, 2026-10-29, job #587): "I would like to record the full sentence for each introduction … we
+ * don't need to break up into English bits and Welsh bits, because I can do both in one sentence." He reads each intro
+ * WHOLE on the Introductions card of his English booth (services/voice-engine/intro-sentence-lines.cjs); that take is
+ * filed as the intro clip under exactly the text humanIntroText gives and linked into the LEGO's presentation slot, and
+ * it replaces a spliced intro of his voice wherever one is linked. With `splice: false` (the config as it stands) this
+ * module still answers already-linked / library, and otherwise WAITS on the whole-sentence take (kind 'sentence'); the
+ * four-piece splice below stays as a fallback a course switches back on with `splice: true`.
  */
 const config = require('./voicing-policy.config.json')
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
@@ -34,7 +42,7 @@ function humanIntroConfig(courseCode, table = config.humanSplicedIntros) {
   if (!table || !Object.hasOwn(table, String(courseCode || ''))) return null
   const c = table[courseCode]
   if (!c || !c.voiceId || !c.fragment) return null
-  return { courseCode, voiceId: c.voiceId, fragment: c.fragment, joiner: c.joiner || null, withTarget: c.withTarget !== false }
+  return { courseCode, voiceId: c.voiceId, fragment: c.fragment, joiner: c.joiner || null, withTarget: c.withTarget !== false, splice: c.splice === true }
 }
 
 /** Every configured course read by this voice (any spelling), in config order. */
@@ -49,7 +57,8 @@ function humanIntroCoursesFor(spellings, table = config.humanSplicedIntros) {
  */
 function fixedPiecesFor(spellings, table = config.humanSplicedIntros) {
   const out = []
-  for (const c of humanIntroCoursesFor(spellings, table)) {
+  // No splice, no pieces to read: the whole sentence is the take (job #587).
+  for (const c of humanIntroCoursesFor(spellings, table).filter((x) => x.splice)) {
     for (const key of ['fragment', 'joiner']) {
       const text = c[key]
       if (!text) continue
@@ -132,7 +141,7 @@ function resolvePieces(cfg, lego, { takes, targetClip }) {
  *   HumanIntroError INTRO_WAITING (409) when a piece is missing, NO_LEGO (404), INTRO_TEXT_MISMATCH (409), NEEDS_LEGO (400).
  */
 async function buildHumanIntro(req, deps) {
-  const cfg = humanIntroConfig(req.courseCode)
+  const cfg = humanIntroConfig(req.courseCode, deps.table || undefined)
   if (!cfg) return null
   if (!req.legoId) throw new HumanIntroError(`${req.courseCode} intros are spliced from ${cfg.voiceId}'s takes per LEGO — name legoId`, 400, 'NEEDS_LEGO')
   const lego = await deps.loadLego(req.courseCode, req.legoId)
@@ -151,6 +160,11 @@ async function buildHumanIntro(req, deps) {
     return { ok: true, source: 'library', ...base, audioId: existing.id, s3Key: existing.s3_key, legoLinked: !!linked }
   }
 
+  // SPLICE OFF (job #587): the intro is his whole-sentence take or nothing — it waits on the Introductions card.
+  if (!cfg.splice) {
+    const waitingOn = [{ kind: 'sentence', text, why: `no whole-sentence take yet (the Introductions card on ${cfg.voiceId}'s booth)` }]
+    throw new HumanIntroError(`${req.legoId} waits on its whole-sentence intro take "${text}"`, 409, 'INTRO_WAITING', { waitingOn })
+  }
   const planned = planHumanIntro(cfg, lego)
   const takes = await deps.findTakes(cfg.voiceId, planned.filter((p) => p.kind !== 'target').map((p) => p.text).filter(Boolean))
   const targetClip = cfg.withTarget && lego.target1_audio_id ? await deps.loadClip(lego.target1_audio_id) : null

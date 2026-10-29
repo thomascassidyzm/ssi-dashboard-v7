@@ -13,11 +13,12 @@ export function trackKeyOf(line) {
   if (kind === 'phrase') return line.phraseTrack || `phrase.${line.phrasePass || 1}`
   if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
+  if (kind === 'introsentence') return 'introsentence.all'
   return `${kind}.${line.courseCode || 'all'}`
 }
 
 function batchSizeOf(key) {
-  return key.startsWith('seed.') || key.startsWith('lego.') ? BATCH_LINES : 0
+  return key.startsWith('seed.') || key.startsWith('lego.') || key.startsWith('introsentence.') ? BATCH_LINES : 0
 }
 
 /** lineId → { track, batch } over the whole queue (recorded lines included). */

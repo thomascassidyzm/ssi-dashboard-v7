@@ -124,6 +124,7 @@ const { isHumanClip } = require('../shared/human-take-guard.cjs')
 const { recordContentEdit } = require('../shared/content-edit-log.cjs')
 const { serviceIdentity } = require('../shared/editor-identity.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
+const introSentences = require('./intro-sentence-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -3073,6 +3074,45 @@ async function fetchPodEnglishInputs(db, recordist) {
 }
 
 /**
+ * THE READS BEHIND THE INTRODUCTIONS CARD (job #587; the rule is intro-sentence-lines.cjs): the LEGOs of this reader's
+ * intro courses (with their Welsh, which the intro says) and, for every filled presentation slot, whose clip it is and
+ * whether it is a splice. Index-shaped like fetchEnglishLegoInputs, held five minutes per course set — and dropped the
+ * moment one of his intro takes links (invalidateIntroSentenceInputs), because RECORDED here is scored from the slot,
+ * which this read carries. Empty, without a read, for every reader who is no course's intro voice.
+ */
+const INTRO_SENTENCE_TTL_MS = 5 * 60 * 1000
+const introSentenceInputCache = new Map()
+function invalidateIntroSentenceInputs() { introSentenceInputCache.clear() }
+async function fetchIntroSentenceInputs(db, recordist, { fresh = false } = {}) {
+  const courses = introSentences.introSentenceCoursesFor(recordist).map((c) => c.courseCode)
+  if (!courses.length) return {}
+  const spellings = recordist.spellings || [recordist.voiceId]
+  const key = `${courses.join(',')}|${spellings.join(',')}`
+  const hit = introSentenceInputCache.get(key)
+  if (!fresh && hit && Date.now() - hit.at < INTRO_SENTENCE_TTL_MS) return hit.value
+  try {
+    const legos = await pagedRead((from, to) => db.from('course_legos')
+      .select('id, course_code, seed_number, lego_index, lego_id, known_text, target_text, is_new, presentation_audio_id')
+      .in('course_code', courses).order('course_code').order('seed_number').order('lego_index').range(from, to))
+    const ids = [...new Set(legos.map((l) => l.presentation_audio_id).filter(Boolean))]
+    const chunks = []
+    for (let i = 0; i < ids.length; i += 100) chunks.push(ids.slice(i, i + 100))
+    const introClips = new Map()
+    for (const { data, error } of await Promise.all(chunks.map((c) => db.from('course_audio').select('id, voice_id, spliced_from').in('id', c)))) {
+      if (error) throw new Error(`intro clip read failed: ${error.message}`)
+      for (const r of data || []) introClips.set(String(r.id), { voice: r.voice_id, spliced: Array.isArray(r.spliced_from) ? r.spliced_from.length > 0 : !!r.spliced_from })
+    }
+    const value = { legos, introClips }
+    introSentenceInputCache.set(key, { at: Date.now(), value })
+    return value
+  } catch (err) {
+    // An extra card that cannot be read is an absence, never a booth that will not open.
+    console.warn(`[Recordist] Introductions card unavailable for ${recordist.voiceId}: ${err.message}`)
+    return hit ? hit.value : {}
+  }
+}
+
+/**
  * ONE ENGLISH TAKE, EVERY POD 1 ENGLISH SLOT OF THE SAME WORDS (job #537). Every EMPTY known slot of the card's pods
  * this voice is cast on whose words are the take's spoken words is pointed at the take — North and South alike, whichever
  * card the take came from (a seed sentence of exactly those words fills the pod too). FILL-ONLY by a conditional write
@@ -3420,7 +3460,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   const podEnglishLines = podEnglish.podEnglishLinesFor(recordist, await fetchPodEnglishInputs(db, recordist))
   // Pod lines waiting on new words (job #551, pod-text-swaps.cjs): the new Welsh, read before the pod is changed.
   const podSwapLines = await podSwapLinesFor(db, recordist)
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines]
+  // The Introductions card (job #587, intro-sentence-lines.cjs): every LEGO intro read whole, in course running order.
+  const introSentenceLines = introSentences.introSentenceLinesFor(recordist, await fetchIntroSentenceInputs(db, recordist))
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -3544,7 +3586,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         speakerGender: line.kind === 'podknown' ? (line.speakerGender || null) : null,
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
-        legoId: line.kind === 'lego' ? (line.legoId || null) : null,
+        legoId: (line.kind === 'lego' || line.kind === introSentences.INTRO_SENTENCE_KIND) ? (line.legoId || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
         // straight off the sentence's own atom_map_fine. On the wire because the
         // booth draws them as the pause marks, and because the aligner gates on
@@ -4386,6 +4428,9 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 }
 
 module.exports = {
+  // The Introductions card's reads (job #587).
+  fetchIntroSentenceInputs,
+  invalidateIntroSentenceInputs,
   assignedLanguages,
   voiceTakes,
   clearRerecordWants,
