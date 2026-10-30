@@ -176,3 +176,21 @@ describe('runPool hard cap', () => {
     const r = await run((a) => ({ paid: a.i === 0 ? 0 : 20 })); expect(r.charged).toBe(100); expect(r.next).toBe(6)
   })
 })
+
+// job #140 (fin_for_eng go-live): the known side re-voices by its own words (known_text), not the target text
+describe('revoice-seeds-to-cast --roles known', () => {
+  it('asks for the known prompt, off-cast TTS only', () => {
+    const clips = new Map([['k1', { id: 'k1', voice_id: 'azure_en-GB-SoniaNeural', origin: 'tts' }], ['k2', { id: 'k2', voice_id: 'd293', origin: 'tts' }]])
+    const rows = [
+      { seed_number: 4, known_text: 'you speak', target_text: 'te puhutte', known_audio_id: 'k1', slot: { legoId: 'S0004L01' } },
+      { seed_number: 5, known_text: 'you need', target_text: 'te tarvitsette', known_audio_id: 'k2', slot: { legoId: 'S0005L01' } },
+    ]
+    expect(staleAsks(rows, clips, { known: 'cartesia_d293' })).toHaveLength(0) // the default roles are the two target roles: known is opt-in
+    const asks = staleAsks(rows, clips, { known: 'cartesia_d293' }, ['known'])
+    expect(asks.map((a) => [a.role, a.text, a.slots.length])).toEqual([['known', 'you speak', 1]])
+  })
+  it('textOf picks the side the role speaks', () => {
+    const { textOf } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+    expect([textOf({ known_text: 'a', target_text: 'b' }, 'known'), textOf({ known_text: 'a', target_text: 'b' }, 'target2')]).toEqual(['a', 'b'])
+  })
+})

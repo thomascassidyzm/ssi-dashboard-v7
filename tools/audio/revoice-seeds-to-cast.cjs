@@ -20,6 +20,10 @@ const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio';
 const AGENT = 'revoice-seeds-to-cast (job #863)';
 const ALL_ROLES = ['target1', 'target2'];
+// --roles known (job #140, fin_for_eng go-live): the English known side onto the cast known voice (Tom-006). Opt-in only: the default stays the two target roles.
+const OPT_IN_ROLES = ['known'];
+/** The words a role's slot says: the known prompt for known, the target text for target1/target2. */
+const textOf = (r, role) => (role === 'known' ? r.known_text : r.target_text);
 // --roles target1 (job #76·AA): re-voice one target slot and leave the other alone (deu_at: Tamara on target1, target2 unchanged).
 let ROLES = ALL_ROLES;
 const LINK_EVERY = 25; // asks per link-clip request: new clips go live within a minute, without a content_version bump per clip
@@ -48,15 +52,17 @@ function rollbackLines(course, links, at) {
 }
 
 /** Slots whose clip is TTS on a voice other than the cast voice for the role, grouped into one ask per (role, words), course order. */
-function staleAsks(rows, clips, castByRole) {
+function staleAsks(rows, clips, castByRole, roles = ROLES) {
   const asks = new Map();
   for (const r of rows) {
-    for (const role of ROLES) {
+    for (const role of roles) {
       const cur = r[`${role}_audio_id`] ? String(r[`${role}_audio_id`]) : null;
       const c = cur && clips.get(cur);
       if (!c || c.origin !== 'tts' || bare(c.voice_id) === bare(castByRole[role])) continue;
-      const k = `${role}\u0000${r.target_text}`;
-      if (!asks.has(k)) asks.set(k, { role, text: r.target_text, firstSeed: r.seed_number, chars: r.target_text.length, slots: [] });
+      const text = textOf(r, role);
+      if (!text) continue;
+      const k = `${role}\u0000${text}`;
+      if (!asks.has(k)) asks.set(k, { role, text, firstSeed: r.seed_number, chars: text.length, slots: [] });
       const a = asks.get(k);
       a.firstSeed = Math.min(a.firstSeed, r.seed_number);
       a.slots.push({ ...r.slot, role, current: cur, oldVoice: c.voice_id });
@@ -184,7 +190,7 @@ async function main() {
   const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
   if (!COURSE) throw new Error('--course required');
   const RENDER = process.env.RENDER === '1', MAX = +(process.env.MAX_CHARS || 0);
-  if (arg('roles')) ROLES = arg('roles').split(',').map((r) => { if (!ALL_ROLES.includes(r)) throw new Error(`--roles: ${r} is not ${ALL_ROLES.join(' or ')}`); return r; });
+  if (arg('roles')) ROLES = arg('roles').split(',').map((r) => { if (![...ALL_ROLES, ...OPT_IN_ROLES].includes(r)) throw new Error(`--roles: ${r} is not ${[...ALL_ROLES, ...OPT_IN_ROLES].join(' or ')}`); return r; });
   const JOB = arg('job', null); // "#NNN": named on every render so a Tom-signed grant / raise for that job applies
   const PURPOSE = arg('purpose', `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`);
   const db = require('../../services/shared/agent-db.cjs');
@@ -197,12 +203,12 @@ async function main() {
   console.log(`${COURSE} cast: ${ROLES.map((r) => `${r} ${castByRole[r]}`).join(', ')}`);
 
   const pg = await db.connect();
-  const sel = 'seed_number, target_text, target1_audio_id, target2_audio_id';
+  const sel = 'seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id';
   const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
   const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
   const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3 AND phrase_role <> 'component'`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
   const rows = [...S, ...L, ...P];
-  const clips = await db.clipMap(pg, rows.flatMap((r) => [r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
+  const clips = await db.clipMap(pg, rows.flatMap((r) => [r.known_audio_id, r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
   await pg.end();
 
   const asks = staleAsks(rows, clips, castByRole);
@@ -267,5 +273,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { makeBudget, runPool, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
+module.exports = { textOf, makeBudget, runPool, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
