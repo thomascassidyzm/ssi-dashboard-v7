@@ -1527,6 +1527,30 @@ async function loadEstateMapBase() {
     })
   return { courses, podsByLanguage }
 }
+// The audio totals estate_map() reads are precomputed per course (database/changes/20261030_estate_map_*),
+// refreshed here one course per rpc so no statement can reach the 8 s DB limit. 30 min: a cycle
+// re-reads every course's index once, so shorter costs more DB than the freshness is worth;
+// estate_audio_refresh_log records when totals really moved so the interval can be tuned.
+const ESTATE_AUDIO_REFRESH_MS = 30 * 60 * 1000
+function refreshEstateAudioSummaryNow() {
+  const supabase = supabaseClient.getClient()
+  return require('./shared/estate-audio-summary.cjs').refreshEstateAudioSummary({
+    rpc: (fn, args) => supabase.rpc(fn, args),
+    listCourses: async () => {
+      const { data, error } = await supabase.from('courses').select('course_code').order('course_code')
+      if (error) throw new Error(`list courses: ${error.message}`)
+      return data.map(r => r.course_code)
+    },
+    log: m => logger.info(m),
+  })
+}
+if (!process.env.VITEST) {
+  require('./shared/estate-audio-summary.cjs').scheduleEstateAudioSummary({
+    run: () => supabaseClient.isInitialized() ? refreshEstateAudioSummaryNow() : Promise.resolve(),
+    intervalMs: ESTATE_AUDIO_REFRESH_MS,
+    onError: err => logger.error('estate audio summary refresh failed:', err.message),
+  })
+}
 const estateMapCache = require('./shared/swr-cache.cjs').createSwrCache({
   load: loadEstateMapBase,
   ttlMs: ESTATE_MAP_TTL_MS,
