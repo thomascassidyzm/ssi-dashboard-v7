@@ -111,12 +111,25 @@ function makeTaught(after, tw) {
     const snap = new Set(keys); cache.set(legoId, snap); return snap;
   };
 }
+// A pronoun counts as taught AS AN ENCLITIC only when the learner has met it attached to an infinitive or gerund
+// (arreglarlo S0146, despertarme S0055) — never because the bare word was taught in another job: the "lo" of
+// "todo lo que" (S0007) is not the object clitic, and counting it let #425 put "intentarlo" into seeds 7-141 (Kai, 30 Oct).
+const fold = (w) => w.normalize('NFD').replace(/\p{M}/gu, '');
+const encliticCache = new WeakMap();
+function taughtEnclitics(keys) {
+  if (encliticCache.has(keys)) return encliticCache.get(keys);
+  const out = new Set();
+  for (const k of keys) for (const p of D.ENCLITICS) if (k.length > p.length + 2 && k.endsWith(p) && /(ar|er|ir|ndo)$/.test(fold(k.slice(0, -p.length)))) out.add(p);
+  encliticCache.set(keys, out);
+  return out;
+}
 function untaughtNew(tw, keys, before, after) {
   const was = new Set(tw.untaughtWords(before, keys, COURSE).map((w) => w.toLowerCase()));
+  const enclitics = taughtEnclitics(keys);
   return tw.untaughtWords(after, keys, COURSE).filter((w) => {
     const lw = w.toLowerCase(); if (was.has(lw)) return false;
     const pr = D.ENCLITICS.find((p) => lw.endsWith(p) && /(ar|er|ir)$/.test(lw.slice(0, -p.length)));
-    return !(pr && keys.has(lw.slice(0, -pr.length)) && keys.has(pr));
+    return !(pr && keys.has(lw.slice(0, -pr.length)) && enclitics.has(pr));
   });
 }
 

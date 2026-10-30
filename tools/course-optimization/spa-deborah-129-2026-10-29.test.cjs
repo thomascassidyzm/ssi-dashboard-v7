@@ -31,9 +31,18 @@ test('item 69: comparisons take "de lo que"; "lo que" after a plain "que" is lef
 });
 
 test('an infinitive with an attached pronoun counts as its two taught parts; a new subjunctive does not', () => {
-  const keys = tw.taughtWordKeys(['quiero intentar', 'lo', 'pero'], 'spa_for_eng');
+  const keys = tw.taughtWordKeys(['quiero intentar', 'arreglarlo', 'lo', 'pero'], 'spa_for_eng');
   assert.deepStrictEqual(untaughtNew(tw, keys, 'pero quiero intentar', 'pero quiero intentarlo'), []);
   assert.deepStrictEqual(untaughtNew(tw, keys, 'pero quiero intentar', 'pero quiero que lo intentes'), ['que', 'intentes']);
+});
+
+test('the "lo" of "todo lo que" is not the object clitic: -lo on an infinitive is untaught until an enclitic -lo is (Kai 30 Oct)', () => {
+  const early = tw.taughtWordKeys(['quiero intentar todo lo que pueda hoy', 'lo estás haciendo'], 'spa_for_eng');
+  assert.deepStrictEqual(untaughtNew(tw, early, 'quiero intentar', 'quiero intentarlo'), ['intentarlo']);
+  const late = tw.taughtWordKeys(['quiero intentar todo lo que pueda hoy', 'no es fácil arreglarlo'], 'spa_for_eng');
+  assert.deepStrictEqual(untaughtNew(tw, late, 'quiero intentar', 'quiero intentarlo'), []);
+  const me = tw.taughtWordKeys(['quiero intentar', 'despertarme'], 'spa_for_eng');
+  assert.deepStrictEqual(untaughtNew(tw, me, 'quiero intentar', 'quiero intentarme'), []);
 });
 
 test('gates: one English over two Spanish is refused; two Englishes over one Spanish is only noted', () => {
