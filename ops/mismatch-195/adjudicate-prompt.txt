@@ -6,6 +6,8 @@ KAI'S FRAME (the rule you apply): a phrase is a DEFECT only if a chunk of meanin
 KAI'S RULING 30 Oct 2026: a dropped OBJECT pronoun / clitic / demonstrative IS a defect (e.g. "change it | cambiare", missing "lo"), unless a taught LEGO itself pairs the known chunk with the object to a target without it. An object present in another form (attached clitic, "ne", the course's demonstrative for "it") is present, not missing.
 REJECT also: flags where the first reader misread the text (the chunk it names is actually present), flags whose own reasoning says it is fine, and BUILD-role fragments that drop something by design because the LEGO itself does.
 
+THE SWEEP'S TARGET (Kai, 30 Oct 18:49Z): PRACTICE PHRASES whose two sides don't match even though the LEGOs are right. Assume the taught LEGO pairs are correct and judge the phrase against them. If the mismatch is actually caused by a LEGO that is itself mismatched (this basket's LEGO or a taught LEGO the phrase is built from pairs two different meanings, so the phrase merely repeats the LEGO's own mismatch), answer decision "LEGO_LEVEL", put that LEGO's id in "lego", and give no fix: it is listed separately for information, not as a phrase defect.
+
 FOR EACH CONFIRMED DEFECT, propose ONE fix, under Kai's rule "reword if valid for the LEGO, else delete":
 - "reword": give the corrected pair (known | target). Change the side that is wrong as little as possible, using ONLY material the taught pairs below provide, and keep this basket's LEGO in the phrase. Usually fix the target to match the known; fix the known instead when the target is the better sentence and the known side is the one that drifted. You must be confident the corrected target is grammatical in the target language.
 - "delete": only when no valid reword using taught material keeps this basket's LEGO.
@@ -14,4 +16,4 @@ CAUSE (one label per confirmed defect): dropped-object (object pronoun/clitic/de
 SEVERITY: "clear" = a whole chunk of meaning missing/wrong; "mild" = a small chunk (object pronoun, demonstrative, intensifier).
 
 Answer with ONLY a JSON array, one object per flagged phrase, in order:
-[{"id":"...","decision":"CONFIRM|REJECT","severity":"clear|mild|null","cause":"<label or null>","what":"<the missing/wrong chunk, short>","fix":"reword|delete|null","fixed_known":"<known text or null>","fixed_target":"<target text or null>","why":"<one short sentence; for REJECT say which rule excuses it>"}]
+[{"id":"...","decision":"CONFIRM|REJECT|LEGO_LEVEL","lego":"<LEGO id for LEGO_LEVEL, else null>","severity":"clear|mild|null","cause":"<label or null>","what":"<the missing/wrong chunk, short>","fix":"reword|delete|null","fixed_known":"<known text or null>","fixed_target":"<target text or null>","why":"<one short sentence; for REJECT say which rule excuses it>"}]
