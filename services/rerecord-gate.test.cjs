@@ -208,3 +208,30 @@ describe('every route that names what it replaces reaches the gate', () => {
     }
   })
 })
+
+describe('Kai\'s approval token (Tom 2026-10-30, r-2026-10-30-kai-can-authorise-any-audio-work)', () => {
+  const KAI = 'kai:2026-10-30:Kai approved replacing his own mic-test takes'
+  it('a kai: token lets the re-record through and the log names Kai; tom:/malformed/absent tokens still refuse', async () => {
+    const { svc, paid, store } = door([row({ id: 'a1' })])
+    await svc.speak(WORDS, 'cartesia', cfg({ replacing: ['mastered/a1.mp3'], approval: KAI }), 1)
+    expect(paid).toEqual([WORDS])
+    expect(store.logged).toMatchObject([{ kind: 'permitted', permission_id: null, note: expect.stringContaining("Kai's approval") }])
+    for (const approval of ['tom:2026-10-30:Tom said so, honest', 'kai:today:no date here at all', 'kai:2026-10-30:short', 'bob:2026-10-30:Bob approved this', 'yes']) {
+      const d = door([row({ id: 'b1' })])
+      await expect(d.svc.speak(WORDS, 'cartesia', cfg({ replacing: ['mastered/b1.mp3'], approval }), 1)).rejects.toMatchObject({ code: 'RERECORD_NOT_PERMITTED' })
+    }
+  })
+  it('the human-take guard accepts the same kai: token, and names no one else', () => {
+    const g = require('./shared/human-take-guard.cjs')
+    const current = { id: 'h', voice_id: 'human_kai_fin', origin: 'human' }, next = { id: 'n', voice_id: 'cartesia_x', origin: 'tts' }
+    expect(g.checkReplacement({ current, next, tomApproval: KAI })).toMatchObject({ ok: true })
+    expect(g.checkReplacement({ current, next, tomApproval: 'bob:2026-10-30:Bob approved this' }).ok).toBe(false)
+    expect(g.approverOf(KAI)).toBe('kai')
+  })
+  it('the render request validates the approval shape', () => {
+    const { validate } = require('./shared/audio-render-entry.cjs')
+    const base = { courseCode: COURSE, role: 'target1', text: WORDS, purpose: 'p', requestedBy: 'kai' }
+    expect(validate({ ...base, approval: KAI }).approval).toBe(KAI)
+    expect(() => validate({ ...base, approval: 'yes' })).toThrow(/approval must look like/)
+  })
+})

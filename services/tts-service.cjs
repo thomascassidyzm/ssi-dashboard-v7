@@ -1082,7 +1082,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     text, language, voiceId,
     courseCode: door.courseCode || config.courseCode || null,
     replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
-    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
+    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null, approval: door.approval || null,
   });
   }
   if (door.dryRun) {

@@ -28,6 +28,7 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const { approverOf } = require('./human-take-guard.cjs')
 const adoptException = require('./adopt-exception.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
@@ -103,7 +104,10 @@ function validate(input) {
     adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
     // INSTRUCTION ONLY (job #464): its place in the ordered sequence the player plays (shared_audio.sequence).
     sequence: input.sequence == null ? null : Number(input.sequence),
+    // KAI'S (or Tom's) APPROVAL TOKEN `kai:YYYY-MM-DD:<reason>` (Tom 2026-10-30): lets a re-record past the permission gate. Shape-checked only.
+    approval: input.approval ? String(input.approval) : null,
   }
+  if (out.approval && !approverOf(out.approval)) throw new RenderRequestError('approval must look like kai:YYYY-MM-DD:<reason> (or tom:YYYY-MM-DD:<reason>)', 400, 'BAD_APPROVAL')
   if (out.sequence != null && (out.role !== 'instruction' || !Number.isInteger(out.sequence) || out.sequence < 0)) throw new RenderRequestError('sequence is a non-negative integer, for an instruction only', 400, 'BAD_SEQUENCE')
   if (out.text == null && (out.trial || out.adoptS3Key || out.replaceAudioId)) throw new RenderRequestError('trial, adoptS3Key and replaceAudioId name the words — send text', 400, 'TEXT_REQUIRED')
   if (isSharedRole(out.role) && (out.trial || out.legoId)) throw new RenderRequestError(`a ${out.role} is no LEGO's and no trial's — legoId and trial do not apply`, 400, 'SHARED_ROLE_ALONE')
@@ -212,7 +216,7 @@ async function renderClip(input, deps) {
     }
 
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
-    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
+    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
@@ -259,7 +263,7 @@ async function renderShared(req, deps) {
   if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, ...echo(), ...said }
 
   // 2 + 3. the door → guard → one provider attempt. slotRole is the shared role itself: the voicing policy governs slots only.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval } }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, voiceId: r.voiceId, language: r.language, ...echo(), ...said }
   if (out.existingClip && !shared) {

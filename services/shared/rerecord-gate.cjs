@@ -37,6 +37,7 @@
  * Every refusal and every permitted re-record is written to tts_rerecord_log.
  */
 const chain = require('./chain-context.cjs')
+const { approverOf } = require('./human-take-guard.cjs')
 const { audioKeyCandidates } = require('./text-normalize.cjs')
 
 const DEAD_STUB_BYTES = 2000   // same line as idx_course_audio_dead_stubs: below this a clip is not playable audio
@@ -109,7 +110,11 @@ async function assertMayRerecord(want, store = rerecordStore()) {
 
   const role = hits[0].role
   const perms = await store.permissions(want.courseCode)
+  // KAI'S GRANT (Tom 2026-10-30, r-2026-10-30-kai-can-authorise-any-audio-work): a `kai:YYYY-MM-DD:<reason>` approval on the request
+  // stands in for a permission row. It is not a row, so it reserves nothing (no max_clips) and the 1M/day spend cap still binds.
+  // A `tom:` token is deliberately NOT accepted here: Tom's authority is the signed row, which a bare string cannot forge.
   const p = perms.find(x => permissionCovers(x, { courseCode: want.courseCode, role }))
+    || (approverOf(want.approval) === 'kai' ? { id: null, by: 'kai', why: want.approval, kaiApproval: true } : undefined)
   const entry = {
     course_code: want.courseCode || null, role, language: want.language || null, voice_id: want.voiceId || null,
     text: String(want.text).slice(0, 500), replaced_audio_ids: hits.map(h => h.id),
@@ -125,6 +130,12 @@ async function assertMayRerecord(want, store = rerecordStore()) {
   if (!want.dryRun) {
     // Check-then-log across two calls let two concurrent requests both pass a max_clips:1 grant (#229): the use is
     // reserved in ONE atomic step (the store locks the permission, rechecks the count, inserts), and a spent grant refuses.
+    if (p.kaiApproval) {
+      const note = `Kai's approval: ${String(p.why).slice(0, 200)}`
+      console.log(`[rerecord-gate] PERMITTED under ${note}`)
+      try { await store.log({ ...entry, kind: 'permitted', permission_id: null, note }) } catch (e) { console.error(`[rerecord-gate] permit not logged: ${e.message}`) }
+      return p
+    }
     const used = { ...entry, kind: 'permitted', permission_id: p.id, note: `Tom's permission #${p.id}: ${String(p.why).slice(0, 200)}` }
     if (!(await store.reserve(p.id, used))) {
       try { await store.log({ ...entry, kind: 'refused', note: `permission #${p.id} spent by a concurrent request` }) } catch (e) { console.error(`[rerecord-gate] refusal not logged: ${e.message}`) }

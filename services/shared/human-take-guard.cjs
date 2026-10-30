@@ -25,7 +25,15 @@
  * by the phase-8 linkers and the other writers listed in that test's HUMAN_GUARD_CALLERS.
  */
 
-const APPROVAL_TOKEN = /^tom:\d{4}-\d{2}-\d{2}:\S.{6,}$/
+// Kai may authorise any audio work up to the daily cap (Tom 2026-10-30, r-2026-10-30-kai-can-authorise-any-audio-work), so his
+// `kai:YYYY-MM-DD:<reason>` is a grant like Tom's. It is a bare string: nothing proves who typed it (see approverOf; the log names the approver).
+const APPROVAL_TOKEN = /^(tom|kai):\d{4}-\d{2}-\d{2}:\S.{6,}$/
+
+/** Who a valid approval token speaks for: 'tom' | 'kai' | null. */
+function approverOf(token) {
+  const m = typeof token === 'string' && APPROVAL_TOKEN.test(token) ? /^(tom|kai):/.exec(token) : null
+  return m ? m[1] : null
+}
 
 /** Is this course_audio row a human recording? */
 function isHumanClip(clip) {
@@ -58,7 +66,7 @@ function checkReplacement({ current, next, tomApproval } = {}) {
   return {
     ok: false, reason: 'human-take-protected',
     message: `slot holds a HUMAN take (${current.id}, voice ${current.voice_id}); clip ${next.id} is synthetic (${next.voice_id}). A human take is never replaced by a synthetic voice `
-      + `(Tom's HARD RULE 2026-10-13) — pass tomApproval 'tom:YYYY-MM-DD:<what he approved>' only with his explicit go.`,
+      + `(Tom's HARD RULE 2026-10-13) — pass tomApproval 'tom:YYYY-MM-DD:<what he approved>' (or Kai's 'kai:YYYY-MM-DD:<reason>') only with that explicit go.`,
   }
 }
 
@@ -96,7 +104,7 @@ async function assertNotReplacingHuman(db, { tbl, key, match, col, from, to, tom
     next = next || await readClip(db, to)
     const v = checkReplacement({ current, next, tomApproval })
     if (!v.ok) throw new HumanTakeRefusal(v.message, v.reason)
-    if (v.approvedBy) console.log(`HUMAN TAKE REPLACED under Tom's approval (${v.approvedBy}): ${tbl || ''}#${key ?? JSON.stringify(match)} ${col} ${currentId} -> ${to}`)
+    if (v.approvedBy) console.log(`HUMAN TAKE REPLACED under ${approverOf(v.approvedBy) === 'kai' ? "Kai's" : "Tom's"} approval (${v.approvedBy}): ${tbl || ''}#${key ?? JSON.stringify(match)} ${col} ${currentId} -> ${to}`)
   }
 }
 
@@ -108,4 +116,4 @@ async function mayReplace(db, args, log = console.log) {
   }
 }
 
-module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN }
+module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN, approverOf }
