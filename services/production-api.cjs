@@ -4018,6 +4018,24 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   }
 })
 
+// Re-sync lego_introductions.presentation_audio_id from course_legos.presentation_audio_id (job #143).
+// DRY RUN unless body.apply === true; ':courseCode' may be 'all' for a dry-run count only. Rules: services/shared/sync-intro-links.cjs.
+app.post('/api/production/:courseCode/sync-intro-links', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const out = await require('./shared/sync-intro-links.cjs').syncIntroLinks({
+      db: supabaseClient.getClient(),
+      courseCode: req.params.courseCode,
+      apply: !!(req.body && req.body.apply === true),
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+    })
+    res.status(out.code === 'ALL_IS_DRY_RUN_ONLY' || out.code === 'NO_COURSE' ? 400 : out.ok ? 200 : 409).json(out)
+  } catch (error) {
+    logger.error('sync-intro-links failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 // Ingest a MACHINE CUT (job #374): one phrase cut out of a longer clip of a different text, audited, stored as its own clip
 // and linked through link-clip's rules. DRY RUN unless dryRun:false. Usage, rules and the undo: services/shared/ingest-cut.cjs.
 // Body: { seedNumber | legoId | phraseId, role, text, sourceAudioId, startSec, endSec, charStart, charEnd, replace?, expectCurrent?, dryRun? }
