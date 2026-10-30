@@ -3,13 +3,18 @@
  *
  * Until our cloned voices replace a course's English wholesale, a new English
  * clip in an EXISTING course matches that course's current English voice
- * (ita_for_eng = Sonia, Azure), not the cast's Charlotte — Charlotte is for a
- * course that holds no English clip yet. The route asks this before it asks the
- * cast; voice and provider come out together so they can never be paired wrong.
+ * not the cast's Charlotte — Charlotte is for a course that holds no English clip
+ * yet. The route asks this before it asks the cast; voice and provider come out
+ * together so they can never be paired wrong.
+ *
+ * EXCEPT Sonia (Azure en-GB): never a habit worth matching (Tom, r-2026-10-30-
+ * sonia-azure-en-gb-is-never — overrides 2026-09-29). A course whose English is
+ * Sonia reads as holding no usable habit, so the cast (Tom-006 / Charlotte) speaks.
  */
 
 const ENGLISH = 'eng'
 const SELECTABLE = /^(azure|cartesia)_(.+)$/
+const NEVER_MATCHED = /Sonia/i
 const BARE_AZURE = /^[a-z]{2,3}-[A-Z]{2}-\w+Neural$/
 
 /** 'azure_en-GB-SoniaNeural' → { provider:'azure', voiceId:'en-GB-SoniaNeural' }; anything else → null. */
@@ -26,7 +31,7 @@ function pickCourseVoice(rows) {
   const tally = new Map()
   for (const r of rows || []) {
     const v = parseCourseVoice(r.voice_id)
-    if (!v) continue
+    if (!v || NEVER_MATCHED.test(v.voiceId)) continue
     const key = `${v.provider}_${v.voiceId}`
     const t = tally.get(key) || { ...v, n: 0 }
     t.n++

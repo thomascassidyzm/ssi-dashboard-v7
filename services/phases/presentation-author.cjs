@@ -43,7 +43,8 @@ const SONNET_MODEL = process.env.CLAUDE_SONNET_MODEL || 'sonnet'
 const ENG_PRESENTATION_VOICE = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
 
 // Last resort when a course carries no presentation and no known voice at all.
-const DEFAULT_PRESENTATION_VOICE = 'azure_en-GB-SoniaNeural'
+// Never Sonia (Tom, r-2026-10-30-sonia-azure-en-gb-is-never): the English presentation voice.
+const DEFAULT_PRESENTATION_VOICE = ENG_PRESENTATION_VOICE
 
 /**
  * Get the presentation template (Frame B) for a known language, creating and

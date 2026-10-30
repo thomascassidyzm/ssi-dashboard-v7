@@ -16,4 +16,8 @@ describe('presentation voice never defaults to Sonia for English known', () => {
   it('an English-known course with an empty voice_config resolves to the English presentation voice', () => {
     expect(pa.resolvePresentationVoiceId({ known_lang: 'eng', voice_config: {} })).not.toMatch(/Sonia/)
   })
+  it('the last-resort presentation voice (no presentation, no known voice) is not Sonia', () => {
+    expect(pa.DEFAULT_PRESENTATION_VOICE).not.toMatch(/Sonia/)
+    expect(pa.resolvePresentationVoiceId({ known_lang: 'ita', voice_config: {} })).not.toMatch(/Sonia/)
+  })
 })
