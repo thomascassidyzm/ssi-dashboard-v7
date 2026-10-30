@@ -3984,8 +3984,10 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
       links: req.body && req.body.links,
       dryRun: !!(req.body && req.body.dryRun),
       recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+      approval: (req.body && req.body.approval) || null,
+      connect: courseEditConnect,
     })
-    res.status(out.code === 'NO_LINKS' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
+    res.status(out.code === 'NO_LINKS' || out.code === 'BAD_APPROVAL' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
   } catch (error) {
     logger.error('link-clip failed:', error)
     res.status(500).json({ error: error.message })
@@ -8407,6 +8409,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       courseCode,
       plans,
       apply,
+      approval: req.body?.approval || null,
       eventId: () => req.contentEdit.record({
         scope: {
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],

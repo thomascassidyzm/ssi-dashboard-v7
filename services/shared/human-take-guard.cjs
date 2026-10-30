@@ -35,6 +35,21 @@ function approverOf(token) {
   return m ? m[1] : null
 }
 
+/**
+ * The string for the DB trigger's approval setting (popty.tom_human_take_approval) for a valid approval token, or null.
+ * The trigger (refuse_human_take_replacement) matches only `^tom:`; migrations need Tom's go, so Kai's grant
+ * (r-2026-10-30-kai-can-authorise-any-audio-work) is carried as `tom:<date>:kai-authorised: <reason>` — the real
+ * approver stays readable in the trigger's own NOTICE. Throws on a malformed token: BAD_APPROVAL, the render route's style.
+ */
+function triggerApprovalFor(token) {
+  if (token == null || token === '') return null
+  const who = approverOf(token)
+  if (!who) { const e = new Error('approval must look like kai:YYYY-MM-DD:<reason> (or tom:YYYY-MM-DD:<reason>)'); e.status = 400; e.code = 'BAD_APPROVAL'; throw e }
+  if (who === 'tom') return token
+  const m = /^kai:(\d{4}-\d{2}-\d{2}):(.*)$/.exec(token)
+  return `tom:${m[1]}:kai-authorised: ${m[2]}`
+}
+
 /** Is this course_audio row a human recording? */
 function isHumanClip(clip) {
   if (!clip) return false
@@ -116,4 +131,4 @@ async function mayReplace(db, args, log = console.log) {
   }
 }
 
-module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN, approverOf }
+module.exports = { isHumanClip, checkReplacement, assertNotReplacingHuman, mayReplace, HumanTakeRefusal, APPROVAL_TOKEN, approverOf, triggerApprovalFor }

@@ -345,7 +345,8 @@ function undoFor(plan, before, after, opName) {
  * @param {() => Promise<string>} [args.eventId]  called once, only when applying; its id is stamped on content rows
  * @returns {Promise<{applied, results, undo_ops, touched}>}
  */
-async function runPlans({ connect, courseCode, plans, apply, eventId }) {
+async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null }) {
+  const trigApproval = triggerApprovalFor(approval); // throws BAD_APPROVAL before any connection is opened
   const client = await connect();
   const results = [];
   const undo = [];
@@ -354,6 +355,11 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
   try {
     await client.query('BEGIN');
     await client.query(`SET LOCAL statement_timeout = '60s'`);
+    // Kai's/Tom's human-take grant: transaction-local (is_local=true), so it dies with this COMMIT/ROLLBACK and cannot leak to a pooled connection.
+    if (trigApproval) {
+      await client.query(`SELECT set_config('popty.tom_human_take_approval', $1, true)`, [trigApproval]);
+      console.log(`[human-take] approval by ${approverOf(approval)} on edit-batch ${courseCode}: ${approval}`);
+    }
     const evId = apply && eventId ? await eventId() : null;
     const typesCache = new Map();
     const types = async (t) => { if (!typesCache.has(t)) typesCache.set(t, await columnTypes(client, t)); return typesCache.get(t); };
@@ -505,6 +511,8 @@ function summarise(row, plan) {
   for (const k of keep) if (k in row) out[k] = row[k];
   return out;
 }
+
+const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs');
 
 module.exports = { planOp, planOps, runPlans, undoFor, OP_HELP, UPDATABLE, EditOpError, MAX_OPS };
 
