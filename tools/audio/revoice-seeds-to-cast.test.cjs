@@ -117,6 +117,13 @@ describe('renderAsk', () => {
     expect(ask).toMatchObject({ voiceId: 'cartesia_f9a4', voiceBound: true })
     expect(() => renderAsk('zho_for_eng', { role: 'target2', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')).toThrow(/no cast voice/)
   })
+  // job #979: an APPROVAL token (Kai/Tom, shape kai:YYYY-MM-DD:<reason>) rides every ask so the re-record gate passes
+  it('carries APPROVAL from the environment onto the ask, and omits it when unset', () => {
+    const a = { role: 'target2', text: 'x' }, cast = { target2: 'cartesia_8c' }
+    expect(renderAsk('c', a, cast, 'p')).not.toHaveProperty('approval')
+    process.env.APPROVAL = 'kai:2026-10-30:t'
+    try { expect(renderAsk('c', a, cast, 'p').approval).toBe('kai:2026-10-30:t') } finally { delete process.env.APPROVAL }
+  })
 })
 
 // job #574: a clip that fails the tail audit is marked, and a marked clip is not handed back by library-first reuse

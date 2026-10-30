@@ -39,7 +39,7 @@ function renderAsk(course, a, castByRole, purpose, job) {
   const voiceId = castByRole[a.role];
   if (!voiceId) throw new Error(`re-voice of ${course}: no cast voice for role ${a.role}; refusing to ask the library for any-voice reuse`);
   // job: what the spend guard and the re-record gate match a Tom-signed raise / grant against ("#NNN").
-  return { courseCode: course, role: a.role, text: a.text, voiceId, voiceBound: true, purpose, ...(job ? { job } : {}) };
+  return { courseCode: course, role: a.role, text: a.text, voiceId, voiceBound: true, purpose, ...(job ? { job } : {}), ...(process.env.APPROVAL ? { approval: process.env.APPROVAL } : {}) };
 }
 
 /** One JSONL line per link, carrying the OLD pointer: the whole rollback is linking `old` back over `new`. */
