@@ -8488,7 +8488,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
     // A database refusal (a guard trigger such as #912's debut-practice guard, a
     // constraint) is the answer, not a crash: 409 with Postgres's own words.
     const refusedByDb = !!err.severity && /^[0-9A-Z]{5}$/.test(String(err.code || ''))
-    const status = err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
+    const status = err.code === 'BAD_APPROVAL' ? 400 : err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
     if (status !== 500) req.contentEdit?.wroteNothing()
     logger.warn(`[course-edit] ${courseCode}: refused/failed — ${err.message}`)
     res.status(status).json({ error: err.message, code: err.code || 'EDIT_FAILED', index: err.index, applied: false })
