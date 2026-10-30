@@ -25,6 +25,9 @@ const { holdsInOrder, fromApi } = require('./spa-close-read-153-200-2026-10-27.c
 const { untaughtNew, makeTaught, zutIndex, nk, ntStrict } = require('./spa-deborah-129-2026-10-29.cjs');
 
 const { COURSE, APPROVAL } = D;
+// HOLD_45=1: item 45 (seed 98 "jugar a" + the new LEGO S0098L05) stays out. Its lego.insert on this released course was
+// refused TOM_GO_REQUIRED with the Kai key on 30 Oct (job #223), so the seed is not moved without the LEGO that teaches it.
+if (process.env.HOLD_45 === '1') { delete D.PHRASES[45]; D.SEEDS = D.SEEDS.filter(([n]) => n !== 98); D.NEW_LEGO = null; }
 const AGENT = 'spa-kai-rulings (job #223)';
 const PURPOSE = 'job #223 spa_for_eng Kai rulings 30 Oct on Deborah held items';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
@@ -67,12 +70,12 @@ function afterState(db, changes) {
   const sset = new Map(D.SEEDS.map(([n, , k, t]) => [n, { k, t }]));
   const pset = new Map(changes.map((c) => [c.id, c]));
   const legos = db.legos.map((l) => (lset.has(l.lego_id) ? { ...l, ...lset.get(l.lego_id) } : l));
-  const nl = D.NEW_LEGO.row;
-  legos.push({ ...nl, lego_id: `S${String(nl.seed_number).padStart(4, '0')}L${String(nl.lego_index).padStart(2, '0')}` });
+  const nl = D.NEW_LEGO && D.NEW_LEGO.row;
+  if (nl) legos.push({ ...nl, lego_id: `S${String(nl.seed_number).padStart(4, '0')}L${String(nl.lego_index).padStart(2, '0')}` });
   const seeds = db.seeds.map((s) => (sset.has(s.seed_number) ? { ...s, known_text: sset.get(s.seed_number).k ?? s.known_text, target_text: sset.get(s.seed_number).t } : s));
   const phrases = db.phrases.map((p) => (pset.has(sid(p.id)) ? { ...p, known_text: pset.get(sid(p.id)).known, target_text: pset.get(sid(p.id)).target } : p));
   const newId = legos[legos.length - 1].lego_id;
-  for (const role of ['build', 'use']) D.NEW_BASKET[role].forEach(([k, t], i) => phrases.push({ id: `${COURSE}:${newId}${role === 'build' ? 'B' : 'U'}${String(i + 1).padStart(2, '0')}`, phrase_role: role, known_text: k, target_text: t, seed_number: nl.seed_number, _new: true }));
+  if (nl) for (const role of ['build', 'use']) D.NEW_BASKET[role].forEach(([k, t], i) => phrases.push({ id: `${COURSE}:${newId}${role === 'build' ? 'B' : 'U'}${String(i + 1).padStart(2, '0')}`, phrase_role: role, known_text: k, target_text: t, seed_number: nl.seed_number, _new: true }));
   return { seeds, legos, phrases };
 }
 
@@ -80,7 +83,7 @@ function plan(db, { tw = require('../../services/course-builder/lib/taught-words
   const { out: changes, drift } = phraseChanges(db);
   const legoNow = new Map(db.legos.map((l) => [l.lego_id, l]));
   for (const l of D.LEGOS) if (!legoNow.has(l.lego_id)) drift.push(`${l.lego_id}: no such LEGO`);
-  if (legoNow.has('S0098L05')) drift.push('S0098L05 already exists');
+  if (D.NEW_LEGO && legoNow.has('S0098L05')) drift.push('S0098L05 already exists');
   const seedNow = new Map(db.seeds.map((s) => [s.seed_number, s]));
   const seedChanges = D.SEEDS.map(([n, item, k, t]) => ({ n, item, before: seedNow.get(n), known: k ?? seedNow.get(n).known_text, target: t }));
   for (const s of seedChanges) if (s.before.target_text === s.target && s.before.known_text === s.known) drift.push(`seed ${s.n}: already reads the new text`);
@@ -152,7 +155,7 @@ function plan(db, { tw = require('../../services/course-builder/lib/taught-words
     if (worse.length) knockOn.push(`${id}: ${worse.join(', ')} — ${p.known_text} | ${p.target_text}`);
   }
 
-  const touchedSeeds = new Set([...changes.map((c) => seedOf(c.id)), ...seedChanges.map((s) => s.n), ...D.LEGOS.map((l) => seedOf(l.lego_id)), 98]);
+  const touchedSeeds = new Set([...changes.map((c) => seedOf(c.id)), ...seedChanges.map((s) => s.n), ...D.LEGOS.map((l) => seedOf(l.lego_id)), ...(D.NEW_LEGO ? [98] : [])]);
   const unapprove = db.seeds.filter((s) => touchedSeeds.has(s.seed_number) && s.approved_at).map((s) => s.seed_number);
   return { changes, seedChanges, drift, gates, knockOn, unapprove, touchedSeeds: [...touchedSeeds].sort((a, b) => a - b), after };
 }
@@ -224,7 +227,7 @@ function verify(fresh, p) {
   for (const s of p.seedChanges) { const x = sd.get(s.n); if (x.target_text !== s.target || x.known_text !== s.known) bad.push(`seed ${s.n} does not read the new text`); }
   const lg = new Map(fresh.legos.map((l) => [l.lego_id, l]));
   for (const l of D.LEGOS) for (const [k, v] of Object.entries(l.set)) if (JSON.stringify(lg.get(l.lego_id)[k]) !== JSON.stringify(v)) bad.push(`${l.lego_id}.${k} is ${JSON.stringify(lg.get(l.lego_id)[k])}`);
-  if (!lg.has('S0098L05')) bad.push('S0098L05 missing');
+  if (D.NEW_LEGO && !lg.has('S0098L05')) bad.push('S0098L05 missing');
   return bad;
 }
 
@@ -293,7 +296,7 @@ async function main() {
   const log = { job: '#223', mode, batches: [] };
   const live = mode === 'apply' && process.env.APPLY_CONFIRM === '1';
   // 1. the new LEGO (structural: Kai key)
-  const ins = kaiCall('POST', `/api/production/${COURSE}/edit-batch`, { ops: [{ op: 'lego.insert', row: D.NEW_LEGO.row }], approval: APPROVAL, ...(live ? { apply: true } : {}) });
+  const ins = !D.NEW_LEGO ? { held: 'item 45' } : kaiCall('POST', `/api/production/${COURSE}/edit-batch`, { ops: [{ op: 'lego.insert', row: D.NEW_LEGO.row }], approval: APPROVAL, ...(live ? { apply: true } : {}) });
   console.log(`[lego.insert S0098L05] ${live ? 'APPLY' : 'dry'} → ${JSON.stringify(ins).slice(0, 300)}`);
   log.insert = ins;
   if (ins.error || ins.ok === false) { process.exitCode = 1; return console.log(save(mode, log)); }
@@ -315,7 +318,7 @@ async function main() {
     if (ap.status !== 200) { process.exitCode = 1; break; }
   }
   // 3. the new LEGO's basket through the validating v2 door (course-builder)
-  if (live && !process.exitCode) {
+  if (live && !process.exitCode && D.NEW_LEGO) {
     const body = { phrases: [{ seed_number: 98, lego_index: 5, build: D.NEW_BASKET.build.map(([k, t]) => ({ known: k, target: t })), use: D.NEW_BASKET.use.map(([k, t]) => ({ known: k, target: t })) }] };
     const r = await post(`${process.env.BUILDER_URL || 'http://localhost:3471'}/api/v2/phrases/${COURSE}`, body);
     console.log(`[v2 phrases S0098L05] ${r.status} ${JSON.stringify(r.body).slice(0, 500)}`);
