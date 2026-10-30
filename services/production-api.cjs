@@ -1289,7 +1289,7 @@ app.get('/api/courses', async (req, res) => {
 // basically moved to deprecate doctrine docs as much as possible because of our
 // speed of iteration. It's too difficult to keep docs up to date." So this is a
 // query, not a document: no cache, no snapshot, no materialised view, no cron.
-// Every field below is recomputed per request (public.estate_map(), see
+// Fields are recomputed from the DB (cached ≤5 min, see estateMapCache) (public.estate_map(), see
 // database/migrations/20260813_estate_map.sql).
 //
 // The SEMANTICS block below is the one human-authored part, and it is here rather
@@ -1475,15 +1475,14 @@ function estateMapAsText(payload) {
   return lines.join('\n')
 }
 
-// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
-// must be able to read it, or they will go back to inferring estate facts instead.
-app.get('/api/estate-map', async (req, res) => {
-  try {
-    if (!supabaseClient.isInitialized()) {
-      return res.status(503).json({ error: 'Supabase not initialized' })
-    }
-    const supabase = supabaseClient.getClient()
-
+// The request-independent part of the estate map: estate_map() re-totals ~2.5M course_audio rows
+// and hit the 8 s DB statement limit (job #981), so it is cached with stale-while-revalidate.
+// TTL 5 min: no tool exists to measure recordings-added-per-hour (see job #981 report), so this
+// is the conservative default; ?fresh=1 forces a refresh. Request params stay outside the cache.
+const ESTATE_MAP_TTL_MS = 5 * 60 * 1000
+async function loadEstateMapBase() {
+  if (!supabaseClient.isInitialized()) throw new Error('Supabase not initialized')
+  const supabase = supabaseClient.getClient()
     // 1. The derived rows — one round trip, aggregated in SQL (~1.8s over ~2.5M audio rows).
     //    Returns { courses, pods_by_language }: pods are counted per LANGUAGE as well
     //    as per course, because per-language is the unit a render is actually costed in.
@@ -1507,7 +1506,7 @@ app.get('/api/estate-map', async (req, res) => {
       podsByCourse.get(p.course_code).push(p)
     }
 
-    let courses = (rows || []).map(c => {
+    const courses = (rows || []).map(c => {
       const coursePods = podsByCourse.get(c.course_code) || []
       const approval = coursePods.length
         ? podVoiceApprovals.evaluateApproval(
@@ -1526,6 +1525,27 @@ app.get('/api/estate-map', async (req, res) => {
         blockers,
       }
     })
+  return { courses, podsByLanguage }
+}
+const estateMapCache = require('./shared/swr-cache.cjs').createSwrCache({
+  load: loadEstateMapBase,
+  ttlMs: ESTATE_MAP_TTL_MS,
+  onError: err => logger.error('estate map refresh failed (serving last good):', err.message),
+})
+
+// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
+// must be able to read it, or they will go back to inferring estate facts instead.
+app.get('/api/estate-map', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // 1+2. The expensive, request-independent part is cached (stale-while-revalidate, single-flight).
+    const hit = await estateMapCache.get({ fresh: req.query.fresh === '1' })
+    const { podsByLanguage } = hit.value
+    let courses = hit.value.courses
 
     // 3. Cheap conveniences. The unfiltered read stays the default.
     if (req.query.released === 'true') courses = courses.filter(c => c.released)
@@ -1533,8 +1553,15 @@ app.get('/api/estate-map', async (req, res) => {
 
     const payload = {
       generated_at: new Date().toISOString(),
-      derived: 'Computed from the database on every read. Never cached, never a snapshot. '
-        + 'If this disagrees with a document, the document is stale.',
+      cache: {
+        cachedAt: new Date(hit.cachedAt).toISOString(),
+        ageSeconds: Math.round(hit.ageMs / 1000),
+        ttlSeconds: ESTATE_MAP_TTL_MS / 1000,
+        stale: hit.stale,
+        lastRefreshError: hit.lastError ? hit.lastError.message : null,
+      },
+      derived: 'Computed from the database, cached up to ttlSeconds (stale-while-revalidate; ?fresh=1 forces). '
+        + 'See cache.ageSeconds. If this disagrees with a document, the document is stale.',
       totals: {
         courses: courses.length,
         released: courses.filter(c => c.released).length,
@@ -14058,6 +14085,7 @@ httpServer.listen(PORT, HOST, () => {
   takeTextCheck.recoverAtBoot(textChecks, { logger })
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
+  estateMapCache.get().catch(err => logger.error('estate map warm-up failed:', err.message))
   // Export Step 2 needs sox (with MP3) + ffprobe. Say so at boot; every Step 2 run re-checks and
   // fails closed without them (job #994) — the API itself still starts, it serves far more than export.
   exportAudioCheck.audioToolsPreflight().then(({ ok, reason }) => {
