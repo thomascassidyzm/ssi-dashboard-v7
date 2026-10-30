@@ -415,4 +415,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
-module.exports = { plan, applyRules, editBatches, clipAsks, untaughtNew, RULES };
+module.exports = { plan, applyRules, editBatches, clipAsks, untaughtNew, RULES, makeTaught, zutIndex, nk, ntStrict };
