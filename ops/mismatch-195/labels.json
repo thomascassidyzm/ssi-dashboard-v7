@@ -1,0 +1,15 @@
+{
+ "_note": "Hand labels by the Fable scoping worker (job cs/161), 30 Oct 2026. Every phrase in the 36 hand baskets was read in full; phrases not listed are labelled OK/INHERITED (no defect). Confidence: ita/spa high; fin medium (reader is not a Finnish speaker; Kai to verify).",
+ "defects": {
+  "S0421L02U01": {"course":"ita_for_eng","side":"target","chunk":"'what to do' vs 'quello che facciamo' (= what we do)","severity":"clear"},
+  "S0377L01U05": {"course":"ita_for_eng","side":"target","chunk":"target adds 'stava provando a' (was trying to) and drops 'something' (qualcosa) — known 'what she was creating was something beautiful'","severity":"clear"},
+  "S0598L03U03": {"course":"ita_for_eng","side":"known","chunk":"target 'alcune' (some) has no counterpart in 'he has heard stories about it'","severity":"mild"},
+  "S0110L01B06": {"course":"spa_for_eng","side":"both","chunk":"known 'We are here trying' vs target 'Somos personas que estamos intentando' (we are people who are trying) — 'here' unmatched, 'personas que' unmatched","severity":"clear"},
+  "S0503L03U03": {"course":"spa_for_eng","side":"known","chunk":"target 'causar problemas' (make trouble) vs known 'I don't want trouble' — 'make/cause' missing on known","severity":"mild"}
+ },
+ "hand_baskets": {
+  "ita_for_eng": ["S0501L02","S0421L02","S0528L02","S0377L01","S0388L02","S0598L03","S0211L02","S0336L03","S0247L02","S0335L01","S0317L01","S0215L01"],
+  "fin_for_eng": ["S0398L03","S0171L05","S0113L01","S0412L02","S0524L03","S0482L01","S0653L01","S0462L02","S0217L04","S0296L01","S0377L02","S0542L01"],
+  "spa_for_eng": ["S0110L01","S0577L01","S0198L02","S0503L03","S0222L01","S0131L03","S0221L01","S0334L02","S0221L02","S0231L03","S0125L01","S0146L03"]
+ }
+}
