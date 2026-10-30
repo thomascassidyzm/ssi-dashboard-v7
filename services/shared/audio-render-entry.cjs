@@ -198,7 +198,7 @@ async function renderClip(input, deps) {
     // is cut from that take — never paid for twice. Library first already linked any cut that exists; this stops the
     // second performance when nobody has cut it yet. Another voice (a main-flow second seat) is not refused here.
     if (deps.immersionTurn && (req.role === 'target1' || req.role === 'target2')) {
-      const turn = await deps.immersionTurn({ language: r.language, text: req.text })
+      const turn = await deps.immersionTurn({ language: r.language, text: req.text, voice: r.voiceId })
       const refusal = drillCut.drillCutRefusal(turn, { voiceId: r.voiceId, text: req.text })
       if (refusal) throw new RenderRequestError(refusal.message, refusal.status, refusal.code)
     }

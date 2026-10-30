@@ -70,3 +70,12 @@ describe('lookup misses (review 7ad1dfb8)', () => {
     expect(out).toHaveLength(2500)
   })
 })
+
+describe('findImmersionTurn voice (review #828)', () => {
+  it('a same-voice turn is found even when another voice matches first', () => {
+    const other = { ...TURN, id: 'other', clip: { language: 'zho', voice_id: 'azure_zh-CN-XiaoxiaoNeural' } }
+    const got = guard.findImmersionTurn([other, TURN], { language: 'zho', text: '谢谢你。', voice: 'jpi39icg' })
+    expect(got).toMatchObject({ rowId: TURN.id })
+    expect(guard.drillCutRefusal(got, { voiceId: 'jpi39icg', text: '谢谢你。' })).not.toBeNull()
+  })
+})

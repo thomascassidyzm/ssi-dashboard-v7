@@ -5462,7 +5462,7 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // duplicate-stop (services/shared/drill-cut-guard.cjs). Served = core pod on slug pod-1 (tools/pods/serving-slug.cjs).
 // Fails OPEN with a warning: a missed lookup costs one duplicate take; a thrown one would stop every render.
 let servedPodCache = { at: 0, pods: null }
-async function immersionTurnForRender({ language, text }) {
+async function immersionTurnForRender({ language, text, voice }) {
   try {
     const term = drillCutGuard.searchSegment(text)
     if (!term) return null
@@ -5485,7 +5485,7 @@ async function immersionTurnForRender({ language, text }) {
     const { data: clips, error: ce } = await supabase.from('course_audio').select('id, language, voice_id').in('id', [...new Set(rows.map((r) => r.target_audio_id))])
     if (ce) throw new Error(`course_audio unreadable: ${ce.message}`)
     const clipOf = new Map((clips || []).map((c) => [c.id, c]))
-    return drillCutGuard.findImmersionTurn(rows.map((r) => ({ ...r, course_code: courseOf.get(r.pod_id), clip: clipOf.get(r.target_audio_id) || null })), { language, text })
+    return drillCutGuard.findImmersionTurn(rows.map((r) => ({ ...r, course_code: courseOf.get(r.pod_id), clip: clipOf.get(r.target_audio_id) || null })), { language, text, voice })
   } catch (e) {
     logger.warn(`[render] drill-cut lookup skipped (fails open): ${e.message}`)
     return null

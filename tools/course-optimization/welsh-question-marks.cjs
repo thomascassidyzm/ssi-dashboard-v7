@@ -146,7 +146,7 @@ function welshSignal(raw) {
   const body = s.replace(/[?!.]+$/, '');
   const clauses = body.split(/,\s*|\s+ond\s+/);
   let best = null;
-  const rank = { strong: 4, wh: 3, ambig_verb: 2, colloq: 1 };
+  const rank = { relative: 0, strong: 4, wh: 3, ambig_verb: 2, colloq: 1 };
   const take = (f) => { if (!best || rank[f] > rank[best]) best = f; };
   for (let i = 0; i < clauses.length; i++) {
     const c = clauses[i].replace(W_DISCOURSE, '').trim();

@@ -59,7 +59,9 @@ function tokenise(text, spaced = true) {
       if (PUNCT.test(c)) { if (brk.length) brk[brk.length - 1] = true; } else { tokens.push(c); brk.push(false); }
     }
   }
-  return { tokens, brk, key: tokens.join(SEP) };
+  // A question is not its statement (different intonation, so different clip): the key keeps the question mark.
+  const q = /[?？]/.test(s);
+  return { tokens, brk, q, base: tokens.join(SEP), key: tokens.join(SEP) + (q ? '?' : '') };
 }
 
 /** Contiguous spans [a,b) of a tokenised source, never the whole. `strict` demands clause edges. */
@@ -89,7 +91,8 @@ function plan(clips, { strict = false, spaced = isSpaced(clips.map((c) => c.text
   const render = [], cut = {}, covered = new Set();
   const mark = (src) => {
     for (const [a, b] of spansOf(src.tk, strict, maxLen - 1)) {
-      const hit = byKey.get(src.tk.tokens.slice(a, b).join(SEP));
+      const span = src.tk.tokens.slice(a, b).join(SEP);
+      const hit = byKey.get(span) || (src.tk.q && b === src.tk.tokens.length ? byKey.get(span + '?') : undefined);
       if (!hit || hit === src || hit.have || covered.has(hit.tk.key)) continue;
       covered.add(hit.tk.key);
       cut[hit.id] = { source: src.id, a, b };
@@ -115,7 +118,7 @@ function verifyPlan(clips, p, { strict = false, spaced = isSpaced(clips.map((c) 
     if (c.source === id || src.tk.key === me.tk.key) { errs.push(`${id}: sourced from its own text`); continue; }
     if (src.tk.tokens.length <= me.tk.tokens.length) { errs.push(`${id}: source is not longer`); continue; }
     if (!p.render.includes(c.source) && !src.have) { errs.push(`${id}: source ${c.source} is neither rendered nor existing`); continue; }
-    if (src.tk.tokens.slice(c.a, c.b).join(SEP) !== me.tk.key) errs.push(`${id}: not one contiguous span of its source (a join or a mismatch)`);
+    if (src.tk.tokens.slice(c.a, c.b).join(SEP) !== me.tk.base) errs.push(`${id}: not one contiguous span of its source (a join or a mismatch)`);
     else if (strict) {
       const edgeA = c.a === 0 || src.tk.brk[c.a - 1], edgeB = c.b === src.tk.tokens.length || src.tk.brk[c.b - 1];
       if (!edgeA || !edgeB) errs.push(`${id}: strict cut not on a clause edge`);
