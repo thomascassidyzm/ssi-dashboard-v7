@@ -4499,10 +4499,8 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     const voiceConfig = course.voice_config || {}
     // Match the generator's voice_id format exactly (provider_voiceId), else the
     // pending row's voice_id won't reconcile with the generated row → duplicate.
-    const presVoice = voiceConfig.voices?.presentation
-    const presentationVoiceId = canonicalClipVoiceId(
-      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
-      presVoice?.voiceId ? presVoice?.provider : undefined)
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     // Existing presentation rows — so we ONLY add what's genuinely missing.
     const existingPres = await readAllPages(() => supabase.from('course_audio')
@@ -4878,10 +4876,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Bulk upsert presentation text to course_audio
     const voiceConfig = course.voice_config || {}
-    const presVoice = voiceConfig.voices?.presentation
-    const presentationVoiceId = canonicalClipVoiceId(
-      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
-      presVoice?.voiceId ? presVoice?.provider : undefined)
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
