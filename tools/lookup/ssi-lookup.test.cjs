@@ -84,7 +84,7 @@ describe('ssi-lookup plans', () => {
         'FROM offline_leases': [{ course_code: 'spa_for_eng', is_trial: true, expires_at: future, revoked_at: null }],
         'FROM user_tags': [{ tag_type: 'class', tag_value: `CLASS:${U}`, role_in_context: 'student' }],
         'FROM classes': [{ id: U, class_name: 'Y9 Spanish', course_code: 'spa_for_eng', school_name: 'Ysgol X' }],
-        'FROM player_events WHERE user_id = $1::uuid ORDER': [{ occurred_at: '2026-10-29T10:00:00Z', event_type: 'x', course_code: 'spa_for_eng' }],
+        'FROM player_events WHERE learner_id = $1::uuid ORDER': [{ occurred_at: '2026-10-29T10:00:00Z', event_type: 'x', course_code: 'spa_for_eng' }],
       })
       let out
       await main(['learner', '--email', EM], { connect: async () => pg, print: (s) => { out = JSON.parse(s) } })

@@ -114,8 +114,8 @@ function buildLearner(flags, pos, now) {
     { name: 'entitlements', bind: 'id', text: 'SELECT access_type, granted_courses, expires_at, redeemed_at FROM user_entitlements WHERE learner_id = $1::uuid ORDER BY redeemed_at DESC LIMIT 20' },
     { name: 'leases', bind: 'id', text: 'SELECT course_code, granted_at, expires_at, is_trial, revoked_at FROM offline_leases WHERE learner_id = $1::uuid ORDER BY expires_at DESC LIMIT 20' },
     { name: 'tags', bind: 'user_id', text: 'SELECT tag_type, tag_value, role_in_context FROM user_tags WHERE user_id = $1::text AND removed_at IS NULL LIMIT 20' },
-    { name: 'lastEvent', bind: 'user_id', uuidOnly: true, text: 'SELECT occurred_at, event_type, course_code FROM player_events WHERE user_id = $1::uuid ORDER BY occurred_at DESC LIMIT 1' },
-    { name: 'daily', bind: 'user_id', uuidOnly: true, extra: [since], text: "SELECT (occurred_at AT TIME ZONE 'UTC')::date AS day, count(*)::int AS events FROM player_events WHERE user_id = $1::uuid AND occurred_at >= $2::timestamptz GROUP BY 1 ORDER BY 1 DESC LIMIT 14" },
+    { name: 'lastEvent', bind: 'id', text: 'SELECT occurred_at, event_type, course_code FROM player_events WHERE learner_id = $1::uuid ORDER BY occurred_at DESC LIMIT 1' },
+    { name: 'daily', bind: 'id', extra: [since], text: "SELECT (occurred_at AT TIME ZONE 'UTC')::date AS day, count(*)::int AS events FROM player_events WHERE learner_id = $1::uuid AND occurred_at >= $2::timestamptz GROUP BY 1 ORDER BY 1 DESC LIMIT 14" },
   ], names: [
     { name: 'classes', text: 'SELECT c.id, c.class_name, c.course_code, s.school_name FROM classes c LEFT JOIN schools s ON s.id = c.school_id WHERE c.id = ANY($1::uuid[]) LIMIT 20' },
     { name: 'groups', text: 'SELECT id, name FROM groups WHERE id = ANY($1::uuid[]) LIMIT 20' },
@@ -140,7 +140,6 @@ async function runLearner(pg, plan) {
   out.created = l.created_at; out.role = l.educational_role || l.platform_role || null; out.demoOrInternal = !!(l.is_demo || l.is_internal);
   const r = {};
   for (const s of rest) {
-    if (s.uuidOnly && !isUuid(l.user_id)) { r[s.name] = []; continue; }
     r[s.name] = await q(s, [l[s.bind], ...(s.extra || [])]);
   }
   const sub = r.subscription[0];
