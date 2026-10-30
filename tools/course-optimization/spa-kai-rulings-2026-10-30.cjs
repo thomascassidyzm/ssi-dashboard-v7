@@ -28,6 +28,10 @@ const { COURSE, APPROVAL } = D;
 // HOLD_45=1: item 45 (seed 98 "jugar a" + the new LEGO S0098L05) stays out. Its lego.insert on this released course was
 // refused TOM_GO_REQUIRED with the Kai key on 30 Oct (job #223), so the seed is not moved without the LEGO that teaches it.
 if (process.env.HOLD_45 === '1') { delete D.PHRASES[45]; D.SEEDS = D.SEEDS.filter(([n]) => n !== 98); D.NEW_LEGO = null; }
+// ONLY_45=1 (job #237): everything else is live since 20:06 30 Oct, so the plan is item 45 alone. The refusal above came
+// because the Kai-signed call went to /api/production/…; the agent front door verifies signatures only under /api/admin,
+// so kai_go was never seen. The signed twin of the same engine and gate is /api/admin/course-edit/:course/edit-batch.
+if (process.env.ONLY_45 === '1') { for (const k of Object.keys(D.PHRASES)) if (k !== '45') delete D.PHRASES[k]; D.SEEDS = D.SEEDS.filter(([n]) => n === 98); D.LEGOS.length = 0; }
 const AGENT = 'spa-kai-rulings (job #223)';
 const PURPOSE = 'job #223 spa_for_eng Kai rulings 30 Oct on Deborah held items';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
@@ -191,7 +195,7 @@ function kaiCall(method, urlPath, body) {
   const f = path.join(process.env.TMPDIR || '/tmp', `kai-call-${process.pid}.json`);
   fs.writeFileSync(f, JSON.stringify(body));
   try {
-    const out = execFileSync('node', [path.join(__dirname, '..', 'agent-admin', 'call.cjs'), '--key', 'kai', '--agent', 'kai-223-spa-rulings', method, urlPath, '--body-file', f], { encoding: 'utf8' });
+    const out = execFileSync('node', [path.join(__dirname, '..', 'agent-admin', 'call.cjs'), '--key', 'kai', '--agent', 'kai-237-spa-rulings', method, urlPath, '--body-file', f], { encoding: 'utf8' });
     return JSON.parse(out.slice(out.indexOf('{')));
   } catch (e) { return { error: String(e.stdout || e.message).slice(0, 800) }; } finally { fs.unlinkSync(f); }
 }
@@ -296,7 +300,7 @@ async function main() {
   const log = { job: '#223', mode, batches: [] };
   const live = mode === 'apply' && process.env.APPLY_CONFIRM === '1';
   // 1. the new LEGO (structural: Kai key)
-  const ins = !D.NEW_LEGO ? { held: 'item 45' } : kaiCall('POST', `/api/production/${COURSE}/edit-batch`, { ops: [{ op: 'lego.insert', row: D.NEW_LEGO.row }], approval: APPROVAL, ...(live ? { apply: true } : {}) });
+  const ins = !D.NEW_LEGO ? { held: 'item 45' } : kaiCall('POST', `/api/admin/course-edit/${COURSE}/edit-batch`, { ops: [{ op: 'lego.insert', row: D.NEW_LEGO.row }], approval: APPROVAL, ...(live ? { apply: true } : {}) });
   console.log(`[lego.insert S0098L05] ${live ? 'APPLY' : 'dry'} → ${JSON.stringify(ins).slice(0, 300)}`);
   log.insert = ins;
   if (ins.error || ins.ok === false) { process.exitCode = 1; return console.log(save(mode, log)); }
