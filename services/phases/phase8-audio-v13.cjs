@@ -6410,7 +6410,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -6418,20 +6418,20 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           voiceId: voiceId,
           language: toBcp47(knownLang)
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'cartesia', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
+          door: { courseCode, intro: true, voiceBound: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: toBcp47(knownLang),
@@ -9834,24 +9834,24 @@ async function reuseRenderClip(courseCode, clip, stats) {
     let rawAudioBuffer, wordBoundaries
     if (provider === 'azure') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         subscriptionKey: process.env.AZURE_SPEECH_KEY,
         region: process.env.AZURE_SPEECH_REGION || 'westeurope',
         voiceName, speed: 1.0,
       }))
     } else if (provider === 'elevenlabs') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         apiKey: process.env.ELEVENLABS_API_KEY, voiceId: voiceName, speed: 1.0,
       }))
     } else if (provider === 'xai') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         voiceId: voiceName, language: toBcp47(clip.language),
       }))
     } else if (provider === 'cartesia') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-        door: { courseCode, intro: clip.role === 'presentation' },
+        door: { courseCode, intro: clip.role === 'presentation', voiceBound: true },
         apiKey: process.env.CARTESIA_API_KEY, voiceId: voiceName, locale: toBcp47(clip.language), speed: 1.0,
       }))
     } else {
