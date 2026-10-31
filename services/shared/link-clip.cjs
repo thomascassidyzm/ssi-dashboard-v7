@@ -21,6 +21,21 @@ const { normalizeForDb } = require('./text-normalize.cjs')
 const { bumpCourseVersion } = require('./course-version.cjs')
 const { podSentencesOf } = require('./pod-sentence-split.cjs')
 const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
+const resolveVoiceLib = require('./resolve-voice.cjs')
+
+/**
+ * VOICE, not just words (Tom, 2026-10-31; 9 Oct: Alessandra's female clips linked into Lorenzo's male Italian slots, ~3,400 slots).
+ * The slot's voice is resolveVoice's answer (the course cast); the clip's voice must be that voice. A mismatch, or an unreadable
+ * cast, REFUSES — there is no skip and no fallback to another voice. Slots resolveVoice has no ruling for pass (checkPointer's rule).
+ * Injectable (`checkVoice`) so tests can run without a database.
+ */
+async function defaultCheckVoice(db, courseCode, role, clip) {
+  try {
+    return resolveVoiceLib.checkPointer({ course: await resolveVoiceLib.loadCourse(db, courseCode), role, clip }, await resolveVoiceLib.loadCast(db))
+  } catch (e) {
+    return { ok: false, reason: 'unreadable', message: `cannot check the voice (${e.message}) — not knowing is not permission` }
+  }
+}
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const LEGO_ID = /^S(\d{4})L(\d{2})$/
@@ -58,7 +73,7 @@ function slotOf(link) {
   return { error: 'name the slot with exactly one of seedNumber, legoId, phraseId or podSentenceId' }
 }
 
-async function linkOne(db, courseCode, link, { dryRun }) {
+async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheckVoice }) {
   const slot = slotOf(link)
   const base = { slot: slot.label, role: link.role, audioId: link.audioId }
   if (slot.error) return { ...base, ok: false, code: 'BAD_SLOT', error: slot.error }
@@ -87,7 +102,7 @@ async function linkOne(db, courseCode, link, { dryRun }) {
     }
   }
 
-  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id').eq('id', link.audioId).maybeSingle()
+  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin').eq('id', link.audioId).maybeSingle()
   if (clipErr) return { ...base, ok: false, code: 'READ_FAILED', error: clipErr.message }
   if (!clip) return { ...base, ok: false, code: 'NO_CLIP', error: `no course_audio row ${link.audioId}` }
   if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
@@ -102,6 +117,15 @@ async function linkOne(db, courseCode, link, { dryRun }) {
       if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
         return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
       }
+    }
+  }
+
+  if (slot.kind !== 'pod_sentence') {
+    const v = await checkVoice(db, courseCode, link.role, clip)
+    if (!v.ok) {
+      return { ...base, ok: false, code: 'VOICE_MISMATCH', voiceId: clip.voice_id,
+        expectedVoice: (v.resolution && v.resolution.voiceId) || null,
+        error: `${base.slot} ${link.role}: expected voice ${(v.resolution && v.resolution.voiceId) || '(none resolvable)'}, clip ${link.audioId} is voice ${clip.voice_id} — ${v.message}` }
     }
   }
 
@@ -155,7 +179,7 @@ const pgArray = (a) => `{${a.map((x) => (x == null ? 'NULL' : x)).join(',')}}`
  * links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }]
  * recordEdit: ({ scope, detail }) => eventId — the content-edit gate's req.contentEdit.record.
  */
-async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = null, bump = bumpCourseVersion, approval = null, connect = null }) {
+async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = null, bump = bumpCourseVersion, approval = null, connect = null, checkVoice = defaultCheckVoice }) {
   // `approval` (kai:/tom:YYYY-MM-DD:<reason>) lifts the DB human-take lock for this request only. The trigger reads a transaction-local
   // setting, which a REST (supabase-js) write cannot carry, so an approved request writes through ONE pg transaction (`connect`).
   let trigApproval = null
@@ -164,7 +188,7 @@ async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = n
   if (!Array.isArray(links) || !links.length) return { ok: false, code: 'NO_LINKS', error: 'links must be a non-empty array' }
   if (links.length > 500) return { ok: false, code: 'TOO_MANY', error: 'at most 500 links per request' }
   const results = []
-  for (const link of links) results.push(await linkOne(db, courseCode, link || {}, { dryRun }))
+  for (const link of links) results.push(await linkOne(db, courseCode, link || {}, { dryRun, checkVoice }))
   const toWrite = results.filter((r) => r.ok && r.changed && !r.dryRun)
   if (!toWrite.length) return { ok: results.every((r) => r.ok), dryRun, results: results.map(strip), linked: 0 }
 

@@ -38,6 +38,7 @@ const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
 const humanIntro = require('../shared/human-intro-splice.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
+const auditWriteLog = require('../shared/audio-write-log.cjs') // an edit-log entry for every course write the render route and the bulk filler make
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const drillCutGuard = require('../shared/drill-cut-guard.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
@@ -584,7 +585,12 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  * voice, in ANY other course, whose S3 object we can point a new row at instead
  * of paying to render it again.
  *
- * ── ANY VOICE (Tom, 2026-09-26 21:31Z, r-2026-09-26-a-recast-applies-to-new-content)
+ * ── VOICE-BOUND NOW (Tom, 2026-10-31; 9 Oct: Alessandra's female clips filled Lorenzo's male Italian slots, ~3,400 slots).
+ * The paragraph below is the 2026-09-26 any-voice rule, SUPERSEDED: this lookup answers a slot only with a clip whose voice
+ * IS the slot's voice, and callers label the new row with the slot's voice, never the clip's. No clip in that voice = a miss,
+ * and a miss falls through to rendering via the single route. The veracity_pass filter below is unchanged.
+ *
+ * ── ANY VOICE (SUPERSEDED, Tom, 2026-09-26 21:31Z, r-2026-09-26-a-recast-applies-to-new-content)
  * A recast applies to NEW content only: if these words exist in this language
  * in any voice anywhere, that clip answers; the cast voice (`voiceId`) is only
  * a preference among hits and the voice of a render when nothing exists. This
@@ -621,7 +627,8 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  *                                         very clip it was asked to replace.
  */
 async function findSiblingCourseClip(courseCode, text, language, voiceId, opts = {}) {
-  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, voiceBound = false, readOnly = false } = opts
+  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, readOnly = false } = opts
+  // VOICE-BOUND, ALWAYS (Tom, 2026-10-31). There is no opts.voiceBound: a clip answers a slot only when its voice IS the slot's voice.
   // Normalise ONCE. `audioKeyCandidates(normalizeForAudio(text))` collapsed
   // internal whitespace before handing the text to normalizeForDb, whose whole
   // job is to be byte-identical to SQL normalize_text() — which does NOT
@@ -658,7 +665,7 @@ async function findSiblingCourseClip(courseCode, text, language, voiceId, opts =
       (ownCourseOnly ? row.course_code === courseCode : (includeOwnCourse || row.course_code !== courseCode)) &&
       row.text != null && normalizeForAudio(row.text) === want &&
       sameLanguage(language, row.language) &&
-      (!voiceBound || sameVoice(voiceId, row.voice_id)))
+      sameVoice(voiceId, row.voice_id))
     // The preferred voice first; then this course's own row (it IS the slot's
     // clip, pointing at it writes nothing); then id, so the answer is stable.
     const rank = row => [sameVoice(voiceId, row.voice_id) ? 0 : 1, row.course_code === courseCode ? 0 : 1]
@@ -908,13 +915,12 @@ async function reuseSiblingIntoCourse({
   // there is nothing to write. readOnly (a dry run) never writes either.
   const isOwnSlot = sibling.course_code === courseCode && sibling.role === role && sibling.id
   if (readOnly || isOwnSlot) {
-    return { audioId: sibling.id || null, s3Key: sibling.s3_key, durationMs: sibling.duration_ms, wordBoundaries: sibling.word_boundaries || null, fromRole: sibling.role, crossedRole: sibling.role !== role, voiceId: sibling.voice_id || voiceId, written: false }
+    return { audioId: sibling.id || null, s3Key: sibling.s3_key, durationMs: sibling.duration_ms, wordBoundaries: sibling.word_boundaries || null, fromRole: sibling.role, crossedRole: sibling.role !== role, voiceId, written: false }
   }
 
   const payload = {
-    // The row names the voice that SPEAKS the clip — under any-voice reuse
-    // that may not be the voice the caller would have rendered in.
-    voice_id: sibling.voice_id || voiceId,
+    // The slot's voice. Reuse is voice-bound, so the clip's voice IS this voice; never copy a label off the clip.
+    voice_id: tryCanonicalClipVoiceId(voiceId) || voiceId,
     origin: 'tts',
     s3_key: sibling.s3_key,
     duration_ms: sibling.duration_ms,
@@ -3338,7 +3344,7 @@ app.post('/generate/:courseCode', async (req, res) => {
                 text_normalized: normalizeForAudio(item.text),
                 language: item.language,
                 role: item.role,
-                voice_id: clip.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
+                voice_id: tryCanonicalClipVoiceId(item.voiceId) || item.voiceId, // the slot's cast voice; the lookup is voice-bound, so the clip speaks it
                 origin: 'tts',
                 s3_key: clip.s3_key,
                 duration_ms: clip.duration_ms,
@@ -3417,7 +3423,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         // #430); a door answer from the clip library is not charged at all.
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
@@ -3425,14 +3431,14 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             voiceId: voiceName,
             language: toBcp47(item.language),
             phonologyGate,
@@ -3443,7 +3449,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           // honours it and pinning it halves the take-to-take duration wander on
           // short text; the tts-service defaults it to 1.0 if a caller omits it.
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -3714,7 +3720,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
     emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''} — ${vLine}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked, veracity: results.veracity })
 
+    const fillLog = await auditWriteLog.recordFillPass({ supabase, courseCode, surface: 'phase8:POST /generate', results, linked, logger })
     res.json({
+      editEventId: fillLog.eventId, ...(fillLog.editLogError ? { editLogError: fillLog.editLogError } : {}),
       status: spendCap.tripped ? 'spend-capped' : wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
@@ -5859,7 +5867,7 @@ app.get('/trial-audio/:id', async (req, res) => {
 
 app.post('/render', async (req, res) => {
   try {
-    const out = await renderClip(req.body || {}, buildRenderDeps())
+    const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps(), supabase, logger })
     res.json(out)
   } catch (error) {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}) })
@@ -7707,7 +7715,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               text_normalized: normalizeForAudio(item.text),
               language: item.language,
               role: item.role,
-              voice_id: siblingAudio.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
+              voice_id: tryCanonicalClipVoiceId(item.voiceId) || item.voiceId, // the slot's cast voice; the lookup is voice-bound, so the clip speaks it
               origin: 'tts',
               s3_key: siblingAudio.s3_key,
               duration_ms: siblingAudio.duration_ms,
@@ -7750,26 +7758,26 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName, speed
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName, speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             voiceId: voiceName,
             language: toBcp47(item.language),
           }))
         } else if (provider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', voiceBound: true },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -7892,7 +7900,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     if (results.veracity.quarantined > 0 || results.veracity.unchecked > 0) logger.error(`[audio-veracity] ${courseCode}: ${vLine}`)
     else logger.info(`[audio-veracity] ${courseCode}: ${vLine}`)
 
+    const compLog = await auditWriteLog.recordFillPass({ supabase, courseCode, surface: 'phase8:POST /generate-components', results, logger })
     res.json({
+      editEventId: compLog.eventId, ...(compLog.editLogError ? { editLogError: compLog.editLogError } : {}),
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,

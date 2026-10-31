@@ -3,7 +3,9 @@
  * Run: npx vitest run services/shared/link-clip.test.cjs
  */
 import { describe, it, expect } from 'vitest'
-const { linkClips } = require('./link-clip.cjs')
+const linkLib = require('./link-clip.cjs')
+// These cases are about words, slots and races; the voice check has its own file (link-clip-voice.test.cjs).
+const linkClips = (a) => linkLib.linkClips({ checkVoice: async () => ({ ok: true }), ...a })
 
 const A = '11111111-1111-4111-8111-111111111111'
 const B = '22222222-2222-4222-8222-222222222222'
