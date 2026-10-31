@@ -1,25 +1,26 @@
 #!/usr/bin/env node
 /**
- * The standing intro-reuse step for ANY English-known course (job #294, Tom 2026-10-31: "This needs to be IN POPTY AS A
- * PROCESS So that we don't spank credits on recording 1000 new intros on every course").
+ * The standing intro-reuse step for ANY English-known course (job #294; reworked job #299 onto Tom's two-part model,
+ * r-2026-10-31 "intros are TWO separate audio files": "Language specific + {known lego} is...").
  *
  *   node tools/audio/intro-reuse/plan-course.cjs --course fin_for_eng [--lang Finnish] [--concurrency 4]
  *
- * PLAN ONLY. It reads through Popty's own routes (course-builder :3471 seeds + LEGOs, production :3470 presentation per
- * LEGO, and the render door with dryRun:true for the one shared frame clip) — no SQL, no writes, no audio, no TTS.
- * For each LEGO with an intro it looks the English prompt up in as-in-store.json and plans
- *   [ONE "The <Lang> for" Tom-006 clip, recorded once per language] + [the existing clean second half of that prompt]
- * or marks it TTS-needed (as-in-store.cjs planIntro has the recipes). Output: plan + match report to
- * ~/ssi-evidence/ssi-dashboard-v7/tools/audio/intro-reuse/<course>-plan.json.
+ * PLAN ONLY, POINTERS ONLY. Reads through Popty's own routes (course-builder :3471 seeds + LEGOs, production :3470
+ * presentation per LEGO, and the render door with dryRun:true as the library lookup) — no SQL, no writes, no audio, no TTS.
+ * Per LEGO it plans part 2 (the English second half "'X', is:") as a pointer: an existing standalone clip, a one-time CUT
+ * of an existing whole intro (zero TTS), or a new recording. Per course it plans part 1, ONE "The <Lang> for" cut from
+ * an existing intro of that course. No splice: the app plays the two files in sequence.
+ * Output: ~/ssi-evidence/ssi-dashboard-v7/tools/audio/intro-reuse/<course>-plan.json.
  *
- * A later APPLY stage is deliberately not here. When Kai/Tom approve it, it must: splice with the cut recipe already in
- * ssi-learning-app tools/intro-bank/afr-remake/remake.mjs (frame + donor body cut after "for:" by word timings); file each
- * new clip as a NEW course_audio row (make-before-break); and point the slot only through
- * POST /api/production/:courseCode/link-clip with replace + expectCurrent. Any render (the frame, the TTS-needed second
- * halves) goes through POST /api/audio/render, never tts-service.
+ * GAPS the apply stage must close first (found job #299, read from live code):
+ *  - course_legos has ONE presentation_audio_id and the player's resolveIntroAudioUrl resolves ONE url; the only
+ *    multi-clip playback is introAssembly.ts (client-side, piece bank + the LEGO's known_audio, gated ?introAssemble=tom,
+ *    Tom bank covers afr/nld/pol/ell/eus only). A second-part pointer therefore needs a column/role + player read.
+ *  - cutting needs course_audio.word_timings (words[2] ends "for"); this tool cannot read it through Popty routes.
+ * Any render goes through POST /api/audio/render, never tts-service; any slot change only via link-clip, make-before-break.
  */
 const fs = require('fs'), path = require('path')
-const { planIntro, summarise, T6 } = require('./as-in-store.cjs')
+const { planTwoPart, summariseTwoPart, parseIntro, norm, secondHalfText, T6 } = require('./as-in-store.cjs')
 const { evidencePath } = require('../../lib/evidence-path.cjs')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
@@ -47,20 +48,31 @@ async function pool(items, n, fn) { let i = 0; await Promise.all(Array.from({ le
   await pool(legos, Number(opt('--concurrency', 4)), async l => {
     const { status, j } = await get(`${POPTY}/api/production/${course}/presentation/${l.lego_id}`)
     if (status !== 200) { errors.push({ lego_id: l.lego_id, status, error: j.error }); return }
-    l.intro = j.exists ? { text: j.text, audioId: j.audio_id } : null
+    l.intro = j.exists ? { text: j.text, audioId: j.audio_id, ms: j.duration_ms } : null
   })
   const withIntro = legos.filter(l => l.intro)
   const lang = opt('--lang') || ((withIntro.map(l => /^The (.+?) for\b/.exec(l.intro.text)).find(Boolean) || [])[1])
   if (!lang) throw new Error('cannot read the language name from the intros of ' + course + ' (pass --lang)')
-  // the one possible spend: the shared frame, library-first, asked through the render door in dryRun (never renders)
-  const fr = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: H, body: JSON.stringify({ courseCode: course, role: 'known', text: `The ${lang} for`, voiceId: T6, language: 'eng', dryRun: true, purpose: `intro-reuse plan (#294): is the shared "The ${lang} for" frame in the library?` }) })
-  const frame = await fr.json().catch(() => ({}))
-  const plans = withIntro.map(l => ({ ...planIntro(store, { lego_id: l.lego_id, known_text: l.known_text, ctx: seedText[l.seed_number], currentText: l.intro.text, currentAudioId: l.intro.audioId }, lang), currentAsIn: /as in/.test(l.intro.text) }))
-  const report = summarise(plans, { lang, frameInLibrary: frame.source === 'library' })
-  report.frame.door = { status: fr.status, source: frame.source || null, audioId: frame.audioId || null, wouldSpendChars: frame.wouldSpendChars ?? null, code: frame.code || null }
+  const render = (role, text, purpose) => fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: H, body: JSON.stringify({ courseCode: course, role, text, voiceId: T6, language: 'eng', dryRun: true, purpose }) }).then(r => r.json().catch(() => ({})))
+  // part 1: is "The <Lang> for" already a clip in the Tom-006 voice? else cut it from the cleanest existing intro of this course
+  const pf = await render('known', `The ${lang} for`, `intro-reuse plan (#299): is the per-course prefix "The ${lang} for" already in the library?`)
+  const bareOwn = withIntro.filter(l => { const p = parseIntro(l.intro.text); return p && !p.ctx && l.intro.ms }).sort((a, b) => a.intro.ms - b.intro.ms)
+  const donorL = bareOwn[0] || withIntro.filter(l => l.intro.ms).sort((a, b) => a.intro.ms - b.intro.ms)[0] || null
+  const prefix = { inLibrary: pf.source === 'library', libraryClip: pf.audioId || null, wouldRenderChars: pf.source === 'library' ? 0 : (pf.wouldSpendChars ?? null),
+    cutFrom: donorL ? { lego_id: donorL.lego_id, clip: donorL.intro.audioId, text: donorL.intro.text, ms: donorL.intro.ms, why: bareOwn[0] ? 'shortest bare (no as-in) intro of the course' : 'shortest intro of the course' } : null,
+    cut: 'words[0..2] of course_audio.word_timings ("The <Lang> for"); voice of the donor NOT verified here (no Popty route returns voice_id)' }
+  // part 2: which second halves already exist as their own clip? (library lookup per distinct text; zero spend)
+  const first = withIntro.map(l => ({ lego_id: l.lego_id, known_text: l.known_text, ctx: seedText[l.seed_number], currentText: l.intro.text, currentAudioId: l.intro.audioId }))
+  const standalone = {}
+  const texts = [...new Set(first.flatMap(l => { const c = parseIntro(l.currentText); const cx = l.ctx || (c && c.ctx); return [secondHalfText(l.known_text, null), cx ? secondHalfText(l.known_text, cx) : null].filter(Boolean) }))]
+  await pool(texts, Number(opt('--concurrency', 4)), async t => { const j = await render('known', t, 'intro-reuse plan (#299): does this second half already exist as its own clip?'); if (j.source === 'library') standalone[norm(t)] = j.audioId })
+  const plans = first.map((l, i) => ({ ...planTwoPart(store, l, standalone), currentAsIn: /as in/.test(withIntro[i].intro.text) }))
+  const report = summariseTwoPart(plans, { lang, prefix })
   report.course = course; report.legos = legos.length; report.readErrors = errors.length
+  report.standaloneFound = Object.keys(standalone).length; report.standaloneChecked = texts.length
   report.currentAsIn = plans.filter(p => p.currentAsIn).length
   report.currentAsInMatched = plans.filter(p => p.currentAsIn && p.match).length
+  report.priorRun = { note: 'first design (full-intro splice), same course', intros: 1397, matched: 1105, currentAsIn: 934, currentAsInMatched: 786 }
   const out = evidencePath(`tools/audio/intro-reuse/${course}-plan.json`)
   fs.mkdirSync(path.dirname(out), { recursive: true })
   fs.writeFileSync(out, JSON.stringify({ report, plans, errors }, null, 1))
