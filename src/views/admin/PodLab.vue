@@ -32,6 +32,7 @@
 import { ref, computed, reactive, watch } from 'vue'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
+import ClipCutButton from '@/components/admin/ClipCutButton.vue'
 import CoursePicker from '../../components/CoursePicker.vue'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
 import ConsentStep from './voicelab/ConsentStep.vue'
@@ -2402,6 +2403,7 @@ loadLiveConfig()
             {{ atomCount }} atom{{ atomCount === 1 ? '' : 's' }}
             <span v-if="selectedSentence.glue_to_next" class="muted"> · glues on</span>
           </div>
+          <ClipCutButton :course-code="selectedCourseCode" :sentence="selectedSentence" :audio-base="AUDIO_BASE" />
         </div>
 
         <!-- SEAM EDITOR — review the canon S-LEGO seams (the '…' marks baked
