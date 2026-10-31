@@ -183,6 +183,13 @@ export const RECORDIST_SETUPS = ['phone', 'pro']
 //
 // Deliberately NOT a control. This only decides which profile the room starts
 // from; the toggle is still there for anyone deliberately measuring a room.
+//
+// SINCE 2026-10-31 THIS IS ONLY THE STARTING POINT. The objection above was to
+// guessing from the BROWSER; the setup is now decided from the MICROPHONE
+// itself (mic-input.js, Tom's ruling r-2026-10-31-audio-quality-is-a-threshold-
+// not): start() acquires on this profile, reads the track's label, and moves a
+// proper plugged-in mic to 'pro'. Built-in, headset and unidentified mics stay
+// here, so the community phone case is exactly what it was.
 export function resolveCaptureProfile() {
   return DEFAULT_CAPTURE_PROFILE
 }
