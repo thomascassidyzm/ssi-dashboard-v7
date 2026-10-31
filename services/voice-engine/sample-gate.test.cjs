@@ -32,3 +32,24 @@ describe('sample-gate.cjs', () => {
     expect((await store.read('human_x')).approvedBuild).toBe('abc')
   })
 })
+
+describe('recorder build hash covers the whole recording chain (job #433)', () => {
+  const fs = require('fs'), os = require('os'), path = require('path')
+  it('changing any listed file changes the hash; an unlisted file does not', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'rb-'))
+    for (const f of gate.RECORDER_BUILD_FILES) { fs.mkdirSync(path.dirname(path.join(root, f)), { recursive: true }); fs.writeFileSync(path.join(root, f), 'x') }
+    const base = gate.computeRecorderBuild(root)
+    expect(base).not.toBe('unknown')
+    for (const f of gate.RECORDER_BUILD_FILES) {
+      fs.appendFileSync(path.join(root, f), 'y')
+      expect(gate.computeRecorderBuild(root)).not.toBe(base)
+      fs.writeFileSync(path.join(root, f), 'x')
+    }
+    expect(gate.RECORDER_BUILD_FILES).toEqual(expect.arrayContaining(['src/views/RecordistRoom.vue', 'services/audio-processor.cjs']))
+    fs.writeFileSync(path.join(root, 'other.js'), 'z')
+    expect(gate.computeRecorderBuild(root)).toBe(base)
+  })
+  it('every listed file exists in the repo', () => {
+    expect(gate.computeRecorderBuild(path.resolve(__dirname, '../..'))).not.toBe('unknown')
+  })
+})

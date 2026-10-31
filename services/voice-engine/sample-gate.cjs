@@ -12,9 +12,11 @@
  * here and the session carries on. Every failure path opens the gate: a read that fails,
  * a store that is down, a measure that cannot run — none of them ever stops recording.
  *
- * THE BUILD is __RECORDER_BUILD__ (vite.config.js): a content hash of the capture and
- * upload code (useTapRecorder.js, useRecordistQueue.js). It changes when that code changes
- * and at no other deploy, so the gate fires on a recorder change, never on every session.
+ * THE BUILD is __RECORDER_BUILD__ (vite.config.js): a content hash of everything that touches
+ * recording — the capture and upload code, the booth screen, and the server-side take
+ * processing (the RECORDER_BUILD_FILES list below, each with its reason). It changes when one
+ * of those files changes and at no other deploy, so the gate fires on a recorder change, never
+ * on every session. Tom: any change in Popty code that touches recording re-triggers the gate.
  *
  * THE STORE is one small JSON object per voice in S3 (no schema change):
  *   booth-sample-gate/<voiceId>.json  { approvedBuild, approvedAt, approvedBy, history:[...] }
@@ -58,4 +60,32 @@ function createSampleGateStore({ s3 }) {
   }
 }
 
-module.exports = { SAMPLE_SIZE, keyFor, needsSample, approve, createSampleGateStore }
+const fs = require('fs')
+const path = require('path')
+const { createHash } = require('crypto')
+
+/**
+ * EVERY FILE THAT TOUCHES RECORDING (Tom, job #433: "nothing in the recording chain").
+ * Editing any of these re-fires the 10-take gate once per voice. Add a file here only if it
+ * handles a take; never the gate itself or general utilities, or artists get stopped needlessly.
+ */
+const RECORDER_BUILD_FILES = [
+  'src/composables/useTapRecorder.js', // microphone capture
+  'src/composables/useRecordistQueue.js', // upload queue: what the booth sends and when
+  'src/views/RecordistRoom.vue', // the booth screen that drives recording
+  'services/voice-engine/recordist-router.cjs', // POST /voice/:voiceId/take, receives and files the take
+  'services/recording-upload-helpers.cjs', // retains the raw take and runs processing (retainAndProcessTake)
+  'services/audio-processor.cjs', // ffmpeg trim / convert of the take
+  'services/recording-speech-gate.cjs', // speech, steady-noise and boundary checks on the processed take
+]
+
+/** Content hash of RECORDER_BUILD_FILES under `root`. A missing file => 'unknown' (gate stays open). */
+function computeRecorderBuild(root, files = RECORDER_BUILD_FILES) {
+  try {
+    const h = createHash('sha256')
+    for (const f of files) h.update(fs.readFileSync(path.resolve(root, f)))
+    return h.digest('hex').slice(0, 12)
+  } catch { return 'unknown' }
+}
+
+module.exports = { RECORDER_BUILD_FILES, computeRecorderBuild, SAMPLE_SIZE, keyFor, needsSample, approve, createSampleGateStore }

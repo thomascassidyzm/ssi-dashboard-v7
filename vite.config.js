@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { execSync } from 'child_process'
 import path from 'path'
 import fs from 'fs-extra'
-import { createHash } from 'crypto'
+import { createRequire } from 'module'
 
 // Get git commit hash at build time (fallback for Vercel where .git doesn't exist)
 let gitCommit = 'unknown'
@@ -18,13 +18,8 @@ try {
 // capture and upload code. The booth's off-chain sample gate fires when this changes — a change
 // to the recorder itself — and never on an ordinary deploy. Hashing contents rather than asking
 // git means it is the same answer on watson-1, on Vercel and in a shallow clone.
-const RECORDER_FILES = ['src/composables/useTapRecorder.js', 'src/composables/useRecordistQueue.js']
-let recorderBuild = 'unknown'
-try {
-  const h = createHash('sha256')
-  for (const f of RECORDER_FILES) h.update(fs.readFileSync(path.resolve(__dirname, f)))
-  recorderBuild = h.digest('hex').slice(0, 12)
-} catch { /* unknown = the gate stays open */ }
+// The list of hashed files (and why each is in it) lives in services/voice-engine/sample-gate.cjs.
+const recorderBuild = createRequire(import.meta.url)('./services/voice-engine/sample-gate.cjs').computeRecorderBuild(__dirname)
 
 // https://vite.dev/config/
 // Vercel preview branches that run against a backend of their own, served from
