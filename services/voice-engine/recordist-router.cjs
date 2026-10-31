@@ -112,6 +112,7 @@ const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = re
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const setupCheck = require('./recordist-setup-check.cjs')
+const sampleGate = require('./sample-gate.cjs')
 const rerecordAll = require('./recordist-rerecord-all.cjs')
 const {
   takeKey,
@@ -230,6 +231,8 @@ module.exports = function createRecordistRouter({
   // on every take reply, and the per-line lock that keeps two takes of one line from racing.
   boothUpload = null,
   takeLineLock = null,
+  // THE SAMPLE GATE's per-voice approvals (job #428, sample-gate.cjs). Built over `s3` when left out.
+  sampleGateStore = null,
 }) {
   const router = express.Router()
   const uploadSetting = boothUpload || boothUploadConcurrency.createConcurrencySetting()
@@ -3238,6 +3241,57 @@ module.exports = function createRecordistRouter({
       res.json({ status: decision === 'approve' ? 'approved' : 'changes' })
     } catch (err) {
       logger.error(`[Recordist] setup-check decision: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── THE SAMPLE GATE (job #428, Tom r-2026-10-31) — OFF the recording chain ──
+  // GET answers which recorder build this voice is approved for; POST …/approve
+  // records an approval (the artist on their own link, or a reviewer / God admin —
+  // the booth key gate above already decided who may address this voice);
+  // POST …/measure is the advisory sound check on ONE saved take, run only from
+  // the sample review. None of these is on the take path, and none can lock it.
+  const gateStore = sampleGateStore || sampleGate.createSampleGateStore({ s3 })
+  router.get('/voice/:voiceId/sample-gate', async (req, res) => {
+    try {
+      const record = await gateStore.read(req.params.voiceId)
+      const build = typeof req.query.build === 'string' ? req.query.build : null
+      res.json({
+        sampleSize: sampleGate.SAMPLE_SIZE,
+        approvedBuild: record ? record.approvedBuild : null,
+        approvedAt: record ? record.approvedAt : null,
+        needsSample: build ? sampleGate.needsSample(record, build) : null,
+      })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate read: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/sample-gate/approve', async (req, res) => {
+    try {
+      const build = req.body && req.body.build
+      const by = req.boothAccess === 'signed_in' ? 'reviewer' : (req.body && req.body.by === 'artist' ? 'artist' : (req.boothAccess || 'link'))
+      const record = await gateStore.approve(req.params.voiceId, { build, by })
+      logger.log(`[SampleGate] voice=${req.params.voiceId} approved build=${record.approvedBuild} by=${record.approvedBy}`)
+      res.json({ approvedBuild: record.approvedBuild, approvedAt: record.approvedAt, approvedBy: record.approvedBy })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate approve: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/sample-gate/measure', async (req, res) => {
+    try {
+      const parsed = await parseMultipartTake(req)
+      if (!parsed.buffer || !parsed.buffer.length) return res.status(400).json({ error: 'no audio part in the upload' })
+      const measures = await setupCheck.measureTake(parsed.buffer, parsed.fields.mimeType || parsed.mimeType || 'audio/webm')
+      if (!measures) return res.json({ measured: false, flags: [], hints: [] })
+      const judged = setupCheck.judgeSetupCheck([{ id: 'take', ...measures }])
+      const flags = (judged.perTake[0] && judged.perTake[0].flags) || []
+      res.json({ measured: true, measures, flags, hints: flags.map((f) => setupCheck.SETUP_HINTS[f]).filter(Boolean) })
+    } catch (err) {
+      logger.error(`[Recordist] sample-gate measure: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

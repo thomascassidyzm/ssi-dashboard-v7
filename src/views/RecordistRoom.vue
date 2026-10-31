@@ -310,6 +310,24 @@
 
         <!-- ── Done: C's mic-off check, a list of this session's takes ─────────────────── -->
         <main v-else class="rc-card centre done-card" data-test="done">
+          <!-- THE SAMPLE GATE (job #428): first session, or the first since the recorder changed.
+               Off the chain: it appears after the takes are saved, and one tap goes either way. -->
+          <div v-if="sampleHeld" class="setup-card sample-gate" data-test="sample-gate">
+            <strong>Quick check before the rest: your first {{ sampleLines.length }} takes.</strong>
+            <span class="setup-note">Have a listen below. If they sound right, carry on — the booth won't stop you again until it changes.</span>
+            <ol class="sample-list" data-test="sample-list">
+              <li v-for="l in sampleLines" :key="l.id">
+                <span class="listen-text">{{ plainText(l.text) }}</span>
+                <span class="sample-check" :class="{ warn: (sampleChecks[l.id] || {}).hints && sampleChecks[l.id].hints.length }">{{ sampleCheckWords(l.id) }}</span>
+              </li>
+            </ol>
+            <span v-if="sampleUploading" class="setup-note">Still uploading — you can listen and decide now.</span>
+            <div class="sample-actions">
+              <button class="btn-ghost" type="button" data-test="sample-redo" :disabled="sampleApproving" @click="redoSample">Redo these</button>
+              <button class="btn-begin" type="button" data-test="sample-approve" :disabled="sampleApproving" @click="approveSample">{{ sampleApproving ? 'Saving…' : 'Sounds right — carry on' }}</button>
+            </div>
+          </div>
+          <p v-if="sampleNote" class="note" data-test="sample-note">{{ sampleNote }}</p>
           <h2>{{ doneHeadline }}</h2>
           <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
           <p v-if="batchUploadingNote" class="note" data-test="batch-uploading">{{ batchUploadingNote }}</p>
@@ -758,6 +776,7 @@ import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 import { fitRail } from './recordist/rail-fit.js'
+import { readSampleGate, approveSampleGate, measureSampleTake, sampleGateAction, SAMPLE_SIZE } from './recordist/sample-gate.js'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 // The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
@@ -3644,6 +3663,84 @@ function refreshOnReturn() {
   lastQueueRead = Date.now()
   if (phase.value === 'home') { refreshHome(); refreshRerecord() } else load({ quiet: true })
 }
+// ── THE SAMPLE GATE (Tom r-2026-10-31, job #428) — an OBSERVER, never in the chain ─────────
+// First session ever, and the first after a recorder code change: stop after SAMPLE_SIZE saved
+// takes and offer them for a listen before the bulk. It reads only what commit() already keeps
+// (readThisSession, lastLine) and presses the same Stop the artist presses. Nothing here runs
+// inside capture, take saving, auto-advance or the upload queue. Full reasoning: sample-gate.js.
+const sampleGate = ref({ gated: false, size: SAMPLE_SIZE })
+const sampleHeld = ref(false)
+const sampleIds = ref([])
+const sampleChecks = ref({})
+const sampleApproving = ref(false)
+const sampleNote = ref('')
+watch(() => props.voiceId, async (voiceId) => {
+  sampleGate.value = { gated: false, size: SAMPLE_SIZE }
+  sampleHeld.value = false
+  sampleIds.value = []
+  const read = await readSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
+  if (voiceId === props.voiceId) sampleGate.value = read
+}, { immediate: true })
+watch(readThisSession, (n, was) => {
+  if (!sampleGate.value.gated || sampleHeld.value) return
+  if (n === 0) { sampleIds.value = []; return }
+  if (n > was && lastLine.value && !sampleIds.value.includes(lastLine.value.id)) sampleIds.value = [...sampleIds.value, lastLine.value.id]
+})
+watch(() => [readThisSession.value, phase.value, busy.value, arming.value], () => {
+  const act = sampleGateAction({ gated: sampleGate.value.gated, held: sampleHeld.value, phase: phase.value, saved: readThisSession.value, size: sampleGate.value.size })
+  if (!act) return
+  if (act === 'stop' && (busy.value || arming.value)) return // onFinish would refuse; this runs again when they clear
+  sampleHeld.value = true
+  sampleChecks.value = {}
+  if (act === 'stop') onFinish()
+})
+const sampleLines = computed(() => sampleIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean))
+const sampleUploading = computed(() => sampleIds.value.some(id => isPending(id)))
+// The advisory sound check, on the SAVED takes, once the done card is showing them. Advisory only.
+watch(() => [sampleHeld.value, phase.value], async ([held, p]) => {
+  if (!held || p !== 'done') return
+  for (const id of sampleIds.value) {
+    if (!sampleHeld.value) return
+    if (sampleChecks.value[id]) continue
+    sampleChecks.value = { ...sampleChecks.value, [id]: { measuring: true } }
+    const url = localTakeUrls.get(id) || storedUrlFor(id)
+    const r = await measureSampleTake({ base: apiBase(), voiceId: props.voiceId, url, withKey: withBoothKey })
+    sampleChecks.value = { ...sampleChecks.value, [id]: r ? { measured: !!r.measured, hints: r.hints || [] } : { measured: false, hints: [] } }
+  }
+})
+function sampleCheckWords(id) {
+  const c = sampleChecks.value[id]
+  if (!c || c.measuring) return 'checking…'
+  if (!c.measured) return ''
+  return c.hints.length ? c.hints.join(' ') : 'sounds fine'
+}
+// Approve: this build is approved for this voice, and the session carries on into the bulk. If
+// the store is down the booth carries on anyway (never stranded) and asks again next session.
+async function approveSample() {
+  if (sampleApproving.value) return
+  sampleApproving.value = true
+  stopPlayback()
+  const ok = await approveSampleGate({ base: apiBase(), voiceId: props.voiceId, withKey: withBoothKey })
+  sampleApproving.value = false
+  sampleNote.value = ok ? '' : 'Could not save the approval just now — carrying on; it will ask again next time.'
+  sampleGate.value = { ...sampleGate.value, gated: false }
+  sampleHeld.value = false
+  sampleIds.value = []
+  await begin()
+}
+// Redo: the same lines again, from the first. Each new take replaces its earlier one exactly as
+// Again always has; the gate counts afresh and stops after the sample again.
+async function redoSample() {
+  const ids = [...sampleIds.value]
+  stopPlayback()
+  sampleHeld.value = false
+  sampleIds.value = []
+  sampleChecks.value = {}
+  for (const id of ids) touchLine(id)
+  if (ids.length) pinCursor(ids[0])
+  await begin()
+}
+
 onMounted(() => {
   canEditLines().then((ok) => { lineEditor.value = !!ok })
   document.addEventListener('visibilitychange', refreshOnReturn)
@@ -3692,6 +3789,12 @@ onDeactivated(() => {
 </script>
 
 <style scoped>
+.sample-gate { display: flex; flex-direction: column; gap: .5rem; text-align: left; }
+.sample-list { margin: 0; padding-left: 1.25rem; max-height: 30vh; overflow-y: auto; font-size: .9rem; }
+.sample-list li { display: flex; justify-content: space-between; gap: .5rem; }
+.sample-check { opacity: .7; white-space: nowrap; }
+.sample-check.warn { opacity: 1; color: var(--rc-warn, #b45309); white-space: normal; }
+.sample-actions { display: flex; gap: .5rem; justify-content: flex-end; }
 /* Phone first: Aran and Catrin record on phones. Everything thumb-reachable,
    the line itself the biggest thing on the screen. */
 .recordist {
