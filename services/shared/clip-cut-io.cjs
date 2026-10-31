@@ -16,6 +16,7 @@ const AUDIO_BASE = process.env.CLIP_CUT_AUDIO_BASE || 'https://staging.saysometh
 const WHISPER = process.env.CLIP_CUT_WHISPER || path.join(os.homedir(), '.local', 'bin', 'whisper-cli')
 const MODEL = process.env.CLIP_CUT_MODEL || path.join(os.homedir(), '.local', 'share', 'whisper-models', 'ggml-small.bin')
 const PROMPT = { zh: '以下是普通话的句子。' }
+const UNSPACED = new Set(['zh', 'ja', 'th'])
 const PAD_S = 0.4 // whisper hears a bare slice badly at its very edges; silence either side, as tools/pod-drill-cuts does
 
 function wav(pcm) {
@@ -33,7 +34,9 @@ async function whisperJson(pcm, lang, words) {
     const f = path.join(dir, 'a.wav')
     fs.writeFileSync(f, wav(Buffer.concat([pad, pcm, pad])))
     const args = ['-m', MODEL, '-l', lang, '-oj', '-of', path.join(dir, 'a'), '-np', '-t', '2']
-    if (words) args.push('-ml', '1', '-sow')
+    // word timings: one token per segment. -sow (split on word) keeps a whole space-less Chinese line as ONE "word"
+    // (#410: "whisper heard 1 word(s) for 4 pieces"), so an unspaced script is split per token instead
+    if (words) args.push('-ml', '1', ...(UNSPACED.has(lang) ? [] : ['-sow']))
     if (PROMPT[lang]) args.push('--prompt', PROMPT[lang])
     args.push(f)
     await run(WHISPER, args, { timeout: 180_000, maxBuffer: 1 << 24 })

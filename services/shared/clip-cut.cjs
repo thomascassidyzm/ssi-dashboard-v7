@@ -19,8 +19,20 @@
  * next. Those times run early or late by up to ~200 ms (measured on ita SC10-S004: "controllare" cut to "controllo"), so
  * the seam is SEARCHED: up to four quiet points near the gap are each tried, and the one where this piece and the rest of
  * the clip are both heard back best wins. A caller (the button) may instead give the seams itself (`cutsMs`).
- * WHAT VERIFIES A PIECE: whisper hears the piece back as its own words (similarity >= MATCH_MIN, heard WITH the player's
- * ~30 ms stop overrun) and it is at least MIN_PIECE_MS long. The cut verifies only when every piece does.
+ * WHAT VERIFIES A PIECE (tightened, job #419 — the old single 0.75 similarity let "controllo" (0.82) and "Polla carta"
+ * through, each carrying a sliver of a neighbouring word). A piece passes only if ALL hold; anything unmeasurable fails:
+ *   1. SEAM IN A GAP: each of its cut points sits in a low-energy gap, at least GAP_DB below the clip's speech level
+ *      (`seamDepthDb`) — a cut through voiced sound is a cut through a word, whatever whisper hears afterwards;
+ *   2. EDGES CLEAN (`edgeCheck`): whisper, hearing the piece WITH the player's ~30 ms stop overrun, hears the same number
+ *      of words, its first and last words each match the piece's (>= EDGE_MIN), and the whole >= MATCH_MIN. An extra or
+ *      a clipped edge word ("Polla" for "con la", "Collare per" for "per") fails here. Unspaced scripts (Chinese): the
+ *      heard text has exactly the piece's character count — a sliver adds one, a clip drops one;
+ *   3. at least MIN_PIECE_MS long.
+ * FAIL CLOSED, PER SEAM: when a piece fails, the seam beside it that sits in the shallower gap is DROPPED — its two
+ * LEGO pieces merge into one — and the line is cut again. A line whose seams all go stays WHOLE, shown as such. A cut
+ * never moves off a LEGO boundary to pass (the pieces come from clip-cut-lego-split.cjs).
+ * A piece the course library already holds in the right voice (`libraryPieces`) needs no cut of its own; its seams still
+ * bound its neighbours, so they are still gated, but its own hearing is not required.
  *
  * Apply (dryRun:false) refuses an unverified cut, then files ONE content-edit event (the edit log, content-edit-log.cjs;
  * method 'clip-cut', the drillCut + verdicts in detail) and appends the same line to the cut ledger. That ledger is what a
@@ -31,7 +43,9 @@
  */
 'use strict'
 
-const MATCH_MIN = 0.75
+const MATCH_MIN = 0.85
+const EDGE_MIN = 0.75
+const GAP_DB = 10
 const MIN_PIECE_MS = 200
 const OVERRUN_MS = 30
 const SEAM = Object.freeze({ frameMs: 10, slackMs: 60, searchMs: 220, candidates: 4, spacingMs: 60 })
@@ -153,8 +167,48 @@ function refuseRequest(d) {
   return null
 }
 
+const UNSPACED_LANG = new Set(['zh', 'ja', 'th'])
+const wordsOf = (s) => String(s || '').normalize('NFKC').split(/\s+/u).map(bare).filter(Boolean)
+
 /**
- * Cut one clip. Returns { ok, verified, durationMs, pieces:[{ text, startMs, endMs, heard, sim, verified, why? }],
+ * Pure. Are the piece's EDGES clean in what whisper heard? Returns null when they are, else the reason. Spaced scripts:
+ * same word count, first and last words each >= EDGE_MIN, whole >= MATCH_MIN. Unspaced: same character count, whole >= 0.5
+ * (whisper writes traditional characters for simplified ones — 給 for 给 — so the count, not the identity, is the edge test).
+ */
+function edgeCheck(heard, text, lang) {
+  if (!bare(heard)) return 'heard nothing'
+  if (UNSPACED_LANG.has(lang)) {
+    const h = [...bare(heard)].length, t = [...bare(text)].length
+    if (h !== t) return `heard ${h} characters for ${t} ("${heard}")`
+    if (similarity(heard, text) < 0.5) return `heard "${heard}"`
+    return null
+  }
+  const hw = wordsOf(heard), tw = wordsOf(text)
+  if (hw.length !== tw.length) return `heard ${hw.length} words for ${tw.length} ("${heard}")`
+  if (similarity(hw[0], tw[0]) < EDGE_MIN) return `first word heard as "${hw[0]}" ("${heard}")`
+  if (similarity(hw[hw.length - 1], tw[tw.length - 1]) < EDGE_MIN) return `last word heard as "${hw[hw.length - 1]}" ("${heard}")`
+  if (similarity(heard, text) < MATCH_MIN) return `heard "${heard}" (${Math.round(similarity(heard, text) * 100) / 100})`
+  return null
+}
+
+/** Pure. The clip's speech level: median energy of the frames above a tenth of the loudest. */
+function speechLevel(energy) {
+  const max = Math.max(...energy, 1)
+  const loud = energy.filter((e) => e >= max / 10).sort((a, b) => a - b)
+  return loud.length ? loud[Math.floor(loud.length / 2)] : max
+}
+
+/** Pure. How far below speech level (dB) the quietest frame within one frame of `ms` sits. */
+function seamDepthDb(energy, ms, ref = speechLevel(energy), frameMs = SEAM.frameMs) {
+  const i = Math.round(ms / frameMs)
+  let q = Infinity
+  for (let k = Math.max(0, i - 1); k <= Math.min(energy.length - 1, i + 1); k++) q = Math.min(q, energy[k])
+  return Math.round(20 * Math.log10(ref / Math.max(q, 1)) * 10) / 10
+}
+
+/**
+ * Cut one clip. Returns { ok, verified, whole, durationMs, pieces:[{ text, startMs, endMs, heard, sim, seamDb, library, verified, why? }],
+ * groups (which requested pieces each cut piece holds), dropped (seams given up, and why),
  * drillCut, seamsFrom: 'whisper'|'caller' } or { ok:false, code, error }.
  * deps: { clipBytes(sourceAudioId) -> mp3 Buffer, decode(mp3) -> 16 kHz mono s16le Buffer,
  *         words(pcm, lang) -> [{text,startMs,endMs}], hear(pcm, lang) -> string }
@@ -172,50 +226,83 @@ async function cutClip(req, deps) {
   const msToByte = (ms) => Math.max(0, Math.round((ms / 1000) * 16000)) * 2
   // heard as the learner hears it: the player's stop poll runs ~30 ms past endMs
   const hearSpan = async (a, z) => deps.hear(pcm.subarray(msToByte(a), Math.min(pcm.length, msToByte(z + OVERRUN_MS))), lang)
-  let cuts, seamsFrom
+  const energy = frameEnergy(pcm)
+  const ref = speechLevel(energy)
+  const words = req.cutsMs ? null : await deps.words(pcm, lang)
   if (req.cutsMs) {
-    cuts = req.cutsMs.map(Number); seamsFrom = 'caller'
-    if (cuts[0] <= 0 || cuts[cuts.length - 1] >= durationMs) return { ok: false, code: 'BAD_CUTS', error: `cutsMs must fall inside the clip (0-${durationMs} ms)` }
-  } else {
-    const placed = placeSeams(await deps.words(pcm, lang), req.pieces)
-    if (placed.refusal) return { ok: false, code: placed.refusal[0], error: placed.refusal[1] }
-    const energy = frameEnergy(pcm)
-    // Whisper's word times run early or late by up to ~200 ms, so a seam is SEARCHED, not trusted: the quiet points near
-    // each word gap are tried left to right, and the one where this piece AND everything after it are heard back best wins.
-    cuts = []; seamsFrom = 'whisper+search'
-    let start = 0
-    for (let i = 0; i < placed.seams.length; i++) {
-      const s = placed.seams[i]
-      const rest = req.pieces.slice(i + 1).join(' ')
-      let best = null
-      for (const c of seamCandidates(energy, s.gapFromMs, s.gapToMs)) {
-        if (c - start < MIN_PIECE_MS || durationMs - c < MIN_PIECE_MS) continue
-        const score = similarity(await hearSpan(start, c), req.pieces[i]) + similarity(await hearSpan(c, durationMs), rest)
-        if (!best || score > best.score) best = { c, score }
+    const c = req.cutsMs.map(Number)
+    if (c[0] <= 0 || c[c.length - 1] >= durationMs) return { ok: false, code: 'BAD_CUTS', error: `cutsMs must fall inside the clip (0-${durationMs} ms)` }
+  }
+  // the pieces as groups of the requested (LEGO) pieces: a dropped seam merges two groups, never re-splits one
+  let groups = req.pieces.map((_, i) => [i])
+  const library = new Set((req.libraryPieces || []).map(Number))
+  const dropped = []
+  let pieces, cuts, seamsFrom
+  for (;;) {
+    const texts = groups.map((g) => g.map((i) => req.pieces[i]).join(UNSPACED_LANG.has(lang) ? '' : ' '))
+    if (groups.length < 2) { pieces = [{ text: texts[0], startMs: 0, endMs: durationMs, heard: null, sim: null, verified: true, whole: true }]; cuts = []; break }
+    if (req.cutsMs) {
+      cuts = groups.slice(0, -1).map((g) => Number(req.cutsMs[g[g.length - 1]])); seamsFrom = 'caller'
+    } else {
+      const placed = placeSeams(words, texts)
+      if (placed.refusal) {
+        // whisper cannot carry this many seams: drop the last and try fewer (fail closed towards WHOLE)
+        dropped.push({ seamAfter: texts[groups.length - 2], why: placed.refusal[1] })
+        groups = [...groups.slice(0, -2), [...groups[groups.length - 2], ...groups[groups.length - 1]]]
+        continue
       }
-      const c = best ? best.c : quietestNear(energy, s.gapFromMs, s.gapToMs)
-      cuts.push(c); start = c
+      // Whisper's word times run early or late by up to ~200 ms, so a seam is SEARCHED, not trusted: the quiet points near
+      // each word gap that sit in a real gap (GAP_DB) are tried, and the one where this piece AND everything after it are
+      // heard back best wins. With no point in a gap, the quietest is kept and the gate below fails it.
+      cuts = []; seamsFrom = 'whisper+search'
+      let start = 0
+      for (let i = 0; i < placed.seams.length; i++) {
+        const sm = placed.seams[i]
+        const rest = texts.slice(i + 1).join(' ')
+        let best = null
+        for (const c of seamCandidates(energy, sm.gapFromMs, sm.gapToMs)) {
+          if (c - start < MIN_PIECE_MS || durationMs - c < MIN_PIECE_MS) continue
+          if (seamDepthDb(energy, c, ref) < GAP_DB) continue
+          const score = similarity(await hearSpan(start, c), texts[i]) + similarity(await hearSpan(c, durationMs), rest)
+          if (!best || score > best.score) best = { c, score }
+        }
+        const c = best ? best.c : quietestNear(energy, sm.gapFromMs, sm.gapToMs)
+        cuts.push(c); start = c
+      }
     }
+    const spans = spansFrom(cuts, durationMs)
+    pieces = []
+    for (let i = 0; i < spans.length; i++) {
+      const [startMs, endMs] = spans[i]
+      const text = texts[i]
+      const seamDb = [i > 0 ? seamDepthDb(energy, startMs, ref) : null, i < spans.length - 1 ? seamDepthDb(energy, endMs, ref) : null]
+      const lib = groups[i].length === 1 && library.has(groups[i][0])
+      let why = null
+      if (endMs - startMs < MIN_PIECE_MS) why = `shorter than ${MIN_PIECE_MS} ms`
+      else if (seamDb.some((d) => d != null && d < GAP_DB)) why = `seam not in a gap (${seamDb.filter((d) => d != null).join(' / ')} dB below speech, need ${GAP_DB})`
+      const heard = endMs - startMs >= MIN_PIECE_MS ? await hearSpan(startMs, endMs) : null
+      if (!why && !lib) why = edgeCheck(heard, text, lang)
+      pieces.push({ text, startMs, endMs, heard, sim: heard == null ? 0 : Math.round(similarity(heard, text) * 100) / 100, seamDb, library: lib, verified: !why, ...(why ? { why } : {}) })
+    }
+    const bad = pieces.findIndex((p) => !p.verified)
+    if (bad < 0) break
+    // drop the seam beside the failing piece that sits in the shallower gap (the only seam, at either end)
+    const left = bad > 0 ? pieces[bad].seamDb[0] : null
+    const right = bad < pieces.length - 1 ? pieces[bad].seamDb[1] : null
+    const seam = left == null ? bad : right == null ? bad - 1 : (left <= right ? bad - 1 : bad)
+    dropped.push({ seamAfter: texts[seam], why: pieces[bad].why })
+    groups = [...groups.slice(0, seam), [...groups[seam], ...groups[seam + 1]], ...groups.slice(seam + 2)]
   }
-  const spans = spansFrom(cuts, durationMs)
-  const pieces = []
-  for (let i = 0; i < spans.length; i++) {
-    const [startMs, endMs] = spans[i]
-    const text = req.pieces[i]
-    if (endMs - startMs < MIN_PIECE_MS) { pieces.push({ text, startMs, endMs, heard: null, sim: 0, verified: false, why: `shorter than ${MIN_PIECE_MS} ms` }); continue }
-    const heard = await hearSpan(startMs, endMs)
-    const sim = Math.round(similarity(heard, text) * 100) / 100
-    pieces.push({ text, startMs, endMs, heard, sim, verified: sim >= MATCH_MIN, ...(sim < MATCH_MIN ? { why: `heard "${heard}" (${sim})` } : {}) })
-  }
-  const verified = pieces.every((p) => p.verified)
+  const whole = pieces.length < 2
   const glosses = req.glosses || req.pieces.map(() => null)
   const drillCut = {
     clip: req.sourceAudioId,
     knownClip: req.knownAudioId || null,
-    lines: [{ t: [req.pieces.join(' '), 0, durationMs], k: req.knownText ? [req.knownText] : null,
-      chunks: pieces.map((p, i) => [p.text, p.startMs, p.endMs, glosses[i] || null]) }],
+    lines: [{ t: [req.pieces.join(UNSPACED_LANG.has(lang) ? '' : ' '), 0, durationMs], k: req.knownText ? [req.knownText] : null,
+      chunks: whole ? [] : pieces.map((p, i) => [p.text, p.startMs, p.endMs, groups[i].length === 1 ? glosses[groups[i][0]] || null : null]) }],
   }
-  return { ok: true, verified, durationMs, seamsFrom, lang, pieces, drillCut }
+  // verified = a CUT that passed; a line left whole is not a cut and is never filed as one
+  return { ok: true, verified: !whole && pieces.every((p) => p.verified), whole, durationMs, seamsFrom: seamsFrom || null, lang, pieces, groups, dropped, drillCut }
 }
 
 /**
@@ -240,4 +327,4 @@ async function clipCut(req, deps) {
   return { ...answer, eventId }
 }
 
-module.exports = { cutClip, clipCut, placeSeams, quietestNear, seamCandidates, frameEnergy, spansFrom, refuseRequest, similarity, bare, MATCH_MIN, MIN_PIECE_MS, OVERRUN_MS, SEAM, WHISPER_LANG }
+module.exports = { cutClip, clipCut, edgeCheck, speechLevel, seamDepthDb, placeSeams, quietestNear, seamCandidates, frameEnergy, spansFrom, refuseRequest, similarity, bare, MATCH_MIN, EDGE_MIN, GAP_DB, MIN_PIECE_MS, OVERRUN_MS, SEAM, WHISPER_LANG }

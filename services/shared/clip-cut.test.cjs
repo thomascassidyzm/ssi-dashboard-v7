@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
-const { cutClip, clipCut, placeSeams, quietestNear, refuseRequest, similarity } = require('./clip-cut.cjs')
+const { cutClip, clipCut, placeSeams, quietestNear, refuseRequest, similarity, edgeCheck } = require('./clip-cut.cjs')
+const { legoSplit, checkWordSplit } = require('./clip-cut-lego-split.cjs')
 
 // Real whisper word timings (ggml-small) of ita_for_eng pod-1 SC01-S004 "Sì, oggi ho una giornata impegnativa."
 // (clip 8322560c…v2), the card the #913/#937 silence cutter refused: it cut "Sì, oggi" at 580 ms and whisper heard "si".
@@ -62,7 +63,7 @@ describe('clip-cut: edit an existing recording (job #410)', () => {
   it('refuses to file an unverified cut and files a verified one exactly once, naming the voice it keeps', async () => {
     const deps = {
       clipRow: async () => ({ id: 'abc', course_code: 'ita_for_eng', voice_id: 'cast-voice', text: 'x' }),
-      clipBytes: async () => Buffer.from('mp3'), decode: async () => pcm(2000),
+      clipBytes: async () => Buffer.from('mp3'), decode: async () => pcm(2000, [[900, 1000]]),
       words: async () => [{ text: 'uno', startMs: 0, endMs: 900 }, { text: 'due', startMs: 1000, endMs: 1900 }],
       hear: async () => 'tre',
     }
@@ -82,7 +83,7 @@ describe('clip-cut: edit an existing recording (job #410)', () => {
   it('a dry run files nothing', async () => {
     const filed = []
     const out = await clipCut({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['uno', 'due'], cutsMs: [950] }, {
-      clipBytes: async () => Buffer.from('mp3'), decode: async () => pcm(2000), hear: async () => 'uno', recordEdit: async (e) => filed.push(e),
+      clipBytes: async () => Buffer.from('mp3'), decode: async () => pcm(2000, [[900, 1000]]), hear: async () => 'uno', recordEdit: async (e) => filed.push(e),
     })
     expect(out.dryRun).toBe(true)
     expect(filed).toHaveLength(0)
@@ -92,5 +93,44 @@ describe('clip-cut: edit an existing recording (job #410)', () => {
     expect(refuseRequest({ sourceAudioId: 'a', pieces: ['one'] })[0]).toBe('BAD_PIECES')
     expect(refuseRequest({ sourceAudioId: 'a', pieces: ['a', 'b'], cutsMs: [5, 3] })[0]).toBe('BAD_CUTS')
     expect(similarity('Posso pagare.', 'posso pagare')).toBe(1)
+  })
+
+  // job #419: the #410 sample passed "Posso pagare" | "Polla carta?" (0.8) — a seam through voiced sound, the next piece
+  // starting inside "con". Old check: similarity >= 0.75, so both pieces passed. New: the seam is not in a gap, and the
+  // edge words do not match, so the seam is dropped and the line stays WHOLE — never filed as a cut.
+  it('rejects a piece boundary inside a neighbouring word and leaves the line whole', async () => {
+    const heard = ['Posso pagare co', 'n la carta']
+    let n = 0
+    const out = await cutClip({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['Posso pagare', 'con la carta'], cutsMs: [950] }, {
+      clipBytes: async () => Buffer.from('mp3'), decode: async () => pcm(2000), // voiced throughout: no gap at 950 ms
+      hear: async () => heard[n++] || 'Posso pagare con la carta',
+    })
+    expect(out.ok).toBe(true)
+    expect(out.verified).toBe(false)
+    expect(out.whole).toBe(true)
+    expect(out.drillCut.lines[0].chunks).toEqual([])
+  })
+
+  it('edge test: an extra or clipped edge word fails, a clean piece passes', () => {
+    expect(edgeCheck('ma deve controllare per', 'ma deve controllare', 'it')).toMatch(/words/)
+    expect(edgeCheck('Polla carta?', 'con la carta', 'it')).toMatch(/words|first word/)
+    expect(edgeCheck('Credo di sì.', 'Credo di sì', 'it')).toBeNull()
+    expect(edgeCheck('可以給我們看', '可以给我们', 'zh')).toMatch(/characters/)
+    expect(edgeCheck('可以給我們', '可以给我们', 'zh')).toBeNull()
+  })
+})
+
+describe('clip-cut: the split comes from the course LEGOs (job #419)', () => {
+  const legos = [{ legoId: 'S1L1', target: 'posso', known: 'I can' }, { legoId: 'S2L1', target: 'pagare', known: 'to pay' }, { legoId: 'S3L1', target: 'ma', known: 'but' }, { legoId: 'S4L1', target: 'deve', known: 'she must' }]
+  it('cuts at LEGO boundaries only; words no LEGO covers stay one whole piece', () => {
+    expect(legoSplit('Posso pagare con la carta?', legos).pieces.map((p) => p.text)).toEqual(['Posso', 'pagare', 'con la carta?'])
+    expect(legoSplit('In bocca al lupo!', legos).whole).toBe(true)
+  })
+  it('a one-syllable LEGO joins the word it leads', () => {
+    expect(legoSplit('ma deve pagare', legos).pieces.map((p) => p.text)).toEqual(['ma deve', 'pagare'])
+  })
+  it('an agent word split of Chinese is accepted only if it rejoins to the line exactly', () => {
+    expect(checkWordSplit('我还需要买一些防晒霜和牙膏。', ['我', '还', '需要', '买', '一些', '防晒霜', '和', '牙膏。'])).toBeNull()
+    expect(checkWordSplit('我还需要买一些防晒霜和牙膏。', ['我', '还', '需要', '买', '一些', '防晒', '和', '牙膏。'])).toMatch(/rejoin/)
   })
 })
