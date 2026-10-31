@@ -201,7 +201,7 @@ async function ingestCut(input, deps) {
     const line = rollbackLine({ courseCode: d.courseCode, d, old: out.before, audioId: out.audioId, provenance: out.provenance, at: deps.now ? deps.now() : new Date().toISOString() })
     const rollbackFile = deps.appendRollback ? await deps.appendRollback(line) : null
     const recordEdit = deps.recordEdit ? (e) => deps.recordEdit({ ...e, detail: { ...e.detail, cut: out.provenance } }) : null
-    const l = await linkClips({ db, courseCode: d.courseCode, links: [link], dryRun: false, recordEdit, ...(deps.bump ? { bump: deps.bump } : {}) })
+    const l = await linkClips({ db, courseCode: d.courseCode, links: [link], dryRun: false, recordEdit, ...(deps.bump ? { bump: deps.bump } : {}), ...(deps.checkVoice ? { checkVoice: deps.checkVoice } : {}) })
     const r = (l.results || [])[0] || {}
     if (!r.ok) return { ok: false, code: r.code || l.code || 'LINK_REFUSED', error: r.error || l.error, ...out, rollback: line, rollbackFile, note: out.source === 'cut' ? `the cut ${out.audioId} is stored; the slot was not moved` : undefined }
     return { ok: true, linked: l.linked, changed: r.changed !== false, eventId: l.eventId, contentVersion: l.contentVersion, ...out, rollback: line, rollbackFile, undo: undoBody(line) }
