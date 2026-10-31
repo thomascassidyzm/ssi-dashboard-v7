@@ -305,6 +305,7 @@
             </div>
           </div>
           <p v-if="failedNote" class="note error">{{ failedNote }}</p>
+          <p v-else-if="hissNote" class="note hiss" data-test="hiss-note">{{ hissNote }}</p>
           <p v-if="playbackError" class="note error">{{ playbackError }}</p>
         </main>
 
@@ -399,7 +400,7 @@
           <button v-if="!voice.setupCheck && !podFinished && startIndex === -1 && nextBatch" type="button" class="btn-ghost home-link" data-test="home-link" @click="goHome">Home</button>
           <!-- SETTINGS, FOLDED INTO ONE LINE before Start: how the run moves on and which mic. -->
           <p class="setline" data-test="setline">
-            {{ autoAdvance ? 'Moves on when you stop' : 'Tap Next after each line' }} · {{ captureProfile === 'pro' ? 'Plugged-in mic' : 'Phone mic' }}
+            {{ autoAdvance ? 'Moves on when you stop' : 'Tap Next after each line' }} · {{ captureProfile === 'pro' ? 'Plugged-in mic' : 'Phone mic' }}{{ setupByHand ? '' : ' (detected)' }}
             · <button type="button" class="setline-change" @click="openSheet('settings')">Change</button>
           </p>
         </div>
@@ -603,14 +604,20 @@
 
             <div class="setup-pick" role="radiogroup" aria-label="Phone?">
               <label class="toggle-row">
-                <input type="radio" name="setup" value="phone" v-model="captureProfile" />
+                <input type="radio" name="setup" value="phone" v-model="captureProfile" @change="setupByHand = true" />
                 <span><strong>Phone?</strong>
                   <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.</small></span>
               </label>
               <label class="toggle-row">
-                <input type="radio" name="setup" value="pro" v-model="captureProfile" />
+                <input type="radio" name="setup" value="pro" v-model="captureProfile" @change="setupByHand = true" />
                 <span><strong>Recording with a professional plugged-in mic</strong></span>
               </label>
+              <!-- THE MIC DECIDES BY DEFAULT (Tom, 2026-10-31): the room picks the setup from the mic it can
+                   see; a tap above is an override for this mic, and this puts the choice back. -->
+              <p class="setup-detected" data-test="setup-detected">
+                <template v-if="setupByHand">Your choice for this mic. <button type="button" class="setline-change" data-test="setup-auto" @click="setupByHand = false">Let Popty choose</button></template>
+                <template v-else>Popty chooses from your mic: {{ detectedMicWords }}.</template>
+              </p>
             </div>
           </section>
 
@@ -727,6 +734,8 @@ import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile, MIN_VOICED_MS } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
+import { classifyMicInput, describeMicKind, setupForMicKind } from '@/composables/mic-input.js'
+import { checkTakeBlob } from '@/composables/take-noise-check.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
@@ -846,6 +855,49 @@ const selectedDeviceId = ref(null)
 const recommendedProfile = resolveCaptureProfile()
 const captureProfile = ref(recommendedProfile)
 try { localStorage.removeItem('recordist.captureProfile') } catch { /* private mode */ }
+// THE MIC DECIDES THE SETUP UNLESS THE RECORDIST HAS (Tom, 2026-10-31,
+// r-2026-10-31-audio-quality-is-a-threshold-not: "it should know whether you've
+// got a proper microphone plugged into it, or whether you're using the built-in
+// iPhone microphone"). False = Popty chooses: the phone setup for a built-in,
+// headset or unidentified mic, the plugged-in setup (all browser processing
+// off) for a proper one — mic-input.js. A tap on either radio sets it true, an
+// override remembered per mic; "Let Popty choose" puts it back. The recorder is
+// started with 'auto' while this is false, so it decides from the track it is
+// actually handed (labels before the first grant are blank) and re-decides on
+// plug/unplug; the radio then mirrors what it chose.
+const setupByHand = ref(false)
+// What the room can see before the mic opens (blank labels until a first grant).
+const detectedMicKind = computed(() => {
+  if (recorder.micKind && recorder.micKind.value && recorder.micKind.value !== 'unknown') return recorder.micKind.value
+  const list = recorder.devices.value || []
+  const chosen = (selectedDeviceId.value ? list.find(d => d.deviceId === selectedDeviceId.value) : null) || list[0]
+  return classifyMicInput({ label: chosen && chosen.label }).kind
+})
+const detectedMicWords = computed(() => {
+  const k = detectedMicKind.value
+  return k === 'unknown' ? 'phone setup until your mic is known' : `${describeMicKind(k)}, so the ${setupForMicKind(k) === 'pro' ? 'plugged-in' : 'phone'} setup`
+})
+watch(detectedMicKind, (k) => { if (!setupByHand.value) captureProfile.value = setupForMicKind(k) })
+// The recorder's own answer wins once the mic is open (and after a plug/unplug).
+watch(() => recorder.profile && recorder.profile.value, (p) => {
+  if (!setupByHand.value && (p === 'phone' || p === 'pro')) captureProfile.value = p
+})
+watch(setupByHand, (byHand) => { if (!byHand) captureProfile.value = setupForMicKind(detectedMicKind.value) })
+function setupToAsk() { return setupByHand.value ? captureProfile.value : 'auto' }
+
+// THE HISS CHECK (Tom, 2026-10-31: "providing the audio sounds clear, it
+// doesn't have any hiss before it actually comes in or after. That's the
+// quality of the audio."). Every take is measured once it is captured
+// (take-noise-check.js: room before and after the voice against the voice) and
+// a calm note shows under the line ONLY when the room is plainly audible. Never
+// a blocker — the take is already queued — and silent on clean takes.
+const lastNoise = ref(null) // { lineId, result }
+const hissNote = computed(() => {
+  const n = lastNoise.value
+  if (!n || !lastLine.value || n.lineId !== lastLine.value.id || !n.result || n.result.verdict !== 'hiss') return null
+  const where = /after/.test(n.result.reason) ? 'after' : 'before'
+  return `A little hiss in the quiet ${where} that take. It's saved. If it keeps showing, move away from fans or get closer to the mic.`
+})
 // The mic this take was read into, and how it was asked for — the take's
 // provenance row. The profile belongs in it: two takes of the same line under
 // the two profiles are different recordings, and nothing else on the clip says
@@ -864,7 +916,11 @@ function micLabel() {
   const got = a
     ? `got:ec${a.echoCancellation ? 1 : 0}ns${a.noiseSuppression ? 1 : 0}agc${a.autoGainControl ? 1 : 0}@${Math.round((a.sampleRate || 0) / 1000)}k`
     : null
-  return [mic, `capture:${captureProfile.value}`, got].filter(Boolean).join(' · ')
+  // The mic mode (2026-10-31): what the room identified, and whether the setup
+  // came from that (auto) or from the recordist's own tap (hand).
+  const kind = (a && a.micKind) || (recorder.micKind && recorder.micKind.value) || 'unknown'
+  const source = (a && a.source) || (setupByHand.value ? 'hand' : 'auto')
+  return [mic, `mic:${kind}`, `capture:${captureProfile.value}`, `setup:${source}`, got].filter(Boolean).join(' · ')
 }
 // THE ONE CURSOR (Aran, 2026-10-15). `index` is the line he is on, and it is the
 // ONLY notion of position in a batch. There used to be two: Next snapped to "the
@@ -2232,7 +2288,7 @@ async function begin() {
   if (at === -1) return
   micError.value = null
   try {
-    await recorder.start(selectedDeviceId.value || null, captureProfile.value)
+    await recorder.start(selectedDeviceId.value || null, setupToAsk())
   } catch (err) {
     micError.value = friendlyMicError(err)
     return
@@ -2346,6 +2402,7 @@ function commit(target, blob, hadSpeech, advance = null) {
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
   queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel(), advance })
+  checkTakeBlob(blob).then((result) => { lastNoise.value = { lineId: line.id, result } })
   noteRetake(line.id)
   rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
@@ -2750,7 +2807,7 @@ async function recordOne(lineId) {
   // A take still playing is stopped first: the mic must never open on the speaker (F57).
   if (playingId.value) stopPlayback()
   try {
-    await recorder.start(selectedDeviceId.value || null, captureProfile.value)
+    await recorder.start(selectedDeviceId.value || null, setupToAsk())
   } catch (err) { micError.value = friendlyMicError(err); return }
   // A jump from the done screen is not a step along the path he walked, so it
   // starts its own: Back must never take him from here into a queue position he
@@ -3546,6 +3603,11 @@ function applyBoothSettings(saved) {
   // raw for a studio mic); they land on the setup they were closest to.
   if (saved.captureProfile === 'phone' || saved.captureProfile === 'pro') captureProfile.value = saved.captureProfile
   else if (saved.captureProfile === 'dry') captureProfile.value = 'pro'
+  // Records from before detection (2026-10-31) have no flag. Every one of them
+  // stored 'phone' by default, so 'phone' carries no choice and goes to auto;
+  // 'pro' (or the old 'dry') was only ever a deliberate tap, so it stays hand-picked.
+  if (typeof saved.setupByHand === 'boolean') setupByHand.value = saved.setupByHand
+  else setupByHand.value = saved.captureProfile === 'pro' || saved.captureProfile === 'dry'
   if (typeof saved.autoAdvance === 'boolean') autoAdvance.value = saved.autoAdvance
   // The old re-read switch (`saved.includeRecorded`) is deliberately NOT read
   // back: a remembered tick of it is exactly what put Tom's Start button on a
@@ -3561,6 +3623,7 @@ applyBoothSettings(loadBoothSettings(props.voiceId))
 function rememberBoothSettings() {
   saveBoothSettings(props.voiceId, settingsMicKey, {
     captureProfile: captureProfile.value,
+    setupByHand: setupByHand.value,
     autoAdvance: autoAdvance.value,
     showRecorded: showRecorded.value,
     maxSeed: maxSeed.value,
@@ -3568,7 +3631,7 @@ function rememberBoothSettings() {
 }
 // Saved on every change rather than on leave: the booth is closed by shutting a
 // laptop lid at least as often as by navigating away.
-watch([captureProfile, autoAdvance, showRecorded, maxSeed], rememberBoothSettings)
+watch([captureProfile, setupByHand, autoAdvance, showRecorded, maxSeed], rememberBoothSettings)
 
 // WHICH MIC, once the browser will say. Labels only exist after permission, so
 // this runs again when the list refreshes rather than only once.
@@ -3651,10 +3714,15 @@ onMounted(() => {
   window.addEventListener('keydown', onKey)
   window.addEventListener('beforeunload', beforeUnloadGuard)
   recorder.listDevices()
+  // Plug or unplug while the mic is closed: refresh the list so the detected
+  // setup follows (the recorder handles it itself while the mic is open).
+  try { navigator.mediaDevices && navigator.mediaDevices.addEventListener && navigator.mediaDevices.addEventListener('devicechange', onDeviceChange) } catch { /* unsupported */ }
   // So the course pages the nav points at can draw "← Back to the booth".
   rememberBooth(props.voiceId)
 })
+function onDeviceChange() { recorder.listDevices() }
 onBeforeUnmount(() => {
+  try { navigator.mediaDevices && navigator.mediaDevices.removeEventListener && navigator.mediaDevices.removeEventListener('devicechange', onDeviceChange) } catch { /* unsupported */ }
   clearTimeout(refreshTimer)
   document.removeEventListener('visibilitychange', refreshOnReturn)
   window.removeEventListener('focus', refreshOnReturn)
@@ -3889,6 +3957,8 @@ kbd {
 .not-ready strong { color: var(--color-paper, #efeee9); font-weight: 600; }
 .note.done { color: var(--color-emerald, #06ffa5); }
 .note.error { color: #ff9d9d; }
+.note.hiss { color: #e8c98a; opacity: 0.85; }
+.setup-detected { font-size: 0.8rem; opacity: 0.75; margin: 0.4rem 0 0; }
 
 /* Recording stage */
 .stage { display: flex; flex-direction: column; gap: 0.85rem; padding-top: 0.75rem; }

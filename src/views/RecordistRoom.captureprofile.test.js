@@ -50,7 +50,7 @@ vi.mock('@/composables/useTapRecorder', async () => {
     }),
   }
 })
-vi.mock('vue-router', () => ({ useRoute: () => ({ params: { voiceId: 'human_tom_zzz' } }), useRouter: () => ({ push: vi.fn() }) }))
+// No vue-router mock: the room injects the router optionally (inject(routerKey, null)), like the other RecordistRoom suites.
 
 let RecordistRoom
 beforeEach(async () => {
@@ -133,5 +133,35 @@ describe('the booth asks one question about the setup', () => {
     // whatever shape booth-settings reads, a stored 'dry' must not leave an unknown profile
     const w = await mountRoom()
     expect(['phone', 'pro']).toContain(w.vm.captureProfile)
+  })
+})
+
+describe('the mic decides the setup unless the recordist has (2026-10-31)', () => {
+  it('opens on Popty-chooses, and a remembered default phone record is not a choice', async () => {
+    localStorage.setItem('recordist.booth.v1', JSON.stringify({ human_tom_zzz: { lastMicKey: 'label:iPhone Microphone', byDevice: { 'label:iPhone Microphone': { captureProfile: 'phone' } } } }))
+    const w = await mountRoom()
+    expect(w.vm.setupByHand).toBe(false)
+    expect(w.vm.setupToAsk()).toBe('auto')
+  })
+
+  it('a remembered pro pick from before detection stays the recordist\'s choice', async () => {
+    localStorage.setItem('recordist.booth.v1', JSON.stringify({ human_tom_zzz: { lastMicKey: 'label:Blue Snowball', byDevice: { 'label:Blue Snowball': { captureProfile: 'pro' } } } }))
+    const w = await mountRoom()
+    expect(w.vm.setupByHand).toBe(true)
+    expect(w.vm.setupToAsk()).toBe('pro')
+  })
+
+  it('the hand-picked flag is remembered, and "Let Popty choose" clears it', async () => {
+    const w = await mountRoom()
+    w.vm.setupByHand = true
+    w.vm.captureProfile = 'pro'
+    await flushPromises()
+    const stored = JSON.parse(localStorage.getItem('recordist.booth.v1'))
+    expect(stored.human_tom_zzz.byDevice[stored.human_tom_zzz.lastMicKey].setupByHand).toBe(true)
+    w.vm.setupByHand = false
+    await flushPromises()
+    // nothing identified in this test, so Popty's choice is the phone setup
+    expect(w.vm.captureProfile).toBe('phone')
+    expect(w.vm.setupToAsk()).toBe('auto')
   })
 })
