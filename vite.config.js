@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { execSync } from 'child_process'
 import path from 'path'
 import fs from 'fs-extra'
+import { createHash } from 'crypto'
 
 // Get git commit hash at build time (fallback for Vercel where .git doesn't exist)
 let gitCommit = 'unknown'
@@ -12,6 +13,18 @@ try {
   // Git not available (e.g., Vercel build), use env var or timestamp
   gitCommit = process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 8) || `build-${Date.now()}`
 }
+
+// THE RECORDER BUILD (job #428, src/views/recordist/sample-gate.js): a content hash of the
+// capture and upload code. The booth's off-chain sample gate fires when this changes — a change
+// to the recorder itself — and never on an ordinary deploy. Hashing contents rather than asking
+// git means it is the same answer on watson-1, on Vercel and in a shallow clone.
+const RECORDER_FILES = ['src/composables/useTapRecorder.js', 'src/composables/useRecordistQueue.js']
+let recorderBuild = 'unknown'
+try {
+  const h = createHash('sha256')
+  for (const f of RECORDER_FILES) h.update(fs.readFileSync(path.resolve(__dirname, f)))
+  recorderBuild = h.digest('hex').slice(0, 12)
+} catch { /* unknown = the gate stays open */ }
 
 // https://vite.dev/config/
 // Vercel preview branches that run against a backend of their own, served from
@@ -78,6 +91,7 @@ export default defineConfig({
   envPrefix: ['VITE_', 'NEXT_PUBLIC_'],
   define: {
     __GIT_COMMIT__: JSON.stringify(gitCommit),
+    __RECORDER_BUILD__: JSON.stringify(recorderBuild),
     // A preview branch built on Vercel talks to its OWN backend, never to
     // production (src/services/machineEnvironment.js). Empty everywhere else.
     __POPTY_PREVIEW_API__: JSON.stringify(PREVIEW_BACKENDS[process.env.VERCEL_GIT_COMMIT_REF] || '')

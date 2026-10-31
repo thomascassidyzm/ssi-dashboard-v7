@@ -337,7 +337,26 @@ async function listObjects(prefix, options = {}) {
   return out
 }
 
+// A small JSON document at a key, or null when there is none. Used for per-voice
+// booth state that is not course content (the sample gate's approvals, job #428).
+async function getJsonObject(key) {
+  try {
+    const response = await s3Client.send(new GetObjectCommand({ Bucket: BUCKET, Key: key }))
+    return JSON.parse(await streamToString(response.Body))
+  } catch (error) {
+    if (error.name === 'NoSuchKey') return null
+    throw error
+  }
+}
+
+async function putJsonObject(key, value) {
+  await s3Client.send(new PutObjectCommand({ Bucket: BUCKET, Key: key, Body: JSON.stringify(value, null, 2), ContentType: 'application/json' }))
+  return value
+}
+
 module.exports = {
+  getJsonObject,
+  putJsonObject,
   listObjects,
   getCourseManifest,
   getSampleFlags,
