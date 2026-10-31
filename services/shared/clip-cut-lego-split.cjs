@@ -29,6 +29,7 @@ const SYLLABLE_CEILING = 6
 const bare = (s) => String(s || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu, '')
 
 const HAN = /\p{Script=Han}/u
+const CLAUSE_END = /[,;，；、:：]$/u
 
 /** Rough syllable count of a text: Han characters, Devanagari akshara, else vowel groups. For the drill-size grouping only. */
 function syllables(text) {
@@ -120,7 +121,10 @@ function legoSplit(text, legos, { words = null, ceiling = SYLLABLE_CEILING } = {
   const pieces = []
   for (const r of raw) {
     const last = pieces[pieces.length - 1]
-    if (!r.lego && last && !last.legos.length) last.toks.push(...r.toks)
+    // ...except at a clause mark the text itself carries (a comma or semicolon): that is the line's own boundary, not one
+    // derived — "防晒霜在那边右手边，牙膏拐个弯" is two clauses whether or not a LEGO covers either
+    const clauseEnd = last && CLAUSE_END.test(last.toks[last.toks.length - 1])
+    if (!r.lego && last && !last.legos.length && !clauseEnd) last.toks.push(...r.toks)
     else pieces.push({ toks: [...r.toks], legos: r.lego ? [r.lego] : [], unmapped: !r.lego })
   }
   const covered = n - best[0].cost[0]
