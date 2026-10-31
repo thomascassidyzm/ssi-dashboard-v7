@@ -68,11 +68,11 @@ describe('clip-cut: edit an existing recording (job #410)', () => {
     }
     const filed = []
     deps.recordEdit = async (e) => { filed.push(e); return 'evt-1' }
-    const bad = await clipCut({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['uno', 'due'], dryRun: false }, deps)
+    const bad = await clipCut({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['uno', 'due'], cutsMs: [950], dryRun: false }, deps)
     expect(bad.code).toBe('UNVERIFIED')
     expect(filed).toHaveLength(0)
     let n = 0; deps.hear = async () => (n++ === 0 ? 'uno' : 'due')
-    const good = await clipCut({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['uno', 'due'], dryRun: false }, deps)
+    const good = await clipCut({ courseCode: 'ita_for_eng', sourceAudioId: 'abc', pieces: ['uno', 'due'], cutsMs: [950], dryRun: false }, deps)
     expect(good.ok).toBe(true)
     expect(good.eventId).toBe('evt-1')
     expect(filed).toHaveLength(1)
