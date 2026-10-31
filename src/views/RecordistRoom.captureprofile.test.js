@@ -165,3 +165,21 @@ describe('the mic decides the setup unless the recordist has (2026-10-31)', () =
     expect(w.vm.setupToAsk()).toBe('auto')
   })
 })
+
+describe('the hiss note (2026-10-31)', () => {
+  it('speaks only for a flagged take on the line just read, and never on a clean one', async () => {
+    const w = await mountRoom()
+    w.vm.lastLine = { id: 'L1', text: 'x' }
+    w.vm.lastNoise = { lineId: 'L1', result: { verdict: 'clean', reason: 'room 45 dB under the voice' } }
+    await flushPromises()
+    expect(w.vm.hissNote).toBe(null)
+    w.vm.lastNoise = { lineId: 'L1', result: { verdict: 'hiss', reason: 'room is only 22 dB under the voice (after the read)' } }
+    await flushPromises()
+    expect(w.vm.hissNote).toMatch(/hiss in the quiet after that take/)
+    expect(w.vm.hissNote).toMatch(/saved/)
+    // a note about an earlier line never shows against a newer one
+    w.vm.lastLine = { id: 'L2', text: 'y' }
+    await flushPromises()
+    expect(w.vm.hissNote).toBe(null)
+  })
+})
