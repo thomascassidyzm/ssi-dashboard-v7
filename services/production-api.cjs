@@ -4036,6 +4036,34 @@ app.post('/api/production/:courseCode/sync-intro-links', async (req, res) => {
   }
 })
 
+// EDIT AN EXISTING RECORDING (job #410): cut one clip into pieces that are SPANS of itself — no new clip, no TTS, the cast
+// voice kept by construction; the answer's drillCut is the learner app's podDrillCuts record. DRY RUN unless dryRun:false,
+// which refuses an unverified cut and files one edit event + a ledger line. Rules: services/shared/clip-cut.cjs.
+// Body: { sourceAudioId, pieces:[text...], glosses?, cutsMs?, knownAudioId?, knownText?, podSentenceId?, lang?, dryRun? }
+app.post('/api/production/:courseCode/clip-cut', async (req, res) => {
+  try {
+    const { clipCut } = require('./shared/clip-cut.cjs')
+    const { liveCutIo } = require('./shared/clip-cut-io.cjs')
+    const { courseCode } = req.params
+    const body = req.body || {}
+    if (body.dryRun !== false && req.contentEdit) req.contentEdit.wroteNothing()
+    const sb = supabaseClient.isInitialized() ? supabaseClient.getClient() : null
+    const ledgerPath = (() => { try { return require('../tools/lib/evidence-path.cjs').evidencePath(`audio/clip-cut/${courseCode}.jsonl`) } catch { return null } })()
+    const deps = {
+      ...liveCutIo(),
+      // the source's own row: its course and the voice every piece keeps (named in the edit event)
+      clipRow: sb ? async (id) => { const { data } = await sb.from('course_audio').select('id, course_code, voice_id, text, role').eq('id', id).maybeSingle(); return data || null } : null,
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+      ledger: ledgerPath ? async (line) => { fs.mkdirSync(path.dirname(ledgerPath), { recursive: true }); fs.appendFileSync(ledgerPath, JSON.stringify(line) + '\n') } : null,
+    }
+    const out = await clipCut({ ...body, courseCode }, deps)
+    res.status(out.ok ? 200 : out.code === 'IDENTITY_REQUIRED' ? 401 : 409).json(out)
+  } catch (error) {
+    logger.error('clip-cut failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
 // Ingest a MACHINE CUT (job #374): one phrase cut out of a longer clip of a different text, audited, stored as its own clip
 // and linked through link-clip's rules. DRY RUN unless dryRun:false. Usage, rules and the undo: services/shared/ingest-cut.cjs.
 // Body: { seedNumber | legoId | phraseId, role, text, sourceAudioId, startSec, endSec, charStart, charEnd, replace?, expectCurrent?, dryRun? }
