@@ -6,8 +6,11 @@
  *   GET  /line/:lineId          → the row's words now, and whether this line can be edited here
  *   POST /line/:lineId/preview  → { targetText?, knownText? } — the door's DRY RUN, the tiling check,
  *                                 and what happens to every take of the line. Writes nothing.
- *   POST /line/:lineId/apply    → the same edit, applied, with the words read at preview time as
- *                                 the door's before-state assertion (drift aborts). Returns the undo.
+ *                                 Returns `before`: the row's snapshot the preview describes.
+ *   POST /line/:lineId/apply    → { targetText?, knownText?, before } — the same edit, applied, with
+ *                                 the preview's `before` (REQUIRED) as the door's before-state
+ *                                 assertion. Drift since the preview → 409 stale_preview, no write.
+ *                                 Returns the undo.
  *   POST /undo                  → { courseCode, undoFile } — replays the door's own undo file.
  *
  * THE GATE is booth-artists-router's: an admin session (requireAdmin) AND the God-admin list
@@ -32,6 +35,7 @@ const { checkTiling } = require('../course-builder/lib/validation.cjs')
 
 const DEFAULT_DOOR = 'http://127.0.0.1:3470'
 const PAGE = 1000
+const STALE_PREVIEW_WORDS = 'This line changed after you checked it, so nothing was saved. Check the change again, then save.'
 
 const ROW_COLUMNS = {
   course_seeds: 'id, course_code, seed_number, known_text, target_text, status, known_audio_id, target1_audio_id, target2_audio_id',
@@ -180,7 +184,7 @@ module.exports = function createBoothLineEditRouter({
     return { targetText: pick(b.targetText), knownText: pick(b.knownText) }
   }
 
-  async function preparedEdit(req, res) {
+  async function preparedEdit(req, res, { requireSnapshot = false } = {}) {
     const got = await resolveLine(req, res)
     if (!got) return null
     const { target, row } = got
@@ -189,11 +193,22 @@ module.exports = function createBoothLineEditRouter({
       return null
     }
     const next = readEdit(req)
+    // APPLY builds from the snapshot the artist previewed, never from the fresh row (P1, #573):
+    // the door then compares that snapshot with the row inside its transaction.
+    let base = row
+    if (requireSnapshot) {
+      const before = rules.readSnapshot(req.body && req.body.before)
+      if (!before) {
+        res.status(400).json({ error: 'Check the change before saving it.', reason: 'preview_required' })
+        return null
+      }
+      base = { ...row, ...before }
+    }
     if ((next.targetText !== undefined && !next.targetText.trim()) || (next.knownText !== undefined && !next.knownText.trim())) {
       res.status(400).json({ error: 'A line cannot be empty.', reason: 'empty' })
       return null
     }
-    const { ops, changes } = rules.buildOps(target.kind, row, next)
+    const { ops, changes } = rules.buildOps(target.kind, base, next)
     if (!ops.length) {
       res.status(400).json({ error: 'Nothing changed.', reason: 'no_change' })
       return null
@@ -221,6 +236,7 @@ module.exports = function createBoothLineEditRouter({
         tiling,
         recordings,
         doorNote: door.json.note || null,
+        before: rules.snapshotOf(p.row),
       })
     } catch (err) {
       logger.error(`[BoothLineEdit] preview: ${err.message}`)
@@ -230,9 +246,13 @@ module.exports = function createBoothLineEditRouter({
 
   router.post('/line/:lineId/apply', async (req, res) => {
     try {
-      const p = await preparedEdit(req, res)
+      const p = await preparedEdit(req, res, { requireSnapshot: true })
       if (!p) return
       const door = await callDoor(req, p.row.course_code, { ops: p.ops, apply: true })
+      if (!door.ok && door.json?.code === 'DRIFT') {
+        logger.warn(`[BoothLineEdit] ${req.godAdmin.email} stale preview on ${req.params.lineId}: ${door.json.error}`)
+        return res.status(409).json({ error: STALE_PREVIEW_WORDS, reason: 'stale_preview', code: 'DRIFT' })
+      }
       if (!door.ok) return res.status(door.status >= 400 ? door.status : 502).json({ error: door.json?.error || 'The edit door refused the edit.', code: door.json?.code, door: door.json })
       logger.info(`[BoothLineEdit] ${req.godAdmin.email} edited ${req.params.lineId} (${p.row.course_code}) — event ${door.json.event_id}, undo ${door.json.undo_file}`)
       try { onEdited({ courseCode: p.row.course_code }) } catch { /* a cache refresh never fails an edit */ }

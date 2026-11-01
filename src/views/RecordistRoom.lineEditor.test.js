@@ -69,6 +69,7 @@ const PREVIEW = {
   changes: [{ side: 'target', before: 'Dw i isio mynd', after: 'Dw i isio aros', wordsChanged: true }],
   tiling: { checked: true, valid: false, untiled: 'aros', message: 'Seed 3 would no longer tile — not taught by any LEGO up to here: aros' },
   recordings: [{ slot: 'target1', fate: 'requeued', words: "the first Welsh voice's take goes back on the recording queue" }],
+  before: { target_text: 'Dw i isio mynd', known_text: 'I want to go', target1_audio_id: 't1-1', target2_audio_id: null, known_audio_id: null },
 }
 
 async function booth() {
@@ -155,7 +156,7 @@ describe('the editor previews before it applies', () => {
 
     await w.find('[data-test="ble-save"]').trigger('click')
     await flushPromises()
-    expect(api.applyEdit).toHaveBeenCalledWith(SEED_LINE, { targetText: 'Dw i isio aros adre' })
+    expect(api.applyEdit).toHaveBeenCalledWith(SEED_LINE, { targetText: 'Dw i isio aros adre' }, PREVIEW.before)
     expect(w.find('[data-test="ble-saved"]').exists()).toBe(true)
     expect(w.emitted('applied')[0][0]).toMatchObject({ lineId: SEED_LINE, targetText: 'Dw i isio aros adre', knownText: 'I want to go' })
 
@@ -163,6 +164,25 @@ describe('the editor previews before it applies', () => {
     await flushPromises()
     expect(api.undoEdit).toHaveBeenCalledWith('cym_nv2_for_eng', 'u.json')
     expect(w.find('[data-test="ble-undone"]').exists()).toBe(true)
+  })
+
+  it('a stale preview saves nothing: plain words to check again, Save goes, the line is re-read', async () => {
+    const w = await editor(ROW)
+    await w.find('[data-test="ble-target"]').setValue('Dw i isio aros')
+    await w.find('[data-test="ble-check"]').trigger('click')
+    await flushPromises()
+    const stale = Object.assign(new Error('This line changed after you checked it'), { status: 409, data: { reason: 'stale_preview' } })
+    api.applyEdit = vi.fn().mockRejectedValue(stale)
+    api.readLine = vi.fn().mockResolvedValue({ ...ROW, targetText: 'Dw i isio rhedeg' })
+    await w.find('[data-test="ble-save"]').trigger('click')
+    await flushPromises()
+    expect(api.applyEdit).toHaveBeenCalledWith(SEED_LINE, { targetText: 'Dw i isio aros' }, PREVIEW.before)
+    expect(w.find('[data-test="ble-error"]').text()).toContain('Check the change again')
+    expect(w.find('[data-test="ble-saved"]').exists()).toBe(false)
+    expect(w.find('[data-test="ble-save"]').exists()).toBe(false)
+    expect(w.find('[data-test="ble-target"]').element.value).toBe('Dw i isio aros')
+    expect(api.readLine).toHaveBeenCalledWith(SEED_LINE)
+    expect(w.find('[data-test="ble-check"]').attributes('disabled')).toBeUndefined()
   })
 
   it('a live course line is read-only: no box, no check, "editing live courses: ask Tom"', async () => {

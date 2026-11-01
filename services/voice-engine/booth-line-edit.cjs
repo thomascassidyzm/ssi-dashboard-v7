@@ -64,20 +64,50 @@ const wordsChanged = (before, after) => spokenWords(before) !== spokenWords(afte
 const SIDE_SLOTS = { target: ['target1', 'target2'], known: ['known'] }
 
 /**
- * The door ops for one edit. `row` is the row as read now; `next` = { targetText?, knownText? }.
+ * THE BEFORE-STATE A PREVIEW DESCRIBES (P1 from review lane #573). Both texts and every audio
+ * pointer: the preview's words ("the first Welsh voice's take goes back on the queue") are only
+ * true of the row as it was then. Preview hands this to the booth; apply REQUIRES it back and sends
+ * it, not a fresh read, as the door's `expect` — so if Kai saves "Dw i isio rhedeg" while Aran is
+ * looking at his preview of "Dw i isio aros", the door's own transactional drift check refuses
+ * Aran's Save instead of silently overwriting Kai. A fresh read would compare the row with itself.
+ */
+const SNAPSHOT_COLUMNS = Object.freeze(['target_text', 'known_text', 'target1_audio_id', 'target2_audio_id', 'known_audio_id'])
+
+function snapshotOf(row) {
+  const out = {}
+  for (const c of SNAPSHOT_COLUMNS) out[c] = row[c] ?? null
+  return out
+}
+
+/** The snapshot sent back by the booth, or null when it is missing or not the shape preview gave. */
+function readSnapshot(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null
+  const out = {}
+  for (const c of SNAPSHOT_COLUMNS) {
+    if (!(c in value)) return null
+    const v = value[c]
+    if (v !== null && typeof v !== 'string') return null
+    out[c] = v
+  }
+  return out
+}
+
+/**
+ * The door ops for one edit. `row` is the row as previewed (its snapshot columns are the
+ * before-state); `next` = { targetText?, knownText? }. The update's `expect` is the whole snapshot,
+ * so any drift since then — either text, any take — aborts the door transaction.
  * Returns { ops, changes: [{ side, before, after, wordsChanged }] }. No change → ops is empty.
  */
 function buildOps(kind, row, next) {
   const changes = []
   const set = {}
-  const expect = {}
+  const expect = snapshotOf(row)
   for (const [side, col, val] of [['target', 'target_text', next.targetText], ['known', 'known_text', next.knownText]]) {
     if (typeof val !== 'string') continue
     const after = val.trim()
     const before = String(row[col] || '').trim()
     if (!after || after === before) continue
     set[col] = after
-    expect[col] = row[col]
     changes.push({ side, before, after, wordsChanged: wordsChanged(before, after) })
   }
   if (!changes.length) return { ops: [], changes }
@@ -137,6 +167,9 @@ module.exports = {
   LIVE_COURSE_NOTE,
   isEditableCourse,
   lineTarget,
+  SNAPSHOT_COLUMNS,
+  snapshotOf,
+  readSnapshot,
   spokenWords,
   wordsChanged,
   buildOps,

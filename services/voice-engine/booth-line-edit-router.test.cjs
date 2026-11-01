@@ -3,7 +3,8 @@
 //   - the server refuses everyone but a God admin (no token 401, recordist 403, plain admin 403),
 //     and reads nothing and calls no door for them;
 //   - a live course's line is read-only ("editing live courses: ask Tom"), and preview/apply refuse;
-//   - preview is the door's DRY RUN (no "apply"), apply is "apply": true with the before-state;
+//   - preview is the door's DRY RUN (no "apply") and returns the row's snapshot; apply REQUIRES
+//     that snapshot and sends it as the door's expect, so a stale preview is refused 409 (#573 P1);
 //   - Aran's re-record rule: changed words leave the takes to the door (unlinked → re-queued), a
 //     punctuation-only edit links every take straight back in the same transaction;
 //   - the tiling check runs the course-builder's own checkTiling.
@@ -73,6 +74,11 @@ function fakeDoor() {
     calls.push({ url, body, auth: init.headers.Authorization })
     if (body.undo_file) return { ok: true, status: 200, json: async () => ({ ok: true, applied: true, event_id: 'ev-undo', results: [] }) }
     const row = { ...TABLES.course_seeds[0] }
+    // The real door's before-state check (course-edit-ops runPlans): expect vs the row as it is now.
+    for (const op of body.ops) {
+      const drift = Object.entries(op.expect || {}).filter(([c, v]) => (row[c] ?? null) !== (v ?? null))
+      if (drift.length) return { ok: false, status: 409, json: async () => ({ error: `before-state drift on ${drift.map(([c]) => c).join('; ')}`, code: 'DRIFT', applied: false }) }
+    }
     const results = []
     let cur = { ...row }
     for (const op of body.ops) {
@@ -147,11 +153,13 @@ test('preview is the door dry run; apply sends apply:true with the before-state,
   assert.strictEqual(pre.door.calls[0].body.apply, undefined)
   assert.match(pre.door.calls[0].url, /\/api\/production\/cym_nv2_for_eng\/edit-batch$/)
   assert.strictEqual(pre.door.calls[0].auth, 'Bearer aran')
+  const snapshot = { target_text: 'Dw i isio mynd', known_text: 'I want to go', target1_audio_id: 't1-1', target2_audio_id: 't2-1', known_audio_id: 'k-1' }
   assert.deepStrictEqual(pre.door.calls[0].body.ops[0], {
-    op: 'seed.update', seed_number: 3, set: { target_text: 'Dw i isio aros' }, expect: { target_text: 'Dw i isio mynd' },
+    op: 'seed.update', seed_number: 3, set: { target_text: 'Dw i isio aros' }, expect: snapshot,
   })
+  assert.deepStrictEqual(pre.json.before, snapshot)
 
-  const ap = await call('POST', `${line(SEED_ID)}/apply`, 'aran', { targetText: 'Dw i isio aros' })
+  const ap = await call('POST', `${line(SEED_ID)}/apply`, 'aran', { targetText: 'Dw i isio aros', before: pre.json.before })
   assert.strictEqual(ap.status, 200)
   assert.strictEqual(ap.door.calls[0].body.apply, true)
   assert.strictEqual(ap.json.undoFile, '2026-10-15-ev-1.json')
@@ -188,4 +196,51 @@ test('spokenWords: capitals and punctuation are not words', () => {
   assert.strictEqual(rules.wordsChanged('Bore da, Aran.', 'bore da Aran'), false)
   assert.strictEqual(rules.wordsChanged("Dw i'n mynd", 'Dw i’n mynd!'), false)
   assert.strictEqual(rules.wordsChanged('Bore da', 'Bore da iawn'), true)
+})
+
+test('apply retains the before-state the artist previewed when another editor changes the line', async () => {
+  const row = TABLES.course_seeds[0]
+  const original = row.target_text
+  const door = fakeDoor()
+  try {
+    const edit = { targetText: 'Dw i isio aros' }
+    const pre = await call('POST', `${line(SEED_ID)}/preview`, 'aran', edit, door)
+    assert.strictEqual(pre.status, 200)
+    const previewedBefore = door.calls[0].body.ops[0].expect
+    // Kai saves different words while Aran is looking at the preview.
+    row.target_text = 'Dw i isio rhedeg'
+    const ap = await call('POST', `${line(SEED_ID)}/apply`, 'aran', { ...edit, before: pre.json.before }, door)
+    // The real door can reject drift only if it receives the original expectation.
+    assert.deepStrictEqual(door.calls[1].body.ops[0].expect, previewedBefore)
+    // …and it does: Kai's words stand, Aran is told to check again.
+    assert.strictEqual(ap.status, 409)
+    assert.strictEqual(ap.json.reason, 'stale_preview')
+    assert.match(ap.json.error, /Check the change again/)
+  } finally {
+    row.target_text = original
+  }
+})
+
+test('apply without the preview snapshot is refused and never reaches the door', async () => {
+  for (const before of [undefined, null, 'x', { target_text: 'Dw i isio mynd' }, { target_text: 1, known_text: '', target1_audio_id: null, target2_audio_id: null, known_audio_id: null }]) {
+    const door = fakeDoor()
+    const r = await call('POST', `${line(SEED_ID)}/apply`, 'aran', { targetText: 'Dw i isio aros', before }, door)
+    assert.strictEqual(r.status, 400, JSON.stringify(before))
+    assert.strictEqual(r.json.reason, 'preview_required')
+    assert.strictEqual(door.calls.length, 0)
+  }
+})
+
+test('a take relinked after the preview also makes it stale (the recording consequences moved)', async () => {
+  const row = TABLES.course_seeds[0]
+  const door = fakeDoor()
+  try {
+    const pre = await call('POST', `${line(SEED_ID)}/preview`, 'aran', { targetText: 'Dw i isio aros' }, door)
+    row.target1_audio_id = 't1-2'
+    const ap = await call('POST', `${line(SEED_ID)}/apply`, 'aran', { targetText: 'Dw i isio aros', before: pre.json.before }, door)
+    assert.strictEqual(ap.status, 409)
+    assert.strictEqual(ap.json.reason, 'stale_preview')
+  } finally {
+    row.target1_audio_id = 't1-1'
+  }
 })
