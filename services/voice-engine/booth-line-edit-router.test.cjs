@@ -189,3 +189,22 @@ test('spokenWords: capitals and punctuation are not words', () => {
   assert.strictEqual(rules.wordsChanged("Dw i'n mynd", 'Dw i’n mynd!'), false)
   assert.strictEqual(rules.wordsChanged('Bore da', 'Bore da iawn'), true)
 })
+
+test('apply retains the before-state the artist previewed when another editor changes the line', async () => {
+  const row = TABLES.course_seeds[0]
+  const original = row.target_text
+  const door = fakeDoor()
+  try {
+    const edit = { targetText: 'Dw i isio aros' }
+    const pre = await call('POST', `${line(SEED_ID)}/preview`, 'aran', edit, door)
+    assert.strictEqual(pre.status, 200)
+    const previewedBefore = door.calls[0].body.ops[0].expect
+    // Kai saves different words while Aran is looking at the preview.
+    row.target_text = 'Dw i isio rhedeg'
+    await call('POST', `${line(SEED_ID)}/apply`, 'aran', edit, door)
+    // The real door can reject drift only if it receives the original expectation.
+    assert.deepStrictEqual(door.calls[1].body.ops[0].expect, previewedBefore)
+  } finally {
+    row.target_text = original
+  }
+})
