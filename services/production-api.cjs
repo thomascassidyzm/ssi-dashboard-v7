@@ -13761,58 +13761,7 @@ app.get('/api/admin/uptime-summary', async (req, res) => {
   }
 })
 
-// Parse Prometheus exposition format into a flat map keyed by metric name +
-// optional sorted-label string. Values are numbers. Helper kept local — no
-// need for prom-client just to read 8 metrics off a scrape.
-function parsePrometheusText(text) {
-  const samples = []
-  const lines = text.split('\n')
-  for (const line of lines) {
-    if (!line || line.startsWith('#')) continue
-    // Metric line: name{label="v",label="v"} 123 [timestamp]
-    // Or: name 123
-    const m = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eEnNaIfF]+)/)
-    if (!m) continue
-    const name = m[1]
-    const labelBlock = m[2] || ''
-    const valueStr = m[3]
-    const value = Number(valueStr)
-    if (!Number.isFinite(value)) continue
-    const labels = {}
-    if (labelBlock) {
-      const re = /([a-zA-Z_][a-zA-Z0-9_]*)="((?:[^"\\]|\\.)*)"/g
-      let lm
-      while ((lm = re.exec(labelBlock)) !== null) {
-        labels[lm[1]] = lm[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
-      }
-    }
-    samples.push({ name, labels, value })
-  }
-  return samples
-}
-
-// Sum samples for a metric, optionally filtered by label predicate.
-function sumMetric(samples, name, labelPredicate = null) {
-  let total = 0
-  let matched = 0
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    total += s.value
-    matched++
-  }
-  return matched > 0 ? { value: total, count: matched } : null
-}
-
-// First-sample lookup — for gauge metrics where there's typically one series.
-function firstMetric(samples, name, labelPredicate = null) {
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    return s.value
-  }
-  return null
-}
+const { parsePrometheusText, sumMetric, firstMetric } = require('./shared/prometheus-text.cjs')
 
 // GET /api/admin/db-health — scrape Supabase Metrics API, extract 6-8 metrics
 // that tell the "is the DB healthy right now?" story. Resilient to missing
