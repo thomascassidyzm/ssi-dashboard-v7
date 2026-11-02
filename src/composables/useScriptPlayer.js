@@ -120,6 +120,10 @@ export function useScriptPlayer(options = {}) {
     }
   }
 
+  // Where each phase sits in the cycle, for the progress bar.
+  const PHASE_PROGRESS = { prompt: 0, pause: 25, voice1: 50, voice2: 75 }
+  const PAUSE_MS = 1000 // Fixed 1s for QA preview
+
   async function startPhase(phase) {
     const gen = playbackGeneration // Capture generation for stale detection
     currentPhase.value = phase
@@ -128,68 +132,41 @@ export function useScriptPlayer(options = {}) {
     const item = currentItem.value
     if (!item) return
 
+    progress.value = PHASE_PROGRESS[phase]
     switch (phase) {
-      case 'prompt': {
-        progress.value = 0
-        if (item.sourceId) {
-          const url = await getAudioUrl(item.sourceId)
-          if (gen !== playbackGeneration) return // Stale — playback was restarted
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'prompt':
+        await playClipOrSkip(item.sourceId, gen)
         break
-      }
 
-      case 'pause': {
-        progress.value = 25
+      case 'pause':
         clearPauseTimer()
         pauseTimer = setTimeout(() => {
           if (gen !== playbackGeneration) return // Stale
           if (isPlaying.value && !isPaused.value) {
             onAudioEnded()
           }
-        }, 1000) // Fixed 1s for QA preview
+        }, PAUSE_MS)
         break
-      }
 
-      case 'voice1': {
-        progress.value = 50
-        if (item.target1Id) {
-          const url = await getAudioUrl(item.target1Id)
-          if (gen !== playbackGeneration) return // Stale
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'voice1':
+        await playClipOrSkip(item.target1Id, gen)
         break
-      }
 
-      case 'voice2': {
-        progress.value = 75
-        const target2Id = item.target2Id || item.target1Id
-        if (target2Id) {
-          const url = await getAudioUrl(target2Id)
-          if (gen !== playbackGeneration) return // Stale
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'voice2':
+        // One recorded voice serves both voice slots when there is no second.
+        await playClipOrSkip(item.target2Id || item.target1Id, gen)
         break
-      }
     }
+  }
+
+  // Play the clip, or move straight on when there is none (no uuid, or no
+  // URL for it). After the async resolve, a restart in the meantime wins.
+  async function playClipOrSkip(uuid, gen) {
+    if (!uuid) return onAudioEnded()
+    const url = await getAudioUrl(uuid)
+    if (gen !== playbackGeneration) return // Stale — playback was restarted
+    if (url) playAudioSrc(url)
+    else onAudioEnded()
   }
 
   function playAudioSrc(url) {
