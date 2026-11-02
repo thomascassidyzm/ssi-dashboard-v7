@@ -19,6 +19,7 @@ const { fetchAuditStats } = require('./shared/audit-stats.cjs')
 const { releaseGate, describeBlocking } = require('./shared/debut-practice.cjs')
 
 const logger = createLogger('ProductionAPI')
+const serverError = require('./shared/server-error.cjs').serverErrorResponder(logger)
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
@@ -1156,8 +1157,7 @@ app.get('/api/production/schema/validate', async (req, res) => {
 
     res.json(results)
   } catch (err) {
-    logger.error('Schema validation failed:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Schema validation failed:', err)
   }
 })
 
@@ -1173,8 +1173,7 @@ app.get('/api/library/courses', async (req, res) => {
     if (error) throw error
     res.json({ courses: coursesVisibleTo(user, data) })
   } catch (err) {
-    logger.error('Failed to get library courses:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get library courses:', err)
   }
 })
 
@@ -1187,8 +1186,7 @@ app.get('/api/library/course/:courseCode', async (req, res) => {
     if (!data) return res.status(404).json({ error: 'Course not found' })
     res.json({ course: { ...data, is_hidden: data.visibility === 'hidden' } })
   } catch (err) {
-    logger.error('Failed to get library course:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get library course:', err)
   }
 })
 
@@ -1243,8 +1241,7 @@ app.get('/api/courses', async (req, res) => {
     logger.info(`Returning ${result.length} courses from database${req.query.stats === 'true' ? ' (with stats)' : ''}`)
     res.json({ courses: result })
   } catch (err) {
-    logger.error('Failed to get courses:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get courses:', err)
   }
 })
 
@@ -1521,8 +1518,7 @@ app.get('/api/estate-map', async (req, res) => {
     }
     res.json(payload)
   } catch (err) {
-    logger.error('Failed to build estate map:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to build estate map:', err)
   }
 })
 
@@ -1535,8 +1531,7 @@ app.get('/api/courses/:courseCode/stats', async (req, res) => {
     const stats = await supabaseClient.getCourseContentStats(req.params.courseCode)
     res.json({ course_code: req.params.courseCode, stats })
   } catch (err) {
-    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${req.params.courseCode}:`, err)
   }
 })
 
@@ -1703,8 +1698,7 @@ app.get('/api/stats/:courseCode', async (req, res) => {
       scored_phrases: scoredPhrases.length
     })
   } catch (err) {
-    logger.error(`Failed to get stats for ${req.params.courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${req.params.courseCode}:`, err)
   }
 })
 
@@ -2050,8 +2044,7 @@ app.get('/api/courses', async (req, res) => {
 
     res.json(courses)
   } catch (error) {
-    logger.error('Error fetching courses:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching courses:', error)
   }
 })
 
@@ -2666,8 +2659,7 @@ app.get('/api/production/course-stats', async (req, res) => {
       stats
     })
   } catch (err) {
-    logger.error('Failed to get course content stats:', err)
-    res.status(500).json({ error: err.message })
+    serverError(res, 'Failed to get course content stats:', err)
   }
 })
 
@@ -2689,8 +2681,7 @@ app.get('/api/production/:courseCode/stats', async (req, res) => {
       stats
     })
   } catch (err) {
-    logger.error(`Failed to get stats for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get stats for ${courseCode}:`, err)
   }
 })
 
@@ -2748,8 +2739,7 @@ app.get('/api/production/:courseCode/info', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to get info for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get info for ${courseCode}:`, err)
   }
 })
 
@@ -2925,8 +2915,7 @@ app.get('/api/production/:courseCode/introductions', async (req, res) => {
       ...introductions
     })
   } catch (err) {
-    logger.error(`Failed to get introductions for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get introductions for ${courseCode}:`, err)
   }
 })
 
@@ -3005,8 +2994,7 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       hasAudio: !!data && !isPending
     })
   } catch (err) {
-    logger.error(`Failed to get presentation for ${courseCode}/${legoId}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get presentation for ${courseCode}/${legoId}:`, err)
   }
 })
 
@@ -3065,8 +3053,7 @@ app.get('/api/production/:courseCode/manifest', async (req, res) => {
 
     return res.status(404).json({ error: 'Course not found' })
   } catch (error) {
-    logger.error('Error fetching manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching manifest:', error)
   }
 })
 
@@ -3105,8 +3092,7 @@ app.post('/api/production/:courseCode/manifest/generate', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error generating manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating manifest:', error)
   }
 })
 
@@ -3124,8 +3110,7 @@ app.get('/api/production/:courseCode/manifest/validate', async (req, res) => {
 
     res.json(validation)
   } catch (error) {
-    logger.error('Error validating manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error validating manifest:', error)
   }
 })
 
@@ -3201,8 +3186,7 @@ app.get('/api/production/:courseCode/export-legacy', async (req, res) => {
       audioJobId
     })
   } catch (error) {
-    logger.error('Error generating legacy manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating legacy manifest:', error)
   }
 })
 
@@ -3406,8 +3390,7 @@ app.get('/api/production/:courseCode/flags', async (req, res) => {
 
     res.json(flags)
   } catch (error) {
-    logger.error('Error fetching flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching flags:', error)
   }
 })
 
@@ -3458,8 +3441,7 @@ app.post('/api/production/:courseCode/flags/update', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error updating flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error updating flag:', error)
   }
 })
 
@@ -3481,8 +3463,7 @@ app.get('/api/production/:courseCode/audio-flags', async (req, res) => {
 
     res.json({ flags, stats })
   } catch (error) {
-    logger.error('Error getting audio flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting audio flags:', error)
   }
 })
 
@@ -3601,8 +3582,7 @@ app.get('/api/production/:courseCode/flagged-items', async (req, res) => {
     logger.info(`[FlaggedItems] ${courseCode}: ${items.length} items returned`)
     res.json({ items, total: items.length })
   } catch (error) {
-    logger.error('Error getting flagged items:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting flagged items:', error)
   }
 })
 
@@ -3637,8 +3617,7 @@ app.post('/api/production/:courseCode/audio-flags', async (req, res) => {
 
     res.json({ success: true, flag })
   } catch (error) {
-    logger.error('Error creating audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error creating audio flag:', error)
   }
 })
 
@@ -3663,8 +3642,7 @@ app.post('/api/production/:courseCode/audio-flags/:audioUuid/resolve', async (re
 
     res.json({ success: true, flag })
   } catch (error) {
-    logger.error('Error resolving audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resolving audio flag:', error)
   }
 })
 
@@ -3688,8 +3666,7 @@ app.delete('/api/production/:courseCode/audio-flags/:audioUuid', async (req, res
 
     res.json({ success: true })
   } catch (error) {
-    logger.error('Error deleting audio flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error deleting audio flag:', error)
   }
 })
 
@@ -3724,8 +3701,7 @@ app.post('/api/production/:courseCode/audio-flags/bulk-delete', async (req, res)
     logger.info(`Bulk deleted ${deleted} audio flags for ${courseCode}`)
     res.json({ success: true, deleted })
   } catch (error) {
-    logger.error('Error bulk deleting audio flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error bulk deleting audio flags:', error)
   }
 })
 
@@ -4035,8 +4011,7 @@ app.post('/api/production/:courseCode/flags/delete', async (req, res) => {
 
     res.json({ success: true })
   } catch (error) {
-    logger.error('Error deleting flag:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error deleting flag:', error)
   }
 })
 
@@ -4075,8 +4050,7 @@ app.post('/api/production/:courseCode/flags/bulk-update', async (req, res) => {
 
     res.json({ success: true, updated: updates.length })
   } catch (error) {
-    logger.error('Error bulk updating flags:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error bulk updating flags:', error)
   }
 })
 
@@ -4136,8 +4110,7 @@ app.post('/api/production/:courseCode/feedback', async (req, res) => {
 
     res.json({ success: true, feedback: data })
   } catch (error) {
-    logger.error('Error submitting feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error submitting feedback:', error)
   }
 })
 
@@ -4239,8 +4212,7 @@ app.get('/api/production/:courseCode/feedback/aggregated', async (req, res) => {
       issues: enrichedIssues
     })
   } catch (error) {
-    logger.error('Error getting aggregated feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting aggregated feedback:', error)
   }
 })
 
@@ -4297,8 +4269,7 @@ app.post('/api/production/:courseCode/feedback/resolve', async (req, res) => {
       resolved: data?.length || 0
     })
   } catch (error) {
-    logger.error('Error resolving feedback:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resolving feedback:', error)
   }
 })
 
@@ -4339,8 +4310,7 @@ app.get('/api/production/:courseCode/feedback/stats', async (req, res) => {
 
     res.json({ success: true, stats })
   } catch (error) {
-    logger.error('Error getting feedback stats:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting feedback stats:', error)
   }
 })
 
@@ -4351,8 +4321,7 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
     const metadata = await s3Service.getAudioMetadata(courseCode)
     res.json(metadata)
   } catch (error) {
-    logger.error('Error fetching audio metadata:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio metadata:', error)
   }
 })
 
@@ -4560,8 +4529,7 @@ app.get('/api/production/:courseCode/shared-audio-status', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('shared-audio-status error:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'shared-audio-status error:', error)
   }
 })
 
@@ -4606,8 +4574,7 @@ app.get('/api/production/:courseCode/audio-stats', async (req, res) => {
       }
     })
   } catch (error) {
-    logger.error('Error fetching audio stats:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio stats:', error)
   }
 })
 
@@ -5368,8 +5335,7 @@ app.get('/api/production/audio/:uuid/stream', async (req, res) => {
     res.set('Cache-Control', 'no-store')
     res.redirect(302, url)
   } catch (error) {
-    logger.error('Error streaming audio by id:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error streaming audio by id:', error)
   }
 })
 
@@ -5408,8 +5374,7 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
     res.json({ url })
   } catch (error) {
-    logger.error('Error generating signed URL:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error generating signed URL:', error)
   }
 })
 
@@ -5420,8 +5385,7 @@ app.get('/api/production/:courseCode/audio/:uuid/exists', async (req, res) => {
     const exists = await s3Service.audioFileExists(uuid)
     res.json({ exists })
   } catch (error) {
-    logger.error('Error checking audio existence:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error checking audio existence:', error)
   }
 })
 
@@ -5509,8 +5473,7 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
     const url = await s3Service.getAudioSignedUrl(audioData.id, 3600, { s3Key: audioData.s3_key })
     res.json({ url, uuid: audioData.id })
   } catch (error) {
-    logger.error('Error fetching audio by text:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching audio by text:', error)
   }
 })
 
@@ -6405,8 +6368,7 @@ app.get('/api/production/:courseCode/regeneration/queue', async (req, res) => {
       byRole
     })
   } catch (error) {
-    logger.error('Error fetching regeneration queue:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error fetching regeneration queue:', error)
   }
 })
 
@@ -7166,8 +7128,7 @@ app.get('/api/production/voices', async (req, res) => {
       voices
     })
   } catch (error) {
-    logger.error('Error listing voices:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error listing voices:', error)
   }
 })
 
@@ -7192,8 +7153,7 @@ app.get('/api/production/voices/:voiceId', async (req, res) => {
       voice
     })
   } catch (error) {
-    logger.error('Error getting voice:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting voice:', error)
   }
 })
 
@@ -9065,8 +9025,7 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to get script view for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to get script view for ${courseCode}:`, err)
   }
 })
 
@@ -9357,8 +9316,7 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       }
     })
   } catch (err) {
-    logger.error(`Failed to generate learning journey for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to generate learning journey for ${courseCode}:`, err)
   }
 })
 
@@ -9450,8 +9408,7 @@ app.get('/api/production/:courseCode/learning-journey/search', async (req, res) 
       query: q
     })
   } catch (err) {
-    logger.error(`Failed to search learning journey for ${courseCode}:`, err)
-    res.status(500).json({ error: err.message })
+    serverError(res, `Failed to search learning journey for ${courseCode}:`, err)
   }
 })
 
@@ -9962,8 +9919,7 @@ app.get('/api/production/:courseCode/export-state', async (req, res) => {
       generatedOnMachine: data.generated_on_machine
     })
   } catch (error) {
-    logger.error('Error getting export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting export state:', error)
   }
 })
 
@@ -10016,8 +9972,7 @@ app.post('/api/production/:courseCode/export-state', async (req, res) => {
     logger.info(`Export state updated for ${courseCode}`)
     res.json({ success: true, state: data })
   } catch (error) {
-    logger.error('Error updating export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error updating export state:', error)
   }
 })
 
@@ -10255,8 +10210,7 @@ app.post('/api/production/:courseCode/export-legacy-with-state', async (req, res
       audioJobId: audioJobId // Will be null if withAudio=false
     })
   } catch (error) {
-    logger.error(`Error generating legacy manifest for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Error generating legacy manifest for ${courseCode}:`, error)
   }
 })
 
@@ -10299,8 +10253,7 @@ app.delete('/api/production/:courseCode/export-state', async (req, res) => {
     logger.info(`Export state reset for ${courseCode}`)
     res.json({ success: true, message: 'Export state reset successfully' })
   } catch (error) {
-    logger.error('Error resetting export state:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error resetting export state:', error)
   }
 })
 
@@ -10319,8 +10272,7 @@ app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
     const manifest = await fs.readJson(manifestPath)
     res.json(manifest)
   } catch (error) {
-    logger.error(`Get pending manifest error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Get pending manifest error for ${courseCode}:`, error)
   }
 })
 
@@ -10356,8 +10308,7 @@ app.get('/api/production/:courseCode/export-state/manifest', async (req, res) =>
       res.json({ manifest })
     }
   } catch (error) {
-    logger.error('Error getting cached manifest:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error getting cached manifest:', error)
   }
 })
 
@@ -10534,8 +10485,7 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
     logger.info(`[ManifestDiff] ${courseCode}: ${diff.suggestedBump} bump (${diff.major.length} major, ${diff.minor.length} minor, ${diff.patch.length} patch)`)
     res.json(diff)
   } catch (error) {
-    logger.error('Error computing manifest diff:', error)
-    res.status(500).json({ error: error.message })
+    serverError(res, 'Error computing manifest diff:', error)
   }
 })
 
@@ -11063,8 +11013,7 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     watchStep2Run(courseCode)
     res.status(202).json({ started: true, pid: child.pid, message: 'Verification running in the background; progress arrives on s3Verify:progress, the result on s3Verify:completed' })
   } catch (error) {
-    logger.error(`Verify S3 start error for ${req.params.courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Verify S3 start error for ${req.params.courseCode}:`, error)
   }
 })
 
@@ -11624,8 +11573,7 @@ app.post('/api/production/:courseCode/verify-production-durations', async (req, 
 
     res.json(verificationResult)
   } catch (error) {
-    logger.error(`Verify production error for ${courseCode}:`, error)
-    res.status(500).json({ error: error.message })
+    serverError(res, `Verify production error for ${courseCode}:`, error)
   }
 })
 
