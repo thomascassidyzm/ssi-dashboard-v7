@@ -160,3 +160,65 @@ describe('voice audit groupedSlots stays under the statement cap', () => {
     expect(rows[0].unplayable).toBe(windowCalls)
   })
 })
+
+// job #312: --twins-only plans ONLY twin slots (target2 on its own row's target1 file, twin-check's set), relinks any male clip
+// before rendering, and never relinks a female clip; the pointer guard's opt-in lets an older MALE voice through and nothing else.
+describe('voice audit --twins-only', () => {
+  const rv = require('../../services/shared/resolve-voice.cjs'), audit = require('./voice-audit.cjs')
+  const ita = { course_code: 'ita_for_eng', known_lang: 'eng', target_lang: 'ita' }
+  const LORENZO = 'cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086', ALESSANDRA = 'cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13'
+  const itaCast = { roles: [{ language: 'ita', gender: 'f', rank: 0, slot: 'phrase', voice_id: ALESSANDRA, assigned_by: 'thomas.cassidy+ssi@gmail.com' },
+    { language: 'ita', gender: 'm', rank: 0, slot: 'phrase', voice_id: LORENZO, assigned_by: 'thomas.cassidy+ssi@gmail.com' }],
+  voices: [{ voice_id: ALESSANDRA, is_active: true, gender: 'f' }, { voice_id: LORENZO, is_active: true, gender: 'm' }] }
+
+  it('plans the twin slot and not a non-twin drifted male slot; relinks an older male clip, never a female one', async () => {
+    const saved = rv.loadCourse
+    rv.loadCourse = async () => ita
+    // ciao: a twin (target2 plays target1's file). grazie: also a twin, but only a female clip of it exists.
+    // buongiorno: a male slot drifted onto an old Azure male voice, NOT a twin — the whole-course fix moves it, twins-only must not.
+    const twins = [
+      { tbl: 'course_practice_phrases', key: 'ita_for_eng:S0001L01B01', pos: 1, aid: 'tw1', tx: 'ciao', t: 'ciao', language: 'ita', v2: ALESSANDRA, origin: 'tts', v1: ALESSANDRA, s3_key: 'mastered/F1.mp3' },
+      { tbl: 'course_practice_phrases', key: 'ita_for_eng:S0002L01B01', pos: 2, aid: 'tw2', tx: 'grazie', t: 'grazie', language: 'ita', v2: ALESSANDRA, origin: 'tts', v1: ALESSANDRA, s3_key: 'mastered/F2.mp3' },
+    ]
+    const nonTwin = { tbl: 'course_practice_phrases', col: 'target2_audio_id', key: 'ita_for_eng:S0003L01B01', pos: 3, aid: 'az1', t: 'buongiorno', tx: 'buongiorno', language: 'ita' }
+    const candidates = [
+      { i: 0, id: 'female-old', voice_id: ALESSANDRA, s3_key: 'mastered/F9.mp3', gender: 'f', created_at: '2026-01-01' },
+      { i: 0, id: 'tw1', voice_id: ALESSANDRA, s3_key: 'mastered/F1.mp3', gender: 'f', created_at: '2026-02-01' },
+      { i: 0, id: 'benigno', voice_id: 'azure_it-IT-BenignoNeural', s3_key: 'mastered/M1.mp3', gender: 'male', created_at: '2026-03-01' },
+      { i: 1, id: 'female-only', voice_id: ALESSANDRA, s3_key: 'mastered/F8.mp3', gender: 'f', created_at: '2026-01-01' },
+    ]
+    const pg = { async query(sql) {
+      if (/a1\.s3_key = a2\.s3_key/.test(sql)) return { rows: /course_practice_phrases/.test(sql) ? twins : [] }
+      if (/cross join lateral/.test(sql)) return { rows: candidates }
+      if (/ca\.voice_id = \$2/.test(sql)) return { rows: [nonTwin] }   // driftSlots: what the whole-course fix would move
+      return { rows: [] }
+    } }
+    try {
+      const { items, plan } = await audit.twinAudit(pg, {}, 'ita_for_eng', itaCast)
+      const keys = items.flatMap((it) => it.slots.map((s) => s.key))
+      expect(keys).toEqual(['ita_for_eng:S0001L01B01', 'ita_for_eng:S0002L01B01'])
+      expect(keys).not.toContain(nonTwin.key)
+      expect(items.every((it) => rv.sameVoice(it.voice, LORENZO))).toBe(true)
+      expect(items[0]).toMatchObject({ reuse: 'benigno', reuseKind: 'other-male' })
+      expect(items[1].reuse).toBeFalsy()
+      expect(plan).toMatchObject({ slots: 2, relinkCastSlots: 0, relinkOtherSlots: 1, renderSlots: 1, renderChars: 6, renderOnlyFemaleTexts: 1, renderUngenderedTexts: 0 })
+      // the cast male wins over an older male whenever both exist
+      expect(audit.chooseTwinRelink({ voice: LORENZO, twinFiles: [] }, [candidates[2], { id: 'lor', voice_id: LORENZO, s3_key: 'x', gender: null, created_at: '2026-09-01' }])).toMatchObject({ id: 'lor', kind: 'cast' })
+    } finally { rv.loadCourse = saved }
+  })
+
+  it('the guard opt-in passes an older male clip on a male slot and still refuses a female one', async () => {
+    const clips = { benigno: { id: 'benigno', voice_id: 'azure_it-IT-BenignoNeural', language: 'ita', origin: 'tts' }, fem: { id: 'fem', voice_id: 'azure_it-IT-ElsaNeural', language: 'ita', origin: 'tts' }, tw1: { id: 'tw1', voice_id: ALESSANDRA, language: 'ita', origin: 'tts' } }
+    const voices = [{ voice_id: 'azure_it-IT-BenignoNeural', gender: 'male' }, { voice_id: 'azure_it-IT-ElsaNeural', gender: 'female' }]
+    const db = { from: (tbl) => { const f = []; const q = { select: () => q, eq: (c, v) => { f.push((r) => r[c] === v); return q }, in: (c, vs) => { f.push((r) => vs.includes(r[c])); return q },
+      maybeSingle: async () => ({ data: q.rows()[0] || null, error: null }), then: (res) => res({ data: q.rows(), error: null }),
+      rows: () => (tbl === 'course_audio' ? Object.values(clips) : tbl === 'voices' ? voices : tbl === 'courses' ? [{ ...ita, course_code: 'ita_for_eng' }] : []).filter((r) => f.every((p) => p(r))) }; return q } }
+    rv.useCast(itaCast)
+    try {
+      const p = (to, sameGenderRepair) => rv.assertPointer(db, { courseCode: 'ita_for_eng', col: 'target2_audio_id', to, tbl: 'course_practice_phrases', key: 'k', from: 'tw1', sameGenderRepair })
+      await expect(p('benigno', false)).rejects.toMatchObject({ code: 'VOICE_POLICY' })
+      await expect(p('benigno', true)).resolves.toBeUndefined()
+      await expect(p('fem', true)).rejects.toMatchObject({ code: 'VOICE_POLICY' })
+    } finally { rv.useCast(null) }
+  })
+})

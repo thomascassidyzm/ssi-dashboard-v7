@@ -16,6 +16,7 @@
  *   node tools/audio/voice-audit.cjs --course C --fix [--dry-run]             do it: reuse first, then (only with --max-chars) render
  *        [--max-chars N]  render budget for this run (default 0 = reuse only; spend is still the TTS guard's to allow)
  *        [--limit N]      at most N distinct texts this run          [--role known|target1|target2]
+ *        [--twins-only]   only male slots playing their own row's female file (twin-check's set), relinked to any male clip first (job #312)
  *   node tools/audio/voice-audit.cjs --course C --list-unplayable [--json]    every slot whose clip cannot play: slot, text, voice, why (job #788)
  *   node tools/audio/voice-audit.cjs --course C --repoint-unplayable [--dry-run] [--max-chars N]   reuse-first repoint of those slots (job #788)
  *   node tools/audio/voice-audit.cjs --undo <ledger.jsonl> [--dry-run]       put every slot the ledger moved back (before-state asserted)
@@ -229,19 +230,112 @@ async function audit(pg, db, code, cast, { withPlan = true, role = null } = {}) 
   return out
 }
 
+/**
+ * --twins-only (job #312, Tom 2026-11-02, r-2026-11-02-ssi-voices-a-slot-cast-for): the fix plan is ONLY the twin slots, i.e. a
+ * male (target2) slot playing the very file its own row's target1 (female) slot plays. That is exactly the set
+ * tools/audio/twin-check.cjs counts, read by its twinRows. Every other drifted slot is left alone: on spa/por/kor/ara/deu/jpn
+ * the whole-course fix is ~12-15k slots, and Tom asked for the twins.
+ * Pure. Twin rows -> fix items, one per (language, words, cast male voice). Human takes are never moved; slots with no
+ * male cast are counted, never guessed.
+ */
+function twinFixItems(course, rows, cast) {
+  const items = new Map()
+  let uncast = 0, human = 0
+  for (const r of rows) {
+    if (r.origin === 'human') { human++; continue }
+    const res = rv.resolveVoice({ course, role: 'target2', language: r.language }, cast)
+    if (res.status !== 'voice') { uncast++; continue }
+    const k = `${r.language}|${r.t}|${res.voiceId}`
+    if (!items.has(k)) items.set(k, { language: r.language, t: r.t, tx: r.tx, voice: res.voiceId, role: 'target2', pos: r.pos, twinFiles: [], slots: [] })
+    const it = items.get(k)
+    it.slots.push({ tbl: r.tbl, col: 'target2_audio_id', key: r.key, from: r.aid, course: course.course_code })
+    if (r.s3_key && !it.twinFiles.includes(r.s3_key)) it.twinFiles.push(r.s3_key)
+    if (r.pos != null && (it.pos == null || r.pos < it.pos)) it.pos = r.pos
+  }
+  return { items: [...items.values()].sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9)), uncast, human }
+}
+
+/**
+ * Pure. Relink before render (Watson's amendment to #312, from Tom's question "are there male clips already recorded for these
+ * texts that just are not linked to the slots?"): of the existing usable clips of the identical text and language, any course,
+ * the cast male voice first, else an OLDER male voice (voices.gender), oldest first. A clip in a female voice, a clip whose
+ * voice has no recorded gender, and a clip on the twin's own (female) file are never chosen.
+ * @param {{voice:string, twinFiles:string[]}} item
+ * @param {{id, voice_id, s3_key, gender, created_at}[]} candidates
+ * @returns {{id:string, kind:'cast'|'other-male', voice_id:string}|null}
+ */
+function chooseTwinRelink(item, candidates) {
+  const ok = (candidates || []).filter((c) => c && c.id && !item.twinFiles.includes(c.s3_key))
+  const byAge = (a, b) => String(a.created_at || '').localeCompare(String(b.created_at || ''))
+  const cast = ok.filter((c) => rv.sameVoice(c.voice_id, item.voice)).sort(byAge)[0]
+  if (cast) return { id: cast.id, kind: 'cast', voice_id: cast.voice_id }
+  const male = ok.filter((c) => rv.normGender(c.gender) === 'm').sort(byAge)[0]
+  return male ? { id: male.id, kind: 'other-male', voice_id: male.voice_id } : null
+}
+
+/** Existing usable clips of each item's text+language, with their voice's recorded gender; cast voice first, at most 10 each. */
+async function attachTwinCandidates(pg, items) {
+  for (let i = 0; i < items.length; i += 500) {
+    const chunk = items.slice(i, i + 500)
+    const voice = chunk.map((x) => rv.canonVoice(x.voice))
+    const { rows } = await pg.query(`with want as (select * from unnest($1::int[], $2::text[], $3::text[], $4::text[], $5::text[]) as w(i, t, lang, voice, bare))
+      select w.i, c.* from want w cross join lateral (
+        select ca.id::text id, ca.voice_id, ca.s3_key, ca.created_at::text created_at, g.gender
+        from course_audio ca left join lateral (select vo.gender from voices vo where vo.voice_id in (ca.voice_id, 'cartesia_' || ca.voice_id, 'azure_' || ca.voice_id, 'xai_' || ca.voice_id) and vo.gender is not null limit 1) g on true
+        where ca.text_normalized = w.t and ca.language = w.lang and ${usable('ca')} and coalesce(ca.veracity_pass, true)
+        order by (ca.voice_id in (w.voice, w.bare)) desc, (g.gender ilike 'm%') desc nulls last, ca.created_at limit 10) c`,
+    [chunk.map((_, j) => j), chunk.map((x) => x.t), chunk.map((x) => x.language), voice, voice.map((v) => String(v).replace(/^[a-z]+_/, ''))])
+    for (const it of chunk) it.candidates = []
+    for (const r of rows) chunk[Number(r.i)].candidates.push(r)
+  }
+}
+
+/** Pure. The --twins-only plan: relinked in the cast voice, relinked to an older male voice, to render. */
+function twinPlan(items) {
+  // renderOnlyFemaleTexts / renderUngenderedTexts: of the texts left to render, how many have an existing clip that was passed
+  // over because its voice is female, or because the voices table records no gender for it (an ungendered voice is never linked)
+  const plan = { texts: items.length, slots: 0, relinkCastTexts: 0, relinkCastSlots: 0, relinkOtherTexts: 0, relinkOtherSlots: 0, renderTexts: 0, renderSlots: 0, renderChars: 0, renderOnlyFemaleTexts: 0, renderUngenderedTexts: 0 }
+  for (const it of items) {
+    const pick = chooseTwinRelink(it, it.candidates)
+    it.reuse = pick && pick.id; it.reuseKind = pick && pick.kind
+    plan.slots += it.slots.length
+    if (!pick) {
+      plan.renderTexts++; plan.renderSlots += it.slots.length; plan.renderChars += String(it.tx || '').length
+      const other = (it.candidates || []).filter((c) => !it.twinFiles.includes(c.s3_key))
+      if (other.some((c) => !rv.normGender(c.gender))) plan.renderUngenderedTexts++
+      else if (other.length) plan.renderOnlyFemaleTexts++
+    }
+    else if (pick.kind === 'cast') { plan.relinkCastTexts++; plan.relinkCastSlots += it.slots.length }
+    else { plan.relinkOtherTexts++; plan.relinkOtherSlots += it.slots.length }
+  }
+  return plan
+}
+
+async function twinAudit(pg, db, code, cast) {
+  const { twinRows } = require('./twin-check.cjs')
+  const course = await rv.loadCourse(db, code)
+  const { items, uncast, human } = twinFixItems(course, await twinRows(pg, code), cast)
+  await attachTwinCandidates(pg, items)
+  return { items, plan: { ...twinPlan(items), uncast, human } }
+}
+
+/** Pure. One line for the twin plan. */
+const renderTwinPlan = (code, p) => `${code} twins-only plan: ${p.slots} twin slots over ${p.texts} texts — relink cast ${p.relinkCastSlots} slots (${p.relinkCastTexts} texts), relink other male ${p.relinkOtherSlots} slots (${p.relinkOtherTexts} texts), render ${p.renderSlots} slots (${p.renderTexts} texts, ${p.renderChars} chars; of those, ${p.renderOnlyFemaleTexts} texts exist only in a female voice, ${p.renderUngenderedTexts} have a clip in a voice with no recorded gender)${p.uncast ? `, ${p.uncast} with no male cast (left)` : ''}${p.human ? `, ${p.human} human (left)` : ''}`
+
 /** Pure. Who to tell and how: the ledger file for one fix run. */
 const ledgerFile = (code) => require('../lib/evidence-path.cjs').evidencePath(`tools/audio/voice-audit/${code}-${new Date().toISOString().replace(/[:.]/g, '-')}.jsonl`)
 
-async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role }) {
+async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role, twinsOnly = false }) {
   const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
   const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
   const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
-  const a = await audit(pg, db, code, cast, { role })
-  console.log(render(code, a))
+  const a = twinsOnly ? await twinAudit(pg, db, code, cast) : await audit(pg, db, code, cast, { role })
+  console.log(twinsOnly ? renderTwinPlan(code, a.plan) : render(code, a))
+  const agent = twinsOnly ? 'voice-audit-312' : 'voice-audit-53'
   const file = ledgerFile(code); if (!dryRun) fs.mkdirSync(path.dirname(file), { recursive: true })
   const log = (e) => { if (!dryRun) fs.appendFileSync(file, JSON.stringify({ ...e, course: code, at: new Date().toISOString() }) + '\n') }
   let ev = null
-  const event = async () => ev || (ev = await recordContentEdit(db, { identity: serviceIdentity('voice-audit-53'), courseCode: code, surface: 'tools:audio/voice-audit', operation: 'update', detail: { why: 'job #53: slots moved to the resolveVoice voice', ledger: file } }))
+  const event = async () => ev || (ev = await recordContentEdit(db, { identity: serviceIdentity(agent), courseCode: code, surface: 'tools:audio/voice-audit', operation: 'update', detail: { why: twinsOnly ? 'job #312: twin male slots moved off the female file' : 'job #53: slots moved to the resolveVoice voice', ledger: file } }))
   let moved = 0, unbumped = 0, spent = 0, rendered = 0, reused = 0, refused = 0, skipped = 0
   const bump = async () => { if (dryRun || !unbumped) return; const v = await bumpCourseVersion(db, code, 'patch'); if (!v) throw new Error(`content_version bump failed for ${code}`); log({ kind: 'bumped', v }); unbumped = 0 }
   const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
@@ -251,19 +345,19 @@ async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role }) {
       if (!to) {
         if (it.role === 'presentation' || spent + String(it.tx).length > maxChars) { skipped++; continue }
         if (dryRun) { rendered++; spent += String(it.tx).length; continue }
-        const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'voice-audit-53' },
+        const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': agent },
           body: JSON.stringify({ courseCode: code, role: it.role, text: it.tx, language: it.language, voiceId: it.voice, voiceBound: true, purpose: `voice-audit: ${it.role} slot to its resolveVoice voice` }) })
         const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
         if (!res.ok || !r.ok) { log({ kind: 'refused', t: it.t, r }); console.log('RENDER REFUSED — stopping (a refusal is the answer, never retried):', JSON.stringify(r).slice(0, 300)); break }
         const { rows: [ca] } = await pg.query(`select id::text, voice_id, s3_key, duration_ms from course_audio ca where id = $1 and ${usable('ca')}`, [r.audioId])
-        if (!ca || !rv.sameVoice(ca.voice_id, it.voice)) { log({ kind: 'verify-failed', t: it.t, r, ca }); console.log('VERIFY FAILED — stopping:', it.tx); break }
+        if (!ca || !rv.sameVoice(ca.voice_id, it.voice) || (it.twinFiles && it.twinFiles.includes(ca.s3_key))) { log({ kind: 'verify-failed', t: it.t, r, ca }); console.log('VERIFY FAILED — stopping:', it.tx); break }
         to = ca.id; how = r.source === 'library' ? 'reuse' : 'render'; spent += r.charsSpent || 0
       }
       if (dryRun) { moved += it.slots.length; how === 'reuse' ? reused++ : rendered++; continue }
       log({ kind: 'intent', to, how, t: it.t, slots: it.slots })   // write-ahead: undo reads this
       const done = []
       for (const s of it.slots) {
-        try { if (await rv.setSlotPointer(db, { tbl: s.tbl, key: s.key, col: s.col, from: s.from, to, courseCode: code, editEventId: await event() })) { done.push(s); moved++; unbumped++ } }
+        try { if (await rv.setSlotPointer(db, { tbl: s.tbl, key: s.key, col: s.col, from: s.from, to, courseCode: code, editEventId: await event(), sameGenderRepair: twinsOnly && it.reuseKind === 'other-male' && to === it.reuse })) { done.push(s); moved++; unbumped++ } }
         catch (e) { if (e.code !== 'VOICE_POLICY') throw e; refused++; console.log('REFUSED by resolveVoice:', e.message) }
       }
       log({ kind: 'swap', to, slots: done }); how === 'reuse' ? reused++ : rendered++
@@ -391,7 +485,7 @@ async function main(argv = process.argv.slice(2)) {
     if (!codes.length) throw new Error('name --course <code>[,<code>] or --premium11')
     if (has('--fix')) {
       if (codes.length !== 1) throw new Error('--fix runs one course at a time')
-      return await fix(pg, db, codes[0], cast, { dryRun: has('--dry-run'), maxChars: Number(opt('--max-chars', 0)), limit: Number(opt('--limit', 1e9)), role: opt('--role', null) })
+      return await fix(pg, db, codes[0], cast, { dryRun: has('--dry-run'), maxChars: Number(opt('--max-chars', 0)), limit: Number(opt('--limit', 1e9)), role: opt('--role', null), twinsOnly: has('--twins-only') })
     }
     const all = {}
     for (const code of codes) {
@@ -406,4 +500,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { pointerIds, groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { twinFixItems, chooseTwinRelink, twinPlan, twinAudit, renderTwinPlan, pointerIds, groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

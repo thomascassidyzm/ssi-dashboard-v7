@@ -28,7 +28,17 @@ describe('switch-pod-clip-pointers planProblems', () => {
     expect(planProblems(row({ target_text: 'Non sono sicuro. Ciao.' }, { target_text: 'Non sono sicura, ciao.' }), all).join()).toMatch(/sentence count/);
   });
   it('refuses a field it does not switch', () => {
-    expect(planProblems(row({ known_audio_id: A }, { known_audio_id: B }), all).join()).toMatch(/not switchable/);
+    expect(planProblems(row({ speaker: 'Anna' }, { speaker: 'Sarah' }), all).join()).toMatch(/not switchable/);
+  });
+  it('fills an empty known slot with an existing clip, and its rollback empties it again (job #325)', () => {
+    expect(planProblems(row({ known_audio_id: null }, { known_audio_id: A }), all)).toEqual([]);
+    expect(planProblems(invert(row({ known_audio_id: null }, { known_audio_id: A })), all)).toEqual([]);
+  });
+  it('refuses replacing a known clip — that is a re-record, not a fill', () => {
+    expect(planProblems(row({ known_audio_id: A }, { known_audio_id: B }), all).join()).toMatch(/fill-only/);
+  });
+  it('refuses filling a known slot with a clip that does not exist yet', () => {
+    expect(planProblems(row({ known_audio_id: null }, { known_audio_id: 'ffffffff-0000-0000-0000-000000000000' }), all).join()).toMatch(/does not exist/);
   });
   it('a rollback is the plan with before and after swapped', () => {
     const p = { podId: 'x:pod-1', jobLabel: '#938', speakers: { before: { a: 1 }, after: { a: 2 } }, rows: [{ id: 'r1', before: { target_audio_id: A }, after: { target_audio_id: B } }] };

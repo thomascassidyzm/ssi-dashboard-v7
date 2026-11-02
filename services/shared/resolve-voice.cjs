@@ -257,7 +257,7 @@ async function loadCourse(db, courseCode) {
  * Throws VoicePointerRefusal unless `to` (a course_audio id) may fill `col` on a row of `courseCode`.
  * Reads the clip, the course and the cast; a failed read refuses.
  */
-async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false }) {
+async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false, sameGenderRepair = false }) {
   const role = roleOfColumn(col)
   if (!role || !to) return
   // FIRST, whatever the voice policy says: a HUMAN take is never replaced by a synthetic clip (Tom's HARD RULE 2026-10-13, human-take-guard.cjs).
@@ -265,7 +265,23 @@ async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomAppro
   const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language, origin').eq('id', to).maybeSingle()
   if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read clip ${to} (${error.message})`, 'clip-unreadable')
   const v = checkPointer({ course: await loadCourse(db, courseCode), role, clip }, await loadCast(db))
+  if (!v.ok && v.reason === 'disagrees' && sameGenderRepair && SLOT_GENDER[role] && await voiceGender(db, clip.voice_id) === SLOT_GENDER[role]) return
   if (!v.ok) throw new VoicePointerRefusal(v.message, v.reason)
+}
+
+const normGender = (g) => (/^m/i.test(String(g || '')) ? 'm' : /^f/i.test(String(g || '')) ? 'f' : null)
+/**
+ * The gender the voices table records for a clip's voice ('m' | 'f'), or null when it records none — null never passes.
+ * Job #312 (Tom 2026-11-02, r-2026-11-02-ssi-voices-a-slot-cast-for, Watson's relink-before-render amendment): a twin repair may
+ * relink a male slot to an OLDER male voice of the language, so the slot's gender is right at zero cost while the cast upgrade
+ * continues gradually (r-2026-10-29). A female clip on a male slot is never allowed by this, whatever the caller asks.
+ */
+async function voiceGender(db, voiceId) {
+  if (!voiceId) return null
+  const ids = [...new Set([voiceId, canonVoice(voiceId), `cartesia_${voiceId}`, `azure_${voiceId}`, `xai_${voiceId}`])]
+  const { data, error } = await db.from('voices').select('voice_id, gender').in('voice_id', ids)
+  if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read voices (${error.message})`, 'cast-unreadable')
+  return normGender((data || []).map((r) => r.gender).find(Boolean))
 }
 
 /**
@@ -284,9 +300,9 @@ async function mayPoint(db, { courseCode, col, to, tbl, key, from, tomApproval, 
  * THE guarded pointer write: check, then `update … set col=to where id=key and col=from` (before-state asserted).
  * Returns true when exactly one row moved. Tools that repoint audio call this instead of writing the column themselves.
  */
-async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval }) {
+async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval, sameGenderRepair = false }) {
   if (!['course_seeds', 'course_legos', 'course_practice_phrases'].includes(tbl)) throw new Error(`setSlotPointer: not a slot table: ${tbl}`)
-  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval })
+  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval, sameGenderRepair })
   const patch = { [col]: to, ...(editEventId ? { last_edit_event_id: editEventId } : {}) }
   let q = db.from(tbl).update(patch).eq('id', key)
   q = from == null ? q.is(col, null) : q.eq(col, from)
@@ -297,6 +313,6 @@ async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEve
 
 module.exports = {
   resolveVoice, applyResolvedVoices, checkPointer, assertPointer, mayPoint, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
-  canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal,
+  canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal, voiceGender, normGender,
   POLICY, SLOT_ROLES, SLOT_GENDER, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, EXPECTED_ENGLISH_TARGET, COURSE_FIELDS,
 }
