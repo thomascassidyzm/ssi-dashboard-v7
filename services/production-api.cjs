@@ -21,7 +21,6 @@ const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
-const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const podVisibility = require('./pod-visibility.cjs')

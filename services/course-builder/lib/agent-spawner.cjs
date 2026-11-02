@@ -7,8 +7,7 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { getLanguageName, getGoldenSeedCount, getLangFamily, PREPOSITIONS } = require('./language-config.cjs');
-const { classifySeedPattern, formatDecompositionPatterns } = require('./validation.cjs');
+const { getGoldenSeedCount } = require('./language-config.cjs');
 const { claudeSpawnSetup } = require('../../shared/claude-config.cjs');
 
 const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
