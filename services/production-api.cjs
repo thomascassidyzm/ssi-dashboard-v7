@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
+const { isStageEventLine, parseStageEventLine } = require('./shared/stage-event-line.cjs')
 const compression = require('compression')
 const cors = require('cors')
 const path = require('path')
@@ -10834,14 +10835,10 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
 function handleStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* malformed, ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':       io.emit('stageDeploy:start', { jobId, courseCode, ...payload }); break
       case 'newCourse':   job.sawNewCourse = true
@@ -11020,14 +11017,10 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
 function handleRestartStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':            io.emit('stageDeploy:restartStarted', { jobId, courseCode, ...payload }); break
       case 'restartSucceeded': job.phase = 'succeeded'
