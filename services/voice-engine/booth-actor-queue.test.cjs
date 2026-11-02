@@ -156,3 +156,34 @@ test("Eleri: a finished phrase step offers the plan's next batch, and the step c
   assert.strictEqual(atEnd.nextPod.track, 'phrase.2')
   assert.strictEqual(atEnd.nextPod.batch, 1)
 })
+
+test("job #849: Dan's two Siân lines (new words) replace the Sarah pod lines inside his Pod 1 card — 24 left, not 22", () => {
+  const home = require('./booth-home.cjs')
+  const queue = dansQueue()
+  // Pod 1 is 90 lines, 68 read; lines 1 and 23 (read as 'Sarah') are in the 68.
+  queue.lines.forEach((l, i) => { if (l.podSlug === 'pod-1') { l.recorded = i < 68; l.order = i + 1 } })
+  const sarah1 = queue.lines[0], sarah23 = queue.lines[22]
+  sarah1.id = 'cym_s_for_eng:pod-1:SC01-S001'; sarah23.id = 'cym_s_for_eng:pod-1:SC05-S001'
+  const swap = (sid, order) => ({ id: `podswap:${sid}`, kind: 'podswap', courseCode: 'cym_s_for_eng', podSlug: 'pod-1', podId: 'cym_s_for_eng:pod-1', order, recorded: false, role: 'target1', duplicateOf: [] })
+  queue.lines.push(swap(sarah1.id, 1), swap(sarah23.id, 23))
+  queue.tally = [{ courseCode: 'cym_s_for_eng', kind: 'pod', role: null, podSlug: 'pod-1', podId: 'cym_s_for_eng:pod-1', total: 90, recorded: 68 },
+    { courseCode: 'cym_s_for_eng', kind: 'podswap', role: 'target1', podSlug: 'pod-1', podId: 'cym_s_for_eng:pod-1', total: 2, recorded: 0 }]
+  const scoped = q.scopeQueue(DAN, queue)
+  assert.ok(!scoped.lines.some((l) => l.id === sarah1.id || l.id === sarah23.id), 'the Sarah pod lines step aside')
+  const tracks = home.buildHomeTracks(scoped.lines)
+  const p1 = tracks.find((t) => t.key === 'pod.pod-1')
+  assert.ok(p1 && !tracks.some((t) => t.key.startsWith('podswap.')), 'one Pod 1 card, no separate new-words card')
+  assert.strictEqual(p1.kind, 'pod')
+  assert.strictEqual(p1.total, 90)
+  assert.strictEqual(p1.recorded, 66)
+  assert.strictEqual(p1.total - p1.recorded, 24, '22 left + the two Siân lines')
+  assert.strictEqual(scoped.total, 90, 'top number: the tally (Pod 1 only here) less the two lines that stepped aside')
+  assert.strictEqual(scoped.remaining, 24)
+})
+
+test('job #849: the South Siân swaps are Dan\'s, the North ones stay Aran\'s', () => {
+  const sw = require('./pod-text-swaps.cjs')
+  const mine = (v) => sw.POD_TEXT_SWAPS.filter((s) => s.side === 'target' && s.voiceId === v).map((s) => s.sentenceId)
+  assert.deepStrictEqual(mine('human_dan_cym_s'), ['cym_s_for_eng:pod-1:SC01-S001', 'cym_s_for_eng:pod-1:SC05-S001'])
+  assert.deepStrictEqual(mine('human_aran_cym_n'), ['cym_n_for_eng:pod-1:SC01-S001', 'cym_n_for_eng:pod-1:SC05-S001'])
+})

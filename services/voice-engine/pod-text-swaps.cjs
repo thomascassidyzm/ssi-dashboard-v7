@@ -34,6 +34,7 @@ const AUDIO_COL = { target: 'target_audio_id', known: 'known_audio_id' }
 
 const ARAN_CYM = 'human_aran_cym_n' // his Welsh policy voice; human_aran_cym_s (South's cast) is an alias of it
 const ARAN_ENG = 'human_aran_eng'
+const DAN_CYM_S = 'human_dan_cym_s' // South Pod 1's Welsh is Dan's (job #834·AB), so South's swaps are his, not Aran's
 const SIAN_RULING = 'Aran 2026-10-29 (job #551): the Neighbour greets Siân, not Sarah'
 
 /**
@@ -42,10 +43,10 @@ const SIAN_RULING = 'Aran 2026-10-29 (job #551): the Neighbour greets Siân, not
  */
 const POD_TEXT_SWAPS = Object.freeze([
   { sentenceId: 'cym_n_for_eng:pod-1:SC01-S001', side: 'target', voiceId: ARAN_CYM, from: 'Bore da, Sarah!', to: 'Bore da, Siân!' },
-  { sentenceId: 'cym_s_for_eng:pod-1:SC01-S001', side: 'target', voiceId: ARAN_CYM, from: 'Bore da, Sarah!', to: 'Bore da, Siân!' },
+  { sentenceId: 'cym_s_for_eng:pod-1:SC01-S001', side: 'target', voiceId: DAN_CYM_S, from: 'Bore da, Sarah!', to: 'Bore da, Siân!' },
   { sentenceId: 'cym_n_for_eng:pod-1:SC01-S001', side: 'known', voiceId: ARAN_ENG, from: 'Good morning, Sarah!', to: 'Good morning, Siân!' },
   { sentenceId: 'cym_n_for_eng:pod-1:SC05-S001', side: 'target', voiceId: ARAN_CYM, from: 'Noswaith dda, Sarah. Gest ti ddiwrnod hir?', to: 'Noswaith dda, Siân. Gest ti ddiwrnod hir?' },
-  { sentenceId: 'cym_s_for_eng:pod-1:SC05-S001', side: 'target', voiceId: ARAN_CYM, from: 'Noswaith dda, Sarah. Gest ti ddiwrnod hir?', to: 'Noswaith dda, Siân. Gest ti ddiwrnod hir?' },
+  { sentenceId: 'cym_s_for_eng:pod-1:SC05-S001', side: 'target', voiceId: DAN_CYM_S, from: 'Noswaith dda, Sarah. Gest ti ddiwrnod hir?', to: 'Noswaith dda, Siân. Gest ti ddiwrnod hir?' },
   { sentenceId: 'cym_n_for_eng:pod-1:SC05-S001', side: 'known', voiceId: ARAN_ENG, from: 'Good evening, Sarah. … Did you have a long day?', to: 'Good evening, Siân. … Did you have a long day?' },
 ].map((s) => Object.freeze({ ...s, ruling: SIAN_RULING })))
 

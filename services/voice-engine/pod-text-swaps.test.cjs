@@ -10,6 +10,7 @@ const rq = require('./recordist-queue.cjs')
 const N1 = 'cym_n_for_eng:pod-1:SC01-S001', S1 = 'cym_s_for_eng:pod-1:SC01-S001'
 const N5 = 'cym_n_for_eng:pod-1:SC05-S001', S5 = 'cym_s_for_eng:pod-1:SC05-S001'
 const ARAN_CYM = { voiceId: 'human_aran_cym_n', spellings: ['human_aran_cym_n', 'human_aran_cym_s'] }
+const DAN_CYM = { voiceId: 'human_dan_cym_s', spellings: ['human_dan_cym_s'] }
 const ARAN_ENG = { voiceId: 'human_aran_eng', spellings: ['human_aran_eng'] }
 const PODS = [
   { id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng', slug: 'pod-1', title: 'North Pod 1' },
@@ -51,12 +52,17 @@ describe('pod text swaps — pending', () => {
   it('pending while the row says the old words; the booth shows the new words, the pod keeps its own', () => {
     const rows = liveRows()
     const lines = sw.podSwapLinesFor(ARAN_CYM, { rows, pods: PODS })
-    // One Welsh line per spoken words: North keeps its place, South rides along on the same take.
+    // North's Welsh is Aran's; South's Welsh is Dan's own pair (job #849), so no line rides along on the other's take.
     expect(lines.map((l) => [l.id, l.text, l.role, l.kind])).toEqual([
       [`podswap:${N1}`, 'Bore da, Siân!', 'target1', 'podswap'],
       [`podswap:${N5}`, 'Noswaith dda, Siân. Gest ti ddiwrnod hir?', 'target1', 'podswap'],
     ])
-    expect(lines[0].duplicateOf).toEqual([{ sentenceId: S1, courseCode: 'cym_s_for_eng' }])
+    expect(lines[0].duplicateOf).toEqual([])
+    const dan = sw.podSwapLinesFor(DAN_CYM, { rows, pods: PODS })
+    expect(dan.map((l) => [l.id, l.text, l.courseCode])).toEqual([
+      [`podswap:${S1}`, 'Bore da, Siân!', 'cym_s_for_eng'],
+      [`podswap:${S5}`, 'Noswaith dda, Siân. Gest ti ddiwrnod hir?', 'cym_s_for_eng'],
+    ])
     expect(lines[0].replacesText).toBe('Bore da, Sarah!')
     expect(lines[0].knownText).toBe('Good morning, Siân!')
     expect(boothHome.trackKeyOf(lines[0])).toBe('podswap.pod-1')
@@ -80,16 +86,21 @@ describe('pod text swaps — pending', () => {
 })
 
 describe('pod text swaps — applied by a take', () => {
-  it('one Welsh take swaps North AND South: words and audio in ONE conditional write per row', async () => {
+  it("Dan's take swaps South only (job #849); Aran's swaps North only: words and audio in ONE conditional write per row", async () => {
     const rows = liveRows()
     const db = fakeDb(rows)
+    const rd = await rq.applyPodTextSwaps({ db, recordist: DAN_CYM, role: 'target1', text: 'Bore da, Siân!', audioId: 'DAN-CY', logger: quiet })
+    expect(rd.linked.map((l) => l.sentenceId)).toEqual([S1])
+    expect(rows.find((x) => x.id === S1).target_audio_id).toBe('DAN-CY')
+    expect(rows.find((x) => x.id === N1).target_text).toBe('Bore da, Sarah!')
     const r = await rq.applyPodTextSwaps({ db, recordist: ARAN_CYM, role: 'target1', text: 'Bore da, Siân!', audioId: 'NEW-CY', logger: quiet })
-    expect(r.linked.map((l) => l.sentenceId).sort()).toEqual([N1, S1].sort())
+    expect(r.linked.map((l) => l.sentenceId)).toEqual([N1])
     const upd = db.writes.filter((w) => w.table === 'listening_pod_sentences')
     expect(upd).toHaveLength(2)
     for (const w of upd) {
       // Never a text write without its audio, never a write that is not conditional on the old words.
-      expect(w.set).toEqual({ target_text: 'Bore da, Siân!', target_audio_id: 'NEW-CY' })
+      expect(w.set.target_text).toBe('Bore da, Siân!')
+      expect(['NEW-CY', 'DAN-CY']).toContain(w.set.target_audio_id)
       expect(w.filters).toContainEqual(['target_text', 'Bore da, Sarah!'])
     }
     const n1 = rows.find((x) => x.id === N1)

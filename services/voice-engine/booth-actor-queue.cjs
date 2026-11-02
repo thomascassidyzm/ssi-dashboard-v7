@@ -38,7 +38,9 @@
 'use strict'
 
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
-const POD_KINDS = new Set(['pod', 'takeg'])
+const podTextSwaps = require('./pod-text-swaps.cjs')
+// A 'podswap' line is a pod line waiting for new words (pod-text-swaps.cjs); in a controlled queue it is part of its pod.
+const POD_KINDS = new Set(['pod', 'takeg', 'podswap'])
 
 const ACTOR_QUEUES = {
   human_dan_cym_s: [
@@ -82,12 +84,24 @@ function stepOf(line, steps) {
 function scopeQueue(voiceId, queue, queues = ACTOR_QUEUES) {
   const steps = stepsFor(voiceId, queues)
   if (!steps || !queue) return queue
-  const lines = (queue.lines || []).filter((l) => stepOf(l, steps))
+  const inStep = (queue.lines || []).filter((l) => stepOf(l, steps))
+  // A pending pod swap REPLACES the pod line it will change: the pod line (old words, already recorded) steps aside
+  // for the new-words line, so the pod card owes the new words and not the old ones as well (job #849: Dan's Siân).
+  const swapped = new Set()
+  for (const l of inStep) {
+    const sw = podTextSwaps.parsePodSwapLineId(l.id)
+    if (l.kind === 'podswap' && sw) { swapped.add(sw.sentenceId); for (const d of l.duplicateOf || []) swapped.add(d.sentenceId) }
+  }
+  const stepsAside = (l) => (l.kind || 'pod') === 'pod' && swapped.has(l.id)
+  const lines = inStep.filter((l) => !stepsAside(l)).map((l) => (l.kind === 'podswap' ? { ...l, inPodCard: true } : l))
+  const asideAll = (queue.lines || []).filter((l) => stepOf(l, steps) && stepsAside(l))
   // The queue's own tally covers recorded lines too, which `lines` omits unless asked for them;
   // without one (an older cached queue) the counts fall back to the lines in hand.
   const tally = Array.isArray(queue.tally) ? queue.tally.filter((t) => stepOf(t, steps)) : null
-  const total = tally ? tally.reduce((n, t) => n + t.total, 0) : lines.length
-  const recorded = tally ? tally.reduce((n, t) => n + t.recorded, 0) : lines.filter((l) => l.recorded).length
+  // The tally still counts the pod lines that stepped aside (they are in `asideAll` only when the queue carries
+  // recorded lines, which the home screen's does); take them off so the card and the top number agree.
+  const total = (tally ? tally.reduce((n, t) => n + t.total, 0) : lines.length) - (tally ? asideAll.length : 0)
+  const recorded = (tally ? tally.reduce((n, t) => n + t.recorded, 0) : lines.filter((l) => l.recorded).length) - (tally ? asideAll.filter((l) => l.recorded).length : 0)
   const inPods = (p) => steps.some((s) => s.pod && s.courseCode === p.courseCode && (p.podSlug === s.pod || p.podId === `${s.courseCode}:${s.pod}`))
   // The practice-phrase batch plan is sent only to an actor whose queue has a phrase step; the
   // non-enumerable readers (openPhraseBatch, allPhraseLines) do not survive the spread, so

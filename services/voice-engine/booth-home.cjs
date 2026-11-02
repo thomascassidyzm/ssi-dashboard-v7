@@ -88,7 +88,8 @@ function trackKeyOf(line) {
   // Pod 1 English (job #537): one card for North and South, whichever course a line's first copy is in.
   if (kind === 'podknown' && line.podSlug) return `podknown.${line.podSlug}`
   // Pod lines waiting on new words (job #551): one card, North and South, ahead of the pod change.
-  if (kind === 'podswap' && line.podSlug) return `podswap.${line.podSlug}`
+  // ...unless a controlled-queue actor's pod owns it (booth-actor-queue scopeQueue marks it inPodCard): then it is a line of that pod's card.
+  if (kind === 'podswap' && line.podSlug) return line.inPodCard ? `pod.${line.podSlug}` : `podswap.${line.podSlug}`
   // ONE Introductions card for North and South together, in running order (Aran, job #587).
   if (kind === 'introsentence') return 'introsentence.all'
   return `${kind}.${line.courseCode || 'all'}`
@@ -151,7 +152,7 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
     })
     tracks.push({
       key,
-      kind: first.kind || 'pod',
+      kind: key.startsWith('pod.') ? 'pod' : first.kind || 'pod',
       courseCode: first.courseCode || null,
       podSlug: first.podSlug || null,
       podTitle: first.podTitle || null,
