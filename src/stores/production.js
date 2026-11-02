@@ -1,58 +1,20 @@
 // src/stores/production.js
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { getApiUrl } from '@/services/api'
+import { getApiBaseUrl as resolveApiBaseUrl, fetchWithTimeout } from '@/services/api'
 import { supabase, isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats, getAudioMetadata as sbGetAudioMetadata, getAudioFlags as sbGetAudioFlags, getCourseInfo as sbGetCourseInfo } from '@/services/supabase'
 
-// API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
-// IMPORTANT: Always check localStorage first - EnvironmentSwitcher sets the URL there
+// API base for agent operations: null on hosted popty.app/vercel (no default
+// backend there — the user must set one via EnvironmentSwitcher), so callers
+// check before spawning agents or starting the audio pipeline.
 function getApiBaseUrl() {
-  // 1. ALWAYS check localStorage first (user set via EnvironmentSwitcher)
-  // This is critical for Vercel deployments that need to route to a chosen backend
-  const storedUrl = localStorage.getItem('api_base_url')
-  if (storedUrl) {
-    return storedUrl
-  }
-
-  // 2. For Vercel/popty.app - no default API base
-  // Read-only data goes direct to Supabase via useBuildMonitor composable.
-  // Agent operations (spawn, audio gen) require the user to set a backend URL
-  // via EnvironmentSwitcher or localStorage.
-  const isVercel = typeof window !== 'undefined' && (
-    window.location.hostname.includes('vercel.app') ||
-    window.location.hostname === 'popty.app' ||
-    window.location.hostname.endsWith('.popty.app')
-  )
-
-  if (isVercel) {
-    // Return null — callers must check before making agent API calls
-    return null
-  }
-
-  // 4. Use env var or localhost for local development
-  return getApiUrl()
+  return resolveApiBaseUrl({ nullOnHosted: true })
 }
 
 // Common headers for API requests
 function getApiHeaders() {
   return {
     'Content-Type': 'application/json',
-  }
-}
-
-// Fetch with timeout support (1 hour default for long-running audio operations)
-async function fetchWithTimeout(url, options = {}, timeoutMs = 3600000) {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-
-  try {
-    const response = await fetch(url, {
-      ...options,
-      signal: controller.signal
-    })
-    return response
-  } finally {
-    clearTimeout(timeoutId)
   }
 }
 

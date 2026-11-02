@@ -36,6 +36,15 @@ const path = require('path');
 
 const PROD_DIR = process.env.AUTO_DEPLOY_PROD_DIR || '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod';
 const UNITS = ['popty-production-api', 'popty-course-builder-api', 'popty-phase8-audio'];
+// Each unit's ExecStart entry point, as in ops/systemd/popty-user/*.service;
+// every unit also runs SYNTAX_GATE in ExecStartPre, so it is in every graph.
+const UNIT_ENTRY = {
+  'popty-production-api': 'services/production-api.cjs',
+  'popty-course-builder-api': 'services/course-builder-api.cjs',
+  'popty-phase8-audio': 'services/phases/phase8-audio-v13.cjs',
+};
+const SYNTAX_GATE = 'tools/check-service-syntax.cjs';
+const { graphOf, unitsFor } = require('./unit-restart-set.cjs');
 const SURFACE = process.env.CS_SURFACE || 'http://localhost:4317';
 const CHANNEL_CWD = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean';
 const LOG = process.env.AUTO_DEPLOY_LOG || '/home/tomcassidy/.local/log/ssi-auto-deploy.log';
@@ -93,14 +102,36 @@ const STATIC_ONLY = [
   /\.test\.(c|m)?js$/,                     // tests are never loaded by a unit
 ];
 
-/** {restart, reason} for a list of changed paths. Empty list = nothing moved. */
-function restartDecision (changedFiles) {
-  if (!changedFiles || changedFiles.length === 0) return { restart: false, reason: 'no files changed' };
+/**
+ * {restart, units, reason} for a list of changed paths. Empty list = nothing
+ * moved. `units` is WHICH units the change touches (job #96): with `graphs`
+ * (from unitGraphs() — one derived require graph per unit) a live path
+ * restarts only the units whose graph holds or names it; with no graphs, or
+ * on any doubt inside unitsFor(), every unit restarts, exactly as before #96.
+ */
+function restartDecision (changedFiles, graphs = null) {
+  const all = graphs ? Object.keys(graphs) : UNITS.slice();
+  if (!changedFiles || changedFiles.length === 0) return { restart: false, units: [], reason: 'no files changed' };
   const live = changedFiles.filter((f) => !STATIC_ONLY.some((re) => re.test(f)));
-  if (live.length) {
-    return { restart: true, reason: `server-side path changed: ${live.slice(0, 3).join(', ')}${live.length > 3 ? ` (+${live.length - 3} more)` : ''}` };
+  if (!live.length) return { restart: false, units: [], reason: `only static paths changed (${changedFiles.length} file(s), e.g. ${changedFiles[0]})` };
+  if (!graphs) {
+    return { restart: true, units: all, reason: `server-side path changed: ${live.slice(0, 3).join(', ')}${live.length > 3 ? ` (+${live.length - 3} more)` : ''}` };
   }
-  return { restart: false, reason: `only static paths changed (${changedFiles.length} file(s), e.g. ${changedFiles[0]})` };
+  const { units, reasons } = unitsFor(live, graphs);
+  const spared = all.filter((u) => !units.includes(u));
+  return {
+    restart: units.length > 0,
+    units,
+    reason: `${reasons.slice(0, 3).join('; ')}${reasons.length > 3 ? ` (+${reasons.length - 3} more)` : ''}` +
+      (spared.length ? ` — spared ${spared.join(', ')}: no changed file in their require graph or named by their code` : ''),
+  };
+}
+
+/** The derived require graph of each unit, read from `root` (the NEW tree). */
+function unitGraphs (root) {
+  const readFile = (rel) => { try { const p = path.join(root, rel); if (fs.statSync(p).isDirectory()) return null; return fs.readFileSync(p, 'utf8'); } catch { return null; } };
+  const listDir = (rel) => { try { return fs.readdirSync(path.join(root, rel)).map((x) => path.posix.join(rel, x)); } catch { return null; } };
+  return Object.fromEntries(Object.entries(UNIT_ENTRY).map(([u, entry]) => [u, graphOf({ readFile, listDir, entries: [entry, SYNTAX_GATE] })]));
 }
 
 /** True once every named unit answered `systemctl is-active` truthy. */
@@ -112,15 +143,22 @@ function allActive (activeByUnit) {
  * Which units to (re)start this tick, given what's active RIGHT NOW.
  *
  * - HEAD has moved past what we last recorded as fully deployed → this is a
- *   fresh deploy; restart everything, regardless of current health, because
- *   a unit that happens to be "active" is still running the OLD code.
+ *   fresh deploy; restart every unit the change touches (job #96: the units
+ *   whose derived require graph holds a changed file — all of them when in
+ *   doubt), regardless of current health, because a unit that happens to be
+ *   "active" is still running the OLD code. Units the change provably does
+ *   not touch are spared, but a spared unit that is DOWN is still retried.
  * - HEAD matches the last fully-deployed marker → nothing moved, so only
  *   retry whichever units are not currently active.
  */
 function unitsToRestart (headSha, deployedSha, activeByUnit, needsRestart = true) {
   const units = Object.keys(activeByUnit);
-  if (deployedSha !== headSha && needsRestart) return units;
-  return units.filter((u) => !activeByUnit[u]);
+  const down = units.filter((u) => !activeByUnit[u]);
+  if (deployedSha === headSha || !needsRestart) return down;
+  // needsRestart is either `true` (every unit — the pre-#96 answer) or the
+  // list of units the change touches; a down unit is retried either way.
+  const touched = needsRestart === true ? units : needsRestart;
+  return units.filter((u) => touched.includes(u) || down.includes(u));
 }
 
 /**
@@ -270,12 +308,16 @@ async function main() {
   if (deployedSha) {
     try {
       const changed = git(['diff', '--name-only', `${deployedSha}..${after}`]).split('\n').filter(Boolean);
-      decision = deployedSha === after ? { restart: false, reason: 'already deployed' } : restartDecision(changed);
-    } catch (e) { decision = { restart: true, reason: `diff failed (${e.message.split('\n')[0]}) — restarting to be safe` }; }
+      // Graphs are walked on the NEW tree (just fast-forwarded): a deleted or
+      // renamed path is absent from it, so unitsFor() cannot place it and
+      // restarts every unit — the safe answer, by construction.
+      decision = deployedSha === after ? { restart: false, units: [], reason: 'already deployed' } : restartDecision(changed, unitGraphs(PROD_DIR));
+    } catch (e) { decision = { restart: true, units: UNITS.slice(), reason: `diff failed (${e.message.split('\n')[0]}) — restarting to be safe` }; }
   }
-  const toRestart = unitsToRestart(after, deployedSha, activeBefore, decision.restart);
+  const toRestart = unitsToRestart(after, deployedSha, activeBefore, decision.restart ? decision.units : false);
   const downRetry = toRestart.length && !decision.restart;
-  log(`DEPLOY-DECISION ${after.slice(0, 7)}: ${decision.restart ? 'RESTARTED' : (downRetry ? 'RESTARTING down unit(s) only' : 'SKIPPED restart')} — ${decision.reason}`);
+  const spared = decision.restart ? UNITS.filter((u) => !toRestart.includes(u)) : [];
+  log(`DEPLOY-DECISION ${after.slice(0, 7)}: ${decision.restart ? `RESTARTING ${toRestart.join(', ')}${spared.length ? ` (spared ${spared.join(', ')})` : ''}` : (downRetry ? 'RESTARTING down unit(s) only' : 'SKIPPED restart')} — ${decision.reason}`);
 
   const activeAfter = { ...activeBefore };
   for (const unit of toRestart) activeAfter[unit] = restartUnit(unit);
@@ -320,7 +362,7 @@ async function main() {
         `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
         ...commits.slice(0, 10).map((c) => `  ${c}`),
         '',
-        (toRestart.length ? `${toRestart.join(', ')} restarted and active.` : `Servers NOT restarted — ${decision.reason}.`),
+        (toRestart.length ? `${toRestart.join(', ')} restarted and active${spared.length ? `; ${spared.join(', ')} spared (no changed file in their require graph)` : ''}.` : `Servers NOT restarted — ${decision.reason}.`),
       ];
       await notify(lines.join('\n'));
     } else if (lastFailedDigest) {
@@ -338,14 +380,22 @@ async function main() {
  */
 function replay (since) {
   const shas = git(['log', '--first-parent', '--reverse', `--since=${since}`, '--format=%h', 'origin/main']).split('\n').filter(Boolean);
-  let restarts = 0;
+  // Graphs come from the checkout as it stands, not from each historical
+  // tree: close enough for a dry run, and any file history names that the
+  // current tree lacks lands on restart-all, the conservative side.
+  const graphs = unitGraphs(PROD_DIR);
+  let before = 0, after = 0, commitsRestarting = 0;
   for (const sha of shas) {
     const files = git(['diff', '--name-only', `${sha}^1`, sha]).split('\n').filter(Boolean);
-    const d = restartDecision(files);
-    if (d.restart) restarts++;
-    process.stdout.write(`${sha} ${d.restart ? 'RESTART' : 'skip   '} ${git(['log', '-1', '--format=%s', sha]).slice(0, 70)} :: ${d.reason}\n`);
+    const old = restartDecision(files);
+    const d = restartDecision(files, graphs);
+    if (old.restart) before += UNITS.length;
+    after += d.units.length;
+    if (d.restart) commitsRestarting++;
+    const mark = d.restart ? (d.units.length === UNITS.length ? 'RESTART-ALL' : `RESTART ${d.units.map((u) => u.replace('popty-', '')).join('+')}`) : 'skip';
+    process.stdout.write(`${sha} ${mark.padEnd(34)} ${git(['log', '-1', '--format=%s', sha]).slice(0, 60)} :: ${d.reason.slice(0, 160)}\n`);
   }
-  process.stdout.write(`\n${shas.length} commit(s): ${restarts} would restart, ${shas.length - restarts} skipped\n`);
+  process.stdout.write(`\n${shas.length} commit(s): ${commitsRestarting} would restart something, ${shas.length - commitsRestarting} skipped; unit restarts ${before} before #96 → ${after} after\n`);
 }
 
 if (require.main === module) {
@@ -353,4 +403,4 @@ if (require.main === module) {
   if (i > 0) replay(process.argv[i + 1] || 'midnight'); else main();
 }
 
-module.exports = { allActive, unitsToRestart, nextDeployedSha, restartDecision, STATIC_ONLY };
+module.exports = { allActive, unitsToRestart, nextDeployedSha, restartDecision, unitGraphs, STATIC_ONLY, UNITS, UNIT_ENTRY, SYNTAX_GATE };
