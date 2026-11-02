@@ -12,10 +12,10 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
-const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
+const { getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { hasNonExampleText } = require('../lib/validation.cjs');
-const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
+const { advancePipeline } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 
@@ -1370,7 +1370,7 @@ end tell`;
       if (flagError) throw flagError;
 
       // Look up golden seed count for this course
-      let goldenCount = 10;
+      let goldenCount = getGoldenSeedCount(undefined); // the lib default until the course row says otherwise
       try {
         const { data: courseData } = await supabase
           .from('courses')
@@ -1378,7 +1378,7 @@ end tell`;
           .eq('course_code', courseCode)
           .single();
         goldenCount = getGoldenSeedCount(courseData);
-      } catch (e) { /* default to 10 */ }
+      } catch (e) { /* keep the lib default */ }
 
       // Get phrase check progress (exclude golden seeds — they aren't QA-checked)
       const { count: totalPhrases } = await supabase

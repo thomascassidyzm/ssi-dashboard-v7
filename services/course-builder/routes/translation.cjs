@@ -12,7 +12,6 @@
 
 const { Router } = require('express');
 const { getLanguageName } = require('../lib/language-config.cjs');
-const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
 const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 
