@@ -480,3 +480,41 @@ describe('TTS only ever speaks examples (Tom r-2026-10-11)', () => {
     await expect(svc.speak('[progressive]', 'cartesia', { voiceId: 'x', locale: 'en' })).rejects.toMatchObject({ code: 'NOT_SPEAKABLE' })
   })
 })
+
+describe('Cartesia regional-locale fallback (deu_ch, 2026-11-02)', () => {
+  // Course renders steer deu_ch target roles 'de-CH' (tts-locale-steer.cjs) and
+  // Cartesia 400s on it. The wire must carry 'de'; every other tag is untouched.
+  async function sentLocale (locale) {
+    const nodeFetch = require('node-fetch')
+    const mod = require.cache[require.resolve('node-fetch')]
+    const original = mod.exports
+    const calls = []
+    const stub = async (url, opts) => {
+      calls.push({ url, body: JSON.parse(opts.body) })
+      const bytes = Buffer.alloc(8192, 1)
+      return { ok: true, status: 200, arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }
+    }
+    Object.keys(nodeFetch).forEach(k => { stub[k] = nodeFetch[k] })
+    mod.exports = stub
+    delete require.cache[require.resolve('./tts-service.cjs')]
+    try {
+      const svc = require('./tts-service.cjs')
+      // Distinct words per call: the spend guard's repeat cap counts identical text.
+      await svc.generate(`a locale line steered ${locale}`, 'cartesia', { apiKey: 'k', voiceId: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', locale })
+      return calls[0].body.locale
+    } finally {
+      mod.exports = original
+      delete require.cache[require.resolve('./tts-service.cjs')]
+    }
+  }
+
+  it("sends 'de' when the steer is 'de-CH'", async () => {
+    expect(await sentLocale('de-CH')).toBe('de')
+  })
+
+  it('leaves every other tag exactly as steered (de-AT, it-IT, en-GB)', async () => {
+    expect(await sentLocale('de-AT')).toBe('de-AT')
+    expect(await sentLocale('it-IT')).toBe('it-IT')
+    expect(await sentLocale('en-GB')).toBe('en-GB')
+  })
+})

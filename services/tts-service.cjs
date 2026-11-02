@@ -541,6 +541,28 @@ const CARTESIA_BIT_RATE = 128000;
  * `wordTimings: null`. Timed calls where Cartesia sent no timestamps event
  * ALSO report null — the audio is still good, the row simply has no timings.
  */
+/**
+ * REGIONAL LOCALES CARTESIA REFUSES, and the base tag each is sent as instead.
+ *
+ * Course renders take their steer from ttsLocaleForRole
+ * (services/shared/tts-locale-steer.cjs), which spells a dialect course's
+ * target roles with its region — deu_ch_for_eng/target1 → 'de-CH'. Cartesia
+ * answers that with a 400 (found by job #998·AB, 2026-11-02, casting Vreni for
+ * deu_ch), so the Swiss voice could not render at all. The Swiss-ness lives in
+ * the cast voice; the steer can only say "German".
+ *
+ * An EXPLICIT map, not a blanket region strip: a region Cartesia does accept
+ * (and that therefore steers phonology) must keep reaching it, and we hold no
+ * authoritative accepted-locale list that would make a general rule safe. Add a
+ * row here only after seeing Cartesia refuse that tag.
+ */
+const CARTESIA_LOCALE_FALLBACK = Object.freeze({ 'de-CH': 'de' });
+
+/** The steer as Cartesia will accept it. */
+function cartesiaLocale(steer) {
+  return CARTESIA_LOCALE_FALLBACK[steer] || steer;
+}
+
 async function generateCartesia(text, config) {
   const {
     apiKey,
@@ -592,7 +614,7 @@ async function generateCartesia(text, config) {
       : { container: 'mp3', sample_rate: sampleRate, bit_rate: bitRate }
   };
   if (wordTimings) body.add_timestamps = true;
-  if (steer && steer !== 'auto') body.locale = steer;
+  if (steer && steer !== 'auto') body.locale = cartesiaLocale(steer);
 
   const endpoint = wordTimings ? 'https://api.cartesia.ai/tts/sse' : 'https://api.cartesia.ai/tts/bytes';
   const response = await fetch(endpoint, {
@@ -1151,6 +1173,8 @@ module.exports = {
   providerConcurrencyStats,
   isRetriableTtsError,
   parseCartesiaSse,
+  cartesiaLocale,
+  CARTESIA_LOCALE_FALLBACK,
   pcm16ToWav,
   CARTESIA_DEFAULT_SPEED,
   CARTESIA_VERSION,
