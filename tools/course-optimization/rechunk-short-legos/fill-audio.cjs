@@ -25,7 +25,7 @@ async function render(body) {
   for (let attempt = 1; ; attempt++) {
     let res, out
     try {
-      res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ ...body, voiceBound: false, dryRun: !APPLY, purpose: `job 321 re-chunk wave 1: ${body.purpose}` }) })
+      res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ ...body, dryRun: !APPLY, purpose: `job 321 re-chunk wave 1: ${body.purpose}` }) })
       out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
     } catch (e) { if (attempt < 6) { await new Promise((r) => setTimeout(r, 5000 * attempt)); continue } throw e }
     if (res.status === 503 && attempt < 6) { await new Promise((r) => setTimeout(r, 5000 * attempt)); continue }
