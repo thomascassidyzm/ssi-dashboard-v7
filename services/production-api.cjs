@@ -10,6 +10,7 @@ const fs = require('fs-extra')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
+const { readAllPages } = require('./shared/paged-read.cjs')
 const speakabilityGrid = require('./shared/speakability-grid.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
@@ -3268,7 +3269,7 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
 
     // Load audio records
     // PAGED: a bare select stops at PostgREST's 60,000 rows (job #383).
-    const dbAudio = await require('./shared/paged-read.cjs').readAllPages(() => client
+    const dbAudio = await readAllPages(() => client
       .from('course_audio')
       .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
       .eq('course_code', courseCode))
@@ -4379,26 +4380,6 @@ function invalidateAudioStatsCache(courseCode) {
   }
 }
 
-// Paginated Supabase fetch — prevents silent row truncation on large tables
-async function fetchAllRows(supabase, table, selectCols, filters) {
-  const PAGE_SIZE = 50000
-  let allData = []
-  let offset = 0
-  while (true) {
-    let query = supabase.from(table).select(selectCols)
-    for (const [method, ...args] of filters) {
-      query = query[method](...args)
-    }
-    query = query.range(offset, offset + PAGE_SIZE - 1)
-    const { data, error } = await query
-    if (error) throw error
-    allData = allData.concat(data)
-    if (data.length < PAGE_SIZE) break
-    offset += PAGE_SIZE
-  }
-  return allData
-}
-
 async function getDirectAudioStats(courseCode) {
   // Check cache
   const cached = _audioStatsCache.get(courseCode)
@@ -4856,20 +4837,13 @@ async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false
   const cols = 'id, pod_id, scene_number, sentence_number, global_order, beat_label, speaker, ' +
     'target_text, known_text, target_audio_id, known_audio_id' +
     (withSplitArrays ? ', sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids' : '')
-  const out = []
-  const PAGE = 1000
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await supabase
-      .from('listening_pod_sentences')
-      .select(cols)
-      .in('pod_id', podIds)
-      .order('pod_id').order('global_order')
-      .range(from, from + PAGE - 1)
-    if (error) throw error
-    out.push(...(data || []))
-    if (!data || data.length < PAGE) break
-  }
-  return out
+  // The pod script order (pod_id, global_order) is the product; readAllPages
+  // appends its own order on id only as a tiebreak behind it.
+  return readAllPages(() => supabase
+    .from('listening_pod_sentences')
+    .select(cols)
+    .in('pod_id', podIds)
+    .order('pod_id').order('global_order'), { pageSize: 1000 })
 }
 
 // GET /api/pod-scripts — the fleet index: every course that has a live SERVING
@@ -5208,19 +5182,13 @@ app.get('/api/admin/canonical-pods', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     const byslug = new Map()
-    let from = 0
-    while (true) {
-      const { data, error } = await sb.from('canonical_pod_scenarios')
-        .select('pod_slug, scene_number').range(from, from + 999)
-      if (error) throw error
-      for (const r of data) {
-        if (!byslug.has(r.pod_slug)) byslug.set(r.pod_slug, { slug: r.pod_slug, lines: 0, scenes: new Set() })
-        const e = byslug.get(r.pod_slug)
-        e.lines++
-        e.scenes.add(r.scene_number)
-      }
-      if (data.length < 1000) break
-      from += 1000
+    const rows = await readAllPages(() => sb.from('canonical_pod_scenarios')
+      .select('pod_slug, scene_number'), { pageSize: 1000 })
+    for (const r of rows) {
+      if (!byslug.has(r.pod_slug)) byslug.set(r.pod_slug, { slug: r.pod_slug, lines: 0, scenes: new Set() })
+      const e = byslug.get(r.pod_slug)
+      e.lines++
+      e.scenes.add(r.scene_number)
     }
     const pods = [...byslug.values()]
       .map(e => ({ slug: e.slug, lines: e.lines, scenes: e.scenes.size }))
@@ -8384,15 +8352,7 @@ app.post('/api/admin/course-edit/:courseCode/edit-batch', async (req, res) => {
 // a derived undo (undo_file, replayed through edit-batch), a before-state assertion.
 // They live under /api/admin so a signed agent holding admin:all reaches them
 // (agentFrontDoor); an admin session reaches them as before.
-async function pageAll(build) {
-  const out = []
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await build().range(from, from + 999)
-    if (error) throw error
-    out.push(...(data || []))
-    if (!data || data.length < 1000) return out
-  }
-}
+const pageAll = (build) => readAllPages(build, { pageSize: 1000 })
 
 // Dialect/version parts are allowed (cym_nv2_for_eng, cym_s_for_eng): the bare
 // shape refused every Welsh dialect course (lanes review of 3fb3cbf). The route's
