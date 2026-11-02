@@ -1,7 +1,5 @@
 import { ref } from 'vue'
-import { getApiUrl } from '@/services/api'
-import { useAuth } from '@/composables/useAuth'
-import { postAdminJson } from '@/composables/adminApi'
+import { getAdminJson, postAdminJson } from '@/composables/adminApi'
 
 /**
  * Trigger the SSi insights "Discovery" deep-run on the always-on machine
@@ -11,7 +9,6 @@ import { postAdminJson } from '@/composables/adminApi'
  * learning-app /admin/insights feed reads them. Fire-and-forget (~1-2 min).
  */
 export function useInsightDiscovery() {
-  const { getAccessToken } = useAuth()
   const running = ref(false)
   const lastResult = ref(null)
   const error = ref(null)
@@ -21,11 +18,7 @@ export function useInsightDiscovery() {
   async function fetchLatest(source = 'real') {
     loadingLatest.value = true
     try {
-      const token = await getAccessToken()
-      const res = await fetch(`${getApiUrl()}/api/insight-discovery/latest?source=${source}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      const data = await res.json().catch(() => ({}))
+      const data = await getAdminJson(`/api/insight-discovery/latest?source=${source}`)
       latest.value = data && data.latest ? data.latest : null
       return latest.value
     } catch (e) {
