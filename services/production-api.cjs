@@ -1,6 +1,8 @@
 // services/production-api.cjs
 require('dotenv').config()
 const express = require('express')
+const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
+const { isStageEventLine, parseStageEventLine } = require('./shared/stage-event-line.cjs')
 const compression = require('compression')
 const cors = require('cors')
 const path = require('path')
@@ -104,41 +106,6 @@ async function getCachedManifest(courseCode) {
 }
 
 // Clear cache for a specific course (call after data updates)
-/**
- * Build the courseConfigsId (file name + manifest id) with dialect-aware suffix
- * on either the known or target side (or both, in theory).
- * E.g.:
- *   spa_for_eng        → "en-es"        (no suffix)
- *   spa_mx_for_eng     → "en-es-mx"     (target suffix)
- *   fra_ca_for_eng     → "en-fr-ca"
- *   eng_for_fra_ca     → "fr-ca-en"     (known suffix — hypothetical, no such course today)
- *   cym_anthem_for_jpn → "ja-cy-anthem"
- *
- * Mirrors the logic in services/phases/generate-legacy-manifest.cjs (build manifest section)
- * so the dashboard's UI/publish path agrees with the manifest's internal id.
- *
- * Also exported indirectly via parseCourseCodeSuffixes() so other modules can
- * reuse the same parsing.
- *
- * @param {string} courseCode      e.g. "fra_ca_for_eng"
- * @param {string} knownDbLang     e.g. "eng" (course.known_lang)
- * @param {string} targetDbLang    e.g. "fra" (course.target_lang)
- * @param {string} knownLegacyCode e.g. "en"  (after languageCodeService conversion)
- * @param {string} targetLegacyCode e.g. "fr"
- */
-function parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang) {
-  const re = new RegExp(`^${targetDbLang}(?:_(.+?))?_for_${knownDbLang}(?:_(.+))?$`)
-  const m = courseCode.match(re)
-  return { targetSuffix: m?.[1] || '', knownSuffix: m?.[2] || '' }
-}
-
-function buildCourseConfigsId(courseCode, knownDbLang, targetDbLang, knownLegacyCode, targetLegacyCode) {
-  const { targetSuffix, knownSuffix } = parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang)
-  const knownPart = knownSuffix ? `${knownLegacyCode}-${knownSuffix}` : knownLegacyCode
-  const targetPart = targetSuffix ? `${targetLegacyCode}-${targetSuffix}` : targetLegacyCode
-  return `${knownPart}-${targetPart}`
-}
-
 function invalidateManifestCache(courseCode) {
   if (manifestCache.has(courseCode)) {
     manifestCache.delete(courseCode)
@@ -1392,88 +1359,7 @@ const ESTATE_MAP_SEMANTICS = {
     + 'the doc is stale. This endpoint being derived rather than written is that principle applied to the estate map itself.',
 }
 
-/**
- * Decide what a course is blocked on, from its already-derived row plus the live
- * voice-approval verdict on the pod it serves. Pure — no I/O — so the ordering is
- * readable and testable.
- *
- * Returns EVERY applicable blocker, not just the first. Reporting only the highest
- * would be the bug this endpoint exists to prevent: every one of the 67 courses with
- * a pod is awaiting voice approval, which would mask the fact that the Welsh pod's
- * English track is separately silent. `blocked_reason` is the one to act on;
- * `blocked_reasons` is the truth.
- *
- * READS `serving_pod`, NOT A SLUG. The reason strings are an API contract other
- * readers key on; `pod_*` names the served pod, whatever its slug.
- */
-function estateMapBlockers(course, approval) {
-  const servedPod = course.serving_pod || { exists: false }
-  const out = []
-  if ((course.audio?.clips || 0) === 0) {
-    out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
-  }
-  if (servedPod.exists && approval && !approval.ok) {
-    out.push({
-      reason: approval.reason === 'stale_approval' ? 'pod_stale_voice_approval' : 'pod_awaiting_voice_approval',
-      detail: approval.message,
-    })
-  }
-  if (servedPod.exists && (servedPod.known_empty > 0 || servedPod.known_dead_stubs > 0)) {
-    out.push({
-      reason: 'pod_known_track_incomplete',
-      detail: `The ${servedPod.slug || 'serving'} known-language track has ${servedPod.known_empty} empty slots and `
-        + `${servedPod.known_dead_stubs} linked-but-dead clips out of ${servedPod.slots}.`,
-    })
-  }
-  if (servedPod.exists && servedPod.target_empty > 0) {
-    out.push({
-      reason: 'pod_target_track_incomplete',
-      detail: `The ${servedPod.slug || 'serving'} target-language track has ${servedPod.target_empty} empty slots out of ${servedPod.slots}.`,
-    })
-  }
-  return out
-}
-
-/** Skimmable text rendering, so a worker can eyeball the map without jq. */
-function estateMapAsText(payload) {
-  const t = payload.totals
-  const lines = [
-    `ESTATE MAP — computed ${payload.generated_at} (fresh per read, never cached)`,
-    '',
-    `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
-      + `unreleased ${t.courses - t.released} (drafts/never-shipped) | `
-      + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
-    `serving pod: ${t.with_serving_pod} courses have one (${t.serving_pod_slugs}) | blocked: ${t.blocked}`,
-    ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
-    '',
-    `pod lines, per-course counting ${t.serving_pod_lines.per_course_counting} -> per-LANGUAGE `
-      + `${t.serving_pod_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
-    ...payload.pods_by_language.slice(0, 8).map(l =>
-      `    ${l.lang.padEnd(5)} ${String(l.slots_per_course_counting).padStart(6)} slots -> `
-      + `${String(l.distinct_lines).padStart(5)} lines  (${l.collapse_factor}x)  across `
-      + `${l.courses_with_serving_pod} courses`),
-    '',
-    'COURSE                          REL  VOICE   CLIPS    SERVING POD (tgt/known of slots)  BLOCKED ON',
-  ]
-  for (const c of payload.courses) {
-    // The slug is ON the line, because "which pod is this?" stopped having one
-    // answer for the whole estate on 2026-08-22 and a column that hides it lies.
-    const pod = c.serving_pod.exists
-      ? `${c.serving_pod.slug} ${c.serving_pod.target_linked}/${c.serving_pod.known_linked} of ${c.serving_pod.slots}`.padEnd(32)
-      : '—'.padEnd(32)
-    lines.push(
-      c.course_code.padEnd(32)
-      + (c.released ? 'yes' : 'no ').padEnd(5)
-      + c.audio.voice_mode.padEnd(8)
-      + String(c.audio.clips).padEnd(9)
-      + pod
-      + c.blocked_reasons.join(', '),
-    )
-  }
-  lines.push('', 'SEMANTICS — what these words mean here', '')
-  for (const [k, v] of Object.entries(payload.semantics)) lines.push(`${k}:`, `  ${v}`, '')
-  return lines.join('\n')
-}
+const { estateMapBlockers, estateMapAsText } = require('./shared/estate-map-view.cjs')
 
 // The request-independent part of the estate map: estate_map() re-totals ~2.5M course_audio rows
 // and hit the 8 s DB statement limit (job #981), so it is cached with stale-while-revalidate.
@@ -2464,16 +2350,6 @@ app.post('/api/voices/preview', async (req, res) => {
     res.status(500).json({ success: false, error: error.message })
   }
 })
-
-// Helper: Escape special XML characters for SSML
-function escapeXml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}
 
 // =============================================================================
 // MISSION CONTROL - Active Jobs from build_jobs table
@@ -10959,14 +10835,10 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
 function handleStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* malformed, ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':       io.emit('stageDeploy:start', { jobId, courseCode, ...payload }); break
       case 'newCourse':   job.sawNewCourse = true
@@ -11145,14 +11017,10 @@ app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
 function handleRestartStderrLine(job, line) {
   if (!line) return
   const { jobId, courseCode } = job
-  if (line.startsWith('__SD__:')) {
-    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
-    if (!m) return
-    const event = m[1]
-    let payload = {}
-    if (m[2]) {
-      try { payload = JSON.parse(m[2]) } catch (e) { /* ignore */ }
-    }
+  if (isStageEventLine(line)) {
+    const parsed = parseStageEventLine(line)
+    if (!parsed) return
+    const { event, payload } = parsed
     switch (event) {
       case 'start':            io.emit('stageDeploy:restartStarted', { jobId, courseCode, ...payload }); break
       case 'restartSucceeded': job.phase = 'succeeded'
@@ -11386,19 +11254,7 @@ function buildVerifyProgressCallback(io, courseCode, totalUuids, runningDeploysM
   }
 }
 
-/**
- * Build human-readable deploy result message
- */
-function buildDeployMessage(deployResult, verificationResult, verificationPassed) {
-  const parts = []
-  parts.push(`Copied ${deployResult.deployed} files`)
-  if (deployResult.failed > 0) parts.push(`${deployResult.failed} copy failures`)
-  if (verificationResult.missing > 0) parts.push(`${verificationResult.missing} missing from production`)
-  if (verificationResult.durationMismatched > 0) parts.push(`${verificationResult.durationMismatched} duration mismatches`)
-  if (verificationResult.durationErrors > 0) parts.push(`${verificationResult.durationErrors} verification errors`)
-  if (verificationPassed) parts.push('All production audio verified')
-  return parts.join('. ') + '.'
-}
+const { buildDeployMessage } = require('./shared/deploy-audio-message.cjs')
 
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan with automatic duration checking for overwrites
@@ -13761,58 +13617,7 @@ app.get('/api/admin/uptime-summary', async (req, res) => {
   }
 })
 
-// Parse Prometheus exposition format into a flat map keyed by metric name +
-// optional sorted-label string. Values are numbers. Helper kept local — no
-// need for prom-client just to read 8 metrics off a scrape.
-function parsePrometheusText(text) {
-  const samples = []
-  const lines = text.split('\n')
-  for (const line of lines) {
-    if (!line || line.startsWith('#')) continue
-    // Metric line: name{label="v",label="v"} 123 [timestamp]
-    // Or: name 123
-    const m = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eEnNaIfF]+)/)
-    if (!m) continue
-    const name = m[1]
-    const labelBlock = m[2] || ''
-    const valueStr = m[3]
-    const value = Number(valueStr)
-    if (!Number.isFinite(value)) continue
-    const labels = {}
-    if (labelBlock) {
-      const re = /([a-zA-Z_][a-zA-Z0-9_]*)="((?:[^"\\]|\\.)*)"/g
-      let lm
-      while ((lm = re.exec(labelBlock)) !== null) {
-        labels[lm[1]] = lm[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
-      }
-    }
-    samples.push({ name, labels, value })
-  }
-  return samples
-}
-
-// Sum samples for a metric, optionally filtered by label predicate.
-function sumMetric(samples, name, labelPredicate = null) {
-  let total = 0
-  let matched = 0
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    total += s.value
-    matched++
-  }
-  return matched > 0 ? { value: total, count: matched } : null
-}
-
-// First-sample lookup — for gauge metrics where there's typically one series.
-function firstMetric(samples, name, labelPredicate = null) {
-  for (const s of samples) {
-    if (s.name !== name) continue
-    if (labelPredicate && !labelPredicate(s.labels)) continue
-    return s.value
-  }
-  return null
-}
+const { parsePrometheusText, sumMetric, firstMetric } = require('./shared/prometheus-text.cjs')
 
 // GET /api/admin/db-health — scrape Supabase Metrics API, extract 6-8 metrics
 // that tell the "is the DB healthy right now?" story. Resilient to missing
