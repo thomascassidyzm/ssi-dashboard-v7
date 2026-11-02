@@ -2465,16 +2465,6 @@ app.post('/api/voices/preview', async (req, res) => {
   }
 })
 
-// Helper: Escape special XML characters for SSML
-function escapeXml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}
-
 // =============================================================================
 // MISSION CONTROL - Active Jobs from build_jobs table
 // =============================================================================
