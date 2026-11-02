@@ -8,7 +8,6 @@
 const { Router } = require('express');
 const { isChinese, getLanguageName } = require('../lib/language-config.cjs');
 const { loadCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
-const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { calculateLegoBalanceScores, hasNonExampleText } = require('../lib/validation.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');

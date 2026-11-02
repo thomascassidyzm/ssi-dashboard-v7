@@ -8,7 +8,7 @@
  */
 
 const { Router } = require('express');
-const { CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD, getCheckpointStatus, getCheckpointConfig, approveCheckpoint, isQAPending } = require('../lib/checkpoint.cjs');
+const { CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD, getCheckpointStatus, getCheckpointConfig, approveCheckpoint } = require('../lib/checkpoint.cjs');
 const { getRunningAgentCount } = require('../lib/agent-spawner.cjs');
 
 module.exports = function (ctx) {
