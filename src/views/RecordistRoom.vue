@@ -774,6 +774,7 @@ import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, k
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
+import { loadFailureMessage } from './recordist/load-failure-message.js'
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 import { fitRail } from './recordist/rail-fit.js'
@@ -2968,7 +2969,7 @@ async function load({ quiet = false } = {}) {
       // sentence says so (casting-rights.boothArrival), in words, not a code.
       throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
     }
-    if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
+    if (!res.ok) throw new Error(loadFailureMessage(res, body))
     const data = body
     voice.value = data
     // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
