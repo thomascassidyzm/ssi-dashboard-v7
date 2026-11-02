@@ -770,7 +770,7 @@ import { applyFailures, mismatchLineWords } from './recordist/text-check-failure
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
 import { allowIdleReload, holdReload } from '@/router/versionReload'
-import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch, nextBatchAfter } from './recordist/booth-home.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch, nextBatchAfter, courseLinkGoesHome } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
@@ -3526,7 +3526,21 @@ async function enter() {
   }
   if (mine !== entering) return
   stopPlayback()
-  if (isDoorLink()) return load()
+  if (isDoorLink()) {
+    // A controlled-queue actor's course link opens the pinned home, not the flat whole-queue screen (job #850).
+    if (queryStr(addressQuery.value.course) && !queryStr(addressQuery.value.pod) && !queryStr(addressQuery.value.step)) {
+      let d = null
+      try { d = await fetchSummary() } catch { d = null }
+      if (mine !== entering) return
+      if (courseLinkGoesHome(addressQuery.value, d)) {
+        applySummary(d)
+        await queue.attach(props.voiceId)
+        phase.value = 'home'
+        return
+      }
+    }
+    return load()
+  }
   if (batchScope.value) {
     // The batch's own name comes from the summary; fetched alongside, never waited on.
     if (!homeSummary.value) {

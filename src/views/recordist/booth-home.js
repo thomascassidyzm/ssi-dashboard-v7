@@ -141,6 +141,18 @@ export function batchOpenable() { return true }
 export const isStartedPod = (t) =>
   !!t && t.kind === 'pod' && !!t.podSlug && ((t.recorded || 0) + (t.uploading || 0)) > 0 && !isFinished(t)
 
+/**
+ * A COURSE LINK FOR A CONTROLLED-QUEUE ACTOR LANDS ON THE PINNED HOME (Kai, job #850: Dan's
+ * https://popty.app/r/human_dan_cym_s?course=cym_s_for_eng said "230 left" = 24 Pod 1 + 206 seed
+ * sentences, because a ?course= link opens the flat whole-queue screen, not the home whose pinned
+ * Pod 1 card says 24). Only a course-only link: a ?pod= / ?step= link is that one step on purpose.
+ */
+export const courseLinkGoesHome = (address, summary) => {
+  const q = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+  const a = address || {}
+  return !!q(a.course) && !q(a.pod) && !q(a.step) && !!(summary && summary.pinStartedPod)
+}
+
 /** Up next's order: a started pod, then new sentences, LEGOs, practice phrases (pass 1, pass 2), then the rest. */
 export function orderedTracks(tracks) {
   const rank = (t) => (isStartedPod(t) || t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : t.kind === 'lego' && isNewWork(t) ? 1 : t.kind === 'phrase' ? 2 : 3)
