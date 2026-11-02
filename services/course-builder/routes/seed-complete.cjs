@@ -2252,12 +2252,12 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       // Recency hints for next iteration
       let recencyHints = null;
-      let goldenCountForRecency = 10;
+      let goldenCountForRecency = getGoldenSeedCount(undefined); // the lib default until the course row says otherwise
       try {
         const { data: courseForRecency } = await ctx.supabase
           .from('courses').select('quality_rules').eq('course_code', course_code).single();
         goldenCountForRecency = getGoldenSeedCount(courseForRecency);
-      } catch (e) { /* default to 10 */ }
+      } catch (e) { /* keep the lib default */ }
       if (nextSeed && seed_number > goldenCountForRecency) {
         try {
           const { overusedPatterns } = await analyzePatternRecency(ctx, course_code, 30);
