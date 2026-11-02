@@ -202,7 +202,7 @@ async function buildCrossCourseSummaries(ctx, maxSeed = 5) {
 
     const comparisons = [];
     for (const course of courses) {
-      const goldenCount = course.quality_rules?.golden_seed_count || 10;
+      const goldenCount = getGoldenSeedCount(course);
       if (goldenCount < 50) continue;
 
       const golden = course.quality_rules?.golden_decompositions || [];
