@@ -44,7 +44,7 @@
  * text_normalized is written by the SQL trigger's convention (see text-normalize.cjs).
  */
 
-const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
+const { normalizeForAudio, audioKeyCandidates, podTtsText } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
 const { issueTicket } = require('./door-ticket.cjs')
@@ -252,8 +252,74 @@ async function lookupForRender(want, lib = clipLibrary()) {
   return { clip: null, ticket }
 }
 
+/**
+ * EVERY RECORDING OF THESE WORDS IN THIS LANGUAGE (job #352, 2026-11-02) — any course, either side, any voice.
+ *
+ * Recordings are per LANGUAGE (Tom, 2026-09-13: "We have all recordings already. We just create IDs per course so
+ * that the per course IDs point to the same recordings"; 2026-11-02: "pods are done by language, not by course —
+ * once we have Japanese, we have it as both target and known languages"). Voice identity still keys a TAKE, so
+ * the route links only a same-voice clip (job #303) — but a clip in ANOTHER voice still means the line exists, and
+ * a render of it is a second performance, never a "hole". This is the one question every caller that is about to
+ * report or pay for a render asks first: the render route (audio-render-entry.cjs, EXISTS_IN_LANGUAGE) and the pod
+ * link tool (tools/pods/link-pod-from-siblings.cjs).
+ *
+ *   - language: one language whatever the spelling — the door's canonical code, OR the reuse planner's alias groups
+ *     (Basque eus/eu/baq, #340), because 'baq' has no canonical form and a stored 'eu' row must still count;
+ *   - text: normalizeForAudio, and also the pod-joined " … " form (podTtsText) a multi-sentence turn is stored as;
+ *   - real audio only: an s3_key that is not pending/. No role and no course are read — a known-side clip of course
+ *     A is a recording of a target-side line of course B in the same language.
+ *
+ * Pure: `rows` are candidate course_audio rows from any source.
+ */
+function clipsInLanguage(rows, { language, text }) {
+  if (!language || !text) return []
+  const words = new Set([normalizeForAudio(text), normalizeForAudio(podTtsText(text))])
+  const out = new Map()
+  for (const row of rows || []) {
+    if (!row || !row.s3_key || String(row.s3_key).startsWith('pending/')) continue
+    if (row.text == null || !words.has(normalizeForAudio(row.text))) continue
+    if (!oneLanguage(language, row.language)) continue
+    if (!out.has(String(row.id))) out.set(String(row.id), row)
+  }
+  return [...out.values()]
+}
+
+/** Are these two language spellings one language? Canonical code, else the reuse planner's alias groups. */
+function oneLanguage(a, b) {
+  if (!a || !b) return false
+  const ca = tryCanonicalLanguage(a), cb = tryCanonicalLanguage(b)
+  if (ca && cb) return ca === cb
+  // Lazy: the planner is a heavy module and requires the shared helpers this file sits beside.
+  const { sameLanguage } = require('../audio-reuse-planner.cjs')
+  return sameLanguage(a, b)
+}
+
+/**
+ * The live question behind clipsInLanguage: asks the library exactly as the door does (clip_index keyed on
+ * (language, text_key), then course_audio on idx_course_audio_text (text_normalized, language) — both indexed;
+ * never a scan), read-only, for the words and their pod-joined form, and returns every recording found.
+ * A failed lookup THROWS (the library's own rule): an outage must never read as "nothing exists".
+ *
+ * @param {{ language: string, text: string, courseCode?: string }} want
+ * @returns {Promise<object[]>} course_audio rows, any course / voice / role
+ */
+async function existingClipsInLanguage({ language, text, courseCode = null }, lib = clipLibrary()) {
+  if (!language || !text) return []
+  const seen = []
+  const collect = rows => { seen.push(...(rows || [])); return null }
+  for (const t of new Set([String(text), podTtsText(text)])) {
+    const canonical = tryCanonicalLanguage(language)
+    // A spelling with no canonical code (Basque 'baq') cannot key the index: ask by words alone, filter by language below.
+    if (canonical && typeof lib.resolve === 'function') await lib.resolve({ text: t, language: canonical, courseCode, readOnly: true }, collect)
+    else collect(await lib.candidates(t))
+  }
+  return clipsInLanguage(seen, { language, text })
+}
+
 module.exports = {
   identityFromConfig,
+  clipsInLanguage,
+  existingClipsInLanguage,
   pickExistingClip,
   usableClips,
   findExistingClip,

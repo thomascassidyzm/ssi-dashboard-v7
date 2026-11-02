@@ -5609,6 +5609,10 @@ function sharedAudioDeps() {
 function buildRenderDeps() {
   const deps = {
       immersionTurn: immersionTurnForRender,
+      // Per-language stop (job #352): every recording of these words in this language, any course / side / voice, and the
+      // route's existing re-record authority that may let a second performance past it.
+      clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
+      rerecordGranted: (want) => require('../shared/rerecord-gate.cjs').rerecordGranted(want),
       resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId }) => {
         // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
         // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
@@ -5875,7 +5879,7 @@ app.post('/render', async (req, res) => {
     const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps(), supabase, logger })
     res.json(out)
   } catch (error) {
-    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}) })
+    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}), ...(error.existing ? { existing: error.existing } : {}) })
     if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
@@ -8802,18 +8806,9 @@ async function siblingPodClipIds(courseCode, slug, track) {
  * @param {string} text
  * @returns {string[]} trimmed, non-empty sentences
  */
-/** The text a pod TURN is synthesised (and stored) as: sentences joined by the pause cue. */
-function podTtsText (text) {
-  const sents = splitPodTurnSentences(text)
-  return sents.length > 1 ? sents.join(' … ') : String(text)
-}
-
-function splitPodTurnSentences (text) {
-  return String(text || '')
-    .split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/)
-    .map(s => s.trim())
-    .filter(Boolean)
-}
+// The text a pod TURN is synthesised (and stored) as: sentences joined by the pause cue. One definition, in
+// services/shared/text-normalize.cjs, because the clip lookup (existingClipsInLanguage, job #352) must find a turn by it too.
+const { podTtsText, splitPodTurnSentences } = require('../shared/text-normalize.cjs')
 
 /**
  * Generate one audio clip and insert into course_audio. Returns the audio_id.

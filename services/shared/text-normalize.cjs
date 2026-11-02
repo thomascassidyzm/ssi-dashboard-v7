@@ -46,4 +46,22 @@ function audioKeyCandidates(text) {
   return [...new Set([normalizeForDb(text), normalizeForAudio(text)].filter(Boolean))]
 }
 
-module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates }
+/** A pod TURN's sentences: the boundary phase 8 synthesises on (moved here from phase8-audio-v13.cjs, job #352). */
+function splitPodTurnSentences(text) {
+  return String(text || '')
+    .split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/)
+    .map(s => s.trim())
+    .filter(Boolean)
+}
+
+/**
+ * The text a multi-sentence pod turn is synthesised AND STORED as: its sentences joined by the " … " pause cue.
+ * So the clip of the row "A. B." carries the text "A. … B." — one recording, two spellings. Every lookup of a
+ * line's existing recording asks for both (clip-library existingClipsInLanguage).
+ */
+function podTtsText(text) {
+  const sents = splitPodTurnSentences(text)
+  return sents.length > 1 ? sents.join(' … ') : String(text)
+}
+
+module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates, podTtsText, splitPodTurnSentences }

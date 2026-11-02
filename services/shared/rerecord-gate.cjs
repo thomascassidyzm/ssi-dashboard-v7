@@ -240,7 +240,21 @@ function rerecordStore() {
 }
 function useRerecordStore(s) { active = s }
 
+/**
+ * Does the route's existing re-record authority cover a second performance of a line already recorded in its
+ * language (exists-in-language-guard.cjs, job #352)? The same two keys assertMayRerecord accepts, nothing new:
+ * a Tom-signed permission row covering this course + role, or Kai's approval token. Read-only: it reserves no
+ * max_clips use (the row is checked in date and unspent), and the door's own gate still runs after it.
+ * Returns the grant ({ by, why, id }) or null.
+ */
+async function rerecordGranted({ courseCode, role, approval }, store = rerecordStore()) {
+  if (approverOf(approval) === 'kai') return { id: null, by: 'kai', why: approval, kaiApproval: true }
+  if (!courseCode) return null
+  const p = (await store.permissions(courseCode)).find(x => permissionCovers(x, { courseCode, role }))
+  return p ? { id: p.id, by: p.by, why: p.why } : null
+}
+
 module.exports = {
-  assertMayRerecord, permissionCovers, replacedUsable, isUsable, RerecordRefusal,
+  assertMayRerecord, rerecordGranted, permissionCovers, replacedUsable, isUsable, RerecordRefusal,
   supabaseRerecordStore, memoryRerecordStore, rerecordStore, useRerecordStore, DEAD_STUB_BYTES,
 }

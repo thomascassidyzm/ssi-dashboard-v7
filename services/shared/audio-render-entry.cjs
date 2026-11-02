@@ -32,6 +32,7 @@ const { approverOf } = require('./human-take-guard.cjs')
 const adoptException = require('./adopt-exception.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
+const existsInLanguage = require('./exists-in-language-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
@@ -214,6 +215,20 @@ async function renderClip(input, deps) {
     if (req.role === 'presentation' && deps.spliceIntro) {
       const spliced = await deps.spliceIntro({ ...req, ...ident })
       if (spliced) return bindPresentation(req, { purpose: req.purpose, requestedBy: req.requestedBy, ...spliced }, deps)
+    }
+
+    // ALREADY RECORDED IN THIS LANGUAGE (job #352, services/shared/exists-in-language-guard.cjs): recordings are per language,
+    // not per course. Library-first above linked a clip in THIS voice; a clip of these words in this language in ANY other
+    // voice, any course, either side, makes this a second performance — refused (409 EXISTS_IN_LANGUAGE, dry run too) naming
+    // the clips, unless the route's existing re-record authority covers it (Tom's permission row, Kai's token). Trial renders
+    // returned above and never reach this; intros (presentation) are rendered fresh per course and are not guarded.
+    if (deps.clipsInLanguage && existsInLanguage.guardsSlot(req.role)) {
+      const found = await deps.clipsInLanguage({ language: r.language, text: req.text, courseCode: req.courseCode })
+      const refusal = existsInLanguage.existsInLanguageRefusal(found, { voiceId: r.voiceId, courseCode: req.courseCode, role: req.role, language: r.language, text: req.text })
+      if (refusal) {
+        const grant = deps.rerecordGranted ? await deps.rerecordGranted({ courseCode: req.courseCode, role: req.role, approval: req.approval }) : null
+        if (!grant) throw Object.assign(new RenderRequestError(refusal.message, refusal.status, refusal.code), { existing: refusal.existing })
+      }
     }
 
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).

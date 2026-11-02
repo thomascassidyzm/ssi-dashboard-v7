@@ -23,8 +23,14 @@
  *   - SPEAKER LABELS follow the TARGET sibling: if it carries a relabel (#325's scene-21 "Narrator 2", Kai's #508
  *     ruling), the plan carries it too. --relabel adds one explicitly where the sibling does not.
  *   - HOLES are lines no sibling row voices with the right text (the five lines that name the language being learnt
- *     differ per course). Each hole is looked up estate-wide in course_audio by (speaker's voice, language, text) —
- *     the indexed key — and otherwise reported, never rendered here. Render through POST /api/audio/render, rerun.
+ *     differ per course). Recordings are per LANGUAGE (job #352): each hole is looked up by language + text in ANY
+ *     course, either side, ANY voice (clip-library clipsInLanguage, the same question the render route asks), and
+ *     falls in exactly one of three kinds:
+ *       (a) recorded in the speaker's voice  → linked, as before;
+ *       (b) recorded in the language, in another voice → reported as "recorded already, voice X, clip Y" — a
+ *           casting/voice decision, NEVER counted as characters to render (the route refuses it: EXISTS_IN_LANGUAGE);
+ *       (c) genuinely unrecorded in that language → the only lines reported as renders.
+ *     Nothing is rendered here. Render (c) through POST /api/audio/render, decide (b), rerun.
  *
  * Whole-turn slots only (target_audio_id, known_audio_id, speaker): a staged row's split arrays are empty, and filling
  * them would change its unit count, which switch-pod-clip-pointers refuses as a learner-slot move.
@@ -39,6 +45,7 @@
 const path = require('path');
 const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs');
 const { sameLanguage, languageCandidates, bareVoiceId } = require('../../services/audio-reuse-planner.cjs');
+const { clipsInLanguage } = require('../../services/shared/clip-library.cjs');
 const { pickPreferredAudioRow } = require('../../services/shared/audio-link-preference.cjs');
 const { checkPodCast, sameVoiceAddress } = require('./pod-cast-gate.cjs');
 const { canonicalSpeakerName } = require('../pod-voice-colour-n.cjs');
@@ -85,12 +92,14 @@ function clipRefusal(clip, lang, text) {
  * @param sources { target: {podId, side, speakers, rows[]}, known: {…} }
  * @param langs   { target: 'eng', known: 'zho' }
  * @param clips   Map id → { id, text, voice_id, language, s3_key, origin, created_at } (sibling + staged clips)
- * @param library Map libKey → clip (estate-wide hits for holes; optional)
+ * @param library course_audio rows that may record a hole, ANY voice (an array, or a Map whose values are rows; optional)
  * @param relabels [{ suffix, speaker, voice }]
  */
-function buildLinkPlan({ staged, sources, langs, clips, library = new Map(), relabels = [], jobLabel = null }) {
+function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels = [], jobLabel = null }) {
   const problems = [];
   const holes = [];
+  const inLanguage = []; // (b) recorded already in the language, in another voice — never a render
+  const libraryRows = library instanceof Map ? [...library.values()] : [...(library || [])];
   const linked = { target: 0, known: 0, library: 0, kept: 0 };
   const srcByOrder = {};
   for (const side of SIDES) srcByOrder[side] = new Map(sources[side].rows.map((r) => [r.global_order, r]));
@@ -157,14 +166,22 @@ function buildLinkPlan({ staged, sources, langs, clips, library = new Map(), rel
     }
   }
 
-  // 4. holes: estate-wide library hit in the speaker's voice, else reported.
+  // 4. holes, resolved by LANGUAGE + TEXT first (job #352): (a) the speaker's voice → link; (b) another voice →
+  // recorded already, a voice decision; (c) nothing in the language → the only renders.
   for (const h of holes.splice(0)) {
     const name = canonicalSpeakerName(h.row.speaker);
     const srcCast = sources[h.side].speakers?.[name]?.[sources[h.side].side];
     const voice = h.voice || cast[h.side].get(name) || srcCast?.voice_id || null;
     const text = h.row[`${h.side}_text`];
-    const hit = voice && (library.get(libKey(voice, langs[h.side], text)) || library.get(libKey(voice, langs[h.side], podTtsText(text))));
-    if (hit && !clipRefusal(hit, langs[h.side], text)) {
+    const recorded = clipsInLanguage(libraryRows, { language: langs[h.side], text }).filter((c) => !clipRefusal(c, langs[h.side], text));
+    const mine = voice ? recorded.filter((c) => bareVoiceId(c.voice_id) === bareVoiceId(voice)) : [];
+    const hit = mine.reduce((best, c) => pickPreferredAudioRow(best, c), undefined);
+    if (!hit && recorded.length) {
+      inLanguage.push({ side: h.side, id: h.row.id, go: h.row.global_order, speaker: h.row.speaker, voiceId: voice, language: langs[h.side], text,
+        existing: recorded.map((c) => ({ audioId: c.id, voiceId: c.voice_id, courseCode: c.course_code || null, side: c.role || null })) });
+      continue;
+    }
+    if (hit) {
       pick[h.side].set(h.row.id, { clip: hit, library: true });
       if (!cast[h.side].has(name)) cast[h.side].set(name, hit.voice_id);
       linked.library++;
@@ -207,7 +224,7 @@ function buildLinkPlan({ staged, sources, langs, clips, library = new Map(), rel
   const gateClips = {};
   for (const side of SIDES) for (const p of pick[side].values()) gateClips[p.clip.id] = { text: p.clip.text, voice_id: p.clip.voice_id };
   const gate = checkPodCast({ rows: proj, speakers: speakersAfter, track: 'target', clips: gateClips, course: staged.course });
-  if (!holes.length) for (const f of gate.failures) problems.push(`cast gate: ${f}`);
+  if (!holes.length && !inLanguage.length) for (const f of gate.failures) problems.push(`cast gate: ${f}`);
 
   const plan = {
     podId: staged.podId, jobLabel,
@@ -215,12 +232,12 @@ function buildLinkPlan({ staged, sources, langs, clips, library = new Map(), rel
     speakers: { before: staged.speakers || {}, after: speakersAfter },
     rows,
   };
-  return { plan, holes, problems, gate, linked, ok: !holes.length && !problems.length };
+  return { plan, holes, inLanguage, problems, gate, linked, ok: !holes.length && !inLanguage.length && !problems.length };
 }
 
 // ---------------------------------------------------------------------------------------------------------------- CLI
 const ROW_COLS = 'id, scene_number, sentence_number, global_order, speaker, target_text, known_text, target_audio_id::text AS target_audio_id, known_audio_id::text AS known_audio_id';
-const LIB_COLS = 'id::text AS id, course_code, language, voice_id, text, s3_key, origin, created_at';
+const LIB_COLS = 'id::text AS id, course_code, role, language, voice_id, text, s3_key, origin, created_at';
 
 async function loadPod(pg, podId) {
   const { rows: [pod] } = await pg.query('SELECT id, course_code, speakers FROM listening_pods WHERE id = $1', [podId]);
@@ -229,21 +246,18 @@ async function loadPod(pg, podId) {
   return { podId, course: pod.course_code, speakers: pod.speakers || {}, rows };
 }
 
-/** Estate-wide course_audio rows for each hole, on idx_course_audio_voice_language_text (voice_id, language, text_normalized). */
+/**
+ * Every course_audio row recording each hole's words in its language — ANY course, side or voice (job #352), on
+ * idx_course_audio_text (text_normalized, language). buildLinkPlan sorts them into (a) speaker's voice / (b) other voice.
+ */
 async function loadLibrary(pg, holes) {
-  const lib = new Map();
+  const out = new Map();
   for (const h of holes) {
-    if (!h.voiceId) continue;
-    const voices = [...new Set([h.voiceId, bareVoiceId(h.voiceId)])];
-    const { rows } = await pg.query(`SELECT ${LIB_COLS} FROM course_audio WHERE voice_id = ANY($1::text[]) AND language = ANY($2::text[]) AND text_normalized = ANY($3::text[])`,
-      [voices, languageCandidates(h.language), [...new Set([textKey(h.text), textKey(podTtsText(h.text))])]]);
-    for (const r of rows) {
-      if (!isReal(r)) continue;
-      const k = libKey(h.voiceId, h.language, r.text);
-      lib.set(k, pickPreferredAudioRow(lib.get(k), r));
-    }
+    const { rows } = await pg.query(`SELECT ${LIB_COLS} FROM course_audio WHERE text_normalized = ANY($1::text[]) AND language = ANY($2::text[])`,
+      [[...new Set([textKey(h.text), textKey(podTtsText(h.text))])], languageCandidates(h.language)]);
+    for (const r of rows) if (isReal(r)) out.set(r.id, r);
   }
-  return lib;
+  return [...out.values()];
 }
 
 async function main() {
@@ -279,20 +293,28 @@ async function main() {
     if (result.holes.length) result = buildLinkPlan({ ...input, library: await loadLibrary(pg, result.holes) });
   } finally { await pg.end(); }
 
-  const { plan, holes, problems, gate, linked } = result;
+  const { plan, holes, inLanguage, problems, gate, linked } = result;
   const dir = evidencePath(`docs/pods/pod1-sibling-link-${new Date().toISOString().slice(0, 10)}`);
   fs.mkdirSync(dir, { recursive: true });
   const planFile = path.join(dir, `${course}.link.plan.json`);
   fs.writeFileSync(planFile, JSON.stringify(plan, null, 1));
-  fs.writeFileSync(path.join(dir, `${course}.link.holes.json`), JSON.stringify(holes, null, 1));
+  // One holes file, three kinds kept apart: a reader must never see "to render" for a line that already exists.
+  fs.writeFileSync(path.join(dir, `${course}.link.holes.json`), JSON.stringify({
+    counts: { linkedFromLibrary: linked.library, recordedInAnotherVoice: inLanguage.length, toRender: holes.length },
+    recordedInAnotherVoice: inLanguage, toRender: holes,
+  }, null, 1));
   console.log(`${plan.podId}: target from ${tSpec}, known from ${kSpec}`);
   console.log(`  linked ${linked.target} target + ${linked.known} known clips from siblings, ${linked.library} from the library; ${linked.kept} slots already filled (kept)`);
   console.log(`  relabels: ${plan.rows.filter((r) => 'speaker' in r.after).map((r) => `${r.id.split(':').pop()} ${r.before.speaker}→${r.after.speaker}`).join(', ') || 'none'}`);
   console.log(`  cast gate (target track): ${gate.voicesInUse.length} voice(s), ${gate.sameVoicePairs.length} same-voice pair(s), ${gate.uncast.length} uncast, ${gate.offCastClips || 0} off-cast, ${gate.wrongRowClips || 0} wrong-row`);
   for (const p of gate.sameVoicePairs) console.log(`    same-voice: ${sameVoiceAddress(p)}`);
   console.log(`  plan: ${planFile} (${plan.rows.length} rows)`);
+  if (holes.length || inLanguage.length) {
+    console.error(`REFUSED — ${linked.library} linked from the library in the speaker's voice; ${inLanguage.length} recorded already in another voice (a casting/voice decision, not a render); ${holes.length} genuinely unrecorded in the language (${holes.reduce((n, h) => n + h.chars, 0)} chars to render)`);
+    for (const h of inLanguage) console.error(`  recorded already: ${h.side} ${h.id} ${h.speaker} [${h.voiceId}] "${h.text}" — ${h.existing.map((e) => `voice ${e.voiceId}, clip ${e.audioId} (${e.courseCode} ${e.side})`).join('; ')}`);
+  }
   if (holes.length) {
-    console.error(`REFUSED — ${holes.length} slot(s) have no existing clip (${holes.reduce((n, h) => n + h.chars, 0)} chars to render):`);
+    console.error('  to render:');
     for (const h of holes) console.error(`  ${h.side} ${h.id} ${h.speaker} [${h.voiceId}] "${h.text}" — ${h.why}`);
   }
   if (problems.length) console.error(`REFUSED — ${problems.length} problem(s):\n  ${problems.join('\n  ')}`);

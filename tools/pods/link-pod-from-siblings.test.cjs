@@ -90,6 +90,19 @@ describe('link-pod-from-siblings', () => {
     expect(r.plan.speakers.after['Guest 2'].target.voice_id).toBe(M)
   })
 
+  it('a hole recorded only as another course\'s KNOWN-side clip in another voice is "recorded already", never "to render" (job #352)', () => {
+    const f = fixture()
+    // The words exist only on the known side of some other course, in a different Chinese voice than Anna's (ZF).
+    const other = { ...clip('kx', '我在学英文。', 'azure_zh-CN-XiaoxiaoNeural', 'zh'), course_code: 'eng_for_zho_old', role: 'known' }
+    const r = buildLinkPlan({ ...f, library: [other] })
+    expect(r.holes).toEqual([]) // nothing to render
+    expect(r.inLanguage).toHaveLength(1)
+    expect(r.inLanguage[0]).toMatchObject({ side: 'known', go: 3, voiceId: ZF, text: '我在学英文。' })
+    expect(r.inLanguage[0].existing).toEqual([{ audioId: 'kx', voiceId: 'azure_zh-CN-XiaoxiaoNeural', courseCode: 'eng_for_zho_old', side: 'known' }])
+    expect(r.ok).toBe(false) // a voice decision is still owed before the pod is complete
+    expect(r.plan.rows.find((x) => x.id.endsWith('003')).after).not.toHaveProperty('known_audio_id') // never linked across voices
+  })
+
   it('takes a clip stored with the pod pause cue (" … ") as the recording of its row, and Basque eu as eus', () => {
     const { clipRefusal } = require('./link-pod-from-siblings.cjs')
     expect(clipRefusal(clip('p', 'Mi chiamo Anna. … E tu?', F, 'ita'), 'ita', 'Mi chiamo Anna. E tu?')).toBeNull()
