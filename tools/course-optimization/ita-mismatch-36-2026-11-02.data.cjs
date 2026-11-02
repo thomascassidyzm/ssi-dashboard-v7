@@ -1194,19 +1194,6 @@ null,
 "#195 clear/extra-chunk: target adds \"in questo\" (in this) with no counterpart in the known"
 ],
 [
-"S0387L01B03",
-"missing-chunk",
-[
-"I didn't think she would",
-"non pensavo che lei"
-],
-[
-"I didn't think she would help you",
-"non pensavo che lei ti aiutasse"
-],
-"#195 clear/missing-chunk: \"would\" and the verb it governs have no counterpart: the target stops after \"che lei\""
-],
-[
 "S0396L02U01",
 "wrong-word",
 [
@@ -1358,19 +1345,6 @@ null,
 ],
 null,
 "#195 clear/missing-chunk: 'if' (se) is on the known side only — reworded it would be an exact twin of a sibling in the basket, so deleted"
-],
-[
-"S0413L04U02",
-"missing-chunk",
-[
-"she said we could fall if too close to the edge",
-"ha detto che potevamo cadere troppo vicino al bordo"
-],
-[
-"she said we could fall if we go too close to the edge",
-"ha detto che potremmo cadere se andiamo troppo vicino al bordo"
-],
-"#195 clear/missing-chunk: 'if' (se) is on the known side only"
 ],
 [
 "S0417L02U03",
@@ -2546,7 +2520,7 @@ null,
 "I don't know how you say this word",
 "non so come si dice questa parola"
 ],
-"reason": "Idiom: \"non so come si dice\" is how Italians say \"I don't know how you say it\" (LEGO how do you say | come si dice). Probably not a defect — keep, or take the reword?"
+"reason": "Canon K25 bound (2): come si dice is a fixed expression and is left alone — so the canon says KEEP. Idiom: \"non so come si dice\" is how Italians say \"I don't know how you say it\" (LEGO how do you say | come si dice). Probably not a defect — keep, or take the reword?"
 },
 {
 "id": "S0160L01U06",
@@ -2572,7 +2546,7 @@ null,
 null,
 null
 ],
-"reason": "Sonnet proposed DELETE. \"tell me about it | me lo dicessi\" is a normal pairing, and the twin S0237L01B03 \"he wanted me to tell you about it | voleva che te lo dicessi\" was judged fine. I would keep it as is."
+"reason": "Sonnet proposed DELETE. \"tell me about it | me lo dicessi\" is a normal pairing, and the twin S0237L01B03 \"he wanted me to tell you about it | voleva che te lo dicessi\" was judged fine. I would keep it as is (canon K25 bound 3: English that cannot carry the pronoun naturally drops it)."
 },
 {
 "id": "S0292L02U01",
@@ -2637,7 +2611,7 @@ null
 null,
 "sono sicuro che non poteva raggiungerlo"
 ],
-"reason": "raggiungerlo / raggiungerli are not taught, and \"raggiungere quello / loro\" reads badly. Accept the untaught clitic here, or another wording?"
+"reason": "Canon P27: raggiungerlo / raggiungerli are untaught bound forms, so they may not be used here; and \"raggiungere quello / loro\" reads badly. Accept the untaught clitic here, or another wording?"
 },
 {
 "id": "S0358L01U05",
@@ -2666,6 +2640,32 @@ null,
 "reason": "Same as S0358L01U04."
 },
 {
+"id": "S0387L01B03",
+"seed": 387,
+"now": [
+"I didn't think she would",
+"non pensavo che lei"
+],
+"proposal": [
+"I didn't think she would help you",
+"non pensavo che lei ti avrebbe aiutato"
+],
+"reason": "Canon P24 (Italian future-in-the-past): \"would\" after a past \"thought\" frame is the conditional perfect, so Sonnet's \"ti aiutasse\" (applied, then REVERTED by job #36) is wrong. \"avrebbe\" is only taught at S0535L02, so the right form is not available at 387. Delete this BUILD fragment, or another wording?"
+},
+{
+"id": "S0413L04U02",
+"seed": 413,
+"now": [
+"she said we could fall if too close to the edge",
+"ha detto che potevamo cadere troppo vicino al bordo"
+],
+"proposal": [
+"she said we could fall too close to the edge",
+null
+],
+"reason": "Canon K35: \"said … could\" takes the imperfect potevamo, so Sonnet's \"potremmo … se andiamo\" (applied, then REVERTED by job #36) breaks it. \"se andavamo\" is untaught. Proposal: drop \"if\" from the English so it matches the Italian as it stands — your call on whether that English reads well."
+},
+{
 "id": "S0501L04B03",
 "seed": 501,
 "now": [
@@ -2676,7 +2676,7 @@ null,
 null,
 "fidarmi che giochiate senza litigare"
 ],
-"reason": "\"che giocare\" is not grammatical, but the fix (giochiate) is only taught at the NEXT LEGO of seed 501 (L05). Fix now anyway, or delete this BUILD row?"
+"reason": "\"che giocare\" is not grammatical, but the fix (giochiate) is only taught at the NEXT LEGO of seed 501 (L05) — canon P2 (never a later sibling) and K40 (a subjunctive in a BUILD needs its trigger) bar it here. Proposal: delete this BUILD row."
 },
 {
 "id": "S0563L02U05",
