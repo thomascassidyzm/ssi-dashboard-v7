@@ -253,11 +253,14 @@ export function useScriptPlayer(options = {}) {
     currentPhase.value = null
     progress.value = 0
 
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
+    silenceAudio()
+  }
+
+  function silenceAudio() {
+    if (!audio) return
+    audio.pause()
+    audio.currentTime = 0
+    audio.src = ''
   }
 
   function skip() {
@@ -267,40 +270,25 @@ export function useScriptPlayer(options = {}) {
       return
     }
 
-    // Stop current audio/timer without clearing playing state
-    playbackGeneration++
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
-    clearPauseTimer()
-
-    currentIndex.value++
-    currentItem.value = items.value[currentIndex.value]
-    currentPhase.value = null
-    progress.value = 0
-
-    emitItemChange(currentItem.value)
-
-    if (isPlaying.value && !isPaused.value) {
-      startPhase('prompt')
-    }
+    moveToItem(currentIndex.value + 1)
   }
 
   function previous() {
     if (!hasPrevItem.value) return
 
+    moveToItem(currentIndex.value - 1)
+  }
+
+  // Step to a neighbouring item: silence what is playing without clearing
+  // the playing state, land on the item's prompt, and restart only if the
+  // player was actually running (not paused).
+  function moveToItem(index) {
     playbackGeneration++
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
+    silenceAudio()
     clearPauseTimer()
 
-    currentIndex.value--
-    currentItem.value = items.value[currentIndex.value]
+    currentIndex.value = index
+    currentItem.value = items.value[index]
     currentPhase.value = null
     progress.value = 0
 
