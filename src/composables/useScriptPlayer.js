@@ -340,29 +340,18 @@ export function useScriptPlayer(options = {}) {
     callbacks.onComplete.forEach(cb => cb())
   }
 
-  function onItemChange(callback) {
-    callbacks.onItemChange.push(callback)
+  // Register a listener; the returned function removes it again.
+  function subscribe(list, callback) {
+    list.push(callback)
     return () => {
-      const idx = callbacks.onItemChange.indexOf(callback)
-      if (idx > -1) callbacks.onItemChange.splice(idx, 1)
+      const idx = list.indexOf(callback)
+      if (idx > -1) list.splice(idx, 1)
     }
   }
 
-  function onPhaseChange(callback) {
-    callbacks.onPhaseChange.push(callback)
-    return () => {
-      const idx = callbacks.onPhaseChange.indexOf(callback)
-      if (idx > -1) callbacks.onPhaseChange.splice(idx, 1)
-    }
-  }
-
-  function onComplete(callback) {
-    callbacks.onComplete.push(callback)
-    return () => {
-      const idx = callbacks.onComplete.indexOf(callback)
-      if (idx > -1) callbacks.onComplete.splice(idx, 1)
-    }
-  }
+  const onItemChange = (callback) => subscribe(callbacks.onItemChange, callback)
+  const onPhaseChange = (callback) => subscribe(callbacks.onPhaseChange, callback)
+  const onComplete = (callback) => subscribe(callbacks.onComplete, callback)
 
   // Cleanup
   onUnmounted(() => {
