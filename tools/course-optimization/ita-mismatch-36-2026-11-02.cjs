@@ -297,6 +297,15 @@ async function post(url, body) {
   } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
 }
 
+/** Popty restarts on every deploy to main; wait (bounded, 10 min) until it answers again. */
+async function waitHealthy() {
+  for (let i = 0; i < 120; i++) {
+    try { const r = await fetch(`${POPTY}/api/production/${COURSE}/edit-ops`, { signal: AbortSignal.timeout(5000) }); if (r.ok) return; } catch (e) { /* still down */ }
+    await new Promise((res) => setTimeout(res, 5000));
+  }
+  throw new Error('Popty did not come back within 10 minutes');
+}
+
 async function main() {
   const [mode, file] = process.argv.slice(2);
   if (!mode || !file) throw new Error('usage: check|dry|apply|audio|verify <seeds.json>');
@@ -350,7 +359,8 @@ async function main() {
     const asks = renderAsks(db);
     const log = { job: '#36', mode: 'render', asks: [] };
     for (const a of asks) {
-      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true });
+      let d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true });
+      if (d.status === 0) { await waitHealthy(); d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true }); }
       const existing = d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
       log.asks.push({ ...a, dry: { status: d.status, ok: !!d.body.ok, source: existing ? 'existing-clip' : d.body.source, audioId: d.body.audioId || (existing && existing.audioId), chars: d.body.ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0, error: d.body.ok || existing ? undefined : d.body } });
     }
@@ -360,7 +370,15 @@ async function main() {
     if (!Number.isFinite(max) || chars > max || refused.length) { console.log('STOP: nothing rendered (no MAX_CHARS, over it, or a refusal) — whole set or nothing'); return console.log(save('render-stopped', log)); }
     if (process.env.RENDER_CONFIRM === '1') for (const a of log.asks) {
       if (a.dry.source === 'library' || a.dry.source === 'existing-clip') { a.audioId = a.dry.audioId; continue; }
-      const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE.replace('dry run for Kai\'s spend decision', 'render approved by Kai 10:43Z') });
+      let r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE });
+      if (r.status === 0) {
+        // Transport loss (Popty restarted under us), not a guard refusal: wait for it, then ask the LIBRARY first — a clip
+        // that did render before the socket dropped is reused, never paid for twice — and only then render once more.
+        await waitHealthy();
+        const again = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
+        r = again.status === 200 && again.body.ok && again.body.source === 'library' ? again
+          : await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE });
+      }
       a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, chars: r.body.charsSpent, error: r.body.ok ? undefined : r.body };
       if (a.real.error) { console.log('REFUSED — no retry:', a.role, JSON.stringify(a.text), JSON.stringify(r.body).slice(0, 300)); break; }
       a.audioId = r.body.audioId;
@@ -369,7 +387,8 @@ async function main() {
     for (const a of log.asks) if (a.audioId) for (const w of a.slots) if (w.current !== a.audioId) ops.push({ op: 'audio.link', ...w.target, slot: a.role, audio_id: a.audioId });
     log.linkOps = ops.length; log.links = [];
     for (let i = 0; i < ops.length && process.env.RENDER_CONFIRM === '1'; i += BATCH) {
-      const ap = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: ops.slice(i, i + BATCH), apply: true });
+      let ap = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: ops.slice(i, i + BATCH), apply: true });
+      if (ap.status === 0) { await waitHealthy(); ap = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: ops.slice(i, i + BATCH), apply: true }); } // links are idempotent
       log.links.push({ status: ap.status, event_id: ap.body.event_id, error: ap.body.error });
       console.log(`link batch ${i / BATCH + 1}: ${ap.status} event ${ap.body.event_id} ${ap.body.error || ''}`);
     }
