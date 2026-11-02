@@ -12,6 +12,11 @@ import { ref, watch, onUnmounted, toValue } from 'vue'
 import { supabase, isConfigured, getCourseStats } from '@/services/supabase'
 import { computeSeedGridState } from '@/services/seed-grid-state'
 
+// Polling cadence: slow by default, fast while the chat panel is open
+// (the file header says why — no Realtime/WebSocket, just re-reads).
+const SLOW_POLL_MS = 30000
+const FAST_POLL_MS = 5000
+
 export function useBuildMonitor(courseCodeRef) {
   // Reactive state
   const stats = ref({ seeds: 0, completeSeeds: 0, legos: 0, practicePhrases: 0, audio: 0 })
@@ -22,7 +27,7 @@ export function useBuildMonitor(courseCodeRef) {
   const lastRefresh = ref(null)
 
   let pollInterval = null
-  let pollIntervalMs = 30000
+  let pollIntervalMs = SLOW_POLL_MS
 
   // ── Fetch functions (direct Supabase queries) ──
 
@@ -106,15 +111,21 @@ export function useBuildMonitor(courseCodeRef) {
 
   // ── Refresh all data ──
 
-  async function refresh() {
-    const code = toValue(courseCodeRef)
-    if (!code || !isConfigured()) return
-    await Promise.all([
+  // The four reads, together. refresh() awaits them and stamps lastRefresh;
+  // the poll fires them and does not wait.
+  function fetchAll(code) {
+    return Promise.all([
       fetchStats(code),
       fetchSeedGrid(code),
       fetchPipeline(code),
       fetchMessages(code)
     ])
+  }
+
+  async function refresh() {
+    const code = toValue(courseCodeRef)
+    if (!code || !isConfigured()) return
+    await fetchAll(code)
     lastRefresh.value = new Date().toISOString()
   }
 
@@ -124,12 +135,7 @@ export function useBuildMonitor(courseCodeRef) {
     if (pollInterval) return
     pollInterval = setInterval(() => {
       const c = code || toValue(courseCodeRef)
-      if (c) {
-        fetchStats(c)
-        fetchSeedGrid(c)
-        fetchPipeline(c)
-        fetchMessages(c)
-      }
+      if (c) fetchAll(c)
     }, pollIntervalMs)
   }
 
@@ -141,7 +147,7 @@ export function useBuildMonitor(courseCodeRef) {
   }
 
   function setFastPolling(fast) {
-    const newInterval = fast ? 5000 : 30000
+    const newInterval = fast ? FAST_POLL_MS : SLOW_POLL_MS
     if (newInterval === pollIntervalMs) return
     pollIntervalMs = newInterval
     if (pollInterval) {

@@ -120,6 +120,10 @@ export function useScriptPlayer(options = {}) {
     }
   }
 
+  // Where each phase sits in the cycle, for the progress bar.
+  const PHASE_PROGRESS = { prompt: 0, pause: 25, voice1: 50, voice2: 75 }
+  const PAUSE_MS = 1000 // Fixed 1s for QA preview
+
   async function startPhase(phase) {
     const gen = playbackGeneration // Capture generation for stale detection
     currentPhase.value = phase
@@ -128,68 +132,41 @@ export function useScriptPlayer(options = {}) {
     const item = currentItem.value
     if (!item) return
 
+    progress.value = PHASE_PROGRESS[phase]
     switch (phase) {
-      case 'prompt': {
-        progress.value = 0
-        if (item.sourceId) {
-          const url = await getAudioUrl(item.sourceId)
-          if (gen !== playbackGeneration) return // Stale — playback was restarted
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'prompt':
+        await playClipOrSkip(item.sourceId, gen)
         break
-      }
 
-      case 'pause': {
-        progress.value = 25
+      case 'pause':
         clearPauseTimer()
         pauseTimer = setTimeout(() => {
           if (gen !== playbackGeneration) return // Stale
           if (isPlaying.value && !isPaused.value) {
             onAudioEnded()
           }
-        }, 1000) // Fixed 1s for QA preview
+        }, PAUSE_MS)
         break
-      }
 
-      case 'voice1': {
-        progress.value = 50
-        if (item.target1Id) {
-          const url = await getAudioUrl(item.target1Id)
-          if (gen !== playbackGeneration) return // Stale
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'voice1':
+        await playClipOrSkip(item.target1Id, gen)
         break
-      }
 
-      case 'voice2': {
-        progress.value = 75
-        const target2Id = item.target2Id || item.target1Id
-        if (target2Id) {
-          const url = await getAudioUrl(target2Id)
-          if (gen !== playbackGeneration) return // Stale
-          if (url) {
-            playAudioSrc(url)
-          } else {
-            onAudioEnded()
-          }
-        } else {
-          onAudioEnded()
-        }
+      case 'voice2':
+        // One recorded voice serves both voice slots when there is no second.
+        await playClipOrSkip(item.target2Id || item.target1Id, gen)
         break
-      }
     }
+  }
+
+  // Play the clip, or move straight on when there is none (no uuid, or no
+  // URL for it). After the async resolve, a restart in the meantime wins.
+  async function playClipOrSkip(uuid, gen) {
+    if (!uuid) return onAudioEnded()
+    const url = await getAudioUrl(uuid)
+    if (gen !== playbackGeneration) return // Stale — playback was restarted
+    if (url) playAudioSrc(url)
+    else onAudioEnded()
   }
 
   function playAudioSrc(url) {
@@ -276,11 +253,14 @@ export function useScriptPlayer(options = {}) {
     currentPhase.value = null
     progress.value = 0
 
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
+    silenceAudio()
+  }
+
+  function silenceAudio() {
+    if (!audio) return
+    audio.pause()
+    audio.currentTime = 0
+    audio.src = ''
   }
 
   function skip() {
@@ -290,40 +270,25 @@ export function useScriptPlayer(options = {}) {
       return
     }
 
-    // Stop current audio/timer without clearing playing state
-    playbackGeneration++
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
-    clearPauseTimer()
-
-    currentIndex.value++
-    currentItem.value = items.value[currentIndex.value]
-    currentPhase.value = null
-    progress.value = 0
-
-    emitItemChange(currentItem.value)
-
-    if (isPlaying.value && !isPaused.value) {
-      startPhase('prompt')
-    }
+    moveToItem(currentIndex.value + 1)
   }
 
   function previous() {
     if (!hasPrevItem.value) return
 
+    moveToItem(currentIndex.value - 1)
+  }
+
+  // Step to a neighbouring item: silence what is playing without clearing
+  // the playing state, land on the item's prompt, and restart only if the
+  // player was actually running (not paused).
+  function moveToItem(index) {
     playbackGeneration++
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.src = ''
-    }
+    silenceAudio()
     clearPauseTimer()
 
-    currentIndex.value--
-    currentItem.value = items.value[currentIndex.value]
+    currentIndex.value = index
+    currentItem.value = items.value[index]
     currentPhase.value = null
     progress.value = 0
 
@@ -375,29 +340,18 @@ export function useScriptPlayer(options = {}) {
     callbacks.onComplete.forEach(cb => cb())
   }
 
-  function onItemChange(callback) {
-    callbacks.onItemChange.push(callback)
+  // Register a listener; the returned function removes it again.
+  function subscribe(list, callback) {
+    list.push(callback)
     return () => {
-      const idx = callbacks.onItemChange.indexOf(callback)
-      if (idx > -1) callbacks.onItemChange.splice(idx, 1)
+      const idx = list.indexOf(callback)
+      if (idx > -1) list.splice(idx, 1)
     }
   }
 
-  function onPhaseChange(callback) {
-    callbacks.onPhaseChange.push(callback)
-    return () => {
-      const idx = callbacks.onPhaseChange.indexOf(callback)
-      if (idx > -1) callbacks.onPhaseChange.splice(idx, 1)
-    }
-  }
-
-  function onComplete(callback) {
-    callbacks.onComplete.push(callback)
-    return () => {
-      const idx = callbacks.onComplete.indexOf(callback)
-      if (idx > -1) callbacks.onComplete.splice(idx, 1)
-    }
-  }
+  const onItemChange = (callback) => subscribe(callbacks.onItemChange, callback)
+  const onPhaseChange = (callback) => subscribe(callbacks.onPhaseChange, callback)
+  const onComplete = (callback) => subscribe(callbacks.onComplete, callback)
 
   // Cleanup
   onUnmounted(() => {
