@@ -78,6 +78,8 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - **`course-optimization`** (@claude-local) — reorder-pilot detailed worklist + data artifacts (order, rehoming map, suppression decisions, parked IDs). Not yet merged to main.
 - **Pod lanes** — active work now lands directly on `main` via `feat/pod-lab`. `feat/pod-tts-resilience` and `feat/pod-explainer-audio` remotes exist but show no commits since 06-04 — status unclear, check before building on them. (`pods/casting`, `pods/dialogue-autocue`, `pods/registration` no longer exist — stale names, removed from this list.)
 
+- [~] @fable-72 11-02 — **Code-elegance pass (Fable team, #72·AC)** — small behaviour-preserving commits across SPA utils/composables, production-api helpers, course-builder route plumbing; proposals page published to the surface, unbuilt.
+
 ## ⛔ Blocked / parked
 
 - [!] @tom 07-03 — **Dublin gov pitch date (June 24) has passed** with no record here of outcome. Owner to confirm whether it happened / went well and close this out (or re-open with follow-ups). → memory `project_ssi_dublin_pitch`
