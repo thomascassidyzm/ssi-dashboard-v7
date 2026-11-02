@@ -12,10 +12,10 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
-const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
+const { getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { hasNonExampleText } = require('../lib/validation.cjs');
-const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
+const { advancePipeline } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 

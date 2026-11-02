@@ -9,7 +9,7 @@
 const { Router } = require('express');
 
 // Lib imports
-const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
+const { isChinese, getGoldenSeedCount, getLanguageName, checkLegoSyllables } = require('../lib/language-config.cjs');
 const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
 // deu_for_eng separable verbs (Kai's ruling 2026-09-21): containment asks this
 // module; the exact-match baseline is passed in and decides everywhere else.
@@ -35,7 +35,7 @@ const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/
 // Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
 // could not check rather than reporting a pass it never earned (2026-08-18).
 const { REASON: KS_REASON, segmentKnown } = require('../lib/known-side-script.cjs');
-const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
+const { addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
 const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 
 // Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
@@ -93,7 +93,6 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
   const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
   return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
 }
-const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
@@ -103,7 +102,7 @@ const {
   isCheckpointRequired, approveCheckpoint, isQAPending,
   CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
 } = require('../lib/checkpoint.cjs');
-const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
+const { emitProgressThrottled } = require('../../shared/emit-progress.cjs');
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 

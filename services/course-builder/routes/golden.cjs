@@ -13,7 +13,7 @@
 
 const { Router } = require('express');
 const { getGoldenSeedCount } = require('../lib/language-config.cjs');
-const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
+const { advancePipeline } = require('../lib/pipeline.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
