@@ -55,6 +55,19 @@ describe('write-scene-names', () => {
     expect(skips).toEqual([{ podId: 'eng_for_xxx:pod-1', reason: 'cut pod-1-231 has no xxx name for scene 1' }])
   })
 
+  it('a variant cut borrows the base names through its scene map (the 142-line Pod 1)', () => {
+    const v142 = [4, 2, 3, 3, 2, 13, 15, 16, 18, 10, 13, 10, 11, 10, 12]
+    const { writes } = planWrites({
+      courses: [{ course_code: 'eng_for_spa', known_lang: 'spa' }],
+      pods: [{ id: 'eng_for_spa:pod-1', course_code: 'eng_for_spa', slug: 'pod-1', scene_names: null }],
+      sentenceRows: rowsFor('eng_for_spa:pod-1', v142),
+    })
+    expect(writes).toHaveLength(1)
+    expect(writes[0].names['14']).toBe('Tomar un taxi')
+    expect(writes[0].names['15']).toBe('Primera conversación')
+    expect(Object.keys(writes[0].names)).toHaveLength(15)
+  })
+
   it('writes nothing for a pod that already carries the same names', () => {
     const courses = [{ course_code: 'spa_for_eng', known_lang: 'eng' }]
     const first = planWrites({ courses, pods: [{ id: 'a:pod-1', course_code: 'spa_for_eng', slug: 'pod-1', scene_names: null }], sentenceRows: rowsFor('a:pod-1', POD1) })
