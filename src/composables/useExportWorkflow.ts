@@ -1,7 +1,7 @@
 // src/composables/useExportWorkflow.ts
 import { ref, computed, watch } from 'vue'
 import { io, Socket } from 'socket.io-client'
-import { getApiUrl } from '@/services/api'
+import { getApiBaseUrl } from '@/services/api'
 
 export interface ExportState {
   courseCode: string
@@ -125,10 +125,6 @@ export interface ValidationResult {
   emptyStrings: number
   invalidUUIDDetails: Array<{ path: string; value: string }>
   emptyStringDetails: string[]
-}
-
-function getApiBaseUrl(): string {
-  return getApiUrl()
 }
 
 // Get machine name from environment switcher settings
