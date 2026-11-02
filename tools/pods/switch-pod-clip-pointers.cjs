@@ -28,7 +28,11 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env'), quiet: true });
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true });
 
-const SWITCHABLE = ['target_text', 'target_audio_id', 'sentence_audio_ids', 'takeg_audio_ids', 'atom_map_fine'];
+// known_audio_id is FILL-ONLY (job #325·AC, 2026-11-02): a staged canonical-231 pod built by copying two sides
+// (build-canonical-231-pod.cjs) arrives with the five language-naming known lines unvoiced, and no other committed
+// tool points a pod row's known slot at a clip. Filling an empty slot with an existing clip (and the rollback back to
+// empty) is all it may do; REPLACING a known clip is a re-record and is refused in planProblems().
+const SWITCHABLE = ['target_text', 'target_audio_id', 'known_audio_id', 'sentence_audio_ids', 'takeg_audio_ids', 'atom_map_fine'];
 const JSONB = new Set(['atom_map_fine']);
 const UUID_ARRAYS = new Set(['sentence_audio_ids', 'takeg_audio_ids']);
 const BOUNDARY = /(?<=[.!?])\s+/; // the player's POD_SENTENCE_BOUNDARY
@@ -39,6 +43,7 @@ const clipCount = (ids) => (Array.isArray(ids) ? ids.filter(Boolean).length : 0)
 function clipIdsOf(fields) {
   const ids = [];
   if (fields.target_audio_id) ids.push(fields.target_audio_id);
+  if (fields.known_audio_id) ids.push(fields.known_audio_id);
   for (const k of UUID_ARRAYS) for (const id of fields[k] || []) if (id) ids.push(id);
   return ids;
 }
@@ -62,6 +67,10 @@ function planProblems(plan, existing) {
       const b = clipCount(r.before.sentence_audio_ids), a = clipCount(r.after.sentence_audio_ids);
       const unitsBefore = b >= 2 ? b : 1, unitsAfter = a >= 2 ? a : 1;
       if (unitsBefore !== unitsAfter) out.push(`${tag}: per-sentence units ${unitsBefore} → ${unitsAfter} moves learner slots — use pod-switchover.cjs`);
+    }
+    if ('known_audio_id' in r.after && r.before.known_audio_id && r.after.known_audio_id &&
+        r.before.known_audio_id !== r.after.known_audio_id) {
+      out.push(`${tag}: known_audio_id is fill-only here — replacing a known clip is a re-record`);
     }
     if ('target_text' in r.after && sentenceCount(r.after.target_text) !== sentenceCount(r.before.target_text)) {
       out.push(`${tag}: target_text changes its sentence count — that is a content change, not a re-record`);
@@ -134,7 +143,7 @@ async function main() {
   try {
     for (const r of plan.rows) {
       const keys = Object.keys(r.after);
-      const cast = (k) => (JSONB.has(k) ? '::jsonb' : UUID_ARRAYS.has(k) ? '::uuid[]' : k === 'target_audio_id' ? '::uuid' : '');
+      const cast = (k) => (JSONB.has(k) ? '::jsonb' : UUID_ARRAYS.has(k) ? '::uuid[]' : (k === 'target_audio_id' || k === 'known_audio_id') ? '::uuid' : '');
       const val = (k, v) => (JSONB.has(k) ? (v == null ? null : JSON.stringify(v)) : v);
       const params = [r.id];
       const sets = keys.map((k) => { params.push(val(k, r.after[k])); return `${k} = $${params.length}${cast(k)}`; });
