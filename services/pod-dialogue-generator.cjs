@@ -445,7 +445,9 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
     // title a regeneration must not rewrite back to "Pod 0".
     title: `${targetLanguage} Listening Pods — Pod ${String(podSlug).replace(/^pod-/, '')}`,
     speakers,
-    metadata: { sections, generated_from: 'canonical_pod_scenarios', status: 'draft', consistency_ledger: ledger || null, name_map: nameMap.length ? nameMap : null, scene_hashes: priorHashes },
+    metadata: { sections, generated_from: 'canonical_pod_scenarios', status: 'draft', consistency_ledger: ledger || null, name_map: nameMap.length ? nameMap : null, scene_hashes: priorHashes,
+      // Learner-facing scene names (services/shared/pod-scene-names.cjs) survive a re-flex too.
+      ...(existing && existing.metadata && existing.metadata.scene_names ? { scene_names: existing.metadata.scene_names } : {}) },
     source_file: 'generated:canonical',
     updated_at: new Date().toISOString(),
   }
