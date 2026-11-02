@@ -230,11 +230,11 @@ describe('the render route: voiceBound and re-record (job #741)', () => {
 
 describe('voice identity is the DEFAULT on the render route (job #944)', () => {
   const { providerForVoice } = require('./shared/render-voice-provider.cjs')
-  it('validate defaults voiceBound on; only an explicit false opts out', () => {
+  it('validate is voiceBound always; an explicit false no longer opts out (job #303)', () => {
     const { validate } = require('./shared/audio-render-entry.cjs')
     const b = { courseCode: 'c', role: 'target1', text: 't', purpose: 'p', requestedBy: 'x' }
     expect(validate(b).voiceBound).toBe(true)
-    expect(validate({ ...b, voiceBound: false }).voiceBound).toBe(false)
+    expect(validate({ ...b, voiceBound: false }).voiceBound).toBe(true)
   })
   it('the default reaches the door: a female clip of the same words does not answer an unflagged request', async () => {
     const { svc, paid } = door([female()])

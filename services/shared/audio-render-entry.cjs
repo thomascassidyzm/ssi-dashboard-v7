@@ -88,8 +88,9 @@ function validate(input) {
     voiceSettings: input.voiceSettings == null ? null : input.voiceSettings,
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
-    // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
-    voiceBound: input.voiceBound !== false,
+    // ALWAYS ON (job #303, Tom 2026-11-02: no slot may play another slot's voice). There is no opt-out: an any-voice answer
+    // handed store() the other voice's BYTES, filed under this slot's voice label (services/audio-render-voicebound-always.test.cjs).
+    voiceBound: true,
     // RE-RECORD: replace this course_audio row's bytes in place (same id, next
     // audio_revision). The library is never asked to answer it.
     replaceAudioId: input.replaceAudioId ? String(input.replaceAudioId) : null,
