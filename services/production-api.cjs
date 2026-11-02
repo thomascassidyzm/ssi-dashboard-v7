@@ -11261,19 +11261,7 @@ function buildVerifyProgressCallback(io, courseCode, totalUuids, runningDeploysM
   }
 }
 
-/**
- * Build human-readable deploy result message
- */
-function buildDeployMessage(deployResult, verificationResult, verificationPassed) {
-  const parts = []
-  parts.push(`Copied ${deployResult.deployed} files`)
-  if (deployResult.failed > 0) parts.push(`${deployResult.failed} copy failures`)
-  if (verificationResult.missing > 0) parts.push(`${verificationResult.missing} missing from production`)
-  if (verificationResult.durationMismatched > 0) parts.push(`${verificationResult.durationMismatched} duration mismatches`)
-  if (verificationResult.durationErrors > 0) parts.push(`${verificationResult.durationErrors} verification errors`)
-  if (verificationPassed) parts.push('All production audio verified')
-  return parts.join('. ') + '.'
-}
+const { buildDeployMessage } = require('./shared/deploy-audio-message.cjs')
 
 // POST /api/production/:courseCode/deploy-audio/plan
 // Get deployment plan with automatic duration checking for overwrites
