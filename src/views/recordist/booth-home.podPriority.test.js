@@ -71,6 +71,20 @@ describe('the home screen says so', () => {
       expect(c.attributes('disabled'), k).toBeUndefined()
     }
   })
+  it('PINNED (job #843): a controlled-queue actor sees only the started pod until he opens "After Pod 1"', async () => {
+    const pinned = mount(BoothHome, { props: { tracks: dan(), unticked: new Set(), displayName: 'Dan', pinStartedPod: true }, global: { stubs: { BoothTeamStats: true } }, slots: { top: '<div data-test="rerecord-card">re-record</div>' } })
+    expect(pinned.find('[data-test="up-next-priority"]').exists()).toBe(true)
+    expect(pinned.find('[data-test="rerecord-card"]').exists()).toBe(false)
+    for (const k of ['seed.cym_sv2_for_eng', 'lego.cym_sv2_for_eng', 'phrase.1']) expect(pinned.find(`[data-test="card-${k}"]`).exists(), k).toBe(false)
+    await pinned.find('[data-test="later-toggle"]').trigger('click')
+    expect(pinned.find('[data-test="rerecord-card"]').exists()).toBe(true)
+    expect(pinned.find('[data-test="card-seed.cym_sv2_for_eng"]').exists()).toBe(true)
+  })
+  it('not pinned (default, every other booth): the re-record slot and cards show with the priority card', () => {
+    const w = mount(BoothHome, { props: { tracks: dan(), unticked: new Set(), displayName: 'Dan' }, global: { stubs: { BoothTeamStats: true } }, slots: { top: '<div data-test="rerecord-card"/>' } })
+    expect(w.find('[data-test="rerecord-card"]').exists()).toBe(true)
+    expect(w.find('[data-test="later-toggle"]').exists()).toBe(false)
+  })
   it('with no pod started, Up next is the ordinary card', () => {
     const w = home(dan({ podRecorded: 0 }))
     expect(w.find('[data-test="up-next-priority"]').exists()).toBe(false)

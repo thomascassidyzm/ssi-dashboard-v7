@@ -45,7 +45,9 @@
       <div class="bh-cols">
         <div class="bh-main">
           <!-- ABOVE UP NEXT: the re-record card (job #788), handed in by the room. -->
-          <slot name="top" />
+          <!-- PINNED (Kai, job #843): while a controlled-queue actor's started pod has lines left,
+               the re-record card and every other card wait behind "After <pod>" below. -->
+          <slot v-if="!pinned || laterOpen" name="top" />
           <!-- UP NEXT (Option B): the first ticked batch with lines still to read, new
                sentences before practice phrases. -->
           <!-- A POD HE HAS STARTED (Kai, 2026-10-28, job #8·AA) is Up next before anything else, and
@@ -92,7 +94,11 @@
             <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" @open="(key, bn) => $emit('open', key, bn)" />
           </div>
 
-          <template v-if="groups.main.length">
+          <button v-if="pinned" type="button" class="bh-plan-toggle" data-test="later-toggle" :aria-expanded="laterOpen ? 'true' : 'false'" @click="laterOpen = !laterOpen">
+            {{ laterOpen ? '▾' : '▸' }} After {{ next.track.title }} — everything else waits here
+          </button>
+
+          <template v-if="(!pinned || laterOpen) && groups.main.length">
             <h3 class="bh-sec">{{ mainHeading }}</h3>
             <div class="bh-grid">
               <button v-for="t in groups.main" :key="t.key" type="button" class="bh-card" :class="{ lock: t.locked }" :disabled="t.locked" :data-test="`card-${t.key}`" @click="$emit('card', t.key)">
@@ -105,7 +111,7 @@
             </div>
           </template>
 
-          <template v-if="groups.other.length">
+          <template v-if="(!pinned || laterOpen) && groups.other.length">
             <h3 class="bh-sec">Other scripts</h3>
             <div class="bh-grid">
               <button v-for="t in groups.other" :key="t.key" type="button" class="bh-card" :data-test="`card-${t.key}`" @click="$emit('card', t.key)">
@@ -161,6 +167,9 @@ const props = defineProps({
   trackKey: { type: String, default: null },  // a card opened to its batch list
   mainHeading: { type: String, default: 'New work' },
   notes: { type: Array, default: () => [] },
+  // The server marks a voice with a controlled queue (booth-actor-queue.cjs). For such a voice a
+  // pod he has started is the ONLY thing offered until it is finished (Kai, job #843: Dan's last 22).
+  pinStartedPod: { type: Boolean, default: false },
 })
 defineEmits(['open', 'card', 'home', 'tick'])
 
@@ -186,6 +195,8 @@ const resumeWords = computed(() => {
   const where = f.scene != null ? `scene ${f.scene}, ` : ''
   return `Starts at ${where}line ${n(f.at)} of ${n(next.value.batch.total)}.`
 })
+const pinned = computed(() => props.pinStartedPod && priorityPod.value)
+const laterOpen = ref(false)
 const groups = computed(() => ({
   main: layout.value.main.map(withLock),
   other: layout.value.other.map(withLock),

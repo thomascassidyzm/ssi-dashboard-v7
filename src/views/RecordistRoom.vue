@@ -39,6 +39,7 @@
       :track-key="homeTrackKey"
       :main-heading="homeMainHeading"
       :notes="homeNotes"
+      :pin-started-pod="!!(homeSummary && homeSummary.pinStartedPod)"
       @open="openBatch"
       @card="openCard"
       @home="goHome"

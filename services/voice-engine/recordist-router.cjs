@@ -746,6 +746,8 @@ module.exports = function createRecordistRouter({
         notReady: queue.notReady || [],
         handedOn: queue.handedOn || [],
         partial,
+        // A controlled-queue actor's started pod is the only thing the home offers until it is done.
+        pinStartedPod: !!boothActorQueue.stepsFor(recordist.voiceId),
         tracks,
       })
     } catch (err) {
