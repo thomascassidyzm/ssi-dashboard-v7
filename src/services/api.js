@@ -39,17 +39,53 @@ export function getApiUrl() {
   return ''
 }
 
-// Aliases for backwards compatibility
-function getApiBaseUrl() {
+/**
+ * The ONE api-base resolver for the SPA (job #98). Same chain as getApiUrl(),
+ * with one opt-in fence kept from the production store:
+ *
+ *   nullOnHosted — on popty.app / *.popty.app / *.vercel.app, with no
+ *   localStorage override, return null instead of the watson-1 default.
+ *   The production store's agent operations (spawn, audio pipeline) must
+ *   not fire at a default backend from the hosted SPA; callers check for
+ *   null before calling. Read-only data there goes straight to Supabase.
+ *   Every other caller takes the default (false) and gets getApiUrl().
+ */
+export function getApiBaseUrl({ nullOnHosted = false } = {}) {
+  if (nullOnHosted) {
+    const storedUrl = localStorage.getItem('api_base_url')
+    if (storedUrl) return storedUrl
+    const isHosted = typeof window !== 'undefined' && (
+      window.location.hostname.includes('vercel.app') ||
+      window.location.hostname === 'popty.app' ||
+      window.location.hostname.endsWith('.popty.app')
+    )
+    if (isHosted) return null
+  }
   return getApiUrl()
 }
 
-function getProductionApiUrl() {
+// Alias for backwards compatibility
+export function getProductionApiUrl() {
   return getApiUrl()
 }
 
-// Export for direct access
-export { getProductionApiUrl, getApiBaseUrl }
+// One hour: audio generation and pipeline starts can take that long
+// (same reason as the axios instance timeout below).
+export const LONG_OPERATION_TIMEOUT_MS = 3600000
+
+/**
+ * fetch that aborts after timeoutMs via AbortController. Default is the
+ * one-hour long-operation budget; pass a shorter budget per call site.
+ */
+export async function fetchWithTimeout(url, options = {}, timeoutMs = LONG_OPERATION_TIMEOUT_MS) {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    return await fetch(url, { ...options, signal: controller.signal })
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
 
 /**
  * fetch + guard + parse JSON in one call. Throws a CLEAN Error on a non-OK or
@@ -82,7 +118,7 @@ const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 3600000, // 1 hour - audio generation can take a very long time
+  timeout: LONG_OPERATION_TIMEOUT_MS, // 1 hour - audio generation can take a very long time
   headers: {
     'Content-Type': 'application/json',
   }
