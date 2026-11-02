@@ -243,6 +243,7 @@ import {
   speakerColor
 } from '@/utils/podRecordingPlan'
 import { useUploadQueue } from '@/composables/useAudioUpload'
+import { holdReload } from '@/router/versionReload'
 import { useTapRecorder } from '@/composables/useTapRecorder'
 import { useMainOptions } from '@/composables/useMainOptions'
 import StoredTakeButton from './StoredTakeButton.vue'
@@ -574,6 +575,15 @@ function onKey(e) {
 function beforeUnloadGuard(e) {
   if (phase.value === 'recording') { e.preventDefault(); e.returnValue = '' }
 }
+
+// A deploy must not reload this page under a recordist either (job #43, Auke 2026-11-02): the
+// reload is held while a take is being read or any upload is still waiting, and lands after.
+watch(
+  () => phase.value === 'recording' || uploadQueue.pendingCount.value > 0,
+  (on) => holdReload('pod-longtake', on),
+  { immediate: true }
+)
+onBeforeUnmount(() => holdReload('pod-longtake', false))
 
 // ── Plan loading ─────────────────────────────────────────────────────────────
 function apiBase() { return localStorage.getItem('api_base_url') || getApiUrl() }

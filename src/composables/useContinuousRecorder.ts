@@ -395,6 +395,11 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       isFlowMode.value = true
 
     } catch (err: any) {
+      // A start that failed part-way (mic granted, then the VAD or calibration threw) must not
+      // leave the mic hot behind an error message: the recordist is about to press Record again.
+      if (rolloverTimer) { clearInterval(rolloverTimer); rolloverTimer = null }
+      try { vad.stopListening() } catch { /* never started */ }
+      if (stream) { try { stream.getTracks().forEach(track => track.stop()) } catch { /* gone */ } stream = null }
       error.value = err.message || 'Failed to start recording'
       if (onError) {
         onError(error.value)

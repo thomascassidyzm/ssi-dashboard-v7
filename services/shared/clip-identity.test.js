@@ -69,6 +69,12 @@ describe('canonicalLanguage — every spelling of a language collapses to one', 
     expect(canonicalLanguage('yo')).toBe('yor')
   })
 
+  it('knows Western Frisian — fry_for_eng takes were refused filing without it (Auke, job #43)', () => {
+    expect(canonicalLanguage('fry')).toBe('fry')
+    expect(canonicalLanguage('fy')).toBe('fry')
+    expect(canonicalLanguage('fy-NL')).toBe('fry')
+  })
+
   it('throws on a value that is not a language rather than guessing', () => {
     expect(() => canonicalLanguage('auto')).toThrow(ClipIdentityError)
     expect(() => canonicalLanguage('')).toThrow(ClipIdentityError)
