@@ -224,6 +224,21 @@ describe('the database copy is generated from this module, not written twice', (
     }
   })
 
+  // Job #57 (2026-11-02): 'bre' and 'cor' resolved here but had no database row, so
+  // the course_audio trigger refused every Breton and Cornish clip. Whatever the JS
+  // side accepts as an estate code, the database must accept too.
+  it('every estate code canonicalLanguage accepts has its own database row', () => {
+    const map = new Map(rows())
+    const langService = require('../language-code-service.cjs')
+    for (const code of Object.keys(langService.LEGACY_TO_STANDARD)) {
+      let want
+      try { want = canonicalLanguage(code) } catch { continue }
+      expect(map.get(code.toLowerCase()), `language_canonical is missing ${code}`).toBe(want)
+    }
+    expect(map.get('bre')).toBe('bre')
+    expect(map.get('cor')).toBe('cor')
+  })
+
   it('the committed migration holds the current generated output', () => {
     // If this fails the CSV changed and the migration was not regenerated:
     //   node tools/generate-language-canonical-sql.cjs /tmp/rows.sql

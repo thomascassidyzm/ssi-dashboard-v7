@@ -39,6 +39,7 @@
 // NO DDL. NO TTS. One course_audio upsert.
 
 const voiceEngineDb = require('./voice-engine/db.cjs')
+const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const { swapClipInPlace } = require('./shared/audio-revision-swap.cjs')
 
 // Reasons a take was not filed. `deliberate: true` means the outcome is
@@ -68,6 +69,17 @@ const FILING_REASONS = Object.freeze({
   course_read_failed: {
     deliberate: false,
     message: 'Popty got this take but could not read the course record just now, so it could not file it yet. It is kept on this device and will be sent again by itself.',
+  },
+  // A language Popty cannot file a clip under: the JavaScript canonicaliser
+  // (tools/sync/reference/language_codes.csv) or the database's language_canonical
+  // table does not know it. Every fry_for_eng take on 2026-11-02 (Auke, job #43)
+  // landed in S3 and then failed here as a "write_failed" — retried, and worded as
+  // a database blip — when no retry could ever succeed. Named on its own so the
+  // recordist hears what is actually wrong, and so the booth refuses it in words
+  // (the take stays on the phone) instead of resending it for ever.
+  unknown_language: {
+    deliberate: false,
+    message: "This take was saved but NOT filed as a clip: Popty does not know this course's language yet, so the take cannot play. Tell whoever runs the course build. The recording itself is safe and can be filed once the language is added.",
   },
   write_failed: {
     deliberate: false,
@@ -137,6 +149,11 @@ function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null, co
   // English learner, and the spliced and rendered intros were always 'eng'.
   const language = (role === 'known' || role === 'presentation') ? course.known_lang : course.target_lang
   if (!language) return { file: false, filing: reasonPayload('no_course', `no ${role === 'known' ? 'known_lang' : 'target_lang'} on the course row`) }
+
+  // Fail LOUDLY here, before any database write, on a language the clip key cannot hold.
+  try { canonicalLanguage(language) } catch (err) {
+    return { file: false, filing: reasonPayload('unknown_language', `language ${JSON.stringify(language)}: ${err.message}`) }
+  }
 
   return { file: true, text, role, language, voiceId }
 }
@@ -216,6 +233,15 @@ async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = 
     )
     return { filed: true, courseAudioId, reason: null, deliberate: false, message: null }
   } catch (err) {
+    // The JavaScript side knew the language but the database's language_canonical
+    // table did not (trg_course_audio_canonical_identity raises). Not a blip.
+    if (isUnknownLanguageDbError(err)) {
+      logger.error(
+        `[ScriptTake] FILING REFUSED for ${courseCode} ${plan.role}: language ${JSON.stringify(plan.language)} ` +
+        `is not in language_canonical (s3 ${s3Key}) — regenerate it with tools/generate-language-canonical-sql.cjs and migrate`
+      )
+      return reasonPayload('unknown_language', `language ${JSON.stringify(plan.language)}: ${err.message}`)
+    }
     // LOUD. This is the exact silence that lost 2026-08-19: bytes landed, the
     // browser was told success, and nothing existed that could serve them.
     logger.error(
@@ -236,6 +262,16 @@ async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = 
  * The deliberate reasons (a slow read) and the misconfiguration reasons (no voice on the slot)
  * are not a busy database, and resending would not change them.
  */
+/** canonical_language() in 20260806_clip_identity_canonical_functions.sql raises exactly this. */
+function isUnknownLanguageDbError(err) {
+  return /is not in language_canonical/.test(String((err && err.message) || ''))
+}
+
+/** A filing nobody can fix by resending: Popty does not know the course's language. */
+function isUnknownLanguageFiling(filing) {
+  return !!(filing && filing.filed === false && filing.reason === 'unknown_language')
+}
+
 function isRetryableFilingFailure(filing) {
   return !!(filing && filing.filed === false && (filing.reason === 'write_failed' || filing.reason === 'course_read_failed'))
 }
@@ -243,6 +279,7 @@ function isRetryableFilingFailure(filing) {
 module.exports = {
   FILING_REASONS,
   isRetryableFilingFailure,
+  isUnknownLanguageFiling,
   planScriptTakeFiling,
   fileScriptTake,
 }

@@ -87,7 +87,7 @@ const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
-const { isRetryableFilingFailure } = require('../script-take-filing.cjs')
+const { isRetryableFilingFailure, isUnknownLanguageFiling } = require('../script-take-filing.cjs')
 const { createLastGoodCache, rowOrThrow } = require('../shared/last-good-cache.cjs')
 
 /**
@@ -98,6 +98,18 @@ const { createLastGoodCache, rowOrThrow } = require('../shared/last-good-cache.c
  * upload at a time and sends it again until it files.
  */
 function refuseUnfiledTake(res, recordist, filing) {
+  // Popty does not know the course's language: no resend can ever file this take, so it
+  // is refused IN WORDS (4xx) — the phone keeps it on its shelf, marked refused, and
+  // shows this message — never as the "database was busy" 503 it used to get.
+  if (isUnknownLanguageFiling(filing)) {
+    return res.status(422).json({
+      error: filing.message,
+      reason: 'unknown_language',
+      retryable: false,
+      voiceId: recordist.voiceId,
+      filing,
+    })
+  }
   return res.status(503).json({
     error: "Popty got this take but couldn't file it just now (the database was busy). It is kept on this device and will be sent again by itself.",
     reason: 'take_not_filed',
@@ -1208,7 +1220,7 @@ module.exports = function createRecordistRouter({
     // verdict has to be READ rather than assumed -- an unfiled take is bytes in
     // S3 with nothing that can serve them, which is the 2026-08-19 silence.
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -1380,7 +1392,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = false
     if (audioId) {
@@ -1588,7 +1600,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = 0
     if (audioId && resolved.lego) {
@@ -1824,7 +1836,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     if (!audioId) logger.error(`[Recordist] ${metaKind} take ${raw} was NOT filed as a clip: ${filing && filing.reason}`)
     const after = audioId && afterFiled ? await afterFiled(audioId) : null
@@ -2082,7 +2094,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -2201,7 +2213,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
-    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    if (isRetryableFilingFailure(filing) || isUnknownLanguageFiling(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
