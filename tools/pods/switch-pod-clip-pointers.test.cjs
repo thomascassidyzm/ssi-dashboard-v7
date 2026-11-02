@@ -28,7 +28,10 @@ describe('switch-pod-clip-pointers planProblems', () => {
     expect(planProblems(row({ target_text: 'Non sono sicuro. Ciao.' }, { target_text: 'Non sono sicura, ciao.' }), all).join()).toMatch(/sentence count/);
   });
   it('refuses a field it does not switch', () => {
-    expect(planProblems(row({ speaker: 'Anna' }, { speaker: 'Sarah' }), all).join()).toMatch(/not switchable/);
+    expect(planProblems(row({ scene_number: 21 }, { scene_number: 22 }), all).join()).toMatch(/not switchable/);
+  });
+  it('relabels a row onto a scene-unique speaker, with its new clip, in one plan (job #325, Kai #508 shape)', () => {
+    expect(planProblems(row({ speaker: 'Narrator', target_audio_id: A }, { speaker: 'Narrator 2', target_audio_id: B }), all)).toEqual([]);
   });
   it('fills an empty known slot with an existing clip, and its rollback empties it again (job #325)', () => {
     expect(planProblems(row({ known_audio_id: null }, { known_audio_id: A }), all)).toEqual([]);

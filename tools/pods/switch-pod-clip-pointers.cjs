@@ -32,7 +32,11 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), 
 // (build-canonical-231-pod.cjs) arrives with the five language-naming known lines unvoiced, and no other committed
 // tool points a pod row's known slot at a clip. Filling an empty slot with an existing clip (and the rollback back to
 // empty) is all it may do; REPLACING a known clip is a re-record and is refused in planProblems().
-const SWITCHABLE = ['target_text', 'target_audio_id', 'known_audio_id', 'sentence_audio_ids', 'takeg_audio_ids', 'atom_map_fine'];
+// speaker (job #325·AC): a row's speaker LABEL, so one line can move onto a scene-unique label whose cast entry is
+// the other voice — Kai's #508 shape for the scene-21 "October. November. December." Narrator line, which otherwise
+// answers the Interlocutor in the same voice. Learner progress is filed under the slot id, which a relabel does not
+// move; the cast itself travels in the plan's `speakers` block, so a relabel and its cast land in one transaction.
+const SWITCHABLE = ['target_text', 'target_audio_id', 'known_audio_id', 'speaker', 'sentence_audio_ids', 'takeg_audio_ids', 'atom_map_fine'];
 const JSONB = new Set(['atom_map_fine']);
 const UUID_ARRAYS = new Set(['sentence_audio_ids', 'takeg_audio_ids']);
 const BOUNDARY = /(?<=[.!?])\s+/; // the player's POD_SENTENCE_BOUNDARY
