@@ -1,6 +1,7 @@
 // services/production-api.cjs
 require('dotenv').config()
 const express = require('express')
+const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
 const compression = require('compression')
 const cors = require('cors')
 const path = require('path')
@@ -104,41 +105,6 @@ async function getCachedManifest(courseCode) {
 }
 
 // Clear cache for a specific course (call after data updates)
-/**
- * Build the courseConfigsId (file name + manifest id) with dialect-aware suffix
- * on either the known or target side (or both, in theory).
- * E.g.:
- *   spa_for_eng        → "en-es"        (no suffix)
- *   spa_mx_for_eng     → "en-es-mx"     (target suffix)
- *   fra_ca_for_eng     → "en-fr-ca"
- *   eng_for_fra_ca     → "fr-ca-en"     (known suffix — hypothetical, no such course today)
- *   cym_anthem_for_jpn → "ja-cy-anthem"
- *
- * Mirrors the logic in services/phases/generate-legacy-manifest.cjs (build manifest section)
- * so the dashboard's UI/publish path agrees with the manifest's internal id.
- *
- * Also exported indirectly via parseCourseCodeSuffixes() so other modules can
- * reuse the same parsing.
- *
- * @param {string} courseCode      e.g. "fra_ca_for_eng"
- * @param {string} knownDbLang     e.g. "eng" (course.known_lang)
- * @param {string} targetDbLang    e.g. "fra" (course.target_lang)
- * @param {string} knownLegacyCode e.g. "en"  (after languageCodeService conversion)
- * @param {string} targetLegacyCode e.g. "fr"
- */
-function parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang) {
-  const re = new RegExp(`^${targetDbLang}(?:_(.+?))?_for_${knownDbLang}(?:_(.+))?$`)
-  const m = courseCode.match(re)
-  return { targetSuffix: m?.[1] || '', knownSuffix: m?.[2] || '' }
-}
-
-function buildCourseConfigsId(courseCode, knownDbLang, targetDbLang, knownLegacyCode, targetLegacyCode) {
-  const { targetSuffix, knownSuffix } = parseCourseCodeSuffixes(courseCode, knownDbLang, targetDbLang)
-  const knownPart = knownSuffix ? `${knownLegacyCode}-${knownSuffix}` : knownLegacyCode
-  const targetPart = targetSuffix ? `${targetLegacyCode}-${targetSuffix}` : targetLegacyCode
-  return `${knownPart}-${targetPart}`
-}
-
 function invalidateManifestCache(courseCode) {
   if (manifestCache.has(courseCode)) {
     manifestCache.delete(courseCode)
