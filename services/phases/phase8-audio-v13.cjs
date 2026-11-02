@@ -3431,7 +3431,9 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
+            // An ElevenLabs config carries no locale, so the door cannot name the clip without the line's language and
+            // refused every ElevenLabs fill item (job #28: deu_ch target2, "cannot name this clip (language unknown)").
+            door: { courseCode, language: item.language, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed,
