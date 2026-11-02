@@ -308,6 +308,18 @@ test('the take route: a take the database did not file is a 503 the phone retrie
   assert.equal(slow.status, undefined)
 })
 
+// Job #57 (2026-11-02): a course in a language Popty does not know (Frisian before #43, Breton and
+// Cornish before the bre/cor rows). No resend can file it, so it is refused IN WORDS — a 4xx the phone
+// keeps on its shelf as refused, with this message on screen — never the "database was busy" 503.
+test('the take route: a take in a language Popty does not know is a 422 that says so, never a busy 503', async () => {
+  const unfiled = { filed: false, courseAudioId: null, reason: 'unknown_language', deliberate: false, message: "This take was saved but NOT filed as a clip: Popty does not know this course's language yet (language \"bre\")" }
+  const r = await take(CATRIN, `phrase:${N}:S1001L01B03:target1`, fixture(), unfiled)
+  assert.equal(r.status, 422, `expected 422, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(r.body.reason, 'unknown_language')
+  assert.equal(r.body.retryable, false)
+  assert.match(r.body.error, /does not know this course's language/)
+})
+
 // ── TASK B: a live English prompt held only by synthetic speech ─────────────
 function syntheticFixture(mode) {
   return {

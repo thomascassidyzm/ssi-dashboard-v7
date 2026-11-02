@@ -69,6 +69,12 @@ describe('canonicalLanguage — every spelling of a language collapses to one', 
     expect(canonicalLanguage('yo')).toBe('yor')
   })
 
+  it('knows Western Frisian — fry_for_eng takes were refused filing without it (Auke, job #43)', () => {
+    expect(canonicalLanguage('fry')).toBe('fry')
+    expect(canonicalLanguage('fy')).toBe('fry')
+    expect(canonicalLanguage('fy-NL')).toBe('fry')
+  })
+
   it('throws on a value that is not a language rather than guessing', () => {
     expect(() => canonicalLanguage('auto')).toThrow(ClipIdentityError)
     expect(() => canonicalLanguage('')).toThrow(ClipIdentityError)
@@ -216,6 +222,21 @@ describe('the database copy is generated from this module, not written twice', (
     for (const [raw, want] of [['eng','eng'],['en','eng'],['zho','zho'],['zh','zho'],['ell','ell'],['el','ell']]) {
       expect(map.get(raw), `language_canonical is missing ${raw}`).toBe(want)
     }
+  })
+
+  // Job #57 (2026-11-02): 'bre' and 'cor' resolved here but had no database row, so
+  // the course_audio trigger refused every Breton and Cornish clip. Whatever the JS
+  // side accepts as an estate code, the database must accept too.
+  it('every estate code canonicalLanguage accepts has its own database row', () => {
+    const map = new Map(rows())
+    const langService = require('../language-code-service.cjs')
+    for (const code of Object.keys(langService.LEGACY_TO_STANDARD)) {
+      let want
+      try { want = canonicalLanguage(code) } catch { continue }
+      expect(map.get(code.toLowerCase()), `language_canonical is missing ${code}`).toBe(want)
+    }
+    expect(map.get('bre')).toBe('bre')
+    expect(map.get('cor')).toBe('cor')
   })
 
   it('the committed migration holds the current generated output', () => {

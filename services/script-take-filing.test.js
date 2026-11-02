@@ -2,7 +2,7 @@
 // takes recorded on 2026-08-19 with S3 bytes and no course_audio row.
 // Run: npx vitest run services/script-take-filing.test.js
 import { describe, it, expect, vi } from 'vitest'
-import { planScriptTakeFiling, fileScriptTake } from './script-take-filing.cjs'
+import { planScriptTakeFiling, fileScriptTake, isRetryableFilingFailure, isUnknownLanguageFiling } from './script-take-filing.cjs'
 
 const COURSE = { target_lang: 'fin', known_lang: 'eng' }
 const quiet = { log: () => {}, error: () => {}, warn: () => {} }
@@ -154,5 +154,38 @@ describe('fileScriptTake', () => {
     expect(filing.filed).toBe(false)
     expect(filing.reason).toBe('write_failed')
     expect(filing.message).toMatch(/canonicalise voice_id/)
+  })
+
+  // Job #57 (2026-11-02): a course whose language Popty does not know. Before, both
+  // halves came back as 'write_failed' — "the database refused", retryable, so the
+  // booth answered "database busy" and the phone resent for ever. Now they are named.
+  it('names a language the JavaScript canonicaliser does not know, before any database call', async () => {
+    const upsert = vi.fn()
+    const plan = planScriptTakeFiling({
+      metadata: { role: 'target1', cadence: 'natural', text: 'Goeie!' },
+      voiceId: 'human_auke_fry', course: { target_lang: 'xqq', known_lang: 'eng' },
+    })
+    expect(plan.file).toBe(false)
+    const filing = await fileScriptTake({ supabase: { from: upsert }, courseCode: 'xqq_for_eng', plan, s3Key: 'k', logger: quiet })
+    expect(upsert).not.toHaveBeenCalled()
+    expect(filing.reason).toBe('unknown_language')
+    expect(filing.deliberate).toBe(false)
+    expect(filing.message).toMatch(/does not know this course's language/)
+    expect(filing.message).toMatch(/xqq/)
+    expect(isUnknownLanguageFiling(filing)).toBe(true)
+    expect(isRetryableFilingFailure(filing)).toBe(false)
+  })
+
+  it("names the database's own refusal of a language (language_canonical) — not a blip to retry", async () => {
+    const supabase = fakeSupabase(() => ({ data: null, error: { message: 'clip identity: language bre is not in language_canonical — regenerate it with tools/generate-language-canonical-sql.cjs' } }))
+    const plan = planScriptTakeFiling({
+      metadata: { role: 'target1', cadence: 'natural', text: 'Demat!' },
+      voiceId: 'human_x_bre', course: { target_lang: 'bre', known_lang: 'eng' },
+    })
+    expect(plan.file).toBe(true)
+    const filing = await fileScriptTake({ supabase, courseCode: 'bre_for_eng', plan, s3Key: 'k', logger: quiet })
+    expect(filing.reason).toBe('unknown_language')
+    expect(isRetryableFilingFailure(filing)).toBe(false)
+    expect(isUnknownLanguageFiling(filing)).toBe(true)
   })
 })

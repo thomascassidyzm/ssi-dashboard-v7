@@ -41,6 +41,7 @@ require('dotenv').config({ path: path.join(REPO, '.env') })
 const { Client } = require('pg')
 const AWS = require('aws-sdk')
 const { resolveTakeVoiceId } = require(path.join(REPO, 'services/recording-upload-helpers.cjs'))
+const { existingByS3KeyQuery } = require('./backfill-existing-lookup.cjs')
 const { planScriptTakeFiling } = require(path.join(REPO, 'services/script-take-filing.cjs'))
 const voiceEngineDb = require(path.join(REPO, 'services/voice-engine/db.cjs'))
 const supabaseClient = require(path.join(REPO, 'services/supabase-client.cjs'))
@@ -129,8 +130,7 @@ async function probeDuration(key) {
   const keys = takes.map(t => t.ctx.s3_key).filter(Boolean)
   const existingByKey = new Map()
   if (keys.length) {
-    const q = await pg.query(`select id, s3_key, course_code, text, language, role, voice_id, origin
-                                from course_audio where s3_key = any($1)`, [keys])
+    const q = await pg.query(existingByS3KeyQuery(keys, COURSE_FILTER))
     for (const r of q.rows) existingByKey.set(r.s3_key, r)
   }
   const byUuid = await pg.query(`select id from course_audio where id = ANY($1::uuid[])`,

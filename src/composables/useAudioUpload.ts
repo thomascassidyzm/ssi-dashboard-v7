@@ -1,6 +1,7 @@
 // src/composables/useAudioUpload.ts
 import { ref, reactive } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { refusalEndsTake } from '@/services/autocueTakeShelf.js'
 
 export interface UploadProgress {
   loaded: number
@@ -26,7 +27,13 @@ export interface QueuedUpload {
   metadata: Record<string, any>
   provenance: Record<string, any>
   itemIndex: number
+  // The take's id on the device shelf (autocueTakeShelf.js), when it was put there.
+  shelfId?: string | null
 }
+
+// The device shelf the queue answers to: a take that settles (stored, or refused in words) is
+// taken off it; a take that does not stays on it for the next page load. Set by the studio.
+interface UploadShelf { remove(id: string): Promise<void> }
 
 export function useAudioUpload() {
   const isUploading = ref(false)
@@ -139,12 +146,24 @@ const uploadedUuids = reactive(new Map<number, string>())
 // cadence is deliberately never filed and must not read as a problem.
 const filingWarnings = reactive(new Map<number, string>())
 let processing = false
+let shelf: UploadShelf | null = null
+// Shelf ids this page's queue is holding or sending, so recovery never sends a take twice.
+const liveShelfIds = new Set<string>()
+// Takes from an earlier page load being sent now (recoverShelved). Counted so the studio can
+// hold the reload and say what it is doing.
+const recoveringCount = ref(0)
 let onUploadedCallback: ((itemIndex: number, result: any) => void) | null = null
 
 const MAX_RETRIES = 3
 const RETRY_BACKOFF = [1000, 3000, 8000]
 
 export function useUploadQueue() {
+  function forgetShelved(item: QueuedUpload) {
+    if (!item.shelfId) return
+    liveShelfIds.delete(item.shelfId)
+    if (shelf) shelf.remove(item.shelfId).catch((err) => console.warn('[UploadQueue] could not clear shelved take', err))
+  }
+
   function queueUpload(item: QueuedUpload) {
     // A re-record supersedes the take it replaces. Drop any earlier take of the
     // same item still waiting in the queue — uploading it costs bandwidth to
@@ -152,8 +171,9 @@ export function useUploadQueue() {
     // the latest take per phrase+cadence). queue[0] may be in flight, so it is
     // never touched; its 4xx/5xx verdict is simply superseded below.
     for (let i = queue.length - 1; i >= 1; i--) {
-      if (queue[i].itemIndex === item.itemIndex) queue.splice(i, 1)
+      if (queue[i].itemIndex === item.itemIndex) forgetShelved(queue.splice(i, 1)[0])
     }
+    if (item.shelfId) liveShelfIds.add(item.shelfId)
     // ...and it supersedes the earlier take's verdict too, so a slot that
     // failed once and was re-recorded stops being counted as failed.
     failedIndices.delete(item.itemIndex)
@@ -179,6 +199,7 @@ export function useUploadQueue() {
       const item = queue[0]
       let success = false
       let result: any = null
+      let lastStatus: number | undefined
 
       for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
         try {
@@ -187,6 +208,7 @@ export function useUploadQueue() {
           break
         } catch (err: any) {
           console.warn(`[UploadQueue] Attempt ${attempt + 1} failed for item ${item.itemIndex}:`, err)
+          lastStatus = err?.status
           // A 4xx is the server's verdict on THIS take (silent audio, unknown uuid,
           // malformed body) — retrying replays the same bytes to the same verdict
           // and just burns 12s of backoff before the recordist is told. Only retry
@@ -205,6 +227,11 @@ export function useUploadQueue() {
 
       queue.shift()
       pendingCount.value = queue.length
+
+      // The device shelf: off it once the server has answered for these bytes; kept otherwise,
+      // so a 502 during a deploy or a closed tab sends it again on the next page load.
+      if (success || refusalEndsTake(lastStatus)) forgetShelved(item)
+      else if (item.shelfId) liveShelfIds.delete(item.shelfId)
 
       // A newer take of this same item is already queued behind this one, so
       // this take's verdict is stale either way — don't let it mark the slot.
@@ -241,37 +268,20 @@ export function useUploadQueue() {
     processing = false
   }
 
-  async function doUpload(item: QueuedUpload) {
-    const base64 = await blobToBase64Internal(item.blob)
-    const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
-
-    const response = await fetch(
-      `${baseUrl}/api/production/${item.courseCode}/recording/upload`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          uuid: item.uuid,
-          audioData: base64,
-          mimeType: item.blob.type || 'audio/webm',
-          metadata: item.metadata,
-          provenance: item.provenance
-        })
-      }
-    )
-
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({ error: 'Upload failed' }))
-      const err: any = new Error(errData.error || `Upload failed: ${response.status}`)
-      err.status = response.status
-      // 4xx = the server judged this take; 5xx/network = try again
-      err.deterministic = response.status >= 400 && response.status < 500
-      throw err
-    }
-
-    return response.json()
+  return {
+    queueUpload,
+    onUploaded,
+    resetQueue,
+    storedUuidFor,
+    recoverShelved,
+    uploadedCount,
+    pendingCount,
+    recoveringCount,
+    uploadedIndices,
+    uploadedUuids,
+    failedIndices,
+    failedReasons,
+    filingWarnings
   }
 
   function onUploaded(cb: (itemIndex: number, result?: any) => void) {
@@ -283,7 +293,9 @@ export function useUploadQueue() {
     return uploadedUuids.get(itemIndex) ?? null
   }
 
+  // Note: the shelf and recoveringCount are NOT reset — takes on the device belong to no session.
   function resetQueue() {
+    for (const item of queue) if (item.shelfId) liveShelfIds.delete(item.shelfId)
     queue.length = 0
     uploadedCount.value = 0
     pendingCount.value = 0
@@ -295,20 +307,99 @@ export function useUploadQueue() {
     processing = false
     onUploadedCallback = null
   }
+}
 
-  return {
-    queueUpload,
-    onUploaded,
-    resetQueue,
-    storedUuidFor,
-    uploadedCount,
-    pendingCount,
-    uploadedIndices,
-    uploadedUuids,
-    failedIndices,
-    failedReasons,
-    filingWarnings
+/** The studio hands the queue its device shelf (or null). */
+export function setUploadShelf(s: UploadShelf | null) { shelf = s }
+
+/**
+ * Send the takes an earlier page load left on the device shelf. Runs alongside the live queue but
+ * touches none of its per-line bookkeeping (those takes belong to no line of THIS script).
+ * Each one is retried like a live take; a take the server stores or refuses in words leaves the
+ * shelf, anything else stays for next time. Returns what happened, for the studio to say.
+ */
+export async function recoverShelved(
+  shelfApi: { list(q: any): Promise<any[]>; load(id: string): Promise<any>; remove(id: string): Promise<void> },
+  query: { courseCode: string; voiceId?: string | null }
+): Promise<{ found: number; sent: number; refused: number; kept: number }> {
+  const waiting = (await shelfApi.list(query)).filter((r: any) => !liveShelfIds.has(r.id))
+  const out = { found: waiting.length, sent: 0, refused: 0, kept: 0 }
+  if (!waiting.length) return out
+  recoveringCount.value += waiting.length
+  try {
+    for (const meta of waiting) {
+      let settled = false
+      try {
+        const rec = await shelfApi.load(meta.id)
+        if (!rec || !rec.blob) { recoveringCount.value--; continue }
+        const item: QueuedUpload = {
+          blob: rec.blob,
+          courseCode: rec.courseCode,
+          uuid: null,
+          metadata: { ...(rec.metadata || {}), recoveredFromDevice: true },
+          provenance: { ...(rec.provenance || {}), recovered_from_device_at: new Date().toISOString() },
+          itemIndex: -1,
+        }
+        for (let attempt = 0; attempt < MAX_RETRIES && !settled; attempt++) {
+          try {
+            await doUpload(item)
+            out.sent++
+            settled = true
+            await shelfApi.remove(meta.id)
+          } catch (err: any) {
+            if (refusalEndsTake(err?.status)) {
+              out.refused++
+              settled = true
+              console.warn(`[UploadQueue] recovered take refused by the server: ${err?.message}`)
+              await shelfApi.remove(meta.id)
+            } else if (attempt < MAX_RETRIES - 1) {
+              await sleep(RETRY_BACKOFF[attempt])
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('[UploadQueue] could not read a shelved take', err)
+      }
+      if (!settled) out.kept++
+      recoveringCount.value--
+    }
+  } finally {
+    if (recoveringCount.value < 0) recoveringCount.value = 0
   }
+  return out
+}
+
+async function doUpload(item: QueuedUpload) {
+  const base64 = await blobToBase64Internal(item.blob)
+  const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
+
+  const response = await fetch(
+    `${baseUrl}/api/production/${item.courseCode}/recording/upload`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        uuid: item.uuid,
+        audioData: base64,
+        mimeType: item.blob.type || 'audio/webm',
+        metadata: item.metadata,
+        provenance: item.provenance
+      })
+    }
+  )
+
+  if (!response.ok) {
+    const errData = await response.json().catch(() => ({ error: 'Upload failed' }))
+    const err: any = new Error(errData.error || `Upload failed: ${response.status}`)
+    err.status = response.status
+    // 4xx = the server judged this take; 5xx/network = try again
+    err.deterministic = response.status >= 400 && response.status < 500
+    throw err
+  }
+
+  return response.json()
 }
 
 function blobToBase64Internal(blob: Blob): Promise<string> {

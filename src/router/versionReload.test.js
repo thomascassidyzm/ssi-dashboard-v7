@@ -60,3 +60,21 @@ describe('a new build reaches a tab that is never hidden (job #829)', () => {
     expect(reload).not.toHaveBeenCalled()
   })
 })
+
+describe('a held reload is said out loud (job #43, Auke 2026-11-02)', () => {
+  it('reloadWaiting is true while a new build waits on a hold, and the reload lands when it is let go', async () => {
+    const { reloadWaiting } = await import('./versionReload.js')
+    const reload = vi.fn()
+    let hook = null
+    const router = { afterEach: (fn) => { hook = fn; return () => {} } }
+    holdReload('autocue-session', true)
+    uninstall = installVersionReload({ current: 'aaa', fetchLatest: async () => 'bbb', reload, router })
+    hook()
+    await vi.advanceTimersByTimeAsync(0)
+    expect(reload).not.toHaveBeenCalled()
+    expect(reloadWaiting.value).toBe(true)
+    holdReload('autocue-session', false)
+    expect(reload).toHaveBeenCalledTimes(1)
+    expect(reloadWaiting.value).toBe(false)
+  })
+})
