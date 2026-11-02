@@ -40,3 +40,25 @@ describe('buildTTSConfig — ElevenLabs cast settings', () => {
     expect(cfg.similarityBoost).toBe(0.75)
   })
 })
+
+describe('phase8 /generate fill pass — ElevenLabs cast settings (job #28, deu_ch target2)', () => {
+  const { elevenLabsSlotSettings } = require('./course-voice-config.cjs')
+  const SWISS_MALE = { voiceId: 'elevenlabs_vTifwvQGTZT1q7epCu2b', provider: 'elevenlabs', settings: { model: 'eleven_v4_turbo', speed: 1, stability: 1 } }
+
+  it('gives the slot cast voice its model + stability, bare or prefixed', () => {
+    expect(elevenLabsSlotSettings(SWISS_MALE, 'vTifwvQGTZT1q7epCu2b')).toEqual({ modelId: 'eleven_v4_turbo', stability: 1 })
+    expect(elevenLabsSlotSettings(SWISS_MALE, 'elevenlabs_vTifwvQGTZT1q7epCu2b')).toEqual({ modelId: 'eleven_v4_turbo', stability: 1 })
+  })
+  it('gives any other voice nothing, so it keeps the house defaults', () => {
+    expect(elevenLabsSlotSettings(SWISS_MALE, 'someOtherVoice')).toEqual({})
+    expect(elevenLabsSlotSettings(undefined, 'vTifwvQGTZT1q7epCu2b')).toEqual({})
+  })
+  it('the /generate ElevenLabs arm sends them (it sent none, so fills came out multilingual_v2 at 0.5)', () => {
+    const fs = require('fs')
+    const path = require('path')
+    const src = fs.readFileSync(path.join(__dirname, '../phases/phase8-audio-v13.cjs'), 'utf8')
+    const handler = src.slice(src.indexOf("app.post('/generate/:courseCode'"), src.indexOf("app.post('/regenerate-role/:courseCode'"))
+    const arm = handler.slice(handler.indexOf("generateWithRetry(textForTTS, 'elevenlabs'"))
+    expect(arm.slice(0, arm.indexOf('}))'))).toMatch(/elevenLabsSlotSettings\(voices\[item\.role\], voiceName\)/)
+  })
+})

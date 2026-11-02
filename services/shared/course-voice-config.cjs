@@ -150,8 +150,25 @@ function elevenLabsCastSettings(voice) {
   return out
 }
 
+/**
+ * The cast settings for ONE item of a role fill pass (job #28, deu_ch target2, Kai 2026-11-02): phase8 /generate's
+ * ElevenLabs arm sent no model and no stability, so a whole-course fill rendered the cast voice on
+ * eleven_multilingual_v2 at 0.5 — the wrong sound AND ~2x the credits of the eleven_v4_turbo the cast names.
+ * The settings apply only when the voice being rendered IS the slot's cast voice; any other voice keeps the house defaults.
+ *
+ * @param {object} slotVoice  voice_config.voices[role]
+ * @param {string} renderingVoiceId  the voice the item renders in, bare or provider-prefixed
+ */
+function elevenLabsSlotSettings(slotVoice, renderingVoiceId) {
+  const bare = (v) => String(v || '').replace(/^elevenlabs_/, '')
+  if (!slotVoice || typeof slotVoice !== 'object' || !renderingVoiceId) return {}
+  if (bare(slotVoice.voiceId) !== bare(renderingVoiceId)) return {}
+  return elevenLabsCastSettings(slotVoice)
+}
+
 module.exports = {
   elevenLabsCastSettings,
+  elevenLabsSlotSettings,
   TARGET_SLOTS,
   KNOWN_SPEED,
   MIN_PLAYBACK_SPEED,

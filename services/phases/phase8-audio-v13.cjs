@@ -3434,7 +3434,9 @@ app.post('/generate/:courseCode', async (req, res) => {
             door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
-            speed
+            speed,
+            // The cast's model + stability (job #28): without them a fill renders multilingual_v2 at 0.5.
+            ...courseVoiceConfig.elevenLabsSlotSettings(voices[item.role], voiceName)
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
@@ -4135,7 +4137,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceId,
-            speed
+            speed,
+            ...courseVoiceConfig.elevenLabsSlotSettings(voiceSettings, voiceId) // the cast's model + stability (job #28)
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
