@@ -102,3 +102,97 @@ describe('restartDecision — restart only when server-side code can have change
     expect(unitsToRestart('s2', 's1', up, true)).toEqual([A, B, C])
   })
 })
+
+/*
+ * Job #96: restart only the units a change touches. A fake tree stands in for
+ * the repo; each unit's graph is DERIVED from its entry point, and narrowing
+ * happens only on proof — every doubt restarts all three.
+ */
+const { graphOf, unitsFor } = require('./unit-restart-set.cjs')
+
+function fakeTree (files) {
+  const readFile = (rel) => (rel in files ? files[rel] : null)
+  const listDir = (rel) => {
+    const p = rel.replace(/\/$/, '') + '/'
+    const kids = Object.keys(files).filter((f) => f.startsWith(p))
+    return kids.length ? kids : null
+  }
+  return { readFile, listDir }
+}
+const TREE = {
+  'tools/check-service-syntax.cjs': 'const vm = require("vm")',
+  'services/production-api.cjs': 'require("./shared/common.cjs"); require("./prod-only.cjs"); const x = fs.readFileSync("SYSTEM.md")',
+  'services/course-builder-api.cjs': 'require("./shared/common.cjs"); require("./course-builder/lib/validation.cjs")',
+  'services/course-builder/lib/validation.cjs': 'try { require(`../../../docs/pair-contracts/${code}.contract.cjs`) } catch {}',
+  'services/phases/phase8-audio-v13.cjs': 'require("../shared/common.cjs")',
+  'services/shared/common.cjs': 'module.exports = 1',
+  'services/prod-only.cjs': 'module.exports = 2',
+  'docs/pair-contracts/fra_for_eng.contract.cjs': 'module.exports = {}',
+  'SYSTEM.md': '# doc',
+}
+function graphsOf (tree) {
+  const { readFile, listDir } = fakeTree(tree)
+  return {
+    [A]: graphOf({ readFile, listDir, entries: ['services/production-api.cjs', 'tools/check-service-syntax.cjs'] }),
+    [B]: graphOf({ readFile, listDir, entries: ['services/course-builder-api.cjs', 'tools/check-service-syntax.cjs'] }),
+    [C]: graphOf({ readFile, listDir, entries: ['services/phases/phase8-audio-v13.cjs', 'tools/check-service-syntax.cjs'] }),
+  }
+}
+
+describe('restartDecision with unit graphs — restart only the units a change touches (job #96)', () => {
+  const graphs = graphsOf(TREE)
+  it('derives each unit graph from its entry point, syntax gate included', () => {
+    expect(graphs[B].loaded.has('services/course-builder/lib/validation.cjs')).toBe(true)
+    expect(graphs[A].loaded.has('services/course-builder/lib/validation.cjs')).toBe(false)
+    for (const u of [A, B, C]) expect(graphs[u].loaded.has('tools/check-service-syntax.cjs')).toBe(true)
+    for (const u of [A, B, C]) expect(graphs[u].unresolved).toEqual([])
+  })
+  it('THE CHANGE: a module only the course builder loads restarts only the course builder', () => {
+    const d = restartDecision(['services/course-builder/lib/validation.cjs'], graphs)
+    expect(d.restart).toBe(true)
+    expect(d.units).toEqual([B])
+    expect(d.reason).toMatch(/spared popty-production-api, popty-phase8-audio/)
+    // and the old answer, with no graphs, is still every unit
+    expect(restartDecision(['services/course-builder/lib/validation.cjs']).units).toEqual([A, B, C])
+  })
+  it('a shared module restarts each unit holding it', () => {
+    expect(restartDecision(['services/shared/common.cjs'], graphs).units).toEqual([A, B, C])
+    expect(restartDecision(['services/prod-only.cjs'], graphs).units).toEqual([A])
+  })
+  it('a template-literal require pulls in the whole directory it names', () => {
+    expect(restartDecision(['docs/pair-contracts/fra_for_eng.contract.cjs'], graphs).units).toEqual([B])
+  })
+  it('a file a unit reads by path (not require) restarts that unit', () => {
+    expect(restartDecision(['SYSTEM.md'], graphs).units).toEqual([A])
+  })
+  it('an unplaceable path — deleted, renamed, or simply unknown — restarts all', () => {
+    for (const f of ['services/gone-since-this-commit.cjs', 'brand-new-dir/x.cjs', 'prompts/never-named.md']) {
+      expect(restartDecision([f], graphs).units, f).toEqual([A, B, C])
+      expect(restartDecision([f], graphs).reason, f).toMatch(/cannot be placed/)
+    }
+  })
+  it('package.json, the lockfile, env files and ops/systemd restart all', () => {
+    for (const f of ['package.json', 'package-lock.json', '.env', '.env.example', 'ops/systemd/popty-user/popty-production-api.service']) {
+      expect(restartDecision([f], graphs).units, f).toEqual([A, B, C])
+    }
+  })
+  it('static paths still restart nothing, graphs or not', () => {
+    expect(restartDecision(['src/views/Foo.vue', 'services/x.test.cjs'], graphs)).toMatchObject({ restart: false, units: [] })
+  })
+  it('a unit whose walk met an unfollowable require is never spared', () => {
+    const g = graphsOf({ ...TREE, 'services/phases/phase8-audio-v13.cjs': 'require("../shared/common.cjs"); const m = require(IMPL)' })
+    expect(g[C].unresolved.length).toBe(1)
+    expect(restartDecision(['services/prod-only.cjs'], g).units).toEqual([A, C])
+    // and path.join(VAR, "file.cjs") whose literal part names nothing is the same doubt
+    const g2 = graphsOf({ ...TREE, 'services/prod-only.cjs': 'require(path.join(LANE, "ledger.cjs"))' })
+    expect(g2[A].unresolved.length).toBe(1)
+    // while path.join(__dirname, "./x") with a real target is followed, not doubted
+    const g3 = graphsOf({ ...TREE, 'services/prod-only.cjs': 'require(path.join(__dirname, "./shared/common.cjs"))' })
+    expect(g3[A].unresolved).toEqual([])
+  })
+  it('a narrowed deploy still retries a spared unit that is down', () => {
+    expect(unitsToRestart('s2', 's1', { [A]: true, [B]: true, [C]: true }, [B])).toEqual([B])
+    expect(unitsToRestart('s2', 's1', { [A]: false, [B]: true, [C]: true }, [B])).toEqual([A, B])
+    expect(unitsToRestart('s2', 's1', { [A]: true, [B]: true, [C]: true }, [])).toEqual([])
+  })
+})
