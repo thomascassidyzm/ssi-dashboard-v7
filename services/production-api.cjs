@@ -3066,14 +3066,8 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
     const db = supabaseClient.getClient()
-    const { data, error } = await db
-      .from('course_audio')
-      .select('id, text, s3_key, duration_ms')
-      .eq('course_code', courseCode)
-      .eq('role', 'presentation')
-      .eq('lego_id', legoId)
-      .maybeSingle()
-    if (error) throw error
+    // The clip the LEGO links to (a re-render leaves the old row keyed to the same LEGO) — job #978.
+    const data = await require('./shared/presentation-read.cjs').loadPresentationClip(db, courseCode, legoId)
 
     // No row yet — most LEGOs on a course that has never had its intros authored.
     // Hand back the line this LEGO WOULD get, rendered off its OWN course's
