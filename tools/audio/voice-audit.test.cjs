@@ -201,7 +201,7 @@ describe('voice audit --twins-only', () => {
       expect(items.every((it) => rv.sameVoice(it.voice, LORENZO))).toBe(true)
       expect(items[0]).toMatchObject({ reuse: 'benigno', reuseKind: 'other-male' })
       expect(items[1].reuse).toBeFalsy()
-      expect(plan).toMatchObject({ slots: 2, relinkCastSlots: 0, relinkOtherSlots: 1, renderSlots: 1, renderChars: 6 })
+      expect(plan).toMatchObject({ slots: 2, relinkCastSlots: 0, relinkOtherSlots: 1, renderSlots: 1, renderChars: 6, renderOnlyFemaleTexts: 1, renderUngenderedTexts: 0 })
       // the cast male wins over an older male whenever both exist
       expect(audit.chooseTwinRelink({ voice: LORENZO, twinFiles: [] }, [candidates[2], { id: 'lor', voice_id: LORENZO, s3_key: 'x', gender: null, created_at: '2026-09-01' }])).toMatchObject({ id: 'lor', kind: 'cast' })
     } finally { rv.loadCourse = saved }

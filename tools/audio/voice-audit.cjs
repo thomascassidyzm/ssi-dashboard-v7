@@ -280,10 +280,10 @@ async function attachTwinCandidates(pg, items) {
     const voice = chunk.map((x) => rv.canonVoice(x.voice))
     const { rows } = await pg.query(`with want as (select * from unnest($1::int[], $2::text[], $3::text[], $4::text[], $5::text[]) as w(i, t, lang, voice, bare))
       select w.i, c.* from want w cross join lateral (
-        select ca.id::text id, ca.voice_id, ca.s3_key, ca.created_at::text created_at,
-          (select vo.gender from voices vo where vo.voice_id in (ca.voice_id, 'cartesia_' || ca.voice_id, 'azure_' || ca.voice_id, 'xai_' || ca.voice_id) and vo.gender is not null limit 1) gender
-        from course_audio ca where ca.text_normalized = w.t and ca.language = w.lang and ${usable('ca')} and coalesce(ca.veracity_pass, true)
-        order by (ca.voice_id in (w.voice, w.bare)) desc, ca.created_at limit 10) c`,
+        select ca.id::text id, ca.voice_id, ca.s3_key, ca.created_at::text created_at, g.gender
+        from course_audio ca left join lateral (select vo.gender from voices vo where vo.voice_id in (ca.voice_id, 'cartesia_' || ca.voice_id, 'azure_' || ca.voice_id, 'xai_' || ca.voice_id) and vo.gender is not null limit 1) g on true
+        where ca.text_normalized = w.t and ca.language = w.lang and ${usable('ca')} and coalesce(ca.veracity_pass, true)
+        order by (ca.voice_id in (w.voice, w.bare)) desc, (g.gender ilike 'm%') desc nulls last, ca.created_at limit 10) c`,
     [chunk.map((_, j) => j), chunk.map((x) => x.t), chunk.map((x) => x.language), voice, voice.map((v) => String(v).replace(/^[a-z]+_/, ''))])
     for (const it of chunk) it.candidates = []
     for (const r of rows) chunk[Number(r.i)].candidates.push(r)
@@ -292,12 +292,19 @@ async function attachTwinCandidates(pg, items) {
 
 /** Pure. The --twins-only plan: relinked in the cast voice, relinked to an older male voice, to render. */
 function twinPlan(items) {
-  const plan = { texts: items.length, slots: 0, relinkCastTexts: 0, relinkCastSlots: 0, relinkOtherTexts: 0, relinkOtherSlots: 0, renderTexts: 0, renderSlots: 0, renderChars: 0 }
+  // renderOnlyFemaleTexts / renderUngenderedTexts: of the texts left to render, how many have an existing clip that was passed
+  // over because its voice is female, or because the voices table records no gender for it (an ungendered voice is never linked)
+  const plan = { texts: items.length, slots: 0, relinkCastTexts: 0, relinkCastSlots: 0, relinkOtherTexts: 0, relinkOtherSlots: 0, renderTexts: 0, renderSlots: 0, renderChars: 0, renderOnlyFemaleTexts: 0, renderUngenderedTexts: 0 }
   for (const it of items) {
     const pick = chooseTwinRelink(it, it.candidates)
     it.reuse = pick && pick.id; it.reuseKind = pick && pick.kind
     plan.slots += it.slots.length
-    if (!pick) { plan.renderTexts++; plan.renderSlots += it.slots.length; plan.renderChars += String(it.tx || '').length }
+    if (!pick) {
+      plan.renderTexts++; plan.renderSlots += it.slots.length; plan.renderChars += String(it.tx || '').length
+      const other = (it.candidates || []).filter((c) => !it.twinFiles.includes(c.s3_key))
+      if (other.some((c) => !rv.normGender(c.gender))) plan.renderUngenderedTexts++
+      else if (other.length) plan.renderOnlyFemaleTexts++
+    }
     else if (pick.kind === 'cast') { plan.relinkCastTexts++; plan.relinkCastSlots += it.slots.length }
     else { plan.relinkOtherTexts++; plan.relinkOtherSlots += it.slots.length }
   }
@@ -313,7 +320,7 @@ async function twinAudit(pg, db, code, cast) {
 }
 
 /** Pure. One line for the twin plan. */
-const renderTwinPlan = (code, p) => `${code} twins-only plan: ${p.slots} twin slots over ${p.texts} texts — relink cast ${p.relinkCastSlots} slots (${p.relinkCastTexts} texts), relink other male ${p.relinkOtherSlots} slots (${p.relinkOtherTexts} texts), render ${p.renderSlots} slots (${p.renderTexts} texts, ${p.renderChars} chars)${p.uncast ? `, ${p.uncast} with no male cast (left)` : ''}${p.human ? `, ${p.human} human (left)` : ''}`
+const renderTwinPlan = (code, p) => `${code} twins-only plan: ${p.slots} twin slots over ${p.texts} texts — relink cast ${p.relinkCastSlots} slots (${p.relinkCastTexts} texts), relink other male ${p.relinkOtherSlots} slots (${p.relinkOtherTexts} texts), render ${p.renderSlots} slots (${p.renderTexts} texts, ${p.renderChars} chars; of those, ${p.renderOnlyFemaleTexts} texts exist only in a female voice, ${p.renderUngenderedTexts} have a clip in a voice with no recorded gender)${p.uncast ? `, ${p.uncast} with no male cast (left)` : ''}${p.human ? `, ${p.human} human (left)` : ''}`
 
 /** Pure. Who to tell and how: the ledger file for one fix run. */
 const ledgerFile = (code) => require('../lib/evidence-path.cjs').evidencePath(`tools/audio/voice-audit/${code}-${new Date().toISOString().replace(/[:.]/g, '-')}.jsonl`)
