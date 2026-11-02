@@ -816,6 +816,7 @@ import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { nextJobStatus, buildControls, statusBadgeText } from '@/services/build-status-view'
 import { useCourses } from '../composables/useCourses'
 import FilterSelect from '../components/ui/FilterSelect.vue'
+import { nextIncompletePhase } from '@/utils/pipelinePhases'
 
 const route = useRoute()
 const router = useRouter()
@@ -1231,10 +1232,7 @@ const hasWorkToDo = computed(() => {
 })
 
 const nextPhaseAction = computed(() => {
-  // Pick earliest incomplete phase by number (pending or partial)
-  const nextPhase = phases.value
-    .filter(p => p.status === 'pending' || p.status === 'partial')
-    .sort((a, b) => a.number - b.number)[0]
+  const nextPhase = nextIncompletePhase(phases.value)
 
   if (nextPhase) {
     return nextPhase.status === 'partial'
@@ -1246,10 +1244,7 @@ const nextPhaseAction = computed(() => {
 })
 
 const nextActionDescription = computed(() => {
-  // Pick earliest incomplete phase by number (pending or partial)
-  const nextPhase = phases.value
-    .filter(p => p.status === 'pending' || p.status === 'partial')
-    .sort((a, b) => a.number - b.number)[0]
+  const nextPhase = nextIncompletePhase(phases.value)
 
   if (nextPhase) {
     return nextPhase.status === 'partial'
@@ -1621,10 +1616,7 @@ async function fetchPreview() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
-  // Find earliest incomplete phase by number (pending or partial)
-  const targetPhase = phases.value
-    .filter(p => p.status === 'pending' || p.status === 'partial')
-    .sort((a, b) => a.number - b.number)[0]
+  const targetPhase = nextIncompletePhase(phases.value)
 
   if (!targetPhase) return
 
@@ -1666,10 +1658,7 @@ async function startPhase() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
 
-  // Find earliest incomplete phase by number (pending or partial)
-  const targetPhase = phases.value
-    .filter(p => p.status === 'pending' || p.status === 'partial')
-    .sort((a, b) => a.number - b.number)[0]
+  const targetPhase = nextIncompletePhase(phases.value)
 
   if (!targetPhase) return
 
