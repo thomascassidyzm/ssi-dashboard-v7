@@ -8,12 +8,10 @@
  */
 
 const { Router } = require('express');
-const { getTargetLang, isChinese, checkLegoSyllables } = require('../lib/language-config.cjs');
-const { normalizeForContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
-const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
+const { getTargetLang } = require('../lib/language-config.cjs');
+const { makePhraseId } = require('../lib/phrase-structure.cjs');
 const { checkLegoConflict, isDedupConflict } = require('../lib/validation.cjs');
 const { courseFamily } = require('../lib/course-family.cjs');   // sector-helix §5b: ZUT is family-wide
-const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
 module.exports = function createSeedTranslateRoutes(ctx) {
