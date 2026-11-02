@@ -74,10 +74,15 @@ async function fetchDashboardUser(email) {
     const token = await getAccessToken()
     if (token) {
       try {
-        const { getApiUrl } = await import('../services/api.js')
-        const resp = await fetch(`${getApiUrl()}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
-        if (resp.ok) { lastLookupAuthoritative = true; return await resp.json() }
-      } catch { /* machine unreachable — the row lookups below still answer */ }
+        // Dynamic import, as services/api below: adminApi imports useAuth, so a
+        // static import here would be a cycle. getAdminJson throws on any
+        // non-2xx, which lands in this catch and falls through exactly as the
+        // old `if (resp.ok)` did.
+        const { getAdminJson } = await import('./adminApi.js')
+        const me = await getAdminJson('/api/auth/me')
+        lastLookupAuthoritative = true
+        return me
+      } catch { /* machine unreachable or refused — the row lookups below still answer */ }
     }
 
     // Direct Supabase read — data here is authoritative, but an EMPTY
