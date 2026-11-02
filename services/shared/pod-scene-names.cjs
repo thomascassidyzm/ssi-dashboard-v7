@@ -53,12 +53,21 @@ const baseLang = (code) => String(code || '').toLowerCase().split('_')[0]
 function planSceneNames({ shape, knownLang, cuts = loadCuts() }) {
   if (!shape) return { skip: 'no scene shape' }
   const key = shape.join(',')
-  const cut = cuts.find(c => Array.isArray(c.shape) && c.shape.join(',') === key)
+  // A cut matches on its own shape, or on a VARIANT's: an older or longer cut of
+  // the same scenes (Pod 1's 142-line cut, a 232-line course), whose sceneMap
+  // names the base scene each of its scenes is, so the names stay in one place.
+  let cut = null, sceneMap = null
+  for (const c of cuts) {
+    if (Array.isArray(c.shape) && c.shape.join(',') === key) { cut = c; break }
+    const v = (c.variants || []).find(x => Array.isArray(x.shape) && x.shape.join(',') === key)
+    if (v) { cut = c; sceneMap = v.sceneMap || null; break }
+  }
   if (!cut) return { skip: 'shape matches no named cut' }
   const lang = baseLang(knownLang)
   const names = {}
   for (let n = 1; n <= shape.length; n++) {
-    const name = cut.scenes && cut.scenes[String(n)] && cut.scenes[String(n)][lang]
+    const base = sceneMap ? sceneMap[n - 1] : n
+    const name = cut.scenes && cut.scenes[String(base)] && cut.scenes[String(base)][lang]
     if (typeof name !== 'string' || !name.trim()) return { skip: `cut ${cut.cut} has no ${lang} name for scene ${n}` }
     names[String(n)] = name.trim()
   }
