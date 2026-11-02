@@ -79,7 +79,7 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - **Pod lanes** — active work now lands directly on `main` via `feat/pod-lab`. `feat/pod-tts-resilience` and `feat/pod-explainer-audio` remotes exist but show no commits since 06-04 — status unclear, check before building on them. (`pods/casting`, `pods/dialogue-autocue`, `pods/registration` no longer exist — stale names, removed from this list.)
 
 - [~] @fable-72 11-02 — **Code-elegance pass (Fable team, #72·AC)** — small behaviour-preserving commits across SPA utils/composables, production-api helpers, course-builder route plumbing; proposals page published to the surface, unbuilt.
-- [~] @fable-96 11-02 — **Popty second wave (#96·AC)**: restart only the units a change touches (auto-deploy per-unit require graph); one tested paginator; one API base + timed fetch for the SPA.
+- [~] @fable-96 11-02 — **Popty second wave (#96·AC)**: per-unit restart graph in auto-deploy (landed 83f310f) and one SPA API base + timed fetch (landed fae580d, #98·AC); open: one tested paginator (production-api/debut-practice/phrase-v4-door page-all loops) — needs a booth-idle production-api restart.
 
 ## ⛔ Blocked / parked
 
