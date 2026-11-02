@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { useAuth } from '@/composables/useAuth'
+import { postAdminJson } from '@/composables/adminApi'
 
 /**
  * Trigger the SSi insights "Discovery" deep-run on the always-on machine
@@ -39,17 +40,7 @@ export function useInsightDiscovery() {
     running.value = true
     error.value = null
     try {
-      const token = await getAccessToken()
-      const res = await fetch(`${getApiUrl()}/api/insight-discovery/run`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ demo }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`)
+      const data = await postAdminJson('/api/insight-discovery/run', { demo })
       lastResult.value = data
       return data
     } catch (e) {
