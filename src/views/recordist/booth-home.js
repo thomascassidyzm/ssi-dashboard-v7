@@ -141,9 +141,13 @@ export function batchOpenable() { return true }
 export const isStartedPod = (t) =>
   !!t && t.kind === 'pod' && !!t.podSlug && ((t.recorded || 0) + (t.uploading || 0)) > 0 && !isFinished(t)
 
-/** Up next's order: a started pod, then new sentences, LEGOs, practice phrases (pass 1, pass 2), then the rest. */
+/**
+ * Up next's order: a started pod, then new sentences, LEGOs and the LEGO Introductions, practice phrases (pass 1,
+ * pass 2), then the rest. The Introductions sit with the LEGOs, ahead of the phrases (Aran, 2026-11-02: he could
+ * not find them under four phrase cards and wants to concentrate on them this week).
+ */
 export function orderedTracks(tracks) {
-  const rank = (t) => (isStartedPod(t) || t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : t.kind === 'lego' && isNewWork(t) ? 1 : t.kind === 'phrase' ? 2 : 3)
+  const rank = (t) => (isStartedPod(t) || t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : (t.kind === 'lego' && isNewWork(t)) || t.kind === 'introsentence' ? 1 : t.kind === 'phrase' ? 2 : 3)
   return tracks.map((t, i) => ({ t, i })).sort((a, b) => (rank(a.t) - rank(b.t)) || (a.i - b.i)).map((x) => x.t)
 }
 

@@ -18,12 +18,14 @@
  * versioned, when one exists). The booth renders the markup (RecordistRoom segmentsFor); he reads the words.
  *
  * ORDER: course running order, earliest first — the seed's SERVED position (course_running_order, the order the player
- * walks; seed number only on a course with no running order; seeds an order leaves out go last), then LEGO, North
- * before South at the same place — so he can record the start of the course first. ONE CARD for both courses (booth-home trackKeyOf 'introsentence.all'), in
- * batches of 100.
+ * walks; seed number only on a course with no running order; seeds an order leaves out go last), then LEGO — so he
+ * can record the start of the course first. TWO CARDS, North and South SEPARATELY (Aran, 2026-11-02: he could not find
+ * the one shared card and wants to concentrate on them; booth-home trackKeyOf 'introsentence.<courseCode>'), in batches
+ * of 100.
  *
- * FOLDED: an intro whose words are identical in North and South (or twice in one course) is ONE line, on the earliest
- * LEGO; its take fills every copy (duplicateOf → alsoFills on the wire).
+ * SHARED: an intro whose words are identical in North and South is on BOTH cards, and is recorded ONCE: each card's
+ * line carries every other copy (both courses) in duplicateOf, so the take fills every slot and slotFilledBy, spanning
+ * all copies, counts it recorded on the other card too. Twice in one course folds to that course's earliest LEGO.
  *
  * RECORDED = any copy's presentation slot holds a whole-sentence take of this voice (slotFilledBy, scored
  * by slot alone). A spliced intro (spliced_from set) is NOT a recording of the sentence, so a LEGO with only a spliced
@@ -85,8 +87,9 @@ function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), 
     .map((l) => ({ l, at: positionOf(l) }))
     .sort((a, b) => (a.at - b.at) || (a.l.lego_index - b.l.lego_index) || (rank.get(a.l.course_code) - rank.get(b.l.course_code)))
     .map((x) => x.l)
-  const byKey = new Map()
-  const out = []
+  // Every copy of each intro's words, across BOTH courses, in running order (a take fills all of them).
+  const copiesOf = new Map()
+  const first = []
   for (const l of wanted) {
     const text = introTextOf(cfgOf.get(l.course_code), l)
     if (!text) continue
@@ -94,34 +97,47 @@ function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), 
     // A whole-sentence take of this voice in the slot; a splice is not one.
     const c = held(l.presentation_audio_id)
     const filledBy = c && !c.spliced ? c.voice : null
-    const copy = { legoRowId: l.id, courseCode: l.course_code, legoId: l.lego_id || null, presentationAudioId: l.presentation_audio_id || null }
-    const have = byKey.get(key)
-    if (have) { have.duplicateOf.push(copy); have.slotFilledBy.push(filledBy); continue }
-    const line = {
-      id: introSentenceLineId(l.id),
-      podId: null,
-      order: Number.MAX_SAFE_INTEGER,
-      text,
-      knownText: null,
-      speaker: null,
-      courseCode: l.course_code,
-      voiceId: recordist.voiceId,
-      duplicateOf: [],
-      kind: INTRO_SENTENCE_KIND,
-      role: 'presentation',
-      slotFilledBy: [filledBy],
-      byWords: false,
-      legoRowId: l.id,
-      legoId: l.lego_id || null,
-      seedNumber: l.seed_number,
-      presentationAudioId: l.presentation_audio_id || null,
-      readStyle: 'natural',
-      rerecordWanted: false,
-    }
-    byKey.set(key, line)
-    out.push(line)
+    const copy = { legoRowId: l.id, courseCode: l.course_code, legoId: l.lego_id || null, presentationAudioId: l.presentation_audio_id || null, filledBy }
+    if (!copiesOf.has(key)) copiesOf.set(key, [])
+    copiesOf.get(key).push({ l, text, copy })
   }
-  return out
+  // ONE LINE PER COURSE an intro's words appear in, on that course's earliest LEGO with them; its duplicateOf is every
+  // OTHER copy, in either course, so one take fills both cards and both cards count it recorded (slotFilledBy spans all).
+  const out = []
+  for (const { courseCode } of courses) {
+    for (const group of copiesOf.values()) {
+      const head = group.find((g) => g.copy.courseCode === courseCode)
+      if (!head) continue
+      const l = head.l
+      const others = group.filter((g) => g !== head).map((g) => g.copy)
+      out.push({ at: positionOf(l), lego_index: l.lego_index, line: {
+        id: introSentenceLineId(l.id),
+        podId: null,
+        order: Number.MAX_SAFE_INTEGER,
+        text: head.text,
+        knownText: null,
+        speaker: null,
+        courseCode: l.course_code,
+        voiceId: recordist.voiceId,
+        duplicateOf: others.map(({ filledBy, ...rest }) => rest),
+        kind: INTRO_SENTENCE_KIND,
+        role: 'presentation',
+        slotFilledBy: [head.copy.filledBy, ...others.map((o) => o.filledBy)],
+        byWords: false,
+        legoRowId: l.id,
+        legoId: l.lego_id || null,
+        seedNumber: l.seed_number,
+        presentationAudioId: l.presentation_audio_id || null,
+        readStyle: 'natural',
+        rerecordWanted: false,
+        // On the other course's card too (Aran, 2026-11-02): the booth says so, and the take fills both.
+        sharedWith: [...new Set(others.map((o) => o.courseCode).filter((c) => c !== courseCode))],
+      } })
+    }
+  }
+  // North's card, then South's, each in its own running order.
+  out.sort((a, b) => (rank.get(a.line.courseCode) - rank.get(b.line.courseCode)) || (a.at - b.at) || (a.lego_index - b.lego_index))
+  return out.map((x) => x.line)
 }
 
 /**

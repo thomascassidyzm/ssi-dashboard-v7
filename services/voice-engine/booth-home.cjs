@@ -90,8 +90,9 @@ function trackKeyOf(line) {
   // Pod lines waiting on new words (job #551): one card, North and South, ahead of the pod change.
   // ...unless a controlled-queue actor's pod owns it (booth-actor-queue scopeQueue marks it inPodCard): then it is a line of that pod's card.
   if (kind === 'podswap' && line.podSlug) return line.inPodCard ? `pod.${line.podSlug}` : `podswap.${line.podSlug}`
-  // ONE Introductions card for North and South together, in running order (Aran, job #587).
-  if (kind === 'introsentence') return 'introsentence.all'
+  // An Introductions card PER COURSE, North and South separately, each in its running order (Aran, 2026-11-02;
+  // was one shared card, job #587). An intro both courses share is on both cards and recorded once.
+  if (kind === 'introsentence') return `introsentence.${line.courseCode || 'all'}`
   return `${kind}.${line.courseCode || 'all'}`
 }
 

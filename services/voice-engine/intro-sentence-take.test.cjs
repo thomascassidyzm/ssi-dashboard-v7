@@ -121,14 +121,17 @@ async function take(lineId, text, tables, writes) {
   return { status: out.status, body: out.body, uploads }
 }
 
-test('his English booth carries ONE Introductions card: North and South folded, another voice\'s intro left off', async () => {
+test('his English booth carries an Introductions card PER COURSE: a shared intro on both, another voice\'s intro left off', async () => {
   invalidateIntroSentenceInputs()
   const tables = fixture()
   const db = stubDb(tables, [])
   const aran = await resolveRecordist(db, ARAN_ENG)
   const q = await buildQueue(db, aran, { includeRecorded: true })
   const intros = q.lines.filter((l) => l.kind === 'introsentence')
-  assert.deepEqual(intros.map((l) => [l.id, l.text, l.alsoFills, l.recorded]), [['introsentence:n1', INTRO, 1, false]])
+  assert.deepEqual(intros.map((l) => [l.id, l.text, l.alsoFills, l.recorded, l.sharedWith]), [
+    ['introsentence:n1', INTRO, 1, false, ['cym_sv2_for_eng']],
+    ['introsentence:s1', INTRO, 1, false, ['cym_nv2_for_eng']],
+  ])
   assert.equal(q.lines.some((l) => l.kind === 'intro' || (l.kind === 'lego' && l.role === 'known')), false, 'the splice cards are gone')
 })
 
@@ -154,6 +157,21 @@ test('the take is filed as the LEGO intro and linked into every copy; real takes
   assert.equal(tables.course_audio.find((a) => a.id === 'real-take').s3_key, 'mastered/real.mp3')
   assert.ok(writes.every((w) => w.table !== 'course_audio' || w.ids.every((id) => id === TAKE_ID)), 'only the new take\'s row is written')
   assert.deepEqual(tables.courses.map((c) => c.content_version), ['1.0.1', '1.0.1'], 'phones see the new intro')
+})
+
+test('recorded once on the SOUTH card, it fills the North slot too and is done on BOTH cards (Aran, 2026-11-02)', async () => {
+  invalidateIntroSentenceInputs()
+  const tables = fixture()
+  const r = await take('introsentence:s1', INTRO, tables, [])
+  assert.equal(r.status, undefined, `expected 200, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(r.body.introLinked, 2)
+  const byId = new Map(tables.course_legos.map((l) => [l.id, l]))
+  assert.equal(byId.get('n1').presentation_audio_id, TAKE_ID, 'the North copy is filled by the South take')
+  assert.equal(byId.get('s1').presentation_audio_id, TAKE_ID)
+  invalidateIntroSentenceInputs()
+  const db = stubDb(tables, [])
+  const q = await buildQueue(db, await resolveRecordist(db, ARAN_ENG), { includeRecorded: true })
+  assert.deepEqual(q.lines.filter((l) => l.kind === 'introsentence').map((l) => [l.id, l.recorded]), [['introsentence:n1', true], ['introsentence:s1', true]])
 })
 
 test('a stale line text is refused before anything is stored; a line that is not his is 404', async () => {

@@ -1,6 +1,6 @@
 /**
  * The "Introductions" card on Aran's English booth (Aran 2026-10-29, job #587): every LEGO intro of the new North and
- * South courses read WHOLE, in running order, identical intros folded, his take filed and linked as the LEGO's intro.
+ * South courses read WHOLE, in running order, a card per course (an intro both share on both, recorded once), his take filed and linked as the LEGO's intro.
  * No network, no DB. Run: npx vitest run services/voice-engine/intro-sentence-lines.test.cjs
  */
 import { describe, it, expect } from 'vitest'
@@ -34,10 +34,12 @@ const introClips = new Map([
 const lines = is.introSentenceLinesFor(ARAN, { legos, introClips })
 
 describe('Introductions lines', () => {
-  it('one line per intro, whole sentence, in running order (seed, LEGO, North before South); old, other-voice and wordless LEGOs left off', () => {
+  it('one line per intro PER COURSE, whole sentence, North then South, each in running order; old, other-voice and wordless LEGOs left off', () => {
     expect(lines.map((l) => [l.id, l.text])).toEqual([
       ['introsentence:n1', 'The Welsh for <src>I want</src> is <tgt>dw i isio</tgt>.'],
       ['introsentence:n2', 'The Welsh for <src>to speak</src> is <tgt>siarad</tgt>.'],
+      ['introsentence:s1', 'The Welsh for <src>I want</src> is <tgt>dw i isio</tgt>.'],
+      ['introsentence:s2', 'The Welsh for <src>to speak</src> is <tgt>siarad</tgt>.'],
       ['introsentence:s3', 'The Welsh for <src>with you</src> is <tgt>efo chi</tgt>.'],
     ])
     expect(lines.every((l) => l.kind === 'introsentence' && l.role === 'presentation')).toBe(true)
@@ -48,18 +50,35 @@ describe('Introductions lines', () => {
     const got = is.introSentenceLinesFor(ARAN, { legos: woven, positionOf: (l) => served.get(l.seed_number) })
     expect(got.map((l) => l.legoId)).toEqual(['S1036L02', 'S0076L01'])
   })
-  it('identical intros in North and South are ONE line; its take fills both (alsoFills)', () => {
+  it('an intro identical in North and South is on BOTH cards, each line carrying the other copy, so one take fills both', () => {
     expect(lines[0].duplicateOf).toEqual([{ legoRowId: 's1', courseCode: 'cym_sv2_for_eng', legoId: 'S0001L01', presentationAudioId: null }])
+    expect(lines[2].duplicateOf).toEqual([{ legoRowId: 'n1', courseCode: 'cym_nv2_for_eng', legoId: 'S0001L01', presentationAudioId: null }])
     expect(lines[1].duplicateOf).toEqual([{ legoRowId: 's2', courseCode: 'cym_sv2_for_eng', legoId: 'S0001L02', presentationAudioId: 'aran-splice' }])
+    expect(lines.map((l) => l.sharedWith)).toEqual([['cym_sv2_for_eng'], ['cym_sv2_for_eng'], ['cym_nv2_for_eng'], ['cym_nv2_for_eng'], []])
   })
-  it('ONE card for both courses, cut in batches of 100', () => {
+  it('recorded on one card = done on the other: a take of his in the North slot counts the South line recorded too', () => {
+    const clips = new Map([...introClips, ['aran-n1', { voice: 'human_aran_eng', spliced: false }]])
+    const got = is.introSentenceLinesFor(ARAN, { legos: legos.map((l) => (l.id === 'n1' ? { ...l, presentation_audio_id: 'aran-n1' } : l)), introClips: clips })
+    const rec = (l) => isLineRecorded(l, { recordedKeys: new Set(), spellings: ARAN.spellings })
+    expect(got.map((l) => [l.id, rec(l)])).toEqual([['introsentence:n1', true], ['introsentence:n2', false], ['introsentence:s1', true], ['introsentence:s2', false], ['introsentence:s3', true]])
+  })
+  it('twice in ONE course folds to that course\'s earliest LEGO', () => {
+    const twice = [lego('a', 'cym_nv2_for_eng', 1, 1, 'yes', 'ia'), lego('b', 'cym_nv2_for_eng', 5, 1, 'yes', 'ia')]
+    const got = is.introSentenceLinesFor(ARAN, { legos: twice })
+    expect(got.map((l) => [l.id, l.duplicateOf.map((d) => d.legoRowId), l.sharedWith])).toEqual([['introsentence:a', ['b'], []]])
+  })
+  it('TWO cards, North and South separately, each cut in batches of 100; a shared intro counts on both', () => {
     const many = Array.from({ length: 230 }, (_, i) => lego(`r${i}`, i % 2 ? 'cym_sv2_for_eng' : 'cym_nv2_for_eng', i + 1, 1, `word ${i}`, `gair ${i}`))
-    const tracks = boothHome.buildHomeTracks(is.introSentenceLinesFor(ARAN, { legos: many }))
-    expect(tracks.map((t) => [t.key, t.kind, t.total, t.batches.map((b) => b.total)])).toEqual([['introsentence.all', 'introsentence', 230, [100, 100, 30]]])
+    const shared = Array.from({ length: 10 }, (_, i) => [lego(`sn${i}`, 'cym_nv2_for_eng', 500 + i, 1, `both ${i}`, `y ddau ${i}`), lego(`ss${i}`, 'cym_sv2_for_eng', 500 + i, 1, `both ${i}`, `y ddau ${i}`)]).flat()
+    const tracks = boothHome.buildHomeTracks(is.introSentenceLinesFor(ARAN, { legos: [...many, ...shared] }))
+    expect(tracks.map((t) => [t.key, t.kind, t.total, t.batches.map((b) => b.total)])).toEqual([
+      ['introsentence.cym_nv2_for_eng', 'introsentence', 125, [100, 25]],
+      ['introsentence.cym_sv2_for_eng', 'introsentence', 125, [100, 25]],
+    ])
   })
   it('recorded = a whole-sentence take of his in a slot; a splice of his is NOT a recording of the sentence', () => {
     const rec = (l) => isLineRecorded(l, { recordedKeys: new Set([String(l.text).toLowerCase()]), spellings: ARAN.spellings })
-    expect(lines.map(rec)).toEqual([false, false, true])
+    expect(lines.map(rec)).toEqual([false, false, false, false, true])
   })
   it('nobody else gets the card, and the take route resolves only his', () => {
     expect(is.introSentenceLinesFor(DAN, { legos, introClips })).toEqual([])

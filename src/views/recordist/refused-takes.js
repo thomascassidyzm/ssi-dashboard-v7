@@ -13,7 +13,7 @@ export function trackKeyOf(line) {
   if (kind === 'phrase') return line.phraseTrack || `phrase.${line.phrasePass || 1}`
   if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
-  if (kind === 'introsentence') return 'introsentence.all'
+  if (kind === 'introsentence') return `introsentence.${line.courseCode || 'all'}`
   return `${kind}.${line.courseCode || 'all'}`
 }
 

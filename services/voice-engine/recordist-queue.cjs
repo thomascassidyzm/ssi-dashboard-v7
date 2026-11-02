@@ -3664,6 +3664,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: (line.kind === 'lego' || line.kind === introSentences.INTRO_SENTENCE_KIND) ? (line.legoId || null) : null,
+        // On an Introductions line: the OTHER course(s) whose card carries the same sentence (one take fills both).
+        sharedWith: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.sharedWith || []) : null,
         // A video voiceover line (job #572): which step of which video, and how long the take may run. Null elsewhere.
         voiceover: line.kind === 'voiceover' ? (line.voiceover || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
