@@ -40,8 +40,13 @@ const path = require('path');
 const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs');
 const { sameLanguage, languageCandidates, bareVoiceId } = require('../../services/audio-reuse-planner.cjs');
 const { pickPreferredAudioRow } = require('../../services/shared/audio-link-preference.cjs');
-const { checkPodCast } = require('./pod-cast-gate.cjs');
+const { checkPodCast, sameVoiceAddress } = require('./pod-cast-gate.cjs');
 const { canonicalSpeakerName } = require('../pod-voice-colour-n.cjs');
+// A multi-sentence pod turn is synthesised AND STORED as its sentences joined by the " … " pause cue (phase 8's
+// podTtsText), so "A. … B." is the recording of the row "A. B." — the same words, one pause cue per boundary.
+// PHASE8_NO_LISTEN is phase 8's own switch for tools that require it for its named helpers.
+process.env.PHASE8_NO_LISTEN = process.env.PHASE8_NO_LISTEN || '1';
+const { podTtsText } = require('../../services/phases/phase8-audio-v13.cjs');
 
 const SIDES = ['target', 'known'];
 const isReal = (c) => !!(c && c.s3_key && !String(c.s3_key).startsWith('pending/'));
@@ -68,7 +73,8 @@ function clipRefusal(clip, lang, text) {
   if (!clip) return 'no clip on the sibling row';
   if (!isReal(clip)) return `clip ${clip.id} has no rendered audio`;
   if (!sameLanguage(lang, clip.language)) return `clip ${clip.id} is ${clip.language}, slot wants ${lang}`;
-  if (textKey(clip.text) !== textKey(text)) return `text differs: slot "${text}" vs clip "${clip.text}"`;
+  const k = textKey(clip.text);
+  if (k !== textKey(text) && k !== textKey(podTtsText(text))) return `text differs: slot "${text}" vs clip "${clip.text}"`;
   return null;
 }
 
@@ -157,7 +163,7 @@ function buildLinkPlan({ staged, sources, langs, clips, library = new Map(), rel
     const srcCast = sources[h.side].speakers?.[name]?.[sources[h.side].side];
     const voice = h.voice || cast[h.side].get(name) || srcCast?.voice_id || null;
     const text = h.row[`${h.side}_text`];
-    const hit = voice && library.get(libKey(voice, langs[h.side], text));
+    const hit = voice && (library.get(libKey(voice, langs[h.side], text)) || library.get(libKey(voice, langs[h.side], podTtsText(text))));
     if (hit && !clipRefusal(hit, langs[h.side], text)) {
       pick[h.side].set(h.row.id, { clip: hit, library: true });
       if (!cast[h.side].has(name)) cast[h.side].set(name, hit.voice_id);
@@ -230,9 +236,12 @@ async function loadLibrary(pg, holes) {
     if (!h.voiceId) continue;
     const voices = [...new Set([h.voiceId, bareVoiceId(h.voiceId)])];
     const { rows } = await pg.query(`SELECT ${LIB_COLS} FROM course_audio WHERE voice_id = ANY($1::text[]) AND language = ANY($2::text[]) AND text_normalized = ANY($3::text[])`,
-      [voices, languageCandidates(h.language), [textKey(h.text)]]);
-    const k = libKey(h.voiceId, h.language, h.text);
-    for (const r of rows) if (isReal(r)) lib.set(k, pickPreferredAudioRow(lib.get(k), r));
+      [voices, languageCandidates(h.language), [...new Set([textKey(h.text), textKey(podTtsText(h.text))])]]);
+    for (const r of rows) {
+      if (!isReal(r)) continue;
+      const k = libKey(h.voiceId, h.language, r.text);
+      lib.set(k, pickPreferredAudioRow(lib.get(k), r));
+    }
   }
   return lib;
 }
@@ -280,6 +289,7 @@ async function main() {
   console.log(`  linked ${linked.target} target + ${linked.known} known clips from siblings, ${linked.library} from the library; ${linked.kept} slots already filled (kept)`);
   console.log(`  relabels: ${plan.rows.filter((r) => 'speaker' in r.after).map((r) => `${r.id.split(':').pop()} ${r.before.speaker}→${r.after.speaker}`).join(', ') || 'none'}`);
   console.log(`  cast gate (target track): ${gate.voicesInUse.length} voice(s), ${gate.sameVoicePairs.length} same-voice pair(s), ${gate.uncast.length} uncast, ${gate.offCastClips || 0} off-cast, ${gate.wrongRowClips || 0} wrong-row`);
+  for (const p of gate.sameVoicePairs) console.log(`    same-voice: ${sameVoiceAddress(p)}`);
   console.log(`  plan: ${planFile} (${plan.rows.length} rows)`);
   if (holes.length) {
     console.error(`REFUSED — ${holes.length} slot(s) have no existing clip (${holes.reduce((n, h) => n + h.chars, 0)} chars to render):`);

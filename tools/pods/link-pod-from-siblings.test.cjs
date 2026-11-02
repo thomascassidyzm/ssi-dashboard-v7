@@ -89,4 +89,11 @@ describe('link-pod-from-siblings', () => {
     expect(r2.after.speaker).toBe('Guest 2')
     expect(r.plan.speakers.after['Guest 2'].target.voice_id).toBe(M)
   })
+
+  it('takes a clip stored with the pod pause cue (" … ") as the recording of its row, and Basque eu as eus', () => {
+    const { clipRefusal } = require('./link-pod-from-siblings.cjs')
+    expect(clipRefusal(clip('p', 'Mi chiamo Anna. … E tu?', F, 'ita'), 'ita', 'Mi chiamo Anna. E tu?')).toBeNull()
+    expect(clipRefusal(clip('q', 'Mi chiamo Anna. … E lei?', F, 'ita'), 'ita', 'Mi chiamo Anna. E tu?')).toMatch(/text differs/)
+    expect(clipRefusal(clip('e', 'Kaixo.', F, 'eu'), 'eus', 'Kaixo.')).toBeNull()
+  })
 })

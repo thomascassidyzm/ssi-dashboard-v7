@@ -142,6 +142,7 @@ const LANGUAGE_ALIASES = [
   ['nor', 'no'],
   ['fin', 'fi'],
   ['hun', 'hu'],
+  ['eus', 'baq', 'eu'], // Basque: eus_for_eng's pod clips are stored 'eu' (job #340)
 ]
 
 /**
