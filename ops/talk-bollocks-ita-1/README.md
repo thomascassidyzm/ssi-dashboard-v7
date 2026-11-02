@@ -8,3 +8,6 @@ Working folder for the Italian listening version of Aran & Tom "Talk Bollocks" P
 - `build.py` — applies corrections, drives `tools/audio/render.cjs --trial` (dry-run by default), writes the change log and the clip-page spec.
 
 Voices: Tom = Lorenzo (Cartesia ee16f140-…), Aran = Luca (Cartesia e019ed7e-…), as #983 cast them.
+- `render-results.json` — the 32 trial render answers (2 Nov, 7,062 chars). `page-spec.json` — the clip-page spec as published (file paths were job scratch, swept). Per-turn MP3s = ffmpeg concat of each turn's clips re-encoded 128k mono; the whole-part file = all clips with 0.6 s gaps at 64k mono (under the 25 MB publish limit).
+
+Published 2 Nov: listening page https://watson-1.tail4968cb.ts.net/d/4e46f816 · change log https://watson-1.tail4968cb.ts.net/d/07e48c31. The 30 Oct page (d/617c31b8) is the UNCHECKED version.
