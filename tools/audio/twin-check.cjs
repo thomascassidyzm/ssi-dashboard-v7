@@ -164,4 +164,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().then((code) => process.exit(code), (e) => { console.error(e.message || e); process.exit(2) })
-module.exports = { twinSql, twinItems, twinCost, wrongVoice, renderCourse, attachFree, checkCourse, loadCast, main }
+module.exports = { twinSql, twinRows, twinItems, twinCost, wrongVoice, renderCourse, attachFree, checkCourse, loadCast, main }
