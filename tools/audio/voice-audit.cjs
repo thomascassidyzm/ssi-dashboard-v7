@@ -336,7 +336,7 @@ async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role, twinsOnl
   const log = (e) => { if (!dryRun) fs.appendFileSync(file, JSON.stringify({ ...e, course: code, at: new Date().toISOString() }) + '\n') }
   let ev = null
   const event = async () => ev || (ev = await recordContentEdit(db, { identity: serviceIdentity(agent), courseCode: code, surface: 'tools:audio/voice-audit', operation: 'update', detail: { why: twinsOnly ? 'job #312: twin male slots moved off the female file' : 'job #53: slots moved to the resolveVoice voice', ledger: file } }))
-  let moved = 0, unbumped = 0, spent = 0, rendered = 0, reused = 0, refused = 0, skipped = 0
+  let moved = 0, unbumped = 0, spent = 0, rendered = 0, reused = 0, refused = 0, skipped = 0, callFailed = false
   const bump = async () => { if (dryRun || !unbumped) return; const v = await bumpCourseVersion(db, code, 'patch'); if (!v) throw new Error(`content_version bump failed for ${code}`); log({ kind: 'bumped', v }); unbumped = 0 }
   const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
   try {
@@ -345,8 +345,13 @@ async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role, twinsOnl
       if (!to) {
         if (it.role === 'presentation' || spent + String(it.tx).length > maxChars) { skipped++; continue }
         if (dryRun) { rendered++; spent += String(it.tx).length; continue }
-        const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': agent },
-          body: JSON.stringify({ courseCode: code, role: it.role, text: it.tx, language: it.language, voiceId: it.voice, voiceBound: true, purpose: `voice-audit: ${it.role} slot to its resolveVoice voice` }) })
+        // A call that gets NO answer (Popty restarting under a deploy: job #312 saw one every 4-6 min) is not a refusal: stop
+        // cleanly so the summary line still prints. Whatever the route made is in the library, so a later run reuses it free.
+        let res
+        try {
+          res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': agent },
+            body: JSON.stringify({ courseCode: code, role: it.role, text: it.tx, language: it.language, voiceId: it.voice, voiceBound: true, purpose: `voice-audit: ${it.role} slot to its resolveVoice voice` }) })
+        } catch (e) { callFailed = true; log({ kind: 'call-failed', t: it.t, error: String(e && e.message || e) }); console.log('RENDER CALL FAILED — stopping (no answer from the route):', String(e && e.message || e)); break }
         const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
         if (!res.ok || !r.ok) { log({ kind: 'refused', t: it.t, r }); console.log('RENDER REFUSED — stopping (a refusal is the answer, never retried):', JSON.stringify(r).slice(0, 300)); break }
         const { rows: [ca] } = await pg.query(`select id::text, voice_id, s3_key, duration_ms from course_audio ca where id = $1 and ${usable('ca')}`, [r.audioId])
@@ -364,9 +369,9 @@ async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role, twinsOnl
       if (unbumped >= 100) await bump()
     }
   } finally { await bump() }
-  const line = `${code} fix${dryRun ? ' (dry run)' : ''}: ${moved} slots ${dryRun ? 'would move' : 'moved'} — ${reused} texts reused, ${rendered} rendered (${spent} chars), ${skipped} left (no budget / intro tooling), ${refused} refused${dryRun ? '' : `; undo: node tools/audio/voice-audit.cjs --undo ${file}`}`
+  const line = `${code} fix${dryRun ? ' (dry run)' : ''}${callFailed ? ' (stopped: render call failed)' : ''}: ${moved} slots ${dryRun ? 'would move' : 'moved'} — ${reused} texts reused, ${rendered} rendered (${spent} chars), ${skipped} left (no budget / intro tooling), ${refused} refused${dryRun ? '' : `; undo: node tools/audio/voice-audit.cjs --undo ${file}`}`
   console.log(line)
-  return { moved, reused, rendered, spent, skipped, refused, ledger: dryRun ? null : file }
+  return { moved, reused, rendered, spent, skipped, refused, callFailed, ledger: dryRun ? null : file }
 }
 
 /**
@@ -500,4 +505,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { twinFixItems, chooseTwinRelink, twinPlan, twinAudit, renderTwinPlan, pointerIds, groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { fix, twinFixItems, chooseTwinRelink, twinPlan, twinAudit, renderTwinPlan, pointerIds, groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

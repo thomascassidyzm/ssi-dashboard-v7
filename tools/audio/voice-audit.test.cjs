@@ -222,3 +222,26 @@ describe('voice audit --twins-only', () => {
     } finally { rv.useCast(null) }
   })
 })
+
+// job #312: Popty restarts under every deploy; a render call that gets no answer must end the run with its summary, not a crash
+describe('voice audit fix survives a render call with no answer', () => {
+  it('stops cleanly, reports callFailed, and moves nothing', async () => {
+    const rv = require('../../services/shared/resolve-voice.cjs'), audit = require('./voice-audit.cjs')
+    const ita = { course_code: 'ita_for_eng', known_lang: 'eng', target_lang: 'ita' }
+    const LORENZO = 'cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086'
+    const itaCast = { roles: [{ language: 'ita', gender: 'm', rank: 0, slot: 'phrase', voice_id: LORENZO, assigned_by: 'thomas.cassidy+ssi@gmail.com' }], voices: [{ voice_id: LORENZO, is_active: true, gender: 'm' }] }
+    const saved = { lc: rv.loadCourse, fetch: globalThis.fetch, set: rv.setSlotPointer }
+    process.env.SSI_EVIDENCE_ROOT = require('node:fs').mkdtempSync(require('node:path').join(require('node:os').tmpdir(), 'va-ev-'))
+    rv.loadCourse = async () => ita
+    let writes = 0
+    rv.setSlotPointer = async () => { writes++; return true }
+    globalThis.fetch = async () => { throw new TypeError('fetch failed') }
+    const twin = { tbl: 'course_practice_phrases', key: 'k1', pos: 1, aid: 'tw1', tx: 'ciao', t: 'ciao', language: 'ita', origin: 'tts', s3_key: 'mastered/F1.mp3' }
+    const pg = { async query(sql) { return { rows: /a1\.s3_key = a2\.s3_key/.test(sql) && /course_practice_phrases/.test(sql) ? [twin] : [] } } }
+    try {
+      const out = await audit.fix(pg, {}, 'ita_for_eng', itaCast, { dryRun: false, maxChars: 100, limit: 1e9, twinsOnly: true })
+      expect(out).toMatchObject({ callFailed: true, moved: 0, spent: 0 })
+      expect(writes).toBe(0)
+    } finally { rv.loadCourse = saved.lc; globalThis.fetch = saved.fetch; rv.setSlotPointer = saved.set }
+  })
+})
