@@ -615,5 +615,31 @@
   "switchoverResult": "learner progress: 0 carried, 0 dropped.",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "ita_for_jpn": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:47:46.387Z",
+  "audio": {
+   "2:target": "86764063-de27-4b2d-b88d-8d027fd6917c",
+   "2:known": "0cb7d47e-6760-4897-aabb-fdee538ee9a8",
+   "3:target": "7c581d14-5fae-47d2-aae2-5b3190dfd6b7",
+   "3:known": "ae937c83-f29d-4ac3-90ca-735412e43ad5"
+  },
+  "chars": 0,
+  "voices": {
+   "SC04-S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+   "SC04-S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+  },
+  "languageText": {
+   "moved": [],
+   "bound": true
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
