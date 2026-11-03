@@ -56,11 +56,11 @@ describe('renderChecked renders once and ships, whatever Whisper hears', () => {
     })
   }
 
-  it('single-clip work is sampled, not checked 100%', () => {
+  it('single-clip work is sampled 1 in 100, not checked 100%', () => {
     V._resetSpotSampler()
     let n = 0
-    for (let i = 0; i < 50; i++) if (V.ALWAYS_SAMPLER.shouldCheck()) n++
-    expect(n).toBeLessThanOrEqual(5)
+    for (let i = 0; i < 200; i++) if (V.ALWAYS_SAMPLER.shouldCheck()) n++
+    expect(n).toBeLessThanOrEqual(2)
   })
 })
 
@@ -89,20 +89,27 @@ describe('the other places Whisper used to decide', () => {
     expect(plan.clips[0].heard.pass).toBe(false)
   })
 
-  it('tts-service: no TTS render spawns Whisper, not even a sample (Tom, 2026-11-03, job #626)', () => {
+  it('tts-service: the phonology sample is 1 in 100, never Welsh, and never throws or re-rolls (Tom, 2026-11-03)', () => {
+    const tts = require('./tts-service.cjs')
+    expect(tts.PHONO_SAMPLE_EVERY).toBe(100)
+    expect(tts.phonoSkipsWelsh({ door: { courseCode: 'cym_s_for_eng' } })).toBe(true)
+    expect(tts.phonoSkipsWelsh({ locale: 'cy-GB' })).toBe(true)
+    expect(tts.phonoSkipsWelsh({ locale: 'it-IT', door: { courseCode: 'ita_for_eng' } })).toBe(false)
     const src = fs.readFileSync(path.join(__dirname, 'tts-service.cjs'), 'utf8')
-    const start = src.indexOf('async function renderWithRetry(')
-    const body = src.slice(start, src.indexOf('\nasync function ', start + 10))
+    const start = src.indexOf('await detectSpokenLanguage(result.audioBuffer)')
     expect(start).toBeGreaterThan(0)
-    expect(body).not.toMatch(/detectSpokenLanguage\(/)
+    expect(src.slice(start, src.indexOf('return result;', start))).not.toMatch(/\bthrow\b/)
   })
 
-  it('audio-veracity: renderChecked never listens to a TTS render (job #626)', async () => {
-    const { renderChecked } = require('./audio-veracity.cjs')
-    let decoded = 0
-    const out = await renderChecked({ render: async () => ({ buffer: Buffer.from('x'), durationMs: 900 }), expectedText: 'hallo', language: 'deu', sampler: { shouldCheck: () => { decoded++; return true }, recordVerdict: () => ({}) }, logger: { info () {}, warn () {} } })
-    expect(out.verdict.checked).toBe(false)
-    expect(decoded).toBe(0)
+  it('audio-veracity: renderChecked hears 1 TTS clip in 100 and never a Welsh one (Tom, 2026-11-03)', async () => {
+    const V = require('./audio-veracity.cjs')
+    expect(V.TTS_SAMPLE_EVERY).toBe(100)
+    expect(V.isWelshClip('cym', {})).toBe(true)
+    expect(V.isWelshClip('deu', { courseCode: 'cym_n_for_eng' })).toBe(true)
+    let checks = 0
+    const r = await V.renderChecked({ check: async () => { checks++; return { checked: true, pass: true } }, sampler: { shouldCheck: () => true, recordVerdict: () => ({}) }, render: async () => ({ buffer: Buffer.from('x'), durationMs: 900 }), expectedText: 'shwmae', language: 'cym', meta: { courseCode: 'cym_s_for_eng' }, logger: { info () {}, warn () {} } })
+    expect(checks).toBe(0)
+    expect(r.verdict.checked).toBe(false)
   })
 })
 
@@ -117,8 +124,8 @@ describe('the other places Whisper used to decide', () => {
  *   infra           binary paths, wrappers, capability probes
  */
 const STT_CALLERS = {
-  'services/audio-veracity.cjs': 'engine',           // checkAudioVeracity for human recordings; renderChecked never listens (job #626)
-  'services/tts-service.cjs': 'infra',               // detectSpokenLanguage exported for voicelab only; no render calls it (job #626)
+  'services/audio-veracity.cjs': 'engine',           // checkAudioVeracity for human recordings; renderChecked hears 1 TTS clip in 100, never Welsh (job #626)
+  'services/tts-service.cjs': 'advisory',            // phonology sample, 1 in 100, never Welsh, logs only (Tom, 2026-11-03)
   'services/audio-intelligence/gate-stack.cjs': 'advisory', // words + phonology tiers never refuse
   'services/audio-intelligence/decode.cjs': 'infra',
   'services/audio-processor.cjs': 'infra',

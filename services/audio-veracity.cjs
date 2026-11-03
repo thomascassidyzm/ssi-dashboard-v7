@@ -463,7 +463,7 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info('[audio-veracity] TTS renders: Whisper OFF (Tom, r-2026-09-28 + 2026-11-03) — renderChecked never listens; checkAudioVeracity is for human recordings and explicit report tools.')
+      info(`[audio-veracity] TTS renders: Whisper hears 1 in ${TTS_SAMPLE_EVERY}, never Welsh, record-only (Tom, r-2026-11-03 + r-2026-09-28). checkAudioVeracity in full is for human recordings and explicit report tools.`)
     }
   }
   return { enabled, available: av.available, missing: av.missing }
@@ -2294,7 +2294,7 @@ function samplerState () {
  * bulk run in the same process. The old export name is kept so the committed
  * scripts that pass it keep working — they now get sampling, not a gate.
  */
-const SPOT_SAMPLE_EVERY = 10
+const SPOT_SAMPLE_EVERY = 100 // was 10 until 2026-11-03 (Tom: 1-in-100, job #626)
 let spotCounter = 0
 const SPOT_SAMPLER = Object.freeze({
   shouldCheck: () => (spotCounter++ % SPOT_SAMPLE_EVERY) === 0,
@@ -2409,17 +2409,18 @@ async function renderChecked (o) {
 
   const rendered = await render(1)
 
-  // EVERY CLIP THROUGH HERE IS A TTS RENDER, so Whisper never listens to it —
-  // not 100%, not a 10% sample (Tom, r-2026-09-28-no-automatic-whisper-stt-check-may:
-  // "we do NOT use automatic checks on listening content"; 2026-11-03, told the
-  // sample was still running: "We switched that off weeks ago"). Job #626 found
-  // phase8 /generate still decoding deu_ch_for_eng TTS clips through this sampler
-  // at ~12:00Z that day and turned it off here, at the one function every TTS
-  // caller shares. The verdict is the not-sampled one so stats and row columns
-  // read honestly ("nobody listened"), never as a pass. checkAudioVeracity()
-  // itself stays: it is the full check on HUMAN recordings (take-text-check-queue,
-  // repair uploads). `o.check` is a test seam and is the only way back in.
-  if (!o.check || !sampler.shouldCheck()) {
+  // EVERY CLIP THROUGH HERE IS A TTS RENDER. Whisper hears ONE IN A HUNDRED, never a
+  // Welsh one, and only RECORDS what it heard (Tom, 2026-11-03,
+  // r-2026-11-03-whisper-on-audio-a-1-in: 1-in-100, never every clip, skip cym_*;
+  // r-2026-09-28: never re-roll, veto or fail-close). The run's graduated ladder
+  // (10% opening) and SPOT_SAMPLER (1 in 10) no longer decide here: a flat
+  // process-wide 1-in-TTS_SAMPLE_EVERY counter does, so no caller can raise the
+  // rate by passing a sampler. Job #626, after phase8 /generate was found decoding
+  // 10% of deu_ch_for_eng TTS clips at ~12:00Z that day. `o.check` is a test seam:
+  // with it, the passed sampler decides, as the behaviour tests expect.
+  const welsh = isWelshClip(language, meta)
+  const pick = o.check ? sampler.shouldCheck() : ttsShouldSample()
+  if (welsh || !pick) {
     const verdict = { checked: false, pass: null, reason: 'not_sampled' }
     recordVerdict(stats, verdict)
     return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
@@ -2444,6 +2445,16 @@ async function renderChecked (o) {
       + `(${verdict.reason}, CER ${verdict.cer}). Published as rendered; a person listens before anything is re-rendered.`)
   }
   return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
+}
+
+/** The flat TTS sampling rate: one render in TTS_SAMPLE_EVERY is heard (Tom, 2026-11-03). */
+const TTS_SAMPLE_EVERY = 100
+let ttsCounter = 0
+function ttsShouldSample () { return (ttsCounter++ % TTS_SAMPLE_EVERY) === 0 }
+/** Welsh TTS is never sampled (Tom, 2026-11-03): cym/cy language or a cym_* course. */
+function isWelshClip (language, meta = {}) {
+  const l = String(language || '').toLowerCase().split('-')[0]
+  return l === 'cym' || l === 'cy' || String(meta.courseCode || '').toLowerCase().startsWith('cym')
 }
 
 /** One line for a log or a completion message. */
@@ -2502,6 +2513,8 @@ module.exports = {
   createSampler,
   ALWAYS_SAMPLER,
   SPOT_SAMPLER,
+  TTS_SAMPLE_EVERY,
+  isWelshClip,
   SPOT_SAMPLE_EVERY,
   _resetSpotSampler,
   startCourse,

@@ -3257,7 +3257,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper OFF for TTS renders — no clip is sampled (Tom, r-2026-09-28 + 2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
 
     // Bind presentation audio to its consumers: the course_legos FK AND the
     // lego_introductions projection (both read live by the learning app —
@@ -4087,7 +4087,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper OFF for TTS renders — no clip is sampled (Tom, r-2026-09-28 + 2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
     // Use speed from voice config (everything is a parameter!)
     const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
@@ -7702,7 +7702,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper OFF for TTS renders — no clip is sampled (Tom, r-2026-09-28 + 2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
