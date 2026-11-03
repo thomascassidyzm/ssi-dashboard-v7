@@ -30,7 +30,8 @@
  *   - The cut is computed over every line, recorded or not, so batch numbers do not move while
  *     anybody records. A phrase flagged on the proof page (phrase_proof_flags) still counts toward
  *     its batch but is HELD — not served — until the flag is cleared.
- *   - Only the two sandboxes. Live cym_n_for_eng / cym_s_for_eng phrases are never queued here.
+ *   - Only the courses in PHRASE_QUEUE_COURSES (the two Welsh sandboxes, and Frisian since job #587).
+ *     Live cym_n_for_eng / cym_s_for_eng phrases are never queued here.
  *
  * Pure: no I/O. recordist-queue.cjs reads the rows and serves the lines.
  */
@@ -39,10 +40,20 @@
 const { normalizeForDb } = require('../shared/text-normalize.cjs')
 const { spokenWordsKey } = require('../shared/spoken-words.cjs')
 
-/** The courses whose practice phrases are recorded in the booth, with the word the reader sees. */
+/**
+ * The courses whose practice phrases are recorded in the booth, with the word the reader sees.
+ * The two Welsh entries come FIRST and stay first: this order is the cross-course serving order
+ * (compareServed, mergeAcrossCourses), so a course added after them can never reorder a Welsh
+ * reader's lines.
+ *
+ * fry_for_eng (Kai, 2026-11-03, job #587): Auke (human_info_fry, the only voice the course casts —
+ * target1) records ALL of Frisian in the booth: seeds, LEGOs and every build/use phrase. Frisian
+ * casts no known-side or target2 voice, so it adds lines to Auke's queue and nobody else's.
+ */
 const PHRASE_QUEUE_COURSES = Object.freeze({
   cym_nv2_for_eng: Object.freeze({ label: 'North' }),
   cym_sv2_for_eng: Object.freeze({ label: 'South' }),
+  fry_for_eng: Object.freeze({ label: 'Frisian' }),
 })
 
 /** Pass 1, per new LEGO (Aran, 2026-10-13: "4 build + 3 use", the plan's option B). */
