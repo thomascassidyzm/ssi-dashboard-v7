@@ -246,9 +246,9 @@
   "chars": 0
  },
  "eng_for_deu": {
-  "state": "in-progress",
-  "step": "edited",
-  "at": "2026-11-03T19:32:32.149Z",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:36:46.494Z",
   "audio": {
    "2:target": "20c22e4f-0659-4277-98e1-a415ae339047",
    "2:known": "e0459e03-2a59-46c0-b663-65be781724fc",
@@ -263,11 +263,12 @@
    "SC04-S003:known": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d"
   },
   "languageText": {
-   "moved": [
-    22,
-    21
-   ],
+   "moved": [],
    "bound": true
-  }
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
