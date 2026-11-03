@@ -695,5 +695,13 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for nld (403): nld has only the 2026-09-04 draft casting, which Tom never chose, so no nld clip is rendered (cartesia_58d27475085e refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "nor_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:49:50.983Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for nor (403): nor has only the 2026-09-04 draft casting, which Tom never chose, so no nor clip is rendered (azure_nb-NO-IselinNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "audio": {},
+  "chars": 0
  }
 }
