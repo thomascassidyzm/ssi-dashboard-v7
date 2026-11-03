@@ -417,5 +417,39 @@
   },
   "chars": 96,
   "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for eng (403): cartesia_bedd6226 may not render new eng audio; Tom's cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c-4e8e-a314-022ece01c121. Cast it in the Voice"
+ },
+ "eus_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:41:52.910Z",
+  "audio": {
+   "2:target": "f6f7e25f-10fc-4140-a9b9-526d9d1045b4",
+   "2:known": "90c35fdc-ee5c-4f75-aeab-bc658384b771",
+   "3:target": "608f4d9e-bdb1-40b2-b136-d5882a603e2c",
+   "3:known": "be07041a-9c51-43e5-b3e4-af03c2da107b"
+  },
+  "chars": 186,
+  "voices": {
+   "SC04-S002:target": "azure_eu-ES-AinhoaNeural",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "azure_eu-ES-AnderNeural",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 345,
+   "keep": 0,
+   "merge": 0,
+   "drop": 21
+  },
+  "switchoverResult": "learner progress: 0 carried, 21 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
