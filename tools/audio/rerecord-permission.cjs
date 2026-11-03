@@ -25,7 +25,7 @@ async function main() {
       return rows.map(row => Object.values(row).map(value => value == null ? '' : String(value)).join('|')).join('\n')
     }
     const quote = (s) => `'${String(s).replace(/'/g, "''")}'`
-    const COURSE = /^[a-z]{2,3}(_[a-z]{2,3})?_for_[a-z]{2,3}(_[a-z]{2,3})?$/
+    const COURSE = /^[a-z]{2,3}(_[a-z0-9]{2,3})?_for_[a-z]{2,3}(_[a-z0-9]{2,3})?$/   // digits: cym_nv2_for_eng (job #740)
 
     function flag(name) {
       const i = process.argv.indexOf(name)
