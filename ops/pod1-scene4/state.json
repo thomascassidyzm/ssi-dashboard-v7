@@ -2,13 +2,71 @@
  "ita_for_eng": {
   "state": "live",
   "why": "probe, by hand: clone -> render 4 (353 chars) -> held edit -> link -> language text lines 21,22 -> switchover (plan carry 562 / drop 21) -> re-bind; transcribed all 4 clips correct",
-  "audio": {"2:known": "efa7cbea-874d-4039-8339-fd3187c0d1d1", "3:known": "f1e21475-ca19-42a4-86e1-f11f1c12b154", "2:target": "c4965e81-db73-4d3e-804c-5108da1e1742", "3:target": "51204e27-cb23-4c65-8fc8-036eda831439"},
-  "voices": {"S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13", "S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121", "S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086", "S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"},
+  "audio": {
+   "2:known": "efa7cbea-874d-4039-8339-fd3187c0d1d1",
+   "3:known": "f1e21475-ca19-42a4-86e1-f11f1c12b154",
+   "2:target": "c4965e81-db73-4d3e-804c-5108da1e1742",
+   "3:target": "51204e27-cb23-4c65-8fc8-036eda831439"
+  },
+  "voices": {
+   "S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+   "S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
   "chars": 353,
-  "migrationPlan": {"carry": 562, "keep": 0, "merge": 0, "drop": 21},
-  "languageText": {"moved": [21, 22], "bound": true},
+  "migrationPlan": {
+   "carry": 562,
+   "keep": 0,
+   "merge": 0,
+   "drop": 21
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
   "rebound": true,
   "at": "2026-11-03T19:45:00Z"
  },
- "_canon_english": {"state": "done", "why": "canonical_pod_scenarios pod-1:SC04-S02/S03 and recovery quotes SC04-RM5-S01/S02 now carry the coffee lines (PATCH /api/admin/canonical-pods, job799-canon)"}
+ "_canon_english": {
+  "state": "done",
+  "why": "canonical_pod_scenarios pod-1:SC04-S02/S03 and recovery quotes SC04-RM5-S01/S02 now carry the coffee lines (PATCH /api/admin/canonical-pods, job799-canon)"
+ },
+ "fra_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:27:02.837Z",
+  "audio": {
+   "2:target": "19fe2f81-1f58-4150-b2d3-f49469cba1bf",
+   "2:known": "01e3ddeb-3a0a-461b-b207-11cc0acc55ca",
+   "3:target": "c11b4553-42f4-4701-8998-0af0c360131b",
+   "3:known": "54f92016-8d5a-4de7-a3ed-3dab510944f5"
+  },
+  "chars": 209,
+  "voices": {
+   "SC04-S002:target": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 288,
+   "keep": 0,
+   "merge": 0,
+   "drop": 16
+  },
+  "switchoverResult": "learner progress: 0 carried, 16 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
+ }
 }
