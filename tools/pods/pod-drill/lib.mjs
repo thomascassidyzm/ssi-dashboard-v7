@@ -1,5 +1,12 @@
 /**
- * POD DRILL CUTS, pure half (job #913). No I/O. run.mjs does the fetching, ffmpeg and whisper.
+ * POD DRILL CUTS, pure half (job #913). No I/O. snapshot/pair/score/stage do the fetching and ffmpeg.
+ *
+ * NO TRANSCRIPTION, EVER (Tom r-2026-11-03-audio-splits-alignment-never-use-whisper: "Audio
+ * splits/alignment never use Whisper (or any transcription) for timings: word timings come from
+ * Cartesia voice timings of the render; meanings are matched from the text (LEGO map), not from
+ * transcribed audio"). The whisper helpers that lived here (WHISPER_LANG, transcriptMatches,
+ * knownMatches, bleed, numberWordsEn) were removed by job #732; tools/check-no-transcribe-in-splits.cjs
+ * refuses any split/cut/seam/align file that brings a recogniser back.
  *
  * Tom's rulings this implements:
  *  - r-2026-10-29-drill-mode-chunk-size-is-measured: chunks of at most 4 syllables, split at word
@@ -8,10 +15,9 @@
  *    when the meaning will not split; hard ceiling 6; idioms that only mean something whole stay whole.
  *  - r-2026-10-24-ssi-audio-a-drill-clip-is: a chunk is CUT from the sentence's own recording.
  *
- * A seam is VERIFIED only when the recording itself has a low-energy run there wide enough to
- * absorb the player's stop latency, AND every chunk sliced at those seams transcribes back to its
- * own words. A sentence slices only when every one of its seams and chunks verifies; anything
- * less plays whole, as it does today.
+ * A seam is placed at a word boundary taken from the render's stored Cartesia word timings, and
+ * set at the recording's own low-energy run or dip there (energy, not transcription). A sentence
+ * slices only when every one of its seams finds one; anything less plays whole.
  */
 
 /**
@@ -251,8 +257,6 @@ export function knownLangOf(course) {
 /** Display names for prompts and logs; an unlisted code is shown as itself. */
 export const LANG_NAMES = { eng: 'English', ita: 'Italian', spa: 'Spanish', deu: 'German', fra: 'French', zho: 'Chinese', jpn: 'Japanese', kor: 'Korean', hin: 'Hindi', cym: 'Welsh', por: 'Portuguese', nld: 'Dutch', ara: 'Arabic', gle: 'Irish', eus: 'Basque', bre: 'Breton', cor: 'Cornish', gla: 'Scottish Gaelic' }
 export const langName = (lang) => LANG_NAMES[lang] || lang
-/** whisper-cli -l codes, for the tools that still transcribe (run.mjs, page.mjs, apply-pod-seams.mjs). */
-export const WHISPER_LANG = { eng: 'en', ita: 'it', spa: 'es', deu: 'de', zho: 'zh', fra: 'fr', jpn: 'ja', kor: 'ko', hin: 'hi', cym: 'cy', por: 'pt', nld: 'nl', ara: 'ar', gle: 'ga', eus: 'eu', bre: 'br' }
 /** Scripts written without spaces between words and with no segmenter vetted here. Splitting
  *  them on spaces gives one "word" per sentence and cuts nonsense, so wordsIn refuses them. */
 const UNSPACED = new Set(['jpn', 'tha', 'lao', 'khm', 'mya', 'bod'])
@@ -308,8 +312,7 @@ export const percentile = (a, p) => { const b = [...a].sort((x, y) => x - y); re
  *  SPEECH_SIDE_MS: a seam needs at least this much speech on each side, so the silence before
  *    the first word or after the last is never taken for one ("Ma parliamo sabato | [silence]").
  *  DIP_BELOW / DIP_MS: connected speech has no silence between words; there a seam is allowed
- *    only at an energy dip this far below speech level within DIP_MS of the timing boundary, and
- *    it then rests entirely on both neighbouring chunks transcribing exactly. */
+ *    only at an energy dip this far below speech level within DIP_MS of the timing boundary. */
 export const SEAM = { QUIET_BELOW: 20, SILENT_BELOW: 35, HISS_ZCR: 0.3, MIN_GAP_MS: 40, TOUCH_MS: 30, EDGE_MS: 10, DIP_BELOW: 15, DIP_MS: 30, SPEECH_SIDE_MS: 150, LINE_TOUCH_MS: 350 }
 
 /** BOUNDARY: when a cut known piece is too tight to keep (job #707; score.mjs uses it). A seam is
@@ -324,10 +327,10 @@ export const BOUNDARY = { MARGIN_MS: 10 }
 
 /**
  * Find the cut for one seam. `estimates` are candidate boundary times in seconds from independent
- * sources (stored word timings, whisper's words, syllable share); none is trusted alone — in
- * testing each was 100-200 ms off on some clips. Tier 'gap': the quiet run touching any estimate
+ * sources (the render's stored Cartesia word timings, syllable share — never a transcription,
+ * r-2026-11-03); none is trusted alone — in testing each was 100-200 ms off on some clips. Tier 'gap': the quiet run touching any estimate
  * (within TOUCH_MS) closest to their median. Tier 'dip': failing that, the deepest energy minimum
- * within DIP_MS of an estimate, when deep enough. The transcript check decides either way.
+ * within DIP_MS of an estimate, when deep enough.
  * Returns {ok, endMs, startMs, gapMs, tier, why}.
  */
 export function findSeam(db, estimates, frameMs = 10, opts = {}) {
@@ -404,8 +407,7 @@ export function similarity(a, b) {
 
 const fold = (s) => String(s || '').toLowerCase().normalize('NFKD').replace(/\p{M}/gu, '')
 
-/** Comparable form of a transcript or chunk text: letters/digits only, accents folded, repeated
- *  words collapsed (whisper's "Sara Sara" loop on a short clip). */
+/** Comparable form of a text: letters/digits only, accents folded, repeated words collapsed. */
 export function comparable(text, lang, asWords = false) {
   if (lang === 'zho') return (String(text || '').match(/\p{Script=Han}/gu) || []).join('')
   const ws = fold(text).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean)
@@ -413,38 +415,12 @@ export function comparable(text, lang, asWords = false) {
   return asWords ? out : out.join('')
 }
 
-export const MATCH_MIN = 0.75
-
-/** Does a slice's transcript say exactly its chunk, no more and no less? Same number of words,
- *  every word close, and the whole close: a cut that carries a neighbour's sound shows up as an
- *  extra or changed edge word ("tema senza zucchero" for "ma senza zucchero"). */
-export function transcriptMatches(chunkText, transcript, lang) {
-  const words = (t) => (lang === 'zho' ? [comparable(t, lang)] : comparable(t, lang, true))
-  const cw = words(chunkText)
-  let tw = words(transcript)
-  // whisper loops a short clip ("And you? And you?"): a transcript that is one phrase said twice
-  // is heard as the phrase once
-  if (lang !== 'zho') {
-    for (let n = 6; n >= 2; n--) {
-      if (!tw.length || tw.length % n) continue
-      const k = tw.length / n, first = tw.slice(0, k).join(' ')
-      if (Array.from({ length: n }, (_, i) => tw.slice(i * k, (i + 1) * k).join(' ')).every((x) => x === first)) { tw = tw.slice(0, k); break }
-    }
-  }
-  const sim = similarity(cw.join(''), tw.join(''))
-  const sameLen = lang === 'zho' ? cw[0].length === tw[0].length : cw.length === tw.length
-  const each = sameLen && (lang === 'zho'
-    ? cw[0][0] === tw[0][0] && cw[0].at(-1) === tw[0].at(-1)
-    : cw.every((w, i) => similarity(w, tw[i]) >= ((i === 0 || i === cw.length - 1) ? 0.75 : 0.6)) && cw[0][0] === tw[0][0])
-  return { ok: sim >= MATCH_MIN && sameLen && each, sim: Math.round(sim * 100) / 100 }
-}
-
 /**
- * Word times for the TEXT's words from whisper's own word segments of the clip. Whisper's words
- * and the text's words need not split alike (elision, numbers, Chinese multi-character tokens),
+ * Word times for the TEXT's words from the render's stored Cartesia word timings (cartesiaSegs),
+ * never a transcription (r-2026-11-03). Cartesia's words and the text's words need not split alike (elision, numbers, Chinese multi-character tokens),
  * so the match is made letter by letter: both sides reduced to comparable letters, aligned by edit
  * distance, and each text word takes the time of its first and last letter (a letter's time is
- * interpolated across its whisper word). Null when the clip does not say the text (similarity
+ * interpolated across its timed word). Null when the clip does not say the text (similarity
  * under 0.8): a clip that does not say its sentence is never cut.
  * `segs` = [{text, from, to}] in ms. Returns {words, starts, ends (s), sim} or null.
  */
@@ -476,19 +452,6 @@ export function alignTimes(words, segs, lang) {
     starts.push(wt[map[at]][0] / 1000); ends.push(wt[map[at + w.length - 1]][1] / 1000); at += w.length
   }
   return { words, starts, ends, sim: Math.round(sim * 100) / 100 }
-}
-
-/** A KNOWN-side line cut at a verified seam (job #937): it passes the exact rule, or it has the
- *  same number of words, the same first word, and is close as a whole (whisper mishears a short
- *  line: "I'm a nurse." as "I'm a Ness."). The known side is never what is being learnt; the seam
- *  is what must be clean, and the seam test already passed. `lang` = the course's known language
- *  (knownLangOf), never assumed English (r-2026-11-03-say-known-language). */
-export function knownMatches(text, transcript, lang) {
-  const t = transcriptMatches(text, transcript, lang)
-  if (t.ok) return t
-  const cw = comparable(text, lang, true), tw = comparable(transcript, lang, true)
-  const ok = t.sim >= 0.95 || (cw.length === tw.length && cw[0] === tw[0] && t.sim >= 0.6)
-  return { ok, sim: t.sim, loose: ok }
 }
 
 // ---- #362/#369 pod-LEGO seams, the cuts Tom approved on the Italian listening page (d/b5b63cd3).
@@ -530,7 +493,7 @@ export function placeGlosses(knownWords, glosses, lang) {
   return { ranges: out }
 }
 /** Spans (ms of the whole known-side clip) of each piece's known text, cut at the pod LEGO
- *  boundaries, from word segments of that clip: {spans:[[lo,hi]], words:[text]} or {err}.
+ *  boundaries, from that clip's Cartesia word timings (cartesiaSegs, never a transcription): {spans:[[lo,hi]], words:[text]} or {err}.
  *  `lang` = the course's known language (knownLangOf), never assumed English. */
 export function knownSpans(known, glosses, segs, lang) {
   const kw = wordsIn(known, lang)
@@ -582,11 +545,6 @@ export function rangesToSpans(ranges, tm) {
     return [Math.round(lo), Math.round(hi)]
   })
 }
-/** English number words for whisper's digits ("12 euro" -> "twelve euro"), 0-99. */
-const ONES = 'zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split(' ')
-const TENS = 'x x twenty thirty forty fifty sixty seventy eighty ninety'.split(' ')
-export const numberWordsEn = (t) => String(t).replace(/\d+/g, (d) => { const n = Number(d); if (n < 20) return ONES[n]; if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? ` ${ONES[n % 10]}` : ''); return d })
-
 /** A clip's stored Cartesia word timings {words, starts, ends} (seconds) as timed segments
  *  [{text, from, to}] in ms, the shape alignTimes / englishSpans take (job #381, Tom r-2026-11-03:
  *  split timings come from the render's own voice timings, never a transcription). Pause marks
@@ -615,8 +573,8 @@ export function noShrink(prev, next, allow = new Set()) {
   return { ok: !problems.length, problems }
 }
 /** The WHEN of one seam, already placed at a word boundary by the pairing (#381): the timing
- *  estimates of that boundary disagree by up to ~250 ms in connected speech (stored TTS times run
- *  late, whisper's early), so the seam goes at the quietest 10 ms frame between them, widened by
+ *  estimates of that boundary can disagree by up to ~250 ms in connected speech (stored TTS times
+ *  run late), so the seam goes at the quietest 10 ms frame between them, widened by
  *  `padMs` each side. `db` = frameDb of the clip. Never moves the seam to another word boundary. */
 export function quietestBetween(db, estimatesMs, padMs = 40, frameMs = 10) {
   const lo = Math.max(1, Math.floor((Math.min(...estimatesMs) - padMs) / frameMs))
@@ -629,19 +587,4 @@ export function quietestBetween(db, estimatesMs, padMs = 40, frameMs = 10) {
 export function spansAtSeams(ranges, tm, seams) {
   const base = rangesToSpans(ranges, tm)
   return base.map(([a, b], i) => [i ? seams[i - 1] : a, i < base.length - 1 ? seams[i] : b])
-}
-/** Did a piece's cut bleed (#381)? Judged only at the edges that touch a neighbour piece, from
- *  whisper's transcript of the piece alone: an extra word after its last word (it carries the next
- *  piece's onset), an extra word before its first, or a lost first/last word. A misheard middle
- *  ("Collatte davena") is not a bleed. Returns null when clean, else a short reason. */
-export function bleed(text, heard, { first, last }, lang = 'ita') {
-  const pw = comparable(text, lang, true), hw = comparable(heard, lang, true)
-  if (!pw.length) return null
-  if (!hw.length) return 'heard nothing'
-  const like = (a, b) => !!a && !!b && similarity(a, b) >= 0.6
-  if (!last && hw.length > pw.length && like(hw.at(-2), pw.at(-1)) && !like(hw.at(-1), pw.at(-1))) return `carries the next word ("${hw.at(-1)}")`
-  if (!first && hw.length > pw.length && like(hw[1], pw[0]) && !like(hw[0], pw[0])) return `carries the previous word ("${hw[0]}")`
-  if (!first && pw.length > 1 && hw.length < pw.length && like(hw[0], pw[1]) && !like(hw[0], pw[0])) return `loses its first word ("${pw[0]}")`
-  if (!last && pw.length > 1 && hw.length < pw.length && like(hw.at(-1), pw.at(-2)) && !like(hw.at(-1), pw.at(-1))) return `loses its last word ("${pw.at(-1)}")`
-  return null
 }
