@@ -641,5 +641,13 @@
   "switchoverResult": "",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "jpn_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:48:03.534Z",
+  "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"こんにちは！すみませんが、今は話せないんです。もう家に帰らないといけなくて。明日コーヒーでも飲みに行きませんか？\" is already recorded in jpn — 4 clip(s): 0f0790ec-ed65-42a1-82ed-6e7c71a26903 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311, deu_for_jpn known); 0cb7d47e-6760-4897-aabb-fdee538ee9a8 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311,",
+  "audio": {},
+  "chars": 0
  }
 }
