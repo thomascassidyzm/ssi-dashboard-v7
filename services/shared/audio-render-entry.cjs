@@ -80,6 +80,8 @@ function validate(input) {
     legoId: input.legoId ? String(input.legoId) : null,
     // A POD LINE (job #799, shared/pod-line-voice.cjs): the voice is the pod's cast for this line's speaker, read from the DB.
     podSentenceId: input.podSentenceId ? String(input.podSentenceId) : null,
+    // …and podRecast:true takes the course's CURRENT cast for that side at the speaker's gender instead of the line's old clip voice.
+    podRecast: input.podSentenceId ? input.podRecast === true : false,
     dryRun: !!input.dryRun,
     // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
     trial: input.trial === true,

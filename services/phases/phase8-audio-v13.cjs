@@ -146,7 +146,8 @@ async function knownGenderContextFor(courseCode, voices) {
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
-const { podLineVoice, clipColumnFor } = require('../shared/pod-line-voice.cjs')
+const { podLineVoice, clipColumnFor, castFor } = require('../shared/pod-line-voice.cjs')
+const { EXPECTED_ENGLISH_TARGET } = require('../shared/resolve-voice.cjs')
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -5634,7 +5635,7 @@ function buildRenderDeps() {
       // route's existing re-record authority that may let a second performance past it.
       clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
       rerecordGranted: (want) => require('../shared/rerecord-gate.cjs').rerecordGranted(want),
-      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId, podRecast }) => {
         // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
         // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
         // which needs the course row — so a human-voice course outside the stand-in list is refused before it is even read.
@@ -5661,6 +5662,27 @@ function buildRenderDeps() {
           const { data: nowClip, error: clipErr } = podLine && col && podLine[col] ? await supabase.from('course_audio').select('voice_id').eq('id', podLine[col]).maybeSingle() : { data: null, error: null }
           if (clipErr) throw new Error(`course_audio unreadable: ${clipErr.message}`)
           podVoice = podLineVoice({ pod: podRow, sentence: podLine || null, role, courseCode, currentClipVoice: (nowClip && nowClip.voice_id) || null })
+          // RECAST (job #799, Watson for Tom under r-2026-10-29 / r-2026-11-02 "re-voicing a course with its new cast … just do it"):
+          // a scene whose clips are in retired or uncast voices is re-voiced WHOLE in the course's CURRENT cast, at the speaker's
+          // gender — target side: resolveVoice for target1 (f) / target2 (m), the very answer the door enforces for slots; known
+          // side: English → Charlotte (f) / Tom-006 (m) (resolve-voice EXPECTED_ENGLISH_TARGET, what live pods speak), any other
+          // known language → its Voice Lab cast at that gender. No answer refuses; it never falls back to the old clip's voice.
+          if (!podVoice.error && podRecast) {
+            const cast = castFor(podRow.speakers, podLine.speaker)
+            const g = cast && (cast.gender === 'f' || cast.gender === 'm') ? cast.gender : null
+            if (!g) throw new RenderRequestError(`${podSentenceId}: speaker "${podLine.speaker}" has no gender in the pod cast — cannot recast`, 409, 'POD_UNCAST')
+            let recast = null
+            if (role === 'known') {
+              if (toIso3(course.known_lang) === 'eng') recast = EXPECTED_ENGLISH_TARGET[g]
+              else { const c = castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(course.known_lang), g); recast = c ? `${c.provider || 'cartesia'}_${String(c.voiceId).replace(/^(azure|elevenlabs|xai|cartesia|google)_/, '')}` : null }
+            } else {
+              const rv = resolveVoice({ course, role: g === 'f' ? 'target1' : 'target2', language: roleNativeLanguage('target1', course) }, await loadResolvedCast())
+              recast = rv.status === 'voice' ? rv.voiceId : null
+              if (!recast) throw new RenderRequestError(`${podSentenceId}: no current ${g} target cast for ${courseCode} (${rv.message || rv.rule})`, 403, 'VOICE_POLICY')
+            }
+            if (!recast) throw new RenderRequestError(`${podSentenceId}: no current ${g} ${role} cast voice for ${courseCode}`, 403, 'VOICE_POLICY')
+            podVoice = { ...podVoice, voiceId: /^(azure|elevenlabs|xai|cartesia|google)_/.test(recast) ? recast : `cartesia_${recast}`, source: 'recast' }
+          }
           if (podVoice.error) throw new RenderRequestError(podVoice.error, podVoice.code === 'NO_POD_SENTENCE' ? 404 : 409, podVoice.code)
           if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
           voiceId = podVoice.voiceId
