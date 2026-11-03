@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>South Welsh Pod 1 — listen</title>
+<style>
+  :root { --bg:#e8e3dd; --card:#fff; --ink:#2C2622; --muted:#6b6459; --line:#ddd6ce; --accent:#c23a3a; --soft:#f6f3ef; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.4 'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:5; background:var(--bg); padding:calc(10px + env(safe-area-inset-top)) 14px 10px; }
+  .player { background:var(--card); border-radius:18px; padding:14px 16px 12px; box-shadow:0 2px 10px rgba(44,38,34,.08); }
+  .meta { display:flex; justify-content:space-between; gap:8px; font-size:13px; color:var(--muted); }
+  .who { margin-top:8px; font-weight:600; font-size:14px; }
+  .cy { font-size:22px; font-weight:600; margin-top:2px; min-height:1.4em; }
+  .en { color:var(--muted); margin-top:2px; min-height:1.4em; }
+  .now { font-size:12px; color:var(--accent); margin-top:4px; min-height:1.2em; }
+  .controls { display:flex; align-items:center; justify-content:center; gap:22px; margin-top:10px; }
+  .controls button { border:0; background:var(--soft); color:var(--ink); width:52px; height:52px; border-radius:50%; font-size:20px; }
+  .controls #play { width:78px; height:78px; background:var(--accent); color:#fff; font-size:30px; }
+  .bar { height:4px; background:var(--soft); border-radius:2px; margin-top:10px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:0; background:var(--accent); }
+  .row2 { display:flex; justify-content:space-between; align-items:center; margin-top:8px; font-size:12px; color:var(--muted); }
+  .modes { display:flex; background:var(--soft); border-radius:999px; padding:3px; }
+  .modes button { border:0; background:none; padding:6px 12px; border-radius:999px; font:inherit; font-size:13px; color:var(--muted); }
+  .modes button.on { background:var(--card); color:var(--ink); font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  main { padding:4px 14px 40px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:18px 4px 6px; }
+  .ln { background:var(--card); border-radius:12px; padding:9px 12px; margin:6px 0; display:grid; grid-template-columns:30px 1fr; gap:2px 6px; }
+  .ln .n { color:var(--muted); font-size:12px; padding-top:3px; }
+  .ln .s { font-size:12px; font-weight:600; }
+  .ln .c { font-weight:500; }
+  .ln .e { color:var(--muted); font-size:14px; grid-column:2; }
+  .ln.cur { outline:2px solid var(--accent); }
+  .ln.bad { background:#fbecea; }
+  .ln .flag { grid-column:2; color:var(--accent); font-size:12px; font-weight:600; }
+  .note { font-size:12px; color:var(--muted); margin:14px 4px; }
+  .warn { background:#fbecea; color:var(--accent); border-radius:12px; padding:10px 12px; font-size:13px; margin-top:10px; display:none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="player">
+    <div class="meta"><span id="scene">Pod 1</span><span id="pos"></span></div>
+    <div class="who" id="who">&nbsp;</div>
+    <div class="cy" id="cy">Tap play to hear the whole pod</div>
+    <div class="en" id="en">&nbsp;</div>
+    <div class="now" id="now">&nbsp;</div>
+    <div class="controls">
+      <button id="prev" aria-label="Previous line">⏮</button>
+      <button id="play" aria-label="Play">▶</button>
+      <button id="next" aria-label="Next line">⏭</button>
+    </div>
+    <div class="bar"><i id="fill"></i></div>
+    <div class="row2">
+      <span id="clock"></span>
+      <div class="modes"><button data-m="immersion">Immersion</button><button data-m="drill">Drill</button></div>
+    </div>
+    <div class="warn" id="warn"></div>
+  </div>
+</header>
+<main id="list"></main>
+<audio id="a" preload="auto" playsinline></audio>
+<script>
+const D = /*DATA*/null;
+const SRC = (id) => `https://watson-1.tail4968cb.ts.net:8443/api/production/audio/${id}/stream`;
+const PALETTE = ['#B5552D','#2E7D6B','#5B5EA6','#A8731E','#9C4D7E','#3F7CAC']; // useListeningPods SPEAKER_PALETTE
+const L = D.lines, a = document.getElementById('a'), $ = (id) => document.getElementById(id);
+let mode = localStorage.getItem('cyms-pod1-mode') || 'immersion';
+let idx = +(localStorage.getItem('cyms-pod1-idx') || 0), step = 0, playing = false, runtimeBad = new Set();
+// The app's queue per line (podModalQueue.buildModalQueue): Immersion = Welsh once;
+// Drill = Welsh · English · Welsh · Welsh. Every line here has Welsh text, so Immersion never plays English.
+const queue = (l) => mode === 'drill'
+  ? [['cy', l.t], ['en', l.k], ['cy', l.t], ['cy', l.t]].filter(q => q[1])
+  : (l.t ? [['cy', l.t]] : (l.k && !l.cy ? [['en', l.k]] : []));
+const lineSec = (l) => mode === 'drill' ? 3 * (l.td || 0) + (l.kd || 0) : (l.td || 0);
+let starts = [];
+const recalc = () => { let t = 0; starts = L.map(l => { const s = t; t += lineSec(l); return s; }); };
+const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+
+function render() {
+  const list = $('list'); let html = '', sc = null;
+  for (const l of L) {
+    if (l.sc !== sc) { sc = l.sc; html += `<h2>${D.scenes[sc]}</h2>`; }
+    const bad = l.bad.length || runtimeBad.has(l.n);
+    html += `<div class="ln${bad ? ' bad' : ''}" id="l${l.n}" data-i="${l.n - 1}"><span class="n">${l.n}</span>` +
+      `<span class="s" style="color:${PALETTE[l.c]}">${esc(l.sp)}</span><span></span><span class="c">${esc(l.cy)}</span>` +
+      `<span class="e">${esc(l.en)}</span>` +
+      (bad ? `<span class="flag">⚠ ${esc([...l.bad, ...(runtimeBad.has(l.n) ? ['a clip failed to play here'] : [])].join(' · '))}</span>` : '') + `</div>`;
+  }
+  html += `<p class="note">${L.length} lines, text as of ${D.snapshot} (pod is <b>${D.visibility}</b> — not visible to learners). ` +
+    `Order, speakers, scenes and what each mode plays follow the learning app's Dialogues player. ` +
+    `Clips stream live from Popty, so a re-recorded line plays its newest clip. Between clips this page waits for the network ` +
+    `(about a quarter of a second); the app pre-downloads the scene and leaves 0.05–0.09 s. ` +
+    `Running time: Immersion ${fmt(D.totals.immersion)}, Drill ${fmt(D.totals.drill)}.</p>`;
+  list.innerHTML = html;
+  const nb = L.filter(l => l.bad.length).length;
+  if (nb) { $('warn').style.display = 'block'; $('warn').textContent = `⚠ ${nb} line(s) have missing or broken audio — marked in the list.`; }
+}
+const esc = (s) => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function show() {
+  const l = L[idx]; if (!l) return;
+  $('scene').textContent = D.scenes[l.sc];
+  $('pos').textContent = `Line ${l.n} of ${L.length}`;
+  $('who').textContent = l.sp; $('who').style.color = PALETTE[l.c];
+  $('cy').textContent = l.cy; $('en').textContent = l.en;
+  document.querySelectorAll('.ln.cur').forEach(e => e.classList.remove('cur'));
+  const el = $('l' + l.n); if (el) { el.classList.add('cur'); if (playing) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  const tot = mode === 'drill' ? D.totals.drill : D.totals.immersion;
+  $('clock').textContent = `${fmt(starts[idx])} / ${fmt(tot)}`;
+  $('fill').style.width = (100 * starts[idx] / tot) + '%';
+  localStorage.setItem('cyms-pod1-idx', idx);
+  if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: l.cy, artist: `${l.sp} — ${l.en}`, album: `South Welsh Pod 1 · ${D.scenes[l.sc]}` });
+}
+function playStep() {
+  const l = L[idx]; if (!l) { stop(); $('now').textContent = 'End of the pod.'; idx = 0; show(); return; }
+  const q = queue(l);
+  if (step >= q.length) { idx++; step = 0; show(); return playStep(); }
+  const [side, id] = q[step];
+  $('now').textContent = mode === 'drill' ? `${side === 'cy' ? 'Welsh' : 'English'} · ${step + 1} of ${q.length}` : '';
+  a.src = SRC(id);
+  a.play().catch(err => { if (err.name !== 'AbortError') fail(err.message); });
+}
+function fail(why) {
+  runtimeBad.add(L[idx].n); const el = $('l' + L[idx].n);
+  if (el) { el.classList.add('bad'); if (!el.querySelector('.flag')) el.insertAdjacentHTML('beforeend', `<span class="flag">⚠ a clip failed to play here</span>`); }
+  $('now').textContent = `⚠ clip failed (${why || 'error'}) — skipping`;
+  step++; if (playing) setTimeout(playStep, 1200);
+}
+a.addEventListener('ended', () => { if (!playing) return; step++; playStep(); });
+a.addEventListener('error', () => { if (playing && a.src) fail(a.error && a.error.code ? 'media error ' + a.error.code : ''); });
+function start() { playing = true; $('play').textContent = '❚❚'; if (a.getAttribute('src') && a.currentTime > 0 && !a.ended) a.play().catch(() => playStep()); else playStep(); }
+function stop() { playing = false; $('play').textContent = '▶'; a.pause(); }
+function jump(i) { idx = Math.max(0, Math.min(L.length - 1, i)); step = 0; show(); if (playing) playStep(); else a.removeAttribute('src'); }
+$('play').onclick = () => playing ? stop() : start();
+$('prev').onclick = () => jump(idx - 1);
+$('next').onclick = () => jump(idx + 1);
+$('list').onclick = (e) => { const r = e.target.closest('.ln'); if (r) { const i = +r.dataset.i; if (!playing) { playing = true; $('play').textContent = '❚❚'; } jump(i); } };
+document.querySelectorAll('.modes button').forEach(b => b.onclick = () => { mode = b.dataset.m; localStorage.setItem('cyms-pod1-mode', mode); setModes(); recalc(); step = 0; show(); if (playing) playStep(); });
+const setModes = () => document.querySelectorAll('.modes button').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.setActionHandler('play', start);
+  navigator.mediaSession.setActionHandler('pause', stop);
+  navigator.mediaSession.setActionHandler('previoustrack', () => jump(idx - 1));
+  navigator.mediaSession.setActionHandler('nexttrack', () => jump(idx + 1));
+}
+recalc(); setModes(); render(); if (idx >= L.length) idx = 0; show();
+</script>
+</body>
+</html>
