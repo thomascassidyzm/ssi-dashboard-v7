@@ -323,6 +323,9 @@ function createRepairCore (deps) {
     // r-2026-09-28-no-automatic-whisper-stt-check-may; full STT checks are for
     // human recordings, ssi-stt-sampling-doctrine). Level, length and tail stay.
     const sttFault = (verdict) => (source === 'upload' ? verdict : null)
+    // And on a TTS candidate Whisper is not even RUN (Tom, 2026-11-03: "We switched
+    // that off weeks ago"; job #626). Only a human upload is listened to.
+    const listen = (buf) => (source === 'upload' ? verify.veracity(buf, useText, row.language) : Promise.resolve({ checked: false, pass: null, reason: 'not_run_tts', cer: null }))
 
     if (source === 'upload') {
       if (!buffer || !buffer.length) throw new RepairError('upload carried no bytes', 'empty_upload')
@@ -353,7 +356,7 @@ function createRepairCore (deps) {
           text: useText, voiceId: useVoice, language: row.language, role: row.role,
         })
         const level = await verify.measure(out.buffer)
-        const verdict = await verify.veracity(out.buffer, useText, row.language)
+        const verdict = await listen(out.buffer)
         const tail = await tailOf(out.buffer)
         const fault = faultOf(out.durationMs, level, sttFault(verdict), tail)
         attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault, verdict })
@@ -374,7 +377,7 @@ function createRepairCore (deps) {
     // Verify whatever we ended up with — uploads included, which is the only
     // check standing between a mis-recorded file and a human's ears.
     const level = await verify.measure(candidateBuffer)
-    const verdict = await verify.veracity(candidateBuffer, useText, row.language)
+    const verdict = await listen(candidateBuffer)
     const tail = await tailOf(candidateBuffer)
     const fault = faultOf(durationMs, level, sttFault(verdict), tail)
     if (fault) {

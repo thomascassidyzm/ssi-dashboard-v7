@@ -89,12 +89,20 @@ describe('the other places Whisper used to decide', () => {
     expect(plan.clips[0].heard.pass).toBe(false)
   })
 
-  it('tts-service: the xAI/Cartesia phonology check never throws or re-rolls', () => {
+  it('tts-service: no TTS render spawns Whisper, not even a sample (Tom, 2026-11-03, job #626)', () => {
     const src = fs.readFileSync(path.join(__dirname, 'tts-service.cjs'), 'utf8')
-    const start = src.indexOf('await detectSpokenLanguage(result.audioBuffer)')
+    const start = src.indexOf('async function renderWithRetry(')
+    const body = src.slice(start, src.indexOf('\nasync function ', start + 10))
     expect(start).toBeGreaterThan(0)
-    const block = src.slice(start, src.indexOf('return result;', start))
-    expect(block).not.toMatch(/\bthrow\b/)
+    expect(body).not.toMatch(/detectSpokenLanguage\(/)
+  })
+
+  it('audio-veracity: renderChecked never listens to a TTS render (job #626)', async () => {
+    const { renderChecked } = require('./audio-veracity.cjs')
+    let decoded = 0
+    const out = await renderChecked({ render: async () => ({ buffer: Buffer.from('x'), durationMs: 900 }), expectedText: 'hallo', language: 'deu', sampler: { shouldCheck: () => { decoded++; return true }, recordVerdict: () => ({}) }, logger: { info () {}, warn () {} } })
+    expect(out.verdict.checked).toBe(false)
+    expect(decoded).toBe(0)
   })
 })
 
@@ -109,12 +117,12 @@ describe('the other places Whisper used to decide', () => {
  *   infra           binary paths, wrappers, capability probes
  */
 const STT_CALLERS = {
-  'services/audio-veracity.cjs': 'engine',
-  'services/tts-service.cjs': 'advisory',            // phonology sample, 1 in 10, logs only
+  'services/audio-veracity.cjs': 'engine',           // checkAudioVeracity for human recordings; renderChecked never listens (job #626)
+  'services/tts-service.cjs': 'infra',               // detectSpokenLanguage exported for voicelab only; no render calls it (job #626)
   'services/audio-intelligence/gate-stack.cjs': 'advisory', // words + phonology tiers never refuse
   'services/audio-intelligence/decode.cjs': 'infra',
   'services/audio-processor.cjs': 'infra',
-  'services/audio-repair.cjs': 'advisory',           // TTS candidates: verdict recorded; uploads: human-recording
+  'services/audio-repair.cjs': 'human-recording',    // uploads only; TTS candidates are never listened to (audio-repair-core, job #626)
   'services/audio-reuse-planner.cjs': 'report',      // verifyPlanVeracity annotates, never re-decides
   'services/take-text-check-queue.cjs': 'human-recording', // booth take's script check, after the reply (job #842); never refuses
   'services/voicelab-playground/server.cjs': 'infra',

@@ -463,7 +463,7 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. GRADUATED SAMPLING, PER COURSE: ${(SAMPLE_RATE_FIRST * 100).toFixed(0)}% opening, ${(SAMPLE_RATE_TRUSTED * 100).toFixed(0)}% after ${SAMPLE_STEP_CLEAN} clean sampled clips, relaxing a rung per further ${SAMPLE_STEP_CLEAN} down to a ${(SAMPLE_RATE_FLOOR * 100).toFixed(1)}% floor — a failure snaps it back and every course starts fresh. Validated on silence + truncation only; mispronunciation is NOT covered. Decoder not validated for ${[...DECODER_NOT_VALIDATED].sort().join(', ')} — clips in those languages are SKIPPED, not passed.`)
+      info('[audio-veracity] TTS renders: Whisper OFF (Tom, r-2026-09-28 + 2026-11-03) — renderChecked never listens; checkAudioVeracity is for human recordings and explicit report tools.')
     }
   }
   return { enabled, available: av.available, missing: av.missing }
@@ -2409,7 +2409,17 @@ async function renderChecked (o) {
 
   const rendered = await render(1)
 
-  if (!sampler.shouldCheck()) {
+  // EVERY CLIP THROUGH HERE IS A TTS RENDER, so Whisper never listens to it —
+  // not 100%, not a 10% sample (Tom, r-2026-09-28-no-automatic-whisper-stt-check-may:
+  // "we do NOT use automatic checks on listening content"; 2026-11-03, told the
+  // sample was still running: "We switched that off weeks ago"). Job #626 found
+  // phase8 /generate still decoding deu_ch_for_eng TTS clips through this sampler
+  // at ~12:00Z that day and turned it off here, at the one function every TTS
+  // caller shares. The verdict is the not-sampled one so stats and row columns
+  // read honestly ("nobody listened"), never as a pass. checkAudioVeracity()
+  // itself stays: it is the full check on HUMAN recordings (take-text-check-queue,
+  // repair uploads). `o.check` is a test seam and is the only way back in.
+  if (!o.check || !sampler.shouldCheck()) {
     const verdict = { checked: false, pass: null, reason: 'not_sampled' }
     recordVerdict(stats, verdict)
     return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
