@@ -5,3 +5,4 @@
 - Pro clone: dataset `dataset_SUYvSFTLmdYnkwVCFnVS2N`, fine-tune `fine_tune_Xvrrb5ybpHZBJ8ESVsqpyY` — `pvc-create.txt`; slot 2 of 4 (Scale), nothing displaced.
 - Renders: Popty `/api/audio/render` trial mode (linked to no course) — `inst-renders.json`, `pvc-renders.json`.
 - Regenerates: nothing. Audio (takes/, build/, clips/) is gitignored and not kept.
+- SCOPE CHANGE (Tom, 2026-11-03): no new clones. Page https://watson-1.tail4968cb.ts.net/d/c6334b24 = real booth take vs the EXISTING Pro clone V0 `5b7a17f4` (fine-tune mMW5Qtxf…, archive takes) — `pvc-renders.json`. The instant clone and the new fine-tune above were made before the stop; both are unused and undeleted.
