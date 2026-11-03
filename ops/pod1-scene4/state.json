@@ -563,5 +563,13 @@
   "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"ara\" (provider \"xai\") cannot be carried onto azure for hin_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"hin\" but no Cartesia voice is cast for it (the estate holds exactly ",
   "audio": {},
   "chars": 0
+ },
+ "hrv_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:45:41.843Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for hrv (403): hrv has only the 2026-09-04 draft casting, which Tom never chose, so no hrv clip is rendered (azure_hr-HR-SreckoNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "audio": {},
+  "chars": 0
  }
 }
