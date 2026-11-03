@@ -821,5 +821,13 @@
   "switchoverResult": "learner progress: 0 carried, 3 dropped.",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "spa_for_jpn": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:53:32.061Z",
+  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"ara\" (provider \"xai\") cannot be carried onto azure for spa_for_jpn/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"spa\" but no Cartesia voice is cast for it (the estate holds exactly ",
+  "audio": {},
+  "chars": 0
  }
 }
