@@ -2,7 +2,7 @@
 // allowing it to do a thousand. But you can't have anything in the chain."
 //
 // First session ever (no approval stored) and the first session after a recorder change (stored
-// approval is for another build): the booth stops itself after 10 saved takes and shows them.
+// approval is for another build): the booth stops itself after 5 saved takes and shows them.
 // Approved for this build: it never stops. And the takes it files are exactly the takes it files
 // without the gate — same count, same order, same fields — because the gate only observes.
 //
@@ -68,7 +68,7 @@ function stubServer() {
     if (u.includes('/sample-gate/measure')) return Promise.resolve({ ok: true, status: 200, json: async () => ({ measured: true, hints: [] }) })
     if (u.includes('/sample-gate')) {
       const build = new URL(u, 'http://x').searchParams.get('build')
-      return Promise.resolve({ ok: true, status: 200, json: async () => ({ sampleSize: 10, approvedBuild: gate.approvedBuild, needsSample: gate.approvedBuild !== build }) })
+      return Promise.resolve({ ok: true, status: 200, json: async () => ({ sampleSize: 5, approvedBuild: gate.approvedBuild, needsSample: gate.approvedBuild !== build }) })
     }
     return Promise.resolve({ ok: true, status: 200, json: async () => ({ displayName: 'Test Voice', languageName: 'Welsh', total: N, recorded: 0, remaining: N, lines }) })
   })
@@ -107,22 +107,22 @@ describe('RecordistRoom — the off-chain sample gate', () => {
     expect(RECORDER_BUILD).toMatch(/^[0-9a-f]{12}$/)
   })
 
-  it('first session ever: stops itself after 10 saved takes and shows them for review', async () => {
+  it('first session ever: stops itself after 5 saved takes and shows them for review', async () => {
     const w = await startSession()
-    await readLines(w, 10)
+    await readLines(w, 5)
     expect(isDone(w)).toBe(true)
     const card = w.find('[data-test="sample-gate"]')
     expect(card.exists()).toBe(true)
-    expect(w.findAll('[data-test="sample-list"] li')).toHaveLength(10)
-    // The 11th line was opened, nothing was read on it before the gate's Stop... the mock mic
+    expect(w.findAll('[data-test="sample-list"] li')).toHaveLength(5)
+    // The 6th line was opened, nothing was read on it before the gate's Stop... the mock mic
     // says speech, so Stop files it exactly as the artist's own Stop would.
-    expect(queued.length).toBeGreaterThanOrEqual(10)
+    expect(queued.length).toBeGreaterThanOrEqual(5)
   })
 
   it('after a recorder change (approved for another build) it gates again', async () => {
     gate.approvedBuild = 'oldbuild0000'
     const w = await startSession()
-    await readLines(w, 10)
+    await readLines(w, 5)
     expect(w.find('[data-test="sample-gate"]').exists()).toBe(true)
   })
 
@@ -137,7 +137,7 @@ describe('RecordistRoom — the off-chain sample gate', () => {
 
   it('approve: stores this build and carries on into the bulk without stopping again', async () => {
     const w = await startSession()
-    await readLines(w, 10)
+    await readLines(w, 5)
     await tap(w, '[data-test="sample-approve"]')
     expect(gate.approvals).toEqual([RECORDER_BUILD])
     expect(isDone(w)).toBe(false)
@@ -150,24 +150,24 @@ describe('RecordistRoom — the off-chain sample gate', () => {
 
   it('redo: reopens the first sample line and records them again', async () => {
     const w = await startSession()
-    await readLines(w, 10)
+    await readLines(w, 5)
     await tap(w, '[data-test="sample-redo"]')
     expect(isDone(w)).toBe(false)
     expect(w.find('.line-target').text()).toBe('llinell 1')
     expect(gate.approvals).toEqual([])
   })
 
-  it('never alters the take-saving path: the first 10 takes are filed identically with and without the gate', async () => {
+  it('never alters the take-saving path: the first 5 takes are filed identically with and without the gate', async () => {
     gate.approvedBuild = RECORDER_BUILD
     let w = await startSession()
-    await readLines(w, 10)
-    const ungated = takeShape().slice(0, 10)
+    await readLines(w, 5)
+    const ungated = takeShape().slice(0, 5)
     w.unmount(); document.body.innerHTML = ''
     queued.length = 0; savedTakes.clear(); localStorage.clear()
     gate.approvedBuild = null
     w = await startSession()
-    await readLines(w, 10)
-    expect(takeShape().slice(0, 10)).toEqual(ungated)
+    await readLines(w, 5)
+    expect(takeShape().slice(0, 5)).toEqual(ungated)
   })
 
   it('a gate that cannot be read never stops anyone (fails open)', async () => {

@@ -6,8 +6,8 @@ const memStore = () => { const m = new Map(); return { getItem: k => m.get(k) ??
 
 describe('sample-gate.js (booth)', () => {
   it('stops a gated live session at the sample size, not before', () => {
-    expect(sampleGateAction({ gated: true, held: false, phase: 'recording', saved: 9 })).toBe(null)
-    expect(sampleGateAction({ gated: true, held: false, phase: 'recording', saved: 10 })).toBe('stop')
+    expect(sampleGateAction({ gated: true, held: false, phase: 'recording', saved: 4 })).toBe(null)
+    expect(sampleGateAction({ gated: true, held: false, phase: 'recording', saved: 5 })).toBe('stop')
   })
   it('shows a short session at its end; never acts ungated or once held', () => {
     expect(sampleGateAction({ gated: true, held: false, phase: 'done', saved: 4 })).toBe('show')

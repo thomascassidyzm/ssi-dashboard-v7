@@ -12,7 +12,7 @@
 // Server half: services/voice-engine/sample-gate.cjs.
 
 /* global __RECORDER_BUILD__ */
-export const SAMPLE_SIZE = 10
+export const SAMPLE_SIZE = 5 // was 10 (r-2026-10-31); 5 proposed by Aran 2026-11-03, job #591 — needs Tom's yes. Server half must match.
 
 // The recorder build: a content hash of the capture + upload code, made in vite.config.js. It
 // changes when that code changes and at no other deploy.
