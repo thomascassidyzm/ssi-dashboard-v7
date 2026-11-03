@@ -85,8 +85,14 @@ function isReplaceableStandIn({ courseCode, role, voiceId }) {
  * course goes on: white/yellow at today's pace (1.0, the course's own known speed), orange/green a bit quicker,
  * blue and up close to natural conversational speed.
  *
- * The value is Cartesia's native generation_config.speed (absolute, 1.0 = the voice's own pace; Cartesia
- * accepts 0.6-1.5). A line's belt is the course position of the seed or LEGO it belongs to (seed number; a
+ * The value is a TEMPO applied to the rendered clip (1.0 = the clone's own pace; 1.25 = the same take played
+ * 25% faster, i.e. ~20% shorter, pitch unchanged) — NOT Cartesia's generation_config.speed. Job #579 sent it as
+ * that native speed and Aran heard 1.25 come out SLOWER than 1.0 (job #590 measured all four pairs on the probe
+ * page: every "faster" clip was 13-41% longer). Cause: this voice is a Cartesia PROFESSIONAL clone, and Cartesia's
+ * docs say "Professional Voice Clones take their pacing from their source recordings and don't support
+ * request-time speed adjustments" — the speed was ignored and the differences were take-to-take wander. So the
+ * render route sends Cartesia its default speed and the pace is applied after the render, by ffmpeg atempo
+ * (audio-processor changeTempoToWav), before mastering. A line's belt is the course position of the seed or LEGO it belongs to (seed number; a
  * phrase's LEGO id S0014L01 → seed 14). A clip shared by several slots takes its EARLIEST position — the first
  * time a learner hears it decides its pace.
  *
@@ -110,11 +116,14 @@ function beltOf(seedPosition) {
   return b
 }
 
-/** The Cartesia speed the stand-in speaks a line at, from the line's seed position. */
+/** The tempo the stand-in speaks a line at, from the line's seed position (applied after the render — see above). */
 function standInSpeed(seedPosition) {
   const b = beltOf(seedPosition)
   return b ? STANDIN_PACE[b] : STANDIN_DEFAULT_PACE
 }
+
+/** True for a voice whose pace Cartesia ignores at request time (a Professional Voice Clone), so pace is a post-render tempo. */
+function paceIsPostRender(voiceId) { return isStandInVoice(voiceId) }
 
 /** The fastest speed the stand-in may be asked for (the trial lane lets this voice go up to it, no further). */
 const STANDIN_MAX_PACE = Math.max(...Object.values(STANDIN_PACE))
@@ -133,6 +142,7 @@ module.exports = {
   STANDIN_MAX_PACE,
   beltOf,
   standInSpeed,
+  paceIsPostRender,
   seedPositionOfSlot,
   ARAN_ENGLISH_CLONE,
   ARAN_ENGLISH_PRO_CLONE,
