@@ -4,7 +4,7 @@
  * aran-clone-english-fill.cjs — job #557 (Aran, 2026-10-29 14:41Z).
  *
  * Fills every EMPTY English known slot of cym_nv2_for_eng / cym_sv2_for_eng that Aran's booth serves and that
- * he has no take of, with his own clone aran_english_003 — the stand-in services/shared/aran-clone-standin.cjs
+ * he has no take of, with his own clone (STANDIN_VOICE: his PRO clone since 2026-11-03, job #568) — the stand-in services/shared/aran-clone-standin.cjs
  * allows there and nowhere else. His real take replaces each clone clip as it lands (the booth linkers,
  * make-before-break: the take is filed first, the slot moves on a write conditional on the clone clip, the clone
  * clip stays in course_audio).
@@ -123,9 +123,19 @@ function linkRequests(entries, renders, size = 500) {
   return out
 }
 
-/** Which plan entries are still to ask for, given the log: an entry is done once it has a 2xx answer that is not a dry run. */
+/**
+ * The render door's per-language stop (services/shared/exists-in-language-guard.cjs, job #352, 2026-11-02): these words
+ * are already recorded in English in another voice, so a clone render would be a second performance. That refusal is
+ * the ANSWER FOR THAT LINE — logged with the clips it names, never retried, the slot left empty for Aran's booth take
+ * (or a person's decision to link one of the named clips). It is per line, so it does not stop the run (job #568:
+ * ~12% of the plan hits it); every OTHER refusal still stops the run.
+ */
+const isExistsInLanguage = (r) => r.status === 409 && !!r.body && r.body.code === 'EXISTS_IN_LANGUAGE'
+
+/** Which plan entries are still to ask for, given the log: an entry is done once it has a 2xx answer that is not a dry
+ * run, or a (non-dry) EXISTS_IN_LANGUAGE refusal — asking again would only be refused again. */
 function pendingEntries(entries, renders, { dry = false } = {}) {
-  const done = new Set(renders.filter((r) => r.status >= 200 && r.status < 300 && (dry ? true : !r.dry)).map((r) => entryKey(r.courseCode, r.text)))
+  const done = new Set(renders.filter((r) => (dry ? true : !r.dry) && ((r.status >= 200 && r.status < 300) || isExistsInLanguage(r))).map((r) => entryKey(r.courseCode, r.text)))
   return entries.filter((e) => !done.has(entryKey(e.courseCode, e.text)))
 }
 
@@ -184,7 +194,9 @@ async function main() {
     const ok = renders.filter((r) => r.status >= 200 && r.status < 300)
     console.log(JSON.stringify({ planEntries: plan.entries.length, pending: pendingEntries(plan.entries, renders).length,
       rendered: ok.filter((r) => r.body.source === 'rendered').length, library: ok.filter((r) => r.body.source === 'library').length,
-      charsSpent: ok.reduce((n, r) => n + (r.body.charsSpent || 0), 0), refused: renders.filter((r) => !(r.status >= 200 && r.status < 300)).length,
+      charsSpent: ok.reduce((n, r) => n + (r.body.charsSpent || 0), 0),
+      existsInLanguage: renders.filter(isExistsInLanguage).length,
+      refused: renders.filter((r) => !(r.status >= 200 && r.status < 300) && !isExistsInLanguage(r)).length,
       linked: readJsonl(LINK_LOG).reduce((n, l) => n + (l.linked || 0), 0) }, null, 1))
     return
   }
@@ -193,7 +205,7 @@ async function main() {
     const limit = Number(arg('--limit', '0')) || Infinity
     const maxChars = Number(arg('--max-chars', '0')) || Infinity
     const todo = pendingEntries(plan.entries, readJsonl(RENDER_LOG), { dry }).slice(0, limit)
-    let spent = 0, asked = 0
+    let spent = 0, asked = 0, existsInLanguage = 0
     for (const e of todo) {
       if (spent + e.chars > maxChars) { console.log(`STOP: --max-chars ${maxChars} reached (${spent} spent)`); break }
       let status = 0, body = {}
@@ -204,10 +216,11 @@ async function main() {
       } catch (err) { body = { error: String(err && err.name) } }
       asked += 1
       fs.appendFileSync(RENDER_LOG, JSON.stringify({ at: new Date().toISOString(), courseCode: e.courseCode, text: e.text, chars: e.chars, dry, status, body }) + '\n')
+      if (isExistsInLanguage({ status, body })) { existsInLanguage += 1; continue }
       if (!(status >= 200 && status < 300)) { console.log(`STOP on ${status}: ${JSON.stringify(body).slice(0, 400)}`); break }
       spent += body.charsSpent || 0
     }
-    console.log(`asked ${asked} of ${todo.length}; charsSpent ${spent}${dry ? ' (dry run)' : ''}`)
+    console.log(`asked ${asked} of ${todo.length}; charsSpent ${spent}; already in English (EXISTS_IN_LANGUAGE, left empty) ${existsInLanguage}${dry ? ' (dry run)' : ''}`)
     return
   }
   if (mode === 'link') {
