@@ -857,5 +857,13 @@
   "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"3b312632\" (provider \"xai\") cannot be carried onto azure for swe_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"swe\" but no Cartesia voice is cast for it (the estate holds exa",
   "audio": {},
   "chars": 0
+ },
+ "tha_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:54:41.106Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for tha (403): tha has only the 2026-09-04 draft casting, which Tom never chose, so no tha clip is rendered (cartesia_4ff93971bfdc refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "audio": {},
+  "chars": 0
  }
 }
