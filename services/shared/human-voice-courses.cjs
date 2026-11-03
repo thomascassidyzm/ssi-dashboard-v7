@@ -55,6 +55,13 @@
  *
  * The same no-runtime-bypass rule applies: reinstating pdc as TTS-renderable is
  * a code change to this file with Tom's sign-off, nothing cheaper.
+ *
+ * KAI'S RULING (2026-11-03): fry (West Frisian) is HUMAN-VOICED ONLY, on the
+ * same terms as pdc. Auke records it in the booth (language_recording_policy
+ * human_only = TRUE since 3 Nov). That flag holds phase8 /generate but the
+ * single render route never reads it, so a Frisian synthetic voice set up in
+ * Voice Lab could still render — listing fry here is what closes that door
+ * (job #580·AC found it; job #583 closed it).
  */
 
 const HUMAN_VOICE_COURSES = new Set([
@@ -62,6 +69,7 @@ const HUMAN_VOICE_COURSES = new Set([
   'cym_s_for_eng',
   'bre_for_fra',
   'pdc_for_eng',
+  'fry_for_eng',
 ]);
 
 /**
@@ -75,6 +83,7 @@ const HUMAN_VOICE_TARGET_LANGS = new Set([
   'cym_s',
   'bre',
   'pdc',
+  'fry',
 ]);
 
 /**
@@ -83,7 +92,7 @@ const HUMAN_VOICE_TARGET_LANGS = new Set([
  */
 function isHumanVoiceCourse(courseCode) {
   const code = String(courseCode || '');
-  return HUMAN_VOICE_COURSES.has(code) || /^cym_/.test(code) || /^pdc_/.test(code);
+  return HUMAN_VOICE_COURSES.has(code) || /^cym_/.test(code) || /^pdc_/.test(code) || /^fry_/.test(code);
 }
 
 /**
@@ -107,7 +116,7 @@ function isHumanVoiceSlotBlocked({ courseCode, role, language } = {}) {
  */
 function isHumanVoiceLang(lang) {
   const code = String(lang || '');
-  return HUMAN_VOICE_TARGET_LANGS.has(code) || /^cym(_|$)/.test(code) || /^pdc(_|$)/.test(code);
+  return HUMAN_VOICE_TARGET_LANGS.has(code) || /^cym(_|$)/.test(code) || /^pdc(_|$)/.test(code) || /^fry(_|$)/.test(code);
 }
 
 /**
@@ -120,7 +129,7 @@ function isHumanVoiceLang(lang) {
  */
 function renderableLangSql(col) {
   const list = [...HUMAN_VOICE_TARGET_LANGS].map(l => `'${l}'`).join(', ');
-  return `(${col} NOT IN (${list}) AND ${col} !~ '^cym(_|$)' AND ${col} !~ '^pdc(_|$)')`;
+  return `(${col} NOT IN (${list}) AND ${col} !~ '^cym(_|$)' AND ${col} !~ '^pdc(_|$)' AND ${col} !~ '^fry(_|$)')`;
 }
 
 /**
@@ -148,7 +157,7 @@ function assertNoHumanVoiceInQueue(items, { context, lang, course } = {}) {
     const shown = [...new Set(offenders)].slice(0, 10).join(', ');
     throw new Error(
       `Human-voice content in a TTS render queue (${context}): ${shown}` +
-      ` — ${offenders.length} row(s). Welsh, Breton and Pennsylvania Dutch are human-voiced only` +
+      ` — ${offenders.length} row(s). Welsh, Breton, Pennsylvania Dutch and Frisian are human-voiced only` +
       ` and are permanently excluded from every render queue (Tom 2026-08-14; 2026-08-13;` +
       ` 2026-07-25; 2026-07-27). Their coverage` +
       ` gaps are a recording worklist for their recordists, not renders. Filter them out at the` +
