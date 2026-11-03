@@ -787,5 +787,39 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ron (403): ron has only the 2026-09-04 draft casting, which Tom never chose, so no ron clip is rendered (azure_ro-RO-AlinaNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "spa_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:53:20.537Z",
+  "audio": {
+   "2:target": "d8598396-8262-445a-8dd8-ea84a5fc4f0a",
+   "2:known": "1a540bcd-279b-40aa-92ea-c4ac20e28fbd",
+   "3:target": "bb94420a-8e56-4eb4-9c33-dc3c617eeea9",
+   "3:known": "aed4d80b-6aa4-487b-a546-121c2730c10b"
+  },
+  "chars": 180,
+  "voices": {
+   "SC04-S002:target": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    22,
+    21
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 71,
+   "keep": 0,
+   "merge": 0,
+   "drop": 3
+  },
+  "switchoverResult": "learner progress: 0 carried, 3 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
