@@ -86,6 +86,43 @@ export async function approveSampleGate({ base, voiceId, build = RECORDER_BUILD,
 }
 
 /**
+ * THE RELOAD WAITS FOR THE SAVE (job #574). Calls `release` once `save` has settled, or after
+ * `capMs` if it never does, so a waiting new-build reload cannot cut the approval off mid-send
+ * and a hung request cannot pin an old build for ever. Returns `save` unchanged.
+ */
+export function releaseWhenSettled(save, release, capMs = 15000, setTimeoutImpl = setTimeout) {
+  let done = false
+  const go = () => { if (!done) { done = true; release() } }
+  Promise.resolve(save).then(go, go)
+  setTimeoutImpl(go, capMs)
+  return save
+}
+
+/**
+ * LEAVING THE PAGE IS CARRYING ON TOO (Aran, 2026-11-03, job #574). A reload or a closed tab
+ * while the check is showing used to save no answer, so the check came straight back. On
+ * pagehide the booth sends the same approval with a request the browser finishes after the page
+ * is gone: fetch keepalive (it keeps the JSON body the route reads), else sendBeacon. Synchronous,
+ * fire and forget; it remembers the pass in this tab first, so a reload never asks again even if
+ * the send is lost. Returns true when a send was queued.
+ */
+export function approveSampleGateOnUnload({ base, voiceId, build = RECORDER_BUILD, withKey = (u) => u, fetchImpl = typeof fetch !== 'undefined' ? fetch : null, beacon = typeof navigator !== 'undefined' && navigator.sendBeacon ? navigator.sendBeacon.bind(navigator) : null, session = safeSession() }) {
+  rememberPassed(voiceId, build, session)
+  const url = withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate/approve`, voiceId)
+  const body = JSON.stringify({ build, by: 'artist' })
+  try {
+    if (fetchImpl) {
+      fetchImpl(url, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body }).catch(() => {})
+      return true
+    }
+  } catch { /* keepalive refused: try the beacon */ }
+  try {
+    if (beacon) return !!beacon(url, new Blob([body], { type: 'application/json' }))
+  } catch { /* nothing more a closing page can do */ }
+  return false
+}
+
+/**
  * The advisory sound check on ONE saved take (the bytes already on this device). Null when it
  * cannot say — an unmeasured take is shown unmeasured, never failed, and never blocks anything.
  */

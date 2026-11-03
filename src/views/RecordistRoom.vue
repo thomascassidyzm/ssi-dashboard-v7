@@ -466,11 +466,13 @@
                 :disabled="nextUnrecordedIndex === -1 || busy || arming || paused || !!editingId"
                 @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${flowPos(nextUnrecordedIndex)}) »` }}</button>
         </template>
-        <div v-else class="transport-in" :class="{ one: !nextBatch && !batchScope && !nextPod }">
+        <!-- While the quick check shows, its own two buttons are the primary ones (job #574): the
+             way-on buttons here go quiet (btn-ghost) so they never read as the answer. -->
+        <div v-else class="transport-in" :class="{ one: !nextBatch && !batchScope && !nextPod, 'sample-quiet': sampleHeld }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
-          <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">{{ nextPodWords }}</button>
-          <button v-else-if="nextBatch" class="btn-begin btn-next-batch" data-test="next-batch" @click="openNextBatch">Next batch →</button>
-          <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+          <button v-if="nextPod" :class="sampleHeld ? 'btn-ghost' : 'btn-begin btn-next-batch'" data-test="next-pod" @click="openNextPod">{{ nextPodWords }}</button>
+          <button v-else-if="nextBatch" :class="sampleHeld ? 'btn-ghost' : 'btn-begin btn-next-batch'" data-test="next-batch" @click="openNextBatch">Next batch →</button>
+          <button v-else-if="batchScope" :class="sampleHeld ? 'btn-ghost' : 'btn-begin btn-next-batch'" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
           <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back · <kbd>J</kbd> jump to unrecorded
@@ -786,7 +788,7 @@ import { loadFailureMessage } from './recordist/load-failure-message.js'
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 import { fitRail } from './recordist/rail-fit.js'
-import { readSampleGate, approveSampleGate, measureSampleTake, sampleGateAction, SAMPLE_SIZE } from './recordist/sample-gate.js'
+import { readSampleGate, approveSampleGate, approveSampleGateOnUnload, releaseWhenSettled, measureSampleTake, sampleGateAction, SAMPLE_SIZE } from './recordist/sample-gate.js'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 // The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
@@ -3688,9 +3690,11 @@ const sampleIds = ref([])
 const sampleChecks = ref({})
 const sampleApproving = ref(false)
 const sampleNote = ref('')
+const sampleReloadKey = `booth-sample:${Math.random().toString(36).slice(2)}`
 watch(() => props.voiceId, async (voiceId) => {
   sampleGate.value = { gated: false, size: SAMPLE_SIZE }
   sampleHeld.value = false
+  holdReload(sampleReloadKey, false)
   sampleIds.value = []
   const read = await readSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
   if (voiceId === props.voiceId) sampleGate.value = read
@@ -3746,24 +3750,36 @@ async function approveSample() {
 // voice had been shown the check repeatedly and had never once had a pass stored. Any way on
 // from the check except "Redo these" now records the pass for the voice, exactly as the
 // "Sounds right — carry on" button does.
+// THE RELOAD WAITS FOR THE SAVE (job #574). Letting the check go used to let a waiting new-build
+// reload go at the same instant, which cut the approval off mid-send, retries and all. The hold
+// is now let go only once the save has settled (sample-gate.js releaseWhenSettled).
 function acknowledgeSample() {
   if (!sampleHeld.value) return Promise.resolve(true)
   const voiceId = props.voiceId
   sampleGate.value = { ...sampleGate.value, gated: false }
   sampleHeld.value = false
   sampleIds.value = []
-  return approveSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
+  return releaseWhenSettled(approveSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey }),
+    () => { if (!sampleHeld.value) holdReload(sampleReloadKey, false) })
 }
+// A reload or a closed tab under the check is carrying on as well (job #574): pagehide is the
+// last event a closing page is sure to get, and the send is one the browser finishes without us.
+function onSamplePageHide() {
+  if (!sampleHeld.value) return
+  approveSampleGateOnUnload({ base: apiBase(), voiceId: props.voiceId, withKey: withBoothKey })
+}
+window.addEventListener('pagehide', onSamplePageHide)
 watch(phase, (p, was) => {
   if (was === 'done' && p !== 'done' && sampleHeld.value) acknowledgeSample()
 })
 // The idle new-build reload (job #829) waits while the check is on screen: reloading under it
 // would throw the artist's answer away mid-listen.
-const sampleReloadKey = `booth-sample:${Math.random().toString(36).slice(2)}`
-watch(sampleHeld, (on) => holdReload(sampleReloadKey, on))
+// The hold is TAKEN here and let go by acknowledgeSample (after its save) or redoSample.
+watch(sampleHeld, (on) => { if (on) holdReload(sampleReloadKey, true) })
 onBeforeUnmount(() => {
+  window.removeEventListener('pagehide', onSamplePageHide)
   if (sampleHeld.value) acknowledgeSample()
-  holdReload(sampleReloadKey, false)
+  else holdReload(sampleReloadKey, false)
 })
 // Redo: the same lines again, from the first. Each new take replaces its earlier one exactly as
 // Again always has; the gate counts afresh and stops after the sample again.
@@ -3775,7 +3791,9 @@ async function redoSample() {
   sampleChecks.value = {}
   for (const id of ids) touchLine(id)
   if (ids.length) pinCursor(ids[0])
-  await begin()
+  try { await begin() } finally {
+    holdReload(sampleReloadKey, false) // back at the mic, which holds the reload itself
+  }
 }
 
 onMounted(() => {
@@ -3827,7 +3845,7 @@ onDeactivated(() => {
 
 <style scoped>
 .sample-gate { display: flex; flex-direction: column; gap: .5rem; text-align: left; }
-.sample-list { margin: 0; padding: 0; list-style: none; max-height: 55vh; overflow-y: auto; font-size: .9rem; }
+.sample-list { margin: 0; padding: 0; list-style: none; font-size: .9rem; }
 .sample-list li { display: flex; align-items: center; gap: .5rem; padding: .2rem .35rem; border-radius: 8px; }
 .sample-list li .listen-text { flex: 1; }
 .sample-list li.playing { background: rgba(6, 255, 165, 0.14); }
@@ -3836,7 +3854,19 @@ onDeactivated(() => {
 .sample-play.on, :root[data-theme="light"] .sample-list .sample-play.on { background: #b45309; color: #fff; }
 .sample-check { opacity: .7; white-space: nowrap; }
 .sample-check.warn { opacity: 1; color: var(--rc-warn, #b45309); white-space: normal; }
-.sample-actions { display: flex; gap: .5rem; justify-content: flex-end; }
+/* THE ANSWER IS ALWAYS ON SCREEN (job #574). The ten rows used to push these two buttons below the
+   done card's visible area on a laptop (1366x768: under "Back to my lines" / "Back to home"), so
+   the artist saw only the way-on buttons. They now stick to the bottom of the done card's own
+   scroll area while the check is in view — above the pinned bar, never under it. Opaque, so the
+   rows scroll beneath them. */
+.sample-actions {
+  display: flex; gap: .5rem; justify-content: flex-end;
+  position: sticky; bottom: 0; z-index: 2;
+  margin: 0 -1rem -1rem; padding: .6rem 1rem; border-radius: 0 0 10px 10px;
+  background: var(--color-void, #0f172a); border-top: 1px solid var(--color-gold, #d4a84b);
+}
+:root[data-theme="light"] .sample-actions { background: var(--surface, #fff); }
+.sample-actions button { flex: 1 1 0; min-height: 48px; margin: 0; }
 /* Phone first: Aran and Catrin record on phones. Everything thumb-reachable,
    the line itself the biggest thing on the screen. */
 .recordist {
