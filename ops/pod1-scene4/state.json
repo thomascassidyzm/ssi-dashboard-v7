@@ -70,12 +70,38 @@
   "rebound": true
  },
  "ara_eg_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:35:19.581Z",
-  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"eve\" (provider \"xai\") cannot be carried onto azure for ara_eg_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"ara\" but no Cartesia voice is cast for it (the estate holds exact",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:58:32.892Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 152,
+  "grant": "#153",
+  "recastAudio": {
+   "SC04-S001:target": "a10c50a6-40a6-47c1-9c81-74e58b451145",
+   "SC04-S001:known": "c3b5255c-bd7d-4f7a-8085-e6b20cfc0753",
+   "SC04-S002:target": "fb5792c1-6810-40c1-9553-3f409eb89056",
+   "SC04-S002:known": "45f9913a-4cd0-4717-af8f-fcb8b7ac7f37",
+   "SC04-S003:target": "83bbfcfe-60eb-45f5-adb4-501b9d1b3c86",
+   "SC04-S003:known": "8cdbe0a9-6d1d-40fa-8f39-bc2327ff742a"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "azure_ar-EG-ShakirNeural",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "azure_ar-EG-SalmaNeural",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "azure_ar-EG-ShakirNeural",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 9,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "ara_for_eng": {
   "state": "blocked",
