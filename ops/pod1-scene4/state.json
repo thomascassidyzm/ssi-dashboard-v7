@@ -513,5 +513,39 @@
   "switchoverResult": "",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "gle_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:44:54.741Z",
+  "audio": {
+   "2:target": "a447042f-9609-4d2e-b442-fd98fdb77ed2",
+   "2:known": "5674ed2e-8053-49cf-a8b0-292610a352e2",
+   "3:target": "745c5cb6-beb9-459f-b041-36aed0fcea66",
+   "3:known": "79b69a48-6a1a-49de-ab71-6de6a631c597"
+  },
+  "chars": 229,
+  "voices": {
+   "SC04-S002:target": "azure_ga-IE-OrlaNeural",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "azure_ga-IE-ColmNeural",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 61,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
