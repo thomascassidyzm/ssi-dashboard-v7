@@ -1,0 +1,3295 @@
+{
+  "course": "deu_for_eng",
+  "knownLanguage": "eng",
+  "tool": "tools/pod-drill-cuts/known-rerecord.mjs (job #665)",
+  "note": "A LIST, not audio. Nothing is rendered until Kai authorises it, through Popty /api/audio/render.",
+  "tally": {
+    "already-cut": 33,
+    "cuttable": 0,
+    "re-record": 19,
+    "needs-pairing": 246,
+    "plays-whole": 61
+  },
+  "rerecord": [
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Hattest du",
+      "known": "Did you have",
+      "knownSentence": "Did you have a long day?",
+      "why": "known seam too shallow to cut cleanly (#669): \"Did you have | a long day?\" 2.4 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "einen langen Tag",
+      "known": "a long day?",
+      "knownSentence": "Did you have a long day?",
+      "why": "known seam too shallow to cut cleanly (#669): \"Did you have | a long day?\" 2.4 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Das ist",
+      "known": "this is",
+      "knownSentence": "This is a lovely city.",
+      "why": "known seam too shallow to cut cleanly (#669): \"this is | a lovely city\" 1.8 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "eine wunderschöne Stadt",
+      "known": "a lovely city",
+      "knownSentence": "This is a lovely city.",
+      "why": "known seam too shallow to cut cleanly (#669): \"this is | a lovely city\" 1.8 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-ich-möchte-ein-pint",
+      "target": "Ich möchte ein Pint",
+      "known": "I'd like a pint",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-vom-bitter",
+      "target": "vom Bitter",
+      "known": "of the bitter,",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-bitte",
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Ich bin mir nicht sicher",
+      "known": "I'm not sure",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "known seam too shallow to cut cleanly (#669): \"I'm not sure | if I'm hungry\" 3.5 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": null,
+      "target": "ob ich hungrig bin",
+      "known": "if I'm hungry",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "known seam too shallow to cut cleanly (#669): \"I'm not sure | if I'm hungry\" 3.5 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S003",
+      "line": 0,
+      "lego": "s61-möchten-sie",
+      "target": "Möchten Sie",
+      "known": "would you like",
+      "knownSentence": "Would you like still or sparkling water to start?",
+      "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S003",
+      "line": 0,
+      "lego": "s61-zum-anfang",
+      "target": "zum Anfang",
+      "known": "to start",
+      "knownSentence": "Would you like still or sparkling water to start?",
+      "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S003",
+      "line": 0,
+      "lego": "s61-stilles-oder-sprudelwasser",
+      "target": "stilles oder Sprudelwasser",
+      "known": "still or sparkling water?",
+      "knownSentence": "Would you like still or sparkling water to start?",
+      "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S006:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Ja",
+      "known": "Yes,",
+      "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+      "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S006:s0",
+      "line": 0,
+      "lego": null,
+      "target": "der Lachs",
+      "known": "the salmon",
+      "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+      "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S006:s0",
+      "line": 0,
+      "lego": null,
+      "target": "und das Risotto",
+      "known": "and the risotto",
+      "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+      "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S006:s0",
+      "line": 0,
+      "lego": null,
+      "target": "sind beide glutenfrei",
+      "known": "are both gluten-free.",
+      "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+      "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S008:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Und gibt es",
+      "known": "And is there",
+      "knownSentence": "And is there a cashpoint nearby?",
+      "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S008:s1",
+      "line": 0,
+      "lego": null,
+      "target": "einen Geldautomaten",
+      "known": "a cashpoint",
+      "knownSentence": "And is there a cashpoint nearby?",
+      "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+      "fix": "record each known piece on its own"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S008:s1",
+      "line": 0,
+      "lego": null,
+      "target": "in der Nähe",
+      "known": "nearby?",
+      "knownSentence": "And is there a cashpoint nearby?",
+      "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+      "fix": "record each known piece on its own"
+    }
+  ],
+  "needsPairing": [
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": "s1-guten-morgen",
+      "target": "Guten Morgen",
+      "known": "Good morning,",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": null,
+      "target": "Sarah",
+      "known": "",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S004:s0",
+      "line": 0,
+      "lego": "s4-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, I've got a busy day today.",
+      "why": "\"I've got today\" is not said word for word in \"Yes, I've got a busy day today.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S004:s0",
+      "line": 0,
+      "lego": "s4-ich-hab-heute",
+      "target": "ich hab heute",
+      "known": "I've got today",
+      "knownSentence": "Yes, I've got a busy day today.",
+      "why": "\"I've got today\" is not said word for word in \"Yes, I've got a busy day today.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S004:s0",
+      "line": 0,
+      "lego": "s4-einen-langen-tag",
+      "target": "einen langen Tag",
+      "known": "a busy day",
+      "knownSentence": "Yes, I've got a busy day today.",
+      "why": "\"I've got today\" is not said word for word in \"Yes, I've got a busy day today.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S004:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Ich hoffe",
+      "known": "I hope",
+      "knownSentence": "I hope you have a good day.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S004:s1",
+      "line": 0,
+      "lego": null,
+      "target": "du hast einen schönen Tag",
+      "known": "",
+      "knownSentence": "I hope you have a good day.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC02-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Wie weit",
+      "known": "",
+      "knownSentence": "How far is it into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC02-S003",
+      "line": 0,
+      "lego": null,
+      "target": "ist es in die Stadt",
+      "known": "",
+      "knownSentence": "How far is it into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC02-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Können Sie mir sagen",
+      "known": "",
+      "knownSentence": "Can you tell me how far it is into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC02-S004",
+      "line": 0,
+      "lego": null,
+      "target": "wie weit es in die Stadt ist",
+      "known": "",
+      "knownSentence": "Can you tell me how far it is into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Haben Sie etwas",
+      "known": "",
+      "knownSentence": "Do you have any food?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S003",
+      "line": 0,
+      "lego": null,
+      "target": "zu essen",
+      "known": "",
+      "knownSentence": "Do you have any food?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S005",
+      "line": 0,
+      "lego": null,
+      "target": "Haben Sie Chips, oder Nüsse",
+      "known": "",
+      "knownSentence": "Do you have crisps, or nuts, or anything?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S005",
+      "line": 0,
+      "lego": null,
+      "target": "oder so etwas",
+      "known": "",
+      "knownSentence": "Do you have crisps, or nuts, or anything?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Nein, es tut mir leid",
+      "known": "",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "ich bin morgen beschäftigt",
+      "known": "I am busy tomorrow",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": "s13-guten-abend",
+      "target": "Guten Abend",
+      "known": "good evening,",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Sarah",
+      "known": "",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S002:s1",
+      "line": 0,
+      "lego": "s14-ich-bin-jetzt",
+      "target": "Ich bin jetzt",
+      "known": "I am now",
+      "knownSentence": "I'm very tired now.",
+      "why": "\"I am now\" is not said word for word in \"I'm very tired now.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S002:s1",
+      "line": 0,
+      "lego": "s14-sehr-müde",
+      "target": "sehr müde",
+      "known": "very tired",
+      "knownSentence": "I'm very tired now.",
+      "why": "\"I am now\" is not said word for word in \"I'm very tired now.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S002:s0",
+      "line": 0,
+      "lego": "s16-ich-heiße",
+      "target": "Ich heiße",
+      "known": "my name is",
+      "knownSentence": "My name is Anna.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S002:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Anna",
+      "known": "",
+      "knownSentence": "My name is Anna.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S004:s0",
+      "line": 0,
+      "lego": "s18-sehr-erfreut",
+      "target": "Sehr erfreut",
+      "known": "very pleased,",
+      "knownSentence": "Pleased to meet you too.",
+      "why": "\"very pleased,\" is not said word for word in \"Pleased to meet you too.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S004:s0",
+      "line": 0,
+      "lego": "s18-sie-kennenzulernen",
+      "target": "Sie kennenzulernen",
+      "known": "to meet you.",
+      "knownSentence": "Pleased to meet you too.",
+      "why": "\"very pleased,\" is not said word for word in \"Pleased to meet you too.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S005",
+      "line": 0,
+      "lego": "s19-ich-komme-aus-manchester",
+      "target": "Ich komme aus Manchester",
+      "known": "I'm from Manchester,",
+      "knownSentence": "I'm from Manchester, but I live in London now. And you?",
+      "why": "\"but I live now\" is not said word for word in \"I'm from Manchester, but I live in London now. And you?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S005",
+      "line": 0,
+      "lego": "s19-aber-ich-wohne-jetzt",
+      "target": "aber ich wohne jetzt",
+      "known": "but I live now",
+      "knownSentence": "I'm from Manchester, but I live in London now. And you?",
+      "why": "\"but I live now\" is not said word for word in \"I'm from Manchester, but I live in London now. And you?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S005",
+      "line": 0,
+      "lego": "s19-in-london",
+      "target": "in London",
+      "known": "in London.",
+      "knownSentence": "I'm from Manchester, but I live in London now. And you?",
+      "why": "\"but I live now\" is not said word for word in \"I'm from Manchester, but I live in London now. And you?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S005",
+      "line": 0,
+      "lego": "s19-und-sie",
+      "target": "Und Sie",
+      "known": "And you?",
+      "knownSentence": "I'm from Manchester, but I live in London now. And you?",
+      "why": "\"but I live now\" is not said word for word in \"I'm from Manchester, but I live in London now. And you?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S007:s1",
+      "line": 0,
+      "lego": "s21-was-machen-sie",
+      "target": "Was machen Sie",
+      "known": "what do you do",
+      "knownSentence": "What do you do?",
+      "why": "\"for a living\" is not said word for word in \"What do you do?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S007:s1",
+      "line": 0,
+      "lego": "s21-beruflich",
+      "target": "beruflich",
+      "known": "for a living",
+      "knownSentence": "What do you do?",
+      "why": "\"for a living\" is not said word for word in \"What do you do?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S008:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Ich bin Krankenschwester",
+      "known": "I am a nurse",
+      "knownSentence": "I'm a nurse, at the hospital just round the corner.",
+      "why": "\"I am a nurse\" is not said word for word in \"I'm a nurse, at the hospital just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S008:s0",
+      "line": 0,
+      "lego": null,
+      "target": "im Krankenhaus gleich um die Ecke",
+      "known": "",
+      "knownSentence": "I'm a nurse, at the hospital just round the corner.",
+      "why": "\"I am a nurse\" is not said word for word in \"I'm a nurse, at the hospital just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S009:s2",
+      "line": 0,
+      "lego": "s23-könnten-sie-das",
+      "target": "Könnten Sie das",
+      "known": "could you that",
+      "knownSentence": "Could you say that again more slowly?",
+      "why": "\"could you that\" is not said word for word in \"Could you say that again more slowly?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S009:s2",
+      "line": 0,
+      "lego": "s23-noch-einmal-langsamer-sagen",
+      "target": "noch einmal langsamer sagen",
+      "known": "say once again more slowly?",
+      "knownSentence": "Could you say that again more slowly?",
+      "why": "\"could you that\" is not said word for word in \"Could you say that again more slowly?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S010:s3",
+      "line": 0,
+      "lego": "s24-es-ist-hier",
+      "target": "Es ist hier",
+      "known": "it is here",
+      "knownSentence": "It's near here.",
+      "why": "\"it is here\" is not said word for word in \"It's near here.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S010:s3",
+      "line": 0,
+      "lego": "s24-in-der-nähe",
+      "target": "in der Nähe",
+      "known": "close by",
+      "knownSentence": "It's near here.",
+      "why": "\"it is here\" is not said word for word in \"It's near here.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-ich-unterrichte-englisch",
+      "target": "Ich unterrichte Englisch",
+      "known": "I teach English,",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-aber-nicht-in-einer-schule",
+      "target": "aber nicht in einer Schule",
+      "known": "but not in a school.",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-ich-arbeite-mit-erwachsenen",
+      "target": "Ich arbeite mit Erwachsenen",
+      "known": "I work with adults.",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-ich-bin-hier-im-urlaub",
+      "target": "Ich bin hier im Urlaub",
+      "known": "I'm here on holiday",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-mit-meiner-frau",
+      "target": "mit meiner Frau",
+      "known": "with my wife",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-und-meinen-kindern",
+      "target": "und meinen Kindern",
+      "known": "and my children.",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S011",
+      "line": 0,
+      "lego": "s25-wir-haben-eine-wunderschöne-zeit",
+      "target": "Wir haben eine wunderschöne Zeit",
+      "known": "We're having a lovely time.",
+      "knownSentence": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+      "why": "\"I'm here on holiday\" is not said word for word in \"I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S012:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Na, es war sehr schön",
+      "known": "",
+      "knownSentence": "Well, lovely to meet you.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S012:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Sie kennenzulernen",
+      "known": "",
+      "knownSentence": "Well, lovely to meet you.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Möchten Sie einen normalen",
+      "known": "",
+      "knownSentence": "Do you want regular or large?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S003",
+      "line": 0,
+      "lego": null,
+      "target": "oder einen großen",
+      "known": "or a large one?",
+      "knownSentence": "Do you want regular or large?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S004:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Ich möchte einen großen",
+      "known": "I'd like a large",
+      "knownSentence": "I'd like large, please.",
+      "why": "\"I'd like a large\" is not said word for word in \"I'd like large, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S004:s0",
+      "line": 0,
+      "lego": null,
+      "target": "bitte",
+      "known": "please",
+      "knownSentence": "I'd like large, please.",
+      "why": "\"I'd like a large\" is not said word for word in \"I'd like large, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S005:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Möchten Sie hier sitzen",
+      "known": "would you like to sit here",
+      "knownSentence": "Would you like to sit-in or takeaway?",
+      "why": "\"would you like to sit here\" is not said word for word in \"Would you like to sit-in or takeaway?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S005:s1",
+      "line": 0,
+      "lego": null,
+      "target": "oder zum Mitnehmen",
+      "known": "or to take away?",
+      "knownSentence": "Would you like to sit-in or takeaway?",
+      "why": "\"would you like to sit here\" is not said word for word in \"Would you like to sit-in or takeaway?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S006",
+      "line": 0,
+      "lego": null,
+      "target": "Ich möchte es zum Mitnehmen",
+      "known": "I'd like it to-the taking-along,",
+      "knownSentence": "I'd like takeaway, please.",
+      "why": "\"I'd like it to-the taking-along,\" is not said word for word in \"I'd like takeaway, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S006",
+      "line": 0,
+      "lego": null,
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "I'd like takeaway, please.",
+      "why": "\"I'd like it to-the taking-along,\" is not said word for word in \"I'd like takeaway, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S007",
+      "line": 0,
+      "lego": "s34-kann-ich-zwei-kaffee-mit-milch",
+      "target": "Kann ich zwei Kaffee mit Milch",
+      "known": "can I two coffees with milk",
+      "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+      "why": "\"can I two coffees with milk\" is not said word for word in \"Could I have two white coffees and two black coffees and one of those, please?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S007",
+      "line": 0,
+      "lego": "s34-und-zwei-schwarze-kaffee",
+      "target": "und zwei schwarze Kaffee",
+      "known": "and two black coffees",
+      "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+      "why": "\"can I two coffees with milk\" is not said word for word in \"Could I have two white coffees and two black coffees and one of those, please?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S007",
+      "line": 0,
+      "lego": "s34-und-eines-davon-haben",
+      "target": "und eines davon haben",
+      "known": "and one of those have,",
+      "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+      "why": "\"can I two coffees with milk\" is not said word for word in \"Could I have two white coffees and two black coffees and one of those, please?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S007",
+      "line": 0,
+      "lego": "s34-bitte",
+      "target": "bitte",
+      "known": "please?",
+      "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+      "why": "\"can I two coffees with milk\" is not said word for word in \"Could I have two white coffees and two black coffees and one of those, please?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-ja",
+      "target": "Ja",
+      "known": "yes,",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-kann-ich-auch",
+      "target": "kann ich auch",
+      "known": "can I also",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-ein-glas-wasser-haben",
+      "target": "ein Glas Wasser haben",
+      "known": "have a glass of water,",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-bitte",
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S011:s0",
+      "line": 0,
+      "lego": "s38-kann-ich",
+      "target": "Kann ich",
+      "known": "can I",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S011:s0",
+      "line": 0,
+      "lego": "s38-mit-karte",
+      "target": "mit Karte",
+      "known": "by card",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S011:s0",
+      "line": 0,
+      "lego": "s38-bezahlen",
+      "target": "bezahlen",
+      "known": "pay?",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S012:s1",
+      "line": 0,
+      "lego": "s39-das-gerät",
+      "target": "Das Gerät",
+      "known": "the machine",
+      "knownSentence": "There's the machine.",
+      "why": "\"is here\" is not said word for word in \"There's the machine.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S012:s1",
+      "line": 0,
+      "lego": "s39-ist-hier",
+      "target": "ist hier",
+      "known": "is here",
+      "knownSentence": "There's the machine.",
+      "why": "\"is here\" is not said word for word in \"There's the machine.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S013:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Zwei Americanos und einen Tee",
+      "known": "",
+      "knownSentence": "Two Americanos and a cup of tea, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S013:s1",
+      "line": 0,
+      "lego": null,
+      "target": "bitte",
+      "known": "",
+      "knownSentence": "Two Americanos and a cup of tea, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S014:s0",
+      "line": 0,
+      "lego": "s41-möchten-sie",
+      "target": "Möchten Sie",
+      "known": "would you like",
+      "knownSentence": "Would you like to sit-in?",
+      "why": "\"to sit here?\" is not said word for word in \"Would you like to sit-in?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S014:s0",
+      "line": 0,
+      "lego": "s41-hier-sitzen",
+      "target": "hier sitzen",
+      "known": "to sit here?",
+      "knownSentence": "Would you like to sit-in?",
+      "why": "\"to sit here?\" is not said word for word in \"Would you like to sit-in?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S002:s1",
+      "line": 0,
+      "lego": "s44-was-für-biere",
+      "target": "Was für Biere",
+      "known": "what kind of beers",
+      "knownSentence": "What ales do you have on?",
+      "why": "\"what kind of beers\" is not said word for word in \"What ales do you have on?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S002:s1",
+      "line": 0,
+      "lego": "s44-haben-sie-vom-fass",
+      "target": "haben Sie vom Fass",
+      "known": "do you have on tap",
+      "knownSentence": "What ales do you have on?",
+      "why": "\"what kind of beers\" is not said word for word in \"What ales do you have on?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Wir haben ein Bitter",
+      "known": "",
+      "knownSentence": "We've got a bitter and a stout, and they're both local.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S003",
+      "line": 0,
+      "lego": null,
+      "target": "und ein Stout",
+      "known": "",
+      "knownSentence": "We've got a bitter and a stout, and they're both local.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S003",
+      "line": 0,
+      "lego": null,
+      "target": "und beide sind lokal",
+      "known": "and they're both local.",
+      "knownSentence": "We've got a bitter and a stout, and they're both local.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S005",
+      "line": 0,
+      "lego": "s47-kann-ich",
+      "target": "Kann ich",
+      "known": "can I",
+      "knownSentence": "Can I have a half of cider?",
+      "why": "\"a half pint of cider have?\" is not said word for word in \"Can I have a half of cider?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S005",
+      "line": 0,
+      "lego": "s47-ein-halbes-pint-cider-haben",
+      "target": "ein halbes Pint Cider haben",
+      "known": "a half pint of cider have?",
+      "knownSentence": "Can I have a half of cider?",
+      "why": "\"a half pint of cider have?\" is not said word for word in \"Can I have a half of cider?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S006:s1",
+      "line": 0,
+      "lego": "s48-ich-möchte",
+      "target": "Ich möchte",
+      "known": "I'd like",
+      "knownSentence": "I want a glass of wine.",
+      "why": "\"I'd like\" is not said word for word in \"I want a glass of wine.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S006:s1",
+      "line": 0,
+      "lego": "s48-ein-glas-wein",
+      "target": "ein Glas Wein",
+      "known": "a glass of wine",
+      "knownSentence": "I want a glass of wine.",
+      "why": "\"I'd like\" is not said word for word in \"I want a glass of wine.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-wir-haben-einen-hauswein-rot",
+      "target": "Wir haben einen Hauswein rot",
+      "known": "we have a house red,",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"one of our bottles have.\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-einen-hauswein-weiß",
+      "target": "einen Hauswein weiß",
+      "known": "a house white,",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"one of our bottles have.\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-oder-sie-könnten",
+      "target": "oder Sie könnten",
+      "known": "or you could",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"one of our bottles have.\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-eine-unserer-flaschen-nehmen",
+      "target": "eine unserer Flaschen nehmen",
+      "known": "one of our bottles have.",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"one of our bottles have.\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Kann ich ein kleines",
+      "known": "",
+      "knownSentence": "Can I have a small glass of red wine?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Glas Rotwein haben",
+      "known": "",
+      "knownSentence": "Can I have a small glass of red wine?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S011",
+      "line": 0,
+      "lego": "s53-essen-sie",
+      "target": "Essen Sie",
+      "known": "are you eating",
+      "knownSentence": "Are you eating tonight?",
+      "why": "\"here?\" is not said word for word in \"Are you eating tonight?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S011",
+      "line": 0,
+      "lego": "s53-heute-abend",
+      "target": "heute Abend",
+      "known": "tonight",
+      "knownSentence": "Are you eating tonight?",
+      "why": "\"here?\" is not said word for word in \"Are you eating tonight?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S011",
+      "line": 0,
+      "lego": "s53-hier",
+      "target": "hier",
+      "known": "here?",
+      "knownSentence": "Are you eating tonight?",
+      "why": "\"here?\" is not said word for word in \"Are you eating tonight?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S014:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Und eine Portion",
+      "known": "",
+      "knownSentence": "And a bowl of chips for the table.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S014:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Pommes für den Tisch",
+      "known": "",
+      "knownSentence": "And a bowl of chips for the table.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S004",
+      "line": 0,
+      "lego": "s62-wir-hätten-gerne",
+      "target": "Wir hätten gerne",
+      "known": "we would like",
+      "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "why": "\"we would like\" is not said word for word in \"We'd like one bottle of sparkling water and one bottle of still water, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S004",
+      "line": 0,
+      "lego": "s62-eine-flasche-sprudelwasser",
+      "target": "eine Flasche Sprudelwasser",
+      "known": "one bottle of sparkling water",
+      "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "why": "\"we would like\" is not said word for word in \"We'd like one bottle of sparkling water and one bottle of still water, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S004",
+      "line": 0,
+      "lego": "s62-und-eine-flasche-stilles-wasser",
+      "target": "und eine Flasche stilles Wasser",
+      "known": "and one bottle of still water",
+      "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "why": "\"we would like\" is not said word for word in \"We'd like one bottle of sparkling water and one bottle of still water, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S004",
+      "line": 0,
+      "lego": "s62-bitte",
+      "target": "bitte",
+      "known": "please",
+      "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+      "why": "\"we would like\" is not said word for word in \"We'd like one bottle of sparkling water and one bottle of still water, please.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S007",
+      "line": 0,
+      "lego": "s65-und-was-würden-sie",
+      "target": "Und was würden Sie",
+      "known": "And what would you",
+      "knownSentence": "And what would you recommend tonight?",
+      "why": "\"recommend this evening?\" is not said word for word in \"And what would you recommend tonight?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S007",
+      "line": 0,
+      "lego": "s65-heute-abend-empfehlen",
+      "target": "heute Abend empfehlen",
+      "known": "recommend this evening?",
+      "knownSentence": "And what would you recommend tonight?",
+      "why": "\"recommend this evening?\" is not said word for word in \"And what would you recommend tonight?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-natürlich",
+      "target": "Natürlich",
+      "known": "of course.",
+      "knownSentence": "Of course.",
+      "why": "\"and what would you like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-und-was-möchten-sie-trinken",
+      "target": "Und was möchten Sie trinken",
+      "known": "and what would you like to drink?",
+      "knownSentence": "Of course.",
+      "why": "\"and what would you like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": null,
+      "target": "Eine Flasche vom Hauswein",
+      "known": "a bottle of the house wine,",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"a bottle of the house wine,\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": null,
+      "target": "Rotwein, wäre schön",
+      "known": "",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"a bottle of the house wine,\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S017:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Und die Rechnung",
+      "known": "",
+      "knownSentence": "And the bill, when you're ready.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S017:s0",
+      "line": 0,
+      "lego": null,
+      "target": "wenn Sie so weit sind",
+      "known": "",
+      "knownSentence": "And the bill, when you're ready.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S001:s0",
+      "line": 0,
+      "lego": "s77-entschuldigung",
+      "target": "Entschuldigung",
+      "known": "Excuse me.",
+      "knownSentence": "Excuse me.",
+      "why": "\"do you have\" is not said word for word in \"Excuse me.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S001:s0",
+      "line": 0,
+      "lego": "s77-haben-sie",
+      "target": "Haben Sie",
+      "known": "do you have",
+      "knownSentence": "Excuse me.",
+      "why": "\"do you have\" is not said word for word in \"Excuse me.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S001:s0",
+      "line": 0,
+      "lego": "s77-schmerzmittel",
+      "target": "Schmerzmittel",
+      "known": "any painkillers?",
+      "knownSentence": "Excuse me.",
+      "why": "\"do you have\" is not said word for word in \"Excuse me.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Ja, die sind dort in dem Gang",
+      "known": "",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": null,
+      "target": "auf der linken Seite",
+      "known": "on the left side",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-danke",
+      "target": "Danke",
+      "known": "Thank you.",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-und-haben-sie",
+      "target": "Und haben Sie",
+      "known": "And do you have",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-auch-schmerzmittel",
+      "target": "auch Schmerzmittel",
+      "known": "also painkillers",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-für-kinder",
+      "target": "für Kinder",
+      "known": "for children?",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": "s80-ich-glaube-schon",
+      "target": "Ich glaube schon",
+      "known": "I think so,",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"but you have to look,\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": "s80-aber-sie-müssen-nachschauen",
+      "target": "aber Sie müssen nachschauen",
+      "known": "but you have to look,",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"but you have to look,\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": "s80-um-sicherzugehen",
+      "target": "um sicherzugehen",
+      "known": "to make sure.",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"but you have to look,\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S005",
+      "line": 0,
+      "lego": "s81-ich-brauche-auch",
+      "target": "Ich brauche auch",
+      "known": "I also need",
+      "knownSentence": "I also need to get some sunscreen and some toothpaste.",
+      "why": "\"and toothpaste\" is not said word for word in \"I also need to get some sunscreen and some toothpaste.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S005",
+      "line": 0,
+      "lego": "s81-sonnencreme",
+      "target": "Sonnencreme",
+      "known": "sunscreen",
+      "knownSentence": "I also need to get some sunscreen and some toothpaste.",
+      "why": "\"and toothpaste\" is not said word for word in \"I also need to get some sunscreen and some toothpaste.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S005",
+      "line": 0,
+      "lego": "s81-und-zahnpasta",
+      "target": "und Zahnpasta",
+      "known": "and toothpaste",
+      "knownSentence": "I also need to get some sunscreen and some toothpaste.",
+      "why": "\"and toothpaste\" is not said word for word in \"I also need to get some sunscreen and some toothpaste.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-sonnencreme-ist-dort-hinten",
+      "target": "Sonnencreme ist dort hinten",
+      "known": "sunscreen is down there",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"on your right side\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-auf-ihrer-rechten-seite",
+      "target": "auf Ihrer rechten Seite",
+      "known": "on your right side",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"on your right side\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-und-zahnpasta-finden-sie",
+      "target": "und Zahnpasta finden Sie",
+      "known": "and toothpaste you'll find",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"on your right side\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-gleich-um-die-ecke",
+      "target": "gleich um die Ecke",
+      "known": "just round the corner",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"on your right side\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Danke",
+      "known": "thank you",
+      "knownSentence": "Thank you, you've been very helpful.",
+      "why": "\"you were very helpful\" is not said word for word in \"Thank you, you've been very helpful.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Sie waren sehr hilfreich",
+      "known": "you were very helpful",
+      "knownSentence": "Thank you, you've been very helpful.",
+      "why": "\"you were very helpful\" is not said word for word in \"Thank you, you've been very helpful.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s0",
+      "line": 0,
+      "lego": "s85-das-ist-sehr-nett",
+      "target": "Das ist sehr nett",
+      "known": "that is very kind",
+      "knownSentence": "That's very kind of you!",
+      "why": "\"that is very kind\" is not said word for word in \"That's very kind of you!\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s0",
+      "line": 0,
+      "lego": "s85-von-ihnen",
+      "target": "von Ihnen",
+      "known": "of you!",
+      "knownSentence": "That's very kind of you!",
+      "why": "\"that is very kind\" is not said word for word in \"That's very kind of you!\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Ja, ich bin im Urlaub",
+      "known": "",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak German better.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": null,
+      "target": "und ich muss mehr üben",
+      "known": "and I have to practise more,",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak German better.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": null,
+      "target": "um besser Deutsch zu sprechen",
+      "known": "in order to speak German better.",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak German better.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S009",
+      "line": 1,
+      "lego": null,
+      "target": "Ist es möglich",
+      "known": "Is it possible,",
+      "knownSentence": "Is it possible for us to have a late check-out?",
+      "why": "\"that we check out late?\" is not said word for word in \"Is it possible for us to have a late check-out?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S009",
+      "line": 1,
+      "lego": null,
+      "target": "dass wir spät auschecken",
+      "known": "that we check out late?",
+      "knownSentence": "Is it possible for us to have a late check-out?",
+      "why": "\"that we check out late?\" is not said word for word in \"Is it possible for us to have a late check-out?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "\"without extra charge\" is not said word for word in \"Yes, you can stay until midday, no extra charge.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Sie können bis Mittag bleiben",
+      "known": "you can stay until midday",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "\"without extra charge\" is not said word for word in \"Yes, you can stay until midday, no extra charge.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": null,
+      "target": "ohne Aufpreis",
+      "known": "without extra charge",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "\"without extra charge\" is not said word for word in \"Yes, you can stay until midday, no extra charge.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S012:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Das steht auf der Willkommenskarte",
+      "known": "",
+      "knownSentence": "It's on the welcome card in your room.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S012:s0",
+      "line": 0,
+      "lego": null,
+      "target": "in Ihrem Zimmer",
+      "known": "",
+      "knownSentence": "It's on the welcome card in your room.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-natürlich",
+      "target": "Natürlich",
+      "known": "Of course.",
+      "knownSentence": "Of course.",
+      "why": "\"What are\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-was-sind",
+      "target": "Was sind",
+      "known": "What are",
+      "knownSentence": "Of course.",
+      "why": "\"What are\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-ihre-symptome",
+      "target": "Ihre Symptome",
+      "known": "your symptoms?",
+      "knownSentence": "Of course.",
+      "why": "\"What are\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Ich habe seit gestern",
+      "known": "",
+      "knownSentence": "I've had a headache and a sore throat since yesterday.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Kopfschmerzen und Halsschmerzen",
+      "known": "",
+      "knownSentence": "I've had a headache and a sore throat since yesterday.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Versuchen Sie Paracetamol gegen die Kopfschmerzen",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "und diese Lutschtabletten für den Hals",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S008",
+      "line": 0,
+      "lego": "s107-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, with or after food is best.",
+      "why": "\"with or after the meal\" is not said word for word in \"Yes, with or after food is best.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S008",
+      "line": 0,
+      "lego": "s107-mit-oder-nach-dem-essen",
+      "target": "mit oder nach dem Essen",
+      "known": "with or after the meal",
+      "knownSentence": "Yes, with or after food is best.",
+      "why": "\"with or after the meal\" is not said word for word in \"Yes, with or after food is best.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S008",
+      "line": 0,
+      "lego": "s107-ist-am-besten",
+      "target": "ist am besten",
+      "known": "is best",
+      "knownSentence": "Yes, with or after food is best.",
+      "why": "\"with or after the meal\" is not said word for word in \"Yes, with or after food is best.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-danke",
+      "target": "Danke",
+      "known": "Thank you.",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-könnte-ich",
+      "target": "Könnte ich",
+      "known": "Could I",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-auch-noch",
+      "target": "auch noch",
+      "known": "also",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-ein-pflaster-set-bekommen",
+      "target": "ein Pflaster-Set bekommen",
+      "known": "get a packet of plasters?",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": null,
+      "target": "Entschuldigung",
+      "known": "excuse me",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": null,
+      "target": "wissen Sie, wie man",
+      "known": "",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": null,
+      "target": "zum nächsten Supermarkt kommt",
+      "known": "to the nearest supermarket",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-es-sind-etwa-zehn-minuten",
+      "target": "es sind etwa zehn Minuten",
+      "known": "it's about ten minutes",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-zu-fuß",
+      "target": "zu Fuß",
+      "known": "on foot",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S002:s1",
+      "line": 0,
+      "lego": "s111-gehen-sie-diese-straße",
+      "target": "Gehen Sie diese Straße",
+      "known": "go along this road",
+      "knownSentence": "Go straight along this road.",
+      "why": "\"go along this road\" is not said word for word in \"Go straight along this road.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S002:s1",
+      "line": 0,
+      "lego": "s111-geradeaus",
+      "target": "geradeaus",
+      "known": "straight ahead",
+      "knownSentence": "Go straight along this road.",
+      "why": "\"go along this road\" is not said word for word in \"Go straight along this road.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "\"past the post office\" is not said word for word in \"Yes, past the church and the post office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-an-der-kirche",
+      "target": "an der Kirche",
+      "known": "past the church",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "\"past the post office\" is not said word for word in \"Yes, past the church and the post office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-und",
+      "target": "und",
+      "known": "and",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "\"past the post office\" is not said word for word in \"Yes, past the church and the post office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-am-postamt-vorbei",
+      "target": "am Postamt vorbei",
+      "known": "past the post office",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "\"past the post office\" is not said word for word in \"Yes, past the church and the post office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": "s114-an-dem-zweiten-kreisverkehr",
+      "target": "An dem zweiten Kreisverkehr",
+      "known": "At the second roundabout,",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "\"take you\" is not said word for word in \"At the second roundabout, take the first exit.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": "s114-nehmen-sie",
+      "target": "nehmen Sie",
+      "known": "take you",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "\"take you\" is not said word for word in \"At the second roundabout, take the first exit.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": "s114-die-erste-ausfahrt",
+      "target": "die erste Ausfahrt",
+      "known": "the first exit.",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "\"take you\" is not said word for word in \"At the second roundabout, take the first exit.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-sie-sehen-den-supermarkt",
+      "target": "Sie sehen den Supermarkt",
+      "known": "you'll see the supermarket",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "\"on the left side,\" is not said word for word in \"You'll see the supermarket on your left, just opposite the bus stop.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-auf-der-linken-seite",
+      "target": "auf der linken Seite",
+      "known": "on the left side,",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "\"on the left side,\" is not said word for word in \"You'll see the supermarket on your left, just opposite the bus stop.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-genau-gegenüber-der-bushaltestelle",
+      "target": "genau gegenüber der Bushaltestelle",
+      "known": "just opposite the bus stop.",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "\"on the left side,\" is not said word for word in \"You'll see the supermarket on your left, just opposite the bus stop.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": null,
+      "target": "es gibt einen in der Hauptstraße",
+      "known": "",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": null,
+      "target": "neben der Bäckerei",
+      "known": "next to the bakery",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-hallo",
+      "target": "Hallo",
+      "known": "Hello.",
+      "knownSentence": "Hello.",
+      "why": "\"Can you please\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-können-sie-mich-bitte",
+      "target": "Können Sie mich bitte",
+      "known": "Can you please",
+      "knownSentence": "Hello.",
+      "why": "\"Can you please\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-zum-bahnhof-fahren",
+      "target": "zum Bahnhof fahren",
+      "known": "take me to the train station?",
+      "knownSentence": "Hello.",
+      "why": "\"Can you please\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": "s123-wie-lange-wird-es",
+      "target": "Wie lange wird es",
+      "known": "how long will it",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"how long will it\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": "s123-ihrer-meinung-nach",
+      "target": "Ihrer Meinung nach",
+      "known": "in your opinion",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"how long will it\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": "s123-ungefähr-dauern",
+      "target": "ungefähr dauern",
+      "known": "approximately take?",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"how long will it\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-vielleicht-ungefähr-zwanzig-minuten",
+      "target": "Vielleicht ungefähr zwanzig Minuten",
+      "known": "perhaps about twenty minutes,",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "\"if we with the traffic lights\" is not said word for word in \"Perhaps about twenty minutes, if we're not unlucky with the traffic lights.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-wenn-wir-mit-den-ampeln",
+      "target": "wenn wir mit den Ampeln",
+      "known": "if we with the traffic lights",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "\"if we with the traffic lights\" is not said word for word in \"Perhaps about twenty minutes, if we're not unlucky with the traffic lights.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-kein-pech-haben",
+      "target": "kein Pech haben",
+      "known": "have no bad luck.",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "\"if we with the traffic lights\" is not said word for word in \"Perhaps about twenty minutes, if we're not unlucky with the traffic lights.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-wissen-sie",
+      "target": "Wissen Sie",
+      "known": "Do you know,",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"where I in the station\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-wo-ich-im-bahnhof",
+      "target": "wo ich im Bahnhof",
+      "known": "where I in the station",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"where I in the station\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-eine-fahrkarte-kaufen-kann",
+      "target": "eine Fahrkarte kaufen kann",
+      "known": "can buy a ticket?",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"where I in the station\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "\"I'll drop you off\" is not said word for word in \"Yes, I'll drop you right by the ticket office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-ich-setze-sie-direkt-am-fahrkartenschalter-ab",
+      "target": "ich setze Sie direkt am Fahrkartenschalter ab",
+      "known": "I'll drop you off",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "\"I'll drop you off\" is not said word for word in \"Yes, I'll drop you right by the ticket office.\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S008",
+      "line": 0,
+      "lego": "s128-kann-ich",
+      "target": "Kann ich",
+      "known": "can I",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S008",
+      "line": 0,
+      "lego": "s128-mit-karte",
+      "target": "mit Karte",
+      "known": "by card",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S008",
+      "line": 0,
+      "lego": "s128-bezahlen",
+      "target": "bezahlen",
+      "known": "pay?",
+      "knownSentence": "Could I pay by card?",
+      "why": "\"can I\" is not said word for word in \"Could I pay by card?\""
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Können Sie mir sagen",
+      "known": "",
+      "knownSentence": "Can you tell me how much that is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S002",
+      "line": 0,
+      "lego": null,
+      "target": "wie viel das kostet",
+      "known": "",
+      "knownSentence": "Can you tell me how much that is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Wie viel kostet",
+      "known": "",
+      "knownSentence": "How much does it cost to get a bus into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S004",
+      "line": 0,
+      "lego": null,
+      "target": "der Bus in die Stadt",
+      "known": "",
+      "knownSentence": "How much does it cost to get a bus into town?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Ich versuche lieber",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "deine Sprache zu sprechen",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "ich finde das höflich",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Es tut mir leid",
+      "known": "",
+      "knownSentence": "I'm sorry I can't speak very quickly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC15-S010",
+      "line": 0,
+      "lego": null,
+      "target": "ich kann nicht sehr schnell sprechen",
+      "known": "",
+      "knownSentence": "I'm sorry I can't speak very quickly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC16-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Es tut mir leid",
+      "known": "",
+      "knownSentence": "I'm sorry, I don't have any cash.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC16-S010",
+      "line": 0,
+      "lego": null,
+      "target": "ich habe kein Bargeld",
+      "known": "",
+      "knownSentence": "I'm sorry, I don't have any cash.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC17-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Wollen Sie bar, mit Karte",
+      "known": "",
+      "knownSentence": "Do you want to pay by cash or card or put it on the room?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC17-S002",
+      "line": 0,
+      "lego": null,
+      "target": "oder auf das Zimmer zahlen",
+      "known": "",
+      "knownSentence": "Do you want to pay by cash or card or put it on the room?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC19-S008",
+      "line": 0,
+      "lego": null,
+      "target": "Ich verspreche",
+      "known": "",
+      "knownSentence": "I promise I won't be late.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC19-S008",
+      "line": 0,
+      "lego": null,
+      "target": "ich komme nicht zu spät",
+      "known": "",
+      "knownSentence": "I promise I won't be late.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC19-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Ich verspreche",
+      "known": "",
+      "knownSentence": "I promise we won't be late.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC19-S009",
+      "line": 0,
+      "lego": null,
+      "target": "wir kommen nicht zu spät",
+      "known": "",
+      "knownSentence": "I promise we won't be late.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC20-S006",
+      "line": 0,
+      "lego": null,
+      "target": "Danke",
+      "known": "",
+      "knownSentence": "Thank you for helping me.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC20-S006",
+      "line": 0,
+      "lego": null,
+      "target": "dass du mir geholfen hast",
+      "known": "",
+      "knownSentence": "Thank you for helping me.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC20-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Danke",
+      "known": "",
+      "knownSentence": "Thank you for being so friendly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC20-S010",
+      "line": 0,
+      "lego": null,
+      "target": "dass du so freundlich bist",
+      "known": "",
+      "knownSentence": "Thank you for being so friendly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S001",
+      "line": 0,
+      "lego": null,
+      "target": "Es klingt",
+      "known": "",
+      "knownSentence": "It sounds as though we need to leave soon.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S001",
+      "line": 0,
+      "lego": null,
+      "target": "als müssten wir bald los",
+      "known": "",
+      "knownSentence": "It sounds as though we need to leave soon.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Es klingt, als ob du nicht willst",
+      "known": "",
+      "knownSentence": "It sounds as though you want us not to do that.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S002",
+      "line": 0,
+      "lego": null,
+      "target": "dass wir das machen",
+      "known": "",
+      "knownSentence": "It sounds as though you want us not to do that.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Können Sie mir sagen",
+      "known": "",
+      "knownSentence": "Can you tell me where the toilet is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S004",
+      "line": 0,
+      "lego": null,
+      "target": "wo die Toilette ist",
+      "known": "",
+      "knownSentence": "Can you tell me where the toilet is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S007",
+      "line": 0,
+      "lego": null,
+      "target": "Können Sie das noch",
+      "known": "",
+      "knownSentence": "Can you say that again?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S007",
+      "line": 0,
+      "lego": null,
+      "target": "einmal sagen",
+      "known": "",
+      "knownSentence": "Can you say that again?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S008",
+      "line": 0,
+      "lego": null,
+      "target": "Ja, ich habe gesagt",
+      "known": "",
+      "knownSentence": "Yes, I said it's over there.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S008",
+      "line": 0,
+      "lego": null,
+      "target": "sie ist da drüben",
+      "known": "",
+      "knownSentence": "Yes, I said it's over there.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S011",
+      "line": 0,
+      "lego": null,
+      "target": "Möchten Sie etwas",
+      "known": "",
+      "knownSentence": "Would you like to order some drinks?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S011",
+      "line": 0,
+      "lego": null,
+      "target": "zu trinken bestellen",
+      "known": "",
+      "knownSentence": "Would you like to order some drinks?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S013",
+      "line": 0,
+      "lego": null,
+      "target": "Wollten Sie zuerst",
+      "known": "",
+      "knownSentence": "Did you want something to drink first?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC21-S013",
+      "line": 0,
+      "lego": null,
+      "target": "etwas zu trinken",
+      "known": "",
+      "knownSentence": "Did you want something to drink first?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Du scheinst es sehr gut",
+      "known": "",
+      "knownSentence": "You seem to speak it very well.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "zu sprechen",
+      "known": "",
+      "knownSentence": "You seem to speak it very well.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Danke",
+      "known": "",
+      "knownSentence": "Thank you, that's good to know.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "das ist gut zu wissen",
+      "known": "",
+      "knownSentence": "Thank you, that's good to know.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Ich muss mehr Wörter lernen",
+      "known": "",
+      "knownSentence": "I need to learn more words, and I need to practise listening.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s1",
+      "line": 0,
+      "lego": null,
+      "target": "und ich muss das Zuhören üben",
+      "known": "",
+      "knownSentence": "I need to learn more words, and I need to practise listening.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s2",
+      "line": 0,
+      "lego": null,
+      "target": "Ich verstehe die Leute nicht sehr gut",
+      "known": "",
+      "knownSentence": "I don't understand people very well when they don't speak slowly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S003:s2",
+      "line": 0,
+      "lego": null,
+      "target": "wenn sie nicht langsam sprechen",
+      "known": "",
+      "knownSentence": "I don't understand people very well when they don't speak slowly.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S006",
+      "line": 0,
+      "lego": null,
+      "target": "Ich finde",
+      "known": "",
+      "knownSentence": "I think you're doing very well.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S006",
+      "line": 0,
+      "lego": null,
+      "target": "du machst das sehr gut",
+      "known": "",
+      "knownSentence": "I think you're doing very well.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S006",
+      "line": 2,
+      "lego": null,
+      "target": "Ich denke, du bist bereit",
+      "known": "",
+      "knownSentence": "I think you're ready to start speaking German to anyone who speaks German.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S006",
+      "line": 2,
+      "lego": null,
+      "target": "mit jedem Deutsch zu sprechen",
+      "known": "",
+      "knownSentence": "I think you're ready to start speaking German to anyone who speaks German.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S006",
+      "line": 2,
+      "lego": null,
+      "target": "der Deutsch spricht",
+      "known": "",
+      "knownSentence": "I think you're ready to start speaking German to anyone who speaks German.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S009:s2",
+      "line": 0,
+      "lego": null,
+      "target": "Ich schätze deine Hilfe",
+      "known": "",
+      "knownSentence": "I really appreciate your help.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S009:s2",
+      "line": 0,
+      "lego": null,
+      "target": "wirklich sehr",
+      "known": "",
+      "knownSentence": "I really appreciate your help.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S010:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Eine neue Sprache",
+      "known": "",
+      "knownSentence": "Learning a new language is difficult.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S010:s1",
+      "line": 0,
+      "lego": null,
+      "target": "zu lernen ist schwierig",
+      "known": "",
+      "knownSentence": "Learning a new language is difficult.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S010:s2",
+      "line": 0,
+      "lego": null,
+      "target": "Aber es macht so viel Spaß",
+      "known": "",
+      "knownSentence": "But it's so much fun when you start to have conversations, isn't it?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S010:s2",
+      "line": 0,
+      "lego": null,
+      "target": "wenn man anfängt",
+      "known": "",
+      "knownSentence": "But it's so much fun when you start to have conversations, isn't it?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S010:s2",
+      "line": 0,
+      "lego": null,
+      "target": "Gespräche zu führen, nicht wahr",
+      "known": "",
+      "knownSentence": "But it's so much fun when you start to have conversations, isn't it?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S011:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Ich bin wirklich froh",
+      "known": "",
+      "knownSentence": "I'm really happy that I can have this much of a conversation.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S011:s1",
+      "line": 0,
+      "lego": null,
+      "target": "dass ich so viel",
+      "known": "",
+      "knownSentence": "I'm really happy that I can have this much of a conversation.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC22-S011:s1",
+      "line": 0,
+      "lego": null,
+      "target": "von einem Gespräch führen kann",
+      "known": "",
+      "knownSentence": "I'm really happy that I can have this much of a conversation.",
+      "why": "piece has no known text"
+    }
+  ],
+  "playsWhole": [
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S003:s1",
+      "line": 0,
+      "lego": "s3-gehst-du",
+      "target": "Gehst du",
+      "known": "are you going",
+      "knownSentence": "Are you going to work?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC01-S003:s1",
+      "line": 0,
+      "lego": "s3-zur-arbeit",
+      "target": "zur Arbeit",
+      "known": "to work?",
+      "knownSentence": "Are you going to work?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S001:s1",
+      "line": 0,
+      "lego": "s7-was-kann-ich",
+      "target": "Was kann ich",
+      "known": "what can I",
+      "knownSentence": "What can I get you?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC03-S001:s1",
+      "line": 0,
+      "lego": "s7-ihnen-bringen",
+      "target": "Ihnen bringen",
+      "known": "get you?",
+      "knownSentence": "What can I get you?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-hallo",
+      "target": "Hallo",
+      "known": "hello",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-guten-abend",
+      "target": "guten Abend",
+      "known": "good evening",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S002:s0",
+      "line": 0,
+      "lego": "s14-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, very.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC05-S002:s0",
+      "line": 0,
+      "lego": "s14-sehr",
+      "target": "sehr",
+      "known": "very",
+      "knownSentence": "Yes, very.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S010:s0",
+      "line": 0,
+      "lego": "s24-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC06-S010:s0",
+      "line": 0,
+      "lego": "s24-natürlich",
+      "target": "natürlich",
+      "known": "of course",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S008:s1",
+      "line": 0,
+      "lego": "s35-möchten-sie",
+      "target": "Möchten Sie",
+      "known": "Would you like",
+      "knownSentence": "Would you like anything else?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S008:s1",
+      "line": 0,
+      "lego": "s35-noch-etwas",
+      "target": "noch etwas",
+      "known": "anything else?",
+      "knownSentence": "Would you like anything else?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S011:s1",
+      "line": 0,
+      "lego": "s38-haben-sie",
+      "target": "Haben Sie",
+      "known": "do you have",
+      "knownSentence": "Do you have contactless?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S011:s1",
+      "line": 0,
+      "lego": "s38-kontaktlos",
+      "target": "Kontaktlos",
+      "known": "contactless?",
+      "knownSentence": "Do you have contactless?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S014:s1",
+      "line": 0,
+      "lego": "s41-der-tisch-am-fenster",
+      "target": "Der Tisch am Fenster",
+      "known": "the table by the window",
+      "knownSentence": "The table by the window is free.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC07-S014:s1",
+      "line": 0,
+      "lego": "s41-ist-frei",
+      "target": "ist frei",
+      "known": "is free.",
+      "knownSentence": "The table by the window is free.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S001:s1",
+      "line": 0,
+      "lego": "s43-was-kann-ich",
+      "target": "Was kann ich",
+      "known": "What can I",
+      "knownSentence": "What can I get you?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S001:s1",
+      "line": 0,
+      "lego": "s43-ihnen-bringen",
+      "target": "Ihnen bringen",
+      "known": "get you?",
+      "knownSentence": "What can I get you?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S002:s0",
+      "line": 0,
+      "lego": "s44-ich-möchte-ein-pint",
+      "target": "Ich möchte ein Pint",
+      "known": "I'd like a pint",
+      "knownSentence": "I'd like a pint, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S002:s0",
+      "line": 0,
+      "lego": "s44-bitte",
+      "target": "bitte",
+      "known": "please",
+      "knownSentence": "I'd like a pint, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S006:s0",
+      "line": 0,
+      "lego": "s48-könnte-ich",
+      "target": "Könnte ich",
+      "known": "could I",
+      "knownSentence": "Could I see the wine list?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S006:s0",
+      "line": 0,
+      "lego": "s48-die-weinkarte-sehen",
+      "target": "die Weinkarte sehen",
+      "known": "see the wine list",
+      "knownSentence": "Could I see the wine list?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S012:s1",
+      "line": 0,
+      "lego": "s54-haben-sie",
+      "target": "Haben Sie",
+      "known": "do you have",
+      "knownSentence": "Do you have a menu?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S012:s1",
+      "line": 0,
+      "lego": "s54-eine-speisekarte",
+      "target": "eine Speisekarte",
+      "known": "a menu",
+      "knownSentence": "Do you have a menu?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S013:s0",
+      "line": 0,
+      "lego": "s55-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S013:s0",
+      "line": 0,
+      "lego": "s55-natürlich",
+      "target": "natürlich",
+      "known": "of course",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S013:s2",
+      "line": 0,
+      "lego": "s55-die-fish-and-chips",
+      "target": "Die Fish and Chips",
+      "known": "the fish and chips",
+      "knownSentence": "The fish and chips are very good.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S013:s2",
+      "line": 0,
+      "lego": "s55-sind-sehr-gut",
+      "target": "sind sehr gut",
+      "known": "are very good",
+      "knownSentence": "The fish and chips are very good.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S015:s1",
+      "line": 0,
+      "lego": "s57-ich-möchte-ein-käsesandwich",
+      "target": "Ich möchte ein Käsesandwich",
+      "known": "I'd like a cheese sandwich,",
+      "knownSentence": "I'd like a cheese sandwich, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC08-S015:s1",
+      "line": 0,
+      "lego": "s57-bitte",
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "I'd like a cheese sandwich, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S005",
+      "line": 0,
+      "lego": "s63-entschuldigung",
+      "target": "Entschuldigung",
+      "known": "excuse me",
+      "knownSentence": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "why": "Drill plays this card whole; its target side would not cut: drills inside a group that plays another clip (glued or whole-turn)"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S005",
+      "line": 0,
+      "lego": "s63-haben-sie-etwas-glutenfreies",
+      "target": "haben Sie etwas Glutenfreies",
+      "known": "do you have anything gluten-free?",
+      "knownSentence": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "why": "Drill plays this card whole; its target side would not cut: drills inside a group that plays another clip (glued or whole-turn)"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S005",
+      "line": 0,
+      "lego": "s63-oder-für-vegetarier",
+      "target": "Oder für Vegetarier",
+      "known": "or for vegetarians?",
+      "knownSentence": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+      "why": "Drill plays this card whole; its target side would not cut: drills inside a group that plays another clip (glued or whole-turn)"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S008:s0",
+      "line": 0,
+      "lego": "s66-das-lamm",
+      "target": "Das Lamm",
+      "known": "the lamb",
+      "knownSentence": "The lamb is excellent.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S008:s0",
+      "line": 0,
+      "lego": "s66-ist-ausgezeichnet",
+      "target": "ist ausgezeichnet",
+      "known": "is excellent",
+      "knownSentence": "The lamb is excellent.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": "s67-ich-nehme-das-lamm",
+      "target": "Ich nehme das Lamm",
+      "known": "I'll have the lamb,",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": "s67-bitte",
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S010:s0",
+      "line": 0,
+      "lego": "s68-und-das-risotto",
+      "target": "Und das Risotto",
+      "known": "And the risotto",
+      "knownSentence": "And the risotto for me.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S010:s0",
+      "line": 0,
+      "lego": "s68-für-mich",
+      "target": "für mich",
+      "known": "for me",
+      "knownSentence": "And the risotto for me.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S016:s0",
+      "line": 0,
+      "lego": "s74-nur-zwei-kaffees",
+      "target": "Nur zwei Kaffees",
+      "known": "Just two coffees,",
+      "knownSentence": "Just two coffees, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC09-S016:s0",
+      "line": 0,
+      "lego": "s74-bitte",
+      "target": "bitte",
+      "known": "please.",
+      "knownSentence": "Just two coffees, please.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S008:s1",
+      "line": 0,
+      "lego": "s84-sind-sie",
+      "target": "Sind Sie",
+      "known": "are you",
+      "knownSentence": "are you here on holiday?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S008:s1",
+      "line": 0,
+      "lego": "s84-hier-im-urlaub",
+      "target": "hier im Urlaub",
+      "known": "here on holiday",
+      "knownSentence": "are you here on holiday?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S008:s2",
+      "line": 0,
+      "lego": "s84-sie-sprechen",
+      "target": "Sie sprechen",
+      "known": "you speak",
+      "knownSentence": "You speak very good German.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S008:s2",
+      "line": 0,
+      "lego": "s84-sehr-gut-deutsch",
+      "target": "sehr gut Deutsch",
+      "known": "very good German",
+      "knownSentence": "You speak very good German.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s2",
+      "line": 0,
+      "lego": "s85-vielen-dank",
+      "target": "Vielen Dank",
+      "known": "thank you very much,",
+      "knownSentence": "Thank you very much, and goodbye.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC10-S009:s2",
+      "line": 0,
+      "lego": "s85-und-auf-wiedersehen",
+      "target": "und auf Wiedersehen",
+      "known": "and goodbye.",
+      "knownSentence": "Thank you very much, and goodbye.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S005",
+      "line": 0,
+      "lego": "s91-hat-das-zimmer",
+      "target": "Hat das Zimmer",
+      "known": "does the room have",
+      "knownSentence": "Does the room have a view?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S005",
+      "line": 0,
+      "lego": "s91-eine-aussicht",
+      "target": "eine Aussicht",
+      "known": "a view?",
+      "knownSentence": "Does the room have a view?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-es-geht-auf-den-garten",
+      "target": "es geht auf den Garten",
+      "known": "it overlooks the garden",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S008:s0",
+      "line": 0,
+      "lego": "s94-von-halb-acht",
+      "target": "Von halb acht",
+      "known": "from half past seven",
+      "knownSentence": "From half-past seven until ten o'clock.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC11-S008:s0",
+      "line": 0,
+      "lego": "s94-bis-zehn-uhr",
+      "target": "bis zehn Uhr",
+      "known": "until ten o'clock",
+      "knownSentence": "From half-past seven until ten o'clock.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S010:s1",
+      "line": 0,
+      "lego": "s119-sie-waren",
+      "target": "Sie waren",
+      "known": "You've been",
+      "knownSentence": "You've been very helpful.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC13-S010:s1",
+      "line": 0,
+      "lego": "s119-sehr-hilfreich",
+      "target": "sehr hilfreich",
+      "known": "very helpful.",
+      "knownSentence": "You've been very helpful.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S002:s0",
+      "line": 0,
+      "lego": "s122-ja",
+      "target": "Ja",
+      "known": "Yes,",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S002:s0",
+      "line": 0,
+      "lego": "s122-natürlich",
+      "target": "natürlich",
+      "known": "of course.",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S009:s0",
+      "line": 0,
+      "lego": "s129-ja",
+      "target": "Ja",
+      "known": "yes",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S009:s0",
+      "line": 0,
+      "lego": "s129-natürlich",
+      "target": "natürlich",
+      "known": "of course",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S009:s1",
+      "line": 0,
+      "lego": "s129-das-gerät-ist",
+      "target": "Das Gerät ist",
+      "known": "the machine is",
+      "knownSentence": "The machine is just here.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "deu_for_eng",
+      "card": "deu_for_eng:pod-1:SC14-S009:s1",
+      "line": 0,
+      "lego": "s129-gleich-hier",
+      "target": "gleich hier",
+      "known": "just here",
+      "knownSentence": "The machine is just here.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    }
+  ]
+}

@@ -1,0 +1,4261 @@
+{
+ "tool": "tools/pod-drill-cuts/pair.mjs (#381)",
+ "totals": {
+  "cards": 352,
+  "fitsWhole": 182,
+  "alreadyCut": 23,
+  "newLego": 42,
+  "newSonnet": 83,
+  "newLines": 5,
+  "whole": 17
+ },
+ "scenes": {
+  "SC01": {
+   "cards": 7,
+   "fitsWhole": 4,
+   "alreadyCut": 1,
+   "newLego": 0,
+   "newSonnet": 2,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC02": {
+   "cards": 6,
+   "fitsWhole": 2,
+   "alreadyCut": 0,
+   "newLego": 1,
+   "newSonnet": 1,
+   "newLines": 1,
+   "whole": 1
+  },
+  "SC03": {
+   "cards": 13,
+   "fitsWhole": 10,
+   "alreadyCut": 0,
+   "newLego": 1,
+   "newSonnet": 2,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC04": {
+   "cards": 7,
+   "fitsWhole": 5,
+   "alreadyCut": 0,
+   "newLego": 1,
+   "newSonnet": 1,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC05": {
+   "cards": 6,
+   "fitsWhole": 4,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 2,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC06": {
+   "cards": 23,
+   "fitsWhole": 11,
+   "alreadyCut": 10,
+   "newLego": 1,
+   "newSonnet": 0,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC07": {
+   "cards": 22,
+   "fitsWhole": 12,
+   "alreadyCut": 2,
+   "newLego": 5,
+   "newSonnet": 2,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC08": {
+   "cards": 24,
+   "fitsWhole": 10,
+   "alreadyCut": 1,
+   "newLego": 7,
+   "newSonnet": 5,
+   "newLines": 1,
+   "whole": 0
+  },
+  "SC09": {
+   "cards": 32,
+   "fitsWhole": 17,
+   "alreadyCut": 3,
+   "newLego": 5,
+   "newSonnet": 4,
+   "newLines": 0,
+   "whole": 3
+  },
+  "SC10": {
+   "cards": 19,
+   "fitsWhole": 12,
+   "alreadyCut": 2,
+   "newLego": 4,
+   "newSonnet": 1,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC11": {
+   "cards": 20,
+   "fitsWhole": 12,
+   "alreadyCut": 1,
+   "newLego": 5,
+   "newSonnet": 1,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC12": {
+   "cards": 15,
+   "fitsWhole": 8,
+   "alreadyCut": 0,
+   "newLego": 3,
+   "newSonnet": 4,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC13": {
+   "cards": 17,
+   "fitsWhole": 8,
+   "alreadyCut": 1,
+   "newLego": 4,
+   "newSonnet": 2,
+   "newLines": 0,
+   "whole": 2
+  },
+  "SC14": {
+   "cards": 16,
+   "fitsWhole": 9,
+   "alreadyCut": 0,
+   "newLego": 5,
+   "newSonnet": 1,
+   "newLines": 1,
+   "whole": 0
+  },
+  "SC15": {
+   "cards": 15,
+   "fitsWhole": 7,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 8,
+   "newLines": 0,
+   "whole": 0
+  },
+  "SC16": {
+   "cards": 15,
+   "fitsWhole": 8,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 5,
+   "newLines": 0,
+   "whole": 2
+  },
+  "SC17": {
+   "cards": 14,
+   "fitsWhole": 6,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 6,
+   "newLines": 0,
+   "whole": 2
+  },
+  "SC18": {
+   "cards": 15,
+   "fitsWhole": 10,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 4,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC19": {
+   "cards": 14,
+   "fitsWhole": 6,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 7,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC20": {
+   "cards": 14,
+   "fitsWhole": 7,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 6,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC21": {
+   "cards": 16,
+   "fitsWhole": 11,
+   "alreadyCut": 0,
+   "newLego": 0,
+   "newSonnet": 4,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC22": {
+   "cards": 22,
+   "fitsWhole": 3,
+   "alreadyCut": 2,
+   "newLego": 0,
+   "newSonnet": 15,
+   "newLines": 2,
+   "whole": 0
+  }
+ },
+ "newCuts": [
+  {
+   "id": "ita_for_eng:pod-1:SC02-S005",
+   "scene": 2,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S006",
+   "scene": 22,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S008",
+   "scene": 22,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC01-S004:s0",
+   "scene": 1,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC01-S004:s1",
+   "scene": 1,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC02-S004",
+   "scene": 2,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S002:s2",
+   "scene": 3,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S005",
+   "scene": 3,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S006",
+   "scene": 3,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S002:s2",
+   "scene": 4,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S003:s0",
+   "scene": 4,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC05-S001:s1",
+   "scene": 5,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC05-S002:s1",
+   "scene": 5,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC06-S011:s0",
+   "scene": 6,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S004:s1",
+   "scene": 7,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S011:s0",
+   "scene": 7,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S014:s1",
+   "scene": 7,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S006:s0",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S006:s1",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S009",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S014:s0",
+   "scene": 8,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S014:s1",
+   "scene": 8,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S015:s1",
+   "scene": 8,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S005:s0",
+   "scene": 9,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S006:s0",
+   "scene": 9,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S007",
+   "scene": 9,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S010:s1",
+   "scene": 9,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S012",
+   "scene": 9,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S015:s1",
+   "scene": 9,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S017:s0",
+   "scene": 9,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S005",
+   "scene": 10,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S007:s0",
+   "scene": 10,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S009:s1",
+   "scene": 10,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S002:s2",
+   "scene": 11,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S005",
+   "scene": 11,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S008:s0",
+   "scene": 11,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S008:s1",
+   "scene": 11,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S010",
+   "scene": 11,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S012:s0",
+   "scene": 11,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S001:s1",
+   "scene": 12,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S003",
+   "scene": 12,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S002:s0",
+   "scene": 13,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S002:s1",
+   "scene": 13,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S004",
+   "scene": 13,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S007",
+   "scene": 13,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S009",
+   "scene": 13,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S002:s1",
+   "scene": 14,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S003",
+   "scene": 14,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S004",
+   "scene": 14,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S005",
+   "scene": 14,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S006",
+   "scene": 14,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S008",
+   "scene": 14,
+   "source": "lego",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S001",
+   "scene": 16,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S002",
+   "scene": 16,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S008",
+   "scene": 16,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S009",
+   "scene": 16,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S010",
+   "scene": 16,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S001",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S003",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S004",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S005",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S007",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S009",
+   "scene": 17,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S002",
+   "scene": 18,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S003",
+   "scene": 18,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S009",
+   "scene": 18,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S010",
+   "scene": 18,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S001",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S003",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S004",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S005",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S008",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S009",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S010",
+   "scene": 19,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S001",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S002",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S004",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S005",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S007",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S010",
+   "scene": 20,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S001",
+   "scene": 21,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S004",
+   "scene": 21,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S012",
+   "scene": 21,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S013",
+   "scene": 21,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S001:s0",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S001:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s0",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s2",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S004",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s2",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s3",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S007:s0",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S007:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S010:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S010:s2",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S011:s1",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S011:s2",
+   "scene": 22,
+   "source": "sonnet",
+   "seams": "cartesia",
+   "retried": false
+  }
+ ],
+ "cards": [
+  {
+   "id": "ita_for_eng:pod-1:SC02-S005",
+   "scene": 2,
+   "target": "Non è molto lontano. Forse cinque o sei chilometri.",
+   "known": "It's not very far. Maybe five or six kilometres.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "target": "Sì, certo. Eccolo. La frittura di pesce è molto buona.",
+   "known": "Yes, of course. Here it is. The fried fish is very good.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "target": "Ecco qui. Fanno dodici euro e cinquanta.",
+   "known": "Here we are. That's twelve euros fifty.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S006",
+   "scene": 22,
+   "target": "Penso che tu stia andando molto bene. Sono impressionato. Penso che tu sia pronta a iniziare a parlare italiano con chiunque parli italiano.",
+   "known": "I think you're doing very well. I'm impressed. I think you're ready to start speaking Italian to anyone who speaks Italian.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S008",
+   "scene": 22,
+   "target": "Dovresti già essere sicura. Penso che tu stia andando molto meglio di quanto pensi. Mi sento a mio agio a parlare con te, e non sto parlando molto lentamente.",
+   "known": "You should be confident already. I think you're doing much better than you think. I feel comfortable speaking with you, and I'm not talking very slowly.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC01-S004:s0",
+   "scene": 1,
+   "target": "Sì, oggi ho una giornata impegnativa.",
+   "known": "Yes, I've got a busy day today.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "oggi ho una giornata impegnativa.",
+     "I've got a busy day today."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC01-S004:s1",
+   "scene": 1,
+   "target": "Spero che tu abbia una buona giornata.",
+   "known": "I hope you have a good day.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Spero che",
+     "I hope"
+    ],
+    [
+     "tu abbia una buona giornata.",
+     "you have a good day."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC02-S001",
+   "scene": 2,
+   "target": "Scusi, è occupato questo posto?",
+   "known": "Excuse me, is this seat taken?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Scusi",
+     "Excuse me,"
+    ],
+    [
+     "è occupato questo posto",
+     "is this seat taken?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC02-S003",
+   "scene": 2,
+   "target": "Quanto è lontano il centro?",
+   "known": "How far is it into town?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: 'into town' carries a preposition with no Italian counterpart in 'il centro?' and only makes sense with 'How far is it'",
+   "pieces": [
+    [
+     "Quanto è lontano",
+     "How far is it"
+    ],
+    [
+     "il centro?",
+     "into town?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC02-S004",
+   "scene": 2,
+   "target": "Puoi dirmi quanto è lontano il centro?",
+   "known": "Can you tell me how far it is into town?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Puoi dirmi",
+     "Can you tell me"
+    ],
+    [
+     "quanto è lontano il centro?",
+     "how far it is into town?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S002:s2",
+   "scene": 3,
+   "target": "Con latte ma senza zucchero.",
+   "known": "With milk but with no sugar.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Con latte",
+     "With milk"
+    ],
+    [
+     "ma senza zucchero",
+     "but with no sugar."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S005",
+   "scene": 3,
+   "target": "Avete patatine, o noccioline, o qualcosa del genere?",
+   "known": "Do you have crisps, or nuts, or something like that?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Avete patatine,",
+     "Do you have crisps,"
+    ],
+    [
+     "o noccioline,",
+     "or nuts,"
+    ],
+    [
+     "o qualcosa del genere?",
+     "or something like that?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC03-S006",
+   "scene": 3,
+   "target": "No, abbiamo solo da bere.",
+   "known": "No, we've only got drinks.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "abbiamo solo da bere.",
+     "we've only got drinks."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S002:s2",
+   "scene": 4,
+   "target": "Devo tornare a casa ora.",
+   "known": "I need to go home now.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Devo tornare a casa",
+     "I need to go home"
+    ],
+    [
+     "ora.",
+     "now."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S003:s0",
+   "scene": 4,
+   "target": "No, mi dispiace, sono occupato domani.",
+   "known": "No, I'm sorry, I'm busy tomorrow.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "No",
+     "No,"
+    ],
+    [
+     "mi dispiace",
+     "I'm sorry,"
+    ],
+    [
+     "sono occupato domani",
+     "I'm busy tomorrow."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC05-S001:s1",
+   "scene": 5,
+   "target": "Hai avuto una giornata lunga?",
+   "known": "Did you have a long day?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Hai avuto",
+     "Did you have"
+    ],
+    [
+     "una giornata lunga?",
+     "a long day?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC05-S002:s1",
+   "scene": 5,
+   "target": "Sono molto stanca adesso.",
+   "known": "I'm very tired now.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sono molto stanca",
+     "I'm very tired"
+    ],
+    [
+     "adesso.",
+     "now."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC06-S011:s0",
+   "scene": 6,
+   "target": "Insegno l'inglese, ma non in una scuola.",
+   "known": "I teach English, but not in a school.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Insegno l'inglese",
+     "I teach English,"
+    ],
+    [
+     "ma non in una scuola",
+     "but not in a school."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC06-S011:s3",
+   "scene": 6,
+   "target": "Ci stiamo divertendo molto.",
+   "known": "We're having a lovely time.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "pairing rejected by the timings: English pieces do not tile the English sentence",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S003",
+   "scene": 7,
+   "target": "Lo vuole normale o grande?",
+   "known": "Do you want regular or large?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Lo vuole normale",
+     "Do you want regular"
+    ],
+    [
+     "o grande",
+     "or large?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S004:s1",
+   "scene": 7,
+   "target": "Con latte d'avena, se ce l'avete.",
+   "known": "With oat milk if you have it.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Con latte d'avena",
+     "With oat milk"
+    ],
+    [
+     "se ce l'avete",
+     "if you have it."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S006",
+   "scene": 7,
+   "target": "Vorrei da asporto, grazie.",
+   "known": "I'd like takeaway, please.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: 'grazie' and 'please' don't correspond, so no clean split exists",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S007",
+   "scene": 7,
+   "target": "Potrei avere due caffè macchiati e due caffè americani e uno di quelli, per favore?",
+   "known": "Could I have two white coffees and two black coffees and one of those, please?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Potrei avere due caffè macchiati",
+     "Could I have two white coffees"
+    ],
+    [
+     "e due caffè americani",
+     "and two black coffees"
+    ],
+    [
+     "e uno di quelli",
+     "and one of those,"
+    ],
+    [
+     "per favore",
+     "please?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S009",
+   "scene": 7,
+   "target": "Sì, posso avere anche un bicchiere d'acqua, per favore.",
+   "known": "Yes, can I have a glass of water as well, please.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "posso avere",
+     "can I have"
+    ],
+    [
+     "anche un bicchiere d'acqua",
+     "a glass of water as well,"
+    ],
+    [
+     "per favore",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S010",
+   "scene": 7,
+   "target": "Fanno otto euro e quaranta in tutto.",
+   "known": "That's eight euros forty altogether.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Fanno otto euro e quaranta",
+     "That's eight euros forty"
+    ],
+    [
+     "in tutto.",
+     "altogether."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S011:s0",
+   "scene": 7,
+   "target": "Posso pagare con la carta?",
+   "known": "Could I pay by card?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso pagare",
+     "Could I pay"
+    ],
+    [
+     "con la carta?",
+     "by card?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC07-S014:s1",
+   "scene": 7,
+   "target": "Il tavolo vicino alla finestra è libero.",
+   "known": "The table by the window is free.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Il tavolo vicino alla finestra",
+     "The table by the window"
+    ],
+    [
+     "è libero",
+     "is free."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S003",
+   "scene": 8,
+   "target": "Abbiamo una chiara e una scura, e sono entrambe locali.",
+   "known": "We've got a light one and a dark one, and they're both local.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Abbiamo una chiara e una scura,",
+     "We've got a light one and a dark one,"
+    ],
+    [
+     "e sono entrambe locali.",
+     "and they're both local."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S004",
+   "scene": 8,
+   "target": "Vorrei una media della chiara, grazie.",
+   "known": "I'd like a medium of the light one, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorrei una media della chiara,",
+     "I'd like a medium of the light one,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S005",
+   "scene": 8,
+   "target": "Posso avere una birra piccola?",
+   "known": "Can I have a small beer?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "una birra piccola?",
+     "a small beer?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S006:s0",
+   "scene": 8,
+   "target": "Potrei vedere la lista dei vini?",
+   "known": "Could I see the wine list?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Potrei vedere",
+     "Could I see"
+    ],
+    [
+     "la lista dei vini",
+     "the wine list?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S006:s1",
+   "scene": 8,
+   "target": "Voglio un bicchiere di vino.",
+   "known": "I want a glass of wine.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Voglio un bicchiere",
+     "I want a glass"
+    ],
+    [
+     "di vino",
+     "of wine."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S007",
+   "scene": 8,
+   "target": "Abbiamo un rosso della casa, un bianco della casa, oppure potrebbe scegliere una delle nostre bottiglie.",
+   "known": "We have a house red, a house white, or you could have one of our bottles.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Abbiamo un rosso della casa",
+     "We have a house red,"
+    ],
+    [
+     "un bianco della casa",
+     "a house white,"
+    ],
+    [
+     "oppure potrebbe scegliere",
+     "or you could have"
+    ],
+    [
+     "una delle nostre bottiglie",
+     "one of our bottles."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S008",
+   "scene": 8,
+   "target": "Vorrei un bicchiere grande di vino bianco, per favore.",
+   "known": "I'd like a large glass of white wine, please.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorrei un bicchiere grande",
+     "I'd like a large glass"
+    ],
+    [
+     "di vino bianco",
+     "of white wine,"
+    ],
+    [
+     "per favore",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S009",
+   "scene": 8,
+   "target": "Posso avere un bicchiere piccolo di vino rosso?",
+   "known": "Can I have a small glass of red wine?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "un bicchiere piccolo",
+     "a small glass"
+    ],
+    [
+     "di vino rosso",
+     "of red wine?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S010",
+   "scene": 8,
+   "target": "Vorrei altri due bicchieri di birra.",
+   "known": "I'd like two more glasses of beer.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorrei altri due bicchieri",
+     "I'd like two more glasses"
+    ],
+    [
+     "di birra",
+     "of beer."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S014:s0",
+   "scene": 8,
+   "target": "Possiamo avere del pane?",
+   "known": "Can we have some bread?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Possiamo avere",
+     "Can we have"
+    ],
+    [
+     "del pane?",
+     "some bread?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S014:s1",
+   "scene": 8,
+   "target": "E una ciotola di patatine fritte per il tavolo.",
+   "known": "And a bowl of chips for the table.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "E una ciotola di patatine fritte",
+     "And a bowl of chips"
+    ],
+    [
+     "per il tavolo",
+     "for the table."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S015:s1",
+   "scene": 8,
+   "target": "Vorrei un tramezzino al formaggio, per favore.",
+   "known": "I'd like a cheese sandwich, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorrei un tramezzino al formaggio,",
+     "I'd like a cheese sandwich,"
+    ],
+    [
+     "per favore.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S003",
+   "scene": 9,
+   "target": "Desiderano acqua naturale o frizzante per cominciare?",
+   "known": "Would you like still or sparkling water to start?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Desiderano",
+     "Would you like"
+    ],
+    [
+     "acqua naturale o frizzante",
+     "still or sparkling water"
+    ],
+    [
+     "per cominciare?",
+     "to start?"
+    ]
+   ],
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S004",
+   "scene": 9,
+   "target": "Vorremmo una bottiglia di acqua frizzante e una bottiglia di acqua naturale, per favore.",
+   "known": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorremmo una bottiglia di acqua frizzante",
+     "We'd like one bottle of sparkling water"
+    ],
+    [
+     "e una bottiglia di acqua naturale,",
+     "and one bottle of still water,"
+    ],
+    [
+     "per favore.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S005:s0",
+   "scene": 9,
+   "target": "Scusi — avete qualcosa senza glutine?",
+   "known": "Excuse me - do you have anything gluten-free?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Scusi —",
+     "Excuse me -"
+    ],
+    [
+     "avete qualcosa senza glutine?",
+     "do you have anything gluten-free?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S006:s0",
+   "scene": 9,
+   "target": "Sì, il salmone e il risotto sono entrambi senza glutine.",
+   "known": "Yes, the salmon and the risotto are both gluten-free.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "il salmone e il risotto",
+     "the salmon and the risotto"
+    ],
+    [
+     "sono entrambi senza glutine",
+     "are both gluten-free."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S006:s1",
+   "scene": 9,
+   "target": "Abbiamo anche delle insalate.",
+   "known": "We also have some salads.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "pairing rejected by the timings: English pieces do not tile the English sentence",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S007",
+   "scene": 9,
+   "target": "E cosa ci consiglia stasera?",
+   "known": "And what would you recommend tonight?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "E cosa ci consiglia",
+     "And what would you recommend"
+    ],
+    [
+     "stasera",
+     "tonight?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S009:s1",
+   "scene": 9,
+   "target": "Con un contorno di verdure.",
+   "known": "With a side of greens.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: Short fragment; 'Con' / 'With' alone would be a stranded preposition and the remainder is too small.",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S010:s1",
+   "scene": 9,
+   "target": "Con una piccola insalata verde per cominciare.",
+   "known": "With a small green salad to start.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Con una piccola insalata verde",
+     "With a small green salad"
+    ],
+    [
+     "per cominciare.",
+     "to start."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S012",
+   "scene": 9,
+   "target": "Potremmo vedere la carta dei vini?",
+   "known": "Could we see the wine list?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Potremmo vedere",
+     "Could we see"
+    ],
+    [
+     "la carta dei vini",
+     "the wine list?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S013",
+   "scene": 9,
+   "target": "Una bottiglia del vino rosso della casa sarebbe perfetta.",
+   "known": "A bottle of the house red would be lovely.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: word order differs ('house red' vs 'vino rosso della casa') and the only split leaves a subjectless predicate",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S015:s1",
+   "scene": 9,
+   "target": "Hanno ancora posto per il dolce?",
+   "known": "Do you have any room for dessert?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Hanno ancora posto",
+     "Do you have any room"
+    ],
+    [
+     "per il dolce",
+     "for dessert?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S017:s0",
+   "scene": 9,
+   "target": "E il conto, quando è pronto.",
+   "known": "And the bill, when you're ready.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "E il conto",
+     "And the bill,"
+    ],
+    [
+     "quando è pronto",
+     "when you're ready."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S004",
+   "scene": 10,
+   "target": "Credo di sì, ma deve controllare per essere sicura.",
+   "known": "I think so, but you'll have to look to make sure.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Credo di sì,",
+     "I think so,"
+    ],
+    [
+     "ma deve controllare",
+     "but you'll have to look"
+    ],
+    [
+     "per essere sicura.",
+     "to make sure."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S005",
+   "scene": 10,
+   "target": "Ho bisogno anche di prendere della crema solare e del dentifricio.",
+   "known": "I also need to get some sunscreen and some toothpaste.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ho bisogno anche di prendere",
+     "I also need to get"
+    ],
+    [
+     "della crema solare",
+     "some sunscreen"
+    ],
+    [
+     "e del dentifricio",
+     "and some toothpaste."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S006",
+   "scene": 10,
+   "target": "La crema solare è laggiù sulla sua destra, e il dentifricio lo trova appena dietro l'angolo.",
+   "known": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "La crema solare è laggiù",
+     "Sunscreen is down there"
+    ],
+    [
+     "sulla sua destra",
+     "on your right,"
+    ],
+    [
+     "e il dentifricio lo trova",
+     "and you'll find toothpaste"
+    ],
+    [
+     "appena dietro l'angolo",
+     "just round the corner."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S007:s0",
+   "scene": 10,
+   "target": "Grazie, è stato molto gentile.",
+   "known": "Thank you, you've been very helpful.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you,"
+    ],
+    [
+     "è stato molto gentile",
+     "you've been very helpful."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S009:s1",
+   "scene": 10,
+   "target": "Sì, sono in vacanza, e ho bisogno di praticare di più per parlare italiano meglio.",
+   "known": "Yes, I'm on holiday, and I need to practice more to speak Italian better.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "sono in vacanza",
+     "I'm on holiday,"
+    ],
+    [
+     "e ho bisogno di praticare di più",
+     "and I need to practice more"
+    ],
+    [
+     "per parlare italiano meglio",
+     "to speak Italian better."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S002:s2",
+   "scene": 11,
+   "target": "Posso vedere un documento d'identità, per favore?",
+   "known": "Could I see some ID, please?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso vedere un documento d'identità",
+     "Could I see some ID,"
+    ],
+    [
+     "per favore",
+     "please?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S005",
+   "scene": 11,
+   "target": "La camera ha una vista?",
+   "known": "Does the room have a view?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "La camera ha",
+     "Does the room have"
+    ],
+    [
+     "una vista?",
+     "a view?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S007",
+   "scene": 11,
+   "target": "A che ora viene servita la colazione?",
+   "known": "What time is breakfast served?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: 'A che ora' / 'What time' leaves 'viene servita la colazione' / 'is breakfast served' with English order differing (breakfast inside 'is ... served'), so the second chunk would break the English stretch.",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S008:s0",
+   "scene": 11,
+   "target": "Dalle sette e mezza alle dieci.",
+   "known": "From half-past seven until ten o'clock.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Dalle sette e mezza",
+     "From half-past seven"
+    ],
+    [
+     "alle dieci",
+     "until ten o'clock."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S008:s1",
+   "scene": 11,
+   "target": "Abbiamo frutta e cereali oppure una colazione calda.",
+   "known": "We have fruit and cereals or a cooked breakfast.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Abbiamo frutta e cereali",
+     "We have fruit and cereals"
+    ],
+    [
+     "oppure una colazione calda",
+     "or a cooked breakfast."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S010",
+   "scene": 11,
+   "target": "Sì, può restare fino a mezzogiorno, senza costi aggiuntivi.",
+   "known": "Yes, you can stay until midday, no extra charge.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "può restare",
+     "you can stay"
+    ],
+    [
+     "fino a mezzogiorno",
+     "until midday,"
+    ],
+    [
+     "senza costi aggiuntivi",
+     "no extra charge."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S012:s0",
+   "scene": 11,
+   "target": "È sulla card di benvenuto nella sua stanza.",
+   "known": "It's on the welcome card in your room.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "È sulla card di benvenuto",
+     "It's on the welcome card"
+    ],
+    [
+     "nella sua stanza",
+     "in your room."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S001:s1",
+   "scene": 12,
+   "target": "Non mi sento molto bene - potrebbe consigliarmi qualcosa?",
+   "known": "I'm not feeling great - could you recommend something?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Non mi sento molto bene",
+     "I'm not feeling great"
+    ],
+    [
+     "- potrebbe consigliarmi qualcosa?",
+     "- could you recommend something?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S003",
+   "scene": 12,
+   "target": "Ho mal di testa e mal di gola da ieri.",
+   "known": "I've had a headache and a sore throat since yesterday.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ho mal di testa",
+     "I've had a headache"
+    ],
+    [
+     "e mal di gola",
+     "and a sore throat"
+    ],
+    [
+     "da ieri",
+     "since yesterday."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S004",
+   "scene": 12,
+   "target": "Provi il paracetamolo per il mal di testa, e queste pastiglie per la gola.",
+   "known": "Try paracetamol for the headache, and these lozenges for the throat.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Provi il paracetamolo",
+     "Try paracetamol"
+    ],
+    [
+     "per il mal di testa",
+     "for the headache,"
+    ],
+    [
+     "e queste pastiglie",
+     "and these lozenges"
+    ],
+    [
+     "per la gola",
+     "for the throat."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S005",
+   "scene": 12,
+   "target": "Ogni quanto devo prendere il paracetamolo?",
+   "known": "How often should I take the paracetamol?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ogni quanto",
+     "How often"
+    ],
+    [
+     "devo prendere",
+     "should I take"
+    ],
+    [
+     "il paracetamolo",
+     "the paracetamol?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S006",
+   "scene": 12,
+   "target": "Una ogni quattro o sei ore, non più di otto al giorno.",
+   "known": "One every four to six hours, no more than eight in a day.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Una ogni quattro o sei ore,",
+     "One every four to six hours,"
+    ],
+    [
+     "non più di otto al giorno.",
+     "no more than eight in a day."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S007",
+   "scene": 12,
+   "target": "Va bene prenderle con il cibo?",
+   "known": "Are they all right to take with food?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Va bene prenderle",
+     "Are they all right to take"
+    ],
+    [
+     "con il cibo?",
+     "with food?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC12-S008",
+   "scene": 12,
+   "target": "Sì, meglio con o dopo i pasti.",
+   "known": "Yes, with or after food is best.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "meglio con o dopo i pasti.",
+     "with or after food is best."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S001",
+   "scene": 13,
+   "target": "Scusi, sa come si arriva al supermercato più vicino?",
+   "known": "Excuse me, do you know how to get to the nearest supermarket?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Scusi",
+     "Excuse me,"
+    ],
+    [
+     "sa come si arriva",
+     "do you know how to get"
+    ],
+    [
+     "al supermercato più vicino",
+     "to the nearest supermarket?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S002:s0",
+   "scene": 13,
+   "target": "Sì, è a circa dieci minuti a piedi.",
+   "known": "Yes, it's about a ten minute walk.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "è a circa dieci minuti a piedi",
+     "it's about a ten minute walk."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S002:s1",
+   "scene": 13,
+   "target": "Vada dritto lungo questa strada.",
+   "known": "Go straight along this road.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vada dritto",
+     "Go straight"
+    ],
+    [
+     "lungo questa strada.",
+     "along this road."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S003",
+   "scene": 13,
+   "target": "Passando davanti a quella chiesa?",
+   "known": "Past that church?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: \"Passando\" / \"Past\" is a bare fragment, and \"that church?\" doesn't carry \"davanti a\" (in front of).",
+   "pieces": [
+    [
+     "Passando",
+     "Past"
+    ],
+    [
+     "davanti a quella chiesa?",
+     "that church?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S004",
+   "scene": 13,
+   "target": "Sì, passando davanti alla chiesa e all'ufficio postale.",
+   "known": "Yes, past the church and the post office.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "passando davanti alla chiesa",
+     "past the church"
+    ],
+    [
+     "e all'ufficio postale",
+     "and the post office."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S007",
+   "scene": 13,
+   "target": "Vedrà il supermercato sulla sinistra, proprio di fronte alla fermata dell'autobus.",
+   "known": "You'll see the supermarket on your left, just opposite the bus stop.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vedrà il supermercato sulla sinistra,",
+     "You'll see the supermarket on your left,"
+    ],
+    [
+     "proprio di fronte alla fermata dell'autobus.",
+     "just opposite the bus stop."
+    ]
+   ],
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S009",
+   "scene": 13,
+   "target": "Sì, ce n'è uno sul corso principale, accanto alla panetteria.",
+   "known": "Yes, there's one on the high street, next to the bakery.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì",
+     "Yes,"
+    ],
+    [
+     "ce n'è uno",
+     "there's one"
+    ],
+    [
+     "sul corso principale",
+     "on the high street,"
+    ],
+    [
+     "accanto alla panetteria",
+     "next to the bakery."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S010:s1",
+   "scene": 13,
+   "target": "È stato molto gentile.",
+   "known": "You've been very helpful.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: short sentence with no clean split; any cut leaves an incomplete fragment",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S002:s1",
+   "scene": 14,
+   "target": "Potrebbe volerci un po' di tempo, c'è molto traffico in questo momento.",
+   "known": "It may take some time, there's a lot of traffic at the moment.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Potrebbe volerci",
+     "It may take"
+    ],
+    [
+     "un po' di tempo",
+     "some time,"
+    ],
+    [
+     "c'è molto traffico",
+     "there's a lot of traffic"
+    ],
+    [
+     "in questo momento",
+     "at the moment."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S003",
+   "scene": 14,
+   "target": "Più o meno quanto tempo pensa che ci vorrà?",
+   "known": "About how long do you think it will take?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Più o meno quanto tempo",
+     "About how long"
+    ],
+    [
+     "pensa che ci vorrà",
+     "do you think it will take?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S004",
+   "scene": 14,
+   "target": "Forse una ventina di minuti, se non siamo sfortunati con i semafori.",
+   "known": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Forse una ventina di minuti",
+     "Perhaps about twenty minutes,"
+    ],
+    [
+     "se non siamo sfortunati",
+     "if we're not unlucky"
+    ],
+    [
+     "con i semafori",
+     "with the traffic lights."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S005",
+   "scene": 14,
+   "target": "Sa dove posso prendere un biglietto in stazione?",
+   "known": "Do you know where I can get a ticket in the station?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sa",
+     "Do you know"
+    ],
+    [
+     "dove posso prendere",
+     "where I can get"
+    ],
+    [
+     "un biglietto",
+     "a ticket"
+    ],
+    [
+     "in stazione",
+     "in the station?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S006",
+   "scene": 14,
+   "target": "Sì, la lascio proprio davanti alla biglietteria.",
+   "known": "Yes, I'll drop you right by the ticket office.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sì,",
+     "Yes,"
+    ],
+    [
+     "la lascio proprio davanti alla biglietteria.",
+     "I'll drop you right by the ticket office."
+    ]
+   ],
+   "retried": true
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC14-S008",
+   "scene": 14,
+   "target": "Posso pagare con la carta?",
+   "known": "Could I pay by card?",
+   "status": "cut",
+   "source": "lego",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso pagare",
+     "Could I pay"
+    ],
+    [
+     "con la carta",
+     "by card?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S003",
+   "scene": 15,
+   "target": "Quanto costa un taxi per andare in centro?",
+   "known": "How much does it cost to get a taxi into town?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Quanto costa",
+     "How much does it cost"
+    ],
+    [
+     "un taxi per andare in centro?",
+     "to get a taxi into town?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S004",
+   "scene": 15,
+   "target": "Quanto costa un autobus per andare in centro?",
+   "known": "How much does it cost to get a bus into town?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Quanto costa",
+     "How much does it cost"
+    ],
+    [
+     "un autobus per andare in centro?",
+     "to get a bus into town?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S005",
+   "scene": 15,
+   "target": "Dove possiamo prendere l'autobus?",
+   "known": "Where can we get a bus?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Dove possiamo prendere",
+     "Where can we get"
+    ],
+    [
+     "l'autobus?",
+     "a bus?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S006",
+   "scene": 15,
+   "target": "Dove possiamo prendere un taxi?",
+   "known": "Where can we get a taxi?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Dove possiamo prendere",
+     "Where can we get"
+    ],
+    [
+     "un taxi?",
+     "a taxi?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S007",
+   "scene": 15,
+   "target": "Quattro biglietti di sola andata per il centro, grazie.",
+   "known": "Four single tickets to town, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Quattro biglietti di sola andata",
+     "Four single tickets"
+    ],
+    [
+     "per il centro,",
+     "to town,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S008",
+   "scene": 15,
+   "target": "Due biglietti di andata e ritorno per il centro, grazie.",
+   "known": "Two return tickets to town, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Due biglietti di andata e ritorno",
+     "Two return tickets"
+    ],
+    [
+     "per il centro,",
+     "to town,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S009",
+   "scene": 15,
+   "target": "Preferisco provare a parlare la tua lingua, penso sia educato.",
+   "known": "I prefer to try to speak your language, I think it's polite.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Preferisco provare a parlare la tua lingua,",
+     "I prefer to try to speak your language,"
+    ],
+    [
+     "penso sia educato.",
+     "I think it's polite."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC15-S010",
+   "scene": 15,
+   "target": "Mi dispiace, non riesco a parlare molto velocemente.",
+   "known": "I'm sorry I can't speak very quickly.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry"
+    ],
+    [
+     "non riesco a parlare molto velocemente.",
+     "I can't speak very quickly."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S001",
+   "scene": 16,
+   "target": "Ma se riesci a parlare lentamente penso che ce la faremo.",
+   "known": "But if you can speak slowly I think we'll be able to manage.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ma se riesci a parlare lentamente",
+     "But if you can speak slowly"
+    ],
+    [
+     "penso che ce la faremo.",
+     "I think we'll be able to manage."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S002",
+   "scene": 16,
+   "target": "Hai parlato un po' troppo velocemente, quindi non sono sicura di aver capito.",
+   "known": "You spoke a little too quickly, so I'm not sure if I understood.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Hai parlato un po' troppo velocemente,",
+     "You spoke a little too quickly,"
+    ],
+    [
+     "quindi non sono sicura di aver capito.",
+     "so I'm not sure if I understood."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S005",
+   "scene": 16,
+   "target": "Possiamo vedere anche il menù dei dolci?",
+   "known": "Can we see the dessert menu also?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: \"Possiamo vedere\" / \"Can we see\" is left without its object, and \"also\" is stranded after \"the dessert menu\" in the second English piece.",
+   "pieces": [
+    [
+     "Possiamo vedere",
+     "Can we see"
+    ],
+    [
+     "anche il menù dei dolci?",
+     "the dessert menu also?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S006",
+   "scene": 16,
+   "target": "Avete qualcosa da mangiare?",
+   "known": "Do you have anything to eat?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: 'qualcosa da mangiare' / 'anything to eat' is one unit and the question is too short to split cleanly",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S008",
+   "scene": 16,
+   "target": "Possiamo pagare con la carta?",
+   "known": "Can we pay by card?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Possiamo pagare",
+     "Can we pay"
+    ],
+    [
+     "con la carta?",
+     "by card?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S009",
+   "scene": 16,
+   "target": "No, accettiamo solo contanti.",
+   "known": "No, we only take cash.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "accettiamo solo contanti.",
+     "we only take cash."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC16-S010",
+   "scene": 16,
+   "target": "Mi dispiace, non ho contanti.",
+   "known": "I'm sorry, I don't have any cash.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry,"
+    ],
+    [
+     "non ho contanti.",
+     "I don't have any cash."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S001",
+   "scene": 17,
+   "target": "C'è un bancomat qui vicino?",
+   "known": "Is there a cash machine near here?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "C'è un bancomat",
+     "Is there a cash machine"
+    ],
+    [
+     "qui vicino?",
+     "near here?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S002",
+   "scene": 17,
+   "target": "Vuole pagare in contanti, con la carta, o metterlo sul conto della camera?",
+   "known": "Do you want to pay by cash or card or put it on the room?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: \"sul conto della camera\" is rendered \"on the room\", so \"bill\" is missing. \"or\" sits in the English of piece 2 but in the Italian of piece 3, and \"Vuole pagare\" / \"Do you want to pay\" has no object.",
+   "pieces": [
+    [
+     "Vuole pagare",
+     "Do you want to pay"
+    ],
+    [
+     "in contanti, con la carta,",
+     "by cash or card"
+    ],
+    [
+     "o metterlo sul conto della camera?",
+     "or put it on the room?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S003",
+   "scene": 17,
+   "target": "Possiamo metterlo sul conto della camera, per favore?",
+   "known": "Can we put it on the room, please?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Possiamo metterlo sul conto della camera,",
+     "Can we put it on the room,"
+    ],
+    [
+     "per favore?",
+     "please?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S004",
+   "scene": 17,
+   "target": "Vuole pagare in contanti, con la carta, o sulla camera?",
+   "known": "Would you like to pay by cash or card or on the room?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vuole pagare",
+     "Would you like to pay"
+    ],
+    [
+     "in contanti, con la carta,",
+     "by cash or card"
+    ],
+    [
+     "o sulla camera?",
+     "or on the room?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S005",
+   "scene": 17,
+   "target": "Voleva pagare in contanti o con la carta?",
+   "known": "Did you want to pay by cash or card?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Voleva pagare",
+     "Did you want to pay"
+    ],
+    [
+     "in contanti o con la carta?",
+     "by cash or card?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S006",
+   "scene": 17,
+   "target": "Pagheremo di nuovo con la carta, grazie.",
+   "known": "We'll pay by card again, please.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: 'grazie' means 'thank you', but its English piece is 'please', so the pair does not match as a standalone unit",
+   "pieces": [
+    [
+     "Pagheremo di nuovo con la carta,",
+     "We'll pay by card again,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S007",
+   "scene": 17,
+   "target": "Fa caldo oggi, di nuovo.",
+   "known": "It's hot today, again.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Fa caldo oggi,",
+     "It's hot today,"
+    ],
+    [
+     "di nuovo.",
+     "again."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC17-S009",
+   "scene": 17,
+   "target": "No, oggi fa un po' freddo.",
+   "known": "No, it's a little cold today.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "No,",
+     "No,"
+    ],
+    [
+     "oggi fa un po' freddo.",
+     "it's a little cold today."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S002",
+   "scene": 18,
+   "target": "Avete del succo d'arancia?",
+   "known": "Do you have any orange juice?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Avete",
+     "Do you have"
+    ],
+    [
+     "del succo d'arancia?",
+     "any orange juice?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S003",
+   "scene": 18,
+   "target": "Avete del succo di mela?",
+   "known": "Do you have any apple juice?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Avete",
+     "Do you have"
+    ],
+    [
+     "del succo di mela?",
+     "any apple juice?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S006",
+   "scene": 18,
+   "target": "Da dove parte l'autobus?",
+   "known": "Where does the bus leave from?",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: 'Da dove ... parte' wraps around 'l'autobus' and English 'Where ... from' is split around it, so no clean contiguous split",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S009",
+   "scene": 18,
+   "target": "Mi dispiace, mio figlio ha perso il suo biglietto.",
+   "known": "I'm sorry, my son lost his ticket.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Mi dispiace,",
+     "I'm sorry,"
+    ],
+    [
+     "mio figlio",
+     "my son"
+    ],
+    [
+     "ha perso il suo biglietto.",
+     "lost his ticket."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC18-S010",
+   "scene": 18,
+   "target": "Abbiamo pagato, ma mia figlia ha perso il suo biglietto.",
+   "known": "We have paid, but my daughter has lost her ticket.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Abbiamo pagato,",
+     "We have paid,"
+    ],
+    [
+     "ma mia figlia",
+     "but my daughter"
+    ],
+    [
+     "ha perso il suo biglietto.",
+     "has lost her ticket."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S001",
+   "scene": 19,
+   "target": "Questo mi rende felice.",
+   "known": "That makes me happy.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Questo",
+     "That"
+    ],
+    [
+     "mi rende felice.",
+     "makes me happy."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S002",
+   "scene": 19,
+   "target": "Questo mi preoccupa un po'.",
+   "known": "That makes me feel a little worried.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "second check rejected the split: 'That makes me feel' is incomplete without 'worried', which sits in the other English piece, while 'un po'' has no meaning of its own beyond 'a little'.",
+   "pieces": [
+    [
+     "Questo mi preoccupa",
+     "That makes me feel"
+    ],
+    [
+     "un po'.",
+     "a little worried."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S003",
+   "scene": 19,
+   "target": "Quando parli velocemente, mi sento come se non capissi niente.",
+   "known": "When you talk quickly, I feel as though I don't understand anything.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Quando parli velocemente,",
+     "When you talk quickly,"
+    ],
+    [
+     "mi sento come se non capissi niente.",
+     "I feel as though I don't understand anything."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S004",
+   "scene": 19,
+   "target": "Va bene se mi siedo qui?",
+   "known": "Is it okay if I sit here?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Va bene",
+     "Is it okay"
+    ],
+    [
+     "se mi siedo qui?",
+     "if I sit here?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S005",
+   "scene": 19,
+   "target": "Va bene se mettiamo questo qui?",
+   "known": "Is it okay if we put this here?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Va bene",
+     "Is it okay"
+    ],
+    [
+     "se mettiamo questo qui?",
+     "if we put this here?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S008",
+   "scene": 19,
+   "target": "Prometto che non farò tardi.",
+   "known": "I promise I won't be late.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Prometto",
+     "I promise"
+    ],
+    [
+     "che non farò tardi.",
+     "I won't be late."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S009",
+   "scene": 19,
+   "target": "Prometto che non faremo tardi.",
+   "known": "I promise we won't be late.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Prometto",
+     "I promise"
+    ],
+    [
+     "che non faremo tardi.",
+     "we won't be late."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC19-S010",
+   "scene": 19,
+   "target": "Vorrei due palline di gelato, grazie.",
+   "known": "I'd like two scoops of ice-cream, please.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vorrei due palline di gelato,",
+     "I'd like two scoops of ice-cream,"
+    ],
+    [
+     "grazie.",
+     "please."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S001",
+   "scene": 20,
+   "target": "Posso avere una pallina al cioccolato e una alla fragola?",
+   "known": "Can I have one scoop of chocolate and one of strawberry?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Posso avere",
+     "Can I have"
+    ],
+    [
+     "una pallina al cioccolato",
+     "one scoop of chocolate"
+    ],
+    [
+     "e una alla fragola?",
+     "and one of strawberry?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S002",
+   "scene": 20,
+   "target": "E poi un altro cono con una pallina al limone e una al mirtillo.",
+   "known": "And then another cone with one scoop of lemon and one of blueberry.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "E poi un altro cono",
+     "And then another cone"
+    ],
+    [
+     "con una pallina al limone",
+     "with one scoop of lemon"
+    ],
+    [
+     "e una al mirtillo.",
+     "and one of blueberry."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S004",
+   "scene": 20,
+   "target": "Grazie per tutto il tuo lavoro.",
+   "known": "Thank you for all your work.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you"
+    ],
+    [
+     "per tutto il tuo lavoro.",
+     "for all your work."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S005",
+   "scene": 20,
+   "target": "Ti auguro buona fortuna per tutto.",
+   "known": "I wish you good luck with everything.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ti auguro",
+     "I wish you"
+    ],
+    [
+     "buona fortuna",
+     "good luck"
+    ],
+    [
+     "per tutto.",
+     "with everything."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S007",
+   "scene": 20,
+   "target": "Buona fortuna con quello!",
+   "known": "Good luck with that!",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Buona fortuna",
+     "Good luck"
+    ],
+    [
+     "con quello!",
+     "with that!"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S008",
+   "scene": 20,
+   "target": "È molto gentile da parte tua.",
+   "known": "That's very kind of you.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: 'È molto gentile' and 'da parte tua' map to 'That's very kind' / 'of you' but a lone 'of you' is not a sensible standalone piece.",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC20-S010",
+   "scene": 20,
+   "target": "Grazie per essere così gentile.",
+   "known": "Thank you for being so friendly.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Grazie",
+     "Thank you"
+    ],
+    [
+     "per essere così gentile.",
+     "for being so friendly."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S001",
+   "scene": 21,
+   "target": "Sembra che dobbiamo andare via presto.",
+   "known": "It sounds as though we need to leave soon.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sembra che dobbiamo andare via",
+     "It sounds as though we need to leave"
+    ],
+    [
+     "presto.",
+     "soon."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S002",
+   "scene": 21,
+   "target": "Sembra che tu non voglia che lo facciamo.",
+   "known": "It sounds as though you want us not to do that.",
+   "status": "whole",
+   "source": "sonnet",
+   "seams": null,
+   "why": "no clean pairing: English 'want us not to do that' reorders the Italian 'non voglia che lo facciamo', so no clean contiguous split",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S004",
+   "scene": 21,
+   "target": "Puoi dirmi dov'è il bagno?",
+   "known": "Can you tell me where the toilet is?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Puoi dirmi",
+     "Can you tell me"
+    ],
+    [
+     "dov'è il bagno?",
+     "where the toilet is?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S012",
+   "scene": 21,
+   "target": "Vuoi ordinare da bere prima?",
+   "known": "Do you want to order some drinks first?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Vuoi ordinare",
+     "Do you want to order"
+    ],
+    [
+     "da bere prima?",
+     "some drinks first?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC21-S013",
+   "scene": 21,
+   "target": "Volevi qualcosa da bere prima?",
+   "known": "Did you want something to drink first?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Volevi qualcosa",
+     "Did you want something"
+    ],
+    [
+     "da bere prima?",
+     "to drink first?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S001:s0",
+   "scene": 22,
+   "target": "Ti dispiacerebbe se provassi a parlare italiano con te?",
+   "known": "Would you mind if I tried to practise speaking Italian with you?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ti dispiacerebbe",
+     "Would you mind"
+    ],
+    [
+     "se provassi a parlare italiano",
+     "if I tried to practise speaking Italian"
+    ],
+    [
+     "con te?",
+     "with you?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S001:s1",
+   "scene": 22,
+   "target": "Non lo studio da molto tempo, e mi sento ancora un po' nervosa a parlare con altre persone.",
+   "known": "I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Non lo studio da molto tempo,",
+     "I haven't been learning for very long,"
+    ],
+    [
+     "e mi sento ancora un po' nervosa",
+     "and I still feel a little nervous"
+    ],
+    [
+     "a parlare con altre persone.",
+     "about speaking with other people."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s0",
+   "scene": 22,
+   "target": "Grazie, fa piacere saperlo.",
+   "known": "Thank you, that's good to know.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Grazie,",
+     "Thank you,"
+    ],
+    [
+     "fa piacere saperlo.",
+     "that's good to know."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s1",
+   "scene": 22,
+   "target": "Ho bisogno di imparare più parole, e ho bisogno di praticare l'ascolto.",
+   "known": "I need to learn more words, and I need to practise listening.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ho bisogno di imparare più parole,",
+     "I need to learn more words,"
+    ],
+    [
+     "e ho bisogno di praticare l'ascolto.",
+     "and I need to practise listening."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S003:s2",
+   "scene": 22,
+   "target": "Non capisco le persone molto bene quando non parlano lentamente.",
+   "known": "I don't understand people very well when they don't speak slowly.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Non capisco le persone molto bene",
+     "I don't understand people very well"
+    ],
+    [
+     "quando non parlano lentamente.",
+     "when they don't speak slowly."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S004",
+   "scene": 22,
+   "target": "Parlo abbastanza lentamente per te adesso?",
+   "known": "Am I speaking slowly enough for you now?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Parlo abbastanza lentamente",
+     "Am I speaking slowly enough"
+    ],
+    [
+     "per te adesso?",
+     "for you now?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s1",
+   "scene": 22,
+   "target": "È più facile parlare con una sola persona.",
+   "known": "It's easier talking to just one person.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "È più facile parlare",
+     "It's easier talking"
+    ],
+    [
+     "con una sola persona.",
+     "to just one person."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s2",
+   "scene": 22,
+   "target": "È un po' difficile pensare a cosa dire, però.",
+   "known": "It's a bit difficult thinking of something to say, though.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "È un po' difficile",
+     "It's a bit difficult"
+    ],
+    [
+     "pensare a cosa dire,",
+     "thinking of something to say,"
+    ],
+    [
+     "però.",
+     "though."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S005:s3",
+   "scene": 22,
+   "target": "Non sono sicura di cosa dire, ma mi sembra di poter parlare abbastanza per iniziare ad avere conversazioni.",
+   "known": "I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Non sono sicura di cosa dire,",
+     "I'm not sure what to say,"
+    ],
+    [
+     "ma mi sembra di poter parlare abbastanza",
+     "but I feel as if I can speak enough"
+    ],
+    [
+     "per iniziare ad avere conversazioni.",
+     "to start having conversations."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S007:s0",
+   "scene": 22,
+   "target": "È solo un po' frustrante quando non riesco a pensare abbastanza velocemente per esprimermi bene.",
+   "known": "It's just a little frustrating when I can't think quickly enough to express myself properly.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "È solo un po' frustrante",
+     "It's just a little frustrating"
+    ],
+    [
+     "quando non riesco a pensare abbastanza velocemente",
+     "when I can't think quickly enough"
+    ],
+    [
+     "per esprimermi bene.",
+     "to express myself properly."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S007:s1",
+   "scene": 22,
+   "target": "Ma so che ho bisogno di continuare a praticare se voglio parlare con più sicurezza.",
+   "known": "But I know that I need to keep practising if I want to speak more confidently.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ma so che ho bisogno di continuare a praticare",
+     "But I know that I need to keep practising"
+    ],
+    [
+     "se voglio parlare con più sicurezza.",
+     "if I want to speak more confidently."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S010:s1",
+   "scene": 22,
+   "target": "Imparare una nuova lingua è difficile.",
+   "known": "Learning a new language is difficult.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Imparare una nuova lingua",
+     "Learning a new language"
+    ],
+    [
+     "è difficile.",
+     "is difficult."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S010:s2",
+   "scene": 22,
+   "target": "Ma è così divertente quando si inizia ad avere conversazioni, vero?",
+   "known": "But it's so much fun when you start to have conversations, isn't it?",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Ma è così divertente",
+     "But it's so much fun"
+    ],
+    [
+     "quando si inizia ad avere conversazioni, vero?",
+     "when you start to have conversations, isn't it?"
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S011:s1",
+   "scene": 22,
+   "target": "Sono davvero felice di riuscire ad avere tanta conversazione.",
+   "known": "I'm really happy that I can have this much of a conversation.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "Sono davvero felice",
+     "I'm really happy"
+    ],
+    [
+     "di riuscire ad avere tanta conversazione.",
+     "that I can have this much of a conversation."
+    ]
+   ],
+   "retried": false
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC22-S011:s2",
+   "scene": 22,
+   "target": "E spero che potremo avere più conversazioni in futuro, mentre continuo a migliorare.",
+   "known": "And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+   "status": "cut",
+   "source": "sonnet",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": [
+    [
+     "E spero che potremo avere più conversazioni in futuro,",
+     "And I hope we'll be able to have more conversations in the future"
+    ],
+    [
+     "mentre continuo a migliorare.",
+     "as I keep on getting better."
+    ]
+   ],
+   "retried": false
+  }
+ ]
+}

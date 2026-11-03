@@ -1,0 +1,1255 @@
+{
+  "course": "zho_for_eng",
+  "knownLanguage": "eng",
+  "tool": "tools/pod-drill-cuts/known-rerecord.mjs (job #665)",
+  "note": "A LIST, not audio. Nothing is rendered until Kai authorises it, through Popty /api/audio/render.",
+  "tally": {
+    "already-cut": 0,
+    "cuttable": 0,
+    "re-record": 6,
+    "needs-pairing": 93,
+    "plays-whole": 24
+  },
+  "rerecord": [
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "我很好",
+      "known": "I'm very well,",
+      "knownSentence": "I'm very well, thank you.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "谢谢你",
+      "known": "thank you.",
+      "knownSentence": "I'm very well, thank you.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S001",
+      "line": 0,
+      "lego": null,
+      "target": "早上好",
+      "known": "good morning,",
+      "knownSentence": "Good morning. What can I get you?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S001",
+      "line": 0,
+      "lego": null,
+      "target": "需要点什么",
+      "known": "what can I get you?",
+      "knownSentence": "Good morning. What can I get you?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "我要羊肉",
+      "known": "I'll have the lamb",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "谢谢",
+      "known": "please",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    }
+  ],
+  "needsPairing": [
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": "s1-早上好",
+      "target": "早上好",
+      "known": "good morning,",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": null,
+      "target": "莎拉",
+      "known": "",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S002:s0",
+      "line": 0,
+      "lego": "s2-早上好",
+      "target": "早上好",
+      "known": "good morning.",
+      "knownSentence": "Good morning.",
+      "why": "\"how are you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S002:s0",
+      "line": 0,
+      "lego": "s2-你怎么样",
+      "target": "你怎么样",
+      "known": "how are you?",
+      "knownSentence": "Good morning.",
+      "why": "\"how are you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC03-S001:s0",
+      "line": 0,
+      "lego": "s7-下午好",
+      "target": "下午好",
+      "known": "good afternoon.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"what do you need to get?\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC03-S001:s0",
+      "line": 0,
+      "lego": "s7-需要点什么",
+      "target": "需要点什么",
+      "known": "what do you need to get?",
+      "knownSentence": "Good afternoon.",
+      "why": "\"what do you need to get?\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-你好",
+      "target": "你好",
+      "known": "Hello!",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-不好意思",
+      "target": "不好意思",
+      "known": "I'm sorry",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-我现在没办法聊天",
+      "target": "我现在没办法聊天",
+      "known": "I can't talk at the moment",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S002:s3",
+      "line": 0,
+      "lego": null,
+      "target": "我们明天",
+      "known": "",
+      "knownSentence": "Can we talk tomorrow?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S002:s3",
+      "line": 0,
+      "lego": null,
+      "target": "可以聊吗",
+      "known": "",
+      "knownSentence": "Can we talk tomorrow?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S005:s0",
+      "line": 0,
+      "lego": "s19-我是曼彻斯特人",
+      "target": "我是曼彻斯特人",
+      "known": "I'm a Manchester person,",
+      "knownSentence": "I'm from Manchester, but I live in London now.",
+      "why": "\"I'm a Manchester person,\" is not said word for word in \"I'm from Manchester, but I live in London now.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S005:s0",
+      "line": 0,
+      "lego": "s19-但我现在住在伦敦",
+      "target": "但我现在住在伦敦",
+      "known": "but I now live in London.",
+      "knownSentence": "I'm from Manchester, but I live in London now.",
+      "why": "\"I'm a Manchester person,\" is not said word for word in \"I'm from Manchester, but I live in London now.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": "s21-这是一座很美的城市",
+      "target": "这是一座很美的城市",
+      "known": "This is a lovely city.",
+      "knownSentence": "This is a lovely city.",
+      "why": "\"What do you do?\" is not said word for word in \"This is a lovely city.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": "s21-你是做什么工作的",
+      "target": "你是做什么工作的",
+      "known": "What do you do?",
+      "knownSentence": "This is a lovely city.",
+      "why": "\"What do you do?\" is not said word for word in \"This is a lovely city.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S009:s0",
+      "line": 0,
+      "lego": "s23-不好意思",
+      "target": "不好意思",
+      "known": "I'm sorry,",
+      "knownSentence": "I'm sorry, I didn't understand you.",
+      "why": "\"I didn't follow what you said.\" is not said word for word in \"I'm sorry, I didn't understand you.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S009:s0",
+      "line": 0,
+      "lego": "s23-我没听懂",
+      "target": "我没听懂",
+      "known": "I didn't follow what you said.",
+      "knownSentence": "I'm sorry, I didn't understand you.",
+      "why": "\"I didn't follow what you said.\" is not said word for word in \"I'm sorry, I didn't understand you.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S009:s2",
+      "line": 0,
+      "lego": "s23-你能再说一遍吗",
+      "target": "你能再说一遍吗",
+      "known": "can you say it one more time,",
+      "knownSentence": "Could you say that again more slowly?",
+      "why": "\"can you say it one more time,\" is not said word for word in \"Could you say that again more slowly?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S009:s2",
+      "line": 0,
+      "lego": "s23-说慢一点",
+      "target": "说慢一点",
+      "known": "speak a little slower?",
+      "knownSentence": "Could you say that again more slowly?",
+      "why": "\"can you say it one more time,\" is not said word for word in \"Could you say that again more slowly?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S004",
+      "line": 0,
+      "lego": "s31-我要大杯的",
+      "target": "我要大杯的",
+      "known": "I'd like the large size",
+      "knownSentence": "I'd like large, please. With oat milk if you have it.",
+      "why": "\"I'd like the large size\" is not said word for word in \"I'd like large, please. With oat milk if you have it.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S004",
+      "line": 0,
+      "lego": "s31-如果有燕麦奶的话",
+      "target": "如果有燕麦奶的话",
+      "known": "if you have oat milk",
+      "knownSentence": "I'd like large, please. With oat milk if you have it.",
+      "why": "\"I'd like the large size\" is not said word for word in \"I'd like large, please. With oat milk if you have it.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S004",
+      "line": 0,
+      "lego": "s31-加燕麦奶",
+      "target": "加燕麦奶",
+      "known": "add oat milk",
+      "knownSentence": "I'd like large, please. With oat milk if you have it.",
+      "why": "\"I'd like the large size\" is not said word for word in \"I'd like large, please. With oat milk if you have it.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S008:s0",
+      "line": 0,
+      "lego": "s35-好的",
+      "target": "好的",
+      "known": "alright,",
+      "knownSentence": "Right away.",
+      "why": "\"alright,\" is not said word for word in \"Right away.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S008:s0",
+      "line": 0,
+      "lego": "s35-马上来",
+      "target": "马上来",
+      "known": "coming right away.",
+      "knownSentence": "Right away.",
+      "why": "\"alright,\" is not said word for word in \"Right away.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S013",
+      "line": 0,
+      "lego": null,
+      "target": "早上好",
+      "known": "good morning",
+      "knownSentence": "Good morning. Two Americanos and a cup of tea, please.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S013",
+      "line": 0,
+      "lego": null,
+      "target": "两杯美式",
+      "known": "two Americanos",
+      "knownSentence": "Good morning. Two Americanos and a cup of tea, please.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S013",
+      "line": 0,
+      "lego": null,
+      "target": "再来一杯茶",
+      "known": "and a cup of tea",
+      "knownSentence": "Good morning. Two Americanos and a cup of tea, please.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S014:s0",
+      "line": 0,
+      "lego": "s41-你们要坐下来喝吗",
+      "target": "你们要坐下来喝吗",
+      "known": "would you like to sit down for a drink?",
+      "knownSentence": "Would you like to sit-in?",
+      "why": "\"would you like to sit down for a drink?\" is not said word for word in \"Would you like to sit-in?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC07-S014:s0",
+      "line": 0,
+      "lego": "s41-窗边那张桌子空着",
+      "target": "窗边那张桌子空着",
+      "known": "the table by the window is free.",
+      "knownSentence": "Would you like to sit-in?",
+      "why": "\"would you like to sit down for a drink?\" is not said word for word in \"Would you like to sit-in?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S001:s0",
+      "line": 0,
+      "lego": "s43-晚上好",
+      "target": "晚上好",
+      "known": "good evening.",
+      "knownSentence": "Good evening.",
+      "why": "\"what can I get you?\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S001:s0",
+      "line": 0,
+      "lego": "s43-需要点什么",
+      "target": "需要点什么",
+      "known": "what can I get you?",
+      "knownSentence": "Good evening.",
+      "why": "\"what can I get you?\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-我们有本店红酒",
+      "target": "我们有本店红酒",
+      "known": "we have a house red",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"or you could also order one of our whole bottles\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-本店白葡萄酒",
+      "target": "本店白葡萄酒",
+      "known": "a house white",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"or you could also order one of our whole bottles\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S007",
+      "line": 0,
+      "lego": "s49-或者你也可以点我们的整瓶装",
+      "target": "或者你也可以点我们的整瓶装",
+      "known": "or you could also order one of our whole bottles",
+      "knownSentence": "We have a house red, a house white, or you could have one of our bottles.",
+      "why": "\"or you could also order one of our whole bottles\" is not said word for word in \"We have a house red, a house white, or you could have one of our bottles.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S011",
+      "line": 0,
+      "lego": null,
+      "target": "你们今晚",
+      "known": "",
+      "knownSentence": "Are you eating tonight?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S011",
+      "line": 0,
+      "lego": null,
+      "target": "吃饭吗",
+      "known": "",
+      "knownSentence": "Are you eating tonight?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S014",
+      "line": 0,
+      "lego": "s56-我们能要一些面包吗",
+      "target": "我们能要一些面包吗",
+      "known": "can we have some bread?",
+      "knownSentence": "Can we have some bread? And a bowl of chips for the table.",
+      "why": "\"everybody eats together.\" is not said word for word in \"Can we have some bread? And a bowl of chips for the table.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S014",
+      "line": 0,
+      "lego": "s56-还有一份薯条",
+      "target": "还有一份薯条",
+      "known": "and a bowl of chips,",
+      "knownSentence": "Can we have some bread? And a bowl of chips for the table.",
+      "why": "\"everybody eats together.\" is not said word for word in \"Can we have some bread? And a bowl of chips for the table.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC08-S014",
+      "line": 0,
+      "lego": "s56-大家一起吃",
+      "target": "大家一起吃",
+      "known": "everybody eats together.",
+      "knownSentence": "Can we have some bread? And a bowl of chips for the table.",
+      "why": "\"everybody eats together.\" is not said word for word in \"Can we have some bread? And a bowl of chips for the table.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S001",
+      "line": 0,
+      "lego": "s59-晚上好",
+      "target": "晚上好",
+      "known": "good evening",
+      "knownSentence": "Good evening. We have a booking for two, under the name Davies.",
+      "why": "\"the name is Davies\" is not said word for word in \"Good evening. We have a booking for two, under the name Davies.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S001",
+      "line": 0,
+      "lego": "s59-我们预订了两位",
+      "target": "我们预订了两位",
+      "known": "we have a booking for two",
+      "knownSentence": "Good evening. We have a booking for two, under the name Davies.",
+      "why": "\"the name is Davies\" is not said word for word in \"Good evening. We have a booking for two, under the name Davies.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S001",
+      "line": 0,
+      "lego": "s59-名字是戴维斯",
+      "target": "名字是戴维斯",
+      "known": "the name is Davies",
+      "knownSentence": "Good evening. We have a booking for two, under the name Davies.",
+      "why": "\"the name is Davies\" is not said word for word in \"Good evening. We have a booking for two, under the name Davies.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S008:s0",
+      "line": 0,
+      "lego": "s66-羊肉非常好",
+      "target": "羊肉非常好",
+      "known": "the lamb is excellent",
+      "knownSentence": "The lamb is excellent.",
+      "why": "\"it's been slow-cooked\" is not said word for word in \"The lamb is excellent.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S008:s0",
+      "line": 0,
+      "lego": "s66-是用慢火烹制的",
+      "target": "是用慢火烹制的",
+      "known": "it's been slow-cooked",
+      "knownSentence": "The lamb is excellent.",
+      "why": "\"it's been slow-cooked\" is not said word for word in \"The lamb is excellent.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S008:s0",
+      "line": 0,
+      "lego": "s66-加了迷迭香",
+      "target": "加了迷迭香",
+      "known": "with rosemary added",
+      "knownSentence": "The lamb is excellent.",
+      "why": "\"it's been slow-cooked\" is not said word for word in \"The lamb is excellent.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-好的",
+      "target": "好的",
+      "known": "of course.",
+      "knownSentence": "Of course.",
+      "why": "\"and what would you all like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-那你们想喝什么",
+      "target": "那你们想喝什么",
+      "known": "and what would you all like to drink?",
+      "knownSentence": "Of course.",
+      "why": "\"and what would you all like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S014:s0",
+      "line": 0,
+      "lego": "s72-好的",
+      "target": "好的",
+      "known": "Alright.",
+      "knownSentence": "Excellent choice.",
+      "why": "\"Alright.\" is not said word for word in \"Excellent choice.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC09-S014:s0",
+      "line": 0,
+      "lego": "s72-我马上给你们拿过来",
+      "target": "我马上给你们拿过来",
+      "known": "I'll bring it right over to you all.",
+      "knownSentence": "Excellent choice.",
+      "why": "\"Alright.\" is not said word for word in \"Excellent choice.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S001",
+      "line": 0,
+      "lego": "s77-麻烦一下",
+      "target": "麻烦一下",
+      "known": "sorry to trouble you a moment",
+      "knownSentence": "Excuse me. Do you have any painkillers?",
+      "why": "\"sorry to trouble you a moment\" is not said word for word in \"Excuse me. Do you have any painkillers?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S001",
+      "line": 0,
+      "lego": "s77-请问你们有止痛药吗",
+      "target": "请问你们有止痛药吗",
+      "known": "may I ask, do you have any painkillers?",
+      "knownSentence": "Excuse me. Do you have any painkillers?",
+      "why": "\"sorry to trouble you a moment\" is not said word for word in \"Excuse me. Do you have any painkillers?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": "s78-有的",
+      "target": "有的",
+      "known": "yes, there are,",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "\"yes, there are,\" is not said word for word in \"Yes, they're down that aisle, on the left.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": "s78-就在那边那条走道",
+      "target": "就在那边那条走道",
+      "known": "right over there in that aisle,",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "\"yes, there are,\" is not said word for word in \"Yes, they're down that aisle, on the left.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": "s78-左手边",
+      "target": "左手边",
+      "known": "on the left-hand side.",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "\"yes, there are,\" is not said word for word in \"Yes, they're down that aisle, on the left.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": null,
+      "target": "我觉得有",
+      "known": "I think there is / I think so",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"I think there is / I think so\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": null,
+      "target": "但你得自己",
+      "known": "",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"I think there is / I think so\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": null,
+      "target": "去看一下",
+      "known": "",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"I think there is / I think so\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S004",
+      "line": 0,
+      "lego": null,
+      "target": "确认",
+      "known": "to make sure",
+      "knownSentence": "I think so, but you'll have to look to make sure.",
+      "why": "\"I think there is / I think so\" is not said word for word in \"I think so, but you'll have to look to make sure.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S007",
+      "line": 0,
+      "lego": "s83-谢谢你",
+      "target": "谢谢你",
+      "known": "thank you,",
+      "knownSentence": "Thank you, you've been very helpful. I'm very grateful.",
+      "why": "\"you helped me a lot,\" is not said word for word in \"Thank you, you've been very helpful. I'm very grateful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S007",
+      "line": 0,
+      "lego": "s83-你帮了我很多",
+      "target": "你帮了我很多",
+      "known": "you helped me a lot,",
+      "knownSentence": "Thank you, you've been very helpful. I'm very grateful.",
+      "why": "\"you helped me a lot,\" is not said word for word in \"Thank you, you've been very helpful. I'm very grateful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC10-S007",
+      "line": 0,
+      "lego": "s83-我非常感激",
+      "target": "我非常感激",
+      "known": "I'm extremely grateful.",
+      "knownSentence": "Thank you, you've been very helpful. I'm very grateful.",
+      "why": "\"you helped me a lot,\" is not said word for word in \"Thank you, you've been very helpful. I'm very grateful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S003:s0",
+      "line": 0,
+      "lego": "s89-当然可以",
+      "target": "当然可以",
+      "known": "of course (you can).",
+      "knownSentence": "Of course.",
+      "why": "\"of course (you can).\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S003:s0",
+      "line": 0,
+      "lego": "s89-这是我的护照",
+      "target": "这是我的护照",
+      "known": "here's my passport.",
+      "knownSentence": "Of course.",
+      "why": "\"of course (you can).\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-有的",
+      "target": "有的",
+      "known": "Yes,",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "\"can see the garden.\" is not said word for word in \"Yes, it overlooks the garden.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-能看到花园",
+      "target": "能看到花园",
+      "known": "can see the garden.",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "\"can see the garden.\" is not said word for word in \"Yes, it overlooks the garden.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-太好了",
+      "target": "太好了",
+      "known": "wonderful.",
+      "knownSentence": "Wonderful.",
+      "why": "\"can we check out a little later?\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-我们可以晚一点退房吗",
+      "target": "我们可以晚一点退房吗",
+      "known": "can we check out a little later?",
+      "knownSentence": "Wonderful.",
+      "why": "\"can we check out a little later?\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S011",
+      "line": 0,
+      "lego": null,
+      "target": "那wifi密码",
+      "known": "So the wifi password",
+      "knownSentence": "And what is the wifi password?",
+      "why": "\"So the wifi password\" is not said word for word in \"And what is the wifi password?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S011",
+      "line": 0,
+      "lego": null,
+      "target": "是多少",
+      "known": "is what?",
+      "knownSentence": "And what is the wifi password?",
+      "why": "\"So the wifi password\" is not said word for word in \"And what is the wifi password?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-当然可以",
+      "target": "当然可以",
+      "known": "of course you can.",
+      "knownSentence": "Of course.",
+      "why": "\"of course you can.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-你有什么症状",
+      "target": "你有什么症状",
+      "known": "what symptoms do you have?",
+      "knownSentence": "Of course.",
+      "why": "\"of course you can.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S009:s1",
+      "line": 0,
+      "lego": "s108-我还想买一盒创可贴",
+      "target": "我还想买一盒创可贴",
+      "known": "I'd also like to buy a packet of plasters,",
+      "knownSentence": "Could I also get a packet of plasters?",
+      "why": "\"I'd also like to buy a packet of plasters,\" is not said word for word in \"Could I also get a packet of plasters?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S009:s1",
+      "line": 0,
+      "lego": "s108-可以吗",
+      "target": "可以吗",
+      "known": "is that okay?",
+      "knownSentence": "Could I also get a packet of plasters?",
+      "why": "\"I'd also like to buy a packet of plasters,\" is not said word for word in \"Could I also get a packet of plasters?\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-超市就在你左边",
+      "target": "超市就在你左边",
+      "known": "the supermarket is right there on your left",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "\"the supermarket is right there on your left\" is not said word for word in \"You'll see the supermarket on your left, just opposite the bus stop.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-正好在公交站对面",
+      "target": "正好在公交站对面",
+      "known": "just opposite the bus stop",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "\"the supermarket is right there on your left\" is not said word for word in \"You'll see the supermarket on your left, just opposite the bus stop.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-有",
+      "target": "有",
+      "known": "yes, there is,",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "\"yes, there is,\" is not said word for word in \"Yes, there's one on the high street, next to the bakery.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-大街上有一台",
+      "target": "大街上有一台",
+      "known": "there's one on the high street,",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "\"yes, there is,\" is not said word for word in \"Yes, there's one on the high street, next to the bakery.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-就在面包店旁边",
+      "target": "就在面包店旁边",
+      "known": "right next to the bakery.",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "\"yes, there is,\" is not said word for word in \"Yes, there's one on the high street, next to the bakery.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S010",
+      "line": 0,
+      "lego": "s119-谢谢你",
+      "target": "谢谢你",
+      "known": "thank you",
+      "knownSentence": "Thank you very much. You've been very helpful.",
+      "why": "\"you've been a great help to me\" is not said word for word in \"Thank you very much. You've been very helpful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S010",
+      "line": 0,
+      "lego": "s119-你帮了我很大的忙",
+      "target": "你帮了我很大的忙",
+      "known": "you've been a great help to me",
+      "knownSentence": "Thank you very much. You've been very helpful.",
+      "why": "\"you've been a great help to me\" is not said word for word in \"Thank you very much. You've been very helpful.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-大概二十分钟吧",
+      "target": "大概二十分钟吧",
+      "known": "perhaps about twenty minutes",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "\"if we don't hit the red lights\" is not said word for word in \"Perhaps about twenty minutes, if we're not unlucky with the traffic lights.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-如果不赶上红灯的话",
+      "target": "如果不赶上红灯的话",
+      "known": "if we don't hit the red lights",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "\"if we don't hit the red lights\" is not said word for word in \"Perhaps about twenty minutes, if we're not unlucky with the traffic lights.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-知道",
+      "target": "知道",
+      "known": "got it",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "\"got it\" is not said word for word in \"Yes, I'll drop you right by the ticket office.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-我直接把你放在售票处旁边",
+      "target": "我直接把你放在售票处旁边",
+      "known": "I'll put you right next to the ticket office",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "\"got it\" is not said word for word in \"Yes, I'll drop you right by the ticket office.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "可以",
+      "known": "yes,",
+      "knownSentence": "Yes, of course.",
+      "why": "\"of course (I) can.\" is not said word for word in \"Yes, of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC14-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "当然可以",
+      "known": "of course (I) can.",
+      "knownSentence": "Yes, of course.",
+      "why": "\"of course (I) can.\" is not said word for word in \"Yes, of course.\""
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC15-S008",
+      "line": 0,
+      "lego": null,
+      "target": "请给我两张",
+      "known": "",
+      "knownSentence": "Two return tickets to town, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC15-S008",
+      "line": 0,
+      "lego": null,
+      "target": "去城里的",
+      "known": "",
+      "knownSentence": "Two return tickets to town, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC15-S008",
+      "line": 0,
+      "lego": null,
+      "target": "往返票",
+      "known": "",
+      "knownSentence": "Two return tickets to town, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC17-S009",
+      "line": 0,
+      "lego": null,
+      "target": "不是",
+      "known": "",
+      "knownSentence": "No, it's a little cold today.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC17-S009",
+      "line": 0,
+      "lego": null,
+      "target": "今天有点冷",
+      "known": "",
+      "knownSentence": "No, it's a little cold today.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC21-S011",
+      "line": 0,
+      "lego": null,
+      "target": "你想先点点",
+      "known": "",
+      "knownSentence": "Would you like to order some drinks?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC21-S011",
+      "line": 0,
+      "lego": null,
+      "target": "喝的吗",
+      "known": "",
+      "knownSentence": "Would you like to order some drinks?",
+      "why": "piece has no known text"
+    }
+  ],
+  "playsWhole": [
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S004:s0",
+      "line": 0,
+      "lego": "s4-是的",
+      "target": "是的",
+      "known": "yes",
+      "knownSentence": "Yes, I've got a busy day today.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC01-S004:s0",
+      "line": 0,
+      "lego": "s4-我今天很忙",
+      "target": "我今天很忙",
+      "known": "I've got a busy day today",
+      "knownSentence": "Yes, I've got a busy day today.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-你好",
+      "target": "你好",
+      "known": "hello,",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-晚上好",
+      "target": "晚上好",
+      "known": "good evening!",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": "s12-不行",
+      "target": "不行",
+      "known": "No",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": "s12-不好意思",
+      "target": "不好意思",
+      "known": "I'm sorry",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": "s12-我明天有事",
+      "target": "我明天有事",
+      "known": "I'm busy tomorrow",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S012",
+      "line": 0,
+      "lego": "s26-真有意思",
+      "target": "真有意思",
+      "known": "how interesting.",
+      "knownSentence": "How interesting. Well, lovely to meet you.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S012",
+      "line": 0,
+      "lego": "s26-好",
+      "target": "好",
+      "known": "well,",
+      "knownSentence": "How interesting. Well, lovely to meet you.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC06-S012",
+      "line": 0,
+      "lego": "s26-很高兴认识你",
+      "target": "很高兴认识你",
+      "known": "lovely to meet you.",
+      "knownSentence": "How interesting. Well, lovely to meet you.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S004:s1",
+      "line": 0,
+      "lego": "s90-房间在三楼",
+      "target": "房间在三楼",
+      "known": "the room is on the third floor,",
+      "knownSentence": "The room is on the third floor, room 709.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S004:s1",
+      "line": 0,
+      "lego": "s90-709号房",
+      "target": "709号房",
+      "known": "room 709.",
+      "knownSentence": "The room is on the third floor, room 709.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": "s96-可以",
+      "target": "可以",
+      "known": "Yes,",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": "s96-你们可以住到中午",
+      "target": "你们可以住到中午",
+      "known": "you can stay until midday,",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC11-S010",
+      "line": 0,
+      "lego": "s96-不收额外费用",
+      "target": "不收额外费用",
+      "known": "no extra charge.",
+      "knownSentence": "Yes, you can stay until midday, no extra charge.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S001",
+      "line": 0,
+      "lego": "s100-早上好",
+      "target": "早上好",
+      "known": "good morning",
+      "knownSentence": "Good morning. I'm not feeling great - could you recommend something?",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S001",
+      "line": 0,
+      "lego": "s100-我感觉不太舒服",
+      "target": "我感觉不太舒服",
+      "known": "I'm not feeling great",
+      "knownSentence": "Good morning. I'm not feeling great - could you recommend something?",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S001",
+      "line": 0,
+      "lego": "s100-你能给我推荐点什么吗",
+      "target": "你能给我推荐点什么吗",
+      "known": "could you recommend something?",
+      "knownSentence": "Good morning. I'm not feeling great - could you recommend something?",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S008",
+      "line": 0,
+      "lego": "s107-可以",
+      "target": "可以",
+      "known": "Yes",
+      "knownSentence": "Yes, with or after food is best.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC12-S008",
+      "line": 0,
+      "lego": "s107-随餐或饭后吃最好",
+      "target": "随餐或饭后吃最好",
+      "known": "with or after food is best",
+      "knownSentence": "Yes, with or after food is best.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-对",
+      "target": "对",
+      "known": "Yes,",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-过了教堂和邮局",
+      "target": "过了教堂和邮局",
+      "known": "past the church and the post office.",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": "s114-到第二个环形路口",
+      "target": "到第二个环形路口",
+      "known": "at the second roundabout,",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    },
+    {
+      "course": "zho_for_eng",
+      "card": "zho_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": "s114-走第一个出口",
+      "target": "走第一个出口",
+      "known": "take the first exit.",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "Drill plays this card whole; its target side would not cut: the Chinese clip has no Cartesia word timings that say its text"
+    }
+  ]
+}

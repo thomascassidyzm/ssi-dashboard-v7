@@ -1,0 +1,1895 @@
+{
+  "course": "spa_for_eng",
+  "knownLanguage": "eng",
+  "tool": "tools/pod-drill-cuts/known-rerecord.mjs (job #665)",
+  "note": "A LIST, not audio. Nothing is rendered until Kai authorises it, through Popty /api/audio/render.",
+  "tally": {
+    "already-cut": 57,
+    "cuttable": 0,
+    "re-record": 26,
+    "needs-pairing": 145,
+    "plays-whole": 14
+  },
+  "rerecord": [
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-me-gustaría",
+      "target": "Me gustaría",
+      "known": "I'd like",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-una-pinta",
+      "target": "una pinta",
+      "known": "a pint",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-de-la-amarga",
+      "target": "de la amarga",
+      "known": "of the bitter",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S004",
+      "line": 0,
+      "lego": "s46-por-favor",
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "I'd like a pint of the bitter, please.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": "s110-perdón",
+      "target": "Perdón",
+      "known": "Excuse me,",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": "s110-sabe-cómo-se-llega",
+      "target": "sabe cómo se llega",
+      "known": "do you know how to get",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S001",
+      "line": 0,
+      "lego": "s110-al-supermercado-más-cercano",
+      "target": "al supermercado más cercano",
+      "known": "to the nearest supermarket?",
+      "knownSentence": "Excuse me, do you know how to get to the nearest supermarket?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-pasando-la-iglesia",
+      "target": "pasando la iglesia",
+      "known": "past the church",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S004",
+      "line": 0,
+      "lego": "s113-y-la-oficina-de-correos",
+      "target": "y la oficina de correos",
+      "known": "and the post office",
+      "knownSentence": "Yes, past the church and the post office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-verá-el-supermercado",
+      "target": "Verá el supermercado",
+      "known": "you'll see the supermarket",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-a-su-izquierda",
+      "target": "a su izquierda",
+      "known": "on your left",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S007",
+      "line": 0,
+      "lego": "s116-justo-enfrente-de-la-parada-de-autobús",
+      "target": "justo enfrente de la parada de autobús",
+      "known": "just opposite the bus stop",
+      "knownSentence": "You'll see the supermarket on your left, just opposite the bus stop.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-hay-uno",
+      "target": "hay uno",
+      "known": "there's one",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-en-la-calle-principal",
+      "target": "en la calle principal",
+      "known": "on the high street",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S009",
+      "line": 0,
+      "lego": "s118-al-lado-de-la-panadería",
+      "target": "al lado de la panadería",
+      "known": "next to the bakery",
+      "knownSentence": "Yes, there's one on the high street, next to the bakery.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S001:s1",
+      "line": 0,
+      "lego": "s121-me-puede-llevar",
+      "target": "Me puede llevar",
+      "known": "can you take me",
+      "knownSentence": "Can you take me to the train station, please?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S001:s1",
+      "line": 0,
+      "lego": "s121-a-la-estación-de-tren",
+      "target": "a la estación de tren",
+      "known": "to the train station",
+      "knownSentence": "Can you take me to the train station, please?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S001:s1",
+      "line": 0,
+      "lego": "s121-por-favor",
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "Can you take me to the train station, please?",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-quizás-unos-veinte-minutos",
+      "target": "Quizás unos veinte minutos",
+      "known": "Perhaps about twenty minutes,",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-si-no-tenemos-mala-suerte",
+      "target": "si no tenemos mala suerte",
+      "known": "if we're not unlucky",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S004",
+      "line": 0,
+      "lego": "s124-con-los-semáforos",
+      "target": "con los semáforos",
+      "known": "with the traffic lights.",
+      "knownSentence": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-le-dejo",
+      "target": "le dejo",
+      "known": "I'll drop you",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S006",
+      "line": 0,
+      "lego": "s126-justo-en-la-taquilla",
+      "target": "justo en la taquilla",
+      "known": "right by the ticket office",
+      "knownSentence": "Yes, I'll drop you right by the ticket office.",
+      "why": "the English clip has no Cartesia word timings that say its text",
+      "fix": "re-render the whole English sentence (stores its Cartesia timings), then rerun pair.mjs --lego-only"
+    }
+  ],
+  "needsPairing": [
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC01-S003:s0",
+      "line": 0,
+      "lego": "s3-muy-bien",
+      "target": "Muy bien",
+      "known": "very well,",
+      "knownSentence": "I'm very well, thank you.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC01-S003:s0",
+      "line": 0,
+      "lego": "s3-gracias",
+      "target": "gracias",
+      "known": "thank you.",
+      "knownSentence": "I'm very well, thank you.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC03-S002:s1",
+      "line": 0,
+      "lego": "s8-me-gustaría-un-café",
+      "target": "Me gustaría un café",
+      "known": "I would like a coffee",
+      "knownSentence": "I'd like a coffee, please.",
+      "why": "\"I would like a coffee\" is not said word for word in \"I'd like a coffee, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC03-S002:s1",
+      "line": 0,
+      "lego": "s8-por-favor",
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "I'd like a coffee, please.",
+      "why": "\"I would like a coffee\" is not said word for word in \"I'd like a coffee, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC03-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Tienen algo",
+      "known": "",
+      "knownSentence": "Do you have any snacks?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC03-S004",
+      "line": 0,
+      "lego": null,
+      "target": "para picar",
+      "known": "",
+      "knownSentence": "Do you have any snacks?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S002:s1",
+      "line": 0,
+      "lego": "s11-lo-siento",
+      "target": "Lo siento",
+      "known": "I'm sorry,",
+      "knownSentence": "I'm sorry but I can't talk at the moment.",
+      "why": "\"but I can't talk right now.\" is not said word for word in \"I'm sorry but I can't talk at the moment.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S002:s1",
+      "line": 0,
+      "lego": "s11-pero-no-puedo-hablar-ahora-mismo",
+      "target": "pero no puedo hablar ahora mismo",
+      "known": "but I can't talk right now.",
+      "knownSentence": "I'm sorry but I can't talk at the moment.",
+      "why": "\"but I can't talk right now.\" is not said word for word in \"I'm sorry but I can't talk at the moment.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "No, lo siento",
+      "known": "",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "mañana estoy ocupado",
+      "known": "tomorrow I'm busy",
+      "knownSentence": "No, I'm sorry, I'm busy tomorrow.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S003:s1",
+      "line": 0,
+      "lego": "s12-pero-hablamos",
+      "target": "Pero hablamos",
+      "known": "but we'll talk",
+      "knownSentence": "But let's talk on Saturday.",
+      "why": "\"but we'll talk\" is not said word for word in \"But let's talk on Saturday.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S003:s1",
+      "line": 0,
+      "lego": "s12-el-sábado",
+      "target": "el sábado",
+      "known": "on Saturday",
+      "knownSentence": "But let's talk on Saturday.",
+      "why": "\"but we'll talk\" is not said word for word in \"But let's talk on Saturday.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": "s13-buenas-noches",
+      "target": "Buenas noches",
+      "known": "good evening,",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Sarah",
+      "known": "",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC05-S002:s0",
+      "line": 0,
+      "lego": "s14-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, very.",
+      "why": "\"very long\" is not said word for word in \"Yes, very.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC05-S002:s0",
+      "line": 0,
+      "lego": "s14-muy-largo",
+      "target": "muy largo",
+      "known": "very long",
+      "knownSentence": "Yes, very.",
+      "why": "\"very long\" is not said word for word in \"Yes, very.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S005:s0",
+      "line": 0,
+      "lego": "s19-soy-de-mánchester",
+      "target": "Soy de Mánchester",
+      "known": "I'm from Manchester,",
+      "knownSentence": "I'm from Manchester, but I live in London now.",
+      "why": "\"but now I live in London.\" is not said word for word in \"I'm from Manchester, but I live in London now.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S005:s0",
+      "line": 0,
+      "lego": "s19-pero-ahora-vivo-en-londres",
+      "target": "pero ahora vivo en Londres",
+      "known": "but now I live in London.",
+      "knownSentence": "I'm from Manchester, but I live in London now.",
+      "why": "\"but now I live in London.\" is not said word for word in \"I'm from Manchester, but I live in London now.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Es una ciudad",
+      "known": "",
+      "knownSentence": "This is a lovely city.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S007:s0",
+      "line": 0,
+      "lego": null,
+      "target": "preciosa",
+      "known": "",
+      "knownSentence": "This is a lovely city.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S008:s0",
+      "line": 0,
+      "lego": "s22-soy-enfermera",
+      "target": "Soy enfermera",
+      "known": "I'm a nurse,",
+      "knownSentence": "I'm a nurse, at the hospital just round the corner.",
+      "why": "\"that's just round the corner.\" is not said word for word in \"I'm a nurse, at the hospital just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S008:s0",
+      "line": 0,
+      "lego": "s22-en-el-hospital",
+      "target": "en el hospital",
+      "known": "at the hospital",
+      "knownSentence": "I'm a nurse, at the hospital just round the corner.",
+      "why": "\"that's just round the corner.\" is not said word for word in \"I'm a nurse, at the hospital just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S008:s0",
+      "line": 0,
+      "lego": "s22-que-está-a-la-vuelta-de-la-esquina",
+      "target": "que está a la vuelta de la esquina",
+      "known": "that's just round the corner.",
+      "knownSentence": "I'm a nurse, at the hospital just round the corner.",
+      "why": "\"that's just round the corner.\" is not said word for word in \"I'm a nurse, at the hospital just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S011:s2",
+      "line": 0,
+      "lego": null,
+      "target": "Estoy aquí de vacaciones",
+      "known": "",
+      "knownSentence": "I'm on holiday here with my wife and children.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S011:s2",
+      "line": 0,
+      "lego": null,
+      "target": "con mi mujer y mis hijos",
+      "known": "",
+      "knownSentence": "I'm on holiday here with my wife and children.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S012:s1",
+      "line": 0,
+      "lego": "s26-bueno",
+      "target": "Bueno",
+      "known": "Well,",
+      "knownSentence": "Well, lovely to meet you.",
+      "why": "\"it's been a pleasure to meet you.\" is not said word for word in \"Well, lovely to meet you.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC06-S012:s1",
+      "line": 0,
+      "lego": "s26-ha-sido-un-placer-conocerte",
+      "target": "ha sido un placer conocerte",
+      "known": "it's been a pleasure to meet you.",
+      "knownSentence": "Well, lovely to meet you.",
+      "why": "\"it's been a pleasure to meet you.\" is not said word for word in \"Well, lovely to meet you.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Me gustaría un café solo",
+      "known": "",
+      "knownSentence": "I'd like a black coffee, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S002",
+      "line": 0,
+      "lego": null,
+      "target": "por favor",
+      "known": "please.",
+      "knownSentence": "I'd like a black coffee, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Lo quiere normal",
+      "known": "",
+      "knownSentence": "Do you want regular or large?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S003",
+      "line": 0,
+      "lego": null,
+      "target": "o grande",
+      "known": "",
+      "knownSentence": "Do you want regular or large?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S004:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Lo quiero grande",
+      "known": "I'd like it large",
+      "knownSentence": "I'd like large, please.",
+      "why": "\"I'd like it large\" is not said word for word in \"I'd like large, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S004:s0",
+      "line": 0,
+      "lego": null,
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "I'd like large, please.",
+      "why": "\"I'd like it large\" is not said word for word in \"I'd like large, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S005:s1",
+      "line": 0,
+      "lego": "s32-prefiere-quedarse-aquí",
+      "target": "Prefiere quedarse aquí",
+      "known": "Would you prefer to stay here",
+      "knownSentence": "Would you like to sit-in or takeaway?",
+      "why": "\"Would you prefer to stay here\" is not said word for word in \"Would you like to sit-in or takeaway?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S005:s1",
+      "line": 0,
+      "lego": "s32-o-para-llevar",
+      "target": "o para llevar",
+      "known": "or to take away?",
+      "knownSentence": "Would you like to sit-in or takeaway?",
+      "why": "\"Would you prefer to stay here\" is not said word for word in \"Would you like to sit-in or takeaway?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S006",
+      "line": 0,
+      "lego": "s33-para-llevar",
+      "target": "Para llevar",
+      "known": "To take away,",
+      "knownSentence": "I'd like takeaway, please.",
+      "why": "\"To take away,\" is not said word for word in \"I'd like takeaway, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S006",
+      "line": 0,
+      "lego": "s33-por-favor",
+      "target": "por favor",
+      "known": "please.",
+      "knownSentence": "I'd like takeaway, please.",
+      "why": "\"To take away,\" is not said word for word in \"I'd like takeaway, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-sí",
+      "target": "Sí",
+      "known": "Yes",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also have\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-me-pone-también",
+      "target": "me pone también",
+      "known": "can I also have",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also have\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-un-vaso-de-agua",
+      "target": "un vaso de agua",
+      "known": "a glass of water",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also have\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S009",
+      "line": 0,
+      "lego": "s36-por-favor",
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "Yes, can I have a glass of water as well, please.",
+      "why": "\"can I also have\" is not said word for word in \"Yes, can I have a glass of water as well, please.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S013:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Dos americanos y un té",
+      "known": "",
+      "knownSentence": "Two Americanos and a cup of tea, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC07-S013:s1",
+      "line": 0,
+      "lego": null,
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "Two Americanos and a cup of tea, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S002:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Me gustaría una pinta",
+      "known": "",
+      "knownSentence": "I'd like a pint, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S002:s0",
+      "line": 0,
+      "lego": null,
+      "target": "por favor",
+      "known": "",
+      "knownSentence": "I'd like a pint, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Qué cervezas",
+      "known": "",
+      "knownSentence": "What ales do you have on?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "tienen de barril",
+      "known": "",
+      "knownSentence": "What ales do you have on?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S005",
+      "line": 0,
+      "lego": null,
+      "target": "Me pone media",
+      "known": "",
+      "knownSentence": "Can I have a half of cider?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S005",
+      "line": 0,
+      "lego": null,
+      "target": "pinta de sidra",
+      "known": "",
+      "knownSentence": "Can I have a half of cider?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S013:s2",
+      "line": 0,
+      "lego": "s55-el-pescado-con-patatas-fritas",
+      "target": "El pescado con patatas fritas",
+      "known": "the fish and chips",
+      "knownSentence": "The fish and chips are very good.",
+      "why": "\"is very good\" is not said word for word in \"The fish and chips are very good.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S013:s2",
+      "line": 0,
+      "lego": "s55-está-muy-bueno",
+      "target": "está muy bueno",
+      "known": "is very good",
+      "knownSentence": "The fish and chips are very good.",
+      "why": "\"is very good\" is not said word for word in \"The fish and chips are very good.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Tenemos una reserva",
+      "known": "",
+      "knownSentence": "We have a booking for two, under the name Davies.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "para dos, a nombre de Davies",
+      "known": "",
+      "knownSentence": "We have a booking for two, under the name Davies.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Quieren agua sin gas o",
+      "known": "",
+      "knownSentence": "Would you like still or sparkling water to start?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S003",
+      "line": 0,
+      "lego": null,
+      "target": "con gas para empezar",
+      "known": "",
+      "knownSentence": "Would you like still or sparkling water to start?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S007",
+      "line": 0,
+      "lego": "s65-y-qué-nos-recomendaría",
+      "target": "Y qué nos recomendaría",
+      "known": "And what would you recommend us",
+      "knownSentence": "And what would you recommend tonight?",
+      "why": "\"And what would you recommend us\" is not said word for word in \"And what would you recommend tonight?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S007",
+      "line": 0,
+      "lego": "s65-esta-noche",
+      "target": "esta noche",
+      "known": "tonight?",
+      "knownSentence": "And what would you recommend tonight?",
+      "why": "\"And what would you recommend us\" is not said word for word in \"And what would you recommend tonight?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Yo tomaré el cordero",
+      "known": "",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S009:s0",
+      "line": 0,
+      "lego": null,
+      "target": "por favor",
+      "known": "",
+      "knownSentence": "I'll have the lamb, please.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S010:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Con una ensalada verde",
+      "known": "",
+      "knownSentence": "With a small green salad to start.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S010:s1",
+      "line": 0,
+      "lego": null,
+      "target": "pequeña de primero",
+      "known": "",
+      "knownSentence": "With a small green salad to start.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": "s71-una-botella-del-vino-tinto",
+      "target": "Una botella del vino tinto",
+      "known": "A bottle of the red wine",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"A bottle of the red wine\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": "s71-de-la-casa",
+      "target": "de la casa",
+      "known": "of the house",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"A bottle of the red wine\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": "s71-estaría-muy-bien",
+      "target": "estaría muy bien",
+      "known": "would be lovely",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"A bottle of the red wine\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S016:s1",
+      "line": 0,
+      "lego": "s74-el-mío",
+      "target": "El mío",
+      "known": "the mine (mine)",
+      "knownSentence": "Decaf for me.",
+      "why": "\"the mine (mine)\" is not said word for word in \"Decaf for me.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S016:s1",
+      "line": 0,
+      "lego": "s74-descafeinado",
+      "target": "descafeinado",
+      "known": "decaf.",
+      "knownSentence": "Decaf for me.",
+      "why": "\"the mine (mine)\" is not said word for word in \"Decaf for me.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S017:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Y la cuenta",
+      "known": "and the bill,",
+      "knownSentence": "And the bill, when you're ready.",
+      "why": "\"when you can.\" is not said word for word in \"And the bill, when you're ready.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S017:s0",
+      "line": 0,
+      "lego": null,
+      "target": "cuando pueda",
+      "known": "when you can.",
+      "knownSentence": "And the bill, when you're ready.",
+      "why": "\"when you can.\" is not said word for word in \"And the bill, when you're ready.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Sí, están por ese pasillo",
+      "known": "",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S002",
+      "line": 0,
+      "lego": null,
+      "target": "a la izquierda",
+      "known": "on the left",
+      "knownSentence": "Yes, they're down that aisle, on the left.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S005",
+      "line": 0,
+      "lego": "s81-también-necesito-comprar-protector-solar",
+      "target": "También necesito comprar protector solar",
+      "known": "I also need to buy sunscreen",
+      "knownSentence": "I also need to get some sunscreen and some toothpaste.",
+      "why": "\"I also need to buy sunscreen\" is not said word for word in \"I also need to get some sunscreen and some toothpaste.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S005",
+      "line": 0,
+      "lego": "s81-y-pasta-de-dientes",
+      "target": "y pasta de dientes",
+      "known": "and toothpaste",
+      "knownSentence": "I also need to get some sunscreen and some toothpaste.",
+      "why": "\"I also need to buy sunscreen\" is not said word for word in \"I also need to get some sunscreen and some toothpaste.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-el-protector-solar",
+      "target": "El protector solar",
+      "known": "the sunscreen",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-está-por-allí",
+      "target": "está por allí",
+      "known": "is down there",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-a-su-derecha",
+      "target": "a su derecha",
+      "known": "on your right",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-y-la-pasta-de-dientes",
+      "target": "y la pasta de dientes",
+      "known": "and the toothpaste",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-la-encuentra",
+      "target": "la encuentra",
+      "known": "you find it",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S006",
+      "line": 0,
+      "lego": "s82-justo-al-doblar-la-esquina",
+      "target": "justo al doblar la esquina",
+      "known": "just round the corner",
+      "knownSentence": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+      "why": "\"the sunscreen\" is not said word for word in \"Sunscreen is down there on your right, and you'll find toothpaste just round the corner.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": "s85-sí",
+      "target": "Sí",
+      "known": "yes,",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak Spanish better.",
+      "why": "\"and I need to practise more\" is not said word for word in \"Yes, I'm on holiday, and I need to practice more to speak Spanish better.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": "s85-estoy-de-vacaciones",
+      "target": "estoy de vacaciones",
+      "known": "I'm on holiday,",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak Spanish better.",
+      "why": "\"and I need to practise more\" is not said word for word in \"Yes, I'm on holiday, and I need to practice more to speak Spanish better.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": "s85-y-necesito-practicar-más",
+      "target": "y necesito practicar más",
+      "known": "and I need to practise more",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak Spanish better.",
+      "why": "\"and I need to practise more\" is not said word for word in \"Yes, I'm on holiday, and I need to practice more to speak Spanish better.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC10-S009:s1",
+      "line": 0,
+      "lego": "s85-para-hablar-español-mejor",
+      "target": "para hablar español mejor",
+      "known": "to speak Spanish better.",
+      "knownSentence": "Yes, I'm on holiday, and I need to practice more to speak Spanish better.",
+      "why": "\"and I need to practise more\" is not said word for word in \"Yes, I'm on holiday, and I need to practice more to speak Spanish better.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Sí, tiene una habitación doble",
+      "known": "",
+      "knownSentence": "Yes, you have a double room for three nights.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "para tres noches",
+      "known": "for three nights",
+      "knownSentence": "Yes, you have a double room for three nights.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S002:s2",
+      "line": 0,
+      "lego": "s88-me-permite-ver",
+      "target": "Me permite ver",
+      "known": "could I see",
+      "knownSentence": "Could I see some ID, please?",
+      "why": "\"some identity document\" is not said word for word in \"Could I see some ID, please?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S002:s2",
+      "line": 0,
+      "lego": "s88-algún-documento-de-identidad",
+      "target": "algún documento de identidad",
+      "known": "some identity document",
+      "knownSentence": "Could I see some ID, please?",
+      "why": "\"some identity document\" is not said word for word in \"Could I see some ID, please?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S002:s2",
+      "line": 0,
+      "lego": "s88-por-favor",
+      "target": "por favor",
+      "known": "please",
+      "knownSentence": "Could I see some ID, please?",
+      "why": "\"some identity document\" is not said word for word in \"Could I see some ID, please?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S005",
+      "line": 0,
+      "lego": null,
+      "target": "La habitación",
+      "known": "",
+      "knownSentence": "Does the room have a view?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S005",
+      "line": 0,
+      "lego": null,
+      "target": "tiene vistas",
+      "known": "",
+      "knownSentence": "Does the room have a view?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S007",
+      "line": 0,
+      "lego": "s93-a-qué-hora",
+      "target": "A qué hora",
+      "known": "at what time",
+      "knownSentence": "What time is breakfast served?",
+      "why": "\"at what time\" is not said word for word in \"What time is breakfast served?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S007",
+      "line": 0,
+      "lego": "s93-se-sirve",
+      "target": "se sirve",
+      "known": "is served",
+      "knownSentence": "What time is breakfast served?",
+      "why": "\"at what time\" is not said word for word in \"What time is breakfast served?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S007",
+      "line": 0,
+      "lego": "s93-el-desayuno",
+      "target": "el desayuno",
+      "known": "the breakfast",
+      "knownSentence": "What time is breakfast served?",
+      "why": "\"at what time\" is not said word for word in \"What time is breakfast served?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S008:s0",
+      "line": 0,
+      "lego": "s94-desde-las-siete-y-media",
+      "target": "Desde las siete y media",
+      "known": "From half past seven",
+      "knownSentence": "From half-past seven until ten o'clock.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S008:s0",
+      "line": 0,
+      "lego": "s94-hasta-las-diez",
+      "target": "hasta las diez",
+      "known": "until ten.",
+      "knownSentence": "From half-past seven until ten o'clock.",
+      "why": "the pieces do not cover the known sentence exactly"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-maravilloso",
+      "target": "Maravilloso",
+      "known": "Wonderful.",
+      "knownSentence": "Wonderful.",
+      "why": "\"is it possible\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-es-posible",
+      "target": "Es posible",
+      "known": "is it possible",
+      "knownSentence": "Wonderful.",
+      "why": "\"is it possible\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-que-hagamos-una-salida-tardía",
+      "target": "que hagamos una salida tardía",
+      "known": "that we do a late check-out",
+      "knownSentence": "Wonderful.",
+      "why": "\"is it possible\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "No me encuentro muy bien",
+      "known": "",
+      "knownSentence": "I'm not feeling great - could you recommend something?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S001:s1",
+      "line": 0,
+      "lego": null,
+      "target": "me podría recomendar algo",
+      "known": "",
+      "knownSentence": "I'm not feeling great - could you recommend something?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S003",
+      "line": 0,
+      "lego": "s102-tengo-dolor-de-cabeza",
+      "target": "Tengo dolor de cabeza",
+      "known": "I have a headache",
+      "knownSentence": "I've had a headache and a sore throat since yesterday.",
+      "why": "\"I have a headache\" is not said word for word in \"I've had a headache and a sore throat since yesterday.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S003",
+      "line": 0,
+      "lego": "s102-y-me-duele-la-garganta",
+      "target": "y me duele la garganta",
+      "known": "and my throat hurts",
+      "knownSentence": "I've had a headache and a sore throat since yesterday.",
+      "why": "\"I have a headache\" is not said word for word in \"I've had a headache and a sore throat since yesterday.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S003",
+      "line": 0,
+      "lego": "s102-desde-ayer",
+      "target": "desde ayer",
+      "known": "since yesterday",
+      "knownSentence": "I've had a headache and a sore throat since yesterday.",
+      "why": "\"I have a headache\" is not said word for word in \"I've had a headache and a sore throat since yesterday.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Pruebe con paracetamol",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "para el dolor de cabeza",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "y estas pastillas",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S004",
+      "line": 0,
+      "lego": null,
+      "target": "para la garganta",
+      "known": "",
+      "knownSentence": "Try paracetamol for the headache, and these lozenges for the throat.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S007",
+      "line": 0,
+      "lego": null,
+      "target": "Se pueden tomar",
+      "known": "",
+      "knownSentence": "Are they all right to take with food?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC12-S007",
+      "line": 0,
+      "lego": null,
+      "target": "con comida",
+      "known": "",
+      "knownSentence": "Are they all right to take with food?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-está-a-unos-diez-minutos",
+      "target": "está a unos diez minutos",
+      "known": "it's about ten minutes",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S002:s0",
+      "line": 0,
+      "lego": "s111-a-pie",
+      "target": "a pie",
+      "known": "on foot",
+      "knownSentence": "Yes, it's about a ten minute walk.",
+      "why": "\"it's about ten minutes\" is not said word for word in \"Yes, it's about a ten minute walk.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "Siga todo recto",
+      "known": "go straight ahead",
+      "knownSentence": "Go straight along this road.",
+      "why": "\"go straight ahead\" is not said word for word in \"Go straight along this road.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S002:s1",
+      "line": 0,
+      "lego": null,
+      "target": "por esta calle",
+      "known": "along this street",
+      "knownSentence": "Go straight along this road.",
+      "why": "\"go straight ahead\" is not said word for word in \"Go straight along this road.\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": null,
+      "target": "En la segunda rotonda",
+      "known": "At the second roundabout,",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": null,
+      "target": "tome la primera",
+      "known": "",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC13-S005",
+      "line": 0,
+      "lego": null,
+      "target": "salida",
+      "known": "",
+      "knownSentence": "At the second roundabout, take the first exit.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Cuánto tiempo",
+      "known": "how long",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"more or less\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": null,
+      "target": "cree que tardará",
+      "known": "do you think it will take",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"more or less\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S003",
+      "line": 0,
+      "lego": null,
+      "target": "más o menos",
+      "known": "more or less",
+      "knownSentence": "About how long do you think it will take?",
+      "why": "\"more or less\" is not said word for word in \"About how long do you think it will take?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-sabe-dónde-puedo-comprar",
+      "target": "Sabe dónde puedo comprar",
+      "known": "Do you know where I can buy",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"Do you know where I can buy\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-un-billete",
+      "target": "un billete",
+      "known": "a ticket",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"Do you know where I can buy\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC14-S005",
+      "line": 0,
+      "lego": "s125-en-la-estación",
+      "target": "en la estación",
+      "known": "in the station?",
+      "knownSentence": "Do you know where I can get a ticket in the station?",
+      "why": "\"Do you know where I can buy\" is not said word for word in \"Do you know where I can get a ticket in the station?\""
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Me puede decir",
+      "known": "",
+      "knownSentence": "Can you tell me how much that is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S002",
+      "line": 0,
+      "lego": null,
+      "target": "cuánto es",
+      "known": "",
+      "knownSentence": "Can you tell me how much that is?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S006",
+      "line": 0,
+      "lego": null,
+      "target": "Dónde podemos",
+      "known": "",
+      "knownSentence": "Where can we get a taxi?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S006",
+      "line": 0,
+      "lego": null,
+      "target": "coger un taxi",
+      "known": "",
+      "knownSentence": "Where can we get a taxi?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "Prefiero intentar hablar",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "tu idioma",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC15-S009",
+      "line": 0,
+      "lego": null,
+      "target": "me parece más educado",
+      "known": "",
+      "knownSentence": "I prefer to try to speak your language, I think it's polite.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC16-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Podemos intentarlo",
+      "known": "",
+      "knownSentence": "Can we try again?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC16-S003",
+      "line": 0,
+      "lego": null,
+      "target": "otra vez",
+      "known": "",
+      "knownSentence": "Can we try again?",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC16-S010",
+      "line": 0,
+      "lego": null,
+      "target": "Lo siento",
+      "known": "",
+      "knownSentence": "I'm sorry, I don't have any cash.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC16-S010",
+      "line": 0,
+      "lego": null,
+      "target": "no llevo efectivo",
+      "known": "",
+      "knownSentence": "I'm sorry, I don't have any cash.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC17-S007",
+      "line": 0,
+      "lego": null,
+      "target": "Hace calor hoy",
+      "known": "",
+      "knownSentence": "It's hot today, again.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC17-S007",
+      "line": 0,
+      "lego": null,
+      "target": "otra vez",
+      "known": "",
+      "knownSentence": "It's hot today, again.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC19-S003",
+      "line": 0,
+      "lego": null,
+      "target": "Cuando hablas rápido",
+      "known": "",
+      "knownSentence": "When you talk quickly, it makes me feel stupid.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC19-S003",
+      "line": 0,
+      "lego": null,
+      "target": "me hace sentir tonto",
+      "known": "",
+      "knownSentence": "When you talk quickly, it makes me feel stupid.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S002",
+      "line": 0,
+      "lego": null,
+      "target": "Y luego",
+      "known": "",
+      "knownSentence": "And then another cone with one scoop of lemon and one of blueberry.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S002",
+      "line": 0,
+      "lego": null,
+      "target": "otro cucurucho",
+      "known": "",
+      "knownSentence": "And then another cone with one scoop of lemon and one of blueberry.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S002",
+      "line": 0,
+      "lego": null,
+      "target": "con una bola de limón",
+      "known": "",
+      "knownSentence": "And then another cone with one scoop of lemon and one of blueberry.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S002",
+      "line": 0,
+      "lego": null,
+      "target": "y una de arándanos",
+      "known": "",
+      "knownSentence": "And then another cone with one scoop of lemon and one of blueberry.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S004",
+      "line": 0,
+      "lego": null,
+      "target": "Gracias por todo",
+      "known": "",
+      "knownSentence": "Thank you for all your work.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC20-S004",
+      "line": 0,
+      "lego": null,
+      "target": "tu trabajo",
+      "known": "",
+      "knownSentence": "Thank you for all your work.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC22-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Gracias",
+      "known": "",
+      "knownSentence": "Thank you, that's good to know.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC22-S003:s0",
+      "line": 0,
+      "lego": null,
+      "target": "me alegra saberlo",
+      "known": "",
+      "knownSentence": "Thank you, that's good to know.",
+      "why": "piece has no known text"
+    }
+  ],
+  "playsWhole": [
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC02-S002:s0",
+      "line": 0,
+      "lego": "s6-no",
+      "target": "No",
+      "known": "no",
+      "knownSentence": "No, it's free.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC02-S002:s0",
+      "line": 0,
+      "lego": "s6-está-libre",
+      "target": "está libre",
+      "known": "it's free",
+      "knownSentence": "No, it's free.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC02-S002:s1",
+      "line": 0,
+      "lego": "s6-por-favor",
+      "target": "Por favor",
+      "known": "please",
+      "knownSentence": "Please, go ahead.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC02-S002:s1",
+      "line": 0,
+      "lego": "s6-pase",
+      "target": "pase",
+      "known": "go ahead",
+      "knownSentence": "Please, go ahead.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-hola",
+      "target": "Hola",
+      "known": "Hello,",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-buenas-noches",
+      "target": "buenas noches",
+      "known": "good evening!",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": "s54-no-sé",
+      "target": "No sé",
+      "known": "I'm not sure",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": "s54-si-tengo-hambre",
+      "target": "si tengo hambre",
+      "known": "if I'm hungry",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S013:s0",
+      "line": 0,
+      "lego": "s55-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC08-S013:s0",
+      "line": 0,
+      "lego": "s55-claro",
+      "target": "claro",
+      "known": "of course",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S002:s1",
+      "line": 0,
+      "lego": "s60-por-favor",
+      "target": "Por favor",
+      "known": "please,",
+      "knownSentence": "Please follow me.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC09-S002:s1",
+      "line": 0,
+      "lego": "s60-síganme",
+      "target": "síganme",
+      "known": "follow me.",
+      "knownSentence": "Please follow me.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-sí",
+      "target": "Sí",
+      "known": "yes",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "spa_for_eng",
+      "card": "spa_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-da-al-jardín",
+      "target": "da al jardín",
+      "known": "it overlooks the garden",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    }
+  ]
+}

@@ -1,0 +1,725 @@
+{
+  "course": "ita_for_eng",
+  "knownLanguage": "eng",
+  "tool": "tools/pod-drill-cuts/known-rerecord.mjs (job #665)",
+  "note": "A LIST, not audio. Nothing is rendered until Kai authorises it, through Popty /api/audio/render.",
+  "tally": {
+    "already-cut": 318,
+    "cuttable": 10,
+    "re-record": 0,
+    "needs-pairing": 71
+  },
+  "rerecord": [],
+  "needsPairing": [
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": "s1-buongiorno",
+      "target": "Buongiorno",
+      "known": "Good morning,",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC01-S001",
+      "line": 0,
+      "lego": null,
+      "target": "Sarah",
+      "known": "",
+      "knownSentence": "Good morning, Sarah!",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC01-S002:s0",
+      "line": 0,
+      "lego": "s2-buongiorno",
+      "target": "Buongiorno",
+      "known": "good morning.",
+      "knownSentence": "Good morning.",
+      "why": "\"how are you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC01-S002:s0",
+      "line": 0,
+      "lego": "s2-come-stai",
+      "target": "Come stai",
+      "known": "how are you?",
+      "knownSentence": "Good morning.",
+      "why": "\"how are you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC03-S001:s0",
+      "line": 0,
+      "lego": "s7-buonasera",
+      "target": "Buonasera",
+      "known": "good afternoon.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"what can I get you?\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC03-S001:s0",
+      "line": 0,
+      "lego": "s7-cosa-prendo",
+      "target": "Cosa prendo",
+      "known": "what can I get you?",
+      "knownSentence": "Good afternoon.",
+      "why": "\"what can I get you?\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC03-S002:s0",
+      "line": 0,
+      "lego": "s8-buonasera",
+      "target": "Buonasera",
+      "known": "good evening.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC03-S002:s0",
+      "line": 0,
+      "lego": "s8-vorrei-un-caffè",
+      "target": "Vorrei un caffè",
+      "known": "I'd like a coffee,",
+      "knownSentence": "Good afternoon.",
+      "why": "\"good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC03-S002:s0",
+      "line": 0,
+      "lego": "s8-per-favore",
+      "target": "per favore",
+      "known": "please.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-ciao",
+      "target": "Ciao",
+      "known": "Hello!",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-mi-dispiace",
+      "target": "Mi dispiace",
+      "known": "I'm sorry",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC04-S002:s0",
+      "line": 0,
+      "lego": "s11-ma-non-posso-parlare-adesso",
+      "target": "ma non posso parlare adesso",
+      "known": "but I can't talk now",
+      "knownSentence": "Hello!",
+      "why": "\"I'm sorry\" is not said word for word in \"Hello!\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": "s13-buonasera",
+      "target": "Buonasera",
+      "known": "Good evening,",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC05-S001:s0",
+      "line": 0,
+      "lego": null,
+      "target": "Sarah",
+      "known": "",
+      "knownSentence": "Good evening, Sarah.",
+      "why": "piece has no known text"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S001:s0",
+      "line": 0,
+      "lego": "s28-buongiorno",
+      "target": "Buongiorno",
+      "known": "Good morning.",
+      "knownSentence": "Good morning.",
+      "why": "\"What can I get you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S001:s0",
+      "line": 0,
+      "lego": "s28-cosa-prendo",
+      "target": "Cosa prendo",
+      "known": "What can I get you?",
+      "knownSentence": "Good morning.",
+      "why": "\"What can I get you?\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S005:s0",
+      "line": 0,
+      "lego": "s32-certo",
+      "target": "Certo",
+      "known": "of course.",
+      "knownSentence": "Of course.",
+      "why": "\"here, or to take away?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S005:s0",
+      "line": 0,
+      "lego": "s32-qui-o-per-asporto",
+      "target": "Qui o per asporto",
+      "known": "here, or to take away?",
+      "knownSentence": "Of course.",
+      "why": "\"here, or to take away?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S008:s0",
+      "line": 0,
+      "lego": "s35-subito",
+      "target": "Subito",
+      "known": "right away.",
+      "knownSentence": "Right away.",
+      "why": "\"would you like anything else?\" is not said word for word in \"Right away.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S008:s0",
+      "line": 0,
+      "lego": "s35-desidera-altro",
+      "target": "Desidera altro",
+      "known": "would you like anything else?",
+      "knownSentence": "Right away.",
+      "why": "\"would you like anything else?\" is not said word for word in \"Right away.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S012:s0",
+      "line": 0,
+      "lego": "s39-certo",
+      "target": "Certo",
+      "known": "Of course.",
+      "knownSentence": "Of course.",
+      "why": "\"There's the machine.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S012:s0",
+      "line": 0,
+      "lego": "s39-ecco-il-lettore",
+      "target": "Ecco il lettore",
+      "known": "There's the machine.",
+      "knownSentence": "Of course.",
+      "why": "\"There's the machine.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S013:s0",
+      "line": 0,
+      "lego": "s40-buongiorno",
+      "target": "Buongiorno",
+      "known": "Good morning.",
+      "knownSentence": "Good morning.",
+      "why": "\"Two Americanos\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S013:s0",
+      "line": 0,
+      "lego": "s40-due-caffè-americani",
+      "target": "Due caffè americani",
+      "known": "Two Americanos",
+      "knownSentence": "Good morning.",
+      "why": "\"Two Americanos\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S013:s0",
+      "line": 0,
+      "lego": "s40-e-una-tazza-di-tè",
+      "target": "e una tazza di tè",
+      "known": "and a cup of tea,",
+      "knownSentence": "Good morning.",
+      "why": "\"Two Americanos\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC07-S013:s0",
+      "line": 0,
+      "lego": "s40-per-favore",
+      "target": "per favore",
+      "known": "please.",
+      "knownSentence": "Good morning.",
+      "why": "\"Two Americanos\" is not said word for word in \"Good morning.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC08-S001:s0",
+      "line": 0,
+      "lego": "s43-buonasera",
+      "target": "Buonasera",
+      "known": "Good evening.",
+      "knownSentence": "Good evening.",
+      "why": "\"What can I get you?\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC08-S001:s0",
+      "line": 0,
+      "lego": "s43-cosa-prendo",
+      "target": "Cosa prendo",
+      "known": "What can I get you?",
+      "knownSentence": "Good evening.",
+      "why": "\"What can I get you?\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S001:s0",
+      "line": 0,
+      "lego": "s59-buonasera",
+      "target": "Buonasera",
+      "known": "good evening.",
+      "knownSentence": "Good evening.",
+      "why": "\"we have a booking for two,\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S001:s0",
+      "line": 0,
+      "lego": "s59-abbiamo-una-prenotazione-per-due",
+      "target": "Abbiamo una prenotazione per due",
+      "known": "we have a booking for two,",
+      "knownSentence": "Good evening.",
+      "why": "\"we have a booking for two,\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S001:s0",
+      "line": 0,
+      "lego": "s59-a-nome-davies",
+      "target": "a nome Davies",
+      "known": "under the name Davies.",
+      "knownSentence": "Good evening.",
+      "why": "\"we have a booking for two,\" is not said word for word in \"Good evening.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S002:s0",
+      "line": 0,
+      "lego": "s60-benvenuti",
+      "target": "Benvenuti",
+      "known": "Welcome.",
+      "knownSentence": "Welcome.",
+      "why": "\"Please,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S002:s0",
+      "line": 0,
+      "lego": "s60-prego",
+      "target": "Prego",
+      "known": "Please,",
+      "knownSentence": "Welcome.",
+      "why": "\"Please,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S002:s0",
+      "line": 0,
+      "lego": "s60-mi-seguano",
+      "target": "mi seguano",
+      "known": "follow me.",
+      "knownSentence": "Welcome.",
+      "why": "\"Please,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-certamente",
+      "target": "Certamente",
+      "known": "Of course.",
+      "knownSentence": "Of course.",
+      "why": "\"And what would you like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S011:s0",
+      "line": 0,
+      "lego": "s69-e-cosa-desiderano-da-bere",
+      "target": "E cosa desiderano da bere",
+      "known": "And what would you like to drink?",
+      "knownSentence": "Of course.",
+      "why": "\"And what would you like to drink?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": "s71-una-bottiglia-del-vino-rosso-della-casa",
+      "target": "Una bottiglia del vino rosso della casa",
+      "known": "a bottle of the red wine of the house",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"a bottle of the red wine of the house\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S013",
+      "line": 0,
+      "lego": "s71-sarebbe-perfetta",
+      "target": "sarebbe perfetta",
+      "known": "would be perfect",
+      "knownSentence": "A bottle of the house red would be lovely.",
+      "why": "\"a bottle of the red wine of the house\" is not said word for word in \"A bottle of the house red would be lovely.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S014:s1",
+      "line": 0,
+      "lego": "s72-gliela-porto",
+      "target": "Gliela porto",
+      "known": "I'll bring it to you",
+      "knownSentence": "I'll bring it right over.",
+      "why": "\"I'll bring it to you\" is not said word for word in \"I'll bring it right over.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC09-S014:s1",
+      "line": 0,
+      "lego": "s72-subito",
+      "target": "subito",
+      "known": "right away.",
+      "knownSentence": "I'll bring it right over.",
+      "why": "\"I'll bring it to you\" is not said word for word in \"I'll bring it right over.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC10-S001:s0",
+      "line": 0,
+      "lego": "s77-scusi",
+      "target": "Scusi",
+      "known": "Excuse me.",
+      "knownSentence": "Excuse me.",
+      "why": "\"Do you have any painkillers?\" is not said word for word in \"Excuse me.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC10-S001:s0",
+      "line": 0,
+      "lego": "s77-ha-degli-antidolorifici",
+      "target": "Ha degli antidolorifici",
+      "known": "Do you have any painkillers?",
+      "knownSentence": "Excuse me.",
+      "why": "\"Do you have any painkillers?\" is not said word for word in \"Excuse me.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-grazie",
+      "target": "Grazie",
+      "known": "Thank you.",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have any painkillers\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-e-ha-degli-antidolorifici",
+      "target": "E ha degli antidolorifici",
+      "known": "And do you have any painkillers",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have any painkillers\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC10-S003:s0",
+      "line": 0,
+      "lego": "s79-per-bambini",
+      "target": "per bambini",
+      "known": "for children?",
+      "knownSentence": "Thank you.",
+      "why": "\"And do you have any painkillers\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S001:s0",
+      "line": 0,
+      "lego": "s87-buonasera",
+      "target": "Buonasera",
+      "known": "Good evening.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"Good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S001:s0",
+      "line": 0,
+      "lego": "s87-ho-una-prenotazione",
+      "target": "Ho una prenotazione",
+      "known": "I have a booking",
+      "knownSentence": "Good afternoon.",
+      "why": "\"Good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S001:s0",
+      "line": 0,
+      "lego": "s87-a-nome-jones",
+      "target": "a nome Jones",
+      "known": "under the name Jones.",
+      "knownSentence": "Good afternoon.",
+      "why": "\"Good evening.\" is not said word for word in \"Good afternoon.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S002:s0",
+      "line": 0,
+      "lego": "s88-benvenuto",
+      "target": "Benvenuto",
+      "known": "Welcome.",
+      "knownSentence": "Welcome.",
+      "why": "\"yes,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S002:s0",
+      "line": 0,
+      "lego": "s88-sì",
+      "target": "Sì",
+      "known": "yes,",
+      "knownSentence": "Welcome.",
+      "why": "\"yes,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S002:s0",
+      "line": 0,
+      "lego": "s88-ha-una-camera-doppia",
+      "target": "ha una camera doppia",
+      "known": "you have a double room",
+      "knownSentence": "Welcome.",
+      "why": "\"yes,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S002:s0",
+      "line": 0,
+      "lego": "s88-per-tre-notti",
+      "target": "per tre notti",
+      "known": "for three nights.",
+      "knownSentence": "Welcome.",
+      "why": "\"yes,\" is not said word for word in \"Welcome.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S003:s0",
+      "line": 0,
+      "lego": "s89-certo",
+      "target": "Certo",
+      "known": "Of course.",
+      "knownSentence": "Of course.",
+      "why": "\"Here's my passport.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S003:s0",
+      "line": 0,
+      "lego": "s89-ecco-il-mio-passaporto",
+      "target": "Ecco il mio passaporto",
+      "known": "Here's my passport.",
+      "knownSentence": "Of course.",
+      "why": "\"Here's my passport.\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S007",
+      "line": 0,
+      "lego": "s93-a-che-ora",
+      "target": "A che ora",
+      "known": "at what time",
+      "knownSentence": "What time is breakfast served?",
+      "why": "\"at what time\" is not said word for word in \"What time is breakfast served?\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S007",
+      "line": 0,
+      "lego": "s93-viene-servita-la-colazione",
+      "target": "viene servita la colazione",
+      "known": "is the breakfast served?",
+      "knownSentence": "What time is breakfast served?",
+      "why": "\"at what time\" is not said word for word in \"What time is breakfast served?\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-meraviglioso",
+      "target": "Meraviglioso",
+      "known": "Wonderful.",
+      "knownSentence": "Wonderful.",
+      "why": "\"Is it possible for us\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-è-possibile-per-noi",
+      "target": "È possibile per noi",
+      "known": "Is it possible for us",
+      "knownSentence": "Wonderful.",
+      "why": "\"Is it possible for us\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S009:s0",
+      "line": 0,
+      "lego": "s95-avere-un-check-out-posticipato",
+      "target": "avere un check-out posticipato",
+      "known": "to have a late check-out?",
+      "knownSentence": "Wonderful.",
+      "why": "\"Is it possible for us\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-certo",
+      "target": "Certo",
+      "known": "of course.",
+      "knownSentence": "Of course.",
+      "why": "\"what are your symptoms?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC12-S002:s0",
+      "line": 0,
+      "lego": "s101-quali-sono-i-suoi-sintomi",
+      "target": "Quali sono i suoi sintomi",
+      "known": "what are your symptoms?",
+      "knownSentence": "Of course.",
+      "why": "\"what are your symptoms?\" is not said word for word in \"Of course.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-grazie",
+      "target": "Grazie",
+      "known": "Thank you.",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I also have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-potrei-avere-anche",
+      "target": "Potrei avere anche",
+      "known": "Could I also have",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I also have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC12-S009:s0",
+      "line": 0,
+      "lego": "s108-un-pacchetto-di-cerotti",
+      "target": "un pacchetto di cerotti",
+      "known": "a packet of plasters?",
+      "knownSentence": "Thank you.",
+      "why": "\"Could I also have\" is not said word for word in \"Thank you.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC13-S008:s0",
+      "line": 0,
+      "lego": "s117-meraviglioso",
+      "target": "Meraviglioso",
+      "known": "Wonderful.",
+      "knownSentence": "Wonderful.",
+      "why": "\"And is there a cashpoint\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC13-S008:s0",
+      "line": 0,
+      "lego": "s117-e-cè-un-bancomat",
+      "target": "E c'è un bancomat",
+      "known": "And is there a cashpoint",
+      "knownSentence": "Wonderful.",
+      "why": "\"And is there a cashpoint\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC13-S008:s0",
+      "line": 0,
+      "lego": "s117-qui-vicino",
+      "target": "qui vicino",
+      "known": "nearby?",
+      "knownSentence": "Wonderful.",
+      "why": "\"And is there a cashpoint\" is not said word for word in \"Wonderful.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-salve",
+      "target": "Salve",
+      "known": "Hello.",
+      "knownSentence": "Hello.",
+      "why": "\"can you take me\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-mi-può-portare",
+      "target": "Mi può portare",
+      "known": "can you take me",
+      "knownSentence": "Hello.",
+      "why": "\"can you take me\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-alla-stazione-ferroviaria",
+      "target": "alla stazione ferroviaria",
+      "known": "to the train station,",
+      "knownSentence": "Hello.",
+      "why": "\"can you take me\" is not said word for word in \"Hello.\""
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S001:s0",
+      "line": 0,
+      "lego": "s121-per-favore",
+      "target": "per favore",
+      "known": "please?",
+      "knownSentence": "Hello.",
+      "why": "\"can you take me\" is not said word for word in \"Hello.\""
+    }
+  ]
+}
