@@ -711,5 +711,39 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for pol (403): pol has only the 2026-09-04 draft casting, which Tom never chose, so no pol clip is rendered (cartesia_97fabd54445f refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "por_br_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:51:09.495Z",
+  "audio": {
+   "2:target": "ee19725f-2966-4725-9981-aa9df4901e7f",
+   "2:known": "fc3f1695-40df-41bc-80b5-63b2a6a20228",
+   "3:target": "8be9e25a-1f60-47db-a3e2-a8312bad36b5",
+   "3:known": "f3c1b4f8-957a-4d69-8fc0-4c90023513f8"
+  },
+  "chars": 165,
+  "voices": {
+   "SC04-S002:target": "cartesia_1cf751f6-8749-43ab-98bd-230dd633abdb",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 33,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
