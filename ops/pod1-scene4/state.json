@@ -471,5 +471,13 @@
   },
   "chars": 80,
   "why": "render refused (dry run) 2:known: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 8 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c"
+ },
+ "fin_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:42:48.131Z",
+  "why": "render refused (dry run) 2:target: 409 POD_UNCAST fin_for_eng:pod-1 line fin_for_eng:pod-1:SC04-S002 has no target-side clip and no cast voice for speaker \"Sarah\"",
+  "audio": {},
+  "chars": 0
  }
 }
