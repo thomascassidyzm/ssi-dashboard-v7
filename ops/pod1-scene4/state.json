@@ -1081,12 +1081,13 @@
   "rebound": true
  },
  "spa_for_jpn": {
-  "state": "blocked",
+  "state": "held",
   "step": "cloned",
-  "at": "2026-11-03T19:53:32.061Z",
-  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"ara\" (provider \"xai\") cannot be carried onto azure for spa_for_jpn/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"spa\" but no Cartesia voice is cast for it (the estate holds exactly ",
+  "at": "2026-11-03T20:06:27.121Z",
+  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "pass": "recast"
  },
  "spa_mx_for_eng": {
   "state": "blocked",
