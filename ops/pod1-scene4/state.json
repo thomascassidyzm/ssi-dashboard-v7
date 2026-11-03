@@ -104,12 +104,38 @@
   "rebound": true
  },
  "ara_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:35:26.152Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ara (403): azure_ar-EG-SalmaNeural is not a Cartesia voice and this course's ara voices are not all Azure; the ara cast is cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4, cartesia_002622d8-19d0-4567-a16a-f99c7397c062, cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6, cartesia_9cbad5f7",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:59:33.520Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 161,
+  "grant": "#154",
+  "recastAudio": {
+   "SC04-S001:target": "b104f286-71cf-48b2-8764-9eb43d8f7abf",
+   "SC04-S001:known": "6b336982-f32f-4982-857f-54be0acd6714",
+   "SC04-S002:target": "5b123dfb-b649-4778-b3fc-64d45226dbbc",
+   "SC04-S002:known": "d9b13764-de3b-45a6-9284-eb7f88edfa9d",
+   "SC04-S003:target": "6bc98ca8-42bf-4eac-ba0a-58bf93eecaa5",
+   "SC04-S003:known": "404aba1a-da6e-4907-a0c8-74496b86e013"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 2,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "ara_sy_for_eng": {
   "state": "held",
