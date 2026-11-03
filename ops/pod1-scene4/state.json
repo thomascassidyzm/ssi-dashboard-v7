@@ -881,5 +881,13 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ukr (403): ukr has only the 2026-09-04 draft casting, which Tom never chose, so no ukr clip is rendered (azure_uk-UA-PolinaNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "zho_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:55:24.817Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for zho (403): cartesia_33g9t0jl may not render new zho audio; Tom's cast is cartesia_653b9445-ae0c-4312-a3ce-375504cff31e, cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1, cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99. Cast it in the Voice Lab, or audition it (door.audition).",
+  "audio": {},
+  "chars": 0
  }
 }
