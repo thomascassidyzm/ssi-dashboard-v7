@@ -1,0 +1,384 @@
+{
+ "course": "deu_for_eng",
+ "tool": "tools/pods/pod-drill/render.mjs (#707)",
+ "pieces": [
+  {
+   "key": "deu_for_eng:pod-1:SC05-S001:s1|0|Did you have",
+   "card": "deu_for_eng:pod-1:SC05-S001:s1",
+   "line": 0,
+   "target": "Hattest du",
+   "known": "Did you have",
+   "why": "known seam too shallow to cut cleanly (#669): \"Did you have | a long day?\" 2.4 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "Did you have",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "210b5b01-be4e-49af-a8b2-9b1cadb9a08e",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1120,
+    "wired": true
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC05-S001:s1|0|a long day?",
+   "card": "deu_for_eng:pod-1:SC05-S001:s1",
+   "line": 0,
+   "target": "einen langen Tag",
+   "known": "a long day?",
+   "why": "known seam too shallow to cut cleanly (#669): \"Did you have | a long day?\" 2.4 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.481Z",
+    "text": "a long day?",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"a long day?\" is already recorded in eng — 11 clip(s): 892dc586-befd-4e5c-9e4f-d3983940cfe6 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 1cea45bc-c5a3-4036-a35a-f0ddf40c7bf8 (voice gfzdpspr5fdp, por_br_for_eng pod_fine_known); 4c31f8de-e6e3-4763-895c-5e048c4bf7d5 (voice gfzdpspr5fdp, est_for_en",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC06-S007:s0|0|this is",
+   "card": "deu_for_eng:pod-1:SC06-S007:s0",
+   "line": 0,
+   "target": "Das ist",
+   "known": "this is",
+   "why": "known seam too shallow to cut cleanly (#669): \"this is | a lovely city\" 1.8 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.481Z",
+    "text": "this is",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "2813c929-0f59-42fe-99a9-1698852e3dba",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC06-S007:s0|0|a lovely city",
+   "card": "deu_for_eng:pod-1:SC06-S007:s0",
+   "line": 0,
+   "target": "eine wunderschöne Stadt",
+   "known": "a lovely city",
+   "why": "known seam too shallow to cut cleanly (#669): \"this is | a lovely city\" 1.8 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.758Z",
+    "text": "a lovely city",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"a lovely city\" is already recorded in eng — 5 clip(s): eac2e09b-a843-4872-89a0-b40bfa2cd218 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 4db0265d-823b-4843-ab83-48bec2c2c6e1 (voice gfzdpspr5fdp, swe_for_eng pod_fine_known); 6617578b-6aa5-4726-a226-426d5faa89b8 (voice gfzdpspr5fdp, spa_for_eng ",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC08-S004|0|I'd like a pint",
+   "card": "deu_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "Ich möchte ein Pint",
+   "known": "I'd like a pint",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:41:41.758Z",
+    "text": "I'd like a pint",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"I'd like a pint\" is already recorded in eng — 8 clip(s): 60db27fb-f24e-490d-8721-6a2769207518 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 318e83b1-e064-424d-b634-26216fcfd15a (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 53cd0d02-3680-4ee6-95c9-84308dbeee3c (voice gfzdpspr5fdp, swe_for_en",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC08-S004|0|of the bitter,",
+   "card": "deu_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "vom Bitter",
+   "known": "of the bitter,",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:41:41.758Z",
+    "text": "of the bitter",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of the bitter\" is already recorded in eng — 6 clip(s): 874b149b-3858-4eb5-b85c-facc7e7fd376 (voice gfzdpspr5fdp, por_br_for_eng pod_fine_known); 8ce58684-9f9b-4583-9fe6-a04391f8240e (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); a94189d7-c8e8-4ba2-ba2d-033d27ace427 (voice gfzdpspr5fdp, swe_for_e",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC08-S004|0|please.",
+   "card": "deu_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "bitte",
+   "known": "please.",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:41:41.758Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC08-S012:s0|0|I'm not sure",
+   "card": "deu_for_eng:pod-1:SC08-S012:s0",
+   "line": 0,
+   "target": "Ich bin mir nicht sicher",
+   "known": "I'm not sure",
+   "why": "known seam too shallow to cut cleanly (#669): \"I'm not sure | if I'm hungry\" 3.5 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.758Z",
+    "text": "I'm not sure",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "301c4d1b-02ef-41a8-b35d-3c383084bd36",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1008,
+    "wired": true
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC08-S012:s0|0|if I'm hungry",
+   "card": "deu_for_eng:pod-1:SC08-S012:s0",
+   "line": 0,
+   "target": "ob ich hungrig bin",
+   "known": "if I'm hungry",
+   "why": "known seam too shallow to cut cleanly (#669): \"I'm not sure | if I'm hungry\" 3.5 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:41.979Z",
+    "text": "if I'm hungry",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"if I'm hungry\" is already recorded in eng — 27 clip(s): 9369b0c9-ba73-4a6e-acc4-5d571f98c805 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 07e5ff5e-775d-4077-938b-e772c9bb34f2 (voice xai_gfzdpspr5fdp, cat_for_eng pod_fine_known); 0b581fb7-8c31-49bc-85cb-f0ca42405264 (voice xai_gfzdpspr5fdp, swa",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S003|0|would you like",
+   "card": "deu_for_eng:pod-1:SC09-S003",
+   "line": 0,
+   "target": "Möchten Sie",
+   "known": "would you like",
+   "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target",
+   "render": {
+    "at": "2026-11-03T16:41:41.979Z",
+    "text": "would you like",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "6bd34715-14dd-4958-b05d-3eee7472e3d7",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S003|0|to start",
+   "card": "deu_for_eng:pod-1:SC09-S003",
+   "line": 0,
+   "target": "zum Anfang",
+   "known": "to start",
+   "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target",
+   "render": {
+    "at": "2026-11-03T16:41:42.235Z",
+    "text": "to start",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "f79dbf7d-61d6-412d-86a3-527d357cd56e",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S003|0|still or sparkling water?",
+   "card": "deu_for_eng:pod-1:SC09-S003",
+   "line": 0,
+   "target": "stilles oder Sprudelwasser",
+   "known": "still or sparkling water?",
+   "why": "the known sentence \"Would you like still or sparkling water to start?\" says these pieces in a different order from the target",
+   "render": {
+    "at": "2026-11-03T16:41:42.496Z",
+    "text": "still or sparkling water?",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"still or sparkling water?\" is already recorded in eng — 5 clip(s): ef18b126-905c-44ad-8779-72b22b01e5a4 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 30448a9d-5c83-4307-98ba-b4a8790ff911 (voice gfzdpspr5fdp, lit_for_eng pod_fine_known); 571b721c-1358-412f-bf4b-97e17cbf52e4 (voice gfzdpspr5fdp, ",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S006:s0|0|Yes,",
+   "card": "deu_for_eng:pod-1:SC09-S006:s0",
+   "line": 0,
+   "target": "Ja",
+   "known": "Yes,",
+   "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.496Z",
+    "text": "Yes",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "447a99c4-87d0-4d13-8553-144a28437d5e",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 880,
+    "wired": true
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S006:s0|0|the salmon",
+   "card": "deu_for_eng:pod-1:SC09-S006:s0",
+   "line": 0,
+   "target": "der Lachs",
+   "known": "the salmon",
+   "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "the salmon",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"the salmon\" is already recorded in eng — 6 clip(s): 760c8d32-4858-43f8-ae7c-9c4d05214bf6 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 0cdd1635-1c8c-45fa-915d-50f049f2fe47 (voice xai_gfzdpspr5fdp, hrv_for_eng pod_fine_known); 2c6699db-ab24-4798-b531-f800fd77d0d2 (voice gfzdpspr5fdp, fra_for_eng",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S006:s0|0|and the risotto",
+   "card": "deu_for_eng:pod-1:SC09-S006:s0",
+   "line": 0,
+   "target": "und das Risotto",
+   "known": "and the risotto",
+   "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "and the risotto",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and the risotto\" is already recorded in eng — 11 clip(s): 298e1f50-2349-4083-bef8-164ec9294bd7 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 189dc9ff-0966-4ca5-aaa5-db16640e42f9 (voice xai_gfzdpspr5fdp, swa_for_eng pod_fine_known); 2d5dbcc0-6b16-4a50-b9b2-b7c8b17f0945 (voice gfzdpspr5fdp, fra_c",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC09-S006:s0|0|are both gluten-free.",
+   "card": "deu_for_eng:pod-1:SC09-S006:s0",
+   "line": 0,
+   "target": "sind beide glutenfrei",
+   "known": "are both gluten-free.",
+   "why": "known seam too shallow to cut cleanly (#669): \"the salmon | and the risotto\" 1.1 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "are both gluten-free.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"are both gluten-free.\" is already recorded in eng — 29 clip(s): 3ac021ab-7249-4f83-a482-3a211b90e721 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 023a0d7a-7175-4add-9f01-3b5c4a400203 (voice xai_gfzdpspr5fdp, fas_for_eng pod_fine_known); 1d899d5d-0fc9-45f8-b6e1-6f0d0dcfed81 (voice gfzdpspr5fdp,",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC13-S008:s1|0|And is there",
+   "card": "deu_for_eng:pod-1:SC13-S008:s1",
+   "line": 0,
+   "target": "Und gibt es",
+   "known": "And is there",
+   "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "And is there",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"And is there\" is already recorded in eng — 8 clip(s): 8e75826d-ad33-480b-8130-a98ec2fc39fb (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 05ed30db-601e-45b4-a803-24d010e16254 (voice xai_gfzdpspr5fdp, eus_for_eng pod_fine_known); 16419f2d-c6a6-4ce5-b547-d0e919252b82 (voice xai_gfzdpspr5fdp, ita_f",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC13-S008:s1|0|a cashpoint",
+   "card": "deu_for_eng:pod-1:SC13-S008:s1",
+   "line": 0,
+   "target": "einen Geldautomaten",
+   "known": "a cashpoint",
+   "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "a cashpoint",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"a cashpoint\" is already recorded in eng — 8 clip(s): b492e870-c72f-414b-ae50-9185f241b702 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 02753fdb-e387-43a4-8183-5ea1e23fc0b2 (voice xai_gfzdpspr5fdp, ita_for_eng pod_fine_known); 5877ae7a-e074-4b62-b65c-0693363b605c (voice gfzdpspr5fdp, fra_for_en",
+    "wired": false
+   }
+  },
+  {
+   "key": "deu_for_eng:pod-1:SC13-S008:s1|0|nearby?",
+   "card": "deu_for_eng:pod-1:SC13-S008:s1",
+   "line": 0,
+   "target": "in der Nähe",
+   "known": "nearby?",
+   "why": "known seam too shallow to cut cleanly (#669): \"a cashpoint | nearby?\" 3.9 dB below speech",
+   "render": {
+    "at": "2026-11-03T16:41:42.786Z",
+    "text": "nearby?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"nearby?\" is already recorded in eng — 14 clip(s): 2cd4a743-c422-47a9-a3b2-785a621099a9 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 03303533-a3aa-4420-8761-ba8f87d9a62c (voice xai_gfzdpspr5fdp, ita_for_eng pod_fine_known); 0a8f5c66-383d-4ef3-aad7-b044b81cab3e (voice xai_gfzdpspr5fdp, eus_for_e",
+    "wired": false
+   }
+  }
+ ]
+}

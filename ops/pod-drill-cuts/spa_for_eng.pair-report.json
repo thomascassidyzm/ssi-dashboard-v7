@@ -1,10 +1,10 @@
 {
- "tool": "tools/pod-drill-cuts/pair.mjs (#381) --lego-only (#669)",
+ "tool": "tools/pods/pod-drill/pair.mjs (#381, Popty #692) --lego-only (#669)",
  "totals": {
   "cards": 395,
   "fitsWhole": 328,
-  "alreadyCut": 44,
-  "newLego": 15,
+  "alreadyCut": 59,
+  "newLego": 0,
   "newSonnet": 0,
   "newLines": 0,
   "whole": 8
@@ -22,8 +22,8 @@
   "SC02": {
    "cards": 7,
    "fitsWhole": 6,
-   "alreadyCut": 0,
-   "newLego": 1,
+   "alreadyCut": 1,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -58,8 +58,8 @@
   "SC06": {
    "cards": 36,
    "fitsWhole": 32,
-   "alreadyCut": 3,
-   "newLego": 1,
+   "alreadyCut": 4,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -67,8 +67,8 @@
   "SC07": {
    "cards": 27,
    "fitsWhole": 20,
-   "alreadyCut": 4,
-   "newLego": 3,
+   "alreadyCut": 7,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -76,8 +76,8 @@
   "SC08": {
    "cards": 28,
    "fitsWhole": 20,
-   "alreadyCut": 3,
-   "newLego": 4,
+   "alreadyCut": 7,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 1
@@ -85,8 +85,8 @@
   "SC09": {
    "cards": 35,
    "fitsWhole": 25,
-   "alreadyCut": 7,
-   "newLego": 3,
+   "alreadyCut": 10,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -94,8 +94,8 @@
   "SC10": {
    "cards": 21,
    "fitsWhole": 16,
-   "alreadyCut": 4,
-   "newLego": 1,
+   "alreadyCut": 5,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -103,8 +103,8 @@
   "SC11": {
    "cards": 24,
    "fitsWhole": 20,
-   "alreadyCut": 3,
-   "newLego": 1,
+   "alreadyCut": 4,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -112,8 +112,8 @@
   "SC12": {
    "cards": 17,
    "fitsWhole": 13,
-   "alreadyCut": 3,
-   "newLego": 1,
+   "alreadyCut": 4,
+   "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
@@ -209,119 +209,11 @@
    "whole": 0
   }
  },
- "newCuts": [
-  {
-   "id": "spa_for_eng:pod-1:SC02-S001",
-   "scene": 2,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC06-S011:s0",
-   "scene": 6,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S004:s1",
-   "scene": 7,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S007",
-   "scene": 7,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S014:s1",
-   "scene": 7,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S003",
-   "scene": 8,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S008",
-   "scene": 8,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S009",
-   "scene": 8,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S010",
-   "scene": 8,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S004",
-   "scene": 9,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S006:s0",
-   "scene": 9,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S008:s1",
-   "scene": 9,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC10-S007:s0",
-   "scene": 10,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC11-S010",
-   "scene": 11,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC12-S005",
-   "scene": 12,
-   "source": "lego",
-   "seams": "cartesia",
-   "retried": false
-  }
- ],
+ "newCuts": [],
  "knownFill": {
-  "spa_for_eng:pod-1:SC03-S002:s2": "filled",
   "spa_for_eng:pod-1:SC03-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC04-S003:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC06-S007:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC06-S009:s0": "filled",
   "spa_for_eng:pod-1:SC06-S011:s2": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC07-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC07-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
@@ -332,18 +224,12 @@
   "spa_for_eng:pod-1:SC08-S005": "the English clip has no Cartesia word timings that say its text",
   "spa_for_eng:pod-1:SC09-S001:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC09-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S005:s0": "filled",
   "spa_for_eng:pod-1:SC09-S009:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC09-S010:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S016:s0": "filled",
   "spa_for_eng:pod-1:SC09-S017:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC10-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC10-S003:s1": "filled",
-  "spa_for_eng:pod-1:SC10-S004": "filled",
-  "spa_for_eng:pod-1:SC10-S009:s2": "filled",
   "spa_for_eng:pod-1:SC11-S002:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC11-S005": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC11-S008:s1": "filled",
   "spa_for_eng:pod-1:SC12-S001:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC12-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
   "spa_for_eng:pod-1:SC12-S007": "the chunks' English is not an unbroken run of the English sentence in target order",
@@ -364,144 +250,6 @@
  "knownTooShallow": {},
  "knownMinDipDb": 5,
  "cards": [
-  {
-   "id": "spa_for_eng:pod-1:SC02-S001",
-   "scene": 2,
-   "target": "Perdón, ¿está ocupado este asiento?",
-   "known": "Excuse me, is this seat taken?",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Perdón",
-     "excuse me,"
-    ],
-    [
-     "está ocupado este asiento",
-     "is this seat taken?"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC06-S011:s0",
-   "scene": 6,
-   "target": "Enseño inglés, pero no en un colegio.",
-   "known": "I teach English, but not in a school.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Enseño inglés",
-     "I teach English"
-    ],
-    [
-     "pero no en un colegio",
-     "but not in a school"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S004:s1",
-   "scene": 7,
-   "target": "Con leche de avena si tiene.",
-   "known": "With oat milk if you have it.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Con leche de avena",
-     "with oat milk"
-    ],
-    [
-     "si tiene",
-     "if you have it"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S007",
-   "scene": 7,
-   "target": "¿Me pone dos cafés con leche y dos cafés solos y uno de esos, por favor?",
-   "known": "Could I have two white coffees and two black coffees and one of those, please?",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Me pone dos cafés con leche",
-     "could I have two white coffees"
-    ],
-    [
-     "y dos cafés solos",
-     "and two black coffees"
-    ],
-    [
-     "y uno de esos",
-     "and one of those,"
-    ],
-    [
-     "por favor",
-     "please?"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC07-S014:s1",
-   "scene": 7,
-   "target": "La mesa junto a la ventana está libre.",
-   "known": "The table by the window is free.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "La mesa junto a la ventana",
-     "the table by the window"
-    ],
-    [
-     "está libre",
-     "is free."
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S003",
-   "scene": 8,
-   "target": "Tenemos una amarga y una negra, y las dos son locales.",
-   "known": "We've got a bitter and a stout, and they're both local.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Tenemos una amarga",
-     "we've got a bitter"
-    ],
-    [
-     "y una negra",
-     "and a stout,"
-    ],
-    [
-     "y las dos son locales",
-     "and they're both local."
-    ]
-   ],
-   "retried": false
-  },
   {
    "id": "spa_for_eng:pod-1:SC08-S004",
    "scene": 8,
@@ -527,223 +275,6 @@
     [
      "por favor",
      "please"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S008",
-   "scene": 8,
-   "target": "Me gustaría una copa grande de vino blanco, por favor.",
-   "known": "I'd like a large glass of white wine, please.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Me gustaría una copa grande",
-     "I'd like a large glass"
-    ],
-    [
-     "de vino blanco",
-     "of white wine"
-    ],
-    [
-     "por favor",
-     "please"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S009",
-   "scene": 8,
-   "target": "¿Me pone una copa pequeña de vino tinto?",
-   "known": "Can I have a small glass of red wine?",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Me pone una copa pequeña",
-     "Can I have a small glass"
-    ],
-    [
-     "de vino tinto",
-     "of red wine?"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC08-S010",
-   "scene": 8,
-   "target": "Me gustaría dos copas más de cerveza.",
-   "known": "I'd like two more glasses of beer.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Me gustaría",
-     "I'd like"
-    ],
-    [
-     "dos copas más",
-     "two more glasses"
-    ],
-    [
-     "de cerveza",
-     "of beer."
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S004",
-   "scene": 9,
-   "target": "Nos gustaría una botella de agua con gas y una botella de agua sin gas, por favor.",
-   "known": "We'd like one bottle of sparkling water and one bottle of still water, please.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Nos gustaría",
-     "we'd like"
-    ],
-    [
-     "una botella de agua con gas",
-     "one bottle of sparkling water"
-    ],
-    [
-     "y una botella de agua sin gas",
-     "and one bottle of still water"
-    ],
-    [
-     "por favor",
-     "please"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S006:s0",
-   "scene": 9,
-   "target": "Sí, el salmón y el risotto son los dos sin gluten.",
-   "known": "Yes, the salmon and the risotto are both gluten-free.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Sí",
-     "yes"
-    ],
-    [
-     "el salmón y el risotto",
-     "the salmon and the risotto"
-    ],
-    [
-     "son los dos sin gluten",
-     "are both gluten-free"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC09-S008:s1",
-   "scene": 9,
-   "target": "Se ha cocinado a fuego lento, con romero.",
-   "known": "It's been slow-cooked, with rosemary.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Se ha cocinado a fuego lento",
-     "It's been slow-cooked,"
-    ],
-    [
-     "con romero",
-     "with rosemary."
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC10-S007:s0",
-   "scene": 10,
-   "target": "Gracias, ha sido usted muy amable.",
-   "known": "Thank you, you've been very helpful.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Gracias",
-     "thank you"
-    ],
-    [
-     "ha sido usted muy amable",
-     "you've been very helpful"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC11-S010",
-   "scene": 11,
-   "target": "Sí, puede quedarse hasta el mediodía, sin cargo adicional.",
-   "known": "Yes, you can stay until midday, no extra charge.",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Sí",
-     "yes"
-    ],
-    [
-     "puede quedarse",
-     "you can stay"
-    ],
-    [
-     "hasta el mediodía",
-     "until midday"
-    ],
-    [
-     "sin cargo adicional",
-     "no extra charge"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC12-S005",
-   "scene": 12,
-   "target": "¿Con qué frecuencia debo tomar el paracetamol?",
-   "known": "How often should I take the paracetamol?",
-   "status": "cut",
-   "source": "lego",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": [
-    [
-     "Con qué frecuencia",
-     "How often"
-    ],
-    [
-     "debo tomar el paracetamol",
-     "should I take the paracetamol?"
     ]
    ],
    "retried": false

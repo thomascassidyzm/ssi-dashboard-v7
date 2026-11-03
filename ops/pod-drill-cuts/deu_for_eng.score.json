@@ -1,0 +1,1100 @@
+{
+ "course": "deu_for_eng",
+ "tool": "tools/pods/pod-drill/score.mjs (#707)",
+ "boundary": {
+  "MARGIN_MS": 10
+ },
+ "totals": {
+  "pieces": 33,
+  "clean": 19,
+  "tight": 14,
+  "unscored": 0
+ },
+ "pieces": [
+  {
+   "id": "deu_for_eng:pod-1:SC01-S003:s0",
+   "knownClip": "6eced8bd-1a85-4837-b805-bb0f9541fd13",
+   "knownSentence": "I'm very well, thank you.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'm very well,",
+   "target": "Mir geht es sehr gut",
+   "startMs": 60,
+   "endMs": 910,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 910,
+     "aWord": "well,",
+     "bWord": "thank",
+     "gapMs": 260,
+     "marginMs": 70,
+     "inside": null,
+     "tight": false,
+     "why": "\"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC01-S003:s0",
+   "knownClip": "6eced8bd-1a85-4837-b805-bb0f9541fd13",
+   "knownSentence": "I'm very well, thank you.",
+   "line": 0,
+   "chunk": 1,
+   "known": "thank you.",
+   "target": "danke",
+   "startMs": 910,
+   "endMs": 1560,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 910,
+     "aWord": "well,",
+     "bWord": "thank",
+     "gapMs": 260,
+     "marginMs": 70,
+     "inside": null,
+     "tight": false,
+     "why": "\"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC03-S002:s1",
+   "knownClip": "2bd5b67a-007f-44b8-9753-d2149b73eb22.v2",
+   "knownSentence": "I'd like a coffee, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like a coffee,",
+   "target": "Ich möchte einen Kaffee",
+   "startMs": 60,
+   "endMs": 940,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 940,
+     "aWord": "coffee,",
+     "bWord": "please.",
+     "gapMs": 109,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC03-S002:s1",
+   "knownClip": "2bd5b67a-007f-44b8-9753-d2149b73eb22.v2",
+   "knownSentence": "I'd like a coffee, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "please.",
+   "target": "bitte",
+   "startMs": 940,
+   "endMs": 1480,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 940,
+     "aWord": "coffee,",
+     "bWord": "please.",
+     "gapMs": 109,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 0,
+   "known": "with milk,",
+   "target": "Mit Milch",
+   "startMs": 57,
+   "endMs": 700,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but with no sugar.",
+   "target": "aber ohne Zucker",
+   "startMs": 700,
+   "endMs": 1480,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 0,
+   "known": "it's been slow-cooked",
+   "target": "Es wurde langsam gegart",
+   "startMs": 60,
+   "endMs": 1650,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "inside": null,
+     "tight": false,
+     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 1,
+   "known": "with rosemary",
+   "target": "mit Rosmarin",
+   "startMs": 1650,
+   "endMs": 2760,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "inside": null,
+     "tight": false,
+     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S010:s1",
+   "knownClip": "4c55a03c-a8f6-404f-9bd6-c48075e42a7f.v2",
+   "knownSentence": "With a small green salad to start.",
+   "line": 0,
+   "chunk": 0,
+   "known": "With a small green salad",
+   "target": "Mit einem kleinen grünen Salat",
+   "startMs": 25,
+   "endMs": 1190,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1190,
+     "aWord": "salad",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S010:s1",
+   "knownClip": "4c55a03c-a8f6-404f-9bd6-c48075e42a7f.v2",
+   "knownSentence": "With a small green salad to start.",
+   "line": 0,
+   "chunk": 1,
+   "known": "to start",
+   "target": "zum Anfang",
+   "startMs": 1190,
+   "endMs": 1800,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1190,
+     "aWord": "salad",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC14-S002:s1",
+   "knownClip": "58a9b2f2-ade3-43c1-8ef0-dc76ac304970.v2",
+   "knownSentence": "It may take some time, there's a lot of traffic at the moment.",
+   "line": 0,
+   "chunk": 0,
+   "known": "It may take some time,",
+   "target": "Es kann etwas dauern",
+   "startMs": 60,
+   "endMs": 1530,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1530,
+     "aWord": "time,",
+     "bWord": "there's",
+     "gapMs": 227,
+     "marginMs": 97,
+     "inside": null,
+     "tight": false,
+     "why": "\"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC14-S002:s1",
+   "knownClip": "58a9b2f2-ade3-43c1-8ef0-dc76ac304970.v2",
+   "knownSentence": "It may take some time, there's a lot of traffic at the moment.",
+   "line": 0,
+   "chunk": 1,
+   "known": "there's a lot of traffic at the moment.",
+   "target": "es gibt gerade viel Verkehr",
+   "startMs": 1530,
+   "endMs": 3000,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1530,
+     "aWord": "time,",
+     "bWord": "there's",
+     "gapMs": 227,
+     "marginMs": 97,
+     "inside": null,
+     "tight": false,
+     "why": "\"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Excuse me,",
+   "target": "Entschuldigung",
+   "startMs": 56,
+   "endMs": 1020,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 1,
+   "known": "is this seat taken?",
+   "target": "ist dieser Platz besetzt",
+   "startMs": 1020,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S002:s1",
+   "knownClip": "b27c78db-eb3e-46ce-8d9f-1f869db4d2a8.v2",
+   "knownSentence": "I'm sorry but I can't talk at the moment.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'm sorry",
+   "target": "Es tut mir leid",
+   "startMs": 60,
+   "endMs": 770,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 770,
+     "aWord": "sorry",
+     "bWord": "but",
+     "gapMs": 0,
+     "marginMs": -10,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "standalone": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
+   "render": {
+    "at": "2026-11-03T16:41:39.473Z",
+    "text": "I'm sorry",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S002:s1",
+   "knownClip": "b27c78db-eb3e-46ce-8d9f-1f869db4d2a8.v2",
+   "knownSentence": "I'm sorry but I can't talk at the moment.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but I can't talk at the moment.",
+   "target": "aber ich kann gerade nicht reden",
+   "startMs": 770,
+   "endMs": 2360,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 770,
+     "aWord": "sorry",
+     "bWord": "but",
+     "gapMs": 0,
+     "marginMs": -10,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "render": {
+    "at": "2026-11-03T16:41:39.807Z",
+    "text": "but I can't talk at the moment.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"but I can't talk at the moment.\" is already recorded in eng — 11 clip(s): 53856aab-23bf-419e-9978-4ec27f80031b (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 298d80bc-8fdb-44a4-8666-39b957454b73 (voice gfzdpspr5fdp, ara_sy_for_eng pod_fine_known); 399b050f-7d33-44ca-b156-51fd3d2efaa7 (voice gfzd",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S003:s1",
+   "knownClip": "3c8b64b0-9e58-422c-939c-a681d7a907c7",
+   "knownSentence": "But let's talk on Saturday.",
+   "line": 0,
+   "chunk": 0,
+   "known": "But let's",
+   "target": "Aber lass uns",
+   "startMs": 60,
+   "endMs": 530,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 530,
+     "aWord": "let's",
+     "bWord": "talk",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S003:s1",
+   "knownClip": "3c8b64b0-9e58-422c-939c-a681d7a907c7",
+   "knownSentence": "But let's talk on Saturday.",
+   "line": 0,
+   "chunk": 1,
+   "known": "talk on Saturday.",
+   "target": "am Samstag reden",
+   "startMs": 530,
+   "endMs": 1720,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 530,
+     "aWord": "let's",
+     "bWord": "talk",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'm sorry,",
+   "target": "Entschuldigung",
+   "startMs": 57,
+   "endMs": 900,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "inside": null,
+     "tight": false,
+     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 1,
+   "known": "I didn't understand you.",
+   "target": "ich habe Sie nicht verstanden",
+   "startMs": 900,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "inside": null,
+     "tight": false,
+     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC07-S002",
+   "knownClip": "2f223c51-2f9c-4ebc-ab9a-b66427046e70",
+   "knownSentence": "I'd like a black coffee, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like",
+   "target": "Ich möchte",
+   "startMs": 60,
+   "endMs": 580,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 580,
+     "aWord": "like",
+     "bWord": "a",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")",
+   "standalone": "e366142f-4cbd-4852-ba85-c18982fec1b6",
+   "render": {
+    "at": "2026-11-03T16:41:39.807Z",
+    "text": "I'd like",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "e366142f-4cbd-4852-ba85-c18982fec1b6",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC07-S002",
+   "knownClip": "2f223c51-2f9c-4ebc-ab9a-b66427046e70",
+   "knownSentence": "I'd like a black coffee, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "a black coffee,",
+   "target": "einen schwarzen Kaffee",
+   "startMs": 580,
+   "endMs": 1530,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 580,
+     "aWord": "like",
+     "bWord": "a",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
+    },
+    {
+     "edge": "end",
+     "seam": 1530,
+     "aWord": "coffee,",
+     "bWord": "please.",
+     "gapMs": 133,
+     "marginMs": 3,
+     "inside": null,
+     "tight": true,
+     "why": "\"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"a\" (no silence between \"like\" and \"a\"); end: \"please.\" starts 3 ms after the cut (133 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:41:40.073Z",
+    "text": "a black coffee",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"a black coffee\" is already recorded in eng — 10 clip(s): 3425e8ab-c81d-42e9-96cc-3e15c37fd9f4 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 20069be0-2c02-4e41-99c6-51a89d9bbe39 (voice gfzdpspr5fdp, dan_for_eng pod_fine_known); 3248f2e4-3878-40df-b6a3-632a4a11735e (voice gfzdpspr5fdp, ita_for_en",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC07-S002",
+   "knownClip": "2f223c51-2f9c-4ebc-ab9a-b66427046e70",
+   "knownSentence": "I'd like a black coffee, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "please.",
+   "target": "bitte",
+   "startMs": 1530,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1530,
+     "aWord": "coffee,",
+     "bWord": "please.",
+     "gapMs": 133,
+     "marginMs": 3,
+     "inside": null,
+     "tight": true,
+     "why": "\"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: \"please.\" starts 3 ms after the cut (133 ms of silence between the words)",
+   "standalone": "c206713f-cb0f-42f5-b222-510e28866976",
+   "render": {
+    "at": "2026-11-03T16:41:40.073Z",
+    "text": "please.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "c206713f-cb0f-42f5-b222-510e28866976",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 880,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like",
+   "target": "Ich möchte",
+   "startMs": 60,
+   "endMs": 420,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 420,
+     "aWord": "like",
+     "bWord": "a",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 20 ms inside \"like\" (80 ms of silence between the words)",
+   "standalone": "a84882b1-ccfc-43c3-8e88-e0f1751a45be",
+   "render": {
+    "at": "2026-11-03T16:41:40.351Z",
+    "text": "I'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "a84882b1-ccfc-43c3-8e88-e0f1751a45be",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1007,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "a large glass",
+   "target": "ein großes Glas",
+   "startMs": 420,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 420,
+     "aWord": "like",
+     "bWord": "a",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"like\" (80 ms of silence between the words); end: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")",
+   "standalone": "3d9e5446-1f60-4b5f-8617-414e788ce127",
+   "render": {
+    "at": "2026-11-03T16:41:40.627Z",
+    "text": "a large glass",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "3d9e5446-1f60-4b5f-8617-414e788ce127",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1280,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "of white wine,",
+   "target": "Weißwein",
+   "startMs": 1220,
+   "endMs": 2030,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    },
+    {
+     "edge": "end",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\"); end: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:41:40.923Z",
+    "text": "of white wine",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of white wine\" is already recorded in eng — 19 clip(s): 25774464-2b80-463d-8f3a-47d107221097 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 072a8079-d43e-4a16-b4be-7c6aeda81996 (voice xai_gfzdpspr5fdp, swe_for_eng pod_fine_known); 0a0b9ec7-95d8-4c34-a36b-99bce8a169a9 (voice xai_gfzdpspr5fdp, lav",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 3,
+   "known": "please.",
+   "target": "bitte",
+   "startMs": 2030,
+   "endMs": 2600,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "standalone": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
+   "render": {
+    "at": "2026-11-03T16:41:40.923Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We have fruit",
+   "target": "Wir haben Obst",
+   "startMs": 60,
+   "endMs": 900,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 900,
+     "aWord": "fruit",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 20 ms inside \"fruit\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "We have fruit",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"We have fruit\" is already recorded in eng — 11 clip(s): 5a36dd09-b07b-4ca7-ad91-b2ed65540745 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 05f8e458-79c1-4a23-9eb6-67fba74a3a15 (voice xai_gfzdpspr5fdp, fra_for_eng pod_fine_known); 2e5e3362-6c5c-4d40-9975-c216abe8c22e (voice gfzdpspr5fdp, fra_ca_",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 1,
+   "known": "and cereals",
+   "target": "und Müsli",
+   "startMs": 900,
+   "endMs": 1770,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 900,
+     "aWord": "fruit",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"fruit\" (80 ms of silence between the words); end: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "and cereals",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and cereals\" is already recorded in eng — 11 clip(s): 9215cd2a-e828-4f1f-ac45-5b68b6e12264 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 08488e10-7aff-4d1d-9b43-6709acb8169c (voice xai_gfzdpspr5fdp, fra_for_eng pod_fine_known); 21edfb1b-1926-4eed-9d91-90c31a8c182c (voice gfzdpspr5fdp, pol_for_e",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 2,
+   "known": "or a cooked breakfast.",
+   "target": "oder ein warmes Frühstück",
+   "startMs": 1770,
+   "endMs": 3000,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "or a cooked breakfast.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"or a cooked breakfast.\" is already recorded in eng — 33 clip(s): 66c81058-2cac-4170-a623-d3502d23ffa6 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 0d0b0b8e-f3b7-404d-b0be-a2b638b7692b (voice xai_gfzdpspr5fdp, nld_for_eng pod_fine_known); 157ed761-ceec-45a5-b27a-ded324589468 (voice xai_gfzdpspr",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 0,
+   "known": "How often",
+   "target": "Wie oft",
+   "startMs": 60,
+   "endMs": 740,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "How often",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"How often\" is already recorded in eng — 27 clip(s): 9bf5e106-638d-46df-b779-0a7609c25ad6 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 07478996-4303-4357-af0b-e09d7822403e (voice xai_gfzdpspr5fdp, ell_for_eng pod_fine_known); 0b31b8ce-bcf7-4ef7-800b-13aedae80b4d (voice xai_gfzdpspr5fdp, bul_for",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 1,
+   "known": "should I",
+   "target": "soll ich",
+   "startMs": 740,
+   "endMs": 930,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    },
+    {
+     "edge": "end",
+     "seam": 930,
+     "aWord": "I",
+     "bWord": "take",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "render": {
+    "at": "2026-11-03T16:41:41.240Z",
+    "text": "should I",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"should I\" is already recorded in eng — 7 clip(s): 69789167-c65c-46d3-9726-a8230b719e9d (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); d95a9c81-e867-436b-8d08-3a41f8904789 (voice azure_en-GB-MiaNeural, ron_for_eng known); 0c6dec62-f433-46cd-a931-352c2bb513b7 (voice xai_gfzdpspr5fdp, hrv_for_eng p",
+    "wired": false
+   }
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 2,
+   "known": "take the paracetamol?",
+   "target": "das Paracetamol nehmen",
+   "startMs": 930,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 930,
+     "aWord": "I",
+     "bWord": "take",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+  }
+ ]
+}
