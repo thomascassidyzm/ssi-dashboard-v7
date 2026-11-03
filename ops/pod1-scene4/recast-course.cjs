@@ -70,6 +70,11 @@ async function linkClips (links, dryRun) {
     if (!r) stop('held', `live pod-1 has no row ${d.id}`)
     if ((r.target_text || '') !== (d.target_before || '') || (r.known_text || '') !== (d.known_before || '')) stop('held', `live text of ${d.id} no longer matches the draft's "before" — not touched`)
   }
+  // PRE-CHECK, before any spend: a pod whose line count differs from its language's pod text (the 142-line slate in a language
+  // that has the 231-line text) can never pass pod-switchover's one-text-per-language gate — it needs the canonical-231 align
+  // first, which is not this job. eng_for_spa found it on 2026-11-03 after 196 characters were rendered.
+  const shape = jsonOf(tool(['tools/pods/language-text-for-staged-pod.cjs', `--course=${course}`, '--bind=pod-1'], 120000).out)
+  if (shape && shape.refuse && /lines, the language text has/.test(shape.refuse)) stop('held', `not switchable: ${shape.refuse} — needs the canonical-231 align first (not this job)`)
   const scene = live.sentences.filter(r => r.scene_number === 4)
   const { castFor } = require(path.join(ROOT, 'services/shared/pod-line-voice.cjs'))
   const genderOf = (label) => ((castFor(live.pod.speakers || {}, label) || {}).gender === 'f' ? 'f' : 'm')
