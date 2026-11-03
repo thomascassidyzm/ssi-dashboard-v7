@@ -28,7 +28,7 @@
 
 'use strict'
 
-const SAMPLE_SIZE = 5 // was 10 (r-2026-10-31); 5 proposed by Aran 2026-11-03, job #591 — needs Tom's yes
+const SAMPLE_SIZE = 5 // was 10 (r-2026-10-31); 5 asked by Aran, approved by Tom 2026-11-03 (jobs #591, #599)
 const BUILD_SHAPE = /^[A-Za-z0-9._-]{1,64}$/
 const HISTORY_KEEP = 20
 
