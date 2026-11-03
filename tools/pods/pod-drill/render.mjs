@@ -9,7 +9,7 @@
  *
  *   node tools/pods/pod-drill/render.mjs <course>            dry run: asks the route what each would cost
  *   node tools/pods/pod-drill/render.mjs <course> --render   for real, then verifies and wires
- *        [--rejected]   only the pieces a person marked reject in <course>.ear.json (job #750), nothing else
+ *        [--rejected]   only the pieces a person did not accept in <course>.ear.json (reject or borderline, job #750)
  *        [--approval=kai:YYYY-MM-DD:<reason>]  Kai's own approval token, passed to the route as he gave it
  *        (r-2026-10-30-kai-can-authorise-any-audio-work). Most English pieces are already recorded in some
  *        OTHER voice, which the route refuses as a second performance (EXISTS_IN_LANGUAGE) without it.
@@ -29,7 +29,7 @@
  * known text in the line's voice (ListeningOverlay lookupFineKnown), which is what this render makes.
  *
  * A PIECE A PERSON HEARD AS FINE KEEPS ITS CUT (job #750: "keep accepted cuts"): where <course>.ear.json
- * marked a piece accept or borderline and an earlier run wired a standalone clip over it, --render takes
+ * marked a piece accept and an earlier run wired a standalone clip over it, --render takes
  * the clip id off the chunk again, so Drill plays the cut that was heard. Nothing is deleted: the clip
  * stays in the library and its answer stays in score.json under `unwired`.
  *
@@ -91,7 +91,7 @@ const sayText = (t) => String(t || '').trim().replace(/[,;:–—-]+$/u, '').tri
 // ---- the work list: tight scored pieces, then re-record pieces
 const jobs = []
 const REJECTED = argv.includes('--rejected')
-for (const r of score.pieces) if (r.verdict === 'tight' && (!REJECTED || r.ear?.mark === 'reject')) jobs.push({ kind: 'tight', row: r, card: r.id, line: r.line, chunk: r.chunk, known: r.known, voice: voiceOf.get(bare(r.knownClip)) || null, why: r.why })
+for (const r of score.pieces) if (r.verdict === 'tight' && (!REJECTED || (r.ear && r.ear.mark !== 'accept'))) jobs.push({ kind: 'tight', row: r, card: r.id, line: r.line, chunk: r.chunk, known: r.known, voice: voiceOf.get(bare(r.knownClip)) || null, why: r.why })
 for (const x of REJECTED ? [] : rr) {
   const d = cardById.get(x.card)
   const e = cutFile.sentences[x.card]

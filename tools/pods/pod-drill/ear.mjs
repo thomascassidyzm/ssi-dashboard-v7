@@ -8,8 +8,9 @@
  *
  * The state file is the review page's own answer, GET /api/review-page/state?id=<page> on the command
  * surface: { items: [{ id, source: '<course> <card>: "<known>" (from …)' }], answers: { <id>: { choice, text } } }.
- * choice accept → 'accept'; reject → 'reject'; own (a note) → 'borderline' with the note: on the #707 page
- * every note Kai wrote said the cut was abrupt "but probably fine", so a note is read as a pass.
+ * choice accept → 'accept'; reject → 'reject'; own (a note) → 'borderline' with the note. On the #707 page every
+ * note said the cut was abrupt "but probably fine", and Kai then ruled them "a little distracting" (2026-11-03,
+ * r-2026-10-31: not distracting is the bar), so score.mjs treats borderline as tight; only 'accept' keeps a cut.
  * Each item is matched to its score row by course, card and known text, in page order (a card can say the
  * same words twice, "I'd like … I'd like"); an item that matches nothing is printed and filed nowhere.
  */

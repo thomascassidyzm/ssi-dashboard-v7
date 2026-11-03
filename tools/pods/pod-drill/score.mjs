@@ -26,7 +26,8 @@
  * piece is tight when either of its seams is.
  *
  * THE EAR DECIDES (job #750): where <course>.ear.json (ear.mjs) holds a person's mark for a piece, that
- * mark is the verdict — reject → tight, accept or borderline → clean — and the machine's own verdict is
+ * mark is the verdict — accept → clean; reject or borderline → tight (Kai, 2026-11-03: his borderline "a bit
+ * abrupt but fine" pieces are "a little distracting", under the r-2026-10-31 bar, not distracting) — and the machine's own verdict is
  * kept beside it as `scored`, so the calibration can be re-checked from the file.
  *
  * Writes (--write) ops/pod-drill-cuts/<course>.score.json: one row per known piece, with its seams,
@@ -125,7 +126,7 @@ export function scoreCourse(course, { dump, cuts, ear, levelsOf = takeLevels } =
       const scored = bad.length ? 'tight' : 'clean'
       const machineWhy = bad.length ? bad.map((s) => `${s.edge === 'start' ? 'start' : 'end'}: ${s.why}`).join('; ') : worst ? `${worst.edge}: ${worst.why}` : 'no seam'
       const heard = ear?.marks?.[`${id}|${p.li}|${p.ci}`] || null
-      const earVerdict = heard ? (heard.mark === 'reject' ? 'tight' : 'clean') : null
+      const earVerdict = heard ? (heard.mark === 'accept' ? 'clean' : 'tight') : null
       rows.push({ ...base, line: p.li, chunk: p.ci, known: p.known, target: p.target, startMs: p.ks, endMs: p.ke, seams,
         verdict: earVerdict || scored,
         why: heard ? `${ear.by || 'a listener'} marked it ${heard.mark}${heard.note ? ` ("${heard.note}")` : ''} (${heard.label}); the score said ${scored}: ${machineWhy}` : machineWhy,

@@ -7,8 +7,8 @@
  },
  "totals": {
   "pieces": 33,
-  "clean": 21,
-  "tight": 12,
+  "clean": 16,
+  "tight": 17,
   "unscored": 0,
   "heard": 33,
   "heardRejectScoredClean": 0
@@ -112,12 +112,13 @@
     "known": "I'd like a coffee,",
     "mark": "reject"
    },
+   "standalone": "46f1e936-5477-4435-8cfe-949e7d67a4e3",
    "render": {
-    "at": "2026-11-03T17:31:31.833Z",
+    "at": "2026-11-03T17:59:12.218Z",
     "text": "I'd like a coffee",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "46f1e936-5477-4435-8cfe-949e7d67a4e3",
     "code": null,
     "error": null,
@@ -158,8 +159,9 @@
     "known": "please.",
     "mark": "reject"
    },
+   "standalone": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
    "render": {
-    "at": "2026-11-03T17:31:32.139Z",
+    "at": "2026-11-03T17:59:12.474Z",
     "text": "please.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -196,7 +198,7 @@
      "why": "silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"A bit abrupt but fine\") (D05); the score said clean: end: silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)",
    "scored": "clean",
    "ear": {
@@ -204,6 +206,19 @@
     "known": "with milk,",
     "mark": "borderline",
     "note": "A bit abrupt but fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:12.746Z",
+    "text": "with milk",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "2d3f3628-4b26-46e9-bd35-1ab40c9dcd83",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
    }
   },
   {
@@ -329,7 +344,7 @@
      "why": "not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Slightly abrupt, but fine\") (D09); the score said tight: end: not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)",
    "scored": "tight",
    "ear": {
@@ -337,6 +352,19 @@
     "known": "With a small green salad",
     "mark": "borderline",
     "note": "Slightly abrupt, but fine"
+   },
+   "render": {
+    "at": "2026-11-03T17:59:13.009Z",
+    "text": "With a small green salad",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "b3493c97-321f-406c-a6e6-27dd83842281",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1520,
+    "wired": true
    }
   },
   {
@@ -371,8 +399,9 @@
     "known": "to start",
     "mark": "reject"
    },
+   "standalone": "d2f1b2d5-7968-4ca5-a90f-51ba486783b7",
    "render": {
-    "at": "2026-11-03T17:31:32.363Z",
+    "at": "2026-11-03T17:59:13.262Z",
     "text": "to start",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -541,7 +570,7 @@
      "why": "not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"You can almost start to hear the b but not quite, it's probably fine\") (D15); the score said tight: end: not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
    "scored": "tight",
    "ear": {
@@ -550,9 +579,8 @@
     "mark": "borderline",
     "note": "You can almost start to hear the b but not quite, it's probably fine"
    },
-   "standalone": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
    "render": {
-    "at": "2026-11-03T16:41:39.473Z",
+    "at": "2026-11-03T17:59:13.492Z",
     "text": "I'm sorry",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -562,12 +590,7 @@
     "error": null,
     "verified": true,
     "durationMs": 864,
-    "wired": false
-   },
-   "unwired": {
-    "at": "2026-11-03T17:31:31.833Z",
-    "audioId": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
-    "why": "D15 heard the cut as borderline: the cut plays"
+    "wired": true
    }
   },
   {
@@ -594,7 +617,7 @@
      "why": "not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Starts a little softly but it's probably fine\") (D16); the score said tight: start: not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
    "scored": "tight",
    "ear": {
@@ -604,15 +627,17 @@
     "note": "Starts a little softly but it's probably fine"
    },
    "render": {
-    "at": "2026-11-03T16:41:39.807Z",
+    "at": "2026-11-03T17:59:13.743Z",
     "text": "but I can't talk at the moment.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"but I can't talk at the moment.\" is already recorded in eng — 11 clip(s): 53856aab-23bf-419e-9978-4ec27f80031b (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 298d80bc-8fdb-44a4-8666-39b957454b73 (voice gfzdpspr5fdp, ara_sy_for_eng pod_fine_known); 399b050f-7d33-44ca-b156-51fd3d2efaa7 (voice gfzd",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "7b8b8c2a-4465-4947-8a16-b680a34b3138",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1680,
+    "wired": true
    }
   },
   {
@@ -647,12 +672,13 @@
     "known": "But let's",
     "mark": "reject"
    },
+   "standalone": "9ae4ef46-a4ac-4332-b7f5-0ba914ffba9c",
    "render": {
-    "at": "2026-11-03T17:31:32.577Z",
+    "at": "2026-11-03T17:59:13.971Z",
     "text": "But let's",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "9ae4ef46-a4ac-4332-b7f5-0ba914ffba9c",
     "code": null,
     "error": null,
@@ -794,7 +820,7 @@
    },
    "standalone": "e366142f-4cbd-4852-ba85-c18982fec1b6",
    "render": {
-    "at": "2026-11-03T17:31:32.803Z",
+    "at": "2026-11-03T17:59:14.225Z",
     "text": "I'd like",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
@@ -851,12 +877,13 @@
     "known": "a black coffee,",
     "mark": "reject"
    },
+   "standalone": "b8887740-0635-4dcd-b934-7cdebd4540bf",
    "render": {
-    "at": "2026-11-03T17:31:33.064Z",
+    "at": "2026-11-03T17:59:14.478Z",
     "text": "a black coffee",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "b8887740-0635-4dcd-b934-7cdebd4540bf",
     "code": null,
     "error": null,
@@ -897,7 +924,6 @@
     "known": "please.",
     "mark": "accept"
    },
-   "standalone": "c206713f-cb0f-42f5-b222-510e28866976",
    "render": {
     "at": "2026-11-03T16:41:40.073Z",
     "text": "please.",
@@ -910,11 +936,6 @@
     "verified": true,
     "durationMs": 880,
     "wired": false
-   },
-   "unwired": {
-    "at": "2026-11-03T17:31:31.833Z",
-    "audioId": "c206713f-cb0f-42f5-b222-510e28866976",
-    "why": "D23 heard the cut as accept: the cut plays"
    }
   },
   {
@@ -951,7 +972,7 @@
    },
    "standalone": "a84882b1-ccfc-43c3-8e88-e0f1751a45be",
    "render": {
-    "at": "2026-11-03T17:31:33.345Z",
+    "at": "2026-11-03T17:59:14.738Z",
     "text": "I'd like",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1010,7 +1031,7 @@
    },
    "standalone": "3d9e5446-1f60-4b5f-8617-414e788ce127",
    "render": {
-    "at": "2026-11-03T17:31:33.619Z",
+    "at": "2026-11-03T17:59:14.994Z",
     "text": "a large glass",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1067,12 +1088,13 @@
     "known": "of white wine,",
     "mark": "reject"
    },
+   "standalone": "ae7a8786-d981-413f-91aa-c94d79dd2715",
    "render": {
-    "at": "2026-11-03T17:31:33.904Z",
+    "at": "2026-11-03T17:59:15.274Z",
     "text": "of white wine",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "ae7a8786-d981-413f-91aa-c94d79dd2715",
     "code": null,
     "error": null,
@@ -1115,7 +1137,7 @@
    },
    "standalone": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
    "render": {
-    "at": "2026-11-03T17:31:34.168Z",
+    "at": "2026-11-03T17:59:15.514Z",
     "text": "please.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1208,7 +1230,7 @@
      "why": "not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Abrupt ending but probably fine\") (D29); the score said tight: start: not silent at the cut: 26.3 dB under speech; cut 20 ms inside \"fruit\" (80 ms of silence between the words); end: not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
    "scored": "tight",
    "ear": {
@@ -1218,15 +1240,17 @@
     "note": "Abrupt ending but probably fine"
    },
    "render": {
-    "at": "2026-11-03T16:41:41.240Z",
+    "at": "2026-11-03T17:59:15.514Z",
     "text": "and cereals",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"and cereals\" is already recorded in eng — 11 clip(s): 9215cd2a-e828-4f1f-ac45-5b68b6e12264 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 08488e10-7aff-4d1d-9b43-6709acb8169c (voice xai_gfzdpspr5fdp, fra_for_eng pod_fine_known); 21edfb1b-1926-4eed-9d91-90c31a8c182c (voice gfzdpspr5fdp, pol_for_e",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "023f44f2-cf5a-47f3-8386-e515b76d59ea",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
    }
   },
   {
@@ -1305,12 +1329,13 @@
     "known": "How often",
     "mark": "reject"
    },
+   "standalone": "2dbf0ac6-5a46-4ad8-afb9-734a18c46aef",
    "render": {
-    "at": "2026-11-03T17:31:34.168Z",
+    "at": "2026-11-03T17:59:15.738Z",
     "text": "How often",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "2dbf0ac6-5a46-4ad8-afb9-734a18c46aef",
     "code": null,
     "error": null,
@@ -1363,12 +1388,13 @@
     "known": "should I",
     "mark": "reject"
    },
+   "standalone": "2fbfa31f-341e-49f1-82dc-dab46e1f63d7",
    "render": {
-    "at": "2026-11-03T17:31:34.421Z",
+    "at": "2026-11-03T17:59:16.004Z",
     "text": "should I",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "2fbfa31f-341e-49f1-82dc-dab46e1f63d7",
     "code": null,
     "error": null,

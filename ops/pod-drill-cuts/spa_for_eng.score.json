@@ -7,8 +7,8 @@
  },
  "totals": {
   "pieces": 57,
-  "clean": 36,
-  "tight": 21,
+  "clean": 31,
+  "tight": 26,
   "unscored": 0,
   "heard": 57,
   "heardRejectScoredClean": 0
@@ -178,7 +178,6 @@
     "known": "Excuse me,",
     "mark": "accept"
    },
-   "standalone": "7650b719-f92d-494c-8e96-00cc75f3b028",
    "render": {
     "at": "2026-11-03T16:42:41.308Z",
     "text": "Excuse me",
@@ -191,11 +190,6 @@
     "verified": true,
     "durationMs": 936,
     "wired": false
-   },
-   "unwired": {
-    "at": "2026-11-03T17:32:43.097Z",
-    "audioId": "7650b719-f92d-494c-8e96-00cc75f3b028",
-    "why": "S05 heard the cut as accept: the cut plays"
    }
   },
   {
@@ -274,12 +268,13 @@
     "known": "just two coffees,",
     "mark": "reject"
    },
+   "standalone": "400ea064-6f11-495d-bf40-09a4a0e8a48c",
    "render": {
-    "at": "2026-11-03T17:32:43.097Z",
+    "at": "2026-11-03T17:59:42.522Z",
     "text": "just two coffees",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "400ea064-6f11-495d-bf40-09a4a0e8a48c",
     "code": null,
     "error": null,
@@ -320,8 +315,9 @@
     "known": "please.",
     "mark": "reject"
    },
+   "standalone": "92b5b661-94ae-4af1-a69b-0d3304989df6",
    "render": {
-    "at": "2026-11-03T17:32:43.347Z",
+    "at": "2026-11-03T17:59:42.889Z",
     "text": "please.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -358,7 +354,7 @@
      "why": "not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Endings a little abrupt but might be fine\") (S09); the score said tight: end: not silent at the cut: 26.6 dB under speech; \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")",
    "scored": "tight",
    "ear": {
@@ -368,15 +364,17 @@
     "note": "Endings a little abrupt but might be fine"
    },
    "render": {
-    "at": "2026-11-03T16:42:41.538Z",
+    "at": "2026-11-03T17:59:43.104Z",
     "text": "and do you have any painkillers",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"and do you have any painkillers\" is already recorded in eng — 10 clip(s): a698c143-3954-404e-821d-b5e8024cbce4 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 091f7a9e-b594-4822-a015-b49488875ffd (voice xai_gfzdpspr5fdp, isl_for_eng pod_fine_known); 1d4b8878-5c1f-44b2-961d-0614e09a2ce2 (voice gfz",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "53bb97cf-38b9-45a0-9ced-339d48251ba0",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1600,
+    "wired": true
    }
   },
   {
@@ -411,12 +409,13 @@
     "known": "for children?",
     "mark": "reject"
    },
+   "standalone": "5ac19f63-1d64-4c47-9cf4-2b784faa3b54",
    "render": {
-    "at": "2026-11-03T17:32:43.700Z",
+    "at": "2026-11-03T17:59:43.357Z",
     "text": "for children?",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "5ac19f63-1d64-4c47-9cf4-2b784faa3b54",
     "code": null,
     "error": null,
@@ -502,12 +501,13 @@
     "known": "but you'll have to look",
     "mark": "reject"
    },
+   "standalone": "ee7e6fbf-f380-49ab-b8e9-48a5898def11",
    "render": {
-    "at": "2026-11-03T17:32:44.106Z",
+    "at": "2026-11-03T17:59:43.570Z",
     "text": "but you'll have to look",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "ee7e6fbf-f380-49ab-b8e9-48a5898def11",
     "code": null,
     "error": null,
@@ -548,7 +548,6 @@
     "known": "to make sure.",
     "mark": "accept"
    },
-   "standalone": "490514cb-8453-4b7e-af08-7e064dc5225c",
    "render": {
     "at": "2026-11-03T16:42:41.538Z",
     "text": "to make sure.",
@@ -561,11 +560,6 @@
     "verified": true,
     "durationMs": 1120,
     "wired": false
-   },
-   "unwired": {
-    "at": "2026-11-03T17:32:43.097Z",
-    "audioId": "490514cb-8453-4b7e-af08-7e064dc5225c",
-    "why": "S13 heard the cut as accept: the cut plays"
    }
   },
   {
@@ -600,7 +594,6 @@
     "known": "thank you very much,",
     "mark": "accept"
    },
-   "standalone": "286d6287-9e39-42b2-bc81-dcb824ff7ba8",
    "render": {
     "at": "2026-11-03T16:42:41.979Z",
     "text": "thank you very much",
@@ -613,11 +606,6 @@
     "verified": true,
     "durationMs": 1248,
     "wired": false
-   },
-   "unwired": {
-    "at": "2026-11-03T17:32:43.097Z",
-    "audioId": "286d6287-9e39-42b2-bc81-dcb824ff7ba8",
-    "why": "S14 heard the cut as accept: the cut plays"
    }
   },
   {
@@ -916,12 +904,13 @@
     "known": "With oat milk",
     "mark": "reject"
    },
+   "standalone": "29a40c7c-d86d-49eb-b4b7-879ee69dd4af",
    "render": {
-    "at": "2026-11-03T17:32:44.549Z",
+    "at": "2026-11-03T17:59:43.861Z",
     "text": "With oat milk",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "29a40c7c-d86d-49eb-b4b7-879ee69dd4af",
     "code": null,
     "error": null,
@@ -962,12 +951,13 @@
     "known": "if you have it.",
     "mark": "reject"
    },
+   "standalone": "41dbb0f9-b27c-47fb-886f-835dd4c69032",
    "render": {
-    "at": "2026-11-03T17:32:45.018Z",
+    "at": "2026-11-03T17:59:44.106Z",
     "text": "if you have it.",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "41dbb0f9-b27c-47fb-886f-835dd4c69032",
     "code": null,
     "error": null,
@@ -1000,7 +990,7 @@
      "why": "not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Ends abruptly but might be fine\") (S24); the score said tight: end: not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")",
    "scored": "tight",
    "ear": {
@@ -1010,15 +1000,17 @@
     "note": "Ends abruptly but might be fine"
    },
    "render": {
-    "at": "2026-11-03T16:42:42.259Z",
+    "at": "2026-11-03T17:59:44.390Z",
     "text": "Could I have two white coffees",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"Could I have two white coffees\" is already recorded in eng — 16 clip(s): b1b3b20f-98b4-4552-81e7-30eeb46c2294 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 2147ac56-037a-474f-ada8-30acf112e0de (voice gfzdpspr5fdp, gle_for_eng pod_fine_known); 2fb34ee1-59cc-4958-8bb1-f9cbbb202d7c (voice gfzdpspr",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "9cb94082-55c1-4909-a98f-d000ffd3d4f5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 2400,
+    "wired": true
    }
   },
   {
@@ -1057,7 +1049,7 @@
      "why": "not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Also abrupt but maybe fine\") (S25); the score said tight: start: not silent at the cut: 18.0 dB under speech; \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\"); end: not silent at the cut: 15.0 dB under speech; cut 20 ms inside \"coffees\" (80 ms of silence between the words)",
    "scored": "tight",
    "ear": {
@@ -1067,15 +1059,17 @@
     "note": "Also abrupt but maybe fine"
    },
    "render": {
-    "at": "2026-11-03T16:42:42.259Z",
+    "at": "2026-11-03T17:59:44.630Z",
     "text": "and two black coffees",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"and two black coffees\" is already recorded in eng — 29 clip(s): 050ef4fe-b549-4ddf-8136-375a925b8deb (voice xai_gfzdpspr5fdp, spa_for_eng pod_fine_known); 0077face-a87b-488c-9e5f-6d6e5af6022b (voice xai_gfzdpspr5fdp, ita_for_eng pod_fine_known); 00cdab50-bf64-4dae-b573-e7b916f4380e (voice xai_gfzdp",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "2a7f32d5-82d7-4200-b684-43f2be4717cb",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1760,
+    "wired": true
    }
   },
   {
@@ -1122,12 +1116,13 @@
     "known": "and one of those,",
     "mark": "reject"
    },
+   "standalone": "a5b93f33-a9da-46d7-a34c-c1cfe15e9b50",
    "render": {
-    "at": "2026-11-03T17:32:45.250Z",
+    "at": "2026-11-03T17:59:44.914Z",
     "text": "and one of those",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "a5b93f33-a9da-46d7-a34c-c1cfe15e9b50",
     "code": null,
     "error": null,
@@ -1212,12 +1207,13 @@
     "known": "The table by the window",
     "mark": "reject"
    },
+   "standalone": "d229edb3-74a5-45c9-b7f2-68fa6a3b6d6b",
    "render": {
-    "at": "2026-11-03T17:32:45.521Z",
+    "at": "2026-11-03T17:59:45.226Z",
     "text": "The table by the window",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "d229edb3-74a5-45c9-b7f2-68fa6a3b6d6b",
     "code": null,
     "error": null,
@@ -1258,12 +1254,13 @@
     "known": "is free.",
     "mark": "reject"
    },
+   "standalone": "2847445a-bbfc-4a9d-ad77-7fe6585e748f",
    "render": {
-    "at": "2026-11-03T17:32:46.299Z",
+    "at": "2026-11-03T17:59:45.569Z",
     "text": "is free.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "2847445a-bbfc-4a9d-ad77-7fe6585e748f",
     "code": null,
     "error": null,
@@ -1415,12 +1412,13 @@
     "known": "I'd like a large glass",
     "mark": "reject"
    },
+   "standalone": "401a697d-8b17-470e-9eef-33c5dfdd142a",
    "render": {
-    "at": "2026-11-03T17:32:46.543Z",
+    "at": "2026-11-03T17:59:45.826Z",
     "text": "I'd like a large glass",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "401a697d-8b17-470e-9eef-33c5dfdd142a",
     "code": null,
     "error": null,
@@ -1473,8 +1471,9 @@
     "known": "of white wine,",
     "mark": "reject"
    },
+   "standalone": "f928040b-2043-4797-8780-179b919269b4",
    "render": {
-    "at": "2026-11-03T17:32:46.864Z",
+    "at": "2026-11-03T17:59:46.070Z",
     "text": "of white wine",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1521,7 +1520,7 @@
    },
    "standalone": "92b5b661-94ae-4af1-a69b-0d3304989df6",
    "render": {
-    "at": "2026-11-03T17:32:47.192Z",
+    "at": "2026-11-03T17:59:46.267Z",
     "text": "please.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1566,12 +1565,13 @@
     "known": "Can I have a small glass",
     "mark": "reject"
    },
+   "standalone": "e6ed493a-6e9c-48b7-bdc0-171b8be36f80",
    "render": {
-    "at": "2026-11-03T17:32:47.192Z",
+    "at": "2026-11-03T17:59:46.267Z",
     "text": "Can I have a small glass",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "e6ed493a-6e9c-48b7-bdc0-171b8be36f80",
     "code": null,
     "error": null,
@@ -1612,12 +1612,13 @@
     "known": "of red wine?",
     "mark": "reject"
    },
+   "standalone": "51e6424d-4924-4600-9da6-ac19c675e313",
    "render": {
-    "at": "2026-11-03T17:32:47.486Z",
+    "at": "2026-11-03T17:59:46.514Z",
     "text": "of red wine?",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "51e6424d-4924-4600-9da6-ac19c675e313",
     "code": null,
     "error": null,
@@ -1660,7 +1661,7 @@
    },
    "standalone": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
    "render": {
-    "at": "2026-11-03T17:32:48.161Z",
+    "at": "2026-11-03T17:59:46.812Z",
     "text": "I'd like",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -1717,12 +1718,13 @@
     "known": "two more glasses",
     "mark": "reject"
    },
+   "standalone": "5180143c-8d79-4e4e-8b62-35eacf8965b5",
    "render": {
-    "at": "2026-11-03T17:32:48.412Z",
+    "at": "2026-11-03T17:59:47.039Z",
     "text": "two more glasses",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "5180143c-8d79-4e4e-8b62-35eacf8965b5",
     "code": null,
     "error": null,
@@ -1763,12 +1765,13 @@
     "known": "of beer.",
     "mark": "reject"
    },
+   "standalone": "f06661a9-57fb-41b6-9786-839e5826a96c",
    "render": {
-    "at": "2026-11-03T17:32:48.667Z",
+    "at": "2026-11-03T17:59:47.325Z",
     "text": "of beer.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "f06661a9-57fb-41b6-9786-839e5826a96c",
     "code": null,
     "error": null,
@@ -1809,12 +1812,13 @@
     "known": "We'd like",
     "mark": "reject"
    },
+   "standalone": "a6aff90a-258f-4d4b-9261-ca62930019a2",
    "render": {
-    "at": "2026-11-03T17:32:48.911Z",
+    "at": "2026-11-03T17:59:47.555Z",
     "text": "We'd like",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "a6aff90a-258f-4d4b-9261-ca62930019a2",
     "code": null,
     "error": null,
@@ -2037,7 +2041,7 @@
      "why": "not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"Ends awkwardly but might be fine\") (S46); the score said tight: end: not silent at the cut: 11.5 dB under speech; cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")",
    "scored": "tight",
    "ear": {
@@ -2047,15 +2051,17 @@
     "note": "Ends awkwardly but might be fine"
    },
    "render": {
-    "at": "2026-11-03T16:42:42.812Z",
+    "at": "2026-11-03T17:59:47.788Z",
     "text": "the salmon and the risotto",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"the salmon and the risotto\" is already recorded in eng — 33 clip(s): a66175e6-72ce-4bb0-8119-597ab2d0ff36 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0678f1ec-e955-4444-8a5b-5d62aa821b88 (voice xai_gfzdpspr5fdp, ara_eg_for_eng pod_fine_known); 083c1269-7ab6-476f-b1c4-4c2058bdae1b (voice xai_g",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "e47a3aef-3e7d-42c5-ad3e-1c1a823a7c98",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 2240,
+    "wired": true
    }
   },
   {
@@ -2311,12 +2317,13 @@
     "known": "you can stay",
     "mark": "reject"
    },
+   "standalone": "772c5fa4-bf47-458f-b569-2775d251ccc4",
    "render": {
-    "at": "2026-11-03T17:32:49.154Z",
+    "at": "2026-11-03T17:59:48.064Z",
     "text": "you can stay",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "772c5fa4-bf47-458f-b569-2775d251ccc4",
     "code": null,
     "error": null,
@@ -2361,7 +2368,7 @@
      "why": "silent at the cut: 58.7 dB under speech; \"no\" starts 96 ms after the cut (226 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
+   "verdict": "tight",
    "why": "Kai marked it borderline (\"It sounds like \"til midday\" Which as it happens is correct for English - depends on whether you want it to actually say \"until\" clearly. I assume it's fine like this\") (S54); the score said tight: start: not silent at the cut: 10.4 dB under speech; cut 20 ms inside \"until\" (80 ms of silence between the words)",
    "scored": "tight",
    "ear": {
@@ -2371,15 +2378,17 @@
     "note": "It sounds like \"til midday\" Which as it happens is correct for English - depends on whether you want it to actually say \"until\" clearly. I assume it's fine like this"
    },
    "render": {
-    "at": "2026-11-03T16:42:42.812Z",
+    "at": "2026-11-03T17:59:48.322Z",
     "text": "until midday",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"until midday\" is already recorded in eng — 21 clip(s): d997b5ca-10d5-4e48-b085-2b11f4e85b83 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 07408b89-d981-4959-831c-89840f2fa771 (voice xai_gfzdpspr5fdp, kor_for_eng pod_fine_known); 09a1ad9c-026e-412f-b8e6-e96938dd15f1 (voice xai_gfzdpspr5fdp, dan_",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "22983ae5-74b5-494b-9546-a839c3af941e",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1120,
+    "wired": true
    }
   },
   {
@@ -2447,8 +2456,9 @@
     "known": "How often",
     "mark": "reject"
    },
+   "standalone": "da12ba17-3e77-4a60-bd98-5c6e580228bd",
    "render": {
-    "at": "2026-11-03T17:32:49.389Z",
+    "at": "2026-11-03T17:59:48.604Z",
     "text": "How often",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -2493,12 +2503,13 @@
     "known": "should I take the paracetamol?",
     "mark": "reject"
    },
+   "standalone": "53090614-4058-4072-9cef-751cb9bc2399",
    "render": {
-    "at": "2026-11-03T17:32:49.635Z",
+    "at": "2026-11-03T17:59:48.869Z",
     "text": "should I take the paracetamol?",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
-    "source": "rendered",
+    "source": "library",
     "audioId": "53090614-4058-4072-9cef-751cb9bc2399",
     "code": null,
     "error": null,

@@ -322,7 +322,13 @@ export const SEAM = { QUIET_BELOW: 20, SILENT_BELOW: 35, HISS_ZCR: 0.3, MIN_GAP_
  *  its seams is. Both tests read the take itself; neither transcribes (r-2026-11-03).
  *
  *  CALIBRATION (job #750, 2026-11-03) against Kai's per-piece marks on all 90 German+Spanish known
- *  pieces (review page d/15149e60; <course>.ear.json): 33 reject, 10 borderline-ok, 47 accept.
+ *  pieces (review page d/15149e60; <course>.ear.json): 33 reject, 10 borderline, 47 accept. Kai then ruled
+ *  his borderline pieces "a little distracting", under the r-2026-10-31 bar, so the line is set against his
+ *  47 FIRM accepts: everything else is bad. Re-checked on that basis: this rule misses 0 rejects and 1
+ *  borderline, D05 "with milk,", whose seam is the same take and the same cut as D06, S01 and S02, all
+ *  firmly accepted, so no boundary measure can separate it (his mark catches it). Catching it needs
+ *  40 dB, which also re-makes 6 more firm accepts (24 of 47 vs 18), so the line stays.
+ *  The table below is the first pass, which counted borderline as fine:
  *    rule                                   flagged  rejects missed  agree (reject=bad / reject+borderline=bad)
  *    old: timing margin < 10 ms (#707)         47        8            60 / 66
  *    timing only, best margin (< -10 ms)       35       10            68 / 64
