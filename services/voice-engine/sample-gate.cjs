@@ -12,11 +12,14 @@
  * here and the session carries on. Every failure path opens the gate: a read that fails,
  * a store that is down, a measure that cannot run — none of them ever stops recording.
  *
- * THE BUILD is __RECORDER_BUILD__ (vite.config.js): a content hash of everything that touches
- * recording — the capture and upload code, the booth screen, and the server-side take
- * processing (the RECORDER_BUILD_FILES list below, each with its reason). It changes when one
- * of those files changes and at no other deploy, so the gate fires on a recorder change, never
- * on every session. Tom: any change in Popty code that touches recording re-triggers the gate.
+ * THE BUILD is __RECORDER_BUILD__ (vite.config.js): a content hash of the files that can change
+ * the CAPTURED AUDIO — capture constraints, encoding, where a take ends, which takes are filed,
+ * upload, and the server-side receive / trim / refusal of the take (the RECORDER_BUILD_FILES list
+ * below, each with its reason). It changes when one of those files changes and at no other
+ * deploy, so the gate fires on a recorder change, never on every session. The gate is for a
+ * RECORDER change (Tom's Watson, r-2026-10-31, job #575): layout, buttons and routing are OUT,
+ * which is why the booth screen and the recordist router are not in the list — the few rules
+ * they held that decide a take were moved into boothTakePolicy.js and booth-take-upload.cjs.
  *
  * THE STORE is one small JSON object per voice in S3 (no schema change):
  *   booth-sample-gate/<voiceId>.json  { approvedBuild, approvedAt, approvedBy, history:[...] }
@@ -65,18 +68,24 @@ const path = require('path')
 const { createHash } = require('crypto')
 
 /**
- * EVERY FILE THAT TOUCHES RECORDING (Tom, job #433: "nothing in the recording chain").
- * Editing any of these re-fires the 10-take gate once per voice. Add a file here only if it
- * handles a take; never the gate itself or general utilities, or artists get stopped needlessly.
+ * EVERY FILE THAT CAN CHANGE THE CAPTURED AUDIO (Tom's Watson's test, job #575): anything that
+ * sets getUserMedia constraints, sample rate, codec or bitrate, encoding, trimming or upload of
+ * the take is IN; layout, buttons and routing are OUT. Editing any of these re-fires the 10-take
+ * gate once per voice. Never add the gate itself, the booth screen, a router or a general utility,
+ * or artists get stopped by deploys that changed nothing they record. If a rule in one of those
+ * starts deciding a take, move it into a file here rather than adding the screen.
+ * sample-gate.test.cjs fails if any of these is dropped from the list.
  */
 const RECORDER_BUILD_FILES = [
-  'src/composables/useTapRecorder.js', // microphone capture
-  'src/composables/useRecordistQueue.js', // upload queue: what the booth sends and when
-  'src/views/RecordistRoom.vue', // the booth screen that drives recording
-  'services/voice-engine/recordist-router.cjs', // POST /voice/:voiceId/take, receives and files the take
+  'src/composables/useTapRecorder.js', // microphone capture: getUserMedia constraints per profile, MediaRecorder mime/bitrate, pre-roll and tail
+  'src/composables/boothTakePolicy.js', // where a take ends (auto-advance quiet) and which takes are filed or refused as silent
+  'src/composables/useRecordistQueue.js', // upload queue: what the booth sends and when, retries, supersession
+  'src/services/takeStore.js', // on-device store the take's bytes wait in until they upload
+  'src/services/uploadConcurrency.js', // how many takes upload at once and which failures are retried
+  'services/voice-engine/booth-take-upload.cjs', // receives the take: multipart parse, 60 MB ceiling, default mime it is processed as
   'services/recording-upload-helpers.cjs', // retains the raw take and runs processing (retainAndProcessTake)
   'services/audio-processor.cjs', // ffmpeg trim / convert of the take
-  'services/recording-speech-gate.cjs', // speech, steady-noise and boundary checks on the processed take
+  'services/recording-speech-gate.cjs', // speech, steady-noise and boundary checks that refuse a processed take
 ]
 
 /** Content hash of RECORDER_BUILD_FILES under `root`. A missing file => 'unknown' (gate stays open). */

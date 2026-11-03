@@ -32,7 +32,6 @@
 'use strict'
 
 const express = require('express')
-const Busboy = require('busboy')
 const {
   resolveRecordist,
   voicesForEmail,
@@ -145,35 +144,9 @@ const boothLinks = require('./booth-link-keys.cjs')
 const { boothTabs, parseHeldKeys } = require('./booth-tabs.cjs')
 const boothUploadConcurrency = require('./booth-upload-concurrency.cjs')
 
-const MAX_TAKE_BYTES = 60 * 1024 * 1024
-
-/**
- * Parse a multipart take: one audio file part plus text fields.
- * Kept here rather than pulling in a middleware — this is the only multipart
- * route on the service, and a request-scoped parse cannot leak into others.
- */
-function parseMultipartTake(req) {
-  return new Promise((resolve, reject) => {
-    const busboy = Busboy({ headers: req.headers, limits: { files: 1, fileSize: MAX_TAKE_BYTES } })
-    const fields = {}
-    const chunks = []
-    let mimeType = null
-    let truncated = false
-
-    busboy.on('field', (name, value) => { fields[name] = value })
-    busboy.on('file', (_name, stream, info) => {
-      mimeType = info.mimeType || info.mimetype || null
-      stream.on('data', (d) => chunks.push(d))
-      stream.on('limit', () => { truncated = true })
-    })
-    busboy.on('error', reject)
-    busboy.on('close', () => {
-      if (truncated) return reject(new Error(`take exceeds ${MAX_TAKE_BYTES} bytes`))
-      resolve({ fields, buffer: chunks.length ? Buffer.concat(chunks) : null, mimeType })
-    })
-    req.pipe(busboy)
-  })
-}
+// How a take's bytes are received (size ceiling, multipart parse, default mime) is in
+// booth-take-upload.cjs, which the sample gate's recorder hash covers (job #575).
+const { parseMultipartTake, DEFAULT_TAKE_MIME } = require('./booth-take-upload.cjs')
 
 /**
  * Run the production upload handler and capture what it would have sent,
@@ -2334,7 +2307,7 @@ module.exports = function createRecordistRouter({
         advanceFields = parsed.fields
         text = parsed.fields.text
         device = parsed.fields.device || null
-        mimeType = parsed.fields.mimeType || parsed.mimeType || 'audio/webm'
+        mimeType = parsed.fields.mimeType || parsed.mimeType || DEFAULT_TAKE_MIME
         if (!parsed.buffer || !parsed.buffer.length) {
           return res.status(400).json({ error: 'no audio part in the upload' })
         }
@@ -2346,7 +2319,7 @@ module.exports = function createRecordistRouter({
         lineId = req.body.lineId
         advanceFields = req.body
         text = req.body.text
-        mimeType = req.body.mimeType || 'audio/webm'
+        mimeType = req.body.mimeType || DEFAULT_TAKE_MIME
         device = req.body.device || null
         audioBase64 = req.body.audioData
         if (!audioBase64) return res.status(400).json({ error: 'audioData (base64) or a multipart audio part required' })
@@ -3299,7 +3272,7 @@ module.exports = function createRecordistRouter({
     try {
       const parsed = await parseMultipartTake(req)
       if (!parsed.buffer || !parsed.buffer.length) return res.status(400).json({ error: 'no audio part in the upload' })
-      const measures = await setupCheck.measureTake(parsed.buffer, parsed.fields.mimeType || parsed.mimeType || 'audio/webm')
+      const measures = await setupCheck.measureTake(parsed.buffer, parsed.fields.mimeType || parsed.mimeType || DEFAULT_TAKE_MIME)
       if (!measures) return res.json({ measured: false, flags: [], hints: [] })
       const judged = setupCheck.judgeSetupCheck([{ id: 'take', ...measures }])
       const flags = (judged.perTake[0] && judged.perTake[0].flags) || []

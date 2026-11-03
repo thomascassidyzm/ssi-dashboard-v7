@@ -754,7 +754,10 @@
 import { ref, computed, onMounted, onBeforeUnmount, onActivated, onDeactivated, watch, nextTick, inject } from 'vue'
 import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
-import { useTapRecorder, resolveCaptureProfile, MIN_VOICED_MS } from '@/composables/useTapRecorder'
+import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
+// The take decisions (when a line ends itself, which takes are filed) live in the capture path, so
+// the sample gate's recorder hash covers them and not this screen (job #575).
+import { autoAdvanceDue, takeIsSilent, fileTakeOnAdvance, fileTakeOnStop } from '@/composables/boothTakePolicy'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
@@ -2352,22 +2355,8 @@ function commit(target, blob, hadSpeech, advance = null) {
   // this audio belongs to nothing on the screen, so it is filed under nothing.
   if (!found.ok) return
   const line = found.line
-  // Never save silence: a take with nothing said on it didn't happen.
-  //
-  // This used to be a blob-size test, and that test is now meaningless: every
-  // clip carries pre-roll and tail by design, so even a line nobody read comes
-  // back as several kilobytes of room. What the recorder KNOWS is whether it
-  // ever heard the voice while this line was open, and that is what decides it.
-  // The size floor stays underneath as a backstop for a capture that failed
-  // outright.
-  //
-  // `hadSpeech` is TRUE, FALSE or NULL, and null means the recorder does not
-  // know — its meter never delivered a sample, so it heard nothing about
-  // anything. Only FALSE refuses a take. Not knowing is not the same as knowing
-  // there was silence, and on 2026-08-22 the difference was a whole session:
-  // every line read, every clip captured, every take refused, because the level
-  // meter was reading zero and the meter is the only witness this test has.
-  if (!blob || blob.size < 1200 || hadSpeech === false) {
+  // Never save silence (boothTakePolicy.takeIsSilent says what counts).
+  if (takeIsSilent(blob, hadSpeech)) {
     queue.markFailed(line.id, 'That take came out silent — read it again.')
     if (!sessionIds.value.includes(line.id)) sessionIds.value = [...sessionIds.value, line.id]
     lastLine.value = line
@@ -2527,13 +2516,8 @@ async function onNext(source = 'tap', to = 'next') {
       recorder.beginLine()
     }
     pending.then(blob => {
-      // Nothing heard on this line: he was moving, not reading, so nothing is
-      // filed — a line he walked across keeps the take it had. Where the meter
-      // cannot say (null), a line with no take yet is filed as before (a lost
-      // take is the worse mistake), but a line that HAS one is left alone:
-      // walking over saved work must never replace it with room tone.
-      if (hadSpeech === false) return
-      if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id)))) return
+      // Walking over a line never files room tone over saved work (boothTakePolicy.fileTakeOnAdvance).
+      if (!fileTakeOnAdvance(hadSpeech, () => !!target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id))))) return
       commit(target, blob, hadSpeech, advance)
     }).finally(() => {
       // The take has landed (its line is now settled on its own) or was refused (its twins are
@@ -2558,13 +2542,8 @@ function onJumpUnrecorded() {
 }
 
 // ── Moving on by itself ─────────────────────────────────────────────────────
-// The recordist reads; when they stop, the studio goes to the next line. No
-// tap. This is only safe because the capture no longer ends where the line
-// ends: the outgoing recorder runs on for its tail and the incoming one has
-// been running since before this decision was made, so advancing a beat too
-// early costs nothing but a slightly longer clip. Under the old per-line
-// recorder the same feature would have cut every take.
-const AUTO_ADVANCE_QUIET_MS = 1200
+// The recordist reads; when they stop, the studio goes to the next line. The
+// quiet that ends a line, and why it is safe, is boothTakePolicy.autoAdvanceDue.
 
 // A GAPPED READ ADVANCES ON A TAP, NEVER ON A SILENCE.
 //
@@ -2619,11 +2598,6 @@ watch(() => recorder.quietMs.value, (ms) => {
   // A held mic is not listening to anybody. Without this, the recordist's own
   // take coming out of the phone speaker would advance the queue for them.
   if (micHeld.value || playingId.value) return
-  if (!recorder.lineHasSpeech.value) return
-  // A BLIP IS NOT A READ (Aran, 2026-10-28, job #915): one loud frame sets
-  // lineHasSpeech; a quiet may only end the line once MIN_VOICED_MS of it was
-  // voiced. Taps are untouched — this is the auto-advance gate alone.
-  if (recorder.voicedMs.value < MIN_VOICED_MS) return
   // A SILENCE NEVER ENDS THE BATCH (Aran, live, 2026-10-15 15:09 BST, batch 5): on
   // the last line he pressed Again, began reading, drew breath — and the booth
   // jumped to the finished screen mid-sentence, because a quiet on the LAST line
@@ -2631,11 +2605,11 @@ watch(() => recorder.quietMs.value, (ms) => {
   // screen comes only from Done (› past the last line) or Stop, both his own taps.
   if (!hasNext.value) return
   // No cooldown on a freshly-opened line, deliberately: beginLine() sets
-  // lineHasSpeech back to false and quietMs to 0, and the guard above means the
+  // lineHasSpeech back to false and quietMs to 0, and autoAdvanceDue's speech guard means the
   // watcher cannot fire again until the recordist has actually said something on
   // the NEW line. A timer here would be doing nothing that the recorder is not
   // already doing, so there isn't one.
-  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext('auto')
+  if (autoAdvanceDue({ quietMs: ms, lineHasSpeech: recorder.lineHasSpeech.value, voicedMs: recorder.voicedMs.value })) onNext('auto')
 })
 
 async function onAgain() {
@@ -2758,12 +2732,8 @@ async function onFinish() {
     const advance = advanceInfo('stop')
     const target = takeTargetAt(lines.value, i)
     const blob = await recorder.endLine()
-    // Stop pressed on a line nobody read is not a failed take — it is the end
-    // of the session. Filing it would put a phantom red line on a clean run.
-    // But that only holds where the recorder KNOWS nobody read it: if the meter
-    // is not reading, a dropped final line is a lost take, and a phantom row on
-    // the done screen is the cheaper of the two mistakes.
-    if (hadSpeech !== false) commit(target, blob, hadSpeech, advance)
+    // Stop on a line nobody read ends the session, files nothing (boothTakePolicy.fileTakeOnStop).
+    if (fileTakeOnStop(hadSpeech)) commit(target, blob, hadSpeech, advance)
     // Stopped after reading this line: the next visit opens on the line after it.
     if (hadSpeech === true && nextFlowFrom(i) !== -1) pinCursor(lines.value[nextFlowFrom(i)].id)
     await finish()
