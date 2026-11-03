@@ -779,5 +779,13 @@
   "switchoverResult": "learner progress: 0 carried, 3 dropped.",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "ron_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:52:23.216Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ron (403): ron has only the 2026-09-04 draft casting, which Tom never chose, so no ron clip is rendered (azure_ro-RO-AlinaNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "audio": {},
+  "chars": 0
  }
 }
