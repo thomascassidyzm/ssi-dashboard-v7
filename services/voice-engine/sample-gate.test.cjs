@@ -11,17 +11,6 @@ describe('sample-gate.cjs', () => {
     expect(gate.needsSample(r, 'new000000000')).toBe(true)
     expect(gate.needsSample(r, 'old000000000')).toBe(false)
   })
-  it('the Re-record card never stops a voice that has passed once, on any build (job #569)', () => {
-    const r = gate.approve(null, { build: 'old000000000', by: 'artist', at: 't0' })
-    expect(gate.needsSample(r, 'new000000000', { track: 'rerecord' })).toBe(false)
-    // every other card keeps the recorder-change trigger
-    expect(gate.needsSample(r, 'new000000000', { track: 'phrases' })).toBe(true)
-    expect(gate.needsSample(r, 'new000000000')).toBe(true)
-    // a voice that has never passed is still checked on Re-record (the first-ever check)
-    expect(gate.needsSample(null, 'new000000000', { track: 'rerecord' })).toBe(true)
-    expect(gate.hasEverPassed(r)).toBe(true)
-    expect(gate.hasEverPassed(null)).toBe(false)
-  })
   it('an unknown build never gates (fails open)', () => {
     expect(gate.needsSample(null, 'unknown')).toBe(false)
     expect(gate.needsSample(null, null)).toBe(false)

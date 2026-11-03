@@ -19,11 +19,6 @@ describe('sample-gate.js (booth)', () => {
     const r = await readSampleGate({ base: '', voiceId: 'human_x', build: 'abc', fetchImpl: vi.fn().mockRejectedValue(new Error('down')) })
     expect(r.gated).toBe(false)
   })
-  it('sends the card (track) so the server can spare Re-record for a voice that has passed (job #569)', async () => {
-    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ needsSample: false, sampleSize: 10 }) })
-    await readSampleGate({ base: '', voiceId: 'human_x', build: 'abc', track: 'rerecord', fetchImpl, session: memStore() })
-    expect(fetchImpl.mock.calls[0][0]).toContain('track=rerecord')
-  })
   it('a pass is remembered in the tab even when the store cannot save it, so a reload does not ask again (job #569)', async () => {
     const session = memStore()
     const fetchImpl = vi.fn().mockRejectedValue(new Error('down'))

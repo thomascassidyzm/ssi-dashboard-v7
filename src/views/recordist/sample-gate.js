@@ -51,16 +51,12 @@ function safeSession() {
   try { return typeof sessionStorage !== 'undefined' ? sessionStorage : null } catch { return null }
 }
 
-/**
- * Is this session gated? Reads the voice's approved build; ANY failure answers false (open).
- * `track` lets the server spare the Re-record card for a voice that has ever passed (job #569).
- */
-export async function readSampleGate({ base, voiceId, build = RECORDER_BUILD, track = null, withKey = (u) => u, fetchImpl = fetch, session = safeSession() }) {
+/** Is this session gated? Reads the voice's approved build; ANY failure answers false (open). */
+export async function readSampleGate({ base, voiceId, build = RECORDER_BUILD, withKey = (u) => u, fetchImpl = fetch, session = safeSession() }) {
   if (!gateAppliesTo(voiceId) || !build || build === 'unknown') return { gated: false, size: SAMPLE_SIZE }
   if (passedInThisTab(voiceId, build, session)) return { gated: false, size: SAMPLE_SIZE }
   try {
-    const trackParam = track ? `&track=${encodeURIComponent(track)}` : ''
-    const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate?build=${encodeURIComponent(build)}${trackParam}`, voiceId))
+    const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate?build=${encodeURIComponent(build)}`, voiceId))
     if (!res.ok) return { gated: false, size: SAMPLE_SIZE }
     const body = await res.json()
     return { gated: body.needsSample === true, size: Number(body.sampleSize) > 0 ? Number(body.sampleSize) : SAMPLE_SIZE }

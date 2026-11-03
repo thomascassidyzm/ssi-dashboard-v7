@@ -3688,15 +3688,12 @@ const sampleIds = ref([])
 const sampleChecks = ref({})
 const sampleApproving = ref(false)
 const sampleNote = ref('')
-// Read per voice AND card: the server spares the Re-record card for a voice that has ever passed
-// (job #569). Moving to another card or batch while the check is up counts as carrying on.
-watch(() => [props.voiceId, addressQuery.value.track], async ([voiceId, track], was) => {
-  if (was && was[0] === voiceId && sampleHeld.value) acknowledgeSample()
+watch(() => props.voiceId, async (voiceId) => {
   sampleGate.value = { gated: false, size: SAMPLE_SIZE }
   sampleHeld.value = false
   sampleIds.value = []
-  const read = await readSampleGate({ base: apiBase(), voiceId, track: track || null, withKey: withBoothKey })
-  if (voiceId === props.voiceId && (addressQuery.value.track || null) === (track || null)) sampleGate.value = read
+  const read = await readSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
+  if (voiceId === props.voiceId) sampleGate.value = read
 }, { immediate: true })
 watch(readThisSession, (n, was) => {
   if (!sampleGate.value.gated || sampleHeld.value) return
