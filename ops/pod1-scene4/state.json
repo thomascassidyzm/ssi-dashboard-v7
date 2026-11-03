@@ -169,14 +169,15 @@
   "recastAudio": {}
  },
  "cat_for_eng": {
-  "state": "blocked",
+  "state": "held",
   "step": "rendering",
-  "at": "2026-11-03T19:35:43.737Z",
+  "at": "2026-11-03T19:59:44.157Z",
   "audio": {
    "2:target": "fe754f45-9bf1-4366-a488-a8169f5cee76"
   },
   "chars": 86,
-  "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for cat_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+  "pass": "recast"
  },
  "cat_for_spa": {
   "state": "blocked",
