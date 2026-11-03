@@ -862,12 +862,38 @@
   "rebound": true
  },
  "kor_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:48:21.752Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for kor (403): azure_ko-KR-YuJinNeural is not a Cartesia voice and this course's kor voices are not all Azure; the kor cast is cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772, cartesia_537a82ae-4926-4bfb-9aec-aff0b80a12a5, cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9 (Tom 2026-10-10: n",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:05:42.518Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 111,
+  "grant": "#168",
+  "recastAudio": {
+   "SC04-S001:target": "114d3688-244a-4131-967d-e8c7899afc5b",
+   "SC04-S001:known": "69651c27-35ff-4d64-b75a-d182ad87817b",
+   "SC04-S002:target": "fc547d5d-3ef8-442e-a882-e38b79872717",
+   "SC04-S002:known": "d537139b-a386-407b-b8b5-a5b0832fdba6",
+   "SC04-S003:target": "9500510b-7f2a-4fa8-9d96-1e6741e39109",
+   "SC04-S003:known": "fc924837-a3db-4969-b75f-401999e7b717"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 21,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "lav_for_eng": {
   "state": "blocked",
