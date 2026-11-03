@@ -84,5 +84,25 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ara (403): azure_ar-EG-SalmaNeural is not a Cartesia voice and this course's ara voices are not all Azure; the ara cast is cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4, cartesia_002622d8-19d0-4567-a16a-f99c7397c062, cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6, cartesia_9cbad5f7",
   "audio": {},
   "chars": 0
+ },
+ "ara_sy_for_eng": {
+  "state": "held",
+  "step": "edited",
+  "at": "2026-11-03T19:28:51.244Z",
+  "audio": {
+   "2:target": "ecfaee6c-8bd1-4c80-9f63-5d8029e86caf",
+   "2:known": "37e7b2a0-0d5f-4fb8-8613-1e52d0dd6dce",
+   "3:target": "eb30eece-c6f9-4bbd-84fa-ade8355b8c93",
+   "3:known": "eca6b63c-c4ff-402c-8cc1-fc4ed448deb0"
+  },
+  "chars": 136,
+  "voices": {
+   "SC04-S002:target": "azure_ar-SY-AmanyNeural",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "azure_ar-SY-LaithNeural",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": "none",
+  "why": "switchover dry run refused: REFUSED: ara_sy_for_eng is not ready to switch: |   - 108 staged sentences are still marked draft |   - 6 staged sentences have no target audio"
  }
 }
