@@ -571,5 +571,15 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for hrv (403): hrv has only the 2026-09-04 draft casting, which Tom never chose, so no hrv clip is rendered (azure_hr-HR-SreckoNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "hye_for_eng": {
+  "state": "blocked",
+  "step": "rendering",
+  "at": "2026-11-03T19:46:02.250Z",
+  "audio": {
+   "2:target": "398e683e-f8ef-4324-9c43-2cc4233b6659"
+  },
+  "chars": 101,
+  "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for eng (403): cartesia_bedd6226 may not render new eng audio; Tom's cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c-4e8e-a314-022ece01c121. Cast it in the Voice"
  }
 }
