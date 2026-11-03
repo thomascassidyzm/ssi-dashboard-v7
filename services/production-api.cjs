@@ -5074,8 +5074,12 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const id = String(req.params.id || '')
   const patch = {}
-  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null }
-  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null }
+  // A side's SPLIT clips go with its text too (tools/pods/split-audio-inheritance.cjs: "Split audio belongs to a row's TEXT,
+  // never to its SLOT … where it cannot be carried, the correct value is NULL — the player then falls back to the whole-turn
+  // clip"). Job #799: this route used to null only the whole-turn pointer, so an edited line kept its old per-sentence clips,
+  // which the player prefers — the learner would have heard the OLD words under the new text.
+  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null; patch.sentence_audio_ids = null; patch.takeg_audio_ids = null }
+  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null; patch.sentence_known_audio_ids = null }
   if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'target_text or known_text required' })
   try {
     const sb = supabaseClient.getClient()

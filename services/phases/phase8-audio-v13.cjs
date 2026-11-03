@@ -146,7 +146,7 @@ async function knownGenderContextFor(courseCode, voices) {
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
-const { podLineVoice } = require('../shared/pod-line-voice.cjs')
+const { podLineVoice, clipColumnFor } = require('../shared/pod-line-voice.cjs')
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -5653,11 +5653,14 @@ function buildRenderDeps() {
         // known-voice rule nor resolveVoice — both govern course slots, not pods — is asked.
         let podVoice = null
         if (podSentenceId && !trial) {
-          const { data: podLine, error: lineErr } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker').eq('id', podSentenceId).maybeSingle()
+          const { data: podLine, error: lineErr } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker, target_audio_id, known_audio_id').eq('id', podSentenceId).maybeSingle()
           if (lineErr) throw new Error(`listening_pod_sentences unreadable: ${lineErr.message}`)
           const { data: podRow, error: podErr } = podLine ? await supabase.from('listening_pods').select('id, course_code, speakers').eq('id', podLine.pod_id).maybeSingle() : { data: null, error: null }
           if (podErr) throw new Error(`listening_pods unreadable: ${podErr.message}`)
-          podVoice = podLineVoice({ pod: podRow, sentence: podLine || null, role, courseCode })
+          const col = clipColumnFor(role)
+          const { data: nowClip, error: clipErr } = podLine && col && podLine[col] ? await supabase.from('course_audio').select('voice_id').eq('id', podLine[col]).maybeSingle() : { data: null, error: null }
+          if (clipErr) throw new Error(`course_audio unreadable: ${clipErr.message}`)
+          podVoice = podLineVoice({ pod: podRow, sentence: podLine || null, role, courseCode, currentClipVoice: (nowClip && nowClip.voice_id) || null })
           if (podVoice.error) throw new RenderRequestError(podVoice.error, podVoice.code === 'NO_POD_SENTENCE' ? 404 : 409, podVoice.code)
           if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
           voiceId = podVoice.voiceId
