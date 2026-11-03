@@ -270,5 +270,31 @@
   "switchoverResult": "",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "eng_for_fra": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:37:33.937Z",
+  "audio": {
+   "2:target": "ab15eee6-feac-4ead-b790-b7af9bdf7697",
+   "2:known": "70931d64-5a9d-4420-b66d-6773658333d4",
+   "3:target": "f1a3f9f8-ac83-4aa1-812e-1ad635537082",
+   "3:known": "7be6982e-4920-44bf-a418-9aa995cd529d"
+  },
+  "chars": 0,
+  "voices": {
+   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S002:known": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S003:known": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745"
+  },
+  "languageText": {
+   "moved": [],
+   "bound": true
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
