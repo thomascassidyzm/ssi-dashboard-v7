@@ -588,12 +588,15 @@
  "fas_for_eng": {
   "state": "blocked",
   "step": "rendering",
-  "at": "2026-11-03T19:42:32.262Z",
+  "at": "2026-11-03T20:01:56.087Z",
   "audio": {
    "2:target": "a3c0ad67-41fb-4de7-b368-e4fe07b13abc"
   },
   "chars": 80,
-  "why": "render refused (dry run) 2:known: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 8 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c"
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY fas_for_eng:pod-1:SC04-S001: no current m target cast for fas_for_eng (fas (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+  "grant": "#160",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "fin_for_eng": {
   "state": "blocked",
