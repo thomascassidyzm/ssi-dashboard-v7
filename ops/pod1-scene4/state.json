@@ -610,12 +610,33 @@
   "recastAudio": {}
  },
  "fra_ca_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:43:05.576Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for fra_ca (403): azure_fr-CA-SylvieNeural is not a Cartesia voice and this course's fra_ca voices are not all Azure; the fra_ca cast is cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5, cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2 (Tom 2026-10-10: new audio only in a language he has ca",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:02:54.358Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 202,
+  "grant": "#162",
+  "recastAudio": {
+   "SC04-S001:target": "2479da5e-3008-4a8d-a1a1-9d596fc3dac1",
+   "SC04-S001:known": "c4e1dbfa-9184-4243-9883-a9018f47642f",
+   "SC04-S002:target": "e949fc99-12d2-47ce-a1e2-3d1a5cea7923",
+   "SC04-S002:known": "6342d73b-e448-493d-ae86-4aca3df5f8ee",
+   "SC04-S003:target": "72ead978-34d4-4898-86a0-7c509769a766",
+   "SC04-S003:known": "ddbb5115-a1b9-4f72-a2f0-b6f2f7e9fdb1"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "pass": "recast",
+  "rebound": true
  },
  "fra_for_jpn": {
   "state": "live",
