@@ -160,9 +160,9 @@
   "chars": 0
  },
  "deu_for_eng": {
-  "state": "held",
-  "step": "edited",
-  "at": "2026-11-03T19:30:51.061Z",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:34:04.220Z",
   "audio": {
    "2:target": "54f217e5-1176-4c78-a560-0af99df650e2",
    "2:known": "3859bdfc-d4f1-4c75-b81b-6f15dabb3fb1",
@@ -176,12 +176,27 @@
    "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
    "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
   },
-  "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  enable debug logging with { debug: true }\n{\n \"course\": \"deu_for_eng\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_eng:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! E"
+  "why": "served: 2 line(s) new, audio linked",
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 31,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "rebound": true
  },
  "deu_for_jpn": {
-  "state": "held",
-  "step": "edited",
-  "at": "2026-11-03T19:31:22.374Z",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:34:58.573Z",
   "audio": {
    "2:target": "bcfa4da4-c279-449b-b70d-2313df42aa32",
    "2:known": "0f0790ec-ed65-42a1-82ed-6e7c71a26903",
@@ -195,7 +210,14 @@
    "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
    "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
   },
-  "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  suppress all logs with { quiet: true }\n{\n \"course\": \"deu_for_jpn\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_jpn:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! Es t"
+  "why": "served: 2 line(s) new, audio linked",
+  "languageText": {
+   "moved": [],
+   "bound": true
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "rebound": true
  },
  "ell_for_eng": {
   "state": "blocked",
@@ -222,5 +244,30 @@
   "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 4 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c",
   "audio": {},
   "chars": 0
+ },
+ "eng_for_deu": {
+  "state": "in-progress",
+  "step": "edited",
+  "at": "2026-11-03T19:32:32.149Z",
+  "audio": {
+   "2:target": "20c22e4f-0659-4277-98e1-a415ae339047",
+   "2:known": "e0459e03-2a59-46c0-b663-65be781724fc",
+   "3:target": "acde06d2-de6f-4f98-9301-c68c3f468310",
+   "3:known": "d0917eb7-7c9d-4576-b094-63d05ce71c5f"
+  },
+  "chars": 0,
+  "voices": {
+   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S002:known": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S003:known": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d"
+  },
+  "languageText": {
+   "moved": [
+    22,
+    21
+   ],
+   "bound": true
+  }
  }
 }

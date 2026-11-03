@@ -26,7 +26,8 @@ const { execFileSync, spawnSync } = require('child_process')
 const ROOT = path.resolve(__dirname, '../..')
 const POPTY = 'http://localhost:3470'
 const HELD = 'pod-1-staged-2026-11-03'
-const STAMP = '2026-11-03'
+// job-scoped: another job retired deu_for_jpn's pod-1 as pod-1-retired-2026-11-03 at 15:20 the same day (ita/fra/deu_for_eng used the plain stamp)
+const STAMP = '2026-11-03-c799'
 const STATE = path.join(__dirname, 'state.json')
 const WELSH = new Set(['cym_n_for_eng', 'cym_s_for_eng'])
 const course = process.argv[2]
@@ -155,7 +156,8 @@ async function linkClips (links, dryRun) {
   const lines = drafts.filter(d => (d.target_after || '') !== (d.target_before || '')).map(d => held.sentences.find(r => r.id === heldId(d.id)).global_order)
   if (lines.length) {
     const dry = tool(['tools/pods/language-text-for-staged-pod.cjs', `--course=${course}`, `--staged=${HELD}`, `--lines=${lines.join(',')}`], 120000)
-    const jsonStart = dry.out.indexOf('{'); let plan = null; try { plan = JSON.parse(dry.out.slice(jsonStart)) } catch { /* */ }
+    // the JSON starts on its own line: dotenv's banner tip can itself contain "{ debug: true }" (it broke deu_for_eng's first run)
+    const m = /^\{/m.exec(dry.out); const jsonStart = m ? m.index : -1; let plan = null; try { plan = JSON.parse(dry.out.slice(jsonStart)) } catch { /* */ }
     if (!plan) stop('held', `language-text dry run unreadable: ${dry.out.slice(0, 300)}`, { audio, chars })
     if (plan.refuse) stop('held', `language text: ${plan.refuse}`, { audio, chars })
     if (plan.result !== 'no-language-text') {
