@@ -575,14 +575,15 @@
   "rebound": true
  },
  "eus_for_spa": {
-  "state": "blocked",
+  "state": "held",
   "step": "rendering",
-  "at": "2026-11-03T19:42:13.266Z",
+  "at": "2026-11-03T20:01:50.367Z",
   "audio": {
    "2:target": "2b0bfcb3-8d22-49dd-ac14-883e37e1f147"
   },
   "chars": 113,
-  "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for spa (403): cartesia_ara may not render new spa audio; Tom's cast is cartesia_cbb6fdf0-30dd-49f6-af7d-bbb1185c1fa5, cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3, cartesia_b738fa95-b787-4529-9170-34be41e95b95. Cast it in the Voice Lab, or audition it (door.audition)."
+  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+  "pass": "recast"
  },
  "fas_for_eng": {
   "state": "blocked",
