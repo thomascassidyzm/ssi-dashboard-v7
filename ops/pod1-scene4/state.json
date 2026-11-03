@@ -112,5 +112,15 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for bul (403): bul has only the 2026-09-04 draft casting, which Tom never chose, so no bul clip is rendered (azure_bg-BG-KalinaNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "cat_for_eng": {
+  "state": "blocked",
+  "step": "rendering",
+  "at": "2026-11-03T19:29:22.001Z",
+  "audio": {
+   "2:target": "fe754f45-9bf1-4366-a488-a8169f5cee76"
+  },
+  "chars": 86,
+  "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for cat_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
  }
 }
