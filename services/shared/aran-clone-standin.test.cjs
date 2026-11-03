@@ -80,3 +80,26 @@ describe('refused: everything else stays human-only', () => {
     expect(isHumanVoiceSlotBlocked({ courseCode: 'fra_for_eng', role: 'known', language: 'eng' })).toBe(false) // not a human-voice course at all
   })
 })
+
+describe('pace by belt (Aran 2026-11-03, job #579)', () => {
+  const { beltOf, standInSpeed, seedPositionOfSlot, STANDIN_PACE } = standIn
+  it('belt thresholds are the course belts', () => {
+    expect([1, 7, 8, 19, 20, 39, 40, 79, 80, 149, 150, 279, 280, 399, 400].map(beltOf)).toEqual(
+      ['white', 'white', 'yellow', 'yellow', 'orange', 'orange', 'green', 'green', 'blue', 'blue', 'purple', 'purple', 'brown', 'brown', 'black'])
+  })
+  it('white/yellow keep today\'s pace, orange/green a bit quicker, blue and up quicker still', () => {
+    expect(standInSpeed(1)).toBe(1.0); expect(standInSpeed(19)).toBe(1.0)
+    expect(standInSpeed(20)).toBeGreaterThan(1.0); expect(standInSpeed(79)).toBe(standInSpeed(20))
+    expect(standInSpeed(80)).toBeGreaterThan(standInSpeed(79)); expect(standInSpeed(500)).toBe(standInSpeed(80))
+    for (const v of Object.values(STANDIN_PACE)) expect(v).toBeLessThanOrEqual(1.5) // Cartesia's ceiling
+  })
+  it('an unplaceable line is never sped up', () => {
+    expect(standInSpeed(null)).toBe(1.0); expect(standInSpeed(0)).toBe(1.0)
+  })
+  it('a slot\'s position: seed number, or the seed of its LEGO', () => {
+    expect(seedPositionOfSlot({ seedNumber: 55 })).toBe(55)
+    expect(seedPositionOfSlot({ phraseId: 'cym_sv2_for_eng:S0014L01B08' })).toBe(14)
+    expect(seedPositionOfSlot({ legoId: 'S0123L02' })).toBe(123)
+    expect(seedPositionOfSlot({ phraseId: 'nonsense' })).toBe(null)
+  })
+})

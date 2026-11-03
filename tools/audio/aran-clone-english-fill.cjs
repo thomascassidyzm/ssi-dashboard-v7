@@ -44,6 +44,15 @@ const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, 
 const DIR = process.env.ARAN_FILL_DIR || path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/tools/audio/aran-clone-english-fill')
 const PLAN = path.join(DIR, 'plan.json'), RENDER_LOG = path.join(DIR, 'render.jsonl'), LINK_LOG = path.join(DIR, 'link.jsonl')
 
+const { seedPositionOfSlot } = require('../../services/shared/aran-clone-standin.cjs')
+
+/** The course position a plan entry is paced by (Aran 2026-11-03, job #579): its EARLIEST slot's seed — the first time a
+ * learner hears these words decides their belt, and so the clone's speed. null when no slot can be placed. */
+function entrySeedPosition(entry) {
+  const ps = (entry.slots || []).map(seedPositionOfSlot).filter((n) => n != null)
+  return ps.length ? Math.min(...ps) : null
+}
+
 const entryKey = (courseCode, text) => `${courseCode}\u0000${text}`
 const slotKey = (courseCode, target, id) => `${courseCode}|${target}|${id}`
 
@@ -236,7 +245,7 @@ async function main() {
       let status = 0, body = {}
       try {
         const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
-          body: JSON.stringify({ courseCode: e.courseCode, role: 'known', language: 'eng', text: e.text, purpose: PURPOSE, dryRun: dry }), signal: AbortSignal.timeout(300000) })
+          body: JSON.stringify({ courseCode: e.courseCode, role: 'known', language: 'eng', text: e.text, seedPosition: entrySeedPosition(e) || undefined, purpose: PURPOSE, dryRun: dry }), signal: AbortSignal.timeout(300000) })
         status = r.status; body = await r.json().catch(() => ({}))
       } catch (err) { body = { error: String(err && err.name) } }
       asked += 1
@@ -271,4 +280,4 @@ async function main() {
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1) })
 
-module.exports = { COURSES, planEntries, takeSlots, linkRequests, pendingEntries, entryKey, slotKey }
+module.exports = { COURSES, entrySeedPosition, planEntries, takeSlots, linkRequests, pendingEntries, entryKey, slotKey }
