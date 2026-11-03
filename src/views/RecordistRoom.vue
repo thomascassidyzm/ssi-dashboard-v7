@@ -3680,12 +3680,15 @@ const sampleIds = ref([])
 const sampleChecks = ref({})
 const sampleApproving = ref(false)
 const sampleNote = ref('')
-watch(() => props.voiceId, async (voiceId) => {
+// Read per voice AND card: the server spares the Re-record card for a voice that has ever passed
+// (job #569). Moving to another card or batch while the check is up counts as carrying on.
+watch(() => [props.voiceId, addressQuery.value.track], async ([voiceId, track], was) => {
+  if (was && was[0] === voiceId && sampleHeld.value) acknowledgeSample()
   sampleGate.value = { gated: false, size: SAMPLE_SIZE }
   sampleHeld.value = false
   sampleIds.value = []
-  const read = await readSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
-  if (voiceId === props.voiceId) sampleGate.value = read
+  const read = await readSampleGate({ base: apiBase(), voiceId, track: track || null, withKey: withBoothKey })
+  if (voiceId === props.voiceId && (addressQuery.value.track || null) === (track || null)) sampleGate.value = read
 }, { immediate: true })
 watch(readThisSession, (n, was) => {
   if (!sampleGate.value.gated || sampleHeld.value) return
@@ -3720,20 +3723,43 @@ function sampleCheckWords(id) {
   if (!c.measured) return ''
   return c.hints.length ? c.hints.join(' ') : 'sounds fine'
 }
-// Approve: this build is approved for this voice, and the session carries on into the bulk. If
-// the store is down the booth carries on anyway (never stranded) and asks again next session.
+// Approve: this build is approved for this voice, ON THE SERVER, and the session carries on into
+// the bulk. If the store is down the booth carries on anyway (never stranded); this tab remembers
+// the pass, so a reload here does not ask again (sample-gate.js approveSampleGate).
 async function approveSample() {
   if (sampleApproving.value) return
   sampleApproving.value = true
   stopPlayback()
-  const ok = await approveSampleGate({ base: apiBase(), voiceId: props.voiceId, withKey: withBoothKey })
+  const ok = await acknowledgeSample()
   sampleApproving.value = false
-  sampleNote.value = ok ? '' : 'Could not save the approval just now — carrying on; it will ask again next time.'
+  sampleNote.value = ok ? '' : 'Could not save the approval just now — carrying on.'
+  await begin()
+}
+// CARRYING ON IS THE ANSWER (Aran, 2026-11-03, job #569). The done card under the check still
+// offers Next batch, Back to my lines and Back to home; leaving by any of them used to leave the
+// voice with NO recorded answer, so every reload and every batch link asked again — Catrin's
+// voice had been shown the check repeatedly and had never once had a pass stored. Any way on
+// from the check except "Redo these" now records the pass for the voice, exactly as the
+// "Sounds right — carry on" button does.
+function acknowledgeSample() {
+  if (!sampleHeld.value) return Promise.resolve(true)
+  const voiceId = props.voiceId
   sampleGate.value = { ...sampleGate.value, gated: false }
   sampleHeld.value = false
   sampleIds.value = []
-  await begin()
+  return approveSampleGate({ base: apiBase(), voiceId, withKey: withBoothKey })
 }
+watch(phase, (p, was) => {
+  if (was === 'done' && p !== 'done' && sampleHeld.value) acknowledgeSample()
+})
+// The idle new-build reload (job #829) waits while the check is on screen: reloading under it
+// would throw the artist's answer away mid-listen.
+const sampleReloadKey = `booth-sample:${Math.random().toString(36).slice(2)}`
+watch(sampleHeld, (on) => holdReload(sampleReloadKey, on))
+onBeforeUnmount(() => {
+  if (sampleHeld.value) acknowledgeSample()
+  holdReload(sampleReloadKey, false)
+})
 // Redo: the same lines again, from the first. Each new take replaces its earlier one exactly as
 // Again always has; the gate counts afresh and stops after the sample again.
 async function redoSample() {

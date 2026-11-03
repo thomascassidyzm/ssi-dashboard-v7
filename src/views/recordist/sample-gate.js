@@ -36,11 +36,31 @@ export function sampleGateAction({ gated, held, phase, saved, size = SAMPLE_SIZE
   return null
 }
 
-/** Is this session gated? Reads the voice's approved build; ANY failure answers false (open). */
-export async function readSampleGate({ base, voiceId, build = RECORDER_BUILD, withKey = (u) => u, fetchImpl = fetch }) {
+// THE PASS IS THE VOICE'S, ON THE SERVER (job #569). This tab also remembers it, keyed by voice
+// and build, only so that an approval the store could not save (a network blip) is not asked
+// again on the next reload in the same tab. The server record is what every other tab, device
+// and incognito window reads; this memory is a fallback, never the record.
+const PASSED_KEY = (voiceId, build) => `booth.samplePassed:${voiceId}:${build}`
+export function rememberPassed(voiceId, build = RECORDER_BUILD, store = safeSession()) {
+  try { store && store.setItem(PASSED_KEY(voiceId, build), '1') } catch { /* private mode */ }
+}
+export function passedInThisTab(voiceId, build = RECORDER_BUILD, store = safeSession()) {
+  try { return !!(store && store.getItem(PASSED_KEY(voiceId, build))) } catch { return false }
+}
+function safeSession() {
+  try { return typeof sessionStorage !== 'undefined' ? sessionStorage : null } catch { return null }
+}
+
+/**
+ * Is this session gated? Reads the voice's approved build; ANY failure answers false (open).
+ * `track` lets the server spare the Re-record card for a voice that has ever passed (job #569).
+ */
+export async function readSampleGate({ base, voiceId, build = RECORDER_BUILD, track = null, withKey = (u) => u, fetchImpl = fetch, session = safeSession() }) {
   if (!gateAppliesTo(voiceId) || !build || build === 'unknown') return { gated: false, size: SAMPLE_SIZE }
+  if (passedInThisTab(voiceId, build, session)) return { gated: false, size: SAMPLE_SIZE }
   try {
-    const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate?build=${encodeURIComponent(build)}`, voiceId))
+    const trackParam = track ? `&track=${encodeURIComponent(track)}` : ''
+    const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate?build=${encodeURIComponent(build)}${trackParam}`, voiceId))
     if (!res.ok) return { gated: false, size: SAMPLE_SIZE }
     const body = await res.json()
     return { gated: body.needsSample === true, size: Number(body.sampleSize) > 0 ? Number(body.sampleSize) : SAMPLE_SIZE }
@@ -49,14 +69,24 @@ export async function readSampleGate({ base, voiceId, build = RECORDER_BUILD, wi
   }
 }
 
-/** Approve this build for this voice. Resolves true/false; the caller carries on either way. */
-export async function approveSampleGate({ base, voiceId, build = RECORDER_BUILD, withKey = (u) => u, fetchImpl = fetch }) {
-  try {
-    const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate/approve`, voiceId), {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ build, by: 'artist' }),
-    })
-    return res.ok
-  } catch { return false }
+/**
+ * Approve this build for this voice. Resolves true/false; the caller carries on either way.
+ * Tries a few times (the store call is idempotent), and remembers the pass in this tab whatever
+ * the store said, so a blip never re-asks on the next reload (job #569).
+ */
+export async function approveSampleGate({ base, voiceId, build = RECORDER_BUILD, withKey = (u) => u, fetchImpl = fetch, attempts = 3, waitMs = 800, session = safeSession() }) {
+  rememberPassed(voiceId, build, session)
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetchImpl(withKey(`${base}/api/recording/voice/${encodeURIComponent(voiceId)}/sample-gate/approve`, voiceId), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ build, by: 'artist' }),
+      })
+      if (res.ok) return true
+      if (res.status >= 400 && res.status < 500) return false // refused, not a blip: retrying cannot help
+    } catch { /* network: try again */ }
+    if (i < attempts - 1 && waitMs > 0) await new Promise((r) => setTimeout(r, waitMs * (i + 1)))
+  }
+  return false
 }
 
 /**

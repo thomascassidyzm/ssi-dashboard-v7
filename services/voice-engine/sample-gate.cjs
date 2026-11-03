@@ -31,10 +31,26 @@ const HISTORY_KEEP = 20
 
 const keyFor = (voiceId) => `booth-sample-gate/${encodeURIComponent(voiceId)}.json`
 
-/** Does a session on `build` need the sample first? Pure. Unknown build = never gated (fail open). */
-function needsSample(record, build) {
+/**
+ * Does a session on `build` need the sample first? Pure. Unknown build = never gated (fail open).
+ *
+ * THE RE-RECORD CARD (Aran, 2026-11-03, job #569): a voice that has passed the check ONCE, on any
+ * card and any build, is never stopped on the Re-record track. Re-record is a handful of single
+ * lines being fixed in batches; stopping an artist who has already passed, on every batch, after
+ * every booth deploy, was the "it keeps coming back" Catrin hit. The first-ever check still
+ * applies there (a voice with no approval at all is gated on every track), and the build trigger
+ * still applies on every other card.
+ */
+function needsSample(record, build, { track = null } = {}) {
   if (!build || build === 'unknown') return false
-  return !(record && record.approvedBuild === build)
+  if (record && record.approvedBuild === build) return false
+  if (track === 'rerecord' && hasEverPassed(record)) return false
+  return true
+}
+
+/** Has this voice ever passed the check, on any build? Pure. */
+function hasEverPassed(record) {
+  return !!(record && record.approvedBuild)
 }
 
 /** The record after an approval. Pure. */
@@ -88,4 +104,4 @@ function computeRecorderBuild(root, files = RECORDER_BUILD_FILES) {
   } catch { return 'unknown' }
 }
 
-module.exports = { RECORDER_BUILD_FILES, computeRecorderBuild, SAMPLE_SIZE, keyFor, needsSample, approve, createSampleGateStore }
+module.exports = { RECORDER_BUILD_FILES, computeRecorderBuild, SAMPLE_SIZE, keyFor, needsSample, hasEverPassed, approve, createSampleGateStore }

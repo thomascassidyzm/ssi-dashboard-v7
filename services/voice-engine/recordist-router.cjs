@@ -3270,11 +3270,13 @@ module.exports = function createRecordistRouter({
     try {
       const record = await gateStore.read(req.params.voiceId)
       const build = typeof req.query.build === 'string' ? req.query.build : null
+      const track = typeof req.query.track === 'string' ? req.query.track : null
       res.json({
         sampleSize: sampleGate.SAMPLE_SIZE,
         approvedBuild: record ? record.approvedBuild : null,
         approvedAt: record ? record.approvedAt : null,
-        needsSample: build ? sampleGate.needsSample(record, build) : null,
+        passedEver: sampleGate.hasEverPassed(record),
+        needsSample: build ? sampleGate.needsSample(record, build, { track }) : null,
       })
     } catch (err) {
       logger.error(`[Recordist] sample-gate read: ${err.message}`)
