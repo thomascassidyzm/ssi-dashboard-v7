@@ -1,1233 +1,1233 @@
 {
- "ita_for_eng": {
-  "state": "live",
-  "why": "probe, by hand: clone -> render 4 (353 chars) -> held edit -> link -> language text lines 21,22 -> switchover (plan carry 562 / drop 21) -> re-bind; transcribed all 4 clips correct",
-  "audio": {
-   "2:known": "efa7cbea-874d-4039-8339-fd3187c0d1d1",
-   "3:known": "f1e21475-ca19-42a4-86e1-f11f1c12b154",
-   "2:target": "c4965e81-db73-4d3e-804c-5108da1e1742",
-   "3:target": "51204e27-cb23-4c65-8fc8-036eda831439"
-  },
-  "voices": {
-   "S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
-   "S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
-   "S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "chars": 353,
-  "migrationPlan": {
-   "carry": 562,
-   "keep": 0,
-   "merge": 0,
-   "drop": 21
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "rebound": true,
-  "at": "2026-11-03T19:45:00Z"
- },
- "_canon_english": {
-  "state": "done",
-  "why": "canonical_pod_scenarios pod-1:SC04-S02/S03 and recovery quotes SC04-RM5-S01/S02 now carry the coffee lines (PATCH /api/admin/canonical-pods, job799-canon)"
- },
- "fra_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:27:02.837Z",
-  "audio": {
-   "2:target": "19fe2f81-1f58-4150-b2d3-f49469cba1bf",
-   "2:known": "01e3ddeb-3a0a-461b-b207-11cc0acc55ca",
-   "3:target": "c11b4553-42f4-4701-8998-0af0c360131b",
-   "3:known": "54f92016-8d5a-4de7-a3ed-3dab510944f5"
-  },
-  "chars": 209,
-  "voices": {
-   "SC04-S002:target": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 288,
-   "keep": 0,
-   "merge": 0,
-   "drop": 16
-  },
-  "switchoverResult": "learner progress: 0 carried, 16 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "ara_eg_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:58:32.892Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 152,
-  "grant": "#153",
-  "recastAudio": {
-   "SC04-S001:target": "a10c50a6-40a6-47c1-9c81-74e58b451145",
-   "SC04-S001:known": "c3b5255c-bd7d-4f7a-8085-e6b20cfc0753",
-   "SC04-S002:target": "fb5792c1-6810-40c1-9553-3f409eb89056",
-   "SC04-S002:known": "45f9913a-4cd0-4717-af8f-fcb8b7ac7f37",
-   "SC04-S003:target": "83bbfcfe-60eb-45f5-adb4-501b9d1b3c86",
-   "SC04-S003:known": "8cdbe0a9-6d1d-40fa-8f39-bc2327ff742a"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "azure_ar-EG-ShakirNeural",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "azure_ar-EG-SalmaNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_ar-EG-ShakirNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 9,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "ara_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:59:33.520Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 161,
-  "grant": "#154",
-  "recastAudio": {
-   "SC04-S001:target": "b104f286-71cf-48b2-8764-9eb43d8f7abf",
-   "SC04-S001:known": "6b336982-f32f-4982-857f-54be0acd6714",
-   "SC04-S002:target": "5b123dfb-b649-4778-b3fc-64d45226dbbc",
-   "SC04-S002:known": "d9b13764-de3b-45a6-9284-eb7f88edfa9d",
-   "SC04-S003:target": "6bc98ca8-42bf-4eac-ba0a-58bf93eecaa5",
-   "SC04-S003:known": "404aba1a-da6e-4907-a0c8-74496b86e013"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 2,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "ara_sy_for_eng": {
-  "state": "held",
-  "step": "edited",
-  "at": "2026-11-03T19:35:32.890Z",
-  "audio": {
-   "2:target": "ecfaee6c-8bd1-4c80-9f63-5d8029e86caf",
-   "2:known": "37e7b2a0-0d5f-4fb8-8613-1e52d0dd6dce",
-   "3:target": "eb30eece-c6f9-4bbd-84fa-ade8355b8c93",
-   "3:known": "eca6b63c-c4ff-402c-8cc1-fc4ed448deb0"
-  },
-  "chars": 136,
-  "voices": {
-   "SC04-S002:target": "azure_ar-SY-AmanyNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_ar-SY-LaithNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": "none",
-  "why": "switchover dry run refused: REFUSED: ara_sy_for_eng is not ready to switch: |   - 108 staged sentences are still marked draft |   - 6 staged sentences have no target audio"
- },
- "bul_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:59:39.096Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY bul_for_eng:pod-1:SC04-S001: no current m target cast for bul_for_eng (bul (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#155",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "cat_for_eng": {
-  "state": "held",
-  "step": "rendering",
-  "at": "2026-11-03T19:59:44.157Z",
-  "audio": {
-   "2:target": "fe754f45-9bf1-4366-a488-a8169f5cee76"
-  },
-  "chars": 86,
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "pass": "recast"
- },
- "cat_for_spa": {
-  "state": "held",
-  "step": "rendering",
-  "at": "2026-11-03T19:59:48.696Z",
-  "audio": {
-   "2:target": "1be427d7-3f34-4029-9c86-da7de173f443"
-  },
-  "chars": 93,
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "pass": "recast"
- },
- "cym_n_for_eng": {
-  "state": "skipped-welsh",
-  "why": "human-recorded Welsh pod: unchanged by Tom's ruling r-2026-11-03-welsh-pods-human-recorded",
-  "at": "2026-11-03T19:29:45.728Z"
- },
- "cym_s_for_eng": {
-  "state": "skipped-welsh",
-  "why": "human-recorded Welsh pod: unchanged by Tom's ruling r-2026-11-03-welsh-pods-human-recorded",
-  "at": "2026-11-03T19:29:49.122Z"
- },
- "dan_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:59:53.580Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY dan_for_eng:pod-1:SC04-S001: no current m target cast for dan_for_eng (dan (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#156",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "deu_at_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:59:58.830Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY deu_at_for_eng:pod-1:SC04-S001: no current m target cast for deu_at_for_eng (deu_at (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#157",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "deu_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:34:04.220Z",
-  "audio": {
-   "2:target": "54f217e5-1176-4c78-a560-0af99df650e2",
-   "2:known": "3859bdfc-d4f1-4c75-b81b-6f15dabb3fb1",
-   "3:target": "ea579f50-4194-4c5f-99bd-d3340daf75ed",
-   "3:known": "ef15a31b-cbf7-4725-a444-cf10064a0318"
-  },
-  "chars": 222,
-  "voices": {
-   "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "why": "served: 2 line(s) new, audio linked",
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 31,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "rebound": true
- },
- "deu_for_jpn": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:34:58.573Z",
-  "audio": {
-   "2:target": "bcfa4da4-c279-449b-b70d-2313df42aa32",
-   "2:known": "0f0790ec-ed65-42a1-82ed-6e7c71a26903",
-   "3:target": "87723777-6b07-42cc-8d84-59026b2cc780",
-   "3:known": "820a5af1-5a9b-478a-a6ce-fb02aeba94d3"
-  },
-  "chars": 96,
-  "voices": {
-   "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
-   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
-   "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
-   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
-  },
-  "why": "served: 2 line(s) new, audio linked",
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "rebound": true
- },
- "ell_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:00:45.836Z",
-  "audio": {
-   "2:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0"
-  },
-  "chars": 350,
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "grant": "#158",
-  "recastAudio": {
-   "SC04-S001:target": "c3688bc9-b85b-4f94-a557-8fb214ffbf01",
-   "SC04-S001:known": "2a214f0c-9972-43ba-8cdc-2070b84d09c0",
-   "SC04-S002:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0",
-   "SC04-S002:known": "d0f9e90d-4334-4465-9aaf-f994727bfee1",
-   "SC04-S003:target": "11a47fc2-a5ff-4469-86ca-d99c6bb353a2",
-   "SC04-S003:known": "06704934-3522-4470-a568-1086dd4bb6c8"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "azure_el-GR-NestorasNeural",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "azure_el-GR-AthinaNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_el-GR-NestorasNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 83,
-   "keep": 0,
-   "merge": 0,
-   "drop": 14
-  },
-  "switchoverResult": "learner progress: 0 carried, 14 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "eng_for_ara": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:00:50.214Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_ben": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:00:54.860Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_deu": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:36:46.494Z",
-  "audio": {
-   "2:target": "20c22e4f-0659-4277-98e1-a415ae339047",
-   "2:known": "e0459e03-2a59-46c0-b663-65be781724fc",
-   "3:target": "acde06d2-de6f-4f98-9301-c68c3f468310",
-   "3:known": "d0917eb7-7c9d-4576-b094-63d05ce71c5f"
-  },
-  "chars": 0,
-  "voices": {
-   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S002:known": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
-   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S003:known": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d"
-  },
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "eng_for_fra": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:37:33.937Z",
-  "audio": {
-   "2:target": "ab15eee6-feac-4ead-b790-b7af9bdf7697",
-   "2:known": "70931d64-5a9d-4420-b66d-6773658333d4",
-   "3:target": "f1a3f9f8-ac83-4aa1-812e-1ad635537082",
-   "3:known": "7be6982e-4920-44bf-a418-9aa995cd529d"
-  },
-  "chars": 0,
-  "voices": {
-   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S002:known": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
-   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S003:known": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745"
-  },
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "eng_for_guj": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:00:59.789Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_hin": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:04.401Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_ita": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:08.874Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_jpn": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:39:00.119Z",
-  "audio": {
-   "2:target": "1e83ae2f-1c71-4657-9afb-2a447629fa43",
-   "2:known": "305ea638-ee34-43ed-8147-00e9688914f8",
-   "3:target": "1a5b7b42-e4d9-46a0-a1b0-003a2649fef9",
-   "3:known": "aa29ba15-0cff-4b94-8679-15a44cad291a"
-  },
-  "chars": 0,
-  "voices": {
-   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
-   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
-  },
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "eng_for_kor": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:13.558Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_pan": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:18.575Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_por": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:23.144Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_sin": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:27.368Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_spa": {
-  "state": "held",
-  "step": "recast-rendering",
-  "at": "2026-11-03T19:56:35.630Z",
-  "why": "language text: staged pod has 142 lines, the language text has 231",
-  "audio": {},
-  "chars": 196,
-  "grant": "#152",
-  "recastAudio": {
-   "SC04-S01:target": "42bba42c-609c-4214-85e0-07c02b783fbf",
-   "SC04-S01:known": "f12c9b2b-766b-4e3a-8139-9b26711ca9e3",
-   "SC04-S02:target": "22988026-717e-43e6-a78b-0c2c28d179a1",
-   "SC04-S02:known": "a48b2f25-5c78-47e1-a9d2-f341b991ac86",
-   "SC04-S03:target": "d3aad596-32e7-4474-9463-5f3a2f9b200b",
-   "SC04-S03:known": "510e1041-e6c6-452e-b54d-24ca7e92091d"
-  },
-  "recastVoices": {
-   "SC04-S01:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S01:known": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
-   "SC04-S02:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S02:known": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
-   "SC04-S03:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S03:known": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3"
-  },
-  "pass": "recast"
- },
- "eng_for_tam": {
-  "state": "held",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "at": "2026-11-03T20:01:31.775Z",
-  "pass": "recast"
- },
- "eng_for_urd": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:36.211Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "eng_for_zho": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:01:40.542Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "est_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:01:45.962Z",
-  "audio": {
-   "2:target": "c088812a-f4d0-4faf-bdc6-811442771d5b"
-  },
-  "chars": 96,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY est_for_eng:pod-1:SC04-S001: no current m target cast for est_for_eng (est (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#159",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "eus_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:41:52.910Z",
-  "audio": {
-   "2:target": "f6f7e25f-10fc-4140-a9b9-526d9d1045b4",
-   "2:known": "90c35fdc-ee5c-4f75-aeab-bc658384b771",
-   "3:target": "608f4d9e-bdb1-40b2-b136-d5882a603e2c",
-   "3:known": "be07041a-9c51-43e5-b3e4-af03c2da107b"
-  },
-  "chars": 186,
-  "voices": {
-   "SC04-S002:target": "azure_eu-ES-AinhoaNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_eu-ES-AnderNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 345,
-   "keep": 0,
-   "merge": 0,
-   "drop": 21
-  },
-  "switchoverResult": "learner progress: 0 carried, 21 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "eus_for_spa": {
-  "state": "held",
-  "step": "rendering",
-  "at": "2026-11-03T20:01:50.367Z",
-  "audio": {
-   "2:target": "2b0bfcb3-8d22-49dd-ac14-883e37e1f147"
-  },
-  "chars": 113,
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "pass": "recast"
- },
- "fas_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:01:56.087Z",
-  "audio": {
-   "2:target": "a3c0ad67-41fb-4de7-b368-e4fe07b13abc"
-  },
-  "chars": 80,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY fas_for_eng:pod-1:SC04-S001: no current m target cast for fas_for_eng (fas (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#160",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "fin_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:02:01.565Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 409 POD_UNCAST fin_for_eng:pod-1 line fin_for_eng:pod-1:SC04-S001 has no target-side clip and no cast voice for speaker \"Friend (7 pm)\"",
-  "audio": {},
-  "chars": 0,
-  "grant": "#161",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "fra_ca_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:02:54.358Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 202,
-  "grant": "#162",
-  "recastAudio": {
-   "SC04-S001:target": "2479da5e-3008-4a8d-a1a1-9d596fc3dac1",
-   "SC04-S001:known": "c4e1dbfa-9184-4243-9883-a9018f47642f",
-   "SC04-S002:target": "e949fc99-12d2-47ce-a1e2-3d1a5cea7923",
-   "SC04-S002:known": "6342d73b-e448-493d-ae86-4aca3df5f8ee",
-   "SC04-S003:target": "72ead978-34d4-4898-86a0-7c509769a766",
-   "SC04-S003:known": "ddbb5115-a1b9-4f72-a2f0-b6f2f7e9fdb1"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "pass": "recast",
-  "rebound": true
- },
- "fra_for_jpn": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:43:53.434Z",
-  "audio": {
-   "2:target": "fe079cd6-e226-41c5-a287-93c5cdbb247b",
-   "2:known": "248f6d07-9984-44a3-86a4-d810c31276e8",
-   "3:target": "5f3eec98-df5a-469f-a04e-8170405a6063",
-   "3:known": "3bfb4c0e-275f-4863-a0bc-5e18cd8c9c61"
-  },
-  "chars": 0,
-  "voices": {
-   "SC04-S002:target": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
-   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
-   "SC04-S003:target": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
-   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
-  },
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "gle_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:44:54.741Z",
-  "audio": {
-   "2:target": "a447042f-9609-4d2e-b442-fd98fdb77ed2",
-   "2:known": "5674ed2e-8053-49cf-a8b0-292610a352e2",
-   "3:target": "745c5cb6-beb9-459f-b041-36aed0fcea66",
-   "3:known": "79b69a48-6a1a-49de-ab71-6de6a631c597"
-  },
-  "chars": 229,
-  "voices": {
-   "SC04-S002:target": "azure_ga-IE-OrlaNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_ga-IE-ColmNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 61,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "heb_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:02:59.849Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY heb_for_eng:pod-1:SC04-S001: no current m target cast for heb_for_eng (heb (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#163",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "hin_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:03:54.247Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 198,
-  "grant": "#164",
-  "recastAudio": {
-   "SC04-S001:target": "3af84099-460c-4963-b9a9-39806fa9211f",
-   "SC04-S001:known": "1f47ecb8-86be-4e4c-9b85-aec2d3f55bb1",
-   "SC04-S002:target": "87937b5e-f6eb-48e7-a08a-240b4fde972e",
-   "SC04-S002:known": "f3290c08-b5f4-4e5c-8ee5-4c40683d711e",
-   "SC04-S003:target": "47197356-4584-4b7d-91b4-febe08bded09",
-   "SC04-S003:known": "12dbea1e-d13d-4015-a24d-68ec3dbe3563"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_5283efe8-07d1-4e3a-b615-2ae4a81c1b73",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 7,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "hrv_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:04:00.044Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY hrv_for_eng:pod-1:SC04-S001: no current f target cast for hrv_for_eng (hrv (f) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#165",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "hye_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:04:05.413Z",
-  "audio": {
-   "2:target": "398e683e-f8ef-4324-9c43-2cc4233b6659"
-  },
-  "chars": 101,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY hye_for_eng:pod-1:SC04-S001: no current m target cast for hye_for_eng (hye (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#166",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "isl_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:46:59.261Z",
-  "audio": {
-   "2:target": "b0ff3a82-ce70-4a96-b9e5-399110b554a1",
-   "2:known": "03091876-33c1-4e22-9385-873d50186232",
-   "3:target": "8581f396-7551-4a91-8cc3-95be3da0c5bc",
-   "3:known": "ede96474-c823-4dd8-99cc-19765889fa95"
-  },
-  "chars": 187,
-  "voices": {
-   "SC04-S002:target": "azure_is-IS-GudrunNeural",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "azure_is-IS-GunnarNeural",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 91,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "ita_for_jpn": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:47:46.387Z",
-  "audio": {
-   "2:target": "86764063-de27-4b2d-b88d-8d027fd6917c",
-   "2:known": "0cb7d47e-6760-4897-aabb-fdee538ee9a8",
-   "3:target": "7c581d14-5fae-47d2-aae2-5b3190dfd6b7",
-   "3:known": "ae937c83-f29d-4ac3-90ca-735412e43ad5"
-  },
-  "chars": 0,
-  "voices": {
-   "SC04-S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
-   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
-   "SC04-S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
-   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
-  },
-  "languageText": {
-   "moved": [],
-   "bound": true
-  },
-  "migrationPlan": {},
-  "switchoverResult": "",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "jpn_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:04:47.393Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 0,
-  "grant": "#167",
-  "recastAudio": {
-   "SC04-S001:target": "2607e68e-8c0a-4da6-99bf-cb996fc6663b",
-   "SC04-S001:known": "8df29d65-5679-4bb7-b279-253cf7dc38b0",
-   "SC04-S002:target": "c6164bfe-97ff-41d5-b4c8-d5a7b4b18029",
-   "SC04-S002:known": "b5a39051-473b-4f21-bf0e-f706bb943856",
-   "SC04-S003:target": "41d295c3-a4d7-421b-bddd-20f8a1406ec4",
-   "SC04-S003:known": "3dfed9db-9dca-46dc-96ae-d159f603d337"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 33,
-   "keep": 0,
-   "merge": 0,
-   "drop": 4
-  },
-  "switchoverResult": "learner progress: 0 carried, 4 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "kor_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:05:42.518Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 111,
-  "grant": "#168",
-  "recastAudio": {
-   "SC04-S001:target": "114d3688-244a-4131-967d-e8c7899afc5b",
-   "SC04-S001:known": "69651c27-35ff-4d64-b75a-d182ad87817b",
-   "SC04-S002:target": "fc547d5d-3ef8-442e-a882-e38b79872717",
-   "SC04-S002:known": "d537139b-a386-407b-b8b5-a5b0832fdba6",
-   "SC04-S003:target": "9500510b-7f2a-4fa8-9d96-1e6741e39109",
-   "SC04-S003:known": "fc924837-a3db-4969-b75f-401999e7b717"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 21,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "lav_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:05:48.098Z",
-  "audio": {
-   "2:target": "274a418e-113b-4a6a-82b5-b71493534de1"
-  },
-  "chars": 99,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY lav_for_eng:pod-1:SC04-S001: no current m target cast for lav_for_eng (lav (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#169",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "lit_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:05:53.996Z",
-  "audio": {
-   "2:target": "11cea6c0-8c8d-4bd9-b87e-83b19784043d"
-  },
-  "chars": 103,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY lit_for_eng:pod-1:SC04-S001: no current m target cast for lit_for_eng (lit (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#170",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "nep_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:06:00.535Z",
-  "audio": {
-   "2:target": "a1a0c6e9-f2f0-43e3-81d1-9ff5661b9ff7"
-  },
-  "chars": 99,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nep_for_eng:pod-1:SC04-S001: no current m target cast for nep_for_eng (nep (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#171",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "nld_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:06:06.412Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nld_for_eng:pod-1:SC04-S001: no current m target cast for nld_for_eng (nld (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#172",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "nor_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:06:11.837Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nor_for_eng:pod-1:SC04-S001: no current m target cast for nor_for_eng (nor (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#173",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "pol_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:06:17.209Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY pol_for_eng:pod-1:SC04-S001: no current m target cast for pol_for_eng (pol (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#174",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "por_br_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:51:09.495Z",
-  "audio": {
-   "2:target": "ee19725f-2966-4725-9981-aa9df4901e7f",
-   "2:known": "fc3f1695-40df-41bc-80b5-63b2a6a20228",
-   "3:target": "8be9e25a-1f60-47db-a3e2-a8312bad36b5",
-   "3:known": "f3c1b4f8-957a-4d69-8fc0-4c90023513f8"
-  },
-  "chars": 165,
-  "voices": {
-   "SC04-S002:target": "cartesia_1cf751f6-8749-43ab-98bd-230dd633abdb",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 33,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "por_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:52:06.293Z",
-  "audio": {
-   "2:target": "538adab0-74b5-4548-a8f6-d0e12cd5d8be",
-   "2:known": "66a26cc3-346f-4e51-9b01-a6dbddb937b5",
-   "3:target": "6edeab58-ae71-4a72-8f1b-88d4f7d24b0c",
-   "3:known": "fee6dbcf-7193-4fb4-84f1-584218e422c8"
-  },
-  "chars": 157,
-  "voices": {
-   "SC04-S002:target": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    21,
-    22
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 86,
-   "keep": 0,
-   "merge": 0,
-   "drop": 3
-  },
-  "switchoverResult": "learner progress: 0 carried, 3 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "ron_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:06:22.535Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY ron_for_eng:pod-1:SC04-S001: no current m target cast for ron_for_eng (ron (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#175",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "spa_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T19:53:20.537Z",
-  "audio": {
-   "2:target": "d8598396-8262-445a-8dd8-ea84a5fc4f0a",
-   "2:known": "1a540bcd-279b-40aa-92ea-c4ac20e28fbd",
-   "3:target": "bb94420a-8e56-4eb4-9c33-dc3c617eeea9",
-   "3:known": "aed4d80b-6aa4-487b-a546-121c2730c10b"
-  },
-  "chars": 180,
-  "voices": {
-   "SC04-S002:target": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "languageText": {
-   "moved": [
-    22,
-    21
-   ],
-   "bound": true
-  },
-  "migrationPlan": {
-   "carry": 71,
-   "keep": 0,
-   "merge": 0,
-   "drop": 3
-  },
-  "switchoverResult": "learner progress: 0 carried, 3 dropped.",
-  "why": "served: 2 line(s) new, audio linked",
-  "rebound": true
- },
- "spa_for_jpn": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:06:27.121Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "spa_mx_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:07:23.825Z",
-  "audio": {
-   "2:target": "d7f46d83-a87b-471a-b501-669a069cc709"
-  },
-  "chars": 311,
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "grant": "#176",
-  "recastAudio": {
-   "SC04-S001:target": "2bee4f9e-d663-4025-89c0-0883703026c5",
-   "SC04-S001:known": "2ac88f4b-9d08-4cd6-9175-12025d394784",
-   "SC04-S002:target": "fb53eac5-4981-4bc5-a825-2b509fb52b55",
-   "SC04-S002:known": "d4fa7576-94c1-460e-a2f4-d628642e5e7d",
-   "SC04-S003:target": "d0f6eede-30c0-41d0-9bb4-6dd29349fdb3",
-   "SC04-S003:known": "6f502ca0-8db8-4eea-b232-a2e4cedad132"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_5c5ad5e7-1020-476b-8b91-fdcbe9cc313c",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 27,
-   "keep": 0,
-   "merge": 0,
-   "drop": 0
-  },
-  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "swa_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T20:07:29.176Z",
-  "audio": {
-   "2:target": "35466fad-5922-435c-bfa1-e229ca5b9829"
-  },
-  "chars": 107,
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY swa_for_eng:pod-1:SC04-S001: no current m target cast for swa_for_eng (swa (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "grant": "#177",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "swe_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:07:34.501Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY swe_for_eng:pod-1:SC04-S001: no current m target cast for swe_for_eng (swe (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#178",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "tha_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:07:39.714Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY tha_for_eng:pod-1:SC04-S001: no current m target cast for tha_for_eng (tha (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#179",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "tur_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:07:44.959Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY tur_for_eng:pod-1:SC04-S001: no current m target cast for tur_for_eng (tur (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#180",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "ukr_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T20:07:50.293Z",
-  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY ukr_for_eng:pod-1:SC04-S001: no current m target cast for ukr_for_eng (ukr (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
-  "audio": {},
-  "chars": 0,
-  "grant": "#181",
-  "pass": "recast",
-  "recastAudio": {}
- },
- "zho_for_eng": {
-  "state": "live",
-  "step": "switched",
-  "at": "2026-11-03T20:08:44.982Z",
-  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
-  "audio": {},
-  "chars": 68,
-  "grant": "#182",
-  "recastAudio": {
-   "SC04-S001:target": "25698185-edb6-4548-af59-67f0472bd05c",
-   "SC04-S001:known": "88dc350f-f8e9-47a2-bf01-fbe8423f6e3d",
-   "SC04-S002:target": "8053db92-7509-4c8b-a4b4-f3d265d88235",
-   "SC04-S002:known": "aade369b-2ca7-4a7c-a608-0717f2947f8a",
-   "SC04-S003:target": "7cdf20f1-a86d-49e3-b1df-826dff2eaba0",
-   "SC04-S003:known": "f797bbb1-c1b4-499f-90ba-28681271c0f4"
-  },
-  "recastVoices": {
-   "SC04-S001:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
-   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-   "SC04-S002:target": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
-   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-   "SC04-S003:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
-   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
-  },
-  "migrationPlan": {
-   "carry": 756,
-   "keep": 0,
-   "merge": 0,
-   "drop": 14
-  },
-  "switchoverResult": "learner progress: 0 carried, 14 dropped.",
-  "pass": "recast",
-  "rebound": true
- },
- "zho_for_jpn": {
-  "state": "held",
-  "step": "cloned",
-  "at": "2026-11-03T20:08:49.904Z",
-  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
-  "audio": {},
-  "chars": 0,
-  "pass": "recast"
- },
- "_key_job799": {
-  "state": "revoked",
-  "why": "revoked: key file gone; signed call refused (rc=1: Node.js v24.18.0)",
-  "at": "2026-11-03T19:55:41Z"
- }
+  "ita_for_eng": {
+    "state": "live",
+    "why": "probe, by hand: clone -> render 4 (353 chars) -> held edit -> link -> language text lines 21,22 -> switchover (plan carry 562 / drop 21) -> re-bind; transcribed all 4 clips correct",
+    "audio": {
+      "2:known": "efa7cbea-874d-4039-8339-fd3187c0d1d1",
+      "3:known": "f1e21475-ca19-42a4-86e1-f11f1c12b154",
+      "2:target": "c4965e81-db73-4d3e-804c-5108da1e1742",
+      "3:target": "51204e27-cb23-4c65-8fc8-036eda831439"
+    },
+    "voices": {
+      "S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+      "S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+      "S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "chars": 353,
+    "migrationPlan": {
+      "carry": 562,
+      "keep": 0,
+      "merge": 0,
+      "drop": 21
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "rebound": true,
+    "at": "2026-11-03T19:45:00Z"
+  },
+  "_canon_english": {
+    "state": "done",
+    "why": "canonical_pod_scenarios pod-1:SC04-S02/S03 and recovery quotes SC04-RM5-S01/S02 now carry the coffee lines (PATCH /api/admin/canonical-pods, job799-canon)"
+  },
+  "fra_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:27:02.837Z",
+    "audio": {
+      "2:target": "19fe2f81-1f58-4150-b2d3-f49469cba1bf",
+      "2:known": "01e3ddeb-3a0a-461b-b207-11cc0acc55ca",
+      "3:target": "c11b4553-42f4-4701-8998-0af0c360131b",
+      "3:known": "54f92016-8d5a-4de7-a3ed-3dab510944f5"
+    },
+    "chars": 209,
+    "voices": {
+      "SC04-S002:target": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 288,
+      "keep": 0,
+      "merge": 0,
+      "drop": 16
+    },
+    "switchoverResult": "learner progress: 0 carried, 16 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "ara_eg_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:58:32.892Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 152,
+    "grant": "#153",
+    "recastAudio": {
+      "SC04-S001:target": "a10c50a6-40a6-47c1-9c81-74e58b451145",
+      "SC04-S001:known": "c3b5255c-bd7d-4f7a-8085-e6b20cfc0753",
+      "SC04-S002:target": "fb5792c1-6810-40c1-9553-3f409eb89056",
+      "SC04-S002:known": "45f9913a-4cd0-4717-af8f-fcb8b7ac7f37",
+      "SC04-S003:target": "83bbfcfe-60eb-45f5-adb4-501b9d1b3c86",
+      "SC04-S003:known": "8cdbe0a9-6d1d-40fa-8f39-bc2327ff742a"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "azure_ar-EG-ShakirNeural",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "azure_ar-EG-SalmaNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_ar-EG-ShakirNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 9,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "ara_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:59:33.520Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 161,
+    "grant": "#154",
+    "recastAudio": {
+      "SC04-S001:target": "b104f286-71cf-48b2-8764-9eb43d8f7abf",
+      "SC04-S001:known": "6b336982-f32f-4982-857f-54be0acd6714",
+      "SC04-S002:target": "5b123dfb-b649-4778-b3fc-64d45226dbbc",
+      "SC04-S002:known": "d9b13764-de3b-45a6-9284-eb7f88edfa9d",
+      "SC04-S003:target": "6bc98ca8-42bf-4eac-ba0a-58bf93eecaa5",
+      "SC04-S003:known": "404aba1a-da6e-4907-a0c8-74496b86e013"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 2,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "ara_sy_for_eng": {
+    "state": "held",
+    "step": "edited",
+    "at": "2026-11-03T19:35:32.890Z",
+    "audio": {
+      "2:target": "ecfaee6c-8bd1-4c80-9f63-5d8029e86caf",
+      "2:known": "37e7b2a0-0d5f-4fb8-8613-1e52d0dd6dce",
+      "3:target": "eb30eece-c6f9-4bbd-84fa-ade8355b8c93",
+      "3:known": "eca6b63c-c4ff-402c-8cc1-fc4ed448deb0"
+    },
+    "chars": 136,
+    "voices": {
+      "SC04-S002:target": "azure_ar-SY-AmanyNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_ar-SY-LaithNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": "none",
+    "why": "switchover dry run refused: REFUSED: ara_sy_for_eng is not ready to switch: |   - 108 staged sentences are still marked draft |   - 6 staged sentences have no target audio"
+  },
+  "bul_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T19:59:39.096Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY bul_for_eng:pod-1:SC04-S001: no current m target cast for bul_for_eng (bul (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#155",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "cat_for_eng": {
+    "state": "held",
+    "step": "rendering",
+    "at": "2026-11-03T19:59:44.157Z",
+    "audio": {
+      "2:target": "fe754f45-9bf1-4366-a488-a8169f5cee76"
+    },
+    "chars": 86,
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "pass": "recast"
+  },
+  "cat_for_spa": {
+    "state": "held",
+    "step": "rendering",
+    "at": "2026-11-03T19:59:48.696Z",
+    "audio": {
+      "2:target": "1be427d7-3f34-4029-9c86-da7de173f443"
+    },
+    "chars": 93,
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "pass": "recast"
+  },
+  "cym_n_for_eng": {
+    "state": "skipped-welsh",
+    "why": "human-recorded Welsh pod: unchanged by Tom's ruling r-2026-11-03-welsh-pods-human-recorded",
+    "at": "2026-11-03T19:29:45.728Z"
+  },
+  "cym_s_for_eng": {
+    "state": "skipped-welsh",
+    "why": "human-recorded Welsh pod: unchanged by Tom's ruling r-2026-11-03-welsh-pods-human-recorded",
+    "at": "2026-11-03T19:29:49.122Z"
+  },
+  "dan_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T19:59:53.580Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY dan_for_eng:pod-1:SC04-S001: no current m target cast for dan_for_eng (dan (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#156",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "deu_at_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T19:59:58.830Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY deu_at_for_eng:pod-1:SC04-S001: no current m target cast for deu_at_for_eng (deu_at (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#157",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "deu_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:34:04.220Z",
+    "audio": {
+      "2:target": "54f217e5-1176-4c78-a560-0af99df650e2",
+      "2:known": "3859bdfc-d4f1-4c75-b81b-6f15dabb3fb1",
+      "3:target": "ea579f50-4194-4c5f-99bd-d3340daf75ed",
+      "3:known": "ef15a31b-cbf7-4725-a444-cf10064a0318"
+    },
+    "chars": 222,
+    "voices": {
+      "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "why": "served: 2 line(s) new, audio linked",
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 31,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "rebound": true
+  },
+  "deu_for_jpn": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:34:58.573Z",
+    "audio": {
+      "2:target": "bcfa4da4-c279-449b-b70d-2313df42aa32",
+      "2:known": "0f0790ec-ed65-42a1-82ed-6e7c71a26903",
+      "3:target": "87723777-6b07-42cc-8d84-59026b2cc780",
+      "3:known": "820a5af1-5a9b-478a-a6ce-fb02aeba94d3"
+    },
+    "chars": 96,
+    "voices": {
+      "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+      "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+      "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+      "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+    },
+    "why": "served: 2 line(s) new, audio linked",
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "rebound": true
+  },
+  "ell_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:00:45.836Z",
+    "audio": {
+      "2:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0"
+    },
+    "chars": 350,
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "grant": "#158",
+    "recastAudio": {
+      "SC04-S001:target": "c3688bc9-b85b-4f94-a557-8fb214ffbf01",
+      "SC04-S001:known": "2a214f0c-9972-43ba-8cdc-2070b84d09c0",
+      "SC04-S002:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0",
+      "SC04-S002:known": "d0f9e90d-4334-4465-9aaf-f994727bfee1",
+      "SC04-S003:target": "11a47fc2-a5ff-4469-86ca-d99c6bb353a2",
+      "SC04-S003:known": "06704934-3522-4470-a568-1086dd4bb6c8"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "azure_el-GR-NestorasNeural",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "azure_el-GR-AthinaNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_el-GR-NestorasNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 83,
+      "keep": 0,
+      "merge": 0,
+      "drop": 14
+    },
+    "switchoverResult": "learner progress: 0 carried, 14 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "eng_for_ara": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:00:50.214Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_ben": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:00:54.860Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_deu": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:36:46.494Z",
+    "audio": {
+      "2:target": "20c22e4f-0659-4277-98e1-a415ae339047",
+      "2:known": "e0459e03-2a59-46c0-b663-65be781724fc",
+      "3:target": "acde06d2-de6f-4f98-9301-c68c3f468310",
+      "3:known": "d0917eb7-7c9d-4576-b094-63d05ce71c5f"
+    },
+    "chars": 0,
+    "voices": {
+      "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S002:known": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+      "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S003:known": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d"
+    },
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "eng_for_fra": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:37:33.937Z",
+    "audio": {
+      "2:target": "ab15eee6-feac-4ead-b790-b7af9bdf7697",
+      "2:known": "70931d64-5a9d-4420-b66d-6773658333d4",
+      "3:target": "f1a3f9f8-ac83-4aa1-812e-1ad635537082",
+      "3:known": "7be6982e-4920-44bf-a418-9aa995cd529d"
+    },
+    "chars": 0,
+    "voices": {
+      "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S002:known": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+      "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S003:known": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745"
+    },
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "eng_for_guj": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:00:59.789Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_hin": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:04.401Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_ita": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:08.874Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_jpn": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:39:00.119Z",
+    "audio": {
+      "2:target": "1e83ae2f-1c71-4657-9afb-2a447629fa43",
+      "2:known": "305ea638-ee34-43ed-8147-00e9688914f8",
+      "3:target": "1a5b7b42-e4d9-46a0-a1b0-003a2649fef9",
+      "3:known": "aa29ba15-0cff-4b94-8679-15a44cad291a"
+    },
+    "chars": 0,
+    "voices": {
+      "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+      "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+    },
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "eng_for_kor": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:13.558Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_pan": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:18.575Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_por": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:23.144Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_sin": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:27.368Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_spa": {
+    "state": "held",
+    "step": "recast-rendering",
+    "at": "2026-11-03T19:56:35.630Z",
+    "why": "language text: staged pod has 142 lines, the language text has 231",
+    "audio": {},
+    "chars": 196,
+    "grant": "#152",
+    "recastAudio": {
+      "SC04-S01:target": "42bba42c-609c-4214-85e0-07c02b783fbf",
+      "SC04-S01:known": "f12c9b2b-766b-4e3a-8139-9b26711ca9e3",
+      "SC04-S02:target": "22988026-717e-43e6-a78b-0c2c28d179a1",
+      "SC04-S02:known": "a48b2f25-5c78-47e1-a9d2-f341b991ac86",
+      "SC04-S03:target": "d3aad596-32e7-4474-9463-5f3a2f9b200b",
+      "SC04-S03:known": "510e1041-e6c6-452e-b54d-24ca7e92091d"
+    },
+    "recastVoices": {
+      "SC04-S01:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S01:known": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
+      "SC04-S02:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S02:known": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
+      "SC04-S03:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S03:known": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3"
+    },
+    "pass": "recast"
+  },
+  "eng_for_tam": {
+    "state": "held",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "at": "2026-11-03T20:01:31.775Z",
+    "pass": "recast"
+  },
+  "eng_for_urd": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:36.211Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "eng_for_zho": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:01:40.542Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "est_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:01:45.962Z",
+    "audio": {
+      "2:target": "c088812a-f4d0-4faf-bdc6-811442771d5b"
+    },
+    "chars": 96,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY est_for_eng:pod-1:SC04-S001: no current m target cast for est_for_eng (est (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#159",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "eus_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:41:52.910Z",
+    "audio": {
+      "2:target": "f6f7e25f-10fc-4140-a9b9-526d9d1045b4",
+      "2:known": "90c35fdc-ee5c-4f75-aeab-bc658384b771",
+      "3:target": "608f4d9e-bdb1-40b2-b136-d5882a603e2c",
+      "3:known": "be07041a-9c51-43e5-b3e4-af03c2da107b"
+    },
+    "chars": 186,
+    "voices": {
+      "SC04-S002:target": "azure_eu-ES-AinhoaNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_eu-ES-AnderNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 345,
+      "keep": 0,
+      "merge": 0,
+      "drop": 21
+    },
+    "switchoverResult": "learner progress: 0 carried, 21 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "eus_for_spa": {
+    "state": "held",
+    "step": "rendering",
+    "at": "2026-11-03T20:01:50.367Z",
+    "audio": {
+      "2:target": "2b0bfcb3-8d22-49dd-ac14-883e37e1f147"
+    },
+    "chars": 113,
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "pass": "recast"
+  },
+  "fas_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:01:56.087Z",
+    "audio": {
+      "2:target": "a3c0ad67-41fb-4de7-b368-e4fe07b13abc"
+    },
+    "chars": 80,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY fas_for_eng:pod-1:SC04-S001: no current m target cast for fas_for_eng (fas (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#160",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "fin_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:02:01.565Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 409 POD_UNCAST fin_for_eng:pod-1 line fin_for_eng:pod-1:SC04-S001 has no target-side clip and no cast voice for speaker \"Friend (7 pm)\"",
+    "audio": {},
+    "chars": 0,
+    "grant": "#161",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "fra_ca_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:02:54.358Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 202,
+    "grant": "#162",
+    "recastAudio": {
+      "SC04-S001:target": "2479da5e-3008-4a8d-a1a1-9d596fc3dac1",
+      "SC04-S001:known": "c4e1dbfa-9184-4243-9883-a9018f47642f",
+      "SC04-S002:target": "e949fc99-12d2-47ce-a1e2-3d1a5cea7923",
+      "SC04-S002:known": "6342d73b-e448-493d-ae86-4aca3df5f8ee",
+      "SC04-S003:target": "72ead978-34d4-4898-86a0-7c509769a766",
+      "SC04-S003:known": "ddbb5115-a1b9-4f72-a2f0-b6f2f7e9fdb1"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "pass": "recast",
+    "rebound": true
+  },
+  "fra_for_jpn": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:43:53.434Z",
+    "audio": {
+      "2:target": "fe079cd6-e226-41c5-a287-93c5cdbb247b",
+      "2:known": "248f6d07-9984-44a3-86a4-d810c31276e8",
+      "3:target": "5f3eec98-df5a-469f-a04e-8170405a6063",
+      "3:known": "3bfb4c0e-275f-4863-a0bc-5e18cd8c9c61"
+    },
+    "chars": 0,
+    "voices": {
+      "SC04-S002:target": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+      "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+      "SC04-S003:target": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
+      "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+    },
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "gle_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:44:54.741Z",
+    "audio": {
+      "2:target": "a447042f-9609-4d2e-b442-fd98fdb77ed2",
+      "2:known": "5674ed2e-8053-49cf-a8b0-292610a352e2",
+      "3:target": "745c5cb6-beb9-459f-b041-36aed0fcea66",
+      "3:known": "79b69a48-6a1a-49de-ab71-6de6a631c597"
+    },
+    "chars": 229,
+    "voices": {
+      "SC04-S002:target": "azure_ga-IE-OrlaNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_ga-IE-ColmNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 61,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "heb_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:02:59.849Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY heb_for_eng:pod-1:SC04-S001: no current m target cast for heb_for_eng (heb (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#163",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "hin_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:03:54.247Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 198,
+    "grant": "#164",
+    "recastAudio": {
+      "SC04-S001:target": "3af84099-460c-4963-b9a9-39806fa9211f",
+      "SC04-S001:known": "1f47ecb8-86be-4e4c-9b85-aec2d3f55bb1",
+      "SC04-S002:target": "87937b5e-f6eb-48e7-a08a-240b4fde972e",
+      "SC04-S002:known": "f3290c08-b5f4-4e5c-8ee5-4c40683d711e",
+      "SC04-S003:target": "47197356-4584-4b7d-91b4-febe08bded09",
+      "SC04-S003:known": "12dbea1e-d13d-4015-a24d-68ec3dbe3563"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_5283efe8-07d1-4e3a-b615-2ae4a81c1b73",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 7,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "hrv_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:04:00.044Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY hrv_for_eng:pod-1:SC04-S001: no current f target cast for hrv_for_eng (hrv (f) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#165",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "hye_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:04:05.413Z",
+    "audio": {
+      "2:target": "398e683e-f8ef-4324-9c43-2cc4233b6659"
+    },
+    "chars": 101,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY hye_for_eng:pod-1:SC04-S001: no current m target cast for hye_for_eng (hye (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#166",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "isl_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:46:59.261Z",
+    "audio": {
+      "2:target": "b0ff3a82-ce70-4a96-b9e5-399110b554a1",
+      "2:known": "03091876-33c1-4e22-9385-873d50186232",
+      "3:target": "8581f396-7551-4a91-8cc3-95be3da0c5bc",
+      "3:known": "ede96474-c823-4dd8-99cc-19765889fa95"
+    },
+    "chars": 187,
+    "voices": {
+      "SC04-S002:target": "azure_is-IS-GudrunNeural",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "azure_is-IS-GunnarNeural",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 91,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "ita_for_jpn": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:47:46.387Z",
+    "audio": {
+      "2:target": "86764063-de27-4b2d-b88d-8d027fd6917c",
+      "2:known": "0cb7d47e-6760-4897-aabb-fdee538ee9a8",
+      "3:target": "7c581d14-5fae-47d2-aae2-5b3190dfd6b7",
+      "3:known": "ae937c83-f29d-4ac3-90ca-735412e43ad5"
+    },
+    "chars": 0,
+    "voices": {
+      "SC04-S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+      "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+      "SC04-S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+      "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+    },
+    "languageText": {
+      "moved": [],
+      "bound": true
+    },
+    "migrationPlan": {},
+    "switchoverResult": "",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "jpn_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:04:47.393Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 0,
+    "grant": "#167",
+    "recastAudio": {
+      "SC04-S001:target": "2607e68e-8c0a-4da6-99bf-cb996fc6663b",
+      "SC04-S001:known": "8df29d65-5679-4bb7-b279-253cf7dc38b0",
+      "SC04-S002:target": "c6164bfe-97ff-41d5-b4c8-d5a7b4b18029",
+      "SC04-S002:known": "b5a39051-473b-4f21-bf0e-f706bb943856",
+      "SC04-S003:target": "41d295c3-a4d7-421b-bddd-20f8a1406ec4",
+      "SC04-S003:known": "3dfed9db-9dca-46dc-96ae-d159f603d337"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 33,
+      "keep": 0,
+      "merge": 0,
+      "drop": 4
+    },
+    "switchoverResult": "learner progress: 0 carried, 4 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "kor_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:05:42.518Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 111,
+    "grant": "#168",
+    "recastAudio": {
+      "SC04-S001:target": "114d3688-244a-4131-967d-e8c7899afc5b",
+      "SC04-S001:known": "69651c27-35ff-4d64-b75a-d182ad87817b",
+      "SC04-S002:target": "fc547d5d-3ef8-442e-a882-e38b79872717",
+      "SC04-S002:known": "d537139b-a386-407b-b8b5-a5b0832fdba6",
+      "SC04-S003:target": "9500510b-7f2a-4fa8-9d96-1e6741e39109",
+      "SC04-S003:known": "fc924837-a3db-4969-b75f-401999e7b717"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 21,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "lav_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:05:48.098Z",
+    "audio": {
+      "2:target": "274a418e-113b-4a6a-82b5-b71493534de1"
+    },
+    "chars": 99,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY lav_for_eng:pod-1:SC04-S001: no current m target cast for lav_for_eng (lav (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#169",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "lit_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:05:53.996Z",
+    "audio": {
+      "2:target": "11cea6c0-8c8d-4bd9-b87e-83b19784043d"
+    },
+    "chars": 103,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY lit_for_eng:pod-1:SC04-S001: no current m target cast for lit_for_eng (lit (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#170",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "nep_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:06:00.535Z",
+    "audio": {
+      "2:target": "a1a0c6e9-f2f0-43e3-81d1-9ff5661b9ff7"
+    },
+    "chars": 99,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nep_for_eng:pod-1:SC04-S001: no current m target cast for nep_for_eng (nep (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#171",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "nld_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:06:06.412Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nld_for_eng:pod-1:SC04-S001: no current m target cast for nld_for_eng (nld (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#172",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "nor_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:06:11.837Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY nor_for_eng:pod-1:SC04-S001: no current m target cast for nor_for_eng (nor (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#173",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "pol_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:06:17.209Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY pol_for_eng:pod-1:SC04-S001: no current m target cast for pol_for_eng (pol (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#174",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "por_br_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:51:09.495Z",
+    "audio": {
+      "2:target": "ee19725f-2966-4725-9981-aa9df4901e7f",
+      "2:known": "fc3f1695-40df-41bc-80b5-63b2a6a20228",
+      "3:target": "8be9e25a-1f60-47db-a3e2-a8312bad36b5",
+      "3:known": "f3c1b4f8-957a-4d69-8fc0-4c90023513f8"
+    },
+    "chars": 165,
+    "voices": {
+      "SC04-S002:target": "cartesia_1cf751f6-8749-43ab-98bd-230dd633abdb",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 33,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "por_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:52:06.293Z",
+    "audio": {
+      "2:target": "538adab0-74b5-4548-a8f6-d0e12cd5d8be",
+      "2:known": "66a26cc3-346f-4e51-9b01-a6dbddb937b5",
+      "3:target": "6edeab58-ae71-4a72-8f1b-88d4f7d24b0c",
+      "3:known": "fee6dbcf-7193-4fb4-84f1-584218e422c8"
+    },
+    "chars": 157,
+    "voices": {
+      "SC04-S002:target": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        21,
+        22
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 86,
+      "keep": 0,
+      "merge": 0,
+      "drop": 3
+    },
+    "switchoverResult": "learner progress: 0 carried, 3 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "ron_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:06:22.535Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY ron_for_eng:pod-1:SC04-S001: no current m target cast for ron_for_eng (ron (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#175",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "spa_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T19:53:20.537Z",
+    "audio": {
+      "2:target": "d8598396-8262-445a-8dd8-ea84a5fc4f0a",
+      "2:known": "1a540bcd-279b-40aa-92ea-c4ac20e28fbd",
+      "3:target": "bb94420a-8e56-4eb4-9c33-dc3c617eeea9",
+      "3:known": "aed4d80b-6aa4-487b-a546-121c2730c10b"
+    },
+    "chars": 180,
+    "voices": {
+      "SC04-S002:target": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "languageText": {
+      "moved": [
+        22,
+        21
+      ],
+      "bound": true
+    },
+    "migrationPlan": {
+      "carry": 71,
+      "keep": 0,
+      "merge": 0,
+      "drop": 3
+    },
+    "switchoverResult": "learner progress: 0 carried, 3 dropped.",
+    "why": "served: 2 line(s) new, audio linked",
+    "rebound": true
+  },
+  "spa_for_jpn": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:06:27.121Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "spa_mx_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:07:23.825Z",
+    "audio": {
+      "2:target": "d7f46d83-a87b-471a-b501-669a069cc709"
+    },
+    "chars": 311,
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "grant": "#176",
+    "recastAudio": {
+      "SC04-S001:target": "2bee4f9e-d663-4025-89c0-0883703026c5",
+      "SC04-S001:known": "2ac88f4b-9d08-4cd6-9175-12025d394784",
+      "SC04-S002:target": "fb53eac5-4981-4bc5-a825-2b509fb52b55",
+      "SC04-S002:known": "d4fa7576-94c1-460e-a2f4-d628642e5e7d",
+      "SC04-S003:target": "d0f6eede-30c0-41d0-9bb4-6dd29349fdb3",
+      "SC04-S003:known": "6f502ca0-8db8-4eea-b232-a2e4cedad132"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_5c5ad5e7-1020-476b-8b91-fdcbe9cc313c",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 27,
+      "keep": 0,
+      "merge": 0,
+      "drop": 0
+    },
+    "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "swa_for_eng": {
+    "state": "blocked",
+    "step": "rendering",
+    "at": "2026-11-03T20:07:29.176Z",
+    "audio": {
+      "2:target": "35466fad-5922-435c-bfa1-e229ca5b9829"
+    },
+    "chars": 107,
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY swa_for_eng:pod-1:SC04-S001: no current m target cast for swa_for_eng (swa (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "grant": "#177",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "swe_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:07:34.501Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY swe_for_eng:pod-1:SC04-S001: no current m target cast for swe_for_eng (swe (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#178",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "tha_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:07:39.714Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY tha_for_eng:pod-1:SC04-S001: no current m target cast for tha_for_eng (tha (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#179",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "tur_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:07:44.959Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY tur_for_eng:pod-1:SC04-S001: no current m target cast for tur_for_eng (tur (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#180",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "ukr_for_eng": {
+    "state": "blocked",
+    "step": "cloned",
+    "at": "2026-11-03T20:07:50.293Z",
+    "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY ukr_for_eng:pod-1:SC04-S001: no current m target cast for ukr_for_eng (ukr (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+    "audio": {},
+    "chars": 0,
+    "grant": "#181",
+    "pass": "recast",
+    "recastAudio": {}
+  },
+  "zho_for_eng": {
+    "state": "live",
+    "step": "switched",
+    "at": "2026-11-03T20:08:44.982Z",
+    "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+    "audio": {},
+    "chars": 68,
+    "grant": "#182",
+    "recastAudio": {
+      "SC04-S001:target": "25698185-edb6-4548-af59-67f0472bd05c",
+      "SC04-S001:known": "88dc350f-f8e9-47a2-bf01-fbe8423f6e3d",
+      "SC04-S002:target": "8053db92-7509-4c8b-a4b4-f3d265d88235",
+      "SC04-S002:known": "aade369b-2ca7-4a7c-a608-0717f2947f8a",
+      "SC04-S003:target": "7cdf20f1-a86d-49e3-b1df-826dff2eaba0",
+      "SC04-S003:known": "f797bbb1-c1b4-499f-90ba-28681271c0f4"
+    },
+    "recastVoices": {
+      "SC04-S001:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+      "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+      "SC04-S002:target": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+      "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+      "SC04-S003:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+      "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+    },
+    "migrationPlan": {
+      "carry": 756,
+      "keep": 0,
+      "merge": 0,
+      "drop": 14
+    },
+    "switchoverResult": "learner progress: 0 carried, 14 dropped.",
+    "pass": "recast",
+    "rebound": true
+  },
+  "zho_for_jpn": {
+    "state": "held",
+    "step": "cloned",
+    "at": "2026-11-03T20:08:49.904Z",
+    "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+    "audio": {},
+    "chars": 0,
+    "pass": "recast"
+  },
+  "_key_job799": {
+    "state": "revoked",
+    "why": "revoked: key file gone; signed call refused (rc=1: Node.js v24.18.0)",
+    "at": "2026-11-03T20:08:53Z"
+  }
 }
