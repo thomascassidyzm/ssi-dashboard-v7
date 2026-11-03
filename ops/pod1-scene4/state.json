@@ -504,9 +504,10 @@
   "pass": "recast"
  },
  "eng_for_tam": {
-  "state": "blocked",
-  "why": "error: fetch failed",
-  "at": "2026-11-03T19:40:08.189Z"
+  "state": "held",
+  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
+  "at": "2026-11-03T20:01:31.775Z",
+  "pass": "recast"
  },
  "eng_for_urd": {
   "state": "blocked",
