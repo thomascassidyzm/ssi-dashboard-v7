@@ -317,7 +317,15 @@
             <strong>Quick check before the rest: your first {{ sampleLines.length }} takes.</strong>
             <span class="setup-note">Have a listen below. If they sound right, carry on — the booth won't stop you again until it changes.</span>
             <ol class="sample-list" data-test="sample-list">
-              <li v-for="l in sampleLines" :key="l.id">
+              <!-- A play button on every take (Aran, 2026-11-03, job #571: "no obvious way to play
+                   each of the 10 takes"). The booth's own round list button (.bl-play) and its
+                   togglePlay: inline, tap again to stop, one take at a time. -->
+              <li v-for="(l, i) in sampleLines" :key="l.id" :class="{ playing: playingId === l.id }" data-test="sample-row">
+                <button type="button" class="bl-play sample-play" :class="{ on: playingId === l.id }" data-test="sample-play"
+                        :disabled="!storedUrlFor(l.id) && !localUrlFor(l.id)"
+                        :aria-pressed="playingId === l.id"
+                        :aria-label="playingId === l.id ? `Stop take ${i + 1}` : `Play your take ${i + 1}`"
+                        @click="togglePlay(l.id)">{{ playingId === l.id ? '■' : '▶' }}</button>
                 <span class="listen-text">{{ plainText(l.text) }}</span>
                 <span class="sample-check" :class="{ warn: (sampleChecks[l.id] || {}).hints && sampleChecks[l.id].hints.length }">{{ sampleCheckWords(l.id) }}</span>
               </li>
@@ -3822,8 +3830,13 @@ onDeactivated(() => {
 
 <style scoped>
 .sample-gate { display: flex; flex-direction: column; gap: .5rem; text-align: left; }
-.sample-list { margin: 0; padding-left: 1.25rem; max-height: 30vh; overflow-y: auto; font-size: .9rem; }
-.sample-list li { display: flex; justify-content: space-between; gap: .5rem; }
+.sample-list { margin: 0; padding: 0; list-style: none; max-height: 55vh; overflow-y: auto; font-size: .9rem; }
+.sample-list li { display: flex; align-items: center; gap: .5rem; padding: .2rem .35rem; border-radius: 8px; }
+.sample-list li .listen-text { flex: 1; }
+.sample-list li.playing { background: rgba(6, 255, 165, 0.14); }
+:root[data-theme="light"] .sample-list li.playing { background: #e6f4ee; box-shadow: inset 4px 0 0 #047857; }
+.sample-play:disabled { opacity: .4; cursor: default; }
+.sample-play.on, :root[data-theme="light"] .sample-list .sample-play.on { background: #b45309; color: #fff; }
 .sample-check { opacity: .7; white-space: nowrap; }
 .sample-check.warn { opacity: 1; color: var(--rc-warn, #b45309); white-space: normal; }
 .sample-actions { display: flex; gap: .5rem; justify-content: flex-end; }
