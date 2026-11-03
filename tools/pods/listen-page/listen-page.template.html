@@ -64,7 +64,9 @@
 <audio id="a" preload="auto" playsinline></audio>
 <script>
 const D = /*DATA*/null;
-const SRC = (id) => `https://watson-1.tail4968cb.ts.net:8443/api/production/audio/${id}/stream`;
+// Same-origin via vercel.json's /evidence-audio rewrite: a tailnet device resolves watson-1 to a private
+// 100.x address, and Chrome refuses a public page loading media from a private address (Safari does not).
+const SRC = (id) => `/evidence-audio/${id}`;
 const PALETTE = ['#B5552D','#2E7D6B','#5B5EA6','#A8731E','#9C4D7E','#3F7CAC']; // useListeningPods SPEAKER_PALETTE
 const L = D.lines, a = document.getElementById('a'), $ = (id) => document.getElementById(id);
 let mode = localStorage.getItem('cyms-pod1-mode') || 'immersion';
