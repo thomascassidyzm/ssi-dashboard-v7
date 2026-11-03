@@ -37,6 +37,7 @@
 'use strict'
 
 const humanIntro = require('../shared/human-intro-splice.cjs')
+const { beltOf } = require('../shared/aran-clone-standin.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 
 const INTRO_SENTENCE_PREFIX = 'introsentence:'
@@ -72,17 +73,22 @@ function introTextOf(cfg, lego) {
  * @param {object[]} input.legos  course_legos rows {id, course_code, seed_number, lego_index, lego_id, known_text, target_text, is_new, presentation_audio_id}
  * @param {Map<string,{voice:string, spliced:boolean}>} input.introClips  the clips in those presentation slots, by id
  * @param {(lego:object) => number} [input.positionOf]  where the LEGO's seed is served (recordist-queue seedPosition)
+ * @param {(lego:object) => boolean} [input.isServed]  false for a seed its course's running order leaves out
  * @param {object} [table] humanSplicedIntros (tests)
  */
-function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), positionOf = (l) => l.seed_number } = {}, table) {
+function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), positionOf = (l) => l.seed_number, isServed = () => true } = {}, table) {
   const courses = introSentenceCoursesFor(recordist, table)
   if (!courses.length) return []
   const spellings = recordist.spellings || [recordist.voiceId]
   const cfgOf = new Map(courses.map((c) => [c.courseCode, c]))
   const rank = new Map(courses.map((c, i) => [c.courseCode, i]))
   const held = (id) => (id ? introClips.get(String(id)) || null : null)
-  const wanted = legos
-    .filter((l) => cfgOf.has(l.course_code) && l.is_new)
+  // STRICTLY THE COURSE'S RUNNING ORDER (Aran, 2026-11-03, job #584): a LEGO of a seed the course does not serve is
+  // never met by a learner, so it has no place on the card (it used to sit at the end: S0264L02, S0277L03, S0279L03).
+  const served = legos.filter((l) => cfgOf.has(l.course_code) && isServed(l))
+  const placeOf = coursePlaces(served, positionOf)
+  const wanted = served
+    .filter((l) => l.is_new)
     .filter((l) => { if (!l.presentation_audio_id) return true; const c = held(l.presentation_audio_id); return !!c && spellings.includes(c.voice) })
     .map((l) => ({ l, at: positionOf(l) }))
     .sort((a, b) => (a.at - b.at) || (a.l.lego_index - b.l.lego_index) || (rank.get(a.l.course_code) - rank.get(b.l.course_code)))
@@ -130,6 +136,9 @@ function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), 
         presentationAudioId: l.presentation_audio_id || null,
         readStyle: 'natural',
         rerecordWanted: false,
+        // WHERE IT SITS IN THE COURSE (Aran, 2026-11-03, job #584: "so he can add warmth knowing where each sits"):
+        // the booth labels the line "North · LEGO 351 · seed 78 · green belt".
+        coursePlace: placeOf.get(l.id) || null,
         // On the other course's card too (Aran, 2026-11-02): the booth says so, and the take fills both.
         sharedWith: [...new Set(others.map((o) => o.courseCode).filter((c) => c !== courseCode))],
       } })
@@ -138,6 +147,30 @@ function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), 
   // North's card, then South's, each in its own running order.
   out.sort((a, b) => (rank.get(a.line.courseCode) - rank.get(b.line.courseCode)) || (a.at - b.at) || (a.lego_index - b.lego_index))
   return out.map((x) => x.line)
+}
+
+/**
+ * WHERE EACH NEW LEGO SITS IN ITS COURSE, as a learner meets it: {legoN, seedPosition, belt} by LEGO row id.
+ *   legoN        its place among the course's NEW LEGOs in running order (1 = the first LEGO the course teaches) — the
+ *                same number the LEGO proof page shows (lego-proof-router buildProofList), counted over EVERY new LEGO,
+ *                including the ones not on this card (an intro already in another voice), so the gaps are honest;
+ *   seedPosition the seed's served position (course_running_order; seed number on a course without one);
+ *   belt         that position's belt (aran-clone-standin beltOf — the course's own thresholds).
+ * Takes only served LEGOs. Pure.
+ */
+function coursePlaces(legos, positionOf) {
+  const out = new Map()
+  const byCourse = new Map()
+  for (const l of legos) {
+    if (!l.is_new) continue
+    if (!byCourse.has(l.course_code)) byCourse.set(l.course_code, [])
+    byCourse.get(l.course_code).push({ l, at: positionOf(l) })
+  }
+  for (const rows of byCourse.values()) {
+    rows.sort((a, b) => (a.at - b.at) || (a.l.lego_index - b.l.lego_index))
+    rows.forEach(({ l, at }, i) => out.set(l.id, { legoN: i + 1, seedPosition: at, belt: beltOf(at) }))
+  }
+  return out
 }
 
 /**
@@ -182,5 +215,5 @@ function planIntroSentenceLinks(copies, audioId, heldVoice, spellings) {
 
 module.exports = {
   INTRO_SENTENCE_PREFIX, INTRO_SENTENCE_KIND, introSentenceLineId, parseIntroSentenceLineId, introSentenceCoursesFor,
-  introSentenceLinesFor, resolveIntroSentence, planIntroSentenceLinks,
+  introSentenceLinesFor, coursePlaces, resolveIntroSentence, planIntroSentenceLinks,
 }

@@ -1372,8 +1372,12 @@ function kindWordsFor(l) {
     const course = side(l.courseCode)
     const n = Number(l.alsoFills) || 0
     const other = (l.sharedWith || []).map(side).filter(Boolean)
-    const also = course ? ` (${course}${other.length ? `; the same sentence is on the ${other.join(' and ')} card, one take does both` : (n ? `, and ${n} more LEGO${n > 1 ? 's' : ''} with the same words` : '')})` : ''
-    return `Introduction${l.legoId ? ` ${l.legoId}` : ''}${also} - the whole sentence, English and Welsh together`
+    // WHERE IT SITS IN THE COURSE (Aran, 2026-11-03, job #584): "North · LEGO 351 · seed 78 · green belt" — the LEGO
+    // number is the LEGO proof page's, the seed is its served position, the belt that position's.
+    const p = l.coursePlace
+    const place = [course, p && p.legoN ? `LEGO ${p.legoN}` : null, p && p.seedPosition ? `seed ${p.seedPosition}` : null, p && p.belt ? `${p.belt} belt` : null].filter(Boolean).join(' · ')
+    const also = other.length ? ` - the same sentence is on the ${other.join(' and ')} card, one take does both` : (n ? ` - and ${n} more LEGO${n > 1 ? 's' : ''} with the same words` : '')
+    return `Introduction${l.legoId ? ` ${l.legoId}` : ''}${place ? ` · ${place}` : ''}${also}`
   }
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
