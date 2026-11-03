@@ -601,10 +601,13 @@
  "fin_for_eng": {
   "state": "blocked",
   "step": "cloned",
-  "at": "2026-11-03T19:42:48.131Z",
-  "why": "render refused (dry run) 2:target: 409 POD_UNCAST fin_for_eng:pod-1 line fin_for_eng:pod-1:SC04-S002 has no target-side clip and no cast voice for speaker \"Sarah\"",
+  "at": "2026-11-03T20:02:01.565Z",
+  "why": "recast render refused (dry run) SC04-S001:target: 409 POD_UNCAST fin_for_eng:pod-1 line fin_for_eng:pod-1:SC04-S001 has no target-side clip and no cast voice for speaker \"Friend (7 pm)\"",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#161",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "fra_ca_for_eng": {
   "state": "blocked",
