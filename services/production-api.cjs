@@ -4730,7 +4730,12 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
         // here is a snapshot merged onto whatever this request read — without
         // this the WHERE would still hit and silently overwrite a concurrent
         // metadata write with that stale snapshot.
-        q = expected.metadata === null ? q.is('metadata', null) : q.eq('metadata', expected.metadata)
+        // The value MUST be JSON text: supabase-js puts a filter value into the
+        // query string as-is, so a JS object arrives as "[object Object]" and
+        // Postgres refuses it ("invalid input syntax for type json") — which
+        // broke every release/hold from 16 Sept to job #701 (3 Nov). PostgREST
+        // casts the text to jsonb, and jsonb equality ignores key order.
+        q = expected.metadata === null ? q.is('metadata', null) : q.eq('metadata', JSON.stringify(expected.metadata))
         const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
