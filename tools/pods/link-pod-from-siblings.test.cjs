@@ -109,4 +109,26 @@ describe('link-pod-from-siblings', () => {
     expect(clipRefusal(clip('q', 'Mi chiamo Anna. … E lei?', F, 'ita'), 'ita', 'Mi chiamo Anna. E tu?')).toMatch(/text differs/)
     expect(clipRefusal(clip('e', 'Kaixo.', F, 'eu'), 'eus', 'Kaixo.')).toBeNull()
   })
+
+  it('re-voices a side whole from the library: old voice → new voice per speaker, unrecorded lines become renders (#658)', () => {
+    const f = fixture()
+    const NZF = 'cartesia_new_zf', NZM = 'cartesia_new_zm'
+    // Anna's line 1 is already in the library in her new voice; Guest's line 2 exists only in his OLD voice (k2).
+    const lib = [clip('n1', '你好。', NZF, 'zho'), clip('k2', '嗨。', ZM, 'zho')]
+    const r = buildLinkPlan({ ...f, library: lib, revoice: { known: { [ZF]: NZF, [ZM]: NZM } } })
+    const byId = Object.fromEntries(r.plan.rows.map((x) => [x.id.slice(-3), x.after]))
+    expect(byId['001'].known_audio_id).toBe('n1') // linked in the NEW voice, never the sibling's k1
+    expect(r.plan.rows.some((x) => ['k1', 'k2', 'k3'].includes(x.after.known_audio_id))).toBe(false)
+    expect(r.holes.map((h) => [h.go, h.voiceId])).toEqual([[2, NZM], [3, NZF]]) // renders, each in the speaker's mapped voice
+    expect(r.holes[0].inAnotherVoice).toEqual([{ audioId: 'k2', voiceId: ZM }]) // exists in the old voice: still a render
+    expect(r.inLanguage).toEqual([])
+    expect(r.plan.speakers.after.Anna.known.voice_id).toBe(NZF)
+    expect(r.problems).toEqual([])
+  })
+
+  it('refuses a re-voice when the sibling voices a speaker in a voice the map does not name (#658)', () => {
+    const r = buildLinkPlan({ ...fixture(), revoice: { known: { [ZF]: 'cartesia_new_zf' } } })
+    expect(r.ok).toBe(false)
+    expect(r.problems.join('\n')).toMatch(/voices Guest in cartesia_zm, which the re-voice map does not name/)
+  })
 })

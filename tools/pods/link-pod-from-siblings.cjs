@@ -32,12 +32,20 @@
  *       (c) genuinely unrecorded in that language → the only lines reported as renders.
  *     Nothing is rendered here. Render (c) through POST /api/audio/render, decide (b), rerun.
  *
+ * RE-VOICE A SIDE FROM THE LIBRARY (job #658, ask 1714, 2026-11-03). --revoice-known=<old voice>=<new voice>,… keeps the
+ * known sibling as the source of WHO speaks each line in WHICH voice, but takes the clip from the library in the
+ * mapped voice: every speaker the sibling voices in <old> is voiced in <new>, so the side moves whole into the new cast
+ * and no speaker is left with an old clip on one line and a new one on the next (the failure this mode exists to stop).
+ * A line not yet recorded in the new voice is a render — even if it exists in the old voice — because the caller has
+ * already made the voice decision (r-2026-11-02-re-voicing-a-course-with-its); such holes carry `inAnotherVoice` so the
+ * reader knows the route will want its re-record authority. A sibling voice with no mapping is refused, never kept.
+ *
  * Whole-turn slots only (target_audio_id, known_audio_id, speaker): a staged row's split arrays are empty, and filling
  * them would change its unit count, which switch-pod-clip-pointers refuses as a learner-slot move.
  *
  *   node tools/pods/link-pod-from-siblings.cjs --course=eng_for_zho --target-from=eng_for_fra:pod-1:target
  *        [--known-from=zho_for_eng:pod-1:target] [--staged=pod-1-231] [--relabel=SC21-S014=Narrator 2@<voice_id>]
- *        [--job=#340] [--apply]
+ *        [--revoice-known=<old voice>=<new voice>,…] [--job=#340] [--apply]
  * Dry run by default: writes the plan + holes to ~/ssi-evidence, exits 0 only if the pod would be fully covered and
  * cast-clean (3 = holes/refusals). --apply hands the clean plan to switch-pod-clip-pointers.cjs --apply, which writes
  * its rollback file first and records the editor identity.
@@ -95,7 +103,7 @@ function clipRefusal(clip, lang, text) {
  * @param library course_audio rows that may record a hole, ANY voice (an array, or a Map whose values are rows; optional)
  * @param relabels [{ suffix, speaker, voice }]
  */
-function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels = [], jobLabel = null }) {
+function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels = [], jobLabel = null, revoice = {} }) {
   const problems = [];
   const holes = [];
   const inLanguage = []; // (b) recorded already in the language, in another voice — never a render
@@ -104,6 +112,10 @@ function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels =
   const srcByOrder = {};
   for (const side of SIDES) srcByOrder[side] = new Map(sources[side].rows.map((r) => [r.global_order, r]));
   const relabelOf = new Map(relabels.map((r) => [r.suffix, r]));
+  // side → Map(bare old voice → new voice id): the re-voice map (job #658). Empty = link the sibling's own clips.
+  const revoiceOf = {};
+  for (const side of SIDES) revoiceOf[side] = new Map(Object.entries(revoice[side] || {}).map(([o, n]) => [bareVoiceId(o), n]));
+  const mapVoice = (side, v) => (v && revoiceOf[side].size ? revoiceOf[side].get(bareVoiceId(v)) || null : v);
 
   // 1. speaker label per row: the target sibling's label, then any explicit relabel.
   const proj = staged.rows.map((r) => {
@@ -138,6 +150,13 @@ function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels =
       }
       const rl = side === 'target' && relabelOf.get(r.id.split(':').pop());
       const c = clips.get(s[`${src.side}_audio_id`]);
+      if (revoiceOf[side].size && !rl) { // the sibling names the voice; the library supplies the clip in the mapped one
+        if (!c) { holes.push({ side, row: r, why: `no clip on ${src.podId} to read the speaker's voice from` }); continue; }
+        const nv = mapVoice(side, c.voice_id);
+        if (!nv) { problems.push(`${r.id}: ${src.podId} voices ${r.speaker} in ${c.voice_id}, which the re-voice map does not name`); continue; }
+        holes.push({ side, row: r, why: `re-voice ${c.voice_id} → ${nv}`, voice: nv, revoiced: true });
+        continue;
+      }
       const why = rl ? `relabelled to ${rl.speaker}, wants voice ${rl.voice}` : clipRefusal(c, langs[side], text);
       if (why) { holes.push({ side, row: r, why, voice: rl ? rl.voice : null }); continue; }
       pick[side].set(r.id, { clip: c });
@@ -155,6 +174,11 @@ function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels =
       if (!seen.has(name)) seen.set(name, new Map());
       seen.get(name).set(bareVoiceId(p.clip.voice_id), p.clip.voice_id);
     }
+    for (const h of holes) if (h.side === side && h.revoiced) { // a re-voiced line's voice is decided before its clip exists
+      const name = canonicalSpeakerName(h.row.speaker);
+      if (!seen.has(name)) seen.set(name, new Map());
+      seen.get(name).set(bareVoiceId(h.voice), h.voice);
+    }
     for (const rl of relabels) if (side === 'target') {
       const name = canonicalSpeakerName(rl.speaker);
       if (!seen.has(name)) seen.set(name, new Map());
@@ -171,12 +195,13 @@ function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels =
   for (const h of holes.splice(0)) {
     const name = canonicalSpeakerName(h.row.speaker);
     const srcCast = sources[h.side].speakers?.[name]?.[sources[h.side].side];
-    const voice = h.voice || cast[h.side].get(name) || srcCast?.voice_id || null;
+    const voice = h.voice || mapVoice(h.side, cast[h.side].get(name) || srcCast?.voice_id || null) || null;
+    const revoicing = revoiceOf[h.side].size > 0;
     const text = h.row[`${h.side}_text`];
     const recorded = clipsInLanguage(libraryRows, { language: langs[h.side], text }).filter((c) => !clipRefusal(c, langs[h.side], text));
     const mine = voice ? recorded.filter((c) => bareVoiceId(c.voice_id) === bareVoiceId(voice)) : [];
     const hit = mine.reduce((best, c) => pickPreferredAudioRow(best, c), undefined);
-    if (!hit && recorded.length) {
+    if (!hit && recorded.length && !revoicing) {
       inLanguage.push({ side: h.side, id: h.row.id, go: h.row.global_order, speaker: h.row.speaker, voiceId: voice, language: langs[h.side], text,
         existing: recorded.map((c) => ({ audioId: c.id, voiceId: c.voice_id, courseCode: c.course_code || null, side: c.role || null })) });
       continue;
@@ -187,7 +212,8 @@ function buildLinkPlan({ staged, sources, langs, clips, library = [], relabels =
       linked.library++;
       continue;
     }
-    holes.push({ side: h.side, id: h.row.id, go: h.row.global_order, speaker: h.row.speaker, voiceId: voice, language: langs[h.side], text, why: h.why });
+    holes.push({ side: h.side, id: h.row.id, go: h.row.global_order, speaker: h.row.speaker, voiceId: voice, language: langs[h.side], text, why: h.why,
+      ...(revoicing && recorded.length ? { inAnotherVoice: recorded.map((c) => ({ audioId: c.id, voiceId: c.voice_id })) } : {}) });
   }
   for (const h of holes) h.chars = String(h.text || '').length;
 
@@ -271,6 +297,9 @@ async function main() {
   if (!tSpec || !kSpec) throw new Error('name --target-from / --known-from (no default for an English side)');
   const relabels = process.argv.filter((a) => a.startsWith('--relabel=')).map((a) => parseRelabel(a.slice(10)));
   const apply = process.argv.includes('--apply');
+  const revoice = {};
+  const rk = arg('revoice-known');
+  if (rk) revoice.known = Object.fromEntries(rk.split(',').map((p) => { const [o, n] = p.split('='); if (!o || !n) throw new Error(`--revoice-known pair "${p}" is not <old>=<new>`); return [o.trim(), n.trim()]; }));
 
   const fs = require('fs');
   const db = require('../../services/shared/agent-db.cjs');
@@ -288,7 +317,7 @@ async function main() {
     const ids = [...staged.rows, ...sources.target.rows, ...sources.known.rows]
       .flatMap((r) => [r.target_audio_id, r.known_audio_id]).filter(Boolean);
     const clips = await db.clipMap(pg, ids, { cols: LIB_COLS });
-    const input = { staged, sources, langs: { target: tLang, known: kLang }, clips, relabels, jobLabel: arg('job') };
+    const input = { staged, sources, langs: { target: tLang, known: kLang }, clips, relabels, jobLabel: arg('job'), revoice };
     result = buildLinkPlan(input);
     if (result.holes.length) result = buildLinkPlan({ ...input, library: await loadLibrary(pg, result.holes) });
   } finally { await pg.end(); }
@@ -303,13 +332,15 @@ async function main() {
     counts: { linkedFromLibrary: linked.library, recordedInAnotherVoice: inLanguage.length, toRender: holes.length },
     recordedInAnotherVoice: inLanguage, toRender: holes,
   }, null, 1));
-  console.log(`${plan.podId}: target from ${tSpec}, known from ${kSpec}`);
+  console.log(`${plan.podId}: target from ${tSpec}, known from ${kSpec}${rk ? ` re-voiced ${rk}` : ''}`);
   console.log(`  linked ${linked.target} target + ${linked.known} known clips from siblings, ${linked.library} from the library; ${linked.kept} slots already filled (kept)`);
   console.log(`  relabels: ${plan.rows.filter((r) => 'speaker' in r.after).map((r) => `${r.id.split(':').pop()} ${r.before.speaker}→${r.after.speaker}`).join(', ') || 'none'}`);
   console.log(`  cast gate (target track): ${gate.voicesInUse.length} voice(s), ${gate.sameVoicePairs.length} same-voice pair(s), ${gate.uncast.length} uncast, ${gate.offCastClips || 0} off-cast, ${gate.wrongRowClips || 0} wrong-row`);
   for (const p of gate.sameVoicePairs) console.log(`    same-voice: ${sameVoiceAddress(p)}`);
   console.log(`  plan: ${planFile} (${plan.rows.length} rows)`);
   if (holes.length || inLanguage.length) {
+    const another = holes.filter((h) => h.inAnotherVoice).length;
+    if (another) console.error(`  re-voice: ${another} of the lines to render exist in another voice — the route will ask for its re-record authority`);
     console.error(`REFUSED — ${linked.library} linked from the library in the speaker's voice; ${inLanguage.length} recorded already in another voice (a casting/voice decision, not a render); ${holes.length} genuinely unrecorded in the language (${holes.reduce((n, h) => n + h.chars, 0)} chars to render)`);
     for (const h of inLanguage) console.error(`  recorded already: ${h.side} ${h.id} ${h.speaker} [${h.voiceId}] "${h.text}" — ${h.existing.map((e) => `voice ${e.voiceId}, clip ${e.audioId} (${e.courseCode} ${e.side})`).join('; ')}`);
   }
