@@ -3372,7 +3372,9 @@ module.exports = function createRecordistRouter({
 
   router.put('/languages/:language', async (req, res) => {
     try {
-      if (requireAdmin && !(await requireAdmin(req, res))) return
+      // Same gate as GET /languages and the per-slot PATCH/POST: an admin session
+      // or a signed agent key holding voice-slot:write (job #570, Kai 2026-11-03).
+      if (requireAdmin && !(await requireAdminOrAgent(req, res, 'voice-slot:write'))) return
 
       let language
       try {
