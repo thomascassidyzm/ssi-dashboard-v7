@@ -150,5 +150,13 @@
   "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for dan (403): dan has only the 2026-09-04 draft casting, which Tom never chose, so no dan clip is rendered (cartesia_97zmdc6s refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
   "audio": {},
   "chars": 0
+ },
+ "deu_at_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:30:19.429Z",
+  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"44c91d64\" (provider \"xai\") cannot be carried onto azure for deu_at_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"deu\" but no Cartesia voice is cast for it (the estate holds ",
+  "audio": {},
+  "chars": 0
  }
 }
