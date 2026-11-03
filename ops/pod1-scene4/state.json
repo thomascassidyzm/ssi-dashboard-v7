@@ -206,5 +206,13 @@
   },
   "chars": 97,
   "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for ell_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+ },
+ "eng_for_ara": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:31:54.801Z",
+  "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 4 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c",
+  "audio": {},
+  "chars": 0
  }
 }
