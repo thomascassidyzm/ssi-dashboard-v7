@@ -117,8 +117,15 @@ let injectedCourse = null
 const useCourseRow = fn => { injectedCourse = fn }
 
 /** Throws a VoicingRefusal; async because the course row is read from the DB (cached a minute by the cast gate). */
-async function assertRenderAllowed({ text, language, voiceId, courseCode = null, intro = false, role = null, audition = false }) {
+async function assertRenderAllowed({ text, language, voiceId, courseCode = null, intro = false, role = null, audition = false, podLine = false }) {
   if (!audition && isWelshCourse(courseCode) && isTomCloneVoice(voiceId)) throw new VoicingRefusal(refuse('tom-clone-welsh', WELSH_TOM_MESSAGE(courseCode, voiceId)).message, 'tom-clone-welsh')   // by code alone: even a course row that cannot be read
+  // A POD LINE (job #799): its voice is the pod's cast for its speaker, already resolved FROM THE POD ROW and enforced by the render
+  // route (shared/pod-line-voice.cjs) — resolveVoice governs course slots, not pods ("Pods … are not slots here"), so comparing a
+  // pod line to the course's known-slot voice would make every edited English pod line switch voice mid-scene. xAI stays banned.
+  if (podLine && !intro) {
+    if (isXai(voiceId)) throw new VoicingRefusal(refuse('xai-banned', `${voiceId} is an xAI voice — xAI is banned on every path (Tom 2026-10-10).`).message, 'xai-banned')
+    return
+  }
   const needsCourse = !audition && !!courseCode
   const course = needsCourse ? await (injectedCourse ? injectedCourse(courseCode) : gate.courseCastRow(courseCode)) : null
   const cast = course ? await loadCast() : null
