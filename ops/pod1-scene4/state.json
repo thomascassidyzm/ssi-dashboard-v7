@@ -1,0 +1,14 @@
+{
+ "ita_for_eng": {
+  "state": "live",
+  "why": "probe, by hand: clone -> render 4 (353 chars) -> held edit -> link -> language text lines 21,22 -> switchover (plan carry 562 / drop 21) -> re-bind; transcribed all 4 clips correct",
+  "audio": {"2:known": "efa7cbea-874d-4039-8339-fd3187c0d1d1", "3:known": "f1e21475-ca19-42a4-86e1-f11f1c12b154", "2:target": "c4965e81-db73-4d3e-804c-5108da1e1742", "3:target": "51204e27-cb23-4c65-8fc8-036eda831439"},
+  "voices": {"S002:target": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13", "S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121", "S003:target": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086", "S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"},
+  "chars": 353,
+  "migrationPlan": {"carry": 562, "keep": 0, "merge": 0, "drop": 21},
+  "languageText": {"moved": [21, 22], "bound": true},
+  "rebound": true,
+  "at": "2026-11-03T19:45:00Z"
+ },
+ "_canon_english": {"state": "done", "why": "canonical_pod_scenarios pod-1:SC04-S02/S03 and recovery quotes SC04-RM5-S01/S02 now carry the coffee lines (PATCH /api/admin/canonical-pods, job799-canon)"}
+}
