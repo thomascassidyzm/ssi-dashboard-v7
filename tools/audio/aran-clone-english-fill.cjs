@@ -30,6 +30,8 @@
  *   node tools/audio/aran-clone-english-fill.cjs render --limit 20 [--dry] [--max-chars N]
  *   node tools/audio/aran-clone-english-fill.cjs link [--dry]               # links every rendered/library clip of the log
  *   node tools/audio/aran-clone-english-fill.cjs status                     # what the log holds
+ *   node tools/audio/aran-clone-english-fill.cjs render --granted [--dry] [--max-chars N]   # job #740, see GRANTED below
+ *   node tools/audio/aran-clone-english-fill.cjs link --granted [--dry]
  * Files: ~/ssi-evidence/ssi-dashboard-v7/tools/audio/aran-clone-english-fill/{plan.json,render.jsonl,link.jsonl}
  */
 const fs = require('fs')
@@ -43,6 +45,13 @@ const PURPOSE = "Aran 2026-10-29 (job #557): his clone stands in on the nv2/sv2 
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const DIR = process.env.ARAN_FILL_DIR || path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/tools/audio/aran-clone-english-fill')
 const PLAN = path.join(DIR, 'plan.json'), RENDER_LOG = path.join(DIR, 'render.jsonl'), LINK_LOG = path.join(DIR, 'link.jsonl')
+// GRANTED (job #740): Tom's re-record grant of 2026-11-03 17:08Z (via Tom's Watson, thread ww-0cd7dd69 msg 202) for the
+// lines the bulk run left EMPTY on EXISTS_IN_LANGUAGE (already recorded in English in Sonia/Ryan/Ada's voices). The door
+// lets them past only while a Tom-signed tts_rerecord_permissions row covers the course + role 'known'
+// (tools/audio/rerecord-permission.cjs grant); this tool carries no authority of its own. Its own logs, so the bulk
+// run's ledger and pendingEntries are untouched; still fill-only (link-clip refuses a slot that is no longer empty).
+const GRANTED_RENDER_LOG = path.join(DIR, 'granted-740.jsonl'), GRANTED_LINK_LOG = path.join(DIR, 'granted-740-link.jsonl')
+const GRANTED_PURPOSE = "Tom 2026-11-03 17:08Z re-record grant (job #740): Aran's PRO clone fills the nv2/sv2 English known slots #592 left empty because the words exist only in other voices; fill-only"
 
 const { seedPositionOfSlot } = require('../../services/shared/aran-clone-standin.cjs')
 
@@ -148,6 +157,15 @@ function pendingEntries(entries, renders, { dry = false } = {}) {
   return entries.filter((e) => !done.has(entryKey(e.courseCode, e.text)))
 }
 
+/** The entries the bulk run left on EXISTS_IN_LANGUAGE (and never got a clip for), not yet answered 2xx in the granted log. */
+function grantedEntries(entries, renders, grantedRenders, { dry = false } = {}) {
+  const ok = (r) => r.status >= 200 && r.status < 300
+  const left = new Set(renders.filter((r) => !r.dry && isExistsInLanguage(r)).map((r) => entryKey(r.courseCode, r.text)))
+  for (const r of renders) if (!r.dry && ok(r)) left.delete(entryKey(r.courseCode, r.text))
+  for (const r of grantedRenders) if ((dry ? true : !r.dry) && ok(r)) left.delete(entryKey(r.courseCode, r.text))
+  return entries.filter((e) => left.has(entryKey(e.courseCode, e.text)))
+}
+
 const readJsonl = (f) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [])
 const arg = (name, dflt = null) => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : dflt }
 
@@ -242,19 +260,24 @@ async function main() {
     // only those entries are asked, logged to the same render.jsonl so the bulk run skips them afterwards.
     const onlyFile = arg('--only')
     const only = onlyFile ? new Set(JSON.parse(fs.readFileSync(onlyFile, 'utf8'))) : null
-    const todo = pendingEntries(plan.entries, readJsonl(RENDER_LOG), { dry }).filter((e) => !only || only.has(entryKey(e.courseCode, e.text))).slice(0, limit)
+    // --granted (job #740): only the EXISTS_IN_LANGUAGE leftovers, into their own log. Here an EXISTS_IN_LANGUAGE answer
+    // means the grant is not in force — it STOPS the run like any other refusal.
+    const granted = process.argv.includes('--granted')
+    const log = granted ? GRANTED_RENDER_LOG : RENDER_LOG
+    const todo = (granted ? grantedEntries(plan.entries, readJsonl(RENDER_LOG), readJsonl(GRANTED_RENDER_LOG), { dry }) : pendingEntries(plan.entries, readJsonl(RENDER_LOG), { dry }))
+      .filter((e) => !only || only.has(entryKey(e.courseCode, e.text))).slice(0, limit)
     let spent = 0, asked = 0, existsInLanguage = 0
     for (const e of todo) {
       if (spent + e.chars > maxChars) { console.log(`STOP: --max-chars ${maxChars} reached (${spent} spent)`); break }
       let status = 0, body = {}
       try {
         const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
-          body: JSON.stringify({ courseCode: e.courseCode, role: 'known', language: 'eng', text: e.text, seedPosition: entrySeedPosition(e) || undefined, purpose: PURPOSE, dryRun: dry }), signal: AbortSignal.timeout(300000) })
+          body: JSON.stringify({ courseCode: e.courseCode, role: 'known', language: 'eng', text: e.text, seedPosition: entrySeedPosition(e) || undefined, purpose: granted ? GRANTED_PURPOSE : PURPOSE, ...(granted ? { job: '#740' } : {}), dryRun: dry }), signal: AbortSignal.timeout(300000) })
         status = r.status; body = await r.json().catch(() => ({}))
       } catch (err) { body = { error: String(err && err.name) } }
       asked += 1
-      fs.appendFileSync(RENDER_LOG, JSON.stringify({ at: new Date().toISOString(), courseCode: e.courseCode, text: e.text, chars: e.chars, dry, status, body }) + '\n')
-      if (isExistsInLanguage({ status, body })) { existsInLanguage += 1; continue }
+      fs.appendFileSync(log, JSON.stringify({ at: new Date().toISOString(), courseCode: e.courseCode, text: e.text, chars: e.chars, dry, status, body }) + '\n')
+      if (!granted && isExistsInLanguage({ status, body })) { existsInLanguage += 1; continue }
       if (!(status >= 200 && status < 300)) { console.log(`STOP on ${status}: ${JSON.stringify(body).slice(0, 400)}`); break }
       spent += body.charsSpent || 0
     }
@@ -263,8 +286,10 @@ async function main() {
   }
   if (mode === 'link') {
     const dry = process.argv.includes('--dry')
-    const linkedAlready = new Set(readJsonl(LINK_LOG).filter((l) => !l.dry).flatMap((l) => l.okKeys || []))
-    for (const req of linkRequests(plan.entries, readJsonl(RENDER_LOG))) {
+    const granted = process.argv.includes('--granted')
+    const LINK = granted ? GRANTED_LINK_LOG : LINK_LOG
+    const linkedAlready = new Set(readJsonl(LINK).filter((l) => !l.dry).flatMap((l) => l.okKeys || []))
+    for (const req of linkRequests(plan.entries, readJsonl(granted ? GRANTED_RENDER_LOG : RENDER_LOG))) {
       const links = req.links.filter((l) => !linkedAlready.has(`${req.courseCode}|${l.seedNumber ?? l.phraseId}`))
       if (!links.length) continue
       const r = await fetch(`${POPTY}/api/production/${req.courseCode}/link-clip`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
@@ -273,7 +298,7 @@ async function main() {
       const results = out.results || []
       const okKeys = results.map((x, i) => (x.ok ? `${req.courseCode}|${links[i].seedNumber ?? links[i].phraseId}` : null)).filter(Boolean)
       const refused = results.filter((x) => !x.ok)
-      fs.appendFileSync(LINK_LOG, JSON.stringify({ at: new Date().toISOString(), courseCode: req.courseCode, dry, status: r.status, asked: links.length, linked: dry ? 0 : okKeys.length, okKeys: dry ? [] : okKeys, refused: refused.slice(0, 20) }) + '\n')
+      fs.appendFileSync(LINK, JSON.stringify({ at: new Date().toISOString(), courseCode: req.courseCode, dry, status: r.status, asked: links.length, linked: dry ? 0 : okKeys.length, okKeys: dry ? [] : okKeys, refused: refused.slice(0, 20) }) + '\n')
       console.log(req.courseCode, r.status, 'asked', links.length, 'ok', okKeys.length, 'refused', refused.length, refused.length ? JSON.stringify(refused.slice(0, 3)) : '')
       if (!r.ok) break
     }
@@ -284,4 +309,4 @@ async function main() {
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1) })
 
-module.exports = { COURSES, entrySeedPosition, planEntries, takeSlots, linkRequests, pendingEntries, entryKey, slotKey }
+module.exports = { COURSES, entrySeedPosition, planEntries, takeSlots, linkRequests, pendingEntries, grantedEntries, entryKey, slotKey }

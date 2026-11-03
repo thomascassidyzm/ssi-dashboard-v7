@@ -5,7 +5,7 @@ sys.path.insert(0,'/home/tomcassidy/.cs-worktrees/83-welcomes/tools/welcome/stan
 import splice as S
 a=S.decode('src/deu_for_eng.mp3','build/deu.wav')
 c=S.decode('clone/A_new.mp3','build/A_new.wav')
-# cut times are read off the energy envelope of the real take (whisper times drift ~0.3 s), not whisper's word times
+# cut times are read off the energy envelope of the real take, never from a transcription (r-2026-11-03, job #732)
 pieces=[('real','Welcome to',0.44,1.06),('clone','the SaySomethingin method of language learning.',None,None),
  ('real',"you'll be starting to speak",27.89,28.93),('real','sooner than you think.',29.47,30.60),
  ('real','The more you laugh when you make mistakes, the better it will go and the faster you learn.',35.20,40.70),

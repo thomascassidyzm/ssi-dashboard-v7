@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Audio Alignment Tool — drop-in replacement for segment-audio.cjs
+ * Audio Alignment Tool — replaced segment-audio.cjs (whisper.cpp segmentation, deleted by job #732:
+ * Tom r-2026-11-03, audio splits/alignment never use Whisper or any transcription for timings).
  *
  * Forced alignment of known text against recorded audio.
  * We already know what the speaker said (they read from an autocue), so this
@@ -15,7 +16,7 @@
  *   - natural   : aeneas forced alignment (DTW on MFCCs). For continuous speech.
  *   - auto      : try slow-gap first, fall back to natural if chunk-count mismatch.
  *
- * Output JSON is drop-in compatible with segment-audio.cjs (the `words` key
+ * Output JSON kept the shape segment-audio.cjs emitted (the `words` key
  * now holds chunks — a chunk may be a single word or a multi-word LEGO).
  *
  * Usage:

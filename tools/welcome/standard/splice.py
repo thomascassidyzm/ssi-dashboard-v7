@@ -2,9 +2,11 @@
 # MOVED to Popty from ssi-learning-app/tools/welcome/standard/splice.py (job #699, Tom 2026-11-03: "we need everything that touches course content to be a popty tool"); behaviour unchanged, app paths via tools/lib/learning-app.mjs.
 """Splice helpers for the standard welcomes (job #83, Tom 2026-10-12).
 
-Real pieces are cut out of Aran's real welcome take at word boundaries from a
-whisper alignment, each cut snapped to the quietest 5 ms frame within +-90 ms so
-it lands in a breath or gap, never inside a word. Clone pieces are Cartesia
+Real pieces are cut out of Aran's real welcome take at word boundaries given as
+fixed times in make_first.py / make_all.py, each cut snapped to the quietest 5 ms
+frame within +-90 ms so it lands in a breath or gap, never inside a word. Nothing
+here transcribes: Tom r-2026-11-03, audio splits/alignment never use Whisper (or any
+transcription) for timings (job #732 corrected this note, which said "whisper alignment"). Clone pieces are Cartesia
 renders from the Popty trial route and are only ever used to fill words Aran's
 real takes do not contain. Nothing here feeds clone output back as a source.
 """
