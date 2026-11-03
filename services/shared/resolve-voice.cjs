@@ -59,7 +59,7 @@ const EXPECTED_ENGLISH_TARGET = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
 const POLICY = Object.freeze([
   { rule: 'welsh-no-tom-clone', when: 'ANY slot of a Welsh course (cym in the code or either language) whose answer would be a Tom clone', voice: 'REFUSE — never a Tom clone, never a guess',
     ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
-  { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's clone aran_english_003 (a stand-in his real take replaces)",
+  { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's PRO clone (STANDIN_VOICE; a stand-in his real take replaces)",
     ruling: aranStandIn.RULING },
   { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },

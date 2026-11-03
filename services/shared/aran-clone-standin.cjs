@@ -2,8 +2,8 @@
  * ARAN'S CLONE AS A STAND-IN FOR HIS OWN ENGLISH, on the two new Welsh courses only.
  *
  * RULING, Aran (Welsh methodology lead), 2026-10-29 14:41Z, job #557: fill every English KNOWN slot of
- * cym_nv2_for_eng and cym_sv2_for_eng that has no real Aran take with his own Cartesia clone,
- * aran_english_003 (cartesia_33890587-a29f-4416-ba61-2615c74f92fe, an owned clone of his voice), and let
+ * cym_nv2_for_eng and cym_sv2_for_eng that has no real Aran take with his own Cartesia clone (STANDIN_VOICE —
+ * since 2026-11-03 his PRO clone; first the instant clone aran_english_003), and let
  * each real booth take REPLACE the clone clip as it lands, make-before-break.
  *
  * Why this does not reopen the human-voice rule (services/shared/human-voice-courses.cjs): every reason
@@ -24,6 +24,12 @@
  */
 
 const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // aran_english_003 (instant clone)
+/**
+ * Aran's Cartesia PROFESSIONAL clone, "Aran PRO (cym_n archive) 2026-10-29 - V0": fine-tuned on his archive English
+ * takes by Tom's job #560 (branch cs/560-aran-pvc, ops/pvc-560/pvc.json — every PVC render on the comparison page is
+ * this id). Tom judged it on that page "much more authentic, sounds like Aran"; Aran picked it 2026-11-03 (job #568).
+ */
+const ARAN_ENGLISH_PRO_CLONE = 'cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef'
 
 /**
  * THE SWITCH — the one voice that stands in. Aran 2026-10-29 14:46Z: HOLD the fill; Tom is having a Cartesia PRO
@@ -32,7 +38,13 @@ const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // ar
  * a consented, registered owned clone (the TTS consent gate refuses anything else), and nothing else changes —
  * resolveVoice, the render door and the booth's take-replaces-stand-in rule all read this value.
  */
-const STANDIN_VOICE = ARAN_ENGLISH_CLONE
+const STANDIN_VOICE = ARAN_ENGLISH_PRO_CLONE // switched from the instant clone 2026-11-03, job #568 (Aran's pick)
+/**
+ * Voices that STOOD IN before and may still sit in a slot. They can no longer be rendered by this rule (only
+ * STANDIN_VOICE can — tts-provider-policy asks isStandInVoice), but a real take must still be able to replace
+ * one, so isReplaceableStandIn accepts them too.
+ */
+const RETIRED_STANDIN_VOICES = Object.freeze([ARAN_ENGLISH_CLONE])
 const ARAN_CLONE_STANDIN_COURSES = Object.freeze(['cym_nv2_for_eng', 'cym_sv2_for_eng'])
 const RULING = 'Aran 2026-10-29 14:41Z (job #557): his own clone (STANDIN_VOICE) stands in on the nv2/sv2 English known side until his real take replaces it'
 
@@ -63,11 +75,14 @@ function isStandInVoice(voiceId) {
  * known slot. Anything else — a human take, another synthetic voice, any other course — is not.
  */
 function isReplaceableStandIn({ courseCode, role, voiceId }) {
-  return isCloneStandInCourse(courseCode) && role === 'known' && isStandInVoice(voiceId)
+  return isCloneStandInCourse(courseCode) && role === 'known' &&
+    (isStandInVoice(voiceId) || (!!voiceId && RETIRED_STANDIN_VOICES.some((v) => bare(v) === bare(voiceId))))
 }
 
 module.exports = {
   ARAN_ENGLISH_CLONE,
+  ARAN_ENGLISH_PRO_CLONE,
+  RETIRED_STANDIN_VOICES,
   ARAN_CLONE_STANDIN_COURSES,
   RULING,
   isCloneStandInCourse,
