@@ -300,6 +300,7 @@ if (LEGO_ONLY) {
   for (const d of dump.cards) {
     const e = next[d.id]
     if (!e || !e.lines.some((l) => l.chunks.length >= 2 && l.chunks.some((c) => c[4] == null))) continue
+    if (e.lines.some((l) => l.chunks.some((c) => c[6]))) continue // a standalone known piece is wired (#707, render.mjs): never re-cut over it
     const why = (() => {
       if (!d.knownAudioId || e.knownClip !== d.knownAudioId) return 'the cut was made against a different English clip from the one the card plays now'
       const en = knownTimes(d); if (!en) return 'the English clip has no Cartesia word timings that say its text'
