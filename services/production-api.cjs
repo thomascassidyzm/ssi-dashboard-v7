@@ -596,6 +596,11 @@ app.use('/api/production/:courseCode/audio-preview',
     logger,
   }))
 
+// Pod Drill preview (job #692): every cut card as the Drill plays it, plus the known-side
+// re-record list, read from the stage's own run files in ops/pod-drill-cuts/. READ-ONLY, no DB.
+app.use('/api/production/:courseCode/pod-drill',
+  require('./pod-drill-router.cjs')({ logger }))
+
 // The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
 // is derived BY LANGUAGE across every course (language_recording_policy), so it
 // has no :courseCode to be scoped by, and its three recordist routes are

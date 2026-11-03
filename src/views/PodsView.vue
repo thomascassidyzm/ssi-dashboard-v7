@@ -17,6 +17,10 @@
         <p class="text-muted text-sm">
           Layer 2 podcast content · {{ getCourseName(courseCode) }}
         </p>
+        <!-- Pod Drill cuts (job #692): the last tools/pods/pod-drill run, played as the Drill plays it. -->
+        <router-link :to="`/production/${courseCode}/pod-drill`" class="text-accent-2 hover:opacity-80 text-sm">
+          Pod 1 Drill cuts and known re-records →
+        </router-link>
         <!-- The way into the booth, at the top, on every page a recordist can
              land on (Aran, 2026-09-16). Course-scoped here: the pods are listed
              below and each carries its own door. -->

@@ -904,6 +904,15 @@ const routes = [
         meta: { title: 'Listening Pods - Production Suite' }
       },
       {
+        // Pod Drill preview (job #692): built by every tools/pods/pod-drill/stage.mjs run, read
+        // through /api/production/:courseCode/pod-drill. Kai's listening pass on cuts and re-records.
+        path: 'pod-drill',
+        name: 'PodDrillPreview',
+        component: () => import('../views/production/PodDrillPreview.vue'),
+        props: true,
+        meta: { title: 'Pod Drill cuts - Production Suite' }
+      },
+      {
         path: 'pods/:slug',
         name: 'PodDetail',
         component: () => import('../views/PodDetailView.vue'),
