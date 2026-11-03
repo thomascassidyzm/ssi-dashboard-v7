@@ -34,6 +34,7 @@ const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
 const existsInLanguage = require('./exists-in-language-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
+const standIn = require('./aran-clone-standin.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -108,7 +109,11 @@ function validate(input) {
     sequence: input.sequence == null ? null : Number(input.sequence),
     // KAI'S (or Tom's) APPROVAL TOKEN `kai:YYYY-MM-DD:<reason>` (Tom 2026-10-30): lets a re-record past the permission gate. Shape-checked only.
     approval: input.approval ? String(input.approval) : null,
+    // COURSE POSITION of the line (its seed number; a phrase's LEGO S0014L01 → 14). Read only by the clone stand-in's
+    // pace-by-belt rule (aran-clone-standin.cjs, Aran 2026-11-03, job #579); every other slot ignores it.
+    seedPosition: input.seedPosition == null ? null : Number(input.seedPosition),
   }
+  if (out.seedPosition != null && !(Number.isInteger(out.seedPosition) && out.seedPosition > 0)) throw new RenderRequestError('seedPosition is the line\'s seed number, a positive integer', 400, 'BAD_SEED_POSITION')
   if (out.approval && !approverOf(out.approval)) throw new RenderRequestError('approval must look like kai:YYYY-MM-DD:<reason> (or tom:YYYY-MM-DD:<reason>)', 400, 'BAD_APPROVAL')
   if (out.sequence != null && (out.role !== 'instruction' || !Number.isInteger(out.sequence) || out.sequence < 0)) throw new RenderRequestError('sequence is a non-negative integer, for an instruction only', 400, 'BAD_SEQUENCE')
   if (out.text == null && (out.trial || out.adoptS3Key || out.replaceAudioId)) throw new RenderRequestError('trial, adoptS3Key and replaceAudioId name the words — send text', 400, 'TEXT_REQUIRED')
@@ -136,7 +141,8 @@ function validate(input) {
   }
   if (out.speed != null) {
     if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
-    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= TRIAL_SPEED_MAX)) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX}`, 400, 'BAD_SPEED')
+    // Above 1.0 only for the clone stand-in voice, up to its fastest belt pace (checked against the resolved voice in trialRender).
+    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= Math.max(TRIAL_SPEED_MAX, standIn.STANDIN_MAX_PACE))) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX} (up to ${standIn.STANDIN_MAX_PACE} for the clone stand-in voice)`, 400, 'BAD_SPEED')
   }
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
@@ -172,6 +178,17 @@ async function bindPresentation(req, result, deps) {
   if (req.role !== 'presentation' || !req.legoId || req.dryRun || !deps.linkLego || !result.audioId) return result
   const { linked } = await deps.linkLego({ courseCode: req.courseCode, legoId: req.legoId, audioId: result.audioId })
   return { ...result, legoLinked: !!linked }
+}
+
+/**
+ * PACE BY BELT for the clone stand-in (Aran 2026-11-03, job #579; the rule lives in aran-clone-standin.cjs): a NEW render
+ * of the stand-in voice in its slot speaks at its belt's Cartesia speed. Every other slot keeps the resolved speed. A
+ * library answer is never re-paced: library-first runs before this and links whatever clip of these words the voice has.
+ */
+function standInPace(req, r) {
+  if (r.provider !== 'cartesia' || !standIn.isStandInVoice(r.voiceId)) return {}
+  if (!standIn.isCloneStandInSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) return {}
+  return { speed: standIn.standInSpeed(req.seedPosition) }
 }
 
 async function renderClip(input, deps) {
@@ -232,7 +249,7 @@ async function renderClip(input, deps) {
     }
 
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
-    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval } }
+    const cfg = { ...r.providerConfig, ...standInPace(req, r), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
@@ -333,6 +350,7 @@ async function trialRender(req, deps) {
   const slowed = req.speed != null
   // Only Cartesia takes a native speed; tts-service never sends it to ElevenLabs, so honouring it would echo a speed we did not buy.
   if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices take voiceSettings.speed instead`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
+  if (slowed && req.speed > TRIAL_SPEED_MAX && !standIn.isStandInVoice(r.voiceId)) throw new RenderRequestError(`a trial faster than ${TRIAL_SPEED_MAX} is only for the clone stand-in voice's belt pace (job #579) — ${r.voiceId} is not it`, 400, 'BAD_SPEED')
   // ELEVENLABS PASS-THROUGH (job #23): model + voice_settings reach the provider only on a trial. Either one makes a different
   // recording of the same words, so — like an explicit speed — the library (keyed on text+voice) must not answer it.
   const tuned = !!(req.model || req.voiceSettings)

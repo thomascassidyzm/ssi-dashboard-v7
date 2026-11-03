@@ -79,7 +79,61 @@ function isReplaceableStandIn({ courseCode, role, voiceId }) {
     (isStandInVoice(voiceId) || (!!voiceId && RETIRED_STANDIN_VOICES.some((v) => bare(v) === bare(voiceId))))
 }
 
+/**
+ * PACE BY BELT — Aran's ruling 2026-11-03 (job #579), after the 20-line PRO-clone probe: the clone's pace is
+ * right for white and yellow belt but "frustratingly slow" from orange on. So the stand-in speaks faster as the
+ * course goes on: white/yellow at today's pace (1.0, the course's own known speed), orange/green a bit quicker,
+ * blue and up close to natural conversational speed.
+ *
+ * The value is Cartesia's native generation_config.speed (absolute, 1.0 = the voice's own pace; Cartesia
+ * accepts 0.6-1.5). A line's belt is the course position of the seed or LEGO it belongs to (seed number; a
+ * phrase's LEGO id S0014L01 → seed 14). A clip shared by several slots takes its EARLIEST position — the first
+ * time a learner hears it decides its pace.
+ *
+ * Belt thresholds are the course's own (seed position): White 1-7, Yellow 8-19, Orange 20-39, Green 40-79,
+ * Blue 80-149, Purple 150-279, Brown 280-399, Black 400+.
+ */
+const BELTS = Object.freeze([
+  { belt: 'white', from: 1 }, { belt: 'yellow', from: 8 }, { belt: 'orange', from: 20 }, { belt: 'green', from: 40 },
+  { belt: 'blue', from: 80 }, { belt: 'purple', from: 150 }, { belt: 'brown', from: 280 }, { belt: 'black', from: 400 },
+])
+const STANDIN_PACE = Object.freeze({ white: 1.0, yellow: 1.0, orange: 1.1, green: 1.1, blue: 1.25, purple: 1.25, brown: 1.25, black: 1.25 })
+/** No position known → today's pace: never faster than the ruling allows for a line we cannot place. */
+const STANDIN_DEFAULT_PACE = 1.0
+
+/** The belt of a seed position (1-based), or null when there is no usable position. */
+function beltOf(seedPosition) {
+  const n = Number(seedPosition)
+  if (!Number.isInteger(n) || n < 1) return null
+  let b = null
+  for (const x of BELTS) if (n >= x.from) b = x.belt
+  return b
+}
+
+/** The Cartesia speed the stand-in speaks a line at, from the line's seed position. */
+function standInSpeed(seedPosition) {
+  const b = beltOf(seedPosition)
+  return b ? STANDIN_PACE[b] : STANDIN_DEFAULT_PACE
+}
+
+/** The fastest speed the stand-in may be asked for (the trial lane lets this voice go up to it, no further). */
+const STANDIN_MAX_PACE = Math.max(...Object.values(STANDIN_PACE))
+
+/** The seed position of a slot: { seedNumber } or { phraseId: 'course:S0014L01B08' } or { legoId: 'S0014L01' }. */
+function seedPositionOfSlot(slot = {}) {
+  if (Number.isInteger(slot.seedNumber) && slot.seedNumber > 0) return slot.seedNumber
+  const m = /(?:^|:)S(\d{3,5})L\d+/.exec(String(slot.phraseId || slot.legoId || ''))
+  return m ? Number(m[1]) : null
+}
+
 module.exports = {
+  BELTS,
+  STANDIN_PACE,
+  STANDIN_DEFAULT_PACE,
+  STANDIN_MAX_PACE,
+  beltOf,
+  standInSpeed,
+  seedPositionOfSlot,
   ARAN_ENGLISH_CLONE,
   ARAN_ENGLISH_PRO_CLONE,
   RETIRED_STANDIN_VOICES,
