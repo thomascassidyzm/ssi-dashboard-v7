@@ -312,6 +312,16 @@ export const percentile = (a, p) => { const b = [...a].sort((x, y) => x - y); re
  *    it then rests entirely on both neighbouring chunks transcribing exactly. */
 export const SEAM = { QUIET_BELOW: 20, SILENT_BELOW: 35, HISS_ZCR: 0.3, MIN_GAP_MS: 40, TOUCH_MS: 30, EDGE_MS: 10, DIP_BELOW: 15, DIP_MS: 30, SPEECH_SIDE_MS: 150, LINE_TOUCH_MS: 350 }
 
+/** BOUNDARY: when a cut known piece is too tight to keep (job #707; score.mjs uses it). A seam is
+ *  TIGHT when it sits inside a timed word, on a timed word edge, or closer than MARGIN_MS to one, by
+ *  the render's stored Cartesia word timings; a piece is tight when either of its seams is.
+ *  CALIBRATION (PROVISIONAL, 2026-11-03): Kai's ear-check of the 90 German+Spanish known pieces
+ *  (d/620808e0) was an overall "roughly 50-50" with no per-piece marks, so the threshold is set from
+ *  the timing distribution of those 90: pieces flagged at MARGIN_MS = -20: 25, 0: 41, 10: 47, 20: 54,
+ *  40: 75. 10 ms (one analysis frame, the grain the seam search itself works at) flags 47/90 = 52%,
+ *  his "about half". Kai's per-piece marks on the #707 review page are what confirm or move it. */
+export const BOUNDARY = { MARGIN_MS: 10 }
+
 /**
  * Find the cut for one seam. `estimates` are candidate boundary times in seconds from independent
  * sources (stored word timings, whisper's words, syllable share); none is trusted alone — in
