@@ -959,10 +959,13 @@
  "pol_for_eng": {
   "state": "blocked",
   "step": "cloned",
-  "at": "2026-11-03T19:50:04.081Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for pol (403): pol has only the 2026-09-04 draft casting, which Tom never chose, so no pol clip is rendered (cartesia_97fabd54445f refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "at": "2026-11-03T20:06:17.209Z",
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY pol_for_eng:pod-1:SC04-S001: no current m target cast for pol_for_eng (pol (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#174",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "por_br_for_eng": {
   "state": "live",
