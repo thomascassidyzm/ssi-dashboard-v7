@@ -196,5 +196,15 @@
    "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
   },
   "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  suppress all logs with { quiet: true }\n{\n \"course\": \"deu_for_jpn\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_jpn:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! Es t"
+ },
+ "ell_for_eng": {
+  "state": "blocked",
+  "step": "rendering",
+  "at": "2026-11-03T19:31:41.696Z",
+  "audio": {
+   "2:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0"
+  },
+  "chars": 97,
+  "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for ell_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
  }
 }
