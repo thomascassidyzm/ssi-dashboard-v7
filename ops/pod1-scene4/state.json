@@ -158,5 +158,24 @@
   "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"44c91d64\" (provider \"xai\") cannot be carried onto azure for deu_at_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"deu\" but no Cartesia voice is cast for it (the estate holds ",
   "audio": {},
   "chars": 0
+ },
+ "deu_for_eng": {
+  "state": "held",
+  "step": "edited",
+  "at": "2026-11-03T19:30:51.061Z",
+  "audio": {
+   "2:target": "54f217e5-1176-4c78-a560-0af99df650e2",
+   "2:known": "3859bdfc-d4f1-4c75-b81b-6f15dabb3fb1",
+   "3:target": "ea579f50-4194-4c5f-99bd-d3340daf75ed",
+   "3:known": "ef15a31b-cbf7-4725-a444-cf10064a0318"
+  },
+  "chars": 222,
+  "voices": {
+   "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  enable debug logging with { debug: true }\n{\n \"course\": \"deu_for_eng\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_eng:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! E"
  }
 }
