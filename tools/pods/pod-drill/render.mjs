@@ -9,6 +9,10 @@
  *
  *   node tools/pods/pod-drill/render.mjs <course>            dry run: asks the route what each would cost
  *   node tools/pods/pod-drill/render.mjs <course> --render   for real, then verifies and wires
+ *        [--approval=kai:YYYY-MM-DD:<reason>]  Kai's own approval token, passed to the route as he gave it
+ *        (r-2026-10-30-kai-can-authorise-any-audio-work). Most English pieces are already recorded in some
+ *        OTHER voice, which the route refuses as a second performance (EXISTS_IN_LANGUAGE) without it.
+ *        Never invented here: no token, no field.
  *
  * AUDIO GOES ONE WAY (Tom 2026-09-29): POST http://localhost:3470/api/audio/render, library first, the
  * spend guard, one render. This file only ASKS that route; it holds no key and imports no provider. A
@@ -45,6 +49,7 @@ const REAL = argv.includes('--render')
 // (VOICE_POLICY). The route resolves a role it does not list to the TARGET language, so the known
 // language is named.
 const KNOWN_LANG = course.split('_for_')[1]
+const APPROVAL = (argv.find((a) => a.startsWith('--approval=')) || '').slice('--approval='.length) || null
 const POPTY = process.env.POPTY_API || 'http://localhost:3470'
 const AUDIO = 'https://saysomethingin.app/api/audio'
 const AGENT = 'tools/pods/pod-drill/render.mjs (#707)'
@@ -90,7 +95,7 @@ for (const x of rr) {
 process.stderr.write(`${course}: ${jobs.filter((j) => j.kind === 'tight').length} tight + ${jobs.filter((j) => j.kind === 're-record').length} re-record pieces; ${REAL ? 'RENDERING' : 'dry run'}\n`)
 
 async function ask(job) {
-  const body = { courseCode: course, role: 'pod_fine_known', language: KNOWN_LANG, text: sayText(job.known), voiceId: job.voice, purpose: `Pod Drill standalone known piece (#707, r-2026-11-03): ${job.kind === 'tight' ? 'cut too tight' : 'cannot be cut'} — ${job.why}`.slice(0, 300), ...(REAL ? {} : { dryRun: true }) }
+  const body = { courseCode: course, role: 'pod_fine_known', language: KNOWN_LANG, text: sayText(job.known), voiceId: job.voice, purpose: `Pod Drill standalone known piece (#707, r-2026-11-03): ${job.kind === 'tight' ? 'cut too tight' : 'cannot be cut'} — ${job.why}`.slice(0, 300), ...(APPROVAL ? { approval: APPROVAL } : {}), ...(REAL ? {} : { dryRun: true }) }
   const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) })
   let j = null; try { j = await r.json() } catch { j = { ok: false, error: `HTTP ${r.status}, no JSON` } }
   return { status: r.status, ...j, text: body.text, voiceId: body.voiceId }

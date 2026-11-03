@@ -17,6 +17,11 @@
  *                      clip's speech level is left uncut and listed. --sonnet adds the meaning-chunk
  *                      pairing (claude --print, never the SDK); it is NOT the default.
  *   2. known-rerecord.mjs  sort every known piece: already-cut / re-record / needs-pairing / plays-whole.
+ *   2b. score.mjs      (job #707) the boundary score: every cut known piece CLEAN or TIGHT, with the reason, from the
+ *                      English take's Cartesia word timings (BOUNDARY in lib.mjs); --write keeps <course>.score.json.
+ *                      Tight pieces are then made as their own clips by render.mjs (dry run by default, --render
+ *                      for real, through POST /api/audio/render only), which wires them as chunk[6]; it is a
+ *                      separate step because it spends, and is never run by the stage on its own.
  *   3. export          --write copies <course>.cuts.json byte for byte to the player's bundled cut file
  *                      in the learning-app checkout (default ~/ssi-learning-app), when one is there.
  *
@@ -78,6 +83,7 @@ const step = (file, args) => {
 }
 step('pair.mjs', pass)
 step('known-rerecord.mjs', WRITE ? ['--write'] : [])
+step('score.mjs', WRITE ? ['--write'] : [])
 
 if (WRITE && appFile) {
   if (existsSync(path.dirname(appFile))) { copyFileSync(mine, appFile); console.error(`exported ${course}.cuts.json → ${appFile}`) }
