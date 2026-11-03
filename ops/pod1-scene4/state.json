@@ -122,5 +122,15 @@
   },
   "chars": 86,
   "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for cat_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+ },
+ "cat_for_spa": {
+  "state": "blocked",
+  "step": "rendering",
+  "at": "2026-11-03T19:29:42.060Z",
+  "audio": {
+   "2:target": "1be427d7-3f34-4029-9c86-da7de173f443"
+  },
+  "chars": 93,
+  "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for spa (403): cartesia_ara may not render new spa audio; Tom's cast is cartesia_cbb6fdf0-30dd-49f6-af7d-bbb1185c1fa5, cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3, cartesia_b738fa95-b787-4529-9170-34be41e95b95. Cast it in the Voice Lab, or audition it (door.audition)."
  }
 }
