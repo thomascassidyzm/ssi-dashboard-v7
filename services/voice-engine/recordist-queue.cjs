@@ -3188,7 +3188,9 @@ async function fetchIntroSentenceInputs(db, recordist, { fresh = false } = {}) {
     // numbers put S1036 after S0076 although a learner meets it far sooner. Same position the seed card uses.
     const runningOrder = await fetchRunningOrder(db, courses)
     const positionOf = (l) => seedPosition(l, runningOrder)
-    const value = { legos, introClips, positionOf }
+    // A seed its course's running order leaves out is not served: its LEGOs are off the card (job #584).
+    const isServed = (l) => !runningOrder.courses.has(l.course_code) || runningOrder.positions.has(`${l.course_code}:${l.seed_number}`)
+    const value = { legos, introClips, positionOf, isServed }
     introSentenceInputCache.set(key, { at: Date.now(), value })
     return value
   } catch (err) {
@@ -3680,6 +3682,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         legoId: (line.kind === 'lego' || line.kind === introSentences.INTRO_SENTENCE_KIND) ? (line.legoId || null) : null,
         // On an Introductions line: the OTHER course(s) whose card carries the same sentence (one take fills both).
         sharedWith: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.sharedWith || []) : null,
+        // On an Introductions line: where it sits in its course — {legoN, seedPosition, belt} (job #584).
+        coursePlace: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.coursePlace || null) : null,
         // A video voiceover line (job #572): which step of which video, and how long the take may run. Null elsewhere.
         voiceover: line.kind === 'voiceover' ? (line.voiceover || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,

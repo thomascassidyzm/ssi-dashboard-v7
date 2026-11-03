@@ -1831,6 +1831,26 @@ async function processInParallel(items, processor, concurrency = CONCURRENCY) {
  *   other is what would be allowed into the store.
  * @returns {Promise<{buffer: Buffer, durationMs: number}>} Mastered audio and duration
  */
+/**
+ * POST-RENDER PACE (job #590): play a freshly rendered clip at `tempo` (1.25 = 25% faster, ~20% shorter, pitch kept)
+ * before it is mastered. Only the clone stand-in's pace by belt asks for this (services/shared/aran-clone-standin.cjs),
+ * because Cartesia ignores request-time speed on a Professional Voice Clone. No tempo, or 1, returns the input untouched.
+ * Word timings are rescaled to the new clock so the word-by-word display still lands on the words.
+ */
+async function applyPaceTempo(audioBuffer, wordTimings, tempo) {
+  const t = Number(tempo)
+  if (!tempo || !Number.isFinite(t) || t === 1) return { audioBuffer, wordTimings }
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'pace-tempo-'))
+  try {
+    const inF = path.join(dir, 'in.bin'), outF = path.join(dir, 'out.wav')
+    await fs.writeFile(inF, audioBuffer)
+    await audioProcessor.changeTempoToWav(inF, outF, t)
+    const scale = (xs) => (Array.isArray(xs) ? xs.map((x) => Math.round((x / t) * 1000) / 1000) : xs)
+    const wt = wordTimings && typeof wordTimings === 'object' ? { ...wordTimings, starts: scale(wordTimings.starts), ends: scale(wordTimings.ends) } : wordTimings
+    return { audioBuffer: await fs.readFile(outF), wordTimings: wt }
+  } finally { await fs.remove(dir) }
+}
+
 async function masterAudio(audioBuffer, ttsText, opts = {}) {
   const targetLufs = Number.isFinite(Number(opts.targetLufs)) ? Number(opts.targetLufs) : -16.0
   // A PER-VOICE OFFSET (Kai, 2026-09-23: Charlotte +5 dB) arrives here as
@@ -5700,14 +5720,16 @@ function buildRenderDeps() {
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
       // TRIAL (job #748): mastered like any clip, kept under trial/ with NO course_audio row and NO clip_index entry.
-      storeTrial: async ({ text, voiceId, audioBuffer, speed }) => {
+      storeTrial: async ({ text, voiceId, audioBuffer, speed, tempo }) => {
+        audioBuffer = (await applyPaceTempo(audioBuffer, null, tempo)).audioBuffer
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = trialMode.trialKey(uuidv4(), speed)
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: 'no-store' }))
         const audioId = trialMode.trialIdFromKey(s3Key)
         return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}` }
       },
-      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings }) => {
+      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings, tempo }) => {
+        ;({ audioBuffer, wordTimings } = await applyPaceTempo(audioBuffer, wordTimings, tempo))
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))

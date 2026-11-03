@@ -944,7 +944,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       // Proof that speak() asked the clip library and it had no clip (job #677).
       ticket,
       // A native speed is a different recording: the repeat limit counts it apart (trial renders, job #751).
-      speed: config.speed,
+      // A post-render tempo (clone stand-in pace, job #590) makes a different finished clip too, so it keys the same way.
+      speed: config.paceTempo != null ? config.paceTempo : config.speed,
       // A trial's ElevenLabs model is a different recording too (job #23): counted apart from the house model.
       model: config.modelId || null,
     });

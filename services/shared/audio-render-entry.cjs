@@ -182,13 +182,16 @@ async function bindPresentation(req, result, deps) {
 
 /**
  * PACE BY BELT for the clone stand-in (Aran 2026-11-03, job #579; the rule lives in aran-clone-standin.cjs): a NEW render
- * of the stand-in voice in its slot speaks at its belt's Cartesia speed. Every other slot keeps the resolved speed. A
- * library answer is never re-paced: library-first runs before this and links whatever clip of these words the voice has.
+ * of the stand-in voice in its slot is played at its belt's tempo. Every other slot keeps the resolved speed. A library
+ * answer is never re-paced: library-first runs before this and links whatever clip of these words the voice has.
+ * Cartesia IGNORES request-time speed for this Professional clone (job #590 measured 1.25 coming out slower than 1.0), so
+ * Cartesia gets its default 1.0 and the tempo rides as paceTempo to the store step, which time-stretches before mastering.
  */
 function standInPace(req, r) {
   if (r.provider !== 'cartesia' || !standIn.isStandInVoice(r.voiceId)) return {}
   if (!standIn.isCloneStandInSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) return {}
-  return { speed: standIn.standInSpeed(req.seedPosition) }
+  const tempo = standIn.standInSpeed(req.seedPosition)
+  return tempo === 1 ? { speed: 1 } : { speed: 1, paceTempo: tempo }
 }
 
 async function renderClip(input, deps) {
@@ -259,8 +262,8 @@ async function renderClip(input, deps) {
       if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
     }
     // 4. write back
-    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
-    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}) })
+    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}), purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
 }
 
@@ -359,9 +362,12 @@ async function trialRender(req, deps) {
   // MAX STABILITY BY DEFAULT (Kai 2026-10-28): every ElevenLabs trial that reaches the provider sends stability 1.0 unless it names
   // one. Only an EXPLICIT model/voiceSettings skips the library: a plain trial is still answered by an existing clip of the words.
   const elSettings = r.provider === 'elevenlabs' ? { stability: trialMode.TRIAL_DEFAULT_STABILITY, ...(req.voiceSettings || {}) } : null
+  // A Professional clone ignores Cartesia's native speed (job #590): it is rendered at 1.0 and the asked speed is applied
+  // afterwards as a tempo (storeTrial). paceTempo also keys the spend guard's repeat count, as speed does for native speeds.
+  const postPace = slowed && standIn.paceIsPostRender(r.voiceId)
   const cfg = {
     ...r.providerConfig,
-    ...(slowed ? { speed: req.speed } : {}),
+    ...(slowed ? (postPace ? { speed: 1, paceTempo: req.speed } : { speed: req.speed }) : {}),
     ...(elSettings ? { voiceSettings: elSettings } : {}),
     // speed on the config is what the spend guard's repeat key reads: a 0.85 read is counted apart from a 1.0 one.
     ...(tuned ? { modelId: req.model || undefined, speed: elSpeed != null ? elSpeed : 1 } : {}),
@@ -370,7 +376,7 @@ async function trialRender(req, deps) {
   const out = await deps.speak(req.text, r.provider, cfg, 1)
   const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(elSettings ? { voiceSettings: elSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
-  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), ...(postPace && req.speed !== 1 ? { tempo: req.speed } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 
