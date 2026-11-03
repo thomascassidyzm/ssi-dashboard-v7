@@ -9,7 +9,7 @@
  *   node splice-legos.cjs --legos <dir> --phrases phrases.json --output-dir ./spliced
  *
  * Input:
- *   - Directory of extracted LEGO audio files (from segment-audio.cjs)
+ *   - Directory of extracted LEGO audio files (from align-audio.cjs)
  *   - Phrase(s) to synthesize
  *
  * Output:

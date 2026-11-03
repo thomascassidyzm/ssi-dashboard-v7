@@ -14,7 +14,7 @@
  *             set -a; . ~/ssi-restore/qa-copy.env; set +a
  *             node tools/audio/audio-truth.cjs --course zho_for_eng --seeds 1-100 --bundle <bundle.json> --json truth.json
  *             node tools/audio/dice-splice-zho.cjs build --truth truth.json --role target1 --texts "你会说中文,他要练习" \
- *                  --out ~/ssi-evidence/zho-dice-splice [--asr]
+ *                  --out ~/ssi-evidence/zho-dice-splice
  *                  [--timings timings.json]  cut on the engine's own word timings (below) instead of the energy aligner
  *           (bundle.json: `node tools/audio/dice-splice-zho.cjs bundle --out bundle.json` builds the slot list for
  *           audio-truth from Popty's seeds route, so every main-flow slot of 1..100 is listed, not the preview slice.)
@@ -26,8 +26,9 @@
  * ALIGNMENT. One Chinese character is one syllable, so a clip of N characters is cut into N syllables by a dynamic
  * programme over a 5 ms energy envelope: boundaries sit in energy valleys, and syllables are kept near the clip's mean
  * syllable length counted over speech frames only (a pause costs nothing). A boundary inside a pause is cut at the pause's
- * edges. --asr then runs an unprimed whisper round-trip on every spliced clip and on its reference, as a measurable check
- * that the splice still says exactly the intended characters — a pair whose splice loses or gains a syllable is DROPPED.
+ * edges. NO TRANSCRIPTION judges a cut (Tom r-2026-11-03-audio-splits-alignment-never-use-whisper: "Audio splits/
+ * alignment never use Whisper (or any transcription) for timings ... meanings are matched from the text (LEGO map), not
+ * from transcribed audio"): job #732 removed the --asr whisper round-trip that used to DROP a splice on its verdict.
  *
  * THE JOIN. Each piece is cut CROSSFADE_MS/2 past its boundary on each inner side and the pieces overlap by CROSSFADE_MS
  * with an equal-power crossfade, so the seam is centred on the syllable boundary. Pieces are level-matched to their
@@ -49,8 +50,6 @@ const AUDIO_DOOR = 'https://saysomethingin.app/api/audio'
 const CROSSFADE_MS = 30
 const HOP = Math.round(SR * 0.005), WIN = Math.round(SR * 0.02)
 const MAX_GAIN_DB = 6
-const WHISPER = process.env.WHISPER_BIN || path.join(os.homedir(), '.local/bin/whisper-cli')
-const WHISPER_MODEL = process.env.WHISPER_MODEL || path.join(os.homedir(), '.local/share/whisper-models/ggml-small.bin')
 
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(`--${f}`); return i >= 0 ? argv[i + 1] : d }
@@ -318,21 +317,6 @@ async function fetchClip(ref, dir) {
 }
 const lufs = (f) => { const o = spawnSync('ffmpeg', ['-hide_banner', '-i', f, '-af', 'ebur128=framelog=quiet', '-f', 'null', '-'], { encoding: 'utf8' }).stderr; const m = /I:\s+(-?[\d.]+) LUFS/.exec(o.split('Summary')[1] || ''); return m ? Number(m[1]) : null }
 
-/** Unprimed whisper round-trip (single thread). Returns the heard text, normalised. */
-function asr(file) {
-  const wav = file.replace(/\.mp3$/, '.16k.wav')
-  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', file, '-ar', '16000', '-ac', '1', wav])
-  const r = spawnSync(WHISPER, ['-m', WHISPER_MODEL, '-l', 'zh', '-t', '1', '-nt', '-np', '--prompt', '以下是普通话的句子。', '-f', wav], { encoding: 'utf8', env: { ...process.env, WHISPER_NO_SEMAPHORE: '0' } })
-  fs.rmSync(wav, { force: true })
-  return P.normText((r.stdout || '').replace(/\[.*?\]/g, ''))
-}
-function cer(ref, hyp) {
-  const a = [...ref], b = [...hyp], d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...new Array(b.length).fill(0)])
-  for (let j = 1; j <= b.length; j++) d[0][j] = j
-  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1))
-  return a.length ? d[a.length][b.length] / a.length : 0
-}
-
 // ── commands ────────────────────────────────────────────────────────────────
 
 async function cmdPlan() {
@@ -441,14 +425,9 @@ async function cmdBuild() {
     const item = { id: slug, text: t, pieces: cut.map((c) => ({ ...pieceRecord(c), startEdge: c.startEdge, endEdge: c.endEdge,
       align: alCache.get(c.baseId).al.source || 'energy', finalMoved: c.baseFinal !== c.targetFinal, ms: Math.round(((c.end - c.start) * 1000) / SR) })), gainsDb: j.gainsDb, ...m,
       spliced: path.basename(mp3), reference: path.basename(refFile), referenceSlot: cast.get(t).slot, referenceRef: cast.get(t).ref, referenceLufs: target, hash: hv }
-    if (flag('asr')) {
-      item.asrSpliced = asr(mp3); item.asrReference = asr(refFile)
-      item.cerSpliced = Math.round(cer(t, item.asrSpliced) * 100) / 100; item.cerReference = Math.round(cer(t, item.asrReference) * 100) / 100
-      if (item.cerSpliced > item.cerReference + 0.15) { manifest.dropped.push({ ...item, why: `ASR heard "${item.asrSpliced}" (reference: "${item.asrReference}") — a syllable lost or gained at a cut` }); console.log('DROP', t, item.asrSpliced); continue }
-    }
     fs.rmSync(wav, { force: true })
     manifest.made.push(item)
-    console.log(slug, t, '=', item.pieces.map((p) => `${p.text}<${p.from}`).join(' + '), item.joins.map((x) => `[${x.kind} ${x.levelStepDb}dB ${x.pitchStepSemitones ?? '-'}st${x.click ? ' CLICK' : ''}]`).join(''), flag('asr') ? `asr:${item.asrSpliced}/${item.asrReference}` : '')
+    console.log(slug, t, '=', item.pieces.map((p) => `${p.text}<${p.from}`).join(' + '), item.joins.map((x) => `[${x.kind} ${x.levelStepDb}dB ${x.pitchStepSemitones ?? '-'}st${x.click ? ' CLICK' : ''}]`).join(''))
   }
   fs.writeFileSync(path.join(voiceDir, 'manifest.json'), JSON.stringify(manifest, null, 1))
   console.log(`made ${manifest.made.length}, dropped ${manifest.dropped.length} → ${voiceDir}/manifest.json`)

@@ -144,7 +144,6 @@ const STT_CALLERS = {
   'tools/pods/pod1-tom-voice-render.cjs': 'advisory',
   'tools/pods/verify-pod-clips.cjs': 'report',
   'tools/pods/verify-spliced-sentences.cjs': 'report',
-  'tools/recording-optimizer/segment-audio.cjs': 'human-recording',
   'tools/regen-seed-clips-from-scratch.cjs': 'advisory',
   'tools/render-take-g.cjs': 'advisory',
   'tools/repair-presentation-clips.cjs': 'advisory',
