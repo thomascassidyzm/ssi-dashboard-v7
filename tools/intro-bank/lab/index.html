@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Intro lab — Tom-006 splice vs cut</title>
+<style>
+:root{color-scheme:dark light;--bg:#14161a;--fg:#e8eaed;--mut:#8b9199;--card:#1d2026;--acc:#6aa9ff;--ok:#5fd08a;--warn:#e0a458}
+@media(prefers-color-scheme:light){:root{--bg:#f3f1ee;--fg:#1c1e22;--mut:#6a6f76;--card:#fff;--acc:#1a5fd0;--ok:#1f8a4c;--warn:#a86a10}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif;padding:calc(12px + env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));max-width:640px;margin:auto}
+h1{font-size:19px;margin:6px 0 2px}.sub{color:var(--mut);font-size:13px;margin-bottom:12px}
+.card{background:var(--card);border-radius:12px;padding:12px 14px;margin:10px 0}
+label{display:flex;justify-content:space-between;font-size:14px}label b{color:var(--acc);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;height:36px;margin:2px 0 8px}
+button,select{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--mut);border-radius:10px;padding:10px 14px}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pick button{padding:8px 10px;font-size:14px}.pick button.on{outline:2px solid var(--acc)}.pick button.nod::after{content:" ∘";color:var(--warn)}
+#line{width:100%;font:13px ui-monospace,monospace;background:transparent;color:var(--fg);border:1px dashed var(--mut);border-radius:8px;padding:8px;resize:none}
+.note{font-size:12.5px;color:var(--mut)}#st{font-size:13px;color:var(--ok);min-height:18px}#st.w{color:var(--warn)}
+</style></head><body>
+<h1>Intro lab: splice vs cut</h1>
+<div class="sub">“The &lt;Language&gt; for” · LEGO · tail, all Tom-006. Drag and it re-plays on release.</div>
+
+<div class="card">
+  <div class="row"><select id="course"></select>
+  <select id="mode"><option value="splice">SPLICE: frame + LEGO + tail (as #310)</option><option value="cut">CUT: frame + “LEGO is” cut from a continuous intro</option><option value="current">CURRENT: the intro as shipped today</option></select></div>
+  <div class="row" style="margin-top:8px"><select id="tail"></select></div>
+  <div class="note" style="margin-top:6px">Tail applies to SPLICE (and to CUT when a LEGO has no donor, which falls back to SPLICE). CUT keeps the “is” Tom actually said straight after the LEGO. ∘ on a LEGO = no continuous intro to cut from.</div>
+</div>
+
+<div class="card">
+  <label>Gap: “The X for” → LEGO <b id="v_g1"></b></label><input id="g1" type="range" min="0" max="500" step="10" value="120">
+  <label>Gap: LEGO → tail (splice only) <b id="v_g2"></b></label><input id="g2" type="range" min="-60" max="500" step="10" value="120">
+  <label>LEGO emphasis over frame <b id="v_em"></b></label><input id="em" type="range" min="-3" max="8" step="0.5" value="3">
+  <label>Tail level vs frame (splice only) <b id="v_tl"></b></label><input id="tl" type="range" min="-8" max="4" step="0.5" value="0">
+  <label>Fade-out at the end <b id="v_fd"></b></label><input id="fd" type="range" min="0" max="250" step="10" value="80">
+  <label>Trim silence off each piece’s edges <span><input type="checkbox" id="trim"></span></label>
+  <div class="row"><button id="asheard">As heard in #310</button><button id="tight">Tight (40 / 40 / trim)</button><button id="cutdef">Cut default (60 / +3)</button></div>
+</div>
+
+<div class="card">
+  <label><span>After the intro: play the target LEGO (as the player does) <input type="checkbox" id="tgt" checked></span></label>
+  <label><span>…then the debut that follows it (known prompt, your gap, both voices) <input type="checkbox" id="debut"></span></label>
+  <label>Target playback speed <b id="v_ts"></b></label><input id="ts" type="range" min="0.7" max="1.1" step="0.05" value="0.9">
+  <div class="note" id="seqnote"></div>
+</div>
+
+<div class="card">
+  <div class="row pick" id="legos"></div>
+  <div class="row" style="margin-top:10px"><button class="p" id="one">▶ Play</button><button class="p" id="ab">▶▶ A/B all tails</button><button class="p" id="all">▶▶ All 8</button><button id="stop">■ Stop</button></div>
+  <label style="margin-top:8px"><span>Re-play on release <input type="checkbox" id="auto" checked></span></label>
+  <div id="st"></div>
+</div>
+
+<div class="card">
+  <div class="note">Current values — copy and send:</div>
+  <textarea id="line" rows="3" readonly></textarea>
+  <div class="row"><button id="copy">Copy</button></div>
+</div>
+<p class="note">Target sequence is read from the player: the intro cycle runs <i>intro → voice 1 → voice 2</i> chained on each clip’s end with no gap (pauseDuration 0), then holds lingerMs 2000 (INTRO_LINGER_MS, toSimpleRounds). The debut cycle that follows is <i>known prompt → silent gap → voice 1 → voice 2</i>, the gap = clamp(1000, 15000, 2.8 × mean(voice 1, voice 2 native ms) + 800) (computePauseDuration, Fast config), then no linger. Target clips play through an audio element at the speed slider, pitch kept, as the player does; the real rate is per course and voice (Easy ≈ 0.8, Fast ≈ 0.9 of reference pace, voice-corrected), so set it to what the course really uses. The A/B button compares intros only.</p>
+<p class="note">Levelling is the shipped introAssembly.ts: pieces matched to one level, the LEGO set above the frame by the emphasis slider, whole intro brought to −14 dBFS (voiced RMS) with a peak limiter at 0.97, then the Tom-006 ending (equal-power fade over the last speech, 250 ms silence). A/B plays the same LEGO through each tail in turn, 600 ms apart; the tail’s name is shown while it plays.</p>
+
+<script>
+const TARGET_DB=-14,CEIL=0.97,MAX_GAIN=6,SILENT_TAIL_MS=250;
+const toDb=x=>20*Math.log10(Math.max(x,1e-9));
+function voicedRms(x,sr){const f=Math.max(1,Math.round(sr*0.02)),n=x.length,ms=[];
+  for(let i=0;i+f<=n||(i<n&&ms.length===0);i+=f){const e=Math.min(n,i+f);let s=0;for(let j=i;j<e;j++)s+=x[j]*x[j];ms.push(s/(e-i))}
+  let mx=0;for(const m of ms)if(m>mx)mx=m;const g=mx*0.01;let sum=0,c=0;for(const m of ms)if(m>=g&&m>0){sum+=m;c++}
+  return c?Math.sqrt(sum/c):0}
+const scale=(x,g)=>{const o=new Float32Array(x.length);for(let i=0;i<x.length;i++)o[i]=x[i]*g;return o};
+function limitPeaks(x,sr){const n=x.length,L=Math.max(1,Math.round(sr*0.004)),need=new Float32Array(n).fill(1);let any=false;
+  for(let i=0;i<n;i++){const a=Math.abs(x[i]);if(a>CEIL){need[i]=CEIL/a;any=true}}if(!any)return x;
+  const low=new Float32Array(n).fill(1);
+  for(let i=0;i<n;i++){if(need[i]>=1)continue;for(let j=Math.max(0,i-L);j<=Math.min(n-1,i+L);j++)if(need[i]<low[j])low[j]=need[i]}
+  const gain=new Float32Array(n),w=2*L+1;let acc=0;for(let j=0;j<Math.min(n,L);j++)acc+=low[j];
+  for(let i=0;i<n;i++){if(i+L<n)acc+=low[i+L];if(i-L-1>=0)acc-=low[i-L-1];gain[i]=acc/w}
+  for(let i=0;i<n;i++){const lo=Math.max(0,i-L),hi=Math.min(n-1,i+L),miss=w-(hi-lo+1);if(miss)gain[i]=(gain[i]*w+miss)/w}
+  for(let i=0;i<n;i++)if(gain[i]>need[i])gain[i]=need[i];
+  const o=new Float32Array(n);for(let i=0;i<n;i++)o[i]=x[i]*gain[i];return o}
+function normaliseIntro(x,sr){const lv=voicedRms(x,sr);if(lv<=0)return x;let g=10**(TARGET_DB/20)/lv,out=limitPeaks(scale(x,g),sr);
+  for(let k=0;k<4;k++){const l=voicedRms(out,sr);if(Math.abs(toDb(l)-TARGET_DB)<0.05)break;g*=10**(TARGET_DB/20)/l;out=limitPeaks(scale(x,g),sr)}return out}
+function matchGains(levels,emDb,legoIdx){const ft=10**((TARGET_DB-emDb*0.5)/20),lift=10**(emDb/20);
+  return levels.map((l,i)=>l<=0?1:Math.min(MAX_GAIN,(i===legoIdx?ft*lift:ft)/l))}
+/* Tom-006 ending: fade over the last speech (end = last 5 ms frame above -45 dB), then 250 ms silence */
+function tomEnding(x,sr,fadeMs){const fr=Math.max(1,Math.round(sr*0.005)),n=x.length;let eos=-1;
+  for(let i=0;i+fr<=n;i+=fr){let e=0;for(let j=i;j<i+fr;j++)e+=x[j]*x[j];if(20*Math.log10(Math.sqrt(e/fr)+1e-12)>-45)eos=i+fr}
+  if(eos<0)return x;const fade=Math.min(eos,Math.round(sr*fadeMs/1000)),o=new Float32Array(eos+Math.round(sr*SILENT_TAIL_MS/1000));
+  o.set(x.subarray(0,eos));for(let i=0;i<fade;i++)o[eos-fade+i]*=Math.cos(i/fade*Math.PI/2);return o}
+function trimEdges(x,sr){const fr=Math.max(1,Math.round(sr*0.005)),n=x.length,th=10**(-45/20);let a=0,b=n;
+  for(let i=0;i+fr<=n;i+=fr){let e=0;for(let j=i;j<i+fr;j++)e+=x[j]*x[j];if(Math.sqrt(e/fr)>th){a=i;break}}
+  for(let i=n-fr;i>=0;i-=fr){let e=0;for(let j=i;j<i+fr;j++)e+=x[j]*x[j];if(Math.sqrt(e/fr)>th){b=i+fr;break}}
+  return x.subarray(a,Math.max(a+1,b))}
+/* Cartesia word starts can land up to ~60 ms inside a soft onset (“to”): walk back to the silence before it (max 150 ms) */
+function snapOnset(x,at,sr){const fr=Math.round(sr*0.005),th=10**(-45/20),rms=i=>{let e=0;for(let j=i;j<i+fr&&j<x.length;j++)e+=x[j]*x[j];return Math.sqrt(e/fr)};
+  let a=at;while(a-fr>=0&&at-a<sr*0.15&&rms(a-fr)>th)a-=fr;return Math.max(0,a-Math.round(sr*0.01))}
+/* join with gaps (a negative gap overlaps the pieces, linear sum) */
+function join(parts,gapsMs,sr){const offs=[0];let end=parts[0].length;
+  for(let i=1;i<parts.length;i++){const at=Math.max(0,end+Math.round(sr*gapsMs[i-1]/1000));offs.push(at);end=Math.max(end,at+parts[i].length)}
+  const o=new Float32Array(end);parts.forEach((p,i)=>{for(let j=0;j<p.length;j++)o[offs[i]+j]+=p[j]});return o}
+
+const $=id=>document.getElementById(id);
+let ctx,man,buf={},cur=0,src=null,runId=0;
+const P=()=>({course:$('course').value,mode:$('mode').value,tail:$('tail').value,g1:+$('g1').value,g2:+$('g2').value,em:+$('em').value,tl:+$('tl').value,fd:+$('fd').value,trim:$('trim').checked,tgt:$('tgt').checked,debut:$('debut').checked,ts:+$('ts').value});
+const sgn=v=>(v>0?'+':'')+v;
+function show(){const p=P();$('v_g1').textContent=p.g1+' ms';$('v_g2').textContent=p.g2+' ms';$('v_em').textContent=sgn(p.em)+' dB';$('v_tl').textContent=sgn(p.tl)+' dB';$('v_fd').textContent=p.fd+' ms';$('v_ts').textContent=p.ts.toFixed(2)+'×';{const s=man.courses[p.course].samples[cur],g=pauseMs(s);$('seqnote').textContent=`This LEGO: voice 1 ${s.target1Ms} ms, voice 2 ${s.target2Ms} ms native. Debut gap would be ${g} ms.`}
+  $('line').value=`mode=${p.mode} course=${p.course} lego=${man.courses[p.course].samples[cur].lego} tail="${man.tails.find(t=>t.key===p.tail).label}" gapFrameToLego=${p.g1}ms gapLegoToTail=${p.g2}ms legoEmphasis=${sgn(p.em)}dB tailLevel=${sgn(p.tl)}dB fade=${p.fd}ms trimEdges=${p.trim} targetAfterIntro=${p.tgt} debutAfter=${p.debut} targetSpeed=${p.ts.toFixed(2)}x (overall -14 dBFS, 250 ms end silence)`}
+async function dec(url){if(buf[url])return buf[url];const ab=await (await fetch(url)).arrayBuffer();const d=await ctx.decodeAudioData(ab);return buf[url]=d.getChannelData(0)}
+async function render(i,over){const p={...P(),...over},sr=ctx.sampleRate,c=man.courses[p.course],s=c.samples[i];
+  if(p.mode==='current'){return {x:await dec(s.current),note:'current intro'}}
+  const T=x=>p.trim?trimEdges(x,sr):x,frame=T(await dec(c.frame));
+  let parts,gaps,legoIdx=1,note='';
+  if(p.mode==='cut'&&s.donor){
+    const d=await dec(s.donor.file),a=snapOnset(d,Math.round(s.donor.start*sr),sr),b=Math.min(d.length,Math.round((s.donor.end+0.03)*sr));
+    parts=[frame,T(d.subarray(a,b))];gaps=[p.g1];note='cut from '+s.donor.from;
+    const gn=matchGains(parts.map(q=>voicedRms(q,sr)),p.em,1);parts=parts.map((q,k)=>scale(q,gn[k]))
+  }else{
+    const tl=man.tails.find(t=>t.key===p.tail);
+    parts=[frame,T(await dec(s.lego_file)),T(await dec(tl.file))];gaps=[p.g1,p.g2];
+    if(p.mode==='cut')note='no donor, spliced';
+    const gn=matchGains(parts.map(q=>voicedRms(q,sr)),p.em,1);gn[2]*=10**(p.tl/20);parts=parts.map((q,k)=>scale(q,gn[k]))
+  }
+  const x=tomEnding(normaliseIntro(join(parts,gaps,sr),sr),sr,p.fd);return {x,note}}
+const LINGER_MS=2000,PAUSE_K=2.8,PAUSE_REACTION_MS=800,PAUSE_MIN=1000,PAUSE_MAX=15000,FALLBACK_TARGET_MS=2500;
+const pauseMs=s=>{const a=s.target1Ms>0||s.target2Ms>0?((s.target1Ms>0?s.target1Ms:0)+(s.target2Ms>0?s.target2Ms:0))/2:FALLBACK_TARGET_MS;return Math.max(PAUSE_MIN,Math.min(PAUSE_MAX,Math.round(PAUSE_K*a+PAUSE_REACTION_MS)))};
+let clipEl=null,clipDone=null,waitT=null,waitDone=null;
+function stopNow(){runId++;if(src){try{src.stop()}catch(e){}src=null}
+  if(clipEl){clipEl.pause();clipEl=null}if(clipDone){clipDone();clipDone=null}
+  if(waitT){clearTimeout(waitT);waitT=null}if(waitDone){waitDone();waitDone=null}}
+function playClip(url,rate){return new Promise(r=>{const a=new Audio(url);a.preservesPitch=a.webkitPreservesPitch=true;a.playbackRate=rate;clipEl=a;
+  const fin=()=>{if(clipEl===a){clipEl=null;clipDone=null}r()};clipDone=fin;a.onended=fin;a.onerror=fin;a.play().catch(fin)})}
+const wait=ms=>new Promise(r=>{waitDone=r;waitT=setTimeout(()=>{waitT=null;waitDone=null;r()},ms)});
+/* what the player does after the intro prompt: voice1 -> voice2 chained (intro cycle), linger, then optionally the debut cycle */
+async function playTarget(id,p,s){
+  const st=t=>say(`▶ ${s.lego} — ${t}`);
+  st('target voice 1');await playClip(s.target1,p.ts);if(id!==runId)return;
+  st('target voice 2');await playClip(s.target2,p.ts);if(id!==runId)return;
+  if(!p.debut)return;
+  st('linger 2000 ms');await wait(LINGER_MS);if(id!==runId)return;
+  st('debut: known prompt');await playClip(s.lego_file,1);if(id!==runId)return;
+  const g=pauseMs(s);st(`debut: your turn (${g} ms)`);await wait(g);if(id!==runId)return;
+  st('debut: voice 1');await playClip(s.target1,p.ts);if(id!==runId)return;
+  st('debut: voice 2');await playClip(s.target2,p.ts)}
+function playX(x){return new Promise(r=>{const ab=ctx.createBuffer(1,x.length,ctx.sampleRate);ab.copyToChannel(x,0);const s=ctx.createBufferSource();s.buffer=ab;s.connect(ctx.destination);s.onended=r;src=s;s.start()})}
+const say=(t,w)=>{$('st').textContent=t;$('st').className=w?'w':''};
+async function playOne(over,label){stopNow();const id=runId;await ctx.resume();say('…');const r=await render(cur,over);if(id!==runId)return;
+  say(`▶ ${man.courses[$('course').value].samples[cur].lego}${label?' — '+label:''}${r.note?'  ['+r.note+']':''}  (${(r.x.length/ctx.sampleRate).toFixed(2)} s)`,r.note.startsWith('no donor'));await playX(r.x);if(id!==runId)return;const p=P();if(p.tgt){await playTarget(id,p,man.courses[p.course].samples[cur])}if(id===runId)say('')}
+async function playAB(){stopNow();const id=runId;await ctx.resume();
+  for(const t of man.tails){if(id!==runId)return;const r=await render(cur,{mode:'splice',tail:t.key});if(id!==runId)return;say(`▶ splice, tail: “${t.label}”`);await playX(r.x);if(id!==runId)return;await new Promise(r=>setTimeout(r,600))}
+  if(id===runId){const r=await render(cur,{mode:'cut'});say('▶ CUT'+(r.note?' ['+r.note+']':''));await playX(r.x);if(id===runId)say('done')}}
+async function playAll(){stopNow();const id=runId;await ctx.resume();const n=man.courses[$('course').value].samples.length;
+  for(let i=0;i<n&&id===runId;i++){setCur(i);const r=await render(i);if(id!==runId)return;say(`▶ ${i+1}/${n} ${man.courses[$('course').value].samples[i].lego}${r.note?' ['+r.note+']':''}`);await playX(r.x);if(id!==runId)return;{const p=P();if(p.tgt){await playTarget(id,p,man.courses[p.course].samples[i]);if(id!==runId)return}}await new Promise(r=>setTimeout(r,900))}
+  if(id===runId)say('done')}
+function setCur(i){cur=i;[...$('legos').children].forEach((b,j)=>b.classList.toggle('on',j===i));show()}
+function buildLegos(){$('legos').innerHTML='';man.courses[$('course').value].samples.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.lego;if(!s.donor)b.classList.add('nod');b.onclick=()=>{setCur(i);playOne()};$('legos').appendChild(b)});setCur(0)}
+function setP(v){for(const k in v)$(k).type==='checkbox'?($(k).checked=v[k]):($(k).value=v[k]);show()}
+(async()=>{
+  const AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();
+  man=await (await fetch('manifest.json')).json();
+  Object.keys(man.courses).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;$('course').appendChild(o)});
+  man.tails.forEach(t=>{const o=document.createElement('option');o.value=t.key;o.textContent='Tail: “'+t.label+'”';$('tail').appendChild(o)});
+  buildLegos();
+  const rep=()=>{if($('auto').checked)playOne()};
+  for(const id of['g1','g2','em','tl','fd','ts'])$(id).addEventListener('input',show);
+  for(const id of['g1','g2','em','tl','fd','ts','trim','mode','tail','tgt','debut'])$(id).addEventListener('change',()=>{show();rep()});
+  $('course').addEventListener('change',()=>{buildLegos();rep()});
+  $('asheard').onclick=()=>{setP({g1:120,g2:120,em:3,tl:0,fd:80,trim:false,mode:'splice',tail:'is'});rep()};
+  $('tight').onclick=()=>{setP({g1:40,g2:40,em:3,tl:0,fd:80,trim:true});rep()};
+  $('cutdef').onclick=()=>{setP({g1:60,em:3,fd:80,trim:true,mode:'cut'});rep()};
+  $('one').onclick=()=>playOne();$('ab').onclick=playAB;$('all').onclick=playAll;$('stop').onclick=()=>{stopNow();say('')};
+  $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('line').value)}catch(e){$('line').select();document.execCommand('copy')}say('copied')};
+  $('line').addEventListener('focus',e=>e.target.select());
+})();
+</script></body></html>
