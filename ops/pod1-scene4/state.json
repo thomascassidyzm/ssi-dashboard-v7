@@ -849,5 +849,13 @@
   },
   "chars": 107,
   "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for swa_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+ },
+ "swe_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:54:28.239Z",
+  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"3b312632\" (provider \"xai\") cannot be carried onto azure for swe_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"swe\" but no Cartesia voice is cast for it (the estate holds exa",
+  "audio": {},
+  "chars": 0
  }
 }
