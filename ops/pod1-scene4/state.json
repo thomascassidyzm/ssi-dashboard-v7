@@ -177,5 +177,24 @@
    "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
   },
   "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  enable debug logging with { debug: true }\n{\n \"course\": \"deu_for_eng\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_eng:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! E"
+ },
+ "deu_for_jpn": {
+  "state": "held",
+  "step": "edited",
+  "at": "2026-11-03T19:31:22.374Z",
+  "audio": {
+   "2:target": "bcfa4da4-c279-449b-b70d-2313df42aa32",
+   "2:known": "0f0790ec-ed65-42a1-82ed-6e7c71a26903",
+   "3:target": "87723777-6b07-42cc-8d84-59026b2cc780",
+   "3:known": "820a5af1-5a9b-478a-a6ce-fb02aeba94d3"
+  },
+  "chars": 96,
+  "voices": {
+   "SC04-S002:target": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+   "SC04-S003:target": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+  },
+  "why": "language-text dry run unreadable: [dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  suppress all logs with { quiet: true }\n{\n \"course\": \"deu_for_jpn\",\n \"lang\": \"deu\",\n \"pod\": \"deu_for_jpn:pod-1-staged-2026-11-03\",\n \"alreadyBound\": false,\n \"mode\": \"move-lines\",\n \"moves\": [\n  {\n   \"global_order\": 21,\n   \"from\": \"Hallo! Es t"
  }
 }
