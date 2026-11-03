@@ -238,7 +238,11 @@ async function main() {
     const dry = process.argv.includes('--dry')
     const limit = Number(arg('--limit', '0')) || Infinity
     const maxChars = Number(arg('--max-chars', '0')) || Infinity
-    const todo = pendingEntries(plan.entries, readJsonl(RENDER_LOG), { dry }).slice(0, limit)
+    // --only <file>: a JSON list of entryKey()s (job #592's spread probe, tools/audio/aran-clone-fill-probe.cjs pick) —
+    // only those entries are asked, logged to the same render.jsonl so the bulk run skips them afterwards.
+    const onlyFile = arg('--only')
+    const only = onlyFile ? new Set(JSON.parse(fs.readFileSync(onlyFile, 'utf8'))) : null
+    const todo = pendingEntries(plan.entries, readJsonl(RENDER_LOG), { dry }).filter((e) => !only || only.has(entryKey(e.courseCode, e.text))).slice(0, limit)
     let spent = 0, asked = 0, existsInLanguage = 0
     for (const e of todo) {
       if (spent + e.chars > maxChars) { console.log(`STOP: --max-chars ${maxChars} reached (${spent} spent)`); break }
