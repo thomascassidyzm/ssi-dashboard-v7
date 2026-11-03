@@ -1090,14 +1090,40 @@
   "pass": "recast"
  },
  "spa_mx_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T19:53:54.786Z",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:07:23.825Z",
   "audio": {
    "2:target": "d7f46d83-a87b-471a-b501-669a069cc709"
   },
-  "chars": 108,
-  "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for eng (403): cartesia_bedd6226 may not render new eng audio; Tom's cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c-4e8e-a314-022ece01c121. Cast it in the Voice"
+  "chars": 311,
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+  "grant": "#176",
+  "recastAudio": {
+   "SC04-S001:target": "2bee4f9e-d663-4025-89c0-0883703026c5",
+   "SC04-S001:known": "2ac88f4b-9d08-4cd6-9175-12025d394784",
+   "SC04-S002:target": "fb53eac5-4981-4bc5-a825-2b509fb52b55",
+   "SC04-S002:known": "d4fa7576-94c1-460e-a2f4-d628642e5e7d",
+   "SC04-S003:target": "d0f6eede-30c0-41d0-9bb4-6dd29349fdb3",
+   "SC04-S003:known": "6f502ca0-8db8-4eea-b232-a2e4cedad132"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_5c5ad5e7-1020-476b-8b91-fdcbe9cc313c",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 27,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "swa_for_eng": {
   "state": "blocked",
