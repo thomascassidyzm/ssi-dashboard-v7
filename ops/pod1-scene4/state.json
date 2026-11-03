@@ -828,12 +828,38 @@
   "rebound": true
  },
  "jpn_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:48:03.534Z",
-  "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"こんにちは！すみませんが、今は話せないんです。もう家に帰らないといけなくて。明日コーヒーでも飲みに行きませんか？\" is already recorded in jpn — 4 clip(s): 0f0790ec-ed65-42a1-82ed-6e7c71a26903 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311, deu_for_jpn known); 0cb7d47e-6760-4897-aabb-fdee538ee9a8 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311,",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:04:47.393Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#167",
+  "recastAudio": {
+   "SC04-S001:target": "2607e68e-8c0a-4da6-99bf-cb996fc6663b",
+   "SC04-S001:known": "8df29d65-5679-4bb7-b279-253cf7dc38b0",
+   "SC04-S002:target": "c6164bfe-97ff-41d5-b4c8-d5a7b4b18029",
+   "SC04-S002:known": "b5a39051-473b-4f21-bf0e-f706bb943856",
+   "SC04-S003:target": "41d295c3-a4d7-421b-bddd-20f8a1406ec4",
+   "SC04-S003:known": "3dfed9db-9dca-46dc-96ae-d159f603d337"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 33,
+   "keep": 0,
+   "merge": 0,
+   "drop": 4
+  },
+  "switchoverResult": "learner progress: 0 carried, 4 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "kor_for_eng": {
   "state": "blocked",
