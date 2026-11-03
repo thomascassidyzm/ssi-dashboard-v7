@@ -1,0 +1,351 @@
+{
+ "event_id": "49bdd2a0-fe4d-446b-a2f9-a9dc509ab799",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0184L03U02",
+   "set": {
+    "target_text": "ja, ik bin der wis fan, ik haw se sjoen",
+    "known_text": "yes, I'm sure, I saw them",
+    "word_count": 39
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0196L02U04",
+   "set": {
+    "target_text": "hastû it lêste idee heard dat se hie?",
+    "known_text": "have you heard the latest idea she had?",
+    "word_count": 36
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0248L03U03",
+   "set": {
+    "target_text": "ik begryp net watstû sein hast, mar ik wol myn jild werom",
+    "known_text": "I don't understand what you said, but I want my money back",
+    "word_count": 57
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0250L01U02",
+   "set": {
+    "target_text": "kinstû my wat oars fertelle oer dyn freon?",
+    "known_text": "can you tell me something else about your friend?",
+    "word_count": 41
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0258L02U05",
+   "set": {
+    "target_text": "wat is dat blauwe ding dêre op it kantoar?",
+    "known_text": "what's that blue thing over there in the office?",
+    "word_count": 41
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U05",
+   "set": {
+    "target_text": "wa wie dy man op it kantoar?",
+    "known_text": "who was that man in the office?",
+    "word_count": 27
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0274L02U01",
+   "set": {
+    "target_text": "moatstû fuortgean, of kinstû in bytsje wachtsje?",
+    "known_text": "do you have to leave, or can you wait a little?",
+    "word_count": 47
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02B02",
+   "set": {
+    "target_text": "ik ken net folle minsken yn 'e kroech",
+    "known_text": "I don't know many people in the pub",
+    "word_count": 37
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02B03",
+   "set": {
+    "target_text": "mar ik ken net folle minsken",
+    "known_text": "but I don't know many people",
+    "word_count": 28
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U01",
+   "set": {
+    "target_text": "ik bin bliid datstû mei ús komme wolst, ik ken net folle minsken",
+    "known_text": "I'm happy that you want to come with us, I don't know many people",
+    "word_count": 64
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U02",
+   "set": {
+    "target_text": "ik ken net folle minsken, mar ik wol graach witte wat dyn namme is",
+    "known_text": "I don't know many people, but I'd like to know what your name is",
+    "word_count": 66
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U04",
+   "set": {
+    "target_text": "ik ken net folle minsken, allinne myn suster har freon",
+    "known_text": "I don't know many people, only my sister's friend",
+    "word_count": 54
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 184,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 196,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 248,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 250,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 258,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 262,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 274,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 297,
+   "set": {
+    "status": "draft",
+    "approved_at": null
+   }
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 297,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 274,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 262,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 258,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 250,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 248,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 196,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 184,
+   "set": {
+    "status": "released",
+    "approved_at": "2026-10-29T15:22:20.490Z"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U04",
+   "set": {
+    "known_text": "do you know my sister's friend, I don't know many people",
+    "target_text": "kenstû myn suster har freon, ik ken net folle minsken",
+    "word_count": 53
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U02",
+   "set": {
+    "known_text": "can you tell me what your name is, I don't know many people",
+    "target_text": "kinstû my fertelle wat dyn namme is, ik ken net folle minsken",
+    "word_count": 61
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02U01",
+   "set": {
+    "known_text": "would you like to come with us, I don't know many people",
+    "target_text": "woestû graach mei ús komme, ik ken net folle minsken",
+    "word_count": 52
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02B03",
+   "set": {
+    "known_text": "how many people do you know, I don't know many people",
+    "target_text": "hoefolle minsken kenstû, ik ken net folle minsken",
+    "word_count": 49
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0297L02B02",
+   "set": {
+    "known_text": "do you know someone, I don't know many people",
+    "target_text": "kenstû ien, ik ken net folle minsken",
+    "word_count": 36
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0274L02U01",
+   "set": {
+    "known_text": "do you have to leave, I don't mind waiting",
+    "target_text": "moatstû fuortgean, ik fyn it net slim om te wachtsjen",
+    "word_count": 53
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U05",
+   "set": {
+    "known_text": "who was that man, I don't know him",
+    "target_text": "wa wie dy man, ik ken him net",
+    "word_count": 29
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0258L02U05",
+   "set": {
+    "known_text": "what's that blue thing over there, I like it",
+    "target_text": "wat is dat blauwe ding dêre, ik fyn it moai",
+    "word_count": 43
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0250L01U02",
+   "set": {
+    "known_text": "can you tell me something else, that would help me a lot",
+    "target_text": "kinstû my wat oars fertelle, dat soe my tige helpe",
+    "word_count": 50
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0248L03U03",
+   "set": {
+    "known_text": "can you understand what I'm saying, I want my money back",
+    "target_text": "kinstû begripe wat ik sis, ik wol myn jild werom",
+    "word_count": 48
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0196L02U04",
+   "set": {
+    "known_text": "have you heard the latest idea, it's a good idea",
+    "target_text": "hastû it lêste idee heard, it is in goed idee",
+    "word_count": 45
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0184L03U02",
+   "set": {
+    "known_text": "are you sure? yes, I saw them",
+    "target_text": "bistû der wis fan? ja, ik haw se sjoen",
+    "word_count": 38
+   }
+  }
+ ]
+}
