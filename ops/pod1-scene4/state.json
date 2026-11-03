@@ -320,5 +320,31 @@
   "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 6 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c",
   "audio": {},
   "chars": 0
+ },
+ "eng_for_jpn": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:39:00.119Z",
+  "audio": {
+   "2:target": "1e83ae2f-1c71-4657-9afb-2a447629fa43",
+   "2:known": "305ea638-ee34-43ed-8147-00e9688914f8",
+   "3:target": "1a5b7b42-e4d9-46a0-a1b0-003a2649fef9",
+   "3:known": "aa29ba15-0cff-4b94-8679-15a44cad291a"
+  },
+  "chars": 0,
+  "voices": {
+   "SC04-S002:target": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S002:known": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+   "SC04-S003:target": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S003:known": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4"
+  },
+  "languageText": {
+   "moved": [],
+   "bound": true
+  },
+  "migrationPlan": {},
+  "switchoverResult": "",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
