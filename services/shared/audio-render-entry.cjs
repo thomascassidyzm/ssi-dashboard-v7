@@ -83,6 +83,10 @@ function validate(input) {
     trial: input.trial === true,
     // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
     speed: input.speed == null ? null : Number(input.speed),
+    // TRIAL ONLY, POST-RENDER-PACED VOICE (job #590): ONE take, stored once per pace in this list, so a pace comparison
+    // hears the same performance at each tempo. Separate takes cannot compare paces: the clone wanders more take to take
+    // than the 10-25% between belts (job #590 measured a 1.1 take 44% LONGER than a 1.0 take of the same line).
+    paces: input.paces == null ? null : (Array.isArray(input.paces) ? input.paces.map(Number) : [NaN]),
     // TRIAL ONLY (job #23): who started this trial — a person; the lane never runs unattended (r-2026-10-13).
     startedBy: input.startedBy ? String(input.startedBy).slice(0, 100) : null,
     // TRIAL ONLY, ELEVENLABS (job #23): the model (allow-list) and voice_settings passed through to the provider.
@@ -143,6 +147,11 @@ function validate(input) {
     if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
     // Above 1.0 only for the clone stand-in voice, up to its fastest belt pace (checked against the resolved voice in trialRender).
     if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= Math.max(TRIAL_SPEED_MAX, standIn.STANDIN_MAX_PACE))) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX} (up to ${standIn.STANDIN_MAX_PACE} for the clone stand-in voice)`, 400, 'BAD_SPEED')
+  }
+  if (out.paces != null) {
+    if (!out.trial) throw new RenderRequestError('paces is a trial-only option', 400, 'PACES_TRIAL_ONLY')
+    if (out.speed != null) throw new RenderRequestError('send speed or paces, not both', 400, 'BAD_PACES')
+    if (!(out.paces.length >= 1 && out.paces.length <= 4) || !out.paces.every((x) => x >= TRIAL_SPEED_MIN && x <= standIn.STANDIN_MAX_PACE)) throw new RenderRequestError(`paces is a list of 1-4 numbers between ${TRIAL_SPEED_MIN} and ${standIn.STANDIN_MAX_PACE}`, 400, 'BAD_PACES')
   }
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
@@ -365,6 +374,7 @@ async function trialRender(req, deps) {
   // A Professional clone ignores Cartesia's native speed (job #590): it is rendered at 1.0 and the asked speed is applied
   // afterwards as a tempo (storeTrial). paceTempo also keys the spend guard's repeat count, as speed does for native speeds.
   const postPace = slowed && standIn.paceIsPostRender(r.voiceId)
+  if (req.paces) return trialPaces(req, r, ident, deps)
   const cfg = {
     ...r.providerConfig,
     ...(slowed ? (postPace ? { speed: 1, paceTempo: req.speed } : { speed: req.speed }) : {}),
@@ -378,6 +388,24 @@ async function trialRender(req, deps) {
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), ...(postPace && req.speed !== 1 ? { tempo: req.speed } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
+}
+
+/**
+ * ONE take of a post-render-paced voice (the clone stand-in), stored once per asked pace (job #590). One provider call at
+ * Cartesia's default speed; each stored copy is the same bytes time-stretched to its pace before mastering.
+ */
+async function trialPaces(req, r, ident, deps) {
+  if (!standIn.paceIsPostRender(r.voiceId)) throw new RenderRequestError(`paces is for a voice whose pace is applied after the render (the clone stand-in) — ${r.voiceId} is not one`, 400, 'PACES_VOICE_UNSUPPORTED')
+  const cfg = { ...r.providerConfig, speed: 1, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: true, job: req.job } }
+  const out = await deps.speak(req.text, r.provider, cfg, 1)
+  const echo = { trial: true, paces: req.paces, purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
+  if (req.dryRun) return { ok: true, source: 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
+  const takes = []
+  for (const pace of req.paces) {
+    const stored = await deps.storeTrial({ ...ident, speed: pace === 1 ? null : pace, ...(pace !== 1 ? { tempo: pace } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+    takes.push({ pace, ...stored })
+  }
+  return { ok: true, source: 'rendered', charsSpent: out.charsSpent, takes, ...echo }
 }
 
 /**
