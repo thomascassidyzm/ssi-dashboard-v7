@@ -187,3 +187,35 @@ test('job #849: the South Siân swaps are Dan\'s, the North ones stay Aran\'s', 
   assert.deepStrictEqual(mine('human_dan_cym_s'), ['cym_s_for_eng:pod-1:SC01-S001', 'cym_s_for_eng:pod-1:SC05-S001'])
   assert.deepStrictEqual(mine('human_aran_cym_n'), ['cym_n_for_eng:pod-1:SC01-S001', 'cym_n_for_eng:pod-1:SC05-S001'])
 })
+
+// Job #463: Eleri's home-summary totals left out her practice phrases. The tally is built before the
+// phrase plan is added, so the top number must add the plan's batches for the phrase step's course.
+test("job #463: Eleri's top total/recorded/remaining include every practice-phrase batch, counted once", () => {
+  const ELERI = 'human_eleri_cym_s'
+  const C = 'cym_sv2_for_eng'
+  const tally = [
+    { courseCode: 'cym_s_for_eng', kind: 'pod', role: null, podSlug: 'pod-1', podId: 'cym_s_for_eng:pod-1', total: 141, recorded: 141 },
+    { courseCode: C, kind: 'seed', role: 'target2', podSlug: null, podId: null, total: 20, recorded: 12 },
+    { courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target2', podSlug: null, podId: null, total: 206, recorded: 3 },
+  ]
+  // The served batch's unrecorded lines are in `lines` too; they must not be counted on top of the plan.
+  const lines = [{ id: 'ph1', kind: 'phrase', role: 'target2', courseCode: C, recorded: false }]
+  const phraseBatches = [
+    { pass: 1, batch: 1, courseCode: C, total: 197, recorded: 197 },
+    { pass: 1, batch: 2, courseCode: C, total: 195, recorded: 10 },
+    { pass: 2, batch: 1, courseCode: C, total: 200, recorded: 0 },
+    { pass: 1, batch: 1, courseCode: 'some_other_course', total: 999, recorded: 0 },
+  ]
+  const queue = { lines, tally, phrases: { pass: 1, batch: 2, courseCode: C }, phraseBatches, notReady: [], handedOn: [] }
+  const scoped = q.scopeQueue(ELERI, queue)
+  assert.strictEqual(scoped.total, 141 + 20 + 206 + 197 + 195 + 200)
+  assert.strictEqual(scoped.recorded, 141 + 12 + 3 + 197 + 10)
+  assert.strictEqual(scoped.remaining, scoped.total - scoped.recorded)
+  // A queue with no phrase step (keepPhrases false) is counted exactly as before: the tally alone.
+  const noPhrases = [{ key: 'seeds', title: 'Seeds', courseCode: C, kind: 'seed', role: 'target2' }]
+  const plain = q.scopeQueue('x', queue, { x: noPhrases })
+  assert.strictEqual(plain.total, 20)
+  assert.strictEqual(plain.recorded, 12)
+  assert.strictEqual(plain.remaining, 8)
+  assert.strictEqual(plain.phraseBatches, null)
+})

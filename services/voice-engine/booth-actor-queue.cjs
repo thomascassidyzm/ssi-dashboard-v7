@@ -98,15 +98,27 @@ function scopeQueue(voiceId, queue, queues = ACTOR_QUEUES) {
   // The queue's own tally covers recorded lines too, which `lines` omits unless asked for them;
   // without one (an older cached queue) the counts fall back to the lines in hand.
   const tally = Array.isArray(queue.tally) ? queue.tally.filter((t) => stepOf(t, steps)) : null
-  // The tally still counts the pod lines that stepped aside (they are in `asideAll` only when the queue carries
-  // recorded lines, which the home screen's does); take them off so the card and the top number agree.
-  const total = (tally ? tally.reduce((n, t) => n + t.total, 0) : lines.length) - (tally ? asideAll.length : 0)
-  const recorded = (tally ? tally.reduce((n, t) => n + t.recorded, 0) : lines.filter((l) => l.recorded).length) - (tally ? asideAll.filter((l) => l.recorded).length : 0)
-  const inPods = (p) => steps.some((s) => s.pod && s.courseCode === p.courseCode && (p.podSlug === s.pod || p.podId === `${s.courseCode}:${s.pod}`))
   // The practice-phrase batch plan is sent only to an actor whose queue has a phrase step; the
   // non-enumerable readers (openPhraseBatch, allPhraseLines) do not survive the spread, so
   // they are carried over by hand.
   const keepPhrases = steps.some((s) => s.kind === 'phrase')
+  // THE TOP NUMBER COUNTS THE WHOLE PHRASE PLAN (job #463). The tally is built from the cast lines
+  // before the phrase plan is added (recordist-queue finishQueue, then withPhraseBatch), so it holds
+  // no phrase lines, and `lines` holds only the one batch served. A phrase step whose course has
+  // batches in the plan is counted over those batches — as nextStepFor counts it — and its lines are
+  // taken out of the tally / line count so nothing is counted twice.
+  const plan = keepPhrases && queue.phrases && !queue.phrases.unavailable && Array.isArray(queue.phraseBatches) ? queue.phraseBatches : null
+  const planned = steps.filter((s) => s.kind === 'phrase' && plan && plan.some((b) => b && b.courseCode === s.courseCode))
+  const planBatches = planned.length ? plan.filter((b) => b && planned.some((s) => s.courseCode === b.courseCode)) : []
+  const notPlanned = (l) => !planned.some((s) => lineInStep(l, s))
+  const counted = tally ? tally.filter(notPlanned) : lines.filter(notPlanned)
+  // The tally still counts the pod lines that stepped aside (they are in `asideAll` only when the queue carries
+  // recorded lines, which the home screen's does); take them off so the card and the top number agree.
+  const total = (tally ? counted.reduce((n, t) => n + t.total, 0) : counted.length) - (tally ? asideAll.length : 0) +
+    planBatches.reduce((n, b) => n + (b.total || 0), 0)
+  const recorded = (tally ? counted.reduce((n, t) => n + t.recorded, 0) : counted.filter((l) => l.recorded).length) - (tally ? asideAll.filter((l) => l.recorded).length : 0) +
+    planBatches.reduce((n, b) => n + (b.recorded || 0), 0)
+  const inPods = (p) => steps.some((s) => s.pod && s.courseCode === p.courseCode && (p.podSlug === s.pod || p.podId === `${s.courseCode}:${s.pod}`))
   const scoped = {
     ...queue,
     lines,
