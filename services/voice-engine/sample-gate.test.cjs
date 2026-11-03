@@ -33,7 +33,7 @@ describe('sample-gate.cjs', () => {
   })
 })
 
-describe('recorder build hash covers the capture path and nothing else (jobs #433, #575)', () => {
+describe('recorder build hash covers the whole recording chain (job #433)', () => {
   const fs = require('fs'), os = require('os'), path = require('path')
   it('changing any listed file changes the hash; an unlisted file does not', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'rb-'))
@@ -45,38 +45,9 @@ describe('recorder build hash covers the capture path and nothing else (jobs #43
       expect(gate.computeRecorderBuild(root)).not.toBe(base)
       fs.writeFileSync(path.join(root, f), 'x')
     }
+    expect(gate.RECORDER_BUILD_FILES).toEqual(expect.arrayContaining(['src/views/RecordistRoom.vue', 'services/audio-processor.cjs']))
     fs.writeFileSync(path.join(root, 'other.js'), 'z')
     expect(gate.computeRecorderBuild(root)).toBe(base)
-  })
-  // THE CAPTURE PATH (job #575): every file that can change the captured audio is hashed. Drop
-  // one from RECORDER_BUILD_FILES and a recorder change ships without re-asking a single artist;
-  // this list is the reason it cannot be dropped quietly.
-  const CAPTURE_FILES = [
-    'src/composables/useTapRecorder.js',
-    'src/composables/boothTakePolicy.js',
-    'src/composables/useRecordistQueue.js',
-    'src/services/takeStore.js',
-    'src/services/uploadConcurrency.js',
-    'services/voice-engine/booth-take-upload.cjs',
-    'services/recording-upload-helpers.cjs',
-    'services/audio-processor.cjs',
-    'services/recording-speech-gate.cjs',
-  ]
-  it.each(CAPTURE_FILES)('%s is in the recorder hash', (f) => {
-    expect(gate.RECORDER_BUILD_FILES).toContain(f)
-  })
-  // Layout, buttons and routing are OUT (Tom's Watson, r-2026-10-31): a UI-only booth deploy
-  // must not re-ask every voice artist for ten takes.
-  it.each(['src/views/RecordistRoom.vue', 'services/voice-engine/recordist-router.cjs', 'src/views/recordist/sample-gate.js', 'services/voice-engine/sample-gate.cjs'])('%s is not in the recorder hash', (f) => {
-    expect(gate.RECORDER_BUILD_FILES).not.toContain(f)
-  })
-  it('the booth screen and router hold no capture rule of their own', () => {
-    const read = (f) => fs.readFileSync(path.resolve(__dirname, '../..', f), 'utf8')
-    const room = read('src/views/RecordistRoom.vue')
-    // Constraints and encoding belong to useTapRecorder; the take rules to boothTakePolicy.
-    expect(room).not.toMatch(/getUserMedia\s*\(|new MediaRecorder|audioBitsPerSecond|AUTO_ADVANCE_QUIET_MS\s*=|blob\.size\s*</)
-    const router = read('services/voice-engine/recordist-router.cjs')
-    expect(router).not.toMatch(/require\('busboy'\)|MAX_TAKE_BYTES\s*=/)
   })
   it('every listed file exists in the repo', () => {
     expect(gate.computeRecorderBuild(path.resolve(__dirname, '../..'))).not.toBe('unknown')

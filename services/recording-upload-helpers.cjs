@@ -354,6 +354,150 @@ async function retainAndProcessTake({
   return { rawKey, rawRetained: rawKey !== null, rawError, refused: null, processedBuffer, audioMeta }
 }
 
+// ── The upload handler's take decisions (job #582) ──────────────────────────
+// Moved verbatim out of handleRecordingUpload in production-api.cjs, which keeps the route and
+// calls these. production-api.cjs changes for a hundred reasons that never touch a take; these
+// decide which takes are kept and how they are trimmed, so they live here, where the sample
+// gate's recorder hash (services/voice-engine/sample-gate.cjs) covers them.
+
+// What an upload with no mimeType is processed as.
+const DEFAULT_UPLOAD_MIME = 'audio/webm'
+
+// THE SILENT-TAKE FLOOR, enforced inside retainAndProcessTake (minTakeMs). Moved verbatim
+// from the upload handler in production-api.cjs (job #582) so the sample gate's recorder hash
+// covers it.
+//
+// A take that processed "successfully" into no audio is refused: the trim
+// filter (silenceremove at -40dB) strips a silent or muted-mic take down to
+// nothing — ffmpeg exits 0, lame writes an 834-byte header-only MP3 that
+// ffprobe cannot even decode ("Failed to find two consecutive MPEG audio
+// frames"), and the recorder got a 200 with success:true. That is the
+// 2026-08-06 Welsh bug — bookkeeping said recorded, the learner got silence.
+// In regeneration/pod mode it repoints a real phrase row at an unplayable
+// stub. Refused BEFORE the S3 PUT (same principle as the uuid lookup above —
+// a bad take must never orphan bytes) so the client's upload queue marks it
+// failed and the take stays visible as missing. Threshold is deliberately low
+// so that it only catches silence, muted mics and stray clicks, never a word.
+//
+// The old note here read "the trim is aggressive — a synthesised 350ms tone
+// comes out the far side at 150ms". That was the T-20 bug being observed and
+// worked around rather than fixed: the trim was destroying 100ms at each end
+// (start_duration, since corrected to start_silence — see audio-processor.cjs).
+// A 350ms tone now survives as ~350ms, so this guard has MORE headroom than
+// when it was written, not less. It stays as the silent-take backstop.
+const MIN_TAKE_MS = 100
+
+/**
+ * How the processor trims the take. A GAPPED take is protected in the middle. Tom, 2026-09-02:
+ * on the minimal phrase set "we want... to keep the silence between the words, so that we can
+ * dice and splice more easily". The processor reads this and lowers its minimum-word length so
+ * a short first word is not discarded and amputated; it never touches the gaps either way.
+ */
+function readStyleForTake(metadata = {}) {
+  return metadata.cadence === 'gapped' ? 'gapped' : 'natural'
+}
+
+// metadata.spokenText: the words as SAID, when the filed text carries display markup (a whole-sentence
+// LEGO intro, "The Welsh for <src>X</src> is <tgt>Y</tgt>.", job #587) — the gates listen for words, not tags.
+function takeGateText(metadata = {}, podContext = null) {
+  return metadata.spokenText || metadata.text || (podContext && podContext.text) || null
+}
+
+/**
+ * The three refusal gates on a PROCESSED take, in order: speech content, steady noise,
+ * boundaries. Returns { status, body } for the first that refuses, or null to carry on.
+ * `speechGate` is the caller's recording-speech-gate.cjs module.
+ */
+async function refuseProcessedTake({ speechGate, processedBuffer, audioMeta, gateText, courseCode, kind, audioId, rawKey, logger = console }) {
+  // SPEECH-CONTENT GATE. Every check above this line is a LEVEL check, and a
+  // level check cannot see the 2026-08-23 defect: three of Catrin's four
+  // cym_n pod takes were 31-97 seconds of an empty room, recorded through
+  // Apple/Chrome's voice profile whose automatic gain control lifts a quiet
+  // room to voice level. They measured healthy — -18 to -21 dBFS RMS — and
+  // Tom's ear found a sheep in one of them. See services/recording-speech-gate.cjs
+  // for the measurement and for why neither the veracity check nor the VAD
+  // can referee this on their own.
+  //
+  // Server-side deliberately: a stale client bundle cannot bypass it, which
+  // matters because the capture path that produced those takes shipped the
+  // day before and the recordist's browser version was itself in question.
+  //
+  // Refuses BEFORE the S3 PUT, same as every check above — a refused take
+  // orphans no bytes, and retainAndProcessTake has already archived the raw
+  // original, so nothing said into the microphone is lost to this branch.
+  // An UNCHECKED result (no script text, no decoder) is logged and let
+  // through: an infrastructure absence must never cost a recordist a read.
+  const speech = await speechGate.checkTakeHasSpeech({
+    buffer: processedBuffer,
+    expectedText: gateText,
+    language: speechGate.languageForTake(courseCode, kind),
+    durationMs: audioMeta.durationMs,
+  })
+  if (speech.checked === false) {
+    logger.warn(`[Upload] Speech gate NOT RUN for ${audioId}: ${speech.reason} — this take was saved UNCHECKED for speech content. ${JSON.stringify(speech.detail)}`)
+  } else if (speech.pass === false) {
+    logger.error(`[Upload] REFUSED speechless take ${audioId}: ${speech.reason} ${JSON.stringify(speech.detail)}`)
+    return { status: 422, body: {
+      error: speech.message,
+      processed: true,
+      noSpeech: true,
+      reason: speech.reason,
+      detail: speech.detail,
+      // Same as the two refusals above: the raw original is already archived,
+      // so a refused take is recoverable rather than lost.
+      rawKey: rawKey || null,
+    } }
+  }
+
+  // STEADY-NOISE GATE (2026-10-07, Dan's 14:53 take of "Bore da, Sarah!"). The
+  // length ceiling above only fires on a take far longer than its line; a
+  // short take of pure rumble and hiss sails under it and, on an iPhone, reads
+  // as voice on the recorder's own meter. Needs no script text. Same placement
+  // and same three outcomes: refuse BEFORE the S3 PUT / slot swap, raw already
+  // archived, UNCHECKED logged and let through.
+  const noise = await speechGate.checkTakeIsNotSteadyNoise({ buffer: processedBuffer })
+  if (noise.checked === false) {
+    logger.warn(`[Upload] Steady-noise gate NOT RUN for ${audioId}: ${noise.reason} — saved UNCHECKED. ${JSON.stringify(noise.detail)}`)
+  } else if (noise.pass === false) {
+    logger.error(`[Upload] REFUSED steady-noise take ${audioId}: ${noise.reason} ${JSON.stringify(noise.detail)}`)
+    return { status: 422, body: {
+      error: noise.message,
+      processed: true,
+      noSpeech: true,
+      reason: noise.reason,
+      detail: noise.detail,
+      rawKey: rawKey || null,
+    } }
+  }
+
+  // BOUNDARY GATE. The gate above asks whether there is a read in the take;
+  // this one asks whether the read runs off the edge of the file. They are
+  // different defects and neither check sees the other's: a truncated take
+  // has a perfectly respectable speech span, healthy levels and a clean
+  // decode, which is why the 2026-08-14 technical QC pass declared all 111
+  // of Aran's Welsh takes clean and Tom's ear, nine days later, called them
+  // "all junk. All clipped badly at either or both ends".
+  //
+  // Same three outcomes and the same placement: BEFORE the S3 PUT, so a
+  // refused take orphans no bytes and the raw original is already archived.
+  // An UNCHECKED result is logged and let through.
+  const bounds = await speechGate.checkTakeBoundaries({ buffer: processedBuffer })
+  if (bounds.checked === false) {
+    logger.warn(`[Upload] Boundary gate NOT RUN for ${audioId}: ${bounds.reason} — this take was saved UNCHECKED for truncation. ${JSON.stringify(bounds.detail)}`)
+  } else if (bounds.pass === false) {
+    logger.error(`[Upload] REFUSED truncated take ${audioId}: ${bounds.reason} ${JSON.stringify(bounds.detail)}`)
+    return { status: 422, body: {
+      error: bounds.message,
+      processed: true,
+      truncated: true,
+      reason: bounds.reason,
+      detail: bounds.detail,
+      rawKey: rawKey || null,
+    } }
+  }
+  return null
+}
+
 module.exports = {
   isScriptModeUpload,
   normalizeProvenance,
@@ -361,5 +505,10 @@ module.exports = {
   resolveTakeVoiceId,
   resolveRawFormat,
   buildRawTakeKey,
-  retainAndProcessTake
+  retainAndProcessTake,
+  DEFAULT_UPLOAD_MIME,
+  MIN_TAKE_MS,
+  readStyleForTake,
+  takeGateText,
+  refuseProcessedTake
 }

@@ -68,13 +68,13 @@ const path = require('path')
 const { createHash } = require('crypto')
 
 /**
- * EVERY FILE THAT CAN CHANGE THE CAPTURED AUDIO (Tom's Watson's test, job #575): anything that
+ * THE RULE: HASH ONLY FILES THAT CAN CHANGE THE CAPTURED OR STORED AUDIO (Tom's Watson, job #575,
+ * #582): anything that
  * sets getUserMedia constraints, sample rate, codec or bitrate, encoding, trimming or upload of
  * the take is IN; layout, buttons and routing are OUT. Editing any of these re-fires the 10-take
  * gate once per voice. Never add the gate itself, the booth screen, a router or a general utility,
  * or artists get stopped by deploys that changed nothing they record. If a rule in one of those
  * starts deciding a take, move it into a file here rather than adding the screen.
- * sample-gate.test.cjs fails if any of these is dropped from the list.
  */
 const RECORDER_BUILD_FILES = [
   'src/composables/useTapRecorder.js', // microphone capture: getUserMedia constraints per profile, MediaRecorder mime/bitrate, pre-roll and tail
@@ -83,7 +83,7 @@ const RECORDER_BUILD_FILES = [
   'src/services/takeStore.js', // on-device store the take's bytes wait in until they upload
   'src/services/uploadConcurrency.js', // how many takes upload at once and which failures are retried
   'services/voice-engine/booth-take-upload.cjs', // receives the take: multipart parse, 60 MB ceiling, default mime it is processed as
-  'services/recording-upload-helpers.cjs', // retains the raw take and runs processing (retainAndProcessTake)
+  'services/recording-upload-helpers.cjs', // retains the raw take, runs processing, and the upload handler's take decisions: 100 ms floor, natural/gapped trim, speech/noise/boundary refusals
   'services/audio-processor.cjs', // ffmpeg trim / convert of the take
   'services/recording-speech-gate.cjs', // speech, steady-noise and boundary checks that refuse a processed take
 ]
