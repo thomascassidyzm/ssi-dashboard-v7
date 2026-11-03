@@ -1174,10 +1174,13 @@
  "ukr_for_eng": {
   "state": "blocked",
   "step": "cloned",
-  "at": "2026-11-03T19:55:07.726Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for ukr (403): ukr has only the 2026-09-04 draft casting, which Tom never chose, so no ukr clip is rendered (azure_uk-UA-PolinaNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "at": "2026-11-03T20:07:50.293Z",
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY ukr_for_eng:pod-1:SC04-S001: no current m target cast for ukr_for_eng (ukr (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#181",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "zho_for_eng": {
   "state": "blocked",
