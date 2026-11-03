@@ -1,13 +1,14 @@
 {
   "course": "ita_for_eng",
   "knownLanguage": "eng",
-  "tool": "tools/pod-drill-cuts/known-rerecord.mjs (job #665)",
+  "tool": "tools/pods/pod-drill/known-rerecord.mjs (job #665, Popty #692)",
   "note": "A LIST, not audio. Nothing is rendered until Kai authorises it, through Popty /api/audio/render.",
   "tally": {
     "already-cut": 318,
-    "cuttable": 10,
+    "cuttable": 0,
     "re-record": 0,
-    "needs-pairing": 71
+    "needs-pairing": 71,
+    "plays-whole": 10
   },
   "rerecord": [],
   "needsPairing": [
@@ -720,6 +721,108 @@
       "known": "please?",
       "knownSentence": "Hello.",
       "why": "\"can you take me\" is not said word for word in \"Hello.\""
+    }
+  ],
+  "playsWhole": [
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-ciao",
+      "target": "Ciao",
+      "known": "hello",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC04-S001",
+      "line": 0,
+      "lego": "s10-buonasera",
+      "target": "buonasera",
+      "known": "good evening",
+      "knownSentence": "Hello, good evening!",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": "s54-non-so",
+      "target": "Non so",
+      "known": "I'm not sure",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC08-S012:s0",
+      "line": 0,
+      "lego": "s54-se-ho-fame",
+      "target": "se ho fame",
+      "known": "if I'm hungry.",
+      "knownSentence": "I'm not sure if I'm hungry.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-sì",
+      "target": "Sì",
+      "known": "yes",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S006",
+      "line": 0,
+      "lego": "s92-dà-sul-giardino",
+      "target": "dà sul giardino",
+      "known": "it overlooks the garden",
+      "knownSentence": "Yes, it overlooks the garden.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S011",
+      "line": 0,
+      "lego": "s97-e-qual-è",
+      "target": "E qual è",
+      "known": "and what is",
+      "knownSentence": "And what is the wifi password?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC11-S011",
+      "line": 0,
+      "lego": "s97-la-password-del-wifi",
+      "target": "la password del wifi",
+      "known": "the wifi password?",
+      "knownSentence": "And what is the wifi password?",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S002:s0",
+      "line": 0,
+      "lego": "s122-sì",
+      "target": "Sì",
+      "known": "yes",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
+    },
+    {
+      "course": "ita_for_eng",
+      "card": "ita_for_eng:pod-1:SC14-S002:s0",
+      "line": 0,
+      "lego": "s122-certo",
+      "target": "certo",
+      "known": "of course",
+      "knownSentence": "Yes, of course.",
+      "why": "the load rule keeps this card whole in Drill: no piece is played"
     }
   ]
 }

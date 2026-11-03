@@ -1,0 +1,1996 @@
+{
+ "course": "spa_for_eng",
+ "tool": "tools/pods/pod-drill/score.mjs (#707)",
+ "boundary": {
+  "MARGIN_MS": 10
+ },
+ "totals": {
+  "pieces": 57,
+  "clean": 24,
+  "tight": 33,
+  "unscored": 0
+ },
+ "pieces": [
+  {
+   "id": "spa_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 0,
+   "known": "with milk",
+   "target": "Con leche",
+   "startMs": 57,
+   "endMs": 700,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC03-S002:s2",
+   "knownClip": "8560c18a-3cbf-4978-aca4-c3138052cbea.v2",
+   "knownSentence": "With milk but with no sugar.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but with no sugar",
+   "target": "pero sin azúcar",
+   "startMs": 700,
+   "endMs": 1480,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 700,
+     "aWord": "milk",
+     "bWord": "but",
+     "gapMs": 80,
+     "marginMs": 20,
+     "inside": null,
+     "tight": false,
+     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'm sorry",
+   "target": "Lo siento",
+   "startMs": 57,
+   "endMs": 900,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "inside": null,
+     "tight": false,
+     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S009:s0",
+   "knownClip": "f67dca68-8025-4438-9f23-bb543fee5ddb",
+   "knownSentence": "I'm sorry, I didn't understand you.",
+   "line": 0,
+   "chunk": 1,
+   "known": "I didn't understand you",
+   "target": "no te he entendido",
+   "startMs": 900,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 900,
+     "aWord": "sorry,",
+     "bWord": "I",
+     "gapMs": 250,
+     "marginMs": 60,
+     "inside": null,
+     "tight": false,
+     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S005:s0",
+   "knownClip": "50f9f135-eb3f-440f-bd71-dd7902a519c7.v2",
+   "knownSentence": "Excuse me - do you have anything gluten-free?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Excuse me,",
+   "target": "Perdón",
+   "startMs": 59,
+   "endMs": 820,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 820,
+     "aWord": "me",
+     "bWord": "-",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")",
+   "standalone": "7650b719-f92d-494c-8e96-00cc75f3b028",
+   "render": {
+    "at": "2026-11-03T16:42:41.308Z",
+    "text": "Excuse me",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "7650b719-f92d-494c-8e96-00cc75f3b028",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 936,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S005:s0",
+   "knownClip": "50f9f135-eb3f-440f-bd71-dd7902a519c7.v2",
+   "knownSentence": "Excuse me - do you have anything gluten-free?",
+   "line": 0,
+   "chunk": 1,
+   "known": "do you have anything gluten-free?",
+   "target": "tienen algo sin gluten",
+   "startMs": 820,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 820,
+     "aWord": "me",
+     "bWord": "-",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"-\" (no silence between \"me\" and \"-\")",
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "do you have anything gluten-free?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"do you have anything gluten-free?\" is already recorded in eng — 19 clip(s): 02e7a97a-b48f-43a0-83cf-890eb1960e0c (voice xai_gfzdpspr5fdp, spa_for_eng pod_fine_known); 0bda3702-8d38-4c6f-9e11-276cb1e8bd40 (voice xai_gfzdpspr5fdp, est_for_eng pod_fine_known); 2f3cd381-df7d-4d71-86df-160c0e5f3fce (voi",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S016:s0",
+   "knownClip": "423696a0-c25e-40cc-8949-69fede69efab.v2",
+   "knownSentence": "Just two coffees, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "just two coffees,",
+   "target": "Solo dos cafés",
+   "startMs": 59,
+   "endMs": 1120,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1120,
+     "aWord": "coffees,",
+     "bWord": "please.",
+     "gapMs": 292,
+     "marginMs": 92,
+     "inside": null,
+     "tight": false,
+     "why": "\"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S016:s0",
+   "knownClip": "423696a0-c25e-40cc-8949-69fede69efab.v2",
+   "knownSentence": "Just two coffees, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 1120,
+   "endMs": 2200,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1120,
+     "aWord": "coffees,",
+     "bWord": "please.",
+     "gapMs": 292,
+     "marginMs": 92,
+     "inside": null,
+     "tight": false,
+     "why": "\"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"please.\" starts 92 ms after the cut (292 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S003:s1",
+   "knownClip": "66afe793-1458-45e6-86e6-ca0b0a63608e.v2",
+   "knownSentence": "And do you have any painkillers for children?",
+   "line": 0,
+   "chunk": 0,
+   "known": "and do you have any painkillers",
+   "target": "Y tiene analgésicos",
+   "startMs": 60,
+   "endMs": 1320,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1320,
+     "aWord": "painkillers",
+     "bWord": "for",
+     "gapMs": 0,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")",
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "and do you have any painkillers",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and do you have any painkillers\" is already recorded in eng — 10 clip(s): a698c143-3954-404e-821d-b5e8024cbce4 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 091f7a9e-b594-4822-a015-b49488875ffd (voice xai_gfzdpspr5fdp, isl_for_eng pod_fine_known); 1d4b8878-5c1f-44b2-961d-0614e09a2ce2 (voice gfz",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S003:s1",
+   "knownClip": "66afe793-1458-45e6-86e6-ca0b0a63608e.v2",
+   "knownSentence": "And do you have any painkillers for children?",
+   "line": 0,
+   "chunk": 1,
+   "known": "for children?",
+   "target": "para niños",
+   "startMs": 1320,
+   "endMs": 1960,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1320,
+     "aWord": "painkillers",
+     "bWord": "for",
+     "gapMs": 0,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: \"for\" starts 0 ms after the cut (no silence between \"painkillers\" and \"for\")",
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "for children?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"for children?\" is already recorded in eng — 20 clip(s): 303b42ca-3a1d-4793-b0ad-85f3d57399f4 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0d6dfa84-e9c1-4c6b-a874-af95d45993f5 (voice xai_gfzdpspr5fdp, lav_for_eng pod_fine_known); 12cf6953-a0c6-4cf9-aae4-56514ab33832 (voice xai_gfzdpspr5fdp, ita",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I think so,",
+   "target": "Creo que sí",
+   "startMs": 60,
+   "endMs": 1310,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1310,
+     "aWord": "so,",
+     "bWord": "but",
+     "gapMs": 509,
+     "marginMs": 199,
+     "inside": null,
+     "tight": false,
+     "why": "\"but\" starts 199 ms after the cut (509 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"but\" starts 199 ms after the cut (509 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but you'll have to look",
+   "target": "pero tendrá que mirar",
+   "startMs": 1310,
+   "endMs": 2360,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1310,
+     "aWord": "so,",
+     "bWord": "but",
+     "gapMs": 509,
+     "marginMs": 199,
+     "inside": null,
+     "tight": false,
+     "why": "\"but\" starts 199 ms after the cut (509 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2360,
+     "aWord": "look",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"look\" ends 0 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: \"look\" ends 0 ms before the cut (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "but you'll have to look",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"but you'll have to look\" is already recorded in eng — 15 clip(s): 4dd771d0-bcd3-4b49-ae5c-550a29c09758 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 222b3ed7-9840-4103-ac0e-f4ae77d3552b (voice gfzdpspr5fdp, por_for_eng pod_fine_known); 2278b902-57b2-44d2-8bb0-e928b789f9a5 (voice gfzdpspr5fdp, c",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S004",
+   "knownClip": "f1bdc4ef-e131-4bf3-adac-c6162a0742f2",
+   "knownSentence": "I think so, but you'll have to look to make sure.",
+   "line": 0,
+   "chunk": 2,
+   "known": "to make sure.",
+   "target": "para asegurarse",
+   "startMs": 2360,
+   "endMs": 3320,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2360,
+     "aWord": "look",
+     "bWord": "to",
+     "gapMs": 80,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"look\" ends 0 ms before the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: \"look\" ends 0 ms before the cut (80 ms of silence between the words)",
+   "standalone": "490514cb-8453-4b7e-af08-7e064dc5225c",
+   "render": {
+    "at": "2026-11-03T16:42:41.538Z",
+    "text": "to make sure.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "library",
+    "audioId": "490514cb-8453-4b7e-af08-7e064dc5225c",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1120,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S009:s2",
+   "knownClip": "ef31eb55-7955-4644-96b9-ef713ce26261.v2",
+   "knownSentence": "Thank you very much, and goodbye.",
+   "line": 0,
+   "chunk": 0,
+   "known": "thank you very much,",
+   "target": "Muchas gracias",
+   "startMs": 60,
+   "endMs": 1210,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1210,
+     "aWord": "much,",
+     "bWord": "and",
+     "gapMs": 125,
+     "marginMs": -5,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 5 ms inside \"and\" (125 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 5 ms inside \"and\" (125 ms of silence between the words)",
+   "standalone": "286d6287-9e39-42b2-bc81-dcb824ff7ba8",
+   "render": {
+    "at": "2026-11-03T16:42:41.979Z",
+    "text": "thank you very much",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "286d6287-9e39-42b2-bc81-dcb824ff7ba8",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1248,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S009:s2",
+   "knownClip": "ef31eb55-7955-4644-96b9-ef713ce26261.v2",
+   "knownSentence": "Thank you very much, and goodbye.",
+   "line": 0,
+   "chunk": 1,
+   "known": "and goodbye.",
+   "target": "y hasta luego",
+   "startMs": 1210,
+   "endMs": 1880,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1210,
+     "aWord": "much,",
+     "bWord": "and",
+     "gapMs": 125,
+     "marginMs": -5,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 5 ms inside \"and\" (125 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 5 ms inside \"and\" (125 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "and goodbye.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and goodbye.\" is already recorded in eng — 29 clip(s): 8b56d152-9764-4d82-a6d9-e7434b087c04 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 1877ea75-6ea3-4357-b402-b2ac04e62d6c (voice xai_gfzdpspr5fdp, cat_for_eng pod_fine_known); 1978b3c2-0020-49e0-bb76-19498e3d23ff (voice xai_gfzdpspr5fdp, nld_",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We have fruit and cereals",
+   "target": "Tenemos fruta y cereales",
+   "startMs": 60,
+   "endMs": 1770,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "We have fruit and cereals",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"We have fruit and cereals\" is already recorded in eng — 33 clip(s): 44e67508-ea13-422a-9225-f8375fe0e1ab (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 03cd6c76-d8cb-4882-b96e-a21cbbb302e4 (voice xai_gfzdpspr5fdp, nor_for_eng pod_fine_known); 0827b7e1-0433-4f30-b351-81ab45987e14 (voice xai_gfzdp",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S008:s1",
+   "knownClip": "e1f2a326-cb8a-4822-ab52-65fa90a4d908.v2",
+   "knownSentence": "We have fruit and cereals or a cooked breakfast.",
+   "line": 0,
+   "chunk": 1,
+   "known": "or a cooked breakfast.",
+   "target": "o un desayuno caliente",
+   "startMs": 1770,
+   "endMs": 3000,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1770,
+     "aWord": "cereals",
+     "bWord": "or",
+     "gapMs": 80,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "or a cooked breakfast.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"or a cooked breakfast.\" is already recorded in eng — 33 clip(s): df2d358d-3323-46eb-9d42-387edf70a246 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0d0b0b8e-f3b7-404d-b0be-a2b638b7692b (voice xai_gfzdpspr5fdp, nld_for_eng pod_fine_known); 157ed761-ceec-45a5-b27a-ded324589468 (voice xai_gfzdpspr",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Excuse me,",
+   "target": "Perdón",
+   "startMs": 56,
+   "endMs": 1020,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC02-S001",
+   "knownClip": "d4eefdd0-5443-4360-9157-ca98c1d60c32.v2",
+   "knownSentence": "Excuse me, is this seat taken?",
+   "line": 0,
+   "chunk": 1,
+   "known": "is this seat taken?",
+   "target": "está ocupado este asiento",
+   "startMs": 1020,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1020,
+     "aWord": "me,",
+     "bWord": "is",
+     "gapMs": 123,
+     "marginMs": 23,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S011:s0",
+   "knownClip": "c149318c-c8fa-48c8-b8b4-a80450b36cc0",
+   "knownSentence": "I teach English, but not in a school.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I teach English,",
+   "target": "Enseño inglés",
+   "startMs": 60,
+   "endMs": 1320,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1320,
+     "aWord": "English,",
+     "bWord": "but",
+     "gapMs": 213,
+     "marginMs": 80,
+     "inside": null,
+     "tight": false,
+     "why": "\"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC06-S011:s0",
+   "knownClip": "c149318c-c8fa-48c8-b8b4-a80450b36cc0",
+   "knownSentence": "I teach English, but not in a school.",
+   "line": 0,
+   "chunk": 1,
+   "known": "but not in a school.",
+   "target": "pero no en un colegio",
+   "startMs": 1320,
+   "endMs": 2520,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1320,
+     "aWord": "English,",
+     "bWord": "but",
+     "gapMs": 213,
+     "marginMs": 80,
+     "inside": null,
+     "tight": false,
+     "why": "\"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"English,\" ends 80 ms before the cut (213 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S004:s1",
+   "knownClip": "81f83f7f-72e0-425f-a3f9-f06842bf59aa",
+   "knownSentence": "With oat milk if you have it.",
+   "line": 0,
+   "chunk": 0,
+   "known": "With oat milk",
+   "target": "Con leche de avena",
+   "startMs": 62,
+   "endMs": 860,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 860,
+     "aWord": "milk",
+     "bWord": "if",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "With oat milk",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"With oat milk\" is already recorded in eng — 23 clip(s): 1f5223d3-087a-47e3-aeda-12c0bb62ed19 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0297effe-7763-401d-889f-15ea0b848dc8 (voice xai_gfzdpspr5fdp, hrv_for_eng pod_fine_known); 0b30cf2d-1383-4e98-92bd-c9d929880ddf (voice xai_gfzdpspr5fdp, swe",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S004:s1",
+   "knownClip": "81f83f7f-72e0-425f-a3f9-f06842bf59aa",
+   "knownSentence": "With oat milk if you have it.",
+   "line": 0,
+   "chunk": 1,
+   "known": "if you have it.",
+   "target": "si tiene",
+   "startMs": 860,
+   "endMs": 1720,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 860,
+     "aWord": "milk",
+     "bWord": "if",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"milk\" (no silence between \"milk\" and \"if\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "if you have it.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"if you have it.\" is already recorded in eng — 29 clip(s): 9cf06ef1-41e7-4ce2-8135-7ade36c652bd (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0694727f-b3d9-4f70-87ef-979c8c995535 (voice xai_gfzdpspr5fdp, hrv_for_eng pod_fine_known); 0a81c94b-de6c-4e92-861f-aa1982bbbe3c (voice xai_gfzdpspr5fdp, f",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Could I have two white coffees",
+   "target": "Me pone dos cafés con leche",
+   "startMs": 60,
+   "endMs": 2040,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 2040,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 0,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "Could I have two white coffees",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"Could I have two white coffees\" is already recorded in eng — 16 clip(s): b1b3b20f-98b4-4552-81e7-30eeb46c2294 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 2147ac56-037a-474f-ada8-30acf112e0de (voice gfzdpspr5fdp, gle_for_eng pod_fine_known); 2fb34ee1-59cc-4958-8bb1-f9cbbb202d7c (voice gfzdpspr",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 1,
+   "known": "and two black coffees",
+   "target": "y dos cafés solos",
+   "startMs": 2040,
+   "endMs": 3380,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2040,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 0,
+     "marginMs": 0,
+     "inside": null,
+     "tight": true,
+     "why": "\"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\")"
+    },
+    {
+     "edge": "end",
+     "seam": 3380,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"coffees\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: \"and\" starts 0 ms after the cut (no silence between \"coffees\" and \"and\"); end: cut 20 ms inside \"coffees\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "and two black coffees",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and two black coffees\" is already recorded in eng — 29 clip(s): 050ef4fe-b549-4ddf-8136-375a925b8deb (voice xai_gfzdpspr5fdp, spa_for_eng pod_fine_known); 0077face-a87b-488c-9e5f-6d6e5af6022b (voice xai_gfzdpspr5fdp, ita_for_eng pod_fine_known); 00cdab50-bf64-4dae-b573-e7b916f4380e (voice xai_gfzdp",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 2,
+   "known": "and one of those,",
+   "target": "y uno de esos",
+   "startMs": 3380,
+   "endMs": 4180,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 3380,
+     "aWord": "coffees",
+     "bWord": "and",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"coffees\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 4180,
+     "aWord": "those,",
+     "bWord": "please?",
+     "gapMs": 1,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"those,\" (1 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"coffees\" (80 ms of silence between the words); end: cut 20 ms inside \"those,\" (1 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "and one of those",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and one of those\" is already recorded in eng — 21 clip(s): 44559324-401b-43ba-9e51-27139cf23dbf (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0861c208-9195-49cf-b5d7-a9a5b0c10eb2 (voice xai_gfzdpspr5fdp, por_br_for_eng pod_fine_known); 1d824f4a-7600-4f32-8557-4cedbb731bf1 (voice gfzdpspr5fdp, b",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S007",
+   "knownClip": "0a2baff1-c1a0-4249-b0bc-7d5c4b85a12e",
+   "knownSentence": "Could I have two white coffees and two black coffees and one of those, please?",
+   "line": 0,
+   "chunk": 3,
+   "known": "please?",
+   "target": "por favor",
+   "startMs": 4180,
+   "endMs": 4760,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 4180,
+     "aWord": "those,",
+     "bWord": "please?",
+     "gapMs": 1,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"those,\" (1 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"those,\" (1 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "please?",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"please?\" is already recorded in eng — 29 clip(s): 6be0b88f-30f1-4688-ae17-afb6feb3ccaf (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); d74001da-c3b9-46b3-b243-2e8b5ca3d575 (voice bedd6226, hrv_for_eng known); 084af382-7e5e-4a67-8af2-86012f0116a9 (voice xai_gfzdpspr5fdp, deu_for_eng pod_fine_known",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S014:s1",
+   "knownClip": "bd53199f-04f6-484a-9152-d5b301ee5e68.v2",
+   "knownSentence": "The table by the window is free.",
+   "line": 0,
+   "chunk": 0,
+   "known": "The table by the window",
+   "target": "La mesa junto a la ventana",
+   "startMs": 59,
+   "endMs": 1150,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1150,
+     "aWord": "window",
+     "bWord": "is",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC07-S014:s1",
+   "knownClip": "bd53199f-04f6-484a-9152-d5b301ee5e68.v2",
+   "knownSentence": "The table by the window is free.",
+   "line": 0,
+   "chunk": 1,
+   "known": "is free.",
+   "target": "está libre",
+   "startMs": 1150,
+   "endMs": 1720,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1150,
+     "aWord": "window",
+     "bWord": "is",
+     "gapMs": 80,
+     "marginMs": 10,
+     "inside": null,
+     "tight": false,
+     "why": "\"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"is\" starts 10 ms after the cut (80 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We've got a bitter",
+   "target": "Tenemos una amarga",
+   "startMs": 60,
+   "endMs": 1190,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1190,
+     "aWord": "bitter",
+     "bWord": "and",
+     "gapMs": 96,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 1,
+   "known": "and a stout,",
+   "target": "y una negra",
+   "startMs": 1190,
+   "endMs": 2300,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1190,
+     "aWord": "bitter",
+     "bWord": "and",
+     "gapMs": 96,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2300,
+     "aWord": "stout,",
+     "bWord": "and",
+     "gapMs": 293,
+     "marginMs": 113,
+     "inside": null,
+     "tight": false,
+     "why": "\"and\" starts 113 ms after the cut (293 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"bitter\" ends 30 ms before the cut (96 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S003",
+   "knownClip": "59823ed9-a5b3-4ed5-8879-3dfac324ce65",
+   "knownSentence": "We've got a bitter and a stout, and they're both local.",
+   "line": 0,
+   "chunk": 2,
+   "known": "and they're both local.",
+   "target": "y las dos son locales",
+   "startMs": 2300,
+   "endMs": 3640,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2300,
+     "aWord": "stout,",
+     "bWord": "and",
+     "gapMs": 293,
+     "marginMs": 113,
+     "inside": null,
+     "tight": false,
+     "why": "\"and\" starts 113 ms after the cut (293 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"and\" starts 113 ms after the cut (293 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like a large glass",
+   "target": "Me gustaría una copa grande",
+   "startMs": 60,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "I'd like a large glass",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"I'd like a large glass\" is already recorded in eng — 20 clip(s): e77e5d9f-a99e-4286-aa01-134fc3c06a83 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0a165370-6a41-442f-8b4e-9c646bfdee25 (voice xai_gfzdpspr5fdp, por_br_for_eng pod_fine_known); 1a540794-542b-4079-a315-da20b9fb13a7 (voice xai_gfzdp",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "of white wine,",
+   "target": "de vino blanco",
+   "startMs": 1220,
+   "endMs": 2030,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+    },
+    {
+     "edge": "end",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\"); end: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "of white wine",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of white wine\" is already recorded in eng — 19 clip(s): bce914a5-9e25-4ee0-b14f-a4f4c3e3e72d (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 072a8079-d43e-4a16-b4be-7c6aeda81996 (voice xai_gfzdpspr5fdp, swe_for_eng pod_fine_known); 0a0b9ec7-95d8-4c34-a36b-99bce8a169a9 (voice xai_gfzdpspr5fdp, lav",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S008",
+   "knownClip": "e220b68a-1e54-456a-bd1d-baf5aff16e16.v2",
+   "knownSentence": "I'd like a large glass of white wine, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 2030,
+   "endMs": 2600,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2030,
+     "aWord": "wine,",
+     "bWord": "please.",
+     "gapMs": 3,
+     "marginMs": -67,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "standalone": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+   "render": {
+    "at": "2026-11-03T16:42:42.259Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S009",
+   "knownClip": "508b7e94-5d7a-4cd8-b045-ccc2acedfa46.v2",
+   "knownSentence": "Can I have a small glass of red wine?",
+   "line": 0,
+   "chunk": 0,
+   "known": "Can I have a small glass",
+   "target": "Me pone una copa pequeña",
+   "startMs": 60,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.585Z",
+    "text": "Can I have a small glass",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"Can I have a small glass\" is already recorded in eng — 22 clip(s): bfdad4ef-ee16-4b76-b87a-77d318d194ba (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 123442cf-3f8f-4361-a90b-c1b3d7d26cea (voice xai_gfzdpspr5fdp, fas_for_eng pod_fine_known); 135f9343-4588-4a1e-b480-11edee7d08f4 (voice xai_gfzdps",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S009",
+   "knownClip": "508b7e94-5d7a-4cd8-b045-ccc2acedfa46.v2",
+   "knownSentence": "Can I have a small glass of red wine?",
+   "line": 0,
+   "chunk": 1,
+   "known": "of red wine?",
+   "target": "de vino tinto",
+   "startMs": 1220,
+   "endMs": 1880,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glass",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"of\" (no silence between \"glass\" and \"of\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.585Z",
+    "text": "of red wine?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of red wine?\" is already recorded in eng — 20 clip(s): f0569e87-480c-465b-8978-01d435a28957 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 226658b3-5dbe-4cd4-9a48-2236fdca1b68 (voice gfzdpspr5fdp, isl_for_eng pod_fine_known); 24c6f1ed-f01c-4889-933e-b83d87e0c709 (voice gfzdpspr5fdp, por_br_for_e",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 0,
+   "known": "I'd like",
+   "target": "Me gustaría",
+   "startMs": 60,
+   "endMs": 410,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 410,
+     "aWord": "like",
+     "bWord": "two",
+     "gapMs": 0,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")",
+   "standalone": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
+   "render": {
+    "at": "2026-11-03T16:42:42.585Z",
+    "text": "I'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1007,
+    "wired": true
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 1,
+   "known": "two more glasses",
+   "target": "dos copas más",
+   "startMs": 410,
+   "endMs": 1220,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 410,
+     "aWord": "like",
+     "bWord": "two",
+     "gapMs": 0,
+     "marginMs": -30,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 30 ms inside \"like\" (no silence between \"like\" and \"two\")"
+    },
+    {
+     "edge": "end",
+     "seam": 1220,
+     "aWord": "glasses",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 30 ms inside \"like\" (no silence between \"like\" and \"two\"); end: cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "two more glasses",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"two more glasses\" is already recorded in eng — 8 clip(s): a6a60673-bece-4678-9110-ef01544c0cc2 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 03254a6a-4fcf-442c-be8f-e69273b8577e (voice xai_gfzdpspr5fdp, por_for_eng pod_fine_known); 0715a6c1-a849-4e1f-a22d-b80ea10606a3 (voice xai_gfzdpspr5fdp, h",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC08-S010",
+   "knownClip": "513c9fa8-ce7a-4ad7-881c-2119da865374.v2",
+   "knownSentence": "I'd like two more glasses of beer.",
+   "line": 0,
+   "chunk": 2,
+   "known": "of beer.",
+   "target": "de cerveza",
+   "startMs": 1220,
+   "endMs": 1640,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1220,
+     "aWord": "glasses",
+     "bWord": "of",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"of\" (no silence between \"glasses\" and \"of\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "of beer.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of beer.\" is already recorded in eng — 7 clip(s): 8b7daefe-0549-471b-8cf1-c3cd32833478 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 2baef809-4aac-4b6d-9b37-c909214a352a (voice gfzdpspr5fdp, hrv_for_eng pod_fine_known); 2e1450f1-e503-4902-a68c-098e0afca31e (voice gfzdpspr5fdp, cat_for_eng pod_f",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 0,
+   "known": "We'd like",
+   "target": "Nos gustaría",
+   "startMs": 60,
+   "endMs": 500,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 500,
+     "aWord": "like",
+     "bWord": "one",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 20 ms inside \"like\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "We'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"We'd like\" is already recorded in eng — 23 clip(s): bb7318bc-e1ae-457f-83da-254bc09d0353 (voice xai_eve, spa_for_eng known); 2fd37b2c-4194-4fb3-b70d-fc5e8c24e62e (voice gfzdpspr5fdp, spa_for_eng known); d10c5bfb-8914-4e64-9f75-d7142d1bdf73 (voice cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, spa_f",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 1,
+   "known": "one bottle of sparkling water",
+   "target": "una botella de agua con gas",
+   "startMs": 500,
+   "endMs": 2090,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 500,
+     "aWord": "like",
+     "bWord": "one",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "a",
+     "tight": true,
+     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2090,
+     "aWord": "water",
+     "bWord": "and",
+     "gapMs": 8,
+     "marginMs": -42,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 42 ms inside \"and\" (8 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"like\" (80 ms of silence between the words); end: cut 42 ms inside \"and\" (8 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "one bottle of sparkling water",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"one bottle of sparkling water\" is already recorded in eng — 25 clip(s): 5a2e4e53-f5ed-4fef-86dc-d2397a6f1309 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 020a5101-902a-4c93-8db8-1addc6e386f5 (voice xai_gfzdpspr5fdp, isl_for_eng pod_fine_known); 0db5d285-279e-477b-8222-06993a0f32ec (voice xai_g",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 2,
+   "known": "and one bottle of still water,",
+   "target": "y una botella de agua sin gas",
+   "startMs": 2090,
+   "endMs": 3510,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2090,
+     "aWord": "water",
+     "bWord": "and",
+     "gapMs": 8,
+     "marginMs": -42,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 42 ms inside \"and\" (8 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 3510,
+     "aWord": "water,",
+     "bWord": "please.",
+     "gapMs": 71,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"water,\" ends 30 ms before the cut (71 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 42 ms inside \"and\" (8 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "and one bottle of still water",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and one bottle of still water\" is already recorded in eng — 26 clip(s): c73dedff-031f-4b8b-8123-89486f7ed635 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 178ff91f-e0d6-490d-9474-94860f2ce84a (voice xai_gfzdpspr5fdp, tur_for_eng pod_fine_known); 1792afd4-1454-493c-9dff-07337492e450 (voice xai_g",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S004",
+   "knownClip": "9aa98106-7767-4e32-8a33-49fcbd35221b.v2",
+   "knownSentence": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+   "line": 0,
+   "chunk": 3,
+   "known": "please.",
+   "target": "por favor",
+   "startMs": 3510,
+   "endMs": 4040,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 3510,
+     "aWord": "water,",
+     "bWord": "please.",
+     "gapMs": 71,
+     "marginMs": 30,
+     "inside": null,
+     "tight": false,
+     "why": "\"water,\" ends 30 ms before the cut (71 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"water,\" ends 30 ms before the cut (71 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Yes,",
+   "target": "Sí",
+   "startMs": 60,
+   "endMs": 830,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 830,
+     "aWord": "Yes,",
+     "bWord": "the",
+     "gapMs": 169,
+     "marginMs": 19,
+     "inside": null,
+     "tight": false,
+     "why": "\"the\" starts 19 ms after the cut (169 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"the\" starts 19 ms after the cut (169 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 1,
+   "known": "the salmon and the risotto",
+   "target": "el salmón y el risotto",
+   "startMs": 830,
+   "endMs": 2370,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 830,
+     "aWord": "Yes,",
+     "bWord": "the",
+     "gapMs": 169,
+     "marginMs": 19,
+     "inside": null,
+     "tight": false,
+     "why": "\"the\" starts 19 ms after the cut (169 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2370,
+     "aWord": "risotto",
+     "bWord": "are",
+     "gapMs": 0,
+     "marginMs": -10,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "the salmon and the risotto",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"the salmon and the risotto\" is already recorded in eng — 33 clip(s): a66175e6-72ce-4bb0-8119-597ab2d0ff36 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0678f1ec-e955-4444-8a5b-5d62aa821b88 (voice xai_gfzdpspr5fdp, ara_eg_for_eng pod_fine_known); 083c1269-7ab6-476f-b1c4-4c2058bdae1b (voice xai_g",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S006:s0",
+   "knownClip": "29549934-5f53-44e3-9ab9-7a6a34423e40",
+   "knownSentence": "Yes, the salmon and the risotto are both gluten-free.",
+   "line": 0,
+   "chunk": 2,
+   "known": "are both gluten-free.",
+   "target": "son los dos sin gluten",
+   "startMs": 2370,
+   "endMs": 3800,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2370,
+     "aWord": "risotto",
+     "bWord": "are",
+     "gapMs": 0,
+     "marginMs": -10,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 10 ms inside \"are\" (no silence between \"risotto\" and \"are\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "are both gluten-free.",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"are both gluten-free.\" is already recorded in eng — 29 clip(s): 66279131-089b-488d-8e52-01207592705b (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 023a0d7a-7175-4add-9f01-3b5c4a400203 (voice xai_gfzdpspr5fdp, fas_for_eng pod_fine_known); 1d899d5d-0fc9-45f8-b6e1-6f0d0dcfed81 (voice gfzdpspr5fdp,",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 0,
+   "known": "It's been slow-cooked,",
+   "target": "Se ha cocinado a fuego lento",
+   "startMs": 60,
+   "endMs": 1650,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "inside": null,
+     "tight": false,
+     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC09-S008:s1",
+   "knownClip": "d46b25a8-a910-4a6b-9fe5-1ff1db636066",
+   "knownSentence": "It's been slow-cooked, with rosemary.",
+   "line": 0,
+   "chunk": 1,
+   "known": "with rosemary.",
+   "target": "con romero",
+   "startMs": 1650,
+   "endMs": 2760,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1650,
+     "aWord": "slow-cooked,",
+     "bWord": "with",
+     "gapMs": 205,
+     "marginMs": 35,
+     "inside": null,
+     "tight": false,
+     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S007:s0",
+   "knownClip": "e6ec6290-0aab-420c-8841-15411bd454b2.v2",
+   "knownSentence": "Thank you, you've been very helpful.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Thank you,",
+   "target": "Gracias",
+   "startMs": 60,
+   "endMs": 820,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 820,
+     "aWord": "you,",
+     "bWord": "you've",
+     "gapMs": 81,
+     "marginMs": 21,
+     "inside": null,
+     "tight": false,
+     "why": "\"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC10-S007:s0",
+   "knownClip": "e6ec6290-0aab-420c-8841-15411bd454b2.v2",
+   "knownSentence": "Thank you, you've been very helpful.",
+   "line": 0,
+   "chunk": 1,
+   "known": "you've been very helpful.",
+   "target": "ha sido usted muy amable",
+   "startMs": 820,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 820,
+     "aWord": "you,",
+     "bWord": "you've",
+     "gapMs": 81,
+     "marginMs": 21,
+     "inside": null,
+     "tight": false,
+     "why": "\"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"you've\" starts 21 ms after the cut (81 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 0,
+   "known": "Yes,",
+   "target": "Sí",
+   "startMs": 60,
+   "endMs": 660,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 660,
+     "aWord": "Yes,",
+     "bWord": "you",
+     "gapMs": 159,
+     "marginMs": 19,
+     "inside": null,
+     "tight": false,
+     "why": "\"you\" starts 19 ms after the cut (159 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "end: \"you\" starts 19 ms after the cut (159 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 1,
+   "known": "you can stay",
+   "target": "puede quedarse",
+   "startMs": 660,
+   "endMs": 1260,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 660,
+     "aWord": "Yes,",
+     "bWord": "you",
+     "gapMs": 159,
+     "marginMs": 19,
+     "inside": null,
+     "tight": false,
+     "why": "\"you\" starts 19 ms after the cut (159 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 1260,
+     "aWord": "stay",
+     "bWord": "until",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 20 ms inside \"until\" (80 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 20 ms inside \"until\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "you can stay",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"you can stay\" is already recorded in eng — 25 clip(s): e4fef89a-3f70-4d49-9984-119466eabf90 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 020ab68e-0a0b-4dff-b873-8b262fa3f390 (voice xai_gfzdpspr5fdp, dan_for_eng pod_fine_known); 0677e7d0-2b13-4300-b59c-829459f2b372 (voice xai_gfzdpspr5fdp, fra_",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 2,
+   "known": "until midday,",
+   "target": "hasta el mediodía",
+   "startMs": 1260,
+   "endMs": 2090,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 1260,
+     "aWord": "stay",
+     "bWord": "until",
+     "gapMs": 80,
+     "marginMs": -20,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 20 ms inside \"until\" (80 ms of silence between the words)"
+    },
+    {
+     "edge": "end",
+     "seam": 2090,
+     "aWord": "midday,",
+     "bWord": "no",
+     "gapMs": 226,
+     "marginMs": 96,
+     "inside": null,
+     "tight": false,
+     "why": "\"no\" starts 96 ms after the cut (226 ms of silence between the words)"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 20 ms inside \"until\" (80 ms of silence between the words)",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "until midday",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"until midday\" is already recorded in eng — 21 clip(s): d997b5ca-10d5-4e48-b085-2b11f4e85b83 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 07408b89-d981-4959-831c-89840f2fa771 (voice xai_gfzdpspr5fdp, kor_for_eng pod_fine_known); 09a1ad9c-026e-412f-b8e6-e96938dd15f1 (voice xai_gfzdpspr5fdp, dan_",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC11-S010",
+   "knownClip": "5c62d110-0ab0-4258-b9fa-2e637251b838.v2",
+   "knownSentence": "Yes, you can stay until midday, no extra charge.",
+   "line": 0,
+   "chunk": 3,
+   "known": "no extra charge.",
+   "target": "sin cargo adicional",
+   "startMs": 2090,
+   "endMs": 3160,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 2090,
+     "aWord": "midday,",
+     "bWord": "no",
+     "gapMs": 226,
+     "marginMs": 96,
+     "inside": null,
+     "tight": false,
+     "why": "\"no\" starts 96 ms after the cut (226 ms of silence between the words)"
+    }
+   ],
+   "verdict": "clean",
+   "why": "start: \"no\" starts 96 ms after the cut (226 ms of silence between the words)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 0,
+   "known": "How often",
+   "target": "Con qué frecuencia",
+   "startMs": 60,
+   "endMs": 740,
+   "seams": [
+    {
+     "edge": "end",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "end: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "How often",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"How often\" is already recorded in eng — 27 clip(s): af855d25-a19f-4237-9195-88389c380e52 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 07478996-4303-4357-af0b-e09d7822403e (voice xai_gfzdpspr5fdp, ell_for_eng pod_fine_known); 0b31b8ce-bcf7-4ef7-800b-13aedae80b4d (voice xai_gfzdpspr5fdp, bul_for",
+    "wired": false
+   }
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC12-S005",
+   "knownClip": "7a291fc1-ee23-41e5-a1db-f95715531a7e.v2",
+   "knownSentence": "How often should I take the paracetamol?",
+   "line": 0,
+   "chunk": 1,
+   "known": "should I take the paracetamol?",
+   "target": "debo tomar el paracetamol",
+   "startMs": 740,
+   "endMs": 2120,
+   "seams": [
+    {
+     "edge": "start",
+     "seam": 740,
+     "aWord": "often",
+     "bWord": "should",
+     "gapMs": 0,
+     "marginMs": -60,
+     "inside": "b",
+     "tight": true,
+     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+    }
+   ],
+   "verdict": "tight",
+   "why": "start: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "should I take the paracetamol?",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"should I take the paracetamol?\" is already recorded in eng — 18 clip(s): 849fbe4b-03ef-4a14-93e5-93800f231496 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 10b63ff5-cd08-4c4d-a73d-a11b8748e8f2 (voice xai_gfzdpspr5fdp, fra_for_eng pod_fine_known); 392b0614-73d4-4ffc-bb9c-5cb842b9aabe (voice gfzd",
+    "wired": false
+   }
+  }
+ ]
+}

@@ -1,0 +1,512 @@
+{
+ "course": "spa_for_eng",
+ "tool": "tools/pods/pod-drill/render.mjs (#707)",
+ "pieces": [
+  {
+   "key": "spa_for_eng:pod-1:SC08-S004|0|I'd like",
+   "card": "spa_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "Me gustaría",
+   "known": "I'd like",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "I'd like",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "9cf8a0c3-deb2-4031-9787-5a5033d5c444",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1007,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC08-S004|0|a pint",
+   "card": "spa_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "una pinta",
+   "known": "a pint",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "a pint",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"a pint\" is already recorded in eng — 3 clip(s): 9ce70bb6-d3a6-428a-aaf5-3734cf4b4afb (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 1c2b690f-42a9-41b6-aa4c-1f11015695f4 (voice gfzdpspr5fdp, por_br_for_eng pod_fine_known); ff1f174d-24c9-4fd8-b510-bde3f4db9f74 (voice gfzdpspr5fdp, zho_for_eng pod_",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC08-S004|0|of the bitter",
+   "card": "spa_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "de la amarga",
+   "known": "of the bitter",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "of the bitter",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"of the bitter\" is already recorded in eng — 6 clip(s): 8ce58684-9f9b-4583-9fe6-a04391f8240e (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 874b149b-3858-4eb5-b85c-facc7e7fd376 (voice gfzdpspr5fdp, por_br_for_eng pod_fine_known); a94189d7-c8e8-4ba2-ba2d-033d27ace427 (voice gfzdpspr5fdp, swe_for_e",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC08-S004|0|please",
+   "card": "spa_for_eng:pod-1:SC08-S004",
+   "line": 0,
+   "target": "por favor",
+   "known": "please",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "please",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "92b5b661-94ae-4af1-a69b-0d3304989df6",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S001|0|Excuse me,",
+   "card": "spa_for_eng:pod-1:SC13-S001",
+   "line": 0,
+   "target": "Perdón",
+   "known": "Excuse me,",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "Excuse me",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S001|0|do you know how to get",
+   "card": "spa_for_eng:pod-1:SC13-S001",
+   "line": 0,
+   "target": "sabe cómo se llega",
+   "known": "do you know how to get",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "do you know how to get",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S001|0|to the nearest supermarket?",
+   "card": "spa_for_eng:pod-1:SC13-S001",
+   "line": 0,
+   "target": "al supermercado más cercano",
+   "known": "to the nearest supermarket?",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "to the nearest supermarket?",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S004|0|yes",
+   "card": "spa_for_eng:pod-1:SC13-S004",
+   "line": 0,
+   "target": "Sí",
+   "known": "yes",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:42.812Z",
+    "text": "yes",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": true,
+    "source": "library",
+    "audioId": "a4c5496b-86ab-4ab0-9db0-5ea0a722bbde",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 936,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S004|0|past the church",
+   "card": "spa_for_eng:pod-1:SC13-S004",
+   "line": 0,
+   "target": "pasando la iglesia",
+   "known": "past the church",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "past the church",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"past the church\" is already recorded in eng — 22 clip(s): 667d392b-616e-4f00-a450-6efab5d0d0db (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 06711bec-5daf-4627-9255-bcaba83094fe (voice xai_gfzdpspr5fdp, lit_for_eng pod_fine_known); 31818dee-a3b0-4d91-9595-60e08c5a77f5 (voice gfzdpspr5fdp, swe_f",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S004|0|and the post office",
+   "card": "spa_for_eng:pod-1:SC13-S004",
+   "line": 0,
+   "target": "y la oficina de correos",
+   "known": "and the post office",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "and the post office",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"and the post office\" is already recorded in eng — 25 clip(s): e5b2ef6b-10df-4947-8677-d6411d9b92fd (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 093d7b92-54eb-4047-8727-690d75817515 (voice xai_gfzdpspr5fdp, isl_for_eng pod_fine_known); 111b772d-c353-4465-8616-f5505f83ccce (voice xai_gfzdpspr5fd",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S007|0|you'll see the supermarket",
+   "card": "spa_for_eng:pod-1:SC13-S007",
+   "line": 0,
+   "target": "Verá el supermercado",
+   "known": "you'll see the supermarket",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "you'll see the supermarket",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"you'll see the supermarket\" is already recorded in eng — 30 clip(s): 126061d8-3990-4ca9-8c20-a6ee863b29f4 (voice xai_gfzdpspr5fdp, spa_for_eng pod_fine_known); 0a02cede-1d1b-4d62-88a2-944bbdf5cb40 (voice xai_gfzdpspr5fdp, fra_for_eng pod_fine_known); 17fd871f-2db2-48ab-8975-89bd85904b52 (voice xai_",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S007|0|on your left",
+   "card": "spa_for_eng:pod-1:SC13-S007",
+   "line": 0,
+   "target": "a su izquierda",
+   "known": "on your left",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "on your left",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"on your left\" is already recorded in eng — 18 clip(s): 894d0a9d-3560-403e-b93e-96b589028f6c (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0a955fb3-94b2-4a9c-a24e-073b81984230 (voice xai_gfzdpspr5fdp, por_for_eng pod_fine_known); 2e91061c-28e9-452d-8231-5f9e680c174c (voice gfzdpspr5fdp, por_br_f",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S007|0|just opposite the bus stop",
+   "card": "spa_for_eng:pod-1:SC13-S007",
+   "line": 0,
+   "target": "justo enfrente de la parada de autobús",
+   "known": "just opposite the bus stop",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "just opposite the bus stop",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"just opposite the bus stop\" is already recorded in eng — 32 clip(s): 3aba994b-a481-415a-b4a8-c136451ca81d (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 0b0c7ea7-e8c1-4bb8-939f-85e0d0861ece (voice xai_gfzdpspr5fdp, eus_for_eng pod_fine_known); 1c30fbac-d6e6-4ef5-981a-41d2084bbcd3 (voice gfzdpspr",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S009|0|yes",
+   "card": "spa_for_eng:pod-1:SC13-S009",
+   "line": 0,
+   "target": "Sí",
+   "known": "yes",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "yes",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": true,
+    "source": "library",
+    "audioId": "a4c5496b-86ab-4ab0-9db0-5ea0a722bbde",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 936,
+    "wired": false,
+    "note": "no cut chunk on this card: the player finds the clip by its known text in the line's voice"
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S009|0|there's one",
+   "card": "spa_for_eng:pod-1:SC13-S009",
+   "line": 0,
+   "target": "hay uno",
+   "known": "there's one",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "there's one",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"there's one\" is already recorded in eng — 26 clip(s): ed4c64b9-db85-4e3d-bb9d-fb0b50478866 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 1622f160-5dab-4e9c-ab0c-abb61491b8ce (voice xai_gfzdpspr5fdp, ara_for_eng pod_fine_known); 1cae0e1e-68e3-4a4b-a810-b3e85d090b4e (voice xai_gfzdpspr5fdp, eng_f",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S009|0|on the high street",
+   "card": "spa_for_eng:pod-1:SC13-S009",
+   "line": 0,
+   "target": "en la calle principal",
+   "known": "on the high street",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "on the high street",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"on the high street\" is already recorded in eng — 20 clip(s): 29073080-2a7d-43ed-b12f-43d6127c76d7 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); 1e9a2201-1437-48fe-9763-5c661a44daa4 (voice gfzdpspr5fdp, ell_for_eng pod_fine_known); 22cade1d-736e-4caa-9aab-6033b236784e (voice gfzdpspr5fdp, gle_fo",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC13-S009|0|next to the bakery",
+   "card": "spa_for_eng:pod-1:SC13-S009",
+   "line": 0,
+   "target": "al lado de la panadería",
+   "known": "next to the bakery",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "next to the bakery",
+    "voiceId": "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"next to the bakery\" is already recorded in eng — 35 clip(s): 3623b8bb-ba38-4f60-bf51-4531ccca94c4 (voice gfzdpspr5fdp, spa_for_eng pod_fine_known); b81ab03a-242a-42a1-a693-4319f17f7006 (voice bedd6226, hrv_for_eng known); 01cebe2b-1845-43f4-a79f-c92dbf886d52 (voice xai_gfzdpspr5fdp, heb_for_eng pod",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S001:s1|0|can you take me",
+   "card": "spa_for_eng:pod-1:SC14-S001:s1",
+   "line": 0,
+   "target": "Me puede llevar",
+   "known": "can you take me",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "can you take me",
+    "voiceId": "gfzdpspr5fdp",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "VOICE_NOT_CAST",
+    "error": "Voice not cast for eng (403): azure_gfzdpspr5fdp is not a Cartesia voice and this course's eng voices are not all Azure; the eng cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S001:s1|0|to the train station",
+   "card": "spa_for_eng:pod-1:SC14-S001:s1",
+   "line": 0,
+   "target": "a la estación de tren",
+   "known": "to the train station",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "to the train station",
+    "voiceId": "gfzdpspr5fdp",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "VOICE_NOT_CAST",
+    "error": "Voice not cast for eng (403): azure_gfzdpspr5fdp is not a Cartesia voice and this course's eng voices are not all Azure; the eng cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S001:s1|0|please",
+   "card": "spa_for_eng:pod-1:SC14-S001:s1",
+   "line": 0,
+   "target": "por favor",
+   "known": "please",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "please",
+    "voiceId": "gfzdpspr5fdp",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "EXISTS_IN_LANGUAGE",
+    "error": "\"please\" is already recorded in eng — 30 clip(s): dc30de84-e38e-42d8-8d42-915004fa5a6e (voice xai_eve, spa_for_eng known); 92b5b661-94ae-4af1-a69b-0d3304989df6 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, spa_for_eng pod_fine_known); 7b901f67-0d0b-46d5-a721-00f3d0793cca (voice azure_en-GB-M",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S004|0|Perhaps about twenty minutes,",
+   "card": "spa_for_eng:pod-1:SC14-S004",
+   "line": 0,
+   "target": "Quizás unos veinte minutos",
+   "known": "Perhaps about twenty minutes,",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "Perhaps about twenty minutes",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S004|0|if we're not unlucky",
+   "card": "spa_for_eng:pod-1:SC14-S004",
+   "line": 0,
+   "target": "si no tenemos mala suerte",
+   "known": "if we're not unlucky",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "if we're not unlucky",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S004|0|with the traffic lights.",
+   "card": "spa_for_eng:pod-1:SC14-S004",
+   "line": 0,
+   "target": "con los semáforos",
+   "known": "with the traffic lights.",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "with the traffic lights.",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S006|0|yes",
+   "card": "spa_for_eng:pod-1:SC14-S006",
+   "line": 0,
+   "target": "Sí",
+   "known": "yes",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "yes",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S006|0|I'll drop you",
+   "card": "spa_for_eng:pod-1:SC14-S006",
+   "line": 0,
+   "target": "le dejo",
+   "known": "I'll drop you",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "I'll drop you",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  },
+  {
+   "key": "spa_for_eng:pod-1:SC14-S006|0|right by the ticket office",
+   "card": "spa_for_eng:pod-1:SC14-S006",
+   "line": 0,
+   "target": "justo en la taquilla",
+   "known": "right by the ticket office",
+   "why": "the English clip has no Cartesia word timings that say its text",
+   "render": {
+    "at": "2026-11-03T16:42:43.058Z",
+    "text": "right by the ticket office",
+    "voiceId": "xai_bedd6226",
+    "ok": false,
+    "source": null,
+    "audioId": null,
+    "code": "RENDER_FAILED",
+    "error": "[provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for spa_for_eng/pod_fine_known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate ho",
+    "wired": false
+   }
+  }
+ ]
+}
