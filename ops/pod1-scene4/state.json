@@ -283,14 +283,40 @@
   "rebound": true
  },
  "ell_for_eng": {
-  "state": "blocked",
-  "step": "rendering",
-  "at": "2026-11-03T19:36:05.730Z",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:00:45.836Z",
   "audio": {
    "2:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0"
   },
-  "chars": 97,
-  "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for ell_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+  "chars": 350,
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
+  "grant": "#158",
+  "recastAudio": {
+   "SC04-S001:target": "c3688bc9-b85b-4f94-a557-8fb214ffbf01",
+   "SC04-S001:known": "2a214f0c-9972-43ba-8cdc-2070b84d09c0",
+   "SC04-S002:target": "b40f19b2-08c1-48d8-af21-e2700f60b5e0",
+   "SC04-S002:known": "d0f9e90d-4334-4465-9aaf-f994727bfee1",
+   "SC04-S003:target": "11a47fc2-a5ff-4469-86ca-d99c6bb353a2",
+   "SC04-S003:known": "06704934-3522-4470-a568-1086dd4bb6c8"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "azure_el-GR-NestorasNeural",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "azure_el-GR-AthinaNeural",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "azure_el-GR-NestorasNeural",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 83,
+   "keep": 0,
+   "merge": 0,
+   "drop": 14
+  },
+  "switchoverResult": "learner progress: 0 carried, 14 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "eng_for_ara": {
   "state": "blocked",
