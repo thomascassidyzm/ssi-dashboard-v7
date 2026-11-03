@@ -33,6 +33,13 @@
           {{ data.cards.length }} play cut in Drill; {{ data.rerecord.length }} known pieces to re-record;
           {{ data.needsPairing }} known pieces worded differently from their sentence; {{ data.playsWhole }} on cards Drill plays whole.
         </p>
+        <p v-if="data.boundary" class="text-muted text-sm mb-4">
+          Boundary score (job #707), from the English take's own Cartesia word timings: a cut known piece is
+          <span class="badge-kept">KEPT (cut)</span> when both its seams sit at least {{ data.boundary.MARGIN_MS }} ms clear of a word,
+          and <span class="badge-new">RE-RENDERED</span> as its own clip, same voice, when a seam sits inside or against a word.
+          {{ data.boundary.totals.clean }} kept, {{ data.boundary.totals.tight }} tight, {{ data.boundary.totals.unscored }} unscored
+          of {{ data.boundary.totals.pieces }}. A tight piece the audio route refused still plays its cut, and says why.
+        </p>
 
         <div class="flex gap-2 mb-5 text-sm">
           <button :class="tab === 'cuts' ? 'tab-on' : 'tab-off'" @click="tab = 'cuts'">Cut cards ({{ data.cards.length }})</button>
@@ -66,7 +73,15 @@
                 <span class="min-w-[12rem]">{{ ch[0] }}</span>
                 <button class="btn-mini" @click="playSeq([kSliceOfChunk(card, ch)])">▶</button>
                 <span class="text-muted">{{ ch[3] || '—' }}</span>
-                <span v-if="ch.length < 6" class="flag">known not cut: plays the whole known clip</span>
+                <span v-if="ch[6]" class="badge-new">RE-RENDERED</span>
+                <span v-else-if="score(card, li, ci)?.verdict === 'clean'" class="badge-kept">KEPT (cut)</span>
+                <span v-else-if="score(card, li, ci)?.verdict === 'tight'" class="flag">TIGHT, still the cut</span>
+                <span v-else-if="score(card, li, ci)?.verdict === 'unscored'" class="flag">unscored</span>
+                <span v-else-if="ch.length < 6" class="flag">known not cut: plays the whole known clip</span>
+                <button v-if="ch[6] && ch[4] != null" class="btn-mini" title="the old cut, for comparison" @click="playSeq([{ clip: card.knownClip, a: ch[4], b: ch[5] }])">▶ old cut</button>
+              </div>
+              <div v-for="(ch, ci) in line.chunks" v-show="score(card, li, ci)" :key="'w' + ci" class="text-xs text-faint pl-8">
+                <template v-if="score(card, li, ci)">{{ ch[3] }}: {{ score(card, li, ci).why }}<template v-if="score(card, li, ci).render && !ch[6]"> · route said {{ score(card, li, ci).render.code || score(card, li, ci).render.source }}<template v-if="score(card, li, ci).render.error">: {{ score(card, li, ci).render.error }}</template></template></template>
               </div>
             </div>
           </div>
@@ -74,8 +89,8 @@
 
         <div v-else>
           <p class="text-muted text-sm mb-3">
-            A list, not audio: nothing here has been recorded. Each re-record, once authorised, goes through
-            Popty's one audio route.
+            Known pieces that could not be cut from their sentence. Each is made as its own clip through
+            Popty's one audio route (job #707); the badge says whether it was, or what the route answered.
           </p>
           <div v-for="(r, i) in data.rerecord" :key="i" class="card mb-2 p-3 rounded-lg text-sm">
             <div class="flex items-baseline justify-between gap-3">
@@ -88,6 +103,12 @@
             <div class="text-muted">in “{{ r.knownSentence }}”</div>
             <div class="text-xs mt-1"><span class="flag">why</span> {{ r.why }}</div>
             <div v-if="r.fix" class="text-xs"><span class="text-faint">fix</span> {{ r.fix }}</div>
+            <div v-if="r.render" class="text-xs mt-1">
+              <span v-if="r.render.verified" class="badge-new">RE-RENDERED</span>
+              <span v-else class="flag">not re-rendered: {{ r.render.code || 'unverified' }}</span>
+              <span v-if="r.render.error" class="text-faint"> {{ r.render.error }}</span>
+              <button v-if="r.render.verified" class="btn-mini" @click="playSeq([{ clip: r.render.audioId }])">▶ standalone piece</button>
+            </div>
             <div class="mt-1">
               <button class="btn-mini" :disabled="!r.clip" @click="playSeq([{ clip: r.clip }])">▶ target sentence</button>
               <button class="btn-mini" :disabled="!r.knownClip" @click="playSeq([{ clip: r.knownClip }])">▶ known sentence</button>
@@ -132,7 +153,9 @@ load()
 
 // ---- slices: {clip, a?, b?} in ms; no a/b = the whole clip
 const tSlice = (card, x) => ({ clip: card.clip, a: x[1], b: x[2] })
-const kSliceOfChunk = (card, ch) => (ch.length >= 6 ? { clip: card.knownClip, a: ch[4], b: ch[5] } : { clip: card.knownClip })
+// chunk[6] = the piece's standalone clip (job #707): Drill plays it whole in place of the cut
+const kSliceOfChunk = (card, ch) => (ch[6] ? { clip: ch[6] } : ch.length >= 6 && ch[4] != null ? { clip: card.knownClip, a: ch[4], b: ch[5] } : { clip: card.knownClip })
+const score = (card, li, ci) => card.scores?.[`${li}|${ci}`] || null
 const kSliceOfLine = (card, line) => (line.k && line.k.length === 3 ? { clip: card.knownClip, a: line.k[1], b: line.k[2] } : card.knownClip ? { clip: card.knownClip } : null)
 
 /** composeDrillCard's order (packages/core/src/pods/fusionDrill.ts): each chunk t·k·t·t, then each
@@ -212,4 +235,6 @@ onUnmounted(stop)
 .tab-on { padding: 0.25rem 0.75rem; border-radius: 0.375rem; background: rgba(16,185,129,0.2); }
 .tab-off { padding: 0.25rem 0.75rem; border-radius: 0.375rem; border: 1px solid rgba(127,127,127,0.3); }
 .flag { color: #d97706; font-size: 0.75rem; }
+.badge-kept { color: #059669; font-size: 0.7rem; font-weight: 600; }
+.badge-new { color: #2563eb; font-size: 0.7rem; font-weight: 600; }
 </style>
