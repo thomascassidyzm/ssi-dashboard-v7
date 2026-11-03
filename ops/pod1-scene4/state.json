@@ -710,12 +710,38 @@
   "recastAudio": {}
  },
  "hin_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:45:24.383Z",
-  "why": "render refused (dry run) 2:target: 500 RENDER_FAILED [provider-policy] the configured voice \"ara\" (provider \"xai\") cannot be carried onto azure for hin_for_eng/target1. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"hin\" but no Cartesia voice is cast for it (the estate holds exactly ",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:03:54.247Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 198,
+  "grant": "#164",
+  "recastAudio": {
+   "SC04-S001:target": "3af84099-460c-4963-b9a9-39806fa9211f",
+   "SC04-S001:known": "1f47ecb8-86be-4e4c-9b85-aec2d3f55bb1",
+   "SC04-S002:target": "87937b5e-f6eb-48e7-a08a-240b4fde972e",
+   "SC04-S002:known": "f3290c08-b5f4-4e5c-8ee5-4c40683d711e",
+   "SC04-S003:target": "47197356-4584-4b7d-91b4-febe08bded09",
+   "SC04-S003:known": "12dbea1e-d13d-4015-a24d-68ec3dbe3563"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_5283efe8-07d1-4e3a-b615-2ae4a81c1b73",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 7,
+   "keep": 0,
+   "merge": 0,
+   "drop": 0
+  },
+  "switchoverResult": "learner progress: 0 carried, 0 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "hrv_for_eng": {
   "state": "blocked",
