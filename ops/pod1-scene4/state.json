@@ -649,5 +649,13 @@
   "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"こんにちは！すみませんが、今は話せないんです。もう家に帰らないといけなくて。明日コーヒーでも飲みに行きませんか？\" is already recorded in jpn — 4 clip(s): 0f0790ec-ed65-42a1-82ed-6e7c71a26903 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311, deu_for_jpn known); 0cb7d47e-6760-4897-aabb-fdee538ee9a8 (voice cartesia_cb21b4af-0e46-44f7-9128-51be7f898311,",
   "audio": {},
   "chars": 0
+ },
+ "kor_for_eng": {
+  "state": "blocked",
+  "step": "cloned",
+  "at": "2026-11-03T19:48:21.752Z",
+  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for kor (403): azure_ko-KR-YuJinNeural is not a Cartesia voice and this course's kor voices are not all Azure; the kor cast is cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772, cartesia_537a82ae-4926-4bfb-9aec-aff0b80a12a5, cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9 (Tom 2026-10-10: n",
+  "audio": {},
+  "chars": 0
  }
 }
