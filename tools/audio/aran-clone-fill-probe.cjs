@@ -23,7 +23,7 @@
 const fs = require('fs')
 const path = require('path')
 const os = require('os')
-const { execFileSync } = require('child_process')
+const { spawnSync } = require('child_process')
 const fill = require('./aran-clone-english-fill.cjs')
 const { standInSpeed } = require('../../services/shared/aran-clone-standin.cjs')
 
@@ -57,8 +57,9 @@ function pickSpread(entries, n = 50) {
 
 /** Speech span of an audio file: first and last non-silent instants (ffmpeg silencedetect, -40 dB, 120 ms). */
 function speechSpan(file) {
-  const err = execFileSync('ffmpeg', ['-hide_banner', '-i', file, '-af', 'silencedetect=noise=-40dB:d=0.12', '-f', 'null', '-'], { stdio: ['ignore', 'ignore', 'pipe'], encoding: 'utf8' }).toString()
-  return parseSilence(err)
+  // ffmpeg reports on stderr; spawnSync hands it back (execFileSync returns stdout only).
+  const r = spawnSync('ffmpeg', ['-hide_banner', '-i', file, '-af', 'silencedetect=noise=-40dB:d=0.12', '-f', 'null', '-'], { encoding: 'utf8' })
+  return parseSilence(String(r.stderr || ''))
 }
 function parseSilence(log) {
   const dur = /Duration: (\d+):(\d+):([\d.]+)/.exec(log)
