@@ -746,10 +746,13 @@
  "hrv_for_eng": {
   "state": "blocked",
   "step": "cloned",
-  "at": "2026-11-03T19:45:41.843Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for hrv (403): hrv has only the 2026-09-04 draft casting, which Tom never chose, so no hrv clip is rendered (azure_hr-HR-SreckoNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "at": "2026-11-03T20:04:00.044Z",
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY hrv_for_eng:pod-1:SC04-S001: no current f target cast for hrv_for_eng (hrv (f) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#165",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "hye_for_eng": {
   "state": "blocked",
