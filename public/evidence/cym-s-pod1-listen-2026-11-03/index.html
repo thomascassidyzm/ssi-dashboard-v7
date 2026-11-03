@@ -116,25 +116,45 @@ function show() {
   localStorage.setItem('cyms-pod1-idx', idx);
   if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: l.cy, artist: `${l.sp} — ${l.en}`, album: `South Welsh Pod 1 · ${D.scenes[l.sc]}` });
 }
-function playStep() {
+let watchdog = null, retried = false, skipped = [], attempt = 0, failedAt = -1;
+const clearWatch = () => { clearTimeout(watchdog); watchdog = null; };
+function playStep(retry) {
+  clearWatch(); attempt++;
   const l = L[idx]; if (!l) { stop(); $('now').textContent = 'End of the pod.'; idx = 0; show(); return; }
   const q = queue(l);
-  if (step >= q.length) { idx++; step = 0; show(); return playStep(); }
+  if (step >= q.length) { idx++; step = 0; retried = false; show(); return playStep(); }
   const [side, id] = q[step];
+  if (!retry) retried = false;
   $('now').textContent = mode === 'drill' ? `${side === 'cy' ? 'Welsh' : 'English'} · ${step + 1} of ${q.length}` : '';
-  a.src = SRC(id);
-  a.play().catch(err => { if (err.name !== 'AbortError') fail(err.message); });
+  a.src = SRC(id) + (retry ? '?retry=' + Date.now() : '');
+  // A clip that neither plays nor errors within 12 s is treated as failed, so a stalled request never stops the run.
+  watchdog = setTimeout(() => fail('no sound after 12 s'), 12000);
+  a.play().catch(err => {
+    if (err.name === 'AbortError') return;
+    // The phone refused to start sound without a tap (iOS/Chrome autoplay rule): skipping cannot help, so wait for a tap.
+    if (err.name === 'NotAllowedError') { clearWatch(); stop(); $('now').textContent = 'The phone paused playback — tap ▶ to carry on.'; return; }
+    fail(err.message);
+  });
 }
 function fail(why) {
-  runtimeBad.add(L[idx].n); const el = $('l' + L[idx].n);
-  if (el) { el.classList.add('bad'); if (!el.querySelector('.flag')) el.insertAdjacentHTML('beforeend', `<span class="flag">⚠ a clip failed to play here</span>`); }
-  $('now').textContent = `⚠ clip failed (${why || 'error'}) — skipping`;
-  step++; if (playing) setTimeout(playStep, 1200);
+  // the error event and the play() rejection report the same failure: count it once per attempt
+  if (failedAt === attempt) return; failedAt = attempt;
+  clearWatch(); if (!playing) return;
+  const l = L[idx], side = (queue(l)[step] || ['?'])[0] === 'cy' ? 'Welsh' : 'English';
+  if (!retried) { retried = true; $('now').textContent = `Clip didn't load — trying again…`; return void setTimeout(() => playStep(true), 400); }
+  runtimeBad.add(l.n); skipped.push(`line ${l.n} (${side})`);
+  const el = $('l' + l.n);
+  if (el) { el.classList.add('bad'); if (!el.querySelector('.rt')) el.insertAdjacentHTML('beforeend', `<span class="flag rt">⚠ ${side} clip failed to play (${esc(why || 'error')}) — skipped</span>`); }
+  $('now').textContent = `⚠ Line ${l.n} ${side} clip failed (${why || 'error'}) — skipped`;
+  $('warn').style.display = 'block';
+  $('warn').textContent = `⚠ Skipped ${skipped.length} clip(s) that would not play: ${skipped.slice(-8).join(', ')}${skipped.length > 8 ? ' …' : ''}`;
+  step++; retried = false; setTimeout(playStep, 800);
 }
-a.addEventListener('ended', () => { if (!playing) return; step++; playStep(); });
-a.addEventListener('error', () => { if (playing && a.src) fail(a.error && a.error.code ? 'media error ' + a.error.code : ''); });
+a.addEventListener('playing', clearWatch);
+a.addEventListener('ended', () => { clearWatch(); if (!playing) return; step++; retried = false; playStep(); });
+a.addEventListener('error', () => { if (playing && a.getAttribute('src')) fail(a.error && a.error.message ? a.error.message : 'media error ' + (a.error && a.error.code)); });
 function start() { playing = true; $('play').textContent = '❚❚'; if (a.getAttribute('src') && a.currentTime > 0 && !a.ended) a.play().catch(() => playStep()); else playStep(); }
-function stop() { playing = false; $('play').textContent = '▶'; a.pause(); }
+function stop() { clearWatch(); playing = false; $('play').textContent = '▶'; a.pause(); }
 function jump(i) { idx = Math.max(0, Math.min(L.length - 1, i)); step = 0; show(); if (playing) playStep(); else a.removeAttribute('src'); }
 $('play').onclick = () => playing ? stop() : start();
 $('prev').onclick = () => jump(idx - 1);
