@@ -1183,12 +1183,38 @@
   "recastAudio": {}
  },
  "zho_for_eng": {
-  "state": "blocked",
-  "step": "cloned",
-  "at": "2026-11-03T19:55:24.817Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for zho (403): cartesia_33g9t0jl may not render new zho audio; Tom's cast is cartesia_653b9445-ae0c-4312-a3ce-375504cff31e, cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1, cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99. Cast it in the Voice Lab, or audition it (door.audition).",
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T20:08:44.982Z",
+  "why": "served: Scene 4 re-voiced whole in the current cast (6 sides), coffee lines new",
   "audio": {},
-  "chars": 0
+  "chars": 68,
+  "grant": "#182",
+  "recastAudio": {
+   "SC04-S001:target": "25698185-edb6-4548-af59-67f0472bd05c",
+   "SC04-S001:known": "88dc350f-f8e9-47a2-bf01-fbe8423f6e3d",
+   "SC04-S002:target": "8053db92-7509-4c8b-a4b4-f3d265d88235",
+   "SC04-S002:known": "aade369b-2ca7-4a7c-a608-0717f2947f8a",
+   "SC04-S003:target": "7cdf20f1-a86d-49e3-b1df-826dff2eaba0",
+   "SC04-S003:known": "f797bbb1-c1b4-499f-90ba-28681271c0f4"
+  },
+  "recastVoices": {
+   "SC04-S001:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+   "SC04-S001:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "SC04-S002:target": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "migrationPlan": {
+   "carry": 756,
+   "keep": 0,
+   "merge": 0,
+   "drop": 14
+  },
+  "switchoverResult": "learner progress: 0 carried, 14 dropped.",
+  "pass": "recast",
+  "rebound": true
  },
  "zho_for_jpn": {
   "state": "blocked",
