@@ -302,7 +302,9 @@ describe('a take can say what recorded it', () => {
     })
     // The mic actually in use plus the browser it ran in — the field that was
     // NULL on all 154 archived takes when the clipping had to be diagnosed.
-    expect(rec.deviceLabel.value).toBe('Scarlett Solo USB \u00b7 TestBrowser/1.0')
+    // Plus the mic mode (2026-10-31): a USB mic is detected as external and
+    // captured with every browser processor off.
+    expect(rec.deviceLabel.value).toBe('Scarlett Solo USB \u00b7 mic:external \u00b7 capture:pro \u00b7 ec0ns0agc0 \u00b7 TestBrowser/1.0')
     rec.stopFlow()
   })
 

@@ -99,6 +99,8 @@ export function saveBoothSettings(voiceId, micKey, settings) {
   forVoice.byDevice = forVoice.byDevice || {}
   forVoice.byDevice[key] = {
     captureProfile: settings.captureProfile,
+    // Did the recordist pick the setup, or did Popty choose it from the mic? (2026-10-31)
+    setupByHand: !!settings.setupByHand,
     autoAdvance: !!settings.autoAdvance,
     includeRecorded: !!settings.includeRecorded,
     // Whether the already-recorded list is open. Its own field because it is its

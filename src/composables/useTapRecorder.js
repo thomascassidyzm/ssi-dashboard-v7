@@ -108,6 +108,7 @@
 // independent of it, so a quiet meter never means lost audio).
 
 import { ref } from 'vue'
+import { classifyTrack, setupForMicKind } from './mic-input.js'
 
 function pickMime() {
   const opts = [
@@ -182,6 +183,13 @@ export const RECORDIST_SETUPS = ['phone', 'pro']
 //
 // Deliberately NOT a control. This only decides which profile the room starts
 // from; the toggle is still there for anyone deliberately measuring a room.
+//
+// SINCE 2026-10-31 THIS IS ONLY THE STARTING POINT. The objection above was to
+// guessing from the BROWSER; the setup is now decided from the MICROPHONE
+// itself (mic-input.js, Tom's ruling r-2026-10-31-audio-quality-is-a-threshold-
+// not): start() acquires on this profile, reads the track's label, and moves a
+// proper plugged-in mic to 'pro'. Built-in, headset and unidentified mics stay
+// here, so the community phone case is exactly what it was.
 export function resolveCaptureProfile() {
   return DEFAULT_CAPTURE_PROFILE
 }
@@ -355,6 +363,11 @@ export function useTapRecorder() {
   // room can say it out loud — "voice-processed" and "dry" produce audio that
   // sounds different enough that nobody should have to guess which they got.
   const profile = ref(DEFAULT_CAPTURE_PROFILE)
+  // What the room thinks is plugged in ('builtin' | 'headset' | 'external' |
+  // 'unknown', mic-input.js), and whether the setup was chosen from it ('auto')
+  // or picked by the recordist ('hand').
+  const micKind = ref('unknown')
+  const profileSource = ref('auto')
   const error = ref(null)
   // Has the recordist actually said anything on the line now open? The surface
   // uses this to know a take exists before it advances, and commit() uses it
@@ -515,39 +528,94 @@ export function useTapRecorder() {
     return outgoing
   }
 
+  async function acquire(deviceId, profileName) {
+    const audio = { ...CAPTURE_PROFILES[profileName], channelCount: 1, sampleRate: 48000 }
+    if (deviceId) audio.deviceId = { exact: deviceId }
+    return navigator.mediaDevices.getUserMedia({ audio, video: false })
+  }
+
+  // Re-asserted rather than left to the getUserMedia call alone: on WebKit
+  // echoCancellation is a real, handled constraint that rebuilds the audio
+  // unit, so it must say the same thing here as it did at acquisition. Then
+  // record what the browser ACTUALLY did — the take carries it.
+  async function reassert(track, profileName) {
+    const dsp = CAPTURE_PROFILES[profileName]
+    try { if (track) await track.applyConstraints({ ...dsp }) } catch { /* hints only */ }
+    const s = track && track.getSettings ? track.getSettings() : {}
+    appliedSettings.value = {
+      profile: profileName,
+      micKind: micKind.value,
+      source: profileSource.value,
+      echoCancellation: s.echoCancellation, noiseSuppression: s.noiseSuppression,
+      autoGainControl: s.autoGainControl, sampleRate: s.sampleRate,
+    }
+  }
+
+  // PLUG AND UNPLUG. iOS re-routes a live track to a mic the moment it is
+  // plugged in (and back to the built-in when it is pulled), so the track we
+  // hold can change microphone under us mid-session. On every devicechange the
+  // track is re-identified and, in auto mode, the setup follows it: the three
+  // constraints are re-applied to the live track (WebKit rebuilds its audio
+  // unit on exactly this call). The recorders keep running throughout — no
+  // capture gap — and appliedSettings reports what the browser then says it
+  // is doing, so the next take records the truth even where a browser ignores
+  // the change. A hand-picked setup is left alone.
+  let deviceChangeHandler = null
+  function watchDeviceChanges() {
+    const md = typeof navigator !== 'undefined' && navigator.mediaDevices
+    if (!md || !md.addEventListener || deviceChangeHandler) return
+    deviceChangeHandler = async () => {
+      listDevices()
+      const track = stream && stream.getAudioTracks()[0]
+      if (!track) return
+      micKind.value = classifyTrack(track).kind
+      if (profileSource.value === 'auto') profile.value = setupForMicKind(micKind.value)
+      await reassert(track, profile.value)
+    }
+    md.addEventListener('devicechange', deviceChangeHandler)
+  }
+  function unwatchDeviceChanges() {
+    const md = typeof navigator !== 'undefined' && navigator.mediaDevices
+    if (md && md.removeEventListener && deviceChangeHandler) md.removeEventListener('devicechange', deviceChangeHandler)
+    deviceChangeHandler = null
+  }
+
   // Acquire the mic + start the meter + start capturing. Call from a user
   // gesture. Capture begins HERE, not at the first line: the pre-roll for line
   // one is the whole gap between tapping Start and the first word.
   async function start(deviceId = null, profileName = null) {
     error.value = null
-    // No profile named means "whatever this device should have" — see
-    // resolveCaptureProfile above. A named one is still honoured exactly.
-    const fallback = resolveCaptureProfile()
-    const dsp = CAPTURE_PROFILES[profileName] || CAPTURE_PROFILES[fallback]
-    profile.value = CAPTURE_PROFILES[profileName] ? profileName : fallback
-    const audio = {
-      ...dsp,
-      channelCount: 1,
-      sampleRate: 48000,
+    // THE MICROPHONE DECIDES THE SETUP (Tom, 2026-10-31,
+    // r-2026-10-31-audio-quality-is-a-threshold-not). No profile named — or
+    // 'auto' — means: look at what is actually plugged in. The phone's own mic
+    // (or a headset, or anything we cannot identify) keeps the phone setup
+    // exactly as before; a proper plugged-in mic gets the pro setup, all three
+    // browser processors off. A named profile is the recordist's own choice
+    // ("Phone?" / "plugged-in mic") and is honoured exactly, never second-guessed.
+    //
+    // The label only exists once permission is granted, so the first
+    // acquisition is the phone setup (the safe one), and if the track turns out
+    // to be a proper mic the stream is re-acquired dry on the same device —
+    // before any recorder is built, so nothing is ever captured on the wrong
+    // setup. Re-acquiring rather than applyConstraints() because Chromium fixes
+    // its audio processing at getUserMedia time.
+    const auto = !profileName || profileName === 'auto' || !CAPTURE_PROFILES[profileName]
+    profileSource.value = auto ? 'auto' : 'hand'
+    let chosen = auto ? resolveCaptureProfile() : profileName
+    stream = await acquire(deviceId, chosen)
+    let track = stream.getAudioTracks()[0]
+    const detected = classifyTrack(track)
+    micKind.value = detected.kind
+    if (auto && setupForMicKind(detected.kind) !== chosen) {
+      chosen = setupForMicKind(detected.kind)
+      const onDevice = (track && track.getSettings && track.getSettings().deviceId) || deviceId
+      stream.getTracks().forEach(t => t.stop())
+      stream = await acquire(onDevice, chosen)
+      track = stream.getAudioTracks()[0]
     }
-    if (deviceId) audio.deviceId = { exact: deviceId }
-    stream = await navigator.mediaDevices.getUserMedia({ audio, video: false })
-
-    const track = stream.getAudioTracks()[0]
-    // Re-asserted rather than left to the getUserMedia call alone: on WebKit
-    // echoCancellation is a real, handled constraint that rebuilds the audio
-    // unit, so it must say the same thing here as it did above. It always
-    // does — both come from the one profile — and that is the point of this
-    // call now: it can no longer contradict the acquisition.
-    try {
-      await track.applyConstraints({ ...dsp })
-    } catch { /* hints only */ }
-    const s = track && track.getSettings ? track.getSettings() : {}
-    appliedSettings.value = {
-      profile: profile.value,
-      echoCancellation: s.echoCancellation, noiseSuppression: s.noiseSuppression,
-      autoGainControl: s.autoGainControl, sampleRate: s.sampleRate,
-    }
+    profile.value = chosen
+    await reassert(track, chosen)
+    watchDeviceChanges()
 
     mime = pickMime()
 
@@ -829,6 +897,7 @@ export function useTapRecorder() {
     for (const entry of all) { try { await harvest(entry) } catch { /* already gone */ } }
     if (rafId) { cancelAnimationFrame(rafId); rafId = null }
     if (clipTimer) { clearTimeout(clipTimer); clipTimer = null }
+    unwatchDeviceChanges()
     if (stream) stream.getTracks().forEach(t => t.stop())
     try { if (meterCtx) await meterCtx.close() } catch {}
     if (wakeLock) { try { await wakeLock.release() } catch {}; wakeLock = null }
@@ -840,7 +909,7 @@ export function useTapRecorder() {
   }
 
   return {
-    isRecording, level, clipping, devices, appliedSettings, profile, error,
+    isRecording, level, clipping, devices, appliedSettings, profile, micKind, profileSource, error,
     lineHasSpeech, quietMs, voicedMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
     activeAgeMs, awaitLeadIn, advanceSnapshot,

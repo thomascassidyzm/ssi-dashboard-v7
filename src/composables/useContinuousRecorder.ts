@@ -14,6 +14,7 @@
 import { ref, computed, onUnmounted } from 'vue'
 import { useVAD, type VADConfig, type ChunkGap, type TakePauseReport } from './useVAD'
 import { CAPTURE_PROFILES, resolveCaptureProfile } from './useTapRecorder'
+import { classifyTrack, setupForMicKind } from './mic-input.js'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -305,6 +306,24 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       stream = await navigator.mediaDevices.getUserMedia({
         audio: { ...CAPTURE_PROFILES[resolveCaptureProfile()] }
       })
+      // A PROPER PLUGGED-IN MIC GETS EVERY PROCESSOR OFF (Tom, 2026-10-31,
+      // r-2026-10-31-audio-quality-is-a-threshold-not) — the same decision the
+      // tap recorder makes (mic-input.js). The label exists only after the
+      // first grant, so re-acquire dry on the same device when it says so.
+      let setup = resolveCaptureProfile()
+      let micKind = 'unknown'
+      try {
+        const first = stream.getAudioTracks?.()[0]
+        micKind = classifyTrack(first).kind
+        if (setupForMicKind(micKind) !== setup) {
+          setup = setupForMicKind(micKind)
+          const deviceId = first?.getSettings?.().deviceId
+          stream.getTracks().forEach(t => t.stop())
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: { ...CAPTURE_PROFILES[setup], ...(deviceId ? { deviceId: { exact: deviceId } } : {}) }
+          })
+        }
+      } catch { /* detection is a refinement; the phone setup stands */ }
 
       // Name the take's origin while the track is in hand. Truncated to the
       // provenance column's working width; never fatal — a session must not
@@ -313,7 +332,9 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         const tracks = stream.getAudioTracks?.() || []
         const label = tracks[0]?.label || 'default mic'
         const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || ''
-        deviceLabel.value = [label, ua].filter(Boolean).join(' · ').slice(0, 300)
+        const dsp = CAPTURE_PROFILES[setup]
+        const mode = `mic:${micKind} · capture:${setup} · ec${dsp.echoCancellation ? 1 : 0}ns${dsp.noiseSuppression ? 1 : 0}agc${dsp.autoGainControl ? 1 : 0}`
+        deviceLabel.value = [label, mode, ua].filter(Boolean).join(' · ').slice(0, 300)
       } catch {
         deviceLabel.value = null
       }
