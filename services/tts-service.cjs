@@ -818,18 +818,17 @@ const WHISPER_MODEL = process.env.WHISPER_MODEL
 const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
 const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
 let phonoGateWarned = false;
-// ONE RENDER IN A HUNDRED is listened to, RECORD-ONLY, and never a Welsh one
-// (Tom, 2026-11-03, r-2026-11-03-whisper-on-audio-a-1-in: 1-in-100, never every
-// clip, skip cym_* entirely; r-2026-09-28: never re-roll, veto or fail-close).
-// Was 1 in 10 from job #678 (2026-09-28) to job #626 (2026-11-03).
-const PHONO_SAMPLE_EVERY = 100;
-let phonoSampleCounter = 0;
-function phonoShouldSample() { return (phonoSampleCounter++ % PHONO_SAMPLE_EVERY) === 0; }
+// ONE CLIP IN A HUNDRED is listened to, RECORD-ONLY, and never a Welsh one —
+// drawn from the ONE estate counter, services/shared/tts-stt-sample.cjs (Tom,
+// 2026-11-03, r-2026-11-03-whisper-on-audio-a-1-in; r-2026-09-28: never re-roll,
+// veto or fail-close). Inside phase8's renderChecked the door does not draw:
+// that caller draws once for the clip. Was 1 in 10, own counter, until job #626.
+const sttSample = require('./shared/tts-stt-sample.cjs');
+const PHONO_SAMPLE_EVERY = sttSample.SAMPLE_EVERY;
+function phonoShouldSample() { return !sttSample.inClipScope() && sttSample.draw(); }
 /** Welsh is never sampled: the course code (door or config) or the steered language says cym/cy. */
 function phonoSkipsWelsh(config) {
-  const course = String((config.door && config.door.courseCode) || config.courseCode || '').toLowerCase();
-  const lang = String(config.locale || config.language || '').toLowerCase().split('-')[0];
-  return course.startsWith('cym') || lang === 'cy' || lang === 'cym';
+  return sttSample.isWelsh((config.door && config.door.courseCode) || config.courseCode, config.locale || config.language);
 }
 
 // Bounded whisper concurrency: each detection spawns a multi-threaded

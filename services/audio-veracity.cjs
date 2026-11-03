@@ -2407,19 +2407,20 @@ async function renderChecked (o) {
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
   const sampler = o.sampler || runSampler
 
-  const rendered = await render(1)
+  // The render runs in a clip scope so the TTS door does not draw a second sample for it.
+  const rendered = await sttSample.runInClipScope(() => render(1))
 
   // EVERY CLIP THROUGH HERE IS A TTS RENDER. Whisper hears ONE IN A HUNDRED, never a
   // Welsh one, and only RECORDS what it heard (Tom, 2026-11-03,
   // r-2026-11-03-whisper-on-audio-a-1-in: 1-in-100, never every clip, skip cym_*;
   // r-2026-09-28: never re-roll, veto or fail-close). The run's graduated ladder
-  // (10% opening) and SPOT_SAMPLER (1 in 10) no longer decide here: a flat
-  // process-wide 1-in-TTS_SAMPLE_EVERY counter does, so no caller can raise the
-  // rate by passing a sampler. Job #626, after phase8 /generate was found decoding
+  // (10% opening) and SPOT_SAMPLER no longer decide here: the ONE estate counter
+  // (services/shared/tts-stt-sample.cjs, shared with the TTS door) does, so no
+  // caller can raise the rate by passing a sampler and no clip is drawn twice. Job #626, after phase8 /generate was found decoding
   // 10% of deu_ch_for_eng TTS clips at ~12:00Z that day. `o.check` is a test seam:
   // with it, the passed sampler decides, as the behaviour tests expect.
   const welsh = isWelshClip(language, meta)
-  const pick = o.check ? sampler.shouldCheck() : ttsShouldSample()
+  const pick = welsh ? false : (o.check ? sampler.shouldCheck() : sttSample.draw())
   if (welsh || !pick) {
     const verdict = { checked: false, pass: null, reason: 'not_sampled' }
     recordVerdict(stats, verdict)
@@ -2447,15 +2448,11 @@ async function renderChecked (o) {
   return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
 }
 
-/** The flat TTS sampling rate: one render in TTS_SAMPLE_EVERY is heard (Tom, 2026-11-03). */
-const TTS_SAMPLE_EVERY = 100
-let ttsCounter = 0
-function ttsShouldSample () { return (ttsCounter++ % TTS_SAMPLE_EVERY) === 0 }
+/** The TTS sampling rate, from the one shared counter (Tom, 2026-11-03). */
+const sttSample = require('./shared/tts-stt-sample.cjs')
+const TTS_SAMPLE_EVERY = sttSample.SAMPLE_EVERY
 /** Welsh TTS is never sampled (Tom, 2026-11-03): cym/cy language or a cym_* course. */
-function isWelshClip (language, meta = {}) {
-  const l = String(language || '').toLowerCase().split('-')[0]
-  return l === 'cym' || l === 'cy' || String(meta.courseCode || '').toLowerCase().startsWith('cym')
-}
+function isWelshClip (language, meta = {}) { return sttSample.isWelsh(meta.courseCode, language) }
 
 /** One line for a log or a completion message. */
 function formatStats (stats) {
