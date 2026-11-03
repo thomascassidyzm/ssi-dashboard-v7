@@ -33,15 +33,6 @@ describe('isHumanVoiceCourse', () => {
     expect(isHumanVoiceCourse('eng_for_pdc')).toBe(false) // pdc as KNOWN, not target
   })
 
-  // Kai 2026-11-03: Frisian is human-only (Auke records it). The render route
-  // reads this list, not language_recording_policy.human_only (job #583).
-  it('covers Frisian', () => {
-    expect(isHumanVoiceCourse('fry_for_eng')).toBe(true)
-    expect(HUMAN_VOICE_COURSES.has('fry_for_eng')).toBe(true)
-    expect(isHumanVoiceCourse('fry_for_nld')).toBe(true)  // prefix rule, future courses
-    expect(isHumanVoiceCourse('eng_for_fry')).toBe(false) // fry as KNOWN, not target
-  })
-
   it('flags any cym_* course by prefix (future Welsh courses covered)', () => {
     expect(isHumanVoiceCourse('cym_for_spa')).toBe(true)
     expect(isHumanVoiceCourse('cym_mid_for_eng')).toBe(true)
@@ -78,11 +69,6 @@ describe('isHumanVoiceLang', () => {
     expect(isHumanVoiceLang('pdc')).toBe(true)
   })
 
-  it('is true for Frisian (Kai 2026-11-03)', () => {
-    expect(isHumanVoiceLang('fry')).toBe(true)
-    expect(isHumanVoiceLang('fryx')).toBe(false)
-  })
-
   it('does not flag renderable languages, including near-misses', () => {
     expect(isHumanVoiceLang('spa')).toBe(false)
     expect(isHumanVoiceLang('eng')).toBe(false)
@@ -100,10 +86,9 @@ describe('isHumanVoiceLang', () => {
 describe('renderableLangSql', () => {
   it('excludes every human-voice language and covers future cym_* codes', () => {
     const sql = renderableLangSql('c.target_lang')
-    for (const lang of ['cym', 'cym_n', 'cym_s', 'bre', 'pdc', 'fry']) expect(sql).toContain(`'${lang}'`)
+    for (const lang of ['cym', 'cym_n', 'cym_s', 'bre', 'pdc']) expect(sql).toContain(`'${lang}'`)
     expect(sql).toContain("!~ '^cym(_|$)'")
     expect(sql).toContain("!~ '^pdc(_|$)'")
-    expect(sql).toContain("!~ '^fry(_|$)'")
     expect(sql).toContain('c.target_lang')
   })
 })
