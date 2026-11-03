@@ -677,5 +677,15 @@
   },
   "chars": 103,
   "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for eng (403): cartesia_bedd6226 may not render new eng audio; Tom's cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c-4e8e-a314-022ece01c121. Cast it in the Voice"
+ },
+ "nep_for_eng": {
+  "state": "blocked",
+  "step": "rendering",
+  "at": "2026-11-03T19:49:20.593Z",
+  "audio": {
+   "2:target": "a1a0c6e9-f2f0-43e3-81d1-9ff5661b9ff7"
+  },
+  "chars": 99,
+  "why": "render refused (dry run) 2:known: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 10 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01"
  }
 }
