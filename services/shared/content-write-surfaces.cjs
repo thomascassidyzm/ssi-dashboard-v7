@@ -119,6 +119,11 @@ const PRODUCTION_API = [
   { method: 'POST',   path: '/api/production/:courseCode/ingest-cut',         operation: 'audio-link' },
   // A listening pod's solo readers (job #391): who reads it, not what it says.
   { method: 'PATCH',  path: '/api/production/:courseCode/pod/:podId/solo-readers', operation: 'pod-solo-readers' },
+  // The pod tools as routes (job #809, services/shared/pod-tool-routes.cjs): clone to a held
+  // slug, move staged lines into the language's pod text, switch over with progress migrated.
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/clone',         operation: 'pod-clone' },
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/language-text', operation: 'pod-language-text' },
+  { method: 'POST',   path: '/api/admin/pods/:courseCode/switchover',    operation: 'pod-switchover' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

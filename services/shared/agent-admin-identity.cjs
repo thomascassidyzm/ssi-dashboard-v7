@@ -36,6 +36,19 @@ const SCOPES = Object.freeze({
   // whole /api/admin and /api/voicelab surface, read and write. A key carrying
   // it satisfies EVERY narrower scope too.
   ADMIN_ALL: 'admin:all',
+  // POD WORK, AND NOTHING ELSE (Tom 2026-11-03, job #809: "Y" to one standing
+  // pod-only key instead of a job-scoped admin:all; r-2026-11-03-agents-act-on-
+  // popty-only-thr — agents act on Popty only through its API, triggering the
+  // tools it already has). Covers: edit held pod lines, clone a pod to a held
+  // slug and stage it, read its audio plan, move a staged line into the
+  // language's pod text, switch over with learner progress migrated. The routes
+  // that accept it call requireAdminOrAgent(req, res, SCOPES.POD_WRITE); every
+  // other admin route still refuses it 403 (agentFromRequest only admits
+  // admin:all). Render and link-clip have their own doors (x-agent-id).
+  // THE KEY: /etc/popty/agent-admin-pods.key (popty 0600, scopes ["pod:write"],
+  // agentIdPrefix "pods"). Pod jobs sign with `tools/agent-admin/call.cjs --key
+  // pods --agent pods-<job>-<what>`, never with an admin:all key.
+  POD_WRITE: 'pod:write',
 });
 
 const HEADER = 'x-agent-admin';
@@ -112,6 +125,16 @@ function kaiGoFromRequest(req) {
   const a = req && req.agentAdmin;
   if (!a || a.keyPrefix !== 'kai' || !keyHasScope(a.scopes, SCOPES.ADMIN_ALL)) return null;
   return typeof a.agent === 'string' && a.agent.startsWith('kai-') ? a.agent : null;
+}
+
+/**
+ * A verified agent whose key lacks admin:all, at a route that admits admin:all
+ * only. requireAdmin answers it 403 naming the missing scope, instead of the 401
+ * "Authentication required" a sessionless caller gets — the caller DID
+ * authenticate; its key just does not reach this route. Never a way in.
+ */
+function agentWithoutAdminAll(req) {
+  return !!(req && req.agentAdmin && !keyHasScope(req.agentAdmin.scopes, SCOPES.ADMIN_ALL));
 }
 
 function keyHasScope(scopes, scope) {
@@ -226,4 +249,4 @@ function adminOrAgent(verifier, requireAdmin) {
   };
 }
 
-module.exports = { keyFileFor, loadAllKeys, SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, kaiGoFromRequest, loadKey, bodyDigest };
+module.exports = { keyFileFor, loadAllKeys, SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, agentWithoutAdminAll, kaiGoFromRequest, loadKey, bodyDigest };

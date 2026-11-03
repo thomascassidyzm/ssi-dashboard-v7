@@ -355,6 +355,8 @@ async function requireAdmin(req, res) {
   // door (agentFrontDoor below) — attributed, logged, same-host only.
   const agent = agentAdminIdentity.agentFromRequest(req)
   if (agent) return agent
+  // A narrower agent key (pod:write, voice-slot:write…) never reaches an admin:all route.
+  if (agentAdminIdentity.agentWithoutAdminAll(req)) { res.status(403).json({ error: 'the agent key does not carry scope admin:all', code: 'AGENT_IDENTITY_REFUSED' }); return null }
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -370,6 +372,8 @@ async function requireAdmin(req, res) {
 async function requireDashboardUser(req, res) {
   const agent = agentAdminIdentity.agentFromRequest(req)
   if (agent) return agent
+  // A narrower agent key (pod:write, voice-slot:write…) never reaches an admin:all route.
+  if (agentAdminIdentity.agentWithoutAdminAll(req)) { res.status(403).json({ error: 'the agent key does not carry scope admin:all', code: 'AGENT_IDENTITY_REFUSED' }); return null }
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -5019,7 +5023,8 @@ app.post('/api/admin/pods/generate', async (req, res) => {
 // services/pod-stage-draft.cjs. DRY RUN unless "apply": true.
 // Body: { mirror: "<course>:<slug>", lines: [{ id, target_text, known_text }], title?, apply? }
 app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
-  const admin = await requireAdmin(req, res)
+  // Pod work: an admin, or a signed agent key carrying pod:write (job #809).
+  const admin = await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)
   if (!admin) return
   const { parseStageDraftRequest, planStageDraft } = require('./pod-stage-draft.cjs')
   const parsed = parseStageDraftRequest(req.params.courseCode, req.params.slug, req.body)
@@ -5071,7 +5076,10 @@ app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
 // Editing target/known text nulls its audio (the recorded audio no longer
 // matches), same convention as the course-content tables — Phase 8 regenerates.
 app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
-  if (!await requireAdmin(req, res)) return
+  // Pod work: an admin, or a signed agent key carrying pod:write (job #809). The
+  // agent id is logged with the line it changed, below.
+  const who = await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)
+  if (!who) return
   const id = String(req.params.id || '')
   const patch = {}
   // A side's SPLIT clips go with its text too (tools/pods/split-audio-inheritance.cjs: "Split audio belongs to a row's TEXT,
@@ -5086,6 +5094,7 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
     const { data, error } = await sb.from('listening_pod_sentences').update(patch).eq('id', id).select('id, target_text, known_text').maybeSingle()
     if (error) throw error
     if (!data) return res.status(404).json({ error: `sentence not found: ${id}` })
+    logger.info(`[PodSentence] ${id} edited by ${(req.agentAdmin && req.agentAdmin.agent) || who.email || who.id || '?'}: ${Object.keys(patch).filter((k) => k.endsWith('_text')).join(', ')}`)
     speakabilityGrid.invalidate()
     res.json({ ok: true, sentence: data })
   } catch (e) {
@@ -5121,7 +5130,7 @@ app.post('/api/admin/pod-text-swaps', podTextSwapsRoute)
 // where a pod id is `${courseCode}:${slug}`). Returns Phase 8's shape so the UI
 // reads total_clips_to_generate + per-pod missing counts directly.
 app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
-  if (!await requireAdmin(req, res)) return
+  if (!await requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE)) return
   const { courseCode } = req.params
   const slug = req.query.slug ? String(req.query.slug).trim() : null
   try {
@@ -5135,6 +5144,26 @@ app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
     res.status(500).json({ error: e?.message || 'unknown error' })
   }
 })
+
+// POST /api/admin/pods/:courseCode/clone | language-text | switchover — the
+// committed pod tools (tools/pods/clone-pod.cjs, language-text-for-staged-pod.cjs,
+// pod-switchover.cjs), run unchanged by Popty with Popty's database login, so an
+// agent changes a pod through the API and never through a DB login of its own
+// (job #809, r-2026-11-03-agents-act-on-popty-only-thr). DRY RUN unless
+// "apply": true; body keys map to the tool's own flags, allow-listed, with every
+// human-only escape hatch left out — services/shared/pod-tool-routes.cjs.
+// Gate: an admin, or a signed agent key carrying pod:write.
+{
+  const { podToolRoute } = require('./shared/pod-tool-routes.cjs')
+  const podToolDeps = {
+    gate: (req, res) => requireAdminOrAgent(req, res, agentAdminIdentity.SCOPES.POD_WRITE),
+    databaseUrl: () => require('./shared/round-index-refresh.cjs').databaseUrl(), // owner login via ROUND_INDEX_ENV_PSQL on the unit
+    logger,
+  }
+  for (const tool of ['clone', 'language-text', 'switchover']) {
+    app.post(`/api/admin/pods/:courseCode/${tool}`, podToolRoute(tool, podToolDeps))
+  }
+}
 
 // POST /api/admin/pods/:courseCode/generate-audio — fill MISSING pod audio.
 // Thin passthrough to Phase 8's /generate-pods (port 3465). Body may carry
