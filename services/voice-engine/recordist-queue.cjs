@@ -694,6 +694,26 @@ function castEntryFor(podCast, speaker) {
  * by the CAST's gender, and a want written against an older spelling of the
  * same person's voice must not be lost to a string comparison.
  */
+/**
+ * A NAMED RE-QUEUE GRANT on a clip's want: {..., requeue_for: '<voiceId>', requeue_by: '<who>'}.
+ *
+ * Tom's rulings of 2026-09-02 and 2026-09-11 stand: a want is a MARK, hidden from the reader,
+ * and never moves a recorded line back onto a booth list. This is not a loosening of that; it is
+ * a separate, explicit act. Kai 2026-11-03 (job #646, edit event 15f50b4b, authority
+ * r-2026-10-30-kai-can-authorise-any-audio-work): seven of Eleri's cym_s Pod 1 takes are faulty
+ * and must go back on HER list. A grant names the reader and who granted it, sits on the one clip
+ * that serves the line, and retires itself: the reader's new take writes rerecord_wanted: null on
+ * that clip (propagate/swap below), so the line is recorded again the moment she records it.
+ * A want with no grant behaves exactly as before.
+ */
+function requeueGrant(want) {
+  if (!want || typeof want !== 'object') return null
+  const voiceId = typeof want.requeue_for === 'string' ? want.requeue_for.trim() : ''
+  const by = typeof want.requeue_by === 'string' ? want.requeue_by.trim() : ''
+  if (!voiceId || !by) return null
+  return { voiceId, by }
+}
+
 function targetRerecordWanted(sentence) {
   const wanted = sentence && sentence.rerecord_wanted
   if (!wanted || typeof wanted !== 'object') return false
@@ -1614,6 +1634,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   let quarryStats = null
   // ONE map for the whole language, keyed (voice, text) -- see voiceTextKey.
   const seen = new Map()   // voiceTextKey -> representative line
+  // serving clip id -> the pod line it fills, so a clip's named re-queue grant
+  // (requeueGrant, below) can find the one line it was written for.
+  const podLineByClip = new Map()
   let uncast = 0
   // POD LINES THAT HAVE NO TARGET TEXT YET, per (dialect, gender) bucket and
   // then per pod: bucket -> Map(podId -> {podId, podSlug, podTitle, courseCode,
@@ -1895,6 +1918,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // all — the collapse is by clip identity, so the flag has to collapse with
       // it or a want on cym_s's copy would be silently dropped.
       if (targetRerecordWanted(s)) rep.rerecordWanted = true
+      if (s.target_audio_id) podLineByClip.set(s.target_audio_id, rep)
       duplicatesCollapsed += 1
       // The natural read collapses; the gapped read never does. See pushTakeG.
       pushTakeG(s, pod, bucket, voiceId, castVoiceId)
@@ -1937,6 +1961,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       context: exchangeContext(s, pod),
     }
     seen.set(key, line)
+    if (s.target_audio_id) podLineByClip.set(s.target_audio_id, line)
     byBucket.get(bucket).push(line)
     pushTakeG(s, pod, bucket, voiceId, castVoiceId)
   }
@@ -1963,6 +1988,15 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // take serves both.
   const wanted = await fetchRerecordWanted(db, [...byCourse.keys()])
   for (const w of wanted) {
+    // A NAMED RE-QUEUE GRANT puts this one pod line back on one reader's list
+    // (see requeueGrant). Read before every filter below, because it is about
+    // the pod line this clip serves, not about the clip as a queue item.
+    const grant = requeueGrant(w.rerecord_wanted)
+    if (grant && podLineByClip.has(w.id)) {
+      const pl = podLineByClip.get(w.id)
+      pl.requeueFor = grant.voiceId
+      pl.requeueBy = grant.by
+    }
     const text = (w.text || '').trim()
     if (!text) continue
     // WHOSE CLIP IT IS, first (clipVoiceId): a clip stored under a real voice
@@ -3600,8 +3634,11 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // 2026-09-11 — a confirmed upload IS a recording, regardless of any want,
     // verdict, re-cast or in-flight state — is enforced there, so nothing in
     // this loop may re-open a recorded line.
-    const isRecorded = isLineRecorded(line, { recordedKeys, spellings: recordist.spellings })
-    const hasTake = isRecorded
+    const hasTake = isLineRecorded(line, { recordedKeys, spellings: recordist.spellings })
+    // THE ONE EXCEPTION, PER LINE AND NAMED: a re-queue grant on the serving
+    // clip, for THIS reader (requeueGrant). Without one, a take is a recording.
+    const requeued = hasTake && !!line.requeueFor && recordist.spellings.includes(line.requeueFor)
+    const isRecorded = hasTake && !requeued
     // A WANT IS A MARK, NOT A STATE. `rerecordWanted` on a line that has a take
     // says our quality machinery would like a better read; it moves the line
     // neither in nor out of the outstanding set. The ARTIST's wire masks the
@@ -3610,7 +3647,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // `maskRejectedHistory: false` and sees the mark, the reason and the clip.
     // The deliberate second pass is the booth's own re-read switch, never a
     // queue entry.
-    const masked = maskRejectedHistory && !!line.rerecordWanted
+    const masked = maskRejectedHistory && (!!line.rerecordWanted || requeued)
     if (isRecorded) recorded += 1
     const tk = [line.courseCode, line.kind || 'pod', line.role || '', line.podSlug || '', line.podId || ''].join('|')
     let t = tallyOf.get(tk)
