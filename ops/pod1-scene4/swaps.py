@@ -1,5 +1,7 @@
 # Pod 1 scene 4, coffee invitation (Tom Y, 3 Nov 2026; job #794). Minimal clause swaps per course:
 # each entry is (old substring -> new substring), asserted present in the live line, so nothing else moves.
+# Verifier fixes (#797·AC, blind Astra check): cym_n 'awn ni' (let's go), and the Friend addresses Sarah in the
+# feminine/singular in eng_for_ara known (دعينا), heb (בואי) and hye (արի).
 # Reads a snapshot of every course's scene-4 rows (GET /api/pods/<course>/pod-1) and writes drafts.json.
 import json, sys
 
@@ -16,7 +18,7 @@ T = {  # target side: course -> {line: (old, new)}
  'bul_for_eng': {2: ("Можем ли да поговорим утре?", "Да отидем ли на кафе утре?"), 3: ("нека поговорим в събота", "нека отидем в събота")},
  'cat_for_eng': {2: ("Podem parlar demà?", "Anem a fer un cafè demà?"), 3: ("Però parlem dissabte.", "Però anem-hi dissabte.")},
  'cat_for_spa': {2: ("Podem parlar demà?", "Anem a fer un cafè demà?"), 3: ("Però parlem el dissabte.", "Però anem-hi el dissabte.")},
- 'cym_n_for_eng': {2: ("Fedrwn ni siarad fory?", "Awn ni am goffi fory?"), 3: ("Ond gawn ni siarad ddydd Sadwrn.", "Ond gawn ni fynd ddydd Sadwrn.")},
+ 'cym_n_for_eng': {2: ("Fedrwn ni siarad fory?", "Awn ni am goffi fory?"), 3: ("Ond gawn ni siarad ddydd Sadwrn.", "Ond awn ni ddydd Sadwrn.")},
  'cym_s_for_eng': {2: ("Allwn ni siarad fory?", "Awn ni am goffi fory?"), 3: ("Ond gad i ni siarad… ddydd Sadwrn.", "Ond gad i ni fynd… ddydd Sadwrn.")},
  'dan_for_eng': {2: ("Kan vi tale i morgen?", "Skal vi tage en kop kaffe i morgen?"), 3: ("Men lad os tale på lørdag.", "Men lad os gøre det på lørdag.")},
  'deu_at_for_eng': {2: ("Kennan wir morgen reden?", "Gemma morgen auf an Kaffee?"), 3: ("Oba reden wir am Samstag.", "Oba gemma am Samstag.")},
@@ -30,10 +32,10 @@ T = {  # target side: course -> {line: (old, new)}
  'fra_ca_for_eng': {2: ("On peut se parler demain?", "On va prendre un café demain?"), 3: ("Mais on va se parler samedi.", "Mais on va y aller samedi.")},
  'fra_for_eng': {2: ("On peut se parler demain ?", "On va prendre un café demain ?"), 3: ("Mais on se parle samedi.", "Mais on y va samedi.")},
  'gle_for_eng': {2: ("An féidir linn labhairt amárach?", "An rachaimid amach le haghaidh caife amárach?"), 3: ("Ach labhraímis Dé Sathairn.", "Ach téimis Dé Sathairn.")},
- 'heb_for_eng': {2: ("אנחנו יכולים לדבר מחר?", "נלך לשתות קפה מחר?"), 3: ("אבל בוא נדבר ביום שבת.", "אבל בוא נלך ביום שבת.")},
+ 'heb_for_eng': {2: ("אנחנו יכולים לדבר מחר?", "נלך לשתות קפה מחר?"), 3: ("אבל בוא נדבר ביום שבת.", "אבל בואי נלך ביום שבת.")},
  'hin_for_eng': {2: ("क्या हम कल बात कर सकते हैं?", "क्या हम कल कॉफ़ी पीने चलें?"), 3: ("लेकिन शनिवार को बात करते हैं।", "लेकिन शनिवार को चलते हैं।")},
  'hrv_for_eng': {2: ("Možemo li razgovarati sutra?", "Hoćemo li sutra na kavu?"), 3: ("Ali razgovarajmo… u subotu.", "Ali idemo… u subotu.")},
- 'hye_for_eng': {2: ("Կարո՞ղ ենք վաղը խոսել։", "Վաղը սուրճ խմելու գնա՞նք։"), 3: ("Բայց եկեք շաբաթ օրը խոսենք։", "Բայց եկեք շաբաթ օրը գնանք։")},
+ 'hye_for_eng': {2: ("Կարո՞ղ ենք վաղը խոսել։", "Վաղը սուրճ խմելու գնա՞նք։"), 3: ("Բայց եկեք շաբաթ օրը խոսենք։", "Բայց արի շաբաթ օրը գնանք։")},
  'isl_for_eng': {2: ("Getum við talað á morgun?", "Eigum við að fara í kaffi á morgun?"), 3: ("En tölum saman á laugardaginn.", "En förum á laugardaginn.")},
  'ita_for_eng': {2: ("Possiamo parlare domani?", "Andiamo a prendere un caffè domani?"), 3: ("Ma parliamo sabato.", "Ma andiamo sabato.")},
  'jpn_for_eng': {2: JA_A2, 3: JA_A3},
@@ -70,7 +72,7 @@ K = {  # known side for courses whose known language is not English
  'deu_for_jpn': {2: JA_A2, 3: JA_A3}, 'fra_for_jpn': {2: JA_A2, 3: JA_A3}, 'ita_for_jpn': {2: JA_A2, 3: JA_A3}, 'eng_for_jpn': {2: JA_A2, 3: JA_A3},
  'spa_for_jpn': {2: ("明日話せますか？", "明日コーヒーを飲みに行きませんか？"), 3: ("でも土曜日に話しましょう。", "でも土曜日に行きましょう。")},
  'zho_for_jpn': {2: ("明日話せますか？", "明日コーヒーを飲みに行きませんか？"), 3: ("でも土曜日に話しましょう。", "でも土曜日に行きましょう。")},
- 'eng_for_ara': {2: ("هل يمكننا التحدّث غدًا؟", "هل نذهب لشرب القهوة غدًا؟"), 3: ("لكن دعنا نتحدّث يوم السبت.", "لكن دعنا نذهب يوم السبت.")},
+ 'eng_for_ara': {2: ("هل يمكننا التحدّث غدًا؟", "هل نذهب لشرب القهوة غدًا؟"), 3: ("لكن دعنا نتحدّث يوم السبت.", "لكن دعينا نذهب يوم السبت.")},
  'eng_for_ben': {2: ("আমরা কি কাল কথা বলতে পারি?", "কাল কি আমরা কফি খেতে যাব?"), 3: ("কিন্তু চলো শনিবার কথা বলি।", "কিন্তু চলো শনিবার যাই।")},
  'eng_for_deu': {2: ("Können wir uns morgen unterhalten?", "Wollen wir morgen einen Kaffee trinken gehen?"), 3: ("Aber lass uns am Samstag reden.", "Aber lass uns am Samstag gehen.")},
  'eng_for_fra': {2: ("On peut se parler demain ?", "On va prendre un café demain ?"), 3: ("Mais on se parle samedi.", "Mais on y va samedi.")},
