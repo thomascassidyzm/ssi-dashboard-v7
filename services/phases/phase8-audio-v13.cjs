@@ -146,6 +146,7 @@ async function knownGenderContextFor(courseCode, voices) {
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
+const { podLineVoice } = require('../shared/pod-line-voice.cjs')
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -5633,7 +5634,7 @@ function buildRenderDeps() {
       // route's existing re-record authority that may let a second performance past it.
       clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
       rerecordGranted: (want) => require('../shared/rerecord-gate.cjs').rerecordGranted(want),
-      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId }) => {
         // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
         // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
         // which needs the course row — so a human-voice course outside the stand-in list is refused before it is even read.
@@ -5647,12 +5648,26 @@ function buildRenderDeps() {
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
         // A gendered known line speaks in its own gender's voice, as phase8 /generate does (job #710; services/shared/render-known-gender-voice.cjs).
-        voiceId = await knownGenderVoiceId({ courseCode, voices: vc.voices, role, text, legoId, voiceId, trial, loadCtx: knownGenderContextFor })
+        // A POD LINE speaks in the pod's cast voice for its speaker, never the course slot's (job #799, shared/pod-line-voice.cjs):
+        // the voice comes from listening_pods.speakers, a caller-named voice that differs is refused, and neither the gendered
+        // known-voice rule nor resolveVoice — both govern course slots, not pods — is asked.
+        let podVoice = null
+        if (podSentenceId && !trial) {
+          const { data: podLine, error: lineErr } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker').eq('id', podSentenceId).maybeSingle()
+          if (lineErr) throw new Error(`listening_pod_sentences unreadable: ${lineErr.message}`)
+          const { data: podRow, error: podErr } = podLine ? await supabase.from('listening_pods').select('id, course_code, speakers').eq('id', podLine.pod_id).maybeSingle() : { data: null, error: null }
+          if (podErr) throw new Error(`listening_pods unreadable: ${podErr.message}`)
+          podVoice = podLineVoice({ pod: podRow, sentence: podLine || null, role, courseCode })
+          if (podVoice.error) throw new RenderRequestError(podVoice.error, podVoice.code === 'NO_POD_SENTENCE' ? 404 : 409, podVoice.code)
+          if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
+          voiceId = podVoice.voiceId
+        }
+        if (!podVoice) voiceId = await knownGenderVoiceId({ courseCode, voices: vc.voices, role, text, legoId, voiceId, trial, loadCtx: knownGenderContextFor })
         // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
         // resolveVoice's — never the caller's pick, the course's habit (courseEnglishVoice) or the stored config. A named voice that
         // differs is refused HERE, before the library is asked, so no wrong-voice clip is ever linked; an uncast target refuses.
         // A trial render (job #748) links nothing and is exempt.
-        if (!trial) {
+        if (!trial && !podVoice) {
           const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
           if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
           if (rv.status === 'voice') {

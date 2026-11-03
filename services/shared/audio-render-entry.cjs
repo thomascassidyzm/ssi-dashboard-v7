@@ -78,6 +78,8 @@ function validate(input) {
     language: input.language ? String(input.language) : null,
     voiceId: input.voiceId ? String(input.voiceId) : null,
     legoId: input.legoId ? String(input.legoId) : null,
+    // A POD LINE (job #799, shared/pod-line-voice.cjs): the voice is the pod's cast for this line's speaker, read from the DB.
+    podSentenceId: input.podSentenceId ? String(input.podSentenceId) : null,
     dryRun: !!input.dryRun,
     // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
     trial: input.trial === true,
