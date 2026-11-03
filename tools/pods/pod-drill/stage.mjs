@@ -4,9 +4,12 @@
  * (job #692; the code moved here from ssi-learning-app/tools/pod-drill-cuts, which now points here).
  *
  *   node tools/pods/pod-drill/stage.mjs <course> [--write] [--sonnet] [--app=<ssi-learning-app checkout>]
- *        [--allow-replace=id,id] [--redo-pair] [--adopt-app]
+ *        [--allow-replace=id,id] [--redo-pair] [--adopt-app] [--snapshot]
  *
  * Steps, in order, each the code that made the cuts Kai and Tom have already heard:
+ *   0. snapshot.mjs    (--snapshot, or when there is no dump yet) the pod as the PLAYER loads it, written to
+ *                      ops/pod-drill-cuts/<course>.dump.json; the player's own loader, bundled from the app
+ *                      checkout (job #699; it was ssi-learning-app tools/pod-chunk-sizes.mjs --known-timings).
  *   1. pair.mjs        cut what the pod's own LEGO map gives, both sides by the render's stored
  *                      Cartesia word timings (no Whisper, r-2026-11-03), seams at the quietest 10 ms
  *                      frame within 60 ms of the boundary; fill the known span of existing cuts
@@ -48,9 +51,11 @@ const APP = opt.app === 'none' ? null : (opt.app || DEFAULT_APP)
 const appFile = APP ? appCutsPath(APP, course) : null
 const mine = cutsPath(course)
 
-if (!existsSync(path.join(OPS, `${course}.dump.json`))) {
-  console.error(`no ${course}.dump.json in ${OPS}: make it with ssi-learning-app tools/pod-chunk-sizes.mjs --course=${course} --json=<that path> --known-timings`)
-  process.exit(1)
+const dump = path.join(OPS, `${course}.dump.json`)
+if (opt.snapshot || !existsSync(dump)) {
+  // read-only: the player's loader with every write blocked at its fetch layer (snapshot.mjs header)
+  const r = spawnSync(process.execPath, [path.join(here, 'snapshot.mjs'), `--course=${course}`, `--json=${dump}`, '--known-timings'], { stdio: 'inherit' })
+  if (r.status !== 0 || !existsSync(dump)) { console.error(`snapshot.mjs stopped (exit ${r.status}); no ${course}.dump.json in ${OPS}`); process.exit(r.status || 1) }
 }
 if (appFile && existsSync(appFile)) {
   const a = readFileSync(appFile, 'utf8')

@@ -278,3 +278,11 @@ e2e/booth-refused-flow/fixtures/
 
 # User-space sox build (tools/deploy/build-user-sox.sh) — a binary, never committed
 /vendor/sox/
+
+# Audio under public/evidence/ is not committed (job #699, 2026-11-03: #690 committed seven MP3 takes
+# for a listen page). Copy the clip to ~/ssi-evidence/ssi-dashboard-v7/<same path> (tools/lib/evidence-path.cjs),
+# publish it through the surface's /api/publish-doc with "file", and point the page's <audio> at that url.
+# The clips already tracked here predate this line and stay until moved the same way.
+public/evidence/**/*.mp3
+public/evidence/**/*.wav
+public/evidence/**/*.m4a

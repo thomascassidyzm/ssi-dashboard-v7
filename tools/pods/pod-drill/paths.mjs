@@ -2,8 +2,8 @@
  * Where the Pod Drill stage keeps its data (job #692, moved from ssi-learning-app/tools/pod-drill-cuts).
  *
  * ONE HOME: Popty's tracked ops/pod-drill-cuts/ holds every input and output of a run
- *   <course>.dump.json            the pod as the PLAYER loads it (still made by ssi-learning-app
- *                                 tools/pod-chunk-sizes.mjs --json --known-timings, the player's own loader)
+ *   <course>.dump.json            the pod as the PLAYER loads it (made by snapshot.mjs here, which bundles
+ *                                 the player's own loader from the learning-app checkout; job #699)
  *   <course>.report.json          every card's verdict and why
  *   <course>.pair-report.json     the last pair run: new cuts, known spans filled, seams too shallow
  *   <course>.pairing.json         every Sonnet answer (only when --sonnet was ever run)
