@@ -34,9 +34,10 @@
           {{ data.needsPairing }} known pieces worded differently from their sentence; {{ data.playsWhole }} on cards Drill plays whole.
         </p>
         <p v-if="data.boundary" class="text-muted text-sm mb-4">
-          Boundary score (job #707), from the English take's own Cartesia word timings: a cut known piece is
-          <span class="badge-kept">KEPT (cut)</span> when both its seams sit at least {{ data.boundary.MARGIN_MS }} ms clear of a word,
-          and <span class="badge-new">RE-RENDERED</span> as its own clip, same voice, when a seam sits inside or against a word.
+          Boundary score (jobs #707, #750), from the English take itself: a cut known piece is
+          <span class="badge-kept">KEPT (cut)</span> when the take is at least {{ data.boundary.SILENT_BELOW_DB }} dB quieter than speech at each seam
+          and the word timings do not put the seam more than {{ data.boundary.INSIDE_MS }} ms inside a word,
+          and <span class="badge-new">RE-RENDERED</span> as its own clip, same voice, otherwise. Where a person has listened and marked a piece, their mark decides.
           {{ data.boundary.totals.clean }} kept, {{ data.boundary.totals.tight }} tight, {{ data.boundary.totals.unscored }} unscored
           of {{ data.boundary.totals.pieces }}. A tight piece the audio route refused still plays its cut, and says why.
         </p>

@@ -1,14 +1,17 @@
 {
  "course": "deu_for_eng",
- "tool": "tools/pods/pod-drill/score.mjs (#707)",
+ "tool": "tools/pods/pod-drill/score.mjs (#707, #750)",
  "boundary": {
-  "MARGIN_MS": 10
+  "SILENT_BELOW_DB": 30,
+  "INSIDE_MS": 20
  },
  "totals": {
   "pieces": 33,
-  "clean": 19,
-  "tight": 14,
-  "unscored": 0
+  "clean": 21,
+  "tight": 12,
+  "unscored": 0,
+  "heard": 33,
+  "heardRejectScoredClean": 0
  },
  "pieces": [
   {
@@ -29,13 +32,20 @@
      "bWord": "thank",
      "gapMs": 260,
      "marginMs": 70,
+     "belowDb": 39.2,
      "inside": null,
      "tight": false,
-     "why": "\"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+     "why": "silent at the cut: 39.2 dB under speech; \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+   "why": "Kai marked it accept (D01); the score said clean: end: silent at the cut: 39.2 dB under speech; \"well,\" ends 70 ms before the cut (260 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D01",
+    "known": "I'm very well,",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC01-S003:s0",
@@ -55,13 +65,20 @@
      "bWord": "thank",
      "gapMs": 260,
      "marginMs": 70,
+     "belowDb": 39.2,
      "inside": null,
      "tight": false,
-     "why": "\"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+     "why": "silent at the cut: 39.2 dB under speech; \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"well,\" ends 70 ms before the cut (260 ms of silence between the words)"
+   "why": "Kai marked it accept (D02); the score said clean: start: silent at the cut: 39.2 dB under speech; \"well,\" ends 70 ms before the cut (260 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D02",
+    "known": "thank you.",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC03-S002:s1",
@@ -81,13 +98,33 @@
      "bWord": "please.",
      "gapMs": 109,
      "marginMs": 20,
+     "belowDb": 15.4,
      "inside": null,
-     "tight": false,
-     "why": "\"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 15.4 dB under speech; \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
-   "why": "end: \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+   "verdict": "tight",
+   "why": "Kai marked it reject (D03); the score said tight: end: not silent at the cut: 15.4 dB under speech; \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D03",
+    "known": "I'd like a coffee,",
+    "mark": "reject"
+   },
+   "render": {
+    "at": "2026-11-03T17:31:31.833Z",
+    "text": "I'd like a coffee",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "46f1e936-5477-4435-8cfe-949e7d67a4e3",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1200,
+    "wired": true
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC03-S002:s1",
@@ -107,13 +144,33 @@
      "bWord": "please.",
      "gapMs": 109,
      "marginMs": 20,
+     "belowDb": 15.4,
      "inside": null,
-     "tight": false,
-     "why": "\"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 15.4 dB under speech; \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
-   "why": "start: \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)"
+   "verdict": "tight",
+   "why": "Kai marked it reject (D04); the score said tight: start: not silent at the cut: 15.4 dB under speech; \"coffee,\" ends 20 ms before the cut (109 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D04",
+    "known": "please.",
+    "mark": "reject"
+   },
+   "render": {
+    "at": "2026-11-03T17:31:32.139Z",
+    "text": "please.",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 864,
+    "wired": true
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC03-S002:s2",
@@ -133,13 +190,21 @@
      "bWord": "but",
      "gapMs": 80,
      "marginMs": 20,
+     "belowDb": 39.4,
      "inside": null,
      "tight": false,
-     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+     "why": "silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+   "why": "Kai marked it borderline (\"A bit abrupt but fine\") (D05); the score said clean: end: silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D05",
+    "known": "with milk,",
+    "mark": "borderline",
+    "note": "A bit abrupt but fine"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC03-S002:s2",
@@ -159,13 +224,20 @@
      "bWord": "but",
      "gapMs": 80,
      "marginMs": 20,
+     "belowDb": 39.4,
      "inside": null,
      "tight": false,
-     "why": "\"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+     "why": "silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"milk\" ends 20 ms before the cut (80 ms of silence between the words)"
+   "why": "Kai marked it accept (D06); the score said clean: start: silent at the cut: 39.4 dB under speech; \"milk\" ends 20 ms before the cut (80 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D06",
+    "known": "but with no sugar.",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC09-S008:s1",
@@ -185,13 +257,20 @@
      "bWord": "with",
      "gapMs": 205,
      "marginMs": 35,
+     "belowDb": 52.1,
      "inside": null,
      "tight": false,
-     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+     "why": "silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+   "why": "Kai marked it accept (D07); the score said clean: end: silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D07",
+    "known": "it's been slow-cooked",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC09-S008:s1",
@@ -211,13 +290,20 @@
      "bWord": "with",
      "gapMs": 205,
      "marginMs": 35,
+     "belowDb": 52.1,
      "inside": null,
      "tight": false,
-     "why": "\"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+     "why": "silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"with\" starts 35 ms after the cut (205 ms of silence between the words)"
+   "why": "Kai marked it accept (D08); the score said clean: start: silent at the cut: 52.1 dB under speech; \"with\" starts 35 ms after the cut (205 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D08",
+    "known": "with rosemary",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC09-S010:s1",
@@ -237,13 +323,21 @@
      "bWord": "to",
      "gapMs": 80,
      "marginMs": 30,
+     "belowDb": 23.7,
      "inside": null,
-     "tight": false,
-     "why": "\"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+   "why": "Kai marked it borderline (\"Slightly abrupt, but fine\") (D09); the score said tight: end: not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D09",
+    "known": "With a small green salad",
+    "mark": "borderline",
+    "note": "Slightly abrupt, but fine"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC09-S010:s1",
@@ -263,13 +357,33 @@
      "bWord": "to",
      "gapMs": 80,
      "marginMs": 30,
+     "belowDb": 23.7,
      "inside": null,
-     "tight": false,
-     "why": "\"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
-   "why": "start: \"salad\" ends 30 ms before the cut (80 ms of silence between the words)"
+   "verdict": "tight",
+   "why": "Kai marked it reject (D10); the score said tight: start: not silent at the cut: 23.7 dB under speech; \"salad\" ends 30 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D10",
+    "known": "to start",
+    "mark": "reject"
+   },
+   "render": {
+    "at": "2026-11-03T17:31:32.363Z",
+    "text": "to start",
+    "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+    "ok": true,
+    "source": "library",
+    "audioId": "d2f1b2d5-7968-4ca5-a90f-51ba486783b7",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 936,
+    "wired": true
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC14-S002:s1",
@@ -289,13 +403,20 @@
      "bWord": "there's",
      "gapMs": 227,
      "marginMs": 97,
+     "belowDb": 53,
      "inside": null,
      "tight": false,
-     "why": "\"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+     "why": "silent at the cut: 53.0 dB under speech; \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+   "why": "Kai marked it accept (D11); the score said clean: end: silent at the cut: 53.0 dB under speech; \"there's\" starts 97 ms after the cut (227 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D11",
+    "known": "It may take some time,",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC14-S002:s1",
@@ -315,13 +436,20 @@
      "bWord": "there's",
      "gapMs": 227,
      "marginMs": 97,
+     "belowDb": 53,
      "inside": null,
      "tight": false,
-     "why": "\"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+     "why": "silent at the cut: 53.0 dB under speech; \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"there's\" starts 97 ms after the cut (227 ms of silence between the words)"
+   "why": "Kai marked it accept (D12); the score said clean: start: silent at the cut: 53.0 dB under speech; \"there's\" starts 97 ms after the cut (227 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D12",
+    "known": "there's a lot of traffic at the moment.",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC02-S001",
@@ -341,13 +469,20 @@
      "bWord": "is",
      "gapMs": 123,
      "marginMs": 23,
+     "belowDb": 60.5,
      "inside": null,
      "tight": false,
-     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+     "why": "silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+   "why": "Kai marked it accept (D13); the score said clean: end: silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D13",
+    "known": "Excuse me,",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC02-S001",
@@ -367,13 +502,20 @@
      "bWord": "is",
      "gapMs": 123,
      "marginMs": 23,
+     "belowDb": 60.5,
      "inside": null,
      "tight": false,
-     "why": "\"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+     "why": "silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"is\" starts 23 ms after the cut (123 ms of silence between the words)"
+   "why": "Kai marked it accept (D14); the score said clean: start: silent at the cut: 60.5 dB under speech; \"is\" starts 23 ms after the cut (123 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D14",
+    "known": "is this seat taken?",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC04-S002:s1",
@@ -393,13 +535,21 @@
      "bWord": "but",
      "gapMs": 0,
      "marginMs": -10,
+     "belowDb": 19.2,
      "inside": "b",
      "tight": true,
-     "why": "cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
+     "why": "not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
     }
    ],
-   "verdict": "tight",
-   "why": "end: cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "verdict": "clean",
+   "why": "Kai marked it borderline (\"You can almost start to hear the b but not quite, it's probably fine\") (D15); the score said tight: end: not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D15",
+    "known": "I'm sorry",
+    "mark": "borderline",
+    "note": "You can almost start to hear the b but not quite, it's probably fine"
+   },
    "standalone": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
    "render": {
     "at": "2026-11-03T16:41:39.473Z",
@@ -412,7 +562,12 @@
     "error": null,
     "verified": true,
     "durationMs": 864,
-    "wired": true
+    "wired": false
+   },
+   "unwired": {
+    "at": "2026-11-03T17:31:31.833Z",
+    "audioId": "00bf9bf7-49f0-488d-be4e-b0c71da435ae",
+    "why": "D15 heard the cut as borderline: the cut plays"
    }
   },
   {
@@ -433,13 +588,21 @@
      "bWord": "but",
      "gapMs": 0,
      "marginMs": -10,
+     "belowDb": 19.2,
      "inside": "b",
      "tight": true,
-     "why": "cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
+     "why": "not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")"
     }
    ],
-   "verdict": "tight",
-   "why": "start: cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "verdict": "clean",
+   "why": "Kai marked it borderline (\"Starts a little softly but it's probably fine\") (D16); the score said tight: start: not silent at the cut: 19.2 dB under speech; cut 10 ms inside \"but\" (no silence between \"sorry\" and \"but\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D16",
+    "known": "but I can't talk at the moment.",
+    "mark": "borderline",
+    "note": "Starts a little softly but it's probably fine"
+   },
    "render": {
     "at": "2026-11-03T16:41:39.807Z",
     "text": "but I can't talk at the moment.",
@@ -470,13 +633,33 @@
      "bWord": "talk",
      "gapMs": 80,
      "marginMs": 10,
+     "belowDb": 29.2,
      "inside": null,
-     "tight": false,
-     "why": "\"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 29.2 dB under speech; \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
     }
    ],
-   "verdict": "clean",
-   "why": "end: \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+   "verdict": "tight",
+   "why": "Kai marked it reject (D17); the score said tight: end: not silent at the cut: 29.2 dB under speech; \"let's\" ends 10 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D17",
+    "known": "But let's",
+    "mark": "reject"
+   },
+   "render": {
+    "at": "2026-11-03T17:31:32.577Z",
+    "text": "But let's",
+    "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+    "ok": true,
+    "source": "rendered",
+    "audioId": "9ae4ef46-a4ac-4332-b7f5-0ba914ffba9c",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 880,
+    "wired": true
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC04-S003:s1",
@@ -496,13 +679,20 @@
      "bWord": "talk",
      "gapMs": 80,
      "marginMs": 10,
+     "belowDb": 29.2,
      "inside": null,
-     "tight": false,
-     "why": "\"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 29.2 dB under speech; \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"let's\" ends 10 ms before the cut (80 ms of silence between the words)"
+   "why": "Kai marked it accept (D18); the score said tight: start: not silent at the cut: 29.2 dB under speech; \"let's\" ends 10 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D18",
+    "known": "talk on Saturday.",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC06-S009:s0",
@@ -522,13 +712,20 @@
      "bWord": "I",
      "gapMs": 250,
      "marginMs": 60,
+     "belowDb": 16.2,
      "inside": null,
-     "tight": false,
-     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "end: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+   "why": "Kai marked it accept (D19); the score said tight: end: not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D19",
+    "known": "I'm sorry,",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC06-S009:s0",
@@ -548,13 +745,20 @@
      "bWord": "I",
      "gapMs": 250,
      "marginMs": 60,
+     "belowDb": 16.2,
      "inside": null,
-     "tight": false,
-     "why": "\"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)"
+   "why": "Kai marked it accept (D20); the score said tight: start: not silent at the cut: 16.2 dB under speech; \"sorry,\" ends 60 ms before the cut (250 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D20",
+    "known": "I didn't understand you.",
+    "mark": "accept"
+   }
   },
   {
    "id": "deu_for_eng:pod-1:SC07-S002",
@@ -574,16 +778,23 @@
      "bWord": "a",
      "gapMs": 0,
      "marginMs": -60,
+     "belowDb": 25.3,
      "inside": "b",
      "tight": true,
-     "why": "cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
+     "why": "not silent at the cut: 25.3 dB under speech; cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
     }
    ],
    "verdict": "tight",
-   "why": "end: cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")",
+   "why": "Kai marked it reject (D21); the score said tight: end: not silent at the cut: 25.3 dB under speech; cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D21",
+    "known": "I'd like",
+    "mark": "reject"
+   },
    "standalone": "e366142f-4cbd-4852-ba85-c18982fec1b6",
    "render": {
-    "at": "2026-11-03T16:41:39.807Z",
+    "at": "2026-11-03T17:31:32.803Z",
     "text": "I'd like",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
     "ok": true,
@@ -614,9 +825,10 @@
      "bWord": "a",
      "gapMs": 0,
      "marginMs": -60,
+     "belowDb": 25.3,
      "inside": "b",
      "tight": true,
-     "why": "cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
+     "why": "not silent at the cut: 25.3 dB under speech; cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")"
     },
     {
      "edge": "end",
@@ -625,23 +837,32 @@
      "bWord": "please.",
      "gapMs": 133,
      "marginMs": 3,
+     "belowDb": 50.9,
      "inside": null,
-     "tight": true,
-     "why": "\"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
+     "tight": false,
+     "why": "silent at the cut: 50.9 dB under speech; \"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
     }
    ],
    "verdict": "tight",
-   "why": "start: cut 60 ms inside \"a\" (no silence between \"like\" and \"a\"); end: \"please.\" starts 3 ms after the cut (133 ms of silence between the words)",
+   "why": "Kai marked it reject (D22); the score said tight: start: not silent at the cut: 25.3 dB under speech; cut 60 ms inside \"a\" (no silence between \"like\" and \"a\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D22",
+    "known": "a black coffee,",
+    "mark": "reject"
+   },
    "render": {
-    "at": "2026-11-03T16:41:40.073Z",
+    "at": "2026-11-03T17:31:33.064Z",
     "text": "a black coffee",
     "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"a black coffee\" is already recorded in eng — 10 clip(s): 3425e8ab-c81d-42e9-96cc-3e15c37fd9f4 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 20069be0-2c02-4e41-99c6-51a89d9bbe39 (voice gfzdpspr5fdp, dan_for_eng pod_fine_known); 3248f2e4-3878-40df-b6a3-632a4a11735e (voice gfzdpspr5fdp, ita_for_en",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "b8887740-0635-4dcd-b934-7cdebd4540bf",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1280,
+    "wired": true
    }
   },
   {
@@ -662,13 +883,20 @@
      "bWord": "please.",
      "gapMs": 133,
      "marginMs": 3,
+     "belowDb": 50.9,
      "inside": null,
-     "tight": true,
-     "why": "\"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
+     "tight": false,
+     "why": "silent at the cut: 50.9 dB under speech; \"please.\" starts 3 ms after the cut (133 ms of silence between the words)"
     }
    ],
-   "verdict": "tight",
-   "why": "start: \"please.\" starts 3 ms after the cut (133 ms of silence between the words)",
+   "verdict": "clean",
+   "why": "Kai marked it accept (D23); the score said clean: start: silent at the cut: 50.9 dB under speech; \"please.\" starts 3 ms after the cut (133 ms of silence between the words)",
+   "scored": "clean",
+   "ear": {
+    "label": "D23",
+    "known": "please.",
+    "mark": "accept"
+   },
    "standalone": "c206713f-cb0f-42f5-b222-510e28866976",
    "render": {
     "at": "2026-11-03T16:41:40.073Z",
@@ -681,7 +909,12 @@
     "error": null,
     "verified": true,
     "durationMs": 880,
-    "wired": true
+    "wired": false
+   },
+   "unwired": {
+    "at": "2026-11-03T17:31:31.833Z",
+    "audioId": "c206713f-cb0f-42f5-b222-510e28866976",
+    "why": "D23 heard the cut as accept: the cut plays"
    }
   },
   {
@@ -702,16 +935,23 @@
      "bWord": "a",
      "gapMs": 80,
      "marginMs": -20,
+     "belowDb": 16.4,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 16.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)"
     }
    ],
    "verdict": "tight",
-   "why": "end: cut 20 ms inside \"like\" (80 ms of silence between the words)",
+   "why": "Kai marked it reject (D24); the score said tight: end: not silent at the cut: 16.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D24",
+    "known": "I'd like",
+    "mark": "reject"
+   },
    "standalone": "a84882b1-ccfc-43c3-8e88-e0f1751a45be",
    "render": {
-    "at": "2026-11-03T16:41:40.351Z",
+    "at": "2026-11-03T17:31:33.345Z",
     "text": "I'd like",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -742,9 +982,10 @@
      "bWord": "a",
      "gapMs": 80,
      "marginMs": -20,
+     "belowDb": 16.4,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"like\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 16.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words)"
     },
     {
      "edge": "end",
@@ -753,16 +994,23 @@
      "bWord": "of",
      "gapMs": 0,
      "marginMs": -20,
+     "belowDb": 13.5,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+     "why": "not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
     }
    ],
    "verdict": "tight",
-   "why": "start: cut 20 ms inside \"like\" (80 ms of silence between the words); end: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")",
+   "why": "Kai marked it reject (D25); the score said tight: start: not silent at the cut: 16.4 dB under speech; cut 20 ms inside \"like\" (80 ms of silence between the words); end: not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D25",
+    "known": "a large glass",
+    "mark": "reject"
+   },
    "standalone": "3d9e5446-1f60-4b5f-8617-414e788ce127",
    "render": {
-    "at": "2026-11-03T16:41:40.627Z",
+    "at": "2026-11-03T17:31:33.619Z",
     "text": "a large glass",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -793,9 +1041,10 @@
      "bWord": "of",
      "gapMs": 0,
      "marginMs": -20,
+     "belowDb": 13.5,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
+     "why": "not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\")"
     },
     {
      "edge": "end",
@@ -804,23 +1053,32 @@
      "bWord": "please.",
      "gapMs": 3,
      "marginMs": -67,
+     "belowDb": 28.6,
      "inside": "b",
      "tight": true,
-     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+     "why": "not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)"
     }
    ],
    "verdict": "tight",
-   "why": "start: cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\"); end: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "why": "Kai marked it reject (D26); the score said tight: start: not silent at the cut: 13.5 dB under speech; cut 20 ms inside \"glass\" (no silence between \"glass\" and \"of\"); end: not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D26",
+    "known": "of white wine,",
+    "mark": "reject"
+   },
    "render": {
-    "at": "2026-11-03T16:41:40.923Z",
+    "at": "2026-11-03T17:31:33.904Z",
     "text": "of white wine",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"of white wine\" is already recorded in eng — 19 clip(s): 25774464-2b80-463d-8f3a-47d107221097 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 072a8079-d43e-4a16-b4be-7c6aeda81996 (voice xai_gfzdpspr5fdp, swe_for_eng pod_fine_known); 0a0b9ec7-95d8-4c34-a36b-99bce8a169a9 (voice xai_gfzdpspr5fdp, lav",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "ae7a8786-d981-413f-91aa-c94d79dd2715",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
    }
   },
   {
@@ -841,16 +1099,23 @@
      "bWord": "please.",
      "gapMs": 3,
      "marginMs": -67,
+     "belowDb": 28.6,
      "inside": "b",
      "tight": true,
-     "why": "cut 67 ms inside \"please.\" (3 ms of silence between the words)"
+     "why": "not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)"
     }
    ],
    "verdict": "tight",
-   "why": "start: cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "why": "Kai marked it reject (D27); the score said tight: start: not silent at the cut: 28.6 dB under speech; cut 67 ms inside \"please.\" (3 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D27",
+    "known": "please.",
+    "mark": "reject"
+   },
    "standalone": "06e00889-2085-402e-ae7e-71cc6c8f52f5",
    "render": {
-    "at": "2026-11-03T16:41:40.923Z",
+    "at": "2026-11-03T17:31:34.168Z",
     "text": "please.",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
     "ok": true,
@@ -881,13 +1146,20 @@
      "bWord": "and",
      "gapMs": 80,
      "marginMs": -20,
+     "belowDb": 26.3,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 26.3 dB under speech; cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
     }
    ],
-   "verdict": "tight",
-   "why": "end: cut 20 ms inside \"fruit\" (80 ms of silence between the words)",
+   "verdict": "clean",
+   "why": "Kai marked it accept (D28); the score said tight: end: not silent at the cut: 26.3 dB under speech; cut 20 ms inside \"fruit\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D28",
+    "known": "We have fruit",
+    "mark": "accept"
+   },
    "render": {
     "at": "2026-11-03T16:41:41.240Z",
     "text": "We have fruit",
@@ -918,9 +1190,10 @@
      "bWord": "and",
      "gapMs": 80,
      "marginMs": -20,
+     "belowDb": 26.3,
      "inside": "a",
      "tight": true,
-     "why": "cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 26.3 dB under speech; cut 20 ms inside \"fruit\" (80 ms of silence between the words)"
     },
     {
      "edge": "end",
@@ -929,13 +1202,21 @@
      "bWord": "or",
      "gapMs": 80,
      "marginMs": -30,
+     "belowDb": 14.5,
      "inside": "a",
      "tight": true,
-     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
     }
    ],
-   "verdict": "tight",
-   "why": "start: cut 20 ms inside \"fruit\" (80 ms of silence between the words); end: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "verdict": "clean",
+   "why": "Kai marked it borderline (\"Abrupt ending but probably fine\") (D29); the score said tight: start: not silent at the cut: 26.3 dB under speech; cut 20 ms inside \"fruit\" (80 ms of silence between the words); end: not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D29",
+    "known": "and cereals",
+    "mark": "borderline",
+    "note": "Abrupt ending but probably fine"
+   },
    "render": {
     "at": "2026-11-03T16:41:41.240Z",
     "text": "and cereals",
@@ -966,13 +1247,20 @@
      "bWord": "or",
      "gapMs": 80,
      "marginMs": -30,
+     "belowDb": 14.5,
      "inside": "a",
      "tight": true,
-     "why": "cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
+     "why": "not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)"
     }
    ],
-   "verdict": "tight",
-   "why": "start: cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "verdict": "clean",
+   "why": "Kai marked it accept (D30); the score said tight: start: not silent at the cut: 14.5 dB under speech; cut 30 ms inside \"cereals\" (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D30",
+    "known": "or a cooked breakfast.",
+    "mark": "accept"
+   },
    "render": {
     "at": "2026-11-03T16:41:41.240Z",
     "text": "or a cooked breakfast.",
@@ -1003,23 +1291,32 @@
      "bWord": "should",
      "gapMs": 0,
      "marginMs": -60,
+     "belowDb": 10.6,
      "inside": "b",
      "tight": true,
-     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+     "why": "not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
     }
    ],
    "verdict": "tight",
-   "why": "end: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "why": "Kai marked it reject (D31); the score said tight: end: not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "scored": "tight",
+   "ear": {
+    "label": "D31",
+    "known": "How often",
+    "mark": "reject"
+   },
    "render": {
-    "at": "2026-11-03T16:41:41.240Z",
+    "at": "2026-11-03T17:31:34.168Z",
     "text": "How often",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"How often\" is already recorded in eng — 27 clip(s): 9bf5e106-638d-46df-b779-0a7609c25ad6 (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); 07478996-4303-4357-af0b-e09d7822403e (voice xai_gfzdpspr5fdp, ell_for_eng pod_fine_known); 0b31b8ce-bcf7-4ef7-800b-13aedae80b4d (voice xai_gfzdpspr5fdp, bul_for",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "2dbf0ac6-5a46-4ad8-afb9-734a18c46aef",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 1040,
+    "wired": true
    }
   },
   {
@@ -1040,9 +1337,10 @@
      "bWord": "should",
      "gapMs": 0,
      "marginMs": -60,
+     "belowDb": 10.6,
      "inside": "b",
      "tight": true,
-     "why": "cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
+     "why": "not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")"
     },
     {
      "edge": "end",
@@ -1051,23 +1349,32 @@
      "bWord": "take",
      "gapMs": 80,
      "marginMs": 10,
+     "belowDb": 18.3,
      "inside": null,
-     "tight": false,
-     "why": "\"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 18.3 dB under speech; \"I\" ends 10 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "tight",
-   "why": "start: cut 60 ms inside \"should\" (no silence between \"often\" and \"should\")",
+   "why": "Kai marked it reject (D32); the score said tight: start: not silent at the cut: 10.6 dB under speech; cut 60 ms inside \"should\" (no silence between \"often\" and \"should\"); end: not silent at the cut: 18.3 dB under speech; \"I\" ends 10 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D32",
+    "known": "should I",
+    "mark": "reject"
+   },
    "render": {
-    "at": "2026-11-03T16:41:41.240Z",
+    "at": "2026-11-03T17:31:34.421Z",
     "text": "should I",
     "voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-    "ok": false,
-    "source": null,
-    "audioId": null,
-    "code": "EXISTS_IN_LANGUAGE",
-    "error": "\"should I\" is already recorded in eng — 7 clip(s): 69789167-c65c-46d3-9726-a8230b719e9d (voice gfzdpspr5fdp, deu_for_eng pod_fine_known); d95a9c81-e867-436b-8d08-3a41f8904789 (voice azure_en-GB-MiaNeural, ron_for_eng known); 0c6dec62-f433-46cd-a931-352c2bb513b7 (voice xai_gfzdpspr5fdp, hrv_for_eng p",
-    "wired": false
+    "ok": true,
+    "source": "rendered",
+    "audioId": "2fbfa31f-341e-49f1-82dc-dab46e1f63d7",
+    "code": null,
+    "error": null,
+    "verified": true,
+    "durationMs": 800,
+    "wired": true
    }
   },
   {
@@ -1088,13 +1395,20 @@
      "bWord": "take",
      "gapMs": 80,
      "marginMs": 10,
+     "belowDb": 18.3,
      "inside": null,
-     "tight": false,
-     "why": "\"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+     "tight": true,
+     "why": "not silent at the cut: 18.3 dB under speech; \"I\" ends 10 ms before the cut (80 ms of silence between the words)"
     }
    ],
    "verdict": "clean",
-   "why": "start: \"I\" ends 10 ms before the cut (80 ms of silence between the words)"
+   "why": "Kai marked it accept (D33); the score said tight: start: not silent at the cut: 18.3 dB under speech; \"I\" ends 10 ms before the cut (80 ms of silence between the words)",
+   "scored": "tight",
+   "ear": {
+    "label": "D33",
+    "known": "take the paracetamol?",
+    "mark": "accept"
+   }
   }
  ]
 }

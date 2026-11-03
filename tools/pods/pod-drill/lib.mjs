@@ -315,15 +315,30 @@ export const percentile = (a, p) => { const b = [...a].sort((x, y) => x - y); re
  *    only at an energy dip this far below speech level within DIP_MS of the timing boundary. */
 export const SEAM = { QUIET_BELOW: 20, SILENT_BELOW: 35, HISS_ZCR: 0.3, MIN_GAP_MS: 40, TOUCH_MS: 30, EDGE_MS: 10, DIP_BELOW: 15, DIP_MS: 30, SPEECH_SIDE_MS: 150, LINE_TOUCH_MS: 350 }
 
-/** BOUNDARY: when a cut known piece is too tight to keep (job #707; score.mjs uses it). A seam is
- *  TIGHT when it sits inside a timed word, on a timed word edge, or closer than MARGIN_MS to one, by
- *  the render's stored Cartesia word timings; a piece is tight when either of its seams is.
- *  CALIBRATION (PROVISIONAL, 2026-11-03): Kai's ear-check of the 90 German+Spanish known pieces
- *  (d/620808e0) was an overall "roughly 50-50" with no per-piece marks, so the threshold is set from
- *  the timing distribution of those 90: pieces flagged at MARGIN_MS = -20: 25, 0: 41, 10: 47, 20: 54,
- *  40: 75. 10 ms (one analysis frame, the grain the seam search itself works at) flags 47/90 = 52%,
- *  his "about half". Kai's per-piece marks on the #707 review page are what confirm or move it. */
-export const BOUNDARY = { MARGIN_MS: 10 }
+/** BOUNDARY: when a cut known piece is too tight to keep (score.mjs uses it). A seam is TIGHT when
+ *  EITHER the clip is not silent where it is cut (the seam's 10 ms frame, frameDb, sits less than
+ *  SILENT_BELOW_DB under the clip's speech level, its 90th-percentile frame) OR the render's stored
+ *  Cartesia word timings put the cut more than INSIDE_MS inside a word. A piece is tight when either of
+ *  its seams is. Both tests read the take itself; neither transcribes (r-2026-11-03).
+ *
+ *  CALIBRATION (job #750, 2026-11-03) against Kai's per-piece marks on all 90 German+Spanish known
+ *  pieces (review page d/15149e60; <course>.ear.json): 33 reject, 10 borderline-ok, 47 accept.
+ *    rule                                   flagged  rejects missed  agree (reject=bad / reject+borderline=bad)
+ *    old: timing margin < 10 ms (#707)         47        8            60 / 66
+ *    timing only, best margin (< -10 ms)       35       10            68 / 64
+ *    energy only, seam < 30 dB under speech    56        1            65 / 73
+ *    THIS: energy < 30 dB OR > 20 ms inside    60        0            63 / 71
+ *  The timings alone could not hear it: Kai rejected S07/S08 "just two coffees, | please." whose
+ *  timings leave a 292 ms gap with the cut 92 ms clear of both words, but the clip is only 9.8 dB
+ *  quieter there than in speech (the stored timings are off on that take), and he accepted S05/S06
+ *  "Excuse me, | do you …" cut 60 ms "inside" a word where the take is 33 dB down (timings late).
+ *  The choice misses NO rejected piece and pays for it with 18 accepted pieces re-made standalone: a
+ *  false flag costs one short library-first render of the same words in the same voice, a miss puts a
+ *  clipped piece in front of learners, so the line sits on the misses. 30 dB sits just under
+ *  SEAM.SILENT_BELOW (35), the level the seam search already treats as silence. Honest limit: the 90
+ *  pieces are ~45 seams and German and Spanish share many English takes, so this is a fit on a few
+ *  dozen independent cuts; the next course's ear-check (ear.mjs) is what confirms or moves it. */
+export const BOUNDARY = { SILENT_BELOW_DB: 30, INSIDE_MS: 20 }
 
 /**
  * Find the cut for one seam. `estimates` are candidate boundary times in seconds from independent

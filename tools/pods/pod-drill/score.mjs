@@ -19,21 +19,31 @@
  *   gap     B's timed start minus A's timed end: the silence the voice left to cut in
  *   inside  the seam falls inside A's or B's timed span (A clipped / B's onset carried)
  *   margin  how far the seam sits from the nearer timed word edge (negative = inside a word)
- * A seam is tight when its margin is under BOUNDARY.MARGIN_MS; a piece is tight when either of its
- * seams is. Both pieces either side of a tight seam are tight: one loses a tail, the other carries it.
+ *   below   how many dB quieter the take is at the seam's 10 ms frame than its speech level (job #750)
+ * A seam is tight when the take is not silent there (below < BOUNDARY.SILENT_BELOW_DB) or the timings put
+ * it more than BOUNDARY.INSIDE_MS inside a word (lib.mjs carries the calibration against Kai's ear); a
+ * clip that cannot be fetched and decoded is not measured, so its seams are tight (null refuses). A
+ * piece is tight when either of its seams is.
+ *
+ * THE EAR DECIDES (job #750): where <course>.ear.json (ear.mjs) holds a person's mark for a piece, that
+ * mark is the verdict — reject → tight, accept or borderline → clean — and the machine's own verdict is
+ * kept beside it as `scored`, so the calibration can be re-checked from the file.
  *
  * Writes (--write) ops/pod-drill-cuts/<course>.score.json: one row per known piece, with its seams,
  * verdict and reason; render.mjs reads it, and /production/<course>/pod-drill shows it.
- * Reads only committed files: <course>.dump.json and <course>.cuts.json. Renders nothing.
+ * Reads <course>.dump.json, <course>.cuts.json and <course>.ear.json, and fetches each English take over
+ * the learning app's public audio proxy for the seam's loudness (cached in $CS_SCRATCH). Renders nothing.
  */
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
+import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { OPS, cutsPath } from './paths.mjs'
-import { knownLangOf, wordsIn, segmentZh, alignTimes, cartesiaSegs, tileWords, BOUNDARY } from './lib.mjs'
+import { knownLangOf, wordsIn, segmentZh, alignTimes, cartesiaSegs, tileWords, frameDb, percentile, BOUNDARY } from './lib.mjs'
 
 /** One seam's facts and verdict. All times ms. aEnd/bStart from the timings; seam from the cut. */
-export function scoreSeam({ seam, aWord, aEnd, bWord, bStart }) {
+export function scoreSeam({ seam, aWord, aEnd, bWord, bStart, belowDb = null }) {
   const gap = Math.round(bStart - aEnd)
   const intoA = Math.round(aEnd - seam), intoB = Math.round(seam - bStart)
   const margin = Math.min(seam - aEnd, bStart - seam)
@@ -44,13 +54,37 @@ export function scoreSeam({ seam, aWord, aEnd, bWord, bStart }) {
   else why = `"${aWord}" ends ${Math.round(seam - aEnd)} ms before the cut`
   if (gap <= 0) why += ` (no silence between "${aWord}" and "${bWord}")`
   else why += ` (${gap} ms of silence between the words)`
-  return { seam: Math.round(seam), aWord, bWord, gapMs: gap, marginMs: Math.round(margin), inside: intoA > 0 ? 'a' : intoB > 0 ? 'b' : null, tight: margin < BOUNDARY.MARGIN_MS, why }
+  const loud = belowDb == null || belowDb < BOUNDARY.SILENT_BELOW_DB
+  const deep = margin < -BOUNDARY.INSIDE_MS
+  why = belowDb == null ? `the take could not be measured at the cut; ${why}`
+    : `${loud ? 'not silent at the cut' : 'silent at the cut'}: ${belowDb.toFixed(1)} dB under speech; ${why}`
+  return { seam: Math.round(seam), aWord, bWord, gapMs: gap, marginMs: Math.round(margin), belowDb: belowDb == null ? null : Math.round(belowDb * 10) / 10, inside: intoA > 0 ? 'a' : intoB > 0 ? 'b' : null, tight: loud || deep, why }
 }
 
+/** The take's 10 ms frame loudness (frameDb) and speech level, fetched over the public audio proxy. */
+const AUDIO = process.env.POD_DRILL_AUDIO || 'https://saysomethingin.app/api/audio'
+const cacheDir = path.join(process.env.CS_SCRATCH || os.tmpdir(), 'pod-drill-score')
+const levels = new Map()
+export function takeLevels(clipId) {
+  if (!clipId) return null
+  if (!levels.has(clipId)) {
+    mkdirSync(cacheDir, { recursive: true })
+    const f = path.join(cacheDir, `${clipId}.mp3`)
+    if (!existsSync(f)) spawnSync('curl', ['-sfL', '-o', f, `${AUDIO}/${clipId}`])
+    const o = existsSync(f) ? spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-i', f, '-f', 's16le', '-ac', '1', '-ar', '16000', '-'], { maxBuffer: 1 << 28 }) : null
+    const db = o?.status === 0 && o.stdout?.length ? frameDb(o.stdout) : null
+    levels.set(clipId, db && db.length ? { db, speech: percentile(db, 0.9) } : null)
+  }
+  return levels.get(clipId)
+}
+const belowAt = (lv, ms) => lv ? lv.speech - lv.db[Math.min(lv.db.length - 1, Math.max(0, Math.round(ms / 10)))] : null
+
 /** Score every known piece of one course. Returns {rows, unscored}. */
-export function scoreCourse(course, { dump, cuts } = {}) {
+export function scoreCourse(course, { dump, cuts, ear, levelsOf = takeLevels } = {}) {
   dump ??= JSON.parse(readFileSync(path.join(OPS, `${course}.dump.json`), 'utf8'))
   cuts ??= JSON.parse(readFileSync(cutsPath(course), 'utf8'))
+  const earF = path.join(OPS, `${course}.ear.json`)
+  ear ??= existsSync(earF) ? JSON.parse(readFileSync(earF, 'utf8')) : null
   const KNOWN = knownLangOf(course)
   const wordsOf = course === 'zho_for_eng' ? segmentZh : (t) => wordsIn(t, KNOWN)
   const byId = new Map(dump.cards.map((d) => [d.id, d]))
@@ -79,7 +113,8 @@ export function scoreCourse(course, { dump, cuts } = {}) {
       continue
     }
     const words = wordsOf(d.known)
-    const seamAt = (i) => scoreSeam({ seam: pieces[i].ke, aWord: words[ranges[i][1]], aEnd: tm.ends[ranges[i][1]] * 1000, bWord: words[ranges[i + 1][0]], bStart: tm.starts[ranges[i + 1][0]] * 1000 })
+    const lv = levelsOf(e.knownClip)
+    const seamAt = (i) => scoreSeam({ seam: pieces[i].ke, aWord: words[ranges[i][1]], aEnd: tm.ends[ranges[i][1]] * 1000, bWord: words[ranges[i + 1][0]], bStart: tm.starts[ranges[i + 1][0]] * 1000, belowDb: belowAt(lv, pieces[i].ke) })
     pieces.forEach((p, i) => {
       if (p.line || p.ks == null || p.ke == null) return
       const seams = []
@@ -87,9 +122,14 @@ export function scoreCourse(course, { dump, cuts } = {}) {
       if (i < pieces.length - 1) seams.push({ edge: 'end', ...seamAt(i) })
       const bad = seams.filter((s) => s.tight)
       const worst = [...seams].sort((x, y) => x.marginMs - y.marginMs)[0]
+      const scored = bad.length ? 'tight' : 'clean'
+      const machineWhy = bad.length ? bad.map((s) => `${s.edge === 'start' ? 'start' : 'end'}: ${s.why}`).join('; ') : worst ? `${worst.edge}: ${worst.why}` : 'no seam'
+      const heard = ear?.marks?.[`${id}|${p.li}|${p.ci}`] || null
+      const earVerdict = heard ? (heard.mark === 'reject' ? 'tight' : 'clean') : null
       rows.push({ ...base, line: p.li, chunk: p.ci, known: p.known, target: p.target, startMs: p.ks, endMs: p.ke, seams,
-        verdict: bad.length ? 'tight' : 'clean',
-        why: bad.length ? bad.map((s) => `${s.edge === 'start' ? 'start' : 'end'}: ${s.why}`).join('; ') : worst ? `${worst.edge}: ${worst.why}` : 'no seam',
+        verdict: earVerdict || scored,
+        why: heard ? `${ear.by || 'a listener'} marked it ${heard.mark}${heard.note ? ` ("${heard.note}")` : ''} (${heard.label}); the score said ${scored}: ${machineWhy}` : machineWhy,
+        ...(heard ? { scored, ear: heard } : {}),
         ...(p.standalone ? { standalone: p.standalone } : {}) })
     })
   }
@@ -102,7 +142,8 @@ if (isMain) {
   if (!course) { console.error('usage: score.mjs <course> [--write] [--json]'); process.exit(1) }
   const { rows, unscored } = scoreCourse(course)
   const n = (v) => rows.filter((r) => r.verdict === v).length
-  const out = { course, tool: 'tools/pods/pod-drill/score.mjs (#707)', boundary: BOUNDARY, totals: { pieces: rows.length, clean: n('clean'), tight: n('tight'), unscored: n('unscored') }, pieces: rows }
+  const heard = rows.filter((r) => r.ear)
+  const out = { course, tool: 'tools/pods/pod-drill/score.mjs (#707, #750)', boundary: BOUNDARY, totals: { pieces: rows.length, clean: n('clean'), tight: n('tight'), unscored: n('unscored'), heard: heard.length, heardRejectScoredClean: heard.filter((r) => r.ear.mark === 'reject' && r.scored === 'clean').length }, pieces: rows }
   if (process.argv.includes('--json')) console.log(JSON.stringify(out, null, 1))
   console.error(`${course}: ${JSON.stringify(out.totals)}`)
   for (const r of unscored) console.error(`  unscored ${r.id} "${r.known}": ${r.why}`)

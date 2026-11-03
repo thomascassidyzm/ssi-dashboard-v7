@@ -9,6 +9,7 @@
  *
  *   node tools/pods/pod-drill/render.mjs <course>            dry run: asks the route what each would cost
  *   node tools/pods/pod-drill/render.mjs <course> --render   for real, then verifies and wires
+ *        [--rejected]   only the pieces a person marked reject in <course>.ear.json (job #750), nothing else
  *        [--approval=kai:YYYY-MM-DD:<reason>]  Kai's own approval token, passed to the route as he gave it
  *        (r-2026-10-30-kai-can-authorise-any-audio-work). Most English pieces are already recorded in some
  *        OTHER voice, which the route refuses as a second performance (EXISTS_IN_LANGUAGE) without it.
@@ -26,6 +27,11 @@
  * A re-record piece with no known span is written [target, ts, te, known, null, null, clipId]. A
  * re-record piece on a card with no cut at all has no chunk to wire: the player finds its clip by its
  * known text in the line's voice (ListeningOverlay lookupFineKnown), which is what this render makes.
+ *
+ * A PIECE A PERSON HEARD AS FINE KEEPS ITS CUT (job #750: "keep accepted cuts"): where <course>.ear.json
+ * marked a piece accept or borderline and an earlier run wired a standalone clip over it, --render takes
+ * the clip id off the chunk again, so Drill plays the cut that was heard. Nothing is deleted: the clip
+ * stays in the library and its answer stays in score.json under `unwired`.
  *
  * Reads <course>.score.json (score.mjs --write), <course>.known-rerecord.json, the cut file, and the
  * pod's clip voices from Popty GET /api/pod-scripts/<course>?track=known. Writes (with --render)
@@ -84,8 +90,9 @@ const sayText = (t) => String(t || '').trim().replace(/[,;:–—-]+$/u, '').tri
 
 // ---- the work list: tight scored pieces, then re-record pieces
 const jobs = []
-for (const r of score.pieces) if (r.verdict === 'tight') jobs.push({ kind: 'tight', row: r, card: r.id, line: r.line, chunk: r.chunk, known: r.known, voice: voiceOf.get(bare(r.knownClip)) || null, why: r.why })
-for (const x of rr) {
+const REJECTED = argv.includes('--rejected')
+for (const r of score.pieces) if (r.verdict === 'tight' && (!REJECTED || r.ear?.mark === 'reject')) jobs.push({ kind: 'tight', row: r, card: r.id, line: r.line, chunk: r.chunk, known: r.known, voice: voiceOf.get(bare(r.knownClip)) || null, why: r.why })
+for (const x of REJECTED ? [] : rr) {
   const d = cardById.get(x.card)
   const e = cutFile.sentences[x.card]
   const l = e?.lines?.[x.line]
@@ -131,8 +138,19 @@ if (!REAL) process.exit(0)
 
 // ---- verify, then wire
 const verified = new Map()
-let wired = 0, unwired = 0
+let wired = 0, unwired = 0, kept = 0
 const changed = new Set()
+// accepted by ear, standalone wired by an earlier run: back to the cut that was heard (header)
+for (const r of score.pieces) {
+  if (!r.ear || r.verdict !== 'clean') continue
+  const e = cutFile.sentences[r.id]
+  const c = e?.lines?.[r.line]?.chunks?.[r.chunk]
+  if (!c || c.length < 7 || !c[6]) continue
+  r.unwired = { at: new Date().toISOString(), audioId: c[6], why: `${r.ear.label} heard the cut as ${r.ear.mark}: the cut plays` }
+  e.lines[r.line].chunks[r.chunk] = c.slice(0, 6)
+  if (r.render) r.render.wired = false
+  changed.add(r.id); kept++
+}
 for (const job of jobs) {
   const a = job.answer
   const rec = { at: new Date().toISOString(), text: a.text, voiceId: a.voiceId, ok: !!a.ok, source: a.source || null, audioId: a.audioId || null, code: a.ok ? null : (a.code || `HTTP ${a.status}`), error: a.ok ? null : String(a.error || a.message || '').slice(0, 300) }
@@ -161,4 +179,4 @@ if (!guard.ok) { console.error(`REFUSED: the cut file would lose or change somet
 writeFileSync(cutF, JSON.stringify(cutFile) + '\n')
 writeFileSync(scoreF, JSON.stringify(score, null, 1) + '\n')
 writeFileSync(saF, JSON.stringify(sa, null, 1) + '\n')
-process.stderr.write(`${course}: wired ${wired} pieces into ${changed.size} cards; ${unwired} not wired (see score.json / standalone.json)\n`)
+process.stderr.write(`${course}: wired ${wired} pieces; ${kept} accepted cuts given back their cut; ${changed.size} cards changed; ${unwired} not wired (see score.json / standalone.json)\n`)
