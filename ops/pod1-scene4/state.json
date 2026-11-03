@@ -745,5 +745,39 @@
   "switchoverResult": "learner progress: 0 carried, 0 dropped.",
   "why": "served: 2 line(s) new, audio linked",
   "rebound": true
+ },
+ "por_for_eng": {
+  "state": "live",
+  "step": "switched",
+  "at": "2026-11-03T19:52:06.293Z",
+  "audio": {
+   "2:target": "538adab0-74b5-4548-a8f6-d0e12cd5d8be",
+   "2:known": "66a26cc3-346f-4e51-9b01-a6dbddb937b5",
+   "3:target": "6edeab58-ae71-4a72-8f1b-88d4f7d24b0c",
+   "3:known": "fee6dbcf-7193-4fb4-84f1-584218e422c8"
+  },
+  "chars": 157,
+  "voices": {
+   "SC04-S002:target": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
+   "SC04-S002:known": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "SC04-S003:target": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
+   "SC04-S003:known": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9"
+  },
+  "languageText": {
+   "moved": [
+    21,
+    22
+   ],
+   "bound": true
+  },
+  "migrationPlan": {
+   "carry": 86,
+   "keep": 0,
+   "merge": 0,
+   "drop": 3
+  },
+  "switchoverResult": "learner progress: 0 carried, 3 dropped.",
+  "why": "served: 2 line(s) new, audio linked",
+  "rebound": true
  }
 }
