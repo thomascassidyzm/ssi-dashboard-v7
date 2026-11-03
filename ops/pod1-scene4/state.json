@@ -442,12 +442,13 @@
   "rebound": true
  },
  "eng_for_kor": {
-  "state": "blocked",
+  "state": "held",
   "step": "cloned",
-  "at": "2026-11-03T19:39:12.960Z",
-  "why": "render refused (dry run) 2:target: 409 EXISTS_IN_LANGUAGE \"Hello! I'm sorry but I can't talk at the moment. I need to g\" is already recorded in eng — 7 clip(s): efa7cbea-874d-4039-8339-fd3187c0d1d1 (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c121, ita_for_eng known); 01e3ddeb-3a0a-461b-b207-11cc0acc55ca (voice cartesia_71a7ad14-091c-4e8e-a314-022ece01c",
+  "at": "2026-11-03T20:01:13.558Z",
+  "why": "not switchable: staged pod has 142 lines, the language text has 231 — needs the canonical-231 align first (not this job)",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "pass": "recast"
  },
  "eng_for_pan": {
   "state": "blocked",
