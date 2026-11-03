@@ -203,10 +203,13 @@
  "dan_for_eng": {
   "state": "blocked",
   "step": "cloned",
-  "at": "2026-11-03T19:35:55.438Z",
-  "why": "render refused (dry run) 2:target: 500 VOICE_NOT_CAST Voice not cast for dan (403): dan has only the 2026-09-04 draft casting, which Tom never chose, so no dan clip is rendered (cartesia_97zmdc6s refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices).",
+  "at": "2026-11-03T19:59:53.580Z",
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY dan_for_eng:pod-1:SC04-S001: no current m target cast for dan_for_eng (dan (m) has only the 2026-09-04 draft casting — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
   "audio": {},
-  "chars": 0
+  "chars": 0,
+  "grant": "#156",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "deu_at_for_eng": {
   "state": "blocked",
