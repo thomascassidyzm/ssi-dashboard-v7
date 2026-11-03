@@ -753,8 +753,12 @@ function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}
  * sandbox voices. The brief's rule — any live course gaining any, or any voice
  * gaining more than ~20 — gates the feature to the two Welsh sandboxes. A live
  * course's LEGO slots are never queued here.
+ *
+ * fry_for_eng joins (Kai, 2026-11-03, job #587): Auke records all of Frisian.
+ * Frisian is not served to learners and casts only Auke (target1), so its
+ * LEGO lines land in his queue alone.
  */
-const LEGO_QUEUE_COURSES = Object.freeze(['cym_sv2_for_eng', 'cym_nv2_for_eng'])
+const LEGO_QUEUE_COURSES = Object.freeze(['cym_sv2_for_eng', 'cym_nv2_for_eng', 'fry_for_eng'])
 function isLegoQueueCourse(courseCode) { return LEGO_QUEUE_COURSES.includes(String(courseCode || '')) }
 
 /** The synthetic line id a LEGO slot wears on the wire: `lego:<course_legos.id>:<role>`. */
@@ -2597,7 +2601,17 @@ async function buildPhrasePlan(db, memo = new Map()) {
     ])
     const positions = new Map()
     for (const o of order) if (!positions.has(o.seed_number)) positions.set(o.seed_number, o.position)
-    const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
+    // A COURSE WITH NO RUNNING ORDER plays its seeds by seed number (course_running_order's own
+    // rule: "No row for a course = order by seed_number"; seedPosition() does the same), and the
+    // seeds it serves are the recordable ones (RECORDABLE_SEED_STATUSES) — the seeds whose
+    // sentences and LEGOs the booth already queues. Frisian (job #587) is such a course. A course
+    // WITH a running order (both Welsh sandboxes) never makes this read, so its plan is unchanged.
+    if (!order.length) {
+      const seedRows = await stage(`seeds:${code}`, () => allPages((a, b) => db.from('course_seeds').select('seed_number, status')
+        .eq('course_code', code).order('seed_number').range(a, b)))
+      for (const s of seedRows) if (RECORDABLE_SEED_STATUSES.has(s.status)) positions.set(s.seed_number, s.seed_number)
+    }
+    const maxSeed = [...positions.keys()].reduce((m, n) => Math.max(m, n), 0)
     const phrases = maxSeed ? await stage(`phrases:${code}`, () => readCoursePhrases(db, code, maxSeed)) : []
     const slotIds = new Set()
     for (const p of phrases) for (const col of ['known_audio_id', 'target1_audio_id', 'target2_audio_id']) if (p[col]) slotIds.add(p[col])
