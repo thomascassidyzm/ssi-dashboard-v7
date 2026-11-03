@@ -200,6 +200,31 @@ async function main() {
       linked: readJsonl(LINK_LOG).reduce((n, l) => n + (l.linked || 0), 0) }, null, 1))
     return
   }
+  if (mode === 'census') {
+    // Job #578: READ-ONLY census of the EXISTS_IN_LANGUAGE refusals. Asks the render door with dryRun:true for every
+    // plan entry (the door's per-language stop answers a dry run too; nothing is rendered or spent), never stops on
+    // another answer, and logs each answer to census.jsonl (not render.jsonl, so the real run's ledger is untouched).
+    const CENSUS_LOG = path.join(DIR, 'census.jsonl')
+    const done = new Set(readJsonl(CENSUS_LOG).map((r) => entryKey(r.courseCode, r.text)))
+    const todo = plan.entries.filter((e) => !done.has(entryKey(e.courseCode, e.text)))
+    const conc = Number(arg('--concurrency', '6')) || 6
+    let i = 0, hits = 0
+    await Promise.all(Array.from({ length: conc }, async () => {
+      while (i < todo.length) {
+        const e = todo[i++]
+        let status = 0, body = {}
+        try {
+          const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
+            body: JSON.stringify({ courseCode: e.courseCode, role: 'known', language: 'eng', text: e.text, purpose: 'census (job #578): is this line already recorded in English? dry run, nothing rendered', dryRun: true }), signal: AbortSignal.timeout(60000) })
+          status = r.status; body = await r.json().catch(() => ({}))
+        } catch (err) { body = { error: String(err && err.name) } }
+        const hit = isExistsInLanguage({ status, body }); if (hit) hits += 1
+        fs.appendFileSync(CENSUS_LOG, JSON.stringify({ courseCode: e.courseCode, text: e.text, slots: e.slots, status, code: body.code || body.source || null, existing: hit ? body.existing : undefined }) + '\n')
+      }
+    }))
+    console.log(`census asked ${todo.length} of ${plan.entries.length}; EXISTS_IN_LANGUAGE ${hits}; log ${CENSUS_LOG}`)
+    return
+  }
   if (mode === 'render') {
     const dry = process.argv.includes('--dry')
     const limit = Number(arg('--limit', '0')) || Infinity
@@ -241,7 +266,7 @@ async function main() {
     }
     return
   }
-  console.error('usage: plan | render --limit N [--dry] [--max-chars N] | link [--dry] | status'); process.exit(1)
+  console.error('usage: plan | render --limit N [--dry] [--max-chars N] | link [--dry] | status | census [--concurrency N]'); process.exit(1)
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1) })
