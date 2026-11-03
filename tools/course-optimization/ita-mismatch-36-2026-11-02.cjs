@@ -13,12 +13,13 @@
 //   MAX_CHARS=<n> [RENDER_CONFIRM=1] node …cjs render <fresh seeds.json>   (library-first, then the one audio route)
 const fs = require('fs');
 const path = require('path');
-const D = require('./ita-mismatch-36-2026-11-02.data.cjs');
+// DATA=<path> points the same engine at another decision file (job #650 reuses it for Kai's 3 Nov rulings on the 30 held rows).
+const D = require(process.env.DATA ? path.resolve(process.env.DATA) : './ita-mismatch-36-2026-11-02.data.cjs');
 const { holdsInOrder, fromApi } = require('./spa-close-read-153-200-2026-10-27.cjs');
 
 const COURSE = 'ita_for_eng';
-const AGENT = 'ita-mismatch-fix-wave1 (job #36)';
-const PURPOSE = 'job #36 ita_for_eng #195 phrase-mismatch fixes (Kai approved 2 Nov) — refill of the slots these edits emptied';
+const AGENT = D.AGENT || 'ita-mismatch-fix-wave1 (job #36)';
+const PURPOSE = D.PURPOSE || 'job #36 ita_for_eng #195 phrase-mismatch fixes (Kai approved 2 Nov) — refill of the slots these edits emptied';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
 const USE_FLOOR = 4;
 // One transaction per batch: the text-change audio triggers cost ~0.7 s an op; 25 stay under the statement cap (#425).
@@ -31,8 +32,12 @@ const ntStrict = (s) => (s || '').replace(/[\s.?!,;:]/g, '').toLowerCase().repla
 const seedOf = (legoId) => Number(legoId.slice(1, 5));
 // L28 / Kai 29 Sept (pensarci contains pensare): an infinitive with a clitic attached CONTAINS the infinitive LEGO, but only
 // for a bound form already taught. Recorded per word, never as a prefix match: farlo is taught at S0092L02 "to do it | farlo".
-const STEM_CLITIC = { farlo: { infinitive: 'fare', taughtAt: 'S0092L02' } };
-const unbindClitics = (t) => String(t || '').split(/(\s+)/).map((w) => { const k = w.toLowerCase().replace(/[.?!,]+$/, ''); return STEM_CLITIC[k] ? w.toLowerCase().replace(k, STEM_CLITIC[k].infinitive) : w; }).join('');
+// A data file may add words (D.STEM_CLITIC); taughtAt is the first LEGO that teaches that clitic attached to an infinitive.
+// #650 (Kai 3 Nov, seed 358, "case by case, not a general licence"): raggiungerlo, because -lo is heard attached from
+// S0061L02 dirlo on (farlo, cercarlo, scoprirlo, metterlo…); -li is never heard attached before 358, so no raggiungerli.
+const STEM_CLITIC = { farlo: { infinitive: 'fare', taughtAt: 'S0092L02' }, ...(D.STEM_CLITIC || {}) };
+// legoId given: only words whose clitic is taught before that LEGO are unbound.
+const unbindClitics = (t, legoId) => String(t || '').split(/(\s+)/).map((w) => { const k = w.toLowerCase().replace(/[.?!,]+$/, ''); return STEM_CLITIC[k] && (!legoId || legoId > STEM_CLITIC[k].taughtAt) ? w.toLowerCase().replace(k, STEM_CLITIC[k].infinitive) : w; }).join('');
 
 // taught words (P1): seeds before, LEGOs (+ components) up to and including this one
 function makeTaught(after, tw) {
@@ -150,10 +155,10 @@ function plan(db, { data = D, decomposer: dz = require('../../services/phrase-de
       const heldEn = holdsInOrder(p.known_text, lb.known_text);
       const heldDe = holdsInOrder(p.target_text, lb.target_text) || decomposer.decomposeAnchored(p.target_text, vocab(la.seed_number), { ...parent, target_text: lb.target_text }, COURSE).kind !== 'error';
       if (heldEn && !holdsInOrder(known, la.known_text)) problems.push(`P17 English no longer holds "${la.known_text}"`);
-      if (heldDe && !holdsInOrder(target, la.target_text) && !(legoId > STEM_CLITIC.farlo.taughtAt && holdsInOrder(unbindClitics(target), la.target_text)) && decomposer.decomposeAnchored(target, vocab(la.seed_number), parent, COURSE).kind === 'error') problems.push(`P17 Italian no longer holds "${la.target_text}"`);
+      if (heldDe && !holdsInOrder(target, la.target_text) && !holdsInOrder(unbindClitics(target, legoId), la.target_text) && decomposer.decomposeAnchored(target, vocab(la.seed_number), parent, COURSE).kind === 'error') problems.push(`P17 Italian no longer holds "${la.target_text}"`);
     }
     if (target !== p.target_text) {
-      const un = untaughtNew(tw, keysFor(legoId), p.target_text, target);
+      const un = untaughtNew(tw, keysFor(legoId), p.target_text, unbindClitics(target, legoId));
       if (un.length) problems.push(`P1 untaught: ${un.join(', ')}`);
     }
     const z = zutNew(id, { known_text: p.known_text, target_text: p.target_text }, { known_text: known, target_text: target });
