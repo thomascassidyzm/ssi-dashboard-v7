@@ -898,12 +898,15 @@
  "lav_for_eng": {
   "state": "blocked",
   "step": "rendering",
-  "at": "2026-11-03T19:48:41.836Z",
+  "at": "2026-11-03T20:05:48.098Z",
   "audio": {
    "2:target": "274a418e-113b-4a6a-82b5-b71493534de1"
   },
   "chars": 99,
-  "why": "render refused (dry run) 2:known: 500 VOICE_NOT_CAST Voice not cast for eng (403): cartesia_bedd6226 may not render new eng audio; Tom's cast is cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9, cartesia_5b7a17f4-3850-4dee-ab54-2967a9c042ef, cartesia_33890587-a29f-4416-ba61-2615c74f92fe, cartesia_71a7ad14-091c-4e8e-a314-022ece01c121. Cast it in the Voice"
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY lav_for_eng:pod-1:SC04-S001: no current m target cast for lav_for_eng (lav (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+  "grant": "#169",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "lit_for_eng": {
   "state": "blocked",
