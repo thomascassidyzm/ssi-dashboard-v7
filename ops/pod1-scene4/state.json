@@ -1128,12 +1128,15 @@
  "swa_for_eng": {
   "state": "blocked",
   "step": "rendering",
-  "at": "2026-11-03T19:54:13.078Z",
+  "at": "2026-11-03T20:07:29.176Z",
   "audio": {
    "2:target": "35466fad-5922-435c-bfa1-e229ca5b9829"
   },
   "chars": 107,
-  "why": "render refused (dry run) 2:known: 500 RENDER_FAILED [provider-policy] the configured voice \"bedd6226\" (provider \"xai\") cannot be carried onto azure for swa_for_eng/known. Re-cast this role's voice in voice_config. Reason: azure: configured provider \"xai\" is retired; Cartesia publishes \"eng\" but no Cartesia voice is cast for it (the estate holds exact"
+  "why": "recast render refused (dry run) SC04-S001:target: 403 VOICE_POLICY swa_for_eng:pod-1:SC04-S001: no current m target cast for swa_for_eng (swa (m) has no cast — Tom has not chosen a voice, so nothing is rendered or pointed (cast it in the Voice Lab))",
+  "grant": "#177",
+  "pass": "recast",
+  "recastAudio": {}
  },
  "swe_for_eng": {
   "state": "blocked",
