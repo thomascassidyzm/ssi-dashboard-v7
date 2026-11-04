@@ -38,7 +38,7 @@ for i, (b, ak, at, reason, rule, x) in D.items():
         bad = []
         if g.get('error'): bad.append(g['error'])
         if at != 'DELETE':
-            if g.get('untaught'): bad.append('untaught ' + ','.join(g['untaught']))
+            if g.get('untaught') and not x_of(i).get('gate_override'): bad.append('untaught ' + ','.join(g['untaught']))
             if g.get('contains_lego') is False and not x_of(i).get('gate_override'): bad.append('loses LEGO')
             if g.get('zut') and basket.get(i, (0, ''))[1] == 'use': bad.append('zut ' + ','.join(g['zut']))
         else:
