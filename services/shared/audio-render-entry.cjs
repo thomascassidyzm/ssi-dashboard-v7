@@ -35,6 +35,7 @@ const drillCut = require('./drill-cut-guard.cjs')
 const existsInLanguage = require('./exists-in-language-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
 const standIn = require('./aran-clone-standin.cjs')
+const pronunciation = require('./pronunciation-overrides.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -424,13 +425,18 @@ async function rerecord(req, deps) {
   if (row.origin === 'human') throw new RenderRequestError(`${req.replaceAudioId} is a human recording — never re-rendered over`, 409, 'HUMAN_CLIP')
   if (req.role !== row.role) throw new RenderRequestError(`${req.replaceAudioId} is a ${row.role} clip, request said ${req.role}`, 409, 'WRONG_ROLE')
   if (req.voiceId && req.voiceId !== row.voice_id) throw new RenderRequestError(`a re-record keeps the clip's own voice (${row.voice_id}); voiceId ${req.voiceId} differs`, 409, 'VOICE_MISMATCH')
-  const said = req.spokenText || req.text
+  // A line on the course's pronunciation-override list (shared/pronunciation-overrides.cjs) is re-recorded in its spoken
+  // form: sent as the words, the door cannot answer with another (misread) clip of the same characters in its place.
+  const said = req.spokenText || pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || req.text
+  if (said !== req.text && !req.spokenText) req.spokenText = said
   const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
   // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
   const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job } }
-  const out = await deps.speak(said, r.provider, cfg, 1)
+  const spoke = await deps.speak(said, r.provider, cfg, 1)
+  // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
+  const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode) }
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip

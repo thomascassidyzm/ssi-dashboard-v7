@@ -1122,7 +1122,14 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     doorStats.wouldSpendChars += chars;
     return { audioBuffer: null, wordBoundaries: null, wordTimings: null, existingClip: null, charsSpent: 0, wouldSpendChars: chars };
   }
-  const out = await renderWithRetry(text, provider, config, maxRetries, ticket);
+  // PRONUNCIATION OVERRIDE (services/shared/pronunciation-overrides.cjs, job #250·AD): a listed line of this course is
+  // SENT in its spoken form (zho 得 = děi as IPA); the library above was asked with the stored words, and the stored
+  // text is never touched. Cartesia's word timings echo what was sent, so the stored character is put back in them.
+  const pron = require('./shared/pronunciation-overrides.cjs');
+  const overrideCourse = door.courseCode || config.courseCode || null;
+  const sent = pron.spokenFor({ courseCode: overrideCourse, text }) || text;
+  const rendered = await renderWithRetry(sent, provider, config, maxRetries, ticket);
+  const out = sent === text ? rendered : { ...rendered, wordTimings: pron.restoreWordTimings(rendered.wordTimings, overrideCourse), spokenText: sent };
   doorStats.rendered++;
   doorStats.charsSpent += chars;
   return { ...out, existingClip: null, charsSpent: chars };
