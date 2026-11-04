@@ -34,6 +34,8 @@ const held = pacedNow([C, K], { usage: u(100, 68), now: NOW })
 assert.ok(held && /ahead of its weekly pace/.test(held.why), 'both past pace → held')
 // kai at 68 with slack 10 is back under pace when 58% of its week has elapsed: 8 Nov 10:00 − 70.56h ≈ 5 Nov 11:26Z.
 assert.ok(Math.abs(Date.parse(held.resumeAt) - Date.parse('2026-11-05T11:26:00Z')) < 5 * 60e3, held.resumeAt)
+// A full account resumes at its RESET, not its catch-up: claude@ 100 + kai 95 → kai's catch-up 7 Nov 08:48Z, not claude@'s 6 Nov 22:12Z.
+assert.ok(Math.abs(Date.parse(pacedNow([C, K], { usage: u(100, 95), now: NOW }).resumeAt) - Date.parse('2026-11-07T08:48:00Z')) < 5 * 60e3)
 // An unreadable gauge never holds a run.
 assert.strictEqual(pacedNow([C, K], { usage: { [C.email]: g(100, '2026-11-07T15:00:00Z') }, now: NOW }), null)
 console.log('claude-config pickAccount + pace: ok')

@@ -135,6 +135,10 @@ function underPace(g, now = Date.now()) {
 function paceResumeAt(g, now = Date.now()) {
   const pct = weeklyPct(g), reset = Date.parse(g && g.weekly_all_resets_at)
   if (pct === null || !Number.isFinite(reset)) return null
+  // A FULL account is not back at its catch-up instant — it is still full then — only at its reset. Without
+  // this, claude@ 100% (catch-up 6 Nov 22:12Z) + kai 95% would answer resume_at = 22:12 and then, at 22:12,
+  // resume_at = now on every call: a bulk caller spinning on 60-second retries until 7 Nov 08:48Z.
+  if (pct >= WEEKLY_FULL_PCT) return Math.max(now, reset)
   const weekStart = reset - WEEK_H * 3600e3
   const at = weekStart + ((pct - PACE_SLACK_PCT) / 100) * WEEK_H * 3600e3
   return Math.max(now, Math.min(at, reset))
