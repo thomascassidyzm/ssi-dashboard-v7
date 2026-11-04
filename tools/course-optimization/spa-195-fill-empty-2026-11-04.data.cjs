@@ -535,19 +535,6 @@ const FIXES = [
   "empty slot after #259 edits"
  ],
  [
-  "S0182L02U15",
-  "fill",
-  [
-   "My friend is going to find my keys because I need them today",
-   "Mi amigo va a encontrar mis llaves porque necesito mis llaves hoy"
-  ],
-  [
-   null,
-   "Mi amigo va a encontrar mis llaves porque necesito mis llaves hoy"
-  ],
-  "empty slot after #259 edits"
- ],
- [
   "S0182L01B06",
   "fill",
   [

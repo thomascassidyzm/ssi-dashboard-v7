@@ -7,12 +7,17 @@ so a render run ends the course at 0 empty)."""
 import json, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 d = json.load(open(sys.argv[1])); fixes = []
+# Refused by the render guard (EXISTS_IN_LANGUAGE: only an Azure Elvira clip exists, and link-clip refuses it as
+# VOICE_MISMATCH against the Cartesia cast) — a re-record grant is Tom's/Kai's, so the slot is reported, not filled.
+NEEDS_GRANT = {('S0182L02U15', 'target')}
 for s in d['seeds']:
     for l in s['legos']:
         for p in l.get('basket_phrases') or []:
             if p.get('phrase_role') == 'component': continue
             k = None if p.get('known_audio_id') else p['known_text']
             t = None if (p.get('target1_audio_id') and p.get('target2_audio_id')) else p['target_text']
+            pid = p['id'].split(':')[-1]
+            if (pid, 'target') in NEEDS_GRANT: t = None
             if k or t: fixes.append([p['id'].split(':')[-1], 'fill', [p['known_text'], p['target_text']], [k, t], 'empty slot after #259 edits'])
 # seeds too (job #259: seed 142's English changed, so its known slot is empty) — render mode reads SEED_FIXES the same way
 seed_fixes = []
