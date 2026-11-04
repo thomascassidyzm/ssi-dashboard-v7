@@ -538,8 +538,9 @@
     "target": "他在开始"
    },
    "reader_why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
-   "bucket": "after214",
-   "note": "S0224L01 is A9 (#214 re-glosses it and makes it not-new); 在开始 rows decided after #214 lands"
+   "bucket": 1,
+   "action": "delete",
+   "why": "他在开始 is unnatural and 'he's starting' has no taught fix (dark basket)"
   },
   {
    "id": "zho_for_eng:S0224L01U02",
@@ -548,8 +549,14 @@
     "target": "他现在在开始学"
    },
    "reader_why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
-   "bucket": "after214",
-   "note": "same"
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "he's starting to learn now",
+    "target": "他现在开始学了",
+    "roman": "tā xiànzài kāishǐ xué le"
+   },
+   "why": "在开始 'be in the middle of starting' is unnatural; 'he's starting to learn now' = 现在开始学了 (dark basket since #214 made S0224L01 not-new)"
   },
   {
    "id": "zho_for_eng:S0224L01U08",
@@ -1425,13 +1432,8 @@
    },
    "reader_why": "Same English as B01 (\"on their own\") over different Chinese.",
    "bucket": 1,
-   "action": "edit",
-   "after": {
-    "known": "come on their own",
-    "target": "自己来",
-    "roman": null
-   },
-   "why": "B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0520L01U03",
@@ -1441,8 +1443,8 @@
    },
    "reader_why": "整个 needs a noun after it; incomplete Chinese.",
    "bucket": 1,
-   "action": "delete",
-   "why": "整个 needs a noun"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0520L01U05",
@@ -1452,8 +1454,8 @@
    },
    "reader_why": "Same: 整个 needs a noun.",
    "bucket": 1,
-   "action": "delete",
-   "why": "same"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0520L02U05",
@@ -2076,8 +2078,8 @@
    },
    "reader_why": "Chinese and English do not match.",
    "bucket": 1,
-   "action": "delete",
-   "why": "Chinese and English do not match"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0606L01U06",
@@ -2141,8 +2143,8 @@
    },
    "reader_why": "English \"they made it happen\" does not match.",
    "bucket": 1,
-   "action": "delete",
-   "why": "Chinese says 'they fixed it', not 'made it happen'"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0625L01",
@@ -2162,8 +2164,8 @@
    },
    "reader_why": "The Chinese has no \"to go\".",
    "bucket": 1,
-   "action": "delete",
-   "why": "no 'to go' in the Chinese, and the row does not hold its LEGO"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0631L01",
@@ -2183,8 +2185,8 @@
    },
    "reader_why": "Ungrammatical; natural is 什么方法都行.",
    "bucket": 1,
-   "action": "delete",
-   "why": "什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
+   "action": "superseded",
+   "note": "already fixed or deleted by another job (#233/#214) before #219 applied"
   },
   {
    "id": "S0644L01U03",

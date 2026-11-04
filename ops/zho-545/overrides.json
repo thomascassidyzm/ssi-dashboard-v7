@@ -686,6 +686,22 @@
    "why": "#219: 吗 cannot end an embedded question; …了没有"
   },
   {
+   "id": "zho_for_eng:S0224L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "he's starting to learn now",
+    "target": "他现在在开始学"
+   },
+   "after": {
+    "known": "he's starting to learn now",
+    "target": "他现在开始学了",
+    "roman": "tā xiànzài kāishǐ xué le"
+   },
+   "why": "#219: 在开始 'be in the middle of starting' is unnatural; 'he's starting to learn now' = 现在开始学了 (dark basket since #214 made S0224L01 not-new)"
+  },
+  {
    "id": "zho_for_eng:S0384L01U06",
    "table": "phrase",
    "point": "other",
@@ -748,22 +764,6 @@
     "roman": null
    },
    "why": "#219: bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"
-  },
-  {
-   "id": "zho_for_eng:S0516L01B02",
-   "table": "phrase",
-   "point": "other",
-   "action": "edit",
-   "before": {
-    "known": "on their own",
-    "target": "自己来"
-   },
-   "after": {
-    "known": "come on their own",
-    "target": "自己来",
-    "roman": null
-   },
-   "why": "#219: B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
   },
   {
    "id": "zho_for_eng:S0549L02U03",
@@ -844,6 +844,18 @@
     "roman": null
    },
    "why": "#219: English made to say what the Chinese says: 早知道 = knew all along, not 'sooner or later'"
+  },
+  {
+   "id": "zho_for_eng:S0224L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "he's starting",
+    "target": "他在开始"
+   },
+   "after": null,
+   "why": "#219: 他在开始 is unnatural and 'he's starting' has no taught fix (dark basket)"
   },
   {
    "id": "zho_for_eng:S0094L02B04",
@@ -1350,30 +1362,6 @@
    "why": "#219: 关于 cannot dangle after 担心 (dark basket)"
   },
   {
-   "id": "zho_for_eng:S0520L01U03",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "I ate the whole thing",
-    "target": "我吃了整个"
-   },
-   "after": null,
-   "why": "#219: 整个 needs a noun"
-  },
-  {
-   "id": "zho_for_eng:S0520L01U05",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "nobody saw the whole thing",
-    "target": "没有人看到了整个"
-   },
-   "after": null,
-   "why": "#219: same"
-  },
-  {
    "id": "zho_for_eng:S0520L02U05",
    "table": "phrase",
    "point": "other",
@@ -1734,18 +1722,6 @@
    "why": "#219: Chinese and English do not match"
   },
   {
-   "id": "zho_for_eng:S0603L01B03",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "at the time",
-    "target": "那时我们"
-   },
-   "after": null,
-   "why": "#219: Chinese and English do not match"
-  },
-  {
    "id": "zho_for_eng:S0615L04U03",
    "table": "phrase",
    "point": "other",
@@ -1768,42 +1744,6 @@
    },
    "after": null,
    "why": "#219: 'I feel like it' means something else"
-  },
-  {
-   "id": "zho_for_eng:S0622L03U05",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "they made it happen",
-    "target": "他们把它弄好了"
-   },
-   "after": null,
-   "why": "#219: Chinese says 'they fixed it', not 'made it happen'"
-  },
-  {
-   "id": "zho_for_eng:S0627L01U04",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "I'm ready to go",
-    "target": "我准备好了"
-   },
-   "after": null,
-   "why": "#219: no 'to go' in the Chinese, and the row does not hold its LEGO"
-  },
-  {
-   "id": "zho_for_eng:S0633L01U06",
-   "table": "phrase",
-   "point": "other",
-   "action": "delete",
-   "before": {
-    "known": "whatever works is fine",
-    "target": "什么方法就好"
-   },
-   "after": null,
-   "why": "#219: 什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
   },
   {
    "id": "zho_for_eng:S0644L01U03",

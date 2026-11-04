@@ -35,11 +35,11 @@ E=[ # id, new known (None=same), new target (None=same), roman, why
 ("S0551L03U05",None,"我觉得那很丑","wǒ juéde nà hěn chǒu","same 以为 fault"),
 ("S0614L01U06",None,"我住的地方离工作的地方很近","wǒ zhù de dìfang lí gōngzuò de dìfang hěn jìn","离 needs a place: 工作的地方, as S0614L03U03"),
 ("S0664L01U02",None,"我需要知道你们准备好了没有","wǒ xūyào zhīdào nǐmen zhǔnbèi hǎo le méiyǒu","吗 cannot end an embedded question; …了没有"),
+("S0224L01U02",None,"他现在开始学了","tā xiànzài kāishǐ xué le","在开始 'be in the middle of starting' is unnatural; 'he's starting to learn now' = 现在开始学了 (dark basket since #214 made S0224L01 not-new)"),
 ("S0384L01U06","I wanted to tell you something a moment ago",None,None,"English made to say what the Chinese says (刚才 = a moment ago); the old English is S0357L01U02 = 我只是想… (ZUT)"),
 ("S0478L02B03","a very good heart",None,None,"English made to say what the Chinese says; 'a kind heart' is S0478L03 = 善良的心 (ZUT)"),
 ("S0478L02U05","you have a very good heart",None,None,"same"),
 ("S0457L02B01","area",None,None,"bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"),
-("S0516L01B02","come on their own",None,None,"B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"),
 ("S0549L02U03","I want to keep quiet",None,None,"English made to say what the Chinese says: 安静 = quiet, not calm"),
 ("S0580L01U02","I want to take her to that place",None,None,"English made to say what the Chinese says: 那个地方 = that place, not somewhere"),
 ("S0580L01U06","I often want to take the children to that place",None,None,"same"),
@@ -47,6 +47,7 @@ E=[ # id, new known (None=same), new target (None=same), roman, why
 ("S0606L01U06","I knew all along this would happen",None,None,"English made to say what the Chinese says: 早知道 = knew all along, not 'sooner or later'"),
 ]
 DEL={ # id: why
+"S0224L01B03":"他在开始 is unnatural and 'he's starting' has no taught fix (dark basket)",
 "S0094L02B04":"唯一这个 is ungrammatical (唯一 needs 的 + noun); no taught fix keeps the LEGO",
 "S0111L01U03":"告诉我关于这新东西 is ungrammatical; a fix (…的事) reads clumsily; 9 USE remain",
 "S0148L01U04":"我这个不太好 is not Chinese for 'not very good at this'; needs untaught 擅长",
@@ -89,8 +90,6 @@ DEL={ # id: why
 "S0505L01U05":"被告诉了那个 is not natural Chinese (dark basket)",
 "S0506L01B03":"two phrases glued together",
 "S0508L01B03":"关于 cannot dangle after 担心 (dark basket)",
-"S0520L01U03":"整个 needs a noun",
-"S0520L01U05":"same",
 "S0520L02U05":"家庭 = household; 'be with my family' needs 家人 (dark basket)",
 "S0522L03B02":"告诉我们说实话 stacks two verbs; 告诉我们实话 would drop the LEGO",
 "S0522L04U04":"想 cannot take 很傻",
@@ -121,15 +120,12 @@ DEL={ # id: why
 "S0597L03U06":"same",
 "S0600L01U05":"有多累 = how tired, not so tired",
 "S0602L01B02":"Chinese and English do not match",
-"S0603L01B03":"Chinese and English do not match",
 "S0615L04U03":"勇敢 is an adjective; 'courage' (勇气) would drop the LEGO",
 "S0618L01B03":"'I feel like it' means something else",
-"S0622L03U05":"Chinese says 'they fixed it', not 'made it happen'",
-"S0627L01U04":"no 'to go' in the Chinese, and the row does not hold its LEGO",
-"S0633L01U06":"什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)",
 "S0644L01U03":"再 is future 'again'; past is 又, which drops the LEGO (dark basket)",
 }
-out={"job":"#219","course":"zho_for_eng","edits":[],"deletes":[],"missing":[]}
+SUPERSEDED=["S0516L01B02","S0520L01U03","S0520L01U05","S0603L01B03","S0622L03U05","S0627L01U04","S0633L01U06"]  # fixed by another job (#233/#214) before #219 applied
+out={"job":"#219","superseded":SUPERSEDED,"course":"zho_for_eng","edits":[],"deletes":[],"missing":[]}
 for i,k,t,r,why in E:
   p=ph.get(i)
   if not p: out['missing'].append(i); continue

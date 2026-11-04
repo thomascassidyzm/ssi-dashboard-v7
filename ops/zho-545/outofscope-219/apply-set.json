@@ -1,5 +1,14 @@
 {
  "job": "#219",
+ "superseded": [
+  "S0516L01B02",
+  "S0520L01U03",
+  "S0520L01U05",
+  "S0603L01B03",
+  "S0622L03U05",
+  "S0627L01U04",
+  "S0633L01U06"
+ ],
  "course": "zho_for_eng",
  "edits": [
   {
@@ -380,6 +389,19 @@
    "why": "吗 cannot end an embedded question; …了没有"
   },
   {
+   "id": "S0224L01U02",
+   "before": {
+    "known": "he's starting to learn now",
+    "target": "他现在在开始学"
+   },
+   "after": {
+    "known": "he's starting to learn now",
+    "target": "他现在开始学了",
+    "roman": "tā xiànzài kāishǐ xué le"
+   },
+   "why": "在开始 'be in the middle of starting' is unnatural; 'he's starting to learn now' = 现在开始学了 (dark basket since #214 made S0224L01 not-new)"
+  },
+  {
    "id": "S0384L01U06",
    "before": {
     "known": "I just wanted to tell you something",
@@ -430,19 +452,6 @@
     "roman": null
    },
    "why": "bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"
-  },
-  {
-   "id": "S0516L01B02",
-   "before": {
-    "known": "on their own",
-    "target": "自己来"
-   },
-   "after": {
-    "known": "come on their own",
-    "target": "自己来",
-    "roman": null
-   },
-   "why": "B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
   },
   {
    "id": "S0549L02U03",
@@ -511,6 +520,14 @@
   }
  ],
  "deletes": [
+  {
+   "id": "S0224L01B03",
+   "before": {
+    "known": "he's starting",
+    "target": "他在开始"
+   },
+   "why": "他在开始 is unnatural and 'he's starting' has no taught fix (dark basket)"
+  },
   {
    "id": "S0094L02B04",
    "before": {
@@ -848,22 +865,6 @@
    "why": "关于 cannot dangle after 担心 (dark basket)"
   },
   {
-   "id": "S0520L01U03",
-   "before": {
-    "known": "I ate the whole thing",
-    "target": "我吃了整个"
-   },
-   "why": "整个 needs a noun"
-  },
-  {
-   "id": "S0520L01U05",
-   "before": {
-    "known": "nobody saw the whole thing",
-    "target": "没有人看到了整个"
-   },
-   "why": "same"
-  },
-  {
    "id": "S0520L02U05",
    "before": {
     "known": "I want to be with my family",
@@ -1104,14 +1105,6 @@
    "why": "Chinese and English do not match"
   },
   {
-   "id": "S0603L01B03",
-   "before": {
-    "known": "at the time",
-    "target": "那时我们"
-   },
-   "why": "Chinese and English do not match"
-  },
-  {
    "id": "S0615L04U03",
    "before": {
     "known": "it takes courage to say that",
@@ -1126,30 +1119,6 @@
     "target": "感觉像这样"
    },
    "why": "'I feel like it' means something else"
-  },
-  {
-   "id": "S0622L03U05",
-   "before": {
-    "known": "they made it happen",
-    "target": "他们把它弄好了"
-   },
-   "why": "Chinese says 'they fixed it', not 'made it happen'"
-  },
-  {
-   "id": "S0627L01U04",
-   "before": {
-    "known": "I'm ready to go",
-    "target": "我准备好了"
-   },
-   "why": "no 'to go' in the Chinese, and the row does not hold its LEGO"
-  },
-  {
-   "id": "S0633L01U06",
-   "before": {
-    "known": "whatever works is fine",
-    "target": "什么方法就好"
-   },
-   "why": "什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
   },
   {
    "id": "S0644L01U03",
