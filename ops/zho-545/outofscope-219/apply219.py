@@ -64,7 +64,6 @@ DEL={ # id: why
 "S0291L01U06":"same 更好多了 fault",
 "S0300L01U03":"这个显得很好 is odd Chinese and the English is stilted",
 "S0339L01B03":"很伤 is not Chinese for 'very hurt'",
-"S0348L01U04":"将要 + 试试 is an ungrammatical mix",
 "S0351L01U08":"待着安静 is not Chinese; also a bare imperative USE",
 "S0376L01B03":"去了哪儿 is the question 'where did … go', not 'went somewhere'",
 "S0411L01U06":"我家庭有四人 is not Chinese (我家有四口人 drops the LEGO 四人)",
