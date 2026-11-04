@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 414,
+  "lego_index": 1,
+  "known": "bottle",
+  "target": "병"
+ },
+ "at": "2026-11-04T18:02:19.982Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 134,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "build",
+   "known_text": "a yellow bottle",
+   "target_text": "노란 병",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "build",
+   "known_text": "a bottle or two of water",
+   "target_text": "물 한두 병",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "build",
+   "known_text": "holding a green bottle",
+   "target_text": "초록색 병 들고",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "build",
+   "known_text": "a black bottle near the entrance",
+   "target_text": "입구 근처에 검은 병",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "use",
+   "known_text": "the student is holding up a yellow bottle",
+   "target_text": "학생은 노란 병 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "use",
+   "known_text": "I drank a bottle or two of water on wednesday",
+   "target_text": "수요일에 물 한두 병 마셨어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "use",
+   "known_text": "I couldn't afford to buy a valuable bottle",
+   "target_text": "귀중한 병 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "use",
+   "known_text": "is the student still holding up the black bottle?",
+   "target_text": "학생은 아직도 검은 병 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 1,
+   "lego_known": "bottle",
+   "lego_target": "병",
+   "phrase_role": "use",
+   "known_text": "last year I couldn't afford to buy a green bottle",
+   "target_text": "작년에 초록색 병 살 여유가 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 410,
+  "lego_index": 2,
+  "known": "fight",
+  "target": "싸워요"
+ },
+ "at": "2026-11-04T17:52:26.963Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 164,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"the student fights with a friend on wednesday\" (unknown gloss \"fights\")",
+  "USE \"the student fights with a friend on wednesday\" → \"학생은 수요일에 친구와 싸워요\": popty:knownSide [{\"known\":\"the student fights with a friend on wednesday\",\"target\":\"학생은 수요일에 친구와 싸워요\",\"problem\":\"unknown gloss \\\"fights\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

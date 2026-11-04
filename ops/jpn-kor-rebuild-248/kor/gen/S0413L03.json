@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 413,
+  "lego_index": 3,
+  "known": "will fall",
+  "target": "넘어질"
+ },
+ "at": "2026-11-04T18:02:14.573Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 287,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"will fall\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "build",
+   "known_text": "until we fall",
+   "target_text": "넘어질 때까지",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "build",
+   "known_text": "a person who can fall alone",
+   "target_text": "혼자 넘어질 수 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "build",
+   "known_text": "who might fall badly",
+   "target_text": "심하게 넘어질 수도 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "build",
+   "known_text": "that you could fall over there",
+   "target_text": "저기 넘어질 수 있다고",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "use",
+   "known_text": "we still fight until we fall",
+   "target_text": "아직도 넘어질 때까지 싸워요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "use",
+   "known_text": "I told you that you could fall near the entrance",
+   "target_text": "입구 근처에 넘어질 수 있다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "use",
+   "known_text": "nobody told me that I could fall if I went too close",
+   "target_text": "너무 가까이 가면 넘어질 수 있다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "use",
+   "known_text": "I have never seen a cat that could fall badly",
+   "target_text": "심하게 넘어질 수 있는 고양이를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 3,
+   "lego_known": "will fall",
+   "lego_target": "넘어질",
+   "phrase_role": "use",
+   "known_text": "if we go over there we could fall",
+   "target_text": "저기 가면 넘어질 수 있을 거예요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 420,
+  "lego_index": 1,
+  "known": "age",
+  "target": "年齢"
+ },
+ "at": "2026-11-04T17:49:23.773Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 86,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "build",
+   "known_text": "age doesn't matter",
+   "target_text": "年齢関係ない",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "build",
+   "known_text": "it might be age",
+   "target_text": "年齢かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "build",
+   "known_text": "ask my sister's age",
+   "target_text": "妹の年齢聞く",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "build",
+   "known_text": "want to ask my sister's age",
+   "target_text": "妹の年齢聞きたい",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "i didn't ask because age doesn't matter",
+   "target_text": "年齢関係ないから聞かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "i heard that age doesn't matter",
+   "target_text": "年齢関係ないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "i couldn't believe my sister's age",
+   "target_text": "妹の年齢信じられなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "age doesn't matter, does it",
+   "target_text": "年齢関係ないんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "you need to consider age",
+   "target_text": "年齢考えるべき",
+   "pad": []
+  },
+  {
+   "seed_number": 420,
+   "lego_index": 1,
+   "lego_known": "age",
+   "lego_target": "年齢",
+   "phrase_role": "use",
+   "known_text": "i didn't want to ask my sister's age",
+   "target_text": "妹の年齢聞きたくなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

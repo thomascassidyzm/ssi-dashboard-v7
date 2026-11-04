@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 404,
+  "lego_index": 3,
+  "known": "will",
+  "target": "거라고"
+ },
+ "at": "2026-11-04T17:40:36.612Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 562,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"will\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "build",
+   "known_text": "that we will finish before thursday",
+   "target_text": "목요일 전에 끝낼 거라고",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "build",
+   "known_text": "I believe it will be okay",
+   "target_text": "괜찮을 거라고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "build",
+   "known_text": "I told you it will be okay",
+   "target_text": "괜찮을 거라고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "build",
+   "known_text": "that they will sell the company",
+   "target_text": "회사를 팔 거라고",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "I believe you will reach the top",
+   "target_text": "꼭대기에 닿을 거라고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "nobody told me we will finish before thursday",
+   "target_text": "목요일 전에 끝낼 거라고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "why do you believe they will sell the company",
+   "target_text": "왜 회사를 팔 거라고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "this year they told me they will build a new life",
+   "target_text": "올해 새로운 삶을 만들 거라고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "if we eat I believe it will be nice",
+   "target_text": "먹으면 좋을 거라고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 3,
+   "lego_known": "will",
+   "lego_target": "거라고",
+   "phrase_role": "use",
+   "known_text": "I told you I will be standing near the entrance",
+   "target_text": "입구 근처에 서 있을 거라고 말했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

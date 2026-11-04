@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 434,
+  "lego_index": 3,
+  "known": "can reduce",
+  "target": "減らせる"
+ },
+ "at": "2026-11-04T18:13:41.215Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 213,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"can reduce by half\" (unknown gloss \"by\"); \"we can reduce the waste by half, can't we?\" (unknown gloss \"by\")",
+  "BUILD \"can reduce by half\" → \"半分減らせる\": popty:knownSide [{\"known\":\"can reduce by half\",\"target\":\"半分減らせる\",\"problem\":\"unknown gloss \\\"by\\\"\"}]",
+  "USE \"we can reduce the waste by half, can't we?\" → \"無駄半分減らせるんじゃない\": popty:knownSide [{\"known\":\"we can reduce the waste by half, can't we?\",\"target\":\"無駄半分減らせるんじゃない\",\"problem\":\"unknown gloss \\\"by\\\"\"}]",
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

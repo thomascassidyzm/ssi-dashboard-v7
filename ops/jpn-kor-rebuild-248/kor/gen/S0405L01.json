@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 405,
+  "lego_index": 1,
+  "known": "reservation",
+  "target": "예약"
+ },
+ "at": "2026-11-04T17:38:12.617Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 98,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "build",
+   "known_text": "the thursday reservation",
+   "target_text": "목요일 예약",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "build",
+   "known_text": "a person who doesn't have a reservation",
+   "target_text": "예약 없는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "build",
+   "known_text": "I need to change the reservation",
+   "target_text": "예약 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "build",
+   "known_text": "this time I didn't make a reservation",
+   "target_text": "이번에는 예약 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "why didn't you make a reservation",
+   "target_text": "왜 예약 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "you need to change the reservation before you leave",
+   "target_text": "떠나기 전에 예약 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "I need to change the reservation because I have to leave so early",
+   "target_text": "이렇게 일찍 떠나야 해서 예약 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "I don't need to change the thursday reservation",
+   "target_text": "목요일 예약 바꿀 필요 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "I've forgotten the reservation",
+   "target_text": "예약 잊어버렸어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "예약",
+   "phrase_role": "use",
+   "known_text": "I should ask about the travel reservation",
+   "target_text": "여행 예약 물어봐야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

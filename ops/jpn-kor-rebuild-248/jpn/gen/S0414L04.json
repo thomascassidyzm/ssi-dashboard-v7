@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 414,
+  "lego_index": 4,
+  "known": "one bottle",
+  "target": "一本"
+ },
+ "at": "2026-11-04T17:39:27.323Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 122,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "build",
+   "known_text": "couldn't buy one bottle",
+   "target_text": "一本買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "build",
+   "known_text": "want to give one bottle",
+   "target_text": "一本あげたい",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "build",
+   "known_text": "no need to sell one bottle",
+   "target_text": "一本売る必要はない",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "build",
+   "known_text": "it might be one bottle of wine",
+   "target_text": "ワイン一本かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "use",
+   "known_text": "I want to give one bottle of wine to his friend",
+   "target_text": "友だちにワイン一本あげたい",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "use",
+   "known_text": "I couldn't buy one bottle of red wine",
+   "target_text": "赤ワイン一本買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "use",
+   "known_text": "it might be one bottle of red wine",
+   "target_text": "赤ワイン一本かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "use",
+   "known_text": "there's no need to sell one bottle of wine",
+   "target_text": "ワイン一本売る必要はない",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "one bottle",
+   "lego_target": "一本",
+   "phrase_role": "use",
+   "known_text": "last month I wanted to send one bottle of wine",
+   "target_text": "先月ワイン一本送りたかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

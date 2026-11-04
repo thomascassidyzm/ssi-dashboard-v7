@@ -1,0 +1,113 @@
+{
+ "lego": {
+  "seed_number": 419,
+  "lego_index": 2,
+  "known": "to like",
+  "target": "좋아하길"
+ },
+ "at": "2026-11-04T18:16:13.360Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 235,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "build",
+   "known_text": "to like ants",
+   "target_text": "개미들을 좋아하길",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "build",
+   "known_text": "to like a lot",
+   "target_text": "많이 좋아하길",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "build",
+   "known_text": "i was hoping you would like that place",
+   "target_text": "그곳을 좋아하길 바랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "build",
+   "known_text": "even if they want you to like football",
+   "target_text": "축구를 좋아하길 원하더라도",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "use",
+   "known_text": "my mother was hoping you would like the green shirt",
+   "target_text": "제 어머니는 초록색 셔츠를 좋아하길 바랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "use",
+   "known_text": "nobody was hoping you would like tomatoes",
+   "target_text": "아무도 토마토를 좋아하길 바라지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "use",
+   "known_text": "i was hoping you would like a person i know",
+   "target_text": "아는 사람을 좋아하길 바랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "use",
+   "known_text": "my mother was hoping you would still like my brother",
+   "target_text": "제 어머니는 제 남동생을 아직도 좋아하길 바랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 419,
+   "lego_index": 2,
+   "lego_known": "to like",
+   "lego_target": "좋아하길",
+   "phrase_role": "use",
+   "known_text": "even if they want you to like them they need to serve the community",
+   "target_text": "자기들을 좋아하길 원하더라도 사회에 봉사해야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

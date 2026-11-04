@@ -1,0 +1,154 @@
+{
+ "lego": {
+  "seed_number": 404,
+  "lego_index": 2,
+  "known": "thursday",
+  "target": "목요일"
+ },
+ "at": "2026-11-04T17:40:07.250Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 595,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.31 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "build",
+   "known_text": "before thursday",
+   "target_text": "목요일 전에",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "build",
+   "known_text": "since thursday morning",
+   "target_text": "목요일 아침부터",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "build",
+   "known_text": "alone on thursday morning",
+   "target_text": "혼자 목요일 아침에",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "build",
+   "known_text": "went out on thursday morning",
+   "target_text": "목요일 아침에 나갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "why did you have to finish before thursday",
+   "target_text": "왜 목요일 전에 끝내야 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "the student had to finish before thursday",
+   "target_text": "학생은 목요일 전에 끝내야 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "my daughter went out alone on thursday morning",
+   "target_text": "제 딸은 목요일 아침에 혼자 나갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "this time I won't be able to be there on thursday morning",
+   "target_text": "이번에는 목요일 아침에 거기에 있지 못할 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "since thursday morning nothing seems to be working",
+   "target_text": "목요일 아침부터 아무것도 안 되는 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "on thursday morning I went to see a person I know",
+   "target_text": "목요일 아침에 아는 사람을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "although I wanted to see you before thursday I didn't have time",
+   "target_text": "목요일 전에 만나고 싶었지만 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "my son hoped to see you on thursday morning",
+   "target_text": "제 아들은 목요일 아침에 보고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "thursday",
+   "lego_target": "목요일",
+   "phrase_role": "use",
+   "known_text": "I think I'll be ready before thursday",
+   "target_text": "목요일 전에 준비될 것 같아요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

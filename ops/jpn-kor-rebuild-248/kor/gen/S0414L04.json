@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 414,
+  "lego_index": 4,
+  "known": "please give",
+  "target": "주실"
+ },
+ "at": "2026-11-04T18:09:03.557Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 231,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"please give\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "build",
+   "known_text": "until you please give me water",
+   "target_text": "물 주실 때까지",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "build",
+   "known_text": "could you please give us a table",
+   "target_text": "자리를 주실 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "build",
+   "known_text": "the person who will please give us a table",
+   "target_text": "자리를 주실 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "build",
+   "known_text": "if you could please give me a few days",
+   "target_text": "며칠 주실 수 있으면",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "could you please give me the same book on wednesday",
+   "target_text": "수요일에 같은 책을 주실 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "I'm not going to wait until you please give me all the answers",
+   "target_text": "모든 답을 주실 때까지 기다리지 않을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "I should ask whether you could please give us a table near the entrance",
+   "target_text": "입구 근처에 자리를 주실 수 있는지 물어봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "if you could please give me a few days I should be ready",
+   "target_text": "며칠 주실 수 있으면 준비될 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find the person who will please give us a room",
+   "target_text": "방을 주실 사람을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 4,
+   "lego_known": "please give",
+   "lego_target": "주실",
+   "phrase_role": "use",
+   "known_text": "could you please give me tomatoes before the weekend",
+   "target_text": "주말 전에 토마토를 주실 수 있어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 427,
+  "lego_index": 4,
+  "known": "that they're bored",
+  "target": "지루해한다고"
+ },
+ "at": "2026-11-04T18:38:35.488Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 217,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"my mother certainly believes that they're bored\" (unknown gloss \"believes\")",
+  "USE \"my mother certainly believes that they're bored\" → \"제 어머니는 분명 지루해한다고 믿어요\": popty:knownSide [{\"known\":\"my mother certainly believes that they're bored\",\"target\":\"제 어머니는 분명 지루해한다고 믿어요\",\"problem\":\"unknown gloss \\\"believes\\\"\"}]",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

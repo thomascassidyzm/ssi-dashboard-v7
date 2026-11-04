@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 404,
+  "lego_index": 4,
+  "known": "if expect",
+  "target": "기대하면"
+ },
+ "at": "2026-11-04T17:36:34.716Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 286,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if expect\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "build",
+   "known_text": "you shouldn't expect",
+   "target_text": "기대하면 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "build",
+   "known_text": "if you expect a message",
+   "target_text": "메시지를 기대하면",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "build",
+   "known_text": "why shouldn't you expect",
+   "target_text": "왜 기대하면 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "build",
+   "known_text": "if you expect all the answers",
+   "target_text": "모든 답을 기대하면",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "if you expect all the answers you must work hard",
+   "target_text": "모든 답을 기대하면 열심히 해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "if you expect a new life you need to move to a different country alone",
+   "target_text": "새로운 삶을 기대하면 혼자 다른 나라로 이사해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "you shouldn't expect the same book",
+   "target_text": "같은 책을 기대하면 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "why shouldn't we expect a message before thursday",
+   "target_text": "왜 목요일 전에 메시지를 기대하면 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "if you expect all the answers you should ask yourself",
+   "target_text": "모든 답을 기대하면 자신한테 물어봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 4,
+   "lego_known": "if expect",
+   "lego_target": "기대하면",
+   "phrase_role": "use",
+   "known_text": "you shouldn't expect a new life in a day",
+   "target_text": "하루 만에 새로운 삶을 기대하면 안 돼요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

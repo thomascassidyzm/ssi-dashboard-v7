@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 427,
+  "lego_index": 2,
+  "known": "is bored",
+  "target": "退屈してる"
+ },
+ "at": "2026-11-04T18:00:53.688Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 229,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is bored\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "build",
+   "known_text": "he is quite bored",
+   "target_text": "結構退屈してる",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "build",
+   "known_text": "the children who are bored",
+   "target_text": "退屈してる子ども",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "build",
+   "known_text": "he might be bored",
+   "target_text": "退屈してるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "build",
+   "known_text": "isn't she bored",
+   "target_text": "退屈してるんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "i wonder if he is truly bored",
+   "target_text": "本当に退屈してるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if she is quite bored",
+   "target_text": "結構退屈してるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "because he is surely bored it's better to go straight home",
+   "target_text": "きっと退屈してるからまっすぐ帰ったほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "i didn't think that he is bored",
+   "target_text": "退屈してるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "i heard that she is quite bored",
+   "target_text": "結構退屈してるって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 427,
+   "lego_index": 2,
+   "lego_known": "is bored",
+   "lego_target": "退屈してる",
+   "phrase_role": "use",
+   "known_text": "isn't he truly bored",
+   "target_text": "本当に退屈してるんじゃない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

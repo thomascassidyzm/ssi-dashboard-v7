@@ -1,0 +1,32 @@
+{
+ "lego": {
+  "seed_number": 434,
+  "lego_index": 1,
+  "known": "college student",
+  "target": "学生"
+ },
+ "at": "2026-11-04T18:12:01.967Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 234,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 5 phrase(s) use English the learner has not been given. \"college students who speak japanese\" (unknown gloss \"students\"); \"i'm standing near the college students\" (unknown gloss \"students\"); \"they said they were college students\" (unknown gloss \"students\"); \"i needed to talk to the college students who speak japanese\" (unknown gloss \"students\"); \"i didn't think they were college students\" (unknown gloss \"students\")",
+  "BUILD \"college students who speak japanese\" → \"日本語話せる学生\": popty:knownSide [{\"known\":\"college students who speak japanese\",\"target\":\"日本語話せる学生\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "BUILD \"i'm standing near the college students\" → \"学生の近くに立ってる\": popty:knownSide [{\"known\":\"i'm standing near the college students\",\"target\":\"学生の近くに立ってる\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "USE \"they said they were college students\" → \"学生だって言ってた\": popty:knownSide [{\"known\":\"they said they were college students\",\"target\":\"学生だって言ってた\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "USE \"i needed to talk to the college students who speak japanese\" → \"日本語話せる学生と話す必要があった\": popty:knownSide [{\"known\":\"i needed to talk to the college students who speak japanese\",\"target\":\"日本語話せる学生と話す必要があった\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "USE \"i didn't think they were college students\" → \"学生とは思わなかった\": popty:knownSide [{\"known\":\"i didn't think they were college students\",\"target\":\"学生とは思わなかった\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"college student\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 431,
+  "lego_index": 3,
+  "known": "not ready",
+  "target": "準備できてない"
+ },
+ "at": "2026-11-04T18:07:01.319Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 242,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"the students who aren't ready\" (unknown gloss \"students\")",
+  "BUILD \"the students who aren't ready\" → \"準備できてない生徒\": popty:knownSide [{\"known\":\"the students who aren't ready\",\"target\":\"準備できてない生徒\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not ready\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

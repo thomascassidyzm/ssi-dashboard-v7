@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 415,
+  "lego_index": 1,
+  "known": "won't be a problem",
+  "target": "問題にならない"
+ },
+ "at": "2026-11-04T17:42:42.435Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 239,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "build",
+   "known_text": "it might not be a problem",
+   "target_text": "問題にならないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "build",
+   "known_text": "a method that won't be a problem",
+   "target_text": "問題にならない方法",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "build",
+   "known_text": "making mistakes won't be a problem",
+   "target_text": "間違えることは問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "build",
+   "known_text": "if I asked it wouldn't be a problem",
+   "target_text": "頼んだら問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "I'll ask if that won't be a problem",
+   "target_text": "それは問題にならないか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "it won't be a problem, isn't it?",
+   "target_text": "問題にならないんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "because it won't be a problem I think it's okay",
+   "target_text": "問題にならないから大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "I heard that making mistakes won't be a problem",
+   "target_text": "間違えることは問題にならないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "tomorrow that won't be a problem",
+   "target_text": "明日それは問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 415,
+   "lego_index": 1,
+   "lego_known": "won't be a problem",
+   "lego_target": "問題にならない",
+   "phrase_role": "use",
+   "known_text": "even if I make mistakes it might not be a problem",
+   "target_text": "間違えても問題にならないかもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

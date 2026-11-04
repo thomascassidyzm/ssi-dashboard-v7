@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 431,
+  "lego_index": 1,
+  "known": "ready",
+  "target": "준비"
+ },
+ "at": "2026-11-04T18:49:21.659Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 196,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "build",
+   "known_text": "still not ready",
+   "target_text": "아직도 준비 안 됐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "build",
+   "known_text": "that it's not ready yet",
+   "target_text": "아직 준비 안 됐다고",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "build",
+   "known_text": "not ready on tuesday",
+   "target_text": "화요일에 준비 안 됐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "build",
+   "known_text": "that it's still not ready",
+   "target_text": "아직도 준비 안 됐다고",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "use",
+   "known_text": "why isn't it ready yet",
+   "target_text": "왜 아직 준비 안 됐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "use",
+   "known_text": "I told them it's not ready yet",
+   "target_text": "그들에게 아직 준비 안 됐다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "use",
+   "known_text": "I believe it's still not ready",
+   "target_text": "아직도 준비 안 됐다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "use",
+   "known_text": "nobody is ready yet",
+   "target_text": "아무도 아직 준비 안 됐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 431,
+   "lego_index": 1,
+   "lego_known": "ready",
+   "lego_target": "준비",
+   "phrase_role": "use",
+   "known_text": "it's still not ready but it's not a problem",
+   "target_text": "아직도 준비 안 됐어요 하지만 문제가 안 돼요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

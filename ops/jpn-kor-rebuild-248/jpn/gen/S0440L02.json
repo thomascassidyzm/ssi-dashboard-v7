@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 440,
+  "lego_index": 2,
+  "known": "while still",
+  "target": "うちに"
+ },
+ "at": "2026-11-04T18:23:45.901Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 212,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"i don't want to die while i'm still young\" (unknown gloss \"die\"); \"i want to become patient while i'm still young\" (unknown gloss \"patient\")",
+  "USE \"i don't want to die while i'm still young\" → \"若いうちに死にたくない\": popty:knownSide [{\"known\":\"i don't want to die while i'm still young\",\"target\":\"若いうちに死にたくない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "USE \"i want to become patient while i'm still young\" → \"若いうちに我慢強くなりたい\": popty:knownSide [{\"known\":\"i want to become patient while i'm still young\",\"target\":\"若いうちに我慢強くなりたい\",\"problem\":\"unknown gloss \\\"patient\\\"\"}]",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

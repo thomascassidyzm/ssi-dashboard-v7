@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 446,
+  "lego_index": 2,
+  "known": "cannot break",
+  "target": "壊せない"
+ },
+ "at": "2026-11-04T18:35:37.728Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 209,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"cannot break\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "build",
+   "known_text": "can't break the window",
+   "target_text": "窓壊せない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "build",
+   "known_text": "surely can't break it",
+   "target_text": "きっと壊せない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "build",
+   "known_text": "might not be able to break it",
+   "target_text": "壊せないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "build",
+   "known_text": "i heard they can't break it",
+   "target_text": "壊せないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "they can't break it so it won't be a problem",
+   "target_text": "壊せないから問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "i heard that they can't break the window",
+   "target_text": "窓壊せないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "they might not be able to break the door",
+   "target_text": "ドア壊せないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "i think it's okay because they can't break the window",
+   "target_text": "窓壊せないから大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "this time they can't break the suitcase",
+   "target_text": "今回スーツケース壊せない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "even if they want to do it they can't break the door",
+   "target_text": "やりたくてもドア壊せない",
+   "pad": []
+  },
+  {
+   "seed_number": 446,
+   "lego_index": 2,
+   "lego_known": "cannot break",
+   "lego_target": "壊せない",
+   "phrase_role": "use",
+   "known_text": "i heard that you can't break such a suitcase",
+   "target_text": "そんなスーツケース壊せないって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

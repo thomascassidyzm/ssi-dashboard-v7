@@ -1,0 +1,32 @@
+{
+ "lego": {
+  "seed_number": 439,
+  "lego_index": 1,
+  "known": "dying",
+  "target": "死に"
+ },
+ "at": "2026-11-04T18:23:43.363Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 222,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 6 phrase(s) use English the learner has not been given. \"don't want to die\" (unknown gloss \"die\"); \"don't want to die next year\" (unknown gloss \"die\"); \"they might not want to die\" (unknown gloss \"die\"); \"i'm not sure if they don't want to die\" (unknown gloss \"die\"); \"we didn't want to die in an office\" (unknown gloss \"die\")",
+  "BUILD \"don't want to die\" → \"死にたくない\": popty:knownSide [{\"known\":\"don't want to die\",\"target\":\"死にたくない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "BUILD \"don't want to die next year\" → \"来年死にたくない\": popty:knownSide [{\"known\":\"don't want to die next year\",\"target\":\"来年死にたくない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "USE \"they might not want to die\" → \"死にたくないかもしれない\": popty:knownSide [{\"known\":\"they might not want to die\",\"target\":\"死にたくないかもしれない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "USE \"i'm not sure if they don't want to die\" → \"死にたくないかどうか分からない\": popty:knownSide [{\"known\":\"i'm not sure if they don't want to die\",\"target\":\"死にたくないかどうか分からない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "USE \"we didn't want to die in an office\" → \"オフィスで死にたくなかった\": popty:knownSide [{\"known\":\"we didn't want to die in an office\",\"target\":\"オフィスで死にたくなかった\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "USE \"isn't it that they don't want to die\" → \"死にたくないんじゃない\": popty:knownSide [{\"known\":\"isn't it that they don't want to die\",\"target\":\"死にたくないんじゃない\",\"problem\":\"unknown gloss \\\"die\\\"\"}]",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

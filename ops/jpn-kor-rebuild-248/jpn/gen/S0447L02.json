@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 447,
+  "lego_index": 2,
+  "known": "driving",
+  "target": "運転"
+ },
+ "at": "2026-11-04T18:39:06.835Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 243,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "build",
+   "known_text": "let's drive later",
+   "target_text": "あとで運転しよう",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "build",
+   "known_text": "you ought to drive",
+   "target_text": "運転したほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "build",
+   "known_text": "was driving last night",
+   "target_text": "昨夜運転してた",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "build",
+   "known_text": "need to drive tomorrow",
+   "target_text": "明日運転する必要がある",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "i heard that you were driving",
+   "target_text": "運転してたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "you should drive while you're still young",
+   "target_text": "若いうちに運転すべき",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "they didn't drive last month",
+   "target_text": "彼ら先月運転しなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "i want you to drive properly",
+   "target_text": "ちゃんと運転してほしい",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "i didn't think that they were driving",
+   "target_text": "彼ら運転してたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if i need to drive this time",
+   "target_text": "今回運転する必要があるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "driving",
+   "lego_target": "運転",
+   "phrase_role": "use",
+   "known_text": "you ought to drive a little more",
+   "target_text": "もう少し運転したほうがいい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

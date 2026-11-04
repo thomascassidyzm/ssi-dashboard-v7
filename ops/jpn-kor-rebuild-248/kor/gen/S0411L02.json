@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 411,
+  "lego_index": 2,
+  "known": "table",
+  "target": "자리를"
+ },
+ "at": "2026-11-04T17:56:38.372Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab",
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 251,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 2 phrase(s) use target words not yet introduced: [{\"phrase\":\"목요일 자리를 예약하고 싶어요\",\"unknown\":\"예약하고\"},{\"phrase\":\"입구 근처에 자리를 예약하고 싶지 않다고 했어요\",\"unknown\":\"예약하고\"}]",
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"several tables near the entrance\" (unknown gloss \"tables\")",
+  "BUILD \"several tables near the entrance\" → \"입구 근처에 여러 자리를\": popty:knownSide [{\"known\":\"several tables near the entrance\",\"target\":\"입구 근처에 여러 자리를\",\"problem\":\"unknown gloss \\\"tables\\\"\"}]",
+  "USE \"I want to book a table for thursday\" → \"목요일 자리를 예약하고 싶어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"목요일 자리를 예약하고 싶어요\",\"unknown\":\"예약하고\"}],\"total\":1}",
+  "USE \"she said that she doesn't want to book a table near the entrance\" → \"입구 근처에 자리를 예약하고 싶지 않다고 했어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"입구 근처에 자리를 예약하고 싶지 않다고 했어요\",\"unknown\":\"예약하고\"}],\"total\":1}"
+ ],
+ "rows": [],
+ "keep": false
+}

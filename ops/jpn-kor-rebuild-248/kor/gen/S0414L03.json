@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 414,
+  "lego_index": 3,
+  "known": "wine",
+  "target": "와인"
+ },
+ "at": "2026-11-04T18:05:12.359Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 172,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "build",
+   "known_text": "red wine",
+   "target_text": "레드 와인",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "build",
+   "known_text": "a wine bottle",
+   "target_text": "와인 병",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "build",
+   "known_text": "a red wine bottle",
+   "target_text": "레드 와인 병",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "build",
+   "known_text": "a person who doesn't have wine",
+   "target_text": "와인 없는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "can you give me red wine?",
+   "target_text": "레드 와인 줄 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "if we go to the restaurant I wonder if there will be red wine",
+   "target_text": "식당에 가면 레드 와인 있을지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "I have never seen yellow wine before",
+   "target_text": "전에 노란 와인 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "I wonder if there will still be wine",
+   "target_text": "아직도 와인 있을지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "the person who's sitting over there drank wine alone",
+   "target_text": "저기 앉아 있는 사람 와인 혼자 마셨어요",
+   "pad": []
+  },
+  {
+   "seed_number": 414,
+   "lego_index": 3,
+   "lego_known": "wine",
+   "lego_target": "와인",
+   "phrase_role": "use",
+   "known_text": "I drank wine with a friend on wednesday",
+   "target_text": "수요일에 친구와 와인 마셨어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

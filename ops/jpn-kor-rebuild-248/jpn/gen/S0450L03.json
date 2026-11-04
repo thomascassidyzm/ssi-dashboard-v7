@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 450,
+  "lego_index": 3,
+  "known": "not ride",
+  "target": "乗らない"
+ },
+ "at": "2026-11-04T18:44:54.719Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 226,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"the reason for not riding\" (unknown gloss \"riding\")",
+  "BUILD \"the reason for not riding\" → \"乗らない理由\": popty:knownSide [{\"known\":\"the reason for not riding\",\"target\":\"乗らない理由\",\"problem\":\"unknown gloss \\\"riding\\\"\"}]",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

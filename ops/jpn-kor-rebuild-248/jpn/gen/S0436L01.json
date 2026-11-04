@@ -1,0 +1,24 @@
+{
+ "lego": {
+  "seed_number": 436,
+  "lego_index": 1,
+  "known": "minimum",
+  "target": "最低"
+ },
+ "at": "2026-11-04T18:17:35.807Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 268,
+ "floorsOnly": false,
+ "lastReasons": [
+  "BUILD \"please give a minimum of one bottle\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.31 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

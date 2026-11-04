@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 441,
+  "lego_index": 1,
+  "known": "a way of doing",
+  "target": "やり方"
+ },
+ "at": "2026-11-04T18:27:09.020Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 268,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"a way of doing\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "build",
+   "known_text": "the best way of doing",
+   "target_text": "一番いいやり方",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "build",
+   "known_text": "should consider a way of doing",
+   "target_text": "やり方を考えたほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "build",
+   "known_text": "might be the same way of doing",
+   "target_text": "同じやり方かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "build",
+   "known_text": "i thought it was an obvious way of doing",
+   "target_text": "分かりきったやり方だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "i have never seen such a way of doing",
+   "target_text": "そんなやり方見たことない",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "i didn't think that it was the correct way of doing",
+   "target_text": "正しいやり方とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "you don't need to worry about the way of doing",
+   "target_text": "やり方を心配しなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "so far i'm happy with this way of doing",
+   "target_text": "今のところこのやり方には満足してる",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "we should consider the best way of doing",
+   "target_text": "一番いいやり方を考えたほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 441,
+   "lego_index": 1,
+   "lego_known": "a way of doing",
+   "lego_target": "やり方",
+   "phrase_role": "use",
+   "known_text": "i want to know the best way of doing",
+   "target_text": "一番いいやり方知りたい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

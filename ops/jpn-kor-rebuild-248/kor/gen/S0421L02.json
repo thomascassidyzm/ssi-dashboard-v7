@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 421,
+  "lego_index": 2,
+  "known": "is happening",
+  "target": "있다는"
+ },
+ "at": "2026-11-04T18:27:05.652Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 613,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"the fact that you are living alone\" (unknown gloss \"living\"); \"i didn't know the fact that you are growing tomatoes\" (unknown gloss \"growing\"); \"i've forgotten the fact that you are living in a city\" (unknown gloss \"living\")",
+  "BUILD \"the fact that you are living alone\" → \"혼자 살고 있다는 사실을\": popty:knownSide [{\"known\":\"the fact that you are living alone\",\"target\":\"혼자 살고 있다는 사실을\",\"problem\":\"unknown gloss \\\"living\\\"\"}]",
+  "USE \"i didn't know the fact that you are growing tomatoes\" → \"토마토를 키우고 있다는 사실을 몰랐어요\": popty:knownSide [{\"known\":\"i didn't know the fact that you are growing tomatoes\",\"target\":\"토마토를 키우고 있다는 사실을 몰랐어요\",\"problem\":\"unknown gloss \\\"growing\\\"\"}]",
+  "USE \"i've forgotten the fact that you are living in a city\" → \"도시에서 살고 있다는 사실을 잊어버렸어요\": popty:knownSide [{\"known\":\"i've forgotten the fact that you are living in a city\",\"target\":\"도시에서 살고 있다는 사실을 잊어버렸어요\",\"problem\":\"unknown gloss \\\"living\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"is happening\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 444,
+  "lego_index": 2,
+  "known": "thought",
+  "target": "思った"
+ },
+ "at": "2026-11-04T18:32:08.735Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 300,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"quieter than they thought\" (unknown gloss \"quieter\"); \"isn't this afternoon busier than i thought\" (unknown gloss \"busier\"); \"because it was busier than i thought i couldn't go\" (unknown gloss \"busier\")",
+  "BUILD \"quieter than they thought\" → \"思ったより静か\": popty:knownSide [{\"known\":\"quieter than they thought\",\"target\":\"思ったより静か\",\"problem\":\"unknown gloss \\\"quieter\\\"\"}]",
+  "USE \"isn't this afternoon busier than i thought\" → \"今日の午後思ったより忙しいんじゃない\": popty:knownSide [{\"known\":\"isn't this afternoon busier than i thought\",\"target\":\"今日の午後思ったより忙しいんじゃない\",\"problem\":\"unknown gloss \\\"busier\\\"\"}]",
+  "USE \"because it was busier than i thought i couldn't go\" → \"思ったより忙しかったから行けなかった\": popty:knownSide [{\"known\":\"because it was busier than i thought i couldn't go\",\"target\":\"思ったより忙しかったから行けなかった\",\"problem\":\"unknown gloss \\\"busier\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

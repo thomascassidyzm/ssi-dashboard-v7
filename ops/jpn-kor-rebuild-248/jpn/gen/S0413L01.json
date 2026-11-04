@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 413,
+  "lego_index": 1,
+  "known": "edge",
+  "target": "端"
+ },
+ "at": "2026-11-04T17:37:13.988Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 281,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"edge\" initially, medially AND finally.",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "build",
+   "known_text": "it might be this edge",
+   "target_text": "この端かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "build",
+   "known_text": "the person who is at the edge",
+   "target_text": "端にいる人",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "build",
+   "known_text": "i thought it was the same edge",
+   "target_text": "同じ端だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "build",
+   "known_text": "i'm not sure if it's the edge",
+   "target_text": "端かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was this edge",
+   "target_text": "この端とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i know the young man who's standing near the edge",
+   "target_text": "端の近くに立ってる若い男性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i want to put it near the same edge",
+   "target_text": "同じ端の近くに置きたい",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i heard that it was the edge",
+   "target_text": "端って聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i'll ask later if it's the edge",
+   "target_text": "あとで端か聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "edge",
+   "lego_target": "端",
+   "phrase_role": "use",
+   "known_text": "i have never seen this edge",
+   "target_text": "この端見たことない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

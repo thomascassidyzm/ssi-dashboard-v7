@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 450,
+  "lego_index": 1,
+  "known": "train",
+  "target": "電車"
+ },
+ "at": "2026-11-04T18:41:24.256Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 96,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "build",
+   "known_text": "it might be the train",
+   "target_text": "電車かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "build",
+   "known_text": "walking towards the train",
+   "target_text": "電車のほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "build",
+   "known_text": "standing near the train",
+   "target_text": "電車の近くに立ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "build",
+   "known_text": "i thought it was the same train",
+   "target_text": "同じ電車だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "the train is going to be late",
+   "target_text": "電車遅れそう",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "i've never seen this train",
+   "target_text": "この電車見たことない",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "the train is the only way",
+   "target_text": "電車しか方法がない",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait for the train",
+   "target_text": "電車待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "back then i thought it was the yellow train",
+   "target_text": "その時は黄色い電車だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 1,
+   "lego_known": "train",
+   "lego_target": "電車",
+   "phrase_role": "use",
+   "known_text": "it might be a new train",
+   "target_text": "新しい電車かもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

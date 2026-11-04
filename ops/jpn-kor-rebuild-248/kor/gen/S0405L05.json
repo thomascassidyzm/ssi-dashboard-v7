@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 405,
+  "lego_index": 5,
+  "known": "must book",
+  "target": "예약해야"
+ },
+ "at": "2026-11-04T17:45:32.663Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 296,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"must book\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "build",
+   "known_text": "whether we have to book on wednesday",
+   "target_text": "수요일에 예약해야 하는지",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "build",
+   "known_text": "should we book alone",
+   "target_text": "혼자 예약해야 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "build",
+   "known_text": "we would have had to book this time",
+   "target_text": "이번에는 예약해야 했을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "build",
+   "known_text": "because we have to book directly",
+   "target_text": "바로 예약해야 해서",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "why should we book this year",
+   "target_text": "왜 올해 예약해야 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "nobody told me that we had to book last year",
+   "target_text": "작년에 예약해야 했다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "I didn't know whether we had to book somewhere",
+   "target_text": "어딘가에 예약해야 하는지 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "we would have had to book somewhere this time",
+   "target_text": "이번에는 어딘가에 예약해야 했을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "should we book a restaurant on wednesday",
+   "target_text": "수요일에 식당에 예약해야 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "I asked why we have to book",
+   "target_text": "왜 예약해야 하는지 물어봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 5,
+   "lego_known": "must book",
+   "lego_target": "예약해야",
+   "phrase_role": "use",
+   "known_text": "because we had to book we went on wednesday",
+   "target_text": "예약해야 해서 수요일에 갔어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

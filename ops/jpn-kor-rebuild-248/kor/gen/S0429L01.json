@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 429,
+  "lego_index": 1,
+  "known": "perfect",
+  "target": "완벽할"
+ },
+ "at": "2026-11-04T18:45:25.294Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 250,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "build",
+   "known_text": "it'll certainly be perfect",
+   "target_text": "분명 완벽할 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "build",
+   "known_text": "until it's perfect",
+   "target_text": "완벽할 때까지",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "build",
+   "known_text": "a person who would be perfect",
+   "target_text": "완벽할 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "build",
+   "known_text": "a person who might be perfect",
+   "target_text": "완벽할 수도 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "if you're able to come it would be perfect",
+   "target_text": "올 수 있으면 완벽할 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "I'm going to continue until it's perfect",
+   "target_text": "완벽할 때까지 계속 할 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find a person who would be perfect for the community",
+   "target_text": "사회에 완벽할 사람을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "if we go directly it would be perfect",
+   "target_text": "바로 가면 완벽할 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "it'll be perfect on tuesday",
+   "target_text": "화요일에 완벽할 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 429,
+   "lego_index": 1,
+   "lego_known": "perfect",
+   "lego_target": "완벽할",
+   "phrase_role": "use",
+   "known_text": "when you work at home it'll be perfect",
+   "target_text": "집에서 일하면 완벽할 거예요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

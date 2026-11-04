@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 411,
+  "lego_index": 3,
+  "known": "reserve",
+  "target": "예약하고"
+ },
+ "at": "2026-11-04T17:56:31.673Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 193,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "build",
+   "known_text": "would like to reserve",
+   "target_text": "예약하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "build",
+   "known_text": "still want to reserve",
+   "target_text": "아직도 예약하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "build",
+   "known_text": "reserve a table and send a message",
+   "target_text": "자리를 예약하고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "build",
+   "known_text": "reserve at a restaurant and go out",
+   "target_text": "식당에 예약하고 나가고",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "do you want to reserve a table tonight",
+   "target_text": "오늘 밤에 자리를 예약하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "why do you want to reserve directly",
+   "target_text": "왜 바로 예약하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to reserve a table",
+   "target_text": "자리를 예약하고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to reserve on wednesday",
+   "target_text": "수요일에 예약하고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "I wanted to reserve a table but the money wasn't sufficient",
+   "target_text": "자리를 예약하고 싶었지만 돈이 충분하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 3,
+   "lego_known": "reserve",
+   "lego_target": "예약하고",
+   "phrase_role": "use",
+   "known_text": "on monday he said that he wants to reserve at a restaurant",
+   "target_text": "월요일에 식당에 예약하고 싶다고 했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

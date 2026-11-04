@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 414,
+  "lego_index": 2,
+  "known": "red",
+  "target": "레드"
+ },
+ "at": "2026-11-04T18:06:07.057Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 232,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"several red cars\" (unknown gloss \"cars\")",
+  "BUILD \"several red cars\" → \"여러 레드 차를\": popty:knownSide [{\"known\":\"several red cars\",\"target\":\"여러 레드 차를\",\"problem\":\"unknown gloss \\\"cars\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

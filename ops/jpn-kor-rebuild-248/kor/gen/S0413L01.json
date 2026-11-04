@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 413,
+  "lego_index": 1,
+  "known": "if go",
+  "target": "가면"
+ },
+ "at": "2026-11-04T18:05:59.196Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 568,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if go\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "build",
+   "known_text": "if you go over there",
+   "target_text": "저기 가면",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "build",
+   "known_text": "if you go towards the post office",
+   "target_text": "우체국 쪽으로 가면",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "build",
+   "known_text": "if you go it's not a problem",
+   "target_text": "가면 문제가 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "build",
+   "known_text": "if you go to the left at the corner",
+   "target_text": "모퉁이에서 왼쪽으로 가면",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "what would you do if I go alone",
+   "target_text": "혼자 가면 어떻게 하겠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "if we go on wednesday we can stay longer",
+   "target_text": "수요일에 가면 더 오래 있을 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "if I go I want to meet a person I know",
+   "target_text": "가면 아는 사람을 만나고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "if I go to africa I won't be able to be there",
+   "target_text": "아프리카에 가면 거기에 있지 못할 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "if I go to the top I feel better",
+   "target_text": "꼭대기에 가면 기분이 나아요",
+   "pad": []
+  },
+  {
+   "seed_number": 413,
+   "lego_index": 1,
+   "lego_known": "if go",
+   "lego_target": "가면",
+   "phrase_role": "use",
+   "known_text": "if we go to a restaurant tonight let's talk",
+   "target_text": "오늘 밤에 식당에 가면 이야기해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
