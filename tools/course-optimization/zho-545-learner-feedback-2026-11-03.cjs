@@ -332,7 +332,9 @@ async function main() {
   if (mode === 'render') {
     // SKIP_LEGOS=S0171L01,… leaves those LEGOs' slots alone (empties another pass made, outside this job's baskets).
     const skipL = new Set(String(process.env.SKIP_LEGOS || '').split(',').filter(Boolean));
-    const inSkip = (t) => skipL.has(t.lego_id || sid(t.phrase_id || '').slice(0, 8));
+    // ONLY_DATA=1 keeps just the slots of rows this pass's data touched (#233: another job's render was filling the rest).
+    const mine = process.env.ONLY_DATA === '1' ? new Set(loadData(DATA_DIR).FIXES.map((f) => f[0])) : null;
+    const inSkip = (t) => skipL.has(t.lego_id || sid(t.phrase_id || '').slice(0, 8)) || (mine && !(t.phrase_id && mine.has(sid(t.phrase_id))));
     const asks = emptySlots(db).map((a) => ({ ...a, slots: a.slots.filter((t) => !inSkip(t)) })).filter((a) => a.slots.length);
     const log = { job: JOB, mode: 'render', asks: [] };
     for (const a of asks) {
