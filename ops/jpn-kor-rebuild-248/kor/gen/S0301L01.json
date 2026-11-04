@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 301,
+  "lego_index": 1,
+  "known": "show",
+  "target": "보여 주고"
+ },
+ "at": "2026-11-04T13:31:59.069Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 260,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "build",
+   "known_text": "show him",
+   "target_text": "그한테 보여 주고",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "build",
+   "known_text": "I want to show you his letter",
+   "target_text": "그의 편지를 보여 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "build",
+   "known_text": "my son wanted to show you a film",
+   "target_text": "제 아들은 영화를 보여 주고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "build",
+   "known_text": "show you two emails tomorrow",
+   "target_text": "내일 이메일을 두 개 보여 주고",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "I wanted to show you my keys but I didn't have time",
+   "target_text": "제 열쇠를 보여 주고 싶었지만 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "I've forgotten the film I wanted to show you",
+   "target_text": "보여 주고 싶었던 영화를 잊어버렸어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "I didn't say that I wanted to show you that book",
+   "target_text": "그 책을 보여 주고 싶다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "before you leave I want to show you two emails",
+   "target_text": "떠나기 전에 이메일을 두 개 보여 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "do you want to show him tomorrow",
+   "target_text": "내일 그한테 보여 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "my daughter wants to show you tonight",
+   "target_text": "제 딸은 오늘 밤에 보여 주고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 301,
+   "lego_index": 1,
+   "lego_known": "show",
+   "lego_target": "보여 주고",
+   "phrase_role": "use",
+   "known_text": "I want to show you on my own",
+   "target_text": "혼자서 보여 주고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

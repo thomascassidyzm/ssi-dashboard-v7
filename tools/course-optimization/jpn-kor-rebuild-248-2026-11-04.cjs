@@ -47,7 +47,8 @@ function padReasons(course, known, target) {
     if (/と思う$|と思います$/.test(t) && !/\b(think|thought|wonder|guess|suppose|reckon|expect|believe|imagine)\b/.test(k)) r.push('jpn: と思う tail, English has no "think"');
     if (/から$/.test(t) && !/\b(because|since|so|from|as|after)\b/.test(k)) r.push('jpn: dangling から, English has no "because/from"');
     if (/ことがある$|ことがあります$|ことある$/.test(t) && !/\b(ever|sometimes|have been|has been|have (?:\w+ )?(?:seen|done|had|heard|met|eaten|tried|gone|visited)|there are times)\b/.test(k)) r.push('jpn: ことがある tail, English has no experience/sometimes');
-    if (/(?:ことがある|と思う|って言ってた|から)(?:ことがある|と思う|って言ってた|から)/.test(t)) r.push('jpn: stacked tails');
+    // No "stacked tails" rule: って言ってたから / って言ってたと思う are right when the English says "because you said" /
+    // "I think you said" (probe S0301L03, 4 Nov); the final tail is held to its English above, the inner ones by the read.
   }
   if (course === 'kor') {
     if (/교회/.test(t) && !/\bchurch/.test(k)) r.push('kor: phantom 교회 (church), English has no church');
@@ -87,7 +88,14 @@ async function gen(c, rng, conc, dumpPath) {
     while (i < todo.length) {
       const l = todo[i++];
       const t0 = Date.now();
-      const r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index) }, 1800000);
+      // Popty's course-builder restarts on every deploy to main and drops the calls in flight (seen 4 Nov 13:34Z):
+      // a transport loss waits for the service to answer again and asks for the same LEGO, up to 3 times.
+      let r;
+      for (let tries = 0; tries < 3; tries++) {
+        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index) }, 1800000);
+        if (r.status !== 0) break;
+        for (let w = 0; w < 60; w++) { await new Promise((ok) => setTimeout(ok, 15000)); const h = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: 0 }, 10000); if (h.status === 400) break; }
+      }
       const body = r.body || {};
       // The door returns staged_rows only when its frame-diversity floors (FRAME/POS/NEIGH/JUNCT/SPLIT, the v4 objective)
       // also pass. Those floors are not canon rules: a set whose LAST attempt failed nothing but them — every Popty gate
@@ -134,6 +142,7 @@ function read(c, rng, dumpPath) {
 }
 
 // ── plan (pure over a dump + the gen files) ──
+const upperI = (t) => String(t).replace(/(^|[\s,])i(?=$|[\s,?!.]|['’](?:m|ll|d|ve)\b)/g, '$1I');
 const nk = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}'’ ]/gu, '').replace(/\s+/g, ' ').trim();
 function plan(c, rng, dump, gens, romanStyle = null) {
   const [a, b] = range(rng);
@@ -144,8 +153,10 @@ function plan(c, rng, dump, gens, romanStyle = null) {
   for (const l of legos) {
     const g = gens(l.seed_number, l.lego_index);
     if (!g || !g.keep) { held.push({ lego: lid(l.seed_number, l.lego_index), why: g ? `generator blocked: ${JSON.stringify(g.failing)} ${g.error || ''}` : 'not generated' }); continue; }
-    const keep = g.rows.filter((x) => !x.pad.length && !x.drop);
-    for (const x of g.rows) if (x.pad.length || x.drop) refused.push({ lego: lid(l.seed_number, l.lego_index), known: x.known_text, target: x.target_text, why: x.drop || x.pad.join('; ') });
+    // The generator sometimes writes a lower-case "i" ("i'm not sure if…"); the course writes "I". Pure display fix.
+    for (const x of g.rows) x.known_text = upperI(x.known_text);
+    const keep = g.rows.filter((x) => !padReasons(c, x.known_text, x.target_text).length && !x.drop);
+    for (const x of g.rows) if (padReasons(c, x.known_text, x.target_text).length || x.drop) refused.push({ lego: lid(l.seed_number, l.lego_index), known: x.known_text, target: x.target_text, why: x.drop || padReasons(c, x.known_text, x.target_text).join('; ') });
     if (!keep.some((x) => x.phrase_role === 'build') || keep.filter((x) => x.phrase_role === 'use').length < 2) {
       held.push({ lego: lid(l.seed_number, l.lego_index), why: `after refusals only ${keep.filter((x) => x.phrase_role === 'build').length} BUILD / ${keep.filter((x) => x.phrase_role === 'use').length} USE (P10 floor 1/2) — old basket kept` });
       continue;
@@ -296,7 +307,7 @@ function verify(c, rng, dump) {
   return { oldLeft, newMissing, empty, padded };
 }
 
-module.exports = { padReasons, plan };
+module.exports = { padReasons, plan, upperI };
 
 if (require.main === module) {
   const [mode, c, rng, x, y] = process.argv.slice(2);
