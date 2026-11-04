@@ -38,7 +38,7 @@ for r in rows:
     if lang == 'zho' and match(t, ro, True) is False:
         errs.append(f'{k}: pinyin does not spell {t} (tone or syllable): {ro}')
     if lang == 'kor':
-        n = len(re.findall(r'[가-힯]', t)); m = len([x for x in re.split(r'[\s\-]+', re.sub(r'[^\w\s\-]', ' ', ro)) if x])
+        n = len(re.findall(r'[가-힯]', t)) + len(re.findall(r'[A-Za-z0-9]+', t)); m = len([x for x in re.split(r'[\s\-]+', re.sub(r'[^\w\s\-]', ' ', ro)) if x])
         if n != m: errs.append(f'{k}: {n} Hangul syllables but {m} hyphen/space units: {t} | {ro}')
 print(f'{course} {os.path.basename(chunk)}: {len(rows)} rows, {len(A)} answers, {len(errs)} problems')
 for e in errs[:200]: print('  ' + e)
