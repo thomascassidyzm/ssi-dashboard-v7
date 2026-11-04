@@ -54,7 +54,7 @@ So the learner is right about the shape: the rate roughly doubles from Green (1.
 - **S0132L04B06**: What she was saying was very interesting to listen to | Lo que ella estaba diciendo fue muy interesante para escuchar → What she was saying was very interesting to listen to | Lo que ella estaba diciendo fue muy interesante de escuchar. 'interesante para escuchar' is wrong for 'interesting to listen to'; 'interesante de escuchar'.
 - **S0140L01U03**: I know what you try to explain | Sé lo que intentas explicar → I know what you're trying to explain | Sé lo que intentas explicar. 'you try to explain' -> 'you're trying to explain'.
 
-Full apply-ready list (682 rows, before → after, reason, canon rule, knock-ons): see the handoff document published with this report.
+Full apply-ready list (682 rows, before → after, reason, canon rule, knock-ons): https://watson-1.tail4968cb.ts.net:10000/d/95bd92a0
 
 ## NEEDS-KAI
 

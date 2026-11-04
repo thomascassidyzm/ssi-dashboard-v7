@@ -57,7 +57,7 @@ for r in picked:
     if r['id'] in seen: continue
     seen.add(r['id']); a = r['after']
     R.append(f"- **{r['id']}**: {pair(r['before'])} → {'deleted' if a[1]=='DELETE' else pair(a)}. {r['reason']}")
-R += ["", f"Full apply-ready list ({len(clear)} rows, before → after, reason, canon rule, knock-ons): see the handoff document published with this report.", "",
+R += ["", f"Full apply-ready list ({len(clear)} rows, before → after, reason, canon rule, knock-ons): https://watson-1.tail4968cb.ts.net:10000/d/95bd92a0", "",
  "## NEEDS-KAI", "", "Grouped by root: each root is followed by the rows that move with it. All seed, LEGO and intro edits are here.", ""]
 grp = collections.OrderedDict()
 for r in sorted(kai, key=lambda r: r['id']): grp.setdefault(r.get('knock_on_of') or r['id'], []).append(r)
