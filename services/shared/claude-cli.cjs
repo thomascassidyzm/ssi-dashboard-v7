@@ -11,7 +11,10 @@
  */
 
 const { execFile } = require('child_process')
-const { claudeEnv } = require('./claude-config.cjs')
+const { claudeSpawnEnv } = require('./claude-config.cjs')
+
+// The CLI's own words when an account's allowance is spent (4 Nov: "You've hit your weekly limit · resets …").
+const SPENT_RE = /hit your (weekly |usage )?limit/i
 
 // FAMILY NAMES ONLY (Tom, 2026-09-28, r-2026-09-28-models-are-named-by-family-only; job #654).
 // The pin this replaced existed because a stale CLI (2.0.8, 2026-07) resolved 'haiku' to a
@@ -49,6 +52,18 @@ function latestModelId(family) {
  * @returns {Promise<string>} The response text
  */
 function claudeChat(prompt, options = {}) {
+  return claudeChatOnce(prompt, options, []).catch((err) => {
+    // ONE RETRY ON THE OTHER SSi ACCOUNT (#412·AD): an account that answers "weekly limit" is spent; on 4 Nov
+    // 1,887 calls kept retrying claude@ after it hit 100% while kai-gmail had a third of its week left.
+    if (!err || !err.spentAccount || options._noFailover) throw err
+    return claudeChatOnce(prompt, options, [err.spentAccount]).catch((err2) => {
+      if (err2 && err2.spentAccount && err2.spentAccount === err.spentAccount) throw err   // nothing else to try
+      throw err2
+    })
+  })
+}
+
+function claudeChatOnce(prompt, options, exclude) {
   const { model = HAIKU_MODEL, system, timeout = 120000, thinkingTokens } = options
 
   return new Promise((resolve, reject) => {
@@ -65,7 +80,7 @@ function claudeChat(prompt, options = {}) {
     // OAuth token where one exists, and strips ANTHROPIC_API_KEY/CLAUDECODE
     // so the CLI bills the Max Plan login and nested calls work
     // (see claude-config.cjs).
-    const env = claudeEnv()
+    const { env, email } = claudeSpawnEnv(process.env, { exclude })
     // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
     // global effortLevel:high setting flows into every headless `claude
     // --print` call, so a simple translation-flex spends ~11K hidden
@@ -92,7 +107,8 @@ function claudeChat(prompt, options = {}) {
         const stdoutTrim = (stdout || '').trim()
         if (stdoutTrim) parts.push(`stdout-head: ${stdoutTrim.slice(0, 400)}`)
         const err = new Error(parts.join(' | '))
-        console.error(`[claude-cli] ${err.message}`)
+        if (SPENT_RE.test(`${stdoutTrim}\n${stderrTrim}`)) err.spentAccount = email
+        console.error(`[claude-cli] ${err.message}${err.spentAccount ? ` [account ${email} spent]` : ''}`)
         reject(err)
         return
       }

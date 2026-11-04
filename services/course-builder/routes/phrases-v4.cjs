@@ -12,12 +12,19 @@
  * WRITES NOTHING. Logic and why: lib/phrase-generation-v4.cjs.
  *
  * Welsh is answered 409 WELSH_EXCLUDED (r-2026-09-27): its builders keep the v3 door.
+ *
+ * THE WEEKLY PACE (#412·AD; Tom 2026-11-04: "if it's doing too much token heavy stuff it has to pace it over the
+ * week"). This door is Popty's token-heavy path — one Opus CLI per LEGO, ~50k tokens of prompt each; on 4 Nov it
+ * ran ~3,700 times and took claude@ from 24% to 100% of its week in eight hours. So it answers 429 WEEKLY_PACE
+ * {resume_at} while EVERY SSi account is past its pro-rata share of the week (claude-config.cjs pacedNow); a run
+ * waits until resume_at and carries on. A person's one-off call passes "unpaced": true.
  */
 module.exports = function phrasesV4Routes(ctx) {
   const express = require('express');
   const router = express.Router();
   const { generateLegoPhrasesV4 } = require('../lib/phrase-generation-v4.cjs');
   const { PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
+  const { bulkPace } = require('../../shared/claude-config.cjs');
 
   router.post('/phrases/v4/generate/:courseCode', async (req, res) => {
     const courseCode = req.params.courseCode;
@@ -28,6 +35,13 @@ module.exports = function phrasesV4Routes(ctx) {
     if (!Number.isInteger(seed) || seed < 1) return res.status(400).json({ ok: false, error: 'seed is required (a positive integer)' });
     if (!Number.isInteger(lego) || lego < 1) return res.status(400).json({ ok: false, error: 'lego must be a positive integer' });
     if (!/^[a-z]{2,4}_for_[a-z]{2,4}$/.test(courseCode)) return res.status(400).json({ ok: false, error: 'courseCode required (e.g. fra_for_eng)' });
+    if (body.unpaced !== true) {
+      const pace = bulkPace();
+      if (pace) {
+        res.set('Retry-After', String(Math.max(60, Math.ceil((Date.parse(pace.resumeAt) - Date.now()) / 1000))));
+        return res.status(429).json({ ok: false, code: 'WEEKLY_PACE', pipeline: 'v4', course_code: courseCode, seed, lego, resume_at: pace.resumeAt, error: pace.why });
+      }
+    }
     const proposedLego = (body.lego_known && body.lego_target)
       ? { known: String(body.lego_known), target: String(body.lego_target), type: String(body.lego_type || 'A').toUpperCase() } : null;
     try {

@@ -92,6 +92,10 @@ curl -s -X POST "http://localhost:3471/api/phrases/v4/generate/${courseCode}" \\
 Pass the LEGO you have just decided on — it is not in the database yet, because
 the seed submission writes LEGOs and phrases in one call.
 
+**If it answers \`"code": "WEEKLY_PACE"\`** the SSi accounts are ahead of their weekly pace: stop the build where
+it is, post the \`resume_at\` time to the course chat, and end. Never loop on it; the build resumes from the
+resume endpoint after that time.
+
 It returns \`{ "model": "opus", "build": [...], "use": [...] }\`. Each phrase has
 \`known\`, \`target\` and \`tiles\` — the tiles are the phrase showing its work.
 Put the \`known\` → \`target\` pairs straight into your markdown submission.
