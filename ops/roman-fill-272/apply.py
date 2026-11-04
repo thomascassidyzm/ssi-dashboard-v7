@@ -18,6 +18,7 @@ for n in nums:
     for r in rows:
         kind, key, t = r[0], r[1], r[4]; ro = ans[key].strip()
         row = cur[(kind, key)]
+        if (row.get('target_text_roman') or '') == ro: continue  # already written (a re-run only writes what changed)
         exp = {'target_text': row['target_text'], 'target_text_roman': row.get('target_text_roman')}
         op = ({'op': 'seed.update', 'seed_number': int(key)} if kind == 'seed' else
               {'op': 'lego.update', 'lego_id': key} if kind == 'lego' else {'op': 'phrase.update', 'phrase_id': key})
