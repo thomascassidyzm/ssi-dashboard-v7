@@ -1,0 +1,23 @@
+COURSE: __COURSE__ (one course only — the parent job #237·AD runs fra → deu → spa → por → ara strictly one at a time; you are the __COURSE__ leg). Kai approved this pass 4 Nov 12:59Z.
+
+TASK: apply the #195 wave-1 translation-mismatch fixes on __COURSE__ only.
+
+SOURCE: ~/ssi-evidence/ssi-dashboard-v7/ops/mismatch-195/findings.jsonl, rows with course=__COURSE__ AND decision=CONFIRM AND cause != dropped-object (= __N__ rows; plus __EXTRA__). Skip REJECT rows. Each row carries id (phrase/basket id), seed, lego, seed_pair, known/target, cause, what, fix, fixed_known/fixed_target, why. The judge's fixed_* is a SUGGESTION from a 30-31 Oct snapshot, not an instruction.
+
+DROPPED-OBJECT rows: skip them all (zho precedent), BUT first make and write down a per-course judgement on whether dropped objects / object clitics are natural in this language. For Romance languages an untaught clitic (lo/la/le/os, o/a/lhe…) is the Italian #650 shape — read ~/.cs-colleague-memory/kai/ita-held-30-apply-650.md, ita-early-clitics-lho-lhai-telho.md, p17-clitic-infinitive-contains-lego.md and see how ita handled it. If you are not sure, HOLD the whole class for Kai and say so; never fix them.
+
+TEMPLATES (read the code, not docs): Italian pass #36 — tools/course-optimization/ita-mismatch-36-2026-11-02.cjs (+ .data.cjs), branch origin/cs/36-ita-mismatch-fix-wave1 (canon-audit commit f1c3fd83f, fill-pass commit 6930369cc); Chinese pass #233 — branch origin/cs/233-zho-mismatch-195-fix, ops/zho-mismatch-233/ (decisions.py, decisions-195.json, kept.json): decision-then-apply, LIVE re-check first. For deu also read tools/course-optimization/deu-mismatch-pass-435-2026-10-29.*; for fra, fra-222-mismatch-pass-2026-10-14.*.
+LIVE-STATE WARNING: deu (#435 29 Oct) and spa (#425 Deborah, #225 audit, #261, #864 creer) were heavily edited after the snapshot. For EVERY row re-check against a FRESH live pull (via Popty read routes / committed tools) and drop rows already fixed or deleted (count them as already-fixed).
+RULINGS: grep ~/.cs-colleague-memory/kai/ for the course code (e.g. grep -l __CODE__ ~/.cs-colleague-memory/kai/*.md) and read what matches — per-course rulings, held items, conventions. Consistency decisions are per-course and NEVER transfer across courses. Read course-methodology-canon.md (repo root) before deciding anything.
+
+RULES: read every row in full, never decide by regex. Fix the English (known) side first where that makes the pair match. Taught words only — never correct to an untaught form. Writes ONLY through Popty: edit-batch (POST http://localhost:3470/api/production/__COURSE__/edit-batch, dry run first then "apply": true, keep the undo) with x-agent-id set; never hand-written DB code (Tom's hard rule #384 — any tool you need must be committed AND merged to origin/main before you run it, run unchanged; follow how ita-36/zho-233 did it). Knock-on sweep for any changed LEGO (every phrase using it, whole course). Never delete a LEGO; delete a phrase only when no valid reword exists. An edited seed gets unapproved. Presentations must mirror LEGO text. Run a canon audit after applying (as ita #36 did) and revert/hold anything it catches.
+
+HOLD FOR KAI (do not apply): naturalness calls, untaught forms, LEGO or seed re-cuts, LEGO_LEVEL rows, anything a native reader should judge. For each: seed number, the phrase pair (known | target), and your proposed fix, in plain English.
+
+AUDIO: fill this course's changed lines through Popty's single audio route (library first; phase8 fill / POST /api/audio/render with dryRun first), ending with 0 empty slots for __COURSE__ (prove it with a read). Cap is 1M chars/day combined across the estate: check the day's spend first; if this course would breach it, stop the audio and report the gap.
+
+CONCURRENCY: before writing, check http://localhost:4317/api/jobs?active=1 (with your x-cs-conv header) for another job editing __COURSE__; if one is, wait for it (arm a waker, don't poll). Shared DB pool ceiling: keep your DB reads light, no parallel bulk pulls.
+
+SCRATCH in $CS_SCRATCH (swept at job end). Commit tools/decision data in a tracked dir (ops/__CODE__-mismatch-195/ or tools/course-optimization/), merge to origin/main per CLAUDE.md. No tests (estate-wide off).
+
+DELIVER: counts (applied / already-fixed / deleted / held / left-natural, plus dropped-object skipped and the language judgement), audio state (chars spent, empty slots = 0?), edit event ids, and ONE published doc (POST /api/publish-doc, readers ["kai"]) with the full record plus the held list. Update Kai's memory: one file ~/.cs-colleague-memory/kai/__CODE__-mismatch-195-237.md + one index line in MEMORY.md. Report explicit gaps honestly; end with a landing line.
