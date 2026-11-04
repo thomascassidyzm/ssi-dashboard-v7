@@ -161,6 +161,9 @@ function plan(c, rng, dump, gens, romanStyle = null) {
   const legos = newLegos(dump, a, b);
   const dropsFile = path.join(DIR, c, 'drops.json');
   const drops = fs.existsSync(dropsFile) ? JSON.parse(fs.readFileSync(dropsFile, 'utf8')) : {};
+  // reads/<from>-<to>.json: the cross-family readers' refusals, same shape, one file per seed band (#248 fan-out)
+  const readsDir = path.join(DIR, c, 'reads');
+  if (fs.existsSync(readsDir)) for (const f of fs.readdirSync(readsDir).filter((x) => x.endsWith('.json'))) Object.assign(drops, JSON.parse(fs.readFileSync(path.join(readsDir, f), 'utf8')).drops || {});
   const replaced = new Set(); // LEGOs whose basket is replaced
   const staged = [], refused = [], held = [];
   for (const l of legos) {
