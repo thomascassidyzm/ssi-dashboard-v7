@@ -1,0 +1,2063 @@
+{
+ "range": [
+  168,
+  334
+ ],
+ "snapshot": "zho-2026-11-03.json",
+ "coverage": {
+  "seeds": 167,
+  "legos": 244,
+  "build": 711,
+  "use": 1556,
+  "component": 331,
+  "read_in_full": true,
+  "notes": "Every seed, LEGO, build and use row in 168-334 read in full by eye; components read as a list (looser standard, none judged truly broken). Regex used only to surface candidates for point B (time word at end) and C (坐/弹/穿/戴/玩/打/开/放/拿/想你/想我) and to find exact ZUT clashes; none decided by regex. Point B: no row in range puts a time-when expression after the verb, so no B decisions."
+ },
+ "decisions": [
+  {
+   "id": "zho_for_eng:S0192L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "tomorrow night see you",
+    "target": "明晚见"
+   },
+   "after": {
+    "known": "see you tomorrow night",
+    "target": "明晚见"
+   },
+   "why": "'tomorrow night see you' is Chinese word order copied into English; the English is 'see you tomorrow night'. Chinese is already right."
+  },
+  {
+   "id": "zho_for_eng:S0242L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I want give more time",
+    "target": "我想给更多时间"
+   },
+   "after": {
+    "known": "I want to give more time",
+    "target": "我想给更多时间"
+   },
+   "why": "'I want give' is missing 'to'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0243L01B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "eat thing",
+    "target": "吃东西"
+   },
+   "after": {
+    "known": "eat something",
+    "target": "吃东西"
+   },
+   "why": "'eat thing' is not English; 吃东西 means 'eat something'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0243L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "want eat",
+    "target": "要吃"
+   },
+   "after": {
+    "known": "want to eat",
+    "target": "要吃"
+   },
+   "why": "'want eat' is missing 'to'. Chinese unchanged."
+  },
+  {
+   "id": "S0244L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "already learn a lot",
+    "target": "已经学了很多"
+   },
+   "after": {
+    "known": "already learnt a lot",
+    "target": "已经学了很多",
+    "roman": "yǐjīng xué le hěn duō"
+   },
+   "why": "The LEGO's English 'already learn a lot' is ungrammatical (already + present tense). 已经学了很多 is past/perfect: 'already learnt a lot'. A LEGO text edit carries a knock-on, so it is held; the phrase rows under it are fixed in this file in a way that still contains the LEGO's words.",
+   "gloss": "已经 yǐjīng already · 学 xué learn · 了 le (done) · 很多 hěn duō a lot",
+   "knockOn": [
+    "zho_for_eng:S0244L01B01",
+    "zho_for_eng:S0244L01B04",
+    "zho_for_eng:S0244L01U01",
+    "zho_for_eng:S0244L01U02",
+    "zho_for_eng:S0244L01U03",
+    "zho_for_eng:S0244L01U04",
+    "zho_for_eng:S0244L01U05"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0244L01B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "already learn a lot",
+    "target": "已经学了很多"
+   },
+   "after": {
+    "known": "already learnt a lot",
+    "target": "已经学了很多"
+   },
+   "why": "'already learn a lot' → past form; Chinese has 了 (completed)."
+  },
+  {
+   "id": "zho_for_eng:S0244L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "you already learn a lot",
+    "target": "你已经学了很多"
+   },
+   "after": {
+    "known": "you've already learnt a lot",
+    "target": "你已经学了很多"
+   },
+   "why": "'you already learn a lot' is ungrammatical. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0244L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I think you already learn a lot",
+    "target": "我觉得你已经学了很多"
+   },
+   "after": {
+    "known": "I think you've already learnt a lot",
+    "target": "我觉得你已经学了很多"
+   },
+   "why": "'you already learn a lot' is ungrammatical. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0244L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I don't think you already learn a lot",
+    "target": "我不觉得你已经学了很多"
+   },
+   "after": {
+    "known": "I don't think you've already learnt a lot",
+    "target": "我不觉得你已经学了很多"
+   },
+   "why": "'you already learn a lot' is ungrammatical. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0244L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "because she already learn a lot",
+    "target": "因为她已经学了很多"
+   },
+   "after": {
+    "known": "because she's already learnt a lot",
+    "target": "因为她已经学了很多"
+   },
+   "why": "'she already learn' — wrong tense and agreement. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0244L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I know you already learn a lot",
+    "target": "我知道你已经学了很多"
+   },
+   "after": {
+    "known": "I know you've already learnt a lot",
+    "target": "我知道你已经学了很多"
+   },
+   "why": "'you already learn a lot' is ungrammatical. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0244L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "if you already learn a lot, you can help her",
+    "target": "如果你已经学了很多你能帮她"
+   },
+   "after": {
+    "known": "if you've already learnt a lot, you can help her",
+    "target": "如果你已经学了很多你能帮她"
+   },
+   "why": "'you already learn a lot' is ungrammatical. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0246L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I want let her help",
+    "target": "我想让她帮"
+   },
+   "after": {
+    "known": "I want to let her help",
+    "target": "我想让她帮"
+   },
+   "why": "'I want let her help' is missing 'to'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0247L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this fairly good",
+    "target": "这个还不错"
+   },
+   "after": {
+    "known": "this is fairly good",
+    "target": "这个还不错"
+   },
+   "why": "'this fairly good' has no verb. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0247L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this thing fairly good",
+    "target": "这个东西还不错"
+   },
+   "after": {
+    "known": "this thing is fairly good",
+    "target": "这个东西还不错"
+   },
+   "why": "'this thing fairly good' has no verb. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0247L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "you do fairly good",
+    "target": "你做得还不错"
+   },
+   "after": {
+    "known": "you're doing fairly well",
+    "target": "你做得还不错"
+   },
+   "why": "'you do fairly good' is ungrammatical. The natural English is 'you're doing fairly well' (做得 = 'doing it ... -ly'), but 'well' is not the LEGO's word 'good', so the phrase would no longer contain the LEGO on the English side (P17). Kai's call: accept 'fairly well' as a form of the LEGO, or delete the phrase.",
+   "gloss": "你 nǐ you · 做得 zuò de do (in a way that is) · 还不错 hái búcuò fairly good"
+  },
+  {
+   "id": "zho_for_eng:S0247L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "she Chinese fairly good",
+    "target": "她的中文还不错"
+   },
+   "after": {
+    "known": "her Chinese is fairly good",
+    "target": "她的中文还不错"
+   },
+   "why": "'she Chinese fairly good' is not English; 她的中文 = 'her Chinese'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0247L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I feel he fairly good",
+    "target": "我觉得他还不错"
+   },
+   "after": {
+    "known": "I think he's fairly good",
+    "target": "我觉得他还不错"
+   },
+   "why": "'I feel he fairly good' has no verb; 觉得 here is 'think'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0247L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this film fairly good you should see",
+    "target": "这个电影还不错你应该看"
+   },
+   "after": {
+    "known": "this film is fairly good, you should see it",
+    "target": "这个电影还不错你应该看"
+   },
+   "why": "'this film fairly good you should see' has no verb and no object. Chinese unchanged (Chinese naturally drops the object)."
+  },
+  {
+   "id": "zho_for_eng:S0247L01U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "your answer fairly good",
+    "target": "你的回答还不错"
+   },
+   "after": {
+    "known": "your answer is fairly good",
+    "target": "你的回答还不错"
+   },
+   "why": "'your answer fairly good' has no verb. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this thing too bad",
+    "target": "这个东西太糟了"
+   },
+   "after": {
+    "known": "this thing is so bad",
+    "target": "这个东西太糟了"
+   },
+   "why": "'this thing too bad' has no verb. 太…了 here is an exclamation ('so bad!'), not 'too'. 'so bad' keeps the LEGO word 'bad'. Note for Kai: 'so' is also taught as 这么 (这么多 S0245), and 这么糟 would also be correct Chinese, so this creates no wrong answer. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "today too bad",
+    "target": "今天太糟了"
+   },
+   "after": {
+    "known": "today was so bad",
+    "target": "今天太糟了"
+   },
+   "why": "'today too bad' has no verb. 太…了 here is an exclamation ('so bad!'), not 'too'. 'so bad' keeps the LEGO word 'bad'. Note for Kai: 'so' is also taught as 这么 (这么多 S0245), and 这么糟 would also be correct Chinese, so this creates no wrong answer. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I feel that film too bad",
+    "target": "我觉得那部电影太糟了"
+   },
+   "after": {
+    "known": "I think that film is so bad",
+    "target": "我觉得那部电影太糟了"
+   },
+   "why": "'I feel that film too bad' has no verb; 觉得 here is 'think'. 太…了 here is an exclamation ('so bad!'), not 'too'. 'so bad' keeps the LEGO word 'bad'. Note for Kai: 'so' is also taught as 这么 (这么多 S0245), and 这么糟 would also be correct Chinese, so this creates no wrong answer. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this answer too bad",
+    "target": "这个回答太糟了"
+   },
+   "after": {
+    "known": "this answer is so bad",
+    "target": "这个回答太糟了"
+   },
+   "why": "'this answer too bad' has no verb. 太…了 here is an exclamation ('so bad!'), not 'too'. 'so bad' keeps the LEGO word 'bad'. Note for Kai: 'so' is also taught as 这么 (这么多 S0245), and 这么糟 would also be correct Chinese, so this creates no wrong answer. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "he do too bad",
+    "target": "他做得太糟了"
+   },
+   "after": {
+    "known": "he did so badly",
+    "target": "他做得太糟了"
+   },
+   "why": "'he do too bad' is ungrammatical; 做得太糟了 = 'did it terribly'. 'badly' is a form of the LEGO word 'bad'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "this too bad we need help",
+    "target": "这太糟了我们需要帮助"
+   },
+   "after": {
+    "known": "this is so bad, we need help",
+    "target": "这太糟了我们需要帮助"
+   },
+   "why": "'this too bad we need help' has no verb. 太…了 here is an exclamation ('so bad!'), not 'too'. 'so bad' keeps the LEGO word 'bad'. Note for Kai: 'so' is also taught as 这么 (这么多 S0245), and 这么糟 would also be correct Chinese, so this creates no wrong answer. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0248L01U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "you feel too bad no",
+    "target": "你觉得太糟了吗"
+   },
+   "after": {
+    "known": "do you think it's so bad?",
+    "target": "你觉得太糟了吗"
+   },
+   "why": "'you feel too bad no' is not English; the Chinese is a yes/no question 'do you think it's so bad?'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0254L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I knew since this morning",
+    "target": "我从今天早上就知道了"
+   },
+   "after": {
+    "known": "I've known since this morning",
+    "target": "我从今天早上就知道了"
+   },
+   "why": "'I knew since this morning' — 'since' needs the perfect: 'I've known'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0254L01U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I'm learning Chinese since this morning",
+    "target": "从今天早上我在学习中文"
+   },
+   "after": {
+    "known": "I've been learning Chinese since this morning",
+    "target": "我从今天早上起就在学习中文",
+    "roman": "wǒ cóng jīntiān zǎoshang qǐ jiù zài xuéxí zhōngwén"
+   },
+   "why": "'I'm learning Chinese since this morning' — 'since' needs 'I've been learning'. The Chinese 从今天早上我在学习中文 is also weak (从…起就 is how the seed says 'since'); brought into line with the seed and with U01/U02.",
+   "taught": "我; 从今天早上=S0254L01; 起就=seed 254 text (我从今天早上起就准备好了); 在 (progressive)=S0194L01 在找; 学习中文 = used throughout, e.g. S0222L03U02",
+   "gloss": "我 I · 从今天早上 from this morning · 起就 onwards already · 在 (in the middle of) · 学习 learning · 中文 Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0254L01U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "she didn't work since this morning",
+    "target": "她从今天早上没工作"
+   },
+   "after": {
+    "known": "she hasn't worked since this morning",
+    "target": "她从今天早上起就没工作",
+    "roman": "tā cóng jīntiān zǎoshang qǐ jiù méi gōngzuò"
+   },
+   "why": "'she didn't work since this morning' — 'since' needs 'hasn't worked'. Chinese brought into line with the seed's 从…起就.",
+   "taught": "她; 从今天早上=S0254L01; 起就=seed 254 text; 没工作 = S0215L01U04 我周六晚上没工作",
+   "gloss": "她 she · 从今天早上 from this morning · 起就 onwards · 没 not · 工作 work"
+  },
+  {
+   "id": "zho_for_eng:S0254L01U09",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I'm tired because I'm working since this morning",
+    "target": "因为从今天早上我在工作，我很累"
+   },
+   "after": {
+    "known": "I'm tired because I've been working since this morning",
+    "target": "因为我从今天早上起就在工作，我很累",
+    "roman": "yīnwèi wǒ cóng jīntiān zǎoshang qǐ jiù zài gōngzuò, wǒ hěn lèi"
+   },
+   "why": "'because I'm working since this morning' — needs 'I've been working'. Chinese brought into line with the seed's 从…起就; order (because-clause first) kept as before.",
+   "taught": "因为; 我; 从今天早上=S0254L01; 起就=seed 254 text; 在工作=S0230L04U01 我现在在工作; 我很累",
+   "gloss": "因为 because · 我 I · 从今天早上起就 since this morning · 在工作 have been working · 我很累 I am tired"
+  },
+  {
+   "id": "zho_for_eng:S0254L01U10",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I think she is tired since this morning",
+    "target": "我觉得她从今天早上很累"
+   },
+   "after": {
+    "known": "I think she's been tired since this morning",
+    "target": "我觉得她从今天早上起就很累",
+    "roman": "wǒ juéde tā cóng jīntiān zǎoshang qǐ jiù hěn lèi"
+   },
+   "why": "'I think she is tired since this morning' — needs 'she's been tired'. Chinese brought into line with the seed's 从…起就.",
+   "taught": "我觉得; 她; 从今天早上=S0254L01; 起就=seed 254 text; 很累",
+   "gloss": "我觉得 I think · 她 she · 从今天早上起就 since this morning · 很累 tired"
+  },
+  {
+   "id": "zho_for_eng:S0255L01U11",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "left together",
+    "target": "一起离开"
+   },
+   "after": {
+    "known": "we left together",
+    "target": "我们一起离开了",
+    "roman": "wǒmen yìqǐ líkāi le"
+   },
+   "why": "'left together' is a fragment with no subject, and a USE phrase must be a full sentence (P6).",
+   "taught": "我们; 一起=S0230L03; 离开=S0255L01; 了",
+   "gloss": "我们 we · 一起 together · 离开 leave · 了 (done)"
+  },
+  {
+   "id": "zho_for_eng:S0260L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "delete",
+   "before": {
+    "known": "I have the faintest idea",
+    "target": "我有一点头绪"
+   },
+   "after": null,
+   "why": "'I have the faintest idea' is not English — 'the faintest idea' only exists in negatives and questions. No grammatical positive version exists that keeps the LEGO, and U02/U01 already cover the question and the negative.",
+   "gloss": "我有一点头绪 wǒ yǒu yìdiǎn tóuxù — I have a little clue"
+  },
+  {
+   "id": "zho_for_eng:S0260L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "no faintest idea",
+    "target": "没有一点头绪"
+   },
+   "after": {
+    "known": "not the faintest idea",
+    "target": "没有一点头绪"
+   },
+   "why": "'no faintest idea' is not English. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0260L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I have a little idea",
+    "target": "我有一点头绪"
+   },
+   "after": {
+    "known": "I have some idea",
+    "target": "我有一点头绪"
+   },
+   "why": "'I have a little idea' is not natural English; 'I have some idea' matches U06 'I should have some idea | 我应该有一点头绪'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0267L01U14",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "she will know the news from you",
+    "target": "她会知道你的消息"
+   },
+   "after": {
+    "known": "she will have news from you",
+    "target": "她会有你的消息",
+    "roman": "tā huì yǒu nǐ de xiāoxi"
+   },
+   "why": "'she will know the news from you' is not something a native says. Reworded to the LEGO's own pattern 有…的消息 'have news from' (as in U02 'I have news from my father | 我有我父亲的消息').",
+   "taught": "她; 会; 有; 你; 的消息=S0267L01",
+   "gloss": "她 she · 会 will · 有 have · 你的消息 your news"
+  },
+  {
+   "id": "zho_for_eng:S0272L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "sure, together",
+    "target": "好啊我们一起"
+   },
+   "after": {
+    "known": "sure, let's go together",
+    "target": "好啊，我们一起去",
+    "roman": "hǎo a, wǒmen yìqǐ qù"
+   },
+   "why": "'sure, together' is a fragment, not a sentence (USE phrases must be complete, P6); the Chinese 好啊我们一起 is also cut off. Completed with 去 'go'.",
+   "taught": "好啊=S0272L01; 我们一起去 = seed 271 text (…和我们一起去吗)",
+   "gloss": "好啊 sure · 我们 we · 一起 together · 去 go"
+  },
+  {
+   "id": "zho_for_eng:S0272L03B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "very great",
+    "target": "很棒"
+   },
+   "after": {
+    "known": "really great",
+    "target": "很棒"
+   },
+   "why": "'very great' is not English. 很 is glossed 'really' elsewhere in the course (S0272L02U04 'really good | 很好'). Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0281L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "he finished coffee",
+    "target": "他喝完咖啡"
+   },
+   "after": {
+    "known": "he finished his coffee",
+    "target": "他喝完咖啡"
+   },
+   "why": "'he finished coffee' needs a possessive/article. Chinese unchanged (Chinese drops it naturally)."
+  },
+  {
+   "id": "zho_for_eng:S0281L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I want to finish coffee",
+    "target": "我想喝完咖啡"
+   },
+   "after": {
+    "known": "I want to finish my coffee",
+    "target": "我想喝完咖啡"
+   },
+   "why": "'I want to finish coffee' needs 'my'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0281L01B05",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "did you finish coffee",
+    "target": "你喝完咖啡了"
+   },
+   "after": {
+    "known": "did you finish your coffee",
+    "target": "你喝完咖啡了"
+   },
+   "why": "'did you finish coffee' needs 'your'. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0306L01U12",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "currently doing",
+    "target": "正在做"
+   },
+   "after": {
+    "known": "what are you currently doing?",
+    "target": "你正在做什么？",
+    "roman": "nǐ zhèngzài zuò shénme?"
+   },
+   "why": "'currently doing' is a fragment, and USE phrases must be complete sentences (P6).",
+   "taught": "你; 正在=S0306L01; 做; 什么",
+   "gloss": "你 you · 正在 currently · 做 do · 什么 what"
+  },
+  {
+   "id": "S0317L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "if want",
+    "target": "如果想的话"
+   },
+   "after": {
+    "known": "if she wants",
+    "target": "如果想的话"
+   },
+   "why": "The LEGO's English 'if want' is not English. The seed says 'she can if she wants'; Chinese puts 她 before 如果 (她如果想的话), so the LEGO's English can be 'if she wants' while the Chinese stays 如果想的话 (lit. 'if want-it-be-the-case'). LEGO text edit → held for the knock-on. Note: B03 'if you want | 你如果想的话' shows the same LEGO also serves 'you'; an alternative is 'if ... wants' with the person left to the phrase.",
+   "gloss": "如果 rúguǒ if · 想 xiǎng want · 的话 de huà (if-clause marker)",
+   "knockOn": [
+    "zho_for_eng:S0317L01B01"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0317L01B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "if want",
+    "target": "如果想的话"
+   },
+   "after": {
+    "known": "if she wants",
+    "target": "如果想的话"
+   },
+   "why": "'if want' is not English; follows the LEGO decision above.",
+   "gloss": "如果 if · 想 want · 的话 (if-marker)"
+  },
+  {
+   "id": "zho_for_eng:S0317L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "she if want can",
+    "target": "她如果想的话可以"
+   },
+   "after": {
+    "known": "she can if she wants",
+    "target": "她如果想的话可以"
+   },
+   "why": "'she if want can' is Chinese word order copied into English. Chinese unchanged."
+  },
+  {
+   "id": "zho_for_eng:S0327L02U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "she wants to provide",
+    "target": "她想提供"
+   },
+   "after": {
+    "known": "she wants to provide this",
+    "target": "她想提供这个",
+    "roman": "tā xiǎng tígōng zhège"
+   },
+   "why": "'provide' needs an object in English ('she wants to provide' is incomplete). Added 'this | 这个' on both sides.",
+   "taught": "提供=S0327L02; 这个=S0036L01",
+   "gloss": "她 she · 想 wants · 提供 provide · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0327L02U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "they need to provide",
+    "target": "他们需要提供"
+   },
+   "after": {
+    "known": "they need to provide this",
+    "target": "他们需要提供这个",
+    "roman": "tāmen xūyào tígōng zhège"
+   },
+   "why": "'provide' needs an object in English ('she wants to provide' is incomplete). Added 'this | 这个' on both sides.",
+   "taught": "提供=S0327L02; 这个=S0036L01",
+   "gloss": "他们 they · 需要 need · 提供 provide · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0327L02U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "he said he can provide",
+    "target": "他说他能提供"
+   },
+   "after": {
+    "known": "he said he can provide this",
+    "target": "他说他能提供这个",
+    "roman": "tā shuō tā néng tígōng zhège"
+   },
+   "why": "'provide' needs an object in English ('she wants to provide' is incomplete). Added 'this | 这个' on both sides.",
+   "taught": "提供=S0327L02; 这个=S0036L01",
+   "gloss": "他 he · 说 said · 他 he · 能 can · 提供 provide · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0327L02U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "we want to provide",
+    "target": "我们想提供"
+   },
+   "after": {
+    "known": "we want to provide this",
+    "target": "我们想提供这个",
+    "roman": "wǒmen xiǎng tígōng zhège"
+   },
+   "why": "'provide' needs an object in English ('she wants to provide' is incomplete). Added 'this | 这个' on both sides.",
+   "taught": "提供=S0327L02; 这个=S0036L01",
+   "gloss": "我们 we · 想 want · 提供 provide · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0331L02U10",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "all the facts",
+    "target": "所有事实"
+   },
+   "after": {
+    "known": "I need to know all the facts",
+    "target": "我需要知道所有事实",
+    "roman": "wǒ xūyào zhīdào suǒyǒu shìshí"
+   },
+   "why": "'all the facts' is a fragment; USE phrases must be full sentences (P6). Same shape as S0311L05U10 'we need to know the facts'.",
+   "taught": "我需要; 知道; 所有=S0331L02; 事实=S0311L05",
+   "gloss": "我 I · 需要 need · 知道 know · 所有 all · 事实 facts"
+  },
+  {
+   "id": "S0225L01",
+   "table": "lego",
+   "role": "lego",
+   "played": false,
+   "point": "A",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "woman",
+    "target": "如果"
+   },
+   "after": {
+    "known": "if",
+    "target": "如果"
+   },
+   "why": "Data error: this (not-new) LEGO's English says 'woman' but 如果 means 'if' (the seed is 'he would give you an answer IF he could'). The LEGO it repeats is S0049L01 'if | 如果'. Not played (not-new), no phrases under it, so no knock-on.",
+   "gloss": "如果 rúguǒ if"
+  },
+  {
+   "id": "S0222L03",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "to want; to desire",
+    "target": "想要"
+   },
+   "after": {
+    "known": "to want",
+    "target": "想要"
+   },
+   "why": "Dictionary gloss 'to want; to desire' is read aloud to the learner (B01 repeats it) — no native says it. Proposed 'to want'. Held because 想 is already 'want' (S0001L01 'I want | 我想'), so 'to want → 想要' needs Kai to accept the overlap (S0473L01 already has 'to want | 想要').",
+   "gloss": "想要 xiǎngyào",
+   "knockOn": [
+    "zho_for_eng:S0222L03B01"
+   ]
+  },
+  {
+   "id": "S0224L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "to start; to begin",
+    "target": "开始"
+   },
+   "after": {
+    "known": "to start",
+    "target": "开始"
+   },
+   "why": "Dictionary gloss 'to start; to begin' is read aloud (B01 repeats it). Proposed 'to start' (S0023L02 is already 'to start | 开始', so this is a repeat introduction).",
+   "gloss": "开始 kāishǐ",
+   "knockOn": [
+    "zho_for_eng:S0224L01B01"
+   ]
+  },
+  {
+   "id": "S0228L02",
+   "table": "lego",
+   "role": "lego",
+   "played": false,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "to speak; speaking",
+    "target": "说话"
+   },
+   "after": {
+    "known": "to speak",
+    "target": "说话"
+   },
+   "why": "Dictionary gloss 'to speak; speaking' (B01 repeats it). This LEGO is marked not-new, so it is dark; proposed 'to speak'. Note S0355L01 later introduces 'to talk | 说话'.",
+   "gloss": "说话 shuōhuà",
+   "knockOn": [
+    "zho_for_eng:S0228L02B01"
+   ]
+  },
+  {
+   "id": "S0229L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "woman; female",
+    "target": "女人"
+   },
+   "after": {
+    "known": "woman",
+    "target": "女人"
+   },
+   "why": "Dictionary gloss 'woman; female' is read aloud (B01 repeats it). Proposed 'woman'.",
+   "gloss": "女人 nǚrén",
+   "knockOn": [
+    "zho_for_eng:S0229L01B01"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0191L01B01",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "A",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "a point",
+    "target": "一点"
+   },
+   "after": {
+    "known": "a bit",
+    "target": "一点"
+   },
+   "why": "Played build 'a point | 一点' teaches 一点 as 'a point'; 一点 means 'a bit / a little' (the LEGO is 'point | 点', a character gloss). 'a bit' is already the course's gloss for 点 (component of S0168L01 晚点 'later'). Changing it breaks containment of the LEGO word 'point' (P17), so it rides on a LEGO re-gloss — held.",
+   "gloss": "一点 yìdiǎn — one + dot = a little, a bit",
+   "knockOn": [
+    "S0191L01 (LEGO known \"point\" → \"a bit\")"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0168L02U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "C",
+   "r195": true,
+   "action": "edit",
+   "before": {
+    "known": "I want you to help me this afternoon",
+    "target": "我想你今天下午帮忙"
+   },
+   "after": {
+    "known": "I want to come and help this afternoon",
+    "target": "我今天下午想来帮忙",
+    "roman": "wǒ jīntiān xiàwǔ xiǎng lái bāngmáng"
+   },
+   "why": "我想你今天下午帮忙 begins 我想你 'I miss you' — 想 + a person reads as 'miss'; 'want you to' needs 想让 (taught one seed later, S0169). It also clashed (ZUT) with S0170L01U07 'I want you to help me this afternoon | 我想让你今天下午帮我' and did not contain the LEGO 来帮忙 (P17). Reworded to a sentence built from taught chunks that contains the LEGO.",
+   "taught": "我; 今天下午 (today + 下午 S0179L01); 想=S0001L01; 来帮忙=S0168L02",
+   "gloss": "我 I · 今天下午 this afternoon · 想 want · 来帮忙 come and help"
+  },
+  {
+   "id": "zho_for_eng:S0269L01U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "C",
+   "r195": true,
+   "action": "edit",
+   "before": {
+    "known": "do you want me to wait for you",
+    "target": "你想我等你吗"
+   },
+   "after": {
+    "known": "do you want me to wait for you",
+    "target": "你想让我等你吗",
+    "roman": "nǐ xiǎng ràng wǒ děng nǐ ma"
+   },
+   "why": "你想我等你吗 starts 你想我 'do you miss me'; 'want me to' is 想让我 (taught S0169L01). Adding 让 makes it unambiguous.",
+   "taught": "你; 想让我=S0169L01; 等=S0269L01; 你; 吗",
+   "gloss": "你 you · 想让我 want me to · 等你 wait for you · 吗 (question)"
+  },
+  {
+   "id": "zho_for_eng:S0290L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "do you think he knows the answer?",
+    "target": "你想他知不知道答案？"
+   },
+   "after": {
+    "known": "do you think he knows the answer?",
+    "target": "你觉得他知不知道答案？",
+    "roman": "nǐ juéde tā zhī bù zhīdào dá'àn?"
+   },
+   "why": "你想他知不知道答案 reads first as 'do you miss him…'; 想 + person = miss. 'do you think' is 你觉得, the course's taught 'think' (S0041L02).",
+   "taught": "你觉得=S0041L02; 他知不知道答案=S0290L01",
+   "gloss": "你觉得 you think · 他 he · 知不知道 knows-or-not · 答案 answer"
+  },
+  {
+   "id": "zho_for_eng:S0301L03U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "do you want me to show you the new place?",
+    "target": "你想我给你看新的地方吗？"
+   },
+   "after": {
+    "known": "do you want me to show you the new place?",
+    "target": "你想让我给你看新的地方吗？",
+    "roman": "nǐ xiǎng ràng wǒ gěi nǐ kàn xīn de dìfang ma?"
+   },
+   "why": "你想我给你看… starts 你想我 'do you miss me'; 'want me to' is 想让我 (S0169L01).",
+   "taught": "你; 想让我=S0169L01; 给你看=S0301L03; 新的地方 (新 + 的 + 地方 S0185L02)",
+   "gloss": "你 you · 想让我 want me to · 给你看 show you · 新的地方 new place · 吗 (question)"
+  },
+  {
+   "id": "zho_for_eng:S0264L01U07",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "C",
+   "r195": false,
+   "action": "edit",
+   "before": {
+    "known": "I know an old man who lives there",
+    "target": "我知道一个老人住在那"
+   },
+   "after": {
+    "known": "I know an old man who lives there",
+    "target": "我认识一个老人，他住在那",
+    "roman": "wǒ rènshi yí ge lǎorén, tā zhù zài nà"
+   },
+   "why": "知道 is 'know a fact'; knowing a person is 认识 (the course teaches 'I know a young man | 我认识一个年轻男人', S0230). 我知道一个老人住在那 reads 'I know (that) an old man lives there'. Also uses the course's relative pattern '…，他…' (S0230 seed).",
+   "taught": "我认识=S0230L01; 一个老人=S0264L01; 他; 住在那 (as in the original row)",
+   "gloss": "我认识 I know (a person) · 一个老人 an old man · 他住在那 he lives there"
+  },
+  {
+   "id": "S0241L01",
+   "table": "lego",
+   "role": "lego",
+   "played": false,
+   "point": "C",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "take",
+    "target": "把"
+   },
+   "after": null,
+   "why": "This not-new LEGO's English is 'take' for 把. 把 is a grammar marker that moves the object before the verb (把它放在桌子上 = 'put it on the table'); it never means 'take' on its own. Elsewhere the course calls it 'object marker ba' (S0545L02) / 'disposal marker' (S0622L02). It is dark (not new, no phrases), so no learner hears it; proposed re-gloss 'object marker ba' for consistency. The component S0314L01C01 'take=把' has the same gloss (components are looser).",
+   "gloss": "把 bǎ — marker: object comes before the verb",
+   "knockOn": [
+    "zho_for_eng:S0314L01C01"
+   ]
+  },
+  {
+   "id": "seed:178",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I didn't have time, although I wanted to see you",
+    "target": "但是我没时间，虽然我想见你"
+   },
+   "after": {
+    "known": "although I wanted to see you, I didn't have time",
+    "target": "虽然我想见你，但是我没时间",
+    "roman": "suīrán wǒ xiǎng jiàn nǐ, dànshì wǒ méi shíjiān"
+   },
+   "why": "The Chinese starts with 但是 'but' although the English has no 'but', and puts the 虽然 'although' clause last after a 但是 clause — Chinese pairs these as 虽然 A，但是 B. Seed edit (blast radius) → held. The proposed version swaps the clauses on both sides.",
+   "gloss": "但是 but · 我没时间 I had no time · 虽然 although · 我想见你 I wanted to see you",
+   "knockOn": [
+    "zho_for_eng:S0178L01U07"
+   ]
+  },
+  {
+   "id": "seed:185",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I think you left them at work",
+    "target": "我觉得你把它们落在工作地方了"
+   },
+   "after": {
+    "known": "I think you left them at work",
+    "target": "我觉得你把它们落在工作的地方了",
+    "roman": "wǒ juéde nǐ bǎ tāmen là zài gōngzuò de dìfang le"
+   },
+   "why": "工作地方 'work place' is not a Chinese word; it needs 的 (工作的地方 'the place where you work'). Seed edit → held.",
+   "gloss": "我觉得 I think · 你把它们 you (took) them · 落在 left at · 工作地方 work place · 了",
+   "knockOn": [
+    "zho_for_eng:S0185L01U10"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0195L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "find the money",
+    "target": "找钱"
+   },
+   "after": null,
+   "why": "找钱 zhǎo qián is the fixed expression 'give change (at a till)', so 'find the money' here teaches the wrong sense. A build, heard once. Options: delete, or 'find my money | 找我的钱' (cf. U06 我想找我的钱).",
+   "gloss": "找钱 zhǎo qián — (idiom) give change"
+  },
+  {
+   "id": "S0198L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "the council",
+    "target": "市政府"
+   },
+   "after": null,
+   "why": "LEGO is 'the council | 市政府', but every phrase under it teaches 市 alone as 'city' (在市里, 市在哪里). 市在哪里 'where is the city?' is not natural Chinese, and 'in the city' is later taught as 在城市里 (S0302L01) — the same English then has two Chinese answers (ZUT): S0198L01U02 'she works in the city | 她在市里工作' vs S0302L01U04 '…work in the city | 在城市里工作'; S0284L01U05 '…lives in the city | 住在市里' vs S0302L01B03 'live in the city | 住在城市里'. The phrase set should be rebuilt around 市政府 'the council'. LEGO/phrase re-make → Kai's call.",
+   "gloss": "市 shì city/municipality · 政府 zhèngfǔ government · 市里 shì lǐ in town",
+   "knockOn": [
+    "zho_for_eng:S0198L01B01",
+    "zho_for_eng:S0198L01B02",
+    "zho_for_eng:S0198L01B03",
+    "zho_for_eng:S0198L01U01",
+    "zho_for_eng:S0198L01U02",
+    "zho_for_eng:S0198L01U05",
+    "zho_for_eng:S0198L01U07",
+    "zho_for_eng:S0198L01U08",
+    "zho_for_eng:S0284L01U05"
+   ]
+  },
+  {
+   "id": "S0221L03",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "part",
+    "target": "部"
+   },
+   "after": {
+    "known": "(film) — measure word",
+    "target": "部"
+   },
+   "why": "部 here is the measure word for films (一部电影 'a film'), but the LEGO and its intro gloss it 'part; section'. So B02 'this part | 这部' and U01 'I watched one part | 我看了一部' teach the wrong meaning ('this part' is 这部分). Re-gloss the LEGO (e.g. 'one (film)') and re-make its phrases with 电影 in them.",
+   "gloss": "部 bù — measure word for films/books",
+   "knockOn": [
+    "zho_for_eng:S0221L03B01",
+    "zho_for_eng:S0221L03B02",
+    "zho_for_eng:S0221L03B03",
+    "zho_for_eng:S0221L03U01",
+    "zho_for_eng:S0221L03U02",
+    "zho_for_eng:S0221L03U03",
+    "zho_for_eng:S0221L03U04"
+   ]
+  },
+  {
+   "id": "seed:222",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's trying to tell me what he wants",
+    "target": "他在试试告诉我他想要什么"
+   },
+   "after": {
+    "known": "he's trying to tell me what he wants",
+    "target": "他想告诉我他想要什么",
+    "roman": "tā xiǎng gàosu wǒ tā xiǎng yào shénme"
+   },
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call. Seed edit → held; proposed rewording uses 想 (lit. 'he wants to tell me what he wants').",
+   "gloss": "他 he · 在 (-ing) · 试试 have a try · 告诉我 tell me · 他想要什么 what he wants",
+   "knockOn": [
+    "zho_for_eng:S0222L01B02",
+    "zho_for_eng:S0222L01B03",
+    "zho_for_eng:S0222L01U01",
+    "zho_for_eng:S0222L02U08",
+    "zho_for_eng:S0222L03U05"
+   ]
+  },
+  {
+   "id": "seed:226",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "the man is trying to help me",
+    "target": "那个男人在试试帮我"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call. Seed edit → held.",
+   "gloss": "那个男人 that man · 在试试 (-ing have-a-try) · 帮我 help me",
+   "knockOn": [
+    "zho_for_eng:S0226L01U01"
+   ]
+  },
+  {
+   "id": "zho_for_eng:S0222L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": false,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I'm trying",
+    "target": "我在试试"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "我在试试 — wǒ zài shìshi"
+  },
+  {
+   "id": "zho_for_eng:S0222L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": false,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's trying",
+    "target": "他在试试"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "他在试试 — tā zài shìshi"
+  },
+  {
+   "id": "zho_for_eng:S0222L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": false,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I'm trying to read this book",
+    "target": "我在试试看这本书"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "我在试试看这本书 — wǒ zài shìshi kàn zhè běn shū。"
+  },
+  {
+   "id": "zho_for_eng:S0222L02U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I'm trying to tell you",
+    "target": "我在试试告诉你"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "我在试试告诉你 — wǒ zài shìshi gàosu nǐ。"
+  },
+  {
+   "id": "zho_for_eng:S0222L03U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's trying to tell me what he wants",
+    "target": "他在试试告诉我他想要什么"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "他在试试告诉我他想要什么 — tā zài shìshi gàosu wǒ tā xiǎngyào shénme。"
+  },
+  {
+   "id": "zho_for_eng:S0226L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "that man is trying to help me",
+    "target": "那个男人在试试帮我"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "那个男人在试试帮我 — nàge nánrén zài shìshi bāng wǒ。"
+  },
+  {
+   "id": "zho_for_eng:S0228L02U04",
+   "table": "phrase",
+   "role": "use",
+   "played": false,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she's trying to speak",
+    "target": "她在试试说话"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "她在试试说话 — tā zài shìshi shuōhuà。"
+  },
+  {
+   "id": "zho_for_eng:S0229L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "that woman is trying to help me",
+    "target": "那个女人在试试帮我"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "那个女人在试试帮我 — nà ge nǚrén zài shìshi bāng wǒ."
+  },
+  {
+   "id": "zho_for_eng:S0230L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I'm trying to get to know him",
+    "target": "我在试试认识他"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "我在试试认识他 — wǒ zài shìshi rènshi tā。"
+  },
+  {
+   "id": "zho_for_eng:S0230L02U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "that young woman is trying to help me",
+    "target": "那个年轻女人在试试帮我"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "那个年轻女人在试试帮我 — nàge niánqīng nǚrén zài shìshi bāng wǒ."
+  },
+  {
+   "id": "zho_for_eng:S0230L04U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she's trying to work",
+    "target": "她在试试工作"
+   },
+   "after": null,
+   "why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "gloss": "她在试试工作 — tā zài shìshi gōngzuò。"
+  },
+  {
+   "id": "zho_for_eng:S0224L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's starting",
+    "target": "他在开始"
+   },
+   "after": null,
+   "why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "gloss": "他在开始 — tā zài kāishǐ"
+  },
+  {
+   "id": "zho_for_eng:S0224L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's starting to learn now",
+    "target": "他现在在开始学"
+   },
+   "after": null,
+   "why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "gloss": "他现在在开始学 — tā xiànzài zài kāishǐ xué."
+  },
+  {
+   "id": "zho_for_eng:S0224L01U08",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she's starting to try now",
+    "target": "她现在在开始试试"
+   },
+   "after": null,
+   "why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "gloss": "她现在在开始试试 — tā xiànzài zài kāishǐ shìshi。"
+  },
+  {
+   "id": "seed:231",
+   "table": "seed",
+   "role": "seed",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I know an old man who wanted to ask for help",
+    "target": "我认识一个老男人，他以前想请求帮助"
+   },
+   "after": null,
+   "why": "老男人 'old male-person' is not how Chinese says 'an old man' — it sounds crude ('old geezer'). The course's own later LEGO is 老人 'an old man / old person' (S0264L01). Seed + LEGO edit → held.",
+   "gloss": "老 old · 男人 man (male person)",
+   "knockOn": [
+    "S0231L01",
+    "zho_for_eng:S0231L01B01",
+    "zho_for_eng:S0231L01B02",
+    "zho_for_eng:S0231L01B03",
+    "zho_for_eng:S0231L01B04",
+    "zho_for_eng:S0231L01U01",
+    "zho_for_eng:S0231L01U02",
+    "zho_for_eng:S0231L01U03",
+    "zho_for_eng:S0231L01U04",
+    "zho_for_eng:S0231L01U05"
+   ]
+  },
+  {
+   "id": "S0232L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "woman",
+    "target": "妇人"
+   },
+   "after": null,
+   "why": "Second Chinese for 'woman': S0229L01 teaches 'woman | 女人', this LEGO teaches 'woman | 妇人' (妇人 is old-fashioned/literary). Exact ZUT clash: S0230L01U02 'do you know that woman? | 你认识那个女人吗？' vs S0232L01U04 'do you know that woman? | 你认识那个妇人吗'. 老妇人 'old woman' (S0232L02) is fine as a whole chunk; the bare 'woman | 妇人' LEGO is the problem. Never delete a LEGO: options are to grow it to 'old woman | 老妇人' (merge with L02) or give it a distinct English (e.g. 'lady').",
+   "gloss": "妇人 fùrén — woman (literary/old-fashioned)",
+   "knockOn": [
+    "zho_for_eng:S0232L01B01",
+    "zho_for_eng:S0232L01B02",
+    "zho_for_eng:S0232L01B03",
+    "zho_for_eng:S0232L01U01",
+    "zho_for_eng:S0232L01U02",
+    "zho_for_eng:S0232L01U03",
+    "zho_for_eng:S0232L01U04"
+   ]
+  },
+  {
+   "id": "S0239L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "my mother",
+    "target": "我妈妈"
+   },
+   "after": null,
+   "why": "ZUT at LEGO level: 'my mother' is taught as 我妈 (S0181L02B01 'my mother | 我妈') and again here as 我妈妈. Both are correct Chinese (妈 is more colloquial), but the same English now has two answers across the course. Kai's call which one 'my mother' maps to.",
+   "gloss": "我妈妈 wǒ māma my mum · 我妈 wǒ mā my mum (colloquial)"
+  },
+  {
+   "id": "S0266L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "my father",
+    "target": "我父亲"
+   },
+   "after": null,
+   "why": "ZUT at LEGO level: 'my father' is 我爸爸 (S0240L01B02) and here 我父亲 (formal 'father'). Same English, two answers (e.g. S0240L01U11 'you must tell my father | 你必须告诉我爸爸' vs S0266L01U03 'do you know my father? | 你认识我父亲吗？'). Seed 266 'an old friend of my father' is fine either way. Kai's call.",
+   "gloss": "我父亲 wǒ fùqīn my father (formal) · 我爸爸 wǒ bàba my dad"
+  },
+  {
+   "id": "zho_for_eng:S0259L01U02",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I think that's a good idea",
+    "target": "我觉得那是个好想法"
+   },
+   "after": null,
+   "why": "Exact ZUT clash: S0123L01U02 'I think that's a good idea | 我觉得这是个好主意' vs this row '…| 我觉得那是个好想法'. Two Chinese answers for one English. 好主意 is the more natural 'good idea'; this LEGO teaches 想法 'idea/thought'. Delete or reword this phrase (e.g. 'I like your idea')?",
+   "gloss": "我觉得 I think · 那是个 that is a · 好想法 good idea/thought"
+  },
+  {
+   "id": "zho_for_eng:S0260L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "我一点头绪都没有该做什么"
+   },
+   "after": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "该做什么我一点头绪都没有",
+    "roman": "gāi zuò shénme wǒ yìdiǎn tóuxù dōu méiyǒu"
+   },
+   "why": "我一点头绪都没有该做什么 is ungrammatical: the 'what to do' part cannot trail after 都没有. It must come first (该做什么，我一点头绪都没有).",
+   "gloss": "我 I · 一点头绪都没有 have not the slightest clue · 该做什么 what (I) should do"
+  },
+  {
+   "id": "zho_for_eng:S0252L01U05",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天准备好"
+   },
+   "after": null,
+   "why": "'by tomorrow' is rendered 在明天 'on/at tomorrow', which says 'I need to get ready tomorrow', not 'by tomorrow' (明天之前). Reword: 'I need to be ready before tomorrow | 我需要在明天之前准备好' (之前 taught S0249L01) — a meaning change, so held.",
+   "gloss": "我需要 I need · 在明天 on tomorrow · 准备好 be ready"
+  },
+  {
+   "id": "zho_for_eng:S0276L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "let me think about this for a little while",
+    "target": "让我想一会儿这个"
+   },
+   "after": {
+    "known": "let me think for a little while",
+    "target": "让我想一会儿",
+    "roman": "ràng wǒ xiǎng yíhuìr"
+   },
+   "why": "让我想一会儿这个 — the object 这个 'this' cannot follow the duration 一会儿; Chinese would say 让我想一会儿 or 这个让我想一会儿.",
+   "gloss": "让我 let me · 想 think · 一会儿 a little while · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "unfortunately I have to go to a meeting",
+    "target": "很遗憾我得去会议"
+   },
+   "after": null,
+   "why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "gloss": "很遗憾我得去会议 — hěn yíhàn wǒ děi qù huìyì"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I'm willing to come to the meeting",
+    "target": "我愿意来会议"
+   },
+   "after": null,
+   "why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "gloss": "我愿意来会议 — wǒ yuànyì lái huìyì"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U09",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "we can go to the meeting",
+    "target": "我们能去会议"
+   },
+   "after": null,
+   "why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "gloss": "我们能去会议 — wǒmen néng qù huìyì"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she speaks well",
+    "target": "她会说得好"
+   },
+   "after": null,
+   "why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "gloss": "她会说得好 — tā huì shuō de hǎo"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B04",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she speaks very well",
+    "target": "她会说得很好"
+   },
+   "after": null,
+   "why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "gloss": "她会说得很好 — tā huì shuō de hěn hǎo"
+  },
+  {
+   "id": "zho_for_eng:S0285L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she speaks Chinese very well",
+    "target": "她会说中文说得很好"
+   },
+   "after": null,
+   "why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "gloss": "她会说中文说得很好 — tā huì shuō zhōngwén shuō de hěn hǎo."
+  },
+  {
+   "id": "zho_for_eng:S0285L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I think she speaks very well",
+    "target": "我想她会说得很好"
+   },
+   "after": null,
+   "why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "gloss": "我想她会说得很好 — wǒ xiǎng tā huì shuō de hěn hǎo。"
+  },
+  {
+   "id": "zho_for_eng:S0290L01B03",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "if he knows the answer to this",
+    "target": "他知不知道答案这个"
+   },
+   "after": null,
+   "why": "他知不知道答案这个 is ungrammatical — 这个 'this' cannot trail after 答案. 'the answer to this' would be 这个的答案. A build; reword or delete.",
+   "gloss": "他 he · 知不知道 knows or not · 答案 answer · 这个 this"
+  },
+  {
+   "id": "zho_for_eng:S0291L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "much better",
+    "target": "更好多了"
+   },
+   "after": null,
+   "why": "更好多了 is ungrammatical — 更 'more' and 多了 'much more' cannot be stacked. 'much better' is 好多了; '…much better than me' is 比我好多了 or 比我更好.",
+   "gloss": "更好多了 — gèng hǎo duō le"
+  },
+  {
+   "id": "zho_for_eng:S0291L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "she's much better at speaking Chinese than I am",
+    "target": "她说中文比我更好多了"
+   },
+   "after": null,
+   "why": "更好多了 is ungrammatical — 更 'more' and 多了 'much more' cannot be stacked. 'much better' is 好多了; '…much better than me' is 比我好多了 or 比我更好.",
+   "gloss": "她说中文比我更好多了 — tā shuō zhōngwén bǐ wǒ gèng hǎo duō le。"
+  },
+  {
+   "id": "zho_for_eng:S0300L01U03",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I think this seems good",
+    "target": "我觉得这个显得很好"
+   },
+   "after": null,
+   "why": "显得 means 'come across as / seem (to others)', typically with a quality (显得不友好); 这个显得很好 'this comes across as good' is odd Chinese and the English 'I think this seems good' is stilted. Reword or delete.",
+   "gloss": "我觉得 I think · 这个 this · 显得 comes across as · 很好 good"
+  },
+  {
+   "id": "zho_for_eng:S0322L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "he's reading the same book as me",
+    "target": "他在读和我同一本书"
+   },
+   "after": {
+    "known": "he's reading the same book as me",
+    "target": "他和我在读同一本书",
+    "roman": "tā hé wǒ zài dú tóngyī běn shū"
+   },
+   "why": "他在读和我同一本书 is ungrammatical ('reading with-me same book'). Natural: 他和我在读同一本书 'he and I are reading the same book' — all taught chunks.",
+   "gloss": "他 he · 在读 is reading · 和我 with me · 同一本书 the same book"
+  },
+  {
+   "id": "S0323L01",
+   "table": "lego",
+   "role": "lego",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "school",
+    "target": "校"
+   },
+   "after": null,
+   "why": "LEGO target is 校, which is not a word on its own; every phrase under it uses 学校 'school'. LEGO target should be 学校 (the seed says 学校). Data/LEGO edit → held.",
+   "gloss": "校 xiào (bound character) · 学校 xuéxiào school"
+  },
+  {
+   "id": "zho_for_eng:S0333L01B02",
+   "table": "phrase",
+   "role": "build",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "spend time with you",
+    "target": "和你花时间"
+   },
+   "after": null,
+   "why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "gloss": "和你花时间 — hé nǐ huā shíjiān"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U01",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "I want to spend time with you",
+    "target": "我想和你花时间"
+   },
+   "after": null,
+   "why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "gloss": "我想和你花时间 — wǒ xiǎng hé nǐ huā shíjiān"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U06",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "do you want to spend time with them?",
+    "target": "你想和他们花时间吗"
+   },
+   "after": null,
+   "why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "gloss": "你想和他们花时间吗 — nǐ xiǎng hé tāmen huā shíjiān ma"
+  },
+  {
+   "id": "zho_for_eng:S0232L01U04",
+   "table": "phrase",
+   "role": "use",
+   "played": true,
+   "point": "other",
+   "r195": false,
+   "action": "hold",
+   "before": {
+    "known": "do you know that woman?",
+    "target": "你认识那个妇人吗"
+   },
+   "after": null,
+   "why": "Exact ZUT clash with S0230L01U02 'do you know that woman? | 你认识那个女人吗？' — see the S0232L01 decision.",
+   "gloss": "你认识 you know · 那个妇人 that woman (literary) · 吗"
+  }
+ ]
+}
