@@ -41,7 +41,7 @@ def render(key, fl):
     L += ["", "FLAGS TO JUDGE:"]
     for f in fl:
         k, t, role = m.get(f['id'], ('?', '?', '?'))
-        L.append(f"{f['id']} [{role}]: {k} | {t}\n   first pass said: {f.get('type')} — {f.get('problem')} — {f.get('why')}")
+        L.append(f"{f['id']} [{role}]: {k} | {t}\n   first pass said: {f.get('problem')} — {f.get('why')}")
     return P + "\n\n" + "\n".join(L)
 def run(job):
     key, fl = job; txt = render(key, fl); t0 = time.time(); v = None; r = None
