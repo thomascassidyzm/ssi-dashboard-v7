@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 392,
+  "lego_index": 2,
+  "known": "post office",
+  "target": "郵便局"
+ },
+ "at": "2026-11-04T16:49:35.418Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 259,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"post office\" initially, medially AND finally.",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "build",
+   "known_text": "a new post office",
+   "target_text": "新しい郵便局",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "build",
+   "known_text": "the person who is at the post office",
+   "target_text": "郵便局にいる人",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "build",
+   "known_text": "i'm walking towards the post office",
+   "target_text": "郵便局のほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "build",
+   "known_text": "this year i'm working for the post office",
+   "target_text": "今年郵便局で働いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "is that the same post office",
+   "target_text": "それは同じ郵便局",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "she might work for the new post office",
+   "target_text": "新しい郵便局で働いてるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "last month i needed to talk to the person at the post office",
+   "target_text": "先月郵便局にいる人と話す必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "i'll ask if she works for the same post office",
+   "target_text": "同じ郵便局で働いてるか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "i've heard from the new post office",
+   "target_text": "新しい郵便局から連絡あった",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 2,
+   "lego_known": "post office",
+   "lego_target": "郵便局",
+   "phrase_role": "use",
+   "known_text": "i know the young man who works for the post office",
+   "target_text": "郵便局で働いてる若い男性を知ってる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

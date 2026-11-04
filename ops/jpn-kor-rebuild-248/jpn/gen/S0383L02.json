@@ -1,0 +1,133 @@
+{
+ "lego": {
+  "seed_number": 383,
+  "lego_index": 2,
+  "known": "he wanted to put it in the garden",
+  "target": "庭に置きたい"
+ },
+ "at": "2026-11-04T16:38:13.186Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 211,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "build",
+   "known_text": "he wanted to put it in the garden I heard",
+   "target_text": "庭に置きたいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "build",
+   "known_text": "I'll ask if he wanted to put it in the garden",
+   "target_text": "庭に置きたいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "build",
+   "known_text": "I didn't ask whether he wanted to put it in the garden or not",
+   "target_text": "庭に置きたいかどうか聞かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "build",
+   "known_text": "I wonder if he wanted to put it in the garden",
+   "target_text": "庭に置きたいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "he wanted to put it in the garden I heard last month",
+   "target_text": "先月庭に置きたいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "I heard that he wanted to put it in the garden a week ago",
+   "target_text": "一週間前庭に置きたいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "I'll ask if he wanted to put it in the garden before I go",
+   "target_text": "行く前に庭に置きたいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "I wanted to know whether he wanted to put it in the garden or not",
+   "target_text": "庭に置きたいかどうか知りたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if he wanted to put it in the garden",
+   "target_text": "庭に置きたいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "I didn't want to know whether he wanted to put it in the garden or not",
+   "target_text": "庭に置きたいかどうか知りたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 383,
+   "lego_index": 2,
+   "lego_known": "he wanted to put it in the garden",
+   "lego_target": "庭に置きたい",
+   "phrase_role": "use",
+   "known_text": "tomorrow I'll ask if he wanted to put it in the garden",
+   "target_text": "明日庭に置きたいか聞いてみる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

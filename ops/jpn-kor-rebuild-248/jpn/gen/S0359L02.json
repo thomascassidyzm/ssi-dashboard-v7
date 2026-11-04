@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 359,
+  "lego_index": 2,
+  "known": "can turn left",
+  "target": "左に曲がれる"
+ },
+ "at": "2026-11-04T16:05:28.226Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 239,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "build",
+   "known_text": "this time you might be able to turn left",
+   "target_text": "今回左に曲がれるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "build",
+   "known_text": "from now on you can turn left",
+   "target_text": "これから左に曲がれる",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "build",
+   "known_text": "because you can turn left",
+   "target_text": "左に曲がれるから",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "build",
+   "known_text": "i wonder if we can turn left",
+   "target_text": "左に曲がれるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if we can turn left",
+   "target_text": "左に曲がれるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "it feels like you can surely turn left",
+   "target_text": "きっと左に曲がれる気がする",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "tomorrow i'll ask if we can turn left",
+   "target_text": "明日左に曲がれるか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "because you can turn left it's no problem",
+   "target_text": "左に曲がれるから問題ない",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "in a few days she'll be able to turn left",
+   "target_text": "数日で左に曲がれる",
+   "pad": []
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 2,
+   "lego_known": "can turn left",
+   "lego_target": "左に曲がれる",
+   "phrase_role": "use",
+   "known_text": "after we finish we can turn left",
+   "target_text": "終わったら左に曲がれる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

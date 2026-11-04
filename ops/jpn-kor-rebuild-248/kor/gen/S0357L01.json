@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 357,
+  "lego_index": 1,
+  "known": "a message",
+  "target": "메시지를"
+ },
+ "at": "2026-11-04T16:06:18.866Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 60,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "build",
+   "known_text": "need to read a message",
+   "target_text": "메시지를 읽어야",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "build",
+   "known_text": "I can write a message tonight",
+   "target_text": "오늘 밤에 메시지를 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "build",
+   "known_text": "I'm trying to find a message",
+   "target_text": "메시지를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "build",
+   "known_text": "this time I want to read a message",
+   "target_text": "이번에는 메시지를 읽고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "my mother wanted to write a message",
+   "target_text": "제 어머니는 메시지를 쓰고 싶어했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "can you write a message before you go",
+   "target_text": "가기 전에 메시지를 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "my son is trying to find a message",
+   "target_text": "제 아들은 메시지를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "why do you want to read a message",
+   "target_text": "왜 메시지를 읽고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "I want to read a message before the weekend",
+   "target_text": "주말 전에 메시지를 읽고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 357,
+   "lego_index": 1,
+   "lego_known": "a message",
+   "lego_target": "메시지를",
+   "phrase_role": "use",
+   "known_text": "I have never seen a message before",
+   "target_text": "전에 메시지를 본 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

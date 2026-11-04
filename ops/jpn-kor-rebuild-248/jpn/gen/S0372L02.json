@@ -1,0 +1,144 @@
+{
+ "lego": {
+  "seed_number": 372,
+  "lego_index": 2,
+  "known": "was trying to create",
+  "target": "作ろうとしてた"
+ },
+ "at": "2026-11-04T16:23:12.132Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 217,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.42 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "build",
+   "known_text": "the thing i was trying to create",
+   "target_text": "作ろうとしてたもの",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "build",
+   "known_text": "was trying to create a new life",
+   "target_text": "新しい人生作ろうとしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "build",
+   "known_text": "was trying to create it on my own",
+   "target_text": "自分で作ろうとしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "build",
+   "known_text": "the film i was trying to create",
+   "target_text": "作ろうとしてた映画",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "i heard that you were trying to create a company",
+   "target_text": "会社作ろうとしてたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "i was busy because i was trying to create something new",
+   "target_text": "新しいこと作ろうとしてたから忙しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "you might have been trying to create the same thing",
+   "target_text": "同じこと作ろうとしてたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "i wonder if they were trying to create it in an office",
+   "target_text": "オフィスで作ろうとしてたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if we were trying to create it from home",
+   "target_text": "家で作ろうとしてたかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "last night i was trying to create a new method",
+   "target_text": "昨夜新しい方法作ろうとしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "were you trying to create a film",
+   "target_text": "映画作ろうとしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 372,
+   "lego_index": 2,
+   "lego_known": "was trying to create",
+   "lego_target": "作ろうとしてた",
+   "phrase_role": "use",
+   "known_text": "i have never seen the thing you were trying to create",
+   "target_text": "作ろうとしてたもの見たことない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 381,
+  "lego_index": 1,
+  "known": "want to follow",
+  "target": "ついて来たい"
+ },
+ "at": "2026-11-04T16:33:22.118Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 227,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "build",
+   "known_text": "might want to follow",
+   "target_text": "ついて来たいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "build",
+   "known_text": "want to follow tomorrow",
+   "target_text": "明日ついて来たい",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "build",
+   "known_text": "a student who wants to follow",
+   "target_text": "ついて来たい生徒",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "build",
+   "known_text": "i wonder if he wants to follow",
+   "target_text": "ついて来たいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "after we finish he might want to follow",
+   "target_text": "終わったらついて来たいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "i know the young man who wants to follow",
+   "target_text": "ついて来たい若い男性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "it's okay to hold the kitten that wants to follow",
+   "target_text": "ついて来たい子猫抱いていい",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "i didn't want to ask whether or not he wanted to follow",
+   "target_text": "ついて来たいかどうか聞きたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if he wants to follow this time",
+   "target_text": "今回ついて来たいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "i heard that he wants to follow on wednesday",
+   "target_text": "水曜ついて来たいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "want to follow",
+   "lego_target": "ついて来たい",
+   "phrase_role": "use",
+   "known_text": "i'll ask if he wants to follow next week",
+   "target_text": "来週ついて来たいか聞いてみる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

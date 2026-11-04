@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 379,
+  "lego_index": 2,
+  "known": "to Africa",
+  "target": "아프리카에"
+ },
+ "at": "2026-11-04T16:40:23.044Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 212,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"travelled alone to Africa\" (unknown gloss \"travelled\"); \"I travelled to Africa with a friend last year\" (unknown gloss \"travelled\")",
+  "BUILD \"travelled alone to Africa\" → \"혼자 아프리카에 여행 갔어요\": popty:knownSide [{\"known\":\"travelled alone to Africa\",\"target\":\"혼자 아프리카에 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelled\\\"\"}]",
+  "USE \"I travelled to Africa with a friend last year\" → \"작년에 친구와 아프리카에 여행 갔어요\": popty:knownSide [{\"known\":\"I travelled to Africa with a friend last year\",\"target\":\"작년에 친구와 아프리카에 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelled\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

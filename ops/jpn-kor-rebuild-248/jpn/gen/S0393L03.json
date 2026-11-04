@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 393,
+  "lego_index": 3,
+  "known": "boy",
+  "target": "男の子"
+ },
+ "at": "2026-11-04T16:52:23.744Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 81,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "build",
+   "known_text": "near the boy",
+   "target_text": "男の子の近くに",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "build",
+   "known_text": "walking towards the boy",
+   "target_text": "男の子のほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "build",
+   "known_text": "the boy standing near the entrance",
+   "target_text": "入り口の近くに立ってる男の子",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "build",
+   "known_text": "the boy sitting over there",
+   "target_text": "あそこに座ってる男の子",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "use",
+   "known_text": "i needed to talk to the boy standing near the entrance",
+   "target_text": "入り口の近くに立ってる男の子と話す必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "use",
+   "known_text": "i was talking to the boy sitting over there",
+   "target_text": "あそこに座ってる男の子と話してた",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "use",
+   "known_text": "i heard that they were talking to the boy",
+   "target_text": "男の子と話してたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "use",
+   "known_text": "it might be the boy walking towards the bus",
+   "target_text": "バスのほうに歩いてる男の子かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 393,
+   "lego_index": 3,
+   "lego_known": "boy",
+   "lego_target": "男の子",
+   "phrase_role": "use",
+   "known_text": "i needed to talk to the boy before answering",
+   "target_text": "答える前に男の子と話す必要があった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

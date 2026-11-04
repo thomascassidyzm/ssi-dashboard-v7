@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 374,
+  "lego_index": 1,
+  "known": "was beautiful - reported",
+  "target": "아름다웠다고"
+ },
+ "at": "2026-11-04T16:30:44.387Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 215,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"was beautiful - reported\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "build",
+   "known_text": "that it was beautiful on wednesday",
+   "target_text": "수요일에 아름다웠다고",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "build",
+   "known_text": "I believe it was very beautiful",
+   "target_text": "아주 아름다웠다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "build",
+   "known_text": "I didn't say it was beautiful",
+   "target_text": "아름다웠다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "build",
+   "known_text": "nobody told me it was beautiful",
+   "target_text": "아름다웠다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "use",
+   "known_text": "why do you believe that book was beautiful",
+   "target_text": "왜 그 책이 아름다웠다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "use",
+   "known_text": "do you really believe her book was very beautiful",
+   "target_text": "그녀의 책이 아주 아름다웠다고 정말 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "use",
+   "known_text": "I didn't say that book was fairly beautiful",
+   "target_text": "그 책이 꽤 아름다웠다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "use",
+   "known_text": "nobody told me it was beautiful on wednesday",
+   "target_text": "수요일에 아름다웠다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 374,
+   "lego_index": 1,
+   "lego_known": "was beautiful - reported",
+   "lego_target": "아름다웠다고",
+   "phrase_role": "use",
+   "known_text": "I believe it was beautiful but I have never seen it",
+   "target_text": "아름다웠다고 믿어요 하지만 본 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

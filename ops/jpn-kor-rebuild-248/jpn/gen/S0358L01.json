@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 358,
+  "lego_index": 1,
+  "known": "top",
+  "target": "頂上"
+ },
+ "at": "2026-11-04T16:05:25.144Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 848,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"i hoped to see all the tops\" (unknown gloss \"tops\")",
+  "USE \"i hoped to see all the tops\" → \"全部の頂上見たかった\": popty:knownSide [{\"known\":\"i hoped to see all the tops\",\"target\":\"全部の頂上見たかった\",\"problem\":\"unknown gloss \\\"tops\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

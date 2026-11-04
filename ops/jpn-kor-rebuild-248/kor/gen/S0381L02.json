@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 381,
+  "lego_index": 2,
+  "known": "follow-come",
+  "target": "따라오고"
+ },
+ "at": "2026-11-04T16:45:46.745Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 257,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"follow-come\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "build",
+   "known_text": "follow alone and",
+   "target_text": "혼자 따라오고",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "build",
+   "known_text": "said that he wants to follow",
+   "target_text": "따라오고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "build",
+   "known_text": "brother who wanted to follow",
+   "target_text": "따라오고 싶어했던 남동생을",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "build",
+   "known_text": "that the student wants to follow on wednesday",
+   "target_text": "학생은 수요일에 따라오고 싶어한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "use",
+   "known_text": "the student who doesn't want to follow is holding up both hands",
+   "target_text": "따라오고 싶어하지 않는 학생은 양손을 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "use",
+   "known_text": "last year my father said that he doesn't want to follow",
+   "target_text": "작년에 제 아버지는 따라오고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "use",
+   "known_text": "why did he say that he wants to follow on wednesday",
+   "target_text": "왜 수요일에 따라오고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "use",
+   "known_text": "nobody told me that he wanted to follow",
+   "target_text": "따라오고 싶어한다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 2,
+   "lego_known": "follow-come",
+   "lego_target": "따라오고",
+   "phrase_role": "use",
+   "known_text": "last year the student said that he wants to follow to africa",
+   "target_text": "학생은 작년에 아프리카에 따라오고 싶다고 했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

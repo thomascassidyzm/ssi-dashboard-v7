@@ -1,0 +1,24 @@
+{
+ "lego": {
+  "seed_number": 391,
+  "lego_index": 1,
+  "known": "walking towards the bus",
+  "target": "バスのほうに歩いてる"
+ },
+ "at": "2026-11-04T16:46:29.269Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 210,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"surely he is walking towards the bus\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

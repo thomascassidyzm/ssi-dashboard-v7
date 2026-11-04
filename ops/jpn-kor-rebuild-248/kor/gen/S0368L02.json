@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 368,
+  "lego_index": 2,
+  "known": "wanted to - reported",
+  "target": "싶어한다고"
+ },
+ "at": "2026-11-04T16:23:46.831Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 281,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"wanted to - reported\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "build",
+   "known_text": "that he wanted to grow tomatoes",
+   "target_text": "토마토를 키우고 싶어한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "build",
+   "known_text": "that she wanted to look after the cat",
+   "target_text": "고양이를 돌보고 싶어한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "build",
+   "known_text": "I believe she wanted to live in a city",
+   "target_text": "도시에서 살고 싶어한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "build",
+   "known_text": "my father told him that he wanted to sit down",
+   "target_text": "제 아버지는 그한테 앉고 싶어한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "use",
+   "known_text": "nobody told me that he wanted to grow tomatoes",
+   "target_text": "토마토를 키우고 싶어한다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "use",
+   "known_text": "my daughter told him that she wanted to meet some old friends",
+   "target_text": "제 딸은 그한테 오래된 친구들을 만나고 싶어한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "use",
+   "known_text": "why did my mother tell him that she wanted to work at home",
+   "target_text": "제 어머니는 왜 그한테 집에서 일하고 싶어한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "use",
+   "known_text": "my son told him that he wanted to go out tonight",
+   "target_text": "제 아들은 그한테 오늘 밤에 나가고 싶어한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 368,
+   "lego_index": 2,
+   "lego_known": "wanted to - reported",
+   "lego_target": "싶어한다고",
+   "phrase_role": "use",
+   "known_text": "I couldn't hear that she wanted to send a message",
+   "target_text": "메시지를 보내고 싶어한다고 못 들었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

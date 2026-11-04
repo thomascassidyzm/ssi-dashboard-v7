@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 371,
+  "lego_index": 1,
+  "known": "Wednesday",
+  "target": "水曜"
+ },
+ "at": "2026-11-04T16:20:33.502Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 225,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "build",
+   "known_text": "next wednesday",
+   "target_text": "来週水曜",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "build",
+   "known_text": "wednesday night",
+   "target_text": "水曜夜",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "build",
+   "known_text": "early on wednesday",
+   "target_text": "水曜早めに",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "build",
+   "known_text": "meeting up with everyone on wednesday",
+   "target_text": "みんなと水曜集まる",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "i left them at work on wednesday",
+   "target_text": "仕事場に水曜置いてきた",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "there was something important to discuss on wednesday",
+   "target_text": "水曜大事な話があった",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "i didn't see it on wednesday",
+   "target_text": "水曜見なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "it might be wednesday",
+   "target_text": "水曜かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "she doesn't want to work from home on wednesday",
+   "target_text": "水曜家で働きたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "will you help before i go on wednesday",
+   "target_text": "水曜行く前に手伝ってくれる",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 1,
+   "lego_known": "Wednesday",
+   "lego_target": "水曜",
+   "phrase_role": "use",
+   "known_text": "i wonder if she'll be able to come on wednesday",
+   "target_text": "水曜来られるか気になる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

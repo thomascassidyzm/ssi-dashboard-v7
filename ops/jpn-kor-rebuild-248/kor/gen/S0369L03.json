@@ -1,0 +1,38 @@
+{
+ "lego": {
+  "seed_number": 369,
+  "lego_index": 3,
+  "known": "animal counter",
+  "target": "마리를"
+ },
+ "at": "2026-11-04T16:25:44.999Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab",
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 212,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 9 phrase(s) use target words not yet introduced: [{\"phrase\":\"고양이 다섯 마리를\",\"unknown\":\"고양이\"},{\"phrase\":\"길에서 고양이 여러 마리를\",\"unknown\":\"고양이\"},{\"phrase\":\"고양이 열 마리를 돌보고\",\"unknown\":\"고양이\"},{\"phrase\":\"고양이 한두 마리를 데려올 수 있을\",\"unknown\":\"고양이\"},{\"phrase\":\"길에서 고양이 다섯 마리를 본 적 없어요\",\"unknown\":\"고양이\"}]",
+  "knownSide: 9 phrase(s) use English the learner has not been given. \"five cats\" (unknown gloss \"cats\"); \"several cats on the road\" (unknown gloss \"cats\"); \"to look after ten cats\" (unknown gloss \"cats\"); \"can bring one or two cats\" (unknown gloss \"cats\"); \"I have never seen five cats on the road\" (unknown gloss \"cats\")",
+  "BUILD \"five cats\" → \"고양이 다섯 마리를\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"고양이 다섯 마리를\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"five cats\",\"target\":\"고양이 다섯 마리를\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "BUILD \"several cats on the road\" → \"길에서 고양이 여러 마리를\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"길에서 고양이 여러 마리를\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"several cats on the road\",\"target\":\"길에서 고양이 여러 마리를\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "BUILD \"to look after ten cats\" → \"고양이 열 마리를 돌보고\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"고양이 열 마리를 돌보고\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"to look after ten cats\",\"target\":\"고양이 열 마리를 돌보고\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "BUILD \"can bring one or two cats\" → \"고양이 한두 마리를 데려올 수 있을\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"고양이 한두 마리를 데려올 수 있을\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"can bring one or two cats\",\"target\":\"고양이 한두 마리를 데려올 수 있을\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "USE \"I have never seen five cats on the road\" → \"길에서 고양이 다섯 마리를 본 적 없어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"길에서 고양이 다섯 마리를 본 적 없어요\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"I have never seen five cats on the road\",\"target\":\"길에서 고양이 다섯 마리를 본 적 없어요\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "USE \"I hoped to see several cats\" → \"고양이 여러 마리를 보고 싶었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"고양이 여러 마리를 보고 싶었어요\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"I hoped to see several cats\",\"target\":\"고양이 여러 마리를 보고 싶었어요\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "USE \"she didn't want to look after ten cats all afternoon\" → \"오후 내내 고양이 열 마리를 돌보고 싶어하지 않았어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"오후 내내 고양이 열 마리를 돌보고 싶어하지 않았어요\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"she didn't want to look after ten cats all afternoon\",\"target\":\"오후 내내 고양이 열 마리를 돌보고 싶어하지 않았어요\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "USE \"can you give me one or two cats\" → \"고양이 한두 마리를 줄 수 있어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"고양이 한두 마리를 줄 수 있어요\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"can you give me one or two cats\",\"target\":\"고양이 한두 마리를 줄 수 있어요\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "USE \"I'll be able to bring several cats on monday\" → \"월요일에 고양이 여러 마리를 데려올 수 있을 거예요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"월요일에 고양이 여러 마리를 데려올 수 있을 거예요\",\"unknown\":\"고양이\"}],\"total\":1}; popty:knownSide [{\"known\":\"I'll be able to bring several cats on monday\",\"target\":\"월요일에 고양이 여러 마리를 데려올 수 있을 거예요\",\"problem\":\"unknown gloss \\\"cats\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"animal counter\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

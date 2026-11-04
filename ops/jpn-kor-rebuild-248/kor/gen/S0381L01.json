@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 381,
+  "lego_index": 1,
+  "known": "wants-whether",
+  "target": "싶어하는지"
+ },
+ "at": "2026-11-04T16:45:39.980Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 277,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"wants-whether\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "build",
+   "known_text": "whether she wants to meet",
+   "target_text": "만나고 싶어하는지",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "build",
+   "known_text": "whether he wants to grow tomatoes",
+   "target_text": "토마토를 키우고 싶어하는지",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "build",
+   "known_text": "I asked whether she wants to go out",
+   "target_text": "나가고 싶어하는지 물어봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "build",
+   "known_text": "whether he wants to live in a city",
+   "target_text": "도시에서 살고 싶어하는지",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "nobody knew whether she wanted to sit down",
+   "target_text": "아무도 앉고 싶어하는지 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "I have to find out whether he wants to work at home",
+   "target_text": "집에서 일하고 싶어하는지 알아내야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "why did you ask whether he wants to send a message",
+   "target_text": "왜 메시지를 보내고 싶어하는지 물어봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "I wanted to know whether she wants to grow tomatoes",
+   "target_text": "토마토를 키우고 싶어하는지 알고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "on wednesday I asked him whether he wanted to show it",
+   "target_text": "수요일에 그한테 그걸 보여 주고 싶어하는지 물어봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "I wonder whether she wants to live alone",
+   "target_text": "혼자 살고 싶어하는지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 381,
+   "lego_index": 1,
+   "lego_known": "wants-whether",
+   "lego_target": "싶어하는지",
+   "phrase_role": "use",
+   "known_text": "I asked him whether he wants to meet some old friends",
+   "target_text": "그한테 오래된 친구들을 만나고 싶어하는지 물어봤어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

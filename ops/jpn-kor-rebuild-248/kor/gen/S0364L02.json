@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 364,
+  "lego_index": 2,
+  "known": "doesn't like - reported",
+  "target": "안 좋아한다고"
+ },
+ "at": "2026-11-04T16:17:33.561Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 272,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"doesn't like - reported\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "build",
+   "known_text": "I didn't say I don't like",
+   "target_text": "안 좋아한다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "build",
+   "known_text": "a friend who said he doesn't like the company",
+   "target_text": "회사를 안 좋아한다고 말한 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "build",
+   "known_text": "that my son doesn't like the cat",
+   "target_text": "제 아들은 고양이를 안 좋아한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "build",
+   "known_text": "I believe my mother doesn't like that place",
+   "target_text": "제 어머니는 그곳을 안 좋아한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "use",
+   "known_text": "why do you believe my father doesn't like the cat",
+   "target_text": "왜 제 아버지는 고양이를 안 좋아한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "use",
+   "known_text": "I didn't say my daughter doesn't like football",
+   "target_text": "제 딸은 축구를 안 좋아한다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "use",
+   "known_text": "I believe my mother doesn't like reading",
+   "target_text": "제 어머니는 읽는 것을 안 좋아한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "use",
+   "known_text": "do you believe my daughter doesn't like the same book",
+   "target_text": "제 딸은 같은 책을 안 좋아한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 364,
+   "lego_index": 2,
+   "lego_known": "doesn't like - reported",
+   "lego_target": "안 좋아한다고",
+   "phrase_role": "use",
+   "known_text": "I didn't say my father doesn't like the company this year",
+   "target_text": "제 아버지는 올해 회사를 안 좋아한다고 말한 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

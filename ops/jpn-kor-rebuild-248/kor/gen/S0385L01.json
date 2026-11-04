@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 385,
+  "lego_index": 1,
+  "known": "with her",
+  "target": "그녀에게"
+ },
+ "at": "2026-11-04T16:52:03.878Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 235,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"nobody agrees with her\" (unknown gloss \"agrees\")",
+  "USE \"nobody agrees with her\" → \"아무도 그녀에게 동의하지 않아요\": popty:knownSide [{\"known\":\"nobody agrees with her\",\"target\":\"아무도 그녀에게 동의하지 않아요\",\"problem\":\"unknown gloss \\\"agrees\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

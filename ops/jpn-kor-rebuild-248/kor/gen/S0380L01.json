@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 380,
+  "lego_index": 1,
+  "known": "include",
+  "target": "포함하고"
+ },
+ "at": "2026-11-04T16:39:28.508Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 77,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "build",
+   "known_text": "include a message",
+   "target_text": "메시지를 포함하고",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "build",
+   "known_text": "that she wanted to include tomatoes",
+   "target_text": "토마토를 포함하고 싶어한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "build",
+   "known_text": "who doesn't want to include that place",
+   "target_text": "그곳을 포함하고 싶어하지 않는",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "build",
+   "known_text": "he said he wants to include it",
+   "target_text": "그걸 포함하고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "use",
+   "known_text": "nobody told me she wanted to include a message",
+   "target_text": "메시지를 포함하고 싶어한다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "use",
+   "known_text": "my mother said she doesn't want to include that place",
+   "target_text": "제 어머니는 그곳을 포함하고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "use",
+   "known_text": "why did he say he wants to include tomatoes",
+   "target_text": "왜 토마토를 포함하고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "use",
+   "known_text": "the student who doesn't want to include tomatoes is holding up both hands",
+   "target_text": "토마토를 포함하고 싶어하지 않는 학생은 양손을 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 380,
+   "lego_index": 1,
+   "lego_known": "include",
+   "lego_target": "포함하고",
+   "phrase_role": "use",
+   "known_text": "this time he said he wants to include a message",
+   "target_text": "이번에는 메시지를 포함하고 싶다고 했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

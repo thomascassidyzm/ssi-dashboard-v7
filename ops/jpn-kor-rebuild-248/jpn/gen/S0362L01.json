@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 362,
+  "lego_index": 1,
+  "known": "after",
+  "target": "あと"
+ },
+ "at": "2026-11-04T16:09:09.047Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 221,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "build",
+   "known_text": "after i asked",
+   "target_text": "頼んだあと",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "build",
+   "known_text": "after i was surprised",
+   "target_text": "驚いたあと",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "build",
+   "known_text": "after i watched a bit of television",
+   "target_text": "テレビ少し見たあと",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "build",
+   "known_text": "after i left them at work",
+   "target_text": "仕事場に置いてきたあと",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "after i heard i was quite surprised",
+   "target_text": "聞いたあと結構驚いた",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "it might be after the emails came",
+   "target_text": "メールが来たあとかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "last night i was busy after i watched a bit of television",
+   "target_text": "昨夜テレビ少し見たあと忙しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "after i asked i couldn't do it",
+   "target_text": "頼んだあとできなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "after i had a glass or two of water i wanted to go out",
+   "target_text": "水を一、二杯飲んだあと出かけたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 362,
+   "lego_index": 1,
+   "lego_known": "after",
+   "lego_target": "あと",
+   "phrase_role": "use",
+   "known_text": "after the emails came he was wanting to know what was happening",
+   "target_text": "メールが来たあと何が起きてたか知りたがってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

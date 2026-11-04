@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 384,
+  "lego_index": 3,
+  "known": "can agree",
+  "target": "동의할"
+ },
+ "at": "2026-11-04T16:51:19.821Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 244,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "build",
+   "known_text": "can agree with the words",
+   "target_text": "말에 동의할",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "build",
+   "known_text": "this time I couldn't agree",
+   "target_text": "이번에는 동의할 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "build",
+   "known_text": "might be able to agree",
+   "target_text": "동의할 수도 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "build",
+   "known_text": "a person who can agree",
+   "target_text": "동의할 수 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "my mother said she could agree",
+   "target_text": "제 어머니는 동의할 수 있다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "why couldn't you agree",
+   "target_text": "왜 동의할 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "the student will be able to agree",
+   "target_text": "학생은 동의할 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "on wednesday I couldn't agree",
+   "target_text": "수요일에 동의할 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "I'm surprised because I can agree",
+   "target_text": "동의할 수 있어서 놀랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 384,
+   "lego_index": 3,
+   "lego_known": "can agree",
+   "lego_target": "동의할",
+   "phrase_role": "use",
+   "known_text": "the student couldn't agree with the words",
+   "target_text": "학생은 말에 동의할 수 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

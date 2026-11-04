@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 377,
+  "lego_index": 2,
+  "known": "where",
+  "target": "어디"
+ },
+ "at": "2026-11-04T16:35:33.931Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 209,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"where are you living this year\" (unknown gloss \"living\")",
+  "USE \"where are you living this year\" → \"올해 어디 살고 있어요\": popty:knownSide [{\"known\":\"where are you living this year\",\"target\":\"올해 어디 살고 있어요\",\"problem\":\"unknown gloss \\\"living\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

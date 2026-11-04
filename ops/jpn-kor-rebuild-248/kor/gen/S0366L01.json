@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 366,
+  "lego_index": 1,
+  "known": "grow",
+  "target": "키우고"
+ },
+ "at": "2026-11-04T16:19:01.782Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 266,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "build",
+   "known_text": "want to grow the company",
+   "target_text": "회사를 키우고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "build",
+   "known_text": "grow my company alone",
+   "target_text": "제 회사를 혼자 키우고",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "build",
+   "known_text": "continue to grow the company this year",
+   "target_text": "올해 회사를 계속 키우고",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "build",
+   "known_text": "said that he wants to grow the company",
+   "target_text": "회사를 키우고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to grow the company again",
+   "target_text": "회사를 다시 키우고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to grow the company alone",
+   "target_text": "회사를 혼자 키우고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "I wanted to grow the company quickly but I didn't have time",
+   "target_text": "회사를 빨리 키우고 싶었지만 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "I wonder if he wants to continue to grow the company",
+   "target_text": "회사를 계속 키우고 싶은지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "why do you want to grow the company again",
+   "target_text": "왜 회사를 다시 키우고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "he's a friend who wanted to grow the company this year",
+   "target_text": "올해 회사를 키우고 싶어했던 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 366,
+   "lego_index": 1,
+   "lego_known": "grow",
+   "lego_target": "키우고",
+   "phrase_role": "use",
+   "known_text": "I want to grow my company before the weekend",
+   "target_text": "주말 전에 제 회사를 키우고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

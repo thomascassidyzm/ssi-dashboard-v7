@@ -1,0 +1,145 @@
+{
+ "lego": {
+  "seed_number": 378,
+  "lego_index": 1,
+  "known": "holiday",
+  "target": "休み"
+ },
+ "at": "2026-11-04T16:28:18.783Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 224,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"holiday\" initially, medially AND finally.",
+  "NEIGH 0.21 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "build",
+   "known_text": "it might be a holiday",
+   "target_text": "休みかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "build",
+   "known_text": "today is a holiday",
+   "target_text": "今日は休み",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "build",
+   "known_text": "there wasn't a holiday",
+   "target_text": "休みなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "build",
+   "known_text": "wednesday might be a holiday",
+   "target_text": "水曜休みかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "i wonder if friday is a holiday",
+   "target_text": "金曜休みか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "last month there wasn't a holiday",
+   "target_text": "先月休みなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait until the holiday",
+   "target_text": "休みまで待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "i thought it was his holiday",
+   "target_text": "彼の休みだと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if monday is a holiday",
+   "target_text": "月曜休みかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "i heard that tomorrow is a holiday",
+   "target_text": "明日休みって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "what do you do on holiday",
+   "target_text": "休み何する",
+   "pad": []
+  },
+  {
+   "seed_number": 378,
+   "lego_index": 1,
+   "lego_known": "holiday",
+   "lego_target": "休み",
+   "phrase_role": "use",
+   "known_text": "is sunday a holiday",
+   "target_text": "日曜休み",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

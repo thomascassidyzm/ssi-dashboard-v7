@@ -1,0 +1,31 @@
+{
+ "lego": {
+  "seed_number": 384,
+  "lego_index": 2,
+  "known": "to the words",
+  "target": "말에"
+ },
+ "at": "2026-11-04T16:50:27.190Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab",
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 233,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 1 phrase(s) use target words not yet introduced: [{\"phrase\":\"제 남동생 말에 동의해요 하지만 제 어머니의 말에 놀랐어요\",\"unknown\":\"남동생\"}]",
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"my mother agrees with my father's words\" (unknown gloss \"agrees\")",
+  "USE \"I agree with my brother's words but I was surprised at my mother's words\" → \"제 남동생 말에 동의해요 하지만 제 어머니의 말에 놀랐어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 남동생 말에 동의해요 하지만 제 어머니의 말에 놀랐어요\",\"unknown\":\"남동생\"}],\"total\":1}",
+  "USE \"my mother agrees with my father's words\" → \"제 어머니는 제 아버지의 말에 동의해요\": popty:knownSide [{\"known\":\"my mother agrees with my father's words\",\"target\":\"제 어머니는 제 아버지의 말에 동의해요\",\"problem\":\"unknown gloss \\\"agrees\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"to the words\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

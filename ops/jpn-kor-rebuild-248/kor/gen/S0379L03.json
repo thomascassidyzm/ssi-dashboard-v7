@@ -1,0 +1,113 @@
+{
+ "lego": {
+  "seed_number": 379,
+  "lego_index": 3,
+  "known": "lucky enough",
+  "target": "운 좋게도"
+ },
+ "at": "2026-11-04T16:41:03.152Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 237,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "build",
+   "known_text": "my son was lucky enough to travel",
+   "target_text": "제 아들은 운 좋게도 여행 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "build",
+   "known_text": "on wednesday I was lucky enough to go out",
+   "target_text": "수요일에 운 좋게도 나갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "build",
+   "known_text": "lucky enough I couldn't hear",
+   "target_text": "운 좋게도 못 들었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "build",
+   "known_text": "my daughter was lucky enough to go and see that place",
+   "target_text": "제 딸은 운 좋게도 그곳을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "use",
+   "known_text": "last year I was lucky enough to travel alone",
+   "target_text": "작년에 운 좋게도 혼자 여행 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "use",
+   "known_text": "lucky enough nobody told me",
+   "target_text": "운 좋게도 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "use",
+   "known_text": "my father was lucky enough to see a few friends",
+   "target_text": "제 아버지는 운 좋게도 친구 몇 명을 만났어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "use",
+   "known_text": "the student was lucky enough to travel to africa",
+   "target_text": "학생은 운 좋게도 아프리카에 여행 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 379,
+   "lego_index": 3,
+   "lego_known": "lucky enough",
+   "lego_target": "운 좋게도",
+   "phrase_role": "use",
+   "known_text": "this year it was lucky enough quiet",
+   "target_text": "올해 운 좋게도 조용했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

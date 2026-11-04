@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 365,
+  "lego_index": 1,
+  "known": "what she said",
+  "target": "彼女が何て言ったか"
+ },
+ "at": "2026-11-04T16:10:54.594Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 79,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "build",
+   "known_text": "what she said yesterday",
+   "target_text": "昨日彼女が何て言ったか",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "build",
+   "known_text": "I wanted to know what she said",
+   "target_text": "彼女が何て言ったか知りたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "build",
+   "known_text": "I'll ask what she said",
+   "target_text": "彼女が何て言ったか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "build",
+   "known_text": "I can remember what she said last night",
+   "target_text": "昨夜彼女が何て言ったか覚えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "I didn't want to know what she said",
+   "target_text": "彼女が何て言ったか知りたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "I want to know what she said a few days ago",
+   "target_text": "数日前彼女が何て言ったか知りたい",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "can you remember what she said a week ago",
+   "target_text": "一週間前彼女が何て言ったか覚えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "I'm sure you can remember what she said",
+   "target_text": "きっと彼女が何て言ったか覚えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "I have to find out what she said",
+   "target_text": "彼女が何て言ったか調べないと",
+   "pad": []
+  },
+  {
+   "seed_number": 365,
+   "lego_index": 1,
+   "lego_known": "what she said",
+   "lego_target": "彼女が何て言ったか",
+   "phrase_role": "use",
+   "known_text": "I don't understand what she said at all",
+   "target_text": "彼女が何て言ったか全然分からない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

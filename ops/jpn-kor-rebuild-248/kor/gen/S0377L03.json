@@ -1,0 +1,37 @@
+{
+ "lego": {
+  "seed_number": 377,
+  "lego_index": 3,
+  "known": "travel",
+  "target": "여행"
+ },
+ "at": "2026-11-04T16:35:39.290Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 205,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 10 phrase(s) use English the learner has not been given. \"went travelling alone\" (unknown gloss \"travelling\"); \"want to go travelling\" (unknown gloss \"travelling\"); \"time to go travelling\" (unknown gloss \"travelling\"); \"went travelling with a friend\" (unknown gloss \"travelling\"); \"I went travelling alone last year\" (unknown gloss \"travelling\")",
+  "BUILD \"went travelling alone\" → \"혼자 여행 갔어요\": popty:knownSide [{\"known\":\"went travelling alone\",\"target\":\"혼자 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "BUILD \"want to go travelling\" → \"여행 가고 싶어요\": popty:knownSide [{\"known\":\"want to go travelling\",\"target\":\"여행 가고 싶어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "BUILD \"time to go travelling\" → \"여행 갈 시간이에요\": popty:knownSide [{\"known\":\"time to go travelling\",\"target\":\"여행 갈 시간이에요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "BUILD \"went travelling with a friend\" → \"친구와 여행 갔어요\": popty:knownSide [{\"known\":\"went travelling with a friend\",\"target\":\"친구와 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"I went travelling alone last year\" → \"작년에 혼자 여행 갔어요\": popty:knownSide [{\"known\":\"I went travelling alone last year\",\"target\":\"작년에 혼자 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"do you want to go travelling next month\" → \"다음 달에 여행 가고 싶어요\": popty:knownSide [{\"known\":\"do you want to go travelling next month\",\"target\":\"다음 달에 여행 가고 싶어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"I went travelling to see a person I know\" → \"아는 사람을 보러 여행 갔어요\": popty:knownSide [{\"known\":\"I went travelling to see a person I know\",\"target\":\"아는 사람을 보러 여행 갔어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"it's time to go travelling again\" → \"다시 여행 갈 시간이에요\": popty:knownSide [{\"known\":\"it's time to go travelling again\",\"target\":\"다시 여행 갈 시간이에요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"why do you want to go travelling alone\" → \"왜 혼자 여행 가고 싶어요\": popty:knownSide [{\"known\":\"why do you want to go travelling alone\",\"target\":\"왜 혼자 여행 가고 싶어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "USE \"I'd like to go travelling with a friend on wednesday\" → \"수요일에 친구와 여행 가고 싶어요\": popty:knownSide [{\"known\":\"I'd like to go travelling with a friend on wednesday\",\"target\":\"수요일에 친구와 여행 가고 싶어요\",\"problem\":\"unknown gloss \\\"travelling\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"travel\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

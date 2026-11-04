@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 371,
+  "lego_index": 3,
+  "known": "in order to see",
+  "target": "보러"
+ },
+ "at": "2026-11-04T16:29:27.531Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 225,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"in order to see\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "build",
+   "known_text": "went to see",
+   "target_text": "보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "build",
+   "known_text": "to see the games",
+   "target_text": "경기를 보러",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "build",
+   "known_text": "to see the cat tonight",
+   "target_text": "오늘 밤에 고양이를 보러",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "build",
+   "known_text": "time to go to see the film",
+   "target_text": "영화를 보러 갈 시간이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "I went out to see the football on saturday night",
+   "target_text": "토요일 밤에 축구를 보러 나갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "do you want to go to see that place",
+   "target_text": "그곳을 보러 가고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "why did you go to see your brother",
+   "target_text": "왜 남동생을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "can I ask you something before you go to see the kitten",
+   "target_text": "새끼 고양이를 보러 가기 전에 뭔가 물어봐도 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "I went to see a person I know on wednesday",
+   "target_text": "수요일에 아는 사람을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 371,
+   "lego_index": 3,
+   "lego_known": "in order to see",
+   "lego_target": "보러",
+   "phrase_role": "use",
+   "known_text": "I want to go to see some old friends next week",
+   "target_text": "다음 주에 오래된 친구들을 보러 가고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
