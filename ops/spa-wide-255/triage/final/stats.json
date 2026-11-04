@@ -1,0 +1,112 @@
+{
+ "played_phrases": {
+  "1-39": 1109,
+  "Green 40-79": 973,
+  "Blue 80-149": 2484,
+  "Purple 150-280": 3564,
+  "Purple+ 281-668": 6816
+ },
+ "defective_played_rows": {
+  "1-39": 29,
+  "Green 40-79": 12,
+  "Blue 80-149": 93,
+  "Purple 150-280": 263,
+  "Purple+ 281-668": 481
+ },
+ "left_after_clear": {
+  "1-39": 25,
+  "Green 40-79": 7,
+  "Blue 80-149": 5,
+  "Purple 150-280": 14,
+  "Purple+ 281-668": 145
+ },
+ "per100_before": {
+  "1-39": 2.61,
+  "Green 40-79": 1.23,
+  "Blue 80-149": 3.74,
+  "Purple 150-280": 7.38,
+  "Purple+ 281-668": 7.06
+ },
+ "per100_after": {
+  "1-39": 2.25,
+  "Green 40-79": 0.72,
+  "Blue 80-149": 0.2,
+  "Purple 150-280": 0.39,
+  "Purple+ 281-668": 2.13
+ },
+ "by_type": {
+  "1-39": {
+   "UNNATURAL_ES": 3,
+   "MEANING": 22,
+   "ENGLISH": 4
+  },
+  "Green 40-79": {
+   "GRAMMAR_ES": 6,
+   "MEANING": 4,
+   "ENGLISH": 1,
+   "UNNATURAL_ES": 1
+  },
+  "Blue 80-149": {
+   "UNNATURAL_ES": 15,
+   "GRAMMAR_ES": 24,
+   "MEANING": 15,
+   "ENGLISH": 33,
+   "NONSENSE": 6
+  },
+  "Purple 150-280": {
+   "UNNATURAL_ES": 50,
+   "GRAMMAR_ES": 52,
+   "NONSENSE": 21,
+   "ENGLISH": 39,
+   "MEANING": 101
+  },
+  "Purple+ 281-668": {
+   "UNNATURAL_ES": 73,
+   "MEANING": 204,
+   "GRAMMAR_ES": 136,
+   "NONSENSE": 40,
+   "ENGLISH": 23,
+   "?": 5
+  }
+ },
+ "buckets": {
+  "NEEDS-NATIVE": 64,
+  "NEEDS-KAI": 204,
+  "FALSE": 146,
+  "CLEAR": 682
+ },
+ "drift": [],
+ "recheck_fail": [],
+ "conflicts": [
+  [
+   "S0184L02U06",
+   "A",
+   "CLEAR",
+   [
+    "I saw my friend at work this morning and she said she wanted to meet later today",
+    "Vi a mi amiga en el trabajo esta mañana y dijo que quería reunirse hoy más tarde"
+   ],
+   "B",
+   "CLEAR",
+   [
+    "I saw my friend at work this morning and she said she wanted to meet later",
+    "Vi a mi amiga en el trabajo esta mañana y dijo que quería reunirse más tarde"
+   ]
+  ],
+  [
+   "S0110L03U13",
+   "A",
+   "CLEAR",
+   [
+    "I want to relax a little now but I would also like to keep trying to speak Spanish later today",
+    "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español hoy más tarde"
+   ],
+   "B",
+   "CLEAR",
+   [
+    "I want to relax a little now but I would also like to keep trying to speak Spanish later",
+    "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español después"
+   ]
+  ]
+ ]
+}
