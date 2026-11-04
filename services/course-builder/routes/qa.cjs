@@ -12,6 +12,7 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
+const { clearStaleRoman } = require('../../shared/roman-sync.cjs');
 const { getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { hasNonExampleText } = require('../lib/validation.cjs');
@@ -1167,7 +1168,7 @@ end tell`;
       // Get current phrase for logging
       const { data: current } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text, course_code, seed_number')
+        .select('known_text, target_text, target_text_roman, course_code, seed_number')
         .eq('id', id)
         .single();
 
@@ -1183,6 +1184,11 @@ end tell`;
       if (target_text && target_text !== current.target_text) {
         updates.target_text = target_text;
       }
+      if (req.body.target_text_roman !== undefined && updates.target_text) {
+        updates.target_text_roman = req.body.target_text_roman || null;
+      }
+      // A target edit without its new romanisation clears the old one (shared/roman-sync.cjs, job #252).
+      Object.assign(updates, clearStaleRoman(current, updates).patch);
 
       if (Object.keys(updates).length === 0) {
         return res.json({ success: true, message: 'No changes needed', phrase_id: id });
