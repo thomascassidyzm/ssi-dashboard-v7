@@ -89,6 +89,14 @@ function genFile(c, s, l) { return path.join(courseDir(c), 'gen', `${lid(s, l)}.
 function readGen(c, s, l) { const f = genFile(c, s, l); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; }
 
 // ── gen ──
+// Sleep until the door's resume_at (+1 min, floor 1 min, ceiling 6 h so a bad timestamp re-asks rather than hangs). Every
+// worker that meets the pace sleeps the same way, so the run simply stands still until the week catches up.
+async function sleepUntilPace(body, who) {
+  const at = Date.parse(body.resume_at);
+  const ms = Math.min(6 * 3600e3, Math.max(60e3, (Number.isFinite(at) ? at - Date.now() : 3600e3) + 60e3));
+  console.log(`${who} WEEKLY_PACE — sleeping ${Math.round(ms / 60e3)} min until ${new Date(Date.now() + ms).toISOString()} (${body.error || ''})`);
+  await new Promise((ok) => setTimeout(ok, ms));
+}
 async function gen(c, rng, conc, dumpPath) {
   const [a, b] = range(rng);
   const dump = loadDump(dumpPath);
@@ -104,6 +112,10 @@ async function gen(c, rng, conc, dumpPath) {
       let r;
       for (let tries = 0; tries < 3; tries++) {
         r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index) }, 1800000);
+        // THE WEEKLY PACE (#412·AD, Tom 4 Nov "pace it over the week"): 429 WEEKLY_PACE means both SSi accounts are
+        // ahead of their share of the week. It is not a health problem and not a result — sleep until resume_at and
+        // ask for the same LEGO again; nothing is saved and no retry is spent.
+        if (r.status === 429 && (r.body || {}).code === 'WEEKLY_PACE') { await sleepUntilPace(r.body, lid(l.seed_number, l.lego_index)); tries--; continue; }
         if (r.status !== 0) break;
         for (let w = 0; w < 60; w++) { await new Promise((ok) => setTimeout(ok, 15000)); const h = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: 0 }, 10000); if (h.status === 400) break; }
       }
