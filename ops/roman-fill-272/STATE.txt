@@ -2,8 +2,9 @@
 DONE + applied: zho_for_eng all 7,164 missing rows (check_pinyin: 0 missing/stale/tone); 113 tiles in fas heb hin rus ukr bul ell tha.
 Routes: edit-cascade + v2 phrase upsert keep roman in sync (dfe7b79af, live).
 TODO, chunks ready, each = one reader (READER-BRIEF.txt), blocked only by this job's 3-child ceiling:
-  jpn_for_eng 01 02; kor_for_eng 01 02; ara_for_eng 01-08; ara_eg_for_eng 01-07; ara_lb_for_eng 01-08;
+  ara_for_eng 01-08; ara_eg_for_eng 01-07; ara_lb_for_eng 01-08;
   hye_for_eng 01; mkd_for_eng 01.
   NOTE chunks were cut from 4 Nov 14:00Z dumps; re-extract first if content moved (extract.py only emits rows still missing).
 WAIT: jpn/kor phrases of seeds 301-668 after #248·AD swaps its new baskets in -> extract.py <dumpdir> <course> 1250 again.
 Apply: ops/roman-fill-272/fresh-apply.sh <course> NN...  (fresh dump; expect-guarded; skips rows already holding the answer)
+DONE (#355, 4 Nov ~18:30Z): jpn_for_eng + kor_for_eng seeds 1-300 all filled (chunk s300; jpn 1,311 + kor 1,147 rows; record d/6729ca68). Old chunks 01/02 superseded.
