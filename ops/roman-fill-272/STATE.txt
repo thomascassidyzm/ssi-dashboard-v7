@@ -1,11 +1,9 @@
-#272·AD parent state (4 Nov 14:17Z)
-Readers dispatched: #277-#282 zho 01-06, #283 jpn 01, #284 kor 01, #285 jpn 02, #286 kor 02, #287 small courses
-  (hye mkd fas heb hin rus ukr bul ell tha), #289-#292 ara_for_eng 01-04.
-Still to dispatch as slots free: ara_for_eng 05 06 07 08; ara_eg_for_eng 01-07; ara_lb_for_eng 01-08.
-Apply: fresh dump (course-dump-readonly + seeds API) into a dumpdir, fetch the reader branch's out/<course>/NN.tsv,
-  python3 apply.py <dumpdir> <course> NN --apply   (expect-guarded; drift rows skipped and listed)
-Routes: dfe7b79af on Popty main, deployed (prod checkout, course-builder restarted 14:14:34Z).
-jpn/kor phrases of seeds 301-668: NOT chunked; wait for #248·AD's new baskets, then
-  python3 extract.py <dumpdir> jpn_for_eng 1250   (re-extract; only missing rows come out).
-Courses with NO romanisation (proposal for Kai, nothing done): ben, kan, mar, nep, tel, yue, kor_for_hin, kor_for_tam.
-  srp_for_eng is Latin script: nothing needed.
+#272·AD state (4 Nov ~14:45Z). Record: https://watson-1.tail4968cb.ts.net:10000/d/7a4b8b6e
+DONE + applied: zho_for_eng all 7,164 missing rows (check_pinyin: 0 missing/stale/tone); 113 tiles in fas heb hin rus ukr bul ell tha.
+Routes: edit-cascade + v2 phrase upsert keep roman in sync (dfe7b79af, live).
+TODO, chunks ready, each = one reader (READER-BRIEF.txt), blocked only by this job's 3-child ceiling:
+  jpn_for_eng 01 02; kor_for_eng 01 02; ara_for_eng 01-08; ara_eg_for_eng 01-07; ara_lb_for_eng 01-08;
+  hye_for_eng 01; mkd_for_eng 01.
+  NOTE chunks were cut from 4 Nov 14:00Z dumps; re-extract first if content moved (extract.py only emits rows still missing).
+WAIT: jpn/kor phrases of seeds 301-668 after #248·AD swaps its new baskets in -> extract.py <dumpdir> <course> 1250 again.
+Apply: ops/roman-fill-272/fresh-apply.sh <course> NN...  (fresh dump; expect-guarded; skips rows already holding the answer)
