@@ -68,6 +68,16 @@ async function post(url, body, timeoutMs = 300000) {
   } catch (e) { return { status: 0, body: { ok: false, error: e.message } }; }
 }
 
+async function waitPopty() {
+  for (let w = 0; w < 80; w++) { try { const r = await fetch(`${POPTY}/api/production/jpn_for_eng/edit-ops`, { signal: AbortSignal.timeout(5000) }); if (r.ok) return true; } catch (e) { /* down */ } await new Promise((ok) => setTimeout(ok, 15000)); }
+  return false;
+}
+// Popty restarts on every deploy to main (seen 4 Nov 14:14Z mid-render). A transport loss waits and asks again; a render
+// is re-asked library-first by the caller, so a clip that landed before the socket dropped is never paid twice.
+async function postPopty(url, body, timeoutMs) {
+  for (let tries = 0; tries < 4; tries++) { const r = await post(url, body, timeoutMs); if (r.status !== 0) return r; await waitPopty(); }
+  return { status: 0, body: { ok: false, error: 'Popty unreachable after 4 tries' } };
+}
 function range(s) { const [a, b] = String(s).split('-').map(Number); if (!a || !b) throw new Error('range like 301-310'); return [a, b]; }
 function courseDir(c) { const d = path.join(DIR, c); fs.mkdirSync(path.join(d, 'gen'), { recursive: true }); return d; }
 function loadDump(p) { return JSON.parse(fs.readFileSync(p, 'utf8')); }
@@ -226,7 +236,7 @@ async function audio(c, rng, real) {
   const dry = [];
   let i = 0;
   const worker = async () => { while (i < asks.length) { const a = asks[i++];
-    const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
+    const d = await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
     if (d.status === 200 && d.body.ok && d.body.source === 'library') { lib++; have[a.key] = d.body.audioId; }
     else if (d.status === 200 && d.body.ok) { chars += d.body.wouldSpendChars || a.text.length; dry.push(a); }
     else refused.push({ ...a, status: d.status, error: d.body.code || d.body.error }); } };
@@ -238,9 +248,15 @@ async function audio(c, rng, real) {
   if (process.env.RENDER_CONFIRM !== '1') { console.log('RENDER_CONFIRM=1 not set: nothing rendered'); return; }
   let spent = 0;
   for (const a of dry) {
-    const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
+    let r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
+    if (r.status === 0) {
+      // ask the LIBRARY first after a drop: the clip may have landed before the socket went
+      const again = await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
+      r = again.status === 200 && again.body.ok && again.body.source === 'library' ? again
+        : await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
+    }
     if (!(r.status === 200 && r.body.ok)) {
-      if (r.status === 0) { console.log('transport loss — stopping; re-run resumes library-first'); break; }
+      if (r.status === 0) { console.log('Popty unreachable — stopping; re-run resumes library-first'); break; }
       console.log('REFUSED — no retry:', a.role, a.text, JSON.stringify(r.body).slice(0, 300)); break;
     }
     have[a.key] = r.body.audioId; spent += r.body.charsSpent || 0;
@@ -265,7 +281,7 @@ async function apply(c, rng) {
   const per = Math.floor(BATCH / 4);
   const log = { at: new Date().toISOString(), go, batches: [] };
   const run = async (ops, what) => {
-    const d = await post(`${POPTY}/api/production/${COURSE[c]}/edit-batch`, { ops, apply: go }, 600000);
+    const d = await postPopty(`${POPTY}/api/production/${COURSE[c]}/edit-batch`, { ops, apply: go }, 600000);
     log.batches.push({ what, status: d.status, event_id: d.body.event_id, error: d.body.error || (d.body.ok === false ? d.body : undefined) });
     if (d.status !== 200 || d.body.ok === false) { console.log(`${what}: ${d.status} ${JSON.stringify(d.body).slice(0, 400)}`); return false; }
     return true;
