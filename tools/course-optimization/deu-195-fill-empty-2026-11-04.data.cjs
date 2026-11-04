@@ -80,19 +80,6 @@ const FIXES = [
   "empty slot after #246 edits"
  ],
  [
-  "S0068L02B01",
-  "fill",
-  [
-   "What are you looking for?",
-   "Wonach suchst du"
-  ],
-  [
-   null,
-   "Wonach suchst du"
-  ],
-  "empty slot after #246 edits"
- ],
- [
   "S0102L01U09",
   "fill",
   [
