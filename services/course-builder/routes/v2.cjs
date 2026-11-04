@@ -19,6 +19,7 @@ const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVo
 const { phraseContainsLego } = require('../lib/separable-verbs.cjs'); // deu_for_eng separable verbs, Kai's ruling 2026-09-21
 const { makePhraseId, computeLegoPosition, checkBuildUsePhrases, generateBuildupPhrases, isBareLegoPhrase, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
+const { withExplicitRoman } = require('../../shared/roman-sync.cjs'); // #272: an upsert never keeps a stale romanisation
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns, loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
@@ -932,6 +933,7 @@ module.exports = function(ctx) {
             position: practiceStartPosition + i,
             known_text: p.known_text || p.known,
             target_text: p.target_text || p.target,
+            target_text_roman: p.target_text_roman,
             word_count: (p.target_text || p.target).length,
             lego_count: ((p.known_text || p.known).match(/\s+/g) || []).length + 1,
             phrase_role: 'build',
@@ -959,6 +961,7 @@ module.exports = function(ctx) {
             position: practiceStartPosition + build.length + i,
             known_text: p.known_text || p.known,
             target_text: p.target_text || p.target,
+            target_text_roman: p.target_text_roman,
             word_count: (p.target_text || p.target).length,
             lego_count: ((p.known_text || p.known).match(/\s+/g) || []).length + 1,
             phrase_role: 'use',
@@ -980,8 +983,15 @@ module.exports = function(ctx) {
 
         // Stamped here rather than per-row builder so the auto-generated M-LEGO
         // build-up rows are attributed too — they are written by this request.
+        // Every row names its target_text_roman: this upsert overwrites rows at the same position
+        // in place, and an omitted key would keep the old sentence's romanisation (#272).
+        const { data: rowsHere } = await ctx.supabase
+          .from('course_practice_phrases')
+          .select('position, target_text, target_text_roman')
+          .eq('course_code', courseCode).eq('seed_number', seed_number).eq('lego_index', lego_index);
+        const atPosition = new Map((rowsHere || []).map(r => [r.position, r]));
         allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows]
-          .map(r => ({ ...r, last_edit_event_id: eventId }));
+          .map(r => withExplicitRoman({ ...r, last_edit_event_id: eventId }, atPosition.get(r.position)));
 
         // 6. Insert phrases
         if (allPhraseRows.length > 0) {

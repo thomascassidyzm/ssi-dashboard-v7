@@ -49,4 +49,21 @@ function clearStaleRoman(before, set) {
   return { patch: { ...set, target_text_roman: null }, romanCleared: true };
 }
 
-module.exports = { romanGoesStale, clearStaleRoman, ROMAN_STALE_MESSAGE };
+/**
+ * For whole-row WRITES that may land on an existing row (an upsert of a LEGO's
+ * phrase set, job #272): the romanisation the row must carry. An upsert updates
+ * only the columns its rows name, so a row that leaves target_text_roman out
+ * keeps the OLD sentence's romanisation under the NEW text. The rule: what the
+ * caller sent; else the existing row's, if it spells the same text; else null
+ * (a blank shows the learner the right characters, a stale one the wrong words).
+ * @param {Object} row            the row about to be written
+ * @param {Object|null} existing  the row now at that key, as read (target_text, target_text_roman)
+ */
+function withExplicitRoman(row, existing = null) {
+  const nonEmpty = (v) => (typeof v === 'string' && v.trim() ? v : null);
+  const sent = nonEmpty(row.target_text_roman);
+  const kept = existing && existing.target_text === row.target_text ? nonEmpty(existing.target_text_roman) : null;
+  return { ...row, target_text_roman: sent || kept };
+}
+
+module.exports = { romanGoesStale, clearStaleRoman, withExplicitRoman, ROMAN_STALE_MESSAGE };

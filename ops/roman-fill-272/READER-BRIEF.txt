@@ -1,0 +1,82 @@
+ROMANISATION READER: brief for every chunk worker of job #272·AD (4 Nov 2026)
+
+WHAT: some rows of a course have target_text but no target_text_roman. The learner app shows the
+romanisation FIRST whenever it exists, so a wrong one teaches the wrong sentence. Kai approved filling
+these on 4 Nov ("Yes fill the missing pinyin and romanization"). You write the romanisation for EVERY
+row of ONE chunk. You write nothing to the database: #272·AD (the parent) applies your file through Popty.
+
+GET THE FILES (your worktree is off origin/main, the chunks are on the parent's branch):
+  git fetch origin cs/272-roman-fill-zho-jpn-kor-ara
+  git checkout origin/cs/272-roman-fill-zho-jpn-kor-ara -- ops/roman-fill-272
+Your chunk: ops/roman-fill-272/chunks/<course>/<NN>.tsv
+  columns: kind (seed|lego|phrase), key, seed, known (English), target, proposal, seed_target
+The course's OWN convention: ops/roman-fill-272/chunks/<course>/examples.tsv
+  (150 random rows from seeds 1-300 that already carry romanisation). READ IT FIRST and imitate it.
+  The examples are not all consistent. Where they disagree, follow the rules below, then the majority.
+
+THE JOB, row by row:
+  READ every row in full, the English included (it tells you the meaning, which decides polyphones and
+  readings). The "proposal" column is a MACHINE GUESS (pypinyin+jieba / pykakasi / korean-romanizer).
+  It is often wrong on exactly the things that matter. Arabic, Armenian etc. have NO proposal: write it yourself.
+  No regex or script decides a romanisation. A script may copy, format or check, but every value is yours.
+  Keep it consistent within the seed: a phrase's romanisation of a word should match its LEGO's.
+
+WRITE: ops/roman-fill-272/out/<course>/<NN>.tsv
+  first line exactly:  key<TAB>roman
+  then one line per chunk row, every key, nothing blank. No tabs inside a value.
+CHECK: python3 ops/roman-fill-272/validate.py ops/roman-fill-272/chunks/<course>/<NN>.tsv ops/roman-fill-272/out/<course>/<NN>.tsv
+  (zho needs pypinyin: python3 -m pip install --target $CS_SCRATCH/py pypinyin ; PYTHONPATH=$CS_SCRATCH/py)
+  It must print 0 problems. It checks coverage, script, zho syllable+tone spelling and kor syllable counts.
+  Passing it is necessary, NOT sufficient.
+LAND: git add ops/roman-fill-272/out/<course>/<NN>.tsv only; commit; git push -u origin HEAD. Do NOT merge
+  anything anywhere: the parent fetches your branch. Your report: branch name, rows written, how many proposals
+  you changed, a list of the doubtful rows (key + why, at most 30), and anything that looks wrong in the TARGET
+  text itself (report it; do not fix it).
+NO DATABASE: no psql, no Supabase, no Popty writes. Scratch goes in $CS_SCRATCH, never bare /tmp. No tests.
+
+PER-LANGUAGE RULES (from the course's own seeds 1-300):
+
+zho_for_eng (pinyin): lowercase; tone marks (ā á ǎ à; ü/ǘ…); neutral tone has no mark (le, de, ma, ne,
+  men, zi in context, péngyou, xuésheng, dōngxi, rènshi, xǐhuan, zhīdào…), as the examples do.
+  Words are JOINED (wǒmen, xǐhuan, zhīdào, yīqǐ); separate words take spaces. Measure words stand alone
+  (yī gè, nà zhī). Tone SANDHI IS NOT WRITTEN: 一 = yī, 不 = bù always (bù shì, yī gè), 3-3 unchanged.
+  The validator accepts sandhi spellings, but do NOT use them. Question tags: shì bu shì.
+  Apostrophe before a/o/e syllable inside a word: nǚ'ér, Xī'ān.
+  Polyphones decided in context: 得 de (complement) / děi (must) / dé (obtain); 了 le / liǎo (了解 liǎojiě, 受不了);
+  行 xíng / háng; 还 hái / huán; 都 dōu / dū; 长 cháng / zhǎng; 重 zhòng / chóng; 觉 jué (觉得) / jiào (睡觉);
+  着 zhe / zháo / zhuó; 地 de (adverbial) / dì; 便 biàn / pián; 只 zhǐ / zhī (measure); 为 wèi / wéi;
+  少 shǎo / shào; 种 zhǒng / zhòng; 数 shù / shǔ; 好 hǎo / hào; 要 yào / yāo; 差 chà / chā / chāi; 教 jiāo / jiào;
+  干 gàn / gān; 会 huì / kuài; 和 hé / huo (暖和); 发 fā / fà; 难 nán / nàn; 相 xiāng / xiàng; 应 yīng / yìng.
+  Punctuation: SEEDS end with "." (statement) or "?" (question), ASCII. LEGOs carry no final punctuation.
+  PHRASES: no final punctuation unless the target has a ？ (then "?"). Internal ，→ ", ".
+  Chinese characters never appear in the roman. Latin letters in the target are copied as they are.
+
+jpn_for_eng (romaji, the course's own Hepburn variant): lowercase. Particles: は = wa, を = o, へ = e.
+  Long vowels DOUBLED, no macrons: おう/おお → oo (doo, kyoo, hoohoo, arigatoo), うう → uu (raishuu, juu),
+  ええ → ee, katakana ー doubles the vowel (paatii, koohii); えい stays ei (sensei, eiga). But a verb's
+  own -ou ending is o+u (omou, iu for 言う, kau): the doubling is for long vowels only.
+  ん before a vowel or y: n' (hon'ya, kin'en). Small っ doubles the consonant (itte, motto); っち = tchi.
+  Spacing: particles stand alone (kanojo wa, kuruma o, ni, de, to, ga); a verb keeps its endings and
+  auxiliaries joined (yomitakunai, wakatteru, shitenai, ikitai). Contracted -te iru is written JOINED
+  (tteru, shiteru); uncontracted 〜ている = -te iru. Kanji readings decided by the English and context
+  (今日 kyoo, 明日 ashita, 一人 hitori, 何 nani / nan). SEEDS end with "." or "?"; LEGOs none; PHRASES none
+  unless the target has ？ (→ "?"). 、 → ", ".
+
+kor_for_eng (the course's PRONOUNCED, syllable-hyphenated Revised Romanization): lowercase; every
+  Hangul syllable is one hyphen-joined unit inside its word, words separated by spaces, written AS
+  PRONOUNCED: liaison (있어요 = i-sseo-yo, 생각이 = saeng-ga-gi, 않았어요 = a-na-sseo-yo), nasal and
+  other assimilation (있는 = in-neun, 합니다 = ham-ni-da), aspiration (축하 = chu-ka), tensing as the
+  examples do (안타깝게도 = an-ta-kkap-ge-do). One unit per Hangul syllable: the validator counts.
+  Punctuation: copy a target "?" only; nothing else.
+
+ara_for_eng (MSA): follow examples.tsv. Plain ASCII-ish chat transliteration: long vowels doubled
+  (aa, ii/ee, uu/oo as the examples do), ' for ع and for hamza where the examples write it, th/dh/kh/gh/sh,
+  the article written al- (with the sun-letter assimilation only where the examples do).
+  Follow the vowelling of the target: if the target carries diacritics, romanise what they say;
+  if it has none, romanise the natural MSA pausal reading (no case endings). ؟ → "?"; no other punctuation.
+ara_eg_for_eng (Egyptian) / ara_lb_for_eng (Lebanese): follow examples.tsv exactly. Romanise the
+  DIALECT as pronounced (Egyptian ج = g, ق = ' (glottal); Levantine ق = ', ة = -e/-a as the examples do).
+  Copy the target's final "." and "?" (؟ → ?). One spelling per word across the chunk.
+
+Other courses (hye, mkd, fas, heb, hin, rus, ukr, bul, ell, tha): follow examples.tsv exactly. The scheme
+  is whatever those rows use (e.g. rus: kh/zh/ya/yu/y, soft sign dropped; mkd: č š ž ḱ ǵ). Copy punctuation as the examples do.
