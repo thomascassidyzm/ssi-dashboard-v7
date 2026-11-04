@@ -1,0 +1,1905 @@
+{
+ "job": "#233",
+ "source": "mismatch-195 wave 1, zho_for_eng",
+ "decisions": [
+  {
+   "id": "zho_for_eng:S0025L04U09",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "hold",
+   "before": {
+    "known": "are you going to help me before I have to go?",
+    "target": "你会在我走之前帮我吗？"
+   },
+   "why": "copy of seed 25 — the fix is a SEED English edit ('have to' has no 得 in 我走之前), so it is Kai's call (S15)",
+   "what195": "known side has \"have to\" (obligation) with no counterpart in 我走之前",
+   "after": {
+    "known": "are you going to help me before I go?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0033L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "how long are you going to practise for?",
+    "target": "你练习多久？"
+   },
+   "why": "'going to' had no 要",
+   "what195": "'going to' (要) is in the known side but missing from the target",
+   "after": {
+    "known": null,
+    "target": "你要练习多久？",
+    "roman": "nǐ yào liànxí duō jiǔ？"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0034L02U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "it's too quiet here",
+    "target": "太安静了"
+   },
+   "why": "English first: no 这里 'here' in the Chinese (这里 is not taught by seed 34)",
+   "what195": "'here' has no counterpart in 太安静了",
+   "after": {
+    "known": "it's too quiet",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0039L03U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "tense-modality",
+   "action": "edit",
+   "before": {
+    "known": "she's too tired to practise this afternoon",
+    "target": "她今天下午太累了，不想练习"
+   },
+   "why": "English first: the Chinese says 不想 'doesn't want to'",
+   "what195": "target 不想 ('don't want to') replaces the inability sense of 'too tired to'",
+   "after": {
+    "known": "she's too tired this afternoon, she doesn't want to practise",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0059L01U09",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "hold",
+   "before": {
+    "known": "I know how to do what I need to do next week",
+    "target": "我知道下周我需要做什么"
+   },
+   "why": "copy of seed 59 — the SEED English says 'how to do', which the Chinese does not; a seed edit is Kai's call",
+   "what195": "\"how to\" (怎么) is on the known side only",
+   "after": {
+    "known": "I know what I need to do next week",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0077L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I'm surprised you said that",
+    "target": "我很惊讶你说了这个"
+   },
+   "why": "English first: the Chinese says 这个 'this'",
+   "what195": "known 'that' (object demonstrative) vs target 这个 'this'",
+   "after": {
+    "known": "I'm surprised you said this",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0086L02U09",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "it might happen",
+    "target": "可能会"
+   },
+   "why": "'happen' had no 发生",
+   "what195": "'happen' (发生) is missing from the target",
+   "after": {
+    "known": null,
+    "target": "可能会发生",
+    "roman": "kěnéng huì fāshēng"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0101L04U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I'm trying to learn this language right now",
+    "target": "我现在在学这门语言"
+   },
+   "why": "English first: no 'try' in the Chinese",
+   "what195": "known adds \"trying to\"; the target has no try/attempt meaning",
+   "after": {
+    "known": "I'm learning this language right now",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0106L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "we don't need to feel happy about this",
+    "target": "我们不需要觉得开心"
+   },
+   "why": "English first: no 'about this' in the Chinese",
+   "what195": "'about this' has no counterpart in the target",
+   "after": {
+    "known": "we don't need to feel happy",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0107L01U09",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "hold",
+   "before": {
+    "known": "we hoped to see what you were doing",
+    "target": "我们本来希望看看你在做什么"
+   },
+   "why": "copy of seed 107 — the SEED English lacks its own LEGO 'originally | 本来'; a seed edit is Kai's call",
+   "what195": "本来 (originally) on the target side has no counterpart in the known sentence",
+   "after": {
+    "known": "we originally hoped to see what you were doing",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0108L01U08",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "we need to change this thing about waking at midnight",
+    "target": "我们需要改变半夜醒的事情"
+   },
+   "why": "'this' had no 这个",
+   "what195": "demonstrative 'this' (这个) missing from target",
+   "after": {
+    "known": null,
+    "target": "我们需要改变这个半夜醒的事情",
+    "roman": "wǒmen xūyào gǎibiàn zhège bànyè xǐng de shìqing."
+   }
+  },
+  {
+   "id": "zho_for_eng:S0144L02B01",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "delete",
+   "before": {
+    "known": "earlier than",
+    "target": "比我更早"
+   },
+   "why": "'earlier than | 比我更早' lacks 'me'; corrected it is an exact twin of B02 'earlier than me | 比我更早', so deleted",
+   "what195": "\"me\" (我) is in the target 比我更早 but missing from the known \"earlier than\""
+  },
+  {
+   "id": "zho_for_eng:S0150L01U07",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "can you remember what she's called?",
+    "target": "你记得她叫什么吗？"
+   },
+   "why": "English first: 你记得…吗 is 'do you remember'",
+   "what195": "modal 'can' (能) has no counterpart in the target",
+   "after": {
+    "known": "do you remember what she's called?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0173L01B04",
+   "table": "phrase",
+   "role": "build",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I think I can manage on my own",
+    "target": "我想我自己能行"
+   },
+   "why": "'I think' is taught as 我觉得; 我想 is taught as 'I want'",
+   "what195": "\"think\" rendered as 想 (taught as 'want'), not 觉得 (taught as 'think')",
+   "after": {
+    "known": null,
+    "target": "我觉得我自己能行",
+    "roman": "wǒ juéde wǒ zìjǐ néng xíng"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0197L01U15",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I try to speak Chinese with the teacher as much as possible",
+    "target": "我尽可能和老师说中文"
+   },
+   "why": "English first: no 'try' in the Chinese",
+   "what195": "English 'I try to' has no counterpart in the target",
+   "after": {
+    "known": "I speak Chinese with the teacher as much as possible",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0198L03U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I need to go to the government office",
+    "target": "我需要去政府"
+   },
+   "why": "'office' had no 办公室",
+   "what195": "office (办公室) missing on the target side",
+   "after": {
+    "known": null,
+    "target": "我需要去政府办公室",
+    "roman": "wǒ xūyào qù zhèngfǔ bàngōngshì。"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0251L03U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "let's finish this work first, we'll deal with it later",
+    "target": "我们结束这个工作，以后再说"
+   },
+   "why": "English first: no 先 'first' in the Chinese",
+   "what195": "\"first\" in the known side has no counterpart in the target (no 先)",
+   "after": {
+    "known": "let's finish this work, we'll deal with it later",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0273L01U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I can't do that sorry",
+    "target": "不行我做不了"
+   },
+   "why": "English first: no 'sorry' in the Chinese; 不行 is the LEGO 'no'",
+   "what195": "\"sorry\" (抱歉) has no counterpart in the target; the object \"that\" is also dropped",
+   "after": {
+    "known": "no, I can't do that",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0311L03U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I need three more days",
+    "target": "我需要三天"
+   },
+   "why": "English first: no 'more' in the Chinese (再三天 is not Chinese)",
+   "what195": "\"more\" (additional) has no counterpart in the target 我需要三天",
+   "after": {
+    "known": "I need three days",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0313L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I need five more days",
+    "target": "我需要五天"
+   },
+   "why": "English first: no 'more' in the Chinese",
+   "what195": "\"more\" (additional) has no counterpart in 我需要五天",
+   "after": {
+    "known": "I need five days",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0332L02U07",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "can you understand what his life is like?",
+    "target": "你能懂他的生活吗"
+   },
+   "why": "English first: no 'what … is like' in the Chinese",
+   "what195": "\"what ... is like\" (什么样) has no counterpart in the target",
+   "after": {
+    "known": "can you understand his life?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0351L01B04",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "stay on my own",
+    "target": "让我一个人待着"
+   },
+   "why": "English first: the Chinese has 让我 'let me'",
+   "what195": "target adds 让我 ('let me') with no counterpart in the known 'stay on my own'",
+   "after": {
+    "known": "let me stay on my own",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0352L02U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I'm sorry but I can't manage it",
+    "target": "对不起，我做不到"
+   },
+   "why": "English first: no 但是 'but' in the Chinese",
+   "what195": "'but' (但是) missing from the target, and object 'it' missing",
+   "after": {
+    "known": "I'm sorry, I can't manage it",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0353L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "she was at the field all morning",
+    "target": "她一整天都在场地里"
+   },
+   "why": "English first: 一整天 is 'all day'",
+   "what195": "'all morning' rendered as 一整天 ('all day')",
+   "after": {
+    "known": "she was at the field all day",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0353L02U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "he's been running around all morning",
+    "target": "他一整天都在跑来跑去"
+   },
+   "why": "English first: 一整天 is 'all day'",
+   "what195": "'all morning' vs 一整天 ('all day')",
+   "after": {
+    "known": "he's been running around all day",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0360L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "can you tell me something else about it?",
+    "target": "你能告诉我别的事情吗？"
+   },
+   "why": "English first: no 'about it' in the Chinese",
+   "what195": "'about it' has no counterpart in the target (no 关于它)",
+   "after": {
+    "known": "can you tell me something else?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0362L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "after you left, he just sat there quietly",
+    "target": "你走后，他很安静地待着"
+   },
+   "why": "English first: no 'just' in the Chinese (很安静地 is the adverb, not 'very')",
+   "what195": "'just' (merely) has no counterpart in the target. The target also adds 很 ('very'), which the known side lacks.",
+   "after": {
+    "known": "after you left, he sat there quietly",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0365L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I didn't hear clearly enough",
+    "target": "我没听清"
+   },
+   "why": "English first: no 'enough' in the Chinese",
+   "what195": "'enough' on the known side has no counterpart in 我没听清",
+   "after": {
+    "known": "I didn't hear clearly",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0370L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "she didn't say anything to anyone",
+    "target": "她没有告诉任何人"
+   },
+   "why": "English first: the Chinese is 'tell anyone'",
+   "what195": "known 'say anything' has no counterpart; target only has 'tell anyone' (告诉任何人)",
+   "after": {
+    "known": "she didn't tell anyone",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0371L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "see a film on Wednesday",
+    "target": "周三去看电影"
+   },
+   "why": "English first: the Chinese has 去 'go'",
+   "what195": "target has 去 ('go') but known 'see a film on Wednesday' has no 'go'",
+   "after": {
+    "known": "go and see a film on Wednesday",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0377L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "do you want to see somewhere new in the world?",
+    "target": "你想去世界上一个新的地方吗？"
+   },
+   "why": "English first: the Chinese says 去 'go'",
+   "what195": "known 'see' is rendered as 去 'go'; no taught pairing maps 'see' to 去",
+   "after": {
+    "known": "do you want to go somewhere new in the world?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0385L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "what was said",
+    "target": "那个说法"
+   },
+   "why": "English first: 那个说法 is 'that way of speaking', and the English now holds the LEGO",
+   "what195": "The target 那个说法 means 'that way of speaking', which the known 'what was said' doesn't say. 'What was said' is already taught as 说的 (S0083L02).",
+   "after": {
+    "known": "that way of speaking",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0390L02U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "who was standing near the entrance?",
+    "target": "谁在入口附近？"
+   },
+   "why": "English first: no 站 'standing' in the Chinese",
+   "what195": "'standing' (站) has no counterpart in the target",
+   "after": {
+    "known": "who was near the entrance?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0391L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "walking towards",
+    "target": "朝那边走"
+   },
+   "why": "the row held neither side of its LEGO 'towards the bus | 朝公交车'; now it holds both",
+   "what195": "target adds 那边 (over there), which the known 'walking towards' lacks",
+   "after": {
+    "known": "walking towards the bus",
+    "target": "朝公交车走",
+    "roman": "cháo gōngjiāochē zǒu"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0395L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "turn at the corner",
+    "target": "在路口向左转"
+   },
+   "why": "English first: the Chinese has 向左 'left'",
+   "what195": "target adds 向左 (left); known side has only 'turn'",
+   "after": {
+    "known": "turn left at the corner",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0403L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "let's try to keep this going as long as possible",
+    "target": "我们尽可能保持这个"
+   },
+   "why": "English first: no 'try to', 'going' or 'long' in 我们尽可能保持这个 (长 is not taught by 403, so the Chinese cannot grow)",
+   "what195": "'long' in 'as long as possible' (the duration), plus 'try to' and 'going', have no counterpart in the target",
+   "after": {
+    "known": "let's keep this as much as possible",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0406L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I'm sure this is the right way",
+    "target": "我确定这是对的"
+   },
+   "why": "English first: 对的 is 'right'",
+   "what195": "English 'the right way' has no counterpart for 'way'; the target says only 对的 ('right')",
+   "after": {
+    "known": "I'm sure this is right",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0408L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "a happy situation",
+    "target": "幸福地生活"
+   },
+   "why": "English first: 幸福地生活 is 'live happily'",
+   "what195": "known 'a happy situation' vs target 'live happily' (生活); 'situation' has no counterpart",
+   "after": {
+    "known": "to live happily",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0408L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "that's what happiness looks like",
+    "target": "我们都想要幸福"
+   },
+   "why": "English first: the Chinese is 'we all want happiness'",
+   "what195": "known 'that's what happiness looks like' vs target 'we all want happiness'",
+   "after": {
+    "known": "we all want happiness",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0409L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "it doesn't matter",
+    "target": "真的无所谓"
+   },
+   "why": "English first: the Chinese has 真的 'really'",
+   "what195": "target adds 真的 (really) that the known side lacks",
+   "after": {
+    "known": "it really doesn't matter",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0409L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I think it doesn't really matter",
+    "target": "我觉得无所谓"
+   },
+   "why": "English first: no 真的 'really' in the Chinese",
+   "what195": "'really' (真/真的) missing from the target",
+   "after": {
+    "known": "I think it doesn't matter",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0410L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "they didn't trust each other",
+    "target": "他们不互相了解"
+   },
+   "why": "了解 is 'understand', not 'trust'; 不 moved after 互相, the natural order",
+   "what195": "'trust' has no counterpart; target says 了解 (get to know/understand)",
+   "after": {
+    "known": "they don't understand each other",
+    "target": "他们互相不了解",
+    "roman": "tāmen hùxiāng bù liǎojiě"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0410L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "we need to support each other",
+    "target": "我们应该互相帮助"
+   },
+   "why": "English first: 应该 'should', 帮助 'help'",
+   "what195": "'need to' rendered as 应该 (should)",
+   "after": {
+    "known": "we should help each other",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0410L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I think we should respect each other",
+    "target": "我觉得我们应该互相帮忙"
+   },
+   "why": "English first: 帮忙 is 'help', not 'respect'",
+   "what195": "'respect' vs 帮忙 (help)",
+   "after": {
+    "known": "I think we should help each other",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0411L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "delete",
+   "before": {
+    "known": "for four",
+    "target": "四人的桌子"
+   },
+   "why": "'for four | 四人的桌子' has an extra 桌子; corrected it would clash with S0411L02B04 'a table for four | 一张四人的桌子', so deleted",
+   "what195": "target adds 桌子 (table) that the known 'for four' lacks"
+  },
+  {
+   "id": "zho_for_eng:S0411L02U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "is there one table available?",
+    "target": "有一张桌子吗？"
+   },
+   "why": "English first: no 'available' in the Chinese",
+   "what195": "'available' has no counterpart in the target",
+   "after": {
+    "known": "is there a table?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0414L02U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "let's order red wine",
+    "target": "我们要一瓶红酒"
+   },
+   "why": "English first: 我们要一瓶红酒 is ordering 'a bottle'",
+   "what195": "target adds 一瓶 ('a bottle of'), which the known side lacks; 'order' is also rendered as 要 rather than the taught 订",
+   "after": {
+    "known": "we'll have a bottle of red wine",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0416L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "take the lead",
+    "target": "带头做"
+   },
+   "why": "'take the lead' had an extra 做 'do'",
+   "what195": "target 做 ('do') has no counterpart in 'take the lead'",
+   "after": {
+    "known": null,
+    "target": "带头",
+    "roman": "dàitóu"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0417L02B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "kill those ants",
+    "target": "杀掉蚂蚁"
+   },
+   "why": "'those' had no 那些",
+   "what195": "\"those\" (那些) has no counterpart in the target 杀掉蚂蚁",
+   "after": {
+    "known": null,
+    "target": "杀掉那些蚂蚁",
+    "roman": "shādiào nàxiē mǎyǐ"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0421L01U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I've been feeling tired lately",
+    "target": "我身体最近很累"
+   },
+   "why": "English first: the Chinese says 身体 'body' (the LEGO)",
+   "what195": "target adds 身体 (body) with no counterpart in the known; known 'feeling' has no counterpart in the target",
+   "after": {
+    "known": "my body's been feeling tired lately",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0424L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "come together",
+    "target": "大家来"
+   },
+   "why": "English first: 大家来 is 'everybody come'; the English now holds its LEGO",
+   "what195": "known 'together' has no counterpart, while target 大家 (everybody) has none on the known side",
+   "after": {
+    "known": "everybody come",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0426L02B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "truly in love",
+    "target": "彼此相爱"
+   },
+   "why": "English first: 彼此相爱 is 'love each other'",
+   "what195": "target 彼此 (each other) has no counterpart in 'truly in love', and 'truly' is missing from the target",
+   "after": {
+    "known": "love each other",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0426L02U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "everyone wants to be loved",
+    "target": "大家都想相爱"
+   },
+   "why": "English first: 相爱 is mutual love, not passive 'be loved'",
+   "what195": "'to be loved' (passive) is paired with 相爱 (mutual love)",
+   "after": {
+    "known": "everyone wants to love each other",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0428L02U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "she visited her friends",
+    "target": "她去拜访了朋友"
+   },
+   "why": "English first: the Chinese has 去 'went to'; the possessive is left unsaid in Chinese",
+   "what195": "possessive 'her' (她的) is missing before 朋友; the target also adds 去 'went to', which the known side lacks",
+   "after": {
+    "known": "she went to visit her friends",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0437L01U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "they wanted to raise money for charity",
+    "target": "他们想为慈善做更多"
+   },
+   "why": "English first: 做更多 is 'do more'",
+   "what195": "known 'raise money' has no counterpart; target says 做更多 'do more'",
+   "after": {
+    "known": "they wanted to do more for charity",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0437L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I want to give to charity",
+    "target": "我想为慈善帮忙"
+   },
+   "why": "English first: 帮忙 is 'help out'",
+   "what195": "known 'give' vs target 帮忙 'help out'",
+   "after": {
+    "known": "I want to help out with charity",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0440L01B01",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "while you can",
+    "target": "趁"
+   },
+   "why": "English first: the build says only its LEGO 趁 'while' (趁你能 is not Chinese)",
+   "what195": "'you can' (你能) has no counterpart in the target",
+   "after": {
+    "known": "while",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0441L02B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "one way to do it",
+    "target": "一种方式"
+   },
+   "why": "English first: no 'to do it' in the Chinese",
+   "what195": "'to do it' has no counterpart in 一种方式 (needs 做它 or similar)",
+   "after": {
+    "known": "one way",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0452L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "didn't say what",
+    "target": "没说想做什么"
+   },
+   "why": "English first: the Chinese has 想做 'wanted to do', the LEGO",
+   "what195": "target adds 想做 (wanted to do), but the known side stops at 'what'",
+   "after": {
+    "known": "didn't say what they wanted to do",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0453L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "he never said anything",
+    "target": "他从没说过"
+   },
+   "why": "English first: 说过 is 'mentioned' (the LEGO), object left unsaid in Chinese",
+   "what195": "'anything' has no counterpart in 他从没说过",
+   "after": {
+    "known": "he never mentioned it",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0454L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "delete",
+   "before": {
+    "known": "arrives about then",
+    "target": "大约来了"
+   },
+   "why": "大约来了 'arrives about then' is not good Chinese and 'then' (那时) is not taught before 454 — no valid reword",
+   "what195": "'then' (at that time, 当时) has no counterpart in the target"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "hold",
+   "before": {
+    "known": "we had to leave because the children were tired",
+    "target": "我们因为孩子们累了而离开"
+   },
+   "why": "copy of seed 455 — the SEED English says 'had to', which the Chinese does not; a seed edit is Kai's call",
+   "what195": "\"had to\" (obligation) on the known side has no counterpart in the target",
+   "after": {
+    "known": "we left because the children were tired",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0461L01U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "hold",
+   "before": {
+    "known": "a shop where I can buy some postcards",
+    "target": "我想买明信片的商店"
+   },
+   "why": "copy of seed 461 — the SEED Chinese says 我想 'I want' for 'I can'; a seed edit is Kai's call",
+   "what195": "'I can' is rendered as 我想 ('I want'), and 'some' (一些) has no counterpart",
+   "after": {
+    "known": null,
+    "target": "我能买明信片的商店",
+    "roman": "wǒ néng mǎi míngxìnpiàn de shāngdiàn"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0466L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "she looked over the wall",
+    "target": "她看了看墙"
+   },
+   "why": "English first: 看了看墙 is 'had a look at the wall', not 'over'",
+   "what195": "'over' (directional: looked over/across the wall) has no counterpart in 看了看墙, which means 'looked at the wall'",
+   "after": {
+    "known": "she had a look at the wall",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0470L03B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "before we stop, how high",
+    "target": "停下来之前爬多高"
+   },
+   "why": "English first: the Chinese has 爬 'climb'",
+   "what195": "target adds 爬 (climb); known side has no 'climb'",
+   "after": {
+    "known": "before we stop, how high we climb",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0477L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I don't like long holidays",
+    "target": "我不喜欢太长的假期"
+   },
+   "why": "English first: the Chinese has 太 'too'",
+   "what195": "太 (too) in target has no counterpart in known 'long'",
+   "after": {
+    "known": "I don't like holidays that are too long",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0482L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "not very serious",
+    "target": "并不认真"
+   },
+   "why": "English first: 并不 is the emphatic 'really not', not 'not very' (plain 'not serious' would clash with B02 不认真)",
+   "what195": "'very' (太) has no counterpart in 并不认真",
+   "after": {
+    "known": "really not serious",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0489L02U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "make it strong",
+    "target": "要很浓的"
+   },
+   "why": "English first: 要很浓的 is 'want a strong one'",
+   "what195": "\"make it\" has no counterpart; target 要很浓的 only says 'want very strong'",
+   "after": {
+    "known": "I want a strong one",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0498L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "hold",
+   "before": {
+    "known": "he's standing alone over there inside the entrance",
+    "target": "他独自站在入口里面"
+   },
+   "why": "copy of seed 498 — the SEED English says 'over there', which the Chinese does not; a seed edit is Kai's call",
+   "what195": "\"over there\" (那边) is on the known side but missing from the target",
+   "after": {
+    "known": "he's standing alone inside the entrance",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0506L02U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "before we moved here",
+    "target": "我们搬走之前"
+   },
+   "why": "English first: 搬走 is 'move away'",
+   "what195": "known 'moved here' (arrival) vs target 搬走 'moved away' (departure); 'here' has no counterpart",
+   "after": {
+    "known": "before we moved away",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0506L03B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I used to be",
+    "target": "我曾"
+   },
+   "why": "English first: no 'be' in 我曾",
+   "what195": "known 'be' has no counterpart in the target 我曾",
+   "after": {
+    "known": "I used to",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0507L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "to the city",
+    "target": "搬到城市"
+   },
+   "why": "English first: the Chinese has 搬 'move'",
+   "what195": "target adds 搬 (move) with no counterpart in 'to the city'",
+   "after": {
+    "known": "move to the city",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0507L01U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I love the city",
+    "target": "我喜欢城市"
+   },
+   "why": "English first: 喜欢 is 'like'",
+   "what195": "known 'love' vs target 喜欢 (like)",
+   "after": {
+    "known": "I like the city",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0512L02U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "delete",
+   "before": {
+    "known": "I managed to open it",
+    "target": "我把它打开了"
+   },
+   "why": "no 'managed to' in 我把它打开了, and no reword keeps the LEGO's 'to open' without adding a meaning the Chinese lacks; row is under a not-new LEGO (unplayed), so deleted",
+   "what195": "\"managed to\" (success after effort) has no counterpart in the target"
+  },
+  {
+   "id": "zho_for_eng:S0514L02U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "can you see that one?",
+    "target": "你看到那所了吗？"
+   },
+   "why": "English first: 你看到那所了吗 is 'did you see'",
+   "what195": "modal 'can' (能) missing on the target; 了吗 makes it 'did you see'",
+   "after": {
+    "known": "did you see that one?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0516L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "on their own",
+    "target": "自己来"
+   },
+   "why": "English first: the Chinese has 来 'come' (also clears the B01 same-English clash #545 held)",
+   "what195": "target adds 来 (come) with no counterpart on the known side",
+   "after": {
+    "known": "come on their own",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0520L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "delete",
+   "before": {
+    "known": "I ate the whole thing",
+    "target": "我吃了整个"
+   },
+   "why": "我吃了整个 is not complete Chinese (整个 needs a noun) and 我吃了整个东西 is unnatural — no valid reword",
+   "what195": "'thing' (noun head of 'the whole thing') has no counterpart in the target"
+  },
+  {
+   "id": "zho_for_eng:S0520L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "nobody saw the whole thing",
+    "target": "没有人看到了整个"
+   },
+   "why": "整个 needed its noun: 'the whole thing' = 整个事情",
+   "what195": "'thing' missing after 整个 in the target",
+   "after": {
+    "known": null,
+    "target": "没有人看到整个事情",
+    "roman": "méiyǒu rén kàndào zhěnggè shìqing"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0524L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "nobody wanted to wait even a few minutes",
+    "target": "没有人想等几分钟"
+   },
+   "why": "English first: no 'even' in the Chinese",
+   "what195": "\"even\" on the known side has no counterpart in the target",
+   "after": {
+    "known": "nobody wanted to wait a few minutes",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0540L02U12",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "delete",
+   "before": {
+    "known": "nobody seems to mind",
+    "target": "没有人介意"
+   },
+   "why": "no 'seems to' in 没有人介意; corrected it is a twin of S0540L02U04, so deleted (row is under a not-new LEGO, unplayed)",
+   "what195": "'seems to' (显得) has no counterpart in the target"
+  },
+  {
+   "id": "zho_for_eng:S0546L05U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "delete",
+   "before": {
+    "known": "the dog came back wet",
+    "target": "那只狗又来了，又湿"
+   },
+   "why": "那只狗又来了，又湿 is broken Chinese (又…又 needs two adjectives; 'back' missing); no taught reword says 'came back wet'",
+   "what195": "回 (back) is missing and replaced by 又; second 又 adds an unmatched 'again/also'"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U08",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "hold",
+   "before": {
+    "known": "if I'd known I'd have done things differently",
+    "target": "如果我知道，我会做得不一样"
+   },
+   "why": "this row is under LEGO 'have to | 得 (děi)' but its 得 is the 做得 de — it does not hold its LEGO; reword to 得 děi changes the meaning, so delete or re-home is Kai's call",
+   "what195": "'things' has no counterpart in 做得不一样"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U09",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "hold",
+   "before": {
+    "known": "she does things differently",
+    "target": "她做得不一样"
+   },
+   "why": "as U08: 做得 de, not the LEGO 得 děi — proposed reword or delete, Kai's call",
+   "what195": "'things' has no counterpart in 做得不一样",
+   "after": {
+    "known": "she has to do different things",
+    "target": "她得做不同的事",
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0556L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "she came home very late at night",
+    "target": "她深夜回家了"
+   },
+   "why": "English first: no 'very' in the Chinese",
+   "what195": "\"very\" on the known side has no counterpart in the target",
+   "after": {
+    "known": "she came home late at night",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0560L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "the road leads through the forest",
+    "target": "路通向树林"
+   },
+   "why": "English first: 通向 is 'leads to'",
+   "what195": "known says 'leads through' but target 通向 means 'leads to'; 'through' (穿过) has no counterpart",
+   "after": {
+    "known": "the road leads to the forest",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0567L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "spend time outdoors",
+    "target": "在户外"
+   },
+   "why": "English first: no 'spend time' in 在户外",
+   "what195": "'spend time' (花时间) has no counterpart in the target",
+   "after": {
+    "known": "be outdoors",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0567L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "outside in nature",
+    "target": "户外的"
+   },
+   "why": "English first: 户外的 is 'outdoor'",
+   "what195": "'in nature' has no counterpart in the target",
+   "after": {
+    "known": "outdoor",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0573L03U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I want things to become better",
+    "target": "我想让事情变得好"
+   },
+   "why": "'better' needs 更",
+   "what195": "comparative 更 (better = 更好)",
+   "after": {
+    "known": null,
+    "target": "我想让事情变得更好",
+    "roman": "wǒ xiǎng ràng shìqing biànde gèng hǎo"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0597L02B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "a hundred things",
+    "target": "一百个"
+   },
+   "why": "English first: 一百个 is a number and measure word",
+   "what195": "\"things\" has no noun on the target side; 一百个 is only a number and measure word",
+   "after": {
+    "known": "a hundred of them",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0603L01B03",
+   "table": "phrase",
+   "role": "build",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "at the time",
+    "target": "那时我们"
+   },
+   "why": "English first: the Chinese has 我们 'we'",
+   "what195": "target has 我们 (we) but the known side has no 'we'",
+   "after": {
+    "known": "at the time, we",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0608L03U07",
+   "table": "phrase",
+   "role": "use",
+   "point": "tense-modality",
+   "action": "edit",
+   "before": {
+    "known": "the sensible thing to do would have been to ask",
+    "target": "明智的做法是去问"
+   },
+   "why": "English first: no 本来 counterfactual in the Chinese, which says 去问 'go and ask'",
+   "what195": "'would have been' (counterfactual 本来) missing on target; target also adds 去 ('go')",
+   "after": {
+    "known": "the sensible thing to do is to go and ask",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0612L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I didn't have enough to buy it",
+    "target": "我没有钱买"
+   },
+   "why": "English first: the Chinese says 钱 'money'",
+   "what195": "'enough' (足够) and object 'it' (它) have no counterpart in the target; the target adds 钱 (money) that the known side lacks",
+   "after": {
+    "known": "I didn't have the money to buy it",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0615L04U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "everyone agreed she was brave",
+    "target": "大家都觉得她很勇敢"
+   },
+   "why": "English first: 都觉得 is 'all thought'",
+   "what195": "known 'agreed' has no counterpart; target says 都觉得 ('all thought')",
+   "after": {
+    "known": "everyone thought she was brave",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0622L03U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "they made it happen",
+    "target": "他们把它弄好了"
+   },
+   "why": "'made it happen' ≠ 弄好; the row now says its LEGO 把它弄坏",
+   "what195": "'made it happen' vs 弄好 ('fixed'): the 'happen' meaning has no counterpart",
+   "after": {
+    "known": "they broke it",
+    "target": "他们把它弄坏了",
+    "roman": "tāmen bǎ tā nònghuài le"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0627L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I'm ready to go",
+    "target": "我准备好了"
+   },
+   "why": "English first: no 'to go' in 我准备好了 ('I'm ready' and 'I'm ready now' already belong to other Chinese in the course)",
+   "what195": "\"to go\" (去/走) has no counterpart in 我准备好了",
+   "after": {
+    "known": "I'm all ready",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0633L01U02",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "that's enough, just fine",
+    "target": "那就好"
+   },
+   "why": "English first: no 'enough' in 那就好",
+   "what195": "'that's enough' (足够) has no counterpart in 那就好",
+   "after": {
+    "known": "that's just fine",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0633L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "delete",
+   "before": {
+    "known": "whatever works is fine",
+    "target": "什么方法就好"
+   },
+   "why": "什么方法就好 is not grammatical (natural is 什么方法都行, which drops the LEGO 就好) — no valid reword",
+   "what195": "known 'whatever works' vs target 什么方法 ('whatever method')"
+  },
+  {
+   "id": "zho_for_eng:S0636L01B02",
+   "table": "phrase",
+   "role": "build",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "I believe that",
+    "target": "我觉得那"
+   },
+   "why": "English first: 我觉得 is the LEGO 'I think'",
+   "what195": "known says 'believe' but target uses 觉得 (think)",
+   "after": {
+    "known": "I think that",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0636L01U18",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I think walking is good for you",
+    "target": "我觉得走路很好"
+   },
+   "why": "English first: no 'for you' in the Chinese (走路对你很好 would mean 'is nice to you')",
+   "what195": "'for you' (对你) missing from target",
+   "after": {
+    "known": "I think walking is good",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0655L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "wrong-word",
+   "action": "edit",
+   "before": {
+    "known": "everyone agrees she does it well",
+    "target": "大家都觉得她做得很好"
+   },
+   "why": "English first: 觉得 is 'think'",
+   "what195": "known 'agrees' vs target 觉得 (think); 'it' also absent",
+   "after": {
+    "known": "everyone thinks she does it well",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0655L01U05",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "she always does everything very well",
+    "target": "她一直做得很好"
+   },
+   "why": "English first: no 'everything' in the Chinese",
+   "what195": "'everything' in known has no counterpart in target",
+   "after": {
+    "known": "she always does very well",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0655L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I didn't think I was doing well enough",
+    "target": "我不觉得我做得很好"
+   },
+   "why": "English first: no 'enough' in the Chinese",
+   "what195": "'enough' in known has no counterpart (足够) in target",
+   "after": {
+    "known": "I didn't think I was doing well",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0658L01U03",
+   "table": "phrase",
+   "role": "use",
+   "point": "person-number",
+   "action": "edit",
+   "before": {
+    "known": "does everyone want coffee?",
+    "target": "你们想要咖啡吗？"
+   },
+   "why": "English first: 你们 is 'you all'",
+   "what195": "known 'everyone' (third person) vs target 你们 'you all' (second person, addressed)",
+   "after": {
+    "known": "do you all want coffee?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0661L01U06",
+   "table": "phrase",
+   "role": "use",
+   "point": "extra-chunk",
+   "action": "edit",
+   "before": {
+    "known": "what exactly are all of you doing right now?",
+    "target": "你们现在正在做什么？"
+   },
+   "why": "English first: no 'exactly' in the Chinese",
+   "what195": "'exactly' (emphasis) on the known side has no counterpart in the target",
+   "after": {
+    "known": "what are all of you doing right now?",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0663L01U01",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "hold",
+   "before": {
+    "known": "what you all said",
+    "target": "你们刚才说的"
+   },
+   "why": "copy of seed 663 — the SEED English lacks 'just' from its own LEGO 'what was just said | 刚才说的'; a seed edit is Kai's call",
+   "what195": "刚才 (just now) has no counterpart in the known 'what you all said'",
+   "after": {
+    "known": "what you all just said",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0664L01U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "we can go when you're all ready",
+    "target": "你们准备好了我们就走"
+   },
+   "why": "English first: 我们就走 is 'we'll go'",
+   "what195": "modal \"can\" in the known has no counterpart in the target 我们就走",
+   "after": {
+    "known": "we'll go when you're all ready",
+    "target": null,
+    "roman": null
+   }
+  },
+  {
+   "id": "zho_for_eng:S0668L01U21",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "I hope we can have supper together",
+    "target": "我希望一起吃晚饭"
+   },
+   "why": "'can' had no 能",
+   "what195": "modal 'can' (能) missing from target",
+   "after": {
+    "known": null,
+    "target": "我希望能一起吃晚饭",
+    "roman": "wǒ xīwàng néng yìqǐ chī wǎnfàn"
+   }
+  },
+  {
+   "id": "zho_for_eng:S0668L02U04",
+   "table": "phrase",
+   "role": "use",
+   "point": "missing-chunk",
+   "action": "edit",
+   "before": {
+    "known": "we all need help sometimes",
+    "target": "我们都需要帮助"
+   },
+   "why": "English first: no 'sometimes' in the Chinese",
+   "what195": "'sometimes' has no counterpart in target",
+   "after": {
+    "known": "we all need help",
+    "target": null,
+    "roman": null
+   }
+  }
+ ]
+}

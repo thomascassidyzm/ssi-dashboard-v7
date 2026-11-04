@@ -19,10 +19,15 @@ const path = require('path');
 const { holdsInOrder, fromApi } = require('./spa-close-read-153-200-2026-10-27.cjs');
 
 const COURSE = 'zho_for_eng';
-const AGENT = 'zho-learner-feedback-fixes (job #545)';
-const PURPOSE = 'job #545 zho_for_eng learner-feedback fixes (Kai approved 3 Nov) — refill of the slots these edits emptied';
+// DATA_DIR=ops/<pass> points the same engine at another pass's decisions (job #233 reuses it for the #195 wave-1
+// mismatch rows: ops/zho-mismatch-233). JOB names that pass in the agent id, purpose and log names.
+const JOB = process.env.JOB || '#545';
+const AGENT = process.env.JOB ? `zho-mismatch-195-fix (job ${JOB})` : 'zho-learner-feedback-fixes (job #545)';
+const PURPOSE = process.env.JOB ? `job ${JOB} zho_for_eng #195 wave-1 mismatch fixes (Kai approved 4 Nov) — refill of the slots these edits emptied`
+  : 'job #545 zho_for_eng learner-feedback fixes (Kai approved 3 Nov) — refill of the slots these edits emptied';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
-const DATA_DIR = path.join(__dirname, '..', '..', 'ops', 'zho-545');
+const DATA_DIR = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(__dirname, '..', '..', 'ops', 'zho-545');
+const TAG = `zho-${JOB.replace(/\W/g, '')}`;
 const USE_FLOOR = 3;
 const BATCH = Number(process.env.BATCH) || 25;
 
@@ -304,10 +309,10 @@ async function main() {
   const [mode, file] = process.argv.slice(2);
   if (!mode || !file) throw new Error('usage: check|dry|apply|render|verify <seeds.json>');
   const db = fromApi(JSON.parse(fs.readFileSync(file, 'utf8')));
-  const out = process.env.LOG_DIR || path.dirname(require('../lib/evidence-path.cjs').evidencePath('ops/zho-545/x'));
+  const out = process.env.LOG_DIR || path.dirname(require('../lib/evidence-path.cjs').evidencePath(`ops/${path.basename(DATA_DIR)}/x`));
   fs.mkdirSync(out, { recursive: true });
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const save = (n, log) => { const f = path.join(out, `zho-545-${n}-${stamp}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
+  const save = (n, log) => { const f = path.join(out, `${TAG}-${n}-${stamp}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
 
   if (mode === 'verify') {
     const D = loadData(); const live = new Map(db.phrases.map((p) => [sid(p.id), p]));
@@ -327,7 +332,7 @@ async function main() {
     const skipL = new Set(String(process.env.SKIP_LEGOS || '').split(',').filter(Boolean));
     const inSkip = (t) => skipL.has(t.lego_id || sid(t.phrase_id || '').slice(0, 8));
     const asks = emptySlots(db).map((a) => ({ ...a, slots: a.slots.filter((t) => !inSkip(t)) })).filter((a) => a.slots.length);
-    const log = { job: '#545', mode: 'render', asks: [] };
+    const log = { job: JOB, mode: 'render', asks: [] };
     for (const a of asks) {
       const body = { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true };
       let d = await post(`${POPTY}/api/audio/render`, body);
@@ -373,7 +378,7 @@ async function main() {
   if (mode === 'check') return console.log(save('check', p));
 
   const batches = editBatches(p);
-  const log = { job: '#545', started: stamp, mode, batches: [] };
+  const log = { job: JOB, started: stamp, mode, batches: [] };
   for (const b of batches) {
     let dry = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: b.ops });
     if (dry.status === 0) { await waitHealthy(); dry = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: b.ops }); }
