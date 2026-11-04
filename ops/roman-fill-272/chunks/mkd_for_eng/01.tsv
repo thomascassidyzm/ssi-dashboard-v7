@@ -1,0 +1,465 @@
+kind	key	seed	known	target	proposal	seed_target
+seed	1	1	I want to speak Macedonian with you now.	Сакам да зборувам македонски со тебе сега.		
+lego	S0001L01	1	I speak	зборувам		Сакам да зборувам македонски со тебе сега.
+lego	S0001L02	1	Macedonian	македонски		Сакам да зборувам македонски со тебе сега.
+lego	S0001L03	1	I want to speak	сакам да зборувам		Сакам да зборувам македонски со тебе сега.
+lego	S0001L04	1	with you	со тебе		Сакам да зборувам македонски со тебе сега.
+lego	S0001L05	1	now	сега		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L02B01	1	I speak Macedonian	зборувам македонски		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L03B01	1	I want to speak Macedonian	сакам да зборувам македонски		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L03C01	1	I want	сакам		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L03C02	1	to	да		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L03C03	1	I speak	зборувам		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L04B01	1	I want to speak with you	сакам да зборувам со тебе		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L04C01	1	with	со		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L04C02	1	you	тебе		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L04U01	1	I want to speak Macedonian with you	сакам да зборувам македонски со тебе		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L05B01	1	I speak Macedonian now	зборувам македонски сега		Сакам да зборувам македонски со тебе сега.
+phrase	mkd_for_eng:S0001L05U01	1	I want to speak Macedonian with you now	сакам да зборувам македонски со тебе сега		Сакам да зборувам македонски со тебе сега.
+seed	2	2	I'm trying to learn.	Се обидувам да учам.		
+lego	S0002L01	2	I learn	учам		Се обидувам да учам.
+lego	S0002L02	2	I'm trying	се обидувам		Се обидувам да учам.
+lego	S0002L03	2	I'm trying to learn	се обидувам да учам		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L01B01	2	I learn Macedonian	учам македонски		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L01U01	2	I learn Macedonian now	учам македонски сега		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L01U02	2	I want to learn Macedonian with you	сакам да учам македонски со тебе		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L02B01	2	I'm trying to speak	се обидувам да зборувам		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L02U01	2	I'm trying to speak Macedonian now	се обидувам да зборувам македонски сега		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L02U02	2	I'm trying to speak Macedonian with you	се обидувам да зборувам македонски со тебе		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03B01	2	I'm trying to learn Macedonian	се обидувам да учам македонски		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03C01	2	I'm trying	се обидувам		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03C02	2	to	да		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03C03	2	I learn	учам		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03U01	2	I'm trying to learn Macedonian now	се обидувам да учам македонски сега		Се обидувам да учам.
+phrase	mkd_for_eng:S0002L03U02	2	I'm trying to learn Macedonian with you	се обидувам да учам македонски со тебе		Се обидувам да учам.
+seed	3	3	how to speak as often as possible.	како да зборувам што почесто.		
+lego	S0003L01	3	how	како		како да зборувам што почесто.
+lego	S0003L02	3	how to speak	како да зборувам		како да зборувам што почесто.
+lego	S0003L03	3	as often as possible	што почесто		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L01B01	3	how to speak	како да зборувам		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L01B02	3	how to learn	како да учам		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L01U01	3	I'm trying to learn how to speak Macedonian	се обидувам да учам како да зборувам македонски		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L01U02	3	I want to learn how to speak Macedonian with you	сакам да учам како да зборувам македонски со тебе		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02B01	3	how to speak Macedonian	како да зборувам македонски		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02C01	3	how	како		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02C02	3	to	да		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02C03	3	I speak	зборувам		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02U01	3	I'm trying to learn how to speak Macedonian now	се обидувам да учам како да зборувам македонски сега		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L02U02	3	I want to learn how to speak Macedonian	сакам да учам како да зборувам македонски		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L03B01	3	to speak as often as possible	да зборувам што почесто		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L03B02	3	to learn as often as possible	да учам што почесто		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L03U01	3	I want to speak Macedonian as often as possible	сакам да зборувам македонски што почесто		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L03U02	3	I'm trying to learn Macedonian as often as possible	се обидувам да учам македонски што почесто		како да зборувам што почесто.
+phrase	mkd_for_eng:S0003L03U03	3	I want to speak with you as often as possible	сакам да зборувам со тебе што почесто		како да зборувам што почесто.
+seed	4	4	how to say something in Macedonian	како да кажам нешто на македонски		
+lego	S0004L01	4	something	нешто		како да кажам нешто на македонски
+lego	S0004L02	4	in Macedonian	на македонски		како да кажам нешто на македонски
+lego	S0004L03	4	to say something	да кажам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01B01	4	I learn something	учам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01B02	4	I want to learn something	сакам да учам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01B03	4	I'm trying to learn something	се обидувам да учам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01U01	4	I'm trying to learn something now	се обидувам да учам нешто сега		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01U02	4	I want to learn something with you	сакам да учам нешто со тебе		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01U03	4	I learn something as often as possible	учам нешто што почесто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01U04	4	I'm trying to learn something as often as possible	се обидувам да учам нешто што почесто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L01U05	4	I'm trying to learn something with you now	се обидувам да учам нешто со тебе сега		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02B01	4	to speak in Macedonian	да зборувам на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02B02	4	I learn something in Macedonian	учам нешто на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02B03	4	how to speak in Macedonian	како да зборувам на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02C01	4	in	на		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02C02	4	Macedonian	македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02U01	4	I want to speak with you in Macedonian	сакам да зборувам со тебе на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02U02	4	I'm trying to learn something in Macedonian	се обидувам да учам нешто на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02U03	4	I want to learn how to speak in Macedonian	сакам да учам како да зборувам на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02U04	4	I'm trying to speak in Macedonian as often as possible	се обидувам да зборувам на македонски што почесто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L02U05	4	I learn something in Macedonian now	учам нешто на македонски сега		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03B01	4	how to say something	како да кажам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03B02	4	I want to say something	сакам да кажам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03B03	4	to say something in Macedonian	да кажам нешто на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03C01	4	to	да		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03C02	4	I say	кажам		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03C03	4	something	нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03U01	4	I want to say something in Macedonian	сакам да кажам нешто на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03U02	4	I'm trying to say something now	се обидувам да кажам нешто сега		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03U03	4	I want to learn how to say something	сакам да учам како да кажам нешто		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03U04	4	I'm trying to learn how to say something in Macedonian	се обидувам да учам како да кажам нешто на македонски		како да кажам нешто на македонски
+phrase	mkd_for_eng:S0004L03U05	4	I want to say something in Macedonian as often as possible	сакам да кажам нешто на македонски што почесто		како да кажам нешто на македонски
+seed	5	5	I'm going to practise speaking with someone else.	Ќе вежбам да зборувам со некој друг.		
+lego	S0005L01	5	I'm going to practise	ќе вежбам		Ќе вежбам да зборувам со некој друг.
+lego	S0005L02	5	I'm going to practise speaking	ќе вежбам да зборувам		Ќе вежбам да зборувам со некој друг.
+lego	S0005L03	5	with someone else	со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01B01	5	I'm going to practise Macedonian	ќе вежбам македонски		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01B02	5	I'm going to practise with you	ќе вежбам со тебе		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01B03	5	I'm going to practise now	ќе вежбам сега		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01C01	5	going to	ќе		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01C02	5	I practise	вежбам		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01U01	5	I'm going to practise Macedonian now	ќе вежбам македонски сега		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01U02	5	I'm going to practise Macedonian with you	ќе вежбам македонски со тебе		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01U03	5	I'm going to practise Macedonian as often as possible	ќе вежбам македонски што почесто		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01U04	5	I'm going to practise something in Macedonian	ќе вежбам нешто на македонски		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L01U05	5	I'm going to practise Macedonian with you now	ќе вежбам македонски со тебе сега		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02B01	5	I'm going to practise speaking Macedonian	ќе вежбам да зборувам македонски		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02B02	5	I'm going to practise speaking with you	ќе вежбам да зборувам со тебе		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02B03	5	I'm going to practise speaking now	ќе вежбам да зборувам сега		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02C01	5	I'm going to practise	ќе вежбам		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02C02	5	to	да		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02C03	5	I speak	зборувам		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02U01	5	I'm going to practise speaking Macedonian now	ќе вежбам да зборувам македонски сега		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02U02	5	I'm going to practise speaking Macedonian with you	ќе вежбам да зборувам македонски со тебе		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02U03	5	I'm going to practise speaking Macedonian as often as possible	ќе вежбам да зборувам македонски што почесто		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02U04	5	I'm going to practise speaking in Macedonian	ќе вежбам да зборувам на македонски		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L02U05	5	I'm going to practise speaking Macedonian with you as often as possible	ќе вежбам да зборувам македонски со тебе што почесто		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03B01	5	to speak with someone else	да зборувам со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03B02	5	I'm going to practise with someone else	ќе вежбам со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03B03	5	to learn with someone else	да учам со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03C01	5	with	со		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03C02	5	someone	некој		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03C03	5	else	друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03U01	5	I want to speak Macedonian with someone else	сакам да зборувам македонски со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03U02	5	I'm going to practise speaking with someone else	ќе вежбам да зборувам со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03U03	5	I'm trying to learn Macedonian with someone else	се обидувам да учам македонски со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03U04	5	I want to say something in Macedonian with someone else	сакам да кажам нешто на македонски со некој друг		Ќе вежбам да зборувам со некој друг.
+phrase	mkd_for_eng:S0005L03U05	5	I'm going to practise speaking Macedonian with someone else now	ќе вежбам да зборувам македонски со некој друг сега		Ќе вежбам да зборувам со некој друг.
+seed	6	6	I'm trying to remember a word.	Се обидувам да запамтам еден збор.		
+lego	S0006L01	6	a word	еден збор		Се обидувам да запамтам еден збор.
+lego	S0006L02	6	to remember	да запамтам		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01B01	6	to say a word	да кажам еден збор		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01B02	6	to learn a word	да учам еден збор		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01B03	6	I'm going to practise a word	ќе вежбам еден збор		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01C01	6	a	еден		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01C02	6	word	збор		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01U01	6	I want to say a word in Macedonian	сакам да кажам еден збор на македонски		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01U02	6	I'm trying to learn a word now	се обидувам да учам еден збор сега		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01U03	6	I want to learn how to say a word in Macedonian	сакам да учам како да кажам еден збор на македонски		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01U04	6	I'm going to practise a word with someone else	ќе вежбам еден збор со некој друг		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L01U05	6	I learn a word with you as often as possible	учам еден збор со тебе што почесто		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02B01	6	I'm trying to remember	се обидувам да запамтам		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02B02	6	how to remember	како да запамтам		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02B03	6	I want to remember	сакам да запамтам		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02C01	6	to	да		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02C02	6	I remember	запамтам		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02U01	6	I'm trying to remember a word	се обидувам да запамтам еден збор		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02U02	6	I want to remember how to speak Macedonian	сакам да запамтам како да зборувам македонски		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02U03	6	I'm trying to remember something in Macedonian	се обидувам да запамтам нешто на македонски		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02U04	6	I want to remember a word in Macedonian now	сакам да запамтам еден збор на македонски сега		Се обидувам да запамтам еден збор.
+phrase	mkd_for_eng:S0006L02U05	6	I'm trying to remember how to say something	се обидувам да запамтам како да кажам нешто		Се обидувам да запамтам еден збор.
+seed	7	7	I want to try as hard as I can today.	Сакам да се обидам колку можам денес.		
+lego	S0007L01	7	today	денес		Сакам да се обидам колку можам денес.
+lego	S0007L02	7	to try	да се обидам		Сакам да се обидам колку можам денес.
+lego	S0007L03	7	as hard as I can	колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01B01	7	I learn today	учам денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01B02	7	I'm going to practise today	ќе вежбам денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01B03	7	I speak Macedonian today	зборувам македонски денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01U01	7	I want to speak Macedonian today	сакам да зборувам македонски денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01U02	7	I'm going to practise with someone else today	ќе вежбам со некој друг денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01U03	7	I'm trying to learn a word today	се обидувам да учам еден збор денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01U04	7	I want to say something in Macedonian today	сакам да кажам нешто на македонски денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L01U05	7	I'm trying to remember how to speak Macedonian today	се обидувам да запамтам како да зборувам македонски денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02B01	7	I want to try	сакам да се обидам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02B02	7	I want to try today	сакам да се обидам денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02B03	7	to try to speak	да се обидам да зборувам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02C01	7	to	да		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02C02	7	I try	се обидам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02U01	7	I want to try to speak Macedonian today	сакам да се обидам да зборувам македонски денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02U02	7	I want to try to remember a word	сакам да се обидам да запамтам еден збор		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02U03	7	I want to try to say something in Macedonian	сакам да се обидам да кажам нешто на македонски		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02U04	7	I want to try to speak with someone else now	сакам да се обидам да зборувам со некој друг сега		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L02U05	7	I want to try to learn Macedonian with you as often as possible	сакам да се обидам да учам македонски со тебе што почесто		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03B01	7	I want to try as hard as I can	сакам да се обидам колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03B02	7	to learn as hard as I can	да учам колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03B03	7	I'm going to practise as hard as I can	ќе вежбам колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03C01	7	as much as	колку		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03C02	7	I can	можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03U01	7	I want to try as hard as I can today	сакам да се обидам колку можам денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03U02	7	I'm going to practise as hard as I can today	ќе вежбам колку можам денес		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03U03	7	I'm trying to learn Macedonian as hard as I can	се обидувам да учам македонски колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03U04	7	I want to try to speak Macedonian as hard as I can	сакам да се обидам да зборувам македонски колку можам		Сакам да се обидам колку можам денес.
+phrase	mkd_for_eng:S0007L03U05	7	I'm going to practise speaking as hard as I can with someone else	ќе вежбам да зборувам колку можам со некој друг		Сакам да се обидам колку можам денес.
+seed	8	8	I'm going to try to explain what I mean.	Ќе се обидам да објаснам што мислам.		
+lego	S0008L01	8	I'm going to try	ќе се обидам		Ќе се обидам да објаснам што мислам.
+lego	S0008L02	8	to explain	да објаснам		Ќе се обидам да објаснам што мислам.
+lego	S0008L03	8	what I mean	што мислам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01B01	8	I'm going to try today	ќе се обидам денес		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01B02	8	I'm going to try to speak	ќе се обидам да зборувам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01B03	8	I'm going to try as hard as I can	ќе се обидам колку можам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01C01	8	going to	ќе		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01C02	8	I try	се обидам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01U01	8	I'm going to try to speak Macedonian today	ќе се обидам да зборувам македонски денес		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01U02	8	I'm going to try to remember a word	ќе се обидам да запамтам еден збор		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01U03	8	I'm going to try to say something in Macedonian	ќе се обидам да кажам нешто на македонски		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01U04	8	I'm going to try as hard as I can today	ќе се обидам колку можам денес		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L01U05	8	I'm going to try to speak Macedonian with someone else now	ќе се обидам да зборувам македонски со некој друг сега		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02B01	8	I'm going to try to explain	ќе се обидам да објаснам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02B02	8	I want to explain	сакам да објаснам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02B03	8	how to explain	како да објаснам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02C01	8	to	да		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02C02	8	I explain	објаснам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02U01	8	I want to explain something in Macedonian	сакам да објаснам нешто на македонски		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02U02	8	I'm going to try to explain a word today	ќе се обидам да објаснам еден збор денес		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02U03	8	I'm trying to learn how to explain something	се обидувам да учам како да објаснам нешто		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02U04	8	I want to explain something in Macedonian as often as possible	сакам да објаснам нешто на македонски што почесто		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L02U05	8	I'm going to try to explain as hard as I can	ќе се обидам да објаснам колку можам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03B01	8	to explain what I mean	да објаснам што мислам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03B02	8	to say what I mean	да кажам што мислам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03B03	8	to remember what I mean	да запамтам што мислам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03C01	8	what	што		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03C02	8	I mean	мислам		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03U01	8	I'm going to try to explain what I mean today	ќе се обидам да објаснам што мислам денес		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03U02	8	I want to explain what I mean in Macedonian	сакам да објаснам што мислам на македонски		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03U03	8	I'm trying to say what I mean in Macedonian	се обидувам да кажам што мислам на македонски		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03U04	8	I want to say what I mean as often as possible	сакам да кажам што мислам што почесто		Ќе се обидам да објаснам што мислам.
+phrase	mkd_for_eng:S0008L03U05	8	I'm going to try to explain what I mean as hard as I can	ќе се обидам да објаснам што мислам колку можам		Ќе се обидам да објаснам што мислам.
+seed	9	9	I speak a little Macedonian now.	Малку зборувам македонски сега.		
+lego	S0009L01	9	a little	малку		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01B01	9	I speak a little	малку зборувам		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01B02	9	I learn a little	малку учам		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01B03	9	I'm going to practise a little	ќе вежбам малку		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01U01	9	I speak a little Macedonian now	малку зборувам македонски сега		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01U02	9	I'm trying to learn a little Macedonian today	се обидувам да учам малку македонски денес		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01U03	9	I want to speak a little Macedonian with you	сакам да зборувам малку македонски со тебе		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01U04	9	I'm going to practise a little with someone else today	ќе вежбам малку со некој друг денес		Малку зборувам македонски сега.
+phrase	mkd_for_eng:S0009L01U05	9	I'm going to try to explain a little in Macedonian	ќе се обидам да објаснам малку на македонски		Малку зборувам македонски сега.
+seed	10	10	I'm not sure if I can remember the whole sentence.	Не сум сигурен дали можам да ја запамтам целата реченица.		
+lego	S0010L01	10	I'm not sure	не сум сигурен		Не сум сигурен дали можам да ја запамтам целата реченица.
+lego	S0010L02	10	if I can	дали можам		Не сум сигурен дали можам да ја запамтам целата реченица.
+lego	S0010L03	10	to remember it	да ја запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+lego	S0010L04	10	the whole sentence	целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01B01	10	I'm not sure today	не сум сигурен денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01B02	10	I'm not sure now	не сум сигурен сега		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01B03	10	I'm not sure how to speak	не сум сигурен како да зборувам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01C01	10	not	не		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01C02	10	I am	сум		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01C03	10	sure	сигурен		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01U01	10	I'm not sure how to say something in Macedonian	не сум сигурен како да кажам нешто на македонски		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01U02	10	I'm not sure how to explain what I mean	не сум сигурен како да објаснам што мислам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01U03	10	I'm not sure how to speak Macedonian today	не сум сигурен како да зборувам македонски денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01U04	10	I'm not sure how to remember a word	не сум сигурен како да запамтам еден збор		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L01U05	10	I'm not sure how to say what I mean in Macedonian	не сум сигурен како да кажам што мислам на македонски		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02B01	10	I'm not sure if I can	не сум сигурен дали можам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02B02	10	if I can speak	дали можам да зборувам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02B03	10	if I can remember	дали можам да запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02C01	10	if	дали		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02C02	10	I can	можам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02U01	10	I'm not sure if I can speak Macedonian today	не сум сигурен дали можам да зборувам македонски денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02U02	10	I'm not sure if I can remember a word	не сум сигурен дали можам да запамтам еден збор		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02U03	10	I'm not sure if I can explain what I mean	не сум сигурен дали можам да објаснам што мислам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02U04	10	I'm not sure if I can say something in Macedonian now	не сум сигурен дали можам да кажам нешто на македонски сега		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L02U05	10	I'm not sure if I can speak a little Macedonian with someone else	не сум сигурен дали можам да зборувам малку македонски со некој друг		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03B01	10	I'm trying to remember it	се обидувам да ја запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03B02	10	I want to remember it	сакам да ја запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03B03	10	if I can remember it	дали можам да ја запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03C01	10	to	да		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03C02	10	it	ја		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03C03	10	I remember	запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03U01	10	I'm not sure if I can remember it	не сум сигурен дали можам да ја запамтам		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03U02	10	I'm going to try to remember it today	ќе се обидам да ја запамтам денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03U03	10	I'm trying to remember it now	се обидувам да ја запамтам сега		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03U04	10	I want to remember it in Macedonian	сакам да ја запамтам на македонски		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L03U05	10	I'm not sure if I can remember it today	не сум сигурен дали можам да ја запамтам денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04B01	10	to remember the whole sentence	да ја запамтам целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04B02	10	I want to remember the whole sentence	сакам да ја запамтам целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04B03	10	if I can remember the whole sentence	дали можам да ја запамтам целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04C01	10	the whole	целата		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04C02	10	sentence	реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04U01	10	I'm not sure if I can remember the whole sentence	не сум сигурен дали можам да ја запамтам целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04U02	10	I want to say the whole sentence in Macedonian	сакам да ја кажам целата реченица на македонски		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04U03	10	I'm going to try to remember the whole sentence today	ќе се обидам да ја запамтам целата реченица денес		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04U04	10	I'm trying to learn the whole sentence in Macedonian	се обидувам да ја учам целата реченица на македонски		Не сум сигурен дали можам да ја запамтам целата реченица.
+phrase	mkd_for_eng:S0010L04U05	10	I'm not sure how to explain the whole sentence	не сум сигурен како да ја објаснам целата реченица		Не сум сигурен дали можам да ја запамтам целата реченица.
+seed	11	11	I'd like to be able to speak after you finish.	Би сакал да можам да зборувам откако ти ќе завршиш.		
+lego	S0011L01	11	I'd like	би сакал		Би сакал да можам да зборувам откако ти ќе завршиш.
+lego	S0011L02	11	to be able to speak	да можам да зборувам		Би сакал да можам да зборувам откако ти ќе завршиш.
+lego	S0011L03	11	after you finish	откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01B01	11	I'd like to speak	би сакал да зборувам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01B02	11	I'd like to try	би сакал да се обидам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01B03	11	I'd like to learn	би сакал да учам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01C01	11	would	би		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01C02	11	I want	сакал		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01U01	11	I'd like to speak Macedonian with you today	би сакал да зборувам македонски со тебе денес		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01U02	11	I'd like to say something in Macedonian	би сакал да кажам нешто на македонски		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01U03	11	I'd like to remember the whole sentence	би сакал да ја запамтам целата реченица		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01U04	11	I'd like to explain what I mean	би сакал да објаснам што мислам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L01U05	11	I'd like to try to speak Macedonian as often as possible	би сакал да се обидам да зборувам македонски што почесто		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02B01	11	I'd like to be able to speak	би сакал да можам да зборувам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02B02	11	I want to be able to speak	сакам да можам да зборувам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02B03	11	to be able to speak Macedonian	да можам да зборувам македонски		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02C01	11	to	да		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02C02	11	I can	можам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02C03	11	I speak	зборувам		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02U01	11	I'd like to be able to speak Macedonian today	би сакал да можам да зборувам македонски денес		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02U02	11	I want to be able to speak Macedonian with someone else	сакам да можам да зборувам македонски со некој друг		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02U03	11	I'd like to be able to speak a little Macedonian now	би сакал да можам да зборувам малку македонски сега		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02U04	11	I'd like to be able to speak Macedonian as often as possible	би сакал да можам да зборувам македонски што почесто		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L02U05	11	I'm going to try to be able to speak Macedonian	ќе се обидам да можам да зборувам македонски		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03B01	11	after you finish today	откако ти ќе завршиш денес		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03B02	11	to speak after you finish	да зборувам откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03B03	11	I'd like to speak after you finish	би сакал да зборувам откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03C01	11	after	откако		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03C02	11	you finish	ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03U01	11	I'd like to be able to speak after you finish	би сакал да можам да зборувам откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03U02	11	I want to speak Macedonian with you after you finish	сакам да зборувам македонски со тебе откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03U03	11	I'm going to practise a little after you finish	ќе вежбам малку откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03U04	11	I'd like to say something in Macedonian after you finish	би сакал да кажам нешто на македонски откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+phrase	mkd_for_eng:S0011L03U05	11	I'm going to try to explain what I mean after you finish	ќе се обидам да објаснам што мислам откако ти ќе завршиш		Би сакал да можам да зборувам откако ти ќе завршиш.
+seed	12	12	I wouldn't like to guess what's going to happen tomorrow.	Не би сакал да погодам што ќе се случи утре.		
+lego	S0012L01	12	tomorrow	утре		Не би сакал да погодам што ќе се случи утре.
+lego	S0012L02	12	I wouldn't like	не би сакал		Не би сакал да погодам што ќе се случи утре.
+lego	S0012L03	12	to guess	да погодам		Не би сакал да погодам што ќе се случи утре.
+lego	S0012L04	12	what's going to happen	што ќе се случи		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01B01	12	I'd like to speak tomorrow	би сакал да зборувам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01B02	12	I'm going to practise tomorrow	ќе вежбам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01B03	12	I learn tomorrow	учам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01U01	12	I want to speak Macedonian with you tomorrow	сакам да зборувам македонски со тебе утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01U02	12	I'd like to be able to speak a little Macedonian tomorrow	би сакал да можам да зборувам малку македонски утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01U03	12	I'm going to try to explain what I mean tomorrow	ќе се обидам да објаснам што мислам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01U04	12	I'm not sure if I can remember the whole sentence tomorrow	не сум сигурен дали можам да ја запамтам целата реченица утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L01U05	12	I'm going to practise with someone else tomorrow	ќе вежбам со некој друг утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02B01	12	I wouldn't like to speak	не би сакал да зборувам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02B02	12	I wouldn't like to try	не би сакал да се обидам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02B03	12	I wouldn't like to speak tomorrow	не би сакал да зборувам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02C01	12	not	не		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02C02	12	I'd like	би сакал		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02U01	12	I wouldn't like to speak Macedonian today	не би сакал да зборувам македонски денес		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02U02	12	I wouldn't like to say something in Macedonian now	не би сакал да кажам нешто на македонски сега		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02U03	12	I wouldn't like to explain what I mean tomorrow	не би сакал да објаснам што мислам утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02U04	12	I wouldn't like to speak with someone else tomorrow	не би сакал да зборувам со некој друг утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L02U05	12	I wouldn't like to say the whole sentence in Macedonian	не би сакал да ја кажам целата реченица на македонски		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03B01	12	I wouldn't like to guess	не би сакал да погодам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03B02	12	I want to guess	сакам да погодам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03B03	12	I'm going to try to guess	ќе се обидам да погодам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03C01	12	to	да		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03C02	12	I guess	погодам		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03U01	12	I wouldn't like to guess today	не би сакал да погодам денес		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03U02	12	I want to guess a word in Macedonian	сакам да погодам еден збор на македонски		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03U03	12	I'm not sure if I can guess it now	не сум сигурен дали можам да ја погодам сега		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03U04	12	I'd like to guess the whole sentence	би сакал да ја погодам целата реченица		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L03U05	12	I'm going to try to guess something in Macedonian tomorrow	ќе се обидам да погодам нешто на македонски утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04B01	12	to guess what's going to happen	да погодам што ќе се случи		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04B02	12	I want to guess what's going to happen	сакам да погодам што ќе се случи		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04B03	12	what's going to happen tomorrow	што ќе се случи утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04C01	12	what	што		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04C02	12	going to	ќе		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04C03	12	happens	се случи		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04U01	12	I wouldn't like to guess what's going to happen tomorrow	не би сакал да погодам што ќе се случи утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04U02	12	I'm not sure if I can guess what's going to happen	не сум сигурен дали можам да погодам што ќе се случи		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04U03	12	I want to explain what's going to happen in Macedonian	сакам да објаснам што ќе се случи на македонски		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04U04	12	I'd like to say what's going to happen tomorrow	би сакал да кажам што ќе се случи утре		Не би сакал да погодам што ќе се случи утре.
+phrase	mkd_for_eng:S0012L04U05	12	I'm going to try to explain what's going to happen today	ќе се обидам да објаснам што ќе се случи денес		Не би сакал да погодам што ќе се случи утре.
+seed	13	13	You speak Macedonian very well.	Многу убаво зборуваш македонски.		
+lego	S0013L01	13	you speak	зборуваш		Многу убаво зборуваш македонски.
+lego	S0013L02	13	very well	многу убаво		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01B01	13	you speak Macedonian	зборуваш македонски		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01B02	13	you speak a little	малку зборуваш		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01B03	13	you speak Macedonian today	зборуваш македонски денес		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01U01	13	you speak Macedonian now	зборуваш македонски сега		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01U02	13	you speak a little Macedonian today	малку зборуваш македонски денес		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01U03	13	you speak Macedonian with someone else tomorrow	зборуваш македонски со некој друг утре		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01U04	13	you speak Macedonian as often as possible	зборуваш македонски што почесто		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L01U05	13	I'm not sure if you speak Macedonian	не сум сигурен дали зборуваш македонски		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02B01	13	you speak very well	многу убаво зборуваш		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02B02	13	I speak very well	многу убаво зборувам		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02B03	13	I'd like to speak very well	би сакал многу убаво да зборувам		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02C01	13	very	многу		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02C02	13	well	убаво		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02U01	13	you speak Macedonian very well	многу убаво зборуваш македонски		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02U02	13	you speak Macedonian very well now	многу убаво зборуваш македонски сега		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02U03	13	I want to speak Macedonian very well	сакам многу убаво да зборувам македонски		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02U04	13	I'm going to try to speak Macedonian very well tomorrow	ќе се обидам многу убаво да зборувам македонски утре		Многу убаво зборуваш македонски.
+phrase	mkd_for_eng:S0013L02U05	13	I'm not sure if I can speak Macedonian very well	не сум сигурен дали можам многу убаво да зборувам македонски		Многу убаво зборуваш македонски.
+seed	14	14	Do you speak Macedonian all day?	Зборуваш ли македонски цел ден?		
+lego	S0014L01	14	do you speak	зборуваш ли		Зборуваш ли македонски цел ден?
+lego	S0014L02	14	all day	цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01B01	14	do you speak Macedonian	зборуваш ли македонски		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01B02	14	do you speak a little	зборуваш ли малку		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01B03	14	do you speak Macedonian today	зборуваш ли македонски денес		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01U01	14	do you speak Macedonian now	зборуваш ли македонски сега		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01U02	14	do you speak Macedonian with someone else	зборуваш ли македонски со некој друг		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01U03	14	do you speak a little Macedonian today	зборуваш ли малку македонски денес		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01U04	14	do you speak Macedonian as often as possible	зборуваш ли македонски што почесто		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L01U05	14	do you speak Macedonian tomorrow	зборуваш ли македонски утре		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02B01	14	you speak all day	зборуваш цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02B02	14	I speak all day	зборувам цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02B03	14	I'm going to practise all day	ќе вежбам цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02C01	14	all	цел		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02C02	14	day	ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02U01	14	do you speak Macedonian all day	зборуваш ли македонски цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02U02	14	I want to speak Macedonian all day	сакам да зборувам македонски цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02U03	14	I'm going to practise all day today	ќе вежбам цел ден денес		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02U04	14	I'd like to be able to speak Macedonian all day	би сакал да можам да зборувам македонски цел ден		Зборуваш ли македонски цел ден?
+phrase	mkd_for_eng:S0014L02U05	14	I'm going to try to speak Macedonian all day tomorrow	ќе се обидам да зборувам македонски цел ден утре		Зборуваш ли македонски цел ден?
+seed	15	15	And I want you to speak Macedonian with me tomorrow.	И сакам да зборуваш македонски со мене утре.		
+lego	S0015L01	15	and	и		И сакам да зборуваш македонски со мене утре.
+lego	S0015L02	15	I want you to speak	сакам да зборуваш		И сакам да зборуваш македонски со мене утре.
+lego	S0015L03	15	with me	со мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01B01	15	and I want to speak	и сакам да зборувам		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01B02	15	and I speak Macedonian	и зборувам македонски		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01B03	15	and you speak Macedonian	и зборуваш македонски		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01U01	15	and I want to speak Macedonian with you today	и сакам да зборувам македонски со тебе денес		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01U02	15	and I'm going to practise all day tomorrow	и ќе вежбам цел ден утре		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01U03	15	and I'd like to be able to speak Macedonian very well	и би сакал да можам многу убаво да зборувам македонски		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01U04	15	and you speak Macedonian very well	и многу убаво зборуваш македонски		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L01U05	15	and I'm not sure if I can remember the whole sentence	и не сум сигурен дали можам да ја запамтам целата реченица		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02B01	15	I want you to speak Macedonian	сакам да зборуваш македонски		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02B02	15	I want you to speak now	сакам да зборуваш сега		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02B03	15	and I want you to speak	и сакам да зборуваш		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02C01	15	I want	сакам		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02C02	15	to	да		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02C03	15	you speak	зборуваш		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02U01	15	I want you to speak Macedonian today	сакам да зборуваш македонски денес		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02U02	15	I want you to speak Macedonian all day tomorrow	сакам да зборуваш македонски цел ден утре		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02U03	15	I want you to speak Macedonian with someone else today	сакам да зборуваш македонски со некој друг денес		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02U04	15	I want you to speak a little Macedonian now	сакам да зборуваш малку македонски сега		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L02U05	15	and I want you to speak Macedonian as often as possible	и сакам да зборуваш македонски што почесто		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03B01	15	you speak with me	зборуваш со мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03B02	15	I want you to speak with me	сакам да зборуваш со мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03B03	15	do you speak with me	зборуваш ли со мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03C01	15	with	со		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03C02	15	me	мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03U01	15	and I want you to speak Macedonian with me tomorrow	и сакам да зборуваш македонски со мене утре		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03U02	15	do you speak Macedonian with me all day	зборуваш ли македонски со мене цел ден		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03U03	15	I'd like you to speak Macedonian with me today	би сакал да зборуваш македонски со мене денес		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03U04	15	you speak Macedonian very well with me	многу убаво зборуваш македонски со мене		И сакам да зборуваш македонски со мене утре.
+phrase	mkd_for_eng:S0015L03U05	15	I want you to speak with me as often as possible	сакам да зборуваш со мене што почесто		И сакам да зборуваш македонски со мене утре.
+seed	16	16	He wants to come back with everyone else later on.	Тој сака да се врати со сите други подоцна.		
+lego	S0016L01	16	for him to come back	да се врати		Тој сака да се врати со сите други подоцна.
+lego	S0016L02	16	he wants	тој сака		Тој сака да се врати со сите други подоцна.
+lego	S0016L03	16	with everyone else	со сите други		Тој сака да се врати со сите други подоцна.
+lego	S0016L04	16	later on	подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01B01	16	I want him to come back	сакам да се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01B02	16	I'd like him to come back	би сакал да се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01B03	16	for him to come back today	да се врати денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01C01	16	to	да		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01C02	16	he comes back	се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01U01	16	I want him to come back today	сакам да се врати денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01U02	16	I'd like him to come back tomorrow	би сакал да се врати утре		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01U03	16	I'd like him to come back with someone else	би сакал да се врати со некој друг		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01U04	16	I wouldn't like him to come back tomorrow	не би сакал да се врати утре		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L01U05	16	I want him to come back with me today	сакам да се врати со мене денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02B01	16	he wants to come back	тој сака да се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02B02	16	he wants to come back today	тој сака да се врати денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02B03	16	and he wants to come back	и тој сака да се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02C01	16	he	тој		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02C02	16	wants	сака		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02U01	16	he wants to come back tomorrow	тој сака да се врати утре		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02U02	16	he wants to come back with me today	тој сака да се врати со мене денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02U03	16	he wants to come back with someone else	тој сака да се врати со некој друг		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02U04	16	and he wants to come back now	и тој сака да се врати сега		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L02U05	16	I'm not sure if he wants to come back	не сум сигурен дали тој сака да се врати		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03B01	16	for him to come back with everyone else	да се врати со сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03B02	16	he wants to come back with everyone else	тој сака да се врати со сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03B03	16	to speak with everyone else	да зборувам со сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03C01	16	with	со		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03C02	16	everyone else	сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03U01	16	he wants to come back with everyone else tomorrow	тој сака да се врати со сите други утре		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03U02	16	I want to speak Macedonian with everyone else today	сакам да зборувам македонски со сите други денес		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03U03	16	I'd like to be able to speak with everyone else	би сакал да можам да зборувам со сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03U04	16	I'm going to practise with everyone else all day	ќе вежбам со сите други цел ден		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L03U05	16	I want you to speak Macedonian with everyone else	сакам да зборуваш македонски со сите други		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04B01	16	he wants to come back later on	тој сака да се врати подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04B02	16	I speak Macedonian later on	зборувам македонски подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04B03	16	I'm going to practise later on	ќе вежбам подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04U01	16	he wants to come back with everyone else later on	тој сака да се врати со сите други подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04U02	16	I want to speak Macedonian with you later on	сакам да зборувам македонски со тебе подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04U03	16	I'd like to be able to speak a little Macedonian later on	би сакал да можам да зборувам малку македонски подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04U04	16	I'm going to try to explain what I mean later on	ќе се обидам да објаснам што мислам подоцна		Тој сака да се врати со сите други подоцна.
+phrase	mkd_for_eng:S0016L04U05	16	I want you to speak Macedonian with me later on	сакам да зборуваш македонски со мене подоцна		Тој сака да се врати со сите други подоцна.
