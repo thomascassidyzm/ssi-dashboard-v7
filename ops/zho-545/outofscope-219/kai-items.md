@@ -14,7 +14,7 @@ Ordered by learner impact: LEGOs that teach a wrong meaning first, then early se
 
 **K6. Seed 103: the seed stacks 很多 and 更多.** "we're not trying to hear many more words | 我们不是想再听很多更多的词". *Recommend:* make it 我们不是想再听更多的词 (wǒmen bú shì xiǎng zài tīng gèng duō de cí). The LEGO 我们不是想 is untouched.
 
-**K7. Seed 91: the LEGO isn't in its seed.** LEGO "speak more quickly | 说得更快". The seed is "it's difficult to think quickly enough to answer in time | 很难想得够快，及时回答", which has no 说 and no 更. *Recommend:* re-cut to "think quickly enough | 想得够快" (L26) and rebuild its basket. The 11 phrases about "speaking more quickly" can only be re-pointed, not kept.
+**K7. Seed 91: the LEGO isn't in its seed.** LEGO "to speak more quickly | 说得更快". The seed is "it's difficult to think quickly enough to answer in time | 很难想得够快，及时回答", which has no 说 and no 更. *Recommend:* re-cut to "think quickly enough | 想得够快" (L26) and rebuild its basket. The 11 phrases about "speaking more quickly" can only be re-pointed, not kept.
 
 **K8. Seed 129: the LEGO isn't in its seed.** LEGO "so happy | 这么高兴". The seed is 我很高兴你做得这么好, where 很高兴 = "very happy" and 这么好 = "so well". 我这么高兴 as a plain statement is also unnatural ("I'm so happy | 我这么高兴"). *Recommend:* re-cut to "doing so well | 做得这么好" (in the seed). The happy part is already taught.
 
@@ -52,7 +52,7 @@ Ordered by learner impact: LEGOs that teach a wrong meaning first, then early se
 
 *Recommend* (K40/L11, the counter carries its noun): "that door | 那扇门", "a table | 一张桌子", "that line | 那条线" (merge with S0488L03 "line"), "that dog | 那只狗". Each is in its seed, and the phrases follow.
 
-**K23. Seed 337: the LEGO isn't in its seed.** LEGO "like to play | 喜欢玩". The seed is "do you think he can keep playing? | 你觉得他还能继续玩吗？", which has no 喜欢. *Recommend:* re-cut to "keep playing | 继续玩" (in the seed) and rebuild the 7 phrases. Under your to-rule this is not a "to [verb]" LEGO.
+**K23. Seed 337: the LEGO isn't in its seed.** LEGO "to like to play | 喜欢玩". The seed is "do you think he can keep playing? | 你觉得他还能继续玩吗？", which has no 喜欢. *Recommend:* re-cut to "keep playing | 继续玩" (in the seed) and rebuild the 7 phrases. Under your to-rule this is not a "to [verb]" LEGO.
 
 **K24. Later seeds whose Chinese doesn't match or isn't grammatical.**
 - 461: "a shop where I can buy some postcards | 我想买明信片的商店". 想 = "want". *Recommend* 我能买一些明信片的商店.
@@ -67,7 +67,7 @@ Ordered by learner impact: LEGOs that teach a wrong meaning first, then early se
 
 **K26. Grammar-label LEGO glosses (L11).** S0505L01 "passive marker bei | 被" and S0522L02 "suggestion | 吧". The 吧 basket glosses it as shall we / let's / okay? / is it okay?. *Recommend:* gloss by the seed's chunk ("get left behind | 被落下" already exists as L02, so merge; "let's … | …吧"). Low impact: S0505L01 is not new.
 
-**K27. Baskets that don't hold their LEGO (P17).** S0514L02 "that perfect house | 那所完美的房子": its basket teaches 所 as "a building". S0625L01 "drink something | 喝点什么": its basket is about 一点 "a bit". S0618L01 "it doesn't feel like | 感觉不像": U02–U06 use only 感觉. S0627L01 "your coffee is ready | 你的咖啡好了". *Recommend:* rebuild each basket around its own LEGO. This is new phrase-writing, not a fix, which is why it isn't in bucket 1.
+**K27. Baskets that don't hold their LEGO (P17).** S0514L02 "that perfect house | 那所完美的房子": its basket teaches 所 as "a building". S0625L01 "to drink something | 喝点什么": its basket is about 一点 "a bit". S0618L01 "it doesn't feel like | 感觉不像": U02–U06 use only 感觉. S0627L01 "your coffee is ready | 你的咖啡好了". *Recommend:* rebuild each basket around its own LEGO. This is new phrase-writing, not a fix, which is why it isn't in bucket 1.
 
 **K28. Seed 593: "however | 不管".** 不管 means "no matter", and the seed is "however much I argued…". It also clashes with S0480L01 "whatever | 不管". *Recommend:* re-cut to "however much | 不管…怎么" or "no matter how | 不管怎么" (in the seed).
 
@@ -75,4 +75,6 @@ Ordered by learner impact: LEGOs that teach a wrong meaning first, then early se
 
 **K30. Seed 631: "would like | 要".** The basket uses 要 as "need" ("I need to go | 我要走了", "we need to start | 我们要开始了") and as "going to", which makes "need" = 要 clash with 需要. *Recommend:* keep the LEGO's "want / would like" sense and re-English those rows to "I'm going to go" / "we're going to start", or delete them.
 
-**K31. Seed 95: "bus | 班车".** 班车 alone is a shuttle bus, and "bus" is 公交车 (S0120L01). Your C4 ruling grows S0095L02 to "on the next bus | 坐下一班车", which may absorb this. *Recommend:* check after #214 lands. If S0095L03 still stands alone, merge it into the C4 chunk.
+**K31. Seed 95: "bus | 班车" is still bare.** After #214, seed 95 ("are you ready to go home on the next bus? | 你准备好坐下一班车回家了吗？") has S0095L02 "bus | 班车" and S0095L03 "the next bus | 下一班车". On its own, 班车 is a shuttle or company bus, and "bus" is taught as 公交车 ("go by bus | 坐公交车", S0120L01). So "take the bus" has two answers. *Recommend:* merge S0095L02 into S0095L03 "the next bus | 下一班车" (K40: the counter 班 needs its 下一), and re-point L02's phrases to "the next bus".
+
+**K32. Seed 546: "also | 又".** In the seed (那只狗又脏又湿), 又…又 means "both … and". The basket glosses 又 as "again" (B01, U01 "she came again | 她又来了"), "both...and" (B02) and "the dog is dirty and" (U05). *Recommend:* re-cut to "both dirty and wet | 又脏又湿" (in the seed, K42) and keep the "again" rows out of this basket.
