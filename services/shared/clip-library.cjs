@@ -48,6 +48,7 @@ const { normalizeForAudio, audioKeyCandidates, podTtsText } = require('./text-no
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
 const { issueTicket } = require('./door-ticket.cjs')
+const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
 
 const PAGE = 1000
 const MAX_PAGES = 20
@@ -244,7 +245,8 @@ async function lookupForRender(want, lib = clipLibrary()) {
   const pickSeen = rows => { seen.push(...(rows || [])); return pickExistingClip(rows, want) }
   let clip
   if (typeof lib.resolve === 'function') clip = await lib.resolve(want, pickSeen)
-  else clip = pickSeen(await lib.candidates(want.text))
+  // No index: the same pronunciation-override guard resolveClip applies (job #262·AD) — a misread clip of a listed line is never seen.
+  else clip = pickSeen(await allowedForOverride(await lib.candidates(want.text), want))
   if (clip) return { clip, ticket: null }
   const byId = new Map()
   for (const r of usableClips(seen, { ...want, voiceBound: true })) if (r && !byId.has(r.id)) byId.set(r.id, r)
