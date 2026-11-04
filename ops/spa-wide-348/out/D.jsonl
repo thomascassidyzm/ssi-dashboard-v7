@@ -1,0 +1,115 @@
+{"id": "S0281L01U07", "verdict": "REAL", "family": "MEANING", "reason": "Spanish says 'do you mind if YOU take too long', English something else; garbled", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0281L02B06", "verdict": "REAL", "family": "ES-OTHER", "reason": "'¿Te importa cuando termino?' is not how Spanish asks permission; seed uses 'si'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U01", "verdict": "REAL", "family": "ES-OTHER", "reason": "same 'importa cuando' as B06", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U02", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "future 'cuando termino' needs termine; 'si termino' is correct and taught", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U03", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "same; 'si termino' slightly odd sense but correct", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U04", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U05", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U06", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U07", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U09", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "exact duplicate of U04 with the same error", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0281L02U13", "verdict": "REAL", "family": "ES-SUBJ-FUTURE", "reason": "exact duplicate of U05 with the same error", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0282L02U05", "verdict": "REAL", "family": "ES-OTHER", "reason": "'no hay un problema' is unidiomatic; natural form drops the LEGO", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0282L02U06", "verdict": "REAL", "family": "ES-OTHER", "reason": "'podría ser un problema con esto' is awkward Spanish; the fix only changes the English and makes it awkward too", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0282L02U13", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'There could be' vs 'it could be a problem' is a soft English difference, both fine", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0283L01B04", "verdict": "REAL", "family": "MEANING", "reason": "'are there' would be 'hay'; '¿Cuáles son?' is 'which ones are they'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0283L01U06", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'los mejor' -> 'los mejores'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0283L03U05", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'muy interesante hablar' fails agreement and grammar", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0285L01U12", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'tengo ganas de' for 'I want' is a soft synonym; Spanish is fine", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0286L01U03", "verdict": "UNSURE", "family": null, "reason": "personal 'a' is often omitted with indefinite plural 'personas'; adding it is safe but the original is not clearly wrong", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0286L01U04", "verdict": "REAL", "family": "ES-MISSING-WORD", "reason": "subjectless 'intentar' plus missing 'a'; fix would need untaught 'intenta'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0286L01U07", "verdict": "REAL", "family": "MEANING", "reason": "'always' has no Spanish counterpart", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0286L01U08", "verdict": "REAL", "family": "MEANING", "reason": "'alguien que no conoce' = 'someone who doesn't know', not 'someone they don't know'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0286L01U09", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'son muy buenas' loosely covers 'very good at it'; the fix leaves worse English ('are very good')", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0287L02U04", "verdict": "UNSURE", "family": null, "reason": "personal 'a' optional with indefinite 'personas'; safe addition", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0288L01U11", "verdict": "REAL", "family": "NONSENSE", "reason": "circular nonsense", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0288L03U07", "verdict": "REAL", "family": "ES-MISSING-WORD", "reason": "definite object needs 'a' and 'las'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0288L03U15", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'Hay muchas personas que... y quieren' vs 'Many people who... want' is the same meaning; fix is tidier but not needed", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0289L01U04", "verdict": "REAL", "family": "EN-POLISH", "reason": "'how long it is going to take before the weekend' is odd English", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0289L01U07", "verdict": "REAL", "family": "MEANING", "reason": "'he' not in the impersonal Spanish", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0289L01U14", "verdict": "REAL", "family": "ES-OTHER", "reason": "location needs 'está'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0289L02U12", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'la reunión ... listo'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0290L02U13", "verdict": "REAL", "family": "MEANING", "reason": "'keep trying' (seguimos intentando) vs 'intentamos seguir' (try to keep going)", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0290L02U14", "verdict": "REAL", "family": "ES-OTHER", "reason": "'saber' with people should be 'conocer'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0291L01U05", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'It is not' vs 'Esto no es' is soft", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0291L01U08", "verdict": "REAL", "family": "ES-CALQUE", "reason": "'bien suficientemente' -> 'lo suficientemente bien'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0291L02U10", "verdict": "REAL", "family": "EN-POLISH", "reason": "'so I can be able to' is not English", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0293L03U11", "verdict": "REAL", "family": "NONSENSE", "reason": "'because it's this morning' gives no reason", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0293L03U12", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'I will' vs 'voy a' is a soft English synonym", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0295L01U10", "verdict": "REAL", "family": "MEANING", "reason": "'before the week was over' vs 'fin de semana' (weekend)", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0295L02U06", "verdict": "REAL", "family": "MEANING", "reason": "'so much' vs 'todo esto' (all this); mild", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0295L02U10", "verdict": "REAL", "family": "ES-BACKSHIFT", "reason": "past 'needed' vs present 'tenemos'; English moves to the present", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0295L03B05", "verdict": "REAL", "family": "ES-OTHER", "reason": "'no hay que preocuparte' mixes impersonal and personal", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0295L03U10", "verdict": "REAL", "family": "ES-CALQUE", "reason": "'intentar mucho' is a calque of 'try hard'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0297L04U01", "verdict": "REAL", "family": "MEANING", "reason": "'looking for some' has no Spanish object; mild", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0297L04U05", "verdict": "REAL", "family": "MEANING", "reason": "'some' vs 'más' (more)", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0297L04U12", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'los que ... son muy útil'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0298L02U05", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'como si' + present indicative is wrong", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0299L01U03", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'porque lo dije' fits 'because I said I would'; the fix turns it into the bossy 'because I said so'", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0299L01U05", "verdict": "REAL", "family": "ES-OTHER", "reason": "'antes de que tenga que irme' with the same subject is unnatural Spanish; the fix only touches the English", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0299L02U04", "verdict": "NOT-A-DEFECT", "family": null, "reason": "a missing comma only", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0299L03U14", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as S0299L01U03: the fix changes the meaning to 'because I said so'", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0300L02U04", "verdict": "REAL", "family": "MEANING", "reason": "'todos los demás' is 'everyone else'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0300L03U02", "verdict": "REAL", "family": "MEANING", "reason": "same 'everyone else'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0300L03U14", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'personas que trabaja'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0313L01B03", "verdict": "REAL", "family": "MEANING", "reason": "'los cinco' is 'the five'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0313L01U04", "verdict": "REAL", "family": "MEANING", "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0314L01U02", "verdict": "NOT-A-DEFECT", "family": null, "reason": "dropping 'ella' is normal Spanish; adding it is harmless", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0318L01U04", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'pueda si quisiera' mixes moods, but 'aunque quisiera' means 'even if', and the English was left as 'if'", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0324L02U05", "verdict": "UNSURE", "family": null, "reason": "'male' is stilted but is the cue for 'ese' vs 'esa'; removing it lets one English take two Spanish forms", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0325L02U04", "verdict": "REAL", "family": "NONSENSE", "reason": "empty on both sides", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0330L02B02", "verdict": "REAL", "family": "ES-MISSING-WORD", "reason": "a language as subject needs 'el'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0330L02B04", "verdict": "REAL", "family": "MEANING", "reason": "the English is an imperative but the Spanish is an infinitive", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0339L02U02", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'much' for 'bastante' is fine; 'quite a lot of harm' is worse English", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0339L02U04", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'damage' for 'daño' is a correct second English; 'quite a lot of harm here' is worse English", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0339L02U05", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as U04", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0346L01U03", "verdict": "REAL", "family": "MEANING", "reason": "'really liked' overstates 'bastante'; mild", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0350L01U05", "verdict": "REAL", "family": "ES-CALQUE", "reason": "'decir sobre' -> 'decir algo sobre'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0358L01U04", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'no pensé que podía' needs subjunctive; moving the negation is correct", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0359L01U04", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'had to' vs 'necesitaba' is a soft synonym", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0359L01U05", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0363L01B03", "verdict": "REAL", "family": "NONSENSE", "reason": "fragment with unreferenced 'that urge'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0366L01U06", "verdict": "REAL", "family": "NONSENSE", "reason": "grow with no object; adding 'it' in English with no 'lo' makes a new mismatch; delete instead", "fix_verdict": "NOT-BETTER", "fix_note": null, "better_fix": null}
+{"id": "S0371L03U05", "verdict": "REAL", "family": "ES-CALQUE", "reason": "'fui a encontrar la carretera' is not natural", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0374L01U01", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'beautiful' for 'bonito' is what the seed itself says; two Englishes is fine", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0377L01B03", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'saber de algún sitio' (know of somewhere) is natural; 'conocer' changes the meaning", "fix_verdict": "WORSE", "fix_note": null, "better_fix": null}
+{"id": "S0377L04U05", "verdict": "REAL", "family": "ES-CALQUE", "reason": "same as S0371L03U05", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0378L01B02", "verdict": "REAL", "family": "ES-OTHER", "reason": "'bastante suficiente' is redundant", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0378L01U04", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'no pensé que era' needs subjunctive; moving the negation is correct", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0378L02B02", "verdict": "REAL", "family": "ES-OTHER", "reason": "'no suficiente dinero' is not Spanish", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0378L02B03", "verdict": "REAL", "family": "MEANING", "reason": "'no money' vs 'no tenía dinero'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0381L01B02", "verdict": "REAL", "family": "MEANING", "reason": "'to keep following' vs 'seguir más' do not match", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0384L01U01", "verdict": "REAL", "family": "MEANING", "reason": "the English 'it' has no 'lo' in the Spanish; mild", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0384L01U05", "verdict": "REAL", "family": "ES-OTHER", "reason": "an indirect question takes 'qué'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0388L02U03", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'oí algo de' is a fair rendering of 'I heard about'; adding 'something' is harmless", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0389L01B01", "verdict": "REAL", "family": "MEANING", "reason": "'de allí' alone is 'from there', a broken piece of the LEGO", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0389L01U03", "verdict": "REAL", "family": "ES-MISSING-WORD", "reason": "personal 'a' before 'esa persona'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0389L01U04", "verdict": "REAL", "family": "ES-MISSING-WORD", "reason": "personal 'a' before 'esa persona'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0389L01U06", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as S0388L02U03", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0393L01U06", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as S0388L02U03", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0393L02U06", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as S0388L02U03", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0396L01U05", "verdict": "NOT-A-DEFECT", "family": null, "reason": "the LEGO itself teaches 'to stand up = levantarnos'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0398L01U01", "verdict": "REAL", "family": "MEANING", "reason": "'should' vs 'necesitamos'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0399L01B02", "verdict": "REAL", "family": "MEANING", "reason": "the English is an imperative but the Spanish is an infinitive", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0399L02U04", "verdict": "REAL", "family": "MEANING", "reason": "'keep hope' is unnatural and does not match", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0404L01U04", "verdict": "REAL", "family": "MEANING", "reason": "'it should be done' vs 'debería hacerlo'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0405L01U05", "verdict": "REAL", "family": "MEANING", "reason": "'book it' has no 'lo'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0406L02B02", "verdict": "REAL", "family": "MEANING", "reason": "'it's fine' vs future 'estará'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0406L02U03", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'no estoy seguro de que va' needs subjunctive", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0406L02U05", "verdict": "REAL", "family": "ES-AGREEMENT", "reason": "'she' needs 'lista'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0409L01B03", "verdict": "REAL", "family": "ES-CALQUE", "reason": "'no importa más' -> 'ya no importa'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0409L01U03", "verdict": "REAL", "family": "ES-BACKSHIFT", "reason": "'sabía que no importa'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0409L01U06", "verdict": "REAL", "family": "MEANING", "reason": "'nada más' is 'nothing else'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0409L02B03", "verdict": "REAL", "family": "NONSENSE", "reason": "fragment missing its LEGO", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0410L01U06", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'sort things out' vs 'arreglarlo' is a soft English difference", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0410L02U06", "verdict": "REAL", "family": "ES-BACKSHIFT", "reason": "'sabía que todavía se pelean'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0412L01B03", "verdict": "REAL", "family": "ES-OTHER", "reason": "'not X but Y' needs 'sino'", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0412L02U04", "verdict": "NOT-A-DEFECT", "family": null, "reason": "'told me to' vs 'me dijo que debería' is a fair paraphrase within taught forms", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0412L02U06", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0412L04U05", "verdict": "REAL", "family": "ES-MOOD-OTHER", "reason": "'no pensé que podíamos' needs subjunctive", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0413L02U04", "verdict": "NOT-A-DEFECT", "family": null, "reason": "the LEGO teaches 'to fall = caernos'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0415L01B02", "verdict": "REAL", "family": "ES-OTHER", "reason": "the comma makes the voice say 'No. In my opinion'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0416L02U05", "verdict": "NOT-A-DEFECT", "family": null, "reason": "same as S0412L02U04", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0419L02U03", "verdict": "REAL", "family": "NONSENSE", "reason": "'appreciate' has no object on either side", "fix_verdict": "DELETE-OK", "fix_note": null, "better_fix": null}
+{"id": "S0420L01U02", "verdict": "REAL", "family": "ES-BACKSHIFT", "reason": "'sabía que tiene'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
+{"id": "S0420L01U03", "verdict": "REAL", "family": "ES-BACKSHIFT", "reason": "'sabía que tiene'", "fix_verdict": "GOOD", "fix_note": null, "better_fix": null}
