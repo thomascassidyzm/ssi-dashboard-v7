@@ -1,0 +1,11 @@
+#272·AD parent state (4 Nov 14:17Z)
+Readers dispatched: #277-#282 zho 01-06, #283 jpn 01, #284 kor 01, #285 jpn 02, #286 kor 02, #287 small courses
+  (hye mkd fas heb hin rus ukr bul ell tha), #289-#292 ara_for_eng 01-04.
+Still to dispatch as slots free: ara_for_eng 05 06 07 08; ara_eg_for_eng 01-07; ara_lb_for_eng 01-08.
+Apply: fresh dump (course-dump-readonly + seeds API) into a dumpdir, fetch the reader branch's out/<course>/NN.tsv,
+  python3 apply.py <dumpdir> <course> NN --apply   (expect-guarded; drift rows skipped and listed)
+Routes: dfe7b79af on Popty main, deployed (prod checkout, course-builder restarted 14:14:34Z).
+jpn/kor phrases of seeds 301-668: NOT chunked; wait for #248·AD's new baskets, then
+  python3 extract.py <dumpdir> jpn_for_eng 1250   (re-extract; only missing rows come out).
+Courses with NO romanisation (proposal for Kai, nothing done): ben, kan, mar, nep, tel, yue, kor_for_hin, kor_for_tam.
+  srp_for_eng is Latin script: nothing needed.
