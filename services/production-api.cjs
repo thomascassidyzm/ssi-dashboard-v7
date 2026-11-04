@@ -9419,6 +9419,12 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
     if (target_text !== undefined) {
       updateData.target_text = target_text
     }
+    if (req.body.target_text_roman !== undefined) {
+      updateData.target_text_roman = req.body.target_text_roman || null
+    }
+    // A target edit without its new romanisation clears the old one (shared/roman-sync.cjs, job #252).
+    const romanSync = require('./shared/roman-sync.cjs').clearStaleRoman(existingPhrase, updateData)
+    Object.assign(updateData, romanSync.patch)
 
     if (introduce !== undefined) {
       updateData.introduce = !!introduce

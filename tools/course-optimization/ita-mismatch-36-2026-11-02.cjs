@@ -17,7 +17,11 @@ const path = require('path');
 const D = require(process.env.DATA ? path.resolve(process.env.DATA) : './ita-mismatch-36-2026-11-02.data.cjs');
 const { holdsInOrder, fromApi } = require('./spa-close-read-153-200-2026-10-27.cjs');
 
-const COURSE = 'ita_for_eng';
+// A data file may name another course (fra_for_eng #238 reuses this engine); defaults are the Italian pass.
+const COURSE = D.COURSE || 'ita_for_eng';
+const LANGUAGE = D.LANGUAGE || 'Italian';
+const LOG_PREFIX = D.LOG_PREFIX || 'ita-36';
+const JOB = D.JOB || '#36';
 const AGENT = D.AGENT || 'ita-mismatch-fix-wave1 (job #36)';
 const PURPOSE = D.PURPOSE || 'job #36 ita_for_eng #195 phrase-mismatch fixes (Kai approved 2 Nov) — refill of the slots these edits emptied';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
@@ -155,7 +159,7 @@ function plan(db, { data = D, decomposer: dz = require('../../services/phrase-de
       const heldEn = holdsInOrder(p.known_text, lb.known_text);
       const heldDe = holdsInOrder(p.target_text, lb.target_text) || decomposer.decomposeAnchored(p.target_text, vocab(la.seed_number), { ...parent, target_text: lb.target_text }, COURSE).kind !== 'error';
       if (heldEn && !holdsInOrder(known, la.known_text)) problems.push(`P17 English no longer holds "${la.known_text}"`);
-      if (heldDe && !holdsInOrder(target, la.target_text) && !holdsInOrder(unbindClitics(target, legoId), la.target_text) && decomposer.decomposeAnchored(target, vocab(la.seed_number), parent, COURSE).kind === 'error') problems.push(`P17 Italian no longer holds "${la.target_text}"`);
+      if (heldDe && !holdsInOrder(target, la.target_text) && !holdsInOrder(unbindClitics(target, legoId), la.target_text) && decomposer.decomposeAnchored(target, vocab(la.seed_number), parent, COURSE).kind === 'error') problems.push(`P17 ${LANGUAGE} no longer holds "${la.target_text}"`);
     }
     if (target !== p.target_text) {
       const un = untaughtNew(tw, keysFor(legoId), p.target_text, unbindClitics(target, legoId));
@@ -261,7 +265,7 @@ function clipAsks(p) {
   }
   return [...m.values()];
 }
-const introLine = (known) => `The Italian for: '${known}', is:`;
+const introLine = (known) => `The ${LANGUAGE} for: '${known}', is:`;
 
 /** After apply: every slot of an applied fix (phrase, seed, LEGO) whose row now reads the fix's text, as (role, text) → slots. */
 function renderAsks(db, data = D) {
@@ -315,9 +319,9 @@ async function main() {
   const [mode, file] = process.argv.slice(2);
   if (!mode || !file) throw new Error('usage: check|dry|apply|audio|verify <seeds.json>');
   const db = fromApi(JSON.parse(fs.readFileSync(file, 'utf8')));
-  const out = process.env.LOG_DIR || require('path').dirname(require('../lib/evidence-path.cjs').evidencePath('ops/ita-mismatch-36/x'));
+  const out = process.env.LOG_DIR || require('path').dirname(require('../lib/evidence-path.cjs').evidencePath(`ops/${LOG_PREFIX}/x`));
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const save = (n, log) => { const f = path.join(out, `ita-36-${n}-${stamp}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
+  const save = (n, log) => { const f = path.join(out, `${LOG_PREFIX}-${n}-${stamp}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
 
   if (mode === 'verify') {
     const live = new Map(db.phrases.map((p) => [sid(p.id), p]));
@@ -341,7 +345,7 @@ async function main() {
 
   if (mode === 'audio') {
     const asks = clipAsks(p);
-    const log = { job: '#36', mode: 'audio-dry-run', asks: [] };
+    const log = { job: JOB, mode: 'audio-dry-run', asks: [] };
     let i = 0;
     const worker = async () => { while (i < asks.length) { const a = asks[i++];
       const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.role === 'presentation' ? { legoId: a.where[0] } : {}), purpose: PURPOSE, dryRun: true });
@@ -362,7 +366,7 @@ async function main() {
     // Kai 2026-10-29 10:43Z: render the applied fixes if the WHOLE set fits under the day's cap — never split to fit.
     // Run after `apply`, on a FRESH seeds.json: the plan is then empty, so the asks come from the applied fixes' new text.
     const asks = renderAsks(db);
-    const log = { job: '#36', mode: 'render', asks: [] };
+    const log = { job: JOB, mode: 'render', asks: [] };
     for (const a of asks) {
       let d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true });
       if (d.status === 0) { await waitHealthy(); d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true }); }
@@ -403,7 +407,7 @@ async function main() {
   }
 
   const batches = editBatches(p);
-  const log = { job: '#36', started: stamp, mode, batches: [] };
+  const log = { job: JOB, started: stamp, mode, batches: [] };
   for (const b of batches) {
     const dry = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: b.ops });
     const entry = { cls: b.cls, part: b.part, ops: b.ops.length, dry: { status: dry.status, error: dry.body.error, code: dry.body.code, index: dry.body.index } };
