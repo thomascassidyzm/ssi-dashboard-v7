@@ -33,6 +33,7 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
+const pronunciationReuseGuard = require('../shared/pronunciation-reuse-guard.cjs')
 const voicingPolicy = require('../shared/voicing-policy.cjs')
 const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
@@ -2322,6 +2323,8 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   }
 
   if (humanOnly && !(audioRows || []).length) return result
+  // A line this course renders through a pronunciation override links only a clip rendered WITH it (job #262·AD).
+  audioRows = await pronunciationReuseGuard.filterRowsByOwnText(audioRows, courseCode)
 
   // Two maps. `audioMap` holds only clips whose voice matches the config — the
   // only ones eligible to be linked. `rejectedMap` holds the text-matching clips

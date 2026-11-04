@@ -16,9 +16,13 @@ describe('pronunciation overrides — zho_for_eng 得 = děi', () => {
     expect(spokenFor({ courseCode: C, text: '我觉得我们得带孩子' })).toBe('我觉得我们<<t|e|i>>带孩子')
   })
 
-  it('never touches a de / dé line, or the bare 得 whose words cannot say which sense', () => {
-    for (const t of ['做得', '说得很好', '你做得很好', '我可以免费得到这个吗', '他因为太晚了不得不离开', '我觉得', '记得带', '得', '得多', '行得通'])
+  it('never touches a de / dé line', () => {
+    for (const t of ['做得', '说得很好', '你做得很好', '我可以免费得到这个吗', '他因为太晚了不得不离开', '我觉得', '记得带', '得多', '行得通'])
       expect(spokenFor({ courseCode: C, text: t })).toBeNull()
+  })
+
+  it('sends the bare LEGO 得 as děi: S0549L01 "have to" is the sense a learner hears (job #262·AD)', () => {
+    expect(spokenFor({ courseCode: C, text: '得' })).toBe('<<t|e|i>>')
   })
 
   it('applies to its own course only', () => {

@@ -4,7 +4,8 @@
  *
  * Applied at the one TTS door (services/tts-service.cjs speak(), just before the provider is paid), so every render path
  * gets it: /api/audio/render, phase8 /generate fills, regenerates. The clip library is still asked with the STORED words, so
- * a fixed clip of the line is reused as before. A re-record of a listed line (audio-render-entry rerecord()) sends the
+ * a fixed clip of the line is reused as before — but ONLY a fixed one: a clip of a listed line rendered before the rule's
+ * `since` is refused by every reuse path (shared/pronunciation-reuse-guard.cjs, job #262·AD). A re-record of a listed line (audio-render-entry rerecord()) sends the
  * spoken form as its words, so the door cannot hand back another (old, misread) clip of the same characters in its place.
  *
  * WHY A LIST OF LINES AND NOT A CHARACTER SWAP. A polyphone is read by its sense, and the sense is in the sentence:
@@ -26,15 +27,23 @@
 const RULES = Object.freeze({
   zho_for_eng: Object.freeze({
     ruling: 'Kai 2026-11-04 13:18Z, job #236·AD round 3, applied #250·AD',
+    // When the override went live (9230dad00, 13:24:04Z; the #250·AD re-records were written from 13:27Z). A clip of a
+    // listed line whose S3 object is older was rendered WITHOUT it — misread — and is never reused for the line
+    // (shared/pronunciation-reuse-guard.cjs, job #262·AD). Move this only forward, and only with the rule.
+    since: '2026-11-04T13:24:04Z',
     char: '得',
     say: '<<t|e|i>>',
     reading: 'děi (must, have to)',
     lines: Object.freeze([
       // Every 得-line of the live course read in full (784 distinct lines, job #250·AD, 2026-11-04); these are the ones
       // where 得 means must / have to. NOT here, deliberately: 不得不 (bùdébù), 觉得 / 记得 / 值得 / 显得 / 赢得, V得 (做得,
-      // 说得, 拿得动, 行得通), 得到, 得多. And NOT the bare LEGO 得 on its own: S0549L01 'have to' (děi) and S0647L01 'manner
-      // particle de' share those words, so the words alone cannot say which is meant; its clips were re-recorded once by
-      // hand (#250·AD) rather than listed. A new děi line is added here by a person who has read it.
+      // 说得, 拿得动, 行得通), 得到, 得多. A new děi line is added here by a person who has read it.
+      //
+      // The bare LEGO 得 IS listed (job #262·AD): S0549L01 'have to' is the děi sense and is played. S0647L01 'manner
+      // particle de' shares the words, so it gets děi too — it is a not-new LEGO and never played (its basket is not
+      // built), its clip was already re-recorded as děi by hand in #250·AD, and whether it should exist at all is
+      // held for Kai. Unlisted, a future render of 得 would have said "de" and the old misread clips would have stayed
+      // reusable for the one sense a learner hears.
       '很抱歉我[得]这么早走',
       '但是我[得]带我妈去看医生',
       '你几天后就[得]走吗',
@@ -86,6 +95,7 @@ const RULES = Object.freeze({
       '我[得]把它分享了',
       '我还是[得]分享',
       '我觉得我们[得]带孩子',
+      '[得]',
     ]),
   }),
 })
