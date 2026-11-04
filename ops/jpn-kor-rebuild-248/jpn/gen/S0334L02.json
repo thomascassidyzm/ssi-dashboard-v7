@@ -1,0 +1,24 @@
+{
+ "lego": {
+  "seed_number": 334,
+  "lego_index": 2,
+  "known": "it's okay to hold",
+  "target": "抱いていい"
+ },
+ "at": "2026-11-04T15:00:47.809Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 207,
+ "floorsOnly": false,
+ "lastReasons": [
+  "BUILD \"it's okay to hold the kitten\" → \"子猫抱いていい\": ZUT whole course: \"it's okay to hold the kitten\" is \"子猫を抱いていい\" at seed 334",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 330,
+  "lego_index": 2,
+  "known": "not important",
+  "target": "大事じゃない"
+ },
+ "at": "2026-11-04T14:46:41.758Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 208,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not important\" initially, medially AND finally.",
+  "NEIGH 0.09 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.09 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "build",
+   "known_text": "the company isn't important",
+   "target_text": "会社大事じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "build",
+   "known_text": "it might not be important",
+   "target_text": "大事じゃないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "build",
+   "known_text": "the game might not be important",
+   "target_text": "試合大事じゃないかも",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "build",
+   "known_text": "I'm not sure if it's not important",
+   "target_text": "大事じゃないかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "I wonder if the method isn't important",
+   "target_text": "方法大事じゃないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "I'll ask if the meeting isn't important",
+   "target_text": "会議大事じゃないか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "there's no need to sell because it's not important",
+   "target_text": "大事じゃないから売る必要はない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "the car that he wanted isn't important",
+   "target_text": "欲しかった車大事じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "this time it might not be important",
+   "target_text": "今回大事じゃないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "as for tomorrow it's not important",
+   "target_text": "明日のことは大事じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 330,
+   "lego_index": 2,
+   "lego_known": "not important",
+   "lego_target": "大事じゃない",
+   "phrase_role": "use",
+   "known_text": "I'm not going to wait because the party isn't important",
+   "target_text": "パーティー大事じゃないから待たない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 352,
+  "lego_index": 1,
+  "known": "even if wanting to do",
+  "target": "やりたくても"
+ },
+ "at": "2026-11-04T15:43:15.707Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 252,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"no I don't think she could this time even if she wanted to\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"even if wanting to do\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

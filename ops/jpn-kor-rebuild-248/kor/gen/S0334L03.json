@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 334,
+  "lego_index": 3,
+  "known": "let someone hold",
+  "target": "안게 해"
+ },
+ "at": "2026-11-04T15:17:17.114Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 242,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"let someone hold\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "build",
+   "known_text": "can let you hold",
+   "target_text": "안게 해 줄 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "build",
+   "known_text": "let him hold the kitten",
+   "target_text": "그한테 새끼 고양이를 안게 해",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "build",
+   "known_text": "if you let him hold",
+   "target_text": "그한테 안게 해 주면",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "build",
+   "known_text": "why do you want to let him hold",
+   "target_text": "왜 그한테 안게 해 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "I couldn't let him hold the kitten",
+   "target_text": "그한테 새끼 고양이를 안게 해 줄 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "before you go I want to let him hold the kitten",
+   "target_text": "가기 전에 그한테 새끼 고양이를 안게 해 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "my father would let you hold the kitten if he could",
+   "target_text": "제 아버지는 할 수 있다면 새끼 고양이를 안게 해 줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "my mother can let you hold the young dog tomorrow",
+   "target_text": "제 어머니는 내일 어린 개를 안게 해 줄 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "this time I want to let him hold the young dog",
+   "target_text": "이번에는 그한테 어린 개를 안게 해 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 334,
+   "lego_index": 3,
+   "lego_known": "let someone hold",
+   "lego_target": "안게 해",
+   "phrase_role": "use",
+   "known_text": "why couldn't you let him hold the kitten",
+   "target_text": "왜 그한테 새끼 고양이를 안게 해 줄 수 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

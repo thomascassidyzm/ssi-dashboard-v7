@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 315,
+  "lego_index": 3,
+  "known": "afford to buy",
+  "target": "살 여유가"
+ },
+ "at": "2026-11-04T14:22:29.446Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 137,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "build",
+   "known_text": "couldn't afford to buy",
+   "target_text": "살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "build",
+   "known_text": "couldn't afford to buy the car",
+   "target_text": "차를 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "build",
+   "known_text": "if I can afford to buy it",
+   "target_text": "그걸 살 여유가 있으면",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "build",
+   "known_text": "because I can't afford to buy it",
+   "target_text": "그걸 살 여유가 없어서",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "I wonder if I'll be able to afford to buy the car next year",
+   "target_text": "내년에 차를 살 여유가 있을지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "I'm not happy because I can't afford to buy it",
+   "target_text": "그걸 살 여유가 없어서 행복하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "I couldn't afford to buy the car last week",
+   "target_text": "지난주에 차를 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "why couldn't you afford to buy it",
+   "target_text": "왜 그걸 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "nobody could afford to buy the car",
+   "target_text": "아무도 차를 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 3,
+   "lego_known": "afford to buy",
+   "lego_target": "살 여유가",
+   "phrase_role": "use",
+   "known_text": "my son couldn't afford to buy the car",
+   "target_text": "제 아들은 차를 살 여유가 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

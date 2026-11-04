@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 346,
+  "lego_index": 2,
+  "known": "that it was good attributive reported",
+  "target": "좋았다는"
+ },
+ "at": "2026-11-04T15:40:59.583Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 558,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"that it was good attributive reported\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "build",
+   "known_text": "that her book was good",
+   "target_text": "그녀의 책이 좋았다는",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "build",
+   "known_text": "the fact that it was good",
+   "target_text": "좋았다는 사실을",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "build",
+   "known_text": "i didn't know it was good",
+   "target_text": "좋았다는 걸 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "build",
+   "known_text": "it's important that that book was very good",
+   "target_text": "그 책이 아주 좋았다는 게 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "it was a surprise that her book was good",
+   "target_text": "그녀의 책이 좋았다는 게 놀라웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "nobody knew that this work was very good",
+   "target_text": "아무도 이 일이 아주 좋았다는 걸 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "why didn't you know that that book was fairly good",
+   "target_text": "왜 그 책이 꽤 좋았다는 걸 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "i've forgotten the fact that that idea was good",
+   "target_text": "그 생각이 좋았다는 사실을 잊어버렸어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "i wasn't expecting that book to be that good",
+   "target_text": "그 책이 좋았다는 걸 예상하지 못했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 346,
+   "lego_index": 2,
+   "lego_known": "that it was good attributive reported",
+   "lego_target": "좋았다는",
+   "phrase_role": "use",
+   "known_text": "the fact that her book was very good isn't the reason",
+   "target_text": "그녀의 책이 아주 좋았다는 게 이유가 아니에요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 351,
+  "lego_index": 2,
+  "known": "didn't want to leave alone",
+  "target": "一人にしたくなかった"
+ },
+ "at": "2026-11-04T15:40:45.539Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 543,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"didn't want to leave alone\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "build",
+   "known_text": "didn't want to leave her alone for long",
+   "target_text": "長く一人にしたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "build",
+   "known_text": "because i didn't want to leave her alone",
+   "target_text": "一人にしたくなかったから",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "build",
+   "known_text": "i think he didn't want to leave her alone",
+   "target_text": "一人にしたくなかったと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "build",
+   "known_text": "this time i didn't want to leave her alone",
+   "target_text": "今回一人にしたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "i was working from home because i didn't want to leave her alone",
+   "target_text": "一人にしたくなかったから家で働いてた",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "i think he didn't want to leave her alone for long",
+   "target_text": "長く一人にしたくなかったと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "he might not have wanted to leave her alone",
+   "target_text": "一人にしたくなかったかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "she's badly injured so i didn't want to leave her alone",
+   "target_text": "ひどくケガしてるから一人にしたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "it feels like he didn't want to leave her alone in the middle of the night",
+   "target_text": "夜中に一人にしたくなかった気がする",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "i'm trying to say i truly didn't want to leave you alone",
+   "target_text": "本当に一人にしたくなかったって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 351,
+   "lego_index": 2,
+   "lego_known": "didn't want to leave alone",
+   "lego_target": "一人にしたくなかった",
+   "phrase_role": "use",
+   "known_text": "i wonder if he didn't want to leave her alone",
+   "target_text": "一人にしたくなかったか気になる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

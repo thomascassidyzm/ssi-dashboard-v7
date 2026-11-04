@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 343,
+  "lego_index": 1,
+  "known": "economy",
+  "target": "経済"
+ },
+ "at": "2026-11-04T15:16:56.639Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 521,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"economy\" initially, medially AND finally.",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "build",
+   "known_text": "this economy",
+   "target_text": "この経済",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "build",
+   "known_text": "for the economy",
+   "target_text": "経済のために",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "build",
+   "known_text": "the same economy",
+   "target_text": "同じ経済",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "build",
+   "known_text": "it might be a new economy",
+   "target_text": "新しい経済かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "use",
+   "known_text": "so far i'm happy with the economy",
+   "target_text": "今のところ経済には満足してる",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "use",
+   "known_text": "you shouldn't worry about the economy",
+   "target_text": "経済を心配しなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "use",
+   "known_text": "we're trying to achieve a new economy",
+   "target_text": "新しい経済を目指してる",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "use",
+   "known_text": "i thought it was the economy",
+   "target_text": "経済だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 1,
+   "lego_known": "economy",
+   "lego_target": "経済",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if it's the economy",
+   "target_text": "経済かどうか分からない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 343,
+  "lego_index": 3,
+  "known": "said",
+  "target": "だって言ってた"
+ },
+ "at": "2026-11-04T15:15:04.711Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 204,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"said she was worried\" (unknown gloss \"worried\")",
+  "BUILD \"said she was worried\" → \"心配だって言ってた\": popty:knownSide [{\"known\":\"said she was worried\",\"target\":\"心配だって言ってた\",\"problem\":\"unknown gloss \\\"worried\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

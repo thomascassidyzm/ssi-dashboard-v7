@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 345,
+  "lego_index": 3,
+  "known": "not ready",
+  "target": "안 됐다고"
+ },
+ "at": "2026-11-04T15:28:54.129Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 143,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "build",
+   "known_text": "not ready to start",
+   "target_text": "시작할 준비가 안 됐다고",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "build",
+   "known_text": "not ready to leave yet",
+   "target_text": "아직 떠날 준비가 안 됐다고",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "build",
+   "known_text": "I believe he's not ready to leave",
+   "target_text": "떠날 준비가 안 됐다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "build",
+   "known_text": "told him he's not ready to start",
+   "target_text": "그한테 시작할 준비가 안 됐다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "use",
+   "known_text": "my father told him that he's not ready to leave yet",
+   "target_text": "제 아버지는 그한테 아직 떠날 준비가 안 됐다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "use",
+   "known_text": "why did you tell him you're not ready to start",
+   "target_text": "왜 그한테 시작할 준비가 안 됐다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "use",
+   "known_text": "I didn't say that I'm not ready to start",
+   "target_text": "시작할 준비가 안 됐다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "use",
+   "known_text": "I believe he's not ready to start this year",
+   "target_text": "올해 시작할 준비가 안 됐다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 345,
+   "lego_index": 3,
+   "lego_known": "not ready",
+   "lego_target": "안 됐다고",
+   "phrase_role": "use",
+   "known_text": "on monday the student told him she's not ready to start",
+   "target_text": "학생은 월요일에 그한테 시작할 준비가 안 됐다고 말했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

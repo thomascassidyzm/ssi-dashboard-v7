@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 326,
+  "lego_index": 1,
+  "known": "company",
+  "target": "회사를"
+ },
+ "at": "2026-11-04T14:55:04.424Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 220,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "build",
+   "known_text": "trying to find my father's company",
+   "target_text": "제 아버지의 회사를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "build",
+   "known_text": "want to start a company",
+   "target_text": "회사를 시작하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "build",
+   "known_text": "no need to buy the company",
+   "target_text": "회사를 살 필요가",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "build",
+   "known_text": "need to change company",
+   "target_text": "회사를 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "use",
+   "known_text": "I want to start a company this year",
+   "target_text": "올해 회사를 시작하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "use",
+   "known_text": "I don't need to change company",
+   "target_text": "회사를 바꿀 필요 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "use",
+   "known_text": "why do you need to change company",
+   "target_text": "왜 회사를 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "use",
+   "known_text": "I have never seen my father's company",
+   "target_text": "제 아버지의 회사를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 326,
+   "lego_index": 1,
+   "lego_known": "company",
+   "lego_target": "회사를",
+   "phrase_role": "use",
+   "known_text": "I couldn't afford to buy the company",
+   "target_text": "회사를 살 여유가 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

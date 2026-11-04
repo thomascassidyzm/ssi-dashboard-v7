@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 322,
+  "lego_index": 2,
+  "known": "read",
+  "target": "読む"
+ },
+ "at": "2026-11-04T14:32:57.462Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 119,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "build",
+   "known_text": "read my book",
+   "target_text": "本を読む",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "build",
+   "known_text": "no need to read",
+   "target_text": "読む必要ない",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "build",
+   "known_text": "read at night",
+   "target_text": "夜読む",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "build",
+   "known_text": "read the same book",
+   "target_text": "同じ本を読む",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "use",
+   "known_text": "there's no need to read the same book",
+   "target_text": "同じ本を読む必要ない",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "use",
+   "known_text": "I wonder if she'll read it tomorrow",
+   "target_text": "明日読むか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "use",
+   "known_text": "which of you will read my book",
+   "target_text": "誰が本を読む",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "use",
+   "known_text": "before I go I'll read my book",
+   "target_text": "行く前に本を読む",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "read",
+   "lego_target": "読む",
+   "phrase_role": "use",
+   "known_text": "I'll read a little more tomorrow",
+   "target_text": "明日もう少し読む",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

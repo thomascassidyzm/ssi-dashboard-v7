@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 314,
+  "lego_index": 2,
+  "known": "can put",
+  "target": "놓을 수 있을"
+ },
+ "at": "2026-11-04T14:27:47.996Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 598,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"can put\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "build",
+   "known_text": "will be able to put",
+   "target_text": "놓을 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "build",
+   "known_text": "I think I can put it over there",
+   "target_text": "저기 놓을 수 있을 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "build",
+   "known_text": "I'll be able to put half on the table",
+   "target_text": "탁자 위에 반만 놓을 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "build",
+   "known_text": "I don't feel like I can put it on the table",
+   "target_text": "그걸 탁자 위에 놓을 수 있을 것 같지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "before you go I'll be able to put it on the table",
+   "target_text": "가기 전에 그걸 탁자 위에 놓을 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "I don't feel like my father can put it over there",
+   "target_text": "제 아버지는 그걸 저기 놓을 수 있을 것 같지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "do you think my son can put it on the table soon",
+   "target_text": "제 아들은 그걸 탁자 위에 곧 놓을 수 있을 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "this isn't very difficult so I'll be able to put it on the table on my own",
+   "target_text": "이건 별로 어렵지 않아요 그래서 그걸 탁자 위에 혼자서 놓을 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "tomorrow morning I'll be able to put it over there",
+   "target_text": "내일 아침에 그걸 저기 놓을 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 314,
+   "lego_index": 2,
+   "lego_known": "can put",
+   "lego_target": "놓을 수 있을",
+   "phrase_role": "use",
+   "known_text": "I think my daughter can put it before the weekend",
+   "target_text": "제 딸은 주말 전에 그걸 놓을 수 있을 것 같아요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

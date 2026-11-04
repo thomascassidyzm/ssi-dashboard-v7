@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 323,
+  "lego_index": 3,
+  "known": "no need",
+  "target": "없다고"
+ },
+ "at": "2026-11-04T14:46:59.048Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 299,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "build",
+   "known_text": "that there's no need to walk to school",
+   "target_text": "학교까지 걸어갈 필요가 없다고",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "build",
+   "known_text": "that there's really no need",
+   "target_text": "필요가 정말 없다고",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "build",
+   "known_text": "I believe there's no need",
+   "target_text": "필요가 없다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "build",
+   "known_text": "I told him there's no need yet",
+   "target_text": "필요가 아직 없다고 그한테 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "my father told him there's no need to watch five games",
+   "target_text": "제 아버지는 그한테 다섯 경기를 볼 필요가 없다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "I believe there's really no need to walk to school",
+   "target_text": "학교까지 걸어갈 필요가 정말 없다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "why do you believe there's no need yet to buy the same book",
+   "target_text": "왜 같은 책을 살 필요가 아직 없다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "it's because I think there's no need to call tonight",
+   "target_text": "오늘 밤에 전화할 필요가 없다고 생각하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "my son told him there's no need to talk about that man this time",
+   "target_text": "제 아들은 그한테 그 남자에 대해 말할 필요가 이번에는 없다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 3,
+   "lego_known": "no need",
+   "lego_target": "없다고",
+   "phrase_role": "use",
+   "known_text": "my mother told him there's no need to buy a tV this year",
+   "target_text": "제 어머니는 올해 tV를 살 필요가 없다고 그한테 말했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

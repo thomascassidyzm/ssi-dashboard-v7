@@ -1,0 +1,113 @@
+{
+ "lego": {
+  "seed_number": 313,
+  "lego_index": 4,
+  "known": "can't watch",
+  "target": "見られない"
+ },
+ "at": "2026-11-04T14:17:53.742Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 346,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "build",
+   "known_text": "can't watch football",
+   "target_text": "サッカーを見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "build",
+   "known_text": "can't watch television tomorrow",
+   "target_text": "明日テレビ見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "build",
+   "known_text": "can't watch at night",
+   "target_text": "夜見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "build",
+   "known_text": "a film I can't watch at night",
+   "target_text": "夜見られない映画",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "use",
+   "known_text": "because I'm too busy i can't watch football",
+   "target_text": "忙しすぎるからサッカーを見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "use",
+   "known_text": "i might not be able to watch the film tomorrow",
+   "target_text": "明日映画見られないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "use",
+   "known_text": "i can't watch television until after we finish",
+   "target_text": "終わるまでテレビ見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "use",
+   "known_text": "i can't watch football this afternoon",
+   "target_text": "今日の午後サッカーを見られない",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 4,
+   "lego_known": "can't watch",
+   "lego_target": "見られない",
+   "phrase_role": "use",
+   "known_text": "can't you watch the film too?",
+   "target_text": "映画も見られない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

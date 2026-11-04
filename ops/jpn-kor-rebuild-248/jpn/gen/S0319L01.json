@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 319,
+  "lego_index": 1,
+  "known": "country",
+  "target": "国"
+ },
+ "at": "2026-11-04T14:27:08.878Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "build",
+   "known_text": "this country",
+   "target_text": "この国",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "build",
+   "known_text": "the same country",
+   "target_text": "同じ国",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "build",
+   "known_text": "a country I have never seen",
+   "target_text": "見たことない国",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "build",
+   "known_text": "I thought it was his country",
+   "target_text": "彼の国だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "it might be this country",
+   "target_text": "この国かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "I wonder if it's the same country",
+   "target_text": "同じ国か気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if it's a new country",
+   "target_text": "新しい国かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "I thought it was a country I want to live in",
+   "target_text": "住みたい国だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "I'll ask if it's a country she wants to go to",
+   "target_text": "行きたい国か聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 319,
+   "lego_index": 1,
+   "lego_known": "country",
+   "lego_target": "国",
+   "phrase_role": "use",
+   "known_text": "this time it might be a country she doesn't want to live in",
+   "target_text": "今回住みたくない国かもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

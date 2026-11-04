@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 325,
+  "lego_index": 4,
+  "known": "kinds",
+  "target": "가지"
+ },
+ "at": "2026-11-04T14:58:10.885Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 581,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "build",
+   "known_text": "ten kinds",
+   "target_text": "열 가지",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "build",
+   "known_text": "one or two kinds",
+   "target_text": "한두 가지",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "build",
+   "known_text": "ten kinds of possible problems",
+   "target_text": "열 가지 가능한 문제",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "build",
+   "known_text": "five kinds of interesting things",
+   "target_text": "다섯 가지 재미있는 걸",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "you should consider ten kinds of possible problems",
+   "target_text": "열 가지 가능한 문제를 생각해 봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "I have never seen five kinds of games",
+   "target_text": "다섯 가지 경기를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "I wanted to show you one or two kinds of interesting things",
+   "target_text": "한두 가지 재미있는 걸 보여 주고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "you don't need to know ten kinds of similar problems",
+   "target_text": "열 가지 비슷한 문제를 알 필요는 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "why should I consider ten kinds of problems",
+   "target_text": "왜 문제를 열 가지 생각해 봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "before you start you should consider five kinds of problems",
+   "target_text": "시작하기 전에 문제를 다섯 가지 생각해 봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 4,
+   "lego_known": "kinds",
+   "lego_target": "가지",
+   "phrase_role": "use",
+   "known_text": "you can write ten kinds of interesting things",
+   "target_text": "재미있는 걸 열 가지 쓸 수 있어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 343,
+  "lego_index": 2,
+  "known": "is worried",
+  "target": "걱정된다고"
+ },
+ "at": "2026-11-04T15:25:56.133Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 202,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"this year the student kept telling him he is worried about the economy\" (unknown gloss \"kept\"); \"this year the student kept telling him he is worried about the economy\" (unknown gloss \"telling\")",
+  "USE \"this year the student kept telling him he is worried about the economy\" → \"올해 학생은 그한테 계속 경제에 대해 걱정된다고 말했어요\": popty:knownSide [{\"known\":\"this year the student kept telling him he is worried about the economy\",\"target\":\"올해 학생은 그한테 계속 경제에 대해 걱정된다고 말했어요\",\"problem\":\"unknown gloss \\\"kept\\\"\"},{\"known\":\"this year the student kept t",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

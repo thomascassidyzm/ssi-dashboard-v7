@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 316,
+  "lego_index": 3,
+  "known": "can bring",
+  "target": "連れて来られる"
+ },
+ "at": "2026-11-04T14:22:26.222Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 216,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "build",
+   "known_text": "can bring my son",
+   "target_text": "息子連れて来られる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "build",
+   "known_text": "I'll ask if I can bring",
+   "target_text": "連れて来られるか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "build",
+   "known_text": "I wonder if I can bring my daughter",
+   "target_text": "娘連れて来られるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "build",
+   "known_text": "can bring a few friends tomorrow",
+   "target_text": "明日何人か友だち連れて来られる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "I might be able to bring the young man tomorrow",
+   "target_text": "明日若い男性連れて来られるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "it's no problem because I can bring my father",
+   "target_text": "父連れて来られるから問題ない",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if I can bring my mother's friend this afternoon",
+   "target_text": "今日の午後母の友だち連れて来られるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "can I bring the elderly man next week?",
+   "target_text": "来週年配の男性連れて来られる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "I want to make sure that I can bring my old friend in time",
+   "target_text": "古い友だち時間通り連れて来られるようにしたい",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 3,
+   "lego_known": "can bring",
+   "lego_target": "連れて来られる",
+   "phrase_role": "use",
+   "known_text": "before I go I'll ask if I can bring my son",
+   "target_text": "行く前に息子連れて来られるか聞いてみる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

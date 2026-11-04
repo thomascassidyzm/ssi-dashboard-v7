@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 316,
+  "lego_index": 2,
+  "known": "older brother",
+  "target": "兄"
+ },
+ "at": "2026-11-04T14:21:46.158Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 217,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "build",
+   "known_text": "heard from my older brother",
+   "target_text": "兄から連絡あった",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "build",
+   "known_text": "my older brother sitting over there",
+   "target_text": "あそこに座ってる兄",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "build",
+   "known_text": "was talking to my older brother",
+   "target_text": "兄と話してた",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "build",
+   "known_text": "might be my older brother",
+   "target_text": "兄かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "use",
+   "known_text": "i was talking to my older brother all afternoon",
+   "target_text": "午後ずっと兄と話してた",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "use",
+   "known_text": "you shouldn't worry about my older brother",
+   "target_text": "兄を心配しなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "use",
+   "known_text": "i wonder if you heard from my older brother",
+   "target_text": "兄から連絡あったか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "use",
+   "known_text": "i know the young man who was talking to my older brother",
+   "target_text": "兄と話してた若い男性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 2,
+   "lego_known": "older brother",
+   "lego_target": "兄",
+   "phrase_role": "use",
+   "known_text": "i heard from my older brother last night",
+   "target_text": "昨夜兄から連絡あった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

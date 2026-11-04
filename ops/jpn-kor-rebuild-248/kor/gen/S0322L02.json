@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 322,
+  "lego_index": 2,
+  "known": "needs to read",
+  "target": "읽어야"
+ },
+ "at": "2026-11-04T14:41:59.736Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 279,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"needs to read\" initially, medially AND finally.",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "build",
+   "known_text": "I need to read the same book",
+   "target_text": "같은 책을 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "build",
+   "known_text": "before you start I need to read",
+   "target_text": "시작하기 전에 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "build",
+   "known_text": "because I need to read the facts",
+   "target_text": "사실을 읽어야 해서",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "build",
+   "known_text": "my daughter needs to read slowly",
+   "target_text": "제 딸은 천천히 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "why do I need to read the same book again",
+   "target_text": "왜 같은 책을 다시 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "I wonder if I need to read his letter",
+   "target_text": "그의 편지를 읽어야 하는지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "I'm too busy because I need to read at night",
+   "target_text": "밤에 읽어야 해서 너무 바빠요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "I couldn't afford to buy the book I needed to read",
+   "target_text": "읽어야 하는 책을 살 여유가 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "does your son need to read his letter tonight",
+   "target_text": "아들은 오늘 밤에 그의 편지를 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "my mother needs to read the facts this year",
+   "target_text": "제 어머니는 올해 사실을 읽어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 2,
+   "lego_known": "needs to read",
+   "lego_target": "읽어야",
+   "phrase_role": "use",
+   "known_text": "when I work I need to read quickly",
+   "target_text": "일하면 빨리 읽어야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

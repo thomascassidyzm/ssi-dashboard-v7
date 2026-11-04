@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 315,
+  "lego_index": 2,
+  "known": "car",
+  "target": "차를"
+ },
+ "at": "2026-11-04T14:20:12.745Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 87,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "build",
+   "known_text": "trying to find the car",
+   "target_text": "차를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "build",
+   "known_text": "if you give him the car",
+   "target_text": "그한테 차를 주면",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "build",
+   "known_text": "need to change my car",
+   "target_text": "제 차를 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "build",
+   "known_text": "want to give him the car",
+   "target_text": "그한테 차를 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "I've never once seen his car before",
+   "target_text": "전에 그의 차를 한 번도 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "why do you want to give him the car",
+   "target_text": "왜 그한테 차를 주고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "I wanted to show you the car before you leave",
+   "target_text": "떠나기 전에 차를 보여 주고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find my father's car",
+   "target_text": "제 아버지의 차를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "I need to change my car next month",
+   "target_text": "다음 달에 제 차를 바꿔야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 2,
+   "lego_known": "car",
+   "lego_target": "차를",
+   "phrase_role": "use",
+   "known_text": "my father wants to give him the car",
+   "target_text": "제 아버지는 그한테 차를 주고 싶어해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

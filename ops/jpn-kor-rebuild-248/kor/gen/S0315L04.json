@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 315,
+  "lego_index": 4,
+  "known": "couldn't afford",
+  "target": "여유가 없었던"
+ },
+ "at": "2026-11-04T14:30:32.431Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 605,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"couldn't afford\" initially, medially AND finally.",
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "build",
+   "known_text": "a friend who couldn't afford it",
+   "target_text": "여유가 없었던 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "build",
+   "known_text": "who couldn't afford it last month",
+   "target_text": "지난달에 여유가 없었던",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "build",
+   "known_text": "an old man who couldn't afford it yesterday",
+   "target_text": "어제 여유가 없었던 나이 든 남자",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "build",
+   "known_text": "a friend who really couldn't afford it",
+   "target_text": "정말 여유가 없었던 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "that isn't the reason I couldn't afford it",
+   "target_text": "그건 여유가 없었던 이유가 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "what's the reason you couldn't afford it on Sunday",
+   "target_text": "일요일에 여유가 없었던 이유가 뭐예요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "I wanted to show something to his friend who couldn't afford it before",
+   "target_text": "전에 여유가 없었던 친구한테 뭔가 보여 주고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "I can write about that man who couldn't afford it this morning",
+   "target_text": "오늘 아침에 여유가 없었던 그 남자에 대해 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "he is a friend who couldn't afford it last week",
+   "target_text": "지난주에 여유가 없었던 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "let's talk with a friend who couldn't afford it yesterday",
+   "target_text": "어제 여유가 없었던 친구와 이야기해요",
+   "pad": []
+  },
+  {
+   "seed_number": 315,
+   "lego_index": 4,
+   "lego_known": "couldn't afford",
+   "lego_target": "여유가 없었던",
+   "phrase_role": "use",
+   "known_text": "he's like a person who couldn't afford it",
+   "target_text": "여유가 없었던 사람 같아요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

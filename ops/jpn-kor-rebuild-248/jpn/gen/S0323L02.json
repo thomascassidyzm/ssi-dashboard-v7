@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 323,
+  "lego_index": 2,
+  "known": "don't need to walk",
+  "target": "歩かなくていい"
+ },
+ "at": "2026-11-04T14:34:27.246Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 90,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "build",
+   "known_text": "because i don't need to walk",
+   "target_text": "歩かなくていいから",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "build",
+   "known_text": "i might not need to walk",
+   "target_text": "歩かなくていいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "build",
+   "known_text": "don't need to walk tomorrow",
+   "target_text": "明日歩かなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "build",
+   "known_text": "because i don't need to walk on monday",
+   "target_text": "月曜歩かなくていいから",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "use",
+   "known_text": "i want to relax because i don't need to walk tomorrow",
+   "target_text": "明日歩かなくていいから休みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "use",
+   "known_text": "i'll ask if i don't need to walk this time",
+   "target_text": "今回歩かなくていいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "use",
+   "known_text": "i might not need to walk early next week",
+   "target_text": "来週早めに歩かなくていいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "use",
+   "known_text": "after we finish we don't need to walk",
+   "target_text": "終わったら歩かなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 323,
+   "lego_index": 2,
+   "lego_known": "don't need to walk",
+   "lego_target": "歩かなくていい",
+   "phrase_role": "use",
+   "known_text": "i don't need to walk this afternoon",
+   "target_text": "今日の午後歩かなくていい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

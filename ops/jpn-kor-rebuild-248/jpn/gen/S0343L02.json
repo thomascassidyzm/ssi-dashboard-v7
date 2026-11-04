@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 343,
+  "lego_index": 2,
+  "known": "worry",
+  "target": "心配"
+ },
+ "at": "2026-11-04T15:12:52.322Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "build",
+   "known_text": "need to worry",
+   "target_text": "心配する必要がある",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "build",
+   "known_text": "didn't worry this time",
+   "target_text": "今回心配しなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "build",
+   "known_text": "ought to worry",
+   "target_text": "心配したほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "build",
+   "known_text": "need to worry a little more",
+   "target_text": "もう少し心配する必要がある",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "use",
+   "known_text": "you ought to worry a little more",
+   "target_text": "もう少し心配したほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if I need to worry",
+   "target_text": "心配する必要があるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "use",
+   "known_text": "I didn't worry because I was busy",
+   "target_text": "忙しかったから心配しなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "use",
+   "known_text": "I wonder if I need to worry",
+   "target_text": "心配する必要があるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 343,
+   "lego_index": 2,
+   "lego_known": "worry",
+   "lego_target": "心配",
+   "phrase_role": "use",
+   "known_text": "I don't want to worry before I go",
+   "target_text": "行く前に心配したくない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

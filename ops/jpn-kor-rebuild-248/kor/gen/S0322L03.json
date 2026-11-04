@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 322,
+  "lego_index": 3,
+  "known": "reported speech",
+  "target": "한다고"
+ },
+ "at": "2026-11-04T14:42:03.573Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 241,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"reported speech\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "build",
+   "known_text": "that we need to move",
+   "target_text": "이사해야 한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "build",
+   "known_text": "that I should ask",
+   "target_text": "물어봐야 한다고",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "build",
+   "known_text": "I believe that we must work hard",
+   "target_text": "열심히 해야 한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "build",
+   "known_text": "I didn't say that we need to discuss",
+   "target_text": "의논해야 한다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "he told his friend that he needs to read the same book",
+   "target_text": "친구한테 같은 책을 읽어야 한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "I didn't say that you need to change",
+   "target_text": "바꿔야 한다고 말한 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "why do you believe that we need to move this year",
+   "target_text": "왜 올해 이사해야 한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "do you believe that we should answer the question",
+   "target_text": "질문에 대답해야 한다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "last week my son told his friend that he had to find out",
+   "target_text": "지난주에 제 아들은 친구한테 알아내야 한다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 322,
+   "lego_index": 3,
+   "lego_known": "reported speech",
+   "lego_target": "한다고",
+   "phrase_role": "use",
+   "known_text": "I believe that my mother needs to read the same book",
+   "target_text": "제 어머니는 같은 책을 읽어야 한다고 믿어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 342,
+  "lego_index": 1,
+  "known": "who said",
+  "target": "말한"
+ },
+ "at": "2026-11-04T15:24:35.196Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 140,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "build",
+   "known_text": "who said it was rubbish",
+   "target_text": "쓰레기라고 말한",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "build",
+   "known_text": "a friend who said it was rubbish",
+   "target_text": "쓰레기라고 말한 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "build",
+   "known_text": "who said it's not like that",
+   "target_text": "그렇지 않다고 말한",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "build",
+   "known_text": "an old man who said that book was fairly good",
+   "target_text": "그 책이 꽤 좋았다고 말한 나이 든 남자",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "the student who said it's not like that didn't know the facts",
+   "target_text": "그렇지 않다고 말한 학생은 사실을 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "who was the student who said it was rubbish",
+   "target_text": "쓰레기라고 말한 학생은 누구였어요",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "the student who said that book was fairly good is holding up the same book",
+   "target_text": "그 책이 꽤 좋았다고 말한 학생은 같은 책을 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "the student who said she was going to try to help wants to pay half",
+   "target_text": "도와주려고 한다고 말한 학생은 반만 내고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "the student who said he wanted to finish in a day was too busy yesterday",
+   "target_text": "하루 만에 끝내고 싶다고 말한 학생은 어제 너무 바빴어요",
+   "pad": []
+  },
+  {
+   "seed_number": 342,
+   "lego_index": 1,
+   "lego_known": "who said",
+   "lego_target": "말한",
+   "phrase_role": "use",
+   "known_text": "the student who said that book was fairly good needs to move this year",
+   "target_text": "그 책이 꽤 좋았다고 말한 학생은 올해 이사해야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

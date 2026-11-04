@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 333,
+  "lego_index": 1,
+  "known": "not much",
+  "target": "あまり"
+ },
+ "at": "2026-11-04T14:59:16.867Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 544,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "build",
+   "known_text": "not much time",
+   "target_text": "あまり時間がない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "build",
+   "known_text": "couldn't buy much",
+   "target_text": "あまり買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "build",
+   "known_text": "haven't seen much television",
+   "target_text": "テレビあまり見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "build",
+   "known_text": "so far not much of a problem",
+   "target_text": "今のところあまり問題ない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "I couldn't buy much because I was busy",
+   "target_text": "忙しかったからあまり買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "I don't want to think much about tomorrow",
+   "target_text": "明日のことはあまり考えたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "you don't need to walk much tomorrow",
+   "target_text": "明日あまり歩かなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "I won't be able to go much next month",
+   "target_text": "来月あまり行けない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "I haven't seen much television this year",
+   "target_text": "今年テレビあまり見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 333,
+   "lego_index": 1,
+   "lego_known": "not much",
+   "lego_target": "あまり",
+   "phrase_role": "use",
+   "known_text": "I didn't have much time last night",
+   "target_text": "昨夜あまり時間なかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 346,
+  "lego_index": 1,
+  "known": "like",
+  "target": "好き"
+ },
+ "at": "2026-11-04T15:20:43.431Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 227,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"might like books\" (unknown gloss \"books\"); \"i'm not sure if she likes books\" (unknown gloss \"books\"); \"a few days ago she said she likes kittens\" (unknown gloss \"kittens\")",
+  "BUILD \"might like books\" → \"本好きかもしれない\": popty:knownSide [{\"known\":\"might like books\",\"target\":\"本好きかもしれない\",\"problem\":\"unknown gloss \\\"books\\\"\"}]",
+  "USE \"i'm not sure if she likes books\" → \"本好きかどうか分からない\": popty:knownSide [{\"known\":\"i'm not sure if she likes books\",\"target\":\"本好きかどうか分からない\",\"problem\":\"unknown gloss \\\"books\\\"\"}]",
+  "USE \"a few days ago she said she likes kittens\" → \"数日前子猫好きだって言ってた\": popty:knownSide [{\"known\":\"a few days ago she said she likes kittens\",\"target\":\"数日前子猫好きだって言ってた\",\"problem\":\"unknown gloss \\\"kittens\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"like\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

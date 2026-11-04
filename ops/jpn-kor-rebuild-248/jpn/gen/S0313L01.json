@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 313,
+  "lego_index": 1,
+  "known": "five",
+  "target": "五"
+ },
+ "at": "2026-11-04T14:18:09.654Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 543,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"five\" initially, medially AND finally.",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "build",
+   "known_text": "to five people",
+   "target_text": "五人に",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "build",
+   "known_text": "met five people",
+   "target_text": "五人に会った",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "build",
+   "known_text": "want to ask five people",
+   "target_text": "五人に聞きたい",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "build",
+   "known_text": "will try speaking to five people",
+   "target_text": "五人に話してみる",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "use",
+   "known_text": "yesterday i met five people",
+   "target_text": "昨日五人に会った",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "use",
+   "known_text": "i didn't want to ask five people",
+   "target_text": "五人に聞きたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "use",
+   "known_text": "tomorrow i want to give it to five people",
+   "target_text": "明日五人にあげたい",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "use",
+   "known_text": "i'll ask if he met five people",
+   "target_text": "五人に会ったか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 313,
+   "lego_index": 1,
+   "lego_known": "five",
+   "lego_target": "五",
+   "phrase_role": "use",
+   "known_text": "before i go i want to speak to five people",
+   "target_text": "行く前に五人に話したい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

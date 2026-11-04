@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 325,
+  "lego_index": 2,
+  "known": "ten items",
+  "target": "十個"
+ },
+ "at": "2026-11-04T14:36:32.344Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 125,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "build",
+   "known_text": "want to give ten items",
+   "target_text": "十個あげたい",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "build",
+   "known_text": "couldn't buy ten items",
+   "target_text": "十個買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "build",
+   "known_text": "have never seen ten items",
+   "target_text": "十個見たことない",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "build",
+   "known_text": "can write ten items in a day",
+   "target_text": "一日で十個書ける",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if i can write ten items",
+   "target_text": "十個書けるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "use",
+   "known_text": "i'll ask if i can use ten items",
+   "target_text": "十個使えるか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "use",
+   "known_text": "i want ten items back next week",
+   "target_text": "来週十個返してほしい",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "use",
+   "known_text": "there's no need for ten items",
+   "target_text": "十個必要ない",
+   "pad": []
+  },
+  {
+   "seed_number": 325,
+   "lego_index": 2,
+   "lego_known": "ten items",
+   "lego_target": "十個",
+   "phrase_role": "use",
+   "known_text": "he doesn't want to read ten items",
+   "target_text": "十個読みたくない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

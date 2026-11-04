@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 324,
+  "lego_index": 1,
+  "known": "student",
+  "target": "학생은"
+ },
+ "at": "2026-11-04T14:44:41.110Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 158,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "build",
+   "known_text": "the student needs to move",
+   "target_text": "학생은 이사해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "build",
+   "known_text": "this year the student",
+   "target_text": "올해 학생은",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "build",
+   "known_text": "the student who's sitting over there",
+   "target_text": "저기 앉아 있는 학생은",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "build",
+   "known_text": "at night the student",
+   "target_text": "밤에 학생은",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "the student who's sitting over there is my mother's friend",
+   "target_text": "저기 앉아 있는 학생은 제 어머니의 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "why does the student need to move",
+   "target_text": "왜 학생은 이사해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "at night the student can write about that man",
+   "target_text": "밤에 학생은 그 남자에 대해 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "the student said that she doesn't want to live in a city",
+   "target_text": "학생은 도시에서 살고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "I have never seen the student",
+   "target_text": "학생은 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 324,
+   "lego_index": 1,
+   "lego_known": "student",
+   "lego_target": "학생은",
+   "phrase_role": "use",
+   "known_text": "the student has never seen my brother before",
+   "target_text": "학생은 전에 제 남동생을 본 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

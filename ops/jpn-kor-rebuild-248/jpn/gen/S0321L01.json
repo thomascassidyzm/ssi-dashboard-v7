@@ -1,0 +1,131 @@
+{
+ "lego": {
+  "seed_number": 321,
+  "lego_index": 1,
+  "known": "book",
+  "target": "本"
+ },
+ "at": "2026-11-04T14:31:54.708Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 118,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "build",
+   "known_text": "can use the book",
+   "target_text": "本使える",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "build",
+   "known_text": "doesn't want to read the book",
+   "target_text": "本読みたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "build",
+   "known_text": "a book i have never seen",
+   "target_text": "見たことない本",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "build",
+   "known_text": "my sister's blue book",
+   "target_text": "妹の青い本",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "he doesn't want to read my sister's book",
+   "target_text": "彼は妹の本読みたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "i have never seen a blue book",
+   "target_text": "青い本見たことない",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "you can use this book",
+   "target_text": "この本使える",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "i couldn't buy a book this year",
+   "target_text": "今年本買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "there wasn't a book in her bag",
+   "target_text": "バッグに本なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "he likes to read this book",
+   "target_text": "彼はこの本読むのが好き",
+   "pad": []
+  },
+  {
+   "seed_number": 321,
+   "lego_index": 1,
+   "lego_known": "book",
+   "lego_target": "本",
+   "phrase_role": "use",
+   "known_text": "before i go i want the book back",
+   "target_text": "行く前に本返してほしい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

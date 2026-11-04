@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 311,
+  "lego_index": 2,
+  "known": "three",
+  "target": "세 가지"
+ },
+ "at": "2026-11-04T14:12:18.689Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 558,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"three reasons\" (unknown gloss \"reasons\")",
+  "BUILD \"three reasons\" → \"세 가지 이유가\": popty:knownSide [{\"known\":\"three reasons\",\"target\":\"세 가지 이유가\",\"problem\":\"unknown gloss \\\"reasons\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

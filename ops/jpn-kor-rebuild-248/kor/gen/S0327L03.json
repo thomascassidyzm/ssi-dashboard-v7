@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 327,
+  "lego_index": 3,
+  "known": "do you think",
+  "target": "한다고 생각해요"
+ },
+ "at": "2026-11-04T15:04:50.189Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 238,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "build",
+   "known_text": "do you think I should answer",
+   "target_text": "대답해야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "build",
+   "known_text": "do you think I need to change",
+   "target_text": "바꿔야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "build",
+   "known_text": "do you think you need to discuss the problem",
+   "target_text": "그 문제를 의논해야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "build",
+   "known_text": "do you think you need to offer a way",
+   "target_text": "방법을 제안해야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "why do you think you need to consider the problem",
+   "target_text": "왜 그 문제를 생각해 봐야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "do you think I should ask him before you start",
+   "target_text": "시작하기 전에 그한테 물어봐야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "do you think you need to move this year",
+   "target_text": "올해 이사해야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "do you think I must work hard tonight",
+   "target_text": "오늘 밤에 열심히 해야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "do you think you need to leave this early",
+   "target_text": "이렇게 일찍 떠나야 한다고 생각해요",
+   "pad": []
+  },
+  {
+   "seed_number": 327,
+   "lego_index": 3,
+   "lego_known": "do you think",
+   "lego_target": "한다고 생각해요",
+   "phrase_role": "use",
+   "known_text": "do you think my son needs to read the same book",
+   "target_text": "제 아들은 같은 책을 읽어야 한다고 생각해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 316,
+  "lego_index": 1,
+  "known": "monday",
+  "target": "월요일에"
+ },
+ "at": "2026-11-04T14:25:56.957Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 208,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"monday\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "build",
+   "known_text": "my father on monday",
+   "target_text": "제 아버지는 월요일에",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "build",
+   "known_text": "at home on monday",
+   "target_text": "월요일에 집에서",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "build",
+   "known_text": "with a friend on monday",
+   "target_text": "친구와 월요일에",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "build",
+   "known_text": "before you leave on monday",
+   "target_text": "월요일에 떠나기 전에",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "my son works at home on monday",
+   "target_text": "제 아들은 월요일에 집에서 일해요",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "my daughter wants to pay half on monday",
+   "target_text": "제 딸은 월요일에 반만 내고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "my mother said that she doesn't want to come on monday",
+   "target_text": "제 어머니는 월요일에 오고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "I hope you'll be able to come to the party on monday",
+   "target_text": "월요일에 파티에 올 수 있으면 좋겠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "do you have to leave on monday",
+   "target_text": "월요일에 떠나야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 316,
+   "lego_index": 1,
+   "lego_known": "monday",
+   "lego_target": "월요일에",
+   "phrase_role": "use",
+   "known_text": "who was that man you were talking to on monday",
+   "target_text": "월요일에 이야기하고 있던 그 남자는 누구였어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

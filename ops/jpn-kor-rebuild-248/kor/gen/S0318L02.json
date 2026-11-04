@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 318,
+  "lego_index": 2,
+  "known": "can't do",
+  "target": "할 수 없을"
+ },
+ "at": "2026-11-04T14:34:34.961Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 243,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"can't do\" initially, medially AND finally.",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "build",
+   "known_text": "when I can't do the arrangements",
+   "target_text": "준비를 할 수 없을 때",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "build",
+   "known_text": "my son won't be able to do it",
+   "target_text": "제 아들은 할 수 없을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "build",
+   "known_text": "I don't think I can do it",
+   "target_text": "할 수 없을 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "build",
+   "known_text": "I won't be able to do it tomorrow",
+   "target_text": "내일 할 수 없을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "my mother won't be able to do it before the weekend",
+   "target_text": "제 어머니는 주말 전에 할 수 없을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "why do you think you can't do it this time",
+   "target_text": "왜 이번에는 할 수 없을 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "although I wanted to see you I don't think I can do it next week",
+   "target_text": "만나고 싶었지만 다음 주에 할 수 없을 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "when you can't do it on your own you should ask yourself why it's not working",
+   "target_text": "혼자서 할 수 없을 때 왜 안 되는지 자신한테 물어봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "nobody will be able to do it in a day",
+   "target_text": "아무도 하루 만에 할 수 없을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 318,
+   "lego_index": 2,
+   "lego_known": "can't do",
+   "lego_target": "할 수 없을",
+   "phrase_role": "use",
+   "known_text": "I don't think my father will be able to do it on sunday",
+   "target_text": "제 아버지는 일요일에 할 수 없을 것 같아요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
