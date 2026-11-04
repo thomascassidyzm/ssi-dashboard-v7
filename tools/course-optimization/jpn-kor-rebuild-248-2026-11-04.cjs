@@ -135,7 +135,7 @@ function read(c, rng, dumpPath) {
 
 // ── plan (pure over a dump + the gen files) ──
 const nk = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}'’ ]/gu, '').replace(/\s+/g, ' ').trim();
-function plan(c, rng, dump, gens) {
+function plan(c, rng, dump, gens, romanStyle = null) {
   const [a, b] = range(rng);
   const { planInsert } = require('../../services/shared/phrase-v4-door.cjs');
   const legos = newLegos(dump, a, b);
@@ -179,7 +179,12 @@ function plan(c, rng, dump, gens) {
   }
   const existing = dump.phrases.filter((p) => replaced.has(`${p.seed_number}:${+p.lego_index}`));
   const { rows } = planInsert(COURSE[c], final, existing);
-  for (const r of rows) r.metadata = { format: 'build_use', pipeline: 'v4-rebuild', job: '248' };
+  // ROMANIZATION (parent's check, 4 Nov): the app shows target_text_roman when set (ssi-learning-app cycles.ts pickTargets).
+  // On 4 Nov no seed, LEGO or phrase of seeds 301-668 in jpn_for_eng or kor_for_eng carried one (romanization stops at
+  // seed 300 in both), so the course's style for this range is NULL and new rows match it. romanStyle (from a
+  // /api/production/<course>/seeds dump) refuses the plan if that is no longer true.
+  if (romanStyle && romanStyle.romanizedInRange > 0) throw new Error(`${romanStyle.romanizedInRange} rows in ${rng} now carry target_text_roman — new rows would need it too; stop`);
+  for (const r of rows) { r.metadata = { format: 'build_use', pipeline: 'v4-rebuild', job: '248' }; r.target_text_roman = null; }
   const deletes = dump.phrases.filter(isOld).filter((p) => replaced.has(`${p.seed_number}:${+p.lego_index}`)).map((p) => p.id);
   const seeds = [...new Set([...replaced].map((k) => +k.split(':')[0]))].sort((x, y) => x - y);
   return { course: COURSE[c], range: rng, legos: legos.length, replaced: replaced.size, inserts: rows, deletes, refused, held, seeds };
@@ -300,7 +305,12 @@ if (require.main === module) {
     if (mode === 'gen') await gen(c, rng, Number(x) || 2, y || process.env.DUMP);
     else if (mode === 'read') read(c, rng, x);
     else if (mode === 'plan') {
-      const p = plan(c, rng, loadDump(x), (s, l) => readGen(c, s, l));
+      // y: a GET /api/production/<course>/seeds dump (carries target_text_roman, which the v4 dump does not)
+      let romanStyle = null;
+      if (y) { const [a, b] = range(rng); const sd = loadDump(y); let n = 0;
+        for (const s of sd.seeds) if (s.seed_number >= a && s.seed_number <= b) { if (s.target_text_roman) n++; for (const l of s.legos || []) { if (l.target_text_roman) n++; for (const ph of l.basket_phrases || []) if (ph.target_text_roman) n++; } }
+        romanStyle = { romanizedInRange: n }; } else throw new Error('plan needs the production seeds dump as 5th arg (romanization style check)');
+      const p = plan(c, rng, loadDump(x), (s, l) => readGen(c, s, l), romanStyle);
       fs.writeFileSync(path.join(courseDir(c), `plan-${rng}.json`), JSON.stringify(p, null, 1));
       console.log(`${c} ${rng}: ${p.legos} new LEGOs; ${p.replaced} baskets replaced; ${p.inserts.length} inserts, ${p.deletes.length} deletes, ${p.refused.length} rows refused, ${p.held.length} LEGOs held`);
     } else if (mode === 'audio') await audio(c, rng, x === '--real');
