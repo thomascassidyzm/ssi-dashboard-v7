@@ -9,7 +9,7 @@
 #   ZUT new LEGO-level and phrase-level clashes, duplicate rows in a basket, not-new only where an earlier LEGO matches.
 import json, re, sys, copy, importlib.util, os
 HERE = os.path.dirname(os.path.abspath(__file__))
-spec = importlib.util.spec_from_file_location('rulings', os.path.join(HERE, 'rulings.py')); R = importlib.util.module_from_spec(spec); spec.loader.exec_module(R)
+spec = importlib.util.spec_from_file_location('rulings', os.path.join(HERE, os.environ.get('RULINGS', 'rulings.py'))); R = importlib.util.module_from_spec(spec); spec.loader.exec_module(R)
 C = 'zho_for_eng'
 api = json.load(open(sys.argv[1])); OUT = sys.argv[2]; os.makedirs(OUT, exist_ok=True)
 
