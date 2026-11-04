@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 353,
+  "lego_index": 1,
+  "known": "field",
+  "target": "운동장"
+ },
+ "at": "2026-11-04T15:51:51.103Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 247,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "build",
+   "known_text": "a new field",
+   "target_text": "새로운 운동장",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "build",
+   "known_text": "the field door",
+   "target_text": "운동장 문을",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "build",
+   "known_text": "holding up the field door",
+   "target_text": "운동장 문을 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "build",
+   "known_text": "couldn't watch the field games",
+   "target_text": "운동장 경기를 볼 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "use",
+   "known_text": "the student is holding up the field door",
+   "target_text": "학생은 운동장 문을 들고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "use",
+   "known_text": "I have never seen field games before",
+   "target_text": "전에 운동장 경기를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "use",
+   "known_text": "I have never seen the new field door",
+   "target_text": "새로운 운동장 문을 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "use",
+   "known_text": "on monday I couldn't watch the field games",
+   "target_text": "월요일에 운동장 경기를 볼 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 353,
+   "lego_index": 1,
+   "lego_known": "field",
+   "lego_target": "운동장",
+   "phrase_role": "use",
+   "known_text": "the student couldn't watch the field games",
+   "target_text": "학생은 운동장 경기를 볼 수 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
