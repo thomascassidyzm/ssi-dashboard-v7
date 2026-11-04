@@ -16,7 +16,9 @@ for n in nums:
     rows = [l.rstrip('\n').split('\t') for l in open(f'{cdir}/{n}.tsv')][1:]
     ans = dict(l.rstrip('\n').split('\t') for l in list(open(f'{odir}/{n}.tsv'))[1:] if l.strip())
     for r in rows:
-        kind, key, t = r[0], r[1], r[4]; ro = ans[key].strip()
+        kind, key, t = r[0], r[1], r[4]
+        if not t.strip(): continue  # no target text (e.g. hye seeds 301-668): nothing to romanise
+        ro = ans[key].strip()
         row = cur[(kind, key)]
         if (row.get('target_text_roman') or '') == ro: continue  # already written (a re-run only writes what changed)
         exp = {'target_text': row['target_text'], 'target_text_roman': row.get('target_text_roman')}

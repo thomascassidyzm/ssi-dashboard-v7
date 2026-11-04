@@ -8,7 +8,7 @@ import sys, re, unicodedata, os
 chunk, ans = sys.argv[1], sys.argv[2]
 course = os.path.basename(os.path.dirname(os.path.abspath(chunk)))
 lang = course.split('_')[0]
-rows = [l.rstrip('\n').split('\t') for l in open(chunk)][1:]
+rows = [r for r in (l.rstrip('\n').split('\t') for l in open(chunk)) if r[4].strip()][1:]  # rows with no target text have nothing to romanise
 A = {}
 errs = []
 lines = [l.rstrip('\n') for l in open(ans)]
