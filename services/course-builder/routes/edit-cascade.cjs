@@ -34,6 +34,7 @@ const { Router } = require('express');
 const { isChinese } = require('../lib/language-config.cjs');
 const { extractVocab } = require('../lib/text-normalization.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
+const { clearStaleRoman } = require('../../shared/roman-sync.cjs');
 
 const SELF_URL = process.env.COURSE_BUILDER_SELF_URL
   || `http://localhost:${process.env.COURSE_BUILDER_PORT || 3471}`;
@@ -158,7 +159,7 @@ module.exports = function(ctx) {
       // ── Load the canonical seed (known side is immutable here) ─────────────
       const { data: seed, error: seedErr } = await ctx.supabase
         .from('course_seeds')
-        .select('seed_number, known_text, target_text, decomposed_at')
+        .select('seed_number, known_text, target_text, target_text_roman, decomposed_at')
         .eq('course_code', courseCode)
         .eq('seed_number', seed_number)
         .single();
@@ -166,6 +167,13 @@ module.exports = function(ctx) {
       if (seedErr || !seed) {
         return res.status(404).json({ error: `Seed ${seed_number} not found for ${courseCode}` });
       }
+      // The new target's romanisation (zho pinyin, jpn romaji, kor): the caller's, sent as
+      // target_text_roman; otherwise the old one is cleared, never left spelling the old sentence (#272).
+      const seedTargetSet = clearStaleRoman(seed, {
+        target_text: newTarget,
+        ...(Object.prototype.hasOwnProperty.call(req.body || {}, 'target_text_roman')
+          ? { target_text_roman: req.body.target_text_roman || null } : {}),
+      }).patch;
 
       // ── Auto-decompose path: caller wants the pipeline to produce the new ──
       // breakdown. We update the target and hand back a re-decomposition brief;
@@ -202,7 +210,7 @@ module.exports = function(ctx) {
 
         await ctx.supabase
           .from('course_seeds')
-          .update({ target_text: newTarget, last_edit_event_id: briefEventId })
+          .update({ ...seedTargetSet, last_edit_event_id: briefEventId })
           .eq('course_code', courseCode)
           .eq('seed_number', seed_number);
 
@@ -271,6 +279,7 @@ module.exports = function(ctx) {
 
       const snapshot = {
         target_text: seed.target_text,
+        target_text_roman: seed.target_text_roman,
         decomposed_at: seed.decomposed_at,
         legos: oldLegos || [],
         phrases: oldPhrases || [],
@@ -283,7 +292,7 @@ module.exports = function(ctx) {
         if (snapshot.phrases.length) await ctx.supabase.from('course_practice_phrases').insert(snapshot.phrases);
         await ctx.supabase
           .from('course_seeds')
-          .update({ target_text: snapshot.target_text, decomposed_at: snapshot.decomposed_at })
+          .update({ target_text: snapshot.target_text, target_text_roman: snapshot.target_text_roman, decomposed_at: snapshot.decomposed_at })
           .eq('course_code', courseCode)
           .eq('seed_number', seed_number);
       };
@@ -306,7 +315,7 @@ module.exports = function(ctx) {
 
       const { error: updErr } = await ctx.supabase
         .from('course_seeds')
-        .update({ target_text: newTarget, decomposed_at: null, last_edit_event_id: eventId })
+        .update({ ...seedTargetSet, decomposed_at: null, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .eq('seed_number', seed_number);
       if (updErr) throw new Error(`Failed to update seed target: ${updErr.message}`);
