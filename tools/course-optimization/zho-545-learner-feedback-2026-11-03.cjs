@@ -323,7 +323,10 @@ async function main() {
   }
 
   if (mode === 'render') {
-    const asks = emptySlots(db);
+    // SKIP_LEGOS=S0171L01,… leaves those LEGOs' slots alone (empties another pass made, outside this job's baskets).
+    const skipL = new Set(String(process.env.SKIP_LEGOS || '').split(',').filter(Boolean));
+    const inSkip = (t) => skipL.has(t.lego_id || sid(t.phrase_id || '').slice(0, 8));
+    const asks = emptySlots(db).map((a) => ({ ...a, slots: a.slots.filter((t) => !inSkip(t)) })).filter((a) => a.slots.length);
     const log = { job: '#545', mode: 'render', asks: [] };
     for (const a of asks) {
       const body = { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true };
