@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 311,
+  "lego_index": 1,
+  "known": "most important",
+  "target": "가장 중요한"
+ },
+ "at": "2026-11-04T14:08:01.402Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 300,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"most important\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "build",
+   "known_text": "only the most important job",
+   "target_text": "가장 중요한 일만",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "build",
+   "known_text": "the most important of your friends",
+   "target_text": "친구들 중에 가장 중요한",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "build",
+   "known_text": "my most important friend",
+   "target_text": "제 가장 중요한 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "build",
+   "known_text": "with my most important friend",
+   "target_text": "제 가장 중요한 친구와",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "i only had to do the most important job",
+   "target_text": "가장 중요한 일만 하면 됐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "that isn't the most important reason",
+   "target_text": "그건 가장 중요한 이유가 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "i wonder what the most important reason is",
+   "target_text": "가장 중요한 이유가 뭔지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "nobody was sure how to answer the most important question",
+   "target_text": "아무도 가장 중요한 질문에 어떻게 대답해야 하는지 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "my mother is my most important friend",
+   "target_text": "제 어머니는 제 가장 중요한 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 311,
+   "lego_index": 1,
+   "lego_known": "most important",
+   "lego_target": "가장 중요한",
+   "phrase_role": "use",
+   "known_text": "why do you only want to do the most important job",
+   "target_text": "왜 가장 중요한 일만 하고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

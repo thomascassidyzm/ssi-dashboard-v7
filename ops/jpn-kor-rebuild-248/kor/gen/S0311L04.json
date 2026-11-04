@@ -1,0 +1,34 @@
+{
+ "lego": {
+  "seed_number": 311,
+  "lego_index": 4,
+  "known": "couldn't believe",
+  "target": "수 없었어요"
+ },
+ "at": "2026-11-04T14:10:46.321Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 3,
+ "secs": 165,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 10 phrase(s) use target words not yet introduced: [{\"phrase\":\"사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"},{\"phrase\":\"세 가지 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"},{\"phrase\":\"제 어머니는 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"},{\"phrase\":\"가장 중요한 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"},{\"phrase\":\"제 딸은 가장 중요한 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}]",
+  "BUILD \"couldn't believe the facts\" → \"사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "BUILD \"couldn't believe the three facts\" → \"세 가지 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"세 가지 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "BUILD \"my mother couldn't believe the facts\" → \"제 어머니는 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 어머니는 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "BUILD \"couldn't believe the most important facts\" → \"가장 중요한 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"가장 중요한 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"my daughter couldn't believe the most important facts\" → \"제 딸은 가장 중요한 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 딸은 가장 중요한 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"why couldn't you believe the facts\" → \"왜 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"왜 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"my son couldn't believe the facts yesterday\" → \"제 아들은 어제 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 아들은 어제 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"my mother couldn't believe the three most important facts\" → \"제 어머니는 가장 중요한 세 가지 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 어머니는 가장 중요한 세 가지 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"my father couldn't believe the facts last week\" → \"제 아버지는 지난주에 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"제 아버지는 지난주에 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}",
+  "USE \"why couldn't you believe the three facts\" → \"왜 세 가지 사실을 믿을 수 없었어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"왜 세 가지 사실을 믿을 수 없었어요\",\"unknown\":\"믿을\"}],\"total\":1}"
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 308,
+  "lego_index": 2,
+  "known": "is a friend",
+  "target": "친구예요"
+ },
+ "at": "2026-11-04T14:07:12.313Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 251,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "build",
+   "known_text": "is a friend of my mother",
+   "target_text": "어머니의 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "build",
+   "known_text": "is a friend and wants to pay half",
+   "target_text": "친구예요 그리고 반만 내고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "build",
+   "known_text": "my son who's sitting over there is a friend",
+   "target_text": "저기 앉아 있는 제 아들은 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "build",
+   "known_text": "is my daughter a friend",
+   "target_text": "제 딸은 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "my son who's sitting over there is a friend of my sister",
+   "target_text": "저기 앉아 있는 제 아들은 제 여동생 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "is my daughter a friend of my sister",
+   "target_text": "제 딸은 제 여동생 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "my father is a friend of my mother and wants to pay half",
+   "target_text": "제 아버지는 어머니의 친구예요 그리고 반만 내고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "my son is a friend of my father but he said that he doesn't want to work at home",
+   "target_text": "제 아들은 제 아버지의 친구예요 하지만 집에서 일하고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "my daughter is a friend of my mother and she said that she wants to live in a city",
+   "target_text": "제 딸은 어머니의 친구예요 그리고 도시에서 살고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 2,
+   "lego_known": "is a friend",
+   "lego_target": "친구예요",
+   "phrase_role": "use",
+   "known_text": "my son is a friend of my sister and likes watching television",
+   "target_text": "제 아들은 제 여동생 친구예요 그리고 TV 보는 것을 좋아해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

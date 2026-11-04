@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 312,
+  "lego_index": 3,
+  "known": "night",
+  "target": "夜"
+ },
+ "at": "2026-11-04T14:09:15.796Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 208,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "build",
+   "known_text": "tomorrow night",
+   "target_text": "明日夜",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "build",
+   "known_text": "i can write at night",
+   "target_text": "夜書ける",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "build",
+   "known_text": "was busy on sunday night",
+   "target_text": "日曜夜忙しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "build",
+   "known_text": "want to meet at night",
+   "target_text": "夜会いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "she might be able to come tomorrow night",
+   "target_text": "明日夜来られるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "he doesn't want to work at night",
+   "target_text": "夜働きたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait until tomorrow night",
+   "target_text": "明日夜まで待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "i'll ask if she wants to meet on sunday night",
+   "target_text": "日曜夜会いたいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "she likes to read at night",
+   "target_text": "夜読むのが好き",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 3,
+   "lego_known": "night",
+   "lego_target": "夜",
+   "phrase_role": "use",
+   "known_text": "she's too busy at night so she has no time to call",
+   "target_text": "夜忙しすぎるから電話する時間がない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

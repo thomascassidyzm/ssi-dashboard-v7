@@ -1,0 +1,145 @@
+{
+ "lego": {
+  "seed_number": 312,
+  "lego_index": 2,
+  "known": "other",
+  "target": "別の"
+ },
+ "at": "2026-11-04T14:09:06.416Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 228,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"other\" initially, medially AND finally.",
+  "NEIGH 0.13 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.17 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "build",
+   "known_text": "in another office",
+   "target_text": "別のオフィスで",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "build",
+   "known_text": "another meeting next week",
+   "target_text": "来週別の会議",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "build",
+   "known_text": "to write another letter",
+   "target_text": "別の手紙を書く",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "build",
+   "known_text": "another young man sitting over there",
+   "target_text": "あそこに座ってる別の若い男性",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "i want to live in another city",
+   "target_text": "別の都会に住みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "i think that she doesn't want to work in another office",
+   "target_text": "別のオフィスで働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "i have never seen the other film",
+   "target_text": "別の映画見たことない",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "can you write another letter tomorrow",
+   "target_text": "明日別の手紙書ける",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "after we finish we can start another meeting",
+   "target_text": "終わったら別の会議始められる",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "i'll ask if there was another meeting",
+   "target_text": "別の会議あったか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "there wasn't another bus",
+   "target_text": "別のバスなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 312,
+   "lego_index": 2,
+   "lego_known": "other",
+   "lego_target": "別の",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait until the other meeting",
+   "target_text": "別の会議まで待っていい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
