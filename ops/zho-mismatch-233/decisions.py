@@ -174,7 +174,9 @@ def main(live_path):
             kept.append({'id': r['id'], 'state': 'not-a-defect', 'before': [before['known'], before['target']], 'cause': r['cause'], 'what195': r['what'], 'why': why}); continue
         d = {'id': f"zho_for_eng:{r['id']}", 'table': 'phrase', 'role': p['phrase_role'], 'point': r['cause'], 'action': a, 'before': before, 'why': why, 'what195': r['what']}
         if a in (E, H) and (k or t):
-            d['after'] = {'known': k, 'target': t, 'roman': rom}
+            # pinyin only where the live row already carries pinyin (roman-sync #252; course style per row)
+            d['after'] = {'known': k, 'target': t, 'roman': rom if (t and p.get('target_text_roman')) else None}
+            if t and p.get('target_text_roman') and not rom: raise SystemExit(f'{r["id"]}: row carries pinyin, none given')
         decisions.append(d)
     json.dump({'job': '#233', 'source': 'mismatch-195 wave 1, zho_for_eng', 'decisions': decisions}, open(os.path.join(HERE, 'decisions-195.json'), 'w'), ensure_ascii=False, indent=1)
     json.dump(kept, open(os.path.join(HERE, 'kept.json'), 'w'), ensure_ascii=False, indent=1)

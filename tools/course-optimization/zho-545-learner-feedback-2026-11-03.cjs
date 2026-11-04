@@ -187,7 +187,9 @@ function plan(db, { data = loadData(), dz = require('../../services/phrase-decom
     if (target !== p.target_text) {
       const un = newlyUntaught(chunksFor(legoId), p.target_text, target);
       if (un.length) problems.push(`P1 untaught: ${un.join('')}`);
-      if (!roman) problems.push('no pinyin given for the new Chinese');
+      // roman-sync (#252): a row that carries pinyin must get hand-read pinyin for its new text; a row with none stays
+      // with none (most of 301-668, and some earlier rows), so the learner sees the same kind of line as its neighbours.
+      if (!roman && p.target_text_roman) problems.push('no pinyin given for the new Chinese');
     }
     if (p.phrase_role !== 'component') {
       const z = zutNew(id, { known_text: p.known_text, target_text: p.target_text }, { known_text: known, target_text: target });
@@ -198,7 +200,7 @@ function plan(db, { data = loadData(), dz = require('../../services/phrase-decom
     if (problems.length) { skipped.push({ id, cls, from: [p.known_text, p.target_text], to: [known, target], why: problems.join(' | ') }); continue; }
     const set = {};
     if (known !== p.known_text) set.known_text = known;
-    if (target !== p.target_text) { set.target_text = target; set.target_text_roman = roman; set.word_count = han(target).length; }
+    if (target !== p.target_text) { set.target_text = target; if (roman || p.target_text_roman) set.target_text_roman = roman; set.word_count = han(target).length; }
     go.push({ id, kind: 'update', cls, why, before: p, set, sides: { known: 'known_text' in set, target: 'target_text' in set } });
   }
   for (const id of deleting) {

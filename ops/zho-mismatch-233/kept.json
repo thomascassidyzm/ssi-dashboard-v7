@@ -404,13 +404,15 @@
  },
  {
   "id": "S0643L01B02",
-  "state": "not-a-defect",
+  "state": "already-fixed",
   "before": [
    "do you want any?",
    "您想要吗？"
   ],
-  "cause": "extra-chunk",
-  "what195": "\"any\" on the known side has no counterpart in 您想要吗？",
-  "why": "'any' is an object Chinese leaves unsaid (the dropped-object ruling's family); 'do you want it?' would clash with S0473L01U06 你想要它吗"
+  "live": [
+   "do you want it, sir?",
+   "先生，您想要它吗"
+  ],
+  "why": "changed live since the #195 snapshot (#206/#214); re-read and it now matches"
  }
 ]
