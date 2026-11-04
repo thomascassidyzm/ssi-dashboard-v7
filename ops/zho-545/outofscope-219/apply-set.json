@@ -1,0 +1,1172 @@
+{
+ "job": "#219",
+ "course": "zho_for_eng",
+ "edits": [
+  {
+   "id": "S0085L01U04",
+   "before": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人吗？"
+   },
+   "after": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人的事吗？",
+    "roman": "nǐ néng gàosu wǒ guānyú nàxiē rén de shì ma?"
+   },
+   "why": "关于 needs a noun after it: 关于那些人 → 关于那些人的事 ('the matters about those people')"
+  },
+  {
+   "id": "S0088L01U02",
+   "before": {
+    "known": "are you ready?",
+    "target": "你准备好吗？"
+   },
+   "after": {
+    "known": "are you ready?",
+    "target": "你准备好了吗？",
+    "roman": "nǐ zhǔnbèi hǎo le ma?"
+   },
+   "why": "'are you ready?' needs 了 (as S0080L02U03, S0095L01U02, S0252L01U02 already have)"
+  },
+  {
+   "id": "S0088L01U07",
+   "before": {
+    "known": "are we ready?",
+    "target": "我们准备好吗？"
+   },
+   "after": {
+    "known": "are we ready?",
+    "target": "我们准备好了吗？",
+    "roman": "wǒmen zhǔnbèi hǎo le ma?"
+   },
+   "why": "same: 'are we ready?' needs 了"
+  },
+  {
+   "id": "S0111L01U08",
+   "before": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想快学这新东西"
+   },
+   "after": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想尽快学这新东西",
+    "roman": "wǒ xiǎng jǐnkuài xué zhè xīn dōngxi"
+   },
+   "why": "快学 is not idiomatic; 'quickly' is taught as 尽快 (S0020L02)"
+  },
+  {
+   "id": "S0137L01U04",
+   "before": {
+    "known": "she wants it to be perfect",
+    "target": "她想那完美"
+   },
+   "after": {
+    "known": "she wants it to be perfect",
+    "target": "她想让它完美",
+    "roman": "tā xiǎng ràng tā wánměi"
+   },
+   "why": "她想那完美 'she wants that perfect' is ungrammatical; 想让它完美 = wants it to be perfect"
+  },
+  {
+   "id": "S0156L01U14",
+   "before": {
+    "known": "where did she go?",
+    "target": "她去哪里？"
+   },
+   "after": {
+    "known": "where did she go?",
+    "target": "她去哪里了？",
+    "roman": "tā qù nǎlǐ le?"
+   },
+   "why": "past question 'where did she go?' needs 了, as U15 has"
+  },
+  {
+   "id": "S0162L01B03",
+   "before": {
+    "known": "what do you think about that",
+    "target": "你觉得怎么样那个"
+   },
+   "after": {
+    "known": "what do you think about that",
+    "target": "那个你觉得怎么样",
+    "roman": "nàge nǐ juéde zěnmeyàng"
+   },
+   "why": "object 那个 cannot follow 怎么样; it is fronted as the topic"
+  },
+  {
+   "id": "S0252L01U05",
+   "before": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天准备好"
+   },
+   "after": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天之前准备好",
+    "roman": "wǒ xūyào zài míngtiān zhīqián zhǔnbèi hǎo"
+   },
+   "why": "在明天 says 'tomorrow', not 'by tomorrow'; 'by' = 之前 (taught S0249)"
+  },
+  {
+   "id": "S0260L01U03",
+   "before": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "我一点头绪都没有该做什么"
+   },
+   "after": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "该做什么，我一点头绪都没有",
+    "roman": "gāi zuò shénme, wǒ yìdiǎn tóuxù dōu méiyǒu"
+   },
+   "why": "'what to do' cannot trail after 都没有; it comes first"
+  },
+  {
+   "id": "S0322L01U06",
+   "before": {
+    "known": "he's reading the same book as me",
+    "target": "他在读和我同一本书"
+   },
+   "after": {
+    "known": "he's reading the same book as me",
+    "target": "他和我在读同一本书",
+    "roman": "tā hé wǒ zài dú tóng yì běn shū"
+   },
+   "why": "在读和我同一本书 is ungrammatical; 和我 goes before the verb"
+  },
+  {
+   "id": "S0333L01B02",
+   "before": {
+    "known": "spend time with you",
+    "target": "和你花时间"
+   },
+   "after": {
+    "known": "spend time with you",
+    "target": "花时间和你在一起",
+    "roman": "huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "和你花时间 is an English calque; Chinese shape is 花时间和…在一起 (as the seed itself)"
+  },
+  {
+   "id": "S0333L01U01",
+   "before": {
+    "known": "I want to spend time with you",
+    "target": "我想和你花时间"
+   },
+   "after": {
+    "known": "I want to spend time with you",
+    "target": "我想花时间和你在一起",
+    "roman": "wǒ xiǎng huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "same calque"
+  },
+  {
+   "id": "S0333L01U06",
+   "before": {
+    "known": "do you want to spend time with them?",
+    "target": "你想和他们花时间吗"
+   },
+   "after": {
+    "known": "do you want to spend time with them?",
+    "target": "你想花时间和他们在一起吗",
+    "roman": "nǐ xiǎng huā shíjiān hé tāmen zài yìqǐ ma"
+   },
+   "why": "same calque"
+  },
+  {
+   "id": "S0381L01B04",
+   "before": {
+    "known": "come with",
+    "target": "跟一起走"
+   },
+   "after": {
+    "known": "come with me",
+    "target": "跟我一起走",
+    "roman": "gēn wǒ yìqǐ zǒu"
+   },
+   "why": "跟…一起 needs a person in it; 跟一起走 is not Chinese"
+  },
+  {
+   "id": "S0393L02U05",
+   "before": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁在穿绿色吗？"
+   },
+   "after": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁穿了绿色吗？",
+    "roman": "nǐ zhīdào shéi chuān le lǜsè ma?"
+   },
+   "why": "谁在穿 = who is putting on; 'was wearing' is 穿了 here (as S0393L03U06 谁穿了绿色衬衫; 着 untaught)"
+  },
+  {
+   "id": "S0459L01U06",
+   "before": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的衣服很好看"
+   },
+   "after": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的连衣裙很好看",
+    "roman": "nà jiàn lánsè de liányīqún hěn hǎokàn"
+   },
+   "why": "'dress' is taught as 连衣裙 (S0394L02); 衣服 = clothes"
+  },
+  {
+   "id": "S0480L01U01",
+   "before": {
+    "known": "I will go no matter what",
+    "target": "不管什么我都会去"
+   },
+   "after": {
+    "known": "I will go no matter what happens",
+    "target": "不管发生什么我都会去",
+    "roman": "bùguǎn fāshēng shénme wǒ dōu huì qù"
+   },
+   "why": "不管什么 needs a verb: 不管发生什么, as U04/U05"
+  },
+  {
+   "id": "S0480L01U03",
+   "before": {
+    "known": "she came no matter what",
+    "target": "不管什么她都来了"
+   },
+   "after": {
+    "known": "she came no matter what happened",
+    "target": "不管发生什么她都来了",
+    "roman": "bùguǎn fāshēng shénme tā dōu lái le"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0520L03U04",
+   "before": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在身上"
+   },
+   "after": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在自己身上",
+    "roman": "méiyǒu rén xiǎng zhè fāshēng zài zìjǐ shēnshang"
+   },
+   "why": "发生在身上 needs whose body: 在自己身上 (自己 taught S0516)"
+  },
+  {
+   "id": "S0524L03U06",
+   "before": {
+    "known": "I'll call you back later",
+    "target": "我以后给你回电话"
+   },
+   "after": {
+    "known": "I'll call you back later",
+    "target": "我晚点给你回电话",
+    "roman": "wǒ wǎndiǎn gěi nǐ huí diànhuà"
+   },
+   "why": "以后 = 'some time in the future'; 'later (today)' is 晚点 (taught, S0239L01U11)"
+  },
+  {
+   "id": "S0536L02U06",
+   "before": {
+    "known": "I didn't think that was crazy",
+    "target": "我不以为那是疯狂的"
+   },
+   "after": {
+    "known": "I didn't think that was crazy",
+    "target": "我不觉得那是疯狂的",
+    "roman": "wǒ bù juéde nà shì fēngkuáng de"
+   },
+   "why": "以为 = 'wrongly believed'; plain 'think' is 觉得 (taught)"
+  },
+  {
+   "id": "S0536L03U03",
+   "before": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不以为那是坏事"
+   },
+   "after": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不觉得那是坏事",
+    "roman": "wǒ bù juéde nà shì huàishì"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0536L03U06",
+   "before": {
+    "known": "she thinks it's a bad thing",
+    "target": "她以为那是坏事"
+   },
+   "after": {
+    "known": "she thinks it's a bad thing",
+    "target": "她觉得那是坏事",
+    "roman": "tā juéde nà shì huàishì"
+   },
+   "why": "same 以为 fault (present 'thinks'), same basket"
+  },
+  {
+   "id": "S0541L03U05",
+   "before": {
+    "known": "I think that's a bad idea",
+    "target": "我以为那是个坏主意"
+   },
+   "after": {
+    "known": "I think that's a bad idea",
+    "target": "我觉得那是个坏主意",
+    "roman": "wǒ juéde nà shì gè huài zhǔyi"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0544L02U03",
+   "before": {
+    "known": "I didn't think it was this hard",
+    "target": "我没以为这么难"
+   },
+   "after": {
+    "known": "I didn't think it was this hard",
+    "target": "我没想到这么难",
+    "roman": "wǒ méi xiǎngdào zhème nán"
+   },
+   "why": "没以为 is ungrammatical; 'didn't think it was' = 没想到 (taught S0239L01U09)"
+  },
+  {
+   "id": "S0551L03U04",
+   "before": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人以为那很丑"
+   },
+   "after": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人觉得那很丑",
+    "roman": "méiyǒu rén juéde nà hěn chǒu"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0551L03U05",
+   "before": {
+    "known": "I think that's ugly",
+    "target": "我以为那很丑"
+   },
+   "after": {
+    "known": "I think that's ugly",
+    "target": "我觉得那很丑",
+    "roman": "wǒ juéde nà hěn chǒu"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0614L01U06",
+   "before": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作很近"
+   },
+   "after": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作的地方很近",
+    "roman": "wǒ zhù de dìfang lí gōngzuò de dìfang hěn jìn"
+   },
+   "why": "离 needs a place: 工作的地方, as S0614L03U03"
+  },
+  {
+   "id": "S0664L01U02",
+   "before": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了吗"
+   },
+   "after": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了没有",
+    "roman": "wǒ xūyào zhīdào nǐmen zhǔnbèi hǎo le méiyǒu"
+   },
+   "why": "吗 cannot end an embedded question; …了没有"
+  },
+  {
+   "id": "S0384L01U06",
+   "before": {
+    "known": "I just wanted to tell you something",
+    "target": "我刚才想告诉你一件事"
+   },
+   "after": {
+    "known": "I wanted to tell you something a moment ago",
+    "target": "我刚才想告诉你一件事",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says (刚才 = a moment ago); the old English is S0357L01U02 = 我只是想… (ZUT)"
+  },
+  {
+   "id": "S0478L02B03",
+   "before": {
+    "known": "a kind heart",
+    "target": "很好的心"
+   },
+   "after": {
+    "known": "a very good heart",
+    "target": "很好的心",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says; 'a kind heart' is S0478L03 = 善良的心 (ZUT)"
+  },
+  {
+   "id": "S0478L02U05",
+   "before": {
+    "known": "you have a very kind heart",
+    "target": "你有一颗很好的心"
+   },
+   "after": {
+    "known": "you have a very good heart",
+    "target": "你有一颗很好的心",
+    "roman": null
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0457L02B01",
+   "before": {
+    "known": "field",
+    "target": "领域"
+   },
+   "after": {
+    "known": "area",
+    "target": "领域",
+    "roman": null
+   },
+   "why": "bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"
+  },
+  {
+   "id": "S0516L01B02",
+   "before": {
+    "known": "on their own",
+    "target": "自己来"
+   },
+   "after": {
+    "known": "come on their own",
+    "target": "自己来",
+    "roman": null
+   },
+   "why": "B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
+  },
+  {
+   "id": "S0549L02U03",
+   "before": {
+    "known": "I want to stay calm",
+    "target": "我想保持安静"
+   },
+   "after": {
+    "known": "I want to keep quiet",
+    "target": "我想保持安静",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 安静 = quiet, not calm"
+  },
+  {
+   "id": "S0580L01U02",
+   "before": {
+    "known": "I want to take her somewhere",
+    "target": "我想带她去那个地方"
+   },
+   "after": {
+    "known": "I want to take her to that place",
+    "target": "我想带她去那个地方",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 那个地方 = that place, not somewhere"
+  },
+  {
+   "id": "S0580L01U06",
+   "before": {
+    "known": "I often want to take the children somewhere",
+    "target": "我经常想带孩子们去那个地方"
+   },
+   "after": {
+    "known": "I often want to take the children to that place",
+    "target": "我经常想带孩子们去那个地方",
+    "roman": null
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0589L02U04",
+   "before": {
+    "known": "nobody got the last seat",
+    "target": "没有人拿到最后一个"
+   },
+   "after": {
+    "known": "nobody got the last one",
+    "target": "没有人拿到最后一个",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: no 'seat' in it"
+  },
+  {
+   "id": "S0606L01U06",
+   "before": {
+    "known": "I knew this would happen sooner or later",
+    "target": "我早知道这会发生"
+   },
+   "after": {
+    "known": "I knew all along this would happen",
+    "target": "我早知道这会发生",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 早知道 = knew all along, not 'sooner or later'"
+  }
+ ],
+ "deletes": [
+  {
+   "id": "S0094L02B04",
+   "before": {
+    "known": "only this",
+    "target": "唯一这个"
+   },
+   "why": "唯一这个 is ungrammatical (唯一 needs 的 + noun); no taught fix keeps the LEGO"
+  },
+  {
+   "id": "S0111L01U03",
+   "before": {
+    "known": "can you tell me about this new thing?",
+    "target": "你能告诉我关于这新东西吗？"
+   },
+   "why": "告诉我关于这新东西 is ungrammatical; a fix (…的事) reads clumsily; 9 USE remain"
+  },
+  {
+   "id": "S0148L01U04",
+   "before": {
+    "known": "I'm not very good at this",
+    "target": "我这个不太好"
+   },
+   "why": "我这个不太好 is not Chinese for 'not very good at this'; needs untaught 擅长"
+  },
+  {
+   "id": "S0159L01U03",
+   "before": {
+    "known": "I don't know what I'm trying to say",
+    "target": "我不知道我想说的"
+   },
+   "why": "我不知道我想说的 is ungrammatical (needs 什么), and 什么 would break the LEGO 我想说的"
+  },
+  {
+   "id": "S0159L01U07",
+   "before": {
+    "known": "I'm not sure what I'm trying to say",
+    "target": "我不确定我想说的"
+   },
+   "why": "same as U03"
+  },
+  {
+   "id": "S0195L01B03",
+   "before": {
+    "known": "find the money",
+    "target": "找钱"
+   },
+   "why": "找钱 is the fixed phrase 'give change'; teaches the wrong sense"
+  },
+  {
+   "id": "S0276L01U04",
+   "before": {
+    "known": "let me think about this for a little while",
+    "target": "让我想一会儿这个"
+   },
+   "why": "让我想一会儿这个: object cannot follow the duration; no fix keeps the English"
+  },
+  {
+   "id": "S0277L01U04",
+   "before": {
+    "known": "unfortunately I have to go to a meeting",
+    "target": "很遗憾我得去会议"
+   },
+   "why": "去会议 is not Chinese (开会/参加会议 untaught here)"
+  },
+  {
+   "id": "S0277L01U06",
+   "before": {
+    "known": "I'm willing to come to the meeting",
+    "target": "我愿意来会议"
+   },
+   "why": "来会议: same"
+  },
+  {
+   "id": "S0277L01U09",
+   "before": {
+    "known": "we can go to the meeting",
+    "target": "我们能去会议"
+   },
+   "why": "去会议: same"
+  },
+  {
+   "id": "S0285L01B03",
+   "before": {
+    "known": "she speaks well",
+    "target": "她会说得好"
+   },
+   "why": "她会说得好 reads 'she will speak well' (会 + manner complement clash)"
+  },
+  {
+   "id": "S0285L01B04",
+   "before": {
+    "known": "she speaks very well",
+    "target": "她会说得很好"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0290L01B03",
+   "before": {
+    "known": "if he knows the answer to this",
+    "target": "他知不知道答案这个"
+   },
+   "why": "答案这个 is ungrammatical"
+  },
+  {
+   "id": "S0291L01B02",
+   "before": {
+    "known": "much better",
+    "target": "更好多了"
+   },
+   "why": "更好多了 stacks 更 and 多了; 'much better' (好多了) would drop the LEGO 更好"
+  },
+  {
+   "id": "S0291L01U06",
+   "before": {
+    "known": "she's much better at speaking Chinese than I am",
+    "target": "她说中文比我更好多了"
+   },
+   "why": "same 更好多了 fault"
+  },
+  {
+   "id": "S0300L01U03",
+   "before": {
+    "known": "I think this seems good",
+    "target": "我觉得这个显得很好"
+   },
+   "why": "这个显得很好 is odd Chinese and the English is stilted"
+  },
+  {
+   "id": "S0339L01B03",
+   "before": {
+    "known": "very hurt",
+    "target": "很伤"
+   },
+   "why": "很伤 is not Chinese for 'very hurt'"
+  },
+  {
+   "id": "S0348L01U04",
+   "before": {
+    "known": "I will try",
+    "target": "我将要试试"
+   },
+   "why": "将要 + 试试 is an ungrammatical mix"
+  },
+  {
+   "id": "S0351L01U08",
+   "before": {
+    "known": "stay quiet",
+    "target": "待着安静"
+   },
+   "why": "待着安静 is not Chinese; also a bare imperative USE"
+  },
+  {
+   "id": "S0376L01B03",
+   "before": {
+    "known": "went somewhere",
+    "target": "去了哪儿"
+   },
+   "why": "去了哪儿 is the question 'where did … go', not 'went somewhere'"
+  },
+  {
+   "id": "S0411L01U06",
+   "before": {
+    "known": "I have four people in my family",
+    "target": "我家庭有四人"
+   },
+   "why": "我家庭有四人 is not Chinese (我家有四口人 drops the LEGO 四人)"
+  },
+  {
+   "id": "S0412L01U04",
+   "before": {
+    "known": "she worked hard to win",
+    "target": "她努力工作来赢得"
+   },
+   "why": "赢得 needs an object; unfinished sentence"
+  },
+  {
+   "id": "S0420L01U04",
+   "before": {
+    "known": "how old is that child?",
+    "target": "那个孩子多大年纪？"
+   },
+   "why": "多大年纪 is the respectful 'how old' for older people, wrong for a child"
+  },
+  {
+   "id": "S0441L02B03",
+   "before": {
+    "known": "one approach here",
+    "target": "一种方法在这里"
+   },
+   "why": "一种方法在这里: wrong word order"
+  },
+  {
+   "id": "S0443L01U05",
+   "before": {
+    "known": "I think the same",
+    "target": "我觉得同样"
+   },
+   "why": "我觉得同样 is not Chinese"
+  },
+  {
+   "id": "S0455L04U03",
+   "before": {
+    "known": "he was tired yet still went",
+    "target": "他累了而还是去了"
+   },
+   "why": "而还是 is ungrammatical"
+  },
+  {
+   "id": "S0457L01B03",
+   "before": {
+    "known": "part of this",
+    "target": "这的一部分"
+   },
+   "why": "这的一部分 is ungrammatical"
+  },
+  {
+   "id": "S0457L01U04",
+   "before": {
+    "known": "part of this is right",
+    "target": "这的一部分是对的"
+   },
+   "why": "same 这的 fault"
+  },
+  {
+   "id": "S0457L03U03",
+   "before": {
+    "known": "what's the number of people?",
+    "target": "人数量是多少？"
+   },
+   "why": "人数量 is not Chinese"
+  },
+  {
+   "id": "S0464L02U05",
+   "before": {
+    "known": "he forgot even though I told him once",
+    "target": "他忘了即使我告诉过他一次"
+   },
+   "why": "即使 'even if' cannot follow the main clause like this"
+  },
+  {
+   "id": "S0466L01U02",
+   "before": {
+    "known": "she can't see over the wall",
+    "target": "她看不过墙"
+   },
+   "why": "看不过墙 is not Chinese"
+  },
+  {
+   "id": "S0477L01U02",
+   "before": {
+    "known": "she's on vacation",
+    "target": "她在假期"
+   },
+   "why": "她在假期 is not Chinese (在度假 drops the LEGO 假期)"
+  },
+  {
+   "id": "S0481L01U04",
+   "before": {
+    "known": "nobody else can do this, only her",
+    "target": "没有人能做这个，唯一的是她"
+   },
+   "why": "唯一的是她 is not natural Chinese (dark basket: LEGO not new)"
+  },
+  {
+   "id": "S0485L02B03",
+   "before": {
+    "known": "nothing makes me happier",
+    "target": "没有什么比让我更开心的"
+   },
+   "why": "比 left with nothing to compare (dark basket)"
+  },
+  {
+   "id": "S0492L02B01",
+   "before": {
+    "known": "interesting",
+    "target": "意思"
+   },
+   "why": "意思 alone = 'meaning', not 'interesting'"
+  },
+  {
+   "id": "S0493L01B02",
+   "before": {
+    "known": "what comes next",
+    "target": "接下来什么"
+   },
+   "why": "接下来什么 needs 是; the fixed form duplicates U01"
+  },
+  {
+   "id": "S0496L01U05",
+   "before": {
+    "known": "nobody planned for this",
+    "target": "没有人打算这个"
+   },
+   "why": "打算 needs a verb after it"
+  },
+  {
+   "id": "S0497L01B02",
+   "before": {
+    "known": "that sounds like",
+    "target": "听起来那个"
+   },
+   "why": "听起来那个 is not Chinese"
+  },
+  {
+   "id": "S0436L02U05",
+   "before": {
+    "known": "she said the requirements are very clear",
+    "target": "她说要求很明显"
+   },
+   "why": "明显 = obvious, not clear; 清楚 untaught"
+  },
+  {
+   "id": "S0502L03U01",
+   "before": {
+    "known": "she made a left turn",
+    "target": "她做了向左转"
+   },
+   "why": "做了向左转 is ungrammatical; the fix would clash with B02 (dark basket)"
+  },
+  {
+   "id": "S0505L01U05",
+   "before": {
+    "known": "I was told about that",
+    "target": "我被告诉了那个"
+   },
+   "why": "被告诉了那个 is not natural Chinese (dark basket)"
+  },
+  {
+   "id": "S0506L01B03",
+   "before": {
+    "known": "long ago",
+    "target": "很久之前多年前"
+   },
+   "why": "two phrases glued together"
+  },
+  {
+   "id": "S0508L01B03",
+   "before": {
+    "known": "worry about",
+    "target": "担心关于"
+   },
+   "why": "关于 cannot dangle after 担心 (dark basket)"
+  },
+  {
+   "id": "S0520L01U03",
+   "before": {
+    "known": "I ate the whole thing",
+    "target": "我吃了整个"
+   },
+   "why": "整个 needs a noun"
+  },
+  {
+   "id": "S0520L01U05",
+   "before": {
+    "known": "nobody saw the whole thing",
+    "target": "没有人看到了整个"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0520L02U05",
+   "before": {
+    "known": "I want to be with my family",
+    "target": "我想和家庭在一起"
+   },
+   "why": "家庭 = household; 'be with my family' needs 家人 (dark basket)"
+  },
+  {
+   "id": "S0522L03B02",
+   "before": {
+    "known": "tell us the truth",
+    "target": "告诉我们说实话"
+   },
+   "why": "告诉我们说实话 stacks two verbs; 告诉我们实话 would drop the LEGO"
+  },
+  {
+   "id": "S0522L04U04",
+   "before": {
+    "known": "nobody wants to be stupid",
+    "target": "没有人想很傻"
+   },
+   "why": "想 cannot take 很傻"
+  },
+  {
+   "id": "S0532L01U06",
+   "before": {
+    "known": "I can't win unless I try",
+    "target": "除非我试，我不能赢得"
+   },
+   "why": "赢得 needs an object"
+  },
+  {
+   "id": "S0532L02U06",
+   "before": {
+    "known": "unless you have good luck, you can't win",
+    "target": "除非你运气好，你不能赢得"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0535L01U03",
+   "before": {
+    "known": "nobody keeps their promises",
+    "target": "没有人答应过就做到"
+   },
+   "why": "garbled; does not say 'keep their promises'"
+  },
+  {
+   "id": "S0535L03U04",
+   "before": {
+    "known": "nobody wants to be wrong",
+    "target": "没有人想错"
+   },
+   "why": "想错 = think wrongly, not want to be wrong"
+  },
+  {
+   "id": "S0539L01U05",
+   "before": {
+    "known": "I thought so but she didn't",
+    "target": "我以为是但是她不以为"
+   },
+   "why": "不以为 fault, garbled (dark basket)"
+  },
+  {
+   "id": "S0542L01U04",
+   "before": {
+    "known": "nobody thinks about it whenever she leaves",
+    "target": "没有人每当她离开就想"
+   },
+   "why": "word order broken"
+  },
+  {
+   "id": "S0542L01U05",
+   "before": {
+    "known": "whenever he makes a promise",
+    "target": "每当他答应过"
+   },
+   "why": "过 does not fit after 每当"
+  },
+  {
+   "id": "S0542L02U04",
+   "before": {
+    "known": "nobody feels good about that",
+    "target": "没有人感到好"
+   },
+   "why": "incomplete Chinese (dark basket)"
+  },
+  {
+   "id": "S0546L04U04",
+   "before": {
+    "known": "nobody came again",
+    "target": "没有人又来了"
+   },
+   "why": "又 does not combine with 没有人…了"
+  },
+  {
+   "id": "S0549L01U03",
+   "before": {
+    "known": "nobody has to stay",
+    "target": "没有人得留下"
+   },
+   "why": "得 děi is not negated this way"
+  },
+  {
+   "id": "S0549L01U07",
+   "before": {
+    "known": "do it differently",
+    "target": "做得不一样"
+   },
+   "why": "uses 得 de (complement marker), not the LEGO 得 děi 'have to'"
+  },
+  {
+   "id": "S0549L01U08",
+   "before": {
+    "known": "if I'd known I'd have done things differently",
+    "target": "如果我知道，我会做得不一样"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0549L01U09",
+   "before": {
+    "known": "she does things differently",
+    "target": "她做得不一样"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0549L02B03",
+   "before": {
+    "known": "stay here",
+    "target": "保持在这里"
+   },
+   "why": "保持 cannot take a place"
+  },
+  {
+   "id": "S0549L02U05",
+   "before": {
+    "known": "keep doing it",
+    "target": "保持做这个"
+   },
+   "why": "保持 cannot take a verb phrase"
+  },
+  {
+   "id": "S0549L02U06",
+   "before": {
+    "known": "she said to keep going",
+    "target": "她说保持去做"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0556L01U03",
+   "before": {
+    "known": "nobody is quiet late at night",
+    "target": "没有人深夜安静"
+   },
+   "why": "nonsensical"
+  },
+  {
+   "id": "S0559L01U04",
+   "before": {
+    "known": "she passed through the end",
+    "target": "她穿过了尽头"
+   },
+   "why": "nonsense in both languages"
+  },
+  {
+   "id": "S0561L01U04",
+   "before": {
+    "known": "nobody drives fast",
+    "target": "没有人开车很快"
+   },
+   "why": "needs the complement 开得很快"
+  },
+  {
+   "id": "S0563L03U03",
+   "before": {
+    "known": "I can't wait longer",
+    "target": "我不能更久地等"
+   },
+   "why": "我不能更久地等 is ungrammatical; 我不能再等了 drops the LEGO 久"
+  },
+  {
+   "id": "S0566L01U05",
+   "before": {
+    "known": "nobody thought carefully",
+    "target": "没有人仔细想想"
+   },
+   "why": "想想 is the 'think a bit' suggestion form, not a past tense"
+  },
+  {
+   "id": "S0592L02U03",
+   "before": {
+    "known": "nobody walked along",
+    "target": "没有人沿着走"
+   },
+   "why": "沿着 needs a place"
+  },
+  {
+   "id": "S0597L03U04",
+   "before": {
+    "known": "I want to know more about it",
+    "target": "我想多了解关于这件事"
+   },
+   "why": "关于-phrase cannot be the object like this (dark basket)"
+  },
+  {
+   "id": "S0597L03U05",
+   "before": {
+    "known": "she told me about it",
+    "target": "她告诉了我关于这件事"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0597L03U06",
+   "before": {
+    "known": "what do you know about it?",
+    "target": "你知道关于这件事什么？"
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0600L01U05",
+   "before": {
+    "known": "you look so tired",
+    "target": "你看起来有多累啊"
+   },
+   "why": "有多累 = how tired, not so tired"
+  },
+  {
+   "id": "S0602L01B02",
+   "before": {
+    "known": "how it started",
+    "target": "一开始是怎么"
+   },
+   "why": "Chinese and English do not match"
+  },
+  {
+   "id": "S0603L01B03",
+   "before": {
+    "known": "at the time",
+    "target": "那时我们"
+   },
+   "why": "Chinese and English do not match"
+  },
+  {
+   "id": "S0615L04U03",
+   "before": {
+    "known": "it takes courage to say that",
+    "target": "说出那样的话需要勇敢"
+   },
+   "why": "勇敢 is an adjective; 'courage' (勇气) would drop the LEGO"
+  },
+  {
+   "id": "S0618L01B03",
+   "before": {
+    "known": "I feel like it",
+    "target": "感觉像这样"
+   },
+   "why": "'I feel like it' means something else"
+  },
+  {
+   "id": "S0622L03U05",
+   "before": {
+    "known": "they made it happen",
+    "target": "他们把它弄好了"
+   },
+   "why": "Chinese says 'they fixed it', not 'made it happen'"
+  },
+  {
+   "id": "S0627L01U04",
+   "before": {
+    "known": "I'm ready to go",
+    "target": "我准备好了"
+   },
+   "why": "no 'to go' in the Chinese, and the row does not hold its LEGO"
+  },
+  {
+   "id": "S0633L01U06",
+   "before": {
+    "known": "whatever works is fine",
+    "target": "什么方法就好"
+   },
+   "why": "什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
+  },
+  {
+   "id": "S0644L01U03",
+   "before": {
+    "known": "she came again",
+    "target": "她再来了"
+   },
+   "why": "再 is future 'again'; past is 又, which drops the LEGO (dark basket)"
+  }
+ ],
+ "missing": []
+}

@@ -1,0 +1,2224 @@
+{
+ "job": "#219",
+ "items": [
+  {
+   "id": "seed:2",
+   "before": {
+    "known": "I'm trying to learn",
+    "target": "我试试学习"
+   },
+   "reader_why": "Out of scope, listed. 我试试学习 for 'I'm trying to learn': 试试 is 'give it a go', so this reads 'I'll give studying a go'. 'trying to' is 试着 / 在努力. The S0002L01 LEGO 'to try | 试试' drives a whole pattern of '试试 + verb' rows. Pattern also at S0006 seed, S0034L01U03, S0133L01U07, S0135L01U04, S0146 seed + L02U03/U07/U08, S0148L02U06, S0149L01U03.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "seed:6",
+   "before": {
+    "known": "I'm trying to remember a word",
+    "target": "我试试想起一个词"
+   },
+   "reader_why": "Out of scope, listed. 我试试想起一个词: 想起 is 'it comes back to me', so 'try to 想起' and 我想想起 (S0006L01B02) are awkward. Natural: 我在努力想一个词.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "seed:21",
+   "before": {
+    "known": "why are you learning her name?",
+    "target": "你为什么学她的名字？"
+   },
+   "reader_why": "Out of scope, listed. 学她的名字 'study her name' is odd Chinese; people 记 (remember) a name. Phrase rows under it are fixed above as A.",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D2) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0030L01U05",
+   "before": {
+    "known": "yesterday I practised a lot",
+    "target": "我昨天多练习"
+   },
+   "reader_why": "Chinese does not match: 我昨天多练习 is 'I practise more yesterday' (an instruction), not 'I practised a lot'; that needs 练习了很多 (了 not yet taught).",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D3) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0039L02U02",
+   "before": {
+    "known": "it's a bit too much time",
+    "target": "有点太多时间"
+   },
+   "reader_why": "Chinese word order: 有点太多时间 should be 时间有点太多.",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D4) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0049L01U05",
+   "before": {
+    "known": "if you make mistakes, it's okay",
+    "target": "如果你犯错，还行"
+   },
+   "reader_why": "还行 means 'so-so / passable', not 'it's okay' (= 没关系) or 'that's fine'. Same in S0050L01U03.",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D5) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0056L01U08",
+   "before": {
+    "known": "I want to do a few things",
+    "target": "我想做几个事"
+   },
+   "reader_why": "Measure word: things/matters take 件 (几件事, 这件事 — the course's own S0030 一件事 / seed 37 这件事), not 个. Same at S0056L01B03 几个事 and S0051L04B03 这个事.",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D6) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0058L02B03",
+   "before": {
+    "known": "not enough",
+    "target": "不足够"
+   },
+   "reader_why": "不足够 is stilted; 'not enough' is 不够. Same in S0058L02U03.",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D6) — out of scope, left to #214"
+  },
+  {
+   "id": "zho_for_eng:S0069L01U09",
+   "before": {
+    "known": "I don't want to say that",
+    "target": "我不想说那"
+   },
+   "reader_why": "那 alone cannot be an object: 我不想说那 → 我不想说那个. Same in U12 我在解释那; U13 'I feel that | 我觉得那' is broken on both sides (delete).",
+   "bucket": "ruled",
+   "note": "already ruled by Kai (D6) — out of scope, left to #214"
+  },
+  {
+   "id": "S0073L02",
+   "before": {
+    "known": "more to learn",
+    "target": "更多要学"
+   },
+   "reader_why": "LEGO 'more to learn | 更多要学': the seed says 还有很多要学 ('a lot to learn'); 更多要学 is neither in the seed (L26) nor natural.",
+   "bucket": 3,
+   "kai": "k-73"
+  },
+  {
+   "id": "seed:76",
+   "before": {
+    "known": "I'm very happy with how much I've learnt already",
+    "target": "我对自己已经学会的这么多很满意"
+   },
+   "reader_why": "Seed Chinese 我对自己已经学会的这么多很满意 is ungrammatical (这么多 cannot follow 的 like that). Natural: 我对自己已经学了这么多很满意.",
+   "bucket": 3,
+   "kai": "k-76"
+  },
+  {
+   "id": "zho_for_eng:S0085L01U04",
+   "before": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人吗？"
+   },
+   "reader_why": "告诉我关于那些人 is ungrammatical (关于… needs a noun: 关于那些人的事). Same in S0111L01U03.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人的事吗？",
+    "roman": "nǐ néng gàosu wǒ guānyú nàxiē rén de shì ma?"
+   },
+   "why": "关于 needs a noun after it: 关于那些人 → 关于那些人的事 ('the matters about those people')"
+  },
+  {
+   "id": "zho_for_eng:S0088L01U02",
+   "before": {
+    "known": "are you ready?",
+    "target": "你准备好吗？"
+   },
+   "reader_why": "ZUT: 'are you ready?' is 你准备好吗 here but 你准备好了吗 in S0080L02U03 and S0095L01U02. The 了 form is the natural one.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "are you ready?",
+    "target": "你准备好了吗？",
+    "roman": "nǐ zhǔnbèi hǎo le ma?"
+   },
+   "why": "'are you ready?' needs 了 (as S0080L02U03, S0095L01U02, S0252L01U02 already have)"
+  },
+  {
+   "id": "S0091L01",
+   "before": {
+    "known": "speak more quickly",
+    "target": "说得更快"
+   },
+   "reader_why": "LEGO 'speak more quickly | 说得更快' is not in its seed (seed: 想得够快 'think quickly enough'), L26.",
+   "bucket": 3,
+   "kai": "k-91"
+  },
+  {
+   "id": "zho_for_eng:S0094L02B04",
+   "before": {
+    "known": "only this",
+    "target": "唯一这个"
+   },
+   "reader_why": "唯一这个 is ungrammatical (唯一 needs 的 + noun).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "唯一这个 is ungrammatical (唯一 needs 的 + noun); no taught fix keeps the LEGO"
+  },
+  {
+   "id": "S0095L03",
+   "before": {
+    "known": "bus",
+    "target": "班车"
+   },
+   "reader_why": "LEGO 'bus | 班车': 班车 on its own is a shuttle/company bus; in the seed 下一班车 the 班 is the measure for scheduled runs. The course later teaches 'bus' = 公交车 (S0120), so 'take the bus' has two answers. Kai's call alongside the S0095L02 re-cut. Builds 'take bus' / 'ready to take bus' also lack 'the'.",
+   "bucket": 3,
+   "kai": "k-95bus"
+  },
+  {
+   "id": "S0101L03",
+   "before": {
+    "known": "course",
+    "target": "门"
+   },
+   "reader_why": "LEGO 'course | 门': 门 is a measure word (for languages/courses), never 'course' itself; its phrases use bare 这门 / 那门 with no noun, which is not Chinese (做这门, 练这门). Propose merging into 'this language | 这门语言'.",
+   "bucket": 3,
+   "kai": "k-101"
+  },
+  {
+   "id": "seed:103",
+   "before": {
+    "known": "we're not trying to hear many more words",
+    "target": "我们不是想再听很多更多的词"
+   },
+   "reader_why": "Seed 我们不是想再听很多更多的词 stacks 很多 and 更多 — ungrammatical. Natural: 我们不是想再听更多的词.",
+   "bucket": 3,
+   "kai": "k-103"
+  },
+  {
+   "id": "seed:108",
+   "before": {
+    "known": "we didn't hope to wake in the middle of the night",
+    "target": "我们没希望半夜醒来"
+   },
+   "reader_why": "Seed 我们没希望半夜醒来: 没希望 means 'hopeless / no hope', not 'didn't hope to'. The English 'we didn't hope to wake…' is also stilted.",
+   "bucket": 3,
+   "kai": "k-108"
+  },
+  {
+   "id": "zho_for_eng:S0111L01U08",
+   "before": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想快学这新东西"
+   },
+   "reader_why": "快学 is not idiomatic and 'quickly' is taught as 尽快 (S0020L02) — ZUT.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想尽快学这新东西",
+    "roman": "wǒ xiǎng jǐnkuài xué zhè xīn dōngxi"
+   },
+   "why": "快学 is not idiomatic; 'quickly' is taught as 尽快 (S0020L02)"
+  },
+  {
+   "id": "S0121L01",
+   "before": {
+    "known": "unusual",
+    "target": "寻常"
+   },
+   "reader_why": "LEGO 'unusual | 寻常': 寻常 means 'usual/ordinary'; 'unusual' is 不寻常 (every phrase already says 不寻常). The LEGO teaches the opposite meaning. Re-cut to 'unusual | 不寻常'.",
+   "bucket": 3,
+   "kai": "k-121"
+  },
+  {
+   "id": "S0129L01",
+   "before": {
+    "known": "so happy",
+    "target": "这么高兴"
+   },
+   "reader_why": "LEGO 'so happy | 这么高兴' is not in its seed (seed: 很高兴 … 这么好), L26; and 我这么高兴 as a plain statement is unnatural.",
+   "bucket": 3,
+   "kai": "k-129"
+  },
+  {
+   "id": "seed:130",
+   "before": {
+    "known": "that was a surprise, because he's my friend",
+    "target": "那很意外，但是他是我的朋友"
+   },
+   "reader_why": "Seed: English 'because' but Chinese 但是 'but' — the learner is taught 但是 = because, against S0022's 因为. Same in S0130L03U06.",
+   "bucket": 3,
+   "kai": "k-130"
+  },
+  {
+   "id": "zho_for_eng:S0137L01U04",
+   "before": {
+    "known": "she wants it to be perfect",
+    "target": "她想那完美"
+   },
+   "reader_why": "她想那完美 is ungrammatical ('she wants that perfect'); 她想让它完美 uses taught 让/它.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "she wants it to be perfect",
+    "target": "她想让它完美",
+    "roman": "tā xiǎng ràng tā wánměi"
+   },
+   "why": "她想那完美 'she wants that perfect' is ungrammatical; 想让它完美 = wants it to be perfect"
+  },
+  {
+   "id": "S0147L01",
+   "before": {
+    "known": "very nervous",
+    "target": "非常紧张"
+   },
+   "reader_why": "LEGO 'very nervous | 非常紧张': 'very' is taught as 很 (S0013) and 非常 as 'extremely' (S0125); so 'I'm very nervous' has two answers.",
+   "bucket": 3,
+   "kai": "k-147"
+  },
+  {
+   "id": "zho_for_eng:S0148L01U04",
+   "before": {
+    "known": "I'm not very good at this",
+    "target": "我这个不太好"
+   },
+   "reader_why": "我这个不太好 is not Chinese for 'I'm not very good at this'.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "我这个不太好 is not Chinese for 'not very good at this'; needs untaught 擅长"
+  },
+  {
+   "id": "zho_for_eng:S0156L01U14",
+   "before": {
+    "known": "where did she go?",
+    "target": "她去哪里？"
+   },
+   "reader_why": "'where did she go?' needs 了 (她去哪里了？), as U15 has.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "where did she go?",
+    "target": "她去哪里了？",
+    "roman": "tā qù nǎlǐ le?"
+   },
+   "why": "past question 'where did she go?' needs 了, as U15 has"
+  },
+  {
+   "id": "S0157L02",
+   "before": {
+    "known": "be able to",
+    "target": "办法"
+   },
+   "reader_why": "LEGO 'be able to | 办法': 办法 is 'way/means' (already taught as 'way | 办法', S0094L01); 没办法 is 'no way to'. The gloss teaches 办法 = be able to, and 'won't be able to' now has two answers (不能 / 没办法). Propose 'no way to | 没办法' (in the seed).",
+   "bucket": 3,
+   "kai": "k-157"
+  },
+  {
+   "id": "zho_for_eng:S0159L01U03",
+   "before": {
+    "known": "I don't know what I'm trying to say",
+    "target": "我不知道我想说的"
+   },
+   "reader_why": "我不知道我想说的 is ungrammatical for 'I don't know what I'm trying to say' (needs 我想说什么). Same in U07.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "我不知道我想说的 is ungrammatical (needs 什么), and 什么 would break the LEGO 我想说的"
+  },
+  {
+   "id": "zho_for_eng:S0162L01B03",
+   "before": {
+    "known": "what do you think about that",
+    "target": "你觉得怎么样那个"
+   },
+   "reader_why": "你觉得怎么样那个 puts the object after 怎么样 — ungrammatical; 你觉得那个怎么样 (LEGO words around it, K49).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "what do you think about that",
+    "target": "那个你觉得怎么样",
+    "roman": "nàge nǐ juéde zěnmeyàng"
+   },
+   "why": "object 那个 cannot follow 怎么样; it is fronted as the topic"
+  },
+  {
+   "id": "seed:166",
+   "before": {
+    "known": "my name is not very unusual",
+    "target": "我的名字并不太不寻常"
+   },
+   "reader_why": "Seed 我的名字并不太不寻常 stacks negatives (并不 + 太 + 不寻常) — not natural Chinese; 'not very unusual' is 并不怎么特别 / 不算太特别. Whole LEGO S0166L01 follows it.",
+   "bucket": 3,
+   "kai": "k-166"
+  },
+  {
+   "id": "seed:178",
+   "before": {
+    "known": "I didn't have time, although I wanted to see you",
+    "target": "但是我没时间，虽然我想见你"
+   },
+   "reader_why": "The Chinese starts with 但是 'but' although the English has no 'but', and puts the 虽然 'although' clause last after a 但是 clause — Chinese pairs these as 虽然 A，但是 B. Seed edit (blast radius) → held. The proposed version swaps the clauses on both sides.",
+   "bucket": 3,
+   "kai": "k-178"
+  },
+  {
+   "id": "seed:185",
+   "before": {
+    "known": "I think you left them at work",
+    "target": "我觉得你把它们落在工作地方了"
+   },
+   "reader_why": "工作地方 'work place' is not a Chinese word; it needs 的 (工作的地方 'the place where you work'). Seed edit → held.",
+   "bucket": 3,
+   "kai": "k-185"
+  },
+  {
+   "id": "zho_for_eng:S0195L01B03",
+   "before": {
+    "known": "find the money",
+    "target": "找钱"
+   },
+   "reader_why": "找钱 zhǎo qián is the fixed expression 'give change (at a till)', so 'find the money' here teaches the wrong sense. A build, heard once. Options: delete, or 'find my money | 找我的钱' (cf. U06 我想找我的钱).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "找钱 is the fixed phrase 'give change'; teaches the wrong sense"
+  },
+  {
+   "id": "S0198L01",
+   "before": {
+    "known": "the council",
+    "target": "市政府"
+   },
+   "reader_why": "LEGO is 'the council | 市政府', but every phrase under it teaches 市 alone as 'city' (在市里, 市在哪里). 市在哪里 'where is the city?' is not natural Chinese, and 'in the city' is later taught as 在城市里 (S0302L01) — the same English then has two Chinese answers (ZUT): S0198L01U02 'she works in the city | 她在市里工作' vs S0302L01U04 '…work in the city | 在城市里工作'; S0284L01U05 '…lives in the city | 住在市里' vs S0302L01B03 'live in the city | 住在城市里'. The phrase set should be rebuilt around 市政府 'the council'. LEGO/phrase re-make → Kai's call.",
+   "bucket": 3,
+   "kai": "k-198"
+  },
+  {
+   "id": "S0221L03",
+   "before": {
+    "known": "part",
+    "target": "部"
+   },
+   "reader_why": "部 here is the measure word for films (一部电影 'a film'), but the LEGO and its intro gloss it 'part; section'. So B02 'this part | 这部' and U01 'I watched one part | 我看了一部' teach the wrong meaning ('this part' is 这部分). Re-gloss the LEGO (e.g. 'one (film)') and re-make its phrases with 电影 in them.",
+   "bucket": 3,
+   "kai": "k-221"
+  },
+  {
+   "id": "seed:222",
+   "before": {
+    "known": "he's trying to tell me what he wants",
+    "target": "他在试试告诉我他想要什么"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call. Seed edit → held; proposed rewording uses 想 (lit. 'he wants to tell me what he wants').",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "seed:226",
+   "before": {
+    "known": "the man is trying to help me",
+    "target": "那个男人在试试帮我"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call. Seed edit → held.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0222L01B02",
+   "before": {
+    "known": "I'm trying",
+    "target": "我在试试"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0222L01B03",
+   "before": {
+    "known": "he's trying",
+    "target": "他在试试"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0222L01U01",
+   "before": {
+    "known": "I'm trying to read this book",
+    "target": "我在试试看这本书"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0222L02U08",
+   "before": {
+    "known": "I'm trying to tell you",
+    "target": "我在试试告诉你"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0222L03U05",
+   "before": {
+    "known": "he's trying to tell me what he wants",
+    "target": "他在试试告诉我他想要什么"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0226L01U01",
+   "before": {
+    "known": "that man is trying to help me",
+    "target": "那个男人在试试帮我"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0228L02U04",
+   "before": {
+    "known": "she's trying to speak",
+    "target": "她在试试说话"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0229L01U01",
+   "before": {
+    "known": "that woman is trying to help me",
+    "target": "那个女人在试试帮我"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0230L01U04",
+   "before": {
+    "known": "I'm trying to get to know him",
+    "target": "我在试试认识他"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0230L02U02",
+   "before": {
+    "known": "that young woman is trying to help me",
+    "target": "那个年轻女人在试试帮我"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0230L04U04",
+   "before": {
+    "known": "she's trying to work",
+    "target": "她在试试工作"
+   },
+   "reader_why": "在试试 is ungrammatical: the progressive marker 在 'be …-ing' cannot be followed by the doubled verb 试试 'have a try'. Natural Chinese is 在试着… or simply 想… ('wants to'). 试着 is not taught, so each row needs rewording (e.g. 想 'want to') or deleting — Kai's call.",
+   "bucket": 2,
+   "note": "试试 \"trying to\" pattern — with Tom; untouched"
+  },
+  {
+   "id": "zho_for_eng:S0224L01B03",
+   "before": {
+    "known": "he's starting",
+    "target": "他在开始"
+   },
+   "reader_why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "bucket": "after214",
+   "note": "S0224L01 is A9 (#214 re-glosses it and makes it not-new); 在开始 rows decided after #214 lands"
+  },
+  {
+   "id": "zho_for_eng:S0224L01U02",
+   "before": {
+    "known": "he's starting to learn now",
+    "target": "他现在在开始学"
+   },
+   "reader_why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "bucket": "after214",
+   "note": "same"
+  },
+  {
+   "id": "zho_for_eng:S0224L01U08",
+   "before": {
+    "known": "she's starting to try now",
+    "target": "她现在在开始试试"
+   },
+   "reader_why": "在开始 'be in the middle of starting' is unnatural Chinese; 'he's starting to learn now' is 他现在开始学了. (U08 also stacks 在开始试试.) Rewording to 现在开始…了 is tileable but is a judgement → held.",
+   "bucket": "after214",
+   "note": "same"
+  },
+  {
+   "id": "seed:231",
+   "before": {
+    "known": "I know an old man who wanted to ask for help",
+    "target": "我认识一个老男人，他以前想请求帮助"
+   },
+   "reader_why": "老男人 'old male-person' is not how Chinese says 'an old man' — it sounds crude ('old geezer'). The course's own later LEGO is 老人 'an old man / old person' (S0264L01). Seed + LEGO edit → held.",
+   "bucket": 3,
+   "kai": "k-231"
+  },
+  {
+   "id": "S0232L01",
+   "before": {
+    "known": "woman",
+    "target": "妇人"
+   },
+   "reader_why": "Second Chinese for 'woman': S0229L01 teaches 'woman | 女人', this LEGO teaches 'woman | 妇人' (妇人 is old-fashioned/literary). Exact ZUT clash: S0230L01U02 'do you know that woman? | 你认识那个女人吗？' vs S0232L01U04 'do you know that woman? | 你认识那个妇人吗'. 老妇人 'old woman' (S0232L02) is fine as a whole chunk; the bare 'woman | 妇人' LEGO is the problem. Never delete a LEGO: options are to grow it to 'old woman | 老妇人' (merge with L02) or give it a distinct English (e.g. 'lady').",
+   "bucket": 3,
+   "kai": "k-232"
+  },
+  {
+   "id": "S0239L01",
+   "before": {
+    "known": "my mother",
+    "target": "我妈妈"
+   },
+   "reader_why": "ZUT at LEGO level: 'my mother' is taught as 我妈 (S0181L02B01 'my mother | 我妈') and again here as 我妈妈. Both are correct Chinese (妈 is more colloquial), but the same English now has two answers across the course. Kai's call which one 'my mother' maps to.",
+   "bucket": 3,
+   "kai": "k-mother"
+  },
+  {
+   "id": "S0266L01",
+   "before": {
+    "known": "my father",
+    "target": "我父亲"
+   },
+   "reader_why": "ZUT at LEGO level: 'my father' is 我爸爸 (S0240L01B02) and here 我父亲 (formal 'father'). Same English, two answers (e.g. S0240L01U11 'you must tell my father | 你必须告诉我爸爸' vs S0266L01U03 'do you know my father? | 你认识我父亲吗？'). Seed 266 'an old friend of my father' is fine either way. Kai's call.",
+   "bucket": 3,
+   "kai": "k-father"
+  },
+  {
+   "id": "zho_for_eng:S0259L01U02",
+   "before": {
+    "known": "I think that's a good idea",
+    "target": "我觉得那是个好想法"
+   },
+   "reader_why": "Exact ZUT clash: S0123L01U02 'I think that's a good idea | 我觉得这是个好主意' vs this row '…| 我觉得那是个好想法'. Two Chinese answers for one English. 好主意 is the more natural 'good idea'; this LEGO teaches 想法 'idea/thought'. Delete or reword this phrase (e.g. 'I like your idea')?",
+   "bucket": 3,
+   "kai": "k-259"
+  },
+  {
+   "id": "zho_for_eng:S0260L01U03",
+   "before": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "我一点头绪都没有该做什么"
+   },
+   "reader_why": "我一点头绪都没有该做什么 is ungrammatical: the 'what to do' part cannot trail after 都没有. It must come first (该做什么，我一点头绪都没有).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "该做什么，我一点头绪都没有",
+    "roman": "gāi zuò shénme, wǒ yìdiǎn tóuxù dōu méiyǒu"
+   },
+   "why": "'what to do' cannot trail after 都没有; it comes first"
+  },
+  {
+   "id": "zho_for_eng:S0252L01U05",
+   "before": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天准备好"
+   },
+   "reader_why": "'by tomorrow' is rendered 在明天 'on/at tomorrow', which says 'I need to get ready tomorrow', not 'by tomorrow' (明天之前). Reword: 'I need to be ready before tomorrow | 我需要在明天之前准备好' (之前 taught S0249L01) — a meaning change, so held.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天之前准备好",
+    "roman": "wǒ xūyào zài míngtiān zhīqián zhǔnbèi hǎo"
+   },
+   "why": "在明天 says 'tomorrow', not 'by tomorrow'; 'by' = 之前 (taught S0249)"
+  },
+  {
+   "id": "zho_for_eng:S0276L01U04",
+   "before": {
+    "known": "let me think about this for a little while",
+    "target": "让我想一会儿这个"
+   },
+   "reader_why": "让我想一会儿这个 — the object 这个 'this' cannot follow the duration 一会儿; Chinese would say 让我想一会儿 or 这个让我想一会儿.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "让我想一会儿这个: object cannot follow the duration; no fix keeps the English"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U04",
+   "before": {
+    "known": "unfortunately I have to go to a meeting",
+    "target": "很遗憾我得去会议"
+   },
+   "reader_why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "去会议 is not Chinese (开会/参加会议 untaught here)"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U06",
+   "before": {
+    "known": "I'm willing to come to the meeting",
+    "target": "我愿意来会议"
+   },
+   "reader_why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "来会议: same"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U09",
+   "before": {
+    "known": "we can go to the meeting",
+    "target": "我们能去会议"
+   },
+   "reader_why": "去会议/来会议 'go/come to meeting' is not how Chinese says it: you 开会 'hold/attend a meeting' or 参加会议 'attend the meeting'. 开会 is never taught and 参加 only arrives at S0292, so the row cannot be fixed from taught material at this point — reword without 'go to' (e.g. 'I have a meeting') or delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "去会议: same"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B03",
+   "before": {
+    "known": "she speaks well",
+    "target": "她会说得好"
+   },
+   "reader_why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "她会说得好 reads 'she will speak well' (会 + manner complement clash)"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B04",
+   "before": {
+    "known": "she speaks very well",
+    "target": "她会说得很好"
+   },
+   "reader_why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "zho_for_eng:S0285L01U01",
+   "before": {
+    "known": "she speaks Chinese very well",
+    "target": "她会说中文说得很好"
+   },
+   "reader_why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "bucket": 3,
+   "kai": "k-285"
+  },
+  {
+   "id": "zho_for_eng:S0285L01U04",
+   "before": {
+    "known": "I think she speaks very well",
+    "target": "我想她会说得很好"
+   },
+   "reader_why": "会说得(很)好 mixes 会 'can / will' with the manner complement 说得好 'speaks well'. As written it reads 'she will speak (very) well' (a prediction), not 'she speaks well'. Natural: 她(中文)说得很好. U01 她会说中文说得很好 is also awkward. The LEGO 'she speaks | 她会说' (lit. 'she can speak') does not fit a manner sentence, so these rows need rewording or deleting.",
+   "bucket": 3,
+   "kai": "k-285"
+  },
+  {
+   "id": "zho_for_eng:S0290L01B03",
+   "before": {
+    "known": "if he knows the answer to this",
+    "target": "他知不知道答案这个"
+   },
+   "reader_why": "他知不知道答案这个 is ungrammatical — 这个 'this' cannot trail after 答案. 'the answer to this' would be 这个的答案. A build; reword or delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "答案这个 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0291L01B02",
+   "before": {
+    "known": "much better",
+    "target": "更好多了"
+   },
+   "reader_why": "更好多了 is ungrammatical — 更 'more' and 多了 'much more' cannot be stacked. 'much better' is 好多了; '…much better than me' is 比我好多了 or 比我更好.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "更好多了 stacks 更 and 多了; 'much better' (好多了) would drop the LEGO 更好"
+  },
+  {
+   "id": "zho_for_eng:S0291L01U06",
+   "before": {
+    "known": "she's much better at speaking Chinese than I am",
+    "target": "她说中文比我更好多了"
+   },
+   "reader_why": "更好多了 is ungrammatical — 更 'more' and 多了 'much more' cannot be stacked. 'much better' is 好多了; '…much better than me' is 比我好多了 or 比我更好.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same 更好多了 fault"
+  },
+  {
+   "id": "zho_for_eng:S0300L01U03",
+   "before": {
+    "known": "I think this seems good",
+    "target": "我觉得这个显得很好"
+   },
+   "reader_why": "显得 means 'come across as / seem (to others)', typically with a quality (显得不友好); 这个显得很好 'this comes across as good' is odd Chinese and the English 'I think this seems good' is stilted. Reword or delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "这个显得很好 is odd Chinese and the English is stilted"
+  },
+  {
+   "id": "zho_for_eng:S0322L01U06",
+   "before": {
+    "known": "he's reading the same book as me",
+    "target": "他在读和我同一本书"
+   },
+   "reader_why": "他在读和我同一本书 is ungrammatical ('reading with-me same book'). Natural: 他和我在读同一本书 'he and I are reading the same book' — all taught chunks.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "he's reading the same book as me",
+    "target": "他和我在读同一本书",
+    "roman": "tā hé wǒ zài dú tóng yì běn shū"
+   },
+   "why": "在读和我同一本书 is ungrammatical; 和我 goes before the verb"
+  },
+  {
+   "id": "S0323L01",
+   "before": {
+    "known": "school",
+    "target": "校"
+   },
+   "reader_why": "LEGO target is 校, which is not a word on its own; every phrase under it uses 学校 'school'. LEGO target should be 学校 (the seed says 学校). Data/LEGO edit → held.",
+   "bucket": 3,
+   "kai": "k-323"
+  },
+  {
+   "id": "zho_for_eng:S0333L01B02",
+   "before": {
+    "known": "spend time with you",
+    "target": "和你花时间"
+   },
+   "reader_why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "spend time with you",
+    "target": "花时间和你在一起",
+    "roman": "huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "和你花时间 is an English calque; Chinese shape is 花时间和…在一起 (as the seed itself)"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U01",
+   "before": {
+    "known": "I want to spend time with you",
+    "target": "我想和你花时间"
+   },
+   "reader_why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I want to spend time with you",
+    "target": "我想花时间和你在一起",
+    "roman": "wǒ xiǎng huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "same calque"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U06",
+   "before": {
+    "known": "do you want to spend time with them?",
+    "target": "你想和他们花时间吗"
+   },
+   "reader_why": "和你花时间 'spend time with you' is a word-for-word calque; Chinese says 花时间和你在一起 or 陪你. The seed itself shows the right shape: 花…时间和大家在一起. Reword e.g. 我想花时间和你在一起.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "do you want to spend time with them?",
+    "target": "你想花时间和他们在一起吗",
+    "roman": "nǐ xiǎng huā shíjiān hé tāmen zài yìqǐ ma"
+   },
+   "why": "same calque"
+  },
+  {
+   "id": "zho_for_eng:S0232L01U04",
+   "before": {
+    "known": "do you know that woman?",
+    "target": "你认识那个妇人吗"
+   },
+   "reader_why": "Exact ZUT clash with S0230L01U02 'do you know that woman? | 你认识那个女人吗？' — see the S0232L01 decision.",
+   "bucket": 3,
+   "kai": "k-232"
+  },
+  {
+   "id": "S0336L01",
+   "before": {
+    "known": "door",
+    "target": "扇"
+   },
+   "reader_why": "LEGO says 'door | 扇' but 扇 is only the measure word for doors/windows; 'door' is 门. The LEGO should be 'that door | 那扇门' (or the intro must say 扇 is the counter). L26-correct: 那扇门 is in the seed.",
+   "bucket": 3,
+   "kai": "k-measure"
+  },
+  {
+   "id": "S0411L02",
+   "before": {
+    "known": "a table",
+    "target": "一张"
+   },
+   "reader_why": "LEGO says 'a table | 一张' but 一张 is 'one + flat-thing counter'; 'table' is 桌子. Should be 'a table | 一张桌子' (in the seed) or the intro must explain 张.",
+   "bucket": 3,
+   "kai": "k-measure"
+  },
+  {
+   "id": "S0337L01",
+   "before": {
+    "known": "like to play",
+    "target": "喜欢玩"
+   },
+   "reader_why": "LEGO 'like to play | 喜欢玩' is not in its seed (你觉得他还能继续玩吗 'do you think he can keep playing?' has no 喜欢) — L26 breach; the seed's new material is 还能继续玩. Kai to decide the re-cut.",
+   "bucket": 3,
+   "kai": "k-337"
+  },
+  {
+   "id": "seed:461",
+   "before": {
+    "known": "a shop where I can buy some postcards.",
+    "target": "我想买明信片的商店"
+   },
+   "reader_why": "Seed English 'a shop where I can buy some postcards' but Chinese 我想买明信片的商店 says 'a shop where I WANT to buy postcards' (想 = want). Should be 我能买一些明信片的商店 (能 can). Seed edit → Kai (#195 has the matching use row S0461L01U01).",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "seed:464",
+   "before": {
+    "known": "I told her my room number once but she forgot it.",
+    "target": "我告诉过她我的房间号码一次，但是她忘了"
+   },
+   "reader_why": "一次 'once' sits after a long object: 我告诉过她我的房间号码一次 is awkward/wrong; with a noun object the frequency goes before it: 我告诉过她一次我的房间号码. Seed edit → Kai.",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "seed:479",
+   "before": {
+    "known": "it's the least I could do.",
+    "target": "这是我至少能做的事"
+   },
+   "reader_why": "这是我至少能做的事 is a word-for-word calque of 'the least I could do' and reads as 'this is the thing I at least can do'. Natural Chinese is 这是我起码应该做的 / 这是我最起码能做的. Needs an untaught word, so Kai's call (keep, or re-cut).",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "seed:483",
+   "before": {
+    "known": "life isn't easy but it's not meant to be easy.",
+    "target": "生活并不容易，但是也不是应该容易的"
+   },
+   "reader_why": "生活并不容易，但是也不是应该容易的 ('but also isn't should-easy') is not grammatical Chinese. Natural: 生活并不容易，但是本来就不应该容易 (本来 is taught at S0484L01). Seed edit → Kai.",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "zho_for_eng:S0384L01U06",
+   "before": {
+    "known": "I just wanted to tell you something",
+    "target": "我刚才想告诉你一件事"
+   },
+   "reader_why": "ZUT clash: identical English 'I just wanted to tell you something' is already S0357L01U02 = 我只是想告诉你一件事. Here it means 刚才 'a moment ago'. Fix the English to 'I wanted to tell you something a moment ago'.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I wanted to tell you something a moment ago",
+    "target": "我刚才想告诉你一件事",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says (刚才 = a moment ago); the old English is S0357L01U02 = 我只是想… (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0478L02B03",
+   "before": {
+    "known": "a kind heart",
+    "target": "很好的心"
+   },
+   "reader_why": "ZUT clash: 'a kind heart' is the next LEGO S0478L03 = 善良的心, but here = 很好的心 ('a very good heart').",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "a very good heart",
+    "target": "很好的心",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says; 'a kind heart' is S0478L03 = 善良的心 (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0478L02U05",
+   "before": {
+    "known": "you have a very kind heart",
+    "target": "你有一颗很好的心"
+   },
+   "reader_why": "Same clash: 'kind heart' = 善良的心 (S0478L03) but this says 很好的心 ('very good heart').",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "you have a very good heart",
+    "target": "你有一颗很好的心",
+    "roman": null
+   },
+   "why": "same"
+  },
+  {
+   "id": "zho_for_eng:S0459L01U06",
+   "before": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的衣服很好看"
+   },
+   "reader_why": "ZUT: 'dress' is taught as 连衣裙 (S0394L02); here 'dress' = 衣服 ('clothes').",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的连衣裙很好看",
+    "roman": "nà jiàn lánsè de liányīqún hěn hǎokàn"
+   },
+   "why": "'dress' is taught as 连衣裙 (S0394L02); 衣服 = clothes"
+  },
+  {
+   "id": "zho_for_eng:S0339L01B03",
+   "before": {
+    "known": "very hurt",
+    "target": "很伤"
+   },
+   "reader_why": "很伤 is not Chinese for 'very hurt' (伤 alone after 很 is not used; 很伤心 = 'very sad', 伤得很重 = 'badly hurt').",
+   "bucket": 1,
+   "action": "delete",
+   "why": "很伤 is not Chinese for 'very hurt'"
+  },
+  {
+   "id": "zho_for_eng:S0348L01U04",
+   "before": {
+    "known": "I will try",
+    "target": "我将要试试"
+   },
+   "reader_why": "我将要试试 — 将要 ('be about to', formal) with reduplicated 试试 ('have a try') is an ungrammatical mix. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "将要 + 试试 is an ungrammatical mix"
+  },
+  {
+   "id": "zho_for_eng:S0351L01U08",
+   "before": {
+    "known": "stay quiet",
+    "target": "待着安静"
+   },
+   "reader_why": "'stay quiet | 待着安静' — 待着安静 is not Chinese (would be 安静地待着). Also a bare imperative USE. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "待着安静 is not Chinese; also a bare imperative USE"
+  },
+  {
+   "id": "zho_for_eng:S0381L01B04",
+   "before": {
+    "known": "come with",
+    "target": "跟一起走"
+   },
+   "reader_why": "'come with | 跟一起走' — 跟…一起 needs a person between: 跟我一起走. As written it is not Chinese.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "come with me",
+    "target": "跟我一起走",
+    "roman": "gēn wǒ yìqǐ zǒu"
+   },
+   "why": "跟…一起 needs a person in it; 跟一起走 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0393L02U05",
+   "before": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁在穿绿色吗？"
+   },
+   "reader_why": "谁在穿绿色 means 'who is in the act of putting on green'; 'who was wearing green' is 谁穿着绿色 / 谁穿了绿色 (cf. S0393L03U06 谁穿了绿色衬衫).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁穿了绿色吗？",
+    "roman": "nǐ zhīdào shéi chuān le lǜsè ma?"
+   },
+   "why": "谁在穿 = who is putting on; 'was wearing' is 穿了 here (as S0393L03U06 谁穿了绿色衬衫; 着 untaught)"
+  },
+  {
+   "id": "zho_for_eng:S0376L01B03",
+   "before": {
+    "known": "went somewhere",
+    "target": "去了哪儿"
+   },
+   "reader_why": "'went somewhere | 去了哪儿' — 去了哪儿 is the question 'where did (you) go?', not 'went somewhere'.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "去了哪儿 is the question 'where did … go', not 'went somewhere'"
+  },
+  {
+   "id": "zho_for_eng:S0411L01U06",
+   "before": {
+    "known": "I have four people in my family",
+    "target": "我家庭有四人"
+   },
+   "reader_why": "我家庭有四人 is not Chinese; 'there are four people in my family' is 我家有四口人.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "我家庭有四人 is not Chinese (我家有四口人 drops the LEGO 四人)"
+  },
+  {
+   "id": "zho_for_eng:S0412L01U04",
+   "before": {
+    "known": "she worked hard to win",
+    "target": "她努力工作来赢得"
+   },
+   "reader_why": "她努力工作来赢得 — 赢得 needs an object ('win something'); as written it is an unfinished sentence. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "赢得 needs an object; unfinished sentence"
+  },
+  {
+   "id": "zho_for_eng:S0420L01U04",
+   "before": {
+    "known": "how old is that child?",
+    "target": "那个孩子多大年纪？"
+   },
+   "reader_why": "多大年纪 is the polite 'how old' for older people; for a child it is wrong register (几岁 / 多大).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "多大年纪 is the respectful 'how old' for older people, wrong for a child"
+  },
+  {
+   "id": "zho_for_eng:S0441L02B03",
+   "before": {
+    "known": "one approach here",
+    "target": "一种方法在这里"
+   },
+   "reader_why": "'one approach here | 一种方法在这里' — Chinese word order wrong (这里有一种方法).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "一种方法在这里: wrong word order"
+  },
+  {
+   "id": "zho_for_eng:S0443L01U05",
+   "before": {
+    "known": "I think the same",
+    "target": "我觉得同样"
+   },
+   "reader_why": "'I think the same | 我觉得同样' — not Chinese (我也这么觉得). Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "我觉得同样 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U03",
+   "before": {
+    "known": "he was tired yet still went",
+    "target": "他累了而还是去了"
+   },
+   "reader_why": "他累了而还是去了 — 而 cannot be followed by 还是 here; Chinese is 他累了，但还是去了. Recommend delete (但 not taught as 'yet').",
+   "bucket": 1,
+   "action": "delete",
+   "why": "而还是 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U06",
+   "before": {
+    "known": "they were tired so they left",
+    "target": "他们累了而离开了"
+   },
+   "reader_why": "他们累了而离开了 — 而 does not mean 'so'; the sentence is not natural Chinese. Recommend delete.",
+   "bucket": 3,
+   "kai": "k-455"
+  },
+  {
+   "id": "zho_for_eng:S0457L01U04",
+   "before": {
+    "known": "part of this is right",
+    "target": "这的一部分是对的"
+   },
+   "reader_why": "这的一部分 is ungrammatical (这 cannot take 的 here; needs 这个的一部分). Same fault in build S0457L01B03.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same 这的 fault"
+  },
+  {
+   "id": "zho_for_eng:S0457L01B03",
+   "before": {
+    "known": "part of this",
+    "target": "这的一部分"
+   },
+   "reader_why": "Build 'part of this | 这的一部分' — same 这的 fault.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "这的一部分 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0457L03U03",
+   "before": {
+    "known": "what's the number of people?",
+    "target": "人数量是多少？"
+   },
+   "reader_why": "人数量是多少 is not Chinese ('people-quantity'); 'number of people' is 人数 (taught S0434L04). Recommend delete (would not contain this LEGO anyway).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "人数量 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0457L02B01",
+   "before": {
+    "known": "field",
+    "target": "领域"
+   },
+   "reader_why": "ZUT: bare 'field | 领域' (domain) clashes with 'field | 场地' (S0353L01, sports field). LEGO's own gloss is 'area'.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "area",
+    "target": "领域",
+    "roman": null
+   },
+   "why": "bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0464L02U05",
+   "before": {
+    "known": "he forgot even though I told him once",
+    "target": "他忘了即使我告诉过他一次"
+   },
+   "reader_why": "他忘了即使我告诉过他一次 — 即使 means 'even if' (hypothetical) and cannot follow the main clause like this; 'even though' is 虽然…还是. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "即使 'even if' cannot follow the main clause like this"
+  },
+  {
+   "id": "zho_for_eng:S0466L01U02",
+   "before": {
+    "known": "she can't see over the wall",
+    "target": "她看不过墙"
+   },
+   "reader_why": "她看不过墙 is not Chinese ('she can't see over the wall' = 她看不到墙那边).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "看不过墙 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0477L01U02",
+   "before": {
+    "known": "she's on vacation",
+    "target": "她在假期"
+   },
+   "reader_why": "她在假期 ('she is at holiday') is not Chinese; 'she's on vacation' = 她在度假 (度假 taught S0378) — but that drops this LEGO 假期. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "她在假期 is not Chinese (在度假 drops the LEGO 假期)"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U01",
+   "before": {
+    "known": "I will go no matter what",
+    "target": "不管什么我都会去"
+   },
+   "reader_why": "不管什么我都会去 — 不管什么 needs a verb ('不管发生什么'); 'no matter what' is 不管怎样. U04/U05 use the correct 不管发生什么.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I will go no matter what happens",
+    "target": "不管发生什么我都会去",
+    "roman": "bùguǎn fāshēng shénme wǒ dōu huì qù"
+   },
+   "why": "不管什么 needs a verb: 不管发生什么, as U04/U05"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U03",
+   "before": {
+    "known": "she came no matter what",
+    "target": "不管什么她都来了"
+   },
+   "reader_why": "不管什么她都来了 — same fault as U01.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "she came no matter what happened",
+    "target": "不管发生什么她都来了",
+    "roman": "bùguǎn fāshēng shénme tā dōu lái le"
+   },
+   "why": "same"
+  },
+  {
+   "id": "zho_for_eng:S0481L01U04",
+   "before": {
+    "known": "nobody else can do this, only her",
+    "target": "没有人能做这个，唯一的是她"
+   },
+   "reader_why": "没有人能做这个，唯一的是她 ('the only one is her') is not natural Chinese ('只有她能'). Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "唯一的是她 is not natural Chinese (dark basket: LEGO not new)"
+  },
+  {
+   "id": "zho_for_eng:S0485L02B03",
+   "before": {
+    "known": "nothing makes me happier",
+    "target": "没有什么比让我更开心的"
+   },
+   "reader_why": "没有什么比让我更开心的 — 比 is left with no comparison; not Chinese. Seed has the right pattern (没有什么比离开更让我开心的了).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "比 left with nothing to compare (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0488L02B03",
+   "before": {
+    "known": "a yellow rope",
+    "target": "一条黄色的"
+   },
+   "reader_why": "'a yellow rope | 一条黄色的' — there is no rope; it is 'a yellow (long thing)'. English invents a word.",
+   "bucket": 3,
+   "kai": "k-measure"
+  },
+  {
+   "id": "zho_for_eng:S0488L02U03",
+   "before": {
+    "known": "don't cross that line",
+    "target": "不要过那条"
+   },
+   "reader_why": "'don't cross that line | 不要过那条' — 'line' has no Chinese (线 is the next LEGO), and it nearly clashes with S0488L03U03 'don't cross the line | 不要过那条线'. Same for U01/U02 ('that line' = 那条). Fix English to 'that one'.",
+   "bucket": 3,
+   "kai": "k-measure"
+  },
+  {
+   "id": "zho_for_eng:S0492L02B01",
+   "before": {
+    "known": "interesting",
+    "target": "意思"
+   },
+   "reader_why": "'interesting | 意思' — 意思 alone means 'meaning', not 'interesting' (that is 有意思, B02). Teaches a false mapping. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "意思 alone = 'meaning', not 'interesting'"
+  },
+  {
+   "id": "zho_for_eng:S0493L01B02",
+   "before": {
+    "known": "what comes next",
+    "target": "接下来什么"
+   },
+   "reader_why": "'what comes next | 接下来什么' — not Chinese (needs 是: 接下来是什么, as in U01).",
+   "bucket": 1,
+   "action": "delete",
+   "why": "接下来什么 needs 是; the fixed form duplicates U01"
+  },
+  {
+   "id": "zho_for_eng:S0496L01U05",
+   "before": {
+    "known": "nobody planned for this",
+    "target": "没有人打算这个"
+   },
+   "reader_why": "没有人打算这个 — 打算 'plan to' needs a verb after it; 'plan for this' is not this word. Recommend delete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "打算 needs a verb after it"
+  },
+  {
+   "id": "zho_for_eng:S0497L01B02",
+   "before": {
+    "known": "that sounds like",
+    "target": "听起来那个"
+   },
+   "reader_why": "'that sounds like | 听起来那个' — 听起来那个 ('sounds-like that') is not Chinese.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "听起来那个 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0436L02U05",
+   "before": {
+    "known": "she said the requirements are very clear",
+    "target": "她说要求很明显"
+   },
+   "reader_why": "明显 means 'obvious', not 'clear'; 'the requirements are very clear' is 要求很清楚. Either English 'obvious' (odd) or untaught 清楚 — Kai's call; delete is simplest.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "明显 = obvious, not clear; 清楚 untaught"
+  },
+  {
+   "id": "S0502L03U01",
+   "before": {
+    "known": "she made a left turn",
+    "target": "她做了向左转"
+   },
+   "reader_why": "做了向左转 \"did a turn-left\" is ungrammatical Chinese; the plain verb is right. English becomes \"she turned left\" — B02 has that English over 向左转了 (no 她), so B02 would also need its English made \"turned left\" to avoid two Chinese answers.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "做了向左转 is ungrammatical; the fix would clash with B02 (dark basket)"
+  },
+  {
+   "id": "S0505L01",
+   "before": {
+    "known": "passive marker bei",
+    "target": "被"
+   },
+   "reader_why": "The LEGO's English is a grammar label (\"passive marker bei\"), not English (canon L11).",
+   "bucket": 3,
+   "kai": "k-labels"
+  },
+  {
+   "id": "S0505L01U05",
+   "before": {
+    "known": "I was told about that",
+    "target": "我被告诉了那个"
+   },
+   "reader_why": "被告诉了那个 is not natural Chinese for \"I was told about that\".",
+   "bucket": 1,
+   "action": "delete",
+   "why": "被告诉了那个 is not natural Chinese (dark basket)"
+  },
+  {
+   "id": "S0506L01B03",
+   "before": {
+    "known": "long ago",
+    "target": "很久之前多年前"
+   },
+   "reader_why": "The Chinese is two phrases glued together (\"long ago\" + \"many years ago\").",
+   "bucket": 1,
+   "action": "delete",
+   "why": "two phrases glued together"
+  },
+  {
+   "id": "S0508L01B03",
+   "before": {
+    "known": "worry about",
+    "target": "担心关于"
+   },
+   "reader_why": "关于 cannot dangle after 担心; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "关于 cannot dangle after 担心 (dark basket)"
+  },
+  {
+   "id": "S0514L02",
+   "before": {
+    "known": "that perfect house",
+    "target": "那所完美的房子"
+   },
+   "reader_why": "LEGO \"that perfect house\"; its basket (B01 \"a building | 所\", B02, B03, U01–U06) does not contain the LEGO and teaches a measure word as \"building\".",
+   "bucket": 3,
+   "kai": "k-baskets"
+  },
+  {
+   "id": "S0516L01B02",
+   "before": {
+    "known": "on their own",
+    "target": "自己来"
+   },
+   "reader_why": "Same English as B01 (\"on their own\") over different Chinese.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "come on their own",
+    "target": "自己来",
+    "roman": null
+   },
+   "why": "B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
+  },
+  {
+   "id": "S0520L01U03",
+   "before": {
+    "known": "I ate the whole thing",
+    "target": "我吃了整个"
+   },
+   "reader_why": "整个 needs a noun after it; incomplete Chinese.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "整个 needs a noun"
+  },
+  {
+   "id": "S0520L01U05",
+   "before": {
+    "known": "nobody saw the whole thing",
+    "target": "没有人看到了整个"
+   },
+   "reader_why": "Same: 整个 needs a noun.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0520L02U05",
+   "before": {
+    "known": "I want to be with my family",
+    "target": "我想和家庭在一起"
+   },
+   "reader_why": "家庭 is \"the household (as a unit)\"; \"be with my family\" is 家人.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "家庭 = household; 'be with my family' needs 家人 (dark basket)"
+  },
+  {
+   "id": "S0520L03U04",
+   "before": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在身上"
+   },
+   "reader_why": "Needs 自己 (在自己身上); as written it is incomplete.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在自己身上",
+    "roman": "méiyǒu rén xiǎng zhè fāshēng zài zìjǐ shēnshang"
+   },
+   "why": "发生在身上 needs whose body: 在自己身上 (自己 taught S0516)"
+  },
+  {
+   "id": "S0522L02",
+   "before": {
+    "known": "suggestion",
+    "target": "吧"
+   },
+   "reader_why": "LEGO English is a grammar label (\"suggestion\"); basket glosses \"shall we?/okay?/it's okay/is it okay?\" are all different meanings.",
+   "bucket": 3,
+   "kai": "k-labels"
+  },
+  {
+   "id": "S0522L03B02",
+   "before": {
+    "known": "tell us the truth",
+    "target": "告诉我们说实话"
+   },
+   "reader_why": "Two verbs stacked; natural is 告诉我们实话.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "告诉我们说实话 stacks two verbs; 告诉我们实话 would drop the LEGO"
+  },
+  {
+   "id": "S0522L04U04",
+   "before": {
+    "known": "nobody wants to be stupid",
+    "target": "没有人想很傻"
+   },
+   "reader_why": "想 cannot take 很傻; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "想 cannot take 很傻"
+  },
+  {
+   "id": "S0524L03U06",
+   "before": {
+    "known": "I'll call you back later",
+    "target": "我以后给你回电话"
+   },
+   "reader_why": "以后 means \"in the future/afterwards\", not \"later (today)\" (待会儿).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I'll call you back later",
+    "target": "我晚点给你回电话",
+    "roman": "wǒ wǎndiǎn gěi nǐ huí diànhuà"
+   },
+   "why": "以后 = 'some time in the future'; 'later (today)' is 晚点 (taught, S0239L01U11)"
+  },
+  {
+   "id": "S0532L01U06",
+   "before": {
+    "known": "I can't win unless I try",
+    "target": "除非我试，我不能赢得"
+   },
+   "reader_why": "赢得 needs an object (赢得比赛); bare it is incomplete.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "赢得 needs an object"
+  },
+  {
+   "id": "S0532L02U06",
+   "before": {
+    "known": "unless you have good luck, you can't win",
+    "target": "除非你运气好，你不能赢得"
+   },
+   "reader_why": "Same as above.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0535L01U03",
+   "before": {
+    "known": "nobody keeps their promises",
+    "target": "没有人答应过就做到"
+   },
+   "reader_why": "Garbled; does not say \"nobody keeps their promises\".",
+   "bucket": 1,
+   "action": "delete",
+   "why": "garbled; does not say 'keep their promises'"
+  },
+  {
+   "id": "S0535L03U04",
+   "before": {
+    "known": "nobody wants to be wrong",
+    "target": "没有人想错"
+   },
+   "reader_why": "想错 means \"think wrongly\", not \"want to be wrong\".",
+   "bucket": 1,
+   "action": "delete",
+   "why": "想错 = think wrongly, not want to be wrong"
+  },
+  {
+   "id": "S0536L02U06",
+   "before": {
+    "known": "I didn't think that was crazy",
+    "target": "我不以为那是疯狂的"
+   },
+   "reader_why": "以为 means \"wrongly believed\"; \"I didn't think\" is 我不觉得 (taught).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I didn't think that was crazy",
+    "target": "我不觉得那是疯狂的",
+    "roman": "wǒ bù juéde nà shì fēngkuáng de"
+   },
+   "why": "以为 = 'wrongly believed'; plain 'think' is 觉得 (taught)"
+  },
+  {
+   "id": "S0536L03U03",
+   "before": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不以为那是坏事"
+   },
+   "reader_why": "Same 不以为 problem.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不觉得那是坏事",
+    "roman": "wǒ bù juéde nà shì huàishì"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0539L01U05",
+   "before": {
+    "known": "I thought so but she didn't",
+    "target": "我以为是但是她不以为"
+   },
+   "reader_why": "Same 不以为 problem.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "不以为 fault, garbled (dark basket)"
+  },
+  {
+   "id": "S0541L03U05",
+   "before": {
+    "known": "I think that's a bad idea",
+    "target": "我以为那是个坏主意"
+   },
+   "reader_why": "以为 = \"mistakenly believed\"; plain \"I think\" is 觉得, already taught.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I think that's a bad idea",
+    "target": "我觉得那是个坏主意",
+    "roman": "wǒ juéde nà shì gè huài zhǔyi"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0542L01U04",
+   "before": {
+    "known": "nobody thinks about it whenever she leaves",
+    "target": "没有人每当她离开就想"
+   },
+   "reader_why": "Word order broken; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "word order broken"
+  },
+  {
+   "id": "S0542L01U05",
+   "before": {
+    "known": "whenever he makes a promise",
+    "target": "每当他答应过"
+   },
+   "reader_why": "过 (experience) does not fit after 每当.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "过 does not fit after 每当"
+  },
+  {
+   "id": "S0542L02U04",
+   "before": {
+    "known": "nobody feels good about that",
+    "target": "没有人感到好"
+   },
+   "reader_why": "Incomplete Chinese.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "incomplete Chinese (dark basket)"
+  },
+  {
+   "id": "S0544L02U03",
+   "before": {
+    "known": "I didn't think it was this hard",
+    "target": "我没以为这么难"
+   },
+   "reader_why": "Ungrammatical; natural is 我没想到这么难.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I didn't think it was this hard",
+    "target": "我没想到这么难",
+    "roman": "wǒ méi xiǎngdào zhème nán"
+   },
+   "why": "没以为 is ungrammatical; 'didn't think it was' = 没想到 (taught S0239L01U09)"
+  },
+  {
+   "id": "S0546L01",
+   "before": {
+    "known": "measure word for animals",
+    "target": "只"
+   },
+   "reader_why": "NEW LEGO whose English is a grammar label (\"measure word for animals\"), canon L11.",
+   "bucket": 3,
+   "kai": "k-measure"
+  },
+  {
+   "id": "S0546L04U04",
+   "before": {
+    "known": "nobody came again",
+    "target": "没有人又来了"
+   },
+   "reader_why": "又 does not combine with 没有人…了 like this.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "又 does not combine with 没有人…了"
+  },
+  {
+   "id": "S0546L04U06",
+   "before": {
+    "known": "she said she's both wrong and right",
+    "target": "她说她又错又对"
+   },
+   "reader_why": "Garbled; not \"the dog came back wet\".",
+   "bucket": 1,
+   "action": "none",
+   "note": "no defect: 她说她又错又对 does say \"she said she's both wrong and right\" (the reader's note was about another row); the LEGO gloss is Kai item"
+  },
+  {
+   "id": "S0549L01U03",
+   "before": {
+    "known": "nobody has to stay",
+    "target": "没有人得留下"
+   },
+   "reader_why": "得 děi is not negated this way; \"nobody has to\" is 不用/不必.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "得 děi is not negated this way"
+  },
+  {
+   "id": "S0549L01U07",
+   "before": {
+    "known": "do it differently",
+    "target": "做得不一样"
+   },
+   "reader_why": "The LEGO is 得 děi \"have to\"; this phrase uses 得 de (a different word, complement marker), so it does not practise the LEGO — two words in one basket.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "uses 得 de (complement marker), not the LEGO 得 děi 'have to'"
+  },
+  {
+   "id": "S0549L01U08",
+   "before": {
+    "known": "if I'd known I'd have done things differently",
+    "target": "如果我知道，我会做得不一样"
+   },
+   "reader_why": "Same: 得 de, not the LEGO 得 děi.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0549L01U09",
+   "before": {
+    "known": "she does things differently",
+    "target": "她做得不一样"
+   },
+   "reader_why": "Same: 得 de, not the LEGO 得 děi.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0549L02B03",
+   "before": {
+    "known": "stay here",
+    "target": "保持在这里"
+   },
+   "reader_why": "保持 \"keep (a state)\" cannot take a place; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "保持 cannot take a place"
+  },
+  {
+   "id": "S0549L02U03",
+   "before": {
+    "known": "I want to stay calm",
+    "target": "我想保持安静"
+   },
+   "reader_why": "The Chinese says \"quiet\", not \"calm\".",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I want to keep quiet",
+    "target": "我想保持安静",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 安静 = quiet, not calm"
+  },
+  {
+   "id": "S0549L02U05",
+   "before": {
+    "known": "keep doing it",
+    "target": "保持做这个"
+   },
+   "reader_why": "保持 cannot take a verb phrase like this.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "保持 cannot take a verb phrase"
+  },
+  {
+   "id": "S0549L02U06",
+   "before": {
+    "known": "she said to keep going",
+    "target": "她说保持去做"
+   },
+   "reader_why": "Same.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0551L03U04",
+   "before": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人以为那很丑"
+   },
+   "reader_why": "以为 = \"mistakenly believed\"; 觉得 is the taught \"think\".",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人觉得那很丑",
+    "roman": "méiyǒu rén juéde nà hěn chǒu"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0551L03U05",
+   "before": {
+    "known": "I think that's ugly",
+    "target": "我以为那很丑"
+   },
+   "reader_why": "Same.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I think that's ugly",
+    "target": "我觉得那很丑",
+    "roman": "wǒ juéde nà hěn chǒu"
+   },
+   "why": "same 以为 fault"
+  },
+  {
+   "id": "S0556L01U03",
+   "before": {
+    "known": "nobody is quiet late at night",
+    "target": "没有人深夜安静"
+   },
+   "reader_why": "Nonsensical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "nonsensical"
+  },
+  {
+   "id": "S0559L01U04",
+   "before": {
+    "known": "she passed through the end",
+    "target": "她穿过了尽头"
+   },
+   "reader_why": "Nonsense in both languages.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "nonsense in both languages"
+  },
+  {
+   "id": "S0561L01U04",
+   "before": {
+    "known": "nobody drives fast",
+    "target": "没有人开车很快"
+   },
+   "reader_why": "Needs the complement 开得很快.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "needs the complement 开得很快"
+  },
+  {
+   "id": "S0563L03U03",
+   "before": {
+    "known": "I can't wait longer",
+    "target": "我不能更久地等"
+   },
+   "reader_why": "Ungrammatical; natural is 我不能再等了.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "我不能更久地等 is ungrammatical; 我不能再等了 drops the LEGO 久"
+  },
+  {
+   "id": "seed:563",
+   "before": {
+    "known": "I wouldn't have been able to keep going any longer.",
+    "target": "没有你的帮助，我坚持不了更久"
+   },
+   "reader_why": "The Chinese adds \"without your help\", which the English does not say.",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "seed:565",
+   "before": {
+    "known": "I'd have thought about it more carefully.",
+    "target": "如果是我选的，我会想得更仔细"
+   },
+   "reader_why": "The Chinese adds \"if it had been my choice\", which the English does not say.",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "S0566L01U05",
+   "before": {
+    "known": "nobody thought carefully",
+    "target": "没有人仔细想想"
+   },
+   "reader_why": "想想 is \"think a little\" (suggestion form), not a past tense; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "想想 is the 'think a bit' suggestion form, not a past tense"
+  },
+  {
+   "id": "S0580L01U02",
+   "before": {
+    "known": "I want to take her somewhere",
+    "target": "我想带她去那个地方"
+   },
+   "reader_why": "那个地方 = \"that place\", not \"somewhere\".",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I want to take her to that place",
+    "target": "我想带她去那个地方",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 那个地方 = that place, not somewhere"
+  },
+  {
+   "id": "S0580L01U06",
+   "before": {
+    "known": "I often want to take the children somewhere",
+    "target": "我经常想带孩子们去那个地方"
+   },
+   "reader_why": "Same.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I often want to take the children to that place",
+    "target": "我经常想带孩子们去那个地方",
+    "roman": null
+   },
+   "why": "same"
+  },
+  {
+   "id": "S0589L02U04",
+   "before": {
+    "known": "nobody got the last seat",
+    "target": "没有人拿到最后一个"
+   },
+   "reader_why": "The Chinese has no \"seat\".",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "nobody got the last one",
+    "target": "没有人拿到最后一个",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: no 'seat' in it"
+  },
+  {
+   "id": "S0592L02U03",
+   "before": {
+    "known": "nobody walked along",
+    "target": "没有人沿着走"
+   },
+   "reader_why": "沿着 needs a place after it; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "沿着 needs a place"
+  },
+  {
+   "id": "S0593L01",
+   "before": {
+    "known": "however",
+    "target": "不管"
+   },
+   "reader_why": "LEGO English \"however\" does not mean 不管 (it means \"no matter\"); the seed is \"however much I argued\".",
+   "bucket": 3,
+   "kai": "k-593"
+  },
+  {
+   "id": "seed:596",
+   "before": {
+    "known": "and I need to close my eyes for a while.",
+    "target": "然后闭上眼睛一会儿"
+   },
+   "reader_why": "The Chinese lacks \"I need to\" (我需要).",
+   "bucket": 3,
+   "kai": "k-seeds-late"
+  },
+  {
+   "id": "S0597L01U04",
+   "before": {
+    "known": "I suspect she's right",
+    "target": "我怀疑她是对的"
+   },
+   "reader_why": "怀疑 leans \"doubt\": this reads \"I doubt she's right\" — the opposite of \"I suspect she's right\".",
+   "bucket": 3,
+   "kai": "k-597"
+  },
+  {
+   "id": "S0597L01U05",
+   "before": {
+    "known": "she suspects I'm wrong",
+    "target": "她怀疑我是错的"
+   },
+   "reader_why": "Same ambiguity (\"she doubts I'm wrong\").",
+   "bucket": 3,
+   "kai": "k-597"
+  },
+  {
+   "id": "S0597L03U04",
+   "before": {
+    "known": "I want to know more about it",
+    "target": "我想多了解关于这件事"
+   },
+   "reader_why": "关于-phrase cannot be the object like this; ungrammatical.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "关于-phrase cannot be the object like this (dark basket)"
+  },
+  {
+   "id": "S0597L03U05",
+   "before": {
+    "known": "she told me about it",
+    "target": "她告诉了我关于这件事"
+   },
+   "reader_why": "Same.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0597L03U06",
+   "before": {
+    "known": "what do you know about it?",
+    "target": "你知道关于这件事什么？"
+   },
+   "reader_why": "Same.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "same"
+  },
+  {
+   "id": "S0600L01U05",
+   "before": {
+    "known": "you look so tired",
+    "target": "你看起来有多累啊"
+   },
+   "reader_why": "有多累 = \"how tired\", not \"so tired\".",
+   "bucket": 1,
+   "action": "delete",
+   "why": "有多累 = how tired, not so tired"
+  },
+  {
+   "id": "S0602L01B02",
+   "before": {
+    "known": "how it started",
+    "target": "一开始是怎么"
+   },
+   "reader_why": "Chinese and English do not match.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "Chinese and English do not match"
+  },
+  {
+   "id": "S0603L01B03",
+   "before": {
+    "known": "at the time",
+    "target": "那时我们"
+   },
+   "reader_why": "Chinese and English do not match.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "Chinese and English do not match"
+  },
+  {
+   "id": "S0606L01U06",
+   "before": {
+    "known": "I knew this would happen sooner or later",
+    "target": "我早知道这会发生"
+   },
+   "reader_why": "早知道 = \"knew all along\", not \"sooner or later\".",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I knew all along this would happen",
+    "target": "我早知道这会发生",
+    "roman": null
+   },
+   "why": "English made to say what the Chinese says: 早知道 = knew all along, not 'sooner or later'"
+  },
+  {
+   "id": "S0614L01U06",
+   "before": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作很近"
+   },
+   "reader_why": "离 needs a place: 工作的地方 (as S0614L03U03 has).",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作的地方很近",
+    "roman": "wǒ zhù de dìfang lí gōngzuò de dìfang hěn jìn"
+   },
+   "why": "离 needs a place: 工作的地方, as S0614L03U03"
+  },
+  {
+   "id": "S0615L04U03",
+   "before": {
+    "known": "it takes courage to say that",
+    "target": "说出那样的话需要勇敢"
+   },
+   "reader_why": "勇敢 is an adjective; \"courage\" is 勇气.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "勇敢 is an adjective; 'courage' (勇气) would drop the LEGO"
+  },
+  {
+   "id": "S0618L01B03",
+   "before": {
+    "known": "I feel like it",
+    "target": "感觉像这样"
+   },
+   "reader_why": "English \"I feel like it\" means something else.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "'I feel like it' means something else"
+  },
+  {
+   "id": "S0622L03U05",
+   "before": {
+    "known": "they made it happen",
+    "target": "他们把它弄好了"
+   },
+   "reader_why": "English \"they made it happen\" does not match.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "Chinese says 'they fixed it', not 'made it happen'"
+  },
+  {
+   "id": "S0625L01",
+   "before": {
+    "known": "drink something",
+    "target": "喝点什么"
+   },
+   "reader_why": "None of the basket rows (B01 \"a bit | 点\", \"eat a little\", …) contain the LEGO.",
+   "bucket": 3,
+   "kai": "k-baskets"
+  },
+  {
+   "id": "S0627L01U04",
+   "before": {
+    "known": "I'm ready to go",
+    "target": "我准备好了"
+   },
+   "reader_why": "The Chinese has no \"to go\".",
+   "bucket": 1,
+   "action": "delete",
+   "why": "no 'to go' in the Chinese, and the row does not hold its LEGO"
+  },
+  {
+   "id": "S0631L01",
+   "before": {
+    "known": "would like",
+    "target": "要"
+   },
+   "reader_why": "LEGO \"would like | 要\"; B03 \"I'll need it\", U03 \"I need to go | 我要走了\", U06 \"we need to start | 我们要开始了\" use 要 = \"going to\".",
+   "bucket": 3,
+   "kai": "k-631"
+  },
+  {
+   "id": "S0633L01U06",
+   "before": {
+    "known": "whatever works is fine",
+    "target": "什么方法就好"
+   },
+   "reader_why": "Ungrammatical; natural is 什么方法都行.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
+  },
+  {
+   "id": "S0644L01U03",
+   "before": {
+    "known": "she came again",
+    "target": "她再来了"
+   },
+   "reader_why": "再 is \"again\" for the future; past \"again\" is 又.",
+   "bucket": 1,
+   "action": "delete",
+   "why": "再 is future 'again'; past is 又, which drops the LEGO (dark basket)"
+  },
+  {
+   "id": "S0664L01U02",
+   "before": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了吗"
+   },
+   "reader_why": "吗 cannot end an embedded question; natural is 准备好了没有.",
+   "bucket": 1,
+   "action": "edit",
+   "after": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了没有",
+    "roman": "wǒ xūyào zhīdào nǐmen zhǔnbèi hǎo le méiyǒu"
+   },
+   "why": "吗 cannot end an embedded question; …了没有"
+  }
+ ],
+ "knockOnExtras": [
+  "S0088L01U07",
+  "S0536L03U06",
+  "S0111L01U03",
+  "S0159L01U07"
+ ]
+}

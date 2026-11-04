@@ -1,5 +1,6 @@
 {
  "note": "#206 (4 Nov): Kai approved every EDIT/DELETE in A, B, C. Demoted: section other, and S0153L01 overlap with #200.",
+ "note219": "#219 (4 Nov): out-of-scope 'other' triage — bucket-1 pure-grammar fixes in 'add' (Kai's 4 Nov standing rule: grammar fixes with taught words applied without asking); every earlier A/B/C edit/delete demoted so only these run. Record: ops/zho-545/outofscope-219.json",
  "demote": {
   "zho_for_eng:S0153L01B03": "overlaps S0153L01 \"completely way\", already re-cut by #200 (ev d17d4176) — skipped",
   "zho_for_eng:S0153L01B04": "overlaps S0153L01 \"completely way\", already re-cut by #200 (ev d17d4176) — skipped",
@@ -16,6 +17,1817 @@
   "S0551L03U05": "section \"other\" is outside Kai's 4 Nov approval (A, B, C only) — left for Kai",
   "S0559L01U04": "section \"other\" is outside Kai's 4 Nov approval (A, B, C only) — left for Kai",
   "S0592L02U03": "section \"other\" is outside Kai's 4 Nov approval (A, B, C only) — left for Kai",
-  "S0606L01U06": "section \"other\" is outside Kai's 4 Nov approval (A, B, C only) — left for Kai"
- }
+  "S0606L01U06": "section \"other\" is outside Kai's 4 Nov approval (A, B, C only) — left for Kai",
+  "zho_for_eng:S0005L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0016L02U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0018L04U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0018L04U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0018L04U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0023L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0023L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0024L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0025L03U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0025L04U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0044L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0092L03U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0092L03U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0092L03U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0108L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0144L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0146L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0154L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0095L02U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U11": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0131L01U12": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0126L01B05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0043L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0065L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0070L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0076L02U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0085L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0107L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0140L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0141L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0143L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0144L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0147L02U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0149L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0149L02U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0164L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0018L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0021L02U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0021L03U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0021L03U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0023L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0023L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0026L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0029L03B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0030L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0039L03U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0043L02B01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0043L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0053L03U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0054L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0059L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0061L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0061L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0061L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0062L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0062L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0062L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0066L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0066L02U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0068L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0069L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0069L05B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0070L02U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0076L02U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0086L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0097L02B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0097L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0097L02U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0101L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0101L03U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0102L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0111L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0112L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0114L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0114L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0116L02B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0125L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0125L01U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0137L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0137L01U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0142L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0145L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0147L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0149L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0149L02B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0149L02U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0156L01U12": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0159L01U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0192L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0242L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0243L01B01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0243L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01B01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0244L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0246L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0247L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0248L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0254L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0254L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0254L01U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0254L01U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0254L01U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0255L01U11": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0260L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0260L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0260L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0267L01U14": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0272L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0272L03B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0281L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0281L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0281L01B05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0306L01U12": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0317L01B04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0327L02U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0327L02U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0327L02U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0327L02U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0331L02U10": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0225L01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0168L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0269L01U08": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0290L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0301L03U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0264L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0342L01U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0420L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0420L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0441L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0479L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0499L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0350L02U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0343L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0421L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0417L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0417L01U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0417L01U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0407L02U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0407L02U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0407L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0407L02U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "zho_for_eng:S0407L02U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0514L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0545L01U01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0545L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0545L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0558L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0563L03U07": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0563L03U09": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0572L02U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0576L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0579L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0583L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0583L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0589L01U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0593L03U03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0595L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0596L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0596L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0596L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0606L02B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0612L02U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0620L01B03": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0624L02U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0635L01B01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0635L01B02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0635L01U02": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0635L01U04": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0635L01U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0638L01B01": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0642L04U06": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass",
+  "S0644L02U05": "#219 (4 Nov): A/B/C edit/delete already applied by #206 or refused by its gates — not re-run by the out-of-scope pass"
+ },
+ "add": [
+  {
+   "id": "zho_for_eng:S0085L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人吗？"
+   },
+   "after": {
+    "known": "can you tell me about those people?",
+    "target": "你能告诉我关于那些人的事吗？",
+    "roman": "nǐ néng gàosu wǒ guānyú nàxiē rén de shì ma?"
+   },
+   "why": "#219: 关于 needs a noun after it: 关于那些人 → 关于那些人的事 ('the matters about those people')"
+  },
+  {
+   "id": "zho_for_eng:S0088L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "are you ready?",
+    "target": "你准备好吗？"
+   },
+   "after": {
+    "known": "are you ready?",
+    "target": "你准备好了吗？",
+    "roman": "nǐ zhǔnbèi hǎo le ma?"
+   },
+   "why": "#219: 'are you ready?' needs 了 (as S0080L02U03, S0095L01U02, S0252L01U02 already have)"
+  },
+  {
+   "id": "zho_for_eng:S0088L01U07",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "are we ready?",
+    "target": "我们准备好吗？"
+   },
+   "after": {
+    "known": "are we ready?",
+    "target": "我们准备好了吗？",
+    "roman": "wǒmen zhǔnbèi hǎo le ma?"
+   },
+   "why": "#219: same: 'are we ready?' needs 了"
+  },
+  {
+   "id": "zho_for_eng:S0111L01U08",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想快学这新东西"
+   },
+   "after": {
+    "known": "I want to learn this new thing quickly",
+    "target": "我想尽快学这新东西",
+    "roman": "wǒ xiǎng jǐnkuài xué zhè xīn dōngxi"
+   },
+   "why": "#219: 快学 is not idiomatic; 'quickly' is taught as 尽快 (S0020L02)"
+  },
+  {
+   "id": "zho_for_eng:S0137L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "she wants it to be perfect",
+    "target": "她想那完美"
+   },
+   "after": {
+    "known": "she wants it to be perfect",
+    "target": "她想让它完美",
+    "roman": "tā xiǎng ràng tā wánměi"
+   },
+   "why": "#219: 她想那完美 'she wants that perfect' is ungrammatical; 想让它完美 = wants it to be perfect"
+  },
+  {
+   "id": "zho_for_eng:S0156L01U14",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "where did she go?",
+    "target": "她去哪里？"
+   },
+   "after": {
+    "known": "where did she go?",
+    "target": "她去哪里了？",
+    "roman": "tā qù nǎlǐ le?"
+   },
+   "why": "#219: past question 'where did she go?' needs 了, as U15 has"
+  },
+  {
+   "id": "zho_for_eng:S0162L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "what do you think about that",
+    "target": "你觉得怎么样那个"
+   },
+   "after": {
+    "known": "what do you think about that",
+    "target": "那个你觉得怎么样",
+    "roman": "nàge nǐ juéde zěnmeyàng"
+   },
+   "why": "#219: object 那个 cannot follow 怎么样; it is fronted as the topic"
+  },
+  {
+   "id": "zho_for_eng:S0252L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天准备好"
+   },
+   "after": {
+    "known": "I need to be ready by tomorrow",
+    "target": "我需要在明天之前准备好",
+    "roman": "wǒ xūyào zài míngtiān zhīqián zhǔnbèi hǎo"
+   },
+   "why": "#219: 在明天 says 'tomorrow', not 'by tomorrow'; 'by' = 之前 (taught S0249)"
+  },
+  {
+   "id": "zho_for_eng:S0260L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "我一点头绪都没有该做什么"
+   },
+   "after": {
+    "known": "I don't have the faintest idea what to do",
+    "target": "该做什么，我一点头绪都没有",
+    "roman": "gāi zuò shénme, wǒ yìdiǎn tóuxù dōu méiyǒu"
+   },
+   "why": "#219: 'what to do' cannot trail after 都没有; it comes first"
+  },
+  {
+   "id": "zho_for_eng:S0322L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "he's reading the same book as me",
+    "target": "他在读和我同一本书"
+   },
+   "after": {
+    "known": "he's reading the same book as me",
+    "target": "他和我在读同一本书",
+    "roman": "tā hé wǒ zài dú tóng yì běn shū"
+   },
+   "why": "#219: 在读和我同一本书 is ungrammatical; 和我 goes before the verb"
+  },
+  {
+   "id": "zho_for_eng:S0333L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "spend time with you",
+    "target": "和你花时间"
+   },
+   "after": {
+    "known": "spend time with you",
+    "target": "花时间和你在一起",
+    "roman": "huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "#219: 和你花时间 is an English calque; Chinese shape is 花时间和…在一起 (as the seed itself)"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U01",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I want to spend time with you",
+    "target": "我想和你花时间"
+   },
+   "after": {
+    "known": "I want to spend time with you",
+    "target": "我想花时间和你在一起",
+    "roman": "wǒ xiǎng huā shíjiān hé nǐ zài yìqǐ"
+   },
+   "why": "#219: same calque"
+  },
+  {
+   "id": "zho_for_eng:S0333L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "do you want to spend time with them?",
+    "target": "你想和他们花时间吗"
+   },
+   "after": {
+    "known": "do you want to spend time with them?",
+    "target": "你想花时间和他们在一起吗",
+    "roman": "nǐ xiǎng huā shíjiān hé tāmen zài yìqǐ ma"
+   },
+   "why": "#219: same calque"
+  },
+  {
+   "id": "zho_for_eng:S0381L01B04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "come with",
+    "target": "跟一起走"
+   },
+   "after": {
+    "known": "come with me",
+    "target": "跟我一起走",
+    "roman": "gēn wǒ yìqǐ zǒu"
+   },
+   "why": "#219: 跟…一起 needs a person in it; 跟一起走 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0393L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁在穿绿色吗？"
+   },
+   "after": {
+    "known": "do you know who was wearing green?",
+    "target": "你知道谁穿了绿色吗？",
+    "roman": "nǐ zhīdào shéi chuān le lǜsè ma?"
+   },
+   "why": "#219: 谁在穿 = who is putting on; 'was wearing' is 穿了 here (as S0393L03U06 谁穿了绿色衬衫; 着 untaught)"
+  },
+  {
+   "id": "zho_for_eng:S0459L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的衣服很好看"
+   },
+   "after": {
+    "known": "that blue dress is pretty",
+    "target": "那件蓝色的连衣裙很好看",
+    "roman": "nà jiàn lánsè de liányīqún hěn hǎokàn"
+   },
+   "why": "#219: 'dress' is taught as 连衣裙 (S0394L02); 衣服 = clothes"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U01",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I will go no matter what",
+    "target": "不管什么我都会去"
+   },
+   "after": {
+    "known": "I will go no matter what happens",
+    "target": "不管发生什么我都会去",
+    "roman": "bùguǎn fāshēng shénme wǒ dōu huì qù"
+   },
+   "why": "#219: 不管什么 needs a verb: 不管发生什么, as U04/U05"
+  },
+  {
+   "id": "zho_for_eng:S0480L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "she came no matter what",
+    "target": "不管什么她都来了"
+   },
+   "after": {
+    "known": "she came no matter what happened",
+    "target": "不管发生什么她都来了",
+    "roman": "bùguǎn fāshēng shénme tā dōu lái le"
+   },
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0520L03U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在身上"
+   },
+   "after": {
+    "known": "nobody wants that to happen to them",
+    "target": "没有人想这发生在自己身上",
+    "roman": "méiyǒu rén xiǎng zhè fāshēng zài zìjǐ shēnshang"
+   },
+   "why": "#219: 发生在身上 needs whose body: 在自己身上 (自己 taught S0516)"
+  },
+  {
+   "id": "zho_for_eng:S0524L03U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I'll call you back later",
+    "target": "我以后给你回电话"
+   },
+   "after": {
+    "known": "I'll call you back later",
+    "target": "我晚点给你回电话",
+    "roman": "wǒ wǎndiǎn gěi nǐ huí diànhuà"
+   },
+   "why": "#219: 以后 = 'some time in the future'; 'later (today)' is 晚点 (taught, S0239L01U11)"
+  },
+  {
+   "id": "zho_for_eng:S0536L02U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I didn't think that was crazy",
+    "target": "我不以为那是疯狂的"
+   },
+   "after": {
+    "known": "I didn't think that was crazy",
+    "target": "我不觉得那是疯狂的",
+    "roman": "wǒ bù juéde nà shì fēngkuáng de"
+   },
+   "why": "#219: 以为 = 'wrongly believed'; plain 'think' is 觉得 (taught)"
+  },
+  {
+   "id": "zho_for_eng:S0536L03U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不以为那是坏事"
+   },
+   "after": {
+    "known": "I don't think it's a bad thing",
+    "target": "我不觉得那是坏事",
+    "roman": "wǒ bù juéde nà shì huàishì"
+   },
+   "why": "#219: same 以为 fault"
+  },
+  {
+   "id": "zho_for_eng:S0536L03U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "she thinks it's a bad thing",
+    "target": "她以为那是坏事"
+   },
+   "after": {
+    "known": "she thinks it's a bad thing",
+    "target": "她觉得那是坏事",
+    "roman": "tā juéde nà shì huàishì"
+   },
+   "why": "#219: same 以为 fault (present 'thinks'), same basket"
+  },
+  {
+   "id": "zho_for_eng:S0541L03U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I think that's a bad idea",
+    "target": "我以为那是个坏主意"
+   },
+   "after": {
+    "known": "I think that's a bad idea",
+    "target": "我觉得那是个坏主意",
+    "roman": "wǒ juéde nà shì gè huài zhǔyi"
+   },
+   "why": "#219: same 以为 fault"
+  },
+  {
+   "id": "zho_for_eng:S0544L02U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I didn't think it was this hard",
+    "target": "我没以为这么难"
+   },
+   "after": {
+    "known": "I didn't think it was this hard",
+    "target": "我没想到这么难",
+    "roman": "wǒ méi xiǎngdào zhème nán"
+   },
+   "why": "#219: 没以为 is ungrammatical; 'didn't think it was' = 没想到 (taught S0239L01U09)"
+  },
+  {
+   "id": "zho_for_eng:S0551L03U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人以为那很丑"
+   },
+   "after": {
+    "known": "nobody thinks it's ugly",
+    "target": "没有人觉得那很丑",
+    "roman": "méiyǒu rén juéde nà hěn chǒu"
+   },
+   "why": "#219: same 以为 fault"
+  },
+  {
+   "id": "zho_for_eng:S0551L03U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I think that's ugly",
+    "target": "我以为那很丑"
+   },
+   "after": {
+    "known": "I think that's ugly",
+    "target": "我觉得那很丑",
+    "roman": "wǒ juéde nà hěn chǒu"
+   },
+   "why": "#219: same 以为 fault"
+  },
+  {
+   "id": "zho_for_eng:S0614L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作很近"
+   },
+   "after": {
+    "known": "I live close to work",
+    "target": "我住的地方离工作的地方很近",
+    "roman": "wǒ zhù de dìfang lí gōngzuò de dìfang hěn jìn"
+   },
+   "why": "#219: 离 needs a place: 工作的地方, as S0614L03U03"
+  },
+  {
+   "id": "zho_for_eng:S0664L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了吗"
+   },
+   "after": {
+    "known": "I need to know if you're all ready",
+    "target": "我需要知道你们准备好了没有",
+    "roman": "wǒ xūyào zhīdào nǐmen zhǔnbèi hǎo le méiyǒu"
+   },
+   "why": "#219: 吗 cannot end an embedded question; …了没有"
+  },
+  {
+   "id": "zho_for_eng:S0384L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I just wanted to tell you something",
+    "target": "我刚才想告诉你一件事"
+   },
+   "after": {
+    "known": "I wanted to tell you something a moment ago",
+    "target": "我刚才想告诉你一件事",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says (刚才 = a moment ago); the old English is S0357L01U02 = 我只是想… (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0478L02B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "a kind heart",
+    "target": "很好的心"
+   },
+   "after": {
+    "known": "a very good heart",
+    "target": "很好的心",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says; 'a kind heart' is S0478L03 = 善良的心 (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0478L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "you have a very kind heart",
+    "target": "你有一颗很好的心"
+   },
+   "after": {
+    "known": "you have a very good heart",
+    "target": "你有一颗很好的心",
+    "roman": null
+   },
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0457L02B01",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "field",
+    "target": "领域"
+   },
+   "after": {
+    "known": "area",
+    "target": "领域",
+    "roman": null
+   },
+   "why": "#219: bare 'field' = 场地 (S0353L01); this LEGO's own gloss is 'area' (ZUT)"
+  },
+  {
+   "id": "zho_for_eng:S0516L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "on their own",
+    "target": "自己来"
+   },
+   "after": {
+    "known": "come on their own",
+    "target": "自己来",
+    "roman": null
+   },
+   "why": "#219: B01 has the same English 'on their own' over different Chinese (自己 vs 自己来)"
+  },
+  {
+   "id": "zho_for_eng:S0549L02U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I want to stay calm",
+    "target": "我想保持安静"
+   },
+   "after": {
+    "known": "I want to keep quiet",
+    "target": "我想保持安静",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says: 安静 = quiet, not calm"
+  },
+  {
+   "id": "zho_for_eng:S0580L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I want to take her somewhere",
+    "target": "我想带她去那个地方"
+   },
+   "after": {
+    "known": "I want to take her to that place",
+    "target": "我想带她去那个地方",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says: 那个地方 = that place, not somewhere"
+  },
+  {
+   "id": "zho_for_eng:S0580L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I often want to take the children somewhere",
+    "target": "我经常想带孩子们去那个地方"
+   },
+   "after": {
+    "known": "I often want to take the children to that place",
+    "target": "我经常想带孩子们去那个地方",
+    "roman": null
+   },
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0589L02U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "nobody got the last seat",
+    "target": "没有人拿到最后一个"
+   },
+   "after": {
+    "known": "nobody got the last one",
+    "target": "没有人拿到最后一个",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says: no 'seat' in it"
+  },
+  {
+   "id": "zho_for_eng:S0606L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "edit",
+   "before": {
+    "known": "I knew this would happen sooner or later",
+    "target": "我早知道这会发生"
+   },
+   "after": {
+    "known": "I knew all along this would happen",
+    "target": "我早知道这会发生",
+    "roman": null
+   },
+   "why": "#219: English made to say what the Chinese says: 早知道 = knew all along, not 'sooner or later'"
+  },
+  {
+   "id": "zho_for_eng:S0094L02B04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "only this",
+    "target": "唯一这个"
+   },
+   "after": null,
+   "why": "#219: 唯一这个 is ungrammatical (唯一 needs 的 + noun); no taught fix keeps the LEGO"
+  },
+  {
+   "id": "zho_for_eng:S0111L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "can you tell me about this new thing?",
+    "target": "你能告诉我关于这新东西吗？"
+   },
+   "after": null,
+   "why": "#219: 告诉我关于这新东西 is ungrammatical; a fix (…的事) reads clumsily; 9 USE remain"
+  },
+  {
+   "id": "zho_for_eng:S0148L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I'm not very good at this",
+    "target": "我这个不太好"
+   },
+   "after": null,
+   "why": "#219: 我这个不太好 is not Chinese for 'not very good at this'; needs untaught 擅长"
+  },
+  {
+   "id": "zho_for_eng:S0159L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I don't know what I'm trying to say",
+    "target": "我不知道我想说的"
+   },
+   "after": null,
+   "why": "#219: 我不知道我想说的 is ungrammatical (needs 什么), and 什么 would break the LEGO 我想说的"
+  },
+  {
+   "id": "zho_for_eng:S0159L01U07",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I'm not sure what I'm trying to say",
+    "target": "我不确定我想说的"
+   },
+   "after": null,
+   "why": "#219: same as U03"
+  },
+  {
+   "id": "zho_for_eng:S0195L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "find the money",
+    "target": "找钱"
+   },
+   "after": null,
+   "why": "#219: 找钱 is the fixed phrase 'give change'; teaches the wrong sense"
+  },
+  {
+   "id": "zho_for_eng:S0276L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "let me think about this for a little while",
+    "target": "让我想一会儿这个"
+   },
+   "after": null,
+   "why": "#219: 让我想一会儿这个: object cannot follow the duration; no fix keeps the English"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "unfortunately I have to go to a meeting",
+    "target": "很遗憾我得去会议"
+   },
+   "after": null,
+   "why": "#219: 去会议 is not Chinese (开会/参加会议 untaught here)"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I'm willing to come to the meeting",
+    "target": "我愿意来会议"
+   },
+   "after": null,
+   "why": "#219: 来会议: same"
+  },
+  {
+   "id": "zho_for_eng:S0277L01U09",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "we can go to the meeting",
+    "target": "我们能去会议"
+   },
+   "after": null,
+   "why": "#219: 去会议: same"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she speaks well",
+    "target": "她会说得好"
+   },
+   "after": null,
+   "why": "#219: 她会说得好 reads 'she will speak well' (会 + manner complement clash)"
+  },
+  {
+   "id": "zho_for_eng:S0285L01B04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she speaks very well",
+    "target": "她会说得很好"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0290L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "if he knows the answer to this",
+    "target": "他知不知道答案这个"
+   },
+   "after": null,
+   "why": "#219: 答案这个 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0291L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "much better",
+    "target": "更好多了"
+   },
+   "after": null,
+   "why": "#219: 更好多了 stacks 更 and 多了; 'much better' (好多了) would drop the LEGO 更好"
+  },
+  {
+   "id": "zho_for_eng:S0291L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she's much better at speaking Chinese than I am",
+    "target": "她说中文比我更好多了"
+   },
+   "after": null,
+   "why": "#219: same 更好多了 fault"
+  },
+  {
+   "id": "zho_for_eng:S0300L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I think this seems good",
+    "target": "我觉得这个显得很好"
+   },
+   "after": null,
+   "why": "#219: 这个显得很好 is odd Chinese and the English is stilted"
+  },
+  {
+   "id": "zho_for_eng:S0339L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "very hurt",
+    "target": "很伤"
+   },
+   "after": null,
+   "why": "#219: 很伤 is not Chinese for 'very hurt'"
+  },
+  {
+   "id": "zho_for_eng:S0348L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I will try",
+    "target": "我将要试试"
+   },
+   "after": null,
+   "why": "#219: 将要 + 试试 is an ungrammatical mix"
+  },
+  {
+   "id": "zho_for_eng:S0351L01U08",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "stay quiet",
+    "target": "待着安静"
+   },
+   "after": null,
+   "why": "#219: 待着安静 is not Chinese; also a bare imperative USE"
+  },
+  {
+   "id": "zho_for_eng:S0376L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "went somewhere",
+    "target": "去了哪儿"
+   },
+   "after": null,
+   "why": "#219: 去了哪儿 is the question 'where did … go', not 'went somewhere'"
+  },
+  {
+   "id": "zho_for_eng:S0411L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I have four people in my family",
+    "target": "我家庭有四人"
+   },
+   "after": null,
+   "why": "#219: 我家庭有四人 is not Chinese (我家有四口人 drops the LEGO 四人)"
+  },
+  {
+   "id": "zho_for_eng:S0412L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she worked hard to win",
+    "target": "她努力工作来赢得"
+   },
+   "after": null,
+   "why": "#219: 赢得 needs an object; unfinished sentence"
+  },
+  {
+   "id": "zho_for_eng:S0420L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "how old is that child?",
+    "target": "那个孩子多大年纪？"
+   },
+   "after": null,
+   "why": "#219: 多大年纪 is the respectful 'how old' for older people, wrong for a child"
+  },
+  {
+   "id": "zho_for_eng:S0441L02B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "one approach here",
+    "target": "一种方法在这里"
+   },
+   "after": null,
+   "why": "#219: 一种方法在这里: wrong word order"
+  },
+  {
+   "id": "zho_for_eng:S0443L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I think the same",
+    "target": "我觉得同样"
+   },
+   "after": null,
+   "why": "#219: 我觉得同样 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0455L04U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "he was tired yet still went",
+    "target": "他累了而还是去了"
+   },
+   "after": null,
+   "why": "#219: 而还是 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0457L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "part of this",
+    "target": "这的一部分"
+   },
+   "after": null,
+   "why": "#219: 这的一部分 is ungrammatical"
+  },
+  {
+   "id": "zho_for_eng:S0457L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "part of this is right",
+    "target": "这的一部分是对的"
+   },
+   "after": null,
+   "why": "#219: same 这的 fault"
+  },
+  {
+   "id": "zho_for_eng:S0457L03U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "what's the number of people?",
+    "target": "人数量是多少？"
+   },
+   "after": null,
+   "why": "#219: 人数量 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0464L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "he forgot even though I told him once",
+    "target": "他忘了即使我告诉过他一次"
+   },
+   "after": null,
+   "why": "#219: 即使 'even if' cannot follow the main clause like this"
+  },
+  {
+   "id": "zho_for_eng:S0466L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she can't see over the wall",
+    "target": "她看不过墙"
+   },
+   "after": null,
+   "why": "#219: 看不过墙 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0477L01U02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she's on vacation",
+    "target": "她在假期"
+   },
+   "after": null,
+   "why": "#219: 她在假期 is not Chinese (在度假 drops the LEGO 假期)"
+  },
+  {
+   "id": "zho_for_eng:S0481L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody else can do this, only her",
+    "target": "没有人能做这个，唯一的是她"
+   },
+   "after": null,
+   "why": "#219: 唯一的是她 is not natural Chinese (dark basket: LEGO not new)"
+  },
+  {
+   "id": "zho_for_eng:S0485L02B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nothing makes me happier",
+    "target": "没有什么比让我更开心的"
+   },
+   "after": null,
+   "why": "#219: 比 left with nothing to compare (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0492L02B01",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "interesting",
+    "target": "意思"
+   },
+   "after": null,
+   "why": "#219: 意思 alone = 'meaning', not 'interesting'"
+  },
+  {
+   "id": "zho_for_eng:S0493L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "what comes next",
+    "target": "接下来什么"
+   },
+   "after": null,
+   "why": "#219: 接下来什么 needs 是; the fixed form duplicates U01"
+  },
+  {
+   "id": "zho_for_eng:S0496L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody planned for this",
+    "target": "没有人打算这个"
+   },
+   "after": null,
+   "why": "#219: 打算 needs a verb after it"
+  },
+  {
+   "id": "zho_for_eng:S0497L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "that sounds like",
+    "target": "听起来那个"
+   },
+   "after": null,
+   "why": "#219: 听起来那个 is not Chinese"
+  },
+  {
+   "id": "zho_for_eng:S0436L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she said the requirements are very clear",
+    "target": "她说要求很明显"
+   },
+   "after": null,
+   "why": "#219: 明显 = obvious, not clear; 清楚 untaught"
+  },
+  {
+   "id": "zho_for_eng:S0502L03U01",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she made a left turn",
+    "target": "她做了向左转"
+   },
+   "after": null,
+   "why": "#219: 做了向左转 is ungrammatical; the fix would clash with B02 (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0505L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I was told about that",
+    "target": "我被告诉了那个"
+   },
+   "after": null,
+   "why": "#219: 被告诉了那个 is not natural Chinese (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0506L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "long ago",
+    "target": "很久之前多年前"
+   },
+   "after": null,
+   "why": "#219: two phrases glued together"
+  },
+  {
+   "id": "zho_for_eng:S0508L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "worry about",
+    "target": "担心关于"
+   },
+   "after": null,
+   "why": "#219: 关于 cannot dangle after 担心 (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0520L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I ate the whole thing",
+    "target": "我吃了整个"
+   },
+   "after": null,
+   "why": "#219: 整个 needs a noun"
+  },
+  {
+   "id": "zho_for_eng:S0520L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody saw the whole thing",
+    "target": "没有人看到了整个"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0520L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I want to be with my family",
+    "target": "我想和家庭在一起"
+   },
+   "after": null,
+   "why": "#219: 家庭 = household; 'be with my family' needs 家人 (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0522L03B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "tell us the truth",
+    "target": "告诉我们说实话"
+   },
+   "after": null,
+   "why": "#219: 告诉我们说实话 stacks two verbs; 告诉我们实话 would drop the LEGO"
+  },
+  {
+   "id": "zho_for_eng:S0522L04U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody wants to be stupid",
+    "target": "没有人想很傻"
+   },
+   "after": null,
+   "why": "#219: 想 cannot take 很傻"
+  },
+  {
+   "id": "zho_for_eng:S0532L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I can't win unless I try",
+    "target": "除非我试，我不能赢得"
+   },
+   "after": null,
+   "why": "#219: 赢得 needs an object"
+  },
+  {
+   "id": "zho_for_eng:S0532L02U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "unless you have good luck, you can't win",
+    "target": "除非你运气好，你不能赢得"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0535L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody keeps their promises",
+    "target": "没有人答应过就做到"
+   },
+   "after": null,
+   "why": "#219: garbled; does not say 'keep their promises'"
+  },
+  {
+   "id": "zho_for_eng:S0535L03U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody wants to be wrong",
+    "target": "没有人想错"
+   },
+   "after": null,
+   "why": "#219: 想错 = think wrongly, not want to be wrong"
+  },
+  {
+   "id": "zho_for_eng:S0539L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I thought so but she didn't",
+    "target": "我以为是但是她不以为"
+   },
+   "after": null,
+   "why": "#219: 不以为 fault, garbled (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0542L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody thinks about it whenever she leaves",
+    "target": "没有人每当她离开就想"
+   },
+   "after": null,
+   "why": "#219: word order broken"
+  },
+  {
+   "id": "zho_for_eng:S0542L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "whenever he makes a promise",
+    "target": "每当他答应过"
+   },
+   "after": null,
+   "why": "#219: 过 does not fit after 每当"
+  },
+  {
+   "id": "zho_for_eng:S0542L02U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody feels good about that",
+    "target": "没有人感到好"
+   },
+   "after": null,
+   "why": "#219: incomplete Chinese (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0546L04U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody came again",
+    "target": "没有人又来了"
+   },
+   "after": null,
+   "why": "#219: 又 does not combine with 没有人…了"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody has to stay",
+    "target": "没有人得留下"
+   },
+   "after": null,
+   "why": "#219: 得 děi is not negated this way"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U07",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "do it differently",
+    "target": "做得不一样"
+   },
+   "after": null,
+   "why": "#219: uses 得 de (complement marker), not the LEGO 得 děi 'have to'"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U08",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "if I'd known I'd have done things differently",
+    "target": "如果我知道，我会做得不一样"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0549L01U09",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she does things differently",
+    "target": "她做得不一样"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0549L02B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "stay here",
+    "target": "保持在这里"
+   },
+   "after": null,
+   "why": "#219: 保持 cannot take a place"
+  },
+  {
+   "id": "zho_for_eng:S0549L02U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "keep doing it",
+    "target": "保持做这个"
+   },
+   "after": null,
+   "why": "#219: 保持 cannot take a verb phrase"
+  },
+  {
+   "id": "zho_for_eng:S0549L02U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she said to keep going",
+    "target": "她说保持去做"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0556L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody is quiet late at night",
+    "target": "没有人深夜安静"
+   },
+   "after": null,
+   "why": "#219: nonsensical"
+  },
+  {
+   "id": "zho_for_eng:S0559L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she passed through the end",
+    "target": "她穿过了尽头"
+   },
+   "after": null,
+   "why": "#219: nonsense in both languages"
+  },
+  {
+   "id": "zho_for_eng:S0561L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody drives fast",
+    "target": "没有人开车很快"
+   },
+   "after": null,
+   "why": "#219: needs the complement 开得很快"
+  },
+  {
+   "id": "zho_for_eng:S0563L03U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I can't wait longer",
+    "target": "我不能更久地等"
+   },
+   "after": null,
+   "why": "#219: 我不能更久地等 is ungrammatical; 我不能再等了 drops the LEGO 久"
+  },
+  {
+   "id": "zho_for_eng:S0566L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody thought carefully",
+    "target": "没有人仔细想想"
+   },
+   "after": null,
+   "why": "#219: 想想 is the 'think a bit' suggestion form, not a past tense"
+  },
+  {
+   "id": "zho_for_eng:S0592L02U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "nobody walked along",
+    "target": "没有人沿着走"
+   },
+   "after": null,
+   "why": "#219: 沿着 needs a place"
+  },
+  {
+   "id": "zho_for_eng:S0597L03U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I want to know more about it",
+    "target": "我想多了解关于这件事"
+   },
+   "after": null,
+   "why": "#219: 关于-phrase cannot be the object like this (dark basket)"
+  },
+  {
+   "id": "zho_for_eng:S0597L03U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she told me about it",
+    "target": "她告诉了我关于这件事"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0597L03U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "what do you know about it?",
+    "target": "你知道关于这件事什么？"
+   },
+   "after": null,
+   "why": "#219: same"
+  },
+  {
+   "id": "zho_for_eng:S0600L01U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "you look so tired",
+    "target": "你看起来有多累啊"
+   },
+   "after": null,
+   "why": "#219: 有多累 = how tired, not so tired"
+  },
+  {
+   "id": "zho_for_eng:S0602L01B02",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "how it started",
+    "target": "一开始是怎么"
+   },
+   "after": null,
+   "why": "#219: Chinese and English do not match"
+  },
+  {
+   "id": "zho_for_eng:S0603L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "at the time",
+    "target": "那时我们"
+   },
+   "after": null,
+   "why": "#219: Chinese and English do not match"
+  },
+  {
+   "id": "zho_for_eng:S0615L04U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "it takes courage to say that",
+    "target": "说出那样的话需要勇敢"
+   },
+   "after": null,
+   "why": "#219: 勇敢 is an adjective; 'courage' (勇气) would drop the LEGO"
+  },
+  {
+   "id": "zho_for_eng:S0618L01B03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I feel like it",
+    "target": "感觉像这样"
+   },
+   "after": null,
+   "why": "#219: 'I feel like it' means something else"
+  },
+  {
+   "id": "zho_for_eng:S0622L03U05",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "they made it happen",
+    "target": "他们把它弄好了"
+   },
+   "after": null,
+   "why": "#219: Chinese says 'they fixed it', not 'made it happen'"
+  },
+  {
+   "id": "zho_for_eng:S0627L01U04",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "I'm ready to go",
+    "target": "我准备好了"
+   },
+   "after": null,
+   "why": "#219: no 'to go' in the Chinese, and the row does not hold its LEGO"
+  },
+  {
+   "id": "zho_for_eng:S0633L01U06",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "whatever works is fine",
+    "target": "什么方法就好"
+   },
+   "after": null,
+   "why": "#219: 什么方法就好 is ungrammatical (什么方法都行 drops the LEGO)"
+  },
+  {
+   "id": "zho_for_eng:S0644L01U03",
+   "table": "phrase",
+   "point": "other",
+   "action": "delete",
+   "before": {
+    "known": "she came again",
+    "target": "她再来了"
+   },
+   "after": null,
+   "why": "#219: 再 is future 'again'; past is 又, which drops the LEGO (dark basket)"
+  }
+ ]
 }
