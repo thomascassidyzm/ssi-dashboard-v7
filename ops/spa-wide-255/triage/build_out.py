@@ -26,19 +26,20 @@ left = collections.Counter((v[0], v[1]) for v in basket.values())
 for i, (b, ak, at, *_r) in D.items():
     if b == 'CLEAR' and at == 'DELETE' and i in basket: left[basket[i]] -= 1
 fails = []; out = []
+def x_of(i): return D[i][5] if len(D[i]) > 5 else {}
 for i, (b, ak, at, reason, rule, x) in D.items():
     src = inp.get(i, {}); g = gated.get(i)
     before = g['before'] if g else [src.get('known'), src.get('target')]
     r = {'id': i, 'bucket': b, 'type': (src.get('second_read') or {}).get('type'), 'before': before,
          'after': g['after'] if g and b == 'CLEAR' else None, 'reason': reason, 'rule': rule,
-         'knock_on': [], 'knock_on_of': x.get('knock_on_of'), 'proposal': x.get('proposal'), 'question': x.get('question')}
+         'knock_on': [], 'knock_on_of': x.get('knock_on_of'), 'gate_override': x.get('gate_override'), 'proposal': x.get('proposal'), 'question': x.get('question')}
     if g and b == 'CLEAR':
         r['gates'] = {k: g.get(k) for k in ('untaught', 'contains_lego', 'zut', 'dup_before', 'pattern_rows')}
         bad = []
         if g.get('error'): bad.append(g['error'])
         if at != 'DELETE':
             if g.get('untaught'): bad.append('untaught ' + ','.join(g['untaught']))
-            if g.get('contains_lego') is False: bad.append('loses LEGO')
+            if g.get('contains_lego') is False and not x_of(i).get('gate_override'): bad.append('loses LEGO')
             if g.get('zut') and basket.get(i, (0, ''))[1] == 'use': bad.append('zut ' + ','.join(g['zut']))
         else:
             lg = basket.get(i, ('?',))[0]
