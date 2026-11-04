@@ -11,7 +11,7 @@ You review ONE block of freshly built fry_for_eng seeds (your block is in your d
 3. dû/-stû only, never do/-sto. jo only in 639–655; jim in 529 and 656–668; a basket never mixes jo/jim/dû.
 4. "?" on every BUILD/USE phrase that is a real question, BOTH sides; statement + question ("ik bin klear, wêr wolstû moetsje?") gets "?". Embedded clauses, fragments and inverted conditionals are not questions. NO "?" on any LEGO or component, either side.
 5. No ask-then-state lines (a question followed by a statement in one line): reword to one thing, or delete the phrase.
-6. Phrases lowercase, no full stop; never a capitalised one-chunk sentence ("In âlde man.").
+6. Phrases lowercase, no full stop; never a capitalised one-chunk sentence ("In âlde man."). BUT English "I", day/month names, Mum/Dad and language names keep their capitals — the builder writes "i", "monday": fix every one (#213 found 24 in 311–360).
 7. Mum/Dad capitalised under ús mem / ús heit when the English says Mum/Dad.
 8. Auke's choices are not "corrected": no útfine; besykje only for a real attempt and never brought into 541/638; "should" never drilled as both moatte and soe…moatte in one basket, never moat as "must" under a "should" LEGO; ik fyn vs ik tink dat — build what the seed says, never drill the competing form in the same basket; no "kinne sil" where the seed has kin/kinne; stopje/efkes/elts/poppe/ûnthjitte/tichtby/saterdei stay; it liket for "it feels" (618).
 9. Grammar and naturalness of every Frisian line (V2 main clause, verb-final subclause, modal cluster main-infinitive-before-modal, clitics on conjunctions, R-form relatives) and of every English line (stilted English is a defect; rare is not).
