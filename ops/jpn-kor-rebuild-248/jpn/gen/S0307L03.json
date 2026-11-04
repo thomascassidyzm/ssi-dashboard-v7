@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 307,
+  "lego_index": 3,
+  "known": "I know that young man",
+  "target": "若い男性を知ってる"
+ },
+ "at": "2026-11-04T13:50:52.811Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 372,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I might know that young man",
+   "target_text": "若い男性を知ってるかも",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "build",
+   "known_text": "it feels like I know that young man",
+   "target_text": "若い男性を知ってる気がする",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I know that young man who's sitting over there",
+   "target_text": "あそこに座ってる若い男性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I'm not sure if I know that young man",
+   "target_text": "若い男性を知ってるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I can't remember whether or not I know that young man",
+   "target_text": "若い男性を知ってるかどうか思い出せない",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I have to find out whether or not I know that young man",
+   "target_text": "若い男性を知ってるかどうか調べないと",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "use",
+   "known_text": "because I know that young man, I'll try to help",
+   "target_text": "若い男性を知ってるから手伝ってみる",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I wonder if I know that young man who's talking to your friend",
+   "target_text": "友だちと話してる若い男性を知ってるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 3,
+   "lego_known": "I know that young man",
+   "lego_target": "若い男性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I might know that young man who doesn't want to seem unfriendly",
+   "target_text": "冷たく見られたくない若い男性を知ってるかも",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

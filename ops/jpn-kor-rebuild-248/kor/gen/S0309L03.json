@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 309,
+  "lego_index": 3,
+  "known": "have never seen",
+  "target": "본 적 없어요"
+ },
+ "at": "2026-11-04T13:56:10.270Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 264,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"have never seen\" initially, medially AND finally.",
+  "NEIGH 0.14 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "build",
+   "known_text": "have never seen her before",
+   "target_text": "전에 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "build",
+   "known_text": "my son has never seen",
+   "target_text": "제 아들은 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "build",
+   "known_text": "have never seen it so",
+   "target_text": "본 적 없어요 그래서",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "build",
+   "known_text": "have never seen her at the weekend",
+   "target_text": "주말에 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "i've never seen her before so i want to meet her",
+   "target_text": "전에 본 적 없어요 그래서 만나고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "why have you never seen a film",
+   "target_text": "왜 영화를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "i've never seen those people who are sitting over there",
+   "target_text": "저기 앉아 있는 그 사람들을 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "i don't know who you mean and i've never seen her before",
+   "target_text": "누구를 말하는지 모르겠어요 그리고 전에 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "have you never seen my keys",
+   "target_text": "제 열쇠를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "she's my mother's friend but i've never seen her",
+   "target_text": "제 어머니의 친구예요 하지만 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 3,
+   "lego_known": "have never seen",
+   "lego_target": "본 적 없어요",
+   "phrase_role": "use",
+   "known_text": "my daughter has never seen the young dog",
+   "target_text": "제 딸은 어린 개를 본 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

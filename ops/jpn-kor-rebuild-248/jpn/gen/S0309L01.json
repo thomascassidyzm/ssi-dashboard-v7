@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 309,
+  "lego_index": 1,
+  "known": "nope",
+  "target": "いや"
+ },
+ "at": "2026-11-04T13:53:14.831Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 226,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "build",
+   "known_text": "trying to say nope",
+   "target_text": "いやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "build",
+   "known_text": "trying to say nope in japanese",
+   "target_text": "日本語でいやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "build",
+   "known_text": "trying to say nope to people",
+   "target_text": "人にいやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "build",
+   "known_text": "trying to say nope as much as possible",
+   "target_text": "できるだけいやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "I wonder if he's trying to say nope",
+   "target_text": "いやって言いたいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "she might be trying to say nope",
+   "target_text": "いやって言いたいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if he's trying to say nope",
+   "target_text": "いやって言いたいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "because I'm too busy I'm trying to say nope to people",
+   "target_text": "忙しすぎるから人にいやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "tomorrow too I'm trying to say nope to people",
+   "target_text": "明日も人にいやって言いたい",
+   "pad": []
+  },
+  {
+   "seed_number": 309,
+   "lego_index": 1,
+   "lego_known": "nope",
+   "lego_target": "いや",
+   "phrase_role": "use",
+   "known_text": "even if I make mistakes I'm trying to say nope in japanese",
+   "target_text": "間違えても日本語でいやって言いたい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

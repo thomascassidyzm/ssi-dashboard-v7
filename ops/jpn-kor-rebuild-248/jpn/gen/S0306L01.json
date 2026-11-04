@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 306,
+  "lego_index": 1,
+  "known": "young woman",
+  "target": "若い女性"
+ },
+ "at": "2026-11-04T13:43:26.682Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 217,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"a young woman who speaks japanese\" (unknown gloss \"speaks\"); \"last night I was talking to a young woman who speaks japanese\" (unknown gloss \"speaks\")",
+  "BUILD \"a young woman who speaks japanese\" → \"日本語話せる若い女性\": popty:knownSide [{\"known\":\"a young woman who speaks japanese\",\"target\":\"日本語話せる若い女性\",\"problem\":\"unknown gloss \\\"speaks\\\"\"}]",
+  "USE \"last night I was talking to a young woman who speaks japanese\" → \"昨夜日本語話せる若い女性と話してた\": popty:knownSide [{\"known\":\"last night I was talking to a young woman who speaks japanese\",\"target\":\"昨夜日本語話せる若い女性と話してた\",\"problem\":\"unknown gloss \\\"speaks\\\"\"}]",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

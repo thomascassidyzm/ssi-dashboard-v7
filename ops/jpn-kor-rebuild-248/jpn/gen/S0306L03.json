@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 306,
+  "lego_index": 3,
+  "known": "I know that young woman",
+  "target": "若い女性を知ってる"
+ },
+ "at": "2026-11-04T13:43:15.289Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 135,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I might know that young woman",
+   "target_text": "若い女性を知ってるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I know that young woman who's talking to your friend",
+   "target_text": "友だちと話してる若い女性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "build",
+   "known_text": "it feels like I know that young woman",
+   "target_text": "若い女性を知ってる気がする",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "build",
+   "known_text": "I know that young woman who doesn't want to work",
+   "target_text": "働きたくない若い女性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if I know that young woman who's talking to your friend",
+   "target_text": "友だちと話してる若い女性を知ってるかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I wonder if I know that young woman",
+   "target_text": "若い女性を知ってるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I want to go because I know that young woman",
+   "target_text": "若い女性を知ってるから行きたい",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I might know that young woman who wants to live in a city",
+   "target_text": "都会に住みたい若い女性を知ってるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "I know that young woman who doesn't want to work from home",
+   "target_text": "家で働きたくない若い女性を知ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 3,
+   "lego_known": "I know that young woman",
+   "lego_target": "若い女性を知ってる",
+   "phrase_role": "use",
+   "known_text": "it feels like I know that young woman who wants to sit down",
+   "target_text": "座りたい若い女性を知ってる気がする",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -52,7 +52,8 @@ function padReasons(course, known, target) {
   }
   if (course === 'kor') {
     if (/교회/.test(t) && !/\bchurch/.test(k)) r.push('kor: phantom 교회 (church), English has no church');
-    if (/(?:으면|면|을|를|이|가|에|에서|고)\s*있어요$/.test(t) && !/\b(there is|there are|have|has|is|are)\b/.test(k)) r.push('kor: dangling 있어요 after a particle/connective');
+    // not after 고: -고 있어요 is the progressive (잘하고 있어요), probe S0304L01
+    if (/(?:으면|면|을|를|이|가|에|에서)\s+있어요$/.test(t) && !/\b(there is|there are|have|has|is|are)\b/.test(k)) r.push('kor: dangling 있어요 after a particle/connective');
     if (/^i heard about\b|\btrust about\b/.test(k)) r.push('kor: "heard/trust about" template English');
   }
   return r;
@@ -148,13 +149,20 @@ function plan(c, rng, dump, gens, romanStyle = null) {
   const [a, b] = range(rng);
   const { planInsert } = require('../../services/shared/phrase-v4-door.cjs');
   const legos = newLegos(dump, a, b);
+  const dropsFile = path.join(DIR, c, 'drops.json');
+  const drops = fs.existsSync(dropsFile) ? JSON.parse(fs.readFileSync(dropsFile, 'utf8')) : {};
   const replaced = new Set(); // LEGOs whose basket is replaced
   const staged = [], refused = [], held = [];
   for (const l of legos) {
     const g = gens(l.seed_number, l.lego_index);
     if (!g || !g.keep) { held.push({ lego: lid(l.seed_number, l.lego_index), why: g ? `generator blocked: ${JSON.stringify(g.failing)} ${g.error || ''}` : 'not generated' }); continue; }
     // The generator sometimes writes a lower-case "i" ("i'm not sure if…"); the course writes "I". Pure display fix.
-    for (const x of g.rows) x.known_text = upperI(x.known_text);
+    for (const x of g.rows) {
+      // drops.json: rows the full read refused, keyed "S####L##|known as generated" → why (judgement, never regex)
+      const why = drops[`${lid(l.seed_number, l.lego_index)}|${x.known_text}`];
+      if (why) x.drop = `read: ${why}`;
+      x.known_text = upperI(x.known_text);
+    }
     const keep = g.rows.filter((x) => !padReasons(c, x.known_text, x.target_text).length && !x.drop);
     for (const x of g.rows) if (padReasons(c, x.known_text, x.target_text).length || x.drop) refused.push({ lego: lid(l.seed_number, l.lego_index), known: x.known_text, target: x.target_text, why: x.drop || padReasons(c, x.known_text, x.target_text).join('; ') });
     if (!keep.some((x) => x.phrase_role === 'build') || keep.filter((x) => x.phrase_role === 'use').length < 2) {

@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 306,
+  "lego_index": 2,
+  "known": "who's talking",
+  "target": "이야기하고 있는"
+ },
+ "at": "2026-11-04T13:44:35.935Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 104,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "build",
+   "known_text": "who's talking with a friend",
+   "target_text": "친구와 이야기하고 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "build",
+   "known_text": "who's talking at home",
+   "target_text": "집에서 이야기하고 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "build",
+   "known_text": "my son who's talking",
+   "target_text": "이야기하고 있는 제 아들은",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "build",
+   "known_text": "my mother who's talking with a friend",
+   "target_text": "친구와 이야기하고 있는 제 어머니는",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "my son who's talking with a friend works as a teacher",
+   "target_text": "친구와 이야기하고 있는 제 아들은 선생님으로 일해요",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "why is my son who's talking with a friend not happy",
+   "target_text": "왜 친구와 이야기하고 있는 제 아들은 행복하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "my daughter who's talking at home wants to pay half",
+   "target_text": "집에서 이야기하고 있는 제 딸은 반만 내고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "my son who's talking with a friend would help you if he could",
+   "target_text": "친구와 이야기하고 있는 제 아들은 할 수 있다면 도와줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "my son who's talking at home didn't know the answer",
+   "target_text": "집에서 이야기하고 있는 제 아들은 답을 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 306,
+   "lego_index": 2,
+   "lego_known": "who's talking",
+   "lego_target": "이야기하고 있는",
+   "phrase_role": "use",
+   "known_text": "is my mother who's talking at home too busy",
+   "target_text": "집에서 이야기하고 있는 제 어머니는 너무 바빠요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 304,
+  "lego_index": 3,
+  "known": "I think that she doesn't want to work",
+  "target": "働きたくないと思う"
+ },
+ "at": "2026-11-04T13:40:11.871Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 223,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "build",
+   "known_text": "i think that she doesn't want to work from home",
+   "target_text": "家で働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "build",
+   "known_text": "because i think that she doesn't want to work",
+   "target_text": "働きたくないと思うから",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "build",
+   "known_text": "i think that she doesn't want to work on sunday",
+   "target_text": "日曜働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "build",
+   "known_text": "i think that she doesn't want to work more",
+   "target_text": "もっと働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "i want you to help me because i think that she doesn't want to work",
+   "target_text": "働きたくないと思うから手伝ってほしい",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "because she's starting to get tired i think that she doesn't want to work this afternoon",
+   "target_text": "疲れてきてるから今日の午後働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "when other people are here i think that she doesn't want to work",
+   "target_text": "他の人がいると働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "i have to find out because i think that she doesn't want to work in an office",
+   "target_text": "オフィスで働きたくないと思うから調べないと",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "because she was busy last night i think that she doesn't want to work today",
+   "target_text": "昨夜忙しかったから今日は働きたくないと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 304,
+   "lego_index": 3,
+   "lego_known": "I think that she doesn't want to work",
+   "lego_target": "働きたくないと思う",
+   "phrase_role": "use",
+   "known_text": "because she's too busy i think that she doesn't want to work longer",
+   "target_text": "忙しすぎるからもっと長く働きたくないと思う",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

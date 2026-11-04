@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 307,
+  "lego_index": 2,
+  "known": "young male",
+  "target": "若い男性"
+ },
+ "at": "2026-11-04T13:50:19.807Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 413,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "build",
+   "known_text": "the young male sitting over there",
+   "target_text": "あそこに座ってる若い男性",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "build",
+   "known_text": "might be a young male",
+   "target_text": "若い男性かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "build",
+   "known_text": "the young male who's talking to your friend",
+   "target_text": "友だちと話してる若い男性",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "build",
+   "known_text": "i wonder if it's a young male",
+   "target_text": "若い男性か気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "i was talking to a young male who wants to live in a city",
+   "target_text": "都会に住みたい若い男性と話してた",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "it might be a young male who doesn't want to work",
+   "target_text": "働きたくない若い男性かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if it's a young male",
+   "target_text": "若い男性かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "this afternoon i heard from a young male",
+   "target_text": "今日の午後若い男性から連絡あった",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "i'll ask if it's the young male who's talking to your friend",
+   "target_text": "友だちと話してる若い男性か聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 2,
+   "lego_known": "young male",
+   "lego_target": "若い男性",
+   "phrase_role": "use",
+   "known_text": "last night i heard from a young male who wants to work together",
+   "target_text": "昨夜一緒に働きたい若い男性から連絡あった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

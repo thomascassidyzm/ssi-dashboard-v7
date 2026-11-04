@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 308,
+  "lego_index": 1,
+  "known": "mother",
+  "target": "어머니의"
+ },
+ "at": "2026-11-04T13:51:46.118Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 442,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"mother\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "build",
+   "known_text": "mother's friend",
+   "target_text": "어머니의 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "build",
+   "known_text": "my mother's sister's friend",
+   "target_text": "제 어머니의 여동생 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "build",
+   "known_text": "at our mother's home",
+   "target_text": "우리 어머니의 집에서",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "build",
+   "known_text": "his mother's name",
+   "target_text": "그의 어머니의 이름을",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find mother's keys",
+   "target_text": "어머니의 열쇠를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "nobody knew our mother's sister",
+   "target_text": "아무도 우리 어머니의 여동생을 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "when I work with my mother's brother it's interesting",
+   "target_text": "제 어머니의 남동생과 일하면 재미있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "I have to find out what mother's name is",
+   "target_text": "어머니의 이름이 뭔지 알아내야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to live at mother's home",
+   "target_text": "어머니의 집에서 살고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "because she's my mother's friend",
+   "target_text": "제 어머니의 친구니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 308,
+   "lego_index": 1,
+   "lego_known": "mother",
+   "lego_target": "어머니의",
+   "phrase_role": "use",
+   "known_text": "why do you want to meet with our mother's brother",
+   "target_text": "왜 우리 어머니의 남동생과 만나고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

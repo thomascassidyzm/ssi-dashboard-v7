@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 303,
+  "lego_index": 2,
+  "known": "I think that he wants to sit down",
+  "target": "座りたいんだと思う"
+ },
+ "at": "2026-11-04T13:38:46.772Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 228,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "build",
+   "known_text": "i think that he wants to sit down for an hour",
+   "target_text": "一時間座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "build",
+   "known_text": "after we finish i think that he wants to sit down",
+   "target_text": "終わったら座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "build",
+   "known_text": "because he was busy i think that he wants to sit down",
+   "target_text": "忙しかったから座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "build",
+   "known_text": "this afternoon i think that he wants to sit down for an hour",
+   "target_text": "今日の午後一時間座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "i think that he wants to sit down because he was busy all day",
+   "target_text": "一日中忙しかったから座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "after we finish i think that he wants to sit down with everyone",
+   "target_text": "終わったらみんなと座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "i don't want to interrupt because i think that he wants to sit down",
+   "target_text": "座りたいんだと思うから邪魔したくない",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "i think that he wants to sit down with everyone this afternoon",
+   "target_text": "今日の午後みんなと座りたいんだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "i want you to help me because i think that he wants to sit down",
+   "target_text": "座りたいんだと思うから手伝ってほしい",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  },
+  {
+   "seed_number": 303,
+   "lego_index": 2,
+   "lego_known": "I think that he wants to sit down",
+   "lego_target": "座りたいんだと思う",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait because i think that he wants to sit down",
+   "target_text": "座りたいんだと思うから待っていい",
+   "pad": [
+    "jpn: stacked tails"
+   ]
+  }
+ ],
+ "keep": true
+}
