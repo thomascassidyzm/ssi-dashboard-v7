@@ -1,0 +1,52 @@
+// services/shared/roman-sync.cjs
+//
+// target_text_roman must always spell the CURRENT target_text (job #252, 2026-11-04).
+//
+// zho_for_eng, jpn_for_eng and kor_for_eng carry a romanisation (pinyin, romaji,
+// revised romanisation) on seeds, LEGOs and phrases, and the learner app SHOWS IT
+// as the primary text whenever it is non-empty (ssi-learning-app
+// api/courses/[code]/cycles.ts: "when target_text_roman exists, show romanized").
+// No code can derive it — polyphones (得 de/děi, 了 le/liǎo, 只 zhī/zhǐ) need a
+// reader — so when a target text changes and the caller does not send the new
+// romanisation, the old one keeps playing to the learner as the spelling of a
+// sentence that no longer exists. On 4 Nov 2026 zho_for_eng had 58 such rows
+// ("你认识我父亲吗？" displayed as "nǐ zhīdào wǒ fùqīn ma").
+//
+// The rule, one function, two policies:
+//   - the course-edit engine (agents, sweeps) REFUSES: ROMAN_STALE. The caller
+//     has the new text in hand and is the one who must read and supply the
+//     romanisation — or send target_text_roman: null to clear it on purpose.
+//   - the single-row human edit routes CLEAR it (null) and say so, because a
+//     blank shows the learner the right characters, and a stale one shows them
+//     the wrong words.
+// A row with no romanisation (most of seeds 301-668 today) is never affected.
+
+/**
+ * True when `set` changes a row's target_text, the row currently carries a
+ * romanisation, and `set` says nothing about target_text_roman.
+ * @param {{target_text?: string, target_text_roman?: string|null}} before  the row as read
+ * @param {Object} set  the columns about to be written
+ */
+function romanGoesStale(before, set) {
+  if (!before || !set) return false;
+  if (!Object.prototype.hasOwnProperty.call(set, 'target_text')) return false;
+  if (Object.prototype.hasOwnProperty.call(set, 'target_text_roman')) return false;
+  if (set.target_text === before.target_text) return false;
+  return typeof before.target_text_roman === 'string' && before.target_text_roman.trim() !== '';
+}
+
+const ROMAN_STALE_MESSAGE =
+  'target_text changes but this row carries a target_text_roman (pinyin/romaji/romanisation) written for the old text. ' +
+  'Send the new target_text_roman with it, read by hand (polyphones need a reader), or target_text_roman: null to clear it deliberately.';
+
+/**
+ * For the single-row human edit routes: the patch to write, with the stale
+ * romanisation cleared when it would otherwise go stale.
+ * @returns {{ patch: Object, romanCleared: boolean }}
+ */
+function clearStaleRoman(before, set) {
+  if (!romanGoesStale(before, set)) return { patch: set, romanCleared: false };
+  return { patch: { ...set, target_text_roman: null }, romanCleared: true };
+}
+
+module.exports = { romanGoesStale, clearStaleRoman, ROMAN_STALE_MESSAGE };

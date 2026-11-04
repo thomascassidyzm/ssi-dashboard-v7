@@ -23,6 +23,7 @@
  * an error or a truncated page throws; it never reads as "no clip exists".
  */
 
+const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
@@ -330,11 +331,15 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
  * @param {object} want    { text, language (any spelling), voiceId?, courseCode?, includeOwnCourse?, ownCourseOnly?, readOnly? }
  * @param {(rows: object[]) => object|null} pick
  */
-async function resolveClip(source, want, pick) {
-  if (!tryCanonicalLanguage(want.language)) return pick([])
+async function resolveClip(source, want, rawPick) {
+  // A line the asking course renders through a pronunciation override is answered only by a clip rendered WITH it
+  // (shared/pronunciation-reuse-guard.cjs, job #262·AD): the misread clips share its words exactly. Every reuse path
+  // that goes through here — the TTS door, the render route's library-first link, the phase8 fill pass — gets it.
+  const pick = async rows => rawPick(await allowedForOverride(rows, want))
+  if (!tryCanonicalLanguage(want.language)) return await pick([])
   const courseOf = source.courses ? await source.courses([want.courseCode]) : noCourses
   const language = clipLanguageKey(want.language, courseOf(want.courseCode))
-  if (!language) return pick([])
+  if (!language) return await pick([])
   // EVERY candidate, from every path, must be in the asked language INCLUDING
   // ITS REGION — the pick rules compare base languages only, so this filter is
   // what keeps a Castilian row from answering a Mexican slot.
@@ -343,12 +348,12 @@ async function resolveClip(source, want, pick) {
     return rows.filter(r => r && clipLanguageKey(r.language, of(r.course_code)) === language)
   }
   if (want.ownCourseOnly) {
-    return pick(await inLanguage(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true })))
+    return await pick(await inLanguage(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true })))
   }
   const voice = want.voiceId ? tryCanonicalVoiceId(want.voiceId) : null
   const indexed = await inLanguage(await source.indexed(language, want.text))
   const own = (want.includeOwnCourse && want.courseCode) ? await inLanguage(await source.own(want.courseCode, want.text)) : []
-  const first = pick(dedupeById([...own, ...indexed]))
+  const first = await pick(dedupeById([...own, ...indexed]))
   if (first && (!voice || tryCanonicalVoiceId(first.voice_id) === voice)) {
     stats.indexHits++
     return first
@@ -357,7 +362,7 @@ async function resolveClip(source, want, pick) {
   const rows = await source.fallback(want.text, {})
   // readOnly (a dry run): answer from what was read, write nothing anywhere.
   if (!want.readOnly) await source.write(rows)
-  return pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)])) || first
+  return (await pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)]))) || first
 }
 
 function dedupeById(rows) {

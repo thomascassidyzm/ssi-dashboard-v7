@@ -27,6 +27,7 @@
 //     Drift aborts the whole transaction (the sweep protocol's "abort on drift").
 
 const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
+const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
 
 const MAX_OPS = 2000;
 
@@ -444,6 +445,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
           if (flags.length) cascadeUndo = [{ op: 'phrase.insert', row: stripNeverSet(before, 'course_practice_phrases') },
             ...flags.map(f => ({ op: 'qaflag.restore', row: stripNeverSet(f, 'course_qa_flags') }))];
         } else {
+          if (romanGoesStale(before, plan.set)) throw new EditOpError(plan.index, `${plan.name}: ${ROMAN_STALE_MESSAGE}`, 'ROMAN_STALE');
           if (plan.link && plan.link.audioId) await checkLink(client, plan, before, courseCode);
           const textSet = {}, audioSet = {};
           for (const [c, v] of Object.entries(plan.set)) (AUDIO_COLS.includes(c) ? audioSet : textSet)[c] = v;
