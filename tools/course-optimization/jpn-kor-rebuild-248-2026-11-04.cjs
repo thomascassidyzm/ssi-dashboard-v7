@@ -223,6 +223,12 @@ function plan(c, rng, dump, gens, romanStyle = null) {
 }
 
 // ── audio: the three slots of every new row ──
+/** The clip an EXISTS_IN_LANGUAGE refusal names: "<uuid> (voice V, <course> <role>)"; same course + slot preferred. Pure. */
+function existingClip(msg, course, role) {
+  const all = [...String(msg || '').matchAll(/([0-9a-f]{8}-[0-9a-f-]{27}) \(voice [^,]+, (\S+) (\S+)\)/g)].map((m) => ({ id: m[1], course: m[2], role: m[3] }));
+  const best = all.find((x) => x.course === course && x.role === role) || all.find((x) => x.course === course) || all[0];
+  return best ? best.id : null;
+}
 function audioFile(c) { return path.join(courseDir(c), 'audio.json'); }
 function loadAudio(c) { return fs.existsSync(audioFile(c)) ? JSON.parse(fs.readFileSync(audioFile(c), 'utf8')) : {}; }
 const SLOT_TEXT = { known: 'known_text', target1: 'target_text', target2: 'target_text' };
@@ -235,16 +241,17 @@ async function audio(c, rng, real) {
     const text = r[SLOT_TEXT[role]]; const key = `${role}|${text}`;
     if (seen.has(key) || have[key]) continue; seen.add(key); asks.push({ role, text, key, seed: r.seed_number });
   }
-  let chars = 0, lib = 0, refused = [];
+  let chars = 0, lib = 0, refused = []; const linkedExisting = [];
   const dry = [];
   let i = 0;
   const worker = async () => { while (i < asks.length) { const a = asks[i++];
     const d = await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
     if (d.status === 200 && d.body.ok && d.body.source === 'library') { lib++; have[a.key] = d.body.audioId; }
     else if (d.status === 200 && d.body.ok) { chars += d.body.wouldSpendChars || a.text.length; dry.push(a); }
+    else if (d.body.code === 'EXISTS_IN_LANGUAGE' && existingClip(d.body.error, COURSE[c], a.role)) { have[a.key] = existingClip(d.body.error, COURSE[c], a.role); linkedExisting.push({ ...a, audioId: have[a.key] }); }
     else refused.push({ ...a, status: d.status, error: d.body.code || d.body.error }); } };
   await Promise.all([1, 2, 3, 4].map(worker));
-  console.log(`${c} ${rng}: ${asks.length} clips asked; library ${lib}; to render ${dry.length} (${chars} chars); refused ${refused.length}`);
+  console.log(`${c} ${rng}: ${asks.length} clips asked; library ${lib}; existing-in-language linked ${linkedExisting.length}; to render ${dry.length} (${chars} chars); refused ${refused.length}`);
   if (refused.length) console.log(JSON.stringify(refused.slice(0, 5)));
   fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
   if (!real) return { chars, toRender: dry.length, refused: refused.length };
@@ -260,13 +267,18 @@ async function audio(c, rng, real) {
     }
     if (!(r.status === 200 && r.body.ok)) {
       if (r.status === 0) { console.log('Popty unreachable — stopping; re-run resumes library-first'); break; }
+      // EXISTS_IN_LANGUAGE: the line is already recorded in this language; the guard's own answer is "link an existing
+      // clip" — we take the one it names (same course + slot preferred). Nothing re-renders it. Any other refusal stops.
+      const ex = r.body.code === 'EXISTS_IN_LANGUAGE' && existingClip(r.body.error, COURSE[c], a.role);
+      if (ex) { have[a.key] = ex; linkedExisting.push({ ...a, audioId: ex }); continue; }
       console.log('REFUSED — no retry:', a.role, a.text, JSON.stringify(r.body).slice(0, 300)); break;
     }
     have[a.key] = r.body.audioId; spent += r.body.charsSpent || 0;
     if (Object.keys(have).length % 50 === 0) fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
   }
   fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
-  console.log(`rendered: ${spent} chars`);
+  console.log(`rendered: ${spent} chars; existing-in-language linked ${linkedExisting.length}`);
+  if (linkedExisting.length) fs.writeFileSync(path.join(courseDir(c), `existing-linked-${rng}.json`), JSON.stringify(linkedExisting, null, 1));
 }
 
 // ── apply ──
@@ -334,7 +346,7 @@ function verify(c, rng, dump) {
   return { oldLeft, newMissing, empty, padded };
 }
 
-module.exports = { padReasons, plan, upperI };
+module.exports = { padReasons, plan, upperI, existingClip };
 
 if (require.main === module) {
   const [mode, c, rng, x, y] = process.argv.slice(2);

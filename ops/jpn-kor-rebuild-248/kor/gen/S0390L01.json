@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 390,
+  "lego_index": 1,
+  "known": "standing",
+  "target": "서"
+ },
+ "at": "2026-11-04T16:55:55.234Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 74,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "build",
+   "known_text": "who's standing",
+   "target_text": "서 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "build",
+   "known_text": "the person who's standing",
+   "target_text": "서 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "build",
+   "known_text": "who's standing over there",
+   "target_text": "저기 서 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "build",
+   "known_text": "who's standing alone over there",
+   "target_text": "저기 혼자 서 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "I can stay standing over there",
+   "target_text": "저기 서 있을 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "why are you standing over there",
+   "target_text": "왜 저기 서 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "who was the person who was standing over there",
+   "target_text": "저기 서 있던 사람 누구였어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "I've never seen a person standing over there",
+   "target_text": "저기 서 있는 사람을 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "I went to see the person who was standing over there",
+   "target_text": "저기 서 있던 사람을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 1,
+   "lego_known": "standing",
+   "lego_target": "서",
+   "phrase_role": "use",
+   "known_text": "I hoped to see the person who was standing alone",
+   "target_text": "혼자 서 있던 사람을 보고 싶었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

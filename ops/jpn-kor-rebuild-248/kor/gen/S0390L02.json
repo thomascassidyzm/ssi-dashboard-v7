@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 390,
+  "lego_index": 2,
+  "known": "entrance",
+  "target": "입구"
+ },
+ "at": "2026-11-04T16:58:38.775Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 215,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"entrance\" initially, medially AND finally.",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "build",
+   "known_text": "the entrance over there",
+   "target_text": "저기 입구",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "build",
+   "known_text": "the entrance door",
+   "target_text": "입구 문을",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "build",
+   "known_text": "the field entrance door",
+   "target_text": "운동장 입구 문을",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "build",
+   "known_text": "the blue entrance door",
+   "target_text": "파란 입구 문을",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "use",
+   "known_text": "I have never seen the entrance door over there before",
+   "target_text": "전에 저기 입구 문을 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "use",
+   "known_text": "why are you trying to find the entrance door",
+   "target_text": "왜 입구 문을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "use",
+   "known_text": "because I can't see the entrance door I'll ask him",
+   "target_text": "입구 문을 볼 수 없어서 그한테 물어볼 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "use",
+   "known_text": "on wednesday I went to see the blue entrance door",
+   "target_text": "수요일에 파란 입구 문을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 390,
+   "lego_index": 2,
+   "lego_known": "entrance",
+   "lego_target": "입구",
+   "phrase_role": "use",
+   "known_text": "nobody has seen the field entrance door",
+   "target_text": "아무도 운동장 입구 문을 못 봤어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

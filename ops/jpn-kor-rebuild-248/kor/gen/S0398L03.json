@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 398,
+  "lego_index": 3,
+  "known": "want to become",
+  "target": "되고 싶어요"
+ },
+ "at": "2026-11-04T17:18:09.484Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 294,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "build",
+   "known_text": "want to become patient",
+   "target_text": "참을성 있게 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "build",
+   "known_text": "want to become a friend",
+   "target_text": "친구 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "build",
+   "known_text": "want to become a valuable person",
+   "target_text": "귀중한 사람 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "build",
+   "known_text": "this time I want to become patient",
+   "target_text": "이번에는 참을성 있게 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "why do you want to become patient",
+   "target_text": "왜 참을성 있게 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "when we work together I want to become patient",
+   "target_text": "같이 일하면 참을성 있게 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "this year I want to become a valuable person",
+   "target_text": "올해 귀중한 사람 되고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "I want to become a friend but I need a little more time",
+   "target_text": "친구 되고 싶어요 하지만 시간이 좀 더 필요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "I want to become patient so I must work hard",
+   "target_text": "참을성 있게 되고 싶어요 그래서 열심히 해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 3,
+   "lego_known": "want to become",
+   "lego_target": "되고 싶어요",
+   "phrase_role": "use",
+   "known_text": "do you want to become a person who knows the facts",
+   "target_text": "사실을 아는 사람 되고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

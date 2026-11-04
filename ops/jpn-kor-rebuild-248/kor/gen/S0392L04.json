@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 392,
+  "lego_index": 4,
+  "known": "post office",
+  "target": "우체국"
+ },
+ "at": "2026-11-04T17:03:25.219Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 195,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "build",
+   "known_text": "the post office over there",
+   "target_text": "저기 우체국",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "build",
+   "known_text": "near the post office",
+   "target_text": "우체국 근처에",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "build",
+   "known_text": "standing near the post office entrance",
+   "target_text": "우체국 입구 근처에 서",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "build",
+   "known_text": "the child who's sitting near the post office",
+   "target_text": "우체국 근처에 앉아 있는 아이",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "use",
+   "known_text": "did you go towards the post office on wednesday",
+   "target_text": "수요일에 우체국 쪽으로 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "use",
+   "known_text": "why did you go towards the post office entrance",
+   "target_text": "왜 우체국 입구 쪽으로 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "use",
+   "known_text": "yesterday I went towards the post office to see a person I know",
+   "target_text": "어제 아는 사람을 보러 우체국 쪽으로 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "use",
+   "known_text": "I went alone towards the post office last year",
+   "target_text": "작년에 혼자 우체국 쪽으로 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 392,
+   "lego_index": 4,
+   "lego_known": "post office",
+   "lego_target": "우체국",
+   "phrase_role": "use",
+   "known_text": "I went towards the post office with a friend",
+   "target_text": "친구와 우체국 쪽으로 갔어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

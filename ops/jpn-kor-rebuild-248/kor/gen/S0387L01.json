@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 387,
+  "lego_index": 1,
+  "known": "that it's right",
+  "target": "맞다고"
+ },
+ "at": "2026-11-04T16:55:03.534Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 224,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"that it's right\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "build",
+   "known_text": "I believe that it's right",
+   "target_text": "맞다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "build",
+   "known_text": "that this time it's right",
+   "target_text": "이번에는 맞다고",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "build",
+   "known_text": "I believe that book is right",
+   "target_text": "그 책이 맞다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "build",
+   "known_text": "I told you that it's definitely right",
+   "target_text": "확실히 맞다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "nobody told me that it's right",
+   "target_text": "맞다고 아무도 저한테 말 안 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "why do you believe that idea is right",
+   "target_text": "왜 그 생각이 맞다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "it isn't easy but I believe that it's right",
+   "target_text": "쉽지 않지만 맞다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "yesterday I told you that book is right",
+   "target_text": "어제 그 책이 맞다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "why did you tell me that it's right",
+   "target_text": "왜 맞다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 387,
+   "lego_index": 1,
+   "lego_known": "that it's right",
+   "lego_target": "맞다고",
+   "phrase_role": "use",
+   "known_text": "I told you that this time it's right",
+   "target_text": "이번에는 맞다고 말했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,123 @@
+{
+ "lego": {
+  "seed_number": 404,
+  "lego_index": 2,
+  "known": "don't think",
+  "target": "思わない"
+ },
+ "at": "2026-11-04T17:18:02.964Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 493,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"don't think\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "build",
+   "known_text": "I don't think she's right",
+   "target_text": "正しいとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "build",
+   "known_text": "I heard she doesn't think so",
+   "target_text": "思わないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "build",
+   "known_text": "I don't think we can turn left",
+   "target_text": "左に曲がれるとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "build",
+   "known_text": "I don't think she's busy",
+   "target_text": "忙しいとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I couldn't agree because I don't think she's right",
+   "target_text": "正しいとは思わないから同意できなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I heard she doesn't think it's impossible",
+   "target_text": "無理だとは思わないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I don't think she needs to move house",
+   "target_text": "引っ越す必要があるとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I don't think he wants to eat something later",
+   "target_text": "あとで何か食べたいとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I don't think she'll be able to come",
+   "target_text": "来られるとは思わない",
+   "pad": []
+  },
+  {
+   "seed_number": 404,
+   "lego_index": 2,
+   "lego_known": "don't think",
+   "lego_target": "思わない",
+   "phrase_role": "use",
+   "known_text": "I don't think he was busy last month",
+   "target_text": "先月忙しかったとは思わない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

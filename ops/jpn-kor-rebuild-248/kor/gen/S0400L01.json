@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 400,
+  "lego_index": 1,
+  "known": "to eat",
+  "target": "먹고"
+ },
+ "at": "2026-11-04T17:21:48.338Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 65,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "build",
+   "known_text": "to eat later on",
+   "target_text": "나중에 먹고",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "build",
+   "known_text": "want to eat",
+   "target_text": "먹고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "build",
+   "known_text": "want to eat tomatoes",
+   "target_text": "토마토를 먹고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "build",
+   "known_text": "to eat and go out",
+   "target_text": "먹고 나가고",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "do you want to eat tomatoes later on",
+   "target_text": "나중에 토마토를 먹고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to eat",
+   "target_text": "먹고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to eat at home",
+   "target_text": "집에서 먹고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "although I wanted to eat I didn't have time",
+   "target_text": "먹고 싶었지만 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "I want to eat with a friend on wednesday",
+   "target_text": "수요일에 친구와 먹고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "to eat",
+   "lego_target": "먹고",
+   "phrase_role": "use",
+   "known_text": "I want to eat before you start",
+   "target_text": "시작하기 전에 먹고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 400,
+  "lego_index": 1,
+  "known": "want to eat something later",
+  "target": "あとで何か食べたい"
+ },
+ "at": "2026-11-04T17:06:42.121Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 166,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "build",
+   "known_text": "children who want to eat something later",
+   "target_text": "あとで何か食べたい子ども",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "build",
+   "known_text": "want to eat something later because I didn't have time",
+   "target_text": "時間なかったからあとで何か食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "build",
+   "known_text": "after we finish want to eat something later",
+   "target_text": "終わったらあとで何か食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "build",
+   "known_text": "I'll ask if they want to eat something later",
+   "target_text": "あとで何か食べたいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "use",
+   "known_text": "I want to eat something later because I was busy this afternoon",
+   "target_text": "今日の午後忙しかったからあとで何か食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if I want to eat something later",
+   "target_text": "あとで何か食べたいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "use",
+   "known_text": "I wonder if they want to eat something later",
+   "target_text": "あとで何か食べたいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "use",
+   "known_text": "after we finish I want to eat something later with my friends",
+   "target_text": "終わったら友だちとあとで何か食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 400,
+   "lego_index": 1,
+   "lego_known": "want to eat something later",
+   "lego_target": "あとで何か食べたい",
+   "phrase_role": "use",
+   "known_text": "do you want to eat something later with your friends",
+   "target_text": "友だちとあとで何か食べたい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

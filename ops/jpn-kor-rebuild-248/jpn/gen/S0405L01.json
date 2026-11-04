@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 405,
+  "lego_index": 1,
+  "known": "reservation",
+  "target": "予約"
+ },
+ "at": "2026-11-04T17:11:46.069Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 97,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "build",
+   "known_text": "there was no reservation",
+   "target_text": "予約なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "build",
+   "known_text": "was a new reservation needed?",
+   "target_text": "新しい予約必要あった",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "build",
+   "known_text": "can use the reservation",
+   "target_text": "予約使える",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "build",
+   "known_text": "need to change the reservation",
+   "target_text": "予約変える必要",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "this time we didn't need a reservation",
+   "target_text": "今回予約必要なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "we didn't go anywhere because there was no reservation",
+   "target_text": "予約なかったからどこにも行かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if we needed a reservation",
+   "target_text": "予約必要あったかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "I'll ask if we needed a reservation",
+   "target_text": "予約必要あったか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "can I use the same reservation?",
+   "target_text": "同じ予約使える",
+   "pad": []
+  },
+  {
+   "seed_number": 405,
+   "lego_index": 1,
+   "lego_known": "reservation",
+   "lego_target": "予約",
+   "phrase_role": "use",
+   "known_text": "I didn't think a reservation was needed",
+   "target_text": "予約必要あったとは思わなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

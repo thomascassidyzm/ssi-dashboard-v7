@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 388,
+  "lego_index": 1,
+  "known": "person",
+  "target": "사람"
+ },
+ "at": "2026-11-04T16:56:45.705Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 282,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "build",
+   "known_text": "a person who left",
+   "target_text": "떠난 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "build",
+   "known_text": "a person who's talking with a friend",
+   "target_text": "친구와 이야기하고 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "build",
+   "known_text": "a person who got badly hurt",
+   "target_text": "심하게 다친 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "build",
+   "known_text": "a person who works at home",
+   "target_text": "집에서 일하는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find a person",
+   "target_text": "사람 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "I wanted to see the person but I didn't have time",
+   "target_text": "사람 만나고 싶었지만 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "I have never seen the person who's sitting over there",
+   "target_text": "저기 앉아 있는 사람 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "who was the person you were talking to yesterday",
+   "target_text": "어제 이야기하고 있던 사람 누구였어요",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "I want to meet the person who works at home",
+   "target_text": "집에서 일하는 사람 만나고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 388,
+   "lego_index": 1,
+   "lego_known": "person",
+   "lego_target": "사람",
+   "phrase_role": "use",
+   "known_text": "the person who got badly hurt didn't ask",
+   "target_text": "심하게 다친 사람 물어보지 않았어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
