@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 402,
+  "lego_index": 2,
+  "known": "stopping by",
+  "target": "들러서"
+ },
+ "at": "2026-11-04T17:30:01.482Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 260,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"on wednesday I stopped by the restaurant and went directly to work\" (unknown gloss \"stopped\"); \"I stopped by the pub and couldn't hear anything else\" (unknown gloss \"stopped\"); \"the student who stopped by yesterday and left is a friend\" (unknown gloss \"stopped\")",
+  "USE \"on wednesday I stopped by the restaurant and went directly to work\" → \"수요일에 식당에 들러서 바로 직장에 갔어요\": popty:knownSide [{\"known\":\"on wednesday I stopped by the restaurant and went directly to work\",\"target\":\"수요일에 식당에 들러서 바로 직장에 갔어요\",\"problem\":\"unknown gloss \\\"stopped\\\"\"}]",
+  "USE \"I stopped by the pub and couldn't hear anything else\" → \"술집에 들러서 다른 말도 못 들었어요\": popty:knownSide [{\"known\":\"I stopped by the pub and couldn't hear anything else\",\"target\":\"술집에 들러서 다른 말도 못 들었어요\",\"problem\":\"unknown gloss \\\"stopped\\\"\"}]",
+  "USE \"the student who stopped by yesterday and left is a friend\" → \"어제 들러서 떠난 학생은 친구예요\": popty:knownSide [{\"known\":\"the student who stopped by yesterday and left is a friend\",\"target\":\"어제 들러서 떠난 학생은 친구예요\",\"problem\":\"unknown gloss \\\"stopped\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"stopping by\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

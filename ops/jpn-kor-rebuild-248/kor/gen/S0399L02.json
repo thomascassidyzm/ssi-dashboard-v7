@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 399,
+  "lego_index": 2,
+  "known": "lose hope",
+  "target": "희망을 잃고"
+ },
+ "at": "2026-11-04T17:27:47.059Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 578,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"the child who lost hope and left\" (unknown gloss \"lost\"); \"last year I lost hope and went out alone\" (unknown gloss \"lost\"); \"although I wanted to see you I lost hope and went out\" (unknown gloss \"lost\")",
+  "BUILD \"the child who lost hope and left\" → \"희망을 잃고 떠난 아이\": popty:knownSide [{\"known\":\"the child who lost hope and left\",\"target\":\"희망을 잃고 떠난 아이\",\"problem\":\"unknown gloss \\\"lost\\\"\"}]",
+  "USE \"last year I lost hope and went out alone\" → \"작년에 희망을 잃고 혼자 나갔어요\": popty:knownSide [{\"known\":\"last year I lost hope and went out alone\",\"target\":\"작년에 희망을 잃고 혼자 나갔어요\",\"problem\":\"unknown gloss \\\"lost\\\"\"}]",
+  "USE \"although I wanted to see you I lost hope and went out\" → \"만나고 싶었지만 희망을 잃고 나갔어요\": popty:knownSide [{\"known\":\"although I wanted to see you I lost hope and went out\",\"target\":\"만나고 싶었지만 희망을 잃고 나갔어요\",\"problem\":\"unknown gloss \\\"lost\\\"\"}]",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

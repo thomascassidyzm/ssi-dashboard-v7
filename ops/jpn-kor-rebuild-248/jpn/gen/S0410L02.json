@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 410,
+  "lego_index": 2,
+  "known": "quarrel",
+  "target": "ケンカ"
+ },
+ "at": "2026-11-04T17:28:54.061Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 3,
+ "secs": 209,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 5 phrase(s) use English the learner has not been given. \"was quarrelling\" (unknown gloss \"quarrelling\"); \"the children were quarrelling\" (unknown gloss \"quarrelling\"); \"I didn't think that they were quarrelling\" (unknown gloss \"quarrelling\"); \"I didn't see the children who were quarrelling\" (unknown gloss \"quarrelling\"); \"the children were quarrelling on thursday\" (unknown gloss \"quarrelling\")",
+  "BUILD \"was quarrelling\" → \"ケンカしてた\": popty:knownSide [{\"known\":\"was quarrelling\",\"target\":\"ケンカしてた\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]",
+  "BUILD \"the children were quarrelling\" → \"子どもケンカしてた\": popty:knownSide [{\"known\":\"the children were quarrelling\",\"target\":\"子どもケンカしてた\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]",
+  "USE \"I didn't think that they were quarrelling\" → \"彼らケンカしてたとは思わなかった\": popty:knownSide [{\"known\":\"I didn't think that they were quarrelling\",\"target\":\"彼らケンカしてたとは思わなかった\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]",
+  "USE \"I didn't see the children who were quarrelling\" → \"ケンカしてた子ども見なかった\": popty:knownSide [{\"known\":\"I didn't see the children who were quarrelling\",\"target\":\"ケンカしてた子ども見なかった\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]",
+  "USE \"the children were quarrelling on thursday\" → \"子ども木曜ケンカしてた\": popty:knownSide [{\"known\":\"the children were quarrelling on thursday\",\"target\":\"子ども木曜ケンカしてた\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

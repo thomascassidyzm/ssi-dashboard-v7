@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 402,
+  "lego_index": 3,
+  "known": "if eat",
+  "target": "먹으면"
+ },
+ "at": "2026-11-04T17:30:12.732Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 211,
+ "floorsOnly": false,
+ "lastReasons": [
+  "BUILD \"if we stop by and eat\" → \"들러서 먹으면\": ZUT whole course: \"if we stop by and eat\" is \"들러서 먹어요\" at seed 402",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if eat\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

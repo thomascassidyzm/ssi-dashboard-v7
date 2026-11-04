@@ -1,0 +1,121 @@
+{
+ "lego": {
+  "seed_number": 411,
+  "lego_index": 4,
+  "known": "want to reserve",
+  "target": "予約したい"
+ },
+ "at": "2026-11-04T17:30:08.239Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 74,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "build",
+   "known_text": "want to reserve a table",
+   "target_text": "テーブル予約したい",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "build",
+   "known_text": "because i want to reserve",
+   "target_text": "予約したいから",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "build",
+   "known_text": "you want to reserve, don't you",
+   "target_text": "予約したいんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "build",
+   "known_text": "want to reserve a restaurant on thursday",
+   "target_text": "木曜レストラン予約したい",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "i want to reserve for four people on friday night",
+   "target_text": "金曜夜四人予約したい",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "how many people do you want to reserve for",
+   "target_text": "何人予約したい",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "i'll ask if they want to reserve",
+   "target_text": "彼ら予約したいか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "i heard that they want to reserve a table",
+   "target_text": "彼らテーブル予約したいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if i want to reserve a table",
+   "target_text": "テーブル予約したいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 411,
+   "lego_index": 4,
+   "lego_known": "want to reserve",
+   "lego_target": "予約したい",
+   "phrase_role": "use",
+   "known_text": "you want to reserve a restaurant tomorrow, don't you",
+   "target_text": "明日レストラン予約したいんじゃない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

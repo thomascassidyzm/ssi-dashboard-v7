@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 412,
+  "lego_index": 2,
+  "known": "let win",
+  "target": "勝たせる"
+ },
+ "at": "2026-11-04T17:33:00.129Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 238,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"let win\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "build",
+   "known_text": "it's difficult to let them win",
+   "target_text": "勝たせるのは難しい",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "build",
+   "known_text": "tomorrow i intend to let them win",
+   "target_text": "明日勝たせるつもり",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "build",
+   "known_text": "after we finish we'll let them win",
+   "target_text": "終わったら勝たせる",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "build",
+   "known_text": "we might let them win",
+   "target_text": "勝たせるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "this time we were planning to let them win",
+   "target_text": "今回勝たせる予定だった",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "i heard they're going to let him win on thursday",
+   "target_text": "木曜勝たせるって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "last year i didn't think they'd let us win",
+   "target_text": "去年勝たせるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "if i asked would you let me win",
+   "target_text": "頼んだら勝たせる",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "there wasn't a reason to let them win",
+   "target_text": "勝たせる理由なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "on friday we needed to let them win",
+   "target_text": "金曜勝たせる必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 412,
+   "lego_index": 2,
+   "lego_known": "let win",
+   "lego_target": "勝たせる",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if they'll let us win",
+   "target_text": "勝たせるかどうか分からない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
