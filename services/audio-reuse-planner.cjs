@@ -87,6 +87,7 @@
 const { generateLearningScript } = require('./learning-script-generator.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('./shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('./shared/audio-link-preference.cjs')
+const { overrideApplies, allowedForOverride } = require('./shared/pronunciation-reuse-guard.cjs')
 const {
   PROVIDER_PREFIX,
   bareVoiceId,
@@ -938,6 +939,12 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const languageFilter = buildLanguageNameFilter({ knownName, targetName })
 
   const candidates = await findCandidates(supabase, clips)
+  // A line this course renders through a pronunciation override reuses only a clip rendered WITH it (job #262·AD).
+  for (const clip of clips.values()) {
+    if (candidates.has(clip.clipKey) && overrideApplies(courseCode, clip.text)) {
+      candidates.set(clip.clipKey, await allowedForOverride(candidates.get(clip.clipKey), { courseCode, text: clip.text }))
+    }
+  }
 
   // Which of this course's own rows have been RE-RENDERED IN PLACE since the
   // cutoff. The swap path bumps audio_revision and writes a history row but
