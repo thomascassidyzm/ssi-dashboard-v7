@@ -5939,8 +5939,26 @@ app.get('/trial-audio/:id', async (req, res) => {
   } catch (e) { res.status(e.name === 'NoSuchKey' ? 404 : 500).json({ ok: false, error: e.message }) }
 })
 
+// RATE CAP ON THIS PORT TOO (job #706): production-api's POST /api/audio/render is capped (#699), but this
+// port is reachable directly on loopback and one committed tool posted here — so the same limiter
+// (services/shared/agent-rate-cap.cjs, one instance per process) guards it. Identity: x-agent-id /
+// x-service-name, else the body's requestedBy (what production-api forwards), else 'anonymous'.
+// Calls proxied from the capped API keep the same identity, so they pass within the same budget.
+// Every refusal and every hold over 1 s goes to ops_events (source agent-rate-cap).
+const phase8RenderRateCap = require('../shared/agent-rate-cap.cjs').createAgentRateCap()
+const { opsEvent: phase8OpsEvent } = require('../shared/ops-event.cjs')
 app.post('/render', async (req, res) => {
   try {
+    const who = String(req.get('x-agent-id') || req.get('x-service-name') || (req.body && req.body.requestedBy) || 'anonymous').trim().slice(0, 120)
+    const dryRun = !!(req.body && req.body.dryRun)
+    const cap = phase8RenderRateCap.admit(who, { dryRun })
+    if (!cap.ok) {
+      logger.warn(`[agent-rate-cap] phase8 /render refused ${cap.code} who=${who} dryRun=${dryRun}`)
+      phase8OpsEvent('agent-rate-cap', 'refuse', `phase8 /render ${cap.code} who=${who} dryRun=${dryRun}`)
+      return res.status(cap.status).json({ ok: false, code: cap.code, error: cap.error })
+    }
+    if (cap.waitMs > 1000) { logger.warn(`[agent-rate-cap] phase8 /render held ${cap.waitMs}ms who=${who}`); phase8OpsEvent('agent-rate-cap', 'held', `phase8 /render ${cap.waitMs}ms who=${who}`) }
+    if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
     const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps(), supabase, logger })
     res.json(out)
   } catch (error) {
