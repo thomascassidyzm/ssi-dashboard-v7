@@ -7,7 +7,8 @@
  * call checks every proposed split, LEGO-map ones included. Several-line turns split at their
  * sentences, each line whole. Nothing is ever recorded: it slices clips that already exist.
  *
- *   node tools/pods/pod-drill/pair.mjs <course> [--write] [--sonnet] [--allow-replace=id,id] [--redo-pair] [--early=6]
+ *   node tools/pods/pod-drill/pair.mjs <course> [--write] [--sonnet] [--lines] [--allow-replace=id,id] [--redo-pair] [--early=6]
+ *   --lines (job #836): cut only several-line turns, at their sentence ends, including the turns whole-turns.mjs lists
  *   (normally run through tools/pods/pod-drill/stage.mjs, which also lists re-records and exports the cut file)
  *
  * WHEN = the render's own Cartesia word timings, both sides (Tom r-2026-11-03: "no Whisper or
@@ -60,6 +61,16 @@ const audioDir = path.join(root, 'audio'); mkdirSync(audioDir, { recursive: true
 
 const CUTF = cutsPath(course)
 const dump = JSON.parse(readFileSync(path.join(OPS, `${course}.dump.json`), 'utf8'))
+// --lines (job #836, Tom 2026-11-05: drill sentence by sentence): the several-sentence turns the player plays as ONE
+// clip (whole-turns.mjs) join the dump, and every several-line card is cut at its sentence ends, each line whole,
+// both sides by the render's Cartesia timings. No Sonnet. Nothing else is cut.
+const LINES = !!opt.lines
+if (LINES) {
+  const wf = path.join(OPS, `${course}.whole-turns.json`)
+  const extra = existsSync(wf) ? JSON.parse(readFileSync(wf, 'utf8')).cards : []
+  const have = new Set(extra.map((c) => c.id))
+  dump.cards = [...dump.cards.filter((c) => !have.has(c.id)), ...extra]
+}
 const rep = JSON.parse(readFileSync(path.join(OPS, `${course}.report.json`), 'utf8'))
 const cutFile = JSON.parse(readFileSync(CUTF, 'utf8'))
 const prevSentences = JSON.parse(JSON.stringify(cutFile.sentences))
@@ -79,7 +90,7 @@ const tag = (id) => id.split(':').slice(2).join('-')
 const isCut = (e) => e && (e.lines.length > 1 || e.lines.some((l) => l.chunks.length))
 const REDO = new Set(opt['redo-pair'] ? rep.cards.filter((c) => c.round === 'pair (#381)').map((c) => c.id) : [])
 for (const id of REDO) delete cutFile.sentences[id]
-const todo = dump.cards.filter((d) => repById.get(d.id)?.status !== 'short' && !isCut(cutFile.sentences[d.id]))
+const todo = dump.cards.filter((d) => (LINES || repById.get(d.id)?.status !== 'short') && !isCut(cutFile.sentences[d.id]))
 process.stderr.write(`${course}: ${todo.length} cards to cut (${dump.cards.length} in the pod)\n`)
 
 // ---- word times: the render's own Cartesia timings, stored with each clip (r-2026-11-03)
@@ -208,6 +219,13 @@ for (const d of todo) {
     // only the cuttable pieces: a single-line card whose LEGO glosses tile its English sentence in order
     const pieces = (d.chunks || []).map((c) => [c.text, c.gloss || ''])
     const tmL = targetTimes(d)
+    if (LINES) {
+      if (!tmL || splitLines(tmL.words).length < 2) continue
+      if (!d.knownAudioId) { result.set(d.id, { status: 'whole', why: `several-line turn: no ${KNOWN_NAME} clip` }); continue }
+      const b = buildLines(d)
+      result.set(d.id, b.entry ? { status: 'cut', source: 'lines', entry: b.entry } : { status: 'whole', why: `several-line turn: ${b.err}` })
+      continue
+    }
     if (!d.knownAudioId || pieces.length < 2 || (tmL && splitLines(tmL.words).length > 1)) continue
     if (!tileWords(wordsOf(d.known), pieces.map((p) => p[1]))) continue // needs-pairing / re-record: not this run
     proposals.set(d.id, { source: 'lego', pieces })
@@ -296,7 +314,7 @@ const next = { ...cutFile.sentences }
 for (const [id, r] of result) if (r.status === 'cut') next[id] = r.entry
 // --lego-only: fill the English span of each chunk of an existing cut that has none (target untouched)
 const filled = new Map() // id -> 'filled' | why not
-if (LEGO_ONLY) {
+if (LEGO_ONLY && !LINES) {
   for (const d of dump.cards) {
     const e = next[d.id]
     if (!e || !e.lines.some((l) => l.chunks.length >= 2 && l.chunks.some((c) => c[4] == null))) continue
@@ -385,7 +403,7 @@ if (opt.write) {
   for (const [id, r] of result) {
     const old = repById.get(id)
     const row = { ...(old || { id, scene: byId.get(id).scene, target: byId.get(id).target, known: byId.get(id).known }), status: r.status === 'cut' ? 'verified' : 'whole', source: r.source || null, why: r.why || null, pairing: r.pieces || null }
-    if (r.status === 'cut') { delete row.why; row.round = LEGO_ONLY ? 'pair --lego-only (#669)' : 'pair (#381)' }
+    if (r.status === 'cut') { delete row.why; row.round = LINES ? 'pair --lines (#836)' : LEGO_ONLY ? 'pair --lego-only (#669)' : 'pair (#381)' }
     if (old) rep.cards[rep.cards.indexOf(old)] = row; else rep.cards.push(row) // a card the pod gained since the last report
   }
   for (const id of knownFillIds) { const row = repById.get(id); if (row) row.knownSpans = 'lego-only (#669)' }
