@@ -18,7 +18,9 @@
  * v4 adds, through the two seams that function exposes:
  *   - frameSectionFn: v4's walk-back brief (frames available by this seed + the taught
  *     chunks that carry each) in place of v3's frame section;
- *   - extraCheck: every candidate is held to v4's rules and then to the door's own
+ *   - admitted: the LEGO's admitted list (services/shared/admitted-list.cjs; Tom r-2026-11-05) replaces
+ *     v3's AVAILABLE inventory in the prompt, so the model is offered nothing outside it;
+ *   - extraCheck: every candidate is held to v4's rules — both sides against that same list first and then to the door's own
  *     gateStagedRows — the SAME function the gap-fill door re-runs on landing — so a set that
  *     passes here is a set that lands there. An interjection not yet admitted, a USE that is not a sentence,
  *     an untaught known-side word, a ZUT clash with the whole course: refused, retried with
@@ -107,7 +109,12 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     data.legos.push(lego);
   }
 
-  const noSpace = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha']).has(String(courseCode.split('_for_')[1] || '').split('_')[0]);
+  // THE ADMITTED LIST (Tom r-2026-11-05), built once: seeds < N, LEGOs before S<N>L<L>, the LEGO,
+  // components only as parts. The prompt shows only it; the check below holds both sides to it.
+  const ADM = deps.admittedList || require('../../shared/admitted-list.cjs');
+  const admitted = ADM.admittedList({ course: courseCode, seeds: data.seeds || [], legos: data.legos, components: data.components,
+    seedNumber, legoIndex: Number(legoIndex), lego });
+  const noSpace = ADM.knownNoSpace(courseCode);
   const knownLanguage = tagger.knownLanguageName(courseCode);
   const report = { frames: 'not run', frames_available: [], distinct_frames: null, per_phrase: [] };
   let available = [];
@@ -119,7 +126,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     const { carriersByFrame } = deps.carriersByFrame ? deps : require(path.join(ROOT, 'tools/frame-layer/v4/generate-v4.cjs'));
     await tagCourse(courseCode, data);
     available = availableAt(inventory(courseCode, data), seedNumber);
-    carriers = carriersByFrame([...data.legos, ...data.components].filter((c) => c.seed_number < seedNumber), available);
+    carriers = carriersByFrame(admitted.rows.filter((r) => r.kind === 'lego' || r.kind === 'component'), available); // carriers only from admitted material
     tagged = true;
     report.frames = 'run';
     report.frames_available = available;
@@ -128,13 +135,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
   }
 
   const section = tagged ? buildV4Section({ available, carriers, patterns: PATTERNS, knownLanguage }) : '';
-  // The basket's own vocabulary window, for the admitted-interjection check (same window as generate-v4's gate).
-  const { availableVocab } = require(path.join(ROOT, 'tools/frame-layer/availability.cjs'));
-  const basketVocab = [
-    ...availableVocab({ legos: data.legos, components: data.components, seed: seedNumber, legoIndex: Number(legoIndex) }),
-    { known_text: lego.known_text, target_text: lego.target_text },
-    ...data.components.filter((x) => x.seed_number === seedNumber && Number(x.lego_index) === Number(legoIndex)),
-  ];
+  const basketVocab = admitted.rows; // the admitted-interjection check reads the same list
 
   async function extraCheck({ phrases }) {
     const reasons = [];
@@ -158,6 +159,10 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
         report.frames = `not run: ${e.message}`;
       }
     }
+    // Both sides against the admitted list, every script (no free class, no no-space bypass).
+    for (const p of all) {
+      for (const why of ADM.admittedCheck({ known: p.known, target: p.target }, admitted, courseCode)) reasons.push(`${p.role.toUpperCase()} "${p.known}" → "${p.target}": ${why}`);
+    }
     for (const p of all) {
       if (p.role === 'use' && unitsOf(p.known, noSpace).length < (noSpace ? 6 : 4)) reasons.push(`USE "${p.known}": too short to be a complete sentence`);
     }
@@ -173,7 +178,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     return reasons;
   }
 
-  return { section, extraCheck, report, lego };
+  return { section, extraCheck, report, lego, admitted };
 }
 
 /** Generate one LEGO's BUILD + USE set under v4. Writes nothing. */
@@ -181,7 +186,7 @@ async function generateLegoPhrasesV4(supabase, courseCode, seedNumber, legoIndex
   const generate = opts.generateFn || require('./phrase-generation.cjs').generateLegoPhrases;
   const v4 = await prepareV4(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego: opts.proposedLego, deps: opts.deps });
   const result = await generate(supabase, courseCode, seedNumber, legoIndex, {
-    ...opts, frameSectionFn: () => v4.section, extraCheck: v4.extraCheck,
+    ...opts, frameSectionFn: () => v4.section, extraCheck: v4.extraCheck, admitted: v4.admitted,
   });
   const { staged, ...report } = v4.report;
   return {
