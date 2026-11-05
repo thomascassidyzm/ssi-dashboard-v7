@@ -18,7 +18,8 @@
  * (frame-tagger.cjs: Haiku reading frame-codex.json, cached per phrase text)
  * says the phrase's known side instantiates the frame.
  *
- * INTERJECTIONS EARN NOTHING. #463 measured v3 buying position spread and
+ * INTERJECTIONS EARN NOTHING (and since 2026-11-05 they may appear when admitted:
+ * see podFramesOf and generate-v4's gate). #463 measured v3 buying position spread and
  * neighbour variety with "thank you,", "of course", "unfortunately", "no
  * problem" stapled to the front of a phrase: 22% of Irish v3 USE phrases open
  * that way against 2-5% elsewhere. A stapled opener is not a frame and it is
@@ -41,9 +42,46 @@
  * phrase throws: a cold cache must never read as a weak window.
  */
 const T = require('../frame-tagger.cjs');
+const { D_CODEX } = require('../dialogue-patterns.cjs');
+const { podFrames, isPodFrame } = require('./frame-inventory.cjs');
 
 /** Which P-frames does this phrase USE? An opener earns nothing (the tagger tags past it). */
 const framesOf = (known) => T.framesOf(known);
+
+/**
+ * Which POD frames does this phrase earn? (Tom, 2026-11-05: "thank you and of
+ * course CAN be used as vocab, provided they have already been admitted".)
+ * An interjection may now appear in a phrase, but it EARNS NOTHING: a phrase the
+ * P tagger marks as opening with a detachable interjection gets no pod-frame
+ * credit whatever the D tagger says, because the D tagger would fire D3 on the
+ * stapled "thank you," itself. So "thank you, I want to go" earns P1 and nothing
+ * more, and "thank you, ..." whose only frame is the interjection earns nothing.
+ * A phrase whose pod frame IS its own construction, not a detachable front
+ * ("thank you for the coffee", "here you are", "a coffee, please"), earns it.
+ * X-frames are earned through their sentence_projection D-frame (the reply turn).
+ * D tags come from the D codex cache; an untagged text throws (ensurePodTagged first).
+ */
+function podFramesOf(known) {
+  if (!String(known || '').trim() || T.hasOpener(known)) return [];
+  const d = T.framesOf(known, D_CODEX);
+  const x = podFrames().filter(f => f.sentence_projection && d.includes(f.sentence_projection)).map(f => f.id);
+  return [...d, ...x];
+}
+
+/**
+ * Every frame this phrase earns among `available`. Pod tags are read only when a
+ * pod frame is actually available, so a P-only caller never needs the D cache.
+ */
+function framesOfAll(known, available) {
+  const avail = new Set(available);
+  const p = framesOf(known).filter(f => avail.has(f));
+  if (!available.some(isPodFrame)) return p;
+  return [...p, ...podFramesOf(known).filter(f => avail.has(f))];
+}
+
+/** Tag texts against the D codex (one turn), cached like the P tags. */
+const ensurePodTagged = (texts, opts = {}) => T.ensureTagged(texts, { ...opts, codex: D_CODEX });
+const ALL_IDS = () => [...T.FRAME_IDS, ...podFrames().map(f => f.id)];
 /** Does the phrase open with a stapled interjection / discourse opener? */
 const hasOpener = (known) => T.hasOpener(known);
 
@@ -75,11 +113,11 @@ function scoreWindow(phrases, available, { rarefyN = 60 } = {}) {
   const frameSets = [];
   for (const p of phrases) {
     if (hasOpener(p.known_text)) interjected++;
-    const fs = framesOf(p.known_text).filter(f => avail.has(f));
+    const fs = framesOfAll(p.known_text, available);
     frameSets.push(fs);
     for (const f of fs) used.set(f, (used.get(f) || 0) + 1);
   }
-  const usedIds = T.FRAME_IDS.filter(f => used.has(f));
+  const usedIds = ALL_IDS().filter(f => used.has(f));
   const missing = available.filter(f => !avail.has(f) ? false : !used.has(f));
   return {
     phrases: phrases.length,
@@ -108,4 +146,4 @@ function scoreCourseWindows(phrases, availableAt, { size = 20, maxSeed = 668, ra
   return out;
 }
 
-module.exports = { framesOf, hasOpener, scoreWindow, scoreCourseWindows, rarefy };
+module.exports = { framesOf, framesOfAll, podFramesOf, ensurePodTagged, hasOpener, scoreWindow, scoreCourseWindows, rarefy };
