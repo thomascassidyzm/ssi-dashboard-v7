@@ -27,12 +27,15 @@
  * Opus?" is a fact about the output rather than a claim about the source — and
  * since Tom's A-294 ruling (2026-08-28) it also always carries `gate` and
  * `score`, so "did this pass?" is a fact about the output too. A set that could
- * not be made to pass in two retries comes back with `ok:false, blocked:true`
+ * not be made to pass in one retry (#422·AD) comes back with `ok:false, blocked:true`
  * and its failure list; nothing downstream should show it to a human.
  */
 
 const path = require('path');
 const { generateLegoPhrases, buildPhrasePrompt, PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
+// The spawn cap and the hold (#422·AD): the same two rules as the v4 door — see routes/phrases-v4.cjs.
+const { callerGoneSignal } = require('../lib/phrase-spawn-gate.cjs');
+const { phraseHolds, isGateRefusal, heldAnswer } = require('../lib/phrase-holds.cjs');
 const { computeDeclaration, checkDeclaration, tagForCheck } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 
@@ -102,8 +105,15 @@ module.exports = function phrasesV3Routes(ctx) {
     const { seed, lego, proposedLego, error } = readTarget(req);
     if (error) return res.status(400).json({ ok: false, error });
     const courseCode = req.params.courseCode;
+    const held = phraseHolds().find(courseCode, seed, lego, proposedLego);
+    if (held && req.body?.retry_held !== true) {
+      console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — HELD for review since ${held.held_at}; no model call`);
+      return res.json(heldAnswer(held, 'v3'));
+    }
+    if (held) phraseHolds().release(courseCode, seed, lego, proposedLego, req.get('x-agent-id') || 'retry_held');
     try {
-      const result = await generateLegoPhrases(ctx.supabase, courseCode, seed, lego, { proposedLego });
+      const result = await generateLegoPhrases(ctx.supabase, courseCode, seed, lego, { proposedLego, signal: callerGoneSignal(res) });
+      const hold = isGateRefusal(result) ? phraseHolds().record(courseCode, seed, lego, proposedLego, result, 'v3') : null;
       // The declaration word is a CONTENT verdict; claim honesty is a separate
       // finding printed as a finding, never as a failure (Tom's ruling,
       // 2026-09-05 — claim honesty reports, it does not gate).
@@ -113,14 +123,15 @@ module.exports = function phrasesV3Routes(ctx) {
         : ` declaration FAIL (floors: ${dc.floor_failures.join(',')})`;
       const claimWord = dc && dc.checked && dc.claim_honesty && dc.claim_honesty.wrong
         ? `  ~ CLAIMS: ${dc.claim_honesty.wrong}/${dc.claim_honesty.checked} frame tags wrong (reported, not gated)` : '';
-      const verdict = (result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS') + declWord + claimWord;
+      const verdict = (result.blocked ? `${hold ? 'HELD ' : ''}BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS') + declWord + claimWord;
       console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${verdict} after ${result.attempts.length} attempt(s)`);
       // A blocked set is returned, named, with its failures — never silently
       // dropped and never dressed as a success. 200 with ok:false is the shape
       // that makes a caller handle it: `ok` is the gate verdict, not "the HTTP
       // call worked", so a caller that ignores it gets nothing to show.
-      res.json({ ok: !result.blocked, blocked: result.blocked, model: PHRASE_MODEL, ...result });
+      res.json({ ok: !result.blocked, blocked: result.blocked, model: PHRASE_MODEL, ...result, ...(hold ? { held: true, code: 'HELD_FOR_REVIEW', hold } : {}) });
     } catch (err) {
+      if (err.code === 'CLIENT_GONE') { console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — caller went away while queued; not spawned`); return; }
       console.error(`[phrases-v3] ${courseCode} S${seed}L${lego} FAILED: ${err.message}`);
       res.status(500).json({ ok: false, model: PHRASE_MODEL, course_code: courseCode, seed, lego, error: err.message });
     }

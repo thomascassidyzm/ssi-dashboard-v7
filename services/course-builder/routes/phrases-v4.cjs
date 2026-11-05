@@ -18,6 +18,12 @@
  * ran ~3,700 times and took claude@ from 24% to 100% of its week in eight hours. So it answers 429 WEEKLY_PACE
  * {resume_at} while EVERY SSi account is past its pro-rata share of the week (claude-config.cjs pacedNow); a run
  * waits until resume_at and carries on. A person's one-off call passes "unpaced": true.
+ *
+ * THE SPAWN CAP AND THE HOLD (#422·AD). Every Opus call this door makes waits for a slot in one cap shared
+ * by every course build (lib/phrase-spawn-gate.cjs): over the cap a request QUEUES, it is never refused, and
+ * one whose caller hangs up while queued is dropped unspent. A LEGO the gate refuses after its one retry is
+ * HELD (lib/phrase-holds.cjs): the next ask for the same LEGO answers HELD_FOR_REVIEW with no model call,
+ * until a person sends "retry_held": true. GET /api/phrases/held/:courseCode lists the holds.
  */
 module.exports = function phrasesV4Routes(ctx) {
   const express = require('express');
@@ -25,6 +31,13 @@ module.exports = function phrasesV4Routes(ctx) {
   const { generateLegoPhrasesV4 } = require('../lib/phrase-generation-v4.cjs');
   const { PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
   const { bulkPace } = require('../../shared/claude-config.cjs');
+  const { phraseSpawnGate, callerGoneSignal } = require('../lib/phrase-spawn-gate.cjs');
+  const { phraseHolds, isGateRefusal, heldAnswer } = require('../lib/phrase-holds.cjs');
+
+  router.get('/phrases/held/:courseCode', (req, res) => {
+    const holds = phraseHolds().list(req.params.courseCode);
+    res.json({ ok: true, course_code: req.params.courseCode, count: holds.length, holds, spawn_gate: phraseSpawnGate.stats() });
+  });
 
   router.post('/phrases/v4/generate/:courseCode', async (req, res) => {
     const courseCode = req.params.courseCode;
@@ -44,14 +57,22 @@ module.exports = function phrasesV4Routes(ctx) {
     }
     const proposedLego = (body.lego_known && body.lego_target)
       ? { known: String(body.lego_known), target: String(body.lego_target), type: String(body.lego_type || 'A').toUpperCase() } : null;
+    const held = phraseHolds().find(courseCode, seed, lego, proposedLego);
+    if (held && body.retry_held !== true) {
+      console.log(`[phrases-v4] ${courseCode} S${seed}L${lego} — HELD for review since ${held.held_at}; no model call`);
+      return res.json(heldAnswer(held, 'v4'));
+    }
+    if (held) phraseHolds().release(courseCode, seed, lego, proposedLego, req.get('x-agent-id') || 'retry_held');
     try {
-      const result = await generateLegoPhrasesV4(ctx.supabase, courseCode, seed, lego, { proposedLego });
+      const result = await generateLegoPhrasesV4(ctx.supabase, courseCode, seed, lego, { proposedLego, signal: callerGoneSignal(res) });
+      const hold = isGateRefusal(result) ? phraseHolds().record(courseCode, seed, lego, proposedLego, result, 'v4') : null;
       const dc = result.declarationCheck;
       const declWord = !dc || !dc.checked ? '' : dc.pass ? ' declaration PASS' : ` declaration FAIL (floors: ${dc.floor_failures.join(',')})`;
-      console.log(`[phrases-v4] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${result.blocked ? 'BLOCKED' : 'gate PASS'}${declWord}; v4 frames ${result.v4.frames}`);
+      console.log(`[phrases-v4] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${result.blocked ? (hold ? 'BLOCKED, HELD for review' : 'BLOCKED') : 'gate PASS'}${declWord} after ${result.attempts.length} attempt(s); v4 frames ${result.v4.frames}`);
       // ok is the gate verdict, not "the HTTP call worked" (same contract as v3).
-      res.json({ ok: !result.blocked, blocked: result.blocked, model: PHRASE_MODEL, ...result });
+      res.json({ ok: !result.blocked, blocked: result.blocked, model: PHRASE_MODEL, ...result, ...(hold ? { held: true, code: 'HELD_FOR_REVIEW', hold } : {}) });
     } catch (err) {
+      if (err.code === 'CLIENT_GONE') { console.log(`[phrases-v4] ${courseCode} S${seed}L${lego} — caller went away while queued; not spawned`); return; }
       console.error(`[phrases-v4] ${courseCode} S${seed}L${lego} FAILED: ${err.message}`);
       res.status(500).json({ ok: false, model: PHRASE_MODEL, pipeline: 'v4', course_code: courseCode, seed, lego, error: err.message });
     }

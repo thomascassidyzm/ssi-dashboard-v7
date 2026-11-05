@@ -27,6 +27,8 @@
 const path = require('path');
 const os = require('os');
 const { claudeChat } = require('../../shared/claude-cli.cjs');
+// Every Opus spawn below waits for a slot in ONE process-wide cap shared by all course builds (#422·AD).
+const { phraseSpawnGate } = require('./phrase-spawn-gate.cjs');
 
 // The CLI lives in ~/.local/bin. The course-builder systemd unit puts it on PATH;
 // a shell, a cron job or a test harness that requires this module directly does
@@ -67,11 +69,18 @@ const { structuralStop, buildStructuralFlag, loadCourseSeeds, raiseStructuralFla
  * is not, so the caller gets the set and the reasons and must decide — and a
  * doc-builder showing sets to Tom shows only `gate.overallPass`.
  *
- * The retries are capped at 2 because each one is a full Opus call: the third
- * failure of the same LEGO is a fact about the LEGO or the inventory, not bad
- * luck, and burning more tokens on it buys a worse answer than telling someone.
+ * ONE RETRY, THEN HOLD (job #422·AD, Kai's go, 4 Nov 2026). Each retry is a
+ * full fresh Opus call carrying the whole prompt (~52k tokens on a late seed),
+ * and with two retries a LEGO cost 1.7-2.25 Opus calls on 4 Nov (Tom's Watson's
+ * forensics, /d/fb91abbf, finding 4). The first retry is the one that earns its
+ * keep: it is the only attempt that sees the gate's own reasons. A set that
+ * fails again WITH those reasons in front of it is a fact about the LEGO or the
+ * inventory, not bad luck, so it comes back blocked and the door HOLDS it for a
+ * human (lib/phrase-holds.cjs) rather than letting a builder call again. The
+ * bar is unchanged: the same gates, floors and declaration check judge every
+ * attempt, and nothing that fails them is returned as passing.
  */
-const MAX_GATE_RETRIES = 2;
+const MAX_GATE_RETRIES = 1;
 
 /**
  * The single tier. Not a default with an override: an override is a fallback,
@@ -180,7 +189,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // another frame section in place of v3's, and extra server-side checks whose reasons join the retry
   // and the verdict exactly as a gate failure does. Both default to nothing, so v3 is unchanged.
   const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false,
-    frameSectionFn = frameSection, extraCheck = null } = opts;
+    frameSectionFn = frameSection, extraCheck = null, signal } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
@@ -262,7 +271,9 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   let currentPrompt = prompt;
 
   for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
-    const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
+    const raw = await phraseSpawnGate.run(
+      () => claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS }),
+      { signal, label: `${courseCode} S${seedNumber}L${legoIndex} attempt ${attempt + 1}` });
     phrases = normalise(parseModelJson(raw));
     if (!runGate) break;
 
@@ -416,7 +427,7 @@ function pairingSection(taught, taughtAs, host, existing) {
  * the HOST (`hostIndex`); `held` names why there is nothing to generate.
  */
 async function generatePairingPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
-  const { timeout = DEFAULT_TIMEOUT_MS, earlier, seedLegos, existing = [] } = opts;
+  const { timeout = DEFAULT_TIMEOUT_MS, earlier, seedLegos, existing = [], signal } = opts;
   const taught = seedLegos.find((l) => l.lego_index === Number(legoIndex));
   const base = { courseCode, seedNumber, legoIndex: Number(legoIndex), build: [], use: [], attempts: [] };
   if (!taught) return { ...base, held: 'LEGO not found' };
@@ -434,7 +445,9 @@ async function generatePairingPhrases(supabase, courseCode, seedNumber, legoInde
   let phrases = { build: [], use: [] };
   let pass = false;
   for (let attempt = 0; attempt <= MAX_GATE_RETRIES; attempt += 1) {
-    const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
+    const raw = await phraseSpawnGate.run(
+      () => claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS }),
+      { signal, label: `${courseCode} S${seedNumber} pairing attempt ${attempt + 1}` });
     phrases = normalise(parseModelJson(raw));
     phrases.build = [];
     const gate = await checkPhraseSet({
