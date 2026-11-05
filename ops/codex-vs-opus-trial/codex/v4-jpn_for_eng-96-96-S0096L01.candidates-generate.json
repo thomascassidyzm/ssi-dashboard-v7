@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:06:38.546Z",
+ "usage": {
+  "provider": "codex",
+  "input": 11871,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 1332,
+  "thinking": 921,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a974-a443-79e0-b863-ccb8936633f1",
+  "ms": 44401,
+  "total": 25491
+ },
+ "phrases": [
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet sure",
+   "target": "まだ分からない",
+   "frame": "P10"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet sure if I can",
+   "target": "まだできるか分からない",
+   "frame": "P4"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet difficult",
+   "target": "まだ難しくない",
+   "frame": "P23"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet ready to talk",
+   "target": "まだ話したくない",
+   "frame": "P23"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not yet sure when I'll be ready.",
+   "target": "まだいつ準備できるか分からない。",
+   "frame": "P22"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not yet sure whether I can remember the whole sentence.",
+   "target": "文を全部覚えられるか、まだ分からない。",
+   "frame": "P4"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to speak Japanese, but I'm not yet ready to talk to people I don't know.",
+   "target": "日本語を話したい。でも、知らない人とは、まだ話したくない。",
+   "frame": "P16"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Japanese is not yet difficult, but I've got more to learn.",
+   "target": "日本語はまだ難しくない。でも、まだ学ぶことがある。",
+   "frame": "P6"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not yet sure how to answer, but I think that you're doing very well.",
+   "target": "まだどう答えるか分からない。でも、すごくよくやってると思う。",
+   "frame": "P9"
+  }
+ ]
+}

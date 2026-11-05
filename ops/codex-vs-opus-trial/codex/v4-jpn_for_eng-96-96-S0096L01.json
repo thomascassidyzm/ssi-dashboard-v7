@@ -1,0 +1,291 @@
+{
+ "course": "jpn_for_eng",
+ "region": [
+  96,
+  96
+ ],
+ "lego": "S0096L01",
+ "provider": "codex",
+ "generated": "2026-11-05T02:05:54.143Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P9",
+  "P10",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P31",
+  "X3"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 22714,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 22714,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 11871,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 1332,
+   "thinking": 921,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a974-a443-79e0-b863-ccb8936633f1",
+   "ms": 44401,
+   "total": 25491
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "build",
+   "known_text": "not yet sure",
+   "target_text": "まだ分からない",
+   "claimed_frame": "P10",
+   "frames": [
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "build",
+   "known_text": "not yet sure if I can",
+   "target_text": "まだできるか分からない",
+   "claimed_frame": "P4",
+   "frames": [
+    "P4",
+    "P10",
+    "P22",
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "build",
+   "known_text": "not yet difficult",
+   "target_text": "まだ難しくない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "build",
+   "known_text": "not yet ready to talk",
+   "target_text": "まだ話したくない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "use",
+   "known_text": "I'm not yet sure when I'll be ready.",
+   "target_text": "まだいつ準備できるか分からない。",
+   "claimed_frame": "P22",
+   "frames": [
+    "P10",
+    "P22",
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "use",
+   "known_text": "I'm not yet sure whether I can remember the whole sentence.",
+   "target_text": "文を全部覚えられるか、まだ分からない。",
+   "claimed_frame": "P4",
+   "frames": [
+    "P4",
+    "P10",
+    "P22",
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "use",
+   "known_text": "I want to speak Japanese, but I'm not yet ready to talk to people I don't know.",
+   "target_text": "日本語を話したい。でも、知らない人とは、まだ話したくない。",
+   "claimed_frame": "P16",
+   "frames": [
+    "P1",
+    "P15",
+    "P16",
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "use",
+   "known_text": "Japanese is not yet difficult, but I've got more to learn.",
+   "target_text": "日本語はまだ難しくない。でも、まだ学ぶことがある。",
+   "claimed_frame": "P6",
+   "frames": [
+    "P15",
+    "P23",
+    "P24",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 96,
+   "lego_index": 1,
+   "lego_known": "not yet",
+   "lego_target": "まだ",
+   "phrase_role": "use",
+   "known_text": "I'm not yet sure how to answer, but I think that you're doing very well.",
+   "target_text": "まだどう答えるか分からない。でも、すごくよくやってると思う。",
+   "claimed_frame": "P9",
+   "frames": [
+    "P3",
+    "P9",
+    "P10",
+    "P15",
+    "P22",
+    "P23",
+    "P28"
+   ]
+  }
+ ],
+ "rejected": [],
+ "floors": [
+  {
+   "id": "S96L1",
+   "known": "not yet",
+   "target": "まだ",
+   "build": 4,
+   "use": 5,
+   "ok": true,
+   "reasons": [],
+   "lego": {
+    "seed_number": 96,
+    "lego_index": 1,
+    "known_text": "not yet",
+    "target_text": "まだ",
+    "type": "M",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 9,
+  "available": 27,
+  "used": 11,
+  "coverage": 0.407,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 400,
+  "interjection_openers": 0,
+  "interjection_rate": 0,
+  "used_ids": [
+   "P1",
+   "P3",
+   "P4",
+   "P9",
+   "P10",
+   "P15",
+   "P16",
+   "P22",
+   "P23",
+   "P24",
+   "P28"
+  ],
+  "missing_ids": [
+   "P2",
+   "P5",
+   "P6",
+   "P12",
+   "P13",
+   "P14",
+   "P18",
+   "P19",
+   "P20",
+   "P21",
+   "P25",
+   "P26",
+   "P27",
+   "P29",
+   "P31",
+   "X3"
+  ],
+  "counts": {
+   "P1": 1,
+   "P3": 1,
+   "P4": 2,
+   "P9": 1,
+   "P10": 4,
+   "P15": 3,
+   "P16": 1,
+   "P22": 4,
+   "P23": 9,
+   "P24": 1,
+   "P28": 9
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 9,
+  "rejected": 0,
+  "below_floor": 0
+ },
+ "tokens_spent": 25491
+}

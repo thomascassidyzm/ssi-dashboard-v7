@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:05:21.724Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 21750,
+  "cache_read": 0,
+  "output": 1514,
+  "thinking": 960,
+  "cost_usd": 0.204288,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 14975,
+  "total": 23266
+ },
+ "phrases": [
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet, I don't know",
+   "target": "まだ。分からない",
+   "frame": "P23"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet, later",
+   "target": "まだ。あとで",
+   "frame": "P28"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet, but soon",
+   "target": "まだ。でも、もうすぐ",
+   "frame": "P15"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not yet, why not?",
+   "target": "まだ。なんで？",
+   "frame": "P21"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "not yet, I'm not sure when I'll be ready",
+   "target": "まだ。いつ準備できるか分からない",
+   "frame": "P10"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "not yet, I've got more to learn",
+   "target": "まだ。まだ学ぶことがある",
+   "frame": "P6"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "not yet, but I want to keep on doing a little more",
+   "target": "まだ。でも、もう少し続けたい",
+   "frame": "P1"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "not yet, I think I can't remember easily",
+   "target": "まだ。簡単には覚えられないと思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 96,
+   "lego_index": 1,
+   "role": "use",
+   "known": "not yet, it's difficult to quickly answer",
+   "target": "まだ。すぐ答えるのは難しい",
+   "frame": "P18"
+  }
+ ]
+}
