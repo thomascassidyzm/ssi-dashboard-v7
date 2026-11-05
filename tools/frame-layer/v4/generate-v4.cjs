@@ -447,7 +447,7 @@ function basketFloors(kept, newLegos, { course = null, data = null } = {}) {
 }
 
 // ---------- main ----------
-async function run(course, start, end, { dry = false, budget = 400000, gaps = false, missing: missingIn = null } = {}) {
+async function run(course, start, end, { dry = false, budget = 400000, gaps = false, missing: missingIn = null, lego = null } = {}) {
   if (gaps) return runGaps(course, start, end, { dry, budget, missingIn });
   fs.mkdirSync(EVIDENCE, { recursive: true });
   const data = loadCourse(course);
@@ -455,13 +455,17 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   const inv = inventory(course, data);
   const available = availableAt(inv, end);
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
-  const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
+  // --lego S0248L03 (#438·AD trial): one LEGO's basket only, so a per-LEGO model comparison
+  // is one call per model on the identical brief; the region is that LEGO's own seed.
+  const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false)
+    .filter(l => !lego || `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}` === lego);
+  if (lego && !newLegos.length) throw new Error(`no new LEGO ${lego} in ${course} ${start}-${end}`);
   const taughtBefore = carrierPool(course, data, newLegos);
   const carriers = carriersByFrame(taughtBefore, available, course);
   const prompt = buildPrompt({ course, region: [start, end], seeds, newLegos, available, carriers, data });
-  const out = { course, region: [start, end], generated: new Date().toISOString(), model: MODEL, available_frames: available,
+  const out = { course, region: [start, end], lego, provider: PROVIDER.providerOf(), generated: new Date().toISOString(), model: MODEL, available_frames: available,
     new_legos: newLegos.length, prompt_chars: prompt.length, calls: [], kept: [], rejected: [], floors: null, score: null };
-  const file = path.join(EVIDENCE, `v4-${course}-${start}-${end}.json`);
+  const file = path.join(EVIDENCE, `v4-${course}-${start}-${end}${lego ? '-' + lego : ''}.json`);
   if (dry) { console.log(`${course} ${start}-${end}: ${newLegos.length} new LEGOs, ${available.length} frames available, prompt ${prompt.length} chars`); fs.writeFileSync(file.replace('.json', '.prompt.txt'), prompt); return out; }
 
   // CUMULATIVE budget across every region of the pilot: a ledger in the evidence
@@ -487,6 +491,9 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   await tagCandidates(course, cands);
   let g = gate(cands, { course, data, newLegos, available });
   let floors = basketFloors(g.kept, newLegos, { course, data });
+  // First-pass record (#438·AD): the per-model gate pass rate is read from this, before any retry.
+  out.first_pass = { candidates: cands.length, kept: g.kept.length, rejected: g.rejected.length, below_floor: floors.filter(f => !f.ok).length };
+  g.rejected = g.rejected.map(r => ({ ...r, pass: 1 }));
   const failing = floors.filter(f => !f.ok);
   console.log(`  gates: kept ${g.kept.length}, rejected ${g.rejected.length}; baskets below floor: ${failing.length}/${floors.length}`);
   if (failing.length) {
@@ -512,7 +519,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
       const ob = oldForFailing.filter(p => `S${p.seed_number}L${p.lego_index}` === f.id);
       merged.push(...(nb.length >= ob.length ? nb : ob));
     }
-    g = { kept: merged, rejected: [...g.rejected, ...g2.rejected] };
+    g = { kept: merged, rejected: [...g.rejected, ...g2.rejected.map(r => ({ ...r, pass: 2 }))] };
     floors = basketFloors(g.kept, newLegos, { course, data });
     console.log(`  after retry: kept ${g.kept.length}; baskets below floor: ${floors.filter(f => !f.ok).length}/${floors.length}`);
   }
@@ -600,5 +607,7 @@ if (require.main === module) {
   const budget = bi >= 0 ? +args[bi + 1] : 400000;
   const mi = args.indexOf('--missing');
   const missing = mi >= 0 ? args[mi + 1].split(',').filter(Boolean) : null;
-  run(pos[0], +pos[1], +pos[2], { dry, budget, gaps: args.includes('--gaps'), missing }).catch(e => { console.error(e.message); process.exit(1); });
+  const li = args.indexOf('--lego');
+  const lego = li >= 0 ? args[li + 1] : null;
+  run(pos[0], +pos[1], +pos[2], { lego, dry, budget, gaps: args.includes('--gaps'), missing }).catch(e => { console.error(e.message); process.exit(1); });
 }
