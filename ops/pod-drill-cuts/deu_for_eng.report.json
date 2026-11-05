@@ -4,7 +4,7 @@
   "cards": 383,
   "alreadyWithinCap": 235,
   "needCutting": 148,
-  "verified": 74,
+  "verified": 78,
   "verifiedRate": 42.6,
   "linesVerified": 67,
   "multiLineCards": 3,
@@ -34,13 +34,13 @@
   "model": "ggml-small.bin",
   "pairing": {
    "totals": {
-    "cards": 383,
-    "fitsWhole": 308,
+    "cards": 385,
+    "fitsWhole": 304,
     "alreadyCut": 74,
     "newLego": 0,
     "newSonnet": 0,
-    "newLines": 0,
-    "whole": 1
+    "newLines": 4,
+    "whole": 3
    },
    "scenes": {
     "SC01": {
@@ -71,13 +71,13 @@
      "whole": 0
     },
     "SC04": {
-     "cards": 8,
+     "cards": 10,
      "fitsWhole": 5,
      "alreadyCut": 3,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 2
     },
     "SC05": {
      "cards": 6,
@@ -90,11 +90,11 @@
     },
     "SC06": {
      "cards": 32,
-     "fitsWhole": 28,
+     "fitsWhole": 26,
      "alreadyCut": 4,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
+     "newLines": 2,
      "whole": 0
     },
     "SC07": {
@@ -108,20 +108,20 @@
     },
     "SC08": {
      "cards": 28,
-     "fitsWhole": 22,
+     "fitsWhole": 23,
      "alreadyCut": 5,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 1
+     "whole": 0
     },
     "SC09": {
      "cards": 33,
-     "fitsWhole": 28,
+     "fitsWhole": 27,
      "alreadyCut": 5,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
+     "newLines": 1,
      "whole": 0
     },
     "SC10": {
@@ -234,12 +234,12 @@
     },
     "SC22": {
      "cards": 24,
-     "fitsWhole": 15,
+     "fitsWhole": 13,
      "alreadyCut": 9,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
-     "whole": 0
+     "newLines": 1,
+     "whole": 1
     }
    }
   }
@@ -1834,8 +1834,10 @@
    "target": "Ich komme aus Manchester, aber ich wohne jetzt in London. Und Sie?",
    "known": "I'm from Manchester, but I live in London now. And you?",
    "clip": "c4445730-a1cb-4ee0-82b0-064254b7b3b6",
-   "status": "whole",
-   "why": "drills inside a group that plays another clip (glued or whole-turn)"
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   },
   {
    "id": "deu_for_eng:pod-1:SC06-S006:s0",
@@ -2264,8 +2266,10 @@
    "target": "Ich unterrichte Englisch, aber nicht in einer Schule. Ich arbeite mit Erwachsenen. Ich bin hier im Urlaub mit meiner Frau und meinen Kindern. Wir haben eine wunderschöne Zeit.",
    "known": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
    "clip": "1849632f-2b64-4e94-a1a7-b602a68184ac",
-   "status": "whole",
-   "why": "drills inside a group that plays another clip (glued or whole-turn)"
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   },
   {
    "id": "deu_for_eng:pod-1:SC06-S012:s0",
@@ -4368,8 +4372,10 @@
    "target": "Entschuldigung — haben Sie etwas Glutenfreies? Oder für Vegetarier?",
    "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
    "clip": "207ca84b-b4c3-4336-94d2-5b038a0c3e50",
-   "status": "whole",
-   "why": "drills inside a group that plays another clip (glued or whole-turn)"
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   },
   {
    "id": "deu_for_eng:pod-1:SC09-S006:s0",
@@ -11689,7 +11695,7 @@
    "known": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
    "clip": "bc907f8e-1f06-4fdf-9228-5d753bf9a201",
    "status": "whole",
-   "why": "seam 2: no quiet run or dip at the word boundary (deepest 7 dB below speech)",
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -11867,7 +11873,9 @@
      "said": null,
      "sim": null
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "deu_for_eng:pod-1:SC22-S006",
@@ -12152,8 +12160,7 @@
    "target": "Du solltest bereits selbstbewusst sein. Ich finde, du machst es viel besser, als du denkst. Ich fühle mich wohl, mit dir zu sprechen, und ich spreche nicht sehr langsam.",
    "known": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
    "clip": "9770e02c-1965-4270-90ba-229d503d3950",
-   "status": "whole",
-   "why": "seam 6: no quiet run or dip at the word boundary (deepest 0 dB below speech)",
+   "status": "verified",
    "pieces": [
     {
      "line": 0,
@@ -12258,7 +12265,10 @@
      "said": null,
      "sim": null
     }
-   ]
+   ],
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   },
   {
    "id": "deu_for_eng:pod-1:SC22-S009:s0",
@@ -12766,6 +12776,26 @@
      "sim": 0.84
     }
    ]
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "Hallo! Es tut mir leid, aber ich kann gerade nicht reden. Ich muss jetzt nach Hause. Wollen wir morgen einen Kaffee trinken gehen?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "whole",
+   "source": null,
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pairing": null
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "Nein, es tut mir leid, ich bin morgen beschäftigt. Aber lass uns am Samstag gehen. Bis dann.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "whole",
+   "source": null,
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pairing": null
   }
  ]
 }

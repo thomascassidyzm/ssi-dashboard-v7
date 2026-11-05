@@ -1,13 +1,13 @@
 {
  "tool": "tools/pods/pod-drill/pair.mjs (#381, Popty #692) --lego-only (#669)",
  "totals": {
-  "cards": 383,
-  "fitsWhole": 308,
+  "cards": 385,
+  "fitsWhole": 304,
   "alreadyCut": 74,
   "newLego": 0,
   "newSonnet": 0,
-  "newLines": 0,
-  "whole": 1
+  "newLines": 4,
+  "whole": 3
  },
  "scenes": {
   "SC01": {
@@ -38,13 +38,13 @@
    "whole": 0
   },
   "SC04": {
-   "cards": 8,
+   "cards": 10,
    "fitsWhole": 5,
    "alreadyCut": 3,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 2
   },
   "SC05": {
    "cards": 6,
@@ -57,11 +57,11 @@
   },
   "SC06": {
    "cards": 32,
-   "fitsWhole": 28,
+   "fitsWhole": 26,
    "alreadyCut": 4,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
+   "newLines": 2,
    "whole": 0
   },
   "SC07": {
@@ -75,20 +75,20 @@
   },
   "SC08": {
    "cards": 28,
-   "fitsWhole": 22,
+   "fitsWhole": 23,
    "alreadyCut": 5,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 1
+   "whole": 0
   },
   "SC09": {
    "cards": 33,
-   "fitsWhole": 28,
+   "fitsWhole": 27,
    "alreadyCut": 5,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
+   "newLines": 1,
    "whole": 0
   },
   "SC10": {
@@ -201,102 +201,130 @@
   },
   "SC22": {
    "cards": 24,
-   "fitsWhole": 15,
+   "fitsWhole": 13,
    "alreadyCut": 9,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
-   "whole": 0
+   "newLines": 1,
+   "whole": 1
   }
  },
- "newCuts": [],
- "knownFill": {
-  "deu_for_eng:pod-1:SC01-S004:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC02-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC02-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC03-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC03-S005": "the English clip has no Cartesia word timings that say its text",
-  "deu_for_eng:pod-1:SC04-S003:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC06-S008:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC06-S012:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC07-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC07-S004:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC07-S005:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC07-S006": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC07-S013:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC08-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC08-S009": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC08-S014:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC09-S013": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC09-S017:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC10-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC10-S007:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC10-S009:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC11-S009": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC11-S010": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC11-S012:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC12-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC12-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC13-S001": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC13-S008:s1": "known seam too shallow to cut cleanly: \"a cashpoint | nearby?\" 3.9 dB below speech",
-  "deu_for_eng:pod-1:SC13-S009": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC15-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC15-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC15-S009": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC15-S010": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC16-S010": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC17-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC19-S008": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC19-S009": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC20-S006": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC20-S010": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S001": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S007": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S008": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC21-S011": "the English clip has no Cartesia word timings that say its text",
-  "deu_for_eng:pod-1:SC21-S013": "the English clip has no Cartesia word timings that say its text",
-  "deu_for_eng:pod-1:SC22-S002:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S003:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S003:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S003:s2": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S006": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S009:s2": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S010:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S010:s2": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "deu_for_eng:pod-1:SC22-S011:s1": "the chunks' English is not an unbroken run of the English sentence in target order"
- },
- "knownTooShallow": {
-  "deu_for_eng:pod-1:SC13-S008:s1": [
-   "\"a cashpoint | nearby?\" 3.9 dB below speech"
-  ]
- },
+ "newCuts": [
+  {
+   "id": "deu_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC22-S008",
+   "scene": 22,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  }
+ ],
+ "knownFill": {},
+ "knownTooShallow": {},
  "knownMinDipDb": 5,
  "cards": [
   {
-   "id": "deu_for_eng:pod-1:SC08-S004",
-   "scene": 8,
-   "target": "Ich möchte ein Pint vom Bitter, bitte.",
-   "known": "I'd like a pint of the bitter, please.",
+   "id": "deu_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "Hallo! Es tut mir leid, aber ich kann gerade nicht reden. Ich muss jetzt nach Hause. Wollen wir morgen einen Kaffee trinken gehen?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Ich möchte ein Pint",
-     "I'd like a pint"
-    ],
-    [
-     "vom Bitter",
-     "of the bitter,"
-    ],
-    [
-     "bitte",
-     "please."
-    ]
-   ],
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "Nein, es tut mir leid, ich bin morgen beschäftigt. Aber lass uns am Samstag gehen. Bis dann.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "target": "Ich komme aus Manchester, aber ich wohne jetzt in London. Und Sie?",
+   "known": "I'm from Manchester, but I live in London now. And you?",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "target": "Ich unterrichte Englisch, aber nicht in einer Schule. Ich arbeite mit Erwachsenen. Ich bin hier im Urlaub mit meiner Frau und meinen Kindern. Wir haben eine wunderschöne Zeit.",
+   "known": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "target": "Entschuldigung — haben Sie etwas Glutenfreies? Oder für Vegetarier?",
+   "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC22-S005",
+   "scene": 22,
+   "target": "Ja, danke. Es ist einfacher, mit nur einer Person zu sprechen. Es ist aber ein bisschen schwierig, sich etwas zu überlegen, was man sagen kann. Ich bin mir nicht sicher, was ich sagen soll, aber ich habe das Gefühl, dass ich gut genug spreche, um Gespräche zu beginnen.",
+   "known": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "deu_for_eng:pod-1:SC22-S008",
+   "scene": 22,
+   "target": "Du solltest bereits selbstbewusst sein. Ich finde, du machst es viel besser, als du denkst. Ich fühle mich wohl, mit dir zu sprechen, und ich spreche nicht sehr langsam.",
+   "known": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
    "retried": false
   }
  ]
