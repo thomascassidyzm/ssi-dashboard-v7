@@ -105,6 +105,9 @@ function validate(input) {
     // RE-RECORD: replace this course_audio row's bytes in place (same id, next
     // audio_revision). The library is never asked to answer it.
     replaceAudioId: input.replaceAudioId ? String(input.replaceAudioId) : null,
+    // RE-RECORD ONLY (job #749): a deliberate second take of a row this same requester already re-recorded for this same
+    // purpose within the day. Without it such a request is answered with the take already made (rerecord's idempotency).
+    retake: input.retake === true,
     // What to SAY when it differs from the stored text (qualcos'altro-style
     // pronunciation fixes). The stored text is never changed by it.
     spokenText: input.spokenText ? String(input.spokenText) : null,
@@ -429,6 +432,20 @@ async function rerecord(req, deps) {
   // form: sent as the words, the door cannot answer with another (misread) clip of the same characters in its place.
   const said = req.spokenText || pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || req.text
   if (said !== req.text && !req.spokenText) req.spokenText = said
+  // A RE-RECORD IS IDEMPOTENT (job #749). The door below is told to EXCLUDE the row's current clip (`replacing`), so a
+  // repeat of a re-record that already landed can never be answered from the library: it pays for a fresh take every time.
+  // That is what looped on ara_lb_for_eng 2026-11-05: Popty's proxy answered 503 "socket hang up" while phase8 went on to
+  // render and swap, the caller (#641's runner) re-sent the same ask, and one 5-character word was paid for five times
+  // (revisions 2-6) before the spend guard's REPEAT refused it. So when the row's current clip IS the take this requester
+  // made for this purpose within the day, answer with it and render nothing. A deliberate new take says retake: true.
+  if (!req.retake && deps.lastRerecord) {
+    const last = await deps.lastRerecord(row.id)
+    if (sameRerecordAsk(last, row, req)) {
+      return { ok: true, source: 'already-rerecorded', charsSpent: 0, ...(req.dryRun ? { dryRun: true, wouldSpendChars: 0 } : {}),
+        audioId: row.id, s3Key: row.s3_key, revision: last.revision, rerecordedAt: last.created_at,
+        purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
+    }
+  }
   const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
@@ -445,6 +462,22 @@ async function rerecord(req, deps) {
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
 }
 
+const RERECORD_IDEMPOTENT_MS = 24 * 3600 * 1000 // the spend guard's REPEAT window: a day
+
+/**
+ * Is `last` (the row's newest course_audio_revisions entry) this very ask, already done? Same route, same requester, same
+ * purpose, its new object still the row's current one, within the day. Anything else (a later swap, another caller,
+ * another purpose) is a new ask and renders.
+ */
+function sameRerecordAsk(last, row, req, now = Date.now()) {
+  if (!last || last.source !== 'audio-render-rerecord') return false
+  if (!last.new_s3_key || last.new_s3_key !== row.s3_key) return false
+  if (last.accepted_by !== `${req.requestedBy} via /api/audio/render`) return false
+  if ((last.reason || null) !== (req.purpose || null)) return false
+  const at = Date.parse(last.created_at)
+  return Number.isFinite(at) && now - at < RERECORD_IDEMPOTENT_MS
+}
+
 /**
  * The language a role natively speaks in a course. Presentation clips are
  * known-language audio, so presentation resolves to the known side with 'known';
@@ -459,4 +492,4 @@ function rerecordPatch({ voiceId, wordBoundaries, wordTimings }) {
   return { origin: 'tts', voice_id: voiceId, ...(wordBoundaries !== undefined && { word_boundaries: wordBoundaries || null }), ...(wordTimings !== undefined && { word_timings: wordTimings || null }) }
 }
 
-module.exports = { rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError, SHARED_ROLES, isSharedRole, voiceSlotFor }
+module.exports = { sameRerecordAsk, rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError, SHARED_ROLES, isSharedRole, voiceSlotFor }

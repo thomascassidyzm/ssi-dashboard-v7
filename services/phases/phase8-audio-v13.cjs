@@ -5741,6 +5741,13 @@ function buildRenderDeps() {
         if (error) throw new Error(`course_audio unreadable: ${error.message}`)
         return data
       },
+      // The row's newest revision (job #749): lets a repeated re-record answer with the take already made. Read by id.
+      lastRerecord: async (audioId) => {
+        const { data, error } = await supabase.from('course_audio_revisions').select('revision, new_s3_key, source, accepted_by, reason, created_at')
+          .eq('audio_id', audioId).order('revision', { ascending: false }).limit(1).maybeSingle()
+        if (error) throw new Error(`course_audio_revisions unreadable: ${error.message}`)
+        return data
+      },
       // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
       replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose }) => {
         trialMode.assertNotTrial(replaceAudioId, s3Key)

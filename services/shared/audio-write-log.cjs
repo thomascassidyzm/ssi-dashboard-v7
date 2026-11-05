@@ -29,6 +29,7 @@ async function record(supabase, { service, courseCode, surface, operation, scope
 /** Does this render answer mean a course write happened? A dry run, a trial and a no-op write nothing. */
 function renderWroteCourse(req, out) {
   if (!out || out.dryRun || req.dryRun || req.trial || !req.courseCode) return false
+  if (out.source === 'already-rerecorded') return false // a repeated re-record answered with the take already made (job #749)
   return !!(out.audioId || out.spliced || out.legoLinked)
 }
 
