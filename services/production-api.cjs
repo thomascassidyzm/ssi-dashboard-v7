@@ -605,6 +605,12 @@ app.use('/api/production/:courseCode/audio-preview',
 app.use('/api/production/:courseCode/pod-drill',
   require('./pod-drill-router.cjs')({ logger }))
 
+// Pod Drill PLAYER (job #860): the pod page's Drill tab — the raw rows, clips, cut entries and live
+// lap-ladder config the learning app reads, so the page composes the drill with the app's own
+// (vendored) code. READ-ONLY.
+app.use('/api/production/:courseCode/pods/:slug/drill',
+  require('./pod-drill-player-router.cjs')({ getDb: () => supabaseClient.getClient(), logger }))
+
 // The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
 // is derived BY LANGUAGE across every course (language_recording_policy), so it
 // has no :courseCode to be scoped by, and its three recordist routes are

@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // GENERATED — DO NOT EDIT BY HAND.
-// Canonical source: @ssi/core/pods (ssi-learning-app/packages/core/src/pods).
+// Canonical source: ssi-learning-app/packages/core/src/pods/atomMap.ts (at origin/staging eeae9b086)
 // Vendored here because Popty's Vercel build is single-repo and can't resolve
-// the @ssi/core file: link at build time. This is a VERBATIM copy of the one
-// engine the learner runs — not a re-implementation. Re-sync after any change
-// to the canonical source with:  bash tools/sync-pod-engine.sh
+// the @ssi/core file: link at build time. This is a VERBATIM copy of the code
+// the learner runs — not a re-implementation. Re-sync after any change to the
+// canonical source with:  bash tools/sync-pod-engine.sh
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
