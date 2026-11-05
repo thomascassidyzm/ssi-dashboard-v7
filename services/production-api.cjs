@@ -6688,10 +6688,20 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 // back (services/shared/audio-render-entry.cjs). The caller must say who it is:
 // x-agent-id / x-service-name, which lands in the ledger as requestedBy.
 // POST /api/audio/render  { courseCode, role, text, purpose, language?, voiceId?, legoId?, dryRun? }
+// Rate cap + daytime dry-run budget per caller (job #699): every bulk audio job passes here, so the
+// cap that protects the shared DB lives here — header and override env in services/shared/agent-rate-cap.cjs.
+const audioRenderRateCap = require('./shared/agent-rate-cap.cjs').createAgentRateCap()
 app.post('/api/audio/render', async (req, res) => {
   try {
     const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || '').trim()
     if (!who) return res.status(401).json({ ok: false, code: 'IDENTITY_REQUIRED', error: 'say who is asking: send x-agent-id (or x-service-name)' })
+    const cap = audioRenderRateCap.admit(who, { dryRun: !!(req.body && req.body.dryRun) })
+    if (!cap.ok) {
+      logger.warn(`[agent-rate-cap] refused ${cap.code} who=${who} dryRun=${!!(req.body && req.body.dryRun)}`)
+      return res.status(cap.status).json({ ok: false, code: cap.code, error: cap.error })
+    }
+    if (cap.waitMs > 1000) logger.warn(`[agent-rate-cap] held ${cap.waitMs}ms who=${who}`)
+    if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
     const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who })
     res.status(response.status).json(response.data)
   } catch (error) {
