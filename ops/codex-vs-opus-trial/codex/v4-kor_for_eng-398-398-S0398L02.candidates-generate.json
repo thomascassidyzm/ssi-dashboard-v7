@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:31:21.255Z",
+ "usage": {
+  "provider": "codex",
+  "input": 34112,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 786,
+  "thinking": 342,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a98b-92c0-7101-a405-65485f5f7ee2",
+  "ms": 23631,
+  "total": 47186
+ },
+ "phrases": [
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "want to speak in a way that has patience",
+   "target": "참을성 있게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "can answer in a way that has patience",
+   "target": "참을성 있게 대답할 수 있어요",
+   "frame": "P4"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "should speak in a way that has patience",
+   "target": "참을성 있게 말해야 해요",
+   "frame": "P7"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I'm going to explain in a way that has patience",
+   "target": "참을성 있게 설명할 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "why don't you want to speak in a way that has more patience?",
+   "target": "왜 더 참을성 있게 말하고 싶지 않아요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'd like you to tell me what you need in a way that has patience.",
+   "target": "뭐가 필요한지 참을성 있게 말해 주면 좋겠어요.",
+   "frame": "P22"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I hope I'll be able to speak in a way that has more patience soon.",
+   "target": "곧 더 참을성 있게 말할 수 있으면 좋겠어요.",
+   "frame": "P11"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "yes, I can explain what I mean in a way that has patience.",
+   "target": "네, 무슨 뜻인지 참을성 있게 설명할 수 있어요.",
+   "frame": "D2"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I want to speak in a way that has patience when other people are here.",
+   "target": "다른 사람들이 여기 있을 때 참을성 있게 말하고 싶어요.",
+   "frame": "P13"
+  }
+ ]
+}

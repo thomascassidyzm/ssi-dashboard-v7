@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:34:37.963Z",
+ "usage": {
+  "provider": "codex",
+  "input": 49572,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 960,
+  "thinking": 516,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a98e-8303-7892-bc6d-72c6ddb751be",
+  "ms": 27426,
+  "total": 62820
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I think it's jane's bag",
+   "target": "제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I know it's jane's bag",
+   "target": "제인의 가방인 걸 알아요",
+   "frame": "P10"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "do you think it's jane's bag?",
+   "target": "제인의 가방인 것 같아요?",
+   "frame": "P20"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I don't think it's jane's bag",
+   "target": "제인의 가방인 것 같지 않아요",
+   "frame": "P23"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I want to know that it's jane's bag before I give it to him",
+   "target": "그한테 주기 전에 제인의 가방인 걸 알고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "can you tell me how you know that it's jane's bag?",
+   "target": "어떻게 제인의 가방인 걸 아는지 말해 줄 수 있어요?",
+   "frame": "P22"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "if I'd known it was jane's bag I'd have waited",
+   "target": "제인의 가방인 걸 알았더라면 기다렸을 거예요",
+   "frame": "P17"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I know that it's jane's bag but I don't want to give it to him",
+   "target": "제인의 가방인 걸 알아요 하지만 그한테 그걸 주고 싶지 않아요",
+   "frame": "P15"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "thank you, I think that one over there is jane's bag",
+   "target": "고마워요, 저건 제인의 가방인 것 같아요",
+   "frame": "P9"
+  }
+ ]
+}

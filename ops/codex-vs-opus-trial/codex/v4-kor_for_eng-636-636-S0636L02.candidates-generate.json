@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:34:00.711Z",
+ "usage": {
+  "provider": "codex",
+  "input": 48506,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 688,
+  "thinking": 205,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a98e-0232-7e00-8991-926fed581d0a",
+  "ms": 23764,
+  "total": 61482
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I think this is jane's bag",
+   "target": "이건 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "do you think that's jane's bag?",
+   "target": "그건 제인의 가방인 것 같아요?",
+   "frame": "P20"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I don't think it's jane's bag",
+   "target": "제인의 가방인 것 같지 않아요",
+   "frame": "P23"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I know that it's jane's bag",
+   "target": "제인의 가방인 걸 알아요",
+   "frame": "P10"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "yes, I think that one over there is jane's bag, but I've never seen her before",
+   "target": "네, 저건 제인의 가방인 것 같아요, 하지만 그녀를 전에 한 번도 본 적 없어요",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "why do you think this is jane's bag?",
+   "target": "왜 이건 제인의 가방인 것 같아요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I want to ask her if it's jane's bag before we go home",
+   "target": "집에 가기 전에 제인의 가방인 것 같은지 그녀한테 물어보고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "sorry, I think that's jane's bag, so could you put it on the table?",
+   "target": "미안해요, 그건 제인의 가방인 것 같아요, 그래서 그걸 탁자 위에 놓고 줄 수 있어요?",
+   "frame": "D4"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think it's jane's bag, and I'll ask her when we meet tomorrow",
+   "target": "제인의 가방인 것 같아요, 그리고 내일 만나면 그녀한테 물어볼 거예요",
+   "frame": "D12"
+  }
+ ]
+}

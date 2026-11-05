@@ -1,0 +1,92 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:33:23.016Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 75379,
+  "cache_read": 0,
+  "output": 2215,
+  "thinking": 1542,
+  "cost_usd": 0.64734,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 20732,
+  "total": 77596
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I think it is Jane's bag",
+   "target": "그게 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "maybe it's Jane's bag",
+   "target": "아마 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I think this is Jane's bag",
+   "target": "이건 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "now I think it's Jane's bag",
+   "target": "지금 제인의 가방인 것 같아요",
+   "frame": "P28"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'm not sure, but I think it's Jane's bag",
+   "target": "모르겠어요, 하지만 제인의 가방인 것 같아요",
+   "frame": "P15"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "no, I think this is Jane's bag",
+   "target": "아니요, 이건 제인의 가방인 것 같아요",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "yes, I think that blue thing is Jane's bag",
+   "target": "네, 그 파란 것은 제인의 가방인 것 같아요",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think it's Jane's bag, so I want to give it to her",
+   "target": "제인의 가방인 것 같아요, 그래서 그녀한테 주고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think it's Jane's bag, but I'm not sure if it's true",
+   "target": "제인의 가방인 것 같아요, 하지만 그게 사실인지 모르겠어요",
+   "frame": "P10"
+  }
+ ]
+}

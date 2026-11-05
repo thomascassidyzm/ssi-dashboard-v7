@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:30:41.630Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 55632,
+  "cache_read": 0,
+  "output": 1721,
+  "thinking": 1096,
+  "cost_usd": 0.479484,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 16065,
+  "total": 57355
+ },
+ "phrases": [
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "in a way that has patience",
+   "target": "참을성 있게",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "want to speak in a way that has patience",
+   "target": "참을성 있게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I'm going to do it in a way that has patience",
+   "target": "참을성 있게 할 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "build",
+   "known": "must work hard in a way that has patience",
+   "target": "참을성 있게 열심히 해야 해요",
+   "frame": "P8"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I want to speak with my friends in a way that has patience",
+   "target": "친구들과 참을성 있게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think that you're doing it in a way that has patience",
+   "target": "참을성 있게 하고 있다고 생각해요",
+   "frame": "P9"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "it's important to speak in a way that has patience",
+   "target": "참을성 있게 말하는 게 중요해요",
+   "frame": "P18"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'm not sure if I can speak in a way that has patience",
+   "target": "참을성 있게 말할 수 있을지 모르겠어요",
+   "frame": "P10"
+  },
+  {
+   "seed": 398,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'd like to be able to speak in a way that has patience after you finish",
+   "target": "끝난 후에 참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P13"
+  }
+ ]
+}

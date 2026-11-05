@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:28:54.510Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 26426,
+  "cache_read": 0,
+  "output": 2446,
+  "thinking": 1704,
+  "cost_usd": 0.260336,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 21774,
+  "total": 28874
+ },
+ "phrases": [
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "now, as soon as you want, ready to go",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "but as soon as you want, ready to go",
+   "target": "하지만 원하면 바로 갈 준비됐어요",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "today, as soon as you want, ready to go",
+   "target": "오늘 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "so as soon as you want, ready to go",
+   "target": "그래서 원하면 바로 갈 준비됐어요",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "it's time to go now, and as soon as you want, ready to go",
+   "target": "이제 갈 시간이에요, 그리고 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'm not going to wait, so as soon as you want, ready to go",
+   "target": "기다리지 않을 거예요, 그래서 원하면 바로 갈 준비됐어요",
+   "frame": "P2"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "yes, I want to start, so as soon as you want, ready to go",
+   "target": "네, 시작하고 싶어요, 그래서 원하면 바로 갈 준비됐어요",
+   "frame": "D2"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "when do you want to start? as soon as you want, ready to go",
+   "target": "언제 시작하고 싶어요? 원하면 바로 갈 준비됐어요",
+   "frame": "P21"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "he wants to come back later on, but as soon as you want, ready to go",
+   "target": "그는 나중에 다시 오고 싶어해요, 하지만 원하면 바로 갈 준비됐어요",
+   "frame": "P1"
+  }
+ ]
+}

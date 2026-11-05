@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:29:52.923Z",
+ "usage": {
+  "provider": "codex",
+  "input": 13077,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 1304,
+  "thinking": 753,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a989-e9cb-7b00-9def-2d54dae034fc",
+  "ms": 43043,
+  "total": 26669
+ },
+ "phrases": [
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "as soon as you want, ready to go now",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "as soon as you want, ready to go with everyone else",
+   "target": "다른 사람들과 같이 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "as soon as you want, ready to go home",
+   "target": "집에 원하면 바로 갈 준비됐어요",
+   "frame": "P14"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "build",
+   "known": "as soon as you want, ready to go on the next bus",
+   "target": "다음 버스로 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "could you say \"as soon as you want, ready to go\" again a little more slowly?",
+   "target": "\"원하면 바로 갈 준비됐어요\" 좀 더 천천히 다시 말해 줄 수 있어요?",
+   "frame": "P4"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I don't know how to say \"as soon as you want, ready to go\" in Korean yet.",
+   "target": "아직 \"원하면 바로 갈 준비됐어요\" 한국어로 어떻게 말하는지 몰라요.",
+   "frame": "P22"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'm trying to remember how to say \"as soon as you want, ready to go\" in Korean.",
+   "target": "\"원하면 바로 갈 준비됐어요\" 한국어로 어떻게 말하는지 기억하려고 해요.",
+   "frame": "P3"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I want to practise speaking Korean with you now, but I can't remember how to say \"as soon as you want, ready to go\".",
+   "target": "지금 같이 한국어로 말하는 연습을 하고 싶어요, 하지만 \"원하면 바로 갈 준비됐어요\" 어떻게 말하는지 기억하지 못해요.",
+   "frame": "P1"
+  },
+  {
+   "seed": 97,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I'm going to try to explain how to say \"as soon as you want, ready to go\" in Korean after you finish.",
+   "target": "끝난 후에 \"원하면 바로 갈 준비됐어요\" 한국어로 어떻게 말하는지 설명해 볼 거예요.",
+   "frame": "P2"
+  }
+ ]
+}

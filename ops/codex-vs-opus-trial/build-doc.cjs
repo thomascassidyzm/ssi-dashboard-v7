@@ -4,7 +4,7 @@ const fs = require('fs'), path = require('path');
 const here = __dirname;
 const legos = fs.readFileSync(path.join(here, 'legos.txt'), 'utf8').trim().split('\n').map(l => l.split(/\s+/));
 const load = (prov, c, l, s) => { try { return JSON.parse(fs.readFileSync(path.join(here, prov, `v4-${c}-${s}-${s}-${l}.json`), 'utf8')); } catch { return null; } };
-const gateKey = (r) => r.replace(/"[^"]*"/g, '…').replace(/:.*$/, '').replace(/\(.*$/, '').trim().slice(0, 60);
+const gateKey = (r) => r.replace(/"[^"]*"/g, '…').replace(/:.*$/, '').replace(/\(.*$/, '').trim().slice(0, 90);
 const esc = (s) => String(s || '').replace(/\|/g, '\\|');
 const roleOf = (k) => k.phrase_role || k.role;
 function metrics(o) {
@@ -67,6 +67,10 @@ How the runs were set up:
 - Codex's token count includes about 12k tokens of its own built-in preamble, which can't be removed.
 - Course data came from Popty's read-only script-view route, because the phrase-v4 key is refused at the admin door.
 - "Frames used/available" is the frame tagger's count of distinct frames in the kept basket.
+- Three Korean LEGOs were run twice: S0097L02, S0398L02 and S0636L02. On the first run, v4's reply template said "lego_index":1. Both models copied it for these L02 LEGOs, so every phrase was refused as "no such new LEGO". The template now names the real LEGO, and the table shows the re-runs. The first runs are kept in the trial folder (first-run-lego-index-bug/).
+- Most LEGOs here are L01, where the template change makes no difference. S0331L03 and S0511L03 ran on the old template, and both models read the index right.
+
+_My observation, one line, not a verdict:_ Codex's USE sentences run longer and more varied, and it trips the admitted-words gate more often (13 vs 3). Opus's baskets sit closer to the floor and shorter.
 ${body.join('\n')}
 `;
 fs.writeFileSync(path.join(here, 'trial.md'), md);
