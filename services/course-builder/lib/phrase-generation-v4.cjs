@@ -126,7 +126,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     const { carriersByFrame } = deps.carriersByFrame ? deps : require(path.join(ROOT, 'tools/frame-layer/v4/generate-v4.cjs'));
     await tagCourse(courseCode, data);
     available = availableAt(inventory(courseCode, data), seedNumber);
-    carriers = carriersByFrame(admitted.rows.filter((r) => r.kind === 'lego' || r.kind === 'component'), available); // carriers only from admitted material
+    carriers = carriersByFrame(admitted.rows.filter((r) => r.kind === 'lego' || r.kind === 'component'), available, courseCode); // carriers only from admitted material
     tagged = true;
     report.frames = 'run';
     report.frames_available = available;

@@ -15,7 +15,7 @@ const { availableVocab } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
 const { exactFormCheck } = require('./exact-form.cjs');
 const { inventory, availableAt } = require('./frame-inventory.cjs');
-const { scoreWindow } = require('./window-coverage.cjs');
+const { scoreWindow, ensurePodTagged } = require('./window-coverage.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
 
@@ -56,6 +56,7 @@ async function main() {
     const data = loadCourse(course);
     await tagCourse(course, data);
     await ensureTagged(staged.rows.map(r => r.known_text), { knownLanguage: knownLanguageName(course) });
+    await ensurePodTagged([...data.phrases, ...staged.rows].map(r => String(r.known_text || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course) }); // pod frames are scored from D tags
     const { kept, cut } = regateRows(staged.rows, data, { noSpace: NO_SPACE.has(targetLangOf(course)), courseCode: course });
     const inv = inventory(course, data);
     const covers = (rows, w) => {

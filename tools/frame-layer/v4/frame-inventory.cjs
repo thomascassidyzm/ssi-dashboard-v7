@@ -78,14 +78,55 @@ function combinationAvailability(legos, components) {
 const podFrames = () => loadDialogueFrames();
 
 /**
+ * POD-FRAME OWNERSHIP FOR ANY KNOWN LANGUAGE (#433 gap; 2026-11-05).
+ * A pod frame's fixed_material is English ("thank you", "here you are"). For an English known
+ * side a chunk owns it by IDENTITY: its known text IS that chunk (whole-chunk, unchanged).
+ * For every other known language English words cannot match, so ownership is decided by what
+ * the chunk IS rather than how it is spelt: a SHORT taught chunk (LEGO or component; at most
+ * 4 words, or 8 characters in a script without spaces) whose known text the frame tagger, reading
+ * the D codex in the course's own known language, tags with that D-frame. An X-frame is owned
+ * through its sentence_projection D-frame, as everywhere else. The short-chunk limit keeps a
+ * whole sentence that merely CONTAINS a thanks from passing as the carrier itself.
+ * Needs pod tags on the short chunks (tag-course.cjs tagCoursePods); an untagged one throws.
+ */
+const T = require('../frame-tagger.cjs');
+const { D_CODEX } = require('../dialogue-patterns.cjs');
+const isEnglishKnown = (course) => course == null || T.knownLanguageOf(course) === 'eng';
+const NO_SPACE_KNOWN = (course) => require('../../../services/shared/admitted-list.cjs').knownNoSpace(course);
+function isShortChunk(known, course) {
+  const k = String(known || '').trim();
+  if (!k) return false;
+  return NO_SPACE_KNOWN(course) ? [...k.replace(/\s+/g, '')].length <= 8 : k.split(/\s+/).length <= 4;
+}
+/** The pod frame ids (D, plus X through projection) a chunk owns in a non-English known language. */
+function podIdsOwnedBy(known, course, frames = podFrames()) {
+  if (!isShortChunk(known, course)) return [];
+  const d = T.framesOf(known, D_CODEX);
+  return frames.filter(f => d.includes(f.id) || (f.sentence_projection && d.includes(f.sentence_projection))).map(f => f.id);
+}
+/** Does this taught chunk carry pod frame `f`? English: identity with a fixed-material chunk; else the tagger. */
+function podCarries(row, f, course) {
+  if (isEnglishKnown(course)) return (f.fixed_material || []).flat().some(ch => norm(ch) === norm(row.known_text));
+  return podIdsOwnedBy(row.known_text, course, [f]).length > 0;
+}
+
+/**
  * When does each pod frame's carrier become OWNED? For every alternate of the
  * frame's fixed_material, the alternate is owned from the latest of its chunks'
  * first owning rows; the frame from the earliest owned alternate. Whole-chunk on
  * the known side: "tú" inside "estúpido" is not ownership.
  */
-function podCarrierAvailability(legos, components, frames = podFrames()) {
+function podCarrierAvailability(legos, components, frames = podFrames(), course = null) {
   const rows = [...legos.map(l => ({ ...l, kind: 'lego' })), ...components.map(c => ({ ...c, kind: 'component' }))]
     .sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
+  if (!isEnglishKnown(course)) {
+    // Not English: the first short chunk the tagger says carries the frame owns it.
+    const out = new Map();
+    for (const r of rows) for (const id of podIdsOwnedBy(r.known_text, course, frames)) {
+      if (!out.has(id)) out.set(id, { seed: r.seed_number, via: `${r.kind} "${r.known_text}" → "${r.target_text}" (tagged in the known language)` });
+    }
+    return out;
+  }
   const firstOwner = new Map();
   for (const r of rows) {
     const k = norm(r.known_text);
@@ -130,7 +171,7 @@ function inventory(course, data) {
       earlier_by_combination: (s != null && c && c.seed < s) ? s - c.seed : 0,
       seed_count: data.seeds.filter(x => String(x.known_text || '').trim() && p.test(x.known_text)).length };
   });
-  const byCarrier = podCarrierAvailability(data.legos, data.components);
+  const byCarrier = podCarrierAvailability(data.legos, data.components, podFrames(), course);
   for (const f of podFrames()) {
     const c = byCarrier.get(f.id) || null;
     frames.push({ id: f.id, name: f.name, shape: f.shape, provenance: 'pod', grain: f.grain || 'sentence',
@@ -147,7 +188,7 @@ function availableAt(inv, seed) {
   return inv.frames.filter(f => f.available != null && f.available <= seed).map(f => f.id);
 }
 
-module.exports = { inventory, availableAt, combinationAvailability, podCarrierAvailability, frameDef, isPodFrame, podFrames };
+module.exports = { inventory, availableAt, combinationAvailability, podCarrierAvailability, podCarries, podIdsOwnedBy, isShortChunk, frameDef, isPodFrame, podFrames };
 
 if (require.main === module) {
   const courses = process.argv.slice(2).filter(a => !a.startsWith('--'));

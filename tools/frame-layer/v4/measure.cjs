@@ -24,7 +24,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadCourse } = require('./db.cjs');
 const { inventory, availableAt } = require('./frame-inventory.cjs');
-const { scoreCourseWindows } = require('./window-coverage.cjs');
+const { scoreCourseWindows, ensurePodTagged } = require('./window-coverage.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 const { CODEX, knownLanguageName } = require('../frame-tagger.cjs');
 
@@ -35,6 +35,7 @@ const mean = (xs) => xs.length ? +(xs.reduce((a, b) => a + b, 0) / xs.length).to
 
 async function measure(course, { data = loadCourse(course), log } = {}) {
   const ledger = await tagCourse(course, data, { log });
+  await ensurePodTagged(data.phrases.map(p => String(p.known_text || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course), ...(log ? { log } : {}) }); // pod frames are scored from D tags
   const inv = inventory(course, data);
   const avail = (seed) => availableAt(inv, seed);
   const maxSeed = data.phrases.length ? Math.max(...data.phrases.map(p => p.seed_number)) : 0;

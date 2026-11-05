@@ -50,7 +50,7 @@ const { measure, WEAK } = require('./measure.cjs');
 const { runGaps, knownHeardCheck } = require('./generate-v4.cjs');
 const NO_SPACE_KNOWN = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha']);
 const { loadCourse } = require('./db.cjs');
-const { scoreWindow } = require('./window-coverage.cjs');
+const { scoreWindow, ensurePodTagged } = require('./window-coverage.cjs');
 const { norm } = require('../availability.cjs');
 
 const FIRST_SEED = 11;
@@ -193,6 +193,7 @@ async function gateStage() {
   const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
   await tagCourse(course, data, { log: () => {} });
   await ensureTagged(accepted.map(a => a.known_text), { knownLanguage: knownLanguageName(course), log: () => {} });
+  await ensurePodTagged([...data.phrases, ...accepted].map(a => String(a.known_text || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course), log: () => {} }); // pod frames are scored from D tags
   // Coverage per window: live alone vs live + accepted (frames re-derived by the tagger, never the model's claim)
   const perWindow = windowsOut.map(w => {
     const [s, e] = w.region;

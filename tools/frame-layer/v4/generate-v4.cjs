@@ -56,7 +56,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { availableVocab, norm } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
-const { inventory, availableAt, frameDef } = require('./frame-inventory.cjs');
+const { inventory, availableAt, frameDef, podCarries } = require('./frame-inventory.cjs');
 const { scoreWindow, hasOpener, framesOfAll, ensurePodTagged } = require('./window-coverage.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
@@ -112,15 +112,14 @@ function carrierPool(course, data, newLegos) {
     .rows.filter(r => r.kind === 'lego' || r.kind === 'component');
 }
 
-function carriersByFrame(chunks, frameIds) {
+function carriersByFrame(chunks, frameIds, course = null) {
   const out = {};
   for (const id of frameIds) {
     const p = frameDef(id);
     if (!p) { out[id] = []; continue; }
-    // A pod frame's carrier is a chunk whose known side IS one of its fixed-material
-    // chunks (the same whole-chunk OWNED rule that made the frame available).
-    const podChunks = p.provenance === 'pod' ? new Set((p.fixed_material || []).flat().map(norm)) : null;
-    const carries = (c) => podChunks ? podChunks.has(norm(c.known_text)) : p.test(c.known_text || '');
+    // A pod frame's carrier is a chunk that OWNS it by the same rule that made the frame
+    // available (frame-inventory.podCarries: identity in English, the tagger otherwise).
+    const carries = (c) => p.provenance === 'pod' ? podCarries(c, p, course) : p.test(c.known_text || '');
     const hits = chunks.filter(c => carries(c) && tokens(c.known_text).length <= 6);
     // two most recent, two shortest — recent material is the LEGO's own neighbourhood,
     // short material is the cleanest frame carrier
@@ -395,7 +394,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
   const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
   const taughtBefore = carrierPool(course, data, newLegos);
-  const carriers = carriersByFrame(taughtBefore, available);
+  const carriers = carriersByFrame(taughtBefore, available, course);
   // live ZUT reference: every known → targets, from legos and practice rows of the whole course
   const liveZut = new Map();
   for (const r of [...data.legos, ...data.phrases]) {
@@ -490,7 +489,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   const before = scoreWindow(livePhrases, available, { rarefyN: 60 });
   const missing = (missingIn || before.missing_ids).filter(f => available.includes(f));
   const taughtBefore = carrierPool(course, data, newLegos);
-  const carriers = carriersByFrame(taughtBefore, missing);
+  const carriers = carriersByFrame(taughtBefore, missing, course);
   const liveZut = new Map();
   for (const r of [...data.legos, ...data.phrases]) {
     const k = norm(r.known_text); if (!k) continue;
