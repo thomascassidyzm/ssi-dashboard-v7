@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-canvas text-ink p-8">
+  <div class="min-h-screen bg-canvas text-ink p-3 sm:p-8">
     <div class="max-w-6xl mx-auto">
       <!-- Breadcrumb -->
       <div class="flex items-center gap-3 mb-6 text-sm">
@@ -33,6 +33,14 @@
           </div>
         </div>
 
+        <!-- Lines | Drill (job #860): Drill plays a scene exactly as the learning app deals it —
+             src/components/pods/PodDrillPlayer.vue. ?view=drill&scene=N deep-links it. -->
+        <div class="flex gap-2 mb-4 text-sm">
+          <button :class="['px-3 py-1.5 rounded border', !isDrillView ? 'border-emerald-500 font-semibold' : 'border-line text-muted']" @click="setView('lines')">Lines</button>
+          <button :class="['px-3 py-1.5 rounded border', isDrillView ? 'border-emerald-500 font-semibold' : 'border-line text-muted']" @click="setView('drill')">Drill</button>
+        </div>
+        <PodDrillPlayer v-if="isDrillView" :course-code="courseCode" :slug="slug" />
+        <template v-else>
         <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
              until they exist!!!"). Held = RLS hides this pod and every line in
              it from the learner app. Popty reads with the service role, so this
@@ -423,6 +431,8 @@
           </div>
         </div>
 
+        </template>
+
         <!-- Hidden audio element -->
         <audio ref="audioEl" @ended="onAudioEnded"></audio>
       </div>
@@ -432,10 +442,11 @@
 
 <script setup>
 import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import RecordDoor from '@/components/RecordDoor.vue'
+import PodDrillPlayer from '@/components/pods/PodDrillPlayer.vue'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { podDisplayTitle } from '@/lib/podDisplayName.js'
@@ -444,7 +455,16 @@ import { holdReload } from '@/router/versionReload.js'
 import { readPodPlace, savePodPlace, landingRow, readSettled, saveSettled, cameFromReload, fetchThroughRestart } from './pod-review-place.js'
 
 const route = useRoute()
+const router = useRouter()
 const courseCode = route.params.courseCode
+// Lines | Drill tab (job #860), kept in the URL so a Drill link opens on the Drill.
+const isDrillView = computed(() => route.query.view === 'drill')
+function setView (v) {
+  stopPlayback()
+  const q = { ...route.query }
+  if (v === 'drill') q.view = 'drill'; else delete q.view
+  router.replace({ query: q }).catch(() => {})
+}
 const slug = route.params.slug
 const { getCourseName } = useCourses()
 
