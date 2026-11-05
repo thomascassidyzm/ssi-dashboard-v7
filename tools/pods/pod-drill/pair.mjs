@@ -220,6 +220,7 @@ for (const d of todo) {
     const pieces = (d.chunks || []).map((c) => [c.text, c.gloss || ''])
     const tmL = targetTimes(d)
     if (LINES) {
+      if (!tmL && d.kind === 'whole-turn') { result.set(d.id, { status: 'whole', why: `several-line turn: the ${LANG_NAME} clip has no Cartesia word timings that say its text` }); continue }
       if (!tmL || splitLines(tmL.words).length < 2) continue
       if (!d.knownAudioId) { result.set(d.id, { status: 'whole', why: `several-line turn: no ${KNOWN_NAME} clip` }); continue }
       const b = buildLines(d)
