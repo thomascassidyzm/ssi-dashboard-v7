@@ -127,7 +127,11 @@ function admittedLabel(N, L) {
 
 /** The prompt rule, in the same words for every caller. */
 function admittedRulePrompt(N, L, knownLanguage = 'the known language', targetLanguage = 'the target language') {
-  return `ADMITTED VOCABULARY — the ONLY words you may use, on BOTH sides. Phrases for LEGO ${legoId(N, L)} may use ONLY: ${admittedLabel(N, L)}. `
+  // N == null: the general form, for a prompt covering several LEGOs (each states its own cut).
+  const scope = N == null
+    ? 'Phrases for LEGO S<N>L<L> may use ONLY: SEEDS S0001 up to S<N-1> and LEGOs S0001L01 up to S<N>L<L-1> in introduction order, plus that LEGO itself. '
+    : `Phrases for LEGO ${legoId(N, L)} may use ONLY: ${admittedLabel(N, L)}. `;
+  return `ADMITTED VOCABULARY — the ONLY words you may use, on BOTH sides. ${scope}`
     + `The ${knownLanguage} side and the ${targetLanguage} side are each built only from words that appear in that list's ${knownLanguage} and ${targetLanguage} texts respectively, at exactly that form. `
     + `There is NO free class: no ordinary everyday word, no little grammatical word, no "the", "a", "very", "do", "not" and no added -s/-ed/-ing, unless that exact word already appears in an admitted ${knownLanguage} text. `
     + `A word not in the list is refused, however ordinary.`;
