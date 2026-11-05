@@ -59,7 +59,7 @@ try {
   const walk = base.length ? base : rows
   const ids = new Set()
   for (const r of walk) for (const id of [r.target_audio_id, r.known_audio_id, ...(r.sentence_audio_ids || []), ...(r.sentence_known_audio_ids || [])]) if (id) ids.add(bare(id))
-  const clipById = new Map((await clipsById(pg, [...ids], { cols: 'id, text, word_timings, word_boundaries, audio_revision' })).map((c) => [String(c.id), c]))
+  const clipById = new Map((await clipsById(pg, [...ids], { cols: 'id, text, voice_id, word_timings, word_boundaries, audio_revision' })).map((c) => [String(c.id), c]))
   const cards = []
   for (const r of walk) {
     if (sentences(r.target_text).length < 2 || playerSplits(r, clipById)) continue
@@ -67,6 +67,7 @@ try {
     cards.push({
       id: r.id, pod: podId, scene: r.scene_number, speaker: r.speaker, target: r.target_text, known: r.known_text,
       targetAudioId: ref(t) || r.target_audio_id || null, knownAudioId: ref(k) || r.known_audio_id || null,
+      targetVoice: t?.voice_id || null, knownVoice: k?.voice_id || null,
       wordTimings: timingsOf(t), knownWordTimings: timingsOf(k), chunks: [], kind: 'whole-turn',
       why: (r.sentence_audio_ids || []).filter(Boolean).length < 2 ? 'no sentence clips' : 'sentence clips missing or no longer say the turn',
     })
