@@ -406,6 +406,11 @@ function gate(cands, { course, data, newLegos, available, additive = false, prio
     // shared, warn-only in seed-complete too: frame coverage
     const fw = V.checkBasketFrameCoverage(mine.map(asP), l.target_text);
     if (fw && fw.length) warnings.push({ lego: `S${l.seed_number}L${l.lego_index}`, frameCoverage: fw });
+    // shared, warn-only in seed-complete too: a BUILD prompt uses the known word its LEGO teaches
+    // (checkBuildBasketTeachesWord). v4's own exact known-side containment above is the stricter rule.
+    const teach = V.checkBuildBasketTeachesWord({ known: l.known_text, build: mine.filter(r => r.phrase_role === 'build').map(asP) },
+      { knownLang: knownLangOf(course), contract: V.loadPairContract(course), courseCode: course });
+    if (teach && teach.violations && teach.violations.length) warnings.push({ lego: `S${l.seed_number}L${l.lego_index}`, buildKnownWord: teach.violations });
     out.push(...mine);
   }
   return { kept: out, rejected, warnings };
