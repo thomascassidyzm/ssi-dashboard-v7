@@ -43,11 +43,11 @@
  *
  * Usage: node tools/frame-layer/v4/generate-v4.cjs <course> <start> <end> [--dry] [--budget 400000]
  *        ... --gaps [--missing P5,P8]   additive gap fill: only the window's missing frames (runGaps)
+ * Provider: --provider claude|codex (default claude; V4_PROVIDER) — see model-provider.cjs
  * Env: V4_MODEL (fable) · V4_EFFORT (low) · V4_LEDGER (token-ledger.json, in the evidence dir)
  */
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
 const PATTERNS = require('../patterns.cjs');
 const { availableVocab, norm } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
@@ -63,7 +63,6 @@ const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evi
 const MODEL = process.env.V4_MODEL || 'fable';
 const EFFORT = process.env.V4_EFFORT || 'low';
 const LEDGER_FILE = 'token-ledger.json'; // default; V4_LEDGER is read per call so a driver can give each window its own (#924)
-const CLAUDE = '/home/tomcassidy/.local/bin/claude';
 const BUILD_FLOOR = 4, USE_FLOOR = 5;
 
 // ---------- known-side free class (docs/pair-contracts/_default_eng.contract.cjs) ----------
@@ -218,42 +217,21 @@ Reply with JSON only, no prose, no code fence:
 }
 
 // ---------- the model call ----------
-// The CLI invocation, exported so a test can assert the model and the effort
-// bound without spending a token. --effort is what bounds thinking on Fable
-// and Opus (probe 2026-10-02: fable + low → thinking_tokens 0 on a planning
-// prompt); MAX_THINKING_TOKENS is kept as belt-and-braces but was shown not to
-// bite on Opus in #468.
-function claudeArgs() {
-  return ['--print', '--model', MODEL, '--effort', EFFORT, '--output-format', 'json', '--tools', '',
-    '--system-prompt', 'You write practice phrases for a language course. You follow the rails exactly and reply with JSON only.',
-    '--exclude-dynamic-system-prompt-sections'];
-}
+// The provider decision point (#438·AD, Codex trial): `--provider claude|codex` (or
+// V4_PROVIDER) picks the TRANSPORT only. The prompt text, the JSON extraction below, the
+// gates, floors and retry rule are shared, so a Claude-vs-Codex comparison judges the model
+// and not the harness. Default is claude: existing callers are unchanged. The transport and
+// its fairness notes (system line, effort, no tools, codex lanes) live in model-provider.cjs.
+// --effort is what bounds thinking on Fable and Opus (probe 2026-10-02: fable + low →
+// thinking_tokens 0); MAX_THINKING_TOKENS is kept as belt-and-braces.
+const PROVIDER = require('./model-provider.cjs');
+function claudeArgs() { return PROVIDER.claudeArgs({ model: MODEL, effort: EFFORT }); }
 
 function callModel(prompt, { timeoutMs = 1200000 } = {}) {
-  const { claudeEnv } = require(path.join(ROOT, 'services', 'shared', 'claude-config.cjs'));
-  const args = claudeArgs();
-  const t0 = Date.now();
-  const env = { ...claudeEnv(process.env), MAX_THINKING_TOKENS: String(process.env.V4_THINKING || 3000) };
-  let raw;
-  try {
-    raw = execFileSync(CLAUDE, args, { input: prompt, env, encoding: 'utf8', timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 });
-  } catch (e) {
-    // The CLI reports a usage limit on STDOUT as {is_error, result}; stderr is empty, so
-    // the old message carried only the command line and a limit looked like any failure (#924).
-    let said = '';
-    try { said = JSON.parse(String(e.stdout || '')).result || ''; } catch { said = String(e.stdout || '').slice(0, 300); }
-    throw new Error(`claude --print failed: ${said ? said + ' — ' : ''}${String(e.stderr || e.message).slice(0, 300)}`);
-  }
-  const j = JSON.parse(raw);
-  if (j.is_error) throw new Error(`model error: ${String(j.result).slice(0, 300)}`);
-  const u = j.usage || {};
-  const usage = { input: u.input_tokens || 0, cache_create: u.cache_creation_input_tokens || 0, cache_read: u.cache_read_input_tokens || 0,
-    output: u.output_tokens || 0, thinking: (u.output_tokens_details || {}).thinking_tokens ?? null,
-    cost_usd: j.total_cost_usd || 0, model: Object.keys(j.modelUsage || {})[0] || null, effort: EFFORT, ms: Date.now() - t0 };
-  usage.total = usage.input + usage.cache_create + usage.cache_read + usage.output;
-  const m = String(j.result || '').match(/\{[\s\S]*\}/);
-  if (!m) throw new Error('no JSON in model output: ' + String(j.result).slice(0, 300));
-  return { phrases: JSON.parse(m[0]).phrases || [], usage };
+  const r = PROVIDER.callProvider(prompt, { provider: PROVIDER.providerOf(), model: MODEL, effort: EFFORT, timeoutMs, root: ROOT });
+  const m = String(r.text || '').match(/\{[\s\S]*\}/);
+  if (!m) throw new Error('no JSON in model output: ' + String(r.text).slice(0, 300));
+  return { phrases: JSON.parse(m[0]).phrases || [], usage: r.usage };
 }
 
 // ---------- gates ----------
@@ -488,6 +466,8 @@ module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, tiles, knownS
 
 if (require.main === module) {
   const args = process.argv.slice(2);
+  const pi = args.indexOf('--provider');
+  if (pi >= 0) process.env.V4_PROVIDER = args.splice(pi, 2)[1]; // spliced so the value is never read as a positional
   const pos = args.filter(a => !a.startsWith('--'));
   const dry = args.includes('--dry');
   const bi = args.indexOf('--budget');
