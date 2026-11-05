@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadCourse } = require('./db.cjs');
 const { inventory, availableAt } = require('./frame-inventory.cjs');
-const { scoreWindow } = require('./window-coverage.cjs');
+const { scoreWindow, ensurePodTagged } = require('./window-coverage.cjs');
 const PATTERNS = require('../patterns.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 const { ensureTagged } = require('../frame-tagger.cjs');
@@ -27,6 +27,7 @@ async function main() {
     if (!cache[v4.course]) { cache[v4.course] = loadCourse(v4.course); await tagCourse(v4.course, cache[v4.course]); }
     const data = cache[v4.course];
     await ensureTagged((v4.kept || []).map(k => k.known_text));
+    await ensurePodTagged([...data.phrases, ...(v4.kept || [])].map(k => String(k.known_text || '').trim()).filter(Boolean)); // pod frames are scored from D tags
     const inv = inventory(v4.course, data);
     const avail = availableAt(inv, end);
     const win = data.phrases.filter(p => p.seed_number >= start && p.seed_number <= end);

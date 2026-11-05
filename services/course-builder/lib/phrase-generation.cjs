@@ -180,8 +180,9 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // another frame section in place of v3's, and extra server-side checks whose reasons join the retry
   // and the verdict exactly as a gate failure does. Both default to nothing, so v3 is unchanged.
   const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false,
-    frameSectionFn = frameSection, extraCheck = null } = opts;
-  const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+    frameSectionFn = frameSection, extraCheck = null, admitted = null } = opts;
+  // admitted: the v4 door's admitted list (Tom r-2026-11-05) — it replaces the AVAILABLE inventory in the prompt.
+  const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego, admitted });
 
   // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
   // a round only for an is_new LEGO, so a basket written under a not-new one is never

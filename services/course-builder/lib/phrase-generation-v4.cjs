@@ -5,7 +5,9 @@
  * v4's objective (Tom 2026-10-02): the learner meets as many of the canon frames as the
  * course makes available, by putting each NEW LEGO "in concert with" taught material
  * that carries the frame — walking back through the network — and variety is bought with
- * frames the learner owns, never with a stapled opener ("thank you,", "of course"…).
+ * frames the learner owns, never with a stapled opener ("thank you,", "of course"…). Since
+ * Tom's ruling of 2026-11-05 the pod frames are offered too, and an interjection may appear
+ * when it is already admitted for the basket, earning no frame.
  * tools/frame-layer/v4/generate-v4.cjs does that over a window of seeds, offline. This
  * is the same objective for the ONE basket a builder is writing right now, served from
  * Popty so the builder's call is a URL change from v3.
@@ -16,9 +18,11 @@
  * v4 adds, through the two seams that function exposes:
  *   - frameSectionFn: v4's walk-back brief (frames available by this seed + the taught
  *     chunks that carry each) in place of v3's frame section;
- *   - extraCheck: every candidate is held to v4's rules and then to the door's own
+ *   - admitted: the LEGO's admitted list (services/shared/admitted-list.cjs; Tom r-2026-11-05) replaces
+ *     v3's AVAILABLE inventory in the prompt, so the model is offered nothing outside it;
+ *   - extraCheck: every candidate is held to v4's rules — both sides against that same list first and then to the door's own
  *     gateStagedRows — the SAME function the gap-fill door re-runs on landing — so a set that
- *     passes here is a set that lands there. A stapled opener, a USE that is not a sentence,
+ *     passes here is a set that lands there. An interjection not yet admitted, a USE that is not a sentence,
  *     an untaught known-side word, a ZUT clash with the whole course: refused, retried with
  *     the reason quoted, and if it cannot be made to pass the answer is ok:false/blocked.
  *
@@ -36,11 +40,19 @@
 const path = require('path');
 const ROOT = path.join(__dirname, '..', '..', '..');
 
-/** The v4 brief that stands in for v3's frame section. Pure. */
-function buildV4Section({ available, carriers, patterns }) {
+/**
+ * The v4 brief that stands in for v3's frame section. Pure. Frame lines and the
+ * interjection rule are generate-v4's own (frameLine, interjectionRule), so the
+ * offline generator and this door say the same words: pod frames (D, X) are listed
+ * with the P-frames, and an interjection is allowed only when admitted (Tom 2026-11-05).
+ * `patterns` is kept for callers that inject a P list; a frame it lacks falls through
+ * to frameLine.
+ */
+function buildV4Section({ available, carriers, patterns = [], knownLanguage = 'English' }) {
+  const { frameLine, interjectionRule } = require(path.join(ROOT, 'tools/frame-layer/v4/generate-v4.cjs'));
   const frameLines = available.map((id) => {
     const p = patterns.find((x) => x.id === id);
-    if (!p) return null;
+    if (!p) return frameLine(id, carriers);
     const cs = (carriers[id] || []).map((c) => `"${c.known_text}" = ${c.target_text}`).join(' · ');
     return `  ${id} ${p.name}  ${p.shape}${cs ? `\n      taught material that carries it: ${cs}` : ''}`;
   }).filter(Boolean).join('\n');
@@ -51,9 +63,9 @@ function buildV4Section({ available, carriers, patterns }) {
     '## PHRASE v4 — frame diversity by walking back (this replaces any frame list above)',
     '',
     'Tom\'s objective: the learner should meet as many of the frames below as possible, each time by putting THIS LEGO in concert with material the learner already owns — the taught chunks named under each frame — never by adding words.',
-    'Across this basket (BUILD and USE together) use as many DIFFERENT frames as the basket allows; give no two USE phrases the same frame while an unused frame still fits. Put the frame id on each phrase as "frame":"P-id".',
+    'Across this basket (BUILD and USE together) use as many DIFFERENT frames as the basket allows; give no two USE phrases the same frame while an unused frame still fits. Put the frame id on each phrase as "frame":"P-id" (or the D-id of a pod frame).',
     '',
-    'NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front ("thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused. Variety is a frame change, never an opener.',
+    interjectionRule(knownLanguage),
     '',
     'FRAMES AVAILABLE BY THIS SEED:',
     frameLines,
@@ -97,7 +109,12 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     data.legos.push(lego);
   }
 
-  const noSpace = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha']).has(String(courseCode.split('_for_')[1] || '').split('_')[0]);
+  // THE ADMITTED LIST (Tom r-2026-11-05), built once: seeds < N, LEGOs before S<N>L<L>, the LEGO,
+  // components only as parts. The prompt shows only it; the check below holds both sides to it.
+  const ADM = deps.admittedList || require('../../shared/admitted-list.cjs');
+  const admitted = ADM.admittedList({ course: courseCode, seeds: data.seeds || [], legos: data.legos, components: data.components,
+    seedNumber, legoIndex: Number(legoIndex), lego });
+  const noSpace = ADM.knownNoSpace(courseCode);
   const knownLanguage = tagger.knownLanguageName(courseCode);
   const report = { frames: 'not run', frames_available: [], distinct_frames: null, per_phrase: [] };
   let available = [];
@@ -109,7 +126,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     const { carriersByFrame } = deps.carriersByFrame ? deps : require(path.join(ROOT, 'tools/frame-layer/v4/generate-v4.cjs'));
     await tagCourse(courseCode, data);
     available = availableAt(inventory(courseCode, data), seedNumber);
-    carriers = carriersByFrame([...data.legos, ...data.components].filter((c) => c.seed_number < seedNumber), available);
+    carriers = carriersByFrame(admitted.rows.filter((r) => r.kind === 'lego' || r.kind === 'component'), available, courseCode); // carriers only from admitted material
     tagged = true;
     report.frames = 'run';
     report.frames_available = available;
@@ -117,7 +134,8 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     report.frames = `not run: ${e.message}`; // the opener check below is skipped with it, and says so
   }
 
-  const section = tagged ? buildV4Section({ available, carriers, patterns: PATTERNS }) : '';
+  const section = tagged ? buildV4Section({ available, carriers, patterns: PATTERNS, knownLanguage }) : '';
+  const basketVocab = admitted.rows; // the admitted-interjection check reads the same list
 
   async function extraCheck({ phrases }) {
     const reasons = [];
@@ -125,14 +143,25 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     let framesOfText = null;
     if (tagged) {
       try {
+        const wc = deps.windowCoverage || require(path.join(ROOT, 'tools/frame-layer/v4/window-coverage.cjs'));
+        const { admittedOpener } = deps.admittedOpener ? deps : require(path.join(ROOT, 'tools/frame-layer/v4/generate-v4.cjs'));
         await tagger.ensureTagged(all.map((p) => p.known), { knownLanguage });
-        framesOfText = (k) => tagger.framesOf(k).filter((f) => available.includes(f));
+        await wc.ensurePodTagged(all.map((p) => p.known), { knownLanguage });
+        // Pod frames count; an interjection earns none (window-coverage.podFramesOf).
+        framesOfText = (k) => wc.framesOfAll(k, available);
         for (const p of all) {
-          if (tagger.hasOpener(p.known)) reasons.push(`${p.role.toUpperCase()} "${p.known}": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without`);
+          // Allowed only when the interjection is a chunk this basket already owns (Tom 2026-11-05).
+          if (tagger.hasOpener(p.known) && !admittedOpener(p.known, p.target, basketVocab, noSpace)) {
+            reasons.push(`${p.role.toUpperCase()} "${p.known}": interjection at the front is not yet admitted for this basket (it must be a taught chunk this basket owns, with its taught target form) — rewrite it without`);
+          }
         }
       } catch (e) {
         report.frames = `not run: ${e.message}`;
       }
+    }
+    // Both sides against the admitted list, every script (no free class, no no-space bypass).
+    for (const p of all) {
+      for (const why of ADM.admittedCheck({ known: p.known, target: p.target }, admitted, courseCode)) reasons.push(`${p.role.toUpperCase()} "${p.known}" → "${p.target}": ${why}`);
     }
     for (const p of all) {
       if (p.role === 'use' && unitsOf(p.known, noSpace).length < (noSpace ? 6 : 4)) reasons.push(`USE "${p.known}": too short to be a complete sentence`);
@@ -149,7 +178,7 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
     return reasons;
   }
 
-  return { section, extraCheck, report, lego };
+  return { section, extraCheck, report, lego, admitted };
 }
 
 /** Generate one LEGO's BUILD + USE set under v4. Writes nothing. */
@@ -157,7 +186,7 @@ async function generateLegoPhrasesV4(supabase, courseCode, seedNumber, legoIndex
   const generate = opts.generateFn || require('./phrase-generation.cjs').generateLegoPhrases;
   const v4 = await prepareV4(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego: opts.proposedLego, deps: opts.deps });
   const result = await generate(supabase, courseCode, seedNumber, legoIndex, {
-    ...opts, frameSectionFn: () => v4.section, extraCheck: v4.extraCheck,
+    ...opts, frameSectionFn: () => v4.section, extraCheck: v4.extraCheck, admitted: v4.admitted,
   });
   const { staged, ...report } = v4.report;
   return {

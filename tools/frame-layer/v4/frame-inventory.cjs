@@ -18,19 +18,38 @@
  *                  whether or not a seed has yet shown the whole shape.
  *   available      min of the two: the point from which a window may use it.
  *
- * The frames are the 31 seed-corpus P-frames (frame-codex.json, via patterns.cjs). The 12 D-frames
- * and 6 X-frames of the pod corpus are reported for the count but are NOT
- * coverage frames: their fixed material ("thank you", "of course", "no
- * problem", "great") is exactly the interjection class #463 found v3 stapling
- * on, and v4 pays nothing for it. The 30 metagraph shapes (nodes.json) are
- * conversation shapes spanning turns, not single-utterance frames.
+ * The frames are the 31 seed-corpus P-frames (frame-codex.json, via patterns.cjs)
+ * AND the 18 pod frames: 12 D-frames (one turn) and 6 X-frames (an exchange),
+ * from the frame map mined 2026-08-31 (docs/frame-layer/dialogue-frame-inventory.json,
+ * read by availability.loadDialogueFrames). Tom, 2026-11-05, after #430·AD showed
+ * v4 reaching 40-45% of the frames available per seed: "make all and any frames
+ * available / but STILL the phrases cannot break the gates in the course-builder /
+ * so, thank you and of course / CAN be used as vocab, provided they have already
+ * been admitted". Until that ruling the pod frames were reported for the count
+ * only, because their fixed material ("thank you", "of course", "no problem",
+ * "great") is the interjection class #463 found v3 stapling on. They are coverage
+ * frames now, under two guards that keep the stapling out:
+ *   - WINDOW. A pod frame is available at the first seed by which every chunk of
+ *     one alternate of its `fixed_material` is OWNED: some LEGO or component, at
+ *     or before that seed, whose known side IS that chunk (whole-chunk, the same
+ *     OWNED rule as availability.instantiableFrameSet). Pods contribute frame
+ *     attestation and zero vocabulary, so no seed ever "introduces" a pod frame:
+ *     by_seed is always null and availability is by carrier alone.
+ *   - CREDIT. window-coverage.cjs gives a phrase that opens with a detachable
+ *     interjection no pod-frame credit at all, so "thank you, <P-frame phrase>"
+ *     earns only its P-frames and "thank you, <nothing>" earns nothing.
+ * An X-frame spans a turn boundary, which a single practice phrase cannot; it is
+ * reached through its `sentence_projection` D-frame (the reply turn), exactly as
+ * dialogue-patterns.cjs prescribes for a sentence-grain consumer.
+ * The 30 metagraph shapes (nodes.json) are conversation shapes spanning turns,
+ * not single-utterance frames, and stay out.
  *
  * READ-ONLY. Output: a JSON file per course under the evidence dir.
  */
 const fs = require('fs');
 const path = require('path');
 const PATTERNS = require('../patterns.cjs');
-const { attestedFrames } = require('../availability.cjs');
+const { attestedFrames, loadDialogueFrames, norm } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 
@@ -55,6 +74,90 @@ function combinationAvailability(legos, components) {
   return first;
 }
 
+/** The pod frames (D then X), as the mined frame map holds them. */
+const podFrames = () => loadDialogueFrames();
+
+/**
+ * POD-FRAME OWNERSHIP FOR ANY KNOWN LANGUAGE (#433 gap; 2026-11-05).
+ * A pod frame's fixed_material is English ("thank you", "here you are"). For an English known
+ * side a chunk owns it by IDENTITY: its known text IS that chunk (whole-chunk, unchanged).
+ * For every other known language English words cannot match, so ownership is decided by what
+ * the chunk IS rather than how it is spelt: a SHORT taught chunk (LEGO or component; at most
+ * 4 words, or 8 characters in a script without spaces) whose known text the frame tagger, reading
+ * the D codex in the course's own known language, tags with that D-frame. An X-frame is owned
+ * through its sentence_projection D-frame, as everywhere else. The short-chunk limit keeps a
+ * whole sentence that merely CONTAINS a thanks from passing as the carrier itself.
+ * Needs pod tags on the short chunks (tag-course.cjs tagCoursePods); an untagged one throws.
+ */
+const T = require('../frame-tagger.cjs');
+const { D_CODEX } = require('../dialogue-patterns.cjs');
+const isEnglishKnown = (course) => course == null || T.knownLanguageOf(course) === 'eng';
+const NO_SPACE_KNOWN = (course) => require('../../../services/shared/admitted-list.cjs').knownNoSpace(course);
+function isShortChunk(known, course) {
+  const k = String(known || '').trim();
+  if (!k) return false;
+  return NO_SPACE_KNOWN(course) ? [...k.replace(/\s+/g, '')].length <= 8 : k.split(/\s+/).length <= 4;
+}
+/** The pod frame ids (D, plus X through projection) a chunk owns in a non-English known language. */
+function podIdsOwnedBy(known, course, frames = podFrames()) {
+  if (!isShortChunk(known, course)) return [];
+  const d = T.framesOf(known, D_CODEX);
+  return frames.filter(f => d.includes(f.id) || (f.sentence_projection && d.includes(f.sentence_projection))).map(f => f.id);
+}
+/** Does this taught chunk carry pod frame `f`? English: identity with a fixed-material chunk; else the tagger. */
+function podCarries(row, f, course) {
+  if (isEnglishKnown(course)) return (f.fixed_material || []).flat().some(ch => norm(ch) === norm(row.known_text));
+  return podIdsOwnedBy(row.known_text, course, [f]).length > 0;
+}
+
+/**
+ * When does each pod frame's carrier become OWNED? For every alternate of the
+ * frame's fixed_material, the alternate is owned from the latest of its chunks'
+ * first owning rows; the frame from the earliest owned alternate. Whole-chunk on
+ * the known side: "tú" inside "estúpido" is not ownership.
+ */
+function podCarrierAvailability(legos, components, frames = podFrames(), course = null) {
+  const rows = [...legos.map(l => ({ ...l, kind: 'lego' })), ...components.map(c => ({ ...c, kind: 'component' }))]
+    .sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
+  if (!isEnglishKnown(course)) {
+    // Not English: the first short chunk the tagger says carries the frame owns it.
+    const out = new Map();
+    for (const r of rows) for (const id of podIdsOwnedBy(r.known_text, course, frames)) {
+      if (!out.has(id)) out.set(id, { seed: r.seed_number, via: `${r.kind} "${r.known_text}" → "${r.target_text}" (tagged in the known language)` });
+    }
+    return out;
+  }
+  const firstOwner = new Map();
+  for (const r of rows) {
+    const k = norm(r.known_text);
+    if (k && !firstOwner.has(k)) firstOwner.set(k, r);
+  }
+  const out = new Map();
+  for (const f of frames) {
+    let best = null;
+    for (const alt of f.fixed_material || []) {
+      if (!alt.length) continue;
+      const owners = alt.map(ch => firstOwner.get(norm(ch)));
+      if (owners.some(o => !o)) continue;
+      const seed = Math.max(...owners.map(o => o.seed_number));
+      if (!best || seed < best.seed) best = { seed, via: owners.map(o => `${o.kind} "${o.known_text}" → "${o.target_text}"`).join(' + ') };
+    }
+    if (best) out.set(f.id, best);
+  }
+  return out;
+}
+
+/** One definition per frame id, P or pod: { id, name, shape, provenance, grain, ... }. */
+function frameDef(id) {
+  const p = PATTERNS.find(x => x.id === id);
+  if (p) return { id: p.id, name: p.name, shape: p.shape, provenance: 'seed', grain: 'sentence', test: p.test };
+  const f = podFrames().find(x => x.id === id);
+  if (!f) return null;
+  return { id: f.id, name: f.name, shape: f.shape, provenance: 'pod', grain: f.grain || 'sentence',
+    sentence_projection: f.sentence_projection || null, fixed_material: f.fixed_material || [] };
+}
+const isPodFrame = (id) => { const d = frameDef(id); return !!d && d.provenance === 'pod'; };
+
 function inventory(course, data) {
   const bySeed = attestedFrames(data.seeds);
   const byCombo = combinationAvailability(data.legos, data.components);
@@ -62,12 +165,20 @@ function inventory(course, data) {
     const s = bySeed.get(p.id) ?? null;
     const c = byCombo.get(p.id) || null;
     const available = Math.min(s ?? Infinity, c ? c.seed : Infinity);
-    return { id: p.id, name: p.name, shape: p.shape,
+    return { id: p.id, name: p.name, shape: p.shape, provenance: 'seed', grain: 'sentence',
       by_seed: s, by_combination: c ? c.seed : null, combination_via: c ? c.via : null,
       available: Number.isFinite(available) ? available : null,
       earlier_by_combination: (s != null && c && c.seed < s) ? s - c.seed : 0,
       seed_count: data.seeds.filter(x => String(x.known_text || '').trim() && p.test(x.known_text)).length };
   });
+  const byCarrier = podCarrierAvailability(data.legos, data.components, podFrames(), course);
+  for (const f of podFrames()) {
+    const c = byCarrier.get(f.id) || null;
+    frames.push({ id: f.id, name: f.name, shape: f.shape, provenance: 'pod', grain: f.grain || 'sentence',
+      sentence_projection: f.sentence_projection || null,
+      by_seed: null, by_combination: c ? c.seed : null, combination_via: c ? c.via : null,
+      available: c ? c.seed : null, earlier_by_combination: 0, seed_count: null });
+  }
   return { course, generated: new Date().toISOString(), seeds: data.seeds.length,
     frame_count: { seed_frames_P: PATTERNS.length, pod_sentence_frames_D: 12, pod_exchange_frames_X: 6, metagraph_shapes_N: 30 },
     frames };
@@ -77,7 +188,7 @@ function availableAt(inv, seed) {
   return inv.frames.filter(f => f.available != null && f.available <= seed).map(f => f.id);
 }
 
-module.exports = { inventory, availableAt, combinationAvailability };
+module.exports = { inventory, availableAt, combinationAvailability, podCarrierAvailability, podCarries, podIdsOwnedBy, isShortChunk, frameDef, isPodFrame, podFrames };
 
 if (require.main === module) {
   const courses = process.argv.slice(2).filter(a => !a.startsWith('--'));

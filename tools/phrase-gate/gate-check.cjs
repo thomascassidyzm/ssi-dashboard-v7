@@ -43,7 +43,7 @@ const {
 const {
   checkVocabViolations, checkBuildRecombination, checkPhraseZUT,
   checkKnownSide, isKnownVocabBreach, loadPairContract, compileKnownContract,
-  stemKnownGloss, tokenizeKnown,
+  buildKnownSideCtx, legoPos, seedSentencePos,
 } = require('../../services/course-builder/lib/validation.cjs');
 const { courseFamily } = require('../../services/course-builder/lib/course-family.cjs');
 // Kai's deu_for_eng separable-verb ruling (2026-09-21): the containment and vocab
@@ -73,41 +73,31 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
   const prior = [];
   for (let from = 0; ; from += 1000) {
     const { data, error } = await filterSeedsBefore(supabase.from('course_legos')
-      .select('target_text,known_text,components,seed_number')
+      .select('target_text,known_text,components,seed_number,lego_index')
       .eq('course_code', courseCode), order, currentSeed)
       .order('seed_number').order('lego_index').range(from, from + 999);
     if (error) throw new Error(error.message);
     prior.push(...(order ? data.map(l => ({ ...l, seed_number: orderKey(order, l.seed_number) })) : data));
     if (data.length < 1000) break;
   }
-  const cur = (currentLegos || []).map(l => ({
-    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: atSeed,
-  }));
-  const all = [...prior, ...cur];
-  const stemFirstPos = new Map();
-  const addStem = (s, seed) => { const k = stemKnownGloss(s); if (!k) return; if (!stemFirstPos.has(k) || stemFirstPos.get(k) > seed) stemFirstPos.set(k, seed); };
-  for (const l of all) {
-    for (const t of tokenizeKnown(l.known_text)) addStem(t, l.seed_number);
-    for (const c of l.components || []) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
+  // Same admitted rows as the route (Tom r-2026-11-05): prior seed sentences, prior LEGOs, this
+  // seed's LEGOs, each at its introduction position; validation.cjs buildKnownSideCtx does the rest.
+  const priorSeeds = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await filterSeedsBefore(supabase.from('course_seeds')
+      .select('known_text,target_text,seed_number')
+      .eq('course_code', courseCode), order, currentSeed)
+      .order('seed_number').range(from, from + 999);
+    if (error) throw new Error(error.message);
+    priorSeeds.push(...(order ? data.map(sd => ({ ...sd, seed_number: orderKey(order, sd.seed_number) })) : data));
+    if (data.length < 1000) break;
   }
-  const carrierSeed = (carrier) => {
-    let min = Infinity;
-    for (const l of all) {
-      const hit = l.target_text === carrier || (l.components || []).some(c => c.target === carrier);
-      if (hit && l.seed_number < min) min = l.seed_number;
-    }
-    return min;
-  };
-  for (const [carrier, syns] of Object.entries(contract.glossSynonyms || {})) {
-    const seed = carrierSeed(carrier);
-    if (seed < Infinity) for (const syn of syns) addStem(syn, seed);
-  }
-  const consPos = {};
-  for (const con of contract.constructions || []) {
-    consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
-  }
-  const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
-  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
+  const rows = [
+    ...priorSeeds.map(sd => ({ known_text: sd.known_text, target_text: sd.target_text, pos: seedSentencePos(sd.seed_number) })),
+    ...prior.map(l => ({ known_text: l.known_text, target_text: l.target_text, components: l.components || [], pos: legoPos(l.seed_number, l.lego_index) })),
+    ...(currentLegos || []).map(l => ({ known_text: l.known, target_text: l.target, components: l.components || [], pos: legoPos(atSeed, l.idx) })),
+  ];
+  return buildKnownSideCtx({ courseCode, contract, rows, atPos: atSeed });
 }
 
 // ─── Vocab, scoped exactly as seed-complete.cjs scopes it ────────────────
@@ -332,27 +322,27 @@ async function checkPhraseSet(entry, ctx) {
   {
     const contract = ctx.contract;
     const contractUsable = contract && (!contract.known_lang || contract.known_lang === ctx.knownLang);
-    if (!contractUsable) {
-      gates.knownSide = { pass: null, unchecked: true, reason: contract ? 'contract known_lang mismatch' : 'no pair-contract found' };
-    } else {
-      const knownCtx = ctx.knownCtxCache.get(seedNumber) || await (async () => {
-        // Same-seed siblings count as given English, exactly as their target
-        // vocab counts above: a live /seed/complete submits the whole seed, so
-        // "together" (S0133L03) is known to the phrases of S0133L01. Without this
-        // the replay flagged sibling words as breaches.
+    // Since Tom's ruling of 2026-11-05 this gate needs no contract: it always runs, in any known
+    // language, against the admitted known texts; a usable contract only adds construction advisories.
+    {
+      const cacheKey = `${seedNumber}:${legoIndex}`;
+      const knownCtx = ctx.knownCtxCache.get(cacheKey) || await (async () => {
+        // Same-seed siblings each at their own position (legoPos): an EARLIER sibling's words are
+        // admitted to this LEGO's phrases, a later sibling's are not (Tom r-2026-11-05: "LEGOS from
+        // SEED N up to L-1"). This replaced the whole-seed sibling allowance of 2026-08.
         const { data: sibs } = await supabase.from('course_legos').select('lego_index,known_text,target_text,components')
           .eq('course_code', courseCode).eq('seed_number', seedNumber);
-        const current = [{ known: legoKnown, target: legoTarget, components: entry.components }];
-        for (const s of sibs || []) if (s.lego_index !== legoIndex) current.push({ known: s.known_text, target: s.target_text, components: s.components });
-        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber, current, contract);
-        ctx.knownCtxCache.set(seedNumber, c);
+        const current = [{ idx: legoIndex, known: legoKnown, target: legoTarget, components: entry.components }];
+        for (const s of sibs || []) if (s.lego_index !== legoIndex) current.push({ idx: s.lego_index, known: s.known_text, target: s.target_text, components: s.components });
+        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber, current, contractUsable ? contract : null);
+        ctx.knownCtxCache.set(cacheKey, c);
         return c;
       })();
       const breaches = [];
       const advisories = [];
       for (const phrase of [...build, ...use]) {
         if (!phrase.known) continue;
-        for (const p of checkKnownSide(phrase.known, knownCtx.atSeed ?? seedNumber, knownCtx)) {
+        for (const p of checkKnownSide(phrase.known, legoPos(knownCtx.atSeed ?? seedNumber, legoIndex), knownCtx)) {
           (isKnownVocabBreach(p) ? breaches : advisories).push({ known: phrase.known, target: phrase.target, problem: p });
         }
       }

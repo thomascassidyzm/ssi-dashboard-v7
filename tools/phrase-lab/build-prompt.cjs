@@ -121,6 +121,30 @@ function renderBlocked(inv, limit = 400) {
  *   line needs the proposal. Omit it and the LEGO is read from the database, as
  *   the lab does when it re-authors existing content.
  */
+/**
+ * The ADMITTED section (Tom, r-2026-11-05): "the phrases can only be built by combining the
+ * vocabulary in the list of admitted words / i.e. SEED sentences up to N-1 and LEGOS from SEED N
+ * up to L-1". `admitted` is services/shared/admitted-list.cjs admittedList(); every row is shown,
+ * none truncated, because a row the model cannot see is a row it cannot use.
+ */
+function admittedSection(admitted, knownLangName, targetLangName, courseCode) {
+  const { admittedRulePrompt } = require('../../services/shared/admitted-list.cjs');
+  const L = admitted.lego;
+  const rows = admitted.rows.map((r) => `${r.id}\t${r.known_text}\t${r.target_text}`).join('\n');
+  const spaced = vocabRulePrompt(courseCode);
+  return `## ADMITTED — the ONLY vocabulary you may use, both sides
+
+${admittedRulePrompt(L.seed_number, L.lego_index, knownLangName, targetLangName)}
+${spaced ? `\n${spaced.replace(/taught earlier in the course running order/, 'in the admitted list')}\n` : `\nThe ${targetLangName} side is built ONLY from WHOLE admitted ${targetLangName} chunks joined together: no new character, no re-splitting, no new ending or particle.\n`}
+${admitted.rows.length} rows, in introduction order. Columns: id / ${knownLangName} / ${targetLangName}. A row marked #part is a part of the LEGO it names.
+
+\`\`\`
+${rows}
+\`\`\`
+
+`;
+}
+
 async function buildPrompt(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
   const inv = await buildInventory(supabase, courseCode, seedNumber, legoIndex);
   if (!inv.targetLego && opts.proposedLego) {
@@ -164,6 +188,23 @@ async function buildPrompt(supabase, courseCode, seedNumber, legoIndex, opts = {
   const blocked = renderBlocked(inv);
   const L = inv.targetLego;
 
+  // opts.admitted (the phrase v4 door, Tom r-2026-11-05): the LEGO's admitted list REPLACES the
+  // AVAILABLE inventory, so the model is offered no vocabulary outside it.
+  const availableSection = opts.admitted
+    ? admittedSection(opts.admitted, knownLangName, targetLangName, courseCode)
+    : `## AVAILABLE — every mapping you may reach for, MOST RECENT FIRST
+
+${avail.total} items. Columns: seed / known / target / lego id. The recency axis
+is measured against this ordering, so the top of this list is where the value is.
+${avail.truncated ? `\n(showing the ${avail.total - avail.truncated} most recent of ${avail.total}; the oldest ${avail.truncated} are omitted and you should not be reaching for them anyway)\n` : ''}
+\`\`\`
+${avail.text}
+\`\`\`
+${vocabRulePrompt(courseCode) ? `
+${vocabRulePrompt(courseCode)} So a tile may also be ONE WORD lifted from inside an AVAILABLE item${isWelshTarget(courseCode) ? ' (soft-mutated if the sentence needs it)' : ''} — give that item's lego id.
+` : ''}
+`;
+
   const prompt = `${fs.readFileSync(DOCTRINE, 'utf8')}
 
 ---
@@ -200,18 +241,7 @@ ${neg ? `*${spec.negative.note}*` : ''}
 
 ---
 
-## AVAILABLE — every mapping you may reach for, MOST RECENT FIRST
-
-${avail.total} items. Columns: seed / known / target / lego id. The recency axis
-is measured against this ordering, so the top of this list is where the value is.
-${avail.truncated ? `\n(showing the ${avail.total - avail.truncated} most recent of ${avail.total}; the oldest ${avail.truncated} are omitted and you should not be reaching for them anyway)\n` : ''}
-\`\`\`
-${avail.text}
-\`\`\`
-${vocabRulePrompt(courseCode) ? `
-${vocabRulePrompt(courseCode)} So a tile may also be ONE WORD lifted from inside an AVAILABLE item${isWelshTarget(courseCode) ? ' (soft-mutated if the sentence needs it)' : ''} — give that item's lego id.
-` : ''}
-## BLOCKED — NOT YET. Do not reach for any of these.
+${availableSection}## BLOCKED — NOT YET. Do not reach for any of these.
 
 ${blocked.total} known glosses whose mapping is not deterministic at this point in
 the course. Each will unlock later; none of them is usable now. Using one is a

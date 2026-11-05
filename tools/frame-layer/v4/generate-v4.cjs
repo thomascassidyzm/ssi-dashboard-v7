@@ -22,13 +22,19 @@
  *      MAX_THINKING_TOKENS alone did not bite; --effort is the lever that does.
  *   3. GATE, mechanically, never trusting a claim:
  *        - every phrase contains its LEGO on both sides;
- *        - the target tiles from whole chunks available to THAT basket
- *          (seeds < N, earlier LEGOs of seed N, the LEGO itself, components);
- *        - the known side uses only taught glosses plus the English free class;
+ *        - BOTH sides use only THAT LEGO's admitted list (Tom r-2026-11-05: seeds
+ *          < N, LEGOs before S<N>L<L> in introduction order, the LEGO itself,
+ *          components only as parts of those LEGOs) — services/shared/admitted-list.cjs.
+ *          No known-language free class; every script tiled here, no-space ones by
+ *          character, so nothing relies on phrase-gate afterwards;
  *        - ZUT: one known → one target, against the generated set AND the live
  *          course (whole course for USE, up to position for BUILD — canon P16);
- *        - no parentheses; no stapled opener (it would earn nothing anyway, and
- *          on a USE phrase it is the #463 defect); no duplicates.
+ *        - no parentheses; no duplicates;
+ *        - an interjection at the front ("thank you,", "of course") only when it
+ *          is a chunk this basket already OWNS, with its taught target form
+ *          (Tom 2026-11-05: "thank you and of course CAN be used as vocab,
+ *          provided they have already been admitted"); one not yet admitted is
+ *          refused, and an admitted one still earns no frame (window-coverage).
  *   4. FLOORS. A basket below 4 BUILD / 5 USE after gating goes back ONCE,
  *      with the gate's words quoted. One retry per region, hard cap.
  *   5. SCORE the region with window-coverage.cjs. Frames are re-derived from
@@ -48,15 +54,20 @@
  */
 const fs = require('fs');
 const path = require('path');
-const PATTERNS = require('../patterns.cjs');
 const { availableVocab, norm } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
-const { inventory, availableAt } = require('./frame-inventory.cjs');
-const { scoreWindow, hasOpener, framesOf } = require('./window-coverage.cjs');
+const { inventory, availableAt, frameDef, podCarries } = require('./frame-inventory.cjs');
+const { scoreWindow, hasOpener, framesOfAll, ensurePodTagged } = require('./window-coverage.cjs');
 const { tagCourse } = require('./tag-course.cjs');
 const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
-/** Candidates are classified by the frame tagger before the (sync) gates read their frames and openers. */
-const tagCandidates = (course, cands) => ensureTagged(cands.map(c => String(c.known || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course) });
+/** Candidates are classified by the frame tagger (P codex, then D codex for pod frames) before the (sync) gates read their frames and openers. */
+const tagCandidates = async (course, cands) => {
+  const texts = cands.map(c => String(c.known || '').trim()).filter(Boolean);
+  const opts = { knownLanguage: knownLanguageName(course) };
+  const ledger = await ensureTagged(texts, opts);
+  await ensurePodTagged(texts, opts);
+  return ledger;
+};
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
@@ -65,37 +76,23 @@ const EFFORT = process.env.V4_EFFORT || 'low';
 const LEDGER_FILE = 'token-ledger.json'; // default; V4_LEDGER is read per call so a driver can give each window its own (#924)
 const BUILD_FLOOR = 4, USE_FLOOR = 5;
 
-// ---------- known-side free class (docs/pair-contracts/_default_eng.contract.cjs) ----------
-const CONTRACT = require(path.join(ROOT, 'docs', 'pair-contracts', '_default_eng.contract.cjs'));
-const FREE = new Set([...CONTRACT.freeGlue, ...CONTRACT.npiTokens, ...CONTRACT.negationWords,
-  'do', 'does', 'did', 'i', 'you', 'he', 'she', 'we', 'they', 'me', 'him', 'her', 'us', 'them', 'my', 'your', 'his', 'our', 'their',
-  'this', 'that', 'these', 'those', 'in', 'on', 'at', 'for', 'with', 'from', 'by', 'about', 'if', 'when', 'but', 'because', 'so', 'or', 'as', 'than', 'too', 'very', 'there', 'here', 'what', 'who', 'where', 'how', 'why', 'which', 'was', 'were', 'been', 'being', 'have', 'has', 'had', 'will', 'would', "'ll", "'d", "'m", "'re", "'ve", 'can', 'could', 'should', 'not', "n't", 'all', 'one', 'no', 'yes']);
-const stem = (w) => w.replace(/'s$/, '').replace(/(ing|ed|es|s|d)$/, '');
-const tokens = (s) => norm(s).split(' ').filter(Boolean);
-
-function knownSideCheck(known, ownedKnownStems) {
-  const bad = [];
-  for (const t of tokens(known)) {
-    if (FREE.has(t)) continue;
-    if (ownedKnownStems.has(t) || ownedKnownStems.has(stem(t))) continue;
-    bad.push(t);
-  }
-  return bad;
-}
-
-// ---------- any known language (#924) ----------
-// The English free class above only means anything for an English known side.
-// For every other known language the local pre-filter asks a plainer question:
-// was every known-side word (every character, for scripts written without
-// spaces) already HEARD in this course by the LEGO's seed — in a seed sentence,
-// a LEGO or a component? Popty's contract gate (tools/phrase-gate) still runs
-// after this and is the authority; this only stops the obvious misses early.
-const NO_SPACE = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha', 'lao', 'khm', 'mya']);
+// ---------- the admitted list (Tom, r-2026-11-05) ----------
+// One list per LEGO — seeds before its seed, LEGOs before it in introduction order, the LEGO
+// itself, components only as parts of those LEGOs — feeds the prompt, the known check and the
+// target check alike (services/shared/admitted-list.cjs). There is no known-language free
+// class any more (the pair-contract glue, NPI, negation words, dummy "do" and -s/-ed/-ing
+// stripping are gone), and no script skips the target check: a language written without
+// spaces is tiled here by character, whole admitted chunks only. Phrase-gate still runs
+// afterwards as a final check; nothing here relies on it.
+const ADM = require('../../../services/shared/admitted-list.cjs');
+const { admittedList, admittedCheck, admittedRulePrompt, renderAdmitted, knownSideCheck } = ADM;
 const langOf = (code) => String(code || '').split('_')[0];
 const knownLangOf = (course) => langOf(String(course).split('_for_')[1]);
 const targetLangOf = (course) => langOf(String(course).split('_for_')[0]);
-const { normAny, unitsOf, knownHeardCheck } = require('../../../services/shared/known-heard-check.cjs');
+const knownNoSpaceOf = (course) => ADM.knownNoSpace(course);
+const { unitsOf, knownHeardCheck } = require('../../../services/shared/known-heard-check.cjs');
 const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpace ? 6 : 4);
+const tokens = (s) => norm(s).split(' ').filter(Boolean);
 
 // ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------
 const { exactFormCheck, tiles } = require('./exact-form.cjs');
@@ -103,11 +100,26 @@ const { welshContainsLego } = require('../../../services/course-builder/lib/wels
 const { vocabRulePrompt } = require('../../../services/course-builder/lib/taught-words.cjs');
 
 // ---------- the walk-back brief ----------
-function carriersByFrame(chunks, frameIds) {
+/**
+ * Carrier material a whole region may lean on: the admitted list of its FIRST new LEGO (so
+ * every basket in the region owns it), seed sentences excluded (a carrier is a short chunk).
+ */
+function carrierPool(course, data, newLegos) {
+  const first = [...newLegos].sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index)[0];
+  if (!first) return [];
+  return admittedList({ course, seeds: data.seeds, legos: data.legos, components: data.components, seedNumber: first.seed_number, legoIndex: +first.lego_index, lego: first })
+    .rows.filter(r => r.kind === 'lego' || r.kind === 'component');
+}
+
+function carriersByFrame(chunks, frameIds, course = null) {
   const out = {};
   for (const id of frameIds) {
-    const p = PATTERNS.find(x => x.id === id);
-    const hits = chunks.filter(c => p.test(c.known_text || '') && tokens(c.known_text).length <= 6);
+    const p = frameDef(id);
+    if (!p) { out[id] = []; continue; }
+    // A pod frame's carrier is a chunk that OWNS it by the same rule that made the frame
+    // available (frame-inventory.podCarries: identity in English, the tagger otherwise).
+    const carries = (c) => p.provenance === 'pod' ? podCarries(c, p, course) : p.test(c.known_text || '');
+    const hits = chunks.filter(c => carries(c) && tokens(c.known_text).length <= 6);
     // two most recent, two shortest — recent material is the LEGO's own neighbourhood,
     // short material is the cleanest frame carrier
     const recent = [...hits].sort((a, b) => b.seed_number - a.seed_number).slice(0, 2);
@@ -119,36 +131,77 @@ function carriersByFrame(chunks, frameIds) {
   return out;
 }
 
-function buildPrompt({ course, region, seeds, newLegos, allChunks, available, carriers, retry }) {
-  const target = course.split('_for_')[0];
-  const LANG = { fra: 'French', deu: 'German', gle: 'Irish', spa: 'Spanish', ita: 'Italian' }[target] || target;
-  const frameLines = available.map(id => {
-    const p = PATTERNS.find(x => x.id === id);
-    const cs = (carriers[id] || []).map(c => `"${c.known_text}" = ${c.target_text}`).join(' · ');
-    return `  ${id} ${p.name}  ${p.shape}${cs ? `\n      taught material that carries it: ${cs}` : ''}`;
-  }).join('\n');
+/** One FRAMES-AVAILABLE line per frame, P or pod. Pod frames say so; an X-frame is offered as its reply turn. */
+function frameLine(id, carriers, emptyNote = '') {
+  const p = frameDef(id);
+  if (!p) return null;
+  const cs = (carriers[id] || []).map(c => `"${c.known_text}" = ${c.target_text}`).join(' · ');
+  const tag = p.provenance !== 'pod' ? '' : p.grain === 'exchange'
+    ? `  [pod exchange: write the REPLY turn, which is ${p.sentence_projection}]`
+    : '  [pod frame]';
+  return `  ${id} ${p.name}  ${p.shape}${tag}${cs ? `\n      taught material that carries it: ${cs}` : emptyNote}`;
+}
+
+/**
+ * The interjection rule, as the model reads it (Tom 2026-11-05). Same words in
+ * both prompts; the gate below enforces it and window-coverage pays nothing for it.
+ */
+function interjectionRule(KNOWN = 'English') {
+  const eg = KNOWN === 'English' ? '"thank you", "of course", "sorry", "great", "no problem", "yes,", "no,"' : `the ${KNOWN} equivalents of "thank you", "of course", "sorry", "great", "no problem", "yes,", "no,"`;
+  return `INTERJECTIONS (${eg}): allowed ONLY when the interjection is itself a taught chunk in VOCABULARY that this LEGO's basket already owns, used with its taught target form, under the same rule as every other chunk (earlier seeds, earlier LEGOs of this seed). An interjection the learner has not yet been taught is refused. An interjection EARNS NO FRAME: a phrase whose only frame is the interjection counts for nothing, and a phrase that opens with one earns only the frames of what follows it. So every phrase must still fire a real frame from the list below. Variety is a frame change, never an opener.`;
+}
+
+/**
+ * The vocabulary block both prompts end with: the admitted list of the region's LAST new LEGO
+ * (every earlier basket's list is a prefix of it, by introduction order), each row with its id,
+ * and the rule that cuts it per LEGO. Nothing outside the admitted list is offered (Tom r-2026-11-05).
+ */
+function admittedBlock({ course, data, newLegos, KNOWN, LANG }) {
+  const last = [...newLegos].sort((a, b) => b.seed_number - a.seed_number || b.lego_index - a.lego_index)[0];
+  const adm = admittedList({ course, seeds: data.seeds, legos: data.legos, components: data.components, seedNumber: last.seed_number, legoIndex: +last.lego_index, lego: last });
+  return `${admittedRulePrompt(null, null, KNOWN, LANG)}
+Each LEGO below states its own cut. A line marked "#part" is a part of the LEGO named before it and is admitted exactly when that LEGO is.
+
+ADMITTED (in introduction order; id: ${KNOWN} = ${LANG}):
+${renderAdmitted(adm.rows)}`;
+}
+
+/** The vocabulary rail, both sides, every script. */
+function vocabRailLine(course, KNOWN, LANG) {
+  const spaced = vocabRulePrompt(course);
+  return `- Both sides use ONLY the ADMITTED list for their LEGO (below). The ${KNOWN} side: only ${KNOWN} words that appear, at exactly that form, in admitted ${KNOWN} texts — no other word, however ordinary or grammatical. `
+    + (spaced ? `The ${LANG} side: ${spaced.replace(/taught earlier in the course running order/, 'in the admitted list')}`
+      : `The ${LANG} side is built ONLY from WHOLE admitted ${LANG} chunks joined together — no new character, no re-splitting, no re-conjugation, no new ending or particle.`);
+}
+
+/** The per-LEGO cut, as the seed lines state it. */
+const legoCut = (l) => ADM.admittedLabel(l.seed_number, +l.lego_index);
+
+function buildPrompt({ course, region, seeds, newLegos, available, carriers, retry, data }) {
+  const LANG = knownLanguageName(`x_for_${targetLangOf(course)}`);
+  const KNOWN = knownLanguageName(course);
+  const frameLines = available.map(id => frameLine(id, carriers)).filter(Boolean).join('\n');
   const seedLines = seeds.map(s => {
     const mine = newLegos.filter(l => l.seed_number === s.seed_number);
     if (!mine.length) return null;
     return `SEED ${s.seed_number}: "${s.known_text}" = ${s.target_text}\n` + mine.map(l =>
-      `  LEGO S${s.seed_number}L${l.lego_index}: "${l.known_text}" = ${l.target_text}  [${l.type}]  — ${BUILD_FLOOR} BUILD + ${USE_FLOOR} USE`).join('\n');
+      `  LEGO ${ADM.legoId(s.seed_number, l.lego_index)}: "${l.known_text}" = ${l.target_text}  [${l.type}]  — ${BUILD_FLOOR} BUILD + ${USE_FLOOR} USE\n      may use ONLY: ${legoCut(l)}`).join('\n');
   }).filter(Boolean).join('\n');
-  const vocab = allChunks.map(c => `${c.known_text}=${c.target_text}`).join('; ');
+  const vocab = admittedBlock({ course, data, newLegos, KNOWN, LANG });
   const retryBlock = retry ? `
 THIS IS A RETRY for the baskets below only. Your previous phrases for them were refused by the gates for the reasons quoted. Write a fresh FULL basket (${BUILD_FLOOR} BUILD + ${USE_FLOOR} USE) for each, fixing exactly those reasons.
 ${retry.map(r => `  ${r.id} "${r.known}" = ${r.target}: ${r.reasons.join(' | ')}`).join('\n')}
 ` : '';
-  return `You are writing practice phrases for an SSi ${LANG} course (known side English, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
+  return `You are writing practice phrases for an SSi ${LANG} course (known language ${KNOWN}, target language ${LANG}). Seeds ${region[0]}-${region[1]}.
 
 THE OBJECTIVE. Each NEW LEGO below gets a full basket: exactly ${BUILD_FLOOR} BUILD and ${USE_FLOOR} USE phrases. Variety comes from FRAMES: across all the phrases you write for these seeds, every frame in the list below must be used at least once, and the more different frames you use the better. You do this by putting the new LEGO in concert with material the learner already owns — the taught chunks named under each frame — walking back through the course, not by adding words.
 
-NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front ("thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused. Variety is a frame change, never an opener.
+${interjectionRule(KNOWN)}
 
 RAILS (every one is checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} A basket may use material from earlier seeds and earlier LEGOs of its own seed, never later ones.` : '- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.'}
-- The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
-- ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
+${vocabRailLine(course, KNOWN, LANG)}
+- ZUT: one ${KNOWN} prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write a ${KNOWN} line the course already renders another way.
 - No parentheses, no explanations, no grammar labels, anywhere.
 - Informal register (tu/du) unless the sentence itself insists otherwise.
 - USE = one complete, natural sentence a native would say cold, out of context; never a fragment, never clunky. Aim longer and vary the length.
@@ -161,42 +214,36 @@ ${frameLines}
 THE SEEDS AND THEIR NEW LEGOS:
 ${seedLines}
 
-VOCABULARY (every chunk the learner owns by seed ${region[1]}, known=target; earlier chunks only for earlier baskets):
 ${vocab}
 
 Reply with JSON only, no prose, no code fence:
-{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P-id"}]}`;
+{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
 }
 
 // ---------- gap fill (#31, 2026-10-07: "Haiku audits, Opus fills the gaps") ----------
 // The window's live baskets stay as they are; the model writes ONLY phrases in
 // the frames the window is missing, each one practising one of the window's own
 // LEGOs. Additive, so the reviewer reads new rows only and no floor can drop.
-function buildGapPrompt({ course, region, seeds, newLegos, allChunks, missing, carriers, perFrame = 3 }) {
+function buildGapPrompt({ course, region, seeds, newLegos, missing, carriers, perFrame = 3, data }) {
   const LANG = knownLanguageName(`x_for_${targetLangOf(course)}`);
   const KNOWN = knownLanguageName(course);
-  const frameLines = missing.map(id => {
-    const p = PATTERNS.find(x => x.id === id);
-    const cs = (carriers[id] || []).map(c => `"${c.known_text}" = ${c.target_text}`).join(' · ');
-    return `  ${id} ${p.name}  ${p.shape}${cs ? `\n      taught material that carries it: ${cs}` : '\n      (no short taught carrier: build it from taught chunks only if you can, otherwise skip it)'}`;
-  }).join('\n');
+  const frameLines = missing.map(id => frameLine(id, carriers, '\n      (no short taught carrier: build it from taught chunks only if you can, otherwise skip it)')).filter(Boolean).join('\n');
   const seedLines = seeds.map(s => {
     const mine = newLegos.filter(l => l.seed_number === s.seed_number);
     if (!mine.length) return null;
     return `SEED ${s.seed_number}: "${s.known_text}" = ${s.target_text}\n` + mine.map(l =>
-      `  LEGO S${s.seed_number}L${l.lego_index}: "${l.known_text}" = ${l.target_text}  [${l.type}]`).join('\n');
+      `  LEGO ${ADM.legoId(s.seed_number, l.lego_index)}: "${l.known_text}" = ${l.target_text}  [${l.type}]\n      may use ONLY: ${legoCut(l)}`).join('\n');
   }).filter(Boolean).join('\n');
-  const vocab = allChunks.map(c => `S${c.seed_number}: ${c.known_text}=${c.target_text}`).join('; ');
+  const vocab = admittedBlock({ course, data, newLegos, KNOWN, LANG });
   return `You are adding practice phrases to an SSi ${LANG} course (known side ${KNOWN}, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
 
 THE GAP. These seeds' existing practice phrases never use the FRAMES listed below, although the learner already owns the material to make them. Write NEW phrases that use those frames. Each phrase practises one of the NEW LEGOs listed under the seeds (it must contain that LEGO exactly), put in concert with the taught material that carries the frame. Write ${perFrame} phrases per frame — at least ${perFrame * missing.length} phrases in all — spread over different LEGOs; mostly USE, a few BUILD. A frame may use any LEGO in the list; only skip a frame if no LEGO can carry it.
 
-NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front (in ${KNOWN}, the equivalent of "thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused.
+${interjectionRule(KNOWN)}
 
 RAILS (checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} Only material in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it.` : "- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction."}
-- The known (${KNOWN}) side uses only the ${KNOWN} glosses of taught chunks plus plain grammatical glue — words the learner has already heard in this course.
+${vocabRailLine(course, KNOWN, LANG)}
 - ZUT: one ${KNOWN} prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write a ${KNOWN} line the course already renders another way.
 - No parentheses, no explanations, no grammar labels.
 - Informal register (tu / du / tú, never vous / Sie / usted) unless the sentence itself insists otherwise.
@@ -209,11 +256,10 @@ ${frameLines}
 THE SEEDS AND THEIR NEW LEGOS:
 ${seedLines}
 
-VOCABULARY (every chunk the learner owns by seed ${region[1]}, S<seed>: known=target):
 ${vocab}
 
 Reply with JSON only, no prose, no code fence:
-{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P-id"}]}`;
+{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
 }
 
 // ---------- the model call ----------
@@ -235,66 +281,168 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
 }
 
 // ---------- gates ----------
-function gate(cands, { course, data, newLegos, liveZut, available, additive = false }) {
-  const kept = [], rejected = [];
-  const seenKnown = new Map(), seenTarget = new Set();
+// ONE SET OF GATES (Tom, 2026-11-05: "the gates of course-builder v2 and v3 must all be present in
+// v4 ... one set of gates, not two"). Every check below that the course builder also makes is the
+// course builder's OWN function from services/course-builder/lib (validation.cjs, phrase-structure.cjs,
+// separable-verbs.cjs), called here at generation time with the LEGO's admitted list; nothing is
+// re-implemented. The few checks v4 adds on top are marked V4-ONLY.
+const V = require('../../../services/course-builder/lib/validation.cjs');
+const PS = require('../../../services/course-builder/lib/phrase-structure.cjs');
+const SEP = require('../../../services/course-builder/lib/separable-verbs.cjs');
+const { isChinese } = require('../../../services/course-builder/lib/language-config.cjs');
+const { extractVocab, normalizeForContainment, checkWordContainment } = require('../../../services/course-builder/lib/text-normalization.cjs');
+const BUILD_MAX = 4; // tools/phrase-gate buildCountSpec (Tom 2026-08-28): three or four BUILD, never five
+
+/** The containment baseline every shared gate uses (gate-check / checkBuildUsePhrases). */
+const containsLego = (course, seedNumber, legoTarget, phraseTarget) => SEP.checkSeparableContainment({
+  courseCode: course, seedNumber, legoTarget, phraseTarget,
+  baseline: (lt, pt) => (isChinese(course) ? normalizeForContainment(pt).includes(normalizeForContainment(lt)) : checkWordContainment(lt, pt)),
+});
+
+function gate(cands, { course, data, newLegos, available, additive = false, priorRows = [] }) {
+  const kept = [], rejected = [], warnings = [];
   const legoOf = (c) => newLegos.find(l => l.seed_number === +c.seed && +l.lego_index === +c.lego_index);
+  const admCache = new Map();
+  const admittedFor = (lego) => {
+    const k = `${lego.seed_number}:${lego.lego_index}`;
+    if (!admCache.has(k)) {
+      const adm = admittedList({ course, seeds: data.seeds || [], legos: data.legos, components: data.components, seedNumber: lego.seed_number, legoIndex: +lego.lego_index, lego });
+      adm.knownCtx = ADM.knownCtxFor(adm, course); // the shared known-side context, built once per LEGO
+      admCache.set(k, adm);
+    }
+    return admCache.get(k);
+  };
+  // ZUT reference rows: the live course (LEGOs + BUILD/USE) plus earlier kept passes, as the shared gate reads them.
+  const existing = [...data.legos, ...(data.phrases || []), ...priorRows]
+    .map(r => ({ known_text: r.known_text, target_text: r.target_text, seed_number: r.seed_number }));
+  const nkZ = (s) => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+  const ntZ = (s) => (s || '').replace(/[\s。，？！、.?!,]/g, '');
   for (const c of cands) {
     const lego = legoOf(c);
     const reasons = [];
     const known = String(c.known || '').trim(), target = String(c.target || '').trim();
     const role = c.role === 'build' ? 'build' : 'use';
     if (!lego) { rejected.push({ ...c, reasons: ['no such new LEGO in this region'] }); continue; }
+    const N = lego.seed_number;
     if (!known || !target) reasons.push('empty side');
-    if (/[()]/.test(known + target)) reasons.push('parentheses');
+    // shared: checkNonExampleText's test (brackets, parentheses, slash alternatives)
+    if (V.hasNonExampleText(known) || V.hasNonExampleText(target)) reasons.push('nonExampleText: brackets, parentheses or slash alternatives');
+    // shared: containment (gate-check / seed-complete §3, incl. the deu separable ruling)
+    const cont = target ? containsLego(course, N, lego.target_text, target) : { pass: false };
+    if (!cont.pass && !welshContainsLego(course, lego.target_text, target)) reasons.push(`containment: target does not contain the LEGO "${lego.target_text}"${cont.reason ? ` (${cont.reason})` : ''}`);
+    // V4-ONLY: the known side contains the LEGO's known text too
     if (!norm(known).includes(norm(lego.known_text))) reasons.push(`known side does not contain the LEGO "${lego.known_text}"`);
-    if (!norm(target).includes(norm(lego.target_text)) && !welshContainsLego(course, lego.target_text, target)) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
-    if (known && hasOpener(known)) reasons.push('stapled opener (the frame tagger marks a detachable interjection at the front)');
-    // per-basket vocabulary window
-    const vocab = availableVocab({ legos: data.legos, components: data.components, seed: lego.seed_number, legoIndex: +lego.lego_index });
-    vocab.push({ known_text: lego.known_text, target_text: lego.target_text });
-    vocab.push(...data.components.filter(x => x.seed_number === lego.seed_number && +x.lego_index === +lego.lego_index));
-    // Scripts without spaces cannot be word-tiled here; Popty's vocab gate (tools/phrase-gate) tiles them by character.
-    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : exactFormCheck(target, vocab.map(v => v.target_text), { courseCode: course });
-    if (!t.ok) reasons.push(t.offending.length ? `target uses untaught words: ${t.offending.join(' ')}` : t.reason);
-    const knownNoSpace = NO_SPACE.has(knownLangOf(course));
-    let badKnown;
-    if (knownLangOf(course) === 'eng') {
-      const ownedStems = new Set(vocab.flatMap(v => tokens(v.known_text)).flatMap(w => [w, stem(w)]));
-      badKnown = knownSideCheck(known, ownedStems);
-    } else {
-      const heard = [...vocab.map(v => v.known_text), ...data.seeds.filter(s => s.seed_number <= lego.seed_number).map(s => s.known_text)];
-      badKnown = knownHeardCheck(known, heard, knownNoSpace);
-    }
-    if (badKnown.length) reasons.push(`known side uses untaught words: ${badKnown.join(' ')}`);
-    // ZUT — one known → one target; USE against the whole live course, BUILD up to its position
-    const nk = norm(known), nt = norm(target);
-    const live = liveZut.get(nk);
-    if (live) {
-      const clash = live.find(x => x.target !== nt && (role === 'use' || x.seed <= lego.seed_number));
-      if (clash) reasons.push(`ZUT: the course already renders "${known}" as "${clash.target_text}" (seed ${clash.seed})`);
-    }
-    // Gap fill ADDS to the live baskets, so a phrase the course already carries adds nothing.
-    if (additive && live && live.some(x => x.target === nt)) reasons.push('already in the course');
-    if (seenKnown.has(nk) && seenKnown.get(nk) !== nt) reasons.push('ZUT: same English already used with another target in this set');
-    if (seenKnown.has(nk) && seenKnown.get(nk) === nt) reasons.push('duplicate');
-    if (seenTarget.has(nt + '|' + role) && !reasons.includes('duplicate')) reasons.push('duplicate target');
-    if (role === 'use' && useTooShort(known, knownNoSpace)) reasons.push('USE phrase too short to be a complete sentence');
-    const frames = known ? framesOf(known).filter(f => available.includes(f)) : [];
-    const row = { seed_number: lego.seed_number, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
+    const adm = admittedFor(lego);
+    // V4-ONLY: an interjection at the front only when ADMITTED for this basket (Tom 2026-11-05).
+    if (known && hasOpener(known) && !admittedOpener(known, target, adm.rows, knownNoSpaceOf(course)))
+      reasons.push('interjection at the front is not yet admitted for this basket (it must be a taught chunk this basket owns, with its taught target form)');
+    // shared: vocab (checkVocabViolations) + knownSide (checkKnownSide, strict), both on the admitted list
+    if (known && target) reasons.push(...admittedCheck({ known, target }, adm, course, adm.knownCtx));
+    // shared: phrase length ratio (seed-complete §3b)
+    const lr = V.checkPhraseLengthRatio(known, target, course);
+    if (lr.blocking) reasons.push(`lengthRatio: known and target lengths differ ${lr.ratio}x (over 2.5x) — added or dropped content`);
+    // shared: ZUT (phraseZutCollisions = checkPhraseZUT's comparison). USE against the whole live
+    // course (V4-ONLY widening, canon P16), BUILD up to its own seed. No gender licence is read here,
+    // which can only refuse more, never less.
+    const scope = role === 'use' ? existing : existing.filter(r => r.seed_number <= N);
+    const clash = V.phraseZutCollisions(scope, [{ known, target }]);
+    if (clash.length) reasons.push(`ZUT: the course already renders "${known}" as "${clash[0].existing_target}" (seed ${clash[0].existing_seed})`);
+    // V4-ONLY: gap fill ADDS to the live baskets, so a phrase the course already carries adds nothing.
+    if (additive && scope.some(r => nkZ(r.known_text) === nkZ(known) && ntZ(r.target_text) === ntZ(target))) reasons.push('already in the course');
+    // shared ZUT within this set (seed-complete checks the submission as a whole the same way), plus V4-ONLY duplicates
+    const keptPairs = kept.map(k => ({ known_text: k.known_text, target_text: k.target_text, seed_number: k.seed_number }));
+    if (V.phraseZutCollisions(keptPairs, [{ known, target }]).length) reasons.push('ZUT: same known-language line already used with another target in this set');
+    if (kept.some(k => nkZ(k.known_text) === nkZ(known) && ntZ(k.target_text) === ntZ(target))) reasons.push('duplicate');
+    else if (kept.some(k => k.phrase_role === role && ntZ(k.target_text) === ntZ(target))) reasons.push('duplicate target');
+    // V4-ONLY: a USE is a sentence
+    if (role === 'use' && useTooShort(known, knownNoSpaceOf(course))) reasons.push('USE phrase too short to be a complete sentence');
+    const frames = known ? framesOfAll(known, available) : [];
+    const row = { seed_number: N, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
       phrase_role: role, known_text: known, target_text: target, claimed_frame: c.frame || null, frames };
     if (reasons.length) { rejected.push({ ...row, reasons }); continue; }
-    seenKnown.set(nk, nt); seenTarget.add(nt + '|' + role);
     kept.push(row);
   }
-  return { kept, rejected };
+  // BASKET gates, per LEGO, on what survived — the shared functions, rows they refuse are dropped.
+  const out = [];
+  for (const l of newLegos) {
+    const mine = kept.filter(p => p.seed_number === l.seed_number && p.lego_index === +l.lego_index);
+    if (!mine.length) continue;
+    const drop = (rows, why) => { for (const r of rows) { const i = mine.indexOf(r); if (i >= 0) { mine.splice(i, 1); rejected.push({ ...r, reasons: [why] }); } } };
+    // shared: bare-LEGO ban (partitionBareLegoPhrases)
+    const asP = (r) => ({ known: r.known_text, target: r.target_text, _row: r });
+    const bare = PS.partitionBareLegoPhrases(mine.map(asP), l.target_text).bare.map(p => p._row);
+    drop(bare, 'bareLego: the phrase is the LEGO itself');
+    // shared: BUILD anti-template (checkBuildRecombination rejects)
+    const adm = admittedFor(l);
+    const priorVocab = new Set(adm.rows.filter(r => r.kind !== 'this-lego' && !(r.seed_number === l.seed_number && r.lego_index === +l.lego_index))
+      .flatMap(r => extractVocab(r.target_text, isChinese(course))));
+    const builds = mine.filter(r => r.phrase_role === 'build'), uses = mine.filter(r => r.phrase_role === 'use');
+    const rec = V.checkBuildRecombination({ idx: +l.lego_index, target: l.target_text, build: builds.map(asP), use: uses.map(asP) }, course, l.seed_number, priorVocab);
+    drop(builds.filter(r => rec.rejects.some(x => x.target === r.target_text)), 'buildRecombination: a template BUILD (bare repeat / comma tag / USE stem + tag)');
+    // shared: buildCountSpec (tools/phrase-gate) — at most four BUILD
+    drop(mine.filter(r => r.phrase_role === 'build').slice(BUILD_MAX), `buildCountSpec: more than ${BUILD_MAX} BUILD`);
+    // shared, warn-only in seed-complete too: frame coverage
+    const fw = V.checkBasketFrameCoverage(mine.map(asP), l.target_text);
+    if (fw && fw.length) warnings.push({ lego: `S${l.seed_number}L${l.lego_index}`, frameCoverage: fw });
+    // shared, warn-only in seed-complete too: a BUILD prompt uses the known word its LEGO teaches
+    // (checkBuildBasketTeachesWord). v4's own exact known-side containment above is the stricter rule.
+    const teach = V.checkBuildBasketTeachesWord({ known: l.known_text, build: mine.filter(r => r.phrase_role === 'build').map(asP) },
+      { knownLang: knownLangOf(course), contract: V.loadPairContract(course), courseCode: course });
+    if (teach && teach.violations && teach.violations.length) warnings.push({ lego: `S${l.seed_number}L${l.lego_index}`, buildKnownWord: teach.violations });
+    out.push(...mine);
+  }
+  return { kept: out, rejected, warnings };
 }
 
-function basketFloors(kept, newLegos) {
+/**
+ * Is the interjection at the front of `known` ADMITTED for this basket? It is when
+ * the known side opens with a whole chunk this basket owns (an available LEGO or
+ * component, whole-chunk, ending at a word boundary unless the known script has no
+ * spaces) AND the target carries that chunk's taught target form. The tagger says
+ * WHETHER there is a detachable opener; ownership is matched against owned rows,
+ * never classified. Returns the owning row, or null. Only the opener is judged
+ * here: every word of the rest still answers to the vocabulary and tiling gates.
+ */
+function admittedOpener(known, target, vocab, knownNoSpace = false) {
+  const nk = norm(known), nt = norm(target);
+  let best = null;
+  for (const v of vocab) {
+    const ck = norm(v.known_text), ct = norm(v.target_text);
+    if (!ck || !ct || !nk.startsWith(ck)) continue;
+    if (!knownNoSpace && nk.length > ck.length && nk[ck.length] !== ' ') continue;
+    if (!nt.includes(ct)) continue;
+    if (!best || ck.length > norm(best.known_text).length) best = v;
+  }
+  return best;
+}
+
+/**
+ * Floors per basket: v4's 4 BUILD + 5 USE (Tom 2026-06-16) AND the shared basket gates that
+ * judge a whole set — checkBuildUsePhrases (the validator's ramped floors), checkBuildRecombination's
+ * recombination count, checkSeparableContrast (deu, at the taught seed). A basket that fails any of
+ * them goes back for the one retry, with the reason.
+ */
+function basketFloors(kept, newLegos, { course = null, data = null } = {}) {
   return newLegos.map(l => {
     const mine = kept.filter(p => p.seed_number === l.seed_number && p.lego_index === +l.lego_index);
-    const b = mine.filter(p => p.phrase_role === 'build').length, u = mine.filter(p => p.phrase_role === 'use').length;
-    return { id: `S${l.seed_number}L${l.lego_index}`, known: l.known_text, target: l.target_text, build: b, use: u, ok: b >= BUILD_FLOOR && u >= USE_FLOOR, lego: l };
+    const asP = (r) => ({ known: r.known_text, target: r.target_text });
+    const build = mine.filter(p => p.phrase_role === 'build').map(asP), use = mine.filter(p => p.phrase_role === 'use').map(asP);
+    const reasons = [];
+    if (build.length < BUILD_FLOOR || use.length < USE_FLOOR) reasons.push(`floors: ${build.length} BUILD + ${use.length} USE, needs ${BUILD_FLOOR}+${USE_FLOOR}`);
+    if (course) {
+      const bu = PS.checkBuildUsePhrases({ idx: +l.lego_index, target: l.target_text, build, use }, course, l.seed_number);
+      if (!bu.valid) reasons.push(`buildUseFloors: ${bu.error}`);
+      if (data) {
+        const adm = admittedList({ course, seeds: data.seeds || [], legos: data.legos, components: data.components, seedNumber: l.seed_number, legoIndex: +l.lego_index, lego: l });
+        const priorVocab = new Set(adm.rows.filter(r => r.kind !== 'this-lego' && !(r.seed_number === l.seed_number && r.lego_index === +l.lego_index))
+          .flatMap(r => extractVocab(r.target_text, isChinese(course))));
+        const rec = V.checkBuildRecombination({ idx: +l.lego_index, target: l.target_text, build, use }, course, l.seed_number, priorVocab);
+        if (rec.recombining < rec.required) reasons.push(`buildRecombination: only ${rec.recombining} BUILD recombine with earlier material (${rec.required} required)`);
+      }
+      const sc = SEP.checkSeparableContrast(course, l.seed_number, l.target_text, [...build, ...use]);
+      if (sc.checked && !sc.pass) reasons.push(`separableContrast: ${sc.split} split / ${sc.joined} joined, needs ${sc.required} of each`);
+    }
+    return { id: `S${l.seed_number}L${l.lego_index}`, known: l.known_text, target: l.target_text, build: build.length, use: use.length, ok: !reasons.length, reasons, lego: l };
   });
 }
 
@@ -308,20 +456,9 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   const available = availableAt(inv, end);
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
   const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
-  const taughtBefore = [...data.legos, ...data.components].filter(c => c.seed_number < start);
-  const allChunks = [...data.legos, ...data.components].filter(c => c.seed_number <= end)
-    .filter((c, i, a) => a.findIndex(x => norm(x.known_text) === norm(c.known_text) && norm(x.target_text) === norm(c.target_text)) === i)
-    .sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
-  const carriers = carriersByFrame(taughtBefore, available);
-  // live ZUT reference: every known → targets, from legos and practice rows of the whole course
-  const liveZut = new Map();
-  for (const r of [...data.legos, ...data.phrases]) {
-    const k = norm(r.known_text); if (!k) continue;
-    if (!liveZut.has(k)) liveZut.set(k, []);
-    const t = norm(r.target_text);
-    if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
-  }
-  const prompt = buildPrompt({ course, region: [start, end], seeds, newLegos, allChunks, available, carriers });
+  const taughtBefore = carrierPool(course, data, newLegos);
+  const carriers = carriersByFrame(taughtBefore, available, course);
+  const prompt = buildPrompt({ course, region: [start, end], seeds, newLegos, available, carriers, data });
   const out = { course, region: [start, end], generated: new Date().toISOString(), model: MODEL, available_frames: available,
     new_legos: newLegos.length, prompt_chars: prompt.length, calls: [], kept: [], rejected: [], floors: null, score: null };
   const file = path.join(EVIDENCE, `v4-${course}-${start}-${end}.json`);
@@ -348,23 +485,23 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   console.log(`${course} ${start}-${end}: ${newLegos.length} new LEGOs, ${available.length} frames available, prompt ${prompt.length} chars`);
   let cands = call(prompt, 'generate');
   await tagCandidates(course, cands);
-  let g = gate(cands, { course, data, newLegos, liveZut, available });
-  let floors = basketFloors(g.kept, newLegos);
+  let g = gate(cands, { course, data, newLegos, available });
+  let floors = basketFloors(g.kept, newLegos, { course, data });
   const failing = floors.filter(f => !f.ok);
   console.log(`  gates: kept ${g.kept.length}, rejected ${g.rejected.length}; baskets below floor: ${failing.length}/${floors.length}`);
   if (failing.length) {
     // ONE retry, for the failing baskets only, quoting the gate's reasons.
     const retry = failing.map(f => ({ id: f.id, known: f.known, target: f.target,
       reasons: [...new Set(g.rejected.filter(r => r.seed_number === f.lego.seed_number && r.lego_index === +f.lego.lego_index).flatMap(r => r.reasons))].slice(0, 6)
-        .concat([`had ${f.build} BUILD and ${f.use} USE after gating; needs ${BUILD_FLOOR}+${USE_FLOOR}`]) }));
-    const p2 = buildPrompt({ course, region: [start, end], seeds, newLegos: failing.map(f => f.lego), allChunks, available, carriers, retry });
+        .concat(f.reasons) }));
+    const p2 = buildPrompt({ course, region: [start, end], seeds, newLegos: failing.map(f => f.lego), available, carriers, retry, data });
     let c2 = null;
     try { c2 = call(p2, 'retry'); await tagCandidates(course, c2); } catch (e) {
       // A refused retry (budget) is a finding, never a lost set: gate and save the first call's phrases.
       if (!/budget/.test(e.message)) throw e;
       out.retry_refused = e.message; console.log(`  retry refused: ${e.message}`);
     }
-    const g2 = c2 ? gate(c2, { course, data, newLegos, liveZut, available }) : { kept: [], rejected: [] };
+    const g2 = c2 ? gate(c2, { course, data, newLegos, available }) : { kept: [], rejected: [] };
     const failIds = new Set(failing.map(f => f.id));
     const keepOld = g.kept.filter(p => !failIds.has(`S${p.seed_number}L${p.lego_index}`));
     const oldForFailing = g.kept.filter(p => failIds.has(`S${p.seed_number}L${p.lego_index}`));
@@ -376,7 +513,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
       merged.push(...(nb.length >= ob.length ? nb : ob));
     }
     g = { kept: merged, rejected: [...g.rejected, ...g2.rejected] };
-    floors = basketFloors(g.kept, newLegos);
+    floors = basketFloors(g.kept, newLegos, { course, data });
     console.log(`  after retry: kept ${g.kept.length}; baskets below floor: ${floors.filter(f => !f.ok).length}/${floors.length}`);
   }
   out.kept = g.kept; out.rejected = g.rejected; out.floors = floors;
@@ -401,31 +538,20 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
   const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
   const livePhrases = data.phrases.filter(p => p.seed_number >= start && p.seed_number <= end);
+  // Pod frames are scored from the D codex; the live window's phrases need D tags first.
+  if (available.some(id => frameDef(id)?.provenance === 'pod'))
+    await ensurePodTagged(livePhrases.map(p => String(p.known_text || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course) });
   const before = scoreWindow(livePhrases, available, { rarefyN: 60 });
   const missing = (missingIn || before.missing_ids).filter(f => available.includes(f));
-  const taughtBefore = [...data.legos, ...data.components].filter(c => c.seed_number < start);
-  const allChunks = [...data.legos, ...data.components].filter(c => c.seed_number <= end)
-    .filter((c, i, a) => a.findIndex(x => norm(x.known_text) === norm(c.known_text) && norm(x.target_text) === norm(c.target_text)) === i)
-    .sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
-  const carriers = carriersByFrame(taughtBefore, missing);
-  const liveZut = new Map();
-  for (const r of [...data.legos, ...data.phrases]) {
-    const k = norm(r.known_text); if (!k) continue;
-    if (!liveZut.has(k)) liveZut.set(k, []);
-    const t = norm(r.target_text);
-    if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
-  }
+  const taughtBefore = carrierPool(course, data, newLegos);
+  const carriers = carriersByFrame(taughtBefore, missing, course);
   const file = path.join(EVIDENCE, `v4gap-${course}-${start}-${end}.json`);
   // A second pass ACCUMULATES: earlier kept candidates count as live (ZUT, duplicates)
   // and stay in the file; the missing list is what the earlier passes left uncovered.
   const prior = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
   const priorKept = prior ? prior.kept : [];
   const pass = prior ? (prior.calls || []).length + 1 : 1;
-  const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, allChunks, missing, carriers });
-  for (const r of priorKept) {
-    const k = norm(r.known_text); if (!liveZut.has(k)) liveZut.set(k, []);
-    liveZut.get(k).push({ target: norm(r.target_text), target_text: r.target_text, seed: r.seed_number });
-  }
+  const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, missing, carriers, data });
   const out = { course, region: [start, end], mode: 'gaps', generated: new Date().toISOString(), model: MODEL, effort: EFFORT,
     available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'frame-tagger', new_legos: newLegos.length,
     prompt_chars: prompt.length, before: prior ? prior.before : before, calls: prior ? prior.calls : [], kept: [...priorKept], rejected: prior ? prior.rejected : [], after: null,
@@ -443,7 +569,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
   out.calls.push({ label, candidates: r.phrases.length, ...r.usage });
   await tagCandidates(course, r.phrases);
-  const g = gate(r.phrases, { course, data, newLegos, liveZut, available, additive: true });
+  const g = gate(r.phrases, { course, data, newLegos, available, additive: true, priorRows: priorKept });
   out.kept.push(...g.kept); out.rejected.push(...g.rejected.map(x => ({ ...x, pass })));
   out.after = scoreWindow([...livePhrases, ...out.kept], available, { rarefyN: 60 });
   out.tokens_spent = out.calls.reduce((a, c) => a + c.total, 0);
@@ -462,7 +588,7 @@ function persistCandidates(file, label, r) {
   return p;
 }
 
-module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
+module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, basketFloors, admittedOpener, interjectionRule, frameLine, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);
