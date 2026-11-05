@@ -53,6 +53,7 @@ const CLAUDE = process.env.CLAUDE_BIN || 'claude'
 // the known side may not be English, so nothing below assumes it is)
 const KNOWN = knownLangOf(course)
 const LANG_NAME = langName(course.split('_for_')[0])
+const CJK = ['zho', 'jpn', 'yue'].includes(course.split('_for_')[0]) // target words written with no spaces between
 const KNOWN_NAME = langName(KNOWN)
 // --lego-only is the DEFAULT in Popty (job #692): Sonnet pairing runs only when --sonnet is named.
 const LEGO_ONLY = !opt.sonnet
@@ -99,8 +100,11 @@ process.stderr.write(`${course}: ${todo.length} cards to cut (${dump.cards.lengt
 function storedTimes(raw, text) {
   if (!raw || !raw.words?.length) return null
   const keep = raw.words.map((w, i) => (/[\p{L}\p{N}]/u.test(w) ? i : -1)).filter((i) => i >= 0)
-  const tm = { words: keep.map((i) => raw.words[i]), starts: keep.map((i) => raw.starts[i]), ends: keep.map((i) => raw.ends[i]) }
-  const letters = (t) => normT(t).replace(/[^\p{L}\p{N}' ]/gu, '').replace(/\s+/g, ' ').trim()
+  // a punctuation-only token (Cartesia writes Chinese per character, "。" its own token) joins the word before it,
+  // so a sentence end is still on the word that ends the sentence (job #836)
+  const word = (k, j) => raw.words.slice(keep[j], j + 1 < keep.length ? keep[j + 1] : raw.words.length).join('')
+  const tm = { words: keep.map((i, j) => word(i, j)), starts: keep.map((i) => raw.starts[i]), ends: keep.map((i) => raw.ends[i]) }
+  const letters = (t) => normT(t).replace(/[^\p{L}\p{N}' ]/gu, '').replace(/\s+/g, CJK ? '' : ' ').trim()
   return letters(tm.words.join(' ')) === letters(text) ? tm : null
 }
 const targetTimes = (d) => storedTimes(d.wordTimings, d.target)
@@ -219,7 +223,7 @@ function buildLines(d) {
   const er = tileWords(wordsOf(d.known), kl); if (!er) return { err: `${KNOWN_NAME} sentences do not tile the ${KNOWN_NAME} line` }
   const lr = lines.map((l) => [l.from, l.to])
   const ts = spansAtSeams(lr, tm, seamsAt(lr, tm, d.targetAudioId)), es = spansAtSeams(er, en, seamsAt(er, en, d.knownAudioId))
-  return { entry: { clip: d.targetAudioId, knownClip: d.knownAudioId, lines: lines.map((l, i) => ({ t: [tm.words.slice(l.from, l.to + 1).join(' '), ts[i][0], ts[i][1]], k: [kl[i], es[i][0], es[i][1]], chunks: [] })) } }
+  return { entry: { clip: d.targetAudioId, knownClip: d.knownAudioId, lines: lines.map((l, i) => ({ t: [tm.words.slice(l.from, l.to + 1).join(CJK ? '' : ' '), ts[i][0], ts[i][1]], k: [kl[i], es[i][0], es[i][1]], chunks: [] })) } }
 }
 
 // ================================================================================================
