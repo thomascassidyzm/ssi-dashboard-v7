@@ -27,8 +27,9 @@
  *   exempts named callers; POPTY_AGENT_RATE_PER_SEC / POPTY_AGENT_RATE_GLOBAL_PER_SEC /
  *   POPTY_DAY_DRY_BUDGET retune.
  * FIRINGS: every hold over 1 s and every refusal is logged by the route with tag [agent-rate-cap]
- *   (journalctl -u popty-production-api | grep agent-rate-cap). Register row: command-surface
- *   ops/GUARDS.md.
+ *   AND to ops_events source agent-rate-cap (services/shared/ops-event.cjs, job #706). Two routes use
+ *   it: production-api POST /api/audio/render and phase8's own POST /render port (job #706).
+ *   Register row: command-surface ops/GUARDS.md.
  * SUNSET: review after 14 days of firings — if no DB stall recurs and holds never fire, drop the
  *   global cap; if a stall recurs under the cap, lower RATE_PER_SEC or cap dry-runs separately.
  *   Remove the daytime rule if Popty gains a dry-run path that reads the QA copy.
