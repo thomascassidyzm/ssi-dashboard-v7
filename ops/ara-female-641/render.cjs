@@ -22,10 +22,20 @@ async function one(p) {
     purpose: '#641 re-record from corrected speaker-gender text (Kai approved 5 Nov 17:12Z)', dryRun: dry };
   if (p.spoken !== p.text) body.spokenText = p.spoken;
   let r, j;
-  try {
-    r = await fetch(URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'kai-watson-641' }, body: JSON.stringify(body) });
-    j = await r.json();
-  } catch (e) { stop = stop || `transport ${p.audioId} ${e.message}`; return; }
+  // A transport failure (Popty's API restarting under a deploy) is not a refusal: wait for it to come back, then send
+  // this clip once more. At most 3 tries; a refusal (an answer with ok:false) still stops the run and is never retried.
+  for (let attempt = 1; ; attempt++) {
+    try {
+      r = await fetch(URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'kai-watson-641' }, body: JSON.stringify(body) });
+      j = await r.json();
+      if (r.status === 503 && attempt < 3) throw new Error('503 phase8 unavailable');
+      break;
+    } catch (e) {
+      if (attempt >= 3) { stop = stop || `transport ${p.audioId} ${e.message}`; return; }
+      console.log(JSON.stringify({ transport: p.audioId, attempt, error: e.message, at: new Date().toISOString() }));
+      for (let w = 0; w < 60; w++) { await new Promise((s) => setTimeout(s, 10000)); try { const h = await fetch('http://localhost:3470/api/audio/health'); if (h.ok) break; } catch {} }
+    }
+  }
   n++;
   const rec = { audioId: p.audioId, course: p.course, role: p.role, ok: !!j.ok, status: r.status, source: j.source, chars: j.charsSpent || j.wouldSpendChars || 0, spoken: j.spoken, code: j.code, error: j.error, revision: j.revision, s3Key: j.s3Key };
   const k = j.source || j.code || r.status; sources[k] = (sources[k] || 0) + 1;
