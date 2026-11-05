@@ -23,15 +23,15 @@ async function one(p) {
   if (p.spoken !== p.text) body.spokenText = p.spoken;
   let r, j;
   // A transport failure (Popty's API restarting under a deploy) is not a refusal: wait for it to come back, then send
-  // this clip once more. At most 3 tries; a refusal (an answer with ok:false) still stops the run and is never retried.
+  // this clip once more. At most 8 tries; a refusal (an answer with ok:false) still stops the run and is never retried.
   for (let attempt = 1; ; attempt++) {
     try {
       r = await fetch(URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'kai-watson-641' }, body: JSON.stringify(body) });
       j = await r.json();
-      if (r.status === 503 && attempt < 3) throw new Error('503 phase8 unavailable');
+      if (r.status === 503 && attempt < 8) throw new Error('503 phase8 unavailable');
       break;
     } catch (e) {
-      if (attempt >= 3) { stop = stop || `transport ${p.audioId} ${e.message}`; return; }
+      if (attempt >= 8) { stop = stop || `transport ${p.audioId} ${e.message}`; return; }
       console.log(JSON.stringify({ transport: p.audioId, attempt, error: e.message, at: new Date().toISOString() }));
       for (let w = 0; w < 60; w++) { await new Promise((s) => setTimeout(s, 10000)); try { const h = await fetch('http://localhost:3470/api/audio/health'); if (h.ok) break; } catch {} }
     }
