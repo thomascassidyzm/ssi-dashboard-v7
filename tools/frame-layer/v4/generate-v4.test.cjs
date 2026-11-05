@@ -45,15 +45,20 @@ test('additive gap fill refuses a phrase the live course already has', () => {
   assert.ok(g.rejected[0].reasons.includes('already in the course'));
 });
 
-test('the gate refuses a candidate the frame tagger marks as opening with a stapled interjection', () => {
+// Tom 2026-11-05: an interjection is allowed once ADMITTED (a taught chunk this LEGO's admitted list
+// holds, with its taught target form); one not yet admitted is refused, as is any untaught known word.
+test('an interjection is kept only when admitted for the basket', () => {
   installTags({ 'of course I want to go now': { frames: ['P1', 'P28'], opener: true } });
   const lego = { seed_number: 5, lego_index: 1, known_text: 'I want', target_text: 'je veux', is_new: true };
-  const data = { legos: [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
-    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }, { seed_number: 3, lego_index: 1, known_text: 'of course', target_text: 'bien sûr' }], components: [] };
+  const base = [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
+    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }];
   const cand = [{ seed: 5, lego_index: 1, role: 'build', known: 'of course I want to go now', target: 'bien sûr je veux aller maintenant' }];
-  const g = gen.gate(cand, { course: 'fra_for_eng', data, newLegos: [lego], liveZut: new Map(), available: ['P1', 'P28'] });
+  const opts = (legos) => ({ course: 'fra_for_eng', data: { seeds: [], legos, components: [] }, newLegos: [lego], liveZut: new Map(), available: ['P1', 'P28'] });
+  assert.strictEqual(gen.gate(cand, opts([...base, { seed_number: 3, lego_index: 1, known_text: 'of course', target_text: 'bien sûr' }])).kept.length, 1);
+  const g = gen.gate(cand, opts(base));
   assert.strictEqual(g.kept.length, 0);
-  assert.ok(g.rejected[0].reasons.some(r => r.startsWith('stapled opener')));
+  assert.ok(g.rejected[0].reasons.some(r => r.startsWith('interjection at the front is not yet admitted')));
+  assert.ok(g.rejected[0].reasons.some(r => r === 'known side uses words not admitted at this LEGO: of course'));
 });
 
 test('a non-English known side is checked against what the course has already said (#924)', () => {
