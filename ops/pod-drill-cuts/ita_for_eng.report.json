@@ -4,7 +4,7 @@
   "cards": 351,
   "alreadyWithinCap": 182,
   "needCutting": 169,
-  "verified": 153,
+  "verified": 155,
   "verifiedRate": 21.3,
   "linesVerified": 56,
   "multiLineCards": 13,
@@ -34,12 +34,12 @@
   "model": "ggml-small.bin",
   "pairing": {
    "totals": {
-    "cards": 352,
+    "cards": 354,
     "fitsWhole": 199,
     "alreadyCut": 153,
     "newLego": 0,
     "newSonnet": 0,
-    "newLines": 0,
+    "newLines": 2,
     "whole": 0
    },
    "scenes": {
@@ -71,12 +71,12 @@
      "whole": 0
     },
     "SC04": {
-     "cards": 7,
+     "cards": 9,
      "fitsWhole": 5,
      "alreadyCut": 2,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
+     "newLines": 2,
      "whole": 0
     },
     "SC05": {
@@ -14483,6 +14483,26 @@
     ]
    ],
    "round": "pair (#381)"
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "Ciao! Mi dispiace ma non posso parlare adesso. Devo tornare a casa ora. Andiamo a prendere un caffè domani?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "No, mi dispiace, sono occupato domani. Ma andiamo sabato. A presto.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   }
  ]
 }
