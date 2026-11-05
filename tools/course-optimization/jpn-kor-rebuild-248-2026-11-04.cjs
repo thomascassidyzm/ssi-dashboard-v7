@@ -304,6 +304,15 @@ async function apply(c, rng) {
   const ins = p.inserts.filter((r) => !blockedLegos.has(`${r.seed_number}:${r.lego_index}`));
   const legosOk = new Set(ins.map((r) => `${r.seed_number}:${r.lego_index}`));
   const dels = p.deletes.filter((id) => { const m = id.match(/S(\d{4})L(\d{2})/); return legosOk.has(`${+m[1]}:${+m[2]}`); });
+  // RESUME (an apply killed mid-band, 4 Nov 23:20Z): with DUMP=<fresh course dump>, rows already inserted and rows already
+  // deleted are skipped, so a re-run finishes exactly what is left and never re-inserts or double-deletes.
+  if (process.env.DUMP) {
+    const live = new Set(JSON.parse(fs.readFileSync(process.env.DUMP, 'utf8')).phrases.map((x) => x.id));
+    const before = [ins.length, dels.length];
+    for (let i = ins.length - 1; i >= 0; i--) if (live.has(ins[i].id)) ins.splice(i, 1);
+    for (let i = dels.length - 1; i >= 0; i--) if (!live.has(dels[i])) dels.splice(i, 1);
+    console.log(`resume from ${process.env.DUMP}: inserts ${before[0]} -> ${ins.length}, deletes ${before[1]} -> ${dels.length}`);
+  }
   console.log(`${c} ${rng}: ${ins.length} inserts over ${legosOk.size} LEGOs, ${dels.length} deletes; ${blockedLegos.size} LEGOs wait for audio`);
   const per = Math.floor(BATCH / 4);
   const log = { at: new Date().toISOString(), go, batches: [] };
@@ -316,6 +325,7 @@ async function apply(c, rng) {
   // inserts (with their three links) first, LEGO by LEGO; that LEGO's old rows are deleted only after all its inserts landed
   const byLego = new Map();
   for (const r of ins) { const k = `${r.seed_number}:${r.lego_index}`; if (!byLego.has(k)) byLego.set(k, []); byLego.get(k).push(r); }
+  for (const id of dels) { const m = id.match(/S(\d{4})L(\d{2})/); const k = `${+m[1]}:${+m[2]}`; if (!byLego.has(k)) byLego.set(k, []); }
   let n = 0;
   for (const [k, rows] of byLego) {
     let okAll = true;
