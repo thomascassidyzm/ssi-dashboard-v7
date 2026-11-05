@@ -33,8 +33,8 @@ const course = argv.find((a) => !a.startsWith('--'))
 if (!course || !/^[a-z]{3}_for_[a-z]{3}$/.test(course)) { console.error('usage: whole-turns.mjs <course> [--pod=pod-1] [--write]'); process.exit(64) }
 const podId = `${course}:${opt.pod || 'pod-1'}`
 
-const BOUNDARY = /(?<=[.!?])\s+/ // the player's POD_SENTENCE_BOUNDARY
-const sentences = (t) => String(t || '').split(BOUNDARY).map((s) => s.trim()).filter(Boolean)
+// Sentence ends, the player's POD_SENTENCE_BOUNDARY plus the CJK enders it cannot split on (Chinese turns have no spaces)
+const sentences = (t) => String(t || '').split(/(?<=[.!?])\s+|(?<=[。！？])/u).map((s) => s.trim()).filter((s) => /[\p{L}\p{N}]/u.test(s))
 const wordsOnly = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '')
 const bare = (id) => String(id || '').replace(/\.v\d+$/, '')
 const ref = (c) => (c ? (c.audio_revision > 1 ? `${c.id}.v${c.audio_revision}` : c.id) : null)
