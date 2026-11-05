@@ -1324,6 +1324,7 @@ function checkBuildRecombination(lego, courseCode, seedNumber, priorVocab) {
 
 module.exports = {
   METHODOLOGY_HINTS,
+  findUncoveredChinese, // the character-level whole-chunk tiler; shared with services/shared/admitted-list.cjs (Tom 2026-11-05)
   checkTiling,
   checkMetadataGloss,
   checkNonExampleText,
