@@ -578,6 +578,15 @@ app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
   }
 })
 
+// Pod Drill PLAYER (job #860): the pod page's Drill tab — the raw rows, clips, cut entries and live
+// lap-ladder config the learning app reads, so the page composes the drill with the app's own
+// (vendored) code. READ-ONLY.
+// Mounted BEFORE the pods router below: that router's own router.use demands a dashboard session
+// for everything under /pods, which would shadow this route for same-host callers. The
+// app.param('courseCode') course-scope gate still guards it.
+app.use('/api/production/:courseCode/pods/:slug/drill',
+  require('./pod-drill-player-router.cjs')({ getDb: () => supabaseClient.getClient(), logger }))
+
 // Pod casting + per-voice recording plans (human pod recording keystone).
 // Same gate coverage as the voice-engine mounts above. Writes touch ONLY
 // courses.voice_config.podCast — an additive key TTS serving never reads —
@@ -604,12 +613,6 @@ app.use('/api/production/:courseCode/audio-preview',
 // re-record list, read from the stage's own run files in ops/pod-drill-cuts/. READ-ONLY, no DB.
 app.use('/api/production/:courseCode/pod-drill',
   require('./pod-drill-router.cjs')({ logger }))
-
-// Pod Drill PLAYER (job #860): the pod page's Drill tab — the raw rows, clips, cut entries and live
-// lap-ladder config the learning app reads, so the page composes the drill with the app's own
-// (vendored) code. READ-ONLY.
-app.use('/api/production/:courseCode/pods/:slug/drill',
-  require('./pod-drill-player-router.cjs')({ getDb: () => supabaseClient.getClient(), logger }))
 
 // The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
 // is derived BY LANGUAGE across every course (language_recording_policy), so it
