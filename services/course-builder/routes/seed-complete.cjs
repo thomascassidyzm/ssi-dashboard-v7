@@ -23,7 +23,8 @@ const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss, checkNonExampleText,
-  loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
+  loadPairContract, checkKnownSide, isKnownVocabBreach,
+  buildKnownSideCtx, legoPos, seedSentencePos,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
 // A sector segment is its own course code but one course to the learner, so the
@@ -57,41 +58,33 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
     // gloss the course really did introduce. Measured on fin_for_eng (1,425 legos),
     // it manufactured a false "unknown gloss" breach at S0644L01.
     const { data, error } = await filterSeedsBefore(supabase.from('course_legos')
-      .select('target_text,known_text,components,seed_number')
+      .select('target_text,known_text,components,seed_number,lego_index')
       .eq('course_code', courseCode), order, currentSeed)
       .order('seed_number').order('lego_index').range(from, from + 999);
     if (error) throw new Error(error.message);
     prior.push(...(order ? data.map(l => ({ ...l, seed_number: orderKey(order, l.seed_number) })) : data));
     if (data.length < 1000) break;
   }
-  const cur = (currentLegos || []).map(l => ({
-    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: atSeed,
-  }));
-  const all = [...prior, ...cur];
-  const stemFirstPos = new Map();
-  const addStem = (s, seed) => { const k = stemKnownGloss(s); if (!k) return; if (!stemFirstPos.has(k) || stemFirstPos.get(k) > seed) stemFirstPos.set(k, seed); };
-  for (const l of all) {
-    for (const t of tokenizeKnown(l.known_text)) addStem(t, l.seed_number);
-    for (const c of l.components || []) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
+  // STRICT (Tom r-2026-11-05): the admitted rows are prior SEED sentences, prior LEGOs and this
+  // seed's LEGOs, each at its introduction position (validation.cjs buildKnownSideCtx). The caller
+  // checks a phrase of LEGO L at legoPos(atSeed, L), so later siblings and this seed's own sentence
+  // are not admitted. No free class, no gloss synonyms, any known language.
+  const priorSeeds = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await filterSeedsBefore(supabase.from('course_seeds')
+      .select('known_text,target_text,seed_number')
+      .eq('course_code', courseCode), order, currentSeed)
+      .order('seed_number').range(from, from + 999);
+    if (error) throw new Error(error.message);
+    priorSeeds.push(...(order ? data.map(sd => ({ ...sd, seed_number: orderKey(order, sd.seed_number) })) : data));
+    if (data.length < 1000) break;
   }
-  const carrierSeed = (carrier) => {
-    let min = Infinity;
-    for (const l of all) {
-      const hit = l.target_text === carrier || (l.components || []).some(c => c.target === carrier);
-      if (hit && l.seed_number < min) min = l.seed_number;
-    }
-    return min;
-  };
-  for (const [carrier, syns] of Object.entries(contract.glossSynonyms || {})) {
-    const seed = carrierSeed(carrier);
-    if (seed < Infinity) for (const syn of syns) addStem(syn, seed);
-  }
-  const consPos = {};
-  for (const con of contract.constructions || []) {
-    consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
-  }
-  const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
-  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
+  const rows = [
+    ...priorSeeds.map(sd => ({ known_text: sd.known_text, target_text: sd.target_text, pos: seedSentencePos(sd.seed_number) })),
+    ...prior.map(l => ({ known_text: l.known_text, target_text: l.target_text, components: l.components || [], pos: legoPos(l.seed_number, l.lego_index) })),
+    ...(currentLegos || []).map(l => ({ known_text: l.known, target_text: l.target, components: l.components || [], pos: legoPos(atSeed, l.idx) })),
+  ];
+  return buildKnownSideCtx({ courseCode, contract, rows, atPos: atSeed });
 }
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
@@ -1590,51 +1583,23 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      // 3a-KNOWN. KNOWN-SIDE reconstructability (warn, contract-gated): every prompt
-      // must compose from introduced glosses + licensed constructions (Principle 1 in
-      // both languages). Fires ONLY when a pair-contract exists AND its known language
-      // matches — English machinery must not be applied to a non-English-known course.
+      // 3a-KNOWN. KNOWN-SIDE admitted vocabulary (Tom r-2026-11-05): every word of every prompt
+      // must appear in an admitted known text (prior seeds, LEGOs up to this one). Vocab breaches
+      // block; a matching pair-contract's construction licences add advisories. English machinery
+      // is never applied to a non-English-known course (the contract is dropped on mismatch).
       {
         const contract = pairContract;
         const contractUsable = contract && (!contract.known_lang || contract.known_lang === knownLang);
 
-        // 3a-KNOWN-UNCHECKED (2026-08-18, Kai's requirement): SILENT REFUSAL IS A DEFECT.
-        // This block used to be a bare `if (contract && …)` whose else-branch was silence, so a
-        // course with no contract — or one whose known side the ASCII tokenizer could not read —
-        // came back indistinguishable from a course that genuinely passed. It now says so.
-        // These are WARNINGS, not errors: they report that the gate could not run, which must
-        // never be mistaken for a pass, but must also not block a submit on a course that has
-        // never been gated. Promotion to blocking is a separate, deliberate decision.
-        {
-          const unchecked = [];
-          if (!contract) {
-            unchecked.push({ reason: KS_REASON.NO_CONTRACT, detail: `no pair-contract and no _known_${knownLang} brief — the known-side gate did NOT run for ${course_code}` });
-          } else if (!contractUsable) {
-            unchecked.push({ reason: KS_REASON.CONTRACT_LANG_MISMATCH, detail: `contract known_lang=${contract.known_lang} but course known language is ${knownLang} — gate did NOT run` });
-          } else {
-            // Contract present and matching: can the tokenizer actually see this known side?
-            const probe = [];
-            for (const lego of legos) {
-              let basket = [];
-              if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
-              else if (lego.phrases) basket = lego.phrases;
-              for (const p of basket) if (p.known) probe.push(p.known);
-            }
-            const blind = probe.filter((t) => segmentKnown(t, { script: contract.script, segmentation: contract.segmentation }).tokens.length === 0);
-            if (probe.length && blind.length === probe.length) {
-              unchecked.push({ reason: KS_REASON.TOKENIZER_EMPTY, detail: `segmentation produced zero tokens for all ${probe.length} known-side prompts (script=${contract.script || 'undeclared'}) — the gate saw nothing, so its silence is NOT a pass` });
-            } else if (blind.length) {
-              unchecked.push({ reason: KS_REASON.TOKENIZER_EMPTY, detail: `segmentation produced zero tokens for ${blind.length}/${probe.length} known-side prompts — those prompts were NOT checked` });
-            }
-          }
-          for (const u of unchecked) {
-            warnings.push({ type: 'known_side_unchecked', reason: u.reason, detail: u.detail, course_code, known_lang: knownLang });
-            console.log(`⚠ ${seedId}: KNOWN-SIDE UNCHECKED [${u.reason}] — ${u.detail}`);
-          }
-        }
+        // 3a-KNOWN-UNCHECKED (2026-08-18, Kai's requirement: silent refusal is a defect) used to
+        // warn here when no contract or no readable tokenizer meant the gate did not run.
+        // Since Tom's ruling of 2026-11-05 the gate needs no contract and no contract tokenizer: it
+        // checks every known word against the admitted known texts in any language (validation.cjs
+        // buildKnownSideCtx / checkKnownSide), so it always runs and there is no "unchecked" case left
+        // to report. A usable contract only adds its construction licences, as advisories.
 
-        if (contractUsable) {
-          const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contract);
+        {
+          const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contractUsable ? contract : null);
           for (const lego of legos) {
             const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
             if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
@@ -1643,7 +1608,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             else if (lego.phrases) basket = lego.phrases;
             for (const phrase of basket) {
               if (!phrase.known) continue;
-              const probs = checkKnownSide(phrase.known, knownCtx.atSeed, knownCtx);
+              const probs = checkKnownSide(phrase.known, legoPos(knownCtx.atSeed, lego.idx), knownCtx);
               if (!probs.length) continue;
               // Vocab breaches BLOCK (2026-07-27 "yes I want to speak" fix): a prompt
               // using a known-language word never introduced at this position forks
@@ -1659,7 +1624,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                   known: phrase.known,
                   target: phrase.target,
                   problems: breaches.slice(0, 4),
-                  hint: 'The KNOWN side is a controlled language too — every word of the English prompt must already be introduced as a LEGO/component gloss (exact form) or belong to the free glue class. Rewrite the prompt from introduced vocabulary.',
+                  hint: 'The KNOWN side uses only admitted words (Tom 2026-11-05): every word of the known-language prompt must appear, in that exact form, in a prior seed sentence, an earlier LEGO in introduction order, or this LEGO. There is no free class. Rewrite the prompt from admitted vocabulary.',
                 });
                 console.log(`✗ ${legoId}: KNOWN-VOCAB "${phrase.known}" — ${breaches[0]}`);
               }

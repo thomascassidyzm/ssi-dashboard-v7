@@ -1107,20 +1107,97 @@ function compileKnownContract(contract) {
   };
 }
 
-// ctx = { ...compileKnownContract, stemFirstPos:Map(stem->pos), consPos:{id->pos}, unitPos:[{phrase,pos}] }
+// ─── THE KNOWN SIDE, STRICT (Tom, r-2026-11-05) ─────────────────────────
+// "BOTH target and English must only use words in the phrases that have been introduced already
+//  in the course ... SEED sentences up to N-1 and LEGOS from SEED N up to L-1." The known side
+// is checked exactly like the target: a word is admitted only if THAT form appears in an admitted
+// known text (a prior seed sentence, an earlier LEGO, a part of one). There is NO free class any
+// more — no contract glue, no NPI-under-negation, no negation words, no dummy do/does/did, no
+// grammatical "machinery" pass, no gloss synonyms, no inflection or contraction expansion — and
+// it applies to EVERY known language: a space-written one word by word (taught-words tokensOf /
+// piecesOf, the target side's own tokeniser), a no-space one (eng_for_jpn) by whole-chunk tiling
+// through findUncoveredChinese. A pair-contract is no longer needed to check anything; when one
+// exists its construction / gloss-unit licences still apply ON TOP, as advisories.
+//
+// Positions: any number that orders introduction. buildKnownSideCtx gives a seed sentence S the
+// position S + 0.5 (admitted from seed S+1 on) and LEGO S/L the position S + L/1000 (admitted to
+// itself and every later LEGO), so checking a phrase of LEGO N/L at N + L/1000 admits exactly
+// seeds < N and LEGOs up to N/L. Integer positions (rounds, a seed with no LEGO index) still work.
+const { tokensOf: knownTokensOf, piecesOf: knownPiecesOf } = require('./taught-words.cjs');
+const knownLangOfCourse = (courseCode) => String(courseCode || '').replace(/_v\d+$/, '').split('_for_')[1]?.split('_')[0] || 'eng';
+const knownIsNoSpace = (courseCode) => isChinese(`${knownLangOfCourse(courseCode)}_for_x`);
+const noSpaceKey = (s) => normalizeForStorage(String(s || ''), true).replace(/\s+/g, '');
+const legoPos = (seed, idx) => Number(seed) + (idx == null ? 0 : Number(idx) / 1000);
+const seedSentencePos = (seed) => Number(seed) + 0.5;
+
+/**
+ * The known-side context from ADMITTED ROWS. Pure.
+ * rows: [{ known_text, target_text?, components?:[{known,target}], pos }]
+ *   — seed sentences at seedSentencePos(S), LEGOs at legoPos(S, L).
+ */
+function buildKnownSideCtx({ courseCode, contract = null, rows = [], atPos = null }) {
+  const lang = knownLangOfCourse(courseCode);
+  const noSpace = knownIsNoSpace(courseCode);
+  const stemFirstPos = new Map();
+  const chunkPos = new Map();
+  const add = (map, k, pos) => { if (k && (!map.has(k) || map.get(k) > pos)) map.set(k, pos); };
+  const addText = (text, pos) => {
+    if (!text) return;
+    if (noSpace) { add(chunkPos, noSpaceKey(text), pos); return; }
+    for (const tok of knownTokensOf(text)) { add(stemFirstPos, tok, pos); for (const pc of knownPiecesOf(tok, lang)) add(stemFirstPos, pc, pos); }
+  };
+  for (const r of rows) {
+    addText(r.known_text, r.pos);
+    for (const c of r.components || []) addText(c.known, r.pos);
+  }
+  const carrierPos = (carrier) => {
+    let min = Infinity;
+    for (const r of rows) {
+      const hit = r.target_text === carrier || (r.components || []).some((c) => c.target === carrier);
+      if (hit && r.pos < min) min = r.pos;
+    }
+    return min;
+  };
+  const C = contract || {};
+  const consPos = {};
+  for (const con of C.constructions || []) {
+    consPos[con.id] = con.cluster ? (C.clusterSeeds?.[con.cluster] ?? C.clusterRounds?.[con.cluster] ?? Infinity) : carrierPos(con.carrier);
+  }
+  const unitPos = (C.glossUnits || []).map((u) => ({ phrase: u.phrase, pos: carrierPos(u.carrier) }));
+  return { contract: contract || null, courseCode, lang, noSpace, stemFirstPos, chunkPos, consPos, unitPos, atSeed: atPos, strict: true };
+}
+
+/** Position at which a known token is admitted: the whole form, else all of its pieces; null = never. */
+function knownTokenPos(tok, ctx) {
+  if (ctx.stemFirstPos.has(tok)) return ctx.stemFirstPos.get(tok);
+  const pieces = knownPiecesOf(tok, ctx.lang || 'eng');
+  if (pieces.length > 1 && pieces.every((p) => ctx.stemFirstPos.has(p))) return Math.max(...pieces.map((p) => ctx.stemFirstPos.get(p)));
+  return null;
+}
+
+// ctx = buildKnownSideCtx(...) (older callers: { contract, stemFirstPos, consPos, unitPos } — read the same way, strictly)
 function checkKnownSide(known, currentPos, ctx) {
-  const C = ctx.contract;
+  const C = ctx.contract || {};
   const probs = [];
-  const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers : new RegExp(C.negationMarkers, 'i');
-  const negated = negRe.test(known);
   for (const con of C.constructions || []) {
     const test = con.test instanceof RegExp ? con.test : new RegExp(con.test, 'i');
     if (test.test(known)) {
-      const cp = ctx.consPos[con.id];
-      if (cp == null || currentPos < cp) probs.push(`construction '${con.id}' not licensed until ${cp === Infinity ? '∞' : cp}`);
+      const cp = ctx.consPos?.[con.id];
+      if (cp == null || currentPos < cp) probs.push(`construction '${con.id}' not licensed until ${cp == null || cp === Infinity ? '∞' : cp}`);
     }
   }
-  let masked = ' ' + known.toLowerCase() + ' ';
+  if (ctx.noSpace) {
+    // Whole admitted chunks only, joined: the tiler the target side uses for no-space scripts.
+    const chunks = new Set([...ctx.chunkPos].filter(([, pos]) => pos <= currentPos).map(([k]) => k));
+    const phrase = noSpaceKey(known);
+    const un = phrase ? findUncoveredChinese(phrase, chunks) : null;
+    if (un) {
+      const later = [...ctx.chunkPos].some(([k, pos]) => pos > currentPos && un.startsWith(k));
+      probs.push(later ? `gloss "${un}" not introduced until later` : `unknown gloss "${un}"`);
+    }
+    return probs;
+  }
+  let masked = ' ' + String(known || '').toLowerCase() + ' ';
   for (const u of ctx.unitPos || []) {
     const re = new RegExp('\\b' + u.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
     if (re.test(masked)) {
@@ -1128,30 +1205,10 @@ function checkKnownSide(known, currentPos, ctx) {
       masked = masked.replace(re, ' ');
     }
   }
-  for (const raw of tokenizeKnown(masked)) {
-    const s = stemKnownGloss(raw);
-    if (!s) continue;
-    if (ctx.glue.has(s)) continue;
-    if (DO_AUX.has(raw)) continue;
-    if (ctx.neg.has(raw) || ctx.neg.has(s)) {
-      const cp = ctx.consPos['negation'];
-      if (cp != null) {
-        if (currentPos < cp) probs.push(`negation "${raw}" not licensed until ${cp === Infinity ? '∞' : cp}`);
-        continue;
-      }
-      // Contract defines no negation construction (e.g. the _default_eng fallback):
-      // fall through and require the negation word itself to be an introduced gloss.
-    }
-    if (ctx.npi.has(s)) { if (negated) continue; probs.push(`NPI token "${raw}" without negation`); continue; }
-    if (ctx.grammar[raw] || ctx.grammar[s]) {
-      const govs = ctx.grammar[raw] || ctx.grammar[s];
-      const ok = govs.some((g) => currentPos >= (ctx.consPos[g] ?? Infinity));
-      if (!ok) probs.push(`machinery "${raw}" needs ${govs.join('/')} (unlicensed)`);
-      continue;
-    }
-    const fp = ctx.stemFirstPos.get(s);
-    if (fp == null) probs.push(`unknown gloss "${raw}"`);
-    else if (fp > currentPos) probs.push(`gloss "${raw}" not introduced until ${fp}`);
+  for (const tok of knownTokensOf(masked)) {
+    const fp = knownTokenPos(tok, ctx);
+    if (fp == null) probs.push(`unknown gloss "${tok}"`);
+    else if (fp > currentPos) probs.push(`gloss "${tok}" not introduced until ${fp}`);
   }
   return probs;
 }
@@ -1333,6 +1390,7 @@ module.exports = {
   tokenizeKnown,
   compileKnownContract,
   checkKnownSide,
+  buildKnownSideCtx, legoPos, seedSentencePos, knownIsNoSpace,
   isKnownVocabBreach,
   loadPairContract,
   checkPhraseComplexity,
