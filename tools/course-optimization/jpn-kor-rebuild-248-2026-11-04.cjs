@@ -245,6 +245,11 @@ function audioFile(c) { return path.join(courseDir(c), 'audio.json'); }
 function loadAudio(c) { return fs.existsSync(audioFile(c)) ? JSON.parse(fs.readFileSync(audioFile(c), 'utf8')) : {}; }
 const SLOT_TEXT = { known: 'known_text', target1: 'target_text', target2: 'target_text' };
 async function audio(c, rng, real) {
+  // NO DRY RUNS ON LIVE (Tom 2026-11-05 18:15Z; services/shared/agent-rate-cap.cjs BULK_DRY_RUN_ON_LIVE): the estimate is
+  // computed locally from the text, and the real pass sends only real renders, one at a time. A real render is
+  // library-first inside the route, so a clip that already exists is linked free; EXISTS_IN_LANGUAGE links the clip the
+  // guard names; any other refusal stops the run. A transport error (restart, socket hang up, 502-504) is not a refusal:
+  // wait for Popty, then the same render again — library-first means a clip that landed before the drop is never paid twice.
   const p = JSON.parse(fs.readFileSync(path.join(courseDir(c), `plan-${rng}.json`), 'utf8'));
   const have = loadAudio(c);
   const asks = [];
@@ -253,44 +258,30 @@ async function audio(c, rng, real) {
     const text = r[SLOT_TEXT[role]]; const key = `${role}|${text}`;
     if (seen.has(key) || have[key]) continue; seen.add(key); asks.push({ role, text, key, seed: r.seed_number });
   }
-  let chars = 0, lib = 0, refused = []; const linkedExisting = [];
-  const dry = [];
-  let i = 0;
-  const worker = async () => { while (i < asks.length) { const a = asks[i++];
-    const d = await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
-    if (d.status === 200 && d.body.ok && d.body.source === 'library') { lib++; have[a.key] = d.body.audioId; }
-    else if (d.status === 200 && d.body.ok) { chars += d.body.wouldSpendChars || a.text.length; dry.push(a); }
-    else if (d.body.code === 'EXISTS_IN_LANGUAGE' && existingClip(d.body.error, COURSE[c], a.role)) { have[a.key] = existingClip(d.body.error, COURSE[c], a.role); linkedExisting.push({ ...a, audioId: have[a.key] }); }
-    else refused.push({ ...a, status: d.status, error: d.body.code || d.body.error }); } };
-  await Promise.all([1, 2, 3, 4].map(worker));
-  console.log(`${c} ${rng}: ${asks.length} clips asked; library ${lib}; existing-in-language linked ${linkedExisting.length}; to render ${dry.length} (${chars} chars); refused ${refused.length}`);
-  if (refused.length) console.log(JSON.stringify(refused.slice(0, 5)));
-  fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
-  if (!real) return { chars, toRender: dry.length, refused: refused.length };
+  const estimate = asks.reduce((s, a) => s + a.text.length, 0);
+  console.log(`${c} ${rng}: ${asks.length} clips still to get; at most ${estimate} chars if none is in the library (local estimate, no live calls)`);
+  if (!real) return { chars: estimate, toRender: asks.length };
   if (process.env.RENDER_CONFIRM !== '1') { console.log('RENDER_CONFIRM=1 not set: nothing rendered'); return; }
-  let spent = 0;
-  for (const a of dry) {
-    let r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
-    if (r.status === 0) {
-      // ask the LIBRARY first after a drop: the clip may have landed before the socket went
-      const again = await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed, dryRun: true });
-      r = again.status === 200 && again.body.ok && again.body.source === 'library' ? again
-        : await postPopty(`${POPTY}/api/audio/render`, { courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
-    }
+  const transient = (r) => r.status === 0 || [502, 503, 504].includes(r.status) || /socket hang up|ECONNRESET|ECONNREFUSED|fetch failed/i.test(String(r.body && r.body.error));
+  const linkedExisting = [];
+  let spent = 0, lib = 0, rendered = 0;
+  const body = (a) => ({ courseCode: COURSE[c], role: a.role, text: a.text, purpose: `job #248 ${COURSE[c]} rebuilt basket (Kai 4 Nov 13:16Z)`, job: JOB, seedPosition: a.seed });
+  for (const a of asks) {
+    let r = await post(`${POPTY}/api/audio/render`, body(a));
+    for (let t = 0; t < 3 && transient(r); t++) { await waitPopty(); r = await post(`${POPTY}/api/audio/render`, body(a)); }
     if (!(r.status === 200 && r.body.ok)) {
-      if (r.status === 0) { console.log('Popty unreachable — stopping; re-run resumes library-first'); break; }
-      // EXISTS_IN_LANGUAGE: the line is already recorded in this language; the guard's own answer is "link an existing
-      // clip" — we take the one it names (same course + slot preferred). Nothing re-renders it. Any other refusal stops.
+      if (transient(r)) { console.log('Popty unreachable after retries — stopping; re-run resumes library-first'); break; }
       const ex = r.body.code === 'EXISTS_IN_LANGUAGE' && existingClip(r.body.error, COURSE[c], a.role);
       if (ex) { have[a.key] = ex; linkedExisting.push({ ...a, audioId: ex }); continue; }
       console.log('REFUSED — no retry:', a.role, a.text, JSON.stringify(r.body).slice(0, 300)); break;
     }
     have[a.key] = r.body.audioId; spent += r.body.charsSpent || 0;
-    if (Object.keys(have).length % 50 === 0) fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
+    if (r.body.source === 'library') lib++; else rendered++;
+    if ((lib + rendered) % 50 === 0) fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
   }
   fs.writeFileSync(audioFile(c), JSON.stringify(have, null, 0));
-  console.log(`rendered: ${spent} chars; existing-in-language linked ${linkedExisting.length}`);
-  if (linkedExisting.length) fs.writeFileSync(path.join(courseDir(c), `existing-linked-${rng}.json`), JSON.stringify(linkedExisting, null, 1));
+  console.log(`rendered: ${spent} chars (${rendered} clips); library ${lib}; existing-in-language linked ${linkedExisting.length}`);
+  if (linkedExisting.length) fs.writeFileSync(path.join(courseDir(c), `existing-linked-${rng}-${Date.now()}.json`), JSON.stringify(linkedExisting, null, 1));
 }
 
 // ── apply ──
