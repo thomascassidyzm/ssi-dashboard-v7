@@ -35,10 +35,10 @@ test('additive gap fill refuses a phrase the live course already has', () => {
   installTags({ 'I want to go now': ['P1', 'P28'] });
   const lego = { seed_number: 5, lego_index: 1, known_text: 'I want', target_text: 'je veux', is_new: true };
   const data = { legos: [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
-    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }], components: [] };
-  const liveZut = new Map([['i want to go now', [{ target: 'je veux aller maintenant', target_text: 'je veux aller maintenant', seed: 5 }]]]);
+    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }], components: [],
+    phrases: [{ seed_number: 5, lego_index: 1, phrase_role: 'use', known_text: 'I want to go now', target_text: 'je veux aller maintenant' }] };
   const cand = [{ seed: 5, lego_index: 1, role: 'build', known: 'I want to go now', target: 'je veux aller maintenant' }];
-  const opts = { course: 'fra_for_eng', data, newLegos: [lego], liveZut, available: ['P1', 'P28'] };
+  const opts = { course: 'fra_for_eng', data, newLegos: [lego], available: ['P1', 'P28'] };
   assert.strictEqual(gen.gate(cand, opts).kept.length, 1);
   const g = gen.gate(cand, { ...opts, additive: true });
   assert.strictEqual(g.kept.length, 0);

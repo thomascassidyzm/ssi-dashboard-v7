@@ -46,9 +46,12 @@
 'use strict';
 
 const { isChinese } = require('../course-builder/lib/language-config.cjs');
-const { findUncoveredChinese } = require('../course-builder/lib/validation.cjs');
-const { normalizeForStorage } = require('../course-builder/lib/text-normalization.cjs');
-const { taughtWordKeys, untaughtWords, tokensOf } = require('../course-builder/lib/taught-words.cjs');
+// ONE SET OF GATES (Tom, 2026-11-05): the checks below are the course builder's own gates —
+// checkVocabViolations for the target, checkKnownSide (strict since r-2026-11-05) for the known
+// side — fed this list. This module only decides WHAT is admitted; it never re-implements a check.
+const V = require('../course-builder/lib/validation.cjs');
+const { extractVocab } = require('../course-builder/lib/text-normalization.cjs');
+const { tokensOf } = require('../course-builder/lib/taught-words.cjs');
 
 const langOf = (code) => String(code || '').split('_')[0];
 const targetLangOf = (course) => langOf(String(course).split('_for_')[0]);
@@ -98,13 +101,13 @@ function admittedList({ course, seeds = [], legos = [], components = [], seedNum
     seen.add(k); rows.push(r);
   };
   for (const s of [...seeds].filter(s => +s.seed_number < N).sort((a, b) => a.seed_number - b.seed_number)) {
-    push({ kind: 'seed', id: seedId(s.seed_number), seed_number: +s.seed_number, lego_index: null, known_text: s.known_text, target_text: s.target_text });
+    push({ kind: 'seed', id: seedId(s.seed_number), seed_number: +s.seed_number, lego_index: null, known_text: s.known_text, target_text: s.target_text, pos: V.seedSentencePos(+s.seed_number) });
   }
   const admittedLegos = [...legos].filter(l => before(l, N, L)).sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
   for (const l of admittedLegos) {
-    push({ kind: 'lego', id: legoId(l.seed_number, l.lego_index), seed_number: +l.seed_number, lego_index: +l.lego_index, known_text: l.known_text, target_text: l.target_text });
+    push({ kind: 'lego', id: legoId(l.seed_number, l.lego_index), seed_number: +l.seed_number, lego_index: +l.lego_index, known_text: l.known_text, target_text: l.target_text, pos: V.legoPos(+l.seed_number, +l.lego_index) });
   }
-  push({ kind: 'this-lego', id: legoId(N, L), seed_number: N, lego_index: L, known_text: self.known_text, target_text: self.target_text });
+  push({ kind: 'this-lego', id: legoId(N, L), seed_number: N, lego_index: L, known_text: self.known_text, target_text: self.target_text, pos: V.legoPos(N, L) });
   // Components: only as a part of an admitted LEGO (its own parent, both sides inside it).
   const parentOf = new Map([...admittedLegos, self].map(l => [`${+l.seed_number}:${+l.lego_index}`, l]));
   const tNS = targetNoSpace(course), kNS = knownNoSpace(course);
@@ -112,9 +115,9 @@ function admittedList({ course, seeds = [], legos = [], components = [], seedNum
     const parent = parentOf.get(`${+c.seed_number}:${+c.lego_index}`);
     if (!parent) continue;
     if (!partOf(c.target_text, parent.target_text, tNS) || !partOf(c.known_text, parent.known_text, kNS)) continue;
-    push({ kind: 'component', id: `${legoId(c.seed_number, c.lego_index)}#part`, seed_number: +c.seed_number, lego_index: +c.lego_index, known_text: c.known_text, target_text: c.target_text });
+    push({ kind: 'component', id: `${legoId(c.seed_number, c.lego_index)}#part`, seed_number: +c.seed_number, lego_index: +c.lego_index, known_text: c.known_text, target_text: c.target_text, pos: V.legoPos(+c.seed_number, +c.lego_index) });
   }
-  return { rows, knownTexts: rows.map(r => r.known_text), targetTexts: rows.map(r => r.target_text), label: admittedLabel(N, L), lego: self };
+  return { rows, knownTexts: rows.map(r => r.known_text), targetTexts: rows.map(r => r.target_text), label: admittedLabel(N, L), lego: self, pos: V.legoPos(N, L), course };
 }
 
 /** The window in words, exactly as the prompt states it. */
@@ -137,41 +140,44 @@ function admittedRulePrompt(N, L, knownLanguage = 'the known language', targetLa
     + `A word not in the list is refused, however ordinary.`;
 }
 
-/** Known-language words (or, for a no-space script, the untiled tail) not admitted. [] when clean. */
-function knownSideCheck(known, admittedKnownTexts, course) {
-  const lang = knownLangOf(course);
-  if (noSpaceLang(lang)) return tileNoSpace(known, admittedKnownTexts);
-  const pseudo = `${lang}_for_x`; // taught-words tokenises by the course's TARGET language: make the known language the target
-  return [...new Set(untaughtWords(known, taughtWordKeys(admittedKnownTexts, pseudo), pseudo))];
+/** The words a gate's problems name: "unknown gloss \"x\"" / "gloss \"x\" not introduced until …". */
+const namedWords = (probs) => [...new Set(probs.filter(V.isKnownVocabBreach).map(p => (p.match(/"([^"]*)"/) || [])[1]).filter(Boolean))];
+
+/**
+ * The known-side context for an admitted list (or a bare array of admitted known texts, all
+ * admitted), through the shared builder. A pair-contract adds only its construction advisories.
+ */
+function knownCtxFor(admitted, course) {
+  const rows = Array.isArray(admitted) ? admitted.map(t => ({ known_text: t, pos: 0 })) : admitted.rows;
+  const contract = V.loadPairContract(course);
+  const knownLang = knownLangOf(course);
+  const usable = contract && (!contract.known_lang || contract.known_lang === knownLang);
+  return V.buildKnownSideCtx({ courseCode: course, contract: usable ? contract : null, rows });
 }
 
-/** Target words not admitted, for every script. {ok, offending, reason}. */
-function targetSideCheck(target, admittedTargetTexts, course) {
-  if (targetNoSpace(course)) {
-    const un = tileNoSpace(target, admittedTargetTexts);
-    return un.length ? { ok: false, offending: un, reason: `untaught: ${un.join(' ')}` } : { ok: true, offending: [], reason: null };
-  }
-  const { exactFormCheck } = require('../../tools/frame-layer/v4/exact-form.cjs');
-  return exactFormCheck(target, admittedTargetTexts, { courseCode: course });
+/** Known-language words not admitted (the shared checkKnownSide, strict). [] when clean. */
+function knownSideCheck(known, admitted, course, ctx = null) {
+  const at = Array.isArray(admitted) ? 0 : admitted.pos;
+  return namedWords(V.checkKnownSide(known, at, ctx || knownCtxFor(admitted, course)));
 }
 
-/** Whole-chunk tiling by character, through phrase-gate's own tiler. Returns [untiled tail] or []. */
-function tileNoSpace(text, chunks) {
-  const strip = (s) => normalizeForStorage(String(s || ''), true).replace(/\s+/g, '');
-  const phrase = strip(text);
-  if (!phrase) return [];
-  const vocab = new Set(chunks.map(strip).filter(Boolean));
-  const un = findUncoveredChinese(phrase, vocab);
-  return un ? [un] : [];
+/** Target words not admitted, every script (the shared checkVocabViolations). {ok, offending, reason}. */
+function targetSideCheck(target, admitted, course, seedNumber = null) {
+  const texts = Array.isArray(admitted) ? admitted : admitted.targetTexts;
+  const vocab = new Set(texts.flatMap(t => extractVocab(t, isChinese(course))));
+  const v = V.checkVocabViolations([{ target }], vocab, course, seedNumber != null ? { seedNumber } : {});
+  if (!v.length) return { ok: true, offending: [], reason: null };
+  const offending = isChinese(course) ? [v[0].unknown] : String(v[0].unknown).split(' ').filter(Boolean);
+  return { ok: false, offending, reason: `untaught: ${v[0].unknown}` };
 }
 
 /** Both sides at once: the reasons a phrase is refused, [] when admitted. */
-function admittedCheck({ known, target }, admitted, course) {
+function admittedCheck({ known, target }, admitted, course, ctx = null) {
   const reasons = [];
-  const badKnown = knownSideCheck(known, admitted.knownTexts, course);
+  const badKnown = knownSideCheck(known, admitted, course, ctx);
   if (badKnown.length) reasons.push(`known side uses words not admitted at this LEGO: ${badKnown.join(' ')}`);
-  const t = targetSideCheck(target, admitted.targetTexts, course);
-  if (!t.ok) reasons.push(t.offending.length ? `target uses words not admitted at this LEGO: ${t.offending.join(' ')}` : t.reason);
+  const t = targetSideCheck(target, admitted, course, admitted.lego ? +admitted.lego.seed_number : null);
+  if (!t.ok) reasons.push(`target uses words not admitted at this LEGO: ${t.offending.join(' ')}`);
   return reasons;
 }
 
@@ -181,6 +187,6 @@ function renderAdmitted(rows) {
 }
 
 module.exports = {
-  admittedList, admittedLabel, admittedRulePrompt, admittedCheck, knownSideCheck, targetSideCheck, renderAdmitted,
+  admittedList, admittedLabel, admittedRulePrompt, admittedCheck, knownSideCheck, targetSideCheck, knownCtxFor, renderAdmitted,
   targetNoSpace, knownNoSpace, noSpaceLang, legoId, seedId,
 };

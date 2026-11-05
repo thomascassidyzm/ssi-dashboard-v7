@@ -303,54 +303,112 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
 }
 
 // ---------- gates ----------
-function gate(cands, { course, data, newLegos, liveZut, available, additive = false }) {
-  const kept = [], rejected = [];
-  const seenKnown = new Map(), seenTarget = new Set();
+// ONE SET OF GATES (Tom, 2026-11-05: "the gates of course-builder v2 and v3 must all be present in
+// v4 ... one set of gates, not two"). Every check below that the course builder also makes is the
+// course builder's OWN function from services/course-builder/lib (validation.cjs, phrase-structure.cjs,
+// separable-verbs.cjs), called here at generation time with the LEGO's admitted list; nothing is
+// re-implemented. The few checks v4 adds on top are marked V4-ONLY.
+const V = require('../../../services/course-builder/lib/validation.cjs');
+const PS = require('../../../services/course-builder/lib/phrase-structure.cjs');
+const SEP = require('../../../services/course-builder/lib/separable-verbs.cjs');
+const { isChinese } = require('../../../services/course-builder/lib/language-config.cjs');
+const { extractVocab, normalizeForContainment, checkWordContainment } = require('../../../services/course-builder/lib/text-normalization.cjs');
+const BUILD_MAX = 4; // tools/phrase-gate buildCountSpec (Tom 2026-08-28): three or four BUILD, never five
+
+/** The containment baseline every shared gate uses (gate-check / checkBuildUsePhrases). */
+const containsLego = (course, seedNumber, legoTarget, phraseTarget) => SEP.checkSeparableContainment({
+  courseCode: course, seedNumber, legoTarget, phraseTarget,
+  baseline: (lt, pt) => (isChinese(course) ? normalizeForContainment(pt).includes(normalizeForContainment(lt)) : checkWordContainment(lt, pt)),
+});
+
+function gate(cands, { course, data, newLegos, available, additive = false, priorRows = [] }) {
+  const kept = [], rejected = [], warnings = [];
   const legoOf = (c) => newLegos.find(l => l.seed_number === +c.seed && +l.lego_index === +c.lego_index);
   const admCache = new Map();
   const admittedFor = (lego) => {
     const k = `${lego.seed_number}:${lego.lego_index}`;
-    if (!admCache.has(k)) admCache.set(k, admittedList({ course, seeds: data.seeds, legos: data.legos, components: data.components, seedNumber: lego.seed_number, legoIndex: +lego.lego_index, lego }));
+    if (!admCache.has(k)) {
+      const adm = admittedList({ course, seeds: data.seeds || [], legos: data.legos, components: data.components, seedNumber: lego.seed_number, legoIndex: +lego.lego_index, lego });
+      adm.knownCtx = ADM.knownCtxFor(adm, course); // the shared known-side context, built once per LEGO
+      admCache.set(k, adm);
+    }
     return admCache.get(k);
   };
+  // ZUT reference rows: the live course (LEGOs + BUILD/USE) plus earlier kept passes, as the shared gate reads them.
+  const existing = [...data.legos, ...(data.phrases || []), ...priorRows]
+    .map(r => ({ known_text: r.known_text, target_text: r.target_text, seed_number: r.seed_number }));
+  const nkZ = (s) => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+  const ntZ = (s) => (s || '').replace(/[\s。，？！、.?!,]/g, '');
   for (const c of cands) {
     const lego = legoOf(c);
     const reasons = [];
     const known = String(c.known || '').trim(), target = String(c.target || '').trim();
     const role = c.role === 'build' ? 'build' : 'use';
     if (!lego) { rejected.push({ ...c, reasons: ['no such new LEGO in this region'] }); continue; }
+    const N = lego.seed_number;
     if (!known || !target) reasons.push('empty side');
-    if (/[()]/.test(known + target)) reasons.push('parentheses');
+    // shared: checkNonExampleText's test (brackets, parentheses, slash alternatives)
+    if (V.hasNonExampleText(known) || V.hasNonExampleText(target)) reasons.push('nonExampleText: brackets, parentheses or slash alternatives');
+    // shared: containment (gate-check / seed-complete §3, incl. the deu separable ruling)
+    const cont = target ? containsLego(course, N, lego.target_text, target) : { pass: false };
+    if (!cont.pass && !welshContainsLego(course, lego.target_text, target)) reasons.push(`containment: target does not contain the LEGO "${lego.target_text}"${cont.reason ? ` (${cont.reason})` : ''}`);
+    // V4-ONLY: the known side contains the LEGO's known text too
     if (!norm(known).includes(norm(lego.known_text))) reasons.push(`known side does not contain the LEGO "${lego.known_text}"`);
-    if (!norm(target).includes(norm(lego.target_text)) && !welshContainsLego(course, lego.target_text, target)) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
-    // The admitted list for THIS LEGO (Tom r-2026-11-05), built once and used for every check below.
     const adm = admittedFor(lego);
-    // An interjection at the front is allowed only when it is ADMITTED for this basket (Tom 2026-11-05).
+    // V4-ONLY: an interjection at the front only when ADMITTED for this basket (Tom 2026-11-05).
     if (known && hasOpener(known) && !admittedOpener(known, target, adm.rows, knownNoSpaceOf(course)))
       reasons.push('interjection at the front is not yet admitted for this basket (it must be a taught chunk this basket owns, with its taught target form)');
-    // Both sides, every script, against the same list. No free class; no no-space bypass.
-    if (known && target) reasons.push(...admittedCheck({ known, target }, adm, course));
-    // ZUT — one known → one target; USE against the whole live course, BUILD up to its position
-    const nk = norm(known), nt = norm(target);
-    const live = liveZut.get(nk);
-    if (live) {
-      const clash = live.find(x => x.target !== nt && (role === 'use' || x.seed <= lego.seed_number));
-      if (clash) reasons.push(`ZUT: the course already renders "${known}" as "${clash.target_text}" (seed ${clash.seed})`);
-    }
-    // Gap fill ADDS to the live baskets, so a phrase the course already carries adds nothing.
-    if (additive && live && live.some(x => x.target === nt)) reasons.push('already in the course');
-    if (seenKnown.has(nk) && seenKnown.get(nk) !== nt) reasons.push('ZUT: same known-language line already used with another target in this set');
-    if (seenKnown.has(nk) && seenKnown.get(nk) === nt) reasons.push('duplicate');
-    if (seenTarget.has(nt + '|' + role) && !reasons.includes('duplicate')) reasons.push('duplicate target');
+    // shared: vocab (checkVocabViolations) + knownSide (checkKnownSide, strict), both on the admitted list
+    if (known && target) reasons.push(...admittedCheck({ known, target }, adm, course, adm.knownCtx));
+    // shared: phrase length ratio (seed-complete §3b)
+    const lr = V.checkPhraseLengthRatio(known, target, course);
+    if (lr.blocking) reasons.push(`lengthRatio: known and target lengths differ ${lr.ratio}x (over 2.5x) — added or dropped content`);
+    // shared: ZUT (phraseZutCollisions = checkPhraseZUT's comparison). USE against the whole live
+    // course (V4-ONLY widening, canon P16), BUILD up to its own seed. No gender licence is read here,
+    // which can only refuse more, never less.
+    const scope = role === 'use' ? existing : existing.filter(r => r.seed_number <= N);
+    const clash = V.phraseZutCollisions(scope, [{ known, target }]);
+    if (clash.length) reasons.push(`ZUT: the course already renders "${known}" as "${clash[0].existing_target}" (seed ${clash[0].existing_seed})`);
+    // V4-ONLY: gap fill ADDS to the live baskets, so a phrase the course already carries adds nothing.
+    if (additive && scope.some(r => nkZ(r.known_text) === nkZ(known) && ntZ(r.target_text) === ntZ(target))) reasons.push('already in the course');
+    // shared ZUT within this set (seed-complete checks the submission as a whole the same way), plus V4-ONLY duplicates
+    const keptPairs = kept.map(k => ({ known_text: k.known_text, target_text: k.target_text, seed_number: k.seed_number }));
+    if (V.phraseZutCollisions(keptPairs, [{ known, target }]).length) reasons.push('ZUT: same known-language line already used with another target in this set');
+    if (kept.some(k => nkZ(k.known_text) === nkZ(known) && ntZ(k.target_text) === ntZ(target))) reasons.push('duplicate');
+    else if (kept.some(k => k.phrase_role === role && ntZ(k.target_text) === ntZ(target))) reasons.push('duplicate target');
+    // V4-ONLY: a USE is a sentence
     if (role === 'use' && useTooShort(known, knownNoSpaceOf(course))) reasons.push('USE phrase too short to be a complete sentence');
     const frames = known ? framesOfAll(known, available) : [];
-    const row = { seed_number: lego.seed_number, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
+    const row = { seed_number: N, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
       phrase_role: role, known_text: known, target_text: target, claimed_frame: c.frame || null, frames };
     if (reasons.length) { rejected.push({ ...row, reasons }); continue; }
-    seenKnown.set(nk, nt); seenTarget.add(nt + '|' + role);
     kept.push(row);
   }
-  return { kept, rejected };
+  // BASKET gates, per LEGO, on what survived — the shared functions, rows they refuse are dropped.
+  const out = [];
+  for (const l of newLegos) {
+    const mine = kept.filter(p => p.seed_number === l.seed_number && p.lego_index === +l.lego_index);
+    if (!mine.length) continue;
+    const drop = (rows, why) => { for (const r of rows) { const i = mine.indexOf(r); if (i >= 0) { mine.splice(i, 1); rejected.push({ ...r, reasons: [why] }); } } };
+    // shared: bare-LEGO ban (partitionBareLegoPhrases)
+    const asP = (r) => ({ known: r.known_text, target: r.target_text, _row: r });
+    const bare = PS.partitionBareLegoPhrases(mine.map(asP), l.target_text).bare.map(p => p._row);
+    drop(bare, 'bareLego: the phrase is the LEGO itself');
+    // shared: BUILD anti-template (checkBuildRecombination rejects)
+    const adm = admittedFor(l);
+    const priorVocab = new Set(adm.rows.filter(r => r.kind !== 'this-lego' && !(r.seed_number === l.seed_number && r.lego_index === +l.lego_index))
+      .flatMap(r => extractVocab(r.target_text, isChinese(course))));
+    const builds = mine.filter(r => r.phrase_role === 'build'), uses = mine.filter(r => r.phrase_role === 'use');
+    const rec = V.checkBuildRecombination({ idx: +l.lego_index, target: l.target_text, build: builds.map(asP), use: uses.map(asP) }, course, l.seed_number, priorVocab);
+    drop(builds.filter(r => rec.rejects.some(x => x.target === r.target_text)), 'buildRecombination: a template BUILD (bare repeat / comma tag / USE stem + tag)');
+    // shared: buildCountSpec (tools/phrase-gate) — at most four BUILD
+    drop(mine.filter(r => r.phrase_role === 'build').slice(BUILD_MAX), `buildCountSpec: more than ${BUILD_MAX} BUILD`);
+    // shared, warn-only in seed-complete too: frame coverage
+    const fw = V.checkBasketFrameCoverage(mine.map(asP), l.target_text);
+    if (fw && fw.length) warnings.push({ lego: `S${l.seed_number}L${l.lego_index}`, frameCoverage: fw });
+    out.push(...mine);
+  }
+  return { kept: out, rejected, warnings };
 }
 
 /**
@@ -375,11 +433,33 @@ function admittedOpener(known, target, vocab, knownNoSpace = false) {
   return best;
 }
 
-function basketFloors(kept, newLegos) {
+/**
+ * Floors per basket: v4's 4 BUILD + 5 USE (Tom 2026-06-16) AND the shared basket gates that
+ * judge a whole set — checkBuildUsePhrases (the validator's ramped floors), checkBuildRecombination's
+ * recombination count, checkSeparableContrast (deu, at the taught seed). A basket that fails any of
+ * them goes back for the one retry, with the reason.
+ */
+function basketFloors(kept, newLegos, { course = null, data = null } = {}) {
   return newLegos.map(l => {
     const mine = kept.filter(p => p.seed_number === l.seed_number && p.lego_index === +l.lego_index);
-    const b = mine.filter(p => p.phrase_role === 'build').length, u = mine.filter(p => p.phrase_role === 'use').length;
-    return { id: `S${l.seed_number}L${l.lego_index}`, known: l.known_text, target: l.target_text, build: b, use: u, ok: b >= BUILD_FLOOR && u >= USE_FLOOR, lego: l };
+    const asP = (r) => ({ known: r.known_text, target: r.target_text });
+    const build = mine.filter(p => p.phrase_role === 'build').map(asP), use = mine.filter(p => p.phrase_role === 'use').map(asP);
+    const reasons = [];
+    if (build.length < BUILD_FLOOR || use.length < USE_FLOOR) reasons.push(`floors: ${build.length} BUILD + ${use.length} USE, needs ${BUILD_FLOOR}+${USE_FLOOR}`);
+    if (course) {
+      const bu = PS.checkBuildUsePhrases({ idx: +l.lego_index, target: l.target_text, build, use }, course, l.seed_number);
+      if (!bu.valid) reasons.push(`buildUseFloors: ${bu.error}`);
+      if (data) {
+        const adm = admittedList({ course, seeds: data.seeds || [], legos: data.legos, components: data.components, seedNumber: l.seed_number, legoIndex: +l.lego_index, lego: l });
+        const priorVocab = new Set(adm.rows.filter(r => r.kind !== 'this-lego' && !(r.seed_number === l.seed_number && r.lego_index === +l.lego_index))
+          .flatMap(r => extractVocab(r.target_text, isChinese(course))));
+        const rec = V.checkBuildRecombination({ idx: +l.lego_index, target: l.target_text, build, use }, course, l.seed_number, priorVocab);
+        if (rec.recombining < rec.required) reasons.push(`buildRecombination: only ${rec.recombining} BUILD recombine with earlier material (${rec.required} required)`);
+      }
+      const sc = SEP.checkSeparableContrast(course, l.seed_number, l.target_text, [...build, ...use]);
+      if (sc.checked && !sc.pass) reasons.push(`separableContrast: ${sc.split} split / ${sc.joined} joined, needs ${sc.required} of each`);
+    }
+    return { id: `S${l.seed_number}L${l.lego_index}`, known: l.known_text, target: l.target_text, build: build.length, use: use.length, ok: !reasons.length, reasons, lego: l };
   });
 }
 
@@ -395,14 +475,6 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
   const taughtBefore = carrierPool(course, data, newLegos);
   const carriers = carriersByFrame(taughtBefore, available, course);
-  // live ZUT reference: every known → targets, from legos and practice rows of the whole course
-  const liveZut = new Map();
-  for (const r of [...data.legos, ...data.phrases]) {
-    const k = norm(r.known_text); if (!k) continue;
-    if (!liveZut.has(k)) liveZut.set(k, []);
-    const t = norm(r.target_text);
-    if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
-  }
   const prompt = buildPrompt({ course, region: [start, end], seeds, newLegos, available, carriers, data });
   const out = { course, region: [start, end], generated: new Date().toISOString(), model: MODEL, available_frames: available,
     new_legos: newLegos.length, prompt_chars: prompt.length, calls: [], kept: [], rejected: [], floors: null, score: null };
@@ -430,15 +502,15 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   console.log(`${course} ${start}-${end}: ${newLegos.length} new LEGOs, ${available.length} frames available, prompt ${prompt.length} chars`);
   let cands = call(prompt, 'generate');
   await tagCandidates(course, cands);
-  let g = gate(cands, { course, data, newLegos, liveZut, available });
-  let floors = basketFloors(g.kept, newLegos);
+  let g = gate(cands, { course, data, newLegos, available });
+  let floors = basketFloors(g.kept, newLegos, { course, data });
   const failing = floors.filter(f => !f.ok);
   console.log(`  gates: kept ${g.kept.length}, rejected ${g.rejected.length}; baskets below floor: ${failing.length}/${floors.length}`);
   if (failing.length) {
     // ONE retry, for the failing baskets only, quoting the gate's reasons.
     const retry = failing.map(f => ({ id: f.id, known: f.known, target: f.target,
       reasons: [...new Set(g.rejected.filter(r => r.seed_number === f.lego.seed_number && r.lego_index === +f.lego.lego_index).flatMap(r => r.reasons))].slice(0, 6)
-        .concat([`had ${f.build} BUILD and ${f.use} USE after gating; needs ${BUILD_FLOOR}+${USE_FLOOR}`]) }));
+        .concat(f.reasons) }));
     const p2 = buildPrompt({ course, region: [start, end], seeds, newLegos: failing.map(f => f.lego), available, carriers, retry, data });
     let c2 = null;
     try { c2 = call(p2, 'retry'); await tagCandidates(course, c2); } catch (e) {
@@ -446,7 +518,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
       if (!/budget/.test(e.message)) throw e;
       out.retry_refused = e.message; console.log(`  retry refused: ${e.message}`);
     }
-    const g2 = c2 ? gate(c2, { course, data, newLegos, liveZut, available }) : { kept: [], rejected: [] };
+    const g2 = c2 ? gate(c2, { course, data, newLegos, available }) : { kept: [], rejected: [] };
     const failIds = new Set(failing.map(f => f.id));
     const keepOld = g.kept.filter(p => !failIds.has(`S${p.seed_number}L${p.lego_index}`));
     const oldForFailing = g.kept.filter(p => failIds.has(`S${p.seed_number}L${p.lego_index}`));
@@ -458,7 +530,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
       merged.push(...(nb.length >= ob.length ? nb : ob));
     }
     g = { kept: merged, rejected: [...g.rejected, ...g2.rejected] };
-    floors = basketFloors(g.kept, newLegos);
+    floors = basketFloors(g.kept, newLegos, { course, data });
     console.log(`  after retry: kept ${g.kept.length}; baskets below floor: ${floors.filter(f => !f.ok).length}/${floors.length}`);
   }
   out.kept = g.kept; out.rejected = g.rejected; out.floors = floors;
@@ -490,13 +562,6 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   const missing = (missingIn || before.missing_ids).filter(f => available.includes(f));
   const taughtBefore = carrierPool(course, data, newLegos);
   const carriers = carriersByFrame(taughtBefore, missing, course);
-  const liveZut = new Map();
-  for (const r of [...data.legos, ...data.phrases]) {
-    const k = norm(r.known_text); if (!k) continue;
-    if (!liveZut.has(k)) liveZut.set(k, []);
-    const t = norm(r.target_text);
-    if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
-  }
   const file = path.join(EVIDENCE, `v4gap-${course}-${start}-${end}.json`);
   // A second pass ACCUMULATES: earlier kept candidates count as live (ZUT, duplicates)
   // and stay in the file; the missing list is what the earlier passes left uncovered.
@@ -504,10 +569,6 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   const priorKept = prior ? prior.kept : [];
   const pass = prior ? (prior.calls || []).length + 1 : 1;
   const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, missing, carriers, data });
-  for (const r of priorKept) {
-    const k = norm(r.known_text); if (!liveZut.has(k)) liveZut.set(k, []);
-    liveZut.get(k).push({ target: norm(r.target_text), target_text: r.target_text, seed: r.seed_number });
-  }
   const out = { course, region: [start, end], mode: 'gaps', generated: new Date().toISOString(), model: MODEL, effort: EFFORT,
     available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'frame-tagger', new_legos: newLegos.length,
     prompt_chars: prompt.length, before: prior ? prior.before : before, calls: prior ? prior.calls : [], kept: [...priorKept], rejected: prior ? prior.rejected : [], after: null,
@@ -525,7 +586,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
   out.calls.push({ label, candidates: r.phrases.length, ...r.usage });
   await tagCandidates(course, r.phrases);
-  const g = gate(r.phrases, { course, data, newLegos, liveZut, available, additive: true });
+  const g = gate(r.phrases, { course, data, newLegos, available, additive: true, priorRows: priorKept });
   out.kept.push(...g.kept); out.rejected.push(...g.rejected.map(x => ({ ...x, pass })));
   out.after = scoreWindow([...livePhrases, ...out.kept], available, { rarefyN: 60 });
   out.tokens_spent = out.calls.reduce((a, c) => a + c.total, 0);
@@ -544,7 +605,7 @@ function persistCandidates(file, label, r) {
   return p;
 }
 
-module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, admittedOpener, interjectionRule, frameLine, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
+module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, basketFloors, admittedOpener, interjectionRule, frameLine, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);

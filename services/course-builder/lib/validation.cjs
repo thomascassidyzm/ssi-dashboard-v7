@@ -869,7 +869,24 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
   // Same licence as the LEGO gate: a stored female/male reading pair is not a
   // collision, it is the two-voice answer to an open known side.
   const licence = await loadGenderVariantLicence(supabase, scope);
+  return phraseZutCollisions(existing, phrases, licence);
+}
 
+/**
+ * The ZUT comparison itself, pure (split out 2026-11-05 so the v4 generator runs THIS gate at
+ * generation time on rows it already holds, rather than a copy). `existing`: rows
+ * {known_text, target_text, seed_number, __course?} the caller has scoped; `licence`: the gender-
+ * variant licence (null = none, which is stricter, never looser).
+ */
+function phraseZutCollisions(existing, phrases, licence = null) {
+  const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+  const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
+  const subByKnown = new Map();
+  for (const p of phrases || []) {
+    if (!p.known || !p.target) continue;
+    const k = nk(p.known);
+    if (!subByKnown.has(k)) subByKnown.set(k, { known: p.known, target: p.target, normTarget: nt(p.target) });
+  }
   const collisions = [], seen = new Set();
   for (const e of existing) {
     const sub = subByKnown.get(nk(e.known_text));
@@ -1040,6 +1057,21 @@ const NON_EXAMPLE_TEXT = /[\[\]{}()（）［］｛｝]|(?<![0-9])\/|\/(?![0-9])/
 /** True when one string holds a bracket, parenthesis or slash-separated alternatives — the shared test for every content-writing surface. */
 function hasNonExampleText(text) {
   return text != null && NON_EXAMPLE_TEXT.test(String(text));
+}
+
+// ─── Phrase length ratio (seed-complete §3b, moved here 2026-11-05 so v4 runs the same gate) ───
+// known and target must say the same thing: a pair whose character lengths differ by more than
+// 2.5× has added or dropped content. Blocking except where either side is logographic.
+const LENGTH_RATIO_THRESHOLD = 2.5;
+const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
+function checkPhraseLengthRatio(known, target, courseCode) {
+  const [t, k] = String(courseCode || '').split('_for_').map((x) => String(x || '').split('_')[0]);
+  const logographic = LOGOGRAPHIC_LANGS.includes(t) || LOGOGRAPHIC_LANGS.includes(k);
+  const kl = String(known || '').length, tl = String(target || '').length;
+  if (!kl || !tl) return { ratio: null, mismatch: false, blocking: false, logographic };
+  const ratio = Math.max(kl, tl) / Math.min(kl, tl);
+  const mismatch = ratio > LENGTH_RATIO_THRESHOLD;
+  return { ratio: Math.round(ratio * 10) / 10, mismatch, blocking: mismatch && !logographic, logographic, known_len: kl, target_len: tl };
 }
 
 function checkNonExampleText(legos) {
@@ -1390,7 +1422,7 @@ module.exports = {
   tokenizeKnown,
   compileKnownContract,
   checkKnownSide,
-  buildKnownSideCtx, legoPos, seedSentencePos, knownIsNoSpace,
+  buildKnownSideCtx, legoPos, seedSentencePos, knownIsNoSpace, checkPhraseLengthRatio,
   isKnownVocabBreach,
   loadPairContract,
   checkPhraseComplexity,
@@ -1403,7 +1435,7 @@ module.exports = {
   isDedupConflict,
   _clearGenderVariantLicenceCache,
   checkLegoOverlap,
-  checkPhraseZUT,
+  checkPhraseZUT, phraseZutCollisions,
   checkBasketFrameCoverage,
   classifySeedPattern,
   formatDecompositionPatterns,

@@ -24,7 +24,7 @@ const {
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss, checkNonExampleText,
   loadPairContract, checkKnownSide, isKnownVocabBreach,
-  buildKnownSideCtx, legoPos, seedSentencePos,
+  buildKnownSideCtx, legoPos, seedSentencePos, checkPhraseLengthRatio,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
 // A sector segment is its own course code but one course to the learner, so the
@@ -1657,19 +1657,16 @@ module.exports = function seedCompleteRoutes(ctx) {
 
         for (const phrase of allPhrases) {
           if (!phrase.known || !phrase.target) continue;
-          const knownLen = phrase.known.length;
-          const targetLen = phrase.target.length;
-          if (knownLen === 0 || targetLen === 0) continue;
-
-          const ratio = Math.max(knownLen, targetLen) / Math.min(knownLen, targetLen);
-          if (ratio > LENGTH_RATIO_THRESHOLD) {
+          // The shared gate (validation.cjs checkPhraseLengthRatio), so v4 runs the same one.
+          const lr = checkPhraseLengthRatio(phrase.known, phrase.target, course_code);
+          if (lr.mismatch) {
             lengthMismatches.push({
               lego_id: legoId,
               known: phrase.known.substring(0, 50),
               target: phrase.target.substring(0, 50),
-              known_len: knownLen,
-              target_len: targetLen,
-              ratio: Math.round(ratio * 10) / 10,
+              known_len: lr.known_len,
+              target_len: lr.target_len,
+              ratio: lr.ratio,
             });
           }
         }
