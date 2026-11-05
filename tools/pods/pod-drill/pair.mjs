@@ -34,7 +34,7 @@
  * of every chunk in an EXISTING cut that has none, leaving the target side byte-identical; noShrink
  * admits exactly those entries, after checking that nothing but the English spans was added.
  */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs'
 import { spawn, spawnSync } from 'node:child_process'
 import path from 'node:path'
 import os from 'node:os'
@@ -186,6 +186,19 @@ async function sonnetBatches(items, build, size = 8) {
 }
 const cardBlock = (d) => ({ id: d.id, [LANG_NAME]: d.target, [KNOWN_NAME]: d.known, pod_LEGOs: d.chunks.map((c) => [c.text, c.gloss || null]) })
 
+// ---- known twins: every whole-turn card of every course's whole-turns list (job #836)
+let twinCache = null
+function knownTwins() {
+  if (twinCache) return twinCache
+  twinCache = []
+  for (const f of readdirSync(OPS).filter((n) => n.endsWith('.whole-turns.json'))) {
+    const w = JSON.parse(readFileSync(path.join(OPS, f), 'utf8'))
+    if (knownLangOf(w.course) !== KNOWN) continue
+    for (const c of w.cards) twinCache.push({ ...c, course: w.course })
+  }
+  return twinCache
+}
+
 // ---- turn a pairing into a cut entry, or say why not
 function buildSplit(d, pieces) {
   const tm = targetTimes(d); if (!tm) return { err: `the ${LANG_NAME} clip has no Cartesia word timings that say its text` }
@@ -223,7 +236,18 @@ for (const d of todo) {
       if (!tmL && d.kind === 'whole-turn') { result.set(d.id, { status: 'whole', why: `several-line turn: the ${LANG_NAME} clip has no Cartesia word timings that say its text` }); continue }
       if (!tmL || splitLines(tmL.words).length < 2) continue
       if (!d.knownAudioId) { result.set(d.id, { status: 'whole', why: `several-line turn: no ${KNOWN_NAME} clip` }); continue }
-      const b = buildLines(d)
+      let b = buildLines(d)
+      // KNOWN TWIN (job #836): the known take carries no Cartesia timings, but another course's pod has a take of the
+      // SAME words in the SAME voice that does (the shared English Pod 1 lines were rendered once per course). Its
+      // sentence spans stand in; the entry names the card's own known clip (knownTwinOf), so the player uses the twin
+      // only while the card still plays that clip.
+      if (!b.entry && d.knownVoice && !knownTimes(d)) {
+        const twin = knownTwins().find((c) => c.knownVoice === d.knownVoice && normT(c.known) === normT(d.known) && c.knownAudioId !== d.knownAudioId && c.knownWordTimings)
+        if (twin && await fetchClip(twin.knownAudioId)) {
+          const t2 = buildLines({ ...d, knownAudioId: twin.knownAudioId, knownWordTimings: twin.knownWordTimings })
+          if (t2.entry) b = { entry: { ...t2.entry, knownTwinOf: d.knownAudioId, knownTwinCourse: twin.course } }
+        }
+      }
       result.set(d.id, b.entry ? { status: 'cut', source: 'lines', entry: b.entry } : { status: 'whole', why: `several-line turn: ${b.err}` })
       continue
     }
