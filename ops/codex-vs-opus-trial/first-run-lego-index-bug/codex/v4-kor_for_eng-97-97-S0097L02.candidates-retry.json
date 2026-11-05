@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:17:30.522Z",
+ "usage": {
+  "provider": "codex",
+  "input": 13200,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 996,
+  "thinking": 516,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a97e-c3ee-7772-81d8-7917dc6cf9f6",
+  "ms": 31874,
+  "total": 26484
+ },
+ "phrases": [
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "now, as soon as you want, ready to go",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "today, as soon as you want, ready to go",
+   "target": "오늘 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "this evening, as soon as you want, ready to go",
+   "target": "오늘 저녁 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "tomorrow, as soon as you want, ready to go",
+   "target": "내일 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm a little tired but, as soon as you want, ready to go.",
+   "target": "좀 피곤해요, 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm learning Korean and, as soon as you want, ready to go.",
+   "target": "한국어를 배우고 있어요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P3"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm trying to remember a word but, as soon as you want, ready to go.",
+   "target": "단어 하나를 기억하려고 해요, 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm going to practise speaking with my friends and, as soon as you want, ready to go.",
+   "target": "친구들과 말하는 연습을 할 거예요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P2"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm very happy with what I've done and, as soon as you want, ready to go.",
+   "target": "제가 했다고 아주 기뻐요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P29"
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:13:04.183Z",
+ "usage": {
+  "provider": "codex",
+  "input": 34770,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 681,
+  "thinking": 291,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a97a-ea97-7153-bb05-fb2d30b6c1cd",
+  "ms": 17703,
+  "total": 47739
+ },
+ "phrases": [
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be interesting",
+   "target": "面白いはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be busy now",
+   "target": "今、忙しいはずじゃない",
+   "frame": "P28"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be that big",
+   "target": "そんなに大きいはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be feeling sick",
+   "target": "具合が悪いはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that it's not supposed to be difficult",
+   "target": "難しいはずじゃないと思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it's not supposed to be busy, is it?",
+   "target": "忙しいはずじゃない？",
+   "frame": "P20"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "they told us that it's not supposed to be interesting",
+   "target": "面白いはずじゃないって言ってた",
+   "frame": "P12"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it feels like it's not supposed to be that difficult",
+   "target": "そんなに難しいはずじゃない気がする",
+   "frame": "P27"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it's not supposed to be difficult, but I can't remember the answer",
+   "target": "難しいはずじゃないけど、答えを思い出せない",
+   "frame": "P15"
+  }
+ ]
+}

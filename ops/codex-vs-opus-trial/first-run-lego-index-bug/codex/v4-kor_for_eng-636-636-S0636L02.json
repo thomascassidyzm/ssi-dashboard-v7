@@ -1,0 +1,436 @@
+{
+ "course": "kor_for_eng",
+ "region": [
+  636,
+  636
+ ],
+ "lego": "S0636L02",
+ "provider": "codex",
+ "generated": "2026-11-05T02:26:09.707Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P30",
+  "P31",
+  "D2",
+  "D3",
+  "D4",
+  "D7",
+  "D9",
+  "D11",
+  "D12",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 114463,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 114463,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 48502,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 952,
+   "thinking": 486,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a987-2a0a-72b0-9dc1-c09c52f0a796",
+   "ms": 27862,
+   "total": 61742
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 114861,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 49566,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 727,
+   "thinking": 275,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a987-df63-7771-81f6-202c4c7de284",
+   "ms": 22117,
+   "total": 62581
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "build",
+   "known_text": "I think it's jane's bag",
+   "target_text": "제인의 가방인 것 같아요",
+   "claimed_frame": "P9",
+   "frames": [
+    "P9"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "build",
+   "known_text": "this seems like jane's bag",
+   "target_text": "이건 제인의 가방인 것 같네요",
+   "claimed_frame": "P27",
+   "frames": [
+    "P27"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "build",
+   "known_text": "I don't think that is jane's bag",
+   "target_text": "그건 제인의 가방인 것 같지 않아요",
+   "claimed_frame": "P23",
+   "frames": [
+    "P9",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "build",
+   "known_text": "do you think this is jane's bag?",
+   "target_text": "이게 제인의 가방인 것 같아요?",
+   "claimed_frame": "P20",
+   "frames": [
+    "P9",
+    "P20"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "use",
+   "known_text": "I think this is jane's bag, but I'm not sure.",
+   "target_text": "이건 제인의 가방인 것 같아요, 하지만 모르겠어요.",
+   "claimed_frame": "P15",
+   "frames": [
+    "P9",
+    "P15",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "use",
+   "known_text": "why do you think that is jane's bag?",
+   "target_text": "왜 그건 제인의 가방인 것 같아요?",
+   "claimed_frame": "P21",
+   "frames": [
+    "P9",
+    "P20",
+    "P21"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "use",
+   "known_text": "yes, I think that is jane's bag, and I'll ask her.",
+   "target_text": "네, 그건 제인의 가방인 것 같아요, 그리고 그녀한테 물어볼 거예요.",
+   "claimed_frame": "D2",
+   "frames": [
+    "P9"
+   ]
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "use",
+   "known_text": "I think that is jane's bag, so I don't want to open it.",
+   "target_text": "그건 제인의 가방인 것 같아요, 그래서 그걸 열고 싶지 않아요.",
+   "claimed_frame": "P1",
+   "frames": [
+    "P1",
+    "P9",
+    "P15",
+    "P23"
+   ]
+  }
+ ],
+ "rejected": [
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think that it's jane's bag",
+   "target": "그게 제인의 가방인 것 같아요",
+   "frame": "P9",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "is that jane's bag?",
+   "target": "그건 제인의 가방인 거예요?",
+   "frame": "P20",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I don't think that it's jane's bag",
+   "target": "그게 제인의 가방인 것 같지 않아요",
+   "frame": "P23",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it seems like jane's bag",
+   "target": "제인의 가방인 것 같네요",
+   "frame": "P27",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "how do you know that it's jane's bag?",
+   "target": "그게 제인의 가방인 걸 어떻게 알아요?",
+   "frame": "P21",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I know that it's jane's bag, but I don't want to give it to him",
+   "target": "그게 제인의 가방인 걸 알아요, 하지만 그한테 그걸 주고 싶지 않아요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "yes, I think that that one over there is jane's bag, and I'll ask her",
+   "target": "네, 저건 제인의 가방인 것 같아요, 그리고 그녀한테 물어볼 거예요",
+   "frame": "D2",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that it's jane's bag, so we should ask before we go",
+   "target": "그게 제인의 가방인 것 같아요, 그래서 가기 전에 물어봐야 해요",
+   "frame": "P7",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "sorry, I didn't know that it was jane's bag at the time",
+   "target": "미안해요, 그때 제인의 가방인 걸 몰랐어요",
+   "frame": "D4",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 2,
+   "lego_known": "jane's bag",
+   "lego_target": "제인의 가방인",
+   "phrase_role": "use",
+   "known_text": "I think that is jane's bag, but I haven't seen her yet.",
+   "target_text": "그건 제인의 가방인 것 같아요, 하지만 아직 그녀를 못 봤어요.",
+   "claimed_frame": "P29",
+   "frames": [
+    "P9",
+    "P15",
+    "P23",
+    "P28",
+    "P29"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 그녀를"
+   ],
+   "pass": 2
+  }
+ ],
+ "floors": [
+  {
+   "id": "S636L2",
+   "known": "jane's bag",
+   "target": "제인의 가방인",
+   "build": 4,
+   "use": 4,
+   "ok": false,
+   "reasons": [
+    "floors: 4 BUILD + 4 USE, needs 4+5",
+    "buildUseFloors: USE: need 5+, got 4"
+   ],
+   "lego": {
+    "seed_number": 636,
+    "lego_index": 2,
+    "known_text": "jane's bag",
+    "target_text": "제인의 가방인",
+    "type": "M",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 8,
+  "available": 41,
+  "used": 7,
+  "coverage": 0.171,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 212.5,
+  "interjection_openers": 1,
+  "interjection_rate": 0.125,
+  "used_ids": [
+   "P1",
+   "P9",
+   "P15",
+   "P20",
+   "P21",
+   "P23",
+   "P27"
+  ],
+  "missing_ids": [
+   "P2",
+   "P3",
+   "P4",
+   "P5",
+   "P6",
+   "P7",
+   "P8",
+   "P10",
+   "P11",
+   "P12",
+   "P13",
+   "P14",
+   "P16",
+   "P17",
+   "P18",
+   "P19",
+   "P22",
+   "P24",
+   "P25",
+   "P26",
+   "P28",
+   "P29",
+   "P30",
+   "P31",
+   "D2",
+   "D3",
+   "D4",
+   "D7",
+   "D9",
+   "D11",
+   "D12",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P1": 1,
+   "P9": 7,
+   "P15": 2,
+   "P20": 2,
+   "P21": 1,
+   "P23": 3,
+   "P27": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 0,
+  "rejected": 9,
+  "below_floor": 1
+ },
+ "tokens_spent": 124323
+}

@@ -1,0 +1,419 @@
+{
+ "course": "kor_for_eng",
+ "region": [
+  511,
+  511
+ ],
+ "lego": "S0511L03",
+ "provider": "codex",
+ "generated": "2026-11-05T02:23:30.779Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P30",
+  "P31",
+  "D2",
+  "D3",
+  "D4",
+  "D7",
+  "D11",
+  "D12",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 95317,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 95317,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 40351,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 773,
+   "thinking": 324,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a984-bd33-7753-bf44-0b6a5462fa42",
+   "ms": 24944,
+   "total": 53412
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 95772,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 40475,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 693,
+   "thinking": 222,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a985-732a-75f2-a06f-a59bc63d3b64",
+   "ms": 22195,
+   "total": 53456
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "want to speak to each person",
+   "target_text": "모든 사람에게 말하고 싶어요",
+   "claimed_frame": "P1",
+   "frames": [
+    "P1"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "going to try to explain to each person",
+   "target_text": "모든 사람에게 설명해 볼 거예요",
+   "claimed_frame": "P2",
+   "frames": [
+    "P2"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "can give a book to each person",
+   "target_text": "모든 사람에게 책을 줄 수 있어요",
+   "claimed_frame": "P4",
+   "frames": [
+    "P4"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "need to talk to each person",
+   "target_text": "모든 사람에게 이야기해야 해요",
+   "claimed_frame": "P6",
+   "frames": [
+    "P6"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "why do you want to give more time to each person?",
+   "target_text": "왜 모든 사람에게 시간을 더 주고 싶어요?",
+   "claimed_frame": "P21",
+   "frames": [
+    "P1",
+    "P20",
+    "P21",
+    "P24"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to show something to each person tomorrow",
+   "target_text": "그는 내일 모든 사람에게 뭔가 보여 주고 싶다고 했어요",
+   "claimed_frame": "P12",
+   "frames": [
+    "P1",
+    "P12",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "yes, I'll ask what they need to each person before you go",
+   "target_text": "네 가기 전에 모든 사람에게 뭐가 필요한지 물어볼 거예요",
+   "claimed_frame": "D2",
+   "frames": [
+    "P13",
+    "P22"
+   ]
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "thank you for trying to explain to each person how to say this word in Korean",
+   "target_text": "모든 사람에게 이 단어를 한국어로 어떻게 말하는지 설명해 주려고 하는 게 고마워요",
+   "claimed_frame": "D3",
+   "frames": [
+    "P12",
+    "P22",
+    "D3"
+   ]
+  }
+ ],
+ "rejected": [
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "I'm sorry, but I don't have enough time to give a different answer to each person",
+   "target_text": "미안해요, 하지만 모든 사람에게 다른 답을 줄 시간이 충분하지 않아요",
+   "claimed_frame": "D4",
+   "frames": [
+    "P23"
+   ],
+   "reasons": [
+    "interjection at the front is not yet admitted for this basket (it must be a taught chunk this basket owns, with its taught target form)"
+   ],
+   "pass": 1
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "I'm going to explain to each person",
+   "target_text": "모든 사람에게 설명할 거예요",
+   "claimed_frame": "P2",
+   "frames": [
+    "P2"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 설명할"
+   ],
+   "pass": 2
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "build",
+   "known_text": "you should say something to each person",
+   "target_text": "모든 사람에게 뭔가 말해야 해요",
+   "claimed_frame": "P7",
+   "frames": [
+    "P7"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 말해야"
+   ],
+   "pass": 2
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "I don't know how to explain the problem to each person, but I want to try",
+   "target_text": "모든 사람에게 문제를 어떻게 설명하는지 몰라요, 하지만 해 보고 싶어요",
+   "claimed_frame": "P22",
+   "frames": [
+    "P1",
+    "P10",
+    "P15",
+    "P22",
+    "P23"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 설명하는지"
+   ],
+   "pass": 2
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "I think it's important to give the same book to each person as quickly as possible",
+   "target_text": "가능한 한 빨리 모든 사람에게 같은 책을 주는 게 중요하다고 생각해요",
+   "claimed_frame": "P9",
+   "frames": [
+    "P9",
+    "P18",
+    "P25"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 주는 중요하다고"
+   ],
+   "pass": 2
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 3,
+   "lego_known": "to each person",
+   "lego_target": "사람에게",
+   "phrase_role": "use",
+   "known_text": "if you want to say something to each person, we need a little more time",
+   "target_text": "모든 사람에게 뭔가 말하고 싶으면 시간이 조금 더 필요해요",
+   "claimed_frame": "P14",
+   "frames": [
+    "P1",
+    "P14",
+    "P24"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 싶으면"
+   ],
+   "pass": 2
+  }
+ ],
+ "floors": [
+  {
+   "id": "S511L3",
+   "known": "to each person",
+   "target": "사람에게",
+   "build": 4,
+   "use": 4,
+   "ok": false,
+   "reasons": [
+    "floors: 4 BUILD + 4 USE, needs 4+5",
+    "buildUseFloors: USE: need 5+, got 4"
+   ],
+   "lego": {
+    "seed_number": 511,
+    "lego_index": 3,
+    "known_text": "to each person",
+    "target_text": "사람에게",
+    "type": "A",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 8,
+  "available": 40,
+  "used": 12,
+  "coverage": 0.3,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 200,
+  "interjection_openers": 1,
+  "interjection_rate": 0.125,
+  "used_ids": [
+   "P1",
+   "P2",
+   "P4",
+   "P6",
+   "P12",
+   "P13",
+   "P20",
+   "P21",
+   "P22",
+   "P24",
+   "P28",
+   "D3"
+  ],
+  "missing_ids": [
+   "P3",
+   "P5",
+   "P7",
+   "P8",
+   "P9",
+   "P10",
+   "P11",
+   "P14",
+   "P15",
+   "P16",
+   "P17",
+   "P18",
+   "P19",
+   "P23",
+   "P25",
+   "P26",
+   "P27",
+   "P29",
+   "P30",
+   "P31",
+   "D2",
+   "D4",
+   "D7",
+   "D11",
+   "D12",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P1": 3,
+   "P2": 1,
+   "P4": 1,
+   "P6": 1,
+   "P12": 2,
+   "P13": 1,
+   "P20": 1,
+   "P21": 1,
+   "P22": 2,
+   "P24": 1,
+   "P28": 1,
+   "D3": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 8,
+  "rejected": 1,
+  "below_floor": 1
+ },
+ "tokens_spent": 106868
+}

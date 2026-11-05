@@ -1,0 +1,331 @@
+{
+ "course": "jpn_for_eng",
+ "region": [
+  307,
+  307
+ ],
+ "lego": "S0307L01",
+ "provider": "codex",
+ "generated": "2026-11-05T02:08:17.168Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P31",
+  "D2",
+  "D4",
+  "D7",
+  "D9",
+  "D11",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 51184,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 51184,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 24206,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 659,
+   "thinking": 268,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a976-d0f6-7a70-bca6-a0635e570ea5",
+   "ms": 21739,
+   "total": 37153
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 51513,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 23353,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 791,
+   "thinking": 389,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a977-58ea-7e31-9498-ab2d19bbc881",
+   "ms": 24847,
+   "total": 36432
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "build",
+   "known_text": "he is sitting over there",
+   "target_text": "彼はあそこに座ってる",
+   "claimed_frame": "P3",
+   "frames": [
+    "P3"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "build",
+   "known_text": "she is sitting over there",
+   "target_text": "彼女はあそこに座ってる",
+   "claimed_frame": "P3",
+   "frames": [
+    "P3"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "build",
+   "known_text": "sitting over there now",
+   "target_text": "今あそこに座ってる",
+   "claimed_frame": "P28",
+   "frames": [
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "build",
+   "known_text": "I think that he is sitting over there",
+   "target_text": "彼はあそこに座ってると思う",
+   "claimed_frame": "P9",
+   "frames": [
+    "P3",
+    "P9"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "use",
+   "known_text": "I want to meet the man who's sitting over there",
+   "target_text": "あそこに座ってる男性に会いたい",
+   "claimed_frame": "P1",
+   "frames": [
+    "P1",
+    "P3",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "use",
+   "known_text": "I know that young woman who's sitting over there",
+   "target_text": "あそこに座ってる若い女性を知ってる",
+   "claimed_frame": "P16",
+   "frames": [
+    "P3",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "use",
+   "known_text": "who is sitting over there?",
+   "target_text": "あそこに座ってるの、誰？",
+   "claimed_frame": "P21",
+   "frames": [
+    "P3",
+    "P20",
+    "P21"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "use",
+   "known_text": "I wonder if the person sitting over there knows the answer",
+   "target_text": "あそこに座ってる人、答えを知ってるか気になる",
+   "claimed_frame": "P22",
+   "frames": [
+    "P16",
+    "P22"
+   ]
+  },
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "use",
+   "known_text": "the man sitting over there said that he wants to show you something",
+   "target_text": "あそこに座ってる男性、何か見せたいって言ってた",
+   "claimed_frame": "P12",
+   "frames": [
+    "P1",
+    "P12",
+    "P16"
+   ]
+  }
+ ],
+ "rejected": [
+  {
+   "seed_number": 307,
+   "lego_index": 1,
+   "lego_known": "sitting over there",
+   "lego_target": "あそこに座ってる",
+   "phrase_role": "build",
+   "known_text": "are you sitting over there?",
+   "target_text": "あそこに座ってる？",
+   "claimed_frame": "P20",
+   "frames": [
+    "P3",
+    "P20"
+   ],
+   "reasons": [
+    "bareLego: the phrase is the LEGO itself"
+   ],
+   "pass": 1
+  }
+ ],
+ "floors": [
+  {
+   "id": "S307L1",
+   "known": "sitting over there",
+   "target": "あそこに座ってる",
+   "build": 4,
+   "use": 5,
+   "ok": true,
+   "reasons": [],
+   "lego": {
+    "seed_number": 307,
+    "lego_index": 1,
+    "known_text": "sitting over there",
+    "target_text": "あそこに座ってる",
+    "type": "M",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 9,
+  "available": 38,
+  "used": 9,
+  "coverage": 0.237,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 200,
+  "interjection_openers": 0,
+  "interjection_rate": 0,
+  "used_ids": [
+   "P1",
+   "P3",
+   "P9",
+   "P12",
+   "P16",
+   "P20",
+   "P21",
+   "P22",
+   "P28"
+  ],
+  "missing_ids": [
+   "P2",
+   "P4",
+   "P5",
+   "P6",
+   "P7",
+   "P8",
+   "P10",
+   "P11",
+   "P13",
+   "P14",
+   "P15",
+   "P17",
+   "P18",
+   "P19",
+   "P23",
+   "P24",
+   "P25",
+   "P26",
+   "P27",
+   "P29",
+   "P31",
+   "D2",
+   "D4",
+   "D7",
+   "D9",
+   "D11",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P1": 2,
+   "P3": 6,
+   "P9": 1,
+   "P12": 1,
+   "P16": 4,
+   "P20": 1,
+   "P21": 1,
+   "P22": 1,
+   "P28": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 8,
+  "rejected": 1,
+  "below_floor": 1
+ },
+ "tokens_spent": 73585
+}

@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:26:37.571Z",
+ "usage": {
+  "provider": "codex",
+  "input": 48502,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 952,
+  "thinking": 486,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a987-2a0a-72b0-9dc1-c09c52f0a796",
+  "ms": 27862,
+  "total": 61742
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think that it's jane's bag",
+   "target": "그게 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "is that jane's bag?",
+   "target": "그건 제인의 가방인 거예요?",
+   "frame": "P20"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I don't think that it's jane's bag",
+   "target": "그게 제인의 가방인 것 같지 않아요",
+   "frame": "P23"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it seems like jane's bag",
+   "target": "제인의 가방인 것 같네요",
+   "frame": "P27"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "how do you know that it's jane's bag?",
+   "target": "그게 제인의 가방인 걸 어떻게 알아요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I know that it's jane's bag, but I don't want to give it to him",
+   "target": "그게 제인의 가방인 걸 알아요, 하지만 그한테 그걸 주고 싶지 않아요",
+   "frame": "P1"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "yes, I think that that one over there is jane's bag, and I'll ask her",
+   "target": "네, 저건 제인의 가방인 것 같아요, 그리고 그녀한테 물어볼 거예요",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that it's jane's bag, so we should ask before we go",
+   "target": "그게 제인의 가방인 것 같아요, 그래서 가기 전에 물어봐야 해요",
+   "frame": "P7"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "sorry, I didn't know that it was jane's bag at the time",
+   "target": "미안해요, 그때 제인의 가방인 걸 몰랐어요",
+   "frame": "D4"
+  }
+ ]
+}

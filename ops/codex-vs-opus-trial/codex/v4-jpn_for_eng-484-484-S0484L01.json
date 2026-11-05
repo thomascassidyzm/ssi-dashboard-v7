@@ -1,0 +1,341 @@
+{
+ "course": "jpn_for_eng",
+ "region": [
+  484,
+  484
+ ],
+ "lego": "S0484L01",
+ "provider": "codex",
+ "generated": "2026-11-05T02:11:59.649Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P30",
+  "P31",
+  "D2",
+  "D4",
+  "D7",
+  "D9",
+  "D11",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 74454,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 74454,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 34654,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 1087,
+   "thinking": 666,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a97a-3474-7e03-a0ed-45db3d9d8034",
+   "ms": 27797,
+   "total": 48029
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 74840,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 34770,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 681,
+   "thinking": 291,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a97a-ea97-7153-bb05-fb2d30b6c1cd",
+   "ms": 17703,
+   "total": 47739
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "not supposed to be interesting",
+   "target_text": "面白いはずじゃない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "not supposed to be busy now",
+   "target_text": "今、忙しいはずじゃない",
+   "claimed_frame": "P28",
+   "frames": [
+    "P23",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "not supposed to be that big",
+   "target_text": "そんなに大きいはずじゃない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "not supposed to be feeling sick",
+   "target_text": "具合が悪いはずじゃない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P3",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "I think that it's not supposed to be difficult",
+   "target_text": "難しいはずじゃないと思う",
+   "claimed_frame": "P9",
+   "frames": [
+    "P9",
+    "P18",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "it's not supposed to be busy, is it?",
+   "target_text": "忙しいはずじゃない？",
+   "claimed_frame": "P20",
+   "frames": [
+    "P18",
+    "P20",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "they told us that it's not supposed to be interesting",
+   "target_text": "面白いはずじゃないって言ってた",
+   "claimed_frame": "P12",
+   "frames": [
+    "P12",
+    "P18",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "it feels like it's not supposed to be that difficult",
+   "target_text": "そんなに難しいはずじゃない気がする",
+   "claimed_frame": "P27",
+   "frames": [
+    "P18",
+    "P23",
+    "P27"
+   ]
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "it's not supposed to be difficult, but I can't remember the answer",
+   "target_text": "難しいはずじゃないけど、答えを思い出せない",
+   "claimed_frame": "P15",
+   "frames": [
+    "P4",
+    "P15",
+    "P18",
+    "P23"
+   ]
+  }
+ ],
+ "rejected": [
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "what do you think it's not supposed to be like?",
+   "target_text": "どんな感じのはずじゃないと思う？",
+   "claimed_frame": "P21",
+   "frames": [
+    "P9",
+    "P20",
+    "P21",
+    "P23",
+    "P27"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: どんな感じのはずじゃないと思う"
+   ],
+   "pass": 1
+  }
+ ],
+ "floors": [
+  {
+   "id": "S484L1",
+   "known": "not supposed to be",
+   "target": "はずじゃない",
+   "build": 4,
+   "use": 5,
+   "ok": true,
+   "reasons": [],
+   "lego": {
+    "seed_number": 484,
+    "lego_index": 1,
+    "known_text": "not supposed to be",
+    "target_text": "はずじゃない",
+    "type": "M",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 9,
+  "available": 39,
+  "used": 10,
+  "coverage": 0.256,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 244.4,
+  "interjection_openers": 0,
+  "interjection_rate": 0,
+  "used_ids": [
+   "P3",
+   "P4",
+   "P9",
+   "P12",
+   "P15",
+   "P18",
+   "P20",
+   "P23",
+   "P27",
+   "P28"
+  ],
+  "missing_ids": [
+   "P1",
+   "P2",
+   "P5",
+   "P6",
+   "P7",
+   "P8",
+   "P10",
+   "P11",
+   "P13",
+   "P14",
+   "P16",
+   "P17",
+   "P19",
+   "P21",
+   "P22",
+   "P24",
+   "P25",
+   "P26",
+   "P29",
+   "P30",
+   "P31",
+   "D2",
+   "D4",
+   "D7",
+   "D9",
+   "D11",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P3": 1,
+   "P4": 1,
+   "P9": 1,
+   "P12": 1,
+   "P15": 1,
+   "P18": 5,
+   "P20": 1,
+   "P23": 9,
+   "P27": 1,
+   "P28": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 8,
+  "rejected": 1,
+  "below_floor": 1
+ },
+ "tokens_spent": 95768
+}

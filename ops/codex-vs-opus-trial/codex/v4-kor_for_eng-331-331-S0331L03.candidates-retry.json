@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:19:36.357Z",
+ "usage": {
+  "provider": "codex",
+  "input": 30938,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 661,
+  "thinking": 216,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a980-dd46-7d20-a99b-04a8b49466dc",
+  "ms": 20617,
+  "total": 43887
+ },
+ "phrases": [
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "can give an answer",
+   "target": "답을 줄 수 있어요",
+   "frame": "P4"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "going to give that book",
+   "target": "그 책을 줄 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "not sure if I can give more time",
+   "target": "시간을 더 줄 수 있을지 모르겠어요",
+   "frame": "P10"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "give as quickly as possible",
+   "target": "가능한 한 빨리 줄",
+   "frame": "P25"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I hope I'll be able to give her a little more time tomorrow.",
+   "target": "내일 그녀한테 시간을 조금 더 줄 수 있으면 좋겠어요.",
+   "frame": "P11"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I think that she could give you all the answers if she wanted to.",
+   "target": "그녀가 원하면 모든 답을 줄 수 있을 것 같아요.",
+   "frame": "P9"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "Why can't you give me that book before you go?",
+   "target": "왜 가기 전에 저한테 그 책을 줄 수 없을 것 같아요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I know someone who can give you more time, but he's busy today.",
+   "target": "시간을 더 줄 수 있는 사람을 알아요, 하지만 그는 오늘 바빠요.",
+   "frame": "P16"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "Yes, I'll give you that book tomorrow morning, and then I'll be able to come and help later on.",
+   "target": "네 내일 아침에 그 책을 줄 거예요, 그러면 나중에 와서 도와줄 수 있을 거예요.",
+   "frame": "D12"
+  }
+ ]
+}

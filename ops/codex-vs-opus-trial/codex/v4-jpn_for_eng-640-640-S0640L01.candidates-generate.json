@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:14:21.571Z",
+ "usage": {
+  "provider": "codex",
+  "input": 43507,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 920,
+  "thinking": 516,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a97b-f568-71f0-9f68-b86f4a3a8b3d",
+  "ms": 27455,
+  "total": 56715
+ },
+ "phrases": [
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I want the red one",
+   "target": "赤いやつほしい",
+   "frame": "P1"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think it is the red one",
+   "target": "赤いやつだと思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it might be the red one",
+   "target": "赤いやつかもしれない",
+   "frame": "P8"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "can I get the red one?",
+   "target": "赤いやつもらえる？",
+   "frame": "P20"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "yes, I'll buy the red one now",
+   "target": "うん、今、赤いやつを買う",
+   "frame": "D2"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "sorry, I couldn't say that the red one is broken",
+   "target": "ごめん、赤いやつ壊れてるって言えなかった",
+   "frame": "D4"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'd have bought the red one if you'd told me that it was good",
+   "target": "良かったって言ってくれてたら、赤いやつを買ってた",
+   "frame": "P17"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "before I go, I need to buy the red one",
+   "target": "行く前に、赤いやつを買う必要がある",
+   "frame": "P6"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to know more about what the red one is like",
+   "target": "赤いやつ、どんな感じかもっと知りたい",
+   "frame": "P22"
+  }
+ ]
+}

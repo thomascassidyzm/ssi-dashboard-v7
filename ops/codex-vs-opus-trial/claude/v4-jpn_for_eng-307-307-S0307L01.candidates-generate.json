@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:07:51.282Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 36363,
+  "cache_read": 0,
+  "output": 1755,
+  "thinking": 1193,
+  "cost_usd": 0.32601199999999997,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 17439,
+  "total": 38120
+ },
+ "phrases": [
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "the man sitting over there",
+   "target": "あそこに座ってる男性",
+   "frame": "P16"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "the young woman sitting over there",
+   "target": "あそこに座ってる若い女性",
+   "frame": "P16"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "sitting over there now",
+   "target": "今、あそこに座ってる",
+   "frame": "P28"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "he's sitting over there",
+   "target": "彼はあそこに座ってる",
+   "frame": "P3"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I don't know those people sitting over there",
+   "target": "あそこに座ってるあの人たちを知らない",
+   "frame": "P23"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to meet the young woman sitting over there",
+   "target": "あそこに座ってる若い女性に会いたい",
+   "frame": "P1"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I wonder if the man sitting over there knows the answer",
+   "target": "あそこに座ってる男性、答えを知ってるか気になる",
+   "frame": "P22"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "who's that man sitting over there?",
+   "target": "あそこに座ってる男性、誰？",
+   "frame": "P21"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that she's sitting over there",
+   "target": "彼女はあそこに座ってると思う",
+   "frame": "P9"
+  }
+ ]
+}

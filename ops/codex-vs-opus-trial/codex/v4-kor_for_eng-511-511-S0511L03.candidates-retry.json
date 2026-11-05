@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:24:39.556Z",
+ "usage": {
+  "provider": "codex",
+  "input": 40475,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 693,
+  "thinking": 222,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a985-732a-75f2-a06f-a59bc63d3b64",
+  "ms": 22195,
+  "total": 53456
+ },
+ "phrases": [
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I want to give more time to each person",
+   "target": "모든 사람에게 시간을 더 주고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I'm going to explain to each person",
+   "target": "모든 사람에게 설명할 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "can you give a book to each person?",
+   "target": "모든 사람에게 책을 줄 수 있어요?",
+   "frame": "P4"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "you should say something to each person",
+   "target": "모든 사람에게 뭔가 말해야 해요",
+   "frame": "P7"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I'm trying to remember what I wanted to say to each person before you start",
+   "target": "시작하기 전에 모든 사람에게 말하고 싶었던 걸 기억하려고 해요",
+   "frame": "P3"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I don't know how to explain the problem to each person, but I want to try",
+   "target": "모든 사람에게 문제를 어떻게 설명하는지 몰라요, 하지만 해 보고 싶어요",
+   "frame": "P22"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I think it's important to give the same book to each person as quickly as possible",
+   "target": "가능한 한 빨리 모든 사람에게 같은 책을 주는 게 중요하다고 생각해요",
+   "frame": "P9"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "why did she say that she wanted to send a letter to each person tomorrow?",
+   "target": "왜 그녀는 내일 모든 사람에게 편지를 보내고 싶다고 했어요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "if you want to say something to each person, we need a little more time",
+   "target": "모든 사람에게 뭔가 말하고 싶으면 시간이 조금 더 필요해요",
+   "frame": "P14"
+  }
+ ]
+}

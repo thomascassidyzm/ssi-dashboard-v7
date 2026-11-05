@@ -1,0 +1,299 @@
+{
+ "course": "jpn_for_eng",
+ "region": [
+  359,
+  359
+ ],
+ "lego": "S0359L01",
+ "provider": "codex",
+ "generated": "2026-11-05T02:10:07.549Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P31",
+  "D2",
+  "D4",
+  "D7",
+  "D9",
+  "D11",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 58512,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 58512,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 26515,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 804,
+   "thinking": 433,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a978-803d-7df1-ab1f-60ce42402774",
+   "ms": 26154,
+   "total": 39607
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "build",
+   "known_text": "I want to go left",
+   "target_text": "左に行きたい",
+   "claimed_frame": "P1",
+   "frames": [
+    "P1"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "build",
+   "known_text": "I thought it was left",
+   "target_text": "左だと思った",
+   "claimed_frame": "P9",
+   "frames": [
+    "P9",
+    "P18"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "build",
+   "known_text": "it might be left",
+   "target_text": "左かもしれない",
+   "claimed_frame": "P8",
+   "frames": [
+    "P8",
+    "P18"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "build",
+   "known_text": "it's not left",
+   "target_text": "左じゃない",
+   "claimed_frame": "P23",
+   "frames": [
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "use",
+   "known_text": "why do you want to go left now?",
+   "target_text": "なんで今、左に行きたい？",
+   "claimed_frame": "P21",
+   "frames": [
+    "P1",
+    "P20",
+    "P21",
+    "P28"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "use",
+   "known_text": "she said that she can't open the door on the left",
+   "target_text": "彼女は左のドア開けられないって言ってた",
+   "claimed_frame": "P12",
+   "frames": [
+    "P4",
+    "P12",
+    "P23"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "use",
+   "known_text": "I know that young woman who's sitting on the left",
+   "target_text": "左に座ってる若い女性を知ってる",
+   "claimed_frame": "P16",
+   "frames": [
+    "P3",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "use",
+   "known_text": "before you go, look for the book on the left",
+   "target_text": "行く前に、左の本を探して",
+   "claimed_frame": "P13",
+   "frames": [
+    "P13",
+    "P26"
+   ]
+  },
+  {
+   "seed_number": 359,
+   "lego_index": 1,
+   "lego_known": "left",
+   "lego_target": "左",
+   "phrase_role": "use",
+   "known_text": "yes, there was a door on the left",
+   "target_text": "うん、左にドアがあった",
+   "claimed_frame": "P19",
+   "frames": [
+    "P19"
+   ]
+  }
+ ],
+ "rejected": [],
+ "floors": [
+  {
+   "id": "S359L1",
+   "known": "left",
+   "target": "左",
+   "build": 4,
+   "use": 5,
+   "ok": true,
+   "reasons": [],
+   "lego": {
+    "seed_number": 359,
+    "lego_index": 1,
+    "known_text": "left",
+    "target_text": "左",
+    "type": "A",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 9,
+  "available": 38,
+  "used": 15,
+  "coverage": 0.395,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 200,
+  "interjection_openers": 1,
+  "interjection_rate": 0.111,
+  "used_ids": [
+   "P1",
+   "P3",
+   "P4",
+   "P8",
+   "P9",
+   "P12",
+   "P13",
+   "P16",
+   "P18",
+   "P19",
+   "P20",
+   "P21",
+   "P23",
+   "P26",
+   "P28"
+  ],
+  "missing_ids": [
+   "P2",
+   "P5",
+   "P6",
+   "P7",
+   "P10",
+   "P11",
+   "P14",
+   "P15",
+   "P17",
+   "P22",
+   "P24",
+   "P25",
+   "P27",
+   "P29",
+   "P31",
+   "D2",
+   "D4",
+   "D7",
+   "D9",
+   "D11",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P1": 2,
+   "P3": 1,
+   "P4": 1,
+   "P8": 1,
+   "P9": 1,
+   "P12": 1,
+   "P13": 1,
+   "P16": 1,
+   "P18": 2,
+   "P19": 1,
+   "P20": 1,
+   "P21": 1,
+   "P23": 2,
+   "P26": 1,
+   "P28": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 9,
+  "rejected": 0,
+  "below_floor": 0
+ },
+ "tokens_spent": 39607
+}

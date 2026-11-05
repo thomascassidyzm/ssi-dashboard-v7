@@ -1,0 +1,92 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:20:47.341Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 55810,
+  "cache_read": 0,
+  "output": 1652,
+  "thinking": 1051,
+  "cost_usd": 0.479528,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 15912,
+  "total": 57464
+ },
+ "phrases": [
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "in a way that has patience",
+   "target": "참을성 있게",
+   "frame": "P16"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "want to speak in a way that has patience",
+   "target": "참을성 있게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I'm going to try in a way that has patience",
+   "target": "참을성 있게 해 볼 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "need to talk in a way that has patience",
+   "target": "참을성 있게 이야기해야 해요",
+   "frame": "P6"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to speak with you in a way that has patience",
+   "target": "같이 참을성 있게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm trying to learn in a way that has patience",
+   "target": "참을성 있게 배우려고 해요",
+   "frame": "P3"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "we need to talk in a way that has patience",
+   "target": "우리는 참을성 있게 이야기해야 해요",
+   "frame": "P6"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "he wasn't speaking in a way that has patience",
+   "target": "그는 참을성 있게 말하고 있지 않았어요",
+   "frame": "P23"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I hope I can speak in a way that has patience",
+   "target": "참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P11"
+  }
+ ]
+}

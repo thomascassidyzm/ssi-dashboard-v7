@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:23:55.724Z",
+ "usage": {
+  "provider": "codex",
+  "input": 40351,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 773,
+  "thinking": 324,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a984-bd33-7753-bf44-0b6a5462fa42",
+  "ms": 24944,
+  "total": 53412
+ },
+ "phrases": [
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "want to speak to each person",
+   "target": "모든 사람에게 말하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "going to try to explain to each person",
+   "target": "모든 사람에게 설명해 볼 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "can give a book to each person",
+   "target": "모든 사람에게 책을 줄 수 있어요",
+   "frame": "P4"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "need to talk to each person",
+   "target": "모든 사람에게 이야기해야 해요",
+   "frame": "P6"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "why do you want to give more time to each person?",
+   "target": "왜 모든 사람에게 시간을 더 주고 싶어요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "he said that he wants to show something to each person tomorrow",
+   "target": "그는 내일 모든 사람에게 뭔가 보여 주고 싶다고 했어요",
+   "frame": "P12"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "yes, I'll ask what they need to each person before you go",
+   "target": "네 가기 전에 모든 사람에게 뭐가 필요한지 물어볼 거예요",
+   "frame": "D2"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "thank you for trying to explain to each person how to say this word in Korean",
+   "target": "모든 사람에게 이 단어를 한국어로 어떻게 말하는지 설명해 주려고 하는 게 고마워요",
+   "frame": "D3"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I'm sorry, but I don't have enough time to give a different answer to each person",
+   "target": "미안해요, 하지만 모든 사람에게 다른 답을 줄 시간이 충분하지 않아요",
+   "frame": "D4"
+  }
+ ]
+}

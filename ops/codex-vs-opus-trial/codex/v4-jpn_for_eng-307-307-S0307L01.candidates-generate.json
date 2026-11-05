@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:08:38.909Z",
+ "usage": {
+  "provider": "codex",
+  "input": 24206,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 659,
+  "thinking": 268,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a976-d0f6-7a70-bca6-a0635e570ea5",
+  "ms": 21739,
+  "total": 37153
+ },
+ "phrases": [
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "the man who's sitting over there",
+   "target": "あそこに座ってる男性",
+   "frame": "P16"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "are you sitting over there?",
+   "target": "あそこに座ってる？",
+   "frame": "P20"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "sitting over there now",
+   "target": "今あそこに座ってる",
+   "frame": "P28"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think that he's sitting over there",
+   "target": "彼はあそこに座ってると思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I know that young woman who's sitting over there",
+   "target": "あそこに座ってる若い女性を知ってる",
+   "frame": "P16"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "why are you sitting over there?",
+   "target": "なんであそこに座ってる？",
+   "frame": "P21"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not sure if she's sitting over there",
+   "target": "彼女はあそこに座ってるかどうか分からない",
+   "frame": "P10"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "he's sitting over there because he doesn't want to work",
+   "target": "彼は働きたくないからあそこに座ってる",
+   "frame": "P15"
+  },
+  {
+   "seed": 307,
+   "lego_index": 1,
+   "role": "use",
+   "known": "she said that she's sitting over there now",
+   "target": "彼女は今あそこに座ってるって言ってた",
+   "frame": "P12"
+  }
+ ]
+}

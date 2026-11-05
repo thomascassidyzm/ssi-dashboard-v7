@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:11:06.697Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 48679,
+  "cache_read": 0,
+  "output": 1656,
+  "thinking": 1099,
+  "cost_usd": 0.42256,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 17606,
+  "total": 50337
+ },
+ "phrases": [
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be difficult",
+   "target": "難しいはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be busy",
+   "target": "忙しいはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be interesting",
+   "target": "面白いはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it's not supposed to be big",
+   "target": "大きいはずじゃない",
+   "frame": "P18"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that it's not supposed to be difficult",
+   "target": "難しいはずじゃないと思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "now it's not supposed to be busy",
+   "target": "今、忙しいはずじゃない",
+   "frame": "P28"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "why is it not supposed to be fun?",
+   "target": "なんで楽しいはずじゃない？",
+   "frame": "P21"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "learning Japanese is not supposed to be difficult",
+   "target": "日本語は難しいはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm sorry, but it's not supposed to be busy today",
+   "target": "ごめん、今日は忙しいはずじゃない",
+   "frame": "D4"
+  }
+ ]
+}

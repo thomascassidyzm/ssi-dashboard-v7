@@ -1,0 +1,94 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:27:18.263Z",
+ "usage": {
+  "provider": "codex",
+  "input": 49566,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 727,
+  "thinking": 275,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a987-df63-7771-81f6-202c4c7de284",
+  "ms": 22117,
+  "total": 62581
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I think it's jane's bag",
+   "target": "제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "this seems like jane's bag",
+   "target": "이건 제인의 가방인 것 같네요",
+   "frame": "P27"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "I don't think that is jane's bag",
+   "target": "그건 제인의 가방인 것 같지 않아요",
+   "frame": "P23"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "build",
+   "known": "do you think this is jane's bag?",
+   "target": "이게 제인의 가방인 것 같아요?",
+   "frame": "P20"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think this is jane's bag, but I'm not sure.",
+   "target": "이건 제인의 가방인 것 같아요, 하지만 모르겠어요.",
+   "frame": "P15"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "why do you think that is jane's bag?",
+   "target": "왜 그건 제인의 가방인 것 같아요?",
+   "frame": "P21"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "yes, I think that is jane's bag, and I'll ask her.",
+   "target": "네, 그건 제인의 가방인 것 같아요, 그리고 그녀한테 물어볼 거예요.",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think that is jane's bag, so I don't want to open it.",
+   "target": "그건 제인의 가방인 것 같아요, 그래서 그걸 열고 싶지 않아요.",
+   "frame": "P1"
+  },
+  {
+   "seed": 636,
+   "lego_index": 2,
+   "role": "use",
+   "known": "I think that is jane's bag, but I haven't seen her yet.",
+   "target": "그건 제인의 가방인 것 같아요, 하지만 아직 그녀를 못 봤어요.",
+   "frame": "P29"
+  }
+ ]
+}

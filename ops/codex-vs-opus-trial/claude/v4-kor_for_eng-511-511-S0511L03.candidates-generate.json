@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:23:14.005Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 64135,
+  "cache_read": 0,
+  "output": 1617,
+  "thinking": 1010,
+  "cost_usd": 0.545428,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 15965,
+  "total": 65754
+ },
+ "phrases": [
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "want to give to each person",
+   "target": "사람에게 주고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "going to try to explain to each person",
+   "target": "사람에게 설명해 볼 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "wanted to send a message to each person",
+   "target": "사람에게 메시지를 보내고 싶었어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "build",
+   "known": "it's important to each person",
+   "target": "사람에게 중요해요",
+   "frame": "P18"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I want to give more time to each person",
+   "target": "사람에게 시간을 더 주고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I'm going to try to explain what I mean to each person",
+   "target": "사람에게 무슨 뜻인지 설명해 볼 거예요",
+   "frame": "P22"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I don't think it's very important to each person",
+   "target": "사람에게 별로 중요하지 않은 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "she wanted to send a message to each person last week",
+   "target": "그녀는 지난주에 사람에게 메시지를 보내고 싶어했어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 511,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I don't know how to say it to each person",
+   "target": "사람에게 그걸 어떻게 말하는지 몰라요",
+   "frame": "P23"
+  }
+ ]
+}

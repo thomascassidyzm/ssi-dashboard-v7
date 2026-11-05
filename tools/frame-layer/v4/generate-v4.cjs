@@ -217,7 +217,7 @@ ${seedLines}
 ${vocab}
 
 Reply with JSON only, no prose, no code fence:
-{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
+{"phrases":[{"seed":${exampleLego(newLegos, region).seed_number},"lego_index":${exampleLego(newLegos, region).lego_index},"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
 }
 
 // ---------- gap fill (#31, 2026-10-07: "Haiku audits, Opus fills the gaps") ----------
@@ -259,7 +259,17 @@ ${seedLines}
 ${vocab}
 
 Reply with JSON only, no prose, no code fence:
-{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
+{"phrases":[{"seed":${exampleLego(newLegos, region).seed_number},"lego_index":${exampleLego(newLegos, region).lego_index},"role":"build|use","known":"...","target":"...","frame":"P- or D-id"}]}`;
+}
+
+/**
+ * The reply template's example seed/lego_index (#438·AD): it used to say "lego_index":1, and
+ * both Opus and Codex copied it for an L02 LEGO, so every phrase was refused as "no such new
+ * LEGO" — invisible in region mode (L01 is always in the region), fatal for a one-LEGO run.
+ */
+function exampleLego(newLegos, region) {
+  const first = [...(newLegos || [])].sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index)[0];
+  return first ? { seed_number: first.seed_number, lego_index: +first.lego_index } : { seed_number: region[0], lego_index: 1 };
 }
 
 // ---------- the model call ----------

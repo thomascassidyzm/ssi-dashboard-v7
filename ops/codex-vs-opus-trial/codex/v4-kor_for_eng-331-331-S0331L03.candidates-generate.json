@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:18:56.680Z",
+ "usage": {
+  "provider": "codex",
+  "input": 30835,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 735,
+  "thinking": 256,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a980-3319-7482-8c1e-6fb6a32a5d62",
+  "ms": 23919,
+  "total": 43858
+ },
+ "phrases": [
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "can you give me the answer?",
+   "target": "저한테 답을 줄 수 있어요?",
+   "frame": "P4"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I'm going to give you more time",
+   "target": "시간을 더 줄 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I'm not sure if I can give you that book",
+   "target": "그 책을 줄 수 있을지 모르겠어요",
+   "frame": "P10"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "give me the answer before you go",
+   "target": "가기 전에 답을 줄 수 있으면 좋겠어요",
+   "frame": "P26"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I want to know if you can give me the book that you were talking about earlier.",
+   "target": "아까 말했던 그 책을 저한테 줄 수 있는지 알고 싶어요.",
+   "frame": "P1"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "yes, I think I can give you a little more time if you need to finish the most important job.",
+   "target": "네, 가장 중요한 일을 끝내야 하면 시간을 조금 더 줄 수 있을 것 같아요.",
+   "frame": "D2"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "sorry, I couldn't give you the answer yesterday because I didn't know what you wanted.",
+   "target": "미안해요, 뭘 원했는지 몰랐어요, 그래서 어제 답을 줄 수 없었어요.",
+   "frame": "D4"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "thank you, but I can't give you all the answers now.",
+   "target": "고마워요, 하지만 지금 모든 답을 줄 수 없어요.",
+   "frame": "D3"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "no problem. I'll give you the book as soon as possible, so don't worry.",
+   "target": "문제없어요. 가능한 한 빨리 책을 줄 거예요, 그러니까 걱정하지 않아요.",
+   "frame": "D12"
+  }
+ ]
+}

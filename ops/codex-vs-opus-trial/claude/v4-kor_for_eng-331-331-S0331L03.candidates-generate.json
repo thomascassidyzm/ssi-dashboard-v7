@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:18:11.353Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 51052,
+  "cache_read": 0,
+  "output": 1700,
+  "thinking": 1102,
+  "cost_usd": 0.442424,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 16521,
+  "total": 52754
+ },
+ "phrases": [
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I can give",
+   "target": "줄 수 있어요",
+   "frame": "P4"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "he can't give the answer",
+   "target": "그는 답을 줄 수 없어요",
+   "frame": "P23"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "I'm going to give",
+   "target": "줄 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "build",
+   "known": "if I can give",
+   "target": "줄 수 있으면",
+   "frame": "P14"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I think that she could give you the answer tomorrow",
+   "target": "그녀가 내일 답을 줄 수 있을 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I'm not sure if I can give you all the answers today",
+   "target": "오늘 모든 답을 줄 수 있을지 모르겠어요",
+   "frame": "P10"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "he said that he can't give me more time",
+   "target": "그는 저한테 시간을 더 줄 수 없다고 했어요",
+   "frame": "P12"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "I'm going to give her my book on Sunday afternoon",
+   "target": "일요일 오후에 그녀한테 책을 줄 거예요",
+   "frame": "P28"
+  },
+  {
+   "seed": 331,
+   "lego_index": 3,
+   "role": "use",
+   "known": "can you give me a little more time before I answer?",
+   "target": "제가 대답하기 전에 시간을 조금 더 줄 수 있어요?",
+   "frame": "P13"
+  }
+ ]
+}

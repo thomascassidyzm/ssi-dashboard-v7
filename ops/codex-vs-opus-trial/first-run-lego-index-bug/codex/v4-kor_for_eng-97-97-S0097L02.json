@@ -1,0 +1,379 @@
+{
+ "course": "kor_for_eng",
+ "region": [
+  97,
+  97
+ ],
+ "lego": "S0097L02",
+ "provider": "codex",
+ "generated": "2026-11-05T02:16:00.965Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P18",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P31",
+  "D2",
+  "D3",
+  "D12",
+  "X2"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 29141,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 29141,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 14025,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 1187,
+   "thinking": 719,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a97d-e4a0-7722-88dd-f302cb3e1793",
+   "ms": 36112,
+   "total": 27500
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 29567,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 13200,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 996,
+   "thinking": 516,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a97e-c3ee-7772-81d8-7917dc6cf9f6",
+   "ms": 31874,
+   "total": 26484
+  }
+ ],
+ "kept": [],
+ "rejected": [
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go now",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go with you",
+   "target": "같이 원하면 바로 갈 준비됐어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go home",
+   "target": "집에 원하면 바로 갈 준비됐어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go on the next bus",
+   "target": "다음 버스로 원하면 바로 갈 준비됐어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm here and, as soon as you want, ready to go.",
+   "target": "여기 있어요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm a little tired but, as soon as you want, ready to go.",
+   "target": "조금 피곤해요 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm learning Korean and, as soon as you want, ready to go.",
+   "target": "한국어를 배우고 있어요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P3",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm happy with what I've done and, as soon as you want, ready to go.",
+   "target": "했다고 기뻐요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P29",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not ready to talk to people I don't know yet but, as soon as you want, ready to go.",
+   "target": "아직 모르는 사람들과 말할 준비가 안 됐어요 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P16",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "now, as soon as you want, ready to go",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "today, as soon as you want, ready to go",
+   "target": "오늘 원하면 바로 갈 준비됐어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "this evening, as soon as you want, ready to go",
+   "target": "오늘 저녁 원하면 바로 갈 준비됐어요",
+   "frame": "P28",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "tomorrow, as soon as you want, ready to go",
+   "target": "내일 원하면 바로 갈 준비됐어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm a little tired but, as soon as you want, ready to go.",
+   "target": "좀 피곤해요, 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm learning Korean and, as soon as you want, ready to go.",
+   "target": "한국어를 배우고 있어요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P3",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm trying to remember a word but, as soon as you want, ready to go.",
+   "target": "단어 하나를 기억하려고 해요, 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm going to practise speaking with my friends and, as soon as you want, ready to go.",
+   "target": "친구들과 말하는 연습을 할 거예요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P2",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm very happy with what I've done and, as soon as you want, ready to go.",
+   "target": "제가 했다고 아주 기뻐요, 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P29",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  }
+ ],
+ "floors": [
+  {
+   "id": "S97L2",
+   "known": "as soon as you want, ready to go",
+   "target": "원하면 바로 갈 준비됐어요",
+   "build": 0,
+   "use": 0,
+   "ok": false,
+   "reasons": [
+    "floors: 0 BUILD + 0 USE, needs 4+5",
+    "buildUseFloors: BUILD: need 3+, got 0",
+    "buildRecombination: only 0 BUILD recombine with earlier material (2 required)"
+   ],
+   "lego": {
+    "seed_number": 97,
+    "lego_index": 2,
+    "known_text": "as soon as you want, ready to go",
+    "target_text": "원하면 바로 갈 준비됐어요",
+    "type": "M",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 0,
+  "available": 30,
+  "used": 0,
+  "coverage": 0,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": null,
+  "interjection_openers": 0,
+  "interjection_rate": null,
+  "used_ids": [],
+  "missing_ids": [
+   "P1",
+   "P2",
+   "P3",
+   "P4",
+   "P5",
+   "P6",
+   "P9",
+   "P10",
+   "P11",
+   "P12",
+   "P13",
+   "P14",
+   "P15",
+   "P16",
+   "P18",
+   "P20",
+   "P21",
+   "P22",
+   "P23",
+   "P24",
+   "P25",
+   "P26",
+   "P27",
+   "P28",
+   "P29",
+   "P31",
+   "D2",
+   "D3",
+   "D12",
+   "X2"
+  ],
+  "counts": {}
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 0,
+  "rejected": 9,
+  "below_floor": 1
+ },
+ "tokens_spent": 53984
+}

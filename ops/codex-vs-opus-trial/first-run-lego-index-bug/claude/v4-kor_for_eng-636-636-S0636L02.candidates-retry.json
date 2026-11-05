@@ -1,0 +1,92 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:25:52.958Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 75321,
+  "cache_read": 0,
+  "output": 2537,
+  "thinking": 1866,
+  "cost_usd": 0.653316,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 24650,
+  "total": 77860
+ },
+ "phrases": [
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think that is jane's bag",
+   "target": "그건 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think it's jane's bag",
+   "target": "그게 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I think that blue thing is jane's bag",
+   "target": "그 파란 것은 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "build",
+   "known": "but I think it's jane's bag",
+   "target": "하지만 그게 제인의 가방인 것 같아요",
+   "frame": "P15"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "no, I think that is jane's bag",
+   "target": "아니요, 그건 제인의 가방인 것 같아요",
+   "frame": "D2"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that blue thing over there is jane's bag",
+   "target": "저기 그 파란 것은 제인의 가방인 것 같아요",
+   "frame": "P9"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think the blue thing on the table is jane's bag",
+   "target": "탁자 위에 있는 그 파란 것은 제인의 가방인 것 같아요",
+   "frame": "P16"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm sorry but I think that is jane's bag",
+   "target": "미안하지만 그건 제인의 가방인 것 같아요",
+   "frame": "P15"
+  },
+  {
+   "seed": 636,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that is jane's bag, so I want to give it to her",
+   "target": "그건 제인의 가방인 것 같아요, 그래서 그녀한테 그걸 주고 싶어요",
+   "frame": "P1"
+  }
+ ]
+}

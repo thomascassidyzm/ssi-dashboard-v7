@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:12:27.448Z",
+ "usage": {
+  "provider": "codex",
+  "input": 34654,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 1087,
+  "thinking": 666,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a97a-3474-7e03-a0ed-45db3d9d8034",
+  "ms": 27797,
+  "total": 48029
+ },
+ "phrases": [
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be fun",
+   "target": "楽しいはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be feeling sick",
+   "target": "具合が悪いはずじゃない",
+   "frame": "P3"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be working now",
+   "target": "今、働いてるはずじゃない",
+   "frame": "P28"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not supposed to be that important",
+   "target": "そんなに大事なはずじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that it's not supposed to be that important.",
+   "target": "そんなに大事なはずじゃないと思う。",
+   "frame": "P9"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "they told us that it's not supposed to be fun.",
+   "target": "楽しいはずじゃないって言ってた。",
+   "frame": "P12"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not supposed to be working now, but I have to finish everything before I go.",
+   "target": "今、働いてるはずじゃない。でも、行く前に全部終わらせる必要がある。",
+   "frame": "P13"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it's not supposed to be fun, so you shouldn't worry about that.",
+   "target": "楽しいはずじゃないから、そのことを心配しなくていい。",
+   "frame": "P7"
+  },
+  {
+   "seed": 484,
+   "lego_index": 1,
+   "role": "use",
+   "known": "what do you think it's not supposed to be like?",
+   "target": "どんな感じのはずじゃないと思う？",
+   "frame": "P21"
+  }
+ ]
+}

@@ -1,0 +1,395 @@
+{
+ "course": "kor_for_eng",
+ "region": [
+  398,
+  398
+ ],
+ "lego": "S0398L02",
+ "provider": "claude",
+ "generated": "2026-11-05T02:19:59.133Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P30",
+  "P31",
+  "D2",
+  "D3",
+  "D4",
+  "D7",
+  "D11",
+  "D12",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 80499,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 80499,
+   "candidates": 9,
+   "provider": "claude",
+   "input": 2,
+   "cache_create": 55632,
+   "cache_read": 0,
+   "output": 1615,
+   "thinking": 915,
+   "cost_usd": 0.477364,
+   "cost_basis": "claude: total_cost_usd from the CLI",
+   "model": "claude-opus-5-5",
+   "effort": "low",
+   "ms": 15152,
+   "total": 57249
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 80899,
+   "candidates": 9,
+   "provider": "claude",
+   "input": 2,
+   "cache_create": 55810,
+   "cache_read": 0,
+   "output": 1652,
+   "thinking": 1051,
+   "cost_usd": 0.479528,
+   "cost_basis": "claude: total_cost_usd from the CLI",
+   "model": "claude-opus-5-5",
+   "effort": "low",
+   "ms": 15912,
+   "total": 57464
+  }
+ ],
+ "kept": [],
+ "rejected": [
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "want to speak in a way that has patience",
+   "target": "참을성 있게 말하고 싶어요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "going to try to explain in a way that has patience",
+   "target": "참을성 있게 설명해 볼 거예요",
+   "frame": "P2",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "must work hard in a way that has patience",
+   "target": "참을성 있게 열심히 해야 해요",
+   "frame": "P8",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I hope I can speak in a way that has patience",
+   "target": "참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P11",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to speak Korean with you now in a way that has patience",
+   "target": "지금 참을성 있게 같이 한국어로 말하고 싶어요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm going to try to explain what I mean in a way that has patience",
+   "target": "무슨 뜻인지 참을성 있게 설명해 볼 거예요",
+   "frame": "P22",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "we must work hard in a way that has patience to learn a lot of new words",
+   "target": "새 단어를 많이 배우려면 참을성 있게 열심히 해야 해요",
+   "frame": "P8",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I hope I can speak in a way that has patience before you go",
+   "target": "가기 전에 참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P13",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'd like to be able to speak in a way that has patience after you finish",
+   "target": "끝난 후에 참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P5",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "in a way that has patience",
+   "target": "참을성 있게",
+   "frame": "P16",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "want to speak in a way that has patience",
+   "target": "참을성 있게 말하고 싶어요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I'm going to try in a way that has patience",
+   "target": "참을성 있게 해 볼 거예요",
+   "frame": "P2",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "need to talk in a way that has patience",
+   "target": "참을성 있게 이야기해야 해요",
+   "frame": "P6",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to speak with you in a way that has patience",
+   "target": "같이 참을성 있게 말하고 싶어요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm trying to learn in a way that has patience",
+   "target": "참을성 있게 배우려고 해요",
+   "frame": "P3",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "we need to talk in a way that has patience",
+   "target": "우리는 참을성 있게 이야기해야 해요",
+   "frame": "P6",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "he wasn't speaking in a way that has patience",
+   "target": "그는 참을성 있게 말하고 있지 않았어요",
+   "frame": "P23",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I hope I can speak in a way that has patience",
+   "target": "참을성 있게 말할 수 있으면 좋겠어요",
+   "frame": "P11",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 2
+  }
+ ],
+ "floors": [
+  {
+   "id": "S398L2",
+   "known": "in a way that has",
+   "target": "있게",
+   "build": 0,
+   "use": 0,
+   "ok": false,
+   "reasons": [
+    "floors: 0 BUILD + 0 USE, needs 4+5",
+    "buildUseFloors: BUILD: need 3+, got 0",
+    "buildRecombination: only 0 BUILD recombine with earlier material (2 required)"
+   ],
+   "lego": {
+    "seed_number": 398,
+    "lego_index": 2,
+    "known_text": "in a way that has",
+    "target_text": "있게",
+    "type": "A",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 0,
+  "available": 40,
+  "used": 0,
+  "coverage": 0,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": null,
+  "interjection_openers": 0,
+  "interjection_rate": null,
+  "used_ids": [],
+  "missing_ids": [
+   "P1",
+   "P2",
+   "P3",
+   "P4",
+   "P5",
+   "P6",
+   "P7",
+   "P8",
+   "P9",
+   "P10",
+   "P11",
+   "P12",
+   "P13",
+   "P14",
+   "P15",
+   "P16",
+   "P17",
+   "P18",
+   "P19",
+   "P20",
+   "P21",
+   "P22",
+   "P23",
+   "P24",
+   "P25",
+   "P26",
+   "P27",
+   "P28",
+   "P29",
+   "P30",
+   "P31",
+   "D2",
+   "D3",
+   "D4",
+   "D7",
+   "D11",
+   "D12",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {}
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 0,
+  "rejected": 9,
+  "below_floor": 1
+ },
+ "tokens_spent": 114713
+}

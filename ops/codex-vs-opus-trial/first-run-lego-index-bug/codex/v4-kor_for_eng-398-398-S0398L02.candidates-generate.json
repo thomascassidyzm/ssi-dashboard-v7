@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:21:38.835Z",
+ "usage": {
+  "provider": "codex",
+  "input": 35060,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 1149,
+  "thinking": 629,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a982-8058-7652-a9cd-5d2e3a44148a",
+  "ms": 34714,
+  "total": 48497
+ },
+ "phrases": [
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "want to work in a way that has people talking",
+   "target": "사람들이 이야기하고 있게 일하고 싶어요",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "going to explain in a way that has you feeling ready",
+   "target": "준비가 된 느낌이 있게 설명해 볼 거예요",
+   "frame": "P2"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "can write in a way that has people feeling happy",
+   "target": "사람들이 행복할 수 있게 쓸 수 있어요",
+   "frame": "P4"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not in a way that has you feeling nervous",
+   "target": "긴장하는 느낌이 있게 하는 게 아니에요",
+   "frame": "P23"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to explain in a way that has you talking more, because it's more important to talk often than to be perfect.",
+   "target": "더 많이 말할 수 있게 설명하고 싶어요, 완벽한 것보다 자주 말하는 게 더 중요해요.",
+   "frame": "P1"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Can you write a story in a way that has people feeling as if they're there?",
+   "target": "사람들이 거기에 있는 것 같은 느낌이 있게 이야기를 쓸 수 있어요?",
+   "frame": "P20"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think it's important to work in a way that has everyone feeling ready before we start.",
+   "target": "시작하기 전에 다른 사람들이 다 준비가 된 느낌이 있게 일하는 게 중요하다고 생각해요.",
+   "frame": "P9"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Thank you for helping me to learn in a way that has me feeling happy about making mistakes.",
+   "target": "실수하는 게 좋은 거라고 생각할 수 있게 배우는 걸 도와줘서 고마워요.",
+   "frame": "D3"
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Yes, I'll explain as slowly as I can, in a way that has you feeling ready to answer.",
+   "target": "네, 대답할 준비가 된 느낌이 있게 최대한 천천히 설명해 볼 거예요.",
+   "frame": "D12"
+  }
+ ]
+}

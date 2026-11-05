@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:16:37.080Z",
+ "usage": {
+  "provider": "codex",
+  "input": 14025,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 1187,
+  "thinking": 719,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a97d-e4a0-7722-88dd-f302cb3e1793",
+  "ms": 36112,
+  "total": 27500
+ },
+ "phrases": [
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go now",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go with you",
+   "target": "같이 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go home",
+   "target": "집에 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "as soon as you want, ready to go on the next bus",
+   "target": "다음 버스로 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm here and, as soon as you want, ready to go.",
+   "target": "여기 있어요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm a little tired but, as soon as you want, ready to go.",
+   "target": "조금 피곤해요 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm learning Korean and, as soon as you want, ready to go.",
+   "target": "한국어를 배우고 있어요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P3"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm happy with what I've done and, as soon as you want, ready to go.",
+   "target": "했다고 기뻐요 그리고 원하면 바로 갈 준비됐어요.",
+   "frame": "P29"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not ready to talk to people I don't know yet but, as soon as you want, ready to go.",
+   "target": "아직 모르는 사람들과 말할 준비가 안 됐어요 하지만 원하면 바로 갈 준비됐어요.",
+   "frame": "P16"
+  }
+ ]
+}

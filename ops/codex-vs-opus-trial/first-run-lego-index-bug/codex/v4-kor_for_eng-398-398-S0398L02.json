@@ -1,0 +1,449 @@
+{
+ "course": "kor_for_eng",
+ "region": [
+  398,
+  398
+ ],
+ "lego": "S0398L02",
+ "provider": "codex",
+ "generated": "2026-11-05T02:21:04.120Z",
+ "model": "opus",
+ "available_frames": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P5",
+  "P6",
+  "P7",
+  "P8",
+  "P9",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "P21",
+  "P22",
+  "P23",
+  "P24",
+  "P25",
+  "P26",
+  "P27",
+  "P28",
+  "P29",
+  "P30",
+  "P31",
+  "D2",
+  "D3",
+  "D4",
+  "D7",
+  "D11",
+  "D12",
+  "X2",
+  "X3",
+  "X6"
+ ],
+ "new_legos": 1,
+ "prompt_chars": 80499,
+ "calls": [
+  {
+   "label": "generate",
+   "prompt_chars": 80499,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 35060,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 1149,
+   "thinking": 629,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a982-8058-7652-a9cd-5d2e3a44148a",
+   "ms": 34714,
+   "total": 48497
+  },
+  {
+   "label": "retry",
+   "prompt_chars": 80899,
+   "candidates": 9,
+   "provider": "codex",
+   "input": 34225,
+   "cache_create": 0,
+   "cache_read": 12288,
+   "output": 789,
+   "thinking": 339,
+   "cost_usd": 0,
+   "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+   "model": "gpt-6.1-sol",
+   "effort": "low",
+   "lane": "1",
+   "thread": "01a1a983-943c-75f0-9874-f905f20be135",
+   "ms": 21676,
+   "total": 47302
+  }
+ ],
+ "kept": [
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "build",
+   "known_text": "want to speak in a way that has patience",
+   "target_text": "참을성 있게 말하고 싶어요",
+   "claimed_frame": "P1",
+   "frames": [
+    "P1",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "build",
+   "known_text": "can speak in a way that has feeling",
+   "target_text": "느낌이 있게 말할 수 있어요",
+   "claimed_frame": "P4",
+   "frames": [
+    "P4",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "build",
+   "known_text": "speak in a way that has patience",
+   "target_text": "참을성 있게 말해요",
+   "claimed_frame": "P26",
+   "frames": [
+    "P16",
+    "P26"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "build",
+   "known_text": "I'm going to try to explain in a way that has feeling",
+   "target_text": "느낌이 있게 설명해 볼 거예요",
+   "claimed_frame": "P2",
+   "frames": [
+    "P2",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "use",
+   "known_text": "why don't you want to speak in a way that has more feeling?",
+   "target_text": "왜 더 느낌이 있게 말하고 싶지 않아요?",
+   "claimed_frame": "P21",
+   "frames": [
+    "P1",
+    "P16",
+    "P20",
+    "P21",
+    "P23",
+    "P24"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "use",
+   "known_text": "I'd like you to explain in a way that has patience before I answer",
+   "target_text": "제가 대답하기 전에 참을성 있게 설명해 주면 좋겠어요",
+   "claimed_frame": "P13",
+   "frames": [
+    "P1",
+    "P13",
+    "P16"
+   ]
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "use",
+   "known_text": "if you can speak in a way that has a little more patience that would be great",
+   "target_text": "조금 더 참을성 있게 말할 수 있으면 좋겠어요",
+   "claimed_frame": "P14",
+   "frames": [
+    "P4",
+    "P14",
+    "P16",
+    "P24"
+   ]
+  }
+ ],
+ "rejected": [
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "want to work in a way that has people talking",
+   "target": "사람들이 이야기하고 있게 일하고 싶어요",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "going to explain in a way that has you feeling ready",
+   "target": "준비가 된 느낌이 있게 설명해 볼 거예요",
+   "frame": "P2",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "can write in a way that has people feeling happy",
+   "target": "사람들이 행복할 수 있게 쓸 수 있어요",
+   "frame": "P4",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not in a way that has you feeling nervous",
+   "target": "긴장하는 느낌이 있게 하는 게 아니에요",
+   "frame": "P23",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I want to explain in a way that has you talking more, because it's more important to talk often than to be perfect.",
+   "target": "더 많이 말할 수 있게 설명하고 싶어요, 완벽한 것보다 자주 말하는 게 더 중요해요.",
+   "frame": "P1",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Can you write a story in a way that has people feeling as if they're there?",
+   "target": "사람들이 거기에 있는 것 같은 느낌이 있게 이야기를 쓸 수 있어요?",
+   "frame": "P20",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think it's important to work in a way that has everyone feeling ready before we start.",
+   "target": "시작하기 전에 다른 사람들이 다 준비가 된 느낌이 있게 일하는 게 중요하다고 생각해요.",
+   "frame": "P9",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Thank you for helping me to learn in a way that has me feeling happy about making mistakes.",
+   "target": "실수하는 게 좋은 거라고 생각할 수 있게 배우는 걸 도와줘서 고마워요.",
+   "frame": "D3",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed": 398,
+   "lego_index": 1,
+   "role": "use",
+   "known": "Yes, I'll explain as slowly as I can, in a way that has you feeling ready to answer.",
+   "target": "네, 대답할 준비가 된 느낌이 있게 최대한 천천히 설명해 볼 거예요.",
+   "frame": "D12",
+   "reasons": [
+    "no such new LEGO in this region"
+   ],
+   "pass": 1
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "use",
+   "known_text": "I think it's important to speak in a way that has patience when other people are feeling nervous",
+   "target_text": "다른 사람들이 긴장하는 때 참을성 있게 말하는 게 중요하다고 생각해요",
+   "claimed_frame": "P9",
+   "frames": [
+    "P3",
+    "P9",
+    "P13",
+    "P16",
+    "P18"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 중요하다고"
+   ],
+   "pass": 2
+  },
+  {
+   "seed_number": 398,
+   "lego_index": 2,
+   "lego_known": "in a way that has",
+   "lego_target": "있게",
+   "phrase_role": "use",
+   "known_text": "yes I can read the story in a way that has feeling now",
+   "target_text": "네 지금 느낌이 있게 이야기를 읽을 수 있어요",
+   "claimed_frame": "D2",
+   "frames": [
+    "P4",
+    "P16",
+    "P28"
+   ],
+   "reasons": [
+    "target uses words not admitted at this LEGO: 읽을"
+   ],
+   "pass": 2
+  }
+ ],
+ "floors": [
+  {
+   "id": "S398L2",
+   "known": "in a way that has",
+   "target": "있게",
+   "build": 4,
+   "use": 3,
+   "ok": false,
+   "reasons": [
+    "floors: 4 BUILD + 3 USE, needs 4+5",
+    "buildUseFloors: USE: need 5+, got 3"
+   ],
+   "lego": {
+    "seed_number": 398,
+    "lego_index": 2,
+    "known_text": "in a way that has",
+    "target_text": "있게",
+    "type": "A",
+    "is_new": true
+   }
+  }
+ ],
+ "score": {
+  "phrases": 7,
+  "available": 40,
+  "used": 11,
+  "coverage": 0.275,
+  "rarefied_frames_at_n": null,
+  "rarefy_n": 60,
+  "frames_per_100_phrases": 300,
+  "interjection_openers": 0,
+  "interjection_rate": 0,
+  "used_ids": [
+   "P1",
+   "P2",
+   "P4",
+   "P13",
+   "P14",
+   "P16",
+   "P20",
+   "P21",
+   "P23",
+   "P24",
+   "P26"
+  ],
+  "missing_ids": [
+   "P3",
+   "P5",
+   "P6",
+   "P7",
+   "P8",
+   "P9",
+   "P10",
+   "P11",
+   "P12",
+   "P15",
+   "P17",
+   "P18",
+   "P19",
+   "P22",
+   "P25",
+   "P27",
+   "P28",
+   "P29",
+   "P30",
+   "P31",
+   "D2",
+   "D3",
+   "D4",
+   "D7",
+   "D11",
+   "D12",
+   "X2",
+   "X3",
+   "X6"
+  ],
+  "counts": {
+   "P1": 3,
+   "P2": 1,
+   "P4": 2,
+   "P13": 1,
+   "P14": 1,
+   "P16": 7,
+   "P20": 1,
+   "P21": 1,
+   "P23": 1,
+   "P24": 2,
+   "P26": 1
+  }
+ },
+ "first_pass": {
+  "candidates": 9,
+  "kept": 0,
+  "rejected": 9,
+  "below_floor": 1
+ },
+ "tokens_spent": 95799
+}

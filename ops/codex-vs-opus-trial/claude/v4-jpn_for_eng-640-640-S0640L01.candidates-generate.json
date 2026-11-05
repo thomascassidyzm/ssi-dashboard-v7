@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:13:41.358Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 60142,
+  "cache_read": 0,
+  "output": 1575,
+  "thinking": 1099,
+  "cost_usd": 0.512644,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 16625,
+  "total": 61719
+ },
+ "phrases": [
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "the red one, please",
+   "target": "赤いやつください",
+   "frame": "P26"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I want the red one",
+   "target": "赤いやつほしい",
+   "frame": "P1"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "the red one too",
+   "target": "赤いやつも",
+   "frame": "P26"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "build",
+   "known": "not the red one",
+   "target": "赤いやつじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think it's the red one",
+   "target": "赤いやつだと思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it might be the red one",
+   "target": "赤いやつかもしれない",
+   "frame": "P8"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "can I get the red one?",
+   "target": "赤いやつもらえる",
+   "frame": "P4"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I don't like the red one",
+   "target": "赤いやつ好きじゃない",
+   "frame": "P31"
+  },
+  {
+   "seed": 640,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I wanted the red one",
+   "target": "赤いやつ欲しかった",
+   "frame": "P1"
+  }
+ ]
+}

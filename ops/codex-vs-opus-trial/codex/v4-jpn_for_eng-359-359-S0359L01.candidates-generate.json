@@ -1,0 +1,94 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:10:33.705Z",
+ "usage": {
+  "provider": "codex",
+  "input": 26515,
+  "cache_create": 0,
+  "cache_read": 12288,
+  "output": 804,
+  "thinking": 433,
+  "cost_usd": 0,
+  "cost_basis": "codex: not reported by the CLI (credits); tokens only",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "lane": "1",
+  "thread": "01a1a978-803d-7df1-ab1f-60ce42402774",
+  "ms": 26154,
+  "total": 39607
+ },
+ "phrases": [
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I want to go left",
+   "target": "左に行きたい",
+   "frame": "P1"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I thought it was left",
+   "target": "左だと思った",
+   "frame": "P9"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it might be left",
+   "target": "左かもしれない",
+   "frame": "P8"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "it's not left",
+   "target": "左じゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "why do you want to go left now?",
+   "target": "なんで今、左に行きたい？",
+   "frame": "P21"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "she said that she can't open the door on the left",
+   "target": "彼女は左のドア開けられないって言ってた",
+   "frame": "P12"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I know that young woman who's sitting on the left",
+   "target": "左に座ってる若い女性を知ってる",
+   "frame": "P16"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "before you go, look for the book on the left",
+   "target": "行く前に、左の本を探して",
+   "frame": "P13"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "yes, there was a door on the left",
+   "target": "うん、左にドアがあった",
+   "frame": "P19"
+  }
+ ]
+}

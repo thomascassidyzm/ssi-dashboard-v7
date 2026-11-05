@@ -1,0 +1,92 @@
+{
+ "label": "retry",
+ "saved": "2026-11-05T02:15:31.817Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 26624,
+  "cache_read": 0,
+  "output": 1560,
+  "thinking": 820,
+  "cost_usd": 0.24419999999999997,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 13846,
+  "total": 28186
+ },
+ "phrases": [
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "now, as soon as you want, ready to go",
+   "target": "지금 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "tonight, as soon as you want, ready to go",
+   "target": "오늘 밤에 원하면 바로 갈 준비됐어요",
+   "frame": "P28"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "but as soon as you want, ready to go",
+   "target": "하지만 원하면 바로 갈 준비됐어요",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "build",
+   "known": "tomorrow, as soon as you want, ready to go",
+   "target": "내일 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not ready yet, but as soon as you want, ready to go",
+   "target": "아직 준비 안 됐어요, 하지만 원하면 바로 갈 준비됐어요",
+   "frame": "P23"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "thank you, as soon as you want, ready to go",
+   "target": "고마워요, 원하면 바로 갈 준비됐어요",
+   "frame": "P13"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "it's time to go now, so as soon as you want, ready to go",
+   "target": "이제 갈 시간이에요, 그래서 원하면 바로 갈 준비됐어요",
+   "frame": "P15"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I don't know those people, but as soon as you want, ready to go",
+   "target": "그 사람들을 몰라요, 하지만 원하면 바로 갈 준비됐어요",
+   "frame": "P23"
+  },
+  {
+   "seed": 97,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that you're doing very well, and as soon as you want, ready to go",
+   "target": "아주 잘 하고 있다고 생각해요, 그리고 원하면 바로 갈 준비됐어요",
+   "frame": "P9"
+  }
+ ]
+}

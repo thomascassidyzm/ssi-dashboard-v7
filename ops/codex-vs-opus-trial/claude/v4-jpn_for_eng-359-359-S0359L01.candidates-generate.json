@@ -1,0 +1,92 @@
+{
+ "label": "generate",
+ "saved": "2026-11-05T02:09:48.643Z",
+ "usage": {
+  "provider": "claude",
+  "input": 2,
+  "cache_create": 40147,
+  "cache_read": 0,
+  "output": 1611,
+  "thinking": 1107,
+  "cost_usd": 0.353404,
+  "cost_basis": "claude: total_cost_usd from the CLI",
+  "model": "claude-opus-5-5",
+  "effort": "low",
+  "ms": 17427,
+  "total": 41760
+ },
+ "phrases": [
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "I like the left door",
+   "target": "左のドア、好き",
+   "frame": "P31"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "might be left",
+   "target": "左かもしれない",
+   "frame": "P8"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "why left?",
+   "target": "なんで左？",
+   "frame": "P21"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "build",
+   "known": "can use the left room",
+   "target": "左の部屋を使える",
+   "frame": "P4"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I think that she could put it on the left",
+   "target": "左に置けると思う",
+   "frame": "P9"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "she said that she can't open the left door",
+   "target": "左のドア、開けられないって言ってた",
+   "frame": "P12"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I'm not sure if it's the left door",
+   "target": "左のドアかどうか分からない",
+   "frame": "P10"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "I don't like the left room",
+   "target": "左の部屋、好きじゃない",
+   "frame": "P23"
+  },
+  {
+   "seed": 359,
+   "lego_index": 1,
+   "role": "use",
+   "known": "do you think that he can use the left room tomorrow night?",
+   "target": "明日の夜、左の部屋を使えると思う？",
+   "frame": "P20"
+  }
+ ]
+}
