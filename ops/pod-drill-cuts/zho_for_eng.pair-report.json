@@ -1,32 +1,32 @@
 {
- "tool": "tools/pod-drill-cuts/pair.mjs (#381) --lego-only (#669)",
+ "tool": "tools/pods/pod-drill/pair.mjs (#381, Popty #692) --lego-only (#669)",
  "totals": {
-  "cards": 355,
-  "fitsWhole": 332,
+  "cards": 357,
+  "fitsWhole": 323,
   "alreadyCut": 14,
   "newLego": 0,
   "newSonnet": 0,
-  "newLines": 0,
-  "whole": 9
+  "newLines": 2,
+  "whole": 18
  },
  "scenes": {
   "SC01": {
    "cards": 7,
-   "fitsWhole": 5,
+   "fitsWhole": 6,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 1
+   "whole": 0
   },
   "SC02": {
    "cards": 6,
-   "fitsWhole": 6,
+   "fitsWhole": 5,
    "alreadyCut": 0,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 1
   },
   "SC03": {
    "cards": 14,
@@ -38,22 +38,22 @@
    "whole": 0
   },
   "SC04": {
-   "cards": 7,
-   "fitsWhole": 5,
+   "cards": 9,
+   "fitsWhole": 6,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
-   "whole": 1
+   "newLines": 2,
+   "whole": 0
   },
   "SC05": {
    "cards": 3,
-   "fitsWhole": 3,
+   "fitsWhole": 2,
    "alreadyCut": 0,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 1
   },
   "SC06": {
    "cards": 32,
@@ -75,30 +75,30 @@
   },
   "SC08": {
    "cards": 26,
+   "fitsWhole": 24,
+   "alreadyCut": 1,
+   "newLego": 0,
+   "newSonnet": 0,
+   "newLines": 0,
+   "whole": 1
+  },
+  "SC09": {
+   "cards": 29,
    "fitsWhole": 25,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
-  },
-  "SC09": {
-   "cards": 29,
-   "fitsWhole": 28,
-   "alreadyCut": 1,
-   "newLego": 0,
-   "newSonnet": 0,
-   "newLines": 0,
-   "whole": 0
+   "whole": 3
   },
   "SC10": {
    "cards": 17,
-   "fitsWhole": 16,
+   "fitsWhole": 15,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 1
   },
   "SC11": {
    "cards": 20,
@@ -111,30 +111,30 @@
   },
   "SC12": {
    "cards": 15,
-   "fitsWhole": 13,
+   "fitsWhole": 14,
    "alreadyCut": 0,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 2
+   "whole": 1
   },
   "SC13": {
    "cards": 17,
-   "fitsWhole": 15,
+   "fitsWhole": 17,
    "alreadyCut": 0,
-   "newLego": 0,
-   "newSonnet": 0,
-   "newLines": 0,
-   "whole": 2
-  },
-  "SC14": {
-   "cards": 17,
-   "fitsWhole": 16,
-   "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
    "whole": 0
+  },
+  "SC14": {
+   "cards": 17,
+   "fitsWhole": 15,
+   "alreadyCut": 1,
+   "newLego": 0,
+   "newSonnet": 0,
+   "newLines": 0,
+   "whole": 1
   },
   "SC15": {
    "cards": 15,
@@ -201,76 +201,80 @@
   },
   "SC22": {
    "cards": 19,
-   "fitsWhole": 19,
+   "fitsWhole": 13,
    "alreadyCut": 0,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 6
   }
  },
- "newCuts": [],
- "knownFill": {
-  "zho_for_eng:pod-1:SC01-S003:s0": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC04-S002:s3": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC07-S001": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC07-S013": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC08-S011": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC09-S009:s0": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC10-S004": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC11-S011": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC14-S009:s0": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC15-S008": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC17-S009": "the English clip has no Cartesia word timings that say its text",
-  "zho_for_eng:pod-1:SC21-S011": "the English clip has no Cartesia word timings that say its text"
- },
+ "newCuts": [
+  {
+   "id": "zho_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  }
+ ],
+ "knownFill": {},
  "knownTooShallow": {},
  "knownMinDipDb": 5,
  "cards": [
   {
-   "id": "zho_for_eng:pod-1:SC01-S004:s0",
-   "scene": 1,
-   "target": "是的，我今天很忙。",
-   "known": "Yes, I've got a busy day today.",
+   "id": "zho_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "target": "没有，空着呢。请坐。",
+   "known": "No, it's free. Please, go ahead.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "是的",
-     "yes"
-    ],
-    [
-     "我今天很忙",
-     "I've got a busy day today"
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC04-S003:s0",
+   "id": "zho_for_eng:pod-1:SC04-S002",
    "scene": 4,
-   "target": "不行，不好意思，我明天有事。",
-   "known": "No, I'm sorry, I'm busy tomorrow.",
+   "target": "你好！不好意思，我现在没办法聊天。我需要回家了。我们明天去喝咖啡好吗？",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "不行，不好意思，我明天有事。不过我们周六去吧。回见。",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "target": "是啊，很累。我现在非常累了。晚安，明天见。",
+   "known": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "不行",
-     "No"
-    ],
-    [
-     "不好意思",
-     "I'm sorry"
-    ],
-    [
-     "我明天有事",
-     "I'm busy tomorrow"
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
@@ -279,69 +283,94 @@
    "target": "真有意思。好，很高兴认识你。",
    "known": "How interesting. Well, lovely to meet you.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "真有意思",
-     "how interesting."
-    ],
-    [
-     "好",
-     "well,"
-    ],
-    [
-     "很高兴认识你",
-     "lovely to meet you."
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC11-S004:s1",
-   "scene": 11,
-   "target": "房间在三楼，709号房。",
-   "known": "The room is on the third floor, room 709.",
+   "id": "zho_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "target": "我们能要一些面包吗？还有一份薯条，大家一起吃。",
+   "known": "Can we have some bread? And a bowl of chips for the table.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "房间在三楼",
-     "the room is on the third floor,"
-    ],
-    [
-     "709号房",
-     "room 709."
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC11-S010",
-   "scene": 11,
-   "target": "可以，你们可以住到中午，不收额外费用。",
-   "known": "Yes, you can stay until midday, no extra charge.",
+   "id": "zho_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "target": "晚上好。我们预订了两位，名字是戴维斯。",
+   "known": "Good evening. We have a booking for two, under the name Davies.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "可以",
-     "Yes,"
-    ],
-    [
-     "你们可以住到中午",
-     "you can stay until midday,"
-    ],
-    [
-     "不收额外费用",
-     "no extra charge."
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "target": "麻烦一下——你们有无麸质的菜吗？或者适合素食者的？",
+   "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "target": "还有账单，方便的时候给我们。可以分开付吗？",
+   "known": "And the bill, when you're ready. Could we split it?",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "target": "你太好了！是的，我在度假，我需要多练习才能把中文说得更好。谢谢你，再见。",
+   "known": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Chinese better. Thank you very much, and goodbye.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "target": "欢迎。是的，您订了一间双人房，住三晚。我可以看一下您的证件吗？",
+   "known": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "target": "从七点半到十点。有水果和麦片，也有热食早餐。",
+   "known": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
@@ -350,86 +379,94 @@
    "target": "早上好。我感觉不太舒服——你能给我推荐点什么吗？",
    "known": "Good morning. I'm not feeling great - could you recommend something?",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "早上好",
-     "good morning"
-    ],
-    [
-     "我感觉不太舒服",
-     "I'm not feeling great"
-    ],
-    [
-     "你能给我推荐点什么吗",
-     "could you recommend something?"
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC12-S008",
-   "scene": 12,
-   "target": "可以，随餐或饭后吃最好。",
-   "known": "Yes, with or after food is best.",
+   "id": "zho_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "target": "好的，当然可以。可能要花一点时间，现在路上很堵。",
+   "known": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "可以",
-     "Yes"
-    ],
-    [
-     "随餐或饭后吃最好",
-     "with or after food is best"
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC13-S004",
-   "scene": 13,
-   "target": "对，过了教堂和邮局。",
-   "known": "Yes, past the church and the post office.",
+   "id": "zho_for_eng:pod-1:SC22-S001",
+   "scene": 22,
+   "target": "你介意我试着用中文跟你练习说话吗？我学习的时间还不长，跟别人说话的时候还是觉得有点紧张。",
+   "known": "Would you mind if I tried to practise speaking Chinese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "对",
-     "Yes,"
-    ],
-    [
-     "过了教堂和邮局",
-     "past the church and the post office."
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "zho_for_eng:pod-1:SC13-S005",
-   "scene": 13,
-   "target": "到第二个环形路口，走第一个出口。",
-   "known": "At the second roundabout, take the first exit.",
+   "id": "zho_for_eng:pod-1:SC22-S003",
+   "scene": 22,
+   "target": "谢谢你，听到这个我很高兴。我需要学更多的词，也需要练习听。别人说话不慢的时候我听不太懂。",
+   "known": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "到第二个环形路口",
-     "at the second roundabout,"
-    ],
-    [
-     "走第一个出口",
-     "take the first exit."
-    ]
-   ],
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC22-S005",
+   "scene": 22,
+   "target": "是的，谢谢你。只跟一个人说话更容易一些。不过想该说什么还是有点难。我不太确定该说什么，但我感觉我能说够多的话来开始聊天了。",
+   "known": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC22-S007",
+   "scene": 22,
+   "target": "就是有时候想得不够快，没办法好好表达自己，这让我有点沮丧。但我知道如果想说得更自信，就需要一直练习。",
+   "known": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC22-S009",
+   "scene": 22,
+   "target": "这正是我需要的那种练习。我觉得我能感觉到我们说话的时候我的大脑在变化！真的很感谢你的帮助。不过用一门自己说得不太好的语言说话，会累得出乎意料。",
+   "known": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
+   "retried": false
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC22-S011",
+   "scene": 22,
+   "target": "确实是这样。我真的很高兴我能聊这么多。我也希望随着我越来越好，我们以后能有更多的对话。",
+   "known": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+   "status": "whole",
+   "source": null,
+   "seams": null,
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   }
  ]

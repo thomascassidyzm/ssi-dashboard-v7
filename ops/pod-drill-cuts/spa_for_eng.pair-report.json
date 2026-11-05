@@ -1,13 +1,13 @@
 {
  "tool": "tools/pods/pod-drill/pair.mjs (#381, Popty #692) --lego-only (#669)",
  "totals": {
-  "cards": 395,
-  "fitsWhole": 328,
+  "cards": 397,
+  "fitsWhole": 335,
   "alreadyCut": 59,
   "newLego": 0,
   "newSonnet": 0,
-  "newLines": 0,
-  "whole": 8
+  "newLines": 2,
+  "whole": 1
  },
  "scenes": {
   "SC01": {
@@ -38,12 +38,12 @@
    "whole": 0
   },
   "SC04": {
-   "cards": 8,
+   "cards": 10,
    "fitsWhole": 7,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
+   "newLines": 2,
    "whole": 0
   },
   "SC05": {
@@ -75,12 +75,12 @@
   },
   "SC08": {
    "cards": 28,
-   "fitsWhole": 20,
+   "fitsWhole": 21,
    "alreadyCut": 7,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 1
+   "whole": 0
   },
   "SC09": {
    "cards": 35,
@@ -120,21 +120,21 @@
   },
   "SC13": {
    "cards": 18,
-   "fitsWhole": 12,
+   "fitsWhole": 16,
    "alreadyCut": 2,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 4
+   "whole": 0
   },
   "SC14": {
    "cards": 18,
-   "fitsWhole": 14,
+   "fitsWhole": 17,
    "alreadyCut": 1,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 3
+   "whole": 0
   },
   "SC15": {
    "cards": 15,
@@ -147,12 +147,12 @@
   },
   "SC16": {
    "cards": 11,
-   "fitsWhole": 9,
+   "fitsWhole": 8,
    "alreadyCut": 2,
    "newLego": 0,
    "newSonnet": 0,
    "newLines": 0,
-   "whole": 0
+   "whole": 1
   },
   "SC17": {
    "cards": 11,
@@ -209,253 +209,60 @@
    "whole": 0
   }
  },
- "newCuts": [],
- "knownFill": {
-  "spa_for_eng:pod-1:SC03-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC04-S003:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC06-S007:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC06-S011:s2": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC07-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC07-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC07-S004:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC07-S013:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC08-S002:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC08-S002:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC08-S005": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC09-S001:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S003": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S009:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S010:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC09-S017:s0": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC10-S002": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC11-S002:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC11-S005": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC12-S001:s1": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC12-S004": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC12-S007": "the chunks' English is not an unbroken run of the English sentence in target order",
-  "spa_for_eng:pod-1:SC13-S002:s1": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC13-S005": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC14-S003": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC15-S002": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC15-S006": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC15-S009": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC16-S003": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC16-S010": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC17-S007": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC19-S003": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC20-S002": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC20-S004": "the English clip has no Cartesia word timings that say its text",
-  "spa_for_eng:pod-1:SC22-S003:s0": "the English clip has no Cartesia word timings that say its text"
- },
+ "newCuts": [
+  {
+   "id": "spa_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "source": "lines",
+   "seams": "cartesia",
+   "retried": false
+  }
+ ],
+ "knownFill": {},
  "knownTooShallow": {},
  "knownMinDipDb": 5,
  "cards": [
   {
-   "id": "spa_for_eng:pod-1:SC08-S004",
-   "scene": 8,
-   "target": "Me gustaría una pinta de la amarga, por favor.",
-   "known": "I'd like a pint of the bitter, please.",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Me gustaría",
-     "I'd like"
-    ],
-    [
-     "una pinta",
-     "a pint"
-    ],
-    [
-     "de la amarga",
-     "of the bitter"
-    ],
-    [
-     "por favor",
-     "please"
-    ]
-   ],
+   "id": "spa_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "¡Hola! Lo siento, pero no puedo hablar ahora mismo. Tengo que ir a casa ahora. ¿Vamos a tomar un café mañana?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "spa_for_eng:pod-1:SC13-S001",
-   "scene": 13,
-   "target": "Perdón, ¿sabe cómo se llega al supermercado más cercano?",
-   "known": "Excuse me, do you know how to get to the nearest supermarket?",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Perdón",
-     "Excuse me,"
-    ],
-    [
-     "sabe cómo se llega",
-     "do you know how to get"
-    ],
-    [
-     "al supermercado más cercano",
-     "to the nearest supermarket?"
-    ]
-   ],
+   "id": "spa_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "No, lo siento, mañana estoy ocupado. Pero vamos el sábado. Hasta luego.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
+   "pieces": null,
    "retried": false
   },
   {
-   "id": "spa_for_eng:pod-1:SC13-S004",
-   "scene": 13,
-   "target": "Sí, pasando la iglesia y la oficina de correos.",
-   "known": "Yes, past the church and the post office.",
+   "id": "spa_for_eng:pod-1:SC16-S011",
+   "scene": 16,
+   "target": "Un millón. Ochenta. Noventa. Las dos. Las diez.",
+   "known": "A million. 80. 90. 2 o'clock. 10 o'clock.",
    "status": "whole",
-   "source": "lego",
+   "source": null,
    "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Sí",
-     "yes"
-    ],
-    [
-     "pasando la iglesia",
-     "past the church"
-    ],
-    [
-     "y la oficina de correos",
-     "and the post office"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC13-S007",
-   "scene": 13,
-   "target": "Verá el supermercado a su izquierda, justo enfrente de la parada de autobús.",
-   "known": "You'll see the supermarket on your left, just opposite the bus stop.",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Verá el supermercado",
-     "you'll see the supermarket"
-    ],
-    [
-     "a su izquierda",
-     "on your left"
-    ],
-    [
-     "justo enfrente de la parada de autobús",
-     "just opposite the bus stop"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC13-S009",
-   "scene": 13,
-   "target": "Sí, hay uno en la calle principal, al lado de la panadería.",
-   "known": "Yes, there's one on the high street, next to the bakery.",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Sí",
-     "yes"
-    ],
-    [
-     "hay uno",
-     "there's one"
-    ],
-    [
-     "en la calle principal",
-     "on the high street"
-    ],
-    [
-     "al lado de la panadería",
-     "next to the bakery"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC14-S001:s1",
-   "scene": 14,
-   "target": "¿Me puede llevar a la estación de tren, por favor?",
-   "known": "Can you take me to the train station, please?",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Me puede llevar",
-     "can you take me"
-    ],
-    [
-     "a la estación de tren",
-     "to the train station"
-    ],
-    [
-     "por favor",
-     "please"
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC14-S004",
-   "scene": 14,
-   "target": "Quizás unos veinte minutos, si no tenemos mala suerte con los semáforos.",
-   "known": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights.",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Quizás unos veinte minutos",
-     "Perhaps about twenty minutes,"
-    ],
-    [
-     "si no tenemos mala suerte",
-     "if we're not unlucky"
-    ],
-    [
-     "con los semáforos",
-     "with the traffic lights."
-    ]
-   ],
-   "retried": false
-  },
-  {
-   "id": "spa_for_eng:pod-1:SC14-S006",
-   "scene": 14,
-   "target": "Sí, le dejo justo en la taquilla.",
-   "known": "Yes, I'll drop you right by the ticket office.",
-   "status": "whole",
-   "source": "lego",
-   "seams": null,
-   "why": "the English clip has no Cartesia word timings that say its text",
-   "pieces": [
-    [
-     "Sí",
-     "yes"
-    ],
-    [
-     "le dejo",
-     "I'll drop you"
-    ],
-    [
-     "justo en la taquilla",
-     "right by the ticket office"
-    ]
-   ],
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "pieces": null,
    "retried": false
   }
  ]
