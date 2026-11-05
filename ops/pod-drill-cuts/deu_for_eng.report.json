@@ -4,7 +4,7 @@
   "cards": 383,
   "alreadyWithinCap": 235,
   "needCutting": 148,
-  "verified": 78,
+  "verified": 80,
   "verifiedRate": 42.6,
   "linesVerified": 67,
   "multiLineCards": 3,
@@ -36,11 +36,11 @@
    "totals": {
     "cards": 385,
     "fitsWhole": 304,
-    "alreadyCut": 74,
+    "alreadyCut": 78,
     "newLego": 0,
     "newSonnet": 0,
-    "newLines": 4,
-    "whole": 3
+    "newLines": 2,
+    "whole": 1
    },
    "scenes": {
     "SC01": {
@@ -76,8 +76,8 @@
      "alreadyCut": 3,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
-     "whole": 2
+     "newLines": 2,
+     "whole": 0
     },
     "SC05": {
      "cards": 6,
@@ -91,10 +91,10 @@
     "SC06": {
      "cards": 32,
      "fitsWhole": 26,
-     "alreadyCut": 4,
+     "alreadyCut": 6,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 2,
+     "newLines": 0,
      "whole": 0
     },
     "SC07": {
@@ -118,10 +118,10 @@
     "SC09": {
      "cards": 33,
      "fitsWhole": 27,
-     "alreadyCut": 5,
+     "alreadyCut": 6,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 1,
+     "newLines": 0,
      "whole": 0
     },
     "SC10": {
@@ -235,10 +235,10 @@
     "SC22": {
      "cards": 24,
      "fitsWhole": 13,
-     "alreadyCut": 9,
+     "alreadyCut": 10,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 1,
+     "newLines": 0,
      "whole": 1
     }
    }
@@ -12782,20 +12782,20 @@
    "scene": 4,
    "target": "Hallo! Es tut mir leid, aber ich kann gerade nicht reden. Ich muss jetzt nach Hause. Wollen wir morgen einen Kaffee trinken gehen?",
    "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
-   "status": "whole",
-   "source": null,
-   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
-   "pairing": null
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   },
   {
    "id": "deu_for_eng:pod-1:SC04-S003",
    "scene": 4,
    "target": "Nein, es tut mir leid, ich bin morgen beschäftigt. Aber lass uns am Samstag gehen. Bis dann.",
    "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
-   "status": "whole",
-   "source": null,
-   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
-   "pairing": null
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   }
  ]
 }

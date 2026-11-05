@@ -4,7 +4,7 @@
   "cards": 395,
   "alreadyWithinCap": 190,
   "needCutting": 205,
-  "verified": 59,
+  "verified": 61,
   "verifiedRate": 21.5,
   "linesVerified": 47,
   "multiLineCards": 1,
@@ -34,13 +34,13 @@
   "model": "ggml-small.bin",
   "pairing": {
    "totals": {
-    "cards": 395,
-    "fitsWhole": 328,
+    "cards": 397,
+    "fitsWhole": 335,
     "alreadyCut": 59,
     "newLego": 0,
     "newSonnet": 0,
-    "newLines": 0,
-    "whole": 8
+    "newLines": 2,
+    "whole": 1
    },
    "scenes": {
     "SC01": {
@@ -71,12 +71,12 @@
      "whole": 0
     },
     "SC04": {
-     "cards": 8,
+     "cards": 10,
      "fitsWhole": 7,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
+     "newLines": 2,
      "whole": 0
     },
     "SC05": {
@@ -108,12 +108,12 @@
     },
     "SC08": {
      "cards": 28,
-     "fitsWhole": 20,
+     "fitsWhole": 21,
      "alreadyCut": 7,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 1
+     "whole": 0
     },
     "SC09": {
      "cards": 35,
@@ -153,21 +153,21 @@
     },
     "SC13": {
      "cards": 18,
-     "fitsWhole": 12,
+     "fitsWhole": 16,
      "alreadyCut": 2,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 4
+     "whole": 0
     },
     "SC14": {
      "cards": 18,
-     "fitsWhole": 14,
+     "fitsWhole": 17,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 3
+     "whole": 0
     },
     "SC15": {
      "cards": 15,
@@ -180,12 +180,12 @@
     },
     "SC16": {
      "cards": 11,
-     "fitsWhole": 9,
+     "fitsWhole": 8,
      "alreadyCut": 2,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 1
     },
     "SC17": {
      "cards": 11,
@@ -10661,7 +10661,9 @@
    "known": "A million. 80. 90. 2 o'clock. 10 o'clock.",
    "clip": "d8f25b4d-3d90-4218-9e48-e9020aa0ac60",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"Un millón, 80, 90, las dos, las diez.\")"
+   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "spa_for_eng:pod-1:SC17-S001",
@@ -14709,6 +14711,26 @@
      "sim": 1
     }
    ]
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "¡Hola! Lo siento, pero no puedo hablar ahora mismo. Tengo que ir a casa ahora. ¿Vamos a tomar un café mañana?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
+  },
+  {
+   "id": "spa_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "No, lo siento, mañana estoy ocupado. Pero vamos el sábado. Hasta luego.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   }
  ]
 }

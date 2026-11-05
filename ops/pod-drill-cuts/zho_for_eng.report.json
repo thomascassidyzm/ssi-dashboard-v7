@@ -4,7 +4,7 @@
   "cards": 355,
   "alreadyWithinCap": 135,
   "needCutting": 220,
-  "verified": 14,
+  "verified": 16,
   "verifiedRate": 6.4,
   "linesVerified": 16,
   "multiLineCards": 2,
@@ -34,32 +34,32 @@
   "model": "ggml-small.bin",
   "pairing": {
    "totals": {
-    "cards": 355,
-    "fitsWhole": 332,
+    "cards": 357,
+    "fitsWhole": 323,
     "alreadyCut": 14,
     "newLego": 0,
     "newSonnet": 0,
-    "newLines": 0,
-    "whole": 9
+    "newLines": 2,
+    "whole": 18
    },
    "scenes": {
     "SC01": {
      "cards": 7,
-     "fitsWhole": 5,
+     "fitsWhole": 6,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 1
+     "whole": 0
     },
     "SC02": {
      "cards": 6,
-     "fitsWhole": 6,
+     "fitsWhole": 5,
      "alreadyCut": 0,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 1
     },
     "SC03": {
      "cards": 14,
@@ -71,22 +71,22 @@
      "whole": 0
     },
     "SC04": {
-     "cards": 7,
-     "fitsWhole": 5,
+     "cards": 9,
+     "fitsWhole": 6,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
-     "newLines": 0,
-     "whole": 1
+     "newLines": 2,
+     "whole": 0
     },
     "SC05": {
      "cards": 3,
-     "fitsWhole": 3,
+     "fitsWhole": 2,
      "alreadyCut": 0,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 1
     },
     "SC06": {
      "cards": 32,
@@ -108,30 +108,30 @@
     },
     "SC08": {
      "cards": 26,
+     "fitsWhole": 24,
+     "alreadyCut": 1,
+     "newLego": 0,
+     "newSonnet": 0,
+     "newLines": 0,
+     "whole": 1
+    },
+    "SC09": {
+     "cards": 29,
      "fitsWhole": 25,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
-    },
-    "SC09": {
-     "cards": 29,
-     "fitsWhole": 28,
-     "alreadyCut": 1,
-     "newLego": 0,
-     "newSonnet": 0,
-     "newLines": 0,
-     "whole": 0
+     "whole": 3
     },
     "SC10": {
      "cards": 17,
-     "fitsWhole": 16,
+     "fitsWhole": 15,
      "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 1
     },
     "SC11": {
      "cards": 20,
@@ -144,30 +144,30 @@
     },
     "SC12": {
      "cards": 15,
-     "fitsWhole": 13,
+     "fitsWhole": 14,
      "alreadyCut": 0,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 2
+     "whole": 1
     },
     "SC13": {
      "cards": 17,
-     "fitsWhole": 15,
+     "fitsWhole": 17,
      "alreadyCut": 0,
-     "newLego": 0,
-     "newSonnet": 0,
-     "newLines": 0,
-     "whole": 2
-    },
-    "SC14": {
-     "cards": 17,
-     "fitsWhole": 16,
-     "alreadyCut": 1,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
      "whole": 0
+    },
+    "SC14": {
+     "cards": 17,
+     "fitsWhole": 15,
+     "alreadyCut": 1,
+     "newLego": 0,
+     "newSonnet": 0,
+     "newLines": 0,
+     "whole": 1
     },
     "SC15": {
      "cards": 15,
@@ -234,12 +234,12 @@
     },
     "SC22": {
      "cards": 19,
-     "fitsWhole": 19,
+     "fitsWhole": 13,
      "alreadyCut": 0,
      "newLego": 0,
      "newSonnet": 0,
      "newLines": 0,
-     "whole": 0
+     "whole": 6
     }
    }
   }
@@ -536,7 +536,7 @@
    "known": "No, it's free. Please, go ahead.",
    "clip": "3176e0ba-1b75-4b51-b0a9-e56587fa4031",
    "status": "whole",
-   "why": "chunk \"请坐\" transcribed as \"請坐\" (0.5)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -568,7 +568,9 @@
      "said": "請坐",
      "sim": 0.5
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC02-S003",
@@ -1442,7 +1444,7 @@
    "known": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
    "clip": "cf47e8a3-65ee-48d0-b7f0-555a003287db",
    "status": "whole",
-   "why": "chunk \"晚安，明天见\" transcribed as \"晚安 明天見\" (0.8)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -1489,7 +1491,9 @@
      "said": "晚安 明天見",
      "sim": 0.8
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC06-S001:s0",
@@ -2447,7 +2451,7 @@
    "known": "How interesting. Well, lovely to meet you.",
    "clip": "8708e97b-0fea-4358-9573-34db5f79bef3",
    "status": "whole",
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -2480,21 +2484,8 @@
      "sim": 0.57
     }
    ],
-   "source": "lego",
-   "pairing": [
-    [
-     "真有意思",
-     "how interesting."
-    ],
-    [
-     "好",
-     "well,"
-    ],
-    [
-     "很高兴认识你",
-     "lovely to meet you."
-    ]
-   ]
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC06-S013:s0",
@@ -4122,7 +4113,7 @@
    "known": "Can we have some bread? And a bowl of chips for the table.",
    "clip": "44b37c64-9d53-4357-a1dc-c2cbd9103823",
    "status": "whole",
-   "why": "chunk \"还有一份薯条大家一起吃\" transcribed as \"還有一份薯條大家一起吃還有一份薯條大家一起吃\" (0.41)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -4154,7 +4145,9 @@
      "said": "還有一份薯條大家一起吃還有一份薯條大家一起吃",
      "sim": 0.41
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC08-S015:s0",
@@ -4336,7 +4329,9 @@
    "known": "Good evening. We have a booking for two, under the name Davies.",
    "clip": "91a4f42f-72d2-48c1-a178-9ff4e3efb892",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"晚上好,我們預定了兩位,名字是戴維斯。\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC09-S002:s0",
@@ -4536,7 +4531,9 @@
    "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
    "clip": "ecf659c8-537c-4f24-9ad7-053cca7e07c1",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"麻烦一下,你們有無膚質的菜嗎?或者適合素食者的?\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC09-S006:s0",
@@ -5059,7 +5056,9 @@
    "known": "And the bill, when you're ready. Could we split it?",
    "clip": "29dea8d0-3e74-4d26-9c9d-ce1cce8ce7c8",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"還有帳單,方便的時候給我們,可以分開付嗎?\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC09-S018:s0",
@@ -5722,7 +5721,7 @@
    "known": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Chinese better. Thank you very much, and goodbye.",
    "clip": "7d7a2d87-d3c2-49e3-bbaf-a05eefb68d94",
    "status": "whole",
-   "why": "chunk \"谢谢你，再见\" transcribed as \"謝謝你 再見\" (0.4)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -5769,7 +5768,9 @@
      "said": "謝謝你 再見",
      "sim": 0.4
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC10-S010:s0",
@@ -5964,7 +5965,7 @@
    "known": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
    "clip": "cdf0eff5-451b-4899-a0b9-e127f8275b97",
    "status": "whole",
-   "why": "chunk \"是的，您订了一间双人房住三晚\" transcribed as \"是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚是的 您訂了一間雙人房住三晚\" (0.09)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -6011,7 +6012,9 @@
      "said": "我可以看一下您的证件吗",
      "sim": 1
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC11-S003:s0",
@@ -6237,7 +6240,7 @@
    "known": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
    "clip": "361cac7f-15d0-45e9-8425-19fd9bff381f",
    "status": "whole",
-   "why": "chunk \"从七点半到十点\" transcribed as \"從7點半到10點從7點半到10點從7點半到10點\" (0.13)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -6269,7 +6272,9 @@
      "said": "有水果和麥片也有熱食早餐",
      "sim": 0.83
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC11-S009:s0",
@@ -6621,7 +6626,7 @@
    "known": "Good morning. I'm not feeling great - could you recommend something?",
    "clip": "da12e3b9-1322-451d-ae6d-072857b8d956",
    "status": "whole",
-   "why": "the Chinese clip has no Cartesia word timings that say its text",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -6654,21 +6659,8 @@
      "sim": 0.65
     }
    ],
-   "source": "lego",
-   "pairing": [
-    [
-     "早上好",
-     "good morning"
-    ],
-    [
-     "我感觉不太舒服",
-     "I'm not feeling great"
-    ],
-    [
-     "你能给我推荐点什么吗",
-     "could you recommend something?"
-    ]
-   ]
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC12-S002:s0",
@@ -7837,7 +7829,9 @@
    "known": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
    "clip": "9cbf2d14-ee84-49be-9821-218e29539c34",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"好的,當然可以,可能要花一點時間,現在路上很堵。\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC14-S003",
@@ -12063,7 +12057,7 @@
    "known": "Would you mind if I tried to practise speaking Chinese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
    "clip": "8765680a-0716-4bae-b168-96cd752d464a",
    "status": "whole",
-   "why": "chunk \"你介意我试着用中文跟你练习说话吗\" transcribed as \"你建議我試著用中文跟你練習說話嗎?\" (0.44)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -12095,7 +12089,9 @@
      "said": "我學習的時間還不長 跟別人說話的時候還是覺得有點緊緊",
      "sim": 0.4
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC22-S002:s0",
@@ -12238,7 +12234,7 @@
    "known": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
    "clip": "f41e2c25-2b1a-47f5-a15f-60291942df1d",
    "status": "whole",
-   "why": "chunk \"谢谢你，听到这个我很高兴\" transcribed as \"謝謝你 聽到這個我很高興」\" (0.45)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -12285,7 +12281,9 @@
      "said": "別人說話不慢的時候 我聽不太懂",
      "sim": 0.64
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC22-S004",
@@ -12335,7 +12333,7 @@
    "known": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
    "clip": "8d800330-8ba0-406b-af4e-edeb6010c852",
    "status": "whole",
-   "why": "chunk \"不过想该说什么还是有点难\" transcribed as \"不過想該說什麼還是有點難\" (0.42)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -12397,7 +12395,9 @@
      "said": "我不太確定該說什麼但我感覺我能說夠多的話來開始",
      "sim": 0.5
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC22-S006:s0",
@@ -12551,7 +12551,7 @@
    "known": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
    "clip": "d038229c-0d76-4600-a8e3-63158f7a6a1f",
    "status": "whole",
-   "why": "chunk \"就是有时候想得不够快没办法好好表达自己这让我有点沮丧\" transcribed as \"就是有時候想的不夠快 沒辦法好好表達自己 這讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓讓\" (0.06)",
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
    "pieces": [
     {
      "line": 0,
@@ -12583,7 +12583,9 @@
      "said": "但我知道如果想說的更自信就需要一直練習」",
      "sim": 0.79
     }
-   ]
+   ],
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC22-S008:s0",
@@ -12782,7 +12784,9 @@
    "known": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
    "clip": "90a2e0ca-22c3-45e0-b74f-5e287bc23244",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"這正是我需要的那種練習,我覺得我能感覺到我們說話的時候,我的大腦在變化,真的很感謝你的幫助,不過用一門自己說的不太好的語言說話,回淚的出乎意料。\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
   },
   {
    "id": "zho_for_eng:pod-1:SC22-S010:s0",
@@ -12953,7 +12957,29 @@
    "known": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
    "clip": "3baf1722-2c5b-4532-bc70-2d7dd6ed9a4e",
    "status": "whole",
-   "why": "the clip does not say its text closely enough (\"確實是這樣,我真的很高興我能聊這麼多,我也希望隨著我越來越好,我們以後能有更多的對話。\")"
+   "why": "several-line turn: the Chinese clip has no Cartesia word timings that say its text",
+   "source": null,
+   "pairing": null
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "target": "你好！不好意思，我现在没办法聊天。我需要回家了。我们明天去喝咖啡好吗？",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
+  },
+  {
+   "id": "zho_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "target": "不行，不好意思，我明天有事。不过我们周六去吧。回见。",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
+   "status": "verified",
+   "source": "lines",
+   "pairing": null,
+   "round": "pair --lines (#836)"
   }
  ]
 }

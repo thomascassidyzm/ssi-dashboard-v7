@@ -3,11 +3,11 @@
  "totals": {
   "cards": 385,
   "fitsWhole": 304,
-  "alreadyCut": 74,
+  "alreadyCut": 78,
   "newLego": 0,
   "newSonnet": 0,
-  "newLines": 4,
-  "whole": 3
+  "newLines": 2,
+  "whole": 1
  },
  "scenes": {
   "SC01": {
@@ -43,8 +43,8 @@
    "alreadyCut": 3,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 0,
-   "whole": 2
+   "newLines": 2,
+   "whole": 0
   },
   "SC05": {
    "cards": 6,
@@ -58,10 +58,10 @@
   "SC06": {
    "cards": 32,
    "fitsWhole": 26,
-   "alreadyCut": 4,
+   "alreadyCut": 6,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 2,
+   "newLines": 0,
    "whole": 0
   },
   "SC07": {
@@ -85,10 +85,10 @@
   "SC09": {
    "cards": 33,
    "fitsWhole": 27,
-   "alreadyCut": 5,
+   "alreadyCut": 6,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 1,
+   "newLines": 0,
    "whole": 0
   },
   "SC10": {
@@ -202,38 +202,24 @@
   "SC22": {
    "cards": 24,
    "fitsWhole": 13,
-   "alreadyCut": 9,
+   "alreadyCut": 10,
    "newLego": 0,
    "newSonnet": 0,
-   "newLines": 1,
+   "newLines": 0,
    "whole": 1
   }
  },
  "newCuts": [
   {
-   "id": "deu_for_eng:pod-1:SC06-S005",
-   "scene": 6,
+   "id": "deu_for_eng:pod-1:SC04-S002",
+   "scene": 4,
    "source": "lines",
    "seams": "cartesia",
    "retried": false
   },
   {
-   "id": "deu_for_eng:pod-1:SC06-S011",
-   "scene": 6,
-   "source": "lines",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC09-S005",
-   "scene": 9,
-   "source": "lines",
-   "seams": "cartesia",
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC22-S008",
-   "scene": 22,
+   "id": "deu_for_eng:pod-1:SC04-S003",
+   "scene": 4,
    "source": "lines",
    "seams": "cartesia",
    "retried": false
@@ -248,10 +234,10 @@
    "scene": 4,
    "target": "Hallo! Es tut mir leid, aber ich kann gerade nicht reden. Ich muss jetzt nach Hause. Wollen wir morgen einen Kaffee trinken gehen?",
    "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Shall we go for a coffee tomorrow?",
-   "status": "whole",
-   "source": null,
-   "seams": null,
-   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
+   "status": "cut",
+   "source": "lines",
+   "seams": "cartesia",
+   "why": null,
    "pieces": null,
    "retried": false
   },
@@ -260,42 +246,6 @@
    "scene": 4,
    "target": "Nein, es tut mir leid, ich bin morgen beschäftigt. Aber lass uns am Samstag gehen. Bis dann.",
    "known": "No, I'm sorry, I'm busy tomorrow. But let's go on Saturday. See you then.",
-   "status": "whole",
-   "source": null,
-   "seams": null,
-   "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
-   "pieces": null,
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC06-S005",
-   "scene": 6,
-   "target": "Ich komme aus Manchester, aber ich wohne jetzt in London. Und Sie?",
-   "known": "I'm from Manchester, but I live in London now. And you?",
-   "status": "cut",
-   "source": "lines",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": null,
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC06-S011",
-   "scene": 6,
-   "target": "Ich unterrichte Englisch, aber nicht in einer Schule. Ich arbeite mit Erwachsenen. Ich bin hier im Urlaub mit meiner Frau und meinen Kindern. Wir haben eine wunderschöne Zeit.",
-   "known": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
-   "status": "cut",
-   "source": "lines",
-   "seams": "cartesia",
-   "why": null,
-   "pieces": null,
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC09-S005",
-   "scene": 9,
-   "target": "Entschuldigung — haben Sie etwas Glutenfreies? Oder für Vegetarier?",
-   "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
    "status": "cut",
    "source": "lines",
    "seams": "cartesia",
@@ -312,18 +262,6 @@
    "source": null,
    "seams": null,
    "why": "several-line turn: the English clip has no Cartesia word timings that say its text",
-   "pieces": null,
-   "retried": false
-  },
-  {
-   "id": "deu_for_eng:pod-1:SC22-S008",
-   "scene": 22,
-   "target": "Du solltest bereits selbstbewusst sein. Ich finde, du machst es viel besser, als du denkst. Ich fühle mich wohl, mit dir zu sprechen, und ich spreche nicht sehr langsam.",
-   "known": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
-   "status": "cut",
-   "source": "lines",
-   "seams": "cartesia",
-   "why": null,
    "pieces": null,
    "retried": false
   }
