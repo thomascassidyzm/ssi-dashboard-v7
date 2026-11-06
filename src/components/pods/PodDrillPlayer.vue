@@ -32,7 +32,7 @@
     <template v-else-if="payload">
       <div class="summary" :class="gapCount ? 'summary-bad' : 'summary-ok'">
         <strong>{{ gapCount ? `${gapCount} gap${gapCount === 1 ? '' : 's'} in scene ${scene}` : `No gaps in scene ${scene}` }}</strong>
-        · {{ dealt.length }} sentences · {{ flat.length }} plays
+        · {{ spokenSentences }} sentence{{ spokenSentences === 1 ? '' : 's' }} in {{ dealt.length }} turn{{ dealt.length === 1 ? '' : 's' }} · {{ flat.length }} plays
         <span v-if="mode === 'regular'"> · lap {{ visit }} = stage {{ lapStage ?? '—' }} {{ lapPlaylist.length ? `[${lapPlaylist.join(' · ')}]` : '' }}</span>
         <div v-if="mode === 'regular' && !ladder.useStagePlaylist" class="note">
           The live listening row has the stage playlist OFF: every lap plays the single pattern
@@ -59,9 +59,9 @@
           <li v-for="(st, k) in d.steps" :key="k"
               :class="['step', st.side, { gap: st.gapReason, now: cur && cur.si === si && cur.k === k }]"
               @click="playFrom(si, k)">
-            <span class="side">{{ st.side === 'known' ? 'K' : 'T' }}<sub v-if="st.rate && st.rate !== 1">{{ st.rate }}×</sub></span>
+            <span class="side">{{ st.side === 'known' ? 'K' : 'T' }}</span>
             <span class="txt">{{ st.text }}</span>
-            <span v-if="st.clip && st.clip.startMs != null" class="ms">{{ st.clip.startMs }}–{{ st.clip.endMs }} ms</span>
+            <span class="ms">{{ playSpec(st) }}</span>
             <span v-if="st.lineKnown" class="ms">line's English</span>
             <span v-if="st.gapReason" class="why">⚠ {{ st.gapReason }}</span>
           </li>
@@ -76,7 +76,7 @@
       <button @click="next" :disabled="!flat.length">⏭</button>
       <div class="now-txt" :class="{ 'now-gap': banner }">
         <template v-if="banner">⚠ {{ banner }}</template>
-        <template v-else-if="cur">{{ flat[pos]?.st.side === 'known' ? 'K' : 'T' }} · {{ flat[pos]?.st.text }}</template>
+        <template v-else-if="cur">{{ cur.st.side === 'known' ? 'K' : 'T' }} · {{ playSpec(cur.st) }} · {{ cur.st.text }}</template>
         <template v-else>{{ flat.length }} plays ready</template>
       </div>
     </div>
@@ -93,6 +93,7 @@ import {
   clipGap, drillSteps, regularSteps, ladderConfig, bareId, podStageFor,
 } from '@/lib/podDrill/podDrillDeal.js'
 import { dominantVoiceFamily } from '@/lib/podEngine/fusionDrill'
+import { POD_SENTENCE_BOUNDARY } from '@/lib/podEngine/player/podSentenceSplit'
 
 const props = defineProps({ courseCode: { type: String, required: true }, slug: { type: String, required: true } })
 const route = useRoute()
@@ -189,6 +190,13 @@ const dealt = computed(() => {
     return { s, steps, note: r.note || null }
   })
 })
+// Spoken sentences, not turn records (job #873): one dealt entry is a whole turn unless the row is
+// split, and a turn can hold several sentences (Italian Scene 4: Friend 1 + Sarah 4 + Friend 3 = 8).
+// The cut file's own lines are the authority where they exist; otherwise the app's sentence boundary.
+const spokenSentences = computed(() => dealt.value.reduce((n, d) => {
+  const lines = payload.value?.cuts?.[d.s.id]?.lines
+  return n + (Array.isArray(lines) && lines.length ? lines.length : Math.max(1, d.s.targetText.split(POD_SENTENCE_BOUNDARY).filter((x) => x.trim()).length))
+}, 0))
 const flat = computed(() => dealt.value.flatMap((d, si) => d.steps.map((st, k) => ({ si, k, st }))))
 const gapCount = computed(() => flat.value.filter((f) => f.st.gapReason).length + dealt.value.filter((d) => d.s.cutNote).length)
 
@@ -320,6 +328,15 @@ function resume () { run(pos.value >= 0 && pos.value < flat.value.length ? pos.v
 function playFrom (si, k = 0) { stop(); const i = flat.value.findIndex((f) => f.si === si && f.k === k); run(i < 0 ? 0 : i) }
 function next () { stop(); run(Math.min(flat.value.length - 1, pos.value + 1)) }
 function prev () { stop(); run(Math.max(0, pos.value - 1)) }
+// Every play says its speed and what part of the clip it plays (job #873): 1× included.
+function playSpec (st) {
+  const rate = `${st.rate || 1}×`
+  const c = st.clip
+  if (!c) return `${rate} · no clip`
+  if (c.startMs == null && c.endMs == null) return `${rate} · whole clip`
+  if (c.endMs == null) return `${rate} · ${c.startMs} ms–end`
+  return `${rate} · ${c.startMs ?? 0}–${c.endMs} ms`
+}
 const shortId = (id) => String(id).split(':').slice(-2).join(':')
 
 watch([mode, visit], () => { stop(); pos.value = -1 })
