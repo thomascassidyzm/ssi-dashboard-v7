@@ -111,13 +111,13 @@ async function take(voiceId, lineId, text) {
   return { status: out.status, body: out.body, uploads, writes }
 }
 
-// THE RICHARD PARKS POD (job #67): the English of all eleven lines on his English booth, the five Welsh lines on his
+// THE RICHARD PARKS POD (jobs #67, #76): the English of all twelve lines on his English booth, the five Welsh lines on his
 // Welsh booth (a target-side script), each its own card, never merged into the Neath video card.
 describe('Richard Parks pod cards', () => {
   const CYM = { voiceId: 'human_aran_cym_n', spellings: ['human_aran_cym_n'] }
-  it('English booth: 11 lines on their own card; Welsh booth: 5 target1 lines', () => {
+  it('English booth: 12 lines on their own card; Welsh booth: 5 target1 lines', () => {
     const tracks = boothHome.buildHomeTracks(vo.voiceoverLinesFor(ARAN))
-    expect(tracks.map((t) => [t.key, t.total, t.podTitle])).toEqual([['voiceover.cym_nv2_for_eng', 18, 'Neath video'], ['voiceover.cym_n_for_eng', 11, 'Richard Parks pod']])
+    expect(tracks.map((t) => [t.key, t.total, t.podTitle])).toEqual([['voiceover.cym_nv2_for_eng', 18, 'Neath video'], ['voiceover.cym_n_for_eng', 12, 'Richard Parks pod']])
     const welsh = vo.voiceoverLinesFor(CYM)
     expect(welsh).toHaveLength(5)
     expect(welsh.every((l) => l.role === 'target1' && l.podTitle === 'Richard Parks pod')).toBe(true)
