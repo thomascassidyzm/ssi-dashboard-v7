@@ -610,6 +610,17 @@ async function scenarioDesktopGrid(browser, engine, size) {
 // First-five review: all API answers are fixtures, including uploads and approval. Real
 // recorder in Chromium; WebKit's capture stand-in exercises its layout and focus behaviour.
 async function scenarioSample(browser, engine, size) {
+  // Once an upload completes the booth deliberately plays the stored clip, not its raw
+  // local buffer. Supply that GET too, so upload timing cannot turn playback into a 404.
+  const sampleRate = 8000, samples = sampleRate * 2
+  const storedAudio = Buffer.alloc(44 + samples * 2)
+  storedAudio.write('RIFF', 0); storedAudio.writeUInt32LE(storedAudio.length - 8, 4)
+  storedAudio.write('WAVEfmt ', 8); storedAudio.writeUInt32LE(16, 16)
+  storedAudio.writeUInt16LE(1, 20); storedAudio.writeUInt16LE(1, 22)
+  storedAudio.writeUInt32LE(sampleRate, 24); storedAudio.writeUInt32LE(sampleRate * 2, 28)
+  storedAudio.writeUInt16LE(2, 32); storedAudio.writeUInt16LE(16, 34)
+  storedAudio.write('data', 36); storedAudio.writeUInt32LE(samples * 2, 40)
+  for (let i = 0; i < samples; i++) storedAudio.writeInt16LE(Math.round(3000 * Math.sin(2 * Math.PI * 180 * i / sampleRate)), 44 + i * 2)
   const script = JSON.parse(readFileSync(new URL('../../services/voice-engine/video-voiceovers.json', import.meta.url))).videos.find(v => v.slug === 'richard-parks-english')
   const track = `voiceover.${script.fileUnder}`
   const lines = script.lines.map((l, i) => ({ id: `voiceover:${script.slug}:${l.key}`, text: l.text, order: i, kind: 'voiceover', role: 'known', courseCode: script.fileUnder, podTitle: script.title, recorded: false, clipUrl: null }))
@@ -618,6 +629,7 @@ async function scenarioSample(browser, engine, size) {
   const answer = async (req, url, route) => {
     const p = url.pathname
     if (!p.startsWith('/api/')) return false
+    if (p.startsWith(`/api/recording/voice/${VOICE}/line/`) && p.endsWith('/clip')) { await route.fulfill({ contentType: 'audio/wav', body: storedAudio }); return true }
     if (p.endsWith('/take') && req.method() === 'POST') { uploads++; await route.fulfill({ json: { ok: true, audioId: `fixture-${uploads}` } }); return true }
     if (p.endsWith('/sample-gate/approve')) { approvals++; await route.fulfill({ json: { ok: true } }); return true }
     if (p.endsWith('/sample-gate/measure')) { await route.fulfill({ json: { measured: true, hints: [] } }); return true }
