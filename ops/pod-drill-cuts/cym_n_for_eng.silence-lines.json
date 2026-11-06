@@ -1,0 +1,5591 @@
+{
+ "course": "cym_n_for_eng",
+ "tool": "tools/pods/pod-drill/silence-lines.cjs (#71)",
+ "summary": {
+  "turns": 54,
+  "calibration": {
+   "strict": 10,
+   "agree": 9,
+   "placedKept": 25
+  },
+  "cut": 25,
+  "sentences": 55,
+  "tally": {
+   "cut": 25,
+   "target:syllable_share": 3,
+   "target:seam_not_silent": 3,
+   "target:margin_below_floor": 2,
+   "target:placed_ambiguous": 10,
+   "target:placed_margin": 2,
+   "target:too_few_gaps": 1,
+   "target:placed_short_gap": 2,
+   "known:too_few_gaps": 1,
+   "target:placed_far": 3,
+   "known:seam_not_silent": 1,
+   "target:placed_rate": 1
+  },
+  "englishLevels": {
+   "reuse": 42,
+   "cut-human": 13
+  }
+ },
+ "turns": [
+  {
+   "id": "cym_n_for_eng:pod-1:SC01-S004",
+   "scene": 1,
+   "speaker": "Sarah",
+   "target": "Ydw,… mae gen i ddiwrnod prysur… heddiw. Gobeithio… cei di ddiwrnod da. Wela i di wedyn.",
+   "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+   "targetAudioId": "91df1b05-332e-484b-8d5d-cf730caafec7",
+   "knownAudioId": "263240af-71e2-4d7d-9c2e-ea9f4dd993aa.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Ydw,… mae gen i ddiwrnod prysur… heddiw.",
+     "Gobeithio… cei di ddiwrnod da.",
+     "Wela i di wedyn."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 7.15,
+     "interior_gaps_ms": [
+      134,
+      354,
+      643,
+      635,
+      117
+     ],
+     "cut_at_gaps_ms": [
+      643,
+      635
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      3.387,
+      2.331,
+      1.632
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.387
+      ],
+      [
+       3.287,
+       5.618
+      ],
+      [
+       5.518,
+       7.15
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 5,
+     "cues_found": 5,
+     "cut_at_ordinals": [
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      134,
+      354,
+      643,
+      635,
+      117
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -52.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.5,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s2.head",
+       "db": -69.5,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "placed_agrees": false,
+    "share_deltas": [
+     0.074,
+     0.025
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3216
+     ],
+     [
+      3458,
+      5451
+     ],
+     [
+      5685,
+      7150
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "91df1b05-332e-484b-8d5d-cf730caafec7",
+    "knownClip": "263240af-71e2-4d7d-9c2e-ea9f4dd993aa.v2",
+    "lines": [
+     {
+      "t": [
+       "Ydw,… mae gen i ddiwrnod prysur… heddiw.",
+       0,
+       3216
+      ],
+      "k": [
+       "Yes, I've got a busy day today."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Gobeithio… cei di ddiwrnod da.",
+       3458,
+       5451
+      ],
+      "k": [
+       "I hope you have a good day."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Wela i di wedyn.",
+       5685,
+       7150
+      ],
+      "k": [
+       "See you later."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC03-S010",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Diolch yn fawr. Hwyl.",
+   "known": "Thank you very much. Goodbye.",
+   "targetAudioId": "55ac6c59-62e8-4df6-abaa-70df8aa56982",
+   "knownAudioId": "e7455b6c-2ec9-40c1-93e9-a77271838360.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Diolch yn fawr.",
+     "Hwyl."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.322,
+     "interior_gaps_ms": [
+      442
+     ],
+     "cut_at_gaps_ms": [
+      442
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.387,
+      1.035
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.387
+      ],
+      [
+       1.287,
+       2.322
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      442
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -53.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -63.1,
+       "piece_peak_db": -4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.156
+    ],
+    "ok": false,
+    "reason": "syllable_share"
+   },
+   "verdict": "whole",
+   "reason": "target:syllable_share"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC04-S002",
+   "scene": 4,
+   "speaker": "Sarah",
+   "target": "Helo! Mae'n ddrwg gen i… ond fedra i ddim siarad… rŵan. Mae isio i mi fynd adra… rŵan. Fedrwn ni siarad fory?",
+   "known": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "targetAudioId": "91f9e7aa-75f7-4e58-8c70-ad6411d9b32f",
+   "knownAudioId": "71ea72b8-6c76-4fa6-9bbc-f832714cfa37.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Helo!",
+     "Mae'n ddrwg gen i… ond fedra i ddim siarad… rŵan.",
+     "Mae isio i mi fynd adra… rŵan.",
+     "Fedrwn ni siarad fory?"
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 8.25,
+     "interior_gaps_ms": [
+      574,
+      262,
+      520,
+      111,
+      766
+     ],
+     "cut_at_gaps_ms": [
+      574,
+      520,
+      766
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.162,
+      3.218,
+      2.23,
+      1.94
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.162
+      ],
+      [
+       1.062,
+       4.279
+      ],
+      [
+       4.179,
+       6.41
+      ],
+      [
+       6.31,
+       8.25
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 5,
+     "cues_found": 5,
+     "cut_at_ordinals": [
+      0,
+      2,
+      4
+     ],
+     "cue_gaps_ms": [
+      574,
+      262,
+      520,
+      111,
+      766
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -38.3,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -53.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -66.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -66.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s2.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s3.head",
+       "db": -71.2,
+       "piece_peak_db": -3.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.062,
+     0.065,
+     0.003
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1025
+     ],
+     [
+      1199,
+      4169
+     ],
+     [
+      4289,
+      6177
+     ],
+     [
+      6543,
+      8250
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse",
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "91f9e7aa-75f7-4e58-8c70-ad6411d9b32f",
+    "knownClip": "71ea72b8-6c76-4fa6-9bbc-f832714cfa37.v2",
+    "lines": [
+     {
+      "t": [
+       "Helo!",
+       0,
+       1025
+      ],
+      "k": [
+       "Hello!"
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae'n ddrwg gen i… ond fedra i ddim siarad… rŵan.",
+       1199,
+       4169
+      ],
+      "k": [
+       "I'm sorry but I can't talk at the moment."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae isio i mi fynd adra… rŵan.",
+       4289,
+       6177
+      ],
+      "k": [
+       "I need to go home now."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Fedrwn ni siarad fory?",
+       6543,
+       8250
+      ],
+      "k": [
+       "Can we talk tomorrow?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC04-S003",
+   "scene": 4,
+   "speaker": "Friend",
+   "target": "Na, mae'n ddrwg gen i,… dw i'n brysur fory. Ond gawn ni siarad ddydd Sadwrn. Wela i chdi bryd hynny.",
+   "known": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+   "targetAudioId": "431b80dd-76d1-48f5-9dd0-baa5206ca3ac",
+   "knownAudioId": "10b6cc13-8939-4345-9243-ba3e0303e76b",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Na, mae'n ddrwg gen i,… dw i'n brysur fory.",
+     "Ond gawn ni siarad ddydd Sadwrn.",
+     "Wela i chdi bryd hynny."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 5.661,
+     "interior_gaps_ms": [
+      183,
+      136,
+      167
+     ],
+     "cut_at_gaps_ms": [
+      136,
+      167
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.666,
+      1.628,
+      1.567
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.666
+      ],
+      [
+       2.566,
+       4.194
+      ],
+      [
+       4.094,
+       5.661
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      1,
+      2
+     ],
+     "cue_gaps_ms": [
+      183,
+      136,
+      167
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -32,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -35.1,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -55.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -41.2,
+       "piece_peak_db": -2.3
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s0.tail",
+       "db": -32,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "target:seam_not_silent"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC05-S002",
+   "scene": 5,
+   "speaker": "Sarah",
+   "target": "Do, hir iawn. Dw i wedi… blino'n ofnadwy rŵan. Nos da. Wela i chdi fory.",
+   "known": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+   "targetAudioId": "66287643-4c8f-47f9-9aa7-4c8424af1309",
+   "knownAudioId": "74ef399f-2978-48c3-b15d-7a20f5a41db1.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Do, hir iawn.",
+     "Dw i wedi… blino'n ofnadwy rŵan.",
+     "Nos da.",
+     "Wela i chdi fory."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 18.927,
+     "interior_gaps_ms": [
+      366,
+      686,
+      125,
+      7407,
+      477,
+      493,
+      148,
+      732,
+      594
+     ],
+     "cut_at_gaps_ms": [
+      686,
+      732,
+      594
+     ],
+     "rejected_gaps_ms": [
+      493,
+      477,
+      366,
+      148,
+      125
+     ],
+     "margin": 1.2,
+     "piece_durs": [
+      2.274,
+      14.01,
+      1.334,
+      1.609
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.274
+      ],
+      [
+       2.174,
+       16.184
+      ],
+      [
+       16.084,
+       17.418
+      ],
+      [
+       17.318,
+       18.927
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      686,
+      7407,
+      732,
+      594
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "margin_below_floor"
+   },
+   "verdict": "whole",
+   "reason": "target:margin_below_floor"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S002",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Anna 'di fy enw i. A chi?",
+   "known": "My name is Anna. And you?",
+   "targetAudioId": "f7652ac9-ad27-4aab-b1f7-3ff15ccf8fe5",
+   "knownAudioId": "66015d91-82a7-4eb6-9af5-a4ba9b2066e4.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Anna 'di fy enw i.",
+     "A chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.145,
+     "interior_gaps_ms": [
+      754
+     ],
+     "cut_at_gaps_ms": [
+      754
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.015,
+      1.231
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.015
+      ],
+      [
+       1.915,
+       3.145
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      754
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -71.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -71.2,
+       "piece_peak_db": -1.9
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.114
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1788
+     ],
+     [
+      2142,
+      3145
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "f7652ac9-ad27-4aab-b1f7-3ff15ccf8fe5",
+    "knownClip": "66015d91-82a7-4eb6-9af5-a4ba9b2066e4.v2",
+    "lines": [
+     {
+      "t": [
+       "Anna 'di fy enw i.",
+       0,
+       1788
+      ],
+      "k": [
+       "My name is Anna."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "A chi?",
+       2142,
+       3145
+      ],
+      "k": [
+       "And you?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S004",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Braf cyfarfod â chi hefyd. O ble dach chi'n dwad?",
+   "known": "Pleased to meet you too. Where are you from?",
+   "targetAudioId": "5b70f63d-ba64-4584-94db-e561f69848e8",
+   "knownAudioId": "6356cf27-fc33-4c55-9253-f3538ac02965.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Braf cyfarfod â chi hefyd.",
+     "O ble dach chi'n dwad?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.283,
+     "interior_gaps_ms": [
+      885
+     ],
+     "cut_at_gaps_ms": [
+      885
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.538,
+      1.845
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.538
+      ],
+      [
+       2.438,
+       4.283
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      885
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -68,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -62.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.013
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2246
+     ],
+     [
+      2730,
+      4283
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "5b70f63d-ba64-4584-94db-e561f69848e8",
+    "knownClip": "6356cf27-fc33-4c55-9253-f3538ac02965.v2",
+    "lines": [
+     {
+      "t": [
+       "Braf cyfarfod â chi hefyd.",
+       0,
+       2246
+      ],
+      "k": [
+       "Pleased to meet you too."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "O ble dach chi'n dwad?",
+       2730,
+       4283
+      ],
+      "k": [
+       "Where are you from?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S005",
+   "scene": 6,
+   "speaker": "James",
+   "target": "Dw i'n dwad o Fanceinion,… ond dw i'n byw yn Llundain… rŵan. A chi?",
+   "known": "I'm from Manchester, but I live in London now. And you?",
+   "targetAudioId": "4fd3603e-659a-4108-9b11-e404d8bee5fc",
+   "knownAudioId": "1174c617-1f66-4df3-9978-76a3878bdaeb",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Dw i'n dwad o Fanceinion,… ond dw i'n byw yn Llundain… rŵan.",
+     "A chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.078,
+     "interior_gaps_ms": [
+      195
+     ],
+     "cut_at_gaps_ms": [
+      195
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      3.235,
+      0.943
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.235
+      ],
+      [
+       3.135,
+       4.078
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      195
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -53,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -42.9,
+       "piece_peak_db": -4.9
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.087
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3235
+     ],
+     [
+      3135,
+      4078
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "I'm from Manchester, but I live in London now.",
+     "And you?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.691,
+     "interior_gaps_ms": [
+      375
+     ],
+     "cut_at_gaps_ms": [
+      375
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.819,
+      0.972
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.819
+      ],
+      [
+       2.719,
+       3.691
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      375
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -55.3,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -53.2,
+       "piece_peak_db": -2.9
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.088
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2782
+     ],
+     [
+      2756,
+      3691
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "4fd3603e-659a-4108-9b11-e404d8bee5fc",
+    "knownClip": "1174c617-1f66-4df3-9978-76a3878bdaeb",
+    "lines": [
+     {
+      "t": [
+       "Dw i'n dwad o Fanceinion,… ond dw i'n byw yn Llundain… rŵan.",
+       0,
+       3235
+      ],
+      "k": [
+       "I'm from Manchester, but I live in London now.",
+       0,
+       2782
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "A chi?",
+       3135,
+       4078
+      ],
+      "k": [
+       "And you?",
+       2756,
+       3691
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S006",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Dw i'n dwad o Ffrainc. Dw i 'di bod yma… am ddwy flynedd.",
+   "known": "I'm from France. I've been here for two years.",
+   "targetAudioId": "7d2b434f-5ef7-4382-94ee-ffd54907edfb",
+   "knownAudioId": "52fa84da-a9ae-47af-8bfc-8f1801b32468.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dw i'n dwad o Ffrainc.",
+     "Dw i 'di bod yma… am ddwy flynedd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.08,
+     "interior_gaps_ms": [
+      482
+     ],
+     "cut_at_gaps_ms": [
+      482
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.828,
+      2.352
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.828
+      ],
+      [
+       1.728,
+       4.08
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      482
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -67.4,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.094
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1737
+     ],
+     [
+      1819,
+      4080
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "7d2b434f-5ef7-4382-94ee-ffd54907edfb",
+    "knownClip": "52fa84da-a9ae-47af-8bfc-8f1801b32468.v2",
+    "lines": [
+     {
+      "t": [
+       "Dw i'n dwad o Ffrainc.",
+       0,
+       1737
+      ],
+      "k": [
+       "I'm from France."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dw i 'di bod yma… am ddwy flynedd.",
+       1819,
+       4080
+      ],
+      "k": [
+       "I've been here for two years."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S008",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Nyrs ydw i,… yn yr ysbyty… rownd y gornel fan hyn. A chi?",
+   "known": "I'm a nurse, at the hospital just round the corner. And you?",
+   "targetAudioId": "ddbd2fd2-4111-43ad-9a65-a09be0fcede3",
+   "knownAudioId": "49b16710-b90b-4f44-bab9-bf8085c84eb9.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Nyrs ydw i,… yn yr ysbyty… rownd y gornel fan hyn.",
+     "A chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.314,
+     "interior_gaps_ms": [
+      356,
+      758
+     ],
+     "cut_at_gaps_ms": [
+      758
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      4.224,
+      1.19
+     ],
+     "piece_spans": [
+      [
+       0,
+       4.224
+      ],
+      [
+       4.124,
+       5.314
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      1
+     ],
+     "cue_gaps_ms": [
+      356,
+      758
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -70.3,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -68.7,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.049
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3995
+     ],
+     [
+      4353,
+      5314
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "ddbd2fd2-4111-43ad-9a65-a09be0fcede3",
+    "knownClip": "49b16710-b90b-4f44-bab9-bf8085c84eb9.v2",
+    "lines": [
+     {
+      "t": [
+       "Nyrs ydw i,… yn yr ysbyty… rownd y gornel fan hyn.",
+       0,
+       3995
+      ],
+      "k": [
+       "I'm a nurse, at the hospital just round the corner."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "A chi?",
+       4353,
+       5314
+      ],
+      "k": [
+       "And you?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S009",
+   "scene": 6,
+   "speaker": "James",
+   "target": "Mae'n ddrwg gen i,… wnes i ddim eich dallt chi. Dw i'n dysgu Cymraeg. Fedrwch chi ddeud hynna… eto'n arafach?",
+   "known": "I'm sorry, I didn't understand you. I'm learning Welsh. Could you say that again more slowly?",
+   "targetAudioId": "c5163aeb-0d38-4c3a-93b8-cdd2eb2c9f6b",
+   "knownAudioId": "04d54a26-3181-418b-a84a-ae88164b29d0",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Mae'n ddrwg gen i,… wnes i ddim eich dallt chi.",
+     "Dw i'n dysgu Cymraeg.",
+     "Fedrwch chi ddeud hynna… eto'n arafach?"
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 6.412,
+     "interior_gaps_ms": [
+      167,
+      120,
+      210
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      1,
+      2
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S010",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Medraf, wrth gwrs. Nyrs ydw i. Dw i'n gweithio… yn yr ysbyty. Mae o'n agos i fan hyn. A be dach chi'n 'neud?",
+   "known": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+   "targetAudioId": "4567c511-c36d-4677-89ad-8edd24b0eb7a",
+   "knownAudioId": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_gfzdpspr5fdp",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Medraf, wrth gwrs.",
+     "Nyrs ydw i.",
+     "Dw i'n gweithio… yn yr ysbyty.",
+     "Mae o'n agos i fan hyn.",
+     "A be dach chi'n 'neud?"
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 8.887,
+     "interior_gaps_ms": [
+      390,
+      494,
+      728,
+      715
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 5,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      3,
+      4
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S011",
+   "scene": 6,
+   "speaker": "James",
+   "target": "Dw i'n dysgu Saesneg,… ond dim mewn ysgol. Dw i'n gweithio… efo oedolion. Dw i yma ar wyliau… efo fy ngwraig a'r plant. Dan ni'n cael amser hyfryd.",
+   "known": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.",
+   "targetAudioId": "52892b49-30d9-46f9-85e9-d1ca9d157b58",
+   "knownAudioId": "8ac7f4d2-fbd6-4d9d-9917-3b8bc5169191",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Dw i'n dysgu Saesneg,… ond dim mewn ysgol.",
+     "Dw i'n gweithio… efo oedolion.",
+     "Dw i yma ar wyliau… efo fy ngwraig a'r plant.",
+     "Dan ni'n cael amser hyfryd."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 9.467,
+     "interior_gaps_ms": [
+      189,
+      507,
+      267,
+      182
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 6,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      1,
+      3,
+      5
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_margin",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_margin"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S004",
+   "scene": 7,
+   "speaker": "Cafe Customer 1",
+   "target": "Liciwn i un mawr,… os gwelwch yn dda. Efo llefrith ceirch… os oes gynnoch chi beth.",
+   "known": "I'd like large, please. With oat milk if you have it.",
+   "targetAudioId": "cb6d8ee4-5c20-4c37-9530-5d856d0d5139",
+   "knownAudioId": "b1bb4ce0-3c13-43a5-b4e4-17ba993696fb",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Liciwn i un mawr,… os gwelwch yn dda.",
+     "Efo llefrith ceirch… os oes gynnoch chi beth."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.68,
+     "interior_gaps_ms": [],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 0,
+     "cut_at_ordinals": [
+      1
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "too_few_gaps",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:too_few_gaps"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S011",
+   "scene": 7,
+   "speaker": "Cafe Customer 2",
+   "target": "Fedra i dalu… efo cerdyn? Oes gynnoch chi contactless?",
+   "known": "Could I pay by card? Do you have contactless?",
+   "targetAudioId": "29fda3d6-4f62-40af-8b59-ed20841617bd",
+   "knownAudioId": "48ec28b4-ef21-4c84-a1d6-294797276cad",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Fedra i dalu… efo cerdyn?",
+     "Oes gynnoch chi contactless?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.422,
+     "interior_gaps_ms": [
+      142
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      1
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_short_gap",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_short_gap"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S013",
+   "scene": 7,
+   "speaker": "Cafe Customer 3",
+   "target": "Bore da. Dau Americano… a phaned o de,… os gwelwch yn dda.",
+   "known": "Good morning. Two Americanos and a cup of tea, please.",
+   "targetAudioId": "9a383a03-fc26-4096-b02e-81e0e557b6a5",
+   "knownAudioId": "c46211ab-0f81-4144-be0b-9c7dbdca0cda",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Bore da.",
+     "Dau Americano… a phaned o de,… os gwelwch yn dda."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.262,
+     "interior_gaps_ms": [
+      258
+     ],
+     "cut_at_gaps_ms": [
+      258
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.251,
+      3.111
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.251
+      ],
+      [
+       1.151,
+       4.262
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      258
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -60.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -47.5,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.11
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1251
+     ],
+     [
+      1151,
+      4262
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "Good morning.",
+     "Two Americanos and a cup of tea, please."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.746,
+     "interior_gaps_ms": [
+      307
+     ],
+     "cut_at_gaps_ms": [
+      307
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.159,
+      2.687
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.159
+      ],
+      [
+       1.059,
+       3.746
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      307
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -42.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -44.9,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.09
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1156
+     ],
+     [
+      1063,
+      3746
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "9a383a03-fc26-4096-b02e-81e0e557b6a5",
+    "knownClip": "c46211ab-0f81-4144-be0b-9c7dbdca0cda",
+    "lines": [
+     {
+      "t": [
+       "Bore da.",
+       0,
+       1251
+      ],
+      "k": [
+       "Good morning.",
+       0,
+       1156
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dau Americano… a phaned o de,… os gwelwch yn dda.",
+       1151,
+       4262
+      ],
+      "k": [
+       "Two Americanos and a cup of tea, please.",
+       1063,
+       3746
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S014",
+   "scene": 7,
+   "speaker": "Cafe Barista",
+   "target": "Dach chi isio eistedd i mewn? Mae'r bwrdd wrth y… ffenest yn rhydd.",
+   "known": "Would you like to sit-in? The table by the window is free.",
+   "targetAudioId": "ac81070c-71bc-4159-9292-e7ba5801a405",
+   "knownAudioId": "93da6016-671e-406b-93b1-681afb4c6809.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dach chi isio eistedd i mewn?",
+     "Mae'r bwrdd wrth y… ffenest yn rhydd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.499,
+     "interior_gaps_ms": [
+      421
+     ],
+     "cut_at_gaps_ms": [
+      421
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.091,
+      2.508
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.091
+      ],
+      [
+       1.991,
+       4.499
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      421
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -1.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -67.4,
+       "piece_peak_db": -3.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.051
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2031
+     ],
+     [
+      2052,
+      4499
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "ac81070c-71bc-4159-9292-e7ba5801a405",
+    "knownClip": "93da6016-671e-406b-93b1-681afb4c6809.v2",
+    "lines": [
+     {
+      "t": [
+       "Dach chi isio eistedd i mewn?",
+       0,
+       2031
+      ],
+      "k": [
+       "Would you like to sit-in?"
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae'r bwrdd wrth y… ffenest yn rhydd.",
+       2052,
+       4499
+      ],
+      "k": [
+       "The table by the window is free."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S002",
+   "scene": 8,
+   "speaker": "Bar Customer 1",
+   "target": "Liciwn i beint,… os gwelwch yn dda. Pa gwrw sy gynnoch chi… ar dap?",
+   "known": "I'd like a pint, please. What ales do you have on?",
+   "targetAudioId": "3fbc3e6c-9ed9-4988-913e-b0adf0b0180a",
+   "knownAudioId": "f5646da6-18a5-4ed6-8c72-fcf89fe1cb1e",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Liciwn i beint,… os gwelwch yn dda.",
+     "Pa gwrw sy gynnoch chi… ar dap?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.114,
+     "interior_gaps_ms": [
+      774,
+      129
+     ],
+     "cut_at_gaps_ms": [
+      774
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.679,
+      2.535
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.679
+      ],
+      [
+       2.579,
+       5.114
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      774,
+      129
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s1.head",
+       "db": -65.2,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.017
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2442
+     ],
+     [
+      2816,
+      5114
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "3fbc3e6c-9ed9-4988-913e-b0adf0b0180a",
+    "knownClip": "f5646da6-18a5-4ed6-8c72-fcf89fe1cb1e",
+    "lines": [
+     {
+      "t": [
+       "Liciwn i beint,… os gwelwch yn dda.",
+       0,
+       2442
+      ],
+      "k": [
+       "I'd like a pint, please."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Pa gwrw sy gynnoch chi… ar dap?",
+       2816,
+       5114
+      ],
+      "k": [
+       "What ales do you have on?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S012",
+   "scene": 8,
+   "speaker": "Bar Customer 1",
+   "target": "Dw i ddim yn siŵr… os ydw i'n llwglyd. Oes gynnoch chi fwydlen?",
+   "known": "I'm not sure if I'm hungry. Do you have a menu?",
+   "targetAudioId": "9425bac0-1a99-4399-b4ff-bd01c6bdad58",
+   "knownAudioId": "7f254bd2-dd31-477b-af89-9402c1347463",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dw i ddim yn siŵr… os ydw i'n llwglyd.",
+     "Oes gynnoch chi fwydlen?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.1,
+     "interior_gaps_ms": [
+      411
+     ],
+     "cut_at_gaps_ms": [
+      411
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.441,
+      1.759
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.441
+      ],
+      [
+       2.341,
+       4.1
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      411
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -65.2,
+       "piece_peak_db": -3.8
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.055
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2386
+     ],
+     [
+      2396,
+      4100
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "9425bac0-1a99-4399-b4ff-bd01c6bdad58",
+    "knownClip": "7f254bd2-dd31-477b-af89-9402c1347463",
+    "lines": [
+     {
+      "t": [
+       "Dw i ddim yn siŵr… os ydw i'n llwglyd.",
+       0,
+       2386
+      ],
+      "k": [
+       "I'm not sure if I'm hungry."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Oes gynnoch chi fwydlen?",
+       2396,
+       4100
+      ],
+      "k": [
+       "Do you have a menu?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S013",
+   "scene": 8,
+   "speaker": "Bartender",
+   "target": "Oes, wrth gwrs. Dyma hi. Mae'r pysgod a sglodion… yn dda iawn.",
+   "known": "Yes, of course. Here it is. The fish and chips are very good.",
+   "targetAudioId": "d595675f-e34f-4a12-b156-81e2f563cbbf",
+   "knownAudioId": "fe2cb602-4b35-4f10-9b6f-d997347ec179",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Oes, wrth gwrs.",
+     "Dyma hi.",
+     "Mae'r pysgod a sglodion… yn dda iawn."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 4.752,
+     "interior_gaps_ms": [
+      230,
+      374
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S014",
+   "scene": 8,
+   "speaker": "Bar Customer 1",
+   "target": "Gawn ni ychydig o fara? A phowlen o… sglodion i'r bwrdd.",
+   "known": "Can we have some bread? And a bowl of chips for the table.",
+   "targetAudioId": "6c796c7f-9e7c-4f8b-95cc-e80c012acba0",
+   "knownAudioId": "b7e9648b-a2d9-4643-a241-c996c4988c2d",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Gawn ni ychydig o fara?",
+     "A phowlen o… sglodion i'r bwrdd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.002,
+     "interior_gaps_ms": [
+      317
+     ],
+     "cut_at_gaps_ms": [
+      317
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.868,
+      2.234
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.868
+      ],
+      [
+       1.768,
+       4.002
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      317
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -54.6,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.8,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.05
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1860
+     ],
+     [
+      1777,
+      4002
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "6c796c7f-9e7c-4f8b-95cc-e80c012acba0",
+    "knownClip": "b7e9648b-a2d9-4643-a241-c996c4988c2d",
+    "lines": [
+     {
+      "t": [
+       "Gawn ni ychydig o fara?",
+       0,
+       1860
+      ],
+      "k": [
+       "Can we have some bread?"
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "A phowlen o… sglodion i'r bwrdd.",
+       1777,
+       4002
+      ],
+      "k": [
+       "And a bowl of chips for the table."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S002",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Croeso. Dewch ar fy ôl i,… os gwelwch yn dda. Dyma'r bwydlenni.",
+   "known": "Welcome. Please follow me. Here are the menus.",
+   "targetAudioId": "7f3c3fff-ebba-4609-8a48-15f6831a0ef7",
+   "knownAudioId": "bf8a2ca5-a1fe-4d78-b9ad-0a4f13e8c406",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Croeso.",
+     "Dewch ar fy ôl i,… os gwelwch yn dda.",
+     "Dyma'r bwydlenni."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 4.63,
+     "interior_gaps_ms": [
+      391,
+      370
+     ],
+     "cut_at_gaps_ms": [
+      391,
+      370
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.217,
+      2.018,
+      1.595
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.217
+      ],
+      [
+       1.117,
+       3.135
+      ],
+      [
+       3.035,
+       4.63
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      391,
+      370
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -49.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -43.9,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -66.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -56,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.133,
+     0.057
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1172
+     ],
+     [
+      1163,
+      3100
+     ],
+     [
+      3070,
+      4630
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "Welcome.",
+     "Please follow me.",
+     "Here are the menus."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 3.295,
+     "interior_gaps_ms": [
+      268
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0,
+      1
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "too_few_gaps",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "known:too_few_gaps",
+   "gapTtsChars": 46
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S006",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Oes… mae'r eog a'r risotto… heb glwten,… y ddau ohonyn nhw. Mae gynnon ni saladau… hefyd.",
+   "known": "Yes, the salmon and the risotto are both gluten-free. We also have some salads.",
+   "targetAudioId": "f070f10f-a04c-4437-9230-a0bd44b95048",
+   "knownAudioId": "4bcee59b-56d0-4fb7-9998-ca6667f7c78a",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Oes… mae'r eog a'r risotto… heb glwten,… y ddau ohonyn nhw.",
+     "Mae gynnon ni saladau… hefyd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.916,
+     "interior_gaps_ms": [
+      425
+     ],
+     "cut_at_gaps_ms": [
+      425
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      4.034,
+      1.982
+     ],
+     "piece_spans": [
+      [
+       0,
+       4.034
+      ],
+      [
+       3.934,
+       5.916
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      425
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -39.1,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -36,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.047
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3972
+     ],
+     [
+      3997,
+      5916
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "Yes, the salmon and the risotto are both gluten-free.",
+     "We also have some salads."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.112,
+     "interior_gaps_ms": [
+      380
+     ],
+     "cut_at_gaps_ms": [
+      380
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      3.355,
+      1.857
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.355
+      ],
+      [
+       3.255,
+       5.112
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      380
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -44.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -48.7,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.033
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3315
+     ],
+     [
+      3295,
+      5112
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "f070f10f-a04c-4437-9230-a0bd44b95048",
+    "knownClip": "4bcee59b-56d0-4fb7-9998-ca6667f7c78a",
+    "lines": [
+     {
+      "t": [
+       "Oes… mae'r eog a'r risotto… heb glwten,… y ddau ohonyn nhw.",
+       0,
+       3972
+      ],
+      "k": [
+       "Yes, the salmon and the risotto are both gluten-free.",
+       0,
+       3315
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae gynnon ni saladau… hefyd.",
+       3997,
+       5916
+      ],
+      "k": [
+       "We also have some salads.",
+       3295,
+       5112
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S008",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Mae'r oen yn ardderchog. Mae o… wedi'i goginio'n… araf, efo rhosmari.",
+   "known": "The lamb is excellent. It's been slow-cooked, with rosemary.",
+   "targetAudioId": "09ba841f-2fbb-459c-aa2a-ea418a4f4de4",
+   "knownAudioId": "740aa4cb-1a0d-4812-ae7c-1989a0e1fe59",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Mae'r oen yn ardderchog.",
+     "Mae o… wedi'i goginio'n… araf, efo rhosmari."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.932,
+     "interior_gaps_ms": [
+      437
+     ],
+     "cut_at_gaps_ms": [
+      437
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.038,
+      2.994
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.038
+      ],
+      [
+       1.938,
+       4.932
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      437
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -37.6,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -39.8,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.108
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1969
+     ],
+     [
+      2007,
+      4932
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "The lamb is excellent.",
+     "It's been slow-cooked, with rosemary."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.075,
+     "interior_gaps_ms": [
+      256,
+      103
+     ],
+     "cut_at_gaps_ms": [
+      256
+     ],
+     "rejected_gaps_ms": [
+      103
+     ],
+     "margin": 2.49,
+     "piece_durs": [
+      1.708,
+      2.467
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.708
+      ],
+      [
+       1.608,
+       4.075
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      256
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -48.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -47.9,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.026
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1708
+     ],
+     [
+      1608,
+      4075
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "09ba841f-2fbb-459c-aa2a-ea418a4f4de4",
+    "knownClip": "740aa4cb-1a0d-4812-ae7c-1989a0e1fe59",
+    "lines": [
+     {
+      "t": [
+       "Mae'r oen yn ardderchog.",
+       0,
+       1969
+      ],
+      "k": [
+       "The lamb is excellent.",
+       0,
+       1708
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae o… wedi'i goginio'n… araf, efo rhosmari.",
+       2007,
+       4932
+      ],
+      "k": [
+       "It's been slow-cooked, with rosemary.",
+       1608,
+       4075
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S009",
+   "scene": 9,
+   "speaker": "Diner 1",
+   "target": "Mi gymera i'r oen,… os gwelwch yn dda. Efo llysiau gwyrdd ar yr ochr.",
+   "known": "I'll have the lamb, please. With a side of greens.",
+   "targetAudioId": "b4cae34c-44d8-44af-8162-f96dde92d148",
+   "knownAudioId": "809f3069-c1eb-4dd1-89e6-ea2c98be22a0",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Mi gymera i'r oen,… os gwelwch yn dda.",
+     "Efo llysiau gwyrdd ar yr ochr."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.965,
+     "interior_gaps_ms": [
+      634
+     ],
+     "cut_at_gaps_ms": [
+      634
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.735,
+      2.33
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.735
+      ],
+      [
+       2.635,
+       4.965
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      634
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -68.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.032
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2568
+     ],
+     [
+      2802,
+      4965
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "b4cae34c-44d8-44af-8162-f96dde92d148",
+    "knownClip": "809f3069-c1eb-4dd1-89e6-ea2c98be22a0",
+    "lines": [
+     {
+      "t": [
+       "Mi gymera i'r oen,… os gwelwch yn dda.",
+       0,
+       2568
+      ],
+      "k": [
+       "I'll have the lamb, please."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Efo llysiau gwyrdd ar yr ochr.",
+       2802,
+       4965
+      ],
+      "k": [
+       "With a side of greens."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S010",
+   "scene": 9,
+   "speaker": "Diner 2",
+   "target": "A'r risotto i mi. Efo salad gwyrdd bach… i ddechrau.",
+   "known": "And the risotto for me. With a small green salad to start.",
+   "targetAudioId": "06643e05-526b-489f-99a0-2b2d79c8ba07",
+   "knownAudioId": "4d4f9eec-6050-4712-b7f2-23cd2ac6a4c0",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "A'r risotto i mi.",
+     "Efo salad gwyrdd bach… i ddechrau."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.093,
+     "interior_gaps_ms": [
+      467
+     ],
+     "cut_at_gaps_ms": [
+      467
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.708,
+      2.485
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.708
+      ],
+      [
+       1.608,
+       4.093
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      467
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -68,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.007
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1624
+     ],
+     [
+      1692,
+      4093
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "06643e05-526b-489f-99a0-2b2d79c8ba07",
+    "knownClip": "4d4f9eec-6050-4712-b7f2-23cd2ac6a4c0",
+    "lines": [
+     {
+      "t": [
+       "A'r risotto i mi.",
+       0,
+       1624
+      ],
+      "k": [
+       "And the risotto for me."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Efo salad gwyrdd bach… i ddechrau.",
+       1692,
+       4093
+      ],
+      "k": [
+       "With a small green salad to start."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S011",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Wrth gwrs. A be fasech chi'n licio… i'w yfed?",
+   "known": "Of course. And what would you like to drink?",
+   "targetAudioId": "167d5c79-4304-4690-905a-80dfc7aa0858",
+   "knownAudioId": "43b6d168-7655-46c8-9c40-88d7514998b3",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "A be fasech chi'n licio… i'w yfed?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.213,
+     "interior_gaps_ms": [
+      444
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_far",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_far"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S016",
+   "scene": 9,
+   "speaker": "Diner 1",
+   "target": "Dim ond dau goffi,… os gwelwch yn dda. Coffi digaffein i mi.",
+   "known": "Just two coffees, please. Decaf for me.",
+   "targetAudioId": "83ed4e8a-8136-44c3-8d0a-5c3b3bc786e3",
+   "knownAudioId": "00b3e7b6-54d5-4739-84e1-64ededab355d",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dim ond dau goffi,… os gwelwch yn dda.",
+     "Coffi digaffein i mi."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.567,
+     "interior_gaps_ms": [
+      577
+     ],
+     "cut_at_gaps_ms": [
+      577
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.615,
+      2.053
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.615
+      ],
+      [
+       2.515,
+       4.567
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      577
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -63.9,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.1,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.018
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2477
+     ],
+     [
+      2653,
+      4567
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "83ed4e8a-8136-44c3-8d0a-5c3b3bc786e3",
+    "knownClip": "00b3e7b6-54d5-4739-84e1-64ededab355d",
+    "lines": [
+     {
+      "t": [
+       "Dim ond dau goffi,… os gwelwch yn dda.",
+       0,
+       2477
+      ],
+      "k": [
+       "Just two coffees, please."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Coffi digaffein i mi.",
+       2653,
+       4567
+      ],
+      "k": [
+       "Decaf for me."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S017",
+   "scene": 9,
+   "speaker": "Diner 2",
+   "target": "A'r bil… pan fyddwch chi'n barod. Fedrwn ni ei rannu fo?",
+   "known": "And the bill, when you're ready. Could we split it?",
+   "targetAudioId": "8f3eed5c-af9f-481e-a4c3-2488bdeebc53",
+   "knownAudioId": "51c1fa5b-8b45-49b5-b1c8-f93fb4edd3c8",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "A'r bil… pan fyddwch chi'n barod.",
+     "Fedrwn ni ei rannu fo?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.98,
+     "interior_gaps_ms": [
+      628
+     ],
+     "cut_at_gaps_ms": [
+      628
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.287,
+      1.793
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.287
+      ],
+      [
+       2.187,
+       3.98
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      628
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -63.5,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -68,
+       "piece_peak_db": -3.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.04
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2123
+     ],
+     [
+      2351,
+      3980
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "8f3eed5c-af9f-481e-a4c3-2488bdeebc53",
+    "knownClip": "51c1fa5b-8b45-49b5-b1c8-f93fb4edd3c8",
+    "lines": [
+     {
+      "t": [
+       "A'r bil… pan fyddwch chi'n barod.",
+       0,
+       2123
+      ],
+      "k": [
+       "And the bill, when you're ready."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Fedrwn ni ei rannu fo?",
+       2351,
+       3980
+      ],
+      "k": [
+       "Could we split it?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S001",
+   "scene": 10,
+   "speaker": "Customer",
+   "target": "Esgusodwch fi. Oes gynnoch chi dabledi… lladd poen?",
+   "known": "Excuse me. Do you have any painkillers?",
+   "targetAudioId": "dc1012d0-5f9f-4e7b-aa73-1e4aefbeeb0c",
+   "knownAudioId": "ff4302fb-08b4-4f01-b1c6-a75a72104fc6",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Esgusodwch fi.",
+     "Oes gynnoch chi dabledi… lladd poen?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.235,
+     "interior_gaps_ms": [
+      111,
+      354,
+      106,
+      114
+     ],
+     "cut_at_gaps_ms": [
+      354
+     ],
+     "rejected_gaps_ms": [
+      111,
+      106
+     ],
+     "margin": 1.03,
+     "piece_durs": [
+      1.631,
+      2.704
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.631
+      ],
+      [
+       1.531,
+       4.235
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      354,
+      114
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "margin_below_floor"
+   },
+   "verdict": "whole",
+   "reason": "target:margin_below_floor"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S003",
+   "scene": 10,
+   "speaker": "Customer",
+   "target": "Diolch. Ac oes gynnoch chi… dabledi lladd poen i blant?",
+   "known": "Thank you. And do you have any painkillers for children?",
+   "targetAudioId": "256d102b-56f4-4bd2-b1e4-7ac93dc74110",
+   "knownAudioId": "a4c0fda3-49f8-4ceb-91ce-3d416a670d4f",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Diolch.",
+     "Ac oes gynnoch chi… dabledi lladd poen i blant?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.732,
+     "interior_gaps_ms": [
+      702
+     ],
+     "cut_at_gaps_ms": [
+      702
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.289,
+      3.543
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.289
+      ],
+      [
+       1.189,
+       4.732
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      702
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -63.9,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -63.9,
+       "piece_peak_db": -1.7
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.143
+    ],
+    "ok": false,
+    "reason": "syllable_share"
+   },
+   "verdict": "whole",
+   "reason": "target:syllable_share"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S008",
+   "scene": 10,
+   "speaker": "Assistant",
+   "target": "Croeso. Dach chi yma ar wyliau? Dach chi'n siarad Cymraeg… yn dda iawn.",
+   "known": "You're welcome. Are you here on holiday? You speak very good Welsh.",
+   "targetAudioId": "601308c9-1ca0-4d38-94dd-15f0bd37b4b5",
+   "knownAudioId": "3261903d-43da-4437-9c96-ad36bba4ce03",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Croeso.",
+     "Dach chi yma ar wyliau?",
+     "Dach chi'n siarad Cymraeg… yn dda iawn."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 4.418,
+     "interior_gaps_ms": [
+      234,
+      287
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_far",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_far"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S009",
+   "scene": 10,
+   "speaker": "Customer",
+   "target": "Mae hynna'n garedig iawn! Ydw,… dw i yma ar wyliau,… a dw i angen ymarfer… mwy i siarad Cymraeg yn well. Diolch yn fawr, a hwyl.",
+   "known": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Welsh better. Thank you very much, and goodbye.",
+   "targetAudioId": "4407d36b-eee2-4dec-b0ab-1be9f2e59799",
+   "knownAudioId": "d5cbc354-19b0-485d-ae42-5dd23a5155cf",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Mae hynna'n garedig iawn!",
+     "Ydw,… dw i yma ar wyliau,… a dw i angen ymarfer… mwy i siarad Cymraeg yn well.",
+     "Diolch yn fawr, a hwyl."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 9.789,
+     "interior_gaps_ms": [
+      320,
+      123,
+      470,
+      648,
+      322
+     ],
+     "cut_at_gaps_ms": [
+      320,
+      322
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.982,
+      6.94,
+      1.067
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.982
+      ],
+      [
+       1.882,
+       8.822
+      ],
+      [
+       8.722,
+       9.789
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 5,
+     "cues_found": 5,
+     "cut_at_ordinals": [
+      0,
+      4
+     ],
+     "cue_gaps_ms": [
+      320,
+      123,
+      470,
+      648,
+      322
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62.4,
+       "piece_peak_db": -1.9
+      },
+      {
+       "edge": "s1.head",
+       "db": -59.9,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s1.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s2.head",
+       "db": -46.3,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "unconfirmed"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S010",
+   "scene": 10,
+   "speaker": "Narrator",
+   "target": "Deuddeg. Un deg tri. Un deg pedwar. Pinc. Llwyd.",
+   "known": "12. 13. 14. Pink. Grey.",
+   "targetAudioId": "3c090ca7-4ca3-4b38-86a6-0d7dc4d79f1f",
+   "knownAudioId": "ce7c645d-e971-4172-97d0-b0a4cf6d8aa1",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Deuddeg.",
+     "Un deg tri.",
+     "Un deg pedwar.",
+     "Pinc.",
+     "Llwyd."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 6.621,
+     "interior_gaps_ms": [
+      394,
+      587,
+      688,
+      365
+     ],
+     "cut_at_gaps_ms": [
+      394,
+      587,
+      688,
+      365
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.33,
+      1.561,
+      1.812,
+      1.101,
+      1.217
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.33
+      ],
+      [
+       1.23,
+       2.791
+      ],
+      [
+       2.691,
+       4.503
+      ],
+      [
+       4.403,
+       5.503
+      ],
+      [
+       5.403,
+       6.621
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      394,
+      587,
+      688,
+      365
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -36.1,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -23.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -58.7,
+       "piece_peak_db": -2.9
+      },
+      {
+       "edge": "s2.tail",
+       "db": -58.9,
+       "piece_peak_db": -2.9
+      },
+      {
+       "edge": "s3.head",
+       "db": -68.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s3.tail",
+       "db": -60.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s4.head",
+       "db": -57.4,
+       "piece_peak_db": -2.4
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s1.head",
+       "db": -23.4,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "target:seam_not_silent"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S001",
+   "scene": 11,
+   "speaker": "Guest",
+   "target": "Prynhawn da. Mae gen i stafell… dan yr enw Jones.",
+   "known": "Good afternoon. I have a booking under the name Jones.",
+   "targetAudioId": "7e903050-d40a-4e1d-9c85-028b8da78a0b",
+   "knownAudioId": "680818f3-be31-41f7-bfe1-d224975ab1f9",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Prynhawn da.",
+     "Mae gen i stafell… dan yr enw Jones."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.681,
+     "interior_gaps_ms": [
+      399
+     ],
+     "cut_at_gaps_ms": [
+      399
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.227,
+      2.554
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.227
+      ],
+      [
+       1.127,
+       3.681
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      399
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -64.3,
+       "piece_peak_db": -3.7
+      },
+      {
+       "edge": "s1.head",
+       "db": -54.6,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.084
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1178
+     ],
+     [
+      1177,
+      3681
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "Good afternoon.",
+     "I have a booking under the name Jones."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.688,
+     "interior_gaps_ms": [
+      426
+     ],
+     "cut_at_gaps_ms": [
+      426
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.226,
+      2.562
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.226
+      ],
+      [
+       1.126,
+       3.688
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      426
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -34.5,
+       "piece_peak_db": -2.6
+      },
+      {
+       "edge": "s1.head",
+       "db": -43.8,
+       "piece_peak_db": -2.4
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s0.tail",
+       "db": -34.5,
+       "piece_peak_db": -2.6
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "known:seam_not_silent",
+   "gapTtsChars": 54
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S002",
+   "scene": 11,
+   "speaker": "Receptionist",
+   "target": "Croeso. Oes,… mae gynnoch chi stafell ddwbwl… am dair noson. Ga i weld rhywfaint o ID,… os gwelwch yn dda?",
+   "known": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+   "targetAudioId": "e695e6f0-4f2e-40bc-84ae-4cf99879e764",
+   "knownAudioId": "eec8bbd7-2638-41cc-8c76-d37572738784",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_gfzdpspr5fdp",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Croeso.",
+     "Oes,… mae gynnoch chi stafell ddwbwl… am dair noson.",
+     "Ga i weld rhywfaint o ID,… os gwelwch yn dda?"
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 8.04,
+     "interior_gaps_ms": [
+      491,
+      115,
+      660
+     ],
+     "cut_at_gaps_ms": [
+      491,
+      660
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.595,
+      3.609,
+      3.036
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.595
+      ],
+      [
+       1.495,
+       5.104
+      ],
+      [
+       5.004,
+       8.04
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      2
+     ],
+     "cue_gaps_ms": [
+      491,
+      115,
+      660
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -56.7,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.head",
+       "db": -52.9,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -70.3,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.115,
+     0.059
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1499
+     ],
+     [
+      1591,
+      4924
+     ],
+     [
+      5184,
+      8040
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "e695e6f0-4f2e-40bc-84ae-4cf99879e764",
+    "knownClip": "eec8bbd7-2638-41cc-8c76-d37572738784",
+    "lines": [
+     {
+      "t": [
+       "Croeso.",
+       0,
+       1499
+      ],
+      "k": [
+       "Welcome."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Oes,… mae gynnoch chi stafell ddwbwl… am dair noson.",
+       1591,
+       4924
+      ],
+      "k": [
+       "Yes, you have a double room for three nights."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ga i weld rhywfaint o ID,… os gwelwch yn dda?",
+       5184,
+       8040
+      ],
+      "k": [
+       "Could I see some ID, please?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S004",
+   "scene": 11,
+   "speaker": "Receptionist",
+   "target": "Hyfryd. Mae'r stafell ar… y trydydd llawr,… stafell saith dim naw.",
+   "known": "Lovely. The room is on the third floor, room 709.",
+   "targetAudioId": "e49bf0be-5bff-4f7d-a3d9-3421e3a3f9ad",
+   "knownAudioId": "93dfb9a8-d27f-41e8-9d9f-1cf54bc84fe3.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Hyfryd.",
+     "Mae'r stafell ar… y trydydd llawr,… stafell saith dim naw."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.554,
+     "interior_gaps_ms": [
+      399,
+      343
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_margin",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_margin"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S012",
+   "scene": 11,
+   "speaker": "Receptionist",
+   "target": "Mae o ar y cerdyn croeso… yn eich stafell chi. Mwynhewch eich arhosiad.",
+   "known": "It's on the welcome card in your room. Have a lovely stay.",
+   "targetAudioId": "5d26cbcd-cd28-4d37-bd86-ac1c94acd0f6",
+   "knownAudioId": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_gfzdpspr5fdp",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Mae o ar y cerdyn croeso… yn eich stafell chi.",
+     "Mwynhewch eich arhosiad."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.334,
+     "interior_gaps_ms": [
+      500
+     ],
+     "cut_at_gaps_ms": [
+      500
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      3.332,
+      2.102
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.332
+      ],
+      [
+       3.232,
+       5.334
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      500
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.7,
+       "piece_peak_db": -2
+      },
+      {
+       "edge": "s1.head",
+       "db": -65.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.057
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3232
+     ],
+     [
+      3332,
+      5334
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "5d26cbcd-cd28-4d37-bd86-ac1c94acd0f6",
+    "knownClip": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+    "lines": [
+     {
+      "t": [
+       "Mae o ar y cerdyn croeso… yn eich stafell chi.",
+       0,
+       3232
+      ],
+      "k": [
+       "It's on the welcome card in your room."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mwynhewch eich arhosiad.",
+       3332,
+       5334
+      ],
+      "k": [
+       "Have a lovely stay."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC12-S001",
+   "scene": 12,
+   "speaker": "Customer",
+   "target": "Bore da. Dw i ddim yn… teimlo'n grêt —… fedrwch chi argymell rhywbeth?",
+   "known": "Good morning. I'm not feeling great - could you recommend something?",
+   "targetAudioId": "4b26834a-7b4c-434e-a18f-cccc0e10ff7f",
+   "knownAudioId": "40059f69-63a6-4015-8d11-720f0106b61a",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Bore da.",
+     "Dw i ddim yn… teimlo'n grêt —… fedrwch chi argymell rhywbeth?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.182,
+     "interior_gaps_ms": [
+      321,
+      450
+     ],
+     "cut_at_gaps_ms": [
+      321
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.243,
+      4.039
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.243
+      ],
+      [
+       1.143,
+       5.182
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      321,
+      450
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -65.7,
+       "piece_peak_db": -2.8
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.046
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1233
+     ],
+     [
+      1154,
+      5182
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "4b26834a-7b4c-434e-a18f-cccc0e10ff7f",
+    "knownClip": "40059f69-63a6-4015-8d11-720f0106b61a",
+    "lines": [
+     {
+      "t": [
+       "Bore da.",
+       0,
+       1233
+      ],
+      "k": [
+       "Good morning."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dw i ddim yn… teimlo'n grêt —… fedrwch chi argymell rhywbeth?",
+       1154,
+       5182
+      ],
+      "k": [
+       "I'm not feeling great - could you recommend something?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC12-S009",
+   "scene": 12,
+   "speaker": "Customer",
+   "target": "Diolch. Fedra i gael… paced o blasters hefyd?",
+   "known": "Thank you. Could I also get a packet of plasters?",
+   "targetAudioId": "51af02e5-0399-4e9d-8599-9758d21914d8",
+   "knownAudioId": "4dc12119-4ded-41f4-bee4-29c5ff2ad7da",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Diolch.",
+     "Fedra i gael… paced o blasters hefyd?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.064,
+     "interior_gaps_ms": [
+      714
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_far",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_far"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC13-S002",
+   "scene": 13,
+   "speaker": "Local",
+   "target": "Ydw,… mae hi tua deng munud… o gerddad. Ewch yn syth… ar hyd y ffordd yma.",
+   "known": "Yes, it's about a ten minute walk. Go straight along this road.",
+   "targetAudioId": "1f3bea80-3c5c-49eb-a3d2-e9f0b0b77da4",
+   "knownAudioId": "8a6e32b5-77c0-41ea-8d72-c9b450d72a6a",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Ydw,… mae hi tua deng munud… o gerddad.",
+     "Ewch yn syth… ar hyd y ffordd yma."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.74,
+     "interior_gaps_ms": [
+      460
+     ],
+     "cut_at_gaps_ms": [
+      460
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.577,
+      2.263
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.577
+      ],
+      [
+       2.477,
+       4.74
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      460
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -37.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -41.9,
+       "piece_peak_db": -3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.013
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2497
+     ],
+     [
+      2557,
+      4740
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "Yes, it's about a ten minute walk.",
+     "Go straight along this road."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.43,
+     "interior_gaps_ms": [
+      308
+     ],
+     "cut_at_gaps_ms": [
+      308
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.589,
+      1.941
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.589
+      ],
+      [
+       2.489,
+       4.43
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      308
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -43,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s1.head",
+       "db": -40.1,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.046
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2585
+     ],
+     [
+      2493,
+      4430
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "1f3bea80-3c5c-49eb-a3d2-e9f0b0b77da4",
+    "knownClip": "8a6e32b5-77c0-41ea-8d72-c9b450d72a6a",
+    "lines": [
+     {
+      "t": [
+       "Ydw,… mae hi tua deng munud… o gerddad.",
+       0,
+       2497
+      ],
+      "k": [
+       "Yes, it's about a ten minute walk.",
+       0,
+       2585
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ewch yn syth… ar hyd y ffordd yma.",
+       2557,
+       4740
+      ],
+      "k": [
+       "Go straight along this road.",
+       2493,
+       4430
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC13-S008",
+   "scene": 13,
+   "speaker": "Tourist",
+   "target": "Ardderchog. Ac oes 'na beiriant arian… yn agos?",
+   "known": "Wonderful. And is there a cashpoint nearby?",
+   "targetAudioId": "224cc7ac-9452-4dc6-ab00-6569efb91925",
+   "knownAudioId": "12418383-03be-4a95-9a15-020a11db43ba",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Ardderchog.",
+     "Ac oes 'na beiriant arian… yn agos?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.193,
+     "interior_gaps_ms": [
+      554
+     ],
+     "cut_at_gaps_ms": [
+      554
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.449,
+      2.844
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.449
+      ],
+      [
+       1.349,
+       4.193
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      554
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -66.8,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.078
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1322
+     ],
+     [
+      1476,
+      4193
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "224cc7ac-9452-4dc6-ab00-6569efb91925",
+    "knownClip": "12418383-03be-4a95-9a15-020a11db43ba",
+    "lines": [
+     {
+      "t": [
+       "Ardderchog.",
+       0,
+       1322
+      ],
+      "k": [
+       "Wonderful."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ac oes 'na beiriant arian… yn agos?",
+       1476,
+       4193
+      ],
+      "k": [
+       "And is there a cashpoint nearby?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S001",
+   "scene": 14,
+   "speaker": "Passenger",
+   "target": "Helo. Fedrwch chi fynd â fi… i'r orsaf drenau… os gwelwch yn dda?",
+   "known": "Hello. Can you take me to the train station, please?",
+   "targetAudioId": "4bf4c004-b03d-492d-9fe7-57c19fd8805a",
+   "knownAudioId": "317b3429-501e-4865-99cd-72c125f89cf4",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Helo.",
+     "Fedrwch chi fynd â fi… i'r orsaf drenau… os gwelwch yn dda?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.827,
+     "interior_gaps_ms": [
+      137
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_short_gap",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_short_gap"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S007",
+   "scene": 14,
+   "speaker": "Driver",
+   "target": "Dyma ni. Deuddeg punt pum deg… ydi hynna.",
+   "known": "Here we are. That's twelve pound fifty.",
+   "targetAudioId": "98e5fbdb-98bf-40af-886f-124c5f3d8565",
+   "knownAudioId": "def16887-b3aa-4afe-b978-e5459eade655",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dyma ni.",
+     "Deuddeg punt pum deg… ydi hynna."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.775,
+     "interior_gaps_ms": [
+      482
+     ],
+     "cut_at_gaps_ms": [
+      482
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.155,
+      2.72
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.155
+      ],
+      [
+       1.055,
+       3.775
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      482
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -68.7,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -66.2,
+       "piece_peak_db": -3.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.012
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1064
+     ],
+     [
+      1146,
+      3775
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "98e5fbdb-98bf-40af-886f-124c5f3d8565",
+    "knownClip": "def16887-b3aa-4afe-b978-e5459eade655",
+    "lines": [
+     {
+      "t": [
+       "Dyma ni.",
+       0,
+       1064
+      ],
+      "k": [
+       "Here we are."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Deuddeg punt pum deg… ydi hynna.",
+       1146,
+       3775
+      ],
+      "k": [
+       "That's twelve pound fifty."
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S001",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Faset ti'n meindio… taswn i'n trio ymarfer… siarad Cymraeg efo chdi? Dw i ddim wedi bod… yn dysgu ers amser hir iawn… a dw i'n dal i deimlo… chydig bach yn nerfus… wrth siarad… efo pobol eraill.",
+   "known": "Would you mind if I tried to practise speaking Welsh with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+   "targetAudioId": "09060183-46d2-4e94-bc96-df4eda067b42",
+   "knownAudioId": "aa7b11e0-07b3-4476-b6ab-82e074135077",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Faset ti'n meindio… taswn i'n trio ymarfer… siarad Cymraeg efo chdi?",
+     "Dw i ddim wedi bod… yn dysgu ers amser hir iawn… a dw i'n dal i deimlo… chydig bach yn nerfus… wrth siarad… efo pobol eraill."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 13.041,
+     "interior_gaps_ms": [
+      657,
+      191,
+      313,
+      245
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 8,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      2
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S002",
+   "scene": 22,
+   "speaker": "Friend",
+   "target": "Wrth gwrs, dim problem. Ti i'w weld… yn siarad yn dda iawn. Dw i'n dallt chdi'n iawn.",
+   "known": "Of course, no problem. You seem to speak it very well. I can understand you easily.",
+   "targetAudioId": "30b83d1d-aa55-4d0a-8d0b-62e3d9a1438b",
+   "knownAudioId": "6afed7df-c7ac-4e01-beda-8a74c1a73f9b",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs, dim problem.",
+     "Ti i'w weld… yn siarad yn dda iawn.",
+     "Dw i'n dallt chdi'n iawn."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 5.244,
+     "interior_gaps_ms": [
+      497,
+      274
+     ],
+     "cut_at_gaps_ms": [
+      497,
+      274
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.81,
+      2.051,
+      1.583
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.81
+      ],
+      [
+       1.71,
+       3.761
+      ],
+      [
+       3.661,
+       5.244
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      497,
+      274
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -40,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.head",
+       "db": -43,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -54.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -48.9,
+       "piece_peak_db": -3.1
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.088,
+     0.062
+    ],
+    "ok": false,
+    "reason": "placed_rate"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_rate"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S003",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Diolch, mae'n dda gwybod hynna. Dw i angen dysgu… mwy o eiriau,… ac mae angen i mi… ymarfer gwrando. Dw i ddim yn dallt pobol… yn dda iawn… pan dydyn nhw ddim yn siarad… yn araf.",
+   "known": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+   "targetAudioId": "83acf429-f5e6-4195-a4ad-573a93d0fce7",
+   "knownAudioId": "39c62514-a855-480d-a7b2-477df2df0b87.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Diolch, mae'n dda gwybod hynna.",
+     "Dw i angen dysgu… mwy o eiriau,… ac mae angen i mi… ymarfer gwrando.",
+     "Dw i ddim yn dallt pobol… yn dda iawn… pan dydyn nhw ddim yn siarad… yn araf."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 13.198,
+     "interior_gaps_ms": [
+      365,
+      733,
+      461,
+      782,
+      191
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 8,
+     "cues_found": 5,
+     "cut_at_ordinals": [
+      0,
+      4
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S005",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Wyt, diolch. Mae'n haws siarad… efo un person yn unig. Mae o chydig bach yn anodd… meddwl am rywbeth i'w ddeud,… cofia. Dw i ddim yn… siŵr be i'w ddeud,… ond dw i'n teimlo… fel taswn i'n… gallu siarad… digon i ddechrau cael sgyrsiau.",
+   "known": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+   "targetAudioId": "f22d65fa-85da-48d4-8908-f3db710755ba",
+   "knownAudioId": "5dcd971e-ed05-4656-91f4-0620a76dee76.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Wyt, diolch.",
+     "Mae'n haws siarad… efo un person yn unig.",
+     "Mae o chydig bach yn anodd… meddwl am rywbeth i'w ddeud,… cofia.",
+     "Dw i ddim yn… siŵr be i'w ddeud,… ond dw i'n teimlo… fel taswn i'n… gallu siarad… digon i ddechrau cael sgyrsiau."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 16.763,
+     "interior_gaps_ms": [
+      496,
+      513,
+      160,
+      117,
+      807,
+      801,
+      116,
+      137,
+      134
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 11,
+     "cues_found": 9,
+     "cut_at_ordinals": [
+      0,
+      2,
+      5
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S006",
+   "scene": 22,
+   "speaker": "Friend",
+   "target": "Dw i'n meddwl… dy fod ti'n gwneud… yn dda iawn. Dw i wedi synnu. Dw i'n meddwl… dy fod ti'n barod… i ddechrau siarad Cymraeg… efo unrhyw un… sy'n siarad Cymraeg.",
+   "known": "I think you're doing very well. I'm impressed. I think you're ready to start speaking Welsh to anyone who speaks Welsh.",
+   "targetAudioId": "917b2577-8385-4bb0-9156-82f2a6493e94",
+   "knownAudioId": "1a5b2d99-5055-47b6-bbcf-2877dd1d6114",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Dw i'n meddwl… dy fod ti'n gwneud… yn dda iawn.",
+     "Dw i wedi synnu.",
+     "Dw i'n meddwl… dy fod ti'n barod… i ddechrau siarad Cymraeg… efo unrhyw un… sy'n siarad Cymraeg."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 8.466,
+     "interior_gaps_ms": [
+      180,
+      248,
+      190
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 8,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      2,
+      3
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S007",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Mae o chydig bach… yn rhwystredig… pan dw i ddim yn gallu… meddwl yn ddigon cyflym… i fynegi fy hun yn iawn. Ond dw i'n gwybod… bod angen i mi ddal ati… i ymarfer… os dw i isio siarad… yn fwy hyderus.",
+   "known": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
+   "targetAudioId": "9fdb5c2e-0e80-4e71-a0a3-0a9df74c009e",
+   "knownAudioId": "eb421606-b8b7-4da7-8402-0b0e59ece541",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Mae o chydig bach… yn rhwystredig… pan dw i ddim yn gallu… meddwl yn ddigon cyflym… i fynegi fy hun yn iawn.",
+     "Ond dw i'n gwybod… bod angen i mi ddal ati… i ymarfer… os dw i isio siarad… yn fwy hyderus."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 13.949,
+     "interior_gaps_ms": [
+      141,
+      164,
+      118,
+      777,
+      309,
+      120,
+      317,
+      118
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 9,
+     "cues_found": 8,
+     "cut_at_ordinals": [
+      4
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S008",
+   "scene": 22,
+   "speaker": "Friend",
+   "target": "Dylat ti fod yn hyderus… yn barod. Dw i'n meddwl… dy fod ti'n gwneud… yn llawer gwell… na ti'n sylweddoli. Dw i'n… teimlo'n gyfforddus… yn siarad efo chdi,… a dw i ddim yn siarad… yn araf iawn.",
+   "known": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
+   "targetAudioId": "7af616b8-4382-4c1f-b250-caeb2fadd8d4",
+   "knownAudioId": "a4416c01-f350-4d6e-ac85-fdf0f723ae4d",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Dylat ti fod yn hyderus… yn barod.",
+     "Dw i'n meddwl… dy fod ti'n gwneud… yn llawer gwell… na ti'n sylweddoli.",
+     "Dw i'n… teimlo'n gyfforddus… yn siarad efo chdi,… a dw i ddim yn siarad… yn araf iawn."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 10.274,
+     "interior_gaps_ms": [
+      415,
+      449,
+      141
+     ],
+     "cut_at_gaps_ms": [
+      415,
+      449
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.342,
+      3.451,
+      4.681
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.342
+      ],
+      [
+       2.242,
+       5.694
+      ],
+      [
+       5.594,
+       10.274
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      415,
+      449,
+      141
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -53.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -46.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -48.6,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.014,
+     0.015
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2285
+     ],
+     [
+      2299,
+      5620
+     ],
+     [
+      5669,
+      10274
+     ]
+    ]
+   },
+   "knownSide": {
+    "sentences": [
+     "You should be confident already.",
+     "I think you're doing much better than you realise.",
+     "I feel comfortable speaking with you, and I'm not talking very slowly."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 10.241,
+     "interior_gaps_ms": [
+      561,
+      107,
+      688,
+      325
+     ],
+     "cut_at_gaps_ms": [
+      561,
+      688
+     ],
+     "rejected_gaps_ms": [
+      325,
+      107
+     ],
+     "margin": 1.73,
+     "piece_durs": [
+      2.349,
+      3.474,
+      4.618
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.349
+      ],
+      [
+       2.249,
+       5.723
+      ],
+      [
+       5.623,
+       10.241
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      561,
+      688
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -45.6,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -47.6,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -47.4,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -48.1,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.005,
+     0.006
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2219
+     ],
+     [
+      2379,
+      5529
+     ],
+     [
+      5817,
+      10241
+     ]
+    ]
+   },
+   "levels": [
+    "cut-human",
+    "cut-human",
+    "cut-human"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "7af616b8-4382-4c1f-b250-caeb2fadd8d4",
+    "knownClip": "a4416c01-f350-4d6e-ac85-fdf0f723ae4d",
+    "lines": [
+     {
+      "t": [
+       "Dylat ti fod yn hyderus… yn barod.",
+       0,
+       2285
+      ],
+      "k": [
+       "You should be confident already.",
+       0,
+       2219
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dw i'n meddwl… dy fod ti'n gwneud… yn llawer gwell… na ti'n sylweddoli.",
+       2299,
+       5620
+      ],
+      "k": [
+       "I think you're doing much better than you realise.",
+       2379,
+       5529
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dw i'n… teimlo'n gyfforddus… yn siarad efo chdi,… a dw i ddim yn siarad… yn araf iawn.",
+       5669,
+       10274
+      ],
+      "k": [
+       "I feel comfortable speaking with you, and I'm not talking very slowly.",
+       5817,
+       10241
+      ],
+      "chunks": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S009",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Dyma'r union… fath o ymarfer… sydd ei angen arna i. Dw i'n meddwl… y galla i deimlo… fo'n newid fy ymennydd i… tra dan ni'n siarad! Dw i wir yn gwerthfawrogi… dy help di. Ond mae'n syndod… pa mor flinedig… dw i'n mynd… pan dw i'n siarad mewn iaith… dw i ddim yn ei siarad… yn dda iawn.",
+   "known": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.",
+   "targetAudioId": "3b27c104-723d-4498-8f1a-18a0193da600",
+   "knownAudioId": "d80dee82-f23b-44b5-8d43-f3d9c07ed4f5",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Dyma'r union… fath o ymarfer… sydd ei angen arna i.",
+     "Dw i'n meddwl… y galla i deimlo… fo'n newid fy ymennydd i… tra dan ni'n siarad!",
+     "Dw i wir yn gwerthfawrogi… dy help di.",
+     "Ond mae'n syndod… pa mor flinedig… dw i'n mynd… pan dw i'n siarad mewn iaith… dw i ddim yn ei siarad… yn dda iawn."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 18.034,
+     "interior_gaps_ms": [
+      582,
+      486,
+      285,
+      713,
+      138,
+      267
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 14,
+     "cues_found": 6,
+     "cut_at_ordinals": [
+      2,
+      6,
+      8
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S010",
+   "scene": 22,
+   "speaker": "Friend",
+   "target": "Dw i'n meddwl… bod hynna'n normal. Mae dysgu iaith newydd… yn anodd. Ond mae o'n gymaint o hwyl… pan ti'n dechrau cael sgwrs… tydy?",
+   "known": "I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?",
+   "targetAudioId": "036acf33-dac6-43e6-8963-a274ee8113c1",
+   "knownAudioId": "66110261-13d6-4c01-b253-2f6e2c0d7322",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Dw i'n meddwl… bod hynna'n normal.",
+     "Mae dysgu iaith newydd… yn anodd.",
+     "Ond mae o'n gymaint o hwyl… pan ti'n dechrau cael sgwrs… tydy?"
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 9.504,
+     "interior_gaps_ms": [
+      460,
+      283,
+      1483,
+      105
+     ],
+     "cut_at_gaps_ms": [
+      460,
+      283
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.948,
+      2.201,
+      5.555
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.948
+      ],
+      [
+       1.848,
+       4.049
+      ],
+      [
+       3.949,
+       9.504
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      460,
+      283,
+      1483,
+      105
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -42.7,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -45.4,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.tail",
+       "db": -50.3,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s2.head",
+       "db": -46.6,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.091,
+     0.143
+    ],
+    "ok": false,
+    "reason": "syllable_share"
+   },
+   "verdict": "whole",
+   "reason": "target:syllable_share"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC22-S011",
+   "scene": 22,
+   "speaker": "Chat Learner",
+   "target": "Ydy, wir. Dw i wir yn hapus… y galla i gael… cymaint o sgwrs â hyn. A dw i'n gobeithio… y byddwn ni'n gallu cael… mwy o sgyrsiau… yn y dyfodol… wrth i mi ddal ati… i wella.",
+   "known": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.",
+   "targetAudioId": "b0f3eae9-3857-48b8-9d04-e9990c46d973",
+   "knownAudioId": "5bc354ec-ec8b-4f91-a457-0c2c80c826ea.v2",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Ydy, wir.",
+     "Dw i wir yn hapus… y galla i gael… cymaint o sgwrs â hyn.",
+     "A dw i'n gobeithio… y byddwn ni'n gallu cael… mwy o sgyrsiau… yn y dyfodol… wrth i mi ddal ati… i wella."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 12.121,
+     "interior_gaps_ms": [
+      455,
+      123,
+      865,
+      117,
+      340,
+      101
+     ],
+     "cut_at_gaps_ms": [
+      455,
+      865
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.356,
+      4.194,
+      6.771
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.356
+      ],
+      [
+       1.256,
+       5.45
+      ],
+      [
+       5.35,
+       12.121
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 6,
+     "cues_found": 6,
+     "cut_at_ordinals": [
+      0,
+      2
+     ],
+     "cue_gaps_ms": [
+      455,
+      123,
+      865,
+      117,
+      340,
+      101
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -53.8,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -26.7,
+       "piece_peak_db": -1.6
+      },
+      {
+       "edge": "s1.tail",
+       "db": -56.2,
+       "piece_peak_db": -1.6
+      },
+      {
+       "edge": "s2.head",
+       "db": -58.7,
+       "piece_peak_db": -2.1
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s1.head",
+       "db": -26.7,
+       "piece_peak_db": -1.6
+      }
+     ]
+    },
+    "method": "placed",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "target:seam_not_silent"
+  }
+ ]
+}
