@@ -6,7 +6,8 @@ const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs')
 const BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 const REGION = process.env.S3_REGION || 'eu-west-1'
 
-const s3Client = new S3Client({ region: REGION })
+// Audio-bucket commands obey AUDIO_STORE (R2 + S3 while dual) — services/shared/audio-store.cjs
+const s3Client = require('./shared/audio-store.cjs').wrapAudioClient(new S3Client({ region: REGION }))
 
 // Helper to stream S3 object to string
 async function streamToString(stream) {

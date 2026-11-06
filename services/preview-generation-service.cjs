@@ -17,11 +17,12 @@ const uuidService = require('./uuid-service.cjs');
 
 const AWS = require('aws-sdk');
 const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs');
-const s3 = new AWS.S3({
+// Audio-bucket writes obey AUDIO_STORE (R2 + S3 while dual) — services/shared/audio-store.cjs
+const s3 = require('./shared/audio-store.cjs').wrapAudioClientV2(new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   region: process.env.AWS_REGION || 'eu-west-1'
-});
+}));
 
 const LFS_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 

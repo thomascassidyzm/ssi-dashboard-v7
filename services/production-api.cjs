@@ -3914,7 +3914,8 @@ app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
     if (body.dryRun !== false && req.contentEdit) req.contentEdit.wroteNothing()
     const deps = cutDoor.liveDeps({
       sb: supabaseClient.getClient(),
-      s3: new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' }),
+      // R2 `ssi-audio` + S3 while dual — services/shared/audio-store.cjs (r-2026-11-06)
+      s3: require('./shared/audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })),
       bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
       logger,
       // the line also rides in every answer, so a store this user cannot write to costs the file, never the rollback

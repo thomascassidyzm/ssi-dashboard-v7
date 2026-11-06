@@ -86,7 +86,9 @@ function createS3Storage(opts = {}) {
   // job is sequential today, but the client shouldn't rely on that.
   const https = require('https')
   const { NodeHttpHandler } = require('@smithy/node-http-handler')
-  const client = opts.client || new S3Client({
+  // Audio-bucket commands obey AUDIO_STORE (R2 + S3 while dual) — services/shared/audio-store.cjs.
+  // An injected client (tests) is used as given.
+  const client = opts.client || require('../shared/audio-store.cjs').wrapAudioClient(new S3Client({
     region,
     maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
     requestHandler: new NodeHttpHandler({
@@ -99,7 +101,7 @@ function createS3Storage(opts = {}) {
       connectionTimeout: 6000,
       requestTimeout: 60000,
     }),
-  })
+  }))
 
   async function streamToBuffer(stream) {
     const chunks = []

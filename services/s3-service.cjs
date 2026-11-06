@@ -16,11 +16,12 @@ const path = require('path');
 const { AUDIO_CACHE_CONTROL, cacheControlFor } = require('./shared/audio-cache-control.cjs');
 
 // Configure AWS (uses environment variables)
-const s3 = new AWS.S3({
+// Audio-bucket writes obey AUDIO_STORE (R2 + S3 while dual) — services/shared/audio-store.cjs
+const s3 = require('./shared/audio-store.cjs').wrapAudioClientV2(new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   region: process.env.AWS_REGION || 'eu-west-1'
-});
+}));
 
 // THE ONLY BUCKET WE USE - popty-bach-lfs is DEPRECATED
 const AUDIO_BUCKET = 'ssi-audio-stage';

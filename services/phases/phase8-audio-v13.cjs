@@ -276,7 +276,9 @@ const s3KeepAliveAgent = new https.Agent({
   maxSockets: Number(process.env.S3_MAX_SOCKETS) > 0 ? Math.floor(Number(process.env.S3_MAX_SOCKETS)) : 16,
   maxFreeSockets: 8,
 })
-const s3 = new S3Client({
+// Every audio write here (renders, replace, repair via p8.s3, the render route) obeys AUDIO_STORE:
+// R2 `ssi-audio` first, then S3, while dual — services/shared/audio-store.cjs (r-2026-11-06).
+const s3 = require('../shared/audio-store.cjs').wrapAudioClient(new S3Client({
   region: process.env.AWS_REGION || 'eu-west-1',
   maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
   requestHandler: new NodeHttpHandler({
@@ -284,7 +286,7 @@ const s3 = new S3Client({
     connectionTimeout: 6000,
     requestTimeout: 60000,
   }),
-})
+}))
 
 /**
  * Get the effective release target for a course.

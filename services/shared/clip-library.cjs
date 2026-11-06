@@ -168,7 +168,7 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
     async bytes(row) {
       if (!s3Client) {
         const { S3Client } = require('@aws-sdk/client-s3')
-        s3Client = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+        s3Client = require('./audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' }))
       }
       const { GetObjectCommand } = require('@aws-sdk/client-s3')
       const r = await s3Client.send(new GetObjectCommand({ Bucket, Key: row.s3_key }))
