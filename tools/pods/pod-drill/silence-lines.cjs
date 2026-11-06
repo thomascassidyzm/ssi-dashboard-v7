@@ -221,7 +221,9 @@ async function handle (c) {
   for (let i = 0; i < t.n; i++) {
     const tl = [t.sentences[i], t.spans[i][0], t.spans[i][1]]
     if (reuse[i]) {
-      lines.push({ t: tl, k: [kParts[i]], chunks: [] })
+      // kc: the clip itself, so a card never waits on the Drill's by-text lookup (the live read lost the race on the
+      // first such card of every scene, job #96, and it played Welsh three times with no English).
+      lines.push({ t: tl, k: [kParts[i]], kc: reuse[i].ref, chunks: [] })
       levels.push('reuse')
     } else if (k?.ok && k.n === t.n) {
       lines.push({ t: tl, k: [kParts[i], k.spans[i][0], k.spans[i][1]], chunks: [] })
