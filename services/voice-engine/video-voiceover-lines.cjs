@@ -13,6 +13,11 @@
  * the take route runs no same-words fill. Recorded = this voice has any English take of the words (knownByText), the
  * test every known line uses — so the scripts are worded so no course line says the same thing.
  *
+ * A SCRIPT IN THE TARGET LANGUAGE (job #67, the Richard Parks pod): a script may say `"side": "target"`, and then its
+ * lines are read on a Welsh voice's booth and each take files as a target1 clip of that voice under `fileUnder` — the
+ * same "linked to no learner slot" rule, just in the target language. Absent = the known (English) side, as before.
+ * `aimSec`/`fitSec` are optional: a script that is not laid onto a video leaves them out and the booth shows no timing.
+ *
  * Pure: no I/O.
  */
 'use strict'
@@ -31,6 +36,9 @@ function parseVoiceoverLineId(lineId) {
   return m ? { slug: m[1], key: m[2] } : null
 }
 
+/** The slot role a script's takes file under: 'known' (English, the default) or 'target1' for a target-side script. */
+function roleOf(video) { return video && video.side === 'target' ? 'target1' : 'known' }
+
 function spellingsOf(recordist) { return (recordist && (recordist.spellings || [recordist.voiceId])) || [] }
 
 function videosFor(recordist, scripts = SCRIPTS) {
@@ -46,7 +54,7 @@ function resolveVoiceoverLine(parsed, recordist, scripts = SCRIPTS) {
   if (!parsed || !recordist) return null
   const video = videosFor(recordist, scripts).find((v) => v.slug === parsed.slug)
   const line = video && video.lines.find((l) => l.key === parsed.key)
-  return line ? { courseCode: video.fileUnder, slug: video.slug, key: line.key, text: line.text } : null
+  return line ? { courseCode: video.fileUnder, slug: video.slug, key: line.key, text: line.text, role: roleOf(video) } : null
 }
 
 /** This recordist's voiceover lines, queue-shaped, in script order: one card per video (booth-home `voiceover.<course>`). */
@@ -61,7 +69,7 @@ function voiceoverLinesFor(recordist, scripts = SCRIPTS) {
       speaker: null,
       courseCode: video.fileUnder,
       kind: 'voiceover',
-      role: 'known',
+      role: roleOf(video),
       knownByText: true,
       voiceId: recordist.voiceId,
       duplicateOf: [],
@@ -77,4 +85,4 @@ function voiceoverLinesFor(recordist, scripts = SCRIPTS) {
   return out
 }
 
-module.exports = { VOICEOVER_PREFIX, voiceoverLineId, parseVoiceoverLineId, resolveVoiceoverLine, voiceoverLinesFor, SCRIPTS }
+module.exports = { VOICEOVER_PREFIX, roleOf, voiceoverLineId, parseVoiceoverLineId, resolveVoiceoverLine, voiceoverLinesFor, SCRIPTS }

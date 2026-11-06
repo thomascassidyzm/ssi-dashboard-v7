@@ -1363,7 +1363,7 @@ function kindWordsFor(l) {
   // "Neath video · Staff, step 1 · about 7 s, no more than 11 s".
   if (l.kind === 'voiceover' && l.voiceover) {
     const v = l.voiceover
-    return `${v.video} · ${v.label} · about ${v.aimSec} s, no more than ${v.fitSec} s`
+    return v.aimSec ? `${v.video} · ${v.label} · about ${v.aimSec} s, no more than ${v.fitSec} s` : `${v.video} · ${v.label}`
   }
   if (l.kind === 'podknown') return `Pod 1 English${l.speaker ? ` · ${l.speaker}` : ''} - North and South`
   if (l.kind === 'podswap') return `Pod 1 new words${l.speaker ? ` · ${l.speaker}` : ''}${l.replacesText ? ` - replaces "${l.replacesText}"` : ''}`
@@ -3065,6 +3065,10 @@ function describeTrack(t) {
   }
   // A VIDEO'S NARRATION (job #572): the card is the video's own name ("Neath video"), carried as podTitle.
   if (t.kind === 'voiceover') {
+    // A script that is not laid onto a video (job #67, the Richard Parks pod) has no timings to describe.
+    if (t.podTitle && !/video/i.test(t.podTitle)) {
+      return { short: 'Script', cls: 'k-other', title: t.podTitle, what: 'A short private script, one line at a time. Read each at a natural, relaxed pace.' }
+    }
     return {
       short: 'Video', cls: 'k-other',
       title: t.podTitle || 'Video voiceover',

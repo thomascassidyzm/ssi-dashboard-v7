@@ -1631,7 +1631,10 @@ module.exports = function createRecordistRouter({
   async function recordVoiceoverTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
     const resolved = videoVoiceovers.resolveVoiceoverLine(parsed, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
-    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: 'known', ownVoice: true, text, audioBase64, mimeType, device })
+    // A target-side script (job #67) files a target1 take; metaKind 'voiceover' makes the speech gate hear the target
+    // language (recording-speech-gate languageForTake), where 'known' makes it hear English.
+    const target = resolved.role === 'target1'
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: target ? 'voiceover' : 'known', role: target ? 'target1' : 'known', ownVoice: true, text, audioBase64, mimeType, device })
   }
 
   /**

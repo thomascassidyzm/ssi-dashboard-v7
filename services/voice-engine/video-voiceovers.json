@@ -1,5 +1,5 @@
 {
-  "_comment": "Voiceover scripts read in a human voice on the booth (video-voiceover-lines.cjs) and laid onto their video by tools/video/neath-walkthrough/voiceover.py. One line per caption step; `segment` names the stretch of the video the line is spoken over, `aimSec` is the natural length shown to the reader, `fitSec` the longest take the segment holds (the composer asserts every segment is at least fitSec + 0.5 s). These are NOT course content: a take files as an English clip of the voice and is linked to no learner slot.",
+  "_comment": "Voiceover scripts read in a human voice on the booth (video-voiceover-lines.cjs) and laid onto their video by tools/video/neath-walkthrough/voiceover.py. One line per caption step; `segment` names the stretch of the video the line is spoken over, `aimSec` is the natural length shown to the reader, `fitSec` the longest take the segment holds (the composer asserts every segment is at least fitSec + 0.5 s). These are NOT course content: a take files as an English clip of the voice and is linked to no learner slot. A script with no video (the Richard Parks pod, job #67) leaves out segment/aimSec/fitSec; `side: \"target\"` files its takes as target1 clips in the voice's own language.",
   "videos": [
     {
       "slug": "neath-video",
@@ -26,6 +26,41 @@
         { "key": "tip-codes", "segment": "tip", "label": "Tip: sign-in codes", "aimSec": 5.5, "fitSec": 7.5, "text": "Sign-in codes come by email. If one doesn't arrive, check your junk or quarantine folder." },
         { "key": "tip-stuck", "segment": "tip2", "label": "Tips: if you get stuck", "aimSec": 11, "fitSec": 12.5, "text": "Three quick tips. Join on the device you'll learn on. Type your college email. And if you ever see 'Too many tries', wait a few minutes, or switch to mobile data." },
         { "key": "end", "segment": "end", "label": "End card", "aimSec": 2.5, "fitSec": 3.5, "text": "You're all set. Enjoy learning Welsh!" }
+      ]
+    },
+    {
+      "slug": "richard-parks-english",
+      "title": "Richard Parks pod",
+      "about": "Aran's private mini-pod for Richard Parks (jobs #64, #67): five Welsh lines and six Japanese ones, played in the learner app only to named accounts. NOT course content: takes link to no learner slot; the learner app's private pod finds them by voice and words. This card: the English of all eleven lines.",
+      "voiceIds": ["human_aran_eng"],
+      "fileUnder": "cym_n_for_eng",
+      "lines": [
+        { "key": "line-1", "label": "Line 1 (Welsh line)", "text": "Hiya Gareth, very good to see you" },
+        { "key": "line-2", "label": "Line 2 (Welsh line)", "text": "Good afternoon ladies, gentlemen, our WRU president, our first minister, and the princess of Japan" },
+        { "key": "line-3", "label": "Line 3 (Welsh line)", "text": "It's my honour to be here today" },
+        { "key": "line-4", "label": "Line 4 (Welsh line)", "text": "Sorry, can you ask me again in English" },
+        { "key": "line-5", "label": "Line 5 (Welsh line)", "text": "Thank you, I enjoyed that" },
+        { "key": "line-6", "label": "Line 6 (Japanese line)", "text": "Good afternoon and welcome to Wales" },
+        { "key": "line-7", "label": "Line 7 (Japanese line)", "text": "your royal highness" },
+        { "key": "line-8", "label": "Line 8 (Japanese line)", "text": "esteemed guests" },
+        { "key": "line-9", "label": "Line 9 (Japanese line)", "text": "and the team from Sony" },
+        { "key": "line-10", "label": "Line 10 (Japanese line)", "text": "Thank you very much" },
+        { "key": "line-11", "label": "Line 11 (Japanese line)", "text": "Let's both give it our best" }
+      ]
+    },
+    {
+      "slug": "richard-parks-welsh",
+      "title": "Richard Parks pod",
+      "side": "target",
+      "about": "Aran's private mini-pod for Richard Parks (jobs #64, #67): five Welsh lines and six Japanese ones, played in the learner app only to named accounts. NOT course content: takes link to no learner slot; the learner app's private pod finds them by voice and words. This card: the five Welsh lines.",
+      "voiceIds": ["human_aran_cym_n"],
+      "fileUnder": "cym_nv2_for_eng",
+      "lines": [
+        { "key": "line-1", "label": "Line 1", "text": "S'mae Gareth, braf iawn eich gweld chi" },
+        { "key": "line-2", "label": "Line 2", "text": "boneddigion, boneddigesau, arlywydd yr Undeb, Prif Weinidog, ei mawrhydi tywysoges Siapan, pnawn da." },
+        { "key": "line-3", "label": "Line 3", "text": "mae'n fraint i mi fod yma heddiw" },
+        { "key": "line-4", "label": "Line 4", "text": "mae'n ddrwg gen i, allech chi ofyn i mi eto yn y Saesneg?" },
+        { "key": "line-5", "label": "Line 5", "text": "Diolch yn fawr, wnes i fwynhau hynna." }
       ]
     }
   ]

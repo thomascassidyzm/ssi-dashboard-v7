@@ -14,7 +14,7 @@ const DAN = { voiceId: 'human_dan_cym_n', spellings: ['human_dan_cym_n'] }
 
 describe('video voiceover lines', () => {
   it('Aran gets one Neath video card, one line per step, each with its timing', () => {
-    const lines = vo.voiceoverLinesFor(ARAN)
+    const lines = vo.voiceoverLinesFor(ARAN).filter((l) => l.id.startsWith('voiceover:neath-video:'))
     expect(lines).toHaveLength(18)
     expect(lines[0].id).toBe('voiceover:neath-video:title')
     expect(lines.every((l) => l.kind === 'voiceover' && l.role === 'known' && l.knownByText && l.readStyle === 'natural')).toBe(true)
@@ -45,6 +45,7 @@ describe('video voiceover lines', () => {
 
   it('a line is recorded once he has any English take of the words', () => {
     const [title] = vo.voiceoverLinesFor(ARAN)
+    expect(title.id).toBe('voiceover:neath-video:title')
     expect(isLineRecorded(title, { recordedKeys: new Set(), spellings: ARAN.spellings })).toBe(false)
     expect(isLineRecorded(title, { recordedKeys: new Set(["here's how to get started with saysomethingin"]), spellings: ARAN.spellings })).toBe(true)
   })
@@ -109,6 +110,21 @@ async function take(voiceId, lineId, text) {
   await settled
   return { status: out.status, body: out.body, uploads, writes }
 }
+
+// THE RICHARD PARKS POD (job #67): the English of all eleven lines on his English booth, the five Welsh lines on his
+// Welsh booth (a target-side script), each its own card, never merged into the Neath video card.
+describe('Richard Parks pod cards', () => {
+  const CYM = { voiceId: 'human_aran_cym_n', spellings: ['human_aran_cym_n'] }
+  it('English booth: 11 lines on their own card; Welsh booth: 5 target1 lines', () => {
+    const tracks = boothHome.buildHomeTracks(vo.voiceoverLinesFor(ARAN))
+    expect(tracks.map((t) => [t.key, t.total, t.podTitle])).toEqual([['voiceover.cym_nv2_for_eng', 18, 'Neath video'], ['voiceover.cym_n_for_eng', 11, 'Richard Parks pod']])
+    const welsh = vo.voiceoverLinesFor(CYM)
+    expect(welsh).toHaveLength(5)
+    expect(welsh.every((l) => l.role === 'target1' && l.podTitle === 'Richard Parks pod')).toBe(true)
+    expect(vo.resolveVoiceoverLine(vo.parseVoiceoverLineId('voiceover:richard-parks-welsh:line-1'), CYM)).toMatchObject({ role: 'target1', courseCode: 'cym_nv2_for_eng' })
+    expect(vo.resolveVoiceoverLine(vo.parseVoiceoverLineId('voiceover:richard-parks-welsh:line-1'), ARAN)).toBeNull()
+  })
+})
 
 describe('voiceover take route', () => {
   const line = vo.voiceoverLinesFor(ARAN).find((l) => l.id === 'voiceover:neath-video:staff-1')
