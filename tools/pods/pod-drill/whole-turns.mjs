@@ -98,10 +98,11 @@ try {
       const family = String(c.knownVoice || '').replace(/^(xai|azure|cartesia)_/, '')
       const voices = [family, `xai_${family}`, `azure_${family}`, `cartesia_${family}`]
       const { rows: hits } = await pg.query(
-        `SELECT id, text, text_normalized, role, course_code, voice_id, origin FROM course_audio
+        `SELECT id, text, text_normalized, role, course_code, voice_id, origin, audio_revision FROM course_audio
           WHERE text_normalized = ANY($1) AND role IN ('known', 'pod_fine_known') AND voice_id = ANY($2)`,
         [parts.flatMap(keyVariants), voices])
-      c.knownSentenceClips = parts.map((s) => ({ text: s, clips: hits.filter((h) => lookupKey(h.text) === lookupKey(s)) }))
+      // This course's own clip first, as the player's lookup does; `ref` is the playable id, revision included.
+      c.knownSentenceClips = parts.map((s) => ({ text: s, clips: hits.filter((h) => lookupKey(h.text) === lookupKey(s)).map((h) => ({ ...h, ref: ref(h) })).sort((a, b) => (b.course_code === course) - (a.course_code === course)) }))
     }
   }
   const out = { course, pod: podId, tool: 'tools/pods/pod-drill/whole-turns.mjs (#836)', rows: walk.length, cards }
