@@ -31,13 +31,20 @@ export XDG_RUNTIME_DIR
 log() { /bin/echo "$(/bin/date) popty-watchdog: $*" >> "$LOG"; }
 
 # 1. The supervisor. Without it, restarting a unit is a no-op.
-if [ "$(/usr/bin/systemctl is-active user@$UID_NUM.service 2>/dev/null)" != "active" ]; then
+# Only inactive/failed mean down, read twice. user@.service is Type=notify-reload, so every
+# `systemctl --user daemon-reload` shows "reloading" here for ~130 ms; this line used to test
+# != "active", read exactly that at 00:32:01 on 2026-11-06 and ran disable-linger on a healthy
+# manager, which stopped every worker, service and timer on the box. An empty read (PID 1 busy)
+# is not "down" either: disable-linger is the most destructive thing this script can do.
+manager_state() { /usr/bin/systemctl is-active user@$UID_NUM.service 2>/dev/null; }
+manager_down() { case "$(manager_state)" in inactive|failed) return 0 ;; *) return 1 ;; esac; }
+if manager_down && { /bin/sleep 5; manager_down; }; then
   log "user@$UID_NUM.service is down — re-lingering to restart it"
   /usr/bin/loginctl disable-linger "$(/usr/bin/id -un)" 2>/dev/null
   /bin/sleep 2
   /usr/bin/loginctl enable-linger "$(/usr/bin/id -un)" 2>/dev/null
   /bin/sleep 5
-  log "user manager now: $(/usr/bin/systemctl is-active user@$UID_NUM.service 2>/dev/null)"
+  log "user manager now: $(manager_state)"
 fi
 
 # 2. The services. Two consecutive misses before acting, so a slow response or a
@@ -66,9 +73,5 @@ check() {
 
 check popty-production-api 3470
 check popty-course-builder-api 3471
-# 3465 is not optional: /api/production/:course/audio-stats calls phase 8's
-# /needs and 500s outright when it is down. See the 2026-08-04 incident doc.
-check popty-phase8-audio 3465
-# 2026-08-07: orchestrator joined systemd (it was the last pm2 holdout, and the
-# 14:44 reboot left it down for ~50 min because nothing watched 3456).
-check popty-orchestrator 3456
+# r-2026-10-13: Phase 8 is manual-only while TTS is paused.
+# The orchestrator also has direct TTS preview routes; leave it manual-only.
