@@ -23,8 +23,8 @@
  *  - a pause nobody marked (no comma or "…" near it) must be no longer than the shortest cut over 1.5, the splicer's
  *    margin; marked pauses are expected and do not count against it;
  *  - the sentences' speech rates must agree within RATE_RATIO, and every seam, piece and share gate still applies.
- * Where the strict cut already passes, the placed break is computed beside it and any disagreement is reported
- * (placed_agrees): that is the method's own calibration.
+ * Where the strict cut passes, the placed break is computed beside it (placed_agrees). If they disagree, placed wins;
+ * with hesitation marks in the text, a strict cut position cannot confirm is refused.
  *
  * Each sentence's English, in preference order: an existing clip of the exact sentence in the same voice (the Drill
  * looks it up by text), else a span of the card's own English take. A turn with any sentence left without English
@@ -147,15 +147,22 @@ async function cutSide (clipFile, text, tag, dir) {
   for (const f of res.files || []) fs.rmSync(f, { force: true })
   r.measure = res.measure
   r.method = 'strict'
-  if (!res.ok && res.reason === 'too_few_gaps') {
+  // A hesitation mark the reader did not pause at shifts every ordinal by one, and the strict cut then lands in the
+  // wrong clean pause with every audio gate passing. So with hesitation marks in the text, it stands only if placing
+  // the break by position finds the same gap. In #71's first run the two disagreed on 5 of 67: all 5 strict cuts were
+  // mid-sentence, on reading the text against the gap times, and all 5 placed cuts were at the sentence end.
+  const marked = m.cues > r.n - 1
+  if (res.ok && !placed.refuse) {
+    const strictMids = res.measure.piece_spans.slice(1).map(([a]) => a + 0.05)
+    r.placed_agrees = placed.at.every((j, i) => Math.abs((take.gaps[j][0] + take.gaps[j][1]) / 2 - strictMids[i]) < 0.1)
+  }
+  if (res.ok && placed.refuse && marked) return { ...r, ok: false, reason: placed.refuse, strict: 'unconfirmed' }
+  if ((res.ok && r.placed_agrees === false) || (!res.ok && res.reason === 'too_few_gaps')) {
     if (placed.refuse) return { ...r, ok: false, reason: placed.refuse, strict: res.reason }
     r.method = 'placed'
     res = await spliceAndGate(clipFile, r.n, path.join(dir, tag), { cues: take.gaps.length, at: placed.at })
     for (const f of res.files || []) fs.rmSync(f, { force: true })
     r.measure = res.measure
-  } else if (res.ok && !placed.refuse) {
-    const strictMids = res.measure.piece_spans.slice(1).map(([a]) => a + 0.05)
-    r.placed_agrees = placed.at.every((j, i) => Math.abs((take.gaps[j][0] + take.gaps[j][1]) / 2 - strictMids[i]) < 0.1)
   }
   if (!res.ok) return { ...r, ok: false, reason: res.reason }
   const gaps = res.measure.cut_at_gaps_ms
