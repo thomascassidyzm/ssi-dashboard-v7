@@ -203,7 +203,8 @@ async function handle (c) {
   const t = await cutSide(await fetchClip(c.targetAudioId), c.target, `${tag}-t`, scratch)
   row.targetSide = t
   if (!t.ok) return { ...row, verdict: 'whole', reason: `target:${t.reason}` }
-  const kParts = splitOn(c.known, /(?<=[.!?])\s+/)
+  // The renderer's cue pause stays on the front of a sentence in stored text; the Drill looks the words up, so drop it.
+  const kParts = splitOn(c.known, /(?<=[.!?])\s+/).map((s) => s.replace(/^[…\s]+/u, '').trim()).filter(Boolean)
   if (kParts.length !== t.n) return { ...row, verdict: 'whole', reason: 'known_count_mismatch', knownParts: kParts.length }
   // Same-voice clip of the exact sentence: what the Drill's by-text lookup will find.
   const reuse = (c.knownSentenceClips || []).map((s) => (s.clips || [])[0] || null)

@@ -1,0 +1,6678 @@
+{
+ "course": "cym_n_for_eng",
+ "tool": "tools/pods/pod-drill/split-clip-audit.cjs (#96)",
+ "summary": {
+  "turns": 46,
+  "clips": 134,
+  "welsh": {
+   "position-agrees": 24,
+   "unproven": 19,
+   "MID-SENTENCE": 3
+  },
+  "english": {
+   "unproven": 31,
+   "position-agrees": 15
+  }
+ },
+ "turns": [
+  {
+   "id": "cym_n_for_eng:pod-1:SC01-S002",
+   "speaker": "Sarah",
+   "target": "Bore da. Sut wyt ti?",
+   "known": "Good morning. How are you?",
+   "welsh": {
+    "take": "db7fbc37-8b0e-4711-b1b9-93bb276cf63d",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "69170d47-6f5e-48f2-afdf-f4fd677ab85d",
+      "text": "Bore da.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.322,
+      "score": 1,
+      "speech": 0.63,
+      "aligned": true
+     },
+     {
+      "ref": "adee71d2-1f2f-487f-a3c6-9fbadbf1a65b",
+      "text": "Sut wyt ti?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.222,
+      "end": 2.543,
+      "score": 0.997,
+      "speech": 0.59,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.09,
+      1.455
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.207,
+    "sentences": [
+     "Bore da.",
+     "Sut wyt ti?"
+    ],
+    "breaks": [
+     1.272
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.09,
+      1.455
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "7248628f-7f49-4546-9e9b-37b72dd53a1b",
+    "takeVoice": "gfzdpspr5fdp",
+    "pieces": [
+     {
+      "ref": "8084f9b1-cba3-4b25-9b40-fa518bbb4301.v2",
+      "text": "Good morning.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.018,
+      "end": 0.978,
+      "score": 0.144,
+      "speech": 0.56,
+      "aligned": false
+     },
+     {
+      "ref": "f745cc1a-72af-4039-9867-10e1e9aca430.v2",
+      "text": "How are you?",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.027,
+      "end": 0.867,
+      "score": 0.131,
+      "speech": 0.57,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      0.713,
+      1.111
+     ]
+    ],
+    "speechStart": 0.128,
+    "speechEnd": 1.8,
+    "sentences": [
+     "Good morning.",
+     "How are you?"
+    ],
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC01-S003",
+   "speaker": "Neighbour",
+   "target": "Dw i'n dda iawn, diolch. Wyt ti'n mynd i'r gwaith?",
+   "known": "I'm very well, thank you. Are you going to work?",
+   "welsh": {
+    "take": "b5da8871-30d3-4187-87a7-73efb84e2ad8",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "c07cc550-6cd3-4322-bb17-cf608156b6de",
+      "text": "Dw i'n dda iawn, diolch.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.637,
+      "score": 1,
+      "speech": 1.02,
+      "aligned": true
+     },
+     {
+      "ref": "48de06a9-94c7-4f41-844f-ed3a6bb52f70",
+      "text": "Wyt ti'n mynd i'r gwaith?",
+      "voice": "human_aran_cym_n",
+      "start": 1.537,
+      "end": 3.081,
+      "score": 0.999,
+      "speech": 0.98,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.449,
+      1.724
+     ]
+    ],
+    "speechStart": 0.355,
+    "speechEnd": 2.741,
+    "sentences": [
+     "Dw i'n dda iawn, diolch.",
+     "Wyt ti'n mynd i'r gwaith?"
+    ],
+    "breaks": [
+     1.587
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.449,
+      1.724
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "c1c42f2f-1a46-4272-ad9e-815b15d6b3b0",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "8cdce297-15ff-476f-96a5-7e027827a629",
+      "text": "I'm very well, thank you.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.687,
+      "score": 0.999,
+      "speech": 1.01,
+      "aligned": true
+     },
+     {
+      "ref": "dd42c885-f857-4a06-a1fa-f5518d4ae261",
+      "text": "Are you going to work?",
+      "voice": "human_aran_eng",
+      "start": 1.587,
+      "end": 3.087,
+      "score": 0.999,
+      "speech": 0.84,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.452,
+      1.822
+     ]
+    ],
+    "speechStart": 0.351,
+    "speechEnd": 2.814,
+    "sentences": [
+     "I'm very well, thank you.",
+     "Are you going to work?"
+    ],
+    "breaks": [
+     1.637
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.452,
+      1.822
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC02-S002",
+   "speaker": "Passenger",
+   "target": "Nac ydy, mae hi'n rhydd. Croeso i chi eistedd.",
+   "known": "No, it's free. Please, go ahead.",
+   "welsh": {
+    "take": "ff2423f7-9785-44d7-b04b-243d37589708",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "501ff6f0-4084-4126-8900-c06fa905d190",
+      "text": "Nac ydy, mae hi'n rhydd.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.755,
+      "score": 0.999,
+      "speech": 1.21,
+      "aligned": true
+     },
+     {
+      "ref": "cfe7312f-be34-4d5b-93cb-fcd3f986bda4",
+      "text": "Croeso i chi eistedd.",
+      "voice": "human_aran_cym_n",
+      "start": 1.655,
+      "end": 3.055,
+      "score": 0.988,
+      "speech": 0.78,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.634,
+      1.776
+     ]
+    ],
+    "speechStart": 0.355,
+    "speechEnd": 2.721,
+    "sentences": [
+     "Nac ydy, mae hi'n rhydd.",
+     "Croeso i chi eistedd."
+    ],
+    "breaks": [
+     1.705
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_short_gap"
+   },
+   "english": {
+    "take": "c6bffd16-cb80-42d6-937a-c1e1c9b5f610",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "012aae4b-9cbd-4bf8-88d5-8de78c722195",
+      "text": "No, it's free.",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.763,
+      "end": 2.027,
+      "score": 0.142,
+      "speech": 0.84,
+      "aligned": false
+     },
+     {
+      "ref": "0cdf0611-471d-4183-b133-6d6c606bc2c6",
+      "text": "Please, go ahead.",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.018,
+      "end": 1.206,
+      "score": 0.124,
+      "speech": 0.89,
+      "aligned": false
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0.341,
+    "speechEnd": 1.998,
+    "sentences": [
+     "No, it's free.",
+     "Please, go ahead."
+    ],
+    "voiceNote": "xai_gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC02-S005",
+   "speaker": "Passenger",
+   "target": "Dydy hi ddim yn bell iawn. Falla tair neu bedair milltir.",
+   "known": "It's not very far. Maybe three or four miles.",
+   "welsh": {
+    "take": "702d54e3-a8ec-49f0-a91c-e1543df25980",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "261baaca-0d15-4acf-a511-14970b56c88f",
+      "text": "Dydy hi ddim yn bell iawn.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.772,
+      "score": 1,
+      "speech": 1.09,
+      "aligned": true
+     },
+     {
+      "ref": "9ae112cd-fb7d-4e46-bf02-876af0aacebe",
+      "text": "Falla tair neu bedair milltir.",
+      "voice": "human_aran_cym_n",
+      "start": 1.672,
+      "end": 3.917,
+      "score": 0.999,
+      "speech": 1.7,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.636,
+      1.808
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 3.604,
+    "sentences": [
+     "Dydy hi ddim yn bell iawn.",
+     "Falla tair neu bedair milltir."
+    ],
+    "breaks": [
+     1.722
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.636,
+      1.808
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "8bd0d03d-280b-415e-8878-d8ac6831eeac",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "0704334b-e775-4109-80f1-73a56b160fdb",
+      "text": "It's not very far.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.285,
+      "score": 1,
+      "speech": 0.74,
+      "aligned": true
+     },
+     {
+      "ref": "0b90d69f-7c36-48c7-a7bc-ff74084f656f",
+      "text": "Maybe three or four miles.",
+      "voice": "human_aran_eng",
+      "start": 1.185,
+      "end": 3.076,
+      "score": 0.996,
+      "speech": 1.4,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.163,
+      1.306
+     ]
+    ],
+    "speechStart": 0.323,
+    "speechEnd": 2.741,
+    "sentences": [
+     "It's not very far.",
+     "Maybe three or four miles."
+    ],
+    "breaks": [
+     1.2349999999999999
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_short_gap"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC03-S001",
+   "speaker": "Barista",
+   "target": "Prynhawn da. Be alla i ei gael i chi?",
+   "known": "Good afternoon. What can I get you?",
+   "welsh": {
+    "take": "2bc9315b-04cd-49b9-925c-3e6d20febbf1",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "36d9d264-722a-4e66-92f4-795a8b4b0338",
+      "text": "Prynhawn da.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.343,
+      "score": 1,
+      "speech": 0.59,
+      "aligned": true
+     },
+     {
+      "ref": "0fbcca42-dd17-49c9-9336-1fbf16fb0a0d",
+      "text": "Be alla i ei gael i chi?",
+      "voice": "human_aran_cym_n",
+      "start": 1.243,
+      "end": 2.724,
+      "score": 0.945,
+      "speech": 0.86,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.009,
+      1.441
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.381,
+    "sentences": [
+     "Prynhawn da.",
+     "Be alla i ei gael i chi?"
+    ],
+    "breaks": [
+     1.2930000000000001
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "fbd3d17a-c712-43d1-a549-b6fc8d85baae",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "45576037-fd49-4f4c-b2e7-983580b6fded",
+      "text": "Good afternoon.",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.233,
+      "end": 1.292,
+      "score": 0.14,
+      "speech": 0.67,
+      "aligned": false
+     },
+     {
+      "ref": "40afa68b-de2c-4f25-80b4-c0249cf22c8f",
+      "text": "What can I get you?",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.681,
+      "end": 1.929,
+      "score": 0.143,
+      "speech": 0.53,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      0.238,
+      0.356
+     ]
+    ],
+    "speechStart": 0.208,
+    "speechEnd": 1.946,
+    "sentences": [
+     "Good afternoon.",
+     "What can I get you?"
+    ],
+    "voiceNote": "xai_gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC03-S002",
+   "speaker": "Sarah",
+   "target": "Prynhawn da. Liciwn i goffi,… os gwelwch yn dda. Efo llefrith ond heb siwgr. I fynd o 'ma.",
+   "known": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+   "welsh": {
+    "take": "a5d5fee8-5fa3-45b2-b4cf-fa822d5c5995",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "f0e3604b-c60c-4d2e-83e9-0d7d8f723a1a",
+      "text": "Prynhawn da.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.471,
+      "score": 1,
+      "speech": 0.72,
+      "aligned": true
+     },
+     {
+      "ref": "a33a6b18-cb75-4ede-9fd2-dfd64a3a3125",
+      "text": "Liciwn i goffi,… os gwelwch yn dda.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.371,
+      "end": 5.066,
+      "score": 0.998,
+      "speech": 2.46,
+      "aligned": true
+     },
+     {
+      "ref": "41c7a1f6-c0fd-4d95-9aa2-03a9361e07dc",
+      "text": "Efo llefrith ond heb siwgr.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 4.966,
+      "end": 6.286,
+      "score": 0.993,
+      "speech": 0.78,
+      "aligned": true
+     },
+     {
+      "ref": "cfc4655c-6a8d-4dba-9e03-e76a49dfc262",
+      "text": "I fynd o 'ma.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 6.186,
+      "end": 7.441,
+      "score": 0.999,
+      "speech": 0.65,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.146,
+      1.696
+     ],
+     [
+      3.549,
+      4.085
+     ],
+     [
+      4.84,
+      5.115
+     ],
+     [
+      5.692,
+      5.795
+     ],
+     [
+      6.036,
+      6.435
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 7.107,
+    "sentences": [
+     "Prynhawn da.",
+     "Liciwn i goffi,… os gwelwch yn dda.",
+     "Efo llefrith ond heb siwgr.",
+     "I fynd o 'ma."
+    ],
+    "breaks": [
+     1.421,
+     5.016,
+     6.236
+    ],
+    "liveGaps": [
+     0,
+     2,
+     4
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "84fea07c-6eec-4170-a617-092ba66c90fd",
+    "takeVoice": "xai_gfzdpspr5fdp",
+    "pieces": [
+     {
+      "ref": "4c2e16c3-42d4-4140-b936-12c0f8a0c815.v2",
+      "text": "Good afternoon.",
+      "voice": "gfzdpspr5fdp",
+      "start": 3.71,
+      "end": 4.646,
+      "score": 0.181,
+      "speech": 0.61,
+      "aligned": false
+     },
+     {
+      "ref": "8f391648-7702-436f-83a0-6c3168d99a65.v2",
+      "text": "I'd like a coffee, please.",
+      "voice": "gfzdpspr5fdp",
+      "start": 1.544,
+      "end": 3.104,
+      "score": 0.11,
+      "speech": 1.25,
+      "aligned": false
+     },
+     {
+      "ref": "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7.v2",
+      "text": "With milk but with no sugar.",
+      "voice": "gfzdpspr5fdp",
+      "start": 3.098,
+      "end": 4.897,
+      "score": 0.186,
+      "speech": 1.47,
+      "aligned": false
+     },
+     {
+      "ref": "b3be0425-1105-4bbb-944b-2576a02e8dd1.v2",
+      "text": "To take away.",
+      "voice": "gfzdpspr5fdp",
+      "start": 2.856,
+      "end": 3.936,
+      "score": 0.137,
+      "speech": 0.81,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      0.879,
+      1.429
+     ],
+     [
+      2.819,
+      3.215
+     ],
+     [
+      3.804,
+      3.921
+     ],
+     [
+      4.929,
+      5.388
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 6.059,
+    "sentences": [
+     "Good afternoon.",
+     "I'd like a coffee, please.",
+     "With milk but with no sugar.",
+     "To take away."
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC05-S001",
+   "speaker": "Neighbour",
+   "target": "Noswaith dda, Sarah. Gest ti ddiwrnod hir?",
+   "known": "Good evening, Siân. … Did you have a long day?",
+   "welsh": {
+    "take": "768af995-3c29-416f-a039-4b5c8e432fd9",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "9a76b5d4-f881-4ea9-a42a-2cbfa4ab4c58",
+      "text": "Noswaith dda, Sarah.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.598,
+      "score": 0.998,
+      "speech": 0.92,
+      "aligned": true
+     },
+     {
+      "ref": "968b1eef-3e1d-4883-b97a-f355e5075451",
+      "text": "Gest ti ddiwrnod hir?",
+      "voice": "human_aran_cym_n",
+      "start": 1.498,
+      "end": 3.095,
+      "score": 1,
+      "speech": 0.96,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.364,
+      1.733
+     ]
+    ],
+    "speechStart": 0.359,
+    "speechEnd": 2.752,
+    "sentences": [
+     "Noswaith dda, Sarah.",
+     "Gest ti ddiwrnod hir?"
+    ],
+    "breaks": [
+     1.548
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.364,
+      1.733
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "faf70009-e829-41b5-9459-e8466050cec0",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "87ad9d8d-1859-4705-88ea-bc74bdd3fafd.v2",
+      "text": "Good evening, Sarah.",
+      "voice": "gfzdpspr5fdp",
+      "start": 1.227,
+      "end": 2.451,
+      "score": 0.117,
+      "speech": 1.05,
+      "aligned": false
+     },
+     {
+      "ref": "1351460b-746f-499e-bb1b-912e2ea8d12f.v2",
+      "text": "Did you have a long day?",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.155,
+      "end": 1.595,
+      "score": 0.133,
+      "speech": 1.18,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      1.247,
+      1.458
+     ]
+    ],
+    "speechStart": 0.348,
+    "speechEnd": 2.444,
+    "sentences": [
+     "Good evening, Siân.",
+     "…",
+     "Did you have a long day?"
+    ],
+    "voiceNote": "gfzdpspr5fdp,xai_gfzdpspr5fdp",
+    "textNote": "clip_text_differs_from_sentence",
+    "verdict": "unproven",
+    "why": "piece_count_differs_from_sentences"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S001",
+   "speaker": "James",
+   "target": "Esgusodwch fi. Helo. Be 'di'ch enw chi?",
+   "known": "Excuse me. Hello. What's your name?",
+   "welsh": {
+    "take": "1b81bd56-18e2-4589-a66d-a55ae264ef46",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "cad4da4b-f9cd-4635-a82b-1d696e1261b0",
+      "text": "Esgusodwch fi.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.448,
+      "score": 0.998,
+      "speech": 0.86,
+      "aligned": true
+     },
+     {
+      "ref": "8ead9949-5f58-4ff6-8369-ea2370e6517c",
+      "text": "Helo.",
+      "voice": "human_aran_cym_n",
+      "start": 1.348,
+      "end": 2.099,
+      "score": 0.999,
+      "speech": 0.43,
+      "aligned": true
+     },
+     {
+      "ref": "fa39fe8b-45c6-4f0c-b40c-45be9a09b725",
+      "text": "Be 'di'ch enw chi?",
+      "voice": "human_aran_cym_n",
+      "start": 1.999,
+      "end": 3.243,
+      "score": 0.999,
+      "speech": 0.77,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.304,
+      1.51
+     ],
+     [
+      1.989,
+      2.109
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.922,
+    "sentences": [
+     "Esgusodwch fi.",
+     "Helo.",
+     "Be 'di'ch enw chi?"
+    ],
+    "breaks": [
+     1.3980000000000001,
+     2.0490000000000004
+    ],
+    "liveGaps": [
+     0,
+     1
+    ],
+    "nearestGaps": [
+     0,
+     1
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_short_gap"
+   },
+   "english": {
+    "take": "742b151f-20a5-42e2-8091-1e57fc6b991b",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "93aecbe6-1aa7-4a6f-854b-be7d52793cae",
+      "text": "Excuse me.",
+      "voice": "xai_bedd6226",
+      "start": 1.548,
+      "end": 2.846,
+      "score": 0.257,
+      "speech": 0.55,
+      "aligned": false
+     },
+     {
+      "ref": "1c31d128-c8be-4278-939f-de8638c431fc",
+      "text": "Hello.",
+      "voice": "xai_bedd6226",
+      "start": 0.218,
+      "end": 1.434,
+      "score": 0.175,
+      "speech": 0.37,
+      "aligned": false
+     },
+     {
+      "ref": "3f6d52d6-aad2-44ac-9c27-c79cc8b062f0",
+      "text": "What's your name?",
+      "voice": "xai_bedd6226",
+      "start": 0.052,
+      "end": 1.458,
+      "score": 0.145,
+      "speech": 0.61,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      1.613,
+      2.011
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 2.731,
+    "sentences": [
+     "Excuse me.",
+     "Hello.",
+     "What's your name?"
+    ],
+    "voiceNote": "xai_bedd6226",
+    "breaks": [
+     null,
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S003",
+   "speaker": "James",
+   "target": "James ydw i. Braf cyfarfod â chi.",
+   "known": "I'm James. Pleased to meet you.",
+   "welsh": {
+    "take": "64e06b2a-62df-477a-a17d-2181e49f4046",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "9cc9d03f-f106-49f7-9061-1740d3c46d8c",
+      "text": "James ydw i.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.403,
+      "score": 1,
+      "speech": 0.78,
+      "aligned": true
+     },
+     {
+      "ref": "c7d19224-cf30-4f40-a003-f935a9ef702e",
+      "text": "Braf cyfarfod â chi.",
+      "voice": "human_aran_cym_n",
+      "start": 1.303,
+      "end": 3.003,
+      "score": 0.999,
+      "speech": 1.1,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.176,
+      1.519
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.706,
+    "sentences": [
+     "James ydw i.",
+     "Braf cyfarfod â chi."
+    ],
+    "breaks": [
+     1.353
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.176,
+      1.519
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "b9c17fe6-596a-4e88-b815-824ef0536d54",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "0cb252f0-fef9-468d-9246-0fc3a5c8c12a",
+      "text": "I'm James.",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 1.49,
+      "end": 2.426,
+      "score": 0.232,
+      "speech": 0.79,
+      "aligned": false
+     },
+     {
+      "ref": "7179924f-9de5-47b7-bb65-99a3142ebc2c.v2",
+      "text": "Pleased to meet you.",
+      "voice": "gfzdpspr5fdp",
+      "start": 1.26,
+      "end": 2.34,
+      "score": 0.21,
+      "speech": 0.78,
+      "aligned": false
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0.285,
+    "speechEnd": 2.235,
+    "sentences": [
+     "I'm James.",
+     "Pleased to meet you."
+    ],
+    "voiceNote": "xai_gfzdpspr5fdp,gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S007",
+   "speaker": "James",
+   "target": "Mae hon yn ddinas hyfryd. Be dach chi'n 'neud?",
+   "known": "This is a lovely city. What do you do?",
+   "welsh": {
+    "take": "bf6bb423-5944-4622-936e-f6b4a74a739a",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "36f1dcb8-69d8-4b66-9a3c-21b1eda9610e",
+      "text": "Mae hon yn ddinas hyfryd.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.996,
+      "score": 1,
+      "speech": 1.28,
+      "aligned": true
+     },
+     {
+      "ref": "94d5e322-325e-4b07-9d72-dfffd0800eaa",
+      "text": "Be dach chi'n 'neud?",
+      "voice": "human_aran_cym_n",
+      "start": 1.896,
+      "end": 3.279,
+      "score": 0.999,
+      "speech": 0.69,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.707,
+      2.186
+     ]
+    ],
+    "speechStart": 0.355,
+    "speechEnd": 2.937,
+    "sentences": [
+     "Mae hon yn ddinas hyfryd.",
+     "Be dach chi'n 'neud?"
+    ],
+    "breaks": [
+     1.946
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.707,
+      2.186
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "9e835aca-d4fc-4131-bf3c-0f3809046835",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "a14f45e4-c6a6-44f7-8315-6564ab554ce6",
+      "text": "This is a lovely city.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.757,
+      "score": 0.999,
+      "speech": 1.07,
+      "aligned": true
+     },
+     {
+      "ref": "f2e9b8be-095d-429d-937b-e32afb065c96",
+      "text": "What do you do?",
+      "voice": "human_aran_eng",
+      "start": 1.657,
+      "end": 2.866,
+      "score": 1,
+      "speech": 0.63,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.555,
+      1.86
+     ]
+    ],
+    "speechStart": 0.347,
+    "speechEnd": 2.553,
+    "sentences": [
+     "This is a lovely city.",
+     "What do you do?"
+    ],
+    "breaks": [
+     1.7069999999999999
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.555,
+      1.86
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S012",
+   "speaker": "Anna",
+   "target": "Am ddiddorol. Wel, braf iawn cyfarfod â chi.",
+   "known": "How interesting. Well, lovely to meet you.",
+   "welsh": {
+    "take": "1dababb8-fb5b-4cad-92cc-02979faaed82",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "a51a7840-bbee-439e-9504-0d86ac265b2f",
+      "text": "Am ddiddorol.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.503,
+      "score": 1,
+      "speech": 0.82,
+      "aligned": true
+     },
+     {
+      "ref": "2a7257bb-6d22-4caa-8555-2241ebee01ed",
+      "text": "Wel, braf iawn cyfarfod â chi.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.403,
+      "end": 4.191,
+      "score": 0.999,
+      "speech": 1.65,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.191,
+      1.715
+     ],
+     [
+      2.031,
+      2.318
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 3.849,
+    "sentences": [
+     "Am ddiddorol.",
+     "Wel, braf iawn cyfarfod â chi."
+    ],
+    "breaks": [
+     1.4529999999999998
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": false,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+    "takeVoice": "xai_gfzdpspr5fdp",
+    "pieces": [
+     {
+      "ref": "0c9d0110-519e-4f32-9621-d956960aa8f0",
+      "text": "How interesting.",
+      "voice": "xai_gfzdpspr5fdp",
+      "start": 0.021,
+      "end": 1.005,
+      "score": 0.182,
+      "speech": 0.76,
+      "aligned": false
+     },
+     {
+      "ref": "ff807b6b-e147-4389-a420-599513572d6f.v2",
+      "text": "Well, lovely to meet you.",
+      "voice": "gfzdpspr5fdp",
+      "start": 1.436,
+      "end": 3.044,
+      "score": 0.119,
+      "speech": 1.27,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      0.82,
+      1.555
+     ],
+     [
+      1.802,
+      1.987
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 2.77,
+    "sentences": [
+     "How interesting.",
+     "Well, lovely to meet you."
+    ],
+    "voiceNote": "xai_gfzdpspr5fdp,gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC06-S013",
+   "speaker": "Narrator",
+   "target": "Un. Dau. Tri. Gwyn. Du.",
+   "known": "1. 2. 3. White. Black.",
+   "welsh": {
+    "take": "c7d4a783-678f-44db-8509-a5dbe6461a38",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "6767c589-ea56-4e54-b657-f0e82b8c9000",
+      "text": "Un.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.118,
+      "score": 1,
+      "speech": 0.42,
+      "aligned": true
+     },
+     {
+      "ref": "a061ff93-1817-42a8-85b3-b7533d92b0e2",
+      "text": "Dau.",
+      "voice": "human_aran_cym_n",
+      "start": 1.018,
+      "end": 2.051,
+      "score": 1,
+      "speech": 0.45,
+      "aligned": true
+     },
+     {
+      "ref": "ba5f106f-65b5-42ba-baf2-9491d94b9493",
+      "text": "Tri.",
+      "voice": "human_aran_cym_n",
+      "start": 1.951,
+      "end": 3.025,
+      "score": 0.999,
+      "speech": 0.55,
+      "aligned": true
+     },
+     {
+      "ref": "d8c1548c-4087-4bd8-b688-c381f0f63049",
+      "text": "Gwyn.",
+      "voice": "human_aran_cym_n",
+      "start": 2.925,
+      "end": 4.08,
+      "score": 1,
+      "speech": 0.58,
+      "aligned": true
+     },
+     {
+      "ref": "3cc37343-8dd4-4e0a-8bc7-3e68a686f769",
+      "text": "Du.",
+      "voice": "human_aran_cym_n",
+      "start": 3.98,
+      "end": 4.941,
+      "score": 1,
+      "speech": 0.35,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.792,
+      1.33
+     ],
+     [
+      1.823,
+      2.178
+     ],
+     [
+      2.759,
+      3.191
+     ],
+     [
+      3.828,
+      4.218
+     ]
+    ],
+    "speechStart": 0.355,
+    "speechEnd": 4.599,
+    "sentences": [
+     "Un.",
+     "Dau.",
+     "Tri.",
+     "Gwyn.",
+     "Du."
+    ],
+    "breaks": [
+     1.068,
+     2.0010000000000003,
+     2.9749999999999996,
+     4.03
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "placedGaps": [
+     [
+      0.792,
+      1.33
+     ],
+     [
+      1.823,
+      2.178
+     ],
+     [
+      2.759,
+      3.191
+     ],
+     [
+      3.828,
+      4.218
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "66147472-c992-4916-80b9-0fe2d6a7cf40",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "c8652ead-c6f2-4d52-bfaf-32eba9fcf3fc",
+      "text": "1.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.153,
+      "score": 1,
+      "speech": 0.38,
+      "aligned": true
+     },
+     {
+      "ref": "bf5575fc-822d-40e8-85b6-698101ce3d78",
+      "text": "2.",
+      "voice": "human_aran_eng",
+      "start": 1.053,
+      "end": 2.144,
+      "score": 1,
+      "speech": 0.38,
+      "aligned": true
+     },
+     {
+      "ref": "4d5b1f48-4b99-48f1-9082-0df4a703196e",
+      "text": "3.",
+      "voice": "human_aran_eng",
+      "start": 2.044,
+      "end": 3.229,
+      "score": 0.999,
+      "speech": 0.52,
+      "aligned": true
+     },
+     {
+      "ref": "abf0bc28-c0a2-46fb-ba37-e9a2347aad7e",
+      "text": "White.",
+      "voice": "human_aran_eng",
+      "start": 3.129,
+      "end": 4.369,
+      "score": 0.999,
+      "speech": 0.48,
+      "aligned": true
+     },
+     {
+      "ref": "7c2649a8-02e5-4f7d-8ef7-7ebcd54f0995",
+      "text": "Black.",
+      "voice": "human_aran_eng",
+      "start": 4.269,
+      "end": 5.303,
+      "score": 0.999,
+      "speech": 0.31,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.729,
+      1.477
+     ],
+     [
+      1.862,
+      2.327
+     ],
+     [
+      2.882,
+      3.476
+     ],
+     [
+      3.86,
+      3.975
+     ],
+     [
+      4.098,
+      4.54
+     ]
+    ],
+    "speechStart": 0.347,
+    "speechEnd": 5.067,
+    "sentences": [
+     "1.",
+     "2.",
+     "3.",
+     "White.",
+     "Black."
+    ],
+    "breaks": [
+     1.103,
+     2.0940000000000003,
+     3.1790000000000003,
+     4.319
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     4
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     1,
+     4
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S001",
+   "speaker": "Cafe Barista",
+   "target": "Bore da. Be alla i ei gael i chi?",
+   "known": "Good morning. What can I get you?",
+   "welsh": {
+    "take": "2c46aefe-4d68-49fb-a0e0-ce87164c1837",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "69170d47-6f5e-48f2-afdf-f4fd677ab85d",
+      "text": "Bore da.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0.017,
+      "end": 1.339,
+      "score": 0.226,
+      "speech": 0.63,
+      "aligned": false
+     },
+     {
+      "ref": "4b2d2f1f-8e4f-4d68-8a86-3c82d337eb9a",
+      "text": "Be alla i ei gael i chi?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.187,
+      "end": 2.924,
+      "score": 0.998,
+      "speech": 1.01,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.989,
+      1.485
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.583,
+    "sentences": [
+     "Bore da.",
+     "Be alla i ei gael i chi?"
+    ],
+    "breaks": [
+     1.237
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.989,
+      1.485
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "takeVoice": "xai_gfzdpspr5fdp",
+    "pieces": [
+     {
+      "ref": "8084f9b1-cba3-4b25-9b40-fa518bbb4301.v2",
+      "text": "Good morning.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.001,
+      "end": 0.961,
+      "score": 0.14,
+      "speech": 0.56,
+      "aligned": false
+     },
+     {
+      "ref": "f57bc455-6cb0-47db-a947-f89df8326ed4",
+      "text": "What can I get you?",
+      "voice": "gfzdpspr5fdp",
+      "start": 0,
+      "end": 2.64,
+      "score": 0,
+      "speech": 0.58,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      0.774,
+      1.482
+     ]
+    ],
+    "speechStart": 0.171,
+    "speechEnd": 2.251,
+    "sentences": [
+     "Good morning.",
+     "What can I get you?"
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S005",
+   "speaker": "Cafe Barista",
+   "target": "Wrth gwrs. Dach chi isio eistedd i mewn… neu fynd â fo o 'ma?",
+   "known": "Of course. Would you like to sit-in or takeaway?",
+   "welsh": {
+    "take": "f3c00616-2ae4-4737-98e3-0e808e8156fc",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "94ce0f3a-4ae6-4159-9e6b-cff9583ed5d4",
+      "text": "Wrth gwrs.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.494,
+      "score": 0.998,
+      "speech": 0.7,
+      "aligned": true
+     },
+     {
+      "ref": "f50fb478-d598-4d7b-aa6a-8d94401a596b",
+      "text": "Dach chi isio eistedd i mewn… neu fynd â fo o 'ma?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.394,
+      "end": 4.931,
+      "score": 0.992,
+      "speech": 2.19,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.15,
+      1.738
+     ],
+     [
+      2.974,
+      3.456
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 4.583,
+    "sentences": [
+     "Wrth gwrs.",
+     "Dach chi isio eistedd i mewn… neu fynd â fo o 'ma?"
+    ],
+    "breaks": [
+     1.444
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": false,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "17f86686-e89b-4524-be54-350e435338f0.v2",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "7dc76514-4880-4143-9b77-6862aae0f2b0",
+      "text": "Of course.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 1.115,
+      "score": 1,
+      "speech": 0.53,
+      "aligned": true
+     },
+     {
+      "ref": "d85c5c50-61f8-4e14-b4f8-9b3d1746fd32",
+      "text": "Would you like to sit-in or takeaway?",
+      "voice": "xai_bedd6226",
+      "start": 1.015,
+      "end": 3.288,
+      "score": 1,
+      "speech": 1.69,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.717,
+      1.399
+     ]
+    ],
+    "speechStart": 0.1,
+    "speechEnd": 3.288,
+    "sentences": [
+     "Of course.",
+     "Would you like to sit-in or takeaway?"
+    ],
+    "breaks": [
+     1.065
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.717,
+      1.399
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S008",
+   "speaker": "Cafe Barista",
+   "target": "Ar unwaith. Dach chi isio rwbath arall?",
+   "known": "Right away. Would you like anything else?",
+   "welsh": {
+    "take": "12317e55-9f82-4424-907c-ae65a56604c0",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "3db8a4e1-89ee-4e31-b5ba-10fc12981245",
+      "text": "Ar unwaith.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.522,
+      "score": 0.999,
+      "speech": 0.68,
+      "aligned": true
+     },
+     {
+      "ref": "c309397e-6ddf-4ca7-8649-a131c718c4fb",
+      "text": "Dach chi isio rwbath arall?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.422,
+      "end": 3.517,
+      "score": 0.996,
+      "speech": 1.27,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.198,
+      1.756
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 3.157,
+    "sentences": [
+     "Ar unwaith.",
+     "Dach chi isio rwbath arall?"
+    ],
+    "breaks": [
+     1.472
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "6c1b8300-76ce-4731-af4d-23d46d14b92e.v2",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "d6016c00-816f-4205-a931-8f3104da25de",
+      "text": "Right away.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 1.227,
+      "score": 1,
+      "speech": 0.6,
+      "aligned": true
+     },
+     {
+      "ref": "38a15d58-3a67-46d0-9d2f-43cbaa142a27",
+      "text": "Would you like anything else?",
+      "voice": "xai_bedd6226",
+      "start": 1.127,
+      "end": 3,
+      "score": 1,
+      "speech": 1.16,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.723,
+      1.63
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 2.898,
+    "sentences": [
+     "Right away.",
+     "Would you like anything else?"
+    ],
+    "breaks": [
+     1.177
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S012",
+   "speaker": "Cafe Barista",
+   "target": "Wrth gwrs. Dyna'r peiriant.",
+   "known": "Of course. There's the machine.",
+   "welsh": {
+    "take": "73460e9a-7c6b-44f8-b8ff-b69fb5c74e56",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "94ce0f3a-4ae6-4159-9e6b-cff9583ed5d4",
+      "text": "Wrth gwrs.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0.013,
+      "end": 1.507,
+      "score": 0.267,
+      "speech": 0.7,
+      "aligned": false
+     },
+     {
+      "ref": "5bb39512-bcfb-4ae7-a543-955653f1e219",
+      "text": "Dyna'r peiriant.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.308,
+      "end": 2.923,
+      "score": 0.996,
+      "speech": 0.9,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.151,
+      1.565
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.579,
+    "sentences": [
+     "Wrth gwrs.",
+     "Dyna'r peiriant."
+    ],
+    "breaks": [
+     1.358
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "737163fe-5553-4502-bc7a-224dc29bf11a.v2",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "7dc76514-4880-4143-9b77-6862aae0f2b0",
+      "text": "Of course.",
+      "voice": "xai_bedd6226",
+      "start": 0.23,
+      "end": 1.345,
+      "score": 0.119,
+      "speech": 0.53,
+      "aligned": false
+     },
+     {
+      "ref": "78385c89-c5d5-4d6c-a3f5-9763576e4a56",
+      "text": "There's the machine.",
+      "voice": "xai_bedd6226",
+      "start": 0.946,
+      "end": 2.256,
+      "score": 1,
+      "speech": 0.81,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.711,
+      1.282
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 2.149,
+    "sentences": [
+     "Of course.",
+     "There's the machine."
+    ],
+    "breaks": [
+     0.996
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC07-S015",
+   "speaker": "Narrator",
+   "target": "Pump. Deg. Pymtheg. Coch. Gwyrdd.",
+   "known": "5. 10. 15. Red. Green.",
+   "welsh": {
+    "take": "87e39d6c-0d40-4875-bcb8-c29f198a1bf2",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "ad6ca030-b90e-461c-8b59-a7c8bb70ccac",
+      "text": "Pump.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.051,
+      "score": 1,
+      "speech": 0.33,
+      "aligned": true
+     },
+     {
+      "ref": "84579418-f693-4de7-85dc-0b8d052b64af",
+      "text": "Deg.",
+      "voice": "human_aran_cym_n",
+      "start": 0.951,
+      "end": 1.962,
+      "score": 0.999,
+      "speech": 0.41,
+      "aligned": true
+     },
+     {
+      "ref": "4bfbc2a7-fa45-49ff-a755-94f1e9da7897",
+      "text": "Pymtheg.",
+      "voice": "human_aran_cym_n",
+      "start": 1.862,
+      "end": 3.118,
+      "score": 0.998,
+      "speech": 0.65,
+      "aligned": true
+     },
+     {
+      "ref": "66cad688-d73c-4d4f-af02-7dab911296c9",
+      "text": "Coch.",
+      "voice": "human_aran_cym_n",
+      "start": 3.018,
+      "end": 4.083,
+      "score": 0.999,
+      "speech": 0.58,
+      "aligned": true
+     },
+     {
+      "ref": "806c0888-5d65-4af2-a09f-ed5b8d70154d",
+      "text": "Gwyrdd.",
+      "voice": "human_aran_cym_n",
+      "start": 3.983,
+      "end": 5.095,
+      "score": 0.998,
+      "speech": 0.55,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.757,
+      1.235
+     ],
+     [
+      1.687,
+      2.137
+     ],
+     [
+      2.861,
+      3.275
+     ],
+     [
+      3.891,
+      4.165
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 4.759,
+    "sentences": [
+     "Pump.",
+     "Deg.",
+     "Pymtheg.",
+     "Coch.",
+     "Gwyrdd."
+    ],
+    "breaks": [
+     1.001,
+     1.912,
+     3.0679999999999996,
+     4.033
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "9957597b-fca8-4074-b2e6-f87bc889d95d",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "7ce53823-e419-4633-b510-da3d9a2f09ae",
+      "text": "5.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.383,
+      "score": 0.999,
+      "speech": 0.59,
+      "aligned": true
+     },
+     {
+      "ref": "b3899a5d-063a-40c5-8f77-2af32dbd59c0",
+      "text": "10.",
+      "voice": "human_aran_eng",
+      "start": 1.283,
+      "end": 2.582,
+      "score": 0.999,
+      "speech": 0.48,
+      "aligned": true
+     },
+     {
+      "ref": "8165447d-28d9-4b2f-bed5-4aa74886f473",
+      "text": "15.",
+      "voice": "human_aran_eng",
+      "start": 2.482,
+      "end": 4.117,
+      "score": 0.999,
+      "speech": 0.76,
+      "aligned": true
+     },
+     {
+      "ref": "62f0e1af-c747-4297-aa38-ed6abeea5862",
+      "text": "Red.",
+      "voice": "human_aran_eng",
+      "start": 4.017,
+      "end": 5.278,
+      "score": 0.999,
+      "speech": 0.43,
+      "aligned": true
+     },
+     {
+      "ref": "6271ae43-7118-4260-84a9-543d704d2474",
+      "text": "Green.",
+      "voice": "human_aran_eng",
+      "start": 5.178,
+      "end": 6.471,
+      "score": 1,
+      "speech": 0.56,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.965,
+      1.701
+     ],
+     [
+      2.187,
+      2.877
+     ],
+     [
+      3.75,
+      4.384
+     ],
+     [
+      4.876,
+      5.579
+     ]
+    ],
+    "speechStart": 0.314,
+    "speechEnd": 6.163,
+    "sentences": [
+     "5.",
+     "10.",
+     "15.",
+     "Red.",
+     "Green."
+    ],
+    "breaks": [
+     1.333,
+     2.532,
+     4.067,
+     5.228
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "placedGaps": [
+     [
+      0.965,
+      1.701
+     ],
+     [
+      2.187,
+      2.877
+     ],
+     [
+      3.75,
+      4.384
+     ],
+     [
+      4.876,
+      5.579
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S001",
+   "speaker": "Bartender",
+   "target": "Noswaith dda. Be alla i ei gael i chi?",
+   "known": "Good evening. What can I get you?",
+   "welsh": {
+    "take": "04d0276f-2d4d-4311-910f-fd9134ea4ca9",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "c4f58b95-8064-4da5-a144-39ba29c457b4",
+      "text": "Noswaith dda.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.412,
+      "score": 0.999,
+      "speech": 0.73,
+      "aligned": true
+     },
+     {
+      "ref": "0fbcca42-dd17-49c9-9336-1fbf16fb0a0d",
+      "text": "Be alla i ei gael i chi?",
+      "voice": "human_aran_cym_n",
+      "start": 1.297,
+      "end": 2.777,
+      "score": 0.102,
+      "speech": 0.86,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      1.135,
+      1.482
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 2.444,
+    "sentences": [
+     "Noswaith dda.",
+     "Be alla i ei gael i chi?"
+    ],
+    "breaks": [
+     1.3619999999999999
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "69cbfa4a-db9f-4f37-a3b6-1192f4d7a0f3",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "062acdca-b520-47c0-9b2f-8501aeaa1b21",
+      "text": "Good evening.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.122,
+      "score": 1,
+      "speech": 0.57,
+      "aligned": true
+     },
+     {
+      "ref": "38190ad2-4b26-4b47-b999-7c56bcfcf871",
+      "text": "What can I get you?",
+      "voice": "human_aran_eng",
+      "start": 1.022,
+      "end": 2.326,
+      "score": 0.999,
+      "speech": 0.69,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.958,
+      1.187
+     ]
+    ],
+    "speechStart": 0.339,
+    "speechEnd": 2.039,
+    "sentences": [
+     "Good evening.",
+     "What can I get you?"
+    ],
+    "breaks": [
+     1.072
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.958,
+      1.187
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S006",
+   "speaker": "Bar Customer 3",
+   "target": "Ga i weld y rhestr gwin? Dw i isio gwydrad o win.",
+   "known": "Could I see the wine list? I want a glass of wine.",
+   "welsh": {
+    "take": "23533d88-19a4-46ad-872e-8b1afef934c2",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "61d3ffdd-69c4-47b0-9fbe-2cc7e7e71723",
+      "text": "Ga i weld y rhestr gwin?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 2.308,
+      "score": 0.999,
+      "speech": 1.27,
+      "aligned": true
+     },
+     {
+      "ref": "3058e0d2-acc3-435c-b0c8-077263997b3a",
+      "text": "Dw i isio gwydrad o win.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 2.208,
+      "end": 4.275,
+      "score": 0.998,
+      "speech": 1.11,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.941,
+      2.575
+     ]
+    ],
+    "speechStart": 0.524,
+    "speechEnd": 3.928,
+    "sentences": [
+     "Ga i weld y rhestr gwin?",
+     "Dw i isio gwydrad o win."
+    ],
+    "breaks": [
+     2.258
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.941,
+      2.575
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "21efa9f3-db8a-448c-af05-14d98ff8f10e",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "1c472d96-64b3-4740-b180-5170a33dfa8e.v2",
+      "text": "Could I see the wine list?",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.054,
+      "end": 1.518,
+      "score": 0.093,
+      "speech": 1.24,
+      "aligned": false
+     },
+     {
+      "ref": "b06b89be-bf8d-43a4-beba-0d38baffc5d8.v2",
+      "text": "I want a glass of wine.",
+      "voice": "gfzdpspr5fdp",
+      "start": 1.423,
+      "end": 2.959,
+      "score": 0.111,
+      "speech": 1.26,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      1.361,
+      1.659
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 2.809,
+    "sentences": [
+     "Could I see the wine list?",
+     "I want a glass of wine."
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S015",
+   "speaker": "Bar Customer 2",
+   "target": "Oes gynnoch chi frechdanau? Liciwn i frechdan gaws,… os gwelwch yn dda.",
+   "known": "Do you have any sandwiches? I'd like a cheese sandwich, please.",
+   "welsh": {
+    "take": "2d49d076-296d-4b13-b77a-07f7dc9ca4a6",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "555c5c4a-2f61-46f7-a2fa-560923453fd7",
+      "text": "Oes gynnoch chi frechdanau?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 2.061,
+      "score": 0.999,
+      "speech": 1.22,
+      "aligned": true
+     },
+     {
+      "ref": "0b997a46-4023-44d1-a01c-165f7e2b71e3",
+      "text": "Liciwn i frechdan gaws,… os gwelwch yn dda.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.961,
+      "end": 5.017,
+      "score": 0.998,
+      "speech": 1.99,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.708,
+      2.314
+     ],
+     [
+      3.765,
+      3.908
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 4.675,
+    "sentences": [
+     "Oes gynnoch chi frechdanau?",
+     "Liciwn i frechdan gaws,… os gwelwch yn dda."
+    ],
+    "breaks": [
+     2.011
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.708,
+      2.314
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "81e76213-7c24-4784-8ae7-264dc4a98dfb",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "363cec19-aa38-420d-92fc-1dc224665b01",
+      "text": "Do you have any sandwiches?",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 1.842,
+      "score": 0,
+      "speech": 1.1,
+      "aligned": false
+     },
+     {
+      "ref": "081d4e95-edc5-4d72-84a9-7caabd963115",
+      "text": "I'd like a cheese sandwich, please.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 2.752,
+      "score": 0,
+      "speech": 1.41,
+      "aligned": false
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0,
+    "speechEnd": 1.384,
+    "sentences": [
+     "Do you have any sandwiches?",
+     "I'd like a cheese sandwich, please."
+    ],
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC08-S016",
+   "speaker": "Narrator",
+   "target": "Pedwar. Chwech. Wyth. Glas. Melyn.",
+   "known": "4. 6. 8. Blue. Yellow.",
+   "welsh": {
+    "take": "e9da848b-5cd3-43ed-ba76-2bfe2f3ec982",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "0d77a609-d687-45d1-9cb9-5db7ecdc0293",
+      "text": "Pedwar.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.13,
+      "score": 1,
+      "speech": 0.45,
+      "aligned": true
+     },
+     {
+      "ref": "b1157274-1784-4712-9578-3e4c22883df9",
+      "text": "Chwech.",
+      "voice": "human_aran_cym_n",
+      "start": 1.03,
+      "end": 2.191,
+      "score": 0.999,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "77ede637-2771-4de2-b48c-aaaa11ed14b8",
+      "text": "Wyth.",
+      "voice": "human_aran_cym_n",
+      "start": 2.091,
+      "end": 3.363,
+      "score": 0.999,
+      "speech": 0.63,
+      "aligned": true
+     },
+     {
+      "ref": "6bc003ea-ed66-46cf-b3e0-3568a84d6ff8",
+      "text": "Glas.",
+      "voice": "human_aran_cym_n",
+      "start": 3.263,
+      "end": 4.492,
+      "score": 0.991,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "1867b30f-ff7d-4358-b288-6a3efd5abbee",
+      "text": "Melyn.",
+      "voice": "human_aran_cym_n",
+      "start": 4.391,
+      "end": 5.52,
+      "score": 1,
+      "speech": 0.6,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.953,
+      1.207
+     ],
+     [
+      2.025,
+      2.258
+     ],
+     [
+      3.03,
+      3.596
+     ],
+     [
+      4.33,
+      4.552
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.167,
+    "sentences": [
+     "Pedwar.",
+     "Chwech.",
+     "Wyth.",
+     "Glas.",
+     "Melyn."
+    ],
+    "breaks": [
+     1.08,
+     2.141,
+     3.3129999999999997,
+     4.4415
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     1,
+     1,
+     2,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   },
+   "english": {
+    "take": "524cca58-8b59-459c-976d-53b48aa3187b",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "1b870884-db15-4820-ad1d-a445451af45d",
+      "text": "4.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.193,
+      "score": 1,
+      "speech": 0.46,
+      "aligned": true
+     },
+     {
+      "ref": "930ebc3f-99f1-462c-a880-77fa72c757a2",
+      "text": "6.",
+      "voice": "human_aran_eng",
+      "start": 1.093,
+      "end": 2.484,
+      "score": 0.986,
+      "speech": 0.54,
+      "aligned": true
+     },
+     {
+      "ref": "cf33769f-d82f-4df5-ac1b-df603cb81e4f",
+      "text": "8.",
+      "voice": "human_aran_eng",
+      "start": 2.384,
+      "end": 3.636,
+      "score": 0.997,
+      "speech": 0.32,
+      "aligned": true
+     },
+     {
+      "ref": "bd9f0426-d822-4f46-9958-180c7c98104f",
+      "text": "Blue.",
+      "voice": "human_aran_eng",
+      "start": 3.536,
+      "end": 4.869,
+      "score": 1,
+      "speech": 0.55,
+      "aligned": true
+     },
+     {
+      "ref": "92bb6b51-ed88-4ee4-a316-d2692012a159",
+      "text": "Yellow.",
+      "voice": "human_aran_eng",
+      "start": 4.769,
+      "end": 5.987,
+      "score": 1,
+      "speech": 0.57,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.851,
+      1.434
+     ],
+     [
+      2.108,
+      2.761
+     ],
+     [
+      2.992,
+      3.139
+     ],
+     [
+      3.239,
+      3.933
+     ],
+     [
+      4.522,
+      5.115
+     ]
+    ],
+    "speechStart": 0.331,
+    "speechEnd": 5.695,
+    "sentences": [
+     "4.",
+     "6.",
+     "8.",
+     "Blue.",
+     "Yellow."
+    ],
+    "breaks": [
+     1.143,
+     2.434,
+     3.5860000000000003,
+     4.819
+    ],
+    "liveGaps": [
+     0,
+     1,
+     3,
+     4
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S001",
+   "speaker": "Diner 1",
+   "target": "Noswaith dda. Mae gynnon ni fwrdd i ddau,… o dan yr enw Davies.",
+   "known": "Good evening. We have a booking for two, under the name Davies.",
+   "welsh": {
+    "take": "54f70217-4a6a-459d-9eb7-911ec928160f",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "50f5d1d1-0d39-4240-a5fc-dda5d7693eae",
+      "text": "Noswaith dda.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.492,
+      "score": 0.998,
+      "speech": 0.63,
+      "aligned": true
+     },
+     {
+      "ref": "1db04126-5b62-4250-939e-ef7fd446c581",
+      "text": "Mae gynnon ni fwrdd i ddau,… o dan yr enw Davies.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.392,
+      "end": 5.146,
+      "score": 0.998,
+      "speech": 2.52,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.203,
+      1.682
+     ],
+     [
+      2.928,
+      3.358
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 4.802,
+    "sentences": [
+     "Noswaith dda.",
+     "Mae gynnon ni fwrdd i ddau,… o dan yr enw Davies."
+    ],
+    "breaks": [
+     1.442
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.203,
+      1.682
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "f820082a-95cb-4de5-ae61-105555169243",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "9f7a2591-f873-42c3-8aa4-91bdc286eb61",
+      "text": "Good evening.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 1.325,
+      "score": 1,
+      "speech": 0.62,
+      "aligned": true
+     },
+     {
+      "ref": "62483ae8-a4c5-4b82-a206-d30b7a5a9c90",
+      "text": "We have a booking for two, under the name Davies.",
+      "voice": "xai_bedd6226",
+      "start": 1.225,
+      "end": 4.608,
+      "score": 1,
+      "speech": 2.12,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.831,
+      1.685
+     ],
+     [
+      2.963,
+      3.155
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 4.357,
+    "sentences": [
+     "Good evening.",
+     "We have a booking for two, under the name Davies."
+    ],
+    "breaks": [
+     1.275
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.831,
+      1.685
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S005",
+   "speaker": "Diner 1",
+   "target": "Esgusodwch fi —… oes gynnoch chi rywbeth… heb glwten? Neu ar gyfer llysieuwyr?",
+   "known": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+   "welsh": {
+    "take": "bde63193-53a3-4ac0-ad97-343362dbf158",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "dd91f2d4-e2e8-4e6e-a1fd-63b30c5ea3dd",
+      "text": "Esgusodwch fi —… oes gynnoch chi rywbeth… heb glwten?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 3.841,
+      "score": 0.998,
+      "speech": 2.11,
+      "aligned": true
+     },
+     {
+      "ref": "0d1f6166-6477-46f3-9c63-56c9685a7ad4",
+      "text": "Neu ar gyfer llysieuwyr?",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 3.741,
+      "end": 5.785,
+      "score": 0.999,
+      "speech": 1.25,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.325,
+      1.757
+     ],
+     [
+      2.68,
+      2.806
+     ],
+     [
+      3.47,
+      4.111
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.439,
+    "sentences": [
+     "Esgusodwch fi —… oes gynnoch chi rywbeth… heb glwten?",
+     "Neu ar gyfer llysieuwyr?"
+    ],
+    "breaks": [
+     3.7910000000000004
+    ],
+    "liveGaps": [
+     2
+    ],
+    "placedGaps": [
+     [
+      3.47,
+      4.111
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "6b505a5c-d9fc-417a-9902-6b0ea79548af",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "722a9289-9a25-474b-a21a-8ed3566d3dca",
+      "text": "Excuse me - do you have anything gluten-free?",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 3.036,
+      "score": 1,
+      "speech": 1.84,
+      "aligned": true
+     },
+     {
+      "ref": "13474fe3-fefe-4fd7-81b5-6fc259c8bb87",
+      "text": "Or for vegetarians?",
+      "voice": "xai_bedd6226",
+      "start": 2.936,
+      "end": 4.776,
+      "score": 1,
+      "speech": 1.01,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.789,
+      1.04
+     ],
+     [
+      2.696,
+      3.276
+     ]
+    ],
+    "speechStart": 0,
+    "speechEnd": 4.585,
+    "sentences": [
+     "Excuse me - do you have anything gluten-free?",
+     "Or for vegetarians?"
+    ],
+    "breaks": [
+     2.9859999999999998
+    ],
+    "liveGaps": [
+     1
+    ],
+    "placedGaps": [
+     [
+      2.696,
+      3.276
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S014",
+   "speaker": "Waiter",
+   "target": "Dewis ardderchog. Mi ddo i â hi draw rŵan.",
+   "known": "Excellent choice. I'll bring it right over.",
+   "welsh": {
+    "take": "f21ddd60-3bdb-42c7-bb1a-ba65d84a66cd",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "6db36eb5-5c11-44af-965a-f242d26a14e7",
+      "text": "Dewis ardderchog.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.742,
+      "score": 0.999,
+      "speech": 1.05,
+      "aligned": true
+     },
+     {
+      "ref": "a15e27e0-664f-4106-83ff-c94ff0c4fa43",
+      "text": "Mi ddo i â hi draw rŵan.",
+      "voice": "human_aran_cym_n",
+      "start": 1.642,
+      "end": 3.651,
+      "score": 1,
+      "speech": 1.32,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.504,
+      1.88
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 3.275,
+    "sentences": [
+     "Dewis ardderchog.",
+     "Mi ddo i â hi draw rŵan."
+    ],
+    "breaks": [
+     1.692
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.504,
+      1.88
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "d4b6fa2a-a450-45a0-a71a-a432a755bcf4",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "2af2f6b9-4e1c-4944-9118-ef4b833150e6.v2",
+      "text": "Excellent choice.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.134,
+      "end": 1.382,
+      "score": 0.177,
+      "speech": 0.85,
+      "aligned": false
+     },
+     {
+      "ref": "b1b4509a-0465-4d16-a8e2-7afaf6e88e37.v2",
+      "text": "I'll bring it right over.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.047,
+      "end": 1.727,
+      "score": 0.095,
+      "speech": 1.02,
+      "aligned": false
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0.352,
+    "speechEnd": 2.422,
+    "sentences": [
+     "Excellent choice.",
+     "I'll bring it right over."
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S015",
+   "speaker": "Waiter",
+   "target": "Ydy popeth yn iawn? Oes gynnoch chi le am bwdin?",
+   "known": "Is everything alright? Do you have any room for dessert?",
+   "welsh": {
+    "take": "907e49a9-6618-4497-aa47-36a4507ecbc9",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "8052b59c-7674-4932-b8ce-1044b48a0e80",
+      "text": "Ydy popeth yn iawn?",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.625,
+      "score": 1,
+      "speech": 0.92,
+      "aligned": true
+     },
+     {
+      "ref": "632d34f6-edb0-434c-bd75-e50a29d21c39",
+      "text": "Oes gynnoch chi le am bwdin?",
+      "voice": "human_aran_cym_n",
+      "start": 1.525,
+      "end": 3.527,
+      "score": 0.997,
+      "speech": 1.14,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.312,
+      1.798
+     ]
+    ],
+    "speechStart": 0.102,
+    "speechEnd": 3.093,
+    "sentences": [
+     "Ydy popeth yn iawn?",
+     "Oes gynnoch chi le am bwdin?"
+    ],
+    "breaks": [
+     1.575
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.312,
+      1.798
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "9879bc04-b4bb-4ed1-9a07-8bb627dc9cea",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "6ae7fa54-1a2a-4d93-a194-0e85061e8dc7",
+      "text": "Is everything alright?",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.658,
+      "score": 0.999,
+      "speech": 0.81,
+      "aligned": true
+     },
+     {
+      "ref": "89a62bb6-3c19-40ca-bbc2-30468d4720b2",
+      "text": "Do you have any room for dessert?",
+      "voice": "human_aran_eng",
+      "start": 1.558,
+      "end": 3.451,
+      "score": 0.999,
+      "speech": 1.25,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.466,
+      1.751
+     ]
+    ],
+    "speechStart": 0.473,
+    "speechEnd": 3.156,
+    "sentences": [
+     "Is everything alright?",
+     "Do you have any room for dessert?"
+    ],
+    "breaks": [
+     1.608
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.466,
+      1.751
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC09-S018",
+   "speaker": "Narrator",
+   "target": "Saith. Naw. Un deg un. Oren. Porffor.",
+   "known": "7. 9. 11. Orange. Purple.",
+   "welsh": {
+    "take": "11911e74-5664-4d7e-8376-e89508bba69c",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "c67ada55-a789-4ec1-a78e-e8aadc97ef27",
+      "text": "Saith.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.29,
+      "score": 0.999,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "066cfc14-42a1-4419-b146-5f1da35d8481",
+      "text": "Naw.",
+      "voice": "human_aran_cym_n",
+      "start": 1.19,
+      "end": 2.464,
+      "score": 1,
+      "speech": 0.67,
+      "aligned": true
+     },
+     {
+      "ref": "ed84ebaa-7033-4152-8560-f47468a50966",
+      "text": "Un deg un.",
+      "voice": "human_aran_cym_n",
+      "start": 2.364,
+      "end": 4.055,
+      "score": 0.999,
+      "speech": 0.93,
+      "aligned": true
+     },
+     {
+      "ref": "716933cd-14b6-4ea9-ad4b-716cad312d6a",
+      "text": "Oren.",
+      "voice": "human_aran_cym_n",
+      "start": 3.955,
+      "end": 5.208,
+      "score": 0.998,
+      "speech": 0.61,
+      "aligned": true
+     },
+     {
+      "ref": "0bcd1b40-89e5-4ee1-9cb5-a62b77330763",
+      "text": "Porffor.",
+      "voice": "human_aran_cym_n",
+      "start": 5.108,
+      "end": 6.32,
+      "score": 0.998,
+      "speech": 0.49,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.059,
+      1.422
+     ],
+     [
+      2.121,
+      2.708
+     ],
+     [
+      3.646,
+      4.326
+     ],
+     [
+      4.968,
+      5.348
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.987,
+    "sentences": [
+     "Saith.",
+     "Naw.",
+     "Un deg un.",
+     "Oren.",
+     "Porffor."
+    ],
+    "breaks": [
+     1.24,
+     2.4139999999999997,
+     4.005,
+     5.1579999999999995
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     2,
+     3
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "47146170-25bd-4feb-b91f-d0ec9985bc8f.v2",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "8bc39d45-5871-4d6d-a115-678633c69c71",
+      "text": "7.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.336,
+      "score": 1,
+      "speech": 0.6,
+      "aligned": true
+     },
+     {
+      "ref": "bc332334-7c23-4d75-a26a-a45e6db03207",
+      "text": "9.",
+      "voice": "human_aran_eng",
+      "start": 1.236,
+      "end": 2.583,
+      "score": 1,
+      "speech": 0.66,
+      "aligned": true
+     },
+     {
+      "ref": "5cf879d9-21c9-40f2-bdc2-497c43c2e6a4",
+      "text": "11.",
+      "voice": "human_aran_eng",
+      "start": 2.483,
+      "end": 3.875,
+      "score": 0.999,
+      "speech": 0.64,
+      "aligned": true
+     },
+     {
+      "ref": "48b5fade-1fcb-4ed3-8aa9-61762e006aee",
+      "text": "Orange.",
+      "voice": "human_aran_eng",
+      "start": 3.775,
+      "end": 5.171,
+      "score": 0.999,
+      "speech": 0.66,
+      "aligned": true
+     },
+     {
+      "ref": "c0ac20d3-747a-403e-ad25-8cf584e72728",
+      "text": "Purple.",
+      "voice": "human_aran_eng",
+      "start": 5.071,
+      "end": 6.334,
+      "score": 1,
+      "speech": 0.39,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.994,
+      1.578
+     ],
+     [
+      2.245,
+      2.821
+     ],
+     [
+      3.504,
+      4.146
+     ],
+     [
+      4.822,
+      5.419
+     ]
+    ],
+    "speechStart": 0.337,
+    "speechEnd": 6.004,
+    "sentences": [
+     "7.",
+     "9.",
+     "11.",
+     "Orange.",
+     "Purple."
+    ],
+    "breaks": [
+     1.286,
+     2.5330000000000004,
+     3.825,
+     5.121
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     1,
+     3
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC10-S007",
+   "speaker": "Customer",
+   "target": "Diolch,… dach chi 'di bod yn help mawr. Dw i'n ddiolchgar iawn.",
+   "known": "Thank you, you've been very helpful. I'm very grateful.",
+   "welsh": {
+    "take": "fb885563-cb5e-469c-ba35-9f57a9f92386",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "faa0bcf7-adeb-4a01-b6d0-a1ab0f065212",
+      "text": "Diolch,… dach chi 'di bod yn help mawr.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 3.284,
+      "score": 1,
+      "speech": 1.73,
+      "aligned": true
+     },
+     {
+      "ref": "414179d7-3a1f-4d27-af9c-c7429abe2d8b",
+      "text": "Dw i'n ddiolchgar iawn.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 3.184,
+      "end": 5.145,
+      "score": 0.999,
+      "speech": 1.19,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.959,
+      1.522
+     ],
+     [
+      2.972,
+      3.497
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 4.801,
+    "sentences": [
+     "Diolch,… dach chi 'di bod yn help mawr.",
+     "Dw i'n ddiolchgar iawn."
+    ],
+    "breaks": [
+     3.234
+    ],
+    "liveGaps": [
+     1
+    ],
+    "nearestGaps": [
+     1
+    ],
+    "everyGapCut": false,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_margin"
+   },
+   "english": {
+    "take": "ab26ed5a-fda7-486d-8a23-db90f2375476",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "f935e7f7-f046-4d11-a2bc-81c2ef950cac",
+      "text": "Thank you, you've been very helpful.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 2.197,
+      "score": 1,
+      "speech": 1.26,
+      "aligned": true
+     },
+     {
+      "ref": "d128760f-440d-484f-aa9d-0f08b08fcb3d",
+      "text": "I'm very grateful.",
+      "voice": "xai_bedd6226",
+      "start": 2.097,
+      "end": 3.72,
+      "score": 1,
+      "speech": 0.82,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.706,
+      0.814
+     ],
+     [
+      1.949,
+      2.345
+     ]
+    ],
+    "speechStart": 0.115,
+    "speechEnd": 3.55,
+    "sentences": [
+     "Thank you, you've been very helpful.",
+     "I'm very grateful."
+    ],
+    "breaks": [
+     2.1470000000000002
+    ],
+    "liveGaps": [
+     1
+    ],
+    "placedGaps": [
+     [
+      1.949,
+      2.345
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S003",
+   "speaker": "Guest",
+   "target": "Wrth gwrs. Dyma fy mhasbort i.",
+   "known": "Of course. Here's my passport.",
+   "welsh": {
+    "take": "0382e78b-0465-40cb-9737-98e18d958ac1",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "43f5ebf2-9ca2-45a8-8425-bc0af8693870",
+      "text": "Wrth gwrs.",
+      "voice": "human_aran_cym_n",
+      "start": 0.178,
+      "end": 1.384,
+      "score": 0.198,
+      "speech": 0.54,
+      "aligned": false
+     },
+     {
+      "ref": "4c5f5ff1-7c05-4990-be18-1cd40af1c54a",
+      "text": "Dyma fy mhasbort i.",
+      "voice": "human_aran_cym_n",
+      "start": 0.403,
+      "end": 2.664,
+      "score": 0.998,
+      "speech": 1.39,
+      "aligned": true
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0.55,
+    "speechEnd": 2.321,
+    "sentences": [
+     "Wrth gwrs.",
+     "Dyma fy mhasbort i."
+    ],
+    "breaks": [
+     0.453
+    ],
+    "verdict": "MID-SENTENCE",
+    "why": "break_outside_speech"
+   },
+   "english": {
+    "take": "b6b57ef9-473a-4bfd-8ff7-3f685a30f1c6",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "d4d936a2-9041-4c02-931b-0848ec681d7a.v2",
+      "text": "Of course.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.247,
+      "end": 1.135,
+      "score": 0.131,
+      "speech": 0.74,
+      "aligned": false
+     },
+     {
+      "ref": "1fbbe559-47f2-4c4d-aed0-a649477eb6f5.v2",
+      "text": "Here's my passport.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.207,
+      "end": 1.887,
+      "score": 0.119,
+      "speech": 0.72,
+      "aligned": false
+     }
+    ],
+    "gaps": [],
+    "speechStart": 0.355,
+    "speechEnd": 2.014,
+    "sentences": [
+     "Of course.",
+     "Here's my passport."
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S008",
+   "speaker": "Receptionist",
+   "target": "O hanner awr wedi saith… tan ddeg o'r gloch. Mae gynnon ni ffrwythau… a grawnfwyd… neu frecwast… wedi'i goginio.",
+   "known": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+   "welsh": {
+    "take": "78eca801-aa6a-4194-9033-2498e3050bdd",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "bb3edac9-1b4e-40b8-a5b2-2fb1e791665e",
+      "text": "O hanner awr wedi saith… tan ddeg o'r gloch.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 3.554,
+      "score": 0.999,
+      "speech": 2.33,
+      "aligned": true
+     },
+     {
+      "ref": "f71010ae-46d5-4524-ac87-c576c17365e3",
+      "text": "Mae gynnon ni ffrwythau… a grawnfwyd… neu frecwast… wedi'i goginio.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 3.454,
+      "end": 8.497,
+      "score": 0.996,
+      "speech": 3.09,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.379,
+      0.523
+     ],
+     [
+      3.214,
+      3.794
+     ],
+     [
+      4.942,
+      5.217
+     ],
+     [
+      6.129,
+      6.381
+     ],
+     [
+      6.718,
+      6.825
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 8.158,
+    "sentences": [
+     "O hanner awr wedi saith… tan ddeg o'r gloch.",
+     "Mae gynnon ni ffrwythau… a grawnfwyd… neu frecwast… wedi'i goginio."
+    ],
+    "breaks": [
+     3.504
+    ],
+    "liveGaps": [
+     1
+    ],
+    "placedGaps": [
+     [
+      3.214,
+      3.794
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+    "takeVoice": "xai_gfzdpspr5fdp",
+    "pieces": [
+     {
+      "ref": "e82bde17-9d59-42a8-ac6b-ce53d6522de6.v2",
+      "text": "From half-past seven until ten o'clock.",
+      "voice": "gfzdpspr5fdp",
+      "start": 0.001,
+      "end": 2.48,
+      "score": 0.179,
+      "speech": 1.9,
+      "aligned": false
+     },
+     {
+      "ref": "248cd7c7-ceed-4290-b86a-fe533eac2ec9.v2",
+      "text": "We have fruit and cereals or a cooked breakfast.",
+      "voice": "gfzdpspr5fdp",
+      "start": 2.544,
+      "end": 5.712,
+      "score": 0.077,
+      "speech": 2.5,
+      "aligned": false
+     }
+    ],
+    "gaps": [
+     [
+      2.379,
+      3.237
+     ],
+     [
+      5.603,
+      5.714
+     ]
+    ],
+    "speechStart": 0.101,
+    "speechEnd": 6.007,
+    "sentences": [
+     "From half-past seven until ten o'clock.",
+     "We have fruit and cereals or a cooked breakfast."
+    ],
+    "voiceNote": "gfzdpspr5fdp",
+    "breaks": [
+     null
+    ],
+    "verdict": "unproven",
+    "why": "pieces_not_from_this_take"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S009",
+   "speaker": "Guest",
+   "target": "Ardderchog. Ydy hi'n bosib… i ni gael check-out hwyr?",
+   "known": "Wonderful. Is it possible for us to have a late check-out?",
+   "welsh": {
+    "take": "2ce803d5-38ac-4f27-b159-e34c80a1a579",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "46a1aa01-d23f-46f3-9a5f-0238afbad2cf",
+      "text": "Ardderchog.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 0.52,
+      "score": 0.987,
+      "speech": 0,
+      "aligned": true
+     },
+     {
+      "ref": "d45f6eac-0755-4b61-8cb3-fbe8976b9bd9",
+      "text": "Ydy hi'n bosib… i ni gael check-out hwyr?",
+      "voice": "human_aran_cym_n",
+      "start": 0.42,
+      "end": 3.932,
+      "score": 0.999,
+      "speech": 2.37,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.267,
+      1.659
+     ]
+    ],
+    "speechStart": 0.584,
+    "speechEnd": 3.582,
+    "sentences": [
+     "Ardderchog.",
+     "Ydy hi'n bosib… i ni gael check-out hwyr?"
+    ],
+    "verdict": "MID-SENTENCE",
+    "why": "piece_empty",
+    "faults": [
+     "piece_empty",
+     null
+    ]
+   },
+   "english": {
+    "take": "7be127b9-27f5-441e-b120-eff7d8440816",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "fa5e9c01-51b9-4f5c-a66b-178f2a1240d0",
+      "text": "Wonderful.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.14,
+      "score": 0.999,
+      "speech": 0.54,
+      "aligned": true
+     },
+     {
+      "ref": "692f2ca3-4696-420d-a216-5cbbee0da0e6",
+      "text": "Is it possible for us to have a late check-out?",
+      "voice": "human_aran_eng",
+      "start": 1.04,
+      "end": 4.027,
+      "score": 0.999,
+      "speech": 2.02,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.899,
+      1.28
+     ]
+    ],
+    "speechStart": 0.353,
+    "speechEnd": 3.715,
+    "sentences": [
+     "Wonderful.",
+     "Is it possible for us to have a late check-out?"
+    ],
+    "breaks": [
+     1.0899999999999999
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.899,
+      1.28
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S013",
+   "speaker": "Narrator",
+   "target": "Un deg chwech. Un deg saith. Un deg wyth. Dydd Llun. Dydd Mawrth.",
+   "known": "16. 17. 18. Monday. Tuesday.",
+   "welsh": {
+    "take": "1561b9bd-0e1a-4edf-b585-5f55e222a041",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "aa8a856e-a4c6-4c47-ac84-a962c0e3bc4b",
+      "text": "Un deg chwech.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.633,
+      "score": 1,
+      "speech": 0.89,
+      "aligned": true
+     },
+     {
+      "ref": "f1d18f9f-3757-4e7f-bdee-0dd384542b38",
+      "text": "Un deg saith.",
+      "voice": "human_aran_cym_n",
+      "start": 1.533,
+      "end": 3.276,
+      "score": 0.994,
+      "speech": 0.96,
+      "aligned": true
+     },
+     {
+      "ref": "c605f369-fe9b-41aa-9b07-ede671801e3f",
+      "text": "Un deg wyth.",
+      "voice": "human_aran_cym_n",
+      "start": 3.176,
+      "end": 4.95,
+      "score": 0.999,
+      "speech": 0.92,
+      "aligned": true
+     },
+     {
+      "ref": "58b93231-1ec2-4227-8e16-7073e6a1903d",
+      "text": "Dydd Llun.",
+      "voice": "human_aran_cym_n",
+      "start": 4.85,
+      "end": 6.573,
+      "score": 1,
+      "speech": 0.83,
+      "aligned": true
+     },
+     {
+      "ref": "ed19cb42-a454-4513-8d59-5014d21ac381",
+      "text": "Dydd Mawrth.",
+      "voice": "human_aran_cym_n",
+      "start": 6.473,
+      "end": 8.295,
+      "score": 0.999,
+      "speech": 0.81,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.269,
+      1.898
+     ],
+     [
+      2.916,
+      3.536
+     ],
+     [
+      4.484,
+      5.317
+     ],
+     [
+      6.175,
+      6.87
+     ],
+     [
+      7.806,
+      7.915
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 7.937,
+    "sentences": [
+     "Un deg chwech.",
+     "Un deg saith.",
+     "Un deg wyth.",
+     "Dydd Llun.",
+     "Dydd Mawrth."
+    ],
+    "breaks": [
+     1.583,
+     3.226,
+     4.9,
+     6.523
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "fdb62b1b-c241-424d-9abb-a96e0532f84d",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "063baed3-69eb-4106-a315-ad8a19930621",
+      "text": "16.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.513,
+      "score": 0.999,
+      "speech": 0.76,
+      "aligned": true
+     },
+     {
+      "ref": "bb2033b1-ab1d-4767-8843-68245b30b003",
+      "text": "17.",
+      "voice": "human_aran_eng",
+      "start": 1.413,
+      "end": 3.069,
+      "score": 0.994,
+      "speech": 0.94,
+      "aligned": true
+     },
+     {
+      "ref": "491a2846-b446-460d-aec3-160511f8f423",
+      "text": "18.",
+      "voice": "human_aran_eng",
+      "start": 2.969,
+      "end": 4.442,
+      "score": 0.999,
+      "speech": 0.57,
+      "aligned": true
+     },
+     {
+      "ref": "7e40ad5f-d32c-4f8e-bfa8-8c696b3f2836",
+      "text": "Monday.",
+      "voice": "human_aran_eng",
+      "start": 4.342,
+      "end": 5.896,
+      "score": 1,
+      "speech": 0.75,
+      "aligned": true
+     },
+     {
+      "ref": "aaf94c8f-b93a-4c09-b15a-717f3c9436be",
+      "text": "Tuesday.",
+      "voice": "human_aran_eng",
+      "start": 5.796,
+      "end": 7.161,
+      "score": 0.997,
+      "speech": 0.57,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.219,
+      1.707
+     ],
+     [
+      2.675,
+      3.364
+     ],
+     [
+      3.517,
+      3.628
+     ],
+     [
+      4.051,
+      4.733
+     ],
+     [
+      5.488,
+      6.204
+     ]
+    ],
+    "speechStart": 0.325,
+    "speechEnd": 6.836,
+    "sentences": [
+     "16.",
+     "17.",
+     "18.",
+     "Monday.",
+     "Tuesday."
+    ],
+    "breaks": [
+     1.463,
+     3.019,
+     4.3919999999999995,
+     5.846
+    ],
+    "liveGaps": [
+     0,
+     1,
+     3,
+     4
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     1,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC12-S002",
+   "speaker": "Pharmacist",
+   "target": "Wrth gwrs. Be ydi'ch symptomau chi?",
+   "known": "Of course. What are your symptoms?",
+   "welsh": {
+    "take": "1c571947-dfd3-4aef-9c2c-3e7a8f9bcc45",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "43f5ebf2-9ca2-45a8-8425-bc0af8693870",
+      "text": "Wrth gwrs.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.206,
+      "score": 0.999,
+      "speech": 0.54,
+      "aligned": true
+     },
+     {
+      "ref": "0a2e7828-c609-44e9-949c-f9828d027e4a",
+      "text": "Be ydi'ch symptomau chi?",
+      "voice": "human_aran_cym_n",
+      "start": 1.106,
+      "end": 3.023,
+      "score": 0.996,
+      "speech": 1.25,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.959,
+      1.353
+     ]
+    ],
+    "speechStart": 0.374,
+    "speechEnd": 2.667,
+    "sentences": [
+     "Wrth gwrs.",
+     "Be ydi'ch symptomau chi?"
+    ],
+    "breaks": [
+     1.1560000000000001
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.959,
+      1.353
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "5fa85718-4926-4d66-8fbe-b44e14e60f83",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "15064843-e1f2-4e9b-8f11-fa28a224d36c",
+      "text": "Of course.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.103,
+      "score": 0.999,
+      "speech": 0.49,
+      "aligned": true
+     },
+     {
+      "ref": "e728ec00-f95b-4b90-a0e0-b928ad3f4cd8",
+      "text": "What are your symptoms?",
+      "voice": "human_aran_eng",
+      "start": 1.003,
+      "end": 2.435,
+      "score": 0.997,
+      "speech": 0.86,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.952,
+      1.153
+     ]
+    ],
+    "speechStart": 0.32,
+    "speechEnd": 2.111,
+    "sentences": [
+     "Of course.",
+     "What are your symptoms?"
+    ],
+    "breaks": [
+     1.053
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      0.952,
+      1.153
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC12-S010",
+   "speaker": "Narrator",
+   "target": "Un deg naw. Dau ddeg. Dau ddeg un. Dydd Mercher. Dydd Iau.",
+   "known": "19. 20. 21. Wednesday. Thursday.",
+   "welsh": {
+    "take": "ba2df779-7e75-4efb-8c72-fa5864a03f85",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "e4664bfa-6839-4258-8650-3bb7f1df568d",
+      "text": "Un deg naw.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.607,
+      "score": 1,
+      "speech": 0.9,
+      "aligned": true
+     },
+     {
+      "ref": "7eec63c9-f2bf-4116-a343-05e39c589737",
+      "text": "Dau ddeg.",
+      "voice": "human_aran_cym_n",
+      "start": 1.507,
+      "end": 2.798,
+      "score": 0.999,
+      "speech": 0.62,
+      "aligned": true
+     },
+     {
+      "ref": "54d84382-24f3-4150-8d08-9ef917a2dbf8",
+      "text": "Dau ddeg un.",
+      "voice": "human_aran_cym_n",
+      "start": 2.698,
+      "end": 4.326,
+      "score": 1,
+      "speech": 0.9,
+      "aligned": true
+     },
+     {
+      "ref": "ae645d64-072b-4272-8a47-9dd50d043250",
+      "text": "Dydd Mercher.",
+      "voice": "human_aran_cym_n",
+      "start": 4.226,
+      "end": 5.742,
+      "score": 0.997,
+      "speech": 0.8,
+      "aligned": true
+     },
+     {
+      "ref": "33ab5e52-9ce3-41cc-a96e-a752baa130fa",
+      "text": "Dydd Iau.",
+      "voice": "human_aran_cym_n",
+      "start": 5.642,
+      "end": 7.005,
+      "score": 0.999,
+      "speech": 0.67,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.314,
+      1.801
+     ],
+     [
+      2.469,
+      3.026
+     ],
+     [
+      3.948,
+      4.589
+     ],
+     [
+      5.441,
+      5.944
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 6.665,
+    "sentences": [
+     "Un deg naw.",
+     "Dau ddeg.",
+     "Dau ddeg un.",
+     "Dydd Mercher.",
+     "Dydd Iau."
+    ],
+    "breaks": [
+     1.557,
+     2.748,
+     4.276,
+     5.692
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "placedGaps": [
+     [
+      1.314,
+      1.801
+     ],
+     [
+      2.469,
+      3.026
+     ],
+     [
+      3.948,
+      4.589
+     ],
+     [
+      5.441,
+      5.944
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "95b564e3-0973-4886-9747-fdc8cf16db66",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "1927650a-3d53-4678-8b3c-bad4e70b2989",
+      "text": "19.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.56,
+      "score": 1,
+      "speech": 0.8,
+      "aligned": true
+     },
+     {
+      "ref": "5c60a979-704c-4c28-9d3f-12b01de0a1ed",
+      "text": "20.",
+      "voice": "human_aran_eng",
+      "start": 1.46,
+      "end": 2.839,
+      "score": 1,
+      "speech": 0.58,
+      "aligned": true
+     },
+     {
+      "ref": "3459363a-400f-4a61-9a7d-d796e357d9a7",
+      "text": "21.",
+      "voice": "human_aran_eng",
+      "start": 2.739,
+      "end": 4.447,
+      "score": 1,
+      "speech": 0.8,
+      "aligned": true
+     },
+     {
+      "ref": "31de3d1c-3f8b-4ec5-8bc0-581eb293bdef",
+      "text": "Wednesday.",
+      "voice": "human_aran_eng",
+      "start": 4.347,
+      "end": 5.998,
+      "score": 0.998,
+      "speech": 0.77,
+      "aligned": true
+     },
+     {
+      "ref": "78b3f10e-2c44-4c63-ad5b-85dd20954377",
+      "text": "Thursday.",
+      "voice": "human_aran_eng",
+      "start": 5.898,
+      "end": 7.392,
+      "score": 0.999,
+      "speech": 0.55,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.209,
+      1.811
+     ],
+     [
+      2.461,
+      3.117
+     ],
+     [
+      4.015,
+      4.78
+     ],
+     [
+      5.615,
+      6.281
+     ]
+    ],
+    "speechStart": 0.347,
+    "speechEnd": 7.066,
+    "sentences": [
+     "19.",
+     "20.",
+     "21.",
+     "Wednesday.",
+     "Thursday."
+    ],
+    "breaks": [
+     1.51,
+     2.7889999999999997,
+     4.397,
+     5.948
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     1,
+     3
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC13-S010",
+   "speaker": "Tourist",
+   "target": "Diolch yn fawr. Dach chi wedi bod yn help mawr.",
+   "known": "Thank you very much. You've been very helpful.",
+   "welsh": {
+    "take": "c875600b-b5d3-4cf0-956f-0d5f2578035e",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "b7196b72-59f9-4840-8c7c-c932ee85abb0",
+      "text": "Diolch yn fawr.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.583,
+      "score": 1,
+      "speech": 0.82,
+      "aligned": true
+     },
+     {
+      "ref": "58ab1c1f-a93f-4488-afe8-b7e21a8e2602",
+      "text": "Dach chi wedi bod yn help mawr.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.483,
+      "end": 3.67,
+      "score": 0.999,
+      "speech": 1.37,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.362,
+      1.704
+     ]
+    ],
+    "speechStart": 0.479,
+    "speechEnd": 3.326,
+    "sentences": [
+     "Diolch yn fawr.",
+     "Dach chi wedi bod yn help mawr."
+    ],
+    "breaks": [
+     1.533
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.362,
+      1.704
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "ecd430bc-26a2-46b4-845c-21a763a2f8b6",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "5033a3a0-2b54-4ac0-a403-1384672d62f1.v2",
+      "text": "Thank you very much.",
+      "voice": "bedd6226",
+      "start": 0.068,
+      "end": 1.34,
+      "score": 0.156,
+      "speech": 0.79,
+      "aligned": false
+     },
+     {
+      "ref": "5e69f108-20dc-4df4-af1e-47eea30c5cc6",
+      "text": "You've been very helpful.",
+      "voice": "xai_bedd6226",
+      "start": 1.317,
+      "end": 3,
+      "score": 1,
+      "speech": 0.89,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.953,
+      1.071
+     ],
+     [
+      1.173,
+      1.56
+     ]
+    ],
+    "speechStart": 0.101,
+    "speechEnd": 2.663,
+    "sentences": [
+     "Thank you very much.",
+     "You've been very helpful."
+    ],
+    "voiceNote": "bedd6226,xai_bedd6226",
+    "breaks": [
+     1.367
+    ],
+    "liveGaps": [
+     1
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC13-S011",
+   "speaker": "Narrator",
+   "target": "Tri deg. Pedwar deg. Pum deg. Dydd Gwener. Dydd Sadwrn.",
+   "known": "30. 40. 50. Friday. Saturday.",
+   "welsh": {
+    "take": "6320cafd-00dd-4a7c-8305-7baedb5184c5",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "c0eec094-5651-4e5a-bc6b-96bb65f9be80",
+      "text": "Tri deg.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.319,
+      "score": 0.999,
+      "speech": 0.64,
+      "aligned": true
+     },
+     {
+      "ref": "4f9e9b4e-c453-41cc-894e-eb4ec6b6d7e8",
+      "text": "Pedwar deg.",
+      "voice": "human_aran_cym_n",
+      "start": 1.219,
+      "end": 2.668,
+      "score": 0.999,
+      "speech": 0.75,
+      "aligned": true
+     },
+     {
+      "ref": "5ac778bb-4664-4940-955b-3dbe1ff8bc6c",
+      "text": "Pum deg.",
+      "voice": "human_aran_cym_n",
+      "start": 2.568,
+      "end": 4.018,
+      "score": 1,
+      "speech": 0.57,
+      "aligned": true
+     },
+     {
+      "ref": "d4994e86-316d-4dd8-8fa9-a1906b5f0f66",
+      "text": "Dydd Gwener.",
+      "voice": "human_aran_cym_n",
+      "start": 3.918,
+      "end": 5.414,
+      "score": 0.999,
+      "speech": 0.7,
+      "aligned": true
+     },
+     {
+      "ref": "6d7651cd-94d9-426c-aae0-1a19079edaaf",
+      "text": "Dydd Sadwrn.",
+      "voice": "human_aran_cym_n",
+      "start": 5.314,
+      "end": 6.833,
+      "score": 0.993,
+      "speech": 0.88,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.034,
+      1.504
+     ],
+     [
+      2.341,
+      2.895
+     ],
+     [
+      3.594,
+      4.342
+     ],
+     [
+      5.134,
+      5.594
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 6.519,
+    "sentences": [
+     "Tri deg.",
+     "Pedwar deg.",
+     "Pum deg.",
+     "Dydd Gwener.",
+     "Dydd Sadwrn."
+    ],
+    "breaks": [
+     1.2690000000000001,
+     2.6180000000000003,
+     3.968,
+     5.364
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "placedGaps": [
+     [
+      1.034,
+      1.504
+     ],
+     [
+      2.341,
+      2.895
+     ],
+     [
+      3.594,
+      4.342
+     ],
+     [
+      5.134,
+      5.594
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "2a55cf28-6fdb-4044-ac27-7956fd789c6a",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "9be68acc-1633-4146-af05-d5c14f4763ee",
+      "text": "30.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.346,
+      "score": 1,
+      "speech": 0.48,
+      "aligned": true
+     },
+     {
+      "ref": "ba30445a-aca4-4093-9db7-84a1175fa05f",
+      "text": "40.",
+      "voice": "human_aran_eng",
+      "start": 1.246,
+      "end": 2.74,
+      "score": 0.998,
+      "speech": 0.55,
+      "aligned": true
+     },
+     {
+      "ref": "3543a711-45d2-44a0-9ff2-30d0d6f57ea3",
+      "text": "50.",
+      "voice": "human_aran_eng",
+      "start": 2.64,
+      "end": 4.157,
+      "score": 0.996,
+      "speech": 0.61,
+      "aligned": true
+     },
+     {
+      "ref": "ce82ab67-bf03-4e6a-8e92-c04070719e30",
+      "text": "Friday.",
+      "voice": "human_aran_eng",
+      "start": 4.057,
+      "end": 5.673,
+      "score": 0.999,
+      "speech": 0.77,
+      "aligned": true
+     },
+     {
+      "ref": "bff7dba4-00ab-4276-90a8-b7e3bdf149db",
+      "text": "Saturday.",
+      "voice": "human_aran_eng",
+      "start": 5.573,
+      "end": 6.953,
+      "score": 0.989,
+      "speech": 0.63,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.974,
+      1.618
+     ],
+     [
+      2.34,
+      3.039
+     ],
+     [
+      3.761,
+      4.453
+     ],
+     [
+      5.307,
+      5.938
+     ]
+    ],
+    "speechStart": 0.13,
+    "speechEnd": 6.671,
+    "sentences": [
+     "30.",
+     "40.",
+     "50.",
+     "Friday.",
+     "Saturday."
+    ],
+    "breaks": [
+     1.296,
+     2.6900000000000004,
+     4.107,
+     5.623
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     1,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S002",
+   "speaker": "Driver",
+   "target": "Medra, wrth gwrs. Falla bydd o'n cymryd… dipyn o amser,… mae 'na lot o draffig… ar hyn o bryd.",
+   "known": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
+   "welsh": {
+    "take": "6890378b-1be2-46d2-a77b-b48efaf4d33f",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "48d05847-eee9-493e-8b97-8cec252466d9",
+      "text": "Medra, wrth gwrs.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 0.685,
+      "score": 1,
+      "speech": 0.21,
+      "aligned": true
+     },
+     {
+      "ref": "9d8242a9-3446-4ae5-b931-4f7e37a4b3d6",
+      "text": "Falla bydd o'n cymryd… dipyn o amser,… mae 'na lot o draffig… ar hyn o bryd.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0.585,
+      "end": 6.921,
+      "score": 0.987,
+      "speech": 4.12,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.578,
+      0.693
+     ],
+     [
+      0.949,
+      1.075
+     ],
+     [
+      1.779,
+      2.321
+     ],
+     [
+      4.278,
+      4.656
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 6.579,
+    "sentences": [
+     "Medra, wrth gwrs.",
+     "Falla bydd o'n cymryd… dipyn o amser,… mae 'na lot o draffig… ar hyn o bryd."
+    ],
+    "verdict": "MID-SENTENCE",
+    "why": "rate_impossible",
+    "faults": [
+     "rate_impossible",
+     null
+    ]
+   },
+   "english": {
+    "take": "4adb6379-51c0-4157-875f-02ef401e6b67",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "40493f27-1b28-4a29-b3c1-d0ade1af5a4a",
+      "text": "Yes, of course.",
+      "voice": "xai_bedd6226",
+      "start": 0.071,
+      "end": 1.656,
+      "score": 0.269,
+      "speech": 0.39,
+      "aligned": false
+     },
+     {
+      "ref": "ec12bc91-b57d-4b49-8a7c-fde32d48e3ad",
+      "text": "It may take some time, there's a lot of traffic at the moment.",
+      "voice": "xai_bedd6226",
+      "start": 1.464,
+      "end": 5.016,
+      "score": 1,
+      "speech": 2.29,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.153,
+      1.876
+     ],
+     [
+      3.071,
+      3.172
+     ]
+    ],
+    "speechStart": 0.1,
+    "speechEnd": 4.91,
+    "sentences": [
+     "Yes, of course.",
+     "It may take some time, there's a lot of traffic at the moment."
+    ],
+    "breaks": [
+     1.514
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.153,
+      1.876
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S009",
+   "speaker": "Driver",
+   "target": "Medrwch, wrth gwrs. Mae'r peiriant yn fan hyn.",
+   "known": "Yes, of course. The machine is just here.",
+   "welsh": {
+    "take": "03a42cb7-7ee8-4e1c-b669-f1c0f4ffb15d",
+    "takeVoice": "human_catrinlliar_cym_n",
+    "pieces": [
+     {
+      "ref": "75b64b65-d370-4778-a22f-38870106deee",
+      "text": "Medrwch, wrth gwrs.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 0,
+      "end": 1.983,
+      "score": 0.999,
+      "speech": 1.06,
+      "aligned": true
+     },
+     {
+      "ref": "7e402b39-1872-452e-be2b-cef7e450f4cf",
+      "text": "Mae'r peiriant yn fan hyn.",
+      "voice": "human_catrinlliar_cym_n",
+      "start": 1.883,
+      "end": 4.002,
+      "score": 0.998,
+      "speech": 1.36,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.534,
+      0.664
+     ],
+     [
+      1.656,
+      2.211
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 3.655,
+    "sentences": [
+     "Medrwch, wrth gwrs.",
+     "Mae'r peiriant yn fan hyn."
+    ],
+    "breaks": [
+     1.933
+    ],
+    "liveGaps": [
+     1
+    ],
+    "placedGaps": [
+     [
+      1.656,
+      2.211
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "72de9e4c-e977-42cf-9cb4-602dde5f2a85",
+    "takeVoice": "xai_bedd6226",
+    "pieces": [
+     {
+      "ref": "826d4a2d-4991-419a-8595-c03e67055f04",
+      "text": "Yes, of course.",
+      "voice": "xai_bedd6226",
+      "start": 0,
+      "end": 1.585,
+      "score": 1,
+      "speech": 0.39,
+      "aligned": true
+     },
+     {
+      "ref": "0b694d04-53c9-442b-b625-770a8fbd4b0f",
+      "text": "The machine is just here.",
+      "voice": "xai_bedd6226",
+      "start": 1.485,
+      "end": 3.467,
+      "score": 1,
+      "speech": 0.97,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.09,
+      1.98
+     ]
+    ],
+    "speechStart": 0.112,
+    "speechEnd": 3.197,
+    "sentences": [
+     "Yes, of course.",
+     "The machine is just here."
+    ],
+    "breaks": [
+     1.5350000000000001
+    ],
+    "liveGaps": [
+     0
+    ],
+    "nearestGaps": [
+     0
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S010",
+   "speaker": "Narrator",
+   "target": "Cant. Dau gant. Mil. Dydd Sul. Deuddeg o'r gloch.",
+   "known": "100. 200. 1000. Sunday. 12 o'clock.",
+   "welsh": {
+    "take": "e560e325-ef1d-432f-bf7a-ddb127b16e26",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "8d469974-e51a-4424-940a-4989131a21fd",
+      "text": "Cant.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.11,
+      "score": 0.999,
+      "speech": 0.49,
+      "aligned": true
+     },
+     {
+      "ref": "2c028a0e-f341-4545-ac40-8ebf75cc5dd4",
+      "text": "Dau gant.",
+      "voice": "human_aran_cym_n",
+      "start": 1.01,
+      "end": 2.377,
+      "score": 0.999,
+      "speech": 0.66,
+      "aligned": true
+     },
+     {
+      "ref": "52cdd978-e10b-42c5-8b5a-ba794ba77e8c",
+      "text": "Mil.",
+      "voice": "human_aran_cym_n",
+      "start": 2.277,
+      "end": 3.579,
+      "score": 1,
+      "speech": 0.62,
+      "aligned": true
+     },
+     {
+      "ref": "f393242d-0852-4ffb-9510-60352d2df227",
+      "text": "Dydd Sul.",
+      "voice": "human_aran_cym_n",
+      "start": 3.479,
+      "end": 5.123,
+      "score": 0.998,
+      "speech": 0.87,
+      "aligned": true
+     },
+     {
+      "ref": "db77f829-a5b6-43cf-bcfc-a36aa9e72fc7",
+      "text": "Deuddeg o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 5.023,
+      "end": 6.863,
+      "score": 0.999,
+      "speech": 1.04,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.891,
+      1.349
+     ],
+     [
+      2.105,
+      2.55
+     ],
+     [
+      3.189,
+      3.851
+     ],
+     [
+      4.731,
+      5.414
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 6.511,
+    "sentences": [
+     "Cant.",
+     "Dau gant.",
+     "Mil.",
+     "Dydd Sul.",
+     "Deuddeg o'r gloch."
+    ],
+    "breaks": [
+     1.06,
+     2.327,
+     3.529,
+     5.073
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     1,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "2d1f451a-84b3-4d46-ab39-c6c95faeb36e",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "f83de472-1c68-4f57-a74c-e7e2688ed312",
+      "text": "100.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.54,
+      "score": 1,
+      "speech": 0.6,
+      "aligned": true
+     },
+     {
+      "ref": "36c19d50-19da-415b-9b76-b95a20f423aa",
+      "text": "200.",
+      "voice": "human_aran_eng",
+      "start": 1.44,
+      "end": 3.115,
+      "score": 1,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "46fd97d0-7375-4b9c-9c17-0ca2a5556906",
+      "text": "1000.",
+      "voice": "human_aran_eng",
+      "start": 3.015,
+      "end": 4.846,
+      "score": 0.997,
+      "speech": 0.94,
+      "aligned": true
+     },
+     {
+      "ref": "17245775-daa8-422e-bfec-6baa7daf89aa",
+      "text": "Sunday.",
+      "voice": "human_aran_eng",
+      "start": 4.746,
+      "end": 6.432,
+      "score": 0.99,
+      "speech": 0.79,
+      "aligned": true
+     },
+     {
+      "ref": "cfe77de5-d9ae-45e4-b76b-e3b93c50252d",
+      "text": "12 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 6.332,
+      "end": 7.997,
+      "score": 0.999,
+      "speech": 0.66,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.08,
+      1.9
+     ],
+     [
+      2.665,
+      3.466
+     ],
+     [
+      4.433,
+      5.159
+     ],
+     [
+      5.968,
+      6.796
+     ],
+     [
+      7.503,
+      7.628
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 7.688,
+    "sentences": [
+     "100.",
+     "200.",
+     "1000.",
+     "Sunday.",
+     "12 o'clock."
+    ],
+    "breaks": [
+     1.49,
+     3.0650000000000004,
+     4.796,
+     6.382
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     1,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC15-S011",
+   "speaker": "Narrator",
+   "target": "Can mil. Chwe deg. Saith deg. Un o'r gloch. Un ar ddeg o'r gloch.",
+   "known": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "welsh": {
+    "take": "185d5d9d-bddd-4218-8fef-0f2f13a26f8c",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "44ed02a9-5d00-4db4-909b-19a39658cad1",
+      "text": "Can mil.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.569,
+      "score": 1,
+      "speech": 0.83,
+      "aligned": true
+     },
+     {
+      "ref": "16401f16-0067-44c0-8934-0813bedd2899",
+      "text": "Chwe deg.",
+      "voice": "human_aran_cym_n",
+      "start": 1.469,
+      "end": 2.983,
+      "score": 0.999,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "446a14c8-30bc-43aa-8697-95f2340b9445",
+      "text": "Saith deg.",
+      "voice": "human_aran_cym_n",
+      "start": 2.883,
+      "end": 4.623,
+      "score": 0.99,
+      "speech": 0.77,
+      "aligned": true
+     },
+     {
+      "ref": "bcc92603-664d-4996-9a93-6e5a7e8ca50a",
+      "text": "Un o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 4.523,
+      "end": 6.466,
+      "score": 0.999,
+      "speech": 0.91,
+      "aligned": true
+     },
+     {
+      "ref": "f81952ae-52ba-4ccb-8688-07ce1c7295cb",
+      "text": "Un ar ddeg o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 6.366,
+      "end": 8.7,
+      "score": 0.999,
+      "speech": 1.35,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.238,
+      1.8
+     ],
+     [
+      2.629,
+      3.237
+     ],
+     [
+      4.134,
+      5.012
+     ],
+     [
+      5.965,
+      6.867
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 8.355,
+    "sentences": [
+     "Can mil.",
+     "Chwe deg.",
+     "Saith deg.",
+     "Un o'r gloch.",
+     "Un ar ddeg o'r gloch."
+    ],
+    "breaks": [
+     1.5190000000000001,
+     2.933,
+     4.573,
+     6.416
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "f3b3554f-cb32-4482-8146-a75b6b811905",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "43474621-eedf-46f7-8e6e-026ce78eec42",
+      "text": "100,000.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 2.186,
+      "score": 1,
+      "speech": 1.16,
+      "aligned": true
+     },
+     {
+      "ref": "a2bc8a56-f861-461b-8e0e-c9efe639bebc",
+      "text": "60.",
+      "voice": "human_aran_eng",
+      "start": 2.086,
+      "end": 3.579,
+      "score": 0.975,
+      "speech": 0.59,
+      "aligned": true
+     },
+     {
+      "ref": "4bbdb15e-7f0d-4d98-8bbc-6c4d407b949b",
+      "text": "70.",
+      "voice": "human_aran_eng",
+      "start": 3.479,
+      "end": 5.114,
+      "score": 0.999,
+      "speech": 0.78,
+      "aligned": true
+     },
+     {
+      "ref": "ec69cec5-481e-46d1-b696-c9fd10bd5b40",
+      "text": "1 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 5.014,
+      "end": 6.664,
+      "score": 0.999,
+      "speech": 0.61,
+      "aligned": true
+     },
+     {
+      "ref": "efbc7179-055e-4014-8309-9de2bf65dc69",
+      "text": "11 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 6.564,
+      "end": 8.302,
+      "score": 0.979,
+      "speech": 0.79,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.786,
+      2.487
+     ],
+     [
+      3.201,
+      3.858
+     ],
+     [
+      4.686,
+      5.442
+     ],
+     [
+      6.103,
+      6.213
+     ],
+     [
+      6.283,
+      6.945
+     ],
+     [
+      7.839,
+      7.948
+     ]
+    ],
+    "speechStart": 0.469,
+    "speechEnd": 8.019,
+    "sentences": [
+     "100,000.",
+     "60.",
+     "70.",
+     "1 o'clock.",
+     "11 o'clock."
+    ],
+    "breaks": [
+     2.136,
+     3.529,
+     5.064,
+     6.614
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     4
+    ],
+    "nearestGaps": [
+     0,
+     0,
+     1,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC16-S011",
+   "speaker": "Narrator",
+   "target": "Miliwn. Wyth deg. Naw deg. Dau o'r gloch. Deg o'r gloch.",
+   "known": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+   "welsh": {
+    "take": "b0f67e78-3480-4538-9dea-9b098ff44101",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "3694b056-d295-4c03-828b-982e61e1e9d8",
+      "text": "Miliwn.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.519,
+      "score": 1,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "dfce40d0-0c75-426b-8692-99e9f8acb13c",
+      "text": "Wyth deg.",
+      "voice": "human_aran_cym_n",
+      "start": 1.419,
+      "end": 2.932,
+      "score": 1,
+      "speech": 0.69,
+      "aligned": true
+     },
+     {
+      "ref": "4a4d0c67-2070-4e0d-8382-a63f77c5de9a",
+      "text": "Naw deg.",
+      "voice": "human_aran_cym_n",
+      "start": 2.832,
+      "end": 4.492,
+      "score": 0.999,
+      "speech": 0.76,
+      "aligned": true
+     },
+     {
+      "ref": "03da8736-61be-427b-9408-45078331f102",
+      "text": "Dau o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 4.392,
+      "end": 6.22,
+      "score": 0.999,
+      "speech": 0.94,
+      "aligned": true
+     },
+     {
+      "ref": "02da2c38-0890-45c0-a1ef-1d5fe5113057",
+      "text": "Deg o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 6.12,
+      "end": 7.798,
+      "score": 0.999,
+      "speech": 0.84,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.082,
+      1.764
+     ],
+     [
+      2.561,
+      3.203
+     ],
+     [
+      4.045,
+      4.84
+     ],
+     [
+      5.814,
+      6.526
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 7.454,
+    "sentences": [
+     "Miliwn.",
+     "Wyth deg.",
+     "Naw deg.",
+     "Dau o'r gloch.",
+     "Deg o'r gloch."
+    ],
+    "breaks": [
+     1.4689999999999999,
+     2.8819999999999997,
+     4.442,
+     6.17
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "placedGaps": [
+     [
+      1.082,
+      1.764
+     ],
+     [
+      2.561,
+      3.203
+     ],
+     [
+      4.045,
+      4.84
+     ],
+     [
+      5.814,
+      6.526
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "460b1f97-86c8-44dd-8e4a-a249c7476e97",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "cea95bf0-d00d-454c-a597-adccad69c0b1",
+      "text": "A million.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.598,
+      "score": 1,
+      "speech": 0.74,
+      "aligned": true
+     },
+     {
+      "ref": "ae419b37-55cc-477a-8b38-cddf00f1544e",
+      "text": "80.",
+      "voice": "human_aran_eng",
+      "start": 1.498,
+      "end": 2.918,
+      "score": 0.999,
+      "speech": 0.4,
+      "aligned": true
+     },
+     {
+      "ref": "338945cc-a7a5-455d-9308-bbfd36571540",
+      "text": "90.",
+      "voice": "human_aran_eng",
+      "start": 2.818,
+      "end": 4.417,
+      "score": 0.999,
+      "speech": 0.59,
+      "aligned": true
+     },
+     {
+      "ref": "d4d8c263-043c-477b-8124-10f01f2f007f",
+      "text": "2 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 4.317,
+      "end": 6.018,
+      "score": 1,
+      "speech": 0.54,
+      "aligned": true
+     },
+     {
+      "ref": "40d8b84f-5f58-4181-a4e0-b7903eaf2b2e",
+      "text": "10 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 5.918,
+      "end": 7.459,
+      "score": 0.999,
+      "speech": 0.57,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.212,
+      0.356
+     ],
+     [
+      1.103,
+      1.994
+     ],
+     [
+      2.493,
+      3.243
+     ],
+     [
+      3.912,
+      4.823
+     ],
+     [
+      5.573,
+      6.363
+     ]
+    ],
+    "speechStart": 0.201,
+    "speechEnd": 7.149,
+    "sentences": [
+     "A million.",
+     "80.",
+     "90.",
+     "2 o'clock.",
+     "10 o'clock."
+    ],
+    "breaks": [
+     1.548,
+     2.8680000000000003,
+     4.367,
+     5.968
+    ],
+    "liveGaps": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "nearestGaps": [
+     2,
+     2,
+     3,
+     4
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC17-S011",
+   "speaker": "Narrator",
+   "target": "Tri o'r gloch. Naw o'r gloch. Ionawr. Chwefror.",
+   "known": "3 o'clock. 9 o'clock. January. February.",
+   "welsh": {
+    "take": "717de150-0621-4cd7-93b1-fc44dc31284b",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "efbfd884-b04a-4a80-962d-8bd368014cf3",
+      "text": "Tri o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.653,
+      "score": 0.999,
+      "speech": 0.93,
+      "aligned": true
+     },
+     {
+      "ref": "e4e3aa6b-3fb3-48e2-8b00-779e240d5d68",
+      "text": "Naw o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 1.553,
+      "end": 3.557,
+      "score": 0.999,
+      "speech": 1.22,
+      "aligned": true
+     },
+     {
+      "ref": "62df4f94-4e38-4a8d-a047-438e5e154359",
+      "text": "Ionawr.",
+      "voice": "human_aran_cym_n",
+      "start": 3.457,
+      "end": 5.021,
+      "score": 1,
+      "speech": 0.79,
+      "aligned": true
+     },
+     {
+      "ref": "be17357b-1474-482d-be71-1d8afe881e3b",
+      "text": "Chwefror.",
+      "voice": "human_aran_cym_n",
+      "start": 4.921,
+      "end": 6.377,
+      "score": 0.999,
+      "speech": 0.64,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.317,
+      1.873
+     ],
+     [
+      3.151,
+      3.862
+     ],
+     [
+      4.679,
+      5.263
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 6.012,
+    "sentences": [
+     "Tri o'r gloch.",
+     "Naw o'r gloch.",
+     "Ionawr.",
+     "Chwefror."
+    ],
+    "breaks": [
+     1.603,
+     3.5069999999999997,
+     4.971
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "placedGaps": [
+     [
+      1.317,
+      1.873
+     ],
+     [
+      3.151,
+      3.862
+     ],
+     [
+      4.679,
+      5.263
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "8cfa4439-0f15-4aab-b14e-fd82a7b9a1b8",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "5c2a409e-2939-4ba6-a759-63818660bd41",
+      "text": "3 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.505,
+      "score": 1,
+      "speech": 0.52,
+      "aligned": true
+     },
+     {
+      "ref": "ae87129d-3a79-4031-807c-9a05f8ea790a",
+      "text": "9 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 1.405,
+      "end": 3.227,
+      "score": 0.999,
+      "speech": 0.71,
+      "aligned": true
+     },
+     {
+      "ref": "f3315ad7-edcf-487c-b80b-d2ae3ced0915",
+      "text": "January.",
+      "voice": "human_aran_eng",
+      "start": 3.127,
+      "end": 4.704,
+      "score": 1,
+      "speech": 0.76,
+      "aligned": true
+     },
+     {
+      "ref": "9e3d0c41-6a7d-4027-8c1d-0ce6b5621a36",
+      "text": "February.",
+      "voice": "human_aran_eng",
+      "start": 4.604,
+      "end": 6.141,
+      "score": 0.996,
+      "speech": 0.68,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.06,
+      1.85
+     ],
+     [
+      2.795,
+      3.559
+     ],
+     [
+      4.319,
+      4.989
+     ]
+    ],
+    "speechStart": 0.396,
+    "speechEnd": 5.837,
+    "sentences": [
+     "3 o'clock.",
+     "9 o'clock.",
+     "January.",
+     "February."
+    ],
+    "breaks": [
+     1.455,
+     3.1769999999999996,
+     4.654
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_far"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC18-S007",
+   "speaker": "Learner",
+   "target": "Ydy hynna'n gywir? Ydw i'n gywir?",
+   "known": "Is that correct? Am I correct?",
+   "welsh": {
+    "take": "a3419b4a-b35d-43bc-a379-bd37070f4acf",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "9df8a942-f325-410f-bc59-4d52e955d5fb",
+      "text": "Ydy hynna'n gywir?",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.496,
+      "score": 1,
+      "speech": 0.72,
+      "aligned": true
+     },
+     {
+      "ref": "67b75b25-33fb-440b-bd32-40f08a305552",
+      "text": "Ydw i'n gywir?",
+      "voice": "human_aran_cym_n",
+      "start": 1.396,
+      "end": 2.713,
+      "score": 1,
+      "speech": 0.68,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.243,
+      1.648
+     ]
+    ],
+    "speechStart": 0.357,
+    "speechEnd": 2.369,
+    "sentences": [
+     "Ydy hynna'n gywir?",
+     "Ydw i'n gywir?"
+    ],
+    "breaks": [
+     1.446
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.243,
+      1.648
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "dac7191d-76a7-4a19-9f1e-e59d1d9ff5c5",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "6bceea38-9380-412a-8e83-0aa21a22431b",
+      "text": "Is that correct?",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.363,
+      "score": 0.998,
+      "speech": 0.58,
+      "aligned": true
+     },
+     {
+      "ref": "79ef794a-e40f-4373-82f9-2f480a7964de",
+      "text": "Am I correct?",
+      "voice": "human_aran_eng",
+      "start": 1.263,
+      "end": 2.631,
+      "score": 0.999,
+      "speech": 0.6,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.136,
+      1.491
+     ]
+    ],
+    "speechStart": 0.338,
+    "speechEnd": 2.33,
+    "sentences": [
+     "Is that correct?",
+     "Am I correct?"
+    ],
+    "breaks": [
+     1.313
+    ],
+    "liveGaps": [
+     0
+    ],
+    "placedGaps": [
+     [
+      1.136,
+      1.491
+     ]
+    ],
+    "disagree": [
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC18-S011",
+   "speaker": "Narrator",
+   "target": "Pedwar o'r gloch. Wyth o'r gloch. Mawrth. Ebrill.",
+   "known": "4 o'clock. 8 o'clock. March. April.",
+   "welsh": {
+    "take": "ec23f6c5-cbc6-48e0-9264-a3382783e101",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "113ffb3f-11bd-4314-ac8c-fd7bd32e54c7",
+      "text": "Pedwar o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.759,
+      "score": 1,
+      "speech": 1.11,
+      "aligned": true
+     },
+     {
+      "ref": "3ce9881f-984b-46c3-b981-41b30095a3f2",
+      "text": "Wyth o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 1.659,
+      "end": 3.192,
+      "score": 1,
+      "speech": 0.97,
+      "aligned": true
+     },
+     {
+      "ref": "a417ac18-1977-4651-97da-ede6ce564aeb",
+      "text": "Mawrth.",
+      "voice": "human_aran_cym_n",
+      "start": 3.092,
+      "end": 4.371,
+      "score": 0.999,
+      "speech": 0.67,
+      "aligned": true
+     },
+     {
+      "ref": "13fbc948-02e5-411d-bdca-24f6946bdf65",
+      "text": "Ebrill.",
+      "voice": "human_aran_cym_n",
+      "start": 4.271,
+      "end": 5.679,
+      "score": 0.999,
+      "speech": 0.58,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.51,
+      1.922
+     ],
+     [
+      2.934,
+      3.35
+     ],
+     [
+      4.075,
+      4.637
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.335,
+    "sentences": [
+     "Pedwar o'r gloch.",
+     "Wyth o'r gloch.",
+     "Mawrth.",
+     "Ebrill."
+    ],
+    "breaks": [
+     1.709,
+     3.1420000000000003,
+     4.321
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "ef4e55e3-7a8a-40c5-8705-f6404c2996a9",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "142115cc-ee54-4109-83b1-5ab5291ad825",
+      "text": "4 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.809,
+      "score": 1,
+      "speech": 0.74,
+      "aligned": true
+     },
+     {
+      "ref": "1e93d591-3de7-48d7-a89f-ae75ad5b4f23",
+      "text": "8 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 1.709,
+      "end": 3.37,
+      "score": 0.999,
+      "speech": 0.51,
+      "aligned": true
+     },
+     {
+      "ref": "b7cfaabd-9eb0-4c45-bb64-db6f2b6d88d7",
+      "text": "March.",
+      "voice": "human_aran_eng",
+      "start": 3.27,
+      "end": 4.742,
+      "score": 0.999,
+      "speech": 0.6,
+      "aligned": true
+     },
+     {
+      "ref": "24e2fd19-8b37-4493-b1c8-0867c97757ab",
+      "text": "April.",
+      "voice": "human_aran_eng",
+      "start": 4.642,
+      "end": 5.861,
+      "score": 0.999,
+      "speech": 0.49,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.369,
+      2.149
+     ],
+     [
+      2.972,
+      3.667
+     ],
+     [
+      4.055,
+      4.164
+     ],
+     [
+      4.384,
+      5
+     ]
+    ],
+    "speechStart": 0.319,
+    "speechEnd": 5.592,
+    "sentences": [
+     "4 o'clock.",
+     "8 o'clock.",
+     "March.",
+     "April."
+    ],
+    "breaks": [
+     1.759,
+     3.3200000000000003,
+     4.692
+    ],
+    "liveGaps": [
+     0,
+     1,
+     3
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2
+    ],
+    "everyGapCut": false,
+    "suspect": true,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC19-S011",
+   "speaker": "Narrator",
+   "target": "Pump o'r gloch. Saith o'r gloch. Mai. Mehefin.",
+   "known": "5 o'clock. 7 o'clock. May. June.",
+   "welsh": {
+    "take": "2f03f8fd-4dc4-4023-8b27-550cccfdfc7f",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "ae8c4c3b-897d-4042-9829-7ca98a2b5603",
+      "text": "Pump o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.536,
+      "score": 1,
+      "speech": 0.92,
+      "aligned": true
+     },
+     {
+      "ref": "44e5dacb-3a23-42dc-866e-b5840bc4ffc2",
+      "text": "Saith o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 1.436,
+      "end": 3.344,
+      "score": 0.987,
+      "speech": 1.29,
+      "aligned": true
+     },
+     {
+      "ref": "be7605bc-8d59-450b-8e68-7690977cd548",
+      "text": "Mai.",
+      "voice": "human_aran_cym_n",
+      "start": 3.243,
+      "end": 4.574,
+      "score": 1,
+      "speech": 0.67,
+      "aligned": true
+     },
+     {
+      "ref": "ba756dbf-3635-418e-8328-0844d1c29e9c",
+      "text": "Mehefin.",
+      "voice": "human_aran_cym_n",
+      "start": 4.474,
+      "end": 5.771,
+      "score": 0.999,
+      "speech": 0.66,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.36,
+      1.611
+     ],
+     [
+      3.007,
+      3.58
+     ],
+     [
+      4.298,
+      4.75
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.415,
+    "sentences": [
+     "Pump o'r gloch.",
+     "Saith o'r gloch.",
+     "Mai.",
+     "Mehefin."
+    ],
+    "breaks": [
+     1.486,
+     3.2935,
+     4.524
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     1
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "0dc33bbf-9912-4e5a-a2ff-6b8b5be301e0",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "ce8093a7-51bb-44d1-84e7-7b401315a917",
+      "text": "5 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.666,
+      "score": 1,
+      "speech": 0.64,
+      "aligned": true
+     },
+     {
+      "ref": "9a60ffc4-d787-40f0-b81a-e3f5aad268a9",
+      "text": "7 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 1.566,
+      "end": 3.142,
+      "score": 0.986,
+      "speech": 0.82,
+      "aligned": true
+     },
+     {
+      "ref": "27567d5c-a174-48c2-a211-8a8b74c723cf",
+      "text": "May.",
+      "voice": "human_aran_eng",
+      "start": 3.042,
+      "end": 4.49,
+      "score": 1,
+      "speech": 0.59,
+      "aligned": true
+     },
+     {
+      "ref": "51883620-8aa7-4eae-b4de-205c848e993e",
+      "text": "June.",
+      "voice": "human_aran_eng",
+      "start": 4.39,
+      "end": 5.679,
+      "score": 0.999,
+      "speech": 0.54,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      0.37,
+      0.533
+     ],
+     [
+      1.372,
+      1.861
+     ],
+     [
+      2.721,
+      3.462
+     ],
+     [
+      4.058,
+      4.823
+     ]
+    ],
+    "speechStart": 0.344,
+    "speechEnd": 5.385,
+    "sentences": [
+     "5 o'clock.",
+     "7 o'clock.",
+     "May.",
+     "June."
+    ],
+    "breaks": [
+     1.616,
+     3.0919999999999996,
+     4.4399999999999995
+    ],
+    "liveGaps": [
+     1,
+     2,
+     3
+    ],
+    "nearestGaps": [
+     1,
+     2,
+     3
+    ],
+    "everyGapCut": false,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC20-S011",
+   "speaker": "Narrator",
+   "target": "Chwech o'r gloch. Gorffennaf. Awst. Medi.",
+   "known": "6 o'clock. July. August. September.",
+   "welsh": {
+    "take": "5d772e9f-f17f-4770-9dc9-3c8a145d3971",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "e532a451-8d08-4ade-9b14-f5d03f5cce54",
+      "text": "Chwech o'r gloch.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.941,
+      "score": 1,
+      "speech": 1.12,
+      "aligned": true
+     },
+     {
+      "ref": "d48424be-308c-454e-a3cb-012ef5301f18",
+      "text": "Gorffennaf.",
+      "voice": "human_aran_cym_n",
+      "start": 1.841,
+      "end": 3.379,
+      "score": 0.999,
+      "speech": 0.82,
+      "aligned": true
+     },
+     {
+      "ref": "4f8770e1-e514-4dbe-b963-ff3e0156d7f8",
+      "text": "Awst.",
+      "voice": "human_aran_cym_n",
+      "start": 3.279,
+      "end": 4.617,
+      "score": 0.998,
+      "speech": 0.56,
+      "aligned": true
+     },
+     {
+      "ref": "62b35ae2-ecba-4003-8a91-0c9a9c466ced",
+      "text": "Medi.",
+      "voice": "human_aran_cym_n",
+      "start": 4.517,
+      "end": 5.897,
+      "score": 1,
+      "speech": 0.57,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.566,
+      2.216
+     ],
+     [
+      3.064,
+      3.593
+     ],
+     [
+      4.274,
+      4.835
+     ]
+    ],
+    "speechStart": 0.356,
+    "speechEnd": 5.554,
+    "sentences": [
+     "Chwech o'r gloch.",
+     "Gorffennaf.",
+     "Awst.",
+     "Medi."
+    ],
+    "breaks": [
+     1.891,
+     3.3289999999999997,
+     4.567
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "nearestGaps": [
+     0,
+     1,
+     2
+    ],
+    "everyGapCut": true,
+    "suspect": false,
+    "verdict": "unproven",
+    "why": "placed_ambiguous"
+   },
+   "english": {
+    "take": "c993c4a3-4304-4e31-9b51-f42004a7dd54",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "5eedcca8-937b-48ad-ad9a-868f5764dae3",
+      "text": "6 o'clock.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.641,
+      "score": 0.998,
+      "speech": 0.67,
+      "aligned": true
+     },
+     {
+      "ref": "dea2e778-418c-4722-8ae5-d3b932ebacc9",
+      "text": "July.",
+      "voice": "human_aran_eng",
+      "start": 1.541,
+      "end": 3.223,
+      "score": 1,
+      "speech": 0.65,
+      "aligned": true
+     },
+     {
+      "ref": "d84a7171-79f8-4202-a35d-bc42cbeb65a0",
+      "text": "August.",
+      "voice": "human_aran_eng",
+      "start": 3.123,
+      "end": 4.622,
+      "score": 0.998,
+      "speech": 0.54,
+      "aligned": true
+     },
+     {
+      "ref": "3cffcbb8-3e0e-4380-8c22-44a194ac3413",
+      "text": "September.",
+      "voice": "human_aran_eng",
+      "start": 4.522,
+      "end": 6.093,
+      "score": 0.994,
+      "speech": 0.78,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.096,
+      2.086
+     ],
+     [
+      2.761,
+      3.586
+     ],
+     [
+      4.27,
+      4.874
+     ]
+    ],
+    "speechStart": 0.316,
+    "speechEnd": 5.788,
+    "sentences": [
+     "6 o'clock.",
+     "July.",
+     "August.",
+     "September."
+    ],
+    "breaks": [
+     1.591,
+     3.173,
+     4.572
+    ],
+    "liveGaps": [
+     0,
+     1,
+     2
+    ],
+    "placedGaps": [
+     [
+      1.096,
+      2.086
+     ],
+     [
+      2.761,
+      3.586
+     ],
+     [
+      4.27,
+      4.874
+     ]
+    ],
+    "disagree": [
+     false,
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC21-S014",
+   "speaker": "Narrator",
+   "target": "Hydref. Tachwedd. Rhagfyr.",
+   "known": "October. November. December.",
+   "welsh": {
+    "take": "5efa066e-6883-475a-966e-6da864a3f2db",
+    "takeVoice": "human_aran_cym_n",
+    "pieces": [
+     {
+      "ref": "65bb00f4-9a74-4505-869a-fb2585c74aec",
+      "text": "Hydref.",
+      "voice": "human_aran_cym_n",
+      "start": 0,
+      "end": 1.479,
+      "score": 1,
+      "speech": 0.62,
+      "aligned": true
+     },
+     {
+      "ref": "3952cd62-de5c-474b-a42e-dd973a2e3e29",
+      "text": "Tachwedd.",
+      "voice": "human_aran_cym_n",
+      "start": 1.379,
+      "end": 2.926,
+      "score": 0.999,
+      "speech": 0.87,
+      "aligned": true
+     },
+     {
+      "ref": "0c0c0795-b47a-410f-ad76-6c700c481b12",
+      "text": "Rhagfyr.",
+      "voice": "human_aran_cym_n",
+      "start": 2.826,
+      "end": 4.279,
+      "score": 0.998,
+      "speech": 0.71,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.084,
+      1.774
+     ],
+     [
+      2.653,
+      3.059
+     ]
+    ],
+    "speechStart": 0.352,
+    "speechEnd": 3.95,
+    "sentences": [
+     "Hydref.",
+     "Tachwedd.",
+     "Rhagfyr."
+    ],
+    "breaks": [
+     1.429,
+     2.8760000000000003
+    ],
+    "liveGaps": [
+     0,
+     1
+    ],
+    "placedGaps": [
+     [
+      1.084,
+      1.774
+     ],
+     [
+      2.653,
+      3.059
+     ]
+    ],
+    "disagree": [
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   },
+   "english": {
+    "take": "83e686f2-231f-4cf3-907a-90661d380254",
+    "takeVoice": "human_aran_eng",
+    "pieces": [
+     {
+      "ref": "aea2b9fe-2ef6-4eea-a48b-c2db86046bd8",
+      "text": "October.",
+      "voice": "human_aran_eng",
+      "start": 0,
+      "end": 1.458,
+      "score": 1,
+      "speech": 0.53,
+      "aligned": true
+     },
+     {
+      "ref": "0f224441-bfb6-4e76-aad1-1e3dcd94b453",
+      "text": "November.",
+      "voice": "human_aran_eng",
+      "start": 1.358,
+      "end": 2.983,
+      "score": 1,
+      "speech": 0.83,
+      "aligned": true
+     },
+     {
+      "ref": "468559ca-4512-4e74-8558-005aec82d007",
+      "text": "December.",
+      "voice": "human_aran_eng",
+      "start": 2.883,
+      "end": 4.304,
+      "score": 0.991,
+      "speech": 0.65,
+      "aligned": true
+     }
+    ],
+    "gaps": [
+     [
+      1.088,
+      1.727
+     ],
+     [
+      2.579,
+      3.286
+     ]
+    ],
+    "speechStart": 0.341,
+    "speechEnd": 3.989,
+    "sentences": [
+     "October.",
+     "November.",
+     "December."
+    ],
+    "breaks": [
+     1.408,
+     2.933
+    ],
+    "liveGaps": [
+     0,
+     1
+    ],
+    "placedGaps": [
+     [
+      1.088,
+      1.727
+     ],
+     [
+      2.579,
+      3.286
+     ]
+    ],
+    "disagree": [
+     false,
+     false
+    ],
+    "verdict": "position-agrees"
+   }
+  }
+ ]
+}
