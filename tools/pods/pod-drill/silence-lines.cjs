@@ -57,11 +57,14 @@ const RATE_RATIO = 1.7
 const syllables = (t) => (String(t || '').toLowerCase().match(/[aeiouwyâêîôûŵŷáéíóúàèìòù]+/g) || []).length || 1
 
 /** Pure: at each cut, the gap between the text's syllable share and the audio's share of speech time. */
-function shareDeltas (sentences, spans, gapsMs) {
+function shareDeltas (sentences, spans, gapsMs, take = null) {
   const syl = sentences.map(syllables)
   const total = syl.reduce((a, b) => a + b, 0)
   const gaps = gapsMs.map((g) => g / 1000)
   const speech = spans.map(([a, b], i) => (b - a) - ((i < gaps.length ? gaps[i] / 2 + 0.05 : 0) + (i > 0 ? gaps[i - 1] / 2 + 0.05 : 0)))
+  // Lead-in and tail silence are not speech: Aran's SC11 takes open on half a second of room tone (job #96). Only the
+  // turns the audit retired take this: it would also pass four other refused turns, and those stay whole until Tom says.
+  if (take) { speech[0] -= Math.max(0, take.speech_start - spans[0][0]); speech[speech.length - 1] -= Math.max(0, spans[spans.length - 1][1] - take.speech_end) }
   const allSpeech = speech.reduce((a, b) => a + b, 0)
   const out = []
   let s = 0
@@ -137,7 +140,7 @@ function ratesAgree (sentences, spans) {
 }
 
 /** One side of a turn: split its text into sentences by the Welsh ellipsis rule, cut the take, run every gate. */
-async function cutSide (clipFile, text, tag, dir) {
+async function cutSide (clipFile, text, tag, dir, opts = {}) {
   const m = cueMap(text)
   if (!m) return { ok: false, reason: 'cue_map_refused' }
   const r = { sentences: m.sentences, n: m.sentences.length }
@@ -168,7 +171,7 @@ async function cutSide (clipFile, text, tag, dir) {
   if (!res.ok) return { ...r, ok: false, reason: res.reason }
   const gaps = res.measure.cut_at_gaps_ms
   if (gaps.some((g) => g / 1000 > LONG_GAP_S)) return { ...r, ok: false, reason: 'suspect_long_gap' }
-  r.share_deltas = shareDeltas(m.sentences, res.measure.piece_spans, gaps)
+  r.share_deltas = shareDeltas(m.sentences, res.measure.piece_spans, gaps, opts.fairShare ? take : null)
   if (r.share_deltas.some((d) => d > SHARE_TOL)) return { ...r, ok: false, reason: 'syllable_share' }
   const spans = msSpans(res.measure.piece_spans, gaps)
   if (r.method === 'placed' && !ratesAgree(m.sentences, spans)) return { ...r, ok: false, reason: 'placed_rate' }
@@ -200,7 +203,7 @@ async function handle (c) {
   const tag = c.id.replace(/[^A-Za-z0-9_-]/g, '_')
   const row = { id: c.id, scene: c.scene, speaker: c.speaker, target: c.target, known: c.known, targetAudioId: c.targetAudioId, knownAudioId: c.knownAudioId, targetVoice: c.targetVoice, knownVoice: c.knownVoice, targetOrigin: c.targetOrigin, knownOrigin: c.knownOrigin }
   if (!c.targetAudioId) return { ...row, verdict: 'whole', reason: 'no_target_take' }
-  const t = await cutSide(await fetchClip(c.targetAudioId), c.target, `${tag}-t`, scratch)
+  const t = await cutSide(await fetchClip(c.targetAudioId), c.target, `${tag}-t`, scratch, { fairShare: /retired/.test(c.why || '') })
   row.targetSide = t
   if (!t.ok) return { ...row, verdict: 'whole', reason: `target:${t.reason}` }
   // The renderer's cue pause stays on the front of a sentence in stored text; the Drill looks the words up, so drop it.

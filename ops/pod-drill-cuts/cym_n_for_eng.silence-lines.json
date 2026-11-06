@@ -2,22 +2,22 @@
  "course": "cym_n_for_eng",
  "tool": "tools/pods/pod-drill/silence-lines.cjs (#71)",
  "summary": {
-  "turns": 54,
+  "turns": 57,
   "calibration": {
    "strict": 10,
    "agree": 9,
-   "placedKept": 25
+   "placedKept": 26
   },
-  "cut": 25,
-  "sentences": 55,
+  "cut": 26,
+  "sentences": 57,
   "tally": {
-   "cut": 25,
+   "cut": 26,
    "target:syllable_share": 3,
    "target:seam_not_silent": 3,
    "target:margin_below_floor": 2,
-   "target:placed_ambiguous": 10,
+   "target:placed_ambiguous": 11,
    "target:placed_margin": 2,
-   "target:too_few_gaps": 1,
+   "target:too_few_gaps": 2,
    "target:placed_short_gap": 2,
    "known:too_few_gaps": 1,
    "target:placed_far": 3,
@@ -25,7 +25,7 @@
    "target:placed_rate": 1
   },
   "englishLevels": {
-   "reuse": 42,
+   "reuse": 44,
    "cut-human": 13
   }
  },
@@ -3956,6 +3956,47 @@
    }
   },
   {
+   "id": "cym_n_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "speaker": "Guest",
+   "target": "Wrth gwrs. Dyma fy mhasbort i.",
+   "known": "Of course. Here's my passport.",
+   "targetAudioId": "0382e78b-0465-40cb-9737-98e18d958ac1",
+   "knownAudioId": "b6b57ef9-473a-4bfd-8ff7-3f685a30f1c6",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "Dyma fy mhasbort i."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.664,
+     "interior_gaps_ms": [],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 0,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "too_few_gaps",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:too_few_gaps"
+  },
+  {
    "id": "cym_n_for_eng:pod-1:SC11-S004",
    "scene": 11,
    "speaker": "Receptionist",
@@ -3998,6 +4039,120 @@
    },
    "verdict": "whole",
    "reason": "target:placed_margin"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "speaker": "Guest",
+   "target": "Ardderchog. Ydy hi'n bosib… i ni gael check-out hwyr?",
+   "known": "Wonderful. Is it possible for us to have a late check-out?",
+   "targetAudioId": "2ce803d5-38ac-4f27-b159-e34c80a1a579",
+   "knownAudioId": "7be127b9-27f5-441e-b120-eff7d8440816",
+   "targetVoice": "human_aran_cym_n",
+   "knownVoice": "human_aran_eng",
+   "targetOrigin": "human",
+   "knownOrigin": "human",
+   "targetSide": {
+    "sentences": [
+     "Ardderchog.",
+     "Ydy hi'n bosib… i ni gael check-out hwyr?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.932,
+     "interior_gaps_ms": [
+      392
+     ],
+     "cut_at_gaps_ms": [
+      392
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.513,
+      2.519
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.513
+      ],
+      [
+       1.413,
+       3.932
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      392
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -54.7,
+       "piece_peak_db": -2.9
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.4,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.048
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1463
+     ],
+     [
+      1463,
+      3932
+     ]
+    ]
+   },
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "2ce803d5-38ac-4f27-b159-e34c80a1a579",
+    "knownClip": "7be127b9-27f5-441e-b120-eff7d8440816",
+    "lines": [
+     {
+      "t": [
+       "Ardderchog.",
+       0,
+       1463
+      ],
+      "k": [
+       "Wonderful."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ydy hi'n bosib… i ni gael check-out hwyr?",
+       1463,
+       3932
+      ],
+      "k": [
+       "Is it possible for us to have a late check-out?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_n_for_eng:pod-1:SC11-S012",
@@ -4615,6 +4770,84 @@
    },
    "verdict": "whole",
    "reason": "target:placed_short_gap"
+  },
+  {
+   "id": "cym_n_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "speaker": "Driver",
+   "target": "Medra, wrth gwrs. Falla bydd o'n cymryd… dipyn o amser,… mae 'na lot o draffig… ar hyn o bryd.",
+   "known": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
+   "targetAudioId": "6890378b-1be2-46d2-a77b-b48efaf4d33f",
+   "knownAudioId": "4adb6379-51c0-4157-875f-02ef401e6b67",
+   "targetVoice": "human_catrinlliar_cym_n",
+   "knownVoice": "xai_bedd6226",
+   "targetOrigin": "human",
+   "knownOrigin": "tts",
+   "targetSide": {
+    "sentences": [
+     "Medra, wrth gwrs.",
+     "Falla bydd o'n cymryd… dipyn o amser,… mae 'na lot o draffig… ar hyn o bryd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 6.922,
+     "interior_gaps_ms": [
+      115,
+      126,
+      541,
+      378
+     ],
+     "cut_at_gaps_ms": [
+      115
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      0.685,
+      6.336
+     ],
+     "piece_spans": [
+      [
+       0,
+       0.685
+      ],
+      [
+       0.585,
+       6.922
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      115,
+      126,
+      541,
+      378
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62,
+       "piece_peak_db": -2.9
+      },
+      {
+       "edge": "s1.head",
+       "db": -44.9,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "unconfirmed"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
   },
   {
    "id": "cym_n_for_eng:pod-1:SC14-S007",
