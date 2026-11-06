@@ -74,13 +74,14 @@ function shareDeltas (sentences, spans, gapsMs) {
   return out.map((d) => Math.round(d * 1000) / 1000)
 }
 
-/** Pure: player spans in ms. Seam at the gap's middle plus the splicer's 50 ms pad, at most TRIM_S into the pause. */
+/** Pure: player spans in ms, touching at most at the gap's middle (verifiedCutGroups refuses a card whose lines
+ *  overlap, so the splicer's 50 ms pad past the middle must not reach the file), and at most TRIM_S into the pause. */
 function msSpans (spans, gapsMs) {
   return spans.map(([a, b], i) => {
     const gapBefore = i > 0 ? gapsMs[i - 1] / 1000 : 0
     const gapAfter = i < gapsMs.length ? gapsMs[i] / 1000 : 0
-    const start = i > 0 ? Math.max(a, a + 0.05 + gapBefore / 2 - TRIM_S) : a
-    const end = i < gapsMs.length ? Math.min(b, b - 0.05 - gapAfter / 2 + TRIM_S) : b
+    const start = i > 0 ? Math.max(a + 0.05, a + 0.05 + gapBefore / 2 - TRIM_S) : a
+    const end = i < gapsMs.length ? Math.min(b - 0.05, b - 0.05 - gapAfter / 2 + TRIM_S) : b
     return [Math.round(start * 1000), Math.round(end * 1000)]
   })
 }
