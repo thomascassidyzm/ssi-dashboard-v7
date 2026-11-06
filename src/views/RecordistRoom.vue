@@ -66,6 +66,37 @@
          already-recorded list, the notes) lives in ONE sheet, opened from the where-am-I row or
          from the settings line above Start. -->
     <template v-else-if="fitPhase">
+      <!-- Native dialog keeps the booth and its cursor in place, traps focus, and makes the
+           recording controls inert while the microphone is off. No route or queue reload. -->
+      <dialog v-if="sampleHeld" ref="sampleDialog" class="sample-dialog" aria-labelledby="sample-heading" data-surface="booth-inline-first-five-2026-11-06" @cancel.prevent>
+          <div class="sample-gate" data-test="sample-gate">
+            <h2 id="sample-heading">Check your first {{ sampleLines.length }} takes</h2>
+            <p class="sample-place">{{ sampleTitle }} · Recording paused</p>
+            <span class="setup-note">Listen to your takes, then carry on or redo them.</span>
+            <ol class="sample-list" data-test="sample-list">
+              <!-- A play button on every take (Aran, 2026-11-03, job #571: "no obvious way to play
+                   each of the 10 takes"). The booth's own round list button (.bl-play) and its
+                   togglePlay: inline, tap again to stop, one take at a time. -->
+              <li v-for="(l, i) in sampleLines" :key="l.id" :class="{ playing: playingId === l.id }" data-test="sample-row">
+                <button type="button" class="bl-play sample-play" :class="{ on: playingId === l.id }" data-test="sample-play"
+                        :disabled="busy || (!storedUrlFor(l.id) && !localUrlFor(l.id))"
+                        :aria-pressed="playingId === l.id"
+                        :aria-label="playingId === l.id ? `Stop take ${i + 1}` : `Play your take ${i + 1}`"
+                        @click="togglePlay(l.id)">{{ playingId === l.id ? '■' : '▶' }}</button>
+                <span class="listen-text">{{ plainText(l.text) }}</span>
+                <span class="sample-check" :class="{ warn: (sampleChecks[l.id] || {}).hints && sampleChecks[l.id].hints.length }">{{ sampleCheckWords(l.id) }}</span>
+              </li>
+            </ol>
+            <span v-if="sampleUploading" class="setup-note">Still uploading — you can listen and decide now.</span>
+            <div class="sample-actions">
+              <button class="btn-ghost" type="button" data-test="sample-redo" :disabled="sampleApproving || busy" @click="redoSample">Redo these</button>
+              <button class="btn-begin" type="button" data-test="sample-approve" :disabled="sampleApproving || busy" @click="approveSample">{{ sampleApproving ? 'Saving…' : 'Sounds right — carry on' }}</button>
+            </div>
+          </div>
+          <p v-if="sampleNote" class="note" data-test="sample-note">{{ sampleNote }}</p>
+          <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+          <p v-if="micError" class="note error">{{ micError }}</p>
+      </dialog>
       <!-- THE ONE WHERE-AM-I ROW (job #378). ‹ on its left goes home; the words say where he is.
            While the mic is live it is words only: no link and no button near anything he reads
            (the ‹ and the sheet's opener go), and Stop here is the stage's way out. -->
@@ -311,32 +342,6 @@
 
         <!-- ── Done: C's mic-off check, a list of this session's takes ─────────────────── -->
         <main v-else class="rc-card centre done-card" data-test="done">
-          <!-- THE SAMPLE GATE (job #428): first session, or the first since the recorder changed.
-               Off the chain: it appears after the takes are saved, and one tap goes either way. -->
-          <div v-if="sampleHeld" class="setup-card sample-gate" data-test="sample-gate">
-            <strong>Quick check before the rest: your first {{ sampleLines.length }} takes.</strong>
-            <span class="setup-note">Have a listen below. If they sound right, carry on — the booth won't stop you again until it changes.</span>
-            <ol class="sample-list" data-test="sample-list">
-              <!-- A play button on every take (Aran, 2026-11-03, job #571: "no obvious way to play
-                   each of the 10 takes"). The booth's own round list button (.bl-play) and its
-                   togglePlay: inline, tap again to stop, one take at a time. -->
-              <li v-for="(l, i) in sampleLines" :key="l.id" :class="{ playing: playingId === l.id }" data-test="sample-row">
-                <button type="button" class="bl-play sample-play" :class="{ on: playingId === l.id }" data-test="sample-play"
-                        :disabled="!storedUrlFor(l.id) && !localUrlFor(l.id)"
-                        :aria-pressed="playingId === l.id"
-                        :aria-label="playingId === l.id ? `Stop take ${i + 1}` : `Play your take ${i + 1}`"
-                        @click="togglePlay(l.id)">{{ playingId === l.id ? '■' : '▶' }}</button>
-                <span class="listen-text">{{ plainText(l.text) }}</span>
-                <span class="sample-check" :class="{ warn: (sampleChecks[l.id] || {}).hints && sampleChecks[l.id].hints.length }">{{ sampleCheckWords(l.id) }}</span>
-              </li>
-            </ol>
-            <span v-if="sampleUploading" class="setup-note">Still uploading — you can listen and decide now.</span>
-            <div class="sample-actions">
-              <button class="btn-ghost" type="button" data-test="sample-redo" :disabled="sampleApproving" @click="redoSample">Redo these</button>
-              <button class="btn-begin" type="button" data-test="sample-approve" :disabled="sampleApproving" @click="approveSample">{{ sampleApproving ? 'Saving…' : 'Sounds right — carry on' }}</button>
-            </div>
-          </div>
-          <p v-if="sampleNote" class="note" data-test="sample-note">{{ sampleNote }}</p>
           <h2>{{ doneHeadline }}</h2>
           <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
           <p v-if="batchUploadingNote" class="note" data-test="batch-uploading">{{ batchUploadingNote }}</p>
@@ -791,7 +796,7 @@ import { loadFailureMessage } from './recordist/load-failure-message.js'
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 import { fitRail } from './recordist/rail-fit.js'
-import { readSampleGate, approveSampleGate, approveSampleGateOnUnload, releaseWhenSettled, measureSampleTake, sampleGateAction, SAMPLE_SIZE } from './recordist/sample-gate.js'
+import { readSampleGate, approveSampleGate, approveSampleGateOnUnload, releaseWhenSettled, measureSampleTake, SAMPLE_SIZE } from './recordist/sample-gate.js'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 // The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
@@ -1883,7 +1888,7 @@ function beginEdit(lineId, caretAt = null, side = 'target') {
   // Same hold as a playback, for the same reason: a live microphone under an
   // open keyboard is recording the room and calling it his take. The SESSION is
   // held, never ended — the queue, the position and the run all survive.
-  if (phase.value === 'recording') {
+  if (phase.value === 'recording' && !sampleHeld.value) {
     micHeld.value = true
     try { recorder.discardLine() } catch { micHeld.value = false }
   }
@@ -2231,6 +2236,7 @@ function stopPlayback() {
 // Both calls do their work synchronously — the promise discardLine returns is
 // only the discarded blob, which nobody wants.
 function releaseMic() {
+  if (sampleHeld.value) return // playback in the review must never reopen the microphone
   paused.value = false
   if (!micHeld.value) return
   micHeld.value = false
@@ -2249,7 +2255,7 @@ function togglePlay(lineId) {
   stopPlayback()
   // Hold the mic BEFORE a byte plays. Doing it after would leave the first
   // moment of the playback on the take.
-  if (phase.value === 'recording') {
+  if (phase.value === 'recording' && !sampleHeld.value) {
     micHeld.value = true
     try { recorder.discardLine() } catch { micHeld.value = false }
   }
@@ -2481,8 +2487,10 @@ function speechVerdict() {
   return recorder.lineHasSpeech.value
 }
 
+const closingTakes = new Map()
+
 async function onNext(source = 'tap', to = 'next') {
-  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
   // Tapping a control while a take is playing means "enough listening". Stop it
   // and give the line back to the mic before anything is filed, so the playback
   // never lands inside the take this call is about to close.
@@ -2510,6 +2518,28 @@ async function onNext(source = 'tap', to = 'next') {
     // picked (job #198), not when the take lands a tail-length later.
     const closingKey = hadSpeech === false ? null : twinKey(lines.value[i])
     if (closingKey) closingTwinKeys.value = new Set([...closingTwinKeys.value, closingKey])
+    const filed = pending.then(blob => {
+      // Walking over a line never files room tone over saved work (boothTakePolicy.fileTakeOnAdvance).
+      if (!fileTakeOnAdvance(hadSpeech, () => !!target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id))))) return
+      commit(target, blob, hadSpeech, advance)
+    }).finally(() => {
+      if (closingTakes.get(target?.id) === filed) closingTakes.delete(target?.id)
+      // The take has landed (its line is now settled on its own) or was refused (its twins are
+      // owed again): either way the line's own state speaks for its twins from here.
+      if (closingKey && closingTwinKeys.value.has(closingKey)) {
+        const next = new Set(closingTwinKeys.value); next.delete(closingKey); closingTwinKeys.value = next
+      }
+    })
+    closingTakes.set(target?.id, filed)
+    // Only the sample boundary waits for closing tails. Do not reveal/open line six and
+    // then press Stop: that could file an unread sixth take as well as flashing its words.
+    if (sampleGate.value.gated && new Set([...sampleIds.value, ...closingTakes.keys()]).size >= sampleGate.value.size) {
+      await Promise.all([...closingTakes.values()])
+      if (sampleIds.value.length >= sampleGate.value.size) {
+        await holdSample(to === 'unrecorded' ? nextIndexFrom(i) : nextFlowFrom(i))
+        return
+      }
+    }
     // ONE LINE ON, never a scan (THE ONE CURSOR). On the last line this is Done.
     const n = to === 'unrecorded' ? nextIndexFrom(i) : nextFlowFrom(i)
     if (n !== -1) {
@@ -2519,19 +2549,8 @@ async function onNext(source = 'tap', to = 'next') {
       advanceLock.reopen(lineKeyAt(n))
       recorder.beginLine()
     }
-    pending.then(blob => {
-      // Walking over a line never files room tone over saved work (boothTakePolicy.fileTakeOnAdvance).
-      if (!fileTakeOnAdvance(hadSpeech, () => !!target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id))))) return
-      commit(target, blob, hadSpeech, advance)
-    }).finally(() => {
-      // The take has landed (its line is now settled on its own) or was refused (its twins are
-      // owed again): either way the line's own state speaks for its twins from here.
-      if (closingKey && closingTwinKeys.value.has(closingKey)) {
-        const next = new Set(closingTwinKeys.value); next.delete(closingKey); closingTwinKeys.value = next
-      }
-    })
     if (n === -1) {
-      await pending
+      await filed
       // A run that ends on its last line starts the next visit at the first line still owed.
       clearCursor(props.voiceId, cursorScope()); pinnedId.value = null
       await finish()
@@ -2617,7 +2636,7 @@ watch(() => recorder.quietMs.value, (ms) => {
 })
 
 async function onAgain() {
-  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -2636,7 +2655,7 @@ async function onAgain() {
 // row appears: discardLine() throws the open capture away and the line is never
 // closed, so the queue never hears about it.
 function pauseTake() {
-  if (phase.value !== 'recording' || arming.value || editingId.value) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || editingId.value) return
   // A playback holds the mic too; stop it first so there is one hold, not two
   // fighting over the same flag.
   if (playingId.value) stopPlayback()
@@ -2692,7 +2711,7 @@ async function onBack() {
 // THE CURSOR GOES STRAIGHT TO A LINE: ‹ (one back) and a tap on the rail. Both
 // discard the open capture and file nothing, for the reasons Back always has.
 async function goToLine(prev) {
-  if (phase.value !== 'recording' || arming.value || busy.value || !backDebounced()) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || !backDebounced()) return
   if (!(prev >= 0 && prev < lines.value.length) || prev === index.value) return
   busy.value = true
   try {
@@ -2720,7 +2739,7 @@ async function goToLine(prev) {
 // capture is DISCARDED rather than ended, and the session finishes exactly as
 // it would from a line nobody read. Everything already recorded is untouched.
 async function onFinish() {
-  if (phase.value !== 'recording' || arming.value || busy.value) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -2728,7 +2747,7 @@ async function onFinish() {
       try { recorder.discardLine() } catch { /* the stream is gone; finish anyway */ }
       paused.value = false
       micHeld.value = false
-      await finish()
+      await finish(index.value)
       return
     }
     const i = index.value
@@ -2740,11 +2759,16 @@ async function onFinish() {
     if (fileTakeOnStop(hadSpeech)) commit(target, blob, hadSpeech, advance)
     // Stopped after reading this line: the next visit opens on the line after it.
     if (hadSpeech === true && nextFlowFrom(i) !== -1) pinCursor(lines.value[nextFlowFrom(i)].id)
-    await finish()
+    await finish(hadSpeech === true ? nextFlowFrom(i) : i)
   } finally { busy.value = false }
 }
 
-async function finish() {
+async function finish(next = nextFlowFrom(index.value)) {
+  await Promise.all([...closingTakes.values()])
+  if (sampleGate.value.gated && sampleIds.value.length) {
+    await holdSample(next)
+    return
+  }
   await recorder.stop()
   phase.value = 'done'
 }
@@ -2806,7 +2830,7 @@ async function backToStart() {
 
 // ── Keyboard ────────────────────────────────────────────────────────────────
 function onKey(e) {
-  if (phase.value !== 'recording' || arming.value || e.repeat) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || e.repeat) return
   // EDITING IS TYPING. Space, R and B are letters in a rewrite box long before
   // they are controls, and this listener is on the window: with the editor open,
   // every space Tom typed into a line was calling onNext() — advancing the
@@ -3368,7 +3392,7 @@ const batchHeader = computed(() => {
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
   // Pod 1 English spans North and South, so no one course's words head it (job #537).
-  const parts = [t.kind === 'podknown' || t.kind === 'podswap' ? null : courseWordsFor(t.courseCode), t.short]
+  const parts = [t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'voiceover' ? null : courseWordsFor(t.courseCode), t.short]
   // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
   // says it, unless the course words already begin with it ("English for New Welsh — North").
   const h = homeSummary.value
@@ -3657,13 +3681,14 @@ function refreshOnReturn() {
   lastQueueRead = Date.now()
   if (phase.value === 'home') { refreshHome(); refreshRerecord() } else load({ quiet: true })
 }
-// ── THE SAMPLE GATE (Tom r-2026-10-31, job #428) — an OBSERVER, never in the chain ─────────
-// First session ever, and the first after a recorder code change: stop after SAMPLE_SIZE saved
-// takes and offer them for a listen before the bulk. It reads only what commit() already keeps
-// (readThisSession, lastLine) and presses the same Stop the artist presses. Nothing here runs
-// inside capture, take saving, auto-advance or the upload queue. Full reasoning: sample-gate.js.
+// ── First-five review: a pause in this booth, with no navigation or queue reload. ────────
+// Capture and upload stay unchanged. Only the boundary that reaches the sample waits for
+// its existing closing blobs; approval opens the saved next line, redo keeps every old take.
 const sampleGate = ref({ gated: false, size: SAMPLE_SIZE })
 const sampleHeld = ref(false)
+const sampleDialog = ref(null)
+let sampleResumeId = null
+const sampleTitle = computed(() => sampleLines.value[0]?.podTitle || scopedTrack.value?.title || voice.value.displayName)
 const sampleIds = ref([])
 const sampleChecks = ref({})
 const sampleApproving = ref(false)
@@ -3680,21 +3705,26 @@ watch(() => props.voiceId, async (voiceId) => {
 watch(readThisSession, (n, was) => {
   if (!sampleGate.value.gated || sampleHeld.value) return
   if (n === 0) { sampleIds.value = []; return }
-  if (n > was && lastLine.value && !sampleIds.value.includes(lastLine.value.id)) sampleIds.value = [...sampleIds.value, lastLine.value.id]
-})
-watch(() => [readThisSession.value, phase.value, busy.value, arming.value], () => {
-  const act = sampleGateAction({ gated: sampleGate.value.gated, held: sampleHeld.value, phase: phase.value, saved: readThisSession.value, size: sampleGate.value.size })
-  if (!act) return
-  if (act === 'stop' && (busy.value || arming.value)) return // onFinish would refuse; this runs again when they clear
-  sampleHeld.value = true
+  if (n > was && lastLine.value && !sampleIds.value.includes(lastLine.value.id)) sampleIds.value = lines.value.filter(l => sampleIds.value.includes(l.id) || l.id === lastLine.value.id).map(l => l.id)
+}, { flush: 'sync' })
+async function holdSample(next) {
+  sampleResumeId = lines.value[next]?.id || null
   sampleChecks.value = {}
-  if (act === 'stop') onFinish()
+  micHeld.value = true
+  paused.value = true
+  sampleHeld.value = true
+  await recorder.stop()
+}
+watch(sampleHeld, async (held) => {
+  if (!held) return
+  await nextTick()
+  sampleDialog.value?.showModal?.()
 })
 const sampleLines = computed(() => sampleIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean))
 const sampleUploading = computed(() => sampleIds.value.some(id => isPending(id)))
-// The advisory sound check, on the SAVED takes, once the done card is showing them. Advisory only.
-watch(() => [sampleHeld.value, phase.value], async ([held, p]) => {
-  if (!held || p !== 'done') return
+// Advisory only: measure saved takes while the inline review is open.
+watch(sampleHeld, async (held) => {
+  if (!held) return
   for (const id of sampleIds.value) {
     if (!sampleHeld.value) return
     if (sampleChecks.value[id]) continue
@@ -3717,17 +3747,27 @@ async function approveSample() {
   if (sampleApproving.value) return
   sampleApproving.value = true
   stopPlayback()
-  const ok = await acknowledgeSample()
+  // Reopen the mic while the review still holds reloads. If permission fails, leave the
+  // review and its answer buttons available for retry, rather than losing the resume point.
+  if (sampleResumeId) {
+    try { await recorder.start(selectedDeviceId.value || null, captureProfile.value) }
+    catch (err) { micError.value = friendlyMicError(err); sampleApproving.value = false; return }
+  }
+  const next = lines.value.findIndex(l => l.id === sampleResumeId)
+  if (next !== -1) {
+    index.value = next
+    advanceLock.reopen(lineKeyAt(next))
+  }
+  const approval = acknowledgeSample()
+  micHeld.value = false
+  paused.value = false
+  micError.value = null
+  if (next !== -1) await settleThenReveal()
+  else phase.value = 'done'
+  const ok = await approval
   sampleApproving.value = false
   sampleNote.value = ok ? '' : 'Could not save the approval just now — carrying on.'
-  await begin()
 }
-// CARRYING ON IS THE ANSWER (Aran, 2026-11-03, job #569). The done card under the check still
-// offers Next batch, Back to my lines and Back to home; leaving by any of them used to leave the
-// voice with NO recorded answer, so every reload and every batch link asked again — Catrin's
-// voice had been shown the check repeatedly and had never once had a pass stored. Any way on
-// from the check except "Redo these" now records the pass for the voice, exactly as the
-// "Sounds right — carry on" button does.
 // THE RELOAD WAITS FOR THE SAVE (job #574). Letting the check go used to let a waiting new-build
 // reload go at the same instant, which cut the approval off mid-send, retries and all. The hold
 // is now let go only once the save has settled (sample-gate.js releaseWhenSettled).
@@ -3747,9 +3787,6 @@ function onSamplePageHide() {
   approveSampleGateOnUnload({ base: apiBase(), voiceId: props.voiceId, withKey: withBoothKey })
 }
 window.addEventListener('pagehide', onSamplePageHide)
-watch(phase, (p, was) => {
-  if (was === 'done' && p !== 'done' && sampleHeld.value) acknowledgeSample()
-})
 // The idle new-build reload (job #829) waits while the check is on screen: reloading under it
 // would throw the artist's answer away mid-listen.
 // The hold is TAKEN here and let go by acknowledgeSample (after its save) or redoSample.
@@ -3762,16 +3799,21 @@ onBeforeUnmount(() => {
 // Redo: the same lines again, from the first. Each new take replaces its earlier one exactly as
 // Again always has; the gate counts afresh and stops after the sample again.
 async function redoSample() {
+  if (sampleApproving.value) return
+  sampleApproving.value = true
   const ids = [...sampleIds.value]
   stopPlayback()
+  for (const id of ids) touchLine(id)
+  if (ids.length) pinCursor(ids[0])
+  await begin()
+  sampleApproving.value = false
+  if (micError.value) return
   sampleHeld.value = false
   sampleIds.value = []
   sampleChecks.value = {}
-  for (const id of ids) touchLine(id)
-  if (ids.length) pinCursor(ids[0])
-  try { await begin() } finally {
-    holdReload(sampleReloadKey, false) // back at the mic, which holds the reload itself
-  }
+  micHeld.value = false
+  paused.value = false
+  holdReload(sampleReloadKey, false)
 }
 
 onMounted(() => {
@@ -3822,29 +3864,27 @@ onDeactivated(() => {
 </script>
 
 <style scoped>
-.sample-gate { display: flex; flex-direction: column; gap: .5rem; text-align: left; }
-.sample-list { margin: 0; padding: 0; list-style: none; font-size: .9rem; }
-.sample-list li { display: flex; align-items: center; gap: .5rem; padding: .2rem .35rem; border-radius: 8px; }
-.sample-list li .listen-text { flex: 1; }
+.sample-dialog { width: min(600px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); box-sizing: border-box; padding: 1rem; border: 1px solid var(--color-gold, #d4a84b); border-radius: 16px; background: var(--color-void, #0f172a); color: var(--color-paper, #f7f7f2); }
+.sample-dialog::backdrop { background: rgb(0 0 0 / .45); }
+:root[data-theme="light"] .sample-dialog { background: #fff; color: #18202b; }
+.sample-gate { display: flex; flex-direction: column; gap: .5rem; text-align: left; max-height: calc(100dvh - 60px); }
+.sample-gate h2, .sample-place { margin: 0; }
+.sample-gate h2 { font-size: 1.2rem; }
+.sample-place { font-size: .9rem; }
+.sample-list { margin: 0; padding: 0; list-style: none; font-size: .9rem; overflow-y: auto; min-height: 44px; }
+.sample-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: .3rem .5rem; padding: .35rem 0; border-radius: 8px; }
+.sample-list li .listen-text { overflow-wrap: anywhere; }
 .sample-list li.playing { background: rgba(6, 255, 165, 0.14); }
 :root[data-theme="light"] .sample-list li.playing { background: #e6f4ee; box-shadow: inset 4px 0 0 #047857; }
+.sample-play { min-width: 44px; min-height: 44px; }
 .sample-play:disabled { opacity: .4; cursor: default; }
 .sample-play.on, :root[data-theme="light"] .sample-list .sample-play.on { background: #b45309; color: #fff; }
-.sample-check { opacity: .7; white-space: nowrap; }
-.sample-check.warn { opacity: 1; color: var(--rc-warn, #b45309); white-space: normal; }
-/* THE ANSWER IS ALWAYS ON SCREEN (job #574). The ten rows used to push these two buttons below the
-   done card's visible area on a laptop (1366x768: under "Back to my lines" / "Back to home"), so
-   the artist saw only the way-on buttons. They now stick to the bottom of the done card's own
-   scroll area while the check is in view — above the pinned bar, never under it. Opaque, so the
-   rows scroll beneath them. */
-.sample-actions {
-  display: flex; gap: .5rem; justify-content: flex-end;
-  position: sticky; bottom: 0; z-index: 2;
-  margin: 0 -1rem -1rem; padding: .6rem 1rem; border-radius: 0 0 10px 10px;
-  background: var(--color-void, #0f172a); border-top: 1px solid var(--color-gold, #d4a84b);
-}
-:root[data-theme="light"] .sample-actions { background: var(--surface, #fff); }
+.sample-check { grid-column: 2; opacity: .7; }
+.sample-check:empty { display: none; }
+.sample-check.warn { opacity: 1; color: var(--rc-warn, #b45309); }
+.sample-actions { display: flex; flex-shrink: 0; gap: .5rem; padding-top: .5rem; border-top: 1px solid var(--color-gold, #d4a84b); }
 .sample-actions button { flex: 1 1 0; min-height: 48px; margin: 0; }
+.sample-actions .btn-begin { font-size: .95rem; letter-spacing: normal; text-transform: none; padding: .65rem; }
 /* Phone first: Aran and Catrin record on phones. Everything thumb-reachable,
    the line itself the biggest thing on the screen. */
 .recordist {

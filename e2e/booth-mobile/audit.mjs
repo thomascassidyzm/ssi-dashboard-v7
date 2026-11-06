@@ -607,15 +607,92 @@ async function scenarioDesktopGrid(browser, engine, size) {
   }
 }
 
+// First-five review: all API answers are fixtures, including uploads and approval. Real
+// recorder in Chromium; WebKit's capture stand-in exercises its layout and focus behaviour.
+async function scenarioSample(browser, engine, size) {
+  const script = JSON.parse(readFileSync(new URL('../../services/voice-engine/video-voiceovers.json', import.meta.url))).videos.find(v => v.slug === 'richard-parks-english')
+  const track = `voiceover.${script.fileUnder}`
+  const lines = script.lines.map((l, i) => ({ id: `voiceover:${script.slug}:${l.key}`, text: l.text, order: i, kind: 'voiceover', role: 'known', courseCode: script.fileUnder, podTitle: script.title, recorded: false, clipUrl: null }))
+  const summary = { home: true, fresh: true, displayName: 'Test Voice', language: 'eng', languageName: 'English', tracks: [{ key: track, kind: 'voiceover', courseCode: script.fileUnder, podTitle: script.title, total: lines.length, recorded: 0, batches: [{ n: 1, total: lines.length, recorded: 0 }] }] }
+  let uploads = 0, approvals = 0
+  const answer = async (req, url, route) => {
+    const p = url.pathname
+    if (!p.startsWith('/api/')) return false
+    if (p.endsWith('/take') && req.method() === 'POST') { uploads++; await route.fulfill({ json: { ok: true, audioId: `fixture-${uploads}` } }); return true }
+    if (p.endsWith('/sample-gate/approve')) { approvals++; await route.fulfill({ json: { ok: true } }); return true }
+    if (p.endsWith('/sample-gate/measure')) { await route.fulfill({ json: { measured: true, hints: [] } }); return true }
+    if (p.endsWith('/sample-gate')) { await route.fulfill({ json: { needsSample: true, sampleSize: 5 } }); return true }
+    if (p.endsWith('/summary')) { await route.fulfill({ json: summary }); return true }
+    if (p.endsWith('/tabs')) { await route.fulfill({ json: { tabs: [] } }); return true }
+    if (p.endsWith('/rerecord')) { await route.fulfill({ json: { fresh: true, items: [], recordedAlso: [] } }); return true }
+    if (p === `/api/recording/voice/${VOICE}`) { await route.fulfill({ json: { displayName: 'Test Voice', languageName: 'English', track, batch: 1, total: lines.length, remaining: lines.length, recorded: 0, lines } }); return true }
+    await route.fulfill({ status: 404, json: {} }); return true
+  }
+  const { ctx, page } = await newPage(browser, engine, size, { answer })
+  const check = (ok, why) => { if (!ok) throw new Error(why) }
+  try {
+    const address = `${BASE}/r/${VOICE}?track=${track}&batch=1`
+    await page.goto(address, { waitUntil: 'domcontentloaded' })
+    await page.getByRole('button', { name: 'Start recording' }).click()
+    await page.locator('.stage-auto input').uncheck()
+    await page.evaluate(() => {
+      window.seenLines = []
+      new MutationObserver(() => { const line = document.querySelector('.line-target')?.textContent; if (line) window.seenLines.push(line.trim()) }).observe(document.querySelector('.recordist'), { subtree: true, childList: true, characterData: true })
+    })
+    const readFive = async () => {
+      for (let i = 0; i < 5; i++) {
+        await page.waitForTimeout(900)
+        await page.locator('.ctl-next').click()
+      }
+      await page.waitForSelector('dialog[open] [data-test="sample-gate"]')
+      check(await page.locator('[data-test="sample-row"]').count() === 5, 'review must show five takes')
+      check(await page.locator('.line-target').textContent() === lines[4].text, 'fifth line must stay current')
+      check(page.url() === address, 'review navigated away')
+      check(!(await page.evaluate(() => window.seenLines)).includes(lines[5].text), 'sixth line flashed before review')
+    }
+    await readFive()
+    const layout = await page.locator('dialog').evaluate(el => {
+      const r = el.getBoundingClientRect()
+      return { inside: r.top >= 0 && r.left >= 0 && r.bottom <= innerHeight && r.right <= innerWidth, light: getComputedStyle(el).backgroundColor, focusInside: el.contains(document.activeElement) }
+    })
+    check(layout.inside && layout.focusInside && layout.light === 'rgb(255, 255, 255)', `review layout/focus/light mode: ${JSON.stringify(layout)}`)
+    for (const selector of ['sample-redo', 'sample-approve']) {
+      check(await page.locator(`[data-test="${selector}"]`).evaluate(el => { const r = el.getBoundingClientRect(); return r.height >= 44 && r.top >= 0 && r.bottom <= innerHeight && el.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)) }), `${selector} is not reachable`)
+    }
+    await snap(page, engine, size, '60-sample-sheet', { sampleLayout: layout })
+    await page.locator('[data-test="sample-play"]').first().click()
+    if (engine === 'chromium') await page.waitForSelector('[data-test="sample-play"][aria-pressed="true"]')
+    await page.keyboard.press('Escape')
+    check(await page.locator('dialog[open]').count() === 1, 'Escape dismissed review')
+    await page.locator('[data-test="sample-redo"]').click()
+    await page.waitForSelector('dialog', { state: 'detached' })
+    check(await page.locator('.line-target').textContent() === lines[0].text, 'redo did not return to first line')
+    check(approvals === 0, 'redo approved the sample')
+    await readFive()
+    await page.locator('[data-test="sample-approve"]').click()
+    await page.waitForSelector('dialog', { state: 'detached' })
+    check(await page.locator('.line-target').textContent() === lines[5].text, 'approval did not resume on sixth line')
+    check(page.url() === address, 'approval navigated away')
+    check(approvals === 1, 'approval not saved exactly once')
+    check(uploads === 10, `expected ten uploads across original and redo, got ${uploads}`)
+    await snap(page, engine, size, '61-sample-resumed')
+  } catch (e) {
+    errors.push(`${engine} ${size} sample: ${e.message.split('\n')[0]}`)
+    console.log(errors.at(-1))
+    await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-sample.png`) }).catch(() => {})
+  }
+  await ctx.close()
+}
+
 // fixtures for the fully-mocked team booth: Tom's test voice's real answers, captured once
-if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
+if (ONLY !== 'sample' && !existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
   const s = await (await fetch(`${API}/api/recording/voice/${VOICE}/summary`)).json()
   writeFileSync(join(OUT, '..', 'fixtures-summary.json'), JSON.stringify(stressSummary(s)))
   const q = await (await fetch(`${API}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1`)).json()
   writeFileSync(join(OUT, '..', 'fixtures-queue.json'), JSON.stringify(q))
 }
 
-const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, nextbatch: scenarioNextBatch, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder'), editor: scenarioEditor }
+const SCEN = { sample: scenarioSample, real: scenarioReal, stress: scenarioStress, done: scenarioDone, nextbatch: scenarioNextBatch, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder'), editor: scenarioEditor }
 // The editor is only on builds that carry job #709; it is run when asked for (--only editor).
 if (!ONLY) delete SCEN.editor
 for (const engine of ENGINES) {
