@@ -35,17 +35,18 @@ vi.mock('@/composables/useRecordistQueue', () => ({
   }),
 }))
 
-vi.mock('@/composables/useTapRecorder', async () => {
+vi.mock('@/composables/useTapRecorder', async (importOriginal) => {
   const { ref: vref } = await import('vue')
   mic.speech = vref(true)
   mic.quiet = vref(0)
   return {
+    ...await importOriginal(),
     DEFAULT_CAPTURE_PROFILE: 'voice',
     resolveCaptureProfile: () => 'phone',
     useTapRecorder: () => ({
       isRecording: vref(true), level: vref(0.3), clipping: vref(false),
       devices: vref([]), appliedSettings: vref({}), profile: vref('voice'), error: vref(null),
-      lineHasSpeech: mic.speech, quietMs: mic.quiet, meterTrusted: vref(true),
+      lineHasSpeech: mic.speech, quietMs: mic.quiet, voicedMs: vref(2000), meterTrusted: vref(true),
       inputPeak: vref(0.4), roomTone: vref(0.001),
       listDevices: vi.fn(), start: vi.fn().mockResolvedValue(undefined),
       awaitLeadIn: vi.fn().mockResolvedValue(undefined),

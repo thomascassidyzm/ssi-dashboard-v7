@@ -1,11 +1,8 @@
 // THE SAMPLE GATE, booth side (Tom's ruling r-2026-10-31, job #428). OFF the recording chain.
 //
-// "When a very first time a new user gets on there, when there's any change in code of Popty ...
-// check the sample of 10 ... before allowing it to do a thousand. But you can't have anything in
-// the chain." So the booth only OBSERVES: it counts the takes it has already saved this session
-// (readThisSession, which commit() keeps), and when a gated session reaches SAMPLE_SIZE it presses
-// its own Stop — the same Stop the artist presses — and the done card shows those takes for a
-// listen. Capture, take saving, auto-advance and the upload queue are never touched.
+// The room observes saved takes and pauses at the first-five boundary (job #80), before
+// opening the next line. Review is an inline dialog; measurement and approval stay outside
+// capture and upload. No review route, queue reload or synthetic Stop on an unread line.
 //
 // Every failure opens the gate: a read that fails, a build the page cannot name, a store that is
 // down on approve. An artist is never stranded — Approve is theirs to tap, always.
@@ -21,19 +18,6 @@ export const RECORDER_BUILD = typeof __RECORDER_BUILD__ !== 'undefined' ? __RECO
 /** A recording pack (the setup check, the clone source) is itself a sample: never gated. */
 export function gateAppliesTo(voiceId) {
   return !!voiceId && !String(voiceId).startsWith('pack-')
-}
-
-/**
- * What the gate does now. Pure. 'stop' = a gated live session has saved its sample: press Stop.
- * 'show' = a gated session ended on its own (last line, or the artist's Stop) with takes saved:
- * show what it has — a batch shorter than the sample must not slip past the gate for ever.
- * null = nothing.
- */
-export function sampleGateAction({ gated, held, phase, saved, size = SAMPLE_SIZE }) {
-  if (!gated || held || !(saved > 0)) return null
-  if (phase === 'recording') return saved >= size ? 'stop' : null
-  if (phase === 'done') return 'show'
-  return null
 }
 
 // THE PASS IS THE VOICE'S, ON THE SERVER (job #569). This tab also remembers it, keyed by voice
