@@ -221,28 +221,65 @@ function beep () {
   } catch { /* no audio context: the banner still says it */ }
 }
 
+// Every play owns an id (job #873). Skipping between two slices of ONE clip reuses the element
+// with the same src, so the previous play's rAF tick / onended / awaited continuation is still
+// alive when the new slice starts; under the run-level token alone that stale tick saw the token
+// change and paused the new slice (#872 cold-verify: play → pause → play → stale pause).
+// A superseded play is settled quietly — it never pauses, seeks or resolves its successor; the
+// element is only ever paused by stop() or by the live play reaching its own slice end.
+let playId = 0
+let rafHandle = 0
+let settlePending = null
+function cancelPlay () {
+  playId++
+  if (rafHandle) cancelAnimationFrame(rafHandle)
+  rafHandle = 0
+  const el = audioEl.value
+  if (el) { el.onended = null; el.onloadedmetadata = null; el.onerror = null }
+  const settle = settlePending
+  settlePending = null
+  if (settle) settle()
+}
+
 function playClip (st, my) {
+  cancelPlay()
+  const id = playId
+  const live = () => id === playId && my === token
   return new Promise((resolve, reject) => {
     const el = audioEl.value
+    let done = false
+    const finish = (fn, v) => {
+      if (done) return
+      done = true
+      if (id === playId) { settlePending = null; rafHandle = 0 }
+      fn(v)
+    }
+    settlePending = () => finish(resolve)
     ;(async () => {
       const url = await urlOf(st.clip.id)
-      if (my !== token) return resolve()
+      if (!live()) return finish(resolve)
       if (el.src !== url) {
         el.src = url
-        await new Promise((ok, bad) => { el.onloadedmetadata = ok; el.onerror = () => bad(new Error('audio did not load')) })
+        await new Promise((ok, bad) => {
+          el.onloadedmetadata = () => { if (id === playId) ok() }
+          el.onerror = () => { if (id === playId) bad(new Error('audio did not load')) }
+        })
+        el.onloadedmetadata = null; el.onerror = null
+        if (!live()) return finish(resolve)
       }
       el.playbackRate = st.rate || 1
       el.currentTime = (st.clip.startMs || 0) / 1000
-      el.onended = () => resolve()
+      el.onended = () => { if (id === playId) finish(resolve) }
       await el.play()
+      if (!live()) return finish(resolve)
       if (st.clip.endMs == null) return
       const tick = () => {
-        if (my !== token) { el.pause(); return resolve() }
-        if (el.currentTime * 1000 >= st.clip.endMs) { el.pause(); return resolve() }
-        requestAnimationFrame(tick)
+        if (!live()) return finish(resolve)
+        if (el.currentTime * 1000 >= st.clip.endMs) { el.pause(); return finish(resolve) }
+        rafHandle = requestAnimationFrame(tick)
       }
-      requestAnimationFrame(tick)
-    })().catch(reject)
+      rafHandle = requestAnimationFrame(tick)
+    })().catch((e) => (live() ? finish(reject, e) : finish(resolve)))
   })
 }
 
@@ -277,7 +314,7 @@ async function run (from) {
 function scrollToCurrent () {
   nextTick(() => document.querySelector('.drill .step.now')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))
 }
-function stop () { token++; playing.value = false; audioEl.value?.pause() }
+function stop () { token++; cancelPlay(); playing.value = false; audioEl.value?.pause() }
 function pause () { stop() }
 function resume () { run(pos.value >= 0 && pos.value < flat.value.length ? pos.value : 0) }
 function playFrom (si, k = 0) { stop(); const i = flat.value.findIndex((f) => f.si === si && f.k === k); run(i < 0 ? 0 : i) }
