@@ -7,6 +7,7 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/depl
 # and a secret on this box for one push-to-main event. 2 minutes is the ceiling
 # on how long "main = served checkout" can ever be false.
 OnBootSec=1min
+OnStartupSec=1min
 OnUnitActiveSec=2min
 AccuracySec=15sec
 Unit=ssi-auto-deploy.service
