@@ -4,33 +4,29 @@
  "summary": {
   "turns": 100,
   "calibration": {
-   "strict": 58,
-   "agree": 54,
-   "placedKept": 44
+   "strict": 53,
+   "agree": 51,
+   "placedKept": 30
   },
-  "cut": 51,
-  "sentences": 142,
+  "cut": 65,
+  "sentences": 172,
   "tally": {
-   "known:too_few_gaps": 6,
-   "cut": 51,
-   "known:margin_below_floor": 4,
+   "known:too_few_gaps": 5,
+   "cut": 65,
+   "known:margin_below_floor": 2,
    "target:margin_below_floor": 7,
    "known:piece_too_short": 1,
    "target:placed_ambiguous": 8,
    "target:syllable_share": 4,
-   "known:placed_short_gap": 1,
-   "known:placed_far": 8,
    "target:placed_far": 2,
    "known:seam_not_silent": 2,
    "target:seam_not_silent": 2,
-   "known:placed_ambiguous": 2,
    "target:too_few_gaps": 1,
    "target:placed_rate": 1
   },
   "englishLevels": {
-   "reuse": 89,
-   "cut-human": 36,
-   "cut-tts": 17
+   "reuse": 136,
+   "cut-human": 36
   }
  },
  "turns": [
@@ -1056,43 +1052,63 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Hello!",
-     "… I'm sorry but I can't talk at the moment.",
-     "… I need to go home now.",
-     "… Can we talk tomorrow?"
-    ],
-    "n": 4,
-    "measure": {
-     "whole_dur": 6.168,
-     "interior_gaps_ms": [
-      138,
-      392,
-      639
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 6,
-     "cues_found": 3,
-     "cut_at_ordinals": [
-      0,
-      2,
-      4
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_short_gap",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_short_gap",
-   "gapTtsChars": 99
+   "levels": [
+    "reuse",
+    "reuse",
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "caa48a7f-127a-49e1-ad4f-982206c4f291",
+    "knownClip": "71ea72b8-6c76-4fa6-9bbc-f832714cfa37.v2",
+    "lines": [
+     {
+      "t": [
+       "Helo!",
+       0,
+       916
+      ],
+      "k": [
+       "Hello!"
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Mae'n ddrwg 'da fi… ond alla i ddim siarad… ar hyn o bryd.",
+       916,
+       4453
+      ],
+      "k": [
+       "I'm sorry but I can't talk at the moment."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ma rhaid i fi fynd adre nawr.",
+       4705,
+       6535
+      ],
+      "k": [
+       "I need to go home now."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Allwn ni siarad fory?",
+       6773,
+       8515
+      ],
+      "k": [
+       "Can we talk tomorrow?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC04-S003",
@@ -1870,37 +1886,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "My name is Anna.",
-     "… And you?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 1.872,
-     "interior_gaps_ms": [
-      227
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 27
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "f41e2d6a-7e41-45c7-b33f-0e80767b5d7f",
+    "knownClip": "66015d91-82a7-4eb6-9af5-a4ba9b2066e4.v2",
+    "lines": [
+     {
+      "t": [
+       "Anna yw fy enw i.",
+       0,
+       1742
+      ],
+      "k": [
+       "My name is Anna."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "A chi?",
+       1965,
+       2921
+      ],
+      "k": [
+       "And you?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC06-S003",
@@ -2094,37 +2112,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Pleased to meet you too.",
-     "… Where are you from?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 2.808,
-     "interior_gaps_ms": [
-      804
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 46
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "231a213d-0cbc-4dde-80ee-f546b82f0fc4.v2",
+    "knownClip": "6356cf27-fc33-4c55-9253-f3538ac02965.v2",
+    "lines": [
+     {
+      "t": [
+       "Neis cwrdd â chi 'fyd.",
+       0,
+       1795
+      ],
+      "k": [
+       "Pleased to meet you too."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "O ble dych chi'n dod?",
+       1905,
+       3656
+      ],
+      "k": [
+       "Where are you from?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC06-S005",
@@ -2398,77 +2418,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "I'm from France.",
-     "… I've been here for two years."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 2.928,
-     "interior_gaps_ms": [
-      398
-     ],
-     "cut_at_gaps_ms": [
-      398
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.303,
-      1.725
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.303
-      ],
-      [
-       1.203,
-       2.928
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      398
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -46.1,
-       "piece_peak_db": -2.1
-      },
-      {
-       "edge": "s1.head",
-       "db": -47.1,
-       "piece_peak_db": -2.5
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.083
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1253
-     ],
-     [
-      1253,
-      2928
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -2493,9 +2445,7 @@
        5090
       ],
       "k": [
-       "… I've been here for two years.",
-       1253,
-       2928
+       "I've been here for two years."
       ],
       "chunks": []
      }
@@ -2703,77 +2653,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "I'm a nurse, at the hospital just round the corner.",
-     "… And you?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.648,
-     "interior_gaps_ms": [
-      394
-     ],
-     "cut_at_gaps_ms": [
-      394
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      2.993,
-      0.755
-     ],
-     "piece_spans": [
-      [
-       0,
-       2.993
-      ],
-      [
-       2.893,
-       3.648
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      394
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -54.1,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -54.1,
-       "piece_peak_db": -3.1
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.031
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      2943
-     ],
-     [
-      2943,
-      3648
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -2798,9 +2680,7 @@
        4467
       ],
       "k": [
-       "… And you?",
-       2943,
-       3648
+       "And you?"
       ],
       "chunks": []
      }
@@ -3890,37 +3770,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Good morning.",
-     "… What can I get you?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 2.58,
-     "interior_gaps_ms": [
-      709
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 35
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "4115e131-4b53-4b64-8043-e83d15962999",
+    "knownClip": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "lines": [
+     {
+      "t": [
+       "Bore da.",
+       0,
+       1137
+      ],
+      "k": [
+       "Good morning."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Beth alla i gael i chi?",
+       1400,
+       3295
+      ],
+      "k": [
+       "What can I get you?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC07-S004",
@@ -4191,77 +4073,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Of course.",
-     "… Would you like to sit-in or takeaway?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.288,
-     "interior_gaps_ms": [
-      682
-     ],
-     "cut_at_gaps_ms": [
-      682
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.108,
-      2.28
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.108
-      ],
-      [
-       1.008,
-       3.288
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      682
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -52.6,
-       "piece_peak_db": -3.1
-      },
-      {
-       "edge": "s1.head",
-       "db": -51.9,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.044
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      917
-     ],
-     [
-      1199,
-      3288
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -4286,9 +4100,7 @@
        4536
       ],
       "k": [
-       "… Would you like to sit-in or takeaway?",
-       1199,
-       3288
+       "Would you like to sit-in or takeaway?"
       ],
       "chunks": []
      }
@@ -4376,37 +4188,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Right away.",
-     "… Would you like anything else?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3,
-     "interior_gaps_ms": [
-      907
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 43
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "80928e49-4025-4b31-89da-2ca5589ca65c",
+    "knownClip": "6c1b8300-76ce-4731-af4d-23d46d14b92e.v2",
+    "lines": [
+     {
+      "t": [
+       "Ar unwaith.",
+       0,
+       1149
+      ],
+      "k": [
+       "Right away."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ydych chi moyn rhywbeth arall?",
+       1614,
+       3551
+      ],
+      "k": [
+       "Would you like anything else?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC07-S011",
@@ -4677,37 +4491,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Of course.",
-     "… There's the machine."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 2.256,
-     "interior_gaps_ms": [
-      570
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 33
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "9bdb283c-7338-40a2-aeaf-f3de53bed7f1",
+    "knownClip": "737163fe-5553-4502-bc7a-224dc29bf11a.v2",
+    "lines": [
+     {
+      "t": [
+       "Wrth gwrs.",
+       0,
+       1132
+      ],
+      "k": [
+       "Of course."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dyma'r peiriant.",
+       1132,
+       2632
+      ],
+      "k": [
+       "There's the machine."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC07-S013",
@@ -4976,77 +4792,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Would you like to sit-in?",
-     "… The table by the window is free."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.696,
-     "interior_gaps_ms": [
-      626
-     ],
-     "cut_at_gaps_ms": [
-      626
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.682,
-      2.114
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.682
-      ],
-      [
-       1.582,
-       3.696
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      626
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -51,
-       "piece_peak_db": -3.1
-      },
-      {
-       "edge": "s1.head",
-       "db": -52.1,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.008
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1519
-     ],
-     [
-      1745,
-      3696
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -5071,9 +4819,7 @@
        4946
       ],
       "k": [
-       "… The table by the window is free.",
-       1745,
-       3696
+       "The table by the window is free."
       ],
       "chunks": []
      }
@@ -5570,77 +5316,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Could I see the wine list?",
-     "… I want a glass of wine."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.122,
-     "interior_gaps_ms": [
-      299
-     ],
-     "cut_at_gaps_ms": [
-      299
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.56,
-      1.661
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.56
-      ],
-      [
-       1.46,
-       3.122
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      299
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -53.5,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -53.5,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.018
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1510
-     ],
-     [
-      1510,
-      3122
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -5665,9 +5343,7 @@
        4997
       ],
       "k": [
-       "… I want a glass of wine.",
-       1510,
-       3122
+       "I want a glass of wine."
       ],
       "chunks": []
      }
@@ -5757,77 +5433,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "I'm not sure if I'm hungry.",
-     "… Do you have a menu?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.308,
-     "interior_gaps_ms": [
-      730
-     ],
-     "cut_at_gaps_ms": [
-      730
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.844,
-      1.563
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.844
-      ],
-      [
-       1.744,
-       3.308
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      730
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -59.7,
-       "piece_peak_db": -4.1
-      },
-      {
-       "edge": "s1.head",
-       "db": -58.3,
-       "piece_peak_db": -2.7
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.021
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1629
-     ],
-     [
-      1959,
-      3308
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -5852,9 +5460,7 @@
        4704
       ],
       "k": [
-       "… Do you have a menu?",
-       1959,
-       3308
+       "Do you have a menu?"
       ],
       "chunks": []
      }
@@ -6196,80 +5802,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Can we have some bread?",
-     "… And a bowl of chips for the table."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 4.056,
-     "interior_gaps_ms": [
-      974,
-      156
-     ],
-     "cut_at_gaps_ms": [
-      974
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.723,
-      2.433
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.723
-      ],
-      [
-       1.623,
-       4.056
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      974,
-      156
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -48.4,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -50.6,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "strict",
-    "placed_agrees": true,
-    "share_deltas": [
-     0.053
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1386
-     ],
-     [
-      1960,
-      4056
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -6294,9 +5829,7 @@
        4869
       ],
       "k": [
-       "… And a bowl of chips for the table.",
-       1960,
-       4056
+       "And a bowl of chips for the table."
       ],
       "chunks": []
      }
@@ -6383,35 +5916,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Do you have any sandwiches?",
-     "… I'd like a cheese sandwich, please."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 1.658,
-     "interior_gaps_ms": [],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 0,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "too_few_gaps",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:too_few_gaps",
-   "gapTtsChars": 65
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "565e6182-df6d-469e-997c-34c819499ba8",
+    "knownClip": "81e76213-7c24-4784-8ae7-264dc4a98dfb",
+    "lines": [
+     {
+      "t": [
+       "Oes brechdanau 'da chi?",
+       0,
+       2084
+      ],
+      "k": [
+       "Do you have any sandwiches?"
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Licen i frechdan gaws,… os gwelwch yn dda.",
+       2353,
+       5367
+      ],
+      "k": [
+       "I'd like a cheese sandwich, please."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC08-S016",
@@ -6724,80 +6261,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Good evening.",
-     "… We have a booking for two, under the name Davies."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 4.608,
-     "interior_gaps_ms": [
-      854,
-      192
-     ],
-     "cut_at_gaps_ms": [
-      854
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.308,
-      3.4
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.308
-      ],
-      [
-       1.208,
-       4.608
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      854,
-      192
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -50.9,
-       "piece_peak_db": -3.3
-      },
-      {
-       "edge": "s1.head",
-       "db": -52.6,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "strict",
-    "placed_agrees": true,
-    "share_deltas": [
-     0.011
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1031
-     ],
-     [
-      1485,
-      4608
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -6822,9 +6288,7 @@
        5894
       ],
       "k": [
-       "… We have a booking for two, under the name Davies.",
-       1485,
-       4608
+       "We have a booking for two, under the name Davies."
       ],
       "chunks": []
      }
@@ -7495,71 +6959,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "I'll have the lamb, please.",
-     "… With a side of greens."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 4.6,
-     "interior_gaps_ms": [
-      169,
-      510,
-      388
-     ],
-     "cut_at_gaps_ms": [
-      510
-     ],
-     "rejected_gaps_ms": [
-      169
-     ],
-     "margin": 2.3,
-     "piece_durs": [
-      1.933,
-      2.767
-     ],
-     "piece_spans": [
-      [
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "0f752b9f-9247-4108-82c3-ab24ee486df9",
+    "knownClip": "809f3069-c1eb-4dd1-89e6-ea2c98be22a0",
+    "lines": [
+     {
+      "t": [
+       "Cymra i'r oen,… os gwelwch yn dda.",
        0,
-       1.933
+       2555
       ],
-      [
-       1.833,
-       4.6
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      510,
-      388
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -54.1,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -53.3,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "unconfirmed"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 52
+      "k": [
+       "I'll have the lamb, please."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Gyda llysiau gwyrdd… ar yr ochr.",
+       2835,
+       5308
+      ],
+      "k": [
+       "With a side of greens."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC09-S010",
@@ -7981,77 +7413,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Just two coffees, please.",
-     "… Decaf for me."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.392,
-     "interior_gaps_ms": [
-      597
-     ],
-     "cut_at_gaps_ms": [
-      597
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.972,
-      1.52
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.972
-      ],
-      [
-       1.872,
-       3.392
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      597
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -46,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -47.1,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.019
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      1824
-     ],
-     [
-      2021,
-      3392
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -8076,9 +7440,7 @@
        5414
       ],
       "k": [
-       "… Decaf for me.",
-       2021,
-       3392
+       "Decaf for me."
       ],
       "chunks": []
      }
@@ -8165,80 +7527,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "And the bill, when you're ready.",
-     "… Could we split it?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.643,
-     "interior_gaps_ms": [
-      202,
-      648
-     ],
-     "cut_at_gaps_ms": [
-      648
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      2.215,
-      1.528
-     ],
-     "piece_spans": [
-      [
-       0,
-       2.215
-      ],
-      [
-       2.115,
-       3.643
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      1
-     ],
-     "cue_gaps_ms": [
-      202,
-      648
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -57.2,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -58.3,
-       "piece_peak_db": -2.2
-      }
-     ]
-    },
-    "method": "placed",
-    "placed_agrees": false,
-    "share_deltas": [
-     0.078
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      2041
-     ],
-     [
-      2289,
-      3643
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -8263,9 +7554,7 @@
        4053
       ],
       "k": [
-       "… Could we split it?",
-       2289,
-       3643
+       "Could we split it?"
       ],
       "chunks": []
      }
@@ -8489,77 +7778,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Excuse me.",
-     "… Do you have any painkillers?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.116,
-     "interior_gaps_ms": [
-      748
-     ],
-     "cut_at_gaps_ms": [
-      748
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.184,
-      2.033
-     ],
-     "piece_spans": [
-      [
-       0,
-       1.184
-      ],
-      [
-       1.084,
-       3.116
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      748
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -50,
-       "piece_peak_db": -3
-      },
-      {
-       "edge": "s1.head",
-       "db": -53.2,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.013
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      960
-     ],
-     [
-      1308,
-      3116
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -8584,9 +7805,7 @@
        4778
       ],
       "k": [
-       "… Do you have any painkillers?",
-       1308,
-       3116
+       "Do you have any painkillers?"
       ],
       "chunks": []
      }
@@ -8676,77 +7895,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Thank you.",
-     "… And do you have any painkillers for children?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.688,
-     "interior_gaps_ms": [
-      658
-     ],
-     "cut_at_gaps_ms": [
-      658
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      0.953,
-      2.834
-     ],
-     "piece_spans": [
-      [
-       0,
-       0.953
-      ],
-      [
-       0.853,
-       3.688
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      658
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -42,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -41.4,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.056
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      774
-     ],
-     [
-      1032,
-      3688
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -8771,9 +7922,7 @@
        5188
       ],
       "k": [
-       "… And do you have any painkillers for children?",
-       1032,
-       3688
+       "And do you have any painkillers for children?"
       ],
       "chunks": []
      }
@@ -8866,80 +8015,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Thank you, you've been very helpful.",
-     "… I'm very grateful."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.72,
-     "interior_gaps_ms": [
-      108,
-      396
-     ],
-     "cut_at_gaps_ms": [
-      396
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      2.197,
-      1.623
-     ],
-     "piece_spans": [
-      [
-       0,
-       2.197
-      ],
-      [
-       2.097,
-       3.72
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      1
-     ],
-     "cue_gaps_ms": [
-      108,
-      396
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -52.8,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -51.6,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "placed",
-    "placed_agrees": false,
-    "share_deltas": [
-     0.014
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      2147
-     ],
-     [
-      2147,
-      3720
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -8964,9 +8042,7 @@
        5348
       ],
       "k": [
-       "… I'm very grateful.",
-       2147,
-       3720
+       "I'm very grateful."
       ],
       "chunks": []
      }
@@ -9791,68 +8867,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Lovely.",
-     "… The room is on the third floor, room 709."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 4.344,
-     "interior_gaps_ms": [
-      178,
-      494
-     ],
-     "cut_at_gaps_ms": [
-      178
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      0.697,
-      3.747
-     ],
-     "piece_spans": [
-      [
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "632b5062-617b-4503-9647-20545693c00c",
+    "knownClip": "93dfb9a8-d27f-41e8-9d9f-1cf54bc84fe3.v2",
+    "lines": [
+     {
+      "t": [
+       "Bendigedig.",
        0,
-       0.697
+       1413
       ],
-      [
-       0.597,
-       4.344
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      178,
-      494
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -51.7,
-       "piece_peak_db": -4
-      },
-      {
-       "edge": "s1.head",
-       "db": -48.9,
-       "piece_peak_db": -2.7
-      }
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_ambiguous",
-    "strict": "unconfirmed"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_ambiguous",
-   "gapTtsChars": 51
+      "k": [
+       "Lovely."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ma'r stafell ar… y trydydd llawr,… stafell saith cant a naw.",
+       1575,
+       6416
+      ],
+      "k": [
+       "The room is on the third floor, room 709."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC11-S008",
@@ -9941,80 +8988,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "From half-past seven until ten o'clock.",
-     "… We have fruit and cereals or a cooked breakfast."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 6.216,
-     "interior_gaps_ms": [
-      858,
-      110
-     ],
-     "cut_at_gaps_ms": [
-      858
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      2.858,
-      3.458
-     ],
-     "piece_spans": [
-      [
-       0,
-       2.858
-      ],
-      [
-       2.758,
-       6.216
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      858,
-      110
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -51.9,
-       "piece_peak_db": -2
-      },
-      {
-       "edge": "s1.head",
-       "db": -56.9,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "strict",
-    "placed_agrees": true,
-    "share_deltas": [
-     0.009
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      2579
-     ],
-     [
-      3037,
-      6216
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -10039,9 +9015,7 @@
        8529
       ],
       "k": [
-       "… We have fruit and cereals or a cooked breakfast.",
-       3037,
-       6216
+       "We have fruit and cereals or a cooked breakfast."
       ],
       "chunks": []
      }
@@ -10171,77 +9145,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "It's on the welcome card in your room.",
-     "… Have a lovely stay."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.648,
-     "interior_gaps_ms": [
-      407
-     ],
-     "cut_at_gaps_ms": [
-      407
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      2.304,
-      1.444
-     ],
-     "piece_spans": [
-      [
-       0,
-       2.304
-      ],
-      [
-       2.204,
-       3.648
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      407
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -62,
-       "piece_peak_db": -2.3
-      },
-      {
-       "edge": "s1.head",
-       "db": -62.7,
-       "piece_peak_db": -2.3
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.044
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      2251
-     ],
-     [
-      2258,
-      3648
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -10266,9 +9172,7 @@
        6154
       ],
       "k": [
-       "… Have a lovely stay.",
-       2258,
-       3648
+       "Have a lovely stay."
       ],
       "chunks": []
      }
@@ -10583,58 +9487,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Good morning.",
-     "… I'm not feeling great - could you recommend something?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 4.368,
-     "interior_gaps_ms": [
-      910,
-      200,
-      136
-     ],
-     "cut_at_gaps_ms": [
-      910
-     ],
-     "rejected_gaps_ms": [
-      136
-     ],
-     "margin": 1.48,
-     "piece_durs": [
-      1.162,
-      3.306
-     ],
-     "piece_spans": [
-      [
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "223cc36e-03b2-43a1-8087-f4a991bd8ab9.v2",
+    "knownClip": "40059f69-63a6-4015-8d11-720f0106b61a",
+    "lines": [
+     {
+      "t": [
+       "Bore da.",
        0,
-       1.162
+       1134
       ],
-      [
-       1.062,
-       4.368
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      910,
-      200
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "margin_below_floor"
-   },
-   "verdict": "whole",
-   "reason": "known:margin_below_floor",
-   "gapTtsChars": 70
+      "k": [
+       "Good morning."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dw i ddim yn… teimlo'n grêt… — allwch chi argymell rhywbeth?",
+       1272,
+       5105
+      ],
+      "k": [
+       "I'm not feeling great - could you recommend something?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC12-S002",
@@ -10790,77 +9675,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Thank you.",
-     "… Could I also get a packet of plasters?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.302,
-     "interior_gaps_ms": [
-      544
-     ],
-     "cut_at_gaps_ms": [
-      544
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      0.897,
-      2.505
-     ],
-     "piece_spans": [
-      [
-       0,
-       0.897
-      ],
-      [
-       0.797,
-       3.302
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      544
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -46.6,
-       "piece_peak_db": -4.9
-      },
-      {
-       "edge": "s1.head",
-       "db": -46.2,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.055
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      775
-     ],
-     [
-      919,
-      3302
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -10885,9 +9702,7 @@
        4540
       ],
       "k": [
-       "… Could I also get a packet of plasters?",
-       919,
-       3302
+       "Could I also get a packet of plasters?"
       ],
       "chunks": []
      }
@@ -11387,58 +10202,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Wonderful.",
-     "… And is there a cashpoint nearby?"
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.437,
-     "interior_gaps_ms": [
-      571,
-      114,
-      133
-     ],
-     "cut_at_gaps_ms": [
-      571
-     ],
-     "rejected_gaps_ms": [
-      114
-     ],
-     "margin": 1.17,
-     "piece_durs": [
-      1.067,
-      2.47
-     ],
-     "piece_spans": [
-      [
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "9ad224c8-5e46-494c-8e36-a2a387c16733",
+    "knownClip": "12418383-03be-4a95-9a15-020a11db43ba",
+    "lines": [
+     {
+      "t": [
+       "Gwych.",
        0,
-       1.067
+       926
       ],
-      [
-       0.967,
-       3.437
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      571,
-      133
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "margin_below_floor"
-   },
-   "verdict": "whole",
-   "reason": "known:margin_below_floor",
-   "gapTtsChars": 45
+      "k": [
+       "Wonderful."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ac oes 'na beiriant arian… gerllaw?",
+       1336,
+       3864
+      ],
+      "k": [
+       "And is there a cashpoint nearby?"
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC13-S010",
@@ -11524,68 +10320,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Thank you very much.",
-     "… You've been very helpful."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3,
-     "interior_gaps_ms": [
-      119,
-      387
-     ],
-     "cut_at_gaps_ms": [
-      119
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      1.062,
-      2.038
-     ],
-     "piece_spans": [
-      [
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "41857f1e-b14d-4580-b16f-e70e862913ac",
+    "knownClip": "ecd430bc-26a2-46b4-845c-21a763a2f8b6",
+    "lines": [
+     {
+      "t": [
+       "Diolch yn fawr iawn.",
        0,
-       1.062
+       1642
       ],
-      [
-       0.962,
-       3
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 2,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      119,
-      387
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -44.8,
-       "piece_peak_db": -2.4
-      },
-      {
-       "edge": "s1.head",
-       "db": -38.8,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_ambiguous",
-    "strict": "unconfirmed"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_ambiguous",
-   "gapTtsChars": 48
+      "k": [
+       "Thank you very much."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Dych chi wedi bod yn help mawr.",
+       1746,
+       4109
+      ],
+      "k": [
+       "You've been very helpful."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC13-S011",
@@ -12168,37 +10935,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Here we are.",
-     "… That's twelve pound fifty."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.051,
-     "interior_gaps_ms": [
-      630
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 41
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "8e6edbb4-0a6d-43b6-a9a4-ff29af785bb7",
+    "knownClip": "def16887-b3aa-4afe-b978-e5459eade655",
+    "lines": [
+     {
+      "t": [
+       "Dyma ni.",
+       0,
+       1093
+      ],
+      "k": [
+       "Here we are."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Deuddeg punt a hanner yw hi.",
+       1385,
+       3497
+      ],
+      "k": [
+       "That's twelve pound fifty."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC14-S009",
@@ -12283,37 +11052,39 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "Yes, of course.",
-     "… The machine is just here."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 3.467,
-     "interior_gaps_ms": [
-      890
-     ],
-     "cut_at_gaps_ms": [],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [],
-     "piece_spans": [],
-     "cue_mode": true,
-     "cues_expected": 2,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ]
-    },
-    "method": "strict",
-    "ok": false,
-    "reason": "placed_far",
-    "strict": "too_few_gaps"
-   },
-   "verdict": "whole",
-   "reason": "known:placed_far",
-   "gapTtsChars": 43
+   "levels": [
+    "reuse",
+    "reuse"
+   ],
+   "verdict": "cut",
+   "cut": {
+    "clip": "e73865f4-f3fe-4ffa-bf72-4fe061254ffb",
+    "knownClip": "72de9e4c-e977-42cf-9cb4-602dde5f2a85",
+    "lines": [
+     {
+      "t": [
+       "Gallwch, wrth gwrs.",
+       0,
+       1717
+      ],
+      "k": [
+       "Yes, of course."
+      ],
+      "chunks": []
+     },
+     {
+      "t": [
+       "Ma'r peiriant… jyst fan hyn.",
+       1737,
+       3697
+      ],
+      "k": [
+       "The machine is just here."
+      ],
+      "chunks": []
+     }
+    ]
+   }
   },
   {
    "id": "cym_s_for_eng:pod-1:SC14-S010",
@@ -14369,77 +13140,9 @@
      ]
     ]
    },
-   "knownSide": {
-    "sentences": [
-     "It's just a little frustrating when I can't think quickly enough to express myself properly.",
-     "… But I know that I need to keep practising if I want to speak more confidently."
-    ],
-    "n": 2,
-    "measure": {
-     "whole_dur": 9.648,
-     "interior_gaps_ms": [
-      797
-     ],
-     "cut_at_gaps_ms": [
-      797
-     ],
-     "rejected_gaps_ms": [],
-     "margin": null,
-     "piece_durs": [
-      5.249,
-      4.499
-     ],
-     "piece_spans": [
-      [
-       0,
-       5.249
-      ],
-      [
-       5.149,
-       9.648
-      ]
-     ],
-     "cue_mode": true,
-     "cues_expected": 1,
-     "cues_found": 1,
-     "cut_at_ordinals": [
-      0
-     ],
-     "cue_gaps_ms": [
-      797
-     ],
-     "seams_db": [
-      {
-       "edge": "s0.tail",
-       "db": -38.3,
-       "piece_peak_db": -2.3
-      },
-      {
-       "edge": "s1.head",
-       "db": -37.3,
-       "piece_peak_db": -2.4
-      }
-     ]
-    },
-    "method": "placed",
-    "share_deltas": [
-     0.01
-    ],
-    "ok": true,
-    "spans": [
-     [
-      0,
-      5001
-     ],
-     [
-      5398,
-      9648
-     ]
-    ]
-   },
    "levels": [
     "reuse",
-    "cut-tts"
+    "reuse"
    ],
    "verdict": "cut",
    "cut": {
@@ -14464,9 +13167,7 @@
        14212
       ],
       "k": [
-       "… But I know that I need to keep practising if I want to speak more confidently.",
-       5398,
-       9648
+       "But I know that I need to keep practising if I want to speak more confidently."
       ],
       "chunks": []
      }
