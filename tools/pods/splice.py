@@ -100,8 +100,8 @@ def silences(path):
     return heal_blips(raw_silences(path))
 
 
-def splice(src, n, outbase, cues=None, at=None):
-    dur = probe_dur(src)
+def interior_gaps(src, dur):
+    """The interior silences splice() chooses from, in time order."""
     raw = silences(src)
     # interior only
     gaps = [(a, b) for a, b in raw if a > EDGE and b < dur - EDGE]
@@ -112,6 +112,12 @@ def splice(src, n, outbase, cues=None, at=None):
             merged[-1] = (merged[-1][0], b)
         else:
             merged.append((a, b))
+    return merged
+
+
+def splice(src, n, outbase, cues=None, at=None):
+    dur = probe_dur(src)
+    merged = interior_gaps(src, dur)
     merged.sort(key=lambda g: g[1] - g[0], reverse=True)
 
     if at is None:
@@ -196,6 +202,16 @@ if __name__ == '__main__':
             'healed': [[round(a, 4), round(b, 4)] for a, b in silences(argv[0])],
             'blip_merge_s': BLIP_MERGE_S, 'detect_min_s': DETECT_MIN_S,
             'min_sil': MIN_SIL}))
+        sys.exit(0)
+    if 'gaps' in flags:
+        # Measurement only: the speech edges and interior gaps of a take, in seconds.
+        _dur = probe_dur(argv[0])
+        _h = silences(argv[0])
+        print(json.dumps({
+            'dur': round(_dur, 3),
+            'speech_start': round(_h[0][1], 3) if _h and _h[0][0] <= EDGE else 0,
+            'speech_end': round(_h[-1][0], 3) if _h and _h[-1][1] >= _dur - EDGE else round(_dur, 3),
+            'gaps': [[round(a, 3), round(b, 3)] for a, b in interior_gaps(argv[0], _dur)]}))
         sys.exit(0)
     _at = ([int(x) for x in flags['at'].split(',') if x != '']
            if 'at' in flags else None)

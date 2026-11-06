@@ -13,6 +13,19 @@
  *    the cut against share of speech time before it). The longest-gap rule assumes the long pauses are the sentence
  *    ends; a person can breathe longer at a comma.
  *  - suspect_long_gap: a gap over LONG_GAP_S is not a sentence pause, it is a retake or an edit fault.
+ *
+ * PLACED BREAKS. The splicer's cue mode counts a pause at every "…" in the text, because the TTS renderer put one
+ * there. A person does not, so most human takes fail its gap count (too_few_gaps) while pausing plainly at the
+ * sentence end. For those turns alone the break is placed by position instead: the gap nearest the sentence end's
+ * syllable share. It must be unambiguous, or the turn stays whole:
+ *  - within PLACE_TOL of that share, and the runner-up gap at least PLACE_CLEAR further away;
+ *  - at least PLACE_MIN_GAP long;
+ *  - a pause nobody marked (no comma or "…" near it) must be no longer than the shortest cut over 1.5, the splicer's
+ *    margin; marked pauses are expected and do not count against it;
+ *  - the sentences' speech rates must agree within RATE_RATIO, and every seam, piece and share gate still applies.
+ * Where the strict cut already passes, the placed break is computed beside it and any disagreement is reported
+ * (placed_agrees): that is the method's own calibration.
+ *
  * Each sentence's English, in preference order: an existing clip of the exact sentence in the same voice (the Drill
  * looks it up by text), else a span of the card's own English take. A turn with any sentence left without English
  * stays whole: a sentence is never drilled without its English.
@@ -30,10 +43,15 @@ const { promisify } = require('util')
 const { cueMap, splitOn, spliceAndGate } = require('../splice-gates.cjs')
 
 const execFileP = promisify(execFile)
+const SPLICER = path.join(__dirname, '..', 'splice.py')
 const OPS = process.env.POD_DRILL_OPS || path.join(__dirname, '..', '..', '..', 'ops', 'pod-drill-cuts')
 const SHARE_TOL = 0.14   // of the whole turn's speech
 const LONG_GAP_S = 2.5
 const TRIM_S = 0.2       // keep at most this much of a long pause on each side of a cut
+const PLACE_TOL = 0.1    // of the turn's speech
+const PLACE_CLEAR = 0.08
+const PLACE_MIN_GAP = 0.15
+const RATE_RATIO = 1.7
 
 /** Pure: rough syllables, vowel groups; good enough for a share of a turn, in Welsh and in English. */
 const syllables = (t) => (String(t || '').toLowerCase().match(/[aeiouwyâêîôûŵŷáéíóúàèìòù]+/g) || []).length || 1
@@ -67,24 +85,89 @@ function msSpans (spans, gapsMs) {
   })
 }
 
+/** Pure: speech-time share of a moment, with the pauses taken out. */
+function speechShare (at, speechStart, speechEnd, gaps) {
+  const total = speechEnd - speechStart - gaps.reduce((n, [a, b]) => n + (b - a), 0)
+  const before = at - speechStart - gaps.reduce((n, [a, b]) => n + (b <= at ? b - a : 0), 0)
+  return before / total
+}
+
+/** Pure: syllable share of every marked pause inside the text (comma, ellipsis, or a sentence end). */
+function markedPauses (text) {
+  const total = syllables(text)
+  const marks = []
+  const re = /[,…;:.!?]+\s+/g
+  let m
+  while ((m = re.exec(text))) marks.push(syllables(text.slice(0, m.index)) / total)
+  return marks
+}
+
+/** Pure: which gap (index in time order) is each sentence end, or {refuse}. See PLACED BREAKS. */
+function placeBreaks (sentences, text, take) {
+  const { gaps, speech_start: s0, speech_end: s1 } = take
+  if (gaps.length < sentences.length - 1) return { refuse: 'too_few_gaps' }
+  const mid = (g) => speechShare(g[0], s0, s1, gaps)
+  const syl = sentences.map(syllables)
+  const total = syl.reduce((a, b) => a + b, 0)
+  const at = []
+  let acc = 0
+  for (let i = 0; i < sentences.length - 1; i++) {
+    acc += syl[i]
+    const want = acc / total
+    const near = gaps.map((g, j) => [Math.abs(mid(g) - want), j]).sort((a, b) => a[0] - b[0])
+    if (near[0][0] > PLACE_TOL) return { refuse: 'placed_far' }
+    if (near[1] && near[1][0] - near[0][0] < PLACE_CLEAR) return { refuse: 'placed_ambiguous' }
+    if (gaps[near[0][1]][1] - gaps[near[0][1]][0] < PLACE_MIN_GAP) return { refuse: 'placed_short_gap' }
+    at.push(near[0][1])
+  }
+  if (new Set(at).size !== at.length) return { refuse: 'placed_ambiguous' }
+  const chosen = at.map((j) => gaps[j][1] - gaps[j][0])
+  const marks = markedPauses(text)
+  const unmarked = gaps.filter((g, j) => !at.includes(j) && !marks.some((p) => Math.abs(p - mid(g)) <= PLACE_TOL))
+  const longest = Math.max(0, ...unmarked.map(([a, b]) => b - a))
+  if (longest && Math.min(...chosen) / longest < 1.5) return { refuse: 'placed_margin' }
+  return { at }
+}
+
+/** Pure: slowest and fastest sentence must agree. Only sentences of 4 syllables or more say anything. */
+function ratesAgree (sentences, spans) {
+  const rates = sentences.map((s, i) => [syllables(s), (spans[i][1] - spans[i][0]) / 1000]).filter(([n]) => n >= 4).map(([n, d]) => n / d)
+  return rates.length < 2 || Math.max(...rates) / Math.min(...rates) <= RATE_RATIO
+}
+
 /** One side of a turn: split its text into sentences by the Welsh ellipsis rule, cut the take, run every gate. */
 async function cutSide (clipFile, text, tag, dir) {
   const m = cueMap(text)
   if (!m) return { ok: false, reason: 'cue_map_refused' }
   const r = { sentences: m.sentences, n: m.sentences.length }
   if (r.n < 2) return { ...r, ok: false, reason: 'one_sentence' }
-  const res = await spliceAndGate(clipFile, r.n, path.join(dir, tag), { cues: m.cues, at: m.at })
+  const take = JSON.parse((await execFileP('python3', [SPLICER, clipFile, '2', path.join(dir, tag), '--gaps'])).stdout)
+  const placed = placeBreaks(m.sentences, text, take)
+  let res = await spliceAndGate(clipFile, r.n, path.join(dir, tag), { cues: m.cues, at: m.at })
   for (const f of res.files || []) fs.rmSync(f, { force: true })
   r.measure = res.measure
+  r.method = 'strict'
+  if (!res.ok && res.reason === 'too_few_gaps') {
+    if (placed.refuse) return { ...r, ok: false, reason: placed.refuse, strict: res.reason }
+    r.method = 'placed'
+    res = await spliceAndGate(clipFile, r.n, path.join(dir, tag), { cues: take.gaps.length, at: placed.at })
+    for (const f of res.files || []) fs.rmSync(f, { force: true })
+    r.measure = res.measure
+  } else if (res.ok && !placed.refuse) {
+    const strictMids = res.measure.piece_spans.slice(1).map(([a]) => a + 0.05)
+    r.placed_agrees = placed.at.every((j, i) => Math.abs((take.gaps[j][0] + take.gaps[j][1]) / 2 - strictMids[i]) < 0.1)
+  }
   if (!res.ok) return { ...r, ok: false, reason: res.reason }
   const gaps = res.measure.cut_at_gaps_ms
   if (gaps.some((g) => g / 1000 > LONG_GAP_S)) return { ...r, ok: false, reason: 'suspect_long_gap' }
   r.share_deltas = shareDeltas(m.sentences, res.measure.piece_spans, gaps)
   if (r.share_deltas.some((d) => d > SHARE_TOL)) return { ...r, ok: false, reason: 'syllable_share' }
-  return { ...r, ok: true, spans: msSpans(res.measure.piece_spans, gaps) }
+  const spans = msSpans(res.measure.piece_spans, gaps)
+  if (r.method === 'placed' && !ratesAgree(m.sentences, spans)) return { ...r, ok: false, reason: 'placed_rate' }
+  return { ...r, ok: true, spans }
 }
 
-module.exports = { syllables, shareDeltas, msSpans }
+module.exports = { syllables, shareDeltas, msSpans, placeBreaks, ratesAgree, speechShare, markedPauses }
 if (require.main !== module) return
 
 const argv = process.argv.slice(2)
@@ -162,7 +245,9 @@ async function handle (c) {
   }
   const levels = {}
   for (const r of out) for (const l of r.levels || []) levels[l] = (levels[l] || 0) + 1
-  const summary = { turns: out.length, cut: tally.cut || 0, sentences: out.reduce((n, r) => n + (r.cut?.lines.length || 0), 0), tally, englishLevels: levels }
+  const sides = out.flatMap((r) => [r.targetSide, r.knownSide]).filter(Boolean)
+  const calibration = { strict: sides.filter((x) => x.placed_agrees !== undefined).length, agree: sides.filter((x) => x.placed_agrees === true).length, placedKept: sides.filter((x) => x.ok && x.method === 'placed').length }
+  const summary = { turns: out.length, calibration, cut: tally.cut || 0, sentences: out.reduce((n, r) => n + (r.cut?.lines.length || 0), 0), tally, englishLevels: levels }
   console.log(JSON.stringify(summary, null, 1))
   const report = { course, tool: 'tools/pods/pod-drill/silence-lines.cjs (#71)', summary, turns: out }
   const reportPath = path.join(opt.write ? OPS : scratch, `${course}.silence-lines.json`)
