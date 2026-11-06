@@ -16,10 +16,12 @@
  *
  * READ-ONLY, by key, through the agent-db door, on the nightly QA copy:
  *   set -a; . ~/ssi-restore/qa-copy.env; set +a
- *   node tools/pods/pod-drill/whole-turns.mjs <course> [--pod=pod-1] [--write]
+ *   node tools/pods/pod-drill/whole-turns.mjs <course> [--pod=pod-1] [--write] [--known-clips] [--audit]
  * Without --write it prints the rows; with --write it writes ops/pod-drill-cuts/<course>.whole-turns.json.
+ * --audit also takes the turns split-clip-audit.cjs proved mid-sentence on the Welsh side (job #96): the player plays
+ * those split, but their sentence clips are retired for it, so they are cut from the whole take like any other.
  */
-import { writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { createRequire } from 'node:module'
 import { OPS } from './paths.mjs'
@@ -40,6 +42,16 @@ const wordsOnly = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}]+/g
 const bare = (id) => String(id || '').replace(/\.v\d+$/, '')
 const ref = (c) => (c ? (c.audio_revision > 1 ? `${c.id}.v${c.audio_revision}` : c.id) : null)
 const timingsOf = (c) => (c && (c.word_timings || c.word_boundaries)) || null
+// An English turn stored with the renderer's cue pauses ("Hello! … And you?") leaves a "…" on the front of a sentence.
+const knownParts = (t) => String(t || '').split(/(?<=[.!?])\s+/).map((s) => s.replace(/^[…\s]+/u, '').trim()).filter(Boolean)
+// The player's normalizeForLookup and lookupKeyVariants (packages/core/src/pods/fusionDrill.ts): the stored key's
+// trailing punctuation varies by writer, so ask for each spelling and confirm on letters and digits.
+const lookupKey = (t) => String(t || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu, ' ').trim()
+const keyVariants = (t) => {
+  const base = String(t || '').toLowerCase().trim().replace(/\s+/g, ' ').replace(/[\u2018\u2019]/g, "'")
+  const stem = base.replace(/[.!?…。！？؟¿¡\s]+$/u, '')
+  return [...new Set([base, stem, `${stem}.`, `${stem}?`, `${stem}!`, normalizeForAudio(t)])]
+}
 
 /** Pure: does the player split this row into its sentence clips? (splitRowUnits with its textById oracle) */
 export function playerSplits(row, clipById) {
@@ -62,8 +74,11 @@ try {
   for (const r of walk) for (const id of [r.target_audio_id, r.known_audio_id, ...(r.sentence_audio_ids || []), ...(r.sentence_known_audio_ids || [])]) if (id) ids.add(bare(id))
   const clipById = new Map((await clipsById(pg, [...ids], { cols: 'id, text, voice_id, origin, word_timings, word_boundaries, audio_revision' })).map((c) => [String(c.id), c]))
   const cards = []
+  const auditFile = path.join(OPS, `${course}.split-clip-audit.json`)
+  const retired = new Set(opt.audit && existsSync(auditFile)
+    ? JSON.parse(readFileSync(auditFile, 'utf8')).turns.filter((t) => t.welsh?.verdict === 'MID-SENTENCE').map((t) => t.id) : [])
   for (const r of walk) {
-    if (sentences(r.target_text).length < 2 || playerSplits(r, clipById)) continue
+    if (sentences(r.target_text).length < 2 || (playerSplits(r, clipById) && !retired.has(r.id))) continue
     const t = clipById.get(bare(r.target_audio_id)), k = clipById.get(bare(r.known_audio_id))
     cards.push({
       id: r.id, pod: podId, scene: r.scene_number, speaker: r.speaker, target: r.target_text, known: r.known_text,
@@ -72,21 +87,21 @@ try {
       targetOrigin: t?.origin || null, knownOrigin: k?.origin || null,
       sentenceKnownAudioIds: (r.sentence_known_audio_ids || []).filter(Boolean),
       wordTimings: timingsOf(t), knownWordTimings: timingsOf(k), chunks: [], kind: 'whole-turn',
-      why: (r.sentence_audio_ids || []).filter(Boolean).length < 2 ? 'no sentence clips' : 'sentence clips missing or no longer say the turn',
+      why: retired.has(r.id) ? 'sentence clips retired by split-clip-audit' : (r.sentence_audio_ids || []).filter(Boolean).length < 2 ? 'no sentence clips' : 'sentence clips missing or no longer say the turn',
     })
   }
   // --known-clips: every existing English clip of exactly each card's sentences, in the card's own English voice, any
   // course (job #71): the clips the Drill's by-text lookup would find, so a cut tool can tell before it relies on one.
   if (opt['known-clips']) {
     for (const c of cards) {
-      const parts = String(c.known || '').split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean)
+      const parts = knownParts(c.known)
       const family = String(c.knownVoice || '').replace(/^(xai|azure|cartesia)_/, '')
       const voices = [family, `xai_${family}`, `azure_${family}`, `cartesia_${family}`]
       const { rows: hits } = await pg.query(
         `SELECT id, text, text_normalized, role, course_code, voice_id, origin FROM course_audio
           WHERE text_normalized = ANY($1) AND role IN ('known', 'pod_fine_known') AND voice_id = ANY($2)`,
-        [parts.map((s) => normalizeForAudio(s)), voices])
-      c.knownSentenceClips = parts.map((s) => ({ text: s, clips: hits.filter((h) => h.text_normalized === normalizeForAudio(s)) }))
+        [parts.flatMap(keyVariants), voices])
+      c.knownSentenceClips = parts.map((s) => ({ text: s, clips: hits.filter((h) => lookupKey(h.text) === lookupKey(s)) }))
     }
   }
   const out = { course, pod: podId, tool: 'tools/pods/pod-drill/whole-turns.mjs (#836)', rows: walk.length, cards }
