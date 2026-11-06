@@ -26,11 +26,12 @@ import { OPS } from './paths.mjs'
 
 const require = createRequire(import.meta.url)
 const { connect, clipsById } = require('../../../services/shared/agent-db.cjs')
+const { normalizeForAudio } = require('../../../services/shared/text-normalize.cjs')
 
 const argv = process.argv.slice(2)
 const opt = Object.fromEntries(argv.filter((a) => a.startsWith('--')).map((a) => { const [k, v] = a.slice(2).split('='); return [k, v ?? true] }))
 const course = argv.find((a) => !a.startsWith('--'))
-if (!course || !/^[a-z]{3}_for_[a-z]{3}$/.test(course)) { console.error('usage: whole-turns.mjs <course> [--pod=pod-1] [--write]'); process.exit(64) }
+if (!course || !/^[a-z]{3}(_[a-z]+)?_for_[a-z]{3}$/.test(course)) { console.error('usage: whole-turns.mjs <course> [--pod=pod-1] [--write]'); process.exit(64) }
 const podId = `${course}:${opt.pod || 'pod-1'}`
 
 // Sentence ends, the player's POD_SENTENCE_BOUNDARY plus the CJK enders it cannot split on (Chinese turns have no spaces)
@@ -59,7 +60,7 @@ try {
   const walk = base.length ? base : rows
   const ids = new Set()
   for (const r of walk) for (const id of [r.target_audio_id, r.known_audio_id, ...(r.sentence_audio_ids || []), ...(r.sentence_known_audio_ids || [])]) if (id) ids.add(bare(id))
-  const clipById = new Map((await clipsById(pg, [...ids], { cols: 'id, text, voice_id, word_timings, word_boundaries, audio_revision' })).map((c) => [String(c.id), c]))
+  const clipById = new Map((await clipsById(pg, [...ids], { cols: 'id, text, voice_id, origin, word_timings, word_boundaries, audio_revision' })).map((c) => [String(c.id), c]))
   const cards = []
   for (const r of walk) {
     if (sentences(r.target_text).length < 2 || playerSplits(r, clipById)) continue
@@ -68,9 +69,25 @@ try {
       id: r.id, pod: podId, scene: r.scene_number, speaker: r.speaker, target: r.target_text, known: r.known_text,
       targetAudioId: ref(t) || r.target_audio_id || null, knownAudioId: ref(k) || r.known_audio_id || null,
       targetVoice: t?.voice_id || null, knownVoice: k?.voice_id || null,
+      targetOrigin: t?.origin || null, knownOrigin: k?.origin || null,
+      sentenceKnownAudioIds: (r.sentence_known_audio_ids || []).filter(Boolean),
       wordTimings: timingsOf(t), knownWordTimings: timingsOf(k), chunks: [], kind: 'whole-turn',
       why: (r.sentence_audio_ids || []).filter(Boolean).length < 2 ? 'no sentence clips' : 'sentence clips missing or no longer say the turn',
     })
+  }
+  // --known-clips: every existing English clip of exactly each card's sentences, in the card's own English voice, any
+  // course (job #71): the clips the Drill's by-text lookup would find, so a cut tool can tell before it relies on one.
+  if (opt['known-clips']) {
+    for (const c of cards) {
+      const parts = String(c.known || '').split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean)
+      const family = String(c.knownVoice || '').replace(/^(xai|azure|cartesia)_/, '')
+      const voices = [family, `xai_${family}`, `azure_${family}`, `cartesia_${family}`]
+      const { rows: hits } = await pg.query(
+        `SELECT id, text, text_normalized, role, course_code, voice_id, origin FROM course_audio
+          WHERE text_normalized = ANY($1) AND role IN ('known', 'pod_fine_known') AND voice_id = ANY($2)`,
+        [parts.map((s) => normalizeForAudio(s)), voices])
+      c.knownSentenceClips = parts.map((s) => ({ text: s, clips: hits.filter((h) => h.text_normalized === normalizeForAudio(s)) }))
+    }
   }
   const out = { course, pod: podId, tool: 'tools/pods/pod-drill/whole-turns.mjs (#836)', rows: walk.length, cards }
   for (const c of cards) console.error(`${c.id}  ${c.why}  ${c.wordTimings ? 'timed' : 'UNTIMED'}/${c.knownWordTimings ? 'timed' : 'UNTIMED'}  ${c.target}`)
