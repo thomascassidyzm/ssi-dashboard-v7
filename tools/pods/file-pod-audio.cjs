@@ -6,7 +6,9 @@
  * with ops/pod-drill-pieces/recorded.json for each clip's voice and owning course, and Talk Bollocks
  * (tools/talk-bollocks/ita-1-timed.json + ita-1-manifest-checked.json) — and POSTs every trial_ id it finds to
  * POST /api/production/:courseCode/pod-audio/file (services/shared/pod-audio.cjs), 100 clips a call. Each clip is filed
- * under the course recorded.json says rendered it, so an English known clip several courses share is ONE row.
+ * under the first course of the run (alphabetically) whose pieces PLAY it, on that course's side — so its language is the side's
+ * language there (recorded.json's course can be one where English is the target). A clip several courses share is ONE
+ * row: an id already in the mapping is never posted again.
  * Writes nothing but that route's rows and the mapping file; renders nothing.
  *
  *   node tools/pods/file-pod-audio.cjs --app ~/ssi-learning-app [--course ita_for_eng] [--scene 4] [--talk-bollocks] [--apply]
@@ -42,7 +44,7 @@ function drillClips() {
   const byId = new Map()
   for (const [k, v] of Object.entries(recorded)) byId.set(v.audioId, { voice: v.voice, text: k.slice(k.indexOf('|') + 1), course: v.course })
   const dir = path.join(APP, 'packages/player-vue/src/data/podDrillPieces')
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && (!ONLY_COURSE || f === `${ONLY_COURSE}.json`))
+  const files = fs.readdirSync(dir).sort().filter((f) => f.endsWith('.json') && (!ONLY_COURSE || f === `${ONLY_COURSE}.json`))
   const out = [], missing = []
   for (const f of files) {
     const turns = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).turns || {}
@@ -53,7 +55,7 @@ function drillClips() {
           if (!isTrial(id)) continue
           const r = byId.get(id)
           if (!r) { missing.push({ id, file: f, key }); continue }
-          out.push({ trialId: id, text: r.text, voiceId: r.voice, side, course: r.course, usedBy: f.replace(/\.json$/, '') })
+          out.push({ trialId: id, text: r.text, voiceId: r.voice, side, course: f.replace(/\.json$/, ''), recordedFor: r.course })
         }
       }
     }
@@ -75,7 +77,7 @@ function talkBollocksClips() {
     if (!m || m.text !== c.text || !m.voiceId) { missing.push({ id: c.audioId, index: i }); continue }
     if (SCENE != null && sceneOf.get(c.audioId) !== SCENE) continue
     if (!sceneOf.has(c.audioId)) continue // not served by the app's rows
-    out.push({ trialId: c.audioId, text: c.text, voiceId: m.voiceId.startsWith('cartesia_') ? m.voiceId : `cartesia_${m.voiceId}`, side: 'target', course: 'ita_for_eng', usedBy: 'talk-bollocks-ita-1' })
+    out.push({ trialId: c.audioId, text: c.text, voiceId: m.voiceId.startsWith('cartesia_') ? m.voiceId : `cartesia_${m.voiceId}`, side: 'target', course: 'ita_for_eng', })
   }
   return { out, missing }
 }
@@ -96,13 +98,17 @@ async function main() {
   if (!flag('--no-drill')) { const d = drillClips(); all.push(...d.out); missing.push(...d.missing) }
   if (flag('--talk-bollocks')) { const t = talkBollocksClips(); all.push(...t.out); missing.push(...t.missing) }
   // One row per trial clip, under its owning course.
+  const map = fs.existsSync(MAP) ? JSON.parse(fs.readFileSync(MAP, 'utf8')) : {}
   const unique = new Map()
-  for (const c of all) if (!unique.has(c.trialId)) unique.set(c.trialId, c)
+  let mapped = 0
+  for (const c of all) {
+    if (map[c.trialId]) { mapped++; continue }
+    if (!unique.has(c.trialId)) unique.set(c.trialId, c)
+  }
   const byCourse = new Map()
   for (const c of unique.values()) { if (!byCourse.has(c.course)) byCourse.set(c.course, []); byCourse.get(c.course).push(c) }
 
-  const map = fs.existsSync(MAP) ? JSON.parse(fs.readFileSync(MAP, 'utf8')) : {}
-  const tally = { references: all.length, clips: unique.size, filed: 0, already: 0, wouldFile: 0, refused: 0, timings: 0, unmatched: missing.length }
+  const tally = { references: all.length, alreadyMapped: mapped, clips: unique.size, filed: 0, already: 0, wouldFile: 0, refused: 0, timings: 0, unmatched: missing.length }
   const refusals = []
   for (const [course, clips] of byCourse) {
     for (let i = 0; i < clips.length; i += 100) {
