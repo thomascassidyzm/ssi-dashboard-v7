@@ -5720,13 +5720,19 @@ function buildRenderDeps() {
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
       // TRIAL (job #748): mastered like any clip, kept under trial/ with NO course_audio row and NO clip_index entry.
-      storeTrial: async ({ text, voiceId, audioBuffer, speed, tempo }) => {
-        audioBuffer = (await applyPaceTempo(audioBuffer, null, tempo)).audioBuffer
+      // The render's Cartesia word timings are KEPT (job #577, Watson for Tom 2026-11-07): returned in the answer, and
+      // written beside the clip as trial/<UUID>.timings.json, so a trial clip can be lit word by word. Before this they
+      // were dropped here, and a trial clip had no timings anywhere (no course_audio row to hold them).
+      storeTrial: async ({ text, voiceId, audioBuffer, speed, tempo, wordTimings }) => {
+        const paced = await applyPaceTempo(audioBuffer, wordTimings || null, tempo)
+        audioBuffer = paced.audioBuffer
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = trialMode.trialKey(uuidv4(), speed)
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: 'no-store' }))
         const audioId = trialMode.trialIdFromKey(s3Key)
-        return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}` }
+        const timings = toWordTimingsColumn(paced.wordTimings)
+        if (timings) await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key.replace(/\.mp3$/, '.timings.json'), Body: JSON.stringify(timings), ContentType: 'application/json', CacheControl: 'no-store' }))
+        return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}`, wordTimings: timings }
       },
       store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings, tempo }) => {
         ;({ audioBuffer, wordTimings } = await applyPaceTempo(audioBuffer, wordTimings, tempo))
