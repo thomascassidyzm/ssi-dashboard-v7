@@ -86,6 +86,10 @@ function validate(input) {
     dryRun: !!input.dryRun,
     // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
     trial: input.trial === true,
+    // A POD CLIP (job #628): 'target' | 'known'. With trial:true the render is filed as a pod-only course_audio row
+    // (pod_atom / pod_fine_known, shared/pod-audio.cjs) — never linked into a course slot. Pod Drill pieces and Talk
+    // Bollocks lines are rendered this way; a trial WITHOUT podSide is an audition and stays a trial clip.
+    podSide: input.podSide == null ? null : String(input.podSide),
     // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
     speed: input.speed == null ? null : Number(input.speed),
     // TRIAL ONLY, POST-RENDER-PACED VOICE (job #590): ONE take, stored once per pace in this list, so a pace comparison
@@ -144,6 +148,10 @@ function validate(input) {
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
   if ((out.model || out.voiceSettings || out.startedBy) && !out.trial) throw new RenderRequestError('model, voiceSettings and startedBy are trial-only — a course render speaks the course voice as cast', 400, 'TRIAL_ONLY_OPTION')
+  if (out.podSide != null) {
+    if (out.podSide !== 'target' && out.podSide !== 'known') throw new RenderRequestError('podSide is target or known', 400, 'BAD_POD_SIDE')
+    if (!out.trial || out.paces) throw new RenderRequestError('a pod clip is one trial take (trial:true, no paces) filed as a pod-only row', 400, 'POD_SIDE_TRIAL_ONLY')
+  }
   if (out.trial) {
     // STARTED, NEVER UNATTENDED (job #23, r-2026-10-13): a trial names a person or a job, and keeps to one-off clips.
     if (!out.startedBy && !out.job) throw new RenderRequestError('a trial render names who started it — startedBy (a person) or job ("#23")', 400, 'TRIAL_NEEDS_STARTER')
@@ -395,6 +403,13 @@ async function trialRender(req, deps) {
   const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(elSettings ? { voiceSettings: elSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), ...(postPace && req.speed !== 1 ? { tempo: req.speed } : {}), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  if (req.podSide) {
+    // A POD CLIP (job #628): rendered with a trial's free voice choice, then filed at once as a pod-only course_audio row
+    // (shared/pod-audio.cjs) — the answer's audioId is the ROW, which is what the app plays; the trial object stays behind it.
+    if (!deps.filePodClip) throw new RenderRequestError('this service cannot file pod clips', 501, 'NO_POD_FILE')
+    const filed = await deps.filePodClip({ courseCode: req.courseCode, trialId: stored.audioId, text: req.text, voiceId: r.voiceId, side: req.podSide })
+    return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, trialAudioId: stored.audioId, audioId: filed.audioId, s3Key: filed.s3Key, podRole: filed.role, ...echo }
+  }
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 

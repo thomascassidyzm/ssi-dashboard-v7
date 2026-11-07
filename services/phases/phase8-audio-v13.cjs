@@ -5734,6 +5734,14 @@ function buildRenderDeps() {
         if (timings) await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key.replace(/\.mp3$/, '.timings.json'), Body: JSON.stringify(timings), ContentType: 'application/json', CacheControl: 'no-store' }))
         return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}`, wordTimings: timings }
       },
+      // A POD CLIP (job #628, shared/pod-audio.cjs): the trial take just stored, filed as a pod-only course_audio row.
+      filePodClip: async ({ courseCode, trialId, text, voiceId, side }) => {
+        const podAudio = require('../shared/pod-audio.cjs')
+        const out = await podAudio.fileTrialClips({ courseCode, clips: [{ trialId, text, voiceId, side }], dryRun: false }, podAudio.liveDeps({ sb: supabase, s3, bucket: S3_BUCKET }))
+        const r = out.results[0]
+        if (r.status === 'refused') throw new RenderRequestError(`rendered and stored as ${trialId}, but not filed: ${r.error}`, 409, r.code)
+        return r
+      },
       store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings, tempo }) => {
         ;({ audioBuffer, wordTimings } = await applyPaceTempo(audioBuffer, wordTimings, tempo))
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
