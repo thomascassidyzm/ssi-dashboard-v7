@@ -243,8 +243,6 @@ describe('propose', () => {
     expect(cand.notes.attempts).toHaveLength(1)   // no re-roll on a whisper verdict
   })
 
-  })
-
   it('refuses a replacement that carries the very defect it is replacing', async () => {
     // The damage this path exists for was written AT RENDER. A fresh candidate is
     // therefore exactly the thing that must be re-measured — a repair that returns a
