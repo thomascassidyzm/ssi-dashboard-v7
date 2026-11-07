@@ -3239,7 +3239,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
 
     // Bind presentation audio to its consumers: the course_legos FK AND the
     // lego_introductions projection (both read live by the learning app —
@@ -4037,7 +4037,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
     // Use speed from voice config (everything is a parameter!)
     const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
@@ -5676,7 +5676,16 @@ function buildRenderDeps() {
       },
       link: linkClipForRender,
       linkLego: linkLegoPresentation,
-      speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
+      speak: async (text, provider, cfg, tries) => {
+        const out = await ttsService.speak(text, provider, cfg, tries)
+        // This route's clips never pass through renderChecked, so they reach the one sampler
+        // here, drawn once per fresh clip, in the background: a sample costs the caller nothing.
+        const door = cfg.door || {}
+        if (out.audioBuffer && !out.existingClip && !door.dryRun) {
+          veracity.sampleRendered({ buffer: out.audioBuffer, expectedText: text, language: door.language, meta: { courseCode: door.courseCode, role: door.slotRole || null }, logger })
+        }
+        return out
+      },
       loadClip: async (audioId) => {
         const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text').eq('id', audioId).maybeSingle()
         if (error) throw new Error(`course_audio unreadable: ${error.message}`)
@@ -6112,13 +6121,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
     // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-    // single-clip render in ten and records what it heard on the row.
+    // automatic STT check may veto TTS audio). The course's reducing sample
+    // decides whether Whisper listens, and only what it heard is recorded.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: textForTTS,
       language: lang,
-      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role, voiceId, audio_uuid: audioUuid, originalText: text },
     })
@@ -6488,13 +6496,12 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
 
     // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
     // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-    // single-clip render in ten and records what it heard on the row.
+    // automatic STT check may veto TTS audio). The course's reducing sample
+    // decides whether Whisper listens, and only what it heard is recorded.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: presentationText,
       language: knownLang,
-      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role: 'presentation', voiceId, lego_id: legoId, originalText: presentationText },
     })
@@ -6935,13 +6942,12 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
       // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-      // single-clip render in ten and records what it heard on the row.
+      // automatic STT check may veto TTS audio). The course's reducing sample
+      // decides whether Whisper listens, and only what it heard is recorded.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, phrase_id: phraseId, originalText: text },
       })
@@ -7338,13 +7344,12 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
 
       // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
       // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
-      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
-      // single-clip render in ten and records what it heard on the row.
+      // automatic STT check may veto TTS audio). The course's reducing sample
+      // decides whether Whisper listens, and only what it heard is recorded.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, lego_id: legoId, originalText: text },
       })
@@ -7711,7 +7716,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: Whisper hears 1 in ${veracity.TTS_SAMPLE_EVERY} TTS clips, never Welsh, record-only (Tom, r-2026-11-03; job #626)`); void sampleRate
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(sampleRate.rate)} TTS clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`); void sampleRate
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
@@ -9437,7 +9442,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     podVeracityStats = veracity.newStats()
     veracity.announceStatus(logger)
     const podSampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (per-course ladder, relaxes every ${podSampleRate.step_clips} clean sampled clips)`)
+    logger.info(`[audio-veracity] ${courseCode}: Whisper hears ${veracity.sampleRateLabel(podSampleRate.rate)} pod clips to start, relaxing by tens while clean, never Welsh, record-only (Tom, r-2026-11-07)`)
 
     // Optional per-run voice overrides. Useful when you want pod audio to use
     // a different provider (e.g. xAI) than the course's canonical voice_config.

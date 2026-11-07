@@ -898,7 +898,7 @@ describe('renderChecked — render once, sample, report; never a veto (Tom, 2026
   // STT check may veto a TTS render or trigger a re-render. Until job #678 these
   // tests asserted the opposite — re-render on failure, quarantine after three,
   // refuse words already quarantined. They were flipped deliberately.
-  const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
+  const always = V.createSampler({ first: 1 })
   const buf = (s) => Buffer.from(s)
   const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
   const failing = async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: 'ha' })
@@ -982,15 +982,6 @@ describe('renderChecked — render once, sample, report; never a veto (Tom, 2026
     expect(stats.unchecked).toBe(1)
     expect(stats.passed).toBe(0)
     expect(stats.checked).toBe(0)
-  })
-
-  it('SPOT_SAMPLER (and its old name ALWAYS_SAMPLER) samples one clip in ten, not every clip', () => {
-    expect(V.ALWAYS_SAMPLER).toBe(V.SPOT_SAMPLER)
-    V._resetSpotSampler()
-    let picked = 0
-    for (let i = 0; i < 100; i++) if (V.SPOT_SAMPLER.shouldCheck()) picked++
-    expect(picked).toBe(100 / V.SPOT_SAMPLE_EVERY)
-    expect(V.SPOT_SAMPLE_EVERY).toBeGreaterThanOrEqual(10)
   })
 })
 
@@ -1100,11 +1091,8 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
     }
     expect(seen[0]).toBeCloseTo(0.10, 5)
     expect(seen[1]).toBeCloseTo(0.01, 5)
-    expect(seen[2]).toBeCloseTo(0.005, 5)
-    expect(seen[3]).toBeCloseTo(0.0025, 5)
-    // The floor holds. A run that stops looking cannot notice it has gone wrong.
-    expect(Math.min(...seen)).toBeGreaterThan(0)
-    expect(Math.min(...seen)).toBeCloseTo(0.002, 5)
+    expect(seen[2]).toBeCloseTo(0.001, 6)
+    expect(seen[3]).toBeCloseTo(0.0001, 7)
   })
 
   it('a failure snaps the rate back to the opening rate, mid-course', () => {
@@ -1140,7 +1128,7 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
   })
 
   it('spreads the sample across the course instead of clumping it', () => {
-    const s = V.createSampler({ first: 0.01, trusted: 0.01, floor: 0.01 })
+    const s = V.createSampler({ first: 0.01 })
     s.startCourse('a')
     const picks = []
     for (let i = 0; i < 500; i++) if (s.shouldCheck()) picks.push(i)
@@ -1148,7 +1136,7 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
   })
 
   it('an unsampled clip is published, rendered once, and recorded as not_sampled — never as a pass', async () => {
-    const never = V.createSampler({ first: 0, trusted: 0, floor: 0 })
+    const never = V.createSampler({ first: 0 })
     never.startCourse('a')
     let renders = 0
     let checks = 0
@@ -1172,7 +1160,7 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
   })
 
   it('a sampled failure is REPORTED, never quarantined — sampling changes which clips are listened to, never whether a render ships', async () => {
-    const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
+    const always = V.createSampler({ first: 1 })
     always.startCourse('a')
     const stats = V.newStats()
     const r = await V.renderChecked({

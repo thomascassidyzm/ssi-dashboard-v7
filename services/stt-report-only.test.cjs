@@ -37,12 +37,9 @@ describe('renderChecked renders once and ships, whatever Whisper hears', () => {
   const failing = async () => ({ checked: true, pass: false, reason: 'cer_above_threshold', cer: 0.9, decode: 'altro' })
 
   for (const [name, sampler] of [
-    ['a sampler that picks every clip', V.createSampler({ first: 1, trusted: 1, floor: 1 })],
-    ['SPOT_SAMPLER', V.SPOT_SAMPLER],
-    ['ALWAYS_SAMPLER (the old name ~40 scripts pass)', V.ALWAYS_SAMPLER],
+    ['a sampler that picks every clip', V.createSampler({ first: 1 })],
   ]) {
     it(`with ${name}: one render, published, even with attempts: 5`, async () => {
-      V._resetSpotSampler()
       let renders = 0
       const r = await V.renderChecked({
         sampler, attempts: 5, check: failing, logger: quiet,
@@ -55,13 +52,6 @@ describe('renderChecked renders once and ships, whatever Whisper hears', () => {
       expect(r.buffer).toBeTruthy()
     })
   }
-
-  it('single-clip work is sampled 1 in 100, not checked 100%', () => {
-    V._resetSpotSampler()
-    let n = 0
-    for (let i = 0; i < 200; i++) if (V.ALWAYS_SAMPLER.shouldCheck()) n++
-    expect(n).toBeLessThanOrEqual(2)
-  })
 })
 
 describe('the other places Whisper used to decide', () => {
@@ -89,9 +79,8 @@ describe('the other places Whisper used to decide', () => {
     expect(plan.clips[0].heard.pass).toBe(false)
   })
 
-  it('audio-veracity: renderChecked hears 1 TTS clip in 100 and never a Welsh one (Tom, 2026-11-03)', async () => {
+  it('audio-veracity: the sample never hears a Welsh clip', async () => {
     const V = require('./audio-veracity.cjs')
-    expect(V.TTS_SAMPLE_EVERY).toBe(100)
     expect(V.isWelshClip('cym', {})).toBe(true)
     expect(V.isWelshClip('deu', { courseCode: 'cym_n_for_eng' })).toBe(true)
     let checks = 0
@@ -113,7 +102,6 @@ describe('the other places Whisper used to decide', () => {
  */
 const STT_CALLERS = {
   'services/audio-veracity.cjs': 'engine',           // checkAudioVeracity for human recordings; renderChecked hears 1 TTS clip in 100, never Welsh (job #626)
-  'services/tts-service.cjs': 'advisory',            // phonology sample, 1 in 100, never Welsh, logs only (Tom, 2026-11-03)
   'services/audio-intelligence/gate-stack.cjs': 'advisory', // words + phonology tiers never refuse
   'services/audio-intelligence/decode.cjs': 'infra',
   'services/audio-processor.cjs': 'infra',

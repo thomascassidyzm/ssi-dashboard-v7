@@ -1297,19 +1297,17 @@ const ESTATE_MAP_SEMANTICS = {
     + 'Every value is about AUDIO PRODUCTION, never about release state.',
   veracity_checked:
     'Clips that have been through the veracity QA process. NOT a quality signal, and NOT a coverage target: '
-    + 'blanket per-clip whisper checking was deliberately removed from phase8, and the standing model is '
-    + 'graduated sampling (see `render_qa_policy`). A low figure here is the policy working as intended — it '
+    + 'blanket per-clip whisper checking was deliberately removed, and the standing model is one reducing '
+    + 'sample (see `render_qa_policy`). A low figure here is the policy working as intended — it '
     + 'does NOT mean the audio is bad, unchecked in any meaningful sense, or in need of repair, and it is not '
     + 'a backlog to burn down.',
   render_qa_policy:
-    'STANDING MODEL for render/QA, Tom 2026-08-13: GRADUATED SAMPLING. Veracity-check ~10% of the FIRST '
-    + 'job/course in a render run; if that sample comes back clean, drop to ~1% across the remaining 90%; keep '
-    + 'relaxing the rate as trust accumulates course by course through the run. Neither blanket per-clip '
-    + 'whisper on everything (removed from phase8 last week) nor zero checking. Trust is earned within a run '
-    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it, and a FAILURE '
-    + 'snaps the rate straight back. Implemented in services/audio-veracity.cjs (createSampler); phase8 marks '
-    + 'the course boundaries. What it catches is a bad RUN — a voice gone silent, a truncating provider — not '
-    + 'one bad clip among healthy ones; do not sell it as the latter.',
+    'STANDING MODEL for render/QA, Tom 2026-11-07 (r-2026-11-07-whisper-is-never-used-to-check): ONE REDUCING '
+    + 'SAMPLE, and Popty\'s only use of Whisper. 1 clip in 10 per course; 1 in 100 if no issues; and on by tens, '
+    + 'with no floor. A sampled clip recorded as failing snaps that course back to 1 in 10. Record-only, never '
+    + 'Welsh, never on a human recording, and it never vetoes or re-renders. Implemented in '
+    + 'services/audio-veracity.cjs (createSampler). What it catches is a bad RUN — a voice gone silent, a '
+    + 'truncating provider — not one bad clip among healthy ones; do not sell it as the latter.',
   voice_mode:
     'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
     + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',

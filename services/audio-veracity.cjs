@@ -463,7 +463,7 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info(`[audio-veracity] TTS renders: Whisper hears 1 in ${TTS_SAMPLE_EVERY}, never Welsh, record-only (Tom, r-2026-11-03 + r-2026-09-28). checkAudioVeracity in full is for human recordings and explicit report tools.`)
+      info(`[audio-veracity] TTS renders: Whisper hears 1 in 10, then 1 in 100 while clean, and on by tens, per course; a failure snaps back to 1 in 10; never Welsh, record-only (Tom, r-2026-11-07 + r-2026-09-28).`)
     }
   }
   return { enabled, available: av.available, missing: av.missing }
@@ -2092,8 +2092,8 @@ function recordVerdict (stats, verdict) {
 //
 // SCOPE CORRECTED TO PER-COURSE (Tom, 2026-08-17): "Long-run whisper sampling
 // should be scoped PER COURSE, not per run — Kai typically generates one course
-// at a time, so the graduated drop to the 0.2% floor within a course is
-// explicitly fine and approved."
+// at a time, so the graduated drop within a course is explicitly fine and approved."
+// The ladder itself is Tom's of 2026-11-07: 1 in 10, 1 in 100, and on by tens.
 //
 // This matters because the original reading made the relaxation unreachable in
 // practice. Trust was banked at COURSE BOUNDARIES, so a run containing exactly
@@ -2132,36 +2132,35 @@ function recordVerdict (stats, verdict) {
 // not what this catches and must not be sold as if it were.
 
 const SAMPLE_RATE_FIRST = Number(process.env.AUDIO_VERACITY_SAMPLE_FIRST || 0.10)
-const SAMPLE_RATE_TRUSTED = Number(process.env.AUDIO_VERACITY_SAMPLE_TRUSTED || 0.01)
-// The floor the relaxation walks down to. Never 0: a run that never looks again
-// cannot notice it has gone wrong, however much trust it has banked.
-const SAMPLE_RATE_FLOOR = Number(process.env.AUDIO_VERACITY_SAMPLE_FLOOR || 0.002)
-// How many consecutive CLEAN SAMPLED clips buy one step down the ladder. This is
-// the within-course analogue of the old "that course sampled clean" — the opening
-// sample is a block of checks, not a single clip, because one clean clip is not
-// evidence that a run is healthy. At the opening 10% rate, 10 clean sampled clips
-// means ~100 clips rendered clean before the rate relaxes to 1%.
+// How many consecutive CLEAN SAMPLED clips buy one step down the ladder: the
+// opening sample is a block of checks, not a single clip, because one clean clip
+// is not evidence that a run is healthy. Ten clean samples at 1 in 10 is about 100
+// clips rendered clean before the rate relaxes to 1 in 100.
 const SAMPLE_STEP_CLEAN = Number(process.env.AUDIO_VERACITY_SAMPLE_STEP || 10)
+// Each step divides the rate by this. No floor: Tom's ruling is "1 in 10, then 1 in
+// 100 if no issues and so on".
+const SAMPLE_STEP_FACTOR = 10
 
 /**
+ * THE ONE SAMPLER, and Popty's one use of Whisper (Tom, 2026-11-07,
+ * r-2026-11-07-whisper-is-never-used-to-check): "whispr IS allowed in Popty for the
+ * 10% reducing sample - so 1 in 10, then 1 in 100 if no issues and so on". It only
+ * RECORDS (r-2026-09-28): nothing it hears may veto or re-render a clip. Never a
+ * Welsh clip (r-2026-11-03-whisper-on-audio-a-1-in).
+ *
  * The sampler for one COURSE. `startCourse()` resets it: trust is earned within a
  * course and never carried across a course boundary (Tom, 2026-08-17).
  *
  * The ladder, walked within a single course as clean sampled clips accumulate:
- *   10%  →  1%  →  0.5%  →  0.25%  →  0.2% floor
+ *   1 in 10  →  1 in 100  →  1 in 1,000  →  and on by tens
  * and a single failure snaps it straight back to the opening rate.
  *
  * @param {object} [o]
- * @param {number} [o.first]    opening rate for every course (default 10%)
- * @param {number} [o.trusted]  rate after the opening sample comes back clean (default 1%)
- * @param {number} [o.floor]    the lowest rate relaxation will reach (default 0.2%)
+ * @param {number} [o.first]    opening rate for every course (default 1 in 10)
  * @param {number} [o.step]     clean sampled clips per step down the ladder (default 10)
  */
 function createSampler (o = {}) {
   const first = o.first != null ? Number(o.first) : SAMPLE_RATE_FIRST
-  const trusted = o.trusted != null ? Number(o.trusted) : SAMPLE_RATE_TRUSTED
-  const floor = o.floor != null ? Number(o.floor) : SAMPLE_RATE_FLOOR
-
   const step = o.step != null ? Number(o.step) : SAMPLE_STEP_CLEAN
 
   let coursesStarted = 0
@@ -2173,11 +2172,9 @@ function createSampler (o = {}) {
   let courseFailed = 0
   let courseCode = null
 
-  /** The rate at rung `n` of the ladder. Rung 0 is the opening rate; rung 1 is
-   *  the trusted rate; each rung after that halves again, down to the floor. */
+  /** The rate at rung `n` of the ladder. Rung 0 is the opening rate; each rung after divides it by ten. */
   function rateAtStep (n) {
-    if (n <= 0) return first
-    return Math.max(floor, trusted / Math.pow(2, n - 1))
+    return first / Math.pow(SAMPLE_STEP_FACTOR, Math.max(0, n))
   }
 
   return {
@@ -2223,7 +2220,7 @@ function createSampler (o = {}) {
       if (!verdict || verdict.checked !== true) return { rate, snapped: false }
       if (verdict.pass === true) {
         cleanSinceStep++
-        if (cleanSinceStep >= step && rate > floor) {
+        if (cleanSinceStep >= step) {
           cleanSinceStep = 0
           steps++
           rate = rateAtStep(steps)
@@ -2261,49 +2258,49 @@ function createSampler (o = {}) {
   }
 }
 
-// The process-wide sampler. Phase 8 calls startCourse() per course; anything that
-// renders without calling it gets the opening rate, which is the safe default.
-let runSampler = createSampler()
+// One sampler per course in this process. Phase 8's runs call startCourse(), which
+// starts that course again at 1 in 10; the render route's single clips just use
+// samplerFor(), so they walk the ladder across renders. Per process, like every
+// counter here: a restart starts again at the opening rate, the safe direction.
+const samplers = new Map()
+let samplerDefaults = {}
+let lastCourse = null
 
-/** Start a course on the process-wide sampler. Returns the rate it will use. */
+function samplerFor (code) {
+  const key = code || '(no course)'
+  if (!samplers.has(key)) {
+    const s = createSampler(samplerDefaults)
+    s.startCourse(key)
+    samplers.set(key, s)
+  }
+  return samplers.get(key)
+}
+
+/** Start a course: it opens at 1 in 10. Returns the rate it will use. */
 function startCourse (code) {
-  return runSampler.startCourse(code)
+  lastCourse = code
+  samplers.delete(code || '(no course)')
+  const st = samplerFor(code).state()
+  return { course: code, rate: st.rate, step: st.step, step_clips: st.step_clips }
 }
 
-/** Reset the run's accumulated trust — a new run starts from scratch. */
-function resetSampler (o) {
-  runSampler = createSampler(o)
-  return runSampler.state()
+/** Forget every course's accumulated trust. */
+function resetSampler (o = {}) {
+  samplers.clear()
+  samplerDefaults = o
+  lastCourse = null
+  return samplerFor(null).state()
 }
 
-/** The process-wide sampler's current state. */
-function samplerState () {
-  return runSampler.state()
+/** A course's sampler state; with no code, the course most recently started. */
+function samplerState (code = lastCourse) {
+  return samplerFor(code).state()
 }
 
-/**
- * The sampler for SINGLE-CLIP work — the repair routes and the one-off course
- * edit scripts. Until 2026-09-28 this was ALWAYS_SAMPLER and checked every clip,
- * and because a failed check re-rendered and then refused the clip, every Italian
- * edit Kai's jobs made went through a 100% Whisper veto (job #678). Tom's rulings:
- * STT on TTS audio is 10% sampling, never 100% and never a veto
- * (ssi-stt-sampling-doctrine, 2026-08-24; r-2026-09-28-no-automatic-whisper-stt-check-may).
- *
- * So it samples every tenth clip, process-wide, and banks no trust: it holds its
- * own counter so a person fixing one clip never touches the trust accounting of a
- * bulk run in the same process. The old export name is kept so the committed
- * scripts that pass it keep working — they now get sampling, not a gate.
- */
-const SPOT_SAMPLE_EVERY = 100 // was 10 until 2026-11-03 (Tom: 1-in-100, job #626)
-let spotCounter = 0
-const SPOT_SAMPLER = Object.freeze({
-  shouldCheck: () => (spotCounter++ % SPOT_SAMPLE_EVERY) === 0,
-  recordVerdict: () => ({ rate: 1 / SPOT_SAMPLE_EVERY, snapped: false }),
-  state: () => ({ course: null, rate: 1 / SPOT_SAMPLE_EVERY, courses_started: 0, step: 0, clean_since_step: 0, step_clips: 0, sampled_this_course: 0, failed_this_course: 0 }),
-})
-/** @deprecated name — it no longer checks always. See SPOT_SAMPLER. */
-const ALWAYS_SAMPLER = SPOT_SAMPLER
-function _resetSpotSampler () { spotCounter = 0 }
+/** "1 in 10", for a log line. */
+function sampleRateLabel (rate) {
+  return `1 in ${Math.round(1 / rate).toLocaleString('en-GB')}`
+}
 
 // ---------------------------------------------------------------------------
 // Persisting the verdict — the difference between a claim and a measurement
@@ -2371,10 +2368,9 @@ function verdictColumns (verdict, o = {}) {
  *   - "we do NOT use automatic checks on listening content" (2026-09-28,
  *     r-2026-09-28-no-automatic-whisper-stt-check-may): no automatic STT check
  *     may veto a TTS render or trigger a re-render.
- *   - STT on TTS audio = 10% graduated sampling, never 100%, never a hard veto;
- *     full STT checks are for HUMAN recordings (ssi-stt-sampling-doctrine,
- *     2026-08-24). Voice-match and VAD are the hard gates, and they live
- *     elsewhere.
+ *   - STT on TTS audio = the one reducing sample above, never 100%, never a hard
+ *     veto, and it is the only Whisper check left: none on human recordings
+ *     (r-2026-11-07-whisper-is-never-used-to-check).
  *
  * HISTORY, so nobody rebuilds it: from 2026-08-04 this was a gate — render,
  * check, re-render up to 3x, quarantine and refuse. The per-render gate was
@@ -2402,57 +2398,67 @@ async function renderChecked (o) {
   const { render, expectedText, language, meta = {}, stats, logger = console } = o
   // Test seam only. Production callers never pass this.
   const check = o.check || checkAudioVeracity
+
+  const rendered = await render(1)
+  const verdict = await listenToClip({ ...o, buffer: rendered.buffer, check, logger, stats, meta, expectedText, language })
+  return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
+}
+
+/**
+ * The one sampler's draw and listen, once per clip, for a clip already rendered.
+ * Whatever is heard is logged and handed back. Nothing here can stop a clip.
+ */
+async function listenToClip ({ buffer, expectedText, language, meta = {}, stats, logger = console, sampler, check = checkAudioVeracity }) {
   const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
   const info = (m) => (logger.info || logger.log || console.log).call(logger, m)
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
-  const sampler = o.sampler || runSampler
+  const s = sampler || samplerFor(meta.courseCode)
 
-  // The render runs in a clip scope so the TTS door does not draw a second sample for it.
-  const rendered = await sttSample.runInClipScope(() => render(1))
-
-  // EVERY CLIP THROUGH HERE IS A TTS RENDER. Whisper hears ONE IN A HUNDRED, never a
-  // Welsh one, and only RECORDS what it heard (Tom, 2026-11-03,
-  // r-2026-11-03-whisper-on-audio-a-1-in: 1-in-100, never every clip, skip cym_*;
-  // r-2026-09-28: never re-roll, veto or fail-close). The run's graduated ladder
-  // (10% opening) and SPOT_SAMPLER no longer decide here: the ONE estate counter
-  // (services/shared/tts-stt-sample.cjs, shared with the TTS door) does, so no
-  // caller can raise the rate by passing a sampler and no clip is drawn twice. Job #626, after phase8 /generate was found decoding
-  // 10% of deu_ch_for_eng TTS clips at ~12:00Z that day. `o.check` is a test seam:
-  // with it, the passed sampler decides, as the behaviour tests expect.
-  const welsh = isWelshClip(language, meta)
-  const pick = welsh ? false : (o.check ? sampler.shouldCheck() : sttSample.draw())
-  if (welsh || !pick) {
+  if (isWelshClip(language, meta) || !s.shouldCheck()) {
     const verdict = { checked: false, pass: null, reason: 'not_sampled' }
     recordVerdict(stats, verdict)
-    return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
+    return verdict
   }
+  const at = s.state ? s.state().rate : null
+  if (at) info(`[audio-veracity] ${meta.courseCode || 'course'}: sampling ${label} at ${sampleRateLabel(at)}, record-only`)
 
   // A check that throws must never cost the render: report it as unchecked.
   let verdict
   try {
-    verdict = await check(rendered.buffer, expectedText, language, { meta })
+    verdict = await check(buffer, expectedText, language, { meta })
   } catch (e) {
     verdict = { checked: false, pass: null, reason: 'check_failed', detail: e.message }
   }
   recordVerdict(stats, verdict)
-  const snap = sampler.recordVerdict(verdict)
+  const snap = s.recordVerdict(verdict)
   if (snap.relaxed) {
-    info(`[audio-veracity] ${meta.courseCode || 'course'}: sample clean — relaxing to `
-      + `${(snap.rate * 100).toFixed(2)}% (rung ${snap.step})`)
+    info(`[audio-veracity] ${meta.courseCode || 'course'}: sample clean, relaxing to ${sampleRateLabel(snap.rate)} (rung ${snap.step})`)
   }
   if (verdict.checked === true && verdict.pass === false) {
     if (stats) stats.flagged = (stats.flagged || 0) + 1
     warn(`[audio-veracity] REPORT ONLY — sampled ${label} heard as ${JSON.stringify(String(verdict.decode ?? '').slice(0, 60))} `
       + `(${verdict.reason}, CER ${verdict.cer}). Published as rendered; a person listens before anything is re-rendered.`)
   }
-  return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
+  return verdict
 }
 
-/** The TTS sampling rate, from the one shared counter (Tom, 2026-11-03). */
-const sttSample = require('./shared/tts-stt-sample.cjs')
-const TTS_SAMPLE_EVERY = sttSample.SAMPLE_EVERY
+/**
+ * The same sample for a clip that does not pass through renderChecked: POST
+ * /api/audio/render's speak(). Never waits on the caller and never throws, so a
+ * sampled clip costs that route no time.
+ */
+function sampleRendered (o) {
+  return listenToClip(o).catch((e) => {
+    (o.logger || console).warn?.(`[audio-veracity] sample could not run: ${e.message}`)
+    return null
+  })
+}
+
 /** Welsh TTS is never sampled (Tom, 2026-11-03): cym/cy language or a cym_* course. */
-function isWelshClip (language, meta = {}) { return sttSample.isWelsh(meta.courseCode, language) }
+function isWelshClip (language, meta = {}) {
+  const l = String(language || '').toLowerCase().split('-')[0]
+  return l === 'cy' || l === 'cym' || String(meta.courseCode || '').toLowerCase().startsWith('cym')
+}
 
 /** One line for a log or a completion message. */
 function formatStats (stats) {
@@ -2466,8 +2472,8 @@ function formatStats (stats) {
   // 30,000 clips reads as a broken gate rather than as the policy working.
   if (stats.not_sampled) {
     const st = samplerState()
-    bits.push(`${stats.not_sampled} not sampled (graduated sampling at `
-      + `${(st.rate * 100).toFixed(1)}%, rung ${st.step} of this course's ladder)`)
+    bits.push(`${stats.not_sampled} not sampled (reducing sample at `
+      + `${sampleRateLabel(st.rate)}, rung ${st.step} of this course's ladder)`)
   }
   const why = Object.entries(stats.uncheckedReasons || {}).map(([k, v]) => `${k}=${v}`).join(', ')
   return `veracity: ${bits.join(', ')}${why ? ` (${why})` : ''}`
@@ -2475,6 +2481,7 @@ function formatStats (stats) {
 
 module.exports = {
   renderChecked,
+  sampleRendered,
   checkAudioVeracity,
   verdictFromDecode,
   verifyVerdict,
@@ -2508,18 +2515,12 @@ module.exports = {
   newStats,
   recordVerdict,
   createSampler,
-  ALWAYS_SAMPLER,
-  SPOT_SAMPLER,
-  TTS_SAMPLE_EVERY,
   isWelshClip,
-  SPOT_SAMPLE_EVERY,
-  _resetSpotSampler,
   startCourse,
   resetSampler,
   samplerState,
+  sampleRateLabel,
   SAMPLE_RATE_FIRST,
-  SAMPLE_RATE_TRUSTED,
-  SAMPLE_RATE_FLOOR,
   formatStats,
   verdictColumns,
   CER_THRESHOLD,
