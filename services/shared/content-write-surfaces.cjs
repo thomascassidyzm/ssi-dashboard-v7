@@ -117,6 +117,8 @@ const PRODUCTION_API = [
   { method: 'POST',   path: '/api/production/:courseCode/sync-intro-links',   operation: 'audio-link' },
   // Job #374: a machine cut from a longer clip is stored (course_audio) and linked (services/shared/ingest-cut.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/ingest-cut',         operation: 'audio-link' },
+  // Job #628: existing trial clips filed as pod-only course_audio rows (services/shared/pod-audio.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/pod-audio/file',     operation: 'audio-file' },
   // A listening pod's solo readers (job #391): who reads it, not what it says.
   { method: 'PATCH',  path: '/api/production/:courseCode/pod/:podId/solo-readers', operation: 'pod-solo-readers' },
   // The pod tools as routes (job #809, services/shared/pod-tool-routes.cjs): clone to a held

@@ -22,6 +22,7 @@ const { bumpCourseVersion } = require('./course-version.cjs')
 const { podSentencesOf } = require('./pod-sentence-split.cjs')
 const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
 const resolveVoiceLib = require('./resolve-voice.cjs')
+const { isPodOnlyClip } = require('./pod-audio.cjs')
 
 /**
  * VOICE, not just words (Tom, 2026-10-31; 9 Oct: Alessandra's female clips linked into Lorenzo's male Italian slots, ~3,400 slots).
@@ -102,9 +103,11 @@ async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheck
     }
   }
 
-  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin').eq('id', link.audioId).maybeSingle()
+  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin, role').eq('id', link.audioId).maybeSingle()
   if (clipErr) return { ...base, ok: false, code: 'READ_FAILED', error: clipErr.message }
   if (!clip) return { ...base, ok: false, code: 'NO_CLIP', error: `no course_audio row ${link.audioId}` }
+  // POD-ONLY (job #628, shared/pod-audio.cjs): a Pod Drill piece or Talk Bollocks line is never a seed, LEGO or phrase slot's clip.
+  if (slot.kind !== 'pod_sentence' && isPodOnlyClip(clip)) return { ...base, ok: false, code: 'POD_ONLY_CLIP', error: `${link.audioId} is a pod-only clip (${clip.role}) — pod pieces are never linked into course slots` }
   if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text

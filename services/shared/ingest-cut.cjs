@@ -322,4 +322,4 @@ function liveDeps({ sb, s3, bucket, logger = console, rollbackPath }) {
   }
 }
 
-module.exports = { liveDeps, cutSpan, tailAuditBytes, ingestCut, refuseDescriptor, rollbackLine, undoBody, bareText, CutRefusal }
+module.exports = { liveDeps, cutSpan, durationOf, tailAuditBytes, ingestCut, refuseDescriptor, rollbackLine, undoBody, bareText, CutRefusal }

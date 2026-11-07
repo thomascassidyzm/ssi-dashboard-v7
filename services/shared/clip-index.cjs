@@ -27,6 +27,7 @@ const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
+const { isPodOnlyClip, withoutPodOnly } = require('./pod-audio.cjs')
 /**
  * THE LANGUAGE OF A CLIP IS ITS COURSE'S LANGUAGE CODE. Tom, 2026-09-26/27:
  * "region is a different language - north/south welsh have very different
@@ -108,6 +109,8 @@ function indexEntryFor(row, indexedBy, courseOf = noCourses, resolvers = null) {
   if (!row || !row.id) return { skip: 'no-row' }
   if (!row.s3_key || String(row.s3_key).startsWith('pending/')) return { skip: 'pending' }
   if (row.veracity_pass === false) return { skip: 'veracity-failed' }
+  // A POD-ONLY clip (pod_atom / pod_fine_known, shared/pod-audio.cjs, job #628) is never a library answer, so never indexed.
+  if (isPodOnlyClip(row)) return { skip: 'pod-only' }
   // `resolvers` (services/shared/named-voices.cjs) is how a clip whose voice or words are
   // not what course_audio stores gets its true identity; absent, nothing changes.
   const text_key = clipTextKey(resolvers && resolvers.spokenText ? resolvers.spokenText(row) : row.text)
@@ -335,7 +338,9 @@ async function resolveClip(source, want, rawPick) {
   // A line the asking course renders through a pronunciation override is answered only by a clip rendered WITH it
   // (shared/pronunciation-reuse-guard.cjs, job #262·AD): the misread clips share its words exactly. Every reuse path
   // that goes through here — the TTS door, the render route's library-first link, the phase8 fill pass — gets it.
-  const pick = async rows => rawPick(await allowedForOverride(rows, want))
+  // POD-ONLY clips (shared/pod-audio.cjs, job #628) are dropped before every pick: a Pod Drill piece or Talk Bollocks line
+  // is never linked into a seed, LEGO or phrase slot, and never cited as "already recorded in this language".
+  const pick = async rows => rawPick(await allowedForOverride(withoutPodOnly(rows), want))
   if (!tryCanonicalLanguage(want.language)) return await pick([])
   const courseOf = source.courses ? await source.courses([want.courseCode]) : noCourses
   const language = clipLanguageKey(want.language, courseOf(want.courseCode))

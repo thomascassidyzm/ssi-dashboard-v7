@@ -27,8 +27,10 @@
  *     are not distinguished AT ALL — a voice's phrase is matched to the voice
  *     and the text and the language and NO ROLE; the app plays the voices at
  *     different speeds." A clip recorded as known in one course answers a
- *     target slot in another, and vice versa. Nothing here reads a row's role;
- *     tts-door.test.cjs fails if anything starts to.
+ *     target slot in another, and vice versa. Known and target are never told
+ *     apart here (tts-door.test.cjs). The ONE role read is the pod-only roles
+ *     (pod_atom, pod_fine_known — shared/pod-audio.cjs, job #628): a Pod Drill
+ *     piece or Talk Bollocks line answers no slot at all, on either side.
  *
  * What it refuses:
  *   - pending/ placeholders (no audio behind them);
@@ -47,6 +49,7 @@
 const { normalizeForAudio, audioKeyCandidates, podTtsText } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
+const { isPodOnlyClip } = require('./pod-audio.cjs')
 const { issueTicket } = require('./door-ticket.cjs')
 const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
 
@@ -106,6 +109,8 @@ function usableClips(rows, want) {
   return (rows || []).filter(row =>
     row && row.s3_key &&
     !String(row.s3_key).startsWith('pending/') &&
+    // A pod-only clip (job #628, shared/pod-audio.cjs) never answers a slot.
+    !isPodOnlyClip(row) &&
     !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
     row.veracity_pass !== false &&
     row.text != null && normalizeForAudio(row.text) === words &&
@@ -115,7 +120,7 @@ function usableClips(rows, want) {
     (!want.ownCourseOnly || (want.courseCode != null && row.course_code === want.courseCode)))
 }
 
-const COLUMNS = 'id, course_code, text, language, voice_id, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_pass'
+const COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_pass'
 
 /**
  * The live library: course_audio in Supabase, bytes from S3. Created lazily so
@@ -279,6 +284,7 @@ function clipsInLanguage(rows, { language, text }) {
   const out = new Map()
   for (const row of rows || []) {
     if (!row || !row.s3_key || String(row.s3_key).startsWith('pending/')) continue
+    if (isPodOnlyClip(row)) continue // a pod piece is not "the recording of these words" for a slot (job #628)
     if (row.text == null || !words.has(normalizeForAudio(row.text))) continue
     if (!oneLanguage(language, row.language)) continue
     if (!out.has(String(row.id))) out.set(String(row.id), row)

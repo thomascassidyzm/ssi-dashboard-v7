@@ -3922,6 +3922,35 @@ app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
   }
 })
 
+// FILE POD AUDIO (job #628, r-2026-11-07-ssi-pods-exactly-one-way-of): existing trial clips (Pod Drill pieces, Talk Bollocks
+// lines) become pod-only course_audio rows — bytes copied unchanged to mastered/<same UUID>.mp3 in both stores, timings from
+// trial/<UUID>.timings.json, role pod_atom (target) / pod_fine_known (known), never linked into a slot. Renders nothing.
+// DRY RUN unless dryRun:false. Body: { clips: [{ trialId, text, language, voiceId, side: 'target'|'known' }], dryRun? }.
+// Rules: services/shared/pod-audio.cjs.
+app.post('/api/production/:courseCode/pod-audio/file', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const podAudio = require('./shared/pod-audio.cjs')
+    const { S3Client } = require('@aws-sdk/client-s3')
+    const body = req.body || {}
+    const dryRun = body.dryRun !== false
+    if (dryRun && req.contentEdit) req.contentEdit.wroteNothing()
+    const deps = podAudio.liveDeps({
+      sb: supabaseClient.getClient(),
+      // R2 `ssi-audio` + S3 while dual — services/shared/audio-store.cjs
+      s3: require('./shared/audio-store.cjs').wrapAudioClient(new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })),
+      bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
+    })
+    const out = await podAudio.fileTrialClips({ courseCode: req.params.courseCode, clips: body.clips, dryRun }, deps)
+    if (!dryRun && !out.filed && req.contentEdit) req.contentEdit.wroteNothing()
+    res.json(out)
+  } catch (error) {
+    if (error instanceof require('./shared/pod-audio.cjs').PodAudioRefusal) return res.status(400).json({ ok: false, code: error.code, error: error.message })
+    logger.error('pod-audio/file failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
 // Set a listening pod's metadata.solo_readers (job #391): ["voice_id", …] makes the pod read solo by
 // those voices; [] clears it so the pod is cast by its speakers again. :podId is the full pod id
 // (URL-encoded) or the bare slug. Body: { solo_readers: [...], dryRun? }. Rules: shared/pod-solo-readers-edit.cjs.

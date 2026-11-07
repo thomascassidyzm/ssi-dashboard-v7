@@ -659,6 +659,8 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
     }
     if (error) throw new Error(`reuse lookup: ${error.message}`)
     for (const row of (data || [])) {
+      // A pod-only clip (pod_atom / pod_fine_known, job #628) is never a candidate for a course slot.
+      if (require('./shared/pod-audio.cjs').isPodOnlyClip(row)) continue
       const k = row.text_normalized
       if (!rowsByText.has(k)) rowsByText.set(k, [])
       rowsByText.get(k).push(row)
