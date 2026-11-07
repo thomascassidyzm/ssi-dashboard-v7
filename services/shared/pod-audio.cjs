@@ -25,6 +25,7 @@
  *   already filed. Nothing is rendered: no provider is called and no character is spent.
  */
 const { normalizeForAudio } = require('./text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('./clip-identity.cjs')
 
 /** The course_audio roles that hold pod-only clips. Never linked into a seed, LEGO or practice-phrase slot. */
 const POD_ONLY_ROLES = Object.freeze(['pod_atom', 'pod_fine_known'])
@@ -50,12 +51,25 @@ function keysForTrial(trialId) {
   return { trialKey: `trial/${stem}.mp3`, timingsKey: `trial/${stem}.timings.json`, masteredKey: `mastered/${stem}.mp3` }
 }
 
-function validateClip(c, courseCode) {
-  const missing = ['trialId', 'text', 'language', 'voiceId', 'side'].filter((k) => !c || c[k] == null || String(c[k]).trim() === '')
-  if (missing.length) throw new PodAudioRefusal('MISSING', `missing ${missing.join(', ')} — a pod clip names its trial id, words, language, voice and side`)
+/**
+ * The language is the course's own for that side (known_lang / target_lang), never the caller's word for it; a caller that
+ * also states one must agree. The voice is stored in its canonical spelling, as every render writes it.
+ */
+function validateClip(c, course) {
+  const missing = ['trialId', 'text', 'voiceId', 'side'].filter((k) => !c || c[k] == null || String(c[k]).trim() === '')
+  if (missing.length) throw new PodAudioRefusal('MISSING', `missing ${missing.join(', ')} — a pod clip names its trial id, words, voice and side`)
   const role = POD_ROLE_FOR_SIDE[c.side]
   if (!role) throw new PodAudioRefusal('BAD_SIDE', `side must be target or known, not ${c.side}`)
-  return { ...keysForTrial(c.trialId), courseCode, trialId: String(c.trialId), text: String(c.text), language: String(c.language), voiceId: String(c.voiceId), role }
+  let language, voiceId
+  try {
+    language = canonicalLanguage(c.side === 'known' ? course.known_lang : course.target_lang)
+    voiceId = canonicalVoiceId(c.voiceId)
+    if (c.language != null && canonicalLanguage(c.language) !== language) throw new PodAudioRefusal('LANGUAGE_MISMATCH', `${course.course_code} ${c.side} is ${language}, not ${c.language}`)
+  } catch (e) {
+    if (e instanceof PodAudioRefusal) throw e
+    throw new PodAudioRefusal('BAD_IDENTITY', e.message)
+  }
+  return { ...keysForTrial(c.trialId), courseCode: course.course_code, trialId: String(c.trialId), text: String(c.text), language, voiceId, role }
 }
 
 /**
@@ -66,10 +80,11 @@ function validateClip(c, courseCode) {
  *   headObject(key) → boolean               alive after the write
  *   durationMs(buffer) → number
  *   insertRow(row) → { id }
+ *   loadCourse(courseCode) → { course_code, known_lang, target_lang } | null   (read once per batch)
  * Answers { status: 'filed' | 'already' | 'would-file', audioId?, s3Key, ... } or throws PodAudioRefusal.
  */
-async function fileTrialClip(input, deps, { dryRun = true } = {}) {
-  const c = validateClip(input, input.courseCode)
+async function fileTrialClip(input, deps, { dryRun = true, course }) {
+  const c = validateClip(input, course)
   const textNormalized = normalizeForAudio(c.text)
   const existing = await deps.findIdentity({ courseCode: c.courseCode, textNormalized, language: c.language, role: c.role, voiceId: c.voiceId })
   if (existing) {
@@ -103,9 +118,11 @@ async function fileTrialClip(input, deps, { dryRun = true } = {}) {
 async function fileTrialClips({ courseCode, clips, dryRun = true }, deps) {
   if (!Array.isArray(clips) || !clips.length) throw new PodAudioRefusal('NO_CLIPS', 'clips: [] — nothing to file')
   if (clips.length > 200) throw new PodAudioRefusal('TOO_MANY', `${clips.length} clips — at most 200 per call`)
+  const course = await deps.loadCourse(courseCode)
+  if (!course) throw new PodAudioRefusal('NO_COURSE', `no course ${courseCode}`)
   const results = []
   for (const clip of clips) {
-    try { results.push(await fileTrialClip({ ...clip, courseCode }, deps, { dryRun })) }
+    try { results.push(await fileTrialClip(clip, deps, { dryRun, course })) }
     catch (e) {
       if (!(e instanceof PodAudioRefusal)) throw e
       results.push({ status: 'refused', trialId: clip && clip.trialId, code: e.code, error: e.message, ...e.extra })
@@ -121,6 +138,11 @@ function liveDeps({ sb, s3, bucket }) {
   const { AUDIO_CACHE_CONTROL } = require('./audio-cache-control.cjs')
   const { durationOf } = require('./ingest-cut.cjs')
   return {
+    loadCourse: async (courseCode) => {
+      const { data, error } = await sb.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+      if (error) throw new Error(`courses unreadable: ${error.message}`)
+      return data || null
+    },
     findIdentity: async ({ courseCode, textNormalized, language, role, voiceId }) => {
       const { data, error } = await sb.from('course_audio').select('id, s3_key, audio_revision')
         .eq('course_code', courseCode).eq('text_normalized', textNormalized).eq('language', language).eq('role', role).eq('voice_id', voiceId).maybeSingle()

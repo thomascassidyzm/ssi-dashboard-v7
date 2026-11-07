@@ -3925,7 +3925,7 @@ app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
 // FILE POD AUDIO (job #628, r-2026-11-07-ssi-pods-exactly-one-way-of): existing trial clips (Pod Drill pieces, Talk Bollocks
 // lines) become pod-only course_audio rows — bytes copied unchanged to mastered/<same UUID>.mp3 in both stores, timings from
 // trial/<UUID>.timings.json, role pod_atom (target) / pod_fine_known (known), never linked into a slot. Renders nothing.
-// DRY RUN unless dryRun:false. Body: { clips: [{ trialId, text, language, voiceId, side: 'target'|'known' }], dryRun? }.
+// DRY RUN unless dryRun:false. Body: { clips: [{ trialId, text, voiceId, side: 'target'|'known' }], dryRun? }.
 // Rules: services/shared/pod-audio.cjs.
 app.post('/api/production/:courseCode/pod-audio/file', async (req, res) => {
   if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
