@@ -243,15 +243,6 @@ describe('propose', () => {
     expect(cand.notes.attempts).toHaveLength(1)   // no re-roll on a whisper verdict
   })
 
-  it('a HUMAN upload whisper disagrees with is still refused — human recordings keep the full check', async () => {
-    const d2 = seedDb()
-    const before = d2.snapshot()
-    const { core: c2 } = makeCore(d2, { verdict: { checked: true, pass: false, reason: 'missing final word', cer: 0.9 } })
-    await expect(c2.propose({
-      courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'upload',
-      buffer: Buffer.alloc(40000, 2), filename: 'take-3.wav', actor: 'tom',
-    })).rejects.toThrow(/words missing/i)
-    expect(d2.snapshot()).toEqual(before)
   })
 
   it('refuses a replacement that carries the very defect it is replacing', async () => {

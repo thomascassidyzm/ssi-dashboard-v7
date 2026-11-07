@@ -64,21 +64,6 @@ describe('the other places Whisper used to decide', () => {
     expect(d.admit).toBe(true)
   })
 
-  it('reuse planner: a damaged verdict never promotes a clip to RENDER', async () => {
-    const { verifyPlanVeracity } = require('./audio-reuse-planner.cjs')
-    const plan = {
-      clips: [{ clipKey: 'k', text: 'hallo', language: 'deu', role: 'target1', decision: 'SATISFIED', reason: 'linked', reuseSource: { s3Key: 'mastered/A.mp3' } }],
-      summary: {}, byLayer: {},
-    }
-    await verifyPlanVeracity(plan, {
-      fetchObject: async () => Buffer.from('x'),
-      veracity: { checkAudioVeracity: async () => ({ checked: true, pass: false, reason: 'last_word_missing' }) },
-      logger: { info () {} },
-    })
-    expect(plan.clips[0].decision).toBe('SATISFIED')
-    expect(plan.clips[0].heard.pass).toBe(false)
-  })
-
   it('audio-veracity: the sample never hears a Welsh clip', async () => {
     const V = require('./audio-veracity.cjs')
     expect(V.isWelshClip('cym', {})).toBe(true)
@@ -105,8 +90,6 @@ const STT_CALLERS = {
   'services/audio-intelligence/gate-stack.cjs': 'advisory', // words + phonology tiers never refuse
   'services/audio-intelligence/decode.cjs': 'infra',
   'services/audio-processor.cjs': 'infra',
-  'services/audio-repair.cjs': 'human-recording',    // uploads only; TTS candidates are never listened to (audio-repair-core, job #626)
-  'services/audio-reuse-planner.cjs': 'report',      // verifyPlanVeracity annotates, never re-decides
   'services/voicelab-playground/server.cjs': 'infra',
   'services/voicelab/runner.cjs': 'infra',
   'tools/a108/isl-ell-est-render-verify.cjs': 'report',

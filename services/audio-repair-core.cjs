@@ -318,14 +318,10 @@ function createRepairCore (deps) {
     let candidateBuffer = null
     let durationMs = null
     let attemptLog = []
-    // The whisper verdict may reject only a HUMAN upload. On a TTS candidate it
-    // is recorded and never a fault — no re-roll, no rejection (Tom, 2026-09-28,
-    // r-2026-09-28-no-automatic-whisper-stt-check-may; full STT checks are for
-    // human recordings, ssi-stt-sampling-doctrine). Level, length and tail stay.
-    const sttFault = (verdict) => (source === 'upload' ? verdict : null)
-    // And on a TTS candidate Whisper is not even RUN (Tom, 2026-11-03: "We switched
-    // that off weeks ago"; job #626). Only a human upload is listened to.
-    const listen = (buf) => (source === 'upload' ? verify.veracity(buf, useText, row.language) : Promise.resolve({ checked: false, pass: null, reason: 'not_run_tts', cer: null }))
+    // No speech-to-text here, on a render or on a human upload (Tom, 2026-11-07,
+    // r-2026-11-07-whisper-is-never-used-to-check). Level, length and tail stay. The row still
+    // needs its verdict columns, so this is the honest "nobody listened".
+    const listen = async () => ({ checked: false, pass: null, reason: 'not_run', cer: null })
 
     if (source === 'upload') {
       if (!buffer || !buffer.length) throw new RepairError('upload carried no bytes', 'empty_upload')
@@ -358,13 +354,13 @@ function createRepairCore (deps) {
         const level = await verify.measure(out.buffer)
         const verdict = await listen(out.buffer)
         const tail = await tailOf(out.buffer)
-        const fault = faultOf(out.durationMs, level, sttFault(verdict), tail)
+        const fault = faultOf(out.durationMs, level, tail)
         attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault, verdict })
         last = { ...out, level, verdict, tail }
         if (!fault) break
         logger.log?.(`[repair] ${audioId} attempt ${attempt}: ${fault} — re-roll`)
       }
-      const fault = faultOf(last.durationMs, last.level, sttFault(last.verdict), last.tail)
+      const fault = faultOf(last.durationMs, last.level, last.tail)
       if (fault) {
         throw new RepairError(
           `no attempt produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
@@ -379,7 +375,7 @@ function createRepairCore (deps) {
     const level = await verify.measure(candidateBuffer)
     const verdict = await listen(candidateBuffer)
     const tail = await tailOf(candidateBuffer)
-    const fault = faultOf(durationMs, level, sttFault(verdict), tail)
+    const fault = faultOf(durationMs, level, tail)
     if (fault) {
       throw new RepairError(`candidate rejected: ${fault} (${durationMs}ms)`,
         'candidate_failed_verification')
@@ -443,13 +439,10 @@ function createRepairCore (deps) {
    *   candidate is exactly the thing that has to be re-measured — not assumed clean
    *   because it is new.
    */
-  function faultOf (durationMs, level, verdict, tail) {
+  function faultOf (durationMs, level, tail) {
     if (!durationMs || durationMs < T.floorMs) return 'too short'
     if (level && level.meanDb < T.silenceMeanDb) return 'silent'
     if (level && level.peakDb < T.nearSilencePeakDb) return 'near-silent'
-    if (verdict && verdict.checked === true && verdict.pass === false) {
-      return `words missing (${verdict.reason || 'veracity fail'})`
-    }
     if (tail && tail.flagged === true) return `tail truncated (${tail.reason})`
     return null
   }

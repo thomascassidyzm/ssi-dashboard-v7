@@ -9776,36 +9776,6 @@ const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repai
 const VERDICT_CACHE_PATH = process.env.AUDIO_VERACITY_CACHE_PATH
   || path.join(os.homedir(), '.audio-veracity-verdicts.json')
 
-function loadVerdictCache() {
-  if (process.env.AUDIO_VERACITY_CACHE === '0') return null
-  let m = new Map()
-  try {
-    if (fs.existsSync(VERDICT_CACHE_PATH)) {
-      m = new Map(Object.entries(fs.readJsonSync(VERDICT_CACHE_PATH)))
-      logger.info(`[ReuseFirst] verdict cache: ${m.size} remembered decodes from ${VERDICT_CACHE_PATH}`)
-    }
-  } catch (e) {
-    // A corrupt cache is a cost problem, never a correctness one — start empty.
-    logger.warn(`[ReuseFirst] verdict cache unreadable (${e.message}) — starting empty`)
-    m = new Map()
-  }
-  let dirty = 0
-  const flush = () => {
-    if (!dirty) return
-    try {
-      fs.outputJsonSync(VERDICT_CACHE_PATH, Object.fromEntries(m))
-      dirty = 0
-    } catch (e) { logger.warn(`[ReuseFirst] verdict cache write failed: ${e.message}`) }
-  }
-  return {
-    get: (k) => m.get(k),
-    // Flushed every 200 new verdicts so a killed run keeps most of its listening,
-    // which is the whole point: the in-memory listen result dies with the process.
-    set: (k, v) => { m.set(k, v); if (++dirty >= 200) flush() },
-    flush,
-    get size() { return m.size },
-  }
-}
 const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
 
 // A full course is one round per is_new LEGO — fra_for_eng alone is 1,529 — so
@@ -9833,14 +9803,6 @@ async function reuseHeadObject(s3Key) {
     if (e?.name === 'NotFound' || code === 404) return { exists: false, size: null }
     return { exists: null, size: null, error: e?.name || e?.message || 'head failed' }
   }
-}
-
-/** The bytes at an S3 key, as a Buffer — for the incumbent veracity pass. */
-async function reuseFetchObject(s3Key) {
-  const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
-  const chunks = []
-  for await (const chunk of r.Body) chunks.push(chunk)
-  return Buffer.concat(chunks)
 }
 
 /**
@@ -10149,18 +10111,6 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
       })
       await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
-      // Optional: LISTEN to the clips the plan means to keep and REPORT what was
-      // heard on run.plan.heard. It never promotes a clip to RENDER (Tom,
-      // 2026-09-28: no automatic STT check may trigger a re-render).
-      if (req.body?.verifyIncumbents === true) {
-        const verdictCache = loadVerdictCache()
-        const heard = await reusePlanner.verifyPlanVeracity(plan, {
-          fetchObject: reuseFetchObject, veracity, logger, verdictCache,
-          concurrency: Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4),
-        })
-        verdictCache?.flush()
-        logger.info(`[ReuseFirst] listened to ${heard.checked} incumbent clips — ${heard.failed} damaged, ${heard.unknown} unknown, ${heard.cached || 0} from cache, reasons ${JSON.stringify(heard.byReason)}`)
-      }
       run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes, heard: plan.heard || null }
 
       const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length

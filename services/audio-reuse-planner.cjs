@@ -311,9 +311,8 @@ function courseLanguageNames(course, codeService) {
  *
  * `fromRound` defaults to 1, which is the whole prefix and the only shape this
  * ever had. It exists because a full course is ~1,500 rounds: re-planning from
- * round 1 every time makes each later pass re-verify — and, under
- * verifyIncumbents, re-LISTEN to — every clip of every round before it, which
- * is hours of whisper for work already finished. A band is disjoint, bounded
+ * round 1 every time makes each later pass re-verify every clip of every round
+ * before it, which is work already finished. A band is disjoint, bounded
  * and checkpointable. Clips shared with an earlier band still come back
  * SATISFIED, so banding is idempotent, never destructive, and never re-buys
  * audio; it only stops paying to re-ask a question already answered.
@@ -1364,109 +1363,6 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
   return summary
 }
 
-/**
- * LISTEN to every clip this plan intends to keep, and REPORT what was heard.
- * It never changes a decision (Tom, 2026-09-28) — see the end of the function.
- *
- * `verifyPlanBytes` asks whether an object exists. This asks whether it says
- * what the COURSE says it should say. Those are different questions, and the
- * fra_for_eng damage of 2026-08-07 lived in the gap between them: the rows were
- * right, the objects were alive, and roughly one clip in three had simply lost
- * its final word (Tom, listening: "the final word is wholly missing and the
- * clip ends in a gap").
- *
- * The expected text is `clip.text` — the ROUND GENERATOR's text, i.e. what the
- * course says the learner should hear. Never `course_audio.text`, and never the
- * clip's own transcript: a clip rendered from a wrong stored text passes every
- * self-referential check ever written while the course stays broken.
- *
- * `fetchObject(s3Key) -> Buffer` and the veracity module are injected so the
- * caller owns the S3 client and this file stays testable. A check that cannot
- * be made (whisper missing, download failed) is recorded as `unknown` and
- * NEVER treated as a failure.
- *
- * `verdictCache` (optional, `{ get(key), set(key, verdict) }`) removes DUPLICATE
- * decodes. Whisper is the dominant cost of this whole exercise, and bands re-ask
- * the same question constantly: bands are disjoint in ROUNDS but not in CLIPS,
- * because review offsets reach back as far as 2584 rounds — measured 2026-08-07,
- * 35.7% of a rounds-201-210 plan is clips that rounds 1-200 also plays. Without a
- * cache every band re-listens to that overlap from scratch.
- *
- * The cache is correct BY CONSTRUCTION rather than by invalidation, which is why
- * it is safe to persist it across runs and across days: mastered/<uuid>.mp3 objects
- * are WRITE-ONCE (a re-master mints a new key and repoints the rows), so a given
- * s3Key names the same bytes forever. Keying on s3Key + expected text + language —
- * exactly the three inputs to checkAudioVeracity — means a cache hit is the answer
- * to the identical question, never a stale one. There is deliberately no TTL and no
- * invalidation path: adding one could only ever make it wrong.
- *
- * Omit it and behaviour is exactly as before — every clip is decoded.
- *
- * Mutates the plan in place, adding `heard` to each checked clip.
- */
-async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4, logger = console, verdictCache = null } = {}) {
-  const KEEPING = new Set(['SATISFIED', 'REUSE_OWN', 'REUSE_CROSS'])
-  const targets = []
-  for (const clip of plan.clips) {
-    if (!KEEPING.has(clip.decision)) continue
-    const s3Key = clip.reuseSource?.s3Key
-    if (s3Key) targets.push({ clip, s3Key })
-  }
-
-  const summary = { checked: 0, ok: 0, failed: 0, unknown: 0, cached: 0, byReason: {} }
-  // The three inputs to the question, and nothing else. A NUL separator cannot
-  // occur in an s3 key or in course text, so the parts can never run together
-  // ambiguously the way a space or a pipe could.
-  const cacheKey = (s3Key, clip) => `${s3Key}\u0000${clip.text}\u0000${clip.language}`
-  let cursor = 0
-  const worker = async () => {
-    while (cursor < targets.length) {
-      const { clip, s3Key } = targets[cursor++]
-      let verdict
-      const ck = cacheKey(s3Key, clip)
-      const hit = verdictCache ? verdictCache.get(ck) : undefined
-      if (hit !== undefined && hit !== null) {
-        verdict = hit
-        summary.cached++
-      } else {
-        try {
-          const buf = await fetchObject(s3Key)
-          verdict = await veracity.checkAudioVeracity(buf, clip.text, clip.language)
-        } catch (e) {
-          verdict = { pass: null, checked: false, reason: 'check_failed', detail: e.message }
-        }
-        // An UNANSWERABLE check is never cached: whisper missing or a download that
-        // failed is a fact about this moment, not about the clip, and freezing it
-        // would make a transient outage permanent.
-        if (verdictCache && verdict.checked !== false) verdictCache.set(ck, verdict)
-      }
-      summary.checked++
-      clip.heard = {
-        checked: verdict.checked, pass: verdict.pass, reason: verdict.reason,
-        cer: verdict.cer ?? null, decode: verdict.decode ?? null,
-      }
-      if (verdict.pass === false) {
-        summary.failed++
-        summary.byReason[verdict.reason] = (summary.byReason[verdict.reason] || 0) + 1
-      } else if (verdict.pass === true) summary.ok++
-      else summary.unknown++
-
-      if (summary.checked % 200 === 0) {
-        logger.info?.(`[ReuseFirst veracity] ${summary.checked}/${targets.length} listened — ${summary.failed} damaged`)
-      }
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(concurrency, Math.max(1, targets.length)) }, worker))
-
-  // REPORT ONLY. Until 2026-09-28 a failed decode flipped the clip to RENDER.
-  // Tom's ruling that day (r-2026-09-28-no-automatic-whisper-stt-check-may): no
-  // automatic STT check may trigger a re-render of TTS audio. The verdict stays
-  // on `clip.heard` and in `plan.heard` for a person to listen to; the plan's
-  // decisions are exactly what they were before listening.
-  plan.heard = summary
-  return summary
-}
-
 /** Recompute summary/byLayer/estimate after decisions change. */
 function recountPlan(plan) {
   const summary = { total: plan.clips.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, rebuild: 0, blocked: 0 }
@@ -1720,7 +1616,6 @@ module.exports = {
   findCandidates,
   inListBatches,
   verifyPlanBytes,
-  verifyPlanVeracity,
   recountPlan,
   buildCoverageTable,
   buildLanguageNameFilter,
