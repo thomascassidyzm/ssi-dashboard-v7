@@ -107,7 +107,6 @@ const STT_CALLERS = {
   'services/audio-processor.cjs': 'infra',
   'services/audio-repair.cjs': 'human-recording',    // uploads only; TTS candidates are never listened to (audio-repair-core, job #626)
   'services/audio-reuse-planner.cjs': 'report',      // verifyPlanVeracity annotates, never re-decides
-  'services/take-text-check-queue.cjs': 'human-recording', // booth take's script check, after the reply (job #842); never refuses
   'services/voicelab-playground/server.cjs': 'infra',
   'services/voicelab/runner.cjs': 'infra',
   'tools/a108/isl-ell-est-render-verify.cjs': 'report',

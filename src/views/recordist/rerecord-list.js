@@ -3,8 +3,7 @@
 //
 // The server sends two reasons a line is on the card (services/voice-engine/booth-rerecord.cjs):
 // 'skipped' (unrecorded, before the furthest line he reached in a batch he started) and
-// 'text_changed' (its words were edited after he recorded it), and since job #842 'didnt_match'
-// (a take that saved but whose background script check says it does not say its line). The other
+// 'text_changed' (its words were edited after he recorded it). The other
 // reason only this device knows: a take the server REFUSED, whose bytes never left the browser.
 // They are merged here.
 //
@@ -16,8 +15,6 @@
 export function whyWords(why, lastError = '') {
   if (why === 'skipped') return 'skipped'
   if (why === 'text_changed') return 'text changed'
-  // A take that SAVED but whose script check says it does not say its line (job #842).
-  if (why === 'didnt_match') return "didn't match the words"
   const e = String(lastError || '')
   // The server's own sentences (services/recording-speech-gate.cjs MESSAGES), most specific first.
   if (/cut off|truncat/i.test(e)) return "didn't save: start cut off"
@@ -46,7 +43,6 @@ export function reasonWords(row = {}, lastError = '') {
     if (row.changedBy) return `text changed by ${row.changedBy}${dayWords(row.changedAt) ? `, ${dayWords(row.changedAt)}` : ''}`
     return `text changed after your take${dayWords(row.recordedAt) ? ` of ${dayWords(row.recordedAt)}` : ''}`
   }
-  if (row.why === 'didnt_match') return `${whyWords('didnt_match')}${day(row.recordedAt)}`
   return `${whyWords('refused', lastError)}${day(row.refusedAt)}`
 }
 
@@ -57,25 +53,21 @@ export function reasonWords(row = {}, lastError = '') {
  * @param {object[]} [p.refusedTakes] the device's refused takes: {lineId, text, lastError, refusedAt}
  * @param {Set<string>|string[]} [p.unsent] line ids with a take still waiting to upload
  * @param {Set<string>|Map<string,*>|string[]} [p.saved] line ids saved from this device since
- * @param {Set<string>|Map<string,*>|string[]} [p.retaken] line ids read again since the list was
- *   read. A 'didnt_match' line is SAVED by definition (its failed take is stored, often from this
- *   very device), so `saved` cannot take it off; only a new take of it can.
  * @returns {object[]} rows: {lineId, why, words, text, oldText, track, batch}
  */
-export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTakes = [], unsent = [], saved = [], goneIds = [], retaken = [] } = {}) {
+export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTakes = [], unsent = [], saved = [], goneIds = [] } = {}) {
   const has = (s) => (s instanceof Set || s instanceof Map ? (id) => s.has(id) : ((set) => (id) => set.has(id))(new Set(s || [])))
   const isUnsent = has(unsent)
   const isSaved = has(saved)
   const isNowRecorded = has(recordedAlso)
   const isGone = has(goneIds)
-  const isRetaken = has(retaken)
   const refusedById = new Map()
   for (const t of refusedTakes || []) if (t && t.lineId) refusedById.set(t.lineId, t)
   const out = []
   const seen = new Set()
   for (const it of serverItems || []) {
     if (!it || seen.has(it.lineId) || isUnsent(it.lineId)) continue
-    if (it.why === 'didnt_match' ? isRetaken(it.lineId) : isSaved(it.lineId)) continue
+    if (isSaved(it.lineId)) continue
     seen.add(it.lineId)
     const refused = refusedById.get(it.lineId)
     // A refusal is the newest thing known about a line: it says what happened to his last try.
@@ -112,8 +104,8 @@ export function oldRefusedIds({ serverItems = [], recordedAlso = [], refusedTake
 
 /** "3 didn't save · 5 skipped · 2 text changed": the counts by reason, zeroes left out. */
 export function breakdownWords(rows) {
-  const n = { refused: 0, didnt_match: 0, skipped: 0, text_changed: 0 }
+  const n = { refused: 0, skipped: 0, text_changed: 0 }
   for (const r of rows || []) if (r && r.why in n) n[r.why]++
-  return [[n.refused, "didn't save"], [n.didnt_match, "didn't match the words"], [n.skipped, 'skipped'], [n.text_changed, 'text changed']]
+  return [[n.refused, "didn't save"], [n.skipped, 'skipped'], [n.text_changed, 'text changed']]
     .filter(([c]) => c > 0).map(([c, w]) => `${c} ${w}`).join(' · ')
 }

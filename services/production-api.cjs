@@ -39,11 +39,6 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake, MIN_TAKE_MS, DEFAULT_UPLOAD_MIME, readStyleForTake, takeGateText, refuseProcessedTake } = require('./recording-upload-helpers.cjs')
 const speechGate = require('./recording-speech-gate.cjs')
-// The booth take's script check runs AFTER the upload answers (job #842): see the header of
-// take-text-check-queue.cjs. Created here so the upload seam queues into it and the recordist
-// router serves its per-voice failed-check list.
-const takeTextCheck = require('./take-text-check-queue.cjs')
-const textChecks = takeTextCheck.createTextCheckQueue({ logger })
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
 const { createLastGoodCache, rowOrThrow } = require('./shared/last-good-cache.cjs')
 // Course rows read by the upload seam, kept as last-good for a read blip (job #917).
@@ -683,7 +678,6 @@ app.use('/api/recording',
     requireAdminOrAgent,
     requireDashboardUser,
     handleRecordingUpload,
-    textChecks,
     warmPhrasePlan: true,
     boothKeys,
     boothKeyGate,
@@ -5685,29 +5679,9 @@ async function handleRecordingUpload(req, res) {
       return res.status(gateRefusal.status).json(gateRefusal.body)
     }
 
-    // VERIFY AGAINST KNOWN TEXT. Tom's ruling, 2026-08-24: human recordings get
-    // the full check, always — "post-AGC level metering lies", and the gate
-    // above it answers "is this a read?" without ever asking "is it a read of
-    // THIS LINE?". A recordist who reads the previous line twice, or reads the
-    // right words into the wrong slot, passes every check before this one.
-    //
-    // ADVISORY, NEVER A REFUSAL — same ruling: "STT is never a hard course veto;
-    // voice-match and VAD stay the hard gates." The speech gate above refuses;
-    // this one records. The reason is measured, not cautious: on the four real
-    // cym takes whisper-small free-decoded a perfect read at CER 0.50
-    // (services/recording-speech-gate.cjs). Verify mode fixes that case — all 11
-    // good Welsh takes verified on 2026-08-24 — but a text score has no business
-    // costing a recordist a read it cannot itself listen to.
-    //
-    // AFTER THE REPLY, NOT BEFORE IT (Aran, 2026-10-15, plan #715, job #842, Tom's yes with two
-    // conditions). This check was ~7.7 s of every ~10 s a booth take spent here, and it never
-    // refuses. So it is queued (durably, see take-text-check-queue.cjs) once the take is filed,
-    // below, and runs after the response has gone. Every take with a script text is still
-    // checked. A take that does not verify is no longer just a log line: it goes on the artist's
-    // re-record list (GET /api/recording/voice/:voiceId/text-check-failures), which the booth
-    // merges into the one Re-record card and the slim refused bar.
-    // The refusal gates above stay inline, so "didn't save" is still instant.
-    const textCheckLanguage = speechGate.languageForTake(courseCode, metadata.kind)
+    // No speech-to-text on a human recording, ever (Tom, 2026-11-07,
+    // r-2026-11-07-whisper-is-never-used-to-check). The gates above measure the take and refuse it
+    // instantly; whether it says the right words is a person's ear.
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -6016,29 +5990,6 @@ async function handleRecordingUpload(req, res) {
       ? podResult.audioRow.id
       : (isScriptMode && scriptFiling?.courseAudioId) ? scriptFiling.courseAudioId : audioId
 
-    // THE SCRIPT CHECK, QUEUED (job #842). The take is stored, mastered, through every refusal
-    // gate and filed, so it is safe to answer now; the check runs after. Persisted to disk
-    // before the reply, so a restart re-runs it rather than losing it. A booth take with no
-    // script text is still NOTED, because a new take of a line is what takes an earlier failed
-    // check of that line off the re-record list.
-    const boothTake = req.recordistVoiceId && req.recordistLineId
-      ? { voiceId: req.recordistVoiceId, lineId: String(req.recordistLineId) }
-      : {}
-    let textCheckQueued = null
-    if (gateText) {
-      textCheckQueued = textChecks.enqueue({
-        takeId: s3KeyUuid,
-        audioId: responseUuid,
-        ...boothTake,
-        courseCode,
-        text: String(gateText),
-        language: textCheckLanguage,
-        kind: metadata.kind || null,
-      }, processedBuffer)
-    } else if (boothTake.voiceId) {
-      textChecks.noteTake({ ...boothTake, takeId: s3KeyUuid })
-    }
-
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
       courseCode,
@@ -6078,14 +6029,6 @@ async function handleRecordingUpload(req, res) {
         durationMs: audioMeta.durationMs,
         format: audioMeta.format,
         sizeReduction: audioMeta.inputSize - audioMeta.outputSize
-      } : null,
-      // ADVISORY, and now DEFERRED (job #842): the check runs after this reply, so
-      // the response can only say that it was queued. `checked: false` means the
-      // question has not been answered yet, which is not the same as a pass.
-      textVerification: gateText ? {
-        checked: false,
-        reason: textCheckQueued && textCheckQueued.queued ? 'deferred' : 'unchecked_not_queued',
-        advisory: true
       } : null
     })
   } catch (error) {
@@ -13700,9 +13643,6 @@ const HOST = process.env.BIND_HOST || '127.0.0.1'
 
 httpServer.listen(PORT, HOST, () => {
   logger.log(`Production API server running on ${HOST}:${PORT}`)
-  // Booth script checks a restart interrupted (job #842): kill the decoders the old process
-  // left running (KillMode=process leaves them holding whisper slots), then re-queue the checks.
-  takeTextCheck.recoverAtBoot(textChecks, { logger })
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
   estateMapCache.get().catch(err => logger.error('estate map warm-up failed:', err.message))
