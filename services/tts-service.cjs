@@ -16,11 +16,6 @@ const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
 const { withProviderSlot, providerConcurrencyStats } = require('./shared/provider-concurrency.cjs');
 const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs');
 const https = require('https');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const crypto = require('crypto');
-const { execFile } = require('child_process');
 const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs');
@@ -91,7 +86,7 @@ const TTS_MIN_AUDIO_MS = Number(process.env.TTS_MIN_AUDIO_MS || 250);
  *
  * Throws with a "(503)" marker so isRetriableTtsError classifies it as a
  * transient server-side failure: generateWithRetry then re-rolls it inside the
- * existing retry budget, exactly like the phonology gate, and the final failure
+ * existing retry budget, and the final failure
  * throws so the caller never persists a silent clip.
  *
  * @param {Buffer} buffer - the raw provider response
@@ -801,109 +796,6 @@ function isRetriableTtsError(error) {
   return true;
 }
 
-// ---- xAI/Cartesia phonology SAMPLE (whisper language auto-detect) ---------
-// xAI's multilingual voices are English-dominant and can render a non-English
-// text with English phonology even with an explicit `language` sent
-// ('Come stai' → English 'come'; ita pilot 2026-07-10). From 2026-07-11 to
-// 2026-09-28 this was a gate that re-rolled and failed such renders. It is now
-// a sampled, report-only check (Tom, 2026-09-28: no automatic STT check may veto
-// or re-render TTS audio): one render in a hundred (never Welsh) is listened to and a suspect
-// language (English or config.suspectLanguages) is logged, never acted on.
-// Skipped when whisper-cli/model are absent (logged once), when the steered
-// language is English/auto, or when XAI_PHONO_GATE=0.
-const WHISPER_BIN = process.env.WHISPER
-  || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
-const WHISPER_MODEL = process.env.WHISPER_MODEL
-  || path.join(require('os').homedir(), '.local/share/whisper-models/ggml-small.bin');
-const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
-const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
-let phonoGateWarned = false;
-// ONE CLIP IN A HUNDRED is listened to, RECORD-ONLY, and never a Welsh one —
-// drawn from the ONE estate counter, services/shared/tts-stt-sample.cjs (Tom,
-// 2026-11-03, r-2026-11-03-whisper-on-audio-a-1-in; r-2026-09-28: never re-roll,
-// veto or fail-close). Inside phase8's renderChecked the door does not draw:
-// that caller draws once for the clip. Was 1 in 10, own counter, until job #626.
-const sttSample = require('./shared/tts-stt-sample.cjs');
-const PHONO_SAMPLE_EVERY = sttSample.SAMPLE_EVERY;
-function phonoShouldSample() { return !sttSample.inClipScope() && sttSample.draw(); }
-/** Welsh is never sampled: the course code (door or config) or the steered language says cym/cy. */
-function phonoSkipsWelsh(config) {
-  return sttSample.isWelsh((config.door && config.door.courseCode) || config.courseCode, config.locale || config.language);
-}
-
-// Bounded whisper concurrency: each detection spawns a multi-threaded
-// process; an unbounded fan-out (TTS concurrency can be 20) would thrash the
-// box. Two at a time keeps detection off the critical path without stampeding.
-const PHONO_MAX_CONCURRENT = Number(process.env.XAI_PHONO_CONCURRENCY || 2);
-let phonoActive = 0;
-const phonoQueue = [];
-function phonoAcquire() {
-  if (phonoActive < PHONO_MAX_CONCURRENT) { phonoActive++; return Promise.resolve(); }
-  return new Promise(resolve => phonoQueue.push(resolve));
-}
-function phonoRelease() {
-  const next = phonoQueue.shift();
-  if (next) next(); else phonoActive--;
-}
-
-/**
- * Detect the spoken language of an audio buffer via whisper-cli auto-detect.
- * @returns {Promise<string|null>} ISO 639-1 code, or null when unmeasurable
- *   (ffmpeg/whisper error) — null is treated as a pass, matching take-g's
- *   'unmeasured' outcome: the gate only acts on positive suspect detections.
- */
-async function detectSpokenLanguage(audioBuffer) {
-  await phonoAcquire();
-  const base = path.join(os.tmpdir(), `phono-gate-${crypto.randomUUID()}`);
-  const mp3 = `${base}.mp3`;
-  const wav = `${base}.wav`;
-  try {
-    fs.writeFileSync(mp3, audioBuffer);
-    return await new Promise(resolve => {
-      execFile(FFMPEG_BIN, ['-y', '-i', mp3, '-ar', '16000', '-ac', '1', wav], err => {
-        if (err) return resolve(null);
-        execFile(WHISPER_BIN, ['-m', WHISPER_MODEL, '-l', 'auto', '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
-          { encoding: 'utf8', maxBuffer: 1 << 22 }, (e, _o, stderr) => {
-            const m = /auto-detected language: (\w+)/.exec(stderr || '');
-            resolve(m ? m[1] : null);
-          });
-      });
-    });
-  } catch {
-    return null;
-  } finally {
-    for (const f of [mp3, wav]) { try { fs.unlinkSync(f); } catch {} }
-    phonoRelease();
-  }
-}
-
-/**
- * Providers whose voices are English-dominant multilingual clones, and which
- * therefore read cross-language words with English phonology when the steer is
- * weak. A SET, not a string equality: this was `provider !== 'xai'`, and wiring
- * a second such provider in without touching it would have silently switched
- * the gate off for that provider — no error, no warning, just an unguarded
- * render path. Cartesia joined on 2026-08-27 with the same exposure that the
- * 2026-07-10 Italian pilot found on xAI ('come stai' read as English 'come').
- */
-const PHONOLOGY_GATED_PROVIDERS = new Set(['xai', 'cartesia']);
-
-/**
- * The suspect-language set for a render, or null when the gate doesn't apply.
- * Suspects = English (the voices' dominant language) + any explicit
- * config.suspectLanguages, minus the steered language itself.
- */
-function phonologySuspects(provider, config) {
-  if (!PHONOLOGY_GATED_PROVIDERS.has(provider) || config.phonologyGate === false) return null;
-  // `locale` first: that is the field the Cartesia path steers with, and a gate
-  // that read only `language` would find nothing to guard on a Cartesia render.
-  const steered = String(config.locale || config.language || '').toLowerCase().split('-')[0];
-  if (!steered || steered === 'auto' || steered === 'en') return null;
-  const suspects = new Set(['en', ...(config.suspectLanguages || []).map(l => String(l).toLowerCase().split('-')[0])]);
-  suspects.delete(steered);
-  return suspects.size ? suspects : null;
-}
-
 /**
  * Generate speech with retry logic and exponential backoff + jitter.
  *
@@ -917,10 +809,6 @@ function phonologySuspects(provider, config) {
  * and, if every attempt comes back silent, throws — the caller never persists a
  * stub. This is the fix for the 2026-08-03 French batch.
  *
- * xAI and Cartesia renders steered to a non-English language are SAMPLED by
- * the phonology check above — one in a hundred, record-only, Welsh never. It
- * never re-rolls and never throws (Tom, 2026-09-28 and 2026-11-03).
- *
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider
  * @param {object} config - Provider configuration
@@ -929,11 +817,6 @@ function phonologySuspects(provider, config) {
  */
 async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = null) {
   let lastError = null;
-  const suspects = phonologySuspects(provider, config);
-  if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
-    phonoGateWarned = true;
-    console.warn(`[TTS] xAI phonology gate unavailable (${process.env.XAI_PHONO_GATE === '0' ? 'XAI_PHONO_GATE=0' : 'whisper-cli or model missing'}) — non-English xAI renders unchecked for language drift`);
-  }
 
   const door = config.door || {};
   const { language, voiceId } = identityFromConfig(provider, config);
@@ -965,18 +848,9 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       const result = await withProviderSlot(provider, () => renderOnce(text, provider, config));
       sent = true;
       guard.afterProviderCall(reservation, { ok: true });
-      // REPORT ONLY, SAMPLED (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may:
-      // no automatic STT check may veto or re-render TTS audio; STT on TTS is
-      // sampling, never 100%). Until job #678 this re-rolled every suspect take
-      // and threw after the budget. Now one render in PHONO_SAMPLE_EVERY is
-      // listened to, a suspect language is logged, and the render is returned.
-      // 1-in-100 and Welsh skipped since 2026-11-03 (r-2026-11-03-whisper-on-audio-a-1-in, job #626).
-      if (suspects && PHONO_GATE_ON && !phonoSkipsWelsh(config) && phonoShouldSample()) {
-        const detected = await detectSpokenLanguage(result.audioBuffer);
-        if (detected && suspects.has(detected)) {
-          console.warn(`[TTS] REPORT ONLY — phonology sample: whisper heard '${detected}' for a '${config.locale || config.language}' render of "${String(text).slice(0, 40)}". Returned as rendered; a person listens before anything is re-rendered.`);
-        }
-      }
+      // The door does not listen to what it returns (Tom, 2026-11-07,
+      // r-2026-11-07-whisper-is-never-used-to-check: no voice checks on a render).
+      // Whisper's one use is the record-only sample in audio-veracity.cjs.
       return result;
     } catch (error) {
       if (!sent) guard.afterProviderCall(reservation, { ok: false, error });
@@ -1198,14 +1072,8 @@ module.exports = {
   CARTESIA_MODEL,
   CARTESIA_SAMPLE_RATE,
   CARTESIA_BIT_RATE,
-  PHONOLOGY_GATED_PROVIDERS,
   getCadenceSpeed,
   getVoiceForRole,
-  // phonology gate internals, exported for tests/tools
-  detectSpokenLanguage,
-  phonologySuspects,
-  PHONO_SAMPLE_EVERY,
-  phonoSkipsWelsh,
   // empty-response gate + xAI pacing internals, exported for tests/tools
   assertAudibleResponse,
   TTS_MIN_AUDIO_MS,

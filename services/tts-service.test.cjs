@@ -225,38 +225,6 @@ describe('generate() routes cartesia', () => {
   })
 })
 
-describe('the phonology gate covers cartesia, not just xai', () => {
-  const { phonologySuspects, PHONOLOGY_GATED_PROVIDERS } = require('./tts-service.cjs')
-
-  // The gate was `provider !== 'xai'` — a string equality. Wiring a second
-  // English-dominant multilingual provider in without widening it would have
-  // switched the gate off for that provider silently: no error, no warning, an
-  // unguarded render path. The 2026-07-10 Italian pilot ('come stai' read with
-  // English phonology) is what the gate is for; Cartesia has the same exposure.
-  it('guards a Cartesia render steered to a non-English language', () => {
-    const suspects = phonologySuspects('cartesia', { locale: 'it-IT' })
-    expect(suspects).not.toBeNull()
-    expect(suspects.has('en')).toBe(true)
-  })
-
-  it('reads the steer from locale as well as language', () => {
-    // A gate that only looked at `language` would find nothing to guard on the
-    // Cartesia path, which steers with `locale`.
-    expect(phonologySuspects('cartesia', { locale: 'it-IT' })).not.toBeNull()
-    expect(phonologySuspects('xai', { language: 'it-IT' })).not.toBeNull()
-  })
-
-  it('still does not apply to Azure, and still stands down on English', () => {
-    expect(phonologySuspects('azure', { language: 'it-IT' })).toBeNull()
-    expect(phonologySuspects('cartesia', { locale: 'en-GB' })).toBeNull()
-    expect(phonologySuspects('cartesia', { locale: 'it-IT', phonologyGate: false })).toBeNull()
-  })
-
-  it('names both gated providers so a third cannot be added by forgetting', () => {
-    expect([...PHONOLOGY_GATED_PROVIDERS].sort()).toEqual(['cartesia', 'xai'])
-  })
-})
-
 /**
  * The same steering ruling as generateXai's, applied to the second provider
  * with the same exposure. Added when Cartesia was wired, 2026-08-27: main had

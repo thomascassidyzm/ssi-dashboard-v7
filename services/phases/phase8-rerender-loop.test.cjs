@@ -137,7 +137,7 @@ function load({ tables, maxRows = null, attempts = 1 }) {
   return { app: phase8, tts, db }
 }
 
-const FILL = { roles: ['known', 'target1', 'target2'], authorScope: 'none', concurrency: 4, phonologyGate: false }
+const FILL = { roles: ['known', 'target1', 'target2'], authorScope: 'none', concurrency: 4 }
 const nullSlots = (db) => db.tables.course_practice_phrases.filter(p => !p.target1_audio_id || !p.target2_audio_id).length
 
 describe('replay of the eng_for_hin state renders NOTHING', () => {

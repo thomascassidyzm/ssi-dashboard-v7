@@ -2827,20 +2827,6 @@ app.get('/inventory/:courseCode', async (req, res) => {
 // POST GENERATE - Generate missing audio (requires approval)
 // =============================================================================
 
-// Ledger of clips /generate published with the phonology gate deferred
-// (phonologyGate:false). One JSON line per clip, outside the repo tree. The
-// check-after pass reads it; nothing else writes it.
-function phonologyDeferredLedgerPath (courseCode) {
-  return require('../../tools/lib/evidence-path.cjs').evidencePath(`phonology-deferred/${courseCode}.jsonl`)
-}
-function recordPhonologyDeferred (courseCode, row) {
-  try {
-    fs.appendFileSync(phonologyDeferredLedgerPath(courseCode), JSON.stringify({ at: new Date().toISOString(), ...row }) + '\n')
-  } catch (e) {
-    logger.error(`[/generate] could not record phonology-deferred clip ${row.audio_id}: ${e.message}`)
-  }
-}
-
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -2858,17 +2844,6 @@ app.post('/generate/:courseCode', async (req, res) => {
     const runStartedAt = new Date().toISOString()
 
     const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds, authorScope: requestedAuthorScope } = req.body  // High default for bulk generation
-    // `phonologyGate: false` DEFERS the inline whisper language check to a
-    // check-after pass; it never drops it. Same opt-out, same default (ON) as
-    // /regenerate-role — see the long comment there for why the gate is a ~7
-    // clips/min ceiling on this box. Asked for by name, per request, so every
-    // other caller of this shared service is unchanged. Every clip a deferred
-    // run publishes is written to a ledger (phonologyDeferredLedgerPath) so the
-    // check-after has an exact list to verify, rather than a created_at guess.
-    // The pre-publish VERACITY sampler still runs. Kai 2026-09-25 22:28Z,
-    // eng_for_hin "voice now, check after" (job #283).
-    const phonologyGate = req.body.phonologyGate !== false
-    if (!phonologyGate) logger.warn(`[/generate] ${courseCode}: phonology gate DEFERRED by request — every published clip goes to ${phonologyDeferredLedgerPath(courseCode)} for the check-after pass`)
     const authorScope = ['all', 'lego', 'none'].includes(requestedAuthorScope) ? requestedAuthorScope : 'all'
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
@@ -3472,7 +3447,6 @@ app.post('/generate/:courseCode', async (req, res) => {
             door: { courseCode, intro: item.role === 'presentation', voiceBound: true, job: passJob, onAttempt: spendCap.charge },
             voiceId: voiceName,
             language: toBcp47(item.language),
-            phonologyGate,
           }))
         } else if (provider === 'cartesia') {
           // `locale`, not `language` — Cartesia's docs prefer it, and the BCP-47
@@ -3485,7 +3459,6 @@ app.post('/generate/:courseCode', async (req, res) => {
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
             speed,
-            phonologyGate,
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${provider}`)
@@ -3580,13 +3553,6 @@ app.post('/generate/:courseCode', async (req, res) => {
           id: insertedAudio.id, text: item.text, language: item.language, voice_id: item.voiceId,
           s3_key: s3Key, origin: 'tts', veracity_pass: veracity.verdictColumns(gated.verdict, { checker: 'phase8-generate', attempts: gated.attempts }).veracity_pass,
         }], 'phase8:render', logger)
-      }
-
-      if (!phonologyGate && (provider === 'cartesia' || provider === 'xai')) {
-        recordPhonologyDeferred(courseCode, {
-          audio_id: insertedAudio?.id || null, s3_key: s3Key, role: item.role, voice_id: item.voiceId,
-          language: item.language, text: item.text, tts_text: textForTTS, run_started_at: runStartedAt,
-        })
       }
 
       // For presentation audio, immediately bind to its consumers using the
@@ -3764,7 +3730,6 @@ app.post('/generate/:courseCode', async (req, res) => {
       uncast: castPlan.summary,
       cancelled: wasCancelled,
       veracity: results.veracity,
-      phonologyGate,
       errors: results.errors.slice(0, 10),
       // Rows whose TEXT is not an example (labels/markers): fix in the row. Uncapped.
       dataErrors: results.dataErrors,
@@ -3806,28 +3771,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`[/regenerate-role] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
       return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
     }
-    // `phonologyGate` is an OPT-OUT A CALLER HAS TO ASK FOR BY NAME, and it
-    // defaults to on, so every existing caller is unchanged.
-    //
-    // The gate (services/tts-service.cjs) runs whisper over EVERY Cartesia and
-    // xAI clip and re-rolls one whose detected spoken language is English. It
-    // exists for English-dominant multilingual CLONES handed a cross-language
-    // line — the 2026-07-10 Italian pilot, where xAI read 'come stai' as
-    // English 'come'. That is a real defect and this is not a way to stop
-    // caring about it.
-    //
-    // It is also, measured on watson-1 (4 cores) on 2026-09-10, a hard ceiling
-    // of about SEVEN CLIPS A MINUTE: whisper-small at 4 threads, two at a time,
-    // is ~8s of two cores per clip. A role-wide re-voice of a 12,000-clip
-    // course is 30 hours of a shared box for it alone, and the box is shared.
-    //
-    // So a caller re-voicing a whole role onto a vendor's OWN catalogue voice
-    // for that language — a German voice reading German, not a clone reading a
-    // stranger's language — can say so. What it does NOT switch off is the
-    // pre-publish VERACITY gate below, which samples the run and checks what
-    // was actually SPOKEN against the text that was asked for. That is the
-    // stronger of the two checks and the one that would catch an
-    // English-phonology render anyway.
     // `onlyOtherVoices` MAKES A RE-VOICE RESUMABLE, and it is opt-in.
     //
     // A role-wide re-voice is a long job and this box does not let long jobs
@@ -3849,7 +3792,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // that already hold that voice would skip the entire job.
     const {
       role, dryRun = false, limit, flaggedOnly = false,
-      phonologyGate = true, onlyOtherVoices = false,
+      onlyOtherVoices = false,
     } = req.body
 
     if (!role) {
@@ -4181,8 +4124,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
             locale: ttsLocaleForRole(course, role, language),
-            speed,
-            phonologyGate
+            speed
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -4404,9 +4346,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       courseCode,
       role,
       voiceId,
-      // A run that switched the phonology gate off SAYS SO in its own result,
-      // rather than leaving it to be reconstructed from the request later.
-      phonologyGate,
       onlyOtherVoices,
       excludedAlreadyInVoice,
       total: audioToRegenerate.length,

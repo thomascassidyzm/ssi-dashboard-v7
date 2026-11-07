@@ -49,7 +49,7 @@ function door(clips = [], permissions = []) {
   restore = () => { mod.exports = original; delete require.cache[require.resolve('./tts-service.cjs')] }
   return { svc, paid, store }
 }
-const cfg = (d = {}) => ({ apiKey: 'k', voiceId: HUDA, locale: 'ar-LB', phonologyGate: false, door: { courseCode: COURSE, language: 'ara', voiceBound: true, ...d } })
+const cfg = (d = {}) => ({ apiKey: 'k', voiceId: HUDA, locale: 'ar-LB', door: { courseCode: COURSE, language: 'ara', voiceBound: true, ...d } })
 
 beforeEach(() => {
   dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rerecord-gate-'))

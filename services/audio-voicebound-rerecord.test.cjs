@@ -58,7 +58,7 @@ beforeEach(() => {
 afterEach(() => { if (restore) restore(); restore = null; castGate.useCastRows(null); clipLib.useClipLibrary(null); guardMod.useSpendGuard(null) })
 
 
-const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false, door: { courseCode: 'eng_for_hin', ...door } })
+const cartesia = (door = {}) => ({ apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', door: { courseCode: 'eng_for_hin', ...door } })
 
 /** The route's deps, with the provider and the DB in memory; `rows` is the library the course rows land in. */
 function deps(svc, rows, stored = []) {
@@ -85,7 +85,7 @@ const FEMALE_ID = `cartesia_${FEMALE}`
 const MALE = KRITI
 const MALE_ID = KRITI_ID
 const female = () => clip({ id: 'FEM1', course: 'deu_for_eng', text: 'guten tag', language: 'deu', voice: FEMALE_ID })
-const cfgMale = (d = {}) => ({ apiKey: 'k', voiceId: MALE, locale: 'de-DE', phonologyGate: false, door: { courseCode: 'deu_for_eng', language: 'deu', ...d } })
+const cfgMale = (d = {}) => ({ apiKey: 'k', voiceId: MALE, locale: 'de-DE', door: { courseCode: 'deu_for_eng', language: 'deu', ...d } })
 
 describe('regenerate-phrase asks for the requested voice only (job #741)', () => {
   it('REPRODUCTION: an any-voice door answers the male slot with the female clip (the 26 Sep swap)', async () => {

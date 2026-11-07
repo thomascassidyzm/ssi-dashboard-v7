@@ -89,18 +89,6 @@ describe('the other places Whisper used to decide', () => {
     expect(plan.clips[0].heard.pass).toBe(false)
   })
 
-  it('tts-service: the phonology sample is 1 in 100, never Welsh, and never throws or re-rolls (Tom, 2026-11-03)', () => {
-    const tts = require('./tts-service.cjs')
-    expect(tts.PHONO_SAMPLE_EVERY).toBe(100)
-    expect(tts.phonoSkipsWelsh({ door: { courseCode: 'cym_s_for_eng' } })).toBe(true)
-    expect(tts.phonoSkipsWelsh({ locale: 'cy-GB' })).toBe(true)
-    expect(tts.phonoSkipsWelsh({ locale: 'it-IT', door: { courseCode: 'ita_for_eng' } })).toBe(false)
-    const src = fs.readFileSync(path.join(__dirname, 'tts-service.cjs'), 'utf8')
-    const start = src.indexOf('await detectSpokenLanguage(result.audioBuffer)')
-    expect(start).toBeGreaterThan(0)
-    expect(src.slice(start, src.indexOf('return result;', start))).not.toMatch(/\bthrow\b/)
-  })
-
   it('audio-veracity: renderChecked hears 1 TTS clip in 100 and never a Welsh one (Tom, 2026-11-03)', async () => {
     const V = require('./audio-veracity.cjs')
     expect(V.TTS_SAMPLE_EVERY).toBe(100)
