@@ -33,14 +33,10 @@
           </div>
         </div>
 
-        <!-- Lines | Drill (job #860): Drill plays a scene exactly as the learning app deals it —
-             src/components/pods/PodDrillPlayer.vue. ?view=drill&scene=N deep-links it. -->
-        <div class="flex gap-2 mb-4 text-sm">
-          <button :class="['px-3 py-1.5 rounded border', !isDrillView ? 'border-emerald-500 font-semibold' : 'border-line text-muted']" @click="setView('lines')">Lines</button>
-          <button :class="['px-3 py-1.5 rounded border', isDrillView ? 'border-emerald-500 font-semibold' : 'border-line text-muted']" @click="setView('drill')">Drill</button>
-        </div>
-        <PodDrillPlayer v-if="isDrillView" :course-code="courseCode" :slug="slug" />
-        <template v-else>
+        <!-- This page EDITS a pod. It does not play one: the Drill tab (job #860) and the play-through
+             went in job #628 (Tom, r-2026-11-07-ssi-pods-exactly-one-way-of — one way of playing pods,
+             the app's, which Popty shows embedded on the pods page). ▶ on a line still plays that one
+             clip, to check the recording you are editing. -->
         <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
              until they exist!!!"). Held = RLS hides this pod and every line in
              it from the learner app. Popty reads with the service role, so this
@@ -248,16 +244,15 @@
                   {{ humanClipCount }} human take{{ humanClipCount === 1 ? '' : 's' }}<span v-if="humanVoiceNames.length"> by {{ humanVoiceNames.join(' and ') }}</span> ·
                 </template>
                 {{ playableTargets.length }} of {{ sentences.length }} {{ targetName }} lines have audio.
-                Tap ▶ on a line to hear it, or ▶▶ to play on down the list.
+                Tap ▶ on a line to hear its clip; ▶▶ opens that line in the app, played as a learner hears it.
               </div>
             </div>
             <div class="flex gap-2">
-              <button
-                @click="playAllTargets"
-                :disabled="!playableTargets.length"
-                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                :title="`Play every ${targetName} line that has audio, in order`"
-              >▶ Play all {{ targetName }} lines ({{ playableTargets.length }})</button>
+              <router-link
+                :to="{ path: `/production/${courseCode}/pods`, query: { pod: slug } }"
+                class="px-3 py-1.5 text-xs rounded bg-emerald-700 hover:bg-emerald-600 text-emerald-100"
+                title="Hear this pod as the learning app plays it"
+              >▶ Hear it in the app</router-link>
               <button
                 v-if="isPlaying"
                 @click="stopPlayback"
@@ -379,12 +374,12 @@
                   <span v-else class="px-2 py-1 text-xs text-faint" title="No target audio">{{ targetFlag }}</span>
                   <!-- Play on down the list from this line. The whole point of
                        listening on a phone is not tapping 231 times. -->
-                  <button
-                    v-if="sent.target_audio_id"
-                    @click="playFrom(sent)"
+                  <router-link
+                    :to="{ path: `/production/${courseCode}/pods`, query: { pod: slug, scene: String(sent.scene_number), line: sent.id } }"
+                    @click="rememberPlace(sent)"
                     class="px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100"
-                    :title="`Play from here to the end of the pod (${targetName} lines)`"
-                  >▶▶</button>
+                    title="Open this line in the app's own pod player"
+                  >▶▶</router-link>
                   <button
                     v-if="sent.known_audio_id"
                     @click="playAudio(sent.known_audio_id)"
@@ -431,8 +426,6 @@
           </div>
         </div>
 
-        </template>
-
         <!-- Hidden audio element -->
         <audio ref="audioEl" @ended="onAudioEnded"></audio>
       </div>
@@ -446,7 +439,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import RecordDoor from '@/components/RecordDoor.vue'
-import PodDrillPlayer from '@/components/pods/PodDrillPlayer.vue'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { podDisplayTitle } from '@/lib/podDisplayName.js'
@@ -457,14 +449,6 @@ import { readPodPlace, savePodPlace, landingRow, readSettled, saveSettled, cameF
 const route = useRoute()
 const router = useRouter()
 const courseCode = route.params.courseCode
-// Lines | Drill tab (job #860), kept in the URL so a Drill link opens on the Drill.
-const isDrillView = computed(() => route.query.view === 'drill')
-function setView (v) {
-  stopPlayback()
-  const q = { ...route.query }
-  if (v === 'drill') q.view = 'drill'; else delete q.view
-  router.replace({ query: q }).catch(() => {})
-}
 const slug = route.params.slug
 const { getCourseName } = useCourses()
 
@@ -703,20 +687,6 @@ const isRowPlaying = (sent) => !!playingId.value && [
   sent.target_audio_id, sent.known_audio_id,
 ].includes(playingId.value)
 
-function startQueue(ids) {
-  if (!ids.length) return
-  playQueue.value = ids.slice()
-  playNext()
-}
-
-function playAllTargets() { startQueue(playableTargets.value) }
-
-function playFrom(sent) {
-  rememberPlace(sent)
-  const list = orderedSentences.value
-  const i = list.findIndex(s => s.id === sent.id)
-  startQueue(list.slice(i < 0 ? 0 : i).map(s => s.target_audio_id).filter(Boolean))
-}
 
 function stopPlayback() {
   playQueue.value = []

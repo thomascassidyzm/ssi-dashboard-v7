@@ -18,7 +18,7 @@ const JOURNEY_PATH_PATTERNS = [
   /^src\/composables\/(useTapRecorder|useContinuousRecorder|useStoredClip|useRecordistQueue|useAudioUpload|useAutocueState|autocue-)/,
   /^src\/views\/recordist\//,
   /^src\/components\/production\/autocue\//,
-  /^src\/lib\/(recordistNames|podDisplayName|servingPod|podPlayQueue|podArcCompose|podAtoms|podEngine)/,
+  /^src\/lib\/(recordistNames|podDisplayName|servingPod|podAtoms)/,
   /^src\/utils\/(textDirection|caretFromPoint|breakdownMarkers|voiceSlots)/,
   /^src\/components\/(PodCastPanel|explainer\/)/,
   // Build cards / pods / proofreading and the builder entrances.

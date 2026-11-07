@@ -9,7 +9,7 @@
  * a learning-app checkout, never by a relative path out of Popty.
  *
  * SSI_APP points at another checkout (a worktree on staging); the default is the same one Pod Drill uses
- * (tools/pods/pod-drill/paths.mjs DEFAULT_APP).
+ * (~/ssi-learning-app).
  */
 import path from 'node:path'
 import os from 'node:os'
