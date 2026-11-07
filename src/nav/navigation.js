@@ -289,7 +289,7 @@ export const SECTIONS = [
       { label: 'Library', to: '/courses', description: 'Every course on the estate, with its state, opened for editing.' },
       { label: 'Seeds', to: '/canonical/seeds', match: ['@CanonicalSeeds'], description: 'The canonical seed sentences, in pedagogical order, with their {target} placeholders.' },
       { label: 'Content', to: '/canonical/content', match: ['@CanonicalContent'], description: 'The canonical content store — seeds, encouragements and the per-pair welcome messages.' },
-      { label: 'Pods', to: '/canonical/pods', match: ['@PodsDoc'], description: 'The listening pods — the canonical English master and the pods generated from it.' },
+      { label: 'Pods', to: '/pods', match: ['@PodBrowser'], description: 'Search every pod, scene and language, and hear any line in the app itself.' },
       { label: 'Script Lab', to: '/canonical/scripts', match: ['@ScriptLab', '@ScriptLabScript'], description: "The canonical English master scripts — edited here, and nowhere else." },
       // The graph the scripts are walks over (Tom asked for it by name,
       // 2026-08-31); it was reachable only from a button inside the Script Lab.
@@ -336,8 +336,6 @@ export const OUTSIDE_NAV = [
   { path: '/htw-copy', why: 'How-it-works copy editor — opened by URL' },
   { path: '/edit/introductions', why: 'introductions editor — opened from a course surface' },
   { path: '/courses/:code/progress', why: 'per-course progress — opened from the course overview' },
-  { path: '/pods/scripts', why: 'pod script index — opened from the Pods browser' },
-  { path: '/pods/scripts/:courseCode', why: 'pod scripts for one course — opened from the Pods browser' },
   { path: '/quality/:courseCode', why: 'quality dashboard — opened from the course overview' },
   { path: '/quality/:courseCode/seeds/:seedId', why: 'one seed review — opened from the quality dashboard' },
   { path: '/quality/:courseCode/evolution', why: 'prompt evolution — opened from the quality dashboard' },

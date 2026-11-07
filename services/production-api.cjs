@@ -573,14 +573,20 @@ app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
   }
 })
 
-// Pod Drill PLAYER (job #860): the pod page's Drill tab — the raw rows, clips, cut entries and live
-// lap-ladder config the learning app reads, so the page composes the drill with the app's own
-// (vendored) code. READ-ONLY.
-// Mounted BEFORE the pods router below: that router's own router.use demands a dashboard session
-// for everything under /pods, which would shadow this route for same-host callers. The
-// app.param('courseCode') course-scope gate still guards it.
-app.use('/api/production/:courseCode/pods/:slug/drill',
-  require('./pod-drill-player-router.cjs')({ getDb: () => supabaseClient.getClient(), logger }))
+// THE pods page's search and its app-preview pass (job #628, Tom
+// r-2026-11-07-ssi-pods-exactly-one-way-of): one in-memory index over every pod,
+// scene and language; the pass frames the APP's own pod display, so Popty plays
+// nothing of its own. The pass route sits under :courseCode for the scope gate.
+{
+  const podSearch = require('./pod-search-router.cjs')({
+    getDb: () => supabaseClient.getClient(),
+    resolveUser: resolveDashboardUserCached,
+    canAccessCourse: (user, course) => castingRights.courseAccessVerdict(user, course).ok,
+    logger,
+  })
+  app.use(podSearch.router)
+  app.use('/api/production/:courseCode/pod-preview', podSearch.preview)
+}
 
 // Pod casting + per-voice recording plans (human pod recording keystone).
 // Same gate coverage as the voice-engine mounts above. Writes touch ONLY

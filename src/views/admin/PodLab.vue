@@ -2,17 +2,17 @@
 /**
  * Pod Lab — /admin/labs/pods
  *
- * A tuning + audition surface for the Layer-2 pod acquisition ladder, sibling to
- * the Pause Lab (/admin/labs/speaking). Two modes on the same real line:
- * THE LADDER — the unified climb (Tom 2026-07-03): fusion rungs from finest
- * units to the whole turn, then the speed cascade to pure 2× — and STAGE ARC,
- * today's live engine output, for comparison.
+ * The seam editor (a line's canon S-LEGO seams → atom_map_fine) and casting &
+ * approval (the sample-first gate) for one course's pod.
  *
- * No drift by construction: every stage of the arc is composed by
- * `buildMainStage`, vendored verbatim from `@ssi/core/pods` — the exact
- * function the learner's main flow runs. Stage 0 is retired (Tom, 2026-09-19:
- * "we retired Stage 0 on the pods / We should just have Stages from 1
- * onwards"), so the arc starts at Stage 1.
+ * NO PLAYBACK OF ITS OWN (job #628). This Lab used to audition a line two ways —
+ * THE LADDER (the 2026-07-03 unified climb) and STAGE ARC (the vendored
+ * `buildMainStage`). Tom, r-2026-11-07-ssi-pods-exactly-one-way-of: one way of
+ * playing pods, the app's, and Popty surfaces exactly that, embedded; every
+ * alternative path goes. Both are deleted, with the stage-playlist / gap tuning
+ * that only fed them. To hear a line, the Seams pane links it to the pods page,
+ * which frames the app. Casting samples still play single clips: that is
+ * auditioning a VOICE, not playing a pod.
  *
  * CONFIG: preview/export only. `algorithm_config` writes are immediately global
  * to every learner (~5-min cache TTL, no draft/env split), so this Lab never
@@ -35,10 +35,6 @@ import LabCrumbs from '@/components/LabCrumbs.vue'
 import CoursePicker from '../../components/CoursePicker.vue'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
 import ConsentStep from './voicelab/ConsentStep.vue'
-// Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
-// runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
-// cross-repo-imported, because Popty's Vercel build is single-repo.
-import { buildMainStage } from '../../lib/podEngine'
 // Popty's own atom lookups (not vendored) — the fusion-shapes explorer's, not
 // the retired Stage-0 ladder's.
 import { loadPodAtomClipMap, resolveAtoms } from '../../lib/podAtoms'
@@ -111,14 +107,6 @@ const PROPOSED_STAGE_PLAYLIST = {
 }
 
 // ── role display ────────────────────────────────────────────────────────────
-const ROLE_META = {
-  ps: { short: 'T', cls: 'r-target', title: 'target · 1×' },
-  ps08x: { short: 'T', cls: 'r-target', title: 'target · 0.8×' },
-  ps15x: { short: 'T', cls: 'r-target', title: 'target · 1.5×' },
-  ps2x: { short: 'T', cls: 'r-target', title: 'target · 2×' },
-  trans: { short: 'K', cls: 'r-known', title: 'known (meaning)' },
-}
-const roleMeta = (r) => ROLE_META[r] || { short: r, cls: 'r-other', title: r }
 
 // ── state ───────────────────────────────────────────────────────────────────
 const selectedCourseCode = ref('')
@@ -129,10 +117,6 @@ const selectedIdx = ref(0)
 const targetClipMap = ref(new Map())
 const fineKnownMap = ref(new Map()) // text_normalized → pod_fine_known clip id
 
-// mirror of services/shared/text-normalize.cjs normalizeForAudio — every
-// lookup against course_audio.text_normalized must use exactly this
-const normForAudio = (t) =>
-  (t || '').toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.!。！]+$/, '')
 
 // tunable config (starts from live, editable in-session, never written back)
 const labStagePlaylist = ref(clone(FALLBACK_STAGE_PLAYLIST))
@@ -151,7 +135,6 @@ let stopToken = 0
 const isPlaying = ref(false)
 const playingIdx = ref(-1)
 const playingSample = ref('') // casting mode: the sample clip currently sounding
-const copied = ref(false)
 
 function clone(o) {
   return JSON.parse(JSON.stringify(o))
@@ -161,51 +144,6 @@ function sleep(ms) {
 }
 
 const selectedSentence = computed(() => sentences.value[selectedIdx.value] || null)
-
-// The whole acquisition arc for the selected line — composed by the REAL engine.
-const arc = computed(() => {
-  const s = selectedSentence.value
-  if (!s) return []
-  let plays = []
-  try {
-    // Stages 1..N, ascending — the whole-sentence ladder and nothing before it.
-    const playlist = labStagePlaylist.value
-    const stages = Object.keys(playlist)
-      .map(Number)
-      .filter((n) => !Number.isNaN(n))
-      .sort((a, b) => a - b)
-    for (const stage of stages) {
-      const slots = playlist[stage] ?? playlist[String(stage)]
-      if (slots) plays.push(...buildMainStage(s, stage, s.global_order, slots))
-    }
-  } catch (e) {
-    console.warn('[pod-lab] compose failed:', e)
-    return []
-  }
-  plays.forEach((p, i) => {
-    p._idx = i
-  })
-  return plays
-})
-
-// Group the flat arc into stages for display.
-const groups = computed(() => {
-  const out = []
-  let cur = null
-  for (const p of arc.value) {
-    const key = `s${p.stage}`
-    if (!cur || cur.key !== key) {
-      cur = {
-        key,
-        label: `Stage ${p.stage}`,
-        plays: [],
-      }
-      out.push(cur)
-    }
-    cur.plays.push(p)
-  }
-  return out
-})
 
 const atomCount = computed(() => {
   const m = selectedSentence.value?.atom_map
@@ -354,51 +292,8 @@ function syncJsonFromConfig() {
   jsonError.playlist = ''
 }
 
-function onPlaylistJsonInput() {
-  try {
-    const parsed = JSON.parse(stagePlaylistJson.value)
-    labStagePlaylist.value = parsed
-    jsonError.playlist = ''
-    activePreset.value = 'custom'
-  } catch (e) {
-    jsonError.playlist = e.message
-  }
-}
-/** The 2026-08-24 launch pacing: no pause anywhere. The starting point for
- *  tuning by ear — every other value is reached from here. */
-function applyHardCut() {
-  labGaps.value = { gapSuperTightMs: 0, gapTightMs: 0, gapGluedMs: 0, gapBetweenMs: 0 }
-  activePreset.value = 'custom'
-}
 
-/**
- * The gap after `curr`, in ms — a faithful mirror of the LEARNER'S rule
- * (podGapMs, ssi-learning-app packages/player-vue/src/components/
- * LearningPlayer.vue). Keep the two in step: an audition that paces
- * differently from the main flow is worse than no audition, because it sounds
- * authoritative. The one Lab-only clause is the stage boundary — the main flow
- * meets it as a lap boundary a whole session apart, whereas the Lab plays the
- * rungs back to back, so it borrows the between-sentences gap.
- */
-function gapAfter(curr, next) {
-  if (!next) return 0
-  const g = labGaps.value
-  if (curr.stage !== next.stage) return g.gapBetweenMs
-  const cIsTarget = curr.playRole !== 'trans'
-  const nIsKnown = next.playRole === 'trans'
-  if (cIsTarget && nIsKnown) return g.gapTightMs // target → known
-  return g.gapSuperTightMs //                      known → target, target → target
-}
 
-function exportJson() {
-  const payload = {
-    pods: { stagePlaylist: labStagePlaylist.value, ...labGaps.value },
-  }
-  navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).then(() => {
-    copied.value = true
-    setTimeout(() => (copied.value = false), 1600)
-  })
-}
 
 // ── playback ────────────────────────────────────────────────────────────────
 function audioUrl(id) {
@@ -435,28 +330,6 @@ function playClip(clip, speed) {
     a.play().catch(finish)
   })
 }
-async function playPlays(plays) {
-  stop()
-  const myToken = ++stopToken
-  isPlaying.value = true
-  for (let i = 0; i < plays.length; i++) {
-    const p = plays[i]
-    if (myToken !== stopToken) break
-    playingIdx.value = p._idx
-    await playClip(p.audioId, p.playbackSpeed)
-    if (myToken !== stopToken) break
-    // The learner's own gap rule, from the editable gap config — NOT a flat
-    // 350 ms. This is what makes the Lab an audition of the real pacing.
-    await sleep(gapAfter(p, plays[i + 1] || null))
-  }
-  if (myToken === stopToken) {
-    isPlaying.value = false
-    playingIdx.value = -1
-  }
-}
-const playWholeArc = () => playPlays(arc.value)
-const playGroup = (g) => playPlays(g.plays)
-const playOne = (p) => playPlays([p])
 function stop() {
   stopToken++
   if (currentAudio.value) {
@@ -494,33 +367,11 @@ function stop() {
 // course hasn't had the run. Conjoined-sentence rungs butt real takes by
 // design; sentence wholes and the turn play their real takes.
 
-const mode = ref('shapes') // 'shapes' = the unified ladder | 'arc' = live engine arc
-const unitsSource = ref('fine') // 'fine' (draft atom_map_fine, default) | 'live' (atom_map)
-const fusionMode = ref('pairwise') // 'pairwise' (Aran: disjoint pairs L→R) | 'chained' (Tom: adjacent windows share an edge chunk)
+const mode = ref('shapes') // 'shapes' = the seam editor | 'casting'
 const playingStepKey = ref('')
 
-const GAP_BETWEEN_STEPS = 700
-const GAP_AFTER_GLOSS = 500
-const GAP_INTRA_FUSE = 120
 
-// Does ANY line of this pod carry a draft fine map? (gates the units toggle)
-const hasFine = computed(() => sentences.value.some((s) => Array.isArray(s.atom_map_fine) && s.atom_map_fine.length))
-const usingFine = computed(() => unitsSource.value === 'fine' && Array.isArray(selectedSentence.value?.atom_map_fine))
 
-const shapeAtoms = computed(() => {
-  const s = selectedSentence.value
-  if (!s) return []
-  const map = usingFine.value ? s.atom_map_fine : s.atom_map
-  const resolved = resolveAtoms(map, targetClipMap.value)
-  // carry the Take G ms spans through (resolveAtoms keeps atom+passthrough in
-  // order, so a positional zip against the same filter is exact)
-  const src = (map || []).filter((e) => e.kind === 'atom' || e.kind === 'passthrough')
-  return resolved.map((a, i) => ({
-    ...a,
-    target_start_ms: src[i]?.target_start_ms ?? null,
-    target_end_ms: src[i]?.target_end_ms ?? null,
-  }))
-})
 
 // One fusion step over spans of unit indices.
 //   pairwise: disjoint pairs L→R, an odd tail stands alone until the next rung
@@ -552,15 +403,7 @@ function spanLadder(initialSpans, fusion) {
   return levels
 }
 
-const clipList = (take) => (Array.isArray(take) ? take : [take])
 
-// t·k·t·t for one chunk — the ONE pattern every rung of the ladder plays.
-// The known slot is dropped only when there is nothing to say in it.
-function tktt(chunk, known) {
-  return known && (known.clips.some(Boolean) || known.text)
-    ? [chunk, known, { ...chunk }, { ...chunk }]
-    : [chunk, { ...chunk }]
-}
 
 // Split the atom list into prosodic groups at sentence-terminal punctuation
 // ONLY — '…' is NOT a sentence break, it's the canon S-LEGO seam mark (§9a/9b,
@@ -617,12 +460,6 @@ function sLegoSpansFromBounds(bounds, gStart, gEnd) {
   return ranges
 }
 
-// Per-sentence takes when the re-split produced them (else null per group).
-function groupTakes(s, groups) {
-  return Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.length === groups.length
-    ? s.sentence_audio_ids
-    : groups.map(() => null)
-}
 
 // ── AT-A-GLANCE PREVIEW — the line list shows canon seams + rung depth ─────
 // directly, before a line is ever selected, so the picture is visible while
@@ -666,320 +503,7 @@ function sentenceRungDepth(s) {
   return stageN + (Object.keys(PROPOSED_STAGE_PLAYLIST).length - 1)
 }
 
-// The whole unified climb for the selected turn, one entry per rung (= one
-// stage = one visit): fusion rungs from finest units to the whole turn, then
-// the locked speed cascade. Rung count varies with the turn's fusion depth —
-// the speed rungs are the same ladder entered later on long turns.
-const ladderRungs = computed(() => {
-  const s = selectedSentence.value
-  const atoms = shapeAtoms.value
-  if (!s || !atoms.length) return []
 
-  // Sentences, with a leading one-unit exclamation ("Ciao!") glued onto the
-  // sentence that follows — the drill never strands a bare interjection.
-  const bounds = atomBoundaries(s, atoms)
-  const rawGroups = atomGroups(atoms, bounds)
-  const rawTakes = groupTakes(s, rawGroups)
-  const rawKnown =
-    Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
-      ? s.sentence_known_audio_ids
-      : rawGroups.map(() => null)
-  // Per-sentence KNOWN texts from the turn translation (same boundary as the
-  // engine's podSentenceSplit). When they align with the sentence groups,
-  // these are the authoritative whole-sentence knowns — text-keyed fresh
-  // renders are preferred over the June silence-split take slices, several of
-  // which cut wrong (a 312ms "sentence" = the tail of its neighbour).
-  const rawKnownTexts = (s.known_text || '').split(/(?<=[.!?…])\s+/).filter(Boolean)
-  const knownTextsAligned = rawKnownTexts.length === rawGroups.length
-  const groups = []
-  const takes = []
-  const knownTakes = []
-  const knownTexts = []
-  let carry = []
-  let carryKnown = []
-  rawGroups.forEach((g, i) => {
-    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
-    // forward — a mid-turn one-unit group is a real sentence ("Impresioniran
-    // sam.") with its own takes; gluing it swallowed its known audio.
-    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) {
-      carry.push(...g)
-      if (knownTextsAligned) carryKnown.push(rawKnownTexts[i])
-      return
-    }
-    groups.push([...carry, ...g])
-    takes.push(carry.length ? null : rawTakes[i])
-    knownTakes.push(carry.length ? null : rawKnown[i])
-    knownTexts.push(knownTextsAligned ? [...carryKnown, rawKnownTexts[i]].join(' ') : null)
-    carry = []
-    carryKnown = []
-  })
-  if (carry.length) {
-    groups.push(carry)
-    takes.push(null)
-    knownTakes.push(null)
-    knownTexts.push(knownTextsAligned ? carryKnown.join(' ') : null)
-  }
-
-  const single = groups.length === 1
-
-  // Take G takes (uuid[] aligned to these glued groups) + flat unit offsets,
-  // for slicing chunks out of the gapped take and finding window knowns.
-  const takegIds =
-    Array.isArray(s.takeg_audio_ids) && s.takeg_audio_ids.length === groups.length
-      ? s.takeg_audio_ids
-      : groups.map(() => null)
-  const offsets = []
-  {
-    let off = 0
-    for (const g of groups) { offsets.push(off); off += g.length }
-  }
-  const winKnown = new Map()
-  for (const w of s.window_known_map || []) winKnown.set(`${w.start}-${w.end}`, w.known)
-
-  // ── graceful audio fallback (founder ruling 2026-07-17) ──────────────────
-  // A missing render at one seam granularity must never leave a dead play
-  // control anywhere in the ladder. Resolution order per chunk, most-exact
-  // first: (a) an exact seam-span SLICE of the group's whole-sentence take,
-  // when the take exists and every atom in the span carries ms timings;
-  // (b) the group's
-  // whole-sentence take/Take-G played in full — audibly coarser than the
-  // requested span, but never silently nothing. A step with NOTHING
-  // playable at any tier gets hasAudio:false so the UI disables its control
-  // instead of rendering a button that does nothing.
-  const resolveChunkClips = (us, takeg, wholeClip) => {
-    const sliced = takeg && us.every((a) => a.target_start_ms != null && a.target_end_ms != null)
-    if (sliced) {
-      return {
-        clips: [{ id: takeg, startMs: us[0].target_start_ms, endMs: us[us.length - 1].target_end_ms }],
-        approx: false,
-      }
-    }
-    const atomClips = us.map((a) => a.targetClipId)
-    if (atomClips.some(Boolean)) return { clips: atomClips, approx: us.length > 1 }
-    if (wholeClip) return { clips: [wholeClip], approx: true }
-    return { clips: [], approx: false }
-  }
-  // sub-sentence chunk: a contiguous ms SLICE of the group's Take G render
-  // (gaps preserved); butted unit clips, then the whole sentence, when finer
-  // audio doesn't exist yet at this seam
-  const chunkStep = (g, span, gi) => {
-    const us = g.slice(span.start, span.end + 1)
-    const takeg = takegIds[gi]
-    const wholeClip = takeg || takes[gi] || (single ? s.target_audio_id : null)
-    const { clips, approx } = resolveChunkClips(us, takeg, wholeClip)
-    return {
-      kind: 'chunk',
-      text: us.map((a) => a.targetSurface).join(' '),
-      clips,
-      approx,
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  // chunk's known: the REAL fine-known clip for the unit gloss / authored
-  // window translation; legacy "means X" butt, then the whole sentence known,
-  // when neither is missing
-  const knownStep = (g, span, gi) => {
-    const us = g.slice(span.start, span.end + 1)
-    const text =
-      us.length === 1
-        ? us[0].gloss || ''
-        : winKnown.get(`${offsets[gi] + span.start}-${offsets[gi] + span.end}`) ||
-          us.map((a) => a.gloss).filter(Boolean).join(' ')
-    const real = fineKnownMap.value.get(normForAudio(text))
-    const wholeKnown = knownTakes[gi] || (single ? s.known_audio_id : null)
-    const clips = real ? [real] : wholeKnown ? [wholeKnown] : []
-    return {
-      kind: 'gloss',
-      text,
-      clips,
-      approx: !real,
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  // a sentence at its whole — REAL takes; for a single-sentence turn the
-  // sentence whole IS the turn whole, so fall through to the turn takes
-  const wholeSentenceChunk = (gi) => {
-    const g = groups[gi]
-    const take = takes[gi] || (single ? s.target_audio_id : null)
-    // no natural take (the glue-merged turns): the group's full Take G is the
-    // real, correctly-voiced render of exactly this sentence — gaps and all
-    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : g.map((a) => a.targetClipId)
-    return {
-      kind: 'group',
-      text: g.map((a) => a.targetSurface).join(' '),
-      clips,
-      approx: !take && !takegIds[gi],
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  const wholeSentenceKnown = (gi) => {
-    const g = groups[gi]
-    const take = knownTakes[gi] || (single ? s.known_audio_id : null)
-    const sentText = single && s.known_text ? s.known_text : knownTexts[gi]
-    const joinText = g.map((a) => a.gloss).filter(Boolean).join(' ')
-    // fresh render of the REAL sentence translation first — audio provably
-    // matches text; the June split slices come second (several cut wrong)
-    const sentReal = sentText ? fineKnownMap.value.get(normForAudio(sentText)) : null
-    const joinReal = fineKnownMap.value.get(normForAudio(joinText))
-    const clips = sentReal ? [sentReal] : take ? clipList(take) : joinReal ? [joinReal] : []
-    return {
-      kind: 'gloss',
-      text: sentText || joinText,
-      clips,
-      approx: !sentReal && !take && !joinReal,
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  // conjoined sentences below the whole turn: butted sentence takes until Take G
-  const conjoinChunk = (span) => {
-    const gs = groups.slice(span.start, span.end + 1)
-    const tks = takes.slice(span.start, span.end + 1)
-    // per sentence: natural take, else its Take G, else butted unit clips
-    const perGroup = gs.map((g, i) => {
-      const t = tks[i] || takegIds[span.start + i]
-      return t ? clipList(t) : g.map((a) => a.targetClipId)
-    })
-    const clips = perGroup.flat()
-    return {
-      kind: 'group',
-      text: gs.map((g) => g.map((a) => a.targetSurface).join(' ')).join(' '),
-      clips,
-      approx: true, // butted takes until a conjoined render exists — by design
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  const conjoinKnown = (span) => {
-    const gs = groups.slice(span.start, span.end + 1)
-    const kts = knownTakes.slice(span.start, span.end + 1)
-    const perGroup = gs.map((g, i) => {
-      const gi = span.start + i
-      const sentReal = knownTexts[gi] ? fineKnownMap.value.get(normForAudio(knownTexts[gi])) : null
-      if (sentReal) return [sentReal]
-      if (kts[i]) return clipList(kts[i])
-      const real = fineKnownMap.value.get(normForAudio(g.map((a) => a.gloss).filter(Boolean).join(' ')))
-      return real ? [real] : []
-    })
-    const clips = perGroup.flat()
-    return {
-      kind: 'gloss',
-      text: gs.map((g, i) => knownTexts[span.start + i] || g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
-      clips,
-      approx: true,
-      hasAudio: clips.some(Boolean),
-      rate: 1,
-    }
-  }
-  const wholeTurnChunk = (rate = 1) => ({
-    kind: 'whole',
-    text: s.target_text,
-    clips: [s.target_audio_id],
-    approx: false,
-    hasAudio: !!s.target_audio_id,
-    rate,
-  })
-  const wholeTurnKnown = () => ({
-    kind: 'gloss',
-    text: s.known_text || '',
-    clips: [s.known_audio_id],
-    approx: !s.known_audio_id,
-    hasAudio: !!s.known_audio_id,
-    rate: 1,
-  })
-
-  const fusion = fusionMode.value
-  // Rung-0 spans are S-LEGO spans (canon '…' seams), never raw per-atom cuts
-  // — a sentence with no internal seam comes back as a single span and rides
-  // straight to its whole with no fusion rung of its own (rule 4).
-  const sLegoSpans = groups.map((g, gi) => sLegoSpansFromBounds(bounds, offsets[gi], offsets[gi] + g.length - 1))
-  const ladders = groups.map((g, gi) => spanLadder(sLegoSpans[gi], fusion))
-  const maxDepth = Math.max(...ladders.map((l) => l.length))
-  const rungs = []
-
-  // fusion rungs: every sentence rides every rung; a sentence already at its
-  // whole repeats its whole t·k·t·t while longer siblings climb
-  for (let r = 0; r < maxDepth; r++) {
-    const steps = []
-    groups.forEach((g, gi) => {
-      const l = ladders[gi]
-      const lvl = l[Math.min(r, l.length - 1)]
-      if (lvl.length === 1) steps.push(...tktt(wholeSentenceChunk(gi), wholeSentenceKnown(gi)))
-      else lvl.forEach((span) => steps.push(...tktt(chunkStep(g, span, gi), knownStep(g, span, gi))))
-    })
-    const last = r === maxDepth - 1
-    rungs.push({
-      label:
-        last && single
-          ? `Stage ${r} · the whole turn`
-          : r === 0
-            ? 'Stage 0 · S-LEGO seams'
-            : last
-              ? `Stage ${r} · whole sentences`
-              : `Stage ${r} · fusion`,
-      note:
-        last && single
-          ? 't·k·t·t at 1× — ≡ engine Stage 1'
-          : r === 0
-            ? 'every S-LEGO t·k·t·t · 1×'
-            : last
-              ? 'real sentence takes + real translation takes'
-              : fusion === 'chained'
-                ? 'windows share an edge chunk'
-                : 'pairwise fusion',
-      steps,
-    })
-  }
-
-  // conjoining rungs: the sentences fuse on into the turn (the all-wholes
-  // level IS the previous rung, so it is skipped)
-  let stageN = maxDepth
-  if (!single) {
-    const groupSpans = groups.map((_, gi) => ({ start: gi, end: gi }))
-    for (const lvl of spanLadder(groupSpans, fusion).slice(1)) {
-      const isTurn = lvl.length === 1
-      const steps = isTurn
-        ? tktt(wholeTurnChunk(), wholeTurnKnown())
-        : lvl.flatMap((span) => tktt(conjoinChunk(span), conjoinKnown(span)))
-      rungs.push({
-        label: isTurn ? `Stage ${stageN} · the whole turn` : `Stage ${stageN} · sentences conjoin`,
-        note: isTurn ? 't·k·t·t at 1× — ≡ engine Stage 1' : 'sentence takes butted until Take G',
-        steps,
-      })
-      stageN++
-    }
-  }
-
-  // the speed ramp: the locked engine cascade (Stages 2–N) on the whole turn
-  const GLYPH = { ps: 't', trans: 'k', ps2x: 't@2×' }
-  const lastEngineStage = Object.keys(PROPOSED_STAGE_PLAYLIST).length
-  for (let es = 2; es <= lastEngineStage; es++) {
-    const pat = PROPOSED_STAGE_PLAYLIST[es] || []
-    rungs.push({
-      label: `Stage ${stageN} · turn — engine Stage ${es}`,
-      note:
-        pat.map((role) => GLYPH[role] || role).join(' · ') +
-        (es === lastEngineStage ? ' — no known left: immersion emerges, turn segues into turn' : ''),
-      steps: pat.map((role) => (role === 'trans' ? wholeTurnKnown() : wholeTurnChunk(role === 'ps2x' ? 2 : 1))),
-    })
-    stageN++
-  }
-
-  rungs.forEach((rung, ri) => {
-    rung.key = `r${ri}`
-    rung.steps.forEach((st, i) => {
-      st.key = `r${ri}:${i}`
-    })
-  })
-  return rungs
-})
-
-const playWholeClimb = () => playShapeSteps(ladderRungs.value.flatMap((r) => r.steps))
-
-const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer' }
 
 // ── SEAM EDITOR — review the canon S-LEGO seams, don't draft from scratch ───
 // One seam source of truth (founder ruling 2026-07-17): seams come from the
@@ -1217,27 +741,6 @@ async function saveFineMap() {
 
 watch([selectedIdx, sentences], initSeamEditor)
 
-async function playShapeSteps(steps) {
-  stop()
-  const myToken = ++stopToken
-  isPlaying.value = true
-  for (const st of steps) {
-    if (myToken !== stopToken) break
-    playingStepKey.value = st.key
-    const clips = st.clips.filter(Boolean)
-    for (let i = 0; i < clips.length; i++) {
-      await playClip(clips[i], st.rate || 1)
-      if (myToken !== stopToken) break
-      if (i < clips.length - 1) await sleep(GAP_INTRA_FUSE)
-    }
-    if (myToken !== stopToken) break
-    await sleep(st.kind === 'gloss' ? GAP_AFTER_GLOSS : GAP_BETWEEN_STEPS)
-  }
-  if (myToken === stopToken) {
-    isPlaying.value = false
-    playingStepKey.value = ''
-  }
-}
 
 // stop audio if the line changes out from under a running playback
 watch(selectedIdx, stop)
@@ -2323,15 +1826,8 @@ loadLiveConfig()
     <header class="lab-head">
       <h1>Pod Lab</h1>
       <p class="sub">
-        <strong>The ladder</strong> auditions the unified climb (2026-07-03): one t·k·t·t pattern
-        from finest units, fusing rung by rung into the whole turn, then the speed cascade to
-        pure&nbsp;2× — where immersion emerges. <strong>Stage arc</strong> plays the same line
-        through today's <strong>real</strong> <code>@ssi/core/pods</code> engine for comparison.
-      </p>
-      <p class="safety">
-        This Lab never writes <code>algorithm_config</code> (those writes hit every learner within
-        ~5&nbsp;min). Tune the ladder <em>and the gaps</em> here, hear it, then export the JSON and
-        apply it deliberately. Its <em>other</em> writes are a different question — see the banner.
+        Review a line's seams, and cast and approve the pod's voices. This Lab plays no pod of its
+        own: to hear a line as a learner does, open it in the app from the Seams pane.
       </p>
     </header>
 
@@ -2448,109 +1944,20 @@ loadLiveConfig()
           <span v-if="seamMsg" class="chip" :class="{ err: seamMsg.startsWith('Save failed') }">{{ seamMsg }}</span>
         </div>
 
-        <div v-if="mode === 'arc'" class="config">
-          <div class="cfg-head">
-            <span class="lbl">Ladder config</span>
-            <div class="presets">
-              <button :class="{ on: activePreset === 'live' }" @click="applyPreset('live')">Live</button>
-              <button :class="{ on: activePreset === 'proposed' }" @click="applyPreset('proposed')">
-                Proposed (07-01)
-              </button>
-              <span v-if="activePreset === 'custom'" class="chip">custom</span>
-            </div>
-          </div>
-
-          <label class="field">
-            <span class="lbl small">Stages 1–N · stagePlaylist</span>
-            <textarea
-              v-model="stagePlaylistJson"
-              class="json"
-              rows="12"
-              spellcheck="false"
-              @input="onPlaylistJsonInput"
-            ></textarea>
-            <span v-if="jsonError.playlist" class="chip err">{{ jsonError.playlist }}</span>
-          </label>
-
-          <div class="field gaps">
-            <span class="lbl small">
-              Gaps · ms
-              <button class="mini" @click="applyHardCut">Hard cut (0)</button>
-              <button class="mini" @click="labGaps = { ...liveGaps }">Live</button>
-            </span>
-            <p class="note">
-              The pauses the learner hears. Change a number and press play — the arc re-paces
-              immediately, using the same rule the main flow runs. Launched on
-              <strong>0 everywhere</strong> (2026-08-24): a hard cut, no pause between clips or
-              between sentences.
-            </p>
-            <label v-for="f in GAP_FIELDS" :key="f.key" class="gap-row">
-              <input
-                type="number"
-                min="0"
-                step="25"
-                :value="labGaps[f.key]"
-                @input="labGaps = { ...labGaps, [f.key]: Math.max(0, Number($event.target.value) || 0) }"
-              />
-              <code>{{ f.key }}</code>
-              <span class="gap-what">{{ f.label }}</span>
-            </label>
-          </div>
-
-          <button class="export" @click="exportJson">
-            {{ copied ? 'Copied ✓' : 'Copy tuned config JSON' }}
-          </button>
-        </div>
       </section>
 
       <!-- RIGHT: the assembly -->
       <section class="panel">
         <div class="mode-switch">
-          <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">The ladder</button>
-          <button :class="{ on: mode === 'arc' }" @click="mode = 'arc'">Stage arc (live engine)</button>
+          <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">Seams</button>
           <button :class="{ on: mode === 'casting' }" @click="mode = 'casting'">Casting &amp; approval</button>
           <button class="stop right" :disabled="!isPlaying" @click="stop">■ Stop</button>
         </div>
 
-        <!-- STAGE ARC — the established Stages 1..N ladder -->
-        <template v-if="mode === 'arc'">
-          <div class="transport">
-            <button class="play-all" :disabled="!arc.length" @click="playWholeArc">▶ Play whole arc</button>
-            <span class="legend">
-              <span class="chip-role r-target">T target</span>
-              <span class="chip-role r-known">K known</span>
-            </span>
-          </div>
-
-          <div v-if="!arc.length" class="empty">
-            No arc — the line has no target audio, or the config produced no plays.
-          </div>
-
-          <div v-for="g in groups" :key="g.key" class="stage-row">
-            <div class="stage-head">
-              <button class="mini" @click="playGroup(g)">▶</button>
-              <span class="stage-label">{{ g.label }}</span>
-            </div>
-            <div class="plays">
-              <button
-                v-for="p in g.plays"
-                :key="p._idx"
-                class="playchip"
-                :class="[roleMeta(p.playRole).cls, { now: playingIdx === p._idx }]"
-                :title="`${roleMeta(p.playRole).title} — ${p.text || ''}`"
-                @click="playOne(p)"
-              >
-                <span class="rl">{{ roleMeta(p.playRole).short }}</span>
-                <span class="spd">{{ p.playbackSpeed }}×</span>
-              </button>
-            </div>
-          </div>
-        </template>
-
         <!-- CASTING & APPROVAL — the sample-first gate, per course (2026-08-07).
              Everything here is the cast AS STORED in listening_pods.speakers,
              which is what phase-8 reads at generation time. -->
-        <template v-else-if="mode === 'casting'">
+        <template v-if="mode === 'casting'">
           <div v-if="castingLoading" class="empty">Loading casting…</div>
           <div v-else-if="castingError" class="empty err-box">Casting unavailable: {{ castingError }}</div>
           <template v-else-if="casting">
@@ -2875,80 +2282,16 @@ loadLiveConfig()
           </template>
         </template>
 
-        <!-- THE UNIFIED LADDER — fusion rungs then the speed ramp, one row per stage -->
+        <!-- THE LADDER AND THE STAGE ARC WERE DELETED in job #628 (Tom,
+             r-2026-11-07-ssi-pods-exactly-one-way-of: one way of playing pods, the app's; every
+             alternative pod playback path goes, in Popty too). They auditioned a line through
+             Popty's own vendored engine. To hear a line as a learner does, open it on the pods
+             page, which frames the app itself. The seam editor stays: it is an editor. -->
         <template v-else>
           <p class="shape-note">
-            Rungs fuse canon S-LEGO seams up to the whole turn (≡ engine Stage 1), then the speed
-            cascade to pure&nbsp;t@2×. No internal seam → no fusion rung — straight to the whole.
+            Review the seams on the left. To hear this line as a learner hears it,
+            <router-link :to="{ path: `/production/${selectedCourseCode}/pods`, query: { pod: currentPodSlug, scene: selectedSentence ? String(selectedSentence.scene_number) : undefined, line: selectedSentence?.id } }">open it in the app</router-link>.
           </p>
-
-          <details class="options">
-            <summary>Options</summary>
-            <div class="gloss-dial">
-              <template v-if="hasFine">
-                <span class="lbl small">Content units:</span>
-                <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
-                  draft fine (Aran)
-                </button>
-                <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
-              </template>
-              <span class="lbl small">Fusion:</span>
-              <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
-                pairwise (Aran)
-              </button>
-              <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
-                chained overlap (Tom)
-              </button>
-            </div>
-          </details>
-
-          <div class="transport">
-            <button class="play-all" :disabled="!ladderRungs.length" @click="playWholeClimb">
-              ▶ Play the whole climb
-            </button>
-            <span v-if="ladderRungs.length" class="legend">{{ ladderRungs.length }} rungs</span>
-          </div>
-
-          <div v-if="!ladderRungs.length" class="empty">
-            This line has no atom_map — pick a line with atoms to audition the ladder.
-          </div>
-
-          <div v-for="rung in ladderRungs" :key="rung.key" class="shape-row">
-            <div class="shape-head">
-              <button class="mini" @click="playShapeSteps(rung.steps)">▶</button>
-              <span class="shape-name">{{ rung.label }}</span>
-              <span class="shape-desc">{{ rung.note }}</span>
-            </div>
-            <div class="plays">
-              <button
-                v-for="st in rung.steps"
-                :key="st.key"
-                class="playchip shapechip"
-                :class="[
-                  STEP_CLS[st.kind],
-                  {
-                    now: playingStepKey === st.key,
-                    approx: st.approx && st.hasAudio,
-                    missing: !st.hasAudio,
-                  },
-                ]"
-                :disabled="!st.hasAudio"
-                :title="
-                  !st.hasAudio
-                    ? 'no audio yet at this granularity — ' + st.text
-                    : st.kind +
-                      (st.rate === 2 ? ' · 2×' : '') +
-                      (st.approx ? ' (fallback: coarser/concatenated clips)' : '') +
-                      ' — ' +
-                      st.text
-                "
-                @click="playShapeSteps([st])"
-              >
-                <!-- Target chunk sharing the button with the LTR "2×" tag. -->
-                <span class="bidi-isolate" :dir="dirFor(st.text)">{{ st.text }}</span><span v-if="st.rate === 2" class="x2">2×</span>
-              </button>
-            </div>
-          </div>
         </template>
       </section>
     </div>

@@ -847,7 +847,7 @@ onMounted(load)
  * The proportions are the Seed Editor's: the number and speaker stay narrow, the
  * content columns take the width, and State sits at the right-hand end. These
  * rules are scoped to THIS view rather than added to the shared script-rows.css,
- * because CanonicalPodView.vue still renders a four-column table off that same
+ * because CanonicalPodView.vue (deleted in job #628) rendered a four-column table off that same
  * stylesheet and must not be re-proportioned by a change made for this page.
  */
 .script-table { table-layout: fixed; }

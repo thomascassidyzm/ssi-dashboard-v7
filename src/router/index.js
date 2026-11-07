@@ -193,18 +193,21 @@ const routes = [
     component: CanonicalContent,
     meta: { title: 'Canonical Content' }
   },
+  // THE pods page (job #628, Tom r-2026-11-07-ssi-pods-exactly-one-way-of): one search over every
+  // pod, scene and language, beside the learning app's own pod display framed in place. It replaced
+  // the Pods doc page, the Pod scripts viewer and every Popty pod player; their old addresses land here.
   {
-    path: '/canonical/pods',
-    name: 'PodsDoc',
-    component: () => import('../views/PodsDoc.vue'),
-    meta: { title: 'Listening Pods' }
+    path: '/pods',
+    name: 'PodBrowser',
+    component: () => import('../views/PodBrowserView.vue'),
+    meta: { title: 'Pods' }
   },
+  { path: '/canonical/pods', redirect: '/pods' },
   // Script Lab (2026-08-30) — the canonical pod SCRIPTS with NO course loaded,
   // sitting on the shape metagraph. Tom: "I want a single place I can edit the
   // canonical scripts for the pods … then I can see how this script is actually
-  // doing all the shapes it should as a walk through the graph." The
-  // course-nested /production/:courseCode/pods/canonical/:slug route stays: this
-  // is an extra door, not a replacement.
+  // doing all the shapes it should as a walk through the graph." The old
+  // course-nested canonical editor now redirects here (job #628).
   {
     path: '/canonical/scripts',
     name: 'ScriptLab',
@@ -238,21 +241,9 @@ const routes = [
     component: () => import('../views/LayersShapesView.vue'),
     meta: { title: 'Layers × shapes' }
   },
-  // Pod script viewer (2026-08-24) — fleet-wide, read-only. Tom: "I think I need
-  // to be able to see them all." Deep-linkable per course so a URL can be sent.
-  {
-    path: '/pods/scripts',
-    name: 'PodScripts',
-    component: () => import('../views/PodScriptsView.vue'),
-    meta: { title: 'Pod Scripts' }
-  },
-  {
-    path: '/pods/scripts/:courseCode',
-    name: 'PodScriptsCourse',
-    component: () => import('../views/PodScriptsView.vue'),
-    props: true,
-    meta: { title: 'Pod Scripts' }
-  },
+  // The Pod scripts viewer folded into the pods page (job #628).
+  { path: '/pods/scripts', redirect: '/pods' },
+  { path: '/pods/scripts/:courseCode', redirect: to => ({ path: '/pods', query: { course: to.params.courseCode } }) },
 
   // The old /docs/* estate — every route redirects so nothing 404s.
   { path: '/docs', redirect: '/pedagogy' },
@@ -920,11 +911,10 @@ const routes = [
         meta: { title: 'Pod Detail - Production Suite' }
       },
       {
+        // CanonicalPodView, the older unversioned editor of the English master, folded into the
+        // Script Lab, which edits the same lines with history (job #628).
         path: 'canonical/:slug',
-        name: 'CanonicalPod',
-        component: () => import('../views/CanonicalPodView.vue'),
-        props: true,
-        meta: { title: 'Canonical Scenarios - Production Suite' }
+        redirect: to => `/canonical/scripts/${to.params.slug}`
       }
     ]
   },

@@ -9,7 +9,16 @@
  * but the atom slices survive under their own role.
  */
 import type { SupabaseClient } from '@supabase/supabase-js'
-import type { AtomMapEntry } from './podEngine'
+/** One atom_map / atom_map_fine entry, as listening_pod_sentences stores it (the shape @ssi/core/pods
+ *  reads; carried here since job #628 deleted Popty's vendored copy of that engine). */
+export interface AtomMapEntry {
+  lego_key: string
+  kind: 'atom' | 'passthrough' | 'note'
+  gloss: string
+  target_surface: string
+  target_start_ms?: number | null
+  target_end_ms?: number | null
+}
 
 export const POD_ATOM_ROLE = 'pod_atom'
 

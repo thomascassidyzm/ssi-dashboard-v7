@@ -27,6 +27,11 @@
         <RecordDoor :course-code="courseCode" />
       </div>
 
+      <!-- HEAR IT (job #628, Tom r-2026-11-07-ssi-pods-exactly-one-way-of): this course's pods,
+           searchable, with the learning app's own pod display framed beside them — the one way a
+           pod is played anywhere, Popty included. Everything below is setup and state. -->
+      <PodBrowser :fixed-course="courseCode" class="mb-8" />
+
       <!-- THE CREATE STEP, and only that. This card used to be a state card
            restating the serving pod — its title, HELD badge, counts, coverage —
            directly above the pod's own row, and Tom read it as two pods ("2
@@ -201,7 +206,7 @@
       <details v-if="!loading && !error" class="pv-drawer mt-3 rounded-lg border border-line bg-surface">
         <summary class="pv-summary">Setup &amp; regeneration</summary>
         <div class="px-4 pb-4 pt-1 flex items-center gap-3 flex-wrap">
-          <router-link :to="`/production/${courseCode}/canonical/pod-1`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
+          <router-link to="/canonical/scripts/pod-1" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
           <button
             v-if="corePod"
             :disabled="generating"
@@ -255,6 +260,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
+import PodBrowser from '@/components/pods/PodBrowser.vue'
 import RecordDoor from '@/components/RecordDoor.vue'
 import { pickServingPod, slugOfPod, partitionPods, podParkedReason } from '@/lib/servingPod.js'
 import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'

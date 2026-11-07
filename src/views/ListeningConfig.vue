@@ -80,44 +80,11 @@
         </div>
       </section>
 
-      <!-- ==================== FULL-ARC PREVIEW ==================== -->
-      <section v-if="selectedCourseCode && coursePodSentences.length" class="config-row">
-        <RowHeader
-          title="Full escalation preview"
-          desc="Hear one real sentence climb the whole arc — Stages 1-N — composed with the shared learner composer, so the preview can't drift from delivery. Uses the live UNSAVED config (edit above, hear it here)."
-        />
-        <div class="arc-controls">
-          <label class="arc-pick">Sentence
-            <FilterSelect
-              v-model="arcSentenceIdx"
-              :options="arcSentenceOptions"
-              placeholder="Pick a sentence"
-              filter-placeholder="Type a sentence…"
-              button-class="arc-pick-select"
-            />
-          </label>
-          <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play full arc · {{ arcIndexed.length }} plays</button>
-          <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
-          <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no target audio, or no stage playlist is configured.</span>
-        </div>
-        <div class="arc-rows">
-          <div v-for="(row, r) in arcRows" :key="r" class="arc-row">
-            <span class="arc-row-label">{{ row.stageLabel }}</span>
-            <div class="arc-row-chips">
-              <span
-                v-for="{ p, i } in row.plays" :key="i"
-                class="arc-chip"
-                :class="['arc-chip--sn', { playing: arcPlayingIdx === i }]"
-                :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
-              >
-                <span class="arc-chip-label">{{ p.label }}</span>
-                <span v-if="p.speed !== 1" class="arc-chip-speed">{{ p.speed }}×</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- The FULL-ARC PREVIEW and the per-stage ▶ audition were deleted in job #628 (Tom,
+           r-2026-11-07-ssi-pods-exactly-one-way-of: one way of playing pods, the app's; every
+           alternative pod playback path goes, in Popty too). They played a pod sentence through
+           Popty's own port of the learner composer. To hear a pod, open it on the pods page,
+           which frames the app. This page stays the config editor it is. -->
       <!-- ==================== PODS ==================== -->
       <section v-if="drafts.pods" class="config-row">
         <RowHeader
@@ -156,12 +123,6 @@
                 </span>
                 <span v-else class="stage-rounds eternal-spacer" :title="'The last rung takes whatever the retirement number leaves, then the sentence retires.'">{{ podLadder ? '×' + podLadder.rows[podLadder.rows.length - 1].visits : '—' }}</span>
                 <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
-                <button
-                  class="stage-audition-btn"
-                  :disabled="!auditionExamplePodSentence"
-                  @click="auditionPodStage(stage)"
-                  :title="auditionExamplePodSentence ? `Audition stage ${stage} with pod sentence 1` : 'Pick a course with a pod loaded to audition'"
-                >▶</button>
                 <button
                   class="stage-remove-btn"
                   :disabled="podsStageKeys.length <= 1"
@@ -204,11 +165,9 @@
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import { useAuth } from '../composables/useAuth'
-import { composeArc } from '../lib/podArcCompose'
 import { fetchServingPodId } from '../lib/servingPod'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
-import { isolateText } from '../utils/textDirection.js'
 import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const { isAdmin, learner: currentUser } = useAuth()
@@ -218,11 +177,6 @@ const { isAdmin, learner: currentUser } = useAuth()
 // practice script, not listening. This page still LOADS them (the preview's
 // listening/speaking ratio reads script_shape) but renders no editor for them.
 //
-// ROLE_SPEED drives the pod-stage audition playback rate (Layer-2 preview).
-const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
-// The audio proxy lives on saysomethingin.app (CORS *). popty.app doesn't
-// serve /api/audio so we hit the deployed learning-app endpoint directly.
-const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 
 // Shared algorithm_config plumbing — drafts, dirty-tracking, keyed save.
 // onLoaded / onReset backfill the listening-specific defaults (pods, L1 cup
@@ -241,9 +195,6 @@ const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
 const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
 // Full-arc preview state.
-const arcSentenceIdx = ref(0)               // index into coursePodSentences
-const arcPlayingIdx = ref(-1)               // currently-sounding play, -1 = idle
-const arcStopFlag = ref(false)
 
 const seedLastRound = computed(() => {
   // Mirrors generateLearningScript.ts: seeds processed in seed_number order;
@@ -278,46 +229,10 @@ function setSeedPlaylist(next) {
   if (drafts.listening) drafts.listening.seedPlaylist = next
 }
 
-function audioUrl(audioId) {
-  if (!audioId || !selectedCourseCode.value) return null
-  return `${AUDIO_BASE}/${audioId}?courseId=${encodeURIComponent(selectedCourseCode.value)}`
-}
 
-let currentAudio = null
 
-// Example pod sentence for L2 stage audition — first sentence of the
-// pod (global_order = 1). Null if the course has no pod loaded.
-const auditionExamplePodSentence = computed(() => {
-  return coursePodSentences.value[0] || null
-})
 
-// Play one pod sentence through a stage playlist. Mirrors the runtime
-// pod-lap builder: trans → known audio, ps/ps2x → target audio (at 1×
-// or 2× respectively). No bookends, no inter-chunk gap matrix — admin
-// preview, not a faithful lap simulation.
-async function playPodPlaylistForSentence(playlist, sentence) {
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-  for (const role of playlist) {
-    const id = role === 'trans' ? sentence.known_audio_id : sentence.target_audio_id
-    const url = audioUrl(id)
-    if (!url) continue
-    await new Promise((resolve) => {
-      const a = new Audio(url)
-      a.playbackRate = ROLE_SPEED[role] ?? 1.0
-      currentAudio = a
-      a.onended = resolve
-      a.onerror = resolve
-      a.play().catch(resolve)
-    })
-    await new Promise((r) => setTimeout(r, 250))
-  }
-}
 
-function auditionPodStage(stage) {
-  const sentence = auditionExamplePodSentence.value
-  if (!sentence) return
-  playPodPlaylistForSentence(getStageList(stage), sentence)
-}
 
 
 async function loadCoursePreview(courseCode) {
@@ -537,76 +452,6 @@ function removeStage(stage) {
   shiftStageDurations(n => (n === stage ? null : n > stage ? n - 1 : n))
 }
 
-// ============================================================================
-// Full arc preview — compose the whole escalation (Stages 1-N) for one real
-// sentence with the SHARED composer, then play it through. Uses the live DRAFT
-// config, so structural edits show immediately.
-// ============================================================================
-// One row per pod sentence — the value stays the numeric index, and the label
-// is byte-for-byte what the <option> rendered. A row holds text, not elements,
-// so there is no child to bind `dir` on and the LTR "12. " index would move if
-// we directed the row itself. `isolateText` wraps the sentence in Unicode
-// isolate controls instead — the plaintext form of the same fix, index stays
-// put, trailing `!` lands correctly.
-const arcSentenceOptions = computed(() =>
-  coursePodSentences.value.map((s, i) => ({ value: i, label: `${i + 1}. ${isolateText(s.target_text)}` }))
-)
-const arcSentence = computed(() => coursePodSentences.value[arcSentenceIdx.value] || null)
-const arcPlays = computed(() => {
-  const s = arcSentence.value
-  if (!s) return []
-  try {
-    return composeArc(s, drafts.pods?.stagePlaylist || {})
-  } catch (e) {
-    console.warn('[arc] compose failed:', e)
-    return []
-  }
-})
-const arcIndexed = computed(() =>
-  arcPlays.value.map((p, i) => ({ p, i }))                      // keep global index for the highlight
-)
-// Group displayed plays into rows by stage/tier (one row per tier line).
-const arcRows = computed(() => {
-  const rows = []
-  let cur = null
-  for (const { p, i } of arcIndexed.value) {
-    if (!cur || cur.stageLabel !== p.stageLabel) { cur = { stageLabel: p.stageLabel, plays: [] }; rows.push(cur) }
-    cur.plays.push({ p, i })
-  }
-  return rows
-})
-function stopArc() {
-  arcStopFlag.value = true
-  arcPlayingIdx.value = -1
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-}
-async function playArc() {
-  const plays = arcIndexed.value.map(x => x.p)
-  if (!plays.length) return
-  arcStopFlag.value = false
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-  for (let k = 0; k < plays.length; k++) {
-    if (arcStopFlag.value) break
-    const p = plays[k]
-    const url = audioUrl(p.audioId)
-    if (!url) continue
-    arcPlayingIdx.value = arcIndexed.value[k].i
-    await new Promise((resolve) => {
-      const a = new Audio(url)
-      a.playbackRate = p.speed || 1
-      currentAudio = a
-      a.onended = resolve
-      a.onerror = resolve
-      a.play().catch(resolve)
-    })
-    // Longer breath (2s) at the end of each row/tier; snappy within a row.
-    const next = plays[k + 1]
-    const rowEnd = !next || next.stageLabel !== p.stageLabel
-    const gap = rowEnd ? 2000 : Math.min(p.gapAfterMs || 0, 1500)
-    if (gap > 0 && !arcStopFlag.value) await new Promise((r) => setTimeout(r, gap))
-  }
-  arcPlayingIdx.value = -1
-}
 
 // Backfill defaults for fields added after a row was last saved — keeps
 // NumFields bound to defined values, and the first save writes the field into

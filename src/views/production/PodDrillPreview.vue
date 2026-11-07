@@ -2,10 +2,12 @@
   <!--
     POD DRILL PREVIEW (job #692). Built by every Pod Drill stage run, with no publishing step:
     tools/pods/pod-drill/stage.mjs writes ops/pod-drill-cuts/<course>.*, services/pod-drill-router.cjs
-    serves it, and this page plays each cut exactly as the Drill does (each piece target · known ·
-    target · target, then the whole line the same way), sliced live from the same clips by the same
-    millisecond spans the player reads. Behind Popty's login and the course-scope gate, so Kai opens
-    it with his own account. Read-only: it renders nothing and writes nothing.
+    serves it. It is Kai's CUT REVIEW: each ▶ plays one cut slice (or one standalone piece) from the
+    same clips by the same millisecond spans, so a seam can be judged by ear. It does not play the
+    Drill: its own t·k·t·t sequencer went in job #628 (Tom, r-2026-11-07-ssi-pods-exactly-one-way-of —
+    one way of playing pods, the app's). "In the app" opens the card on the pods page, which frames
+    the app's own Drill. Behind Popty's login and the course-scope gate. It renders nothing and
+    writes nothing.
   -->
   <div class="min-h-screen bg-canvas text-ink p-6">
     <div class="max-w-5xl mx-auto">
@@ -58,7 +60,10 @@
               <div class="text-faint text-xs whitespace-nowrap">SC{{ pad(card.scene) }} · {{ shortId(card.id) }}</div>
             </div>
             <div class="mt-2">
-              <button class="btn-play" @click="playCard(card)">▶ as Drill plays it</button>
+              <router-link
+                class="btn-play"
+                :to="{ path: `/production/${courseCode}/pods`, query: { pod: podOf(card.id), scene: String(card.scene), line: card.id } }"
+              >▶ in the app</router-link>
             </div>
             <div v-for="(line, li) in card.lines" :key="li" class="mt-2 pl-3 border-l border-faint">
               <div v-if="card.lines.length > 1" class="text-sm">
@@ -159,18 +164,8 @@ const kSliceOfChunk = (card, ch) => (ch[6] ? { clip: ch[6] } : ch.length >= 6 &&
 const score = (card, li, ci) => card.scores?.[`${li}|${ci}`] || null
 const kSliceOfLine = (card, line) => (line.k && line.k.length === 3 ? { clip: card.knownClip, a: line.k[1], b: line.k[2] } : card.knownClip ? { clip: card.knownClip } : null)
 
-/** composeDrillCard's order (packages/core/src/pods/fusionDrill.ts): each chunk t·k·t·t, then each
- *  line t·k·t·t, then a several-line turn once whole. */
-function playCard (card) {
-  const seq = []
-  const tktt = (t, k) => { seq.push(t); if (k) seq.push(k); seq.push(t, t) }
-  for (const line of card.lines) {
-    for (const ch of line.chunks || []) tktt(tSlice(card, ch), kSliceOfChunk(card, ch))
-    tktt(tSlice(card, line.t), card.lines.length > 1 ? kSliceOfLine(card, line) : { clip: card.knownClip })
-  }
-  if (card.lines.length > 1) { seq.push({ clip: card.clip }); if (card.knownClip) seq.push({ clip: card.knownClip }) }
-  playSeq(seq)
-}
+/** The pod slug inside a line id `<course>:<slug>:SCnn-Snnn`. */
+const podOf = (id) => String(id).split(':')[1] || 'pod-1'
 
 const urls = new Map()
 async function urlOf (clip) {
