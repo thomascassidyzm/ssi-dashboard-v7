@@ -82,15 +82,35 @@ function talkBollocksClips() {
   return { out, missing }
 }
 
+// A transport failure (Popty restarting under a deploy) is retried, at most 4 tries, 30 s apart. Safe because every call is
+// idempotent: a clip already filed answers 'already' with its row. An HTTP refusal is never retried.
 async function post(course, clips) {
+  for (let attempt = 1; ; attempt++) {
+    try { return await postOnce(course, clips) } catch (e) {
+      if (e.http || attempt >= 4) throw e
+      process.stderr.write(`${course}: ${e.message} — retry ${attempt} in 30 s\n`)
+      await new Promise((r) => setTimeout(r, 30000))
+    }
+  }
+}
+
+async function postOnce(course, clips) {
   const r = await fetch(`${BASE}/api/production/${course}/pod-audio/file`, {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
     body: JSON.stringify({ clips: clips.map(({ trialId, text, voiceId, side }) => ({ trialId, text, voiceId, side })), dryRun: !APPLY }),
     signal: AbortSignal.timeout(300000),
   })
   const body = await r.json().catch(() => ({}))
-  if (!r.ok) throw new Error(`${course}: HTTP ${r.status} ${JSON.stringify(body).slice(0, 300)}`)
+  if (!r.ok) throw Object.assign(new Error(`${course}: HTTP ${r.status} ${JSON.stringify(body).slice(0, 300)}`), { http: r.status })
   return body
+}
+
+// Written after EVERY batch on --apply, so a run stopped part-way keeps the rows it filed.
+function saveMap(map) {
+  if (!APPLY) return
+  fs.mkdirSync(path.dirname(MAP), { recursive: true })
+  const sorted = Object.fromEntries(Object.entries(map).sort(([a], [b]) => a.localeCompare(b)))
+  fs.writeFileSync(MAP, JSON.stringify(sorted, null, 1) + '\n')
 }
 
 async function main() {
@@ -121,14 +141,11 @@ async function main() {
         if (r.timings) tally.timings++
         if (r.audioId) map[r.trialId] = { audioId: r.audioId, course, role: r.role }
       }
-      process.stderr.write(`${course}: ${Math.min(i + 100, clips.length)}/${clips.length}\n`)
+      saveMap(map)
+      process.stderr.write(`${course}: ${Math.min(i + 100, clips.length)}/${clips.length} (filed ${tally.filed}, would ${tally.wouldFile}, refused ${tally.refused})\n`)
     }
   }
-  if (APPLY) {
-    fs.mkdirSync(path.dirname(MAP), { recursive: true })
-    const sorted = Object.fromEntries(Object.entries(map).sort(([a], [b]) => a.localeCompare(b)))
-    fs.writeFileSync(MAP, JSON.stringify(sorted, null, 1) + '\n')
-  }
+  saveMap(map)
   console.log(JSON.stringify({ dryRun: !APPLY, course: ONLY_COURSE, scene: SCENE, ...tally, refusals: refusals.slice(0, 50), unmatchedIds: missing.slice(0, 20) }, null, 1))
 }
 
