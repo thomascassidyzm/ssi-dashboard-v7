@@ -415,11 +415,27 @@ const DECODE_TIMEOUT_MS = Number(process.env.AUDIO_VERACITY_DECODE_TIMEOUT_MS ||
  */
 const MAX_CONCURRENT = Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4)
 
+/**
+ * THE CEILING ON A SAMPLED CLIP'S WAIT FOR A SLOT. DECODE_TIMEOUT_MS only starts
+ * once a slot is held, and the render awaits the sample, so an unbounded queue
+ * could hold a render with no subprocess running at all. Only the sampler passes
+ * this: every other caller of checkAudioVeracity asked for its answer and waits.
+ */
+const SAMPLE_QUEUE_TIMEOUT_MS = Number(process.env.AUDIO_VERACITY_QUEUE_TIMEOUT_MS || 25000)
+
 let active = 0
 const waiting = []
-function acquire () {
-  if (active < MAX_CONCURRENT) { active++; return Promise.resolve() }
-  return new Promise(resolve => waiting.push(resolve))
+/** Resolves true holding a slot, or false (holding nothing) once timeoutMs has passed. */
+function acquire (timeoutMs) {
+  if (active < MAX_CONCURRENT) { active++; return Promise.resolve(true) }
+  return new Promise(resolve => {
+    const grant = () => { clearTimeout(timer); resolve(true) }
+    const timer = timeoutMs > 0 ? setTimeout(() => {
+      waiting.splice(waiting.indexOf(grant), 1)
+      resolve(false)
+    }, timeoutMs) : null
+    waiting.push(grant)
+  })
 }
 function release () {
   const next = waiting.shift()
@@ -1869,13 +1885,15 @@ async function measureTruncation (input, expectedText, language) {
       spilled = path.join(os.tmpdir(), `veracity-trunc-${crypto.randomUUID()}`)
       fs.writeFileSync(spilled, input)
     }
-    d = await decodeEngine.decode(spilled || input)
+    d = await decodeEngine.decode(spilled || input, { timeoutMs: DECODE_TIMEOUT_MS })
     const v = vad.analyse(d.samples, d.sampleRate)
     const speechSpanSec = Number(v.speechDurationSec || 0)
     const t = truncationSuspect(speechSpanSec, s.syllables)
     return { ...t, speechSpanSec: +speechSpanSec.toFixed(3), syllables: s.syllables, syllableCounterCalibrated: s.calibrated }
   } catch (e) {
-    return { truncated: null, why: `measurement failed: ${String(e && e.message).slice(0, 120)}`, secPerSyllable: null, speechSpanSec: null }
+    const timedOut = e?.killed === true
+    const why = timedOut ? `ffmpeg gave no answer in ${DECODE_TIMEOUT_MS}ms and was stopped` : `measurement failed: ${String(e && e.message).slice(0, 120)}`
+    return { truncated: null, why, timedOut, secPerSyllable: null, speechSpanSec: null }
   } finally {
     if (d) { try { d.dispose() } catch { /* already gone */ } }
     if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
@@ -1922,7 +1940,9 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
     return { ...unchecked('unchecked_decoder_not_validated', `whisper decoder is not validated for '${iso1}' — every verdict it gives in this language is noise`), language: iso1 }
   }
 
-  await acquire()
+  if (!await acquire(opts.queueTimeoutMs)) {
+    return unchecked('unchecked_queue_timeout', `no check slot free within ${opts.queueTimeoutMs}ms`)
+  }
   let decode
   let primed = null
   let verify = null
@@ -1953,6 +1973,7 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
           // Could not measure. The text layer verified it and the guard could
           // not run — say WHICH, rather than letting the pass look complete.
           verify.truncationUnchecked = t.why
+          verify.truncationTimedOut = t.timedOut
         }
       }
     }
@@ -1982,6 +2003,7 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
       coverage: verify.coverage == null ? null : +verify.coverage.toFixed(4),
       ...(verify.secPerSyllable != null ? { secPerSyllable: verify.secPerSyllable, speechSpanSec: verify.speechSpanSec } : {}),
       ...(verify.truncationUnchecked ? { truncationUnchecked: verify.truncationUnchecked } : {}),
+      ...(verify.truncationTimedOut ? { truncationTimedOut: true } : {}),
     } : {}),
     expected: String(expectedText),
     language: iso1 || 'auto',
@@ -2060,7 +2082,8 @@ function newStats () {
     // Clips the SAMPLER deliberately did not check. Counted apart from
     // `unchecked` on purpose: `unchecked` is an admission that we could not
     // look, and it is meant to be alarming. `not_sampled` is the policy doing
-    // exactly what it was told to do, and it is not.
+    // exactly what it was told to do, and it is not. A draw abandoned at its
+    // queue or truncation ceiling lands here too, and logs a line saying so.
     not_sampled: 0,
   }
 }
@@ -2425,9 +2448,15 @@ async function listenToClip ({ buffer, expectedText, language, meta = {}, stats,
   // A check that throws must never cost the render: report it as unchecked.
   let verdict
   try {
-    verdict = await check(buffer, expectedText, language, { meta })
+    verdict = await check(buffer, expectedText, language, { meta, queueTimeoutMs: SAMPLE_QUEUE_TIMEOUT_MS })
   } catch (e) {
     verdict = { checked: false, pass: null, reason: 'check_failed', detail: e.message }
+  }
+  // Out of time: the clip was not heard, so it counts neither clean nor failed.
+  if (verdict.reason === 'unchecked_queue_timeout' || verdict.truncationTimedOut) {
+    const detail = verdict.detail || verdict.truncationUnchecked
+    warn(`[audio-veracity] gave up sampling ${label}, moving on: ${detail}`)
+    verdict = { checked: false, pass: null, reason: 'not_sampled', detail }
   }
   recordVerdict(stats, verdict)
   const snap = s.recordVerdict(verdict)

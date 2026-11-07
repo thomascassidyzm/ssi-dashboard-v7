@@ -84,24 +84,33 @@ async function probe (file) {
  * expected to call it; a batch run over 50k clips that leaks a WAV per clip
  * fills the disk somewhere around clip 8,000.
  *
+ * `opts.timeoutMs` is a ceiling on the ffmpeg run: past it the process is killed
+ * and decode rejects with `killed: true`. Absent, ffmpeg runs as long as it runs.
+ *
  * @returns {{samples: Float32Array, sampleRate: number, durationSec: number,
  *            wavPath: string, dispose: function}}
  */
-async function decode (file) {
+async function decode (file, opts = {}) {
   const tmp = path.join(
     os.tmpdir(),
     `aie-${crypto.randomBytes(8).toString('hex')}.wav`,
   )
-  await run(FFMPEG, [
-    '-v', 'error',
-    '-i', file,
-    '-ar', String(SAMPLE_RATE),
-    '-ac', '1',
-    '-c:a', 'pcm_s16le',
-    '-f', 'wav',
-    tmp,
-    '-y',
-  ])
+  try {
+    await run(FFMPEG, [
+      '-v', 'error',
+      '-i', file,
+      '-ar', String(SAMPLE_RATE),
+      '-ac', '1',
+      '-c:a', 'pcm_s16le',
+      '-f', 'wav',
+      tmp,
+      '-y',
+    ], opts.timeoutMs ? { timeout: opts.timeoutMs, killSignal: 'SIGKILL' } : {})
+  } catch (e) {
+    // A killed ffmpeg leaves a partial WAV, and nobody has a dispose() for it.
+    try { fs.unlinkSync(tmp) } catch { /* never written */ }
+    throw e
+  }
 
   const buf = fs.readFileSync(tmp)
   const samples = pcmFromWav(buf)
