@@ -17,6 +17,7 @@
  *   --scene N      only turns of scene N (keys …:SC0N-…; Talk Bollocks: scene_number N)
  *   --talk-bollocks  include the Italian Talk Bollocks Part 1 clips (course ita_for_eng); --no-drill leaves pieces out
  *   --apply        really file (default: dry run)
+ *   --accept-existing  map a clip whose identity is already filed (IDENTITY_TAKEN) onto that existing row; listed
  *   --map <path>   the trial→row mapping to merge into (default ops/pod-audio-rows/trial-to-row.json, tracked)
  *
  * The mapping is { "trial_<UUID>": { audioId, course, role } } — what the app's data is rewritten with.
@@ -32,6 +33,7 @@ const APP = path.resolve(String(opt('--app', path.join(process.env.HOME, 'ssi-le
 const ONLY_COURSE = opt('--course')
 const SCENE = opt('--scene') ? Number(opt('--scene')) : null
 const APPLY = flag('--apply')
+const ACCEPT_EXISTING = flag('--accept-existing')
 const MAP = path.resolve(opt('--map', path.join(__dirname, '..', '..', 'ops', 'pod-audio-rows', 'trial-to-row.json')))
 const BASE = process.env.POPTY_API || 'http://localhost:3470'
 const AGENT = process.env.POD_AUDIO_AGENT || 'job-628-file-pod-audio'
@@ -43,6 +45,16 @@ function drillClips() {
   const recorded = JSON.parse(fs.readFileSync(path.join(APP, 'ops/pod-drill-pieces/recorded.json'), 'utf8')).clips
   const byId = new Map()
   for (const [k, v] of Object.entries(recorded)) byId.set(v.audioId, { voice: v.voice, text: k.slice(k.indexOf('|') + 1), course: v.course })
+  // Italian was recorded first, into its own ledger (ops/pod-drill-pieces/ita/clips.json): the voice is on the turn.
+  const itaLedger = path.join(APP, 'ops/pod-drill-pieces/ita/clips.json')
+  if (fs.existsSync(itaLedger)) {
+    for (const t of JSON.parse(fs.readFileSync(itaLedger, 'utf8')).turns || []) {
+      for (const p of t.pieces || []) {
+        if (p.it && isTrial(p.it.trialClip) && !byId.has(p.it.trialClip)) byId.set(p.it.trialClip, { voice: t.targetVoice, text: p.it.text, course: 'ita_for_eng' })
+        if (p.en && isTrial(p.en.trialClip) && !byId.has(p.en.trialClip)) byId.set(p.en.trialClip, { voice: t.knownVoice, text: p.en.text, course: 'ita_for_eng' })
+      }
+    }
+  }
   const dir = path.join(APP, 'packages/player-vue/src/data/podDrillPieces')
   const files = fs.readdirSync(dir).sort().filter((f) => f.endsWith('.json') && (!ONLY_COURSE || f === `${ONLY_COURSE}.json`))
   const out = [], missing = []
@@ -128,12 +140,20 @@ async function main() {
   const byCourse = new Map()
   for (const c of unique.values()) { if (!byCourse.has(c.course)) byCourse.set(c.course, []); byCourse.get(c.course).push(c) }
 
-  const tally = { references: all.length, alreadyMapped: mapped, clips: unique.size, filed: 0, already: 0, wouldFile: 0, refused: 0, timings: 0, unmatched: missing.length }
+  const tally = { references: all.length, alreadyMapped: mapped, clips: unique.size, filed: 0, already: 0, wouldFile: 0, refused: 0, substituted: 0, timings: 0, unmatched: missing.length }
+  const substitutions = []
   const refusals = []
   for (const [course, clips] of byCourse) {
     for (let i = 0; i < clips.length; i += 100) {
       const res = await post(course, clips.slice(i, i + 100))
       for (const r of res.results) {
+        // --accept-existing: a clip whose words, voice and pod-only role already have a row in this course is mapped onto
+        // THAT row (a different take of the same words in the same voice), and listed under `substituted` — never silently.
+        if (r.status === 'refused' && r.code === 'IDENTITY_TAKEN' && ACCEPT_EXISTING && r.existing && r.existing.audioId) {
+          tally.substituted++; substitutions.push({ course, trialId: r.trialId, audioId: r.existing.audioId, s3Key: r.existing.s3Key })
+          map[r.trialId] = { audioId: r.existing.audioId, course, role: null, substitutedFor: 'IDENTITY_TAKEN' }
+          continue
+        }
         if (r.status === 'refused') { tally.refused++; refusals.push({ course, ...r }); continue }
         if (r.status === 'would-file') tally.wouldFile++
         if (r.status === 'filed') tally.filed++
@@ -146,7 +166,7 @@ async function main() {
     }
   }
   saveMap(map)
-  console.log(JSON.stringify({ dryRun: !APPLY, course: ONLY_COURSE, scene: SCENE, ...tally, refusals: refusals.slice(0, 50), unmatchedIds: missing.slice(0, 20) }, null, 1))
+  console.log(JSON.stringify({ dryRun: !APPLY, course: ONLY_COURSE, scene: SCENE, ...tally, refusals: refusals.slice(0, 50), substitutions, unmatchedIds: missing.slice(0, 20) }, null, 1))
 }
 
 main().catch((e) => { console.error(e.message); process.exit(1) })
