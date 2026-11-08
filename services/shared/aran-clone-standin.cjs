@@ -20,7 +20,9 @@
  *   - English only: a known-role call that names any other language is refused (silence is resolved to
  *     the role's own side, English, by the caller — never treated as permission here);
  *   - one voice: STANDIN_VOICE below. Nothing else may be cast there by this rule.
- * Pod lines are not course slots and never reach this (the render route takes course slots only).
+ * Pod lines are not course slots and never reach these slot checks. The English known side of a WELSH course's POD (men's
+ * lines) has its own rule that reads STANDIN_VOICE from here (shared/pod-line-voice.cjs englishPodKnownVoice; Tom 2026-11-08,
+ * job #913: "we have Aran's pro clone for any English needed") — it does not widen isCloneStandInCourse, which stays nv2/sv2.
  */
 
 const ARAN_ENGLISH_CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe' // aran_english_003 (instant clone)

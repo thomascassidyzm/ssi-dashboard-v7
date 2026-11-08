@@ -5685,7 +5685,8 @@ function buildRenderDeps() {
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
         // THE ENGLISH POD VOICE GATE (job #905; shared/pod-line-voice.cjs englishPodKnownVoice, r-2026-11-08 "Charlotte is the female
         // English pod, not Gemma"). Every English known-side POD clip — a pod line (podSentenceId) or a pod-only Drill/Listen piece
-        // (trial + podSide 'known') — is Charlotte, Tom-006 or a human take. A trial is exempt from the slot rules above, which is how
+        // (trial + podSide 'known') — is Charlotte, Tom-006 or a human take; in a Welsh course a man's line is Aran's take or his PRO
+        // clone, never Tom-006 (#913, Tom 2026-11-08: "we have Aran's pro clone for any English needed"). A trial is exempt from the slot rules above, which is how
         // #891 named Gemma and got her; the pod gate is not exempt for trials. A refusal is the answer: never retry in another voice.
         const podEnglish = toIso3(lang) === 'eng' && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podVoice && role === 'known'))
         if (podEnglish) {

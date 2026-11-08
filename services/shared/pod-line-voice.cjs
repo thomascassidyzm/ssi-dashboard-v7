@@ -59,7 +59,14 @@ function podLineVoice({ pod, sentence, role, courseCode, currentClipVoice = null
  * not Gemma" — "not Gemma, not Olivia; synthetic women's English pod lines and pieces use Charlotte until a human take
  * replaces them"; before it r-2026-10-26-every-pod-1-english-line-charlotte and r-2026-09-30). A pod's ENGLISH known side —
  * whole line, Listen sentence clip or Drill piece, in any *_for_eng course — is spoken by a human take, or by Charlotte (a
- * woman's line) / Tom-006 (a man's line). Nothing else.
+ * woman's line) / Tom-006 (a man's line). Nothing else — except in a WELSH course, below.
+ *
+ * WELSH COURSES, MEN'S LINES (Tom 2026-11-08, job #913: "we have Aran's pro clone for any English needed"; Tom's Tom-clone ban
+ * r-2026-10-13 rules Tom-006 out there): a Welsh course's man's English pod line is Aran's own human take, and where a piece
+ * has no take of his it is Aran's PRO clone (STANDIN_VOICE, shared/aran-clone-standin.cjs — the ONE place that names it, so a
+ * switch of the stand-in voice follows here). Welsh courses only: in every other course the clone is refused like any other
+ * non-pair voice. Never on a woman's line. Aran's real booth takes replace these clips later, make-before-break (his
+ * 2026-10-29 ruling).
  *
  * The specimen (job #905): #891 rendered 43 Welsh Pod 1 women's English pieces in Cartesia "Gemma". The route let it through
  * because a trial + podSide render (how every Drill piece is made) was exempt from every voice rule and took the caller's
@@ -84,8 +91,13 @@ function englishPodKnownVoice({ courseCode = null, voiceId = null, gender = null
   const welsh = isWelshCourse(courseCode)
   if (!voiceId) {
     if (gender === 'f') return { voiceId: CHARLOTTE }
-    if (gender === 'm' && !welsh) return { voiceId: TOM_006 }
-    return refuse(gender === 'm' ? "a Welsh course's men's English is Aran's own take, never a synthetic voice" : 'no voice named and no speaker gender to choose Charlotte or Tom-006 by')
+    if (gender === 'm') {
+      if (!welsh) return { voiceId: TOM_006 }
+      // A Welsh man's line with no take of Aran's: his PRO clone (Tom 2026-11-08, "we have Aran's pro clone for any English needed").
+      if (STANDIN_VOICE) return { voiceId: STANDIN_VOICE }
+      return refuse("a Welsh course's men's English is Aran's own take or his clone, and no clone is set")
+    }
+    return refuse('no voice named and no speaker gender to choose Charlotte or Tom-006 by')
   }
   if (/^human_/i.test(String(voiceId))) return { voiceId }   // a human take is never refused or replaced here
   const bare = bareOf(voiceId)
@@ -94,8 +106,15 @@ function englishPodKnownVoice({ courseCode = null, voiceId = null, gender = null
     if (welsh && isTomCloneVoice(voiceId)) return refuse('Tom-006 is a Tom clone, never used in a Welsh course (r-2026-10-13)')
     return gender === 'f' ? refuse(`Tom-006 is a man's voice and this is a woman's line — Charlotte speaks it`) : { voiceId }
   }
-  if (STANDIN_VOICE && bare === bareOf(STANDIN_VOICE)) return gender === 'f' ? refuse(`Aran's clone is a man's voice and this is a woman's line — Charlotte speaks it`) : { voiceId }
-  return refuse(`${voiceId} is not an English pod voice; a woman's line is Charlotte (${CHARLOTTE}), a man's Tom-006 (${TOM_006}), or a human take`)
+  // Aran's PRO clone: WELSH courses only, men's lines only (Tom 2026-11-08, job #913: "we have Aran's pro clone for any English
+  // needed"). Outside Welsh it is refused like any other non-pair voice — his clone is for Welsh courses, not a third English voice.
+  if (STANDIN_VOICE && bare === bareOf(STANDIN_VOICE)) {
+    if (!welsh) return refuse(`Aran's clone speaks English pod lines in Welsh courses only; a man's line here is Tom-006 (${TOM_006}) or a human take`)
+    return gender === 'f' ? refuse(`Aran's clone is a man's voice and this is a woman's line — Charlotte speaks it`) : { voiceId }
+  }
+  return refuse(welsh
+    ? `${voiceId} is not a Welsh English pod voice; a woman's line is Charlotte (${CHARLOTTE}), a man's Aran's take or his clone (${STANDIN_VOICE}), never a Tom clone`
+    : `${voiceId} is not an English pod voice; a woman's line is Charlotte (${CHARLOTTE}), a man's Tom-006 (${TOM_006}), or a human take`)
 }
 
 module.exports = { podLineVoice, castFor, clipColumnFor, englishPodKnownVoice, ENGLISH_POD_VOICE }
