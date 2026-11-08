@@ -8151,6 +8151,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],
           lego_ids: [...new Set(ops.map(o => o.lego_id).filter(Boolean))],
           phrase_ids: [...new Set(ops.map(o => o.phrase_id || (o.op === 'phrase.insert' ? o.row?.id : null)).filter(Boolean))],
+          pod_sentence_ids: [...new Set(ops.map(o => o.pod_sentence_id).filter(Boolean))],
           rows: ops.length,
         },
         detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length, ...eventDetail },

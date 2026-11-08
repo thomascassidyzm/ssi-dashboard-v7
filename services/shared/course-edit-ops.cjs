@@ -28,6 +28,8 @@
 
 const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
 const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
+const { podSentencesOf } = require('./pod-sentence-split.cjs');
+const { sameRecordedWords } = require('./text-normalize.cjs');
 
 const MAX_OPS = 2000;
 
@@ -70,6 +72,8 @@ const LEGO_TYPES = ['A', 'M'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const LEGO_ID_RE = /^S\d{4}L\d{2}$/;
 const SLOTS = ['known', 'target1', 'target2', 'presentation'];
+// A pod line's per-sentence clips (the player pairs them by index: learning app podSentenceSplit.ts).
+const POD_PIECE_SIDES = { target_ids: 'sentence_audio_ids', known_ids: 'sentence_known_audio_ids' };
 
 class EditOpError extends Error {
   constructor(index, message, code = 'BAD_OP') { super(`op ${index}: ${message}`); this.index = index; this.code = code; }
@@ -93,6 +97,10 @@ const OP_HELP = {
   'gender.update': { key: 'id', set: UPDATABLE.course_gender_expansions },
   'gender.insert': { row: 'course_gender_expansions row (id optional)' },
   'gender.delete': { key: 'id' },
+  'pod.pieces':    { key: 'pod_sentence_id (<course>:<pod slug>:SC01-S003)', target_ids: 'target piece clip ids, in sentence order', known_ids: 'known piece clip ids, in sentence order',
+                     note: 'FILL-ONLY (job #883): creates the pieces of a pod line whose sentence array is EMPTY (sentence_audio_ids / sentence_known_audio_ids). Each clip must already exist (make-before-break), say exactly its sentence of the line, and be in the voice of the line\'s whole clip on that side. A filled array is changed piece by piece through link-clip (segment / knownsegment). allow_draft:true to fill target pieces on a draft line. The undo is pod.pieces.clear.' },
+  'pod.pieces.clear': { key: 'pod_sentence_id', set: '{sentence_audio_ids|sentence_known_audio_ids: null or []}', expect: 'REQUIRED: the array being cleared, exactly',
+                     note: 'written by the undo of pod.pieces: the line plays whole again. No clip is ever deleted.' },
   'qaflag.restore': { row: 'a course_qa_flags row as read before a phrase.delete; phrase_id must start "<course>:"', note: 'written by the undo of a phrase delete, so the flags come back with the phrase' },
   common: { expect: '{column: value} before-state assertion; drift aborts the whole request' },
 };
@@ -213,6 +221,34 @@ function planOp(op, index, courseCode) {
       if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'gender.insert row.id must be a uuid when given');
       return { ...base, table: 'course_gender_expansions', kind: 'insert', row: stripNeverSet(row, 'course_gender_expansions'), key: row.id ? { id: row.id } : null, courseCode };
     }
+    case 'pod.pieces': {
+      const where = podSentenceWhere(op, index, courseCode);
+      const set = {};
+      for (const [side, col] of Object.entries(POD_PIECE_SIDES)) {
+        if (op[side] === undefined) continue;
+        const ids = op[side];
+        if (!Array.isArray(ids) || ids.length < 2 || !ids.every(x => typeof x === 'string' && UUID_RE.test(x))) {
+          throw new EditOpError(index, `pod.pieces ${side} must be two or more course_audio uuids, in sentence order`);
+        }
+        if (new Set(ids).size !== ids.length) throw new EditOpError(index, `pod.pieces ${side} names one clip twice`);
+        set[col] = ids;
+      }
+      if (!Object.keys(set).length) throw new EditOpError(index, 'pod.pieces needs target_ids and/or known_ids');
+      return { ...base, table: 'listening_pod_sentences', kind: 'update', where, set, pod: { mode: 'fill', allowDraft: op.allow_draft === true } };
+    }
+    case 'pod.pieces.clear': {
+      const where = podSentenceWhere(op, index, courseCode);
+      const set = op.set;
+      const cols = Object.values(POD_PIECE_SIDES);
+      if (!set || typeof set !== 'object' || !Object.keys(set).length) throw new EditOpError(index, 'pod.pieces.clear needs "set"');
+      for (const [c, v] of Object.entries(set)) {
+        if (!cols.includes(c)) throw new EditOpError(index, `pod.pieces.clear can only clear ${cols.join(', ')}`);
+        if (!(v === null || (Array.isArray(v) && v.length === 0))) throw new EditOpError(index, `pod.pieces.clear sets ${c} to null or [] only`);
+        // An array nobody has looked at is never emptied: the expect names exactly what goes.
+        if (!expect || !Array.isArray(expect[c])) throw new EditOpError(index, `pod.pieces.clear needs expect.${c} (the array being cleared)`);
+      }
+      return { ...base, table: 'listening_pod_sentences', kind: 'update', where, set, pod: { mode: 'clear' } };
+    }
     case 'qaflag.restore': {
       const row = op.row;
       if (!row || typeof row !== 'object' || typeof row.phrase_id !== 'string' || !hasPhraseIdPrefix(row.phrase_id, courseCode)) {
@@ -229,6 +265,13 @@ function legoWhere(op, index, courseCode) {
   if (op.id && UUID_RE.test(String(op.id))) return { course_code: courseCode, id: op.id };
   if (LEGO_ID_RE.test(String(op.lego_id || ''))) return { course_code: courseCode, lego_id: op.lego_id };
   throw new EditOpError(index, `${op.op} needs lego_id like S0001L02 (or the row uuid as id)`);
+}
+// A pod line is keyed by its own id, which carries the course in front (cym_s_for_eng:pod-1:SC01-S003); runPlans still
+// proves the line's pod belongs to this course (listening_pods.course_code) before it writes.
+function podSentenceWhere(op, index, courseCode) {
+  const id = String(op.pod_sentence_id || '');
+  if (!id.startsWith(`${courseCode}:`) || id.split(':').length < 3) throw new EditOpError(index, `${op.op} needs pod_sentence_id starting "${courseCode}:<pod slug>:"`);
+  return { id };
 }
 // Legacy phrase-id prefixes, accepted as aliases of the course code (ticket 9abad0ac, 2026-10-19).
 // ell_for_eng's phrases were minted as "el_for_eng:S…" and keep those ids — they are never
@@ -312,6 +355,7 @@ function same(a, b) {
 
 /** The undo op that turns `after` back into `before` for one row. */
 function undoFor(plan, before, after, opName) {
+  if (plan.table === 'listening_pod_sentences') return podPiecesUndo(before, after);
   const keyOf = (row) => plan.table === 'course_practice_phrases' ? { phrase_id: row.id }
     : plan.table === 'course_seeds' ? { seed_number: row.seed_number }
     : plan.table === 'course_legos' ? { id: row.id }
@@ -335,6 +379,82 @@ function undoFor(plan, before, after, opName) {
   return { op: updOp, ...keyOf(after), set };
 }
 
+const isEmptyArray = (a) => !Array.isArray(a) || !a.some(Boolean);
+
+/** The undo of a pod.pieces fill is a clear expecting exactly the pieces it put there; of a clear, the fill it took away. */
+function podPiecesUndo(before, after) {
+  if (!before || !after) return null;
+  const fill = {}, clear = {}, expect = {};
+  for (const [side, col] of Object.entries(POD_PIECE_SIDES)) {
+    if (same(before[col], after[col])) continue;
+    if (isEmptyArray(before[col])) { clear[col] = Array.isArray(before[col]) ? [] : null; expect[col] = after[col]; }
+    else fill[side] = before[col];
+  }
+  if (Object.keys(clear).length) return { op: 'pod.pieces.clear', pod_sentence_id: after.id, set: clear, expect };
+  if (Object.keys(fill).length) return { op: 'pod.pieces', pod_sentence_id: after.id, ...fill, allow_draft: true };
+  return null;
+}
+
+/**
+ * THE POD PIECES DOOR (job #883, 2026-11-08). Tom ruled South Welsh Pod 1 is split into Drill pieces like North, and no
+ * Popty door could do it: link-clip only REPLACES a piece inside an existing array (REPLACE_ONLY, job #864) and South's
+ * 231 rows carry no arrays. pod.pieces creates them; everything else about the write is the course-edit door's (one
+ * transaction, dry run = the same transaction rolled back, derived undo, caller identity at the route).
+ *
+ * The checks a fill must pass, inside the transaction, before it writes. Each refuses the whole request:
+ *   - the line's pod belongs to this course;
+ *   - FILL-ONLY: the array is empty now. Replacing a piece stays link-clip's job (segment / knownsegment, replace +
+ *     expectCurrent), so a caller can never overwrite pieces it has not named;
+ *   - the line splits into exactly as many sentences as clips are given (the player's own boundary, pod-sentence-split);
+ *   - every clip exists, says exactly its sentence (sameRecordedWords folds the pod pause cue and typography), and is in
+ *     the voice of the line's whole clip on that side — a piece is a cut of that take (r-2026-11-08: Welsh pieces are
+ *     span cuts of the human takes), so a second voice among the pieces is a wrong piece;
+ *   - a draft target line takes no target pieces unless allow_draft (A-109: no audio on text nobody has read);
+ *   - afterwards both sides pair: if both arrays hold pieces, they number the same.
+ * MAKE-BEFORE-BREAK holds by construction: the clips exist before the op, the whole-line clip is not touched, no clip is
+ * deleted. A clear checks only the course: its required expect has already pinned the array it empties.
+ */
+async function checkPodPieces(client, plan, before, courseCode) {
+  const { rows: pods } = await client.query(`SELECT id, course_code FROM listening_pods WHERE id = $1`, [before.pod_id]);
+  if (!pods.length || pods[0].course_code !== courseCode) throw new EditOpError(plan.index, `${plan.name}: ${before.id} is not a pod line of ${courseCode}`, 'NOT_FOUND');
+  if (plan.pod.mode !== 'fill') return;
+  const next = { sentence_audio_ids: before.sentence_audio_ids, sentence_known_audio_ids: before.sentence_known_audio_ids, ...plan.set };
+  for (const [col, ids] of Object.entries(plan.set)) {
+    const target = col === 'sentence_audio_ids';
+    if (!isEmptyArray(before[col])) {
+      throw new EditOpError(plan.index, `pod.pieces: ${before.id} already has ${col} (${before[col].length} clips); pieces are changed one by one through link-clip (${target ? 'segment' : 'knownsegment'}, replace + expectCurrent), never refilled`, 'ARRAY_FILLED');
+    }
+    if (target && before.target_text_draft && !plan.pod.allowDraft) {
+      throw new EditOpError(plan.index, `pod.pieces: ${before.id} is still a draft; approve its text first, or send allow_draft:true`, 'DRAFT_TEXT');
+    }
+    const text = target ? before.target_text : before.known_text;
+    const sentences = podSentencesOf(text);
+    if (sentences.length !== ids.length) {
+      throw new EditOpError(plan.index, `pod.pieces: ${before.id} ${target ? 'target' : 'known'} text has ${sentences.length} sentence(s) (${JSON.stringify(text)}), ${ids.length} clips given`, 'SENTENCE_COUNT');
+    }
+    const wholeId = target ? before.target_audio_id : before.known_audio_id;
+    if (!wholeId) throw new EditOpError(plan.index, `pod.pieces: ${before.id} has no whole ${target ? 'target' : 'known'} clip to say whose pieces these are`, 'NO_WHOLE_CLIP');
+    const { rows: clips } = await client.query(`SELECT id, text, voice_id FROM course_audio WHERE id = ANY($1::uuid[])`, [[wholeId, ...ids]]);
+    const byId = new Map(clips.map(c => [String(c.id), c]));
+    const whole = byId.get(String(wholeId));
+    if (!whole) throw new EditOpError(plan.index, `pod.pieces: the whole clip ${wholeId} of ${before.id} is missing`, 'NO_SUCH_AUDIO');
+    ids.forEach((id, i) => {
+      const c = byId.get(id);
+      if (!c) throw new EditOpError(plan.index, `pod.pieces: no course_audio row ${id} (piece ${i + 1})`, 'NO_SUCH_AUDIO');
+      if (!sameRecordedWords(c.text || '', sentences[i])) {
+        throw new EditOpError(plan.index, `pod.pieces: piece ${i + 1} (${id}) says ${JSON.stringify(c.text)}, sentence ${i + 1} is ${JSON.stringify(sentences[i])}`, 'TEXT_MISMATCH');
+      }
+      if (c.voice_id !== whole.voice_id) {
+        throw new EditOpError(plan.index, `pod.pieces: piece ${i + 1} (${id}) is voice ${c.voice_id}, the line's whole clip is ${whole.voice_id}`, 'VOICE_MISMATCH');
+      }
+    });
+  }
+  const t = (next.sentence_audio_ids || []).filter(Boolean).length, k = (next.sentence_known_audio_ids || []).filter(Boolean).length;
+  if (t && k && t !== k) {
+    throw new EditOpError(plan.index, `pod.pieces: ${before.id} would hold ${t} target and ${k} known pieces; the player pairs them by index, so they must number the same`, 'PIECES_UNPAIRED');
+  }
+}
+
 /**
  * Run planned ops in one transaction.
  *
@@ -351,7 +471,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
   const client = await connect();
   const results = [];
   const undo = [];
-  const touched = { seed_numbers: new Set(), lego_ids: new Set(), phrase_ids: new Set(), audio_ids: new Set(), legos: false, audio_slots: false };
+  const touched = { seed_numbers: new Set(), lego_ids: new Set(), phrase_ids: new Set(), audio_ids: new Set(), pod_sentence_ids: new Set(), legos: false, audio_slots: false };
   let committed = false;
   try {
     await client.query('BEGIN');
@@ -447,6 +567,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
         } else {
           if (romanGoesStale(before, plan.set)) throw new EditOpError(plan.index, `${plan.name}: ${ROMAN_STALE_MESSAGE}`, 'ROMAN_STALE');
           if (plan.link && plan.link.audioId) await checkLink(client, plan, before, courseCode);
+          if (plan.pod) await checkPodPieces(client, plan, before, courseCode);
           const textSet = {}, audioSet = {};
           for (const [c, v] of Object.entries(plan.set)) (AUDIO_COLS.includes(c) ? audioSet : textSet)[c] = v;
           const stamp = evId && 'last_edit_event_id' in before ? { last_edit_event_id: evId } : {};
@@ -461,6 +582,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
       if (plan.table === 'course_legos') { touched.legos = true; if (row.lego_id) touched.lego_ids.add(row.lego_id); }
       if (plan.table === 'course_practice_phrases') touched.phrase_ids.add(row.id);
       if (plan.table === 'course_audio') touched.audio_ids.add(row.id);
+      if (plan.table === 'listening_pod_sentences') touched.pod_sentence_ids.add(row.id);
       const audioMoved = AUDIO_COLS.some(c => before && after && c in before && !same(before[c], after[c]));
       if (audioMoved || plan.link) touched.audio_slots = true;
 
@@ -484,7 +606,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
     undo_ops: undo,
     touched: {
       seed_numbers: [...touched.seed_numbers], lego_ids: [...touched.lego_ids], phrase_ids: [...touched.phrase_ids],
-      audio_ids: [...touched.audio_ids], legos: touched.legos, audio_slots: touched.audio_slots,
+      audio_ids: [...touched.audio_ids], pod_sentence_ids: [...touched.pod_sentence_ids], legos: touched.legos, audio_slots: touched.audio_slots,
     },
   };
 }
@@ -507,7 +629,8 @@ async function checkLink(client, plan, before, courseCode) {
 function summarise(row, plan) {
   if (!row) return null;
   const keep = new Set(['id', 'seed_number', 'lego_index', 'lego_id', ...(plan.set ? Object.keys(plan.set) : []),
-    'known_text', 'target_text', ...AUDIO_COLS.filter(c => c in row)]);
+    'known_text', 'target_text', ...AUDIO_COLS.filter(c => c in row),
+    ...(plan.table === 'listening_pod_sentences' ? ['target_audio_id', 'known_audio_id', ...Object.values(POD_PIECE_SIDES)] : [])]);
   if (plan.table === 'course_audio' || plan.table === 'course_gender_expansions') return row;
   const out = {};
   for (const k of keep) if (k in row) out[k] = row[k];
