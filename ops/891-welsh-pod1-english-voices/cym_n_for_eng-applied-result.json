@@ -1,0 +1,448 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "eventId": "5d20ba0d-b15f-4a14-9bc7-404c31df04fc",
+ "contentVersion": "0.0.242",
+ "linked": 34,
+ "results": [
+  {
+   "slot": "cym_n_for_eng:pod-1:SC01-S002",
+   "role": "known",
+   "audioId": "366021a0-6bab-429e-abb6-428b5553f5a1",
+   "before": "7248628f-7f49-4546-9e9b-37b72dd53a1b",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC01-S002",
+   "role": "knownsegment",
+   "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+   "before": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+    "f745cc1a-72af-4039-9867-10e1e9aca430"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC01-S002",
+   "role": "knownsegment",
+   "audioId": "d307d948-709a-4325-9663-3684d1f218e7",
+   "before": "f745cc1a-72af-4039-9867-10e1e9aca430",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+    "f745cc1a-72af-4039-9867-10e1e9aca430"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S002",
+   "role": "known",
+   "audioId": "eb71f952-2d85-4881-9185-824bc1cd9ff7",
+   "before": "84fea07c-6eec-4170-a617-092ba66c90fd",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S002",
+   "role": "knownsegment",
+   "audioId": "a4918ee7-a08e-43cd-a3ec-fff51ee0d655",
+   "before": "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+    "8f391648-7702-436f-83a0-6c3168d99a65",
+    "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+    "b3be0425-1105-4bbb-944b-2576a02e8dd1"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S002",
+   "role": "knownsegment",
+   "audioId": "cd4ee08a-4d82-4f9c-bc83-a70e85241c43",
+   "before": "8f391648-7702-436f-83a0-6c3168d99a65",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "a4918ee7-a08e-43cd-a3ec-fff51ee0d655",
+    "8f391648-7702-436f-83a0-6c3168d99a65",
+    "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+    "b3be0425-1105-4bbb-944b-2576a02e8dd1"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S002",
+   "role": "knownsegment",
+   "audioId": "9a965920-b4e1-4e09-a7e4-73904f4c4805",
+   "before": "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "a4918ee7-a08e-43cd-a3ec-fff51ee0d655",
+    "cd4ee08a-4d82-4f9c-bc83-a70e85241c43",
+    "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+    "b3be0425-1105-4bbb-944b-2576a02e8dd1"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S002",
+   "role": "knownsegment",
+   "audioId": "122b25c4-4115-46be-93a1-4e6c9c19b0a9",
+   "before": "b3be0425-1105-4bbb-944b-2576a02e8dd1",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "a4918ee7-a08e-43cd-a3ec-fff51ee0d655",
+    "cd4ee08a-4d82-4f9c-bc83-a70e85241c43",
+    "9a965920-b4e1-4e09-a7e4-73904f4c4805",
+    "b3be0425-1105-4bbb-944b-2576a02e8dd1"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S003",
+   "role": "known",
+   "audioId": "692d3f0c-c542-4006-95dd-bd69cecb0077",
+   "before": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S004",
+   "role": "known",
+   "audioId": "82b4eca9-ecd6-4a1f-b441-05afafe5e3ac",
+   "before": "a678033f-b939-4257-b9c2-977d1d0fea39",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "known",
+   "audioId": "3ec05b6e-f2d8-48de-b8ec-55f36a619bdc",
+   "before": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "knownsegment",
+   "audioId": "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+   "before": "520487f2-5810-4394-b3bb-b823e9fdf377",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "520487f2-5810-4394-b3bb-b823e9fdf377",
+    "8dc50562-f39e-47d6-9fc5-a65d00f997b3",
+    "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+    "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+    "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "knownsegment",
+   "audioId": "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98",
+   "before": "8dc50562-f39e-47d6-9fc5-a65d00f997b3",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+    "8dc50562-f39e-47d6-9fc5-a65d00f997b3",
+    "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+    "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+    "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "knownsegment",
+   "audioId": "640faf48-1280-4d4d-b310-c5cdc1e2f955",
+   "before": "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+    "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98",
+    "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+    "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+    "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "knownsegment",
+   "audioId": "f01911a9-4378-4d4f-9436-bb391726fb67",
+   "before": "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+    "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98",
+    "640faf48-1280-4d4d-b310-c5cdc1e2f955",
+    "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+    "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S010",
+   "role": "knownsegment",
+   "audioId": "e42dfe14-092f-40fc-b318-bd933d3bde03",
+   "before": "19f8efbd-f1ce-42e1-8084-6dd95e39c134",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+    "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98",
+    "640faf48-1280-4d4d-b310-c5cdc1e2f955",
+    "f01911a9-4378-4d4f-9436-bb391726fb67",
+    "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S012",
+   "role": "known",
+   "audioId": "54d4992d-809a-463c-bc9b-c15d0b9c3940",
+   "before": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S012",
+   "role": "knownsegment",
+   "audioId": "07b450df-b352-4cf1-af22-5672907653e6",
+   "before": "0c9d0110-519e-4f32-9621-d956960aa8f0",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "0c9d0110-519e-4f32-9621-d956960aa8f0",
+    "ff807b6b-e147-4389-a420-599513572d6f"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC06-S012",
+   "role": "knownsegment",
+   "audioId": "9e282d42-f117-4817-8c5e-8bc3b6b0d181",
+   "before": "ff807b6b-e147-4389-a420-599513572d6f",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "07b450df-b352-4cf1-af22-5672907653e6",
+    "ff807b6b-e147-4389-a420-599513572d6f"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC07-S001",
+   "role": "knownsegment",
+   "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+   "before": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": false
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC07-S001",
+   "role": "knownsegment",
+   "audioId": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
+   "before": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": false
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC08-S004",
+   "role": "known",
+   "audioId": "7ef985cb-d375-49a6-9b4d-484a12e4377f",
+   "before": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC08-S009",
+   "role": "known",
+   "audioId": "400e4282-509d-438b-8db4-6c8da195799c",
+   "before": "0298de73-0bbb-49a6-b532-38489afe3438",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S002",
+   "role": "known",
+   "audioId": "3ba24b49-4ceb-439a-8a5e-2e4da0acf876",
+   "before": "eec8bbd7-2638-41cc-8c76-d37572738784",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S002",
+   "role": "knownsegment",
+   "audioId": "e2df07fc-3d50-43f9-9119-bdf7664c93b9",
+   "before": "e0974e63-6861-47e0-8e7d-8a73c93bc2f2",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "e0974e63-6861-47e0-8e7d-8a73c93bc2f2",
+    "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb",
+    "09658082-3c97-465b-8ecb-5eb155ace955"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S002",
+   "role": "knownsegment",
+   "audioId": "224df189-a41a-4f6a-afa5-763e216b611c",
+   "before": "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "e2df07fc-3d50-43f9-9119-bdf7664c93b9",
+    "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb",
+    "09658082-3c97-465b-8ecb-5eb155ace955"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S002",
+   "role": "knownsegment",
+   "audioId": "fa11fda4-6131-4795-9214-bc43e52c4bfc",
+   "before": "09658082-3c97-465b-8ecb-5eb155ace955",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "e2df07fc-3d50-43f9-9119-bdf7664c93b9",
+    "224df189-a41a-4f6a-afa5-763e216b611c",
+    "09658082-3c97-465b-8ecb-5eb155ace955"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S008",
+   "role": "known",
+   "audioId": "9041d989-5526-4881-9fe1-7d6037e2d7f8",
+   "before": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S008",
+   "role": "knownsegment",
+   "audioId": "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6",
+   "before": "e82bde17-9d59-42a8-ac6b-ce53d6522de6",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "e82bde17-9d59-42a8-ac6b-ce53d6522de6",
+    "248cd7c7-ceed-4290-b86a-fe533eac2ec9"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S008",
+   "role": "knownsegment",
+   "audioId": "3d87e192-ff07-437f-8ef6-2afc1bae6c46",
+   "before": "248cd7c7-ceed-4290-b86a-fe533eac2ec9",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6",
+    "248cd7c7-ceed-4290-b86a-fe533eac2ec9"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S012",
+   "role": "known",
+   "audioId": "d4f2cf2e-e3db-4f4b-8844-3969dff7cf56",
+   "before": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S012",
+   "role": "knownsegment",
+   "audioId": "c176a01b-1a24-464c-b804-23ca783436b7",
+   "before": "ae1facac-31ef-4c31-8bf9-0a7198a9f26a",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "ae1facac-31ef-4c31-8bf9-0a7198a9f26a",
+    "7d3f5a13-74aa-403b-8c2a-3c330e7306c2"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC11-S012",
+   "role": "knownsegment",
+   "audioId": "23a15f0c-59f9-4f3e-95a1-750d8914e48b",
+   "before": "7d3f5a13-74aa-403b-8c2a-3c330e7306c2",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "c176a01b-1a24-464c-b804-23ca783436b7",
+    "7d3f5a13-74aa-403b-8c2a-3c330e7306c2"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC08-S006",
+   "role": "known",
+   "audioId": "fe1991c2-6034-45e0-91f9-017bf493815b",
+   "before": "21efa9f3-db8a-448c-af05-14d98ff8f10e",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC08-S006",
+   "role": "knownsegment",
+   "audioId": "1e55edcf-7a2f-416a-a022-937223a69936",
+   "before": "83a4587e-dc76-4c80-93c5-a5ab6a47196b",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "83a4587e-dc76-4c80-93c5-a5ab6a47196b",
+    "1fd07892-680d-43b2-8766-08ff83f578d6"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC08-S006",
+   "role": "knownsegment",
+   "audioId": "1ffd0c17-8398-435d-8d72-231a5a381437",
+   "before": "1fd07892-680d-43b2-8766-08ff83f578d6",
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "1e55edcf-7a2f-416a-a022-937223a69936",
+    "1fd07892-680d-43b2-8766-08ff83f578d6"
+   ]
+  }
+ ]
+}

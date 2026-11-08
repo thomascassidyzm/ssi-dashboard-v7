@@ -3,12 +3,166 @@
  "lines": [
   {
    "course": "cym_n_for_eng",
+   "line": "SC01-S002",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Good morning. How are you?",
+    "from": "7248628f-7f49-4546-9e9b-37b72dd53a1b",
+    "fromVoice": "gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Good morning.",
+     "from": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "How are you?",
+     "from": "f745cc1a-72af-4039-9867-10e1e9aca430",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC03-S002",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+    "from": "84fea07c-6eec-4170-a617-092ba66c90fd",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Good afternoon.",
+     "from": "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "I'd like a coffee, please.",
+     "from": "8f391648-7702-436f-83a0-6c3168d99a65",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 2,
+     "text": "With milk but with no sugar.",
+     "from": "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 3,
+     "text": "To take away.",
+     "from": "b3be0425-1105-4bbb-944b-2576a02e8dd1",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC03-S003",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Do you have any food?",
+    "from": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC03-S004",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Do you have any snacks?",
+    "from": "a678033f-b939-4257-b9c2-977d1d0fea39",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC06-S010",
+   "speaker": "Anna",
+   "whole": {
+    "text": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+    "from": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Yes, of course.",
+     "from": "520487f2-5810-4394-b3bb-b823e9fdf377",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "I'm a nurse.",
+     "from": "8dc50562-f39e-47d6-9fc5-a65d00f997b3",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 2,
+     "text": "I work at the hospital.",
+     "from": "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 3,
+     "text": "It's near here.",
+     "from": "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 4,
+     "text": "And what do you do?",
+     "from": "19f8efbd-f1ce-42e1-8084-6dd95e39c134",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC06-S012",
+   "speaker": "Anna",
+   "whole": {
+    "text": "How interesting. Well, lovely to meet you.",
+    "from": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "How interesting.",
+     "from": "0c9d0110-519e-4f32-9621-d956960aa8f0",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Well, lovely to meet you.",
+     "from": "ff807b6b-e147-4389-a420-599513572d6f",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
    "line": "SC07-S001",
    "speaker": "Cafe Barista",
    "whole": {
     "text": "Good morning. What can I get you?",
-    "from": "bbd6392f-7419-44c7-a755-0a04c80107fd",
-    "fromVoice": "xai_gfzdpspr5fdp"
+    "from": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca"
    },
    "splits": [
     {
@@ -27,13 +181,235 @@
    "drill": []
   },
   {
+   "course": "cym_n_for_eng",
+   "line": "SC08-S004",
+   "speaker": "Bar Customer 1",
+   "whole": {
+    "text": "I'd like a pint of the bitter, please.",
+    "from": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC08-S009",
+   "speaker": "Bar Customer 1",
+   "whole": {
+    "text": "Can I have a small glass of red wine?",
+    "from": "0298de73-0bbb-49a6-b532-38489afe3438",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC11-S002",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+    "from": "eec8bbd7-2638-41cc-8c76-d37572738784",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Welcome.",
+     "from": "e0974e63-6861-47e0-8e7d-8a73c93bc2f2",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Yes, you have a double room for three nights.",
+     "from": "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 2,
+     "text": "Could I see some ID, please?",
+     "from": "09658082-3c97-465b-8ecb-5eb155ace955",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    }
+   ],
+   "drill": [
+    {
+     "i": 0,
+     "text": "Welcome.",
+     "from": "9db46f9c-db5c-455d-a3d3-a4e63d2ed732.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Yes, you have a double room for three nights.",
+     "from": "07c158f2-1838-4ed4-b954-08b2f1f3fe60",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    },
+    {
+     "i": 2,
+     "text": "Could I see some ID, please?",
+     "from": "08eb24c4-de32-4b3f-97ca-86f148a28493",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    }
+   ]
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC11-S008",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.",
+    "from": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "From half-past seven until ten o'clock.",
+     "from": "e82bde17-9d59-42a8-ac6b-ce53d6522de6",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "We have fruit and cereals or a cooked breakfast.",
+     "from": "248cd7c7-ceed-4290-b86a-fe533eac2ec9",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC11-S012",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "It's on the welcome card in your room. Have a lovely stay.",
+    "from": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "It's on the welcome card in your room.",
+     "from": "ae1facac-31ef-4c31-8bf9-0a7198a9f26a",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Have a lovely stay.",
+     "from": "7d3f5a13-74aa-403b-8c2a-3c330e7306c2",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": [
+    {
+     "i": 0,
+     "text": "It's on the welcome card in your room.",
+     "from": "d492129c-ef67-4318-8691-1265491b6b00",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Have a lovely stay.",
+     "from": "2a75144b-24cd-4bd8-89cf-99f92a97acf5.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ]
+  },
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC08-S006",
+   "speaker": "Bar Customer 3",
+   "whole": {
+    "fromVoice": "xai_bedd6226",
+    "text": "Could I see the wine list? I want a glass of wine.",
+    "from": "21efa9f3-db8a-448c-af05-14d98ff8f10e"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Could I see the wine list?",
+     "from": "83a4587e-dc76-4c80-93c5-a5ab6a47196b",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "I want a glass of wine.",
+     "from": "1fd07892-680d-43b2-8766-08ff83f578d6",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC03-S002",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Good afternoon. … I'd like a coffee, please. … With milk but with no sugar. … To take away.",
+    "from": "84fea07c-6eec-4170-a617-092ba66c90fd",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC03-S003",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Do you have any food?",
+    "from": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC03-S004",
+   "speaker": "Sarah",
+   "whole": {
+    "text": "Do you have any snacks?",
+    "from": "a678033f-b939-4257-b9c2-977d1d0fea39",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC06-S010",
+   "speaker": "Anna",
+   "whole": {
+    "text": "Yes, of course. … I'm a nurse. … I work at the hospital. … It's near here. … And what do you do?",
+    "from": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC06-S012",
+   "speaker": "Anna",
+   "whole": {
+    "text": "How interesting. … Well, lovely to meet you.",
+    "from": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
    "course": "cym_s_for_eng",
    "line": "SC07-S001",
    "speaker": "Cafe Barista",
    "whole": {
     "text": "Good morning. … What can I get you?",
-    "from": "bbd6392f-7419-44c7-a755-0a04c80107fd",
-    "fromVoice": "xai_gfzdpspr5fdp"
+    "from": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca"
    },
    "splits": [],
    "drill": [
@@ -50,16 +426,286 @@
      "fromVoice": "gfzdpspr5fdp"
     }
    ]
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC08-S004",
+   "speaker": "Bar Customer 1",
+   "whole": {
+    "text": "I'd like a pint of the bitter, please.",
+    "from": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC08-S009",
+   "speaker": "Bar Customer 1",
+   "whole": {
+    "text": "Can I have a small glass of red wine?",
+    "from": "0298de73-0bbb-49a6-b532-38489afe3438",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC11-S002",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "Welcome. … Yes, you have a double room for three nights. … Could I see some ID, please?",
+    "from": "eec8bbd7-2638-41cc-8c76-d37572738784",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC11-S008",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "From half-past seven until ten o'clock. … We have fruit and cereals or a cooked breakfast.",
+    "from": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": [
+    {
+     "i": 0,
+     "text": "From half-past seven until ten o'clock.",
+     "from": "24d36a12-4f53-417d-aa80-28fe2d007b6f.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "We have fruit and cereals or a cooked breakfast.",
+     "from": "a839f718-9e24-46b8-8713-1f9d5982263c",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ]
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC11-S012",
+   "speaker": "Receptionist",
+   "whole": {
+    "text": "It's on the welcome card in your room. … Have a lovely stay.",
+    "from": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": [
+    {
+     "i": 0,
+     "text": "It's on the welcome card in your room.",
+     "from": "d492129c-ef67-4318-8691-1265491b6b00",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "Have a lovely stay.",
+     "from": "2a75144b-24cd-4bd8-89cf-99f92a97acf5.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ]
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC18-S007",
+   "speaker": "Learner",
+   "whole": {
+    "text": "Is that correct? Am I correct?",
+    "from": "4dc96ef1-c03b-40d2-9075-2cde997d2ced",
+    "fromVoice": "xai_bedd6226",
+    "followsPieces": true
+   },
+   "splits": [],
+   "drill": [
+    {
+     "i": 0,
+     "text": "Is that correct?",
+     "from": "6bceea38-9380-412a-8e83-0aa21a22431b",
+     "fromVoice": "human_aran_eng"
+    },
+    {
+     "i": 1,
+     "text": "Am I correct?",
+     "from": "79ef794a-e40f-4373-82f9-2f480a7964de",
+     "fromVoice": "human_aran_eng"
+    }
+   ]
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC21-S014",
+   "speaker": "Learner",
+   "whole": {
+    "text": "October. November. December.",
+    "from": "331c6e50-7c00-459c-8b72-7895425c38f3",
+    "fromVoice": "xai_bedd6226",
+    "followsPieces": true
+   },
+   "splits": [],
+   "drill": [
+    {
+     "i": 0,
+     "text": "October.",
+     "from": "aea2b9fe-2ef6-4eea-a48b-c2db86046bd8",
+     "fromVoice": "human_aran_eng"
+    },
+    {
+     "i": 1,
+     "text": "November.",
+     "from": "0f224441-bfb6-4e76-aad1-1e3dcd94b453",
+     "fromVoice": "human_aran_eng"
+    },
+    {
+     "i": 2,
+     "text": "December.",
+     "from": "468559ca-4512-4e74-8558-005aec82d007",
+     "fromVoice": "human_aran_eng"
+    }
+   ]
   }
  ],
  "links": {
   "cym_n_for_eng": [
    {
-    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
     "role": "known",
-    "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "audioId": "366021a0-6bab-429e-abb6-428b5553f5a1",
     "replace": true,
-    "expectCurrent": "bbd6392f-7419-44c7-a755-0a04c80107fd"
+    "expectCurrent": "7248628f-7f49-4546-9e9b-37b72dd53a1b"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
+    "role": "knownsegment",
+    "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+    "replace": true,
+    "expectCurrent": "8084f9b1-cba3-4b25-9b40-fa518bbb4301"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
+    "role": "knownsegment",
+    "audioId": "d307d948-709a-4325-9663-3684d1f218e7",
+    "replace": true,
+    "expectCurrent": "f745cc1a-72af-4039-9867-10e1e9aca430"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "known",
+    "audioId": "eb71f952-2d85-4881-9185-824bc1cd9ff7",
+    "replace": true,
+    "expectCurrent": "84fea07c-6eec-4170-a617-092ba66c90fd"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "a4918ee7-a08e-43cd-a3ec-fff51ee0d655",
+    "replace": true,
+    "expectCurrent": "4c2e16c3-42d4-4140-b936-12c0f8a0c815"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "cd4ee08a-4d82-4f9c-bc83-a70e85241c43",
+    "replace": true,
+    "expectCurrent": "8f391648-7702-436f-83a0-6c3168d99a65"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "9a965920-b4e1-4e09-a7e4-73904f4c4805",
+    "replace": true,
+    "expectCurrent": "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "122b25c4-4115-46be-93a1-4e6c9c19b0a9",
+    "replace": true,
+    "expectCurrent": "b3be0425-1105-4bbb-944b-2576a02e8dd1"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S003",
+    "role": "known",
+    "audioId": "692d3f0c-c542-4006-95dd-bd69cecb0077",
+    "replace": true,
+    "expectCurrent": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S004",
+    "role": "known",
+    "audioId": "82b4eca9-ecd6-4a1f-b441-05afafe5e3ac",
+    "replace": true,
+    "expectCurrent": "a678033f-b939-4257-b9c2-977d1d0fea39"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "known",
+    "audioId": "3ec05b6e-f2d8-48de-b8ec-55f36a619bdc",
+    "replace": true,
+    "expectCurrent": "82a10989-a8bb-4101-9ff9-6a90cd85cd50"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "d56baf27-8ef1-4f34-8761-1bad0462f67d",
+    "replace": true,
+    "expectCurrent": "520487f2-5810-4394-b3bb-b823e9fdf377"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98",
+    "replace": true,
+    "expectCurrent": "8dc50562-f39e-47d6-9fc5-a65d00f997b3"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "640faf48-1280-4d4d-b310-c5cdc1e2f955",
+    "replace": true,
+    "expectCurrent": "d6d379c4-bdf0-4b23-a239-5d532514a30b"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "f01911a9-4378-4d4f-9436-bb391726fb67",
+    "replace": true,
+    "expectCurrent": "3aef8d41-44b5-42f8-b51a-723013ec71dd"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "e42dfe14-092f-40fc-b318-bd933d3bde03",
+    "replace": true,
+    "expectCurrent": "19f8efbd-f1ce-42e1-8084-6dd95e39c134"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "known",
+    "audioId": "54d4992d-809a-463c-bc9b-c15d0b9c3940",
+    "replace": true,
+    "expectCurrent": "c50d1b90-159e-457d-aac6-1d4608b2d348"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "knownsegment",
+    "audioId": "07b450df-b352-4cf1-af22-5672907653e6",
+    "replace": true,
+    "expectCurrent": "0c9d0110-519e-4f32-9621-d956960aa8f0"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "knownsegment",
+    "audioId": "9e282d42-f117-4817-8c5e-8bc3b6b0d181",
+    "replace": true,
+    "expectCurrent": "ff807b6b-e147-4389-a420-599513572d6f"
    },
    {
     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
@@ -74,26 +720,334 @@
     "audioId": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
     "replace": true,
     "expectCurrent": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S004",
+    "role": "known",
+    "audioId": "7ef985cb-d375-49a6-9b4d-484a12e4377f",
+    "replace": true,
+    "expectCurrent": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S009",
+    "role": "known",
+    "audioId": "400e4282-509d-438b-8db4-6c8da195799c",
+    "replace": true,
+    "expectCurrent": "0298de73-0bbb-49a6-b532-38489afe3438"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "known",
+    "audioId": "3ba24b49-4ceb-439a-8a5e-2e4da0acf876",
+    "replace": true,
+    "expectCurrent": "eec8bbd7-2638-41cc-8c76-d37572738784"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "e2df07fc-3d50-43f9-9119-bdf7664c93b9",
+    "replace": true,
+    "expectCurrent": "e0974e63-6861-47e0-8e7d-8a73c93bc2f2"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "224df189-a41a-4f6a-afa5-763e216b611c",
+    "replace": true,
+    "expectCurrent": "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "fa11fda4-6131-4795-9214-bc43e52c4bfc",
+    "replace": true,
+    "expectCurrent": "09658082-3c97-465b-8ecb-5eb155ace955"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "known",
+    "audioId": "9041d989-5526-4881-9fe1-7d6037e2d7f8",
+    "replace": true,
+    "expectCurrent": "1b0c4024-4649-4703-ba9d-0fe304cc970f"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "knownsegment",
+    "audioId": "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6",
+    "replace": true,
+    "expectCurrent": "e82bde17-9d59-42a8-ac6b-ce53d6522de6"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "knownsegment",
+    "audioId": "3d87e192-ff07-437f-8ef6-2afc1bae6c46",
+    "replace": true,
+    "expectCurrent": "248cd7c7-ceed-4290-b86a-fe533eac2ec9"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "known",
+    "audioId": "d4f2cf2e-e3db-4f4b-8844-3969dff7cf56",
+    "replace": true,
+    "expectCurrent": "d77b43ba-8b58-4a76-b6ed-926141ab6caf"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "knownsegment",
+    "audioId": "c176a01b-1a24-464c-b804-23ca783436b7",
+    "replace": true,
+    "expectCurrent": "ae1facac-31ef-4c31-8bf9-0a7198a9f26a"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "knownsegment",
+    "audioId": "23a15f0c-59f9-4f3e-95a1-750d8914e48b",
+    "replace": true,
+    "expectCurrent": "7d3f5a13-74aa-403b-8c2a-3c330e7306c2"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "known",
+    "audioId": "fe1991c2-6034-45e0-91f9-017bf493815b",
+    "replace": true,
+    "expectCurrent": "21efa9f3-db8a-448c-af05-14d98ff8f10e"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "knownsegment",
+    "audioId": "1e55edcf-7a2f-416a-a022-937223a69936",
+    "replace": true,
+    "expectCurrent": "83a4587e-dc76-4c80-93c5-a5ab6a47196b"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "knownsegment",
+    "audioId": "1ffd0c17-8398-435d-8d72-231a5a381437",
+    "replace": true,
+    "expectCurrent": "1fd07892-680d-43b2-8766-08ff83f578d6"
    }
   ],
   "cym_s_for_eng": [
    {
-    "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S002",
     "role": "known",
-    "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "audioId": "eb71f952-2d85-4881-9185-824bc1cd9ff7",
     "replace": true,
-    "expectCurrent": "bbd6392f-7419-44c7-a755-0a04c80107fd"
+    "expectCurrent": "84fea07c-6eec-4170-a617-092ba66c90fd"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S003",
+    "role": "known",
+    "audioId": "692d3f0c-c542-4006-95dd-bd69cecb0077",
+    "replace": true,
+    "expectCurrent": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S004",
+    "role": "known",
+    "audioId": "82b4eca9-ecd6-4a1f-b441-05afafe5e3ac",
+    "replace": true,
+    "expectCurrent": "a678033f-b939-4257-b9c2-977d1d0fea39"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC06-S010",
+    "role": "known",
+    "audioId": "3ec05b6e-f2d8-48de-b8ec-55f36a619bdc",
+    "replace": true,
+    "expectCurrent": "82a10989-a8bb-4101-9ff9-6a90cd85cd50"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC06-S012",
+    "role": "known",
+    "audioId": "54d4992d-809a-463c-bc9b-c15d0b9c3940",
+    "replace": true,
+    "expectCurrent": "c50d1b90-159e-457d-aac6-1d4608b2d348"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC08-S004",
+    "role": "known",
+    "audioId": "7ef985cb-d375-49a6-9b4d-484a12e4377f",
+    "replace": true,
+    "expectCurrent": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC08-S009",
+    "role": "known",
+    "audioId": "400e4282-509d-438b-8db4-6c8da195799c",
+    "replace": true,
+    "expectCurrent": "0298de73-0bbb-49a6-b532-38489afe3438"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S002",
+    "role": "known",
+    "audioId": "3ba24b49-4ceb-439a-8a5e-2e4da0acf876",
+    "replace": true,
+    "expectCurrent": "eec8bbd7-2638-41cc-8c76-d37572738784"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S008",
+    "role": "known",
+    "audioId": "9041d989-5526-4881-9fe1-7d6037e2d7f8",
+    "replace": true,
+    "expectCurrent": "1b0c4024-4649-4703-ba9d-0fe304cc970f"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S012",
+    "role": "known",
+    "audioId": "d4f2cf2e-e3db-4f4b-8844-3969dff7cf56",
+    "replace": true,
+    "expectCurrent": "d77b43ba-8b58-4a76-b6ed-926141ab6caf"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC18-S007",
+    "role": "known",
+    "audioId": "6511b8e9-2ee6-4e47-a98e-72be12c9b7fe",
+    "replace": true,
+    "expectCurrent": "4dc96ef1-c03b-40d2-9075-2cde997d2ced"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC21-S014",
+    "role": "known",
+    "audioId": "47e23caa-3429-4191-a7d9-7fb383e8b6c7",
+    "replace": true,
+    "expectCurrent": "331c6e50-7c00-459c-8b72-7895425c38f3"
    }
   ]
  },
  "undo": {
   "cym_n_for_eng": [
    {
-    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
     "role": "known",
-    "audioId": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "audioId": "7248628f-7f49-4546-9e9b-37b72dd53a1b",
     "replace": true,
-    "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+    "expectCurrent": "366021a0-6bab-429e-abb6-428b5553f5a1"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
+    "role": "knownsegment",
+    "audioId": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+    "replace": true,
+    "expectCurrent": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC01-S002",
+    "role": "knownsegment",
+    "audioId": "f745cc1a-72af-4039-9867-10e1e9aca430",
+    "replace": true,
+    "expectCurrent": "d307d948-709a-4325-9663-3684d1f218e7"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "known",
+    "audioId": "84fea07c-6eec-4170-a617-092ba66c90fd",
+    "replace": true,
+    "expectCurrent": "eb71f952-2d85-4881-9185-824bc1cd9ff7"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+    "replace": true,
+    "expectCurrent": "a4918ee7-a08e-43cd-a3ec-fff51ee0d655"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "8f391648-7702-436f-83a0-6c3168d99a65",
+    "replace": true,
+    "expectCurrent": "cd4ee08a-4d82-4f9c-bc83-a70e85241c43"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "a4bdf80e-9a1a-413d-972f-b5639c4d2ac7",
+    "replace": true,
+    "expectCurrent": "9a965920-b4e1-4e09-a7e4-73904f4c4805"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S002",
+    "role": "knownsegment",
+    "audioId": "b3be0425-1105-4bbb-944b-2576a02e8dd1",
+    "replace": true,
+    "expectCurrent": "122b25c4-4115-46be-93a1-4e6c9c19b0a9"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S003",
+    "role": "known",
+    "audioId": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10",
+    "replace": true,
+    "expectCurrent": "692d3f0c-c542-4006-95dd-bd69cecb0077"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC03-S004",
+    "role": "known",
+    "audioId": "a678033f-b939-4257-b9c2-977d1d0fea39",
+    "replace": true,
+    "expectCurrent": "82b4eca9-ecd6-4a1f-b441-05afafe5e3ac"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "known",
+    "audioId": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+    "replace": true,
+    "expectCurrent": "3ec05b6e-f2d8-48de-b8ec-55f36a619bdc"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "520487f2-5810-4394-b3bb-b823e9fdf377",
+    "replace": true,
+    "expectCurrent": "d56baf27-8ef1-4f34-8761-1bad0462f67d"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "8dc50562-f39e-47d6-9fc5-a65d00f997b3",
+    "replace": true,
+    "expectCurrent": "bf7b85e3-8f2c-4329-97ed-4f00bb8b5b98"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "d6d379c4-bdf0-4b23-a239-5d532514a30b",
+    "replace": true,
+    "expectCurrent": "640faf48-1280-4d4d-b310-c5cdc1e2f955"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "3aef8d41-44b5-42f8-b51a-723013ec71dd",
+    "replace": true,
+    "expectCurrent": "f01911a9-4378-4d4f-9436-bb391726fb67"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S010",
+    "role": "knownsegment",
+    "audioId": "19f8efbd-f1ce-42e1-8084-6dd95e39c134",
+    "replace": true,
+    "expectCurrent": "e42dfe14-092f-40fc-b318-bd933d3bde03"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "known",
+    "audioId": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+    "replace": true,
+    "expectCurrent": "54d4992d-809a-463c-bc9b-c15d0b9c3940"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "knownsegment",
+    "audioId": "0c9d0110-519e-4f32-9621-d956960aa8f0",
+    "replace": true,
+    "expectCurrent": "07b450df-b352-4cf1-af22-5672907653e6"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC06-S012",
+    "role": "knownsegment",
+    "audioId": "ff807b6b-e147-4389-a420-599513572d6f",
+    "replace": true,
+    "expectCurrent": "9e282d42-f117-4817-8c5e-8bc3b6b0d181"
    },
    {
     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
@@ -108,15 +1062,197 @@
     "audioId": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
     "replace": true,
     "expectCurrent": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S004",
+    "role": "known",
+    "audioId": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+    "replace": true,
+    "expectCurrent": "7ef985cb-d375-49a6-9b4d-484a12e4377f"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S009",
+    "role": "known",
+    "audioId": "0298de73-0bbb-49a6-b532-38489afe3438",
+    "replace": true,
+    "expectCurrent": "400e4282-509d-438b-8db4-6c8da195799c"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "known",
+    "audioId": "eec8bbd7-2638-41cc-8c76-d37572738784",
+    "replace": true,
+    "expectCurrent": "3ba24b49-4ceb-439a-8a5e-2e4da0acf876"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "e0974e63-6861-47e0-8e7d-8a73c93bc2f2",
+    "replace": true,
+    "expectCurrent": "e2df07fc-3d50-43f9-9119-bdf7664c93b9"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "e4526ede-ca48-4ecc-a95a-1b3c6e9293fb",
+    "replace": true,
+    "expectCurrent": "224df189-a41a-4f6a-afa5-763e216b611c"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S002",
+    "role": "knownsegment",
+    "audioId": "09658082-3c97-465b-8ecb-5eb155ace955",
+    "replace": true,
+    "expectCurrent": "fa11fda4-6131-4795-9214-bc43e52c4bfc"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "known",
+    "audioId": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+    "replace": true,
+    "expectCurrent": "9041d989-5526-4881-9fe1-7d6037e2d7f8"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "knownsegment",
+    "audioId": "e82bde17-9d59-42a8-ac6b-ce53d6522de6",
+    "replace": true,
+    "expectCurrent": "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S008",
+    "role": "knownsegment",
+    "audioId": "248cd7c7-ceed-4290-b86a-fe533eac2ec9",
+    "replace": true,
+    "expectCurrent": "3d87e192-ff07-437f-8ef6-2afc1bae6c46"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "known",
+    "audioId": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+    "replace": true,
+    "expectCurrent": "d4f2cf2e-e3db-4f4b-8844-3969dff7cf56"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "knownsegment",
+    "audioId": "ae1facac-31ef-4c31-8bf9-0a7198a9f26a",
+    "replace": true,
+    "expectCurrent": "c176a01b-1a24-464c-b804-23ca783436b7"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC11-S012",
+    "role": "knownsegment",
+    "audioId": "7d3f5a13-74aa-403b-8c2a-3c330e7306c2",
+    "replace": true,
+    "expectCurrent": "23a15f0c-59f9-4f3e-95a1-750d8914e48b"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "known",
+    "audioId": "21efa9f3-db8a-448c-af05-14d98ff8f10e",
+    "replace": true,
+    "expectCurrent": "fe1991c2-6034-45e0-91f9-017bf493815b"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "knownsegment",
+    "audioId": "83a4587e-dc76-4c80-93c5-a5ab6a47196b",
+    "replace": true,
+    "expectCurrent": "1e55edcf-7a2f-416a-a022-937223a69936"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC08-S006",
+    "role": "knownsegment",
+    "audioId": "1fd07892-680d-43b2-8766-08ff83f578d6",
+    "replace": true,
+    "expectCurrent": "1ffd0c17-8398-435d-8d72-231a5a381437"
    }
   ],
   "cym_s_for_eng": [
    {
-    "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S002",
     "role": "known",
-    "audioId": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "audioId": "84fea07c-6eec-4170-a617-092ba66c90fd",
     "replace": true,
-    "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+    "expectCurrent": "eb71f952-2d85-4881-9185-824bc1cd9ff7"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S003",
+    "role": "known",
+    "audioId": "f825c5aa-14f3-48bb-9f29-b62ef95c1a10",
+    "replace": true,
+    "expectCurrent": "692d3f0c-c542-4006-95dd-bd69cecb0077"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC03-S004",
+    "role": "known",
+    "audioId": "a678033f-b939-4257-b9c2-977d1d0fea39",
+    "replace": true,
+    "expectCurrent": "82b4eca9-ecd6-4a1f-b441-05afafe5e3ac"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC06-S010",
+    "role": "known",
+    "audioId": "82a10989-a8bb-4101-9ff9-6a90cd85cd50",
+    "replace": true,
+    "expectCurrent": "3ec05b6e-f2d8-48de-b8ec-55f36a619bdc"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC06-S012",
+    "role": "known",
+    "audioId": "c50d1b90-159e-457d-aac6-1d4608b2d348",
+    "replace": true,
+    "expectCurrent": "54d4992d-809a-463c-bc9b-c15d0b9c3940"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC08-S004",
+    "role": "known",
+    "audioId": "7e3abf6c-9d60-4ee6-8f3e-51eb50e90be4",
+    "replace": true,
+    "expectCurrent": "7ef985cb-d375-49a6-9b4d-484a12e4377f"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC08-S009",
+    "role": "known",
+    "audioId": "0298de73-0bbb-49a6-b532-38489afe3438",
+    "replace": true,
+    "expectCurrent": "400e4282-509d-438b-8db4-6c8da195799c"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S002",
+    "role": "known",
+    "audioId": "eec8bbd7-2638-41cc-8c76-d37572738784",
+    "replace": true,
+    "expectCurrent": "3ba24b49-4ceb-439a-8a5e-2e4da0acf876"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S008",
+    "role": "known",
+    "audioId": "1b0c4024-4649-4703-ba9d-0fe304cc970f",
+    "replace": true,
+    "expectCurrent": "9041d989-5526-4881-9fe1-7d6037e2d7f8"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC11-S012",
+    "role": "known",
+    "audioId": "d77b43ba-8b58-4a76-b6ed-926141ab6caf",
+    "replace": true,
+    "expectCurrent": "d4f2cf2e-e3db-4f4b-8844-3969dff7cf56"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC18-S007",
+    "role": "known",
+    "audioId": "4dc96ef1-c03b-40d2-9075-2cde997d2ced",
+    "replace": true,
+    "expectCurrent": "6511b8e9-2ee6-4e47-a98e-72be12c9b7fe"
+   },
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC21-S014",
+    "role": "known",
+    "audioId": "331c6e50-7c00-459c-8b72-7895425c38f3",
+    "replace": true,
+    "expectCurrent": "47e23caa-3429-4191-a7d9-7fb383e8b6c7"
    }
   ]
  }

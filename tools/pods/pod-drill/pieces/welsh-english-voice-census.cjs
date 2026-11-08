@@ -47,7 +47,8 @@ function voiceTable(files, recast) {
 
 /** Pure: the census of one course from its pod-scripts answer, its served Drill file and a voice table. */
 function censusCourse(course, podScripts, drill, voices) {
-  const lines = podScripts.scenes.flatMap((s) => s.lines).filter((l) => !l.is_narrator);
+  // The Narrator is cast too (Aran, 'm'), and his lines carry Drill pieces: they are counted like every other line.
+  const lines = podScripts.scenes.flatMap((s) => s.lines);
   const out = { course, lines: lines.length, whole: { off: [], unknown: [] }, splits: { pieces: 0, off: [], unknown: [] }, drill: { lines: 0, pieces: 0, off: [], unknown: [], notWholeVoice: [] } };
   const byId = new Map(lines.map((l) => [l.id, l]));
   for (const l of lines) {
