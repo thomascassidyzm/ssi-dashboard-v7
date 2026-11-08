@@ -53,6 +53,7 @@
 const {
   isHumanVoiceCourse,
   isHumanVoiceSlotBlocked,
+  isWelshEnglishKnownSlot,
   isHumanVoiceLang,
 } = require('./human-voice-courses.cjs');
 const aranCloneStandIn = require('./aran-clone-standin.cjs');
@@ -282,8 +283,11 @@ function selectProvider(input = {}, opts = {}) {
   // not a replacement for it.
   // The slot-level form: the nv2/sv2 English known side spoken by Aran's own clone (Aran 2026-10-29, job #557,
   // services/shared/aran-clone-standin.cjs) is the one slot of a human-voice course that passes, and only in that voice.
+  // And since Tom 2026-11-08 (r-2026-11-08-welsh-courses-the-welsh-stays-human) the English known slot of every cym_*
+  // course, in any voice — except nv2/sv2, which keep Aran's one-voice stand-in rule. isHumanVoiceLang still refuses a
+  // Welsh language outright below, whatever the role says.
   const standIn = !!courseCode && isHumanVoiceCourse(courseCode) && !isHumanVoiceSlotBlocked({ courseCode, role: input.role, language })
-    && aranCloneStandIn.isStandInVoice(voiceId)
+    && (aranCloneStandIn.isCloneStandInCourse(courseCode) ? aranCloneStandIn.isStandInVoice(voiceId) : isWelshEnglishKnownSlot({ courseCode, role: input.role, language }))
   if ((isHumanVoiceCourse(courseCode) && !standIn) || isHumanVoiceLang(language)) {
     throw new ProviderPolicyError(
       `Human-voice content (403): ${courseCode || language} is human-recorded only — ` +

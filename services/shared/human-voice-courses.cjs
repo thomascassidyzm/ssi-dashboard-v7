@@ -55,6 +55,23 @@
  *
  * The same no-runtime-bypass rule applies: reinstating pdc as TTS-renderable is
  * a code change to this file with Tom's sign-off, nothing cheaper.
+ *
+ * OWNER RULING (Tom 2026-11-08, r-2026-11-08-welsh-courses-the-welsh-stays-human),
+ * which SCOPES the 2026-07-25 ruling above and is the sign-off for this edit:
+ * "Welsh courses: the Welsh stays human-recorded; the ENGLISH side of the Welsh
+ * pods may be TTS/clones, one consistent pair (Tom-006+Charlotte or Aran PRO+
+ * Catrin clone, his ear decides)." So on cym_* courses ONE slot opens to a
+ * single named render: role 'known' AND a stated/resolved language that is
+ * English — isWelshEnglishKnownSlot below. Keyed on the LANGUAGE as well as the
+ * role, so a mis-tagged role cannot carry Welsh through. Everything else stays
+ * shut exactly as before: every Welsh (target1/target2) and presentation slot,
+ * Breton and pdc whole, and every BULK queue — isHumanVoiceCourse,
+ * isHumanVoiceLang, renderableLangSql and assertNoHumanVoiceInQueue are
+ * unchanged, so phase8 /generate, the audio-pass runner and the rescue/regen
+ * sweeps still skip Welsh courses whole. The opening is for the one-clip render
+ * route (/api/audio/render) and the tts-service chokepoint, which already
+ * permitted a known-side English clip (2026-09-03). The nv2/sv2 stand-in rule
+ * (aran-clone-standin.cjs) keeps its own one-voice restriction on those courses.
  */
 
 const HUMAN_VOICE_COURSES = new Set([
@@ -98,7 +115,31 @@ function isHumanVoiceCourse(courseCode) {
  */
 function isHumanVoiceSlotBlocked({ courseCode, role, language } = {}) {
   if (!isHumanVoiceCourse(courseCode)) return false
+  if (isWelshEnglishKnownSlot({ courseCode, role, language })) return false
   return !require('./aran-clone-standin.cjs').isCloneStandInSlot({ courseCode, role, language })
+}
+
+/**
+ * THE WELSH COURSES' ENGLISH SIDE (Tom 2026-11-08, r-2026-11-08-welsh-courses-the-welsh-stays-human): a cym_*
+ * course, role 'known', and a language that is English ('eng'/'en', any region suffix). Silence is NOT English —
+ * the caller resolves the role's own side first; an unstated language here is refused. Breton and pdc never match.
+ *
+ * @param {{courseCode:string, role:string, language:string}} slot
+ * @returns {boolean} true if this slot may be synthesised under the 2026-11-08 ruling
+ */
+function isWelshEnglishKnownSlot({ courseCode, role, language } = {}) {
+  if (!/^cym_/.test(String(courseCode || ''))) return false
+  if (role !== 'known') return false
+  return ['eng', 'en'].includes(String(language || '').trim().toLowerCase().split(/[-_]/)[0])
+}
+
+/**
+ * Can ANY slot of this course be rendered one at a time? The render resolver asks this before it reads the course
+ * row, so a whole-course refusal stays immediate for Breton/pdc while cym_* reaches the slot check above.
+ */
+function hasRenderableSlot(courseCode) {
+  if (!isHumanVoiceCourse(courseCode)) return true
+  return /^cym_/.test(String(courseCode || '')) || require('./aran-clone-standin.cjs').isCloneStandInCourse(courseCode)
 }
 
 /**
@@ -163,6 +204,8 @@ module.exports = {
   HUMAN_VOICE_TARGET_LANGS,
   isHumanVoiceCourse,
   isHumanVoiceSlotBlocked,
+  isWelshEnglishKnownSlot,
+  hasRenderableSlot,
   isHumanVoiceLang,
   renderableLangSql,
   assertNoHumanVoiceInQueue,
