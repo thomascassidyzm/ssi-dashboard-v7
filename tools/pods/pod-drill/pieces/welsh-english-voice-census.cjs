@@ -23,7 +23,12 @@ const VOICE_GENDER = Object.freeze({
   gfzdpspr5fdp: 'm',
   bedd6226: 'f',
   '62ae83ad-4f6a-430b-af41-a9bede9286ca': 'f',
+  '71a7ad14-091c-4e8e-a314-022ece01c121': 'f', // Cartesia "Charlotte", the female English pod voice (r-2026-11-08, #905)
+  'd293d509-eb96-4df4-8cfd-80a693aa49a9': 'm', // Tom-006 (a Tom clone: never in a Welsh course, r-2026-10-13)
+  [String(require('../../../../services/shared/aran-clone-standin.cjs').STANDIN_VOICE).replace(/^cartesia_/, '')]: 'm', // Aran's PRO clone (#913)
 });
+// A Tom clone on any surface of Welsh Pod 1 English is counted on its own (r-2026-10-13: never in a Welsh course).
+const { isTomCloneVoice } = require('../../../../services/shared/welsh-no-tom-clone.cjs');
 const canonVoice = (v) => String(v || '').replace(/^(xai|cartesia|azure)_/, '');
 const genderOf = (v) => VOICE_GENDER[canonVoice(v)] || null;
 const bareId = (id) => String(id || '').replace(/\.v\d+$/, '');
@@ -75,10 +80,16 @@ function censusCourse(course, podScripts, drill, voices) {
     });
   }
   const tally = (rows) => ({ manOnWoman: rows.filter((r) => r.gender === 'f').length, womanOnMan: rows.filter((r) => r.gender === 'm').length });
+  out.tomClone = [
+    ...lines.filter((l) => isTomCloneVoice(l.audio && l.audio.known && l.audio.known.voice_id)).map((l) => ({ surface: 'whole', line: l.id.split(':').pop(), speaker: l.speaker, voice: l.audio.known.voice_id })),
+    ...lines.flatMap((l) => ((l.audio && l.audio.known_splits) || []).map((s, i) => ({ surface: 'splits', line: l.id.split(':').pop(), speaker: l.speaker, i, id: s.id, voice: s.voice_id, piece: s.text })).filter((r) => isTomCloneVoice(r.voice))),
+    ...Object.entries(drill.turns || {}).flatMap(([turn, ps]) => ps.map((p, i) => ({ surface: 'drill', line: turn.split(':').pop(), i, id: p[3], voice: voices.get(bareId(p[3])) || null, piece: p[1] })).filter((r) => isTomCloneVoice(r.voice))),
+  ];
   out.summary = {
     whole: { ...tally(out.whole.off), unknown: out.whole.unknown.length },
     splits: { pieces: out.splits.pieces, ...tally(out.splits.off), unknown: out.splits.unknown.length },
     drill: { lines: out.drill.lines, pieces: out.drill.pieces, ...tally(out.drill.off), unknown: out.drill.unknown.length, notWholeVoice: out.drill.notWholeVoice.length },
+    tomClone: out.tomClone.length,
   };
   return out;
 }
