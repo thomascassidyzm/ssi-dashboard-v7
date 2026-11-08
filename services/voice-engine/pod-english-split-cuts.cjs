@@ -24,6 +24,11 @@
  * "Goodbye." for "See you later.", found by cold check #568) is re-cut from the line's own whole clip, whoever voices it,
  * and only that clip moves. Same refusal rules.
  *
+ * ONE CUT, EVERY COURSE (job #879, below): a set of pieces is keyed by (take, words) and linked into every course's row
+ * that plays that take — planSharedPieceLinks. South Pod 1 had none on 2026-11-08 for two reasons: only North was ever
+ * planned (POD_ENGLISH_REPLACE_PODS) with pieces linked only into the row that was cut, and South's rows carry no
+ * sentence arrays at all (its Welsh was never split), so there was no array to put a piece in.
+ *
  * Pure: no I/O. The cutting, storing and linking are recordist-queue cutPodEnglishSplitsNow with
  * pod-english-split-audio.cjs.
  */
@@ -172,4 +177,78 @@ function planWrongWordRepairs({ podIds = [], sentences = [], clipById = new Map(
   return { repairs }
 }
 
-module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }
+/**
+ * ONE CUT PER (ENGLISH WORDS, TAKE), SHARED BY EVERY COURSE THAT PLAYS THAT TAKE (Tom's design, agreed 2026-11-08, job #879).
+ *
+ * North and South Welsh Pod 1 carry the same 231 English lines, and where both whole-line English slots hold the SAME
+ * clip (Aran's one take) their sentence pieces are the same recording too. Before this, the cut was planned only over
+ * POD_ENGLISH_REPLACE_PODS (North) and its pieces were linked only into the row that was cut, so South never got any:
+ * a second course meant a second cut of the same take, or none. Now a set of pieces is keyed by the take and the words,
+ * and any pod row, in any course, whose whole English slot holds that take is linked to the SAME piece clips — no new
+ * cutting, no second copy.
+ *
+ * pieceSetKey: the take's clip id + its object (a re-uploaded take is a new recording) + the line's words.
+ */
+const pieceSetKey = (sourceClip, knownText) => `${sourceClip.id}|${sourceClip.s3_key || ''}|${wordsOnly(knownText)}`
+
+/**
+ * Piece sets that already exist: a row whose whole English is a HUMAN take and whose every sentence clip is human and
+ * of that take's voice has been cut already (a later job must not cut it again — it links to these).
+ * @returns {Map<string, {source, sentences: string[], pieceIds: string[], fromRow: string}>}
+ */
+function existingPieceSets({ sentences = [], clipById = new Map() } = {}) {
+  const sets = new Map()
+  for (const s of sentences) {
+    if (!playsInSentences(s)) continue
+    const take = clipById.get(s.known_audio_id)
+    if (!take || !isHumanClip(take)) continue
+    const texts = podSentencesOf(s.known_text)
+    if (texts.length !== s.sentence_known_audio_ids.length) continue
+    const pieces = s.sentence_known_audio_ids.map((id) => clipById.get(id))
+    if (pieces.some((p) => !p || !isHumanClip(p) || p.voice_id !== take.voice_id)) continue
+    const key = pieceSetKey(take, s.known_text)
+    if (!sets.has(key)) sets.set(key, { source: take, sentences: texts, pieceIds: pieces.map((p) => p.id), fromRow: s.id })
+  }
+  return sets
+}
+
+/**
+ * Which other rows get the same pieces. `rows` are pod rows (any course) whose known_audio_id is a source take of a set.
+ * A row is linked only where the learner hears it in sentences (playsInSentences — the arrays exist and pair), its words
+ * are the set's words, and the sentence clip at each position is synthetic (a human piece, anybody's, is never replaced);
+ * link-clip replaces by position, replace + expectCurrent. A row the learner hears WHOLE (no sentence arrays — South Pod 1
+ * on 2026-11-08: its Welsh was never split, so the player plays every South line whole) is reported, never filled: there
+ * is nothing to pair an English piece with, and link-clip refuses to fill an empty array (REPLACE_ONLY) by design.
+ * @returns {{links: {courseCode, podSentenceId, role, audioId, replace, expectCurrent}[], notes: object}}
+ */
+function planSharedPieceLinks({ sets = new Map(), rows = [], clipById = new Map(), excludeRows = new Set() } = {}) {
+  const links = []
+  const notes = { heardWhole: [], otherWords: [], countDiffers: [], done: [], humanKept: [] }
+  for (const r of rows) {
+    if (excludeRows.has(r.id)) continue
+    const take = clipById.get(r.known_audio_id)
+    if (!take) continue
+    const set = sets.get(pieceSetKey(take, r.known_text))
+    if (!set) {
+      if ([...sets.values()].some((x) => x.source.id === take.id)) notes.otherWords.push(r.id)
+      continue
+    }
+    if (set.fromRow === r.id) continue
+    if (!playsInSentences(r)) { notes.heardWhole.push(r.id); continue }
+    if (r.sentence_known_audio_ids.length !== set.pieceIds.length) { notes.countDiffers.push(r.id); continue }
+    let any = false
+    r.sentence_known_audio_ids.forEach((current, index) => {
+      const want = set.pieceIds[index]
+      if (current === want) return
+      const c = clipById.get(current)
+      if (c && isHumanClip(c)) { notes.humanKept.push(`${r.id}#${index}`); return }
+      any = true
+      links.push({ courseCode: courseOfPod(r.pod_id), podSentenceId: r.id, role: 'knownsegment', audioId: want, replace: true, expectCurrent: current })
+    })
+    if (!any) notes.done.push(r.id)
+  }
+  return { links, notes }
+}
+
+module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs,
+  pieceSetKey, existingPieceSets, planSharedPieceLinks }

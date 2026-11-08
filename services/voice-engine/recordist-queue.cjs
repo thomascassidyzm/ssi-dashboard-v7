@@ -3388,12 +3388,22 @@ async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = 
   const cutIds = new Set(cuts.map((c) => c.sentenceId))
   const { repairs } = podSplitCuts.planWrongWordRepairs({ podIds, sentences, clipById })
   const work = [...cuts, ...repairs.filter((r) => !cutIds.has(r.sentenceId))]
-  if (!work.length) return out
-  const io = audio || require('./pod-english-split-audio.cjs').createSplitCutAudio({ db })
+  // ONE CUT PER (WORDS, TAKE), EVERY COURSE THAT PLAYS THE TAKE (job #879; pod-english-split-cuts planSharedPieceLinks).
+  // Piece sets already cut stand; a set cut below joins them, so a take is never cut twice and never cut per course.
+  const sets = podSplitCuts.existingPieceSets({ sentences, clipById })
+  const io = work.length ? (audio || require('./pod-english-split-audio.cjs').createSplitCutAudio({ db })) : null
   const byCourse = new Map()
+  const addLink = (courseCode, l) => byCourse.set(courseCode, [...(byCourse.get(courseCode) || []), l])
   for (const w of work) {
     const memo = `${w.sentenceId}|${w.source.id}|${w.source.s3_key}`
     if (podSplitCutRefused.has(memo)) { out.leftSynthetic.push({ sentenceId: w.sentenceId, why: podSplitCutRefused.get(memo) }); continue }
+    const key = podSplitCuts.pieceSetKey(w.source, w.sentences.join(' '))
+    const had = isHumanClip(w.source) ? sets.get(key) : null
+    if (had && had.pieceIds.length === w.sentences.length) {
+      // Already cut for another row (another course's, usually): link those pieces, cut nothing.
+      for (const { index, current } of w.replace) addLink(w.courseCode, { podSentenceId: w.sentenceId, role: 'knownsegment', audioId: had.pieceIds[index], replace: true, expectCurrent: current })
+      continue
+    }
     try {
       const { splice, buffers } = await io.cut(await io.fetch(w.source), w.sentences.length)
       const verdict = podSplitCuts.judgeCut(w.sentences, splice)
@@ -3403,17 +3413,45 @@ async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = 
         logger.warn(`[Recordist] pod English split cut left synthetic ${w.sentenceId}: ${verdict.why}`)
         continue
       }
+      const row = sentences.find((s) => s.id === w.sentenceId)
+      const pieceIds = [...((row && row.sentence_known_audio_ids) || [])]
       for (const { index, current } of w.replace) {
         const stored = await io.store({ courseCode: w.courseCode, text: w.sentences[index], voiceId: w.source.voice_id, origin: w.source.origin,
           buffer: buffers[index], durationMs: Math.round(splice.pieces[index].dur * 1000), cutFrom: w.source.id })
-        byCourse.set(w.courseCode, [...(byCourse.get(w.courseCode) || []),
-          { podSentenceId: w.sentenceId, role: 'knownsegment', audioId: stored.audioId, replace: true, expectCurrent: current }])
+        pieceIds[index] = stored.audioId
+        addLink(w.courseCode, { podSentenceId: w.sentenceId, role: 'knownsegment', audioId: stored.audioId, replace: true, expectCurrent: current })
       }
+      // Only a whole set of this take's own voice is shared (a wrong-words repair of a synthetic line is not).
+      if (isHumanClip(w.source) && w.replace.length === w.sentences.length) sets.set(key, { source: w.source, sentences: w.sentences, pieceIds, fromRow: w.sentenceId })
     } catch (err) {
       logger.error(`[Recordist] pod English split cut failed for ${w.sentenceId} (nothing linked): ${err.message}`)
       out.refused.push({ sentenceId: w.sentenceId, code: 'CUT_FAILED', error: err.message })
     }
   }
+  // Every other pod row, in any course, whose whole English slot holds one of these takes gets the same pieces.
+  out.heardWhole = []
+  if (sets.size) {
+    const takeIds = [...new Set([...sets.values()].map((x) => x.source.id))]
+    const others = []
+    for (let i = 0; i < takeIds.length; i += 100) {
+      const { data, error } = await db.from('listening_pod_sentences')
+        .select('id, pod_id, speaker, known_text, known_audio_id, sentence_audio_ids, sentence_known_audio_ids')
+        .in('known_audio_id', takeIds.slice(i, i + 100))
+      if (error) throw new Error(`pod split share read failed: ${error.message}`)
+      others.push(...(data || []))
+    }
+    const otherClipIds = [...new Set(others.flatMap((r) => (Array.isArray(r.sentence_known_audio_ids) ? r.sentence_known_audio_ids : [])).filter((id) => id && !clipById.has(id)))]
+    for (let i = 0; i < otherClipIds.length; i += 100) {
+      const { data, error } = await db.from('course_audio').select('id, voice_id, origin, text, s3_key').in('id', otherClipIds.slice(i, i + 100))
+      if (error) throw new Error(`pod split share clip read failed: ${error.message}`)
+      for (const c of data || []) clipById.set(c.id, c)
+    }
+    const { links, notes } = podSplitCuts.planSharedPieceLinks({ sets, rows: others, clipById, excludeRows: new Set(work.map((w) => w.sentenceId)) })
+    for (const { courseCode, ...l } of links) addLink(courseCode, l)
+    out.heardWhole = notes.heardWhole
+    if (notes.heardWhole.length) logger.log(`[Recordist] pod English pieces not shared to ${notes.heardWhole.length} row(s) the learner hears whole (no sentence arrays): ${notes.heardWhole.slice(0, 10).join(', ')}${notes.heardWhole.length > 10 ? ' …' : ''}`)
+  }
+  if (!byCourse.size) return out
   const identity = serviceIdentity(`booth:${recordist.voiceId}:pod-english-split-cut`)
   for (const [courseCode, links] of byCourse) {
     const recordEdit = ({ scope, detail }) => recordContentEdit(db, {
