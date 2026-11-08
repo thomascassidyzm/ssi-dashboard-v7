@@ -3,6 +3,11 @@
 //   node tools/pods/pod-drill/pieces/record.cjs --dry course [course ...]    count only, spends nothing, writes nothing
 //   node tools/pods/pod-drill/pieces/record.cjs --dry --route course [...]   the same, asking the route itself (dryRun:true) per new clip
 //   node tools/pods/pod-drill/pieces/record.cjs course [course ...]          record; resumes from ops/pod-drill/recorded.json
+//   node tools/pods/pod-drill/pieces/record.cjs '--rerecord=<voice>|<text>' course   record that key again (repeatable)
+// Re-recording is SAVE-THEN-REPLACE: never hand-delete a ledger entry to force a fresh take (job #671 did, for
+// "I also need to get some sunscreen"). With --rerecord the old entry stays in the ledger, and the new take replaces
+// it only once the route has answered with a filed pod row; a refusal, a hang or a non-row answer leaves the old take
+// exactly where it was. The replaced entry is kept under `replaced` on the new one, so nothing is lost either way.
 // trial:true + podSide (target|known): the route renders a trial and files it at once as a pod-only course_audio row
 // (role pod_atom / pod_fine_known, services/shared/pod-audio.cjs), which the audio_autolink trigger never reaches and the
 // app plays. The ledger's audioId is that ROW; trialAudioId is the trial object behind it. Never a bare trial id, so
@@ -51,6 +56,7 @@ async function wants(course) {
 const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.text, voiceId: w.voice, purpose: PURPOSE, trial: true, podSide: w.side, job: JOB, ...(w.voice.startsWith('cartesia_') ? { speed: 1 } : {}), ...(dryRun ? { dryRun: true } : {}) });
 (async () => {
   const args = process.argv.slice(2), dry = args.includes('--dry'), route = args.includes('--route'), courses = args.filter((a) => !a.startsWith('--'));
+  const rerecord = new Set(args.filter((a) => a.startsWith('--rerecord=')).map((a) => a.slice('--rerecord='.length)));
   const store = fs.existsSync(STORE) ? JSON.parse(fs.readFileSync(STORE, 'utf8')) : { note: 'pod piece clips: audioId is the pod-only course_audio row (older entries: a trial_ id, mapped by ops/pod-audio-rows/trial-to-row.json)', clips: {}, uses: {} };
   let spent = Object.values(store.clips).reduce((n, c) => n + (c.charsSpent || 0), 0), would = 0, made = 0, hangs = 0, runSpent = 0, adopted = 0;
   for (const course of courses) {
@@ -59,13 +65,15 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
     let fresh = 0, shared = 0, chars = 0, other = 0;
     for (const w of ws) {
       const key = `${w.voice}|${w.text}`;
-      if (store.clips[key]) { shared++; continue; }
+      const prior = store.clips[key] && !store.clips[key].dry ? store.clips[key] : null;
+      if (store.clips[key] && !rerecord.has(key)) { shared++; continue; }
+      if (rerecord.has(key)) rerecord.delete(key); // once per run: the same key in a second course is then shared
       if (dry && route) { // the route's own dry answer: voice resolution and spend guard, nothing rendered or filed
         const r = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `job-${JOB.replace('#', '')}` }, body: JSON.stringify(bodyOf(w, true)), signal: AbortSignal.timeout(60000) });
         const j = await r.json().catch(() => ({ ok: false, error: `status ${r.status}` }));
         if (!j.ok) { console.log(`REFUSED (dry) ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
       }
-      if (dry) { store.clips[key] = { dry: true }; would += w.text.length; chars += w.text.length; if (!w.voice.startsWith('cartesia_')) other += w.text.length; fresh++; continue; }
+      if (dry) { if (!prior) store.clips[key] = { dry: true }; would += w.text.length; chars += w.text.length; if (!w.voice.startsWith('cartesia_')) other += w.text.length; fresh++; continue; }
       if (spent + w.text.length > MAX_CHARS) throw new Error(`MAX_CHARS ${MAX_CHARS} reached at ${spent}: stopping`);
       if (runSpent + w.text.length > RUN_MAX) throw new Error(`RUN_MAX_CHARS ${RUN_MAX} reached at ${runSpent} this run: stopping, ${course} ${w.turn} and later not recorded`);
       const body = bodyOf(w, false);
@@ -85,9 +93,10 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
       // clip: it goes in the ledger (the render that found it is billed and counted) and nothing is rendered again for it.
       // The route names the row in its error text: "... row for "<text>" in <voice> (<row id>, <s3 key>) — ...".
       const taken = !j.ok && j.code === 'IDENTITY_TAKEN' ? (j.existing && j.existing.audioId ? j.existing : (() => { const m = String(j.error).match(/\(([0-9a-f]{8}-[0-9a-f-]{27}), ([^)\s]+)\) — a different take/); return m ? { audioId: m[1], s3Key: m[2] } : null; })()) : null;
+      if (taken && prior && prior.audioId === taken.audioId) { console.log(`unchanged ${course} ${w.turn} ${w.side}: ${taken.audioId} is already the ledger's take`); fresh++; continue; }
       if (taken) {
         const billed = /rendered and stored as trial_/i.test(String(j.error)) ? w.text.length : 0;
-        store.clips[key] = { audioId: taken.audioId, s3Key: taken.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)' };
+        store.clips[key] = { audioId: taken.audioId, s3Key: taken.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)', ...(prior ? { replaced: prior } : {}) };
         spent += billed; runSpent += billed; adopted++; fresh++;
         fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
         console.log(`adopted ${course} ${w.turn} ${w.side}: ${taken.audioId}`);
@@ -95,12 +104,14 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
       }
       if (!j.ok) { fs.writeFileSync(STORE, JSON.stringify(store, null, 1)); console.log(`REFUSED ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
       if (!j.trialAudioId || String(j.audioId).startsWith('trial_')) { fs.writeFileSync(STORE, JSON.stringify(store, null, 1)); console.log(`NOT FILED AS A ROW ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
-      store.clips[key] = { audioId: j.audioId, trialAudioId: j.trialAudioId, podRole: j.podRole, s3Key: j.s3Key, playPath: j.playPath, charsSpent: j.charsSpent, source: j.source, voice: w.voice, course };
+      // The new take is filed: only now does it replace the old entry (save-then-replace), which it keeps as `replaced`.
+      store.clips[key] = { audioId: j.audioId, trialAudioId: j.trialAudioId, podRole: j.podRole, s3Key: j.s3Key, playPath: j.playPath, charsSpent: j.charsSpent, source: j.source, voice: w.voice, course, ...(prior ? { replaced: prior } : {}) };
       spent += j.charsSpent || 0; runSpent += j.charsSpent || 0; made++; fresh++;
       fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
     }
     if (!dry) fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
     console.log(`${dry ? 'dry ' : ''}${course}: ${ws.length} sides, ${fresh} new, ${shared} shared${dry ? `, ${chars} chars, ${other} not Cartesia` : ''}`);
   }
+  if (rerecord.size) console.log(`--rerecord keys not in any course's plan, left untouched: ${[...rerecord].join(' ; ')}`);
   console.log(dry ? `would spend ${would} chars` : `spent ${spent} chars in all, ${runSpent} this run, ${made} clips made, ${adopted} existing rows adopted`);
 })().catch((e) => { console.error(String(e)); process.exit(2); });

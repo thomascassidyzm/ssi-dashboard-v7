@@ -188,7 +188,14 @@ module.exports = function podSearchRouter ({ getDb, resolveUser, canAccessCourse
   async function getIndex (refresh = false) {
     const fresh = current && Date.now() - current.indexedAt < INDEX_TTL_MS
     if (fresh && !refresh) return current
-    if (!building) building = build().then((i) => { current = i; return i }).finally(() => { building = null })
+    if (!building) {
+      building = build().then((i) => { current = i; return i }).finally(() => { building = null })
+      // A background refresh nobody awaits (stale-while-revalidate below) must not become an unhandled
+      // rejection, which can take the whole Production API down. Log it; `current` is untouched, so the
+      // old index keeps serving and the next request past the TTL tries again. Callers that DO await
+      // `building` (first build, ?refresh=1) still receive the rejection and answer it themselves.
+      building.catch((e) => { logger.error?.(`[PodSearch] index refresh failed, still serving the ${current ? 'previous' : 'missing'} index: ${e && e.message ? e.message : e}`) })
+    }
     // Stale-while-revalidate: an old index answers at once while the new one builds.
     if (current && !refresh) return current
     return building
