@@ -13,7 +13,9 @@
  * WHAT IS NOT MOVED (each counted in the plan, never silently):
  *   - pod-only clips (pod_atom / pod_fine_known: Drill pieces CUT from a turn, job #338) — neither moved nor kept;
  *   - a member with word timings whose keeper has none (the player's per-sentence split would lose its timings);
- *   - retired pods (slug -retired-): their rows are rollback history.
+ *   - retired pods (slug pod-1-retired-<date> OR retired-<date>): their rows are rollback history. The filter was
+ *     '%-retired-%' until job #863, which missed the bare 'retired-2026-08-22' slugs: #813 (eng) and #863 (other
+ *     languages) moved 4,752 slots there onto the same-words same-voice keeper; each move is in the applied-*.json logs.
  * Nothing is deleted: the old takes stay in course_audio, unlinked.
  *
  * WRITES go through Popty only: POST /api/production/:course/link-clip, replace:true + expectCurrent = the take the slot
@@ -87,7 +89,7 @@ const POD_SQL = `SELECT s.id, s.pod_id, p.course_code,
     s.sentence_audio_ids::text[] AS sentence_audio_ids, s.sentence_known_audio_ids::text[] AS sentence_known_audio_ids,
     s.takeg_audio_ids::text[] AS takeg_audio_ids
   FROM listening_pod_sentences s JOIN listening_pods p ON p.id = s.pod_id
-  WHERE p.slug NOT LIKE '%-retired-%' AND ($1::text IS NULL OR p.course_code = $1)`;
+  WHERE p.slug NOT LIKE '%retired-%' AND ($1::text IS NULL OR p.course_code = $1)`;
 
 async function linkBatch(course, links, apply) {
   const res = await fetch(`${POPTY}/api/production/${course}/link-clip`, {
