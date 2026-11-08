@@ -1,0 +1,139 @@
+{
+ "note": "#913 1.0 vs 1.1 check (Tom: short/med/long, 2 each): one take per phrase via /api/audio/render trial paces [1,1.1], 155 ch. Rate = hand-counted syllables / speech span (silencedetect -40 dB, 0.05 s, edges only). Page https://watson-1.tail4968cb.ts.net/d/f53191d8",
+ "phrases": [
+  {
+   "len": "short",
+   "text": "Excuse me.",
+   "syl": 3,
+   "charsSpent": 10,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_8BAE1582-2994-4F63-BD1A-9097746408A1",
+     "speechS": 0.869,
+     "rate": 3.45
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_D6B960FC-AA71-402E-A2D3-B9F7786267FF_x110",
+     "speechS": 0.814,
+     "rate": 3.69
+    }
+   ],
+   "aran": null
+  },
+  {
+   "len": "short",
+   "text": "I'm James.",
+   "syl": 2,
+   "charsSpent": 10,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_DAD957A8-2C15-4ACC-A82D-3B17BB39ECBE",
+     "speechS": 1.135,
+     "rate": 1.76
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_F759ED72-E6DE-4AE2-9C48-DA03214E177C_x110",
+     "speechS": 1.055,
+     "rate": 1.9
+    }
+   ],
+   "aran": null
+  },
+  {
+   "len": "medium",
+   "text": "Did you have a long day?",
+   "syl": 6,
+   "charsSpent": 24,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_47C7AA87-B2D9-4636-884A-70EC10D4913A",
+     "speechS": 1.37,
+     "rate": 4.38
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_59F75655-2002-4C5B-89CB-8BF93070823B_x110",
+     "speechS": 1.255,
+     "rate": 4.78
+    }
+   ],
+   "aran": null
+  },
+  {
+   "len": "medium",
+   "text": "Here are the menus.",
+   "syl": 5,
+   "charsSpent": 19,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_6E769695-76AC-4066-BE5E-3AF0E698C2D2",
+     "speechS": 1.439,
+     "rate": 3.47
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_98472544-913E-4F7A-B8E2-A2DAE2C0A761_x110",
+     "speechS": 1.334,
+     "rate": 3.75
+    }
+   ],
+   "aran": null
+  },
+  {
+   "len": "long",
+   "text": "I'm from Manchester, but I live in London now.",
+   "syl": 12,
+   "charsSpent": 46,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_7ABE68A2-062E-447A-A899-81BB1406211C",
+     "speechS": 4.59,
+     "rate": 2.61
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_88DD9F4A-CAED-482C-9D38-B7134ED4A669_x110",
+     "speechS": 4.184,
+     "rate": 2.87
+    }
+   ],
+   "aran": {
+    "audioId": "c34294a7-8d14-4f6c-a9dd-af79f928311d",
+    "speechS": 2.314,
+    "rate": 5.19
+   }
+  },
+  {
+   "len": "long",
+   "text": "I'm on holiday here with my wife and children.",
+   "syl": 12,
+   "charsSpent": 46,
+   "takes": [
+    {
+     "pace": 1,
+     "audioId": "trial_E8A8794A-33EC-47C6-BD8F-05B1C9F121D3",
+     "speechS": 4.054,
+     "rate": 2.96
+    },
+    {
+     "pace": 1.1,
+     "audioId": "trial_AF4D7323-1D43-4903-9C1A-085970A59CAC_x110",
+     "speechS": 3.697,
+     "rate": 3.25
+    }
+   ],
+   "aran": {
+    "audioId": "2ad24970-79d9-4e3a-b19e-1c138a4383f5",
+    "speechS": 2.382,
+    "rate": 5.04
+   }
+  }
+ ]
+}
