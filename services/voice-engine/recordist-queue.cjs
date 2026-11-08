@@ -3363,7 +3363,63 @@ function cutPodEnglishSplits(args) {
   return run
 }
 
-async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = linkClips, audio = null }) {
+/**
+ * FILL a line's EMPTY English piece array from the reader's own take (job #883; pod-english-split-cuts planPieceFills).
+ * link-clip cannot fill an array (REPLACE_ONLY by design), so the write goes through the course-edit door's pod.pieces
+ * op — fill-only, one transaction per line, every check inside it (words, voice, pairing with the Welsh pieces). The cut
+ * is judged before anything is stored; a refused cut stores nothing and the line keeps playing its English whole.
+ * `edit` is injectable: ({courseCode, ops, eventId}) => runPlans result.
+ */
+async function fillPodEnglishPieces({ db, fills, io, recordist, logger = console, out, edit = null }) {
+  const courseEditOps = require('../shared/course-edit-ops.cjs')
+  const run = edit || (async ({ courseCode, ops, eventId }) => courseEditOps.runPlans({
+    connect: async () => {
+      const { Client } = require('pg')
+      const client = new Client({ connectionString: require('../shared/round-index-refresh.cjs').databaseUrl() })
+      await client.connect()
+      return client
+    },
+    courseCode, plans: courseEditOps.planOps(ops, courseCode), apply: true, eventId,
+  }))
+  const identity = serviceIdentity(`booth:${recordist.voiceId}:pod-english-piece-fill`)
+  out.filled = out.filled || []
+  for (const f of fills) {
+    const memo = `${f.sentenceId}|${f.source.id}|${f.source.s3_key}|fill`
+    if (podSplitCutRefused.has(memo)) { out.leftSynthetic.push({ sentenceId: f.sentenceId, why: podSplitCutRefused.get(memo) }); continue }
+    try {
+      const { splice, buffers } = await io.cut(await io.fetch(f.source), f.sentences.length)
+      const verdict = podSplitCuts.judgeCut(f.sentences, splice)
+      if (!verdict.ok) {
+        podSplitCutRefused.set(memo, verdict.why)
+        out.leftSynthetic.push({ sentenceId: f.sentenceId, why: verdict.why })
+        logger.warn(`[Recordist] pod English pieces not filled for ${f.sentenceId}: ${verdict.why}`)
+        continue
+      }
+      const ids = []
+      for (let i = 0; i < f.sentences.length; i++) {
+        const stored = await io.store({ courseCode: f.courseCode, text: f.sentences[i], voiceId: f.source.voice_id, origin: f.source.origin,
+          buffer: buffers[i], durationMs: Math.round(splice.pieces[i].dur * 1000), cutFrom: f.source.id })
+        ids.push(stored.audioId)
+      }
+      const ops = [{ op: 'pod.pieces', pod_sentence_id: f.sentenceId, known_ids: ids }]
+      const eventId = () => recordContentEdit(db, {
+        identity, courseCode: f.courseCode, operation: 'update',
+        scope: { pod_sentence_ids: [f.sentenceId], rows: 1 }, detail: { ops: ['pod.pieces'], known_ids: ids, cutFrom: f.source.id },
+        surface: 'recordist booth take -> course-edit pod.pieces (Pod 1 English pieces filled from his take, job #883)',
+      })
+      const r = await run({ courseCode: f.courseCode, ops, eventId })
+      // A committed edit reaches no phone until content_version moves (the edit-batch route does the same after an apply).
+      if (r.applied) await require('../shared/course-version.cjs').bumpCourseVersion(db, f.courseCode, 'patch').catch((e) => logger.warn(`[Recordist] content_version bump failed for ${f.courseCode}: ${e.message}`))
+      out.filled.push({ sentenceId: f.sentenceId, courseCode: f.courseCode, pieces: ids, undo: r.undo_ops })
+    } catch (err) {
+      // A refusal from the door (EditOpError: words, voice, pairing, drift) or a failed cut: nothing linked, the line stays whole.
+      logger.error(`[Recordist] pod English piece fill refused for ${f.sentenceId} (nothing linked): ${err.code || ''} ${err.message}`)
+      out.refused.push({ sentenceId: f.sentenceId, code: err.code || 'FILL_FAILED', error: err.message })
+    }
+  }
+}
+
+async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = linkClips, audio = null, edit = null }) {
   const out = { linked: [], refused: [], leftSynthetic: [] }
   const { voices } = await policyVoicesForLanguage(db, recordist.language)
   const podIds = podEnglish.podEnglishPodsFor(recordist, voices, podEnglish.POD_ENGLISH_REPLACE_PODS)
@@ -3388,8 +3444,11 @@ async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = 
   const cutIds = new Set(cuts.map((c) => c.sentenceId))
   const { repairs } = podSplitCuts.planWrongWordRepairs({ podIds, sentences, clipById })
   const work = [...cuts, ...repairs.filter((r) => !cutIds.has(r.sentenceId))]
-  if (!work.length) return out
+  // Lines whose Welsh is split but whose English has no pieces at all (job #883: South Pod 1 once its Welsh is split).
+  const { fills } = podSplitCuts.planPieceFills({ podIds, sentences, clipById, genderOf, recordist: { ...recordist, gender } })
+  if (!work.length && !fills.length) return out
   const io = audio || require('./pod-english-split-audio.cjs').createSplitCutAudio({ db })
+  if (fills.length) await fillPodEnglishPieces({ db, fills, io, recordist, logger, out, edit })
   const byCourse = new Map()
   for (const w of work) {
     const memo = `${w.sentenceId}|${w.source.id}|${w.source.s3_key}`
@@ -3431,6 +3490,10 @@ async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = 
   if (out.linked.length) {
     podEnglishInputCache.clear()
     logger.log(`[Recordist] pod English split cut ${recordist.voiceId}: ${out.linked.length} sentence clip(s) now cut from the line's own take (${[...new Set(out.linked.map((x) => x.sentenceId))].join(', ')})`)
+  }
+  if (out.filled && out.filled.length) {
+    podEnglishInputCache.clear()
+    logger.log(`[Recordist] pod English pieces filled from ${recordist.voiceId}'s takes: ${out.filled.map((x) => x.sentenceId).join(', ')}`)
   }
   return out
 }

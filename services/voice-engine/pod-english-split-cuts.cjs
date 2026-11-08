@@ -186,4 +186,38 @@ function planWrongWordRepairs({ podIds = [], sentences = [], clipById = new Map(
   return { repairs }
 }
 
-module.exports = { SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, hasKnownPieces, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }
+/**
+ * LINES WHOSE WELSH IS SPLIT BUT WHOSE ENGLISH HAS NO PIECES YET (job #883, 2026-11-08). planSplitCuts only ever replaces
+ * synthetic pieces inside an existing English array, so a course whose rows carry no arrays — South Welsh Pod 1, all 231
+ * lines — was never reached, whatever pod list the sweep was given. Once a line's Welsh pieces are created (the
+ * course-edit door's pod.pieces), the player pairs them with English pieces by index, so the English must be split
+ * too: this plans that cut from the reader's own take in the whole English slot, and recordist-queue writes it with
+ * pod.pieces known_ids — FILL-ONLY, so a line that already has English pieces is planSplitCuts' business, never this.
+ * Same reader, gender and refusal rules as planSplitCuts; the cut is judged by judgeCut like any other.
+ * @returns {{fills: object[], skipped: object}} fills: {sentenceId, courseCode, source, sentences}
+ */
+function planPieceFills({ podIds = [], sentences = [], clipById = new Map(), genderOf, recordist, genders = SPLIT_CUT_SPEAKER_GENDERS } = {}) {
+  const pods = new Set(podIds)
+  const mine = new Set((recordist && (recordist.spellings || [recordist.voiceId])) || [])
+  const gender = String((recordist && recordist.gender) || '').toLowerCase()
+  const fills = []
+  const skipped = { leftToOtherJob: 0, welshWhole: 0, hasEnglishPieces: 0, otherGender: 0, uncast: 0, noTake: 0, textCount: 0 }
+  for (const s of sentences) {
+    if (!pods.has(s.pod_id)) continue
+    if (POD_ENGLISH_REPLACE_LEFT_TO[s.id]) { skipped.leftToOtherJob++; continue }
+    const welsh = Array.isArray(s.sentence_audio_ids) ? s.sentence_audio_ids.filter(Boolean) : []
+    if (welsh.length < 2) { skipped.welshWhole++; continue }
+    if (Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.some(Boolean)) { skipped.hasEnglishPieces++; continue }
+    const g = genderOf(s)
+    if (!g) { skipped.uncast++; continue }
+    if (!gender || g !== gender || !genders.includes(g)) { skipped.otherGender++; continue }
+    const take = clipById.get(s.known_audio_id)
+    if (!take || !isHumanClip(take) || !mine.has(take.voice_id)) { skipped.noTake++; continue }
+    const texts = podSentencesOf(s.known_text)
+    if (texts.length !== welsh.length) { skipped.textCount++; continue }
+    fills.push({ sentenceId: s.id, courseCode: courseOfPod(s.pod_id), source: take, sentences: texts })
+  }
+  return { fills, skipped }
+}
+
+module.exports = { planPieceFills, SPLIT_CUT_GATES, SPLIT_CUT_SPEAKER_GENDERS, playsInSentences, hasKnownPieces, spokenSyllables, judgeCut, planSplitCuts, planWrongWordRepairs }

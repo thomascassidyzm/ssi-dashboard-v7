@@ -1,0 +1,4725 @@
+{
+ "course": "cym_s_for_eng",
+ "tool": "tools/pods/pod-drill/silence-lines.cjs (#71)",
+ "summary": {
+  "turns": 46,
+  "calibration": {
+   "strict": 28,
+   "agree": 27,
+   "placedKept": 2
+  },
+  "cut": 0,
+  "sentences": 0,
+  "tally": {
+   "known:no_take": 36,
+   "target:margin_below_floor": 3,
+   "target:placed_ambiguous": 1,
+   "target:syllable_share": 2,
+   "target:seam_not_silent": 2,
+   "target:placed_far": 1,
+   "target:too_few_gaps": 1
+  },
+  "englishLevels": {}
+ },
+ "turns": [
+  {
+   "id": "cym_s_for_eng:pod-1:SC01-S002",
+   "scene": 1,
+   "speaker": "Sarah",
+   "target": "Bore da. Sut wyt ti?",
+   "known": "Good morning. How are you?",
+   "targetAudioId": "182c2fc1-b04d-41ce-935e-d93070debbe6",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Bore da.",
+     "Sut wyt ti?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.495,
+     "interior_gaps_ms": [
+      454
+     ],
+     "cut_at_gaps_ms": [
+      454
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.333,
+      1.262
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.333
+      ],
+      [
+       1.233,
+       2.495
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      454
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -39.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -51.3,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.017
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1256
+     ],
+     [
+      1310,
+      2495
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 26
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC01-S003",
+   "scene": 1,
+   "speaker": "Neighbour",
+   "target": "Dw i'n dda iawn, diolch. Ti'n mynd i'r gwaith?",
+   "known": "I'm very well, thank you. Are you going to work?",
+   "targetAudioId": "46deff61-a45c-4be9-9bfb-fe40de4e25f8",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Dw i'n dda iawn, diolch.",
+     "Ti'n mynd i'r gwaith?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.881,
+     "interior_gaps_ms": [
+      255
+     ],
+     "cut_at_gaps_ms": [
+      255
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.575,
+      1.406
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.575
+      ],
+      [
+       1.475,
+       2.881
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      255
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -44.3,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -59.9,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.023
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1525
+     ],
+     [
+      1525,
+      2881
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 48
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC02-S002",
+   "scene": 2,
+   "speaker": "Passenger",
+   "target": "Nac ydy, mae hi'n rhydd. Croeso i chi eistedd.",
+   "known": "No, it's free. Please, go ahead.",
+   "targetAudioId": "57e338d8-a516-4156-a7a7-a004704f2daf",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Nac ydy, mae hi'n rhydd.",
+     "Croeso i chi eistedd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.289,
+     "interior_gaps_ms": [
+      150,
+      185
+     ],
+     "cut_at_gaps_ms": [
+      185
+     ],
+     "rejected_gaps_ms": [
+      150
+     ],
+     "margin": 1.23,
+     "piece_durs": [
+      1.922,
+      1.467
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.922
+      ],
+      [
+       1.822,
+       3.289
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      185
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "margin_below_floor"
+   },
+   "verdict": "whole",
+   "reason": "target:margin_below_floor"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC02-S005",
+   "scene": 2,
+   "speaker": "Passenger",
+   "target": "Dyw hi ddim yn bell iawn. Falle tair neu bedair milltir.",
+   "known": "It's not very far. Maybe three or four miles.",
+   "targetAudioId": "a6157bbf-39b8-4cbf-a4b8-e0577669d119",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Dyw hi ddim yn bell iawn.",
+     "Falle tair neu bedair milltir."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.778,
+     "interior_gaps_ms": [
+      279
+     ],
+     "cut_at_gaps_ms": [
+      279
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.615,
+      2.263
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.615
+      ],
+      [
+       1.515,
+       3.778
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      279
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -70.3,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -62,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.021
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1565
+     ],
+     [
+      1565,
+      3778
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 45
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC03-S001",
+   "scene": 3,
+   "speaker": "Barista",
+   "target": "Prynhawn da. Beth alla i gael i chi?",
+   "known": "Good afternoon. What can I get you?",
+   "targetAudioId": "cf81ad76-f7be-4636-a2df-724fa16cd5cb",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Prynhawn da.",
+     "Beth alla i gael i chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.545,
+     "interior_gaps_ms": [
+      275
+     ],
+     "cut_at_gaps_ms": [
+      275
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.177,
+      1.468
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.177
+      ],
+      [
+       1.077,
+       2.545
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      275
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -57.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -67.4,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.136
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1127
+     ],
+     [
+      1127,
+      2545
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 35
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC03-S002",
+   "scene": 3,
+   "speaker": "Sarah",
+   "target": "Prynhawn da. Licen i goffi,… os gwelwch yn dda. Gyda llaeth ond heb siwgr. I fynd.",
+   "known": "Good afternoon. … I'd like a coffee, please. … With milk but with no sugar. … To take away.",
+   "targetAudioId": "ba348535-2cd2-4975-8745-dacbd2c49209",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Prynhawn da.",
+     "Licen i goffi,… os gwelwch yn dda.",
+     "Gyda llaeth ond heb siwgr.",
+     "I fynd."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 6.462,
+     "interior_gaps_ms": [
+      430,
+      502,
+      153,
+      238
+     ],
+     "cut_at_gaps_ms": [
+      430,
+      153,
+      238
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.474,
+      3.122,
+      1.16,
+      1.007
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.474
+      ],
+      [
+       1.374,
+       4.496
+      ],
+      [
+       4.396,
+       5.555
+      ],
+      [
+       5.455,
+       6.462
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      430,
+      502,
+      153,
+      238
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -72.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -72.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -41.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -35.1,
+       "piece_peak_db": -2.8
+      },
+      {
+       "edge": "s2.tail",
+       "db": -48.9,
+       "piece_peak_db": -2.8
+      },
+      {
+       "edge": "s3.head",
+       "db": -44.1,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_ambiguous",
+    "strict": "unconfirmed"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_ambiguous"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC05-S001",
+   "scene": 5,
+   "speaker": "Neighbour",
+   "target": "Noswaith dda, Siân. Gest ti ddiwrnod hir?",
+   "known": "Good evening, Siân. Did you have a long day?",
+   "targetAudioId": "ea96d340-c3a6-445a-a6ed-e13a02ed9bad",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Noswaith dda, Siân.",
+     "Gest ti ddiwrnod hir?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.922,
+     "interior_gaps_ms": [
+      210
+     ],
+     "cut_at_gaps_ms": [
+      210
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.512,
+      1.51
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.512
+      ],
+      [
+       1.412,
+       2.922
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      210
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -57.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -43.3,
+       "piece_peak_db": -2.7
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.056
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1462
+     ],
+     [
+      1462,
+      2922
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 44
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC06-S001",
+   "scene": 6,
+   "speaker": "James",
+   "target": "Esgusodwch fi. Helo. Beth yw eich enw chi?",
+   "known": "Excuse me. Hello. What's your name?",
+   "targetAudioId": "bef8682a-d934-4a83-bfb5-674080f67e6e",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Esgusodwch fi.",
+     "Helo.",
+     "Beth yw eich enw chi?"
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 3.325,
+     "interior_gaps_ms": [
+      203,
+      368
+     ],
+     "cut_at_gaps_ms": [
+      203,
+      368
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.333,
+      0.785,
+      1.408
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.333
+      ],
+      [
+       1.233,
+       2.017
+      ],
+      [
+       1.917,
+       3.325
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      203,
+      368
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -50,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -64.7,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -64.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.044,
+     0.035
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1283
+     ],
+     [
+      1283,
+      1967
+     ],
+     [
+      1967,
+      3325
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 35
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC06-S003",
+   "scene": 6,
+   "speaker": "James",
+   "target": "James dw i. Neis cwrdd â chi.",
+   "known": "I'm James. Pleased to meet you.",
+   "targetAudioId": "495f173a-1a1e-479d-adca-33d521bd7b02",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "James dw i.",
+     "Neis cwrdd â chi."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.53,
+     "interior_gaps_ms": [
+      299
+     ],
+     "cut_at_gaps_ms": [
+      299
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.276,
+      1.354
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.276
+      ],
+      [
+       1.176,
+       2.53
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      299
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -69.5,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.017
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1226
+     ],
+     [
+      1226,
+      2530
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 31
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC06-S007",
+   "scene": 6,
+   "speaker": "James",
+   "target": "Mae hon yn ddinas hyfryd. Beth dych chi'n neud?",
+   "known": "This is a lovely city. What do you do?",
+   "targetAudioId": "f6e33911-57e2-4242-ab7f-3009d512e0b6",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Mae hon yn ddinas hyfryd.",
+     "Beth dych chi'n neud?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.31,
+     "interior_gaps_ms": [
+      461
+     ],
+     "cut_at_gaps_ms": [
+      461
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.006,
+      1.404
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.006
+      ],
+      [
+       1.906,
+       3.31
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      461
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -65.7,
+       "piece_peak_db": -2.1
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.031
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1925
+     ],
+     [
+      1987,
+      3310
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 38
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC06-S012",
+   "scene": 6,
+   "speaker": "Anna",
+   "target": "Am ddiddorol. Wel, neis cwrdd â chi.",
+   "known": "How interesting. … Well, lovely to meet you.",
+   "targetAudioId": "4a93c1d9-82cc-4aa3-be45-b1ae94284b47",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Am ddiddorol.",
+     "Wel, neis cwrdd â chi."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.004,
+     "interior_gaps_ms": [
+      448,
+      551
+     ],
+     "cut_at_gaps_ms": [
+      551
+     ],
+     "rejected_gaps_ms": [
+      448
+     ],
+     "margin": 1.23,
+     "piece_durs": [
+      2.382,
+      1.722
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.382
+      ],
+      [
+       2.282,
+       4.004
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      551
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "margin_below_floor"
+   },
+   "verdict": "whole",
+   "reason": "target:margin_below_floor"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC06-S013",
+   "scene": 6,
+   "speaker": "Narrator",
+   "target": "Un. Dau. Tri. Gwyn. Du.",
+   "known": "1. 2. 3. White. Black.",
+   "targetAudioId": "c0a8d011-e39f-45e5-b446-4430f64cb39c",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Un.",
+     "Dau.",
+     "Tri.",
+     "Gwyn.",
+     "Du."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 5.121,
+     "interior_gaps_ms": [
+      757,
+      572,
+      647,
+      580
+     ],
+     "cut_at_gaps_ms": [
+      757,
+      572,
+      647,
+      580
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.132,
+      1.125,
+      1.124,
+      1.096,
+      1.044
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.132
+      ],
+      [
+       1.032,
+       2.158
+      ],
+      [
+       2.058,
+       3.181
+      ],
+      [
+       3.081,
+       4.177
+      ],
+      [
+       4.077,
+       5.121
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      757,
+      572,
+      647,
+      580
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -63.5,
+       "piece_peak_db": -5.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -61.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -64.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -63.1,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -67.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s3.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s4.head",
+       "db": -45.4,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.074,
+     0.015,
+     0.024,
+     0.074
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      903
+     ],
+     [
+      1261,
+      2022
+     ],
+     [
+      2194,
+      3008
+     ],
+     [
+      3254,
+      4037
+     ],
+     [
+      4217,
+      5121
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 22
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC07-S001",
+   "scene": 7,
+   "speaker": "Cafe Barista",
+   "target": "Bore da. Beth alla i gael i chi?",
+   "known": "Good morning. … What can I get you?",
+   "targetAudioId": "4115e131-4b53-4b64-8043-e83d15962999",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Bore da.",
+     "Beth alla i gael i chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.295,
+     "interior_gaps_ms": [
+      663
+     ],
+     "cut_at_gaps_ms": [
+      663
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.318,
+      2.077
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.318
+      ],
+      [
+       1.218,
+       3.295
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      663
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -72.2,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.056
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1137
+     ],
+     [
+      1400,
+      3295
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 35
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC07-S005",
+   "scene": 7,
+   "speaker": "Cafe Barista",
+   "target": "Wrth gwrs. Ydych chi moyn eistedd i mewn… neu fynd â fe?",
+   "known": "Of course. … Would you like to sit-in or takeaway?",
+   "targetAudioId": "425665bc-b43b-41df-a0da-cef32fadf7c0",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "Ydych chi moyn eistedd i mewn… neu fynd â fe?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.536,
+     "interior_gaps_ms": [
+      653,
+      131
+     ],
+     "cut_at_gaps_ms": [
+      653
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.398,
+      3.238
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.398
+      ],
+      [
+       1.298,
+       4.536
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      653,
+      131
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -49.6,
+       "piece_peak_db": -4.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -49,
+       "piece_peak_db": -3.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.12
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1221
+     ],
+     [
+      1475,
+      4536
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 50
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC07-S008",
+   "scene": 7,
+   "speaker": "Cafe Barista",
+   "target": "Ar unwaith. Ydych chi moyn rhywbeth arall?",
+   "known": "Right away. … Would you like anything else?",
+   "targetAudioId": "80928e49-4025-4b31-89da-2ca5589ca65c",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Ar unwaith.",
+     "Ydych chi moyn rhywbeth arall?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.551,
+     "interior_gaps_ms": [
+      865
+     ],
+     "cut_at_gaps_ms": [
+      865
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.431,
+      2.22
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.431
+      ],
+      [
+       1.331,
+       3.551
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      865
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -74.7,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.head",
+       "db": -73.4,
+       "piece_peak_db": -2.7
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.08
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1149
+     ],
+     [
+      1614,
+      3551
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 43
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC07-S012",
+   "scene": 7,
+   "speaker": "Cafe Barista",
+   "target": "Wrth gwrs. Dyma'r peiriant.",
+   "known": "Of course. … There's the machine.",
+   "targetAudioId": "9bdb283c-7338-40a2-aeaf-f3de53bed7f1",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "Dyma'r peiriant."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.632,
+     "interior_gaps_ms": [
+      373
+     ],
+     "cut_at_gaps_ms": [
+      373
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.182,
+      1.55
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.182
+      ],
+      [
+       1.082,
+       2.632
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      373
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -71.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -69.5,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.085
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1132
+     ],
+     [
+      1132,
+      2632
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 33
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC07-S015",
+   "scene": 7,
+   "speaker": "Narrator",
+   "target": "Pump. Deg. Un deg pump. Coch. Gwyrdd.",
+   "known": "5. 10. 15. Red. Green.",
+   "targetAudioId": "10325b9d-6e54-4fe9-8761-6bc122a1c6c1",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Pump.",
+     "Deg.",
+     "Un deg pump.",
+     "Coch.",
+     "Gwyrdd."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 4.984,
+     "interior_gaps_ms": [
+      469,
+      509,
+      295,
+      439
+     ],
+     "cut_at_gaps_ms": [
+      469,
+      509,
+      295,
+      439
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.017,
+      1,
+      1.33,
+      0.948,
+      1.089
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.017
+      ],
+      [
+       0.917,
+       1.917
+      ],
+      [
+       1.817,
+       3.147
+      ],
+      [
+       3.047,
+       3.995
+      ],
+      [
+       3.895,
+       4.984
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      469,
+      509,
+      295,
+      439
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -74.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.tail",
+       "db": -71.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s2.head",
+       "db": -73.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -54.6,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -69.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.tail",
+       "db": -70.3,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s4.head",
+       "db": -70.3,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.081,
+     0.064,
+     0.112,
+     0.108
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      932
+     ],
+     [
+      1002,
+      1813
+     ],
+     [
+      1922,
+      3097
+     ],
+     [
+      3097,
+      3926
+     ],
+     [
+      3964,
+      4984
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 22
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC08-S001",
+   "scene": 8,
+   "speaker": "Bartender",
+   "target": "Noswaith dda. Beth alla i gael i chi?",
+   "known": "Good evening. What can I get you?",
+   "targetAudioId": "18831f26-9027-4216-9252-446aac7f40d4",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Noswaith dda.",
+     "Beth alla i gael i chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.683,
+     "interior_gaps_ms": [
+      305
+     ],
+     "cut_at_gaps_ms": [
+      305
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.205,
+      1.578
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.205
+      ],
+      [
+       1.105,
+       2.683
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      305
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -58.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -63.9,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.122
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1155
+     ],
+     [
+      1155,
+      2683
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 33
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC08-S006",
+   "scene": 8,
+   "speaker": "Bar Customer 3",
+   "target": "Alla i weld y rhestr win? Dw i moyn gwydraid o win.",
+   "known": "Could I see the wine list? … I want a glass of wine.",
+   "targetAudioId": "0e69be50-951c-4d93-8841-0f9a91dea9fe",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Alla i weld y rhestr win?",
+     "Dw i moyn gwydraid o win."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.997,
+     "interior_gaps_ms": [
+      934,
+      104
+     ],
+     "cut_at_gaps_ms": [
+      934
+     ],
+     "rejected_gaps_ms": [
+      104
+     ],
+     "margin": 9.02,
+     "piece_durs": [
+      2.479,
+      2.618
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.479
+      ],
+      [
+       2.379,
+       4.997
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      934
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.9
+      },
+      {
+       "edge": "s1.head",
+       "db": -72.2,
+       "piece_peak_db": -3.6
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.017
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2162
+     ],
+     [
+      2696,
+      4997
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 52
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC08-S015",
+   "scene": 8,
+   "speaker": "Bar Customer 2",
+   "target": "Oes brechdanau 'da chi? Licen i frechdan gaws,… os gwelwch yn dda.",
+   "known": "Do you have any sandwiches? … I'd like a cheese sandwich, please.",
+   "targetAudioId": "565e6182-df6d-469e-997c-34c819499ba8",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Oes brechdanau 'da chi?",
+     "Licen i frechdan gaws,… os gwelwch yn dda."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.367,
+     "interior_gaps_ms": [
+      669
+     ],
+     "cut_at_gaps_ms": [
+      669
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.268,
+      3.199
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.268
+      ],
+      [
+       2.168,
+       5.367
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      669
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -72.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -72.2,
+       "piece_peak_db": -2.1
+      }
+     ]
+    },
+    "method": "placed",
+    "share_deltas": [
+     0.048
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      2084
+     ],
+     [
+      2353,
+      5367
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 65
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC08-S016",
+   "scene": 8,
+   "speaker": "Narrator",
+   "target": "Pedwar. Chwech. Wyth. Glas. Melyn.",
+   "known": "4. 6. 8. Blue. Yellow.",
+   "targetAudioId": "b5a50d69-3955-494f-8943-b1aebfd0a42f",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Pedwar.",
+     "Chwech.",
+     "Wyth.",
+     "Glas.",
+     "Melyn."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 3.795,
+     "interior_gaps_ms": [
+      180,
+      235,
+      223,
+      133
+     ],
+     "cut_at_gaps_ms": [
+      180,
+      235,
+      223,
+      133
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      0.908,
+      0.858,
+      0.774,
+      0.77,
+      0.886
+     ],
+     "piece_spans": [
+      [
+       0,
+       0.908
+      ],
+      [
+       0.808,
+       1.666
+      ],
+      [
+       1.566,
+       2.34
+      ],
+      [
+       2.24,
+       3.01
+      ],
+      [
+       2.91,
+       3.795
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      180,
+      235,
+      223,
+      133
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -64.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -41.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -56.9,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s2.tail",
+       "db": -55.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s3.head",
+       "db": -56.3,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s3.tail",
+       "db": -63.9,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s4.head",
+       "db": -43.2,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.032,
+     0.007,
+     0.012,
+     0.032
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      858
+     ],
+     [
+      858,
+      1616
+     ],
+     [
+      1616,
+      2290
+     ],
+     [
+      2290,
+      2960
+     ],
+     [
+      2960,
+      3795
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 22
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC09-S001",
+   "scene": 9,
+   "speaker": "Diner 1",
+   "target": "Noswaith dda. Ma bwcin gyda ni i ddau,… o dan yr enw Davies.",
+   "known": "Good evening. … We have a booking for two, under the name Davies.",
+   "targetAudioId": "fe6a120b-904c-47a6-9b5e-709626adafa4",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Noswaith dda.",
+     "Ma bwcin gyda ni i ddau,… o dan yr enw Davies."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.894,
+     "interior_gaps_ms": [
+      438,
+      573,
+      286
+     ],
+     "cut_at_gaps_ms": [
+      438
+     ],
+     "rejected_gaps_ms": [
+      286
+     ],
+     "margin": 1.53,
+     "piece_durs": [
+      1.48,
+      4.514
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.48
+      ],
+      [
+       1.38,
+       5.894
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      438,
+      573
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -50.1,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -53.5,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.055
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1411
+     ],
+     [
+      1449,
+      5894
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 65
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC09-S005",
+   "scene": 9,
+   "speaker": "Diner 1",
+   "target": "Esgusodwch fi —… oes gyda chi rywbeth… heb glwten? Neu i lysieuwyr?",
+   "known": "Excuse me - do you have anything gluten-free? … Or for vegetarians?",
+   "targetAudioId": "6e347e1d-ac81-4144-b349-476b406c13ec",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Esgusodwch fi —… oes gyda chi rywbeth… heb glwten?",
+     "Neu i lysieuwyr?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.729,
+     "interior_gaps_ms": [
+      544,
+      101,
+      113,
+      443
+     ],
+     "cut_at_gaps_ms": [
+      443
+     ],
+     "rejected_gaps_ms": [
+      101
+     ],
+     "margin": 1.12,
+     "piece_durs": [
+      4.116,
+      1.713
+     ],
+     "piece_spans": [
+      [
+       0,
+       4.116
+      ],
+      [
+       4.016,
+       5.729
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      2
+     ],
+     "cue_gaps_ms": [
+      544,
+      113,
+      443
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "margin_below_floor"
+   },
+   "verdict": "whole",
+   "reason": "target:margin_below_floor"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC09-S014",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Dewis ardderchog. Do i ag e draw nawr.",
+   "known": "Excellent choice. I'll bring it right over.",
+   "targetAudioId": "4c27106d-e494-4548-bc46-1e4099105d95",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Dewis ardderchog.",
+     "Do i ag e draw nawr."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.162,
+     "interior_gaps_ms": [
+      246
+     ],
+     "cut_at_gaps_ms": [
+      246
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.46,
+      1.802
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.46
+      ],
+      [
+       1.36,
+       3.162
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      246
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -41.8,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -55.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.041
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1410
+     ],
+     [
+      1410,
+      3162
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 43
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC09-S015",
+   "scene": 9,
+   "speaker": "Waiter",
+   "target": "Ydy popeth yn iawn? Oes lle gyda chi i bwdin?",
+   "known": "Is everything alright? Do you have any room for dessert?",
+   "targetAudioId": "36679a4d-d21d-4354-9d1d-2fa93974b238",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Ydy popeth yn iawn?",
+     "Oes lle gyda chi i bwdin?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.139,
+     "interior_gaps_ms": [
+      229
+     ],
+     "cut_at_gaps_ms": [
+      229
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.426,
+      1.813
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.426
+      ],
+      [
+       1.326,
+       3.139
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      229
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -56.9,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.005
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1376
+     ],
+     [
+      1376,
+      3139
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 56
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC09-S018",
+   "scene": 9,
+   "speaker": "Narrator",
+   "target": "Saith. Naw. Un deg un. Oren. Porffor.",
+   "known": "7. 9. 11. Orange. Purple.",
+   "targetAudioId": "3487d30e-a43d-4304-9074-539911fa9655",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Saith.",
+     "Naw.",
+     "Un deg un.",
+     "Oren.",
+     "Porffor."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 4.661,
+     "interior_gaps_ms": [
+      277,
+      548,
+      330,
+      303
+     ],
+     "cut_at_gaps_ms": [
+      277,
+      548,
+      330,
+      303
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.095,
+      0.89,
+      1.188,
+      0.859,
+      1.029
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.095
+      ],
+      [
+       0.995,
+       1.885
+      ],
+      [
+       1.785,
+       2.974
+      ],
+      [
+       2.874,
+       3.733
+      ],
+      [
+       3.633,
+       4.661
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      277,
+      548,
+      330,
+      303
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -68,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.tail",
+       "db": -62,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s2.head",
+       "db": -54.9,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -58.5,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -66.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.tail",
+       "db": -68,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s4.head",
+       "db": -65.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.172,
+     0.179,
+     0.048,
+     0.036
+    ],
+    "ok": false,
+    "reason": "syllable_share"
+   },
+   "verdict": "whole",
+   "reason": "target:syllable_share"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC10-S007",
+   "scene": 10,
+   "speaker": "Customer",
+   "target": "Diolch,… dych chi wedi bod yn help mawr. Dw i'n ddiolchgar iawn.",
+   "known": "Thank you, you've been very helpful. … I'm very grateful.",
+   "targetAudioId": "907e6a7d-6473-456c-bdb6-3cf3bdf707cf",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Diolch,… dych chi wedi bod yn help mawr.",
+     "Dw i'n ddiolchgar iawn."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 5.348,
+     "interior_gaps_ms": [
+      418,
+      164,
+      691
+     ],
+     "cut_at_gaps_ms": [
+      691
+     ],
+     "rejected_gaps_ms": [
+      164
+     ],
+     "margin": 2.56,
+     "piece_durs": [
+      3.216,
+      2.232
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.216
+      ],
+      [
+       3.116,
+       5.348
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      1
+     ],
+     "cue_gaps_ms": [
+      418,
+      691
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -74.7,
+       "piece_peak_db": -3
+      },
+      {
+       "edge": "s1.head",
+       "db": -53.8,
+       "piece_peak_db": -2.8
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.037
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3021
+     ],
+     [
+      3311,
+      5348
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 57
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC11-S003",
+   "scene": 11,
+   "speaker": "Guest",
+   "target": "Wrth gwrs. Dyma fy mhasbort i.",
+   "known": "Of course. Here's my passport.",
+   "targetAudioId": "8a93825c-25d8-4302-8377-72817b04026e",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "Dyma fy mhasbort i."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.623,
+     "interior_gaps_ms": [
+      214
+     ],
+     "cut_at_gaps_ms": [
+      214
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.142,
+      1.581
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.142
+      ],
+      [
+       1.042,
+       2.623
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      214
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -28.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -40.2,
+       "piece_peak_db": -2.3
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s0.tail",
+       "db": -28.4,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "target:seam_not_silent"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC11-S008",
+   "scene": 11,
+   "speaker": "Receptionist",
+   "target": "O hanner awr wedi saith… tan ddeg o'r gloch. Ma 'da ni ffrwythau a grawnfwyd… neu frecwast… wedi'i goginio.",
+   "known": "From half-past seven until ten o'clock. … We have fruit and cereals or a cooked breakfast.",
+   "targetAudioId": "09af91af-4ee9-4196-9780-3dc51be7391a",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "O hanner awr wedi saith… tan ddeg o'r gloch.",
+     "Ma 'da ni ffrwythau a grawnfwyd… neu frecwast… wedi'i goginio."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 8.529,
+     "interior_gaps_ms": [
+      386,
+      609,
+      315,
+      100
+     ],
+     "cut_at_gaps_ms": [
+      609
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      3.653,
+      4.976
+     ],
+     "piece_spans": [
+      [
+       0,
+       3.653
+      ],
+      [
+       3.553,
+       8.529
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      1
+     ],
+     "cue_gaps_ms": [
+      386,
+      609,
+      315,
+      100
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -49.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -53,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.024
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      3499
+     ],
+     [
+      3707,
+      8529
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 90
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC11-S009",
+   "scene": 11,
+   "speaker": "Guest",
+   "target": "Gwych. Ydy hi'n bosib… i ni ga'l check-out hwyr?",
+   "known": "Wonderful. Is it possible for us to have a late check-out?",
+   "targetAudioId": "d9d16ab7-7454-42d6-a5c8-88af960a4e1f",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Gwych.",
+     "Ydy hi'n bosib… i ni ga'l check-out hwyr?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.155,
+     "interior_gaps_ms": [
+      220
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "placed_far",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:placed_far"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC11-S013",
+   "scene": 11,
+   "speaker": "Narrator",
+   "target": "Un deg chwech. Un deg saith. Un deg wyth. Dydd Llun. Dydd Mawrth.",
+   "known": "16. 17. 18. Monday. Tuesday.",
+   "targetAudioId": "a4762a63-6af9-4457-a4e7-fb3de8e1c04a",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Un deg chwech.",
+     "Un deg saith.",
+     "Un deg wyth.",
+     "Dydd Llun.",
+     "Dydd Mawrth."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 5.242,
+     "interior_gaps_ms": [
+      219,
+      310,
+      234,
+      275
+     ],
+     "cut_at_gaps_ms": [
+      219,
+      310,
+      234,
+      275
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.327,
+      1.101,
+      1.141,
+      0.914,
+      1.159
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.327
+      ],
+      [
+       1.227,
+       2.328
+      ],
+      [
+       2.228,
+       3.369
+      ],
+      [
+       3.269,
+       4.183
+      ],
+      [
+       4.083,
+       5.242
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      219,
+      310,
+      234,
+      275
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -50.9,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -42.6,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -49.1,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -63.9,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s3.tail",
+       "db": -62,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s4.head",
+       "db": -60.8,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.047,
+     0.009,
+     0.056,
+     0.077
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1277
+     ],
+     [
+      1277,
+      2278
+     ],
+     [
+      2278,
+      3319
+     ],
+     [
+      3319,
+      4133
+     ],
+     [
+      4133,
+      5242
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 28
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC12-S002",
+   "scene": 12,
+   "speaker": "Pharmacist",
+   "target": "Wrth gwrs. Beth yw eich symptomau chi?",
+   "known": "Of course. What are your symptoms?",
+   "targetAudioId": "fdad2e45-a8f5-4dd6-9a82-611a51099416",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Wrth gwrs.",
+     "Beth yw eich symptomau chi?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 2.787,
+     "interior_gaps_ms": [
+      131
+     ],
+     "cut_at_gaps_ms": [
+      131
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.11,
+      1.777
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.11
+      ],
+      [
+       1.01,
+       2.787
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      131
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -62.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -44.9,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.152
+    ],
+    "ok": false,
+    "reason": "syllable_share"
+   },
+   "verdict": "whole",
+   "reason": "target:syllable_share"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC12-S010",
+   "scene": 12,
+   "speaker": "Narrator",
+   "target": "Un deg naw. Dau ddeg. Dau ddeg un. Dydd Mercher. Dydd Iau.",
+   "known": "19. 20. 21. Wednesday. Thursday.",
+   "targetAudioId": "73763b59-0e56-474e-b723-03b6b616c55b",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Un deg naw.",
+     "Dau ddeg.",
+     "Dau ddeg un.",
+     "Dydd Mercher.",
+     "Dydd Iau."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 4.886,
+     "interior_gaps_ms": [
+      217,
+      249,
+      263,
+      272
+     ],
+     "cut_at_gaps_ms": [
+      217,
+      249,
+      263,
+      272
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.133,
+      0.953,
+      1.022,
+      1.105,
+      1.073
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.133
+      ],
+      [
+       1.033,
+       1.986
+      ],
+      [
+       1.886,
+       2.908
+      ],
+      [
+       2.808,
+       3.913
+      ],
+      [
+       3.813,
+       4.886
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      217,
+      249,
+      263,
+      272
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -57.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -57.4,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s2.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s3.head",
+       "db": -57.4,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s3.tail",
+       "db": -65.7,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s4.head",
+       "db": -61.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.02,
+     0.026,
+     0.034,
+     0.074
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1083
+     ],
+     [
+      1083,
+      1936
+     ],
+     [
+      1936,
+      2858
+     ],
+     [
+      2858,
+      3863
+     ],
+     [
+      3863,
+      4886
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 32
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC13-S010",
+   "scene": 13,
+   "speaker": "Tourist",
+   "target": "Diolch yn fawr iawn. Dych chi wedi bod yn help mawr.",
+   "known": "Thank you very much. … You've been very helpful.",
+   "targetAudioId": "41857f1e-b14d-4580-b16f-e70e862913ac",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Diolch yn fawr iawn.",
+     "Dych chi wedi bod yn help mawr."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 4.109,
+     "interior_gaps_ms": [
+      504,
+      150
+     ],
+     "cut_at_gaps_ms": [
+      504
+     ],
+     "rejected_gaps_ms": [
+      150
+     ],
+     "margin": 3.36,
+     "piece_durs": [
+      1.744,
+      2.465
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.744
+      ],
+      [
+       1.644,
+       4.109
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      504
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -76.3,
+       "piece_peak_db": -3.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -73.4,
+       "piece_peak_db": -2.7
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.067
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1642
+     ],
+     [
+      1746,
+      4109
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 48
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC13-S011",
+   "scene": 13,
+   "speaker": "Narrator",
+   "target": "Tri deg. Pedwar deg. Pum deg. Dydd Gwener. Dydd Sadwrn.",
+   "known": "30. 40. 50. Friday. Saturday.",
+   "targetAudioId": "7bd8fb19-90f0-471d-a50f-fd24ad312a14",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Tri deg.",
+     "Pedwar deg.",
+     "Pum deg.",
+     "Dydd Gwener.",
+     "Dydd Sadwrn."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 4.955,
+     "interior_gaps_ms": [
+      185,
+      211,
+      370,
+      203
+     ],
+     "cut_at_gaps_ms": [
+      185,
+      211,
+      370,
+      203
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.128,
+      0.979,
+      0.993,
+      1.04,
+      1.214
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.128
+      ],
+      [
+       1.028,
+       2.008
+      ],
+      [
+       1.908,
+       2.9
+      ],
+      [
+       2.8,
+       3.841
+      ],
+      [
+       3.741,
+       4.955
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      185,
+      211,
+      370,
+      203
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -61.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -44.3,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s1.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s2.head",
+       "db": -59.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -63.9,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -62.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.tail",
+       "db": -58.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s4.head",
+       "db": -53.9,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.093,
+     0.034,
+     0.031,
+     0.036
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1078
+     ],
+     [
+      1078,
+      1958
+     ],
+     [
+      1958,
+      2850
+     ],
+     [
+      2850,
+      3791
+     ],
+     [
+      3791,
+      4955
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 29
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC14-S002",
+   "scene": 14,
+   "speaker": "Driver",
+   "target": "Galla, wrth gwrs. Falle bydd hi'n cymryd… tipyn o amser,… ma 'na lot o draffig… ar hyn o bryd.",
+   "known": "Yes, of course. … It may take some time, there's a lot of traffic at the moment.",
+   "targetAudioId": "af4eaff0-ee76-4fc5-90f6-a2b7ca7a90da",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Galla, wrth gwrs.",
+     "Falle bydd hi'n cymryd… tipyn o amser,… ma 'na lot o draffig… ar hyn o bryd."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 7.058,
+     "interior_gaps_ms": [
+      653,
+      162,
+      105,
+      752
+     ],
+     "cut_at_gaps_ms": [
+      653
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.762,
+      5.396
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.762
+      ],
+      [
+       1.662,
+       7.058
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      653,
+      162,
+      105,
+      752
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -48.3,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -20.7,
+       "piece_peak_db": -2.3
+      }
+     ],
+     "loud_seams": [
+      {
+       "edge": "s1.head",
+       "db": -20.7,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "seam_not_silent"
+   },
+   "verdict": "whole",
+   "reason": "target:seam_not_silent"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC14-S009",
+   "scene": 14,
+   "speaker": "Driver",
+   "target": "Gallwch, wrth gwrs. Ma'r peiriant… jyst fan hyn.",
+   "known": "Yes, of course. … The machine is just here.",
+   "targetAudioId": "e73865f4-f3fe-4ffa-bf72-4fe061254ffb",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Gallwch, wrth gwrs.",
+     "Ma'r peiriant… jyst fan hyn."
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.697,
+     "interior_gaps_ms": [
+      162,
+      419
+     ],
+     "cut_at_gaps_ms": [
+      419
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.777,
+      2.02
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.777
+      ],
+      [
+       1.677,
+       3.697
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      1
+     ],
+     "cue_gaps_ms": [
+      162,
+      419
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -72.2,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -69.5,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "placed",
+    "placed_agrees": false,
+    "share_deltas": [
+     0.063
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1717
+     ],
+     [
+      1737,
+      3697
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 43
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC14-S010",
+   "scene": 14,
+   "speaker": "Narrator",
+   "target": "Cant. Dau gant. Mil. Dydd Sul. Deuddeg o'r gloch.",
+   "known": "100. 200. 1000. Sunday. 12 o'clock.",
+   "targetAudioId": "159b712c-f41d-4cb7-a74c-77eef643389a",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Cant.",
+     "Dau gant.",
+     "Mil.",
+     "Dydd Sul.",
+     "Deuddeg o'r gloch."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 4.614,
+     "interior_gaps_ms": [
+      210,
+      369,
+      147
+     ],
+     "cut_at_gaps_ms": [],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [],
+     "piece_spans": [],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "method": "strict",
+    "ok": false,
+    "reason": "too_few_gaps",
+    "strict": "too_few_gaps"
+   },
+   "verdict": "whole",
+   "reason": "target:too_few_gaps"
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC15-S011",
+   "scene": 15,
+   "speaker": "Narrator",
+   "target": "Can mil. Chwe deg. Saith deg. Un o'r gloch. Un ar ddeg o'r gloch.",
+   "known": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "targetAudioId": "84e4b28c-a88c-4d59-b6a6-2a00c411a19e",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Can mil.",
+     "Chwe deg.",
+     "Saith deg.",
+     "Un o'r gloch.",
+     "Un ar ddeg o'r gloch."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 6.12,
+     "interior_gaps_ms": [
+      449,
+      360,
+      414,
+      221
+     ],
+     "cut_at_gaps_ms": [
+      449,
+      360,
+      414,
+      221
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.251,
+      1.197,
+      1.259,
+      1.232,
+      1.581
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.251
+      ],
+      [
+       1.151,
+       2.348
+      ],
+      [
+       2.248,
+       3.507
+      ],
+      [
+       3.407,
+       4.639
+      ],
+      [
+       4.539,
+       6.12
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      449,
+      360,
+      414,
+      221
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -91,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s1.head",
+       "db": -91,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -71.2,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -91,
+       "piece_peak_db": -1.9
+      },
+      {
+       "edge": "s2.tail",
+       "db": -91,
+       "piece_peak_db": -1.9
+      },
+      {
+       "edge": "s3.head",
+       "db": -91,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s3.tail",
+       "db": -49.4,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s4.head",
+       "db": -84.3,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.066,
+     0.071,
+     0.093,
+     0.053
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1176
+     ],
+     [
+      1226,
+      2298
+     ],
+     [
+      2298,
+      3450
+     ],
+     [
+      3464,
+      4589
+     ],
+     [
+      4589,
+      6120
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 39
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC16-S011",
+   "scene": 16,
+   "speaker": "Narrator",
+   "target": "Miliwn. Wyth deg. Naw deg. Dau o'r gloch. Deg o'r gloch.",
+   "known": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+   "targetAudioId": "d5d350f7-7f9e-4f24-a3a1-32c56f27cd0e",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Miliwn.",
+     "Wyth deg.",
+     "Naw deg.",
+     "Dau o'r gloch.",
+     "Deg o'r gloch."
+    ],
+    "n": 5,
+    "measure": {
+     "whole_dur": 5.329,
+     "interior_gaps_ms": [
+      340,
+      258,
+      288,
+      257
+     ],
+     "cut_at_gaps_ms": [
+      340,
+      258,
+      288,
+      257
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.048,
+      1.125,
+      1.071,
+      1.124,
+      1.36
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.048
+      ],
+      [
+       0.948,
+       2.073
+      ],
+      [
+       1.973,
+       3.045
+      ],
+      [
+       2.945,
+       4.069
+      ],
+      [
+       3.969,
+       5.329
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 4,
+     "cues_found": 4,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cue_gaps_ms": [
+      340,
+      258,
+      288,
+      257
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -38.7,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -56.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -37.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -91,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -58.3,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -71.2,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s3.tail",
+       "db": -63.1,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s4.head",
+       "db": -76.3,
+       "piece_peak_db": -2.1
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.031,
+     0.038,
+     0.038,
+     0.032
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      998
+     ],
+     [
+      998,
+      2023
+     ],
+     [
+      2023,
+      2995
+     ],
+     [
+      2995,
+      4019
+     ],
+     [
+      4019,
+      5329
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 41
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC17-S011",
+   "scene": 17,
+   "speaker": "Narrator",
+   "target": "Tri o'r gloch. Naw o'r gloch. Ionawr. Chwefror.",
+   "known": "3 o'clock. 9 o'clock. January. February.",
+   "targetAudioId": "9c2cc63c-c969-49e2-893e-af50bf1e7f41",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Tri o'r gloch.",
+     "Naw o'r gloch.",
+     "Ionawr.",
+     "Chwefror."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 4.306,
+     "interior_gaps_ms": [
+      290,
+      290,
+      390
+     ],
+     "cut_at_gaps_ms": [
+      290,
+      290,
+      390
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.331,
+      1.188,
+      0.914,
+      1.174
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.331
+      ],
+      [
+       1.231,
+       2.418
+      ],
+      [
+       2.318,
+       3.232
+      ],
+      [
+       3.132,
+       4.306
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2
+     ],
+     "cue_gaps_ms": [
+      290,
+      290,
+      390
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -91,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -91,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.tail",
+       "db": -91,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s2.head",
+       "db": -52.5,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s2.tail",
+       "db": -74.7,
+       "piece_peak_db": -2.5
+      },
+      {
+       "edge": "s3.head",
+       "db": -49.2,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.041,
+     0.021,
+     0.078
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1281
+     ],
+     [
+      1281,
+      2368
+     ],
+     [
+      2368,
+      3182
+     ],
+     [
+      3182,
+      4306
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 40
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC18-S007",
+   "scene": 18,
+   "speaker": "Learner",
+   "target": "Ydy hynny'n gywir? Ydw i'n gywir?",
+   "known": "Is that correct? Am I correct?",
+   "targetAudioId": "6658c228-6341-46d3-928d-21fc71e68689",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Ydy hynny'n gywir?",
+     "Ydw i'n gywir?"
+    ],
+    "n": 2,
+    "measure": {
+     "whole_dur": 3.893,
+     "interior_gaps_ms": [
+      1214
+     ],
+     "cut_at_gaps_ms": [
+      1214
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      2.113,
+      1.88
+     ],
+     "piece_spans": [
+      [
+       0,
+       2.113
+      ],
+      [
+       2.013,
+       3.893
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 1,
+     "cues_found": 1,
+     "cut_at_ordinals": [
+      0
+     ],
+     "cue_gaps_ms": [
+      1214
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -76.3,
+       "piece_peak_db": -4.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -76.3,
+       "piece_peak_db": -4.1
+      }
+     ]
+    },
+    "method": "strict",
+    "placed_agrees": true,
+    "share_deltas": [
+     0.012
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1656
+     ],
+     [
+      2470,
+      3893
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 30
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC18-S011",
+   "scene": 18,
+   "speaker": "Narrator",
+   "target": "Pedwar o'r gloch. Wyth o'r gloch. Mawrth. Ebrill.",
+   "known": "4 o'clock. 8 o'clock. March. April.",
+   "targetAudioId": "07fdd592-2824-4fb0-b381-4edeacc34830",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Pedwar o'r gloch.",
+     "Wyth o'r gloch.",
+     "Mawrth.",
+     "Ebrill."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 4.191,
+     "interior_gaps_ms": [
+      246,
+      192,
+      291
+     ],
+     "cut_at_gaps_ms": [
+      246,
+      192,
+      291
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.425,
+      1.083,
+      0.885,
+      1.098
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.425
+      ],
+      [
+       1.325,
+       2.407
+      ],
+      [
+       2.307,
+       3.193
+      ],
+      [
+       3.093,
+       4.191
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2
+     ],
+     "cue_gaps_ms": [
+      246,
+      192,
+      291
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -65.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.head",
+       "db": -62.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -51.2,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -74.7,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -67.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -72.2,
+       "piece_peak_db": -2.2
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.038,
+     0.118,
+     0.061
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1375
+     ],
+     [
+      1375,
+      2357
+     ],
+     [
+      2357,
+      3143
+     ],
+     [
+      3143,
+      4191
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 35
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC19-S011",
+   "scene": 19,
+   "speaker": "Narrator",
+   "target": "Pump o'r gloch. Saith o'r gloch. Mai. Mehefin.",
+   "known": "5 o'clock. 7 o'clock. May. June.",
+   "targetAudioId": "ee341687-8faa-4f1c-9257-aa213dc30acb",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Pump o'r gloch.",
+     "Saith o'r gloch.",
+     "Mai.",
+     "Mehefin."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 3.992,
+     "interior_gaps_ms": [
+      156,
+      228,
+      269
+     ],
+     "cut_at_gaps_ms": [
+      156,
+      228,
+      269
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.27,
+      1.196,
+      0.731,
+      1.095
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.27
+      ],
+      [
+       1.17,
+       2.365
+      ],
+      [
+       2.265,
+       2.997
+      ],
+      [
+       2.897,
+       3.992
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2
+     ],
+     "cue_gaps_ms": [
+      156,
+      228,
+      269
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -50.7,
+       "piece_peak_db": -2.1
+      },
+      {
+       "edge": "s1.head",
+       "db": -41.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s1.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.head",
+       "db": -67.4,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s2.tail",
+       "db": -66.8,
+       "piece_peak_db": -2.3
+      },
+      {
+       "edge": "s3.head",
+       "db": -66.2,
+       "piece_peak_db": -2.1
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.042,
+     0.012,
+     0.027
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1220
+     ],
+     [
+      1220,
+      2315
+     ],
+     [
+      2315,
+      2947
+     ],
+     [
+      2947,
+      3992
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 32
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC20-S011",
+   "scene": 20,
+   "speaker": "Narrator",
+   "target": "Chwech o'r gloch. Gorffennaf. Awst. Medi.",
+   "known": "6 o'clock. July. August. September.",
+   "targetAudioId": "0b621abf-dead-49a7-a81a-294f4e216084",
+   "knownAudioId": null,
+   "targetVoice": "human_dan_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Chwech o'r gloch.",
+     "Gorffennaf.",
+     "Awst.",
+     "Medi."
+    ],
+    "n": 4,
+    "measure": {
+     "whole_dur": 3.861,
+     "interior_gaps_ms": [
+      138,
+      266,
+      190
+     ],
+     "cut_at_gaps_ms": [
+      138,
+      266,
+      190
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.361,
+      0.998,
+      0.867,
+      0.934
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.361
+      ],
+      [
+       1.261,
+       2.26
+      ],
+      [
+       2.16,
+       3.027
+      ],
+      [
+       2.927,
+       3.861
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 3,
+     "cues_found": 3,
+     "cut_at_ordinals": [
+      0,
+      1,
+      2
+     ],
+     "cue_gaps_ms": [
+      138,
+      266,
+      190
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -41.2,
+       "piece_peak_db": -2.4
+      },
+      {
+       "edge": "s1.head",
+       "db": -47.9,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -69.5,
+       "piece_peak_db": -2.6
+      },
+      {
+       "edge": "s2.tail",
+       "db": -73.4,
+       "piece_peak_db": -2.6
+      },
+      {
+       "edge": "s3.head",
+       "db": -60.5,
+       "piece_peak_db": -2.4
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.047,
+     0.073,
+     0.019
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1311
+     ],
+     [
+      1311,
+      2210
+     ],
+     [
+      2210,
+      2977
+     ],
+     [
+      2977,
+      3861
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 35
+  },
+  {
+   "id": "cym_s_for_eng:pod-1:SC21-S014",
+   "scene": 21,
+   "speaker": "Learner",
+   "target": "Hydref. Tachwedd. Rhagfyr.",
+   "known": "October. November. December.",
+   "targetAudioId": "244734e1-a7fe-4d23-90c5-ced424f5a8e9",
+   "knownAudioId": null,
+   "targetVoice": "human_eleri_cym_s",
+   "knownVoice": null,
+   "targetOrigin": "human",
+   "knownOrigin": null,
+   "targetSide": {
+    "sentences": [
+     "Hydref.",
+     "Tachwedd.",
+     "Rhagfyr."
+    ],
+    "n": 3,
+    "measure": {
+     "whole_dur": 3.099,
+     "interior_gaps_ms": [
+      429,
+      117
+     ],
+     "cut_at_gaps_ms": [
+      429,
+      117
+     ],
+     "rejected_gaps_ms": [],
+     "margin": null,
+     "piece_durs": [
+      1.166,
+      0.961,
+      1.172
+     ],
+     "piece_spans": [
+      [
+       0,
+       1.166
+      ],
+      [
+       1.066,
+       2.027
+      ],
+      [
+       1.927,
+       3.099
+      ]
+     ],
+     "cue_mode": true,
+     "cues_expected": 2,
+     "cues_found": 2,
+     "cut_at_ordinals": [
+      0,
+      1
+     ],
+     "cue_gaps_ms": [
+      429,
+      117
+     ],
+     "seams_db": [
+      {
+       "edge": "s0.tail",
+       "db": -69.5,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.head",
+       "db": -69.5,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s1.tail",
+       "db": -54.1,
+       "piece_peak_db": -2.2
+      },
+      {
+       "edge": "s2.head",
+       "db": -35.1,
+       "piece_peak_db": -2.3
+      }
+     ]
+    },
+    "method": "strict",
+    "share_deltas": [
+     0.02,
+     0.083
+    ],
+    "ok": true,
+    "spans": [
+     [
+      0,
+      1102
+     ],
+     [
+      1131,
+      1977
+     ],
+     [
+      1977,
+      3099
+     ]
+    ]
+   },
+   "verdict": "whole",
+   "reason": "known:no_take",
+   "gapTtsChars": 28
+  }
+ ]
+}
