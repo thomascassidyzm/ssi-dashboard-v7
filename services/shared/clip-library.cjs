@@ -255,7 +255,7 @@ async function lookupForRender(want, lib = clipLibrary()) {
   if (clip) return { clip, ticket: null }
   const byId = new Map()
   for (const r of usableClips(seen, { ...want, voiceBound: true })) if (r && !byId.has(r.id)) byId.set(r.id, r)
-  const ticket = issueTicket({ language: want.language, voiceId: want.voiceId, text: want.text, inLibrary: [...byId.values()], replacing: want.replacing })
+  const ticket = issueTicket({ language: want.language, voiceId: want.voiceId, text: want.text, spokenText: want.spokenText || null, inLibrary: [...byId.values()], replacing: want.replacing })
   return { clip: null, ticket }
 }
 

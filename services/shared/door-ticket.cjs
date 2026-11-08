@@ -49,13 +49,17 @@ function voiceKey(v) {
  * Issue a ticket. Called ONLY by clip-library.lookupForRender — the check-tts-door
  * gate fails the run if any other file calls it.
  */
-function issueTicket({ language, voiceId, text, inLibrary = [], replacing = [], now = Date.now() }) {
+// spokenText: the words the door will actually SEND when a pronunciation override (shared/pronunciation-overrides.cjs)
+// rewrites the looked-up line ("Good morning, Sarah!" → "Good morning, <<ˈ|s|ɛ|ɹ|ə>>!", job #776). The lookup was for
+// the stored words; the ticket also licenses exactly that one spoken form of them, and nothing else.
+function issueTicket({ language, voiceId, text, spokenText = null, inLibrary = [], replacing = [], now = Date.now() }) {
   // One route for audio (Tom 2026-09-29): no ticket, so no paid call, outside the Popty chain.
   if (!chain.inChain()) return null
   const t = Object.freeze({
     language: language || null,
     voiceKey: voiceKey(voiceId),
     textKey: clipTextKey(text),
+    spokenKey: spokenText && spokenText !== text ? clipTextKey(spokenText) : null,
     inLibrary: Object.freeze((inLibrary || []).map(r => Object.freeze({ id: r.id, course_code: r.course_code || null, voice_id: r.voice_id || null, s3_key: r.s3_key || null }))),
     replacing: Object.freeze([].concat(replacing || []).filter(Boolean).map(String)),
     issuedAt: now,
@@ -73,7 +77,7 @@ function ticketProblem(ticket, { voiceId, text, now = Date.now() }) {
   if (!ticket) return { code: 'NO_DOOR', message: 'no proof of a clip-library lookup came with this call — every paid render must first ask the library (services/shared/clip-library.cjs lookupForRender)' }
   if (typeof ticket !== 'object' || !issued.has(ticket)) return { code: 'NO_DOOR', message: 'the ticket on this call was not issued by the clip-library lookup — a hand-made ticket proves nothing' }
   if (now - ticket.issuedAt > TICKET_TTL_MS) return { code: 'NO_DOOR', message: `the clip-library lookup behind this call is ${Math.round((now - ticket.issuedAt) / 60000)} minutes old — look again` }
-  if (ticket.textKey !== clipTextKey(text)) return { code: 'NO_DOOR', message: `the lookup was for other words ("${ticket.textKey.slice(0, 40)}") than the ones being sent ("${clipTextKey(text).slice(0, 40)}")` }
+  if (ticket.textKey !== clipTextKey(text) && !(ticket.spokenKey && ticket.spokenKey === clipTextKey(text))) return { code: 'NO_DOOR', message: `the lookup was for other words ("${ticket.textKey.slice(0, 40)}") than the ones being sent ("${clipTextKey(text).slice(0, 40)}")` }
   if (ticket.voiceKey !== voiceKey(voiceId)) return { code: 'NO_DOOR', message: `the lookup was for voice ${ticket.voiceKey}, not ${voiceKey(voiceId)}` }
   if (ticket.inLibrary.length) {
     const c = ticket.inLibrary[0]

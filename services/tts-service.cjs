@@ -944,11 +944,18 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     throw new Error(`TTS door: cannot name this clip (${!language ? 'language' : 'voice id'} unknown; ${provider} ${config.voiceId || config.voiceName || '?'}, text: "${String(text).slice(0, 40)}") — a line the door cannot look up is never rendered. Pass config.door.language.`);
   }
 
+  // PRONUNCIATION OVERRIDE (services/shared/pronunciation-overrides.cjs, job #250·AD; English word rules, job #776): a listed
+  // line of this course, or a line of a language holding a listed word (Cartesia only), is SENT in its spoken form. The
+  // library is asked with the stored words; the ticket it issues also licenses this one spoken form (door-ticket spokenKey).
+  const pron = require('./shared/pronunciation-overrides.cjs');
+  const overrideCourse = door.courseCode || config.courseCode || null;
+  const sent = pron.spokenFor({ courseCode: overrideCourse, text, language, provider }) || text;
   // door.skipLibrary (trial render at a non-1.0 native speed, job #751): same words, different recording — the library cannot answer it.
   // The lookup still runs (the spend guard demands its ticket) but against an empty library, so it can only miss.
   const lib = door.skipLibrary ? require('./shared/clip-library.cjs').memoryClipLibrary([]) : clipLibrary();
   const { clip: existing, ticket } = await lookupForRender({
     text,
+    spokenText: sent === text ? null : sent,
     language,
     voiceId,
     ownCourseOnly: !!door.intro,
@@ -996,14 +1003,8 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     doorStats.wouldSpendChars += chars;
     return { audioBuffer: null, wordBoundaries: null, wordTimings: null, existingClip: null, charsSpent: 0, wouldSpendChars: chars };
   }
-  // PRONUNCIATION OVERRIDE (services/shared/pronunciation-overrides.cjs, job #250·AD): a listed line of this course is
-  // SENT in its spoken form (zho 得 = děi as IPA); the library above was asked with the stored words, and the stored
-  // text is never touched. Cartesia's word timings echo what was sent, so the stored character is put back in them.
-  const pron = require('./shared/pronunciation-overrides.cjs');
-  const overrideCourse = door.courseCode || config.courseCode || null;
-  // The language's WORD rules (English Sarah / risotto, job #776) ride on top, Cartesia only: every English Cartesia
-  // render of a line holding one of those words is sent in IPA form, whichever course, pod or route asked for it.
-  const sent = pron.spokenFor({ courseCode: overrideCourse, text, language, provider }) || text;
+  // Sent in its spoken form (`sent`, worked out before the lookup above): zho 得 = děi as IPA; English Sarah / risotto
+  // (job #776). The stored text is never touched. Cartesia's word timings echo what was sent, so the stored words go back.
   const rendered = await renderWithRetry(sent, provider, config, maxRetries, ticket);
   const out = sent === text ? rendered : { ...rendered, wordTimings: pron.restoreWordTimings(rendered.wordTimings, overrideCourse, language), spokenText: sent };
   doorStats.rendered++;
