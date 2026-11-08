@@ -90,7 +90,7 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
         store.clips[key] = { audioId: taken.audioId, s3Key: taken.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)' };
         spent += billed; runSpent += billed; adopted++; fresh++;
         fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
-        console.log(`adopted ${course} ${w.turn} ${w.side}: ${j.existing.audioId}`);
+        console.log(`adopted ${course} ${w.turn} ${w.side}: ${taken.audioId}`);
         continue;
       }
       if (!j.ok) { fs.writeFileSync(STORE, JSON.stringify(store, null, 1)); console.log(`REFUSED ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
