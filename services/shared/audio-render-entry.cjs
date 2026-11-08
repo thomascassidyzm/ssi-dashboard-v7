@@ -214,6 +214,11 @@ async function bindPresentation(req, result, deps) {
  */
 function standInPace(req, r) {
   if (r.provider !== 'cartesia' || !standIn.isStandInVoice(r.voiceId)) return {}
+  // A Welsh pod line's English in the stand-in voice: the one pod pace (aran-clone-standin.cjs STANDIN_POD_PACE, Tom 2026-11-08).
+  if (req.podSentenceId && req.role === 'known') {
+    const podPace = standIn.standInPodPace({ courseCode: req.courseCode, voiceId: r.voiceId })
+    return podPace === 1 ? {} : { speed: 1, paceTempo: podPace }
+  }
   if (!standIn.isCloneStandInSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) return {}
   const tempo = standIn.standInSpeed(req.seedPosition)
   return tempo === 1 ? { speed: 1 } : { speed: 1, paceTempo: tempo }
@@ -372,6 +377,13 @@ async function adoptPaid(req, deps) {
 async function trialRender(req, deps) {
   trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
   const r = await deps.resolve(req)
+  // A WELSH POD ENGLISH PIECE in the stand-in voice (podSide 'known', no speed asked) is played at the pod pace — Tom
+  // 2026-11-08, "which needs speeding up" (aran-clone-standin.cjs STANDIN_POD_PACE). It rides the explicit-speed path below,
+  // so the library (keyed on text + voice, not tempo) does not answer it with an unpaced clip.
+  if (req.podSide === 'known' && req.speed == null && !req.paces) {
+    const podPace = standIn.standInPodPace({ courseCode: req.courseCode, voiceId: r.voiceId })
+    if (podPace !== 1) req = { ...req, speed: podPace }
+  }
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // An EXPLICIT speed (1 included: the voice's own settings.speed may be 0.8) is a different recording of the same words, so the
   // library (keyed on text+voice) must not answer it: door.skipLibrary. Unset keeps the normal trial path, library hit and all.

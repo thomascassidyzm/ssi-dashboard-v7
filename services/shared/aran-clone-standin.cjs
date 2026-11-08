@@ -130,6 +130,20 @@ function paceIsPostRender(voiceId) { return isStandInVoice(voiceId) }
 /** The fastest speed the stand-in may be asked for (the trial lane lets this voice go up to it, no further). */
 const STANDIN_MAX_PACE = Math.max(...Object.values(STANDIN_PACE))
 
+/**
+ * THE POD PACE (Tom 2026-11-08, r-2026-11-08-welsh-pod-1-cym-n: "Aran's Pro Clone does any voices in English that are needed
+ * for males in Pod-1 ... which needs speeding up btw"). A Welsh course's pod English rendered in the stand-in voice — a pod
+ * line or a Listen/Drill piece — is played at this tempo, applied after the render like the belt paces above (Cartesia
+ * ignores request-time speed on this Professional clone). Pod lines have no belt: one pace for the whole pod. 1.0 until Tom
+ * picks from the ear sample (1.0 / 1.1 / 1.15 / 1.2, job #913); set his number here and every new clone pod render follows.
+ */
+const STANDIN_POD_PACE = 1.0
+/** The tempo for a pod clip in this voice and course: STANDIN_POD_PACE for the stand-in voice in a Welsh course, else 1. */
+function standInPodPace({ courseCode, voiceId } = {}) {
+  const { isWelshCourse } = require('./welsh-no-tom-clone.cjs')
+  return isStandInVoice(voiceId) && isWelshCourse(courseCode) ? STANDIN_POD_PACE : 1
+}
+
 /** The seed position of a slot: { seedNumber } or { phraseId: 'course:S0014L01B08' } or { legoId: 'S0014L01' }. */
 function seedPositionOfSlot(slot = {}) {
   if (Number.isInteger(slot.seedNumber) && slot.seedNumber > 0) return slot.seedNumber
@@ -144,6 +158,8 @@ module.exports = {
   STANDIN_MAX_PACE,
   beltOf,
   standInSpeed,
+  STANDIN_POD_PACE,
+  standInPodPace,
   paceIsPostRender,
   seedPositionOfSlot,
   ARAN_ENGLISH_CLONE,
