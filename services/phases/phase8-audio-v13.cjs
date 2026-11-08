@@ -147,7 +147,7 @@ async function knownGenderContextFor(courseCode, voices) {
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
-const { podLineVoice, clipColumnFor, castFor } = require('../shared/pod-line-voice.cjs')
+const { podLineVoice, clipColumnFor, castFor, englishPodKnownVoice } = require('../shared/pod-line-voice.cjs')
 const { EXPECTED_ENGLISH_TARGET } = require('../shared/resolve-voice.cjs')
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
@@ -5578,7 +5578,7 @@ function buildRenderDeps() {
       // route's existing re-record authority that may let a second performance past it.
       clipsInLanguage: (want) => require('../shared/clip-library.cjs').existingClipsInLanguage(want),
       rerecordGranted: (want) => require('../shared/rerecord-gate.cjs').rerecordGranted(want),
-      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId, podRecast }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId, podSentenceId, podRecast, podSide }) => {
         // A human-voice course is refused whole, except its English known slot: Tom 2026-11-08 (r-2026-11-08-welsh-courses-
         // the-welsh-stays-human) for every cym_* course, and before it Aran 2026-10-29 (job #557) for nv2/sv2 in his own clone.
         // The slot's language is the one stated, else the role's own side, which needs the course row — so Breton and pdc are
@@ -5628,6 +5628,17 @@ function buildRenderDeps() {
             podVoice = { ...podVoice, voiceId: /^(azure|elevenlabs|xai|cartesia|google)_/.test(recast) ? recast : `cartesia_${recast}`, source: 'recast' }
           }
           if (podVoice.error) throw new RenderRequestError(podVoice.error, podVoice.code === 'NO_POD_SENTENCE' ? 404 : 409, podVoice.code)
+          // ENGLISH POD VOICES (job #905, r-2026-11-08): a pod line's English is Charlotte (f) / Tom-006 (m) or a human take. A line
+          // whose current clip is any other synthetic voice (Gemma, Olivia, an old Tom clone) is re-voiced in the pair voice of its
+          // speaker's gender, not kept in that voice — "the voice the line already speaks in" must not carry a wrong voice forward.
+          if (role === 'known' && toIso3(course.known_lang) === 'eng' && !/^human_/i.test(String(podVoice.voiceId))) {
+            const castG = (castFor(podRow && podRow.speakers, podLine && podLine.speaker) || {}).gender
+            const g = castG === 'f' || castG === 'm' ? castG : null
+            if (englishPodKnownVoice({ courseCode, voiceId: podVoice.voiceId, gender: g }).refuse && g) {
+              const pair = englishPodKnownVoice({ courseCode, voiceId: null, gender: g })
+              if (pair.voiceId) podVoice = { ...podVoice, voiceId: pair.voiceId, source: 'english-pod-pair' }
+            }
+          }
           if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
           voiceId = podVoice.voiceId
         }
@@ -5672,6 +5683,15 @@ function buildRenderDeps() {
           : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
           : null
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
+        // THE ENGLISH POD VOICE GATE (job #905; shared/pod-line-voice.cjs englishPodKnownVoice, r-2026-11-08 "Charlotte is the female
+        // English pod, not Gemma"). Every English known-side POD clip — a pod line (podSentenceId) or a pod-only Drill/Listen piece
+        // (trial + podSide 'known') — is Charlotte, Tom-006 or a human take. A trial is exempt from the slot rules above, which is how
+        // #891 named Gemma and got her; the pod gate is not exempt for trials. A refusal is the answer: never retry in another voice.
+        const podEnglish = toIso3(lang) === 'eng' && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podVoice && role === 'known'))
+        if (podEnglish) {
+          const gate = englishPodKnownVoice({ courseCode, voiceId: canonicalClipVoiceId(held, provider), gender: null })
+          if (gate.refuse) throw new RenderRequestError(gate.message, 403, gate.code)
+        }
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
       },
       link: linkClipForRender,

@@ -54,4 +54,48 @@ function podLineVoice({ pod, sentence, role, courseCode, currentClipVoice = null
   return { voiceId: `${provider}_${bare}`, bareVoiceId: bare, provider, speaker: sentence.speaker, side, source: 'pod-cast' }
 }
 
-module.exports = { podLineVoice, castFor, clipColumnFor }
+/**
+ * THE ENGLISH POD VOICES (Tom 2026-11-08, r-2026-11-08-the-female-english-pod-voice-is: "Charlotte is the female English pod,
+ * not Gemma" — "not Gemma, not Olivia; synthetic women's English pod lines and pieces use Charlotte until a human take
+ * replaces them"; before it r-2026-10-26-every-pod-1-english-line-charlotte and r-2026-09-30). A pod's ENGLISH known side —
+ * whole line, Listen sentence clip or Drill piece, in any *_for_eng course — is spoken by a human take, or by Charlotte (a
+ * woman's line) / Tom-006 (a man's line). Nothing else.
+ *
+ * The specimen (job #905): #891 rendered 43 Welsh Pod 1 women's English pieces in Cartesia "Gemma". The route let it through
+ * because a trial + podSide render (how every Drill piece is made) was exempt from every voice rule and took the caller's
+ * voiceId as given; a pod line re-render also kept whatever voice the line's current clip had, so a Gemma line stayed Gemma.
+ * The render route now asks this function for every English known-side pod clip and refuses any other synthetic voice.
+ *
+ *   englishPodKnownVoice({ courseCode, voiceId, gender })
+ *     voiceId  the voice about to speak (null = not yet chosen); gender 'f' | 'm' | null (null = the caller cannot say)
+ *     → { voiceId }                    this voice speaks it (unchanged, or the pair voice for the gender when none was chosen)
+ *     → { refuse: true, code, message }
+ */
+const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
+const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+const ENGLISH_POD_VOICE = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
+const ENGLISH_POD_RULING = 'r-2026-11-08-the-female-english-pod-voice-is (Tom: "Charlotte is the female English pod, not Gemma")'
+const bareOf = (v) => String(v || '').trim().toLowerCase().replace(PREFIX, '')
+
+function englishPodKnownVoice({ courseCode = null, voiceId = null, gender = null } = {}) {
+  const { isTomCloneVoice, isWelshCourse } = require('./welsh-no-tom-clone.cjs')
+  const { STANDIN_VOICE } = require('./aran-clone-standin.cjs')
+  const refuse = (message) => ({ refuse: true, code: 'POD_ENGLISH_VOICE', message: `${courseCode || 'pod'} English known side: ${message} — ${ENGLISH_POD_RULING}` })
+  const welsh = isWelshCourse(courseCode)
+  if (!voiceId) {
+    if (gender === 'f') return { voiceId: CHARLOTTE }
+    if (gender === 'm' && !welsh) return { voiceId: TOM_006 }
+    return refuse(gender === 'm' ? "a Welsh course's men's English is Aran's own take, never a synthetic voice" : 'no voice named and no speaker gender to choose Charlotte or Tom-006 by')
+  }
+  if (/^human_/i.test(String(voiceId))) return { voiceId }   // a human take is never refused or replaced here
+  const bare = bareOf(voiceId)
+  if (bare === bareOf(CHARLOTTE)) return gender === 'm' ? refuse(`Charlotte is a woman's voice and this is a man's line`) : { voiceId }
+  if (bare === bareOf(TOM_006)) {
+    if (welsh && isTomCloneVoice(voiceId)) return refuse('Tom-006 is a Tom clone, never used in a Welsh course (r-2026-10-13)')
+    return gender === 'f' ? refuse(`Tom-006 is a man's voice and this is a woman's line — Charlotte speaks it`) : { voiceId }
+  }
+  if (STANDIN_VOICE && bare === bareOf(STANDIN_VOICE)) return gender === 'f' ? refuse(`Aran's clone is a man's voice and this is a woman's line — Charlotte speaks it`) : { voiceId }
+  return refuse(`${voiceId} is not an English pod voice; a woman's line is Charlotte (${CHARLOTTE}), a man's Tom-006 (${TOM_006}), or a human take`)
+}
+
+module.exports = { podLineVoice, castFor, clipColumnFor, englishPodKnownVoice, ENGLISH_POD_VOICE }
