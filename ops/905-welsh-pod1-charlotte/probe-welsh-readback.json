@@ -1,0 +1,36 @@
+{
+ "courses": {
+  "cym_n_for_eng": {
+   "welshCompared": 288,
+   "welshDiff": [],
+   "englishMoved": [
+    {
+     "key": "line cym_n_for_eng:pod-1:SC07-S001",
+     "before": "[\"Good morning. What can I get you?\",\"4fe3878f-fa85-46ad-ad51-9f241ca64069\",[\"eeaeb4f6-5ac2-4a96-949f-f50ea4654754\",\"6d2bc76c-747e-49d6-a204-fb5e71dbd8c4\"]]",
+     "after": "[\"Good morning. What can I get you?\",\"f691c98f-77f6-4b96-a411-ddddf2ac07f4\",[\"2e48c420-08f1-4875-9578-6ae20b2c04d2\",\"c4311fff-6ca7-4628-85ee-a5f5113f523d\"]]"
+    }
+   ]
+  },
+  "cym_s_for_eng": {
+   "welshCompared": 403,
+   "welshDiff": [],
+   "englishMoved": [
+    {
+     "key": "line cym_s_for_eng:pod-1:SC07-S001",
+     "before": "[\"Good morning. … What can I get you?\",\"4fe3878f-fa85-46ad-ad51-9f241ca64069\",[]]",
+     "after": "[\"Good morning. … What can I get you?\",\"f691c98f-77f6-4b96-a411-ddddf2ac07f4\",[]]"
+    },
+    {
+     "key": "drill cym_s_for_eng:pod-1:SC07-S001 #0",
+     "before": "[\"Good morning.\",\"eeaeb4f6-5ac2-4a96-949f-f50ea4654754\",null]",
+     "after": "[\"Good morning.\",\"2e48c420-08f1-4875-9578-6ae20b2c04d2\",null]"
+    },
+    {
+     "key": "drill cym_s_for_eng:pod-1:SC07-S001 #1",
+     "before": "[\"What can I get you?\",\"6d2bc76c-747e-49d6-a204-fb5e71dbd8c4\",null]",
+     "after": "[\"What can I get you?\",\"c4311fff-6ca7-4628-85ee-a5f5113f523d\",null]"
+    }
+   ]
+  }
+ }
+}

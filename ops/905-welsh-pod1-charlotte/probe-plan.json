@@ -1,0 +1,98 @@
+{
+ "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+ "courses": {
+  "cym_n_for_eng": {
+   "links": [
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "known",
+     "audioId": "f691c98f-77f6-4b96-a411-ddddf2ac07f4",
+     "replace": true,
+     "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "knownsegment",
+     "audioId": "2e48c420-08f1-4875-9578-6ae20b2c04d2",
+     "replace": true,
+     "expectCurrent": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "knownsegment",
+     "audioId": "c4311fff-6ca7-4628-85ee-a5f5113f523d",
+     "replace": true,
+     "expectCurrent": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4"
+    }
+   ],
+   "undo": [
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "known",
+     "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+     "replace": true,
+     "expectCurrent": "f691c98f-77f6-4b96-a411-ddddf2ac07f4"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "knownsegment",
+     "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+     "replace": true,
+     "expectCurrent": "2e48c420-08f1-4875-9578-6ae20b2c04d2"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+     "role": "knownsegment",
+     "audioId": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
+     "replace": true,
+     "expectCurrent": "c4311fff-6ca7-4628-85ee-a5f5113f523d"
+    }
+   ],
+   "drill": [],
+   "missing": []
+  },
+  "cym_s_for_eng": {
+   "links": [
+    {
+     "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+     "role": "known",
+     "audioId": "f691c98f-77f6-4b96-a411-ddddf2ac07f4",
+     "replace": true,
+     "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+    }
+   ],
+   "undo": [
+    {
+     "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+     "role": "known",
+     "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+     "replace": true,
+     "expectCurrent": "f691c98f-77f6-4b96-a411-ddddf2ac07f4"
+    }
+   ],
+   "drill": [
+    {
+     "turn": "cym_s_for_eng:pod-1:SC07-S001",
+     "i": 0,
+     "known": "Good morning.",
+     "from": "2195c138-3a77-4efb-b127-6e104d44a437.v2",
+     "to": "2e48c420-08f1-4875-9578-6ae20b2c04d2",
+     "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+     "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+     "source": "ara_eg_for_eng"
+    },
+    {
+     "turn": "cym_s_for_eng:pod-1:SC07-S001",
+     "i": 1,
+     "known": "What can I get you?",
+     "from": "9d93c9e6-b027-4bb0-86b2-e5616a910739.v2",
+     "to": "c4311fff-6ca7-4628-85ee-a5f5113f523d",
+     "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+     "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+     "source": "ara_eg_for_eng"
+    }
+   ],
+   "missing": []
+  }
+ }
+}
