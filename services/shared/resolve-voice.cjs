@@ -61,8 +61,12 @@ const POLICY = Object.freeze([
     ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
   { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's PRO clone (STANDIN_VOICE; a stand-in his real take replaces)",
     ruling: aranStandIn.RULING },
-  { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
-    ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },
+  // COURSE SLOTS ONLY, NOT POD LINES (Tom 2026-11-08 10:16Z: pods use "Tom-006 and Charlotte ... which is how we did all the other
+  // pods"). A pod line's English is its speaker's: female → Charlotte, male → Tom-006 (EXPECTED_ENGLISH_TARGET; the pod cast,
+  // shared/pod-line-voice.cjs). Pods never reach this function: voicing-policy assertRenderAllowed skips it for door.podLine, which
+  // the render route sets for a fresh pod render and, since job #776, for a pod line's re-record too.
+  { rule: 'english-known', when: 'English is the KNOWN language of a course SLOT (not a pod line), any course, any gender', voice: 'Tom-006',
+    ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always"); pods excluded, Tom 2026-11-08 10:16Z' },
   { rule: 'english-target', when: 'English is the TARGET (eng_for_X), target1/target2', voice: 'English cast at the slot gender: Charlotte (f) / Tom-006 (m)',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng ("Gender variance for English … applies to the eng_for_X courses")' },
   { rule: 'target-cast', when: 'any other TARGET language (its variety is its own language)', voice: "Tom's Voice Lab cast for the variety at the slot gender, rank 0, else rank 1",

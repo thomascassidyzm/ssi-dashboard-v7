@@ -465,7 +465,10 @@ async function rerecord(req, deps) {
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
   // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job } }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job, podLine: !!req.podSentenceId } }
+  // podLine (job #776): a re-record of a POD line is voiced by the pod's cast for its speaker (deps.resolve checked it against the
+  // line, podSentenceId), exactly as a fresh pod render is (podLine above) — never by the course-slot english-known rule. Without
+  // it, Charlotte's female pod lines could not be re-recorded at all (Tom 2026-11-08 10:16Z: pods are Tom-006 and Charlotte).
   const spoke = await deps.speak(said, r.provider, cfg, 1)
   // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
   const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode, row.language) }
