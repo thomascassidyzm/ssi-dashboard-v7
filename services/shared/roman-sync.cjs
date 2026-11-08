@@ -56,14 +56,23 @@ function clearStaleRoman(before, set) {
  * keeps the OLD sentence's romanisation under the NEW text. The rule: what the
  * caller sent; else the existing row's, if it spells the same text; else null
  * (a blank shows the learner the right characters, a stale one the wrong words).
+ *
+ * "Sent" means the value is not undefined — NOT that the key is present. An
+ * explicit null or "" (or whitespace) is a deliberate clear and wins over the
+ * existing reading: that is how a builder removes a wrong romanisation without
+ * changing the characters (review finding 3, job #731). Only undefined means
+ * "omitted" and falls back to the existing reading. Never test key presence
+ * (`in` / hasOwnProperty) here: the v2 phrase-set route's BUILD and USE row
+ * builders always create the key, copying `p.target_text_roman` from the JSON
+ * body, so an omitted field arrives as a present key holding undefined.
  * @param {Object} row            the row about to be written
  * @param {Object|null} existing  the row now at that key, as read (target_text, target_text_roman)
  */
 function withExplicitRoman(row, existing = null) {
   const nonEmpty = (v) => (typeof v === 'string' && v.trim() ? v : null);
-  const sent = nonEmpty(row.target_text_roman);
+  if (row.target_text_roman !== undefined) return { ...row, target_text_roman: nonEmpty(row.target_text_roman) };
   const kept = existing && existing.target_text === row.target_text ? nonEmpty(existing.target_text_roman) : null;
-  return { ...row, target_text_roman: sent || kept };
+  return { ...row, target_text_roman: kept };
 }
 
 module.exports = { romanGoesStale, clearStaleRoman, withExplicitRoman, ROMAN_STALE_MESSAGE };
