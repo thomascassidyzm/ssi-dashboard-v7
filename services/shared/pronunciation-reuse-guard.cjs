@@ -24,19 +24,46 @@
  * reuse planner (/reuse-plan, /reuse-apply).
  */
 
-const { spokenFor, RULES } = require('./pronunciation-overrides.cjs')
+const { courseSpokenFor, wordRulesFor, languageKey, RULES, WORD_RULES } = require('./pronunciation-overrides.cjs')
 
-/** True when the asking course renders this line through an override. Pure, no I/O. */
-function overrideApplies(courseCode, text) {
-  return !!spokenFor({ courseCode, text })
+/**
+ * True when the asking course renders this line through an override: a line rule of the course, or (given the line's
+ * language) a word rule of the language (English Sarah / risotto, job #776). Pure, no I/O.
+ */
+function overrideApplies(courseCode, text, language) {
+  return !!courseSpokenFor({ courseCode, text }) || (!!language && wordRulesFor({ language, text }).length > 0)
 }
+
+const dateOf = (iso) => { const t = Date.parse(iso || ''); return Number.isFinite(t) ? t : null }
 
 /** The instant the course's override went live (ms), or null. */
 function sinceFor(courseCode) {
   const rule = RULES[courseCode]
-  if (!rule || !rule.since) return null
-  const t = Date.parse(rule.since)
-  return Number.isFinite(t) ? t : null
+  return rule && rule.since ? dateOf(rule.since) : null
+}
+
+/**
+ * Which clips of this line must prove they were rendered with the override, and from when. A course line rule binds
+ * every clip of the line. A WORD rule is Cartesia IPA, sent only to Cartesia (tts-service speak()), so it binds only
+ * Cartesia clips: an Azure, xAI or human clip of "Good morning, Sarah!" was never going to be rendered with it, and its
+ * date proves nothing either way. A row with no voice_id is bound (fails closed).
+ * @returns {null | { since: number|null, appliesTo: (row) => boolean }}
+ */
+function overrideFor(courseCode, text, language) {
+  const line = !!courseSpokenFor({ courseCode, text })
+  const words = language ? wordRulesFor({ language, text }).length > 0 : false
+  if (!line && !words) return null
+  if (line) {
+    const a = sinceFor(courseCode)
+    const b = words ? dateOf(WORD_RULES[languageKey(language)].since) : null
+    // Both apply: a clip must postdate both (null if either has no live date — nothing can be proven).
+    const since = a == null || (words && b == null) ? null : Math.max(a, b || 0)
+    return { since, appliesTo: () => true }
+  }
+  return {
+    since: dateOf(WORD_RULES[languageKey(language)].since),
+    appliesTo: (row) => !row.voice_id || /^cartesia/i.test(String(row.voice_id)),
+  }
 }
 
 // mastered/<uuid>.mp3 is write-once, so a key's date never changes: cache it for the process.
@@ -71,29 +98,33 @@ function useWrittenAt(fn) { defaultWrittenAt = fn || s3WrittenAt; writtenCache.c
  * @param {{courseCode: string, text: string}} want
  * @param {{writtenAt?: (s3Key: string) => Promise<number|null>}} [opts]
  */
-async function allowedForOverride(rows, { courseCode, text }, { writtenAt = defaultWrittenAt } = {}) {
-  if (!rows || !rows.length || !overrideApplies(courseCode, text)) return rows
-  const since = sinceFor(courseCode)
-  if (since == null) return [] // a listed line with no live date: nothing can be proven rendered with it
+async function allowedForOverride(rows, { courseCode, text, language }, { writtenAt = defaultWrittenAt } = {}) {
+  if (!rows || !rows.length) return rows
+  // The want's language when it has one; else each row's own (a row of these words in another language is its own line).
+  const fixed = language ? overrideFor(courseCode, text, language) : null
+  if (language && !fixed) return rows
   const out = []
   for (const row of rows) {
-    if (!row || !row.s3_key) continue
+    if (!row) continue
+    const rule = fixed || overrideFor(courseCode, text, row.language)
+    if (!rule || !rule.appliesTo(row)) { out.push(row); continue }
+    if (rule.since == null || !row.s3_key) continue // a listed line with no live date: nothing can be proven rendered with it
     const at = await writtenAt(row.s3_key)
-    if (at != null && at >= since) out.push(row)
+    if (at != null && at >= rule.since) out.push(row)
   }
   return out
 }
 
 /** Rows of mixed lines (each row's own `text`), one course: drop the misread clips of that course's listed lines. */
 async function filterRowsByOwnText(rows, courseCode, opts = {}) {
-  if (!rows || !rows.length || !RULES[courseCode]) return rows
+  if (!rows || !rows.length) return rows
   const out = []
   for (const row of rows) {
-    if (row && overrideApplies(courseCode, row.text)) {
-      if ((await allowedForOverride([row], { courseCode, text: row.text }, opts)).length) out.push(row)
+    if (row && overrideApplies(courseCode, row.text, row.language)) {
+      if ((await allowedForOverride([row], { courseCode, text: row.text, language: row.language }, opts)).length) out.push(row)
     } else out.push(row)
   }
   return out
 }
 
-module.exports = { overrideApplies, sinceFor, allowedForOverride, filterRowsByOwnText, s3WrittenAt, useWrittenAt }
+module.exports = { overrideApplies, overrideFor, sinceFor, allowedForOverride, filterRowsByOwnText, s3WrittenAt, useWrittenAt }

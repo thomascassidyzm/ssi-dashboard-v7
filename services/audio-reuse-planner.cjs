@@ -942,8 +942,8 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const candidates = await findCandidates(supabase, clips)
   // A line this course renders through a pronunciation override reuses only a clip rendered WITH it (job #262·AD).
   for (const clip of clips.values()) {
-    if (candidates.has(clip.clipKey) && overrideApplies(courseCode, clip.text)) {
-      candidates.set(clip.clipKey, await allowedForOverride(candidates.get(clip.clipKey), { courseCode, text: clip.text }))
+    if (candidates.has(clip.clipKey) && overrideApplies(courseCode, clip.text, clip.language)) {
+      candidates.set(clip.clipKey, await allowedForOverride(candidates.get(clip.clipKey), { courseCode, text: clip.text, language: clip.language }))
     }
   }
 

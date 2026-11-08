@@ -1001,9 +1001,11 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   // text is never touched. Cartesia's word timings echo what was sent, so the stored character is put back in them.
   const pron = require('./shared/pronunciation-overrides.cjs');
   const overrideCourse = door.courseCode || config.courseCode || null;
-  const sent = pron.spokenFor({ courseCode: overrideCourse, text }) || text;
+  // The language's WORD rules (English Sarah / risotto, job #776) ride on top, Cartesia only: every English Cartesia
+  // render of a line holding one of those words is sent in IPA form, whichever course, pod or route asked for it.
+  const sent = pron.spokenFor({ courseCode: overrideCourse, text, language, provider }) || text;
   const rendered = await renderWithRetry(sent, provider, config, maxRetries, ticket);
-  const out = sent === text ? rendered : { ...rendered, wordTimings: pron.restoreWordTimings(rendered.wordTimings, overrideCourse), spokenText: sent };
+  const out = sent === text ? rendered : { ...rendered, wordTimings: pron.restoreWordTimings(rendered.wordTimings, overrideCourse, language), spokenText: sent };
   doorStats.rendered++;
   doorStats.charsSpent += chars;
   return { ...out, existingClip: null, charsSpent: chars };

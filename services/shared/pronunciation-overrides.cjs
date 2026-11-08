@@ -100,6 +100,59 @@ const RULES = Object.freeze({
   }),
 })
 
+/**
+ * PER-LANGUAGE WORD RULES: a word the provider misreads in EVERY line of a language, whatever the course. Unlike the
+ * course rules above there is no sense to read, so the word itself is the key: every whole-word occurrence (any case) in
+ * a line of this language is sent as the Cartesia IPA form. Cartesia's own custom-pronunciation syntax, NOT SSML or XML
+ * (Tom 2026-11-08, job #776: "Not xml"): IPA phonemes in <<…>>, pipe-separated, stress marks as their own elements.
+ *
+ * CARTESIA ONLY. The <<…>> form means nothing to any other provider, so the door applies these only when the provider
+ * is cartesia (spokenFor's `provider`); an Azure or recorded line is sent exactly as stored.
+ *
+ * English, Tom 2026-11-08 (job #776, heard in Italian Pod 1, Tom-006 + Charlotte):
+ *   Sarah   — British "Sair-ra", first vowel as in "hair", never "Sah-ra" as in father.
+ *   risotto — "ris-OTT-oh", the short o of "lot", never "ris-OH-toe".
+ * Applies to every English Cartesia voice, not just those two: the misreading is the model's, not the voice's.
+ */
+const WORD_RULES = Object.freeze({
+  eng: Object.freeze({
+    ruling: 'Tom 2026-11-08, job #776 (Italian Pod 1: "Good morning Sarah", "risotto")',
+    // When the rule went live on popty.app. A Cartesia clip of a line holding one of these words whose S3 object is older
+    // was rendered WITHOUT it and is never reused (shared/pronunciation-reuse-guard.cjs). Move only forward, with the rule.
+    since: '2026-11-08T11:00:00Z',
+    words: Object.freeze([
+      Object.freeze({ word: 'Sarah', say: '<<ˈ|s|ɛ|ɹ|ə>>', reading: 'SAIR-uh, vowel of "hair"' }),
+      Object.freeze({ word: 'risotto', say: '<<ɹ|ɪ|ˈ|z|ɒ|t|oʊ>>', reading: 'ri-ZOT-oh, vowel of "lot"' }),
+    ]),
+  }),
+})
+
+let canonicalLanguage = null
+/** 'en', 'en-GB', 'eng' → 'eng'; null when the code cannot be read. */
+function languageKey(language) {
+  if (!language) return null
+  if (!canonicalLanguage) canonicalLanguage = require('./clip-identity.cjs').tryCanonicalLanguage
+  return canonicalLanguage(language)
+}
+
+const wordRe = (word) => new RegExp(`(?<![\\p{L}\\p{N}])${word}(?![\\p{L}\\p{N}])`, 'giu')
+
+/** The word rules of this language that this line holds: [{ word, say, reading }]. Pure. */
+function wordRulesFor({ language, text }) {
+  const rule = WORD_RULES[languageKey(language)]
+  if (!rule || text == null) return []
+  return rule.words.filter((w) => wordRe(w.word).test(String(text)))
+}
+
+/** The line with each of its language's listed words in spoken form, or null when it holds none. */
+function wordSpokenFor({ language, text }) {
+  const hits = wordRulesFor({ language, text })
+  if (!hits.length) return null
+  let out = String(text)
+  for (const w of hits) out = out.replace(wordRe(w.word), w.say)
+  return out
+}
+
 const TRAILING = /[\s。．.！!？?，,、；;：:…]+$/u
 
 /** The words a line is matched on: trimmed, trailing sentence punctuation dropped. */
@@ -139,7 +192,14 @@ function compile(courseCode) {
  * What to send the provider for this line of this course, or null when the line is not on the course's list (send it
  * as stored). The returned form keeps the line's own surrounding punctuation.
  */
-function spokenFor({ courseCode, text }) {
+function spokenFor({ courseCode, text, language, provider }) {
+  const lineForm = courseSpokenFor({ courseCode, text })
+  // The word rules are Cartesia IPA: applied on top of any line rule, only when the provider is known to be cartesia.
+  if (provider !== 'cartesia') return lineForm
+  return wordSpokenFor({ language, text: lineForm == null ? text : lineForm }) || lineForm
+}
+
+function courseSpokenFor({ courseCode, text }) {
   if (!courseCode || text == null) return null
   const byKey = compile(String(courseCode))
   if (!byKey) return null
@@ -156,10 +216,16 @@ function spokenFor({ courseCode, text }) {
  * Put the stored character back. If any token fragment survives (the provider split it), the timings are dropped (null):
  * the word-timings contract prefers no timings to ones the display would misread.
  */
-function restoreWordTimings(timings, courseCode) {
+function restoreWordTimings(timings, courseCode, language) {
   const rule = RULES[courseCode]
-  if (!timings || !rule || !Array.isArray(timings.words)) return timings
-  const words = timings.words.map((w) => String(w).split(rule.say).join(rule.char))
+  const wordRule = WORD_RULES[languageKey(language)]
+  if (!timings || (!rule && !wordRule) || !Array.isArray(timings.words)) return timings
+  const words = timings.words.map((w) => {
+    let out = String(w)
+    if (rule) out = out.split(rule.say).join(rule.char)
+    if (wordRule) for (const r of wordRule.words) out = out.split(r.say).join(r.word)
+    return out
+  })
   if (words.some((w) => w.includes('<<') || w.includes('>>'))) return null
   return { ...timings, words }
 }
@@ -171,4 +237,4 @@ function linesFor(courseCode) {
   return rule.lines.map((m) => ({ marked: m, ...parseMarked(m, rule) }))
 }
 
-module.exports = { RULES, spokenFor, restoreWordTimings, linesFor, lineKey, parseMarked }
+module.exports = { RULES, WORD_RULES, spokenFor, courseSpokenFor, wordSpokenFor, wordRulesFor, languageKey, restoreWordTimings, linesFor, lineKey, parseMarked }

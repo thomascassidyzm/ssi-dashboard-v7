@@ -468,7 +468,7 @@ async function rerecord(req, deps) {
   const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job } }
   const spoke = await deps.speak(said, r.provider, cfg, 1)
   // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
-  const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode) }
+  const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode, row.language) }
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
