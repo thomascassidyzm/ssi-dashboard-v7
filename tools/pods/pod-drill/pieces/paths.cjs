@@ -3,7 +3,6 @@
 //   ops/pod-drill/<course>/plan.json, ita/plan.json   the judgement: each turn whole with a reason, or its pieces
 //   ops/pod-drill/recorded.json                         every recorded clip, keyed voice|text (audioId = the pod row)
 //   ops/pod-drill/ita/clips.json                        Italian scenes 1-5 (#63, #82)
-//   ops/pod-drill/spans/<course>.json                   span pieces folded from the retired span-cut files
 //   ops/pod-drill/_eng-shared/split.txt                 the one English cut master (master.cjs)
 //   ops/pod-drill/cast.tsv                              the voice the audio route resolves per course and role
 //   ops/pod-drill/wired.json                            what wire-staging.cjs wired, per course
