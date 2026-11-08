@@ -83,9 +83,11 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
       }
       // IDENTITY_TAKEN (job #671): the course already has a pod row of these words in this voice and side. That row is the
       // clip: it goes in the ledger (the render that found it is billed and counted) and nothing is rendered again for it.
-      if (!j.ok && j.code === 'IDENTITY_TAKEN' && j.existing && j.existing.audioId) {
-        const billed = Number((String(j.error).match(/rendered and stored as (trial_[0-9A-F-]{36})/i) || [])[1] ? w.text.length : 0);
-        store.clips[key] = { audioId: j.existing.audioId, s3Key: j.existing.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)' };
+      // The route names the row in its error text: "... row for "<text>" in <voice> (<row id>, <s3 key>) — ...".
+      const taken = !j.ok && j.code === 'IDENTITY_TAKEN' ? (j.existing && j.existing.audioId ? j.existing : (() => { const m = String(j.error).match(/\(([0-9a-f]{8}-[0-9a-f-]{27}), ([^)\s]+)\) — a different take/); return m ? { audioId: m[1], s3Key: m[2] } : null; })()) : null;
+      if (taken) {
+        const billed = /rendered and stored as trial_/i.test(String(j.error)) ? w.text.length : 0;
+        store.clips[key] = { audioId: taken.audioId, s3Key: taken.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)' };
         spent += billed; runSpent += billed; adopted++; fresh++;
         fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
         console.log(`adopted ${course} ${w.turn} ${w.side}: ${j.existing.audioId}`);
