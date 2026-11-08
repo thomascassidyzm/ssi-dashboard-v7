@@ -149,6 +149,35 @@ const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
 const { podLineVoice, clipColumnFor, castFor, englishPodKnownVoice } = require('../shared/pod-line-voice.cjs')
 const { EXPECTED_ENGLISH_TARGET } = require('../shared/resolve-voice.cjs')
+const { characterSex } = require('../shared/pod-character-voice.cjs')
+const { isWelshCourse } = require('../shared/welsh-no-tom-clone.cjs')
+
+/**
+ * THE CHARACTER A POD LINE BELONGS TO (job #932, shared/pod-character-voice.cjs): its speaker within the pod and that speaker's
+ * sex, read from the human Welsh voices of ALL the speaker's lines (the cast map only when none is known). Reads by id and by
+ * (pod_id, speaker) — one pod's handful of rows. null when the line does not exist.
+ */
+async function loadPodCharacter(supabase, podSentenceId) {
+  const { data: line, error } = await supabase.from('listening_pod_sentences').select('id, pod_id, speaker, target_audio_id').eq('id', podSentenceId).maybeSingle()
+  if (error) throw new Error(`listening_pod_sentences unreadable: ${error.message}`)
+  if (!line) return null
+  const [{ data: pod, error: podErr }, { data: sibs, error: sibErr }] = await Promise.all([
+    supabase.from('listening_pods').select('id, course_code, speakers').eq('id', line.pod_id).maybeSingle(),
+    supabase.from('listening_pod_sentences').select('id, target_audio_id').eq('pod_id', line.pod_id).eq('speaker', line.speaker),
+  ])
+  if (podErr) throw new Error(`listening_pods unreadable: ${podErr.message}`)
+  if (sibErr) throw new Error(`listening_pod_sentences unreadable: ${sibErr.message}`)
+  const ids = [...new Set((sibs || []).map((r) => r.target_audio_id).filter(Boolean))]
+  const { data: clips, error: clipErr } = ids.length ? await supabase.from('course_audio').select('id, voice_id').in('id', ids) : { data: [], error: null }
+  if (clipErr) throw new Error(`course_audio unreadable: ${clipErr.message}`)
+  const voiceOf = new Map((clips || []).map((c) => [c.id, c.voice_id]))
+  const cs = characterSex({
+    lineWelshVoice: voiceOf.get(line.target_audio_id) || null,
+    characterWelshVoices: (sibs || []).map((r) => voiceOf.get(r.target_audio_id)).filter(Boolean),
+    castGender: (castFor(pod && pod.speakers, line.speaker) || {}).gender || null,
+  })
+  return { podId: line.pod_id, courseCode: pod && pod.course_code, speaker: line.speaker, ...cs }
+}
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -5632,7 +5661,9 @@ function buildRenderDeps() {
           // whose current clip is any other synthetic voice (Gemma, Olivia, an old Tom clone) is re-voiced in the pair voice of its
           // speaker's gender, not kept in that voice — "the voice the line already speaks in" must not carry a wrong voice forward.
           if (role === 'known' && toIso3(course.known_lang) === 'eng' && !/^human_/i.test(String(podVoice.voiceId))) {
-            const castG = (castFor(podRow && podRow.speakers, podLine && podLine.speaker) || {}).gender
+            // The speaker's sex is the CHARACTER's (job #932): its human Welsh voices first, the cast map only when none is known.
+            const ch = await loadPodCharacter(supabase, podSentenceId)
+            const castG = ch && ch.sex ? ch.sex : (castFor(podRow && podRow.speakers, podLine && podLine.speaker) || {}).gender
             const g = castG === 'f' || castG === 'm' ? castG : null
             if (englishPodKnownVoice({ courseCode, voiceId: podVoice.voiceId, gender: g }).refuse && g) {
               const pair = englishPodKnownVoice({ courseCode, voiceId: null, gender: g })
@@ -5641,6 +5672,23 @@ function buildRenderDeps() {
           }
           if (voiceId && !sameResolvedVoice(voiceId, podVoice.voiceId)) throw new RenderRequestError(`${podSentenceId} ${role} is ${podVoice.voiceId} (the pod cast for ${podVoice.speaker}); ${voiceId} refused — voices are never hand-picked`, 403, 'VOICE_POLICY')
           voiceId = podVoice.voiceId
+        }
+        // ONE CHARACTER, ONE ENGLISH VOICE (job #932): every English known-side clip of a WELSH pod — whole line, Listen piece or
+        // Drill piece (trial + podSide 'known') — names its line (podSentenceId), and the voice follows that line's CHARACTER:
+        // Charlotte for a woman, Aran's take or his PRO clone for a man. A piece that cannot say whose line it is is refused, so no
+        // per-line or men-only pass can split a character again. Outside Welsh courses nothing changes here.
+        let podCharacter = null
+        const welshPodEnglish = role === 'known' && isWelshCourse(courseCode) && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podSentenceId && !trial))
+        if (welshPodEnglish) {
+          if (!podSentenceId) throw new RenderRequestError(`${courseCode} pod English: name the line this piece belongs to (podSentenceId) — a Welsh pod's English voice follows the character, never the piece (job #932)`, 400, 'POD_CHARACTER_UNKNOWN')
+          podCharacter = await loadPodCharacter(supabase, podSentenceId)
+          if (!podCharacter || podCharacter.courseCode !== courseCode) throw new RenderRequestError(`${podSentenceId} is not a pod line of ${courseCode}`, 404, 'NO_POD_SENTENCE')
+          if (!podCharacter.sex) throw new RenderRequestError(`${podSentenceId}: speaker "${podCharacter.speaker}" has no known sex (no human Welsh voice on record, no cast gender) — cannot cast its English`, 409, 'POD_UNCAST')
+          if (trial && !voiceId) {
+            const pick = englishPodKnownVoice({ courseCode, voiceId: null, gender: podCharacter.sex })
+            if (pick.refuse) throw new RenderRequestError(pick.message, 403, pick.code)
+            voiceId = pick.voiceId
+          }
         }
         if (!podVoice) voiceId = await knownGenderVoiceId({ courseCode, voices: vc.voices, role, text, legoId, voiceId, trial, loadCtx: knownGenderContextFor })
         // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
@@ -5690,7 +5738,7 @@ function buildRenderDeps() {
         // #891 named Gemma and got her; the pod gate is not exempt for trials. A refusal is the answer: never retry in another voice.
         const podEnglish = toIso3(lang) === 'eng' && toIso3(course.known_lang) === 'eng' && (podSide === 'known' || (podVoice && role === 'known'))
         if (podEnglish) {
-          const gate = englishPodKnownVoice({ courseCode, voiceId: canonicalClipVoiceId(held, provider), gender: null })
+          const gate = englishPodKnownVoice({ courseCode, voiceId: canonicalClipVoiceId(held, provider), gender: podCharacter ? podCharacter.sex : null })
           if (gate.refuse) throw new RenderRequestError(gate.message, 403, gate.code)
         }
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }

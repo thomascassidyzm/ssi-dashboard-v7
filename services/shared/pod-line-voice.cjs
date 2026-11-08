@@ -99,7 +99,13 @@ function englishPodKnownVoice({ courseCode = null, voiceId = null, gender = null
     }
     return refuse('no voice named and no speaker gender to choose Charlotte or Tom-006 by')
   }
-  if (/^human_/i.test(String(voiceId))) return { voiceId }   // a human take is never refused or replaced here
+  if (/^human_/i.test(String(voiceId))) {
+    // A human take is never replaced here — but a man's take on a woman's character (or the reverse) is a voice switch inside
+    // one character, and is refused like a synthetic one (job #932). A human voice whose sex is not on record passes as before.
+    const hs = require('./pod-character-voice.cjs').sexOfHumanVoice(voiceId)
+    if (hs && gender && hs !== gender) return refuse(`${voiceId} is a ${hs === 'm' ? "man's" : "woman's"} take and this character is a ${gender === 'm' ? 'man' : 'woman'}`)
+    return { voiceId }
+  }
   const bare = bareOf(voiceId)
   if (bare === bareOf(CHARLOTTE)) return gender === 'm' ? refuse(`Charlotte is a woman's voice and this is a man's line`) : { voiceId }
   if (bare === bareOf(TOM_006)) {

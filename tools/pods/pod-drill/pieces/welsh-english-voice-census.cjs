@@ -85,13 +85,64 @@ function censusCourse(course, podScripts, drill, voices) {
     ...lines.flatMap((l) => ((l.audio && l.audio.known_splits) || []).map((s, i) => ({ surface: 'splits', line: l.id.split(':').pop(), speaker: l.speaker, i, id: s.id, voice: s.voice_id, piece: s.text })).filter((r) => isTomCloneVoice(r.voice))),
     ...Object.entries(drill.turns || {}).flatMap(([turn, ps]) => ps.map((p, i) => ({ surface: 'drill', line: turn.split(':').pop(), i, id: p[3], voice: voices.get(bareId(p[3])) || null, piece: p[1] })).filter((r) => isTomCloneVoice(r.voice))),
   ];
+  out.characters = characterCensus(lines, drill, voices);
   out.summary = {
     whole: { ...tally(out.whole.off), unknown: out.whole.unknown.length },
     splits: { pieces: out.splits.pieces, ...tally(out.splits.off), unknown: out.splits.unknown.length },
     drill: { lines: out.drill.lines, pieces: out.drill.pieces, ...tally(out.drill.off), unknown: out.drill.unknown.length, notWholeVoice: out.drill.notWholeVoice.length },
     tomClone: out.tomClone.length,
+    characters: { total: out.characters.length, wrong: out.characters.filter((c) => c.state === 'wrong').map((c) => c.speaker), twoRenditions: out.characters.filter((c) => c.state === 'two-renditions').map((c) => c.speaker), splitLabels: out.characters.filter((c) => c.split).map((c) => c.speaker) },
   };
   return out;
+}
+
+/**
+ * PER CHARACTER (job #932). The per-line counts above compare each line with its own role sex and can read 0/0/0 while one
+ * character speaks a woman's line and then a man's; this asks the question the learner hears: does each CHARACTER (speaker name
+ * within the course) keep ONE English voice across its whole lines, Listen pieces and Drill pieces? A character's sex is the sex
+ * of its HUMAN Welsh voice (the Welsh stays human, r-2026-11-08), the cast map only when no Welsh voice is known.
+ *   state 'clean'           one English voice, of the current cast for that sex (Charlotte f; Aran's PRO clone or his take m)
+ *   state 'two-renditions'  a man in Aran's own takes on some lines and his PRO clone on others — one man, two renditions (listed,
+ *                           left for Tom: a human take is kept until he rules)
+ *   state 'wrong'           any voice of the other sex, any voice outside the cast (Gemma, Olivia, a Tom clone), or an unknown voice
+ */
+function characterCensus(lines, drill, voices) {
+  const { STANDIN_VOICE } = require('../../../../services/shared/aran-clone-standin.cjs');
+  const { characterSex } = require('../../../../services/shared/pod-character-voice.cjs');
+  const CAST = { f: new Set(['71a7ad14-091c-4e8e-a314-022ece01c121']), m: new Set([canonVoice(STANDIN_VOICE), 'human_aran_eng']) };
+  const byId = new Map(lines.map((l) => [l.id, l]));
+  const chars = new Map();
+  const charOf = (l) => {
+    if (!chars.has(l.speaker)) chars.set(l.speaker, { speaker: l.speaker, welsh: {}, castGender: (l.voice && l.voice.gender) || null, lines: 0, english: {}, pieces: { whole: 0, listen: 0, drill: 0 }, clips: [] });
+    return chars.get(l.speaker);
+  };
+  const add = (c, surface, line, id, voice, text) => {
+    const v = canonVoice(voice) || '(unknown)';
+    c.english[v] = (c.english[v] || 0) + 1;
+    c.pieces[surface]++;
+    c.clips.push({ surface, line: line.split(':').pop(), id: id || null, voice: v, text });
+  };
+  for (const l of lines) {
+    const c = charOf(l);
+    c.lines++;
+    const w = l.audio && l.audio.target && l.audio.target.voice_id;
+    if (w) c.welsh[w] = (c.welsh[w] || 0) + 1;
+    const k = l.audio && l.audio.known;
+    add(c, 'whole', l.id, k && k.id, k && k.voice_id, l.known_text);
+    for (const s of (l.audio && l.audio.known_splits) || []) add(c, 'listen', l.id, s.id, s.voice_id, s.text);
+  }
+  for (const [turn, ps] of Object.entries((drill && drill.turns) || {})) {
+    const l = byId.get(turn);
+    if (!l) continue;
+    for (const p of ps) add(charOf(l), 'drill', turn, p[3], voices.get(bareId(p[3])) || null, p[1]);
+  }
+  return [...chars.values()].map((c) => {
+    const cs = characterSex({ characterWelshVoices: Object.keys(c.welsh).flatMap((v) => Array(c.welsh[v]).fill(v)), castGender: c.castGender });
+    const used = Object.keys(c.english);
+    const offCast = used.filter((v) => !cs.sex || cs.split || !CAST[cs.sex].has(v));
+    const state = offCast.length ? 'wrong' : used.length > 1 ? 'two-renditions' : 'clean';
+    return { speaker: c.speaker, sex: cs.sex, sexSource: cs.source, split: cs.split, welsh: c.welsh, lines: c.lines, pieces: c.pieces, english: c.english, state, offCast, clips: c.clips };
+  });
 }
 
 /** Same English words in North and South Drill, different clip: the take is the same, so the piece should be shared. */
@@ -121,9 +172,10 @@ async function main() {
   res.sharedDrift = sharedDrift(res.drills);
   delete res.drills;
   for (const c of COURSES) console.log(c, JSON.stringify(res.courses[c].summary));
+  for (const c of COURSES) for (const ch of res.courses[c].characters) console.log(c.padEnd(14), ch.state.padEnd(15), ch.speaker.padEnd(16), ch.sex, JSON.stringify(ch.english), JSON.stringify(ch.pieces));
   console.log('North/South same words, different clip:', res.sharedDrift.length);
   if (outFile) fs.writeFileSync(outFile, JSON.stringify(res, null, 1) + '\n');
 }
 
-module.exports = { censusCourse, sharedDrift, genderOf, VOICE_GENDER };
+module.exports = { censusCourse, characterCensus, sharedDrift, genderOf, VOICE_GENDER };
 if (require.main === module) main().catch((e) => { console.error(String(e && e.stack || e)); process.exit(1); });
