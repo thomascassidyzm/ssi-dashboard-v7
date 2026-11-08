@@ -178,7 +178,8 @@ module.exports = function podSearchRouter ({ getDb, resolveUser, canAccessCourse
     const index = buildIndex({
       pods, sentences, canon, canonTargets,
       cutsFor: (course) => readJsonKeys(path.join(CUTS_DIR, `${course}.cuts.json`), (j) => j.sentences),
-      piecesFor: (course) => readJsonKeys(path.join(piecesDir, `${course}.json`), (j) => j.turns),
+      // A split row's pieces are keyed per sentence (`<row>:s<n>`, wire-staging.cjs): the row has pieces too.
+      piecesFor: (course) => { const k = readJsonKeys(path.join(piecesDir, `${course}.json`), (j) => j.turns); return k && new Set([...k].map((id) => id.replace(/:s\d+$/, ''))) },
     })
     logger.info?.(`[PodSearch] indexed ${index.counts.pods} pods, ${index.counts.rows} rows, ${index.counts.lines} lines`)
     return index
