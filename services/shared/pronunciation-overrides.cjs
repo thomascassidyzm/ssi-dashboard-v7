@@ -119,7 +119,7 @@ const WORD_RULES = Object.freeze({
     ruling: 'Tom 2026-11-08, job #776 (Italian Pod 1: "Good morning Sarah", "risotto")',
     // When the rule went live on popty.app. A Cartesia clip of a line holding one of these words whose S3 object is older
     // was rendered WITHOUT it and is never reused (shared/pronunciation-reuse-guard.cjs). Move only forward, with the rule.
-    since: '2026-11-08T11:00:00Z',
+    since: '2026-11-08T10:35:24Z', // popty-production-api + phase8 restarted on 6ce1cae79
     words: Object.freeze([
       Object.freeze({ word: 'Sarah', say: '<<ˈ|s|ɛ|ɹ|ə>>', reading: 'SAIR-uh, vowel of "hair"' }),
       Object.freeze({ word: 'risotto', say: '<<ɹ|ɪ|ˈ|z|ɒ|t|oʊ>>', reading: 'ri-ZOT-oh, vowel of "lot"' }),
