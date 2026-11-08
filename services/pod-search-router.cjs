@@ -19,9 +19,11 @@
  *                                per course: target text, known text, speaker,
  *                                and whether the line has clips
  *   ops/pod-drill-cuts/<course>.cuts.json        whether it has verified cuts
- *   the app's podDrillPieces/<course>.json       whether it has drill pieces —
- *     read from POD_DRILL_PIECES_DIR (default: the learning-app checkout beside
- *     this repo). Unreadable → pieces are reported UNKNOWN (null), never "none".
+ *   ops/pod-drill/served/<course>.json           whether it has drill pieces —
+ *     Popty's own copy of the app's podDrillPieces/<course>.json, the same bytes,
+ *     written by tools/pods/pod-drill/pieces/wire-staging.cjs (job #628), so every
+ *     checkout (the prod one included) has it. POD_DRILL_PIECES_DIR overrides.
+ *     Unreadable → pieces are reported UNKNOWN (null), never "none".
  * Lines join across courses by (pod slug, global_order), the key the generator
  * flexes canonical lines into every course's pod with.
  *
@@ -45,7 +47,7 @@ const COURSE = /^[a-z]{3}(_[a-z]+)?_for_[a-z]{3}(_[a-z]+)?$/
 const SLUG = /^[a-z0-9_-]+$/i
 const RETIRED_SLUG = /-retired-/
 const CUTS_DIR = path.join(__dirname, '..', 'ops', 'pod-drill-cuts')
-const DEFAULT_PIECES_DIR = path.join(__dirname, '..', '..', 'ssi-learning-app', 'packages', 'player-vue', 'src', 'data', 'podDrillPieces')
+const DEFAULT_PIECES_DIR = path.join(__dirname, '..', 'ops', 'pod-drill', 'served')
 
 /** Case- and accent-blind, so "cafe" finds "café" and "Cafe". */
 const fold = (s) => String(s || '').normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase()
