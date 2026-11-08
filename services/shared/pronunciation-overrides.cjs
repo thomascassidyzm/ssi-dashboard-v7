@@ -112,6 +112,9 @@ const RULES = Object.freeze({
  * English, Tom 2026-11-08 (job #776, heard in Italian Pod 1, Tom-006 + Charlotte):
  *   Sarah   — British "Sair-ra", first vowel as in "hair", never "Sah-ra" as in father.
  *   risotto — "ris-OTT-oh", the short o of "lot", never "ris-OH-toe".
+ * Chosen BY EAR, not by theory (Tom, 2026-11-08, pick page d/255dfa2f, both voices): the IPA form for Sarah works; for
+ * risotto Sonic 3.6 ignored every IPA form tried (<<ɹ|ɪ|ˈ|z|ɒ|t|oʊ>>, <<r|ɪ|ˈ|z|ɒ|t|əʊ>>, <<ɹ|ɪ|ˈ|s|ɒ|t|oʊ>>) and only the
+ * plain-text respelling "rizz-otto" passed. So `say` may be a respelling as well as IPA; either is Cartesia-only here.
  * Applies to every English Cartesia voice, not just those two: the misreading is the model's, not the voice's.
  */
 const WORD_RULES = Object.freeze({
@@ -119,10 +122,11 @@ const WORD_RULES = Object.freeze({
     ruling: 'Tom 2026-11-08, job #776 (Italian Pod 1: "Good morning Sarah", "risotto")',
     // When the rule went live on popty.app. A Cartesia clip of a line holding one of these words whose S3 object is older
     // was rendered WITHOUT it and is never reused (shared/pronunciation-reuse-guard.cjs). Move only forward, with the rule.
-    since: '2026-11-08T10:35:24Z', // popty-production-api + phase8 restarted on 6ce1cae79
+    // Moved forward with the risotto respelling (11:11Z): clips made 10:35-11:15 carry the failed risotto IPA.
+    since: '2026-11-08T11:15:00Z',
     words: Object.freeze([
       Object.freeze({ word: 'Sarah', say: '<<ˈ|s|ɛ|ɹ|ə>>', reading: 'SAIR-uh, vowel of "hair"' }),
-      Object.freeze({ word: 'risotto', say: '<<ɹ|ɪ|ˈ|z|ɒ|t|oʊ>>', reading: 'ri-ZOT-oh, vowel of "lot"' }),
+      Object.freeze({ word: 'risotto', say: 'rizz-otto', reading: 'ri-ZOT-oh, vowel of "lot" (respelled: the IPA was ignored)' }),
     ]),
   }),
 })
