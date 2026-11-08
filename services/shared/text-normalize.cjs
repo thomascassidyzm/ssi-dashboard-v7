@@ -64,4 +64,40 @@ function podTtsText(text) {
   return sents.length > 1 ? sents.join(' … ') : String(text)
 }
 
-module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates, podTtsText, splitPodTurnSentences }
+/**
+ * THE POD PAUSE CUE IS NOT A WORD (job #813, 2026-11-08). podTtsText above makes "A. B." into "A. … B." for the
+ * synthesiser, and stores it that way, so ONE line of words has two spellings in course_audio. Lookups that asked
+ * for one spelling never saw a clip filed under the other, and the render route paid for a second take of the same
+ * words in the same voice: job #440·Y's English pod-1 fill (2026-10-26) asked with the old clip's cued text and
+ * rendered Tom-006 80f18176 / 7858bc28 beside the plain-text cd09add1 / d3a981c8 made 20 minutes earlier.
+ *
+ * The fold removes ONLY a cue: an ellipsis ("…" or "...") standing on its own AFTER a completed sentence stop and
+ * before whitespace or the end. That is exactly the token podTtsText inserts, so nothing a speaker says is removed.
+ * An ellipsis attached to a word ("Sarah… did you", "...I") is a hesitation INSIDE a sentence (the splice tool's
+ * ELLIPSIS_IS_HESITATION courses split on it) and is never folded, so lines that differ in delivery stay apart.
+ * normalizeForDb is untouched: it is byte-identical to SQL normalize_text() and keys the unique constraint.
+ */
+// Latin/Arabic stops: podTtsText joins with " … " and the space after the stop stays. CJK stops take no space, so
+// podTtsText's "你好。 … 谢谢" folds back to "你好。谢谢"; an unspaced "你好。…谢谢" is not its output and is kept.
+const POD_PAUSE_CUE = /(?<=[.!?؟])\s*(?:…|\.{3})(?=\s|$)/g
+const POD_PAUSE_CUE_CJK = /(?<=[。！？])\s+(?:…|\.{3})(?:\s+|$)/g
+function withoutPodPauseCues(text) {
+  return String(text == null ? '' : text).replace(POD_PAUSE_CUE_CJK, '').replace(POD_PAUSE_CUE, '')
+}
+
+/** Do two texts name ONE recording? Same audio key once pod pause cues are folded. */
+function sameRecordedWords(a, b) {
+  return normalizeForAudio(withoutPodPauseCues(a)) === normalizeForAudio(withoutPodPauseCues(b))
+}
+
+/**
+ * Every stored text_normalized a recording of these words may sit under: the text as given, its cue-folded form,
+ * and the cued form phase 8 stores a multi-sentence pod turn as. The key list a library-first lookup asks for.
+ */
+function recordingTextKeys(text) {
+  if (!text) return []
+  const plain = withoutPodPauseCues(text)
+  return [...new Set([text, plain, podTtsText(plain)].flatMap(audioKeyCandidates))]
+}
+
+module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates, podTtsText, splitPodTurnSentences, withoutPodPauseCues, sameRecordedWords, recordingTextKeys }

@@ -46,7 +46,7 @@
  * text_normalized is written by the SQL trigger's convention (see text-normalize.cjs).
  */
 
-const { normalizeForAudio, audioKeyCandidates, podTtsText } = require('./text-normalize.cjs')
+const { podTtsText, sameRecordedWords, recordingTextKeys } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')
@@ -104,7 +104,6 @@ function pickExistingClip(rows, want) {
 
 /** Every candidate row that may answer this request — the rule pickExistingClip ranks. */
 function usableClips(rows, want) {
-  const words = normalizeForAudio(want.text)
   const excluded = new Set((want.replacing || []).filter(Boolean).map(String))
   return (rows || []).filter(row =>
     row && row.s3_key &&
@@ -113,7 +112,8 @@ function usableClips(rows, want) {
     !isPodOnlyClip(row) &&
     !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
     row.veracity_pass !== false &&
-    row.text != null && normalizeForAudio(row.text) === words &&
+    // One recording, two spellings (job #813): a clip stored with phase 8's pod pause cue answers the plain words and back.
+    row.text != null && sameRecordedWords(row.text, want.text) &&
     tryCanonicalLanguage(row.language) === want.language &&
     (!want.voiceBound || tryCanonicalVoiceId(row.voice_id) === want.voiceId) &&
     // An intro slot is answered only by its own course (Tom, 2026-08-07).
@@ -151,7 +151,7 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
       return clipIndex.resolveClip(source, { ...want, includeOwnCourse: true }, pick)
     },
     async candidates(text) {
-      const keys = audioKeyCandidates(text)
+      const keys = recordingTextKeys(text)
       if (!keys.length) return []
       const out = []
       for (let page = 0; page < MAX_PAGES; page++) {
@@ -205,9 +205,8 @@ function memoryClipLibrary(rows = [], bytesFor = () => Buffer.from('existing-cli
     name: 'memory',
     rows,
     async candidates(text) {
-      const keys = new Set(audioKeyCandidates(text))
-      const words = normalizeForAudio(text)
-      return rows.filter(r => keys.has(r.text_normalized) || normalizeForAudio(r.text || '') === words)
+      const keys = new Set(recordingTextKeys(text))
+      return rows.filter(r => keys.has(r.text_normalized) || sameRecordedWords(r.text || '', text))
     },
     async bytes(row) { return bytesFor(row) },
   }
@@ -280,12 +279,11 @@ async function lookupForRender(want, lib = clipLibrary()) {
  */
 function clipsInLanguage(rows, { language, text }) {
   if (!language || !text) return []
-  const words = new Set([normalizeForAudio(text), normalizeForAudio(podTtsText(text))])
   const out = new Map()
   for (const row of rows || []) {
     if (!row || !row.s3_key || String(row.s3_key).startsWith('pending/')) continue
     if (isPodOnlyClip(row)) continue // a pod piece is not "the recording of these words" for a slot (job #628)
-    if (row.text == null || !words.has(normalizeForAudio(row.text))) continue
+    if (row.text == null || !sameRecordedWords(row.text, text)) continue
     if (!oneLanguage(language, row.language)) continue
     if (!out.has(String(row.id))) out.set(String(row.id), row)
   }

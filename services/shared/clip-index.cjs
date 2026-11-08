@@ -24,7 +24,7 @@
  */
 
 const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
-const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
+const { normalizeForAudio, recordingTextKeys } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
 const { isPodOnlyClip, withoutPodOnly } = require('./pod-audio.cjs')
@@ -172,7 +172,8 @@ async function lookupIndexed(supabase, language, text) {
     .from('clip_index')
     .select(`voice_id, course_audio!inner(${ROW_COLUMNS})`)
     .eq('language', language)
-    .eq('text_key', clipTextKey(text))
+    // Both spellings of one recording (plain and the pod " … " cue form, job #813): an index row keyed under either answers.
+    .in('text_key', [...new Set(recordingTextKeys(text).map(clipTextKey))])
   if (error) throw new Error(`clip index lookup failed (${error.message}) — refusing to decide blind`)
   return (data || []).map(r => r.course_audio).filter(Boolean)
 }
@@ -183,7 +184,7 @@ async function ownCourseRows(supabase, courseCode, text) {
     .from('course_audio')
     .select(ROW_COLUMNS)
     .eq('course_code', courseCode)
-    .in('text_normalized', audioKeyCandidates(text))
+    .in('text_normalized', recordingTextKeys(text))
     .not('s3_key', 'like', 'pending/%')
   if (error) throw new Error(`own-course clip lookup failed (${error.message}) — refusing to decide blind`)
   return data || []
@@ -195,7 +196,7 @@ async function ownCourseRows(supabase, courseCode, text) {
  * Paged; a group larger than the pages allow THROWS rather than truncating.
  */
 async function fallbackRows(supabase, text, { courseCode = null, ownCourseOnly = false } = {}) {
-  const keys = audioKeyCandidates(text)
+  const keys = recordingTextKeys(text) // plain + pod-cue spellings of one recording (job #813)
   if (!keys.length) return []
   const out = []
   for (let page = 0; page < FALLBACK_MAX_PAGES; page++) {
@@ -286,9 +287,9 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
   const courseOf = code => (code && courseMap.get(code)) || null
   const calls = { indexed: 0, own: 0, fallback: 0 }
   const matches = (r, text) => {
-    const keys = new Set(audioKeyCandidates(text))
+    const keys = new Set(recordingTextKeys(text))
     return r.s3_key && !String(r.s3_key).startsWith('pending/') &&
-      (keys.has(r.text_normalized) || clipTextKey(r.text) === clipTextKey(text))
+      (keys.has(r.text_normalized) || keys.has(clipTextKey(r.text)))
   }
   return {
     name: 'memory',
@@ -297,8 +298,8 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
     async courses() { return courseOf },
     async indexed(language, text) {
       calls.indexed++
-      const key = clipTextKey(text)
-      return index.filter(e => e.language === language && e.text_key === key).map(e => byId.get(e.audio_id)).filter(Boolean)
+      const keys = new Set(recordingTextKeys(text).map(clipTextKey))
+      return index.filter(e => e.language === language && keys.has(e.text_key)).map(e => byId.get(e.audio_id)).filter(Boolean)
     },
     async own(courseCode, text) { calls.own++; return rows.filter(r => r.course_code === courseCode && matches(r, text)) },
     async fallback(text, { courseCode = null, ownCourseOnly = false } = {}) {
