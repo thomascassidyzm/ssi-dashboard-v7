@@ -52,7 +52,7 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
 (async () => {
   const args = process.argv.slice(2), dry = args.includes('--dry'), route = args.includes('--route'), courses = args.filter((a) => !a.startsWith('--'));
   const store = fs.existsSync(STORE) ? JSON.parse(fs.readFileSync(STORE, 'utf8')) : { note: 'pod piece clips: audioId is the pod-only course_audio row (older entries: a trial_ id, mapped by ops/pod-audio-rows/trial-to-row.json)', clips: {}, uses: {} };
-  let spent = Object.values(store.clips).reduce((n, c) => n + (c.charsSpent || 0), 0), would = 0, made = 0, hangs = 0, runSpent = 0;
+  let spent = Object.values(store.clips).reduce((n, c) => n + (c.charsSpent || 0), 0), would = 0, made = 0, hangs = 0, runSpent = 0, adopted = 0;
   for (const course of courses) {
     const ws = await wants(course);
     store.uses[course] = ws.map((w) => ({ turn: w.turn, side: w.side, key: `${w.voice}|${w.text}` }));
@@ -81,6 +81,16 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
           if (hangs >= 10) throw new Error('10 hangs: stopping');
         }
       }
+      // IDENTITY_TAKEN (job #671): the course already has a pod row of these words in this voice and side. That row is the
+      // clip: it goes in the ledger (the render that found it is billed and counted) and nothing is rendered again for it.
+      if (!j.ok && j.code === 'IDENTITY_TAKEN' && j.existing && j.existing.audioId) {
+        const billed = Number((String(j.error).match(/rendered and stored as (trial_[0-9A-F-]{36})/i) || [])[1] ? w.text.length : 0);
+        store.clips[key] = { audioId: j.existing.audioId, s3Key: j.existing.s3Key, charsSpent: billed, source: 'existing-pod-row', voice: w.voice, course, note: 'IDENTITY_TAKEN: adopted the existing pod row (job #671)' };
+        spent += billed; runSpent += billed; adopted++; fresh++;
+        fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
+        console.log(`adopted ${course} ${w.turn} ${w.side}: ${j.existing.audioId}`);
+        continue;
+      }
       if (!j.ok) { fs.writeFileSync(STORE, JSON.stringify(store, null, 1)); console.log(`REFUSED ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
       if (!j.trialAudioId || String(j.audioId).startsWith('trial_')) { fs.writeFileSync(STORE, JSON.stringify(store, null, 1)); console.log(`NOT FILED AS A ROW ${course} ${w.turn} ${w.side}: ${JSON.stringify(j).slice(0, 400)}`); process.exit(3); }
       store.clips[key] = { audioId: j.audioId, trialAudioId: j.trialAudioId, podRole: j.podRole, s3Key: j.s3Key, playPath: j.playPath, charsSpent: j.charsSpent, source: j.source, voice: w.voice, course };
@@ -90,5 +100,5 @@ const bodyOf = (w, dryRun) => ({ courseCode: w.course, role: w.role, text: w.tex
     if (!dry) fs.writeFileSync(STORE, JSON.stringify(store, null, 1));
     console.log(`${dry ? 'dry ' : ''}${course}: ${ws.length} sides, ${fresh} new, ${shared} shared${dry ? `, ${chars} chars, ${other} not Cartesia` : ''}`);
   }
-  console.log(dry ? `would spend ${would} chars` : `spent ${spent} chars in all, ${made} clips this run`);
+  console.log(dry ? `would spend ${would} chars` : `spent ${spent} chars in all, ${runSpent} this run, ${made} clips made, ${adopted} existing rows adopted`);
 })().catch((e) => { console.error(String(e)); process.exit(2); });
