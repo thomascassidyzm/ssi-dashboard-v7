@@ -3285,7 +3285,7 @@ function replaceSyntheticPodEnglish(args) {
 async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, link = linkClips }) {
   const out = { linked: [], refused: [] }
   const { voices } = await policyVoicesForLanguage(db, recordist.language)
-  // Every card pod (job #562): North's synthetic clips (POD_ENGLISH_REPLACE_PODS) and, on any card pod, a slot still holding
+  // Every card pod (job #562): the replace pods' synthetic clips (POD_ENGLISH_REPLACE_PODS: North #555, South #878) and, on any card pod, a slot still holding
   // a take of a reader of the other gender. Only copies of this reader's gender move (planPodEnglishReplacements).
   const podIds = podEnglish.podEnglishPodsFor(recordist, voices)
   if (!podIds.length) return out

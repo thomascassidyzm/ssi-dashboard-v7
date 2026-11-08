@@ -199,10 +199,17 @@ function resolvePodEnglish(sentence, recordist, policyVoices, podCastByCourse = 
 
 /**
  * NORTH'S SYNTHETIC POD 1 ENGLISH IS REPLACED BY HIS TAKES (Aran, 2026-10-29 14:39Z, job #555: "Replace North's computer
- * English with your Pod 1 takes as they land? Y"). The approved act the fill-only rule above waited for, for these pods
- * only. South is not here: its slots were empty and fill.
+ * English with your Pod 1 takes as they land? Y"). The approved act the fill-only rule above waited for, for these pods.
+ *
+ * SOUTH JOINED ON 2026-11-08 (job #878). South's slots were empty on 29 Oct and filled from his takes, and in the window
+ * before job #562's gender gate (14:46Z that day) the fill put his take on 65 of South's WOMEN's lines (Learner 63,
+ * Sarah 2): a male English voice against South's male Local, a same-voice exchange (Tom: zero tolerance, 2026-08-23).
+ * Job #878 moved those 65 slots onto the female synthetic clip of the same words (xai_bedd6226, the voice South's other
+ * women speak in), so they now hold SYNTHETIC clips and Catrin's takes must be able to replace them, as they already
+ * replace North's women's synthetic lines. Gender still decides (planPodEnglishReplacements genderOf): his takes never
+ * move a woman's line, synthetic or not; hers never move a man's.
  */
-const POD_ENGLISH_REPLACE_PODS = Object.freeze(['cym_n_for_eng:pod-1'])
+const POD_ENGLISH_REPLACE_PODS = Object.freeze(['cym_n_for_eng:pod-1', 'cym_s_for_eng:pod-1'])
 
 /** Lines another job owns: job #551 swaps the two Sian lines make-before-break. This sweep never touches them. */
 const POD_ENGLISH_REPLACE_LEFT_TO = Object.freeze({
