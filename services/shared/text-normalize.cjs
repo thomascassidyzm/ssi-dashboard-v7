@@ -85,19 +85,43 @@ function withoutPodPauseCues(text) {
   return String(text == null ? '' : text).replace(POD_PAUSE_CUE_CJK, '').replace(POD_PAUSE_CUE, '')
 }
 
-/** Do two texts name ONE recording? Same audio key once pod pause cues are folded. */
+/**
+ * TYPOGRAPHY IS NOT DELIVERY (job #863, 2026-11-08, finishing #813). Two spellings of the same characters that no
+ * voice says differently must resolve to ONE recording, or the render route pays for a second take of the same line:
+ *   - the ellipsis character "…" and three dots "...";
+ *   - curly and straight quotes and apostrophes (’ ‘ → ', “ ” → ").
+ * Already folded before this, by normalizeForDb / normalizeForAudio: case, leading/trailing and repeated whitespace,
+ * and a trailing . ! or CJK stop; by withoutPodPauseCues: the pod " … " cue.
+ * DELIBERATELY NOT FOLDED, because the voice says them differently: a question mark (Tom 2026-10-13: "a question mark
+ * does" distinguish a recording — the intonation rises; see the header of this file), and every INTERNAL comma, full
+ * stop or other mark (each is spoken as a pause, so "Good morning, Sarah" and "Good morning Sarah" are two takes). A
+ * fold never touches a letter or digit, so lines whose words differ can never be merged by it.
+ * normalizeForDb is untouched (it is the SQL key); keyed lookups reach every stored spelling through recordingTextKeys.
+ */
+function foldTypography(text) {
+  return String(text == null ? '' : text).replace(/…/g, '...').replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"')
+}
+
+/** The stored spellings of these characters a keyed lookup must ask for: as given, typography folded, and the house style (… and ’). */
+function typographySpellings(text) {
+  const folded = foldTypography(text)
+  return [...new Set([String(text), folded, folded.replace(/\.{3}/g, '…').replace(/'/g, '\u2019')])]
+}
+
+/** Do two texts name ONE recording? Same audio key once pod pause cues and typography (foldTypography) are folded. */
 function sameRecordedWords(a, b) {
-  return normalizeForAudio(withoutPodPauseCues(a)) === normalizeForAudio(withoutPodPauseCues(b))
+  return normalizeForAudio(foldTypography(withoutPodPauseCues(a))) === normalizeForAudio(foldTypography(withoutPodPauseCues(b)))
 }
 
 /**
  * Every stored text_normalized a recording of these words may sit under: the text as given, its cue-folded form,
- * and the cued form phase 8 stores a multi-sentence pod turn as. The key list a library-first lookup asks for.
+ * and the cued form phase 8 stores a multi-sentence pod turn as, each in its typography spellings (job #863). The key
+ * list a library-first lookup asks for. A line mixing quote styles is found only under its own spelling and the two uniform ones.
  */
 function recordingTextKeys(text) {
   if (!text) return []
   const plain = withoutPodPauseCues(text)
-  return [...new Set([text, plain, podTtsText(plain)].flatMap(audioKeyCandidates))]
+  return [...new Set([text, plain, podTtsText(plain)].flatMap(typographySpellings).flatMap(audioKeyCandidates))]
 }
 
-module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates, podTtsText, splitPodTurnSentences, withoutPodPauseCues, sameRecordedWords, recordingTextKeys }
+module.exports = { normalizeForAudio, normalizeForDb, audioKeyCandidates, podTtsText, splitPodTurnSentences, withoutPodPauseCues, foldTypography, sameRecordedWords, recordingTextKeys }
