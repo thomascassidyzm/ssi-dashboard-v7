@@ -17,7 +17,7 @@
  *   - One courses.content_version patch bump per request that moved a pointer — a repoint is invisible
  *     to a phone holding the cached bundle otherwise.
  */
-const { normalizeForDb } = require('./text-normalize.cjs')
+const { normalizeForDb, sameRecordedWords } = require('./text-normalize.cjs')
 const { bumpCourseVersion } = require('./course-version.cjs')
 const { podSentencesOf } = require('./pod-sentence-split.cjs')
 const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
@@ -111,13 +111,18 @@ async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheck
   if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text
-    if (normalizeForDb(String(clip.text || '')) !== normalizeForDb(String(want || ''))) {
+    // A pod line's words and its clip's words are compared with the pod pause cue folded (job #813): "A. … B." is the
+    // recording of "A. B.", so moving a line onto the one shared take of its words is never a TEXT_MISMATCH.
+    const sameWords = slot.kind === 'pod_sentence'
+      ? sameRecordedWords(clip.text || '', want || '')
+      : normalizeForDb(String(clip.text || '')) === normalizeForDb(String(want || ''))
+    if (!sameWords) {
       // A pod line's clip is often rendered from a paced form of its words ("Boa tarde. … O que vai ser?" for "Boa tarde. O que
       // vai ser?", por_for_eng Pod 1, job #864). Re-voicing that clip is legal when the new clip says exactly what the clip it
       // replaces says: replace:true + expectCurrent naming the clip the line holds now.
       const revoice = slot.kind === 'pod_sentence' && link.replace === true && link.expectCurrent != null && String(link.expectCurrent) === String(row[col])
       const { data: was } = revoice ? await db.from('course_audio').select('id, text').eq('id', String(link.expectCurrent)).maybeSingle() : { data: null }
-      if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+      if (!was || !sameRecordedWords(was.text || '', clip.text || '')) {
         return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
       }
     }
@@ -166,8 +171,8 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   // position always means one sentence; the line's English then rides into the write as a guard.
   const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : []
   const ownSentence = sentences.length === arr.length ? sentences[arr.indexOf(old)] : null
-  const saysOwnSentence = ownSentence != null && normalizeForDb(ownSentence) === normalizeForDb(String(clip.text || ''))
-  if (!saysOwnSentence && (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || '')))) {
+  const saysOwnSentence = ownSentence != null && sameRecordedWords(ownSentence, clip.text || '')
+  if (!saysOwnSentence && (!was || !sameRecordedWords(was.text || '', clip.text || ''))) {
     return { ...out, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", the clip it replaces says "${was ? was.text : '(missing)'}"` }
   }
   if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
