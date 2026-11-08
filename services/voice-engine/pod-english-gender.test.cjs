@@ -19,7 +19,7 @@ const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const ARAN = 'human_aran_eng', CATRIN = 'human_catrinlliar_eng'
 const N = 'cym_n_for_eng:pod-1', S = 'cym_s_for_eng:pod-1'
 const QUIET = { log() {}, info() {}, warn() {}, error() {} }
-const U = Object.fromEntries(['tts-sarah', 'tts-neighbour', 'tts-learner', 'aran-sarah', 'aran-neighbour', 'aran-learner', 'filed1', 'tts-s-learner']
+const U = Object.fromEntries(['tts-sarah', 'tts-neighbour', 'tts-learner', 'aran-sarah', 'aran-neighbour', 'aran-learner', 'filed1']
   .map((n, i) => [n, `00000000-0000-4000-8000-${String(i + 1).padStart(12, '0')}`]))
 const clip = (id, voice_id, text, origin, created_at = '2026-10-29T14:45:00Z') => ({ id, voice_id, language: 'eng', origin, text, text_normalized: normalizeForAudio(text), created_at })
 
@@ -183,28 +183,7 @@ describe('Pod 1 English by speaker gender — the take', () => {
     expect(tables.course_audio.map((c) => c.id)).toEqual(expect.arrayContaining([U['aran-sarah'], U['tts-sarah']]))
   })
 
-  // Job #878 (2026-11-08): 65 South women's lines that held his take were moved back onto a female synthetic clip. South is
-  // now a replace pod, so the synthetic waits for Catrin's take and his takes still never touch a woman's line.
-  const withSouthLearnerSynthetic = () => {
-    const tables = fixture()
-    tables.listening_pod_sentences.find((s) => s.id === `${S}:SC09-S003`).known_audio_id = U['tts-s-learner']
-    tables.course_audio.push(clip(U['tts-s-learner'], 'xai_bedd6226', 'Can we pay?', 'tts'))
-    return tables
-  }
-  it('his take never replaces South\'s synthetic woman\'s line (job #878)', async () => {
-    const tables = withSouthLearnerSynthetic()
-    await postTake(tables, ARAN, `podeng:${N}:SC09-S003`, 'Can we pay?')
-    expect(slot(tables, `${N}:SC09-S003`)).toBe(U['filed1'])        // North's Learner is a man: his
-    expect(slot(tables, `${S}:SC09-S003`)).toBe(U['tts-s-learner']) // South's Learner is a woman: stays synthetic
-  })
-  it('Catrin\'s take replaces South\'s synthetic woman\'s line, the synthetic clip kept (job #878)', async () => {
-    const tables = withSouthLearnerSynthetic()
-    await postTake(tables, CATRIN, `podeng:${S}:SC09-S003`, 'Can we pay?')
-    expect(slot(tables, `${S}:SC09-S003`)).toBe(U['filed1'])
-    expect(slot(tables, `${N}:SC09-S003`)).toBe(U['tts-learner'])   // North's Learner is a man: not hers
-    expect(tables.course_audio.some((c) => c.id === U['tts-s-learner'])).toBe(true)
-  })
-  it('both Welsh Pod 1s are replace pods (job #555 North, job #878 South)', () => {
-    expect(pe.POD_ENGLISH_REPLACE_PODS).toEqual([N, S])
+  it('South is not a replace pod while its casting is checked with Aran (job #878 hold)', () => {
+    expect(pe.POD_ENGLISH_REPLACE_PODS).toEqual([N])
   })
 })
