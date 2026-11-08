@@ -1,0 +1,123 @@
+{
+ "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+ "lines": [
+  {
+   "course": "cym_n_for_eng",
+   "line": "SC07-S001",
+   "speaker": "Cafe Barista",
+   "whole": {
+    "text": "Good morning. What can I get you?",
+    "from": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [
+    {
+     "i": 0,
+     "text": "Good morning.",
+     "from": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "What can I get you?",
+     "from": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+     "fromVoice": "xai_gfzdpspr5fdp"
+    }
+   ],
+   "drill": []
+  },
+  {
+   "course": "cym_s_for_eng",
+   "line": "SC07-S001",
+   "speaker": "Cafe Barista",
+   "whole": {
+    "text": "Good morning. … What can I get you?",
+    "from": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "fromVoice": "xai_gfzdpspr5fdp"
+   },
+   "splits": [],
+   "drill": [
+    {
+     "i": 0,
+     "text": "Good morning.",
+     "from": "2195c138-3a77-4efb-b127-6e104d44a437.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    },
+    {
+     "i": 1,
+     "text": "What can I get you?",
+     "from": "9d93c9e6-b027-4bb0-86b2-e5616a910739.v2",
+     "fromVoice": "gfzdpspr5fdp"
+    }
+   ]
+  }
+ ],
+ "links": {
+  "cym_n_for_eng": [
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "known",
+    "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "replace": true,
+    "expectCurrent": "bbd6392f-7419-44c7-a755-0a04c80107fd"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "knownsegment",
+    "audioId": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+    "replace": true,
+    "expectCurrent": "8084f9b1-cba3-4b25-9b40-fa518bbb4301"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "knownsegment",
+    "audioId": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
+    "replace": true,
+    "expectCurrent": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   }
+  ],
+  "cym_s_for_eng": [
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+    "role": "known",
+    "audioId": "4fe3878f-fa85-46ad-ad51-9f241ca64069",
+    "replace": true,
+    "expectCurrent": "bbd6392f-7419-44c7-a755-0a04c80107fd"
+   }
+  ]
+ },
+ "undo": {
+  "cym_n_for_eng": [
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "known",
+    "audioId": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "replace": true,
+    "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "knownsegment",
+    "audioId": "8084f9b1-cba3-4b25-9b40-fa518bbb4301",
+    "replace": true,
+    "expectCurrent": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754"
+   },
+   {
+    "podSentenceId": "cym_n_for_eng:pod-1:SC07-S001",
+    "role": "knownsegment",
+    "audioId": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+    "replace": true,
+    "expectCurrent": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4"
+   }
+  ],
+  "cym_s_for_eng": [
+   {
+    "podSentenceId": "cym_s_for_eng:pod-1:SC07-S001",
+    "role": "known",
+    "audioId": "bbd6392f-7419-44c7-a755-0a04c80107fd",
+    "replace": true,
+    "expectCurrent": "4fe3878f-fa85-46ad-ad51-9f241ca64069"
+   }
+  ]
+ }
+}

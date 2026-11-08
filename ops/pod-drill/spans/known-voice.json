@@ -1,0 +1,23 @@
+{
+ "note": "Welsh Pod 1 English Drill pieces re-voiced to follow the course casting (job #891, tools/pods/pod-drill/pieces/recast-welsh-english.cjs). wire-staging.cjs swaps each piece's English clip from `from` to `to`, refusing if the piece no longer says `known` or holds neither.",
+ "pieces": [
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S001",
+   "i": 0,
+   "known": "Good morning.",
+   "from": "2195c138-3a77-4efb-b127-6e104d44a437.v2",
+   "to": "eeaeb4f6-5ac2-4a96-949f-f50ea4654754",
+   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "fromVoice": "gfzdpspr5fdp"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S001",
+   "i": 1,
+   "known": "What can I get you?",
+   "from": "9d93c9e6-b027-4bb0-86b2-e5616a910739.v2",
+   "to": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4",
+   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "fromVoice": "gfzdpspr5fdp"
+  }
+ ]
+}
