@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "eventId": "1e607582-6f8b-4896-87e5-ee1acaf5eccb",
+ "contentVersion": "0.0.245",
+ "linked": 2,
+ "results": [
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S001",
+   "role": "knownsegment",
+   "audioId": "38e91e01-f94c-4b84-8c00-7ddec6efb4e6",
+   "before": "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+   "voiceId": "human_aran_eng",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+    "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   ]
+  },
+  {
+   "slot": "cym_n_for_eng:pod-1:SC03-S001",
+   "role": "knownsegment",
+   "audioId": "38190ad2-4b26-4b47-b999-7c56bcfcf871",
+   "before": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+   "voiceId": "human_aran_eng",
+   "ok": true,
+   "changed": true,
+   "arrayFrom": [
+    "38e91e01-f94c-4b84-8c00-7ddec6efb4e6",
+    "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+   ]
+  }
+ ]
+}

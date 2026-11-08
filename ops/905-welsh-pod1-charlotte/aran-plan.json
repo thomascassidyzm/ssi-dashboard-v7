@@ -1,0 +1,40 @@
+{
+ "note": "Men’s Listen pieces under Aran’s whole take: the #570 cutter refused all 8 lines (no clean pauses); SC03-S001 alone is covered by Aran’s existing cut pieces of the same words (SC11-S001, SC08-S001), linked here. The other 7 are left as they are (taste-safe default) and listed.",
+ "courses": {
+  "cym_n_for_eng": {
+   "links": [
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC03-S001",
+     "role": "knownsegment",
+     "audioId": "38e91e01-f94c-4b84-8c00-7ddec6efb4e6",
+     "replace": true,
+     "expectCurrent": "4c2e16c3-42d4-4140-b936-12c0f8a0c815"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC03-S001",
+     "role": "knownsegment",
+     "audioId": "38190ad2-4b26-4b47-b999-7c56bcfcf871",
+     "replace": true,
+     "expectCurrent": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d"
+    }
+   ],
+   "undo": [
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC03-S001",
+     "role": "knownsegment",
+     "audioId": "4c2e16c3-42d4-4140-b936-12c0f8a0c815",
+     "replace": true,
+     "expectCurrent": "38e91e01-f94c-4b84-8c00-7ddec6efb4e6"
+    },
+    {
+     "podSentenceId": "cym_n_for_eng:pod-1:SC03-S001",
+     "role": "knownsegment",
+     "audioId": "03f6f8f8-caba-4b34-bf79-1ca2c1a25f4d",
+     "replace": true,
+     "expectCurrent": "38190ad2-4b26-4b47-b999-7c56bcfcf871"
+    }
+   ],
+   "drill": []
+  }
+ }
+}

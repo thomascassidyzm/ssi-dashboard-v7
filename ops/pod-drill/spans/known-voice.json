@@ -2,49 +2,549 @@
  "note": "Welsh Pod 1 English Drill pieces re-voiced to follow the course casting (job #891; women's pieces moved to Charlotte by job #905, r-2026-11-08 \"Charlotte is the female English pod, not Gemma\"; men's pieces cut from Aran's own takes). wire-staging.cjs swaps each piece's English clip from `from` to `to`, refusing if the piece no longer says `known` or holds neither.",
  "pieces": [
   {
+   "turn": "cym_n_for_eng:pod-1:SC01-S004",
+   "i": 0,
+   "known": "Yes, I've got a busy day today.",
+   "from": "570aafe9-6553-4fea-aa92-7e05f37f8f47.v2",
+   "to": "972eda0e-d2fb-4fb9-963d-4fc55ce78428",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC01-S004",
+   "i": 1,
+   "known": "I hope you have a good day.",
+   "from": "23e3a553-42cd-4707-ac5c-4a40c1ed5270.v2",
+   "to": "fdd9f394-9050-4c21-bfe4-b076eacdf9a7",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC01-S004",
+   "i": 2,
+   "known": "See you later.",
+   "from": "13a852cd-95c0-49fd-a568-6195301ddff2",
+   "to": "f35ce5c8-0f84-4e48-b4d8-60caf6e39b79",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC04-S002",
+   "i": 0,
+   "known": "Hello!",
+   "from": "382bcb43-4d9f-48d3-bbc9-b83d2354dd9b.v2",
+   "to": "2fed93ba-c56c-4b85-a8fb-7f6ec88c2da4",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC04-S002",
+   "i": 1,
+   "known": "I'm sorry but I can't talk at the moment.",
+   "from": "7be3491e-22d9-4ab8-bee4-2a9c4ad64577.v2",
+   "to": "b27c78db-eb3e-46ce-8d9f-1f869db4d2a8",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC04-S002",
+   "i": 2,
+   "known": "I need to go home now.",
+   "from": "1d931f5f-10b8-4586-bd81-6e840f84b757.v2",
+   "to": "950fc6a0-856a-4c75-ac41-f80ad29ab086",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC04-S002",
+   "i": 3,
+   "known": "Can we talk tomorrow?",
+   "from": "3dcd2fda-3e80-42aa-b357-e74ebc426897.v2",
+   "to": "dfbb83cc-91cc-4cfb-92ef-cdc7c5f1068b",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S002",
+   "i": 0,
+   "known": "My name is Anna.",
+   "from": "29481236-f985-43e2-a310-9e2c6ef77fd4",
+   "to": "980f1917-ef42-407a-bf0c-5ff01d4c82ee",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S002",
+   "i": 1,
+   "known": "And you?",
+   "from": "389291c4-bb37-4663-a08f-0c54a55b57a4",
+   "to": "e2c97f05-be3a-4760-a372-33d397eb6f20",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S004",
+   "i": 0,
+   "known": "Pleased to meet you too.",
+   "from": "5e10bbf8-c05d-47b9-be3e-769d6e602aee",
+   "to": "e4b2f402-4eec-42c7-8dba-0ce89808fb56",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S004",
+   "i": 1,
+   "known": "Where are you from?",
+   "from": "16320039-0471-4f30-8d04-87680c0751cb",
+   "to": "db9d49e1-9e1b-4628-8c56-f357d19cd5db",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S006",
+   "i": 0,
+   "known": "I'm from France.",
+   "from": "f16e0625-8601-48c6-b84d-434621c23547",
+   "to": "fb50df38-da5c-4b00-923c-adae5e6b2d6c",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S006",
+   "i": 1,
+   "known": "I've been here for two years.",
+   "from": "62621905-3f04-4e3c-b727-b48d95bc6cfc",
+   "to": "c7170202-9385-4077-9228-0e3565861df7",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S008",
+   "i": 0,
+   "known": "I'm a nurse, at the hospital just round the corner.",
+   "from": "9ffdd3ae-4d98-40f7-8a67-ceb9066020ab",
+   "to": "23ea6f13-fbf8-4389-b727-63f30bfcb3f9",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC06-S008",
+   "i": 1,
+   "known": "And you?",
+   "from": "389291c4-bb37-4663-a08f-0c54a55b57a4",
+   "to": "e2c97f05-be3a-4760-a372-33d397eb6f20",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC07-S014",
+   "i": 0,
+   "known": "Would you like to sit-in?",
+   "from": "6c510348-47ac-45c6-83c6-27015d24acb8",
+   "to": "a1469259-28c5-4646-8d0b-1ffe0462a8b4",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC07-S014",
+   "i": 1,
+   "known": "The table by the window is free.",
+   "from": "4980e8a9-9abd-459c-a100-26d65f04c381",
+   "to": "bd53199f-04f6-484a-9152-d5b301ee5e68",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S002",
+   "i": 0,
+   "known": "I'd like a pint, please.",
+   "from": "f0d30a77-1ba7-44b3-a779-a25c01062daf",
+   "to": "f0de20c9-01e8-443e-bc85-95a14e028d6e",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S002",
+   "i": 1,
+   "known": "What ales do you have on?",
+   "from": "05949561-fc4d-4b3c-acbf-13cc1cb7d11f",
+   "to": "468a25d0-70fb-48b6-a50a-d71bb26e56cf",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S012",
+   "i": 0,
+   "known": "I'm not sure if I'm hungry.",
+   "from": "315c2446-ccb9-48b7-b48f-33a930295c01",
+   "to": "863356d7-0815-45c9-afe4-620ef0a918db",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S012",
+   "i": 1,
+   "known": "Do you have a menu?",
+   "from": "8559f0d7-1807-4158-85b0-8fafc4283c5a",
+   "to": "244a58e5-000d-4caa-9dda-09ae00fe01a0",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S014",
+   "i": 0,
+   "known": "Can we have some bread?",
+   "from": "93cd8bea-a4ef-485e-81c4-1fc4ecd96c3f",
+   "to": "5ec3fe06-94bd-49b3-93fc-89df091d7b8e",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC08-S014",
+   "i": 1,
+   "known": "And a bowl of chips for the table.",
+   "from": "5ce8bd69-258e-4ba8-92f8-94e104832c6a",
+   "to": "87567c8d-75e9-4773-a3cc-c306047dd534",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S009",
+   "i": 0,
+   "known": "I'll have the lamb, please.",
+   "from": "530db4e3-89f5-4769-8489-bff9a5c3e6d7",
+   "to": "d9bdff01-48ca-4d88-90e1-fae75490a201",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S009",
+   "i": 1,
+   "known": "With a side of greens.",
+   "from": "27458dee-24af-4238-aa19-00cb2f3796cc",
+   "to": "f02f1eb3-0c6b-4969-a6bb-cdf5224d58bd",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S010",
+   "i": 0,
+   "known": "And the risotto for me.",
+   "from": "ae988f24-e8dd-422d-865a-d55ebec773cc",
+   "to": "efbdf9a4-0b61-4e95-b451-068db5382409",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S010",
+   "i": 1,
+   "known": "With a small green salad to start.",
+   "from": "3c7ed895-074b-4431-86d9-8c469c3c6b9b",
+   "to": "4c55a03c-a8f6-404f-9bd6-c48075e42a7f",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S016",
+   "i": 0,
+   "known": "Just two coffees, please.",
+   "from": "9acd43ea-3c51-47e7-96b7-186c228a4bdf",
+   "to": "423696a0-c25e-40cc-8949-69fede69efab",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S016",
+   "i": 1,
+   "known": "Decaf for me.",
+   "from": "74a5c3fe-d737-4617-a0b9-6fcd721699ee",
+   "to": "8c8b9e5e-0807-452b-9891-13d29c963f6a",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S017",
+   "i": 0,
+   "known": "And the bill, when you're ready.",
+   "from": "4b0a1cda-6a5b-481f-b4cc-d725b8b0f75e",
+   "to": "4717b675-b604-479c-a993-4b7a9b2d3004",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC09-S017",
+   "i": 1,
+   "known": "Could we split it?",
+   "from": "71a5ffc4-261f-4566-a951-31705d180593",
+   "to": "8656daac-6de8-4761-83b4-dfdc53779eaa",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
    "turn": "cym_n_for_eng:pod-1:SC11-S002",
    "i": 0,
    "known": "Welcome.",
    "from": "9db46f9c-db5c-455d-a3d3-a4e63d2ed732.v2",
-   "to": "e2df07fc-3d50-43f9-9119-bdf7664c93b9",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "cf57000f-279a-46e1-bd51-af40ef38518f",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "e2df07fc-3d50-43f9-9119-bdf7664c93b9"
   },
   {
    "turn": "cym_n_for_eng:pod-1:SC11-S002",
    "i": 1,
    "known": "Yes, you have a double room for three nights.",
    "from": "07c158f2-1838-4ed4-b954-08b2f1f3fe60",
-   "to": "224df189-a41a-4f6a-afa5-763e216b611c",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "xai_gfzdpspr5fdp"
+   "to": "e0503d20-1a70-4203-b99e-dcabe4f24913",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "224df189-a41a-4f6a-afa5-763e216b611c"
   },
   {
    "turn": "cym_n_for_eng:pod-1:SC11-S002",
    "i": 2,
    "known": "Could I see some ID, please?",
    "from": "08eb24c4-de32-4b3f-97ca-86f148a28493",
-   "to": "fa11fda4-6131-4795-9214-bc43e52c4bfc",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "xai_gfzdpspr5fdp"
+   "to": "299227f4-c544-4910-b40a-74f73ac070b9",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "fa11fda4-6131-4795-9214-bc43e52c4bfc"
   },
   {
    "turn": "cym_n_for_eng:pod-1:SC11-S012",
    "i": 0,
    "known": "It's on the welcome card in your room.",
    "from": "d492129c-ef67-4318-8691-1265491b6b00",
-   "to": "c176a01b-1a24-464c-b804-23ca783436b7",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "ab78a8f7-42da-4d74-8315-38b5ba5c37fd",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "c176a01b-1a24-464c-b804-23ca783436b7"
   },
   {
    "turn": "cym_n_for_eng:pod-1:SC11-S012",
    "i": 1,
    "known": "Have a lovely stay.",
    "from": "2a75144b-24cd-4bd8-89cf-99f92a97acf5.v2",
-   "to": "23a15f0c-59f9-4f3e-95a1-750d8914e48b",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "386d30ad-adff-4376-b4ae-762f16b02505",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "23a15f0c-59f9-4f3e-95a1-750d8914e48b"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC12-S001",
+   "i": 0,
+   "known": "Good morning.",
+   "from": "3b602ad8-5853-4f6b-a66c-c3b47c0adb61.v2",
+   "to": "2e48c420-08f1-4875-9578-6ae20b2c04d2",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC12-S001",
+   "i": 1,
+   "known": "I'm not feeling great - could you recommend something?",
+   "from": "19b55144-4238-472c-aa55-931551982b3a",
+   "to": "0c679395-4904-4482-bf84-767354961e3d",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC13-S008",
+   "i": 0,
+   "known": "Wonderful.",
+   "from": "a882d7be-cc44-4b5e-b721-574a64e3dec6",
+   "to": "ce06e279-aa04-4ef0-ae05-21f5c2f84619",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC13-S008",
+   "i": 1,
+   "known": "And is there a cashpoint nearby?",
+   "from": "faf4b803-74ab-424a-9c99-5dd2b31b9a6c",
+   "to": "d8ccb99c-6a9f-492f-b0f4-7b46cec60baf",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC14-S007",
+   "i": 0,
+   "known": "Here we are.",
+   "from": "915822ef-0209-4fe4-9931-b746cf2cc8c6",
+   "to": "2a60119d-58ab-4701-860c-f6a905b137ec",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_n_for_eng:pod-1:SC14-S007",
+   "i": 1,
+   "known": "That's twelve pound fifty.",
+   "from": "d95f05e3-46f0-41d7-97f9-61c4fbf9d097",
+   "to": "2d88b547-9e19-48a1-b456-e2dfaf6d5003",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC04-S002",
+   "i": 0,
+   "known": "Hello!",
+   "from": "382bcb43-4d9f-48d3-bbc9-b83d2354dd9b.v2",
+   "to": "2fed93ba-c56c-4b85-a8fb-7f6ec88c2da4",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC04-S002",
+   "i": 1,
+   "known": "I'm sorry but I can't talk at the moment.",
+   "from": "7be3491e-22d9-4ab8-bee4-2a9c4ad64577.v2",
+   "to": "b27c78db-eb3e-46ce-8d9f-1f869db4d2a8",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC04-S002",
+   "i": 2,
+   "known": "I need to go home now.",
+   "from": "1d931f5f-10b8-4586-bd81-6e840f84b757.v2",
+   "to": "950fc6a0-856a-4c75-ac41-f80ad29ab086",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC04-S002",
+   "i": 3,
+   "known": "Can we talk tomorrow?",
+   "from": "3dcd2fda-3e80-42aa-b357-e74ebc426897.v2",
+   "to": "dfbb83cc-91cc-4cfb-92ef-cdc7c5f1068b",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S002",
+   "i": 0,
+   "known": "My name is Anna.",
+   "from": "29481236-f985-43e2-a310-9e2c6ef77fd4",
+   "to": "980f1917-ef42-407a-bf0c-5ff01d4c82ee",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S002",
+   "i": 1,
+   "known": "And you?",
+   "from": "389291c4-bb37-4663-a08f-0c54a55b57a4",
+   "to": "e2c97f05-be3a-4760-a372-33d397eb6f20",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S004",
+   "i": 0,
+   "known": "Pleased to meet you too.",
+   "from": "5e10bbf8-c05d-47b9-be3e-769d6e602aee",
+   "to": "e4b2f402-4eec-42c7-8dba-0ce89808fb56",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S004",
+   "i": 1,
+   "known": "Where are you from?",
+   "from": "16320039-0471-4f30-8d04-87680c0751cb",
+   "to": "db9d49e1-9e1b-4628-8c56-f357d19cd5db",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S006",
+   "i": 0,
+   "known": "I'm from France.",
+   "from": "f16e0625-8601-48c6-b84d-434621c23547",
+   "to": "fb50df38-da5c-4b00-923c-adae5e6b2d6c",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S006",
+   "i": 1,
+   "known": "I've been here for two years.",
+   "from": "62621905-3f04-4e3c-b727-b48d95bc6cfc",
+   "to": "c7170202-9385-4077-9228-0e3565861df7",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S008",
+   "i": 0,
+   "known": "I'm a nurse, at the hospital just round the corner.",
+   "from": "9ffdd3ae-4d98-40f7-8a67-ceb9066020ab",
+   "to": "23ea6f13-fbf8-4389-b727-63f30bfcb3f9",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC06-S008",
+   "i": 1,
+   "known": "And you?",
+   "from": "389291c4-bb37-4663-a08f-0c54a55b57a4",
+   "to": "e2c97f05-be3a-4760-a372-33d397eb6f20",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC07-S001",
@@ -69,85 +569,563 @@
    "was": "6d2bc76c-747e-49d6-a204-fb5e71dbd8c4"
   },
   {
+   "turn": "cym_s_for_eng:pod-1:SC07-S005",
+   "i": 0,
+   "known": "Of course.",
+   "from": "c88a691c-54b2-4124-8026-da7a94a9328d",
+   "to": "be534f14-c1cf-4be7-aa6d-7a9b6d79ab40",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S005",
+   "i": 1,
+   "known": "Would you like to sit-in or takeaway?",
+   "from": "bcdbee63-1b17-4e24-bb2b-a8fcd1dbdfdd.v2",
+   "to": "8dcd75c1-b008-450f-85be-e8b53c90a1f9",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S008",
+   "i": 0,
+   "known": "Right away.",
+   "from": "f7405a91-c84b-4477-a5f4-ddd26ac27f46",
+   "to": "fd2fbadd-8420-4878-b0bd-9d4d0558b7ee",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S008",
+   "i": 1,
+   "known": "Would you like anything else?",
+   "from": "095537cb-21b8-41e8-997f-4372147d73cd",
+   "to": "b26343dc-d66f-46e4-a6b4-520c8ea8b164",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S012",
+   "i": 0,
+   "known": "Of course.",
+   "from": "c88a691c-54b2-4124-8026-da7a94a9328d",
+   "to": "be534f14-c1cf-4be7-aa6d-7a9b6d79ab40",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S012",
+   "i": 1,
+   "known": "There's the machine.",
+   "from": "540ec4ae-e7f7-4228-82f5-c46efc4e06d2",
+   "to": "c9f7ff05-6791-4289-947d-b1bf7107aeb2",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S014",
+   "i": 0,
+   "known": "Would you like to sit-in?",
+   "from": "6c510348-47ac-45c6-83c6-27015d24acb8",
+   "to": "a1469259-28c5-4646-8d0b-1ffe0462a8b4",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC07-S014",
+   "i": 1,
+   "known": "The table by the window is free.",
+   "from": "4980e8a9-9abd-459c-a100-26d65f04c381",
+   "to": "bd53199f-04f6-484a-9152-d5b301ee5e68",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S006",
+   "i": 0,
+   "known": "Could I see the wine list?",
+   "from": "b978b0e7-fddb-4f5d-ad38-d74cc4c1d0e4",
+   "to": "d0c17ed9-a3bb-4964-b180-e09bbf6cd651",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S006",
+   "i": 1,
+   "known": "I want a glass of wine.",
+   "from": "619b7ee7-83f8-4458-8216-008081def551",
+   "to": "52a01f45-40da-4fe6-a2ec-574200366ee7",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S012",
+   "i": 0,
+   "known": "I'm not sure if I'm hungry.",
+   "from": "315c2446-ccb9-48b7-b48f-33a930295c01",
+   "to": "863356d7-0815-45c9-afe4-620ef0a918db",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S012",
+   "i": 1,
+   "known": "Do you have a menu?",
+   "from": "8559f0d7-1807-4158-85b0-8fafc4283c5a",
+   "to": "244a58e5-000d-4caa-9dda-09ae00fe01a0",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S014",
+   "i": 0,
+   "known": "Can we have some bread?",
+   "from": "93cd8bea-a4ef-485e-81c4-1fc4ecd96c3f",
+   "to": "5ec3fe06-94bd-49b3-93fc-89df091d7b8e",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S014",
+   "i": 1,
+   "known": "And a bowl of chips for the table.",
+   "from": "5ce8bd69-258e-4ba8-92f8-94e104832c6a",
+   "to": "87567c8d-75e9-4773-a3cc-c306047dd534",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S015",
+   "i": 0,
+   "known": "Do you have any sandwiches?",
+   "from": "cf16412c-00dc-4f68-9cf2-8343feda3b6d",
+   "to": "5e6e9b0c-fb1c-4f38-9d72-ea72363b7bb8",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC08-S015",
+   "i": 1,
+   "known": "I'd like a cheese sandwich, please.",
+   "from": "a78706f1-0002-43f2-8295-985d3582e494",
+   "to": "6d353ae7-63c6-406e-87e7-e9ff5d1ed00e",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S001",
+   "i": 0,
+   "known": "Good evening.",
+   "from": "4d24d58e-7df3-456e-9478-cd04da9b17e2",
+   "to": "bb40e0f3-1aa1-42cb-b956-85b29ea463dc",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S001",
+   "i": 1,
+   "known": "We have a booking for two, under the name Davies.",
+   "from": "bc7a23c8-70e3-4499-80ed-f7743410b520",
+   "to": "603da47b-80b5-4aa9-8403-a8011c659a33",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S009",
+   "i": 0,
+   "known": "I'll have the lamb, please.",
+   "from": "530db4e3-89f5-4769-8489-bff9a5c3e6d7",
+   "to": "d9bdff01-48ca-4d88-90e1-fae75490a201",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S009",
+   "i": 1,
+   "known": "With a side of greens.",
+   "from": "27458dee-24af-4238-aa19-00cb2f3796cc",
+   "to": "f02f1eb3-0c6b-4969-a6bb-cdf5224d58bd",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S016",
+   "i": 0,
+   "known": "Just two coffees, please.",
+   "from": "9acd43ea-3c51-47e7-96b7-186c228a4bdf",
+   "to": "423696a0-c25e-40cc-8949-69fede69efab",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S016",
+   "i": 1,
+   "known": "Decaf for me.",
+   "from": "74a5c3fe-d737-4617-a0b9-6fcd721699ee",
+   "to": "8c8b9e5e-0807-452b-9891-13d29c963f6a",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S017",
+   "i": 0,
+   "known": "And the bill, when you're ready.",
+   "from": "4b0a1cda-6a5b-481f-b4cc-d725b8b0f75e",
+   "to": "4717b675-b604-479c-a993-4b7a9b2d3004",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC09-S017",
+   "i": 1,
+   "known": "Could we split it?",
+   "from": "71a5ffc4-261f-4566-a951-31705d180593",
+   "to": "8656daac-6de8-4761-83b4-dfdc53779eaa",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S001",
+   "i": 0,
+   "known": "Excuse me.",
+   "from": "abe7334d-110f-4301-a8ae-e4fe0c476fcc",
+   "to": "1aad9e9d-6b57-4ab1-9178-70277402b182",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S001",
+   "i": 1,
+   "known": "Do you have any painkillers?",
+   "from": "e792fb48-5f44-45bb-ac93-5bbd3f6e459b",
+   "to": "67ee5ef9-7125-4160-bf70-7faaadd511aa",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S003",
+   "i": 0,
+   "known": "Thank you.",
+   "from": "b844c2fc-4679-4c33-8d20-928cf05071b2.v2",
+   "to": "ac15c605-9ac4-4500-8198-526f8b3bf232",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S003",
+   "i": 1,
+   "known": "And do you have any painkillers for children?",
+   "from": "28554d46-d05d-41c7-870b-ac6c637aa230",
+   "to": "66afe793-1458-45e6-86e6-ca0b0a63608e",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S007",
+   "i": 0,
+   "known": "Thank you, you've been very helpful.",
+   "from": "2262407f-6c15-47db-9554-5a357cdbad22.v2",
+   "to": "e6ec6290-0aab-420c-8841-15411bd454b2",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC10-S007",
+   "i": 1,
+   "known": "I'm very grateful.",
+   "from": "fbc97478-c690-4c9e-bfc3-2d698b5b5234",
+   "to": "15d5b260-6b7e-4b11-8715-d01a3ac29386",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC11-S004",
+   "i": 0,
+   "known": "Lovely.",
+   "from": "44f27901-f988-4fec-806d-0fde665cc110",
+   "to": "73d5f085-161b-4caa-a3ab-8ac8aa084b03",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC11-S004",
+   "i": 1,
+   "known": "The room is on the third floor, room 709.",
+   "from": "bae4f33f-654b-49dc-a9fb-7203be725b3a",
+   "to": "608ce506-0497-4ea1-8565-98fb47ecfc94",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
    "turn": "cym_s_for_eng:pod-1:SC11-S008",
    "i": 0,
    "known": "From half-past seven until ten o'clock.",
    "from": "24d36a12-4f53-417d-aa80-28fe2d007b6f.v2",
-   "to": "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "efe13ee0-6e1f-4101-ba77-c286bde43d71",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "ca2be7ca-d4d7-42e8-9c38-c2b36c4407b6"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC11-S008",
    "i": 1,
    "known": "We have fruit and cereals or a cooked breakfast.",
    "from": "a839f718-9e24-46b8-8713-1f9d5982263c",
-   "to": "3d87e192-ff07-437f-8ef6-2afc1bae6c46",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "e1f2a326-cb8a-4822-ab52-65fa90a4d908",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "3d87e192-ff07-437f-8ef6-2afc1bae6c46"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC11-S012",
    "i": 0,
    "known": "It's on the welcome card in your room.",
    "from": "d492129c-ef67-4318-8691-1265491b6b00",
-   "to": "c176a01b-1a24-464c-b804-23ca783436b7",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "ab78a8f7-42da-4d74-8315-38b5ba5c37fd",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "c176a01b-1a24-464c-b804-23ca783436b7"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC11-S012",
    "i": 1,
    "known": "Have a lovely stay.",
    "from": "2a75144b-24cd-4bd8-89cf-99f92a97acf5.v2",
-   "to": "23a15f0c-59f9-4f3e-95a1-750d8914e48b",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "gfzdpspr5fdp"
+   "to": "386d30ad-adff-4376-b4ae-762f16b02505",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "23a15f0c-59f9-4f3e-95a1-750d8914e48b"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC12-S001",
+   "i": 0,
+   "known": "Good morning.",
+   "from": "3b602ad8-5853-4f6b-a66c-c3b47c0adb61.v2",
+   "to": "2e48c420-08f1-4875-9578-6ae20b2c04d2",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC12-S001",
+   "i": 1,
+   "known": "I'm not feeling great - could you recommend something?",
+   "from": "19b55144-4238-472c-aa55-931551982b3a",
+   "to": "0c679395-4904-4482-bf84-767354961e3d",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC12-S009",
+   "i": 0,
+   "known": "Thank you.",
+   "from": "b844c2fc-4679-4c33-8d20-928cf05071b2.v2",
+   "to": "ac15c605-9ac4-4500-8198-526f8b3bf232",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC12-S009",
+   "i": 1,
+   "known": "Could I also get a packet of plasters?",
+   "from": "7d85b779-5fad-4cc6-95ef-7b6aeba7c095",
+   "to": "7fd86137-00f3-41ec-a45f-18faa9e343f9",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC13-S008",
+   "i": 0,
+   "known": "Wonderful.",
+   "from": "a882d7be-cc44-4b5e-b721-574a64e3dec6",
+   "to": "ce06e279-aa04-4ef0-ae05-21f5c2f84619",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC13-S008",
+   "i": 1,
+   "known": "And is there a cashpoint nearby?",
+   "from": "faf4b803-74ab-424a-9c99-5dd2b31b9a6c",
+   "to": "d8ccb99c-6a9f-492f-b0f4-7b46cec60baf",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC13-S010",
+   "i": 0,
+   "known": "Thank you very much.",
+   "from": "1ce39c38-f9aa-4c21-be7e-3a710cc018d6.v2",
+   "to": "70a9582a-6b64-42c0-9173-de576de72df8",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC13-S010",
+   "i": 1,
+   "known": "You've been very helpful.",
+   "from": "27ce56a7-8e17-48d4-9ea1-a60a70918c74",
+   "to": "30c722da-a877-4c55-980f-799a566a1bd2",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC14-S007",
+   "i": 0,
+   "known": "Here we are.",
+   "from": "915822ef-0209-4fe4-9931-b746cf2cc8c6",
+   "to": "2a60119d-58ab-4701-860c-f6a905b137ec",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC14-S007",
+   "i": 1,
+   "known": "That's twelve pound fifty.",
+   "from": "d95f05e3-46f0-41d7-97f9-61c4fbf9d097",
+   "to": "2d88b547-9e19-48a1-b456-e2dfaf6d5003",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC14-S009",
+   "i": 0,
+   "known": "Yes, of course.",
+   "from": "6effddb9-b6b7-4a51-9bde-eab9aa47dd0e",
+   "to": "70d757e4-07a6-4293-89ce-ef6e093cb331",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC14-S009",
+   "i": 1,
+   "known": "The machine is just here.",
+   "from": "8eecb524-97b1-45e0-9e69-c9efd16aacd7",
+   "to": "bd24a548-0b43-4433-b96a-3f58bc7ab797",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC18-S007",
    "i": 0,
    "known": "Is that correct?",
    "from": "6bceea38-9380-412a-8e83-0aa21a22431b",
-   "to": "951fb4dc-b81f-4636-9e6b-e49cc086da0e",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "human_aran_eng"
+   "to": "1f146a32-da96-4115-bb62-545a99ffad65",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "951fb4dc-b81f-4636-9e6b-e49cc086da0e"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC18-S007",
    "i": 1,
    "known": "Am I correct?",
    "from": "79ef794a-e40f-4373-82f9-2f480a7964de",
-   "to": "809c6dbc-70fa-4b10-b4ee-a8f23b38adde",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "human_aran_eng"
+   "to": "b8526b02-59a2-4255-b626-217d9008a023",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "809c6dbc-70fa-4b10-b4ee-a8f23b38adde"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC21-S014",
    "i": 0,
    "known": "October.",
    "from": "aea2b9fe-2ef6-4eea-a48b-c2db86046bd8",
-   "to": "95538e14-4a51-46d3-852d-5b7f47cf9761",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "human_aran_eng"
+   "to": "3a36777d-9d55-4a90-90a0-4cd41fc87234",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "95538e14-4a51-46d3-852d-5b7f47cf9761"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC21-S014",
    "i": 1,
    "known": "November.",
    "from": "0f224441-bfb6-4e76-aad1-1e3dcd94b453",
-   "to": "12177bbd-2d9b-4635-bbf1-21820d21af6b",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "human_aran_eng"
+   "to": "e5274657-5958-422b-83ee-eebbf391b620",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "12177bbd-2d9b-4635-bbf1-21820d21af6b"
   },
   {
    "turn": "cym_s_for_eng:pod-1:SC21-S014",
    "i": 2,
    "known": "December.",
    "from": "468559ca-4512-4e74-8558-005aec82d007",
-   "to": "f981112c-e105-49ae-811c-5c3d52b370ea",
-   "voice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
-   "fromVoice": "human_aran_eng"
+   "to": "c9dd3db7-484a-4e0e-a168-af121623fa1d",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "job": "#905",
+   "was": "f981112c-e105-49ae-811c-5c3d52b370ea"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC22-S007",
+   "i": 0,
+   "known": "It's just a little frustrating when I can't think quickly enough to express myself properly.",
+   "from": "b78d225e-a8f9-401b-80ee-d8bfec71299c",
+   "to": "ef235a9c-cbe3-4972-b0bd-acb99b0a86aa",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
+  },
+  {
+   "turn": "cym_s_for_eng:pod-1:SC22-S007",
+   "i": 1,
+   "known": "But I know that I need to keep practising if I want to speak more confidently.",
+   "from": "00d31729-f936-4aeb-ac47-2ed142aed678",
+   "to": "2d236bd1-4108-4b71-ad32-3d9a611c498d",
+   "voice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+   "fromVoice": "xai_bedd6226",
+   "job": "#905"
   }
  ]
 }
