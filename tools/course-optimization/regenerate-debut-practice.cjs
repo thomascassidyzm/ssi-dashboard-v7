@@ -23,6 +23,10 @@
 //   APPLY=1 node tools/course-optimization/regenerate-debut-practice.cjs ita_for_eng [--cut S0190L01B03,S0190L01B04]
 //   APPLY=1 ... --from <plan.json> --lego S0190L01 --p7 --cut ...   # BUILD fragments for a sibling-carried debut (P7)
 //
+// @db-live-write: APPLY inserts the v3 practice rows, logs the content edit and queues the audio pass on live
+// (Tom's #906 ruling); the plan's reads are LEGO-scoped. Without this line the worker guard (#699/#706) refused
+// the tool outright from 2026-11-05 because it uses the Supabase REST client — found by job #125.
+//
 // The plan is written to $CS_SCRATCH (or ~/ssi-evidence) so an APPLY run can reuse it with --from <plan.json>
 // instead of paying for generation twice.
 const path = require('path');
