@@ -1488,6 +1488,9 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // A minimal-set piece is always role target1, so the slot would name whoever the course casts there (Catrin on cym_n),
+      // not the person reading it — the 2026-11-09 pod-swap misfiling. The voice on a take is the recordist's.
+      libraryArtistVoiceId: recordist.voiceId,
       // which booth line this take is for: its script check reports back to that line (job #842)
       recordistLineId: parsed.raw,
       body: {
