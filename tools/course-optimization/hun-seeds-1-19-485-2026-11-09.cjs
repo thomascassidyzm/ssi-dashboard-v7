@@ -525,8 +525,26 @@ function plan(stageName, fresh, snap, dz = require('../../services/phrase-decomp
   return { ops, problems, notes, touched: { phrases: [...touched.phrases], legos: [...touched.legos], seeds: [...touched.seeds] } };
 }
 
+// R — refresh every course phrase whose stored tiles name a LEGO by a gloss it no longer has (the LEGOs re-cut above),
+// with Popty's own pure planner (services/shared/decomposition-refresh.cjs, the one behind /api/admin/recompute-decompositions).
+function planRefresh(fresh) {
+  const legos = [], phrases = [];
+  for (const s of fresh.seeds) for (const l of s.legos || []) { legos.push({ seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text, known_text: l.known_text });
+    for (const p of l.basket_phrases || []) if (p.decomposition) phrases.push({ id: p.id, seed_number: p.seed_number, lego_index: p.lego_index, target_text: p.target_text, decomposition: p.decomposition }); }
+  return require('../../services/shared/decomposition-refresh.cjs').planRecompute({ courseCode: COURSE, legos, phrases, courseVersion: null });
+}
+
 async function main() {
   const [stage, freshFile, snapFile] = process.argv.slice(2);
+  if (stage === 'R') {
+    const r = planRefresh(JSON.parse(fs.readFileSync(freshFile, 'utf8')));
+    console.log('refresh', JSON.stringify(r.summary), `${r.ops.length} ops`);
+    const post = async (body) => { const x = await fetch(`${POPTY}/api/production/${COURSE}/edit-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); return { status: x.status, body: await x.json().catch(() => ({})) }; };
+    if (!r.ops.length) return;
+    const dry = await post({ ops: r.ops }); console.log(`dry run ${dry.status} ${dry.body.error || ''}`);
+    if (dry.status === 200 && process.env.APPLY_CONFIRM === '1') { const ap = await post({ ops: r.ops, apply: true }); console.log(`APPLIED ${ap.status} event ${ap.body.event_id || ''} ${ap.body.error || ''}`); }
+    return;
+  }
   if (!stage || !freshFile || !snapFile) throw new Error('usage: <stage> <fresh seeds.json> <authoring snapshot seeds.json>');
   const p = plan(stage, JSON.parse(fs.readFileSync(freshFile, 'utf8')), JSON.parse(fs.readFileSync(snapFile, 'utf8')));
   for (const n of p.notes) console.log('  ', n);
