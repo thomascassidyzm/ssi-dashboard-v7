@@ -11,6 +11,7 @@ const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/va
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
+const { runPreflight, spawnRedoAgent, findStuckRedoSeeds } = require('../lib/redo-watchdog.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { finalizeJob, isProcessAlive, ownsPid } = require('../lib/build-job-runtime.cjs');
@@ -260,7 +261,6 @@ module.exports = function (ctx) {
   router.post('/build/redo/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
     const { seeds = [], notes = '' } = req.body || {};
-    const terminal = req.query.terminal || 'iTerm2';
 
     try {
       if (!Array.isArray(seeds) || seeds.length === 0) {
@@ -270,6 +270,14 @@ module.exports = function (ctx) {
       const seedNumbers = seeds.map(Number).filter(n => n > 0).sort((a, b) => a - b);
       if (seedNumbers.length === 0) {
         return res.status(400).json({ ok: false, error: 'No valid seed numbers provided' });
+      }
+
+      // PREFLIGHT BEFORE ANYTHING IS DELETED (job #429). On 6 Nov three pdc_for_eng redos wiped their seeds
+      // and then spawned agents that stopped at once on the weekly limit — three days empty. If no agent
+      // can run right now (agent cap full, or every SSi account at its weekly limit), refuse and touch nothing.
+      const blocked = runPreflight();
+      if (blocked) {
+        return res.status(503).json({ ok: false, error: `Redo not started, nothing changed: ${blocked}.`, code: 'REDO_PREFLIGHT' });
       }
 
       // SNAPSHOT BEFORE DELETE. The old decomposition is the only record of what
@@ -316,31 +324,21 @@ module.exports = function (ctx) {
         }).eq('course_code', courseCode);
       }
 
-      // Generate redo brief and spawn agent
-      const seedsParam = seedNumbers.join(',');
-      const notesParam = notes ? `&notes=${encodeURIComponent(notes)}` : '';
-      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/redo?seeds=${seedsParam}${notesParam}`);
-
-      const tmpFile = `/tmp/redo_${courseCode}_${Date.now()}.md`;
-      fs.writeFileSync(tmpFile, brief);
-
-      const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
-
-      // Opus (not sonnet): Indic/Sinhala scripts degrade under Sonnet (sonnet-indic-script-degradation).
-      // unset ANTHROPIC_API_KEY + CLAUDECODE so the spawned agent uses the Max subscription
-      // instead of hitting "Credit balance too low" and hanging (matches every other build route).
-      const claudeCmd = `cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
-      spawnInTerminal(ctx, claudeCmd, 'Redo', courseCode);
-
-      // Post status to chat
-      await ctx.supabase.from('orchestrator_messages').insert({
-        course_code: courseCode,
-        direction: 'agent_to_human',
-        message: `Redo agent spawned for seed${seedNumbers.length > 1 ? 's' : ''} ${seedNumbers.join(', ')}. Wiped ${totalLegosDeleted} LEGOs, ${totalPhrasesDeleted} phrases — the previous decomposition is snapshotted and can be restored (undo seed ${seedNumbers[0]}).`,
-        status: 'pending',
-        metadata: { action: 'redo_spawned', seeds: seedNumbers, snapshot_batch_id: batchId }
-      });
+      // Spawn the rebuild agent and RECORD it, so the redo watchdog (lib/redo-watchdog.cjs) can retry it
+      // once and then restore the snapshot if it never submits. If the spawn itself fails (brief error,
+      // agent cap filled since the preflight), the seeds are put back now rather than left empty.
+      let spawned;
+      try {
+        spawned = await spawnRedoAgent(ctx, { courseCode, seeds: seedNumbers, notes, batchId, attempt: 1 });
+      } catch (spawnErr) {
+        const restored = [];
+        for (const s of snapshots) {
+          try { await restoreSnapshot(ctx.supabase, { courseCode, snapshotId: s.id, restoredBy: 'redo-spawn-failed' }); restored.push(s.seed_number); }
+          catch (e) { console.error(`[REDO] ${courseCode} seed ${s.seed_number}: restore after failed spawn ALSO failed: ${e.message}`); }
+        }
+        ctx.courseVocabCache.delete(courseCode);
+        return res.status(500).json({ ok: false, error: `Redo agent could not start (${spawnErr.message}); restored seed(s) ${restored.join(', ') || 'NONE — undo by hand'}.`, restored });
+      }
 
       res.json({
         ok: true,
@@ -350,8 +348,20 @@ module.exports = function (ctx) {
         seeds_reset: totalSeedsReset,
         snapshot_batch_id: batchId,
         snapshots,
-        message: `Redo agent spawned for ${seedNumbers.length} seed(s). Previous decomposition snapshotted — undo with POST /api/build/redo-undo/${courseCode}.`
+        account: spawned.account,
+        message: `Redo agent spawned for ${seedNumbers.length} seed(s). Previous decomposition snapshotted — if the agent does not submit it is retried once, then restored automatically (undo by hand: POST /api/build/redo-undo/${courseCode}).`
       });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // GET /build/redo-watchdog — READ-ONLY: seeds left empty by a redo that never submitted, every course
+  // (job #429). Lists; never fixes. ?days=N widens the look-back (default 120).
+  router.get('/build/redo-watchdog', async (req, res) => {
+    try {
+      const stuck = await findStuckRedoSeeds(ctx, { sinceDays: Math.min(Number(req.query.days) || 120, 400) });
+      res.json({ ok: true, count: stuck.length, stuck });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }

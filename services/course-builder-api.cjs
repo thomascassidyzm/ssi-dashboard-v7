@@ -18,6 +18,7 @@ require('dotenv').config();
 
 const createContext = require('./course-builder/context.cjs');
 const { startBuildManager } = require('./course-builder/lib/build-manager.cjs');
+const { startRedoWatchdog } = require('./course-builder/lib/redo-watchdog.cjs');
 const { setSupabase } = require('./briefs/shared.cjs');
 
 // ─── Express app setup ────────────────────────────────────────────────
@@ -108,6 +109,8 @@ app.listen(PORT, HOST, () => {
     console.log('[BUILD] Build manager DISABLED (BUILD_MANAGER=off) — pure validate+insert API, no job orchestration');
   } else {
     startBuildManager(ctx);
+    // A redo whose agent never submits is retried once, then restored + alerted (job #429).
+    startRedoWatchdog(ctx);
     console.log('[BUILD] Build manager started - monitoring running jobs from DB');
   }
 });
