@@ -19,6 +19,7 @@ require('dotenv').config();
 const createContext = require('./course-builder/context.cjs');
 const { startBuildManager } = require('./course-builder/lib/build-manager.cjs');
 const { startRedoWatchdog } = require('./course-builder/lib/redo-watchdog.cjs');
+const { startRedoQueue } = require('./course-builder/lib/redo-queue.cjs');
 const { setSupabase } = require('./briefs/shared.cjs');
 
 // ─── Express app setup ────────────────────────────────────────────────
@@ -111,6 +112,8 @@ app.listen(PORT, HOST, () => {
     startBuildManager(ctx);
     // A redo whose agent never submits is retried once, then restored + alerted (job #429).
     startRedoWatchdog(ctx);
+    // A redo pressed while no agent can run waits in a queue and starts by itself (job #457).
+    startRedoQueue(ctx);
     console.log('[BUILD] Build manager started - monitoring running jobs from DB');
   }
 });

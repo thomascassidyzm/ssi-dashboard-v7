@@ -543,7 +543,8 @@
               v-for="cell in seedGrid"
               :key="cell.seed"
               class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :class="[queuedBySeed.has(cell.seed) ? 'bg-fuchsia-400/40 ring-1 ring-inset ring-fuchsia-300/70' : seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :title="queuedBySeed.has(cell.seed) ? `Seed ${cell.seed}: redo queued — ${queuedBySeed.get(cell.seed).reason}` : undefined"
               :data-seed="cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
@@ -553,6 +554,7 @@
           <div class="flex items-center gap-4 mt-3 text-xs text-faint">
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-surface-2/30"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
+            <span v-if="redoQueue.length" class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-fuchsia-400/40 ring-1 ring-inset ring-fuchsia-300/70"></span> Redo queued</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
@@ -645,6 +647,24 @@
             </div>
           </div>
 
+          <!-- Queued redo (job #457): a Redo pressed while no agent can run waits here instead of being refused. -->
+          <div v-if="selectedQueuedRedo" class="redo-queued-banner mt-4 px-4 py-3 rounded border border-fuchsia-500/40 bg-fuchsia-500/10 text-sm flex items-start gap-3">
+            <div class="flex-1">
+              <div class="font-medium text-fuchsia-300">Redo queued — {{ selectedQueuedRedo.reason }}</div>
+              <div class="text-muted mt-1">
+                Nothing has been changed yet; the redo starts by itself
+                {{ selectedQueuedRedo.eta_text || 'when an agent can run' }}.
+                Place {{ selectedQueuedRedo.position }} of {{ selectedQueuedRedo.of }} in the queue<span v-if="selectedQueuedRedo.seeds.length > 1"> (with seeds {{ selectedQueuedRedo.seeds.join(', ') }})</span>.
+                <span v-if="selectedQueuedRedo.notes">Notes: “{{ selectedQueuedRedo.notes }}”</span>
+              </div>
+            </div>
+            <button
+              @click="cancelQueuedRedo(selectedQueuedRedo)"
+              :disabled="redoCancelling"
+              class="px-3 py-1.5 bg-surface/80 border border-line text-ink hover:border-fuchsia-400/70 disabled:opacity-50 text-sm rounded shrink-0"
+            >{{ redoCancelling ? 'Cancelling...' : 'Cancel queued redo' }}</button>
+          </div>
+
           <!-- Approve / Redo controls -->
           <div class="mt-4 pt-4 border-t border-line/50 flex gap-3 items-start">
             <textarea
@@ -655,7 +675,7 @@
             />
             <button
               @click="redoSeed"
-              :disabled="seedRedoing"
+              :disabled="seedRedoing || !!selectedQueuedRedo"
               class="px-4 py-2 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
             >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
             <button
@@ -934,6 +954,15 @@ const seedViewLoading = ref(false)
 const seedReviewNotes = ref('')
 const seedApproving = ref(false)
 const seedRedoing = ref(false)
+// Queued redos for this course (job #457) — GET /api/build/redo-queue/:courseCode.
+const redoQueue = ref([])
+const redoCancelling = ref(false)
+const queuedBySeed = computed(() => {
+  const m = new Map()
+  for (const e of redoQueue.value) for (const n of e.seeds) m.set(n, e)
+  return m
+})
+const selectedQueuedRedo = computed(() => (selectedSeed.value ? queuedBySeed.value.get(selectedSeed.value) || null : null))
 const seedUndoing = ref(false)
 const redoingFlagged = ref(false)
 
@@ -1278,9 +1307,49 @@ async function fetchProgress() {
   }
 }
 
+async function fetchRedoQueue() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  try {
+    const r = await fetch(`${getApiUrl()}/api/build/redo-queue/${courseCode}`)
+    if (r.ok) redoQueue.value = (await r.json()).entries || []
+  } catch { /* the grid still renders without it */ }
+}
+
+async function cancelQueuedRedo(entry) {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || !entry) return
+  redoCancelling.value = true
+  try {
+    const r = await fetch(`${getApiUrl()}/api/build/redo-queue/${courseCode}/${entry.queue_id}/cancel`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    const body = await r.json().catch(() => ({}))
+    if (!body.ok) showActionError(`Could not cancel: ${body.error || r.status}`)
+    await fetchRedoQueue()
+  } catch (err) {
+    showActionError(`Could not cancel: ${err.message}`)
+  } finally {
+    redoCancelling.value = false
+  }
+}
+
+// POST /api/build/redo and read the answer: started, QUEUED (202, nothing changed yet), or refused.
+// Returns the body; a queued or failed answer is surfaced here so no caller can swallow it again.
+async function postRedo(courseCode, seeds, notes) {
+  const r = await fetch(`${getApiUrl()}/api/build/redo/${courseCode}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ seeds, notes })
+  })
+  const body = await r.json().catch(() => ({ ok: false, error: `HTTP ${r.status}` }))
+  if (!body.ok) showActionError(`Redo not started: ${body.error || r.status}`)
+  await fetchRedoQueue()
+  return body
+}
+
 async function fetchSeedGrid() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
+  fetchRedoQueue()
   try {
     if (isSupabaseConfigured()) {
       seedGrid.value = await sbGetSeedGrid(courseCode)
@@ -1809,13 +1878,10 @@ async function redoSeed() {
   if (!courseCode || !seedNum) return
   seedRedoing.value = true
   try {
-    const apiBase = getApiUrl()
     const notes = seedReviewNotes.value.trim()
-    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ seeds: [seedNum], notes })
-    })
+    const body = await postRedo(courseCode, [seedNum], notes)
+    // Queued or refused: stay on this seed so its banner (reason, place, Cancel) or the error is in view.
+    if (!body.ok || body.queued) { if (body.queued) seedReviewNotes.value = ''; seedRedoing.value = false; return }
     seedReviewNotes.value = ''
     selectedSeed.value = null
     seedViewPhrases.value = []
@@ -1868,15 +1934,12 @@ async function redoAllFlagged() {
   if (flaggedSeeds.length === 0) return
   redoingFlagged.value = true
   try {
-    const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ seeds: flaggedSeeds, notes: 'Redo all flagged seeds' })
-    })
-    // Optimistically mark all flagged as building
-    for (const s of seedGrid.value) {
-      if (s.status === 'flagged') s.status = 'building'
+    const body = await postRedo(courseCode, flaggedSeeds, 'Redo all flagged seeds')
+    // Optimistically mark all flagged as building — unless the redo was queued or refused
+    if (body.ok && !body.queued) {
+      for (const s of seedGrid.value) {
+        if (s.status === 'flagged') s.status = 'building'
+      }
     }
     await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
   } catch (err) {
@@ -1920,14 +1983,12 @@ async function sendChat() {
       if (seedNums.length > 0) {
         const notesMatch = text.match(/^redo\s+seeds?\s+[\d,\s]+[.:]?\s*(.*)/i)
         const notes = notesMatch?.[1]?.trim() || ''
-        await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ seeds: seedNums, notes })
-        })
-        // Optimistically update grid
-        for (const s of seedGrid.value) {
-          if (seedNums.includes(s.seed)) s.status = 'building'
+        const body = await postRedo(courseCode, seedNums, notes)
+        // Optimistically update grid — a queued redo shows as queued from the queue fetch instead
+        if (body.ok && !body.queued) {
+          for (const s of seedGrid.value) {
+            if (seedNums.includes(s.seed)) s.status = 'building'
+          }
         }
         await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
         return
@@ -2038,7 +2099,7 @@ onMounted(async () => {
   startPolling()
   if (isCreateMode.value) buildJob.value = 'idle'
   fetchBuildStatus()
-  buildStatusTimer = setInterval(fetchBuildStatus, 15000)
+  buildStatusTimer = setInterval(() => { fetchBuildStatus(); fetchRedoQueue() }, 15000)
   if (!isCreateMode.value) {
     // Fetch seed grid and progress immediately (buildMonitor watcher may miss initial load)
     if (isSupabaseConfigured()) {
