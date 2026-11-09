@@ -92,6 +92,16 @@ function nextAction(entries, blocker) {
   return { action: 'run', entry: entries[0] };
 }
 
+/**
+ * PURE. rows = every orchestrator_messages row for ONE queue_id, oldest first. The FIRST closing row decides
+ * the entry's fate; a 'started' or 'cancelled' writer whose own claim_id is not that first closer lost a race
+ * (Cancel pressed as the drain claimed it, or two course-builder processes draining the one shared DB).
+ */
+function claimWinner(rows, claimId) {
+  const first = (rows || []).find((r) => CLOSERS.has(r.metadata?.action));
+  return { won: !!first && first.metadata.claim_id === claimId, first: first ? first.metadata : null };
+}
+
 /** Seeds of `seeds` that already sit in an open entry for this course. */
 function overlapping(entries, courseCode, seeds) {
   const queued = new Set(entries.filter((e) => e.course_code === courseCode).flatMap((e) => e.seeds));
@@ -145,6 +155,17 @@ async function loadOpenEntries(ctx, now = new Date()) {
   return openEntries(data);
 }
 
+/** Every row of one queue entry, oldest first (ties broken by id, so every reader sees the same order). */
+async function entryRows(ctx, queueId) {
+  const { data, error } = await ctx.supabase.from('orchestrator_messages')
+    .select('id, metadata, created_at')
+    .eq('metadata->>redo_queue', QUEUE_TAG)
+    .eq('metadata->>queue_id', queueId)
+    .order('created_at', { ascending: true }).order('id', { ascending: true });
+  if (error) throw new Error(`orchestrator_messages read failed: ${error.message}`);
+  return data || [];
+}
+
 async function writeRow(ctx, courseCode, message, metadata) {
   const { error } = await ctx.supabase.from('orchestrator_messages').insert({
     course_code: courseCode, direction: 'agent_to_human', status: 'pending', message,
@@ -182,8 +203,12 @@ async function queueStatus(ctx, { courseCode = null, blocker } = {}) {
 async function cancelQueuedRedo(ctx, { courseCode, queueId, by = null }) {
   const entry = (await loadOpenEntries(ctx)).find((e) => e.queue_id === queueId && e.course_code === courseCode);
   if (!entry) return { ok: false, error: 'No queued redo with that id — it has already started, finished or been cancelled.' };
+  const claim_id = crypto.randomUUID();
   await writeRow(ctx, courseCode, `Queued redo of ${plural(entry.seeds)} cancelled${by ? ` by ${by}` : ''}. Nothing was changed.`,
-    { action: 'redo_queue_cancelled', queue_id: queueId, seeds: entry.seeds, by });
+    { action: 'redo_queue_cancelled', queue_id: queueId, seeds: entry.seeds, by, claim_id });
+  // The drain may have claimed it in the same instant: only the first closing row counts (see claimWinner).
+  const { won, first } = claimWinner(await entryRows(ctx, queueId), claim_id);
+  if (!won) return { ok: false, error: `Too late to cancel — the redo ${first?.action === 'redo_queue_cancelled' ? 'was already cancelled' : 'had already started'}.` };
   return { ok: true, cancelled: entry };
 }
 
@@ -269,13 +294,21 @@ async function drainRedoQueue(ctx, { deps = {} } = {}) {
   const refresh = deps.refreshRoundIndex || ((code) => require('../../shared/round-index-refresh.cjs').requestRoundIndexRefresh(code));
   const results = [];
   let entries = await loadOpenEntries(ctx);
-  while (entries.length) {
+  for (let guard = 0; entries.length && guard < 100; guard++) {
     const step = nextAction(entries, blockerOf());
     if (step.action === 'wait') { results.push({ queue_id: step.entry.queue_id, action: 'wait', why: step.why }); break; }
     const e = step.entry;
-    // CLAIM FIRST: the 'started' row closes the entry, so a crash or a second pass cannot run it twice.
+    // CLAIM FIRST: the 'started' row closes the entry, so a crash or a second pass cannot run it twice — and
+    // nothing is touched unless this row is the entry's FIRST closer (a Cancel or another drain may have won).
+    const claim_id = crypto.randomUUID();
     await writeRow(ctx, e.course_code, `Queued redo of ${plural(e.seeds)} is starting — an agent is free.`,
-      { action: 'redo_queue_started', queue_id: e.queue_id, seeds: e.seeds, started_at: new Date().toISOString() });
+      { action: 'redo_queue_started', queue_id: e.queue_id, seeds: e.seeds, started_at: new Date().toISOString(), claim_id });
+    const claim = claimWinner(await (deps.entryRows || entryRows)(ctx, e.queue_id), claim_id);
+    if (!claim.won) {
+      results.push({ queue_id: e.queue_id, action: 'lost-claim', why: claim.first?.action || 'unknown' });
+      entries = await loadOpenEntries(ctx);
+      continue;
+    }
     try {
       const out = await perform(ctx, { courseCode: e.course_code, seedNumbers: e.seeds, notes: e.notes, recordEdit: drainRecorder(ctx, e) });
       results.push({ queue_id: e.queue_id, action: 'ran', account: out.account });
@@ -288,7 +321,8 @@ async function drainRedoQueue(ctx, { deps = {} } = {}) {
       } catch (w) { console.error(`[REDO-QUEUE] could not record failure: ${w.message}`); }
       try { await refresh(e.course_code); } catch { /* ditto */ }
     }
-    entries = entries.slice(1);
+    // Re-read rather than slice: a Cancel pressed while this one ran must be honoured for the next.
+    entries = await loadOpenEntries(ctx);
   }
   return results;
 }
@@ -313,7 +347,7 @@ function startRedoQueue(ctx) {
 }
 
 module.exports = {
-  openEntries, describeBlocker, nextAction, overlapping,
+  openEntries, describeBlocker, nextAction, overlapping, claimWinner,
   liveBlocker, setHold, currentHold, loadOpenEntries, enqueueRedo, queueStatus, cancelQueuedRedo, performRedo, drainRedoQueue, drainNow, startRedoQueue,
   QUEUE_TAG,
 };

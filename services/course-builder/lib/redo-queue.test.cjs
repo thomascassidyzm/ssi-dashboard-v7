@@ -198,3 +198,23 @@ describe('operator hold', () => {
     Q.setHold({ minutes: 0 })
   })
 })
+
+describe('claimWinner — Cancel and the drain racing for one entry (#461 review)', () => {
+  const row = (action, claim_id) => ({ metadata: { action, claim_id } })
+  it('only the FIRST closing row wins; the opening row is not a closer', () => {
+    const rows = [row('redo_queued'), row('redo_queue_started', 'S'), row('redo_queue_cancelled', 'C')]
+    expect(Q.claimWinner(rows, 'S').won).toBe(true)
+    expect(Q.claimWinner(rows, 'C')).toEqual({ won: false, first: { action: 'redo_queue_started', claim_id: 'S' } })
+  })
+  it('a cancel that landed first stops the drain from wiping', async () => {
+    const db = makeDb({ course_seeds: seeds(), orchestrator_messages: [] })
+    const ctx = { supabase: db }
+    const { queue_id } = await Q.enqueueRedo(ctx, { courseCode: 'tst', seeds: [5], blocker: FULL_AGENTS })
+    const log = []
+    // the cancel row is written between the drain's read of the queue and its claim
+    const entryRows = async () => [row('redo_queued'), row('redo_queue_cancelled', 'someone-else'), row('redo_queue_started', 'mine')]
+    const r = await Q.drainRedoQueue(ctx, { deps: { blocker: () => null, performRedo: realPerform(log), refreshRoundIndex: () => {}, entryRows } })
+    expect(r[0]).toEqual(expect.objectContaining({ queue_id, action: 'lost-claim' }))
+    expect(log).toEqual([])
+  })
+})
