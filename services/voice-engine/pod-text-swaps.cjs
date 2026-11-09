@@ -55,7 +55,9 @@ const LOCAL_FORMS_RULING = "Kai 2026-11-09 (job #530, after #512's forum report)
  *   every Pod 1 line: dych/ydych chi → ŷch chi; hefyd → 'fyd; ry'n ni → ŷn ni;
  *   mae/bod angen i fi → ma/bod ishe arna i (SC22-S003, SC22-S007; SC21-S001's "i ni" → "arnon ni");
  *   edrych → dishgwl (SC10-S004 "rhaid i chi ddishgwl", soft-mutated as edrych would be; SC11-S006);
- *   cyflym → clou (SC22-S007 only; "yn gyflym" in SC15/SC16/SC19 was not in the ruling and is left).
+ *   cyflym → clou (SC22-S007);
+ * and, added by Kai the same day (job #564): (yn/rhy) gyflym → glou in SC15-S010, SC16-S002, SC19-S003; and
+ *   ma ishe i fi → ma ishe arna i (SC10-S005 "arna i gael", mutation kept as in SC22-S003; SC10-S009).
  * Only those words change; each line is one swap (several changes on a line ride together), assigned to the voice
  * whose take the line plays today (her 141 lines / his 90, read from their booths on 9 Nov).
  * A function, not a literal, so the frozen list below stays the one list.
@@ -101,7 +103,7 @@ function CYM_S_LOCAL_FORMS() {
       "Dw i'n meddwl… bod rhai 'da ni,… ond bydd rhaid i chi ddishgwl… i fod yn siŵr."),
     sw("SC10-S005", ELERI_CYM_S, // Customer
       "Ma ishe i fi gael… rhywfaint o eli haul… a phast dannedd hefyd.",
-      "Ma ishe i fi gael… rhywfaint o eli haul… a phast dannedd 'fyd."),
+      "Ma ishe arna i gael… rhywfaint o eli haul… a phast dannedd 'fyd."),
     sw("SC10-S007", ELERI_CYM_S, // Customer
       "Diolch,… dych chi wedi bod yn help mawr. Dw i'n ddiolchgar iawn.",
       "Diolch,… ŷch chi wedi bod yn help mawr. Dw i'n ddiolchgar iawn."),
@@ -110,7 +112,7 @@ function CYM_S_LOCAL_FORMS() {
       "Croeso. Ŷch chi yma ar wyliau? Ŷch chi'n siarad… Cymraeg da iawn."),
     sw("SC10-S009", ELERI_CYM_S, // Customer
       "Dych chi'n garedig iawn! Ydw, dw i ar wyliau,… ac ma ishe… i fi ymarfer mwy… i siarad Cymraeg yn well. Diolch yn fawr iawn, a hwyl.",
-      "Ŷch chi'n garedig iawn! Ydw, dw i ar wyliau,… ac ma ishe… i fi ymarfer mwy… i siarad Cymraeg yn well. Diolch yn fawr iawn, a hwyl."),
+      "Ŷch chi'n garedig iawn! Ydw, dw i ar wyliau,… ac ma ishe… arna i ymarfer mwy… i siarad Cymraeg yn well. Diolch yn fawr iawn, a hwyl."),
     sw("SC11-S006", ELERI_CYM_S, // Receptionist
       "Oes… ma hi'n edrych dros yr ardd.",
       "Oes… ma hi'n dishgwl dros yr ardd."),
@@ -129,6 +131,12 @@ function CYM_S_LOCAL_FORMS() {
     sw("SC14-S005", DAN_CYM_S, // Passenger
       "Ydych chi'n gwbod… ble alla i gael tocyn… yn yr orsaf?",
       "Ŷch chi'n gwbod… ble alla i gael tocyn… yn yr orsaf?"),
+    sw("SC15-S010", ELERI_CYM_S, // Learner (#564)
+      "Mae'n ddrwg 'da fi… alla i ddim siarad… yn gyflym iawn.",
+      "Mae'n ddrwg 'da fi… alla i ddim siarad… yn glou iawn."),
+    sw("SC16-S002", ELERI_CYM_S, // Learner (#564): rhy + clou soft-mutates, as rhy gyflym did
+      "Fe wnaethoch chi siarad… ychydig bach yn rhy gyflym,… felly dw i ddim yn siŵr… os wnes i ddeall.",
+      "Fe wnaethoch chi siarad… ychydig bach yn rhy glou,… felly dw i ddim yn siŵr… os wnes i ddeall."),
     sw("SC16-S005", ELERI_CYM_S, // Learner
       "Allwn ni weld… y fwydlen bwdin hefyd?",
       "Allwn ni weld… y fwydlen bwdin 'fyd?"),
@@ -143,7 +151,7 @@ function CYM_S_LOCAL_FORMS() {
       "Ŷn ni wedi talu,… ond ma fy merch i… wedi colli ei thocyn."),
     sw("SC19-S003", ELERI_CYM_S, // Learner
       "Pan dych chi'n siarad… yn gyflym,… ma fe'n gwneud i fi… deimlo'n dwp.",
-      "Pan ŷch chi'n siarad… yn gyflym,… ma fe'n gwneud i fi… deimlo'n dwp."),
+      "Pan ŷch chi'n siarad… yn glou,… ma fe'n gwneud i fi… deimlo'n dwp."),
     sw("SC19-S005", ELERI_CYM_S, // Learner
       "Ydy hi'n iawn… os ry'n ni'n rhoi hwn fan hyn?",
       "Ydy hi'n iawn… os ŷn ni'n rhoi hwn fan hyn?"),
