@@ -9,9 +9,10 @@
  * looked at that exit: the seeds sat empty for three days with no alarm until #412·AF undid them by hand.
  *
  * WHAT NOW HAPPENS
- *   1. Before wiping, the route asks preflightRedo(): agent cap free? an SSi account not at its weekly
- *      limit? If not, it refuses with 503 and touches nothing (the 6 Nov case can no longer empty a seed
- *      when the gauge already shows both accounts full).
+ *   1. Before wiping, the route checks the same two things (agent cap free? an SSi account not at its weekly
+ *      limit?). If not, it no longer refuses: since job #457 the redo is QUEUED and nothing is touched until
+ *      capacity frees — see redo-queue.cjs (liveBlocker / drainRedoQueue). preflightRedo() below is the
+ *      original check, kept for its tests.
  *   2. Every redo spawn is RECORDED: one orchestrator_messages row (it is also the line Kai sees in the
  *      course chat) whose metadata carries redo_watchdog:'v1', the snapshot batch, the seeds, the pid, the
  *      log slice and the account billed. No schema change: build_jobs' pass CHECK has no 'redo', and red/

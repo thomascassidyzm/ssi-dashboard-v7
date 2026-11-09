@@ -11,7 +11,8 @@ const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/va
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
-const { runPreflight, spawnRedoAgent, findStuckRedoSeeds } = require('../lib/redo-watchdog.cjs');
+const { findStuckRedoSeeds } = require('../lib/redo-watchdog.cjs');
+const { liveBlocker, setHold, currentHold, loadOpenEntries, overlapping, enqueueRedo, queueStatus, cancelQueuedRedo, performRedo, drainNow } = require('../lib/redo-queue.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { finalizeJob, isProcessAlive, ownsPid } = require('../lib/build-job-runtime.cjs');
@@ -272,85 +273,36 @@ module.exports = function (ctx) {
         return res.status(400).json({ ok: false, error: 'No valid seed numbers provided' });
       }
 
-      // PREFLIGHT BEFORE ANYTHING IS DELETED (job #429). On 6 Nov three pdc_for_eng redos wiped their seeds
-      // and then spawned agents that stopped at once on the weekly limit — three days empty. If no agent
-      // can run right now (agent cap full, or every SSi account at its weekly limit), refuse and touch nothing.
-      const blocked = runPreflight();
-      if (blocked) {
-        return res.status(503).json({ ok: false, error: `Redo not started, nothing changed: ${blocked}.`, code: 'REDO_PREFLIGHT' });
+      // PREFLIGHT BEFORE ANYTHING IS DELETED (job #429), and QUEUE rather than refuse (job #457, Kai 9 Nov:
+      // "refusing is bad UX"). If no agent can run right now (agent cap full, or every SSi account at its
+      // weekly limit) — or other redos are already waiting, first come first served — the request is queued:
+      // nothing snapshotted, nothing deleted. lib/redo-queue.cjs runs it when capacity frees.
+      const open = await loadOpenEntries(ctx);
+      const dup = overlapping(open, courseCode, seedNumbers);
+      if (dup.length) {
+        req.contentEdit?.wroteNothing();
+        return res.status(409).json({ ok: false, code: 'REDO_ALREADY_QUEUED', error: `Seed${dup.length > 1 ? 's' : ''} ${dup.join(', ')} already ha${dup.length > 1 ? 've' : 's'} a redo queued — cancel it first to change it.` });
+      }
+      const blocker = liveBlocker();
+      if (blocker || open.length) {
+        req.contentEdit?.wroteNothing();
+        const q = await enqueueRedo(ctx, { courseCode, seeds: seedNumbers, notes, identity: req.contentEdit?.identity || req.editorIdentity || null, blocker });
+        const status = await queueStatus(ctx, { courseCode, blocker });
+        const mine = status.entries.find((e) => e.queue_id === q.queue_id) || {};
+        setImmediate(() => drainNow(ctx));
+        return res.status(202).json({
+          ok: true, queued: true, queue_id: q.queue_id, seeds: seedNumbers,
+          reason: mine.reason || q.reason, position: mine.position || null, of: mine.of || null, eta: mine.eta || null, eta_text: mine.eta_text || null,
+          message: `Redo queued — ${mine.reason || q.reason}. Nothing has been changed yet; it starts by itself${mine.eta_text ? ` ${mine.eta_text}` : ' when an agent can run'}.`,
+        });
       }
 
-      // SNAPSHOT BEFORE DELETE. The old decomposition is the only record of what
-      // the human is asking to be changed — it feeds the undo (POST
-      // /build/redo-undo) and the "previous decomposition" section of the redo
-      // brief. If this throws, nothing is deleted.
-      const { batchId, snapshots } = await snapshotSeeds(ctx.supabase, courseCode, seedNumbers, {
-        reason: 'redo',
-        notes,
-      });
-      console.log(`[REDO] ${courseCode} snapshot batch ${batchId}: ${snapshots.length} seed(s) captured before delete`);
-
-      // One event for the whole redo wipe — the deleted rows leave nothing to stamp.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({ scope: { seed_numbers: seedNumbers, rows: seedNumbers.length } })
-        : null;
-
-      // Wipe each seed (delete phrases + LEGOs, reset decomposed_at)
-      let totalPhrasesDeleted = 0;
-      let totalLegosDeleted = 0;
-      let totalSeedsReset = 0;
-
-      for (const seedNum of seedNumbers) {
-        const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
-          await wipeSeedTeaching(ctx.supabase, courseCode, [seedNum]);
-
-        const { count: seedsReset } = await ctx.supabase
-          .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })
-          .eq('course_code', courseCode).eq('seed_number', seedNum);
-
-        totalPhrasesDeleted += phrasesDeleted || 0;
-        totalLegosDeleted += legosDeleted || 0;
-        totalSeedsReset += seedsReset || 0;
-      }
-
-      ctx.courseVocabCache.delete(courseCode);
-      await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
-
-      // Clear final_pass_completed — rebuilt seeds need re-review
-      const { data: redoCourse } = await ctx.supabase.from('courses').select('quality_rules').eq('course_code', courseCode).single();
-      if (redoCourse?.quality_rules?.final_pass_completed) {
-        await ctx.supabase.from('courses').update({
-          quality_rules: { ...(redoCourse.quality_rules), final_pass_completed: false }
-        }).eq('course_code', courseCode);
-      }
-
-      // Spawn the rebuild agent and RECORD it, so the redo watchdog (lib/redo-watchdog.cjs) can retry it
-      // once and then restore the snapshot if it never submits. If the spawn itself fails (brief error,
-      // agent cap filled since the preflight), the seeds are put back now rather than left empty.
-      let spawned;
       try {
-        spawned = await spawnRedoAgent(ctx, { courseCode, seeds: seedNumbers, notes, batchId, attempt: 1 });
-      } catch (spawnErr) {
-        const restored = [];
-        for (const s of snapshots) {
-          try { await restoreSnapshot(ctx.supabase, { courseCode, snapshotId: s.id, restoredBy: 'redo-spawn-failed' }); restored.push(s.seed_number); }
-          catch (e) { console.error(`[REDO] ${courseCode} seed ${s.seed_number}: restore after failed spawn ALSO failed: ${e.message}`); }
-        }
-        ctx.courseVocabCache.delete(courseCode);
-        return res.status(500).json({ ok: false, error: `Redo agent could not start (${spawnErr.message}); restored seed(s) ${restored.join(', ') || 'NONE — undo by hand'}.`, restored });
+        return res.json(await performRedo(ctx, { courseCode, seedNumbers, notes, recordEdit: req.contentEdit ? (o) => req.contentEdit.record(o) : null }));
+      } catch (e) {
+        if (e.restored) return res.status(500).json({ ok: false, error: e.message, restored: e.restored });
+        throw e;
       }
-
-      res.json({
-        ok: true,
-        seeds: seedNumbers,
-        phrases_deleted: totalPhrasesDeleted,
-        legos_deleted: totalLegosDeleted,
-        seeds_reset: totalSeedsReset,
-        snapshot_batch_id: batchId,
-        snapshots,
-        account: spawned.account,
-        message: `Redo agent spawned for ${seedNumbers.length} seed(s). Previous decomposition snapshotted — if the agent does not submit it is retried once, then restored automatically (undo by hand: POST /api/build/redo-undo/${courseCode}).`
-      });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
@@ -362,6 +314,38 @@ module.exports = function (ctx) {
     try {
       const stuck = await findStuckRedoSeeds(ctx, { sinceDays: Math.min(Number(req.query.days) || 120, 400) });
       res.json({ ok: true, count: stuck.length, stuck });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // GET /build/redo-queue[/:courseCode] — queued redos (job #457): place, plain-English reason, ETA if knowable.
+  router.get(['/build/redo-queue', '/build/redo-queue/:courseCode'], async (req, res) => {
+    try {
+      const s = await queueStatus(ctx, { courseCode: req.params.courseCode || null });
+      res.json({ ok: true, total: s.total, blocked: s.blocker ? s.blocker.reason : null, entries: s.entries });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // POST /build/redo-queue-hold {minutes (0-60, 0 lifts it), reason} — same-host only. Holds every redo in the
+  // queue (new presses queue too). In memory: a restart lifts it.
+  router.post('/build/redo-queue-hold', (req, res) => {
+    const { isTrustedLoopback } = require('../../shared/editor-identity.cjs');
+    if (!isTrustedLoopback(req)) return res.status(403).json({ ok: false, error: 'same-host callers only' });
+    const h = setHold({ minutes: req.body?.minutes, reason: req.body?.reason, by: req.headers['x-agent-id'] || null });
+    console.log(`[REDO-QUEUE] hold ${h ? `until ${new Date(h.until).toISOString()} (${h.reason}) by ${h.by}` : 'lifted'}`);
+    if (!h) setImmediate(() => drainNow(ctx));
+    res.json({ ok: true, hold: currentHold() });
+  });
+
+  // POST /build/redo-queue/:courseCode/:queueId/cancel — drop a queued redo before it starts. Nothing was deleted.
+  router.post('/build/redo-queue/:courseCode/:queueId/cancel', async (req, res) => {
+    try {
+      const by = req.editorIdentity?.label || req.headers['x-agent-id'] || (req.body && req.body.by) || null;
+      const r = await cancelQueuedRedo(ctx, { courseCode: req.params.courseCode, queueId: req.params.queueId, by });
+      res.status(r.ok ? 200 : 404).json(r);
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }
