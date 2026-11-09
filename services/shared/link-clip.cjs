@@ -169,7 +169,10 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   // says something else (job #570: North Pod 1 SC01-S004's third English clip said "Goodbye." for "See you later.").
   // The line's sentences are the player's (pod-sentence-split.cjs), and they must number exactly the array's clips, so a
   // position always means one sentence; the line's English then rides into the write as a guard.
-  const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : []
+  // A TARGET segment gets the same rule (2026-11-09, North Pod 1 SC05-S001): after a word swap ("Sarah" → "Siân") the
+  // old split slice still says the old words, so only a clip of the line's OWN sentence at that position may replace it;
+  // target_text already rides into the write as a guard.
+  const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : link.role === 'segment' ? podSentencesOf(row.target_text) : []
   const ownSentence = sentences.length === arr.length ? sentences[arr.indexOf(old)] : null
   const saysOwnSentence = ownSentence != null && sameRecordedWords(ownSentence, clip.text || '')
   if (!saysOwnSentence && (!was || !sameRecordedWords(was.text || '', clip.text || ''))) {

@@ -3880,6 +3880,29 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   }
 })
 
+// Re-credit a HUMAN take filed under the wrong person's voice id (2026-11-09: Aran's North "Siân" takes filed as Catrin).
+// Only course_audio.voice_id changes, conditionally on the old value; the clip index is re-keyed. Rules: shared/clip-voice-relabel.cjs.
+// Body: { clips: [{ audioId, from, to }], reason, dryRun? }
+app.post('/api/production/:courseCode/clip-voice-relabel', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const body = req.body || {}
+    const sb = supabaseClient.getClient()
+    if (body.dryRun && req.contentEdit) req.contentEdit.wroteNothing()
+    const source = require('./shared/clip-index.cjs').supabaseClipSource(sb, { log: logger, indexedBy: 'clip-voice-relabel' })
+    const out = await require('./shared/clip-voice-relabel.cjs').relabelClipVoices({
+      db: sb, courseCode: req.params.courseCode, clips: body.clips, reason: body.reason, dryRun: !!body.dryRun,
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+      reindex: (rows) => source.write(rows), logger,
+    })
+    if (!body.dryRun && !out.relabelled && req.contentEdit) req.contentEdit.wroteNothing()
+    res.status(['NO_CLIPS', 'TOO_MANY', 'NO_REASON', 'NO_COURSE'].includes(out.code) ? 400 : out.ok ? 200 : 409).json(out)
+  } catch (error) {
+    logger.error('clip-voice-relabel failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
 // Re-sync lego_introductions.presentation_audio_id from course_legos.presentation_audio_id (job #143).
 // DRY RUN unless body.apply === true; ':courseCode' may be 'all' for a dry-run count only. Rules: services/shared/sync-intro-links.cjs.
 app.post('/api/production/:courseCode/sync-intro-links', async (req, res) => {

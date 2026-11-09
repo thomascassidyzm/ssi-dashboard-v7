@@ -113,6 +113,8 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
   // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
+  // 2026-11-09: a human take re-credited to the voice that recorded it (services/shared/clip-voice-relabel.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/clip-voice-relabel', operation: 'audio-relabel' },
   // Job #143: lego_introductions re-synced from the LEGO's own link (services/shared/sync-intro-links.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/sync-intro-links',   operation: 'audio-link' },
   // Job #374: a machine cut from a longer clip is stored (course_audio) and linked (services/shared/ingest-cut.cjs).
