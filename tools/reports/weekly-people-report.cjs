@@ -16,6 +16,7 @@
  *   node tools/reports/weekly-people-report.cjs --publish        write, publish as a surface doc and
  *                                                                post one summary line to Kai's Watson
  *     --to <person>   who gets the line (default Kai)   --days <n>   window (default 7)
+ *     --slack-out FILE   the South Welsh booth block for Aran, plain text (default: beside --out)
  *
  * Identity for --publish: the conversation token in CS_CONV_TOKEN when run from a surface job, else
  * the cron fleet's session (command-surface/ops/cs-cron-identity.js) when run by the Monday timer
@@ -124,7 +125,11 @@ async function gather({ now, days }) {
   }
   try {
     let uploads = null
+    let paceUploads = null
     if (pg) {
+      // The South Welsh section's pace: booth uploads over the last 4 weeks (job #513).
+      const pace = await tryQuery(pg, 'Four-week booth uploads (recording_provenance)', UPLOADS_SQL, [new Date(now - 28 * 24 * 3600 * 1000).toISOString()], gaps)
+      if (pace) paceUploads = lib.uploadMap(pace)
       const wk = await tryQuery(pg, 'Booth uploads (recording_provenance)', UPLOADS_SQL, [new Date(since).toISOString()], gaps)
       const all = wk ? await tryQuery(pg, 'All-time booth uploads (recording_provenance)', UPLOADS_SQL, [new Date(0).toISOString()], gaps) : null
       if (wk && all) {
@@ -142,6 +147,7 @@ async function gather({ now, days }) {
       const stray = [...uploads.week.entries()].filter(([v, u]) => v && !known.has(v) && u.takes > 0)
       if (stray.length) gaps.push(`Booth uploads this week under voices the booth does not list as an artist: ${stray.map(([v, u]) => `${v} ${n(u.takes)}`).join(', ')}.`)
     }
+    await addCymSouth(d, uploads, paceUploads)
     if (!pg) return finishGaps(d)
 
     const users = await tryQuery(pg, 'Popty logins (dashboard_users)', 'SELECT email, name, role, courses, invited_at FROM dashboard_users', [], gaps)
@@ -169,6 +175,35 @@ async function gather({ now, days }) {
 }
 
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
+
+const POPTY = process.env.POPTY_API || 'http://localhost:3470'
+
+/** The booth's coverage bar, through Popty's own route (live, read-only): the fallback when the
+ *  booth overview cannot be built here. */
+async function readCoverage() {
+  const r = await fetch(`${POPTY}/api/recording/coverage`, { headers: { 'x-agent-id': 'tool:weekly-people-report' }, signal: AbortSignal.timeout(120000) })
+  if (!r.ok) throw new Error(`GET /api/recording/coverage → ${r.status}`)
+  return r.json()
+}
+
+/** Section 0, South Welsh booth (Aran, job #513): always built; what is unread becomes a gap. */
+async function addCymSouth(d, uploads, paceUploads) {
+  const rows = d.recorders && d.recorders.rows ? d.recorders.rows : null
+  const queued = rows && lib.CYM_SOUTH_VOICES.every((v) => {
+    const r = rows.find((x) => x.voiceId === v.voiceId)
+    return r && !r.queueUnavailable && (r.projects || []).some((p) => /^cym_s/.test(p.courseCode || ''))
+  })
+  let coverage = null
+  if (!queued) {
+    try { coverage = await readCoverage() } catch (e) {
+      d.gaps.push(`South Welsh booth: neither the booth overview nor Popty's coverage route could be read (${e.message}), so Eleri's and Dan's totals and weeks left are missing, not zero.`)
+    }
+  }
+  const uploadsOk = uploads && paceUploads
+  if (!uploadsOk) d.gaps.push('South Welsh booth: booth uploads (recording_provenance) could not be read, so lines this week and the pace are missing, not zero.')
+  d.cymSouth = lib.cymSouthRows({ recorderRows: rows, coverage, uploads: uploadsOk ? { week: uploads.week, pace: paceUploads } : null })
+  if (!queued && coverage) d.gaps.push('South Welsh booth: the booth overview could not be built here, so totals are the booth coverage count — every cast pod, seed and LEGO line for the voice — WITHOUT the practice-phrase batches in their queues. The phrase batches are uncounted, so the totals are too low by that much and the weeks left too short.')
+}
 
 /** The standing blind spots, said every week so a zero is never mistaken for a fact. */
 function finishGaps(d) {
@@ -209,6 +244,9 @@ async function main() {
   let out = arg('--out')
   if (!out && publish) out = path.join(DEFAULT_OUT_DIR, `people-report-${new Date(now).toISOString().slice(0, 10)}.md`)
   if (out) { fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, md) } else process.stdout.write(`${md}\n`)
+  // The Slack block for Aran on its own (job #513), plain text, ready to paste.
+  const slackOut = arg('--slack-out') || (out ? out.replace(/\.md$/, '') + '-cym-south.txt' : null)
+  if (slackOut) fs.writeFileSync(slackOut, `${lib.cymSouthBlock(d.cymSouth, d.since, now)}\n`)
   process.stderr.write(`${summary}\n`)
   if (!publish) return 0
   const doc = await post('/api/publish-doc', { path: out, title: `Popty people report, ${lib.when(d.since, now)} – ${lib.when(now, now)}`, internal: true })

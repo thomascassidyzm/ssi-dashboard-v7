@@ -14,6 +14,7 @@ const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContain
 // deu_for_eng separable verbs (Kai's ruling 2026-09-21): containment asks this
 // module; the exact-match baseline is passed in and decides everywhere else.
 const { phraseContainsLego } = require('../lib/separable-verbs.cjs');
+const { checkLegosFromSeed, HINT: LEGO_FROM_SEED_HINT } = require('../lib/lego-from-seed.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -1269,6 +1270,25 @@ module.exports = function seedCompleteRoutes(ctx) {
           console.log(`✓ ${seedId}: Tiling valid (${tilingResult.seed_vocab || 'ok'} → ${legos.length} LEGOs)`);
         }
       } // end tiling check
+
+      // 2a. LEGO FROM SEED (canon L26; Kai 9 Nov 2026, job #486). Tiling above only proves the
+      // seed is covered; this proves each LEGO is made of the seed's own words in the seed's
+      // order — the half nothing checked, which let the fry builder put pronouns in for the
+      // seed's nouns. Blocks on the courses in BLOCKING_COURSES, warns everywhere else.
+      {
+        const fromSeed = checkLegosFromSeed(course_code, target_text, legos, seedId);
+        if (fromSeed.findings.length > 0) {
+          const entry = {
+            type: 'lego_not_from_seed',
+            message: `${fromSeed.findings.length} LEGO(s) use words their seed does not say, or say them in a different order`,
+            offenders: fromSeed.findings,
+            seed_target: target_text,
+            hint: LEGO_FROM_SEED_HINT,
+          };
+          (fromSeed.blocking ? errors : warnings).push(entry);
+          console.log(`${fromSeed.blocking ? '✗' : '⚠'} ${seedId}: LEGO NOT FROM SEED - ${fromSeed.findings.map(f => `${f.lego_id} "${f.target}" [${f.not_from_seed.join(', ')}]`).join('; ')}`);
+        }
+      }
 
       // 3. VOCAB VALIDATION
       // Sort LEGOs by idx so vocab accumulates in correct order —

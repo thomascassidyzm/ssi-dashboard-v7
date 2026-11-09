@@ -207,9 +207,103 @@ function recorderRows(overview, now, uploads = null) {
       // Nothing assigned and nothing recorded this week: an old or parked voice, listed in one line.
       dormant: total === 0 && !(act.takes7d > 0) && !(uploads && (sumFor(uploads.week, a) || {}).takes > 0),
       noQueue: !!a.noQueue, queueUnavailable: !!a.queueUnavailable,
-      projects: projects.map((p) => ({ label: p.label, done: p.recorded || 0, total: p.total, week: (p.activity && p.activity.takes7d) || 0 })),
+      projects: projects.map((p) => ({ label: p.label, courseCode: p.courseCode || null, done: p.recorded || 0, total: p.total, week: (p.activity && p.activity.takes7d) || 0 })),
     }
   }).sort((x, y) => (y.week - x.week) || ((y.last || 0) - (x.last || 0)))
+}
+
+// ── SECTION 0: SOUTH WELSH BOOTH (for Aran, job #513) ─────────────────────────────────────────────
+
+/**
+ * Aran's Monday question (via Kai, 2026-11-09): how many lines did Eleri and Dan — the cym_s_for_eng
+ * booth voices — record in the last 7 days, each and together; how far through the southern work are
+ * they; and, at the recent pace, how many weeks are left. The section is ALWAYS printed, quiet week or
+ * not, and a number it cannot read is said to be missing, never estimated.
+ *
+ * LINES this week = distinct clips the voice's booth uploads landed on (recording_provenance), so a
+ * re-read of the same line counts once; takes (re-reads included) are shown beside it.
+ * PROGRESS comes from the booth's own counts, never a second copy of the rule:
+ *   · 'queue'    — the artist's queue as their booth shows it (booth overview projects: Pod 1, the
+ *                  cym_sv2_for_eng seeds / LEGOs / practice-phrase batches, the 206 cym_s seeds;
+ *                  booth-actor-queue.cjs), every project whose course is cym_s_* summed;
+ *   · 'coverage' — when the overview cannot be built, Popty's /api/recording/coverage for the voice:
+ *                  every cast line (pod, seed, LEGO) but NO practice-phrase batches, so its total is
+ *                  smaller than the queue's and is labelled as such.
+ * PACE = lines over the last 28 days ÷ 4, so one quiet week does not make the estimate infinite.
+ * Weeks left = lines left ÷ pace, per voice; the work is finished when the slower voice finishes.
+ */
+const CYM_SOUTH_VOICES = Object.freeze([
+  { voiceId: 'human_eleri_cym_s', name: 'Eleri' },
+  { voiceId: 'human_dan_cym_s', name: 'Dan' },
+])
+const CYM_SOUTH_COURSE = /^cym_s/
+const PACE_WEEKS = 4
+
+function sumUploads(map, spellings) {
+  if (!map) return null
+  const out = { takes: 0, clips: 0 }
+  for (const sp of new Set(spellings)) { const u = map.get(sp); if (u) { out.takes += u.takes; out.clips += u.clips } }
+  return out
+}
+
+/**
+ * @param {object} a { recorderRows|null, coverage|null (GET /api/recording/coverage body),
+ *   uploads: { week: Map, pace: Map }|null, voices? }
+ */
+function cymSouthRows({ recorderRows = null, coverage = null, uploads = null, voices = CYM_SOUTH_VOICES } = {}) {
+  const covVoices = coverage ? (Array.isArray(coverage) ? coverage : coverage.languages || []).flatMap((l) => l.voices || []) : []
+  const rows = voices.map((v) => {
+    const rec = (recorderRows || []).find((r) => r.voiceId === v.voiceId || (r.spellings || []).includes(v.voiceId)) || null
+    const spellings = rec ? [v.voiceId, ...(rec.spellings || [])] : [v.voiceId]
+    const week = uploads ? sumUploads(uploads.week, spellings) : null
+    const paceLines = uploads ? sumUploads(uploads.pace, spellings) : null
+    let progress = null
+    const qp = rec && !rec.queueUnavailable ? (rec.projects || []).filter((p) => CYM_SOUTH_COURSE.test(p.courseCode || '')) : []
+    if (qp.length) {
+      progress = { source: 'queue', done: qp.reduce((s, p) => s + p.done, 0), total: qp.reduce((s, p) => s + p.total, 0),
+        parts: qp.map((p) => ({ label: `${p.label}${p.courseCode ? ` (${p.courseCode})` : ''}`, done: p.done, total: p.total })) }
+    } else {
+      const c = covVoices.find((x) => x.voiceId === v.voiceId)
+      if (c && Number.isFinite(c.total)) {
+        const done = c.withTake ?? c.recorded ?? 0
+        progress = { source: 'coverage', done, total: c.total,
+          parts: Object.entries(c.kinds || {}).map(([k, x]) => ({ label: k, done: x.withTake || 0, total: x.total || 0 })) }
+      }
+    }
+    const remaining = progress ? Math.max(0, progress.total - progress.done) : null
+    const pace = paceLines ? paceLines.clips / PACE_WEEKS : null
+    const weeksLeft = remaining == null || pace == null ? null : remaining === 0 ? 0 : pace > 0 ? remaining / pace : Infinity
+    return { ...v, week, pace, progress, remaining, weeksLeft }
+  })
+  const all = (k) => rows.every((r) => r[k] != null)
+  const combined = {
+    week: all('week') ? { takes: rows.reduce((s, r) => s + r.week.takes, 0), clips: rows.reduce((s, r) => s + r.week.clips, 0) } : null,
+    pace: all('pace') ? rows.reduce((s, r) => s + r.pace, 0) : null,
+    done: all('progress') ? rows.reduce((s, r) => s + r.progress.done, 0) : null,
+    total: all('progress') ? rows.reduce((s, r) => s + r.progress.total, 0) : null,
+    // Finished when the slower voice is: the larger of the two, not the pooled figure.
+    weeksLeft: all('weeksLeft') ? Math.max(...rows.map((r) => r.weeksLeft)) : null,
+    sources: [...new Set(rows.map((r) => r.progress && r.progress.source).filter(Boolean))],
+  }
+  return { rows, combined, paceWeeks: PACE_WEEKS }
+}
+
+const weeksText = (w) => (w == null ? 'cannot be estimated (missing numbers, see below)' : w === 0 ? 'done'
+  : !Number.isFinite(w) ? 'no estimate: nothing recorded in the last 4 weeks' : `about ${w < 10 ? w.toFixed(1) : Math.round(w)} weeks`)
+
+/** The block Kai pastes into Slack for Aran: plain text, no markdown tables. */
+function cymSouthBlock(c, since, now) {
+  const L = [`South Welsh booth (cym_s), ${when(since, now)} – ${when(now, now)}`]
+  if (!c) return `${L[0]}\nNot available this week.`
+  for (const r of c.rows) {
+    const wk = r.week ? `${plural(r.week.clips, 'line')} recorded this week (${plural(r.week.takes, 'take')} incl. re-reads)` : 'this week\'s lines could not be read'
+    const pr = r.progress ? `${n(r.progress.done)} / ${n(r.progress.total)} done (${pct(r.progress.done, r.progress.total)}), ${n(r.remaining)} left` : 'progress could not be read'
+    L.push(`• ${r.name}: ${wk}. ${pr}. ${r.pace != null ? `Pace ${n(Math.round(r.pace))} lines/week (4-week average) → ${weeksText(r.weeksLeft)}.` : 'Pace could not be read.'}`)
+  }
+  const k = c.combined
+  L.push(`• Together: ${k.week ? `${plural(k.week.clips, 'line')} this week` : 'this week could not be read'}; ${k.total != null ? `${n(k.done)} / ${n(k.total)} done (${pct(k.done, k.total)})` : 'progress could not be read'}; weeks left at the recent pace: ${weeksText(k.weeksLeft)}${k.weeksLeft != null && k.weeksLeft > 0 && Number.isFinite(k.weeksLeft) ? ' (set by the slower voice)' : ''}.`)
+  if (k.sources.includes('coverage')) L.push('(Totals are every cast line — pod, seed sentences, LEGOs — and leave out the practice-phrase batches, which could not be counted this week.)')
+  return L.join('\n')
 }
 
 // ── SECTION 2: VOLUNTEER BUILDERS ─────────────────────────────────────────────────────────────────
@@ -400,6 +494,18 @@ function renderReport(d) {
   L.push(`# Popty people report, ${range}`, '')
   L.push(`Last 7 days to ${new Date(now).toISOString().slice(0, 16).replace('T', ' ')} UTC, London dates. All-time = everything in the live database.`, '')
 
+  // 0 — always printed (Aran, job #513)
+  L.push('## South Welsh booth (Eleri and Dan, for Aran)', '')
+  L.push('```', cymSouthBlock(d.cymSouth, since, now), '```', '')
+  if (d.cymSouth) {
+    for (const r of d.cymSouth.rows) {
+      if (!r.progress) continue
+      L.push(`${r.name} — ${r.progress.source === 'queue' ? 'the booth queue' : 'cast lines (booth coverage; no practice-phrase batches)'}:`)
+      for (const p of r.progress.parts) L.push(`- ${p.label}: ${n(p.done)}/${n(p.total)} (${pct(p.done, p.total)})`)
+      L.push('')
+    }
+  }
+
   // 1
   L.push('## 1. Recorders', '')
   if (d.recorders.error) L.push(`**Not available this week:** ${d.recorders.error}`, '')
@@ -526,4 +632,5 @@ module.exports = {
   OP_GROUPS, PROOF_GROUPS, STALL_MS, APPROVAL_MATCH_MS,
   opGroup, isTestPerson, seedRanges, peopleIndex, addEvent, emptyTally, uploadMap, surfaceLine,
   recorderRows, builderRows, proofRows, approvalActor, renderReport, summaryLine, when,
+  CYM_SOUTH_VOICES, cymSouthRows, cymSouthBlock,
 }
