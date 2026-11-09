@@ -6730,6 +6730,14 @@ app.post('/api/audio/render', async (req, res) => {
   }
 })
 
+// ABAIR voices for a trial audition (job #525): which abair_<voice> ids POST /api/audio/render (trial:true) can name.
+app.get('/api/audio/abair/voices', async (req, res) => {
+  try {
+    const r = await fetch(`${process.env.PHASE8_URL || 'http://localhost:3465'}/abair-voices`)
+    res.status(r.status).json(await r.json())
+  } catch (e) { res.status(503).json({ ok: false, error: e.message }) }
+})
+
 // Listen to a TRIAL clip (job #748): the render answer's playPath. phase8 reads it from S3 trial/; nothing here knows a course.
 app.get('/api/audio/trial/:id', async (req, res) => {
   try {

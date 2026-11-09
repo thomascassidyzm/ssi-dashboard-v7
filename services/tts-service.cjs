@@ -651,6 +651,79 @@ async function generateCartesia(text, config) {
 }
 
 /**
+ * ABAIR (Trinity College Dublin's Irish TTS, api.abair.ie/v4) — job #525, Kai 2026-11-09: an Irish voice audition.
+ *
+ * TRIAL LANE ONLY. ABAIR is reachable solely as a Voice Lab trial render (trial:true on POST /api/audio/render), so its
+ * clips are stored under trial/ and are never linkable to a course row (job #748). A non-trial call is refused here, at
+ * the provider, whatever the caller upstream decided — casting ABAIR into a course is a separate go, not this code.
+ *
+ * Their terms (api.abair.ie/v4/docs, Terms of Use) allow prototyping, forbid load testing and ask that the same synthesis
+ * request is never sent twice — reuse the output instead. So: one attempt (the route already passes maxRetries 1, and a
+ * 4xx is never retried), and the caller caches every clip it gets back. The key is ABAIR_API_KEY in the service env; it is
+ * sent only in the abair-api-key header and scrubbed from any error text before that text is thrown or logged.
+ *
+ * Billing: 8 tokens per character against the key's daily cap (basic tier 500,000 → 62,500 characters/day). The estate's
+ * spend guard counts ABAIR as an unnamed provider (UNKNOWN_PROVIDER_BUDGET, 20,000 chars/day) — tighter than their cap.
+ */
+const ABAIR_BASE = 'https://api.abair.ie/v4';
+const ABAIR_TRIAL_ONLY = 'ABAIR is a Voice Lab trial provider only (403): render it with trial:true — its clips are never linked to a course (job #525, #748)';
+
+const scrubKey = (text, key) => (key ? String(text).split(key).join('[key]') : String(text));
+
+/** The WAV byte rate from a RIFF header (offset 28), or a 16 kHz mono 16-bit default. Pure. */
+function wavByteRate(buf) {
+  if (buf && buf.length >= 32 && buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WAVE') {
+    const r = buf.readUInt32LE(28);
+    if (r > 0) return r;
+  }
+  return 32000;
+}
+
+async function generateAbair(text, config) {
+  const door = config.door || {};
+  if (!door.trial) throw new Error(ABAIR_TRIAL_ONLY);
+  const { apiKey, voiceId, speed } = config;
+  if (!apiKey) throw new Error('ABAIR API key is not configured (401): set ABAIR_API_KEY in the phase8 service environment');
+  if (!voiceId) throw new Error('ABAIR voice is required (400)');
+  const body = { input: text, voice: voiceId };
+  if (speed != null && speed !== 1) body.speed = speed;
+  const response = await fetch(`${ABAIR_BASE}/synthesis?outputType=JSON&audioEncoding=WAV`, {
+    method: 'POST',
+    agent: ttsKeepAliveAgent,
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+    headers: { 'abair-api-key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const errorText = scrubKey((await response.text()).slice(0, 400), apiKey);
+    throw new Error(`ABAIR TTS API error (${response.status}): ${errorText}`);
+  }
+  const json = await response.json();
+  if (!json || !json.audioContent) throw new Error('ABAIR TTS API error (502): no audioContent in the answer');
+  const audioBuffer = Buffer.from(json.audioContent, 'base64');
+  assertAudibleResponse(audioBuffer, { provider: 'abair', bytesPerSecond: wavByteRate(audioBuffer), text, voiceId });
+  return { audioBuffer, wordBoundaries: null, wordTimings: null };
+}
+
+/**
+ * ABAIR's voice list (GET /synthesis/voices: id, name, sex, province, location) — metadata, not synthesis, costs no
+ * tokens. Read once per process and kept, so a page of auditions asks once. The key never leaves this function.
+ */
+let abairVoicesCache = null;
+async function listAbairVoices({ apiKey = process.env.ABAIR_API_KEY, refresh = false } = {}) {
+  if (abairVoicesCache && !refresh) return abairVoicesCache;
+  if (!apiKey) throw new Error('ABAIR API key is not configured (401): set ABAIR_API_KEY in the phase8 service environment');
+  const response = await fetch(`${ABAIR_BASE}/synthesis/voices`, {
+    headers: { 'abair-api-key': apiKey, Accept: 'application/json' },
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+  });
+  if (!response.ok) throw new Error(`ABAIR voices error (${response.status}): ${scrubKey((await response.text()).slice(0, 300), apiKey)}`);
+  const list = await response.json();
+  abairVoicesCache = (Array.isArray(list) ? list : []).map(v => ({ id: v.id, name: v.name, sex: v.sex || null, province: v.province || null, location: v.location || null }));
+  return abairVoicesCache;
+}
+
+/**
  * Parse a complete Cartesia SSE body. Events are `data: {json}` lines; the
  * types that matter are `chunk` (base64 audio in `data`), `timestamps`
  * (`word_timestamps: { words, start, end }`, possibly several per generation —
@@ -747,6 +820,10 @@ async function renderOnce(text, provider, config) {
 
     case 'cartesia':
       return await generateCartesia(text, config);
+
+    case 'abair':
+      // Trial lane only — generateAbair refuses anything else (job #525).
+      return await generateAbair(text, config);
 
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
@@ -1081,5 +1158,10 @@ module.exports = {
   assertAudibleResponse,
   TTS_MIN_AUDIO_MS,
   CHILD_VOICE_IDS,
-  assertNotHumanVoiceCourse
+  assertNotHumanVoiceCourse,
+  // ABAIR (job #525): the voice list (metadata), the trial-only refusal text and the pure helpers, for the route and tests.
+  listAbairVoices,
+  ABAIR_TRIAL_ONLY,
+  wavByteRate,
+  scrubKey
 };
