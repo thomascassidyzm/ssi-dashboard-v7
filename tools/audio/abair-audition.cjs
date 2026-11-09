@@ -124,7 +124,8 @@ async function page() {
   const token = process.env.CS_CONV_TOKEN, conv = process.env.CS_CONV_ID
   if (!token || !conv) throw new Error('page needs CS_CONV_TOKEN and CS_CONV_ID (the room the answers return to)')
   const ledger = loadLedger()
-  const clipsDir = path.join(DIR, 'clips'); fs.mkdirSync(clipsDir, { recursive: true })
+  // The surface publishes only from the caller's own workspace or $CS_SCRATCH, so a worker points ABAIR_CLIPS_DIR there (job #525).
+  const clipsDir = process.env.ABAIR_CLIPS_DIR || path.join(DIR, 'clips'); fs.mkdirSync(clipsDir, { recursive: true })
   const voicesHeard = [...new Set(Object.values(ledger.renders).filter(r => r.ok).map(r => r.voice))]
   const meta = Object.fromEntries((ledger.voices || []).map(v => [v.name, v]))
   const sources = shuffled([...voicesHeard.map(n => ({ key: `abair:${n}`, label: `ABAIR ${n} (${meta[n] ? `${meta[n].id}, ${meta[n].sex}, ${meta[n].province}` : '?'})` })), ...LIVE])
@@ -135,7 +136,9 @@ async function page() {
     const r = await fetch(`${SURFACE}/api/publish-doc`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-cs-conv': token }, body: JSON.stringify({ file, title, conv_id: conv, internal: true }) })
     const j = await r.json()
     if (!j.url) throw new Error(`publish refused for ${path.basename(file)}: ${JSON.stringify(j).slice(0, 200)}`)
-    const p = new URL(j.url, SURFACE).pathname.replace(/\/?$/, '') + '/file'
+    const m = /\/d\/[0-9a-f]{8}/.exec(new URL(j.url, SURFACE).pathname)   // the file url already ends /file; the page wants /d/<id>/file
+    if (!m) throw new Error(`publish answered an unexpected url for ${path.basename(file)}: ${j.url}`)
+    const p = `${m[0]}/file`
     ledger.published[file] = p; saveLedger(ledger); return p
   }
   const items = [], gaps = []
@@ -158,6 +161,7 @@ async function page() {
       } catch (e) { gaps.push(`${item.ref} voice ${s.letter}: ${e.message}`) }
     }
   }
+  if (!items.length) { console.log('No clip could be published — no page built.'); for (const g of gaps.slice(0, 5)) console.log(`  ${g}`); process.exit(2) }
   const r = await fetch(`${SURFACE}/api/review-page`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-cs-conv': token }, body: JSON.stringify({ title: `ABAIR Irish audition — ${ITEMS.length} gle_for_eng items, voices ${letters[0].letter}–${letters[letters.length - 1].letter} (blind)`, conv_id: conv, items }) })
   const j = await r.json()
   ledger.page = { url: j.url || null, at: new Date().toISOString(), key: letters.map(l => ({ letter: l.letter, source: l.label })), gaps }
