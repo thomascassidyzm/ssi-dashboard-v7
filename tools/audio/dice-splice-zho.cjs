@@ -433,7 +433,7 @@ async function cmdBuild() {
   console.log(`made ${manifest.made.length}, dropped ${manifest.dropped.length} → ${voiceDir}/manifest.json`)
 }
 
-module.exports = { assertPiecesFromOtherTexts, hashVerdict, waveformSimilarity, pieceRecord, envelope, syllableBounds, timingBounds, spanSamples, joinPieces, measure, cer }
+module.exports = { assertPiecesFromOtherTexts, hashVerdict, waveformSimilarity, pieceRecord, envelope, syllableBounds, timingBounds, spanSamples, joinPieces, measure }
 if (require.main === module) {
   const cmd = { plan: cmdPlan, bundle: cmdBundle, timings: cmdTimings, build: cmdBuild }[argv[0]]
   if (!cmd) { console.error('usage: dice-splice-zho.cjs plan|bundle|build … (see header)'); process.exit(2) }
