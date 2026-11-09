@@ -80,7 +80,23 @@ const DEFAULT_BUDGETS = Object.freeze({
   xai:        Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
   azure:      Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
   google:     Object.freeze({ monthlyPoolChars: 1_000_000, cycleStartDay: 1, dailyCapChars:   100_000, alertDailyChars:  30_000, stopAtShareOfPool: 0.5 }),
+  // ABAIR: a free daily allowance (ALLOWANCE_PROVIDERS below), so no meaningful monthly pool — the stop is the daily fair-use cap.
+  abair:      Object.freeze({ monthlyPoolChars: 1_000_000, cycleStartDay: 1, dailyCapChars:    12_500, alertDailyChars:  10_000, stopAtShareOfPool: 1 }),
 })
+/**
+ * FREE-ALLOWANCE PROVIDERS (job #525, Kai's room 2026-11-09: "ABAIR is free … re-route ABAIR-lane alerts to Kai's room, not
+ * Tom's, and label them as allowance, not spend; keep a cap as a fair-use guard"). Nothing is billed: the provider gives a
+ * daily token allowance under fair-use terms. So the guard still counts and caps it — that cap is the FAIR-USE guard — but
+ * every alert says "allowance", never "spend", and goes to the owner's room (toPerson), never to Tom's needs-you board.
+ *   ABAIR (Trinity Irish TTS, trial lane only): 8 tokens per character. The key's own /v4/apikey/status reported a
+ *   daily_cap of 100,000 tokens on 2026-11-09 = 12,500 characters, so the guard stops there (ABAIR would refuse past it
+ *   anyway); the room's figure is 0.5M tokens/day — if the key is upgraded to that, raise dailyCapChars to 62,500.
+ */
+const ALLOWANCE_PROVIDERS = Object.freeze({
+  abair: Object.freeze({ owner: 'kai', label: 'ABAIR', tokensPerChar: 8, relay: 'abair-allowance' }),
+})
+const isAllowanceProvider = (provider) => Object.prototype.hasOwnProperty.call(ALLOWANCE_PROVIDERS, String(provider || ''))
+
 /** Any provider not named above (a bake-off candidate, a new vendor): the tightest. */
 const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycleStartDay: 1, dailyCapChars: 20_000, alertDailyChars: 5_000, stopAtShareOfPool: 0.5 })
 // maxPerKey 3 (job #677, was 6): one slot's veracity re-rolls (audio-veracity
@@ -111,6 +127,7 @@ const POOL_OVERAGE = 'POOL_OVERAGE'
  */
 const KNOWN_USAGE_LIMITS = Object.freeze({
   azure: 'Azure Speech has no usage reader here: the AZURE_SPEECH_KEY can synthesise but cannot see the account\'s usage or bill, so Azure spend is checked against our ledger alone and anything spent outside the door (another script, a colleague, Speech Studio) is invisible. Known limit, said once and not raised again. What would switch the provider check on: a reader in liveUsageReaders on Azure Monitor (the Speech resource\'s SynthesizedCharacters metric) or Azure Cost Management (the Speech meter\'s cost this cycle), plus the credential it needs — an Entra service principal (AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET) granted Monitoring Reader or Cost Management Reader on the subscription, and AZURE_SPEECH_RESOURCE_ID naming the resource.',
+  abair: 'ABAIR is a free daily allowance (8 tokens per character against the key\'s daily token cap), not spend. Its own GET /v4/apikey/status reports tokens_spent_today but is not read here, so the fair-use guard counts our ledger alone. Known limit, said once.',
   cartesia: 'Cartesia shows account usage (/usage/credits) only to an ADMIN key, and this estate has only the normal key (401) — so Cartesia spend is checked against our ledger alone and anything spent outside the door (another script, a colleague, the playground) is invisible. Known limit, said once and not raised again; set CARTESIA_ADMIN_API_KEY (play.cartesia.ai/keys/admin) and the provider check switches on by itself.',
 })
 const NO_READER_LIMIT = 'no provider-usage reader is configured, so its spend is checked against our ledger alone and anything spent outside the door is invisible. Known limit, said once and not raised again; a reader for it in liveUsageReaders (and the credential that reader needs) switches the provider check on.'
@@ -903,7 +920,7 @@ function createSpendGuard(opts = {}) {
     // service restart must not re-raise a crossing already said (95% Cartesia repeated per restart).
     const today = Number(res.today) || 0; const cycle = Number(res.cycle) || 0
     if (today >= b.alertDailyChars) {
-      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider }, { oncePerHost: true })
+      alert(`daily:${provider}:${dayKey(now())}`, 'warn', dailyLineMessage(provider, today, b), { provider }, { oncePerHost: true })
     }
     for (const s of POOL_ALERT_SHARES) {
       if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider }, { oncePerHost: true })
@@ -932,6 +949,26 @@ function createSpendGuard(opts = {}) {
 
 // ─── Human alert: one line into the command surface's needs-you ────────────
 
+/** The daily-line alert's words: spend for a paid provider; allowance (with its tokens) for a free one (job #525). Pure. */
+function dailyLineMessage(provider, today, b) {
+  const a = ALLOWANCE_PROVIDERS[provider]
+  if (!a) return `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`
+  return `${a.label} free allowance used today: ${today.toLocaleString()} chars ≈ ${(today * a.tokensPerChar).toLocaleString()} ${a.label} tokens (fair-use alert line ${b.alertDailyChars.toLocaleString()} chars, guard stops at ${b.dailyCapChars.toLocaleString()}). Allowance, not spend — nothing is billed`
+}
+
+/**
+ * Where an alert goes (job #525). Pure. A free-allowance provider's alerts go to its owner's room as a surface notice
+ * (toPerson) and are labelled ALLOWANCE / FAIR-USE GUARD; every other provider keeps the needs-you card (Tom's board).
+ */
+function noticeRoute(entry, host = os.hostname()) {
+  const a = entry && ALLOWANCE_PROVIDERS[entry.provider]
+  if (a) {
+    return { kind: 'person', toPerson: a.owner, relay: a.relay,
+      text: `${a.label} ${entry.level === 'trip' ? 'FAIR-USE GUARD STOPPED' : 'ALLOWANCE NOTICE'} on ${host}: ${entry.message}` }
+  }
+  return { kind: 'needs-you', text: `TTS SPEND ${entry.level === 'trip' ? 'GUARD TRIPPED' : 'ALERT'} on ${host}: ${entry.message}` }
+}
+
 /**
  * POST the alert to the surface (loopback identity). Fire-and-forget,
  * 5s timeout. TTS_SPEND_ALERTS=0 turns the POST off (the log and the alerts
@@ -940,7 +977,9 @@ function createSpendGuard(opts = {}) {
 async function defaultNotify(entry) {
   if (process.env.TTS_SPEND_ALERTS === '0' || process.env.VITEST) return
   const surface = process.env.CS_SURFACE || 'http://localhost:4317'
-  const text = `TTS SPEND ${entry.level === 'trip' ? 'GUARD TRIPPED' : 'ALERT'} on ${os.hostname()}: ${entry.message}`
+  const route = noticeRoute(entry)
+  if (route.kind === 'person') return tellPerson(surface, route)
+  const text = route.text
   const headers = { 'Content-Type': 'application/json', Origin: surface }
   if (process.env.CS_COOKIE) headers.Cookie = `cs_user=${process.env.CS_COOKIE}`
   const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
@@ -966,6 +1005,14 @@ async function tellWatson(surface, text) {
     if (!jobId) return
     await fetch(`${surface}/api/surface-notice`, { method: 'POST', headers, body: JSON.stringify({ jobId, text, relay: 'tts-cap-approval' }), signal: ctl.signal })
   } finally { clearTimeout(t) }
+}
+
+/** A notice into one person's own Watson room (surface toPerson), with the cron fleet's identity. Fail-soft (job #525). */
+async function tellPerson(surface, { toPerson, relay, text }) {
+  let headers = { 'Content-Type': 'application/json' }
+  try { headers = { ...headers, ...require('/home/tomcassidy/command-surface/ops/cs-cron-identity.js').identityHeaders(surface) } } catch { /* fail-soft */ }
+  const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
+  try { await fetch(`${surface}/api/surface-notice`, { method: 'POST', headers, body: JSON.stringify({ toPerson, text, relay }), signal: ctl.signal }) } finally { clearTimeout(t) }
 }
 
 async function askWatsonForApproval(entry, surface, host) {
@@ -1059,4 +1106,8 @@ module.exports = {
   DEFAULT_DIVERGENCE,
   KNOWN_USAGE_LIMITS,
   RAISE_MAX_DAYS,
+  ALLOWANCE_PROVIDERS,
+  isAllowanceProvider,
+  dailyLineMessage,
+  noticeRoute,
 }
