@@ -23,8 +23,8 @@
  *          account if the log shows a usage limit; attempt 2 (or no account left to retry on): restore the
  *          redo snapshot through the existing undo route and ALERT.
  *   4. The alert goes to the course chat (orchestrator_messages, action 'redo_watchdog_alert') and to the
- *      command surface's ops strip (ops_events, source 'popty-redo-watchdog'). Popty has no door that posts
- *      into a person's room; that hook is a known gap, reported in #429.
+ *      command surface's ops strip (ops_events, source 'popty-redo-watchdog'), and — since #458 — HELD into
+ *      the course owner's Watson room via the surface's POST /api/service-notice (shared/service-notice.cjs).
  *
  * Only redos spawned by this code (metadata.redo_watchdog) are ever acted on. Older empty-after-redo seeds
  * are LISTED by findStuckRedoSeeds() (GET /api/build/redo-watchdog) and never touched automatically.
@@ -193,6 +193,14 @@ async function alert(ctx, courseCode, message, metadata) {
       metadata: { action: 'redo_watchdog_alert', redo_watchdog: WATCHDOG_TAG, ...metadata },
     });
   } catch (e) { console.error(`[REDO-WATCHDOG] could not write chat alert: ${e.message}`); }
+  // …and to the course OWNER's Watson room (job #458): held, deduped per batch on the surface. Never awaited,
+  // never throws — the chat alert above stands whatever happens to this.
+  try {
+    require('../../shared/service-notice.cjs').sendServiceNotice({
+      course: courseCode, key: `redo:${courseCode}:${metadata.snapshot_batch_id || message}`,
+      text: `Redo watchdog: ${message}`,
+    })
+  } catch { /* best effort */ }
 }
 
 /** The latest recorded attempt per snapshot batch, from the last REDO_LOOKBACK_MS, plus batches already given up on. */
