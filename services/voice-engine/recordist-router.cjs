@@ -1581,7 +1581,7 @@ module.exports = function createRecordistRouter({
     // A target-side script (job #67) files a target1 take; metaKind 'voiceover' makes the speech gate hear the target
     // language (recording-speech-gate languageForTake), where 'known' makes it hear English.
     const target = resolved.role === 'target1'
-    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: target ? 'voiceover' : 'known', role: target ? 'target1' : 'known', ownVoice: true, text, audioBase64, mimeType, device })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: target ? 'voiceover' : 'known', role: target ? 'target1' : 'known', text, audioBase64, mimeType, device })
   }
 
   /**
@@ -1667,7 +1667,7 @@ module.exports = function createRecordistRouter({
     const resolved = introSentences.resolveIntroSentence(lego, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
     return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: introSentences.INTRO_SENTENCE_KIND, metaKind: 'intro-sentence', text, audioBase64, mimeType, device,
-      role: 'presentation', spokenText: plainIntroWords(resolved.text), ownVoice: true,
+      role: 'presentation', spokenText: plainIntroWords(resolved.text),
       afterFiled: (audioId) => linkIntroSentenceTake({ recordist, raw: parsed.raw, lego, audioId }) })
   }
 
@@ -1733,10 +1733,13 @@ module.exports = function createRecordistRouter({
    * One take of fixed words (an intro piece, an English LEGO: English known-side; an introduction: the presentation
    * role), through the seed upload seam.
    *   spokenText  what the speech/script checks listen for, when the filed text carries display markup
-   *   ownVoice    file under THIS recordist's voice whatever the course's slot casts (the presentation slot of the v2
-   *               Welsh courses is a TTS slot: resolveTakeVoiceId would otherwise leave the take unstamped)
+   * EVERY take filed here is stamped with THIS recordist's voice (libraryArtistVoiceId), whatever the course's slot casts.
+   * It was opt-in (ownVoice) until 2026-11-09: a pod swap take (role target1) without it fell to resolveTakeVoiceId,
+   * where a HUMAN target1 slot wins — so Aran's North "Siân" takes, read on his own link, were filed as Catrin
+   * (voice_config.target1), which flipped the Neighbour's sex and refused his English clone. The voice on a take is
+   * the person who recorded it; the slot only ever said who the course casts.
    */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known', spokenText = null, ownVoice = false }) {
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known', spokenText = null }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1747,7 +1750,7 @@ module.exports = function createRecordistRouter({
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
       recordistLineId: raw,
-      ...(ownVoice ? { libraryArtistVoiceId: recordist.voiceId } : {}),
+      libraryArtistVoiceId: recordist.voiceId,
       body: {
         audioData: audioBase64,
         mimeType,
