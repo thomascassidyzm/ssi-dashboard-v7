@@ -687,7 +687,8 @@ async function generateAbair(text, config) {
   if (!voiceId) throw new Error('ABAIR voice is required (400)');
   const body = { input: text, voice: voiceId };
   if (speed != null && speed !== 1) body.speed = speed;
-  const response = await fetch(`${ABAIR_BASE}/synthesis?outputType=JSON&audioEncoding=WAV`, {
+  // Lower-case 'wav': the live API's enum is 'wav' | 'MP3' (its 422 says so), whatever the OpenAPI document lists (job #525).
+  const response = await fetch(`${ABAIR_BASE}/synthesis?outputType=JSON&audioEncoding=wav`, {
     method: 'POST',
     agent: ttsKeepAliveAgent,
     signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),

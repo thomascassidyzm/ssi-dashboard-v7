@@ -50,8 +50,6 @@ const LIVE = [
   { key: 'live:target1', label: 'LIVE gle_for_eng target1 (Azure ga-IE-OrlaNeural, rendered at 0.8)', field: 'liveTarget1' },
   { key: 'live:target2', label: 'LIVE gle_for_eng target2 (Azure ga-IE-ColmNeural, rendered at 0.85)', field: 'liveTarget2' },
 ]
-/** Refusals that mean every further request would be refused too: stop the run, do not walk the rest of the grid. */
-const STOP_CODES = /DAILY_QUOTA_EXCEEDED|DAILY_TOTAL_CAP|NOT_IN_CHAIN|TTS_STOP|KEY_INVALID|MISSING_API_KEY|not configured \(401\)|\(401\)|\(429\)/
 
 const loadLedger = () => (fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : { renders: {} })
 const saveLedger = (l) => { fs.mkdirSync(DIR, { recursive: true }); fs.writeFileSync(LEDGER, JSON.stringify(l, null, 2)) }
@@ -95,8 +93,11 @@ async function render() {
       ledger.renders[k] = { voice: v.name, ref: item.ref, at: new Date().toISOString(), status, ok: !!(answer && answer.ok), audioId: answer && answer.audioId, s3Key: answer && answer.s3Key, charsSpent: answer && answer.charsSpent, source: answer && answer.source, code: answer && answer.code, error: answer && !answer.ok ? String(answer.error || '').slice(0, 300) : undefined }
       saveLedger(ledger); asked++
       console.log(`${ledger.renders[k].ok ? 'OK  ' : 'FAIL'} abair_${v.name} ${item.ref} ${ledger.renders[k].ok ? ledger.renders[k].audioId : `${status} ${ledger.renders[k].code || ''} ${ledger.renders[k].error}`}`)
-      if (!ledger.renders[k].ok && STOP_CODES.test(`${ledger.renders[k].code} ${ledger.renders[k].error}`)) {
-        console.log('Stopping: this refusal would refuse every further request. Nothing is retried.'); return
+      // STOP AT THE FIRST FAILURE (job #525: a malformed request was refused 96 times in a row because the run only stopped on
+      // quota codes). The one exception is a tier refusal of ONE voice (VOICE_RESTRICTED): skip that voice, keep the others.
+      if (!ledger.renders[k].ok) {
+        if (/VOICE_RESTRICTED/.test(ledger.renders[k].error || '')) { console.log(`abair_${v.name} is not on this tier — skipping its other items`); break }
+        console.log('Stopping at the first failure. Nothing is retried; fix the cause, then re-run (asked pairs are skipped).'); return
       }
       await sleep(PAUSE_MS)
     }

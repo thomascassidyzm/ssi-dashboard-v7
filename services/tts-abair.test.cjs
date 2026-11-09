@@ -44,7 +44,7 @@ describe('ABAIR trial provider', () => {
     await withStubbedFetch(ok, async (svc, calls) => {
       const out = await svc.generate('Tá mé tuirseach', 'abair', trialCfg(), 1)
       expect(calls).toHaveLength(1)
-      expect(calls[0].url).toBe('https://api.abair.ie/v4/synthesis?outputType=JSON&audioEncoding=WAV')
+      expect(calls[0].url).toBe('https://api.abair.ie/v4/synthesis?outputType=JSON&audioEncoding=wav')
       expect(calls[0].opts.headers['abair-api-key']).toBe('secret-abair-key')
       expect(calls[0].body).toEqual({ input: 'Tá mé tuirseach', voice: 'neasa' })
       expect(out.audioBuffer.toString('ascii', 0, 4)).toBe('RIFF')
