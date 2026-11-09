@@ -66,6 +66,11 @@ const DELETABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expa
 // course_legos.lego_id is a GENERATED column (S<seed>L<index>): it is read, never written.
 const GENERATED = { course_legos: ['lego_id'] };
 const LEGO_TYPES = ['A', 'M'];
+// What an insert's copy_of must match in its source row to be exempt from the new-row shape rules.
+const COPY_CHECKED = {
+  course_legos: ['seed_number', 'lego_index', 'type', 'is_new', 'known_text', 'target_text', 'components'],
+  course_practice_phrases: ['seed_number', 'lego_index', 'phrase_role', 'known_text', 'target_text'],
+};
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const LEGO_ID_RE = /^S\d{4}L\d{2}$/;
@@ -80,9 +85,11 @@ const OP_HELP = {
   'seed.update':   { key: 'seed_number', set: UPDATABLE.course_seeds },
   'lego.update':   { key: 'lego_id (S0001L02) or id (uuid)', set: UPDATABLE.course_legos },
   'phrase.update': { key: 'phrase_id', set: UPDATABLE.course_practice_phrases },
-  'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"' },
+  'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"',
+                     copy_of: 'optional {course, id}: a verbatim copy of that course\'s phrase; may carry its empty side, refused unless seed_number/lego_index/role/texts match it' },
   'phrase.delete': { key: 'phrase_id', note: 'its course_qa_flags rows go with it' },
   'lego.insert':   { row: 'course_legos row: seed_number (the seed must exist), lego_index (free), known_text, target_text, type A|M (M needs components[]); lego_id is derived',
+                     copy_of: 'optional {course, id}: a verbatim copy of that course\'s LEGO; skips the shape rules, refused unless seed_number/lego_index/type/is_new/texts/components match it',
                      note: 'structural: on a beta/released course an apply needs "tom_go". The undo is lego.delete.' },
   'lego.delete':   { key: 'lego_id (S0001L02) or id (uuid)', cascade_phrases: 'true to delete its BUILD/USE/component rows with it; otherwise refused while any remain',
                      note: 'structural: on a beta/released course an apply needs "tom_go". Clips are never deleted. The undo re-inserts the LEGO and its phrases whole.' },
@@ -138,8 +145,22 @@ function planOp(op, index, courseCode) {
       // A row that carries its `id` is a RESTORE (the undo of lego.delete puts back exactly what was there,
       // legacy values and all); only a NEW LEGO is held to the content shape.
       const restoring = row.id !== undefined;
+      // A VERBATIM COPY of an existing LEGO in another course (job #519: gle_for_eng into its draft
+      // copy) is exempt from the new-LEGO shape rules for the same reason a restore is: it re-states
+      // a row that already exists, legacy shape and all (gle_for_eng has 52 M LEGOs with no
+      // components). The exemption is not taken on trust — runPlans() reads the named source row in
+      // the same transaction and refuses (COPY_MISMATCH) unless its content columns are identical.
+      let copyOf = null;
+      if (op.copy_of !== undefined) {
+        const c = op.copy_of;
+        if (!c || typeof c !== 'object' || typeof c.course !== 'string' || !c.course || c.course === courseCode || !UUID_RE.test(String(c.id || ''))) {
+          throw new EditOpError(index, 'lego.insert copy_of must be {course: <another course code>, id: <its course_legos uuid>}');
+        }
+        if (restoring) throw new EditOpError(index, 'lego.insert: copy_of and row.id cannot be combined (a copy gets a new id)');
+        copyOf = { course: c.course, id: String(c.id) };
+      }
       if (typeof row.target_text !== 'string' || !row.target_text.trim()) throw new EditOpError(index, 'lego.insert row.target_text is required');
-      if (!restoring) {
+      if (!restoring && !copyOf) {
         for (const c of ['known_text', 'target_text']) {
           if (typeof row[c] !== 'string' || !row[c].trim()) throw new EditOpError(index, `lego.insert row.${c} is required`);
           if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text: no brackets, (notes) or slash-separated alternatives`, 'NON_EXAMPLE_TEXT');
@@ -150,7 +171,7 @@ function planOp(op, index, courseCode) {
       if (row.lego_id !== undefined && row.lego_id !== legoIdOf(seedN, idx)) throw new EditOpError(index, `row.lego_id is derived from seed_number + lego_index (${legoIdOf(seedN, idx)}); leave it out`);
       if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'lego.insert row.id must be a uuid when given');
       return { ...base, table: 'course_legos', kind: 'insert', structural: true, row: stripNeverSet(row, 'course_legos'),
-        key: { seed_number: seedN, lego_index: idx }, courseCode };
+        key: { seed_number: seedN, lego_index: idx }, courseCode, ...(copyOf ? { copyOf } : {}) };
     }
     case 'lego.delete': {
       return { ...base, table: 'course_legos', kind: 'delete', structural: true, cascadePhrases: op.cascade_phrases === true, where: legoWhere(op, index, courseCode) };
@@ -164,13 +185,23 @@ function planOp(op, index, courseCode) {
       if (typeof row.id !== 'string' || !hasPhraseIdPrefix(row.id, courseCode)) {
         throw new EditOpError(index, `phrase.insert row.id must start "${courseCode}:"`);
       }
-      for (const c of ['seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role']) {
+      // copy_of (job #519): a verbatim copy of another course's phrase may carry that row's legacy
+      // empty side (gle_for_eng S0014L02C01, a component with no known text); runPlans() proves it verbatim.
+      let copyOf = null;
+      if (op.copy_of !== undefined) {
+        const c = op.copy_of;
+        if (!c || typeof c !== 'object' || typeof c.course !== 'string' || !c.course || c.course === courseCode || typeof c.id !== 'string' || !c.id.startsWith(`${c.course}:`)) {
+          throw new EditOpError(index, 'phrase.insert copy_of must be {course: <another course code>, id: <its phrase id>}');
+        }
+        copyOf = { course: c.course, id: c.id };
+      }
+      for (const c of copyOf ? ['seed_number', 'lego_index', 'phrase_role'] : ['seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role']) {
         if (row[c] === undefined || row[c] === null || row[c] === '') throw new EditOpError(index, `phrase.insert row.${c} is required`);
       }
       for (const c of ['known_text', 'target_text']) {
         if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text`, 'NON_EXAMPLE_TEXT');
       }
-      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode };
+      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode, ...(copyOf ? { copyOf } : {}) };
     }
     case 'audio.link': {
       const slot = op.slot;
@@ -385,6 +416,12 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
           if (!seed.length) throw new EditOpError(plan.index, `lego.insert: ${courseCode} has no seed ${row.seed_number}; a LEGO needs its seed`, 'NO_SUCH_SEED');
           const taken = await selectRow(client, 'course_legos', { course_code: courseCode, seed_number: row.seed_number, lego_index: row.lego_index });
           if (taken.length) throw new EditOpError(plan.index, `lego.insert: ${legoIdOf(row.seed_number, row.lego_index)} already exists`, 'EXISTS');
+        }
+        if (plan.copyOf) {
+          const src = (await selectRow(client, plan.table, { course_code: plan.copyOf.course, id: plan.copyOf.id }))[0];
+          if (!src) throw new EditOpError(plan.index, `${plan.name} copy_of: ${plan.copyOf.course} has no row ${plan.copyOf.id}`, 'COPY_MISMATCH');
+          const differ = COPY_CHECKED[plan.table].filter(c => !same(src[c] ?? null, row[c] ?? null));
+          if (differ.length) throw new EditOpError(plan.index, `${plan.name} copy_of: not a verbatim copy of ${plan.copyOf.course} ${src.lego_id || src.id} (${differ.join(', ')} differ)`, 'COPY_MISMATCH');
         }
         // Text first, audio links after (see header): an insert has no OLD, but the
         // phrase trigger refusing component presentation binds still reads NEW.
