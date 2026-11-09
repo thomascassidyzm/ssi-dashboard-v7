@@ -5704,7 +5704,10 @@ function buildRenderDeps() {
           }
         }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
-        const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
+        const named = /^(azure|elevenlabs|xai|cartesia|abair)_(.+)$/.exec(voiceId || '')
+        // ABAIR (job #525): Trinity's Irish TTS is a Voice Lab TRIAL voice only — named as abair_<voice>, never cast, never
+        // linked. Refused here for any non-trial render, before a library lookup or a gate; tts-service refuses it again.
+        if (named && named[1] === 'abair' && !trial) throw new RenderRequestError(ttsService.ABAIR_TRIAL_ONLY, 403, 'ABAIR_TRIAL_ONLY')
         // Presentation clips are known-language audio (the intro is spoken to the learner in their own language),
         // so the presentation role resolves to the known side like 'known' — never target1/target2 (job #483).
         const lang = language || roleNativeLanguage(role, course)
@@ -5721,7 +5724,7 @@ function buildRenderDeps() {
           : foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
           : named ? named[2] : String(voiceId || settings.voiceId || vc[role] || '').replace(/^(azure|elevenlabs|xai|cartesia)_/, '') // a cast-resolved course voice is stored provider-prefixed; the provider wants the bare id (job #651)
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
-        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
+        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: named && named[1] === 'abair' ? 'abair' /* job #525: an abair_ voice is ABAIR, never laddered */ : courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
@@ -5729,6 +5732,8 @@ function buildRenderDeps() {
           : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed, ...(String(settings.voiceId || '').replace(/^elevenlabs_/, '') === held ? courseVoiceConfig.elevenLabsCastSettings(settings) : {}) }
           : provider === 'xai' ? { voiceId: held, language: toBcp47(lang) }
           : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
+          // ABAIR (job #525): its own voice's natural speed — the course slot's speed setting belongs to the cast voice, not an audition.
+          : provider === 'abair' && trial ? { apiKey: process.env.ABAIR_API_KEY, voiceId: held, language: lang }
           : null
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
         // THE ENGLISH POD VOICE GATE (job #905; shared/pod-line-voice.cjs englishPodKnownVoice, r-2026-11-08 "Charlotte is the female
@@ -5970,6 +5975,12 @@ async function spliceIntroForRoute(req, deps) {
 }
 
 // A trial clip's bytes (job #748). Read-only, by id; the id is an unguessable UUID and the object lives under trial/.
+// ABAIR's voice list (job #525): metadata only, no tokens. The key stays in this process; the answer is id/name/sex/province.
+app.get('/abair-voices', async (req, res) => {
+  try { res.json({ ok: true, voices: await ttsService.listAbairVoices() }) }
+  catch (e) { const m = /\((\d{3})\)/.exec(e.message); res.status(m ? Number(m[1]) : 502).json({ ok: false, error: e.message }) }
+})
+
 app.get('/trial-audio/:id', async (req, res) => {
   try {
     if (!/^trial_[0-9A-F-]{36}(_x\d+)?$/i.test(req.params.id)) return res.status(400).json({ ok: false, error: 'not a trial clip id' })
