@@ -42,7 +42,10 @@ const { normalizeForDb, normalizeForAudio } = require('./text-normalize.cjs')
 const { linkClips, slotOf } = require('./link-clip.cjs')
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-const ROLES = ['target1', 'target2', 'known']
+// 'segment' (2026-11-09): one target sentence of a POD LINE's split array (listening_pod_sentences.sentence_audio_ids),
+// named { podSentenceId, segmentIndex } — the slice a word swap left saying the old words, re-cut from the line's new take.
+const ROLES = ['target1', 'target2', 'known', 'segment']
+const { podSentencesOf } = require('./pod-sentence-split.cjs')
 const TABLE = { seed: 'course_seeds', lego: 'course_legos', phrase: 'course_practice_phrases' }
 const MIN_CUT_SEC = 0.2
 
@@ -52,10 +55,11 @@ class CutRefusal extends Error {
 
 /** The words with punctuation and spaces gone: what a character span of a sentence has to spell. */
 const bareText = (s) => normalizeForDb(String(s || '')).replace(/[\s\p{P}\p{S}]/gu, '')
-const isTarget = (role) => role === 'target1' || role === 'target2'
+const isTarget = (role) => role === 'target1' || role === 'target2' || role === 'segment'
 
 /** The slot fields of a link, in link-clip's own shape. */
 function slotFields(d) {
+  if (d.podSentenceId) return { podSentenceId: d.podSentenceId }
   if (d.phraseId) return { phraseId: d.phraseId }
   if (d.legoId) return { legoId: d.legoId }
   return { seedNumber: Number(d.seedNumber) }
@@ -101,6 +105,7 @@ function undoBody(line) {
 }
 
 async function readSlot(db, courseCode, d) {
+  if (d.podSentenceId || d.role === 'segment') return readPodSegment(db, courseCode, d)
   const slot = slotOf(d)
   if (slot.error || !TABLE[slot.kind]) throw new CutRefusal('BAD_SLOT', slot.error || 'name the slot with seedNumber, legoId or phraseId')
   const col = `${d.role}_audio_id`
@@ -112,6 +117,25 @@ async function readSlot(db, courseCode, d) {
   if (error) throw new Error(`slot unreadable: ${error.message}`)
   if (!data) return null
   return { text: d.role === 'known' ? data.known_text : data.target_text, current: data[col] == null ? null : String(data[col]), legoId: slot.kind === 'lego' ? slot.label : null }
+}
+
+/** A pod line's target sentence at segmentIndex: its words (the player's own split) and the slice the array holds there. */
+async function readPodSegment(db, courseCode, d) {
+  if (!d.podSentenceId || d.role !== 'segment') throw new CutRefusal('BAD_SLOT', 'a pod line is cut into with podSentenceId + role "segment" + segmentIndex')
+  const idx = Number(d.segmentIndex)
+  if (!Number.isInteger(idx) || idx < 0) throw new CutRefusal('BAD_SLOT', 'segmentIndex must be the 0-based sentence position')
+  const { data, error } = await db.from('listening_pod_sentences').select('id, pod_id, target_text, target_text_draft, sentence_audio_ids').eq('id', String(d.podSentenceId)).maybeSingle()
+  if (error) throw new Error(`slot unreadable: ${error.message}`)
+  if (!data) return null
+  const { data: pod, error: podErr } = await db.from('listening_pods').select('id, course_code').eq('id', data.pod_id).maybeSingle()
+  if (podErr) throw new Error(`pod unreadable: ${podErr.message}`)
+  if (!pod || pod.course_code !== courseCode) return null
+  if (data.target_text_draft) throw new CutRefusal('DRAFT', 'the line is a draft nobody has read (A-109)')
+  const arr = Array.isArray(data.sentence_audio_ids) ? data.sentence_audio_ids : []
+  const sentences = podSentencesOf(data.target_text)
+  if (sentences.length !== arr.length) throw new CutRefusal('NO_SPLIT', `the line has ${sentences.length} sentence(s) and ${arr.length} split clip(s) — no position to cut into`)
+  if (idx >= arr.length) throw new CutRefusal('BAD_SLOT', `segmentIndex ${idx} is past the line's ${arr.length} split clips`)
+  return { text: sentences[idx], current: arr[idx] == null ? null : String(arr[idx]), legoId: null, pod: true }
 }
 
 async function readClip(db, id) {
@@ -158,8 +182,10 @@ async function ingestCut(input, deps) {
     const refusal = refuseDescriptor(d, slot, source)
     if (refusal) throw new CutRefusal(refusal[0], refusal[1])
 
-    const base = { slot: slotFields(d), role: d.role, before: slot.current, voiceId: source.voice_id, dryRun }
-    const held = await libraryClip(db, { courseCode: d.courseCode, text: slot.text, language: source.language, role: d.role, voiceId: source.voice_id })
+    const base = { slot: slotFields(d), role: d.role, before: slot.current, voiceId: source.voice_id, dryRun, ...(slot.pod ? { segmentIndex: Number(d.segmentIndex) } : {}) }
+    // A pod slice is stored as a clip of the source's own role (a target take's sentence is a target clip); 'segment' names a position, not a role.
+    const clipRole = slot.pod ? source.role : d.role
+    const held = await libraryClip(db, { courseCode: d.courseCode, text: slot.text, language: source.language, role: clipRole, voiceId: source.voice_id })
     if (held) return finish({ ...base, source: 'library', audioId: held.audioId, provenance: { method: 'library', requestedBy: d.requestedBy } })
 
     const whole = await deps.fetchServed(source)
@@ -183,7 +209,7 @@ async function ingestCut(input, deps) {
     if (dryRun) return finish({ ...base, source: 'cut', audioId: null, provenance })
 
     // MAKE: store, then check it as a learner would receive it. BREAK (the pointer swap) only after.
-    const stored = await deps.store({ courseCode: d.courseCode, text: slot.text, language: source.language, role: d.role, voiceId: source.voice_id, legoId: slot.legoId, bytes: cut.bytes, durationMs: Math.round(cut.durationSec * 1000) })
+    const stored = await deps.store({ courseCode: d.courseCode, text: slot.text, language: source.language, role: clipRole, voiceId: source.voice_id, legoId: slot.legoId, bytes: cut.bytes, durationMs: Math.round(cut.durationSec * 1000) })
     const bad = await deps.servedCheck(stored.audioId)
     if (bad) return { ok: false, code: 'SERVED_CHECK', error: `stored as ${stored.audioId} but ${bad}; nothing linked, the slot keeps ${slot.current || 'nothing'}`, ...base, audioId: stored.audioId, s3Key: stored.s3Key, provenance }
     return finish({ ...base, source: 'cut', audioId: stored.audioId, s3Key: stored.s3Key, provenance })
