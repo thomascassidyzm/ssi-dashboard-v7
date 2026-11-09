@@ -131,40 +131,44 @@ async function apply(pg, supabase, p, cut, { p7 = false } = {}) {
     }
   }
   const seeds = [...new Set(ok.map((e) => e.seed_number))].sort((x, y) => x - y);
+  if (cutBefore.length !== cutIds.length) throw new Error(`--cut: read ${cutBefore.length} of ${cutIds.length} rows before deleting — refusing`);
+  const { rows: appr } = await pg.query('SELECT seed_number FROM course_seeds WHERE course_code=$1 AND seed_number = ANY($2) AND approved_at IS NOT NULL', [course, seeds]);
+  const toUnapprove = appr.map((s) => s.seed_number);
+
+  // THE WRITE GOES THROUGH POPTY (job #125). Since job #388 (2026-10-14) the agent login is refused every
+  // INSERT/UPDATE/DELETE on course content, so the raw-pg BEGIN/INSERT/COMMIT this used to run failed with
+  // COURSE_CONTENT_READ_ONLY on every APPLY — one reason the 60 debuts sat unrefilled. Popty's edit-batch runs
+  // every op in ONE transaction on the owner login, stamps the rows with its own edit event and writes an undo
+  // file. The full-text log Kai asked for (#919) is recorded only AFTER the batch lands, so a refusal logs nothing.
+  const ops = [
+    ...rows.map((r) => ({ op: 'phrase.insert', row: { id: r.id, seed_number: r.seed, lego_index: r.idx, position: r.position,
+      known_text: r.known, target_text: r.target, word_count: r.target.length, lego_count: r.known.split(/\s+/).length,
+      metadata: { format: 'build_use', pipeline: 'v3', source: SWEEP, job: JOB, model: ok[0].model }, status: 'draft',
+      phrase_role: r.role, connected_lego_ids: [], lego_position: r.lego_position, lego_id: r.lego, introduce: true } })),
+    ...cutIds.map((c) => ({ op: 'phrase.delete', phrase_id: c })),
+    ...toUnapprove.map((n) => ({ op: 'seed.update', seed_number: n, set: { approved_at: null } })),
+  ];
+  const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
+  const res = await fetch(`${base}/api/production/${course}/edit-batch`, { method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-service-name': SWEEP, 'x-agent-role': 'content-sweep' },
+    body: JSON.stringify({ ops, apply: true }) });
+  const batch = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+  if (!res.ok || !batch.applied) throw new Error(`edit-batch refused (${res.status}): ${batch.code || ''} ${batch.error || JSON.stringify(batch).slice(0, 300)}`);
+
   const identity = serviceIdentity(SWEEP, { role: 'content-sweep' });
-  const rec = (operation, scope, detail) => recordContentEdit(supabase, { identity, courseCode: course, surface: SURFACE, operation, scope, detail: { ruling: RULING, job: JOB, ...detail } });
+  const rec = (operation, scope, detail) => recordContentEdit(supabase, { identity, courseCode: course, surface: SURFACE, operation, scope, detail: { ruling: RULING, job: JOB, edit_batch_undo_file: batch.undo_file || null, ...detail } });
   const insEvent = await rec('phrase-insert', { seed_numbers: seeds, lego_ids: ok.map((e) => e.lego_id), phrase_ids: rows.map((r) => r.id), rows: rows.length },
     phraseChangesDetail(rows.map((r) => changeEntry(null, { id: r.id, course_code: course, seed_number: r.seed, lego_index: r.idx, lego_id: r.lego, phrase_role: r.role, position: r.position, known_text: r.known, target_text: r.target })),
       { generator: 'phrase v3', model: ok[0].model, rows: rows.map((r) => ({ id: r.id, known: r.known, target: r.target })) }));
-  if (cutBefore.length !== cutIds.length) throw new Error(`--cut: read ${cutBefore.length} of ${cutIds.length} rows before deleting — refusing`);
   const cutEvent = cutIds.length ? await rec('phrase-delete', { seed_numbers: seeds, phrase_ids: cutIds, rows: cutIds.length },
     phraseChangesDetail(cutBefore.map((b) => changeEntry(b, null)), { why: 'replaced by the v3 basket; read and judged defective', ids: cutIds })) : null;
-  const { rows: appr } = await pg.query('SELECT seed_number FROM course_seeds WHERE course_code=$1 AND seed_number = ANY($2) AND approved_at IS NOT NULL', [course, seeds]);
-  const toUnapprove = appr.map((s) => s.seed_number);
-  const unEvent = toUnapprove.length ? await rec('unapprove', { seed_numbers: toUnapprove, rows: toUnapprove.length }, { why: 'phrases added; edits unapprove their seed' }) : null;
-
-  await pg.query('BEGIN');
-  try {
-    for (const r of rows) {
-      const ins = await pg.query(`INSERT INTO course_practice_phrases (id, course_code, seed_number, lego_index, position, known_text, target_text, word_count, lego_count, metadata, status, phrase_role, connected_lego_ids, lego_position, lego_id, introduce, last_edit_event_id)
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'draft',$11,'{}',$12,$13,true,$14)`,
-        [r.id, course, r.seed, r.idx, r.position, r.known, r.target, r.target.length, r.known.split(/\s+/).length,
-          JSON.stringify({ format: 'build_use', pipeline: 'v3', source: SWEEP, job: JOB, model: ok[0].model }), r.role, r.lego_position, r.lego, insEvent]);
-      if (ins.rowCount !== 1) throw new Error(`${r.id}: insert ${ins.rowCount}`);
-    }
-    for (const c of cutIds) {
-      const del = await pg.query('DELETE FROM course_practice_phrases WHERE course_code=$1 AND id=$2', [course, c]);
-      if (del.rowCount !== 1) throw new Error(`${c}: delete ${del.rowCount}`);
-    }
-    if (toUnapprove.length) await pg.query('UPDATE course_seeds SET approved_at=NULL, last_edit_event_id=$1, updated_at=now() WHERE course_code=$2 AND seed_number = ANY($3)', [unEvent, course, toUnapprove]);
-    await pg.query('COMMIT');
-  } catch (err) { await pg.query('ROLLBACK'); throw err; }
-  await require('../../services/shared/round-index-refresh.cjs').refreshNow();
+  let refreshed = true;
+  try { await require('../../services/shared/round-index-refresh.cjs').refreshNow(); } catch (err) { refreshed = `round index not refreshed: ${err.message}`; }
   const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs');
   let queued = null;
   try { queued = await queueAudioPass(supabase, { courseCode: course, reason: `${SWEEP} (job ${JOB}): ${rows.length} practice phrases for ${ok.length} debut LEGO(s)`, requestedBy: SWEEP }); }
   catch (err) { queued = { error: err.message }; }
-  return { written: rows.length, ids: rows.map((r) => r.id), cut: cutIds, insEvent, cutEvent, unapproved: toUnapprove, queued };
+  return { written: rows.length, ids: rows.map((r) => r.id), cut: cutIds, insEvent, cutEvent, unapproved: toUnapprove, undoFile: batch.undo_file || null, refreshed, queued };
 }
 
 async function main() {
