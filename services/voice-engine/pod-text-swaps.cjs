@@ -18,6 +18,13 @@
  * The applying is recordist-queue applyPodTextSwaps (called from fillSameWordsSlots, i.e. after every booth take of
  * these words is filed) and the admin fallback POST /api/admin/pod-text-swaps. This file is pure: no I/O.
  *
+ * HELD FOR A SWITCH (Kai, 2026-11-09, job #512): a swap marked `waitForSwitch: true` is offered in the booth exactly as
+ * any other, but a filed take does NOT apply it. The new take sits in the library; the pod keeps its old words and old
+ * audio until a person switches it — POST /api/admin/pod-text-swaps {"apply":true,"switch":[<sentenceId>, …]} (or
+ * "switch":true for every held swap whose take exists). Why: South Welsh local forms (fi'n hapus, sa i'n gwbod) were
+ * approved by Aran on 2026-11-09 as "record first, then swap in", and Kai wants to hear the takes before learners do.
+ * The switch is the same one-statement, still-says-`from` write as the automatic path; nothing else differs.
+ *
  * LEARNER PROGRESS IS NOT TOUCHED. Progress is filed under the row's slot, and a name change is the same line — the
  * standing rule for booth edits (Tom, 2026-09-12: "the sense of the line will be the same. So I think we keep learner
  * progress"; recordist-router PATCH …/text).
@@ -37,6 +44,24 @@ const ARAN_ENG = 'human_aran_eng'
 const DAN_CYM_S = 'human_dan_cym_s' // South Pod 1's Welsh is Dan's (job #834·AB), so South's swaps are his, not Aran's
 const SIAN_RULING = 'Aran 2026-10-29 (job #551): the Neighbour greets Siân, not Sarah'
 
+const ELERI_CYM_S = 'human_eleri_cym_s' // South Pod 1's women's Welsh (Learner, Anna, Customer …): her 141 takes
+const LOCAL_FORMS_RULING = 'Aran 2026-11-09 (forum, Richard_Gwynne; job #512): South Welsh locals say fi\'n hapus — record, then Kai switches'
+
+/**
+ * South Welsh local forms (job #512). HELD: each is applied only by Kai's switch, never by the take alone.
+ * PROPOSED TEXT, awaiting Kai's ruling on spelling before this lands on main — see the job #512 doc. Only the one line
+ * the forum report names is here; the wider "dw i ddim → sa i" family is a question for Deborah, not a queued swap.
+ * A function, not a literal, so the frozen list above stays the one list.
+ */
+function CYM_S_LOCAL_FORMS() {
+  return [
+    { sentenceId: 'cym_s_for_eng:pod-1:SC22-S011', side: 'target', voiceId: ELERI_CYM_S,
+      from: "Ydy, wir. Dw i'n hapus iawn… fy mod i'n gallu cael… cymaint â hyn o sgwrs. A dw i'n gobeithio… y byddwn ni'n gallu cael… mwy o sgyrsiau… yn y dyfodol… wrth i fi barhau i wella.",
+      // Option A (only the form the forum names). Options B/C (bo' fi, fi'n gobeithio) are in the doc for Kai.
+      to: "Ydy, wir. Fi'n hapus iawn… fy mod i'n gallu cael… cymaint â hyn o sgwrs. A dw i'n gobeithio… y byddwn ni'n gallu cael… mwy o sgyrsiau… yn y dyfodol… wrth i fi barhau i wella." },
+  ].map((s) => Object.freeze({ ...s, waitForSwitch: true, ruling: LOCAL_FORMS_RULING }))
+}
+
 /**
  * The swaps. North (cym_n_for_eng:pod-1, LIVE) says Sarah on both sides; South (cym_s_for_eng:pod-1, HELD) says Siân
  * in English already and Sarah in Welsh. Each pod keeps its own pause-marker form ("…" in North's English).
@@ -48,7 +73,7 @@ const POD_TEXT_SWAPS = Object.freeze([
   { sentenceId: 'cym_n_for_eng:pod-1:SC05-S001', side: 'target', voiceId: ARAN_CYM, from: 'Noswaith dda, Sarah. Gest ti ddiwrnod hir?', to: 'Noswaith dda, Siân. Gest ti ddiwrnod hir?' },
   { sentenceId: 'cym_s_for_eng:pod-1:SC05-S001', side: 'target', voiceId: DAN_CYM_S, from: 'Noswaith dda, Sarah. Gest ti ddiwrnod hir?', to: 'Noswaith dda, Siân. Gest ti ddiwrnod hir?' },
   { sentenceId: 'cym_n_for_eng:pod-1:SC05-S001', side: 'known', voiceId: ARAN_ENG, from: 'Good evening, Sarah. … Did you have a long day?', to: 'Good evening, Siân. … Did you have a long day?' },
-].map((s) => Object.freeze({ ...s, ruling: SIAN_RULING })))
+].map((s) => Object.freeze({ ...s, ruling: SIAN_RULING })).concat(CYM_S_LOCAL_FORMS()))
 
 const courseOfSentence = (sentenceId) => String(sentenceId).split(':')[0]
 const podOfSentence = (sentenceId) => String(sentenceId).split(':').slice(0, 2).join(':')
@@ -56,6 +81,9 @@ const trimmed = (t) => String(t == null ? '' : t).trim()
 
 /** The swaps that touch these sentence ids (all of them by default). */
 function swapSentenceIds(swaps = POD_TEXT_SWAPS) { return [...new Set(swaps.map((s) => s.sentenceId))] }
+
+/** Does this swap wait for a person's switch rather than applying on its take? (job #512) */
+function isHeldForSwitch(swap) { return !!(swap && swap.waitForSwitch) }
 
 /** Is this voice the one a swap asks for? Spellings are the recordist's own voice id and its aliases. */
 function isSwapVoice(swap, spellings) { return (spellings || []).includes(swap.voiceId) }
@@ -85,13 +113,15 @@ function withPendingText(row, swaps = POD_TEXT_SWAPS) {
 }
 
 /**
- * The swaps a filed take applies: pending, this voice's, this side, the take's spoken words.
- * @param {object} args {spellings, side: 'target'|'known', text, rowsById: Map(sentenceId → row)}
+ * The swaps a filed take applies: pending, this voice's, this side, the take's spoken words — and NOT held for a
+ * switch, unless this call IS the switch and names the swap (`switched`: a Set of sentence ids, or true for all).
+ * @param {object} args {spellings, side: 'target'|'known', text, rowsById: Map(sentenceId → row), switched?}
  */
-function swapsForTake({ spellings, side, text, rowsById }, swaps = POD_TEXT_SWAPS) {
+function swapsForTake({ spellings, side, text, rowsById, switched = null }, swaps = POD_TEXT_SWAPS) {
   const key = spokenWordsKey(text)
   if (!key) return []
-  return swaps.filter((s) => s.side === side && isSwapVoice(s, spellings) && spokenWordsKey(s.to) === key &&
+  const switchedOn = (s) => !isHeldForSwitch(s) || switched === true || (switched instanceof Set && switched.has(s.sentenceId))
+  return swaps.filter((s) => s.side === side && isSwapVoice(s, spellings) && switchedOn(s) && spokenWordsKey(s.to) === key &&
     rowsById.has(s.sentenceId) && swapState(s, rowsById.get(s.sentenceId)) === 'pending')
 }
 
@@ -177,6 +207,6 @@ function resolvePodSwap(parsed, recordist, row, swaps = POD_TEXT_SWAPS) {
 
 module.exports = {
   POD_TEXT_SWAPS, POD_SWAP_PREFIX, TEXT_COL, AUDIO_COL,
-  swapSentenceIds, swapState, withPendingText, swapsForTake, swapWrite, isSwapVoice,
+  swapSentenceIds, swapState, withPendingText, swapsForTake, swapWrite, isSwapVoice, isHeldForSwitch,
   podSwapLineId, parsePodSwapLineId, podSwapLinesFor, resolvePodSwap, courseOfSentence, podOfSentence,
 }

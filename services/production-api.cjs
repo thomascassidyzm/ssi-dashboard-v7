@@ -5168,12 +5168,19 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
 // exists. POST {"apply":true}: apply every pending swap whose take already exists
 // (the same one-statement text+audio write a booth take triggers); without apply,
 // a dry run that is the GET. The booth applies them by itself; this is the fallback.
+// A swap HELD FOR A SWITCH (waitForSwitch, job #512) is never applied by its take nor by a bare apply: it needs
+// {"apply":true,"switch":["<sentenceId>", …]} naming it (or "switch":true for every held swap whose take exists).
 async function podTextSwapsRoute(req, res) {
   const who = await requireAdmin(req, res)
   if (!who) return
   const apply = req.method === 'POST' && req.body && req.body.apply === true
+  const sw = req.method === 'POST' && req.body ? req.body.switch : undefined
+  if (sw !== undefined && sw !== true && !(Array.isArray(sw) && sw.every((x) => typeof x === 'string'))) {
+    return res.status(400).json({ error: 'switch must be true or a list of sentence ids' })
+  }
+  const switched = sw === true ? true : Array.isArray(sw) ? new Set(sw) : null
   try {
-    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, logger })
+    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, switched, logger })
     if (apply) logger.info(`[PodSwap] admin apply by ${who.email || who.agentId || who.id || '?'}: ${swaps.filter((s) => s.applied && s.applied.length).length} applied`)
     res.json({ ok: true, apply, swaps })
   } catch (e) {

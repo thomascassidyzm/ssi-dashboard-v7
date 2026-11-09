@@ -147,3 +147,32 @@ describe('pod text swaps — applied by a take', () => {
     expect(sw.podSwapLinesFor(ARAN_CYM, { rows, pods: PODS }).map((l) => l.id)).toEqual([`podswap:${N5}`])
   })
 })
+
+// Job #512 (Kai, 2026-11-09): a swap HELD FOR A SWITCH is offered in the booth like any other, but its take alone never
+// changes the pod — only Kai's switch (POST /api/admin/pod-text-swaps {"apply":true,"switch":[id]}) does.
+describe('pod text swaps — held for a switch', () => {
+  const held = sw.POD_TEXT_SWAPS.find((s) => s.waitForSwitch)
+  const ELERI = { voiceId: 'human_eleri_cym_s', spellings: ['human_eleri_cym_s'] }
+  const heldRow = () => ({ id: held.sentenceId, pod_id: 'cym_s_for_eng:pod-1', global_order: 200, speaker: 'Learner',
+    target_text: held.from, known_text: 'It really is.', target_audio_id: 'OLD-CY', known_audio_id: 'OLD-EN' })
+
+  it('is in the booth with its new words', () => {
+    expect(sw.isHeldForSwitch(held)).toBe(true)
+    const lines = sw.podSwapLinesFor(ELERI, { rows: [heldRow()], pods: PODS })
+    expect(lines.map((l) => [l.id, l.text, l.kind])).toEqual([[`podswap:${held.sentenceId}`, held.to, 'podswap']])
+  })
+
+  it('a filed take leaves the pod alone; the switch naming it applies words and audio together', async () => {
+    const rows = [heldRow()]
+    const db = fakeDb(rows)
+    const byTake = await rq.applyPodTextSwaps({ db, recordist: ELERI, role: 'target1', text: held.to, audioId: 'NEW-CY', logger: quiet })
+    expect(byTake.linked).toEqual([])
+    expect(db.writes).toEqual([])
+    expect(rows[0]).toEqual(heldRow())
+    const other = await rq.applyPodTextSwaps({ db, recordist: ELERI, role: 'target1', text: held.to, audioId: 'NEW-CY', switched: new Set(['x']), logger: quiet })
+    expect(other.linked).toEqual([])
+    const r = await rq.applyPodTextSwaps({ db, recordist: ELERI, role: 'target1', text: held.to, audioId: 'NEW-CY', switched: new Set([held.sentenceId]), logger: quiet })
+    expect(r.linked.map((l) => [l.sentenceId, l.replacedAudioId])).toEqual([[held.sentenceId, 'OLD-CY']])
+    expect(rows[0]).toMatchObject({ target_text: held.to, target_audio_id: 'NEW-CY', known_audio_id: 'OLD-EN' })
+  })
+})

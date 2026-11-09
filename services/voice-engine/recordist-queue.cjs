@@ -3489,7 +3489,7 @@ async function podSwapLinesFor(db, recordist) {
  * words (pod-text-swaps swapWrite) — so the pod never holds new words without audio. A row that has moved on is left
  * alone and reported. Nothing is deleted: the old clip keeps its row and file. Returns {linked, skipped}.
  */
-async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = console }) {
+async function applyPodTextSwaps({ db, recordist, role, text, audioId, switched = null, logger = console }) {
   const out = { linked: [], skipped: [] }
   if (!audioId || !spokenWordsKey(text)) return out
   const side = role === 'known' ? 'known' : 'target'
@@ -3497,7 +3497,8 @@ async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = 
   if (!podTextSwaps.POD_TEXT_SWAPS.some((s) => s.side === side && podTextSwaps.isSwapVoice(s, spellings))) return out
   const { rows } = await fetchPodSwapInputs(db, { fresh: true })
   const rowsById = new Map(rows.map((r) => [r.id, r]))
-  for (const swap of podTextSwaps.swapsForTake({ spellings, side, text, rowsById })) {
+  // A booth take passes no `switched`, so a swap held for a switch (job #512) is not applied here; only the admin switch is.
+  for (const swap of podTextSwaps.swapsForTake({ spellings, side, text, rowsById, switched })) {
     const w = podTextSwaps.swapWrite(swap, audioId)
     let q = db.from('listening_pod_sentences').update(w.set).eq('id', w.id)
     for (const [col, val] of Object.entries(w.where)) q = q.eq(col, val)
@@ -3530,7 +3531,7 @@ async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = 
  * none, the swap stays pending and the pod is untouched. Applying goes through applyPodTextSwaps, the same one-statement
  * write a booth take triggers. Returns one entry per swap.
  */
-async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
+async function podTextSwapReport(db, { apply = false, switched = null, logger = console } = {}) {
   const { rows } = await fetchPodSwapInputs(db, { fresh: true })
   const rowsById = new Map(rows.map((r) => [r.id, r]))
   const out = []
@@ -3539,7 +3540,8 @@ async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
     const textCol = podTextSwaps.TEXT_COL[swap.side]
     const audioCol = podTextSwaps.AUDIO_COL[swap.side]
     const entry = { sentenceId: swap.sentenceId, side: swap.side, voiceId: swap.voiceId, from: swap.from, to: swap.to,
-      state: row ? podTextSwaps.swapState(swap, row) : 'missing', podText: row ? row[textCol] : null, podAudioId: row ? row[audioCol] : null, take: null }
+      state: row ? podTextSwaps.swapState(swap, row) : 'missing', podText: row ? row[textCol] : null, podAudioId: row ? row[audioCol] : null, take: null,
+      heldForSwitch: podTextSwaps.isHeldForSwitch(swap) }
     const { data: takes, error } = await db.from('course_audio').select('id, voice_id, origin, text, created_at')
       .eq('voice_id', swap.voiceId).eq('origin', 'human').in('text_normalized', audioKeyCandidates(swap.to))
       .order('created_at', { ascending: false }).limit(1)
@@ -3547,7 +3549,7 @@ async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
     entry.take = takes && takes[0] ? takes[0] : null
     if (apply && entry.state === 'pending' && entry.take) {
       const r = await applyPodTextSwaps({ db, recordist: { voiceId: swap.voiceId, spellings: [swap.voiceId] },
-        role: swap.side === 'known' ? 'known' : 'target1', text: swap.to, audioId: entry.take.id, logger })
+        role: swap.side === 'known' ? 'known' : 'target1', text: swap.to, audioId: entry.take.id, switched, logger })
       entry.applied = r.linked.filter((l) => l.sentenceId === swap.sentenceId)
       entry.skipped = r.skipped.filter((l) => l.sentenceId === swap.sentenceId)
       if (r.linked.length) {
