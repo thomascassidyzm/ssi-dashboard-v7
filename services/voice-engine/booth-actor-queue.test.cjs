@@ -183,9 +183,17 @@ test("job #849: Dan's two Siân lines (new words) replace the Sarah pod lines in
 
 test('job #849: the South Siân swaps are Dan\'s, the North ones stay Aran\'s', () => {
   const sw = require('./pod-text-swaps.cjs')
-  const mine = (v) => sw.POD_TEXT_SWAPS.filter((s) => s.side === 'target' && s.voiceId === v).map((s) => s.sentenceId)
+  // The Siân swaps apply on their take; the South local-forms swaps (job #530) are held for Kai's switch and counted apart.
+  const mine = (v) => sw.POD_TEXT_SWAPS.filter((s) => s.side === 'target' && s.voiceId === v && !sw.isHeldForSwitch(s)).map((s) => s.sentenceId)
   assert.deepStrictEqual(mine('human_dan_cym_s'), ['cym_s_for_eng:pod-1:SC01-S001', 'cym_s_for_eng:pod-1:SC05-S001'])
   assert.deepStrictEqual(mine('human_aran_cym_n'), ['cym_n_for_eng:pod-1:SC01-S001', 'cym_n_for_eng:pod-1:SC05-S001'])
+  // Job #530: every South local-forms swap is held, on South Pod 1, and read by Dan or Eleri — never Aran.
+  const held = sw.POD_TEXT_SWAPS.filter((s) => sw.isHeldForSwitch(s))
+  assert.strictEqual(held.length, 35)
+  for (const s of held) {
+    assert.ok(s.sentenceId.startsWith('cym_s_for_eng:pod-1:'), s.sentenceId)
+    assert.ok(['human_dan_cym_s', 'human_eleri_cym_s'].includes(s.voiceId), s.sentenceId)
+  }
 })
 
 // Job #463: Eleri's home-summary totals left out her practice phrases. The tally is built before the
