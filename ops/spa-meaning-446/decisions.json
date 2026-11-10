@@ -1,0 +1,2318 @@
+[
+ {
+  "id": "S0099L02U10",
+  "pattern": "GARBLED",
+  "kind": "fixed",
+  "before": {
+   "known": "She does not want to say that it is not working well",
+   "target": "Ella no quiere decir que no está funcionando bien"
+  },
+  "after": {
+   "known": "She does not want to tell me that it is not working well",
+   "target": "Ella no quiere decirme que no está funcionando bien"
+  },
+  "why": "no quiere decir que = doesn't mean that; decirme (S0070)"
+ },
+ {
+  "id": "S0103L01U11",
+  "pattern": "SMALL",
+  "kind": "rewritten",
+  "before": {
+   "known": "It is important to hear good Spanish every day",
+   "target": "Es importante escuchar español bien todos los días"
+  },
+  "after": {
+   "known": "It is important to hear Spanish as often as possible",
+   "target": "Es importante escuchar español lo más a menudo posible"
+  },
+  "why": "todos los días untaught at 103; español bien garbled"
+ },
+ {
+  "id": "S0106L01U15",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I think it is interesting to feel happy with what I want to say",
+   "target": "Creo que es interesante sentirnos contentos con lo que quiero decir"
+  },
+  "after": {
+   "known": "I think it is interesting to feel happy with what we want to say",
+   "target": "Creo que es interesante sentirnos contentos con lo que queremos decir"
+  },
+  "why": "sentirnos = we"
+ },
+ {
+  "id": "S0116L04U08",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I think that this isn't the best option I could choose and I want to do better",
+   "target": "Creo que esta no es la mejor opción que podría elegir y quiero hacer lo mejor posible"
+  },
+  "after": {
+   "known": "I think that this isn't the best option I could choose and I want to do as well as possible",
+   "target": "Creo que esta no es la mejor opción que podría elegir y quiero hacer lo mejor posible"
+  },
+  "why": "course pattern: lo mejor posible = as well as possible (S0110, S0129, S0186, S0213)"
+ },
+ {
+  "id": "S0117L03U04",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I want to talk to you more than we talked last night",
+   "target": "Quiero hablar contigo más que la última vez que hablamos anoche"
+  },
+  "after": {
+   "known": "I want to talk to you more than the last time we talked",
+   "target": "Quiero hablar contigo más que la última vez que hablamos"
+  },
+  "why": "anoche doubled with la última vez"
+ },
+ {
+  "id": "S0128L05U06",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "She wants to explain something to me before I have to start",
+   "target": "Ella quiere explicar algo antes de que tenga que empezar"
+  },
+  "after": {
+   "known": "She wants to explain something before I have to start",
+   "target": "Ella quiere explicar algo antes de que tenga que empezar"
+  },
+  "why": "explicarme untaught -> drop to me"
+ },
+ {
+  "id": "S0129L01U05",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "This was so difficult before, but now you understand it better",
+   "target": "Esto era tan difícil antes, pero ahora entiendes mejor"
+  },
+  "after": {
+   "known": "This was so difficult before, but now you understand it better",
+   "target": "Esto era tan difícil antes, pero ahora lo entiendes mejor"
+  },
+  "why": "proclitic lo taught (S0072)"
+ },
+ {
+  "id": "S0129L04B04",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "That you are here",
+   "target": "De que estés aquí"
+  },
+  "after": {
+   "known": "That you are here",
+   "target": "Que estés aquí"
+  },
+  "why": "stray De"
+ },
+ {
+  "id": "S0129L04B05",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "That you are doing it",
+   "target": "De que lo estés haciendo"
+  },
+  "after": {
+   "known": "That you are doing it",
+   "target": "Que lo estés haciendo"
+  },
+  "why": "stray De"
+ },
+ {
+  "id": "S0132L04U16",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "This conversation is less exciting than what she was saying before we started",
+   "target": "Esta conversación es menos emocionante de lo que ella estaba diciendo antes de hablar"
+  },
+  "after": {
+   "known": "This conversation is less exciting than what she was saying before starting",
+   "target": "Esta conversación es menos emocionante de lo que ella estaba diciendo antes de empezar"
+  },
+  "why": "antes de hablar != before we started"
+ },
+ {
+  "id": "S0134L02U06",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "When you work at something difficult with someone you get to know someone in a new way",
+   "target": "Cuando trabajas en algo difícil con alguien llegas a conocer a alguien de manera diferente"
+  },
+  "after": null,
+  "why": "de manera diferente untaught at 134 (differently=S0152); R1/R2"
+ },
+ {
+  "id": "S0146L03B04",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "Since I am here",
+   "target": "Desde que estoy aquí"
+  },
+  "after": {
+   "known": "Since I have been here",
+   "target": "Desde que estoy aquí"
+  },
+  "why": "since + are reads as because"
+ },
+ {
+  "id": "S0146L03U02",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "Since I started I am learning a lot in a little time",
+   "target": "Desde que empecé estoy aprendiendo mucho en poco tiempo"
+  },
+  "after": {
+   "known": "Since I started I am learning more",
+   "target": "Desde que empecé estoy aprendiendo más"
+  },
+  "why": "knock-on: en poco tiempo (in a short time) only taught at S0245"
+ },
+ {
+  "id": "S0146L03U05",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "Since we are here I am starting to understand more",
+   "target": "Desde que estamos aquí estoy empezando a entender más"
+  },
+  "after": {
+   "known": "Since we have been here I am starting to understand more",
+   "target": "Desde que estamos aquí estoy empezando a entender más"
+  },
+  "why": "since"
+ },
+ {
+  "id": "S0146L03U15",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "Since I am here with you I am starting to feel much better speaking",
+   "target": "Desde que estoy aquí contigo estoy empezando a sentirme mucho mejor hablando"
+  },
+  "after": {
+   "known": "Since I have been here with you I am starting to feel much better speaking",
+   "target": "Desde que estoy aquí contigo estoy empezando a sentirme mucho mejor hablando"
+  },
+  "why": "since"
+ },
+ {
+  "id": "S0153L01U09",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I think I have said it well but I am not completely sure",
+   "target": "Creo que lo he dicho bien pero no estoy seguro de nada"
+  },
+  "after": {
+   "known": "I think I have said it well but I am not sure",
+   "target": "Creo que lo he dicho bien pero no estoy seguro"
+  },
+  "why": "de nada != completely"
+ },
+ {
+  "id": "S0153L02U13",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "That is exactly what I thought would happen when I started learning",
+   "target": "Eso es exactamente lo que esperaba que pasara cuando empecé a aprender"
+  },
+  "after": {
+   "known": "That is exactly what I was hoping would happen when I started learning",
+   "target": "Eso es exactamente lo que esperaba que pasara cuando empecé a aprender"
+  },
+  "why": "esperaba que pasara = I was hoping would happen (S0151L03)"
+ },
+ {
+  "id": "S0157L02U14",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "So I'm going to practise talking with another person next month as much as possible",
+   "target": "Así que el mes que viene voy a practicar hablando con otra persona lo más a menudo posible"
+  },
+  "after": {
+   "known": "So I'm going to practise talking with another person next month as often as possible",
+   "target": "Así que el mes que viene voy a practicar hablando con otra persona lo más a menudo posible"
+  },
+  "why": "course pattern: lo más a menudo posible = as often as possible"
+ },
+ {
+  "id": "S0168L04U01",
+  "pattern": "SMALL",
+  "kind": "deleted",
+  "before": {
+   "known": "I think I'll be able to come and help you later this afternoon",
+   "target": "Creo que podré venir a ayudarte más tarde por la tarde"
+  },
+  "after": null,
+  "why": "corrected text is exactly S0168L04U12 already in the basket"
+ },
+ {
+  "id": "S0168L04U11",
+  "pattern": "KNOCK-ON",
+  "kind": "fixed",
+  "before": {
+   "known": "I'm doing my best and I'll be able to come and help when you're ready",
+   "target": "Estoy intentando hacer lo mejor posible y podré venir a ayudar cuando estés listo"
+  },
+  "after": {
+   "known": "I'm trying to do as well as possible and I'll be able to come and help when you're ready",
+   "target": "Estoy intentando hacer lo mejor posible y podré venir a ayudar cuando estés listo"
+  },
+  "why": "knock-on: lo mejor posible = as well as possible"
+ },
+ {
+  "id": "S0169L01U13",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I don't think this is what she wants me to do",
+   "target": "No estoy seguro de que esto es lo que quiere que haga"
+  },
+  "after": {
+   "known": "I don't know if this is what she wants me to do",
+   "target": "No sé si esto es lo que quiere que haga"
+  },
+  "why": "no estoy seguro de que es: wrong mood + think/sure mismatch"
+ },
+ {
+  "id": "S0171L01B03",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "I help you",
+   "target": "Te ayude"
+  },
+  "after": {
+   "known": "You want me to help you",
+   "target": "Quieres que te ayude"
+  },
+  "why": "fragment rebuilt with full LEGO"
+ },
+ {
+  "id": "S0171L02B02",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "Help you look for it",
+   "target": "Te ayude a buscarlo"
+  },
+  "after": {
+   "known": "I want to help you look for it",
+   "target": "Quiero ayudarte a buscarlo"
+  },
+  "why": "fragment rebuilt"
+ },
+ {
+  "id": "S0173L03U07",
+  "pattern": "GARBLED",
+  "kind": "rewritten",
+  "before": {
+   "known": "I want to be able to speak on my own as soon as possible",
+   "target": "Quiero poder hablar solo lo antes posible"
+  },
+  "after": {
+   "known": "I want to be able to manage it on my own as soon as possible",
+   "target": "Quiero poder hacerlo solo lo antes posible"
+  },
+  "why": "hablar solo = talk to oneself; hacerlo = to manage it (S0173L02)"
+ },
+ {
+  "id": "S0174L03U10",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "That is exactly what she was saying to me",
+   "target": "Eso es exactamente lo que ella estaba diciendo"
+  },
+  "after": {
+   "known": "That is exactly what she was saying to me",
+   "target": "Eso es exactamente lo que ella me estaba diciendo"
+  },
+  "why": "proclitic me + 3rd person taught (S0147 me vio)"
+ },
+ {
+  "id": "S0181L01U10",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I need to take my friend somewhere but I do not know where",
+   "target": "Necesito llevar a mi amigo allí pero no sé dónde"
+  },
+  "after": {
+   "known": "I need to take my friend but I do not know where to",
+   "target": "Necesito llevar a mi amigo pero no sé adónde"
+  },
+  "why": "adónde = to where (S0177)"
+ },
+ {
+  "id": "S0182L01U12",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I was trying to find my things but I did not know where they were",
+   "target": "Estaba intentando encontrar mis cosas pero no sabía dónde"
+  },
+  "after": {
+   "known": "I was trying to find my keys but I did not know where",
+   "target": "Estaba intentando encontrar mis llaves pero no sabía dónde"
+  },
+  "why": "restores LEGO my keys = mis llaves (P17)"
+ },
+ {
+  "id": "S0184L02U12",
+  "pattern": "WORD",
+  "kind": "rewritten",
+  "before": {
+   "known": "I saw that you are doing very well with your Spanish and I think you should be very proud",
+   "target": "Vi que lo estás haciendo muy bien con tu español y creo que deberías estar muy contento"
+  },
+  "after": {
+   "known": "I saw that you are doing very well with your Spanish",
+   "target": "Vi que lo estás haciendo muy bien con tu español"
+  },
+  "why": "proud: orgulloso untaught; proud->happy changes meaning (Kai R1) so tail dropped"
+ },
+ {
+  "id": "S0188L02U08",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "So I think the best idea is to keep doing what we are already doing so well",
+   "target": "Así que creo que la mejor idea es seguir haciendo lo que ya estamos haciendo bien"
+  },
+  "after": {
+   "known": "So I think the best idea is to keep doing what we are already doing well",
+   "target": "Así que creo que la mejor idea es seguir haciendo lo que ya estamos haciendo bien"
+  },
+  "why": "so well vs bien"
+ },
+ {
+  "id": "S0188L02U11",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I want to improve a lot so I am going to try to speak as much as possible",
+   "target": "Quiero mejorar mucho así que voy a intentar hablar lo más a menudo posible"
+  },
+  "after": {
+   "known": "I want to improve a lot so I am going to try to speak as often as possible",
+   "target": "Quiero mejorar mucho así que voy a intentar hablar lo más a menudo posible"
+  },
+  "why": "as often as possible"
+ },
+ {
+  "id": "S0190L02U02",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "I'd like to ask you some questions before I have to leave",
+   "target": "Me gustaría hacer unas preguntas antes de que tenga que irme"
+  },
+  "after": {
+   "known": "I'd like to ask some questions before I have to leave",
+   "target": "Me gustaría hacer unas preguntas antes de que tenga que irme"
+  },
+  "why": "drop you"
+ },
+ {
+  "id": "S0195L03U04",
+  "pattern": "GARBLED",
+  "kind": "fixed",
+  "before": {
+   "known": "I wanted to ask you about the thing I left on the table yesterday",
+   "target": "Quería preguntarte algo ayer sobre lo que dejé en la mesa"
+  },
+  "after": {
+   "known": "I wanted to ask you about what I left on the table yesterday",
+   "target": "Quería preguntarte sobre lo que dejé en la mesa ayer"
+  },
+  "why": "algo + misplaced ayer"
+ },
+ {
+  "id": "S0197L02U03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I think my son is doing well at work",
+   "target": "Creo que a mi hijo le va muy bien en el trabajo"
+  },
+  "after": {
+   "known": "I think my son is doing very well at work",
+   "target": "Creo que a mi hijo le va muy bien en el trabajo"
+  },
+  "why": "muy bien"
+ },
+ {
+  "id": "S0197L03U09",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "He works here and I wanted to ask you about that yesterday",
+   "target": "Él trabaja aquí y quería preguntarte algo sobre eso ayer"
+  },
+  "after": {
+   "known": "He works here and I wanted to ask you something about that yesterday",
+   "target": "Él trabaja aquí y quería preguntarte algo sobre eso ayer"
+  },
+  "why": "algo"
+ },
+ {
+  "id": "S0200L04B01",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "We finish everything",
+   "target": "Terminemos todo"
+  },
+  "after": {
+   "known": "That we finish everything",
+   "target": "Que terminemos todo"
+  },
+  "why": "subjunctive carries its trigger (K40)"
+ },
+ {
+  "id": "S0203L02B03",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "If I asked you something",
+   "target": "Si te pidiera algo"
+  },
+  "after": {
+   "known": "If I asked you for something",
+   "target": "Si te pidiera algo"
+  },
+  "why": "pedir = ask for"
+ },
+ {
+  "id": "S0203L02U04",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I think I know what you would do if I asked you something like that",
+   "target": "Creo que sé qué harías si te pidiera algo así"
+  },
+  "after": {
+   "known": "I think I know what you would do if I asked you for something like that",
+   "target": "Creo que sé qué harías si te pidiera algo así"
+  },
+  "why": "pedir = ask for"
+ },
+ {
+  "id": "S0203L02U10",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "If I asked you something, what would you do?",
+   "target": "Si te pidiera algo, ¿qué harías?"
+  },
+  "after": {
+   "known": "If I asked you for something, what would you do?",
+   "target": "Si te pidiera algo, ¿qué harías?"
+  },
+  "why": "pedir = ask for"
+ },
+ {
+  "id": "S0204L02U14",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "We talked about the arrangements and we agreed on the best way to do it",
+   "target": "Hablamos sobre los preparativos y estamos de acuerdo en la mejor manera de hacerlo"
+  },
+  "after": {
+   "known": "We talked about the arrangements and we agree on the best way to do it",
+   "target": "Hablamos sobre los preparativos y estamos de acuerdo en la mejor manera de hacerlo"
+  },
+  "why": "estamos de acuerdo = we agree"
+ },
+ {
+  "id": "S0206L02U12",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She told me this is a good opportunity to practise before tomorrow morning",
+   "target": "Ella me dijo que esta es una buena oportunidad de practicar antes de mañana"
+  },
+  "after": {
+   "known": "She told me this is a good opportunity to practise before tomorrow",
+   "target": "Ella me dijo que esta es una buena oportunidad de practicar antes de mañana"
+  },
+  "why": "antes de mañana"
+ },
+ {
+  "id": "S0208L01U15",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "I did not want to ask how to say it so I was trying to do it alone",
+   "target": "No quería preguntarte cómo decirlo así que estaba intentando hacerlo solo"
+  },
+  "after": {
+   "known": "I did not want to ask you how to say it so I was trying to do it alone",
+   "target": "No quería preguntarte cómo decirlo así que estaba intentando hacerlo solo"
+  },
+  "why": "preguntarte"
+ },
+ {
+  "id": "S0211L03U13",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "They did not want to say anything about the arrangements even though we needed to know",
+   "target": "No querían decir nada sobre los preparativos aunque necesitamos saber"
+  },
+  "after": {
+   "known": "They did not want to say anything about the arrangements even though we need to know",
+   "target": "No querían decir nada sobre los preparativos aunque necesitamos saber"
+  },
+  "why": "necesitamos = we need"
+ },
+ {
+  "id": "S0213L01U04",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I haven't been able to explain this well yet",
+   "target": "Todavía no puedo explicar esto bien"
+  },
+  "after": {
+   "known": "I can't explain this well yet",
+   "target": "Todavía no puedo explicar esto bien"
+  },
+  "why": "no puedo = I can't"
+ },
+ {
+  "id": "S0213L03U13",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "I don't always know what needs to be said in every moment",
+   "target": "No siempre sé lo que hay que decir en todo momento"
+  },
+  "after": {
+   "known": "I don't know what I have to say",
+   "target": "No sé lo que tengo que decir"
+  },
+  "why": "knock-on hay que (+ siempre untaught until S0542, en todo momento untaught)"
+ },
+ {
+  "id": "S0213L04U14",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "They're trying to help us even though it's very difficult",
+   "target": "Están intentando ayudar aunque es muy difícil"
+  },
+  "after": {
+   "known": "They're trying to help even though it's very difficult",
+   "target": "Están intentando ayudar aunque es muy difícil"
+  },
+  "why": "ayudarnos untaught; nos+verb first S0411 -> drop us"
+ },
+ {
+  "id": "S0213L05U12",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "They asked for help to achieve what they wanted to do",
+   "target": "Querían pedir ayuda para conseguir lo que querían hacer"
+  },
+  "after": {
+   "known": "They wanted to ask for help to achieve what they wanted to do",
+   "target": "Querían pedir ayuda para conseguir lo que querían hacer"
+  },
+  "why": "querían pedir ayuda"
+ },
+ {
+  "id": "S0216L04U07",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I saw some friends last night and we talked for a very long time",
+   "target": "Vi a unos amigos anoche y hablamos mucho tiempo"
+  },
+  "after": {
+   "known": "I saw some friends last night and we talked for a long time",
+   "target": "Vi a unos amigos anoche y hablamos mucho tiempo"
+  },
+  "why": "mucho tiempo = a long time"
+ },
+ {
+  "id": "S0217L06U13",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I am happy about that and I want to tell you about it",
+   "target": "Estoy contento de eso y quiero hablar contigo de eso"
+  },
+  "after": {
+   "known": "I am happy about that and I want to talk to you about it",
+   "target": "Estoy contento de eso y quiero hablar contigo de eso"
+  },
+  "why": "hablar contigo = talk to you"
+ },
+ {
+  "id": "S0225L02U14",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I will ask if they will be able to help next year because I need the answer",
+   "target": "Le preguntaré si podrá ayudar el año que viene porque necesito la respuesta"
+  },
+  "after": {
+   "known": "I will ask him if he will be able to help next year because I need the answer",
+   "target": "Le preguntaré si podrá ayudar el año que viene porque necesito la respuesta"
+  },
+  "why": "le/podrá = him/he"
+ },
+ {
+  "id": "S0229L01B05",
+  "pattern": "FRAG",
+  "kind": "deleted",
+  "before": {
+   "known": "That woman was trying to explain what she wanted",
+   "target": "Esa mujer era la que estaba intentando explicar lo que quería"
+  },
+  "after": null,
+  "why": "corrected text is exactly S0229L01U04 already in the basket"
+ },
+ {
+  "id": "S0230L04U14",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "Those are people I do not know but I think they want to learn",
+   "target": "Son personas que no conozco pero creo que son personas que quieren aprender"
+  },
+  "after": {
+   "known": "Those are people I do not know but I think they want to learn",
+   "target": "Son personas que no conozco pero creo que quieren aprender"
+  },
+  "why": "redundant son personas que"
+ },
+ {
+  "id": "S0231L02U03",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "That elderly man works in the same office as my friend and is very helpful",
+   "target": "Ese hombre mayor trabaja en el mismo sitio que mi amigo y es muy útil"
+  },
+  "after": {
+   "known": "An old man works in the same office as my friend and is very helpful",
+   "target": "Un hombre mayor trabaja en la misma oficina que mi amigo y es muy útil"
+  },
+  "why": "office=oficina (S0184); also restores LEGO an old man = un hombre mayor (P17)"
+ },
+ {
+  "id": "S0233L02U11",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She knows the best way to explain this and it is easy to understand",
+   "target": "Conoce la mejor manera de explicar esto y es muy fácil de entender"
+  },
+  "after": {
+   "known": "She knows the best way to explain this and it is easy to understand",
+   "target": "Conoce la mejor manera de explicar esto y es fácil de entender"
+  },
+  "why": "muy extra"
+ },
+ {
+  "id": "S0234L01U06",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "When I met your sister she told me she wanted to talk with you soon",
+   "target": "Cuando conocí a tu hermana me dijo que esperaba hablar contigo pronto"
+  },
+  "after": {
+   "known": "When I met your sister she told me she wanted to talk with you soon",
+   "target": "Cuando conocí a tu hermana me dijo que quería hablar contigo pronto"
+  },
+  "why": "esperaba -> quería to match wanted"
+ },
+ {
+  "id": "S0237L01B02",
+  "pattern": "FRAG",
+  "kind": "deleted",
+  "before": {
+   "known": "That he told",
+   "target": "Que dijera"
+  },
+  "after": null,
+  "why": "duplicate of B01"
+ },
+ {
+  "id": "S0237L01U13",
+  "pattern": "GARBLED",
+  "kind": "rewritten",
+  "before": {
+   "known": "I wanted him to tell me when he was going to come back and talk to me",
+   "target": "Quería que me dijera cuándo iba a volver a hablar conmigo"
+  },
+  "after": {
+   "known": "I wanted him to tell me when he was going to come back",
+   "target": "Quería que me dijera cuándo iba a volver"
+  },
+  "why": "volver a + verb never taught; resolved without Deborah"
+ },
+ {
+  "id": "S0237L02U08",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I was going to tell you what I had learned before the weekend",
+   "target": "Iba a decirte lo que he aprendido antes del fin de semana"
+  },
+  "after": {
+   "known": "I was going to tell you what I have learned before the weekend",
+   "target": "Iba a decirte lo que he aprendido antes del fin de semana"
+  },
+  "why": "he aprendido = I have learned (S0076L03)"
+ },
+ {
+  "id": "S0244L01U14",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I've learnt so many new words that it's hard to remember everything",
+   "target": "He aprendido muchas palabras nuevas y es difícil recordar todo"
+  },
+  "after": {
+   "known": "I've learnt a lot of new words and it's hard to remember everything",
+   "target": "He aprendido muchas palabras nuevas y es difícil recordar todo"
+  },
+  "why": "y = and"
+ },
+ {
+  "id": "S0244L02U06",
+  "pattern": "KNOCK-ON",
+  "kind": "fixed",
+  "before": {
+   "known": "There's still a lot I don't understand yet but I'm trying my best",
+   "target": "Todavía hay mucho que no entiendo pero estoy intentando hacer lo mejor posible"
+  },
+  "after": {
+   "known": "There's still a lot I don't understand yet but I'm trying to do as well as possible",
+   "target": "Todavía hay mucho que no entiendo pero estoy intentando hacer lo mejor posible"
+  },
+  "why": "knock-on: lo mejor posible"
+ },
+ {
+  "id": "S0244L02U11",
+  "pattern": "GARBLED",
+  "kind": "fixed",
+  "before": {
+   "known": "I think there's a lot to be said for practising as often as possible",
+   "target": "Creo que hay mucho que decir sobre practicar lo más a menudo posible"
+  },
+  "after": {
+   "known": "I think there's a lot to say about practising as often as possible",
+   "target": "Creo que hay mucho que decir sobre practicar lo más a menudo posible"
+  },
+  "why": "idiom misread"
+ },
+ {
+  "id": "S0245L02U09",
+  "pattern": "GARBLED",
+  "kind": "fixed",
+  "before": {
+   "known": "I know how much you've put into this",
+   "target": "Sé lo mucho que has hecho en esto"
+  },
+  "after": {
+   "known": "I know how much you've done",
+   "target": "Sé lo mucho que has hecho"
+  },
+  "why": "has hecho en esto garbled"
+ },
+ {
+  "id": "S0245L02U10",
+  "pattern": "GARBLED",
+  "kind": "rewritten",
+  "before": {
+   "known": "I can see how much effort she's putting into learning the language",
+   "target": "Puedo ver lo mucho que está intentando aprender el idioma"
+  },
+  "after": {
+   "known": "I can see how much she wants to learn this language",
+   "target": "Puedo ver lo mucho que quiere aprender este idioma"
+  },
+  "why": "effort/putting into: rewritten with taught words (este idioma S0101)"
+ },
+ {
+  "id": "S0247L01U02",
+  "pattern": "GARBLED",
+  "kind": "fixed",
+  "before": {
+   "known": "I'm fairly sure that's what she was trying to say",
+   "target": "Estoy bastante seguro de lo que ella estaba intentando decir"
+  },
+  "after": {
+   "known": "I'm fairly sure that's what she was trying to say",
+   "target": "Estoy bastante seguro de que eso es lo que ella estaba intentando decir"
+  },
+  "why": "seguro de lo que = sure of what"
+ },
+ {
+  "id": "S0248L02U03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "That book was complete rubbish and I agree with you",
+   "target": "Ese libro era una basura total y estoy de acuerdo con lo que dijiste"
+  },
+  "after": {
+   "known": "That book was complete rubbish and I agree with what you said",
+   "target": "Ese libro era una basura total y estoy de acuerdo con lo que dijiste"
+  },
+  "why": "con lo que dijiste"
+ },
+ {
+  "id": "S0248L02U06",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "He told me the idea was complete rubbish and I agreed with him",
+   "target": "Me dijo que la idea era una basura total y estoy de acuerdo con él"
+  },
+  "after": {
+   "known": "He told me the idea was complete rubbish and I agree with him",
+   "target": "Me dijo que la idea era una basura total y estoy de acuerdo con él"
+  },
+  "why": "estoy de acuerdo = I agree"
+ },
+ {
+  "id": "S0248L03U05",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "It was not what I asked for so I want them to give me my money back",
+   "target": "No era lo que quería así que quiero que me devuelvan mi dinero"
+  },
+  "after": {
+   "known": "It was not what I wanted so I want them to give me my money back",
+   "target": "No era lo que quería así que quiero que me devuelvan mi dinero"
+  },
+  "why": "lo que quería = what I wanted"
+ },
+ {
+  "id": "S0249L02U06",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She wants to see you for a minute before you go",
+   "target": "Ella quiere verte unos minutos antes de que te vayas"
+  },
+  "after": {
+   "known": "She wants to see you for a few minutes before you go",
+   "target": "Ella quiere verte unos minutos antes de que te vayas"
+  },
+  "why": "unos minutos (S0155)"
+ },
+ {
+  "id": "S0251L01U03",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I think I don't want to find out until after we finish so let us wait a little more",
+   "target": "Creo que no quiero descubrirlo hasta después de que terminemos así que hay que esperar un poco más"
+  },
+  "after": {
+   "known": "I think I don't want to find out until after we finish so we must wait a little more",
+   "target": "Creo que no quiero descubrirlo hasta después de que terminemos así que tenemos que esperar un poco más"
+  },
+  "why": "hay que untaught -> tenemos que = we must (S0109)"
+ },
+ {
+  "id": "S0251L01U04",
+  "pattern": "FRAG",
+  "kind": "deleted",
+  "before": {
+   "known": "I just don't want to find out until we have finished everything",
+   "target": "Solo no quiero descubrirlo hasta después de que terminemos todo"
+  },
+  "after": null,
+  "why": "Solo no quiero calque; without just it duplicates U06/U07; resolved without Deborah"
+ },
+ {
+  "id": "S0251L01U09",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "I really don't want to find out until we finish everything together",
+   "target": "De verdad no quiero descubrirlo hasta después de que terminemos todo juntos"
+  },
+  "after": {
+   "known": "I really don't want to find out until after we finish everything together",
+   "target": "De verdad no quiero descubrirlo hasta después de que terminemos todo juntos"
+  },
+  "why": "after is part of the LEGO (P17)"
+ },
+ {
+  "id": "S0252L01U04",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "I am not sure you will be ready in time but let us try it",
+   "target": "No estoy seguro de que estarás listo a tiempo pero hay que intentarlo"
+  },
+  "after": {
+   "known": "I am not sure you will be ready in time but we must wait",
+   "target": "No estoy seguro de que estarás listo a tiempo pero tenemos que esperar"
+  },
+  "why": "knock-on hay que; intentarlo untaught"
+ },
+ {
+  "id": "S0252L02U11",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "He told me he was trying to find out when you would be ready to start",
+   "target": "Me dijo que estaba intentando descubrir cuándo estarás listo para empezar"
+  },
+  "after": {
+   "known": "He told me he was trying to find out when you will be ready to start",
+   "target": "Me dijo que estaba intentando descubrir cuándo estarás listo para empezar"
+  },
+  "why": "estarás = will you be (LEGO)"
+ },
+ {
+  "id": "S0253L01B05",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "Don't worry I should be ready in a few minutes",
+   "target": "No deberías preocuparte debería estar listo en unos minutos"
+  },
+  "after": {
+   "known": "You shouldn't worry, I should be ready in a few minutes",
+   "target": "No deberías preocuparte debería estar listo en unos minutos"
+  },
+  "why": "no deberías = you shouldn't"
+ },
+ {
+  "id": "S0253L01U02",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "She said she should be ready in a few minutes so let us be patient a moment",
+   "target": "Ella dijo que debería estar listo en unos minutos así que hay que ser paciente un momento"
+  },
+  "after": {
+   "known": "He said he should be ready in a few minutes so I have to be patient",
+   "target": "Él dijo que debería estar listo en unos minutos así que tengo que ser paciente"
+  },
+  "why": "knock-on hay que; subject made he so listo agrees and LEGO stays whole"
+ },
+ {
+  "id": "S0254L01U05",
+  "pattern": "KNOCK-ON",
+  "kind": "fixed",
+  "before": {
+   "known": "I have been ready since this morning so there is no need to wait any longer",
+   "target": "Estoy listo desde esta mañana así que no hay que esperar más"
+  },
+  "after": {
+   "known": "I have been ready since this morning so we don't have to wait any longer",
+   "target": "Estoy listo desde esta mañana así que no tenemos que esperar más"
+  },
+  "why": "knock-on hay que"
+ },
+ {
+  "id": "S0255L02U17",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "Can you say when you think you'll be ready to leave earlier?",
+   "target": "¿Puedes decirme cuándo crees que estarás listo para irte antes?"
+  },
+  "after": {
+   "known": "Can you tell me when you think you'll be ready to leave this morning?",
+   "target": "¿Puedes decirme cuándo crees que estarás listo para irte esta mañana?"
+  },
+  "why": "decirme = tell me; earlier/antes ambiguous"
+ },
+ {
+  "id": "S0262L03U12",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "The man who you were talking to yesterday was an older man who wanted help",
+   "target": "Ese hombre con el que estabas hablando ayer era un hombre mayor que quería pedir ayuda"
+  },
+  "after": {
+   "known": "The man who you were talking to yesterday was an older man who wanted to ask for help",
+   "target": "Ese hombre con el que estabas hablando ayer era un hombre mayor que quería pedir ayuda"
+  },
+  "why": "pedir ayuda = to ask for help (S0231L03)"
+ },
+ {
+  "id": "S0264L01B03",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "There's an old man who wanted help",
+   "target": "Hay un hombre mayor que quería pedir ayuda"
+  },
+  "after": {
+   "known": "There's an old man who wanted to ask for help",
+   "target": "Hay un hombre mayor que quería pedir ayuda"
+  },
+  "why": "pedir ayuda"
+ },
+ {
+  "id": "S0264L01B04",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I know an old man who wanted help",
+   "target": "Conozco a un hombre mayor que quería pedir ayuda"
+  },
+  "after": {
+   "known": "I know an old man who wanted to ask for help",
+   "target": "Conozco a un hombre mayor que quería pedir ayuda"
+  },
+  "why": "pedir ayuda"
+ },
+ {
+  "id": "S0264L01U01",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I met an old man who wanted help from someone yesterday",
+   "target": "Conocí a un hombre mayor que quería pedir ayuda a alguien ayer"
+  },
+  "after": {
+   "known": "I met an old man who wanted to ask someone for help yesterday",
+   "target": "Conocí a un hombre mayor que quería pedir ayuda a alguien ayer"
+  },
+  "why": "pedir ayuda a alguien"
+ },
+ {
+  "id": "S0269L01U15",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "Although I have to wait for your father I'm going to practise",
+   "target": "Aunque tengo que esperar a tu padre ya voy a practicar"
+  },
+  "after": {
+   "known": "Although I have to wait for your father I'm going to practise",
+   "target": "Aunque tengo que esperar a tu padre voy a practicar"
+  },
+  "why": "ya extra"
+ },
+ {
+  "id": "S0274L03U12",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "She asked if you could come back in a few days because we need more time",
+   "target": "Ella dijo que quiere saber si puedes volver en unos días porque necesitamos más tiempo"
+  },
+  "after": {
+   "known": "She said she wants to know if you can come back in a few days because we need more time",
+   "target": "Ella dijo que quiere saber si puedes volver en unos días porque necesitamos más tiempo"
+  },
+  "why": "English follows dijo que quiere saber si puedes"
+ },
+ {
+  "id": "S0275L01U02",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "She told me she needs longer to learn how to say everything",
+   "target": "Ella me dijo que quiere más tiempo para aprender cómo decir todo"
+  },
+  "after": {
+   "known": "She told me she wants longer to learn how to say everything",
+   "target": "Ella me dijo que quiere más tiempo para aprender cómo decir todo"
+  },
+  "why": "quiere = wants; necesita untaught at 275 (S0319)"
+ },
+ {
+  "id": "S0275L01U05",
+  "pattern": "SMALL",
+  "kind": "rewritten",
+  "before": {
+   "known": "He wants longer before he has to say what he thinks about everything",
+   "target": "Él quiere más tiempo antes de tener que decir lo que piensa sobre todo esto"
+  },
+  "after": {
+   "known": "He wants longer before he has to start",
+   "target": "Él quiere más tiempo antes de tener que empezar"
+  },
+  "why": "piensa untaught at 275 (first S0651)"
+ },
+ {
+  "id": "S0275L01U12",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "I want to ask you for longer so I can be sure I am doing this right",
+   "target": "Quiero pedir más tiempo para poder estar seguro de que lo estoy haciendo bien"
+  },
+  "after": {
+   "known": "I want to ask for longer so I can be sure I am doing this right",
+   "target": "Quiero pedir más tiempo para poder estar seguro de que lo estoy haciendo bien"
+  },
+  "why": "drop you"
+ },
+ {
+  "id": "S0277L01U06",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I need to talk to you before the meeting so that we are ready",
+   "target": "Necesito hablar contigo antes de la reunión para estar listo"
+  },
+  "after": {
+   "known": "I need to talk to you before the meeting so that I am ready",
+   "target": "Necesito hablar contigo antes de la reunión para estar listo"
+  },
+  "why": "estar listo (singular)"
+ },
+ {
+  "id": "S0278L01U10",
+  "pattern": "GARBLED",
+  "kind": "rewritten",
+  "before": {
+   "known": "Did you have to come back to help me again?",
+   "target": "¿Tuviste que volver a ayudarme otra vez?"
+  },
+  "after": {
+   "known": "Did you have to come back to help me?",
+   "target": "¿Tuviste que volver para ayudarme?"
+  },
+  "why": "volver a + otra vez doubled; resolved without Deborah"
+ },
+ {
+  "id": "S0279L02B03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "There was a little left",
+   "target": "Quedaba poco"
+  },
+  "after": {
+   "known": "There was a little left",
+   "target": "Quedaba un poco"
+  },
+  "why": "poco != a little; un poco (S0009)"
+ },
+ {
+  "id": "S0279L02U03",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "There was still a little time left before I had to leave",
+   "target": "Todavía quedaba poco tiempo antes de que tenga que irme"
+  },
+  "after": {
+   "known": "There was still a little time left",
+   "target": "Todavía quedaba un poco de tiempo"
+  },
+  "why": "knock-on poco; before I had to leave / tenga tense clash dropped"
+ },
+ {
+  "id": "S0279L02U06",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "There was nothing left in the place I was looking",
+   "target": "No quedaba nada en el sitio que estaba buscando"
+  },
+  "after": {
+   "known": "There was nothing left in the place where I was looking",
+   "target": "No quedaba nada en el sitio donde estaba buscando"
+  },
+  "why": "donde (S0138)"
+ },
+ {
+  "id": "S0279L02U07",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "There was a little time left so I started to read",
+   "target": "Quedaba poco tiempo así que empecé a leer"
+  },
+  "after": {
+   "known": "There was a little time left so I started to read",
+   "target": "Quedaba un poco de tiempo así que empecé a leer"
+  },
+  "why": "un poco de"
+ },
+ {
+  "id": "S0279L02U10",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "There was still a little water left",
+   "target": "Todavía quedaba poca agua"
+  },
+  "after": {
+   "known": "There was still a little water left",
+   "target": "Todavía quedaba un poco de agua"
+  },
+  "why": "poca agua != a little water (Kai R2)"
+ },
+ {
+  "id": "S0279L02U11",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "There was a little work left but I was ready to stop",
+   "target": "Quedaba poco trabajo pero estaba listo para parar"
+  },
+  "after": {
+   "known": "There was a little work left but I was ready to stop",
+   "target": "Quedaba un poco de trabajo pero estaba listo para parar"
+  },
+  "why": "un poco de"
+ },
+ {
+  "id": "S0281L01U06",
+  "pattern": "KNOCK-ON",
+  "kind": "rewritten",
+  "before": {
+   "known": "Do you mind going back to try once more?",
+   "target": "¿Te importa volver a intentar una vez más?"
+  },
+  "after": {
+   "known": "Do you mind trying once more?",
+   "target": "¿Te importa intentar una vez más?"
+  },
+  "why": "knock-on: volver a + verb never taught; going back to try mis-cued"
+ },
+ {
+  "id": "S0281L01U07",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "Does it matter to you that it takes too long to answer?",
+   "target": "¿Te importa si llevas demasiado tiempo para contestar?"
+  },
+  "after": null,
+  "why": "garbled"
+ },
+ {
+  "id": "S0283L01B04",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "Which ones are there?",
+   "target": "¿Cuáles son?"
+  },
+  "after": {
+   "known": "Which ones are they?",
+   "target": "¿Cuáles son?"
+  },
+  "why": "¿Cuáles son?"
+ },
+ {
+  "id": "S0286L01U07",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She is always looking for people who like to read and talk about it",
+   "target": "Ella está buscando personas a las que les gusta leer y hablar de eso"
+  },
+  "after": {
+   "known": "She is looking for people who like to read and talk about it",
+   "target": "Ella está buscando personas a las que les gusta leer y hablar de eso"
+  },
+  "why": "always extra"
+ },
+ {
+  "id": "S0286L01U08",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "It is hard to find people who like to practise with someone they do not know",
+   "target": "Es difícil encontrar personas a las que les gusta practicar con alguien que no conoce"
+  },
+  "after": null,
+  "why": "garbled (conoce vs they)"
+ },
+ {
+  "id": "S0289L01U07",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I wonder how long he's going to take to learn to speak well",
+   "target": "Me pregunto cuánto tiempo va a llevar aprender a hablar bien"
+  },
+  "after": {
+   "known": "I wonder how long it is going to take to learn to speak well",
+   "target": "Me pregunto cuánto tiempo va a llevar aprender a hablar bien"
+  },
+  "why": "va a llevar = it is going to take"
+ },
+ {
+  "id": "S0290L02B04",
+  "pattern": "KNOCK-ON",
+  "kind": "fixed",
+  "before": {
+   "known": "He knows what there is to do",
+   "target": "Sabe lo que hay que hacer"
+  },
+  "after": {
+   "known": "He knows what we have to do",
+   "target": "Sabe lo que tenemos que hacer"
+  },
+  "why": "knock-on hay que"
+ },
+ {
+  "id": "S0290L02U13",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "Nobody knows how long it will take but we keep trying",
+   "target": "Nadie sabe cuánto tiempo va a llevar pero intentamos seguir"
+  },
+  "after": {
+   "known": "Nobody knows how long it will take but we try to continue",
+   "target": "Nadie sabe cuánto tiempo va a llevar pero intentamos seguir"
+  },
+  "why": "seguir = to continue (S0092); to keep going = seguir adelante is S0563"
+ },
+ {
+  "id": "S0295L01U10",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I said that I wanted to finish reading that book before the week was over",
+   "target": "Dije que quería terminar de leer ese libro antes del fin de semana"
+  },
+  "after": {
+   "known": "I said that I wanted to finish reading that book before the weekend",
+   "target": "Dije que quería terminar de leer ese libro antes del fin de semana"
+  },
+  "why": "antes del fin de semana (S0237L02)"
+ },
+ {
+  "id": "S0295L02U06",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "It's not easy to learn so much in a day",
+   "target": "No es fácil aprender todo esto en un día"
+  },
+  "after": {
+   "known": "It's not easy to learn all this in a day",
+   "target": "No es fácil aprender todo esto en un día"
+  },
+  "why": "todo esto"
+ },
+ {
+  "id": "S0295L03B05",
+  "pattern": "KNOCK-ON",
+  "kind": "fixed",
+  "before": {
+   "known": "I didn't say that I wanted to finish in a day so you needn't worry",
+   "target": "No dije que quería terminar en un día así que no hay que preocuparte"
+  },
+  "after": {
+   "known": "I didn't say that I wanted to finish in a day so you don't have to worry",
+   "target": "No dije que quería terminar en un día así que no tienes que preocuparte"
+  },
+  "why": "knock-on hay que (garbled hay que preocuparte)"
+ },
+ {
+  "id": "S0297L04U01",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I don't know many people who speak Spanish yet but I'm looking for some",
+   "target": "No conozco a muchas personas que hablen español todavía pero estoy buscando"
+  },
+  "after": {
+   "known": "I don't know many people who speak Spanish yet but I'm looking for more",
+   "target": "No conozco a muchas personas que hablen español todavía pero estoy buscando más"
+  },
+  "why": "some vs nothing"
+ },
+ {
+  "id": "S0297L04U05",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "I don't know many people who speak Spanish here but I'm looking for some",
+   "target": "No conozco a muchas personas que hablen español aquí pero estoy buscando más"
+  },
+  "after": {
+   "known": "I don't know many people who speak Spanish here but I'm looking for more",
+   "target": "No conozco a muchas personas que hablen español aquí pero estoy buscando más"
+  },
+  "why": "más = more"
+ },
+ {
+  "id": "S0300L02U04",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She told me she does not want to seem unfriendly when she speaks with everyone",
+   "target": "Ella me dijo que no quiere parecer antipática cuando habla con todos los demás"
+  },
+  "after": {
+   "known": "She told me she does not want to seem unfriendly when she speaks with everyone else",
+   "target": "Ella me dijo que no quiere parecer antipática cuando habla con todos los demás"
+  },
+  "why": "con todos los demás = with everyone else (S0016)"
+ },
+ {
+  "id": "S0300L03U02",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "She does not want to seem unfriendly so she is trying to speak with everyone",
+   "target": "Ella no quiere parecer antipática así que está intentando hablar con todos los demás"
+  },
+  "after": {
+   "known": "She does not want to seem unfriendly so she is trying to speak with everyone else",
+   "target": "Ella no quiere parecer antipática así que está intentando hablar con todos los demás"
+  },
+  "why": "everyone else"
+ },
+ {
+  "id": "S0313L01B03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "he couldn't see five",
+   "target": "él no podía ver los cinco"
+  },
+  "after": {
+   "known": "he couldn't see five",
+   "target": "él no podía ver cinco"
+  },
+  "why": "los cinco = the five"
+ },
+ {
+  "id": "S0313L01U04",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "he wanted to see five here",
+   "target": "él quería ver los cinco aquí"
+  },
+  "after": {
+   "known": "he wanted to see five here",
+   "target": "él quería ver cinco aquí"
+  },
+  "why": "los cinco = the five"
+ },
+ {
+  "id": "S0330L02B04",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "Be ready very soon",
+   "target": "estar listo muy pronto"
+  },
+  "after": {
+   "known": "To be ready very soon",
+   "target": "estar listo muy pronto"
+  },
+  "why": "infinitive -> to (K41, Kai R7)"
+ },
+ {
+  "id": "S0346L01U03",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I really liked her idea",
+   "target": "me gustó bastante su idea"
+  },
+  "after": {
+   "known": "I quite liked her idea",
+   "target": "me gustó bastante su idea"
+  },
+  "why": "bastante = quite (S0339)"
+ },
+ {
+  "id": "S0378L02B03",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "no money",
+   "target": "no tenía dinero"
+  },
+  "after": {
+   "known": "I had no money",
+   "target": "no tenía dinero"
+  },
+  "why": "finite tenía"
+ },
+ {
+  "id": "S0381L01B02",
+  "pattern": "FRAG",
+  "kind": "deleted",
+  "before": {
+   "known": "to keep following",
+   "target": "seguir más"
+  },
+  "after": null,
+  "why": "seguir más fragment"
+ },
+ {
+  "id": "S0384L01U01",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "she said it a moment ago",
+   "target": "dijo hace un momento"
+  },
+  "after": {
+   "known": "she said it a moment ago",
+   "target": "lo dijo hace un momento"
+  },
+  "why": "lo dijo (taught S0153)"
+ },
+ {
+  "id": "S0389L01B01",
+  "pattern": "FRAG",
+  "kind": "deleted",
+  "before": {
+   "known": "over there",
+   "target": "de allí"
+  },
+  "after": null,
+  "why": "de allí alone lacks LEGO"
+ },
+ {
+  "id": "S0398L01U01",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I think we should be more patient",
+   "target": "creo que necesitamos ser más pacientes"
+  },
+  "after": {
+   "known": "I think we need to be more patient",
+   "target": "creo que necesitamos ser más pacientes"
+  },
+  "why": "necesitamos = we need"
+ },
+ {
+  "id": "S0399L01B02",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "don't lose",
+   "target": "no perder"
+  },
+  "after": {
+   "known": "not to lose",
+   "target": "no perder"
+  },
+  "why": "infinitive"
+ },
+ {
+  "id": "S0399L02U04",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "we need to keep hope",
+   "target": "necesitamos no perder la esperanza"
+  },
+  "after": null,
+  "why": "keep hope vs no perder"
+ },
+ {
+  "id": "S0404L01U04",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I told her it should be done before Thursday",
+   "target": "le dije que debería hacerlo antes del jueves"
+  },
+  "after": {
+   "known": "I told her she should do it before Thursday",
+   "target": "le dije que debería hacerlo antes del jueves"
+  },
+  "why": "debería hacerlo"
+ },
+ {
+  "id": "S0405L01U05",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "can I book it?",
+   "target": "¿puedo reservar?"
+  },
+  "after": {
+   "known": "can I book?",
+   "target": "¿puedo reservar?"
+  },
+  "why": "reservarlo untaught -> drop it"
+ },
+ {
+  "id": "S0406L02B02",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I'm sure it's fine",
+   "target": "estoy seguro de que estará bien"
+  },
+  "after": {
+   "known": "I'm sure it'll be fine",
+   "target": "estoy seguro de que estará bien"
+  },
+  "why": "estará = will be"
+ },
+ {
+  "id": "S0409L01U06",
+  "pattern": "GARBLED",
+  "kind": "rewritten",
+  "before": {
+   "known": "it doesn't really matter anymore",
+   "target": "no importa nada más"
+  },
+  "after": {
+   "known": "it doesn't matter now",
+   "target": "no importa ahora"
+  },
+  "why": "nada más garbled; ya no untaught at 409 (S0480)"
+ },
+ {
+  "id": "S0423L01U06",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I told her it was a very obvious question",
+   "target": "le dije que era una pregunta tan obvia"
+  },
+  "after": {
+   "known": "I told her it was such an obvious question",
+   "target": "le dije que era una pregunta tan obvia"
+  },
+  "why": "tan obvia = such an obvious (LEGO)"
+ },
+ {
+  "id": "S0426L03B02",
+  "pattern": "FORM",
+  "kind": "deleted",
+  "before": {
+   "known": "they love each other",
+   "target": "quererse entre ellos"
+  },
+  "after": null,
+  "why": "to love each other | quererse entre ellos collides with own LEGO; se quieren untaught"
+ },
+ {
+  "id": "S0426L03U06",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "because they still love each other",
+   "target": "porque todavía quieren quererse"
+  },
+  "after": {
+   "known": "because they still want to love each other",
+   "target": "porque todavía quieren quererse"
+  },
+  "why": "quieren quererse"
+ },
+ {
+  "id": "S0429L01U05",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "already perfect for them",
+   "target": "ya es perfecto para ellos"
+  },
+  "after": {
+   "known": "it's already perfect for them",
+   "target": "ya es perfecto para ellos"
+  },
+  "why": "ya es"
+ },
+ {
+  "id": "S0440L03B04",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "to do something while still young",
+   "target": "hacer algo mientras todavía son jóvenes"
+  },
+  "after": {
+   "known": "to do something while they're still young",
+   "target": "hacer algo mientras todavía son jóvenes"
+  },
+  "why": "LEGO they're still young"
+ },
+ {
+  "id": "S0440L03U05",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I knew they wanted to travel while still young",
+   "target": "sabía que querían viajar mientras todavía son jóvenes"
+  },
+  "after": {
+   "known": "I knew they wanted to travel while they're still young",
+   "target": "sabía que querían viajar mientras todavía son jóvenes"
+  },
+  "why": "LEGO"
+ },
+ {
+  "id": "S0450L02B03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "the fact that they have to",
+   "target": "que ellos tienen que"
+  },
+  "after": {
+   "known": "that they have to",
+   "target": "que ellos tienen que"
+  },
+  "why": "the fact not in Spanish"
+ },
+ {
+  "id": "S0460L02B04",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I want to stay at the hotel",
+   "target": "quiero estar en el hotel"
+  },
+  "after": {
+   "known": "I want to be at the hotel",
+   "target": "quiero estar en el hotel"
+  },
+  "why": "estar en"
+ },
+ {
+  "id": "S0462L03U01",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "during the war it was not easy",
+   "target": "era difícil durante la guerra"
+  },
+  "after": {
+   "known": "it was difficult during the war",
+   "target": "era difícil durante la guerra"
+  },
+  "why": "era difícil"
+ },
+ {
+  "id": "S0465L01B02",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "looking forward to next time",
+   "target": "esperar la próxima vez"
+  },
+  "after": {
+   "known": "to wait for next time",
+   "target": "esperar la próxima vez"
+  },
+  "why": "esperar = to wait (S0155); infinitive takes to (K41)"
+ },
+ {
+  "id": "S0477L02U04",
+  "pattern": "PERSON",
+  "kind": "deleted",
+  "before": {
+   "known": "it has been a long time",
+   "target": "ha estado mucho tiempo"
+  },
+  "after": null,
+  "why": "ha estado mucho tiempo odd in both languages; resolved by delete without Deborah"
+ },
+ {
+  "id": "S0477L03U03",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "since the second day it was hard",
+   "target": "desde el segundo día ha estado difícil"
+  },
+  "after": {
+   "known": "since the second day it has been hard",
+   "target": "desde el segundo día ha estado difícil"
+  },
+  "why": "ha estado = has been"
+ },
+ {
+  "id": "S0480L01U02",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "whatever he says is important",
+   "target": "diga lo que diga, es importante"
+  },
+  "after": {
+   "known": "whatever he says, it's important",
+   "target": "diga lo que diga, es importante"
+  },
+  "why": "es importante"
+ },
+ {
+  "id": "S0489L04B02",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "if you don't make me a coffee",
+   "target": "si no me haces el café"
+  },
+  "after": {
+   "known": "if you don't make me a coffee",
+   "target": "si no me haces un café"
+  },
+  "why": "a coffee = un café"
+ },
+ {
+  "id": "S0489L04U03",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "if you don't make me a coffee now",
+   "target": "si no me haces el café ahora"
+  },
+  "after": {
+   "known": "if you don't make me a coffee now",
+   "target": "si no me haces un café ahora"
+  },
+  "why": "a coffee = un café"
+ },
+ {
+  "id": "S0498L04B03",
+  "pattern": "FORM",
+  "kind": "fixed",
+  "before": {
+   "known": "standing inside the entrance",
+   "target": "está de pie dentro de la entrada"
+  },
+  "after": {
+   "known": "he's standing inside the entrance",
+   "target": "está de pie dentro de la entrada"
+  },
+  "why": "está de pie"
+ },
+ {
+  "id": "S0498L04U05",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "he is standing right inside the entrance",
+   "target": "está de pie allí dentro de la entrada"
+  },
+  "after": {
+   "known": "he is standing over there inside the entrance",
+   "target": "está de pie allí dentro de la entrada"
+  },
+  "why": "allí = over there (S0498L03)"
+ },
+ {
+  "id": "S0503L03U03",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "I don't want trouble but that is mine",
+   "target": "no quiero causar problemas pero ese es mío"
+  },
+  "after": {
+   "known": "I don't want to cause problems but that one's mine",
+   "target": "no quiero causar problemas pero ese es mío"
+  },
+  "why": "causar problemas; LEGO that one's mine"
+ },
+ {
+  "id": "S0506L02B02",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "I lived around here long ago",
+   "target": "vivía por aquí mucho antes"
+  },
+  "after": null,
+  "why": "hace mucho untaught, hace años a later sibling; the clean rewrite (vivía por aquí antes) already exists as S0506L02U02"
+ },
+ {
+  "id": "S0508L01U05",
+  "pattern": "SMALL",
+  "kind": "fixed",
+  "before": {
+   "known": "that doesn't make any sense now",
+   "target": "eso no tiene mucho sentido ahora"
+  },
+  "after": {
+   "known": "that doesn't make much sense now",
+   "target": "eso no tiene mucho sentido ahora"
+  },
+  "why": "mucho = much"
+ },
+ {
+  "id": "S0514L01U05",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "I found it at last",
+   "target": "lo encontré al final"
+  },
+  "after": null,
+  "why": "al final (in the end) never taught as a chunk; at last != al final"
+ },
+ {
+  "id": "S0514L02U05",
+  "pattern": "KNOCK-ON",
+  "kind": "deleted",
+  "before": {
+   "known": "the perfect house at last",
+   "target": "la casa perfecta al final"
+  },
+  "after": null,
+  "why": "knock-on al final"
+ },
+ {
+  "id": "S0516L02U04",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "they came on their own at last",
+   "target": "vinieron solos al final"
+  },
+  "after": null,
+  "why": "al final never taught"
+ },
+ {
+  "id": "S0519L02U05",
+  "pattern": "KNOCK-ON",
+  "kind": "deleted",
+  "before": {
+   "known": "I haven't seen anything in the end",
+   "target": "no he visto nada al final"
+  },
+  "after": null,
+  "why": "knock-on al final"
+ },
+ {
+  "id": "S0520L01U05",
+  "pattern": "KNOCK-ON",
+  "kind": "deleted",
+  "before": {
+   "known": "it might have happened at the end",
+   "target": "podría haberle pasado al final"
+  },
+  "after": null,
+  "why": "knock-on al final"
+ },
+ {
+  "id": "S0522L02U05",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "it was stupid at the end",
+   "target": "fue estúpido al final"
+  },
+  "after": null,
+  "why": "al final never taught"
+ },
+ {
+  "id": "S0522L03B03",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "to tell the truth even if it hurts",
+   "target": "decir la verdad aunque duele"
+  },
+  "after": {
+   "known": "to tell the truth although it hurts",
+   "target": "decir la verdad aunque duele"
+  },
+  "why": "aunque + indicative; aunque taught as although (S0178)"
+ },
+ {
+  "id": "S0524L02U03",
+  "pattern": "KNOCK-ON",
+  "kind": "deleted",
+  "before": {
+   "known": "in three or four minutes at the end",
+   "target": "en tres o cuatro minutos al final"
+  },
+  "after": null,
+  "why": "knock-on al final"
+ },
+ {
+  "id": "S0525L01U01",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "to check if it was here",
+   "target": "para comprobar si fue aquí"
+  },
+  "after": null,
+  "why": "fue aquí vs it was here (estaba trap); happened = pasó is a different word (R1)"
+ },
+ {
+  "id": "S0525L01U03",
+  "pattern": "WORD",
+  "kind": "deleted",
+  "before": {
+   "known": "to check if it was before",
+   "target": "para comprobar si fue antes"
+  },
+  "after": null,
+  "why": "same as U01; happened is a different word (R1)"
+ },
+ {
+  "id": "S0525L02B04",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "I'm sure that you've been able to finish it directly",
+   "target": "estoy seguro de que has podido terminar directamente"
+  },
+  "after": {
+   "known": "I'm sure that you've been able to finish directly",
+   "target": "estoy seguro de que has podido terminar directamente"
+  },
+  "why": "drop it"
+ },
+ {
+  "id": "S0542L01U01",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "whenever you feel like it",
+   "target": "siempre que te sientas así"
+  },
+  "after": {
+   "known": "whenever you feel like this",
+   "target": "siempre que te sientas así"
+  },
+  "why": "así = like this (S0049 es así)"
+ },
+ {
+  "id": "S0557L01B03",
+  "pattern": "TENSE",
+  "kind": "deleted",
+  "before": {
+   "known": "I wish they were ready soon",
+   "target": "ojalá estén listos pronto"
+  },
+  "after": null,
+  "why": "ojalá+present = I hope (K23); I hope = espero que (K17); ojalá estuvieran untaught"
+ },
+ {
+  "id": "S0563L01B03",
+  "pattern": "PERSON",
+  "kind": "fixed",
+  "before": {
+   "known": "I wouldn't have been able to remain quiet",
+   "target": "no habría podido quedarnos callados"
+  },
+  "after": {
+   "known": "I wouldn't have been able to remain quiet",
+   "target": "no habría podido quedarme callado"
+  },
+  "why": "quedarnos callados -> I"
+ },
+ {
+  "id": "S0563L01U07",
+  "pattern": "FRAG",
+  "kind": "fixed",
+  "before": {
+   "known": "I wouldn't have been able to in this dreadful weather",
+   "target": "no habría podido con este tiempo horrible"
+  },
+  "after": {
+   "known": "I wouldn't have been able to go out in this dreadful weather",
+   "target": "no habría podido salir con este tiempo horrible"
+  },
+  "why": "salir (S0349)"
+ },
+ {
+  "id": "S0565L01U02",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "if it made sense I'd have thought about it",
+   "target": "si hubiera tenido sentido lo habría pensado"
+  },
+  "after": {
+   "known": "if it had made sense I'd have thought about it",
+   "target": "si hubiera tenido sentido lo habría pensado"
+  },
+  "why": "hubiera tenido = had made"
+ },
+ {
+  "id": "S0587L02U03",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "she used to insist that we had it together",
+   "target": "ella insistía en que comiéramos juntos"
+  },
+  "after": {
+   "known": "she used to insist that we had it together",
+   "target": "ella insistía en que lo comiéramos juntos"
+  },
+  "why": "proclitic lo taught"
+ },
+ {
+  "id": "S0591L01U05",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "she was still doing it",
+   "target": "siguió haciendo eso"
+  },
+  "after": null,
+  "why": "siguió != was still"
+ },
+ {
+  "id": "S0597L01U08",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "I suspect it might have happened",
+   "target": "sospecho que podría haberle pasado"
+  },
+  "after": {
+   "known": "I suspect it might have happened to him",
+   "target": "sospecho que podría haberle pasado"
+  },
+  "why": "haberle = to him"
+ },
+ {
+  "id": "S0603L01U03",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "we didn't have anywhere",
+   "target": "no teníamos sitio"
+  },
+  "after": null,
+  "why": "garbled"
+ },
+ {
+  "id": "S0608L01U05",
+  "pattern": "GARBLED",
+  "kind": "deleted",
+  "before": {
+   "known": "it would have been the right thing",
+   "target": "habría sido lo bueno"
+  },
+  "after": null,
+  "why": "lo bueno != the right thing"
+ },
+ {
+  "id": "S0619L01U05",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "I think we see each other too little",
+   "target": "creo que nos vemos muy poco"
+  },
+  "after": {
+   "known": "I think we see each other very little",
+   "target": "creo que nos vemos muy poco"
+  },
+  "why": "muy poco = very little"
+ },
+ {
+  "id": "S0621L02U05",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "she told me she didn't want to tell her",
+   "target": "me dijo que no quería decirle nada"
+  },
+  "after": {
+   "known": "she told me she didn't want to tell her anything",
+   "target": "me dijo que no quería decirle nada"
+  },
+  "why": "nada"
+ },
+ {
+  "id": "S0628L01U06",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "she asked me if you like tea",
+   "target": "me dijo que quería saber si te gusta el té"
+  },
+  "after": {
+   "known": "she told me she wanted to know if you like tea",
+   "target": "me dijo que quería saber si te gusta el té"
+  },
+  "why": "me dijo que quería saber"
+ },
+ {
+  "id": "S0630L01U05",
+  "pattern": "WORD",
+  "kind": "rewritten",
+  "before": {
+   "known": "I want to take some coffee with me",
+   "target": "quiero tomar café para llevar"
+  },
+  "after": {
+   "known": "I want to have coffee with you",
+   "target": "quiero tomar café contigo"
+  },
+  "why": "para llevar never taught"
+ },
+ {
+  "id": "S0638L01U04",
+  "pattern": "TENSE",
+  "kind": "fixed",
+  "before": {
+   "known": "I know I should be trying to think",
+   "target": "sé que estoy intentando pensar más"
+  },
+  "after": {
+   "known": "I know I'm trying to think more",
+   "target": "sé que estoy intentando pensar más"
+  },
+  "why": "estoy intentando pensar más"
+ },
+ {
+  "id": "S0645L01B03",
+  "pattern": "OBJ",
+  "kind": "fixed",
+  "before": {
+   "known": "something I can help with",
+   "target": "algo con lo que puedo ayudarle"
+  },
+  "after": {
+   "known": "something I can help you with",
+   "target": "algo con lo que puedo ayudarle"
+  },
+  "why": "ayudarle = help you (LEGO)"
+ },
+ {
+  "id": "S0663L01U05",
+  "pattern": "WORD",
+  "kind": "fixed",
+  "before": {
+   "known": "can you repeat what you all said?",
+   "target": "¿podéis decirme lo que dijisteis?"
+  },
+  "after": {
+   "known": "can you tell me what you all said?",
+   "target": "¿podéis decirme lo que dijisteis?"
+  },
+  "why": "decirme = tell me; plural carried by you all"
+ }
+]
