@@ -1,0 +1,27 @@
+{
+ "event_id": "7d104a07-c0ee-41a6-8f38-0bed3d64a6dc",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0237L01B03",
+   "set": {
+    "known_text": "Wanted me to tell you",
+    "target_text": "Quería que te dijera",
+    "known_audio_id": "8df2dc2b-74ef-495b-8148-2f4a8ab6c994",
+    "target1_audio_id": "104728f5-fe92-480d-9a1a-bcf9fbcd1afc",
+    "target2_audio_id": "95e61343-6390-46b3-b429-87420b5054ec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0237L01B01",
+   "set": {
+    "known_text": "Me to tell you",
+    "target_text": "Que te dijera",
+    "known_audio_id": "d34f4915-91c0-4b81-9362-7a77743a35bb",
+    "target1_audio_id": "b960d1a6-233c-4817-b5d9-fc48104beca0",
+    "target2_audio_id": "8a66236e-53e7-425e-80ed-d88279388f80"
+   }
+  }
+ ]
+}

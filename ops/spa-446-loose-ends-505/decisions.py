@@ -1,0 +1,22 @@
+# id: (known, target)
+D = {
+'S0277L01U06':("I need to talk to you before a meeting so that I am ready","Necesito hablar contigo antes de una reunión para estar listo"),
+'S0237L01B01':("He wanted me to tell you something","Él quería que te dijera algo"),
+'S0237L01B03':("She wanted me to tell you something","Ella quería que te dijera algo"),
+'S0237L01B04':("He wanted me to tell you","Él quería que te dijera"),
+'S0237L01B05':("She wanted me to tell you","Ella quería que te dijera"),
+'S0237L01U01':("He wanted me to tell you what you need to do this afternoon","Él quería que te dijera lo que necesitas hacer esta tarde"),
+'S0237L01U02':("She wanted me to tell you something important this afternoon","Ella quería que te dijera algo importante esta tarde"),
+'S0237L01U03':("He wanted me to tell you what he was thinking","Él quería que te dijera lo que estaba pensando"),
+'S0237L01U04':("She wanted me to tell you where she was on Saturday evening","Ella quería que te dijera dónde estaba el sábado por la noche"),
+'S0237L01U05':("He wanted me to tell you what was going to happen before I left","Él quería que te dijera lo que iba a pasar antes de irme"),
+'S0237L01U06':("She wanted me to tell you what she was trying to say","Ella quería que te dijera lo que estaba intentando decir"),
+'S0237L01U07':("Did you want me to tell you what she was looking for?","¿Querías que te dijera lo que estaba buscando?"),
+'S0237L01U08':("He wanted me to tell you what he was thinking about the problem","Él quería que te dijera lo que estaba pensando sobre el problema"),
+'S0237L01U09':("She wanted me to tell you something interesting about what we were talking about","Ella quería que te dijera algo interesante sobre lo que estábamos hablando"),
+'S0237L01U10':("He wanted me to tell you if he could help over the weekend","Él quería que te dijera si podría ayudar el fin de semana"),
+'S0237L01U11':("He wanted me to tell you that he agreed with what you said","Él quería que te dijera que estaba de acuerdo con lo que dijiste"),
+'S0237L01U13':("She wanted me to tell you when she was going to come back","Ella quería que te dijera cuándo iba a volver"),
+'S0237L01U14':("He wanted me to tell you that he didn't agree with what you said","Él quería que te dijera que no estaba de acuerdo con lo que dijiste"),
+'S0237L01U15':("Did you want me to tell you something different about what we were talking about?","¿Querías que te dijera algo diferente sobre lo que estábamos hablando?"),
+}
