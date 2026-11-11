@@ -167,7 +167,9 @@ async function main() {
       return;
     }
     // The real pass reads the dry-run plan and skips any ask a guard refused there — those go to a person, never retried.
-    const prior = read('audio-plan-dry.json');
+    // SKIP_DRY=1: the live door allows 100 dry runs an hour per caller, so a large stage goes straight to the real pass; every real
+    // call still runs library-first and every guard itself, and a refusal there spends nothing and is recorded, never retried.
+    const prior = process.env.SKIP_DRY === '1' ? [] : read('audio-plan-dry.json');
     const refused = new Set(prior.filter((r) => r.dry.status && r.dry.status !== 200 && r.dry.status !== 429).map((r) => `${r.role}\u0000${r.text}`));
     let spent = 0;
     for (const a of asks) {

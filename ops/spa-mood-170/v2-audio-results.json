@@ -1,0 +1,896 @@
+[
+ {
+  "role": "target1",
+  "text": "Conozco a personas que no hablan español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "target1",
+    "current": "8bdeabfa-9c22-4cb3-a8e6-6d07d42c79d0"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8bdeabfa-9c22-4cb3-a8e6-6d07d42c79d0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Conozco a personas que no hablan español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "target2",
+    "current": "94acb909-c92f-42c3-822d-073652d614d3"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "94acb909-c92f-42c3-822d-073652d614d3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know people who don't speak Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b48744d3-7b66-46ed-a192-3b5ce7a12000",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Son personas que no conozco todavía",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "skipped": "refused by a guard in the dry run — held for a person"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Son personas que no conozco todavía",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "skipped": "refused by a guard in the dry run — held for a person"
+  }
+ },
+ {
+  "role": "known",
+  "text": "They are people who I don't know yet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3839eb7a-788c-48ac-9207-5a7134c6b041",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Desafortunadamente son personas que no conozco muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "target1",
+    "current": "4770f1a5-31d6-411f-94e8-8793d8700587"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4770f1a5-31d6-411f-94e8-8793d8700587",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Desafortunadamente son personas que no conozco muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "target2",
+    "current": "2f1f4374-cbe4-4055-bcc5-8cbe79b2050d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2f1f4374-cbe4-4055-bcc5-8cbe79b2050d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "Unfortunately they are people who I don't know very well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "367e8fda-121e-4b63-b9ac-09245d9b4703",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Aprender está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "target1",
+    "current": "cda393e1-b7ba-4e90-8c5d-dc75bf07a5ae"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cda393e1-b7ba-4e90-8c5d-dc75bf07a5ae",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Aprender está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "target2",
+    "current": "fefa1d2b-4ef7-4d67-8df6-3c6c01d65cf6"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fefa1d2b-4ef7-4d67-8df6-3c6c01d65cf6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "Learning is changing the shape of my brain and I like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "59ee5137-c437-4da4-8ab7-cdde6ac83745",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Practicar está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "target1",
+    "current": "59bf5a7d-9133-468a-8198-884845a53bbc"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "59bf5a7d-9133-468a-8198-884845a53bbc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Practicar está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "target2",
+    "current": "8471f4f0-f1ba-4773-88e1-85bffb4dd2b7"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8471f4f0-f1ba-4773-88e1-85bffb4dd2b7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "Practising is changing the shape of my brain and I like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "76075370-acf7-47bc-b338-f4bf11786652",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero encontrar a alguien para practicar español conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "target1",
+    "current": "71286151-64a9-46be-9374-096e5019e465"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "71286151-64a9-46be-9374-096e5019e465",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero encontrar a alguien para practicar español conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "target2",
+    "current": "da2e6d51-0ae4-4f53-8a4b-0601c2e8f0eb"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "da2e6d51-0ae4-4f53-8a4b-0601c2e8f0eb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to find someone to practise Spanish with",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cada34c0-f3cd-452e-838e-be75494083a7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hay alguien aquí que es muy bueno en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "target1",
+    "current": "12e8b1c2-88d9-4ada-9a20-9c624b8011b2"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "12e8b1c2-88d9-4ada-9a20-9c624b8011b2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hay alguien aquí que es muy bueno en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "target2",
+    "current": "2ebb2072-ad94-410f-a23a-3b988e9f7b6f"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2ebb2072-ad94-410f-a23a-3b988e9f7b6f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "There is someone here who is very good at Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4278e4ff-3153-4191-94d7-672bbf4a0c44",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero practicar con alguien que conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "target1",
+    "current": "e741f052-5f51-4963-836e-275c7b86858c"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e741f052-5f51-4963-836e-275c7b86858c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero practicar con alguien que conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "target2",
+    "current": "68101404-2020-4675-914a-dc48449a4f83"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "68101404-2020-4675-914a-dc48449a4f83",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to practise with someone I know",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d5d83d47-ec9a-4a66-8295-74b2bb4585c7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es menos emocionante cuando nadie quiere decir nada interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "target1",
+    "current": "df4b45e2-4c3a-448d-82e9-2bf8d38989de"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "df4b45e2-4c3a-448d-82e9-2bf8d38989de",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es menos emocionante cuando nadie quiere decir nada interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "target2",
+    "current": "3428c0bf-6220-4002-8225-822fa23b959a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3428c0bf-6220-4002-8225-822fa23b959a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It is less exciting when no one wants to say anything interesting",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ec977de9-1ecc-4021-9eba-10e3483d0979",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "target1",
+    "current": "b46b6d52-2dd2-4050-9312-3cc74cd41b71"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b46b6d52-2dd2-4050-9312-3cc74cd41b71",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "target2",
+    "current": "0d5a4ce5-0aee-4042-8fc2-57510d773f57"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0d5a4ce5-0aee-4042-8fc2-57510d773f57",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "A friend wanted to help me with this, and that was a surprise",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "891ae8e8-3d7d-48d4-bc00-044d66171745",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Así que espero que el mes que viene pueda hablar mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "target1",
+    "current": "6b436b19-cdc8-430d-b029-bb9bc2aba49a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6b436b19-cdc8-430d-b029-bb9bc2aba49a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Así que espero que el mes que viene pueda hablar mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "target2",
+    "current": "72fa91f0-40dd-4d81-9654-d4be307fa526"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "72fa91f0-40dd-4d81-9654-d4be307fa526",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "So I hope that next month I'll be able to speak better",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3b167cfc-d5f1-4251-835e-c6b708792f07",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "target1",
+    "current": "cfd2e052-7125-496c-b26a-c1d5db9b553e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cfd2e052-7125-496c-b26a-c1d5db9b553e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "target2",
+    "current": "b2af9fb3-3145-49ac-b774-7340035980f9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b2af9fb3-3145-49ac-b774-7340035980f9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wouldn't like to guess, can you give me the answer?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4f6ff837-fbd9-4ee2-9c6f-f29a1943c006",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que esto es lo que quieres que haga y ya empecé",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "target1",
+    "current": "20622beb-39d4-4136-8feb-d57539e0f1c0"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "20622beb-39d4-4136-8feb-d57539e0f1c0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que esto es lo que quieres que haga y ya empecé",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "target2",
+    "current": "6f4a6da5-98b4-4a2e-9600-d70ae245699a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6f4a6da5-98b4-4a2e-9600-d70ae245699a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think this is what you want me to do and I've already started",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "675791f2-c1b9-46d3-9137-fb9de9083312",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hasta ahora no creo que tenga que cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "target1",
+    "current": "a4a0d533-76e0-4b5e-aed6-a8f377632a7b"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a4a0d533-76e0-4b5e-aed6-a8f377632a7b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hasta ahora no creo que tenga que cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "target2",
+    "current": "78019c3e-c0ed-4aee-855c-664891d70c72"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "78019c3e-c0ed-4aee-855c-664891d70c72",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "So far I don't think I have to change anything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "afdec85e-ebde-45dd-af18-be27cf8def9d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hasta ahora creo que no necesitamos cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "target1",
+    "current": "b60fb499-2620-4e39-b617-b4afa37c999d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b60fb499-2620-4e39-b617-b4afa37c999d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hasta ahora creo que no necesitamos cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "target2",
+    "current": "7b520236-9f04-476c-a6da-cca5b7dbdfd4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7b520236-9f04-476c-a6da-cca5b7dbdfd4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "So far I think we don't need to change anything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "45078dcf-94c4-426d-800d-2269784b2b45",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "target1",
+    "current": "fc0107cb-d210-40fc-80cf-eba170e10c1d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fc0107cb-d210-40fc-80cf-eba170e10c1d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "target2",
+    "current": "ad85290a-13cd-4b92-a217-fa0e4fd49b16"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ad85290a-13cd-4b92-a217-fa0e4fd49b16",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am very happy so far so I think I don't need to change anything right now",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "46c85088-ce74-45f0-be11-238409e71463",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "df398308-9585-4147-98d3-cebc41faaac2",
+   "charsSpent": 90
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "78eb7f96-d19d-46dd-91d5-dae316705939",
+   "charsSpent": 90
+  }
+ }
+]
