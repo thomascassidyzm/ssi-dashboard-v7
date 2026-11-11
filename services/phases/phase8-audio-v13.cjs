@@ -252,6 +252,7 @@ const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../sha
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
 const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
+const { slotVoiceException } = require('../shared/slot-voice-exceptions.cjs')
 const { mayReplace: mayReplaceHumanTake } = require('../shared/human-take-guard.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
@@ -5699,8 +5700,13 @@ function buildRenderDeps() {
           const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
           if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
           if (rv.status === 'voice') {
-            if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
-            voiceId = rv.voiceId
+            // ONE-SLOT EXCEPTION (shared/slot-voice-exceptions.cjs): a named voice for a slot listed there by a person's
+            // ruling (Kai 2026-11-11, swe_for_eng S0059L02 intro → Tom-006) is kept; every other slot is checked as before.
+            const slotException = voiceId && legoId ? slotVoiceException({ courseCode, legoId, role, voiceId }) : null
+            if (!slotException) {
+              if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
+              voiceId = rv.voiceId
+            }
           }
         }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.

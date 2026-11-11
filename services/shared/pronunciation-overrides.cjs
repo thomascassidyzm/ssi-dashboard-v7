@@ -110,7 +110,9 @@ const RULES = Object.freeze({
     char: 'does',
     say: '<<ˈ|d|ʌ|z>>',
     reading: 'duz (third person of do), never "dose"',
-    lines: Object.freeze(['[does]']),
+    // + the S0059L02 intro (Kai 2026-11-11 14:44Z, #205·AH: re-rendered in Tom-006 with the IPA; a pre-`since` clip of it,
+    // 5393744e, is the misread one and is refused for reuse by pronunciation-reuse-guard).
+    lines: Object.freeze(['[does]', "The Swedish for: '[does]', is:"]),
   }),
 })
 
