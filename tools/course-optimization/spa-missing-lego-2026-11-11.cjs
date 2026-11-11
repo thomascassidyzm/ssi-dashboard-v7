@@ -294,7 +294,10 @@ async function main() {
     for (const id of applied.touched) {
       const p = P.get(id); if (!p) { bad.push(`${id} missing`); continue; }
       const l = L.get(p._lego);
-      if (!containsLego(p, l)) bad.push(`${id} P17: lacks "${l.known_text} | ${l.target_text}"`);
+      // The target side is the hard test. The known side is a note only: English inflects the gloss under negation and
+      // person ("I agreed" → "I didn't agree", "he works" → "my friend works", "that was not" → "that wasn't").
+      if (!contains(p.target_text, l.target_text)) bad.push(`${id} P17: target lacks "${l.target_text}"`);
+      else if (!containsLego(p, l)) console.log(`  note ${id}: English "${p.known_text}" inflects the gloss "${l.known_text}"`);
       for (const s of ['known', 'target1', 'target2']) { const a = p[`${s}_audio_id`]; if (!a) bad.push(`${id} ${s} EMPTY`); else links.push({ op: 'audio.link', target: 'phrase', phrase_id: p.id, slot: s, audio_id: a }); }
     }
     for (const lid of applied.legos) {
