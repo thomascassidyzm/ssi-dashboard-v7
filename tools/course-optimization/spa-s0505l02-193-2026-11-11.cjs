@@ -107,7 +107,7 @@ function planAudio(api) {
   return { asks: [...asks.values()], problems };
 }
 
-async function post(url, body) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; }
+async function post(url, body) { let r; try { r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); } catch (e) { return { status: 0, body: { code: 'TRANSPORT', error: String(e.cause || e.message) } }; } return { status: r.status, body: await r.json().catch(() => ({})) }; }
 const batch = (body) => post(`${POPTY}/api/production/${COURSE}/edit-batch`, body);
 const save = (name, obj) => { const f = path.join(DIR, name); fs.writeFileSync(f, JSON.stringify(obj, null, 1)); console.log('wrote', f); };
 const renderBody = (a, dryRun) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}), ...(dryRun ? { dryRun: true } : {}) });
@@ -144,6 +144,7 @@ async function main() {
         const real = await post(`${POPTY}/api/audio/render`, renderBody(a, false));
         spent += real.body.charsSpent || 0;
         results.push({ ...a, real: { status: real.status, source: real.body.source, audioId: real.body.audioId, charsSpent: real.body.charsSpent, code: real.body.code, error: real.body.error } });
+        save('audio-results.json', results);
         console.log(`real ${real.status} ${a.role} "${a.text}" → ${real.body.source || real.body.code} ${real.body.audioId || ''} ${real.body.charsSpent || 0}`);
       }
       console.log(`spent ${spent} chars`);
