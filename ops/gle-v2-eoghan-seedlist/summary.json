@@ -1,8 +1,8 @@
 {
  "counts": {
-  "Same as yours": 209,
-  "Different": 427,
-  "Pending Kai": 23,
+  "Same as yours": 205,
+  "Different": 429,
+  "Pending Kai": 25,
   "Same as one of your options": 6,
   "Irish same as yours; English differs": 3
  },
@@ -94,8 +94,8 @@
   [
    "127",
    "That isn't why I wanted to see you",
-   "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
-   "Is 'Ní hé sin an chúis ar mhian liom tú a fheiceáil' correct for 'that isn't why I wanted to see you'?"
+   "Ní hé sin an fáth ar mhian liom tú a fheiceáil",
+   "Is 'Ní hé sin an fáth ar mhian liom tú a fheiceáil' correct for 'that isn't why I wanted to see you'?"
   ],
   [
    "129",
@@ -120,6 +120,12 @@
    "that's very kind of you and I'm grateful to you for helping",
    "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú",
    "Is 'Tá sé sin an-chineálta uait' natural for 'that's very kind of you'?"
+  ],
+  [
+   "146",
+   "nothing seems to be working since we tried to fix it",
+   "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú",
+   "You write 'ag obair' at 99 and 'ag feidhmiú' at 146 for a thing that is working. Can 'ag obair' serve in both?"
   ],
   [
    "150",
@@ -232,8 +238,8 @@
   [
    "562",
    "I just want to get there safely",
-   "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte",
-   "Is 'Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte' right, or did you mean the second 'ach' to stay?"
+   "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte",
+   "Is 'Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte' right, or did you mean the second 'ach' to stay?"
   ],
   [
    "570",
@@ -252,6 +258,12 @@
    "we probably would have bought a house there",
    "is dócha go gceannódh muid teach ansin",
    "You note that 'is dócha' is 'I suppose'. What would you say for 'probably' here?"
+  ],
+  [
+   "659",
+   "could you all say that?",
+   "an bhféadfadh sibh ar fad é sin a rá?",
+   "'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"
   ]
  ],
  "pending": [
@@ -374,6 +386,18 @@
    "we don't want to lose hope",
    "Ní mian linn dóchas a chailleadh",
    "Níor mhaith linn ár misneach a chailleadh (misneach = dóchas in this case; it is idiomatic but better)"
+  ],
+  [
+   "433",
+   "they couldn't find out when the film started",
+   "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán",
+   "Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán"
+  ],
+  [
+   "434",
+   "could they cut the number of students they take?",
+   "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?",
+   "Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?"
   ],
   [
    "456",

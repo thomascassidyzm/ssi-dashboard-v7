@@ -163,6 +163,19 @@ N.update({
 659:(D,"We took your 'Arbh fhéidir libh'. We kept 'ar fad' for 'you all', as at 529 and 656 to 667: both it and 'uile' are standard, and 'ar fad' is used throughout.",""),
 })
 DONE253={618,538,199,371,575,576,132,511,395,619,620,522,261,127,138,562,104,186,531,146,433,434,315,659}
+# Job #253 follow-up on the clash forecast #251: his majority form where his own rows differ; 433/434 not applied;
+# the keep-ours style choices (an fáth, Dé + day, a bhaint amach) left as ours until Kai rules.
+FD="Not changed yet: 'níorbh fhéidir leo / arbh fhéidir leo' would give 'could / couldn't' a second form (311 is 'ní fhéadfadh sé'), and 435 answers 434 with 'd'fhéadfadh'."
+N.update({
+105:(D,"We kept 'an fáth' for 'the reason / why', as in 'cén fáth'.",""),
+127:(D,EN+" 'wanted' is 'mian' throughout the course (past 'ba mhian', here 'ar mhian'), and we kept 'to see you'. We kept 'an fáth', as at 105.","Is 'Ní hé sin an fáth ar mhian liom tú a fheiceáil' correct for 'that isn't why I wanted to see you'?"),
+146:(D,MU+" We wrote 'ag obair' for 'working', as you do at 99 ('nach bhfuil sé ag obair'), so that a thing 'working' has one form. "+YO,"You write 'ag obair' at 99 and 'ag feidhmiú' at 146 for a thing that is working. Can 'ag obair' serve in both?"),
+371:(D,"We took your 'chun scannán a fheiceáil'. We kept 'Dé' before the day name; both ways are fine.",""),
+433:(P,FD,""),434:(P,FD,""),
+562:(D,"We took your second option ('mo cheann scríbe a bhaint amach'), without the second 'ach'.","Is 'Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte' right, or did you mean the second 'ach' to stay?"),
+659:(D,"We kept 'an bhféadfadh sibh': you write 'could' with 'féad-' in most seeds (311 to 314, 358, 412 to 414, 435, 644), so we use that form throughout. We kept 'ar fad' for 'you all'.","'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"),
+})
+DONE253-={433,434}
 PEND=[n for n in PEND if n not in DONE253]
 rows=[];unnoted=[]
 for n in sorted(old):
