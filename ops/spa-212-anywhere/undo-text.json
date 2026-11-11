@@ -1,0 +1,126 @@
+{
+ "event_id": "befb0c9e-db96-4d78-9003-8684958f611c",
+ "undo_file": "2026-11-11T15-52-29-800Z-befb0c9e-db96-4d78-9003-8684958f611c.json",
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0182L04U09",
+    "seed_number": 182,
+    "lego_index": 4,
+    "position": 16,
+    "known_text": "Have you seen my friend somewhere today because I need to talk to her?",
+    "target_text": "¿Has visto a mi amiga en algún sitio hoy porque necesito hablar con ella?",
+    "word_count": 71,
+    "lego_count": 14,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:24:55.240Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:24:55.277Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "e471df4a-dd2a-47ab-8a33-573763b4ede1",
+    "target1_audio_id": "7221237e-4fb5-4520-ad2e-555ebec820fc",
+    "target2_audio_id": "9f418618-93c9-4ac6-b536-e00788185ac0",
+    "qa_checked": "2026-02-17T21:56:38.220Z",
+    "target1_duration_ms": 5064,
+    "target2_duration_ms": 5112,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿Has",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " visto",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " a",
+      "isGhost": true
+     },
+     {
+      "known": "my",
+      "legoId": "S0166L01",
+      "target": " mi",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amiga",
+      "isGhost": true
+     },
+     {
+      "known": "anywhere",
+      "legoId": "S0182L04",
+      "target": " en algún sitio",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L02",
+      "target": " hoy",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " porque",
+      "isGhost": false
+     },
+     {
+      "known": "I need",
+      "legoId": "S0044L02",
+      "target": " necesito",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " hablar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " con",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ella?",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  }
+ ]
+}
