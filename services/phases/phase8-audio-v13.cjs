@@ -88,6 +88,7 @@ const { planPresentationRefresh, newestRenderedPresentation } = require('./prese
 // the LEGO, never template-overwritten, never silently skipped, maintained by an
 // agent when the LEGO moves, escalated to Kai only on a concept break.
 const humanAuthored = require('../shared/human-authored-presentations.cjs')
+const introAuthorship = require('../shared/intro-authorship.cjs')  // the SOFT guard on hand-written intros (job #247·AH)
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
@@ -3047,6 +3048,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // spend); it reports what WOULD be authored.
     let authoredIntros = []
     let authorFlags = []
+    let authorIntroWarnings = []
     // authorScope narrows which intros may be authored, so a spend approval
     // can be expressed at the call instead of by editing content. 'all'
     // (default) is today's behaviour; 'lego' authors LEGO intros only and
@@ -3090,6 +3092,27 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
       const bCount = authoredIntros.filter(a => a.frame === 'B').length
       emitProgress(supabase, courseCode, `Authored ${authoredIntros.length} introductions (${bCount} with context, ${authoredIntros.length - bCount} bare)`, { phase: 'audio', action: 'authored', total: authoredIntros.length })
+
+      // THE SOFT GUARD (job #247·AH). An intro is authored here only when the
+      // LEGO has no intro row left at all, so the old words survive only in a
+      // SOFT mark (a hard-marked LEGO never reaches the author). Warn, show the
+      // marked words beside the authored ones, suggest carrying the example —
+      // never block, never substitute.
+      try {
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+        if (introCtx.softMarks.size) {
+          authorIntroWarnings = introAuthorship.warningsFor(introCtx, authoredIntros.filter(a => a.lego_id).map(a => ({
+            lego_id: a.lego_id, oldText: null, newText: a.text, knownText: a.chunk,
+          })))
+          const summary = introAuthorship.summariseWarnings(authorIntroWarnings)
+          if (summary) {
+            for (const w of authorIntroWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+            logger.warn(`[IntroSoftGuard] ${courseCode}: ${summary}`)
+          }
+        }
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: could not check authored intros against soft marks (${guardErr.message}) — authoring carries on`)
+      }
     }
 
     // Step B2: If items are "linkable" but nothing actually linked (link step ran
@@ -3830,7 +3853,9 @@ app.post('/generate/:courseCode', async (req, res) => {
         issue: f.issue
       })),
       // What happened to every human-authored presentation line (job #506).
-      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])]
+      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])],
+      // Hand-written intros (soft-marked) that authoring replaced — warned, not blocked (job #247·AH).
+      introWarnings: authorIntroWarnings
     })
 
   } catch (error) {
@@ -4915,28 +4940,6 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // =========================================================================
     const componentPresentations = []
 
-    if (dryRun) {
-      return res.json({
-        success: true,
-        dryRun: true,
-        courseCode,
-        template,
-        shortTemplate,
-        targetLangName,
-        count: presentations.length,
-        componentCount: componentPresentations.length,
-        contextStats,
-        humanAuthored: humanAuthoredReport,
-        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
-        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
-      })
-    }
-
-    // Bulk upsert presentation text to course_audio
-    const voiceConfig = course.voice_config || {}
-    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
-    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
-
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
 
@@ -4945,12 +4948,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // presentation-refresh-plan.cjs): a superseded clip and its replacement.
     // The row we compare the new text against is the one the LEARNER CURRENTLY
     // HEARS — the newest rendered candidate — never a pending placeholder.
+    // Read before the dry-run return (job #247·AH) so a preview can warn too;
+    // `text` is read for the same reason.
     const existingByLegoId = new Map()
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: existing } = await supabase
         .from('course_audio')
-        .select('id, lego_id, text_normalized, s3_key, origin, created_at')
+        .select('id, lego_id, text, text_normalized, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -4965,6 +4970,60 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         }
       }
     }
+
+    // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH). An intro carrying
+    // hand-authored wording — an "as in" example, a line no template produces,
+    // or a soft mark — that this run would replace is WARNED about, old vs new,
+    // with a suggestion to carry the old example where it still contains the
+    // LEGO. Nothing is blocked and nothing is substituted: the run writes what
+    // it always wrote. Hard-marked LEGOs are left to the hard guard above.
+    // Warn-only means it can never take the rebuild down: any failure here
+    // leaves no warnings and the run carries on exactly as it did before (#254).
+    let introWarnings = []
+    let introWarningSummary = null
+    try {
+      const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+      introWarnings = introAuthorship.warningsFor(introCtx, presentations.map(p => ({
+        lego_id: p.lego_id,
+        oldText: existingByLegoId.get(p.lego_id)?.text || null,
+        newText: p.presentation_text,
+        knownText: p.known,
+      })), { hardMarkedIds: new Set(presentations.filter(p => p.human_authored).map(p => p.lego_id)) })
+      introWarningSummary = introAuthorship.summariseWarnings(introWarnings)
+      if (introWarningSummary) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarningSummary}`)
+        for (const w of introWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+      }
+      for (const p of introCtx.problems) logger.warn(`[IntroSoftGuard] ${courseCode}: ${p} — warnings made from what could be read`)
+    } catch (guardErr) {
+      introWarnings = []
+      introWarningSummary = null
+      logger.warn(`[IntroSoftGuard] ${courseCode}: could not check intros for hand-authored wording (${guardErr.message}) — rebuild carries on`)
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        template,
+        shortTemplate,
+        targetLangName,
+        count: presentations.length,
+        componentCount: componentPresentations.length,
+        contextStats,
+        humanAuthored: humanAuthoredReport,
+        introWarnings,
+        introWarningSummary,
+        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
+        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
+      })
+    }
+
+    // Bulk upsert presentation text to course_audio
+    const voiceConfig = course.voice_config || {}
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     // MAKE-BEFORE-BREAK (Kai's C0 ruling, 2026-08-27; canon clash C23).
     //
@@ -5370,6 +5429,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       componentUnchanged: compTextUnchanged,
       contextStats,
       humanAuthored: humanAuthoredReport,
+      introWarnings,
+      introWarningSummary,
       message: `${humanAuthoredReport.length ? `${humanAuthoredReport.length} human-authored line(s): ${humanAuthoredReport.map(o => `${o.lego_id} ${o.outcome}`).join(', ')}. ` : ''}${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
@@ -6554,6 +6615,25 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       })
     }
 
+    // THE SOFT GUARD (job #247·AH): new words over an intro that carried
+    // hand-authored wording (an "as in" example, a free line, a soft mark) are
+    // reported in the answer — old vs new, plus a suggestion — never refused.
+    // A hard-marked line is the hard guard's business above.
+    let introWarning = null
+    if (!presentationMark) {
+      try {
+        const { data: legoNow } = await supabase.from('course_legos').select('known_text')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex).maybeSingle()
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course)
+        ;[introWarning = null] = introAuthorship.warningsFor(introCtx, [{
+          lego_id: legoId, oldText: existingRow?.text || null, newText: presentationText, knownText: legoNow?.known_text || '',
+        }])
+        if (introWarning) logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarning.message}`)
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}/${legoId}: could not check the old wording (${guardErr.message}) — carrying on`)
+      }
+    }
+
     // ── A-137 REUSE ────────────────────────────────────────────────────────
     // Presentation lines NAME the target language ("The Romanian for: …"), so a
     // sibling match can only ever come from another course teaching the same
@@ -6776,7 +6856,8 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       duration_ms: durationMs,
       text: presentationText,
       created: !existingRow,
-      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {})
+      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {}),
+      ...(introWarning ? { introWarning } : {})
     })
 
   } catch (error) {
