@@ -171,8 +171,8 @@
   },
   "S0277L01B07": {
    "action": "upd",
-   "known": "She does not want to be late for the meeting",
-   "target": "Ella no quiere llegar tarde a la reunión"
+   "known": "She does not want to be late for a meeting",
+   "target": "Ella no quiere llegar tarde a una reunión"
   },
   "S0272L03U01": {
    "action": "upd",
@@ -835,9 +835,10 @@
     "Ella no quiere ir tarde a la reunión"
    ],
    "new": [
-    "She does not want to be late for the meeting",
-    "Ella no quiere llegar tarde a la reunión"
-   ]
+    "She does not want to be late for a meeting",
+    "Ella no quiere llegar tarde a una reunión"
+   ],
+   "note": "article moved to \"a meeting / una reunión\" so the row contains its LEGO (decomposer refused \"la reunión\")"
   },
   {
    "id": "S0272L03U01",
