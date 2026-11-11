@@ -133,12 +133,47 @@ FIX={139:(None,"We use 'imeacht' for 'leave'; you mention either is fine.",None)
  330:(D,"'Níl' answers the statement 'Tá sé tábhachtach' at 329, and you kept 'Níl' too. We kept 'an-tábhachtach'.",""),
  531:(None,None,"For 'nobody / anything' you use 'ar bith' in some seeds (141, 146, 202) and 'aon' in others (35, 71, 267). Is there a rule we can follow, or are they interchangeable?")}
 PEND=[13,53,618,538,199,371,575,576,132,511,395,619,620,522,261,127,138,562,104,186,531,146,433,434,315,659,384,139,285,22,297,390,154,112,399,150,344,281,494,533,27,55,120,121,239,240,456]
+
+# Job #253 (11 Nov, later): Kai's standing rulings applied to the 24 seeds that were waiting, plus 105.
+YO="Otherwise this is yours."
+N.update({
+104:(D,MU+" "+YO+" ('caithfinid' and 'ata' read as typing slips.)",""),
+105:(S,"",""),
+127:(D,EN+" We took your 'an chúis'. 'wanted' is 'mian' throughout the course (past 'ba mhian', here 'ar mhian'), and we kept 'to see you'.","Is 'Ní hé sin an chúis ar mhian liom tú a fheiceáil' correct for 'that isn't why I wanted to see you'?"),
+132:(S,"","You wrote 'chomh hiontach' for 'as exciting'. The course teaches 'iontach' as 'great' (seeds 90, 272). Is there a closer word for 'exciting', or is 'iontach' what you would say?"),
+138:(D,EN+" 'wanted' is 'mian' throughout the course, so we wrote 'ar mhian le mo chara' in your sentence shape.","Is 'seo an áit ar mhian le mo chara bualadh linn' correct for 'this was where my friend wanted to meet us'?"),
+146:(D,MU+" "+YO,""),
+186:(D,EN+" "+WA+" We took your 'éagsúil', here and in every 'something different' in the course.",""),
+199:(S,"Thank you for the note on 'fadó'; it is gone from the course.",""),
+261:(S,"We spelt it 'b'fhéidir', as you do at 456.",""),
+27:(None,None,"You write 'taitin' for 'like' here and at 55, 120, 121, 239 and 240, and 'is maith le' at 26, 257, 288 and 628. Is 'is maith liom' + a verb wrong for 'I like doing', or only less natural?"),
+315:(S,"",""),
+371:(S,"",""),
+395:(D,MU+" We took your 'ag an gcéad choirnéal eile'.",""),
+433:(S,"",""),434:(S,"",""),
+511:(S,"",""),522:(S,"",""),
+531:(S,"",None),
+538:(D,"We wrote 'Ní mian' without the h, which we read as a slip. "+YO+" Our English is now 'I don't want you to think that I don't care'.",""),
+562:(D,"We took your first option. We left out the second 'ach' and spelt it 'shroicheadh'.","Is 'Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte' right, or did you mean the second 'ach' to stay?"),
+575:(S,"",""),
+576:(D,MU+" "+YO+" Our English follows yours.",""),
+618:(S,"We wrote 'I mo thuairim' ('mó' read as a typing slip).",""),
+619:(D,MU+" "+YO,""),
+620:(D,MU+" "+YO,""),
+659:(D,"We took your 'Arbh fhéidir libh'. We kept 'ar fad' for 'you all', as at 529 and 656 to 667: both it and 'uile' are standard, and 'ar fad' is used throughout.",""),
+})
+DONE253={618,538,199,371,575,576,132,511,395,619,620,522,261,127,138,562,104,186,531,146,433,434,315,659}
+PEND=[n for n in PEND if n not in DONE253]
 rows=[];unnoted=[]
 for n in sorted(old):
     r=dict(old[n]); s=live[n]
     changed = nrm(r['Irish now (our draft)'])!=nrm(s['target_text']) or nrm(r['English (ours)'])!=nrm(s['known_text'])
     r['English (ours)']=s['known_text']; r['Irish now (our draft)']=s['target_text']
-    if n in N: r['Same as yours?'],r['Why we differ'],r['Our question for you']=N[n]
+    if n in N:
+        st,w,q=N[n]
+        if st is not None: r['Same as yours?']=st
+        if w is not None: r['Why we differ']=w
+        if q is not None: r['Our question for you']=q
     elif changed: unnoted.append(n)
     if n in FIX:
         st,w,q=FIX[n]

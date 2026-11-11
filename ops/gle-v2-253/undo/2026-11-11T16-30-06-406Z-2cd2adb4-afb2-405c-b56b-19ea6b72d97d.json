@@ -1,0 +1,45 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "2cd2adb4-afb2-405c-b56b-19ea6b72d97d",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:30:06.407Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-30-06-406Z-2cd2adb4-afb2-405c-b56b-19ea6b72d97d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05U05"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05U04"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05U03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05U02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05B03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05B02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0261L05B01"
+    },
+    {
+      "op": "lego.delete",
+      "id": "7ecdfa8b-5f7b-4cb2-b06b-64c5dbffb009"
+    }
+  ]
+}
