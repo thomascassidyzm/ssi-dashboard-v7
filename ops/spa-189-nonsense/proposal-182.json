@@ -1,0 +1,1926 @@
+{
+ "course": "spa_for_eng",
+ "source": "#348 NONSENSE family, re-read live 2026-11-11 (#182)",
+ "dropped": {
+  "deleted_already": [
+   "S0514L02U05",
+   "S0519L02U05",
+   "S0524L02U03"
+  ],
+  "already_fixed": [
+   "S0558L01B03"
+  ]
+ },
+ "rows": [
+  {
+   "id": "S0506L03B03",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0506L03",
+    "years ago",
+    "hace años",
+    true
+   ],
+   "live_known": "truly years ago",
+   "live_target": "hace años de verdad",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'truly years ago'",
+   "proposal_255": [
+    "truly years ago",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0515L01B04",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0515L01",
+    "on the first day of",
+    "el primer día del",
+    true
+   ],
+   "live_known": "on the first day of all, good",
+   "live_target": "el primer día del todo, bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding tag 'of all, good'",
+   "proposal_255": [
+    "on the first day of all, good",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0520L02B04",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0520L02",
+    "to the whole family",
+    "a toda la familia",
+    true
+   ],
+   "live_known": "to the whole family before, no",
+   "live_target": "a toda la familia antes, no",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding tag 'before, no'",
+   "proposal_255": [
+    "to the whole family before, no",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0521L02B03",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0521L02",
+    "you'll forget why",
+    "olvidarás por qué",
+    true
+   ],
+   "live_known": "you'll forget why here, yes",
+   "live_target": "olvidarás por qué aquí, sí",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding tag 'here, yes'",
+   "proposal_255": [
+    "you'll forget why here, yes",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0527L01B02",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0527L01",
+    "guess",
+    "adivina",
+    true
+   ],
+   "live_known": "guess here, good",
+   "live_target": "adivina aquí, bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding 'guess here, good'",
+   "proposal_255": [
+    "guess here, good",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0527L03B04",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0527L03",
+    "that funny story",
+    "esa historia graciosa",
+    true
+   ],
+   "live_known": "that funny story before, no",
+   "live_target": "esa historia graciosa antes, no",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding 'before, no'",
+   "proposal_255": [
+    "that funny story before, no",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L02B04",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0535L02",
+    "he wouldn't choose",
+    "no elegiría",
+    true
+   ],
+   "live_known": "he wouldn't choose before, would he?",
+   "live_target": "no elegiría antes, ¿no?",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding 'before, would he?'",
+   "proposal_255": [
+    "he wouldn't choose before, would he?",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0544L01B03",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0544L01",
+    "whoever said",
+    "quien dijo",
+    true
+   ],
+   "live_known": "whoever said here, good",
+   "live_target": "quien dijo aquí, bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding 'here, good'",
+   "proposal_255": [
+    "whoever said here, good",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0544L01B04",
+   "group": "A",
+   "group_name": "Padding-tag BUILD fragments (\"here, good\", \"before, no\")",
+   "role": "build",
+   "lego": [
+    "S0544L01",
+    "whoever said",
+    "quien dijo",
+    true
+   ],
+   "live_known": "whoever said before, no",
+   "live_target": "quien dijo antes, no",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "padding 'before, no'",
+   "proposal_255": [
+    "whoever said before, no",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0363L01B03",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0363L01",
+    "he felt like",
+    "tenía ganas de",
+    true
+   ],
+   "live_known": "she had that urge to",
+   "live_target": "tenía esas ganas de",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "fragment with unreferenced 'that urge'",
+   "proposal_255": [
+    "she had that urge to",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 8
+   },
+   "checks": []
+  },
+  {
+   "id": "S0409L02B03",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0409L02",
+    "what we do",
+    "lo que hagamos",
+    true
+   ],
+   "live_known": "we do it here",
+   "live_target": "hagamos aquí",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "fragment missing its LEGO",
+   "proposal_255": [
+    "we do it here",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0498L01B03",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0498L01",
+    "he's standing",
+    "está de pie",
+    true
+   ],
+   "live_known": "standing very good",
+   "live_target": "está de pie muy bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'standing very good'",
+   "proposal_255": [
+    "standing very good",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0512L02B02",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0512L02",
+    "the door open",
+    "la puerta abierta",
+    true
+   ],
+   "live_known": "so that the door open",
+   "live_target": "para que la puerta abierta",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "no verb on either side",
+   "proposal_255": [
+    "so that the door open",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0540L01B04",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0540L01",
+    "I don't mind if",
+    "no me importa si",
+    true
+   ],
+   "live_known": "I don't mind if before you go",
+   "live_target": "no me importa si antes de que te vayas",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "fragment",
+   "proposal_255": [
+    "I don't mind if before you go",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0539L01B04",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0539L01",
+    "but it's getting late",
+    "pero se está haciendo tarde",
+    true
+   ],
+   "live_known": "but it's getting late until they are ready",
+   "live_target": "pero se está haciendo tarde hasta que estén listos",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "incoherent",
+   "proposal_255": [
+    "but it's getting late until they are ready",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L03B02",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0535L03",
+    "the wrong job",
+    "el trabajo equivocado",
+    true
+   ],
+   "live_known": "she got lost near the wrong job",
+   "live_target": "se perdió cerca del trabajo equivocado",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'got lost near the wrong job'",
+   "proposal_255": [
+    "she got lost near the wrong job",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0504L03U05",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0504L03",
+    "across the grass",
+    "por la hierba",
+    true
+   ],
+   "live_known": "across the grass is nice",
+   "live_target": "por la hierba está bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "fragment",
+   "proposal_255": [
+    "across the grass is nice",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0419L02U03",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0419L02",
+    "appreciate them",
+    "les aprecie",
+    true
+   ],
+   "live_known": "it's important that people appreciate",
+   "live_target": "es importante que la gente aprecie",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'appreciate' has no object on either side",
+   "proposal_255": [
+    "it's important that people appreciate",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0462L03U03",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0462L03",
+    "during the war",
+    "durante la guerra",
+    true
+   ],
+   "live_known": "do you know about during the war?",
+   "live_target": "¿sabes de durante la guerra?",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'sabes de durante la guerra'",
+   "proposal_255": [
+    "do you know about during the war?",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0325L02U04",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0325L02",
+    "possible",
+    "posibles",
+    true
+   ],
+   "live_known": "I want to do possible things",
+   "live_target": "quiero hacer cosas posibles",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "empty on both sides",
+   "proposal_255": [
+    "I want to do possible things",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0366L01U06",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0366L01",
+    "to grow",
+    "cultivar",
+    true
+   ],
+   "live_known": "she had wanted to grow for a long time",
+   "live_target": "quería cultivar desde hace mucho",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "grow with no object; adding 'it' in English with no 'lo' makes a new mismatch; delete instead",
+   "proposal_255": [
+    "she had wanted to grow it for a long time",
+    "quería cultivar desde hace mucho"
+   ],
+   "fix_348": "NOT-BETTER",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0515L02B02",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "build",
+   "lego": [
+    "S0515L02",
+    "the new year",
+    "año nuevo",
+    true
+   ],
+   "live_known": "a good example of the new year",
+   "live_target": "un buen ejemplo de año nuevo",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'a good example of the new year' means nothing either way; delete rather than add 'del'",
+   "proposal_255": [
+    "a good example of the new year",
+    "un buen ejemplo del año nuevo"
+   ],
+   "fix_348": "NOT-BETTER",
+   "basket_after": {
+    "build": 2,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0518L01U05",
+   "group": "B",
+   "group_name": "Broken fragment or empty sentence (no verb, no object, LEGO missing)",
+   "role": "use",
+   "lego": [
+    "S0518L01",
+    "I couldn't imagine myself",
+    "no podía imaginarme",
+    true
+   ],
+   "live_known": "I couldn't imagine myself a long time ago",
+   "live_target": "no podía imaginarme hace mucho tiempo",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'imagine myself a long time ago'",
+   "proposal_255": [
+    "I couldn't imagine myself a long time ago",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0133L02U10",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0133L02",
+    "working together",
+    "trabajando juntos",
+    true
+   ],
+   "live_known": "I think it was more exciting than what she was saying when you work together very well",
+   "live_target": "Creo que fue más emocionante de lo que ella estaba diciendo trabajando juntos muy bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "Past 'was' against present 'when you work'; garbled both sides.",
+   "proposal_255": [
+    "I think it was more exciting than what she was saying when you work together very well",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 15
+   },
+   "checks": []
+  },
+  {
+   "id": "S0134L02U13",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0134L02",
+    "at something difficult",
+    "en algo difícil",
+    true
+   ],
+   "live_known": "It was more interesting than what she was saying when you work at something difficult",
+   "live_target": "Fue más interesante de lo que ella estaba diciendo cuando trabajas en algo difícil juntos",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "Tense mix, and 'juntos' in Spanish only.",
+   "proposal_255": [
+    "It was more interesting than what she was saying when you work at something difficult",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "checks": []
+  },
+  {
+   "id": "S0146L03U07",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0146L03",
+    "since",
+    "desde que",
+    true
+   ],
+   "live_known": "I don't know how long I have been learning since I started",
+   "live_target": "No sé cuánto tiempo llevo aprendiendo desde que empecé",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'how long I have been learning since I started' is circular padding.",
+   "proposal_255": [
+    "I don't know how long I have been learning since I started",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 13
+   },
+   "checks": []
+  },
+  {
+   "id": "S0146L03U12",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0146L03",
+    "since",
+    "desde que",
+    true
+   ],
+   "live_known": "How long have you been learning Spanish since you started?",
+   "live_target": "¿Cuánto tiempo llevas aprendiendo español desde que empezaste?",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'How long ... since you started?' is circular.",
+   "proposal_255": [
+    "How long have you been learning Spanish since you started?",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 13
+   },
+   "checks": []
+  },
+  {
+   "id": "S0195L03U02",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0195L03",
+    "that I left on the table",
+    "que dejé en la mesa",
+    true
+   ],
+   "live_known": "I think you left it at work, what I left on the table",
+   "live_target": "Creo que lo dejaste en el trabajo, lo que dejé en la mesa",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "Contradicts itself in both languages",
+   "proposal_255": [
+    "I think you left it at work, what I left on the table",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 6,
+    "use": 10
+   },
+   "checks": []
+  },
+  {
+   "id": "S0225L03U06",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0225L03",
+    "if he could",
+    "si pudiera",
+    true
+   ],
+   "live_known": "I would have done it differently if I could have done it well this time",
+   "live_target": "Lo habría hecho de manera diferente si pudiera hacerlo bien esta vez",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'would have done it differently if I could have done it well' is meaningless; Spanish also mixes si pudiera with habría hecho",
+   "proposal_255": [
+    "I would have done it differently if I could have done it well this time",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 10
+   },
+   "checks": []
+  },
+  {
+   "id": "S0225L03U10",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0225L03",
+    "if he could",
+    "si pudiera",
+    true
+   ],
+   "live_known": "What would you do if I asked you to help me if I could do something different?",
+   "live_target": "¿Qué harías si te pidiera que me ayudaras si pudiera hacer algo diferente?",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "two stacked if-clauses, meaningless on both sides",
+   "proposal_255": [
+    "What would you do if I asked you to help me if I could do something different?",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 10
+   },
+   "checks": []
+  },
+  {
+   "id": "S0225L03U11",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0225L03",
+    "if he could",
+    "si pudiera",
+    true
+   ],
+   "live_known": "You will help me before I have to leave if I could give you more time",
+   "live_target": "Vas a ayudarme antes de que tenga que irme si pudiera darte más tiempo",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "plain future 'vas a ayudarme' with hypothetical 'si pudiera' is wrong on both sides",
+   "proposal_255": [
+    "You will help me before I have to leave if I could give you more time",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 10
+   },
+   "checks": []
+  },
+  {
+   "id": "S0225L03U13",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0225L03",
+    "if he could",
+    "si pudiera",
+    true
+   ],
+   "live_known": "If I could keep doing this I would like to keep doing this for a while",
+   "live_target": "Si pudiera seguir haciendo esto me gustaría seguir haciendo esto por un rato",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "circular 'if I could keep doing this I would like to keep doing this'; U14 carries the sensible version",
+   "proposal_255": [
+    "If I could keep doing this I would like to keep doing this for a while",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 10
+   },
+   "checks": []
+  },
+  {
+   "id": "S0288L01U11",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0288L01",
+    "most",
+    "la mayoría",
+    true
+   ],
+   "live_known": "How many people do you know who make up most of your friends?",
+   "live_target": "¿Cuántas personas conoces que son la mayoría de tus amigos?",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "circular nonsense",
+   "proposal_255": [
+    "How many people do you know who make up most of your friends?",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 5,
+    "use": 11
+   },
+   "checks": []
+  },
+  {
+   "id": "S0587L01U06",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0587L01",
+    "she used to insist",
+    "ella insistía",
+    true
+   ],
+   "live_known": "she used to insist as though I don't care",
+   "live_target": "ella insistía como si no me importara",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "nonsense splice",
+   "proposal_255": [
+    "she used to insist as though I don't care",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0536L01U05",
+   "group": "C",
+   "group_name": "Long USE sentence that is circular or self-contradicting",
+   "role": "use",
+   "lego": [
+    "S0536L01",
+    "I used to think that",
+    "antes pensaba que",
+    true
+   ],
+   "live_known": "I used to think that it was yesterday",
+   "live_target": "antes pensaba que fue ayer",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "means nothing",
+   "proposal_255": [
+    "I used to think that it was yesterday",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0255L02B06",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "build",
+   "lego": [
+    "S0255L02",
+    "when do you think you'll be ready to leave",
+    "Cuándo crees que estarás listo para irte",
+    true
+   ],
+   "live_known": "When do you think you'll be ready to leave soon?",
+   "live_target": "¿Cuándo crees que estarás listo para irte pronto?",
+   "action": "rewrite",
+   "new_known": "When do you think you'll be ready to leave on Saturday?",
+   "new_target": "¿Cuándo crees que estarás listo para irte el sábado?",
+   "why_348": "'When ... soon?' asks for a time and gives one",
+   "proposal_255": [
+    "When do you think you'll be ready to leave on Saturday?",
+    "¿Cuándo crees que estarás listo para irte el sábado?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 16
+   },
+   "checks": []
+  },
+  {
+   "id": "S0255L02U08",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0255L02",
+    "when do you think you'll be ready to leave",
+    "Cuándo crees que estarás listo para irte",
+    true
+   ],
+   "live_known": "When do you think you'll be ready to leave soon?",
+   "live_target": "¿Cuándo crees que estarás listo para irte pronto?",
+   "action": "rewrite",
+   "new_known": "When do you think you'll be ready to leave on Sunday?",
+   "new_target": "¿Cuándo crees que estarás listo para irte el domingo?",
+   "why_348": "'When ... soon?' asks for a time and gives one",
+   "proposal_255": [
+    "When do you think you'll be ready to leave on Sunday?",
+    "¿Cuándo crees que estarás listo para irte el domingo?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 16
+   },
+   "checks": []
+  },
+  {
+   "id": "S0255L02U12",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0255L02",
+    "when do you think you'll be ready to leave",
+    "Cuándo crees que estarás listo para irte",
+    true
+   ],
+   "live_known": "When do you think you'll be ready to leave in a few minutes?",
+   "live_target": "¿Cuándo crees que estarás listo para irte en unos minutos?",
+   "action": "rewrite",
+   "new_known": "When do you think you'll be ready to leave next week?",
+   "new_target": "¿Cuándo crees que estarás listo para irte la semana que viene?",
+   "why_348": "'When ... in a few minutes?' asks for a time and gives one",
+   "proposal_255": [
+    "When do you think you'll be ready to leave next week?",
+    "¿Cuándo crees que estarás listo para irte la semana que viene?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 16
+   },
+   "checks": []
+  },
+  {
+   "id": "S0255L02U14",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0255L02",
+    "when do you think you'll be ready to leave",
+    "Cuándo crees que estarás listo para irte",
+    true
+   ],
+   "live_known": "When do you think you'll be ready to leave as soon as possible?",
+   "live_target": "¿Cuándo crees que estarás listo para irte lo antes posible?",
+   "action": "rewrite",
+   "new_known": "When do you think you'll be ready to leave tonight?",
+   "new_target": "¿Cuándo crees que estarás listo para irte esta noche?",
+   "why_348": "'When ... as soon as possible?' makes no sense",
+   "proposal_255": [
+    "When do you think you'll be ready to leave tonight?",
+    "¿Cuándo crees que estarás listo para irte esta noche?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 16
+   },
+   "checks": []
+  },
+  {
+   "id": "S0256L01U11",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0256L01",
+    "I think I'll be ready in less than an hour",
+    "creo que estaré listo en menos de una hora",
+    true
+   ],
+   "live_known": "I think I'll be ready in less than an hour this weekend",
+   "live_target": "Creo que estaré listo en menos de una hora este fin de semana",
+   "action": "rewrite",
+   "new_known": "I think I'll be ready in less than an hour today",
+   "new_target": "Creo que estaré listo en menos de una hora hoy",
+   "why_348": "'in less than an hour this weekend': two clashing time frames",
+   "proposal_255": [
+    "I think I'll be ready in less than an hour if everything goes well",
+    "Creo que estaré listo en menos de una hora si todo va bien"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 13
+   },
+   "checks": []
+  },
+  {
+   "id": "S0256L01U12",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0256L01",
+    "I think I'll be ready in less than an hour",
+    "creo que estaré listo en menos de una hora",
+    true
+   ],
+   "live_known": "I think I'll be ready in less than an hour next week",
+   "live_target": "Creo que estaré listo en menos de una hora la semana que viene",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "'in less than an hour next week': two clashing time frames",
+   "proposal_255": [
+    "I think I'll be ready in less than an hour if I work hard",
+    "Creo que estaré listo en menos de una hora si trabajo duro"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 13
+   },
+   "checks": []
+  },
+  {
+   "id": "S0214L02U08",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0214L02",
+    "at the weekend",
+    "el fin de semana",
+    true
+   ],
+   "live_known": "I started to feel better at the weekend than last night",
+   "live_target": "Empecé a sentirme mejor el fin de semana que anoche",
+   "action": "rewrite",
+   "new_known": "I started to feel better at the weekend",
+   "new_target": "Empecé a sentirme mejor el fin de semana",
+   "why_348": "Comparing 'the weekend' with 'last night' is garbled in both languages",
+   "proposal_255": [
+    "I started to feel better at the weekend",
+    "Empecé a sentirme mejor el fin de semana"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 13
+   },
+   "checks": []
+  },
+  {
+   "id": "S0549L01U04",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0549L01",
+    "because I have got to be",
+    "porque tengo que estar",
+    true
+   ],
+   "live_known": "because I have got to be here yesterday",
+   "live_target": "porque tengo que estar aquí ayer",
+   "action": "rewrite",
+   "new_known": "I can't go because I have got to be here tomorrow",
+   "new_target": "no puedo ir porque tengo que estar aquí mañana",
+   "why_348": "'have got to be here yesterday'",
+   "proposal_255": [
+    "because I have got to be here tomorrow",
+    "porque tengo que estar aquí mañana"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "checks": []
+  },
+  {
+   "id": "S0559L01U05",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0559L01",
+    "have you found",
+    "¿has encontrado",
+    true
+   ],
+   "live_known": "have you found it yesterday?",
+   "live_target": "¿has encontrado eso ayer?",
+   "action": "rewrite",
+   "new_known": "have you found that today?",
+   "new_target": "¿has encontrado eso hoy?",
+   "why_348": "'have you found it yesterday' contradicts itself",
+   "proposal_255": [
+    "have you found that today?",
+    "¿has encontrado eso hoy?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "checks": []
+  },
+  {
+   "id": "S0559L02U04",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0559L02",
+    "the path through the wood",
+    "el camino por el bosque",
+    true
+   ],
+   "live_known": "have you found the path through the wood yesterday?",
+   "live_target": "¿has encontrado el camino por el bosque ayer?",
+   "action": "rewrite",
+   "new_known": "have you found the path through the wood today?",
+   "new_target": "¿has encontrado el camino por el bosque hoy?",
+   "why_348": "same, with 'yesterday'",
+   "proposal_255": [
+    "have you found the path through the wood today?",
+    "¿has encontrado el camino por el bosque hoy?"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0562L02U04",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0562L02",
+    "I want to get there",
+    "quiero llegar allí",
+    true
+   ],
+   "live_known": "I want to get there yesterday",
+   "live_target": "quiero llegar allí ayer",
+   "action": "rewrite",
+   "new_known": "I want to get there tomorrow",
+   "new_target": "quiero llegar allí mañana",
+   "why_348": "'want to get there yesterday'",
+   "proposal_255": [
+    "I want to get there tomorrow",
+    "quiero llegar allí mañana"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L01U01",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0535L01",
+    "he made a promise that",
+    "hizo la promesa de que",
+    true
+   ],
+   "live_known": "he made a promise that it was here",
+   "live_target": "hizo la promesa de que fue aquí",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "a promise about the past",
+   "proposal_255": [
+    "he made a promise that it was here",
+    "DELETE"
+   ],
+   "fix_348": "DELETE-OK",
+   "basket_after": {
+    "build": 4,
+    "use": 3
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L01U02",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0535L01",
+    "he made a promise that",
+    "hizo la promesa de que",
+    true
+   ],
+   "live_known": "he made a promise that it was good",
+   "live_target": "hizo la promesa de que fue bueno",
+   "action": "rewrite",
+   "new_known": "he made a promise that it would be good",
+   "new_target": "hizo la promesa de que sería bueno",
+   "why_348": "a promise that something already was",
+   "proposal_255": [
+    "he made a promise that it would be good",
+    "hizo la promesa de que sería bueno"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 3
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L01U03",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0535L01",
+    "he made a promise that",
+    "hizo la promesa de que",
+    true
+   ],
+   "live_known": "she made a promise that it was before",
+   "live_target": "hizo la promesa de que fue antes",
+   "action": "rewrite",
+   "new_known": "she made a promise that it would be easy",
+   "new_target": "hizo la promesa de que sería fácil",
+   "why_348": "same",
+   "proposal_255": [
+    "she made a promise that it would be before",
+    "hizo la promesa de que sería antes"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 3
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L01U04",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0535L01",
+    "he made a promise that",
+    "hizo la promesa de que",
+    true
+   ],
+   "live_known": "she made a promise that it was yesterday",
+   "live_target": "hizo la promesa de que fue ayer",
+   "action": "rewrite",
+   "new_known": "she made a promise that it would be tomorrow",
+   "new_target": "hizo la promesa de que sería mañana",
+   "why_348": "same",
+   "proposal_255": [
+    "she made a promise that it would be tomorrow",
+    "hizo la promesa de que sería mañana"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 3
+   },
+   "checks": []
+  },
+  {
+   "id": "S0535L01U05",
+   "group": "D",
+   "group_name": "Time word that contradicts the tense or the question",
+   "role": "use",
+   "lego": [
+    "S0535L01",
+    "he made a promise that",
+    "hizo la promesa de que",
+    true
+   ],
+   "live_known": "he made a promise that everything went well",
+   "live_target": "hizo la promesa de que todo fue bien",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "same",
+   "proposal_255": [
+    "he made a promise that everything would be good",
+    "hizo la promesa de que todo sería bueno"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 3
+   },
+   "checks": []
+  },
+  {
+   "id": "S0137L03U13",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0137L03",
+    "than to be perfect",
+    "que ser perfecto",
+    true
+   ],
+   "live_known": "It's more important to talk with other people than to be perfect when you're alone",
+   "live_target": "Es más importante hablar con otras personas que ser perfecto cuando estás solo",
+   "action": "rewrite",
+   "new_known": "It's more important to talk with other people than to be perfect when you're learning",
+   "new_target": "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo",
+   "why_348": "'talk with other people ... when you're alone' contradicts itself.",
+   "proposal_255": [
+    "It's more important to talk with other people than to be perfect when you're learning",
+    "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 17
+   },
+   "checks": [
+    "known words first in a LEGO later: [('talk', 158)]"
+   ]
+  },
+  {
+   "id": "S0150L03U14",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0150L03",
+    "you are called",
+    "llamas",
+    true
+   ],
+   "live_known": "I want to know what you are called because you get to know someone very well working together",
+   "live_target": "Quiero saber cómo te llamas porque llegas a conocer a alguien muy bien trabajando juntos",
+   "action": "rewrite",
+   "new_known": "I want to know what you are called because we are working together",
+   "new_target": "Quiero saber cómo te llamas porque estamos trabajando juntos",
+   "why_348": "Generic 'you get to know someone' clashes with the addressee 'you' of the LEGO; the reason does not follow",
+   "proposal_255": [
+    "I want to know what you are called because we are working together",
+    "Quiero saber cómo te llamas porque estamos trabajando juntos"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 11
+   },
+   "checks": []
+  },
+  {
+   "id": "S0153L03U09",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0153L03",
+    "in the same way",
+    "de la misma manera",
+    true
+   ],
+   "live_known": "What you said is exactly the same way as I think about it",
+   "live_target": "Lo que dijiste es exactamente de la misma manera que pienso",
+   "action": "rewrite",
+   "new_known": "I want to do that in exactly the same way",
+   "new_target": "Quiero hacer eso exactamente de la misma manera",
+   "why_348": "'what you said is exactly the same way as I think' is garbled in both languages",
+   "proposal_255": [
+    "I think about it in exactly the same way as before",
+    "Pienso en eso exactamente de la misma manera que antes"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 15
+   },
+   "checks": []
+  },
+  {
+   "id": "S0197L03U10",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0197L03",
+    "he works",
+    "trabaja",
+    true
+   ],
+   "live_known": "My friend works in the language and he says it is very interesting",
+   "live_target": "Mi amigo trabaja en el idioma y dice que es muy interesante",
+   "action": "rewrite",
+   "new_known": "My friend works in Spanish and he says it is very interesting",
+   "new_target": "Mi amigo trabaja en español y dice que es muy interesante",
+   "why_348": "'works in the language' means nothing clear in either language",
+   "proposal_255": [
+    "My friend works in Spanish and he says it is very interesting",
+    "Mi amigo trabaja en español y dice que es muy interesante"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 6,
+    "use": 7
+   },
+   "checks": [
+    "known words first in a LEGO later: [('says', 480)]"
+   ]
+  },
+  {
+   "id": "S0212L01U08",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0212L01",
+    "they wanted",
+    "querían",
+    true
+   ],
+   "live_known": "They didn't want to wait any longer than was important",
+   "live_target": "No querían esperar más de lo que era importante",
+   "action": "rewrite",
+   "new_known": "They didn't want to wait any more",
+   "new_target": "No querían esperar más",
+   "why_348": "'any longer than was important' is garbled in both languages",
+   "proposal_255": [
+    "They didn't want to wait any longer",
+    "No querían esperar más"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 12
+   },
+   "checks": [
+    "known words first in a LEGO later: [('any', 563)]"
+   ]
+  },
+  {
+   "id": "S0263L01U13",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0263L01",
+    "you mean",
+    "te refieres",
+    true
+   ],
+   "live_known": "Who do you mean because I agree with what you said about your friend?",
+   "live_target": "¿A quién te refieres porque estoy de acuerdo con lo que dijiste sobre tu amigo?",
+   "action": "rewrite",
+   "new_known": "I know who you mean",
+   "new_target": "Sé a quién te refieres",
+   "why_348": "asking 'who do you mean' because you agree makes no sense",
+   "proposal_255": [
+    "I know who you mean and I agree with what you said about your friend",
+    "Sé a quién te refieres y estoy de acuerdo con lo que dijiste sobre tu amigo"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 15
+   },
+   "checks": []
+  },
+  {
+   "id": "S0293L03U11",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0293L03",
+    "I have to find out where he's going to meet me",
+    "tengo que descubrir dónde va a reunirse conmigo",
+    true
+   ],
+   "live_known": "I have to find out where he's going to meet me at the café because it's this morning",
+   "live_target": "Tengo que descubrir dónde va a reunirse conmigo en el café porque es esta mañana",
+   "action": "rewrite",
+   "new_known": "I have to find out where he's going to meet me this morning",
+   "new_target": "Tengo que descubrir dónde va a reunirse conmigo esta mañana",
+   "why_348": "'because it's this morning' gives no reason",
+   "proposal_255": [
+    "I have to find out where he's going to meet me at the café this morning",
+    "Tengo que descubrir dónde va a reunirse conmigo en el café esta mañana"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 5,
+    "use": 15
+   },
+   "checks": []
+  },
+  {
+   "id": "S0477L01U05",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0477L01",
+    "sick",
+    "enfermo",
+    true
+   ],
+   "live_known": "that is so sick",
+   "live_target": "eso es tan enfermo",
+   "action": "rewrite",
+   "new_known": "he is so sick",
+   "new_target": "está tan enfermo",
+   "why_348": "'eso es tan enfermo' / slang 'so sick'",
+   "proposal_255": [
+    "he is so sick",
+    "está tan enfermo"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0481L03U04",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0481L03",
+    "the only real hope",
+    "la única esperanza real",
+    true
+   ],
+   "live_known": "of all, it is the only real hope",
+   "live_target": "de todo, es la única esperanza real",
+   "action": "delete",
+   "new_known": null,
+   "new_target": null,
+   "why_348": "broken 'de todo, es...'",
+   "proposal_255": [
+    "it is the only real hope",
+    "es la única esperanza real"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0489L01U05",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0489L01",
+    "strong",
+    "fuerte",
+    true
+   ],
+   "live_known": "that problem is very strong",
+   "live_target": "ese problema es muy fuerte",
+   "action": "rewrite",
+   "new_known": "that coffee is very strong",
+   "new_target": "ese café es muy fuerte",
+   "why_348": "'that problem is very strong'",
+   "proposal_255": [
+    "that coffee is very strong",
+    "ese café es muy fuerte"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0534L01U04",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0534L01",
+    "let's not go outside",
+    "no salgamos fuera",
+    true
+   ],
+   "live_known": "let's not go outside for everything",
+   "live_target": "no salgamos fuera para todo",
+   "action": "rewrite",
+   "new_known": "let's not go outside today",
+   "new_target": "no salgamos fuera hoy",
+   "why_348": "'for everything / para todo'",
+   "proposal_255": [
+    "let's not go outside for anything",
+    "no salgamos fuera por nada"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "checks": []
+  },
+  {
+   "id": "S0554L01B02",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "build",
+   "lego": [
+    "S0554L01",
+    "this towel isn't dry",
+    "esta toalla no está seca",
+    true
+   ],
+   "live_known": "we need this towel isn't dry",
+   "live_target": "necesitamos esta toalla no está seca",
+   "action": "rewrite",
+   "new_known": "I know this towel isn't dry",
+   "new_target": "sé que esta toalla no está seca",
+   "why_348": "two clauses jammed together",
+   "proposal_255": [
+    "I know this towel isn't dry",
+    "sé que esta toalla no está seca"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0561L02B04",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "build",
+   "lego": [
+    "S0561L02",
+    "it's a fast car",
+    "es un coche rápido",
+    true
+   ],
+   "live_known": "we'd like it's a fast car",
+   "live_target": "nos gustaría es un coche rápido",
+   "action": "rewrite",
+   "new_known": "I think it's a fast car",
+   "new_target": "creo que es un coche rápido",
+   "why_348": "'we'd like it's a fast car'",
+   "proposal_255": [
+    "I think it's a fast car",
+    "creo que es un coche rápido"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "checks": []
+  },
+  {
+   "id": "S0565L02B03",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "build",
+   "lego": [
+    "S0565L02",
+    "more carefully",
+    "con más cuidado",
+    true
+   ],
+   "live_known": "to try and breathe slowly, more carefully",
+   "live_target": "intentar respirar despacio, con más cuidado",
+   "action": "rewrite",
+   "new_known": "to try and breathe more carefully",
+   "new_target": "intentar respirar con más cuidado",
+   "why_348": "stitched fragments",
+   "proposal_255": [
+    "to try and breathe more carefully",
+    "intentar respirar con más cuidado"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "checks": []
+  },
+  {
+   "id": "S0566L01B03",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "build",
+   "lego": [
+    "S0566L01",
+    "I'd have thought more",
+    "habría pensado más",
+    true
+   ],
+   "live_known": "I'd have thought more because he has been playing in the mud",
+   "live_target": "habría pensado más porque ha estado jugando en el barro",
+   "action": "rewrite",
+   "new_known": "I'd have thought more because it's very important",
+   "new_target": "habría pensado más porque es muy importante",
+   "why_348": "the reason makes no sense",
+   "proposal_255": [
+    "I'd have thought more because it's very important",
+    "habría pensado más porque es muy importante"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0566L02U05",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0566L02",
+    "if it had been my choice",
+    "si hubiera sido mi decisión",
+    true
+   ],
+   "live_known": "if it had been my choice for everyone",
+   "live_target": "si hubiera sido mi decisión para todos",
+   "action": "rewrite",
+   "new_known": "if it had been my choice I'd have thought more",
+   "new_target": "si hubiera sido mi decisión habría pensado más",
+   "why_348": "dangling if-clause",
+   "proposal_255": [
+    "if it had been my choice I'd have thought more",
+    "si hubiera sido mi decisión habría pensado más"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  },
+  {
+   "id": "S0567L01U05",
+   "group": "E",
+   "group_name": "Garbled sentence with a plain version from taught words",
+   "role": "use",
+   "lego": [
+    "S0567L01",
+    "it's been lovely",
+    "ha sido encantador",
+    true
+   ],
+   "live_known": "it's been lovely with everything",
+   "live_target": "ha sido encantador con todo",
+   "action": "rewrite",
+   "new_known": "it's been lovely to see you",
+   "new_target": "ha sido encantador verte",
+   "why_348": "'lovely with everything'",
+   "proposal_255": [
+    "it's been lovely to see you",
+    "ha sido encantador verte"
+   ],
+   "fix_348": "GOOD",
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "checks": []
+  }
+ ]
+}
