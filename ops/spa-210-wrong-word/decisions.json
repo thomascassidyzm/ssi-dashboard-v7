@@ -99,7 +99,7 @@
   },
   "S0110L03U13": {
    "action": "upd",
-   "known": "I want to relax a little now but I would also like to keep trying to speak Spanish later on",
+   "known": "I want to relax a little now but I would like to keep trying to speak Spanish later on",
    "target": "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español más tarde"
   },
   "S0184L02U06": {
@@ -629,9 +629,10 @@
     "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español después hoy"
    ],
    "new": [
-    "I want to relax a little now but I would also like to keep trying to speak Spanish later on",
+    "I want to relax a little now but I would like to keep trying to speak Spanish later on",
     "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español más tarde"
-   ]
+   ],
+   "second_pass": "#216·AH (astra) FIX adopted: \"also\" had no Spanish counterpart, dropped"
   },
   {
    "id": "S0184L02U06",
@@ -795,7 +796,8 @@
    "new": [
     "I did not know what you needed so I was trying to do as well as possible",
     "No sabía lo que necesitabas así que estaba intentando hacer lo mejor posible"
-   ]
+   ],
+   "second_pass": "#216·AH (astra) suggested \"hacerlo lo mejor posible\"; NOT adopted — the kept form matches its precedents word for word (S0116L04U08, S0168L04U11), which is Kai's test"
   },
   {
    "id": "S0209L01U03",
@@ -1315,5 +1317,6 @@
    "known": "what a very kind heart",
    "target": "qué corazón muy bondadoso"
   }
- ]
+ ],
+ "second_pass": "#216·AH astra: 51 PASS / 2 FIX (1 adopted)"
 }
