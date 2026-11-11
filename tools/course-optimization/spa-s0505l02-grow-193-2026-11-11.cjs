@@ -77,7 +77,11 @@ async function main() {
   }
   if (mode === 'audio') {
     const out = [];
-    for (const a of asks()) {
+    // The route refused new target clips (EXISTS_IN_LANGUAGE: 'para que no me quede' is already recorded); its own
+    // answer is to link the existing clips, which are the ones S0505L02B02 (same text) plays.
+    const { phrases } = load(api); const b02 = phrases.find((p) => p.id.endsWith(':S0505L02B02'));
+    for (const s of ['target1', 'target2']) out.push({ role: s, text: G.set.target_text, slot: s, status: 409, source: 'existing (B02)', audioId: b02[`${s}_audio_id`], chars: 0 });
+    for (const a of asks().filter((x) => !x.slot.startsWith('target'))) {
       const body = { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, legoId: G.lego, ...(apply ? {} : { dryRun: true }) };
       const r = await post(`${POPTY}/api/audio/render`, body);
       out.push({ ...a, status: r.status, source: r.body.source, audioId: r.body.audioId, chars: r.body.charsSpent || r.body.wouldSpendChars || 0, code: r.body.code, error: r.body.error });
