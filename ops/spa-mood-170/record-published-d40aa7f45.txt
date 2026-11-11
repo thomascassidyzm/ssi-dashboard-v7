@@ -1,0 +1,215 @@
+# spa_for_eng — wrong mood + never-bare subjunctive: checked and applied (#170·AH, 11 Nov)
+
+**Status: LIVE.** Every row below is in the course with audio; final check: 0 empty slots on every touched row. Canon: P31 on PR #136 (not merged).
+
+## What went live
+
+- **v2 draft (#165·AH):** 65 rows (52 rewrites, 13 new) + 3 intro 'as in' lines; independent check passed every row; S0318L01 intro now quotes the chunk: "I don't think **that** she could come". Text event c84bbc90, audio links 027ee308.
+- **Sweep of the other subjunctive LEGOs:** 70 baskets read row by row; 59 rows reworded (bare builds given a trigger, fragment USE rows given a main clause, wrong-mood rows fixed; one is the v2 follow-up S0087L01U04), 5 deleted (2 more were already deleted by another job), 5 fixes re-added as new rows where another job had deleted the original; 16 new intro 'as in' lines with a trigger. Text 6ab0bb8b, audio links f4d67fc6.
+- **Follow-up:** 6 rows got one taught word added (e.g. 'No quiero que te vayas **ahora**') because the first wording was already recorded in Spanish only in off-cast voices. Text f6a0a822, links 4316efe1.
+- **Audio:** about 12.7k characters re-voiced across the passes, plus one interrupted first pass of 46 clips whose total was not kept. Every clip went through the one audio route; re-runs after Popty restarts were answered from the library at no cost.
+
+## Held / not done
+
+- **4 intros kept their old line** (no trigger in the 'as in'): S0237L01, S0249L01, S0346L02, S0526L02 — each already has a recorded intro and Popty refused a replacement without a re-record grant.
+- **Intros left as they are** because no natural English 'as in' can both quote the gloss and carry a trigger: S0071L02 'heard the truth', S0169L01 'that I do', S0170L01 'you would tell', S0203L03 'that you would help me', S0204L01 'that she would help you', S0238L01 'you told', S0248L03 'they give back', S0427L01 'you thought'.
+- **Rows another job changed first:** S0225L03U06/U10/U11 deleted elsewhere; S0497L02U05 rewritten elsewhere to 'Hablas como si necesitaras dormir' (valid, kept).
+- **Not fixed (not mood):** S0281L04 builds and S0419L02U02 do not contain their LEGO; S0522L01B03/B04 'estemos de acuerdo en que aquí/antes' are nonsense fragments; S0204L01U07 odd Spanish.
+
+## Grow-LEGO candidates (Kai's C28 ruling — listed, NOT re-cut)
+
+Other LEGOs in the course are built on the same semi-trigger *que* (S0163L01 que, S0230L04 que, S0137L03 que ser perfecto, S0195L03 que dejé en la mesa, S0288L03 que les gusta ver la televisión …), so under P31 these should grow to include their trigger:
+
+- S0121L02 that you don't like = que no te guste
+- S0129L04 that you're = que estés
+- S0169L01 that I do = que haga
+- S0171L01 me to help you = que te ayude
+- S0203L03 that you would help me = que me ayudaras
+- S0204L01 that she would help you = que ella te ayudara
+- S0237L01 me to tell you = que te dijera
+- S0249L01 you to help me = que me ayudes
+- S0318L01 that she could = que pueda
+- S0330L01 that it's = que sea
+- S0346L02 her to know = que ella supiera
+- S0526L02 that you can't guess = que no puedas adivinar
+- S0568L04 that we meet = que nos veamos
+- S0297L03 who speak = que hablen (not new, never played)
+
+## Every row
+
+### v2 draft
+
+- **S0085L01U02** — I don't know people who speak Spanish | No conozco a personas que hablan español → **I know people who don't speak Spanish | Conozco a personas que no hablan español** — Negated 'no conozco a personas que' needs subjunctive hablen, taught only at s297. Positive frame takes the ordinary form. No taught trigger fits, so one phrase.
+- **S0087L01U04** — They are not people who I know | No son personas que conozco → **They are people who I don't know yet | Son personas que no conozco todavía** — 'No son personas que' needs a subjunctive (conozca, never taught). #148's 'Son personas que no conozco' already exists as U01, B05 and U09, so 'todavía' (s60) makes it a new phrase.
+- **S0087L01U08** — Unfortunately they are not people who I know very well | Desafortunadamente no son personas que conozco muy bien → **Unfortunately they are people who I don't know very well | Desafortunadamente son personas que no conozco muy bien** — Same negated-antecedent problem; move the 'no' inside the relative clause.
+- **S0126L05U16** — I like that learning is changing the shape of my brain | Me gusta que aprender está cambiando la forma de mi cerebro → **Learning is changing the shape of my brain and I like it | Aprender está cambiando la forma de mi cerebro y me gusta** — 'Me gusta que' needs esté (taught s456). No subjunctive taught by s126 fits a phrase that has to contain 'forma', so reword only.
+- **S0126L05U22** — I like that practicing is changing the shape of my brain | Me gusta que practicar está cambiando la forma de mi cerebro → **Practising is changing the shape of my brain and I like it | Practicar está cambiando la forma de mi cerebro y me gusta** — As U16.
+- **S0128L03U06** — I want to find someone who wants to practise Spanish with me | Quiero encontrar a alguien que quiere practicar español conmigo → **I want to find someone to practise Spanish with | Quiero encontrar a alguien para practicar español conmigo** — Someone still being looked for needs quiera, which is never taught; 'para + infinitive' avoids the clause (the #348 wording).
+- **S0128L03U10** — He wants to find someone who is very good at Spanish | Él quiere encontrar a alguien que es muy bueno en español → **There is someone here who is very good at Spanish | Hay alguien aquí que es muy bueno en español** — Needs sea (s330) for a person still being looked for. Someone who is actually here takes the indicative (hay s34, aquí). This is a rewrite rather than #148's delete; conoce would be untaught until s233.
+- **S0128L03U11** — I want to practise with someone who wants to learn Spanish | Quiero practicar con alguien que quiere aprender español → **I want to practise with someone I know | Quiero practicar con alguien que conozco** — Needs quiera, never taught. 'alguien que conozco' (B05's chunk) is a known person, so it takes the indicative. This is a rewrite rather than a delete.
+- **S0132L02U11** — It is less exciting when you are not talking with someone who wants to say something interesting | Es menos emocionante cuando no estás hablando con alguien que quiere decir algo interesante → **It is less exciting when no one wants to say anything interesting | Es menos emocionante cuando nadie quiere decir nada interesante** — 'alguien que quiere' (unknown person) needs quiera, never taught. 'nadie quiere' takes the indicative (nadie s71, nada s35). This is a rewrite rather than a delete.
+- **S0156L02U05** — It surprises me that a friend wanted to help me with this | Me sorprende que un amigo quería ayudarme con esto → **A friend wanted to help me with this, and that was a surprise | Un amigo quería ayudarme con esto, y eso fue una sorpresa** — 'Me sorprende que' needs quisiera (s317). The s130 chunk 'eso fue una sorpresa' keeps the meaning in the ordinary form. This is a rewrite rather than a delete.
+- **S0157L02U11** — So I hope that next month I'm going to be able to speak better | Así que espero que el mes que viene voy a poder hablar mejor → **So I hope that next month I'll be able to speak better | Así que espero que el mes que viene pueda hablar mejor** — KEEPS THE TRIGGER: 'así que espero que' (LEGO s149) + pueda (s7, 'todo lo que pueda' = I can).
+- **S0161L02U06** — I wouldn't like to guess, I want you to be able to give me the answer | No me gustaría adivinar quiero que puedes darme la respuesta → **I wouldn't like to guess, can you give me the answer? | No me gustaría adivinar, ¿puedes darme la respuesta?** — 'quiero que puedes' needs puedas (s292); dijeras (s170) is also too late for s161. Reword only.
+- **S0169L02U13** — I hope this is what you want me to do because I've already started | Espero que esto es lo que quieres que haga porque ya empecé → **I think this is what you want me to do and I've already started | Creo que esto es lo que quieres que haga y ya empecé** — 'Espero que esto es' needs sea (s330). Reword with creo que.
+- **S0187L02U05** — So far I do not think we need to change anything | Hasta ahora no creo que necesitamos cambiar nada → **So far I don't think I have to change anything | Hasta ahora no creo que tenga que cambiar nada** — KEEPS THE TRIGGER: 'no creo que' + tenga (s25, 'antes de que tenga que irme'). necesitemos is never taught, so 'need' becomes 'have to'.
+- **S0187L02 NEW** NEW use — So far I think we don't need to change anything | Hasta ahora creo que no necesitamos cambiar nada — SPLIT: the ordinary-form half of the old U05 (the #148 wording).
+- **S0188L02U02** — I am very happy so far so I do not think I need to change anything right now | Estoy muy contento hasta ahora así que no creo que necesito cambiar nada ahora mismo → **I am very happy so far so I think I don't need to change anything right now | Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo** — 'no creo que necesito' needs necesite (s326). Ordinary form here, because s187's U05 now carries the 'no creo que tenga que' version and a second near-twin one seed later adds nothing.
+- **S0189L01U07** — I am not very sure that is a good idea when we still have so much to do today | No estoy muy seguro de que eso es una buena idea cuando todavía tenemos que hacer mucho hoy → **I'm not very sure if that is a good idea when we still have so much to do today | No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy** — 'seguro de que' needs sea (s330). 'no estoy seguro de si' is seed 10's own frame and takes the ordinary form; it is closer than #148's 'No sé si'.
+- **S0200L02U08** — They want to know what you need to make this work | Quieren saber lo que necesitas para que va a funcionar → **They want to know what you need to do this | Quieren saber lo que necesitas para hacer esto** — 'para que va a funcionar' is ungrammatical and funcione is never taught (the #348 wording).
+- **S0200L04U10** — We need all of us to finish this as soon as possible | Necesitamos que terminemos todo lo antes posible → **They want us to finish everything as soon as possible | Quieren que terminemos todo lo antes posible** — KEEPS A TRIGGER: 'Necesitamos que terminemos' (we need us) is wrong. 'quieren que' (s200 L02) + the LEGO, as #348 ruled.
+- **S0206L01U02** — I enjoy doing this and I am very happy that we are doing this together | Disfruto haciendo esto y estoy muy contento de que estamos haciendo esto juntos → **I enjoy doing this and I am very happy that you're doing it with me | Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo** — KEEPS THE TRIGGER: 'contento de que' + estés (s129, the seed's own 'contento de que lo estés haciendo'). estemos is not taught until s522, so the person changes.
+- **S0206L01 NEW** NEW use — I enjoy doing this and I am very happy because we are doing it together | Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos — SPLIT: the ordinary-form half of the old U02 (#148's porque).
+- **S0212L02U15** — He could ask for something different if he wanted to | Podría pedir algo diferente si quería → **He could ask for something different if he wants to | Podría pedir algo diferente si quiere** — 'si quería' should be 'si quisiera' (s317). The present 'si quiere' is natural with podría and keeps the if-clause, which #148 would have dropped.
+- **S0249L02U04** — I would like you to help me before you go if possible | Me gustaría que me ayudes antes de que te vayas si es posible → **I would like you to help me before you go if possible | Me gustaría que me ayudaras antes de que te vayas si es posible** — 'me gustaría que me ayudes' becomes ayudaras (s203). Kai, 11 Nov: accept 'me ayudaras antes de que te vayas' as it is for now; Deborah was asked, and Kai will report back if she disagrees.
+- **S0252L01U04** — I am not sure you will be ready in time but we must wait | No estoy seguro de que estarás listo a tiempo pero tenemos que esperar → **I am not sure if you will be ready in time but we must wait | No estoy seguro de si estarás listo a tiempo pero tenemos que esperar** — 'seguro de que estarás' is the wrong mood. 'de si' is seed 10's frame. The LEGO is estarás, so a subjunctive version cannot hold it.
+- **S0298L02U05** — I feel like I have nothing left to say about this | Siento como si no me queda nada que decir sobre esto → **I feel like I have nothing left to say about this | Siento que no me queda nada que decir sobre esto** — 'como si' needs quedara, never taught. 'siento que' takes the ordinary form.
+- **S0318L01U04** — I don't think she could if she wanted to | no creo que pueda si quisiera → **I hope she can come on Monday | espero que pueda venir el lunes** — TRIGGER: espero que. 'pueda si quisiera' mixed present and past subjunctive. A new trigger gives the basket variety.
+- **S0318L01 NEW** NEW use — I'm not sure she can help you today | no estoy seguro de que pueda ayudarte hoy — TRIGGER: no estoy seguro de que (s10 + que).
+- **S0318L01 NEW** NEW use — I want her to be able to speak with you | quiero que pueda hablar contigo — TRIGGER: quiero que (s15).
+- **S0318L01 NEW** NEW use — It's interesting that she can speak Spanish so well | es interesante que pueda hablar español tan bien — TRIGGER: es interesante que (s120 frame).
+- **S0358L01U04** — I did not think she could reach the top | no pensé que podía llegar a la cima → **I didn't think she could reach the top | no pensé que pudiera llegar a la cima** — KEEPS THE TRIGGER: 'no pensé que' + pudiera (s225 'si pudiera'). It is the s387 'no pensé que tuviera razón' frame, and the English is unchanged.
+- **S0358L01 NEW** NEW use — I thought she couldn't reach the top | pensé que no podía llegar a la cima — SPLIT: the ordinary-form half (the #148 wording).
+- **S0378L01U04** — I didn't think it was enough | no pensé que era suficiente → **I thought it wasn't enough | pensé que no era suficiente** — 'no pensé que era' needs fuera, never taught. 'suficiente' cannot sit naturally with pudiera or tuviera, so reword only.
+- **S0406L02U03** — I'm not sure it will work | no estoy seguro de que va a funcionar → **I'm not sure that it's a good idea | no estoy seguro de que sea una buena idea** — KEEPS THE TRIGGER: funcione is never taught, so use sea (s330) after 'no estoy seguro de que'. The phrase still contains the LEGO.
+- **S0406L02 NEW** NEW use — I'm sure it's going to work | estoy seguro de que va a funcionar — SPLIT: the affirmative ordinary-form half (the #148 wording).
+- **S0412L04U05** — I didn't think we could stay | no pensé que podíamos quedarnos → **I thought we couldn't stay | pensé que no podíamos quedarnos** — 'no pensé que' + indicative is the wrong mood; pudiéramos is never taught and would lose the LEGO 'no podíamos'.
+- **S0470L03B01** — before we stop | antes de que paremos → **to talk before we stop | hablar antes de que paremos** — P3: the bare-LEGO build gets one plug-in. The trigger stays inside the LEGO.
+- **S0470L03U01** — she left before we stop | ella se fue antes de que paremos → **she's leaving before we stop | ella se va antes de que paremos** — 'se fue antes de que paremos' mixed past and present subjunctive. The present frame keeps the LEGO, whose own 'antes de que' is the trigger.
+- **S0470L03 NEW** NEW use — I have to call you before we stop | tengo que llamarte antes de que paremos — Variety (llamarte s294).
+- **S0532L02B01** — they're lucky | tengan suerte → **unless they're lucky today | a menos que tengan suerte hoy** — TRIGGER: a menos que. Replaces the bare LEGO; this was #159's NEW-B1 text.
+- **S0532L02B02** — I'm sure that they're lucky | estoy seguro de que tienen suerte → **I hope they're lucky | espero que tengan suerte** — TRIGGER: espero que (as #159). The live 'estoy seguro de que tienen' lacked the LEGO.
+- **S0532L02B03** — they thought that they're lucky | pensaban que tenían suerte → **I don't think they're lucky | no creo que tengan suerte** — TRIGGER: no creo que. The live 'pensaban que tenían' lacked the LEGO. This is a rewrite rather than #159's delete.
+- **S0532L02U01** — unless they're lucky | a menos que tengan suerte → **It's not possible to win unless they're lucky | no es posible ganar a menos que tengan suerte** — TRIGGER: a menos que. Replaces the fragment USE (P7).
+- **S0532L02U02** — they're lucky here | tienen suerte aquí → **It's not going to work unless they're lucky | no va a funcionar a menos que tengan suerte** — TRIGGER: a menos que (as #159).
+- **S0532L02U03** — they're lucky now | tienen suerte ahora → **I want them to be lucky tonight | quiero que tengan suerte esta noche** — TRIGGER: quiero que. #159 had 'espero que', which would sit too close to B02.
+- **S0532L02U04** — they're lucky with everything | tienen suerte con todo → **It's unusual that they're lucky with everything | es raro que tengan suerte con todo** — TRIGGER: es raro que (s121 frame, as #159).
+- **S0532L02 NEW** NEW use — I don't think they'll be lucky this time | no creo que tengan suerte esta vez — TRIGGER: no creo que (the s318 frame).
+- **S0557L02B01** — they wouldn't play | no pusieran música → **I'd like them not to play music | me gustaría que no pusieran música** — TRIGGER: me gustaría que (s170). Replaces the bare LEGO.
+- **S0557L02B02** — they wouldn't play late at night | no pusieran música tarde por la noche → **I wish they wouldn't play music here | ojalá no pusieran música aquí** — TRIGGER: ojalá. The live row had no trigger; this avoids duplicating U03.
+- **S0557L02B03** — please, they wouldn't play | por favor, no pusieran música → **it would be better if they didn't play music | sería mejor si no pusieran música** — TRIGGER: si (sería mejor s401). Replaces the ungrammatical 'por favor, no pusieran música'.
+- **S0557L02U01** — I wish they wouldn't play | ojalá no pusieran música → **I wish they wouldn't play music | ojalá no pusieran música** — The English was missing 'music'; the Spanish is unchanged.
+- **S0557L02U04** — They play music in the office, but I wish they wouldn't play it late at night | ponen música en la oficina, pero ojalá no la pusieran tarde por la noche → **They play music in the office, but I wish they wouldn't play music so late | ponen música en la oficina, pero ojalá no pusieran música tan tarde** — P17: 'no la pusieran' breaks up the LEGO 'no pusieran música'. This keeps the whole LEGO and the ojalá trigger (tan s129, tarde s16).
+- **S0557L02 NEW** NEW use — I wanted them not to play music late at night | quería que no pusieran música tarde por la noche — TRIGGER: quería que (s204).
+- **S0557L02 NEW** NEW use — I told them not to play music in the office | les dije que no pusieran música en la oficina — TRIGGER: dije que, in its 'told them not to' sense (les s286, dije s295).
+- **S0557L03B02** — she was right that they wouldn't play such loud music | ella tenía razón que no pusieran música tan alta → **I'd like them not to play such loud music | me gustaría que no pusieran música tan alta** — TRIGGER: me gustaría que. Replaces 'tenía razón que no pusieran', which had no trigger.
+- **S0557L03B03** — I love that they wouldn't play such loud music | me encanta que no pusieran música tan alta → **I don't like it when they play such loud music | no me gusta cuando ponen música tan alta** — 'me encanta que no pusieran' mixed moods. This build is in the ordinary form, 'ponen' (s556).
+- **S0557L03U03** — they wouldn't play such loud music | no pusieran música tan alta → **I wish they wouldn't play such loud music in the office | ojalá no pusieran música tan alta en la oficina** — TRIGGER: ojalá. The bare version was #148's knock-on; 'en la oficina' avoids duplicating U01.
+- **S0558L01B02** — it's so late at night and they wouldn't play such loud music | es tan tarde por la noche y no pusieran música tan alta → **I wish they wouldn't play such loud music, it's so late at night | ojalá no pusieran música tan alta, es tan tarde por la noche** — TRIGGER: ojalá. The live 'y no pusieran' had no trigger.
+- **S0558L01B03** — I wish it's so late at night before we stop | ojalá es tan tarde por la noche antes de que paremos → **it's so late at night, do you want to stop? | es tan tarde por la noche, ¿quieres parar?** — Not in #348's list: 'ojalá es tan tarde por la noche antes de que paremos' puts the indicative after ojalá and makes no sense. This is an ordinary-form build (parar s67).
+- **S0568L04B01** — that we meet | que nos veamos → **I hope we meet soon | espero que nos veamos pronto** — TRIGGER: espero que. Replaces the bare LEGO.
+- **S0568L04B02** — I'm sure that we meet before Thursday | estoy seguro de que nos veamos antes del jueves → **it's important that we meet before Thursday | es importante que nos veamos antes del jueves** — TRIGGER: es importante que. 'estoy seguro de que' needs the ordinary form; vemos is not taught until s619.
+- **S0568L04U03** — next time that we meet | la próxima vez que nos veamos → **I'll call you before we meet | te llamaré antes de que nos veamos** — TRIGGER: antes de que. Replaces the fragment 'la próxima vez que nos veamos', which duplicated U01 (P7).
+- **S0568L04U04** — that we meet before | que nos veamos antes → **I want us to meet before Thursday | quiero que nos veamos antes del jueves** — TRIGGER: quiero que. Replaces the fragment 'que nos veamos antes'.
+- **S0568L04U05** — that we meet for everyone | que nos veamos para todos → **I'm not going to say anything until we meet | no voy a decir nada hasta que nos veamos** — TRIGGER: hasta que (s396). Replaces 'que nos veamos para todos', which had no trigger and no sense.
+- **S0568L04 NEW** NEW use — I love that we meet so often | me encanta que nos veamos tan a menudo — TRIGGER: me encanta que (s491).
+- **S0568L04 NEW** NEW use — Unless we meet tomorrow, I'll call you | a menos que nos veamos mañana, te llamaré — TRIGGER: a menos que (s532).
+
+### Sweep
+
+- **S0071L02B01** — Heard the truth | Oyera la verdad → **I didn't want to let him hear the truth | No quería dejar que oyera la verdad** — bare LEGO; trigger = the seed's own 'dejar que' under a past main verb
+- **S0119L01B01** — You leave | Te vayas → **I don't want you to leave | No quiero que te vayas** — bare LEGO; trigger no quiero que (U05 is the longer 'todavía' version)
+- **S0120L03B01** — You like | Te guste → **I don't think you like it | No creo que te guste** — bare LEGO; trigger no creo que (s47)
+- **S0120L03B02** — That you like | Que te guste → **I want you to like it | Quiero que te guste** — bare 'que te guste' fragment; trigger quiero que (s15)
+- **S0121L02B01** — That you don't like | Que no te guste → **It's interesting that you don't like it | Es interesante que no te guste** — bare LEGO; trigger es interesante que (s120); B03 already carries es raro que
+- **S0121L02B02** DELETE — That you do not like | Que no te guste — bare duplicate of B01 ('That you do not like'); 3 builds remain
+- **S0129L04B02** — That you are | Que estés → **I want you to be here | Quiero que estés aquí** — bare LEGO; trigger quiero que
+- **S0129L04B04** — That you are here | Que estés aquí → **I'm happy that you're here | Estoy contento de que estés aquí** — bare fragment; trigger contento de que (the seed's frame)
+- **S0129L04B05** — That you are doing it | Que lo estés haciendo → **I'm so happy that you're doing it | Estoy tan contento de que lo estés haciendo** — bare fragment; trigger tan contento de que (the seed)
+- **S0149L04B01** — You finish | Termines → **When you finish | Cuando termines** — bare LEGO; trigger cuando + future reference (as U02/U04)
+- **S0169L01B03** — that I do | Que haga → **Do you want me to do something? | ¿Quieres que haga algo?** — bare LEGO; trigger quieres que (s169 L02)
+- **S0170L01B02** — That you would tell me | Que me dijeras → **I was expecting you to tell me | Esperaba que me dijeras** — bare 'que me dijeras'; trigger esperaba que (s151)
+- **S0200L04B01** — That we finish everything | Que terminemos todo → **I hope we finish everything | Espero que terminemos todo** — bare 'que terminemos todo'; trigger espero que (s149)
+- **S0203L03B01** — That you would help me | Que me ayudaras → **I wanted you to help me | Quería que me ayudaras** — bare LEGO; trigger quería que (s204 frame; quería s?)
+- **S0203L03B03** — That you would help me with this | Que me ayudaras con esto → **If I asked you to help me with this | Si te pidiera que me ayudaras con esto** — bare fragment; trigger si te pidiera que (the seed)
+- **S0203L03B04** — That you would help me to understand | Que me ayudaras a entender → **I'd like you to help me understand | Me gustaría que me ayudaras a entender** — bare fragment; trigger me gustaría que (s170)
+- **S0203L03B05** — If I asked you that you would help me | Si te pidiera que me ayudaras → **If I asked you to help me | Si te pidiera que me ayudaras** — English only: 'If I asked you that you would help me' is not English
+- **S0204L01B01** — That she would help you | Que ella te ayudara → **I'd like her to help you | Me gustaría que ella te ayudara** — bare LEGO; trigger me gustaría que (B05 already has quería que)
+- **S0204L01B03** — That she would help you with this | Que ella te ayudara con esto → **I wanted her to help you with this | Quería que ella te ayudara con esto** — bare fragment; trigger quería que (the seed)
+- **S0204L01B04** — That she would help you to understand | Que ella te ayudara a entender → **You didn't want her to help you | No querías que ella te ayudara** — bare fragment; trigger no querías que
+- **S0225L03U06** DELETE — I would have done it differently if I could have done it well this time | Lo habría hecho de manera diferente si pudiera hacerlo bien esta vez — 'habría hecho … si pudiera hacerlo bien' mixes a past conditional with an imperfect subjunctive (needs hubiera podido, untaught); 12 uses remain
+- **S0225L03U10** DELETE — What would you do if I asked you to help me if I could do something different? | ¿Qué harías si te pidiera que me ayudaras si pudiera hacer algo diferente? — 'si te pidiera que me ayudaras si pudiera hacer algo diferente' — two stacked si-clauses, no sense
+- **S0238L01B01** — You told | Dijeras → **If you told me | Si me dijeras** — bare LEGO; trigger si (s152/s203)
+- **S0238L01B02** — That you told | Que dijeras → **I wanted you to tell me the truth | Quería que me dijeras la verdad** — bare 'que dijeras'; trigger quería que (the seed)
+- **S0248L03B01** — They give back  | Devuelvan → **I need them to give it back | Necesito que lo devuelvan** — bare LEGO (with a trailing space); trigger necesito que (U09)
+- **S0248L03B02** DELETE — They give back | Devuelvan — bare duplicate of B01; 5 builds remain
+- **S0249L01 NEW** NEW build — I hope you help me | Espero que me ayudes — bare 'Ayudes' (and lacked the LEGO); trigger espero que — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor
+- **S0249L02 NEW** NEW build — To talk to you before you go | Hablar contigo antes de que te vayas — bare 'Vayas' lacked the LEGO; plug-in build, the trigger is inside the LEGO (as S0470L03B01) — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor
+- **S0250L02B01** — I answer | Conteste → **Do you want me to answer? | ¿Quieres que conteste?** — bare LEGO; trigger quieres que
+- **S0281L04U04** — Do you mind waiting until I finish before you start? | ¿Te importa esperar hasta que termino antes de que empieces? → **Do you mind waiting a moment before you start? | ¿Te importa esperar un momento antes de que empieces?** — 'hasta que termino' is the wrong mood (termine is never taught); the extra clause goes
+- **S0281L04U05** — I think it is useful before you start to think about what you want to say | Creo que es útil antes de que empieces a pensar en lo que quieres decir → **I think it's useful to think about what you want to say before you start | Creo que es útil pensar en lo que quieres decir antes de que empieces** — word order put 'antes de que empieces' before the infinitive it belongs to: no sense
+- **S0281L04U11** DELETE — I think it is useful before you start to think about what you want to say | Creo que es útil antes de que empieces a pensar en lo que quieres decir — exact duplicate of U05
+- **S0346L02B01** — that she knew | que supiera → **I'd like her to know | Me gustaría que ella supiera** — bare 'que supiera'; trigger me gustaría que
+- **S0370L01B01** — I knew | conociera → **I didn't see anyone I knew there | No vi a nadie que conociera allí** — bare LEGO; trigger negated antecedent, the seed's frame (había is untaught)
+- **S0370L01B02** — someone I knew | alguien que conociera → **I didn't see anyone I knew here | No vi a nadie que conociera aquí** — 'alguien que conociera' alone has no negated/unknown antecedent to trigger it; the seed's frame
+- **S0370L01U06** — did you see anyone you knew? | ¿viste a alguien que conociera? → **did you see anyone I knew? | ¿viste a alguien que conociera?** — English said 'you knew'; conociera here is I/he/she (conocieras is untaught), so the English changes
+- **S0387L02B01** — was right | tuviera razón → **I didn't think he was right | No pensé que él tuviera razón** — bare LEGO; trigger no pensé que (B02 is 'she')
+- **S0409L02 NEW** NEW build — it doesn't matter what we do here | no importa lo que hagamos aquí — bare 'hagamos'; trigger no importa (the seed) — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor
+- **S0409L02B02** — what we do | lo que hagamos → **what we do tomorrow is important | lo que hagamos mañana es importante** — bare LEGO; lo que + future reference is the trigger
+- **S0409L02 NEW** NEW build — it doesn't matter to me what we do | no me importa lo que hagamos — 'hagamos aquí' lacked the LEGO and meant nothing — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the basket floor
+- **S0419L02B01** — appreciates | aprecie → **I want people to appreciate them | quiero que la gente les aprecie** — bare 'aprecie'; trigger quiero que
+- **S0419L02B02** — people appreciate | la gente les aprecie → **it's important that people appreciate them | es importante que la gente les aprecie** — bare fragment; trigger es importante que (s329)
+- **S0419L02 NEW** NEW use — I hope people appreciate them | espero que la gente les aprecie — 'es importante que la gente aprecie' lacked 'les' (P17) and an object in English; now B02 carries es importante, so espero que — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the basket floor
+- **S0419L02U05** DELETE — I thought she wanted people to appreciate her | pensé que quería que la gente la aprecie — 'pensé que quería que la gente la aprecie' breaks the sequence of tenses (needs apreciara, untaught) and lacks 'les'
+- **S0432L01B01** — you ask | preguntes → **I want you to ask | quiero que preguntes** — bare LEGO; trigger quiero que
+- **S0461L03B01** — where I can | donde pueda → **a shop where I can | una tienda donde pueda** — bare LEGO; the indefinite antecedent is the trigger
+- **S0461L03B02** — where I can buy | donde pueda comprar → **I need a shop where I can buy | necesito una tienda donde pueda comprar** — bare fragment; indefinite antecedent
+- **S0461L03B04** — knowing where I can buy | saber donde pueda comprar → **a shop where I can buy something | una tienda donde pueda comprar algo** — 'saber donde pueda comprar' is the wrong mood (an indirect question takes dónde puedo)
+- **S0469L02B01** — we can | podamos → **I hope we can | espero que podamos** — bare LEGO; trigger espero que
+- **S0482L01B01** — they're not serious | no estén hablando en serio → **they might not be serious | puede que no estén hablando en serio** — bare LEGO; trigger puede que (s456)
+- **S0482L01B02** — but they're not serious | pero no estén hablando en serio → **but I hope they're not serious | pero espero que no estén hablando en serio** — 'pero no estén' has no trigger
+- **S0482L01B03** — at least they're not serious | al menos no estén hablando en serio → **at least I hope they're not serious | al menos espero que no estén hablando en serio** — 'al menos no estén' has no trigger
+- **S0501L02B01** — you played together | jugarais juntos → **if you played together | si jugarais juntos** — bare LEGO; trigger si
+- **S0526L02B01** — that you can't guess | que no puedas adivinar → **it's unusual that you can't guess | es raro que no puedas adivinar** — bare LEGO; trigger es raro que (s121)
+- **S0526L02B02** — that you can't guess | que no puedas adivinar → **it's interesting that you can't guess | es interesante que no puedas adivinar** — bare duplicate; trigger es interesante que (s120)
+- **S0526L02B03** — that you can't guess what happens | que no puedas adivinar qué pasa → **it surprises me that you can't guess what happens | me sorprende que no puedas adivinar qué pasa** — bare fragment; trigger me sorprende que
+- **S0526L02B04** — that you can't guess why we needed to stay | que no puedas adivinar por qué necesitábamos quedarnos → **I'm finding it hard to believe that you can't guess why we needed to stay | me está costando creer que no puedas adivinar por qué necesitábamos quedarnos** — bare fragment; trigger the seed's me está costando creer que
+- **S0526L02U05** — that you can't guess all of that | que no puedas adivinar todo eso → **it's unusual that you can't guess all of that | es raro que no puedas adivinar todo eso** — fragment USE; trigger es raro que
+- **S0530L01U01** — so I can count them here | para que pueda contarlas aquí → **Can you wait so I can count them? | ¿Puedes esperar para que pueda contarlas?** — fragment USE 'para que pueda contarlas aquí' gets a main clause
+- **S0530L01U02** — so I can count them before | para que pueda contarlas antes → **Can you stop so I can count them? | ¿Puedes parar para que pueda contarlas?** — fragment USE gets a main clause
+- **S0530L01U03** — so I can count them tomorrow | para que pueda contarlas mañana → **We need to wait until tomorrow so I can count them | Necesitamos esperar hasta mañana para que pueda contarlas** — fragment USE gets a main clause
+- **S0530L01U04** — so I can count them all | para que pueda contarlas todas → **Can you speak more slowly so I can count them all? | ¿Puedes hablar más despacio para que pueda contarlas todas?** — fragment USE gets a main clause
+- **S0533L02B01** — to every word you say | cada palabra que digas → **to listen to every word you say | escuchar cada palabra que digas** — bare LEGO; plug-in build
+- **S0533L02B02** DELETE — to every word you say | cada palabra que digas — bare duplicate of B01; 3 builds remain
+- **S0533L02U02** — every word you say here | cada palabra que digas aquí → **I'm going to listen to every word you say here | voy a escuchar cada palabra que digas aquí** — fragment USE gets a main clause
+- **S0533L02U03** — every word you say before the show | cada palabra que digas antes del espectáculo → **she's going to listen to every word you say before the show | ella va a escuchar cada palabra que digas antes del espectáculo** — fragment USE gets a main clause
+- **S0533L02U05** — every word you say today | cada palabra que digas hoy → **I want to listen to every word you say today | quiero escuchar cada palabra que digas hoy** — fragment USE gets a main clause
+- **S0587L02B01** — that we had | en que comiéramos → **she used to insist that we had eggs | ella insistía en que comiéramos huevos** — bare LEGO; trigger insistía en que (the seed)
+- **S0593L03B01** — I argued | discutiera → **you didn't want me to argue | no querías que discutiera** — bare LEGO; trigger no querías que
+- **S0668L01B01** — you all can | podáis → **I hope you all can | espero que podáis** — bare LEGO; trigger espero que (the seed)
+- **S0087L01U04** — They are people who I don't know yet | Son personas que no conozco todavía → **They are people who I don't know yet | Son personas que todavía no conozco** — v2 follow-up: 'no conozco todavía' exists in spa only in off-cast Azure voices (render refused EXISTS_IN_LANGUAGE); 'todavía no conozco' is the more natural order anyway
+
+### Follow-up
+
+- **S0119L01B01** — I don't want you to leave | No quiero que te vayas → **I don't want you to leave now | No quiero que te vayas ahora** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+- **S0169L01B03** — Do you want me to do something? | ¿Quieres que haga algo? → **Do you want me to do something else? | ¿Quieres que haga algo más?** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+- **S0203L03B01** — I wanted you to help me | Quería que me ayudaras → **I wanted you to help me today | Quería que me ayudaras hoy** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+- **S0370L01B01** — I didn't see anyone I knew there | No vi a nadie que conociera allí → **I didn't see anyone I knew today | No vi a nadie que conociera hoy** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+- **S0238L01B01** — If you told me | Si me dijeras → **If you told me the truth | Si me dijeras la verdad** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+- **S0203L03B03** — If I asked you to help me with this | Si te pidiera que me ayudaras con esto → **If I asked you to help me now | Si te pidiera que me ayudaras ahora** — sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast
+
+### Intros
+
+- S0318L01: The Spanish for: 'that she could', as in — 'I don't think that she could come', is:
+- S0568L04: The Spanish for: 'that we meet', as in — 'I hope that we meet soon', is:
+- S0532L02: The Spanish for: 'they're lucky', as in — 'unless they're lucky', is:
+- S0120L03: The Spanish for: 'you like', as in — 'It's interesting that you like to go by bus', is:
+- S0121L02: The Spanish for: 'that you don't like', as in — 'it's unusual that you don't like to use your car', is:
+- S0129L04: The Spanish for: 'that you're', as in — 'I'm so happy that you're doing so well', is:
+- S0149L04: The Spanish for: 'you finish', as in — 'I hope you finish soon', is:
+- S0171L01: The Spanish for: 'me to help you', as in — 'do you want me to help you look for it?', is:
+- S0200L04: The Spanish for: 'we finish', as in — 'they want to make sure that we finish everything in time', is:
+- S0237L01: The Spanish for: 'me to tell you', as in — 'he wanted me to tell you before the weekend', is:
+- S0249L01: The Spanish for: 'you to help me', as in — 'I want you to help me before you go', is:
+- S0250L02: The Spanish for: 'I answer', as in — 'can you tell me something else before I answer?', is:
+- S0326L01: The Spanish for: 'she needs', as in — 'I don't think that she needs to sell the company', is:
+- S0330L01: The Spanish for: 'that it's', as in — 'I don't think that it's very important', is:
+- S0346L02: The Spanish for: 'her to know', as in — 'I wanted her to know that I liked her book', is:
+- S0370L01: The Spanish for: 'I knew', as in — 'I didn't see anyone that I knew', is:
+- S0387L02: The Spanish for: 'was right', as in — 'I didn't think she was right', is:
+- S0409L02: The Spanish for: 'what we do', as in — 'it doesn't matter what we do', is:
+- S0469L02: The Spanish for: 'we can', as in — 'I hope we can meet', is:
+- S0482L01: The Spanish for: 'they're not serious', as in — 'the only real hope is that they're not serious', is:
+- S0501L02: The Spanish for: 'you played', as in — 'if you played together it would be more fun', is:
+- S0526L02: The Spanish for: 'that you can't guess', as in — 'I'm finding it hard to believe that you can't guess', is:
+- S0668L01: The Spanish for: 'you all can', as in — 'I hope you all can go', is:

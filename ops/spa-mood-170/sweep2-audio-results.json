@@ -1,0 +1,326 @@
+[
+ {
+  "role": "target1",
+  "text": "No quiero que te vayas ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c160fec0-b76c-4a04-bd37-768ab67ffc36",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No quiero que te vayas ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "93577725-3f4c-4462-a7e1-3819a880c8e8",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want you to leave now",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6496aabe-4ed4-4f95-a6d5-aaef45b74bf9",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Quieres que haga algo más?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "333a63a7-5e0c-4722-ae3f-37bb80136b7a",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Quieres que haga algo más?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "127c0932-6320-43eb-8630-8a6e91a7047c",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you want me to do something else?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "922d3433-5761-49a9-8920-83916db97220",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quería que me ayudaras hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a055894a-af91-4597-ab9e-a5d6e3b598b4",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería que me ayudaras hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "00b2d139-8e61-40d7-b064-0b2f64b90a1d",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted you to help me today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "df91b5e6-778d-4e2f-a4a9-4c01c843ce29",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No vi a nadie que conociera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dc1829c1-9aad-4a45-9deb-9436f2e71923",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No vi a nadie que conociera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3f16fdf2-3de6-4d68-99a7-826a3aee396e",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't see anyone I knew today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7b8f9120-c501-424f-8398-380f07a6ec34",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si me dijeras la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7baccdc7-95b3-45dd-ad55-f315a25a0549",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si me dijeras la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "83000002-4261-4544-bd95-a3f7fce8edfd",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "If you told me the truth",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "be4c1b40-9091-4c7b-96e0-e290a7b03634",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si te pidiera que me ayudaras ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "213b6888-1e98-4764-bc75-3def3f975fe4",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si te pidiera que me ayudaras ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "99412633-599d-4d3a-a923-4567f3c6d516",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I asked you to help me now",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2d40d3bf-e080-489a-80ae-7cbc230b5f75",
+   "charsSpent": 29
+  }
+ }
+]
