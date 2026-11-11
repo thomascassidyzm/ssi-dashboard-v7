@@ -157,6 +157,26 @@ async function main() {
     save('audio-plan-dry.json', results);
     return;
   }
+  if (mode === 'grant') {
+    // S0281L02B06 "¿Te importa si termino?" was refused EXISTS_IN_LANGUAGE (only spa_for_jpn Azure clips exist). Kai granted a
+    // cast re-record on 11 Nov (same path as #250, approved 15:58Z). One render per slot, no retries; results appended to
+    // audio-results.json so `link` fills the empty slots.
+    const APPROVAL = 'kai:2026-11-11:Kai approved re-recording S0281L02B06 (¿Te importa si termino?) in the spa_for_eng cast, as #250';
+    const GP = 'spa_for_eng #210: S0281L02B06 held row (EXISTS_IN_LANGUAGE off-cast only) voiced in cast under Kai approval 11 Nov';
+    const { P } = load(api); const p = P.get('S0281L02B06');
+    if (!p) throw new Error('S0281L02B06 not found');
+    const resPath = path.join(DIR, 'audio-results.json');
+    const results = JSON.parse(fs.readFileSync(resPath, 'utf8'));
+    for (const role of ['target1', 'target2']) {
+      if (p[`${role}_audio_id`]) { console.log(role, 'already filled', p[`${role}_audio_id`]); continue; }
+      const body = { courseCode: COURSE, role, text: p.target_text, purpose: GP, approval: APPROVAL, job: '#210', dryRun: !apply };
+      const r = await post(`${POPTY}/api/audio/render`, body);
+      console.log(`${apply ? 'real' : 'dry'} ${r.status} ${role} "${p.target_text}" → ${r.body.source || r.body.code || r.body.error} voice=${r.body.voiceId || ''} ${r.body.audioId || ''} ${r.body.charsSpent || r.body.wouldSpendChars || 0}`);
+      if (apply) results.push({ role, text: p.target_text, slots: [{ target: 'phrase', phrase_id: p.id, slot: role, current: null }], real: { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent, code: r.body.code, error: r.body.error, grant: APPROVAL } });
+    }
+    if (apply) save('audio-results.json', results);
+    return;
+  }
   if (mode === 'link') {
     const results = JSON.parse(fs.readFileSync(path.join(DIR, 'audio-results.json'), 'utf8'));
     const { P } = load(api);

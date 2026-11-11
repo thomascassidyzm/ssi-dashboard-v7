@@ -2858,5 +2858,43 @@
    "audioId": "86ac4b00-9333-4b57-b530-b79ed47118b1",
    "charsSpent": 51
   }
+ },
+ {
+  "role": "target1",
+  "text": "¿Te importa si termino?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02B06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d29c9c7c-0911-4672-986c-c5e5cc0a4ef2",
+   "charsSpent": 23,
+   "grant": "kai:2026-11-11:Kai approved re-recording S0281L02B06 (¿Te importa si termino?) in the spa_for_eng cast, as #250"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Te importa si termino?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L02B06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "52621f71-8309-40bb-b8fe-025c0f406e27",
+   "charsSpent": 23,
+   "grant": "kai:2026-11-11:Kai approved re-recording S0281L02B06 (¿Te importa si termino?) in the spa_for_eng cast, as #250"
+  }
  }
 ]
