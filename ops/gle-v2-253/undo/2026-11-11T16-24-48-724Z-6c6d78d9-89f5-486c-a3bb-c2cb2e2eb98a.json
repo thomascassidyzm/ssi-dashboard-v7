@@ -1,0 +1,4668 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "6c6d78d9-89f5-486c-a3bb-c2cb2e2eb98a",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:24:48.724Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-24-48-724Z-6c6d78d9-89f5-486c-a3bb-c2cb2e2eb98a.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "lego.insert",
+      "row": {
+        "id": "b2fa0e26-ae04-4a40-9276-b911a1e8ee67",
+        "seed_number": 199,
+        "lego_index": 2,
+        "type": "A",
+        "is_new": true,
+        "known_text": "long ago",
+        "target_text": "fadó",
+        "components": [],
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02B01",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 1,
+        "known_text": "long ago",
+        "target_text": "fadó",
+        "word_count": 4,
+        "lego_count": 2,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": "fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02B02",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 2,
+        "known_text": "worked long ago",
+        "target_text": "d'oibrigh fadó",
+        "word_count": 14,
+        "lego_count": 3,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02B03",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 3,
+        "known_text": "my friend used to work in an office long ago",
+        "target_text": "d'oibrigh mo chara in oifig fadó",
+        "word_count": 32,
+        "lego_count": 10,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "my",
+            "legoId": "S0051L05",
+            "target": " mo",
+            "isGhost": false
+          },
+          {
+            "known": "friend",
+            "legoId": "S0052L06",
+            "target": " chara",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " in",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " oifig",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U01",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 4,
+        "known_text": "my friend used to work in an office",
+        "target_text": "d'oibrigh mo chara in oifig fadó",
+        "word_count": 33,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 9,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "my",
+            "legoId": "S0051L05",
+            "target": " mo",
+            "isGhost": false
+          },
+          {
+            "known": "friend",
+            "legoId": "S0052L06",
+            "target": " chara",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " in",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " oifig",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U02",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "he worked in an office long ago",
+        "target_text": "d'oibrigh sé in oifig fadó",
+        "word_count": 27,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "it",
+            "legoId": "S0163L02",
+            "target": " sé",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " in",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " oifig",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U03",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 6,
+        "known_text": "she worked in the office long ago",
+        "target_text": "d'oibrigh sí san oifig fadó",
+        "word_count": 28,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "in the office",
+            "legoId": "S0184L01",
+            "target": " san oifig",
+            "isGhost": false
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U04",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 7,
+        "known_text": "he was different long ago",
+        "target_text": "bhí sé difriúil fadó",
+        "word_count": 21,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "it",
+            "legoId": "S0163L02",
+            "target": " sé",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " difriúil",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U05",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 8,
+        "known_text": "she was different long ago",
+        "target_text": "bhí sí difriúil fadó",
+        "word_count": 21,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " difriúil",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U06",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 9,
+        "known_text": "my friend worked hard long ago",
+        "target_text": "d'oibrigh mo chara go dian fadó",
+        "word_count": 32,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "my",
+            "legoId": "S0051L05",
+            "target": " mo",
+            "isGhost": false
+          },
+          {
+            "known": "friend",
+            "legoId": "S0052L06",
+            "target": " chara",
+            "isGhost": false
+          },
+          {
+            "known": "hard",
+            "legoId": "S0106L06",
+            "target": " go dian",
+            "isGhost": false
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U07",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 10,
+        "known_text": "he worked in the office long ago",
+        "target_text": "d'oibrigh sé san oifig fadó",
+        "word_count": 28,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "worked",
+            "legoId": "S0199L01",
+            "target": "d'oibrigh",
+            "isGhost": false
+          },
+          {
+            "known": "it",
+            "legoId": "S0163L02",
+            "target": " sé",
+            "isGhost": false
+          },
+          {
+            "known": "in the office",
+            "legoId": "S0184L01",
+            "target": " san oifig",
+            "isGhost": false
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0199L02U08",
+        "seed_number": 199,
+        "lego_index": 2,
+        "position": 11,
+        "known_text": "it was different long ago",
+        "target_text": "bhí sé sin difriúil fadó",
+        "word_count": 25,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:34:00.351Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:55:39.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:23.975Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "That was",
+            "legoId": "S0112L05",
+            "target": "bhí sé sin",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " difriúil",
+            "isGhost": true
+          },
+          {
+            "known": "long ago",
+            "legoId": "S0199L02",
+            "target": " fadó",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "lego.insert",
+      "row": {
+        "id": "028b7d6f-aa2f-40db-8e7c-ed2092b46b32",
+        "seed_number": 146,
+        "lego_index": 2,
+        "type": "M",
+        "is_new": true,
+        "known_text": "working",
+        "target_text": "ag obair",
+        "components": [
+          {
+            "known": "at",
+            "target": "ag"
+          },
+          {
+            "known": "working",
+            "target": "obair"
+          }
+        ],
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02B01",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 1,
+        "known_text": "working hard",
+        "target_text": "ag obair go dian",
+        "word_count": 16,
+        "lego_count": 2,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02B02",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 2,
+        "known_text": "I was working",
+        "target_text": "bhí mé ag obair",
+        "word_count": 15,
+        "lego_count": 3,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02B03",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 3,
+        "known_text": "she was working with them",
+        "target_text": "bhí sí ag obair leo",
+        "word_count": 19,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02B04",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 4,
+        "known_text": "I was working earlier",
+        "target_text": "bhí mé ag obair níos luaithe",
+        "word_count": 28,
+        "lego_count": 4,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U02",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 6,
+        "known_text": "I woke earlier because I was working",
+        "target_text": "dhúisigh mé níos luaithe mar bhí mé ag obair",
+        "word_count": 44,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U03",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 7,
+        "known_text": "I'm not sure that anything is working",
+        "target_text": "níl mé cinnte go bhfuil aon rud ag obair",
+        "word_count": 40,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U04",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 8,
+        "known_text": "how long have you been working",
+        "target_text": "cé chomh fada is atá tú ag obair",
+        "word_count": 32,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U05",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 9,
+        "known_text": "I think that it's not working",
+        "target_text": "ceapaim nach bhfuil sé ag obair",
+        "word_count": 31,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U06",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 10,
+        "known_text": "I was tired when we were working in the pub",
+        "target_text": "bhí mé tuirseach nuair a bhí muid ag obair sa teach tábhairne",
+        "word_count": 61,
+        "lego_count": 10,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U07",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 11,
+        "known_text": "of course I was working today",
+        "target_text": "ar ndóigh bhí mé ag obair inniu",
+        "word_count": 31,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U08",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 12,
+        "known_text": "I wasn't working last night",
+        "target_text": "ní raibh mé ag obair aréir",
+        "word_count": 26,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L02U01",
+        "seed_number": 146,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "I am not working any more",
+        "target_text": "níl mé ag obair a thuilleadh",
+        "word_count": 27,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0146L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I am not",
+            "legoId": "S0088L01",
+            "target": "níl mé",
+            "isGhost": false
+          },
+          {
+            "known": "working",
+            "legoId": "S0146L02",
+            "target": " ag obair",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "any more",
+            "legoId": "S0145L04",
+            "target": " a thuilleadh",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "lego.insert",
+      "row": {
+        "id": "afb4fac4-c0f9-4601-8f5d-5f8561623255",
+        "seed_number": 132,
+        "lego_index": 4,
+        "type": "A",
+        "is_new": false,
+        "known_text": "than",
+        "target_text": "ná",
+        "components": null,
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "lego.insert",
+      "row": {
+        "id": "4e477da7-8153-407a-aa91-dabeeb1359fb",
+        "seed_number": 132,
+        "lego_index": 3,
+        "type": "A",
+        "is_new": true,
+        "known_text": "exciting",
+        "target_text": "corraitheach",
+        "components": null,
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03B01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 1,
+        "known_text": "it is not exciting",
+        "target_text": "níl sé corraitheach",
+        "word_count": 19,
+        "lego_count": 4,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03B02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 2,
+        "known_text": "that was exciting",
+        "target_text": "bhí sé sin corraitheach",
+        "word_count": 23,
+        "lego_count": 3,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03B03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 3,
+        "known_text": "that would be exciting",
+        "target_text": "bheadh sé sin corraitheach",
+        "word_count": 26,
+        "lego_count": 4,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03B04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 4,
+        "known_text": "it is not exciting today",
+        "target_text": "níl sé corraitheach inniu",
+        "word_count": 25,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U01",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 5,
+        "known_text": "I think that it is not exciting",
+        "target_text": "ceapaim nach bhfuil sé corraitheach",
+        "word_count": 35,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U02",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 6,
+        "known_text": "you said that it is not exciting",
+        "target_text": "dúirt tú nach bhfuil sé corraitheach",
+        "word_count": 36,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U03",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 7,
+        "known_text": "that was exciting but I was tired",
+        "target_text": "bhí sé sin corraitheach ach bhí mé tuirseach",
+        "word_count": 44,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U04",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 8,
+        "known_text": "it is interesting and exciting",
+        "target_text": "tá sé suimiúil agus corraitheach",
+        "word_count": 32,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U05",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 9,
+        "known_text": "that would be great and exciting",
+        "target_text": "bheadh sé sin go hiontach agus corraitheach",
+        "word_count": 43,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U06",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 10,
+        "known_text": "that was exciting thank you",
+        "target_text": "bhí sé sin corraitheach go raibh maith agat",
+        "word_count": 43,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U07",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 11,
+        "known_text": "that was exciting last night",
+        "target_text": "bhí sé sin corraitheach aréir",
+        "word_count": 29,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L03U08",
+        "seed_number": 132,
+        "lego_index": 3,
+        "position": 12,
+        "known_text": "unfortunately it is not exciting today",
+        "target_text": "faraor níl sé corraitheach inniu",
+        "word_count": 32,
+        "lego_count": 6,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L03",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "lego.insert",
+      "row": {
+        "id": "a3927f73-62fb-43a3-83c9-9b9eda71ded4",
+        "seed_number": 104,
+        "lego_index": 3,
+        "type": "M",
+        "is_new": false,
+        "known_text": "to do",
+        "target_text": "a dhéanamh",
+        "components": null,
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "target_text_roman": null,
+        "target_lego_id": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0295L01U03",
+        "seed_number": 295,
+        "lego_index": 1,
+        "position": 7,
+        "known_text": "i didn't say that it might be true",
+        "target_text": "ní dúirt mé go bhféadfadh sé a bheith fíor",
+        "word_count": 42,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T15:02:15.990Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": null,
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0295L01",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0280L02U03",
+        "seed_number": 280,
+        "lego_index": 2,
+        "position": 7,
+        "known_text": "I think that it might be the most important job here",
+        "target_text": "ceapaim go bhféadfadh sé a bheith an jab is tábhachtaí anseo",
+        "word_count": 60,
+        "lego_count": 11,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T15:01:22.102Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0280L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0215L01U05",
+        "seed_number": 215,
+        "lego_index": 1,
+        "position": 9,
+        "known_text": "i went there long ago",
+        "target_text": "chuaigh mé ann fadó",
+        "word_count": 19,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:56:37.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0215L01",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0214L01U05",
+        "seed_number": 214,
+        "lego_index": 1,
+        "position": 9,
+        "known_text": "did you enjoy learning Irish long ago",
+        "target_text": "ar bhain tú sult as Gaeilge a fhoghlaim fadó",
+        "word_count": 44,
+        "lego_count": 7,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:56:37.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0214L01",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U14",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 22,
+        "known_text": "nothing seems to have improved since we started and that is something we really need to talk about",
+        "target_text": "Ní cosúil go bhfuil aon rud níos fearr ó thosaigh muid agus sin rud ba cheart dúinn ag caint faoi",
+        "word_count": 98,
+        "lego_count": 18,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "better",
+            "legoId": "S0118L02",
+            "target": " níos fearr",
+            "isGhost": false
+          },
+          {
+            "known": "since",
+            "legoId": "S0146L03",
+            "target": " ó",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " thosaigh",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " muid",
+            "isGhost": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "those",
+            "legoId": "S0085L03",
+            "target": " sin",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " rud",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ba",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cheart",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dúinn",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " caint",
+            "isGhost": true
+          },
+          {
+            "known": "about",
+            "legoId": "S0083L04",
+            "target": " faoi",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U13",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 21,
+        "known_text": "nothing seems to be going well and we need to try something different as soon as we can",
+        "target_text": "Ní cosúil go bhfuil aon rud ag dul go maith agus caithfidh muid rud éigin eile ag iarraidh chomh luath agus is féidir",
+        "word_count": 116,
+        "lego_count": 18,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dul",
+            "isGhost": true
+          },
+          {
+            "known": "well",
+            "legoId": "S0055L04",
+            "target": " go maith",
+            "isGhost": false
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "we must",
+            "legoId": "S0104L01",
+            "target": " caithfidh muid",
+            "isGhost": false
+          },
+          {
+            "known": "something",
+            "legoId": "S0004L01",
+            "target": " rud éigin",
+            "isGhost": false
+          },
+          {
+            "known": "other",
+            "legoId": "S0103L05",
+            "target": " eile",
+            "isGhost": false
+          },
+          {
+            "known": "I'm trying to",
+            "legoId": "S0002L01",
+            "target": " ag iarraidh",
+            "isGhost": false
+          },
+          {
+            "known": "as soon as possible",
+            "legoId": "S0028L02",
+            "target": " chomh luath agus is féidir",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U12",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 20,
+        "known_text": "nothing seems to be getting any better for us no matter what we do",
+        "target_text": "Ní cosúil go bhfuil aon rud ag dul níos fearr dúinn is cuma cad a dhéanann muid",
+        "word_count": 78,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dul",
+            "isGhost": true
+          },
+          {
+            "known": "better",
+            "legoId": "S0029L02",
+            "target": " níos fearr",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dúinn",
+            "isGhost": true
+          },
+          {
+            "known": "are",
+            "legoId": "S0087L01",
+            "target": " is",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cuma",
+            "isGhost": true
+          },
+          {
+            "known": "what",
+            "legoId": "S0078L02",
+            "target": " cad a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dhéanaimid",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U11",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 19,
+        "known_text": "nothing seems to be working and they are not sure what to try next",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair agus nach bhfuil siad cinnte cad ba cheart leo a dhéanamh",
+        "word_count": 95,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "working",
+            "legoId": "S0146L02",
+            "target": " ag obair",
+            "isGhost": false
+          },
+          {
+            "known": "and",
+            "legoId": "S0015L01",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " nach",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhfuil",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " siad",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cinnte",
+            "isGhost": true
+          },
+          {
+            "known": "what",
+            "legoId": "S0068L01",
+            "target": " cad",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ba",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cheart",
+            "isGhost": true
+          },
+          {
+            "known": "with them",
+            "legoId": "S0134L03",
+            "target": " leo",
+            "isGhost": false
+          },
+          {
+            "known": "to do",
+            "legoId": "S0007L02",
+            "target": " a dhéanamh",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U10",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 18,
+        "known_text": "nothing seems more important than speaking the language with other people as often as we can",
+        "target_text": "Ní cosúil go bhfuil aon rud níos tábhachtaí ná an teanga a labhairt le daoine eile chomh minic agus is féidir liom",
+        "word_count": 115,
+        "lego_count": 16,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " níos",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " tábhachtaí",
+            "isGhost": true
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "language",
+            "legoId": "S0101L06",
+            "target": " teanga",
+            "isGhost": false
+          },
+          {
+            "known": "to speak",
+            "legoId": "S0001L02",
+            "target": " a labhairt",
+            "isGhost": false
+          },
+          {
+            "known": "to people",
+            "legoId": "S0088L03",
+            "target": " le daoine",
+            "isGhost": false
+          },
+          {
+            "known": "other",
+            "legoId": "S0103L05",
+            "target": " eile",
+            "isGhost": false
+          },
+          {
+            "known": "as often as possible",
+            "legoId": "S0003L02",
+            "target": " chomh minic agus is féidir",
+            "isGhost": false
+          },
+          {
+            "known": "with me",
+            "legoId": "S0015L05",
+            "target": " liom",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06U09",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 17,
+        "known_text": "nothing seems to be moving forward after everything we have tried to do together",
+        "target_text": "Ní cosúil go bhfuil aon rud ag dul ar aghaidh tar éis dúinn iarracht a dhéanamh gach rud a dhéanamh le chéile",
+        "word_count": 94,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:51.773Z",
+          "known_score": 8,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dul",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ar",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " aghaidh",
+            "isGhost": true
+          },
+          {
+            "known": "after we",
+            "legoId": "S0110L06",
+            "target": " tar éis dúinn",
+            "isGhost": false
+          },
+          {
+            "known": "to try to",
+            "legoId": "S0008L03",
+            "target": " iarracht a dhéanamh",
+            "isGhost": false
+          },
+          {
+            "known": "everything",
+            "legoId": "S0045L02",
+            "target": " gach rud",
+            "isGhost": false
+          },
+          {
+            "known": "to do",
+            "legoId": "S0007L02",
+            "target": " a dhéanamh",
+            "isGhost": false
+          },
+          {
+            "known": "for",
+            "legoId": "S0038L03",
+            "target": " le",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " chéile",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06C02",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 2,
+        "known_text": "seems",
+        "target_text": "cosúil",
+        "word_count": 6,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "cosúil",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06C01",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 1,
+        "known_text": "not",
+        "target_text": "Ní",
+        "word_count": 2,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "Ní",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0146L06B06",
+        "seed_number": 146,
+        "lego_index": 6,
+        "position": 8,
+        "known_text": "nothing seems to be helping us at all",
+        "target_text": "Ní cosúil go bhfuil aon rud ag cabhrú linn ar chor ar bith",
+        "word_count": 58,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "nothing seems",
+            "legoId": "S0146L06",
+            "target": "Ní cosúil",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "that anything is",
+            "legoId": "S0146L01",
+            "target": " go bhfuil aon rud",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cabhrú",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " linn",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ar",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " chor",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ar",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bith",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0134L04U10",
+        "seed_number": 134,
+        "lego_index": 4,
+        "position": 19,
+        "known_text": "I find it much less upsetting when you work with me at something difficult",
+        "target_text": "tá sé níos lú corraitheach nuair a oibríonn tú liom ar rud deacair",
+        "word_count": 66,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:09:55.379Z",
+          "known_score": 7,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "it is",
+            "legoId": "S0049L01",
+            "target": "tá sé",
+            "isGhost": false
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "exciting",
+            "legoId": "S0132L03",
+            "target": " corraitheach",
+            "isGhost": false
+          },
+          {
+            "known": "when you work",
+            "legoId": "S0134L04",
+            "target": " nuair a oibríonn tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "with me",
+            "legoId": "S0015L05",
+            "target": " liom",
+            "isGhost": false
+          },
+          {
+            "known": "at something difficult",
+            "legoId": "S0134L02",
+            "target": " ar rud deacair",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0134L04U09",
+        "seed_number": 134,
+        "lego_index": 4,
+        "position": 18,
+        "known_text": "I feel much less worried when you work with other people who are doing the same thing",
+        "target_text": "mothaím níos lú buartha nuair a oibríonn tú le daoine eile atá ag déanamh an rud céanna",
+        "word_count": 87,
+        "lego_count": 17,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:09:55.379Z",
+          "known_score": 7,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I feel",
+            "legoId": "S0041L02",
+            "target": "mothaím",
+            "isGhost": false
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " buartha",
+            "isGhost": true
+          },
+          {
+            "known": "when you work",
+            "legoId": "S0134L04",
+            "target": " nuair a oibríonn tú",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "to people",
+            "legoId": "S0088L03",
+            "target": " le daoine",
+            "isGhost": false
+          },
+          {
+            "known": "other",
+            "legoId": "S0103L05",
+            "target": " eile",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " atá",
+            "isGhost": true
+          },
+          {
+            "known": "doing",
+            "legoId": "S0114L03",
+            "target": " ag déanamh",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " rud",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " céanna",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05U13",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 23,
+        "known_text": "I don't want to hear what she was saying again because it was less useful than I had hoped",
+        "target_text": "ní mian liom an méid a bhí sise a rá a chloisteáil arís mar bhí sé níos lú úsáideach ná mar a bhí mé ag súil",
+        "word_count": 114,
+        "lego_count": 19,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:01:10.526Z",
+          "known_score": 7,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I don't want",
+            "legoId": "S0019L02",
+            "target": "ní mian liom",
+            "isGhost": false
+          },
+          {
+            "known": "what she was saying",
+            "legoId": "S0132L05",
+            "target": " an méid a bhí sise a rá",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "to hear",
+            "legoId": "S0071L06",
+            "target": " a chloisteáil",
+            "isGhost": false
+          },
+          {
+            "known": "again",
+            "legoId": "S0061L04",
+            "target": " arís",
+            "isGhost": false
+          },
+          {
+            "known": "because",
+            "legoId": "S0022L01",
+            "target": " mar",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sé",
+            "isGhost": true
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "useful",
+            "legoId": "S0028L01",
+            "target": " úsáideach",
+            "isGhost": false
+          },
+          {
+            "known": "than",
+            "legoId": "S0042L01",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "because",
+            "legoId": "S0022L01",
+            "target": " mar",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mé",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ag",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " súil",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05U11",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 21,
+        "known_text": "I didn't agree with what she was saying but it was less upsetting than what she said before",
+        "target_text": "ní aontaím leis an méid a bhí sise a rá ach bhí sé níos lú corraitheach ná an méid a dúirt sí cheana",
+        "word_count": 100,
+        "lego_count": 18,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:01:10.526Z",
+          "known_score": 7,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "ní",
+            "isGhost": true
+          },
+          {
+            "known": "I agree",
+            "legoId": "S0083L01",
+            "target": " aontaím",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " leis",
+            "isGhost": true
+          },
+          {
+            "known": "what she was saying",
+            "legoId": "S0132L05",
+            "target": " an méid a bhí sise a rá",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "but",
+            "legoId": "S0019L01",
+            "target": " ach",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sé",
+            "isGhost": true
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "exciting",
+            "legoId": "S0132L03",
+            "target": " corraitheach",
+            "isGhost": false
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " méid",
+            "isGhost": true
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dúirt",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " cheana",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05U10",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 20,
+        "known_text": "what she was saying was less surprising this time and I was ready to hear it",
+        "target_text": "bhí an méid a bhí sise a rá níos lú iontas an uair dheireanach agus bhí mé réidh leis a chloisteáil",
+        "word_count": 99,
+        "lego_count": 16,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:01:10.526Z",
+          "known_score": 7,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "what she was saying",
+            "legoId": "S0132L05",
+            "target": " an méid a bhí sise a rá",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "surprise",
+            "legoId": "S0130L01",
+            "target": " iontas",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " uair",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " dheireanach",
+            "isGhost": true
+          },
+          {
+            "known": "and",
+            "legoId": "S0112L02",
+            "target": " agus",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " mé",
+            "isGhost": true
+          },
+          {
+            "known": "ready",
+            "legoId": "S0115L03",
+            "target": " réidh",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " leis",
+            "isGhost": true
+          },
+          {
+            "known": "to hear",
+            "legoId": "S0103L06",
+            "target": " a chloisteáil",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 1092,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05C04",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 4,
+        "known_text": "saying",
+        "target_text": "a rá",
+        "word_count": 4,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 3
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "to say",
+            "legoId": "S0102L03",
+            "target": "a rá",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05C03",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 3,
+        "known_text": "she",
+        "target_text": "sise",
+        "word_count": 4,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 2
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "sise",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05C02",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 2,
+        "known_text": "that was",
+        "target_text": "a bhí",
+        "word_count": 5,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": "a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " bhí",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05C01",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 1,
+        "known_text": "what",
+        "target_text": "an méid",
+        "word_count": 7,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " méid",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L05B06",
+        "seed_number": 132,
+        "lego_index": 5,
+        "position": 10,
+        "known_text": "it was less upsetting than what she was saying",
+        "target_text": "bhí sé níos lú corraitheach ná an méid a bhí sise a rá",
+        "word_count": 54,
+        "lego_count": 9,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sé",
+            "isGhost": true
+          },
+          {
+            "known": "less",
+            "legoId": "S0132L02",
+            "target": " níos lú",
+            "isGhost": false
+          },
+          {
+            "known": "exciting",
+            "legoId": "S0132L03",
+            "target": " corraitheach",
+            "isGhost": false
+          },
+          {
+            "known": "than",
+            "legoId": "S0132L04",
+            "target": " ná",
+            "isGhost": false
+          },
+          {
+            "known": "what she was saying",
+            "legoId": "S0132L05",
+            "target": " an méid a bhí sise a rá",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L02U07",
+        "seed_number": 132,
+        "lego_index": 2,
+        "position": 11,
+        "known_text": "a little less, thank you",
+        "target_text": "beagán níos lú, go raibh maith agat",
+        "word_count": 35,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "start",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L02",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0132L01U07",
+        "seed_number": 132,
+        "lego_index": 1,
+        "position": 11,
+        "known_text": "that is definitely enjoyable",
+        "target_text": "tá sé sin spraíúil go cinnte",
+        "word_count": 28,
+        "lego_count": 4,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "job": "#906",
+          "model": "opus",
+          "format": "build_use",
+          "source": "regenerate-debut-practice",
+          "pipeline": "v3"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:50:17.402Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": null,
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": "S0132L01",
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": null,
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0127L02C02",
+        "seed_number": 127,
+        "lego_index": 2,
+        "position": 2,
+        "known_text": "that I wanted",
+        "target_text": "ar theastaigh uaim",
+        "word_count": 18,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:49:23.005Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:35.132Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "about",
+            "legoId": "S0043L01",
+            "target": "ar",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " theastaigh",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " uaim",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0127L02C01",
+        "seed_number": 127,
+        "lego_index": 2,
+        "position": 1,
+        "known_text": "the reason",
+        "target_text": "an fáth",
+        "word_count": 7,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:49:23.005Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:35.132Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " fáth",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0105L01C03",
+        "seed_number": 105,
+        "lego_index": 1,
+        "position": 3,
+        "known_text": "the reason",
+        "target_text": "an fáth",
+        "word_count": 7,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 2
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:47:41.155Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " fáth",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0105L01C02",
+        "seed_number": 105,
+        "lego_index": 1,
+        "position": 2,
+        "known_text": "it",
+        "target_text": "é",
+        "word_count": 1,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:47:41.155Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "é",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0105L01C01",
+        "seed_number": 105,
+        "lego_index": 1,
+        "position": 1,
+        "known_text": "that",
+        "target_text": "Sin",
+        "word_count": 3,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:47:41.155Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "those",
+            "legoId": "S0085L03",
+            "target": "Sin",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0104L05C02",
+        "seed_number": 104,
+        "lego_index": 5,
+        "position": 2,
+        "known_text": "we",
+        "target_text": "muid",
+        "word_count": 4,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "muid",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0104L05C01",
+        "seed_number": 104,
+        "lego_index": 5,
+        "position": 1,
+        "known_text": "that is",
+        "target_text": "atá",
+        "word_count": 3,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "atá",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0104L04C03",
+        "seed_number": 104,
+        "lego_index": 4,
+        "position": 3,
+        "known_text": "what",
+        "target_text": "méid",
+        "word_count": 4,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 2
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "méid",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0104L04C02",
+        "seed_number": 104,
+        "lego_index": 4,
+        "position": 2,
+        "known_text": "the",
+        "target_text": "an",
+        "word_count": 2,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "an",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0104L04C01",
+        "seed_number": 104,
+        "lego_index": 4,
+        "position": 1,
+        "known_text": "on",
+        "target_text": "ar",
+        "word_count": 2,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:46:47.159Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "about",
+            "legoId": "S0043L01",
+            "target": "ar",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0299L01U06",
+      "set": {
+        "target_text": "is mian leis labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0298L03U05",
+      "set": {
+        "known_text": "nothing seems to be left to say",
+        "target_text": "ní cosúil go bhfuil aon rud fágtha agam le rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0284L03U06",
+      "set": {
+        "known_text": "my sister's old friend worked as a teacher long ago",
+        "target_text": "d'oibrigh seanchara mo dheirféar mar mhúinteoir fadó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U05",
+      "set": {
+        "known_text": "your friends who speak Irish worked here long ago",
+        "target_text": "d'oibrigh do chairde a labhraíonn Gaeilge anseo fadó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0278L01U05",
+      "set": {
+        "target_text": "an raibh ort labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0275L01U04",
+      "set": {
+        "target_text": "níor theastaigh uaim imeacht ach bhí sé déanach cheana agus ní raibh mé ábalta fanacht níos faide"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L03U14",
+      "set": {
+        "target_text": "níor theastaigh uaim a chloisteáil go raibh sí ag imeacht i gceann cúpla lá ach is é an fhírinne é"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L03U06",
+      "set": {
+        "target_text": "tá brón orm go gcaithfidh mé imeacht i gceann cúpla lá agus níor theastaigh uaim dul chomh luath sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L02U15",
+      "set": {
+        "target_text": "tá sé tábhachtach imeacht in am agus sin an fáth ar theastaigh uaim labhairt leat faoi sula rachaidh tú"
+      }
+    }
+  ]
+}

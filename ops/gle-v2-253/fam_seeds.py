@@ -1,0 +1,20 @@
+# The 16 seeds past 300 (no LEGOs, no phrases): Eoghan's wording, his slips corrected, 'muid' for 'we'.
+from lib import *
+F='seed-only'
+seed(618,"in my opinion it isn't a very long time","I mo thuairim féin, ní ró-fhada an achar é",F,"Eoghan's sentence and his English; 'mó' corrected to 'mo'")
+seed(538,"I don't want you to think that I don't care","Ní mian liom go gceapfá gur cuma liom",F,"Eoghan's sentence; 'Ní mhian' slip corrected; English follows his Irish (go gceapfá = that you would think)")
+seed(371,None,"chuaigh mé chun scannán a fheiceáil ar an gCéadaoin",F,"Eoghan's")
+seed(575,"it greatly upset us","Ghoill sé go mór orainn",F,"Eoghan's sentence and his English; corraitheach removed")
+seed(576,"we waited a long time and it greatly upset us","Bhí muid ag fanacht le fada agus ghoill sé go mór orainn",F,"Eoghan's, with muid; English follows his, with the 575 wording for 'ghoill sé go mór orainn'")
+seed(511,None,"Bhí roinnt uaireanta imithe sular scaipeadh an scéal ar gach duine san oifig",F,"Eoghan's")
+seed(395,None,"caithfidh muid casadh ar chlé ag an gcéad choirnéal eile",F,"Eoghan's, with muid")
+seed(619,None,"Is fada an lá é ó chonaic muid a chéile",F,"Eoghan's, with muid")
+seed(620,None,"Is an-fhada an lá é ón uair dheireanach a chonaic muid a chéile",F,"Eoghan's, with muid")
+seed(522,None,"aontaímis gur amaideach a bhí sé an fhírinne a insint",F,"Eoghan's")
+seed(562,None,"Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte",F,"Eoghan's first option; his doubled 'ach' dropped and 'shroiceadh' spelt 'shroicheadh' (both asked of him in the list)")
+seed(531,None,"Níl sé fíor gur féidir le duine ar bith an cluiche a bhuachan",F,"Eoghan's")
+seed(433,None,"Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán",F,"Eoghan's")
+seed(434,None,"Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?",F,"Eoghan's")
+seed(315,None,"ceapaim nach raibh sé ar a acmhainn an carr a bhí uaidh a cheannach",F,"Eoghan's; gives 'afford'")
+seed(659,None,"Arbh fhéidir libh ar fad é sin a rá?",F,"Eoghan's 'Arbh fhéidir libh'; 'ar fad' kept for 'you all' as in 529 and 656-667 (the keep-ours style list Kai confirmed 10 Nov)")
+if __name__=='__main__': show(F)
