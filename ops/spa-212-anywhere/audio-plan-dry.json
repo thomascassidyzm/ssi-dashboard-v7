@@ -1,0 +1,20 @@
+[
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'anywhere', as in — 'have you seen my keys anywhere?', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0182L04",
+    "slot": "presentation",
+    "current": "88e62d3d-cde7-499c-84ad-8ff821b3bb23"
+   }
+  ],
+  "legoId": "S0182L04",
+  "dry": {
+   "status": 403,
+   "code": "RERECORD_NOT_PERMITTED",
+   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'anywhere', as in — 'have you seen my keys \" already has a working clip (3fd6d089-07af-46db-b495-ea7d4e1c5510 in xai_eve, ff6026e5-f915-42c7-b3f1-8fab874b3b22 in gfzdpspr5fdp). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+  }
+ }
+]
