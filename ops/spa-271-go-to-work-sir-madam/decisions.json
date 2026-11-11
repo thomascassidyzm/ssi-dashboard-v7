@@ -1,0 +1,11 @@
+{
+ "note": "spa_for_eng job #271 under Kai's rulings of 11 Nov 2026 17:13Z (context #181 record d/ff0787c4). (1) 'go to work' is taught as irse a trabajar (S0128L05U03 'before he has to go to work' = antes de que tenga que irse a trabajar; S0510L01U01 'she's gone to work' = se ha ido a trabajar); 'before going' = antes de irme is precedent at S0181L01U07 and S0182L01U08. Only three rows course-wide paired go to work with al trabajo. (2) S0643L01 (do you want | quiere, the sir/madam seed): three weak 'what she wants' duplicates replaced by phrases that put taught words between 'do you want' and sir/madam: un vaso de agua (S0632L01), algo más (S0360L01), sentarse (S0303L01).",
+ "phrases": {
+  "S0181L04U04": { "target": "Tengo que llevar a mi madre al médico antes de irme a trabajar", "why": "go to work = irse a trabajar (S0128L05U03); before going = antes de irme (S0181L01U07)" },
+  "S0182L01U04": { "known": "I need to take my keys before going to work today", "target": "Necesito llevar mis llaves antes de irme a trabajar hoy", "why": "'take my keys to work' has no taught mapping (to work = trabajar, S0106L03); reworded onto S0182L01U08 'take my keys before I go' = antes de irme + go to work = irse a trabajar" },
+  "S0274L01U08": { "target": "¿Tienes que irte a trabajar esta tarde?", "why": "go to work = irse a trabajar; irte = tú form as in the seed's own tienes que irte (S0274L02)" },
+  "S0643L01U05": { "known": "do you want a glass of water, sir?", "target": "¿quiere usted un vaso de agua, señor?", "why": "replaces 'I wonder what she wants' (dup of B03/U04 'what she wants'); a glass of water = un vaso de agua S0632L01" },
+  "S0643L01U06": { "known": "do you want anything else, madam?", "target": "¿quiere usted algo más, señora?", "why": "replaces 'guess what she wants' (dup); anything else = algo más S0360L01" },
+  "S0643L01U07": { "known": "do you want to sit down, sir?", "target": "¿quiere usted sentarse, señor?", "why": "replaces 'the kind of thing that she wants' (dup family); to sit down = sentarse S0303L01, -se agrees with usted" }
+ }
+}
