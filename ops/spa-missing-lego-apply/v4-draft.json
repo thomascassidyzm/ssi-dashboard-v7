@@ -1,0 +1,5149 @@
+{
+ "course": "spa_for_eng",
+ "job": "#173 v4 — missing-LEGO family, merged (Kai 11 Nov, loosened rule)",
+ "status": "DRAFT — nothing applied",
+ "sources": {
+  "v2_draft": "http://localhost:4317/d/76df4b54",
+  "check_164": "http://localhost:4317/d/e43b039b"
+ },
+ "canon": "origin/main course-methodology-canon.md at cdc2f7ca2 (11 Nov), plus Kai's rule: rewrite where possible, delete only where no valid rewrite exists, empty seeds are fine",
+ "live_read": "2026-11-11: all 55 redrafted rows re-read live through GET /api/production/spa_for_eng/lego/:legoId/basket; text and updated_at identical to v2, 0 changed. Teaching order checked against GET /api/admin/phrase-v4/course/spa_for_eng (668 seeds, 1,476 LEGOs, 16,669 phrases)",
+ "taught_check_method": "each word must have its exact surface form in an earlier seed, an earlier LEGO, or a LEGO up to this one in the same seed. This only finds candidates; every row was also read in full by hand",
+ "rows": [
+  {
+   "lego_id": "S0127L01",
+   "lego": "for = por",
+   "seed": 127,
+   "row_id": "spa_for_eng:S0127L01U06",
+   "action": "DELETE",
+   "live": {
+    "en": "What he is doing for us today is very important",
+    "es": "Lo que está haciendo para nosotros hoy es muy importante",
+    "role": "use",
+    "updated_at": "2026-10-12T11:36:23.998397+00:00",
+    "position": 13
+   },
+   "proposed": null,
+   "reason": "por vs para after 'doing for my friend' is a judgement call that could trip the learner (ZUT doubt)",
+   "change_number": 1,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "Lacks LEGO (para, not por). The #348 fix 'por nosotros' still fails P1: nosotros is first taught at seed 138; no taught pronoun fits 'por ___' at seed 127. Basket keeps 7 USE phrases.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Deletion is unnecessary: a taught noun phrase can replace untaught nosotros; a pronoun is not required after por.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "What he is doing for my friend today is very important",
+    "es": "Lo que está haciendo por mi amigo hoy es muy importante",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0145L01",
+   "lego": "already = ya",
+   "seed": 145,
+   "row_id": "spa_for_eng:S0145L01B01",
+   "action": "DELETE",
+   "live": {
+    "en": "Any more",
+    "es": "ya",
+    "role": "build",
+    "updated_at": "2026-10-28T18:40:43.252469+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'ya' glossed 'Any more' — wrong sense and a bare LEGO is not a build (P3). Kai ruled 11 Nov; B02 'Not any more | Ya no' stays.",
+   "change_number": 2,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to take my things to my friend before I go",
+    "es": "Quiero llevar mis cosas a mi amigo antes de ir",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:15.508523+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I want to take my keys to my friend before I go",
+    "es": "Quiero llevar mis llaves a mi amigo antes de irme",
+    "role": "use"
+   },
+   "reason": "#348: restores LEGO mis llaves (P17); 'antes de ir' → 'antes de irme' (before I go).",
+   "change_number": 3,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U08",
+   "action": "REWRITE",
+   "live": {
+    "en": "I need to take my things from the house before leaving",
+    "es": "Necesito llevar mis cosas de la casa antes de ir",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:08.999672+00:00",
+    "position": 15
+   },
+   "proposed": {
+    "en": "I need to take my keys before I go",
+    "es": "Necesito llevar mis llaves antes de irme",
+    "role": "use"
+   },
+   "reason": "#348: restores LEGO; 'antes de ir' did not mean 'before leaving'; drops awkward 'de la casa'. English 'before leaving' → 'before I go' (leaving is first taught at s590; matches U01).",
+   "change_number": 4,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U09",
+   "action": "REWRITE",
+   "live": {
+    "en": "I wanted to tell my ideas to my friends but it was difficult",
+    "es": "Quería decir mis ideas a mis amigos pero era difícil",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:18.929368+00:00",
+    "position": 16
+   },
+   "proposed": {
+    "en": "I wanted to give you my keys but I didn't have time",
+    "es": "Quería darte mis llaves pero no tuve tiempo",
+    "role": "use"
+   },
+   "reason": "#348 proposed 'Quería encontrar mis llaves pero era difícil'; changed because U12 and B08 already use the find-my-keys frame (P9). darte (s54) and no tuve tiempo (s178) are taught.",
+   "change_number": 5,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "spa_for_eng:S0532L02B03",
+   "action": "DELETE",
+   "live": {
+    "en": "they thought that they're lucky",
+    "es": "pensaban que tenían suerte",
+    "role": "build",
+    "updated_at": "2026-11-05T00:48:35.791785+00:00",
+    "position": 3
+   },
+   "proposed": null,
+   "reason": "#348: never held tengan suerte (indicative tenían); English ungrammatical.",
+   "change_number": 6,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0552L01",
+   "lego": "at the other end of the village = al otro extremo del pueblo",
+   "seed": 552,
+   "row_id": "spa_for_eng:S0552L01U01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I lived at the other end of the village years ago",
+    "es": "vivía en el otro extremo del pueblo hace años",
+    "role": "use",
+    "updated_at": "2026-11-05T00:55:37.705087+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I lived at the other end of the village years ago",
+    "es": "vivía al otro extremo del pueblo hace años",
+    "role": "use"
+   },
+   "reason": "#348: en el otro extremo → al otro extremo (the LEGO; the seed's own locative use, 'la iglesia al otro extremo del pueblo').",
+   "change_number": 7,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0552L01",
+   "lego": "at the other end of the village = al otro extremo del pueblo",
+   "seed": 552,
+   "row_id": "spa_for_eng:S0552L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "she's gone to look for somewhere safe to park the car at the other end of the village",
+    "es": "se ha ido a buscar un lugar seguro para aparcar el coche en el otro extremo del pueblo",
+    "role": "use",
+    "updated_at": "2026-11-05T00:55:46.567032+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "she's gone to look for somewhere safe to park the car at the other end of the village",
+    "es": "se ha ido a buscar un lugar seguro para aparcar el coche al otro extremo del pueblo",
+    "role": "use"
+   },
+   "reason": "#348: as U01.",
+   "change_number": 8,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0552L01",
+   "lego": "at the other end of the village = al otro extremo del pueblo",
+   "seed": 552,
+   "row_id": "spa_for_eng:S0552L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I found the perfect house at the other end of the village",
+    "es": "encontré la casa perfecta en el otro extremo del pueblo",
+    "role": "use",
+    "updated_at": "2026-11-05T00:55:50.905045+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "I found the perfect house at the other end of the village",
+    "es": "encontré la casa perfecta al otro extremo del pueblo",
+    "role": "use"
+   },
+   "reason": "#348: as U01.",
+   "change_number": 9,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0145L01",
+   "lego": "already = ya",
+   "seed": 145,
+   "row_id": "NEW (S0145L01 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I'm not tired any more",
+    "es": "Ya no estoy cansado",
+    "role": "build"
+   },
+   "reason": "Soften ya no: short build, only taught material (cansado s39). Place after B02.",
+   "change_number": 10,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0145L01",
+   "lego": "already = ya",
+   "seed": 145,
+   "row_id": "NEW (S0145L01 NEW-B2)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I don't want to any more",
+    "es": "Ya no quiero",
+    "role": "build"
+   },
+   "reason": "Soften ya no: short fragment build (allowed as BUILD, P7). Place after NEW-B1.",
+   "change_number": 11,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0145L01",
+   "lego": "already = ya",
+   "seed": 145,
+   "row_id": "NEW (S0145L01 NEW-B3)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "You're not happy any more",
+    "es": "Ya no estás contento",
+    "role": "build"
+   },
+   "reason": "Soften ya no: builds straight to the seed (contento is this seed's other LEGO). Place after NEW-B2, before B03 'Ya sé'.",
+   "change_number": 12,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "it was",
+    "es": "fue",
+    "role": "build",
+    "updated_at": "2026-10-28T18:40:34.828045+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'fue' — part of LEGO (P17).",
+   "change_number": 13,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was very",
+    "es": "Fue muy",
+    "role": "build",
+    "updated_at": "2026-10-12T11:34:51.034068+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "Your idea was very good",
+    "es": "Tu idea fue muy buena",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; buena taught s123.",
+   "change_number": 14,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02B04",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was interesting",
+    "es": "Fue interesante",
+    "role": "build",
+    "updated_at": "2026-10-12T11:34:51.12488+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "Your idea was interesting",
+    "es": "Tu idea fue interesante",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 15,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was a good idea",
+    "es": "Fue una buena idea",
+    "role": "build",
+    "updated_at": "2026-10-12T11:34:23.429737+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "Your idea was very useful",
+    "es": "Tu idea fue muy útil",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; útil s28.",
+   "change_number": 16,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02B06",
+   "action": "REWRITE",
+   "live": {
+    "en": "It wasn't possible",
+    "es": "No fue posible",
+    "role": "build",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "Your idea wasn't very good",
+    "es": "Tu idea no fue muy buena",
+    "role": "build"
+   },
+   "reason": "short negative build; no inside the LEGO is still contained (K49)",
+   "change_number": 17,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "'No fue posible' — no LEGO; 'your idea wasn't possible' is not natural.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "A simple negative build is available; K49 permits no between idea and fue. The impossible-idea argument does not justify deleting the slot.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U01",
+   "action": "REWRITE",
+   "live": {
+    "en": "That was very interesting and I wasn't expecting it",
+    "es": "Eso fue muy interesante y no lo esperaba",
+    "role": "use",
+    "updated_at": "2026-10-12T11:26:48.292633+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "Your idea was very interesting and I wasn't expecting it",
+    "es": "Tu idea fue muy interesante y no lo esperaba",
+    "role": "use"
+   },
+   "reason": "Taught frame (s112) fits around LEGO.",
+   "change_number": 18,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "Unfortunately it wasn't possible to do what I wanted today",
+    "es": "Desafortunadamente, no fue posible hacer lo que quería hoy",
+    "role": "use",
+    "updated_at": "2026-10-29T13:04:05.164398+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "Unfortunately, your idea wasn't very useful",
+    "es": "Desafortunadamente, tu idea no fue muy útil",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 19,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The original impossibility frame need not be preserved literally; a short taught-word rewrite retains useful negative practice.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U03",
+   "action": "DELETE",
+   "live": {
+    "en": "It was very interesting what you said about this language yesterday",
+    "es": "Fue muy interesante lo que dijiste sobre este idioma ayer",
+    "role": "use",
+    "updated_at": "2026-10-12T11:34:54.14539+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "'like what you said…' is clumsy",
+   "change_number": 20,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The idea can be the subject of fue interesante; the claim that this frame cannot take it is false.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "Your idea was very interesting, like what you said about this language yesterday",
+    "es": "Tu idea fue muy interesante, como lo que dijiste sobre este idioma ayer",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "That was very interesting what you said about learning Spanish",
+    "es": "Eso fue muy interesante lo que dijiste sobre aprender español",
+    "role": "use",
+    "updated_at": "2026-10-12T11:34:59.161377+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "Your idea was very good for learning Spanish",
+    "es": "Tu idea fue muy buena para aprender español",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 21,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "A direct idea-plus-learning rewrite is available; missing containment alone does not justify deletion.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think it was a good idea to talk more with your friend",
+    "es": "Creo que fue una buena idea hablar más con tu amigo",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:00.734281+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "I think your idea was to talk more with your friend",
+    "es": "Creo que tu idea fue hablar más con tu amigo",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 22,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The infinitive clause can be the complement of tu idea fue; this is a straightforward repair.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was very difficult but I think you're doing well",
+    "es": "Fue muy difícil pero creo que lo estás haciendo bien",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:14.364383+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "Your idea was very good, but it was difficult to do what I wanted",
+    "es": "Tu idea fue muy buena, pero fue difícil hacer lo que quería",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 23,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The difficulty can remain in a second clause while the idea supplies the taught subject and verb.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think it was very interesting when I started learning Spanish",
+    "es": "Creo que fue muy interesante cuando empecé a aprender español",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:20.205566+00:00",
+    "position": 14
+   },
+   "proposed": {
+    "en": "I think your idea was very useful when I started learning Spanish",
+    "es": "Creo que tu idea fue muy útil cuando empecé a aprender español",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 24,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The temporal frame accepts the LEGO with a natural adjective; deletion is unnecessary.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U09",
+   "action": "DELETE",
+   "live": {
+    "en": "I think it was a good idea to practise Spanish here with you",
+    "es": "Creo que fue una buena idea practicar español aquí contigo",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:16.934891+00:00",
+    "position": 16
+   },
+   "proposed": null,
+   "reason": "near-twin of #22 ('your idea was to…')",
+   "change_number": 25,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "An infinitival complement preserves the practising-here frame and the whole LEGO.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "I think your idea was to practise Spanish here with you",
+    "es": "Creo que tu idea fue practicar español aquí contigo",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U10",
+   "action": "DELETE",
+   "live": {
+    "en": "It was very interesting and I think I'm doing it well",
+    "es": "Fue muy interesante y creo que lo estoy haciendo bien",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:11.573254+00:00",
+    "position": 17
+   },
+   "proposed": null,
+   "reason": "'I think I'm doing it well' after 'your idea' is a weak link",
+   "change_number": 26,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take 'your idea'.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Simply replacing the subject restores the LEGO; the doing-it-well clause remains natural.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "Your idea was good and I think I'm doing it well",
+    "es": "Tu idea fue buena y creo que lo estoy haciendo bien",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was interesting but it wasn't possible to do what I wanted",
+    "es": "Fue interesante pero no fue posible hacer lo que quería",
+    "role": "use",
+    "updated_at": "2026-10-12T11:34:50.459315+00:00",
+    "position": 18
+   },
+   "proposed": {
+    "en": "Your idea was interesting but it wasn't possible",
+    "es": "Tu idea fue interesante pero no fue posible",
+    "role": "use"
+   },
+   "reason": "Frame fits around LEGO (hacerlo not taught until s173).",
+   "change_number": 27,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U12",
+   "action": "REWRITE",
+   "live": {
+    "en": "That was very interesting and I want to hear more about it now",
+    "es": "Eso fue muy interesante y quiero escuchar más sobre eso ahora",
+    "role": "use",
+    "updated_at": "2026-10-12T11:34:58.207318+00:00",
+    "position": 19
+   },
+   "proposed": {
+    "en": "Your idea was very good and I want to hear more about it",
+    "es": "Tu idea fue muy buena y quiero escuchar más sobre eso",
+    "role": "use"
+   },
+   "reason": "Frame fits around LEGO; drops 'ahora'.",
+   "change_number": 28,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0125L02",
+   "lego": "your idea was = tu idea fue",
+   "seed": 125,
+   "row_id": "spa_for_eng:S0125L02U13",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was a good idea and I want to keep doing this with you",
+    "es": "Fue una buena idea y quiero seguir haciendo esto contigo",
+    "role": "use",
+    "updated_at": "2026-10-29T13:04:05.244117+00:00",
+    "position": 20
+   },
+   "proposed": {
+    "en": "Your idea was very useful and I want to keep doing this with you",
+    "es": "Tu idea fue muy útil y quiero seguir haciendo esto contigo",
+    "role": "use"
+   },
+   "reason": "Frame fits around LEGO.",
+   "change_number": 29,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "it was",
+    "es": "era",
+    "role": "build",
+    "updated_at": "2026-10-12T17:28:26.323382+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'era' — part of LEGO.",
+   "change_number": 30,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I thought it was a good idea",
+    "es": "Pensé que era una buena idea",
+    "role": "build",
+    "updated_at": "2026-10-13T00:52:01.321396+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "That wasn't a good idea",
+    "es": "Eso no era una buena idea",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; buena idea s123.",
+   "change_number": 31,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02B04",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was very difficult",
+    "es": "Era muy difícil",
+    "role": "build",
+    "updated_at": "2026-10-13T00:52:16.720484+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "That wasn't very difficult",
+    "es": "Eso no era muy difícil",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 32,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was something I wanted to do",
+    "es": "Era algo que quería hacer",
+    "role": "build",
+    "updated_at": "2026-10-13T00:52:16.490712+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "That wasn't something I wanted to do",
+    "es": "Eso no era algo que quería hacer",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 33,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I thought it was a good idea to start speaking Spanish every day",
+    "es": "Pensé que era una buena idea empezar a hablar español todos los días",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:00.919365+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I thought that wasn't a good idea, but now I want to speak Spanish often",
+    "es": "Pensé que eso no era una buena idea, pero ahora quiero hablar español a menudo",
+    "role": "use"
+   },
+   "reason": "original's 'every day' / todos los días is untaught at 151 (every 533, días 274); 'often' is taught; avoids a 3rd 'for learning Spanish' row",
+   "change_number": 34,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame 'I thought it was' does not take eso no era.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Pensé que can introduce eso no era perfectly naturally; the draft's claimed incompatibility is false.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was very difficult to learn Spanish but now it is easier",
+    "es": "Era muy difícil aprender español pero ahora es más fácil",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:21.254583+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "That wasn't easy before, but now it's easier",
+    "es": "Eso no era fácil antes, pero ahora es más fácil",
+    "role": "use"
+   },
+   "reason": "checker's 'not very difficult, but now easier' has a weak contrast; easy/easier is a real one",
+   "change_number": 35,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; negating it breaks the sentence's sense.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Not very difficult and now easier are compatible meanings; the simple negative rewrite is coherent.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was very important to try to speak Spanish often",
+    "es": "Era muy importante intentar hablar español a menudo",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:21.394202+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "That wasn't very important for learning Spanish",
+    "es": "Eso no era muy importante para aprender español",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 36,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The sentence accepts a negative subject clause; no need to discard this practice row.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was very good for learning Spanish quickly",
+    "es": "Era muy bueno para aprender español rápidamente",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:21.04157+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "That wasn't very good for learning Spanish quickly",
+    "es": "Eso no era muy bueno para aprender español rápidamente",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 37,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "A direct negative rewrite contains the LEGO and keeps the learning-quickly frame.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "It's interesting that you want to learn Spanish with me",
+    "es": "Es interesante que quieras aprender español conmigo",
+    "role": "use",
+    "updated_at": "2026-10-29T13:04:05.997714+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "That wasn't difficult because I was learning Spanish with you",
+    "es": "Eso no era difícil porque estaba aprendiendo español contigo",
+    "role": "use"
+   },
+   "reason": "checker's 'wasn't interesting, but I want to learn Spanish with you' does not hang together",
+   "change_number": 38,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (present 'es interesante que').",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A natural two-clause rewrite with taught words is available; present es in the old row is not grounds to delete the row.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U08",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was something I had wanted to do since I started learning",
+    "es": "Era algo que quería hacer desde que empecé a aprender",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:16.353102+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "That wasn't something I wanted to do when I started learning",
+    "es": "Eso no era algo que quería hacer cuando empecé a aprender",
+    "role": "use"
+   },
+   "reason": "Frame fits around LEGO.",
+   "change_number": 39,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U09",
+   "action": "DELETE",
+   "live": {
+    "en": "It was the same thing we were talking about before",
+    "es": "Era lo mismo de lo que estábamos hablando antes",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:20.140745+00:00",
+    "position": 14
+   },
+   "proposed": null,
+   "reason": "leans on seed 143's 'lo mismo de lo que' wording, which is doubtful Spanish; delete rather than copy it",
+   "change_number": 40,
+   "check_164": "UNSURE",
+   "v3_status": "KEPT v2 (UNSURE resolved)",
+   "basis": "UNSURE resolved: KEEP v2",
+   "check_164_reason": "The comparative lo mismo de lo que / the same thing as we were talking about is awkward. I would replace it with a clean relative clause, but have not established that this comparative is categorically ungrammatical.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "That wasn't the same thing as we were talking about earlier",
+    "es": "Eso no era lo mismo de lo que estábamos hablando antes",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U10",
+   "action": "REWRITE",
+   "live": {
+    "en": "That was everything I wanted to do today",
+    "es": "Eso era todo lo que quería hacer hoy",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:24.523859+00:00",
+    "position": 15
+   },
+   "proposed": {
+    "en": "That wasn't everything I wanted to do today",
+    "es": "Eso no era todo lo que quería hacer hoy",
+    "role": "use"
+   },
+   "reason": "Adds the missing 'no'.",
+   "change_number": 41,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was something I didn't expect when I started learning",
+    "es": "Era algo que no esperaba cuando empecé a aprender",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:15.67726+00:00",
+    "position": 16
+   },
+   "proposed": {
+    "en": "That wasn't what I was expecting when I started learning",
+    "es": "Eso no era lo que esperaba cuando empecé a aprender",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 42,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; overlaps rewritten U08.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Not expecting and not wanting are different frames; rewritten U08 does not make this row redundant.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U12",
+   "action": "REWRITE",
+   "live": {
+    "en": "I thought it was a good idea to practise speaking with another person",
+    "es": "Pensé que era una buena idea practicar hablando con otra persona",
+    "role": "use",
+    "updated_at": "2026-10-30T20:23:28.331522+00:00",
+    "position": 17
+   },
+   "proposed": {
+    "en": "That wasn't the best way to practise Spanish",
+    "es": "Eso no era la mejor manera de practicar español",
+    "role": "use"
+   },
+   "reason": "checker's 'with another person' uses English untaught at 151 (another 320, person 388)",
+   "change_number": 43,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A simple relative-clause rewrite retains the practice-with-another-person material.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U13",
+   "action": "DELETE",
+   "live": {
+    "en": "It was very interesting and I didn't expect it",
+    "es": "Era muy interesante y no lo esperaba",
+    "role": "use",
+    "updated_at": "2026-10-13T00:52:24.154567+00:00",
+    "position": 18
+   },
+   "proposed": null,
+   "reason": "the logic is shaky ('wasn't interesting, and I wasn't expecting that')",
+   "change_number": 44,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Adding eso no before era is a direct grammatical repair; the expecting clause can stay.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "That wasn't very interesting, and I wasn't expecting that",
+    "es": "Eso no era muy interesante, y no lo esperaba",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0151L02",
+   "lego": "that was not = eso no era",
+   "seed": 151,
+   "row_id": "spa_for_eng:S0151L02U15",
+   "action": "REWRITE",
+   "live": {
+    "en": "It was something important I wanted to think about carefully",
+    "es": "Era algo importante en lo que quería pensar con cuidado",
+    "role": "use",
+    "updated_at": "2026-10-29T12:27:59.028129+00:00",
+    "position": 20
+   },
+   "proposed": {
+    "en": "That wasn't something I wanted to think about carefully",
+    "es": "Eso no era algo en lo que quería pensar con cuidado",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 45,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; negated version unnatural.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The negative version is natural Spanish and English; the draft's naturalness objection is unsupported.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01B03",
+   "action": "DELETE",
+   "live": {
+    "en": "My friends",
+    "es": "Mis amigos",
+    "role": "build",
+    "updated_at": "2026-10-13T01:07:20.825546+00:00",
+    "position": 4
+   },
+   "proposed": null,
+   "reason": "'Mis amigos' — no LEGO.",
+   "change_number": 46,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01B04",
+   "action": "DELETE",
+   "live": {
+    "en": "My things",
+    "es": "Mis cosas",
+    "role": "build",
+    "updated_at": "2026-10-13T01:07:26.054538+00:00",
+    "position": 5
+   },
+   "proposed": null,
+   "reason": "'Mis cosas' — no LEGO.",
+   "change_number": 47,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to take my things",
+    "es": "Quiero llevar mis cosas",
+    "role": "build",
+    "updated_at": "2026-10-13T01:07:13.718243+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I want to take my keys",
+    "es": "Quiero llevar mis llaves",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 48,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I am going to tell my friends what I think about this",
+    "es": "Voy a decir a mis amigos lo que pienso sobre esto",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:01.064324+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I'm going to tell my friends that I can't find my keys",
+    "es": "Voy a decir a mis amigos que no puedo encontrar mis llaves",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 49,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; frame cannot take keys.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Keys cannot be the recipient of decir, but they can be the topic of the embedded clause; an easy repair exists.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U03",
+   "action": "DELETE",
+   "live": {
+    "en": "I think my ideas are very interesting and I want to talk about them",
+    "es": "Creo que mis ideas son muy interesantes y quiero hablar de eso",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:12.61541+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "'I think I need my keys to go home' is flat",
+   "change_number": 50,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (ideas).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "The keys/location frame provides a simple complete alternative; deleting for lack of the noun alone is insufficient.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "I think I need my keys to go home",
+    "es": "Creo que necesito mis llaves para ir a casa",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I need to take my things to work today",
+    "es": "Necesito llevar mis cosas al trabajo hoy",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:11.090407+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "I need to take my keys to work today",
+    "es": "Necesito llevar mis llaves al trabajo hoy",
+    "role": "use"
+   },
+   "reason": "cosas → llaves.",
+   "change_number": 51,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "My friend was saying something very interesting about my ideas yesterday",
+    "es": "Mi amigo estaba diciendo algo muy interesante sobre mis ideas ayer",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:21.079293+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "My friend was trying to find my keys yesterday",
+    "es": "Mi amigo estaba intentando encontrar mis llaves ayer",
+    "role": "use"
+   },
+   "reason": "'talking about my keys' reads oddly; tenía and podía are untaught at 182",
+   "change_number": 52,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (ideas).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Replacing ideas by keys is grammatical and natural. An unusual topic is not a defect under P14.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to talk about my ideas with my friends this evening",
+    "es": "Quiero hablar de mis ideas con mis amigos esta tarde",
+    "role": "use",
+    "updated_at": "2026-10-29T12:37:22.639383+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "I need my keys because I'm going to see my friends this evening",
+    "es": "Necesito mis llaves porque voy a ver a mis amigos esta tarde",
+    "role": "use"
+   },
+   "reason": "'talk about my keys with my friends' is odd; buscar (510) and salir (349) are untaught",
+   "change_number": 53,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (ideas).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Replacing ideas by keys yields a valid sentence; discussing keys with friends is merely an uncommon situation, not unnatural language.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U07",
+   "action": "DELETE",
+   "live": {
+    "en": "I am going to take my things to my mother before going to the doctor",
+    "es": "Voy a llevar mis cosas a mi madre antes de ir al médico",
+    "role": "use",
+    "updated_at": "2026-10-13T01:07:00.981704+00:00",
+    "position": 14
+   },
+   "proposed": null,
+   "reason": "No LEGO; with keys it repeats U01's frame.",
+   "change_number": 54,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0182L01",
+   "lego": "my keys = mis llaves",
+   "seed": 182,
+   "row_id": "spa_for_eng:S0182L01U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "I would like to take my things to the restaurant tonight",
+    "es": "Me gustaría llevar mis cosas al restaurante esta noche",
+    "role": "use",
+    "updated_at": "2026-10-30T22:26:42.368974+00:00",
+    "position": 18
+   },
+   "proposed": {
+    "en": "I would like to find my keys before going to the restaurant tonight",
+    "es": "Me gustaría encontrar mis llaves antes de ir al restaurante esta noche",
+    "role": "use"
+   },
+   "reason": "the basket already has four rows of 'take my keys'",
+   "change_number": 55,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; 'take my keys to the restaurant' is odd.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Taking keys to a restaurant is ordinary when going out; oddness of the situation would not justify deletion anyway (P14).",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "to leave",
+    "es": "irte",
+    "role": "build",
+    "updated_at": "2026-10-12T17:04:40.539549+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'irte' — part of LEGO.",
+   "change_number": 56,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "When are you planning to leave because I need to know soon?",
+    "es": "¿Cuándo piensas irte porque necesito saber pronto?",
+    "role": "use",
+    "updated_at": "2026-10-13T01:40:09.81828+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I need to know if you have to leave soon",
+    "es": "Necesito saber si tienes que irte pronto",
+    "role": "use"
+   },
+   "reason": "keeps the original's need-to-know-soon sense; saberlo is untaught",
+   "change_number": 57,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; garbled (two questions joined with porque).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "The garbled because-question is repairable as one natural question with the whole LEGO.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think you should leave early if you want to get there on time",
+    "es": "Creo que deberías irte temprano si quieres llegar allí a tiempo",
+    "role": "use",
+    "updated_at": "2026-10-29T12:48:03.452088+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I think you have to leave early if you want to get there on time",
+    "es": "Creo que tienes que irte temprano si quieres llegar allí a tiempo",
+    "role": "use"
+   },
+   "reason": "deberías → tienes que.",
+   "change_number": 58,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "She wants to know why you want to leave so early today",
+    "es": "Ella quiere saber por qué quieres irte tan temprano hoy",
+    "role": "use",
+    "updated_at": "2026-10-13T01:40:09.442721+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "She wants to know why you have to leave so early today",
+    "es": "Ella quiere saber por qué tienes que irte tan temprano hoy",
+    "role": "use"
+   },
+   "reason": "quieres → tienes que.",
+   "change_number": 59,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think you should leave now because it is getting very late",
+    "es": "Creo que deberías irte ahora porque se está haciendo muy tarde",
+    "role": "use",
+    "updated_at": "2026-10-29T12:47:58.872665+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "I'm sorry, but you have to leave now because it's very late",
+    "es": "Lo siento, pero tienes que irte ahora porque es muy tarde",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; s139 frame; drops untaught 'se está haciendo'.",
+   "change_number": 60,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "She said she wants to talk to you before you leave today",
+    "es": "Ella dijo que quiere hablar contigo antes de irte hoy",
+    "role": "use",
+    "updated_at": "2026-10-13T01:40:05.475615+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "She said she wants to talk to you because you have to leave today",
+    "es": "Ella dijo que quiere hablar contigo porque tienes que irte hoy",
+    "role": "use"
+   },
+   "reason": "checker's 'leave before talking to me' changes the meaning and reads oddly",
+   "change_number": 61,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A reporting frame can contain the obligation; the absence of tienes que in the old sentence does not require deletion.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "Can you tell me when you are planning to leave?",
+    "es": "¿Puedes decirme cuándo piensas irte?",
+    "role": "use",
+    "updated_at": "2026-10-13T01:39:34.111744+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "Can you tell me when you have to leave?",
+    "es": "¿Puedes decirme cuándo tienes que irte?",
+    "role": "use"
+   },
+   "reason": "piensas → tienes que.",
+   "change_number": 62,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U08",
+   "action": "DELETE",
+   "live": {
+    "en": "I think you need to leave soon if you want to get there on time",
+    "es": "Creo que necesitas irte pronto si quieres llegar allí a tiempo",
+    "role": "use",
+    "updated_at": "2026-10-29T12:48:04.181002+00:00",
+    "position": 13
+   },
+   "proposed": null,
+   "reason": "No LEGO; would duplicate U03.",
+   "change_number": 63,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U09",
+   "action": "REWRITE",
+   "live": {
+    "en": "Do you want to leave before or after we talk about this problem?",
+    "es": "¿Quieres irte antes o después de que hablemos de este problema?",
+    "role": "use",
+    "updated_at": "2026-10-13T01:39:48.523316+00:00",
+    "position": 14
+   },
+   "proposed": {
+    "en": "Do you have to leave before or after we talk about this problem?",
+    "es": "¿Tienes que irte antes o después de que hablemos de este problema?",
+    "role": "use"
+   },
+   "reason": "quieres → tienes que.",
+   "change_number": 64,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U10",
+   "action": "DELETE",
+   "live": {
+    "en": "He wants to know if you are going to leave before or after dinner",
+    "es": "Él quiere saber si vas a irte antes o después de comer",
+    "role": "use",
+    "updated_at": "2026-10-13T01:39:52.217888+00:00",
+    "position": 15
+   },
+   "proposed": null,
+   "reason": "No LEGO; would duplicate U09's before-or-after frame.",
+   "change_number": 65,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U12",
+   "action": "REWRITE",
+   "live": {
+    "en": "Do you really want to leave now or would you like a little more time?",
+    "es": "¿De verdad quieres irte ahora o te gustaría un poco más de tiempo?",
+    "role": "use",
+    "updated_at": "2026-11-03T00:02:08.87221+00:00",
+    "position": 17
+   },
+   "proposed": {
+    "en": "Do you have to leave now or would you like a little more time?",
+    "es": "¿Tienes que irte ahora o te gustaría un poco más de tiempo?",
+    "role": "use"
+   },
+   "reason": "quieres → tienes que; drops de verdad/really (English 'really' first taught s496).",
+   "change_number": 66,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U13",
+   "action": "REWRITE",
+   "live": {
+    "en": "I am not sure if you want to leave or if you want to stay a bit longer",
+    "es": "No sé si quieres irte o si quieres estar aquí un poco más",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:23.091296+00:00",
+    "position": 18
+   },
+   "proposed": {
+    "en": "I don't know if you have to leave now or later",
+    "es": "No sé si tienes que irte ahora o más tarde",
+    "role": "use"
+   },
+   "reason": "checker's 'a little longer' uses English untaught at 274 (longer 275); 'stay' is untaught too",
+   "change_number": 67,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; 'stay' prompts estar aquí (stay not yet taught at s274).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Removing the untaught stay gloss is easy; be here already expresses the existing Spanish faithfully.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U14",
+   "action": "REWRITE",
+   "live": {
+    "en": "She told me she wants to ask you something before you leave",
+    "es": "Ella me dijo que quiere preguntarte algo antes de irte",
+    "role": "use",
+    "updated_at": "2026-10-13T01:40:08.254185+00:00",
+    "position": 19
+   },
+   "proposed": {
+    "en": "She told me she wants to ask you something, but you have to leave",
+    "es": "Ella me dijo que quiere preguntarte algo, pero tienes que irte",
+    "role": "use"
+   },
+   "reason": "checker's wording plus the original 'told me'",
+   "change_number": 68,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A short contrast clause restores the LEGO without needing an untaught departure construction.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0274L02",
+   "lego": "you have to leave = tienes que irte",
+   "seed": 274,
+   "row_id": "spa_for_eng:S0274L02U15",
+   "action": "REWRITE",
+   "live": {
+    "en": "Do you think it is a good idea to leave now or should you wait a bit?",
+    "es": "¿Crees que es una buena idea irte ahora o deberías esperar un poco?",
+    "role": "use",
+    "updated_at": "2026-11-02T13:26:07.052538+00:00",
+    "position": 20
+   },
+   "proposed": {
+    "en": "Do you think you have to leave now, or can you wait a bit?",
+    "es": "¿Crees que tienes que irte ahora o puedes esperar un poco?",
+    "role": "use"
+   },
+   "reason": "keeps the original 'do you think' so it is not a twin of v2 U12 ('Do you have to leave now or…')",
+   "change_number": 69,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A natural departure-or-wait question is a simple rewrite.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01B01",
+   "action": "DELETE",
+   "live": {
+    "en": "To wake ourselves up",
+    "es": "Despertarnos",
+    "role": "build",
+    "updated_at": "2026-10-12T11:25:00.01491+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'Despertarnos' — part of LEGO.",
+   "change_number": 70,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "We were hoping to wake up as soon as possible",
+    "es": "Esperábamos despertarnos lo antes posible",
+    "role": "build",
+    "updated_at": "2026-10-12T11:25:07.408385+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "We don't want to wake in the middle of the night",
+    "es": "No queremos despertarnos en medio de la noche",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 71,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01B04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think we need to wake up to learn",
+    "es": "Creo que necesitamos despertarnos para aprender",
+    "role": "build",
+    "updated_at": "2026-10-29T12:11:42.567683+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "We don't need to wake in the middle of the night",
+    "es": "No necesitamos despertarnos en medio de la noche",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 72,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "We just need to wake up to practise speaking with another person",
+    "es": "Solo necesitamos despertarnos para practicar hablando con otra persona",
+    "role": "build",
+    "updated_at": "2026-10-30T20:23:28.331522+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "We need to wake in the middle of the night",
+    "es": "Necesitamos despertarnos en medio de la noche",
+    "role": "build"
+   },
+   "reason": "the checker's 'We were hoping not to wake…' would twin v2 U15; this pairs with v2 B04 'We don't need to…' as positive and negative builds. tenemos que is untaught at 108",
+   "change_number": 73,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "REWRITE",
+   "v2_proposed": {
+    "en": "We didn't hope to wake in the middle of the night",
+    "es": "No esperábamos despertarnos en medio de la noche",
+    "role": "build"
+   },
+   "v2_reason": "Holds LEGO (seed wording).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "We didn't hope to wake is an unnatural way to express the intended negative hope. Repeating the seed's wording does not cure K9.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U02",
+   "action": "DELETE",
+   "live": {
+    "en": "We were hoping to wake up as soon as possible",
+    "es": "Esperábamos despertarnos lo antes posible",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:07.301759+00:00",
+    "position": 7
+   },
+   "proposed": null,
+   "reason": "No LEGO; duplicate of B03.",
+   "change_number": 74,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think we need to wake up to learn",
+    "es": "Creo que necesitamos despertarnos para aprender",
+    "role": "use",
+    "updated_at": "2026-10-29T12:11:42.567683+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "We don't need to wake in the middle of the night to learn Spanish",
+    "es": "No necesitamos despertarnos en medio de la noche para aprender español",
+    "role": "use"
+   },
+   "reason": "Frame fits around LEGO.",
+   "change_number": 75,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U05",
+   "action": "DELETE",
+   "live": {
+    "en": "We just need to wake up to practise speaking with another person",
+    "es": "Solo necesitamos despertarnos para practicar hablando con otra persona",
+    "role": "use",
+    "updated_at": "2026-10-30T20:23:28.331522+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "No LEGO; duplicate of B05.",
+   "change_number": 76,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U07",
+   "action": "DELETE",
+   "live": {
+    "en": "We need to wake up to be able to speak as soon as possible",
+    "es": "Necesitamos despertarnos para poder hablar lo antes posible",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:04.811182+00:00",
+    "position": 12
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 77,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U08",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think we were hoping to wake up to learn how to say something in Spanish",
+    "es": "Creo que esperábamos despertarnos para aprender cómo decir algo en español",
+    "role": "use",
+    "updated_at": "2026-10-29T12:11:40.797673+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "We didn't want to wake in the middle of the night again",
+    "es": "No queríamos despertarnos en medio de la noche otra vez",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; queríamos s54, otra vez s61.",
+   "change_number": 78,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U11",
+   "action": "DELETE",
+   "live": {
+    "en": "We need to wake up to find a way to speak",
+    "es": "Necesitamos despertarnos para encontrar una manera de hablar",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:05.5496+00:00",
+    "position": 16
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 79,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U13",
+   "action": "DELETE",
+   "live": {
+    "en": "We want to wake up to learn how to speak as soon as possible",
+    "es": "Queremos despertarnos para aprender cómo hablar lo antes posible",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:05.978924+00:00",
+    "position": 18
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 80,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U14",
+   "action": "DELETE",
+   "live": {
+    "en": "We were hoping to wake up speaking with people who speak Spanish",
+    "es": "Esperábamos despertarnos hablando con personas que hablan español",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:07.874147+00:00",
+    "position": 19
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 81,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0108L01",
+   "lego": "to wake in the middle of the night = despertarnos en medio de la noche",
+   "seed": 108,
+   "row_id": "spa_for_eng:S0108L01U15",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think waking up is hard but we need to speak this language",
+    "es": "Creo que despertarnos es duro pero necesitamos hablar este idioma",
+    "role": "use",
+    "updated_at": "2026-10-29T12:11:46.027383+00:00",
+    "position": 20
+   },
+   "proposed": {
+    "en": "We were hoping not to wake in the middle of the night, but it wasn't possible",
+    "es": "Esperábamos no despertarnos en medio de la noche, pero no fue posible",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; no fue posible s86.",
+   "change_number": 82,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04B01",
+   "action": "DELETE",
+   "live": {
+    "en": "my",
+    "es": "mi",
+    "role": "build",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'mi' — part of LEGO.",
+   "change_number": 83,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "My friend",
+    "es": "Mi amigo",
+    "role": "build",
+    "updated_at": "2026-10-28T18:40:06.86977+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "My brain is changing",
+    "es": "Mi cerebro está cambiando",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; cambiando is L03 of this seed.",
+   "change_number": 84,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U01",
+   "action": "DELETE",
+   "live": {
+    "en": "I think my friend is the best option for learning Spanish well",
+    "es": "Creo que mi amigo es la mejor opción para aprender español bien",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:29.864727+00:00",
+    "position": 4
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 85,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U02",
+   "action": "DELETE",
+   "live": {
+    "en": "I think my work is to keep trying when it's very difficult",
+    "es": "Creo que mi trabajo es seguir intentando cuando es muy difícil",
+    "role": "use",
+    "updated_at": "2026-10-29T12:23:06.389506+00:00",
+    "position": 5
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 86,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I would like to talk with my friend about this language right now",
+    "es": "Me gustaría hablar con mi amigo sobre este idioma ahora mismo",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:47.663921+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I would like to talk with my friend about how my brain is changing",
+    "es": "Me gustaría hablar con mi amigo sobre cómo está cambiando mi cerebro",
+    "role": "use"
+   },
+   "reason": "checker's 'right now' is English untaught at 126 (right 387); changing (L03) comes before L04",
+   "change_number": 87,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Changing the topic from this language to my brain gives a natural whole-LEGO sentence without changing the speaking frame.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U05",
+   "action": "DELETE",
+   "live": {
+    "en": "I think my work is to learn Spanish as soon as possible here",
+    "es": "Creo que mi trabajo es aprender español lo antes posible aquí",
+    "role": "use",
+    "updated_at": "2026-10-29T12:23:14.901323+00:00",
+    "position": 8
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 88,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U06",
+   "action": "DELETE",
+   "live": {
+    "en": "I believe my most important work is to speak Spanish with more people",
+    "es": "Creo que mi trabajo más importante es hablar español con más personas",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:08.682726+00:00",
+    "position": 9
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 89,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L04U07",
+   "action": "DELETE",
+   "live": {
+    "en": "I think my friend said it was a good idea to do this here",
+    "es": "Creo que mi amigo dijo que era una buena idea hacer esto aquí",
+    "role": "use",
+    "updated_at": "2026-10-29T12:23:11.763135+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "No LEGO.",
+   "change_number": 90,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "NEW (S0126L04 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "This work is good for my brain",
+    "es": "Este trabajo es bueno para mi cerebro",
+    "role": "build"
+   },
+   "reason": "Third build (floor 3); este trabajo is L01 of this seed.",
+   "change_number": 91,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "NEW (S0126L04 NEW-U1)",
+   "action": "NEW-U",
+   "live": null,
+   "proposed": {
+    "en": "I think learning Spanish is very good for my brain",
+    "es": "Creo que aprender español es muy bueno para mi cerebro",
+    "role": "use"
+   },
+   "reason": "New USE; basket otherwise has one USE (U04).",
+   "change_number": 92,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L04",
+   "lego": "my brain = mi cerebro",
+   "seed": 126,
+   "row_id": "NEW (S0126L04 NEW-U2)",
+   "action": "NEW-U",
+   "live": null,
+   "proposed": {
+    "en": "I feel as if my brain is tired today",
+    "es": "Siento como si mi cerebro estuviera cansado hoy",
+    "role": "use"
+   },
+   "reason": "New USE; siento como si + estuviera taught (s26, s114).",
+   "change_number": 93,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01B01",
+   "action": "DELETE",
+   "live": {
+    "en": "This",
+    "es": "Este",
+    "role": "build",
+    "updated_at": "2026-10-12T17:27:04.251101+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'Este' — part of LEGO.",
+   "change_number": 94,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "This language",
+    "es": "Este idioma",
+    "role": "build",
+    "updated_at": "2026-10-12T16:56:05.282957+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "This work is interesting",
+    "es": "Este trabajo es interesante",
+    "role": "build"
+   },
+   "reason": "idioma → trabajo.",
+   "change_number": 95,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "At this moment",
+    "es": "En este momento",
+    "role": "build",
+    "updated_at": "2026-10-28T18:39:39.288831+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I like this work",
+    "es": "Me gusta este trabajo",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; me gusta s26.",
+   "change_number": 96,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U02",
+   "action": "DELETE",
+   "live": {
+    "en": "I believe this language is very interesting to learn",
+    "es": "Creo que este idioma es muy interesante de aprender",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:20.030737+00:00",
+    "position": 8
+   },
+   "proposed": null,
+   "reason": "No LEGO; with trabajo duplicates B03.",
+   "change_number": 97,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U04",
+   "action": "DELETE",
+   "live": {
+    "en": "I believe this language is the only way to learn well",
+    "es": "Creo que este idioma es la única manera de aprender bien",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:18.417623+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "No LEGO; with trabajo duplicates U09.",
+   "change_number": 98,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think this language is easier than I thought it was",
+    "es": "Creo que este idioma es más fácil de lo que pensé que era",
+    "role": "use",
+    "updated_at": "2026-10-29T12:23:12.171666+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "I think this work is easier than I thought it was",
+    "es": "Creo que este trabajo es más fácil de lo que pensé que era",
+    "role": "use"
+   },
+   "reason": "idioma → trabajo.",
+   "change_number": 99,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U08",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think this is the most important thing I'm doing at this moment",
+    "es": "Creo que esto es lo más importante que estoy haciendo en este momento",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:53.02397+00:00",
+    "position": 14
+   },
+   "proposed": {
+    "en": "I think this work is what I need to do at this moment",
+    "es": "Creo que este trabajo es lo que necesito hacer en este momento",
+    "role": "use"
+   },
+   "reason": "checker's 'the most important' uses English untaught at 126 (most 280)",
+   "change_number": 100,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Adding trabajo after este directly repairs the referent while preserving the superlative frame.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "I believe this is a good idea and I want to keep doing this",
+    "es": "Creo que esta es una buena idea y quiero seguir haciendo esto",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:56.771312+00:00",
+    "position": 17
+   },
+   "proposed": {
+    "en": "I believe this work is useful because I'm learning a lot",
+    "es": "Creo que este trabajo es útil porque estoy aprendiendo mucho",
+    "role": "use"
+   },
+   "reason": "checker's '…and I want to keep doing this' twins U12's ending",
+   "change_number": 101,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A small subject/predicate rewrite makes a natural complete sentence with the full LEGO.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0126L01",
+   "lego": "this work = este trabajo",
+   "seed": 126,
+   "row_id": "spa_for_eng:S0126L01U13",
+   "action": "DELETE",
+   "live": {
+    "en": "I think this language is very important for getting to know more people",
+    "es": "Creo que este idioma es muy importante para conocer a más personas",
+    "role": "use",
+    "updated_at": "2026-10-29T12:22:59.438982+00:00",
+    "position": 19
+   },
+   "proposed": null,
+   "reason": "No LEGO; with trabajo duplicates U03.",
+   "change_number": 102,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I can't remember who you were talking to in the office yesterday",
+    "es": "No puedo recordar con quién estabas hablando en la oficina ayer",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.769659+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I can't remember the name of the man who you were talking to in the office yesterday",
+    "es": "No puedo recordar el nombre del hombre con el que estabas hablando en la oficina ayer",
+    "role": "use"
+   },
+   "reason": "Indirect question needs 'con quién', so the LEGO can only sit in a relative clause; noun added.",
+   "change_number": 103,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I know who you were talking to because my friend used to work there",
+    "es": "Sé con quién estabas hablando porque mi amigo trabajaba allí",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.891611+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I know the man who you were talking to because my friend used to work there",
+    "es": "Conozco al hombre con el que estabas hablando porque mi amigo trabajaba allí",
+    "role": "use"
+   },
+   "reason": "As U02.",
+   "change_number": 104,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "I don't know who you were talking to but it's the same thing we were discussing before",
+    "es": "No sé con quién estabas hablando pero es lo mismo de lo que estábamos hablando antes",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.886731+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "I don't know the man who you were talking to, but I think he works here",
+    "es": "No conozco al hombre con el que estabas hablando, pero creo que trabaja aquí",
+    "role": "use"
+   },
+   "reason": "lengthened the checker's version for a USE row; trabaja is taught at 234",
+   "change_number": 105,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; garbled.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A clean acquaintance-relative-clause rewrite is available; the garbled old contrast can be removed without discarding the row.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "Do you know who you were talking to because she wanted to meet here?",
+    "es": "¿Sabes con quién estabas hablando porque quería reunirse aquí?",
+    "role": "use",
+    "updated_at": "2026-10-13T01:36:30.156095+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "Do you know where the man who you were talking to works?",
+    "es": "¿Sabes dónde trabaja el hombre con el que estabas hablando?",
+    "role": "use"
+   },
+   "reason": "checker's 'Do you want to see the man…' is odd; 'wanted to meet here' twins U08",
+   "change_number": 106,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; garbled.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A simple desire/relative-clause question supplies a natural home for the LEGO.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U09",
+   "action": "REWRITE",
+   "live": {
+    "en": "I knew who you were talking to because he was trying to help me",
+    "es": "Sabía con quién estabas hablando porque estaba intentando ayudarme",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.878894+00:00",
+    "position": 15
+   },
+   "proposed": {
+    "en": "The man who you were talking to was trying to help me",
+    "es": "El hombre con el que estabas hablando estaba intentando ayudarme",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 107,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; con quién frame.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Changing the clause subject to the man supplies a natural relative construction and preserves the helping frame.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "I can't remember who you were talking to but I know he was there",
+    "es": "No puedo recordar con quién estabas hablando pero sé que estaba allí",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.881349+00:00",
+    "position": 17
+   },
+   "proposed": {
+    "en": "I'm sure the man who you were talking to was there yesterday",
+    "es": "Estoy seguro de que el hombre con el que estabas hablando estaba allí ayer",
+    "role": "use"
+   },
+   "reason": "checker's 'can't remember the man' twins v2 U02 ('can't remember the name of the man')",
+   "change_number": 108,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; con quién frame.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Replacing indirect who with the man who directly repairs the clause, just as rows 103–104 do.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0262L03",
+   "lego": "who you were talking to = con el que estabas hablando",
+   "seed": 262,
+   "row_id": "spa_for_eng:S0262L03U13",
+   "action": "DELETE",
+   "live": {
+    "en": "I knew who you were talking to because he wanted to meet with my friend",
+    "es": "Sabía con quién estabas hablando porque quería reunirse con mi amigo",
+    "role": "use",
+    "updated_at": "2026-10-28T18:41:20.868157+00:00",
+    "position": 19
+   },
+   "proposed": null,
+   "reason": "No LEGO; con quién frame.",
+   "change_number": 109,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were",
+    "es": "estuviste",
+    "role": "build",
+    "updated_at": "2026-10-12T17:27:34.243747+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "did you agree with him?",
+    "es": "¿estuviste de acuerdo con él?",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 110,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were very",
+    "es": "estuviste muy",
+    "role": "build",
+    "updated_at": "2026-10-13T02:10:16.548726+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "did you agree with that?",
+    "es": "¿estuviste de acuerdo con eso?",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 111,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were quite",
+    "es": "estuviste bastante",
+    "role": "build",
+    "updated_at": "2026-10-13T02:10:04.380914+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "did you agree with me?",
+    "es": "¿estuviste de acuerdo conmigo?",
+    "role": "build"
+   },
+   "reason": "Holds LEGO (English 'agreed' is the next seed's LEGO, so the question form is kept).",
+   "change_number": 112,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were there a moment ago",
+    "es": "estuviste allí hace un momento",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:05.104518+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "Did you agree with what he said about your friend?",
+    "es": "¿Estuviste de acuerdo con lo que dijo sobre tu amigo?",
+    "role": "use"
+   },
+   "reason": "s83/s84 frame around LEGO.",
+   "change_number": 113,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were here",
+    "es": "estuviste aquí",
+    "role": "use",
+    "updated_at": "2026-10-12T22:26:53.421833+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "Did you agree with her or not?",
+    "es": "¿Estuviste de acuerdo con ella o no?",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; keeps the taught English 'did you agree'.",
+   "change_number": 114,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were there",
+    "es": "estuviste allí",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:05.834417+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "Why didn't you agree with your father?",
+    "es": "¿Por qué no estuviste de acuerdo con tu padre?",
+    "role": "use"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 115,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were there last year",
+    "es": "estuviste allí el año pasado",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:06.403763+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "Did you agree with what she wanted to do?",
+    "es": "¿Estuviste de acuerdo con lo que ella quería hacer?",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; keeps the taught English 'did you agree'.",
+   "change_number": 116,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0385L01",
+   "lego": "did you agree = estuviste de acuerdo",
+   "seed": 385,
+   "row_id": "spa_for_eng:S0385L01U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "you were there last month",
+    "es": "estuviste allí el mes pasado",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:06.142715+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "Did you agree when he said he didn't want to come?",
+    "es": "¿Estuviste de acuerdo cuando dijo que no quería venir?",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 117,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The month clause can qualify what was said rather than where you were; a straightforward contextual rewrite exists.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was",
+    "es": "estuve",
+    "role": "build",
+    "updated_at": "2026-10-12T21:33:34.475919+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "I agreed with him",
+    "es": "estuve de acuerdo con él",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 118,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was there",
+    "es": "estuve allí",
+    "role": "build",
+    "updated_at": "2026-10-13T02:10:23.431868+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I agreed with you",
+    "es": "estuve de acuerdo contigo",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 119,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was not there",
+    "es": "no estuve allí",
+    "role": "build",
+    "updated_at": "2026-10-13T02:10:19.556398+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I didn't agree with her",
+    "es": "no estuve de acuerdo con ella",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 120,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was there a moment ago",
+    "es": "estuve allí hace un momento",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:21.974873+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "I agreed with what you said about your friend",
+    "es": "Estuve de acuerdo con lo que dijiste sobre tu amigo",
+    "role": "use"
+   },
+   "reason": "s83 frame around LEGO.",
+   "change_number": 121,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was there last year",
+    "es": "estuve allí el año pasado",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:23.78133+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I didn't agree with her, but I didn't say anything",
+    "es": "No estuve de acuerdo con ella, pero no dije nada",
+    "role": "use"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 122,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was there last month",
+    "es": "estuve allí el mes pasado",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:23.008141+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I agreed with my father although I didn't want to",
+    "es": "Estuve de acuerdo con mi padre aunque no quería",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; aunque s178.",
+   "change_number": 123,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0386L01",
+   "lego": "I agreed = estuve de acuerdo",
+   "seed": 386,
+   "row_id": "spa_for_eng:S0386L01U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "I was here",
+    "es": "estuve aquí",
+    "role": "use",
+    "updated_at": "2026-10-13T02:10:20.986823+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I agreed because I wanted to help you",
+    "es": "Estuve de acuerdo porque quería ayudarte",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 124,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Location-only material can be replaced by a short reason-for-agreement sentence; the draft gives no deletion-specific reason.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "they had",
+    "es": "lo habían",
+    "role": "build",
+    "updated_at": "2026-10-12T17:44:47.230228+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I think the children had broken it",
+    "es": "creo que los niños lo habían roto",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO.",
+   "change_number": 125,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "they had broken it",
+    "es": "lo habían roto",
+    "role": "build",
+    "updated_at": "2026-10-12T22:28:09.970841+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "she knew the children had broken it",
+    "es": "ella sabía que los niños lo habían roto",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO (was missing los niños).",
+   "change_number": 126,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "the children had it",
+    "es": "los niños lo habían",
+    "role": "build",
+    "updated_at": "2026-10-13T03:15:38.166974+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "the children had broken it again",
+    "es": "los niños lo habían roto otra vez",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO (was garbled 'los niños lo habían').",
+   "change_number": 127,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "she told me they had broken it",
+    "es": "me dijo que lo habían roto",
+    "role": "use",
+    "updated_at": "2026-10-13T03:15:36.66472+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "she told me that the children had broken it",
+    "es": "me dijo que los niños lo habían roto",
+    "role": "use"
+   },
+   "reason": "Adds los niños.",
+   "change_number": 128,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "she didn't know that they had broken it",
+    "es": "no sabía que lo habían roto",
+    "role": "use",
+    "updated_at": "2026-10-13T03:15:36.523063+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "she didn't know that the children had broken it",
+    "es": "ella no sabía que los niños lo habían roto",
+    "role": "use"
+   },
+   "reason": "Adds los niños; ella added so it isn't read as 'I didn't know'.",
+   "change_number": 129,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I knew they had done it",
+    "es": "sabía que lo habían hecho",
+    "role": "use",
+    "updated_at": "2026-10-13T03:15:33.778716+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "my mother thought that the children had broken it",
+    "es": "mi madre pensaba que los niños lo habían roto",
+    "role": "use"
+   },
+   "reason": "LEGO restored; new frame.",
+   "change_number": 130,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0622L01",
+   "lego": "the children had broken it = los niños lo habían roto",
+   "seed": 622,
+   "row_id": "spa_for_eng:S0622L01U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "she told me they had done everything",
+    "es": "me dijo que lo habían hecho todo",
+    "role": "use",
+    "updated_at": "2026-10-13T03:15:36.807582+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "Nobody knew that the children had broken it",
+    "es": "Nadie sabía que los niños lo habían roto",
+    "role": "use"
+   },
+   "reason": "checker's 'She told me the children had broken it…' twins v2 U02's opening",
+   "change_number": 131,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (hecho todo).",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "The done-everything object can become a breaking-event report with a cause; no need to delete this row merely because hecho is wrong here.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "you're doing it madam",
+    "es": "lo está haciendo, señora",
+    "role": "build",
+    "updated_at": "2026-11-05T01:10:49.291407+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "yes, I think that you're doing very well, madam",
+    "es": "sí, creo que lo está haciendo muy bien, señora",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO.",
+   "change_number": 132,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "you're doing it well madam",
+    "es": "lo está haciendo bien, señora",
+    "role": "build",
+    "updated_at": "2026-11-05T01:10:53.731847+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "of course, I think that you're doing very well, madam",
+    "es": "claro, creo que lo está haciendo muy bien, señora",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO; claro s136.",
+   "change_number": 133,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "you're doing it very well madam",
+    "es": "lo está haciendo muy bien, señora",
+    "role": "build",
+    "updated_at": "2026-11-05T01:10:57.969441+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "but I think that you're doing very well, madam",
+    "es": "pero creo que lo está haciendo muy bien, señora",
+    "role": "build"
+   },
+   "reason": "Holds whole LEGO.",
+   "change_number": 134,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01U02",
+   "action": "DELETE",
+   "live": {
+    "en": "I think you're doing very well sir",
+    "es": "creo que lo está haciendo muy bien, señor",
+    "role": "use",
+    "updated_at": "2026-10-29T13:00:49.451291+00:00",
+    "position": 7
+   },
+   "proposed": null,
+   "reason": "señor, not señora — a break (K50's own worked example is signore for signora), and the English prompt says 'sir' rather than 'madam'.",
+   "change_number": 135,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I can see you're doing it well madam",
+    "es": "puedo ver que lo está haciendo bien, señora",
+    "role": "use",
+    "updated_at": "2026-11-05T01:11:02.585407+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I think that you're doing very well, madam, and you don't need to worry",
+    "es": "creo que lo está haciendo muy bien, señora, y no necesita preocuparse",
+    "role": "use"
+   },
+   "reason": "Holds whole LEGO.",
+   "change_number": 136,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I wonder if you know how well you're doing it sir",
+    "es": "me pregunto si sabe lo bien que lo está haciendo, señor",
+    "role": "use",
+    "updated_at": "2026-11-05T01:11:07.199369+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I think that you're doing very well, madam, although it's difficult",
+    "es": "creo que lo está haciendo muy bien, señora, aunque es difícil",
+    "role": "use"
+   },
+   "reason": "Holds whole LEGO.",
+   "change_number": 137,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0655L01",
+   "lego": "I think that you're doing very well, madam = creo que lo está haciendo muy bien, señora",
+   "seed": 655,
+   "row_id": "spa_for_eng:S0655L01U05",
+   "action": "DELETE",
+   "live": {
+    "en": "you're doing it so well madam",
+    "es": "lo está haciendo tan bien, señora",
+    "role": "use",
+    "updated_at": "2026-11-05T01:11:11.543236+00:00",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "No LEGO (tan bien, no creo que).",
+   "change_number": 138,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "to leave",
+    "es": "irme",
+    "role": "build",
+    "updated_at": "2026-10-12T17:04:48.661471+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "I want to leave home",
+    "es": "quiero irme de casa",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 139,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to leave",
+    "es": "quiero irme",
+    "role": "build",
+    "updated_at": "2026-10-12T17:04:28.781944+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I need to leave home",
+    "es": "necesito irme de casa",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 140,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02U01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to leave now",
+    "es": "quiero irme ahora",
+    "role": "use",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "I want to leave home next year",
+    "es": "quiero irme de casa el año que viene",
+    "role": "use"
+   },
+   "reason": "Adds de casa; el año que viene s176.",
+   "change_number": 141,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I wanted to leave but couldn't",
+    "es": "quería irme pero no podía",
+    "role": "use",
+    "updated_at": "2026-10-13T03:08:27.363904+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "I wanted to leave home but I couldn't",
+    "es": "quería irme de casa pero no podía",
+    "role": "use"
+   },
+   "reason": "Adds de casa; English 'but couldn't' → 'but I couldn't'.",
+   "change_number": 142,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "I need to leave soon",
+    "es": "necesito irme pronto",
+    "role": "use",
+    "updated_at": "2026-10-13T03:08:23.442321+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I don't want to leave home so young",
+    "es": "no quiero irme de casa tan joven",
+    "role": "use"
+   },
+   "reason": "Adds de casa; new frame.",
+   "change_number": 143,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "so I wanted to leave and grow up",
+    "es": "así que quería irme y crecer",
+    "role": "use",
+    "updated_at": "2026-10-13T03:08:40.882096+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "So I wanted to leave home and grow up",
+    "es": "Así que quería irme de casa y crecer",
+    "role": "use"
+   },
+   "reason": "reordered seed; contains L02 whole",
+   "change_number": 144,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; reordered seed.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Adding de casa directly restores the whole LEGO; being a reordered seed is not a deletion reason under K49.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0588L02",
+   "lego": "to leave home = irme de casa",
+   "seed": 588,
+   "row_id": "spa_for_eng:S0588L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was time to leave",
+    "es": "era hora de irme",
+    "role": "use",
+    "updated_at": "2026-10-13T03:08:31.62687+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "it was time to leave home",
+    "es": "era hora de irme de casa",
+    "role": "use"
+   },
+   "reason": "Adds de casa.",
+   "change_number": 145,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0373L02",
+   "lego": "it was beautiful = era precioso",
+   "seed": 373,
+   "row_id": "spa_for_eng:S0373L02B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was",
+    "es": "era",
+    "role": "build",
+    "updated_at": "2026-10-12T17:28:26.734289+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "it was beautiful there",
+    "es": "era precioso allí",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 146,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0373L02",
+   "lego": "it was beautiful = era precioso",
+   "seed": 373,
+   "row_id": "spa_for_eng:S0373L02B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was not",
+    "es": "no era",
+    "role": "build",
+    "updated_at": "2026-10-13T02:06:44.310195+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I thought it was beautiful",
+    "es": "pensé que era precioso",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; pensé que era s124.",
+   "change_number": 147,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0373L02",
+   "lego": "it was beautiful = era precioso",
+   "seed": 373,
+   "row_id": "spa_for_eng:S0373L02B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was very",
+    "es": "era muy",
+    "role": "build",
+    "updated_at": "2026-10-12T11:34:51.11115+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "it was beautiful in the morning",
+    "es": "era precioso por la mañana",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 148,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0373L02",
+   "lego": "it was beautiful = era precioso",
+   "seed": 373,
+   "row_id": "spa_for_eng:S0373L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was important",
+    "es": "era importante",
+    "role": "use",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "it was beautiful and I wanted to go back",
+    "es": "era precioso y quería volver",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; volver s16.",
+   "change_number": 149,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0373L02",
+   "lego": "it was beautiful = era precioso",
+   "seed": 373,
+   "row_id": "spa_for_eng:S0373L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "it was difficult",
+    "es": "era difícil",
+    "role": "use",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "It was beautiful, but it was difficult to get there",
+    "es": "Era precioso, pero era difícil llegar allí",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 150,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (era difícil).",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The difficult predicate can remain in a second clause while the location is described with era precioso.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "spa_for_eng:S0532L02B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I'm sure that they're lucky",
+    "es": "estoy seguro de que tienen suerte",
+    "role": "build",
+    "updated_at": "2026-11-05T00:48:31.618557+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I hope they're lucky",
+    "es": "espero que tengan suerte",
+    "role": "build"
+   },
+   "reason": "Subjunctive LEGO needs a subjunctive frame; espero que s149.",
+   "change_number": 151,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "spa_for_eng:S0532L02U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky here",
+    "es": "tienen suerte aquí",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:40.429105+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "It's not going to work unless they're lucky",
+    "es": "No va a funcionar a menos que tengan suerte",
+    "role": "use"
+   },
+   "reason": "Indicative tienen is a K50 break → LEGO in its seed frame.",
+   "change_number": 152,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "spa_for_eng:S0532L02U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky now",
+    "es": "tienen suerte ahora",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:44.903687+00:00",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I hope they're lucky tonight",
+    "es": "Espero que tengan suerte esta noche",
+    "role": "use"
+   },
+   "reason": "Indicative tienen → subjunctive frame.",
+   "change_number": 153,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "spa_for_eng:S0532L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky with everything",
+    "es": "tienen suerte con todo",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:49.524378+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "It's unusual that they're lucky with everything",
+    "es": "Es raro que tengan suerte con todo",
+    "role": "use"
+   },
+   "reason": "Indicative tienen → subjunctive frame; es raro que s121.",
+   "change_number": 154,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "row_id": "NEW (S0532L02 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "unless they're lucky today",
+    "es": "a menos que tengan suerte hoy",
+    "role": "build"
+   },
+   "reason": "Third build after B03 goes; seed frame + 1 LEGO.",
+   "change_number": 155,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0110L01",
+   "lego": "we're friends = somos amigos",
+   "seed": 110,
+   "row_id": "spa_for_eng:S0110L01B04",
+   "action": "DELETE",
+   "live": {
+    "en": "We are people who",
+    "es": "Somos personas que",
+    "role": "build",
+    "updated_at": "2026-10-12T11:25:56.592413+00:00",
+    "position": 5
+   },
+   "proposed": null,
+   "reason": "'Somos personas que' — no LEGO, fragment.",
+   "change_number": 156,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0110L01",
+   "lego": "we're friends = somos amigos",
+   "seed": 110,
+   "row_id": "spa_for_eng:S0110L01B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "We are people who are learning together",
+    "es": "Somos personas que estamos aprendiendo juntos",
+    "role": "build",
+    "updated_at": "2026-10-12T11:25:58.776307+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "We're friends and we're learning Spanish",
+    "es": "Somos amigos y estamos aprendiendo español",
+    "role": "build"
+   },
+   "reason": "personas → amigos; drops juntos (first taught s133).",
+   "change_number": 157,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0110L01",
+   "lego": "we're friends = somos amigos",
+   "seed": 110,
+   "row_id": "spa_for_eng:S0110L01U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "We are people who are trying to learn to speak Spanish as well as possible",
+    "es": "Somos personas que estamos intentando aprender a hablar español lo mejor posible",
+    "role": "use",
+    "updated_at": "2026-10-12T11:25:59.735419+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "We're friends and I don't worry about making mistakes with you",
+    "es": "Somos amigos y no me preocupo por cometer errores contigo",
+    "role": "use"
+   },
+   "reason": "LEGO restored; s46 frame.",
+   "change_number": 158,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0110L01",
+   "lego": "we're friends = somos amigos",
+   "seed": 110,
+   "row_id": "spa_for_eng:S0110L01U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think we are doing very well and I feel happy about what we are learning together",
+    "es": "Creo que lo estamos haciendo muy bien y me siento contento con lo que aprendemos juntos",
+    "role": "use",
+    "updated_at": "2026-10-29T12:12:10.516538+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "We're friends and I think we're doing very well",
+    "es": "Somos amigos y creo que lo estamos haciendo muy bien",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 159,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Adding somos amigos and dropping the untaught together material gives a straightforward full-LEGO repair.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0412L04",
+   "lego": "we couldn't = no podíamos",
+   "seed": 412,
+   "row_id": "spa_for_eng:S0412L04B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "we could",
+    "es": "podíamos",
+    "role": "build",
+    "updated_at": "2026-10-12T21:42:47.874719+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "we couldn't do it",
+    "es": "no podíamos hacerlo",
+    "role": "build"
+   },
+   "reason": "Adds no (LEGO is no podíamos).",
+   "change_number": 160,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0412L04",
+   "lego": "we couldn't = no podíamos",
+   "seed": 412,
+   "row_id": "spa_for_eng:S0412L04B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "we could do it",
+    "es": "podíamos hacerlo",
+    "role": "build",
+    "updated_at": "2026-10-13T02:15:53.523441+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "we couldn't stay",
+    "es": "no podíamos quedarnos",
+    "role": "build"
+   },
+   "reason": "Holds LEGO; new build.",
+   "change_number": 161,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0412L04",
+   "lego": "we couldn't = no podíamos",
+   "seed": 412,
+   "row_id": "spa_for_eng:S0412L04U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I thought we could do it",
+    "es": "pensé que podíamos hacerlo",
+    "role": "use",
+    "updated_at": "2026-10-13T02:15:39.51672+00:00",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I thought we couldn't do it",
+    "es": "pensé que no podíamos hacerlo",
+    "role": "use"
+   },
+   "reason": "Adds no.",
+   "change_number": 162,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0412L04",
+   "lego": "we couldn't = no podíamos",
+   "seed": 412,
+   "row_id": "spa_for_eng:S0412L04U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I knew we could do it",
+    "es": "sabía que podíamos hacerlo",
+    "role": "use",
+    "updated_at": "2026-10-13T02:15:34.768199+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I knew we couldn't win everything",
+    "es": "sabía que no podíamos ganar todo",
+    "role": "use"
+   },
+   "reason": "Adds no; ganar/todo are this seed's LEGOs.",
+   "change_number": 163,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0448L02",
+   "lego": "they'll be happy = estarán contentos",
+   "seed": 448,
+   "row_id": "spa_for_eng:S0448L02B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "happy",
+    "es": "contentos",
+    "role": "build",
+    "updated_at": "2026-10-12T17:28:51.397132+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "they'll be happy here",
+    "es": "estarán contentos aquí",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 164,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0448L02",
+   "lego": "they'll be happy = estarán contentos",
+   "seed": 448,
+   "row_id": "spa_for_eng:S0448L02B02",
+   "action": "REWRITE",
+   "live": {
+    "en": "to be happy",
+    "es": "estar contentos",
+    "role": "build",
+    "updated_at": "2026-10-13T02:24:52.287054+00:00",
+    "position": 2
+   },
+   "proposed": {
+    "en": "they'll be happy tomorrow",
+    "es": "estarán contentos mañana",
+    "role": "build"
+   },
+   "reason": "Holds LEGO. (A split like 'estarán muy contentos' would also count under K49, but an unsplit build is the simpler choice here.)",
+   "change_number": 165,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0448L02",
+   "lego": "they'll be happy = estarán contentos",
+   "seed": 448,
+   "row_id": "spa_for_eng:S0448L02B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "happy to help",
+    "es": "contentos de ayudar",
+    "role": "build",
+    "updated_at": "2026-10-12T14:16:19.576814+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "they'll be happy to help",
+    "es": "estarán contentos de ayudar",
+    "role": "build"
+   },
+   "reason": "Adds estarán.",
+   "change_number": 166,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0444L02",
+   "lego": "they thought that = pensaban que",
+   "seed": 444,
+   "row_id": "spa_for_eng:S0444L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "do you know what they thought?",
+    "es": "¿sabes lo que pensaban?",
+    "role": "use",
+    "updated_at": "2026-10-13T02:23:42.297738+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "They thought that it was too late",
+    "es": "Pensaban que era demasiado tarde",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; new frame.",
+   "change_number": 167,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0444L02",
+   "lego": "they thought that = pensaban que",
+   "seed": 444,
+   "row_id": "spa_for_eng:S0444L02U06",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think they were right about what they thought",
+    "es": "creo que tenían razón en lo que pensaban",
+    "role": "use",
+    "updated_at": "2026-10-13T02:23:46.395999+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "I think they thought that it wasn't possible",
+    "es": "Creo que pensaban que no era posible",
+    "role": "use"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 168,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0449L03",
+   "lego": "they said that = dijeron que",
+   "seed": 449,
+   "row_id": "spa_for_eng:S0449L03U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I knew what they said",
+    "es": "sabía lo que dijeron",
+    "role": "use",
+    "updated_at": "2026-10-13T02:24:57.961996+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "They said that they wanted to help",
+    "es": "Dijeron que querían ayudar",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; querían s212.",
+   "change_number": 169,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0449L03",
+   "lego": "they said that = dijeron que",
+   "seed": 449,
+   "row_id": "spa_for_eng:S0449L03U03",
+   "action": "REWRITE",
+   "live": {
+    "en": "do you know what they said?",
+    "es": "¿sabes lo que dijeron?",
+    "role": "use",
+    "updated_at": "2026-10-13T02:24:56.844626+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "Do you know if they said that they were ready?",
+    "es": "¿Sabes si dijeron que estaban listos?",
+    "role": "use"
+   },
+   "reason": "Holds LEGO; estaban listos is L02 of this seed.",
+   "change_number": 170,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0434L02",
+   "lego": "students they take = los estudiantes que aceptan",
+   "seed": 434,
+   "row_id": "spa_for_eng:S0434L02B04",
+   "action": "REWRITE",
+   "live": {
+    "en": "could they say how many students they take?",
+    "es": "¿podrían decir cuántos estudiantes que aceptan?",
+    "role": "build",
+    "updated_at": "2026-10-13T02:21:09.771733+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "How many of the students they take speak Spanish?",
+    "es": "¿Cuántos de los estudiantes que aceptan hablan español?",
+    "role": "build"
+   },
+   "reason": "the checker's version with 'could they say' shortened to suit a BUILD row (P19)",
+   "change_number": 171,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "Ungrammatical ('cuántos estudiantes que aceptan'); in a 'how many' question the LEGO cannot stand intact.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "The whole relative LEGO can occur after cuántos de; adding a taught predicate gives a natural question.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0434L02",
+   "lego": "students they take = los estudiantes que aceptan",
+   "seed": 434,
+   "row_id": "spa_for_eng:S0434L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "do you know how many students they take here?",
+    "es": "¿sabes cuántos estudiantes que aceptan aquí?",
+    "role": "use",
+    "updated_at": "2026-10-13T02:21:12.426949+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "Do you know anything about the students they take here?",
+    "es": "¿Sabes algo de los estudiantes que aceptan aquí?",
+    "role": "use"
+   },
+   "reason": "LEGO intact; previous Spanish ungrammatical.",
+   "change_number": 172,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0403L03",
+   "lego": "to remain quiet = quedarnos callados",
+   "seed": 403,
+   "row_id": "spa_for_eng:S0403L03B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "quiet",
+    "es": "callados",
+    "role": "build",
+    "updated_at": "2026-10-12T17:45:14.431561+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "we want to remain quiet",
+    "es": "queremos quedarnos callados",
+    "role": "build"
+   },
+   "reason": "Bare 'callados' → LEGO + 1.",
+   "change_number": 173,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0403L03",
+   "lego": "to remain quiet = quedarnos callados",
+   "seed": 403,
+   "row_id": "spa_for_eng:S0403L03B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "more quiet",
+    "es": "más callados",
+    "role": "build",
+    "updated_at": "2026-10-13T02:14:05.06081+00:00",
+    "position": 5
+   },
+   "proposed": {
+    "en": "to remain quiet for a while",
+    "es": "quedarnos callados un rato",
+    "role": "build"
+   },
+   "reason": "'más callados' → LEGO + 1; un rato s219.",
+   "change_number": 174,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0409L02",
+   "lego": "what we do = lo que hagamos",
+   "seed": 409,
+   "row_id": "spa_for_eng:S0409L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "we do",
+    "es": "hagamos",
+    "role": "build",
+    "updated_at": "2026-10-12T21:41:48.445364+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'hagamos' — part of LEGO.",
+   "change_number": 175,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0409L02",
+   "lego": "what we do = lo que hagamos",
+   "seed": 409,
+   "row_id": "spa_for_eng:S0409L02B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "we do it here",
+    "es": "hagamos aquí",
+    "role": "build",
+    "updated_at": "2026-10-13T02:14:58.807073+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "what we do here",
+    "es": "lo que hagamos aquí",
+    "role": "build"
+   },
+   "reason": "Adds lo que.",
+   "change_number": 176,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0409L02",
+   "lego": "what we do = lo que hagamos",
+   "seed": 409,
+   "row_id": "NEW (S0409L02 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "it doesn't matter what we do today",
+    "es": "no importa lo que hagamos hoy",
+    "role": "build"
+   },
+   "reason": "Keeps 3 builds after B01 goes.",
+   "change_number": 177,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0281L04",
+   "lego": "before you start = antes de que empieces",
+   "seed": 281,
+   "row_id": "spa_for_eng:S0281L04B01",
+   "action": "REWRITE",
+   "live": {
+    "en": "I hope you start soon",
+    "es": "Espero que empieces pronto",
+    "role": "build",
+    "updated_at": "2026-10-13T01:42:25.61176+00:00",
+    "position": 1
+   },
+   "proposed": {
+    "en": "I want to finish before you start",
+    "es": "Quiero terminar antes de que empieces",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 178,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0281L04",
+   "lego": "before you start = antes de que empieces",
+   "seed": 281,
+   "row_id": "spa_for_eng:S0281L04B03",
+   "action": "REWRITE",
+   "live": {
+    "en": "When you start",
+    "es": "Cuando empieces",
+    "role": "build",
+    "updated_at": "2026-10-12T16:54:50.858989+00:00",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I need a little time before you start",
+    "es": "Necesito un poco de tiempo antes de que empieces",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 179,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0281L04",
+   "lego": "before you start = antes de que empieces",
+   "seed": 281,
+   "row_id": "spa_for_eng:S0281L04B04",
+   "action": "REWRITE",
+   "live": {
+    "en": "I want you to start",
+    "es": "Quiero que empieces",
+    "role": "build",
+    "updated_at": "2026-10-13T01:42:33.296372+00:00",
+    "position": 4
+   },
+   "proposed": {
+    "en": "I want to talk before you start",
+    "es": "Quiero hablar antes de que empieces",
+    "role": "build"
+   },
+   "reason": "Holds LEGO.",
+   "change_number": 180,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0281L04",
+   "lego": "before you start = antes de que empieces",
+   "seed": 281,
+   "row_id": "spa_for_eng:S0281L04U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "I hope you start soon because I want to go home",
+    "es": "Espero que empieces pronto porque quiero ir a casa",
+    "role": "use",
+    "updated_at": "2026-10-13T01:42:26.151251+00:00",
+    "position": 13
+   },
+   "proposed": {
+    "en": "I want to go home before you start",
+    "es": "Quiero ir a casa antes de que empieces",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 181,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The home-going clause can be made the main clause followed by the taught before-you-start phrase.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0085L02",
+   "lego": "those people = esas personas",
+   "seed": 85,
+   "row_id": "spa_for_eng:S0085L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "those",
+    "es": "esas",
+    "role": "build",
+    "updated_at": "2026-10-28T18:40:07.656741+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'esas' — part of LEGO.",
+   "change_number": 182,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0153L03",
+   "lego": "in the same way = de la misma manera",
+   "seed": 153,
+   "row_id": "spa_for_eng:S0153L03U13",
+   "action": "REWRITE",
+   "live": {
+    "en": "It is the same thing we were talking about and it is important to know",
+    "es": "Es lo mismo de lo que estábamos hablando y es importante saberlo",
+    "role": "use",
+    "updated_at": "2026-10-28T18:40:47.996437+00:00",
+    "position": 20
+   },
+   "proposed": {
+    "en": "It's important to speak in the same way as before",
+    "es": "Es importante hablar de la misma manera que antes",
+    "role": "use"
+   },
+   "reason": "checker's 'What you said is important because…' is clumsy; decirlo (208) and cada vez (533) are untaught",
+   "change_number": 183,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO ('lo mismo'); basket keeps 15 USE.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "The old wrong same-thing frame can become a clean same-way sentence with taught words; a large surviving basket alone does not justify deletion.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0181L04",
+   "lego": "I have to take my mother to the doctor = tengo que llevar a mi madre al médico",
+   "seed": 181,
+   "row_id": "spa_for_eng:S0181L04U14",
+   "action": "REWRITE",
+   "live": {
+    "en": "The doctor said I have to take my mother to see him every week",
+    "es": "El médico dijo que tengo que llevar a mi madre a verlo todas las semanas",
+    "role": "use",
+    "updated_at": "2026-10-13T01:06:43.560351+00:00",
+    "position": 23
+   },
+   "proposed": {
+    "en": "She said I have to take my mother to the doctor tomorrow",
+    "es": "Ella dijo que tengo que llevar a mi madre al médico mañana",
+    "role": "use"
+   },
+   "reason": "LEGO restored ('a verlo' → 'al médico'); todas las semanas not taught at s181.",
+   "change_number": 184,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0201L02",
+   "lego": "what was going to happen = lo que iba a pasar",
+   "seed": 201,
+   "row_id": "spa_for_eng:S0201L02B05",
+   "action": "REWRITE",
+   "live": {
+    "en": "What was going to happen here?",
+    "es": "¿Qué iba a pasar aquí?",
+    "role": "build",
+    "updated_at": "2026-10-13T01:13:11.561532+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I didn't know what was going to happen here",
+    "es": "No sabía lo que iba a pasar aquí",
+    "role": "build"
+   },
+   "reason": "Direct question ¿Qué…? → LEGO lo que…",
+   "change_number": 185,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0212L03",
+   "lego": "help = ayuda",
+   "seed": 212,
+   "row_id": "spa_for_eng:S0212L03U12",
+   "action": "DELETE",
+   "live": {
+    "en": "She went to help the people she wanted to see",
+    "es": "Ella fue a ayudar a las personas que quería ver",
+    "role": "use",
+    "updated_at": "2026-10-13T01:17:12.32304+00:00",
+    "position": 17
+   },
+   "proposed": null,
+   "reason": "a double 'wanted' sentence is awkward",
+   "change_number": 186,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO (ayudar, not ayuda); basket keeps 6 USE.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "A short wanted-help relative-clause rewrite uses the noun LEGO rather than the different infinitive ayudar.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "The people she wanted to see wanted to ask for help",
+    "es": "Las personas que quería ver querían pedir ayuda",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0231L02",
+   "lego": "an old man = un hombre mayor",
+   "seed": 231,
+   "row_id": "spa_for_eng:S0231L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "Old",
+    "es": "Mayor",
+    "role": "build",
+    "updated_at": "2026-10-12T17:21:28.115734+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'Mayor' — part of LEGO.",
+   "change_number": 187,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0231L02",
+   "lego": "an old man = un hombre mayor",
+   "seed": 231,
+   "row_id": "spa_for_eng:S0231L02B03",
+   "action": "DELETE",
+   "live": {
+    "en": "An elderly woman",
+    "es": "Una mujer mayor",
+    "role": "build",
+    "updated_at": "2026-10-13T01:25:55.948157+00:00",
+    "position": 3
+   },
+   "proposed": null,
+   "reason": "woman, not man — not the LEGO.",
+   "change_number": 188,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0231L02",
+   "lego": "an old man = un hombre mayor",
+   "seed": 231,
+   "row_id": "spa_for_eng:S0231L02U13",
+   "action": "DELETE",
+   "live": {
+    "en": "I think that elderly woman works in the same office as my daughter",
+    "es": "Creo que esa mujer mayor trabaja en la misma oficina que mi hija",
+    "role": "use",
+    "updated_at": "2026-10-29T12:42:55.141319+00:00",
+    "position": 18
+   },
+   "proposed": null,
+   "reason": "woman, not man — not the LEGO; with 'hombre' it duplicates U03.",
+   "change_number": 189,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0231L02",
+   "lego": "an old man = un hombre mayor",
+   "seed": 231,
+   "row_id": "NEW (S0231L02 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I know an old man",
+    "es": "Conozco a un hombre mayor",
+    "role": "build"
+   },
+   "reason": "Keeps 3 builds.",
+   "change_number": 190,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0234L03",
+   "lego": "he works = trabaja",
+   "seed": 234,
+   "row_id": "spa_for_eng:S0234L03U11",
+   "action": "REWRITE",
+   "live": {
+    "en": "My friend used to work in an office and wanted to ask for help with that",
+    "es": "Mi amigo trabajaba en una oficina y quería pedir ayuda con eso",
+    "role": "use",
+    "updated_at": "2026-10-13T01:27:47.679732+00:00",
+    "position": 16
+   },
+   "proposed": {
+    "en": "My friend works in an office and wants to learn Spanish",
+    "es": "Mi amigo trabaja en una oficina y quiere aprender español",
+    "role": "use"
+   },
+   "reason": "checker's 'works… and wanted to ask for help with that' mixes tenses and 'that' has nothing to point to",
+   "change_number": 191,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "trabajaba, not trabaja — a different verb form, so a K50 break (seed 199 reprise); basket keeps 14 USE.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Changing trabajaba to trabaja and used to work to works is a direct grammatical repair; K50 identifies the defect but does not require deletion.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0249L01",
+   "lego": "you to help me = que me ayudes",
+   "seed": 249,
+   "row_id": "spa_for_eng:S0249L01B01",
+   "action": "DELETE",
+   "live": {
+    "en": "You help",
+    "es": "Ayudes",
+    "role": "build",
+    "updated_at": "2026-10-12T16:30:14.342709+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'Ayudes' — part of LEGO.",
+   "change_number": 192,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0249L01",
+   "lego": "you to help me = que me ayudes",
+   "seed": 249,
+   "row_id": "NEW (S0249L01 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I want you to help me now",
+    "es": "Quiero que me ayudes ahora",
+    "role": "build"
+   },
+   "reason": "Keeps 3 builds.",
+   "change_number": 193,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0249L02",
+   "lego": "before you go = antes de que te vayas",
+   "seed": 249,
+   "row_id": "spa_for_eng:S0249L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "You go",
+    "es": "Vayas",
+    "role": "build",
+    "updated_at": "2026-10-12T11:41:51.254883+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'Vayas' — part of LEGO.",
+   "change_number": 194,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0249L02",
+   "lego": "before you go = antes de que te vayas",
+   "seed": 249,
+   "row_id": "spa_for_eng:S0249L02U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I do not want you to go before we finish the conversation",
+    "es": "No quiero que te vayas antes de que terminemos la conversación",
+    "role": "use",
+    "updated_at": "2026-10-13T01:33:22.682434+00:00",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I want to finish the conversation before you go",
+    "es": "Quiero terminar la conversación antes de que te vayas",
+    "role": "use"
+   },
+   "reason": "LEGO restored (was 'que te vayas antes de que terminemos').",
+   "change_number": 195,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0266L01",
+   "lego": "an old friend = un viejo amigo",
+   "seed": 266,
+   "row_id": "spa_for_eng:S0266L01B01",
+   "action": "DELETE",
+   "live": {
+    "en": "Old",
+    "es": "Viejo",
+    "role": "build",
+    "updated_at": "2026-10-12T17:21:37.207987+00:00",
+    "position": 2
+   },
+   "proposed": null,
+   "reason": "Bare 'Viejo' — part of LEGO.",
+   "change_number": 196,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0266L01",
+   "lego": "an old friend = un viejo amigo",
+   "seed": 266,
+   "row_id": "NEW (S0266L01 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I have an old friend",
+    "es": "Tengo un viejo amigo",
+    "role": "build"
+   },
+   "reason": "Keeps 3 builds.",
+   "change_number": 197,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0285L01",
+   "lego": "she speaks = habla",
+   "seed": 285,
+   "row_id": "spa_for_eng:S0285L01U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "Because I want to know people who speak Spanish",
+    "es": "Porque quiero conocer a personas que hablan español",
+    "role": "use",
+    "updated_at": "2026-10-28T18:39:25.530762+00:00",
+    "position": 14
+   },
+   "proposed": {
+    "en": "I want to get to know that woman because she speaks Spanish",
+    "es": "Quiero conocer a esa mujer porque habla español",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 198,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "hablan, not habla — a person change, so a K50 break (seed 22 reprise).",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The person/form change can be repaired in a natural specific-person sentence; plural hablan is a defect, not a deletion instruction.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0285L01",
+   "lego": "she speaks = habla",
+   "seed": 285,
+   "row_id": "spa_for_eng:S0285L01U10",
+   "action": "DELETE",
+   "live": {
+    "en": "It is more important to speak often than to be perfect and she does that",
+    "es": "Es más importante hablar a menudo que ser perfecto y ella lo hace",
+    "role": "use",
+    "updated_at": "2026-11-09T16:39:24.024732+00:00",
+    "position": 17
+   },
+   "proposed": null,
+   "reason": "repeats 'speak often' and reads oddly",
+   "change_number": 199,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO ('lo hace').",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Replacing the vague does-that ending by ella habla a menudo restores the LEGO directly.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "DELETE (v3 rewrite dropped: doubtful)",
+   "v3_proposed": {
+    "en": "It's more important to speak often than to be perfect, and she speaks often",
+    "es": "Es más importante hablar a menudo que ser perfecto, y ella habla a menudo",
+    "role": "use"
+   }
+  },
+  {
+   "lego_id": "S0289L02",
+   "lego": "going to be = va a estar",
+   "seed": 289,
+   "row_id": "spa_for_eng:S0289L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "I think it is going to be too late",
+    "es": "Creo que va a ser demasiado tarde",
+    "role": "use",
+    "updated_at": "2026-11-04T02:21:07.699396+00:00",
+    "position": 11
+   },
+   "proposed": {
+    "en": "I think he's going to be very tired",
+    "es": "Creo que va a estar muy cansado",
+    "role": "use"
+   },
+   "reason": "'too late' needs ser, so this changes to a temporary state that takes estar",
+   "change_number": 200,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "va a ser, not va a estar — correct Spanish for 'too late', so it cannot hold the LEGO.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "The too-late predicate needs ser, but a taught temporary-state adjective gives va a estar a natural home.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0298L01",
+   "lego": "there is left = queda",
+   "seed": 298,
+   "row_id": "spa_for_eng:S0298L01U07",
+   "action": "REWRITE",
+   "live": {
+    "en": "There was still a lot of time left when she wanted to stop",
+    "es": "Todavía quedaba mucho tiempo cuando quería parar",
+    "role": "use",
+    "updated_at": "2026-10-13T01:50:08.954214+00:00",
+    "position": 12
+   },
+   "proposed": {
+    "en": "There is a lot of time left, but she wants to stop",
+    "es": "Queda mucho tiempo, pero ella quiere parar",
+    "role": "use"
+   },
+   "reason": "quedaba is a K50 break → queda (drops todavía/still: English 'still' first taught s410).",
+   "change_number": 201,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0298L02",
+   "lego": "I've got nothing left to say = no me queda nada que decir",
+   "seed": 298,
+   "row_id": "spa_for_eng:S0298L02U07",
+   "action": "DELETE",
+   "live": {
+    "en": "There is nothing left to say so let us talk about something else",
+    "es": "No queda nada que decir así que hablemos de otra cosa",
+    "role": "use",
+    "updated_at": "2026-11-04T02:21:53.531559+00:00",
+    "position": 15
+   },
+   "proposed": null,
+   "reason": "No 'me' (the LEGO's clitic is missing; K50/K51); with it added, it duplicates U14.",
+   "change_number": 202,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0389L01",
+   "lego": "that person over there = esa persona de allí",
+   "seed": 389,
+   "row_id": "spa_for_eng:S0389L01B02",
+   "action": "DELETE",
+   "live": {
+    "en": "something from there",
+    "es": "algo de allí",
+    "role": "build",
+    "updated_at": "2026-10-13T02:11:03.652836+00:00",
+    "position": 4
+   },
+   "proposed": null,
+   "reason": "'algo de allí' — no LEGO.",
+   "change_number": 203,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0389L01",
+   "lego": "that person over there = esa persona de allí",
+   "seed": 389,
+   "row_id": "spa_for_eng:S0389L01U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "she was looking for someone over there",
+    "es": "estaba buscando a alguien de allí",
+    "role": "use",
+    "updated_at": "2026-11-09T16:39:40.86785+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "she was looking for that person over there",
+    "es": "estaba buscando a esa persona de allí",
+    "role": "use"
+   },
+   "reason": "alguien → esa persona.",
+   "change_number": 204,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0389L01",
+   "lego": "that person over there = esa persona de allí",
+   "seed": 389,
+   "row_id": "NEW (S0389L01 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I know that person over there",
+    "es": "conozco a esa persona de allí",
+    "role": "build"
+   },
+   "reason": "Keeps builds at 2+ that are not bare.",
+   "change_number": 205,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0497L02",
+   "lego": "as if you needed to sleep = como si necesitaras dormir",
+   "seed": 497,
+   "row_id": "spa_for_eng:S0497L02U05",
+   "action": "REWRITE",
+   "live": {
+    "en": "you didn't tell me you needed to sleep",
+    "es": "no me dijiste que necesitaras dormir",
+    "role": "use",
+    "updated_at": "2026-10-13T02:39:31.200565+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "You speak as if you needed to sleep",
+    "es": "Hablas como si necesitaras dormir",
+    "role": "use"
+   },
+   "reason": "checker suggestion adopted",
+   "change_number": 206,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO; also ungrammatical (dijiste que necesitaras).",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "A natural as-if frame with the exact LEGO is available. The missing como si is enough to identify the original containment defect; no extra claim about all negative-report subjunctives is needed.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0503L03",
+   "lego": "but that one's mine = pero ese es mío",
+   "seed": 503,
+   "row_id": "spa_for_eng:S0503L03U02",
+   "action": "REWRITE",
+   "live": {
+    "en": "I hate that but it is mine",
+    "es": "odio eso pero es mío",
+    "role": "use",
+    "updated_at": "2026-10-13T02:41:52.151721+00:00",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I don't want this one, but that one's mine",
+    "es": "No quiero este, pero ese es mío",
+    "role": "use"
+   },
+   "reason": "checker's 'I hate that, but that one's mine' contradicts itself; tuyo/yours is untaught",
+   "change_number": 207,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "No LEGO.",
+   "basis": "redrafted (#173)",
+   "check_164_reason": "Adding ese directly repairs containment and changing the English to that one's is straightforward.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0520L02",
+   "lego": "to the whole family = a toda la familia",
+   "seed": 520,
+   "row_id": "spa_for_eng:S0520L02U04",
+   "action": "REWRITE",
+   "live": {
+    "en": "it makes sense to the whole family",
+    "es": "tiene sentido para toda la familia",
+    "role": "use",
+    "updated_at": "2026-11-05T00:44:13.888407+00:00",
+    "position": 10
+   },
+   "proposed": {
+    "en": "I want to explain that to the whole family",
+    "es": "Quiero explicar eso a toda la familia",
+    "role": "use"
+   },
+   "reason": "'makes sense' needs para, so the verb changes to one that takes a",
+   "change_number": 208,
+   "check_164": "FAIL",
+   "v3_status": "REDRAFTED (FAIL in #164)",
+   "v2_action": "DELETE",
+   "v2_proposed": null,
+   "v2_reason": "para toda la familia, not a toda la familia.",
+   "basis": "checker suggestion adopted",
+   "check_164_reason": "Makes-sense requires para here, but a taught communication verb naturally takes a toda la familia; deletion is unnecessary.",
+   "taught_check": "all words attested at or before this seed/LEGO",
+   "v4_status": "REWRITE kept from v3"
+  },
+  {
+   "lego_id": "S0531L02",
+   "lego": "the game = el juego",
+   "seed": 531,
+   "row_id": "spa_for_eng:S0531L02B01",
+   "action": "DELETE",
+   "live": {
+    "en": "game",
+    "es": "juego",
+    "role": "build",
+    "updated_at": "2026-10-12T13:42:45.503706+00:00",
+    "position": 1
+   },
+   "proposed": null,
+   "reason": "Bare 'juego' — part of LEGO.",
+   "change_number": 209,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  },
+  {
+   "lego_id": "S0531L02",
+   "lego": "the game = el juego",
+   "seed": 531,
+   "row_id": "NEW (S0531L02 NEW-B1)",
+   "action": "NEW-B",
+   "live": null,
+   "proposed": {
+    "en": "I like the game",
+    "es": "me gusta el juego",
+    "role": "build"
+   },
+   "reason": "Keeps 3 builds.",
+   "change_number": 210,
+   "check_164": "PASS",
+   "v3_status": "UNCHANGED (PASS in #164)",
+   "v4_status": "unchanged (PASS in #164)"
+  }
+ ],
+ "rule": "Kai 11 Nov (loosened): rewrite only where a natural rewrite comes easily; otherwise delete, because phrases can be backfilled later; delete doubtful lines if nothing depends on them; never empty a basket that matters"
+}
