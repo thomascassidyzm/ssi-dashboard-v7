@@ -4,7 +4,7 @@
 # the batch is atomic) → sweep audio (SKIP_DRY) → sweep link → verify both stages. Then wakes the job.
 cd "$(dirname "$0")/../.."
 T=tools/course-optimization/spa-mood-never-bare-2026-11-11.cjs
-S=${CS_SCRATCH:-/tmp}/rest-seeds.json
+S="$(pwd)/ops/spa-mood-170/run/seeds.json"
 seeds() { curl -s --max-time 600 http://localhost:3470/api/production/spa_for_eng/seeds -o "$S"; }
 echo "== v2 audio $(date -u +%H:%M)"; seeds; STAGE=v2 APPLY_CONFIRM=1 node $T audio "$S"
 echo "== v2 link $(date -u +%H:%M)"; seeds; STAGE=v2 APPLY_CONFIRM=1 node $T link "$S"
