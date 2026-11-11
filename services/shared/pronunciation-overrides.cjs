@@ -98,6 +98,20 @@ const RULES = Object.freeze({
       '[得]',
     ]),
   }),
+  // swe_for_eng: the English line "does" was read "dose" (doe plural) by Cartesia (#870·AG, learner bug e7e170b1). Kai
+  // picked the IPA take on 11 Nov 2026 (page d/23a2b585, #133·AH; approved #137·AH). The cue 9d292e17 was re-recorded
+  // with it by #139·AH (12:39Z). Listed so the S0059L02 intro's spliced 'does' piece, and any later render of the bare
+  // line, are said the same way. Only the whole line "does" is matched; a longer line holding "does" is sent as stored.
+  swe_for_eng: Object.freeze({
+    ruling: 'Kai 2026-11-11, #133·AH pick (d/23a2b585), approved #137·AH, applied #139·AH',
+    // Before this, every swe_for_eng "does" clip was the misread one (the old cue object, shared with kor_for_eng's
+    // d0db1e99). The #139·AH cue re-record landed after it, so that take stays reusable.
+    since: '2026-11-11T12:35:00Z',
+    char: 'does',
+    say: '<<ˈ|d|ʌ|z>>',
+    reading: 'duz (third person of do), never "dose"',
+    lines: Object.freeze(['[does]']),
+  }),
 })
 
 /**
