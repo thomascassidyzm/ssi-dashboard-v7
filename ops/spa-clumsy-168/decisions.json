@@ -1,0 +1,49 @@
+{
+ "phrases": {
+  "S0201L02B01": {
+   "action": "upd",
+   "before": {
+    "known": "What was going to happen?",
+    "target": "¿Lo que iba a pasar?",
+    "clips": {
+     "known": "26d4a17a-b220-4fda-a491-9cc6e3ff7561",
+     "target1": "5b5731c9-7074-47a0-a1f6-9576b1d1426f",
+     "target2": "2f63e9eb-08f5-4ef3-894a-7adbedff4304"
+    }
+   },
+   "known": "I wanted to know what was going to happen",
+   "target": "Quería saber lo que iba a pasar",
+   "why": "bare-LEGO build (P3; '¿Lo que iba a pasar?' is not valid Spanish) rewritten as the LEGO + quería (S0030L01) + saber; distinct from B06 (we wanted)"
+  },
+  "S0262L01U10": {
+   "action": "upd",
+   "before": {
+    "known": "I don't know who that was yesterday",
+    "target": "No sé quién era ese ayer",
+    "clips": {
+     "known": "da1e3e2f-f63a-44a5-aa67-6945717bc725",
+     "target1": "cfabe885-8e7c-4a33-b90a-7c3cbeca03e7",
+     "target2": "5ee723df-4f69-4a49-a05d-aeb5201279b9"
+    }
+   },
+   "known": "I don't know who that young man was",
+   "target": "No sé quién era ese hombre joven",
+   "why": "bare pronoun 'ese' + ayer was clumsy; the ruled 'ese hombre' duplicated U02, so a distinct variant with joven (S0069L02), the negative twin of U05"
+  },
+  "S0112L05U05": {
+   "action": "upd",
+   "before": {
+    "known": "I wasn't expecting it to feel like this when I started learning a new language",
+    "target": "No lo esperaba sentirme así cuando empecé a aprender un nuevo idioma",
+    "clips": {
+     "known": "20e1c245-f9cc-4941-922c-94407b539a93",
+     "target1": "a0ae9e65-83a8-4f3c-84af-48b235622b1a",
+     "target2": "10257918-f2be-43af-9d70-19a268dd4bc3"
+    }
+   },
+   "known": "I wasn't expecting it when I started to learn this language",
+   "target": "No lo esperaba cuando empecé a aprender este idioma",
+   "why": "ungrammatical '*No lo esperaba sentirme así'; rewritten from taught material only (empecé a S0037L01, aprender S0002L01, este idioma S0101L03)"
+  }
+ }
+}

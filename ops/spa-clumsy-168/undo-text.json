@@ -1,0 +1,143 @@
+{
+ "event_id": "1df1350e-dcf6-4933-80dd-137fc5013be4",
+ "undo_file": "2026-11-11T14-02-13-334Z-1df1350e-dcf6-4933-80dd-137fc5013be4.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0112L05U05",
+   "set": {
+    "known_text": "I wasn't expecting it to feel like this when I started learning a new language",
+    "target_text": "No lo esperaba sentirme así cuando empecé a aprender un nuevo idioma",
+    "known_audio_id": "20e1c245-f9cc-4941-922c-94407b539a93",
+    "target1_audio_id": "a0ae9e65-83a8-4f3c-84af-48b235622b1a",
+    "target2_audio_id": "10257918-f2be-43af-9d70-19a268dd4bc3",
+    "decomposition": [
+     {
+      "known": "I wasn't expecting it",
+      "legoId": "S0112L05",
+      "target": "No lo esperaba",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to feel",
+      "legoId": "S0041L04",
+      "target": " sentirme",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " así",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " cuando",
+      "isGhost": true
+     },
+     {
+      "known": "I started to",
+      "legoId": "S0037L01",
+      "target": " empecé a",
+      "isGhost": false
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " un",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " nuevo",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " idioma",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0262L01U10",
+   "set": {
+    "known_text": "I don't know who that was yesterday",
+    "target_text": "No sé quién era ese ayer",
+    "known_audio_id": "da1e3e2f-f63a-44a5-aa67-6945717bc725",
+    "target1_audio_id": "cfabe885-8e7c-4a33-b90a-7c3cbeca03e7",
+    "target2_audio_id": "5ee723df-4f69-4a49-a05d-aeb5201279b9",
+    "decomposition": [
+     {
+      "known": "I don't know",
+      "legoId": "S0135L01",
+      "target": "No sé",
+      "isGhost": false
+     },
+     {
+      "known": "who was",
+      "legoId": "S0262L01",
+      "target": " quién era",
+      "isGhost": false
+     },
+     {
+      "known": "that man",
+      "legoId": "S0228L01",
+      "target": " ese hombre",
+      "isGhost": false
+     },
+     {
+      "known": "yesterday",
+      "legoId": "S0030L03",
+      "target": " ayer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0201L02B01",
+   "set": {
+    "known_text": "What was going to happen?",
+    "target_text": "¿Lo que iba a pasar?",
+    "known_audio_id": "26d4a17a-b220-4fda-a491-9cc6e3ff7561",
+    "target1_audio_id": "5b5731c9-7074-47a0-a1f6-9576b1d1426f",
+    "target2_audio_id": "2f63e9eb-08f5-4ef3-894a-7adbedff4304",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿",
+      "isGhost": true
+     },
+     {
+      "known": "what was going to happen",
+      "legoId": "S0201L02",
+      "target": "Lo que iba a pasar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ]
+}

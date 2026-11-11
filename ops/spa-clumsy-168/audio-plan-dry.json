@@ -1,0 +1,154 @@
+[
+ {
+  "role": "target1",
+  "text": "Quería saber lo que iba a pasar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0201L02B01",
+    "slot": "target1",
+    "current": "5b5731c9-7074-47a0-a1f6-9576b1d1426f"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería saber lo que iba a pasar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0201L02B01",
+    "slot": "target2",
+    "current": "2f63e9eb-08f5-4ef3-894a-7adbedff4304"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted to know what was going to happen",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0201L02B01",
+    "slot": "known",
+    "current": "26d4a17a-b220-4fda-a491-9cc6e3ff7561"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No sé quién era ese hombre joven",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0262L01U10",
+    "slot": "target1",
+    "current": "cfabe885-8e7c-4a33-b90a-7c3cbeca03e7"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No sé quién era ese hombre joven",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0262L01U10",
+    "slot": "target2",
+    "current": "5ee723df-4f69-4a49-a05d-aeb5201279b9"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 32
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't know who that young man was",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0262L01U10",
+    "slot": "known",
+    "current": "da1e3e2f-f63a-44a5-aa67-6945717bc725"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No lo esperaba cuando empecé a aprender este idioma",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0112L05U05",
+    "slot": "target1",
+    "current": "a0ae9e65-83a8-4f3c-84af-48b235622b1a"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No lo esperaba cuando empecé a aprender este idioma",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0112L05U05",
+    "slot": "target2",
+    "current": "10257918-f2be-43af-9d70-19a268dd4bc3"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wasn't expecting it when I started to learn this language",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0112L05U05",
+    "slot": "known",
+    "current": "20e1c245-f9cc-4941-922c-94407b539a93"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 59
+  }
+ }
+]
