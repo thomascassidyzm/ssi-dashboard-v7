@@ -1,0 +1,552 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "9a53e124-128a-41da-b063-032a1d592201",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:23:52.717Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-23-52-717Z-9a53e124-128a-41da-b063-032a1d592201.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02B02",
+      "set": {
+        "known_text": "we must change again",
+        "target_text": "caithfidh muid athrú arís"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02B01",
+      "set": {
+        "known_text": "to change now or tomorrow",
+        "target_text": "athrú anois nó amárach"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "5a291471-e029-40eb-a512-832591dc94d3",
+      "set": {
+        "known_text": "that it might be",
+        "target_text": "go bhféadfadh sé a bheith",
+        "components": [
+          {
+            "known": "that",
+            "target": "go"
+          },
+          {
+            "known": "it might be",
+            "target": "bhféadfadh sé a bheith"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "e2f8eae9-b3b4-461a-9372-0cdbf2355937",
+      "set": {
+        "known_text": "worked",
+        "target_text": "d'oibrigh"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "2cb9c6da-e07b-4083-9003-b2025c7d8f2a",
+      "set": {
+        "target_text": "labhairt faoi rud éigin difriúil",
+        "components": [
+          {
+            "known": "talk about",
+            "target": "labhairt faoi"
+          },
+          {
+            "known": "something",
+            "target": "rud éigin"
+          },
+          {
+            "known": "different",
+            "target": "difriúil"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "90bb006d-aaca-4fbb-b47e-73df9ccf5d1a",
+      "set": {
+        "known_text": "nothing seems",
+        "target_text": "Ní cosúil",
+        "components": [
+          {
+            "known": "not",
+            "target": "Ní"
+          },
+          {
+            "known": "seems",
+            "target": "cosúil"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "122061f0-b6d2-4a8c-b815-76cfa51c970b",
+      "set": {
+        "known_text": "that anything is",
+        "target_text": "go bhfuil aon rud",
+        "components": [
+          {
+            "known": "that",
+            "target": "go bhfuil"
+          },
+          {
+            "known": "any",
+            "target": "aon"
+          },
+          {
+            "known": "thing",
+            "target": "rud"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "bb473989-0ead-419d-ab37-ecddfec13dbc",
+      "set": {
+        "is_new": false
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "9b1c4d8a-12b0-4511-85a5-6f078c00fdb7",
+      "set": {
+        "target_text": "ar theastaigh ó mo chara",
+        "components": [
+          {
+            "known": "where",
+            "target": "ar"
+          },
+          {
+            "known": "was needed",
+            "target": "theastaigh"
+          },
+          {
+            "known": "from",
+            "target": "ó"
+          },
+          {
+            "known": "my",
+            "target": "mo"
+          },
+          {
+            "known": "friend",
+            "target": "chara"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "d959404e-a224-4e95-ad85-4d057453e265",
+      "set": {
+        "target_text": "an méid a bhí sise a rá",
+        "components": [
+          {
+            "known": "what",
+            "target": "an méid"
+          },
+          {
+            "known": "that was",
+            "target": "a bhí"
+          },
+          {
+            "known": "she",
+            "target": "sise"
+          },
+          {
+            "known": "saying",
+            "target": "a rá"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "4047189a-2c8c-4bdb-b57b-6a3506abea43",
+      "set": {
+        "known_text": "less",
+        "target_text": "níos lú",
+        "components": [
+          {
+            "known": "more",
+            "target": "níos"
+          },
+          {
+            "known": "less",
+            "target": "lú"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "45dcc8b3-7597-46bc-888b-62cd36286a96",
+      "set": {
+        "known_text": "that is",
+        "target_text": "Tá sé sin",
+        "components": [
+          {
+            "known": "is",
+            "target": "Tá"
+          },
+          {
+            "known": "it",
+            "target": "sé"
+          },
+          {
+            "known": "that",
+            "target": "sin"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b7163fd2-4c0d-4599-96fd-f2eb21707f02",
+      "set": {
+        "target_text": "an fáth ar theastaigh uaim",
+        "components": [
+          {
+            "known": "the reason",
+            "target": "an fáth"
+          },
+          {
+            "known": "that I wanted",
+            "target": "ar theastaigh uaim"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "b13deab8-139c-413b-85e1-b8a34bd942ba",
+      "set": {
+        "target_text": "sin é an fáth",
+        "components": [
+          {
+            "known": "that",
+            "target": "Sin"
+          },
+          {
+            "known": "it",
+            "target": "é"
+          },
+          {
+            "known": "the reason",
+            "target": "an fáth"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f3dfb09c-f737-4d18-938e-a44c4f3ed5bc",
+      "set": {
+        "known_text": "that we are",
+        "target_text": "atá muid",
+        "components": [
+          {
+            "known": "that is",
+            "target": "atá"
+          },
+          {
+            "known": "we",
+            "target": "muid"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "161bbbe3-4ec6-4474-b94c-52567cba7e32",
+      "set": {
+        "known_text": "on what",
+        "target_text": "ar an méid",
+        "components": [
+          {
+            "known": "on",
+            "target": "ar"
+          },
+          {
+            "known": "the",
+            "target": "an"
+          },
+          {
+            "known": "what",
+            "target": "méid"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "11273f52-15b1-42ea-af70-d603be5fe926",
+      "set": {
+        "type": "A",
+        "target_text": "athrú",
+        "components": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 659,
+      "set": {
+        "target_text": "an bhféadfadh sibh ar fad é sin a rá?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 620,
+      "set": {
+        "target_text": "Tá sé an-fhada ó chonaic muid a chéile go deireanach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 619,
+      "set": {
+        "target_text": "Tá sé i bhfad ó chonaic muid a chéile"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 618,
+      "set": {
+        "known_text": "it doesn't feel like a long time",
+        "target_text": "Ní bhraitheann sé fada"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 576,
+      "set": {
+        "known_text": "it has been very upsetting waiting",
+        "target_text": "Tá sé tar éis a bheith an-chorraitheach ag fanacht"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 575,
+      "set": {
+        "known_text": "it's been upsetting",
+        "target_text": "Tá sé tar éis a bheith corraitheach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 562,
+      "set": {
+        "target_text": "Níl uaim ach dul ann go sábháilte"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 538,
+      "set": {
+        "known_text": "I don't want to seem as though I don't care",
+        "target_text": "Ní mian liom go mbeadh cuma orm nach bhfuil suim agam ann"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 531,
+      "set": {
+        "target_text": "Ní fíor gur féidir le haon duine an cluiche a bhuachan"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 522,
+      "set": {
+        "target_text": "bímis ar aon intinn gur rud amaideach a bhí ann an fhírinne a insint"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 511,
+      "set": {
+        "target_text": "thóg sé roinnt uaireanta ar an nuacht gach duine san oifig a bhaint amach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 434,
+      "set": {
+        "target_text": "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 433,
+      "set": {
+        "target_text": "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 395,
+      "set": {
+        "target_text": "caithfidh muid casadh ar chlé ag an gcúinne seo chugainn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 371,
+      "set": {
+        "target_text": "chuaigh mé féachaint ar scannán Dé Céadaoin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 315,
+      "set": {
+        "target_text": "ceapaim nach bhféadfadh sé an carr a bhí uaidh a cheannach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 261,
+      "set": {
+        "target_text": "ceapaim go bhféadfadh sé a bheith rud éigin tábhachtach"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 199,
+      "set": {
+        "target_text": "d'oibrigh mo chara in oifig fadó"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 186,
+      "set": {
+        "target_text": "an mian leat labhairt faoi rud éigin difriúil an tseachtain seo chugainn?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 146,
+      "set": {
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair ó rinne muid iarracht é a dheisiú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 138,
+      "set": {
+        "target_text": "seo an áit ar theastaigh ó mo chara bualadh linn"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 132,
+      "set": {
+        "known_text": "that's less exciting than what she was saying",
+        "target_text": "Tá sé sin níos lú corraitheach ná an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 127,
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 105,
+      "set": {
+        "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 104,
+      "set": {
+        "target_text": "caithfidh muid athrú a dhéanamh ar an méid atá muid a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04U03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04U02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04B03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04B02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0146L04B01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U07"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U06"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U05"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U04"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01B04"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01B03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01B02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0142L01B01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0127L03U01"
+    }
+  ]
+}

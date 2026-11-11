@@ -175,3 +175,53 @@ describe('one old take is the old words of two edited lines (job #159)', () => {
     expect(rr.withEditors(list, new Map()).items.map((i) => i.lineId)).toEqual([b01.id])
   })
 })
+
+// AUKE'S CARD (fry_for_eng, Kai 2026-11-11, job #234): after #229 (takommende → takommend jier) the
+// seed-176 sentence take and LEGO take were shared out to unread seed-176 phrases, which the card
+// then showed as "text changed" with words those lines never had. Texts are the live ones.
+describe('a shared take must read as the line before one edit (job #234)', () => {
+  const F = 'fry_for_eng'
+  const ph = (id, text) => ({ id: `phrase:${F}:${id}:target1`, kind: 'phrase', courseCode: F, seedNumber: 176, role: 'target1', text, recorded: false })
+  const seed = { id: `seed:x176:target1`, kind: 'seed', courseCode: F, seedNumber: 176, role: 'target1', text: 'Ik sil him freegje oft er takommend jier helpe kin.', recorded: false }
+  const lego = { id: `lego:l176:target1`, kind: 'lego', courseCode: F, seedNumber: 176, role: 'target1', text: 'takommend jier', recorded: false }
+  const unread = [
+    ph('S0176L01B02', 'miskien takommend jier'),
+    ph('S0176L01B03', 'ik sil takommend jier oefenje'),
+    ph('S0176L01U02', 'ik kin takommend jier weromkomme'),
+    ph('S0176L02U06', "ik sil him freegje om't ik it net begryp"),
+    ph('S0176L03B03', 'sy wol witte oft er helpe kin'),
+    ph('S0176L03U02', 'silstû freegje oft er helpe kin?'),
+  ]
+  const take = (id, text, at) => ({ id, text, course_code: F, role: 'target1', seedNumber: 176, created_at: at })
+  const takes = [
+    take('seedTake', 'Ik sil him freegje oft er takommende jier helpe kin.', '2026-11-03T13:57:02Z'),
+    take('legoTake', 'takommende jier', '2026-11-04T17:48:39Z'),
+  ]
+
+  it('the seed and LEGO keep their own old takes; no unread phrase is handed one', () => {
+    const m = rr.pairTextChanges([seed, lego, ...unread], new Set(['x']), takes)
+    expect(m.get(seed.id).id).toBe('seedTake')
+    expect(m.get(lego.id).id).toBe('legoTake')
+    for (const l of unread) expect(m.has(l.id)).toBe(false)
+    expect(m.shared.size).toBe(0)
+  })
+
+  it('a phrase that said the seed sentence word for word still shares the seed take (seed 57)', () => {
+    const s57 = { ...seed, id: 'seed:x57:target1', seedNumber: 57, text: "Ik kin my net heuge hoe't ik sizze moat wat ik sizze woe." }
+    const u07 = { ...ph('S0057L02U07', "ik kin my net heuge hoe't ik sizze moat wat ik sizze woe"), seedNumber: 57 }
+    const b01 = { ...ph('S0057L01B01', "ik kin my net heuge hoe't ik antwurdzje soe"), seedNumber: 57 }
+    const old = { ...take('t57', "Ik kin net mear betinke hoe't ik sizze moat wat ik sizze woe.", '2026-11-03T15:02:57Z'), seedNumber: 57 }
+    const m = rr.pairTextChanges([s57, u07, b01], new Set(['x']), [old])
+    expect(m.get(s57.id).id).toBe('t57')
+    expect(m.get(u07.id).id).toBe('t57')
+    expect(m.shared.has(u07.id)).toBe(true)
+    expect(m.has(b01.id)).toBe(false)
+  })
+
+  it('couldBeEditOf: one edited stretch passes, a different sentence does not', () => {
+    expect(rr.couldBeEditOf('ond sut wyt ti’n teimlo?', 'ond sut dach chi’n teimlo?')).toBe(true)
+    expect(rr.couldBeEditOf('takommend jier', 'takommende jier')).toBe(true)
+    expect(rr.couldBeEditOf('miskien takommend jier', 'takommende jier')).toBe(false)
+    expect(rr.couldBeEditOf('sy wol witte oft er helpe kin', 'Ik sil him freegje oft er takommende jier helpe kin.')).toBe(false)
+  })
+})

@@ -88,6 +88,7 @@ const { planPresentationRefresh, newestRenderedPresentation } = require('./prese
 // the LEGO, never template-overwritten, never silently skipped, maintained by an
 // agent when the LEGO moves, escalated to Kai only on a concept break.
 const humanAuthored = require('../shared/human-authored-presentations.cjs')
+const introAuthorship = require('../shared/intro-authorship.cjs')  // the SOFT guard on hand-written intros (job #247·AH)
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
@@ -252,6 +253,7 @@ const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../sha
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
 const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
+const { slotVoiceException } = require('../shared/slot-voice-exceptions.cjs')
 const { mayReplace: mayReplaceHumanTake } = require('../shared/human-take-guard.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
@@ -779,6 +781,9 @@ function runSpendCap(plannedItems, { ceilingChars = Infinity, ratio = RENDER_ATT
     cap.spent += chars
     cap.renders++
   }
+  // Whether checkProgress(attached) would trip. The route asks this first so it
+  // can confirm against a measured count before stopping a pass (job #221·AH).
+  cap.wouldTrip = (attached) => !cap.tripped && cap.renders >= warmup && cap.renders > ratio * Math.max(0, attached || 0)
   // Call after each batch with every slot the pass has filled so far.
   cap.checkProgress = (attached) => {
     if (cap.tripped || cap.renders < warmup) return
@@ -823,6 +828,39 @@ const TEXT_SLOT_COLUMNS = {
   known:   [['course_practice_phrases', 'known_text', 'known_audio_id'], ['course_legos', 'known_text', 'known_audio_id'], ['course_seeds', 'known_text', 'known_audio_id']],
   target1: [['course_practice_phrases', 'target_text', 'target1_audio_id'], ['course_legos', 'target_text', 'target1_audio_id'], ['course_seeds', 'target_text', 'target1_audio_id']],
   target2: [['course_practice_phrases', 'target_text', 'target2_audio_id'], ['course_legos', 'target_text', 'target2_audio_id'], ['course_seeds', 'target_text', 'target2_audio_id']],
+}
+
+/**
+ * MEASURED FILLS (job #221·AH, 2026-11-11). The render/attach breaker's own
+ * tally is attributed: each render counts the slots attachClipToNullSlots can
+ * tie to its clip by EXACT text. Slots filled any other way — the
+ * audio_autolink trigger matching on normalize_text (a spelling variant of the
+ * line), a sibling clip of the same normalised words, the paged linker — are
+ * filled but not attributed. On ara_eg/ara_lb (prod warm-up 400) every pass
+ * stopped at exactly 400 calls with 68–88 slots attributed while the course
+ * really was filling. So before the breaker stops a pass it MEASURES: the
+ * course's empty text slots in the pass's roles, now vs at pass start. The
+ * count is course-wide, so a concurrent edit that ADDS empty rows (or nulls
+ * links) can only make it read low (the safe direction). The UNSAFE direction
+ * is another writer FILLING or DELETING empty slots on the same course
+ * mid-pass (a second /generate on that course — the route has no busy guard —
+ * a link-clip, a phrase batch-delete): those read as this pass's fills and can
+ * hold the breaker open on a pass that attaches nothing. In that case only the
+ * run budget (runSpendCap.charge) stops the pass. It is only taken when the
+ * breaker is about to trip, so a healthy pass pays nothing for it. Returns
+ * null if any count fails — the breaker then falls back to its attributed
+ * tally, unchanged (it trips as before).
+ */
+async function countEmptyTextSlots(courseCode, roles) {
+  let total = 0
+  for (const role of new Set(roles || [])) {
+    for (const [table, , audioCol] of (TEXT_SLOT_COLUMNS[role] || [])) {
+      const { count, error } = await supabase.from(table).select(audioCol, { count: 'exact', head: true }).eq('course_code', courseCode).is(audioCol, null)
+      if (error || typeof count !== 'number') return null
+      total += count
+    }
+  }
+  return total
 }
 
 /**
@@ -3010,6 +3048,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // spend); it reports what WOULD be authored.
     let authoredIntros = []
     let authorFlags = []
+    let authorIntroWarnings = []
     // authorScope narrows which intros may be authored, so a spend approval
     // can be expressed at the call instead of by editing content. 'all'
     // (default) is today's behaviour; 'lego' authors LEGO intros only and
@@ -3053,6 +3092,27 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
       const bCount = authoredIntros.filter(a => a.frame === 'B').length
       emitProgress(supabase, courseCode, `Authored ${authoredIntros.length} introductions (${bCount} with context, ${authoredIntros.length - bCount} bare)`, { phase: 'audio', action: 'authored', total: authoredIntros.length })
+
+      // THE SOFT GUARD (job #247·AH). An intro is authored here only when the
+      // LEGO has no intro row left at all, so the old words survive only in a
+      // SOFT mark (a hard-marked LEGO never reaches the author). Warn, show the
+      // marked words beside the authored ones, suggest carrying the example —
+      // never block, never substitute.
+      try {
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+        if (introCtx.softMarks.size) {
+          authorIntroWarnings = introAuthorship.warningsFor(introCtx, authoredIntros.filter(a => a.lego_id).map(a => ({
+            lego_id: a.lego_id, oldText: null, newText: a.text, knownText: a.chunk,
+          })))
+          const summary = introAuthorship.summariseWarnings(authorIntroWarnings)
+          if (summary) {
+            for (const w of authorIntroWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+            logger.warn(`[IntroSoftGuard] ${courseCode}: ${summary}`)
+          }
+        }
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: could not check authored intros against soft marks (${guardErr.message}) — authoring carries on`)
+      }
     }
 
     // Step B2: If items are "linkable" but nothing actually linked (link step ran
@@ -3600,6 +3660,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       return { success: true, item }
     }
 
+    // Baseline for the breaker's measured-fill check (countEmptyTextSlots).
+    const textRolesInPass = [...new Set(uniqueNeeded.map(n => n.role).filter(r => TEXT_SLOT_COLUMNS[r]))]
+    const emptyTextSlotsAtStart = textRolesInPass.length ? await countEmptyTextSlots(courseCode, textRolesInPass) : null
+
     // Process in parallel batches
     for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
       // Check for cancellation at the start of each batch
@@ -3621,7 +3685,17 @@ app.post('/generate/:courseCode', async (req, res) => {
       ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
       for (const r of batchResults) if (r.status === 'rejected' && isSpendGuardRefusal(r.reason)) spendCap.noteGuardRefusal(r.reason.message)
-      spendCap.checkProgress(results.attached + results.midLinked)
+      let filledSoFar = results.attached + results.midLinked
+      if (spendCap.wouldTrip(filledSoFar) && emptyTextSlotsAtStart !== null) {
+        const emptyNow = await countEmptyTextSlots(courseCode, textRolesInPass)
+        if (emptyNow !== null) {
+          const measured = emptyTextSlotsAtStart - emptyNow
+          if (measured > filledSoFar) logger.info(`[SpendCap] ${courseCode}: attributed ${filledSoFar} filled slot(s), measured ${measured} (empty ${emptyTextSlotsAtStart} → ${emptyNow}) — breaker judges on the measured count`)
+          filledSoFar = Math.max(filledSoFar, measured)
+        }
+      }
+      results.filledMeasured = filledSoFar
+      spendCap.checkProgress(filledSoFar)
       if (spendCap.tripped && !currentWork.cancelled) {
         logger.error(`[SpendCap] ${courseCode}: ${spendCap.tripped} — stopping this pass`)
         currentWork.cancelled = true
@@ -3779,7 +3853,9 @@ app.post('/generate/:courseCode', async (req, res) => {
         issue: f.issue
       })),
       // What happened to every human-authored presentation line (job #506).
-      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])]
+      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])],
+      // Hand-written intros (soft-marked) that authoring replaced — warned, not blocked (job #247·AH).
+      introWarnings: authorIntroWarnings
     })
 
   } catch (error) {
@@ -4864,28 +4940,6 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // =========================================================================
     const componentPresentations = []
 
-    if (dryRun) {
-      return res.json({
-        success: true,
-        dryRun: true,
-        courseCode,
-        template,
-        shortTemplate,
-        targetLangName,
-        count: presentations.length,
-        componentCount: componentPresentations.length,
-        contextStats,
-        humanAuthored: humanAuthoredReport,
-        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
-        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
-      })
-    }
-
-    // Bulk upsert presentation text to course_audio
-    const voiceConfig = course.voice_config || {}
-    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
-    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
-
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
 
@@ -4894,12 +4948,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // presentation-refresh-plan.cjs): a superseded clip and its replacement.
     // The row we compare the new text against is the one the LEARNER CURRENTLY
     // HEARS — the newest rendered candidate — never a pending placeholder.
+    // Read before the dry-run return (job #247·AH) so a preview can warn too;
+    // `text` is read for the same reason.
     const existingByLegoId = new Map()
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: existing } = await supabase
         .from('course_audio')
-        .select('id, lego_id, text_normalized, s3_key, origin, created_at')
+        .select('id, lego_id, text, text_normalized, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -4914,6 +4970,60 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         }
       }
     }
+
+    // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH). An intro carrying
+    // hand-authored wording — an "as in" example, a line no template produces,
+    // or a soft mark — that this run would replace is WARNED about, old vs new,
+    // with a suggestion to carry the old example where it still contains the
+    // LEGO. Nothing is blocked and nothing is substituted: the run writes what
+    // it always wrote. Hard-marked LEGOs are left to the hard guard above.
+    // Warn-only means it can never take the rebuild down: any failure here
+    // leaves no warnings and the run carries on exactly as it did before (#254).
+    let introWarnings = []
+    let introWarningSummary = null
+    try {
+      const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+      introWarnings = introAuthorship.warningsFor(introCtx, presentations.map(p => ({
+        lego_id: p.lego_id,
+        oldText: existingByLegoId.get(p.lego_id)?.text || null,
+        newText: p.presentation_text,
+        knownText: p.known,
+      })), { hardMarkedIds: new Set(presentations.filter(p => p.human_authored).map(p => p.lego_id)) })
+      introWarningSummary = introAuthorship.summariseWarnings(introWarnings)
+      if (introWarningSummary) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarningSummary}`)
+        for (const w of introWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+      }
+      for (const p of introCtx.problems) logger.warn(`[IntroSoftGuard] ${courseCode}: ${p} — warnings made from what could be read`)
+    } catch (guardErr) {
+      introWarnings = []
+      introWarningSummary = null
+      logger.warn(`[IntroSoftGuard] ${courseCode}: could not check intros for hand-authored wording (${guardErr.message}) — rebuild carries on`)
+    }
+
+    if (dryRun) {
+      return res.json({
+        success: true,
+        dryRun: true,
+        courseCode,
+        template,
+        shortTemplate,
+        targetLangName,
+        count: presentations.length,
+        componentCount: componentPresentations.length,
+        contextStats,
+        humanAuthored: humanAuthoredReport,
+        introWarnings,
+        introWarningSummary,
+        sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
+        componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
+      })
+    }
+
+    // Bulk upsert presentation text to course_audio
+    const voiceConfig = course.voice_config || {}
+    // One resolver (presentation-author.cjs): an English-known course's intro is never the Sonia literal that stood here (Tom 2026-10-16/25).
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
 
     // MAKE-BEFORE-BREAK (Kai's C0 ruling, 2026-08-27; canon clash C23).
     //
@@ -5319,6 +5429,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       componentUnchanged: compTextUnchanged,
       contextStats,
       humanAuthored: humanAuthoredReport,
+      introWarnings,
+      introWarningSummary,
       message: `${humanAuthoredReport.length ? `${humanAuthoredReport.length} human-authored line(s): ${humanAuthoredReport.map(o => `${o.lego_id} ${o.outcome}`).join(', ')}. ` : ''}${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
@@ -5699,8 +5811,13 @@ function buildRenderDeps() {
           const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
           if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
           if (rv.status === 'voice') {
-            if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
-            voiceId = rv.voiceId
+            // ONE-SLOT EXCEPTION (shared/slot-voice-exceptions.cjs): a named voice for a slot listed there by a person's
+            // ruling (Kai 2026-11-11, swe_for_eng S0059L02 intro → Tom-006) is kept; every other slot is checked as before.
+            const slotException = voiceId && legoId ? slotVoiceException({ courseCode, legoId, role, voiceId }) : null
+            if (!slotException) {
+              if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
+              voiceId = rv.voiceId
+            }
           }
         }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
@@ -6498,6 +6615,25 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       })
     }
 
+    // THE SOFT GUARD (job #247·AH): new words over an intro that carried
+    // hand-authored wording (an "as in" example, a free line, a soft mark) are
+    // reported in the answer — old vs new, plus a suggestion — never refused.
+    // A hard-marked line is the hard guard's business above.
+    let introWarning = null
+    if (!presentationMark) {
+      try {
+        const { data: legoNow } = await supabase.from('course_legos').select('known_text')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex).maybeSingle()
+        const introCtx = await introAuthorship.loadIntroContext(supabase, course)
+        ;[introWarning = null] = introAuthorship.warningsFor(introCtx, [{
+          lego_id: legoId, oldText: existingRow?.text || null, newText: presentationText, knownText: legoNow?.known_text || '',
+        }])
+        if (introWarning) logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarning.message}`)
+      } catch (guardErr) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}/${legoId}: could not check the old wording (${guardErr.message}) — carrying on`)
+      }
+    }
+
     // ── A-137 REUSE ────────────────────────────────────────────────────────
     // Presentation lines NAME the target language ("The Romanian for: …"), so a
     // sibling match can only ever come from another course teaching the same
@@ -6720,7 +6856,8 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       duration_ms: durationMs,
       text: presentationText,
       created: !existingRow,
-      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {})
+      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {}),
+      ...(introWarning ? { introWarning } : {})
     })
 
   } catch (error) {
@@ -10281,6 +10418,7 @@ module.exports = app
 // Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
 module.exports.attachClipToNullSlots = attachClipToNullSlots
+module.exports.countEmptyTextSlots = countEmptyTextSlots
 module.exports.findExistingAudio = findExistingAudio
 module.exports.findAudioRowForClip = findAudioRowForClip
 module.exports.siblingPodClipIds = siblingPodClipIds

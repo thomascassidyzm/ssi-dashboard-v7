@@ -1,0 +1,433 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "52e662f7-1b7c-43a0-946b-d43f41b51c15",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:28:01.930Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-28-01-930Z-52e662f7-1b7c-43a0-946b-d43f41b51c15.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0147L02B03",
+        "seed_number": 147,
+        "lego_index": 2,
+        "position": 5,
+        "known_text": "she was kind when she saw that I was nervous",
+        "target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+        "word_count": 58,
+        "lego_count": 9,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:51:10.930Z",
+        "target_syllable_count": null,
+        "phrase_role": "build",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:33.379Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "bhí",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sí",
+            "isGhost": true
+          },
+          {
+            "known": "very kind",
+            "legoId": "S0142L02",
+            "target": " an-deas",
+            "isGhost": false
+          },
+          {
+            "known": "when she saw that I was",
+            "legoId": "S0147L02",
+            "target": " nuair a chonaic sí go raibh mé",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "nervous",
+            "legoId": "S0147L01",
+            "target": " neirbhíseach",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0112L05U09",
+        "seed_number": 112,
+        "lego_index": 5,
+        "position": 17,
+        "known_text": "I think that was something very important to understand before we go any further",
+        "target_text": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé dul",
+        "word_count": 77,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T02:08:27.100Z",
+          "known_score": 7,
+          "target_score": 7
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:48:30.607Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": null,
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:27:56.447Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I think",
+            "legoId": "S0089L01",
+            "target": "ceapaim",
+            "isGhost": false
+          },
+          {
+            "known": "That was",
+            "legoId": "S0112L05",
+            "target": " bhí sé sin",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " rud",
+            "isGhost": true
+          },
+          {
+            "known": "important",
+            "legoId": "S0065L02",
+            "target": " tábhachtach",
+            "isGhost": false
+          },
+          {
+            "known": "his",
+            "legoId": "S0052L05",
+            "target": " a",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " thuigeann",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " tú",
+            "isGhost": true
+          },
+          {
+            "known": "before I have to go",
+            "legoId": "S0025L03",
+            "target": " sula gcaithfidh mé imeacht",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0156L04U10",
+      "set": {
+        "known_text": "it is time to go home now but I want to meet again tonight next week",
+        "target_text": "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L03U06",
+      "set": {
+        "known_text": "I think it changes our brain when we learn something new and it is good to keep working",
+        "target_text": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus tá sé maith leanúint ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0097L03U05",
+      "set": {
+        "target_text": "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0097L02U07",
+      "set": {
+        "target_text": "tá mé réidh le dul ach tá beagán níos mó ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02U14",
+      "set": {
+        "known_text": "it is important to say what you want to say without worrying about mistakes",
+        "target_text": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhím buartha faoi bhotúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0279L01U05",
+      "set": {
+        "known_text": "she was worried because there wasn't much time left to fix everything before I had to leave"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0270L04U01",
+      "set": {
+        "known_text": "I was worried I would be late because I had too much work to do before I could leave"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0246L04U03",
+      "set": {
+        "known_text": "I tried to ask her but she was too busy to stop and talk to me"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U11",
+      "set": {
+        "known_text": "I think it is very important to make sure that everybody is happy before we leave"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U15",
+      "set": {
+        "known_text": "I have to ask if she can help me for a while this Sunday morning"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U04",
+      "set": {
+        "known_text": "I have to ask her what are you going to do before she leaves on Sunday"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0147L02U05",
+      "set": {
+        "known_text": "I was glad she was kind when she saw that I was nervous"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U09",
+      "set": {
+        "known_text": "That isn't the reason and I think it's a good idea to meet up this evening because I wanted to ask you about something"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L02U09",
+      "set": {
+        "known_text": "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01U12",
+      "set": {
+        "known_text": "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U10",
+      "set": {
+        "known_text": "I thought that it was a good idea to take time to rest after we finished and before I had to go at the end"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U05",
+      "set": {
+        "known_text": "I thought that it was a good idea and I wanted to ask you before you left about finding people who speak Irish"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U02",
+      "set": {
+        "known_text": "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L01U15",
+      "set": {
+        "known_text": "I think it's a good thing to take time to rest after we finish and before you have to go"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0112L04U04",
+      "set": {
+        "known_text": "I wasn't expecting that our brain changes when we learn something new together"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L02U09",
+      "set": {
+        "known_text": "when we learn something new together it's always very interesting and good"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L01U15",
+      "set": {
+        "known_text": "when we learn something new it's interesting and I always want to keep going"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L01U14",
+      "set": {
+        "known_text": "I wasn't expecting it when we learn something new it changes so much"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L01U11",
+      "set": {
+        "known_text": "when we learn something new it changes our brain and I think that's great"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0111L01U07",
+      "set": {
+        "known_text": "when we learn something new I want to relax and let it sink in"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L01U12",
+      "set": {
+        "known_text": "we are not sure if there is anything else we need to do before we go"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0097L02U02",
+      "set": {
+        "known_text": "I am ready to go so that I can go home"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L02U08",
+      "set": {
+        "known_text": "she was trying to go without saying anything because she did not want anyone to hear"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L02U02",
+      "set": {
+        "known_text": "are you going to help me before I have to go this evening?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L06U12",
+      "set": {
+        "known_text": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I go"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L05U07",
+      "set": {
+        "known_text": "I know there is something I have to say to you about the story before you go, because it's very important"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L02U14",
+      "set": {
+        "known_text": "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L01U08",
+      "set": {
+        "known_text": "he didn't want to take time before he had to go but it was important"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0068L03U13",
+      "set": {
+        "known_text": "I would like to be looking for a good answer to the story before I have to go"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0068L03U07",
+      "set": {
+        "known_text": "I was looking for the answer before I had to go but it was not easy to remember"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0068L01U03",
+      "set": {
+        "known_text": "what answer were you looking for before you had to go"
+      }
+    }
+  ]
+}

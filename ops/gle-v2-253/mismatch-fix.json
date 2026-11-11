@@ -1,0 +1,794 @@
+{
+ "why": "job #253: English/Irish mismatches among the rows #241 touched, all read by hand",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0068L01U03",
+   "set": {
+    "known_text": "what was the answer you were looking for before you have to go now"
+   },
+   "expect": {
+    "known_text": "what answer were you looking for before you had to go",
+    "target_text": "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0068L03U07",
+   "set": {
+    "known_text": "I was looking for the answer before I have to go but it is not easy to remember"
+   },
+   "expect": {
+    "known_text": "I was looking for the answer before I had to go but it was not easy to remember",
+    "target_text": "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0068L03U13",
+   "set": {
+    "known_text": "I would like to be looking for an answer to the story before I have to go"
+   },
+   "expect": {
+    "known_text": "I would like to be looking for a good answer to the story before I have to go",
+    "target_text": "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0069L01U08",
+   "set": {
+    "known_text": "he didn't want to take time before he has to go but it was important"
+   },
+   "expect": {
+    "known_text": "he didn't want to take time before he had to go but it was important",
+    "target_text": "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0089L02U14",
+   "set": {
+    "known_text": "I think that I still have enough time before I have to go, so I'm going to keep trying"
+   },
+   "expect": {
+    "known_text": "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying",
+    "target_text": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0089L05U07",
+   "set": {
+    "known_text": "I know there is something I have to say to you about the story before you have to go, because it's important"
+   },
+   "expect": {
+    "known_text": "I know there is something I have to say to you about the story before you go, because it's very important",
+    "target_text": "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú dul, mar tá sé tábhachtach"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0089L06U12",
+   "set": {
+    "known_text": "I know there is a lot I still need to do today, but I want to practise speaking as often as possible before I have to go"
+   },
+   "expect": {
+    "known_text": "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I go",
+    "target_text": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0093L02U02",
+   "set": {
+    "known_text": "are you going to help me before I have to go tonight?"
+   },
+   "expect": {
+    "known_text": "are you going to help me before I have to go this evening?",
+    "target_text": "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul anocht?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0093L02U08",
+   "set": {
+    "known_text": "she was trying to go without saying anything because she did not want anyone to know"
+   },
+   "expect": {
+    "known_text": "she was trying to go without saying anything because she did not want anyone to hear",
+    "target_text": "bhí sí ag iarraidh dul gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0097L02U02",
+   "set": {
+    "known_text": "I am ready to go so I can go home"
+   },
+   "expect": {
+    "known_text": "I am ready to go so that I can go home",
+    "target_text": "tá mé réidh le dul mar sin is féidir liom dul abhaile"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0103L01U12",
+   "set": {
+    "known_text": "we are not sure if there is something else we need to do before we have to go"
+   },
+   "expect": {
+    "known_text": "we are not sure if there is anything else we need to do before we go",
+    "target_text": "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L01U07",
+   "set": {
+    "known_text": "when we learn something new I want to relax"
+   },
+   "expect": {
+    "known_text": "when we learn something new I want to relax and let it sink in",
+    "target_text": "nuair a fhoghlaimíonn muid rud nua is mian liom scíth a ligean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L01U11",
+   "set": {
+    "known_text": "when we learn something new it changes our brain and I think that's a good thing"
+   },
+   "expect": {
+    "known_text": "when we learn something new it changes our brain and I think that's great",
+    "target_text": "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L01U14",
+   "set": {
+    "known_text": "I wasn't expecting that when we learn something new it changes everything"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting it when we learn something new it changes so much",
+    "target_text": "Ní raibh mé ag súil leis nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú gach rud"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L01U15",
+   "set": {
+    "known_text": "when we learn something new it's interesting and I want to keep going"
+   },
+   "expect": {
+    "known_text": "when we learn something new it's interesting and I always want to keep going",
+    "target_text": "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L02U09",
+   "set": {
+    "known_text": "when we learn something new together it's very interesting and good"
+   },
+   "expect": {
+    "known_text": "when we learn something new together it's always very interesting and good",
+    "target_text": "nuair a fhoghlaimíonn muid rud nua le chéile tá sé an-suimiúil agus maith"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U04",
+   "set": {
+    "known_text": "I wasn't expecting that our brain changes when we learn something new"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting that our brain changes when we learn something new together",
+    "target_text": "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L01U15",
+   "set": {
+    "known_text": "I think it's a good thing to take time to rest after we finish before I have to go"
+   },
+   "expect": {
+    "known_text": "I think it's a good thing to take time to rest after we finish and before you have to go",
+    "target_text": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L02U02",
+   "set": {
+    "known_text": "I think that it's a good idea to take time to rest after we finish because when we learn something new it changes our brain"
+   },
+   "expect": {
+    "known_text": "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new",
+    "target_text": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U05",
+   "set": {
+    "known_text": "I thought that it was a good idea and I wanted to ask you before you leave about meeting people who speak Irish"
+   },
+   "expect": {
+    "known_text": "I thought that it was a good idea and I wanted to ask you before you left about finding people who speak Irish",
+    "target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U10",
+   "set": {
+    "known_text": "I thought that it was a good idea to take time to rest after we finish before I have to go"
+   },
+   "expect": {
+    "known_text": "I thought that it was a good idea to take time to rest after we finished and before I had to go at the end",
+    "target_text": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0125L01U12",
+   "set": {
+    "known_text": "I believe that it's a good thing to make mistakes because when we learn something new it changes our brain and that is the only way it will work"
+   },
+   "expect": {
+    "known_text": "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works",
+    "target_text": "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0125L02U09",
+   "set": {
+    "known_text": "I believe that your idea was very good and it's useful to start speaking as soon as you can because it changes our brain when we learn"
+   },
+   "expect": {
+    "known_text": "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn",
+    "target_text": "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U09",
+   "set": {
+    "known_text": "That isn't the reason and I think it's a good idea to meet up tonight because I wanted to ask you about something"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I think it's a good idea to meet up this evening because I wanted to ask you about something",
+    "target_text": "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0147L02U05",
+   "set": {
+    "known_text": "I was glad she was very kind when she saw that I was nervous"
+   },
+   "expect": {
+    "known_text": "I was glad she was kind when she saw that I was nervous",
+    "target_text": "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0181L05U04",
+   "set": {
+    "known_text": "I have to ask her what are you going to do before she has to leave on Sunday"
+   },
+   "expect": {
+    "known_text": "I have to ask her what are you going to do before she leaves on Sunday",
+    "target_text": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0181L05U15",
+   "set": {
+    "known_text": "I have to ask her if she can help me for a while this Sunday morning"
+   },
+   "expect": {
+    "known_text": "I have to ask if she can help me for a while this Sunday morning",
+    "target_text": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0200L03U11",
+   "set": {
+    "known_text": "I think it is important to make sure that everybody is happy before we leave"
+   },
+   "expect": {
+    "known_text": "I think it is very important to make sure that everybody is happy before we leave",
+    "target_text": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0246L04U03",
+   "set": {
+    "known_text": "I was trying to ask her but she was too busy to stop and talk to me"
+   },
+   "expect": {
+    "known_text": "I tried to ask her but she was too busy to stop and talk to me",
+    "target_text": "bhí mé ag iarraidh ceist a chur uirthi ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0270L04U01",
+   "set": {
+    "known_text": "I was worried I would be late because I had too much work to do before leaving"
+   },
+   "expect": {
+    "known_text": "I was worried I would be late because I had too much work to do before I could leave",
+    "target_text": "bhí mé buartha go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0279L01U05",
+   "set": {
+    "known_text": "she was worried because there wasn't much time left to fix everything before I have to leave"
+   },
+   "expect": {
+    "known_text": "she was worried because there wasn't much time left to fix everything before I had to leave",
+    "target_text": "bhí sí buartha mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0065L02U14",
+   "set": {
+    "known_text": "it is important to say something but I don't worry about making mistakes",
+    "target_text": "Tá sé tábhachtach rud éigin a rá ach ní bhím buartha faoi bhotúin a dhéanamh"
+   },
+   "expect": {
+    "known_text": "it is important to say what you want to say without worrying about mistakes",
+    "target_text": "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhím buartha faoi bhotúin a dhéanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0097L02U07",
+   "set": {
+    "target_text": "tá mé réidh le dul ach tá beagán níos mó ama agam"
+   },
+   "expect": {
+    "known_text": "I am ready to go but I have a little more time",
+    "target_text": "tá mé réidh le dul ach tá beagán níos mó ama"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0097L03U05",
+   "set": {
+    "target_text": "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama agam"
+   },
+   "expect": {
+    "known_text": "as soon as you want I am ready to go but I have a little more time",
+    "target_text": "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03U06",
+   "set": {
+    "known_text": "it changes our brain when we learn something new and I think it is good to keep working",
+    "target_text": "athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus ceapaim go bhfuil sé maith leanúint ag obair"
+   },
+   "expect": {
+    "known_text": "I think it changes our brain when we learn something new and it is good to keep working",
+    "target_text": "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus tá sé maith leanúint ag obair"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0156L04U10",
+   "set": {
+    "known_text": "it is time to go home now but I'd like to meet again next week",
+    "target_text": "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís an tseachtain seo chugainn"
+   },
+   "expect": {
+    "known_text": "it is time to go home now but I want to meet again tonight next week",
+    "target_text": "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "gle_v2_for_eng:S0112L05U09",
+   "expect": {
+    "target_text": "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé dul"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "gle_v2_for_eng:S0147L02B03",
+   "expect": {
+    "target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+   }
+  }
+ ],
+ "rows": {
+  "S0068L01U03": {
+   "before": [
+    "what answer were you looking for before you had to go",
+    "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois"
+   ],
+   "after": [
+    "what was the answer you were looking for before you have to go now",
+    "cad é an freagra a bhí tú ag lorg sula gcaithfidh tú dul anois"
+   ]
+  },
+  "S0068L03U07": {
+   "before": [
+    "I was looking for the answer before I had to go but it was not easy to remember",
+    "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh"
+   ],
+   "after": [
+    "I was looking for the answer before I have to go but it is not easy to remember",
+    "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh"
+   ]
+  },
+  "S0068L03U13": {
+   "before": [
+    "I would like to be looking for a good answer to the story before I have to go",
+    "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé dul"
+   ],
+   "after": [
+    "I would like to be looking for an answer to the story before I have to go",
+    "ba mhaith liom a bheith ag lorg freagra ar an scéal sula gcaithfidh mé dul"
+   ]
+  },
+  "S0069L01U08": {
+   "before": [
+    "he didn't want to take time before he had to go but it was important",
+    "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+   ],
+   "after": [
+    "he didn't want to take time before he has to go but it was important",
+    "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+   ]
+  },
+  "S0089L02U14": {
+   "before": [
+    "I think that there is still enough time left to practise before I have to go, so I'm going to keep trying",
+    "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+   ],
+   "after": [
+    "I think that I still have enough time before I have to go, so I'm going to keep trying",
+    "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+   ]
+  },
+  "S0089L05U07": {
+   "before": [
+    "I know there is something I have to say to you about the story before you go, because it's very important",
+    "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú dul, mar tá sé tábhachtach"
+   ],
+   "after": [
+    "I know there is something I have to say to you about the story before you have to go, because it's important",
+    "Tá a fhios agam go bhfuil rud éigin le rá agam leat faoin scéal sula gcaithfidh tú dul, mar tá sé tábhachtach"
+   ]
+  },
+  "S0089L06U12": {
+   "before": [
+    "I know there is a lot I still need to do today, but I want to practise speaking as much as possible before I go",
+    "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+   ],
+   "after": [
+    "I know there is a lot I still need to do today, but I want to practise speaking as often as possible before I have to go",
+    "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+   ]
+  },
+  "S0093L02U02": {
+   "before": [
+    "are you going to help me before I have to go this evening?",
+    "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul anocht?"
+   ],
+   "after": [
+    "are you going to help me before I have to go tonight?",
+    "an bhfuil tú chun cabhrú liom sula gcaithfidh mé dul anocht?"
+   ]
+  },
+  "S0093L02U08": {
+   "before": [
+    "she was trying to go without saying anything because she did not want anyone to hear",
+    "bhí sí ag iarraidh dul gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+   ],
+   "after": [
+    "she was trying to go without saying anything because she did not want anyone to know",
+    "bhí sí ag iarraidh dul gan aon rud a rá mar níor mhian léi go mbeadh a fhios ag aon duine"
+   ]
+  },
+  "S0097L02U02": {
+   "before": [
+    "I am ready to go so that I can go home",
+    "tá mé réidh le dul mar sin is féidir liom dul abhaile"
+   ],
+   "after": [
+    "I am ready to go so I can go home",
+    "tá mé réidh le dul mar sin is féidir liom dul abhaile"
+   ]
+  },
+  "S0103L01U12": {
+   "before": [
+    "we are not sure if there is anything else we need to do before we go",
+    "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid dul"
+   ],
+   "after": [
+    "we are not sure if there is something else we need to do before we have to go",
+    "Níl muid cinnte an bhfuil rud éigin eile le déanamh againn sula gcaithfidh muid dul"
+   ]
+  },
+  "S0111L01U07": {
+   "before": [
+    "when we learn something new I want to relax and let it sink in",
+    "nuair a fhoghlaimíonn muid rud nua is mian liom scíth a ligean"
+   ],
+   "after": [
+    "when we learn something new I want to relax",
+    "nuair a fhoghlaimíonn muid rud nua is mian liom scíth a ligean"
+   ]
+  },
+  "S0111L01U11": {
+   "before": [
+    "when we learn something new it changes our brain and I think that's great",
+    "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+   ],
+   "after": [
+    "when we learn something new it changes our brain and I think that's a good thing",
+    "nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus ceapaim gur rud maith é sin"
+   ]
+  },
+  "S0111L01U14": {
+   "before": [
+    "I wasn't expecting it when we learn something new it changes so much",
+    "Ní raibh mé ag súil leis nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú gach rud"
+   ],
+   "after": [
+    "I wasn't expecting that when we learn something new it changes everything",
+    "Ní raibh mé ag súil leis nuair a fhoghlaimíonn muid rud nua go bhfuil sé ag athrú gach rud"
+   ]
+  },
+  "S0111L01U15": {
+   "before": [
+    "when we learn something new it's interesting and I always want to keep going",
+    "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+   ],
+   "after": [
+    "when we learn something new it's interesting and I want to keep going",
+    "nuair a fhoghlaimíonn muid rud nua tá sé suimiúil agus is mian liom leanúint ar aghaidh"
+   ]
+  },
+  "S0111L02U09": {
+   "before": [
+    "when we learn something new together it's always very interesting and good",
+    "nuair a fhoghlaimíonn muid rud nua le chéile tá sé an-suimiúil agus maith"
+   ],
+   "after": [
+    "when we learn something new together it's very interesting and good",
+    "nuair a fhoghlaimíonn muid rud nua le chéile tá sé an-suimiúil agus maith"
+   ]
+  },
+  "S0112L04U04": {
+   "before": [
+    "I wasn't expecting that our brain changes when we learn something new together",
+    "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua"
+   ],
+   "after": [
+    "I wasn't expecting that our brain changes when we learn something new",
+    "Ní raibh mé ag súil leis go bhfuil ár n-inchinn ag athrú nuair a fhoghlaimíonn muid rud nua"
+   ]
+  },
+  "S0123L01U15": {
+   "before": [
+    "I think it's a good thing to take time to rest after we finish and before you have to go",
+    "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   ],
+   "after": [
+    "I think it's a good thing to take time to rest after we finish before I have to go",
+    "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   ]
+  },
+  "S0123L02U02": {
+   "before": [
+    "I think that it's a good idea to take time to rest after we finish so that our brain can change when we learn something new",
+    "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   ],
+   "after": [
+    "I think that it's a good idea to take time to rest after we finish because when we learn something new it changes our brain",
+    "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   ]
+  },
+  "S0124L02U05": {
+   "before": [
+    "I thought that it was a good idea and I wanted to ask you before you left about finding people who speak Irish",
+    "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+   ],
+   "after": [
+    "I thought that it was a good idea and I wanted to ask you before you leave about meeting people who speak Irish",
+    "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+   ]
+  },
+  "S0124L02U10": {
+   "before": [
+    "I thought that it was a good idea to take time to rest after we finished and before I had to go at the end",
+    "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   ],
+   "after": [
+    "I thought that it was a good idea to take time to rest after we finish before I have to go",
+    "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   ]
+  },
+  "S0125L01U12": {
+   "before": [
+    "I believe that it's a good thing to make mistakes because our brain changes when we learn and that is the only way it works",
+    "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+   ],
+   "after": [
+    "I believe that it's a good thing to make mistakes because when we learn something new it changes our brain and that is the only way it will work",
+    "creidim gur rud maith é botúin a dhéanamh mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus sin an t-aon bhealach a n-oibreoidh sé"
+   ]
+  },
+  "S0125L02U09": {
+   "before": [
+    "I believe that your idea was very good and it's useful to start speaking as soon as possible because our brain changes when we learn",
+    "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+   ],
+   "after": [
+    "I believe that your idea was very good and it's useful to start speaking as soon as you can because it changes our brain when we learn",
+    "creidim go raibh do smaoineamh an-mhaith agus tá sé úsáideach tosú ag caint chomh luath agus is féidir leat mar athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+   ]
+  },
+  "S0127L01U09": {
+   "before": [
+    "That isn't the reason and I think it's a good idea to meet up this evening because I wanted to ask you about something",
+    "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   ],
+   "after": [
+    "That isn't the reason and I think it's a good idea to meet up tonight because I wanted to ask you about something",
+    "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   ]
+  },
+  "S0147L02U05": {
+   "before": [
+    "I was glad she was kind when she saw that I was nervous",
+    "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+   ],
+   "after": [
+    "I was glad she was very kind when she saw that I was nervous",
+    "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+   ]
+  },
+  "S0181L05U04": {
+   "before": [
+    "I have to ask her what are you going to do before she leaves on Sunday",
+    "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+   ],
+   "after": [
+    "I have to ask her what are you going to do before she has to leave on Sunday",
+    "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+   ]
+  },
+  "S0181L05U15": {
+   "before": [
+    "I have to ask if she can help me for a while this Sunday morning",
+    "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+   ],
+   "after": [
+    "I have to ask her if she can help me for a while this Sunday morning",
+    "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+   ]
+  },
+  "S0200L03U11": {
+   "before": [
+    "I think it is very important to make sure that everybody is happy before we leave",
+    "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+   ],
+   "after": [
+    "I think it is important to make sure that everybody is happy before we leave",
+    "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+   ]
+  },
+  "S0246L04U03": {
+   "before": [
+    "I tried to ask her but she was too busy to stop and talk to me",
+    "bhí mé ag iarraidh ceist a chur uirthi ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+   ],
+   "after": [
+    "I was trying to ask her but she was too busy to stop and talk to me",
+    "bhí mé ag iarraidh ceist a chur uirthi ach bhí sí ró-ghnóthach le stopadh agus labhairt liom"
+   ]
+  },
+  "S0270L04U01": {
+   "before": [
+    "I was worried I would be late because I had too much work to do before I could leave",
+    "bhí mé buartha go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+   ],
+   "after": [
+    "I was worried I would be late because I had too much work to do before leaving",
+    "bhí mé buartha go mbeidh mé déanach mar bhí an iomarca oibre le déanamh agam roimh imeacht"
+   ]
+  },
+  "S0279L01U05": {
+   "before": [
+    "she was worried because there wasn't much time left to fix everything before I had to leave",
+    "bhí sí buartha mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+   ],
+   "after": [
+    "she was worried because there wasn't much time left to fix everything before I have to leave",
+    "bhí sí buartha mar ní raibh mórán ama fágtha le gach rud a dheisiú sula gcaithfidh mé imeacht"
+   ]
+  },
+  "S0065L02U14": {
+   "before": [
+    "it is important to say what you want to say without worrying about mistakes",
+    "Tá sé tábhachtach rud éigin a rá cad atá i gceist agam ach ní bhím buartha faoi bhotúin a dhéanamh"
+   ],
+   "after": [
+    "it is important to say something but I don't worry about making mistakes",
+    "Tá sé tábhachtach rud éigin a rá ach ní bhím buartha faoi bhotúin a dhéanamh"
+   ]
+  },
+  "S0097L02U07": {
+   "before": [
+    "I am ready to go but I have a little more time",
+    "tá mé réidh le dul ach tá beagán níos mó ama"
+   ],
+   "after": [
+    "I am ready to go but I have a little more time",
+    "tá mé réidh le dul ach tá beagán níos mó ama agam"
+   ]
+  },
+  "S0097L03U05": {
+   "before": [
+    "as soon as you want I am ready to go but I have a little more time",
+    "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama"
+   ],
+   "after": [
+    "as soon as you want I am ready to go but I have a little more time",
+    "chomh luath agus is mian leat tá mé réidh le dul ach tá beagán níos mó ama agam"
+   ]
+  },
+  "S0111L03U06": {
+   "before": [
+    "I think it changes our brain when we learn something new and it is good to keep working",
+    "ceapaim athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus tá sé maith leanúint ag obair"
+   ],
+   "after": [
+    "it changes our brain when we learn something new and I think it is good to keep working",
+    "athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua agus ceapaim go bhfuil sé maith leanúint ag obair"
+   ]
+  },
+  "S0156L04U10": {
+   "before": [
+    "it is time to go home now but I want to meet again tonight next week",
+    "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís anocht an tseachtain seo chugainn"
+   ],
+   "after": [
+    "it is time to go home now but I'd like to meet again next week",
+    "tá sé in am dul abhaile anois ach ba mhaith liom bualadh le chéile arís an tseachtain seo chugainn"
+   ]
+  },
+  "S0112L05U09": {
+   "before": [
+    "I think that was something very important to understand before we go any further",
+    "ceapaim bhí sé sin rud tábhachtach a thuigeann tú sula gcaithfidh mé dul"
+   ],
+   "deleted": "broken Irish (ceapaim bhí sé sin rud tábhachtach a thuigeann tú) under a different English"
+  },
+  "S0147L02B03": {
+   "before": [
+    "she was kind when she saw that I was nervous",
+    "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+   ],
+   "deleted": "English said 'kind', Irish 'very kind'; corrected it would repeat S0147L02U01"
+  }
+ }
+}

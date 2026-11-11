@@ -1,0 +1,1629 @@
+{
+ "why": "job #253 follow-up on clash forecast #251",
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 105,
+   "set": {
+    "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+   },
+   "expect": {
+    "known_text": "That is why he didn't know the answer",
+    "target_text": "sin é an chúis nach raibh an freagra ar eolas aige"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 127,
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "That isn't why I wanted to see you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 146,
+   "set": {
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú"
+   },
+   "expect": {
+    "known_text": "nothing seems to be working since we tried to fix it",
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó rinne muid iarracht é a dheisiú"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 371,
+   "set": {
+    "target_text": "chuaigh mé chun scannán a fheiceáil Dé Céadaoin"
+   },
+   "expect": {
+    "known_text": "I went to see a film on Wednesday",
+    "target_text": "chuaigh mé chun scannán a fheiceáil ar an gCéadaoin"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 433,
+   "set": {
+    "target_text": "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán"
+   },
+   "expect": {
+    "known_text": "they couldn't find out when the film started",
+    "target_text": "Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 434,
+   "set": {
+    "target_text": "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?"
+   },
+   "expect": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 562,
+   "set": {
+    "target_text": "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte"
+   },
+   "expect": {
+    "known_text": "I just want to get there safely",
+    "target_text": "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 659,
+   "set": {
+    "target_text": "an bhféadfadh sibh ar fad é sin a rá?"
+   },
+   "expect": {
+    "known_text": "could you all say that?",
+    "target_text": "Arbh fhéidir libh ar fad é sin a rá?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0105L01",
+   "set": {
+    "target_text": "sin é an fáth",
+    "components": [
+     {
+      "known": "that",
+      "target": "Sin"
+     },
+     {
+      "known": "it",
+      "target": "é"
+     },
+     {
+      "known": "the reason",
+      "target": "an fáth"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "sin é an chúis"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0127L02",
+   "set": {
+    "target_text": "an fáth ar mhian liom",
+    "components": [
+     {
+      "known": "the reason",
+      "target": "an fáth"
+     },
+     {
+      "known": "that I wanted",
+      "target": "ar mhian liom"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "an chúis ar mhian liom"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0146L01",
+   "set": {
+    "target_text": "nach bhfuil rud ar bith ag obair",
+    "components": [
+     {
+      "known": "that is not",
+      "target": "nach bhfuil"
+     },
+     {
+      "known": "anything",
+      "target": "rud ar bith"
+     },
+     {
+      "known": "working",
+      "target": "ag obair"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01B01",
+   "set": {
+    "target_text": "sin é an fáth nach bhfuil sé ag obair"
+   },
+   "expect": {
+    "known_text": "that is why it is not working",
+    "target_text": "sin é an chúis nach bhfuil sé ag obair"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01B02",
+   "set": {
+    "target_text": "ach sin é an fáth"
+   },
+   "expect": {
+    "known_text": "but that is why",
+    "target_text": "ach sin é an chúis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01B03",
+   "set": {
+    "target_text": "aontaím agus sin é an fáth"
+   },
+   "expect": {
+    "known_text": "I agree and that is why",
+    "target_text": "aontaím agus sin é an chúis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01B04",
+   "set": {
+    "target_text": "sin é an fáth a n-oibreoidh sé anois"
+   },
+   "expect": {
+    "known_text": "that is why it will work now",
+    "target_text": "sin é an chúis a n-oibreoidh sé anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U01",
+   "set": {
+    "target_text": "sin é an fáth nach bhfuil sé éasca Gaeilge a fhoghlaim"
+   },
+   "expect": {
+    "known_text": "that is why it is not easy to learn Irish",
+    "target_text": "sin é an chúis nach bhfuil sé éasca Gaeilge a fhoghlaim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U02",
+   "set": {
+    "target_text": "sin é an fáth a dúirt tú go raibh míle maith agat"
+   },
+   "expect": {
+    "known_text": "that is why you said thank you very much",
+    "target_text": "sin é an chúis a dúirt tú go raibh míle maith agat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U03",
+   "set": {
+    "target_text": "sin é an fáth nach miste leat Gaeilge a fhoghlaim"
+   },
+   "expect": {
+    "known_text": "that is why you don't mind learning Irish",
+    "target_text": "sin é an chúis nach miste leat Gaeilge a fhoghlaim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U04",
+   "set": {
+    "target_text": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an fáth nach bhfuil sé deacair"
+   },
+   "expect": {
+    "known_text": "I enjoy learning Irish and that is why it is not difficult",
+    "target_text": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an chúis nach bhfuil sé deacair"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U05",
+   "set": {
+    "target_text": "caithfidh muid athrú agus sin é an fáth a n-oibreoidh sé"
+   },
+   "expect": {
+    "known_text": "we must change and that is why it will work",
+    "target_text": "caithfidh muid athrú agus sin é an chúis a n-oibreoidh sé"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L01U06",
+   "set": {
+    "target_text": "faraor sin é an fáth nach bhfuil a fhios agam an freagra"
+   },
+   "expect": {
+    "known_text": "unfortunately that is why I do not know the answer",
+    "target_text": "faraor sin é an chúis nach bhfuil a fhios agam an freagra"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L04U01",
+   "set": {
+    "target_text": "sin é an fáth nach bhfuil sé ar eolas"
+   },
+   "expect": {
+    "known_text": "that is why it is not known",
+    "target_text": "sin é an chúis nach bhfuil sé ar eolas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L04U08",
+   "set": {
+    "target_text": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas fós"
+   },
+   "expect": {
+    "known_text": "I don't know the reason but I think it is not known yet",
+    "target_text": "níl a fhios agam an chúis ach ceapaim nach bhfuil sé ar eolas fós"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0105L05U02",
+   "set": {
+    "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+   },
+   "expect": {
+    "known_text": "That is why he didn't know the answer",
+    "target_text": "sin é an chúis nach raibh an freagra ar eolas aige"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L02U08",
+   "set": {
+    "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+   },
+   "expect": {
+    "known_text": "I think that it's a good idea to meet people who speak Irish because that is the reason I want to keep going forward",
+    "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U07",
+   "set": {
+    "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+   },
+   "expect": {
+    "known_text": "I thought that it was a good idea to meet people who speak Irish and that was the reason I wanted to keep learning this language",
+    "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01B04",
+   "set": {
+    "target_text": "Ní hé sin an fáth"
+   },
+   "expect": {
+    "known_text": "That isn't the reason",
+    "target_text": "Ní hé sin an chúis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01B05",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom labhairt leat"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to speak with you",
+    "target_text": "Ní hé sin an chúis ar mhian liom labhairt leat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01B06",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U01",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I wasn't expecting it at all when I heard what you said",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U02",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I was just looking forward to speaking more Irish as soon as possible",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U04",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus ceapaim gur rud maith é mar sin é an fáth nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I think that's a good thing because the reason why he didn't have the answer is very interesting",
+    "target_text": "Ní hé sin an chúis agus ceapaim gur rud maith é mar sin é an chúis nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U05",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I wanted to ask you before you leave about what you wanted to do yesterday",
+    "target_text": "Ní hé sin an chúis agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U06",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I am certain I am doing better now than the last time we spoke together",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U07",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+    "target_text": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U08",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I have been enjoying finding out more and more about this language we are both learning",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U09",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I think it's a good idea to meet up tonight because I wanted to ask you about something",
+    "target_text": "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U10",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes when we learn something new",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U11",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+    "target_text": "Ní hé sin an chúis agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U13",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and it's not easy to learn Irish but it's very useful to start speaking as soon as possible",
+    "target_text": "Ní hé sin an chúis agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U14",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I wanted to tell you that I thought it was a very good idea",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U15",
+   "set": {
+    "target_text": "Ní hé sin an fáth agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+   },
+   "expect": {
+    "known_text": "That isn't the reason and I'm looking forward to speaking better as soon as I can and I'm really enjoying this language every day",
+    "target_text": "Ní hé sin an chúis agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02B01",
+   "set": {
+    "target_text": "an fáth ar mhian liom"
+   },
+   "expect": {
+    "known_text": "the reason why I wanted",
+    "target_text": "an chúis ar mhian liom"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02B03",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted",
+    "target_text": "Ní hé sin an chúis ar mhian liom"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02B04",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom labhairt"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to speak",
+    "target_text": "Ní hé sin an chúis ar mhian liom labhairt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02B06",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil sula n-imíonn tú"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you before you leave",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil sula n-imíonn tú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U01",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I wasn't expecting it at all when you told me what you were thinking",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U02",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I believe that your idea was very good and I wanted to talk about it",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U03",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I want to explain what I mean because it's a good thing to make mistakes",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U04",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I started thinking about it carefully last month and I wanted to talk about it",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U05",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I wanted to ask you about something before I have to go today",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U06",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I am certain I am making better progress now than the last time we spoke",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U07",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I think it's a good idea for us to meet up at six o'clock this evening",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U08",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I was enjoying finding out more about this language and I wanted to talk about that with you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U09",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I'm not ready to stop speaking Irish yet because I love learning this language",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U10",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because when we learn something new our brain changes and that helps us speak better",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U11",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I thought your idea was very good when I heard it from you that evening",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U12",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I want to keep going and I'm very happy with everything I've already learned",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U13",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I wasn't sure whether I would be able to remember what I wanted to say",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U15",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I'm looking forward to speaking better soon and finding more people who speak Irish with me",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03B04",
+   "set": {
+    "target_text": "an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "the reason why I wanted to see you",
+    "target_text": "an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U01",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "That isn't why I wanted to see you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U02",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I was looking forward to speaking with you about how much we have already learned together",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U03",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U04",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I want to meet people who speak Irish as soon as possible",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U05",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I think it's a good thing to keep going even when things are difficult for you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U06",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I was looking forward to finding out more about this wonderful language with you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U07",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I started thinking carefully about what to do and I believe your idea was very good",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U08",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to go",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L03U09",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you and I think it's important to take time to test yourself when you are learning something new",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0135L01U08",
+   "set": {
+    "target_text": "níl a fhios agam an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "I don't know the reason why I wanted to see you",
+    "target_text": "níl a fhios agam an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0135L03B02",
+   "set": {
+    "target_text": "sin é an fáth a gceapann tú anois"
+   },
+   "expect": {
+    "known_text": "that is why you think now",
+    "target_text": "sin é an chúis a gceapann tú anois"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01B01",
+   "set": {
+    "target_text": "nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "that nothing is working",
+    "target_text": "nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01B02",
+   "set": {
+    "target_text": "ceapaim nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "I think that nothing is working",
+    "target_text": "ceapaim nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01B03",
+   "set": {
+    "target_text": "nach bhfuil rud ar bith ag obair inniu"
+   },
+   "expect": {
+    "known_text": "that nothing is working today",
+    "target_text": "nach bhfuil rud ar bith ag feidhmiú inniu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01B04",
+   "set": {
+    "target_text": "dúirt tú nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "you said that nothing is working",
+    "target_text": "dúirt tú nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U01",
+   "set": {
+    "target_text": "tá brón orm nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "I'm sorry that nothing is working",
+    "target_text": "tá brón orm nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U02",
+   "set": {
+    "target_text": "an bhfuil tú cinnte nach bhfuil rud ar bith ag obair?"
+   },
+   "expect": {
+    "known_text": "are you sure that nothing is working?",
+    "target_text": "an bhfuil tú cinnte nach bhfuil rud ar bith ag feidhmiú?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U03",
+   "set": {
+    "target_text": "tá ionadh orm nach bhfuil rud ar bith ag obair fós"
+   },
+   "expect": {
+    "known_text": "I'm surprised that nothing is working yet",
+    "target_text": "tá ionadh orm nach bhfuil rud ar bith ag feidhmiú fós"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U04",
+   "set": {
+    "target_text": "go raibh maith agat ach ceapaim nach bhfuil rud ar bith ag obair faoi láthair"
+   },
+   "expect": {
+    "known_text": "thank you but I think that nothing is working at the moment",
+    "target_text": "go raibh maith agat ach ceapaim nach bhfuil rud ar bith ag feidhmiú faoi láthair"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U05",
+   "set": {
+    "target_text": "tá sé neamhghnách nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "it's unusual that nothing is working",
+    "target_text": "tá sé neamhghnách nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L01U06",
+   "set": {
+    "target_text": "tá a fhios agam nach bhfuil rud ar bith ag obair anocht"
+   },
+   "expect": {
+    "known_text": "I know that nothing is working tonight",
+    "target_text": "tá a fhios agam nach bhfuil rud ar bith ag feidhmiú anocht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L06B03",
+   "set": {
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag obair"
+   },
+   "expect": {
+    "known_text": "it seems that nothing is working",
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L06U01",
+   "set": {
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú"
+   },
+   "expect": {
+    "known_text": "nothing seems to be working since we tried to fix it",
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó rinne muid iarracht é a dheisiú"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L06U02",
+   "set": {
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag obair ó inné"
+   },
+   "expect": {
+    "known_text": "it seems that nothing is working since yesterday",
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó inné"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0146L06U08",
+   "set": {
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag obair agus níl mé cinnte cad ba cheart dom a dhéanamh"
+   },
+   "expect": {
+    "known_text": "it seems that nothing is working and I'm not sure what to do",
+    "target_text": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú agus níl mé cinnte cad ba cheart dom a dhéanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0151L02B03",
+   "set": {
+    "target_text": "an fáth a raibh mé ag súil aréir"
+   },
+   "expect": {
+    "known_text": "the reason I was hoping last night",
+    "target_text": "an chúis a raibh mé ag súil aréir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0151L02U02",
+   "set": {
+    "target_text": "sin é an fáth a raibh mé ag súil"
+   },
+   "expect": {
+    "known_text": "that is why I was hoping",
+    "target_text": "sin é an chúis a raibh mé ag súil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0151L02U06",
+   "set": {
+    "target_text": "ar ndóigh sin é an fáth a raibh mé ag súil ar feadh tamaill"
+   },
+   "expect": {
+    "known_text": "of course that is why I was hoping for a while",
+    "target_text": "ar ndóigh sin é an chúis a raibh mé ag súil ar feadh tamaill"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0153L03U06",
+   "set": {
+    "target_text": "sin díreach an fáth nach raibh mé ábalta cuimhneamh conas a rá cad ba mhian liom a rá"
+   },
+   "expect": {
+    "known_text": "That is exactly the reason why I was not able to remember how to say what I wanted",
+    "target_text": "sin díreach an chúis nach raibh mé ábalta cuimhneamh conas a rá cad ba mhian liom a rá"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0159L01B04",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "expect": {
+    "known_text": "That is not the reason I wanted to see you",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0159L01U02",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil anocht agus ní raibh mé ag súil leis sin"
+   },
+   "expect": {
+    "known_text": "That is not the reason I wanted to see you tonight and I was not expecting to have to explain that",
+    "target_text": "Ní hé sin an chúis ar mhian liom tú a fheiceáil anocht agus ní raibh mé ag súil leis sin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0159L01U11",
+   "set": {
+    "target_text": "Ní hé sin an fáth ar mhian liom stopadh mar bhí mé ag baint taitnimh as Gaeilge a fhoghlaim leat"
+   },
+   "expect": {
+    "known_text": "That is not the reason I wanted to stop because I was really enjoying learning Irish with you",
+    "target_text": "Ní hé sin an chúis ar mhian liom stopadh mar bhí mé ag baint taitnimh as Gaeilge a fhoghlaim leat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0170L02U03",
+   "set": {
+    "target_text": "sin é an fáth ar mhian liom go n-inseofá dom an fhírinne"
+   },
+   "expect": {
+    "known_text": "that is why I wanted you to tell me the truth",
+    "target_text": "sin é an chúis ar mhian liom go n-inseofá dom an fhírinne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0202L01U09",
+   "set": {
+    "target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith"
+   },
+   "expect": {
+    "known_text": "nobody was sure how to answer the question and that was why nobody was trying to speak at all",
+    "target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an chúis nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0202L02U03",
+   "set": {
+    "target_text": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh sé ag iarraidh labhairt ar chor ar bith"
+   },
+   "expect": {
+    "known_text": "he was not sure how to answer the question and that was why he was not trying to speak at all",
+    "target_text": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an chúis nach raibh sé ag iarraidh labhairt ar chor ar bith"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0269L05U05",
+   "set": {
+    "target_text": "sin é an fáth a raibh mé ag súil le d'athair"
+   },
+   "expect": {
+    "known_text": "that is why I was hoping for your father",
+    "target_text": "sin é an chúis a raibh mé ag súil le d'athair"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0272L02B02",
+   "set": {
+    "target_text": "Ba mhaith, sin an fáth"
+   },
+   "expect": {
+    "known_text": "yes, that's the reason",
+    "target_text": "Ba mhaith, sin an chúis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0274L02U15",
+   "set": {
+    "target_text": "tá sé tábhachtach imeacht in am agus sin an fáth ar mhian liom labhairt leat faoi sula rachaidh tú"
+   },
+   "expect": {
+    "known_text": "it is important to leave on time and that is why I wanted to talk to you before you go",
+    "target_text": "tá sé tábhachtach imeacht in am agus sin an chúis ar mhian liom labhairt leat faoi sula rachaidh tú"
+   }
+  }
+ ],
+ "record": {
+  "seeds": {
+   "105": {
+    "before": "sin é an chúis nach raibh an freagra ar eolas aige",
+    "after": "sin é an fáth nach raibh an freagra ar eolas aige",
+    "why": "'an fáth / an chúis' is one of the keep-ours style choices Kai rules on 12 Nov; back to ours"
+   },
+   "127": {
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil",
+    "why": "'an fáth' restored (style choice, unruled); 'ar mhian liom' stays (want = mian; theastaigh was nobody's)"
+   },
+   "146": {
+    "before": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó rinne muid iarracht é a dheisiú",
+    "after": "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú",
+    "why": "Eoghan's own majority form for a thing 'working' is ag obair (99); ag feidhmiú is his single stray row"
+   },
+   "371": {
+    "before": "chuaigh mé chun scannán a fheiceáil ar an gCéadaoin",
+    "after": "chuaigh mé chun scannán a fheiceáil Dé Céadaoin",
+    "why": "his 'chun scannán a fheiceáil'; 'Dé' + day kept (style choice, unruled)"
+   },
+   "433": {
+    "before": "Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán",
+    "after": "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán",
+    "why": "NOT applied: níorbh fhéidir leo gives 'couldn't' two forms (311 ní fhéadfadh sé) and breaks the answer at 435; pending Kai"
+   },
+   "434": {
+    "before": "Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?",
+    "after": "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?",
+    "why": "NOT applied: arbh fhéidir leo gives 'could' two forms and breaks the answer at 435 (d'fhéadfadh); pending Kai"
+   },
+   "562": {
+    "before": "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte",
+    "after": "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte",
+    "why": "his second option, which keeps 'a bhaint amach' (reach: a shroicheadh is an unruled style choice); doubled 'ach' dropped"
+   },
+   "659": {
+    "before": "Arbh fhéidir libh ar fad é sin a rá?",
+    "after": "an bhféadfadh sibh ar fad é sin a rá?",
+    "why": "back to féad-: his majority form for 'could' (311-314, 358, 412-414, 435, 644); arbh fhéidir is his minority"
+   }
+  },
+  "legos": {
+   "S0105L01": {
+    "before": "sin é an chúis",
+    "after": "sin é an fáth"
+   },
+   "S0127L02": {
+    "before": "an chúis ar mhian liom",
+    "after": "an fáth ar mhian liom"
+   },
+   "S0146L01": {
+    "before": "nach bhfuil rud ar bith ag feidhmiú",
+    "after": "nach bhfuil rud ar bith ag obair"
+   }
+  },
+  "phrases": {
+   "S0105L01B01": {
+    "known": "that is why it is not working",
+    "before": "sin é an chúis nach bhfuil sé ag obair",
+    "after": "sin é an fáth nach bhfuil sé ag obair"
+   },
+   "S0105L01B02": {
+    "known": "but that is why",
+    "before": "ach sin é an chúis",
+    "after": "ach sin é an fáth"
+   },
+   "S0105L01B03": {
+    "known": "I agree and that is why",
+    "before": "aontaím agus sin é an chúis",
+    "after": "aontaím agus sin é an fáth"
+   },
+   "S0105L01B04": {
+    "known": "that is why it will work now",
+    "before": "sin é an chúis a n-oibreoidh sé anois",
+    "after": "sin é an fáth a n-oibreoidh sé anois"
+   },
+   "S0105L01U01": {
+    "known": "that is why it is not easy to learn Irish",
+    "before": "sin é an chúis nach bhfuil sé éasca Gaeilge a fhoghlaim",
+    "after": "sin é an fáth nach bhfuil sé éasca Gaeilge a fhoghlaim"
+   },
+   "S0105L01U02": {
+    "known": "that is why you said thank you very much",
+    "before": "sin é an chúis a dúirt tú go raibh míle maith agat",
+    "after": "sin é an fáth a dúirt tú go raibh míle maith agat"
+   },
+   "S0105L01U03": {
+    "known": "that is why you don't mind learning Irish",
+    "before": "sin é an chúis nach miste leat Gaeilge a fhoghlaim",
+    "after": "sin é an fáth nach miste leat Gaeilge a fhoghlaim"
+   },
+   "S0105L01U04": {
+    "known": "I enjoy learning Irish and that is why it is not difficult",
+    "before": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an chúis nach bhfuil sé deacair",
+    "after": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an fáth nach bhfuil sé deacair"
+   },
+   "S0105L01U05": {
+    "known": "we must change and that is why it will work",
+    "before": "caithfidh muid athrú agus sin é an chúis a n-oibreoidh sé",
+    "after": "caithfidh muid athrú agus sin é an fáth a n-oibreoidh sé"
+   },
+   "S0105L01U06": {
+    "known": "unfortunately that is why I do not know the answer",
+    "before": "faraor sin é an chúis nach bhfuil a fhios agam an freagra",
+    "after": "faraor sin é an fáth nach bhfuil a fhios agam an freagra"
+   },
+   "S0105L04U01": {
+    "known": "that is why it is not known",
+    "before": "sin é an chúis nach bhfuil sé ar eolas",
+    "after": "sin é an fáth nach bhfuil sé ar eolas"
+   },
+   "S0105L04U08": {
+    "known": "I don't know the reason but I think it is not known yet",
+    "before": "níl a fhios agam an chúis ach ceapaim nach bhfuil sé ar eolas fós",
+    "after": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas fós"
+   },
+   "S0105L05U02": {
+    "known": "That is why he didn't know the answer",
+    "before": "sin é an chúis nach raibh an freagra ar eolas aige",
+    "after": "sin é an fáth nach raibh an freagra ar eolas aige"
+   },
+   "S0123L02U08": {
+    "known": "I think that it's a good idea to meet people who speak Irish because that is the reason I want to keep going forward",
+    "before": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim",
+    "after": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+   },
+   "S0124L02U07": {
+    "known": "I thought that it was a good idea to meet people who speak Irish and that was the reason I wanted to keep learning this language",
+    "before": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an chúis ar mian liom leanúint ar aghaidh ag foghlaim",
+    "after": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+   },
+   "S0127L01B04": {
+    "known": "That isn't the reason",
+    "before": "Ní hé sin an chúis",
+    "after": "Ní hé sin an fáth"
+   },
+   "S0127L01B05": {
+    "known": "That isn't the reason why I wanted to speak with you",
+    "before": "Ní hé sin an chúis ar mhian liom labhairt leat",
+    "after": "Ní hé sin an fáth ar mhian liom labhairt leat"
+   },
+   "S0127L01B06": {
+    "known": "That isn't the reason why I wanted to see you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "S0127L01U01": {
+    "known": "That isn't the reason why I wanted to see you and I wasn't expecting it at all when I heard what you said",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+   },
+   "S0127L01U02": {
+    "known": "That isn't the reason why I wanted to see you because I was just looking forward to speaking more Irish as soon as possible",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+   },
+   "S0127L01U04": {
+    "known": "That isn't the reason and I think that's a good thing because the reason why he didn't have the answer is very interesting",
+    "before": "Ní hé sin an chúis agus ceapaim gur rud maith é mar sin é an chúis nach raibh an freagra ar eolas aige agus tá sé an-suimiúil",
+    "after": "Ní hé sin an fáth agus ceapaim gur rud maith é mar sin é an fáth nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+   },
+   "S0127L01U05": {
+    "known": "That isn't the reason and I wanted to ask you before you leave about what you wanted to do yesterday",
+    "before": "Ní hé sin an chúis agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné",
+    "after": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+   },
+   "S0127L01U06": {
+    "known": "That isn't the reason why I wanted to see you and I am certain I am doing better now than the last time we spoke together",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   },
+   "S0127L01U07": {
+    "known": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+    "before": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr",
+    "after": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "S0127L01U08": {
+    "known": "That isn't the reason why I wanted to see you because I have been enjoying finding out more and more about this language we are both learning",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+   },
+   "S0127L01U09": {
+    "known": "That isn't the reason and I think it's a good idea to meet up tonight because I wanted to ask you about something",
+    "before": "Ní hé sin an chúis agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin",
+    "after": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+   },
+   "S0127L01U10": {
+    "known": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes when we learn something new",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   },
+   "S0127L01U11": {
+    "known": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+    "before": "Ní hé sin an chúis agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin",
+    "after": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "S0127L01U13": {
+    "known": "That isn't the reason and it's not easy to learn Irish but it's very useful to start speaking as soon as possible",
+    "before": "Ní hé sin an chúis agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat",
+    "after": "Ní hé sin an fáth agus níl sé éasca Gaeilge a fhoghlaim ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir leat"
+   },
+   "S0127L01U14": {
+    "known": "That isn't the reason why I wanted to see you because I wanted to tell you that I thought it was a very good idea",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhian liom a rá leat go raibh mé ag smaoineamh gur smaoineamh maith é sin"
+   },
+   "S0127L01U15": {
+    "known": "That isn't the reason and I'm looking forward to speaking better as soon as I can and I'm really enjoying this language every day",
+    "before": "Ní hé sin an chúis agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá",
+    "after": "Ní hé sin an fáth agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus tá mé ag baint taitnimh as an teanga seo gach lá"
+   },
+   "S0127L02B01": {
+    "known": "the reason why I wanted",
+    "before": "an chúis ar mhian liom",
+    "after": "an fáth ar mhian liom"
+   },
+   "S0127L02B03": {
+    "known": "That isn't the reason why I wanted",
+    "before": "Ní hé sin an chúis ar mhian liom",
+    "after": "Ní hé sin an fáth ar mhian liom"
+   },
+   "S0127L02B04": {
+    "known": "That isn't the reason why I wanted to speak",
+    "before": "Ní hé sin an chúis ar mhian liom labhairt",
+    "after": "Ní hé sin an fáth ar mhian liom labhairt"
+   },
+   "S0127L02B06": {
+    "known": "That isn't the reason why I wanted to see you before you leave",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil sula n-imíonn tú",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil sula n-imíonn tú"
+   },
+   "S0127L02U01": {
+    "known": "That isn't the reason why I wanted to see you and I wasn't expecting it at all when you told me what you were thinking",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé ag súil leis nuair a dúirt tú liom cad a bhí tú ag smaoineamh"
+   },
+   "S0127L02U02": {
+    "known": "That isn't the reason why I wanted to see you because I believe that your idea was very good and I wanted to talk about it",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar creidim go raibh do smaoineamh an-mhaith agus ba mhian liom labhairt faoi"
+   },
+   "S0127L02U03": {
+    "known": "That isn't the reason why I wanted to see you and I want to explain what I mean because it's a good thing to make mistakes",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom a mhíniú cad atá i gceist agam mar ceapaim gur rud maith é botúin a dhéanamh"
+   },
+   "S0127L02U04": {
+    "known": "That isn't the reason why I wanted to see you because I started thinking about it carefully last month and I wanted to talk about it",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar thosaigh mé ag smaoineamh air go cúramach an mhí seo caite agus ba mhian liom labhairt faoi"
+   },
+   "S0127L02U05": {
+    "known": "That isn't the reason why I wanted to see you and I wanted to ask you about something before I have to go today",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ba mhian liom ceist a chur ort faoi rud éigin sula gcaithfidh mé dul inniu"
+   },
+   "S0127L02U06": {
+    "known": "That isn't the reason why I wanted to see you because I am certain I am making better progress now than the last time we spoke",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+   },
+   "S0127L02U07": {
+    "known": "That isn't the reason why I wanted to see you and I think it's a good idea for us to meet up at six o'clock this evening",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur smaoineamh maith é sin bualadh le chéile ar a sé a chlog tráthnóna"
+   },
+   "S0127L02U08": {
+    "known": "That isn't the reason why I wanted to see you because I was enjoying finding out more about this language and I wanted to talk about that with you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo agus ba mhian liom labhairt leat faoi"
+   },
+   "S0127L02U09": {
+    "known": "That isn't the reason why I wanted to see you and I'm not ready to stop speaking Irish yet because I love learning this language",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+   },
+   "S0127L02U10": {
+    "known": "That isn't the reason why I wanted to see you because when we learn something new our brain changes and that helps us speak better",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn agus cabhrú linn labhairt níos fearr"
+   },
+   "S0127L02U11": {
+    "known": "That isn't the reason why I wanted to see you and I thought your idea was very good when I heard it from you that evening",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus cheap mé go raibh do smaoineamh an-mhaith nuair a chuala mé uait é an tráthnóna sin"
+   },
+   "S0127L02U12": {
+    "known": "That isn't the reason why I wanted to see you because I want to keep going and I'm very happy with everything I've already learned",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "S0127L02U13": {
+    "known": "That isn't the reason why I wanted to see you and I wasn't sure whether I would be able to remember what I wanted to say",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá"
+   },
+   "S0127L02U15": {
+    "known": "That isn't the reason why I wanted to see you and I'm looking forward to speaking better soon and finding more people who speak Irish with me",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus tá mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom agus bualadh le daoine a labhraíonn Gaeilge"
+   },
+   "S0127L03B04": {
+    "known": "the reason why I wanted to see you",
+    "before": "an chúis ar mhian liom tú a fheiceáil",
+    "after": "an fáth ar mhian liom tú a fheiceáil"
+   },
+   "S0127L03U01": {
+    "known": "That isn't why I wanted to see you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "S0127L03U02": {
+    "known": "That isn't the reason why I wanted to see you because I was looking forward to speaking with you about how much we have already learned together",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+   },
+   "S0127L03U03": {
+    "known": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "S0127L03U04": {
+    "known": "That isn't the reason why I wanted to see you and I want to meet people who speak Irish as soon as possible",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+   },
+   "S0127L03U05": {
+    "known": "That isn't the reason why I wanted to see you and I think it's a good thing to keep going even when things are difficult for you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim gur rud maith é leanúint ar aghaidh nuair atá sé deacair duit"
+   },
+   "S0127L03U06": {
+    "known": "That isn't the reason why I wanted to see you because I was looking forward to finding out more about this wonderful language with you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le níos mó a fháil amach faoin teanga iontach seo leat"
+   },
+   "S0127L03U07": {
+    "known": "That isn't the reason why I wanted to see you and I started thinking carefully about what to do and I believe your idea was very good",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus thosaigh mé ag smaoineamh go cúramach agus creidim go raibh do smaoineamh an-mhaith"
+   },
+   "S0127L03U08": {
+    "known": "That isn't the reason why I wanted to see you because I think it's a good idea to meet here and speak Irish before we have to go",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ceapaim gur smaoineamh maith é sin bualadh anseo agus Gaeilge a labhairt sula gcaithfidh muid dul"
+   },
+   "S0127L03U09": {
+    "known": "That isn't the reason why I wanted to see you and I think it's important to take time to test yourself when you are learning something new",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+   },
+   "S0135L01U08": {
+    "known": "I don't know the reason why I wanted to see you",
+    "before": "níl a fhios agam an chúis ar mhian liom tú a fheiceáil",
+    "after": "níl a fhios agam an fáth ar mhian liom tú a fheiceáil"
+   },
+   "S0135L03B02": {
+    "known": "that is why you think now",
+    "before": "sin é an chúis a gceapann tú anois",
+    "after": "sin é an fáth a gceapann tú anois"
+   },
+   "S0146L01B01": {
+    "known": "that nothing is working",
+    "before": "nach bhfuil rud ar bith ag feidhmiú",
+    "after": "nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L01B02": {
+    "known": "I think that nothing is working",
+    "before": "ceapaim nach bhfuil rud ar bith ag feidhmiú",
+    "after": "ceapaim nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L01B03": {
+    "known": "that nothing is working today",
+    "before": "nach bhfuil rud ar bith ag feidhmiú inniu",
+    "after": "nach bhfuil rud ar bith ag obair inniu"
+   },
+   "S0146L01B04": {
+    "known": "you said that nothing is working",
+    "before": "dúirt tú nach bhfuil rud ar bith ag feidhmiú",
+    "after": "dúirt tú nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L01U01": {
+    "known": "I'm sorry that nothing is working",
+    "before": "tá brón orm nach bhfuil rud ar bith ag feidhmiú",
+    "after": "tá brón orm nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L01U02": {
+    "known": "are you sure that nothing is working?",
+    "before": "an bhfuil tú cinnte nach bhfuil rud ar bith ag feidhmiú?",
+    "after": "an bhfuil tú cinnte nach bhfuil rud ar bith ag obair?"
+   },
+   "S0146L01U03": {
+    "known": "I'm surprised that nothing is working yet",
+    "before": "tá ionadh orm nach bhfuil rud ar bith ag feidhmiú fós",
+    "after": "tá ionadh orm nach bhfuil rud ar bith ag obair fós"
+   },
+   "S0146L01U04": {
+    "known": "thank you but I think that nothing is working at the moment",
+    "before": "go raibh maith agat ach ceapaim nach bhfuil rud ar bith ag feidhmiú faoi láthair",
+    "after": "go raibh maith agat ach ceapaim nach bhfuil rud ar bith ag obair faoi láthair"
+   },
+   "S0146L01U05": {
+    "known": "it's unusual that nothing is working",
+    "before": "tá sé neamhghnách nach bhfuil rud ar bith ag feidhmiú",
+    "after": "tá sé neamhghnách nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L01U06": {
+    "known": "I know that nothing is working tonight",
+    "before": "tá a fhios agam nach bhfuil rud ar bith ag feidhmiú anocht",
+    "after": "tá a fhios agam nach bhfuil rud ar bith ag obair anocht"
+   },
+   "S0146L06B03": {
+    "known": "it seems that nothing is working",
+    "before": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú",
+    "after": "Tá an chuma air nach bhfuil rud ar bith ag obair"
+   },
+   "S0146L06U01": {
+    "known": "nothing seems to be working since we tried to fix it",
+    "before": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó rinne muid iarracht é a dheisiú",
+    "after": "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú"
+   },
+   "S0146L06U02": {
+    "known": "it seems that nothing is working since yesterday",
+    "before": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú ó inné",
+    "after": "Tá an chuma air nach bhfuil rud ar bith ag obair ó inné"
+   },
+   "S0146L06U08": {
+    "known": "it seems that nothing is working and I'm not sure what to do",
+    "before": "Tá an chuma air nach bhfuil rud ar bith ag feidhmiú agus níl mé cinnte cad ba cheart dom a dhéanamh",
+    "after": "Tá an chuma air nach bhfuil rud ar bith ag obair agus níl mé cinnte cad ba cheart dom a dhéanamh"
+   },
+   "S0151L02B03": {
+    "known": "the reason I was hoping last night",
+    "before": "an chúis a raibh mé ag súil aréir",
+    "after": "an fáth a raibh mé ag súil aréir"
+   },
+   "S0151L02U02": {
+    "known": "that is why I was hoping",
+    "before": "sin é an chúis a raibh mé ag súil",
+    "after": "sin é an fáth a raibh mé ag súil"
+   },
+   "S0151L02U06": {
+    "known": "of course that is why I was hoping for a while",
+    "before": "ar ndóigh sin é an chúis a raibh mé ag súil ar feadh tamaill",
+    "after": "ar ndóigh sin é an fáth a raibh mé ag súil ar feadh tamaill"
+   },
+   "S0153L03U06": {
+    "known": "That is exactly the reason why I was not able to remember how to say what I wanted",
+    "before": "sin díreach an chúis nach raibh mé ábalta cuimhneamh conas a rá cad ba mhian liom a rá",
+    "after": "sin díreach an fáth nach raibh mé ábalta cuimhneamh conas a rá cad ba mhian liom a rá"
+   },
+   "S0159L01B04": {
+    "known": "That is not the reason I wanted to see you",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil"
+   },
+   "S0159L01U02": {
+    "known": "That is not the reason I wanted to see you tonight and I was not expecting to have to explain that",
+    "before": "Ní hé sin an chúis ar mhian liom tú a fheiceáil anocht agus ní raibh mé ag súil leis sin",
+    "after": "Ní hé sin an fáth ar mhian liom tú a fheiceáil anocht agus ní raibh mé ag súil leis sin"
+   },
+   "S0159L01U11": {
+    "known": "That is not the reason I wanted to stop because I was really enjoying learning Irish with you",
+    "before": "Ní hé sin an chúis ar mhian liom stopadh mar bhí mé ag baint taitnimh as Gaeilge a fhoghlaim leat",
+    "after": "Ní hé sin an fáth ar mhian liom stopadh mar bhí mé ag baint taitnimh as Gaeilge a fhoghlaim leat"
+   },
+   "S0170L02U03": {
+    "known": "that is why I wanted you to tell me the truth",
+    "before": "sin é an chúis ar mhian liom go n-inseofá dom an fhírinne",
+    "after": "sin é an fáth ar mhian liom go n-inseofá dom an fhírinne"
+   },
+   "S0202L01U09": {
+    "known": "nobody was sure how to answer the question and that was why nobody was trying to speak at all",
+    "before": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an chúis nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith",
+    "after": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith"
+   },
+   "S0202L02U03": {
+    "known": "he was not sure how to answer the question and that was why he was not trying to speak at all",
+    "before": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an chúis nach raibh sé ag iarraidh labhairt ar chor ar bith",
+    "after": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh sé ag iarraidh labhairt ar chor ar bith"
+   },
+   "S0269L05U05": {
+    "known": "that is why I was hoping for your father",
+    "before": "sin é an chúis a raibh mé ag súil le d'athair",
+    "after": "sin é an fáth a raibh mé ag súil le d'athair"
+   },
+   "S0272L02B02": {
+    "known": "yes, that's the reason",
+    "before": "Ba mhaith, sin an chúis",
+    "after": "Ba mhaith, sin an fáth"
+   },
+   "S0274L02U15": {
+    "known": "it is important to leave on time and that is why I wanted to talk to you before you go",
+    "before": "tá sé tábhachtach imeacht in am agus sin an chúis ar mhian liom labhairt leat faoi sula rachaidh tú",
+    "after": "tá sé tábhachtach imeacht in am agus sin an fáth ar mhian liom labhairt leat faoi sula rachaidh tú"
+   }
+  }
+ }
+}

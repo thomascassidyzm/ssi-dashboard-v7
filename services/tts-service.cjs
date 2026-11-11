@@ -1062,7 +1062,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (door.trial) {
     require('./shared/audio-trial-mode.cjs').assertTrialOpen();
   } else {
-  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, audition: !!door.audition, podLine: !!door.podLine });
+  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, legoId: door.legoId || null, audition: !!door.audition, podLine: !!door.podLine });
   await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
   // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of

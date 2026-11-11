@@ -1,0 +1,455 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "f95abbf3-255d-435f-8d94-4fe950ecfaee",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:24:20.874Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-24-20-874Z-f95abbf3-255d-435f-8d94-4fe950ecfaee.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01C03",
+      "set": {
+        "target_text": "difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01B04",
+      "set": {
+        "target_text": "an mian leat labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01B03",
+      "set": {
+        "target_text": "is mian liom labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0186L01B01",
+      "set": {
+        "target_text": "labhairt faoi rud éigin difriúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0170L02U05",
+      "set": {
+        "target_text": "ba mhaith liom go n-inseofá dom an méid a bhí sise a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0170L02U03",
+      "set": {
+        "target_text": "sin é an fáth ar theastaigh uaim go n-inseofá dom an fhírinne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L02U08",
+      "set": {
+        "target_text": "Ní hé sin atá mé ag iarraidh a scríobh ar fad mar is mian liom rud éigin difriúil ar fad a rá anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L01U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim stopadh mar bhí mé ag baint taitnimh as Gaeilge a fhoghlaim leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L01U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil anocht agus ní raibh mé ag súil leis sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L01B04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0153L03U06",
+      "set": {
+        "target_text": "sin díreach an fáth nach raibh mé ábalta cuimhneamh conas a rá cad ba mhian liom a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0153L02U13",
+      "set": {
+        "target_text": "Ní raibh sí sásta rudaí a dhéanamh ar an mbealach céanna, mar ba mhian léi rud éigin difriúil a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0153L02U11",
+      "set": {
+        "target_text": "Tá sé ag iarraidh gach rud a dhéanamh ar an mbealach céanna, mar tá sé buartha athrú a dhéanamh ar aon rud"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0153L02U06",
+      "set": {
+        "known_text": "we need to change what we are doing, because we cannot do it in the same way anymore",
+        "target_text": "caithfidh muid athrú a dhéanamh ar an méid atá muid a dhéanamh, mar ní féidir liom é a dhéanamh ar an mbealach céanna a thuilleadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0151L02U06",
+      "set": {
+        "target_text": "ar ndóigh sin é an fáth a raibh mé ag súil ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0151L02U02",
+      "set": {
+        "target_text": "sin é an fáth a raibh mé ag súil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0151L02B03",
+      "set": {
+        "target_text": "an fáth a raibh mé ag súil aréir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0150L02U14",
+      "set": {
+        "target_text": "an raibh rud éigin ar theastaigh uait a insint dom sula raibh muid réidh le stopadh ag caint tráthnóna?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U08",
+      "set": {
+        "known_text": "nothing seems to have worked since the last time we all spoke to each other about it",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair ó an uair dheireanach a labhair muid le chéile faoi"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U07",
+      "set": {
+        "known_text": "nothing seems to be working still and I am not sure what to do next",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair fós agus níl mé cinnte cad ba cheart dom a dhéanamh anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U06",
+      "set": {
+        "known_text": "nothing seems to be going the way we had hoped it would when we started working on it",
+        "target_text": "Ní cosúil go bhfuil aon rud ag dul mar a bhí muid ag súil leis nuair a thosaigh muid ag obair air"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U05",
+      "set": {
+        "known_text": "nothing seems more important than the work we are all doing together at the moment",
+        "target_text": "Ní cosúil go bhfuil aon rud níos tábhachtaí ná an obair atá muid ag déanamh le chéile faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U04",
+      "set": {
+        "known_text": "nothing seems easy when you are still trying to learn so many things at the same time",
+        "target_text": "Ní cosúil go bhfuil aon rud éasca nuair atá tú ag iarraidh an iomarca rudaí a fhoghlaim ag an am céanna"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U03",
+      "set": {
+        "known_text": "nothing seems to be working the same way it worked the last time we all tried together",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair ar an mbealach céanna agus a bhí sé an uair dheireanach a rinne muid iarracht le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U02",
+      "set": {
+        "known_text": "nothing seems to be going well for us this week and I do not know why",
+        "target_text": "Ní cosúil go bhfuil aon rud ag dul go maith dúinn an tseachtain seo agus níl a fhios agam cén fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U01",
+      "set": {
+        "known_text": "nothing seems to be working since we tried to fix it together last week",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair ó rinne muid iarracht é a dheisiú le chéile an tseachtain seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06B05",
+      "set": {
+        "known_text": "nothing seems to be working since we tried to fix it",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair ó rinne muid iarracht é a dheisiú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06B04",
+      "set": {
+        "known_text": "nothing seems right",
+        "target_text": "Ní cosúil go bhfuil aon rud ceart"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06B03",
+      "set": {
+        "known_text": "nothing seems to be working",
+        "target_text": "Ní cosúil go bhfuil aon rud ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06B01",
+      "set": {
+        "known_text": "nothing seems",
+        "target_text": "Ní cosúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U06",
+      "set": {
+        "known_text": "I don't know that anything is difficult at the moment",
+        "target_text": "níl a fhios agam go bhfuil aon rud deacair faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U05",
+      "set": {
+        "known_text": "it's unusual that anything is perfect",
+        "target_text": "tá sé neamhghnách go bhfuil aon rud foirfe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U04",
+      "set": {
+        "known_text": "thank you but I don't know that anything is done yet",
+        "target_text": "go raibh maith agat ach níl a fhios agam go bhfuil aon rud déanta fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U03",
+      "set": {
+        "known_text": "I'm surprised that anything is ready",
+        "target_text": "tá ionadh orm go bhfuil aon rud réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U02",
+      "set": {
+        "known_text": "are you sure that anything is done",
+        "target_text": "an bhfuil tú cinnte go bhfuil aon rud déanta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U01",
+      "set": {
+        "known_text": "I'm not sure that anything is ready yet",
+        "target_text": "níl mé cinnte go bhfuil aon rud réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01B04",
+      "set": {
+        "known_text": "I don't know that anything is perfect",
+        "target_text": "níl a fhios agam go bhfuil aon rud foirfe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01B03",
+      "set": {
+        "known_text": "that anything is done today",
+        "target_text": "go bhfuil aon rud déanta inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01B02",
+      "set": {
+        "known_text": "I'm not sure that anything is",
+        "target_text": "níl mé cinnte go bhfuil aon rud"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01B01",
+      "set": {
+        "known_text": "that anything is ready",
+        "target_text": "go bhfuil aon rud réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U07",
+      "set": {
+        "target_text": "dúirt sé go bhfuil sé sin ceart go leor, is féidir linn dul chuig an áit ar theastaigh ó mo chara bualadh linn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L03U07",
+      "set": {
+        "known_text": "this is the place where my friend wanted to meet us",
+        "target_text": "seo an áit ar theastaigh ó mo chara bualadh linn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U06",
+      "set": {
+        "target_text": "bhí mé tuirseach ar an mbus ar theastaigh ó mo chara tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U05",
+      "set": {
+        "target_text": "mothaím níos fearr sa teach tábhairne ar theastaigh ó mo chara ach tá mé tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U04",
+      "set": {
+        "target_text": "go raibh maith agat seo an áit ar theastaigh ó mo chara agus tá mé an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U03",
+      "set": {
+        "target_text": "seo an áit ar theastaigh ó mo chara mar Tá sé in am scíth a ligean"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U02",
+      "set": {
+        "target_text": "ar ndóigh seo an áit ar theastaigh ó mo chara Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U01",
+      "set": {
+        "target_text": "seo an áit ar theastaigh ó mo chara ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02B04",
+      "set": {
+        "target_text": "ar an mbus ar theastaigh ó mo chara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02B03",
+      "set": {
+        "target_text": "seo an áit ar theastaigh ó mo chara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02B02",
+      "set": {
+        "target_text": "sa teach tábhairne ar theastaigh ó mo chara scíth a ligean"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02B01",
+      "set": {
+        "target_text": "ar theastaigh ó mo chara scíth a ligean"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L01U06",
+      "set": {
+        "target_text": "seo an áit ar theastaigh uaim bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L01U02",
+      "set": {
+        "target_text": "ar ndóigh seo an áit ar theastaigh uaim Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L01U01",
+      "set": {
+        "target_text": "seo an áit ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L01B04",
+      "set": {
+        "target_text": "seo an áit ar theastaigh uaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L03B02",
+      "set": {
+        "target_text": "sin é an fáth a gceapann tú anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L01U08",
+      "set": {
+        "target_text": "níl a fhios agam an fáth ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U07",
+      "set": {
+        "known_text": "I didn't want anyone to hear what she was saying about my friend",
+        "target_text": "níor mhian liom ligean d'aon duine an méid a bhí sise a rá faoi mo chara a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0132L05U06",
+      "set": {
+        "known_text": "that was much less upsetting than what she was saying the last time we spoke together",
+        "target_text": "bhí sé sin níos lú corraitheach ná an méid a bhí sise a rá an uair dheireanach a labhair muid le chéile"
+      }
+    }
+  ]
+}

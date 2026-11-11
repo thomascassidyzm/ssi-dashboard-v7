@@ -311,3 +311,31 @@ describe('6. the judge failing escalates rather than guesses', () => {
     expect(prompt).toMatch(/ESCALATE/)
   })
 })
+
+describe('7. SOFT marks (Kai, 2026-11-11, job #247·AH): a record for warnings, never a guard on the words', () => {
+  const ANYWHERE = "The German for: 'a while', as in — 'I need to wait for a while', is:"
+  it('a soft mark is invisible to every hard-guard reader: no substitution, no judge, no re-queue', async () => {
+    const sb = seeded()
+    await ha.markHumanAuthored(sb, { courseCode: 'deu_for_eng', legoId: 'S0092L01', text: ANYWHERE, author: 'unattributed', guard: 'soft', lego: sb.tables.course_legos[1], by: 'test', mirror: false })
+    expect(sb.tables.human_authored_presentations[0].guard).toBe('soft')
+    expect((await ha.loadMarks(sb, 'deu_for_eng')).size).toBe(0)
+    expect((await ha.loadMarks(sb, 'deu_for_eng', null, { soft: true })).get('S0092L01').text).toBe(ANYWHERE)
+    const judge = async () => { throw new Error('a soft mark is never judged') }
+    const r = await ha.resolveForCourse(sb, COURSE, { judge })
+    expect(r.textFor('S0092L01')).toBeNull()
+    expect(sb.tables.content_feedback).toHaveLength(0)   // mirror:false — a backfill does not flood the feedback view
+  })
+  it('a soft request never weakens a hard mark; a hard request upgrades a soft one', async () => {
+    const sb = seeded(); await markBoth(sb)
+    await expect(ha.markHumanAuthored(sb, { courseCode: 'deu_for_eng', legoId: 'S0083L01', text: KAI_83, author: 'x', guard: 'soft', lego: sb.tables.course_legos[0], by: 'test' }))
+      .rejects.toThrow(/already carries a HARD/)
+    await ha.markHumanAuthored(sb, { courseCode: 'deu_for_eng', legoId: 'S0001L01', text: "The German for: 'I want', is:", author: 'Kai', guard: 'soft', lego: sb.tables.course_legos[2], by: 'test' })
+    await ha.markHumanAuthored(sb, { courseCode: 'deu_for_eng', legoId: 'S0001L01', text: "The German for: 'I want', is:", author: 'Kai', guard: 'hard', lego: sb.tables.course_legos[2], by: 'test' })
+    expect(ha.markGuard((await ha.loadMarks(sb, 'deu_for_eng')).get('S0001L01'))).toBe('hard')
+  })
+  it('a hard mark written without a guard says nothing new: no guard column is written (works before the soft-guard change)', async () => {
+    const sb = seeded(); await markBoth(sb)
+    expect('guard' in sb.tables.human_authored_presentations[0]).toBe(false)
+    expect(ha.markGuard(sb.tables.human_authored_presentations[0])).toBe('hard')
+  })
+})

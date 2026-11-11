@@ -1,0 +1,291 @@
+[
+ {
+  "role": "target1",
+  "text": "para que no me quede más tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "para que no me quede más tiempo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "so that I don't stay longer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "stay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02C02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "mi amigo va a venir a las seis para que no me quede aquí solo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 61
+  }
+ },
+ {
+  "role": "target2",
+  "text": "mi amigo va a venir a las seis para que no me quede aquí solo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 61
+  }
+ },
+ {
+  "role": "known",
+  "text": "my friend is going to come at six so that I don't stay here alone",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 65
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quieren salir conmigo para que no me quede en casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 50
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quieren salir conmigo para que no me quede en casa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 50
+  }
+ },
+ {
+  "role": "known",
+  "text": "they want to go out with me so that I don't stay at home",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hoy ella va a ayudarme para que no me quede más tiempo en el trabajo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 68
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hoy ella va a ayudarme para que no me quede más tiempo en el trabajo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 68
+  }
+ },
+ {
+  "role": "known",
+  "text": "today she's going to help me so that I don't stay at work longer",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 64
+  }
+ },
+ {
+  "role": "target1",
+  "text": "esta vez él va a ayudarme para que no me quede en la oficina toda la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "target2",
+  "text": "esta vez él va a ayudarme para que no me quede en la oficina toda la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "known",
+  "text": "this time he's going to help me so that I don't stay in the office all night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0505L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 76
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'I don't stay', as in — 'so that I don't stay here', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0505L02",
+    "slot": "presentation",
+    "current": "f1054152-fd06-4b54-98d6-c3966ac5b27e"
+   }
+  ],
+  "legoId": "S0505L02",
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 73
+  }
+ }
+]

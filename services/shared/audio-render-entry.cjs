@@ -282,7 +282,7 @@ async function renderClip(input, deps) {
     }
 
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
-    const cfg = { ...r.providerConfig, ...standInPace(req, r), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job, approval: req.approval, podLine: !!req.podSentenceId } }
+    const cfg = { ...r.providerConfig, ...standInPace(req, r), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, legoId: req.legoId || null, job: req.job, approval: req.approval, podLine: !!req.podSentenceId } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }

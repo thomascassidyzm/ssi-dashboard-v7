@@ -71,6 +71,7 @@ function introSplicePlan(course) {
     remainder: 'reuse the existing English Charlotte remainder where LEGO and context are identical and the context names no language; record fresh only the exceptions' }
 }
 
+const { slotVoiceException } = require('./slot-voice-exceptions.cjs')
 const stripFragment = t => String(t || '').trim().replace(/[\s:,.;!?'"’”]+$/, '').trim()
 const FULL_INTRO = /^\s*the\s+[\p{L}][\p{L}' -]*?\s+for\b/iu
 
@@ -78,7 +79,7 @@ const FULL_INTRO = /^\s*the\s+[\p{L}][\p{L}' -]*?\s+for\b/iu
  * Pure. May this NEW render happen under the voicing rules? `course` is the courses row (COURSE_CAST_FIELDS) or null (no course).
  * @param {{text:string, language:string, voiceId:string, course?:object|null, intro?:boolean, role?:string|null, audition?:boolean}} r
  */
-function checkRender({ text, language, voiceId, course = null, intro = false, role = null, audition = false, now, cast = null }) {
+function checkRender({ text, language, voiceId, course = null, intro = false, role = null, legoId = null, audition = false, now, cast = null }) {
   if (isXai(voiceId)) return refuse('xai-banned', `${voiceId} is an xAI voice — xAI is banned on every path (Tom 2026-10-10).`)
   // Tom 2026-10-13 (HARD RULE): no Tom clone speaks in a Welsh course. Checked before the audition/no-course shortcuts' reach: only a true audition (no course clip written) passes.
   if (!audition && isWelshCourse(course) && isTomCloneVoice(voiceId)) return refuse('tom-clone-welsh', WELSH_TOM_MESSAGE(course.course_code, voiceId))
@@ -89,6 +90,9 @@ function checkRender({ text, language, voiceId, course = null, intro = false, ro
   // A slot with no role on an English-known course is its known side, as before. `cast` null (pure callers, un-injected tests)
   // answers the fixed English lines and leaves target slots to the cast gate.
   const slotRole = presentation ? 'presentation' : (role || 'known')
+  // ONE-SLOT EXCEPTION (./slot-voice-exceptions.cjs): a slot listed there by a person's ruling may be rendered, whole, in its
+  // listed voice (Kai 2026-11-11 14:44Z: swe_for_eng S0059L02 intro → Tom-006). Only that course + LEGO + role + voice passes.
+  if (legoId && slotVoiceException({ courseCode: course.course_code, legoId, role: slotRole, voiceId })) return OK
   const res = resolveVoice({ course, role: slotRole, language: lang }, cast)
   if (res.status === 'refuse') return refuse(`resolve-${res.reason}`, `${course.course_code || 'this course'} ${slotRole}: ${res.message}`)
   if (res.status === 'voice' && !sameVoice(voiceId, res.voiceId)) {
@@ -117,7 +121,7 @@ let injectedCourse = null
 const useCourseRow = fn => { injectedCourse = fn }
 
 /** Throws a VoicingRefusal; async because the course row is read from the DB (cached a minute by the cast gate). */
-async function assertRenderAllowed({ text, language, voiceId, courseCode = null, intro = false, role = null, audition = false, podLine = false }) {
+async function assertRenderAllowed({ text, language, voiceId, courseCode = null, intro = false, role = null, legoId = null, audition = false, podLine = false }) {
   if (!audition && isWelshCourse(courseCode) && isTomCloneVoice(voiceId)) throw new VoicingRefusal(refuse('tom-clone-welsh', WELSH_TOM_MESSAGE(courseCode, voiceId)).message, 'tom-clone-welsh')   // by code alone: even a course row that cannot be read
   // A POD LINE (job #799): its voice is the pod's cast for its speaker, already resolved FROM THE POD ROW and enforced by the render
   // route (shared/pod-line-voice.cjs) — resolveVoice governs course slots, not pods ("Pods … are not slots here"), so comparing a
@@ -129,7 +133,7 @@ async function assertRenderAllowed({ text, language, voiceId, courseCode = null,
   const needsCourse = !audition && !!courseCode
   const course = needsCourse ? await (injectedCourse ? injectedCourse(courseCode) : gate.courseCastRow(courseCode)) : null
   const cast = course ? await loadCast() : null
-  const v = checkRender({ text, language, voiceId: gate.canonVoice ? gate.canonVoice(voiceId) : voiceId, course: course && { course_code: courseCode, ...course }, intro, role, audition, cast })
+  const v = checkRender({ text, language, voiceId: gate.canonVoice ? gate.canonVoice(voiceId) : voiceId, course: course && { course_code: courseCode, ...course }, intro, role, legoId, audition, cast })
   if (!v.allowed) throw new VoicingRefusal(v.message, v.reason)
 }
 

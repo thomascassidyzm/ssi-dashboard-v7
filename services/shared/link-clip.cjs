@@ -23,6 +23,7 @@ const { podSentencesOf } = require('./pod-sentence-split.cjs')
 const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
 const resolveVoiceLib = require('./resolve-voice.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')
+const { slotVoiceException } = require('./slot-voice-exceptions.cjs')
 
 /**
  * VOICE, not just words (Tom, 2026-10-31; 9 Oct: Alessandra's female clips linked into Lorenzo's male Italian slots, ~3,400 slots).
@@ -128,7 +129,10 @@ async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheck
     }
   }
 
-  if (slot.kind !== 'pod_sentence') {
+  // ONE-SLOT EXCEPTION (./slot-voice-exceptions.cjs): a LEGO slot listed there by a person's ruling may hold its listed
+  // voice (Kai 2026-11-11: swe_for_eng S0059L02 presentation → Tom-006). Anything else, or any other voice, is checked.
+  const slotException = slot.kind === 'lego' ? slotVoiceException({ courseCode, legoId: slot.label, role: link.role, voiceId: clip.voice_id }) : null
+  if (slot.kind !== 'pod_sentence' && !slotException) {
     const v = await checkVoice(db, courseCode, link.role, clip)
     if (!v.ok) {
       return { ...base, ok: false, code: 'VOICE_MISMATCH', voiceId: clip.voice_id,

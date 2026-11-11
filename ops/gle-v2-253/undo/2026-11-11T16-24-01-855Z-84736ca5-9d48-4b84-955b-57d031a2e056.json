@@ -1,0 +1,462 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "84736ca5-9d48-4b84-955b-57d031a2e056",
+  "actor": "kai-watson-job-253",
+  "created_at": "2026-11-11T16:24:01.855Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-11T16-24-01-855Z-84736ca5-9d48-4b84-955b-57d031a2e056.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U11",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U10",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar ceapaim gur rud maith é botúin a dhéanamh agus nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U09",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim gur smaoineamh maith é sin bualadh le chéile anocht mar ba mhian liom ceist a chur ort faoi rud éigin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U08",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo atá muid ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U07",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus tá mé cinnte go bhfuil mé ag déanamh níos fearr ná an uair dheireanach ar labhair muid le chéile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U05",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ba mhian liom ceist a chur ort sula n-imíonn tú faoin rud ba mhian leat a dhéanamh inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth agus ceapaim gur rud maith é mar sin é an fáth nach raibh an freagra ar eolas aige agus tá sé an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U02",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil mar bhí mé ag tnúth le labhairt níos fearr chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01U01",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil agus ní raibh mé ag súil leis nuair a chuala mé cad a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B06",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B05",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar theastaigh uaim labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L01B04",
+      "set": {
+        "target_text": "Ní hé sin an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U07",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U08",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L05U02",
+      "set": {
+        "known_text": "that is why the answer was not known to him",
+        "target_text": "sin é an fáth nach raibh an freagra ar eolas aige"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U08",
+      "set": {
+        "target_text": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L04U01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé ar eolas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U06",
+      "set": {
+        "target_text": "faraor sin é an fáth nach bhfuil a fhios agam an freagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U05",
+      "set": {
+        "target_text": "caithfidh muid athrú agus sin é an fáth a n-oibreoidh sé"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U04",
+      "set": {
+        "target_text": "bainim taitneamh as Gaeilge a fhoghlaim agus sin é an fáth nach bhfuil sé deacair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U03",
+      "set": {
+        "target_text": "sin é an fáth nach miste leat Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U02",
+      "set": {
+        "target_text": "sin é an fáth a dúirt tú go raibh míle maith agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01U01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé éasca Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B04",
+      "set": {
+        "target_text": "sin é an fáth a n-oibreoidh sé anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B03",
+      "set": {
+        "target_text": "aontaím agus sin é an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B02",
+      "set": {
+        "target_text": "ach sin é an fáth"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0105L01B01",
+      "set": {
+        "target_text": "sin é an fáth nach bhfuil sé ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U09",
+      "set": {
+        "known_text": "I know how to find out everything that we are looking for",
+        "target_text": "tá a fhios agam conas gach rud atá muid ag lorg a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U08",
+      "set": {
+        "known_text": "we wanted the truth that we are finding out today",
+        "target_text": "ba mhian linn an fhírinne atá muid a fháil amach inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U07",
+      "set": {
+        "known_text": "we must find out the whole sentence that we are looking for",
+        "target_text": "caithfidh muid an abairt iomlán atá muid ag lorg a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U06",
+      "set": {
+        "known_text": "this is the answer that we are looking for and thank you very much",
+        "target_text": "is é seo an freagra atá muid ag lorg agus go raibh míle maith agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U05",
+      "set": {
+        "known_text": "I can't find out anything that we are looking for today",
+        "target_text": "ní féidir liom aon rud atá muid ag lorg a fháil amach inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U04",
+      "set": {
+        "known_text": "you should find out the truth that we are looking for",
+        "target_text": "ba cheart duit an fhírinne atá muid ag lorg a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U03",
+      "set": {
+        "known_text": "why are you looking forward to everything that we are starting now?",
+        "target_text": "cén fáth a bhfuil tú ag tnúth le gach rud atá muid ag tosú anois?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U02",
+      "set": {
+        "known_text": "unfortunately we are not enjoying the story that we are finding out",
+        "target_text": "faraor níl muid ag baint taitnimh as an scéal atá muid a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05U01",
+      "set": {
+        "known_text": "I like everything that we are finding out about the language",
+        "target_text": "is maith liom gach rud atá muid a fháil amach faoin teanga"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05B03",
+      "set": {
+        "known_text": "interesting things that we are starting",
+        "target_text": "rudaí suimiúla atá muid ag tosú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05B02",
+      "set": {
+        "known_text": "that we are very happy about the language",
+        "target_text": "atá muid an-sásta faoin teanga"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L05B01",
+      "set": {
+        "known_text": "that we are nearly ready to talk",
+        "target_text": "atá muid beagnach réidh le labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U06",
+      "set": {
+        "known_text": "thank you very much and I am starting to work again on what you said",
+        "target_text": "go raibh míle maith agat agus tá mé ag tosú ag obair arís ar an méid a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U05",
+      "set": {
+        "known_text": "we must keep on working now on what you understand",
+        "target_text": "caithfidh muid leanúint ar aghaidh ag obair anois ar an méid a thuigeann tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U04",
+      "set": {
+        "known_text": "I was working carefully on what I have learned",
+        "target_text": "bhí mé ag obair go cúramach ar an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U03",
+      "set": {
+        "known_text": "why are you working on what you said about the language?",
+        "target_text": "cén fáth a bhfuil tú ag obair ar an méid a dúirt tú faoin teanga?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U02",
+      "set": {
+        "known_text": "I can't improve on what I don't know",
+        "target_text": "ní féidir liom feabhsú ar an méid nach bhfuil a fhios agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04U01",
+      "set": {
+        "known_text": "you should improve on what you said",
+        "target_text": "ba cheart duit feabhsú ar an méid a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04B04",
+      "set": {
+        "known_text": "to improve on what I have learned",
+        "target_text": "feabhsú ar an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04B03",
+      "set": {
+        "known_text": "working on what you understand",
+        "target_text": "ag obair ar an méid a thuigeann tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04B02",
+      "set": {
+        "known_text": "on what I don't know",
+        "target_text": "ar an méid nach bhfuil a fhios agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L04B01",
+      "set": {
+        "known_text": "on what you said",
+        "target_text": "ar an méid a dúirt tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U08",
+      "set": {
+        "known_text": "I don't know how to change",
+        "target_text": "níl a fhios agam conas athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U07",
+      "set": {
+        "known_text": "she doesn't want to change today",
+        "target_text": "ní mian léi athrú inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U06",
+      "set": {
+        "known_text": "thank you but I should change now",
+        "target_text": "go raibh maith agat ach ba cheart dom athrú anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U05",
+      "set": {
+        "known_text": "I think that it is not easy to change",
+        "target_text": "ceapaim nach bhfuil sé éasca athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U04",
+      "set": {
+        "known_text": "if I need to change I'm not going to be worried",
+        "target_text": "má chaithfidh mé athrú ní bheidh mé buartha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U03",
+      "set": {
+        "known_text": "when do you want to change?",
+        "target_text": "cathain ar mian leat athrú?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U02",
+      "set": {
+        "known_text": "are you going to change tomorrow?",
+        "target_text": "an bhfuil tú chun athrú amárach?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02U01",
+      "set": {
+        "known_text": "I can't change at the moment",
+        "target_text": "ní féidir liom athrú faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02B04",
+      "set": {
+        "known_text": "I'd like to change",
+        "target_text": "ba mhaith liom athrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0104L02B03",
+      "set": {
+        "known_text": "you should change like this",
+        "target_text": "ba cheart duit athrú mar seo"
+      }
+    }
+  ]
+}

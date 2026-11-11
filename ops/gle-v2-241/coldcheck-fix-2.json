@@ -1,0 +1,685 @@
+{
+ "meta": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "b2f9bf27-634d-4609-a569-3ef917abe152",
+  "undo_file": "2026-11-11T16-08-00-791Z-b2f9bf27-634d-4609-a569-3ef917abe152.json"
+ },
+ "why": "Sol cold check #252, second pass: English brought in line with the Irish on rows the #241 apply touched; 2 Irish fixes; 2 deletes (rudaí deacair)",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0089L04U07",
+   "set": {
+    "known_text": "I know there is a lot done and I'm not worried, because I think it is a good thing that we've been learning together"
+   },
+   "expect": {
+    "known_text": "I know there is a lot done and I'm not worried, because I think it is a great thing that we've been learning together",
+    "target_text": "Tá a fhios agam go bhfuil go leor déanta agus níl mé buartha, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0108L05U05",
+   "set": {
+    "known_text": "I don't enjoy waking in the middle of the night and I am not happy in the morning"
+   },
+   "expect": {
+    "known_text": "it is not easy to feel well in the morning if you do not enjoy waking in the middle of the night",
+    "target_text": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím sásta ar maidin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L01U02",
+   "set": {
+    "known_text": "she said it is very interesting to find out how it changes our brain when we learn"
+   },
+   "expect": {
+    "known_text": "she said it was very interesting to find out how our brain changes when we learn",
+    "target_text": "dúirt sí go bhfuil sé an-suimiúil fáil amach conas a athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U05",
+   "set": {
+    "known_text": "I wasn't ready to go but I have to go because there was too much to do"
+   },
+   "expect": {
+    "known_text": "I wasn't ready to go but I had to because there was too much to do",
+    "target_text": "Ní raibh mé réidh le dul ach caithfidh mé dul mar bhí an iomarca le déanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0202L01U12",
+   "set": {
+    "known_text": "nobody was sure whether anyone was going to help and everyone was worried about what to do"
+   },
+   "expect": {
+    "known_text": "nobody was sure whether anyone was going to help and everyone was worried about what to do next",
+    "target_text": "Ní raibh duine ar bith cinnte an raibh duine ar bith chun cabhrú agus bhí gach duine buartha faoi cad a bhí le déanamh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03B05",
+   "set": {
+    "known_text": "it changes everything when we learn something new"
+   },
+   "expect": {
+    "known_text": "learning something new changes everything",
+    "target_text": "athraíonn sé gach rud nuair a fhoghlaimíonn muid rud nua"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03U01",
+   "set": {
+    "known_text": "when we learn a new language it changes everything and that is very interesting"
+   },
+   "expect": {
+    "known_text": "when you learn a new language it changes everything and that is very interesting",
+    "target_text": "nuair a fhoghlaimíonn muid teanga nua athraíonn sé gach rud agus tá sé sin an-suimiúil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03U15",
+   "set": {
+    "known_text": "it changes a lot when we learn something new together and it's much better"
+   },
+   "expect": {
+    "known_text": "learning something new together changes a lot and it's much better",
+    "target_text": "athraíonn sé go leor nuair a fhoghlaimíonn muid rud nua le chéile agus tá sé níos fearr"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L04B06",
+   "set": {
+    "known_text": "it changes our brain when we learn something new"
+   },
+   "expect": {
+    "known_text": "learning something new changes our brain",
+    "target_text": "athraíonn sé ár n-inchinn nuair a fhoghlaimíonn muid rud nua"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L01U09",
+   "set": {
+    "known_text": "I wasn't expecting to find it so very interesting when we learn together"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting to find it so very interesting when we started learning together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L03U01",
+   "set": {
+    "known_text": "I wasn't expecting it to be so interesting when we learn Irish together"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting it to be so interesting when we started learning Irish together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L03U06",
+   "set": {
+    "known_text": "I wasn't expecting it but our brain changes when we learn something new"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting it but our brain changes every time we learn something new"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U01",
+   "set": {
+    "known_text": "I wasn't expecting it to be so very interesting when we learn together"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting it to be so very interesting when we started learning together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U10",
+   "set": {
+    "known_text": "I wasn't expecting it to change our brain when we learn this language"
+   },
+   "expect": {
+    "known_text": "I wasn't expecting it to change our brain when we started learning this language"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L05U06",
+   "set": {
+    "known_text": "That was the kind of thing I wasn't expecting when we learn the language"
+   },
+   "expect": {
+    "known_text": "That was the kind of thing I wasn't expecting when we started learning the language"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L02U11",
+   "set": {
+    "known_text": "I think that it's a good idea to read interesting things because when we learn something new our brain changes in a wonderful way"
+   },
+   "expect": {
+    "known_text": "I think that it's a good idea to read interesting things because every time we learn something new our brain changes in a wonderful way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L01U15",
+   "set": {
+    "known_text": "I thought that it was a good idea to read interesting things and that when we learn something new our brain changes in a wonderful way"
+   },
+   "expect": {
+    "known_text": "I thought that it was a good idea to read interesting things and that every time we learn something new our brain changes in a wonderful way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U14",
+   "set": {
+    "known_text": "I thought that it was a good idea to read interesting things in Irish because when we learn something new our brain changes"
+   },
+   "expect": {
+    "known_text": "I thought that it was a good idea to read interesting things in Irish because every time we learn something new our brain changes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U10",
+   "set": {
+    "known_text": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes when we learn something new"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes every time we learn something new"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U10",
+   "set": {
+    "known_text": "That isn't the reason why I wanted to see you because when we learn something new our brain changes and that helps us speak better"
+   },
+   "expect": {
+    "known_text": "That isn't the reason why I wanted to see you because every time we learn something new our brain changes and that helps us speak better"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0066L01U08",
+   "set": {
+    "known_text": "it is not important to be worried about making mistakes",
+    "target_text": "Níl sé tábhachtach a bheith buartha faoi bhotúin a dhéanamh"
+   },
+   "expect": {
+    "target_text": "ceapaim Níl sé tábhachtach a bheith buartha faoi bhotúin a dhéanamh ag foghlaim Gaeilge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0270L04U06",
+   "set": {
+    "known_text": "she told me she was worried about being late because she had too much work to do before leaving",
+    "target_text": "dúirt sí liom go raibh sí buartha faoi a bheith déanach mar bhí an iomarca oibre le déanamh aici roimh imeacht"
+   },
+   "expect": {
+    "target_text": "dúirt sí liom go raibh sí buartha faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "gle_v2_for_eng:S0124L02U03",
+   "expect": {
+    "target_text": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "gle_v2_for_eng:S0124L01U12",
+   "expect": {
+    "target_text": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   }
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0124L01U12",
+    "seed_number": 124,
+    "lego_index": 1,
+    "position": 20,
+    "known_text": "I thought it was a good thing to keep going even when things felt difficult because every time we learn something new our brain changes",
+    "target_text": "cheap mé gur rud maith é leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+    "word_count": 130,
+    "lego_count": 25,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-18T02:03:12.391Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-11-09T14:49:23.005Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": "2026-02-18T03:21:35.132Z",
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0124L01",
+      "target": "cheap mé",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gur",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rud",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " maith",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " é",
+      "isGhost": true
+     },
+     {
+      "known": "to keep on",
+      "legoId": "S0092L01",
+      "target": " leanúint ar aghaidh",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " nuair",
+      "isGhost": true
+     },
+     {
+      "known": "his",
+      "legoId": "S0052L05",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bhí",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rudaí",
+      "isGhost": true
+     },
+     {
+      "known": "difficult",
+      "legoId": "S0066L02",
+      "target": " deacair",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " mar",
+      "isGhost": false
+     },
+     {
+      "known": "when we learn",
+      "legoId": "S0111L01",
+      "target": " nuair a fhoghlaimímid",
+      "isGhost": false
+     },
+     {
+      "known": "something new",
+      "legoId": "S0111L02",
+      "target": " rud nua",
+      "isGhost": false
+     },
+     {
+      "known": "it changes",
+      "legoId": "S0111L03",
+      "target": " athraíonn sé",
+      "isGhost": false
+     },
+     {
+      "known": "our brain",
+      "legoId": "S0111L04",
+      "target": " ár n-inchinn",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "gle_v2_for_eng:S0124L02U03",
+    "seed_number": 124,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "I thought that it was a good idea to keep going when things were difficult because our brain changes every time we learn something new",
+    "target_text": "cheap mé gur smaoineamh maith é sin leanúint ar aghaidh nuair a bhí rudaí deacair mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+    "word_count": 141,
+    "lego_count": 25,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-18T02:03:12.495Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-11-09T14:49:23.005Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": "2026-02-18T03:21:35.132Z",
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0124L01",
+      "target": "cheap mé",
+      "isGhost": false
+     },
+     {
+      "known": "that it was a good idea",
+      "legoId": "S0124L02",
+      "target": " gur smaoineamh maith é sin",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to keep on",
+      "legoId": "S0092L01",
+      "target": " leanúint ar aghaidh",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " nuair",
+      "isGhost": true
+     },
+     {
+      "known": "his",
+      "legoId": "S0052L05",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bhí",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rudaí",
+      "isGhost": true
+     },
+     {
+      "known": "difficult",
+      "legoId": "S0066L02",
+      "target": " deacair",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " mar",
+      "isGhost": false
+     },
+     {
+      "known": "when we learn",
+      "legoId": "S0111L01",
+      "target": " nuair a fhoghlaimímid",
+      "isGhost": false
+     },
+     {
+      "known": "something new",
+      "legoId": "S0111L02",
+      "target": " rud nua",
+      "isGhost": false
+     },
+     {
+      "known": "it changes",
+      "legoId": "S0111L03",
+      "target": " athraíonn sé",
+      "isGhost": false
+     },
+     {
+      "known": "our brain",
+      "legoId": "S0111L04",
+      "target": " ár n-inchinn",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0270L04U06",
+   "set": {
+    "known_text": "she told me she was worried about being late because she had too much work to finish before leaving",
+    "target_text": "dúirt sí liom go raibh sí buartha faoi a bheith déanach mar bhí an iomarca oibre le déanamh uirthi roimh imeacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0066L01U08",
+   "set": {
+    "known_text": "she thinks it is not important to worry about making mistakes when learning",
+    "target_text": "ceapaim Níl sé tábhachtach a bheith buartha faoi bhotúin a dhéanamh ag foghlaim Gaeilge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L02U10",
+   "set": {
+    "known_text": "That isn't the reason why I wanted to see you because every time we learn something new our brain changes and that helps us speak better"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0127L01U10",
+   "set": {
+    "known_text": "That isn't the reason why I wanted to see you because making mistakes is a good thing and our brain changes every time we learn something new"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U14",
+   "set": {
+    "known_text": "I thought that it was a good idea to read interesting things in Irish because every time we learn something new our brain changes"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L01U15",
+   "set": {
+    "known_text": "I thought that it was a good idea to read interesting things and that every time we learn something new our brain changes in a wonderful way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L02U11",
+   "set": {
+    "known_text": "I think that it's a good idea to read interesting things because every time we learn something new our brain changes in a wonderful way"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L05U06",
+   "set": {
+    "known_text": "That was the kind of thing I wasn't expecting when we started learning the language"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U10",
+   "set": {
+    "known_text": "I wasn't expecting it to change our brain when we started learning this language"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U01",
+   "set": {
+    "known_text": "I wasn't expecting it to be so very interesting when we started learning together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L03U06",
+   "set": {
+    "known_text": "I wasn't expecting it but our brain changes every time we learn something new"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L03U01",
+   "set": {
+    "known_text": "I wasn't expecting it to be so interesting when we started learning Irish together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L01U09",
+   "set": {
+    "known_text": "I wasn't expecting to find it so very interesting when we started learning together"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L04B06",
+   "set": {
+    "known_text": "learning something new changes our brain"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03U15",
+   "set": {
+    "known_text": "learning something new together changes a lot and it's much better"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03U01",
+   "set": {
+    "known_text": "when you learn a new language it changes everything and that is very interesting"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0111L03B05",
+   "set": {
+    "known_text": "learning something new changes everything"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0202L01U12",
+   "set": {
+    "known_text": "nobody was sure whether anyone was going to help and everyone was worried about what to do next"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L04U05",
+   "set": {
+    "known_text": "I wasn't ready to go but I had to because there was too much to do"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0112L01U02",
+   "set": {
+    "known_text": "she said it was very interesting to find out how our brain changes when we learn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0108L05U05",
+   "set": {
+    "known_text": "it is not easy to feel well in the morning if you do not enjoy waking in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0089L04U07",
+   "set": {
+    "known_text": "I know there is a lot done and I'm not worried, because I think it is a great thing that we've been learning together"
+   }
+  }
+ ]
+}
