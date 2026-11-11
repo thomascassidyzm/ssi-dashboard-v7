@@ -77,3 +77,29 @@ describe('phase8 wires the human-authored presentation guard', () => {
     expect(body).not.toMatch(/\.eq\('lego_id', legoId\)\s*\.maybeSingle\(\)/)   // several rows per LEGO is normal now
   })
 })
+
+describe('phase8 wires the SOFT guard on hand-written intros (Kai, 2026-11-11, job #247·AH)', () => {
+  it('imports it', () => {
+    expect(SRC).toMatch(/require\('\.\.\/shared\/intro-authorship\.cjs'\)/)
+  })
+  it('/regenerate-presentations warns before the dry-run return and in the live answer, and never blocks', () => {
+    const body = routeBody("app.post('/regenerate-presentations/:courseCode'")
+    const warnAt = body.indexOf('introAuthorship.warningsFor(')
+    const dryAt = body.indexOf('if (dryRun) {')
+    expect(warnAt).toBeGreaterThan(-1)
+    expect(dryAt).toBeGreaterThan(warnAt)                  // a preview warns too
+    expect(body.match(/introWarnings,/g).length).toBe(2)   // dry-run and live answers
+    expect(body).toMatch(/existingByLegoId\.get\(p\.lego_id\)\?\.text/)   // old = what the learner hears
+    expect(body).not.toMatch(/introWarnings[\s\S]{0,80}return res\.status\(4/)   // a warning is never a refusal
+  })
+  it('/generate warns on authored intros that replace soft-marked words', () => {
+    const body = routeBody("app.post('/generate/:courseCode'")
+    expect(body).toMatch(/authorIntroWarnings = introAuthorship\.warningsFor\(/)
+    expect(body).toMatch(/introWarnings: authorIntroWarnings/)
+  })
+  it('/regenerate-presentation (single) reports an introWarning in its answer', () => {
+    const body = routeBody("app.post('/regenerate-presentation/:courseCode/:legoId'")
+    expect(body).toMatch(/introAuthorship\.warningsFor\(/)
+    expect(body).toMatch(/introWarning \? \{ introWarning \}/)
+  })
+})

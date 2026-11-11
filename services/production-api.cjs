@@ -52,6 +52,7 @@ const { coursesVisibleTo } = require('./shared/library-courses.cjs')
 const castingRights = require('./voice-engine/casting-rights.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 const humanAuthoredPresentations = require('./shared/human-authored-presentations.cjs')
+const introAuthorship = require('./shared/intro-authorship.cjs')  // soft guard on hand-written intros (job #247·AH)
 
 // =============================================================================
 // MANIFEST CACHING
@@ -2995,6 +2996,27 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       logger.warn(`human-authored mark unreadable for ${courseCode}/${legoId}: ${markErr.message}`)
     }
 
+    // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH): what in this line is
+    // hand-authored wording — its "as in" example, a line no template makes, a
+    // soft mark — so the Script Viewer can warn before an edit drops it.
+    let authorship = null
+    if (!humanAuthoredMark && data?.text) {
+      try {
+        const { data: courseRow } = await db.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+        if (courseRow) {
+          const ctx = await introAuthorship.loadIntroContext(db, courseRow)
+          const softMark = ctx.softMarks.get(legoId) || null
+          const sig = introAuthorship.authorshipSignals(data.text, { compiled: ctx.compiled, mark: softMark })
+          authorship = {
+            as_in: sig.asIn, free_form: sig.freeForm, hand_authored: sig.handAuthored,
+            soft_mark: softMark ? { author: softMark.author, authored_on: softMark.authored_on, source: softMark.source, text: softMark.text } : null,
+          }
+        }
+      } catch (sigErr) {
+        logger.warn(`intro authorship unreadable for ${courseCode}/${legoId}: ${sigErr.message}`)
+      }
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
@@ -3005,12 +3027,118 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       human_authored: humanAuthoredMark
         ? { author: humanAuthoredMark.author, authored_on: humanAuthoredMark.authored_on, source: humanAuthoredMark.source, reconciled_at: humanAuthoredMark.reconciled_at, decisions: humanAuthoredMark.decisions }
         : null,
+      authorship,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending
     })
   } catch (err) {
     serverError(res, `Failed to get presentation for ${courseCode}/${legoId}:`, err)
+  }
+})
+
+// ─── Intro authorship marks, any course (Kai, 2026-11-11, job #247·AH) ──────────
+// Until this route, the only thing that ever marked an intro as human-written was a
+// tool hard-wired to two German lines (tools/course-optimization/
+// mark-human-authored-presentations.cjs). These two routes make the mark general.
+// A SOFT mark (the default) only makes rebuilds warn and suggest; a HARD mark is
+// Kai's 2026-09-21 guard and has to be asked for by name. Both need the soft-guard
+// column (database/changes/20261111_human_authored_presentations_soft_guard.sql)
+// for a soft write; until it is applied the answer names that file.
+function markerIdentity(req) {
+  const u = req.dashboardUser || null
+  return (u && (u.email || u.name || u.display_name)) || req.get('x-agent-id') || req.get('x-service-name') || null
+}
+
+// POST /api/production/:courseCode/presentation/:legoId/authorship
+// Body: { author, guard?: 'soft'|'hard' (default soft), text? (default: the clip the
+// LEGO links to), why?, authored_on? }. Header x-agent-id (or a dashboard session).
+app.post('/api/production/:courseCode/presentation/:legoId/authorship', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const by = markerIdentity(req)
+  if (!by) return res.status(401).json({ error: 'say who you are (x-agent-id, or a dashboard session) — a mark records who placed it', code: 'EDITOR_IDENTITY_REQUIRED' })
+  const { author, guard = 'soft', why = null, authored_on: authoredOn = null } = req.body || {}
+  if (!author) return res.status(400).json({ error: 'author is required — who wrote the words (write "unattributed" if nobody recorded it; never guess)' })
+  try {
+    const db = supabaseClient.getClient()
+    const { data: lego, error: legoErr } = await db.from('course_legos').select('lego_id, seed_number, known_text, target_text')
+      .eq('course_code', courseCode).eq('lego_id', legoId).maybeSingle()
+    if (legoErr) throw legoErr
+    if (!lego) return res.status(404).json({ error: `no LEGO ${courseCode}/${legoId}` })
+    let text = (req.body && typeof req.body.text === 'string' && req.body.text.trim()) || null
+    if (!text) {
+      const clip = await require('./shared/presentation-read.cjs').loadPresentationClip(db, courseCode, legoId)
+      text = clip?.text || null
+    }
+    if (!text) return res.status(400).json({ error: `${legoId} has no intro to mark and no text was given` })
+    const mark = await humanAuthoredPresentations.markHumanAuthored(db, {
+      courseCode, legoId, text, author, authoredOn, guard, lego, by,
+      source: `marked via /presentation/:legoId/authorship by ${by}`, why,
+    })
+    res.json({ success: true, lego_id: legoId, guard: humanAuthoredPresentations.markGuard(mark), author: mark.author, text: mark.text })
+  } catch (err) {
+    const soft = /SOFT|guard|already carries a HARD/.test(err.message)
+    res.status(soft ? 409 : 500).json({ error: err.message })
+  }
+})
+
+// POST /api/production/:courseCode/intro-authorship/backfill
+// Body: { apply?: false }. Every LEGO whose linked intro carries an "as in" example and
+// has no mark yet gets a SOFT mark of those words — author "unattributed" (who wrote a
+// pre-existing line was never recorded, and is never inferred: Tom, 2026-09-01). Dry run
+// by default: the count and a sample, nothing written. No TTS, no course_audio write.
+app.post('/api/production/:courseCode/intro-authorship/backfill', async (req, res) => {
+  const { courseCode } = req.params
+  const apply = req.body && req.body.apply === true
+  const by = markerIdentity(req)
+  if (apply && !by) return res.status(401).json({ error: 'say who you are (x-agent-id, or a dashboard session) before writing marks', code: 'EDITOR_IDENTITY_REQUIRED' })
+  try {
+    const db = supabaseClient.getClient()
+    const { data: courseRow } = await db.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+    if (!courseRow) return res.status(404).json({ error: `no course ${courseCode}` })
+    const ctx = await introAuthorship.loadIntroContext(db, courseRow)
+    const existing = await humanAuthoredPresentations.loadMarks(db, courseCode, null, { soft: 'both' })
+    const legos = await readAllPages(() => db.from('course_legos')
+      .select('lego_id, seed_number, known_text, target_text, presentation_audio_id')
+      .eq('course_code', courseCode).not('presentation_audio_id', 'is', null), { orderCol: 'lego_id' })
+    const clipById = new Map()
+    const ids = [...new Set(legos.map(l => l.presentation_audio_id))]
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data, error } = await db.from('course_audio').select('id, text').in('id', ids.slice(i, i + 200))
+      if (error) throw error
+      for (const c of data || []) clipById.set(String(c.id), c)
+    }
+    const candidates = []
+    let alreadyMarked = 0
+    for (const l of legos) {
+      const clip = clipById.get(String(l.presentation_audio_id))
+      if (!clip || !clip.text) continue
+      const asIn = introAuthorship.parseAsIn(clip.text, ctx.compiled)
+      if (!asIn) continue
+      if (existing.has(l.lego_id)) { alreadyMarked++; continue }
+      candidates.push({ lego: l, clip, asIn })
+    }
+    const out = { success: true, courseCode, dryRun: !apply, legos_with_intro: legos.length, as_in_intros: candidates.length + alreadyMarked, already_marked: alreadyMarked, to_mark: candidates.length, problems: ctx.problems,
+      sample: candidates.slice(0, 20).map(c => ({ lego_id: c.lego.lego_id, text: introAuthorship.stripMarkup(c.clip.text), example: c.asIn })) }
+    if (!apply) return res.json(out)
+    let marked = 0
+    const failed = []
+    for (const c of candidates) {
+      try {
+        await humanAuthoredPresentations.markHumanAuthored(db, {
+          courseCode, legoId: c.lego.lego_id, text: c.clip.text, author: 'unattributed', guard: 'soft', lego: c.lego, by, mirror: false,
+          source: `as-in backfill (job #247·AH): the linked intro clip ${c.clip.id} carried an "as in" example; who wrote it was not recorded`,
+          why: 'soft mark so a rebuild warns before replacing this as-in wording',
+        })
+        marked++
+      } catch (e) {
+        failed.push({ lego_id: c.lego.lego_id, error: e.message })
+        if (failed.length === 1 && /guard/.test(e.message)) break  // the soft-guard column is not there: every write would fail the same way
+      }
+    }
+    res.json({ ...out, marked, failed: failed.slice(0, 20), failed_count: failed.length })
+  } catch (err) {
+    serverError(res, `intro-authorship backfill failed for ${courseCode}:`, err)
   }
 })
 

@@ -534,6 +534,30 @@
                   This is the authoritative store for the intro audio. Saving regenerates only this LEGO's clip.
                 </p>
 
+                <!-- SOFT GUARD (Kai, 2026-11-11, job #247·AH): this intro carries -->
+                <!-- hand-authored wording. Say so, show the original beside the -->
+                <!-- edit, and warn when the edit drops the "as in" example. -->
+                <!-- Never blocks the save. -->
+                <div
+                  v-if="presentationHandAuthored && presentationTextChanged"
+                  class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200 space-y-1"
+                >
+                  <div v-if="presentationDropsAsIn">
+                    This intro carries a hand-written example — as in “{{ presentationAsIn }}” — and your edit drops it.
+                    Carry it into the new wording if it still fits this LEGO. Saving is not blocked.
+                  </div>
+                  <div v-else>
+                    This intro carries hand-authored wording{{ presentationSoftMarkAuthor ? ` (marked: ${presentationSoftMarkAuthor})` : '' }}. Saving is not blocked.
+                  </div>
+                  <div class="text-xs text-amber-300">Original: {{ presentationOriginalText }}</div>
+                </div>
+                <div
+                  v-if="presentationServerWarning"
+                  class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200"
+                >
+                  {{ presentationServerWarning }}
+                </div>
+
                 <!-- Result / audition -->
                 <div v-if="presentationResult" class="bg-emerald-900 bg-opacity-20 border border-emerald-800 rounded-lg p-3 space-y-2">
                   <div class="text-sm text-emerald-300">
@@ -2120,6 +2144,16 @@ const presentationIsSuggested = ref(false);
 // The clip's s3_key when the dialog opened (null: no clip yet): an interrupted render has landed
 // iff it moved. Undefined = not known (the read failed, or a render since): then nothing is re-sent.
 let presentationBaselineKey: string | null | undefined;
+// Hand-authored wording in the stored line (GET …/presentation/:legoId `authorship`,
+// services/shared/intro-authorship.cjs) — the soft guard's warning (job #247·AH).
+const presentationOriginalText = ref<string>('');
+const presentationAsIn = ref<string | null>(null);
+const presentationHandAuthored = ref(false);
+const presentationSoftMarkAuthor = ref<string | null>(null);
+const presentationServerWarning = ref<string | null>(null);
+const foldIntro = (s: string) => String(s || '').replace(/<[^>]*>/g, ' ').replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
+const presentationTextChanged = computed(() => foldIntro(presentationText.value) !== foldIntro(presentationOriginalText.value));
+const presentationDropsAsIn = computed(() => !!presentationAsIn.value && !foldIntro(presentationText.value).includes(foldIntro(presentationAsIn.value)));
 
 const onJourneyPresentationEdit = async (item: any) => {
   rememberPlace(item.legoId || item.lego_id);
@@ -2130,6 +2164,11 @@ const onJourneyPresentationEdit = async (item: any) => {
   presentationTargetText.value = item.target_text || '';
   presentationText.value = '';
   presentationIsSuggested.value = false;
+  presentationOriginalText.value = '';
+  presentationAsIn.value = null;
+  presentationHandAuthored.value = false;
+  presentationSoftMarkAuthor.value = null;
+  presentationServerWarning.value = null;
   presentationBaselineKey = undefined;
   presentationError.value = null;
   presentationResult.value = null;
@@ -2149,6 +2188,10 @@ const onJourneyPresentationEdit = async (item: any) => {
       presentationText.value = data.text || '';
       presentationIsSuggested.value = !!data.is_suggested;
       presentationBaselineKey = data.s3_key || null;
+      presentationOriginalText.value = data.text || '';
+      presentationAsIn.value = data.authorship?.as_in || null;
+      presentationHandAuthored.value = !!data.authorship?.hand_authored;
+      presentationSoftMarkAuthor.value = data.authorship?.soft_mark?.author || null;
     }
   } catch (err) {
     console.error('Failed to load presentation text:', err);
@@ -2166,6 +2209,7 @@ const savePresentationAndRegen = async () => {
   presentationBusy.value = true;
   presentationError.value = null;
   presentationResult.value = null;
+  presentationServerWarning.value = null;
   presentationAudioUrl.value = null;
 
   try {
@@ -2197,6 +2241,7 @@ const savePresentationAndRegen = async () => {
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
     }
     const result = resp ? (sent as { body: any }).body : (sent as { landed: any }).landed;
+    presentationServerWarning.value = result?.introWarning?.message || null;
     presentationResult.value = {
       audio_id: result.audio_id,
       duration_ms: result.duration_ms,
