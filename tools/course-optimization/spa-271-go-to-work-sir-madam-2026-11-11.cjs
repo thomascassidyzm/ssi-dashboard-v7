@@ -146,7 +146,8 @@ async function main() {
       for (const s of ['known', 'target1', 'target2']) {
         const aid = p[`${s}_audio_id`]; if (!aid) { bad.push(`${id} ${s} EMPTY`); continue; }
         const changed = s === 'known' ? d.known : d.target;
-        if (changed) { const mine = res.find((x) => x.role === s && x.text === (s === 'known' ? d.known : d.target)); if (!mine || !mine.real || mine.real.audioId !== aid) bad.push(`${id} ${s} is ${aid}, not this job's clip`); }
+        if (!changed) continue; // an untouched slot keeps its old clip; S0274L01U08's known clip differs only in case/punctuation
+        const mine = res.find((x) => x.role === s && x.text === changed); if (!mine || !mine.real || mine.real.audioId !== aid) bad.push(`${id} ${s} is ${aid}, not this job's clip`);
         links.push({ op: 'audio.link', target: 'phrase', phrase_id: p.id, slot: s, audio_id: aid });
       }
       console.log(`  ${id} [${l.lego_id} ${l.target_text}] ${p.known_text} | ${p.target_text}  ${p.known_audio_id} ${p.target1_audio_id} ${p.target2_audio_id}`);
