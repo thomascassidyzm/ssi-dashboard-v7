@@ -1,0 +1,460 @@
+[
+ {
+  "role": "target1",
+  "text": "No quiero que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target1",
+    "current": "c160fec0-b76c-4a04-bd37-768ab67ffc36"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e0dddfdd-ba62-448f-8cfe-56601c51c062",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No quiero que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target2",
+    "current": "93577725-3f4c-4462-a7e1-3819a880c8e8"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9b1b274d-c618-49dc-be10-bb94b6287096",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want you to leave",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "known",
+    "current": "6496aabe-4ed4-4f95-a6d5-aaef45b74bf9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "68768dc1-9f78-4a9f-aa18-c0a8e06ad9fd",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Quieres que haga algo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target1",
+    "current": "333a63a7-5e0c-4722-ae3f-37bb80136b7a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d39a3e5-16ff-4d90-96e8-90cabe885c2b",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Quieres que haga algo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target2",
+    "current": "127c0932-6320-43eb-8630-8a6e91a7047c"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "74c6421f-c7c8-43ab-8ae4-c27d2fb8955a",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you want me to do something?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "known",
+    "current": "922d3433-5761-49a9-8920-83916db97220"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "00d7d490-3c2e-4bc9-bde3-6757ca130664",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quería que me ayudaras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target1",
+    "current": "a055894a-af91-4597-ab9e-a5d6e3b598b4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e667a4e3-9e52-4505-bd99-7b619e20294a",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería que me ayudaras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target2",
+    "current": "00b2d139-8e61-40d7-b064-0b2f64b90a1d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "156c34f5-80cc-4efa-8641-8efdb3e50018",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted you to help me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "known",
+    "current": "df91b5e6-778d-4e2f-a4a9-4c01c843ce29"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8bc2dbbc-b794-44ed-b2d9-06f0dc75425b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No vi a nadie que conociera allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target1",
+    "current": "dc1829c1-9aad-4a45-9deb-9436f2e71923"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0f7fee84-7523-4aaf-99a2-be8f35950853",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No vi a nadie que conociera allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target2",
+    "current": "3f16fdf2-3de6-4d68-99a7-826a3aee396e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d5a05d45-b4f5-4a45-8f4c-ec6bf0b8b768",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't see anyone I knew there",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "known",
+    "current": "7b8f9120-c501-424f-8398-380f07a6ec34"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a899fc54-6c7f-4584-9910-88c9f50478a4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target1",
+    "current": "7baccdc7-95b3-45dd-ad55-f315a25a0549"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b59b5121-2afa-479e-850b-c4d0619a853b",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target2",
+    "current": "83000002-4261-4544-bd95-a3f7fce8edfd"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8426b5f3-8877-4225-b131-4410752c9cee",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "If you told me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "known",
+    "current": "be4c1b40-9091-4c7b-96e0-e290a7b03634"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5f1d22fa-559f-4421-b9b4-016b9c529fe8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si te pidiera que me ayudaras con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target1",
+    "current": "213b6888-1e98-4764-bc75-3def3f975fe4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "212b41c8-5132-4be3-86ea-0afd33932d18",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si te pidiera que me ayudaras con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target2",
+    "current": "99412633-599d-4d3a-a923-4567f3c6d516"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a4939533-5645-4cf7-9b5e-5687a44735c6",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I asked you to help me with this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "known",
+    "current": "2d40d3bf-e080-489a-80ae-7cbc230b5f75"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b5d5c511-6be2-42f1-b68f-4683ad8ec8d6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es importante hablar de la misma manera que antes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U13",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7cdc5cd2-5249-4b63-9b94-c7a32564cca4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es importante hablar de la misma manera que antes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U13",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8d49c062-20e7-4dee-a561-6b7f91600cb2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's important to speak in the same way as before",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U13",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "22a4ec13-56f8-4426-a4d1-de5f2e367e74",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'me to tell you', as in — 'he wanted me to tell you before the weekend', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0237L01",
+    "slot": "presentation",
+    "current": "858e4700-7408-464a-b6d5-131b33876b7a"
+   }
+  ],
+  "legoId": "S0237L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "409cb912-20e2-4354-b358-67b208399a5f",
+   "charsSpent": 93,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you to help me', as in — 'I want you to help me before you go', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0249L01",
+    "slot": "presentation",
+    "current": "0c24c558-7007-4aa2-a776-88b69365f354"
+   }
+  ],
+  "legoId": "S0249L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d3280de5-b142-4157-a198-b39e138bda37",
+   "charsSpent": 85,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'her to know', as in — 'I wanted her to know that I liked her book', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0346L02",
+    "slot": "presentation",
+    "current": "36bfc60d-839d-4802-84a1-2665654cf7e1"
+   }
+  ],
+  "legoId": "S0346L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d359759b-6789-4a10-87e8-212bfa4c92ed",
+   "charsSpent": 89,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that you can't guess', as in — 'I'm finding it hard to believe that you can't guess', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0526L02",
+    "slot": "presentation",
+    "current": "f08280df-eab6-417b-ace8-3a6ead139ac7"
+   }
+  ],
+  "legoId": "S0526L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3a289c62-bd8f-46e6-8ce1-d58689935226",
+   "charsSpent": 107,
+   "legoLinked": true
+  }
+ }
+]

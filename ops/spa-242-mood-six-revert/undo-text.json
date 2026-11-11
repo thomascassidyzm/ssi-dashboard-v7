@@ -1,0 +1,246 @@
+{
+ "event_id": "39aa624a-e34c-4f42-91f4-6174b9ae483c",
+ "undo_file": "2026-11-11T15-43-19-125Z-39aa624a-e34c-4f42-91f4-6174b9ae483c.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0203L03B03",
+   "set": {
+    "known_text": "If I asked you to help me now",
+    "target_text": "Si te pidiera que me ayudaras ahora",
+    "known_audio_id": "2d40d3bf-e080-489a-80ae-7cbc230b5f75",
+    "target1_audio_id": "213b6888-1e98-4764-bc75-3def3f975fe4",
+    "target2_audio_id": "99412633-599d-4d3a-a923-4567f3c6d516",
+    "decomposition": [
+     {
+      "known": "if I asked you",
+      "legoId": "S0203L02",
+      "target": "Si te pidiera",
+      "isGhost": false
+     },
+     {
+      "known": "that you would help me",
+      "legoId": "S0203L03",
+      "target": " que me ayudaras",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " ahora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0238L01B01",
+   "set": {
+    "known_text": "If you told me the truth",
+    "target_text": "Si me dijeras la verdad",
+    "known_audio_id": "be4c1b40-9091-4c7b-96e0-e290a7b03634",
+    "target1_audio_id": "7baccdc7-95b3-45dd-ad55-f315a25a0549",
+    "target2_audio_id": "83000002-4261-4544-bd95-a3f7fce8edfd",
+    "decomposition": [
+     {
+      "known": "if",
+      "legoId": "S0010L03",
+      "target": "Si",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "you told",
+      "legoId": "S0238L01",
+      "target": " dijeras",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " la",
+      "isGhost": true
+     },
+     {
+      "known": "true",
+      "legoId": "S0165L01",
+      "target": " verdad",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0370L01B01",
+   "set": {
+    "known_text": "I didn't see anyone I knew today",
+    "target_text": "No vi a nadie que conociera hoy",
+    "known_audio_id": "7b8f9120-c501-424f-8398-380f07a6ec34",
+    "target1_audio_id": "dc1829c1-9aad-4a45-9deb-9436f2e71923",
+    "target2_audio_id": "3f16fdf2-3de6-4d68-99a7-826a3aee396e",
+    "decomposition": [
+     {
+      "known": "not",
+      "legoId": "S0213L01",
+      "target": "No",
+      "isGhost": false
+     },
+     {
+      "known": "I saw",
+      "legoId": "S0184L02",
+      "target": " vi",
+      "isGhost": false
+     },
+     {
+      "known": "to",
+      "legoId": "S0216L02",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "no one",
+      "legoId": "S0071L03",
+      "target": " nadie",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0163L01",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "I knew",
+      "legoId": "S0370L01",
+      "target": " conociera",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L02",
+      "target": " hoy",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0203L03B01",
+   "set": {
+    "known_text": "I wanted you to help me today",
+    "target_text": "Quería que me ayudaras hoy",
+    "known_audio_id": "df91b5e6-778d-4e2f-a4a9-4c01c843ce29",
+    "target1_audio_id": "a055894a-af91-4597-ab9e-a5d6e3b598b4",
+    "target2_audio_id": "00b2d139-8e61-40d7-b064-0b2f64b90a1d",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0030L01",
+      "target": "Quería",
+      "isGhost": false
+     },
+     {
+      "known": "that you would help me",
+      "legoId": "S0203L03",
+      "target": " que me ayudaras",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L02",
+      "target": " hoy",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0169L01B03",
+   "set": {
+    "known_text": "Do you want me to do something else?",
+    "target_text": "¿Quieres que haga algo más?",
+    "known_audio_id": "922d3433-5761-49a9-8920-83916db97220",
+    "target1_audio_id": "333a63a7-5e0c-4722-ae3f-37bb80136b7a",
+    "target2_audio_id": "127c0932-6320-43eb-8630-8a6e91a7047c",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿Quieres",
+      "isGhost": true
+     },
+     {
+      "known": "that I do",
+      "legoId": "S0169L01",
+      "target": " que haga",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " algo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " más?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0119L01B01",
+   "set": {
+    "known_text": "I don't want you to leave now",
+    "target_text": "No quiero que te vayas ahora",
+    "known_audio_id": "6496aabe-4ed4-4f95-a6d5-aaef45b74bf9",
+    "target1_audio_id": "c160fec0-b76c-4a04-bd37-768ab67ffc36",
+    "target2_audio_id": "93577725-3f4c-4462-a7e1-3819a880c8e8",
+    "decomposition": [
+     {
+      "known": "I don't want",
+      "legoId": "S0019L02",
+      "target": "No quiero",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "you leave",
+      "legoId": "S0119L01",
+      "target": " te vayas",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " ahora",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}
