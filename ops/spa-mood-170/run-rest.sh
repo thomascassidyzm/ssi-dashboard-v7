@@ -8,13 +8,13 @@ cd "$(dirname "$0")/../.."
 T=tools/course-optimization/spa-mood-never-bare-2026-11-11.cjs
 S="$(pwd)/ops/spa-mood-170/run/seeds.json"
 up() { for i in $(seq 1 120); do curl -s -m 5 -o /dev/null -w "%{http_code}" http://localhost:3470/api/production/spa_for_eng/edit-ops | grep -q 200 && return 0; sleep 5; done; return 1; }
-seeds() { up; curl -s --max-time 600 http://localhost:3470/api/production/spa_for_eng/seeds -o "$S"; }
+seeds() { for i in 1 2 3 4 5; do up; curl -s --max-time 600 http://localhost:3470/api/production/spa_for_eng/seeds -o "$S"; head -c 300 "$S" | grep -q "\"seeds\"" && return 0; sleep 30; done; }
 step() { # step <label> <tries> <env...> -- <mode>
   local label=$1 tries=$2; shift 2
   for i in $(seq 1 $tries); do
     echo "== $label try $i $(date -u +%H:%M)"; seeds
     out=$(env "$@" node $T "${MODE}" "$S" 2>&1); echo "$out" | grep -v '^   UPD\|^   DEL\|^   NEW\|^real 200\|^wrote'
-    echo "$out" | grep -q 'fetch failed\|statement timeout\|real ERR' || return 0
+    echo "$out" | grep -q 'fetch failed\|statement timeout\|real ERR\|not iterable\|ENOENT' || return 0
     sleep 30
   done
 }
