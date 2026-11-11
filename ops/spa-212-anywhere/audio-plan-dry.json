@@ -11,10 +11,12 @@
    }
   ],
   "legoId": "S0182L04",
+  "voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+  "approval": "kai:2026-11-11:spa S0182L04 anywhere as-in intro in Tom-006, job #212",
   "dry": {
-   "status": 403,
-   "code": "RERECORD_NOT_PERMITTED",
-   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'anywhere', as in — 'have you seen my keys \" already has a working clip (3fd6d089-07af-46db-b495-ea7d4e1c5510 in xai_eve, ff6026e5-f915-42c7-b3f1-8fab874b3b22 in gfzdpspr5fdp). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
   }
  }
 ]
