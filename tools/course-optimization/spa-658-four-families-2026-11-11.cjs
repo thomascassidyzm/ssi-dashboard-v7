@@ -128,18 +128,24 @@ async function main() {
     if (problems.length) { console.log('STOP:', problems); process.exitCode = 1; return; }
     const results = [];
     let would = 0;
-    for (const a of asks) {
+    if (apply) {
+      // The live door allows 100 dry runs an hour per caller (agent-rate-cap.cjs), so the real pass does not repeat them:
+      // it reads the dry-run plan and skips only asks a guard refused (EXISTS_IN_LANGUAGE etc.) — those go to a person.
+      const prior = JSON.parse(fs.readFileSync(path.join(__dirname, '../../ops/spa-658-apply/audio-plan-dry.json'), 'utf8'));
+      const refused = new Set(prior.filter((r) => r.dry.status && r.dry.status !== 200 && r.dry.status !== 429).map((r) => `${r.role}\u0000${r.text}`));
+      for (const a of asks) results.push({ ...a, dry: refused.has(`${a.role}\u0000${a.text}`) ? { status: 409 } : { status: 200 } });
+    } else for (const a of asks) {
       const body = { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}) };
       const dry = await post(`${POPTY}/api/audio/render`, { ...body, dryRun: true });
       would += dry.body.wouldSpendChars || 0;
       console.log(`dry ${dry.status} ${a.role} "${a.text}" → ${dry.body.source || dry.body.code || dry.body.error} ${dry.body.wouldSpendChars || 0}`);
       results.push({ ...a, dry: { status: dry.status, source: dry.body.source, code: dry.body.code, error: dry.body.error, wouldSpendChars: dry.body.wouldSpendChars } });
     }
-    console.log(`dry total would spend ${would} chars over ${asks.length} asks`);
+    if (!apply) console.log(`dry total would spend ${would} chars over ${asks.length} asks`);
     if (!apply) { save('audio-plan-dry.json', results); return; }
     let spent = 0;
     for (const r of results) {
-      if (r.dry.status !== 200) { r.real = { skipped: 'dry run refused' }; continue; }
+      if (r.dry.status !== 200) { r.real = { skipped: 'refused by a guard in the dry run — held for a person' }; continue; }
       const real = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: r.role, text: r.text, purpose: PURPOSE, ...(r.legoId ? { legoId: r.legoId } : {}) });
       spent += real.body.charsSpent || 0;
       r.real = { status: real.status, source: real.body.source, audioId: real.body.audioId, charsSpent: real.body.charsSpent, code: real.body.code, error: real.body.error };
@@ -174,6 +180,24 @@ async function main() {
     const ap = await batch({ ops, apply: true });
     console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file}`);
     save('undo-audio-link.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    return;
+  }
+  if (mode === 'hold') {
+    // Rows whose new Spanish is already recorded only in off-cast Azure voices: the render door refuses a second performance
+    // (EXISTS_IN_LANGUAGE, needs a re-record grant) and link-clip refuses the Azure clip (VOICE_MISMATCH). Rather than leave
+    // played slots silent, these rows go back to their before-state (text + clips) from the text undo, held for Kai's grant.
+    // Item 4 (S0423L01 grow) goes back whole: the grown LEGO's own target slots have no cast-voice clip.
+    const HOLD = /^(S0423L01|S0429L01U06$|S0268L02U12$|S0272L03B05$|S0272L03U02$|S0272L03U05$)/;
+    const undo = JSON.parse(fs.readFileSync(path.join(__dirname, '../../ops/spa-658-apply/undo-text.json'), 'utf8'));
+    const ops = undo.ops.filter((o) => (o.op === 'lego.update' && o.id === '472acdf4-8041-4b59-87ab-841dd0b74356') || HOLD.test(sid(o.phrase_id || (o.row && o.row.id) || '')));
+    console.log(`${ops.length} hold ops: ${ops.map((o) => o.op + ' ' + sid(o.phrase_id || (o.row && o.row.id) || 'S0423L01')).join(', ')}`);
+    const dry = await batch({ ops });
+    console.log(`dry run ${dry.status} ${dry.body.error || ''}`);
+    if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; return; }
+    if (!apply) return;
+    const ap = await batch({ ops, apply: true });
+    console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file}`);
+    save('undo-hold.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
     return;
   }
   if (mode === 'verify') {
