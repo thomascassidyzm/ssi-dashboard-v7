@@ -1281,32 +1281,20 @@
   {
    "stage": "sweep",
    "lego_id": "S0249L01",
-   "phrase_id": "S0249L01B01",
-   "action": "upd",
-   "before": {
-    "known": "You help",
-    "target": "Ayudes",
-    "role": "build"
-   },
-   "why": "bare 'Ayudes' (and lacked the LEGO); trigger espero que",
+   "action": "new",
    "known": "I hope you help me",
    "target": "Espero que me ayudes",
-   "role": "build"
+   "role": "build",
+   "why": "bare 'Ayudes' (and lacked the LEGO); trigger espero que — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor"
   },
   {
    "stage": "sweep",
    "lego_id": "S0249L02",
-   "phrase_id": "S0249L02B01",
-   "action": "upd",
-   "before": {
-    "known": "You go",
-    "target": "Vayas",
-    "role": "build"
-   },
-   "why": "bare 'Vayas' lacked the LEGO; plug-in build, the trigger is inside the LEGO (as S0470L03B01)",
+   "action": "new",
    "known": "To talk to you before you go",
    "target": "Hablar contigo antes de que te vayas",
-   "role": "build"
+   "role": "build",
+   "why": "bare 'Vayas' lacked the LEGO; plug-in build, the trigger is inside the LEGO (as S0470L03B01) — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor"
   },
   {
    "stage": "sweep",
@@ -1443,17 +1431,11 @@
   {
    "stage": "sweep",
    "lego_id": "S0409L02",
-   "phrase_id": "S0409L02B01",
-   "action": "upd",
-   "before": {
-    "known": "we do",
-    "target": "hagamos",
-    "role": "build"
-   },
-   "why": "bare 'hagamos'; trigger no importa (the seed)",
+   "action": "new",
    "known": "it doesn't matter what we do here",
    "target": "no importa lo que hagamos aquí",
-   "role": "build"
+   "role": "build",
+   "why": "bare 'hagamos'; trigger no importa (the seed) — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the build floor"
   },
   {
    "stage": "sweep",
@@ -1649,18 +1631,6 @@
    "known": "at least I hope they're not serious",
    "target": "al menos espero que no estén hablando en serio",
    "role": "build"
-  },
-  {
-   "stage": "sweep",
-   "lego_id": "S0497L02",
-   "phrase_id": "S0497L02U05",
-   "action": "del",
-   "before": {
-    "known": "you didn't tell me you needed to sleep",
-    "target": "no me dijiste que necesitaras dormir",
-    "role": "use"
-   },
-   "why": "'no me dijiste que necesitaras' is the wrong mood and lacks como si (the #159 draft's delete); 5 uses remain"
   },
   {
    "stage": "sweep",

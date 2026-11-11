@@ -865,14 +865,14 @@
     "target": "phrase",
     "phrase_id": "spa_for_eng:S0189L01U07",
     "slot": "target1",
-    "current": null
+    "current": "df398308-9585-4147-98d3-cebc41faaac2"
    }
   ],
   "real": {
    "status": 200,
-   "source": "rendered",
+   "source": "library",
    "audioId": "df398308-9585-4147-98d3-cebc41faaac2",
-   "charsSpent": 90
+   "charsSpent": 0
   }
  },
  {
@@ -883,14 +883,2612 @@
     "target": "phrase",
     "phrase_id": "spa_for_eng:S0189L01U07",
     "slot": "target2",
+    "current": "78eb7f96-d19d-46dd-91d5-dae316705939"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "78eb7f96-d19d-46dd-91d5-dae316705939",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not very sure if that is a good idea when we still have so much to do today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "badb8c27-db93-4691-8e6f-07aa1f795a48",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quieren saber lo que necesitas para hacer esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "target1",
+    "current": "cb4809f0-5705-4f0f-9bae-af4b56657eb0"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cb4809f0-5705-4f0f-9bae-af4b56657eb0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quieren saber lo que necesitas para hacer esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "target2",
+    "current": "5c0aaf80-7bbf-4fea-9fa3-64e3566f9d43"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5c0aaf80-7bbf-4fea-9fa3-64e3566f9d43",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "They want to know what you need to do this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "99916797-e5df-4ad9-aadb-6f620757c7e7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quieren que terminemos todo lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "target1",
+    "current": "aa81602f-ee57-4363-b4f4-95a85a88d3d1"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "aa81602f-ee57-4363-b4f4-95a85a88d3d1",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quieren que terminemos todo lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "target2",
+    "current": "a3433285-2a04-43ef-9902-f5e81c596e71"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a3433285-2a04-43ef-9902-f5e81c596e71",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "They want us to finish everything as soon as possible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "151c656f-705a-4bbc-b80f-c29317ef246b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "target1",
+    "current": "0eb47597-3716-41e3-baa3-3769394566f1"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0eb47597-3716-41e3-baa3-3769394566f1",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "target2",
+    "current": "68503fbb-a80d-4ba3-90ba-7db1fb59fe74"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "68503fbb-a80d-4ba3-90ba-7db1fb59fe74",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I enjoy doing this and I am very happy that you're doing it with me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "07bcff2f-3785-4b3f-ab4d-a2ae6ebacd7a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "target1",
+    "current": "cc4d226e-fe1c-462c-a164-e84c9470f790"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cc4d226e-fe1c-462c-a164-e84c9470f790",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "target2",
+    "current": "d96c2eab-40fa-4ed7-a662-8242d2f5986b"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d96c2eab-40fa-4ed7-a662-8242d2f5986b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I enjoy doing this and I am very happy because we are doing it together",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e62af1d5-f31b-4ab0-a9de-c9bd1e3098bc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Podría pedir algo diferente si quiere",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "target1",
+    "current": "7275ec6c-8efa-4b9f-bd9c-d467eea745b7"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7275ec6c-8efa-4b9f-bd9c-d467eea745b7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Podría pedir algo diferente si quiere",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "target2",
+    "current": "9ef3d4ac-a876-4b22-8c7f-e79d0e33a37f"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9ef3d4ac-a876-4b22-8c7f-e79d0e33a37f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "He could ask for something different if he wants to",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "539538a0-693b-4d41-bd45-36b0ba712aab",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02U04",
+    "slot": "target1",
+    "current": "0c611316-e914-42cc-b1d5-08e7011e49af"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0c611316-e914-42cc-b1d5-08e7011e49af",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02U04",
+    "slot": "target2",
+    "current": "3971f417-f02e-4e9c-9589-e044937cee1e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3971f417-f02e-4e9c-9589-e044937cee1e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "target1",
+    "current": "9e2f592c-d004-42c7-9c96-450f0e57c33e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9e2f592c-d004-42c7-9c96-450f0e57c33e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "target2",
+    "current": "d073c7ba-419c-4be0-8308-490cd7f2e9fc"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d073c7ba-419c-4be0-8308-490cd7f2e9fc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am not sure if you will be ready in time but we must wait",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9f25500c-cd69-4303-a70c-6bd525308eb9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Siento que no me queda nada que decir sobre esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0298L02U05",
+    "slot": "target1",
+    "current": "16eedb14-9573-445e-a2f0-bd83859425aa"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "16eedb14-9573-445e-a2f0-bd83859425aa",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Siento que no me queda nada que decir sobre esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0298L02U05",
+    "slot": "target2",
+    "current": "34bf8cf3-638a-4a67-bd78-862e657f0a7a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "34bf8cf3-638a-4a67-bd78-862e657f0a7a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que pueda venir el lunes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "target1",
+    "current": "548e62b0-ab11-44c6-82f7-c60530bbea41"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "548e62b0-ab11-44c6-82f7-c60530bbea41",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que pueda venir el lunes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "target2",
+    "current": "ccf6c4f4-9a42-4687-9e4f-38ff42f9b0b2"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ccf6c4f4-9a42-4687-9e4f-38ff42f9b0b2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope she can come on Monday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "988b7ede-6a31-448d-9679-b4691de83886",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no estoy seguro de que pueda ayudarte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "target1",
+    "current": "2c89185c-c8dc-4040-9a25-689bcdfe73e4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2c89185c-c8dc-4040-9a25-689bcdfe73e4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no estoy seguro de que pueda ayudarte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "target2",
+    "current": "f2ac84a7-aec1-4e36-8286-09721cff438f"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f2ac84a7-aec1-4e36-8286-09721cff438f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not sure she can help you today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "33576f28-fee8-4104-a4c3-dd0a62de562c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que pueda hablar contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "target1",
+    "current": "09c752cb-a5f3-41c2-919b-db380cbff821"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "09c752cb-a5f3-41c2-919b-db380cbff821",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que pueda hablar contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "target2",
+    "current": "fdebde62-a216-4e6c-855b-f3abe4a7e597"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fdebde62-a216-4e6c-855b-f3abe4a7e597",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want her to be able to speak with you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "63186e0a-73ea-4194-8295-1f76e94f96c0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es interesante que pueda hablar español tan bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "target1",
+    "current": "108f97ad-4cd8-43c9-9761-c3cfe3117d1a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "108f97ad-4cd8-43c9-9761-c3cfe3117d1a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es interesante que pueda hablar español tan bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "target2",
+    "current": "a2c7bb4a-a3b4-4653-afa6-cdd692edc637"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a2c7bb4a-a3b4-4653-afa6-cdd692edc637",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's interesting that she can speak Spanish so well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "baddf284-5f90-442e-93c0-f7415e2fc0c9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no pensé que pudiera llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "target1",
+    "current": "c3a7b18e-8de0-4fff-bb07-fe2e4b45843a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c3a7b18e-8de0-4fff-bb07-fe2e4b45843a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no pensé que pudiera llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "target2",
+    "current": "f3d9418d-65db-4778-9040-04a542637ea9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f3d9418d-65db-4778-9040-04a542637ea9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't think she could reach the top",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9de1fdc8-c02a-4101-b9aa-5dfdc3d8571b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no podía llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "target1",
+    "current": "b5892f89-253c-4e98-984d-6b9ce004f7a6"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b5892f89-253c-4e98-984d-6b9ce004f7a6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no podía llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "target2",
+    "current": "077e53db-763b-4e94-b701-472fdf466fb6"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "077e53db-763b-4e94-b701-472fdf466fb6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought she couldn't reach the top",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d2d3fd8d-ecf7-4fd6-85c7-2e926f3a1a22",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no era suficiente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "target1",
+    "current": "4ae00dcc-1a78-4313-8e35-8fc86025efa6"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4ae00dcc-1a78-4313-8e35-8fc86025efa6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no era suficiente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "target2",
+    "current": "398c9b26-73e8-41b0-8445-7b4a013fb938"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "398c9b26-73e8-41b0-8445-7b4a013fb938",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought it wasn't enough",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9f7a28ac-fb28-4589-92b2-336431bc1fad",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no estoy seguro de que sea una buena idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "target1",
+    "current": "ad5f02a0-b9fb-4d4f-8625-5e19810dec42"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ad5f02a0-b9fb-4d4f-8625-5e19810dec42",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no estoy seguro de que sea una buena idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "target2",
+    "current": "34483216-e817-4786-aeb8-0c87b2008350"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "34483216-e817-4786-aeb8-0c87b2008350",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not sure that it's a good idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "667444cb-9b22-4c8d-bf8f-591722d6b770",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estoy seguro de que va a funcionar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "target1",
+    "current": "4a71a7ad-cb91-4db7-ac9e-0f2f431fdee4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4a71a7ad-cb91-4db7-ac9e-0f2f431fdee4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estoy seguro de que va a funcionar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "target2",
+    "current": "3e82db94-6157-41a7-aef9-4efee5638932"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3e82db94-6157-41a7-aef9-4efee5638932",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm sure it's going to work",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5d47d555-b377-4331-99f7-afe2e7cdd0e7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no podíamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "target1",
+    "current": "6043135d-e905-439e-af4a-acc146cd8e9d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6043135d-e905-439e-af4a-acc146cd8e9d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no podíamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "target2",
+    "current": "2a2dd71c-a75b-479e-a78a-4f813f064fd9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2a2dd71c-a75b-479e-a78a-4f813f064fd9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought we couldn't stay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "566106c7-90a8-4be8-80fd-9d897fa40f24",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hablar antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "target1",
+    "current": "33913e83-661e-4de2-a70d-3f3e99687741"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "33913e83-661e-4de2-a70d-3f3e99687741",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hablar antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "target2",
+    "current": "993e531f-7931-45ff-8de4-ff1c5fd2759d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "993e531f-7931-45ff-8de4-ff1c5fd2759d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "to talk before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7baeb249-4a3e-41ba-b089-d97862678210",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ella se va antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "target1",
+    "current": "1db92cb5-4ecd-49fb-9a2a-6ab6d962a9aa"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1db92cb5-4ecd-49fb-9a2a-6ab6d962a9aa",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ella se va antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "target2",
+    "current": "e2ce100a-f64b-46c2-9038-6bfa5a5f0891"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e2ce100a-f64b-46c2-9038-6bfa5a5f0891",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "she's leaving before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "87514cc0-2e86-4125-8f9a-f356bc8eda6d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "tengo que llamarte antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "target1",
+    "current": "ca7d8cf1-c99a-4e9a-bc3e-df40cafe0535"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ca7d8cf1-c99a-4e9a-bc3e-df40cafe0535",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "tengo que llamarte antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "target2",
+    "current": "c6a528f9-7042-4249-8c7a-047c1e9f8965"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c6a528f9-7042-4249-8c7a-047c1e9f8965",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I have to call you before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "77fccb5e-b5e5-4d7b-b7e8-38af9f4ae939",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a menos que tengan suerte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "target1",
+    "current": "4924f4c8-4f47-47d5-b110-be8ef8270935"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4924f4c8-4f47-47d5-b110-be8ef8270935",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a menos que tengan suerte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "target2",
+    "current": "0426cb54-955b-4242-b2cd-728ca26ebf44"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0426cb54-955b-4242-b2cd-728ca26ebf44",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "unless they're lucky today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e8de6680-2001-4e86-ba04-32489ede541e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "target1",
+    "current": "953cd637-3e1f-4951-9143-cb995e7ef3eb"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "953cd637-3e1f-4951-9143-cb995e7ef3eb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "target2",
+    "current": "d8975adc-2e4c-4f7a-a69c-a12363ea78dd"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d8975adc-2e4c-4f7a-a69c-a12363ea78dd",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fd2668f4-c82a-447e-aa02-f98aebff9afe",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no creo que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "target1",
+    "current": "65899d55-bc9b-48eb-bb66-ab02e9a86b36"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "65899d55-bc9b-48eb-bb66-ab02e9a86b36",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no creo que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "target2",
+    "current": "43e5e547-b9cd-4471-be76-c660d53eb2d3"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "43e5e547-b9cd-4471-be76-c660d53eb2d3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't think they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ff6d7c2f-2a7a-4bd3-b3af-b0319c19872f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no es posible ganar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "target1",
+    "current": "edc483ac-8e09-49c4-ade2-eff91254756d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "edc483ac-8e09-49c4-ade2-eff91254756d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no es posible ganar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "target2",
+    "current": "0d347e79-dfe5-474b-9ab8-0e479cc54841"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0d347e79-dfe5-474b-9ab8-0e479cc54841",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's not possible to win unless they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "250e3b42-f640-480b-8440-250cbc770210",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no va a funcionar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "target1",
+    "current": "85f99bc4-fa48-48e9-b54d-8f7a5b90e2ed"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "85f99bc4-fa48-48e9-b54d-8f7a5b90e2ed",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no va a funcionar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "target2",
+    "current": "25e8eb7a-b75b-4119-976d-ff7eca62ad41"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "25e8eb7a-b75b-4119-976d-ff7eca62ad41",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's not going to work unless they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c50ba045-4c49-4fcc-84ff-9f81f61306d7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que tengan suerte esta noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "target1",
+    "current": "21a49eec-779e-4acd-9d02-b4f03cecbe29"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "21a49eec-779e-4acd-9d02-b4f03cecbe29",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que tengan suerte esta noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "target2",
+    "current": "f5f766d0-1492-4eca-b201-0cca218d1672"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f5f766d0-1492-4eca-b201-0cca218d1672",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want them to be lucky tonight",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "918fa320-1564-4fd2-8f8d-924f1a630fba",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es raro que tengan suerte con todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "target1",
+    "current": "f312e758-3dc0-4675-b486-c983efb57b4a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f312e758-3dc0-4675-b486-c983efb57b4a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es raro que tengan suerte con todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "target2",
+    "current": "820dce56-a65d-4de2-b899-331b96d4219f"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "820dce56-a65d-4de2-b899-331b96d4219f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's unusual that they're lucky with everything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "acd90a18-751f-4096-a692-e1b8dfce1007",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no creo que tengan suerte esta vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "target1",
+    "current": "ad2c0670-4cd2-4911-87d0-d87357676935"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ad2c0670-4cd2-4911-87d0-d87357676935",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no creo que tengan suerte esta vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "target2",
+    "current": "cffbf7b8-d214-44ee-a499-e3c947216eb9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cffbf7b8-d214-44ee-a499-e3c947216eb9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't think they'll be lucky this time",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "57f7fb64-be17-4933-b164-5e26ac622956",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me gustaría que no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "target1",
+    "current": "e4db38fc-6fd1-42c5-8cc0-5015be268841"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e4db38fc-6fd1-42c5-8cc0-5015be268841",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me gustaría que no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "target2",
+    "current": "e1fff511-b30c-4fd8-8e3d-d58f98772813"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e1fff511-b30c-4fd8-8e3d-d58f98772813",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like them not to play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ecce1d52-e65d-44a1-8644-c6d3d9a6af9e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "target1",
+    "current": "ebea4993-e3c5-48f2-9f3a-004ddbf1aa7d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ebea4993-e3c5-48f2-9f3a-004ddbf1aa7d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "target2",
     "current": null
    }
   ],
   "real": {
    "status": 200,
    "source": "rendered",
-   "audioId": "78eb7f96-d19d-46dd-91d5-dae316705939",
-   "charsSpent": 90
+   "audioId": "a603f8c5-4998-4e6e-9540-bcdc4b1b102f",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play music here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "83106ea5-00cd-4511-a4a0-cd749c07afc6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sería mejor si no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1eb754cc-13e6-4251-bd48-8af696936f46",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sería mejor si no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82b06a1c-73a1-4a61-aa99-093108e480a3",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "it would be better if they didn't play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a5402cdf-d399-461c-ac39-766abbcc0b17",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c06c5d5f-2989-4c6c-b0be-38577b0e2e68",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "04b7a848-dd9d-44df-8eba-1e1208d5d75a",
+   "charsSpent": 67
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dff7944e-54d4-41be-8a6f-3cd57cb209a5",
+   "charsSpent": 67
+  }
+ },
+ {
+  "role": "known",
+  "text": "They play music in the office, but I wish they wouldn't play music so late",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "004b341f-15c6-40f7-962a-b98c76a9b521",
+   "charsSpent": 74
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quería que no pusieran música tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fefd4f97-3e01-4aa3-a583-5d97c262ab25",
+   "charsSpent": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quería que no pusieran música tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4fa3f179-d550-47da-ac80-13cde407f2ca",
+   "charsSpent": 48
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted them not to play music late at night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "84d8f45d-a47b-40cd-b442-ffc039e10f80",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "target1",
+  "text": "les dije que no pusieran música en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2cb65374-7b0d-40a3-9ce0-f156c4a51d89",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "target2",
+  "text": "les dije que no pusieran música en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a9e28f9e-30c4-4f2b-bef7-11377da1ea19",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "known",
+  "text": "I told them not to play music in the office",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4c3562ef-e78b-421f-ab3f-b7656b220bdd",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me gustaría que no pusieran música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6a74d7df-2f52-421a-b3bf-a2d71454d9cf",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me gustaría que no pusieran música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "71299144-2534-496d-87eb-fe1b12005381",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like them not to play such loud music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b692472e-1f17-4443-b378-dd590617f116",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no me gusta cuando ponen música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a7d8cc0d-bd5b-45a1-81d9-56c6842f2c77",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no me gusta cuando ponen música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fc52c455-d71c-4661-880b-2e844e8846f5",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't like it when they play such loud music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "07c6bbfc-067a-4cc4-9845-3007871c9ca8",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música tan alta en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3e553300-4f62-46d2-8f18-658336c9dede",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música tan alta en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c58a1695-1f8e-452e-9bf1-bb65aafd50ad",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play such loud music in the office",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d08e12e9-ddf6-4c88-8901-3b915d8751e1",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9f7ee1da-88ef-4bf5-a078-ec14b3eefe55",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7cd65989-ad2e-4fad-a941-b271a33bc1d8",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play such loud music, it's so late at night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0f0d844a-f8de-42a2-8927-5b0eaafc310e",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es tan tarde por la noche, ¿quieres parar?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c92a91d7-0263-4a1e-9085-f67035c9b6cb",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es tan tarde por la noche, ¿quieres parar?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "69f8bdc5-4302-41e8-af62-6f62c3de1acd",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's so late at night, do you want to stop?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f9b27a9d-1948-4b26-997c-191dadc4e9d9",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que nos veamos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6ae6b1fa-df94-48bb-a2dd-6a9eee52800d",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que nos veamos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bf5c6df2-9212-47e4-b07f-c20ebda4a65d",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope we meet soon",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b49fa9b4-b650-47a0-a43d-7278433f4955",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es importante que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8745c5c7-e3a9-47c7-9c53-e0d2b4eaf56a",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es importante que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bf5947ba-5e3e-497f-b9d9-beb71bbaf906",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's important that we meet before Thursday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "705165b4-ab62-418d-bd29-028820d28ad3",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "te llamaré antes de que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "75198880-d8bc-4cba-9e15-bc8922c26e6a",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "te llamaré antes de que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bbb565aa-d7d3-49a3-b289-4ad52923e141",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'll call you before we meet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c2113832-ef36-406b-a4ea-4ce1a676d75c",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "748d9fe8-65db-4124-8212-d88795644d45",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4d5d19b1-075c-491e-9169-05e106c1355d",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want us to meet before Thursday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5bd5bef5-f6c4-4a9e-9960-4bf355dc9d18",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no voy a decir nada hasta que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ef2b147a-9aca-4ae2-beb9-7893f3a973b2",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no voy a decir nada hasta que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0ff5612d-7bcd-46b4-82fa-028bed14b2c1",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not going to say anything until we meet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "13fa76e7-071b-474d-9f6a-048fa7b16e39",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me encanta que nos veamos tan a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7138fc70-bc93-494e-be69-b78695987157",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me encanta que nos veamos tan a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "64a5e39c-e6b2-438f-b64d-903b3d223020",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "I love that we meet so often",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c74cd25a-b3b5-43de-a1dd-e416e95270e1",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a menos que nos veamos mañana, te llamaré",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3e5df12a-6b85-422d-b375-d7c9fe78d6b9",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a menos que nos veamos mañana, te llamaré",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "eda240c0-156d-450c-87f7-bbee34ee9861",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "Unless we meet tomorrow, I'll call you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0e04b1a2-4fed-4ff5-a70c-f2c07c0f15cd",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that she could', as in — 'I don't think that she could come', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0318L01",
+    "slot": "presentation",
+    "current": "20149b52-02a0-4b40-b244-90b2e4af92e8"
+   }
+  ],
+  "legoId": "S0318L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "43adb8f4-e71d-45c8-8cd2-ecdcd993ccb5",
+   "charsSpent": 83,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that we meet', as in — 'I hope that we meet soon', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0568L04",
+    "slot": "presentation",
+    "current": "5e5c56cd-0e32-4b20-b7b2-1449d1bf5a65"
+   }
+  ],
+  "legoId": "S0568L04",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "96fdc229-14ee-4ab8-a2c4-682db454b285",
+   "charsSpent": 72,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'they're lucky', as in — 'unless they're lucky', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0532L02",
+    "slot": "presentation",
+    "current": "d6798e54-89fe-46f1-9ed9-2b488c752b0b"
+   }
+  ],
+  "legoId": "S0532L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "797d8bb4-4c7a-4a34-b589-e2901480d5ee",
+   "charsSpent": 69,
+   "legoLinked": true
   }
  }
 ]
