@@ -21,7 +21,10 @@ step() { # step <label> <tries> <env...> -- <mode>
 # v2 audio done (run 3)
 # v2 link done (event 027ee308)
 # sweep text applied by hand after run 3
-MODE=audio step "sweep audio" 4 STAGE=sweep SKIP_DRY=1 APPLY_CONFIRM=1
-MODE=link  step "sweep link" 4 STAGE=sweep APPLY_CONFIRM=1
-echo "== verify $(date -u +%H:%M)"; seeds; STAGE=v2 node $T verify "$S"; STAGE=sweep node $T verify "$S"
+# sweep audio done (run 5)
+# sweep link done (event f4d67fc6)
+MODE=text  step "sweep2 text" 6 STAGE=sweep2 APPLY_CONFIRM=1
+MODE=audio step "sweep2 audio" 4 STAGE=sweep2 SKIP_DRY=1 APPLY_CONFIRM=1
+MODE=link  step "sweep2 link" 4 STAGE=sweep2 APPLY_CONFIRM=1
+echo "== verify $(date -u +%H:%M)"; seeds; STAGE=v2 node $T verify "$S"; STAGE=sweep node $T verify "$S"; STAGE=sweep2 node $T verify "$S"
 echo "== done $(date -u +%H:%M)"

@@ -1913,6 +1913,96 @@
    "target": "Son personas que todavía no conozco",
    "role": "use",
    "why": "v2 follow-up: 'no conozco todavía' exists in spa only in off-cast Azure voices (render refused EXISTS_IN_LANGUAGE); 'todavía no conozco' is the more natural order anyway"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0119L01",
+   "phrase_id": "S0119L01B01",
+   "action": "upd",
+   "before": {
+    "known": "I don't want you to leave",
+    "target": "No quiero que te vayas",
+    "role": "build"
+   },
+   "known": "I don't want you to leave now",
+   "target": "No quiero que te vayas ahora",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0169L01",
+   "phrase_id": "S0169L01B03",
+   "action": "upd",
+   "before": {
+    "known": "Do you want me to do something?",
+    "target": "¿Quieres que haga algo?",
+    "role": "build"
+   },
+   "known": "Do you want me to do something else?",
+   "target": "¿Quieres que haga algo más?",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B01",
+   "action": "upd",
+   "before": {
+    "known": "I wanted you to help me",
+    "target": "Quería que me ayudaras",
+    "role": "build"
+   },
+   "known": "I wanted you to help me today",
+   "target": "Quería que me ayudaras hoy",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0370L01",
+   "phrase_id": "S0370L01B01",
+   "action": "upd",
+   "before": {
+    "known": "I didn't see anyone I knew there",
+    "target": "No vi a nadie que conociera allí",
+    "role": "build"
+   },
+   "known": "I didn't see anyone I knew today",
+   "target": "No vi a nadie que conociera hoy",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0238L01",
+   "phrase_id": "S0238L01B01",
+   "action": "upd",
+   "before": {
+    "known": "If you told me",
+    "target": "Si me dijeras",
+    "role": "build"
+   },
+   "known": "If you told me the truth",
+   "target": "Si me dijeras la verdad",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
+  },
+  {
+   "stage": "sweep2",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B03",
+   "action": "upd",
+   "before": {
+    "known": "If I asked you to help me with this",
+    "target": "Si te pidiera que me ayudaras con esto",
+    "role": "build"
+   },
+   "known": "If I asked you to help me now",
+   "target": "Si te pidiera que me ayudaras ahora",
+   "role": "build",
+   "why": "sweep wording already recorded in spa only in off-cast voices (render refused EXISTS_IN_LANGUAGE); one taught word added so the row can be voiced in the cast"
   }
  ],
  "intros": [

@@ -1,0 +1,3748 @@
+[
+ {
+  "role": "target1",
+  "text": "No quería dejar que oyera la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0071L02B01",
+    "slot": "target1",
+    "current": "2ed026d0-a88e-487b-901c-8d5cc72da2e4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2ed026d0-a88e-487b-901c-8d5cc72da2e4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No quería dejar que oyera la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0071L02B01",
+    "slot": "target2",
+    "current": "fbd12c64-f4ee-4bd6-9cc7-c45b4ce057fb"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fbd12c64-f4ee-4bd6-9cc7-c45b4ce057fb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't want to let him hear the truth",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0071L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "13fbebad-a27b-476e-a107-f5060b180d77",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No quiero que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"No quiero que te vayas\" is already recorded in spa — 2 clip(s): 8e09bff6-417e-47ad-957a-144de6d16ba5 (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); 5661fc8c-3e19-4f18-b512-3113a09b8021 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No quiero que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"No quiero que te vayas\" is already recorded in spa — 2 clip(s): 8e09bff6-417e-47ad-957a-144de6d16ba5 (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); 5661fc8c-3e19-4f18-b512-3113a09b8021 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want you to leave",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0119L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "68768dc1-9f78-4a9f-aa18-c0a8e06ad9fd",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No creo que te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B01",
+    "slot": "target1",
+    "current": "43f1061c-9590-4deb-9368-4ff8244038d0"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "43f1061c-9590-4deb-9368-4ff8244038d0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No creo que te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B01",
+    "slot": "target2",
+    "current": "4b65f531-5301-41c7-9e63-8d65f6ae5d7b"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4b65f531-5301-41c7-9e63-8d65f6ae5d7b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't think you like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c86a1805-9ae9-403b-8bd6-83a8fcf2eb26",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero que te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B02",
+    "slot": "target1",
+    "current": "8a1e043f-164d-4bc8-b9e9-b3ef4f7a00ad"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8a1e043f-164d-4bc8-b9e9-b3ef4f7a00ad",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero que te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B02",
+    "slot": "target2",
+    "current": "4d581663-e007-4038-9135-e04f0977cd1d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4d581663-e007-4038-9135-e04f0977cd1d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want you to like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0120L03B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b456f524-f90a-4bd9-a04b-388368992fb2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es interesante que no te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L02B01",
+    "slot": "target1",
+    "current": "74596686-5e5e-4e9c-be3e-f2730448c04e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "74596686-5e5e-4e9c-be3e-f2730448c04e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es interesante que no te guste",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L02B01",
+    "slot": "target2",
+    "current": "7b668b9f-5bc8-41f1-a897-a4cf4fa11038"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7b668b9f-5bc8-41f1-a897-a4cf4fa11038",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's interesting that you don't like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0121L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2d14adea-b450-472d-828a-40a6b121bb57",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero que estés aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B02",
+    "slot": "target1",
+    "current": "1d8ce0e0-8527-4b4c-85b6-d25d1b5dfb36"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1d8ce0e0-8527-4b4c-85b6-d25d1b5dfb36",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero que estés aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B02",
+    "slot": "target2",
+    "current": "71150085-f39b-4252-9e7b-1c828ad3a9d8"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "71150085-f39b-4252-9e7b-1c828ad3a9d8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want you to be here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c5e624bf-0260-4a17-9caf-ec1645063799",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy contento de que estés aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B04",
+    "slot": "target1",
+    "current": "2e9085b9-864f-4ab6-9899-079158dd5cc4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2e9085b9-864f-4ab6-9899-079158dd5cc4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy contento de que estés aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B04",
+    "slot": "target2",
+    "current": "05c1b13c-e3ab-4616-b8f0-f45d07bb51f1"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "05c1b13c-e3ab-4616-b8f0-f45d07bb51f1",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm happy that you're here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5b740fbb-d573-442b-8f00-210a682c4e35",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy tan contento de que lo estés haciendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B05",
+    "slot": "target1",
+    "current": "bd3b9af2-2cea-41f1-b275-4fae68db4830"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "bd3b9af2-2cea-41f1-b275-4fae68db4830",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy tan contento de que lo estés haciendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B05",
+    "slot": "target2",
+    "current": "1feafce5-40a1-4d09-b473-5847a5c9d924"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1feafce5-40a1-4d09-b473-5847a5c9d924",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm so happy that you're doing it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0129L04B05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2c06de58-7fc5-4349-b4c3-81fa79f37b4a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Cuando termines",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0149L04B01",
+    "slot": "target1",
+    "current": "9d1ac091-eab0-433f-adec-7d0633c8dadf"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9d1ac091-eab0-433f-adec-7d0633c8dadf",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Cuando termines",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0149L04B01",
+    "slot": "target2",
+    "current": "28a3a7c8-b499-4532-97e7-5839cfcfc168"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "28a3a7c8-b499-4532-97e7-5839cfcfc168",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "When you finish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0149L04B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7ea89b0e-b477-435e-9289-8192f6902356",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Quieres que haga algo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"¿Quieres que haga algo?\" is already recorded in spa — 2 clip(s): 953f8193-3b44-4433-830f-a3570936e5f0 (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); 28bd978b-b9a3-4ebf-8154-b09435aa6da9 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Quieres que haga algo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"¿Quieres que haga algo?\" is already recorded in spa — 2 clip(s): 953f8193-3b44-4433-830f-a3570936e5f0 (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); 28bd978b-b9a3-4ebf-8154-b09435aa6da9 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you want me to do something?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "00d7d490-3c2e-4bc9-bde3-6757ca130664",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Esperaba que me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0170L01B02",
+    "slot": "target1",
+    "current": "9d8d870f-4445-4dbe-9678-2fb5602dd605"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9d8d870f-4445-4dbe-9678-2fb5602dd605",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Esperaba que me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0170L01B02",
+    "slot": "target2",
+    "current": "f385339a-7f64-485c-a204-c7c60c58e491"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f385339a-7f64-485c-a204-c7c60c58e491",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I was expecting you to tell me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0170L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0f2bbbd6-8aa8-434e-b8c0-35126681f034",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Espero que terminemos todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04B01",
+    "slot": "target1",
+    "current": "a14bd628-8ebd-406d-ae29-5087abb066c6"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a14bd628-8ebd-406d-ae29-5087abb066c6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Espero que terminemos todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04B01",
+    "slot": "target2",
+    "current": "2414d6fd-9481-4201-8deb-e62d2e5e8233"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2414d6fd-9481-4201-8deb-e62d2e5e8233",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope we finish everything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e3453798-099e-43d5-9291-0f134804de1d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quería que me ayudaras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Quería que me ayudaras\" is already recorded in spa — 2 clip(s): b89a6678-a3a0-4c7a-91b7-240694bedaca (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); e602698c-f649-46d5-816b-e45c9c4caa0d (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería que me ayudaras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Quería que me ayudaras\" is already recorded in spa — 2 clip(s): b89a6678-a3a0-4c7a-91b7-240694bedaca (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); e602698c-f649-46d5-816b-e45c9c4caa0d (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted you to help me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8bc2dbbc-b794-44ed-b2d9-06f0dc75425b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si te pidiera que me ayudaras con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target1",
+    "current": "6482f987-9efc-41fa-8f5b-4cc9fa2ff8a2"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Si te pidiera que me ayudaras con esto\" is already recorded in spa — 1 clip(s): 6482f987-9efc-41fa-8f5b-4cc9fa2ff8a2 (voice es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si te pidiera que me ayudaras con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "target2",
+    "current": "06ced031-0012-417d-8323-8604eac7cbd4"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Si te pidiera que me ayudaras con esto\" is already recorded in spa — 1 clip(s): 06ced031-0012-417d-8323-8604eac7cbd4 (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I asked you to help me with this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b5d5c511-6be2-42f1-b68f-4683ad8ec8d6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría que me ayudaras a entender",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B04",
+    "slot": "target1",
+    "current": "fef34cb3-8acc-4114-8fd9-ba3275971643"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fef34cb3-8acc-4114-8fd9-ba3275971643",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría que me ayudaras a entender",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B04",
+    "slot": "target2",
+    "current": "830ec48b-1a28-445d-81e3-270ed2f05a02"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "830ec48b-1a28-445d-81e3-270ed2f05a02",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like you to help me understand",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3c24de60-ca3f-4dae-a76d-e68e2165ca7b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "If I asked you to help me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0203L03B05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b5cb1da6-56ea-49ee-9bcc-39a0622be3f2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría que ella te ayudara",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B01",
+    "slot": "target1",
+    "current": "7e4a8b29-dbf5-48f6-bb83-eaf80e27f6ee"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7e4a8b29-dbf5-48f6-bb83-eaf80e27f6ee",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría que ella te ayudara",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B01",
+    "slot": "target2",
+    "current": "b8c201e9-3222-4fd7-afc6-a16c47f7a630"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b8c201e9-3222-4fd7-afc6-a16c47f7a630",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like her to help you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "10ee38ec-8667-4e8d-8b81-6d6ddd4793cb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quería que ella te ayudara con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B03",
+    "slot": "target1",
+    "current": "3690a09d-f83f-4187-981d-8ed6e05dabd0"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3690a09d-f83f-4187-981d-8ed6e05dabd0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería que ella te ayudara con esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B03",
+    "slot": "target2",
+    "current": "111bebb5-e7a6-40b8-b2cb-d4fde4e9b230"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "111bebb5-e7a6-40b8-b2cb-d4fde4e9b230",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted her to help you with this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0af4823e-3509-48f5-b816-12d7af16464a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No querías que ella te ayudara",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B04",
+    "slot": "target1",
+    "current": "edf4ff14-63a1-4914-8746-05bcc56cfa1b"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "edf4ff14-63a1-4914-8746-05bcc56cfa1b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No querías que ella te ayudara",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B04",
+    "slot": "target2",
+    "current": "8d142770-9673-4ad2-81a0-d564c6ce412f"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8d142770-9673-4ad2-81a0-d564c6ce412f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "You didn't want her to help you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0204L01B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1250fc91-df06-4328-bcf7-784b0a08dc32",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Si me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target1",
+    "current": "09830a42-22c8-4798-a044-706254cdb667"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Si me dijeras\" is already recorded in spa — 1 clip(s): 09830a42-22c8-4798-a044-706254cdb667 (voice azure_es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Si me dijeras",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "target2",
+    "current": "7e9587c1-a014-4cde-bda3-62d12d15048d"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Si me dijeras\" is already recorded in spa — 1 clip(s): 7e9587c1-a014-4cde-bda3-62d12d15048d (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "If you told me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5f1d22fa-559f-4421-b9b4-016b9c529fe8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quería que me dijeras la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B02",
+    "slot": "target1",
+    "current": "5299ee85-59b2-45ac-b636-8545db43623d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5299ee85-59b2-45ac-b636-8545db43623d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quería que me dijeras la verdad",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B02",
+    "slot": "target2",
+    "current": "8d19a446-457b-438e-a968-0847062f83e3"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8d19a446-457b-438e-a968-0847062f83e3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted you to tell me the truth",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0238L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6bf9a98d-684c-446d-81c1-bd25188b83cb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Necesito que lo devuelvan",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0248L03B01",
+    "slot": "target1",
+    "current": "bb002ff9-2917-42a2-8826-0e02ef34b5a5"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "bb002ff9-2917-42a2-8826-0e02ef34b5a5",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Necesito que lo devuelvan",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0248L03B01",
+    "slot": "target2",
+    "current": "26b91dd8-5354-4199-aee4-516223da46a7"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "26b91dd8-5354-4199-aee4-516223da46a7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I need them to give it back",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0248L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2805a4ac-b458-443f-9249-a073c97e83ca",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Espero que me ayudes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L01B07",
+    "slot": "target1",
+    "current": "0fb97df2-efe5-46f2-b73c-b60a7f32c7d2"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0fb97df2-efe5-46f2-b73c-b60a7f32c7d2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Espero que me ayudes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L01B07",
+    "slot": "target2",
+    "current": "8944443c-8b04-4fce-a100-9ba772f483ad"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8944443c-8b04-4fce-a100-9ba772f483ad",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope you help me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L01B07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3d1f5451-0456-4908-b8ed-0a80cca0dbaf",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hablar contigo antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02B06",
+    "slot": "target1",
+    "current": "5e34a091-7f35-46ef-834c-267d6264b3e9"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5e34a091-7f35-46ef-834c-267d6264b3e9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hablar contigo antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02B06",
+    "slot": "target2",
+    "current": "96f38c8b-8d98-4099-8a3e-d21a34c1fde7"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "96f38c8b-8d98-4099-8a3e-d21a34c1fde7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "To talk to you before you go",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02B06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7ce9eaa7-81d9-4fd6-aedd-d329b2dbaee9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Quieres que conteste?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0250L02B01",
+    "slot": "target1",
+    "current": "cf26e091-c1f5-4297-b7eb-c3a4ab34f862"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cf26e091-c1f5-4297-b7eb-c3a4ab34f862",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Quieres que conteste?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0250L02B01",
+    "slot": "target2",
+    "current": "c1613177-4141-46b0-9604-f402040e31f4"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c1613177-4141-46b0-9604-f402040e31f4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you want me to answer?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0250L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7f556776-7324-44b0-bad6-7f9efcc29d69",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Te importa esperar un momento antes de que empieces?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U04",
+    "slot": "target1",
+    "current": "7a3a8ed1-d291-47e6-acc8-e17e8021c369"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7a3a8ed1-d291-47e6-acc8-e17e8021c369",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Te importa esperar un momento antes de que empieces?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U04",
+    "slot": "target2",
+    "current": "519f642d-8eda-4470-8116-91c7b30906f7"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "519f642d-8eda-4470-8116-91c7b30906f7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you mind waiting a moment before you start?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3ad554df-6169-426d-914f-7b6cc90b9b5b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que es útil pensar en lo que quieres decir antes de que empieces",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U05",
+    "slot": "target1",
+    "current": "f915911c-1f56-465a-a36c-7bb65ba1296a"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f915911c-1f56-465a-a36c-7bb65ba1296a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que es útil pensar en lo que quieres decir antes de que empieces",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U05",
+    "slot": "target2",
+    "current": "e47529e9-17b6-44bd-96d0-a8061a0ab74e"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e47529e9-17b6-44bd-96d0-a8061a0ab74e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think it's useful to think about what you want to say before you start",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0281L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "73db2147-556b-4512-ba26-a872bea8b873",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría que ella supiera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0346L02B01",
+    "slot": "target1",
+    "current": "dcdc9945-1c2e-4749-a1b1-4b7c3fd3ed68"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "dcdc9945-1c2e-4749-a1b1-4b7c3fd3ed68",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría que ella supiera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0346L02B01",
+    "slot": "target2",
+    "current": "09153de7-31d4-42eb-b7a9-c066e7a22f3d"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "09153de7-31d4-42eb-b7a9-c066e7a22f3d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like her to know",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0346L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4d4f4f19-23c8-4c83-ba44-ad89b114baf9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No vi a nadie que conociera allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target1",
+    "current": "bc1b1eb3-e4aa-4b5a-85c8-cebada0b9a5d"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"No vi a nadie que conociera allí\" is already recorded in spa — 1 clip(s): bc1b1eb3-e4aa-4b5a-85c8-cebada0b9a5d (voice azure_es-ES-ElviraNeural, spa_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No vi a nadie que conociera allí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "target2",
+    "current": "f806ffc4-fd53-4056-b672-345a8c6ff639"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"No vi a nadie que conociera allí\" is already recorded in spa — 1 clip(s): f806ffc4-fd53-4056-b672-345a8c6ff639 (voice azure_es-ES-AlvaroNeural, spa_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't see anyone I knew there",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a899fc54-6c7f-4584-9910-88c9f50478a4",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No vi a nadie que conociera aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B02",
+    "slot": "target1",
+    "current": "b46ac6cc-b511-45a1-a9ed-fc715d8c00c2"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b46ac6cc-b511-45a1-a9ed-fc715d8c00c2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No vi a nadie que conociera aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B02",
+    "slot": "target2",
+    "current": "430d3a66-ade0-4b4a-828f-d50be0354e28"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "430d3a66-ade0-4b4a-828f-d50be0354e28",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't see anyone I knew here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "a5ffbca4-667c-4174-8992-2d4953f89b21",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "did you see anyone I knew?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0370L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "36cb4e39-a173-4898-90e1-35e1ff538b91",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No pensé que él tuviera razón",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0387L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "caa34f08-b375-49cf-81df-f1e851c82b0e",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No pensé que él tuviera razón",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0387L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "14912cfc-9906-4c64-9698-dddb2ce43a48",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't think he was right",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0387L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "32c24c2e-5b6a-414f-a377-972b5ab29fb7",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no importa lo que hagamos aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2eafb8e3-6080-4750-b116-5bd425b92337",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no importa lo que hagamos aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3dd01da0-e394-469e-a5f6-4696dcd177ae",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "known",
+  "text": "it doesn't matter what we do here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ba6fd088-d326-42fb-a5b8-97cc48b37edd",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "lo que hagamos mañana es importante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4be183b6-7b50-44f5-83b1-0b09900567e5",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "lo que hagamos mañana es importante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "283d856a-93bd-4df4-9c2b-7eabf8752680",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "what we do tomorrow is important",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8c1c9489-253b-4e26-9f4f-c1dd5cd54de8",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no me importa lo que hagamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f4cbb520-0cbe-4a2d-9d67-6187b4c30e00",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no me importa lo que hagamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c32f3daf-67f5-4ea7-a287-21249019956c",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "it doesn't matter to me what we do",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0409L02B05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7a08f8aa-7a97-4871-b884-63dc06024979",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "476fc112-688d-435a-bcfd-b17705ef1de9",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "00321a94-9272-4cb8-a4f2-b6e2136b246e",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want people to appreciate them",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f13ce33c-2ed1-47ba-aa03-bd7735ebdf2e",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es importante que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ab66765b-b4c7-4f97-b283-f844435a10b7",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es importante que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ffe6ac41-fad6-4dff-980f-6a83114320a3",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's important that people appreciate them",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "915e9211-08f4-4532-8a80-6cca0d06ebb1",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6a033e82-d79d-464b-9251-a2f989d3ffbf",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que la gente les aprecie",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fa68f0ce-a983-40c9-834c-bc24fe6a564f",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope people appreciate them",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0419L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5ec5835c-8f05-49ac-89ab-2affc591886c",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que preguntes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d605d5bd-b420-40c9-b6c4-6c42987706a2",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que preguntes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2aae4e07-5ade-4ce0-849a-e6745d732c58",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want you to ask",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0432L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2be32642-aa59-44ae-8cc1-406c30cc2c91",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una tienda donde pueda",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f09a2bc5-e055-46e0-bba8-cac78d3996da",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una tienda donde pueda",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b6bede9f-558d-4eac-aff1-d7577d145b8b",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "a shop where I can",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fd1706af-623e-4661-983b-c67561783290",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "necesito una tienda donde pueda comprar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1b71c42c-37b9-42aa-b221-3a73421eb948",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "necesito una tienda donde pueda comprar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dfa4c507-0ff6-4384-8479-55e83bfab728",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "I need a shop where I can buy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "96607aee-f659-4685-9e13-802dd64d04fb",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "una tienda donde pueda comprar algo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ffe04fc7-3269-4927-94db-e4a54b870f29",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "una tienda donde pueda comprar algo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6ef84d76-7bab-4b64-b4d5-3f4ea853f620",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "a shop where I can buy something",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0461L03B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9842ac4a-9bb8-4041-8f6a-c8fbfe98bc45",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que podamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0469L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "776e9022-c87a-4ca9-ab03-e3c699d98a1a",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que podamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0469L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bdfca572-59fd-4cdc-bd2c-f66aef5170c3",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope we can",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0469L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8b87eaaf-4ec5-497a-9e94-0a8707a2cf54",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target1",
+  "text": "puede que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3a556061-c615-469b-9523-478a8d82a332",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "puede que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9f54c842-24af-4dbc-b916-7abb33ee40ea",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "known",
+  "text": "they might not be serious",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7d183127-d166-468e-a193-a73d2909cf5a",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pero espero que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f873fa35-6e3e-4061-a35a-7ebe21d6b625",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pero espero que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "73729687-dea5-4603-b1cd-bbde88aaf846",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "but I hope they're not serious",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "00cf9d50-68b7-47db-b257-1074b0d75319",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "al menos espero que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "269153d7-5e2b-4cdc-abe5-956fee02b376",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "al menos espero que no estén hablando en serio",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cf2a0830-1cba-47fb-9997-ad96a4f780a3",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "known",
+  "text": "at least I hope they're not serious",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0482L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "87f4e657-b11b-4520-b2e4-2fa1641d4589",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "si jugarais juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0501L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88a383df-ceaf-4d7e-8ac4-89a4f417ff0f",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "si jugarais juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0501L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "be36bf66-0fd4-42de-ac05-89f3a479be74",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "if you played together",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0501L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "78f94f9d-eafa-4121-bb08-54a868d461b5",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es raro que no puedas adivinar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "eebfe2ca-f981-4cc1-88a7-cd5373c63ba2",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es raro que no puedas adivinar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e2aa2927-6aff-4a8f-880c-c0d329b842d9",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's unusual that you can't guess",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a88614f5-7df6-414c-9012-06ddabc24740",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es interesante que no puedas adivinar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "86a54cca-4e30-4d60-8130-2e3a3c242d07",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es interesante que no puedas adivinar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ad2f9bff-b87e-4d66-a755-24c1eafe9d6f",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting that you can't guess",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "87595643-d599-43e6-a388-fb2386852a59",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me sorprende que no puedas adivinar qué pasa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2e0d2f97-bf0e-48b7-a373-2db2212438ba",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me sorprende que no puedas adivinar qué pasa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "24e3b87a-ee7b-4bf1-b658-ab573df10f14",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "it surprises me that you can't guess what happens",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "412b2ca5-e45a-4de9-bb21-606f461cf5f3",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me está costando creer que no puedas adivinar por qué necesitábamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "55a12059-1a5d-4ddd-a9ab-0b4639e3186a",
+   "charsSpent": 77
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me está costando creer que no puedas adivinar por qué necesitábamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "68902179-2712-4084-920e-273aa71e4c8d",
+   "charsSpent": 77
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm finding it hard to believe that you can't guess why we needed to stay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "52fb4d76-7dc5-4922-98fe-e9d399e1c0f2",
+   "charsSpent": 73
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es raro que no puedas adivinar todo eso",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a476d391-b611-4cad-9b7b-a72739b6579e",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es raro que no puedas adivinar todo eso",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2a8b4735-b1e5-4f4a-bfae-487d6dc37ddd",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's unusual that you can't guess all of that",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0526L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82bdb4c2-76f0-4d48-9822-3b47f3a5283c",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Puedes esperar para que pueda contarlas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "43127cc2-fa5a-4c4f-81ea-c7598a686726",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Puedes esperar para que pueda contarlas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a35b1b1c-141d-41c1-9490-c325938a9de3",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "Can you wait so I can count them?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "701cf216-ba53-4cb8-a65a-cf606f6e8e20",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Puedes parar para que pueda contarlas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dc26e851-c6ef-4792-a241-e7aa361718e3",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Puedes parar para que pueda contarlas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7a40aee9-805e-45a9-bfbb-839dbbc9539e",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "Can you stop so I can count them?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ed8db507-d280-4c92-b5eb-37f7ff0080ee",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Necesitamos esperar hasta mañana para que pueda contarlas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "55eb2937-7b19-4461-96d4-7888939b82bc",
+   "charsSpent": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Necesitamos esperar hasta mañana para que pueda contarlas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "33e31651-62b6-48f1-814d-d679a953d3ff",
+   "charsSpent": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "We need to wait until tomorrow so I can count them",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3187499c-afa6-4cc6-90af-10f78502b454",
+   "charsSpent": 50
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Puedes hablar más despacio para que pueda contarlas todas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "069fd6e0-75a4-4463-a19a-5da89c3d2b87",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Puedes hablar más despacio para que pueda contarlas todas?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9cfa54c2-f6c3-4e26-911d-1136fce86168",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "known",
+  "text": "Can you speak more slowly so I can count them all?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0530L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "00bf8480-8ce9-486d-92a2-b8bab6d0930e",
+   "charsSpent": 50
+  }
+ },
+ {
+  "role": "target1",
+  "text": "escuchar cada palabra que digas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "67842b11-4c23-43d8-9be6-85e0e7c1310d",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "escuchar cada palabra que digas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6f739dd2-a7e4-4f14-9dc2-d16e6b42215f",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "to listen to every word you say",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e685cf1e-776d-40ae-a118-2b2892499199",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "voy a escuchar cada palabra que digas aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3650d550-638a-4d2a-8e6e-b71e73b19063",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "voy a escuchar cada palabra que digas aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3dd274da-7e23-4f04-b104-2fac83bdeda9",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm going to listen to every word you say here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "79e23567-291a-4fc9-b452-3f6b137e6726",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ella va a escuchar cada palabra que digas antes del espectáculo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "22cd065f-4aa4-427c-b0b8-7715fb0899bd",
+   "charsSpent": 63
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ella va a escuchar cada palabra que digas antes del espectáculo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "010615a7-0ebe-479c-9a59-9556c7b3164d",
+   "charsSpent": 63
+  }
+ },
+ {
+  "role": "known",
+  "text": "she's going to listen to every word you say before the show",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "78536957-5856-4b37-9fd9-ced2a69686e7",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero escuchar cada palabra que digas hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9b2e828d-bb10-4df4-b8be-0f07a98b2ceb",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero escuchar cada palabra que digas hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "640c762d-6435-4e29-8fce-7e286c0ee480",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to listen to every word you say today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0533L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "62004959-c8c8-4283-b73c-497b0ffb4780",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ella insistía en que comiéramos huevos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0587L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "de8a4631-e32c-448d-baf8-1fbc7a60fda5",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ella insistía en que comiéramos huevos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0587L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "080dfa2c-850e-441d-a27e-3aae6becacf0",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "she used to insist that we had eggs",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0587L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "c56b7400-3b04-4737-951a-48e491f4aa57",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no querías que discutiera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0593L03B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "29775c66-adc4-4a96-bd18-ec68ea76fdf3",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no querías que discutiera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0593L03B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "60fbba9b-7916-4b9c-9742-72f5825de29c",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "you didn't want me to argue",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0593L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4ec472f6-48ef-4cf4-ba34-670f89d2bd4c",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que podáis",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0668L01B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9636cb54-0170-498d-81eb-34fe95ccebd7",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que podáis",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0668L01B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "128dbcd5-ec9f-47e5-ba93-896dd4ba9672",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope you all can",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0668L01B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ef4e20c5-c00a-4c0c-b028-28c4f7b6da66",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Son personas que todavía no conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6c6d1776-31b9-4d7b-930c-ae299c1cd872",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Son personas que todavía no conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b38dfda6-691c-4829-83c9-5290a90c32fa",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you like', as in — 'It's interesting that you like to go by bus', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0120L03",
+    "slot": "presentation",
+    "current": "96c84334-7a61-498d-a56c-d859c8e00b7d"
+   }
+  ],
+  "legoId": "S0120L03",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a6aea1e3-6d8a-4931-af76-2622cad61f2c",
+   "charsSpent": 87,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that you don't like', as in — 'it's unusual that you don't like to use your car', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0121L02",
+    "slot": "presentation",
+    "current": "86be7f5d-ea20-44b8-be0a-e94707068a22"
+   }
+  ],
+  "legoId": "S0121L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "641b4308-f986-44cd-a55b-3fbf4f569fe7",
+   "charsSpent": 103,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that you're', as in — 'I'm so happy that you're doing so well', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0129L04",
+    "slot": "presentation",
+    "current": "3931966a-a64b-4ad5-a74b-f03828dc61fe"
+   }
+  ],
+  "legoId": "S0129L04",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "094de650-3a2a-476f-b5f4-a0b8746ed9a6",
+   "charsSpent": 85,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you finish', as in — 'I hope you finish soon', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0149L04",
+    "slot": "presentation",
+    "current": "d4a64f8e-11de-483c-a17f-518ec631fa48"
+   }
+  ],
+  "legoId": "S0149L04",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5756ccaa-1f16-42fe-811d-4e885f18520d",
+   "charsSpent": 68,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'me to help you', as in — 'do you want me to help you look for it?', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0171L01",
+    "slot": "presentation",
+    "current": "7c76d8e4-63f8-48d2-8f52-88b9f92cf478"
+   }
+  ],
+  "legoId": "S0171L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c1861b29-2e6a-41c3-8044-54b71c4cf597",
+   "charsSpent": 89,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'we finish', as in — 'they want to make sure that we finish everything in time', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0200L04",
+    "slot": "presentation",
+    "current": "b00e7b6f-5242-4ade-ab7b-c530fd1c5b4e"
+   }
+  ],
+  "legoId": "S0200L04",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7b3ddec8-a2df-420a-9edc-a80983295b56",
+   "charsSpent": 101,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'me to tell you', as in — 'he wanted me to tell you before the weekend', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0237L01",
+    "slot": "presentation",
+    "current": "858e4700-7408-464a-b6d5-131b33876b7a"
+   }
+  ],
+  "legoId": "S0237L01",
+  "real": {
+   "status": 403,
+   "code": "RERECORD_NOT_PERMITTED",
+   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'me to tell you', as in — 'he wanted me to \" already has a working clip (ce42c490-0ad6-4e0e-b411-5e1592d7f67d in gfzdpspr5fdp, c5318f2e-c645-4819-8928-af1ea6d395c7 in xai_eve). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you to help me', as in — 'I want you to help me before you go', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0249L01",
+    "slot": "presentation",
+    "current": "0c24c558-7007-4aa2-a776-88b69365f354"
+   }
+  ],
+  "legoId": "S0249L01",
+  "real": {
+   "status": 403,
+   "code": "RERECORD_NOT_PERMITTED",
+   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'you to help me', as in — 'I want you to he\" already has a working clip (c8a81b7a-adae-4329-9509-9ed5af689e15 in xai_eve, fc1e9746-55df-435e-ab87-f09d168f44c9 in gfzdpspr5fdp). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'I answer', as in — 'can you tell me something else before I answer?', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0250L02",
+    "slot": "presentation",
+    "current": "f809f939-83d4-4fd2-aec0-46c8bec16b68"
+   }
+  ],
+  "legoId": "S0250L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1ecb3eb6-ed2d-4caf-afd7-b365448182e8",
+   "charsSpent": 91,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'she needs', as in — 'I don't think that she needs to sell the company', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0326L01",
+    "slot": "presentation",
+    "current": "59ad98e7-2de2-49d1-a843-8a2bbe8e0e7d"
+   }
+  ],
+  "legoId": "S0326L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "18de1676-c5aa-4700-994b-b383c7b1d78a",
+   "charsSpent": 93,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that it's', as in — 'I don't think that it's very important', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0330L01",
+    "slot": "presentation",
+    "current": "4bb09def-9927-44ec-a02c-a9b29ac9b6e4"
+   }
+  ],
+  "legoId": "S0330L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1c510c2e-79c8-40d5-8665-3912f7c8b1d9",
+   "charsSpent": 83,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'her to know', as in — 'I wanted her to know that I liked her book', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0346L02",
+    "slot": "presentation",
+    "current": "36bfc60d-839d-4802-84a1-2665654cf7e1"
+   }
+  ],
+  "legoId": "S0346L02",
+  "real": {
+   "status": 403,
+   "code": "RERECORD_NOT_PERMITTED",
+   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'her to know', as in — 'I wanted her to kno\" already has a working clip (e71fdbc2-2efb-442d-b7a0-ddb266aacbda in xai_eve, 25cb7802-74df-41e7-b62a-f68f7871ccef in gfzdpspr5fdp). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'I knew', as in — 'I didn't see anyone that I knew', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0370L01",
+    "slot": "presentation",
+    "current": "b60e5e47-5216-454f-9dcf-5ea252433c6c"
+   }
+  ],
+  "legoId": "S0370L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "44d8c899-5029-4fc1-a9f4-1f0664694d48",
+   "charsSpent": 73,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'was right', as in — 'I didn't think she was right', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0387L02",
+    "slot": "presentation",
+    "current": "444bcabb-2092-4d43-bbc4-e024f4c50dfd"
+   }
+  ],
+  "legoId": "S0387L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7690dc75-8bd2-460b-aa05-84955d20ff31",
+   "charsSpent": 73,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'what we do', as in — 'it doesn't matter what we do', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0409L02",
+    "slot": "presentation",
+    "current": "161774d2-303d-4678-bc55-55284d242597"
+   }
+  ],
+  "legoId": "S0409L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ed291b2b-702d-47ce-b0c0-96cacf3d3683",
+   "charsSpent": 74,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'we can', as in — 'I hope we can meet', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0469L02",
+    "slot": "presentation",
+    "current": "516a5e9e-25a9-4abf-afbe-1f0e91acac32"
+   }
+  ],
+  "legoId": "S0469L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9e0d93f4-ab6f-4156-af34-ce49d9d03ee1",
+   "charsSpent": 60,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'they're not serious', as in — 'the only real hope is that they're not serious', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0482L01",
+    "slot": "presentation",
+    "current": "23094bc5-5710-4d0e-b9e7-b197c2756988"
+   }
+  ],
+  "legoId": "S0482L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b2037e43-8cef-4df0-9df0-f071d287cc53",
+   "charsSpent": 101,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you played', as in — 'if you played together it would be more fun', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0501L02",
+    "slot": "presentation",
+    "current": "cd989d87-a61b-4f6f-bc09-f6cd9bae6b22"
+   }
+  ],
+  "legoId": "S0501L02",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ec4cc495-beee-49e4-8d4a-1fbad388a838",
+   "charsSpent": 89,
+   "legoLinked": true
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that you can't guess', as in — 'I'm finding it hard to believe that you can't guess', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0526L02",
+    "slot": "presentation",
+    "current": "f08280df-eab6-417b-ace8-3a6ead139ac7"
+   }
+  ],
+  "legoId": "S0526L02",
+  "real": {
+   "status": 403,
+   "code": "RERECORD_NOT_PERMITTED",
+   "error": "TTS door (403) RERECORD_NOT_PERMITTED: spa_for_eng presentation \"The Spanish for: 'that you can't guess', as in — 'I'm findin\" already has a working clip (5a4cfbe5-19fd-4618-afeb-605bc9ec9d83 in gfzdpspr5fdp, 33a4621a-8115-49aa-9397-d3b50d9de298 in xai_eve). Re-recording needs Tom's express permission (Tom 2026-10-11): TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant spa_for_eng … — do not retry or route around this."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'you all can', as in — 'I hope you all can go', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0668L01",
+    "slot": "presentation",
+    "current": "302529fa-d75f-4426-93a4-c159c9397902"
+   }
+  ],
+  "legoId": "S0668L01",
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ce614440-087e-4a0a-9abf-981a16db2853",
+   "charsSpent": 68,
+   "legoLinked": true
+  }
+ }
+]
