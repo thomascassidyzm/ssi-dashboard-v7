@@ -1,0 +1,572 @@
+{
+ "event_id": "01afcc25-0e4c-4c98-9add-afcd51be0f7b",
+ "undo_file": "2026-11-11T15-09-02-289Z-01afcc25-0e4c-4c98-9add-afcd51be0f7b.json",
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0212L03U12",
+    "seed_number": 212,
+    "lego_index": 3,
+    "position": 17,
+    "known_text": "She went to help the people she wanted to see",
+    "target_text": "Ella fue a ayudar a las personas que quería ver",
+    "word_count": 47,
+    "lego_count": 10,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:47:09.323Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:47:09.353Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "063e2179-0e53-419e-bc2c-e515b893e84f",
+    "target1_audio_id": "582917a2-c494-4704-af27-469a76b4c370",
+    "target2_audio_id": "60b2935b-9f59-40d0-852f-1febbda43671",
+    "qa_checked": "2026-02-17T21:57:03.984Z",
+    "target1_duration_ms": 3984,
+    "target2_duration_ms": 4032,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Ella",
+      "isGhost": true
+     },
+     {
+      "known": "was",
+      "legoId": "S0147L01",
+      "target": " fue",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " a",
+      "isGhost": true
+     },
+     {
+      "known": "to help",
+      "legoId": "S0168L03",
+      "target": " ayudar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " a",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " las",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0163L01",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0030L01",
+      "target": " quería",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S0107L02",
+      "target": " ver",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0201L02B05",
+   "set": {
+    "known_text": "What was going to happen here?",
+    "target_text": "¿Qué iba a pasar aquí?",
+    "known_audio_id": "5d1bdd39-5d4e-4b1e-9152-6080ca1f546a",
+    "target1_audio_id": "421048d5-0518-4bef-a146-900c3862ced2",
+    "target2_audio_id": "0bcef21e-6624-4837-b314-6e720c686c3b",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿",
+      "isGhost": true
+     },
+     {
+      "known": "what was going to happen",
+      "legoId": "S0201L02",
+      "target": "Lo que iba a pasar",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquí?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0181L04U14",
+   "set": {
+    "known_text": "The doctor said I have to take my mother to see him every week",
+    "target_text": "El médico dijo que tengo que llevar a mi madre a verlo todas las semanas",
+    "known_audio_id": "cbae2740-c3ca-460a-a156-10c9bf799504",
+    "target1_audio_id": "00b99d45-d507-4f8b-89ff-b1f5e74baa68",
+    "target2_audio_id": "37be1ca5-c623-4439-b1d1-1a685b2c200c",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "El",
+      "isGhost": true
+     },
+     {
+      "known": "doctor",
+      "legoId": "S0181L03",
+      "target": " médico",
+      "isGhost": false
+     },
+     {
+      "known": "he said",
+      "legoId": "S0084L01",
+      "target": " dijo",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0163L01",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "I have to take my mother to the doctor",
+      "legoId": "S0181L04",
+      "target": " tengo que llevar a mi madre al médico",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0153L03U13",
+   "set": {
+    "known_text": "It is the same thing we were talking about and it is important to know",
+    "target_text": "Es lo mismo de lo que estábamos hablando y es importante saberlo",
+    "lego_position": "end",
+    "known_audio_id": "2f0d8a36-ee4a-4f7d-bc45-a97bc127b037",
+    "target1_audio_id": "c9681623-27cc-4853-ab00-4bb2e4243a18",
+    "target2_audio_id": "0fcd712c-a209-4c1c-ba4d-2cd6a902d298",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Es",
+      "isGhost": true
+     },
+     {
+      "known": "the same thing",
+      "legoId": "S0143L01",
+      "target": " lo mismo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "it",
+      "legoId": "S0129L03",
+      "target": " lo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "we were talking",
+      "legoId": "S0143L02",
+      "target": " estábamos hablando",
+      "isGhost": false
+     },
+     {
+      "known": "in the same way",
+      "legoId": "S0153L03",
+      "target": " de la misma manera",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0085L02B01",
+    "seed_number": 85,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "those",
+    "target_text": "esas",
+    "word_count": 4,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "lego"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-03-11T17:06:20.931Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "9e13716a-5600-4bc4-8664-6fe812f43fce",
+    "target1_audio_id": "d4fae78b-f0a2-4254-8c2a-34e9c095dc26",
+    "target2_audio_id": "cdc7ce3e-6b1e-400d-b467-f8e787398e48",
+    "qa_checked": null,
+    "target1_duration_ms": 840,
+    "target2_duration_ms": 672,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "those",
+      "legoId": "S0085L02",
+      "target": "Esas",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04U07",
+   "set": {
+    "known_text": "I hope you start soon because I want to go home",
+    "target_text": "Espero que empieces pronto porque quiero ir a casa",
+    "lego_position": "start",
+    "known_audio_id": "deb18ec4-a320-48eb-b33f-d2e6a37d680c",
+    "target1_audio_id": "ea401c4a-c929-4ed8-b8b0-cb1e164e575c",
+    "target2_audio_id": "f9dc316f-fd7b-49d5-9886-c1b3612c9ced",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Espero",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "you start",
+      "legoId": "S0281L04",
+      "target": " empieces",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "soon",
+      "legoId": "S0023L02",
+      "target": " pronto",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " porque",
+      "isGhost": false
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " quiero",
+      "isGhost": false
+     },
+     {
+      "known": "go home",
+      "legoId": "S0095L01",
+      "target": " ir a casa",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04B04",
+   "set": {
+    "known_text": "I want you to start",
+    "target_text": "Quiero que empieces",
+    "known_audio_id": "92b2ae7c-ab57-4a66-86c0-7c7b5994c463",
+    "target1_audio_id": "a4f10e23-c66d-48bd-970c-3590a872addc",
+    "target2_audio_id": "9eb4a1d9-857b-4bd2-be0e-8189f7f1a880",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "Quiero",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "you start",
+      "legoId": "S0281L04",
+      "target": " empieces",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04B03",
+   "set": {
+    "known_text": "When you start",
+    "target_text": "Cuando empieces",
+    "known_audio_id": "1e856782-0989-4203-b545-e4a7d26f3010",
+    "target1_audio_id": "ae75a9be-30dd-404b-a4f6-67f08850cfd2",
+    "target2_audio_id": "4ccbd61b-f308-4172-8b4d-32d679980c47",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Cuando",
+      "isGhost": true
+     },
+     {
+      "known": "you start",
+      "legoId": "S0281L04",
+      "target": " empieces",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L04B01",
+   "set": {
+    "known_text": "I hope you start soon",
+    "target_text": "Espero que empieces pronto",
+    "lego_position": "middle",
+    "known_audio_id": "e47ad12d-48c2-4951-8da2-49426ea9f04e",
+    "target1_audio_id": "93cc37e2-8398-4b31-ba68-ae193e0b7d72",
+    "target2_audio_id": "fcaab1fa-55cf-46da-a129-7a2e2f85be18",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Espero",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "you start",
+      "legoId": "S0281L04",
+      "target": " empieces",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "soon",
+      "legoId": "S0023L02",
+      "target": " pronto",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U05",
+   "set": {
+    "position": 1006
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U04",
+   "set": {
+    "position": 1005
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U02",
+   "set": {
+    "position": 1004
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U01",
+   "set": {
+    "position": 1003
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02B02",
+   "set": {
+    "position": 1001
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0409L02B03"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U05",
+   "set": {
+    "position": 8
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U04",
+   "set": {
+    "position": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U02",
+   "set": {
+    "position": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02U01",
+   "set": {
+    "position": 4
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0409L02B02",
+   "set": {
+    "position": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0409L02B01",
+    "seed_number": 409,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "we do",
+    "target_text": "hagamos",
+    "word_count": 7,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-28T14:16:58.002Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "a808a290-c2d1-4d38-a652-1760438180cb",
+    "target1_audio_id": "893562b1-fff0-4c93-905a-228911013cff",
+    "target2_audio_id": "6e79e03e-b522-4519-8d9d-d7bd8f3ee8bf",
+    "qa_checked": null,
+    "target1_duration_ms": 1896,
+    "target2_duration_ms": 2016,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "(what) we do (subjunctive)",
+      "legoId": "S0409L02",
+      "target": "hagamos",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  }
+ ]
+}

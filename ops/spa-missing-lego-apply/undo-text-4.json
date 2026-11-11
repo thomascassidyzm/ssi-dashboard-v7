@@ -1,0 +1,447 @@
+{
+ "event_id": "270c07d9-9f03-475e-8435-f8033f8a53f0",
+ "undo_file": "2026-11-11T15-09-16-397Z-270c07d9-9f03-475e-8435-f8033f8a53f0.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0234L03U11",
+   "set": {
+    "known_text": "My friend used to work in an office and wanted to ask for help with that",
+    "target_text": "Mi amigo trabajaba en una oficina y quería pedir ayuda con eso",
+    "lego_position": "start",
+    "known_audio_id": "f0f01cd2-f092-436f-833e-a97fed1bc5f9",
+    "target1_audio_id": "f0199237-598b-4da1-8f36-de351f635333",
+    "target2_audio_id": "53d0cba3-9ba3-46f7-8cff-217dfd57e62c",
+    "decomposition": [
+     {
+      "known": "my friend",
+      "legoId": "S0084L02",
+      "target": "Mi amigo",
+      "isGhost": false
+     },
+     {
+      "known": "used to work",
+      "legoId": "S0199L01",
+      "target": " trabajaba",
+      "isGhost": false
+     },
+     {
+      "known": "in",
+      "legoId": "S0004L01",
+      "target": " en",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " una",
+      "isGhost": true
+     },
+     {
+      "known": "office",
+      "legoId": "S0184L03",
+      "target": " oficina",
+      "isGhost": false
+     },
+     {
+      "known": "and",
+      "legoId": "S0015L03",
+      "target": " y",
+      "isGhost": false
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0030L01",
+      "target": " quería",
+      "isGhost": false
+     },
+     {
+      "known": "to ask for help",
+      "legoId": "S0231L03",
+      "target": " pedir ayuda",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " con",
+      "isGhost": true
+     },
+     {
+      "known": "that",
+      "legoId": "S0151L01",
+      "target": " eso",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U15",
+   "set": {
+    "position": 1011
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U11",
+   "set": {
+    "position": 1010
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U10",
+   "set": {
+    "position": 1009
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U09",
+   "set": {
+    "position": 1008
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U07",
+   "set": {
+    "position": 1007
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U06",
+   "set": {
+    "position": 1006
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U04",
+   "set": {
+    "position": 1005
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U03",
+   "set": {
+    "position": 1004
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02B05",
+   "set": {
+    "position": 1002
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02B02",
+   "set": {
+    "position": 1001
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0231L02B06"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U15",
+   "set": {
+    "position": 20
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U11",
+   "set": {
+    "position": 16
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U10",
+   "set": {
+    "position": 15
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U09",
+   "set": {
+    "position": 14
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U07",
+   "set": {
+    "position": 12
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U06",
+   "set": {
+    "position": 11
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U04",
+   "set": {
+    "position": 9
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02U03",
+   "set": {
+    "position": 8
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02B05",
+   "set": {
+    "position": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0231L02B02",
+   "set": {
+    "position": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0231L02U13",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 18,
+    "known_text": "I think that elderly woman works in the same office as my daughter",
+    "target_text": "Creo que esa mujer mayor trabaja en la misma oficina que mi hija",
+    "word_count": 64,
+    "lego_count": 13,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:39:10.170Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:39:10.207Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "544782fb-5668-440e-a0c8-366f221a4bff",
+    "target1_audio_id": "6204c9a0-0f6d-4d2c-b7f8-7f1f4639fdee",
+    "target2_audio_id": "860ead7c-4baf-4b55-845f-3e17cadc307c",
+    "qa_checked": "2026-02-17T21:57:24.492Z",
+    "target1_duration_ms": 3200,
+    "target2_duration_ms": 3520,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I think that",
+      "legoId": "S0047L01",
+      "target": "Pienso que",
+      "isGhost": false
+     },
+     {
+      "known": "that woman",
+      "legoId": "S0229L01",
+      "target": " esa mujer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mayor",
+      "isGhost": true
+     },
+     {
+      "known": "works",
+      "legoId": "S0197L03",
+      "target": " trabaja",
+      "isGhost": false
+     },
+     {
+      "known": "in",
+      "legoId": "S0004L01",
+      "target": " en",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " la",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " misma",
+      "isGhost": true
+     },
+     {
+      "known": "office",
+      "legoId": "S0184L03",
+      "target": " oficina",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "my",
+      "legoId": "S0197L01",
+      "target": " mi",
+      "isGhost": false
+     },
+     {
+      "known": "daughter",
+      "legoId": "S0198L01",
+      "target": " hija",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0231L02B03",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "An elderly woman",
+    "target_text": "Una mujer mayor",
+    "word_count": 15,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:39:10.207Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "4441f2cd-23af-431a-ac26-eed24e95af95",
+    "target1_audio_id": "15740d43-3fcc-4699-a51e-107323cf9cd1",
+    "target2_audio_id": "93a94251-cdcb-47ff-b62d-2dea384cbc72",
+    "qa_checked": "2026-02-17T21:57:24.492Z",
+    "target1_duration_ms": 2304,
+    "target2_duration_ms": 2544,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Una",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mujer",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mayor",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0231L02B01",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "Old",
+    "target_text": "Mayor",
+    "word_count": 5,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "v2"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:39:10.207Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "e0785a86-ba76-4193-bdcb-6b26a31ea766",
+    "target1_audio_id": "81224c82-c12f-4528-af4f-eafad9401255",
+    "target2_audio_id": "847cc9f8-2306-4f2c-b513-600150b3559f",
+    "qa_checked": "2026-02-17T21:57:24.492Z",
+    "target1_duration_ms": 1728,
+    "target2_duration_ms": 1872,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Mayor",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  }
+ ]
+}

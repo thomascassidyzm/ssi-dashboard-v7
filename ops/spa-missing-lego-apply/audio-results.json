@@ -1,0 +1,85 @@
+[
+ {
+  "role": "target1",
+  "text": "Ya no estoy cansado",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0145L01B06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6d2ed5cb-1fd8-4b28-81ea-ae32b8051160",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ya no estoy cansado",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0145L01B06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target2"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fb4b2626-d53a-4364-a7ed-f3b524196d5a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not tired any more",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0145L01B06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "known"
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5c327da0-c645-4941-9f78-81e3d349d0a9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ya no quiero",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0145L01B07",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "real": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Ya no quiero\" is already recorded in spa — 1 clip(s): f9767074-3c4e-4aef-ad7d-eaa18d73d46b (voice azure_es-ES-ElviraNeural, eng_for_spa known). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ }
+]

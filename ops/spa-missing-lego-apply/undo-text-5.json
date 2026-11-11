@@ -1,0 +1,604 @@
+{
+ "event_id": "1e85b5f4-ca1c-4dc0-9ce8-1cba59241140",
+ "undo_file": "2026-11-11T15-09-37-628Z-1e85b5f4-ca1c-4dc0-9ce8-1cba59241140.json",
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0285L01U10",
+    "seed_number": 285,
+    "lego_index": 1,
+    "position": 17,
+    "known_text": "It is more important to speak often than to be perfect and she does that",
+    "target_text": "Es más importante hablar a menudo que ser perfecto y ella lo hace",
+    "word_count": 65,
+    "lego_count": 15,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:47:46.112Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:47:46.173Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "fbaa1700-53c4-48fd-97ea-d10481d5155d",
+    "target1_audio_id": "935a812f-214a-43e8-80d8-8d06e67472b7",
+    "target2_audio_id": "36cedb05-f5ff-4327-a1f7-d1c36281e11d",
+    "qa_checked": "2026-02-17T21:57:33.559Z",
+    "target1_duration_ms": 4896,
+    "target2_duration_ms": 5136,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "it's more important",
+      "legoId": "S0137L01",
+      "target": "Es más importante",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " hablar",
+      "isGhost": false
+     },
+     {
+      "known": "often",
+      "legoId": "S0137L02",
+      "target": " a menudo",
+      "isGhost": false
+     },
+     {
+      "known": "than to be perfect",
+      "legoId": "S0137L03",
+      "target": " que ser perfecto",
+      "isGhost": false
+     },
+     {
+      "known": "and",
+      "legoId": "S0015L03",
+      "target": " y",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ella",
+      "isGhost": true
+     },
+     {
+      "known": "it",
+      "legoId": "S0129L03",
+      "target": " lo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hace",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0285L01U07",
+   "set": {
+    "known_text": "Because I want to know people who speak Spanish",
+    "target_text": "Porque quiero conocer a personas que hablan español",
+    "lego_position": "end",
+    "known_audio_id": "6c169fa1-373f-4b28-8631-8e28559ac049",
+    "target1_audio_id": "5c98d0be-f7a7-4a42-af50-071552085478",
+    "target2_audio_id": "fa3370f9-7f18-45c3-a98d-a68402a07653",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": "Porque",
+      "isGhost": false
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " quiero",
+      "isGhost": false
+     },
+     {
+      "known": "to meet people",
+      "legoId": "S0022L03",
+      "target": " conocer a personas",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "they speak",
+      "legoId": "S0283L03",
+      "target": " hablan",
+      "isGhost": false
+     },
+     {
+      "known": "Spanish",
+      "legoId": "S0001L03",
+      "target": " español",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U07",
+   "set": {
+    "position": 1010
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U06",
+   "set": {
+    "position": 1009
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U05",
+   "set": {
+    "position": 1008
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U04",
+   "set": {
+    "position": 1007
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U03",
+   "set": {
+    "position": 1006
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U02",
+   "set": {
+    "position": 1005
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U01",
+   "set": {
+    "position": 1004
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01B04",
+   "set": {
+    "position": 1002
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01B03",
+   "set": {
+    "position": 1001
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0266L01B05"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U07",
+   "set": {
+    "position": 12
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U06",
+   "set": {
+    "position": 11
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U05",
+   "set": {
+    "position": 10
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U04",
+   "set": {
+    "position": 9
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U03",
+   "set": {
+    "position": 8
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U02",
+   "set": {
+    "position": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01U01",
+   "set": {
+    "position": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01B04",
+   "set": {
+    "position": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0266L01B03",
+   "set": {
+    "position": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0266L01B01",
+    "seed_number": 266,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "Old",
+    "target_text": "Viejo",
+    "word_count": 5,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "lego"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-03-11T17:07:56.263Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "e0785a86-ba76-4193-bdcb-6b26a31ea766",
+    "target1_audio_id": "b6cf13d5-0ce9-421b-a62f-38763ffb6ee2",
+    "target2_audio_id": "9c3ca168-73da-4e67-8903-5f3854a10f8b",
+    "qa_checked": null,
+    "target1_duration_ms": 1680,
+    "target2_duration_ms": 1968,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Viejo",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L02U02",
+   "set": {
+    "known_text": "I do not want you to go before we finish the conversation",
+    "target_text": "No quiero que te vayas antes de que terminemos la conversación",
+    "lego_position": "start",
+    "known_audio_id": "c0d4d3e5-270e-4f20-ac50-117de5b957fe",
+    "target1_audio_id": "052e93c2-b95d-43de-b9d1-1dbd9240d17d",
+    "target2_audio_id": "00920c97-ec30-440f-9498-15b3aec55ae2",
+    "decomposition": [
+     {
+      "known": "I don't want",
+      "legoId": "S0019L02",
+      "target": "No quiero",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " te",
+      "isGhost": true
+     },
+     {
+      "known": "you go",
+      "legoId": "S0249L02",
+      "target": " vayas",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "before",
+      "legoId": "S0128L05",
+      "target": " antes",
+      "isGhost": false
+     },
+     {
+      "known": "of",
+      "legoId": "S0217L06",
+      "target": " de",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "we finish",
+      "legoId": "S0200L04",
+      "target": " terminemos",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " la",
+      "isGhost": true
+     },
+     {
+      "known": "conversation",
+      "legoId": "S0115L02",
+      "target": " conversación",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0249L02B01",
+    "seed_number": 249,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "You go",
+    "target_text": "Vayas",
+    "word_count": 5,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "lego"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-03-11T17:07:50.780Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "364d7400-51ac-4a2e-8ff3-6825e2f972c7",
+    "target1_audio_id": "21b4d351-9333-40d7-a0c5-a913bd00fb1e",
+    "target2_audio_id": "dd5194fd-8603-42ee-96ed-7ad2ecd3d588",
+    "qa_checked": null,
+    "target1_duration_ms": 1824,
+    "target2_duration_ms": 1944,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "you go",
+      "legoId": "S0249L02",
+      "target": "Vayas",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U11",
+   "set": {
+    "position": 1008
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U10",
+   "set": {
+    "position": 1007
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U09",
+   "set": {
+    "position": 1006
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U08",
+   "set": {
+    "position": 1005
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U03",
+   "set": {
+    "position": 1004
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01B05",
+   "set": {
+    "position": 1002
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01B03",
+   "set": {
+    "position": 1001
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0249L01B06"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U11",
+   "set": {
+    "position": 18
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U10",
+   "set": {
+    "position": 17
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U09",
+   "set": {
+    "position": 16
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U08",
+   "set": {
+    "position": 15
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01U03",
+   "set": {
+    "position": 10
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01B05",
+   "set": {
+    "position": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0249L01B03",
+   "set": {
+    "position": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0249L01B01",
+    "seed_number": 249,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "You help",
+    "target_text": "Ayudes",
+    "word_count": 6,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "lego"
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-03-11T17:07:50.493Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "434986d1-080f-4316-8556-63b23e9445bd",
+    "target1_audio_id": "ed8663fb-beb0-43fd-bc09-0572a98d0c2e",
+    "target2_audio_id": "b8809ab7-4189-4a45-9e43-b0e1f6b4c2ea",
+    "qa_checked": null,
+    "target1_duration_ms": 1896,
+    "target2_duration_ms": 1944,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "you help",
+      "legoId": "S0249L01",
+      "target": "Ayudes",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  }
+ ]
+}

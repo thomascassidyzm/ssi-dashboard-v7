@@ -139,7 +139,7 @@ function planAudio(api, applied) {
 
 // A 300-op batch can outrun fetch's default 300 s header timeout; a request that dies mid-apply leaves the outcome unknown,
 // so the batch calls wait up to 30 minutes.
-const { Agent } = require('undici');
+const { Agent, fetch } = require('undici');
 const SLOW = new Agent({ headersTimeout: 30 * 60e3, bodyTimeout: 30 * 60e3 });
 async function post(url, body) { const r = await fetch(url, { dispatcher: SLOW, method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; }
 const batch = (body) => post(`${POPTY}/api/production/${COURSE}/edit-batch`, body);
@@ -156,38 +156,72 @@ async function main() {
     for (const n of p.notes) console.log('  ', n);
     console.log(`drifted/skipped ${p.drifted.length}:`, p.drifted);
     if (p.problems.length) { console.log('STOP:', p.problems); process.exitCode = 1; return; }
-    const dry = await batch({ ops: p.ops });
-    console.log(`dry run ${dry.status} ${dry.body.error || ''} (${p.ops.length} ops)`);
-    if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; return; }
-    if (!apply) return;
-    const ap = await batch({ ops: p.ops, apply: true });
-    console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
-    const touched = [...p.ops.filter((o) => o.op === 'phrase.update' && o.set.target_text).map((o) => sid(o.phrase_id)), ...p.newIds];
-    const deletedIds = p.ops.filter((o) => o.op === 'phrase.delete').map((o) => sid(o.phrase_id));
-    save('applied.json', { event_id: ap.body.event_id, touched, deleted: deletedIds, drifted: p.drifted, legos: [...new Set(DEC.rows.map((d) => d.lego_id))] });
-    save('undo-text.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    // One 328-op batch outran the server's request timeout and rolled back whole (11 Nov), so the batch goes in chunks of
+    // whole LEGOs (a LEGO's renumbering must stay in one transaction), each dry-run then applied, its event and undo kept.
+    const legoOf = (o) => /(S\d{4}L\d{2})/.exec(o.phrase_id || (o.row && o.row.id) || '')[1];
+    const groups = new Map(); for (const o of p.ops) { const k = legoOf(o); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(o); }
+    const chunks = []; let cur = [];
+    for (const g of groups.values()) { if (cur.length && cur.length + g.length > 40) { chunks.push(cur); cur = []; } cur.push(...g); }
+    if (cur.length) chunks.push(cur);
+    const prior = fs.existsSync(path.join(DIR, 'applied.json')) ? read('applied.json') : { events: [], touched: [], deleted: [] };
+    const doneLegos = new Set(prior.done_legos || []);
+    for (const [n, ops] of chunks.entries()) {
+      const legosHere = [...new Set(ops.map(legoOf))];
+      if (legosHere.every((l) => doneLegos.has(l))) continue;
+      const dry = await batch({ ops });
+      console.log(`chunk ${n + 1}/${chunks.length} dry run ${dry.status} ${dry.body.error || ''} (${ops.length} ops: ${legosHere.join(' ')})`);
+      if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; return; }
+      if (!apply) continue;
+      const ap = await batch({ ops, apply: true });
+      console.log(`  APPLIED ${ap.status} event ${ap.body.event_id} ${ap.body.error || ''}`);
+      if (ap.status !== 200) { process.exitCode = 1; return; }
+      prior.events.push(ap.body.event_id);
+      prior.touched.push(...ops.filter((o) => o.op === 'phrase.update' && o.set.target_text).map((o) => sid(o.phrase_id)), ...ops.filter((o) => o.op === 'phrase.insert').map((o) => sid(o.row.id)));
+      prior.deleted.push(...ops.filter((o) => o.op === 'phrase.delete').map((o) => sid(o.phrase_id)));
+      prior.done_legos = [...doneLegos, ...legosHere]; legosHere.forEach((l) => doneLegos.add(l));
+      prior.drifted = p.drifted; prior.legos = [...new Set(DEC.rows.map((d) => d.lego_id))];
+      save('applied.json', prior);
+      save(`undo-text-${n + 1}.json`, { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    }
     return;
   }
   if (mode === 'audio') {
-    const { asks, problems } = planAudio(api, read('applied.json'));
-    if (problems.length) { console.log('STOP:', problems); process.exitCode = 1; return; }
-    const results = []; let would = 0, spent = 0;
-    for (const a of asks) {
-      const body = { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE };
-      if (!apply) {
-        const dry = await post(`${POPTY}/api/audio/render`, { ...body, dryRun: true });
+    // The plan is frozen on the first pass (audio-asks.json) so each slot keeps the clip it held BEFORE any render, and the
+    // real pass saves after every ask: Popty restarts several times a day under parallel deploys, and a resumed pass skips
+    // what is done. A dropped connection is not a refusal — the same ask is re-sent once Popty answers again, and a take
+    // that did land comes back from the library for nothing. A refusal (409/402) is recorded and never retried.
+    const planFile = path.join(DIR, 'audio-asks.json');
+    let asks;
+    if (fs.existsSync(planFile)) asks = read('audio-asks.json');
+    else { const pl = planAudio(api, read('applied.json')); if (pl.problems.length) { console.log('STOP:', pl.problems); process.exitCode = 1; return; } asks = pl.asks; if (apply) save('audio-asks.json', asks); }
+    let would = 0, spent = 0;
+    if (!apply) {
+      const results = [];
+      const k = Math.max(1, Math.floor(asks.length / Number(process.env.DRY_SAMPLE || 12)));
+      for (const a of asks.filter((_, i) => i % k === 0)) {
+        const dry = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
         would += dry.body.wouldSpendChars || 0;
         console.log(`dry ${dry.status} ${a.role} "${a.text}" → ${dry.body.source || dry.body.code || dry.body.error} ${dry.body.wouldSpendChars || 0}`);
         results.push({ ...a, dry: { status: dry.status, source: dry.body.source, code: dry.body.code, error: dry.body.error, wouldSpendChars: dry.body.wouldSpendChars } });
-        continue;
       }
-      const real = await post(`${POPTY}/api/audio/render`, body);
+      console.log(`dry sample would spend ${would} chars (plan: ${asks.length} asks)`); save('audio-plan-dry.json', results); return;
+    }
+    const resFile = path.join(DIR, 'audio-results.json');
+    const results = fs.existsSync(resFile) ? read('audio-results.json') : [];
+    const done = new Set(results.map((r) => `${r.role}\u0000${r.text}`));
+    for (const a of asks) {
+      if (done.has(`${a.role}\u0000${a.text}`)) continue;
+      let real;
+      for (let tries = 0; ; tries++) {
+        try { real = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE }); break; }
+        catch (e) { if (tries >= 20) throw e; console.log(`  connection lost (${e.cause && e.cause.code || e.message}); waiting for Popty`); await new Promise((r) => setTimeout(r, 30e3)); }
+      }
       spent += real.body.charsSpent || 0;
       console.log(`real ${real.status} ${a.role} "${a.text}" → ${real.body.source || real.body.code} ${real.body.audioId || ''} ${real.body.charsSpent || 0}`);
       results.push({ ...a, real: { status: real.status, source: real.body.source, audioId: real.body.audioId, charsSpent: real.body.charsSpent, code: real.body.code, error: real.body.error } });
+      fs.writeFileSync(resFile, JSON.stringify(results, null, 1));
     }
-    if (!apply) { console.log(`dry total would spend ${would} chars over ${asks.length} asks`); save('audio-plan-dry.json', results); return; }
-    console.log(`spent ${spent} chars`); save('audio-results.json', results); return;
+    console.log(`spent ${spent} chars this pass; ${results.length}/${asks.length} asks recorded`); return;
   }
   if (mode === 'link') {
     const results = read('audio-results.json');
@@ -212,6 +246,40 @@ async function main() {
     const ap = await batch({ ops, apply: true });
     console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file}`);
     save('undo-audio-link.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    return;
+  }
+  if (mode === 'hold') {
+    // Rows whose new words exist only as off-cast clips (EXISTS_IN_LANGUAGE: a cast-voice take needs Kai's re-record grant)
+    // cannot be voiced, and a slot left on its old clip would play the old words. As in #144, such a row goes back to how it
+    // was — text, tiling and clips from the pre-apply snapshot (argv[4]) — and an inserted row is removed; all are listed
+    // for Kai. A row is held if ANY of its slots was refused.
+    const results = read('audio-results.json');
+    const snap = load(JSON.parse(fs.readFileSync(process.argv[4], 'utf8'))).P;
+    const { P } = load(api);
+    const held = new Map();
+    for (const r of results) if (!(r.real && r.real.audioId)) for (const s of r.slots) { const id = sid(s.phrase_id); if (!held.has(id)) held.set(id, []); held.get(id).push(`${s.slot}: ${(r.real && (r.real.code || r.real.error)) || 'no clip'} "${r.text}"`); }
+    const ops = [];
+    for (const [id, why] of held) {
+      const now = P.get(id), was = snap.get(id);
+      if (!now) continue;
+      const expect = { known_text: now.known_text, target_text: now.target_text };
+      if (!was) { ops.push({ op: 'phrase.delete', phrase_id: now.id, expect }); console.log(`HOLD (remove new row) ${id}: ${now.known_text} | ${now.target_text} — ${why.join('; ')}`); continue; }
+      const set = {}; for (const c of ['known_text', 'target_text', 'decomposition', 'lego_position', 'known_audio_id', 'target1_audio_id', 'target2_audio_id']) set[c] = was[c] ?? null;
+      ops.push({ op: 'phrase.update', phrase_id: now.id, expect, set });
+      console.log(`HOLD (back to "${was.known_text} | ${was.target_text}") ${id} — ${why.join('; ')}`);
+    }
+    console.log(`${ops.length} hold ops`);
+    save('held.json', [...held].map(([id, why]) => ({ id, why })));
+    if (!ops.length) return;
+    const dry = await batch({ ops });
+    console.log(`dry run ${dry.status} ${dry.body.error || ''}`);
+    if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; return; }
+    if (!apply) return;
+    const ap = await batch({ ops, apply: true });
+    console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file}`);
+    save('undo-hold.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    const a = read('applied.json'); const h = new Set(held.keys());
+    a.held = [...h]; a.touched = a.touched.filter((x) => !h.has(x)); save('applied.json', a);
     return;
   }
   if (mode === 'verify') {

@@ -1,0 +1,241 @@
+[
+ {
+  "role": "target1",
+  "text": "Ya no estoy cansado",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0145L01B06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "I lived at the other end of the village years ago",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0552L01U01",
+    "current": {
+     "known": "bc96463a-fa95-4ce0-9892-a23a3e499bcb",
+     "target1": null,
+     "target2": null
+    },
+    "slot": "known"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Tu idea fue interesante pero no fue posible",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0125L02U11",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target2"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Eso no era lo que esperaba cuando empecé a aprender",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0151L02U11",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "known",
+  "text": "She told me she wants to ask you something, but you have to leave",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0274L02U14",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "known"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 65
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Este trabajo es interesante",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0126L01B03",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target2"
+   }
+  ],
+  "dry": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Este trabajo es interesante\" is already recorded in spa — 1 clip(s): 960bcb26-6a25-483e-8978-257b1846f47a (voice azure_es-AR-ElenaNeural, eus_for_spa known). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿estuviste de acuerdo conmigo?",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0385L01B03",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "known",
+  "text": "I agreed because I wanted to help you",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0386L01U06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "known"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "necesito irme de casa",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0588L02B02",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target2"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 21
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Somos amigos y creo que lo estamos haciendo muy bien",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0110L01U04",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "known",
+  "text": "How many of the students they take speak Spanish?",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0434L02B04",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "known"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 49
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Conozco a un hombre mayor",
+  "slots": [
+   {
+    "phrase_id": "spa_for_eng:S0231L02B06",
+    "current": {
+     "known": null,
+     "target1": null,
+     "target2": null
+    },
+    "slot": "target2"
+   }
+  ],
+  "dry": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Conozco a un hombre mayor\" is already recorded in spa — 2 clip(s): 66baa2b1-75b8-4abe-9dfb-7d9d97953b94 (voice azure_es-AR-ElenaNeural, eus_for_spa known); 50321f58-6577-473d-8735-07ae40a1ba8b (voice azure_es-ES-ElviraNeural, eng_for_spa known). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ }
+]
