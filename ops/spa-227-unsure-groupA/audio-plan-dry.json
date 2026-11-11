@@ -1,0 +1,341 @@
+[
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo algo interesante con ellos porque es bueno para nosotros",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo algo interesante con ellos porque es bueno para nosotros",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo algo nuevo cuando estoy intentando mejorar mi español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 71
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo algo nuevo cuando estoy intentando mejorar mi español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 71
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es mejor hacerlo cuando estés listo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0495L01U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es mejor hacerlo cuando estés listo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0495L01U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Mi amigo conoce a personas a las que les gusta practicar a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0286L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 65
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Mi amigo conoce a personas a las que les gusta practicar a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0286L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 65
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Conoces a personas a las que les gusta leer?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0287L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 45
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Conoces a personas a las que les gusta leer?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0287L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 45
+  }
+ },
+ {
+  "role": "known",
+  "text": "We are okay and we want to keep learning",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0102L01U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "We are okay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0102L01B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gusta conocer a personas a las que les gusta leer y aprender algo nuevo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0286L01U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gusta conocer a personas a las que les gusta leer y aprender algo nuevo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0286L01U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 74
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es útil conocer a personas a las que les gusta ver la televisión en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U10",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es útil conocer a personas a las que les gusta ver la televisión en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U10",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Mi amigo quiere conocer a personas a las que les gusta ver la televisión y practicar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U11",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 84
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Mi amigo quiere conocer a personas a las que les gusta ver la televisión y practicar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U11",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 84
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Mi hermana conoce a personas a las que les gusta ver la televisión en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Mi hermana conoce a personas a las que les gusta ver la televisión en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0288L03U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ }
+]

@@ -1,0 +1,549 @@
+{
+ "event_id": "0a35c018-8009-48fe-92e1-9e7d031edbd4",
+ "undo_file": "2026-11-11T15-23-13-914Z-0a35c018-8009-48fe-92e1-9e7d031edbd4.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0288L03U04",
+   "set": {
+    "target_text": "Mi hermana conoce personas que les gusta ver la televisión en español",
+    "target1_audio_id": "66fe1364-6a40-4ccb-9197-f2dec99bcaf3",
+    "target2_audio_id": "e9668c27-8cd8-460c-a420-68f94b8d3fa3",
+    "decomposition": [
+     {
+      "known": "my sister",
+      "legoId": "S0284L03",
+      "target": "Mi hermana",
+      "isGhost": false
+     },
+     {
+      "known": "she knows",
+      "legoId": "S0233L02",
+      "target": " conoce",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "who like watching television",
+      "legoId": "S0288L03",
+      "target": " que les gusta ver la televisión",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "in",
+      "legoId": "S0004L01",
+      "target": " en",
+      "isGhost": false
+     },
+     {
+      "known": "Spanish",
+      "legoId": "S0001L03",
+      "target": " español",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0288L03U11",
+   "set": {
+    "target_text": "Mi amigo quiere conocer personas a las que les gusta ver la televisión y practicar",
+    "target1_audio_id": "be6535bf-d666-4c92-9bdb-08adad2f9bd3",
+    "target2_audio_id": "0c17d9d3-9459-426a-b28f-6fa90004c65b",
+    "decomposition": [
+     {
+      "known": "my friend",
+      "legoId": "S0084L02",
+      "target": "Mi amigo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " quiere",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " conocer",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "to",
+      "legoId": "S0216L02",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " las",
+      "isGhost": true
+     },
+     {
+      "known": "who like watching television",
+      "legoId": "S0288L03",
+      "target": " que les gusta ver la televisión",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "and",
+      "legoId": "S0015L03",
+      "target": " y",
+      "isGhost": false
+     },
+     {
+      "known": "to practise",
+      "legoId": "S0005L01",
+      "target": " practicar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0288L03U10",
+   "set": {
+    "target_text": "Es útil conocer personas a las que les gusta ver la televisión en español",
+    "target1_audio_id": "ed8a7051-1628-4346-acd0-4694e284869c",
+    "target2_audio_id": "2b278585-4a26-438f-94c0-bcecaaceae1e",
+    "decomposition": [
+     {
+      "known": "it's useful",
+      "legoId": "S0028L01",
+      "target": "Es útil",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " conocer",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "to",
+      "legoId": "S0216L02",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " las",
+      "isGhost": true
+     },
+     {
+      "known": "who like watching television",
+      "legoId": "S0288L03",
+      "target": " que les gusta ver la televisión",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "in",
+      "legoId": "S0004L01",
+      "target": " en",
+      "isGhost": false
+     },
+     {
+      "known": "Spanish",
+      "legoId": "S0001L03",
+      "target": " español",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0286L01U14",
+   "set": {
+    "target_text": "Me gusta conocer personas a las que les gusta leer y aprender algo nuevo",
+    "target1_audio_id": "319300a1-e884-4bd6-95b2-eebc964486d4",
+    "target2_audio_id": "01e3830b-66ba-4d6b-8071-b11d88f3f1e4",
+    "decomposition": [
+     {
+      "known": "I like",
+      "legoId": "S0026L01",
+      "target": "Me gusta",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " conocer",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "who like",
+      "legoId": "S0286L01",
+      "target": " a las que les gusta",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to read",
+      "legoId": "S0035L02",
+      "target": " leer",
+      "isGhost": false
+     },
+     {
+      "known": "and",
+      "legoId": "S0015L03",
+      "target": " y",
+      "isGhost": false
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     },
+     {
+      "known": "something new",
+      "legoId": "S0227L02",
+      "target": " algo nuevo",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0102L01B04",
+   "set": {
+    "known_text": "We are doing well",
+    "known_audio_id": "5aed8df6-2b2d-44cc-9f08-e9ce4efda4d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0102L01U07",
+   "set": {
+    "known_text": "We are doing well and we want to keep learning",
+    "known_audio_id": "8e28bd50-928a-4635-87a8-a5ac20894528"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0287L02U04",
+   "set": {
+    "target_text": "¿Conoces personas a las que les gusta leer?",
+    "target1_audio_id": "ff32830b-07f7-4074-be3b-45ff76315fe0",
+    "target2_audio_id": "0f3c4d23-6d13-4691-a04d-3c546940a0c0",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿Conoces",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "to",
+      "legoId": "S0216L02",
+      "target": " a",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " las",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "to them",
+      "legoId": "S0287L02",
+      "target": " les",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gusta",
+      "isGhost": true
+     },
+     {
+      "known": "to read",
+      "legoId": "S0035L02",
+      "target": " leer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0286L01U03",
+   "set": {
+    "target_text": "Mi amigo conoce personas a las que les gusta practicar a menudo",
+    "target1_audio_id": "8cc8415a-5e9d-4acd-96a4-bdeddc973985",
+    "target2_audio_id": "ecd4bca9-ef8e-4731-a41c-547d0a41cc76",
+    "decomposition": [
+     {
+      "known": "my friend",
+      "legoId": "S0084L02",
+      "target": "Mi amigo",
+      "isGhost": false
+     },
+     {
+      "known": "she knows",
+      "legoId": "S0233L02",
+      "target": " conoce",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " personas",
+      "isGhost": true
+     },
+     {
+      "known": "who like",
+      "legoId": "S0286L01",
+      "target": " a las que les gusta",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to practise",
+      "legoId": "S0005L01",
+      "target": " practicar",
+      "isGhost": false
+     },
+     {
+      "known": "often",
+      "legoId": "S0137L02",
+      "target": " a menudo",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0495L01U06",
+   "set": {
+    "target_text": "es mejor hacerlo cuando estás listo",
+    "target1_audio_id": "79a61a22-2b4d-46df-958b-7be05f5bd6c2",
+    "target2_audio_id": "883bd51c-ff2e-4b01-a368-f009cc05babb",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "better",
+      "legoId": "S0029L01",
+      "target": " mejor",
+      "isGhost": false
+     },
+     {
+      "known": "manage it",
+      "legoId": "S0173L02",
+      "target": " hacerlo",
+      "isGhost": false
+     },
+     {
+      "known": "when it",
+      "legoId": "S0495L01",
+      "target": " cuando",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " estás",
+      "isGhost": true
+     },
+     {
+      "known": "ready",
+      "legoId": "S0088L01",
+      "target": " listo",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L01U05",
+   "set": {
+    "target_text": "Disfruto hacer algo nuevo cuando estoy intentando mejorar mi español",
+    "target1_audio_id": "51afd461-4395-4e7f-b77b-d7afbab7d884",
+    "target2_audio_id": "5be84c50-497d-4619-81d2-445d7fed2b89",
+    "decomposition": [
+     {
+      "known": "I enjoy",
+      "legoId": "S0206L01",
+      "target": "Disfruto",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to do",
+      "legoId": "S0167L02",
+      "target": " hacer",
+      "isGhost": false
+     },
+     {
+      "known": "something new",
+      "legoId": "S0111L03",
+      "target": " algo nuevo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " cuando",
+      "isGhost": true
+     },
+     {
+      "known": "I'm trying to",
+      "legoId": "S0002L02",
+      "target": " estoy intentando",
+      "isGhost": false
+     },
+     {
+      "known": "to improve",
+      "legoId": "S0044L03",
+      "target": " mejorar",
+      "isGhost": false
+     },
+     {
+      "known": "my",
+      "legoId": "S0197L01",
+      "target": " mi",
+      "isGhost": false
+     },
+     {
+      "known": "Spanish",
+      "legoId": "S0001L03",
+      "target": " español",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L01U01",
+   "set": {
+    "target_text": "Disfruto hacer algo interesante con ellos porque es bueno para nosotros",
+    "target1_audio_id": "9cb97e51-9b4b-4af6-9b35-a82a17a54d91",
+    "target2_audio_id": "19ea48fb-95ba-48f7-a790-bab47aab714b",
+    "decomposition": [
+     {
+      "known": "I enjoy",
+      "legoId": "S0206L01",
+      "target": "Disfruto",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to do",
+      "legoId": "S0167L02",
+      "target": " hacer",
+      "isGhost": false
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " algo",
+      "isGhost": false
+     },
+     {
+      "known": "interesting",
+      "legoId": "S0163L02",
+      "target": " interesante",
+      "isGhost": false
+     },
+     {
+      "known": "with them",
+      "legoId": "S0134L03",
+      "target": " con ellos",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " porque",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " es",
+      "isGhost": true
+     },
+     {
+      "known": "good",
+      "legoId": "S0047L02",
+      "target": " bueno",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " para",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " nosotros",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ]
+}
