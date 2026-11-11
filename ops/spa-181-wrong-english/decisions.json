@@ -1,0 +1,404 @@
+{
+ "note": "spa_for_eng #348 'wrong English' family, #176 proposal (d/dae31615, d/fa5aa0f9), applied by job #181 under Kai's rulings of 11 Nov 2026: A statement order + delete dupes; B fix English only with a precedent, else delete/rewrite; C native tense, same test; D plain rewrite or delete; E as proposed. Every row re-read live. S0597L01U06 held, S0664L01U04 left alone.",
+ "phrases": {
+  "S0024L02U01": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I can't explain what I want to say easily",
+   "why": "precedent S0012L04U08 can't <-> no puedo"
+  },
+  "S0038L02U01": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I've been learning more or less all day",
+   "why": "precedent S0038L01 \"I've been learning all day\" <-> llevo todo el día aprendiendo (no \"for\"); B02 more or less all day"
+  },
+  "S0038L02U02": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I've been learning Spanish more or less all day",
+   "why": "same precedent S0038L01/S0038L02B02"
+  },
+  "S0038L02U03": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I've been learning with you more or less all day",
+   "why": "same precedent S0038L01/S0038L02B02"
+  },
+  "S0106L03U02": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I think we need to work with another person",
+   "target": "Creo que necesitamos trabajar con otra persona",
+   "why": "'work speaking with another person' is not English (Spanish 'trabajar hablando' is odd but parseable)."
+  },
+  "S0106L03U04": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I want to work as often as possible",
+   "target": "Quiero trabajar lo más a menudo posible",
+   "why": "Same 'work speaking' garble."
+  },
+  "S0106L03U07": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I think it is useful to work with another person",
+   "target": "Creo que es útil trabajar con otra persona",
+   "why": "Same 'work speaking' garble."
+  },
+  "S0106L03U15": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I like to work with another person",
+   "target": "Me gusta trabajar con otra persona",
+   "why": "Same 'work speaking' garble."
+  },
+  "S0107L01U14": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "We were hoping to speak with another person",
+   "target": "Esperábamos hablar con otra persona",
+   "why": "'hoping to work speaking with another person' is garbled."
+  },
+  "S0107L02U09": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "We want to see what you are doing with another person",
+   "target": "Queremos ver lo que estás haciendo con otra persona",
+   "why": "'what you are doing speaking with another person' is ungainly English; Spanish is fine."
+  },
+  "S0122L04U02": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am very excited about what I am learning here now",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L04U04": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "My friend is very excited about what he is doing",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L04U06": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am very excited about everything I am learning at this moment",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L04U08": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "It is starting to get easier and I am excited about how it is going",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L04U09": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am excited about how it is going and I want to keep learning",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L05U05": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am excited about how it goes and I want to keep learning more",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0122L05U07": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "after the fix its Spanish is the same sentence as S0122L05U03 in the same basket (already \"excited about how it's going\"); deleted, basket keeps U12"
+  },
+  "S0122L05U13": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "It goes well and I am very excited about everything I am learning",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+  },
+  "S0133L02U16": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "no precedent for duration \"for more time\" <-> bare más tiempo (\"longer\" untaught till 155/275); deleted, basket keeps B3/U15"
+  },
+  "S0140L01U01": {
+   "family": "C tense",
+   "action": "del",
+   "why": "'what you try to show me' is not native English for an ongoing attempt.; fixed English would duplicate U09"
+  },
+  "S0140L01U02": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I know what you're trying to say",
+   "why": "'I know what you try to say' is not native English."
+  },
+  "S0140L01U03": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I know what you're trying to explain",
+   "why": "'what you try to explain' -> 'you're trying'."
+  },
+  "S0140L01U04": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I can see what you're trying to do",
+   "why": "'what you try to do' -> 'you're trying'."
+  },
+  "S0140L01U05": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I want to know what you're trying to do",
+   "why": "'what you try to do' -> 'you're trying'."
+  },
+  "S0140L01U06": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I enjoy what you're trying to show me",
+   "why": "'what you try to show me' -> 'you're trying' (habitual reading is possible but strained)."
+  },
+  "S0146L03U02": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "Since I started I have learned more",
+   "why": "\"have been learning\" would prompt llevo...aprendiendo (S0033/S0038); rewritten with taught \"I have learned\" <-> he aprendido (S0076L03)",
+   "target": "Desde que empecé he aprendido más"
+  },
+  "S0151L03U01": {
+   "family": "E commas/order",
+   "action": "upd",
+   "known": "That was not what I was hoping would happen here today",
+   "why": "'today here' is wrong English word order; Spanish fine"
+  },
+  "S0162L01B03": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I want to know what you think about that",
+   "why": "Embedded question with question word order ('know what do you think') is not native English"
+  },
+  "S0162L01B04": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "Can you tell me what you think about that?",
+   "why": "Embedded question with question word order is not native English"
+  },
+  "S0162L01B05": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I don't know what you think about that",
+   "why": "Embedded question with question word order is not native English"
+  },
+  "S0162L01B06": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I'd like to know what you think about that",
+   "why": "Embedded question with question word order is not native English"
+  },
+  "S0162L01U05": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "She wanted to know what you think about that before doing anything",
+   "why": "Embedded question with question word order is not native English"
+  },
+  "S0162L01U07": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I think it's very important to know what you think about that",
+   "why": "Embedded question with question word order is not native English"
+  },
+  "S0162L01U15": {
+   "family": "D garbled",
+   "action": "del",
+   "why": "\"that thing\" <-> eso: thing <-> cosa untaught before 162 and invites esa cosa; no easy rewrite keeps the LEGO; deleted"
+  },
+  "S0181L01U03": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "no precedent for \"to work\" <-> al trabajo before seed 181 (128 taught go to work <-> irse a trabajar, which conflicts); deleted"
+  },
+  "S0181L01U06": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "same: no precedent for to work <-> al trabajo; deleted"
+  },
+  "S0181L02U01": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "same: no precedent for to work <-> al trabajo; deleted"
+  },
+  "S0181L03U13": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "same; and S0181L04U04 already says this sentence (\"I have to take my mother to the doctor before going to work\"); deleted"
+  },
+  "S0190L01U13": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "What I do is try to listen very carefully before I say anything",
+   "target": "Lo que hago es intentar escuchar con mucho cuidado antes de decir algo",
+   "why": "'What I do so far' is awkward in both languages"
+  },
+  "S0203L03B05": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "If I asked you to help me",
+   "why": "'If I asked you that you would help me' is not English"
+  },
+  "S0213L03U05": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "It doesn't seem clear to anyone what is happening here",
+   "why": "'It's not clear what is happening here for anyone' is not natural English and drops 'seem'"
+  },
+  "S0216L03U05": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I can wait a few minutes for you before I have to leave",
+   "why": "\"a few minutes\" <-> unos minutos taught (S0155L02, no \"for\"); natural order"
+  },
+  "S0217L03U20": {
+   "family": "E commas/order",
+   "action": "upd",
+   "known": "I had a glass very quickly in the morning",
+   "why": "'a very quick glass' is odd English; 'muy rápido' is the adverb"
+  },
+  "S0251L01U02": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I told them I don't want to find out until after we finish all the work",
+   "why": "'after we are finished all the work' is not standard English"
+  },
+  "S0255L02B04": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I want to know when you think you'll be ready to leave",
+   "why": "embedded question in question order ('know when do you think')"
+  },
+  "S0255L02B07": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "Can you tell me when you think you'll be ready to leave?",
+   "why": "embedded question in question order"
+  },
+  "S0255L02U02": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; live exact duplicate of B04"
+  },
+  "S0255L02U05": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; live exact duplicate of B07"
+  },
+  "S0255L02U06": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I'd like to know when you think you'll be ready to leave",
+   "why": "embedded question in question order"
+  },
+  "S0255L02U09": {
+   "family": "A question order",
+   "action": "upd",
+   "known": "I need to know when you think you'll be ready to leave",
+   "why": "embedded question in question order"
+  },
+  "S0258L01B04": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; fixed English would duplicate U03, which already says it correctly"
+  },
+  "S0258L01B05": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; fixed English would duplicate U04"
+  },
+  "S0258L01B06": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; fixed English would duplicate U05"
+  },
+  "S0258L01B07": {
+   "family": "A question order",
+   "action": "del",
+   "why": "embedded question in question order; fixed English would duplicate U06"
+  },
+  "S0262L01B01": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "Who was it?",
+   "why": "'Who was?' is not an English sentence"
+  },
+  "S0289L01U04": {
+   "family": "D garbled",
+   "action": "del",
+   "why": "\"it is going to be\" <-> va a ser is taught (210, 223), so \"going to be\" would prompt va a ser not va a pasar; deleted"
+  },
+  "S0291L02U10": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "So I hope to finish soon to be able to speak better soon",
+   "why": "'so I can be able to' is not English"
+  },
+  "S0456L01U06": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "is this likely?",
+   "why": "'this thing probable'"
+  },
+  "S0477L03U01": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "she knew from the second day",
+   "why": "\"had known\" untaught as sabía and clashes with si hubiera sabido (152); rewritten with taught from <-> desde (S0173L03U13 from tomorrow)"
+  },
+  "S0512L03B03": {
+   "family": "B copied small word",
+   "action": "del",
+   "why": "no precedent for \"for a moment\" <-> bare un momento (taught as Por un momento at S0127L01B05, a clash); Spanish odd too (Deborah); deleted, builds keep 3"
+  },
+  "S0548L01B04": {
+   "family": "C tense",
+   "action": "del",
+   "why": "\"have been feeling\" untaught; since-the-second-day + has been <-> ha estado taught at 477, so the prompt is not deterministic; deleted, builds keep 3"
+  },
+  "S0567L02B02": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "we'd like to spend time outdoors as much as possible",
+   "why": "'we'd like spending' is not English"
+  },
+  "S0584L01B01": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "to wake up",
+   "why": "B01 = the LEGO itself, no new words (proposal added \"early\"; not needed)"
+  },
+  "S0624L01U05": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "I knew that would be great for her",
+   "why": "untranslated Spanish left in the English"
+  },
+  "S0643L01U01": {
+   "family": "E commas/order",
+   "action": "upd",
+   "known": "do you want, sir?",
+   "why": "without the comma the voice reads 'sir' as the object"
+  },
+  "S0643L01U02": {
+   "family": "E commas/order",
+   "action": "upd",
+   "known": "do you want, madam?",
+   "why": "same"
+  },
+  "S0644L01U06": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "anyone could say that",
+   "why": "'whoever could say that' is not a sentence"
+  },
+  "S0645L01U05": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "anyone could help you, madam",
+   "why": "'whoever could help you' is not a sentence"
+  }
+ }
+}
