@@ -1,0 +1,2118 @@
+{
+ "course": "spa_for_eng",
+ "job": "#170",
+ "source": "#165·AH v2 draft d/f07233a7 + d/6350356e, independently checked row by row by #170 (11 Nov)",
+ "rows": [
+  {
+   "stage": "v2",
+   "lego_id": "S0085L01",
+   "action": "upd",
+   "known": "I know people who don't speak Spanish",
+   "target": "Conozco a personas que no hablan español",
+   "role": "use",
+   "why": "Negated 'no conozco a personas que' needs subjunctive hablen, taught only at s297. Positive frame takes the ordinary form. No taught trigger fits, so one phrase.",
+   "phrase_id": "S0085L01U02",
+   "before": {
+    "known": "I don't know people who speak Spanish",
+    "target": "No conozco a personas que hablan español",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0087L01",
+   "action": "upd",
+   "known": "They are people who I don't know yet",
+   "target": "Son personas que no conozco todavía",
+   "role": "use",
+   "why": "'No son personas que' needs a subjunctive (conozca, never taught). #148's 'Son personas que no conozco' already exists as U01, B05 and U09, so 'todavía' (s60) makes it a new phrase.",
+   "phrase_id": "S0087L01U04",
+   "before": {
+    "known": "They are not people who I know",
+    "target": "No son personas que conozco",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0087L01",
+   "action": "upd",
+   "known": "Unfortunately they are people who I don't know very well",
+   "target": "Desafortunadamente son personas que no conozco muy bien",
+   "role": "use",
+   "why": "Same negated-antecedent problem; move the 'no' inside the relative clause.",
+   "phrase_id": "S0087L01U08",
+   "before": {
+    "known": "Unfortunately they are not people who I know very well",
+    "target": "Desafortunadamente no son personas que conozco muy bien",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0126L05",
+   "action": "upd",
+   "known": "Learning is changing the shape of my brain and I like it",
+   "target": "Aprender está cambiando la forma de mi cerebro y me gusta",
+   "role": "use",
+   "why": "'Me gusta que' needs esté (taught s456). No subjunctive taught by s126 fits a phrase that has to contain 'forma', so reword only.",
+   "phrase_id": "S0126L05U16",
+   "before": {
+    "known": "I like that learning is changing the shape of my brain",
+    "target": "Me gusta que aprender está cambiando la forma de mi cerebro",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0126L05",
+   "action": "upd",
+   "known": "Practising is changing the shape of my brain and I like it",
+   "target": "Practicar está cambiando la forma de mi cerebro y me gusta",
+   "role": "use",
+   "why": "As U16.",
+   "phrase_id": "S0126L05U22",
+   "before": {
+    "known": "I like that practicing is changing the shape of my brain",
+    "target": "Me gusta que practicar está cambiando la forma de mi cerebro",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0128L03",
+   "action": "upd",
+   "known": "I want to find someone to practise Spanish with",
+   "target": "Quiero encontrar a alguien para practicar español conmigo",
+   "role": "use",
+   "why": "Someone still being looked for needs quiera, which is never taught; 'para + infinitive' avoids the clause (the #348 wording).",
+   "phrase_id": "S0128L03U06",
+   "before": {
+    "known": "I want to find someone who wants to practise Spanish with me",
+    "target": "Quiero encontrar a alguien que quiere practicar español conmigo",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0128L03",
+   "action": "upd",
+   "known": "There is someone here who is very good at Spanish",
+   "target": "Hay alguien aquí que es muy bueno en español",
+   "role": "use",
+   "why": "Needs sea (s330) for a person still being looked for. Someone who is actually here takes the indicative (hay s34, aquí). This is a rewrite rather than #148's delete; conoce would be untaught until s233.",
+   "phrase_id": "S0128L03U10",
+   "before": {
+    "known": "He wants to find someone who is very good at Spanish",
+    "target": "Él quiere encontrar a alguien que es muy bueno en español",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0128L03",
+   "action": "upd",
+   "known": "I want to practise with someone I know",
+   "target": "Quiero practicar con alguien que conozco",
+   "role": "use",
+   "why": "Needs quiera, never taught. 'alguien que conozco' (B05's chunk) is a known person, so it takes the indicative. This is a rewrite rather than a delete.",
+   "phrase_id": "S0128L03U11",
+   "before": {
+    "known": "I want to practise with someone who wants to learn Spanish",
+    "target": "Quiero practicar con alguien que quiere aprender español",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0132L02",
+   "action": "upd",
+   "known": "It is less exciting when no one wants to say anything interesting",
+   "target": "Es menos emocionante cuando nadie quiere decir nada interesante",
+   "role": "use",
+   "why": "'alguien que quiere' (unknown person) needs quiera, never taught. 'nadie quiere' takes the indicative (nadie s71, nada s35). This is a rewrite rather than a delete.",
+   "phrase_id": "S0132L02U11",
+   "before": {
+    "known": "It is less exciting when you are not talking with someone who wants to say something interesting",
+    "target": "Es menos emocionante cuando no estás hablando con alguien que quiere decir algo interesante",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0156L02",
+   "action": "upd",
+   "known": "A friend wanted to help me with this, and that was a surprise",
+   "target": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+   "role": "use",
+   "why": "'Me sorprende que' needs quisiera (s317). The s130 chunk 'eso fue una sorpresa' keeps the meaning in the ordinary form. This is a rewrite rather than a delete.",
+   "phrase_id": "S0156L02U05",
+   "before": {
+    "known": "It surprises me that a friend wanted to help me with this",
+    "target": "Me sorprende que un amigo quería ayudarme con esto",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0157L02",
+   "action": "upd",
+   "known": "So I hope that next month I'll be able to speak better",
+   "target": "Así que espero que el mes que viene pueda hablar mejor",
+   "role": "use",
+   "why": "KEEPS THE TRIGGER: 'así que espero que' (LEGO s149) + pueda (s7, 'todo lo que pueda' = I can).",
+   "phrase_id": "S0157L02U11",
+   "before": {
+    "known": "So I hope that next month I'm going to be able to speak better",
+    "target": "Así que espero que el mes que viene voy a poder hablar mejor",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0161L02",
+   "action": "upd",
+   "known": "I wouldn't like to guess, can you give me the answer?",
+   "target": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+   "role": "use",
+   "why": "'quiero que puedes' needs puedas (s292); dijeras (s170) is also too late for s161. Reword only.",
+   "phrase_id": "S0161L02U06",
+   "before": {
+    "known": "I wouldn't like to guess, I want you to be able to give me the answer",
+    "target": "No me gustaría adivinar quiero que puedes darme la respuesta",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0169L02",
+   "action": "upd",
+   "known": "I think this is what you want me to do and I've already started",
+   "target": "Creo que esto es lo que quieres que haga y ya empecé",
+   "role": "use",
+   "why": "'Espero que esto es' needs sea (s330). Reword with creo que.",
+   "phrase_id": "S0169L02U13",
+   "before": {
+    "known": "I hope this is what you want me to do because I've already started",
+    "target": "Espero que esto es lo que quieres que haga porque ya empecé",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0187L02",
+   "action": "upd",
+   "known": "So far I don't think I have to change anything",
+   "target": "Hasta ahora no creo que tenga que cambiar nada",
+   "role": "use",
+   "why": "KEEPS THE TRIGGER: 'no creo que' + tenga (s25, 'antes de que tenga que irme'). necesitemos is never taught, so 'need' becomes 'have to'.",
+   "phrase_id": "S0187L02U05",
+   "before": {
+    "known": "So far I do not think we need to change anything",
+    "target": "Hasta ahora no creo que necesitamos cambiar nada",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0187L02",
+   "action": "new",
+   "known": "So far I think we don't need to change anything",
+   "target": "Hasta ahora creo que no necesitamos cambiar nada",
+   "role": "use",
+   "why": "SPLIT: the ordinary-form half of the old U05 (the #148 wording)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0188L02",
+   "action": "upd",
+   "known": "I am very happy so far so I think I don't need to change anything right now",
+   "target": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+   "role": "use",
+   "why": "'no creo que necesito' needs necesite (s326). Ordinary form here, because s187's U05 now carries the 'no creo que tenga que' version and a second near-twin one seed later adds nothing.",
+   "phrase_id": "S0188L02U02",
+   "before": {
+    "known": "I am very happy so far so I do not think I need to change anything right now",
+    "target": "Estoy muy contento hasta ahora así que no creo que necesito cambiar nada ahora mismo",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0189L01",
+   "action": "upd",
+   "known": "I'm not very sure if that is a good idea when we still have so much to do today",
+   "target": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+   "role": "use",
+   "why": "'seguro de que' needs sea (s330). 'no estoy seguro de si' is seed 10's own frame and takes the ordinary form; it is closer than #148's 'No sé si'.",
+   "phrase_id": "S0189L01U07",
+   "before": {
+    "known": "I am not very sure that is a good idea when we still have so much to do today",
+    "target": "No estoy muy seguro de que eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0200L02",
+   "action": "upd",
+   "known": "They want to know what you need to do this",
+   "target": "Quieren saber lo que necesitas para hacer esto",
+   "role": "use",
+   "why": "'para que va a funcionar' is ungrammatical and funcione is never taught (the #348 wording).",
+   "phrase_id": "S0200L02U08",
+   "before": {
+    "known": "They want to know what you need to make this work",
+    "target": "Quieren saber lo que necesitas para que va a funcionar",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0200L04",
+   "action": "upd",
+   "known": "They want us to finish everything as soon as possible",
+   "target": "Quieren que terminemos todo lo antes posible",
+   "role": "use",
+   "why": "KEEPS A TRIGGER: 'Necesitamos que terminemos' (we need us) is wrong. 'quieren que' (s200 L02) + the LEGO, as #348 ruled.",
+   "phrase_id": "S0200L04U10",
+   "before": {
+    "known": "We need all of us to finish this as soon as possible",
+    "target": "Necesitamos que terminemos todo lo antes posible",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0206L01",
+   "action": "upd",
+   "known": "I enjoy doing this and I am very happy that you're doing it with me",
+   "target": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+   "role": "use",
+   "why": "KEEPS THE TRIGGER: 'contento de que' + estés (s129, the seed's own 'contento de que lo estés haciendo'). estemos is not taught until s522, so the person changes.",
+   "phrase_id": "S0206L01U02",
+   "before": {
+    "known": "I enjoy doing this and I am very happy that we are doing this together",
+    "target": "Disfruto haciendo esto y estoy muy contento de que estamos haciendo esto juntos",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0206L01",
+   "action": "new",
+   "known": "I enjoy doing this and I am very happy because we are doing it together",
+   "target": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+   "role": "use",
+   "why": "SPLIT: the ordinary-form half of the old U02 (#148's porque)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0212L02",
+   "action": "upd",
+   "known": "He could ask for something different if he wants to",
+   "target": "Podría pedir algo diferente si quiere",
+   "role": "use",
+   "why": "'si quería' should be 'si quisiera' (s317). The present 'si quiere' is natural with podría and keeps the if-clause, which #148 would have dropped.",
+   "phrase_id": "S0212L02U15",
+   "before": {
+    "known": "He could ask for something different if he wanted to",
+    "target": "Podría pedir algo diferente si quería",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0249L02",
+   "action": "upd",
+   "known": "I would like you to help me before you go if possible",
+   "target": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+   "role": "use",
+   "why": "'me gustaría que me ayudes' becomes ayudaras (s203). Kai, 11 Nov: accept 'me ayudaras antes de que te vayas' as it is for now; Deborah was asked, and Kai will report back if she disagrees.",
+   "phrase_id": "S0249L02U04",
+   "before": {
+    "known": "I would like you to help me before you go if possible",
+    "target": "Me gustaría que me ayudes antes de que te vayas si es posible",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0252L01",
+   "action": "upd",
+   "known": "I am not sure if you will be ready in time but we must wait",
+   "target": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+   "role": "use",
+   "why": "'seguro de que estarás' is the wrong mood. 'de si' is seed 10's frame. The LEGO is estarás, so a subjunctive version cannot hold it.",
+   "phrase_id": "S0252L01U04",
+   "before": {
+    "known": "I am not sure you will be ready in time but we must wait",
+    "target": "No estoy seguro de que estarás listo a tiempo pero tenemos que esperar",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0298L02",
+   "action": "upd",
+   "known": "I feel like I have nothing left to say about this",
+   "target": "Siento que no me queda nada que decir sobre esto",
+   "role": "use",
+   "why": "'como si' needs quedara, never taught. 'siento que' takes the ordinary form.",
+   "phrase_id": "S0298L02U05",
+   "before": {
+    "known": "I feel like I have nothing left to say about this",
+    "target": "Siento como si no me queda nada que decir sobre esto",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0318L01",
+   "action": "upd",
+   "known": "I hope she can come on Monday",
+   "target": "espero que pueda venir el lunes",
+   "role": "use",
+   "why": "TRIGGER: espero que. 'pueda si quisiera' mixed present and past subjunctive. A new trigger gives the basket variety.",
+   "phrase_id": "S0318L01U04",
+   "before": {
+    "known": "I don't think she could if she wanted to",
+    "target": "no creo que pueda si quisiera",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0318L01",
+   "action": "new",
+   "known": "I'm not sure she can help you today",
+   "target": "no estoy seguro de que pueda ayudarte hoy",
+   "role": "use",
+   "why": "TRIGGER: no estoy seguro de que (s10 + que)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0318L01",
+   "action": "new",
+   "known": "I want her to be able to speak with you",
+   "target": "quiero que pueda hablar contigo",
+   "role": "use",
+   "why": "TRIGGER: quiero que (s15)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0318L01",
+   "action": "new",
+   "known": "It's interesting that she can speak Spanish so well",
+   "target": "es interesante que pueda hablar español tan bien",
+   "role": "use",
+   "why": "TRIGGER: es interesante que (s120 frame)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0358L01",
+   "action": "upd",
+   "known": "I didn't think she could reach the top",
+   "target": "no pensé que pudiera llegar a la cima",
+   "role": "use",
+   "why": "KEEPS THE TRIGGER: 'no pensé que' + pudiera (s225 'si pudiera'). It is the s387 'no pensé que tuviera razón' frame, and the English is unchanged.",
+   "phrase_id": "S0358L01U04",
+   "before": {
+    "known": "I did not think she could reach the top",
+    "target": "no pensé que podía llegar a la cima",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0358L01",
+   "action": "new",
+   "known": "I thought she couldn't reach the top",
+   "target": "pensé que no podía llegar a la cima",
+   "role": "use",
+   "why": "SPLIT: the ordinary-form half (the #148 wording)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0378L01",
+   "action": "upd",
+   "known": "I thought it wasn't enough",
+   "target": "pensé que no era suficiente",
+   "role": "use",
+   "why": "'no pensé que era' needs fuera, never taught. 'suficiente' cannot sit naturally with pudiera or tuviera, so reword only.",
+   "phrase_id": "S0378L01U04",
+   "before": {
+    "known": "I didn't think it was enough",
+    "target": "no pensé que era suficiente",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0406L02",
+   "action": "upd",
+   "known": "I'm not sure that it's a good idea",
+   "target": "no estoy seguro de que sea una buena idea",
+   "role": "use",
+   "why": "KEEPS THE TRIGGER: funcione is never taught, so use sea (s330) after 'no estoy seguro de que'. The phrase still contains the LEGO.",
+   "phrase_id": "S0406L02U03",
+   "before": {
+    "known": "I'm not sure it will work",
+    "target": "no estoy seguro de que va a funcionar",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0406L02",
+   "action": "new",
+   "known": "I'm sure it's going to work",
+   "target": "estoy seguro de que va a funcionar",
+   "role": "use",
+   "why": "SPLIT: the affirmative ordinary-form half (the #148 wording)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0412L04",
+   "action": "upd",
+   "known": "I thought we couldn't stay",
+   "target": "pensé que no podíamos quedarnos",
+   "role": "use",
+   "why": "'no pensé que' + indicative is the wrong mood; pudiéramos is never taught and would lose the LEGO 'no podíamos'.",
+   "phrase_id": "S0412L04U05",
+   "before": {
+    "known": "I didn't think we could stay",
+    "target": "no pensé que podíamos quedarnos",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0470L03",
+   "action": "upd",
+   "known": "to talk before we stop",
+   "target": "hablar antes de que paremos",
+   "role": "build",
+   "why": "P3: the bare-LEGO build gets one plug-in. The trigger stays inside the LEGO.",
+   "phrase_id": "S0470L03B01",
+   "before": {
+    "known": "before we stop",
+    "target": "antes de que paremos",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0470L03",
+   "action": "upd",
+   "known": "she's leaving before we stop",
+   "target": "ella se va antes de que paremos",
+   "role": "use",
+   "why": "'se fue antes de que paremos' mixed past and present subjunctive. The present frame keeps the LEGO, whose own 'antes de que' is the trigger.",
+   "phrase_id": "S0470L03U01",
+   "before": {
+    "known": "she left before we stop",
+    "target": "ella se fue antes de que paremos",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0470L03",
+   "action": "new",
+   "known": "I have to call you before we stop",
+   "target": "tengo que llamarte antes de que paremos",
+   "role": "use",
+   "why": "Variety (llamarte s294)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "unless they're lucky today",
+   "target": "a menos que tengan suerte hoy",
+   "role": "build",
+   "why": "TRIGGER: a menos que. Replaces the bare LEGO; this was #159's NEW-B1 text.",
+   "phrase_id": "S0532L02B01",
+   "before": {
+    "known": "they're lucky",
+    "target": "tengan suerte",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "I hope they're lucky",
+   "target": "espero que tengan suerte",
+   "role": "build",
+   "why": "TRIGGER: espero que (as #159). The live 'estoy seguro de que tienen' lacked the LEGO.",
+   "phrase_id": "S0532L02B02",
+   "before": {
+    "known": "I'm sure that they're lucky",
+    "target": "estoy seguro de que tienen suerte",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "I don't think they're lucky",
+   "target": "no creo que tengan suerte",
+   "role": "build",
+   "why": "TRIGGER: no creo que. The live 'pensaban que tenían' lacked the LEGO. This is a rewrite rather than #159's delete.",
+   "phrase_id": "S0532L02B03",
+   "before": {
+    "known": "they thought that they're lucky",
+    "target": "pensaban que tenían suerte",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "It's not possible to win unless they're lucky",
+   "target": "no es posible ganar a menos que tengan suerte",
+   "role": "use",
+   "why": "TRIGGER: a menos que. Replaces the fragment USE (P7).",
+   "phrase_id": "S0532L02U01",
+   "before": {
+    "known": "unless they're lucky",
+    "target": "a menos que tengan suerte",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "It's not going to work unless they're lucky",
+   "target": "no va a funcionar a menos que tengan suerte",
+   "role": "use",
+   "why": "TRIGGER: a menos que (as #159).",
+   "phrase_id": "S0532L02U02",
+   "before": {
+    "known": "they're lucky here",
+    "target": "tienen suerte aquí",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "I want them to be lucky tonight",
+   "target": "quiero que tengan suerte esta noche",
+   "role": "use",
+   "why": "TRIGGER: quiero que. #159 had 'espero que', which would sit too close to B02.",
+   "phrase_id": "S0532L02U03",
+   "before": {
+    "known": "they're lucky now",
+    "target": "tienen suerte ahora",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "upd",
+   "known": "It's unusual that they're lucky with everything",
+   "target": "es raro que tengan suerte con todo",
+   "role": "use",
+   "why": "TRIGGER: es raro que (s121 frame, as #159).",
+   "phrase_id": "S0532L02U04",
+   "before": {
+    "known": "they're lucky with everything",
+    "target": "tienen suerte con todo",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "action": "new",
+   "known": "I don't think they'll be lucky this time",
+   "target": "no creo que tengan suerte esta vez",
+   "role": "use",
+   "why": "TRIGGER: no creo que (the s318 frame)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "upd",
+   "known": "I'd like them not to play music",
+   "target": "me gustaría que no pusieran música",
+   "role": "build",
+   "why": "TRIGGER: me gustaría que (s170). Replaces the bare LEGO.",
+   "phrase_id": "S0557L02B01",
+   "before": {
+    "known": "they wouldn't play",
+    "target": "no pusieran música",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "upd",
+   "known": "I wish they wouldn't play music here",
+   "target": "ojalá no pusieran música aquí",
+   "role": "build",
+   "why": "TRIGGER: ojalá. The live row had no trigger; this avoids duplicating U03.",
+   "phrase_id": "S0557L02B02",
+   "before": {
+    "known": "they wouldn't play late at night",
+    "target": "no pusieran música tarde por la noche",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "upd",
+   "known": "it would be better if they didn't play music",
+   "target": "sería mejor si no pusieran música",
+   "role": "build",
+   "why": "TRIGGER: si (sería mejor s401). Replaces the ungrammatical 'por favor, no pusieran música'.",
+   "phrase_id": "S0557L02B03",
+   "before": {
+    "known": "please, they wouldn't play",
+    "target": "por favor, no pusieran música",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "upd",
+   "known": "I wish they wouldn't play music",
+   "target": "ojalá no pusieran música",
+   "role": "use",
+   "why": "The English was missing 'music'; the Spanish is unchanged.",
+   "phrase_id": "S0557L02U01",
+   "before": {
+    "known": "I wish they wouldn't play",
+    "target": "ojalá no pusieran música",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "upd",
+   "known": "They play music in the office, but I wish they wouldn't play music so late",
+   "target": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+   "role": "use",
+   "why": "P17: 'no la pusieran' breaks up the LEGO 'no pusieran música'. This keeps the whole LEGO and the ojalá trigger (tan s129, tarde s16).",
+   "phrase_id": "S0557L02U04",
+   "before": {
+    "known": "They play music in the office, but I wish they wouldn't play it late at night",
+    "target": "ponen música en la oficina, pero ojalá no la pusieran tarde por la noche",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "new",
+   "known": "I wanted them not to play music late at night",
+   "target": "quería que no pusieran música tarde por la noche",
+   "role": "use",
+   "why": "TRIGGER: quería que (s204)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L02",
+   "action": "new",
+   "known": "I told them not to play music in the office",
+   "target": "les dije que no pusieran música en la oficina",
+   "role": "use",
+   "why": "TRIGGER: dije que, in its 'told them not to' sense (les s286, dije s295)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L03",
+   "action": "upd",
+   "known": "I'd like them not to play such loud music",
+   "target": "me gustaría que no pusieran música tan alta",
+   "role": "build",
+   "why": "TRIGGER: me gustaría que. Replaces 'tenía razón que no pusieran', which had no trigger.",
+   "phrase_id": "S0557L03B02",
+   "before": {
+    "known": "she was right that they wouldn't play such loud music",
+    "target": "ella tenía razón que no pusieran música tan alta",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L03",
+   "action": "upd",
+   "known": "I don't like it when they play such loud music",
+   "target": "no me gusta cuando ponen música tan alta",
+   "role": "build",
+   "why": "'me encanta que no pusieran' mixed moods. This build is in the ordinary form, 'ponen' (s556).",
+   "phrase_id": "S0557L03B03",
+   "before": {
+    "known": "I love that they wouldn't play such loud music",
+    "target": "me encanta que no pusieran música tan alta",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0557L03",
+   "action": "upd",
+   "known": "I wish they wouldn't play such loud music in the office",
+   "target": "ojalá no pusieran música tan alta en la oficina",
+   "role": "use",
+   "why": "TRIGGER: ojalá. The bare version was #148's knock-on; 'en la oficina' avoids duplicating U01.",
+   "phrase_id": "S0557L03U03",
+   "before": {
+    "known": "they wouldn't play such loud music",
+    "target": "no pusieran música tan alta",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0558L01",
+   "action": "upd",
+   "known": "I wish they wouldn't play such loud music, it's so late at night",
+   "target": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+   "role": "build",
+   "why": "TRIGGER: ojalá. The live 'y no pusieran' had no trigger.",
+   "phrase_id": "S0558L01B02",
+   "before": {
+    "known": "it's so late at night and they wouldn't play such loud music",
+    "target": "es tan tarde por la noche y no pusieran música tan alta",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0558L01",
+   "action": "upd",
+   "known": "it's so late at night, do you want to stop?",
+   "target": "es tan tarde por la noche, ¿quieres parar?",
+   "role": "build",
+   "why": "Not in #348's list: 'ojalá es tan tarde por la noche antes de que paremos' puts the indicative after ojalá and makes no sense. This is an ordinary-form build (parar s67).",
+   "phrase_id": "S0558L01B03",
+   "before": {
+    "known": "I wish it's so late at night before we stop",
+    "target": "ojalá es tan tarde por la noche antes de que paremos",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "upd",
+   "known": "I hope we meet soon",
+   "target": "espero que nos veamos pronto",
+   "role": "build",
+   "why": "TRIGGER: espero que. Replaces the bare LEGO.",
+   "phrase_id": "S0568L04B01",
+   "before": {
+    "known": "that we meet",
+    "target": "que nos veamos",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "upd",
+   "known": "it's important that we meet before Thursday",
+   "target": "es importante que nos veamos antes del jueves",
+   "role": "build",
+   "why": "TRIGGER: es importante que. 'estoy seguro de que' needs the ordinary form; vemos is not taught until s619.",
+   "phrase_id": "S0568L04B02",
+   "before": {
+    "known": "I'm sure that we meet before Thursday",
+    "target": "estoy seguro de que nos veamos antes del jueves",
+    "role": "build"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "upd",
+   "known": "I'll call you before we meet",
+   "target": "te llamaré antes de que nos veamos",
+   "role": "use",
+   "why": "TRIGGER: antes de que. Replaces the fragment 'la próxima vez que nos veamos', which duplicated U01 (P7).",
+   "phrase_id": "S0568L04U03",
+   "before": {
+    "known": "next time that we meet",
+    "target": "la próxima vez que nos veamos",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "upd",
+   "known": "I want us to meet before Thursday",
+   "target": "quiero que nos veamos antes del jueves",
+   "role": "use",
+   "why": "TRIGGER: quiero que. Replaces the fragment 'que nos veamos antes'.",
+   "phrase_id": "S0568L04U04",
+   "before": {
+    "known": "that we meet before",
+    "target": "que nos veamos antes",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "upd",
+   "known": "I'm not going to say anything until we meet",
+   "target": "no voy a decir nada hasta que nos veamos",
+   "role": "use",
+   "why": "TRIGGER: hasta que (s396). Replaces 'que nos veamos para todos', which had no trigger and no sense.",
+   "phrase_id": "S0568L04U05",
+   "before": {
+    "known": "that we meet for everyone",
+    "target": "que nos veamos para todos",
+    "role": "use"
+   }
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "new",
+   "known": "I love that we meet so often",
+   "target": "me encanta que nos veamos tan a menudo",
+   "role": "use",
+   "why": "TRIGGER: me encanta que (s491)."
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "action": "new",
+   "known": "Unless we meet tomorrow, I'll call you",
+   "target": "a menos que nos veamos mañana, te llamaré",
+   "role": "use",
+   "why": "TRIGGER: a menos que (s532)."
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0071L02",
+   "phrase_id": "S0071L02B01",
+   "action": "upd",
+   "before": {
+    "known": "Heard the truth",
+    "target": "Oyera la verdad",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger = the seed's own 'dejar que' under a past main verb",
+   "known": "I didn't want to let him hear the truth",
+   "target": "No quería dejar que oyera la verdad",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0119L01",
+   "phrase_id": "S0119L01B01",
+   "action": "upd",
+   "before": {
+    "known": "You leave",
+    "target": "Te vayas",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger no quiero que (U05 is the longer 'todavía' version)",
+   "known": "I don't want you to leave",
+   "target": "No quiero que te vayas",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0120L03",
+   "phrase_id": "S0120L03B01",
+   "action": "upd",
+   "before": {
+    "known": "You like",
+    "target": "Te guste",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger no creo que (s47)",
+   "known": "I don't think you like it",
+   "target": "No creo que te guste",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0120L03",
+   "phrase_id": "S0120L03B02",
+   "action": "upd",
+   "before": {
+    "known": "That you like",
+    "target": "Que te guste",
+    "role": "build"
+   },
+   "why": "bare 'que te guste' fragment; trigger quiero que (s15)",
+   "known": "I want you to like it",
+   "target": "Quiero que te guste",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0121L02",
+   "phrase_id": "S0121L02B01",
+   "action": "upd",
+   "before": {
+    "known": "That you don't like",
+    "target": "Que no te guste",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger es interesante que (s120); B03 already carries es raro que",
+   "known": "It's interesting that you don't like it",
+   "target": "Es interesante que no te guste",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0121L02",
+   "phrase_id": "S0121L02B02",
+   "action": "del",
+   "before": {
+    "known": "That you do not like",
+    "target": "Que no te guste",
+    "role": "build"
+   },
+   "why": "bare duplicate of B01 ('That you do not like'); 3 builds remain"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0129L04",
+   "phrase_id": "S0129L04B02",
+   "action": "upd",
+   "before": {
+    "known": "That you are",
+    "target": "Que estés",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger quiero que",
+   "known": "I want you to be here",
+   "target": "Quiero que estés aquí",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0129L04",
+   "phrase_id": "S0129L04B04",
+   "action": "upd",
+   "before": {
+    "known": "That you are here",
+    "target": "Que estés aquí",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger contento de que (the seed's frame)",
+   "known": "I'm happy that you're here",
+   "target": "Estoy contento de que estés aquí",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0129L04",
+   "phrase_id": "S0129L04B05",
+   "action": "upd",
+   "before": {
+    "known": "That you are doing it",
+    "target": "Que lo estés haciendo",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger tan contento de que (the seed)",
+   "known": "I'm so happy that you're doing it",
+   "target": "Estoy tan contento de que lo estés haciendo",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0149L04",
+   "phrase_id": "S0149L04B01",
+   "action": "upd",
+   "before": {
+    "known": "You finish",
+    "target": "Termines",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger cuando + future reference (as U02/U04)",
+   "known": "When you finish",
+   "target": "Cuando termines",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0169L01",
+   "phrase_id": "S0169L01B03",
+   "action": "upd",
+   "before": {
+    "known": "that I do",
+    "target": "Que haga",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger quieres que (s169 L02)",
+   "known": "Do you want me to do something?",
+   "target": "¿Quieres que haga algo?",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0170L01",
+   "phrase_id": "S0170L01B02",
+   "action": "upd",
+   "before": {
+    "known": "That you would tell me",
+    "target": "Que me dijeras",
+    "role": "build"
+   },
+   "why": "bare 'que me dijeras'; trigger esperaba que (s151)",
+   "known": "I was expecting you to tell me",
+   "target": "Esperaba que me dijeras",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0200L04",
+   "phrase_id": "S0200L04B01",
+   "action": "upd",
+   "before": {
+    "known": "That we finish everything",
+    "target": "Que terminemos todo",
+    "role": "build"
+   },
+   "why": "bare 'que terminemos todo'; trigger espero que (s149)",
+   "known": "I hope we finish everything",
+   "target": "Espero que terminemos todo",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B01",
+   "action": "upd",
+   "before": {
+    "known": "That you would help me",
+    "target": "Que me ayudaras",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger quería que (s204 frame; quería s?)",
+   "known": "I wanted you to help me",
+   "target": "Quería que me ayudaras",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B03",
+   "action": "upd",
+   "before": {
+    "known": "That you would help me with this",
+    "target": "Que me ayudaras con esto",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger si te pidiera que (the seed)",
+   "known": "If I asked you to help me with this",
+   "target": "Si te pidiera que me ayudaras con esto",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B04",
+   "action": "upd",
+   "before": {
+    "known": "That you would help me to understand",
+    "target": "Que me ayudaras a entender",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger me gustaría que (s170)",
+   "known": "I'd like you to help me understand",
+   "target": "Me gustaría que me ayudaras a entender",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0203L03",
+   "phrase_id": "S0203L03B05",
+   "action": "upd",
+   "before": {
+    "known": "If I asked you that you would help me",
+    "target": "Si te pidiera que me ayudaras",
+    "role": "build"
+   },
+   "why": "English only: 'If I asked you that you would help me' is not English",
+   "known": "If I asked you to help me",
+   "target": "Si te pidiera que me ayudaras",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0204L01",
+   "phrase_id": "S0204L01B01",
+   "action": "upd",
+   "before": {
+    "known": "That she would help you",
+    "target": "Que ella te ayudara",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger me gustaría que (B05 already has quería que)",
+   "known": "I'd like her to help you",
+   "target": "Me gustaría que ella te ayudara",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0204L01",
+   "phrase_id": "S0204L01B03",
+   "action": "upd",
+   "before": {
+    "known": "That she would help you with this",
+    "target": "Que ella te ayudara con esto",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger quería que (the seed)",
+   "known": "I wanted her to help you with this",
+   "target": "Quería que ella te ayudara con esto",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0204L01",
+   "phrase_id": "S0204L01B04",
+   "action": "upd",
+   "before": {
+    "known": "That she would help you to understand",
+    "target": "Que ella te ayudara a entender",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger no querías que",
+   "known": "You didn't want her to help you",
+   "target": "No querías que ella te ayudara",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0225L03",
+   "phrase_id": "S0225L03U06",
+   "action": "del",
+   "before": {
+    "known": "I would have done it differently if I could have done it well this time",
+    "target": "Lo habría hecho de manera diferente si pudiera hacerlo bien esta vez",
+    "role": "use"
+   },
+   "why": "'habría hecho … si pudiera hacerlo bien' mixes a past conditional with an imperfect subjunctive (needs hubiera podido, untaught); 12 uses remain"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0225L03",
+   "phrase_id": "S0225L03U10",
+   "action": "del",
+   "before": {
+    "known": "What would you do if I asked you to help me if I could do something different?",
+    "target": "¿Qué harías si te pidiera que me ayudaras si pudiera hacer algo diferente?",
+    "role": "use"
+   },
+   "why": "'si te pidiera que me ayudaras si pudiera hacer algo diferente' — two stacked si-clauses, no sense"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0225L03",
+   "phrase_id": "S0225L03U11",
+   "action": "upd",
+   "before": {
+    "known": "You will help me before I have to leave if I could give you more time",
+    "target": "Vas a ayudarme antes de que tenga que irme si pudiera darte más tiempo",
+    "role": "use"
+   },
+   "why": "'Vas a ayudarme … si pudiera' puts a future with a past-subjunctive if-clause; conditional main clause as the seed (daría s225; ayudaría is not taught until s229)",
+   "known": "I would give you more time if I could",
+   "target": "Te daría más tiempo si pudiera",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0238L01",
+   "phrase_id": "S0238L01B01",
+   "action": "upd",
+   "before": {
+    "known": "You told",
+    "target": "Dijeras",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger si (s152/s203)",
+   "known": "If you told me",
+   "target": "Si me dijeras",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0238L01",
+   "phrase_id": "S0238L01B02",
+   "action": "upd",
+   "before": {
+    "known": "That you told",
+    "target": "Que dijeras",
+    "role": "build"
+   },
+   "why": "bare 'que dijeras'; trigger quería que (the seed)",
+   "known": "I wanted you to tell me the truth",
+   "target": "Quería que me dijeras la verdad",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0248L03",
+   "phrase_id": "S0248L03B01",
+   "action": "upd",
+   "before": {
+    "known": "They give back ",
+    "target": "Devuelvan",
+    "role": "build"
+   },
+   "why": "bare LEGO (with a trailing space); trigger necesito que (U09)",
+   "known": "I need them to give it back",
+   "target": "Necesito que lo devuelvan",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0248L03",
+   "phrase_id": "S0248L03B02",
+   "action": "del",
+   "before": {
+    "known": "They give back",
+    "target": "Devuelvan",
+    "role": "build"
+   },
+   "why": "bare duplicate of B01; 5 builds remain"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0249L01",
+   "phrase_id": "S0249L01B01",
+   "action": "upd",
+   "before": {
+    "known": "You help",
+    "target": "Ayudes",
+    "role": "build"
+   },
+   "why": "bare 'Ayudes' (and lacked the LEGO); trigger espero que",
+   "known": "I hope you help me",
+   "target": "Espero que me ayudes",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0249L02",
+   "phrase_id": "S0249L02B01",
+   "action": "upd",
+   "before": {
+    "known": "You go",
+    "target": "Vayas",
+    "role": "build"
+   },
+   "why": "bare 'Vayas' lacked the LEGO; plug-in build, the trigger is inside the LEGO (as S0470L03B01)",
+   "known": "To talk to you before you go",
+   "target": "Hablar contigo antes de que te vayas",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0250L02",
+   "phrase_id": "S0250L02B01",
+   "action": "upd",
+   "before": {
+    "known": "I answer",
+    "target": "Conteste",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger quieres que",
+   "known": "Do you want me to answer?",
+   "target": "¿Quieres que conteste?",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0281L04",
+   "phrase_id": "S0281L04U04",
+   "action": "upd",
+   "before": {
+    "known": "Do you mind waiting until I finish before you start?",
+    "target": "¿Te importa esperar hasta que termino antes de que empieces?",
+    "role": "use"
+   },
+   "why": "'hasta que termino' is the wrong mood (termine is never taught); the extra clause goes",
+   "known": "Do you mind waiting a moment before you start?",
+   "target": "¿Te importa esperar un momento antes de que empieces?",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0281L04",
+   "phrase_id": "S0281L04U05",
+   "action": "upd",
+   "before": {
+    "known": "I think it is useful before you start to think about what you want to say",
+    "target": "Creo que es útil antes de que empieces a pensar en lo que quieres decir",
+    "role": "use"
+   },
+   "why": "word order put 'antes de que empieces' before the infinitive it belongs to: no sense",
+   "known": "I think it's useful to think about what you want to say before you start",
+   "target": "Creo que es útil pensar en lo que quieres decir antes de que empieces",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0281L04",
+   "phrase_id": "S0281L04U11",
+   "action": "del",
+   "before": {
+    "known": "I think it is useful before you start to think about what you want to say",
+    "target": "Creo que es útil antes de que empieces a pensar en lo que quieres decir",
+    "role": "use"
+   },
+   "why": "exact duplicate of U05"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0346L02",
+   "phrase_id": "S0346L02B01",
+   "action": "upd",
+   "before": {
+    "known": "that she knew",
+    "target": "que supiera",
+    "role": "build"
+   },
+   "why": "bare 'que supiera'; trigger me gustaría que",
+   "known": "I'd like her to know",
+   "target": "Me gustaría que ella supiera",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0370L01",
+   "phrase_id": "S0370L01B01",
+   "action": "upd",
+   "before": {
+    "known": "I knew",
+    "target": "conociera",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger negated antecedent, the seed's frame (había is untaught)",
+   "known": "I didn't see anyone I knew there",
+   "target": "No vi a nadie que conociera allí",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0370L01",
+   "phrase_id": "S0370L01B02",
+   "action": "upd",
+   "before": {
+    "known": "someone I knew",
+    "target": "alguien que conociera",
+    "role": "build"
+   },
+   "why": "'alguien que conociera' alone has no negated/unknown antecedent to trigger it; the seed's frame",
+   "known": "I didn't see anyone I knew here",
+   "target": "No vi a nadie que conociera aquí",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0370L01",
+   "phrase_id": "S0370L01U06",
+   "action": "upd",
+   "before": {
+    "known": "did you see anyone you knew?",
+    "target": "¿viste a alguien que conociera?",
+    "role": "use"
+   },
+   "why": "English said 'you knew'; conociera here is I/he/she (conocieras is untaught), so the English changes",
+   "known": "did you see anyone I knew?",
+   "target": "¿viste a alguien que conociera?",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0387L02",
+   "phrase_id": "S0387L02B01",
+   "action": "upd",
+   "before": {
+    "known": "was right",
+    "target": "tuviera razón",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger no pensé que (B02 is 'she')",
+   "known": "I didn't think he was right",
+   "target": "No pensé que él tuviera razón",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0409L02",
+   "phrase_id": "S0409L02B01",
+   "action": "upd",
+   "before": {
+    "known": "we do",
+    "target": "hagamos",
+    "role": "build"
+   },
+   "why": "bare 'hagamos'; trigger no importa (the seed)",
+   "known": "it doesn't matter what we do here",
+   "target": "no importa lo que hagamos aquí",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0409L02",
+   "phrase_id": "S0409L02B02",
+   "action": "upd",
+   "before": {
+    "known": "what we do",
+    "target": "lo que hagamos",
+    "role": "build"
+   },
+   "why": "bare LEGO; lo que + future reference is the trigger",
+   "known": "what we do tomorrow is important",
+   "target": "lo que hagamos mañana es importante",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0409L02",
+   "phrase_id": "S0409L02B03",
+   "action": "upd",
+   "before": {
+    "known": "we do it here",
+    "target": "hagamos aquí",
+    "role": "build"
+   },
+   "why": "'hagamos aquí' lacked the LEGO and meant nothing",
+   "known": "it doesn't matter to me what we do",
+   "target": "no me importa lo que hagamos",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0419L02",
+   "phrase_id": "S0419L02B01",
+   "action": "upd",
+   "before": {
+    "known": "appreciates",
+    "target": "aprecie",
+    "role": "build"
+   },
+   "why": "bare 'aprecie'; trigger quiero que",
+   "known": "I want people to appreciate them",
+   "target": "quiero que la gente les aprecie",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0419L02",
+   "phrase_id": "S0419L02B02",
+   "action": "upd",
+   "before": {
+    "known": "people appreciate",
+    "target": "la gente les aprecie",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger es importante que (s329)",
+   "known": "it's important that people appreciate them",
+   "target": "es importante que la gente les aprecie",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0419L02",
+   "phrase_id": "S0419L02U03",
+   "action": "upd",
+   "before": {
+    "known": "it's important that people appreciate",
+    "target": "es importante que la gente aprecie",
+    "role": "use"
+   },
+   "why": "'es importante que la gente aprecie' lacked 'les' (P17) and an object in English; now B02 carries es importante, so espero que",
+   "known": "I hope people appreciate them",
+   "target": "espero que la gente les aprecie",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0419L02",
+   "phrase_id": "S0419L02U05",
+   "action": "del",
+   "before": {
+    "known": "I thought she wanted people to appreciate her",
+    "target": "pensé que quería que la gente la aprecie",
+    "role": "use"
+   },
+   "why": "'pensé que quería que la gente la aprecie' breaks the sequence of tenses (needs apreciara, untaught) and lacks 'les'"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0432L01",
+   "phrase_id": "S0432L01B01",
+   "action": "upd",
+   "before": {
+    "known": "you ask",
+    "target": "preguntes",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger quiero que",
+   "known": "I want you to ask",
+   "target": "quiero que preguntes",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0461L03",
+   "phrase_id": "S0461L03B01",
+   "action": "upd",
+   "before": {
+    "known": "where I can",
+    "target": "donde pueda",
+    "role": "build"
+   },
+   "why": "bare LEGO; the indefinite antecedent is the trigger",
+   "known": "a shop where I can",
+   "target": "una tienda donde pueda",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0461L03",
+   "phrase_id": "S0461L03B02",
+   "action": "upd",
+   "before": {
+    "known": "where I can buy",
+    "target": "donde pueda comprar",
+    "role": "build"
+   },
+   "why": "bare fragment; indefinite antecedent",
+   "known": "I need a shop where I can buy",
+   "target": "necesito una tienda donde pueda comprar",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0461L03",
+   "phrase_id": "S0461L03B04",
+   "action": "upd",
+   "before": {
+    "known": "knowing where I can buy",
+    "target": "saber donde pueda comprar",
+    "role": "build"
+   },
+   "why": "'saber donde pueda comprar' is the wrong mood (an indirect question takes dónde puedo)",
+   "known": "a shop where I can buy something",
+   "target": "una tienda donde pueda comprar algo",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0469L02",
+   "phrase_id": "S0469L02B01",
+   "action": "upd",
+   "before": {
+    "known": "we can",
+    "target": "podamos",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger espero que",
+   "known": "I hope we can",
+   "target": "espero que podamos",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0482L01",
+   "phrase_id": "S0482L01B01",
+   "action": "upd",
+   "before": {
+    "known": "they're not serious",
+    "target": "no estén hablando en serio",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger puede que (s456)",
+   "known": "they might not be serious",
+   "target": "puede que no estén hablando en serio",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0482L01",
+   "phrase_id": "S0482L01B02",
+   "action": "upd",
+   "before": {
+    "known": "but they're not serious",
+    "target": "pero no estén hablando en serio",
+    "role": "build"
+   },
+   "why": "'pero no estén' has no trigger",
+   "known": "but I hope they're not serious",
+   "target": "pero espero que no estén hablando en serio",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0482L01",
+   "phrase_id": "S0482L01B03",
+   "action": "upd",
+   "before": {
+    "known": "at least they're not serious",
+    "target": "al menos no estén hablando en serio",
+    "role": "build"
+   },
+   "why": "'al menos no estén' has no trigger",
+   "known": "at least I hope they're not serious",
+   "target": "al menos espero que no estén hablando en serio",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0497L02",
+   "phrase_id": "S0497L02U05",
+   "action": "del",
+   "before": {
+    "known": "you didn't tell me you needed to sleep",
+    "target": "no me dijiste que necesitaras dormir",
+    "role": "use"
+   },
+   "why": "'no me dijiste que necesitaras' is the wrong mood and lacks como si (the #159 draft's delete); 5 uses remain"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0501L02",
+   "phrase_id": "S0501L02B01",
+   "action": "upd",
+   "before": {
+    "known": "you played together",
+    "target": "jugarais juntos",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger si",
+   "known": "if you played together",
+   "target": "si jugarais juntos",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "phrase_id": "S0526L02B01",
+   "action": "upd",
+   "before": {
+    "known": "that you can't guess",
+    "target": "que no puedas adivinar",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger es raro que (s121)",
+   "known": "it's unusual that you can't guess",
+   "target": "es raro que no puedas adivinar",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "phrase_id": "S0526L02B02",
+   "action": "upd",
+   "before": {
+    "known": "that you can't guess",
+    "target": "que no puedas adivinar",
+    "role": "build"
+   },
+   "why": "bare duplicate; trigger es interesante que (s120)",
+   "known": "it's interesting that you can't guess",
+   "target": "es interesante que no puedas adivinar",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "phrase_id": "S0526L02B03",
+   "action": "upd",
+   "before": {
+    "known": "that you can't guess what happens",
+    "target": "que no puedas adivinar qué pasa",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger me sorprende que",
+   "known": "it surprises me that you can't guess what happens",
+   "target": "me sorprende que no puedas adivinar qué pasa",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "phrase_id": "S0526L02B04",
+   "action": "upd",
+   "before": {
+    "known": "that you can't guess why we needed to stay",
+    "target": "que no puedas adivinar por qué necesitábamos quedarnos",
+    "role": "build"
+   },
+   "why": "bare fragment; trigger the seed's me está costando creer que",
+   "known": "I'm finding it hard to believe that you can't guess why we needed to stay",
+   "target": "me está costando creer que no puedas adivinar por qué necesitábamos quedarnos",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "phrase_id": "S0526L02U05",
+   "action": "upd",
+   "before": {
+    "known": "that you can't guess all of that",
+    "target": "que no puedas adivinar todo eso",
+    "role": "use"
+   },
+   "why": "fragment USE; trigger es raro que",
+   "known": "it's unusual that you can't guess all of that",
+   "target": "es raro que no puedas adivinar todo eso",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0530L01",
+   "phrase_id": "S0530L01U01",
+   "action": "upd",
+   "before": {
+    "known": "so I can count them here",
+    "target": "para que pueda contarlas aquí",
+    "role": "use"
+   },
+   "why": "fragment USE 'para que pueda contarlas aquí' gets a main clause",
+   "known": "Can you wait so I can count them?",
+   "target": "¿Puedes esperar para que pueda contarlas?",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0530L01",
+   "phrase_id": "S0530L01U02",
+   "action": "upd",
+   "before": {
+    "known": "so I can count them before",
+    "target": "para que pueda contarlas antes",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "Can you stop so I can count them?",
+   "target": "¿Puedes parar para que pueda contarlas?",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0530L01",
+   "phrase_id": "S0530L01U03",
+   "action": "upd",
+   "before": {
+    "known": "so I can count them tomorrow",
+    "target": "para que pueda contarlas mañana",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "We need to wait until tomorrow so I can count them",
+   "target": "Necesitamos esperar hasta mañana para que pueda contarlas",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0530L01",
+   "phrase_id": "S0530L01U04",
+   "action": "upd",
+   "before": {
+    "known": "so I can count them all",
+    "target": "para que pueda contarlas todas",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "Can you speak more slowly so I can count them all?",
+   "target": "¿Puedes hablar más despacio para que pueda contarlas todas?",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0533L02",
+   "phrase_id": "S0533L02B01",
+   "action": "upd",
+   "before": {
+    "known": "to every word you say",
+    "target": "cada palabra que digas",
+    "role": "build"
+   },
+   "why": "bare LEGO; plug-in build",
+   "known": "to listen to every word you say",
+   "target": "escuchar cada palabra que digas",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0533L02",
+   "phrase_id": "S0533L02B02",
+   "action": "del",
+   "before": {
+    "known": "to every word you say",
+    "target": "cada palabra que digas",
+    "role": "build"
+   },
+   "why": "bare duplicate of B01; 3 builds remain"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0533L02",
+   "phrase_id": "S0533L02U02",
+   "action": "upd",
+   "before": {
+    "known": "every word you say here",
+    "target": "cada palabra que digas aquí",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "I'm going to listen to every word you say here",
+   "target": "voy a escuchar cada palabra que digas aquí",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0533L02",
+   "phrase_id": "S0533L02U03",
+   "action": "upd",
+   "before": {
+    "known": "every word you say before the show",
+    "target": "cada palabra que digas antes del espectáculo",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "she's going to listen to every word you say before the show",
+   "target": "ella va a escuchar cada palabra que digas antes del espectáculo",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0533L02",
+   "phrase_id": "S0533L02U05",
+   "action": "upd",
+   "before": {
+    "known": "every word you say today",
+    "target": "cada palabra que digas hoy",
+    "role": "use"
+   },
+   "why": "fragment USE gets a main clause",
+   "known": "I want to listen to every word you say today",
+   "target": "quiero escuchar cada palabra que digas hoy",
+   "role": "use"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0587L02",
+   "phrase_id": "S0587L02B01",
+   "action": "upd",
+   "before": {
+    "known": "that we had",
+    "target": "en que comiéramos",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger insistía en que (the seed)",
+   "known": "she used to insist that we had eggs",
+   "target": "ella insistía en que comiéramos huevos",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0593L03",
+   "phrase_id": "S0593L03B01",
+   "action": "upd",
+   "before": {
+    "known": "I argued",
+    "target": "discutiera",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger no querías que",
+   "known": "you didn't want me to argue",
+   "target": "no querías que discutiera",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0668L01",
+   "phrase_id": "S0668L01B01",
+   "action": "upd",
+   "before": {
+    "known": "you all can",
+    "target": "podáis",
+    "role": "build"
+   },
+   "why": "bare LEGO; trigger espero que (the seed)",
+   "known": "I hope you all can",
+   "target": "espero que podáis",
+   "role": "build"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0087L01",
+   "phrase_id": "S0087L01U04",
+   "action": "upd",
+   "before": {
+    "known": "They are people who I don't know yet",
+    "target": "Son personas que no conozco todavía",
+    "role": "use"
+   },
+   "known": "They are people who I don't know yet",
+   "target": "Son personas que todavía no conozco",
+   "role": "use",
+   "why": "v2 follow-up: 'no conozco todavía' exists in spa only in off-cast Azure voices (render refused EXISTS_IN_LANGUAGE); 'todavía no conozco' is the more natural order anyway"
+  }
+ ],
+ "intros": [
+  {
+   "stage": "v2",
+   "lego_id": "S0318L01",
+   "live": "The Spanish for: 'that she could', is:",
+   "text": "The Spanish for: 'that she could', as in — 'I don't think that she could come', is:",
+   "why": "Kai 11 Nov: every intro as-in carries a trigger (#170: \"that\" added so the as-in quotes the chunk byte for byte, as the intro-mirror check requires)"
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0568L04",
+   "live": "The Spanish for: 'that we meet', is:",
+   "text": "The Spanish for: 'that we meet', as in — 'I hope that we meet soon', is:",
+   "why": "Kai 11 Nov: every intro as-in carries a trigger"
+  },
+  {
+   "stage": "v2",
+   "lego_id": "S0532L02",
+   "live": "The Spanish for: 'they're lucky', is:",
+   "text": "The Spanish for: 'they're lucky', as in — 'unless they're lucky', is:",
+   "why": "Kai 11 Nov: every intro as-in carries a trigger"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0120L03",
+   "text": "The Spanish for: 'you like', as in — 'It's interesting that you like to go by bus', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0121L02",
+   "text": "The Spanish for: 'that you don't like', as in — 'it's unusual that you don't like to use your car', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0129L04",
+   "text": "The Spanish for: 'that you're', as in — 'I'm so happy that you're doing so well', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0149L04",
+   "text": "The Spanish for: 'you finish', as in — 'I hope you finish soon', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0171L01",
+   "text": "The Spanish for: 'me to help you', as in — 'do you want me to help you look for it?', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0200L04",
+   "text": "The Spanish for: 'we finish', as in — 'they want to make sure that we finish everything in time', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0237L01",
+   "text": "The Spanish for: 'me to tell you', as in — 'he wanted me to tell you before the weekend', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0249L01",
+   "text": "The Spanish for: 'you to help me', as in — 'I want you to help me before you go', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0250L02",
+   "text": "The Spanish for: 'I answer', as in — 'can you tell me something else before I answer?', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0326L01",
+   "text": "The Spanish for: 'she needs', as in — 'I don't think that she needs to sell the company', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0330L01",
+   "text": "The Spanish for: 'that it's', as in — 'I don't think that it's very important', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0346L02",
+   "text": "The Spanish for: 'her to know', as in — 'I wanted her to know that I liked her book', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0370L01",
+   "text": "The Spanish for: 'I knew', as in — 'I didn't see anyone that I knew', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0387L02",
+   "text": "The Spanish for: 'was right', as in — 'I didn't think she was right', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0409L02",
+   "text": "The Spanish for: 'what we do', as in — 'it doesn't matter what we do', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0469L02",
+   "text": "The Spanish for: 'we can', as in — 'I hope we can meet', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0482L01",
+   "text": "The Spanish for: 'they're not serious', as in — 'the only real hope is that they're not serious', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0501L02",
+   "text": "The Spanish for: 'you played', as in — 'if you played together it would be more fun', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0526L02",
+   "text": "The Spanish for: 'that you can't guess', as in — 'I'm finding it hard to believe that you can't guess', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  },
+  {
+   "stage": "sweep",
+   "lego_id": "S0668L01",
+   "text": "The Spanish for: 'you all can', as in — 'I hope you all can go', is:",
+   "why": "Kai 11 Nov: the intro's as-in carries a trigger; the as-in quotes the chunk verbatim (intro-mirror)"
+  }
+ ]
+}

@@ -1,0 +1,3303 @@
+[
+ {
+  "role": "target1",
+  "text": "Conozco a personas que no hablan español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Conozco a personas que no hablan español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know people who don't speak Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0085L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Son personas que no conozco todavía",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Son personas que no conozco todavía\" is already recorded in spa — 4 clip(s): 7b1ee1f5-6e28-434c-8402-a87ce4ced15e (voice azure_es-AR-ElenaNeural, eus_for_spa known); 1bdc46e4-7704-4966-a735-f51cb4cdf64a (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); e32cf5cb-d60c-4ebd-bd57-0801bc69cb34 (voice azure_es-ES-ElviraNeural, eng_for_spa known); a567ec3d-8d0d-4efc-828e-ab8834b9e933 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_b738fa95-b787-4529-9170-34be41e95b95 needs a re-record grant for spa_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Son personas que no conozco todavía",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 409,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"Son personas que no conozco todavía\" is already recorded in spa — 4 clip(s): 7b1ee1f5-6e28-434c-8402-a87ce4ced15e (voice azure_es-AR-ElenaNeural, eus_for_spa known); 1bdc46e4-7704-4966-a735-f51cb4cdf64a (voice azure_es-ES-AlvaroNeural, spa_for_jpn target2); e32cf5cb-d60c-4ebd-bd57-0801bc69cb34 (voice azure_es-ES-ElviraNeural, eng_for_spa known); a567ec3d-8d0d-4efc-828e-ab8834b9e933 (voice azure_es-ES-LaiaNeural, spa_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/spa_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3 needs a re-record grant for spa_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this."
+  }
+ },
+ {
+  "role": "known",
+  "text": "They are people who I don't know yet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Desafortunadamente son personas que no conozco muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Desafortunadamente son personas que no conozco muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 55
+  }
+ },
+ {
+  "role": "known",
+  "text": "Unfortunately they are people who I don't know very well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0087L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Aprender está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Aprender está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "Learning is changing the shape of my brain and I like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U16",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Practicar está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Practicar está cambiando la forma de mi cerebro y me gusta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "known",
+  "text": "Practising is changing the shape of my brain and I like it",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L05U22",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero encontrar a alguien para practicar español conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero encontrar a alguien para practicar español conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to find someone to practise Spanish with",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hay alguien aquí que es muy bueno en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hay alguien aquí que es muy bueno en español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "There is someone here who is very good at Spanish",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U10",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 49
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero practicar con alguien que conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero practicar con alguien que conozco",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to practise with someone I know",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0128L03U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es menos emocionante cuando nadie quiere decir nada interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 63
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es menos emocionante cuando nadie quiere decir nada interesante",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 63
+  }
+ },
+ {
+  "role": "known",
+  "text": "It is less exciting when no one wants to say anything interesting",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0132L02U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 65
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "A friend wanted to help me with this, and that was a surprise",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0156L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 61
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Así que espero que el mes que viene pueda hablar mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Así que espero que el mes que viene pueda hablar mejor",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "known",
+  "text": "So I hope that next month I'll be able to speak better",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0157L02U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 54
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wouldn't like to guess, can you give me the answer?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0161L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Creo que esto es lo que quieres que haga y ya empecé",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que esto es lo que quieres que haga y ya empecé",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think this is what you want me to do and I've already started",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0169L02U13",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 63
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hasta ahora no creo que tenga que cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hasta ahora no creo que tenga que cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "known",
+  "text": "So far I don't think I have to change anything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Hasta ahora creo que no necesitamos cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Hasta ahora creo que no necesitamos cambiar nada",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "known",
+  "text": "So far I think we don't need to change anything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 84
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 84
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am very happy so far so I think I don't need to change anything right now",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 90
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 90
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not very sure if that is a good idea when we still have so much to do today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0189L01U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 79
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quieren saber lo que necesitas para hacer esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quieren saber lo que necesitas para hacer esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "known",
+  "text": "They want to know what you need to do this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quieren que terminemos todo lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quieren que terminemos todo lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "They want us to finish everything as soon as possible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0200L04U10",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 76
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 76
+  }
+ },
+ {
+  "role": "known",
+  "text": "I enjoy doing this and I am very happy that you're doing it with me",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 67
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ },
+ {
+  "role": "known",
+  "text": "I enjoy doing this and I am very happy because we are doing it together",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L01U09",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 71
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Podría pedir algo diferente si quiere",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Podría pedir algo diferente si quiere",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "He could ask for something different if he wants to",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L02U15",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 63
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0249L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 63
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "known",
+  "text": "I am not sure if you will be ready in time but we must wait",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0252L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Siento que no me queda nada que decir sobre esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0298L02U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Siento que no me queda nada que decir sobre esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0298L02U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que pueda venir el lunes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que pueda venir el lunes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope she can come on Monday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no estoy seguro de que pueda ayudarte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no estoy seguro de que pueda ayudarte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not sure she can help you today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que pueda hablar contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que pueda hablar contigo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want her to be able to speak with you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es interesante que pueda hablar español tan bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es interesante que pueda hablar español tan bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 48
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's interesting that she can speak Spanish so well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0318L01U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no pensé que pudiera llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no pensé que pudiera llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't think she could reach the top",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no podía llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no podía llegar a la cima",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought she couldn't reach the top",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0358L01U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no era suficiente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no era suficiente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought it wasn't enough",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0378L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no estoy seguro de que sea una buena idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no estoy seguro de que sea una buena idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not sure that it's a good idea",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estoy seguro de que va a funcionar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estoy seguro de que va a funcionar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm sure it's going to work",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0406L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "pensé que no podíamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "pensé que no podíamos quedarnos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I thought we couldn't stay",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0412L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hablar antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hablar antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "to talk before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ella se va antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ella se va antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "she's leaving before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "tengo que llamarte antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "tengo que llamarte antes de que paremos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I have to call you before we stop",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0470L03U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a menos que tengan suerte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a menos que tengan suerte hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "unless they're lucky today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no creo que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no creo que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't think they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no es posible ganar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no es posible ganar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's not possible to win unless they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no va a funcionar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no va a funcionar a menos que tengan suerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's not going to work unless they're lucky",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que tengan suerte esta noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que tengan suerte esta noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want them to be lucky tonight",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es raro que tengan suerte con todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es raro que tengan suerte con todo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's unusual that they're lucky with everything",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no creo que tengan suerte esta vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no creo que tengan suerte esta vez",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't think they'll be lucky this time",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0532L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me gustaría que no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me gustaría que no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like them not to play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música aquí",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play music here",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sería mejor si no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sería mejor si no pusieran música",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "it would be better if they didn't play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "They play music in the office, but I wish they wouldn't play music so late",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quería que no pusieran música tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quería que no pusieran música tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wanted them not to play music late at night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "les dije que no pusieran música en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "les dije que no pusieran música en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I told them not to play music in the office",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L02U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me gustaría que no pusieran música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me gustaría que no pusieran música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'd like them not to play such loud music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no me gusta cuando ponen música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no me gusta cuando ponen música tan alta",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't like it when they play such loud music",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música tan alta en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música tan alta en la oficina",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play such loud music in the office",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0557L03U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I wish they wouldn't play such loud music, it's so late at night",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es tan tarde por la noche, ¿quieres parar?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es tan tarde por la noche, ¿quieres parar?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's so late at night, do you want to stop?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0558L01B03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "espero que nos veamos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "espero que nos veamos pronto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I hope we meet soon",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B01",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "es importante que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "es importante que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's important that we meet before Thursday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "te llamaré antes de que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "te llamaré antes de que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'll call you before we meet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero que nos veamos antes del jueves",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want us to meet before Thursday",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no voy a decir nada hasta que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no voy a decir nada hasta que nos veamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm not going to say anything until we meet",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "me encanta que nos veamos tan a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "me encanta que nos veamos tan a menudo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "I love that we meet so often",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a menos que nos veamos mañana, te llamaré",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a menos que nos veamos mañana, te llamaré",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "known",
+  "text": "Unless we meet tomorrow, I'll call you",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0568L04U07",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that she could', as in — 'I don't think that she could come', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0318L01",
+    "slot": "presentation",
+    "current": "20149b52-02a0-4b40-b244-90b2e4af92e8"
+   }
+  ],
+  "legoId": "S0318L01",
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'that we meet', as in — 'I hope that we meet soon', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0568L04",
+    "slot": "presentation",
+    "current": "5e5c56cd-0e32-4b20-b7b2-1449d1bf5a65"
+   }
+  ],
+  "legoId": "S0568L04",
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Spanish for: 'they're lucky', as in — 'unless they're lucky', is:",
+  "slots": [
+   {
+    "target": "lego",
+    "lego_id": "S0532L02",
+    "slot": "presentation",
+    "current": "d6798e54-89fe-46f1-9ed9-2b488c752b0b"
+   }
+  ],
+  "legoId": "S0532L02",
+  "dry": {
+   "status": 429,
+   "code": "BULK_DRY_RUN_ON_LIVE",
+   "error": "spa-mood-never-bare (job #170): 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected."
+  }
+ }
+]

@@ -1,0 +1,1281 @@
+{
+ "course": "spa_for_eng",
+ "job": "#165·AH",
+ "version": 2,
+ "status": "DRAFT — nothing applied",
+ "rulings": [
+  "Kai 11 Nov: fix both ways, validity first",
+  "Kai 11 Nov: every phrase under a subjunctive LEGO carries a trigger, never bare; maximum variation; intro 'as in' carries a trigger",
+  "Kai 11 Nov: accept 'Me gustaría que me ayudaras antes de que te vayas' for now"
+ ],
+ "live_read": "QA copy ssi_copy_20261111t033010z + every touched basket re-read via live Popty GET /lego/:id/basket 11 Nov; 0 differences on touched rows",
+ "supersedes": "#159 d/76df4b54 rows for S0532L02 (B02,B03,U02,U03,U04,NEW-B1) — apply this basket, skip #159's; S0497L02U05 stays with #159",
+ "apply_via": "POST /api/production/spa_for_eng/edit-batch (dry run first); intro text through the presentation edit + human-authored guard (PR3); then queue an audio pass (phrases + 3 presentations)",
+ "intros": [
+  {
+   "lego": "S0318L01",
+   "live": "The Spanish for: 'that she could', is:",
+   "proposed": "The Spanish for: 'that she could', as in — 'I don't think she could come', is:"
+  },
+  {
+   "lego": "S0568L04",
+   "live": "The Spanish for: 'that we meet', is:",
+   "proposed": "The Spanish for: 'that we meet', as in — 'I hope that we meet soon', is:"
+  },
+  {
+   "lego": "S0532L02",
+   "live": "The Spanish for: 'they're lucky', is:",
+   "proposed": "The Spanish for: 'they're lucky', as in — 'unless they're lucky', is:"
+  },
+  {
+   "lego": "S0470L03",
+   "live": "The Spanish for: 'before we stop', as in — 'how high do you want to climb before we stop?', is:",
+   "proposed": null
+  },
+  {
+   "lego": "S0557L02",
+   "live": "The Spanish for: 'they wouldn't play', as in — 'I wish they wouldn't play such loud music', is:",
+   "proposed": null
+  }
+ ],
+ "rows": [
+  {
+   "row_id": "spa_for_eng:S0085L01U02",
+   "lego_id": "S0085L01",
+   "lego": "I know = conozco",
+   "seed": 85,
+   "action": "REWRITE",
+   "live": {
+    "en": "I don't know people who speak Spanish",
+    "es": "No conozco a personas que hablan español",
+    "role": "use",
+    "updated_at": "2026-10-28T18:40:07.668Z",
+    "position": 5
+   },
+   "proposed": {
+    "en": "I know people who don't speak Spanish",
+    "es": "Conozco a personas que no hablan español",
+    "role": "use"
+   },
+   "reason": "Negated 'no conozco a personas que' needs subjunctive hablen, taught only at s297. Positive frame takes the ordinary form. No taught trigger fits, so one phrase."
+  },
+  {
+   "row_id": "spa_for_eng:S0087L01U04",
+   "lego_id": "S0087L01",
+   "lego": "they are people who = son personas que",
+   "seed": 87,
+   "action": "REWRITE",
+   "live": {
+    "en": "They are not people who I know",
+    "es": "No son personas que conozco",
+    "role": "use",
+    "updated_at": "2026-10-28T18:40:08.454Z",
+    "position": 12
+   },
+   "proposed": {
+    "en": "They are people who I don't know yet",
+    "es": "Son personas que no conozco todavía",
+    "role": "use"
+   },
+   "reason": "'No son personas que' needs a subjunctive (conozca, never taught). #148's 'Son personas que no conozco' already exists as U01, B05 and U09, so 'todavía' (s60) makes it a new phrase."
+  },
+  {
+   "row_id": "spa_for_eng:S0087L01U08",
+   "lego_id": "S0087L01",
+   "lego": "they are people who = son personas que",
+   "seed": 87,
+   "action": "REWRITE",
+   "live": {
+    "en": "Unfortunately they are not people who I know very well",
+    "es": "Desafortunadamente no son personas que conozco muy bien",
+    "role": "use",
+    "updated_at": "2026-10-28T18:40:08.857Z",
+    "position": 16
+   },
+   "proposed": {
+    "en": "Unfortunately they are people who I don't know very well",
+    "es": "Desafortunadamente son personas que no conozco muy bien",
+    "role": "use"
+   },
+   "reason": "Same negated-antecedent problem; move the 'no' inside the relative clause."
+  },
+  {
+   "row_id": "spa_for_eng:S0126L05U16",
+   "lego_id": "S0126L05",
+   "lego": "shape = forma",
+   "seed": 126,
+   "action": "REWRITE",
+   "live": {
+    "en": "I like that learning is changing the shape of my brain",
+    "es": "Me gusta que aprender está cambiando la forma de mi cerebro",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:22.793Z",
+    "position": 23
+   },
+   "proposed": {
+    "en": "Learning is changing the shape of my brain and I like it",
+    "es": "Aprender está cambiando la forma de mi cerebro y me gusta",
+    "role": "use"
+   },
+   "reason": "'Me gusta que' needs esté (taught s456). No subjunctive taught by s126 fits a phrase that has to contain 'forma', so reword only."
+  },
+  {
+   "row_id": "spa_for_eng:S0126L05U22",
+   "lego_id": "S0126L05",
+   "lego": "shape = forma",
+   "seed": 126,
+   "action": "REWRITE",
+   "live": {
+    "en": "I like that practicing is changing the shape of my brain",
+    "es": "Me gusta que practicar está cambiando la forma de mi cerebro",
+    "role": "use",
+    "updated_at": "2026-10-12T11:35:25.301Z",
+    "position": 29
+   },
+   "proposed": {
+    "en": "Practising is changing the shape of my brain and I like it",
+    "es": "Practicar está cambiando la forma de mi cerebro y me gusta",
+    "role": "use"
+   },
+   "reason": "As U16."
+  },
+  {
+   "row_id": "spa_for_eng:S0128L03U06",
+   "lego_id": "S0128L03",
+   "lego": "someone = alguien",
+   "seed": 128,
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to find someone who wants to practise Spanish with me",
+    "es": "Quiero encontrar a alguien que quiere practicar español conmigo",
+    "role": "use",
+    "updated_at": "2026-10-12T11:36:43.685Z",
+    "position": 16
+   },
+   "proposed": {
+    "en": "I want to find someone to practise Spanish with",
+    "es": "Quiero encontrar a alguien para practicar español conmigo",
+    "role": "use"
+   },
+   "reason": "Someone still being looked for needs quiera, which is never taught; 'para + infinitive' avoids the clause (the #348 wording)."
+  },
+  {
+   "row_id": "spa_for_eng:S0128L03U10",
+   "lego_id": "S0128L03",
+   "lego": "someone = alguien",
+   "seed": 128,
+   "action": "REWRITE",
+   "live": {
+    "en": "He wants to find someone who is very good at Spanish",
+    "es": "Él quiere encontrar a alguien que es muy bueno en español",
+    "role": "use",
+    "updated_at": "2026-10-12T11:36:28.981Z",
+    "position": 20
+   },
+   "proposed": {
+    "en": "There is someone here who is very good at Spanish",
+    "es": "Hay alguien aquí que es muy bueno en español",
+    "role": "use"
+   },
+   "reason": "Needs sea (s330) for a person still being looked for. Someone who is actually here takes the indicative (hay s34, aquí). This is a rewrite rather than #148's delete; conoce would be untaught until s233."
+  },
+  {
+   "row_id": "spa_for_eng:S0128L03U11",
+   "lego_id": "S0128L03",
+   "lego": "someone = alguien",
+   "seed": 128,
+   "action": "REWRITE",
+   "live": {
+    "en": "I want to practise with someone who wants to learn Spanish",
+    "es": "Quiero practicar con alguien que quiere aprender español",
+    "role": "use",
+    "updated_at": "2026-10-12T11:36:45.647Z",
+    "position": 21
+   },
+   "proposed": {
+    "en": "I want to practise with someone I know",
+    "es": "Quiero practicar con alguien que conozco",
+    "role": "use"
+   },
+   "reason": "Needs quiera, never taught. 'alguien que conozco' (B05's chunk) is a known person, so it takes the indicative. This is a rewrite rather than a delete."
+  },
+  {
+   "row_id": "spa_for_eng:S0132L02U11",
+   "lego_id": "S0132L02",
+   "lego": "Less exciting = menos emocionante",
+   "seed": 132,
+   "action": "REWRITE",
+   "live": {
+    "en": "It is less exciting when you are not talking with someone who wants to say something interesting",
+    "es": "Es menos emocionante cuando no estás hablando con alguien que quiere decir algo interesante",
+    "role": "use",
+    "updated_at": "2026-10-12T11:38:40.540Z",
+    "position": 19
+   },
+   "proposed": {
+    "en": "It is less exciting when no one wants to say anything interesting",
+    "es": "Es menos emocionante cuando nadie quiere decir nada interesante",
+    "role": "use"
+   },
+   "reason": "'alguien que quiere' (unknown person) needs quiera, never taught. 'nadie quiere' takes the indicative (nadie s71, nada s35). This is a rewrite rather than a delete."
+  },
+  {
+   "row_id": "spa_for_eng:S0156L02U05",
+   "lego_id": "S0156L02",
+   "lego": "a = un",
+   "seed": 156,
+   "action": "REWRITE",
+   "live": {
+    "en": "It surprises me that a friend wanted to help me with this",
+    "es": "Me sorprende que un amigo quería ayudarme con esto",
+    "role": "use",
+    "updated_at": "2026-10-13T00:55:04.963Z",
+    "position": 10
+   },
+   "proposed": {
+    "en": "A friend wanted to help me with this, and that was a surprise",
+    "es": "Un amigo quería ayudarme con esto, y eso fue una sorpresa",
+    "role": "use"
+   },
+   "reason": "'Me sorprende que' needs quisiera (s317). The s130 chunk 'eso fue una sorpresa' keeps the meaning in the ordinary form. This is a rewrite rather than a delete."
+  },
+  {
+   "row_id": "spa_for_eng:S0157L02U11",
+   "lego_id": "S0157L02",
+   "lego": "next month = el mes que viene",
+   "seed": 157,
+   "action": "REWRITE",
+   "live": {
+    "en": "So I hope that next month I'm going to be able to speak better",
+    "es": "Así que espero que el mes que viene voy a poder hablar mejor",
+    "role": "use",
+    "updated_at": "2026-10-13T00:55:41.639Z",
+    "position": 19
+   },
+   "proposed": {
+    "en": "So I hope that next month I'll be able to speak better",
+    "es": "Así que espero que el mes que viene pueda hablar mejor",
+    "role": "use"
+   },
+   "reason": "KEEPS THE TRIGGER: 'así que espero que' (LEGO s149) + pueda (s7, 'todo lo que pueda' = I can)."
+  },
+  {
+   "row_id": "spa_for_eng:S0161L02U06",
+   "lego_id": "S0161L02",
+   "lego": "to give me = darme",
+   "seed": 161,
+   "action": "REWRITE",
+   "live": {
+    "en": "I wouldn't like to guess, I want you to be able to give me the answer",
+    "es": "No me gustaría adivinar quiero que puedes darme la respuesta",
+    "role": "use",
+    "updated_at": "2026-10-13T00:57:05.801Z",
+    "position": 13
+   },
+   "proposed": {
+    "en": "I wouldn't like to guess, can you give me the answer?",
+    "es": "No me gustaría adivinar, ¿puedes darme la respuesta?",
+    "role": "use"
+   },
+   "reason": "'quiero que puedes' needs puedas (s292); dijeras (s170) is also too late for s161. Reword only."
+  },
+  {
+   "row_id": "spa_for_eng:S0169L02U13",
+   "lego_id": "S0169L02",
+   "lego": "you want me to do = quieres que haga",
+   "seed": 169,
+   "action": "REWRITE",
+   "live": {
+    "en": "I hope this is what you want me to do because I've already started",
+    "es": "Espero que esto es lo que quieres que haga porque ya empecé",
+    "role": "use",
+    "updated_at": "2026-10-13T01:01:23.902Z",
+    "position": 21
+   },
+   "proposed": {
+    "en": "I think this is what you want me to do and I've already started",
+    "es": "Creo que esto es lo que quieres que haga y ya empecé",
+    "role": "use"
+   },
+   "reason": "'Espero que esto es' needs sea (s330). Reword with creo que."
+  },
+  {
+   "row_id": "spa_for_eng:S0187L02U05",
+   "lego_id": "S0187L02",
+   "lego": "so far = hasta ahora",
+   "seed": 187,
+   "action": "REWRITE",
+   "live": {
+    "en": "So far I do not think we need to change anything",
+    "es": "Hasta ahora no creo que necesitamos cambiar nada",
+    "role": "use",
+    "updated_at": "2026-10-13T01:09:00.426Z",
+    "position": 12
+   },
+   "proposed": {
+    "en": "So far I don't think I have to change anything",
+    "es": "Hasta ahora no creo que tenga que cambiar nada",
+    "role": "use"
+   },
+   "reason": "KEEPS THE TRIGGER: 'no creo que' + tenga (s25, 'antes de que tenga que irme'). necesitemos is never taught, so 'need' becomes 'have to'."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0187L02",
+   "lego": "so far = hasta ahora",
+   "seed": 187,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "So far I think we don't need to change anything",
+    "es": "Hasta ahora creo que no necesitamos cambiar nada",
+    "role": "use"
+   },
+   "reason": "SPLIT: the ordinary-form half of the old U05 (the #148 wording)."
+  },
+  {
+   "row_id": "spa_for_eng:S0188L02U02",
+   "lego_id": "S0188L02",
+   "lego": "therefore = así que",
+   "seed": 188,
+   "action": "REWRITE",
+   "live": {
+    "en": "I am very happy so far so I do not think I need to change anything right now",
+    "es": "Estoy muy contento hasta ahora así que no creo que necesito cambiar nada ahora mismo",
+    "role": "use",
+    "updated_at": "2026-10-13T01:09:13.505Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I am very happy so far so I think I don't need to change anything right now",
+    "es": "Estoy muy contento hasta ahora así que creo que no necesito cambiar nada ahora mismo",
+    "role": "use"
+   },
+   "reason": "'no creo que necesito' needs necesite (s326). Ordinary form here, because s187's U05 now carries the 'no creo que tenga que' version and a second near-twin one seed later adds nothing."
+  },
+  {
+   "row_id": "spa_for_eng:S0189L01U07",
+   "lego_id": "S0189L01",
+   "lego": "a good idea = una buena idea",
+   "seed": 189,
+   "action": "REWRITE",
+   "live": {
+    "en": "I am not very sure that is a good idea when we still have so much to do today",
+    "es": "No estoy muy seguro de que eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+    "role": "use",
+    "updated_at": "2026-10-13T01:09:24.901Z",
+    "position": 16
+   },
+   "proposed": {
+    "en": "I'm not very sure if that is a good idea when we still have so much to do today",
+    "es": "No estoy muy seguro de si eso es una buena idea cuando todavía tenemos que hacer mucho hoy",
+    "role": "use"
+   },
+   "reason": "'seguro de que' needs sea (s330). 'no estoy seguro de si' is seed 10's own frame and takes the ordinary form; it is closer than #148's 'No sé si'."
+  },
+  {
+   "row_id": "spa_for_eng:S0200L02U08",
+   "lego_id": "S0200L02",
+   "lego": "they want = quieren",
+   "seed": 200,
+   "action": "REWRITE",
+   "live": {
+    "en": "They want to know what you need to make this work",
+    "es": "Quieren saber lo que necesitas para que va a funcionar",
+    "role": "use",
+    "updated_at": "2026-10-13T01:12:48.426Z",
+    "position": 14
+   },
+   "proposed": {
+    "en": "They want to know what you need to do this",
+    "es": "Quieren saber lo que necesitas para hacer esto",
+    "role": "use"
+   },
+   "reason": "'para que va a funcionar' is ungrammatical and funcione is never taught (the #348 wording)."
+  },
+  {
+   "row_id": "spa_for_eng:S0200L04U10",
+   "lego_id": "S0200L04",
+   "lego": "we finish = terminemos",
+   "seed": 200,
+   "action": "REWRITE",
+   "live": {
+    "en": "We need all of us to finish this as soon as possible",
+    "es": "Necesitamos que terminemos todo lo antes posible",
+    "role": "use",
+    "updated_at": "2026-10-13T01:13:02.435Z",
+    "position": 15
+   },
+   "proposed": {
+    "en": "They want us to finish everything as soon as possible",
+    "es": "Quieren que terminemos todo lo antes posible",
+    "role": "use"
+   },
+   "reason": "KEEPS A TRIGGER: 'Necesitamos que terminemos' (we need us) is wrong. 'quieren que' (s200 L02) + the LEGO, as #348 ruled."
+  },
+  {
+   "row_id": "spa_for_eng:S0206L01U02",
+   "lego_id": "S0206L01",
+   "lego": "I enjoy = disfruto",
+   "seed": 206,
+   "action": "REWRITE",
+   "live": {
+    "en": "I enjoy doing this and I am very happy that we are doing this together",
+    "es": "Disfruto haciendo esto y estoy muy contento de que estamos haciendo esto juntos",
+    "role": "use",
+    "updated_at": "2026-10-13T01:14:37.036Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I enjoy doing this and I am very happy that you're doing it with me",
+    "es": "Disfruto haciendo esto y estoy muy contento de que lo estés haciendo conmigo",
+    "role": "use"
+   },
+   "reason": "KEEPS THE TRIGGER: 'contento de que' + estés (s129, the seed's own 'contento de que lo estés haciendo'). estemos is not taught until s522, so the person changes."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0206L01",
+   "lego": "I enjoy = disfruto",
+   "seed": 206,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I enjoy doing this and I am very happy because we are doing it together",
+    "es": "Disfruto haciendo esto y estoy muy contento porque lo estamos haciendo juntos",
+    "role": "use"
+   },
+   "reason": "SPLIT: the ordinary-form half of the old U02 (#148's porque)."
+  },
+  {
+   "row_id": "spa_for_eng:S0212L02U15",
+   "lego_id": "S0212L02",
+   "lego": "to ask for = pedir",
+   "seed": 212,
+   "action": "REWRITE",
+   "live": {
+    "en": "He could ask for something different if he wanted to",
+    "es": "Podría pedir algo diferente si quería",
+    "role": "use",
+    "updated_at": "2026-10-13T01:17:00.608Z",
+    "position": 20
+   },
+   "proposed": {
+    "en": "He could ask for something different if he wants to",
+    "es": "Podría pedir algo diferente si quiere",
+    "role": "use"
+   },
+   "reason": "'si quería' should be 'si quisiera' (s317). The present 'si quiere' is natural with podría and keeps the if-clause, which #148 would have dropped."
+  },
+  {
+   "row_id": "spa_for_eng:S0249L02U04",
+   "lego_id": "S0249L02",
+   "lego": "before you go = antes de que te vayas",
+   "seed": 249,
+   "action": "REWRITE",
+   "live": {
+    "en": "I would like you to help me before you go if possible",
+    "es": "Me gustaría que me ayudes antes de que te vayas si es posible",
+    "role": "use",
+    "updated_at": "2026-10-13T01:33:29.817Z",
+    "position": 11
+   },
+   "proposed": {
+    "en": "I would like you to help me before you go if possible",
+    "es": "Me gustaría que me ayudaras antes de que te vayas si es posible",
+    "role": "use"
+   },
+   "reason": "'me gustaría que me ayudes' becomes ayudaras (s203). Kai, 11 Nov: accept 'me ayudaras antes de que te vayas' as it is for now; Deborah was asked, and Kai will report back if she disagrees."
+  },
+  {
+   "row_id": "spa_for_eng:S0252L01U04",
+   "lego_id": "S0252L01",
+   "lego": "you will be = estarás",
+   "seed": 252,
+   "action": "REWRITE",
+   "live": {
+    "en": "I am not sure you will be ready in time but we must wait",
+    "es": "No estoy seguro de que estarás listo a tiempo pero tenemos que esperar",
+    "role": "use",
+    "updated_at": "2026-11-10T13:29:47.536Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I am not sure if you will be ready in time but we must wait",
+    "es": "No estoy seguro de si estarás listo a tiempo pero tenemos que esperar",
+    "role": "use"
+   },
+   "reason": "'seguro de que estarás' is the wrong mood. 'de si' is seed 10's frame. The LEGO is estarás, so a subjunctive version cannot hold it."
+  },
+  {
+   "row_id": "spa_for_eng:S0298L02U05",
+   "lego_id": "S0298L02",
+   "lego": "I've got nothing left to say = no me queda nada que decir",
+   "seed": 298,
+   "action": "REWRITE",
+   "live": {
+    "en": "I feel like I have nothing left to say about this",
+    "es": "Siento como si no me queda nada que decir sobre esto",
+    "role": "use",
+    "updated_at": "2026-10-13T01:49:36.387Z",
+    "position": 13
+   },
+   "proposed": {
+    "en": "I feel like I have nothing left to say about this",
+    "es": "Siento que no me queda nada que decir sobre esto",
+    "role": "use"
+   },
+   "reason": "'como si' needs quedara, never taught. 'siento que' takes the ordinary form."
+  },
+  {
+   "row_id": "spa_for_eng:S0318L01U04",
+   "lego_id": "S0318L01",
+   "lego": "that she could = que pueda",
+   "seed": 318,
+   "action": "REWRITE",
+   "live": {
+    "en": "I don't think she could if she wanted to",
+    "es": "no creo que pueda si quisiera",
+    "role": "use",
+    "updated_at": "2026-10-29T12:52:25.889Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I hope she can come on Monday",
+    "es": "espero que pueda venir el lunes",
+    "role": "use"
+   },
+   "reason": "TRIGGER: espero que. 'pueda si quisiera' mixed present and past subjunctive. A new trigger gives the basket variety."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0318L01",
+   "lego": "that she could = que pueda",
+   "seed": 318,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I'm not sure she can help you today",
+    "es": "no estoy seguro de que pueda ayudarte hoy",
+    "role": "use"
+   },
+   "reason": "TRIGGER: no estoy seguro de que (s10 + que)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0318L01",
+   "lego": "that she could = que pueda",
+   "seed": 318,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I want her to be able to speak with you",
+    "es": "quiero que pueda hablar contigo",
+    "role": "use"
+   },
+   "reason": "TRIGGER: quiero que (s15)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0318L01",
+   "lego": "that she could = que pueda",
+   "seed": 318,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "It's interesting that she can speak Spanish so well",
+    "es": "es interesante que pueda hablar español tan bien",
+    "role": "use"
+   },
+   "reason": "TRIGGER: es interesante que (s120 frame)."
+  },
+  {
+   "row_id": "spa_for_eng:S0358L01U04",
+   "lego_id": "S0358L01",
+   "lego": "the top = la cima",
+   "seed": 358,
+   "action": "REWRITE",
+   "live": {
+    "en": "I did not think she could reach the top",
+    "es": "no pensé que podía llegar a la cima",
+    "role": "use",
+    "updated_at": "2026-10-13T02:03:24.306Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I didn't think she could reach the top",
+    "es": "no pensé que pudiera llegar a la cima",
+    "role": "use"
+   },
+   "reason": "KEEPS THE TRIGGER: 'no pensé que' + pudiera (s225 'si pudiera'). It is the s387 'no pensé que tuviera razón' frame, and the English is unchanged."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0358L01",
+   "lego": "the top = la cima",
+   "seed": 358,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I thought she couldn't reach the top",
+    "es": "pensé que no podía llegar a la cima",
+    "role": "use"
+   },
+   "reason": "SPLIT: the ordinary-form half (the #148 wording)."
+  },
+  {
+   "row_id": "spa_for_eng:S0378L01U04",
+   "lego_id": "S0378L01",
+   "lego": "enough = suficiente",
+   "seed": 378,
+   "action": "REWRITE",
+   "live": {
+    "en": "I didn't think it was enough",
+    "es": "no pensé que era suficiente",
+    "role": "use",
+    "updated_at": "2026-10-13T02:07:58.627Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I thought it wasn't enough",
+    "es": "pensé que no era suficiente",
+    "role": "use"
+   },
+   "reason": "'no pensé que era' needs fuera, never taught. 'suficiente' cannot sit naturally with pudiera or tuviera, so reword only."
+  },
+  {
+   "row_id": "spa_for_eng:S0406L02U03",
+   "lego_id": "S0406L02",
+   "lego": "I'm sure that = estoy seguro de que",
+   "seed": 406,
+   "action": "REWRITE",
+   "live": {
+    "en": "I'm not sure it will work",
+    "es": "no estoy seguro de que va a funcionar",
+    "role": "use",
+    "updated_at": "2026-10-13T02:14:29.914Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I'm not sure that it's a good idea",
+    "es": "no estoy seguro de que sea una buena idea",
+    "role": "use"
+   },
+   "reason": "KEEPS THE TRIGGER: funcione is never taught, so use sea (s330) after 'no estoy seguro de que'. The phrase still contains the LEGO."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0406L02",
+   "lego": "I'm sure that = estoy seguro de que",
+   "seed": 406,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I'm sure it's going to work",
+    "es": "estoy seguro de que va a funcionar",
+    "role": "use"
+   },
+   "reason": "SPLIT: the affirmative ordinary-form half (the #148 wording)."
+  },
+  {
+   "row_id": "spa_for_eng:S0412L04U05",
+   "lego_id": "S0412L04",
+   "lego": "we couldn't = no podíamos",
+   "seed": 412,
+   "action": "REWRITE",
+   "live": {
+    "en": "I didn't think we could stay",
+    "es": "no pensé que podíamos quedarnos",
+    "role": "use",
+    "updated_at": "2026-10-13T02:15:29.792Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "I thought we couldn't stay",
+    "es": "pensé que no podíamos quedarnos",
+    "role": "use"
+   },
+   "reason": "'no pensé que' + indicative is the wrong mood; pudiéramos is never taught and would lose the LEGO 'no podíamos'."
+  },
+  {
+   "row_id": "spa_for_eng:S0470L03B01",
+   "lego_id": "S0470L03",
+   "lego": "before we stop = antes de que paremos",
+   "seed": 470,
+   "action": "REWRITE",
+   "live": {
+    "en": "before we stop",
+    "es": "antes de que paremos",
+    "role": "build",
+    "updated_at": "2026-10-12T21:55:26.144Z",
+    "position": 3
+   },
+   "proposed": {
+    "en": "to talk before we stop",
+    "es": "hablar antes de que paremos",
+    "role": "build"
+   },
+   "reason": "P3: the bare-LEGO build gets one plug-in. The trigger stays inside the LEGO."
+  },
+  {
+   "row_id": "spa_for_eng:S0470L03U01",
+   "lego_id": "S0470L03",
+   "lego": "before we stop = antes de que paremos",
+   "seed": 470,
+   "action": "REWRITE",
+   "live": {
+    "en": "she left before we stop",
+    "es": "ella se fue antes de que paremos",
+    "role": "use",
+    "updated_at": "2026-10-13T02:30:02.257Z",
+    "position": 6
+   },
+   "proposed": {
+    "en": "she's leaving before we stop",
+    "es": "ella se va antes de que paremos",
+    "role": "use"
+   },
+   "reason": "'se fue antes de que paremos' mixed past and present subjunctive. The present frame keeps the LEGO, whose own 'antes de que' is the trigger."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0470L03",
+   "lego": "before we stop = antes de que paremos",
+   "seed": 470,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I have to call you before we stop",
+    "es": "tengo que llamarte antes de que paremos",
+    "role": "use"
+   },
+   "reason": "Variety (llamarte s294)."
+  },
+  {
+   "row_id": "spa_for_eng:S0497L02U05",
+   "lego_id": "S0497L02",
+   "lego": "as if you needed to sleep = como si necesitaras dormir",
+   "seed": 497,
+   "action": "DEFER",
+   "live": {
+    "en": "you didn't tell me you needed to sleep",
+    "es": "no me dijiste que necesitaras dormir",
+    "role": "use",
+    "updated_at": "2026-10-13T02:39:31.200Z",
+    "position": 10
+   },
+   "proposed": null,
+   "reason": "Already DELETE in the #159 missing-LEGO draft (d/76df4b54); not repeated here."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02B01",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky",
+    "es": "tengan suerte",
+    "role": "build",
+    "updated_at": "2026-10-12T22:10:41.950Z",
+    "position": 1
+   },
+   "proposed": {
+    "en": "unless they're lucky today",
+    "es": "a menos que tengan suerte hoy",
+    "role": "build"
+   },
+   "reason": "TRIGGER: a menos que. Replaces the bare LEGO; this was #159's NEW-B1 text."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02B02",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "I'm sure that they're lucky",
+    "es": "estoy seguro de que tienen suerte",
+    "role": "build",
+    "updated_at": "2026-11-05T00:48:31.618Z",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I hope they're lucky",
+    "es": "espero que tengan suerte",
+    "role": "build"
+   },
+   "reason": "TRIGGER: espero que (as #159). The live 'estoy seguro de que tienen' lacked the LEGO."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02B03",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "they thought that they're lucky",
+    "es": "pensaban que tenían suerte",
+    "role": "build",
+    "updated_at": "2026-11-05T00:48:35.791Z",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I don't think they're lucky",
+    "es": "no creo que tengan suerte",
+    "role": "build"
+   },
+   "reason": "TRIGGER: no creo que. The live 'pensaban que tenían' lacked the LEGO. This is a rewrite rather than #159's delete."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02U01",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "unless they're lucky",
+    "es": "a menos que tengan suerte",
+    "role": "use",
+    "updated_at": "2026-10-12T18:08:42.761Z",
+    "position": 5
+   },
+   "proposed": {
+    "en": "It's not possible to win unless they're lucky",
+    "es": "no es posible ganar a menos que tengan suerte",
+    "role": "use"
+   },
+   "reason": "TRIGGER: a menos que. Replaces the fragment USE (P7)."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02U02",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky here",
+    "es": "tienen suerte aquí",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:40.429Z",
+    "position": 6
+   },
+   "proposed": {
+    "en": "It's not going to work unless they're lucky",
+    "es": "no va a funcionar a menos que tengan suerte",
+    "role": "use"
+   },
+   "reason": "TRIGGER: a menos que (as #159)."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02U03",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky now",
+    "es": "tienen suerte ahora",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:44.903Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I want them to be lucky tonight",
+    "es": "quiero que tengan suerte esta noche",
+    "role": "use"
+   },
+   "reason": "TRIGGER: quiero que. #159 had 'espero que', which would sit too close to B02."
+  },
+  {
+   "row_id": "spa_for_eng:S0532L02U04",
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "REWRITE",
+   "live": {
+    "en": "they're lucky with everything",
+    "es": "tienen suerte con todo",
+    "role": "use",
+    "updated_at": "2026-11-05T00:48:49.524Z",
+    "position": 8
+   },
+   "proposed": {
+    "en": "It's unusual that they're lucky with everything",
+    "es": "es raro que tengan suerte con todo",
+    "role": "use"
+   },
+   "reason": "TRIGGER: es raro que (s121 frame, as #159)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0532L02",
+   "lego": "they're lucky = tengan suerte",
+   "seed": 532,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I don't think they'll be lucky this time",
+    "es": "no creo que tengan suerte esta vez",
+    "role": "use"
+   },
+   "reason": "TRIGGER: no creo que (the s318 frame)."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L02B01",
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "they wouldn't play",
+    "es": "no pusieran música",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:09.319Z",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I'd like them not to play music",
+    "es": "me gustaría que no pusieran música",
+    "role": "build"
+   },
+   "reason": "TRIGGER: me gustaría que (s170). Replaces the bare LEGO."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L02B02",
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "they wouldn't play late at night",
+    "es": "no pusieran música tarde por la noche",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:08.109Z",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I wish they wouldn't play music here",
+    "es": "ojalá no pusieran música aquí",
+    "role": "build"
+   },
+   "reason": "TRIGGER: ojalá. The live row had no trigger; this avoids duplicating U03."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L02B03",
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "please, they wouldn't play",
+    "es": "por favor, no pusieran música",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:03.555Z",
+    "position": 4
+   },
+   "proposed": {
+    "en": "it would be better if they didn't play music",
+    "es": "sería mejor si no pusieran música",
+    "role": "build"
+   },
+   "reason": "TRIGGER: si (sería mejor s401). Replaces the ungrammatical 'por favor, no pusieran música'."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L02U01",
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "I wish they wouldn't play",
+    "es": "ojalá no pusieran música",
+    "role": "use",
+    "updated_at": "2026-10-12T22:15:16.760Z",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I wish they wouldn't play music",
+    "es": "ojalá no pusieran música",
+    "role": "use"
+   },
+   "reason": "The English was missing 'music'; the Spanish is unchanged."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L02U04",
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "They play music in the office, but I wish they wouldn't play it late at night",
+    "es": "ponen música en la oficina, pero ojalá no la pusieran tarde por la noche",
+    "role": "use",
+    "updated_at": "2026-11-05T00:58:22.912Z",
+    "position": 9
+   },
+   "proposed": {
+    "en": "They play music in the office, but I wish they wouldn't play music so late",
+    "es": "ponen música en la oficina, pero ojalá no pusieran música tan tarde",
+    "role": "use"
+   },
+   "reason": "P17: 'no la pusieran' breaks up the LEGO 'no pusieran música'. This keeps the whole LEGO and the ojalá trigger (tan s129, tarde s16)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I wanted them not to play music late at night",
+    "es": "quería que no pusieran música tarde por la noche",
+    "role": "use"
+   },
+   "reason": "TRIGGER: quería que (s204)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0557L02",
+   "lego": "they wouldn't play = no pusieran música",
+   "seed": 557,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I told them not to play music in the office",
+    "es": "les dije que no pusieran música en la oficina",
+    "role": "use"
+   },
+   "reason": "TRIGGER: dije que, in its 'told them not to' sense (les s286, dije s295)."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L03B02",
+   "lego_id": "S0557L03",
+   "lego": "such loud music = tan alta",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "she was right that they wouldn't play such loud music",
+    "es": "ella tenía razón que no pusieran música tan alta",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:03.913Z",
+    "position": 2
+   },
+   "proposed": {
+    "en": "I'd like them not to play such loud music",
+    "es": "me gustaría que no pusieran música tan alta",
+    "role": "build"
+   },
+   "reason": "TRIGGER: me gustaría que. Replaces 'tenía razón que no pusieran', which had no trigger."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L03B03",
+   "lego_id": "S0557L03",
+   "lego": "such loud music = tan alta",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "I love that they wouldn't play such loud music",
+    "es": "me encanta que no pusieran música tan alta",
+    "role": "build",
+    "updated_at": "2026-10-13T02:58:54.280Z",
+    "position": 3
+   },
+   "proposed": {
+    "en": "I don't like it when they play such loud music",
+    "es": "no me gusta cuando ponen música tan alta",
+    "role": "build"
+   },
+   "reason": "'me encanta que no pusieran' mixed moods. This build is in the ordinary form, 'ponen' (s556)."
+  },
+  {
+   "row_id": "spa_for_eng:S0557L03U03",
+   "lego_id": "S0557L03",
+   "lego": "such loud music = tan alta",
+   "seed": 557,
+   "action": "REWRITE",
+   "live": {
+    "en": "they wouldn't play such loud music",
+    "es": "no pusieran música tan alta",
+    "role": "use",
+    "updated_at": "2026-10-13T02:59:08.258Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I wish they wouldn't play such loud music in the office",
+    "es": "ojalá no pusieran música tan alta en la oficina",
+    "role": "use"
+   },
+   "reason": "TRIGGER: ojalá. The bare version was #148's knock-on; 'en la oficina' avoids duplicating U01."
+  },
+  {
+   "row_id": "spa_for_eng:S0558L01B02",
+   "lego_id": "S0558L01",
+   "lego": "it's so late at night = es tan tarde por la noche",
+   "seed": 558,
+   "action": "REWRITE",
+   "live": {
+    "en": "it's so late at night and they wouldn't play such loud music",
+    "es": "es tan tarde por la noche y no pusieran música tan alta",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:16.218Z",
+    "position": 5
+   },
+   "proposed": {
+    "en": "I wish they wouldn't play such loud music, it's so late at night",
+    "es": "ojalá no pusieran música tan alta, es tan tarde por la noche",
+    "role": "build"
+   },
+   "reason": "TRIGGER: ojalá. The live 'y no pusieran' had no trigger."
+  },
+  {
+   "row_id": "spa_for_eng:S0558L01B03",
+   "lego_id": "S0558L01",
+   "lego": "it's so late at night = es tan tarde por la noche",
+   "seed": 558,
+   "action": "REWRITE",
+   "live": {
+    "en": "I wish it's so late at night before we stop",
+    "es": "ojalá es tan tarde por la noche antes de que paremos",
+    "role": "build",
+    "updated_at": "2026-10-13T02:59:11.305Z",
+    "position": 6
+   },
+   "proposed": {
+    "en": "it's so late at night, do you want to stop?",
+    "es": "es tan tarde por la noche, ¿quieres parar?",
+    "role": "build"
+   },
+   "reason": "Not in #348's list: 'ojalá es tan tarde por la noche antes de que paremos' puts the indicative after ojalá and makes no sense. This is an ordinary-form build (parar s67)."
+  },
+  {
+   "row_id": "spa_for_eng:S0568L04B01",
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "REWRITE",
+   "live": {
+    "en": "that we meet",
+    "es": "que nos veamos",
+    "role": "build",
+    "updated_at": "2026-10-13T03:02:21.117Z",
+    "position": 1
+   },
+   "proposed": {
+    "en": "I hope we meet soon",
+    "es": "espero que nos veamos pronto",
+    "role": "build"
+   },
+   "reason": "TRIGGER: espero que. Replaces the bare LEGO."
+  },
+  {
+   "row_id": "spa_for_eng:S0568L04B02",
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "REWRITE",
+   "live": {
+    "en": "I'm sure that we meet before Thursday",
+    "es": "estoy seguro de que nos veamos antes del jueves",
+    "role": "build",
+    "updated_at": "2026-10-13T03:02:12.693Z",
+    "position": 2
+   },
+   "proposed": {
+    "en": "it's important that we meet before Thursday",
+    "es": "es importante que nos veamos antes del jueves",
+    "role": "build"
+   },
+   "reason": "TRIGGER: es importante que. 'estoy seguro de que' needs the ordinary form; vemos is not taught until s619."
+  },
+  {
+   "row_id": "spa_for_eng:S0568L04U03",
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "REWRITE",
+   "live": {
+    "en": "next time that we meet",
+    "es": "la próxima vez que nos veamos",
+    "role": "use",
+    "updated_at": "2026-10-13T03:02:17.715Z",
+    "position": 6
+   },
+   "proposed": {
+    "en": "I'll call you before we meet",
+    "es": "te llamaré antes de que nos veamos",
+    "role": "use"
+   },
+   "reason": "TRIGGER: antes de que. Replaces the fragment 'la próxima vez que nos veamos', which duplicated U01 (P7)."
+  },
+  {
+   "row_id": "spa_for_eng:S0568L04U04",
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "REWRITE",
+   "live": {
+    "en": "that we meet before",
+    "es": "que nos veamos antes",
+    "role": "use",
+    "updated_at": "2026-10-13T03:02:21.766Z",
+    "position": 7
+   },
+   "proposed": {
+    "en": "I want us to meet before Thursday",
+    "es": "quiero que nos veamos antes del jueves",
+    "role": "use"
+   },
+   "reason": "TRIGGER: quiero que. Replaces the fragment 'que nos veamos antes'."
+  },
+  {
+   "row_id": "spa_for_eng:S0568L04U05",
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "REWRITE",
+   "live": {
+    "en": "that we meet for everyone",
+    "es": "que nos veamos para todos",
+    "role": "use",
+    "updated_at": "2026-10-13T03:02:23.381Z",
+    "position": 8
+   },
+   "proposed": {
+    "en": "I'm not going to say anything until we meet",
+    "es": "no voy a decir nada hasta que nos veamos",
+    "role": "use"
+   },
+   "reason": "TRIGGER: hasta que (s396). Replaces 'que nos veamos para todos', which had no trigger and no sense."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "I love that we meet so often",
+    "es": "me encanta que nos veamos tan a menudo",
+    "role": "use"
+   },
+   "reason": "TRIGGER: me encanta que (s491)."
+  },
+  {
+   "row_id": null,
+   "lego_id": "S0568L04",
+   "lego": "that we meet = que nos veamos",
+   "seed": 568,
+   "action": "NEW",
+   "live": null,
+   "proposed": {
+    "en": "Unless we meet tomorrow, I'll call you",
+    "es": "a menos que nos veamos mañana, te llamaré",
+    "role": "use"
+   },
+   "reason": "TRIGGER: a menos que (s532)."
+  }
+ ]
+}
