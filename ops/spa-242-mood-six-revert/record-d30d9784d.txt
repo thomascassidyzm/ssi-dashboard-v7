@@ -1,0 +1,39 @@
+# spa_for_eng — #170's six workaround rows put back, four triggered intros, S0153L03U13 (#242·AH, 11 Nov)
+
+**Status: LIVE, 0 empty slots on every touched row.** Kai's grant of 11 Nov. Audio: 674 characters, all through POST /api/audio/render (dry run first, library first, one take, no retries).
+
+## Why #170 could not voice these
+Popty's render route refused them with **EXISTS_IN_LANGUAGE** (`services/shared/exists-in-language-guard.cjs`, checked in `services/shared/audio-render-entry.cjs` renderClip). Recordings are kept per language, not per course: if the same Spanish words are already recorded in *any* voice, a new take in this course's own voice counts as a second performance and is refused. Here the only existing takes were off-cast Azure voices (spa_for_jpn, and old spa_for_eng rows). The intros were refused by the re-record gate (`services/shared/rerecord-gate.cjs`, 403 RERECORD_NOT_PERMITTED) for the same reason. The one sanctioned way past both is a re-record grant: Tom's permission row, or Kai's `kai:YYYY-MM-DD:<reason>` approval token on the request (`rerecordGranted`, rerecord-gate.cjs). #170 had neither; this job carried Kai's token, and every ask passed.
+
+## A — six rows back to their intended wording (text event 39aa624a)
+| Row | Was (#170 workaround) | Now |
+|---|---|---|
+| S0119L01B01 | I don't want you to leave now / No quiero que te vayas ahora | I don't want you to leave / **No quiero que te vayas** |
+| S0169L01B03 | Do you want me to do something else? / ¿Quieres que haga algo más? | Do you want me to do something? / **¿Quieres que haga algo?** |
+| S0203L03B01 | I wanted you to help me today / Quería que me ayudaras hoy | I wanted you to help me / **Quería que me ayudaras** |
+| S0370L01B01 | I didn't see anyone I knew today / No vi a nadie que conociera hoy | I didn't see anyone I knew there / **No vi a nadie que conociera allí** |
+| S0238L01B01 | If you told me the truth / Si me dijeras la verdad | If you told me / **Si me dijeras** |
+| S0203L03B03 | If I asked you to help me now / Si te pidiera que me ayudaras ahora | If I asked you to help me with this / **Si te pidiera que me ayudaras con esto** |
+
+Spanish rendered once in both cast voices; English came from the library. Audio went first, so the text-change trigger re-linked the new clips and no row was silent. Nothing deleted.
+
+## B — four intros now carry the trigger (presentation clips linked to the LEGO)
+- S0237L01: The Spanish for: 'me to tell you', as in — 'he wanted me to tell you before the weekend', is: (409cb912)
+- S0249L01: The Spanish for: 'you to help me', as in — 'I want you to help me before you go', is: (d3280de5)
+- S0346L02: The Spanish for: 'her to know', as in — 'I wanted her to know that I liked her book', is: (d359759b)
+- S0526L02: The Spanish for: 'that you can't guess', as in — 'I'm finding it hard to believe that you can't guess', is: (3a289c62)
+
+Each old line had no 'as in' trigger, so this was a new take, not an audio cut.
+
+## C — S0153L03U13
+All three slots filled from the library (link event 91e1fe49 for the known slot).
+
+## Cold check (Sol, #245·AH): 10/11 PASS
+Its one FAIL, S0370L01B01 "'anyone' first taught at seed 490", is a false positive: seed 370's own sentence is "I didn't see anyone that I knew", so the seed teaches it (Kai 19 Oct: the seed defines what is taught), and *nadie* is taught as S0071L03. "anyone" was also in the row before this job. A first check (#244·AH) could not read the course (the /legos endpoint returns 0 rows for spa_for_eng) and was re-run.
+
+## Not done
+- The four new intros are not marked as human-authored (canon PR3), so a later rebuild could overwrite them. #170's 19 are not marked either; the only marking tool is hard-wired to German lines.
+- S0170L01B05 "If you would tell me" also says *Si me dijeras*, still on old off-cast Azure clips; not touched.
+- S0370L01B01 is a draft row, as it was before.
+
+Tool, run results and undo files: tools/course-optimization/spa-242-mood-six-revert-2026-11-11.cjs and ops/spa-242-mood-six-revert/ on branch cs/242-spa-mood-six-revert-and-intros (not merged).
