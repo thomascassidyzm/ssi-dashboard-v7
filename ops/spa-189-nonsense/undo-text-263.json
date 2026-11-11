@@ -1,0 +1,80 @@
+[
+ {
+  "event_id": "2ee6beb4-ac63-4666-a421-56456ad81ae9",
+  "undo_file": "2026-11-11T14-58-23-953Z-2ee6beb4-ac63-4666-a421-56456ad81ae9.json",
+  "ops": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0263L01U13",
+     "seed_number": 263,
+     "lego_index": 1,
+     "position": 20,
+     "known_text": "I know who you mean",
+     "target_text": "Sé a quién te refieres",
+     "word_count": 77,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T20:41:20.210Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-02-17T20:41:20.243Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "qa_checked": "2026-02-17T21:57:27.135Z",
+     "target1_duration_ms": 5256,
+     "target2_duration_ms": 5256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": "Sé",
+       "isGhost": false
+      },
+      {
+       "known": "to",
+       "legoId": "S0216L02",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " quién",
+       "isGhost": true
+      },
+      {
+       "known": "you mean",
+       "legoId": "S0263L01",
+       "target": " te refieres",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   }
+  ]
+ }
+]

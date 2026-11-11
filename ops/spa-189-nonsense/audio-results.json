@@ -1,0 +1,1046 @@
+[
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte el sábado?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6cab261c-74e4-48c4-ae4d-b54f89df0f60",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte el sábado?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4d0f0b0f-b91a-4366-ae8e-fcf123b858f8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave on Saturday?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "240c243a-c31a-4af3-abbc-4b0117630969",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte el domingo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "db4fff26-eb02-44bc-839d-3bb7fb8e7add",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte el domingo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b30b358e-4701-400e-9da5-94f34fb0160d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave on Sunday?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ff41561e-a2f0-4405-a055-aca783b00578",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte la semana que viene?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "bf3c8511-12ac-4c70-9c2d-5f94ae3b18d0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte la semana que viene?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fa0912c3-4154-4d97-b150-df8f98b3163a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave next week?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "983bee6f-3508-4765-9555-8886e25f8357",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte esta noche?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b75f9217-4437-47a6-98b3-06711af2c45b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte esta noche?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "61839117-280f-4a6f-8f31-c2f819cc0004",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave tonight?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "041a1a75-64ea-4ee9-a0b2-0d85f7f19e0a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Empecé a sentirme mejor el fin de semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "02f4f1b1-4e32-4c51-b2ef-892853e2c32c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Empecé a sentirme mejor el fin de semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e33beca8-cc64-4679-a78d-eafe3312f878",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I started to feel better at the weekend",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6e16fefe-77fc-41c0-b001-3a49663a88a2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no puedo ir porque tengo que estar aquí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "45bfdf1d-a0d2-4b4f-9a48-31a0c88e5e74",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no puedo ir porque tengo que estar aquí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "81f93ebc-9452-464f-a5ba-39ce06042460",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I can't go because I have got to be here tomorrow",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b055c2e3-cdcf-4275-84a7-e1c45e8a7bd9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿has encontrado algo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3d5b07e9-4cf3-4761-8443-dbf94388319f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿has encontrado algo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "9a647f97-52a7-4f9b-9b4b-12bf3755ac16",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "have you found anything today?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "0fc01d0a-4981-413a-af84-eeb3e164eb79",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿has encontrado el camino por el bosque hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "962b57a6-bd97-4091-a59a-1dbb2453dd2a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿has encontrado el camino por el bosque hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "529a497c-22d1-4620-87b6-3f0ae664cbf6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "have you found the path through the wood today?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ee734488-74bc-4082-bfee-122c8b2bb1e8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero llegar allí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fb5ce532-cc22-464d-b530-21460e5ad5c6",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero llegar allí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "907acfeb-96c9-4fce-b65c-65dbd675e7a1",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to get there tomorrow",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "042f9c49-a596-4c53-90d4-bb9752aaba77",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hizo la promesa de que sería bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "90a8d61d-4e86-4e45-aefb-45969144a8cd",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hizo la promesa de que sería bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c0cde813-6780-42ea-af17-f778a582bd83",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "he made a promise that it would be good",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ed8be38a-20d7-4460-bb81-f2016b91214d",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hizo la promesa de que sería fácil",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe7350a1-631d-41b5-85be-ba11433b2696",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hizo la promesa de que sería fácil",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f74ea039-2ae3-46b8-9482-d58844a3202c",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "she made a promise that it would be easy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "33bfc797-55c0-4dbe-9886-0f632c58110a",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "deaca564-7456-4076-818e-1c3877b1d5c1",
+   "charsSpent": 85
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fa3af4dd-1055-4ca9-8780-fd2304d5897a",
+   "charsSpent": 85
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's more important to talk with other people than to be perfect when you're learning",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f26508a1-be2d-4853-bfcd-52aff1f3cb54",
+   "charsSpent": 85
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero saber cómo te llamas porque estamos trabajando juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe8c533d-93ea-4610-bfe0-c58a98c4c50c",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero saber cómo te llamas porque estamos trabajando juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ad5ab79d-5e25-41e4-bfa0-b44ac314fe23",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to know what you are called because we are working together",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "aecde214-cebc-449b-8994-82ea9b8c99cb",
+   "charsSpent": 66
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero hacer eso exactamente de la misma manera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8109e7db-722b-4627-ad89-b23eebbc103e",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero hacer eso exactamente de la misma manera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c39d8185-a8c0-4eff-a05f-7e44b4804b91",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to do that in exactly the same way",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6cd5675c-49c7-4e18-aaab-05e3e6e9b1a5",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "known",
+  "text": "I have to find out where he's going to meet me this morning",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0293L03U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dddc2532-abb5-42b4-978a-9070c2881436",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "está muy enfermo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "01aa6bb3-282f-4122-b0ce-285d0604857b",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "está muy enfermo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "eac91ea1-a20b-498c-81ea-efe856d6a35e",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "he is very sick",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "86f9b172-5ade-4423-a1db-52373980a7ee",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ese café es muy fuerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6633bb12-604d-4541-9e19-93ae3989e2b3",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ese café es muy fuerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0034096b-ea08-4290-b4cb-2ef49da5e746",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "that coffee is very strong",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b98f097e-00c3-42c4-a1d3-2b4b47e918d9",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no salgamos fuera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "58b6beb5-dd2a-44a3-b75a-5c16fbb17604",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no salgamos fuera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "66009b4d-d5a2-4f01-bf67-d095fcf9cdb4",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "let's not go outside today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "809998da-2fe0-4399-a30e-2029ae362a5c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que esta toalla no está seca",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f87cda2b-a9ff-4218-8239-e021d803c94c",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que esta toalla no está seca",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e835eabd-df82-4907-93db-6f54a537a2d8",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know this towel isn't dry",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "5c741234-69f3-4e5f-ae01-a113f7b319a0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que es un coche rápido",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d1b39e7-56ed-4fa5-90de-2964cbdf46ea",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que es un coche rápido",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bebdd6e7-0cde-4c3b-aa18-ed2bd61610f0",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think it's a fast car",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3a34396b-8766-4dd2-a80e-6cedf647ef62",
+   "charsSpent": 23
+  }
+ }
+]

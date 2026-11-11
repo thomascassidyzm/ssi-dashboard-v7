@@ -70,13 +70,14 @@ function planText(api, dz = require('../../services/phrase-decomposer.cjs')) {
   const vocabFor = (seed) => legos.filter((l) => l.seed_number <= seed).map((l) => ({ lego_id: l.lego_id, target_text: l.target_text, known_text: l.known_text, seed_number: l.seed_number }));
   for (const [id, d] of Object.entries(DEC.phrases)) {
     const p = P.get(id);
-    if (!p) { problems.push(`${id} gone`); continue; }
+    // RESUME=1 (after a partly-applied run): a deleted row already gone, or an edit already live, is done, not a problem.
+    if (!p) { if (process.env.RESUME === '1' && d.action === 'del') continue; problems.push(`${id} gone`); continue; }
     const expect = { known_text: p.known_text, target_text: p.target_text };
     if (d.action === 'del') { ops.push({ op: 'phrase.delete', phrase_id: p.id, expect }); notes.push(`DEL ${id}: ${p.known_text} | ${p.target_text}`); continue; }
     const set = {};
     if (d.known != null && d.known !== p.known_text) set.known_text = d.known;
     if (d.target != null && d.target !== p.target_text) set.target_text = d.target;
-    if (!Object.keys(set).length) { problems.push(`${id} no change (already applied?)`); continue; }
+    if (!Object.keys(set).length) { if (process.env.RESUME === '1') continue; problems.push(`${id} no change (already applied?)`); continue; }
     const l = L.get(p._lego);
     const dec = dz.decomposeAnchored(set.target_text || p.target_text, vocabFor(l.seed_number), { lego_id: l.lego_id, target_text: l.target_text, known_text: l.known_text }, COURSE);
     if (dec && dec.blocks && dec.kind !== 'error') set.decomposition = dec.blocks; else problems.push(`${id}: decomposer ${dec && dec.kind}`);
@@ -96,6 +97,9 @@ function planAudio(api) {
     if (d.target != null && p.target_text !== d.target) problems.push(`${id} target not applied`);
     if (d.known != null && p.known_text !== d.known) problems.push(`${id} known not applied`);
     const t = { target: 'phrase', phrase_id: p.id };
+    // A slot Popty already filled with a clip of exactly the new text (edit-batch library match) is kept, not re-asked.
+    const fresh = (slot) => p[`${slot}_audio_id`] && (DEC.libraryLinked || {})[`${id}:${slot}`] === p[`${slot}_audio_id`];
+    if (fresh('target1') && fresh('target2')) { if (d.known != null && !p.known_audio_id) add('known', p.known_text, { ...t, slot: 'known', current: null }); continue; }
     if (d.target != null || !p.target1_audio_id) add('target1', p.target_text, { ...t, slot: 'target1', current: p.target1_audio_id });
     if (d.target != null || !p.target2_audio_id) add('target2', p.target_text, { ...t, slot: 'target2', current: p.target2_audio_id });
     if (d.known != null || !p.known_audio_id) add('known', p.known_text, { ...t, slot: 'known', current: p.known_audio_id });
@@ -117,13 +121,22 @@ async function main() {
     const p = planText(api);
     for (const n of p.notes) console.log('  ', n);
     if (p.problems.length) { console.log('STOP:', p.problems); process.exitCode = 1; return; }
-    const dry = await batch({ ops: p.ops });
-    console.log(`dry run ${dry.status} ${dry.body.error || ''} (${p.ops.length} ops)`);
-    if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; return; }
-    if (!apply) return;
-    const ap = await batch({ ops: p.ops, apply: true });
-    console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
-    save('undo-text.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    // The live DB times out (57014) on one 72-op batch under load, so the ops go in small atomic chunks; a timed-out
+    // batch reports applied:false and is simply retried. Each applied chunk is its own event with its own undo.
+    const size = +process.env.CHUNK || 12, undo = [];
+    const tryBatch = async (body) => { let r; for (let i = 0; i < 4; i++) { r = await batch(body); if (r.status === 200 || r.body.code !== '57014') return r; await new Promise((ok) => setTimeout(ok, 15000)); } return r; };
+    for (let i = 0; i < p.ops.length; i += size) {
+      const ops = p.ops.slice(i, i + size);
+      const dry = await tryBatch({ ops });
+      console.log(`chunk ${i / size + 1}: dry run ${dry.status} ${dry.body.error || ''} (${ops.length} ops)`);
+      if (dry.status !== 200) { console.log(JSON.stringify(dry.body).slice(0, 3000)); process.exitCode = 1; break; }
+      if (!apply) continue;
+      const ap = await tryBatch({ ops, apply: true });
+      console.log(`chunk ${i / size + 1}: APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
+      if (ap.status !== 200) { process.exitCode = 1; break; }
+      undo.push({ event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    }
+    if (apply && undo.length) save('undo-text.json', undo);
     return;
   }
   if (mode === 'audio') {
@@ -140,6 +153,7 @@ async function main() {
         const real = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
         spent += real.body.charsSpent || 0;
         results.push({ ...a, real: { status: real.status, source: real.body.source, audioId: real.body.audioId, charsSpent: real.body.charsSpent, code: real.body.code, error: real.body.error } });
+        fs.writeFileSync(path.join(DIR, 'audio-results.json'), JSON.stringify(results, null, 1)); // survives a Popty restart mid-pass
         console.log(`real ${real.status} ${a.role} "${a.text}" → ${real.body.source || real.body.code} ${real.body.audioId || ''} ${real.body.charsSpent || 0}`);
       }
       console.log(`spent ${spent} chars`);

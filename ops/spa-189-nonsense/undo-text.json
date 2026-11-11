@@ -1,0 +1,722 @@
+[
+ {
+  "event_id": "d6de737d-7d4d-49a1-8dfc-702d2388583d",
+  "undo_file": "2026-11-11T14-56-10-675Z-d6de737d-7d4d-49a1-8dfc-702d2388583d.json",
+  "ops": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0535L01B04",
+     "seed_number": 535,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "she made a promise that before",
+     "target_text": "hizo la promesa de que antes",
+     "word_count": 32,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:50:12.009Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2617d86c-674d-46a7-bd71-b0516b1fae3f",
+     "target1_audio_id": "899188f0-62e1-470e-af68-a17a5b426873",
+     "target2_audio_id": "4eeeda0b-4c50-4deb-86e0-84ebb7983a4c",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he made a promise that",
+       "legoId": "S0535L01",
+       "target": "hizo la promesa de que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "before",
+       "legoId": "S0128L05",
+       "target": " antes",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "not",
+       "legoId": "S0218L01",
+       "target": " no",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0535L01B03",
+     "seed_number": 535,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "he made a promise that here",
+     "target_text": "hizo la promesa de que aquí",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:50:12.009Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "902cb95a-96aa-4fa8-a4c2-b7f03b6bd335",
+     "target1_audio_id": "a6fd77e7-ab89-4a54-8297-95646f534f3d",
+     "target2_audio_id": "dd88d360-a5ec-4205-b8ef-61a4825bebef",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he made a promise that",
+       "legoId": "S0535L01",
+       "target": "hizo la promesa de que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aquí,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bien",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0527L01U04",
+     "seed_number": 527,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "guess, yes",
+     "target_text": "adivina, sí",
+     "word_count": 11,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 5,
+      "format": "build_use",
+      "scored_at": "2026-05-28T15:48:06.190Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:48:06.224Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2582caa2-672f-4990-b7b8-d0f4eb3e9371",
+     "target1_audio_id": "705e5074-4b1a-400d-aa32-67fcdb12fe8a",
+     "target2_audio_id": "36162555-f381-4a6f-88c1-9929d1dd4a5f",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "guess",
+       "legoId": "S0527L01",
+       "target": "adivina",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0532L01B03",
+     "seed_number": 532,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "unless it's here, good",
+     "target_text": "a menos que esté aquí, bien",
+     "word_count": 22,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:49:20.695Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8df39fa5-d754-49c0-97f6-698c89f73188",
+     "target1_audio_id": "46e397d2-b8ee-4ecb-98b6-d15c17bf77d3",
+     "target2_audio_id": "81cf0f41-9cc1-49dd-94cf-81459f9e0d6b",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "unless",
+       "legoId": "S0532L01",
+       "target": "a menos que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aquí,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bien",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0528L02B03",
+     "seed_number": 528,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "I'm supposed to keep it here, good",
+     "target_text": "se supone que lo debo guardar aquí, bien",
+     "word_count": 37,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:48:29.420Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3d9a9734-4b14-4748-82d9-ee82c53c8832",
+     "target1_audio_id": "38524200-54e9-4a98-96c3-069116cbe5b1",
+     "target2_audio_id": "e530b55c-7ecd-4700-8d05-44794a72fb92",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "i'm supposed to keep",
+       "legoId": "S0528L02",
+       "target": "se supone que debo guardar",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aquí,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bien",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0522L03B04",
+     "seed_number": 522,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "to tell the truth before, no",
+     "target_text": "decir la verdad antes, no",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:46:51.145Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "855f0fa7-d87e-43c9-83f6-be27b47ae2fa",
+     "target1_audio_id": "926971aa-afd6-4d9e-8b7c-0dbc330ac73b",
+     "target2_audio_id": "8fbc00a2-cd95-4956-9acb-c4b2e25e4170",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to tell the truth",
+       "legoId": "S0522L03",
+       "target": "decir la verdad",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "before",
+       "legoId": "S0128L05",
+       "target": " antes",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "not",
+       "legoId": "S0218L01",
+       "target": " no",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0518L02B03",
+     "seed_number": 518,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "having exactly that, yes",
+     "target_text": "teniendo exactamente eso, sí",
+     "word_count": 28,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:45:31.160Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8033d07d-6fa5-482a-90c5-48c7fe4edede",
+     "target1_audio_id": "1cffac0c-6b1e-4499-81bd-5a3332cf9c7a",
+     "target2_audio_id": "4ed0bcca-a06e-45cf-a843-92ada5596dbe",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "having exactly",
+       "legoId": "S0518L02",
+       "target": "teniendo exactamente",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0151L01",
+       "target": " eso",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0566L02U05",
+     "seed_number": 566,
+     "lego_index": 2,
+     "position": 12,
+     "known_text": "if it had been my choice for everyone",
+     "target_text": "si hubiera sido mi decisión para todos",
+     "word_count": 38,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-05-28T15:58:14.603Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:58:14.645Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0dfa1b0e-d803-41cb-a3c5-c3fc55add851",
+     "target1_audio_id": "f5095079-76d4-439a-8169-99f0c5385d93",
+     "target2_audio_id": "360dce53-2fc5-44c4-b5a3-1fac84d7cda0",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "if it had been my choice",
+       "legoId": "S0566L02",
+       "target": "si hubiera sido mi decisión",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " para",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " todos",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0566L01B03",
+     "seed_number": 566,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "I'd have thought more because he has been playing in the mud",
+     "target_text": "habría pensado más porque ha estado jugando en el barro",
+     "word_count": 55,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "prev_target": "habría pensado más aquí, bien",
+      "regen_model": "sonnet",
+      "regenerated": "template-stamp-2026-07-24"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:58:14.541Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "383cac46-2e69-4365-ba13-cda8e8b91bfe",
+     "target1_audio_id": "ce19891b-fb69-4ba9-8c7b-70a7ee3560a2",
+     "target2_audio_id": "31df2ee3-cecc-40e2-b8a3-ab7148c58999",
+     "qa_checked": null,
+     "target1_duration_ms": 4248,
+     "target2_duration_ms": 4536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "i'd have thought more",
+       "legoId": "S0566L01",
+       "target": "habría pensado más",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aquí,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bien",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0565L02B03",
+     "seed_number": 565,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "to try and breathe slowly, more carefully",
+     "target_text": "intentar respirar despacio, con más cuidado",
+     "word_count": 43,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "prev_target": "con más cuidado antes, sí",
+      "regen_model": "sonnet",
+      "regenerated": "template-stamp-2026-07-24"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:57:56.963Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ff8fb013-0994-4360-9a01-b160a624bc9c",
+     "target1_audio_id": "4009bae2-20c7-4ad1-85cd-b7a108bd26bf",
+     "target2_audio_id": "a34e661f-0b80-4da6-be1a-28881e69bf95",
+     "qa_checked": null,
+     "target1_duration_ms": 3912,
+     "target2_duration_ms": 4464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "more carefully",
+       "legoId": "S0565L02",
+       "target": "con más cuidado",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "before",
+       "legoId": "S0128L05",
+       "target": " antes",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "set": {
+     "known_text": "we'd like it's a fast car",
+     "target_text": "nos gustaría es un coche rápido",
+     "known_audio_id": "81ab9df3-da5a-413a-b721-ce4e3c600ff6",
+     "target1_audio_id": "f2565371-dad2-4a9c-8b00-0ab0e785df29",
+     "target2_audio_id": "b3a44c84-9816-4c37-be2f-674eaa5f68bb",
+     "decomposition": [
+      {
+       "known": "it's a fast car",
+       "legoId": "S0561L02",
+       "target": "es un coche rápido",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "before",
+       "legoId": "S0128L05",
+       "target": " antes",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "not",
+       "legoId": "S0218L01",
+       "target": " no",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "set": {
+     "known_text": "we need this towel isn't dry",
+     "target_text": "necesitamos esta toalla no está seca",
+     "known_audio_id": "e9442289-7f10-43c8-b670-4769c85288f8",
+     "target1_audio_id": "7c80f084-b96e-44d2-b4d2-66a7dd4091a1",
+     "target2_audio_id": "c42766f7-ae23-4707-a514-c1613626cde5",
+     "decomposition": [
+      {
+       "known": "this towel isn't dry",
+       "legoId": "S0554L01",
+       "target": "esta toalla no está seca",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

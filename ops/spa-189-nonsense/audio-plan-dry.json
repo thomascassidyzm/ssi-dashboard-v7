@@ -1,0 +1,963 @@
+[
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte el sábado?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte el sábado?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 52
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave on Saturday?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02B06",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte el domingo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte el domingo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave on Sunday?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte la semana que viene?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 62
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte la semana que viene?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 62
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave next week?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U12",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Cuándo crees que estarás listo para irte esta noche?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Cuándo crees que estarás listo para irte esta noche?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "known",
+  "text": "When do you think you'll be ready to leave tonight?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0255L02U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Empecé a sentirme mejor el fin de semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Empecé a sentirme mejor el fin de semana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "I started to feel better at the weekend",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0214L02U08",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no puedo ir porque tengo que estar aquí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no puedo ir porque tengo que estar aquí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "known",
+  "text": "I can't go because I have got to be here tomorrow",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0549L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 49
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿has encontrado algo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿has encontrado algo hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "have you found anything today?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿has encontrado el camino por el bosque hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿has encontrado el camino por el bosque hoy?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "have you found the path through the wood today?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0559L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero llegar allí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero llegar allí mañana",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to get there tomorrow",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0562L02U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hizo la promesa de que sería bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hizo la promesa de que sería bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "he made a promise that it would be good",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "hizo la promesa de que sería fácil",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "hizo la promesa de que sería fácil",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "she made a promise that it would be easy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0535L01U03",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Es más importante hablar con otras personas que ser perfecto cuando estás aprendiendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "It's more important to talk with other people than to be perfect when you're learning",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0137L03U13",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero saber cómo te llamas porque estamos trabajando juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero saber cómo te llamas porque estamos trabajando juntos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to know what you are called because we are working together",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0150L03U14",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero hacer eso exactamente de la misma manera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero hacer eso exactamente de la misma manera",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to do that in exactly the same way",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U09",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "I have to find out where he's going to meet me this morning",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0293L03U11",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "está muy enfermo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "está muy enfermo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "he is very sick",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0477L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ese café es muy fuerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ese café es muy fuerte",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "that coffee is very strong",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0489L01U05",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no salgamos fuera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no salgamos fuera hoy",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "let's not go outside today",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0534L01U04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sé que esta toalla no está seca",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sé que esta toalla no está seca",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "I know this towel isn't dry",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0554L01B02",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que es un coche rápido",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que es un coche rápido",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think it's a fast car",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0561L02B04",
+    "slot": "known",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "note": "second dry pass hit BULK_DRY_RUN_ON_LIVE (hourly dry-run cap); first pass 14:57Z returned 200 for this ask"
+  }
+ }
+]

@@ -324,14 +324,13 @@
    ]
   },
   "S0256L01U11": {
-   "action": "upd",
+   "action": "del",
    "group": "D",
-   "known": "I think I'll be ready in less than an hour today",
-   "target": "Creo que estaré listo en menos de una hora hoy",
    "was": [
     "I think I'll be ready in less than an hour this weekend",
     "Creo que estaré listo en menos de una hora este fin de semana"
-   ]
+   ],
+   "why": "#192·AH check: 'today' bolted on, no clear context -> delete per doubtful-rewrite policy"
   },
   "S0256L01U12": {
    "action": "del",
@@ -364,12 +363,13 @@
   "S0559L01U05": {
    "action": "upd",
    "group": "D",
-   "known": "have you found that today?",
-   "target": "¿has encontrado eso hoy?",
+   "known": "have you found anything today?",
+   "target": "¿has encontrado algo hoy?",
    "was": [
     "have you found it yesterday?",
     "¿has encontrado eso ayer?"
-   ]
+   ],
+   "why": "#192·AH fix: natural search question"
   },
   "S0559L02U04": {
    "action": "upd",
@@ -458,24 +458,26 @@
    ]
   },
   "S0212L01U08": {
-   "action": "upd",
+   "action": "del",
    "group": "E",
-   "known": "They didn't want to wait any more",
-   "target": "No querían esperar más",
    "was": [
     "They didn't want to wait any longer than was important",
     "No querían esperar más de lo que era importante"
-   ]
+   ],
+   "why": "#192·AH check: didn't want = no querían / no quisieron ambiguity -> delete per doubtful-rewrite policy"
   },
   "S0263L01U13": {
-   "action": "upd",
+   "action": "del",
    "group": "E",
-   "known": "I know who you mean",
-   "target": "Sé a quién te refieres",
    "was": [
     "Who do you mean because I agree with what you said about your friend?",
     "¿A quién te refieres porque estoy de acuerdo con lo que dijiste sobre tu amigo?"
-   ]
+   ],
+   "applied_text": [
+    "I know who you mean",
+    "Sé a quién te refieres"
+   ],
+   "why": "rewrite applied (event in text-events.txt) but its only clip in spa is another course's known-side Azure clip, so render is refused (EXISTS_IN_LANGUAGE) and needs a re-record grant; 'I don't know who you mean' already exists in the course, so DELETED instead (basket U15->U14)"
   },
   "S0293L03U11": {
    "action": "upd",
@@ -490,12 +492,13 @@
   "S0477L01U05": {
    "action": "upd",
    "group": "E",
-   "known": "he is so sick",
-   "target": "está tan enfermo",
+   "known": "he is very sick",
+   "target": "está muy enfermo",
    "was": [
     "that is so sick",
     "eso es tan enfermo"
-   ]
+   ],
+   "why": "#192·AH fix: bare 'tan' sounds unfinished"
   },
   "S0481L03U04": {
    "action": "del",
@@ -546,34 +549,31 @@
    ]
   },
   "S0565L02B03": {
-   "action": "upd",
+   "action": "del",
    "group": "E",
-   "known": "to try and breathe more carefully",
-   "target": "intentar respirar con más cuidado",
    "was": [
     "to try and breathe slowly, more carefully",
     "intentar respirar despacio, con más cuidado"
-   ]
+   ],
+   "why": "#192·AH check: 'breathe more carefully' no clear everyday meaning -> delete per doubtful-rewrite policy"
   },
   "S0566L01B03": {
-   "action": "upd",
+   "action": "del",
    "group": "E",
-   "known": "I'd have thought more because it's very important",
-   "target": "habría pensado más porque es muy importante",
    "was": [
     "I'd have thought more because he has been playing in the mud",
     "habría pensado más porque ha estado jugando en el barro"
-   ]
+   ],
+   "why": "#192·AH check: contrived reason -> delete per doubtful-rewrite policy"
   },
   "S0566L02U05": {
-   "action": "upd",
+   "action": "del",
    "group": "E",
-   "known": "if it had been my choice I'd have thought more",
-   "target": "si hubiera sido mi decisión habría pensado más",
    "was": [
     "if it had been my choice for everyone",
     "si hubiera sido mi decisión para todos"
-   ]
+   ],
+   "why": "#192·AH check: reverse-clause twin of an existing basket line -> delete per doubtful-rewrite policy"
   },
   "S0518L02B03": {
    "action": "del",
@@ -648,5 +648,10 @@
    ],
    "why": "Deborah: ha sido encantador (LEGO S0567L01) — is ha sido un placer what a native says?"
   }
- }
+ },
+ "libraryLinked": {
+  "S0293L03U11:target1": "66b371aa-753e-487a-918a-a5497a2a4f4a",
+  "S0293L03U11:target2": "de02344b-7501-4069-af23-01e4f36b2928"
+ },
+ "libraryLinked_note": "clips of exactly the new target text, already in spa_for_eng target slots (render route named them in its 409), kept"
 }
