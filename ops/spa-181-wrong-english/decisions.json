@@ -67,41 +67,11 @@
    "target": "Queremos ver lo que estás haciendo con otra persona",
    "why": "'what you are doing speaking with another person' is ungainly English; Spanish is fine."
   },
-  "S0122L04U02": {
-   "family": "B copied small word",
-   "action": "upd",
-   "known": "I am very excited about what I am learning here now",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
-  },
-  "S0122L04U04": {
-   "family": "B copied small word",
-   "action": "upd",
-   "known": "My friend is very excited about what he is doing",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
-  },
-  "S0122L04U06": {
-   "family": "B copied small word",
-   "action": "upd",
-   "known": "I am very excited about everything I am learning at this moment",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
-  },
-  "S0122L04U08": {
-   "family": "B copied small word",
-   "action": "upd",
-   "known": "It is starting to get easier and I am excited about how it is going",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
-  },
-  "S0122L04U09": {
-   "family": "B copied small word",
-   "action": "upd",
-   "known": "I am excited about how it is going and I want to keep learning",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
-  },
   "S0122L05U05": {
    "family": "B copied small word",
    "action": "upd",
-   "known": "I am excited about how it goes and I want to keep learning more",
-   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it"
+   "known": "I am excited about how it's going and I want to keep learning more",
+   "why": "adopted from #188·AH: 'how it goes' unnatural for progress; precedent S0122L05U03 (I'm excited about how it's going <-> estoy emocionado con cómo va)"
   },
   "S0122L05U07": {
    "family": "B copied small word",
@@ -123,36 +93,6 @@
    "family": "C tense",
    "action": "del",
    "why": "'what you try to show me' is not native English for an ongoing attempt.; fixed English would duplicate U09"
-  },
-  "S0140L01U02": {
-   "family": "C tense",
-   "action": "upd",
-   "known": "I know what you're trying to say",
-   "why": "'I know what you try to say' is not native English."
-  },
-  "S0140L01U03": {
-   "family": "C tense",
-   "action": "upd",
-   "known": "I know what you're trying to explain",
-   "why": "'what you try to explain' -> 'you're trying'."
-  },
-  "S0140L01U04": {
-   "family": "C tense",
-   "action": "upd",
-   "known": "I can see what you're trying to do",
-   "why": "'what you try to do' -> 'you're trying'."
-  },
-  "S0140L01U05": {
-   "family": "C tense",
-   "action": "upd",
-   "known": "I want to know what you're trying to do",
-   "why": "'what you try to do' -> 'you're trying'."
-  },
-  "S0140L01U06": {
-   "family": "C tense",
-   "action": "upd",
-   "known": "I enjoy what you're trying to show me",
-   "why": "'what you try to show me' -> 'you're trying' (habitual reading is possible but strained)."
   },
   "S0146L03U02": {
    "family": "C tense",
@@ -257,7 +197,8 @@
    "family": "E commas/order",
    "action": "upd",
    "known": "I had a glass very quickly in the morning",
-   "why": "'a very quick glass' is odd English; 'muy rápido' is the adverb"
+   "why": "'a very quick glass' is odd English; 'muy rápido' is the adverb",
+   "check_note": "#188·AH FAILed this (prompt incomplete/underspecified); applied anyway: group E ruled by Kai as proposed on these exact rows, and the edit only improves the live text"
   },
   "S0251L01U02": {
    "family": "D garbled",
@@ -380,13 +321,15 @@
    "family": "E commas/order",
    "action": "upd",
    "known": "do you want, sir?",
-   "why": "without the comma the voice reads 'sir' as the object"
+   "why": "without the comma the voice reads 'sir' as the object",
+   "check_note": "#188·AH FAILed this (prompt incomplete/underspecified); applied anyway: group E ruled by Kai as proposed on these exact rows, and the edit only improves the live text"
   },
   "S0643L01U02": {
    "family": "E commas/order",
    "action": "upd",
    "known": "do you want, madam?",
-   "why": "same"
+   "why": "same",
+   "check_note": "#188·AH FAILed this (prompt incomplete/underspecified); applied anyway: group E ruled by Kai as proposed on these exact rows, and the edit only improves the live text"
   },
   "S0644L01U06": {
    "family": "D garbled",
@@ -399,6 +342,78 @@
    "action": "upd",
    "known": "anyone could help you, madam",
    "why": "'whoever could help you' is not a sentence"
+  }
+ },
+ "held": {
+  "S0122L04U02": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am very excited about what I am learning here now",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0122L04U04": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "My friend is very excited about what he is doing",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0122L04U06": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am very excited about everything I am learning at this moment",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0122L04U08": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "It is starting to get easier and I am excited about how it is going",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0122L04U09": {
+   "family": "B copied small word",
+   "action": "upd",
+   "known": "I am excited about how it is going and I want to keep learning",
+   "why": "precedent: seed 122 itself teaches \"excited about\" <-> emocionado con (Kai's about<->con example); S0122L05U03 already says it",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0140L01U02": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I know what you're trying to say",
+   "why": "'I know what you try to say' is not native English.",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0140L01U03": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I know what you're trying to explain",
+   "why": "'what you try to explain' -> 'you're trying'.",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0140L01U04": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I can see what you're trying to do",
+   "why": "'what you try to do' -> 'you're trying'.",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0140L01U05": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I want to know what you're trying to do",
+   "why": "'what you try to do' -> 'you're trying'.",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
+  },
+  "S0140L01U06": {
+   "family": "C tense",
+   "action": "upd",
+   "known": "I enjoy what you're trying to show me",
+   "why": "'what you try to show me' -> 'you're trying' (habitual reading is possible but strained).",
+   "held": "independent check #188·AH (astra): the only precedent is the seed's own sentence, which the learner meets after this basket; held for Kai: does a seed count as precedent for its own baskets?"
   }
  }
 }
