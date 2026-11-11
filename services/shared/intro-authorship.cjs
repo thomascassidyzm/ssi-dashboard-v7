@@ -10,7 +10,9 @@
  *
  *   • When a rebuild/rewrite would replace an intro that carries hand-authored wording — an
  *     "as in" clause, a line no template produces, or a mark — do NOT block.
- *   • WARN: show the old line and the new one.
+ *   • WARN THE AGENT doing the rebuild (Kai's correction, same day: the warning is for the
+ *     agent, not for Kai — no UI prompt): show the old line and the new one, in the API answer
+ *     and the rebuild log, so the agent decides whether to carry the old wording over.
  *   • SUGGEST carrying the old "as in" example into the new line, but only where it still makes
  *     sense: a rewrite may have changed the LEGO, and an example that no longer contains the
  *     words being introduced must not be carried (intro-mirror.cjs's rule: a context has to
@@ -18,7 +20,8 @@
  *
  * Everything here is pure: it takes texts, the course's compiled templates and an optional mark,
  * and returns a warning object or null. Callers (phase8 /regenerate-presentations, /generate's
- * authoring step, /regenerate-presentation, the Script Viewer) report it; nothing here writes.
+ * authoring step, /regenerate-presentation) put it in their JSON answer (`introWarnings` /
+ * `introWarning`) and their log, addressed to the calling agent; nothing here writes.
  *
  * WHY "AS IN" COUNTS EVEN THOUGH THE TEMPLATE ALSO WRITES ONE. Frame B of the template is itself
  * an as-in line, so an as-in clause alone does not prove a human wrote it. It does not need to: a
@@ -149,10 +152,10 @@ function rewriteWarning({ legoId, oldText = null, newText, knownText, mark = nul
         suggestion = stripMarkup(newText).replace(newAsIn, sig.asIn)
       }
       advice = suggestion
-        ? `the old example still contains '${chunk}' — suggest carrying it: "${suggestion}"`
-        : `the old example still contains '${chunk}' — carry it into the new line by hand`
+        ? `the old example still contains '${chunk}', so it can be carried over — suggested line: "${suggestion}"`
+        : `the old example still contains '${chunk}', so it can be carried into the new line`
     } else {
-      advice = `the old example '${sig.asIn}' no longer contains '${chunk}' (the LEGO has changed), so it cannot simply be carried — write a new example by hand, or accept the new line`
+      advice = `the old example '${sig.asIn}' no longer contains '${chunk}' (the LEGO has changed), so it cannot simply be carried — write a new example that fits, or accept the new line`
     }
   } else {
     // A free line or a marked line with no as-in: the old words are the suggestion if they
@@ -160,9 +163,9 @@ function rewriteWarning({ legoId, oldText = null, newText, knownText, mark = nul
     fits = !!chunk && quotes(stripMarkup(reference), chunk)
     if (fits) {
       suggestion = stripMarkup(reference)
-      advice = `the old wording still quotes '${chunk}' — suggest keeping it`
+      advice = `the old wording still quotes '${chunk}', so it can be kept`
     } else {
-      advice = `the old wording no longer quotes '${chunk}' (the LEGO has changed) — reword it by hand, or accept the new line`
+      advice = `the old wording no longer quotes '${chunk}' (the LEGO has changed) — reword it to fit, or accept the new line`
     }
   }
 
@@ -178,7 +181,7 @@ function rewriteWarning({ legoId, oldText = null, newText, knownText, mark = nul
     new_example: newAsIn,
     example_still_fits: fits,
     suggestion,
-    message: `WARNING ${legoId}: this would replace ${what}. Old: "${stripMarkup(reference)}" New: "${stripMarkup(newText)}" — ${advice}. Not blocked.`,
+    message: `WARNING ${legoId}: this would replace ${what}. Old: "${stripMarkup(reference)}" New: "${stripMarkup(newText)}" — ${advice}. Not blocked: you (the agent running this rebuild) decide whether to carry the old wording over — e.g. POST /regenerate-presentation/<course>/<lego> with { text: <your line> }.`,
   }
 }
 
@@ -233,11 +236,11 @@ function warningsFor(ctx, items, { hardMarkedIds = null } = {}) {
   return out
 }
 
-/** One plain line for logs and progress feeds. */
+/** One plain line for the rebuild log and the answer's introWarningSummary. */
 function summariseWarnings(warnings) {
   if (!warnings || !warnings.length) return null
   const fits = warnings.filter(w => w.suggestion).length
-  return `${warnings.length} intro(s) carrying hand-authored wording would be replaced (not blocked): ${fits} with a suggestion to carry the old wording, ${warnings.length - fits} where it no longer fits the LEGO. See introWarnings.`
+  return `${warnings.length} intro(s) carrying hand-authored wording would be replaced (not blocked): ${fits} with a suggestion to carry the old wording, ${warnings.length - fits} where it no longer fits the LEGO. Not blocked — the calling agent decides, per introWarnings.`
 }
 
 module.exports = {

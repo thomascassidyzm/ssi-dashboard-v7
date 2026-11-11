@@ -2998,7 +2998,7 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
 
     // THE SOFT GUARD (Kai, 2026-11-11, job #247·AH): what in this line is
     // hand-authored wording — its "as in" example, a line no template makes, a
-    // soft mark — so the Script Viewer can warn before an edit drops it.
+    // soft mark — so an agent about to rewrite this intro can see it first.
     let authorship = null
     if (!humanAuthoredMark && data?.text) {
       try {

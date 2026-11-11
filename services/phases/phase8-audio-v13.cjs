@@ -3107,7 +3107,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           const summary = introAuthorship.summariseWarnings(authorIntroWarnings)
           if (summary) {
             for (const w of authorIntroWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
-            emitProgress(supabase, courseCode, `WARNING: ${summary}`, { phase: 'audio', action: 'intro-soft-guard', count: authorIntroWarnings.length, lego_ids: authorIntroWarnings.map(w => w.lego_id).slice(0, 50) })
+            logger.warn(`[IntroSoftGuard] ${courseCode}: ${summary}`)
           }
         }
       } catch (guardErr) {
@@ -5425,9 +5425,6 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     })
 
     emitProgress(supabase, courseCode, `Presentation text regenerated: ${presentations.length} LEGOs, ${componentPresentations.length} components — ready for audio generation`, { phase: 'audio', action: 'regenerate-presentations', legos: presentations.length, components: componentPresentations.length })
-    if (introWarningSummary) {
-      emitProgress(supabase, courseCode, `WARNING: ${introWarningSummary}`, { phase: 'audio', action: 'intro-soft-guard', count: introWarnings.length, lego_ids: introWarnings.map(w => w.lego_id).slice(0, 50) })
-    }
 
   } catch (error) {
     logger.error('Regenerate presentations error:', error)
