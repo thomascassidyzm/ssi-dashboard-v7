@@ -780,6 +780,9 @@ function runSpendCap(plannedItems, { ceilingChars = Infinity, ratio = RENDER_ATT
     cap.spent += chars
     cap.renders++
   }
+  // Whether checkProgress(attached) would trip. The route asks this first so it
+  // can confirm against a measured count before stopping a pass (job #221·AH).
+  cap.wouldTrip = (attached) => !cap.tripped && cap.renders >= warmup && cap.renders > ratio * Math.max(0, attached || 0)
   // Call after each batch with every slot the pass has filled so far.
   cap.checkProgress = (attached) => {
     if (cap.tripped || cap.renders < warmup) return
@@ -824,6 +827,33 @@ const TEXT_SLOT_COLUMNS = {
   known:   [['course_practice_phrases', 'known_text', 'known_audio_id'], ['course_legos', 'known_text', 'known_audio_id'], ['course_seeds', 'known_text', 'known_audio_id']],
   target1: [['course_practice_phrases', 'target_text', 'target1_audio_id'], ['course_legos', 'target_text', 'target1_audio_id'], ['course_seeds', 'target_text', 'target1_audio_id']],
   target2: [['course_practice_phrases', 'target_text', 'target2_audio_id'], ['course_legos', 'target_text', 'target2_audio_id'], ['course_seeds', 'target_text', 'target2_audio_id']],
+}
+
+/**
+ * MEASURED FILLS (job #221·AH, 2026-11-11). The render/attach breaker's own
+ * tally is attributed: each render counts the slots attachClipToNullSlots can
+ * tie to its clip by EXACT text. Slots filled any other way — the
+ * audio_autolink trigger matching on normalize_text (a spelling variant of the
+ * line), a sibling clip of the same normalised words, the paged linker — are
+ * filled but not attributed. On ara_eg/ara_lb (prod warm-up 400) every pass
+ * stopped at exactly 400 calls with 68–88 slots attributed while the course
+ * really was filling. So before the breaker stops a pass it MEASURES: the
+ * course's empty text slots in the pass's roles, now vs at pass start. The
+ * count is course-wide, so a concurrent edit that adds rows can only make it
+ * read low (the safe direction); it is only taken when the breaker is about to
+ * trip, so a healthy pass pays nothing for it. Returns null if any count fails
+ * — the breaker then falls back to its attributed tally, unchanged.
+ */
+async function countEmptyTextSlots(courseCode, roles) {
+  let total = 0
+  for (const role of new Set(roles || [])) {
+    for (const [table, , audioCol] of (TEXT_SLOT_COLUMNS[role] || [])) {
+      const { count, error } = await supabase.from(table).select(audioCol, { count: 'exact', head: true }).eq('course_code', courseCode).is(audioCol, null)
+      if (error || typeof count !== 'number') return null
+      total += count
+    }
+  }
+  return total
 }
 
 /**
@@ -3601,6 +3631,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       return { success: true, item }
     }
 
+    // Baseline for the breaker's measured-fill check (countEmptyTextSlots).
+    const textRolesInPass = [...new Set(uniqueNeeded.map(n => n.role).filter(r => TEXT_SLOT_COLUMNS[r]))]
+    const emptyTextSlotsAtStart = textRolesInPass.length ? await countEmptyTextSlots(courseCode, textRolesInPass) : null
+
     // Process in parallel batches
     for (let i = 0; i < uniqueNeeded.length; i += concurrencyToUse) {
       // Check for cancellation at the start of each batch
@@ -3622,7 +3656,17 @@ app.post('/generate/:courseCode', async (req, res) => {
       ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
       for (const r of batchResults) if (r.status === 'rejected' && isSpendGuardRefusal(r.reason)) spendCap.noteGuardRefusal(r.reason.message)
-      spendCap.checkProgress(results.attached + results.midLinked)
+      let filledSoFar = results.attached + results.midLinked
+      if (spendCap.wouldTrip(filledSoFar) && emptyTextSlotsAtStart !== null) {
+        const emptyNow = await countEmptyTextSlots(courseCode, textRolesInPass)
+        if (emptyNow !== null) {
+          const measured = emptyTextSlotsAtStart - emptyNow
+          if (measured > filledSoFar) logger.info(`[SpendCap] ${courseCode}: attributed ${filledSoFar} filled slot(s), measured ${measured} (empty ${emptyTextSlotsAtStart} → ${emptyNow}) — breaker judges on the measured count`)
+          filledSoFar = Math.max(filledSoFar, measured)
+        }
+      }
+      results.filledMeasured = filledSoFar
+      spendCap.checkProgress(filledSoFar)
       if (spendCap.tripped && !currentWork.cancelled) {
         logger.error(`[SpendCap] ${courseCode}: ${spendCap.tripped} — stopping this pass`)
         currentWork.cancelled = true
@@ -10287,6 +10331,7 @@ module.exports = app
 // Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
 module.exports.attachClipToNullSlots = attachClipToNullSlots
+module.exports.countEmptyTextSlots = countEmptyTextSlots
 module.exports.findExistingAudio = findExistingAudio
 module.exports.findAudioRowForClip = findAudioRowForClip
 module.exports.siblingPodClipIds = siblingPodClipIds
