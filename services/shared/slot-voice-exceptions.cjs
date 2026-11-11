@@ -22,6 +22,16 @@ const EXCEPTIONS = Object.freeze([
     voiceId: 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9', // Tom-006
     ruling: 'Kai 2026-11-11 14:44Z, job #205·AH: S0059L02 intro only, Tom-006',
   }),
+  // spa_for_eng's intros are Charlotte splices. Kai ruled 2026-11-11 15:03Z (job #212·AH) that the intro of S0182L04
+  // alone — "The Spanish for: 'anywhere', as in — 'have you seen my keys anywhere?', is:" (the as-in that shows
+  // en algún sitio's question sense) — is rendered whole in Tom-006, as for swe S0059L02, not spliced.
+  Object.freeze({
+    courseCode: 'spa_for_eng',
+    legoId: 'S0182L04',
+    role: 'presentation',
+    voiceId: 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9', // Tom-006
+    ruling: 'Kai 2026-11-11 15:03Z, job #212·AH: S0182L04 intro only, Tom-006',
+  }),
 ])
 
 /** The exception that lets `voiceId` into this one slot, or null (the normal voice check applies). */

@@ -20,6 +20,10 @@ const DIR = path.join(__dirname, '../../ops/spa-212-anywhere');
 const DEC = JSON.parse(fs.readFileSync(path.join(DIR, 'decisions.json'), 'utf8'));
 const PURPOSE = 'spa_for_eng S0182L04 anywhere as-in intro (#212, Kai ruling 11 Nov 14:55Z)';
 
+// Kai 2026-11-11 15:03Z: the S0182L04 intro is rendered WHOLE in Tom-006 (one-slot exception, services/shared/slot-voice-exceptions.cjs),
+// replacing old banned-xAI clips of the same words, which the re-record gate counts — hence Kai's approval token.
+const TOM006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9';
+const KAI_APPROVAL = 'kai:2026-11-11:spa S0182L04 anywhere as-in intro in Tom-006, job #212';
 const sid = (id) => String(id).split(':').pop();
 const toks = (s) => (String(s || '').toLowerCase().match(/[a-záéíóúñü]+/g) || []);
 const flat = (s) => ' ' + toks(s).join(' ') + ' ';
@@ -89,14 +93,14 @@ function planAudio(api) {
     if (d.known != null || !p.known_audio_id) add('known', p.known_text, { ...t, slot: 'known', current: p.known_audio_id });
   }
   const l = L.get(DEC.lego);
-  add('presentation', DEC.intro.text, { target: 'lego', lego_id: l.lego_id, slot: 'presentation', current: l.presentation_audio_id }, { legoId: l.lego_id });
+  add('presentation', DEC.intro.text, { target: 'lego', lego_id: l.lego_id, slot: 'presentation', current: l.presentation_audio_id }, { legoId: l.lego_id, voiceId: TOM006, approval: KAI_APPROVAL });
   return { asks: [...asks.values()], problems };
 }
 
 async function post(url, body) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; }
 const batch = (body) => post(`${POPTY}/api/production/${COURSE}/edit-batch`, body);
 const save = (name, obj) => { const f = path.join(DIR, name); fs.writeFileSync(f, JSON.stringify(obj, null, 1)); console.log('wrote', f); };
-const renderBody = (a, dryRun) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}), ...(dryRun ? { dryRun: true } : {}) });
+const renderBody = (a, dryRun) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}), ...(a.voiceId ? { voiceId: a.voiceId } : {}), ...(a.approval ? { approval: a.approval } : {}), job: '#212', ...(dryRun ? { dryRun: true } : {}) });
 
 async function main() {
   const [mode, file] = process.argv.slice(2);

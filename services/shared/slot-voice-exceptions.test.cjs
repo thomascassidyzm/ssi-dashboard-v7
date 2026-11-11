@@ -11,13 +11,18 @@ describe('one-slot voice exceptions', () => {
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: 'S0059L02', role: 'presentation', voiceId: TOM })).toBeTruthy()
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: 'S0059L02', role: 'presentation', voiceId: 'd293d509-eb96-4df4-8cfd-80a693aa49a9' })).toBeTruthy()
   })
+  it('lets Tom-006 into spa_for_eng S0182L04 presentation only (Kai 2026-11-11 15:03Z)', () => {
+    expect(slotVoiceException({ courseCode: 'spa_for_eng', legoId: 'S0182L04', role: 'presentation', voiceId: TOM })).toBeTruthy()
+    expect(slotVoiceException({ courseCode: 'spa_for_eng', legoId: 'S0182L04', role: 'presentation', voiceId: CHARLOTTE })).toBeNull()
+  })
   it('is no general bypass: other slot, role, course or voice is checked as normal', () => {
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: 'S0059L01', role: 'presentation', voiceId: TOM })).toBeNull()
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: 'S0059L02', role: 'known', voiceId: TOM })).toBeNull()
     expect(slotVoiceException({ courseCode: 'kor_for_eng', legoId: 'S0059L02', role: 'presentation', voiceId: TOM })).toBeNull()
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: 'S0059L02', role: 'presentation', voiceId: CHARLOTTE })).toBeNull()
     expect(slotVoiceException({ courseCode: 'swe_for_eng', legoId: null, role: 'presentation', voiceId: TOM })).toBeNull()
-    expect(EXCEPTIONS).toHaveLength(1)
+    expect(EXCEPTIONS).toHaveLength(2)
+    expect(slotVoiceException({ courseCode: 'spa_for_eng', legoId: 'S0182L03', role: 'presentation', voiceId: TOM })).toBeNull()
   })
   it('the S0059L02 intro line is sent with the IPA does', () => {
     expect(courseSpokenFor({ courseCode: 'swe_for_eng', text: "The Swedish for: 'does', is:" })).toBe("The Swedish for: '<<ˈ|d|ʌ|z>>', is:")
