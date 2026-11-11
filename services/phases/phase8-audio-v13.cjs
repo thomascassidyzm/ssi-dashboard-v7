@@ -839,10 +839,16 @@ const TEXT_SLOT_COLUMNS = {
  * stopped at exactly 400 calls with 68–88 slots attributed while the course
  * really was filling. So before the breaker stops a pass it MEASURES: the
  * course's empty text slots in the pass's roles, now vs at pass start. The
- * count is course-wide, so a concurrent edit that adds rows can only make it
- * read low (the safe direction); it is only taken when the breaker is about to
- * trip, so a healthy pass pays nothing for it. Returns null if any count fails
- * — the breaker then falls back to its attributed tally, unchanged.
+ * count is course-wide, so a concurrent edit that ADDS empty rows (or nulls
+ * links) can only make it read low (the safe direction). The UNSAFE direction
+ * is another writer FILLING or DELETING empty slots on the same course
+ * mid-pass (a second /generate on that course — the route has no busy guard —
+ * a link-clip, a phrase batch-delete): those read as this pass's fills and can
+ * hold the breaker open on a pass that attaches nothing. In that case only the
+ * run budget (runSpendCap.charge) stops the pass. It is only taken when the
+ * breaker is about to trip, so a healthy pass pays nothing for it. Returns
+ * null if any count fails — the breaker then falls back to its attributed
+ * tally, unchanged (it trips as before).
  */
 async function countEmptyTextSlots(courseCode, roles) {
   let total = 0
