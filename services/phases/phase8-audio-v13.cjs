@@ -4977,19 +4977,29 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // with a suggestion to carry the old example where it still contains the
     // LEGO. Nothing is blocked and nothing is substituted: the run writes what
     // it always wrote. Hard-marked LEGOs are left to the hard guard above.
-    const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
-    const introWarnings = introAuthorship.warningsFor(introCtx, presentations.map(p => ({
-      lego_id: p.lego_id,
-      oldText: existingByLegoId.get(p.lego_id)?.text || null,
-      newText: p.presentation_text,
-      knownText: p.known,
-    })), { hardMarkedIds: new Set(presentations.filter(p => p.human_authored).map(p => p.lego_id)) })
-    const introWarningSummary = introAuthorship.summariseWarnings(introWarnings)
-    if (introWarningSummary) {
-      logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarningSummary}`)
-      for (const w of introWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+    // Warn-only means it can never take the rebuild down: any failure here
+    // leaves no warnings and the run carries on exactly as it did before (#254).
+    let introWarnings = []
+    let introWarningSummary = null
+    try {
+      const introCtx = await introAuthorship.loadIntroContext(supabase, course, { activeTemplate: template })
+      introWarnings = introAuthorship.warningsFor(introCtx, presentations.map(p => ({
+        lego_id: p.lego_id,
+        oldText: existingByLegoId.get(p.lego_id)?.text || null,
+        newText: p.presentation_text,
+        knownText: p.known,
+      })), { hardMarkedIds: new Set(presentations.filter(p => p.human_authored).map(p => p.lego_id)) })
+      introWarningSummary = introAuthorship.summariseWarnings(introWarnings)
+      if (introWarningSummary) {
+        logger.warn(`[IntroSoftGuard] ${courseCode}: ${introWarningSummary}`)
+        for (const w of introWarnings) logger.warn(`[IntroSoftGuard] ${w.message}`)
+      }
+      for (const p of introCtx.problems) logger.warn(`[IntroSoftGuard] ${courseCode}: ${p} — warnings made from what could be read`)
+    } catch (guardErr) {
+      introWarnings = []
+      introWarningSummary = null
+      logger.warn(`[IntroSoftGuard] ${courseCode}: could not check intros for hand-authored wording (${guardErr.message}) — rebuild carries on`)
     }
-    for (const p of introCtx.problems) logger.warn(`[IntroSoftGuard] ${courseCode}: ${p} — warnings made from what could be read`)
 
     if (dryRun) {
       return res.json({

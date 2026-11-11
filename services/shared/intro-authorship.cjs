@@ -211,8 +211,10 @@ async function loadIntroContext(supabase, course, { activeTemplate = null } = {}
   } catch (e) { problems.push(`soft marks unreadable: ${e.message}`) }
   let targetLangName = null
   try { targetLangName = localisedLangName(course.target_lang, course.known_lang) } catch (_) { /* no suggestion text then */ }
+  let compiled = []
+  try { compiled = compileAll(templates, course.known_lang) } catch (e) { problems.push(`templates uncompilable: ${e.message}`) }
   return {
-    compiled: compileAll(templates, course.known_lang),
+    compiled,
     template: activeTemplate || templates[0] || null,
     targetLangName, knownLang: course.known_lang, softMarks, problems,
   }
