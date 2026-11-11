@@ -1223,21 +1223,6 @@
   },
   {
    "stage": "sweep",
-   "lego_id": "S0225L03",
-   "phrase_id": "S0225L03U11",
-   "action": "upd",
-   "before": {
-    "known": "You will help me before I have to leave if I could give you more time",
-    "target": "Vas a ayudarme antes de que tenga que irme si pudiera darte más tiempo",
-    "role": "use"
-   },
-   "why": "'Vas a ayudarme … si pudiera' puts a future with a past-subjunctive if-clause; conditional main clause as the seed (daría s225; ayudaría is not taught until s229)",
-   "known": "I would give you more time if I could",
-   "target": "Te daría más tiempo si pudiera",
-   "role": "use"
-  },
-  {
-   "stage": "sweep",
    "lego_id": "S0238L01",
    "phrase_id": "S0238L01B01",
    "action": "upd",
@@ -1488,17 +1473,11 @@
   {
    "stage": "sweep",
    "lego_id": "S0409L02",
-   "phrase_id": "S0409L02B03",
-   "action": "upd",
-   "before": {
-    "known": "we do it here",
-    "target": "hagamos aquí",
-    "role": "build"
-   },
-   "why": "'hagamos aquí' lacked the LEGO and meant nothing",
+   "action": "new",
    "known": "it doesn't matter to me what we do",
    "target": "no me importa lo que hagamos",
-   "role": "build"
+   "role": "build",
+   "why": "'hagamos aquí' lacked the LEGO and meant nothing — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the basket floor"
   },
   {
    "stage": "sweep",
@@ -1533,17 +1512,11 @@
   {
    "stage": "sweep",
    "lego_id": "S0419L02",
-   "phrase_id": "S0419L02U03",
-   "action": "upd",
-   "before": {
-    "known": "it's important that people appreciate",
-    "target": "es importante que la gente aprecie",
-    "role": "use"
-   },
-   "why": "'es importante que la gente aprecie' lacked 'les' (P17) and an object in English; now B02 carries es importante, so espero que",
+   "action": "new",
    "known": "I hope people appreciate them",
    "target": "espero que la gente les aprecie",
-   "role": "use"
+   "role": "use",
+   "why": "'es importante que la gente aprecie' lacked 'les' (P17) and an object in English; now B02 carries es importante, so espero que — the old row was deleted by another job on 11 Nov before this applied, so the fixed text is added as a NEW row to keep the basket floor"
   },
   {
    "stage": "sweep",
