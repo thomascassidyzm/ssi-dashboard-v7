@@ -133,7 +133,7 @@ async function main() {
     if (apply) {
       // The real pass reads the dry-run plan (the door caps dry runs per hour) and skips asks a guard refused — those go to a person.
       const prior = JSON.parse(fs.readFileSync(path.join(DIR, 'audio-plan-dry.json'), 'utf8'));
-      const refused = new Set(prior.filter((r) => r.dry.status !== 200).map((r) => `${r.role}\u0000${r.text}`));
+      const refused = new Set(prior.filter((r) => r.dry.status !== 200 && r.dry.code !== 'BULK_DRY_RUN_ON_LIVE') /* the dry-run hourly cap is not a refusal: the real call runs the guard itself */.map((r) => `${r.role}\u0000${r.text}`));
       let spent = 0;
       for (const a of asks) {
         if (refused.has(`${a.role}\u0000${a.text}`)) { results.push({ ...a, real: { skipped: 'refused in dry run — held for a person' } }); continue; }
