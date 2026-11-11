@@ -1,37 +1,202 @@
 {
  "note": "spa_for_eng #348 'missing small word' family, job #167, under Kai's three rulings of 11 Nov 2026. Each row re-read live in full. family = which ruling covers it.",
  "phrases": {
-  "S0112L05U10": {"action":"upd","known":"I agree with you that that was very interesting and I wasn't expecting it","target":"Estoy de acuerdo contigo en que eso fue muy interesante y no lo esperaba","family":"one-off","why":"estar de acuerdo con… en que; English gets its second 'that'"},
-  "S0117L03U14": {"action":"upd","known":"I want to do much better than the last time we spoke Spanish","target":"Lo quiero hacer mucho mejor que la última vez que hablamos español","family":"lo (doing better)","why":"hacer mejor needs lo, proclitic as taught at S0072; 'contigo' (with you) contradicted 'we spoke', dropped with 'together'"},
-  "S0117L03U18": {"action":"del","family":"lo (doing better)","why":"needs 'intentar hacerlo'; enclitic -lo untaught at seed 117; basket keeps 7 build / 19 use"},
-  "S0163L02U10": {"action":"upd","target":"Eso de lo que estábamos hablando fue muy interesante","family":"one-off","why":"hablar de needs its de; 'de lo que estábamos hablando' taught (S0143)"},
-  "S0171L01U05": {"action":"upd","known":"Do you want me to help you find out what the answer is?","target":"¿Quieres que te ayude a descubrir cuál es la respuesta?","family":"one-off","why":"bare descubrir with no object; seed 18's 'descubrir cuál es la respuesta'"},
-  "S0181L01U14": {"action":"upd","target":"Voy a llevar mis cosas a mi amigo antes de irme","family":"irme","why":"leave with no destination = irme"},
-  "S0182L04U07": {"action":"upd","target":"Necesito poner mis llaves en algún sitio seguro antes de irme","family":"irme","why":"go with no destination = irme"},
-  "S0184L02U14": {"action":"upd","target":"Vi lo que le dijo ayer y creo que le estaba intentando ayudar a hablar español mejor","family":"me/le","why":"'dijo a él' / 'ayudar a él' need the clitic le; proclitic le before a finite verb"},
-  "S0220L02U04": {"action":"upd","known":"I know I should practise but I watched a bit of television","target":"Sé que debería practicar pero vi un poco de televisión","family":"Kai ruling 3","why":"drop 'instead' on both sides (en vez de untaught until 502)"},
-  "S0225L02U07": {"action":"upd","target":"¿Sabes cuál es la respuesta porque lo estoy intentando descubrir?","family":"one-off","why":"descubrir needs an object; proclitic lo"},
-  "S0225L03U12": {"action":"upd","known":"I am not sure if I can remember the whole phrase but if I could it would be better","target":"No estoy seguro de si puedo recordar toda la frase pero si pudiera sería mejor","family":"one-off","why":"two clauses ran together; but / pero links them"},
-  "S0229L01U06": {"action":"upd","target":"Esa mujer es una de las personas que no conozco todavía pero parece amable","family":"one-off","why":"'one of the people' needs una"},
-  "S0248L03B03": {"action":"upd","target":"Quiero que me lo devuelvan","family":"me lo devuelvan","why":"English has 'it'"},
-  "S0262L01U06": {"action":"upd","target":"Me dijo quién era ese hombre","family":"me/le","why":"told me = me dijo"},
-  "S0262L01U17": {"action":"upd","target":"Él le dijo quién era ese hombre","family":"me/le","why":"told her = le dijo"},
-  "S0264L01U07": {"action":"upd","target":"Vi a un hombre mayor que quería escribir una carta a su amigo","family":"personal a","why":"specific person as object"},
-  "S0275L01U04": {"action":"upd","target":"Creo que necesito más tiempo para entender todo lo que ella me dijo","family":"me/le","why":"said to me = me dijo"},
-  "S0286L01U04": {"action":"del","family":"personal a","why":"missing personal a AND subjectless 'intentar ayudar'; the fix needs untaught 'intenta'; basket keeps 5 build / 12 use"},
-  "S0288L03U07": {"action":"upd","target":"Ella conoce a la mayoría de las personas a las que les gusta ver la televisión aquí","family":"personal a","why":"personal a, and la mayoría de las personas"},
-  "S0330L02B02": {"action":"upd","target":"el español es muy difícil","family":"one-off","why":"a language as subject takes the article"},
-  "S0389L01U03": {"action":"upd","target":"vi a esa persona de allí","family":"personal a","why":"personal a"},
-  "S0389L01U04": {"action":"upd","target":"¿viste a esa persona de allí?","family":"personal a","why":"personal a"},
-  "S0474L01U02": {"action":"upd","target":"a él ni siquiera le importa","family":"one-off","why":"importar takes an indirect object: a él … le importa"},
-  "S0492L02U02": {"action":"upd","target":"¿a cuál de esos lugares quieres ir?","family":"one-off","why":"ir a: the a goes before the interrogative"},
-  "S0525L02B03": {"action":"upd","known":"she told him that you've been able to finish before Thursday","target":"ella le dijo que has podido terminar antes del jueves","family":"que (reported speech)","why":"reported speech needs que"},
-  "S0554L01B03": {"action":"upd","target":"le dije que esta toalla no está seca","family":"que (reported speech)","why":"reported speech needs que"},
-  "S0554L01B04": {"action":"upd","known":"she said that this towel isn't dry","target":"dijo que esta toalla no está seca","family":"que (reported speech)","why":"reported speech needs que; 'near the entrance' hung off the wrong clause"},
-  "S0573L01U04": {"action":"upd","known":"it's the kind of thing that you need to know","target":"es el tipo de cosa que necesitas saber","family":"one-off","why":"'necesitas pensar' drops the en of pensar en; saber keeps it taught"},
-  "S0639L02U05": {"action":"del","family":"Kai ruling 2","why":"'puedo ayudar a usted' ungrammatical; ayudarle not taught until 645 — delete, don't bring it forward"},
-  "S0642L01U03": {"action":"del","family":"Kai ruling 2","why":"as S0639L02U05"},
-  "S0646L01U05": {"action":"upd","target":"creo que lo está haciendo bien, señora","family":"lo (doing well)","why":"doing well = lo está haciendo bien"},
-  "S0661L01U02": {"action":"upd","target":"puedo ver que lo estáis haciendo bien","family":"lo (doing well)","why":"doing well = lo estáis haciendo bien"}
- }
+  "S0112L05U10": {
+   "action": "upd",
+   "known": "I agree with you that that was very interesting and I wasn't expecting it",
+   "target": "Estoy de acuerdo contigo en que eso fue muy interesante y no lo esperaba",
+   "family": "one-off",
+   "why": "estar de acuerdo con… en que; English gets its second 'that'"
+  },
+  "S0117L03U14": {
+   "action": "upd",
+   "known": "I want to do much better than the last time we spoke Spanish",
+   "target": "Lo quiero hacer mucho mejor que la última vez que hablamos español",
+   "family": "lo (doing better)",
+   "why": "hacer mejor needs lo, proclitic as taught at S0072; 'contigo' (with you) contradicted 'we spoke', dropped with 'together'"
+  },
+  "S0117L03U18": {
+   "action": "del",
+   "family": "lo (doing better)",
+   "why": "needs 'intentar hacerlo'; enclitic -lo untaught at seed 117; basket keeps 7 build / 19 use"
+  },
+  "S0163L02U10": {
+   "action": "upd",
+   "target": "Eso de lo que estábamos hablando fue muy interesante",
+   "family": "one-off",
+   "why": "hablar de needs its de; 'de lo que estábamos hablando' taught (S0143)"
+  },
+  "S0171L01U05": {
+   "action": "upd",
+   "known": "Do you want me to help you find out what the answer is?",
+   "target": "¿Quieres que te ayude a descubrir cuál es la respuesta?",
+   "family": "one-off",
+   "why": "bare descubrir with no object; seed 18's 'descubrir cuál es la respuesta'"
+  },
+  "S0181L01U14": {
+   "action": "upd",
+   "target": "Voy a llevar mis cosas a mi amigo antes de irme",
+   "family": "irme",
+   "why": "leave with no destination = irme"
+  },
+  "S0182L04U07": {
+   "action": "upd",
+   "target": "Necesito poner mis llaves en algún sitio seguro antes de irme",
+   "family": "irme",
+   "why": "go with no destination = irme"
+  },
+  "S0184L02U14": {
+   "action": "upd",
+   "target": "Vi lo que le dijo ayer y creo que le estaba intentando ayudar a hablar español mejor",
+   "family": "me/le",
+   "why": "'dijo a él' / 'ayudar a él' need the clitic le; proclitic le before a finite verb"
+  },
+  "S0220L02U04": {
+   "action": "upd",
+   "known": "I know I should practise but I watched a bit of television",
+   "target": "Sé que debería practicar pero vi un poco de televisión",
+   "family": "Kai ruling 3",
+   "why": "drop 'instead' on both sides (en vez de untaught until 502)"
+  },
+  "S0225L02U07": {
+   "action": "upd",
+   "target": "¿Sabes cuál es la respuesta porque lo estoy intentando descubrir?",
+   "family": "one-off",
+   "why": "descubrir needs an object; proclitic lo"
+  },
+  "S0225L03U12": {
+   "action": "upd",
+   "known": "I am not sure if I can remember the whole phrase but if I could it would be better",
+   "target": "No estoy seguro de si puedo recordar toda la frase pero si pudiera sería mejor",
+   "family": "one-off",
+   "why": "two clauses ran together; but / pero links them"
+  },
+  "S0229L01U06": {
+   "action": "upd",
+   "target": "Esa mujer es una de las personas que no conozco todavía pero parece amable",
+   "family": "one-off",
+   "why": "'one of the people' needs una"
+  },
+  "S0248L03B03": {
+   "action": "upd",
+   "target": "Quiero que me lo devuelvan",
+   "family": "me lo devuelvan",
+   "why": "English has 'it'"
+  },
+  "S0262L01U06": {
+   "action": "upd",
+   "target": "Me dijo quién era ese hombre",
+   "family": "me/le",
+   "why": "told me = me dijo"
+  },
+  "S0262L01U17": {
+   "action": "upd",
+   "target": "Él le dijo quién era ese hombre",
+   "family": "me/le",
+   "why": "told her = le dijo"
+  },
+  "S0264L01U07": {
+   "action": "upd",
+   "target": "Vi a un hombre mayor que quería escribir una carta a su amigo",
+   "family": "personal a",
+   "why": "specific person as object"
+  },
+  "S0275L01U04": {
+   "action": "upd",
+   "target": "Creo que necesito más tiempo para entender todo lo que ella me dijo",
+   "family": "me/le",
+   "why": "said to me = me dijo"
+  },
+  "S0286L01U04": {
+   "action": "del",
+   "family": "personal a",
+   "why": "missing personal a AND subjectless 'intentar ayudar'; the fix needs untaught 'intenta'; basket keeps 5 build / 12 use"
+  },
+  "S0288L03U07": {
+   "action": "upd",
+   "target": "Ella conoce a la mayoría de las personas de aquí a las que les gusta ver la televisión",
+   "family": "personal a",
+   "why": "personal a, la mayoría de las personas; 'de aquí' moved beside personas to match 'the people here' (second-pass #172·AH)"
+  },
+  "S0330L02B02": {
+   "action": "upd",
+   "target": "el español es muy difícil",
+   "family": "one-off",
+   "why": "a language as subject takes the article"
+  },
+  "S0389L01U03": {
+   "action": "upd",
+   "target": "vi a esa persona de allí",
+   "family": "personal a",
+   "why": "personal a"
+  },
+  "S0389L01U04": {
+   "action": "upd",
+   "target": "¿viste a esa persona de allí?",
+   "family": "personal a",
+   "why": "personal a"
+  },
+  "S0474L01U02": {
+   "action": "upd",
+   "target": "a él ni siquiera le importa",
+   "family": "one-off",
+   "why": "importar takes an indirect object: a él … le importa"
+  },
+  "S0492L02U02": {
+   "action": "upd",
+   "target": "¿a cuál de esos lugares quieres ir?",
+   "family": "one-off",
+   "why": "ir a: the a goes before the interrogative"
+  },
+  "S0525L02B03": {
+   "action": "upd",
+   "known": "she told him that you've been able to finish before Thursday",
+   "target": "ella le dijo que has podido terminar antes del jueves",
+   "family": "que (reported speech)",
+   "why": "reported speech needs que"
+  },
+  "S0554L01B03": {
+   "action": "upd",
+   "target": "le dije que esta toalla no está seca",
+   "family": "que (reported speech)",
+   "why": "reported speech needs que"
+  },
+  "S0554L01B04": {
+   "action": "upd",
+   "known": "she said that this towel isn't dry",
+   "target": "dijo que esta toalla no está seca",
+   "family": "que (reported speech)",
+   "why": "reported speech needs que; 'near the entrance' hung off the wrong clause"
+  },
+  "S0573L01U04": {
+   "action": "upd",
+   "known": "it's the kind of thing that you need to know",
+   "target": "es el tipo de cosa que necesitas saber",
+   "family": "one-off",
+   "why": "'necesitas pensar' drops the en of pensar en; saber keeps it taught"
+  },
+  "S0639L02U05": {
+   "action": "del",
+   "family": "Kai ruling 2",
+   "why": "'puedo ayudar a usted' ungrammatical; ayudarle not taught until 645 — delete, don't bring it forward"
+  },
+  "S0642L01U03": {
+   "action": "del",
+   "family": "Kai ruling 2",
+   "why": "as S0639L02U05"
+  },
+  "S0646L01U05": {
+   "action": "upd",
+   "target": "creo que lo está haciendo bien, señora",
+   "family": "lo (doing well)",
+   "why": "doing well = lo está haciendo bien"
+  },
+  "S0661L01U02": {
+   "action": "upd",
+   "target": "puedo ver que lo estáis haciendo bien",
+   "family": "lo (doing well)",
+   "why": "doing well = lo estáis haciendo bien"
+  }
+ },
+ "second_pass": "#172·AH (astra, cross-family): 31 PASS, 1 HOLD (S0288L03U07 aquí placement) — adopted its fix"
 }
