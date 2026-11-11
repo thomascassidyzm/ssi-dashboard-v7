@@ -175,12 +175,6 @@
    "target": "Lo que hago es intentar escuchar con mucho cuidado antes de decir algo",
    "why": "'What I do so far' is awkward in both languages"
   },
-  "S0203L03B05": {
-   "family": "D garbled",
-   "action": "upd",
-   "known": "If I asked you to help me",
-   "why": "'If I asked you that you would help me' is not English"
-  },
   "S0213L03U05": {
    "family": "D garbled",
    "action": "upd",
@@ -402,6 +396,15 @@
    "action": "upd",
    "known": "I enjoy what you're trying to show me",
    "why": "'what you try to show me' -> 'you're trying' (habitual reading is possible but strained).; #188·AH failed it for precedent, Kai 11 Nov (restating 19 Oct): a seed's own sentence counts as precedent for its own baskets"
+  }
+ },
+ "already_live": {
+  "S0203L03B05": {
+   "family": "D garbled",
+   "action": "upd",
+   "known": "If I asked you to help me",
+   "why": "'If I asked you that you would help me' is not English",
+   "skipped": "already live with this exact text, edit event f4d67fc6 at 15:31Z 11 Nov by another job; not touched by #181"
   }
  }
 }
