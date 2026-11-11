@@ -1,0 +1,2452 @@
+[
+ {
+  "id": "S0350L01U05",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0350L01",
+   "some old friends",
+   "unos viejos amigos",
+   true
+  ],
+  "live_known": "he told me about some old friends",
+  "live_target": "él me dijo sobre unos viejos amigos",
+  "action": "rewrite-both",
+  "new_known": "he told me something about some old friends",
+  "new_target": "él me dijo algo sobre unos viejos amigos",
+  "why_348": "'decir sobre' -> 'decir algo sobre'",
+  "proposal_255": [
+   "he told me something about some old friends",
+   "él me dijo algo sobre unos viejos amigos"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 10
+  },
+  "checks": []
+ },
+ {
+  "id": "S0434L02U03",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0434L02",
+   "students they take",
+   "los estudiantes que aceptan",
+   true
+  ],
+  "live_known": "can you tell me about the students they take?",
+  "live_target": "¿puedes decirme de los estudiantes que aceptan?",
+  "action": "rewrite-both",
+  "new_known": "can you tell me something about the students they take?",
+  "new_target": "¿puedes decirme algo sobre los estudiantes que aceptan?",
+  "why_348": "'decirme de'",
+  "proposal_255": [
+   "can you tell me about the students they take?",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0462L01U03",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0462L01",
+   "grandfather",
+   "abuelo",
+   true
+  ],
+  "live_known": "I want to tell you about my grandfather",
+  "live_target": "quiero decirte de mi abuelo",
+  "action": "rewrite-both",
+  "new_known": "I want to tell you something about my grandfather",
+  "new_target": "quiero decirte algo sobre mi abuelo",
+  "why_348": "'decirte de'",
+  "proposal_255": [
+   "I want to tell you about my grandfather",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0464L02B02",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "build",
+  "lego": [
+   "S0464L02",
+   "I told her",
+   "le dije",
+   true
+  ],
+  "live_known": "I told her about it",
+  "live_target": "le dije de eso",
+  "action": "rewrite-both",
+  "new_known": "I told her that",
+  "new_target": "le dije eso",
+  "why_348": "'decir de eso'",
+  "proposal_255": [
+   "I told her that",
+   "le dije eso"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0464L02U04",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0464L02",
+   "I told her",
+   "le dije",
+   true
+  ],
+  "live_known": "I told her about the hotel",
+  "live_target": "le dije del hotel",
+  "action": "rewrite-both",
+  "new_known": "I told her something about the hotel",
+  "new_target": "le dije algo sobre el hotel",
+  "why_348": "'decir del hotel'",
+  "proposal_255": [
+   "I told her something about the hotel",
+   "le dije algo del hotel"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0464L02U05",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0464L02",
+   "I told her",
+   "le dije",
+   true
+  ],
+  "live_known": "I told her about my grandfather",
+  "live_target": "le dije de mi abuelo",
+  "action": "rewrite-both",
+  "new_known": "I told her something about my grandfather",
+  "new_target": "le dije algo sobre mi abuelo",
+  "why_348": "'decir de'",
+  "proposal_255": [
+   "I told her something about my grandfather",
+   "le dije algo de mi abuelo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0464L02U06",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0464L02",
+   "I told her",
+   "le dije",
+   true
+  ],
+  "live_known": "I told her about the war",
+  "live_target": "le dije de la guerra",
+  "action": "rewrite-both",
+  "new_known": "I told her something about the war",
+  "new_target": "le dije algo sobre la guerra",
+  "why_348": "'decir de'",
+  "proposal_255": [
+   "I told her something about the war",
+   "le dije algo de la guerra"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0602L01U04",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0602L01",
+   "first",
+   "primer",
+   true
+  ],
+  "live_known": "she told me about the first place",
+  "live_target": "me dijo del primer lugar",
+  "action": "rewrite-both",
+  "new_known": "she told me something about the first place",
+  "new_target": "me dijo algo sobre el primer lugar",
+  "why_348": "'me dijo del primer lugar' is not Spanish",
+  "proposal_255": [
+   "she told me about the first place",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0465L02B03",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "build",
+  "lego": [
+   "S0465L02",
+   "I will ask her",
+   "le preguntaré",
+   true
+  ],
+  "live_known": "I will ask her about",
+  "live_target": "le preguntaré de",
+  "action": "rewrite-spanish-only",
+  "new_known": "I will ask her about",
+  "new_target": "le preguntaré sobre",
+  "why_348": "'preguntar de'",
+  "proposal_255": [
+   "I will ask her about",
+   "le preguntaré sobre"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0465L02B04",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "build",
+  "lego": [
+   "S0465L02",
+   "I will ask her",
+   "le preguntaré",
+   true
+  ],
+  "live_known": "I will ask her about the room",
+  "live_target": "le preguntaré de la habitación",
+  "action": "rewrite-spanish-only",
+  "new_known": "I will ask her about the room",
+  "new_target": "le preguntaré sobre la habitación",
+  "why_348": "'preguntar de'",
+  "proposal_255": [
+   "I will ask her about the room",
+   "le preguntaré sobre la habitación"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0465L02U02",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0465L02",
+   "I will ask her",
+   "le preguntaré",
+   true
+  ],
+  "live_known": "I will ask her about my room",
+  "live_target": "le preguntaré de mi habitación",
+  "action": "rewrite-spanish-only",
+  "new_known": "I will ask her about my room",
+  "new_target": "le preguntaré sobre mi habitación",
+  "why_348": "'preguntar de'",
+  "proposal_255": [
+   "I will ask her about my room",
+   "le preguntaré sobre mi habitación"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0465L02U05",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0465L02",
+   "I will ask her",
+   "le preguntaré",
+   true
+  ],
+  "live_known": "I will ask her about my grandfather",
+  "live_target": "le preguntaré de mi abuelo",
+  "action": "rewrite-spanish-only",
+  "new_known": "I will ask her about my grandfather",
+  "new_target": "le preguntaré sobre mi abuelo",
+  "why_348": "'preguntar de'",
+  "proposal_255": [
+   "I will ask her about my grandfather",
+   "le preguntaré sobre mi abuelo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0465L02U06",
+  "group": "A",
+  "group_name": "\"tell / ask about\": Spanish uses de or a bare sobre where the course teaches tell something about = decir algo sobre, ask about = preguntar sobre",
+  "role": "use",
+  "lego": [
+   "S0465L02",
+   "I will ask her",
+   "le preguntaré",
+   true
+  ],
+  "live_known": "I will ask her about the war",
+  "live_target": "le preguntaré de la guerra",
+  "action": "rewrite-spanish-only",
+  "new_known": "I will ask her about the war",
+  "new_target": "le preguntaré sobre la guerra",
+  "why_348": "'preguntar de'",
+  "proposal_255": [
+   "I will ask her about the war",
+   "le preguntaré sobre la guerra"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0183L02U02",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0183L02",
+   "I haven't seen them",
+   "no las he visto",
+   true
+  ],
+  "live_known": "Have you seen them today because I haven't seen them anywhere this morning?",
+  "live_target": "¿Las has visto hoy porque no las he visto en algún sitio esta mañana?",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'no ... en algún sitio' needs 'ningún sitio' after negation",
+  "proposal_255": [
+   "Have you seen them today? I haven't seen them this morning",
+   "¿Las has visto hoy? No las he visto esta mañana"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 9
+  },
+  "checks": []
+ },
+ {
+  "id": "S0184L03U08",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0184L03",
+   "office",
+   "oficina",
+   true
+  ],
+  "live_known": "I'm afraid I have not seen your bag anywhere in the office since this morning",
+  "live_target": "Me temo que no he visto tu bolso en algún sitio en la oficina desde esta mañana",
+  "action": "rewrite-both",
+  "new_known": "I'm afraid I have not seen your bag in the office since this morning",
+  "new_target": "Me temo que no he visto tu bolso en la oficina desde esta mañana",
+  "why_348": "'no he visto ... en algún sitio' needs 'ningún sitio'",
+  "proposal_255": [
+   "I'm afraid I have not seen your bag in the office since this morning",
+   "Me temo que no he visto tu bolso en la oficina desde esta mañana"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0184L03U15",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0184L03",
+   "office",
+   "oficina",
+   true
+  ],
+  "live_known": "I have not seen her anywhere in the office since this morning and I'm afraid she may have gone home already",
+  "live_target": "No la he visto en algún sitio en la oficina desde esta mañana y me temo que ya fue a casa",
+  "action": "rewrite-both",
+  "new_known": "I have not seen her in the office since this morning and I'm afraid she's already at home",
+  "new_target": "No la he visto en la oficina desde esta mañana y me temo que ya está en casa",
+  "why_348": "'no ... en algún sitio' needs 'ningún'; 'ya fue a casa' also wrong",
+  "proposal_255": [
+   "I have not seen her in the office since this morning and I'm afraid she is at home already",
+   "No la he visto en la oficina desde esta mañana y me temo que ya está en casa"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0185L01U01",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0185L01",
+   "you left",
+   "dejaste",
+   true
+  ],
+  "live_known": "I think you left your book somewhere in the office but I'm afraid I haven't seen it anywhere today",
+  "live_target": "Creo que dejaste tu libro en algún sitio en la oficina pero me temo que no lo he visto en algún sitio hoy",
+  "action": "rewrite-both",
+  "new_known": "I think you left your book somewhere in the office but I'm afraid I haven't seen it today",
+  "new_target": "Creo que dejaste tu libro en algún sitio en la oficina pero me temo que no lo he visto hoy",
+  "why_348": "'no lo he visto en algún sitio' needs 'ningún'",
+  "proposal_255": [
+   "I think you left your book somewhere in the office but I'm afraid I haven't seen it today",
+   "Creo que dejaste tu libro en algún sitio en la oficina pero me temo que no lo he visto hoy"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 6
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('somewhere', 377)]"
+  ]
+ },
+ {
+  "id": "S0185L01U07",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0185L01",
+   "you left",
+   "dejaste",
+   true
+  ],
+  "live_known": "Where do you think you left your letter because I cannot find it anywhere?",
+  "live_target": "¿Dónde crees que dejaste tu carta porque no la puedo encontrar en algún sitio?",
+  "action": "rewrite-both",
+  "new_known": "Where do you think you left your letter?",
+  "new_target": "¿Dónde crees que dejaste tu carta?",
+  "why_348": "'no la puedo encontrar en algún sitio' needs 'ningún'",
+  "proposal_255": [
+   "Where do you think you left your letter? I cannot find it",
+   "¿Dónde crees que dejaste tu carta? No la puedo encontrar"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0182L04U02",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0182L04",
+   "anywhere",
+   "en algún sitio",
+   true
+  ],
+  "live_known": "We need to find somewhere to meet before we start practicing together",
+  "live_target": "Necesitamos encontrar en algún sitio para reunirnos antes de empezar a practicar juntos",
+  "action": "rewrite-both",
+  "new_known": "We need to meet somewhere before we start practising together",
+  "new_target": "Necesitamos reunirnos en algún sitio antes de empezar a practicar juntos",
+  "why_348": "'encontrar en algún sitio para reunirnos' gives encontrar no object",
+  "proposal_255": [
+   "We need to meet somewhere before we start practising together",
+   "Necesitamos reunirnos en algún sitio antes de empezar a practicar juntos"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 10
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('somewhere', 377), ('practising', None)]"
+  ]
+ },
+ {
+  "id": "S0182L04U04",
+  "group": "B",
+  "group_name": "\"anywhere\" after a negative (\"no ... en algún sitio\" needs ningún, untaught until 376) and \"find somewhere to\" (encontrar with no object)",
+  "role": "use",
+  "lego": [
+   "S0182L04",
+   "anywhere",
+   "en algún sitio",
+   true
+  ],
+  "live_known": "She said she wanted to find somewhere to read her book this afternoon",
+  "live_target": "Dijo que quería encontrar en algún sitio para leer su libro esta tarde",
+  "action": "rewrite-both",
+  "new_known": "She said she wanted to read her book somewhere this afternoon",
+  "new_target": "Dijo que quería leer su libro en algún sitio esta tarde",
+  "why_348": "'encontrar en algún sitio para leer' gives encontrar no object",
+  "proposal_255": [
+   "She said she wanted to read her book somewhere this afternoon",
+   "Dijo que quería leer su libro en algún sitio esta tarde"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 10
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('somewhere', 377)]"
+  ]
+ },
+ {
+  "id": "S0110L03U13",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0110L03",
+   "to relax",
+   "relajarme",
+   true
+  ],
+  "live_known": "I want to relax a little now but I would also like to keep trying to speak Spanish later today",
+  "live_target": "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español después hoy",
+  "action": "rewrite-both",
+  "new_known": "I want to relax a little now but I would also like to keep trying to speak Spanish later on",
+  "new_target": "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español más tarde",
+  "why_348": "'después hoy' is not Spanish for 'later today'.",
+  "proposal_255": [
+   "I want to relax a little now but I would also like to keep trying to speak Spanish later today",
+   "Quiero relajarme un poco ahora pero me gustaría seguir intentando hablar español hoy más tarde"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 7
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('also', None), ('keep', 443)]"
+  ]
+ },
+ {
+  "id": "S0184L02U06",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0184L02",
+   "I saw",
+   "vi",
+   true
+  ],
+  "live_known": "I saw my friend at work this morning and she said she wanted to meet later today",
+  "live_target": "Vi a mi amiga en el trabajo esta mañana y dijo que quería reunirse después hoy",
+  "action": "rewrite-both",
+  "new_known": "I saw my friend at work this morning and she said she wanted to meet later on",
+  "new_target": "Vi a mi amiga en el trabajo esta mañana y dijo que quería reunirse más tarde",
+  "why_348": "'después hoy' is not Spanish",
+  "proposal_255": [
+   "I saw my friend at work this morning and she said she wanted to meet later",
+   "Vi a mi amiga en el trabajo esta mañana y dijo que quería reunirse más tarde"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0182L03U08",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0182L03",
+   "have you seen",
+   "has visto",
+   true
+  ],
+  "live_known": "I do not know if you have seen what she was saying before today",
+  "live_target": "No sé si has visto lo que estaba diciendo antes hoy",
+  "action": "rewrite-both",
+  "new_known": "I do not know if you have seen what she was saying earlier",
+  "new_target": "No sé si has visto lo que estaba diciendo antes",
+  "why_348": "'antes hoy' is not Spanish",
+  "proposal_255": [
+   "I do not know if you have seen what she was saying before",
+   "No sé si has visto lo que estaba diciendo antes"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 12
+  },
+  "checks": []
+ },
+ {
+  "id": "S0183L02U03",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0183L02",
+   "I haven't seen them",
+   "no las he visto",
+   true
+  ],
+  "live_known": "I haven't seen them but my friend said she saw them at work earlier today",
+  "live_target": "No las he visto pero mi amiga dijo que las vio en el trabajo antes hoy",
+  "action": "rewrite-both",
+  "new_known": "I haven't seen them but my friend said she saw them at work earlier",
+  "new_target": "No las he visto pero mi amiga dijo que las vio antes en el trabajo",
+  "why_348": "'antes hoy' is not Spanish",
+  "proposal_255": [
+   "I haven't seen them but my friend said she saw them at work earlier",
+   "No las he visto pero mi amiga dijo que las vio antes en el trabajo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 9
+  },
+  "checks": []
+ },
+ {
+  "id": "S0233L04U05",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0233L04",
+   "sister",
+   "hermana",
+   true
+  ],
+  "live_known": "I think your sister knows the woman we were talking about before today",
+  "live_target": "Creo que tu hermana conoce a la mujer de la que estábamos hablando antes hoy",
+  "action": "rewrite-both",
+  "new_known": "I think your sister knows the woman we were talking about earlier",
+  "new_target": "Creo que tu hermana conoce a la mujer de la que estábamos hablando antes",
+  "why_348": "'antes hoy' is not Spanish and 'before today' means something else",
+  "proposal_255": [
+   "I think your sister knows the woman we were talking about before",
+   "Creo que tu hermana conoce a la mujer de la que estábamos hablando antes"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 16
+  },
+  "checks": []
+ },
+ {
+  "id": "S0155L03U02",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0155L03",
+   "in the morning",
+   "por la mañana",
+   true
+  ],
+  "live_known": "I want to go and meet with you in the morning before it gets late",
+  "live_target": "Quiero ir a reunirse contigo por la mañana antes de tarde",
+  "action": "rewrite-both",
+  "new_known": "I want to go and see you in the morning",
+  "new_target": "Quiero ir a verte por la mañana",
+  "why_348": "'ir a reunirse contigo' is wrong person and 'antes de tarde' is not Spanish",
+  "proposal_255": [
+   "I want to go and see you in the morning",
+   "Quiero ir a verte por la mañana"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 16
+  },
+  "checks": []
+ },
+ {
+  "id": "S0155L03U05",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0155L03",
+   "in the morning",
+   "por la mañana",
+   true
+  ],
+  "live_known": "I was thinking it would be better to talk in the morning before it gets late",
+  "live_target": "Estaba pensando que sería mejor hablar por la mañana antes de tarde",
+  "action": "rewrite-both",
+  "new_known": "I was thinking it would be better to talk in the morning",
+  "new_target": "Estaba pensando que sería mejor hablar por la mañana",
+  "why_348": "'antes de tarde' is not Spanish",
+  "proposal_255": [
+   "I was thinking it would be better to talk in the morning",
+   "Estaba pensando que sería mejor hablar por la mañana"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 16
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('talk', 158)]"
+  ]
+ },
+ {
+  "id": "S0157L01U11",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0157L01",
+   "there",
+   "allí",
+   true
+  ],
+  "live_known": "I need to be there before the morning if possible",
+  "live_target": "Necesito estar allí antes de la mañana si es posible",
+  "action": "rewrite-both",
+  "new_known": "I need to be there before tomorrow if possible",
+  "new_target": "Necesito estar allí antes de mañana si es posible",
+  "why_348": "'antes de la mañana'/'before the morning' is odd in both languages",
+  "proposal_255": [
+   "I need to be there before tomorrow if possible",
+   "Necesito estar allí antes de mañana si es posible"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 15
+  },
+  "checks": []
+ },
+ {
+  "id": "S0182L03U14",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0182L03",
+   "have you seen",
+   "has visto",
+   true
+  ],
+  "live_known": "Have you seen my friend today or did she go home already?",
+  "live_target": "¿Has visto a mi amiga hoy o ya fue a casa?",
+  "action": "rewrite-both",
+  "new_known": "Have you seen my friend today or is she already at home?",
+  "new_target": "¿Has visto a mi amiga hoy o ya está en casa?",
+  "why_348": "'ya fue a casa' means 'has already been home', not 'went home already'",
+  "proposal_255": [
+   "Have you seen my friend today or is she at home already?",
+   "¿Has visto a mi amiga hoy o ya está en casa?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 12
+  },
+  "checks": []
+ },
+ {
+  "id": "S0185L02U03",
+  "group": "C",
+  "group_name": "Stray time word: \"antes hoy\", \"después hoy\", \"antes de tarde\", \"antes de la mañana\", \"ya fue a casa\"",
+  "role": "use",
+  "lego": [
+   "S0185L02",
+   "at work",
+   "en el trabajo",
+   true
+  ],
+  "live_known": "I have not seen my friend at work today and I'm afraid she may have gone home already",
+  "live_target": "No he visto a mi amiga en el trabajo hoy y me temo que ya fue a casa",
+  "action": "rewrite-both",
+  "new_known": "I have not seen my friend at work today and I'm afraid she's already at home",
+  "new_target": "No he visto a mi amiga en el trabajo hoy y me temo que ya está en casa",
+  "why_348": "'ya fue a casa' is wrong for 'gone home already' and drops the hedge",
+  "proposal_255": [
+   "I have not seen my friend at work today and I'm afraid she is at home already",
+   "No he visto a mi amiga en el trabajo hoy y me temo que ya está en casa"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 4
+  },
+  "checks": []
+ },
+ {
+  "id": "S0117L01U04",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0117L01",
+   "definitely",
+   "sin duda",
+   true
+  ],
+  "live_known": "I think this is definitely the best choice I could make right now",
+  "live_target": "Creo que sin duda esta es la mejor opción que podría hacer en este momento",
+  "action": "rewrite-spanish-only",
+  "new_known": "I think this is definitely the best choice I could make right now",
+  "new_target": "Creo que sin duda esta es la mejor opción que podría elegir en este momento",
+  "why_348": "'opción que podría hacer' is a calque of 'make a choice'; taught 'elegir'.",
+  "proposal_255": [
+   "I think this is definitely the best choice I could make right now",
+   "Creo que sin duda esta es la mejor opción que podría elegir en este momento"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 12
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('choice', 566), ('make', 190), ('right', 387)]"
+  ]
+ },
+ {
+  "id": "S0173L03U08",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0173L03",
+   "on my own",
+   "solo",
+   true
+  ],
+  "live_known": "I think it is good to try things on my own",
+  "live_target": "Creo que es bueno intentar las cosas solo",
+  "action": "rewrite-both",
+  "new_known": "I think it is good to try to do things on my own",
+  "new_target": "Creo que es bueno intentar hacer las cosas solo",
+  "why_348": "'intentar las cosas' is a calque",
+  "proposal_255": [
+   "I think it is good to try to do things on my own",
+   "Creo que es bueno intentar hacer las cosas solo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 16
+  },
+  "checks": []
+ },
+ {
+  "id": "S0190L02U03",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0190L02",
+   "some questions",
+   "unas preguntas",
+   true
+  ],
+  "live_known": "I wanted to ask you some questions about learning Spanish",
+  "live_target": "Quería preguntarte unas preguntas sobre aprender español",
+  "action": "rewrite-both",
+  "new_known": "I wanted to ask some questions about learning Spanish",
+  "new_target": "Quería hacer unas preguntas sobre aprender español",
+  "why_348": "'preguntarte unas preguntas' repeats verb and noun",
+  "proposal_255": [
+   "I wanted to ask some questions about learning Spanish",
+   "Quería hacer unas preguntas sobre aprender español"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 14
+  },
+  "checks": []
+ },
+ {
+  "id": "S0207L01U07",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0207L01",
+   "you needed",
+   "necesitabas",
+   true
+  ],
+  "live_known": "I did not know what you needed so I was trying to do my best",
+  "live_target": "No sabía lo que necesitabas así que estaba intentando hacer lo mejor",
+  "action": "rewrite-both",
+  "new_known": "I did not know what you needed so I was trying to do as well as possible",
+  "new_target": "No sabía lo que necesitabas así que estaba intentando hacer lo mejor posible",
+  "why_348": "Bare 'hacer lo mejor' reads as 'do the best thing', not 'do my best' (mild)",
+  "proposal_255": [
+   "I did not know what you needed so I was trying to do my best",
+   "No sabía lo que necesitabas así que estaba intentando hacer lo mejor posible"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 13
+  },
+  "checks": []
+ },
+ {
+  "id": "S0209L01U03",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0209L01",
+   "meeting up",
+   "reuniéndose",
+   true
+  ],
+  "live_known": "They want to start meeting up",
+  "live_target": "Quieren empezar reuniéndose",
+  "action": "rewrite-both",
+  "new_known": "They want to keep meeting up",
+  "new_target": "Quieren seguir reuniéndose",
+  "why_348": "'empezar reuniéndose' means 'begin by meeting'",
+  "proposal_255": [
+   "They want to keep meeting up",
+   "Quieren seguir reuniéndose"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 7
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('keep', 443)]"
+  ]
+ },
+ {
+  "id": "S0270L02U09",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0270L02",
+   "to arrive",
+   "llegar",
+   true
+  ],
+  "live_known": "I should arrive soon because it worries me to be late",
+  "live_target": "Debería llegar pronto porque me preocupa estar tarde",
+  "action": "rewrite-spanish-only",
+  "new_known": "I should arrive soon because it worries me to be late",
+  "new_target": "Debería llegar pronto porque me preocupa llegar tarde",
+  "why_348": "'estar tarde' is not Spanish for 'be late'; 'llegar tarde' is",
+  "proposal_255": [
+   "I should arrive soon because it worries me to be late",
+   "Debería llegar pronto porque me preocupa llegar tarde"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 12
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('worries', None), ('late', 539)]"
+  ]
+ },
+ {
+  "id": "S0277L01B07",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "build",
+  "lego": [
+   "S0277L01",
+   "a meeting",
+   "una reunión",
+   true
+  ],
+  "live_known": "She does not want to be late for the meeting",
+  "live_target": "Ella no quiere ir tarde a la reunión",
+  "action": "rewrite-spanish-only",
+  "new_known": "She does not want to be late for the meeting",
+  "new_target": "Ella no quiere llegar tarde a la reunión",
+  "why_348": "'be late for' is 'llegar tarde a'; 'ir tarde' is colloquial at best",
+  "proposal_255": [
+   "She does not want to be late for the meeting",
+   "Ella no quiere llegar tarde a la reunión"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 11
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('does', 653), ('late', 539)]",
+   "LEGO target not contained"
+  ]
+ },
+ {
+  "id": "S0272L03U01",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0272L03",
+   "a great idea",
+   "una gran idea",
+   true
+  ],
+  "live_known": "I think that is a great idea and I want to try it",
+  "live_target": "Creo que es una gran idea y quiero intentar hacerla",
+  "action": "rewrite-both",
+  "new_known": "I think that is a great idea and I want to do it",
+  "new_target": "Creo que es una gran idea y quiero hacerlo",
+  "why_348": "'intentar hacerla' treats the idea as a thing to make",
+  "proposal_255": [
+   "I think that is a great idea and I want to do it",
+   "Creo que es una gran idea y quiero hacerlo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": [
+   "I think that is a great idea and I want to try it",
+   "Creo que es una gran idea y quiero intentarlo"
+  ],
+  "basket_after": {
+   "build": 5,
+   "use": 12
+  },
+  "checks": []
+ },
+ {
+  "id": "S0272L02U09",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0272L02",
+   "sounds like",
+   "suena como",
+   true
+  ],
+  "live_known": "That sounds like it could be the best option right now",
+  "live_target": "Eso suena como que podría ser la mejor opción ahora",
+  "action": "rewrite-both",
+  "new_known": "That sounds like the best option right now",
+  "new_target": "Eso suena como la mejor opción ahora",
+  "why_348": "'suena como que podría ser' is a calque",
+  "proposal_255": [
+   "That sounds like the best option right now",
+   "Eso suena como la mejor opción ahora"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 14
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('right', 387)]"
+  ]
+ },
+ {
+  "id": "S0299L01U05",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0299L01",
+   "to pay",
+   "pagar",
+   true
+  ],
+  "live_known": "I need to pay for everything before I leave",
+  "live_target": "Necesito pagar todo antes de que tenga que irme",
+  "action": "rewrite-spanish-only",
+  "new_known": "I need to pay for everything before I leave",
+  "new_target": "Necesito pagar todo antes de irme",
+  "why_348": "'antes de que tenga que irme' with the same subject is unnatural Spanish; the fix only touches the English",
+  "proposal_255": [
+   "I need to pay for everything before I have to leave",
+   "Necesito pagar todo antes de que tenga que irme"
+  ],
+  "fix_348": "NOT-BETTER",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 13
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('everything', 412)]"
+  ]
+ },
+ {
+  "id": "S0083L03U11",
+  "group": "D",
+  "group_name": "English verb copied into Spanish where Spanish uses a different verb the learner already has",
+  "role": "use",
+  "lego": [
+   "S0083L03",
+   "about your friend",
+   "sobre tu amigo",
+   true
+  ],
+  "live_known": "I was thinking about your friend when I was talking to everyone else",
+  "live_target": "Estaba pensando sobre tu amigo cuando estaba hablando con todos los demás",
+  "action": "rewrite-both",
+  "new_known": "I was talking to everyone else about your friend",
+  "new_target": "Estaba hablando con todos los demás sobre tu amigo",
+  "why_348": "Thinking about a person is 'pensar en'; 'pensando sobre tu amigo' is stilted.",
+  "proposal_255": [
+   "I was thinking about your friend when I was talking to everyone else",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": [
+   "I was talking to everyone else about your friend",
+   "Estaba hablando con todos los demás sobre tu amigo"
+  ],
+  "basket_after": {
+   "build": 5,
+   "use": 14
+  },
+  "checks": []
+ },
+ {
+  "id": "S0095L01U15",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0095L01",
+   "to go home",
+   "ir a casa",
+   true
+  ],
+  "live_known": "I would like to go home soon after this",
+  "live_target": "Me gustaría ir a casa pronto después de esto",
+  "action": "rewrite-both",
+  "new_known": "I would like to go home after this",
+  "new_target": "Me gustaría ir a casa después de esto",
+  "why_348": "'pronto después de esto' is a calque of 'soon after'; Spanish says 'poco después'.",
+  "proposal_255": [
+   "I would like to go home soon after this",
+   "Me gustaría ir a casa poco después de esto"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 7,
+   "use": 15
+  },
+  "checks": []
+ },
+ {
+  "id": "S0132L04B06",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0132L04",
+   "she was saying",
+   "ella estaba diciendo",
+   true
+  ],
+  "live_known": "What she was saying was very interesting to listen to",
+  "live_target": "Lo que ella estaba diciendo fue muy interesante para escuchar",
+  "action": "rewrite-spanish-only",
+  "new_known": "What she was saying was very interesting to listen to",
+  "new_target": "Lo que ella estaba diciendo fue muy interesante de escuchar",
+  "why_348": "'interesante para escuchar' is a calque; 'interesante de escuchar'.",
+  "proposal_255": [
+   "What she was saying was very interesting to listen to",
+   "Lo que ella estaba diciendo fue muy interesante de escuchar"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 7,
+   "use": 14
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('listen', 533)]"
+  ]
+ },
+ {
+  "id": "S0141L02U06",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0141L02",
+   "is okay",
+   "está bien",
+   true
+  ],
+  "live_known": "Everything is okay and I am starting to feel better about my Spanish",
+  "live_target": "Todo está bien y estoy empezando a sentirme mejor sobre mi español",
+  "action": "rewrite-both",
+  "new_known": "Everything is okay and I am starting to feel better",
+  "new_target": "Todo está bien y estoy empezando a sentirme mejor",
+  "why_348": "'sentirme mejor sobre' is a calque; 'con mi español'.",
+  "proposal_255": [
+   "Everything is okay and I am starting to feel better about my Spanish",
+   "Todo está bien y estoy empezando a sentirme mejor con mi español"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 16
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('everything', 412)]"
+  ]
+ },
+ {
+  "id": "S0281L02B06",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0281L02",
+   "I finish",
+   "termino",
+   true
+  ],
+  "live_known": "Do you mind when I finish?",
+  "live_target": "¿Te importa cuando termino?",
+  "action": "rewrite-both",
+  "new_known": "Do you mind if I finish?",
+  "new_target": "¿Te importa si termino?",
+  "why_348": "'¿Te importa cuando termino?' is not how Spanish asks permission; seed uses 'si'",
+  "proposal_255": [
+   "Do you mind if I finish?",
+   "¿Te importa si termino?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 6,
+   "use": 7
+  },
+  "checks": []
+ },
+ {
+  "id": "S0281L02U01",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0281L02",
+   "I finish",
+   "termino",
+   true
+  ],
+  "live_known": "Do you mind when I finish before you?",
+  "live_target": "¿Te importa cuando termino antes que tú?",
+  "action": "rewrite-both",
+  "new_known": "Do you mind if I finish before you?",
+  "new_target": "¿Te importa si termino antes que tú?",
+  "why_348": "same 'importa cuando' as B06",
+  "proposal_255": [
+   "Do you mind if I finish before you?",
+   "¿Te importa si termino antes que tú?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 6,
+   "use": 7
+  },
+  "checks": [
+   "target words not in a LEGO by this seed: [('tú', None)]"
+  ]
+ },
+ {
+  "id": "S0289L01U14",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0289L01",
+   "I wonder",
+   "me pregunto",
+   true
+  ],
+  "live_known": "I wonder where the best place to practise is here",
+  "live_target": "Me pregunto dónde es el mejor sitio para practicar aquí",
+  "action": "rewrite-spanish-only",
+  "new_known": "I wonder where the best place to practise is here",
+  "new_target": "Me pregunto dónde está el mejor sitio para practicar aquí",
+  "why_348": "location needs 'está'",
+  "proposal_255": [
+   "I wonder where the best place to practise is here",
+   "Me pregunto dónde está el mejor sitio para practicar aquí"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 9
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('place', 364)]"
+  ]
+ },
+ {
+  "id": "S0291L01U08",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0291L01",
+   "I hope",
+   "espero",
+   true
+  ],
+  "live_known": "I hope to be able to speak well enough to talk with people",
+  "live_target": "Espero poder hablar bien suficientemente para hablar con personas",
+  "action": "rewrite-spanish-only",
+  "new_known": "I hope to be able to speak well enough to talk with people",
+  "new_target": "Espero poder hablar lo suficientemente bien para hablar con personas",
+  "why_348": "'bien suficientemente' -> 'lo suficientemente bien'",
+  "proposal_255": [
+   "I hope to be able to speak well enough to talk with people",
+   "Espero poder hablar lo suficientemente bien para hablar con personas"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 9
+  },
+  "checks": []
+ },
+ {
+  "id": "S0384L01U05",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0384L01",
+   "a moment ago",
+   "hace un momento",
+   true
+  ],
+  "live_known": "I asked what she said a moment ago",
+  "live_target": "pregunté lo que dijo hace un momento",
+  "action": "rewrite-spanish-only",
+  "new_known": "I asked what she said a moment ago",
+  "new_target": "pregunté qué dijo hace un momento",
+  "why_348": "an indirect question takes 'qué'",
+  "proposal_255": [
+   "I asked what she said a moment ago",
+   "pregunté qué dijo hace un momento"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0409L01B03",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0409L01",
+   "it doesn't matter",
+   "no importa",
+   true
+  ],
+  "live_known": "it doesn't matter anymore",
+  "live_target": "no importa más",
+  "action": "rewrite-both",
+  "new_known": "it doesn't matter any more",
+  "new_target": "ya no importa",
+  "why_348": "'no importa más' -> 'ya no importa'",
+  "proposal_255": [
+   "it doesn't matter anymore",
+   "ya no importa"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('any', 563)]"
+  ]
+ },
+ {
+  "id": "S0619L01U06",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0619L01",
+   "we see each other",
+   "nos vemos",
+   true
+  ],
+  "live_known": "we don't see each other any longer",
+  "live_target": "no nos vemos por más tiempo",
+  "action": "rewrite-both",
+  "new_known": "we don't see each other any more",
+  "new_target": "ya no nos vemos",
+  "why_348": "'por más tiempo' for 'any longer' -> 'ya no'",
+  "proposal_255": [
+   "we don't see each other any longer",
+   "ya no nos vemos"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 7
+  },
+  "checks": []
+ },
+ {
+  "id": "S0428L01U05",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0428L01",
+   "Tuesday",
+   "martes",
+   true
+  ],
+  "live_known": "because it's Tuesday",
+  "live_target": "porque es el martes",
+  "action": "rewrite-spanish-only",
+  "new_known": "because it's Tuesday",
+  "new_target": "porque es martes",
+  "why_348": "'es el martes' -> 'es martes'",
+  "proposal_255": [
+   "because it's Tuesday",
+   "porque es martes"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 11
+  },
+  "checks": []
+ },
+ {
+  "id": "S0436L01U02",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0436L01",
+   "minimum",
+   "mínimo",
+   true
+  ],
+  "live_known": "what is the minimum number?",
+  "live_target": "¿qué es el número mínimo?",
+  "action": "rewrite-spanish-only",
+  "new_known": "what is the minimum number?",
+  "new_target": "¿cuál es el número mínimo?",
+  "why_348": "asking for a value takes 'cuál'",
+  "proposal_255": [
+   "what is the minimum number?",
+   "¿cuál es el número mínimo?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 8
+  },
+  "checks": []
+ },
+ {
+  "id": "S0480L01U01",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0480L01",
+   "whatever he says",
+   "diga lo que diga",
+   true
+  ],
+  "live_known": "whatever he says, she knows better",
+  "live_target": "diga lo que diga, ella sabe mejor",
+  "action": "rewrite-spanish-only",
+  "new_known": "whatever he says, she knows better",
+  "new_target": "diga lo que diga, ella lo sabe mejor",
+  "why_348": "'ella sabe mejor' leans to 'tastes better'; mild",
+  "proposal_255": [
+   "whatever he says, she knows better",
+   "diga lo que diga, ella lo sabe mejor"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0488L02U05",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0488L02",
+   "that yellow line",
+   "esa línea amarilla",
+   true
+  ],
+  "live_known": "why is there that yellow line?",
+  "live_target": "¿por qué hay esa línea amarilla?",
+  "action": "rewrite-both",
+  "new_known": "why is that yellow line here?",
+  "new_target": "¿por qué está aquí esa línea amarilla?",
+  "why_348": "'hay esa línea' is not possible",
+  "proposal_255": [
+   "why is that yellow line here?",
+   "¿por qué está aquí esa línea amarilla?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0492L01U04",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0492L01",
+   "which one",
+   "cuál",
+   true
+  ],
+  "live_known": "which one is good?",
+  "live_target": "¿cuál es bueno?",
+  "action": "rewrite-both",
+  "new_known": "which one is the good one?",
+  "new_target": "¿cuál es el bueno?",
+  "why_348": "'¿cuál es bueno?' is odd; mild",
+  "proposal_255": [
+   "which one is the good one?",
+   "¿cuál es el bueno?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0499L03B03",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0499L03",
+   "to open the door",
+   "abrir la puerta",
+   true
+  ],
+  "live_known": "maybe open the door",
+  "live_target": "quizás abrir la puerta",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'quizás' + bare infinitive",
+  "proposal_255": [
+   "maybe we should open the door",
+   "quizás deberíamos abrir la puerta"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 2,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0506L04B03",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0506L04",
+   "before we moved",
+   "antes de que nos mudáramos",
+   true
+  ],
+  "live_known": "well before we moved",
+  "live_target": "bien antes de que nos mudáramos",
+  "action": "rewrite-both",
+  "new_known": "a little before we moved",
+  "new_target": "un poco antes de que nos mudáramos",
+  "why_348": "'bien antes de que'",
+  "proposal_255": [
+   "well before we moved",
+   "mucho antes de que nos mudáramos"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0537L01U04",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0537L01",
+   "but I was wrong",
+   "pero estaba equivocado",
+   true
+  ],
+  "live_known": "but I was wrong about everything",
+  "live_target": "pero estaba equivocado sobre todo",
+  "action": "rewrite-both",
+  "new_known": "but I was wrong about all of that",
+  "new_target": "pero estaba equivocado sobre todo eso",
+  "why_348": "'sobre todo' = 'above all'",
+  "proposal_255": [
+   "but I was wrong about everything",
+   "pero estaba equivocado en todo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 4
+  },
+  "checks": []
+ },
+ {
+  "id": "S0614L02U05",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0614L02",
+   "lives",
+   "vive",
+   true
+  ],
+  "live_known": "do you know near where she lives?",
+  "live_target": "¿sabes cerca de dónde vive?",
+  "action": "rewrite-both",
+  "new_known": "do you know where she lives?",
+  "new_target": "¿sabes dónde vive?",
+  "why_348": "'sabes cerca de dónde vive' is a calque",
+  "proposal_255": [
+   "do you know where she lives?",
+   "¿sabes dónde vive?"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 7
+  },
+  "checks": []
+ },
+ {
+  "id": "S0616L01U04",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "use",
+  "lego": [
+   "S0616L01",
+   "brave to say",
+   "valiente al decir",
+   true
+  ],
+  "live_known": "it's very brave to say what you think",
+  "live_target": "es muy valiente al decir lo que piensas",
+  "action": "rewrite-both",
+  "new_known": "you're very brave to say what you think",
+  "new_target": "eres muy valiente al decir lo que piensas",
+  "why_348": "impersonal 'es valiente al decir' with 'piensas'",
+  "proposal_255": [
+   "you're very brave to say what you think",
+   "eres muy valiente al decir lo que piensas"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0378L02B02",
+  "group": "E",
+  "group_name": "Wrong small word, English stays (or loses a tail); Spanish swaps to a form the course already uses",
+  "role": "build",
+  "lego": [
+   "S0378L02",
+   "money",
+   "dinero",
+   true
+  ],
+  "live_known": "not enough money",
+  "live_target": "no suficiente dinero",
+  "action": "rewrite-both",
+  "new_known": "I didn't have enough money",
+  "new_target": "no tenía suficiente dinero",
+  "why_348": "'no suficiente dinero' is not Spanish",
+  "proposal_255": [
+   "I didn't have enough money",
+   "no tenía suficiente dinero"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 7
+  },
+  "checks": []
+ },
+ {
+  "id": "S0106L01U10",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "use",
+  "lego": [
+   "S0106L01",
+   "to feel happy",
+   "sentirnos contentos",
+   true
+  ],
+  "live_known": "I think we need to feel happy with how to say something in Spanish",
+  "live_target": "Creo que necesitamos sentirnos contentos con cómo decir algo en español",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'contentos con cómo decir algo' is garbled on both sides.",
+  "proposal_255": [
+   "I think we need to feel happy with what we want to say in Spanish",
+   "Creo que necesitamos sentirnos contentos con lo que queremos decir en español"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 11
+  },
+  "checks": []
+ },
+ {
+  "id": "S0132L04U13",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "use",
+  "lego": [
+   "S0132L04",
+   "she was saying",
+   "ella estaba diciendo",
+   true
+  ],
+  "live_known": "She was saying that making mistakes when you speak is how you learn to get better",
+  "live_target": "Ella estaba diciendo que cometer errores cuando hablas es cómo aprender a mejorar",
+  "action": "rewrite-both",
+  "new_known": "She was saying that making mistakes is good when you are learning",
+  "new_target": "Ella estaba diciendo que cometer errores es bueno cuando estás aprendiendo",
+  "why_348": "'es cómo aprender a mejorar' is wrong Spanish (accent + infinitive).",
+  "proposal_255": [
+   "She was saying that making mistakes when we speak is how we learn to get better",
+   "Ella estaba diciendo que cometer errores cuando hablamos es como aprendemos a mejorar"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 7,
+   "use": 14
+  },
+  "checks": []
+ },
+ {
+  "id": "S0135L01B05",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "build",
+  "lego": [
+   "S0135L01",
+   "I don't know",
+   "no sé",
+   true
+  ],
+  "live_known": "She said that I don't know what to say with them",
+  "live_target": "Ella dijo que no sé qué decir con ellos",
+  "action": "rewrite-both",
+  "new_known": "She said that I don't know what to say",
+  "new_target": "Ella dijo que no sé qué decir",
+  "why_348": "'qué decir con ellos' / 'what to say with them' is wrong in both.",
+  "proposal_255": [
+   "She said that I don't know what to say",
+   "Ella dijo que no sé qué decir"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 10
+  },
+  "checks": []
+ },
+ {
+  "id": "S0156L01U12",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "use",
+  "lego": [
+   "S0156L01",
+   "to go",
+   "ir",
+   true
+  ],
+  "live_known": "I'm going to go here whenever you want because I want to talk with you",
+  "live_target": "Voy a ir aquí cuando quieras porque quiero hablar contigo",
+  "action": "rewrite-both",
+  "new_known": "I'm going to go whenever you want because I want to talk with you",
+  "new_target": "Voy a ir cuando quieras porque quiero hablar contigo",
+  "why_348": "'ir aquí' is not Spanish (would be venir aquí / ir allí)",
+  "proposal_255": [
+   "I'm going to go whenever you want because I want to talk with you",
+   "Voy a ir cuando quieras porque quiero hablar contigo"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 15
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('talk', 158)]"
+  ]
+ },
+ {
+  "id": "S0156L01U13",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "use",
+  "lego": [
+   "S0156L01",
+   "to go",
+   "ir",
+   true
+  ],
+  "live_known": "I want to go here this afternoon to talk with my friends",
+  "live_target": "Quiero ir aquí esta tarde para hablar con mis amigos",
+  "action": "rewrite-both",
+  "new_known": "I want to go this afternoon to talk with my friends",
+  "new_target": "Quiero ir esta tarde para hablar con mis amigos",
+  "why_348": "'ir aquí' is not Spanish",
+  "proposal_255": [
+   "I want to go this afternoon to talk with my friends",
+   "Quiero ir esta tarde para hablar con mis amigos"
+  ],
+  "fix_348": "GOOD",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 15
+  },
+  "checks": [
+   "known words not in a LEGO by this seed: [('talk', 158)]"
+  ]
+ },
+ {
+  "id": "S0282L02U06",
+  "group": "F",
+  "group_name": "Garbled both sides: drop the bad tail or say it plainly with taught words",
+  "role": "use",
+  "lego": [
+   "S0282L02",
+   "a problem",
+   "un problema",
+   true
+  ],
+  "live_known": "I think there could be a problem with this but I am not sure",
+  "live_target": "Creo que podría ser un problema con esto pero no estoy seguro",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'podría ser un problema con esto' is awkward Spanish; the fix only changes the English and makes it awkward too",
+  "proposal_255": [
+   "I think it could be a problem with this but I am not sure",
+   "Creo que podría ser un problema con esto pero no estoy seguro"
+  ],
+  "fix_348": "NOT-BETTER",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 7,
+   "use": 14
+  },
+  "checks": []
+ },
+ {
+  "id": "S0045L01U07",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0045L01",
+   "to know",
+   "saber",
+   true
+  ],
+  "live_known": "I don't need to know everything or improve right now",
+  "live_target": "No necesito saber todo o mejorar ahora",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "After a negated verb natives join with 'ni', not 'o'; 'ni' untaught until 474.",
+  "proposal_255": [
+   "I don't need to know everything or improve right now",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0045L01U10",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0045L01",
+   "to know",
+   "saber",
+   true
+  ],
+  "live_known": "She doesn't want to know or answer right now",
+  "live_target": "Ella no quiere saber o contestar ahora",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'no quiere saber o contestar' wants 'ni' (untaught).",
+  "proposal_255": [
+   "She doesn't want to know or answer right now",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0127L01U04",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0127L01",
+   "for",
+   "por",
+   true
+  ],
+  "live_known": "I know this is very good for my brain so I want to keep doing it",
+  "live_target": "Sé que esto es muy bueno por mi cerebro así quiero seguir haciendo esto",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'bueno por mi cerebro' must be 'para', 'así' must be 'así que'; correcting drops the LEGO 'por'.",
+  "proposal_255": [
+   "I know this is very good for my brain so I want to keep doing it",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 7
+  },
+  "checks": []
+ },
+ {
+  "id": "S0130L01U03",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0130L01",
+   "surprise",
+   "sorpresa",
+   true
+  ],
+  "live_known": "That was a surprise to me",
+  "live_target": "Eso me fue una sorpresa",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'Eso me fue una sorpresa' is not Spanish; 'para mí' untaught.",
+  "proposal_255": [
+   "That was a surprise to me",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0282L02U05",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0282L02",
+   "a problem",
+   "un problema",
+   true
+  ],
+  "live_known": "I finish before the meeting and so there is no problem",
+  "live_target": "Termino antes de la reunión así que no hay un problema",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'no hay un problema' is unidiomatic; natural form drops the LEGO",
+  "proposal_255": [
+   "I finish before the meeting and so there is no problem",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 7,
+   "use": 14
+  },
+  "checks": []
+ },
+ {
+  "id": "S0290L02U14",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0290L02",
+   "he knows",
+   "sabe",
+   true
+  ],
+  "live_known": "He knows the people here who like to practise often",
+  "live_target": "Él sabe las personas aquí a las que les gusta practicar a menudo",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'saber' with people should be 'conocer'",
+  "proposal_255": [
+   "He knows the people here who like to practise often",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 11
+  },
+  "checks": []
+ },
+ {
+  "id": "S0295L03U10",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0295L03",
+   "I didn't say that I wanted to finish in a day",
+   "no dije que quería terminar en un día",
+   true
+  ],
+  "live_known": "I didn't say that I wanted to finish in a day but I do want to try hard",
+  "live_target": "No dije que quería terminar en un día pero sí quiero intentar mucho",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'intentar mucho' is a calque of 'try hard'",
+  "proposal_255": [
+   "I didn't say that I wanted to finish in a day but I do want to try hard",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 5,
+   "use": 12
+  },
+  "checks": []
+ },
+ {
+  "id": "S0371L03U05",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0371L03",
+   "I went",
+   "fui",
+   true
+  ],
+  "live_known": "I went to find the road",
+  "live_target": "fui a encontrar la carretera",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'fui a encontrar la carretera' is not natural",
+  "proposal_255": [
+   "I went to find the road",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 8
+  },
+  "checks": []
+ },
+ {
+  "id": "S0377L04U05",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0377L04",
+   "you went",
+   "fuiste",
+   true
+  ],
+  "live_known": "you went to find the road",
+  "live_target": "fuiste a encontrar la carretera",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "same as S0371L03U05",
+  "proposal_255": [
+   "you went to find the road",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0378L01B02",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "build",
+  "lego": [
+   "S0378L01",
+   "enough",
+   "suficiente",
+   true
+  ],
+  "live_known": "quite enough",
+  "live_target": "bastante suficiente",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'bastante suficiente' is redundant",
+  "proposal_255": [
+   "quite enough",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0412L01B03",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "build",
+  "lego": [
+   "S0412L01",
+   "to win",
+   "ganar",
+   true
+  ],
+  "live_known": "not lose but win",
+  "live_target": "no perder pero ganar",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'not X but Y' needs 'sino'",
+  "proposal_255": [
+   "not lose but win",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 2,
+   "use": 6
+  },
+  "checks": []
+ },
+ {
+  "id": "S0447L01U03",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0447L01",
+   "meal",
+   "comida",
+   true
+  ],
+  "live_known": "do you want to have a meal?",
+  "live_target": "¿quieres tener una comida?",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'tener una comida'",
+  "proposal_255": [
+   "do you want to have a meal?",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 4
+  },
+  "checks": []
+ },
+ {
+  "id": "S0447L01U06",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0447L01",
+   "meal",
+   "comida",
+   true
+  ],
+  "live_known": "I want to have a meal with them",
+  "live_target": "quiero tener una comida con ellos",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'tener una comida'",
+  "proposal_255": [
+   "I want to have a meal with them",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 4
+  },
+  "checks": []
+ },
+ {
+  "id": "S0456L02U04",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0456L02",
+   "he might be there",
+   "puede que esté allí",
+   true
+  ],
+  "live_known": "do you know if he might be there?",
+  "live_target": "¿sabes si puede que esté allí?",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'¿sabes si puede que esté?'",
+  "proposal_255": [
+   "do you know if he might be there?",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 4,
+   "use": 5
+  },
+  "checks": []
+ },
+ {
+  "id": "S0478L03U03",
+  "group": "G",
+  "group_name": "The natural Spanish needs a word the learner has not got (ni, sino, para, conocer, buscar, comer...) or would drop the LEGO: delete",
+  "role": "use",
+  "lego": [
+   "S0478L03",
+   "very kind heart",
+   "corazón muy bondadoso",
+   true
+  ],
+  "live_known": "what a very kind heart",
+  "live_target": "qué corazón muy bondadoso",
+  "action": "delete",
+  "new_known": null,
+  "new_target": null,
+  "why_348": "'qué corazón muy bondadoso' is ungrammatical",
+  "proposal_255": [
+   "what a very kind heart",
+   "DELETE"
+  ],
+  "fix_348": "DELETE-OK",
+  "better_fix_348": null,
+  "basket_after": {
+   "build": 3,
+   "use": 4
+  },
+  "checks": []
+ }
+]
