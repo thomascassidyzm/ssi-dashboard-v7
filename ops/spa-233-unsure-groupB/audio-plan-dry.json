@@ -1,0 +1,70 @@
+[
+ {
+  "role": "target1",
+  "text": "Me gustaría aprender de la misma manera que lo estamos haciendo ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U02",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Me gustaría aprender de la misma manera que lo estamos haciendo ahora",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U02",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 69
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy intentando aprender de la misma manera que lo estás haciendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U08",
+    "slot": "target1",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 66
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy intentando aprender de la misma manera que lo estás haciendo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L03U08",
+    "slot": "target2",
+    "current": null
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 66
+  }
+ }
+]

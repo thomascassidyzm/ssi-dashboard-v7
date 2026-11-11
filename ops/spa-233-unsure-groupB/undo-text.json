@@ -1,0 +1,102 @@
+{
+ "event_id": "e5a99876-6018-4a6e-844f-aa1f73a95c71",
+ "undo_file": "2026-11-11T15-31-18-000Z-e5a99876-6018-4a6e-844f-aa1f73a95c71.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0153L03U08",
+   "set": {
+    "target_text": "Estoy intentando aprender de la misma manera que estás haciendo",
+    "target1_audio_id": "8089221c-55ba-4ca6-a70b-0c331f95ddc2",
+    "target2_audio_id": "b3e13ae6-1432-4cd6-9afa-3a1bb3fec4ea",
+    "decomposition": [
+     {
+      "known": "I'm trying to",
+      "legoId": "S0002L02",
+      "target": "Estoy intentando",
+      "isGhost": false
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     },
+     {
+      "known": "in the same way",
+      "legoId": "S0153L03",
+      "target": " de la misma manera",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " estás",
+      "isGhost": true
+     },
+     {
+      "known": "doing",
+      "legoId": "S0104L03",
+      "target": " haciendo",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0153L03U02",
+   "set": {
+    "target_text": "Me gustaría aprender de la misma manera que estamos haciendo ahora",
+    "target1_audio_id": "a5168e1e-4398-4b5a-89e9-d17ed07c5567",
+    "target2_audio_id": "2addc0e7-cae3-40f6-bc26-7a448a0eff9a",
+    "decomposition": [
+     {
+      "known": "I'd like",
+      "legoId": "S0011L01",
+      "target": "Me gustaría",
+      "isGhost": false
+     },
+     {
+      "known": "to learn",
+      "legoId": "S0002L01",
+      "target": " aprender",
+      "isGhost": false
+     },
+     {
+      "known": "in the same way",
+      "legoId": "S0153L03",
+      "target": " de la misma manera",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "we are",
+      "legoId": "S0102L01",
+      "target": " estamos",
+      "isGhost": false
+     },
+     {
+      "known": "doing",
+      "legoId": "S0104L03",
+      "target": " haciendo",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}
