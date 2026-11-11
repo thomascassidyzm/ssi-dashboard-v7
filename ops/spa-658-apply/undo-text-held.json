@@ -1,0 +1,625 @@
+{
+ "event_id": "c34d72a6-d43e-4609-8b37-244a25a864d0",
+ "undo_file": "2026-11-11T13-47-43-720Z-c34d72a6-d43e-4609-8b37-244a25a864d0.json",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U05",
+   "set": {
+    "decomposition": [
+     {
+      "known": "never",
+      "legoId": "S0309L01",
+      "target": "nunca",
+      "isGhost": false
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0030L01",
+      "target": " quería",
+      "isGhost": false
+     },
+     {
+      "known": "to do",
+      "legoId": "S0167L02",
+      "target": " hacer",
+      "isGhost": false
+     },
+     {
+      "known": "a question",
+      "legoId": "S0422L01",
+      "target": " una pregunta",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "¿necesitan",
+      "isGhost": true
+     },
+     {
+      "known": "to do",
+      "legoId": "S0167L02",
+      "target": " hacer",
+      "isGhost": false
+     },
+     {
+      "known": "a question",
+      "legoId": "S0422L01",
+      "target": " una pregunta",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0421L01",
+      "target": "porque",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " es",
+      "isGhost": true
+     },
+     {
+      "known": "a question",
+      "legoId": "S0422L01",
+      "target": " una pregunta",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U06",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "le",
+      "isGhost": true
+     },
+     {
+      "known": "I said",
+      "legoId": "S0295L01",
+      "target": " dije",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "that was",
+      "legoId": "S0124L02",
+      "target": " era",
+      "isGhost": false
+     },
+     {
+      "known": "a question",
+      "legoId": "S0422L01",
+      "target": " una pregunta",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0429L01U06",
+    "seed_number": 429,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's not so obvious it would be perfect for them",
+    "target_text": "no es tan obvia que sería perfecto para ellos",
+    "word_count": 45,
+    "lego_count": 10,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-05-28T14:28:21.141Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-28T14:28:21.183Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "8ce0180c-9c69-4bf3-89e2-676cec08af6c",
+    "target1_audio_id": "3a3bcd48-a341-4c43-9c07-6a9ca13796ad",
+    "target2_audio_id": "c1a56be1-770f-4036-94a5-771868543478",
+    "qa_checked": null,
+    "target1_duration_ms": 3960,
+    "target2_duration_ms": 3984,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "not",
+      "legoId": "S0218L01",
+      "target": "no",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " es",
+      "isGhost": true
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "would be",
+      "legoId": "S0090L04",
+      "target": " sería",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " perfecto",
+      "isGhost": true
+     },
+     {
+      "known": "for them",
+      "legoId": "S0429L01",
+      "target": " para ellos",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U03",
+   "set": {
+    "known_text": "I knew it was so obvious",
+    "target_text": "sabía que era tan obvia",
+    "known_audio_id": "4d9d8c89-f2c2-4c72-8274-d96ef7524d89",
+    "target1_audio_id": "fba2fcdf-2ea5-4a52-baab-3d4b96b88530",
+    "target2_audio_id": "52e6caa4-4819-455b-9e5c-ffe21790ae76",
+    "decomposition": [
+     {
+      "known": "he knew",
+      "legoId": "S0105L01",
+      "target": "sabía",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "that was",
+      "legoId": "S0124L02",
+      "target": " era",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01U02",
+   "set": {
+    "known_text": "in my opinion, it's so obvious",
+    "target_text": "en mi opinión, es tan obvia",
+    "known_audio_id": "0212cda1-9e1d-4da9-84ef-48ee8a7657b3",
+    "target1_audio_id": "0e815105-cdc3-4b6b-8b98-d584063fa8b0",
+    "target2_audio_id": "c88809bf-06de-44ab-b136-40b59788dd5d",
+    "decomposition": [
+     {
+      "known": "in my opinion",
+      "legoId": "S0415L01",
+      "target": "en mi opinión",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " es",
+      "isGhost": true
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0423L01B03",
+    "seed_number": 423,
+    "lego_index": 1,
+    "position": 5,
+    "known_text": "not so obvious",
+    "target_text": "no tan obvia",
+    "word_count": 12,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-28T14:25:55.173Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "a3b0378c-353a-4db4-bff8-c0879cf94c86",
+    "target1_audio_id": "9dce34b9-61b1-4242-84b3-de827d455b32",
+    "target2_audio_id": "10742179-9024-4b11-807b-e4d18e10a414",
+    "qa_checked": null,
+    "target1_duration_ms": 2112,
+    "target2_duration_ms": 2232,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "not",
+      "legoId": "S0218L01",
+      "target": "no",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01B02",
+   "set": {
+    "known_text": "such an obvious question",
+    "target_text": "una pregunta tan obvia",
+    "known_audio_id": "5d86558b-02cf-4f4a-8330-b638d6b291e7",
+    "target1_audio_id": "4c329d25-71ec-4502-9a73-a318aca6d4d7",
+    "target2_audio_id": "dde6c0e3-4d79-47d2-bb48-ba5f6b55922b",
+    "decomposition": [
+     {
+      "known": "a question",
+      "legoId": "S0422L01",
+      "target": "una pregunta",
+      "isGhost": false
+     },
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": " tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0423L01B01",
+   "set": {
+    "known_text": "such an obvious",
+    "target_text": "tan obvia",
+    "lego_position": "middle",
+    "known_audio_id": "fd929cb8-85a4-422c-890c-7e97f6ad07c3",
+    "target1_audio_id": "583df789-e4e1-4b44-b948-626ee14364ce",
+    "target2_audio_id": "a7790a88-2ad7-4f58-a7b3-15e81f132383",
+    "decomposition": [
+     {
+      "known": "such an obvious",
+      "legoId": "S0423L01",
+      "target": "tan obvia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0272L03U05",
+   "set": {
+    "target_text": "Tengo que decir que esa me suena como una gran idea",
+    "target1_audio_id": "c3fee8c5-d4f4-4cab-b46d-767b96d99d25",
+    "target2_audio_id": "e52f9adc-b8a1-4aa9-bfa8-b244cd53d69f",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Tengo",
+      "isGhost": true
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "to say",
+      "legoId": "S0004L03",
+      "target": " decir",
+      "isGhost": false
+     },
+     {
+      "known": "who",
+      "legoId": "S0230L04",
+      "target": " que",
+      "isGhost": false
+     },
+     {
+      "known": "that",
+      "legoId": "S0151L01",
+      "target": " eso",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "sounds like",
+      "legoId": "S0272L02",
+      "target": " suena como",
+      "isGhost": false
+     },
+     {
+      "known": "a great idea",
+      "legoId": "S0272L03",
+      "target": " una gran idea",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0272L03U02",
+   "set": {
+    "target_text": "Esa me suena como una gran idea",
+    "target1_audio_id": "0b90ade4-9b25-42ad-b6ea-1af78fa388ec",
+    "target2_audio_id": "97861ec3-dcfc-4ac1-85b7-8fea26095443",
+    "decomposition": [
+     {
+      "known": "that",
+      "legoId": "S0151L01",
+      "target": "Eso",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "sounds like",
+      "legoId": "S0272L02",
+      "target": " suena como",
+      "isGhost": false
+     },
+     {
+      "known": "a great idea",
+      "legoId": "S0272L03",
+      "target": " una gran idea",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0272L03B05",
+   "set": {
+    "target_text": "Esa suena como una gran idea",
+    "target1_audio_id": "37c6d781-4b0f-4fde-ac53-fdade956095f",
+    "target2_audio_id": "8c5fb00a-ad05-4e67-b051-e164cf2a0aca",
+    "decomposition": [
+     {
+      "known": "that",
+      "legoId": "S0151L01",
+      "target": "Eso",
+      "isGhost": false
+     },
+     {
+      "known": "sounds like",
+      "legoId": "S0272L02",
+      "target": " suena como",
+      "isGhost": false
+     },
+     {
+      "known": "a great idea",
+      "legoId": "S0272L03",
+      "target": " una gran idea",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0268L02U12",
+   "set": {
+    "known_text": "She sent me emails since last week",
+    "target_text": "Ella me mandó correos desde la semana pasada",
+    "known_audio_id": "7c932ed1-b175-416a-8b49-fe80fb00dc7f",
+    "target1_audio_id": "76a0f6e1-7608-46c4-a3d8-8f9ce2a19ae3",
+    "target2_audio_id": "7f4e9668-6309-4032-9e40-9d8b633a91bc",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Ella",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "sent",
+      "legoId": "S0268L01",
+      "target": " mandó",
+      "isGhost": false
+     },
+     {
+      "known": "emails",
+      "legoId": "S0268L02",
+      "target": " correos",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " desde",
+      "isGhost": true
+     },
+     {
+      "known": "last week",
+      "legoId": "S0052L04",
+      "target": " la semana pasada",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "472acdf4-8041-4b59-87ab-841dd0b74356",
+   "set": {
+    "known_text": "such an obvious",
+    "target_text": "tan obvia",
+    "components": [
+     {
+      "known": "so/such",
+      "target": "tan"
+     },
+     {
+      "known": "obvious",
+      "target": "obvia"
+     }
+    ],
+    "known_audio_id": "fd929cb8-85a4-422c-890c-7e97f6ad07c3",
+    "target1_audio_id": "583df789-e4e1-4b44-b948-626ee14364ce",
+    "target2_audio_id": "a7790a88-2ad7-4f58-a7b3-15e81f132383",
+    "presentation_audio_id": "5bd15851-b79e-4d3f-8727-7e84c5b5ed86"
+   }
+  }
+ ]
+}

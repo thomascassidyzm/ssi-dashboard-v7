@@ -18,8 +18,16 @@ const COURSE = 'spa_for_eng';
 const AGENT = 'spa-658-four-families (job #144)';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
 const DEC = JSON.parse(fs.readFileSync(path.join(__dirname, '../../ops/spa-658-apply/decisions.json'), 'utf8'));
+// HELD ROWS (job #162, Kai's re-record grant of 11 Nov): HELD=1 narrows every mode to the 10 rows #144 rolled back because their
+// new Spanish existed only in off-cast Azure voices, writes its own -held files, and carries Kai's approval token on every
+// render so the door may make one take in the course's current cast voice (EXISTS_IN_LANGUAGE / re-record gate).
+const HELD = process.env.HELD === '1';
+const HELD_ROWS = /^(S0423L01|S0429L01U06$|S0268L02U12$|S0272L03B05$|S0272L03U02$|S0272L03U05$)/;
+const APPROVAL = HELD ? 'kai:2026-11-11:re-record grant for the 5 rows #144 held (S0423L01 grow, S0268L02U12, S0272L03B05/U02/U05), one take each in the cast voice' : null;
+const TAG = HELD ? '-held' : '';
+if (HELD) for (const id of Object.keys(DEC.phrases)) if (!HELD_ROWS.test(id)) delete DEC.phrases[id];
 const GROWN = 'S0423L01';
-const PURPOSE = 'spa_for_eng #658 four families (Kai rulings 11 Nov): re-voice edited rows';
+const PURPOSE = process.env.HELD === '1' ? 'spa_for_eng #658 held rows (#162): one take in the cast voice under Kai re-record grant 11 Nov' : 'spa_for_eng #658 four families (Kai rulings 11 Nov): re-voice edited rows';
 
 const sid = (id) => String(id).split(':').pop();
 const norm = (s) => String(s || '').toLowerCase().replace(/’/g, "'").replace(/[.,!?;:"¿¡«»]+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -120,7 +128,7 @@ async function main() {
     if (!apply) return;
     const ap = await batch({ ops: p.ops, apply: true });
     console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
-    save('undo-text.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    save(`undo-text${TAG}.json`, { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
     return;
   }
   if (mode === 'audio') {
@@ -131,33 +139,33 @@ async function main() {
     if (apply) {
       // The live door allows 100 dry runs an hour per caller (agent-rate-cap.cjs), so the real pass does not repeat them:
       // it reads the dry-run plan and skips only asks a guard refused (EXISTS_IN_LANGUAGE etc.) — those go to a person.
-      const prior = JSON.parse(fs.readFileSync(path.join(__dirname, '../../ops/spa-658-apply/audio-plan-dry.json'), 'utf8'));
+      const prior = JSON.parse(fs.readFileSync(path.join(__dirname, `../../ops/spa-658-apply/audio-plan-dry${TAG}.json`), 'utf8'));
       const refused = new Set(prior.filter((r) => r.dry.status && r.dry.status !== 200 && r.dry.status !== 429).map((r) => `${r.role}\u0000${r.text}`));
       for (const a of asks) results.push({ ...a, dry: refused.has(`${a.role}\u0000${a.text}`) ? { status: 409 } : { status: 200 } });
     } else for (const a of asks) {
-      const body = { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}) };
+      const body = { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}), ...(APPROVAL ? { approval: APPROVAL } : {}) };
       const dry = await post(`${POPTY}/api/audio/render`, { ...body, dryRun: true });
       would += dry.body.wouldSpendChars || 0;
       console.log(`dry ${dry.status} ${a.role} "${a.text}" → ${dry.body.source || dry.body.code || dry.body.error} ${dry.body.wouldSpendChars || 0}`);
       results.push({ ...a, dry: { status: dry.status, source: dry.body.source, code: dry.body.code, error: dry.body.error, wouldSpendChars: dry.body.wouldSpendChars } });
     }
     if (!apply) console.log(`dry total would spend ${would} chars over ${asks.length} asks`);
-    if (!apply) { save('audio-plan-dry.json', results); return; }
+    if (!apply) { save(`audio-plan-dry${TAG}.json`, results); return; }
     let spent = 0;
     for (const r of results) {
       if (r.dry.status !== 200) { r.real = { skipped: 'refused by a guard in the dry run — held for a person' }; continue; }
-      const real = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: r.role, text: r.text, purpose: PURPOSE, ...(r.legoId ? { legoId: r.legoId } : {}) });
+      const real = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: r.role, text: r.text, purpose: PURPOSE, ...(r.legoId ? { legoId: r.legoId } : {}), ...(APPROVAL ? { approval: APPROVAL } : {}) });
       spent += real.body.charsSpent || 0;
       r.real = { status: real.status, source: real.body.source, audioId: real.body.audioId, charsSpent: real.body.charsSpent, code: real.body.code, error: real.body.error };
       console.log(`real ${real.status} ${r.role} "${r.text}" → ${real.body.source || real.body.code} ${real.body.audioId || ''} ${real.body.charsSpent || 0}`);
     }
     console.log(`spent ${spent} chars`);
-    save('audio-results.json', results);
+    save(`audio-results${TAG}.json`, results);
     return;
   }
   if (mode === 'link') {
     // Link every still-empty slot of a planned ask to the clip its render returned (renders fill target slots, not known ones).
-    const results = JSON.parse(fs.readFileSync(path.join(__dirname, '../../ops/spa-658-apply/audio-results.json'), 'utf8'));
+    const results = JSON.parse(fs.readFileSync(path.join(__dirname, `../../ops/spa-658-apply/audio-results${TAG}.json`), 'utf8'));
     const { L, P } = load(api);
     const ops = [];
     for (const r of results) {
@@ -179,7 +187,7 @@ async function main() {
     if (!apply) return;
     const ap = await batch({ ops, apply: true });
     console.log(`APPLIED ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file}`);
-    save('undo-audio-link.json', { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
+    save(`undo-audio-link${TAG}.json`, { event_id: ap.body.event_id, undo_file: ap.body.undo_file, ops: ap.body.undo_ops || ap.body.undo });
     return;
   }
   if (mode === 'hold') {
