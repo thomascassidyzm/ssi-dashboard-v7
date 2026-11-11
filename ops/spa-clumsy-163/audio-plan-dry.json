@@ -1,0 +1,935 @@
+[
+ {
+  "role": "target1",
+  "text": "Creo que estabas aprendiendo muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0107L03U01",
+    "slot": "target1",
+    "current": "286883da-ea3e-43d8-a118-963882c6b69a"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Creo que estabas aprendiendo muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0107L03U01",
+    "slot": "target2",
+    "current": "6350ed04-a587-4bf1-a591-29762174d898"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think you were learning very well",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0107L03U01",
+    "slot": "known",
+    "current": "a0e4035f-bbd0-493d-a4b8-0701b973106c"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ahora sin duda lo estoy haciendo mejor que la última vez que hablamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0117L04U05",
+    "slot": "target1",
+    "current": "424c333b-8d07-49ff-be1a-cf409008f4a6"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ahora sin duda lo estoy haciendo mejor que la última vez que hablamos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0117L04U05",
+    "slot": "target2",
+    "current": "e5e8912f-4388-49a8-a54b-20b8a9611ee5"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "library"
+  }
+ },
+ {
+  "role": "known",
+  "text": "Right now I am definitely doing better than the last time we talked",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0117L04U05",
+    "slot": "known",
+    "current": "a3de3b72-ea5a-4261-8522-e9dad2090072"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 67
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Estoy disfrutando mucho este trabajo y quiero seguir haciendo esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L01U12",
+    "slot": "target1",
+    "current": "6895fe87-87ce-483a-8c82-bb7640ff34a6"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 66
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Estoy disfrutando mucho este trabajo y quiero seguir haciendo esto",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L01U12",
+    "slot": "target2",
+    "current": "e7c0207a-669b-428d-9364-9d731ea7bfc7"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 66
+  }
+ },
+ {
+  "role": "known",
+  "text": "I'm enjoying this work a lot and I want to keep doing this",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0126L01U12",
+    "slot": "known",
+    "current": "e0aeebfe-02a1-484f-bcd0-5b8ba9634b4b"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ella dijo que es emocionante cuando llegas a conocer a alguien nuevo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0133L01U14",
+    "slot": "target1",
+    "current": "8fa55acd-e03d-4468-a9de-2a62e17ca251"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 68
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ella dijo que es emocionante cuando llegas a conocer a alguien nuevo",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0133L01U14",
+    "slot": "target2",
+    "current": "54e12945-be1e-48b8-a7a0-282be91bd780"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 68
+  }
+ },
+ {
+  "role": "known",
+  "text": "She said it is exciting when you get to know someone new",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0133L01U14",
+    "slot": "known",
+    "current": "0c072619-9ee6-44ba-807f-c16e80c3b30b"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Ya puedo hablar un poco de español y eso es muy bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0145L01U05",
+    "slot": "target1",
+    "current": "ab91446a-7ac8-4957-a34d-ffc4a82b03c3"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Ya puedo hablar un poco de español y eso es muy bueno",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0145L01U05",
+    "slot": "target2",
+    "current": "2de9c619-c765-454c-bd8a-79d549adb201"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "He dicho todo lo que quería decir con mucho cuidado",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L01U14",
+    "slot": "target1",
+    "current": "cd57d67b-5d62-47c2-9de7-d1f15704d947"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "He dicho todo lo que quería decir con mucho cuidado",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L01U14",
+    "slot": "target2",
+    "current": "ac752ede-a27d-4e5b-94ff-6f92778ed445"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "No estoy seguro de lo que querías decirme exactamente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L02U14",
+    "slot": "target1",
+    "current": "cfd0de45-c9d4-4f0a-9cb4-b6fd3e07c56a"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "No estoy seguro de lo que querías decirme exactamente",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0153L02U14",
+    "slot": "target2",
+    "current": "809c63d0-11cc-43e5-bd5a-5c6bc696a8d2"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Todo lo que intentamos hasta ahora fue muy útil para mejorar mucho mi español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U09",
+    "slot": "target1",
+    "current": "4205381a-46c2-41e6-bac9-d11b03a75ab1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Todo lo que intentamos hasta ahora fue muy útil para mejorar mucho mi español",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0187L02U09",
+    "slot": "target2",
+    "current": "97c71a40-c4b0-463f-bb50-4ef3a92b107f"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 77
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Así que qué crees que debería hacer con el problema?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U10",
+    "slot": "target1",
+    "current": "c2e5a08b-7a37-44ca-bb2c-2270e7e415c3"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Así que qué crees que debería hacer con el problema?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U10",
+    "slot": "target2",
+    "current": "f418b27b-6d7c-4048-b626-776dbaa54eb9"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 53
+  }
+ },
+ {
+  "role": "known",
+  "text": "So what do you think I should do about the problem?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0188L02U10",
+    "slot": "known",
+    "current": "a84a21db-9bf8-49ff-8625-09270a0365f8"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Quiero hablar contigo sobre el dinero antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L02U09",
+    "slot": "target1",
+    "current": "578665a7-297c-4627-aa40-4a97eb328d47"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Quiero hablar contigo sobre el dinero antes de que te vayas",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L02U09",
+    "slot": "target2",
+    "current": "8b707c66-e3a3-4c7b-966b-2c18db8106c6"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Quieres que te ayude a encontrar lo que dejé en la mesa?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U01",
+    "slot": "target1",
+    "current": "07ac6f94-726b-4e67-80ed-19c219cd7261"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Quieres que te ayude a encontrar lo que dejé en la mesa?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U01",
+    "slot": "target2",
+    "current": "c31fbbb0-1e02-455f-9b68-27bff13d937e"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "known",
+  "text": "Do you want me to help you find what I left on the table?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U01",
+    "slot": "known",
+    "current": "ac36e364-bf74-4152-bf02-73ef18e8e726"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 57
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Sí, vi lo que dejé en la mesa hace un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U06",
+    "slot": "target1",
+    "current": "7a53beb4-66fb-4da8-b82d-9a75d19947c4"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Sí, vi lo que dejé en la mesa hace un rato",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U06",
+    "slot": "target2",
+    "current": "a282537e-78c0-4908-8750-74fe87a4d8a1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "Yes I saw what I left on the table a while ago",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0195L03U06",
+    "slot": "known",
+    "current": "0eb58fc1-b950-4511-a228-d41107b88d5e"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿Has oído eso sobre tu amigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0196L01U03",
+    "slot": "target1",
+    "current": "d53dcf1a-99ed-4545-bf54-301982843070"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿Has oído eso sobre tu amigo?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0196L01U03",
+    "slot": "target2",
+    "current": "e25bcefb-636f-456d-acaf-0c2cc2f394a1"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Esta es una buena oportunidad de practicar hablando español antes de empezar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L02U02",
+    "slot": "target1",
+    "current": "9bd230ee-fa36-4c4c-84ea-2ce47a5d0743"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 76
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Esta es una buena oportunidad de practicar hablando español antes de empezar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0206L02U02",
+    "slot": "target2",
+    "current": "d3c55979-5d2c-464f-9945-a84b545bc508"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 76
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Querían practicar hablando lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L01U05",
+    "slot": "target1",
+    "current": "109689fc-af49-4610-b06d-82b79616313f"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 43
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Querían practicar hablando lo antes posible",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0212L01U05",
+    "slot": "target2",
+    "current": "fd4d4ebf-8b3d-4ac7-b360-10bc66d79710"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Él dijo que quiere dos cosas que tienes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0217L05U13",
+    "slot": "target1",
+    "current": "10ed869c-fee5-447a-bcfc-0cc914e17cdc"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Él dijo que quiere dos cosas que tienes",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0217L05U13",
+    "slot": "target2",
+    "current": "15581d1f-b011-48be-a1fe-1583fa4229ed"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "He said he wants two things that you have",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0217L05U13",
+    "slot": "known",
+    "current": "41f9cbc1-2d28-4cb3-bb0b-b6c1f6cb8c07"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 41
+  }
+ },
+ {
+  "role": "target1",
+  "text": "Él dijo que es una gran idea pero quiere hablar más de eso antes de empezar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U11",
+    "slot": "target1",
+    "current": "7c2f4fe8-4ce7-4277-b4be-17aded17bd3b"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
+  }
+ },
+ {
+  "role": "target2",
+  "text": "Él dijo que es una gran idea pero quiere hablar más de eso antes de empezar",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0272L03U11",
+    "slot": "target2",
+    "current": "b067e0d4-2476-43ff-865c-fc54e7142754"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 75
+  }
+ },
+ {
+  "role": "target1",
+  "text": "no en mi opinión",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0415L01B02",
+    "slot": "target1",
+    "current": "9fce2c2d-7037-4e2b-8227-de98831745b4"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "no en mi opinión",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0415L01B02",
+    "slot": "target2",
+    "current": "5afd1f86-4bea-4fd5-9942-f887d0d6b3b7"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 16
+  }
+ },
+ {
+  "role": "target1",
+  "text": "el mejor de esos lugares",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L02B02",
+    "slot": "target1",
+    "current": "1f660ea8-bf1f-4479-ad1b-b67c67ffd53a"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "el mejor de esos lugares",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0492L02B02",
+    "slot": "target2",
+    "current": "3eb2b78d-52d4-4a64-9d25-e12239590bbf"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quiero practicar hablando en vez de escribir",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0502L03U02",
+    "slot": "target1",
+    "current": "397c5fc3-98a5-4e1c-9c01-76b362bb6e13"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quiero practicar hablando en vez de escribir",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0502L03U02",
+    "slot": "target2",
+    "current": "815d00c7-c736-4980-828e-9e30d685832d"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ponen música caminando hacia la oficina de correos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0556L01B03",
+    "slot": "target1",
+    "current": "f3e7cfee-3c86-4de3-8c63-770fe2d774a0"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 50
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ponen música caminando hacia la oficina de correos",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0556L01B03",
+    "slot": "target2",
+    "current": "6edbb20d-d72d-4904-a4b5-a3228593d7b0"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 50
+  }
+ },
+ {
+  "role": "known",
+  "text": "they play music walking towards the post office",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0556L01B03",
+    "slot": "known",
+    "current": "b5494e85-169f-4a83-b425-950dd8cd9a48"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "¿crees que lo hemos intentado lo suficiente?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0579L01U03",
+    "slot": "target1",
+    "current": "182107cb-ac36-4c10-9864-a3ef9cb8d209"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "¿crees que lo hemos intentado lo suficiente?",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0579L01U03",
+    "slot": "target2",
+    "current": "0c8a9203-9315-4421-8624-61c8a59c44df"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "creo que usted lo está haciendo muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0639L02U02",
+    "slot": "target1",
+    "current": "637850c4-c4d7-463c-8e39-d95845a0894e"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "creo que usted lo está haciendo muy bien",
+  "slots": [
+   {
+    "target": "phrase",
+    "phrase_id": "spa_for_eng:S0639L02U02",
+    "slot": "target2",
+    "current": "73c0366b-2170-4b78-9ff7-afde53c20bf0"
+   }
+  ],
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "wouldSpendChars": 40
+  }
+ }
+]
