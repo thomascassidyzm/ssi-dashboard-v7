@@ -1,0 +1,2362 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 414,
+  "expect": {
+   "known_text": "could we have a bottle of red wine please?",
+   "target_text": "¿Podríamos tener una botella de vino tinto, por favor?"
+  },
+  "set": {
+   "known_text": "could we order a bottle of red wine, please?",
+   "known_audio_id": "51dc7765-8a0e-4023-8e2a-affb3d85b596",
+   "target_text": "¿Podríamos pedir una botella de vino tinto, por favor?",
+   "target1_audio_id": "c2f2ef22-27ef-444c-a70c-46be0bf72469",
+   "target2_audio_id": "b9da1f2d-b140-41b1-9949-33a0a458a454"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0414L02U01",
+  "expect": {
+   "known_text": "could we have a bottle of red wine please?",
+   "target_text": "¿podríamos tener una botella de vino tinto, por favor?"
+  },
+  "set": {
+   "known_text": "could we order a bottle of red wine, please?",
+   "known_audio_id": "51dc7765-8a0e-4023-8e2a-affb3d85b596",
+   "target_text": "¿podríamos pedir una botella de vino tinto, por favor?",
+   "target1_audio_id": "c2f2ef22-27ef-444c-a70c-46be0bf72469",
+   "target2_audio_id": "b9da1f2d-b140-41b1-9949-33a0a458a454",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "¿podríamos",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0212L02",
+     "target": " pedir",
+     "known": "to ask for",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0414L02",
+     "target": " una botella de vino tinto",
+     "known": "a bottle of red wine",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0414L01",
+     "target": " por favor",
+     "known": "please",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0414L01U06",
+  "expect": {
+   "known_text": "could we have a table, please?",
+   "target_text": "¿podríamos tener una mesa, por favor?"
+  },
+  "set": {
+   "known_text": "could we book a table, please?",
+   "known_audio_id": "56d110b1-f135-4007-bebf-e3a9360bb288",
+   "target_text": "¿podríamos reservar una mesa, por favor?",
+   "target1_audio_id": "e0f197e8-5b5d-4e15-b950-cc93396719fc",
+   "target2_audio_id": "d5a1c3e9-91e3-4697-b65e-041aac5e3a41",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "¿podríamos",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0405L01",
+     "target": " reservar",
+     "known": "to book",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " una",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " mesa,",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0414L01",
+     "target": " por favor",
+     "known": "please",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0414L01U01",
+  "expect": {
+   "known_text": "can I have some water, please?",
+   "target_text": "¿puedo tener agua, por favor?"
+  },
+  "set": {
+   "known_text": "can I ask for some water, please?",
+   "known_audio_id": "368df28a-aac0-42fd-88d1-a1229e5ed915",
+   "target_text": "¿puedo pedir agua, por favor?",
+   "target1_audio_id": "199a3d34-e8a3-4b42-9944-2fdab981fdd9",
+   "target2_audio_id": "34b58aee-2e63-4c47-ab0d-dd235a7fef9d",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "¿puedo",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0212L02",
+     "target": " pedir",
+     "known": "to ask for",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0217L07",
+     "target": " agua",
+     "known": "water",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0414L01",
+     "target": " por favor",
+     "known": "please",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_for_eng:S0414L02U04",
+  "expect": {
+   "known_text": "can I have a bottle of red wine?",
+   "target_text": "¿puedo tener una botella de vino tinto?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0414L01U03",
+  "expect": {
+   "known_text": "could we have something to eat, please?",
+   "target_text": "¿podríamos comer algo, por favor?"
+  },
+  "set": {
+   "known_text": "could we eat something, please?",
+   "known_audio_id": "fb1f2527-36aa-49f8-89ab-86d588e95400"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 416,
+  "expect": {
+   "known_text": "they want to lead the way next year",
+   "target_text": "quieren liderar el camino el año que viene"
+  },
+  "set": {
+   "known_text": "they want to lead the project next year",
+   "known_audio_id": "da802ed8-8fba-4b8f-8f86-c49969d1c71d",
+   "target_text": "quieren liderar el proyecto el año que viene",
+   "target1_audio_id": "c7e895ff-c1bf-45ed-9003-a12fc7c16f2a",
+   "target2_audio_id": "51c47696-8a43-42b1-a2b8-b1534a21e6d0"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0416L02",
+  "expect": {
+   "known_text": "the way",
+   "target_text": "el camino"
+  },
+  "set": {
+   "known_text": "the project",
+   "known_audio_id": "68c2bb33-9438-4432-b29e-ad73672c427a",
+   "target_text": "el proyecto",
+   "target1_audio_id": "055af3ae-3b15-41e0-85f4-09370ecf2c7d",
+   "target2_audio_id": "81eff918-1d3b-439b-893b-7d5dc0316d6d",
+   "components": [
+    {
+     "known": "the",
+     "target": "el"
+    },
+    {
+     "known": "project",
+     "target": "proyecto"
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02C02",
+  "expect": {
+   "known_text": "way",
+   "target_text": "camino"
+  },
+  "set": {
+   "known_text": "project",
+   "known_audio_id": "2e724a1a-e18f-4b54-8985-c165b394cf1e",
+   "target_text": "proyecto",
+   "target1_audio_id": "2f85da3d-0bac-4668-a51e-abfaeaeaa8b6",
+   "target2_audio_id": "d5187ced-c97a-4b82-8f89-090d109996f4"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02B01",
+  "expect": {
+   "known_text": "the way",
+   "target_text": "el camino"
+  },
+  "set": {
+   "known_text": "the project",
+   "known_audio_id": "68c2bb33-9438-4432-b29e-ad73672c427a",
+   "target_text": "el proyecto",
+   "target1_audio_id": "055af3ae-3b15-41e0-85f4-09370ecf2c7d",
+   "target2_audio_id": "81eff918-1d3b-439b-893b-7d5dc0316d6d",
+   "decomposition": [
+    {
+     "legoId": "S0416L02",
+     "target": "el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02B02",
+  "expect": {
+   "known_text": "to lead the way",
+   "target_text": "liderar el camino"
+  },
+  "set": {
+   "known_text": "to lead the project",
+   "known_audio_id": "6d971e15-6400-434c-b54e-c8595be7473d",
+   "target_text": "liderar el proyecto",
+   "target1_audio_id": "ea925315-cc7f-4bb3-984c-78e129f648a0",
+   "target2_audio_id": "58aaeefd-f878-44a2-bb59-06d6aab8ad81",
+   "decomposition": [
+    {
+     "legoId": "S0416L01",
+     "target": "liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02B03",
+  "expect": {
+   "known_text": "the way to win",
+   "target_text": "el camino para ganar"
+  },
+  "set": {
+   "known_text": "the new project",
+   "known_audio_id": "db1de0ae-150e-4063-af7c-77bf35df8d2c",
+   "target_text": "el nuevo proyecto",
+   "target1_audio_id": "291dfaa2-910f-41d0-9652-03a1929cb3ff",
+   "target2_audio_id": "e8585c53-f40a-4de4-9df7-78f474ee4ec5",
+   "decomposition": [
+    {
+     "legoId": "S0416L02",
+     "target": "el",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " nuevo",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " proyecto",
+     "known": "",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U01",
+  "expect": {
+   "known_text": "they want to lead the way next year",
+   "target_text": "quieren liderar el camino el año que viene"
+  },
+  "set": {
+   "known_text": "they want to lead the project next year",
+   "known_audio_id": "da802ed8-8fba-4b8f-8f86-c49969d1c71d",
+   "target_text": "quieren liderar el proyecto el año que viene",
+   "target1_audio_id": "c7e895ff-c1bf-45ed-9003-a12fc7c16f2a",
+   "target2_audio_id": "51c47696-8a43-42b1-a2b8-b1534a21e6d0",
+   "decomposition": [
+    {
+     "legoId": "S0200L02",
+     "target": "quieren",
+     "known": "they want",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0221L02",
+     "target": " el",
+     "known": "the",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0176L03",
+     "target": " año",
+     "known": "year",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " viene",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U02",
+  "expect": {
+   "known_text": "she wanted to lead the way",
+   "target_text": "quería liderar el camino"
+  },
+  "set": {
+   "known_text": "she wanted to lead the project",
+   "known_audio_id": "d56c5135-92f9-4426-991a-b955fbdc47db",
+   "target_text": "quería liderar el proyecto",
+   "target1_audio_id": "f41188c3-bcaf-468b-8726-83fe23f4754b",
+   "target2_audio_id": "96e92578-cee3-420a-813a-53421305b866",
+   "decomposition": [
+    {
+     "legoId": "S0030L01",
+     "target": "quería",
+     "known": "I wanted",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U03",
+  "expect": {
+   "known_text": "I thought she was going to lead the way",
+   "target_text": "pensé que iba a liderar el camino"
+  },
+  "set": {
+   "known_text": "I thought she was going to lead the project",
+   "known_audio_id": "53f943cc-0efb-4859-b885-c5cfa13700a7",
+   "target_text": "pensé que iba a liderar el proyecto",
+   "target1_audio_id": "b0c23723-7512-4663-b41e-fefbe0a85ac5",
+   "target2_audio_id": "c4813dd0-f508-4a75-b7c0-050d14675f9e",
+   "decomposition": [
+    {
+     "legoId": "S0124L01",
+     "target": "pensé",
+     "known": "I thought",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0236L01",
+     "target": " iba a",
+     "known": "was going to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U04",
+  "expect": {
+   "known_text": "she needed to lead the way",
+   "target_text": "necesitaba liderar el camino"
+  },
+  "set": {
+   "known_text": "she needed to lead the project",
+   "known_audio_id": "b0df0675-8fee-48f0-bcb6-76d46002e7f5",
+   "target_text": "necesitaba liderar el proyecto",
+   "target1_audio_id": "2929d430-d503-482a-b796-cd068ef4f195",
+   "target2_audio_id": "24786281-b599-45c8-ac0a-02c7ee2bbf28",
+   "decomposition": [
+    {
+     "legoId": "S0296L01",
+     "target": "necesitaba",
+     "known": "I needed",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U05",
+  "expect": {
+   "known_text": "I told her to lead the way",
+   "target_text": "le dije que debería liderar el camino"
+  },
+  "set": {
+   "known_text": "I told her she should lead the project",
+   "known_audio_id": "61f6eb68-b48a-4629-b51b-f09b2dc766fb",
+   "target_text": "le dije que debería liderar el proyecto",
+   "target1_audio_id": "2b557949-3aaa-498a-8a33-6196f6f695a3",
+   "target2_audio_id": "00778ac2-90e6-46a1-a5b5-25f2bcec962a",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "le",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0295L01",
+     "target": " dije",
+     "known": "I said",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0098L01",
+     "target": " debería",
+     "known": "I should",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0416L02U06",
+  "expect": {
+   "known_text": "in my opinion, she should lead the way",
+   "target_text": "en mi opinión, debería liderar el camino"
+  },
+  "set": {
+   "known_text": "in my opinion, she should lead the project",
+   "known_audio_id": "8530fa0b-7f50-4b38-89dd-448122f2899f",
+   "target_text": "en mi opinión, debería liderar el proyecto",
+   "target1_audio_id": "778def9c-cfe3-4324-b87c-09cf5c0204be",
+   "target2_audio_id": "d10c4f54-8943-4c8d-bff3-01426093eadb",
+   "decomposition": [
+    {
+     "legoId": "S0415L01",
+     "target": "en mi opinión",
+     "known": "in my opinion",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0098L01",
+     "target": " debería",
+     "known": "I should",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0432L02U05",
+  "expect": {
+   "known_text": "they already know they could lead the way",
+   "target_text": "ya saben que podrían liderar el camino"
+  },
+  "set": {
+   "known_text": "they already know they could lead the project",
+   "known_audio_id": "f6efb394-a1bc-4943-b21f-46d0883f830c",
+   "target_text": "ya saben que podrían liderar el proyecto",
+   "target1_audio_id": "bb91fd4d-e1b0-4a24-ac30-001418d6dfe9",
+   "target2_audio_id": "40289e33-16f8-4de5-a14b-855378ba7ca2",
+   "decomposition": [
+    {
+     "legoId": "S0076L04",
+     "target": "ya",
+     "known": "already",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0421L03",
+     "target": " saben",
+     "known": "they know",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0432L02",
+     "target": " podrían",
+     "known": "they could",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0416L01",
+     "target": " liderar",
+     "known": "to lead",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0416L02",
+     "target": " el proyecto",
+     "known": "the project",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 437,
+  "expect": {
+   "known_text": "they wanted to raise as much as possible for charity",
+   "target_text": "querían recaudar lo máximo posible para caridad"
+  },
+  "set": {
+   "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+   "target1_audio_id": "6cc14312-1a15-4141-8129-30b52caf81de",
+   "target2_audio_id": "fe73325c-63a2-432a-a938-b66cd3ab67a4"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0437L01",
+  "expect": {
+   "known_text": "charity",
+   "target_text": "caridad"
+  },
+  "set": {
+   "target_text": "una causa benéfica",
+   "target1_audio_id": "ce7e9886-f0fa-4e05-9847-377bc80cd502",
+   "target2_audio_id": "ea18cf77-2fcc-4281-97f1-cfa6a6ac0f1a"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01B01",
+  "expect": {
+   "known_text": "charity",
+   "target_text": "caridad"
+  },
+  "set": {
+   "target_text": "una causa benéfica",
+   "target1_audio_id": "ce7e9886-f0fa-4e05-9847-377bc80cd502",
+   "target2_audio_id": "ea18cf77-2fcc-4281-97f1-cfa6a6ac0f1a",
+   "decomposition": [
+    {
+     "legoId": "S0437L01",
+     "target": "una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01B02",
+  "expect": {
+   "known_text": "for charity",
+   "target_text": "para caridad"
+  },
+  "set": {
+   "target_text": "para una causa benéfica",
+   "target1_audio_id": "a7db7463-1dc4-4da5-9b09-13c2cea23671",
+   "target2_audio_id": "3c068c38-93b4-4727-8a63-bff858dc0d79",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01B03",
+  "expect": {
+   "known_text": "it is for charity",
+   "target_text": "es para caridad"
+  },
+  "set": {
+   "target_text": "es para una causa benéfica",
+   "target1_audio_id": "dc5172c1-d999-4dd0-8793-e0f882403995",
+   "target2_audio_id": "23aad2ac-f490-4a53-b411-5d029230417a",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "es",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01B04",
+  "expect": {
+   "known_text": "I want to do it for charity",
+   "target_text": "quiero hacerlo para caridad"
+  },
+  "set": {
+   "target_text": "quiero hacerlo para una causa benéfica",
+   "target1_audio_id": "d0679b18-4ba9-4e97-b86d-4ac7f8de36d3",
+   "target2_audio_id": "8d0303c9-d9ee-4236-b69d-c8df6a962d4c",
+   "decomposition": [
+    {
+     "legoId": "S0001L01",
+     "target": "quiero",
+     "known": "I want",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0173L02",
+     "target": " hacerlo",
+     "known": "to manage it",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01U01",
+  "expect": {
+   "known_text": "I want to do something for charity",
+   "target_text": "quiero hacer algo para caridad"
+  },
+  "set": {
+   "target_text": "quiero hacer algo para una causa benéfica",
+   "target1_audio_id": "ce8376cc-6632-4b3d-a7d1-52c6c6a20762",
+   "target2_audio_id": "ae39816d-387b-4882-969b-a7d6ce6edc29",
+   "decomposition": [
+    {
+     "legoId": "S0001L01",
+     "target": "quiero",
+     "known": "I want",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0059L02",
+     "target": " hacer",
+     "known": "to do",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0004L02",
+     "target": " algo",
+     "known": "something",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01U02",
+  "expect": {
+   "known_text": "I know it is for charity",
+   "target_text": "sé que es para caridad"
+  },
+  "set": {
+   "target_text": "sé que es para una causa benéfica",
+   "target1_audio_id": "b5dec050-2fb0-4fa1-860e-0c6e02aa89a2",
+   "target2_audio_id": "24109db2-db6c-45cd-a6a6-e6bbee1bcb5b",
+   "decomposition": [
+    {
+     "legoId": "S0059L01",
+     "target": "sé",
+     "known": "I know",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " es",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01U03",
+  "expect": {
+   "known_text": "I need to do it for charity",
+   "target_text": "necesito hacerlo para caridad"
+  },
+  "set": {
+   "target_text": "necesito hacerlo para una causa benéfica",
+   "target1_audio_id": "2f25ebbb-0aae-4633-b8cd-40117f4d0068",
+   "target2_audio_id": "1393ea7d-89fe-46b8-a20c-8206a0fd3796",
+   "decomposition": [
+    {
+     "legoId": "S0044L02",
+     "target": "necesito",
+     "known": "I need",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0173L02",
+     "target": " hacerlo",
+     "known": "to manage it",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01U04",
+  "expect": {
+   "known_text": "can you do it for charity?",
+   "target_text": "¿puedes hacerlo para caridad?"
+  },
+  "set": {
+   "target_text": "¿puedes hacerlo para una causa benéfica?",
+   "target1_audio_id": "762a0918-9d03-4860-aec0-eb751cdaf49e",
+   "target2_audio_id": "0908c49b-b785-4177-926c-0c7fca5fc590",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "¿puedes",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0173L02",
+     "target": " hacerlo",
+     "known": "to manage it",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L01U05",
+  "expect": {
+   "known_text": "I want to give something to charity",
+   "target_text": "quiero dar algo a caridad"
+  },
+  "set": {
+   "target_text": "quiero dar algo a una causa benéfica",
+   "target1_audio_id": "4a34c208-0313-4d33-9337-368ef6d0136d",
+   "target2_audio_id": "5b81ef95-657b-4b2a-ba84-859a47909a41",
+   "decomposition": [
+    {
+     "legoId": "S0001L01",
+     "target": "quiero",
+     "known": "I want",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0331L02",
+     "target": " dar",
+     "known": "to give",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0004L02",
+     "target": " algo",
+     "known": "something",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0216L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_for_eng:S0437L01U06",
+  "expect": {
+   "known_text": "I think it is for a good charity",
+   "target_text": "creo que es para una buena caridad"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L02B03",
+  "expect": {
+   "known_text": "to do as much as possible for charity",
+   "target_text": "hacer lo máximo posible para caridad"
+  },
+  "set": {
+   "target_text": "hacer lo máximo posible para una causa benéfica",
+   "target1_audio_id": "0a2823f4-5ab6-4138-bab9-9c3ff6c8199c",
+   "target2_audio_id": "9e7d0819-0a76-432d-a9f4-5ec7cc652ebe",
+   "decomposition": [
+    {
+     "legoId": "S0059L02",
+     "target": "hacer",
+     "known": "to do",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L02U02",
+  "expect": {
+   "known_text": "can you do as much as possible for charity?",
+   "target_text": "¿puedes hacer lo máximo posible para caridad?"
+  },
+  "set": {
+   "target_text": "¿puedes hacer lo máximo posible para una causa benéfica?",
+   "target1_audio_id": "418c4209-1b4f-42db-adb5-763c834db862",
+   "target2_audio_id": "72ec0071-a25d-4555-b17c-6663f889757b",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "¿puedes",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0059L02",
+     "target": " hacer",
+     "known": "to do",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L02U04",
+  "expect": {
+   "known_text": "I need to do as much as possible for charity",
+   "target_text": "necesito hacer lo máximo posible para caridad"
+  },
+  "set": {
+   "target_text": "necesito hacer lo máximo posible para una causa benéfica",
+   "target1_audio_id": "0f63b023-282d-48da-b67a-afb67f585cee",
+   "target2_audio_id": "c6e5dcc9-b460-4cdf-9056-be5ca676d361",
+   "decomposition": [
+    {
+     "legoId": "S0044L02",
+     "target": "necesito",
+     "known": "I need",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0059L02",
+     "target": " hacer",
+     "known": "to do",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L02U05",
+  "expect": {
+   "known_text": "they want to do as much as possible for charity",
+   "target_text": "quieren hacer lo máximo posible para caridad"
+  },
+  "set": {
+   "target_text": "quieren hacer lo máximo posible para una causa benéfica",
+   "target1_audio_id": "76341bfc-6170-495d-bc69-91f9a759ec8b",
+   "target2_audio_id": "c95190c1-d101-4141-bf6d-1726ebcdc7fb",
+   "decomposition": [
+    {
+     "legoId": "S0200L02",
+     "target": "quieren",
+     "known": "they want",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0059L02",
+     "target": " hacer",
+     "known": "to do",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L02U06",
+  "expect": {
+   "known_text": "give as much as possible to charity",
+   "target_text": "dar lo máximo posible a caridad"
+  },
+  "set": {
+   "target_text": "dar lo máximo posible a una causa benéfica",
+   "target1_audio_id": "b58ee86a-ba3c-4e63-ab3d-eb582e71f0e8",
+   "target2_audio_id": "66fb82f7-dcc5-4958-b567-272f8d85b4e1",
+   "decomposition": [
+    {
+     "legoId": "S0331L02",
+     "target": "dar",
+     "known": "to give",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0216L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L03B03",
+  "expect": {
+   "known_text": "they wanted to raise money for charity",
+   "target_text": "querían recaudar dinero para caridad"
+  },
+  "set": {
+   "target_text": "querían recaudar dinero para una causa benéfica",
+   "target1_audio_id": "825f37ad-a672-4f43-a2a3-2c332f87d15b",
+   "target2_audio_id": "a5fd9c68-8bff-4a6d-a00f-70c928bbd179",
+   "decomposition": [
+    {
+     "legoId": "S0437L03",
+     "target": "querían recaudar",
+     "known": "they wanted to raise",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0378L02",
+     "target": " dinero",
+     "known": "money",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L03U01",
+  "expect": {
+   "known_text": "they wanted to raise as much as possible for charity",
+   "target_text": "querían recaudar lo máximo posible para caridad"
+  },
+  "set": {
+   "target_text": "querían recaudar lo máximo posible para una causa benéfica",
+   "target1_audio_id": "6cc14312-1a15-4141-8129-30b52caf81de",
+   "target2_audio_id": "fe73325c-63a2-432a-a938-b66cd3ab67a4",
+   "decomposition": [
+    {
+     "legoId": "S0437L03",
+     "target": "querían recaudar",
+     "known": "they wanted to raise",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0437L02",
+     "target": " lo máximo posible",
+     "known": "as much as possible",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0437L03U02",
+  "expect": {
+   "known_text": "I knew they wanted to raise money for charity",
+   "target_text": "sabía que querían recaudar dinero para caridad"
+  },
+  "set": {
+   "target_text": "sabía que querían recaudar dinero para una causa benéfica",
+   "target1_audio_id": "880173a1-a0e0-416e-a094-0ff93175708b",
+   "target2_audio_id": "0410a885-97ad-459b-aeb3-c081116e3865",
+   "decomposition": [
+    {
+     "legoId": "S0105L01",
+     "target": "sabía",
+     "known": "he knew",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0437L03",
+     "target": " querían recaudar",
+     "known": "they wanted to raise",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0378L02",
+     "target": " dinero",
+     "known": "money",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0437L01",
+     "target": " una causa benéfica",
+     "known": "charity",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_for_eng:S0437L03U04",
+  "expect": {
+   "known_text": "they wanted to raise as much as possible for a good charity",
+   "target_text": "querían recaudar lo máximo posible para una buena caridad"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 567,
+  "expect": {
+   "known_text": "It's been lovely spending time outdoors watching the children play",
+   "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar"
+  },
+  "set": {
+   "target_text": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+   "target1_audio_id": "f71b7040-706c-47bb-b705-0b5c89bb0c9c",
+   "target2_audio_id": "3b99b01e-785a-4947-ac18-2ca3d8a9db8b"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0567L01",
+  "expect": {
+   "known_text": "it's been lovely",
+   "target_text": "ha sido encantador"
+  },
+  "set": {
+   "target_text": "ha sido estupendo",
+   "target1_audio_id": "e64f08cd-38ac-46b3-8ab6-7bb9eac84256",
+   "target2_audio_id": "850f5d6f-59a0-48c4-a2a9-eaca9c9de262",
+   "components": [
+    {
+     "known": "it's been",
+     "target": "ha sido"
+    },
+    {
+     "known": "lovely",
+     "target": "estupendo"
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01C02",
+  "expect": {
+   "known_text": "lovely",
+   "target_text": "encantador"
+  },
+  "set": {
+   "target_text": "estupendo",
+   "target1_audio_id": "97091e8d-75fa-4713-bfcd-cf82a2ad9d0a",
+   "target2_audio_id": "e9eaf865-fb31-4fc1-8da8-d095a5a637fe"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01B01",
+  "expect": {
+   "known_text": "it's been lovely",
+   "target_text": "ha sido encantador"
+  },
+  "set": {
+   "target_text": "ha sido estupendo",
+   "target1_audio_id": "e64f08cd-38ac-46b3-8ab6-7bb9eac84256",
+   "target2_audio_id": "850f5d6f-59a0-48c4-a2a9-eaca9c9de262",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01B02",
+  "expect": {
+   "known_text": "it's been lovely, I'm sure that",
+   "target_text": "ha sido encantador, estoy seguro de que"
+  },
+  "set": {
+   "target_text": "ha sido estupendo, estoy seguro de que",
+   "target1_audio_id": "7672ea2d-194f-48d3-9488-ddaec06cd414",
+   "target2_audio_id": "76e68f05-e0f0-44f4-bf59-398dfbb0bfa8",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0406L02",
+     "target": " estoy seguro de que",
+     "known": "I'm sure that",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01B03",
+  "expect": {
+   "known_text": "it's been lovely, but it's getting late",
+   "target_text": "ha sido encantador, pero se está haciendo tarde"
+  },
+  "set": {
+   "target_text": "ha sido estupendo, pero se está haciendo tarde",
+   "target1_audio_id": "57ae4ab6-a2ab-4989-b2d9-ab1966100adc",
+   "target2_audio_id": "b00993ff-fa3d-4ade-9fc1-36f56ceeaa38",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0539L01",
+     "target": " pero se está haciendo tarde",
+     "known": "but it's getting late",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01B04",
+  "expect": {
+   "known_text": "it's been lovely because we needed to stay",
+   "target_text": "ha sido encantador porque necesitábamos quedarnos"
+  },
+  "set": {
+   "target_text": "ha sido estupendo porque necesitábamos quedarnos",
+   "target1_audio_id": "0439e6e9-43a5-4060-80a8-c3747bc6ea28",
+   "target2_audio_id": "f9ce3f75-cf9a-4a0b-9f6b-3607b4af1a2b",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0022L01",
+     "target": " porque",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0521L03",
+     "target": " necesitábamos quedarnos",
+     "known": "we needed to stay",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01U01",
+  "expect": {
+   "known_text": "it's been lovely to see the small church at the end of the village",
+   "target_text": "ha sido encantador ver la iglesia pequeña al final del pueblo"
+  },
+  "set": {
+   "target_text": "ha sido estupendo ver la iglesia pequeña al final del pueblo",
+   "target1_audio_id": "0ee26656-0b2c-42af-ac6e-ad12048da47e",
+   "target2_audio_id": "d8fca879-a6e6-4ed3-81f1-35a9faf4649e",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0107L02",
+     "target": " ver",
+     "known": "to see",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0553L02",
+     "target": " la iglesia pequeña",
+     "known": "the small church",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " al",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0476L01",
+     "target": " final",
+     "known": "end",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " del",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " pueblo",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01U02",
+  "expect": {
+   "known_text": "it's been lovely to see that you can keep going without my help",
+   "target_text": "ha sido encantador ver que puedes seguir adelante sin mi ayuda"
+  },
+  "set": {
+   "target_text": "ha sido estupendo ver que puedes seguir adelante sin mi ayuda",
+   "target1_audio_id": "78c98ec6-da27-4620-ae10-76c80947a9d6",
+   "target2_audio_id": "bde26d17-dd86-408a-a62b-63b1c2404a4e",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0107L02",
+     "target": " ver",
+     "known": "to see",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0163L01",
+     "target": " que",
+     "known": "who",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0090L01",
+     "target": " puedes",
+     "known": "you can",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0563L02",
+     "target": " seguir adelante",
+     "known": "to keep going",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0501L03",
+     "target": " sin",
+     "known": "without",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0166L01",
+     "target": " mi",
+     "known": "my",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0212L03",
+     "target": " ayuda",
+     "known": "help",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01U03",
+  "expect": {
+   "known_text": "it's been lovely, but I'm too tired to keep going any longer",
+   "target_text": "ha sido encantador, pero estoy demasiado cansado para seguir adelante por más tiempo"
+  },
+  "set": {
+   "target_text": "ha sido estupendo, pero estoy demasiado cansado para seguir adelante por más tiempo",
+   "target1_audio_id": "12ebf524-d772-4526-b819-4b23e53621f3",
+   "target2_audio_id": "d082e44c-1611-493a-9791-7c5446b8d0ef",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0039L01",
+     "target": " pero estoy",
+     "known": "but I'm",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0027L01",
+     "target": " demasiado",
+     "known": "too much",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0041L02",
+     "target": " cansado",
+     "known": "tired",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " para",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0563L02",
+     "target": " seguir adelante",
+     "known": "to keep going",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0563L03",
+     "target": " por más tiempo",
+     "known": "any longer",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L01U04",
+  "expect": {
+   "known_text": "it's been lovely to be here since we moved to the city",
+   "target_text": "ha sido encantador estar aquí desde que nos mudamos a la ciudad"
+  },
+  "set": {
+   "target_text": "ha sido estupendo estar aquí desde que nos mudamos a la ciudad",
+   "target1_audio_id": "989ccee1-19de-4944-83e5-bff73e6517ad",
+   "target2_audio_id": "ba372f67-8242-4429-a32c-43f4513e73fd",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " estar",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " aquí",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0146L03",
+     "target": " desde que",
+     "known": "since",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0507L01",
+     "target": " nos mudamos",
+     "known": "we moved",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0507L02",
+     "target": " a la ciudad",
+     "known": "to the city",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_for_eng:S0567L01U05",
+  "expect": {
+   "known_text": "it's been lovely with everything",
+   "target_text": "ha sido encantador con todo"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L02U01",
+  "expect": {
+   "known_text": "it's been lovely spending time outdoors",
+   "target_text": "ha sido encantador pasar tiempo al aire libre"
+  },
+  "set": {
+   "target_text": "ha sido estupendo pasar tiempo al aire libre",
+   "target1_audio_id": "becc71ac-4bc4-439a-8a0b-46b77e58a4ec",
+   "target2_audio_id": "cf2ad3c7-15ce-44a8-8c94-1f6e148a0adb",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0567L02",
+     "target": " pasar tiempo al aire libre",
+     "known": "spending time outdoors",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L03U01",
+  "expect": {
+   "known_text": "it's been lovely spending time outdoors watching the children play",
+   "target_text": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar"
+  },
+  "set": {
+   "target_text": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+   "target1_audio_id": "f71b7040-706c-47bb-b705-0b5c89bb0c9c",
+   "target2_audio_id": "3b99b01e-785a-4947-ac18-2ca3d8a9db8b",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0567L02",
+     "target": " pasar tiempo al aire libre",
+     "known": "spending time outdoors",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0567L03",
+     "target": " viendo a los niños jugar",
+     "known": "watching the children play",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0567L03U03",
+  "expect": {
+   "known_text": "it's been lovely watching the children play",
+   "target_text": "ha sido encantador viendo a los niños jugar"
+  },
+  "set": {
+   "target_text": "ha sido estupendo viendo a los niños jugar",
+   "target1_audio_id": "28ec12f3-c2b5-47fe-b948-0247efc9129a",
+   "target2_audio_id": "661b6e06-7c61-4701-9964-21646d4538d9",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0567L03",
+     "target": " viendo a los niños jugar",
+     "known": "watching the children play",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0584L02U05",
+  "expect": {
+   "known_text": "it was lovely waking up every morning during the holidays",
+   "target_text": "ha sido encantador despertarse cada mañana durante las vacaciones"
+  },
+  "set": {
+   "known_text": "it's been lovely waking up every morning during the holidays",
+   "known_audio_id": "a3f51d0d-f5da-4a3c-af7a-06a87060e96c",
+   "target_text": "ha sido estupendo despertarse cada mañana durante las vacaciones",
+   "target1_audio_id": "cba1cb18-9b36-4ff6-ac56-451a57da3f64",
+   "target2_audio_id": "edb03929-e31b-4a56-8b42-cdb4b12bd2b7",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0584L01",
+     "target": " despertarse",
+     "known": "to wake up",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0584L02",
+     "target": " cada mañana",
+     "known": "every morning",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " durante",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0573L03",
+     "target": " las vacaciones",
+     "known": "the holidays",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0584L03U03",
+  "expect": {
+   "known_text": "it was lovely to wake up and see the mountains",
+   "target_text": "ha sido encantador despertarse y ver las montañas"
+  },
+  "set": {
+   "known_text": "it's been lovely to wake up and see the mountains",
+   "known_audio_id": "414f7236-954b-4f76-8a0a-8570503be14e",
+   "target_text": "ha sido estupendo despertarse y ver las montañas",
+   "target1_audio_id": "a6fe2325-1e4f-412d-b280-187581a7862a",
+   "target2_audio_id": "73ed7ce8-bf5f-485f-8444-58adb381a96d",
+   "decomposition": [
+    {
+     "legoId": "S0567L01",
+     "target": "ha sido estupendo",
+     "known": "it's been lovely",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0584L01",
+     "target": " despertarse",
+     "known": "to wake up",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0584L03",
+     "target": " y ver las montañas",
+     "known": "and see the mountains",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 604,
+  "expect": {
+   "known_text": "She offered to let us stay with her",
+   "target_text": "ella se ofreció a dejarnos quedarnos con ella"
+  },
+  "set": {
+   "known_text": "she offered to let us stay at her house",
+   "known_audio_id": "37112efa-09e9-4ea3-94e3-779e5c60af76",
+   "target_text": "ella se ofreció a acogernos en su casa",
+   "target1_audio_id": "c64aafa6-b69f-49e5-bfd8-c69c672ff0b7",
+   "target2_audio_id": "8834812f-2ee3-4d8b-829f-4d7b56bb95c5"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0604L02",
+  "expect": {
+   "known_text": "to let us",
+   "target_text": "dejarnos"
+  },
+  "set": {
+   "known_text": "to let us stay",
+   "known_audio_id": "07f7a1d1-a184-4f09-8c19-a8ae7c236825",
+   "target_text": "acogernos",
+   "target1_audio_id": "800fc003-039a-40ac-9431-f051795ad1ef",
+   "target2_audio_id": "0cfd17d3-fe9b-4e5a-91d0-4996347d870b"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02B01",
+  "expect": {
+   "known_text": "to let us",
+   "target_text": "dejarnos"
+  },
+  "set": {
+   "known_text": "to let us stay",
+   "known_audio_id": "07f7a1d1-a184-4f09-8c19-a8ae7c236825",
+   "target_text": "acogernos",
+   "target1_audio_id": "800fc003-039a-40ac-9431-f051795ad1ef",
+   "target2_audio_id": "0cfd17d3-fe9b-4e5a-91d0-4996347d870b",
+   "decomposition": [
+    {
+     "legoId": "S0604L02",
+     "target": "acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02B02",
+  "expect": {
+   "known_text": "to let us go",
+   "target_text": "dejarnos ir"
+  },
+  "set": {
+   "known_text": "to let us stay at her house",
+   "known_audio_id": "e3aa4301-b5b6-4c4a-99db-9d80b3fe4b45",
+   "target_text": "acogernos en su casa",
+   "target1_audio_id": "0a5c73e6-6164-4730-97ba-a36a92dc154d",
+   "target2_audio_id": "e49f0e22-cbd7-4a6a-911b-403159adefab",
+   "decomposition": [
+    {
+     "legoId": "S0604L02",
+     "target": "acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0004L01",
+     "target": " en",
+     "known": "in",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0316L02",
+     "target": " su",
+     "known": "her",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " casa",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02B03",
+  "expect": {
+   "known_text": "to let us stay",
+   "target_text": "dejarnos quedarnos"
+  },
+  "set": {
+   "known_text": "to let us stay for a week",
+   "known_audio_id": "69a19cf4-83ab-49ec-8350-e5f4d4c4fef5",
+   "target_text": "acogernos una semana",
+   "target1_audio_id": "5f101ac6-c522-4db7-8f4a-7184a1a5ae01",
+   "target2_audio_id": "2eec590b-3176-4797-80e5-fbe88f16a3a2",
+   "decomposition": [
+    {
+     "legoId": "S0604L02",
+     "target": "acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0038L03",
+     "target": " una semana",
+     "known": "a week",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02U01",
+  "expect": {
+   "known_text": "she offered to let us stay with her",
+   "target_text": "ella se ofreció a dejarnos quedarnos con ella"
+  },
+  "set": {
+   "known_text": "she offered to let us stay at her house",
+   "known_audio_id": "37112efa-09e9-4ea3-94e3-779e5c60af76",
+   "target_text": "ella se ofreció a acogernos en su casa",
+   "target1_audio_id": "c64aafa6-b69f-49e5-bfd8-c69c672ff0b7",
+   "target2_audio_id": "8834812f-2ee3-4d8b-829f-4d7b56bb95c5",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "ella",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " se",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0604L01",
+     "target": " ofreció",
+     "known": "she offered",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0216L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0604L02",
+     "target": " acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0004L01",
+     "target": " en",
+     "known": "in",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0316L02",
+     "target": " su",
+     "known": "her",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " casa",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02U02",
+  "expect": {
+   "known_text": "she offered to let us go",
+   "target_text": "se ofreció a dejarnos ir"
+  },
+  "set": {
+   "known_text": "she offered to let us stay",
+   "known_audio_id": "4562768c-01ab-44b8-9544-29a24cb36928",
+   "target_text": "se ofreció a acogernos",
+   "target1_audio_id": "43c46028-295b-47d4-999f-5a51ffe00a86",
+   "target2_audio_id": "e8382ff3-f3b1-4a3b-9a49-09432f6b9872",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "se",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0604L01",
+     "target": " ofreció",
+     "known": "she offered",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0216L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0604L02",
+     "target": " acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02U03",
+  "expect": {
+   "known_text": "she offered to let us do it",
+   "target_text": "ella se ofreció a dejarnos hacerlo"
+  },
+  "set": {
+   "known_text": "she wanted to let us stay",
+   "known_audio_id": "8b49751c-28a3-4143-a006-c0ba41ed0bf3",
+   "target_text": "quería acogernos",
+   "target1_audio_id": "6b508751-049c-407f-a956-7bd711e99bf2",
+   "target2_audio_id": "e1f1b34e-e2c6-4ae1-bd8d-169c1ae08b09",
+   "decomposition": [
+    {
+     "legoId": "S0030L01",
+     "target": "quería",
+     "known": "I wanted",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0604L02",
+     "target": " acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0604L02U04",
+  "expect": {
+   "known_text": "she offered to let us stay",
+   "target_text": "se ofreció a dejarnos quedarnos"
+  },
+  "set": {
+   "known_text": "she offered to let us stay for a week",
+   "known_audio_id": "3efefccb-3894-40e4-ad7a-b57cf504eead",
+   "target_text": "se ofreció a acogernos una semana",
+   "target1_audio_id": "abb83c58-fa81-455c-bd2b-2054471d5bb2",
+   "target2_audio_id": "ffc890f6-f84f-469c-8810-e1b825c45c78",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "se",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0604L01",
+     "target": " ofreció",
+     "known": "she offered",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0216L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0604L02",
+     "target": " acogernos",
+     "known": "to let us stay",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0038L03",
+     "target": " una semana",
+     "known": "a week",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_for_eng:S0560L01U01",
+  "expect": {
+   "target_text": "baja hasta el camino"
+  },
+  "set": {
+   "decomposition": [
+    {
+     "legoId": "S0560L01",
+     "target": "baja hasta",
+     "known": "it goes down to",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0221L02",
+     "target": " el",
+     "known": "the",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " camino",
+     "known": "",
+     "isGhost": true
+    }
+   ]
+  }
+ }
+]

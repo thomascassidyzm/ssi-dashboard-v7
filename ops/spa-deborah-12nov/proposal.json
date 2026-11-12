@@ -1,0 +1,1168 @@
+{
+ "course": "spa_for_eng",
+ "source": "Deborah answers pasted by Kai 12 Nov 2026; job #413",
+ "status": "PROPOSAL — nothing applied; Kai rules each item Y/N; re-voice by the separate applier",
+ "entries": [
+  {
+   "item": 1,
+   "id": "S0414",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "¿Podríamos tener una botella de vino tinto, por favor?",
+   "proposed": "¿Podríamos pedir una botella de vino tinto, por favor?",
+   "note": ""
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L02U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿podríamos tener una botella de vino tinto, por favor?",
+   "proposed": "¿podríamos pedir una botella de vino tinto, por favor?",
+   "note": ""
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L01U06",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "could we have a table, please?",
+   "proposed": "could we book a table, please?",
+   "note": "podríamos tener una mesa is the same calque; reservar taught S0405L01, mesa S0411L02; already-used pattern in U02"
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L01U06",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿podríamos tener una mesa, por favor?",
+   "proposed": "¿podríamos reservar una mesa, por favor?",
+   "note": "podríamos tener una mesa is the same calque; reservar taught S0405L01, mesa S0411L02; already-used pattern in U02"
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L01U01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "can I have some water, please?",
+   "proposed": "can I ask for some water, please?",
+   "note": "puedo tener is the same calque (extension of Deborah's answer); matches S0414L02U05 can I ask for = puedo pedir; also removes can I have -> puedo tener vs S0630L01 can I have -> puedo tomar clash"
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L01U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿puedo tener agua, por favor?",
+   "proposed": "¿puedo pedir agua, por favor?",
+   "note": "puedo tener is the same calque (extension of Deborah's answer); matches S0414L02U05 can I ask for = puedo pedir; also removes can I have -> puedo tener vs S0630L01 can I have -> puedo tomar clash"
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L02U04",
+   "kind": "phrase",
+   "field": "DELETE_ROW",
+   "current": "can I have a bottle of red wine? | ¿puedo tener una botella de vino tinto?",
+   "proposed": null,
+   "note": "can I have ... = puedo tener calque; a pedir rewrite duplicates S0414L02U05 word for word. L02 keeps 3 BUILD + 5 USE"
+  },
+  {
+   "item": 1,
+   "id": "spa_for_eng:S0414L01U03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "could we have something to eat, please?",
+   "proposed": "could we eat something, please?",
+   "note": "English fix only: Spanish ¿podríamos comer algo? never said \"have something to eat\""
+  },
+  {
+   "item": 2,
+   "id": "S0416",
+   "kind": "seed",
+   "field": "known_text",
+   "current": "they want to lead the way next year",
+   "proposed": "they want to lead the project next year",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "S0416",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "quieren liderar el camino el año que viene",
+   "proposed": "quieren liderar el proyecto el año que viene",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "S0416L02",
+   "kind": "lego",
+   "field": "known_text",
+   "current": "the way",
+   "proposed": "the project",
+   "note": "new LEGO replaces the way | el camino; proyecto is introduced by this LEGO"
+  },
+  {
+   "item": 2,
+   "id": "S0416L02",
+   "kind": "lego",
+   "field": "target_text",
+   "current": "el camino",
+   "proposed": "el proyecto",
+   "note": "new LEGO replaces the way | el camino; proyecto is introduced by this LEGO"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02C02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "way",
+   "proposed": "project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02C02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "camino",
+   "proposed": "proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "the way",
+   "proposed": "the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "el camino",
+   "proposed": "el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "to lead the way",
+   "proposed": "to lead the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "liderar el camino",
+   "proposed": "liderar el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "the way to win",
+   "proposed": "the new project",
+   "note": "the way to win has no project equivalent; nuevo taught S0227L02 (algo nuevo)"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "el camino para ganar",
+   "proposed": "el nuevo proyecto",
+   "note": "the way to win has no project equivalent; nuevo taught S0227L02 (algo nuevo)"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "they want to lead the way next year",
+   "proposed": "they want to lead the project next year",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quieren liderar el camino el año que viene",
+   "proposed": "quieren liderar el proyecto el año que viene",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she wanted to lead the way",
+   "proposed": "she wanted to lead the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quería liderar el camino",
+   "proposed": "quería liderar el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I thought she was going to lead the way",
+   "proposed": "I thought she was going to lead the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "pensé que iba a liderar el camino",
+   "proposed": "pensé que iba a liderar el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U04",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she needed to lead the way",
+   "proposed": "she needed to lead the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "necesitaba liderar el camino",
+   "proposed": "necesitaba liderar el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U05",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I told her to lead the way",
+   "proposed": "I told her she should lead the project",
+   "note": "English also fixed: Spanish says she should lead, not to lead"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "le dije que debería liderar el camino",
+   "proposed": "le dije que debería liderar el proyecto",
+   "note": "English also fixed: Spanish says she should lead, not to lead"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U06",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "in my opinion, she should lead the way",
+   "proposed": "in my opinion, she should lead the project",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0416L02U06",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "en mi opinión, debería liderar el camino",
+   "proposed": "en mi opinión, debería liderar el proyecto",
+   "note": ""
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0432L02U05",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "they already know they could lead the way",
+   "proposed": "they already know they could lead the project",
+   "note": "later seed reusing lead the way"
+  },
+  {
+   "item": 2,
+   "id": "spa_for_eng:S0432L02U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ya saben que podrían liderar el camino",
+   "proposed": "ya saben que podrían liderar el proyecto",
+   "note": "later seed reusing lead the way"
+  },
+  {
+   "item": 3,
+   "id": "S0437",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "querían recaudar lo máximo posible para caridad",
+   "proposed": "querían recaudar lo máximo posible para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "S0437L01",
+   "kind": "lego",
+   "field": "target_text",
+   "current": "caridad",
+   "proposed": "una causa benéfica",
+   "note": "LEGO grows from caridad to the noun phrase so para/a + it stays contained; causa and benéfica introduced here"
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01B01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "caridad",
+   "proposed": "una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "para caridad",
+   "proposed": "para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "es para caridad",
+   "proposed": "es para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01B04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quiero hacerlo para caridad",
+   "proposed": "quiero hacerlo para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quiero hacer algo para caridad",
+   "proposed": "quiero hacer algo para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "sé que es para caridad",
+   "proposed": "sé que es para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "necesito hacerlo para caridad",
+   "proposed": "necesito hacerlo para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿puedes hacerlo para caridad?",
+   "proposed": "¿puedes hacerlo para una causa benéfica?",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quiero dar algo a caridad",
+   "proposed": "quiero dar algo a una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L01U06",
+   "kind": "phrase",
+   "field": "DELETE_ROW",
+   "current": "I think it is for a good charity | creo que es para una buena caridad",
+   "proposed": null,
+   "note": "\"una buena causa benéfica\" is clumsy and \"una buena causa\" drops the LEGO; delete (L01 keeps 4 BUILD + 5 USE)"
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L02B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "hacer lo máximo posible para caridad",
+   "proposed": "hacer lo máximo posible para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L02U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿puedes hacer lo máximo posible para caridad?",
+   "proposed": "¿puedes hacer lo máximo posible para una causa benéfica?",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L02U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "necesito hacer lo máximo posible para caridad",
+   "proposed": "necesito hacer lo máximo posible para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L02U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "quieren hacer lo máximo posible para caridad",
+   "proposed": "quieren hacer lo máximo posible para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L02U06",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "dar lo máximo posible a caridad",
+   "proposed": "dar lo máximo posible a una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L03B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "querían recaudar dinero para caridad",
+   "proposed": "querían recaudar dinero para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L03U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "querían recaudar lo máximo posible para caridad",
+   "proposed": "querían recaudar lo máximo posible para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L03U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "sabía que querían recaudar dinero para caridad",
+   "proposed": "sabía que querían recaudar dinero para una causa benéfica",
+   "note": ""
+  },
+  {
+   "item": 3,
+   "id": "spa_for_eng:S0437L03U04",
+   "kind": "phrase",
+   "field": "DELETE_ROW",
+   "current": "they wanted to raise as much as possible for a good charity | querían recaudar lo máximo posible para una buena caridad",
+   "proposed": null,
+   "note": "\"for a good charity\" -> would duplicate L03U01 once \"good\" goes; L03 keeps 4 BUILD + 5 USE"
+  },
+  {
+   "item": 4,
+   "id": "S0604",
+   "kind": "seed",
+   "field": "known_text",
+   "current": "She offered to let us stay with her",
+   "proposed": "she offered to put us up at her place",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "S0604",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "ella se ofreció a dejarnos quedarnos con ella",
+   "proposed": "ella se ofreció a acogernos en su casa",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "S0604L02",
+   "kind": "lego",
+   "field": "known_text",
+   "current": "to let us",
+   "proposed": "to put us up",
+   "note": "new verb acoger replaces dejarnos; keeps L01 ofreció in the seed"
+  },
+  {
+   "item": 4,
+   "id": "S0604L02",
+   "kind": "lego",
+   "field": "target_text",
+   "current": "dejarnos",
+   "proposed": "acogernos",
+   "note": "new verb acoger replaces dejarnos; keeps L01 ofreció in the seed"
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "to let us",
+   "proposed": "to put us up",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "dejarnos",
+   "proposed": "acogernos",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "to let us go",
+   "proposed": "to put us up at her place",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "dejarnos ir",
+   "proposed": "acogernos en su casa",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "to let us stay",
+   "proposed": "to put us up for a week",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "dejarnos quedarnos",
+   "proposed": "acogernos una semana",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she offered to let us stay with her",
+   "proposed": "she offered to put us up at her place",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ella se ofreció a dejarnos quedarnos con ella",
+   "proposed": "ella se ofreció a acogernos en su casa",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she offered to let us go",
+   "proposed": "she offered to put us up",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "se ofreció a dejarnos ir",
+   "proposed": "se ofreció a acogernos",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she offered to let us do it",
+   "proposed": "she wanted to put us up",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ella se ofreció a dejarnos hacerlo",
+   "proposed": "quería acogernos",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U04",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "she offered to let us stay",
+   "proposed": "she offered to put us up for a week",
+   "note": ""
+  },
+  {
+   "item": 4,
+   "id": "spa_for_eng:S0604L02U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "se ofreció a dejarnos quedarnos",
+   "proposed": "se ofreció a acogernos una semana",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "S0567",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+   "proposed": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "S0567L01",
+   "kind": "lego",
+   "field": "target_text",
+   "current": "ha sido encantador",
+   "proposed": "ha sido estupendo",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01C02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "encantador",
+   "proposed": "estupendo",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01B01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador",
+   "proposed": "ha sido estupendo",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador, estoy seguro de que",
+   "proposed": "ha sido estupendo, estoy seguro de que",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador, pero se está haciendo tarde",
+   "proposed": "ha sido estupendo, pero se está haciendo tarde",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01B04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador porque necesitábamos quedarnos",
+   "proposed": "ha sido estupendo porque necesitábamos quedarnos",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador ver la iglesia pequeña al final del pueblo",
+   "proposed": "ha sido estupendo ver la iglesia pequeña al final del pueblo",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador ver que puedes seguir adelante sin mi ayuda",
+   "proposed": "ha sido estupendo ver que puedes seguir adelante sin mi ayuda",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador, pero estoy demasiado cansado para seguir adelante por más tiempo",
+   "proposed": "ha sido estupendo, pero estoy demasiado cansado para seguir adelante por más tiempo",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador estar aquí desde que nos mudamos a la ciudad",
+   "proposed": "ha sido estupendo estar aquí desde que nos mudamos a la ciudad",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L01U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador con todo",
+   "proposed": "ha sido estupendo con todo",
+   "note": "odd on both sides (\"lovely with everything\"); swapped only — Kai may prefer delete (would leave L01 at 4 USE, under floor)"
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L02U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador pasar tiempo al aire libre",
+   "proposed": "ha sido estupendo pasar tiempo al aire libre",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L03U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador pasar tiempo al aire libre viendo a los niños jugar",
+   "proposed": "ha sido estupendo pasar tiempo al aire libre viendo a los niños jugar",
+   "note": ""
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0567L03U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador viendo a los niños jugar",
+   "proposed": "ha sido estupendo viendo a los niños jugar",
+   "note": "pre-existing: \"ha sido … viendo\" (gerund) is shaky; kept for L03 containment, flagged"
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0584L02U05",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "it was lovely waking up every morning during the holidays",
+   "proposed": "it's been lovely waking up every morning during the holidays",
+   "note": "English also fixed: it was -> it's been to match ha sido"
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0584L02U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador despertarse cada mañana durante las vacaciones",
+   "proposed": "ha sido estupendo despertarse cada mañana durante las vacaciones",
+   "note": "English also fixed: it was -> it's been to match ha sido"
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0584L03U03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "it was lovely to wake up and see the mountains",
+   "proposed": "it's been lovely to wake up and see the mountains",
+   "note": "English also fixed: it was -> it's been"
+  },
+  {
+   "item": 5,
+   "id": "spa_for_eng:S0584L03U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "ha sido encantador despertarse y ver las montañas",
+   "proposed": "ha sido estupendo despertarse y ver las montañas",
+   "note": "English also fixed: it was -> it's been"
+  },
+  {
+   "item": 6,
+   "id": "S0027",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "no me gusta tomar demasiado tiempo para contestar",
+   "proposed": "no me gusta pasar demasiado tiempo para contestar",
+   "note": "FLAG: pasar + para contestar is the weakest join; see record"
+  },
+  {
+   "item": 6,
+   "id": "S0027L02",
+   "kind": "lego",
+   "field": "target_text",
+   "current": "tomar demasiado tiempo",
+   "proposed": "pasar demasiado tiempo",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Tomar demasiado tiempo",
+   "proposed": "Pasar demasiado tiempo",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo",
+   "proposed": "No me gusta pasar demasiado tiempo",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I don't like taking too much time speaking",
+   "proposed": "I don't like spending too much time speaking",
+   "note": "Deborah build 3"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo hablando",
+   "proposed": "No me gusta pasar demasiado tiempo hablando",
+   "note": "Deborah build 3"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B04",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "Are you going to take too much time today?",
+   "proposed": "Are you going to spend too much time speaking today?",
+   "note": "Deborah build 1 (her estar reading = stay somewhere; not this LEGO)"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02B04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿Vas a tomar demasiado tiempo hoy?",
+   "proposed": "¿Vas a pasar demasiado tiempo hablando hoy?",
+   "note": "Deborah build 1 (her estar reading = stay somewhere; not this LEGO)"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U01",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I don't like taking too much time speaking Spanish",
+   "proposed": "I don't like spending too much time speaking Spanish",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo hablando español",
+   "proposed": "No me gusta pasar demasiado tiempo hablando español",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U02",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I don't like taking too much time with another person",
+   "proposed": "I don't like spending too much time with another person",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo con otra persona",
+   "proposed": "No me gusta pasar demasiado tiempo con otra persona",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U03",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I am not going to be able to take too much time today",
+   "proposed": "I am not going to be able to spend too much time today",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No voy a poder tomar demasiado tiempo hoy",
+   "proposed": "No voy a poder pasar demasiado tiempo hoy",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U04",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "Are you going to take too much time before I have to go?",
+   "proposed": "Are you going to spend too much time speaking before I have to go?",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿Vas a tomar demasiado tiempo antes de que tenga que irme?",
+   "proposed": "¿Vas a pasar demasiado tiempo hablando antes de que tenga que irme?",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U05",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I don't like taking too much time speaking Spanish with you",
+   "proposed": "I don't like spending too much time speaking Spanish with you",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U05",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo hablando español contigo",
+   "proposed": "No me gusta pasar demasiado tiempo hablando español contigo",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U06",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "I don't like taking too much time speaking with another person today",
+   "proposed": "I don't like spending too much time speaking with another person today",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U06",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo hablando con otra persona hoy",
+   "proposed": "No me gusta pasar demasiado tiempo hablando con otra persona hoy",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U07",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "She wants to take too much time speaking today",
+   "proposed": "She wants to spend too much time speaking today",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L02U07",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Ella quiere tomar demasiado tiempo hablando hoy",
+   "proposed": "Ella quiere pasar demasiado tiempo hablando hoy",
+   "note": ""
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03B02",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03B04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar hoy",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar hoy",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03U01",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar en español",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar en español",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03U03",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar con otra persona",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar con otra persona",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03U04",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "¿Vas a tomar demasiado tiempo para contestar hoy?",
+   "proposed": "¿Vas a pasar demasiado tiempo para contestar hoy?",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0027L03U08",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar en español con otra persona",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar en español con otra persona",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0028L01U08",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Es útil no tomar demasiado tiempo para contestar",
+   "proposed": "Es útil no pasar demasiado tiempo para contestar",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0084L01U09",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Él dijo que no quería tomar demasiado tiempo para contestar",
+   "proposed": "Él dijo que no quería pasar demasiado tiempo para contestar",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0225L02U10",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "No me gusta tomar demasiado tiempo para contestar cuando sé la respuesta",
+   "proposed": "No me gusta pasar demasiado tiempo para contestar cuando sé la respuesta",
+   "note": "\"para contestar\" join, same flag as the seed"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0071L03U14",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Nadie quería tomar demasiado tiempo para encontrar la respuesta",
+   "proposed": "Nadie quería pasar demasiado tiempo para encontrar la respuesta",
+   "note": "take too long -> same wording"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0065L02U09",
+   "kind": "phrase",
+   "field": "DELETE_ROW",
+   "current": "It's important to take time to test yourself | Es importante tomar tiempo para ponerte a prueba",
+   "proposed": null,
+   "note": "draft copy of seed 65; \"tomar tiempo\" would be untaught at 65 once S0027L02 leaves tomar (next taught S0095L02)"
+  },
+  {
+   "item": 6,
+   "id": "S0065",
+   "kind": "seed",
+   "field": "known_text",
+   "current": "It's important to take time to test yourself",
+   "proposed": "It's important to test yourself",
+   "note": "tomar untaught at 65 after the change; drops the tomar-tiempo glue, keeps both LEGOs"
+  },
+  {
+   "item": 6,
+   "id": "S0065",
+   "kind": "seed",
+   "field": "target_text",
+   "current": "Es importante tomar tiempo para ponerte a prueba",
+   "proposed": "Es importante ponerte a prueba",
+   "note": "tomar untaught at 65 after the change; drops the tomar-tiempo glue, keeps both LEGOs"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0078L01U11",
+   "kind": "phrase",
+   "field": "known_text",
+   "current": "Now I understand that it is important to take time to test yourself",
+   "proposed": "Now I understand that it is important to test yourself",
+   "note": "tomar untaught at 78"
+  },
+  {
+   "item": 6,
+   "id": "spa_for_eng:S0078L01U11",
+   "kind": "phrase",
+   "field": "target_text",
+   "current": "Ahora entiendo que es importante tomar tiempo para ponerte a prueba",
+   "proposed": "Ahora entiendo que es importante ponerte a prueba",
+   "note": "tomar untaught at 78"
+  }
+ ]
+}
