@@ -1,0 +1,3067 @@
+{
+ "seeds": {
+  "76": {
+   "before": {
+    "known": "I'm very happy with how much I've learnt already",
+    "target": "Tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I'm very happy with how much I've learnt already",
+   "target": "Tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: Eoghan's sentence"
+  },
+  "106": {
+   "before": {
+    "known": "we don't need to feel happy, we just need to work hard",
+    "target": "Ní chaithfidh muid a bheith sásta, caithfidh muid obair go dian"
+   },
+   "known": "we don't need to feel happy, we just need to work hard",
+   "target": "Ní chaithfidh muid áthas a bheith orainn, caithfidh muid obair go dian",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: áthas inside our caithfidh frame (his sentence uses riachtanach, which the course does not teach for 'need')"
+  },
+  "129": {
+   "before": {
+    "known": "I'm so happy that you're doing so well",
+    "target": "Tá mé chomh sásta go bhfuil tú ag déanamh chomh maith sin"
+   },
+   "known": "I'm so happy that you're doing so well",
+   "target": "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: his Tá an-áthas orm; our second half kept"
+  },
+  "145": {
+   "before": {
+    "known": "Why are you not happy any more?",
+    "target": "Cén fáth nach bhfuil tú sásta a thuilleadh?"
+   },
+   "known": "Why are you not happy any more?",
+   "target": "Cén fáth nach bhfuil áthas ort a thuilleadh?",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: Eoghan's sentence"
+  },
+  "187": {
+   "before": {
+    "known": "I'm happy so far",
+    "target": "Tá mé sásta go dtí seo"
+   },
+   "known": "I'm happy so far",
+   "target": "Tá áthas orm go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: Eoghan's sentence"
+  },
+  "245": {
+   "before": {
+    "known": "I'm happy with how much I've done in a short time",
+    "target": "Tá mé sásta leis an méid atá déanta agam in am gearr"
+   },
+   "known": "I'm happy with how much I've done in a short time",
+   "target": "Tá áthas orm as an méid atá déanta agam in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: his áthas orm as; in am gearr kept"
+  },
+  "344": {
+   "before": {
+    "known": "who said that he's happy to help you",
+    "target": "a dúirt go bhfuil sé sásta cabhrú leat"
+   },
+   "known": "who said that he's happy to help you",
+   "target": "a dúirt go bhfuil áthas air cabhrú leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: Eoghan's sentence"
+  },
+  "448": {
+   "before": {
+    "known": "yes they'll be happy to help",
+    "target": "beidh, beidh siad sásta cabhrú"
+   },
+   "known": "yes they'll be happy to help",
+   "target": "beidh, beidh áthas orthu cabhrú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "599": {
+   "before": {
+    "known": "I'd have been happy to drive if you'd told me about it",
+    "target": "Bheinn sásta tiomáint dá n-inseofá dom faoi"
+   },
+   "known": "I'd have been happy to drive if you'd told me about it",
+   "target": "Bheadh áthas orm tiomáint dá n-inseofá dom faoi",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: his áthas orm, without his an- ('very'), so 'happy' and 'very happy' stay apart"
+  }
+ },
+ "legos": {
+  "S0076L02": {
+   "before": {
+    "known_text": "very happy",
+    "target_text": "an-sásta",
+    "components": [
+     {
+      "known": "very",
+      "target": "an-"
+     },
+     {
+      "known": "happy",
+      "target": "sásta"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "I'm very happy",
+    "target_text": "tá an-áthas orm",
+    "components": [
+     {
+      "known": "there is",
+      "target": "tá"
+     },
+     {
+      "known": "very",
+      "target": "an-"
+     },
+     {
+      "known": "happiness",
+      "target": "áthas"
+     },
+     {
+      "known": "on me",
+      "target": "orm"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03": {
+   "before": {
+    "known_text": "with how much",
+    "target_text": "leis an méid",
+    "components": [
+     {
+      "known": "with it",
+      "target": "leis"
+     },
+     {
+      "known": "the",
+      "target": "an"
+     },
+     {
+      "known": "how much",
+      "target": "méid"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "as an méid",
+    "components": [
+     {
+      "known": "out of",
+      "target": "as"
+     },
+     {
+      "known": "the",
+      "target": "an"
+     },
+     {
+      "known": "how much",
+      "target": "méid"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'happy with' is áthas ... as"
+  },
+  "S0106L03": {
+   "before": {
+    "known_text": "happy",
+    "target_text": "sásta",
+    "components": null,
+    "is_new": true,
+    "type": "A"
+   },
+   "set": {
+    "known_text": "to feel happy",
+    "target_text": "áthas a bheith orainn",
+    "type": "M",
+    "components": [
+     {
+      "known": "happiness",
+      "target": "áthas"
+     },
+     {
+      "known": "to be",
+      "target": "a bheith"
+     },
+     {
+      "known": "on us",
+      "target": "orainn"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01": {
+   "before": {
+    "known_text": "so happy that",
+    "target_text": "chomh sásta go bhfuil",
+    "components": [
+     {
+      "known": "so happy",
+      "target": "chomh sásta"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "I'm so happy that",
+    "target_text": "tá an-áthas orm go bhfuil",
+    "components": [
+     {
+      "known": "I'm so happy",
+      "target": "tá an-áthas orm"
+     },
+     {
+      "known": "that is",
+      "target": "go bhfuil"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02": {
+   "before": {
+    "known_text": "are you not",
+    "target_text": "nach bhfuil tú",
+    "components": [
+     {
+      "known": "that not",
+      "target": "nach bhfuil"
+     },
+     {
+      "known": "you",
+      "target": "tú"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "known_text": "are you not happy",
+    "target_text": "nach bhfuil áthas ort",
+    "components": [
+     {
+      "known": "is there not",
+      "target": "nach bhfuil"
+     },
+     {
+      "known": "happiness",
+      "target": "áthas"
+     },
+     {
+      "known": "on you",
+      "target": "ort"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the seed no longer has nach bhfuil tú"
+  },
+  "S0145L03": {
+   "before": {
+    "known_text": "happy",
+    "target_text": "sásta",
+    "components": null,
+    "is_new": false,
+    "type": "A"
+   },
+   "set": {
+    "target_text": "áthas ort"
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: not-new, no rows"
+  },
+  "S0187L02": {
+   "before": {
+    "known_text": "happy",
+    "target_text": "sásta",
+    "components": null,
+    "is_new": false,
+    "type": "A"
+   },
+   "set": {
+    "known_text": "I'm happy",
+    "target_text": "tá áthas orm",
+    "type": "M",
+    "components": [
+     {
+      "known": "there is",
+      "target": "tá"
+     },
+     {
+      "known": "happiness",
+      "target": "áthas"
+     },
+     {
+      "known": "on me",
+      "target": "orm"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: not-new, no rows"
+  },
+  "S0245L01": {
+   "before": {
+    "known_text": "I am happy",
+    "target_text": "Tá mé sásta",
+    "components": [
+     {
+      "known": "I am",
+      "target": "Tá mé"
+     },
+     {
+      "known": "happy",
+      "target": "sásta"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "tá áthas orm",
+    "components": [
+     {
+      "known": "there is",
+      "target": "tá"
+     },
+     {
+      "known": "happiness",
+      "target": "áthas"
+     },
+     {
+      "known": "on me",
+      "target": "orm"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L02": {
+   "before": {
+    "known_text": "with how much",
+    "target_text": "leis an méid",
+    "components": [
+     {
+      "known": "with",
+      "target": "leis"
+     },
+     {
+      "known": "the amount",
+      "target": "an méid"
+     }
+    ],
+    "is_new": false,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "as an méid",
+    "components": [
+     {
+      "known": "out of",
+      "target": "as"
+     },
+     {
+      "known": "the amount",
+      "target": "an méid"
+     }
+    ]
+   },
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: not-new; its 'satisfied with how much | sásta leis an méid' rows stay as they are"
+  }
+ },
+ "lego_inserts": [],
+ "lego_deletes": {},
+ "phrase_inserts": [
+  {
+   "id": "gle_v2_for_eng:S0129L01B02",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 129,
+   "lego_index": 1,
+   "position": 14,
+   "known_text": "I'm so happy that she is",
+   "target_text": "tá an-áthas orm go bhfuil sí",
+   "phrase_role": "build",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #403, 12 Nov 2026",
+    "family": "Q14 happy = áthas ar"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 28,
+   "lego_count": 6
+  },
+  {
+   "id": "gle_v2_for_eng:S0106L06U01",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 106,
+   "lego_index": 6,
+   "position": 15,
+   "known_text": "we don't need to feel happy, we just need to work hard",
+   "target_text": "Ní chaithfidh muid áthas a bheith orainn, caithfidh muid obair go dian",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #403, 12 Nov 2026",
+    "family": "Q14 happy = áthas ar"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 70,
+   "lego_count": 12
+  },
+  {
+   "id": "gle_v2_for_eng:S0145L04U09",
+   "course_code": "gle_v2_for_eng",
+   "seed_number": 145,
+   "lego_index": 4,
+   "position": 13,
+   "known_text": "Why are you not happy any more?",
+   "target_text": "Cén fáth nach bhfuil áthas ort a thuilleadh?",
+   "phrase_role": "use",
+   "status": "draft",
+   "metadata": {
+    "format": "build_use",
+    "pipeline": "v2",
+    "authored": "job #403, 12 Nov 2026",
+    "family": "Q14 happy = áthas ar"
+   },
+   "connected_lego_ids": [],
+   "lego_position": "middle",
+   "introduce": true,
+   "word_count": 44,
+   "lego_count": 8
+  }
+ ],
+ "phrases": {
+  "S0076L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "very happy",
+    "target": "an-sásta"
+   },
+   "known": "I'm very happy",
+   "target": "tá an-áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am very happy",
+    "target": "tá mé an-sásta"
+   },
+   "known": "I'm very happy now",
+   "target": "tá an-áthas orm anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "she is very happy",
+    "target": "tá sí an-sásta"
+   },
+   "known": "I'm very happy today",
+   "target": "tá an-áthas orm inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "he is very happy",
+    "target": "tá sé an-sásta"
+   },
+   "known": "thank you, I'm very happy",
+   "target": "go raibh maith agat, tá an-áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02B06": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "we are very happy",
+    "target": "tá muid an-sásta"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02C01": {
+   "action": "del",
+   "role": "component",
+   "before": {
+    "known": "very",
+    "target": "an-"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "stale word tile of the re-cut LEGO"
+  },
+  "S0076L02C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "happy",
+    "target": "sásta"
+   },
+   "known": "happiness",
+   "target": "áthas",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: word tile"
+  },
+  "S0076L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy and I want to keep learning Irish as often as possible every day",
+    "target": "tá mé an-sásta agus is mian liom Gaeilge a fhoghlaim chomh minic agus is féidir gach lá"
+   },
+   "known": "I'm very happy and I want to learn Irish every day",
+   "target": "tá an-áthas orm agus is mian liom Gaeilge a fhoghlaim gach lá",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she is very happy because she is starting to speak Irish more and more every week",
+    "target": "tá sí an-sásta mar tá sí ag tosú ag caint Gaeilge níos mó an tseachtain seo"
+   },
+   "known": "I'm very happy because I'm learning Irish",
+   "target": "tá an-áthas orm mar tá mé ag foghlaim Gaeilge",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he is very happy because he can now practise speaking Irish with someone else every day",
+    "target": "tá sé an-sásta mar is féidir leis labhairt a chleachtadh Gaeilge le duine éigin eile gach lá"
+   },
+   "known": "I'm very happy because I can speak Irish with you",
+   "target": "tá an-áthas orm mar is féidir liom Gaeilge a labhairt leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy when you understand enough words speaking Irish with people",
+    "target": "tá mé an-sásta nuair a thuigeann tú go leor focal ag caint Gaeilge le daoine"
+   },
+   "known": "I'm very happy and I enjoy learning Irish",
+   "target": "tá an-áthas orm agus bainim taitneamh as Gaeilge a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we are very happy and we want to keep practising speaking Irish together as often as possible",
+    "target": "tá muid an-sásta agus is mian linn labhairt a chleachtadh Gaeilge le chéile chomh minic agus is féidir"
+   },
+   "known": "I'm very happy at the moment",
+   "target": "tá an-áthas orm faoi láthair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she told me she was very happy with how much Irish I have already learned",
+    "target": "dúirt sí liom go raibh sí an-sásta leis an méid Gaeilge atá foghlamtha agam cheana féin"
+   },
+   "known": "I'm very happy tonight because it is interesting",
+   "target": "tá an-áthas orm anocht mar tá sé suimiúil",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy to be here and I enjoy speaking Irish with everyone I meet",
+    "target": "tá mé an-sásta ag foghlaim Gaeilge agus bainim taitneamh as labhairt Gaeilge le gach duine"
+   },
+   "known": "I'm very happy and I'm looking forward to speaking better",
+   "target": "tá an-áthas orm agus tá mé ag tnúth le labhairt níos fearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said he was very happy because it was not too hard to start learning Irish",
+    "target": "tá sé an-sásta Gaeilge a fhoghlaim mar níl sé deacair fáil amach"
+   },
+   "known": "I'm very happy and I'd like to practise as often as possible",
+   "target": "tá an-áthas orm agus ba mhaith liom a chleachtadh chomh minic agus is féidir",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U09": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "are you very happy with how your Irish is going at the moment or do you want to practise more",
+    "target": "an bhfuil tú an-sásta leis an Gaeilge atá tú ag foghlaim faoi láthair nó an mian leat níos mó a chleachtadh"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U11": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "she is very happy that she decided to start learning Irish and she is making great progress",
+    "target": "tá sí an-sásta Gaeilge a fhoghlaim agus tá sí ag déanamh go han-mhaith ag tosú ag caint"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U12": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I was very happy last night because I managed to speak Irish with people for a long time",
+    "target": "bhí mé an-sásta aréir mar bhí mé ag caint Gaeilge ar fad le daoine ag labhairt"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U13": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "he is very happy with how much progress he is making and he does not want to stop",
+    "target": "tá sé an-sásta agus tá sé ag déanamh go maith agus ní mian leis stopadh ag caint"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U14": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I am not very happy when I cannot remember how to say something in Irish",
+    "target": "níl mé an-sásta nuair nach féidir liom cuimhneamh conas rud éigin a rá i nGaeilge"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L02U15": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "we are very happy to be learning Irish together and we want to keep going",
+    "target": "tá muid an-sásta ag foghlaim Gaeilge le chéile agus is mian linn níos mó a fhoghlaim"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "with how much",
+    "target": "leis an méid"
+   },
+   "known": "with how much",
+   "target": "as an méid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the LEGO row"
+  },
+  "S0076L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am very happy with how much",
+    "target": "tá mé an-sásta leis an méid"
+   },
+   "known": "I am very happy with how much",
+   "target": "tá an-áthas orm as an méid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03B04": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "she is very happy with the amount",
+    "target": "tá sí an-sásta leis an méid"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: same as the next row once moved to he"
+  },
+  "S0076L03B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "he is very happy with how much",
+    "target": "tá sé an-sásta leis an méid"
+   },
+   "known": "he is very happy with how much",
+   "target": "tá an-áthas air as an méid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy with the amount I have learned",
+    "target": "tá mé sásta leis an méid atá foghlamtha agam"
+   },
+   "known": "I am happy with the amount I have learned",
+   "target": "tá áthas orm as an méid atá foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy with how much Irish I have managed to learn and I want to keep going",
+    "target": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim"
+   },
+   "known": "I am very happy with how much Irish I have managed to learn and I want to keep going",
+   "target": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she is very happy with how much Irish I have learned and she does not want to stop talking",
+    "target": "tá sí an-sásta leis an méid Gaeilge atá foghlamtha agam agus ní mian léi stopadh ag caint"
+   },
+   "known": "he is very happy with how much Irish I have learned and he does not want to stop talking",
+   "target": "tá an-áthas air as an méid Gaeilge atá foghlamtha agam agus ní mian leis stopadh ag caint",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy with the amount of time I have spent practising Irish this week",
+    "target": "tá mé sásta leis an méid ama atá mé ag caint Gaeilge an tseachtain seo"
+   },
+   "known": "I am happy with the amount of time I have spent practising Irish this week",
+   "target": "tá áthas orm as an méid ama atá mé ag caint Gaeilge an tseachtain seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U06": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I was surprised with the amount of new vocabulary I had managed to learn in one day",
+    "target": "mothaím ionadh leis an méid focal nua atá foghlamtha agam i nGaeilge inniu"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'surprised with the amount | mothaím ionadh leis an méid' cannot sit under 'as an méid'"
+  },
+  "S0076L03U07": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I told someone I was very impressed with the amount of Irish I was able to speak",
+    "target": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam ag foghlaim le timpeall seachtaine"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: English 'impressed', Irish an-sásta leis an méid; cannot carry the re-cut LEGO"
+  },
+  "S0076L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you happy with the amount of time you are spending on learning Irish this week",
+    "target": "an bhfuil tú sásta leis an méid ama atá tú ag foghlaim Gaeilge an tseachtain seo"
+   },
+   "known": "are you happy with the amount of time you are spending on learning Irish this week",
+   "target": "an bhfuil áthas ort as an méid ama atá tú ag foghlaim Gaeilge an tseachtain seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was not happy with the amount I had practised because I was very busy this week",
+    "target": "ní raibh mé sásta leis an méid Gaeilge atá foghlamtha agam an tseachtain seo caite"
+   },
+   "known": "I was not happy with the amount I had practised because I was very busy this week",
+   "target": "ní raibh áthas orm as an méid Gaeilge atá foghlamtha agam an tseachtain seo caite",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he is very happy with how much Irish I have learned since he started learning Irish",
+    "target": "tá sé an-sásta leis an méid Gaeilge atá foghlamtha agam ó thosaigh sé ag foghlaim Gaeilge"
+   },
+   "known": "he is very happy with how much Irish I have learned since he started learning Irish",
+   "target": "tá an-áthas air as an méid Gaeilge atá foghlamtha agam ó thosaigh sé ag foghlaim Gaeilge",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they were very happy with how much Irish I have learned with everyone else who is learning",
+    "target": "bhí siad an-sásta leis an méid Gaeilge atá foghlamtha agam le gach duine eile ag foghlaim"
+   },
+   "known": "he was very happy with how much Irish I have learned with everyone else who is learning",
+   "target": "bhí an-áthas air as an méid Gaeilge atá foghlamtha agam le gach duine eile ag foghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L03U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy with the amount of conversation I manage to have in Irish every day",
+    "target": "tá mé sásta leis an méid Gaeilge atá foghlamtha agam ag caint le daoine gach lá"
+   },
+   "known": "I am happy with the amount of conversation I manage to have in Irish every day",
+   "target": "tá áthas orm as an méid Gaeilge atá foghlamtha agam ag caint le daoine gach lá",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L03U14": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "she was not satisfied with the amount of time she had to practise speaking Irish",
+    "target": "ní raibh sí sásta leis an méid ama atá sí ag caint Gaeilge le duine éigin eile"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'satisfied with' keeps leis, so it cannot sit under 'as an méid'"
+  },
+  "S0076L03U15": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I think it is a good thing to be happy as often as possible with how much Irish I have learned",
+    "target": "ceapaim gur rud maith é a bheith sásta leis an méid Gaeilge atá foghlamtha agam chomh minic agus is féidir"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'to be happy as often as possible with how much' has no clean áthas wording"
+  },
+  "S0076L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy with what I have learned",
+    "target": "tá mé sásta leis an méid atá foghlamtha agam"
+   },
+   "known": "I am happy with what I have learned",
+   "target": "tá áthas orm as an méid atá foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am very happy with what I have learned",
+    "target": "tá mé an-sásta leis an méid atá foghlamtha agam"
+   },
+   "known": "I am very happy with what I have learned",
+   "target": "tá an-áthas orm as an méid atá foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L04B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "she is happy with how much I have learned",
+    "target": "tá sí sásta leis an méid atá foghlamtha agam"
+   },
+   "known": "he is happy with how much I have learned",
+   "target": "tá áthas air as an méid atá foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy with how much Irish I have learned and I want to keep learning more",
+    "target": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim"
+   },
+   "known": "I am very happy with how much Irish I have learned and I want to keep learning more",
+   "target": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he is happy with all the Irish I have learned in about a week",
+    "target": "tá sé sásta leis an méid Gaeilge ar fad atá foghlamtha agam le timpeall seachtaine"
+   },
+   "known": "he is happy with all the Irish I have learned in about a week",
+   "target": "tá áthas air as an méid Gaeilge ar fad atá foghlamtha agam le timpeall seachtaine",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L04U06": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I was very happy with how much Irish I had learned when I started speaking more",
+    "target": "mothaím go maith leis an méid Gaeilge atá foghlamtha agam ag tosú ag caint níos mó inniu"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: English 'very happy', Irish 'mothaím go maith'; mismatched row"
+  },
+  "S0076L04U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she is very happy with all the Irish I have learned and she wants other people learning Irish too",
+    "target": "tá sí an-sásta leis an méid Gaeilge ar fad atá foghlamtha agam agus is mian léi daoine eile ag foghlaim"
+   },
+   "known": "he is very happy with all the Irish I have learned and he wants other people learning Irish too",
+   "target": "tá an-áthas air as an méid Gaeilge ar fad atá foghlamtha agam agus is mian leis daoine eile ag foghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L04U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they were very happy with all the words I have learned in about a week of learning Irish",
+    "target": "bhí siad an-sásta leis an méid focal ar fad atá foghlamtha agam le timpeall seachtaine ag foghlaim Gaeilge"
+   },
+   "known": "he was very happy with all the words I have learned in about a week of learning Irish",
+   "target": "bhí an-áthas air as an méid focal ar fad atá foghlamtha agam le timpeall seachtaine ag foghlaim Gaeilge",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L04U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm very happy with how much Irish I have learned and I'm trying to improve as soon as possible",
+    "target": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus tá mé ag iarraidh feabhsú chomh luath agus is féidir"
+   },
+   "known": "I'm very happy with how much Irish I have learned and I'm trying to improve as soon as possible",
+   "target": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam agus tá mé ag iarraidh feabhsú chomh luath agus is féidir",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L05B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am very happy with how much I have already learned",
+    "target": "tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I'm very happy with how much I've learnt already",
+   "target": "Tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the seed sentence"
+  },
+  "S0076L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy with how much Irish I have already learned in such a short time",
+    "target": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam cheana féin le timpeall seachtaine"
+   },
+   "known": "I am very happy with how much Irish I have already learned in such a short time",
+   "target": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam cheana féin le timpeall seachtaine",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L05U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she is already speaking Irish with people and she is very happy",
+    "target": "tá sí ag caint Gaeilge le daoine cheana féin agus tá sí an-sásta"
+   },
+   "known": "he is already speaking Irish with people and he is very happy",
+   "target": "tá sé ag caint Gaeilge le daoine cheana féin agus tá an-áthas air",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0076L05U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he is already able to speak a lot of words and he is very happy with how much I have learned",
+    "target": "tá sé ábalta go leor focal a labhairt cheana féin agus tá sé an-sásta leis an méid atá foghlamtha agam"
+   },
+   "known": "he is already able to speak a lot of words and he is very happy with how much I have learned",
+   "target": "tá sé ábalta go leor focal a labhairt cheana féin agus tá an-áthas air as an méid atá foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0076L05U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she is very happy with how much I have already learned and she wants to learn more",
+    "target": "tá sí an-sásta leis an méid atá foghlamtha agam cheana féin agus is mian léi níos mó a fhoghlaim"
+   },
+   "known": "he is very happy with how much I have already learned and he wants to learn more",
+   "target": "tá an-áthas air as an méid atá foghlamtha agam cheana féin agus is mian leis níos mó a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0079L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy because you started",
+    "target": "tá mé an-sásta mar thosaigh tú"
+   },
+   "known": "I am very happy because you started",
+   "target": "tá an-áthas orm mar thosaigh tú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0083L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I agree with you and I am happy to hear that from you",
+    "target": "aontaím leat agus tá mé sásta é sin a chloisteáil uait"
+   },
+   "known": "I agree with you and I am happy to hear that from you",
+   "target": "aontaím leat agus tá áthas orm é sin a chloisteáil uait",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0083L02U03": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "why are you very happy with what you understand",
+    "target": "cén fáth a bhfuil tú an-sásta leis an méid a thuigeann tú"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: this LEGO is 'with what | leis an méid' (agree with what); a happy-with row would need as"
+  },
+  "S0083L02U04": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "thank you I am very happy with what I have learned",
+    "target": "go raibh maith agat tá mé an-sásta leis an méid atá foghlamtha agam"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0087L03U01": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I was tired last night and they were very happy",
+    "target": "bhí mé tuirseach aréir agus iad an-sásta"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'iad' cannot carry áthas orthu"
+  },
+  "S0087L03U06": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I don't like the story and unfortunately they are very happy",
+    "target": "ní maith liom an scéal agus faraor iad an-sásta"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0088L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am not very happy at the moment",
+    "target": "níl mé an-sásta faoi láthair"
+   },
+   "known": "I am not very tired at the moment",
+   "target": "níl mé an-tuirseach faoi láthair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'níl mé' cannot carry áthas orm"
+  },
+  "S0089L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I have to go",
+    "target": "Tá mé an-sásta leis an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé dul"
+   },
+   "known": "I'm really happy with how much is done today, and I'm going to keep going for a while longer before I have to go",
+   "target": "Tá an-áthas orm as an méid atá déanta inniu, agus tá mé chun leanúint ar aghaidh ar feadh tamaill sula gcaithfidh mé dul",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0089L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she's happy with how much is done so far and she thinks it's useful to carry on for a while before stopping",
+    "target": "Tá sí an-sásta leis an méid atá déanta go dtí seo agus ceapaim go bhfuil sé úsáideach leanúint ar aghaidh ar feadh tamaill"
+   },
+   "known": "he's happy with how much is done so far and he thinks it's useful to carry on for a while before stopping",
+   "target": "Tá an-áthas air as an méid atá déanta go dtí seo agus ceapaim go bhfuil sé úsáideach leanúint ar aghaidh ar feadh tamaill",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14; moved to 'he' because uirthi / orthu is not taught this early"
+  },
+  "S0089L04U15": {
+   "action": "del",
+   "role": "use",
+   "before": {
+    "known": "I think there is a lot done here already, and I know it is important to be happy with the progress you make every day when you are learning",
+    "target": "ceapaim go bhfuil go leor déanta anseo cheana féin, agus tá a fhios agam go bhfuil sé tábhachtach a bheith sásta leis an méid atá foghlamtha agat gach lá"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'important to be happy with the progress you make' has no clean áthas wording"
+  },
+  "S0103L05U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "other people are trying to learn Irish too and that makes me happy",
+    "target": "Tá daoine eile ag iarraidh Gaeilge a fhoghlaim chomh maith agus tá mé sásta faoi sin"
+   },
+   "known": "other people are trying to learn Irish too and that makes me happy",
+   "target": "Tá daoine eile ag iarraidh Gaeilge a fhoghlaim chomh maith agus tá áthas orm faoi sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0105L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy that the truth is known to him now",
+    "target": "tá mé an-sásta go bhfuil an fhírinne ar eolas aige anois"
+   },
+   "known": "I am very happy that the truth is known to him now",
+   "target": "tá an-áthas orm go bhfuil an fhírinne ar eolas aige anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy because we do not need to go",
+    "target": "tá mé an-sásta mar ní chaithfidh muid dul"
+   },
+   "known": "I am very happy because we do not need to go",
+   "target": "tá an-áthas orm mar ní chaithfidh muid dul",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "happy and tired",
+    "target": "sásta agus tuirseach"
+   },
+   "known": "we need to feel happy",
+   "target": "caithfidh muid áthas a bheith orainn",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I feel happy",
+    "target": "mothaím sásta"
+   },
+   "known": "we don't need to feel happy",
+   "target": "ní chaithfidh muid áthas a bheith orainn",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I was happy yesterday",
+    "target": "bhí mé sásta inné"
+   },
+   "known": "we need to feel happy now",
+   "target": "caithfidh muid áthas a bheith orainn anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we must be happy",
+    "target": "caithfidh muid a bheith sásta"
+   },
+   "known": "we don't need to feel happy today",
+   "target": "ní chaithfidh muid áthas a bheith orainn inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't happy last night",
+    "target": "ní raibh mé sásta aréir"
+   },
+   "known": "we don't need to feel happy at the moment",
+   "target": "ní chaithfidh muid áthas a bheith orainn faoi láthair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you should be happy now",
+    "target": "ba cheart duit a bheith sásta anois"
+   },
+   "known": "we don't need to feel happy tomorrow",
+   "target": "ní chaithfidh muid áthas a bheith orainn amárach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to be happy",
+    "target": "ba mhaith liom a bheith sásta"
+   },
+   "known": "thank you, we don't need to feel happy now",
+   "target": "go raibh maith agat, ní chaithfidh muid áthas a bheith orainn anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I feel happy but tired",
+    "target": "mothaím sásta ach tuirseach"
+   },
+   "known": "we need to feel happy as often as possible",
+   "target": "caithfidh muid áthas a bheith orainn chomh minic agus is féidir",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we are not happy at the moment",
+    "target": "níl muid sásta faoi láthair"
+   },
+   "known": "we don't need to feel happy every day",
+   "target": "ní chaithfidh muid áthas a bheith orainn gach lá",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not going to be happy tomorrow",
+    "target": "ní bheidh mé sásta amárach"
+   },
+   "known": "we need to feel happy but we don't need to go",
+   "target": "caithfidh muid áthas a bheith orainn ach ní chaithfidh muid dul",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0106L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you, I feel happy now",
+    "target": "go raibh maith agat, mothaím sásta anois"
+   },
+   "known": "we don't need to feel happy tonight",
+   "target": "ní chaithfidh muid áthas a bheith orainn anocht",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0108L01B02": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "we were not happy",
+    "target": "Ní raibh muid sásta"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'ní raibh muid' cannot carry áthas orainn; 'we were not tired' is already in the basket"
+  },
+  "S0108L01B10": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we were not happy yesterday",
+    "target": "ní raibh muid sásta inné"
+   },
+   "known": "we were not tired yesterday",
+   "target": "ní raibh muid tuirseach inné",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0108L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we were not happy but I think that it's a good thing",
+    "target": "ní raibh muid sásta ach ceapaim gur rud maith é"
+   },
+   "known": "we were not tired but I think that it's a good thing",
+   "target": "ní raibh muid tuirseach ach ceapaim gur rud maith é",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0108L05U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't enjoy waking in the middle of the night and I am not happy in the morning",
+    "target": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím sásta ar maidin"
+   },
+   "known": "I don't enjoy waking in the middle of the night and I am not ready in the morning",
+   "target": "ní bhainim taitneamh as dúiseacht i lár na hoíche agus ní bhím réidh ar maidin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'ní bhím sásta' would need ní bhíonn áthas orm, not taught; the row takes another taught adjective"
+  },
+  "S0110L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm very happy because we are friends",
+    "target": "tá mé an-sásta mar is cairde muid"
+   },
+   "known": "I'm very happy because we are friends",
+   "target": "tá an-áthas orm mar is cairde muid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0118L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was very happy when we were working",
+    "target": "bhí mé an-sásta nuair a bhí muid ag obair"
+   },
+   "known": "I was very happy when we were working",
+   "target": "bhí an-áthas orm nuair a bhí muid ag obair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0120L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you I am very happy that you like the choice",
+    "target": "go raibh maith agat tá mé an-sásta gur maith leat an rogha"
+   },
+   "known": "thank you I am very happy that you like the choice",
+   "target": "go raibh maith agat tá an-áthas orm gur maith leat an rogha",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0123L01U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that I'm not ready to have a conversation with them yet but I'm very happy with how much I've already learned",
+    "target": "ceapaim nach bhfuil mé réidh le comhrá a bheith agam leo fós ach tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think that I'm not ready to have a conversation with them yet but I'm very happy with how much I've already learned",
+   "target": "ceapaim nach bhfuil mé réidh le comhrá a bheith agam leo fós ach tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0123L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there's a lot done already in a short time and I'm very happy with how much I've already learned",
+    "target": "ceapaim go bhfuil go leor déanta agam in am gearr agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think there's a lot done already in a short time and I'm very happy with how much I've already learned",
+   "target": "ceapaim go bhfuil go leor déanta agam in am gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0123L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good idea and I am very happy with how much has already been learned in such a short time",
+    "target": "ceapaim gur smaoineamh maith é sin agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I think that it's a good idea and I am very happy with how much has already been learned in such a short time",
+   "target": "ceapaim gur smaoineamh maith é sin agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0124L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea and I was very happy with how much had already been learned in such a short time",
+    "target": "cheap mé gur smaoineamh maith é sin agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I thought that it was a good idea and I was very happy with how much had already been learned in such a short time",
+   "target": "cheap mé gur smaoineamh maith é sin agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0125L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I'm very happy with how much has been learned in such a short time already",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I believe that your idea was very good and I'm very happy with how much has been learned in such a short time already",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0125L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I am very happy with how much has been learned by both of us already",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I believe that your idea was very good and I am very happy with how much has been learned by both of us already",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0127L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+    "target": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+   "target": "Ní hé sin an fáth agus creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0127L02U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you because I want to keep going and I'm very happy with everything I've already learned",
+    "target": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "That isn't the reason why I wanted to see you because I want to keep going and I'm very happy with everything I've already learned",
+   "target": "Ní hé sin an fáth ar mhian liom tú a fheiceáil mar ba mhaith liom leanúint ar aghaidh agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0127L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+    "target": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí mé an-sásta leis an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+   "target": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "so happy that",
+    "target": "chomh sásta go bhfuil"
+   },
+   "known": "I'm so happy that",
+   "target": "tá an-áthas orm go bhfuil",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01B03": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "I'm so happy that",
+    "target": "tá mé chomh sásta go bhfuil"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: same as the first row now"
+  },
+  "S0129L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "so happy that you are",
+    "target": "chomh sásta go bhfuil tú"
+   },
+   "known": "I'm so happy that you are",
+   "target": "tá an-áthas orm go bhfuil tú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01C01": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "so happy",
+    "target": "chomh sásta"
+   },
+   "known": "so happy",
+   "target": "an-áthas",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: word tile"
+  },
+  "S0129L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that you're doing so well",
+    "target": "Tá mé chomh sásta go bhfuil tú ag déanamh chomh maith"
+   },
+   "known": "I'm so happy that you're doing so well",
+   "target": "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the seed sentence"
+  },
+  "S0129L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that I'm learning Irish",
+    "target": "Tá mé chomh sásta go bhfuil mé ag foghlaim Gaeilge"
+   },
+   "known": "I'm so happy that I'm learning Irish",
+   "target": "Tá an-áthas orm go bhfuil mé ag foghlaim Gaeilge",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that I'm improving",
+    "target": "Tá mé chomh sásta go bhfuil mé ag feabhsú"
+   },
+   "known": "I'm so happy that I'm improving",
+   "target": "Tá an-áthas orm go bhfuil mé ag feabhsú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that I can speak Irish",
+    "target": "Tá mé chomh sásta go bhfuil mé ábalta Gaeilge a labhairt"
+   },
+   "known": "I'm so happy that I can speak Irish",
+   "target": "Tá an-áthas orm go bhfuil mé ábalta Gaeilge a labhairt",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that you're keeping on learning",
+    "target": "Tá mé chomh sásta go bhfuil tú ag leanúint ar aghaidh ag foghlaim"
+   },
+   "known": "I'm so happy that you're keeping on learning",
+   "target": "Tá an-áthas orm go bhfuil tú ag leanúint ar aghaidh ag foghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that she's doing well",
+    "target": "Tá mé chomh sásta go bhfuil sí ag déanamh go maith"
+   },
+   "known": "I'm so happy that she's doing well",
+   "target": "Tá an-áthas orm go bhfuil sí ag déanamh go maith",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0129L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy that I'm definitely doing better",
+    "target": "Tá mé chomh sásta go bhfuil mé go cinnte ag déanamh níos fearr"
+   },
+   "known": "I'm so happy that I'm definitely doing better",
+   "target": "Tá an-áthas orm go bhfuil mé go cinnte ag déanamh níos fearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0131L05U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i feel so happy in my head today",
+    "target": "mothaím chomh sásta i mo cheann inniu"
+   },
+   "known": "i feel so tired in my head today",
+   "target": "mothaím chomh tuirseach i mo cheann inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'I feel happy' cannot keep mothaím with áthas; the row takes another taught adjective"
+  },
+  "S0132L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was very happy with what she was saying",
+    "target": "bhí mé an-sásta leis an méid a bhí á rá aici"
+   },
+   "known": "I was very happy with what she was saying",
+   "target": "bhí an-áthas orm as an méid a bhí á rá aici",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0133L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you get to know someone well when you are happy",
+    "target": "cuireann tú aithne mhaith ar dhuine nuair atá tú sásta"
+   },
+   "known": "you get to know someone well when you are happy",
+   "target": "cuireann tú aithne mhaith ar dhuine nuair atá áthas ort",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0133L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy when you all work together",
+    "target": "Tá mé chomh sásta nuair a oibríonn sibh le chéile"
+   },
+   "known": "I'm so happy when you all work together",
+   "target": "Tá an-áthas orm nuair a oibríonn sibh le chéile",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0136L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm so happy because she is my friend",
+    "target": "Tá mé chomh sásta mar is cara liom í"
+   },
+   "known": "I'm so happy because she is my friend",
+   "target": "Tá an-áthas orm mar is cara liom í",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0137L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is more important to be happy",
+    "target": "tá sé níos tábhachtaí a bheith sásta"
+   },
+   "known": "it is more important to be happy",
+   "target": "tá sé níos tábhachtaí áthas a bheith ort",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0137L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is more important to work hard than to be happy",
+    "target": "tá sé níos tábhachtaí obair go dian ná a bheith sásta"
+   },
+   "known": "it is more important to work hard than to be happy",
+   "target": "tá sé níos tábhachtaí obair go dian ná áthas a bheith ort",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0137L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is more important to be happy than to be perfect",
+    "target": "tá sé níos tábhachtaí a bheith sásta ná a bheith foirfe"
+   },
+   "known": "it is more important to be happy than to be perfect",
+   "target": "tá sé níos tábhachtaí áthas a bheith ort ná a bheith foirfe",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0138L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you, this is the place where my friend wanted and I am very happy",
+    "target": "go raibh maith agat seo an áit ar mhian le mo chara agus tá mé an-sásta"
+   },
+   "known": "thank you, this is the place where my friend wanted and I am very happy",
+   "target": "go raibh maith agat seo an áit ar mhian le mo chara agus tá an-áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "no problem, everything is okay and I am happy to help you",
+    "target": "fadhb ar bith tá gach rud ceart go leor agus tá mé sásta cabhrú leat"
+   },
+   "known": "no problem, everything is okay and I am happy to help you",
+   "target": "fadhb ar bith tá gach rud ceart go leor agus tá áthas orm cabhrú leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "your car is quiet and your friend is happy today",
+    "target": "tá do charr ciúin agus tá do chara sásta inniu"
+   },
+   "known": "your car is quiet and your friend is happy today",
+   "target": "tá do charr ciúin agus tá áthas ar do chara inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "no problem, everything is okay and I am happy to help you practise",
+    "target": "fadhb ar bith, tá gach rud ceart go leor agus tá mé sásta cabhrú leat labhairt a chleachtadh"
+   },
+   "known": "no problem, everything is okay and I am happy to help you practise",
+   "target": "fadhb ar bith, tá gach rud ceart go leor agus tá áthas orm cabhrú leat labhairt a chleachtadh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said it is okay if I want to practise often, she is happy to help me",
+    "target": "dúirt sí go bhfuil sé ceart go leor más mian liom labhairt a chleachtadh go minic, tá sí sásta cabhrú liom"
+   },
+   "known": "she said it is okay if I want to practise often, she is happy to help me",
+   "target": "dúirt sí go bhfuil sé ceart go leor más mian liom labhairt a chleachtadh go minic, tá áthas uirthi cabhrú liom",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she told me it is all okay and she is happy to meet us as often as she can",
+    "target": "dúirt sí liom go bhfuil sé ar fad ceart go leor agus go bhfuil sí sásta bualadh linn go minic"
+   },
+   "known": "she told me it is all okay and she is happy to meet us as often as she can",
+   "target": "dúirt sí liom go bhfuil sé ar fad ceart go leor agus go bhfuil áthas uirthi bualadh linn go minic",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0141L04U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she told me it is all okay, she is happy to help me practise Irish often",
+    "target": "dúirt sí liom go bhfuil sé ar fad ceart go leor, tá sí sásta cabhrú liom Gaeilge a chleachtadh go minic"
+   },
+   "known": "she told me it is all okay, she is happy to help me practise Irish often",
+   "target": "dúirt sí liom go bhfuil sé ar fad ceart go leor, tá áthas uirthi cabhrú liom Gaeilge a chleachtadh go minic",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "are you not ready",
+    "target": "nach bhfuil tú réidh"
+   },
+   "known": "are you not happy",
+   "target": "nach bhfuil áthas ort",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "why are you not",
+    "target": "cén fáth nach bhfuil tú"
+   },
+   "known": "why are you not happy",
+   "target": "cén fáth nach bhfuil áthas ort",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "are you not working today",
+    "target": "nach bhfuil tú ag obair inniu"
+   },
+   "known": "are you not happy now",
+   "target": "nach bhfuil áthas ort anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but are you not tired",
+    "target": "ach nach bhfuil tú tuirseach"
+   },
+   "known": "why are you not happy today",
+   "target": "cén fáth nach bhfuil áthas ort inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you not in the pub yet",
+    "target": "nach bhfuil tú sa teach tábhairne fós"
+   },
+   "known": "why are you not happy at the moment",
+   "target": "cén fáth nach bhfuil áthas ort faoi láthair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why are you not happy",
+    "target": "cén fáth nach bhfuil tú sásta"
+   },
+   "known": "why are you not happy tonight",
+   "target": "cén fáth nach bhfuil áthas ort anocht",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you but are you not tired",
+    "target": "go raibh maith agat ach nach bhfuil tú tuirseach"
+   },
+   "known": "are you not happy to help",
+   "target": "nach bhfuil áthas ort cabhrú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't know why you are not ready yet",
+    "target": "níl a fhios agam cén fáth nach bhfuil tú réidh fós"
+   },
+   "known": "why are you not happy to speak Irish",
+   "target": "cén fáth nach bhfuil áthas ort Gaeilge a labhairt",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't understand why you are not worried",
+    "target": "ní thuigim cén fáth nach bhfuil tú buartha"
+   },
+   "known": "are you not happy to be here",
+   "target": "nach bhfuil áthas ort a bheith anseo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you not learning Irish now",
+    "target": "nach bhfuil tú ag foghlaim Gaeilge anois"
+   },
+   "known": "why are you not happy this week",
+   "target": "cén fáth nach bhfuil áthas ort an tseachtain seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why are you not working at the moment",
+    "target": "cén fáth nach bhfuil tú ag obair faoi láthair"
+   },
+   "known": "are you not happy because you are tired",
+   "target": "nach bhfuil áthas ort mar tá tú tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0145L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "happy any more",
+    "target": "sásta a thuilleadh"
+   },
+   "known": "are you not happy any more",
+   "target": "nach bhfuil áthas ort a thuilleadh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0146L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you, I feel very happy since I woke earlier",
+    "target": "go raibh maith agat, mothaím an-sásta ó dhúisigh mé níos luaithe"
+   },
+   "known": "thank you, I feel very tired since I woke earlier",
+   "target": "go raibh maith agat, mothaím an-tuirseach ó dhúisigh mé níos luaithe",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0146L06U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it seems that you are very happy today",
+    "target": "Tá an chuma air go bhfuil tú an-sásta inniu"
+   },
+   "known": "it seems that you are very happy today",
+   "target": "Tá an chuma air go bhfuil an-áthas ort inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0147L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was happy to help when she saw that I was nervous",
+    "target": "bhí sí sásta cabhrú nuair a chonaic sí go raibh mé neirbhíseach"
+   },
+   "known": "she was happy to help when she saw that I was nervous",
+   "target": "bhí áthas uirthi cabhrú nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0147L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was happy when she saw that I was nervous",
+    "target": "bhí mé sásta nuair a chonaic sí go raibh mé neirbhíseach"
+   },
+   "known": "I was happy when she saw that I was nervous",
+   "target": "bhí áthas orm nuair a chonaic sí go raibh mé neirbhíseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0148L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "of course he wasn't happy",
+    "target": "ar ndóigh ní raibh sé sásta"
+   },
+   "known": "of course he wasn't tired",
+   "target": "ar ndóigh ní raibh sé tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'ní raibh sé' cannot carry áthas air"
+  },
+  "S0148L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he wasn't happy because I was tired",
+    "target": "ní raibh sé sásta mar bhí mé tuirseach"
+   },
+   "known": "he wasn't ready because I was tired",
+   "target": "ní raibh sé réidh mar bhí mé tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0148L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "when I couldn't see you last week I wasn't happy",
+    "target": "nuair nach raibh mé ábalta tú a fheiceáil an tseachtain seo caite ní raibh mé sásta"
+   },
+   "known": "when I couldn't see you last week I wasn't happy",
+   "target": "nuair nach raibh mé ábalta tú a fheiceáil an tseachtain seo caite ní raibh áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0150L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we were really happy when she was able to tell me that the work I had been doing was going so well",
+    "target": "bhí muid an-sásta nuair a bhí sí ábalta insint dom go raibh an obair a bhí mé ag déanamh ag dul chomh maith sin"
+   },
+   "known": "we were really happy when she was able to tell me that the work I had been doing was going so well",
+   "target": "bhí an-áthas orainn nuair a bhí sí ábalta insint dom go raibh an obair a bhí mé ag déanamh ag dul chomh maith sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0150L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he was not happy to tell me anything about what he had been doing since we last spoke",
+    "target": "Ní raibh sé sásta aon rud a insint dom faoin rud a bhí sé ag déanamh ó labhair muid le chéile"
+   },
+   "known": "he was not happy to tell me anything about what he had been doing since we last spoke",
+   "target": "Ní raibh áthas air aon rud a insint dom faoin rud a bhí sé ag déanamh ó labhair muid le chéile",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0153L02U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was not happy about doing things in the same way, because she wanted to try something different",
+    "target": "Ní raibh sí sásta rudaí a dhéanamh ar an mbealach céanna, mar ba mhian léi rud éigin éagsúil a dhéanamh"
+   },
+   "known": "she was not happy about doing things in the same way, because she wanted to try something different",
+   "target": "Ní raibh áthas uirthi rudaí a dhéanamh ar an mbealach céanna, mar ba mhian léi rud éigin éagsúil a dhéanamh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0153L03U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I told her exactly what I thought about what she was doing, because I was not happy",
+    "target": "dúirt mé léi díreach cad a cheap mé faoin rud a bhí sí ag déanamh, mar ní raibh mé sásta"
+   },
+   "known": "I told her exactly what I thought about what she was doing, because I was not happy",
+   "target": "dúirt mé léi díreach cad a cheap mé faoin rud a bhí sí ag déanamh, mar ní raibh áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0153L03U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said that is exactly what she had been hoping for, and she was very happy with it",
+    "target": "dúirt sí gur sin díreach a raibh sí ag súil leis, agus bhí sí an-sásta leis"
+   },
+   "known": "she said that is exactly what she had been hoping for, and she was very happy with it",
+   "target": "dúirt sí gur sin díreach a raibh sí ag súil leis, agus bhí an-áthas uirthi as",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0154L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was happy every night",
+    "target": "bhí mé sásta gach oíche"
+   },
+   "known": "I was happy every night",
+   "target": "bhí áthas orm gach oíche",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0155L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't mind waiting here at all, because I am happy to have more time to think",
+    "target": "Ní miste liom fanacht anseo ar chor ar bith, mar tá mé sásta níos mó ama a bheith agam le smaoineamh"
+   },
+   "known": "I don't mind waiting here at all, because I am happy to have more time to think",
+   "target": "Ní miste liom fanacht anseo ar chor ar bith, mar tá áthas orm níos mó ama a bheith agam le smaoineamh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0155L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't mind at all, and I am very happy to be able to help with this",
+    "target": "Ní miste liom ar chor ar bith, agus tá mé an-sásta a bheith ábalta cabhrú leis seo"
+   },
+   "known": "I don't mind at all, and I am very happy to be able to help with this",
+   "target": "Ní miste liom ar chor ar bith, agus tá an-áthas orm a bheith ábalta cabhrú leis seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0155L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said she was happy to wait for us, because she had plenty of time before she had to leave",
+    "target": "dúirt sí go raibh sí sásta fanacht linn, mar bhí go leor ama aici sula gcaithfidh sí imeacht"
+   },
+   "known": "she said she was happy to wait for us, because she had plenty of time before she had to leave",
+   "target": "dúirt sí go raibh áthas uirthi fanacht linn, mar bhí go leor ama aici sula gcaithfidh sí imeacht",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0155L02U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said she was not going to wait any longer, and she was not happy about it at all",
+    "target": "dúirt sí nach raibh sí chun fanacht a thuilleadh, agus ní raibh sí sásta leis ar chor ar bith"
+   },
+   "known": "she said she was not going to wait any longer, and she was not happy about it at all",
+   "target": "dúirt sí nach raibh sí chun fanacht a thuilleadh, agus ní raibh áthas uirthi faoi ar chor ar bith",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'happy about it' keeps faoi"
+  },
+  "S0155L02U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy to wait for you, because I enjoy talking with you and learning together",
+    "target": "Tá mé an-sásta fanacht leat, mar bainim taitneamh as caint leat agus as foghlaim le chéile"
+   },
+   "known": "I am very happy to wait for you, because I enjoy talking with you and learning together",
+   "target": "Tá an-áthas orm fanacht leat, mar bainim taitneamh as caint leat agus as foghlaim le chéile",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0156L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you wanted to speak to me tonight and I am very happy about that",
+    "target": "ba mhian leat labhairt liom anocht agus tá mé an-sásta faoi sin"
+   },
+   "known": "you wanted to speak to me tonight and I am very happy about that",
+   "target": "ba mhian leat labhairt liom anocht agus tá an-áthas orm faoi sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0159L01U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That is not what you were looking for when you started learning Irish and I am happy to help you",
+    "target": "Ní hé sin cad a bhí tú ag lorg nuair a thosaigh tú ag foghlaim Gaeilge agus tá mé sásta cabhrú leat"
+   },
+   "known": "That is not what you were looking for when you started learning Irish and I am happy to help you",
+   "target": "Ní hé sin cad a bhí tú ag lorg nuair a thosaigh tú ag foghlaim Gaeilge agus tá áthas orm cabhrú leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0168L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wasn't happy when I couldn't come and help you",
+    "target": "ní raibh mé sásta nuair nach raibh mé ábalta teacht agus cabhrú leat"
+   },
+   "known": "I wasn't happy when I couldn't come and help you",
+   "target": "ní raibh áthas orm nuair nach raibh mé ábalta teacht agus cabhrú leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0178L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was very happy although I wanted to go home",
+    "target": "bhí mé an-sásta cé gur mhian liom dul abhaile"
+   },
+   "known": "I was very happy although I wanted to go home",
+   "target": "bhí an-áthas orm cé gur mhian liom dul abhaile",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0180L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "for a while I felt very happy",
+    "target": "ar feadh tamaill mhothaigh mé an-sásta"
+   },
+   "known": "for a while I felt very tired",
+   "target": "ar feadh tamaill mhothaigh mé an-tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0181L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that my mother is very happy",
+    "target": "ceapaim go bhfuil mo mháthair an-sásta"
+   },
+   "known": "I think that my mother is very happy",
+   "target": "ceapaim go bhfuil an-áthas ar mo mháthair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0187L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy so far",
+    "target": "tá mé sásta go dtí seo"
+   },
+   "known": "I'm happy so far",
+   "target": "Tá áthas orm go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the seed sentence"
+  },
+  "S0187L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy so far and I think that it is working",
+    "target": "tá mé an-sásta go dtí seo agus ceapaim go bhfuil sé ag obair"
+   },
+   "known": "I am very happy so far and I think that it is working",
+   "target": "tá an-áthas orm go dtí seo agus ceapaim go bhfuil sé ag obair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0187L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy so far thank you",
+    "target": "tá mé an-sásta go dtí seo go raibh maith agat"
+   },
+   "known": "I am very happy so far thank you",
+   "target": "tá an-áthas orm go dtí seo go raibh maith agat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0188L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy so far and I do not have to change",
+    "target": "tá mé sásta go dtí seo agus ní chaithfidh mé athrú"
+   },
+   "known": "I am happy so far and I do not have to change",
+   "target": "tá áthas orm go dtí seo agus ní chaithfidh mé athrú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0191L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy so far and no I do not mind",
+    "target": "tá mé sásta go dtí seo agus ní miste liom"
+   },
+   "known": "I am happy so far and no I do not mind",
+   "target": "tá áthas orm go dtí seo agus ní miste liom",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0191L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we are not happy at all so far",
+    "target": "níl muid sásta ar chor ar bith go dtí seo"
+   },
+   "known": "we are not happy at all so far",
+   "target": "níl áthas orainn ar chor ar bith go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0197L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy because my son works in the office",
+    "target": "tá mé sásta mar oibríonn mo mhac san oifig"
+   },
+   "known": "I am happy because my son works in the office",
+   "target": "tá áthas orm mar oibríonn mo mhac san oifig",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0198L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "my daughter is working there and she is very happy about it",
+    "target": "Tá m'iníon ag obair ansin agus tá sí an-sásta faoi"
+   },
+   "known": "my daughter is working there and she is very happy about it",
+   "target": "Tá m'iníon ag obair ansin agus tá an-áthas uirthi faoi",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0198L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "my daughter works for the council and she is very happy there",
+    "target": "oibríonn m'iníon don chomhairle agus tá sí an-sásta ansin"
+   },
+   "known": "my daughter works for the council and she is very happy there",
+   "target": "oibríonn m'iníon don chomhairle agus tá an-áthas uirthi ansin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0198L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she told me that she had wanted to work for the council and that she was very happy now",
+    "target": "dúirt sí gur mhian léi obair don chomhairle agus go bhfuil sí an-sásta anois"
+   },
+   "known": "she told me that she had wanted to work for the council and that she was very happy now",
+   "target": "dúirt sí gur mhian léi obair don chomhairle agus go bhfuil an-áthas uirthi anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0200L01U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they say that the work is going well and that we should all be very happy with it",
+    "target": "deir siad go bhfuil an obair ag dul go maith agus go bhfuil muid an-sásta leis"
+   },
+   "known": "they say that the work is going well and that we should all be very happy with it",
+   "target": "deir siad go bhfuil an obair ag dul go maith agus go bhfuil an-áthas orainn as",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0200L01U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they say that they are very happy with the work that has been done so far",
+    "target": "deir siad go bhfuil siad an-sásta leis an obair atá déanta go dtí seo"
+   },
+   "known": "they say that they are very happy with the work that has been done so far",
+   "target": "deir siad go bhfuil an-áthas orthu as an obair atá déanta go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0200L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said that they want to make sure that we are happy with everything",
+    "target": "dúirt sí gur mian leo a chinntiú go bhfuil muid sásta le gach rud"
+   },
+   "known": "she said that they want to make sure that we are happy with everything",
+   "target": "dúirt sí gur mian leo a chinntiú go bhfuil áthas orainn as gach rud",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0200L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to make sure that I was happy with what had been done",
+    "target": "ba mhian léi a chinntiú go raibh mé sásta leis an méid a bhí déanta"
+   },
+   "known": "she wanted to make sure that I was happy with what had been done",
+   "target": "ba mhian léi a chinntiú go raibh áthas orm as an méid a bhí déanta",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0200L03U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it is important to make sure that everybody is happy before we leave",
+    "target": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil gach duine sásta sula n-imíonn muid"
+   },
+   "known": "I think it is important to make sure that everybody is happy before we leave",
+   "target": "ceapaim go bhfuil sé tábhachtach a chinntiú go bhfuil áthas ar gach duine sula n-imíonn muid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0208L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know how to say it now and I am very happy because it was not easy to learn",
+    "target": "tá a fhios agam conas é a rá anois agus tá mé an-sásta mar ní raibh sé éasca a fhoghlaim"
+   },
+   "known": "I know how to say it now and I am very happy because it was not easy to learn",
+   "target": "tá a fhios agam conas é a rá anois agus tá an-áthas orm mar ní raibh sé éasca a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0216L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy because I saw a few friends",
+    "target": "tá mé sásta mar chonaic mé cúpla cara"
+   },
+   "known": "I am happy because I saw a few friends",
+   "target": "tá áthas orm mar chonaic mé cúpla cara",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0222L01B01": {
+   "action": "del",
+   "role": "build",
+   "before": {
+    "known": "he is happy",
+    "target": "tá sé sásta"
+   },
+   "known": null,
+   "target": null,
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'tá sé' cannot carry áthas air; 'he is tired' is already in the basket"
+  },
+  "S0222L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "of course he is happy so far",
+    "target": "ar ndóigh tá sé sásta go dtí seo"
+   },
+   "known": "of course he is ready so far",
+   "target": "ar ndóigh tá sé réidh go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: as above"
+  },
+  "S0226L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "the man is very happy so far",
+    "target": "tá an fear an-sásta go dtí seo"
+   },
+   "known": "the man is very tired so far",
+   "target": "tá an fear an-tuirseach go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'tá an fear' cannot carry áthas ar"
+  },
+  "S0229L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I would be happy if she could come back",
+    "target": "bheinn sásta dá bhféadfadh sí teacht ar ais"
+   },
+   "known": "I would be happy if she could come back",
+   "target": "bheadh áthas orm dá bhféadfadh sí teacht ar ais",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0231L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "of course I know you and I am very happy",
+    "target": "ar ndóigh tá aithne agam ort agus tá mé an-sásta"
+   },
+   "known": "of course I know you and I am very happy",
+   "target": "ar ndóigh tá aithne agam ort agus tá an-áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0231L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i know an old man that was not happy at work",
+    "target": "tá aithne agam ar sheanfhear nach raibh sásta ag an obair"
+   },
+   "known": "i know an old man that was not happy at work",
+   "target": "tá aithne agam ar sheanfhear nach raibh áthas air ag an obair",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0233L04U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she knows everyone here and is very happy that you are all trying to learn Irish",
+    "target": "Tá aithne aici ar gach duine anseo agus tá sí an-sásta go bhfuil sibh ar fad ag iarraidh Gaeilge a fhoghlaim"
+   },
+   "known": "she knows everyone here and is very happy that you are all trying to learn Irish",
+   "target": "Tá aithne aici ar gach duine anseo agus tá an-áthas uirthi go bhfuil sibh ar fad ag iarraidh Gaeilge a fhoghlaim",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0236L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "you said that she was very happy",
+    "target": "dúirt tú go raibh sí an-sásta"
+   },
+   "known": "you said that she was very tired",
+   "target": "dúirt tú go raibh sí an-tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'go raibh sí' cannot carry áthas uirthi"
+  },
+  "S0245L01B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy today",
+    "target": "tá mé sásta inniu"
+   },
+   "known": "I am happy today",
+   "target": "tá áthas orm inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy so far",
+    "target": "tá mé sásta go dtí seo"
+   },
+   "known": "I am happy so far",
+   "target": "tá áthas orm go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "and I am happy now",
+    "target": "agus tá mé sásta anois"
+   },
+   "known": "and I am happy now",
+   "target": "agus tá áthas orm anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but I am happy in the office",
+    "target": "ach tá mé sásta san oifig"
+   },
+   "known": "but I am happy in the office",
+   "target": "ach tá áthas orm san oifig",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you I am happy so far",
+    "target": "go raibh maith agat tá mé sásta go dtí seo"
+   },
+   "known": "thank you I am happy so far",
+   "target": "go raibh maith agat tá áthas orm go dtí seo",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I feel tired but I am happy",
+    "target": "mothaím tuirseach ach tá mé sásta"
+   },
+   "known": "I feel tired but I am happy",
+   "target": "mothaím tuirseach ach tá áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy today because I have learnt a lot",
+    "target": "tá mé sásta inniu mar tá go leor foghlamtha agam"
+   },
+   "known": "I am happy today because I have learnt a lot",
+   "target": "tá áthas orm inniu mar tá go leor foghlamtha agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have learnt a lot and I am happy",
+    "target": "tá go leor foghlamtha agam agus tá mé sásta"
+   },
+   "known": "I have learnt a lot and I am happy",
+   "target": "tá go leor foghlamtha agam agus tá áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy but I did not do much",
+    "target": "tá mé sásta ach ní dhearna mé mórán"
+   },
+   "known": "I am happy but I did not do much",
+   "target": "tá áthas orm ach ní dhearna mé mórán",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I feel better and I am happy now",
+    "target": "mothaím níos fearr agus tá mé sásta anois"
+   },
+   "known": "I feel better and I am happy now",
+   "target": "mothaím níos fearr agus tá áthas orm anois",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "with how much",
+    "target": "leis an méid"
+   },
+   "known": "with how much",
+   "target": "as an méid",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the LEGO row"
+  },
+  "S0245L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he told me he was very happy with how much I had managed to do",
+    "target": "dúirt sé liom go raibh sé an-sásta leis an méid a bhí déanta agam"
+   },
+   "known": "he told me he was very happy with how much I had managed to do",
+   "target": "dúirt sé liom go raibh an-áthas air as an méid a bhí déanta agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L02U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I told her I was happy with how much she had done to help everyone",
+    "target": "dúirt mé léi go raibh mé sásta leis an méid a bhí déanta aici chun cabhrú le gach duine"
+   },
+   "known": "I told her I was happy with how much she had done to help everyone",
+   "target": "dúirt mé léi go raibh áthas orm as an méid a bhí déanta aici chun cabhrú le gach duine",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L03B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy with how much that I have done in a short time",
+    "target": "tá mé sásta leis an méid atá déanta agam in am gearr"
+   },
+   "known": "I'm happy with how much I've done in a short time",
+   "target": "Tá áthas orm as an méid atá déanta agam in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: the seed sentence"
+  },
+  "S0245L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy with how much that I have done in such a short time",
+    "target": "tá mé sásta leis an méid atá déanta agam in am gearr"
+   },
+   "known": "I am happy with how much that I have done in such a short time",
+   "target": "tá áthas orm as an méid atá déanta agam in am gearr",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said he was very happy with the amount of work that I have done",
+    "target": "dúirt sé go raibh sé an-sásta leis an méid oibre atá déanta agam"
+   },
+   "known": "he said he was very happy with the amount of work that I have done",
+   "target": "dúirt sé go raibh an-áthas air as an méid oibre atá déanta agam",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L03U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I told her I was very happy with all the work that I have done together with her",
+    "target": "dúirt mé léi go raibh mé an-sásta leis an méid oibre atá déanta agam le chéile léi"
+   },
+   "known": "I told her I was very happy with all the work that I have done together with her",
+   "target": "dúirt mé léi go raibh an-áthas orm as an méid oibre atá déanta agam le chéile léi",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0245L03U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was very happy to tell her about everything that I have done this week to help",
+    "target": "bhí mé an-sásta insint di faoi gach rud atá déanta agam an tseachtain seo chun cabhrú"
+   },
+   "known": "I was very happy to tell her about everything that I have done this week to help",
+   "target": "bhí an-áthas orm insint di faoi gach rud atá déanta agam an tseachtain seo chun cabhrú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0247L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was fairly happy",
+    "target": "bhí mé réasúnta sásta"
+   },
+   "known": "I was fairly tired",
+   "target": "bhí mé réasúnta tuirseach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: 'fairly happy' cannot keep réasúnta next to áthas"
+  },
+  "S0250L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy that there is something else to tell me",
+    "target": "tá mé sásta go bhfuil rud éigin eile a insint dom"
+   },
+   "known": "I am happy that there is something else to tell me",
+   "target": "tá áthas orm go bhfuil rud éigin eile a insint dom",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0251L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy so far but I don't want to find out about it",
+    "target": "tá mé sásta go dtí seo ach ní mian liom fáil amach faoi"
+   },
+   "known": "I am happy so far but I don't want to find out about it",
+   "target": "tá áthas orm go dtí seo ach ní mian liom fáil amach faoi",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0254L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i am happy and i've been ready since this morning",
+    "target": "tá mé sásta agus tá mé réidh ó mhaidin"
+   },
+   "known": "i am happy and i've been ready since this morning",
+   "target": "tá áthas orm agus tá mé réidh ó mhaidin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0267L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said he had something from a friend and he was very happy to have it",
+    "target": "dúirt sé go raibh rud éigin ó mo chara aige agus bhí sé an-sásta é a bheith aige"
+   },
+   "known": "he said he had something from a friend and he was very happy to have it",
+   "target": "dúirt sé go raibh rud éigin ó mo chara aige agus bhí an-áthas air é a bheith aige",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0270L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I hope that I'm going to be happy",
+    "target": "tá súil agam go mbeidh mé sásta"
+   },
+   "known": "I hope that I'm going to be ready",
+   "target": "tá súil agam go mbeidh mé réidh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14: LEGO 'go mbeidh mé' cannot carry áthas orm"
+  },
+  "S0270L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy because I think that I'm going to be ready",
+    "target": "tá mé sásta mar ceapaim go mbeidh mé réidh"
+   },
+   "known": "I am happy because I think that I'm going to be ready",
+   "target": "tá áthas orm mar ceapaim go mbeidh mé réidh",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0274L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy to stay if you want but I thought it was already time for me to leave",
+    "target": "tá mé sásta fanacht más mian leat ach cheap mé go raibh sé in am imeacht cheana"
+   },
+   "known": "I am happy to stay if you want but I thought it was already time for me to leave",
+   "target": "tá áthas orm fanacht más mian leat ach cheap mé go raibh sé in am imeacht cheana",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0274L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was nearly ready to leave and she was very happy that everything was done on time",
+    "target": "bhí sí beagnach réidh le himeacht agus bhí sí an-sásta go raibh gach rud déanta aici in am"
+   },
+   "known": "she was nearly ready to leave and she was very happy that everything was done on time",
+   "target": "bhí sí beagnach réidh le himeacht agus bhí an-áthas uirthi go raibh gach rud déanta aici in am",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0274L02U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can you tell me when you will be ready to leave because I am happy to wait for you",
+    "target": "an féidir leat a insint dom nuair a bheidh tú réidh le himeacht mar tá mé sásta fanacht leat"
+   },
+   "known": "can you tell me when you will be ready to leave because I am happy to wait for you",
+   "target": "an féidir leat a insint dom nuair a bheidh tú réidh le himeacht mar tá áthas orm fanacht leat",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0274L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said she would be back in a few days and I was happy to hear that",
+    "target": "dúirt sí go mbeidh sí ar ais i gceann cúpla lá agus bhí mé sásta é sin a chloisteáil"
+   },
+   "known": "she said she would be back in a few days and I was happy to hear that",
+   "target": "dúirt sí go mbeidh sí ar ais i gceann cúpla lá agus bhí áthas orm é sin a chloisteáil",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0275L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he said he was able to stay longer and I was very happy to hear that",
+    "target": "dúirt sé go raibh sé in ann fanacht níos faide agus bhí mé an-sásta é sin a chloisteáil"
+   },
+   "known": "he said he was able to stay longer and I was very happy to hear that",
+   "target": "dúirt sé go raibh sé in ann fanacht níos faide agus bhí an-áthas orm é sin a chloisteáil",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0275L01U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy to stay longer with you if you are sure that is alright",
+    "target": "tá mé sásta fanacht níos faide leat má tá tú cinnte go bhfuil sé sin ceart go leor"
+   },
+   "known": "I am happy to stay longer with you if you are sure that is alright",
+   "target": "tá áthas orm fanacht níos faide leat má tá tú cinnte go bhfuil sé sin ceart go leor",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0276L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I am happy to stay",
+    "target": "tá mé sásta fanacht"
+   },
+   "known": "I am happy to stay",
+   "target": "tá áthas orm fanacht",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0276L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy to stay but I would like to talk to you about something before you go",
+    "target": "tá mé sásta fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula rachaidh tú"
+   },
+   "known": "I am happy to stay but I would like to talk to you about something before you go",
+   "target": "tá áthas orm fanacht ach ba mhaith liom labhairt leat faoi rud éigin sula rachaidh tú",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0276L03U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy to stay if you want to talk to me longer today",
+    "target": "tá mé an-sásta fanacht más mian leat labhairt liom níos faide inniu"
+   },
+   "known": "I am very happy to stay if you want to talk to me longer today",
+   "target": "tá an-áthas orm fanacht más mian leat labhairt liom níos faide inniu",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0276L05U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she said she was able to stay a little longer and I was very happy to hear that",
+    "target": "dúirt sí go raibh sí ábalta fanacht beagán níos faide agus bhí mé an-sásta é sin a chloisteáil"
+   },
+   "known": "she said she was able to stay a little longer and I was very happy to hear that",
+   "target": "dúirt sí go raibh sí ábalta fanacht beagán níos faide agus bhí an-áthas orm é sin a chloisteáil",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0276L05U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am very happy to stay a little longer if you want to talk about something important",
+    "target": "tá mé an-sásta fanacht beagán níos faide más mian leat labhairt faoi rud éigin tábhachtach"
+   },
+   "known": "I am very happy to stay a little longer if you want to talk about something important",
+   "target": "tá an-áthas orm fanacht beagán níos faide más mian leat labhairt faoi rud éigin tábhachtach",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0285L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she speaks Irish now and I am happy",
+    "target": "tá Gaeilge aici anois agus tá mé sásta"
+   },
+   "known": "she speaks Irish now and I am happy",
+   "target": "tá Gaeilge aici anois agus tá áthas orm",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  },
+  "S0288L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think the people I know would be happy to help you with that",
+    "target": "ceapaim go mbeadh na daoine a bhfuil aithne agam orthu sásta cabhrú leat leis sin"
+   },
+   "known": "I think the people I know would be happy to help you with that",
+   "target": "ceapaim go mbeadh áthas ar na daoine a bhfuil aithne agam orthu cabhrú leat leis sin",
+   "family": "Q14 happy = áthas ar",
+   "why": "Q14"
+  }
+ }
+}

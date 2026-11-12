@@ -1,0 +1,510 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "57d90508-2695-40ad-a257-0f22b33511b3",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:27:07.053Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-27-07-053Z-57d90508-2695-40ad-a257-0f22b33511b3.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0079L02U02",
+      "set": {
+        "target_text": "tá mé an-sásta mar thosaigh tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U15",
+      "set": {
+        "known_text": "she is very happy with how much I have already learned and she wants to learn more",
+        "target_text": "tá sí an-sásta leis an méid atá foghlamtha agam cheana féin agus is mian léi níos mó a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U03",
+      "set": {
+        "target_text": "tá sé ábalta go leor focal a labhairt cheana féin agus tá sé an-sásta leis an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U02",
+      "set": {
+        "known_text": "she is already speaking Irish with people and she is very happy",
+        "target_text": "tá sí ag caint Gaeilge le daoine cheana féin agus tá sí an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U01",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam cheana féin le timpeall seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05B05",
+      "set": {
+        "known_text": "I am very happy with how much I have already learned",
+        "target_text": "tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04U14",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus tá mé ag iarraidh feabhsú chomh luath agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04U13",
+      "set": {
+        "known_text": "they were very happy with all the words I have learned in about a week of learning Irish",
+        "target_text": "bhí siad an-sásta leis an méid focal ar fad atá foghlamtha agam le timpeall seachtaine ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04U11",
+      "set": {
+        "known_text": "she is very happy with all the Irish I have learned and she wants other people learning Irish too",
+        "target_text": "tá sí an-sásta leis an méid Gaeilge ar fad atá foghlamtha agam agus is mian léi daoine eile ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04U03",
+      "set": {
+        "target_text": "tá sé sásta leis an méid Gaeilge ar fad atá foghlamtha agam le timpeall seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04U01",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04B06",
+      "set": {
+        "known_text": "she is happy with how much I have learned",
+        "target_text": "tá sí sásta leis an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04B04",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L04B03",
+      "set": {
+        "target_text": "tá mé sásta leis an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U13",
+      "set": {
+        "target_text": "tá mé sásta leis an méid Gaeilge atá foghlamtha agam ag caint le daoine gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U12",
+      "set": {
+        "known_text": "they were very happy with how much Irish I have learned with everyone else who is learning",
+        "target_text": "bhí siad an-sásta leis an méid Gaeilge atá foghlamtha agam le gach duine eile ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U10",
+      "set": {
+        "target_text": "tá sé an-sásta leis an méid Gaeilge atá foghlamtha agam ó thosaigh sé ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U09",
+      "set": {
+        "target_text": "ní raibh mé sásta leis an méid Gaeilge atá foghlamtha agam an tseachtain seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U08",
+      "set": {
+        "target_text": "an bhfuil tú sásta leis an méid ama atá tú ag foghlaim Gaeilge an tseachtain seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U04",
+      "set": {
+        "target_text": "tá mé sásta leis an méid ama atá mé ag caint Gaeilge an tseachtain seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U02",
+      "set": {
+        "known_text": "she is very happy with how much Irish I have learned and she does not want to stop talking",
+        "target_text": "tá sí an-sásta leis an méid Gaeilge atá foghlamtha agam agus ní mian léi stopadh ag caint"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03U01",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid Gaeilge atá foghlamtha agam agus is mian liom níos mó a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03B06",
+      "set": {
+        "target_text": "tá mé sásta leis an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03B05",
+      "set": {
+        "target_text": "tá sé an-sásta leis an méid"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03B03",
+      "set": {
+        "target_text": "tá mé an-sásta leis an méid"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L03B01",
+      "set": {
+        "target_text": "leis an méid"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U08",
+      "set": {
+        "known_text": "he said he was very happy because it was not too hard to start learning Irish",
+        "target_text": "tá sé an-sásta Gaeilge a fhoghlaim mar níl sé deacair fáil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U07",
+      "set": {
+        "known_text": "I am very happy to be here and I enjoy speaking Irish with everyone I meet",
+        "target_text": "tá mé an-sásta ag foghlaim Gaeilge agus bainim taitneamh as labhairt Gaeilge le gach duine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U06",
+      "set": {
+        "known_text": "she told me she was very happy with how much Irish I have already learned",
+        "target_text": "dúirt sí liom go raibh sí an-sásta leis an méid Gaeilge atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U05",
+      "set": {
+        "known_text": "we are very happy and we want to keep practising speaking Irish together as often as possible",
+        "target_text": "tá muid an-sásta agus is mian linn labhairt a chleachtadh Gaeilge le chéile chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U04",
+      "set": {
+        "known_text": "I am very happy when you understand enough words speaking Irish with people",
+        "target_text": "tá mé an-sásta nuair a thuigeann tú go leor focal ag caint Gaeilge le daoine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U03",
+      "set": {
+        "known_text": "he is very happy because he can now practise speaking Irish with someone else every day",
+        "target_text": "tá sé an-sásta mar is féidir leis labhairt a chleachtadh Gaeilge le duine éigin eile gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U02",
+      "set": {
+        "known_text": "she is very happy because she is starting to speak Irish more and more every week",
+        "target_text": "tá sí an-sásta mar tá sí ag tosú ag caint Gaeilge níos mó an tseachtain seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02U01",
+      "set": {
+        "known_text": "I am very happy and I want to keep learning Irish as often as possible every day",
+        "target_text": "tá mé an-sásta agus is mian liom Gaeilge a fhoghlaim chomh minic agus is féidir gach lá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02C02",
+      "set": {
+        "known_text": "happy",
+        "target_text": "sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02B05",
+      "set": {
+        "known_text": "he is very happy",
+        "target_text": "tá sé an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02B04",
+      "set": {
+        "known_text": "she is very happy",
+        "target_text": "tá sí an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02B03",
+      "set": {
+        "known_text": "I am very happy",
+        "target_text": "tá mé an-sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L02B01",
+      "set": {
+        "known_text": "very happy",
+        "target_text": "an-sásta"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "fe59c145-5ca4-4713-a09a-692d87d025cb",
+      "set": {
+        "target_text": "leis an méid",
+        "components": [
+          {
+            "known": "with",
+            "target": "leis"
+          },
+          {
+            "known": "the amount",
+            "target": "an méid"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3a8c6b1f-fb82-4bdb-a63f-f90e598de2ac",
+      "set": {
+        "target_text": "Tá mé sásta",
+        "components": [
+          {
+            "known": "I am",
+            "target": "Tá mé"
+          },
+          {
+            "known": "happy",
+            "target": "sásta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "6e070cc9-24db-4ff6-a206-8e0384dd4742",
+      "set": {
+        "type": "A",
+        "known_text": "happy",
+        "target_text": "sásta",
+        "components": null
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "487e9893-3aff-45e2-a516-a268c424734e",
+      "set": {
+        "target_text": "sásta"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "d6a04682-5a2e-40b6-9841-3c455dc390e4",
+      "set": {
+        "known_text": "are you not",
+        "target_text": "nach bhfuil tú",
+        "components": [
+          {
+            "known": "that not",
+            "target": "nach bhfuil"
+          },
+          {
+            "known": "you",
+            "target": "tú"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "1b404b35-99fc-4d0c-bd21-63dceeb7ab00",
+      "set": {
+        "known_text": "so happy that",
+        "target_text": "chomh sásta go bhfuil",
+        "components": [
+          {
+            "known": "so happy",
+            "target": "chomh sásta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "44c57387-6bf9-44fd-bc7a-d7b38e5219a1",
+      "set": {
+        "type": "A",
+        "known_text": "happy",
+        "target_text": "sásta",
+        "components": null
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "ea849245-c478-4a52-ad3d-efe43e5d78f5",
+      "set": {
+        "target_text": "leis an méid",
+        "components": [
+          {
+            "known": "with it",
+            "target": "leis"
+          },
+          {
+            "known": "the",
+            "target": "an"
+          },
+          {
+            "known": "how much",
+            "target": "méid"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "6815cfa7-a568-4a1b-aeef-40f541a4b3ac",
+      "set": {
+        "known_text": "very happy",
+        "target_text": "an-sásta",
+        "components": [
+          {
+            "known": "very",
+            "target": "an-"
+          },
+          {
+            "known": "happy",
+            "target": "sásta"
+          }
+        ]
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 599,
+      "set": {
+        "target_text": "Bheinn sásta tiomáint dá n-inseofá dom faoi"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 448,
+      "set": {
+        "target_text": "beidh, beidh siad sásta cabhrú"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 344,
+      "set": {
+        "target_text": "a dúirt go bhfuil sé sásta cabhrú leat"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 245,
+      "set": {
+        "target_text": "Tá mé sásta leis an méid atá déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 187,
+      "set": {
+        "target_text": "Tá mé sásta go dtí seo"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 145,
+      "set": {
+        "target_text": "Cén fáth nach bhfuil tú sásta a thuilleadh?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 129,
+      "set": {
+        "target_text": "Tá mé chomh sásta go bhfuil tú ag déanamh chomh maith sin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 106,
+      "set": {
+        "target_text": "Ní chaithfidh muid a bheith sásta, caithfidh muid obair go dian"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 76,
+      "set": {
+        "target_text": "Tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0145L04U09"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0106L06U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0129L01B02"
+    }
+  ]
+}
