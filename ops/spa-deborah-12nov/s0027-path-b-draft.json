@@ -1,0 +1,237 @@
+{
+ "course": "spa_for_eng",
+ "job": "#472",
+ "status": "DRAFT — nothing applied; Kai answers Y/N",
+ "rows": [
+  {
+   "kind": "seed",
+   "id": "S0027",
+   "known": "I don't like taking too long to answer",
+   "target": "no me gusta tardar demasiado en contestar"
+  },
+  {
+   "kind": "lego",
+   "id": "S0027L02",
+   "known": "to take too long",
+   "target": "tardar demasiado en",
+   "type": "M",
+   "components": [
+    {
+     "known": "to take long",
+     "target": "tardar"
+    },
+    {
+     "known": "too much",
+     "target": "demasiado"
+    },
+    {
+     "known": "in",
+     "target": "en"
+    }
+   ]
+  },
+  {
+   "kind": "lego",
+   "id": "S0027L03",
+   "known": "to answer",
+   "target": "contestar",
+   "type": "A",
+   "components": []
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02B01",
+   "known": "to take too long",
+   "target": "tardar demasiado en"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02B02",
+   "known": "I don't like taking too long to speak",
+   "target": "No me gusta tardar demasiado en hablar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02B03",
+   "known": "to take too long to say something",
+   "target": "tardar demasiado en decir algo"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02B04",
+   "known": "Are you going to take too long to come back?",
+   "target": "¿Vas a tardar demasiado en volver?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U01",
+   "known": "I don't like taking too long to speak Spanish",
+   "target": "No me gusta tardar demasiado en hablar español"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U02",
+   "known": "I don't want to take too long to find out what the answer is",
+   "target": "No quiero tardar demasiado en descubrir cuál es la respuesta"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U03",
+   "known": "I wouldn't like to take too long to learn Spanish",
+   "target": "No me gustaría tardar demasiado en aprender español"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U04",
+   "known": "Are you going to take too long to come back today?",
+   "target": "¿Vas a tardar demasiado en volver hoy?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U05",
+   "known": "I don't like taking too long to start talking",
+   "target": "No me gusta tardar demasiado en empezar a hablar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U06",
+   "known": "I'm trying not to take too long to remember a word",
+   "target": "Estoy intentando no tardar demasiado en recordar una palabra"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L02U07",
+   "known": "She doesn't want to take too long to explain what she means",
+   "target": "Ella no quiere tardar demasiado en explicar lo que quiere decir"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03B02",
+   "known": "to answer in Spanish",
+   "target": "contestar en español"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03B03",
+   "known": "I'm trying to answer",
+   "target": "Estoy intentando contestar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03B04",
+   "known": "I don't like taking too long to answer",
+   "target": "No me gusta tardar demasiado en contestar"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03U01",
+   "known": "I don't like taking too long to answer in Spanish",
+   "target": "No me gusta tardar demasiado en contestar en español"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03U03",
+   "known": "I don't like taking too long to answer with another person",
+   "target": "No me gusta tardar demasiado en contestar con otra persona"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03U04",
+   "known": "Are you going to take too long to answer today?",
+   "target": "¿Vas a tardar demasiado en contestar hoy?"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03U07",
+   "known": "I'd like to be able to answer in Spanish",
+   "target": "Me gustaría poder contestar en español"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0027L03U08",
+   "known": "I don't like taking too long to answer in Spanish with another person",
+   "target": "No me gusta tardar demasiado en contestar en español con otra persona"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L03 (new USE)",
+   "known": "I'm going to try to answer quickly",
+   "target": "Voy a intentar contestar rápidamente",
+   "role": "use"
+  },
+  {
+   "kind": "phrase_new",
+   "id": "S0027L03B01",
+   "known": "to answer",
+   "target": "contestar",
+   "note": "B01 does not exist today (L03 has B02-B04); bare LEGO build added so L03 keeps 4 BUILD"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0028L01U08",
+   "known": "It's useful not to take too long to answer",
+   "target": "Es útil no tardar demasiado en contestar",
+   "note": "moved from tomar demasiado tiempo para to the Path B form"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0071L03U14",
+   "known": "No one wanted to take too long to find the answer",
+   "target": "Nadie quería tardar demasiado en encontrar la respuesta",
+   "note": "moved from tomar demasiado tiempo para to the Path B form"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0084L01U09",
+   "known": "He said he didn't want to take too long to answer",
+   "target": "Él dijo que no quería tardar demasiado en contestar",
+   "note": "moved from tomar demasiado tiempo para to the Path B form"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0225L02U10",
+   "known": "I don't like taking too long to answer when I know the answer",
+   "target": "No me gusta tardar demasiado en contestar cuando sé la respuesta",
+   "note": "moved from tomar demasiado tiempo para to the Path B form"
+  },
+  {
+   "kind": "seed",
+   "id": "S0065",
+   "known": "It's important to test yourself",
+   "target": "Es importante ponerte a prueba",
+   "note": "tomar untaught until S0095 once L02 leaves it (as #413)"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0065L02U09",
+   "delete": true,
+   "note": "would duplicate S0065L02B04 word for word once trimmed (as #413)"
+  },
+  {
+   "kind": "phrase",
+   "id": "S0078L01U11",
+   "known": "Now I understand that it is important to test yourself",
+   "target": "Ahora entiendo que es importante ponerte a prueba",
+   "note": "drop take time (as #413)"
+  },
+  {
+   "kind": "lego",
+   "id": "S0026L04",
+   "components": [
+    {
+     "known": "ready",
+     "target": "listo"
+    },
+    {
+     "known": "to",
+     "target": "para"
+    },
+    {
+     "known": "to go",
+     "target": "irme"
+    }
+   ],
+   "note": "OPTIONAL, Kai Y/N 2: keeps purpose para available from seed 26 once S0027L03 loses it"
+  }
+ ]
+}
