@@ -1,0 +1,493 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "2c06e379-fbae-4dee-940d-c32c429a353d",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:40:23.187Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-40-23-187Z-2c06e379-fbae-4dee-940d-c32c429a353d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L01U03",
+      "set": {
+        "known_text": "it is not easy to remember how to say all the different words in Irish",
+        "target_text": "Níl sé éasca cuimhneamh conas go leor focal éagsúil a rá i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04U05",
+      "set": {
+        "known_text": "he wanted to take time in order to remember all the words",
+        "target_text": "ba mhian leis am a thógáil chun cuimhneamh conas go leor focal a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U12",
+      "set": {
+        "known_text": "she wanted to take time to learn all the words before speaking",
+        "target_text": "ba mhian léi am a thógáil chun go leor focal a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U08",
+      "set": {
+        "known_text": "he doesn't want to take time to remember all the words right now",
+        "target_text": "ní mian leis am a thógáil chun cuimhneamh conas go leor focal a rá anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U10",
+      "set": {
+        "known_text": "it is useful to take the time to understand all the words",
+        "target_text": "Tá sé úsáideach am a thógáil chun go leor focal a thuigeann tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U02",
+      "set": {
+        "known_text": "it is interesting when you understand lots of words in Irish",
+        "target_text": "Tá sé suimiúil nuair a thuigeann tú go leor focal i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0061L03U13",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal éagsúil a rá le gach duine eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0061L03U05",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós ach tá mé ag iarraidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0061L03B07",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0061L02U04",
+      "set": {
+        "target_text": "níl a fhios agam conas é sin a rá fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03U04",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal éagsúil a scríobh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03U03",
+      "set": {
+        "target_text": "an bhfuil tú chun go leor focal éagsúil a chleachtadh anocht?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03U02",
+      "set": {
+        "target_text": "ní féidir liom go leor focal éagsúil a scríobh i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03U01",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03C01",
+      "set": {
+        "target_text": "go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03B03",
+      "set": {
+        "target_text": "ba mhaith liom go leor focal éagsúil a léamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03B02",
+      "set": {
+        "target_text": "conas go leor focal éagsúil a rá"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L03B01",
+      "set": {
+        "target_text": "go leor focal éagsúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L02U07",
+      "set": {
+        "target_text": "níl a fhios agam conas go leor focal a scríobh i nGaeilge ach thosaigh mé an tseachtain seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L02B03",
+      "set": {
+        "target_text": "má thuigeann tú conas go leor focal a scríobh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U07",
+      "set": {
+        "target_text": "ar mhian leat go leor focal a scríobh aréir?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U06",
+      "set": {
+        "target_text": "conas a thuigeann tú go leor focal?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U05",
+      "set": {
+        "target_text": "ba mhian léi go leor focal a léamh ach bhí sí tuirseach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U04",
+      "set": {
+        "target_text": "ceapaim gur rud maith é má thuigeann tú go leor focal i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U03",
+      "set": {
+        "target_text": "an bhfuil tú chun go leor focal a léamh anocht?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U02",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta go leor focal a scríobh i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U01",
+      "set": {
+        "target_text": "ní féidir liom go leor focal a léamh faoi láthair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03C01",
+      "set": {
+        "target_text": "go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03B04",
+      "set": {
+        "target_text": "ba mhian leis go leor focal a scríobh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03B03",
+      "set": {
+        "target_text": "nuair a thuigeann tú go leor focal mar seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03B02",
+      "set": {
+        "target_text": "má thuigeann tú go leor focal"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03B01",
+      "set": {
+        "target_text": "go leor focal a thuigeann tú"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "3d173e05-7f39-473e-a3c6-4c93ac4ce778",
+      "set": {
+        "target_text": "go leor ama",
+        "components": [
+          {
+            "known": "enough",
+            "target": "go leor"
+          },
+          {
+            "known": "time",
+            "target": "ama"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "44e5bb2d-8f67-468f-a592-400971277207",
+      "set": {
+        "target_text": "Tá go leor foghlamtha agam",
+        "components": [
+          {
+            "known": "a lot",
+            "target": "go leor"
+          },
+          {
+            "known": "learnt",
+            "target": "foghlamtha"
+          },
+          {
+            "known": "I have",
+            "target": "agam"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "0f704ee6-f35a-413f-b9e3-e6bd9d550ddd",
+      "set": {
+        "target_text": "fós"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "ba4b309c-fc26-4e63-b307-8a6221013ed3",
+      "set": {
+        "target_text": "go leor"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "cf35f90f-0bbc-4249-bd7c-6acbfea5fb2a",
+      "set": {
+        "target_text": "níl mé réidh fós",
+        "components": [
+          {
+            "known": "I'm not",
+            "target": "níl mé"
+          },
+          {
+            "known": "ready",
+            "target": "réidh"
+          },
+          {
+            "known": "yet",
+            "target": "fós"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "6de99eec-c4b0-4621-932b-1659ccd2bced",
+      "set": {
+        "target_text": "go leor"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "0a84f619-048d-42a8-b471-ccdfdda83ae6",
+      "set": {
+        "target_text": "fós"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "e7d4da0a-bba1-40cc-9d85-15c680f454fa",
+      "set": {
+        "target_text": "fós"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "649f42d2-21ab-4c7d-a958-176eda414255",
+      "set": {
+        "target_text": "go leor focal éagsúil",
+        "components": [
+          {
+            "known": "enough",
+            "target": "go leor"
+          },
+          {
+            "known": "different words",
+            "target": "focal éagsúil"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f93ddb0c-69c9-42ac-8c39-fa082edd4866",
+      "set": {
+        "target_text": "go leor focal",
+        "components": [
+          {
+            "known": "enough",
+            "target": "go leor"
+          },
+          {
+            "known": "words",
+            "target": "focal"
+          }
+        ]
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 523,
+      "set": {
+        "target_text": "in áit leithscéal a thabhairt"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 519,
+      "set": {
+        "target_text": "Ní fhaca mé a leanbh nua fós"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 502,
+      "set": {
+        "target_text": "Dóbair di dul ar strae mar chas sí ar chlé in áit ar dheis"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 475,
+      "set": {
+        "target_text": "Tá go leor cúiseanna ann le smaoineamh ar fhanacht"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 431,
+      "set": {
+        "target_text": "Níl siad réidh fós ach beidh siad réidh go luath"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 378,
+      "set": {
+        "target_text": "Ní dheachaigh, ní raibh go leor airgid agam do laethanta saoire"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 363,
+      "set": {
+        "target_text": "Dúirt, bhí fonn air go leor cainte a dhéanamh"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 345,
+      "set": {
+        "target_text": "a dúirt nach bhfuil sé réidh le himeacht fós"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 294,
+      "set": {
+        "target_text": "Níl go leor ama agam glaoch ort anocht"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 244,
+      "set": {
+        "target_text": "Tá go leor foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 115,
+      "set": {
+        "target_text": "Ní mhothaím go bhfuil mé réidh le comhrá a bheith agam leo fós"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 109,
+      "set": {
+        "target_text": "caithfidh muid obair go dian le go leor focal nua a fhoghlaim"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 103,
+      "set": {
+        "target_text": "Níl muid ag iarraidh go leor focal eile a chloisteáil"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 96,
+      "set": {
+        "target_text": "Níl, níl mé réidh fós, tá beagán níos mó ama de dhíth orm"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 89,
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 88,
+      "set": {
+        "target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 60,
+      "set": {
+        "target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 58,
+      "set": {
+        "target_text": "Tá sé suimiúil nuair a thuigeann tú go leor focal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3693 @@
+{
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 58,
+"set": {
+"target_text": "Tá sé suimiúil nuair a thuigeann tú dóthain focal"
+},
+"expect": {
+"known_text": "it's interesting when you understand enough words",
+"target_text": "Tá sé suimiúil nuair a thuigeann tú go leor focal"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 60,
+"set": {
+"target_text": "Níl a fhios agam conas dóthain focal éagsúil a rá go fóill"
+},
+"expect": {
+"known_text": "I don't know how to say enough different words yet",
+"target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 88,
+"set": {
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu go fóill"
+},
+"expect": {
+"known_text": "I'm not ready to talk to people I don't know yet",
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 89,
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta agam in am gearr"
+},
+"expect": {
+"known_text": "I think that I've done a lot in a short time",
+"target_text": "ceapaim go bhfuil go leor déanta agam in am gearr"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 96,
+"set": {
+"target_text": "Níl, níl mé réidh go fóill, tá beagán níos mó ama de dhíth orm"
+},
+"expect": {
+"known_text": "no I'm not ready yet, I need a little more time",
+"target_text": "Níl, níl mé réidh fós, tá beagán níos mó ama de dhíth orm"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 103,
+"set": {
+"target_text": "Níl muid ag iarraidh mórán focal eile a chloisteáil"
+},
+"expect": {
+"known_text": "we're not trying to hear many more words",
+"target_text": "Níl muid ag iarraidh go leor focal eile a chloisteáil"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 109,
+"set": {
+"target_text": "caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "we must work hard to learn a lot of new words",
+"target_text": "caithfidh muid obair go dian le go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 115,
+"set": {
+"target_text": "Ní mhothaím go bhfuil mé réidh le comhrá a bheith agam leo go fóill"
+},
+"expect": {
+"known_text": "I don't feel as if I'm ready to have a conversation with them yet",
+"target_text": "Ní mhothaím go bhfuil mé réidh le comhrá a bheith agam leo fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 244,
+"set": {
+"target_text": "Tá a lán foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I've learnt a lot already",
+"target_text": "Tá go leor foghlamtha agam cheana féin"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 294,
+"set": {
+"target_text": "Níl dóthain ama agam glaoch ort anocht"
+},
+"expect": {
+"known_text": "I don't have enough time to call you tonight",
+"target_text": "Níl go leor ama agam glaoch ort anocht"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 345,
+"set": {
+"target_text": "a dúirt nach bhfuil sé réidh le himeacht go fóill"
+},
+"expect": {
+"known_text": "who said that he's not ready to leave yet",
+"target_text": "a dúirt nach bhfuil sé réidh le himeacht fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 363,
+"set": {
+"target_text": "Dúirt, bhí fonn air a lán cainte a dhéanamh"
+},
+"expect": {
+"known_text": "yes he felt like talking a lot",
+"target_text": "Dúirt, bhí fonn air go leor cainte a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 378,
+"set": {
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire"
+},
+"expect": {
+"known_text": "no I didn't have enough money for holidays",
+"target_text": "Ní dheachaigh, ní raibh go leor airgid agam do laethanta saoire"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 431,
+"set": {
+"target_text": "Níl siad réidh go fóill ach beidh siad réidh go luath"
+},
+"expect": {
+"known_text": "they're not ready yet but they'll be ready soon",
+"target_text": "Níl siad réidh fós ach beidh siad réidh go luath"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 475,
+"set": {
+"target_text": "Tá mórán cúiseanna ann le smaoineamh ar fhanacht"
+},
+"expect": {
+"known_text": "there are many reasons to consider waiting",
+"target_text": "Tá go leor cúiseanna ann le smaoineamh ar fhanacht"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 502,
+"set": {
+"target_text": "Dóbair di dul ar strae mar chas sí ar chlé seachas ar dheis"
+},
+"expect": {
+"known_text": "she almost got lost because she turned left instead of right",
+"target_text": "Dóbair di dul ar strae mar chas sí ar chlé in áit ar dheis"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 519,
+"set": {
+"target_text": "Ní fhaca mé a leanbh nua go fóill"
+},
+"expect": {
+"known_text": "I haven't seen their new baby yet",
+"target_text": "Ní fhaca mé a leanbh nua fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 523,
+"set": {
+"target_text": "seachas leithscéal a thabhairt"
+},
+"expect": {
+"known_text": "instead of giving an excuse",
+"target_text": "in áit leithscéal a thabhairt"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0058L03",
+"set": {
+"target_text": "dóthain focal",
+"components": [
+{
+"known": "enough",
+"target": "dóthain"
+},
+{
+"known": "words",
+"target": "focal"
+}
+]
+},
+"expect": {
+"known_text": "enough words",
+"target_text": "go leor focal"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0060L03",
+"set": {
+"target_text": "dóthain focal éagsúil",
+"components": [
+{
+"known": "enough",
+"target": "dóthain"
+},
+{
+"known": "different words",
+"target": "focal éagsúil"
+}
+]
+},
+"expect": {
+"known_text": "enough different words",
+"target_text": "go leor focal éagsúil"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0060L06",
+"set": {
+"target_text": "go fóill"
+},
+"expect": {
+"known_text": "yet",
+"target_text": "fós"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0088L05",
+"set": {
+"target_text": "go fóill"
+},
+"expect": {
+"known_text": "yet",
+"target_text": "fós"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0089L06",
+"set": {
+"target_text": "a lán"
+},
+"expect": {
+"known_text": "a lot",
+"target_text": "go leor"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0096L02",
+"set": {
+"target_text": "níl mé réidh go fóill",
+"components": [
+{
+"known": "I'm not",
+"target": "níl mé"
+},
+{
+"known": "ready",
+"target": "réidh"
+},
+{
+"known": "yet",
+"target": "go fóill"
+}
+]
+},
+"expect": {
+"known_text": "I'm not ready yet",
+"target_text": "níl mé réidh fós"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0103L03",
+"set": {
+"target_text": "mórán"
+},
+"expect": {
+"known_text": "many",
+"target_text": "go leor"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0115L05",
+"set": {
+"target_text": "go fóill"
+},
+"expect": {
+"known_text": "yet",
+"target_text": "fós"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0244L01",
+"set": {
+"target_text": "Tá a lán foghlamtha agam",
+"components": [
+{
+"known": "a lot",
+"target": "a lán"
+},
+{
+"known": "learnt",
+"target": "foghlamtha"
+},
+{
+"known": "I have",
+"target": "agam"
+}
+]
+},
+"expect": {
+"known_text": "I have learnt a lot",
+"target_text": "Tá go leor foghlamtha agam"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0294L02",
+"set": {
+"target_text": "dóthain ama",
+"components": [
+{
+"known": "enough",
+"target": "dóthain"
+},
+{
+"known": "time",
+"target": "ama"
+}
+]
+},
+"expect": {
+"known_text": "enough time",
+"target_text": "go leor ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03B01",
+"set": {
+"target_text": "dóthain focal a thuigeann tú"
+},
+"expect": {
+"known_text": "enough words that you understand",
+"target_text": "go leor focal a thuigeann tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03B02",
+"set": {
+"target_text": "má thuigeann tú dóthain focal"
+},
+"expect": {
+"known_text": "if you understand enough words",
+"target_text": "má thuigeann tú go leor focal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03B03",
+"set": {
+"target_text": "nuair a thuigeann tú dóthain focal mar seo"
+},
+"expect": {
+"known_text": "when you understand enough words like this",
+"target_text": "nuair a thuigeann tú go leor focal mar seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03B04",
+"set": {
+"target_text": "ba mhian leis dóthain focal a scríobh"
+},
+"expect": {
+"known_text": "he wanted to write enough words",
+"target_text": "ba mhian leis go leor focal a scríobh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03C01",
+"set": {
+"target_text": "dóthain"
+},
+"expect": {
+"known_text": "enough",
+"target_text": "go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U01",
+"set": {
+"target_text": "ní féidir liom dóthain focal a léamh faoi láthair"
+},
+"expect": {
+"known_text": "I can't read enough words at the moment",
+"target_text": "ní féidir liom go leor focal a léamh faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U02",
+"set": {
+"target_text": "ba mhaith liom a bheith ábalta dóthain focal a scríobh i nGaeilge"
+},
+"expect": {
+"known_text": "I'd like to be able to write enough words in Irish",
+"target_text": "ba mhaith liom a bheith ábalta go leor focal a scríobh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U03",
+"set": {
+"target_text": "an bhfuil tú chun dóthain focal a léamh anocht?"
+},
+"expect": {
+"known_text": "are you going to read enough words tonight?",
+"target_text": "an bhfuil tú chun go leor focal a léamh anocht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U04",
+"set": {
+"target_text": "ceapaim gur rud maith é má thuigeann tú dóthain focal i nGaeilge"
+},
+"expect": {
+"known_text": "I think that it's a good thing if you understand enough words in Irish",
+"target_text": "ceapaim gur rud maith é má thuigeann tú go leor focal i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U05",
+"set": {
+"target_text": "ba mhian léi dóthain focal a léamh ach bhí sí tuirseach"
+},
+"expect": {
+"known_text": "she wanted to read enough words but she was tired",
+"target_text": "ba mhian léi go leor focal a léamh ach bhí sí tuirseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U06",
+"set": {
+"target_text": "conas a thuigeann tú dóthain focal?"
+},
+"expect": {
+"known_text": "how do you understand enough words?",
+"target_text": "conas a thuigeann tú go leor focal?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L03U07",
+"set": {
+"target_text": "ar mhian leat dóthain focal a scríobh aréir?"
+},
+"expect": {
+"known_text": "did you want to write enough words last night?",
+"target_text": "ar mhian leat go leor focal a scríobh aréir?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L02B03",
+"set": {
+"target_text": "má thuigeann tú conas dóthain focal a scríobh"
+},
+"expect": {
+"known_text": "if you understand how to write enough words",
+"target_text": "má thuigeann tú conas go leor focal a scríobh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L02U07",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal a scríobh i nGaeilge ach thosaigh mé an tseachtain seo caite"
+},
+"expect": {
+"known_text": "I don't know how to write enough words in Irish but I started last week",
+"target_text": "níl a fhios agam conas go leor focal a scríobh i nGaeilge ach thosaigh mé an tseachtain seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03B01",
+"set": {
+"target_text": "dóthain focal éagsúil"
+},
+"expect": {
+"known_text": "enough different words",
+"target_text": "go leor focal éagsúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03B02",
+"set": {
+"target_text": "conas dóthain focal éagsúil a rá"
+},
+"expect": {
+"known_text": "how to say enough different words",
+"target_text": "conas go leor focal éagsúil a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03B03",
+"set": {
+"target_text": "ba mhaith liom dóthain focal éagsúil a léamh"
+},
+"expect": {
+"known_text": "I'd like to read enough different words",
+"target_text": "ba mhaith liom go leor focal éagsúil a léamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03C01",
+"set": {
+"target_text": "dóthain"
+},
+"expect": {
+"known_text": "enough",
+"target_text": "go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03U01",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal éagsúil a rá go fóill"
+},
+"expect": {
+"known_text": "I don't know how to say enough different words yet",
+"target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03U02",
+"set": {
+"target_text": "ní féidir liom dóthain focal éagsúil a scríobh i nGaeilge"
+},
+"expect": {
+"known_text": "I can't write enough different words in Irish",
+"target_text": "ní féidir liom go leor focal éagsúil a scríobh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03U03",
+"set": {
+"target_text": "an bhfuil tú chun dóthain focal éagsúil a chleachtadh anocht?"
+},
+"expect": {
+"known_text": "are you going to practise enough different words tonight?",
+"target_text": "an bhfuil tú chun go leor focal éagsúil a chleachtadh anocht?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L03U04",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal éagsúil a scríobh"
+},
+"expect": {
+"known_text": "I don't know how to write enough different words",
+"target_text": "níl a fhios agam conas go leor focal éagsúil a scríobh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0061L02U04",
+"set": {
+"target_text": "níl a fhios agam conas é sin a rá go fóill"
+},
+"expect": {
+"known_text": "I don't know how to say that yet",
+"target_text": "níl a fhios agam conas é sin a rá fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0061L03B07",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal éagsúil a rá go fóill"
+},
+"expect": {
+"known_text": "I don't know how to say a lot of different words yet",
+"target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0061L03U05",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal éagsúil a rá go fóill ach tá mé ag iarraidh"
+},
+"expect": {
+"known_text": "I don't know how to say all the different words yet but I am trying",
+"target_text": "níl a fhios agam conas go leor focal éagsúil a rá fós ach tá mé ag iarraidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0061L03U13",
+"set": {
+"target_text": "níl a fhios agam conas dóthain focal éagsúil a rá le gach duine eile"
+},
+"expect": {
+"known_text": "I don't know how to say enough different words to talk to everyone else",
+"target_text": "níl a fhios agam conas go leor focal éagsúil a rá le gach duine eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U02",
+"set": {
+"known_text": "it is interesting when you understand enough words in Irish",
+"target_text": "Tá sé suimiúil nuair a thuigeann tú dóthain focal i nGaeilge"
+},
+"expect": {
+"known_text": "it is interesting when you understand lots of words in Irish",
+"target_text": "Tá sé suimiúil nuair a thuigeann tú go leor focal i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U10",
+"set": {
+"known_text": "it is useful to take the time to understand enough words",
+"target_text": "Tá sé úsáideach am a thógáil chun dóthain focal a thuigeann tú"
+},
+"expect": {
+"known_text": "it is useful to take the time to understand all the words",
+"target_text": "Tá sé úsáideach am a thógáil chun go leor focal a thuigeann tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U08",
+"set": {
+"known_text": "he doesn't want to take time to remember enough words right now",
+"target_text": "ní mian leis am a thógáil chun cuimhneamh conas dóthain focal a rá anois"
+},
+"expect": {
+"known_text": "he doesn't want to take time to remember all the words right now",
+"target_text": "ní mian leis am a thógáil chun cuimhneamh conas go leor focal a rá anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U12",
+"set": {
+"known_text": "she wanted to take time to learn enough words before speaking",
+"target_text": "ba mhian léi am a thógáil chun dóthain focal a fhoghlaim"
+},
+"expect": {
+"known_text": "she wanted to take time to learn all the words before speaking",
+"target_text": "ba mhian léi am a thógáil chun go leor focal a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L04U05",
+"set": {
+"known_text": "he wanted to take time in order to remember enough words",
+"target_text": "ba mhian leis am a thógáil chun cuimhneamh conas dóthain focal a rá"
+},
+"expect": {
+"known_text": "he wanted to take time in order to remember all the words",
+"target_text": "ba mhian leis am a thógáil chun cuimhneamh conas go leor focal a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L01U03",
+"set": {
+"known_text": "it is not easy to remember how to say enough different words in Irish",
+"target_text": "Níl sé éasca cuimhneamh conas dóthain focal éagsúil a rá i nGaeilge"
+},
+"expect": {
+"known_text": "it is not easy to remember how to say all the different words in Irish",
+"target_text": "Níl sé éasca cuimhneamh conas go leor focal éagsúil a rá i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L02B04",
+"set": {
+"known_text": "it is difficult to remember enough words",
+"target_text": "tá sé deacair cuimhneamh ar dóthain focal éagsúil"
+},
+"expect": {
+"known_text": "it is difficult to remember so many words",
+"target_text": "tá sé deacair cuimhneamh ar go leor focal éagsúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L02U03",
+"set": {
+"known_text": "it is difficult to remember enough different words at the same time",
+"target_text": "tá sé deacair cuimhneamh ar dóthain focal éagsúil ag an am céanna"
+},
+"expect": {
+"known_text": "it is difficult to remember so many different words at the same time",
+"target_text": "tá sé deacair cuimhneamh ar go leor focal éagsúil ag an am céanna"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L04U07",
+"set": {
+"known_text": "I want to find enough different words as soon as I can",
+"target_text": "is mian liom dóthain focal a fháil chomh luath agus is féidir liom"
+},
+"expect": {
+"known_text": "I want to find many different words as soon as I can",
+"target_text": "is mian liom go leor focal a fháil chomh luath agus is féidir liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L05U07",
+"set": {
+"known_text": "I think it is interesting when you understand enough words and I am going to try to remember more this afternoon",
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú dóthain focal agus tá mé chun iarracht a dhéanamh cuimhneamh ar níos mó an tráthnóna seo"
+},
+"expect": {
+"known_text": "I think it is interesting when you understand a lot of words and I am going to try to remember more this afternoon",
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor focal agus tá mé chun iarracht a dhéanamh cuimhneamh ar níos mó an tráthnóna seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L01B02",
+"set": {
+"target_text": "níor mhian linn tosú go fóill"
+},
+"expect": {
+"known_text": "we didn't want to start yet",
+"target_text": "níor mhian linn tosú fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L01U05",
+"set": {
+"target_text": "ba mhian léi an scéal a léamh ach níor mhian linn tosú go fóill"
+},
+"expect": {
+"known_text": "she wanted to read the story but we didn't want to start yet",
+"target_text": "ba mhian léi an scéal a léamh ach níor mhian linn tosú fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L03B04",
+"set": {
+"target_text": "ní mian leis ligean go fóill"
+},
+"expect": {
+"known_text": "he doesn't want to let yet",
+"target_text": "ní mian leis ligean fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L03U01",
+"set": {
+"target_text": "ní féidir liom ligean don mhadra óg teacht ar ais go fóill"
+},
+"expect": {
+"known_text": "I can't let the young dog come back yet",
+"target_text": "ní féidir liom ligean don mhadra óg teacht ar ais fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L05U02",
+"set": {
+"target_text": "ní féidir liom an fhírinne a thabhairt duit go fóill"
+},
+"expect": {
+"known_text": "I can't give you the truth yet",
+"target_text": "ní féidir liom an fhírinne a thabhairt duit fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L06B03",
+"set": {
+"target_text": "ní féidir liom an freagra a chloisteáil go fóill"
+},
+"expect": {
+"known_text": "I can't hear the answer yet",
+"target_text": "ní féidir liom an freagra a chloisteáil fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0073L01U01",
+"set": {
+"target_text": "go raibh maith agat níl mé cinnte go fóill"
+},
+"expect": {
+"known_text": "thank you I'm not sure yet",
+"target_text": "go raibh maith agat níl mé cinnte fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0073L02U02",
+"set": {
+"target_text": "níl mé cinnte go fóill ach go raibh míle maith agat"
+},
+"expect": {
+"known_text": "I'm not sure yet but thank you very much",
+"target_text": "níl mé cinnte fós ach go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0074L01U04",
+"set": {
+"target_text": "níl mé cinnte go fóill ach go raibh míle maith agat"
+},
+"expect": {
+"known_text": "I'm not sure yet but thank you very much",
+"target_text": "níl mé cinnte fós ach go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L05U03",
+"set": {
+"known_text": "he is already able to speak enough words and he is very happy with how much I have learned",
+"target_text": "tá sé ábalta dóthain focal a labhairt cheana féin agus tá an-áthas air as an méid atá foghlamtha agam"
+},
+"expect": {
+"known_text": "he is already able to speak a lot of words and he is very happy with how much I have learned",
+"target_text": "tá sé ábalta go leor focal a labhairt cheana féin agus tá an-áthas air as an méid atá foghlamtha agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L02U04",
+"set": {
+"target_text": "níl a fhios agam go fóill cé chomh tapa a thuigeann tú ach is cuma"
+},
+"expect": {
+"known_text": "I don't know yet how quickly you understand but it doesn't matter",
+"target_text": "níl a fhios agam fós cé chomh tapa a thuigeann tú ach is cuma"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0077L03U02",
+"set": {
+"target_text": "níl a fhios agam go fóill cé chomh tapa is atá tuiscint á fáil agam air"
+},
+"expect": {
+"known_text": "I don't know yet how quickly I'm understanding it",
+"target_text": "níl a fhios agam fós cé chomh tapa is atá tuiscint á fáil agam air"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L02U07",
+"set": {
+"target_text": "níl a fhios agam go fóill cad a thuigeann tú"
+},
+"expect": {
+"known_text": "I don't know yet what you understand",
+"target_text": "níl a fhios agam fós cad a thuigeann tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03B05",
+"set": {
+"target_text": "Ní thuigim go fóill"
+},
+"expect": {
+"known_text": "I do not understand yet",
+"target_text": "Ní thuigim fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03U02",
+"set": {
+"target_text": "Ní thuigim go fóill ach tá mé ag iarraidh foghlaim chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "I do not understand yet but I am trying to learn as much as possible",
+"target_text": "Ní thuigim fós ach tá mé ag iarraidh foghlaim chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03U09",
+"set": {
+"target_text": "Ní thuigim go fóill ach tá mé ag tosú ag foghlaim"
+},
+"expect": {
+"known_text": "I do not understand yet but I am starting to learn",
+"target_text": "Ní thuigim fós ach tá mé ag tosú ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0078L03U14",
+"set": {
+"target_text": "Ní thuigim go fóill agus níl sé éasca ach is mian liom leanúint ar aghaidh"
+},
+"expect": {
+"known_text": "I do not understand yet and it is not easy but I want to continue",
+"target_text": "Ní thuigim fós agus níl sé éasca ach is mian liom leanúint ar aghaidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0083L04U07",
+"set": {
+"target_text": "go raibh maith agat, níl a fhios agam conas rud éigin a rá faoi mo chairde go fóill"
+},
+"expect": {
+"known_text": "thank you, I don't know how to say something about my friends yet",
+"target_text": "go raibh maith agat, níl a fhios agam conas rud éigin a rá faoi mo chairde fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L04U02",
+"set": {
+"target_text": "Níl aithne agam ar aon duine anseo go fóill, ach is mian liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I do not know anyone here yet, but I want to meet people who speak Irish",
+"target_text": "Níl aithne agam ar aon duine anseo fós, ach is mian liom bualadh le daoine a bhfuil Gaeilge acu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L04U14",
+"set": {
+"target_text": "Níl aithne agam ar na daoine sin go fóill, ach is mian liom bualadh le chéile an tráthnóna seo"
+},
+"expect": {
+"known_text": "I do not know those people yet, but I want to meet them this evening",
+"target_text": "Níl aithne agam ar na daoine sin fós, ach is mian liom bualadh le chéile an tráthnóna seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0087L01U03",
+"set": {
+"target_text": "níl a fhios agam go fóill ach is deacair rudaí suimiúla a léamh i nGaeilge"
+},
+"expect": {
+"known_text": "I don't know yet but interesting things are difficult to read in Irish",
+"target_text": "níl a fhios agam fós ach is deacair rudaí suimiúla a léamh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0087L03U03",
+"set": {
+"target_text": "ní féidir liom Gaeilge a fhoghlaim níos fearr ná iad go fóill"
+},
+"expect": {
+"known_text": "I can't learn Irish better than they yet",
+"target_text": "ní féidir liom Gaeilge a fhoghlaim níos fearr ná iad fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0087L04B02",
+"set": {
+"target_text": "nach bhfuil aithne agam orthu go fóill"
+},
+"expect": {
+"known_text": "that I do not know yet",
+"target_text": "nach bhfuil aithne agam orthu fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L01B04",
+"set": {
+"target_text": "níl mé cinnte go fóill"
+},
+"expect": {
+"known_text": "I am not sure yet",
+"target_text": "níl mé cinnte fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L01U02",
+"set": {
+"target_text": "go raibh maith agat ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "thank you but I am not ready yet",
+"target_text": "go raibh maith agat ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L02U06",
+"set": {
+"target_text": "go raibh maith agat ach níl mé réidh le labhairt go fóill"
+},
+"expect": {
+"known_text": "thank you but I am not ready to talk yet",
+"target_text": "go raibh maith agat ach níl mé réidh le labhairt fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L03U02",
+"set": {
+"target_text": "faraor ní féidir liom tosú ag caint le daoine go fóill"
+},
+"expect": {
+"known_text": "unfortunately I can't start talking to people yet",
+"target_text": "faraor ní féidir liom tosú ag caint le daoine fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B01",
+"set": {
+"target_text": "Níl a fhios agam conas dóthain focal éagsúil a rá go fóill"
+},
+"expect": {
+"known_text": "I don't know how to say enough different words yet",
+"target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B02",
+"set": {
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu go fóill"
+},
+"expect": {
+"known_text": "I'm not ready to speak with people I don't know yet",
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B03",
+"set": {
+"target_text": "níl mé réidh le dul go fóill"
+},
+"expect": {
+"known_text": "I'm not ready to go yet",
+"target_text": "níl mé réidh le dul fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B04",
+"set": {
+"target_text": "níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "I'm not ready yet",
+"target_text": "níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05B05",
+"set": {
+"target_text": "go fóill"
+},
+"expect": {
+"known_text": "yet",
+"target_text": "fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U02",
+"set": {
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu go fóill, agus tá mé ag lorg conas labhairt chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "I'm not ready to speak with people I don't know yet, and I'm looking for a way to practise speaking as often as possible",
+"target_text": "níl mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós, agus tá mé ag lorg conas labhairt chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U03",
+"set": {
+"target_text": "Níl mé cinnte go fóill an féidir liom cabhrú leat ag an am céanna, ach is mian liom mo dhícheall a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm not sure yet if I can help you at the same time, but I want to try my best today",
+"target_text": "Níl mé cinnte fós an féidir liom cabhrú leat ag an am céanna, ach is mian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U05",
+"set": {
+"target_text": "Ní mian leis a bheith ciúin go fóill nuair atá daoine eile anseo, mar sin tá sé ag iarraidh labhairt le gach duine eile"
+},
+"expect": {
+"known_text": "he doesn't want to be quiet yet while other people are here, so he tries to talk to everyone around him",
+"target_text": "Ní mian leis a bheith ciúin fós nuair atá daoine eile anseo, mar sin tá sé ag iarraidh labhairt le gach duine eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U08",
+"set": {
+"target_text": "Ní féidir liom cuimhneamh conas a rá cad a bhí mé ag iarraidh a rá go fóill, agus níl mé cinnte an bhfuil a fhios ag aon duine eile"
+},
+"expect": {
+"known_text": "I can't remember how to say what I was trying to say yet, and I'm not sure if anyone else knows how to say it either",
+"target_text": "Ní féidir liom cuimhneamh conas a rá cad a bhí mé ag iarraidh a rá fós, agus níl mé cinnte an bhfuil a fhios ag aon duine eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U10",
+"set": {
+"target_text": "Ní mian léi fáil amach cad é an freagra go fóill, agus ceapaim go bhfuil sé sin suimiúil"
+},
+"expect": {
+"known_text": "she still doesn't want to find out what the answer is yet, and I think that is very interesting",
+"target_text": "Ní mian léi fáil amach cad é an freagra fós, agus ceapaim go bhfuil sé sin suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U11",
+"set": {
+"target_text": "Níl mé cinnte go fóill an féidir liom cuimhneamh ar an abairt iomlán, ach tá mé chun labhairt a chleachtadh le duine éigin eile"
+},
+"expect": {
+"known_text": "I'm not sure yet if I will be able to remember the whole sentence, but I'm going to practise speaking with someone else soon",
+"target_text": "Níl mé cinnte fós an féidir liom cuimhneamh ar an abairt iomlán, ach tá mé chun labhairt a chleachtadh le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U12",
+"set": {
+"target_text": "níl mé réidh stopadh ag caint go fóill, mar ní mian liom críochnú agus tá níos mó le rá agam faoi seo fós"
+},
+"expect": {
+"known_text": "I'm not ready to stop talking yet, because I haven't finished and I still want to say more about this",
+"target_text": "níl mé réidh stopadh ag caint fós, mar ní mian liom críochnú agus tá níos mó le rá agam faoi seo fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U13",
+"set": {
+"target_text": "Ní raibh sé réidh go fóill teacht ar ais le gach duine eile, agus ní raibh mé cinnte cathain a bheidh sé ar ais"
+},
+"expect": {
+"known_text": "he wasn't ready yet to come back to meet everyone else, and I wasn't sure when he was going to be back",
+"target_text": "Ní raibh sé réidh fós teacht ar ais le gach duine eile, agus ní raibh mé cinnte cathain a bheidh sé ar ais"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U14",
+"set": {
+"target_text": "níl mé réidh go fóill críochnú chomh tapa agus is féidir, mar mothaím go bhfuil níos mó le rá agam leat fós"
+},
+"expect": {
+"known_text": "I'm not ready to finish as quickly as possible yet, because I still feel there is more I want to say to you",
+"target_text": "níl mé réidh fós críochnú chomh tapa agus is féidir, mar mothaím go bhfuil níos mó le rá agam leat fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U15",
+"set": {
+"target_text": "Níl mé cinnte cathain a bheidh mé réidh críochnú go fóill, ach tá a fhios agam go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+},
+"expect": {
+"known_text": "I'm not sure when I will be ready to finish yet, but I know it is important to take time to test yourself",
+"target_text": "Níl mé cinnte cathain a bheidh mé réidh críochnú fós, ach tá a fhios agam go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02B02",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta"
+},
+"expect": {
+"known_text": "I think that there is a lot done",
+"target_text": "ceapaim go bhfuil go leor déanta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02B03",
+"set": {
+"target_text": "mothaím go bhfuil a lán le foghlaim"
+},
+"expect": {
+"known_text": "I feel that there is a lot to learn",
+"target_text": "mothaím go bhfuil go leor le foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think that there is a lot done in a short time, and I'm really pleased with what I've already learned",
+"target_text": "ceapaim go bhfuil go leor déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U04",
+"set": {
+"target_text": "mothaím go bhfuil fós a lán le foghlaim agam sula mbeidh mé réidh le labhairt le daoine nach bhfuil aithne agam orthu go fóill"
+},
+"expect": {
+"known_text": "I feel that there is still a lot more I need to learn before I'm ready to speak with people I don't know yet",
+"target_text": "mothaím go bhfuil fós go leor le foghlaim agam sula mbeidh mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U06",
+"set": {
+"target_text": "mothaím go bhfuil fós rud éigin le rá agam, agus níl mé réidh stopadh ag caint go fóill"
+},
+"expect": {
+"known_text": "I feel that there is still something more that I need to say, and I'm not ready to stop talking yet",
+"target_text": "mothaím go bhfuil fós rud éigin le rá agam, agus níl mé réidh stopadh ag caint fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U07",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil níos mó le foghlaim agus ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán focal"
+},
+"expect": {
+"known_text": "I know that there is more to learn and I find that exciting, because I enjoy the feeling of understanding new words",
+"target_text": "Tá a fhios agam go bhfuil níos mó le foghlaim agus ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor focal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L02U14",
+"set": {
+"target_text": "ceapaim go bhfuil fós dóthain ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+},
+"expect": {
+"known_text": "I think that I still have enough time before I have to go, so I'm going to keep trying",
+"target_text": "ceapaim go bhfuil fós go leor ama agam sula gcaithfidh mé dul, mar sin tá mé chun leanúint ar aghaidh ag iarraidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04B01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta in am gearr"
+},
+"expect": {
+"known_text": "I think there is a lot done in a short time",
+"target_text": "ceapaim go bhfuil go leor déanta in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04B02",
+"set": {
+"target_text": "Tá a lán déanta cheana féin"
+},
+"expect": {
+"known_text": "there is a lot done already",
+"target_text": "Tá go leor déanta cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04B03",
+"set": {
+"target_text": "an bhfuil a lán déanta?"
+},
+"expect": {
+"known_text": "is there a lot done?",
+"target_text": "an bhfuil go leor déanta?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04B04",
+"set": {
+"target_text": "Tá a lán déanta"
+},
+"expect": {
+"known_text": "there is a lot done",
+"target_text": "Tá go leor déanta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think there is a lot done in a short time, and I'm really pleased with what I've already learned so far",
+"target_text": "ceapaim go bhfuil go leor déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U05",
+"set": {
+"target_text": "Tá a lán déanta anois agus níl mé réidh stopadh ag caint go fóill mar mothaím go bhfuil níos mó le rá agam"
+},
+"expect": {
+"known_text": "there's a lot done now and I'm not going to stop talking yet because I still feel there is more I want to say",
+"target_text": "Tá go leor déanta anois agus níl mé réidh stopadh ag caint fós mar mothaím go bhfuil níos mó le rá agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U07",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán déanta agus níl mé buartha, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+},
+"expect": {
+"known_text": "I know there is a lot done and I'm not worried, because I think it is a good thing that we've been learning together",
+"target_text": "Tá a fhios agam go bhfuil go leor déanta agus níl mé buartha, mar ceapaim gur rud maith é sin go bhfuil muid ag foghlaim le chéile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U09",
+"set": {
+"target_text": "dúirt sé go bhfuil a lán déanta, ach ní raibh mé cinnte faoi sin mar ceapaim go bhfuil fós a lán le déanamh"
+},
+"expect": {
+"known_text": "he said there is a lot done, but I wasn't sure about that because I think there is still a lot more left to do right now",
+"target_text": "dúirt sé go bhfuil go leor déanta, ach ní raibh mé cinnte faoi sin mar ceapaim go bhfuil fós go leor le déanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U10",
+"set": {
+"target_text": "Níl mé cinnte go fóill cé mhéad atá déanta, ach tá a fhios agam go bhfuil mé ag foghlaim Gaeilge le timpeall seachtaine anois"
+},
+"expect": {
+"known_text": "I'm not sure yet how much is done, but I know I've been learning Irish for about a week now and I feel good",
+"target_text": "Níl mé cinnte fós cé mhéad atá déanta, ach tá a fhios agam go bhfuil mé ag foghlaim Gaeilge le timpeall seachtaine anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05B01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta agam"
+},
+"expect": {
+"known_text": "I think there is a lot done that I have",
+"target_text": "ceapaim go bhfuil go leor déanta agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05B02",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán le foghlaim agam"
+},
+"expect": {
+"known_text": "I know there is a lot I have to learn",
+"target_text": "Tá a fhios agam go bhfuil go leor le foghlaim agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05B03",
+"set": {
+"target_text": "Tá a lán agam"
+},
+"expect": {
+"known_text": "there is a lot I have",
+"target_text": "Tá go leor agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta agam in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think there is a lot done that I have achieved in a short time, and I'm really pleased with everything I've learned",
+"target_text": "ceapaim go bhfuil go leor déanta agam in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U02",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán le foghlaim agam, ach is cuma liom faoi bhotúin a dhéanamh mar ceapaim gur rud maith é"
+},
+"expect": {
+"known_text": "I know there is a lot I have to learn, but I don't mind making mistakes because I think it's part of the process",
+"target_text": "Tá a fhios agam go bhfuil go leor le foghlaim agam, ach is cuma liom faoi bhotúin a dhéanamh mar ceapaim gur rud maith é"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U03",
+"set": {
+"target_text": "mothaím go bhfuil a lán fós le rá agam, agus níl mé réidh stopadh ag caint go fóill mar tá níos mó le rá agam"
+},
+"expect": {
+"known_text": "I feel there is a lot I have still to say, and I'm not ready to stop talking yet because there is more I want to say",
+"target_text": "mothaím go bhfuil go leor fós le rá agam, agus níl mé réidh stopadh ag caint fós mar tá níos mó le rá agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U09",
+"set": {
+"target_text": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul, ach níl mé cinnte go fóill conas é a rá"
+},
+"expect": {
+"known_text": "I think there is something important I have to tell you before you have to go, but I'm not quite sure how to say it yet",
+"target_text": "ceapaim go bhfuil rud éigin tábhachtach le rá agam leat sula gcaithfidh tú dul, ach níl mé cinnte fós conas é a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U10",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán rudaí suimiúla le fáil amach agam faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+},
+"expect": {
+"known_text": "I know there is a lot of interesting things I have to find out about this story, and I want to know the truth",
+"target_text": "Tá a fhios agam go bhfuil go leor rudaí suimiúla le fáil amach agam faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L05U13",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil fós a lán le déanamh agam sula mbeidh mé réidh, ach tá mé chun mo dhícheall a dhéanamh agus bainim taitneamh as"
+},
+"expect": {
+"known_text": "I know there is still a lot I have to do before I'm ready, but I'm going to keep doing my best and enjoying the process",
+"target_text": "Tá a fhios agam go bhfuil fós go leor le déanamh agam sula mbeidh mé réidh, ach tá mé chun mo dhícheall a dhéanamh agus bainim taitneamh as"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06B01",
+"set": {
+"target_text": "a lán"
+},
+"expect": {
+"known_text": "a lot",
+"target_text": "go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06B02",
+"set": {
+"target_text": "Tá a fhios agam conas a lán focal éagsúil a rá"
+},
+"expect": {
+"known_text": "I know how to say a lot of different words",
+"target_text": "Tá a fhios agam conas go leor focal éagsúil a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06B03",
+"set": {
+"target_text": "Tá a lán déanta"
+},
+"expect": {
+"known_text": "there is a lot done",
+"target_text": "Tá go leor déanta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06B04",
+"set": {
+"target_text": "Tá a lán le foghlaim"
+},
+"expect": {
+"known_text": "there is a lot to learn",
+"target_text": "Tá go leor le foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U01",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think there is a lot done in a short time, and I'm very pleased with everything I've already learned",
+"target_text": "ceapaim go bhfuil go leor déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U02",
+"set": {
+"target_text": "Níl a fhios agam conas a lán focal éagsúil a rá go fóill, ach níl mé buartha faoi bhotúin a dhéanamh"
+},
+"expect": {
+"known_text": "I still don't know how to say a lot of different words yet, but I'm not worried about making mistakes",
+"target_text": "Níl a fhios agam conas go leor focal éagsúil a rá fós, ach níl mé buartha faoi bhotúin a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U04",
+"set": {
+"target_text": "Tá a lán le foghlaim agus tá a fhios agam nach bhfuil sé éasca, ach is cuma liom mar bainim taitneamh as labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "there is a lot to learn and I know it's not easy, but I don't mind because I enjoy practising speaking",
+"target_text": "Tá go leor le foghlaim agus tá a fhios agam nach bhfuil sé éasca, ach is cuma liom mar bainim taitneamh as labhairt a chleachtadh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U05",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán rudaí suimiúla le déanamh le mo chairde, agus tá mé ag tnúth le tosú go luath"
+},
+"expect": {
+"known_text": "I know there is a lot of interesting things to do with friends, and I'm looking forward to starting soon",
+"target_text": "Tá a fhios agam go bhfuil go leor rudaí suimiúla le déanamh le mo chairde, agus tá mé ag tnúth le tosú go luath"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U06",
+"set": {
+"target_text": "Tá a lán déanta cheana féin, agus mothaím go bhfuil a lán foghlamtha agam ó thosaigh mé an mhí seo caite"
+},
+"expect": {
+"known_text": "there is a lot done already, and I feel that I've been making progress since I started learning last month",
+"target_text": "Tá go leor déanta cheana féin, agus mothaím go bhfuil go leor foghlamtha agam ó thosaigh mé an mhí seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U07",
+"set": {
+"target_text": "ceapaim go bhfuil a lán níos mó le fáil amach faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+},
+"expect": {
+"known_text": "I think there is a lot more to find out about this story, and I want to hear the truth before anyone else",
+"target_text": "ceapaim go bhfuil go leor níos mó le fáil amach faoin scéal seo, agus is mian liom an fhírinne a chloisteáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U08",
+"set": {
+"target_text": "mothaím go bhfuil a lán fós nár dúirt mé, agus níl mé réidh stopadh ag caint go fóill mar tá níos mó le rá agam"
+},
+"expect": {
+"known_text": "I feel there is a lot I still haven't said, and I'm not ready to stop talking yet because there is more I want to say",
+"target_text": "mothaím go bhfuil go leor fós nár dúirt mé, agus níl mé réidh stopadh ag caint fós mar tá níos mó le rá agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U10",
+"set": {
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán den rud a dúirt duine, agus mothaím go bhfuil sé an-tábhachtach"
+},
+"expect": {
+"known_text": "I think it is interesting when you understand a lot of what someone said, and I feel that it is very important",
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor den rud a dúirt duine, agus mothaím go bhfuil sé an-tábhachtach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U12",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil a lán le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I know there is a lot I still need to do today, but I want to practise speaking as often as possible before I have to go",
+"target_text": "Tá a fhios agam go bhfuil go leor le déanamh agam inniu fós, ach is mian liom labhairt a chleachtadh chomh minic agus is féidir sula gcaithfidh mé dul"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L06U13",
+"set": {
+"target_text": "Tá a fhios aici go bhfuil a lán fós le foghlaim, ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir"
+},
+"expect": {
+"known_text": "she knows there is a lot she still needs to learn, but she thinks it's useful to start speaking as soon as possible",
+"target_text": "Tá a fhios aici go bhfuil go leor fós le foghlaim, ach ceapaim go bhfuil sé úsáideach tosú ag caint chomh luath agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0090L01U06",
+"set": {
+"target_text": "ní thuigim go fóill ach ba mhaith liom dá bhféadfá tosú ag caint níos moille"
+},
+"expect": {
+"known_text": "I do not understand yet but I'd like it if you could start talking more slowly",
+"target_text": "ní thuigim fós ach ba mhaith liom dá bhféadfá tosú ag caint níos moille"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0090L02U06",
+"set": {
+"target_text": "faraor ní féidir liom labhairt go fóill"
+},
+"expect": {
+"known_text": "unfortunately I can't speak yet",
+"target_text": "faraor ní féidir liom labhairt fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0090L05U04",
+"set": {
+"target_text": "bheadh sé sin go hiontach ach níl mé cinnte go fóill"
+},
+"expect": {
+"known_text": "that would be great but I'm not sure yet",
+"target_text": "bheadh sé sin go hiontach ach níl mé cinnte fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U04",
+"set": {
+"target_text": "Tá sé in am dul anois agus níl sí ag iarraidh dul go fóill"
+},
+"expect": {
+"known_text": "it is time to go now and she is not trying to go yet",
+"target_text": "Tá sé in am dul anois agus níl sí ag iarraidh dul fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L02U07",
+"set": {
+"target_text": "Níl mé cinnte gur mian liom dul go fóill mar tá a lán le foghlaim anseo"
+},
+"expect": {
+"known_text": "I am not sure I want to go yet because there is still so much to learn here",
+"target_text": "Níl mé cinnte gur mian liom dul fós mar tá go leor le foghlaim anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02B01",
+"set": {
+"target_text": "faraor níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "unfortunately I'm not ready yet",
+"target_text": "faraor níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02B02",
+"set": {
+"target_text": "níl mé réidh go fóill anocht"
+},
+"expect": {
+"known_text": "I'm not ready yet tonight",
+"target_text": "níl mé réidh fós anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02B03",
+"set": {
+"target_text": "mothaím tuirseach agus níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "I feel tired and I'm not ready yet",
+"target_text": "mothaím tuirseach agus níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02B04",
+"set": {
+"target_text": "níl mé réidh go fóill ach ba mhaith liom"
+},
+"expect": {
+"known_text": "I'm not ready yet but I'd like to",
+"target_text": "níl mé réidh fós ach ba mhaith liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02C03",
+"set": {
+"target_text": "go fóill"
+},
+"expect": {
+"known_text": "yet",
+"target_text": "fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U01",
+"set": {
+"target_text": "go raibh maith agat ach níl mé réidh go fóill faoi láthair"
+},
+"expect": {
+"known_text": "thank you but I'm not ready yet at the moment",
+"target_text": "go raibh maith agat ach níl mé réidh fós faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U02",
+"set": {
+"target_text": "faoi láthair níl mé réidh go fóill ach is féidir liom leanúint ar aghaidh ar feadh tamaill"
+},
+"expect": {
+"known_text": "at the moment I'm not ready yet but I can keep on for a while",
+"target_text": "faoi láthair níl mé réidh fós ach is féidir liom leanúint ar aghaidh ar feadh tamaill"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U03",
+"set": {
+"target_text": "má chaithfidh mé is féidir liom leanúint ar aghaidh ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "if I need to I can keep on but I'm not ready yet",
+"target_text": "má chaithfidh mé is féidir liom leanúint ar aghaidh ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U04",
+"set": {
+"target_text": "níl mé réidh go fóill agus níl mé chun dul abhaile ar an gcéad bhus eile"
+},
+"expect": {
+"known_text": "I'm not ready yet and I'm not going to go home on the next bus",
+"target_text": "níl mé réidh fós agus níl mé chun dul abhaile ar an gcéad bhus eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U05",
+"set": {
+"target_text": "níl mé cinnte agus níl mé réidh go fóill inniu"
+},
+"expect": {
+"known_text": "I'm not sure and I'm not ready yet today",
+"target_text": "níl mé cinnte agus níl mé réidh fós inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U06",
+"set": {
+"target_text": "ba mhaith liom a bheith ábalta dul abhaile ach níl mé réidh go fóill anocht"
+},
+"expect": {
+"known_text": "I'd like to be able to go home but I'm not ready yet tonight",
+"target_text": "ba mhaith liom a bheith ábalta dul abhaile ach níl mé réidh fós anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L02U07",
+"set": {
+"target_text": "faraor níl mé réidh go fóill agus níl a fhios agam cathain a bheidh mé réidh"
+},
+"expect": {
+"known_text": "unfortunately I'm not ready yet and I don't know when I'll be ready",
+"target_text": "faraor níl mé réidh fós agus níl a fhios agam cathain a bheidh mé réidh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L03B02",
+"set": {
+"target_text": "tá beagán níos mó ama go fóill"
+},
+"expect": {
+"known_text": "I have a little more time yet",
+"target_text": "tá beagán níos mó ama fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L03U01",
+"set": {
+"target_text": "níl mé réidh go fóill ach tá beagán níos mó ama"
+},
+"expect": {
+"known_text": "I'm not ready yet but I have a little more time",
+"target_text": "níl mé réidh fós ach tá beagán níos mó ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0096L04U02",
+"set": {
+"target_text": "níl mé réidh go fóill mar tá beagán níos mó ama de dhíth orm"
+},
+"expect": {
+"known_text": "I'm not ready yet because a little more time is needed by me",
+"target_text": "níl mé réidh fós mar tá beagán níos mó ama de dhíth orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L03B03",
+"set": {
+"target_text": "dúirt tú chomh luath agus is mian leat ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "you said as soon as you want but I'm not ready yet",
+"target_text": "dúirt tú chomh luath agus is mian leat ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L01U08",
+"set": {
+"target_text": "níl mé réidh go fóill ach ba cheart duit tosú ag caint anois"
+},
+"expect": {
+"known_text": "I'm not ready yet but you should start talking now",
+"target_text": "níl mé réidh fós ach ba cheart duit tosú ag caint anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L04B02",
+"set": {
+"target_text": "nach bhfuil sé ag obair go fóill"
+},
+"expect": {
+"known_text": "it's not working yet",
+"target_text": "nach bhfuil sé ag obair fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0100L01U06",
+"set": {
+"target_text": "níl mé cinnte ach níor cheart duit dul abhaile go fóill"
+},
+"expect": {
+"known_text": "I'm not sure but you shouldn't go home yet",
+"target_text": "níl mé cinnte ach níor cheart duit dul abhaile fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0101L05B03",
+"set": {
+"target_text": "níl a fhios agam faoin mála go fóill"
+},
+"expect": {
+"known_text": "I don't know about the bag yet",
+"target_text": "níl a fhios agam faoin mála fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0101L06U08",
+"set": {
+"target_text": "níl mé cinnte faoin teanga go fóill"
+},
+"expect": {
+"known_text": "I'm not sure about the language yet",
+"target_text": "níl mé cinnte faoin teanga fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0101L07U07",
+"set": {
+"target_text": "ní féidir liom an abairt iomlán seo a léamh go fóill"
+},
+"expect": {
+"known_text": "I can't read this whole sentence yet",
+"target_text": "ní féidir liom an abairt iomlán seo a léamh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L04U08",
+"set": {
+"known_text": "I know that it is not easy to remember enough different words",
+"target_text": "Tá a fhios agam nach bhfuil sé éasca cuimhneamh ar dóthain focal éagsúil"
+},
+"expect": {
+"known_text": "I know that it is not easy to remember so many different words",
+"target_text": "Tá a fhios agam nach bhfuil sé éasca cuimhneamh ar go leor focal éagsúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L04U13",
+"set": {
+"target_text": "Tá a fhios agam nach bhfuil sé dóthain smaoineamh agus gan labhairt"
+},
+"expect": {
+"known_text": "I know that it is not enough to only think and not speak",
+"target_text": "Tá a fhios agam nach bhfuil sé go leor smaoineamh agus gan labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L01U01",
+"set": {
+"target_text": "Níl muid réidh le stopadh ag caint go fóill mar tá muid ag baint taitnimh as"
+},
+"expect": {
+"known_text": "we are not ready to stop talking yet because we are enjoying it",
+"target_text": "Níl muid réidh le stopadh ag caint fós mar tá muid ag baint taitnimh as"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L01U05",
+"set": {
+"target_text": "Níl muid réidh le dul abhaile ar an gcéad bhus eile go fóill"
+},
+"expect": {
+"known_text": "we are not ready to go home on the next bus yet",
+"target_text": "Níl muid réidh le dul abhaile ar an gcéad bhus eile fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L01U08",
+"set": {
+"target_text": "Níl muid cinnte an bhfuil sé éasca cuimhneamh ar mórán focal éagsúil"
+},
+"expect": {
+"known_text": "we are not sure if it is easy to remember so many different words",
+"target_text": "Níl muid cinnte an bhfuil sé éasca cuimhneamh ar go leor focal éagsúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L01U13",
+"set": {
+"target_text": "Níl muid ag iarraidh gach rud a mhíniú anois mar níl dóthain ama ann"
+},
+"expect": {
+"known_text": "we are not trying to explain everything right now because there is not enough time",
+"target_text": "Níl muid ag iarraidh gach rud a mhíniú anois mar níl go leor ama ann"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03B01",
+"set": {
+"target_text": "mórán rudaí"
+},
+"expect": {
+"known_text": "many things",
+"target_text": "go leor rudaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03B02",
+"set": {
+"target_text": "mórán botúin"
+},
+"expect": {
+"known_text": "many mistakes",
+"target_text": "go leor botúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03B03",
+"set": {
+"target_text": "mórán rudaí suimiúla"
+},
+"expect": {
+"known_text": "many interesting things",
+"target_text": "go leor rudaí suimiúla"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03B04",
+"set": {
+"target_text": "bainim taitneamh as mórán rudaí"
+},
+"expect": {
+"known_text": "I enjoy many things",
+"target_text": "bainim taitneamh as go leor rudaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U01",
+"set": {
+"target_text": "ní bhainim taitneamh as mórán rudaí"
+},
+"expect": {
+"known_text": "I don't enjoy many things",
+"target_text": "ní bhainim taitneamh as go leor rudaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U02",
+"set": {
+"target_text": "faraor, ní thuigim mórán rudaí"
+},
+"expect": {
+"known_text": "unfortunately I don't understand many things",
+"target_text": "faraor, ní thuigim go leor rudaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U03",
+"set": {
+"target_text": "ar mhian leat mórán rudaí a thaispeáint dom"
+},
+"expect": {
+"known_text": "did you want to show me many things",
+"target_text": "ar mhian leat go leor rudaí a thaispeáint dom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U04",
+"set": {
+"target_text": "ní mian leis mórán rudaí a léamh"
+},
+"expect": {
+"known_text": "he doesn't want to read many things",
+"target_text": "ní mian leis go leor rudaí a léamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U05",
+"set": {
+"target_text": "ba cheart duit mórán rudaí a thástáil"
+},
+"expect": {
+"known_text": "you should test many things",
+"target_text": "ba cheart duit go leor rudaí a thástáil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U06",
+"set": {
+"target_text": "ceapaim go bhfuil mórán rudaí suimiúla"
+},
+"expect": {
+"known_text": "I think that there are many interesting things",
+"target_text": "ceapaim go bhfuil go leor rudaí suimiúla"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L03U07",
+"set": {
+"target_text": "ba mhian linn mórán rudaí suimiúla a thabhairt duit"
+},
+"expect": {
+"known_text": "we wanted to give you many interesting things",
+"target_text": "ba mhian linn go leor rudaí suimiúla a thabhairt duit"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L04U15",
+"set": {
+"target_text": "Tá cúpla focal ar eolas agam cheana agus ba mhaith liom mórán eile a fhoghlaim go luath"
+},
+"expect": {
+"known_text": "I know a few words already and I want to learn many more very soon",
+"target_text": "Tá cúpla focal ar eolas agam cheana agus ba mhaith liom go leor eile a fhoghlaim go luath"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0104L01U06",
+"set": {
+"target_text": "níl muid réidh go fóill agus caithfidh muid bualadh le daoine anocht"
+},
+"expect": {
+"known_text": "we are not ready yet and we must meet people tonight",
+"target_text": "níl muid réidh fós agus caithfidh muid bualadh le daoine anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04B02",
+"set": {
+"target_text": "cén fáth nach bhfuil sé ar eolas go fóill"
+},
+"expect": {
+"known_text": "why it is not known yet",
+"target_text": "cén fáth nach bhfuil sé ar eolas fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04B04",
+"set": {
+"target_text": "nuair a thuigeann tú nach bhfuil sé go fóill ar eolas"
+},
+"expect": {
+"known_text": "when you understand that it is not yet known",
+"target_text": "nuair a thuigeann tú nach bhfuil sé fós ar eolas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04U04",
+"set": {
+"target_text": "níor cheart duit a bheith buartha nach bhfuil sé go fóill ar eolas"
+},
+"expect": {
+"known_text": "you shouldn't be worried that it is not yet known",
+"target_text": "níor cheart duit a bheith buartha nach bhfuil sé fós ar eolas"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04U05",
+"set": {
+"target_text": "má thuigeann tú nach bhfuil sé go fóill ar eolas ba cheart duit an fhírinne a fháil amach"
+},
+"expect": {
+"known_text": "if you understand that it is not yet known you should find out the truth",
+"target_text": "má thuigeann tú nach bhfuil sé fós ar eolas ba cheart duit an fhírinne a fháil amach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04U06",
+"set": {
+"target_text": "faraor nach bhfuil sé go fóill ar eolas ach go raibh míle maith agat"
+},
+"expect": {
+"known_text": "unfortunately it is not yet known but thank you very much",
+"target_text": "faraor nach bhfuil sé fós ar eolas ach go raibh míle maith agat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L04U08",
+"set": {
+"target_text": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas go fóill"
+},
+"expect": {
+"known_text": "I don't know the reason but I think it is not known yet",
+"target_text": "níl a fhios agam an fáth ach ceapaim nach bhfuil sé ar eolas fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0105L05U01",
+"set": {
+"target_text": "níl sé ar eolas aige go fóill"
+},
+"expect": {
+"known_text": "it is not known to him yet",
+"target_text": "níl sé ar eolas aige fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0106L01U02",
+"set": {
+"target_text": "go raibh maith agat ní chaithfidh muid dul abhaile go fóill"
+},
+"expect": {
+"known_text": "thank you we do not need to go home yet",
+"target_text": "go raibh maith agat ní chaithfidh muid dul abhaile fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0108L01B08",
+"set": {
+"target_text": "ní raibh muid réidh go fóill"
+},
+"expect": {
+"known_text": "we were not ready yet",
+"target_text": "ní raibh muid réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0109L01B03",
+"set": {
+"target_text": "a lán focal nua"
+},
+"expect": {
+"known_text": "a lot of new words",
+"target_text": "go leor focal nua"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0109L01U01",
+"set": {
+"target_text": "caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "we must work hard to learn a lot of new words",
+"target_text": "caithfidh muid obair go dian le go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0109L01U03",
+"set": {
+"target_text": "Is mian liom a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "I want to learn a lot of new words",
+"target_text": "Is mian liom go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L03U05",
+"set": {
+"target_text": "níl mé réidh go fóill mar ba mhaith liom labhairt a chleachtadh"
+},
+"expect": {
+"known_text": "I'm not ready yet because I would like to practise speaking",
+"target_text": "níl mé réidh fós mar ba mhaith liom labhairt a chleachtadh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U08",
+"set": {
+"target_text": "an ceapaim go bhfuil sé éasca scíth a ligean nuair atá a lán le foghlaim agus le déanamh agat?"
+},
+"expect": {
+"known_text": "do you think it's easy to relax when you have a lot to learn and do?",
+"target_text": "an ceapaim go bhfuil sé éasca scíth a ligean nuair atá go leor le foghlaim agus le déanamh agat?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U08",
+"set": {
+"target_text": "ceapaim athraíonn sé a lán nuair a bhfuil tú ag obair go dian ag foghlaim"
+},
+"expect": {
+"known_text": "I think it changes a lot when you are working hard learning",
+"target_text": "ceapaim athraíonn sé go leor nuair a bhfuil tú ag obair go dian ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L03U15",
+"set": {
+"target_text": "athraíonn sé a lán nuair a fhoghlaimíonn muid rud nua le chéile agus tá sé níos fearr"
+},
+"expect": {
+"known_text": "it changes a lot when we learn something new together and it's much better",
+"target_text": "athraíonn sé go leor nuair a fhoghlaimíonn muid rud nua le chéile agus tá sé níos fearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0111L04U08",
+"set": {
+"target_text": "athraíonn sé ár n-inchinn nuair a thuigeann tú go bhfuil a lán fós le foghlaim"
+},
+"expect": {
+"known_text": "it changes our brain when you understand that there is a lot still to learn",
+"target_text": "athraíonn sé ár n-inchinn nuair a thuigeann tú go bhfuil go leor fós le foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L01U12",
+"set": {
+"target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú ábalta a fhoghlaim a lán in am gearr"
+},
+"expect": {
+"known_text": "I think it's very interesting that you can learn so much in such a short time",
+"target_text": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú ábalta a fhoghlaim go leor in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L03U03",
+"set": {
+"target_text": "Ní raibh muid ag súil leis go mbeadh sé chomh deacair sin mórán focal nua a fhoghlaim in am gearr"
+},
+"expect": {
+"known_text": "we weren't expecting it to be so difficult to learn so many words in such a short time",
+"target_text": "Ní raibh muid ag súil leis go mbeadh sé chomh deacair sin go leor focal nua a fhoghlaim in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L03U07",
+"set": {
+"target_text": "Ní raibh sí ag súil leis go mbeadh sé chomh suimiúil sin Gaeilge a labhairt le mórán daoine éagsúla"
+},
+"expect": {
+"known_text": "she wasn't expecting it to be so interesting to speak Irish with so many different people",
+"target_text": "Ní raibh sí ag súil leis go mbeadh sé chomh suimiúil sin Gaeilge a labhairt le go leor daoine éagsúla"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04B06",
+"set": {
+"target_text": "ní raibh mé réidh le labhairt go fóill"
+},
+"expect": {
+"known_text": "I wasn't ready to speak yet",
+"target_text": "ní raibh mé réidh le labhairt fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0112L04U11",
+"set": {
+"target_text": "Ní raibh mé ábalta a rá cad ba mhian liom a rá mar ní raibh dóthain focal foghlamtha agam go fóill"
+},
+"expect": {
+"known_text": "I wasn't able to say what I wanted to say because I hadn't learned enough words yet",
+"target_text": "Ní raibh mé ábalta a rá cad ba mhian liom a rá mar ní raibh go leor focal foghlamtha agam fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L01B04",
+"set": {
+"target_text": "mar ní mhothaím réidh go fóill"
+},
+"expect": {
+"known_text": "because I don't feel ready yet",
+"target_text": "mar ní mhothaím réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L01U01",
+"set": {
+"target_text": "ní mhothaím go bhfuil mé réidh go fóill"
+},
+"expect": {
+"known_text": "I don't feel as if I am ready yet",
+"target_text": "ní mhothaím go bhfuil mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L01U04",
+"set": {
+"target_text": "go raibh maith agat ach ní mhothaím réidh go fóill"
+},
+"expect": {
+"known_text": "thank you but I don't feel ready yet",
+"target_text": "go raibh maith agat ach ní mhothaím réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L01U06",
+"set": {
+"target_text": "ní mhothaím réidh le labhairt go fóill"
+},
+"expect": {
+"known_text": "I don't feel ready to talk yet",
+"target_text": "ní mhothaím réidh le labhairt fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03B04",
+"set": {
+"target_text": "níl muid réidh go fóill"
+},
+"expect": {
+"known_text": "we are not ready yet",
+"target_text": "níl muid réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03U01",
+"set": {
+"target_text": "ní mhothaím go bhfuil mé réidh go fóill"
+},
+"expect": {
+"known_text": "I don't feel as if I am ready yet",
+"target_text": "ní mhothaím go bhfuil mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L03U05",
+"set": {
+"target_text": "go raibh maith agat ach níl muid réidh go fóill"
+},
+"expect": {
+"known_text": "thank you but we are not ready yet",
+"target_text": "go raibh maith agat ach níl muid réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L04B04",
+"set": {
+"target_text": "níl mé réidh go fóill le comhrá a bheith agam leo"
+},
+"expect": {
+"known_text": "I'm not ready yet to have a conversation with them",
+"target_text": "níl mé réidh fós le comhrá a bheith agam leo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0115L04U06",
+"set": {
+"target_text": "ní mhothaím go bhfuil mé réidh le comhrá a bheith agam leo go fóill"
+},
+"expect": {
+"known_text": "I don't feel as if I'm ready to have a conversation with them yet",
+"target_text": "ní mhothaím go bhfuil mé réidh le comhrá a bheith agam leo fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0116L02U06",
+"set": {
+"target_text": "go raibh míle maith agat ach ní thuigim an rogha go fóill"
+},
+"expect": {
+"known_text": "thank you very much but I do not understand the choice yet",
+"target_text": "go raibh míle maith agat ach ní thuigim an rogha fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0116L05U03",
+"set": {
+"target_text": "cén fáth nach féidir liom an rogha is fearr a dhéanamh go fóill"
+},
+"expect": {
+"known_text": "why can't I make the best choice yet",
+"target_text": "cén fáth nach féidir liom an rogha is fearr a dhéanamh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L01B04",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta agam in am gearr"
+},
+"expect": {
+"known_text": "I think there's a lot done in a short time",
+"target_text": "ceapaim go bhfuil go leor déanta agam in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L01U03",
+"set": {
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán focal sa teanga atá tú ag foghlaim"
+},
+"expect": {
+"known_text": "I think it's interesting when you start to understand more and more words in the language you are learning",
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor focal sa teanga atá tú ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L01U09",
+"set": {
+"target_text": "ceapaim nach bhfuil mé réidh le comhrá a bheith agam leo go fóill ach tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think that I'm not ready to have a conversation with them yet but I'm very happy with how much I've already learned",
+"target_text": "ceapaim nach bhfuil mé réidh le comhrá a bheith agam leo fós ach tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L01U11",
+"set": {
+"target_text": "ceapaim go bhfuil a lán déanta agam in am gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "I think there's a lot done already in a short time and I'm very happy with how much I've already learned",
+"target_text": "ceapaim go bhfuil go leor déanta agam in am gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L02U07",
+"set": {
+"target_text": "ceapaim gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "I think that it's a good idea to work very hard because we must not be satisfied and we have to work hard to learn new words",
+"target_text": "ceapaim gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L01U07",
+"set": {
+"target_text": "cheap mé go raibh sé deacair smaoineamh go tapa go leor le freagra a thabhairt in am nuair nach raibh mé réidh le labhairt le daoine go fóill"
+},
+"expect": {
+"known_text": "I thought it was difficult to think quickly enough to give an answer in time when I wasn't ready yet to speak with people",
+"target_text": "cheap mé go raibh sé deacair smaoineamh go tapa go leor le freagra a thabhairt in am nuair nach raibh mé réidh le labhairt le daoine fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02B06",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin obair go dian le a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to work hard to learn new words",
+"target_text": "cheap mé gur smaoineamh maith é sin obair go dian le go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U15",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to work very hard because we must not be satisfied and we have to keep learning new words",
+"target_text": "cheap mé gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le go leor focal nua a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L01U13",
+"set": {
+"target_text": "creidim go raibh do smaoineamh an-mhaith ach ní raibh mé cinnte an bhfuil mé réidh le labhairt le daoine nach bhfuil aithne agam orthu go fóill"
+},
+"expect": {
+"known_text": "I believe that your idea was very good but I wasn't sure whether I would be ready to speak with people I don't know yet",
+"target_text": "creidim go raibh do smaoineamh an-mhaith ach ní raibh mé cinnte an bhfuil mé réidh le labhairt le daoine nach bhfuil aithne agam orthu fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L01U15",
+"set": {
+"target_text": "creidim gur rud maith é leanúint ar aghaidh nuair atá sé deacair agus nuair nach bhfuil tú réidh le labhairt le gach duine go fóill"
+},
+"expect": {
+"known_text": "I believe it's a good thing to keep going even when it is difficult and when you are not yet ready to speak with everyone around you",
+"target_text": "creidim gur rud maith é leanúint ar aghaidh nuair atá sé deacair agus nuair nach bhfuil tú réidh le labhairt le gach duine fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L02U12",
+"set": {
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán focal sa teanga"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and I think it's interesting when you understand more and more words in the language",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil sé suimiúil nuair a thuigeann tú go leor focal sa teanga"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L02U15",
+"set": {
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil a lán fós le foghlaim agam ach tá mé ag déanamh go han-mhaith in am gearr"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and I think there is still a lot more to learn but I am doing very well so far",
+"target_text": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil go leor fós le foghlaim agam ach tá mé ag déanamh go han-mhaith in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L01U11",
+"set": {
+"target_text": "Ní hé sin an fáth agus ceapaim go bhfuil a lán déanta agam in am gearr agus ba cheart duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+"target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L02U09",
+"set": {
+"target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge go fóill mar is maith liom ag foghlaim na teanga seo"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you and I'm not ready to stop speaking Irish yet because I love learning this language",
+"target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus ní mian liom stopadh ag caint Gaeilge fós mar is maith liom ag foghlaim na teanga seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0131L01B01",
+"set": {
+"target_text": "tá a lán daoine"
+},
+"expect": {
+"known_text": "there are lots of people",
+"target_text": "tá go leor daoine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0131L01B02",
+"set": {
+"target_text": "tá a lán focal"
+},
+"expect": {
+"known_text": "there are lots of words",
+"target_text": "tá go leor focal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0131L01U01",
+"set": {
+"target_text": "tá a lán rudaí suimiúla"
+},
+"expect": {
+"known_text": "there are lots of interesting things",
+"target_text": "tá go leor rudaí suimiúla"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0131L01U02",
+"set": {
+"target_text": "tá a lán daoine ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "there are lots of people learning Irish",
+"target_text": "tá go leor daoine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0131L05U05",
+"set": {
+"target_text": "níl mé réidh go fóill i mo cheann"
+},
+"expect": {
+"known_text": "i'm not ready yet in my head",
+"target_text": "níl mé réidh fós i mo cheann"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0134L01U05",
+"set": {
+"target_text": "ní fadhb é ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "it is not a problem but I'm not ready yet",
+"target_text": "ní fadhb é ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0135L01B01",
+"set": {
+"target_text": "níl a fhios agam go fóill"
+},
+"expect": {
+"known_text": "I don't know yet",
+"target_text": "níl a fhios agam fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0135L01U03",
+"set": {
+"target_text": "níl mé réidh go fóill mar níl a fhios agam conas atá sé ag dul"
+},
+"expect": {
+"known_text": "I'm not ready yet because I don't know how it's going",
+"target_text": "níl mé réidh fós mar níl a fhios agam conas atá sé ag dul"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0138L02U01",
+"set": {
+"target_text": "seo an áit ar mhian le mo chara ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "this is the place where my friend wanted but I'm not ready yet",
+"target_text": "seo an áit ar mhian le mo chara ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0139L02U05",
+"set": {
+"target_text": "Níl mé cinnte gur mian liom imeacht go fóill mar tá a lán le foghlaim anseo"
+},
+"expect": {
+"known_text": "I am not sure I want to leave yet because there is a lot to learn here",
+"target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0141L04U08",
+"set": {
+"target_text": "ceapaim go bhfuil sé ceart go leor leanúint ar aghaidh ag labhairt a chleachtadh go minic nuair nach bhfuil tú foirfe go fóill"
+},
+"expect": {
+"known_text": "I think it is okay to keep practising often even when you are not perfect yet",
+"target_text": "ceapaim go bhfuil sé ceart go leor leanúint ar aghaidh ag labhairt a chleachtadh go minic nuair nach bhfuil tú foirfe fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0141L04U11",
+"set": {
+"target_text": "dúirt sí liom go bhfuil sé ceart go leor labhairt go minic nuair nach bhfuil tú foirfe go fóill"
+},
+"expect": {
+"known_text": "she told me it is okay to speak often even if you are not perfect yet",
+"target_text": "dúirt sí liom go bhfuil sé ceart go leor labhairt go minic nuair nach bhfuil tú foirfe fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02U06",
+"set": {
+"target_text": "bhí sé sin an-chineálta ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "that was very kind but I'm not ready yet",
+"target_text": "bhí sé sin an-chineálta ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U02",
+"set": {
+"target_text": "tá mé buíoch díot ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "I am grateful to you but I'm not ready yet",
+"target_text": "tá mé buíoch díot ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0143L04U07",
+"set": {
+"target_text": "níl mé réidh go fóill mar bhí mé tuirseach níos luaithe"
+},
+"expect": {
+"known_text": "I'm not ready yet because I was tired earlier",
+"target_text": "níl mé réidh fós mar bhí mé tuirseach níos luaithe"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0146L01U03",
+"set": {
+"target_text": "tá ionadh orm nach bhfuil rud ar bith ag obair go fóill"
+},
+"expect": {
+"known_text": "I'm surprised that nothing is working yet",
+"target_text": "tá ionadh orm nach bhfuil rud ar bith ag obair fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0146L06U06",
+"set": {
+"target_text": "Tá an chuma air nach bhfuil tú réidh go fóill"
+},
+"expect": {
+"known_text": "it seems that you are not ready yet",
+"target_text": "Tá an chuma air nach bhfuil tú réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L01U02",
+"set": {
+"target_text": "ní raibh sé réidh go fóill"
+},
+"expect": {
+"known_text": "he wasn't ready yet",
+"target_text": "ní raibh sé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L04U04",
+"set": {
+"target_text": "níor cheart duit freagra a thabhairt dó go fóill"
+},
+"expect": {
+"known_text": "you shouldn't give him an answer yet",
+"target_text": "níor cheart duit freagra a thabhairt dó fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0155L02U06",
+"set": {
+"target_text": "dúirt sí go raibh áthas uirthi fanacht linn, mar bhí a lán ama aici sula gcaithfidh sí imeacht"
+},
+"expect": {
+"known_text": "she said she was happy to wait for us, because she had plenty of time before she had to leave",
+"target_text": "dúirt sí go raibh áthas uirthi fanacht linn, mar bhí go leor ama aici sula gcaithfidh sí imeacht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0156L04U15",
+"set": {
+"target_text": "níl mé réidh go fóill le himeacht anocht mar tá a lán fós le foghlaim agam"
+},
+"expect": {
+"known_text": "I am not ready to leave yet tonight because there is still so much to learn",
+"target_text": "níl mé réidh fós le himeacht anocht mar tá go leor fós le foghlaim agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0159L02U06",
+"set": {
+"target_text": "Tá a fhios agam cad atá mé ag iarraidh a mhíniú ach níl dóthain focal agam go fóill le é a rá go maith i nGaeilge"
+},
+"expect": {
+"known_text": "I know what I am trying to explain but I do not have enough words yet to say it well in Irish",
+"target_text": "Tá a fhios agam cad atá mé ag iarraidh a mhíniú ach níl go leor focal agam fós le é a rá go maith i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0159L02U14",
+"set": {
+"target_text": "cad atá mé ag iarraidh a fháil amach ná an bhfuil mé ábalta Gaeilge a labhairt leat a lán an mhí seo chugainn"
+},
+"expect": {
+"known_text": "what I am trying to find out is whether I will be able to speak Irish with you a lot next month",
+"target_text": "cad atá mé ag iarraidh a fháil amach ná an bhfuil mé ábalta Gaeilge a labhairt leat go leor an mhí seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L01U03",
+"set": {
+"target_text": "Níl a fhios agam conas a deir tú rud éigin cosúil le seo i nGaeilge mar níl dóthain focal agam go fóill"
+},
+"expect": {
+"known_text": "I am not sure how do you say something like this in Irish because I do not know enough words yet",
+"target_text": "Níl a fhios agam conas a deir tú rud éigin cosúil le seo i nGaeilge mar níl go leor focal agam fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L01U04",
+"set": {
+"target_text": "conas a deir tú cad atá i gceist agat i nGaeilge nuair nach bhfuil dóthain focal agat go fóill le é a rá go maith"
+},
+"expect": {
+"known_text": "how do you say what you mean in Irish when you do not know enough words yet to say it well",
+"target_text": "conas a deir tú cad atá i gceist agat i nGaeilge nuair nach bhfuil go leor focal agat fós le é a rá go maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L02B06",
+"set": {
+"target_text": "níl an focal seo foghlamtha agam go fóill"
+},
+"expect": {
+"known_text": "I have not learned this word yet",
+"target_text": "níl an focal seo foghlamtha agam fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L02U05",
+"set": {
+"target_text": "Níl an focal seo foghlamtha agam go fóill ach ceapaim gur rud maith é agus ba mhaith liom é a fhoghlaim"
+},
+"expect": {
+"known_text": "I have not learned this word yet but I think it is very useful and I want to learn it",
+"target_text": "Níl an focal seo foghlamtha agam fós ach ceapaim gur rud maith é agus ba mhaith liom é a fhoghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L02U11",
+"set": {
+"target_text": "Níl mé cinnte go bhfuil an focal seo ar eolas agam go maith go fóill le é a úsáid nuair a labhraím Gaeilge"
+},
+"expect": {
+"known_text": "I am not sure I know this word well enough yet to use it confidently when I am speaking Irish",
+"target_text": "Níl mé cinnte go bhfuil an focal seo ar eolas agam go maith fós le é a úsáid nuair a labhraím Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L02U15",
+"set": {
+"target_text": "Ní féidir liom an focal seo a úsáid go maith go fóill mar níl dóthain focal Gaeilge eile agam le é a úsáid leo"
+},
+"expect": {
+"known_text": "it is not possible to use this word well yet because I do not have enough other Irish words to use with it",
+"target_text": "Ní féidir liom an focal seo a úsáid go maith fós mar níl go leor focal Gaeilge eile agam le é a úsáid leo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0162L02U02",
+"set": {
+"target_text": "níl mé cinnte faoi sin go fóill"
+},
+"expect": {
+"known_text": "I'm not sure about that yet",
+"target_text": "níl mé cinnte faoi sin fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0163L02U06",
+"set": {
+"target_text": "athraíonn sé ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "it changes but I'm not ready yet",
+"target_text": "athraíonn sé ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0170L03U03",
+"set": {
+"target_text": "níl a fhios agam go fóill cad atá de dhíth ort"
+},
+"expect": {
+"known_text": "I don't know yet what you need",
+"target_text": "níl a fhios agam fós cad atá de dhíth ort"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0173L02B02",
+"set": {
+"target_text": "Ní mian, go raibh maith agat, níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "no thank you, I'm not ready yet",
+"target_text": "Ní mian, go raibh maith agat, níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0178L01U05",
+"set": {
+"target_text": "níl mé réidh go fóill mar ní raibh am agam"
+},
+"expect": {
+"known_text": "I'm not ready yet because I did not have time",
+"target_text": "níl mé réidh fós mar ní raibh am agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0188L01U06",
+"set": {
+"target_text": "níl mé réidh go fóill mar sin ní féidir liom imeacht anois"
+},
+"expect": {
+"known_text": "I'm not ready yet so I can't leave now",
+"target_text": "níl mé réidh fós mar sin ní féidir liom imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0196L01U04",
+"set": {
+"target_text": "an gcuala tú an freagra go fóill"
+},
+"expect": {
+"known_text": "have you heard the answer yet",
+"target_text": "an gcuala tú an freagra fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0198L02U12",
+"set": {
+"target_text": "Tá a fhios agam go raibh m'iníon ag obair air inné ach níl a fhios agam an bhfuil sí réidh go fóill"
+},
+"expect": {
+"known_text": "I know my daughter was working on it yesterday but I do not know if she is done yet",
+"target_text": "Tá a fhios agam go raibh m'iníon ag obair air inné ach níl a fhios agam an bhfuil sí réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0198L03U05",
+"set": {
+"target_text": "Tá a fhios agam gur mian le a lán daoine anseo obair don chomhairle"
+},
+"expect": {
+"known_text": "I know that a lot of people here want to work for the council",
+"target_text": "Tá a fhios agam gur mian le go leor daoine anseo obair don chomhairle"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0198L03U14",
+"set": {
+"target_text": "dúirt m'iníon go raibh an obair don chomhairle ag dul go maith ach go raibh a lán fós le déanamh"
+},
+"expect": {
+"known_text": "my daughter said the work for the council was going well but that there was still a lot to do",
+"target_text": "dúirt m'iníon go raibh an obair don chomhairle ag dul go maith ach go raibh go leor fós le déanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L01U15",
+"set": {
+"target_text": "deir siad go bhfuil a lán fós le déanamh ach go gcríochnóidh muid in am"
+},
+"expect": {
+"known_text": "they say that there is still a lot to do but that we are going to be finished in time",
+"target_text": "deir siad go bhfuil go leor fós le déanamh ach go gcríochnóidh muid in am"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L03U09",
+"set": {
+"target_text": "Tá mé ag iarraidh a chinntiú go bhfuil dóthain ama agam gach rud a chríochnú roimh amárach"
+},
+"expect": {
+"known_text": "I am trying to make sure that I have enough time to finish everything before tomorrow",
+"target_text": "Tá mé ag iarraidh a chinntiú go bhfuil go leor ama agam gach rud a chríochnú roimh amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L03U12",
+"set": {
+"target_text": "dúirt sí go raibh sí ag iarraidh a chinntiú go mbeadh dóthain ama acu gach rud a dhéanamh"
+},
+"expect": {
+"known_text": "she said she was trying to make sure that they would have enough time to do everything",
+"target_text": "dúirt sí go raibh sí ag iarraidh a chinntiú go mbeadh go leor ama acu gach rud a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L02U06",
+"set": {
+"target_text": "Ní éasca a fhios a bheith agat conas an cheist a fhreagairt nuair nach bhfuil tú tar éis é a chleachtadh dóthain"
+},
+"expect": {
+"known_text": "it is not easy to know how to answer the question when you have not practised it enough",
+"target_text": "Ní éasca a fhios a bheith agat conas an cheist a fhreagairt nuair nach bhfuil tú tar éis é a chleachtadh go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L02U14",
+"set": {
+"target_text": "Tá a lán ama agus a lán oibre de dhíth ort le foghlaim conas an cheist a fhreagairt go maith"
+},
+"expect": {
+"known_text": "you need a lot of time and a lot of work to learn how to answer the question well",
+"target_text": "Tá go leor ama agus go leor oibre de dhíth ort le foghlaim conas an cheist a fhreagairt go maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0205L01U05",
+"set": {
+"target_text": "níl mé réidh go fóill mar tá dearmad déanta agam cad atá le déanamh agam"
+},
+"expect": {
+"known_text": "i'm not ready yet because i have forgotten what i need to do",
+"target_text": "níl mé réidh fós mar tá dearmad déanta agam cad atá le déanamh agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0209L01U03",
+"set": {
+"target_text": "Is mian leo a fhios a bheith acu cén fáth nach raibh muid ábalta an freagra a fháil go fóill"
+},
+"expect": {
+"known_text": "they want to know why we have not been able to find the answer yet",
+"target_text": "Is mian leo a fhios a bheith acu cén fáth nach raibh muid ábalta an freagra a fháil fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0213L01B03",
+"set": {
+"target_text": "faraor níl a fhios againn go fóill"
+},
+"expect": {
+"known_text": "unfortunately we do not know yet",
+"target_text": "faraor níl a fhios againn fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0218L02U05",
+"set": {
+"target_text": "an dtuigeann tú mórán Gaeilge go fóill"
+},
+"expect": {
+"known_text": "do you understand much Irish yet",
+"target_text": "an dtuigeann tú mórán Gaeilge fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0233L04U06",
+"set": {
+"target_text": "Tá aithne aici ar a lán daoine atá ag iarraidh Gaeilge a fhoghlaim anseo"
+},
+"expect": {
+"known_text": "she knows a lot of people who are trying to learn Irish here",
+"target_text": "Tá aithne aici ar go leor daoine atá ag iarraidh Gaeilge a fhoghlaim anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L01U06",
+"set": {
+"target_text": "níl mé réidh go fóill ach tá aithne agam ar dhuine"
+},
+"expect": {
+"known_text": "I'm not ready yet but I know someone",
+"target_text": "níl mé réidh fós ach tá aithne agam ar dhuine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0239L01U08",
+"set": {
+"target_text": "is maith liom léamh a lán"
+},
+"expect": {
+"known_text": "I like reading a lot",
+"target_text": "is maith liom léamh go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01B01",
+"set": {
+"target_text": "tá a lán foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "i have learnt a lot already",
+"target_text": "tá go leor foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01B02",
+"set": {
+"target_text": "tá a lán foghlamtha agam inniu"
+},
+"expect": {
+"known_text": "i have learnt a lot today",
+"target_text": "tá go leor foghlamtha agam inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01B03",
+"set": {
+"target_text": "go raibh maith agat tá a lán foghlamtha agam"
+},
+"expect": {
+"known_text": "thank you i have learnt a lot",
+"target_text": "go raibh maith agat tá go leor foghlamtha agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01B04",
+"set": {
+"target_text": "ach tá a lán foghlamtha agam go dtí seo"
+},
+"expect": {
+"known_text": "but i have learnt a lot so far",
+"target_text": "ach tá go leor foghlamtha agam go dtí seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U01",
+"set": {
+"target_text": "mothaím tuirseach ach tá a lán foghlamtha agam inniu"
+},
+"expect": {
+"known_text": "i feel tired but i have learnt a lot today",
+"target_text": "mothaím tuirseach ach tá go leor foghlamtha agam inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U02",
+"set": {
+"target_text": "ní dhearna mé mórán inniu ach tá a lán foghlamtha agam"
+},
+"expect": {
+"known_text": "i did not do much today but i have learnt a lot",
+"target_text": "ní dhearna mé mórán inniu ach tá go leor foghlamtha agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U03",
+"set": {
+"target_text": "tá a lán foghlamtha agam mar sin is féidir liom cabhrú leat"
+},
+"expect": {
+"known_text": "i have learnt a lot so that i can help you",
+"target_text": "tá go leor foghlamtha agam mar sin is féidir liom cabhrú leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U04",
+"set": {
+"target_text": "tá a lán foghlamtha agam agus tá sé in am imeacht anois"
+},
+"expect": {
+"known_text": "i have learnt a lot and it's time to leave now",
+"target_text": "tá go leor foghlamtha agam agus tá sé in am imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U05",
+"set": {
+"target_text": "go raibh míle maith agat tá a lán foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "thank you very much i have learnt a lot already",
+"target_text": "go raibh míle maith agat tá go leor foghlamtha agam cheana féin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U06",
+"set": {
+"target_text": "tá a lán foghlamtha agam nach bhfuil?"
+},
+"expect": {
+"known_text": "i have learnt a lot is that not so?",
+"target_text": "tá go leor foghlamtha agam nach bhfuil?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0244L01U07",
+"set": {
+"target_text": "tá a lán foghlamtha agam faoin teanga an mhí seo caite"
+},
+"expect": {
+"known_text": "i have learnt a lot about the language last month",
+"target_text": "tá go leor foghlamtha agam faoin teanga an mhí seo caite"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0245L01U03",
+"set": {
+"target_text": "tá áthas orm inniu mar tá a lán foghlamtha agam"
+},
+"expect": {
+"known_text": "I am happy today because I have learnt a lot",
+"target_text": "tá áthas orm inniu mar tá go leor foghlamtha agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0245L01U04",
+"set": {
+"target_text": "tá a lán foghlamtha agam agus tá áthas orm"
+},
+"expect": {
+"known_text": "I have learnt a lot and I am happy",
+"target_text": "tá go leor foghlamtha agam agus tá áthas orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L02U13",
+"set": {
+"target_text": "creidim go raibh sé indéanta a lán a bhaint amach in am gearr"
+},
+"expect": {
+"known_text": "I believed that it was possible to achieve a lot in a short amount of time",
+"target_text": "creidim go raibh sé indéanta go leor a bhaint amach in am gearr"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L03U04",
+"set": {
+"target_text": "an bhfaca tú an scannán go fóill"
+},
+"expect": {
+"known_text": "have you seen the film yet",
+"target_text": "an bhfaca tú an scannán fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0250L03U05",
+"set": {
+"target_text": "sula dtabharfaidh mé freagra duit, is mian liom go n-inseofá dom cad atá de dhíth ort, mar níl mé cinnte go fóill"
+},
+"expect": {
+"known_text": "before I give you an answer, I want you to tell me what you need from me, because I'm not sure yet",
+"target_text": "sula dtabharfaidh mé freagra duit, is mian liom go n-inseofá dom cad atá de dhíth ort, mar níl mé cinnte fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0251L01U01",
+"set": {
+"target_text": "tá brón orm ach ní mian liom fáil amach faoi go fóill"
+},
+"expect": {
+"known_text": "I am sorry but I don't want to find out about it yet",
+"target_text": "tá brón orm ach ní mian liom fáil amach faoi fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0251L01U03",
+"set": {
+"target_text": "ní mian liom fáil amach faoi anois mar níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "I don't want to find out about it now because I'm not ready yet",
+"target_text": "ní mian liom fáil amach faoi anois mar níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0273L03U03",
+"set": {
+"target_text": "tá an iomarca oibre agam agus níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "I have too much work and I'm not ready yet",
+"target_text": "tá an iomarca oibre agam agus níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0274L02U12",
+"set": {
+"target_text": "ní mhothaím go bhfuil mé réidh le himeacht go fóill mar tá rudaí ann is mian liom a dhéanamh"
+},
+"expect": {
+"known_text": "I do not feel that I am ready to leave yet because there are still things I want to do",
+"target_text": "ní mhothaím go bhfuil mé réidh le himeacht fós mar tá rudaí ann is mian liom a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0274L02U14",
+"set": {
+"target_text": "níl mé réidh le himeacht go fóill agus tá beagán níos mó ama de dhíth orm le gach rud a dhéanamh"
+},
+"expect": {
+"known_text": "I am not ready to leave yet and I still need a little more time to get everything done",
+"target_text": "níl mé réidh le himeacht fós agus tá beagán níos mó ama de dhíth orm le gach rud a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0277L02B03",
+"set": {
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam ach níl mé réidh go fóill"
+},
+"expect": {
+"known_text": "yes I've got an important meeting but I'm not ready yet",
+"target_text": "Caithfidh, tá cruinniú tábhachtach agam ach níl mé réidh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0279L02B05",
+"set": {
+"target_text": "bhí, mar bhí a lán le déanamh"
+},
+"expect": {
+"known_text": "yes because there was a lot to do",
+"target_text": "bhí, mar bhí go leor le déanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0279L02U04",
+"set": {
+"target_text": "bhí, mar ní raibh mórán ama fágtha le dóthain focal a fhoghlaim roimh an tseachtain seo chugainn"
+},
+"expect": {
+"known_text": "yes, because there wasn't much time left to learn enough words before next week",
+"target_text": "bhí, mar ní raibh mórán ama fágtha le go leor focal a fhoghlaim roimh an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0279L02U06",
+"set": {
+"target_text": "bhí, mar ní raibh mórán ama fágtha agus bhí a lán le déanamh fós"
+},
+"expect": {
+"known_text": "yes, because there wasn't much time left and there was still a lot to do",
+"target_text": "bhí, mar ní raibh mórán ama fágtha agus bhí go leor le déanamh fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0287L03U07",
+"set": {
+"target_text": "tá aithne aige ar a lán daoine ar maith leo foghlaim"
+},
+"expect": {
+"known_text": "he knows a lot of people who like to learn",
+"target_text": "tá aithne aige ar go leor daoine ar maith leo foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0290L02B01",
+"set": {
+"target_text": "an bhfuil an freagra ar eolas aige go fóill"
+},
+"expect": {
+"known_text": "if he knows the answer yet",
+"target_text": "an bhfuil an freagra ar eolas aige fós"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0290L02U06",
+"set": {
+"target_text": "níl a fhios agam an bhfuil an freagra ar eolas aige go fóill ach fiafróidh mé de"
+},
+"expect": {
+"known_text": "I don't know if he knows the answer yet but I'll ask him",
+"target_text": "níl a fhios agam an bhfuil an freagra ar eolas aige fós ach fiafróidh mé de"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02B01",
+"set": {
+"target_text": "dóthain ama anocht"
+},
+"expect": {
+"known_text": "enough time tonight",
+"target_text": "go leor ama anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02B02",
+"set": {
+"target_text": "dóthain ama a chaitheamh le do dheartháir"
+},
+"expect": {
+"known_text": "to spend enough time with your brother",
+"target_text": "go leor ama a chaitheamh le do dheartháir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02B03",
+"set": {
+"target_text": "ceapaim go bhfuil dóthain ama"
+},
+"expect": {
+"known_text": "I think that there is enough time",
+"target_text": "ceapaim go bhfuil go leor ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02B04",
+"set": {
+"target_text": "an féidir leat dóthain ama a thabhairt di"
+},
+"expect": {
+"known_text": "can you give her enough time",
+"target_text": "an féidir leat go leor ama a thabhairt di"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U01",
+"set": {
+"target_text": "ba cheart duit dóthain ama a chaitheamh ag cleachtadh labhartha"
+},
+"expect": {
+"known_text": "you should spend enough time practising speaking",
+"target_text": "ba cheart duit go leor ama a chaitheamh ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U02",
+"set": {
+"target_text": "tá mé chun dóthain ama a thabhairt di an mhí seo chugainn"
+},
+"expect": {
+"known_text": "I am going to give her enough time next month",
+"target_text": "tá mé chun go leor ama a thabhairt di an mhí seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U03",
+"set": {
+"target_text": "ar mhaith leat dóthain ama a chaitheamh le do dheartháir"
+},
+"expect": {
+"known_text": "would you like to spend enough time with your brother",
+"target_text": "ar mhaith leat go leor ama a chaitheamh le do dheartháir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U04",
+"set": {
+"target_text": "caithfidh muid dóthain ama a chaitheamh anseo an tseachtain seo chugainn"
+},
+"expect": {
+"known_text": "we must spend enough time here next week",
+"target_text": "caithfidh muid go leor ama a chaitheamh anseo an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U05",
+"set": {
+"target_text": "ba mhaith liom dóthain ama a thabhairt di"
+},
+"expect": {
+"known_text": "I would like to give her enough time",
+"target_text": "ba mhaith liom go leor ama a thabhairt di"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U06",
+"set": {
+"target_text": "ní miste ceapaim go bhfuil dóthain ama anocht"
+},
+"expect": {
+"known_text": "no that's fine I think that there is enough time tonight",
+"target_text": "ní miste ceapaim go bhfuil go leor ama anocht"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U07",
+"set": {
+"target_text": "go raibh maith agat ach ceapaim go bhfuil dóthain ama"
+},
+"expect": {
+"known_text": "thank you but I think that there is enough time",
+"target_text": "go raibh maith agat ach ceapaim go bhfuil go leor ama"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L02U03",
+"set": {
+"target_text": "níl aithne agam ar mhórán ag an obair go fóill"
+},
+"expect": {
+"known_text": "I don't know of many at work yet",
+"target_text": "níl aithne agam ar mhórán ag an obair fós"
+}
+}
+]
+}

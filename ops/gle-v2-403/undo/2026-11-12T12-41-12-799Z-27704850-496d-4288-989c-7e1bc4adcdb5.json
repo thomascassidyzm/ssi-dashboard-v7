@@ -1,0 +1,212 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "27704850-496d-4288-989c-7e1bc4adcdb5",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:41:12.799Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-41-12-799Z-27704850-496d-4288-989c-7e1bc4adcdb5.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L02U03",
+      "set": {
+        "target_text": "níl aithne agam ar mhórán ag an obair fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U07",
+      "set": {
+        "target_text": "go raibh maith agat ach ceapaim go bhfuil go leor ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U06",
+      "set": {
+        "target_text": "ní miste ceapaim go bhfuil go leor ama anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U05",
+      "set": {
+        "target_text": "ba mhaith liom go leor ama a thabhairt di"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U04",
+      "set": {
+        "target_text": "caithfidh muid go leor ama a chaitheamh anseo an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U03",
+      "set": {
+        "target_text": "ar mhaith leat go leor ama a chaitheamh le do dheartháir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U02",
+      "set": {
+        "target_text": "tá mé chun go leor ama a thabhairt di an mhí seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02U01",
+      "set": {
+        "target_text": "ba cheart duit go leor ama a chaitheamh ag cleachtadh labhartha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02B04",
+      "set": {
+        "target_text": "an féidir leat go leor ama a thabhairt di"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02B03",
+      "set": {
+        "target_text": "ceapaim go bhfuil go leor ama"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02B02",
+      "set": {
+        "target_text": "go leor ama a chaitheamh le do dheartháir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L02B01",
+      "set": {
+        "target_text": "go leor ama anocht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0290L02U06",
+      "set": {
+        "target_text": "níl a fhios agam an bhfuil an freagra ar eolas aige fós ach fiafróidh mé de"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0290L02B01",
+      "set": {
+        "target_text": "an bhfuil an freagra ar eolas aige fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0287L03U07",
+      "set": {
+        "target_text": "tá aithne aige ar go leor daoine ar maith leo foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0279L02U06",
+      "set": {
+        "target_text": "bhí, mar ní raibh mórán ama fágtha agus bhí go leor le déanamh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0279L02U04",
+      "set": {
+        "target_text": "bhí, mar ní raibh mórán ama fágtha le go leor focal a fhoghlaim roimh an tseachtain seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0279L02B05",
+      "set": {
+        "target_text": "bhí, mar bhí go leor le déanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0277L02B03",
+      "set": {
+        "target_text": "Caithfidh, tá cruinniú tábhachtach agam ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L02U14",
+      "set": {
+        "target_text": "níl mé réidh le himeacht fós agus tá beagán níos mó ama de dhíth orm le gach rud a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0274L02U12",
+      "set": {
+        "target_text": "ní mhothaím go bhfuil mé réidh le himeacht fós mar tá rudaí ann is mian liom a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0273L03U03",
+      "set": {
+        "target_text": "tá an iomarca oibre agam agus níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0251L01U03",
+      "set": {
+        "target_text": "ní mian liom fáil amach faoi anois mar níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0251L01U01",
+      "set": {
+        "target_text": "tá brón orm ach ní mian liom fáil amach faoi fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0250L03U05",
+      "set": {
+        "target_text": "sula dtabharfaidh mé freagra duit, is mian liom go n-inseofá dom cad atá de dhíth ort, mar níl mé cinnte fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L03U04",
+      "set": {
+        "target_text": "an bhfaca tú an scannán fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L02U13",
+      "set": {
+        "target_text": "creidim go raibh sé indéanta go leor a bhaint amach in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L01U04",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam agus tá áthas orm"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L01U03",
+      "set": {
+        "target_text": "tá áthas orm inniu mar tá go leor foghlamtha agam"
+      }
+    }
+  ]
+}

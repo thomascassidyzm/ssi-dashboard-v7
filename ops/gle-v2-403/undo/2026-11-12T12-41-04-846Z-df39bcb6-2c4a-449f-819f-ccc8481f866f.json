@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "df39bcb6-2c4a-449f-819f-ccc8481f866f",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:41:04.846Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-41-04-846Z-df39bcb6-2c4a-449f-819f-ccc8481f866f.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U07",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam faoin teanga an mhí seo caite"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U06",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam nach bhfuil?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U05",
+      "set": {
+        "target_text": "go raibh míle maith agat tá go leor foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U04",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam agus tá sé in am imeacht anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U03",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam mar sin is féidir liom cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U02",
+      "set": {
+        "target_text": "ní dhearna mé mórán inniu ach tá go leor foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01U01",
+      "set": {
+        "target_text": "mothaím tuirseach ach tá go leor foghlamtha agam inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01B04",
+      "set": {
+        "target_text": "ach tá go leor foghlamtha agam go dtí seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01B03",
+      "set": {
+        "target_text": "go raibh maith agat tá go leor foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01B02",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0244L01B01",
+      "set": {
+        "target_text": "tá go leor foghlamtha agam cheana féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0239L01U08",
+      "set": {
+        "target_text": "is maith liom léamh go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0236L01U06",
+      "set": {
+        "target_text": "níl mé réidh fós ach tá aithne agam ar dhuine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0233L04U06",
+      "set": {
+        "target_text": "Tá aithne aici ar go leor daoine atá ag iarraidh Gaeilge a fhoghlaim anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L02U05",
+      "set": {
+        "target_text": "an dtuigeann tú mórán Gaeilge fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0213L01B03",
+      "set": {
+        "target_text": "faraor níl a fhios againn fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0209L01U03",
+      "set": {
+        "target_text": "Is mian leo a fhios a bheith acu cén fáth nach raibh muid ábalta an freagra a fháil fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0205L01U05",
+      "set": {
+        "target_text": "níl mé réidh fós mar tá dearmad déanta agam cad atá le déanamh agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L02U14",
+      "set": {
+        "target_text": "Tá go leor ama agus go leor oibre de dhíth ort le foghlaim conas an cheist a fhreagairt go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L02U06",
+      "set": {
+        "target_text": "Ní éasca a fhios a bheith agat conas an cheist a fhreagairt nuair nach bhfuil tú tar éis é a chleachtadh go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U12",
+      "set": {
+        "target_text": "dúirt sí go raibh sí ag iarraidh a chinntiú go mbeadh go leor ama acu gach rud a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L03U09",
+      "set": {
+        "target_text": "Tá mé ag iarraidh a chinntiú go bhfuil go leor ama agam gach rud a chríochnú roimh amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U15",
+      "set": {
+        "target_text": "deir siad go bhfuil go leor fós le déanamh ach go gcríochnóidh muid in am"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L03U14",
+      "set": {
+        "target_text": "dúirt m'iníon go raibh an obair don chomhairle ag dul go maith ach go raibh go leor fós le déanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L03U05",
+      "set": {
+        "target_text": "Tá a fhios agam gur mian le go leor daoine anseo obair don chomhairle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L02U12",
+      "set": {
+        "target_text": "Tá a fhios agam go raibh m'iníon ag obair air inné ach níl a fhios agam an bhfuil sí réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0196L01U04",
+      "set": {
+        "target_text": "an gcuala tú an freagra fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0188L01U06",
+      "set": {
+        "target_text": "níl mé réidh fós mar sin ní féidir liom imeacht anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0178L01U05",
+      "set": {
+        "target_text": "níl mé réidh fós mar ní raibh am agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0173L02B02",
+      "set": {
+        "target_text": "Ní mian, go raibh maith agat, níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0170L03U03",
+      "set": {
+        "target_text": "níl a fhios agam fós cad atá de dhíth ort"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0163L02U06",
+      "set": {
+        "target_text": "athraíonn sé ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0162L02U02",
+      "set": {
+        "target_text": "níl mé cinnte faoi sin fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L02U15",
+      "set": {
+        "target_text": "Ní féidir liom an focal seo a úsáid go maith fós mar níl go leor focal Gaeilge eile agam le é a úsáid leo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L02U11",
+      "set": {
+        "target_text": "Níl mé cinnte go bhfuil an focal seo ar eolas agam go maith fós le é a úsáid nuair a labhraím Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L02U05",
+      "set": {
+        "target_text": "Níl an focal seo foghlamtha agam fós ach ceapaim gur rud maith é agus ba mhaith liom é a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L02B06",
+      "set": {
+        "target_text": "níl an focal seo foghlamtha agam fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U04",
+      "set": {
+        "target_text": "conas a deir tú cad atá i gceist agat i nGaeilge nuair nach bhfuil go leor focal agat fós le é a rá go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0160L01U03",
+      "set": {
+        "target_text": "Níl a fhios agam conas a deir tú rud éigin cosúil le seo i nGaeilge mar níl go leor focal agam fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L02U14",
+      "set": {
+        "target_text": "cad atá mé ag iarraidh a fháil amach ná an bhfuil mé ábalta Gaeilge a labhairt leat go leor an mhí seo chugainn"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0159L02U06",
+      "set": {
+        "target_text": "Tá a fhios agam cad atá mé ag iarraidh a mhíniú ach níl go leor focal agam fós le é a rá go maith i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0156L04U15",
+      "set": {
+        "target_text": "níl mé réidh fós le himeacht anocht mar tá go leor fós le foghlaim agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0155L02U06",
+      "set": {
+        "target_text": "dúirt sí go raibh áthas uirthi fanacht linn, mar bhí go leor ama aici sula gcaithfidh sí imeacht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0148L04U04",
+      "set": {
+        "target_text": "níor cheart duit freagra a thabhairt dó fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0148L01U02",
+      "set": {
+        "target_text": "ní raibh sé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L06U06",
+      "set": {
+        "target_text": "Tá an chuma air nach bhfuil tú réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0146L01U03",
+      "set": {
+        "target_text": "tá ionadh orm nach bhfuil rud ar bith ag obair fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0143L04U07",
+      "set": {
+        "target_text": "níl mé réidh fós mar bhí mé tuirseach níos luaithe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0142L05U02",
+      "set": {
+        "target_text": "tá mé buíoch díot ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0142L02U06",
+      "set": {
+        "target_text": "bhí sé sin an-chineálta ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U11",
+      "set": {
+        "target_text": "dúirt sí liom go bhfuil sé ceart go leor labhairt go minic nuair nach bhfuil tú foirfe fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0141L04U08",
+      "set": {
+        "target_text": "ceapaim go bhfuil sé ceart go leor leanúint ar aghaidh ag labhairt a chleachtadh go minic nuair nach bhfuil tú foirfe fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0139L02U05",
+      "set": {
+        "target_text": "Níl mé cinnte gur mian liom imeacht fós mar tá go leor le foghlaim anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L02U01",
+      "set": {
+        "target_text": "seo an áit ar mhian le mo chara ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L01U03",
+      "set": {
+        "target_text": "níl mé réidh fós mar níl a fhios agam conas atá sé ag dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0135L01B01",
+      "set": {
+        "target_text": "níl a fhios agam fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0134L01U05",
+      "set": {
+        "target_text": "ní fadhb é ach níl mé réidh fós"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0131L05U05",
+      "set": {
+        "target_text": "níl mé réidh fós i mo cheann"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0131L01U02",
+      "set": {
+        "target_text": "tá go leor daoine ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0131L01U01",
+      "set": {
+        "target_text": "tá go leor rudaí suimiúla"
+      }
+    }
+  ]
+}
