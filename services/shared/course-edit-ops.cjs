@@ -41,7 +41,8 @@ const DIFF_IGNORE = new Set(['version', 'updated_at', 'last_edit_event_id', 'tex
 // content tables so an undo can put a clip back; the checked door for linking a
 // clip is `audio.link`, which proves the clip speaks the row's words.
 const UPDATABLE = {
-  course_seeds: ['known_text', 'target_text', 'target_text_roman', 'status', 'approved_at',
+  // frame_mask: the row's frames as bits, P1 = bit 0 (job #446, tools/frame-layer/v4/write-frame-masks.cjs).
+  course_seeds: ['known_text', 'target_text', 'target_text_roman', 'status', 'approved_at', 'frame_mask',
     'known_audio_id', 'target1_audio_id', 'target2_audio_id'],
   course_legos: ['known_text', 'target_text', 'type', 'is_new', 'components', 'status',
     'target_text_roman', 'known_gloss_segments', 'target_lego_id',
@@ -49,7 +50,7 @@ const UPDATABLE = {
   course_practice_phrases: ['known_text', 'target_text', 'phrase_role', 'position', 'introduce',
     'status', 'register', 'difficulty', 'lego_id', 'connected_lego_ids', 'lego_position',
     'target_text_roman', 'metadata', 'known_gloss_segments', 'word_count', 'lego_count',
-    'target_syllable_count', 'target_phrase_id', 'decomposition', 'decomposition_course_version',
+    'target_syllable_count', 'target_phrase_id', 'decomposition', 'decomposition_course_version', 'frame_mask',
     'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
   // s3_key, clip_id, id and course_code are not metadata: moving them moves the
   // file a slot plays, which is the render route's business, not this door's.
