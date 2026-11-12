@@ -1,7 +1,7 @@
 {
  "counts": {
-  "Same as yours": 216,
-  "Different": 436,
+  "Same as yours": 235,
+  "Different": 417,
   "Pending Kai": 6,
   "Same as one of your options": 7,
   "Irish same as yours; English differs": 3
@@ -22,7 +22,7 @@
   [
    "11",
    "I'd like to be able to speak after you finish",
-   "ba mhaith liom a bheith ábalta labhairt tar éis duit críochnú",
+   "ba mhaith liom a bheith in ann labhairt tar éis duit críochnú",
    "Is 'tar éis duit críochnú' acceptable here, or does it really need 'nuair a bheidh tú críochnaithe'?"
   ],
   [
@@ -46,7 +46,7 @@
   [
    "27",
    "I don't like taking too much time to answer",
-   "Ní maith liom an iomarca ama a thógáil le freagra a thabhairt",
+   "Ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",
    "You write 'taitin' for 'like' here and at 55, 120, 121, 239 and 240, and 'is maith le' at 26, 257, 288 and 628. Is 'is maith liom' + a verb wrong for 'I like doing', or only less natural?"
   ],
   [
@@ -86,15 +86,9 @@
    "You write 'ionadh' here and 'iontas' at seed 130 for 'surprise'. Could one of them serve in both places?"
   ],
   [
-   "89",
-   "I think that I've done a lot in a short time",
-   "ceapaim go bhfuil go leor déanta agam in am gearr",
-   "Is 'in am gearr' acceptable for 'in a short time', or should it be 'in achar gearr'?"
-  ],
-  [
    "99",
    "you should ask yourself why it's not working",
-   "ba cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
+   "ba chóir duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
    "Is 'faoin bhfáth' needed, or is 'ceist a chur ort féin cén fáth nach bhfuil sé ag obair' acceptable?"
   ],
   [
@@ -124,7 +118,7 @@
   [
    "127",
    "That isn't why I wanted to see you",
-   "Ní hé sin an fáth ar mhian liom tú a fheiceáil",
+   "Ní hé sin an chúis ar mhian liom tú a fheiceáil",
    "Is 'Ní hé sin an fáth ar mhian liom tú a fheiceáil' correct for 'that isn't why I wanted to see you'?"
   ],
   [
@@ -138,6 +132,12 @@
    "that isn't as exciting in comparison with what she was saying",
    "Níl sé sin chomh hiontach i gcomparáid leis an méid a bhí á rá aici",
    "You wrote 'chomh hiontach' for 'as exciting'. The course teaches 'iontach' as 'great' (seeds 90, 272). Is there a closer word for 'exciting', or is 'iontach' what you would say?"
+  ],
+  [
+   "137",
+   "it's more important to talk often than to be perfect",
+   "Tá sé níos tábhachtaí labhairt go minic ná a bheith foirfe",
+   "You write 'seachas' for 'than' here and for 'despite' at 593. 'than' is 'ná' in every other seed (42, 87, 117). Can we keep 'ná' for 'than' and use 'seachas' only for 'instead of' (502, 523)?"
   ],
   [
    "138",
@@ -196,14 +196,8 @@
   [
    "232",
    "I know an old woman who will be able to remember the answer",
-   "Tá aithne agam ar sheanbean a bheidh ábalta cuimhneamh ar an bhfreagra",
+   "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh ar an bhfreagra",
    "Should 'sheanbean' be 'sheanbhean'?"
-  ],
-  [
-   "245",
-   "I'm happy with how much I've done in a short time",
-   "Tá áthas orm as an méid atá déanta agam in am gearr",
-   "Is 'in am gearr' acceptable here, or should it be 'in achar gearr'?"
   ],
   [
    "262",
@@ -238,7 +232,7 @@
   [
    "328",
    "yes I think she ought to find that",
-   "Ceapaim, ceapaim gur cheart di sin a aimsiú",
+   "Ceapaim, ceapaim gur chóir di sin a aimsiú",
    "For 'find' you use 'aimsiú' (17, 327, 328, 460, 559) and 'fáil' (66, 510, 514). Could 'aimsiú' serve at 66 and 514 too?"
   ],
   [
@@ -252,6 +246,12 @@
    "Did you hear what he wanted to grow?",
    "an gcuala tú cad ba mhian leis a fhás?",
    "We use 'an gcuala tú?' (also at 196 and 267) but 'níor chuala' at 365 and 367. Should we use 'ar chuala tú?' throughout?"
+  ],
+  [
+   "374",
+   "yes I thought it was very beautiful",
+   "Chonaic, cheap mé go raibh sé an-álainn",
+   "You write 'go hálainn' here; we kept 'an-álainn' because the English says 'very beautiful'. Is 'go raibh sé an-álainn' right?"
   ],
   [
    "377",
@@ -284,6 +284,12 @@
    "'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"
   ],
   [
+   "475",
+   "there are many reasons to consider waiting",
+   "Tá mórán cúiseanna ann le smaoineamh ar fhanacht",
+   "Is 'Tá mórán cúiseanna ann' fine for 'there are many reasons', or does a positive sentence need 'a lán'?"
+  ],
+  [
    "531",
    "it isn't true that anyone can win the game",
    "Níl sé fíor gur féidir le duine ar bith an cluiche a bhuachan",
@@ -304,8 +310,8 @@
   [
    "562",
    "I just want to get there safely",
-   "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte",
-   "Is 'Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte' right, or did you mean the second 'ach' to stay?"
+   "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte",
+   "Is 'Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte' right, or did you mean the second 'ach' to stay?"
   ],
   [
    "570",
@@ -314,10 +320,22 @@
    "Is 'a íoc ar do thicéad' wrong for 'pay for your ticket'? You wrote 'i leith do thicéid', and 'íoc as' elsewhere."
   ],
   [
+   "593",
+   "however much I argued I still had to share it with him",
+   "cibé méid a d'argóin mé bhí orm é a roinnt leis fós",
+   "Your 'Seachas m'argóintí go léir' uses 'seachas' for 'despite'. We use 'seachas' for 'instead of' (502, 523). Is there another way to say 'however much I argued' so that 'seachas' keeps one meaning?"
+  ],
+  [
    "613",
    "we probably would have bought a house there",
    "is dócha go gceannódh muid teach ansin",
    "You note that 'is dócha' is 'I suppose'. What would you say for 'probably' here?"
+  ],
+  [
+   "649",
+   "are you ready sir?",
+   "an bhfuil tú réidh, a dhuine uasail?",
+   "You wrote 'réidh' here and 'ullamh' in the other 'ready' seeds. We use 'réidh' throughout because it is taught early and is easy. Is 'réidh' fine in every one of them?"
   ],
   [
    "659",
@@ -330,7 +348,7 @@
   [
    "27",
    "I don't like taking too much time to answer",
-   "Ní maith liom an iomarca ama a thógáil le freagra a thabhairt",
+   "Ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",
    "Ní thaitníonn sé liom an-iomarca ama a chaitheamh le freagra a thabhairt"
   ],
   [

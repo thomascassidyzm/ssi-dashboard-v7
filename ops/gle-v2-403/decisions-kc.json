@@ -1,0 +1,2855 @@
+{
+ "seeds": {
+  "27": {
+   "before": {
+    "known": "I don't like taking too much time to answer",
+    "target": "Ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+   },
+   "known": "I don't like taking too much time to answer",
+   "target": "Ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "K10"
+  },
+  "65": {
+   "before": {
+    "known": "it's important to take time to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it's important to take time to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "K10"
+  },
+  "89": {
+   "before": {
+    "known": "I think that I've done a lot in a short time",
+    "target": "ceapaim go bhfuil a lán déanta agam in am gearr"
+   },
+   "known": "I think that I've done a lot in a short time",
+   "target": "ceapaim go bhfuil a lán déanta agam in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "K9"
+  },
+  "161": {
+   "before": {
+    "known": "can you give me that book on Sunday morning?",
+    "target": "an féidir leat an leabhar sin a thabhairt dom maidin Dé Domhnaigh?"
+   },
+   "known": "can you give me that book on Sunday morning?",
+   "target": "an féidir leat an leabhar sin a thabhairt dom maidin Domhnaigh?",
+   "family": "K14 Sunday",
+   "why": "K14"
+  },
+  "175": {
+   "before": {
+    "known": "what do you want to do on Sunday morning?",
+    "target": "cad is mian leat a dhéanamh maidin Dé Domhnaigh?"
+   },
+   "known": "what do you want to do on Sunday morning?",
+   "target": "cad is mian leat a dhéanamh maidin Domhnaigh?",
+   "family": "K14 Sunday",
+   "why": "K14"
+  },
+  "179": {
+   "before": {
+    "known": "what are you going to do on Sunday afternoon?",
+    "target": "cad atá tú chun a dhéanamh tráthnóna Dé Domhnaigh?"
+   },
+   "known": "what are you going to do on Sunday afternoon?",
+   "target": "cad atá tú chun a dhéanamh tráthnóna Domhnaigh?",
+   "family": "K14 Sunday",
+   "why": "K14"
+  },
+  "209": {
+   "before": {
+    "known": "they want to spend more time meeting as a group",
+    "target": "Is mian leo níos mó ama a chaitheamh ag bualadh le chéile mar ghrúpa"
+   },
+   "known": "they want to spend more time meeting as a group",
+   "target": "Is mian leo níos mó ama a chaitheamh ag bualadh le chéile mar bhuíon",
+   "family": "K12 buíon",
+   "why": "K12"
+  },
+  "218": {
+   "before": {
+    "known": "I didn't do much on Sunday",
+    "target": "Ní dhearna mé mórán Dé Domhnaigh"
+   },
+   "known": "I didn't do much on Sunday",
+   "target": "Ní dhearna mé mórán ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "K14"
+  },
+  "219": {
+   "before": {
+    "known": "it was nice to relax for a while",
+    "target": "bhí sé deas scíth a ligean ar feadh tamaill"
+   },
+   "known": "it was nice to relax for a while",
+   "target": "bhí sé go deas scíth a ligean ar feadh tamaill",
+   "family": "K13 go deas / go hálainn",
+   "why": "K13"
+  },
+  "245": {
+   "before": {
+    "known": "I'm happy with how much I've done in a short time",
+    "target": "Tá áthas orm as an méid atá déanta agam in am gearr"
+   },
+   "known": "I'm happy with how much I've done in a short time",
+   "target": "Tá áthas orm as an méid atá déanta agam in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "K9"
+  },
+  "333": {
+   "before": {
+    "known": "she said that she can't spend much time with the group",
+    "target": "dúirt sí nach féidir léi mórán ama a chaitheamh leis an ngrúpa"
+   },
+   "known": "she said that she can't spend much time with the group",
+   "target": "dúirt sí nach féidir léi mórán ama a chaitheamh leis an mbuíon",
+   "family": "K12 buíon",
+   "why": "K12"
+  },
+  "358": {
+   "before": {
+    "known": "your friend said that she couldn't reach the top",
+    "target": "dúirt do chara nach bhféadfadh sí an barr a bhaint amach"
+   },
+   "known": "your friend said that she couldn't reach the top",
+   "target": "dúirt do chara nach bhféadfadh sí an barr a shroicheadh",
+   "family": "K11 a shroicheadh",
+   "why": "K11: Eoghan's sentence"
+  },
+  "373": {
+   "before": {
+    "known": "it was beautiful",
+    "target": "bhí sé álainn"
+   },
+   "known": "it was beautiful",
+   "target": "bhí sé go hálainn",
+   "family": "K13 go deas / go hálainn",
+   "why": "K13"
+  },
+  "402": {
+   "before": {
+    "known": "yes it would be nice to stop somewhere for food",
+    "target": "Is mian, bheadh sé deas stopadh áit éigin le haghaidh bia"
+   },
+   "known": "yes it would be nice to stop somewhere for food",
+   "target": "Is mian, bheadh sé go deas stopadh áit éigin le haghaidh bia",
+   "family": "K13 go deas / go hálainn",
+   "why": "K13"
+  },
+  "562": {
+   "before": {
+    "known": "I just want to get there safely",
+    "target": "Níl ann ach gur mian liom mo cheann scríbe a bhaint amach slán sábháilte"
+   },
+   "known": "I just want to get there safely",
+   "target": "Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte",
+   "family": "K11 a shroicheadh",
+   "why": "K11: Eoghan's first option (his doubled 'ach' dropped, 'shroiceadh' spelt 'shroicheadh')"
+  }
+ },
+ "legos": {
+  "S0027L02": {
+   "before": {
+    "known_text": "to take",
+    "target_text": "a thógáil",
+    "components": null,
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "a chaitheamh"
+   },
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03": {
+   "before": {
+    "known_text": "time to take",
+    "target_text": "am a thógáil",
+    "components": [
+     {
+      "known": "time",
+      "target": "am"
+     },
+     {
+      "known": "to take",
+      "target": "a thógáil"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "am a chaitheamh",
+    "components": [
+     {
+      "known": "time",
+      "target": "am"
+     },
+     {
+      "known": "to take",
+      "target": "a chaitheamh"
+     }
+    ]
+   },
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0089L03": {
+   "before": {
+    "known_text": "in a short time",
+    "target_text": "in am gearr",
+    "components": [
+     {
+      "known": "in",
+      "target": "in"
+     },
+     {
+      "known": "time",
+      "target": "am"
+     },
+     {
+      "known": "short",
+      "target": "gearr"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "in achar gearr",
+    "components": [
+     {
+      "known": "in",
+      "target": "in"
+     },
+     {
+      "known": "a period",
+      "target": "achar"
+     },
+     {
+      "known": "short",
+      "target": "gearr"
+     }
+    ]
+   },
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0161L04": {
+   "before": {
+    "known_text": "on Sunday morning",
+    "target_text": "maidin Dé Domhnaigh",
+    "components": [
+     {
+      "known": "morning",
+      "target": "maidin"
+     },
+     {
+      "known": "Sunday",
+      "target": "Dé Domhnaigh"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "maidin Domhnaigh",
+    "components": [
+     {
+      "known": "morning",
+      "target": "maidin"
+     },
+     {
+      "known": "Sunday",
+      "target": "Domhnaigh"
+     }
+    ]
+   },
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03": {
+   "before": {
+    "known_text": "Sunday morning",
+    "target_text": "maidin Dé Domhnaigh",
+    "components": [
+     {
+      "known": "morning",
+      "target": "maidin"
+     },
+     {
+      "known": "Sunday",
+      "target": "Dé Domhnaigh"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "maidin Domhnaigh",
+    "components": [
+     {
+      "known": "morning",
+      "target": "maidin"
+     },
+     {
+      "known": "Sunday",
+      "target": "Domhnaigh"
+     }
+    ]
+   },
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03": {
+   "before": {
+    "known_text": "Sunday afternoon",
+    "target_text": "tráthnóna Dé Domhnaigh",
+    "components": [
+     {
+      "known": "afternoon",
+      "target": "tráthnóna"
+     },
+     {
+      "known": "Sunday",
+      "target": "Dé Domhnaigh"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "tráthnóna Domhnaigh",
+    "components": [
+     {
+      "known": "afternoon",
+      "target": "tráthnóna"
+     },
+     {
+      "known": "Sunday",
+      "target": "Domhnaigh"
+     }
+    ]
+   },
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0209L03": {
+   "before": {
+    "known_text": "to spend meeting as a group",
+    "target_text": "a chaitheamh ag bualadh le chéile mar ghrúpa",
+    "components": [
+     {
+      "known": "to spend",
+      "target": "a chaitheamh"
+     },
+     {
+      "known": "meeting",
+      "target": "ag bualadh"
+     },
+     {
+      "known": "together",
+      "target": "le chéile"
+     },
+     {
+      "known": "as a group",
+      "target": "mar ghrúpa"
+     }
+    ],
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "a chaitheamh ag bualadh le chéile mar bhuíon",
+    "components": [
+     {
+      "known": "to spend",
+      "target": "a chaitheamh"
+     },
+     {
+      "known": "meeting",
+      "target": "ag bualadh"
+     },
+     {
+      "known": "together",
+      "target": "le chéile"
+     },
+     {
+      "known": "as a group",
+      "target": "mar bhuíon"
+     }
+    ]
+   },
+   "family": "K12 buíon",
+   "why": "swap"
+  },
+  "S0218L03": {
+   "before": {
+    "known_text": "on Sunday",
+    "target_text": "Dé Domhnaigh",
+    "components": null,
+    "is_new": true,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "ar an Domhnach",
+    "components": [
+     {
+      "known": "on the",
+      "target": "ar an"
+     },
+     {
+      "known": "Sunday",
+      "target": "Domhnach"
+     }
+    ]
+   },
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0219L02": {
+   "before": {
+    "known_text": "nice",
+    "target_text": "deas",
+    "components": null,
+    "is_new": true,
+    "type": "A"
+   },
+   "set": {
+    "target_text": "go deas",
+    "components": [
+     {
+      "known": "",
+      "target": "go"
+     },
+     {
+      "known": "nice",
+      "target": "deas"
+     }
+    ],
+    "type": "M"
+   },
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0245L04": {
+   "before": {
+    "known_text": "in a short time",
+    "target_text": "in am gearr",
+    "components": [
+     {
+      "known": "in time",
+      "target": "in am"
+     },
+     {
+      "known": "short",
+      "target": "gearr"
+     }
+    ],
+    "is_new": false,
+    "type": "M"
+   },
+   "set": {
+    "target_text": "in achar gearr",
+    "components": [
+     {
+      "known": "in a period",
+      "target": "in achar"
+     },
+     {
+      "known": "short",
+      "target": "gearr"
+     }
+    ]
+   },
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  }
+ },
+ "lego_inserts": [],
+ "lego_deletes": {},
+ "phrase_inserts": [],
+ "phrases": {
+  "S0027L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to take all day",
+    "target": "an lá ar fad a thógáil"
+   },
+   "known": "to take all day",
+   "target": "an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't like taking all day",
+    "target": "ní maith liom an lá ar fad a thógáil"
+   },
+   "known": "I don't like taking all day",
+   "target": "ní maith liom an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't want to take all day",
+    "target": "ní mian liom an lá ar fad a thógáil"
+   },
+   "known": "I don't want to take all day",
+   "target": "ní mian liom an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking all day now",
+    "target": "ní maith liom an lá ar fad a thógáil anois"
+   },
+   "known": "I don't like taking all day now",
+   "target": "ní maith liom an lá ar fad a chaitheamh anois",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I wouldn't like to take all day",
+    "target": "níor mhaith liom an lá ar fad a thógáil"
+   },
+   "known": "I wouldn't like to take all day",
+   "target": "níor mhaith liom an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't want to take all day today",
+    "target": "ní mian liom an lá ar fad a thógáil inniu"
+   },
+   "known": "I don't want to take all day today",
+   "target": "ní mian liom an lá ar fad a chaitheamh inniu",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to take all day tomorrow",
+    "target": "an bhfuil tú chun an lá ar fad a thógáil amárach"
+   },
+   "known": "are you going to take all day tomorrow",
+   "target": "an bhfuil tú chun an lá ar fad a chaitheamh amárach",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not sure if I can take all day",
+    "target": "níl mé cinnte an féidir liom an lá ar fad a thógáil"
+   },
+   "known": "I'm not sure if I can take all day",
+   "target": "níl mé cinnte an féidir liom an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why are you going to take all day",
+    "target": "cén fáth a bhfuil tú chun an lá ar fad a thógáil"
+   },
+   "known": "why are you going to take all day",
+   "target": "cén fáth a bhfuil tú chun an lá ar fad a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking all day and I don't want to stop talking",
+    "target": "ní maith liom an lá ar fad a thógáil agus ní mian liom stopadh ag caint"
+   },
+   "known": "I don't like taking all day and I don't want to stop talking",
+   "target": "ní maith liom an lá ar fad a chaitheamh agus ní mian liom stopadh ag caint",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't want to take all day before I have to go",
+    "target": "ní mian liom an lá ar fad a thógáil sula gcaithfidh mé dul"
+   },
+   "known": "I don't want to take all day before I have to go",
+   "target": "ní mian liom an lá ar fad a chaitheamh sula gcaithfidh mé dul",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't like taking too much time",
+    "target": "ní maith liom an iomarca ama a thógáil"
+   },
+   "known": "I don't like taking too much time",
+   "target": "ní maith liom an iomarca ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "taking too much time",
+    "target": "an iomarca ama a thógáil"
+   },
+   "known": "taking too much time",
+   "target": "an iomarca ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I don't like taking too much time to speak Irish",
+    "target": "ní maith liom an iomarca ama a thógáil le labhairt Gaeilge"
+   },
+   "known": "I don't like taking too much time to speak Irish",
+   "target": "ní maith liom an iomarca ama a chaitheamh le labhairt Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time",
+    "target": "ní maith liom an iomarca ama a thógáil"
+   },
+   "known": "I don't like taking too much time",
+   "target": "ní maith liom an iomarca ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to speak Irish",
+    "target": "ní maith liom an iomarca ama a thógáil le labhairt Gaeilge"
+   },
+   "known": "I don't like taking too much time to speak Irish",
+   "target": "ní maith liom an iomarca ama a chaitheamh le labhairt Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to say something",
+    "target": "ní maith liom an iomarca ama a thógáil le rud éigin a rá"
+   },
+   "known": "I don't like taking too much time to say something",
+   "target": "ní maith liom an iomarca ama a chaitheamh le rud éigin a rá",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to explain what I mean",
+    "target": "ní maith liom an iomarca ama a thógáil leis an rud atá i gceist agam a mhíniú"
+   },
+   "known": "I don't like taking too much time to explain what I mean",
+   "target": "ní maith liom an iomarca ama a chaitheamh leis an rud atá i gceist agam a mhíniú",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time now",
+    "target": "ní maith liom an iomarca ama a thógáil anois"
+   },
+   "known": "I don't like taking too much time now",
+   "target": "ní maith liom an iomarca ama a chaitheamh anois",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time today",
+    "target": "ní maith liom an iomarca ama a thógáil inniu"
+   },
+   "known": "I don't like taking too much time today",
+   "target": "ní maith liom an iomarca ama a chaitheamh inniu",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to explain something",
+    "target": "ní maith liom an iomarca ama a thógáil le rud éigin a mhíniú"
+   },
+   "known": "I don't like taking too much time to explain something",
+   "target": "ní maith liom an iomarca ama a chaitheamh le rud éigin a mhíniú",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to practise speaking",
+    "target": "ní maith liom an iomarca ama a thógáil le labhairt a chleachtadh"
+   },
+   "known": "I don't like taking too much time to practise speaking",
+   "target": "ní maith liom an iomarca ama a chaitheamh le labhairt a chleachtadh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to say an answer",
+    "target": "ní maith liom an iomarca ama a thógáil le freagra a rá"
+   },
+   "known": "I don't like taking too much time to say an answer",
+   "target": "ní maith liom an iomarca ama a chaitheamh le freagra a rá",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to give an answer",
+    "target": "ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+   },
+   "known": "I don't like taking too much time to give an answer",
+   "target": "ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0027L05U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking too much time to give an answer in Irish",
+    "target": "ní maith liom an iomarca ama a thógáil le freagra a thabhairt i nGaeilge"
+   },
+   "known": "I don't like taking too much time to give an answer in Irish",
+   "target": "ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt i nGaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L01B07": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it is important to take time to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L01U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself when you are learning Irish",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge"
+   },
+   "known": "it is important to take time to test yourself when you are learning Irish",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is useful to take time to think about how to say something",
+    "target": "Tá sé úsáideach am a thógáil chun cuimhneamh conas rud éigin a rá"
+   },
+   "known": "it is useful to take time to think about how to say something",
+   "target": "Tá sé úsáideach am a chaitheamh chun cuimhneamh conas rud éigin a rá",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is useful to take the time to understand enough words",
+    "target": "Tá sé úsáideach am a thógáil chun dóthain focal a thuigeann tú"
+   },
+   "known": "it is useful to take the time to understand enough words",
+   "target": "Tá sé úsáideach am a chaitheamh chun dóthain focal a thuigeann tú",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time",
+    "target": "Tá sé tábhachtach am a thógáil"
+   },
+   "known": "it is important to take time",
+   "target": "Tá sé tábhachtach am a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is very important to take time to test yourself when learning Irish",
+    "target": "Tá sé go han- tábhachtach am a thógáil chun tú féin a thástáil ag foghlaim Gaeilge"
+   },
+   "known": "it is very important to take time to test yourself when learning Irish",
+   "target": "Tá sé go han- tábhachtach am a chaitheamh chun tú féin a thástáil ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take the time to think carefully about what I mean",
+    "target": "Tá sé tábhachtach am a thógáil chun smaoineamh go cúramach ar an rud atá i gceist agam"
+   },
+   "known": "it is important to take the time to think carefully about what I mean",
+   "target": "Tá sé tábhachtach am a chaitheamh chun smaoineamh go cúramach ar an rud atá i gceist agam",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "time to take",
+    "target": "am a thógáil"
+   },
+   "known": "time to take",
+   "target": "am a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time",
+    "target": "Tá sé tábhachtach am a thógáil"
+   },
+   "known": "it is important to take time",
+   "target": "Tá sé tábhachtach am a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I want to take time to answer",
+    "target": "is mian liom am a thógáil le freagra a thabhairt"
+   },
+   "known": "I want to take time to answer",
+   "target": "is mian liom am a chaitheamh le freagra a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we wanted to take a little more time",
+    "target": "ba mhian linn am a thógáil beagán níos mó"
+   },
+   "known": "we wanted to take a little more time",
+   "target": "ba mhian linn am a chaitheamh beagán níos mó",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03B07": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it is important to take time to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03C02": {
+   "action": "upd",
+   "role": "component",
+   "before": {
+    "known": "to take",
+    "target": "a thógáil"
+   },
+   "known": "to take",
+   "target": "a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "word tile"
+  },
+  "S0065L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself every week when learning Irish",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+   },
+   "known": "it is important to take time to test yourself every week when learning Irish",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't like taking time to give an answer when everyone is listening",
+    "target": "ní maith liom am a thógáil le freagra a thabhairt nuair atá daoine eile anseo"
+   },
+   "known": "I don't like taking time to give an answer when everyone is listening",
+   "target": "ní maith liom am a chaitheamh le freagra a thabhairt nuair atá daoine eile anseo",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we wanted to take a little more time to give you what you needed",
+    "target": "ba mhian linn am a thógáil beagán níos mó chun rud éigin a thabhairt duit"
+   },
+   "known": "we wanted to take a little more time to give you what you needed",
+   "target": "ba mhian linn am a chaitheamh beagán níos mó chun rud éigin a thabhairt duit",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take the time to think carefully about what I mean",
+    "target": "Tá sé tábhachtach am a thógáil chun smaoineamh go cúramach ar an rud atá i gceist agam"
+   },
+   "known": "it is important to take the time to think carefully about what I mean",
+   "target": "Tá sé tábhachtach am a chaitheamh chun smaoineamh go cúramach ar an rud atá i gceist agam",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to take time to practise speaking Irish as often as possible",
+    "target": "is mian liom am a thógáil chun labhairt a chleachtadh i nGaeilge chomh minic agus is féidir"
+   },
+   "known": "I want to take time to practise speaking Irish as often as possible",
+   "target": "is mian liom am a chaitheamh chun labhairt a chleachtadh i nGaeilge chomh minic agus is féidir",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she doesn't want to take time away from speaking with everyone else",
+    "target": "ní mian léi am a thógáil ó labhairt le gach duine eile"
+   },
+   "known": "she doesn't want to take time away from speaking with everyone else",
+   "target": "ní mian léi am a chaitheamh ó labhairt le gach duine eile",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am going to take time to come back and practise this next week",
+    "target": "tá mé chun am a thógáil teacht ar ais chun labhairt a chleachtadh an tseachtain seo chugainn"
+   },
+   "known": "I am going to take time to come back and practise this next week",
+   "target": "tá mé chun am a chaitheamh teacht ar ais chun labhairt a chleachtadh an tseachtain seo chugainn",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he doesn't want to take time to remember enough words right now",
+    "target": "ní mian leis am a thógáil chun cuimhneamh conas dóthain focal a rá anois"
+   },
+   "known": "he doesn't want to take time to remember enough words right now",
+   "target": "ní mian leis am a chaitheamh chun cuimhneamh conas dóthain focal a rá anois",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to take time to meet people who speak Irish well",
+    "target": "is mian liom am a thógáil chun bualadh le daoine a bhfuil Gaeilge an-mhaith acu"
+   },
+   "known": "I want to take time to meet people who speak Irish well",
+   "target": "is mian liom am a chaitheamh chun bualadh le daoine a bhfuil Gaeilge an-mhaith acu",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't want to take time away from practising speaking Irish with other people",
+    "target": "ní mian liom am a thógáil ó labhairt a chleachtadh i nGaeilge le daoine eile"
+   },
+   "known": "I don't want to take time away from practising speaking Irish with other people",
+   "target": "ní mian liom am a chaitheamh ó labhairt a chleachtadh i nGaeilge le daoine eile",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is useful to take time to say things more slowly",
+    "target": "Tá sé úsáideach am a thógáil chun rud éigin a rá níos moille"
+   },
+   "known": "it is useful to take time to say things more slowly",
+   "target": "Tá sé úsáideach am a chaitheamh chun rud éigin a rá níos moille",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she wanted to take time to learn enough words before speaking",
+    "target": "ba mhian léi am a thógáil chun dóthain focal a fhoghlaim"
+   },
+   "known": "she wanted to take time to learn enough words before speaking",
+   "target": "ba mhian léi am a chaitheamh chun dóthain focal a fhoghlaim",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I want to take time to do my best today and every week",
+    "target": "is mian liom am a thógáil chun mo dhícheall a dhéanamh inniu agus gach seachtaine"
+   },
+   "known": "I want to take time to do my best today and every week",
+   "target": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtaine",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U14": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not important to take too much time but it is important to try your best",
+    "target": "níl sé tábhachtach am a thógáil an iomarca ach Tá sé tábhachtach mo dhícheall a dhéanamh"
+   },
+   "known": "it is not important to take too much time but it is important to try your best",
+   "target": "níl sé tábhachtach am a chaitheamh an iomarca ach Tá sé tábhachtach mo dhícheall a dhéanamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L03U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I started thinking carefully last month about taking more time to practise",
+    "target": "thosaigh mé ag smaoineamh air go cúramach an mhí seo caite chun am a thógáil ag labhairt a chleachtadh"
+   },
+   "known": "I started thinking carefully last month about taking more time to practise",
+   "target": "thosaigh mé ag smaoineamh air go cúramach an mhí seo caite chun am a chaitheamh ag labhairt a chleachtadh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "in order to take time",
+    "target": "chun am a thógáil"
+   },
+   "known": "in order to take time",
+   "target": "chun am a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L04B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time in order to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it is important to take time in order to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time in order to test yourself when you are learning Irish",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil ag foghlaim Gaeilge"
+   },
+   "known": "it is important to take time in order to test yourself when you are learning Irish",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he wanted to take time in order to remember enough words",
+    "target": "ba mhian leis am a thógáil chun cuimhneamh conas dóthain focal a rá"
+   },
+   "known": "he wanted to take time in order to remember enough words",
+   "target": "ba mhian leis am a chaitheamh chun cuimhneamh conas dóthain focal a rá",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L05B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it is important to take time to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself every week when learning Irish",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+   },
+   "known": "it is important to take time to test yourself every week when learning Irish",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L06B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "time to test yourself",
+    "target": "am a thógáil chun tú féin a thástáil"
+   },
+   "known": "time to test yourself",
+   "target": "am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L06B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time to test yourself",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "it is important to take time to test yourself",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0065L06U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself when you are learning Irish",
+    "target": "Tá sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge"
+   },
+   "known": "it is important to take time to test yourself when you are learning Irish",
+   "target": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil nuair atá tú ag foghlaim Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0066L01U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not useful to take too much time before starting to speak Irish",
+    "target": "Níl sé úsáideach an iomarca ama a thógáil roimh tosú ag caint Gaeilge"
+   },
+   "known": "it is not useful to take too much time before starting to speak Irish",
+   "target": "Níl sé úsáideach an iomarca ama a chaitheamh roimh tosú ag caint Gaeilge",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0066L02U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is difficult but I think it is important to test yourself at the same time",
+    "target": "tá sé deacair ach tá sé tábhachtach am a thógáil chun tú féin a thástáil ag an am céanna"
+   },
+   "known": "it is difficult but I think it is important to test yourself at the same time",
+   "target": "tá sé deacair ach tá sé tábhachtach am a chaitheamh chun tú féin a thástáil ag an am céanna",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0066L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to find the answer carefully",
+    "target": "tá sé tábhachtach am a thógáil an freagra a fháil go cúramach"
+   },
+   "known": "it is important to take time to find the answer carefully",
+   "target": "tá sé tábhachtach am a chaitheamh an freagra a fháil go cúramach",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0066L04U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself and to find the answer",
+    "target": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus an freagra a fháil"
+   },
+   "known": "it is important to take time to test yourself and to find the answer",
+   "target": "tá sé tábhachtach am a chaitheamh chun tú féin a thástáil agus an freagra a fháil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0068L02U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to know what you are talking about today",
+    "target": "tá sé tábhachtach am a thógáil chun a fhios a bheith agam cad atá tú ag caint faoi inniu"
+   },
+   "known": "it is important to take time to know what you are talking about today",
+   "target": "tá sé tábhachtach am a chaitheamh chun a fhios a bheith agam cad atá tú ag caint faoi inniu",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0068L03U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we are looking for a good answer to the story but it is difficult to take time today",
+    "target": "tá muid ag lorg freagra maith ar an scéal ach tá sé deacair am a thógáil inniu"
+   },
+   "known": "we are looking for a good answer to the story but it is difficult to take time today",
+   "target": "tá muid ag lorg freagra maith ar an scéal ach tá sé deacair am a chaitheamh inniu",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L01U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "he didn't want to take time before he has to go but it was important",
+    "target": "Níor mhian leis am a thógáil sula gcaithfidh sé dul ach bhí sé tábhachtach"
+   },
+   "known": "he didn't want to take time before he has to go but it was important",
+   "target": "Níor mhian leis am a chaitheamh sula gcaithfidh sé dul ach bhí sé tábhachtach",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L03B06": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it is important to take time to look after yourself and to look after things",
+    "target": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus aire a thabhairt"
+   },
+   "known": "it is important to take time to look after yourself and to look after things",
+   "target": "tá sé tábhachtach am a chaitheamh chun tú féin a thástáil agus aire a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself and to look after things",
+    "target": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus aire a thabhairt"
+   },
+   "known": "it is important to take time to test yourself and to look after things",
+   "target": "tá sé tábhachtach am a chaitheamh chun tú féin a thástáil agus aire a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L04U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to look after the young dog every day",
+    "target": "tá sé tábhachtach am a thógáil chun aire a thabhairt don mhadra óg gach lá"
+   },
+   "known": "it is important to take time to look after the young dog every day",
+   "target": "tá sé tábhachtach am a chaitheamh chun aire a thabhairt don mhadra óg gach lá",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L05U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "she was not sure if she could help me this afternoon and I did not want to take too much of her time",
+    "target": "ní raibh sí cinnte an féidir léi cabhrú liom an tráthnóna seo agus ní maith liom an iomarca ama a thógáil"
+   },
+   "known": "she was not sure if she could help me this afternoon and I did not want to take too much of her time",
+   "target": "ní raibh sí cinnte an féidir léi cabhrú liom an tráthnóna seo agus ní maith liom an iomarca ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0069L05U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to take time to test yourself and I am going to do that this afternoon",
+    "target": "tá sé tábhachtach am a thógáil chun tú féin a thástáil agus tá mé chun é sin a dhéanamh an tráthnóna seo"
+   },
+   "known": "it is important to take time to test yourself and I am going to do that this afternoon",
+   "target": "tá sé tábhachtach am a chaitheamh chun tú féin a thástáil agus tá mé chun é sin a dhéanamh an tráthnóna seo",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0085L04U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I do not know those people, and I do not want to take too much time giving an answer",
+    "target": "Níl aithne agam ar na daoine sin, agus ní maith liom an iomarca ama a thógáil le freagra a thabhairt"
+   },
+   "known": "I do not know those people, and I do not want to take too much time giving an answer",
+   "target": "Níl aithne agam ar na daoine sin, agus ní maith liom an iomarca ama a chaitheamh le freagra a thabhairt",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0088L05U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not sure when I will be ready to finish yet, but I know it is important to take time to test yourself",
+    "target": "Níl mé cinnte cathain a bheidh mé réidh críochnú go fóill, ach tá a fhios agam go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "I'm not sure when I will be ready to finish yet, but I know it is important to take time to test yourself",
+   "target": "Níl mé cinnte cathain a bheidh mé réidh críochnú go fóill, ach tá a fhios agam go bhfuil sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0089L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that there is a lot done in a short time, and I'm really pleased with what I've already learned",
+    "target": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think that there is a lot done in a short time, and I'm really pleased with what I've already learned",
+   "target": "ceapaim go bhfuil a lán déanta in achar gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "in a short time today",
+    "target": "in am gearr inniu"
+   },
+   "known": "in a short time today",
+   "target": "in achar gearr inniu",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to finish in a short time",
+    "target": "críochnú in am gearr"
+   },
+   "known": "to finish in a short time",
+   "target": "críochnú in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "ready in a short time",
+    "target": "réidh in am gearr"
+   },
+   "known": "ready in a short time",
+   "target": "réidh in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to finish in a short time now",
+    "target": "críochnú in am gearr anois"
+   },
+   "known": "to finish in a short time now",
+   "target": "críochnú in achar gearr anois",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "unfortunately I can't finish in a short time",
+    "target": "faraor ní féidir liom críochnú in am gearr"
+   },
+   "known": "unfortunately I can't finish in a short time",
+   "target": "faraor ní féidir liom críochnú in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "unfortunately I'm not going to be ready in a short time",
+    "target": "faraor ní bheidh mé réidh in am gearr"
+   },
+   "known": "unfortunately I'm not going to be ready in a short time",
+   "target": "faraor ní bheidh mé réidh in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is not easy to learn Irish in a short time",
+    "target": "níl sé éasca Gaeilge a fhoghlaim in am gearr"
+   },
+   "known": "it is not easy to learn Irish in a short time",
+   "target": "níl sé éasca Gaeilge a fhoghlaim in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to finish in a short time",
+    "target": "an bhfuil tú chun críochnú in am gearr"
+   },
+   "known": "are you going to finish in a short time",
+   "target": "an bhfuil tú chun críochnú in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you I can finish in a short time today",
+    "target": "go raibh maith agat is féidir liom críochnú in am gearr inniu"
+   },
+   "known": "thank you I can finish in a short time today",
+   "target": "go raibh maith agat is féidir liom críochnú in achar gearr inniu",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to be able to learn Irish in a short time",
+    "target": "ba mhaith liom a bheith in ann Gaeilge a fhoghlaim in am gearr"
+   },
+   "known": "I'd like to be able to learn Irish in a short time",
+   "target": "ba mhaith liom a bheith in ann Gaeilge a fhoghlaim in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I don't know how to learn Irish in a short time",
+    "target": "níl a fhios agam conas Gaeilge a fhoghlaim in am gearr"
+   },
+   "known": "I don't know how to learn Irish in a short time",
+   "target": "níl a fhios agam conas Gaeilge a fhoghlaim in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I think there is a lot done in a short time",
+    "target": "ceapaim go bhfuil a lán déanta in am gearr"
+   },
+   "known": "I think there is a lot done in a short time",
+   "target": "ceapaim go bhfuil a lán déanta in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there is a lot done in a short time, and I'm really pleased with what I've already learned so far",
+    "target": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think there is a lot done in a short time, and I'm really pleased with what I've already learned so far",
+   "target": "ceapaim go bhfuil a lán déanta in achar gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there is a lot done that I have achieved in a short time, and I'm really pleased with everything I've learned",
+    "target": "ceapaim go bhfuil a lán déanta agam in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think there is a lot done that I have achieved in a short time, and I'm really pleased with everything I've learned",
+   "target": "ceapaim go bhfuil a lán déanta agam in achar gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0089L06U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there is a lot done in a short time, and I'm very pleased with everything I've already learned",
+    "target": "ceapaim go bhfuil a lán déanta in am gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think there is a lot done in a short time, and I'm very pleased with everything I've already learned",
+   "target": "ceapaim go bhfuil a lán déanta in achar gearr, agus tá mé an-sásta leis an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0093L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it is important to know when it is time to go and not to take too much time",
+    "target": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am dul agus gan an iomarca ama a thógáil"
+   },
+   "known": "it is important to know when it is time to go and not to take too much time",
+   "target": "Tá sé tábhachtach a fhios a bheith agam cathain a bhfuil sé in am dul agus gan an iomarca ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0094L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "that it will work in a short time",
+    "target": "a n-oibreoidh sé in am gearr"
+   },
+   "known": "that it will work in a short time",
+   "target": "a n-oibreoidh sé in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0101L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we wanted to be finding out the truth in a short time",
+    "target": "ba mhian linn an fhírinne a fháil amach in am gearr"
+   },
+   "known": "we wanted to be finding out the truth in a short time",
+   "target": "ba mhian linn an fhírinne a fháil amach in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0102L04U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know that it is not possible to learn a language in such a short time",
+    "target": "Tá a fhios agam nach bhfuil sé indéanta teanga a fhoghlaim in am gearr"
+   },
+   "known": "I know that it is not possible to learn a language in such a short time",
+   "target": "Tá a fhios agam nach bhfuil sé indéanta teanga a fhoghlaim in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0110L05U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I know that it's important to relax and take some time to think carefully",
+    "target": "Tá a fhios agam go bhfuil sé tábhachtach scíth a ligean agus am a thógáil le smaoineamh go cúramach"
+   },
+   "known": "I know that it's important to relax and take some time to think carefully",
+   "target": "Tá a fhios agam go bhfuil sé tábhachtach scíth a ligean agus am a chaitheamh le smaoineamh go cúramach",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0112L01U12": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it's very interesting that you can learn so much in such a short time",
+    "target": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú in ann a fhoghlaim a lán in am gearr"
+   },
+   "known": "I think it's very interesting that you can learn so much in such a short time",
+   "target": "ceapaim go bhfuil sé an-suimiúil go bhfuil tú in ann a fhoghlaim a lán in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0112L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we weren't expecting it to be so difficult to learn so many words in such a short time",
+    "target": "Ní raibh muid ag súil leis go mbeadh sé chomh deacair sin mórán focal nua a fhoghlaim in am gearr"
+   },
+   "known": "we weren't expecting it to be so difficult to learn so many words in such a short time",
+   "target": "Ní raibh muid ag súil leis go mbeadh sé chomh deacair sin mórán focal nua a fhoghlaim in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0116L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "this isn't the story and it's important to take time to think about it",
+    "target": "Ní hé seo an scéal agus tá sé tábhachtach am a thógáil le smaoineamh air"
+   },
+   "known": "this isn't the story and it's important to take time to think about it",
+   "target": "Ní hé seo an scéal agus tá sé tábhachtach am a chaitheamh le smaoineamh air",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0123L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I think there's a lot done in a short time",
+    "target": "ceapaim go bhfuil a lán déanta agam in am gearr"
+   },
+   "known": "I think there's a lot done in a short time",
+   "target": "ceapaim go bhfuil a lán déanta agam in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0123L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it's important to take time to test yourself when you are trying to learn something new",
+    "target": "ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim"
+   },
+   "known": "I think it's important to take time to test yourself when you are trying to learn something new",
+   "target": "ceapaim go bhfuil sé tábhachtach am a chaitheamh chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0123L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think there's a lot done already in a short time and I'm very happy with how much I've already learned",
+    "target": "ceapaim go bhfuil a lán déanta agam in am gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "I think there's a lot done already in a short time and I'm very happy with how much I've already learned",
+   "target": "ceapaim go bhfuil a lán déanta agam in achar gearr agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0123L01U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think it's a good thing to take time to rest after we finish before I have to go",
+    "target": "ceapaim gur rud maith é am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   },
+   "known": "I think it's a good thing to take time to rest after we finish before I have to go",
+   "target": "ceapaim gur rud maith é am a chaitheamh chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0123L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good idea to take time to rest after we finish because when we learn something new it changes our brain",
+    "target": "ceapaim gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn"
+   },
+   "known": "I think that it's a good idea to take time to rest after we finish because when we learn something new it changes our brain",
+   "target": "ceapaim gur smaoineamh maith é sin am a chaitheamh chun scíth a ligean tar éis dúinn críochnú mar nuair a fhoghlaimíonn muid rud nua athraíonn sé ár n-inchinn",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0123L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I think that it's a good idea and I am very happy with how much has already been learned in such a short time",
+    "target": "ceapaim gur smaoineamh maith é sin agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I think that it's a good idea and I am very happy with how much has already been learned in such a short time",
+   "target": "ceapaim gur smaoineamh maith é sin agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0124L01U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought it was important to take time to test yourself when you are trying to learn something new",
+    "target": "cheap mé go raibh sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim"
+   },
+   "known": "I thought it was important to take time to test yourself when you are trying to learn something new",
+   "target": "cheap mé go raibh sé tábhachtach am a chaitheamh chun tú féin a thástáil nuair atá tú ag iarraidh rud nua a fhoghlaim",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0124L02U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea and I was very happy with how much had already been learned in such a short time",
+    "target": "cheap mé gur smaoineamh maith é sin agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I thought that it was a good idea and I was very happy with how much had already been learned in such a short time",
+   "target": "cheap mé gur smaoineamh maith é sin agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0124L02U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I thought that it was a good idea to take time to rest after we finish before I have to go",
+    "target": "cheap mé gur smaoineamh maith é sin am a thógáil chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+   },
+   "known": "I thought that it was a good idea to take time to rest after we finish before I have to go",
+   "target": "cheap mé gur smaoineamh maith é sin am a chaitheamh chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0125L01B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I believe that it's very important to test yourself",
+    "target": "creidim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil"
+   },
+   "known": "I believe that it's very important to test yourself",
+   "target": "creidim go bhfuil sé tábhachtach am a chaitheamh chun tú féin a thástáil",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0125L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe it's important to take time to test yourself and to stop being worried about making mistakes when you are learning Irish",
+    "target": "creidim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil agus stopadh ag smaoineamh ar bheith buartha faoi bhotúin a dhéanamh"
+   },
+   "known": "I believe it's important to take time to test yourself and to stop being worried about making mistakes when you are learning Irish",
+   "target": "creidim go bhfuil sé tábhachtach am a chaitheamh chun tú féin a thástáil agus stopadh ag smaoineamh ar bheith buartha faoi bhotúin a dhéanamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0125L01U10": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I'm very happy with how much has been learned in such a short time already",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I believe that your idea was very good and I'm very happy with how much has been learned in such a short time already",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0125L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I am very happy with how much has been learned by both of us already",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "I believe that your idea was very good and I am very happy with how much has been learned by both of us already",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0125L02U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believe that your idea was very good and I think there is still a lot more to learn but I am doing very well so far",
+    "target": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil a lán fós le foghlaim agam ach tá mé ag déanamh go han-mhaith in am gearr"
+   },
+   "known": "I believe that your idea was very good and I think there is still a lot more to learn but I am doing very well so far",
+   "target": "creidim go raibh do smaoineamh an-mhaith agus ceapaim go bhfuil a lán fós le foghlaim agam ach tá mé ag déanamh go han-mhaith in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0127L01U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+    "target": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "That isn't the reason and I believe that your idea was very good and I am very happy with what has been learned in a short time",
+   "target": "Ní hé sin an chúis agus creidim go raibh do smaoineamh an-mhaith agus tá an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0127L01U11": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+    "target": "Ní hé sin an chúis agus ceapaim go bhfuil a lán déanta agam in am gearr agus ba chóir duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+   },
+   "known": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+   "target": "Ní hé sin an chúis agus ceapaim go bhfuil a lán déanta agam in achar gearr agus ba chóir duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0127L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you because I was looking forward to speaking with you about how much we have already learned together",
+    "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in am gearr"
+   },
+   "known": "That isn't the reason why I wanted to see you because I was looking forward to speaking with you about how much we have already learned together",
+   "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil mar bhí mé ag tnúth le labhairt leat faoin méid atá foghlamtha againn cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0127L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+    "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in am gearr"
+   },
+   "known": "That isn't the reason why I wanted to see you and I was very happy with how much has been learned in such a short time already",
+   "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus bhí an-áthas orm as an méid atá foghlamtha agam cheana féin in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0127L03U09": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "That isn't the reason why I wanted to see you and I think it's important to take time to test yourself when you are learning something new",
+    "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a thógáil chun tú féin a thástáil nuair atá tú ag foghlaim rud nua"
+   },
+   "known": "That isn't the reason why I wanted to see you and I think it's important to take time to test yourself when you are learning something new",
+   "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ceapaim go bhfuil sé tábhachtach am a chaitheamh chun tú féin a thástáil nuair atá tú ag foghlaim rud nua",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0161L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to meet us on sunday morning",
+    "target": "bualadh linn maidin Dé Domhnaigh"
+   },
+   "known": "to meet us on sunday morning",
+   "target": "bualadh linn maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "on sunday morning or tonight",
+    "target": "maidin Dé Domhnaigh nó anocht"
+   },
+   "known": "on sunday morning or tonight",
+   "target": "maidin Domhnaigh nó anocht",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to go home on sunday morning",
+    "target": "dul abhaile maidin Dé Domhnaigh"
+   },
+   "known": "to go home on sunday morning",
+   "target": "dul abhaile maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to see you on sunday morning",
+    "target": "tú a fheiceáil maidin Dé Domhnaigh"
+   },
+   "known": "to see you on sunday morning",
+   "target": "tú a fheiceáil maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "can you meet us on sunday morning",
+    "target": "an féidir leat bualadh linn maidin Dé Domhnaigh"
+   },
+   "known": "can you meet us on sunday morning",
+   "target": "an féidir leat bualadh linn maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to go to a restaurant on sunday morning or tonight",
+    "target": "an mian leat dul chuig bialann maidin Dé Domhnaigh nó anocht"
+   },
+   "known": "do you want to go to a restaurant on sunday morning or tonight",
+   "target": "an mian leat dul chuig bialann maidin Domhnaigh nó anocht",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i'm not going to leave on sunday morning because i feel tired",
+    "target": "níl mé chun imeacht maidin Dé Domhnaigh mar mothaím tuirseach"
+   },
+   "known": "i'm not going to leave on sunday morning because i feel tired",
+   "target": "níl mé chun imeacht maidin Domhnaigh mar mothaím tuirseach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "on sunday morning let's talk in irish",
+    "target": "maidin Dé Domhnaigh labhraímis i nGaeilge"
+   },
+   "known": "on sunday morning let's talk in irish",
+   "target": "maidin Domhnaigh labhraímis i nGaeilge",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i hope that you'll finish on sunday morning",
+    "target": "tá súil agam go gcríochnóidh tú maidin Dé Domhnaigh"
+   },
+   "known": "i hope that you'll finish on sunday morning",
+   "target": "tá súil agam go gcríochnóidh tú maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i would like to see you on sunday morning",
+    "target": "ba mhaith liom tú a fheiceáil maidin Dé Domhnaigh"
+   },
+   "known": "i would like to see you on sunday morning",
+   "target": "ba mhaith liom tú a fheiceáil maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0161L04U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "we must leave on sunday morning",
+    "target": "caithfidh muid imeacht maidin Dé Domhnaigh"
+   },
+   "known": "we must leave on sunday morning",
+   "target": "caithfidh muid imeacht maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Sunday morning and then",
+    "target": "maidin Dé Domhnaigh agus ansin"
+   },
+   "known": "Sunday morning and then",
+   "target": "maidin Domhnaigh agus ansin",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "later on Sunday morning",
+    "target": "níos déanaí maidin Dé Domhnaigh"
+   },
+   "known": "later on Sunday morning",
+   "target": "níos déanaí maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to go to a restaurant Sunday morning",
+    "target": "dul chuig bialann maidin Dé Domhnaigh"
+   },
+   "known": "to go to a restaurant Sunday morning",
+   "target": "dul chuig bialann maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "come and help you Sunday morning and then",
+    "target": "teacht agus cabhrú leat maidin Dé Domhnaigh agus ansin"
+   },
+   "known": "come and help you Sunday morning and then",
+   "target": "teacht agus cabhrú leat maidin Domhnaigh agus ansin",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "what do you need to do Sunday morning",
+    "target": "cad atá le déanamh agat maidin Dé Domhnaigh"
+   },
+   "known": "what do you need to do Sunday morning",
+   "target": "cad atá le déanamh agat maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "Sunday morning I'm not going to be ready",
+    "target": "maidin Dé Domhnaigh ní bheidh mé réidh"
+   },
+   "known": "Sunday morning I'm not going to be ready",
+   "target": "maidin Domhnaigh ní bheidh mé réidh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to go to a restaurant Sunday morning or tomorrow afternoon",
+    "target": "an mian leat dul chuig bialann maidin Dé Domhnaigh nó tráthnóna amárach"
+   },
+   "known": "do you want to go to a restaurant Sunday morning or tomorrow afternoon",
+   "target": "an mian leat dul chuig bialann maidin Domhnaigh nó tráthnóna amárach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "Sunday morning we must work hard",
+    "target": "maidin Dé Domhnaigh caithfidh muid obair go dian"
+   },
+   "known": "Sunday morning we must work hard",
+   "target": "maidin Domhnaigh caithfidh muid obair go dian",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I hope that you'll finish Sunday morning",
+    "target": "tá súil agam go gcríochnóidh tú maidin Dé Domhnaigh"
+   },
+   "known": "I hope that you'll finish Sunday morning",
+   "target": "tá súil agam go gcríochnóidh tú maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I was tired Sunday morning",
+    "target": "bhí mé tuirseach maidin Dé Domhnaigh"
+   },
+   "known": "I was tired Sunday morning",
+   "target": "bhí mé tuirseach maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0175L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you I'll be able to come and help you Sunday morning",
+    "target": "go raibh maith agat beidh mé in ann teacht agus cabhrú leat maidin Dé Domhnaigh"
+   },
+   "known": "thank you I'll be able to come and help you Sunday morning",
+   "target": "go raibh maith agat beidh mé in ann teacht agus cabhrú leat maidin Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to see you Sunday afternoon",
+    "target": "tú a fheiceáil tráthnóna Dé Domhnaigh"
+   },
+   "known": "to see you Sunday afternoon",
+   "target": "tú a fheiceáil tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "Sunday afternoon and then",
+    "target": "tráthnóna Dé Domhnaigh agus ansin"
+   },
+   "known": "Sunday afternoon and then",
+   "target": "tráthnóna Domhnaigh agus ansin",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "to go to a restaurant Sunday afternoon",
+    "target": "dul chuig bialann tráthnóna Dé Domhnaigh"
+   },
+   "known": "to go to a restaurant Sunday afternoon",
+   "target": "dul chuig bialann tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I did not have time Sunday afternoon",
+    "target": "ní raibh am agam tráthnóna Dé Domhnaigh"
+   },
+   "known": "I did not have time Sunday afternoon",
+   "target": "ní raibh am agam tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'd like to see you Sunday afternoon",
+    "target": "ba mhaith liom tú a fheiceáil tráthnóna Dé Domhnaigh"
+   },
+   "known": "I'd like to see you Sunday afternoon",
+   "target": "ba mhaith liom tú a fheiceáil tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "are you going to come back Sunday afternoon",
+    "target": "an bhfuil tú chun teacht ar ais tráthnóna Dé Domhnaigh"
+   },
+   "known": "are you going to come back Sunday afternoon",
+   "target": "an bhfuil tú chun teacht ar ais tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'm not going to go home Sunday afternoon",
+    "target": "níl mé chun dul abhaile tráthnóna Dé Domhnaigh"
+   },
+   "known": "I'm not going to go home Sunday afternoon",
+   "target": "níl mé chun dul abhaile tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "Sunday afternoon I'll be able to come and help you",
+    "target": "tráthnóna Dé Domhnaigh beidh mé in ann teacht agus cabhrú leat"
+   },
+   "known": "Sunday afternoon I'll be able to come and help you",
+   "target": "tráthnóna Domhnaigh beidh mé in ann teacht agus cabhrú leat",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to go to a restaurant Sunday afternoon",
+    "target": "an mian leat dul chuig bialann tráthnóna Dé Domhnaigh"
+   },
+   "known": "do you want to go to a restaurant Sunday afternoon",
+   "target": "an mian leat dul chuig bialann tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I did not have time Sunday afternoon although I wanted to see you",
+    "target": "ní raibh am agam tráthnóna Dé Domhnaigh cé gur mhian liom tú a fheiceáil"
+   },
+   "known": "I did not have time Sunday afternoon although I wanted to see you",
+   "target": "ní raibh am agam tráthnóna Domhnaigh cé gur mhian liom tú a fheiceáil",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I'll ask him if he will be able to help Sunday afternoon",
+    "target": "fiafróidh mé de an mbeidh sé in ann cabhrú tráthnóna Dé Domhnaigh"
+   },
+   "known": "I'll ask him if he will be able to help Sunday afternoon",
+   "target": "fiafróidh mé de an mbeidh sé in ann cabhrú tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0179L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you and I'll be able to come and help you Sunday afternoon",
+    "target": "go raibh maith agat agus beidh mé in ann teacht agus cabhrú leat tráthnóna Dé Domhnaigh"
+   },
+   "known": "thank you and I'll be able to come and help you Sunday afternoon",
+   "target": "go raibh maith agat agus beidh mé in ann teacht agus cabhrú leat tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0181L05U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to bring my mother to the doctor this Sunday afternoon unfortunately",
+    "target": "caithfidh mé mo mháthair a thabhairt chuig an dochtúir tráthnóna Dé Domhnaigh faraor"
+   },
+   "known": "I have to bring my mother to the doctor this Sunday afternoon unfortunately",
+   "target": "caithfidh mé mo mháthair a thabhairt chuig an dochtúir tráthnóna Domhnaigh faraor",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0181L05U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to ask her what are you going to do before she has to leave on Sunday",
+    "target": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht Dé Domhnaigh"
+   },
+   "known": "I have to ask her what are you going to do before she has to leave on Sunday afternoon",
+   "target": "caithfidh mé ceist a chur uirthi cad atá tú chun a dhéanamh sula gcaithfidh sí imeacht tráthnóna Domhnaigh",
+   "family": "K14 Sunday",
+   "why": "K14: ar an Domhnach is not taught until 218, so this row says Sunday afternoon"
+  },
+  "S0181L05U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to go now but I would like to meet again on Sunday afternoon to talk more",
+    "target": "caithfidh mé dul anois ach ba mhaith liom bualadh arís tráthnóna Dé Domhnaigh le labhairt níos mó"
+   },
+   "known": "I have to go now but I would like to meet again on Sunday afternoon to talk more",
+   "target": "caithfidh mé dul anois ach ba mhaith liom bualadh arís tráthnóna Domhnaigh le labhairt níos mó",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0181L05U15": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I have to ask her if she can help me for a while this Sunday morning",
+    "target": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+   },
+   "known": "I have to ask her if she can help me for a while this Sunday morning",
+   "target": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Domhnaigh seo",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0209L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "they want to meet together as a group",
+    "target": "Is mian leo bualadh le chéile mar ghrúpa"
+   },
+   "known": "they want to meet together as a group",
+   "target": "Is mian leo bualadh le chéile mar bhuíon",
+   "family": "K12 buíon",
+   "why": "swap"
+  },
+  "S0210L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they say that we must spend more time as a group",
+    "target": "deir siad go gcaithfidh muid níos mó ama a chaitheamh mar ghrúpa"
+   },
+   "known": "they say that we must spend more time as a group",
+   "target": "deir siad go gcaithfidh muid níos mó ama a chaitheamh mar bhuíon",
+   "family": "K12 buíon",
+   "why": "swap"
+  },
+  "S0210L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "we must discuss the problem as a group",
+    "target": "caithfidh muid an fhadhb a phlé mar ghrúpa"
+   },
+   "known": "we must discuss the problem as a group",
+   "target": "caithfidh muid an fhadhb a phlé mar bhuíon",
+   "family": "K12 buíon",
+   "why": "swap"
+  },
+  "S0214L04U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "they want to spend the weekend as a group",
+    "target": "is mian leo an deireadh seachtaine a chaitheamh mar ghrúpa"
+   },
+   "known": "they want to spend the weekend as a group",
+   "target": "is mian leo an deireadh seachtaine a chaitheamh mar bhuíon",
+   "family": "K12 buíon",
+   "why": "swap"
+  },
+  "S0218L03B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "i went out on Sunday",
+    "target": "chuaigh mé amach Dé Domhnaigh"
+   },
+   "known": "i went out on Sunday",
+   "target": "chuaigh mé amach ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "on Sunday i saw a few friends",
+    "target": "Dé Domhnaigh chonaic mé cúpla cara"
+   },
+   "known": "on Sunday i saw a few friends",
+   "target": "ar an Domhnach chonaic mé cúpla cara",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "today or on Sunday",
+    "target": "inniu nó Dé Domhnaigh"
+   },
+   "known": "today or on Sunday",
+   "target": "inniu nó ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "i am too busy on Sunday",
+    "target": "tá mé ró-ghnóthach Dé Domhnaigh"
+   },
+   "known": "i am too busy on Sunday",
+   "target": "tá mé ró-ghnóthach ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i didn't do much on Sunday but i saw a few friends",
+    "target": "ní dhearna mé mórán Dé Domhnaigh ach chonaic mé cúpla cara"
+   },
+   "known": "i didn't do much on Sunday but i saw a few friends",
+   "target": "ní dhearna mé mórán ar an Domhnach ach chonaic mé cúpla cara",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i didn't have time on Sunday although i wanted to see you",
+    "target": "ní raibh am agam Dé Domhnaigh cé gur mhian liom tú a fheiceáil"
+   },
+   "known": "i didn't have time on Sunday although i wanted to see you",
+   "target": "ní raibh am agam ar an Domhnach cé gur mhian liom tú a fheiceáil",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "on Sunday my mother went to the doctor",
+    "target": "Dé Domhnaigh chuaigh mo mháthair chuig an dochtúir"
+   },
+   "known": "on Sunday my mother went to the doctor",
+   "target": "ar an Domhnach chuaigh mo mháthair chuig an dochtúir",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i am sorry but i am too busy on Sunday",
+    "target": "tá brón orm ach tá mé ró-ghnóthach Dé Domhnaigh"
+   },
+   "known": "i am sorry but i am too busy on Sunday",
+   "target": "tá brón orm ach tá mé ró-ghnóthach ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "do you want to go to a restaurant on Sunday",
+    "target": "an mian leat dul chuig bialann Dé Domhnaigh"
+   },
+   "known": "do you want to go to a restaurant on Sunday",
+   "target": "an mian leat dul chuig bialann ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "what do you need to do on Sunday",
+    "target": "cad atá le déanamh agat Dé Domhnaigh"
+   },
+   "known": "what do you need to do on Sunday",
+   "target": "cad atá le déanamh agat ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i think that you left my book at work on Sunday",
+    "target": "ceapaim gur fhág tú mo leabhar ag an obair Dé Domhnaigh"
+   },
+   "known": "i think that you left my book at work on Sunday",
+   "target": "ceapaim gur fhág tú mo leabhar ag an obair ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0218L03U08": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "i would like to read my book on Sunday",
+    "target": "ba mhaith liom mo leabhar a léamh Dé Domhnaigh"
+   },
+   "known": "i would like to read my book on Sunday",
+   "target": "ba mhaith liom mo leabhar a léamh ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0219L01B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it was great on Sunday",
+    "target": "bhí sé go hiontach Dé Domhnaigh"
+   },
+   "known": "it was great on Sunday",
+   "target": "bhí sé go hiontach ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0219L01U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I did not do much on Sunday but it was very interesting",
+    "target": "ní dhearna mé mórán Dé Domhnaigh ach bhí sé an-suimiúil"
+   },
+   "known": "I did not do much on Sunday but it was very interesting",
+   "target": "ní dhearna mé mórán ar an Domhnach ach bhí sé an-suimiúil",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0219L02B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "nice and quiet",
+    "target": "deas agus ciúin"
+   },
+   "known": "nice and quiet",
+   "target": "go deas agus ciúin",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02B02": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it was nice",
+    "target": "bhí sé deas"
+   },
+   "known": "it was nice",
+   "target": "bhí sé go deas",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02B03": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "that would be nice",
+    "target": "bheadh sé sin deas"
+   },
+   "known": "that would be nice",
+   "target": "bheadh sé sin go deas",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it was nice to see you",
+    "target": "bhí sé deas tú a fheiceáil"
+   },
+   "known": "it was nice to see you",
+   "target": "bhí sé go deas tú a fheiceáil",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I did not do much but it was nice",
+    "target": "ní dhearna mé mórán ach bhí sé deas"
+   },
+   "known": "I did not do much but it was nice",
+   "target": "ní dhearna mé mórán ach bhí sé go deas",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I did not have time but it was nice to see you",
+    "target": "ní raibh am agam ach bhí sé deas tú a fheiceáil"
+   },
+   "known": "I did not have time but it was nice to see you",
+   "target": "ní raibh am agam ach bhí sé go deas tú a fheiceáil",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U03": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it was nice when we were in the pub",
+    "target": "bhí sé deas nuair a bhí muid sa teach tábhairne"
+   },
+   "known": "it was nice when we were in the pub",
+   "target": "bhí sé go deas nuair a bhí muid sa teach tábhairne",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U05": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you it was nice to practise speaking with you",
+    "target": "go raibh maith agat bhí sé deas labhairt a chleachtadh leat"
+   },
+   "known": "thank you it was nice to practise speaking with you",
+   "target": "go raibh maith agat bhí sé go deas labhairt a chleachtadh leat",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I went out Saturday night and it was nice",
+    "target": "chuaigh mé amach oíche Shathairn agus bhí sé deas"
+   },
+   "known": "I went out Saturday night and it was nice",
+   "target": "chuaigh mé amach oíche Shathairn agus bhí sé go deas",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0219L02U07": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it was nice and quiet in the office",
+    "target": "bhí sé deas agus ciúin san oifig"
+   },
+   "known": "it was nice and quiet in the office",
+   "target": "bhí sé go deas agus ciúin san oifig",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0225L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am sorry but he would give the book on Sunday",
+    "target": "tá brón orm ach thabharfadh sé an leabhar Dé Domhnaigh"
+   },
+   "known": "I am sorry but he would give the book on Sunday",
+   "target": "tá brón orm ach thabharfadh sé an leabhar ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0242L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you what are you going to give to her on sunday",
+    "target": "go raibh maith agat cad atá tú chun a thabhairt di Dé Domhnaigh"
+   },
+   "known": "thank you what are you going to give to her on sunday",
+   "target": "go raibh maith agat cad atá tú chun a thabhairt di ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0245L03B05": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "I'm happy with how much I've done in a short time",
+    "target": "Tá áthas orm as an méid atá déanta agam in am gearr"
+   },
+   "known": "I'm happy with how much I've done in a short time",
+   "target": "Tá áthas orm as an méid atá déanta agam in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0245L03U02": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I am happy with how much that I have done in such a short time",
+    "target": "tá áthas orm as an méid atá déanta agam in am gearr"
+   },
+   "known": "I am happy with how much that I have done in such a short time",
+   "target": "tá áthas orm as an méid atá déanta agam in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0248L02U13": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I believed that it was possible to achieve a lot in a short amount of time",
+    "target": "creidim go raibh sé indéanta a lán a bhaint amach in am gearr"
+   },
+   "known": "I believed that it was possible to achieve a lot in a short amount of time",
+   "target": "creidim go raibh sé indéanta a lán a bhaint amach in achar gearr",
+   "family": "K9 in achar gearr",
+   "why": "swap"
+  },
+  "S0248L04B01": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "it was complete rubbish on Sunday",
+    "target": "bhí sé go hiomlán uafásach Dé Domhnaigh"
+   },
+   "known": "it was complete rubbish on Sunday",
+   "target": "bhí sé go hiomlán uafásach ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0248L04U04": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "it was complete rubbish but it was nice to relax for a while",
+    "target": "bhí sé go hiomlán uafásach ach bhí sé deas scíth a ligean ar feadh tamaill"
+   },
+   "known": "it was complete rubbish but it was nice to relax for a while",
+   "target": "bhí sé go hiomlán uafásach ach bhí sé go deas scíth a ligean ar feadh tamaill",
+   "family": "K13 go deas / go hálainn",
+   "why": "swap"
+  },
+  "S0252L01B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "but when will you be ready to start on sunday",
+    "target": "ach cathain a bheidh tú réidh le tosú dé domhnaigh"
+   },
+   "known": "but when will you be ready to start on sunday",
+   "target": "ach cathain a bheidh tú réidh le tosú ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0256L01U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "thank you I think I'll be ready on Sunday",
+    "target": "go raibh maith agat ceapaim go mbeidh mé réidh Dé Domhnaigh"
+   },
+   "known": "thank you I think I'll be ready on Sunday",
+   "target": "go raibh maith agat ceapaim go mbeidh mé réidh ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0266L03B04": {
+   "action": "upd",
+   "role": "build",
+   "before": {
+    "known": "my father who was there on sunday",
+    "target": "m'athair a bhí ann dé domhnaigh"
+   },
+   "known": "my father who was there on sunday",
+   "target": "m'athair a bhí ann ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0268L03U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "and then she sent two emails to me on sunday",
+    "target": "agus ansin sheol sí dhá ríomhphost chugam dé domhnaigh"
+   },
+   "known": "and then she sent two emails to me on sunday",
+   "target": "agus ansin sheol sí dhá ríomhphost chugam ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  },
+  "S0269L02U06": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "why don't you want to take more time",
+    "target": "cén fáth nach mian leat níos mó ama a thógáil"
+   },
+   "known": "why don't you want to take more time",
+   "target": "cén fáth nach mian leat níos mó ama a chaitheamh",
+   "family": "K10 am a chaitheamh",
+   "why": "swap"
+  },
+  "S0288L02U01": {
+   "action": "upd",
+   "role": "use",
+   "before": {
+    "known": "I enjoy watching television on Sunday",
+    "target": "bainim taitneamh as féachaint ar theilifís dé domhnaigh"
+   },
+   "known": "I enjoy watching television on Sunday",
+   "target": "bainim taitneamh as féachaint ar theilifís ar an Domhnach",
+   "family": "K14 Sunday",
+   "why": "swap"
+  }
+ }
+}

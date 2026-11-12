@@ -221,7 +221,25 @@ N.update({
 456:(O,EN+" Ours matches your first option.",""),
 })
 FIX.pop(139,None)
+# Job #403, K1-K14 (Kai's rulings on the keep-ours style list, 12 Nov): we now follow you on enough / a lot / many, yet / still,
+# instead of, able, should, the reason, a short time, take time, reach, group, go deas / go hálainn and Sunday. The stale "we kept" notes
+# are removed below (KSTALE) and a row whose Irish now equals yours is marked Same.
+N.update({
+137:(None,None,"You write 'seachas' for 'than' here and for 'despite' at 593. 'than' is 'ná' in every other seed (42, 87, 117). Can we keep 'ná' for 'than' and use 'seachas' only for 'instead of' (502, 523)?"),
+593:(None,None,"Your 'Seachas m'argóintí go léir' uses 'seachas' for 'despite'. We use 'seachas' for 'instead of' (502, 523). Is there another way to say 'however much I argued' so that 'seachas' keeps one meaning?"),
+649:(None,None,"You wrote 'réidh' here and 'ullamh' in the other 'ready' seeds. We use 'réidh' throughout because it is taught early and is easy. Is 'réidh' fine in every one of them?"),
+475:(D,"We use 'mórán' for 'many' in every seed (103, 297, 475) and 'a lán' for 'a lot'.","Is 'Tá mórán cúiseanna ann' fine for 'there are many reasons', or does a positive sentence need 'a lán'?"),
+562:(D,"We took your first option, 'an áit a shroicheadh', without the second 'ach'.","Is 'Níl ann ach gur mian liom an áit a shroicheadh slán sábháilte' right, or did you mean the second 'ach' to stay?"),
+374:(None,None,"You write 'go hálainn' here; we kept 'an-álainn' because the English says 'very beautiful'. Is 'go raibh sé an-álainn' right?"),
+})
 PEND=[n for n in PEND if n in (27,55,120,121,239,240)]   # 'taitin': held for Eoghan's answer at seed 27
+import os,glob
+KSEEDS=set()
+for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','gle-v2-403','decisions-k*.json')): KSEEDS|={int(x) for x in json.load(open(f))['seeds']}
+KSTALE=[r"We kept 'ábalta' \('able'\)[^.]*\.",r"We kept 'ba cheart' \('should'\)[^.]*\.",r"We kept 'go leor' \('enough / a lot'\)[^.]*\.",r"We kept 'fós' \('yet'\)[^.]*\.",
+ r"We kept 'go leor' and 'fós'[^.]*\.",r"'am a thógáil' is used throughout the course\.",r"We kept 'an fáth' for 'the reason / why', as in 'cén fáth'\.",r"We kept 'an fáth', as at 105\.",r"We kept 'in am gearr'\.",
+ r"We kept 'Ní bheidh mé ábalta', because the course already teaches those pieces\.",r"We took your second option \('mo cheann scríbe a bhaint amach'\), without the second 'ach'\."]
+def his_main(t): return nrm(re.split(r"\s*[\(\[/]",t.strip())[0])
 rows=[];unnoted=[]
 for n in sorted(old):
     r=dict(old[n]); s=live[n]
@@ -232,12 +250,21 @@ for n in sorted(old):
         if st is not None: r['Same as yours?']=st
         if w is not None: r['Why we differ']=w
         if q is not None: r['Our question for you']=q
-    elif changed: unnoted.append(n)
+    elif changed and n not in KSEEDS: unnoted.append(n)
     if n in FIX:
         st,w,q=FIX[n]
         if st: r['Same as yours?']=st
         if w is not None: r['Why we differ']=w
         if q is not None: r['Our question for you']=q
+    w0=r['Why we differ']
+    for rx in KSTALE: w0=re.sub(rx,'',w0)
+    if ' Dé ' not in ' '+s['target_text']+' ': w0=w0.replace("We kept 'Dé' before the day name; both ways are fine.",'')
+    r['Why we differ']=' '.join(w0.split())
+    if n in KSEEDS and r['Same as yours?']==D and his_main(r['Your Irish'])==nrm(s['target_text']) and not r['Your English (only if different)'].strip(): r['Same as yours?']=S; r['Why we differ']=''
+    elif r['Same as yours?']==D and not r['Why we differ'] and his_main(r['Your Irish'])==nrm(s['target_text']): r['Same as yours?']=S
+    if n in KSEEDS and re.search(r"in am gearr|after 'go leor'",r['Our question for you']+r['Why we differ']):
+        if 'in am gearr' in r['Our question for you']: r['Our question for you']=''
+        r['Why we differ']=r['Why we differ'].replace("We took your fix: singular 'focal éagsúil' after 'go leor'.",'').strip()
     if n in PEND: r['Same as yours?']=P
     if r['Same as yours?']==S: r['Your English (only if different)']=r['Your English (only if different)'] if nrm(r['Your English (only if different)'])!=nrm(s['known_text']) else ''
     rows.append(r)

@@ -1,0 +1,310 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "d0c5c72d-e3c4-434d-83dc-e4b267284c7b",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:47:56.921Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-47-56-920Z-d0c5c72d-e3c4-434d-83dc-e4b267284c7b.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0288L02U01",
+      "set": {
+        "target_text": "bainim taitneamh as féachaint ar theilifís dé domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0269L02U06",
+      "set": {
+        "target_text": "cén fáth nach mian leat níos mó ama a thógáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0268L03U06",
+      "set": {
+        "target_text": "agus ansin sheol sí dhá ríomhphost chugam dé domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0266L03B04",
+      "set": {
+        "target_text": "m'athair a bhí ann dé domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0256L01U06",
+      "set": {
+        "target_text": "go raibh maith agat ceapaim go mbeidh mé réidh Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0252L01B04",
+      "set": {
+        "target_text": "ach cathain a bheidh tú réidh le tosú dé domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L04U04",
+      "set": {
+        "target_text": "bhí sé go hiomlán uafásach ach bhí sé deas scíth a ligean ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L04B01",
+      "set": {
+        "target_text": "bhí sé go hiomlán uafásach Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L02U13",
+      "set": {
+        "target_text": "creidim go raibh sé indéanta a lán a bhaint amach in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L03U02",
+      "set": {
+        "target_text": "tá áthas orm as an méid atá déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L03B05",
+      "set": {
+        "target_text": "Tá áthas orm as an méid atá déanta agam in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0242L03U02",
+      "set": {
+        "target_text": "go raibh maith agat cad atá tú chun a thabhairt di Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0225L01U06",
+      "set": {
+        "target_text": "tá brón orm ach thabharfadh sé an leabhar Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U07",
+      "set": {
+        "target_text": "bhí sé deas agus ciúin san oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U06",
+      "set": {
+        "target_text": "chuaigh mé amach oíche Shathairn agus bhí sé deas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U05",
+      "set": {
+        "target_text": "go raibh maith agat bhí sé deas labhairt a chleachtadh leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U03",
+      "set": {
+        "target_text": "bhí sé deas nuair a bhí muid sa teach tábhairne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U02",
+      "set": {
+        "target_text": "ní raibh am agam ach bhí sé deas tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02U01",
+      "set": {
+        "target_text": "ní dhearna mé mórán ach bhí sé deas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02B04",
+      "set": {
+        "target_text": "bhí sé deas tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02B03",
+      "set": {
+        "target_text": "bheadh sé sin deas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02B02",
+      "set": {
+        "target_text": "bhí sé deas"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L02B01",
+      "set": {
+        "target_text": "deas agus ciúin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L01U04",
+      "set": {
+        "target_text": "ní dhearna mé mórán Dé Domhnaigh ach bhí sé an-suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0219L01B02",
+      "set": {
+        "target_text": "bhí sé go hiontach Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U08",
+      "set": {
+        "target_text": "ba mhaith liom mo leabhar a léamh Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U07",
+      "set": {
+        "target_text": "ceapaim gur fhág tú mo leabhar ag an obair Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U06",
+      "set": {
+        "target_text": "cad atá le déanamh agat Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U05",
+      "set": {
+        "target_text": "an mian leat dul chuig bialann Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U04",
+      "set": {
+        "target_text": "tá brón orm ach tá mé ró-ghnóthach Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U03",
+      "set": {
+        "target_text": "Dé Domhnaigh chuaigh mo mháthair chuig an dochtúir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U02",
+      "set": {
+        "target_text": "ní raibh am agam Dé Domhnaigh cé gur mhian liom tú a fheiceáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03U01",
+      "set": {
+        "target_text": "ní dhearna mé mórán Dé Domhnaigh ach chonaic mé cúpla cara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03B04",
+      "set": {
+        "target_text": "tá mé ró-ghnóthach Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03B03",
+      "set": {
+        "target_text": "inniu nó Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03B02",
+      "set": {
+        "target_text": "Dé Domhnaigh chonaic mé cúpla cara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0218L03B01",
+      "set": {
+        "target_text": "chuaigh mé amach Dé Domhnaigh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0214L04U03",
+      "set": {
+        "target_text": "is mian leo an deireadh seachtaine a chaitheamh mar ghrúpa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0210L03B04",
+      "set": {
+        "target_text": "caithfidh muid an fhadhb a phlé mar ghrúpa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0210L02U05",
+      "set": {
+        "target_text": "deir siad go gcaithfidh muid níos mó ama a chaitheamh mar ghrúpa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0209L01B04",
+      "set": {
+        "target_text": "Is mian leo bualadh le chéile mar ghrúpa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U15",
+      "set": {
+        "target_text": "caithfidh mé ceist a chur uirthi an féidir léi cabhrú liom ar feadh tamaill maidin Dé Domhnaigh seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0181L05U07",
+      "set": {
+        "target_text": "caithfidh mé dul anois ach ba mhaith liom bualadh arís tráthnóna Dé Domhnaigh le labhairt níos mó"
+      }
+    }
+  ]
+}

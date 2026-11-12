@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "ce156564-0031-488a-985b-5aa59d8ecfb0",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:44:47.791Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-44-47-791Z-ce156564-0031-488a-985b-5aa59d8ecfb0.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L04U08",
+      "set": {
+        "target_text": "ceapaim go bhfuil focal eile de dhíth air sula mbeidh sé ábalta míniú cad atá i gceist aige"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L04U03",
+      "set": {
+        "target_text": "Tá focal eile de dhíth orm sula mbeidh mé ábalta ceist a chur ort"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L03U05",
+      "set": {
+        "target_text": "ba cheart duit mórán rudaí a thástáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0102L01U05",
+      "set": {
+        "target_text": "Tá muid ag déanamh go han-mhaith agus ba cheart dúinn leanúint ar aghaidh leis seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L07U04",
+      "set": {
+        "target_text": "ba cheart duit an scéal seo a léamh arís"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L06U01",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha faoin teanga"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L05U01",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha faoin abairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L04U07",
+      "set": {
+        "target_text": "cén fáth ba cheart dom an freagra a fháil amach anois?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L04B02",
+      "set": {
+        "target_text": "ba cheart dom an fhírinne a fháil amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0101L02U06",
+      "set": {
+        "target_text": "ba cheart duit leanúint ar aghaidh ag baint taitnimh as Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L03B03",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha faoi agus rud éigin cosúil leis á dhéanamh agat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L02U05",
+      "set": {
+        "target_text": "má thuigeann tú an freagra níor cheart duit a bheith buartha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L02B03",
+      "set": {
+        "target_text": "ba cheart duit a bheith buartha faoi mo chara"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U09",
+      "set": {
+        "target_text": "níor cheart duit bualadh le daoine a bhfuil Gaeilge acu inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U08",
+      "set": {
+        "target_text": "níor cheart duit stopadh chomh luath agus is mian leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U07",
+      "set": {
+        "target_text": "ní féidir liom cabhrú leat ach níor cheart duit ceist a chur ort féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U06",
+      "set": {
+        "target_text": "níl mé cinnte ach níor cheart duit dul abhaile go fóill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U05",
+      "set": {
+        "target_text": "is mian leat Gaeilge a fhoghlaim ach níor cheart duit stopadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U04",
+      "set": {
+        "target_text": "go raibh míle maith agat ach níor cheart duit teacht ar ais níos déanaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U03",
+      "set": {
+        "target_text": "má thuigeann tú níor cheart duit an scéal a léamh arís"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U02",
+      "set": {
+        "target_text": "nuair a thuigeann tú níor cheart duit stopadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U01",
+      "set": {
+        "target_text": "níor cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01C01",
+      "set": {
+        "target_text": "Níor cheart"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01B04",
+      "set": {
+        "target_text": "níor cheart duit leanúint ar aghaidh ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01B03",
+      "set": {
+        "target_text": "ach níor cheart duit stopadh ag caint"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01B02",
+      "set": {
+        "target_text": "faraor níor cheart duit"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01B01",
+      "set": {
+        "target_text": "níor cheart duit dul abhaile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L04U05",
+      "set": {
+        "target_text": "nuair a thuigeann tú cén fáth nach bhfuil sé ag obair ba cheart duit leanúint ar aghaidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L02U05",
+      "set": {
+        "target_text": "go raibh míle maith agat ach ba cheart duit ceist a chur ort féin chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L02B02",
+      "set": {
+        "target_text": "ba cheart duit ceist a chur ort féin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U09",
+      "set": {
+        "target_text": "is mian leat Gaeilge a fhoghlaim agus ba cheart duit labhairt a chleachtadh chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U08",
+      "set": {
+        "target_text": "níl mé réidh go fóill ach ba cheart duit tosú ag caint anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U07",
+      "set": {
+        "target_text": "ba cheart duit an freagra a thaispeáint dom chomh luath agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U06",
+      "set": {
+        "target_text": "go raibh míle maith agat agus ba cheart duit teacht ar ais amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U05",
+      "set": {
+        "target_text": "má thuigeann tú ba cheart duit tosú ag caint i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U04",
+      "set": {
+        "target_text": "ba cheart duit bualadh le daoine a bhfuil Gaeilge acu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U03",
+      "set": {
+        "target_text": "ba cheart duit fáil amach cad é an freagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U02",
+      "set": {
+        "target_text": "faraor ba cheart duit dul abhaile ar an gcéad bhus eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U01",
+      "set": {
+        "target_text": "ba cheart duit a bheith ábalta Gaeilge a fhoghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01C01",
+      "set": {
+        "target_text": "Ba cheart"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01B04",
+      "set": {
+        "target_text": "nuair a thuigeann tú ba cheart duit labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01B03",
+      "set": {
+        "target_text": "ach ba cheart duit leanúint ar aghaidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01B02",
+      "set": {
+        "target_text": "ba cheart duit dul abhaile anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01B01",
+      "set": {
+        "target_text": "ba cheart duit smaoineamh go tapa go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L02U05",
+      "set": {
+        "target_text": "ba cheart dom iarracht a dhéanamh níos mó a imirt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L02U01",
+      "set": {
+        "target_text": "ba cheart dom smaoineamh ar rud éigin eile a imirt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L02B03",
+      "set": {
+        "target_text": "ba cheart dom smaoineamh ar rud éigin eile a imirt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U08",
+      "set": {
+        "target_text": "ba cheart dom Gaeilge a labhairt níos mó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U07",
+      "set": {
+        "target_text": "ba cheart dom mo dhícheall a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U06",
+      "set": {
+        "target_text": "ba cheart dom smaoineamh faoi seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U05",
+      "set": {
+        "target_text": "ba cheart dom fanacht ar feadh tamaill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U04",
+      "set": {
+        "target_text": "ba cheart dom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U03",
+      "set": {
+        "target_text": "ba cheart dom dul abhaile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U02",
+      "set": {
+        "target_text": "ba cheart dom iarracht a dhéanamh cuimhneamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01U01",
+      "set": {
+        "target_text": "ba cheart dom tosú ag caint anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01C01",
+      "set": {
+        "target_text": "ba cheart"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01B04",
+      "set": {
+        "target_text": "ba cheart dom smaoineamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01B03",
+      "set": {
+        "target_text": "ba cheart dom iarracht a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0098L01B01",
+      "set": {
+        "target_text": "ba cheart dom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0096L02U06",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta dul abhaile ach níl mé réidh go fóill anocht"
+      }
+    }
+  ]
+}

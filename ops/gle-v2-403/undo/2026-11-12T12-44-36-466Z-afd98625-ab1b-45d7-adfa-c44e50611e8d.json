@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "afd98625-ab1b-45d7-adfa-c44e50611e8d",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:44:36.466Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-44-36-466Z-afd98625-ab1b-45d7-adfa-c44e50611e8d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0091L01U08",
+      "set": {
+        "target_text": "Is mian liom a bheith ábalta smaoineamh go tapa go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0090L02U01",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta labhairt i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0089L03U07",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta Gaeilge a fhoghlaim in am gearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0088L01U06",
+      "set": {
+        "target_text": "faraor níl mé ábalta teacht ar ais amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0080L01U05",
+      "set": {
+        "target_text": "níl mé cinnte cathain a bheidh mé ábalta labhairt go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0080L01B04",
+      "set": {
+        "target_text": "cathain a bheidh mé ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U14",
+      "set": {
+        "target_text": "ní raibh mé ag smaoineamh ar a bheith ábalta a rá cheana féin i nGaeilge ach tá mé ag déanamh go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0076L05U03",
+      "set": {
+        "target_text": "tá sé ábalta dóthain focal a labhairt cheana féin agus tá an-áthas air as an méid atá foghlamtha agam"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0071L06U07",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta an abairt iomlán a chloisteáil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0071L05U06",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta an fhírinne a scríobh i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0069L03U07",
+      "set": {
+        "target_text": "Ní raibh sé ábalta aire a thabhairt don mhadra óg nuair a bhí sé ag foghlaim Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L04U06",
+      "set": {
+        "target_text": "níl mé ábalta an freagra a fháil ach is mian liom mo dhícheall a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L04U05",
+      "set": {
+        "target_text": "tá sé deacair focal a fháil i nGaeilge nuair nach bhfuil tú ábalta cuimhneamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L04U04",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta rud éigin a fháil go luath inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L02U09",
+      "set": {
+        "target_text": "tá sé deacair a bheith ábalta labhairt Gaeilge chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02U08",
+      "set": {
+        "target_text": "Tá sé tábhachtach a bheith ábalta labhairt Gaeilge go han-mhaith chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0062L01U08",
+      "set": {
+        "target_text": "ní raibh mé ábalta cabhrú leat inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0059L03U05",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta fáil amach cad atá le déanamh agam chomh luath agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L03U02",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta dóthain focal a scríobh i nGaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L04U03",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta gach rud a léamh go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L03U08",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta cuimhneamh air sin go héasca nuair nár chodail mé"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L01U05",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta feabhsú ach ní bhainim taitneamh as botúin a dhéanamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0036L02U14",
+      "set": {
+        "target_text": "ní bheidh mé ábalta an scéal a léamh go héasca"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0036L02U09",
+      "set": {
+        "target_text": "ní bheidh mé ábalta an scéal a léamh amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0036L02U03",
+      "set": {
+        "target_text": "ní bheidh mé ábalta an scéal a léamh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0036L02B07",
+      "set": {
+        "target_text": "ní bheidh mé ábalta an scéal a léamh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0034L01U07",
+      "set": {
+        "target_text": "ní mian leis a bheith ábalta labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L02U12",
+      "set": {
+        "target_text": "ní bheidh mé ábalta cuimhneamh air sin go héasca amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L02U01",
+      "set": {
+        "target_text": "ní bheidh mé ábalta cuimhneamh air sin go héasca inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L02B04",
+      "set": {
+        "target_text": "ní bheidh mé ábalta cuimhneamh air sin go héasca"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U15",
+      "set": {
+        "target_text": "ní bheidh mé ábalta a chleachtadh leat tar éis duit críochnú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U14",
+      "set": {
+        "target_text": "ní bheidh mé ábalta Gaeilge a labhairt le gach duine eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U13",
+      "set": {
+        "target_text": "ní bheidh mé ábalta fáil amach cad é an freagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U12",
+      "set": {
+        "target_text": "ní bheidh mé ábalta tosú ag caint níos mó go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U11",
+      "set": {
+        "target_text": "ní bheidh mé ábalta mo dhícheall a dhéanamh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U10",
+      "set": {
+        "target_text": "ní bheidh mé ábalta bualadh le daoine a bhfuil Gaeilge acu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U09",
+      "set": {
+        "target_text": "ní bheidh mé ábalta cuimhneamh ar an abairt iomlán"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U08",
+      "set": {
+        "target_text": "ní bheidh mé ábalta Gaeilge a chleachtadh chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U07",
+      "set": {
+        "target_text": "ní bheidh mé ábalta Gaeilge a labhairt an lá ar fad"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U05",
+      "set": {
+        "target_text": "ní bheidh mé ábalta bualadh le chéile ar a sé a chlog"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U04",
+      "set": {
+        "target_text": "ní bheidh mé ábalta labhairt leat anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U03",
+      "set": {
+        "target_text": "ní bheidh mé ábalta a chleachtadh le duine éigin eile inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U02",
+      "set": {
+        "target_text": "ní bheidh mé ábalta bualadh le daoine amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U01",
+      "set": {
+        "target_text": "ní bheidh mé ábalta Gaeilge a labhairt inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01B07",
+      "set": {
+        "target_text": "ní bheidh mé ábalta labhairt a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01B06",
+      "set": {
+        "target_text": "ní bheidh mé ábalta bualadh le daoine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01B05",
+      "set": {
+        "target_text": "ní bheidh mé ábalta Gaeilge a labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01B04",
+      "set": {
+        "target_text": "ní bheidh mé ábalta labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01B03",
+      "set": {
+        "target_text": "ní bheidh mé ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0019L01U08",
+      "set": {
+        "target_text": "ach ba mhaith liom a bheith ábalta Gaeilge a labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0014L01U02",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta Gaeilge a labhairt an lá ar fad amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L03U05",
+      "set": {
+        "target_text": "tá Gaeilge an-mhaith agat agus ba mhaith liom a bheith ábalta labhairt go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U06",
+      "set": {
+        "target_text": "tá Gaeilge agat anois agus ba mhaith liom a bheith ábalta labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L01U15",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta Gaeilge a labhairt go han-mhaith amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L01U09",
+      "set": {
+        "target_text": "is mian liom a bheith ábalta labhairt go han-mhaith chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L01U05",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta Gaeilge a labhairt go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L03U15",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L03U06",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta a mhíniú cad atá i gceist agam amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L02U15",
+      "set": {
+        "target_text": "níor mhaith liom a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0012L02U14",
+      "set": {
+        "target_text": "is mian liom a bheith ábalta buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu"
+      }
+    }
+  ]
+}

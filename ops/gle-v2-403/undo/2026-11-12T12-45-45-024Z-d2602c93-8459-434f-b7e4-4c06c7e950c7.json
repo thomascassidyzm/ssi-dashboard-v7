@@ -1,0 +1,429 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "d2602c93-8459-434f-b7e4-4c06c7e950c7",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:45:45.024Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-45-45-024Z-d2602c93-8459-434f-b7e4-4c06c7e950c7.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0267L02U09",
+      "set": {
+        "target_text": "dúirt sí go raibh rud éigin ó mo chara ann agus ní raibh a fhios aici cad ba cheart di a dhéanamh leis"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0256L02U01",
+      "set": {
+        "target_text": "i níos lú ná uair an chloig beidh mé ábalta teacht agus cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0256L02B03",
+      "set": {
+        "target_text": "i níos lú ná uair an chloig beidh mé ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L02U06",
+      "set": {
+        "target_text": "ba cheart go mbeidh sé réidh i gceann cúpla nóiméad"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L02U04",
+      "set": {
+        "target_text": "ba cheart go mbeidh mé ábalta é a dhéanamh i gceann cúpla nóiméad"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L02U01",
+      "set": {
+        "target_text": "ba cheart go mbeidh mé réidh i gceann cúpla nóiméad"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L01U04",
+      "set": {
+        "target_text": "Tá súil agam go mbeidh mé ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L01U01",
+      "set": {
+        "target_text": "ba cheart go mbeidh mé réidh go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0253L01B04",
+      "set": {
+        "target_text": "ba cheart go mbeidh mé réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0250L03U03",
+      "set": {
+        "target_text": "sula dtabharfaidh mé freagra duit, is mian liom a rá nach raibh sé an-fhoighneach liom nuair nach raibh mé ábalta freagra a thabhairt dó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0249L04U04",
+      "set": {
+        "target_text": "níor cheart duit a bheith buartha sula rachaidh tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0248L06U04",
+      "set": {
+        "target_text": "tá m'airgead ar ais uaim agus ansin beidh mé ábalta dul abhaile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U15",
+      "set": {
+        "target_text": "dúirt sí go raibh sí an-sásta leis an méid a bhí muid ábalta a dhéanamh go dtí seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U08",
+      "set": {
+        "target_text": "ba cheart duit a bheith an-sásta leis an méid atá déanta agat an tseachtain seo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0245L02U06",
+      "set": {
+        "target_text": "is mian liom a insint duit chomh sásta agus atá mé leis an méid a bhí tú ábalta a bhaint amach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0243L04U04",
+      "set": {
+        "target_text": "ba cheart dom níos mó ama a iarraidh air roimh an deireadh seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0243L04B04",
+      "set": {
+        "target_text": "ba cheart duit an t-airgead a iarraidh air"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0242L02U05",
+      "set": {
+        "target_text": "ba cheart duit níos mó ama a chaitheamh le do dheartháir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0241L01U03",
+      "set": {
+        "target_text": "ba cheart dom é a thabhairt dó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0241L01B04",
+      "set": {
+        "target_text": "ba cheart dom é a thabhairt dó"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0237L05U07",
+      "set": {
+        "target_text": "ba mhaith liom deireadh seachtaine ciúin agus ansin beidh mé ábalta teacht agus cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0237L04U07",
+      "set": {
+        "target_text": "go raibh míle maith agat beidh mé ábalta teacht agus cabhrú leat roimh an deireadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0235L06U03",
+      "set": {
+        "target_text": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L05U01",
+      "set": {
+        "target_text": "Tá aithne agam ar sheanbean a bheidh ábalta cuimhneamh ar an bhfreagra"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03U04",
+      "set": {
+        "target_text": "an bhfuil aithne agat ar sheanbean a bheidh ábalta cabhrú liom?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03U03",
+      "set": {
+        "target_text": "Tá aithne agam ar sheanbean a bheidh ábalta Gaeilge a labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03U01",
+      "set": {
+        "target_text": "Tá aithne agam ar sheanbean a bheidh ábalta teacht amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03C02",
+      "set": {
+        "target_text": "ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03B03",
+      "set": {
+        "target_text": "tá aithne agam ar sheanbean a bheidh ábalta cabhrú leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0232L03B01",
+      "set": {
+        "target_text": "a bheidh ábalta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0231L04B02",
+      "set": {
+        "target_text": "ba cheart duit cabhair a iarraidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0229L01U01",
+      "set": {
+        "target_text": "ba cheart duit ceist a chur uirthi mar chabhródh an bhean sin leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0228L04U07",
+      "set": {
+        "target_text": "ba mhaith liom a bheith ábalta tosú ag cleachtadh labhartha"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0228L01U04",
+      "set": {
+        "target_text": "tá an fear sin an-fhoighneach liom nuair nach raibh mé ábalta freagra a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0226L01U06",
+      "set": {
+        "target_text": "tá an fear an-fhoighneach liom nuair nach raibh mé ábalta freagra a thabhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0224L02U06",
+      "set": {
+        "target_text": "beidh mé ábalta teacht agus cabhrú leat díreach tar éis duit críochnú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0217L04U03",
+      "set": {
+        "target_text": "ba mhaith liom gloine uisce agus ansin beidh mé ábalta cabhrú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0215L03U04",
+      "set": {
+        "target_text": "ní raibh am agam oíche Shathairn ach beidh mé ábalta teacht agus cabhrú leat níos déanaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0214L04U04",
+      "set": {
+        "target_text": "ba cheart dom an deireadh seachtaine a chaitheamh san oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0213L03U10",
+      "set": {
+        "target_text": "Níl mé cinnte an mbeidh muid ábalta é a bhaint amach in am"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0209L01U03",
+      "set": {
+        "target_text": "Is mian leo a fhios a bheith acu cén fáth nach raibh muid ábalta an freagra a fháil go fóill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0208L02U04",
+      "set": {
+        "target_text": "ní raibh mé ábalta cuimhneamh conas é a rá mar sin bhí orm ceist a chur ar dhuine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0208L01U03",
+      "set": {
+        "target_text": "Níor mhian liom ceist a chur ort faoi ach ní raibh mé ábalta an freagra a fháil in áit ar bith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0206L03U13",
+      "set": {
+        "target_text": "dúirt sí liom nach raibh sí ábalta labhairt a chleachtadh leat anocht ach tá amárach ceart go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0204L03U07",
+      "set": {
+        "target_text": "ba cheart duit déileáil leis na socruithe chomh luath agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0204L03U05",
+      "set": {
+        "target_text": "beidh mé ábalta déileáil leis na socruithe níos déanaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L02U03",
+      "set": {
+        "target_text": "Ní raibh sé cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh sé ag iarraidh labhairt ar chor ar bith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0202L01U09",
+      "set": {
+        "target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus sin é an fáth nach raibh duine ar bith ag iarraidh labhairt ar chor ar bith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0201L02U06",
+      "set": {
+        "target_text": "caithfidh muid a fhios a bheith againn an mbeidh sé ábalta cabhrú inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L06U06",
+      "set": {
+        "target_text": "beidh mé ábalta críochnú in am amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U07",
+      "set": {
+        "target_text": "deir siad gur mian leo gach duine a bheith ábalta a chríochnú cad atá siad a dhéanamh inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0200L01U06",
+      "set": {
+        "target_text": "deir siad nach ceart dúinn a bheith buartha faoi mar go bhfuil gach rud ag dul go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L03U11",
+      "set": {
+        "target_text": "ba mhian léi a fhios a bheith aici an mbeidh sí ábalta tosú ag obair don chomhairle go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L02U13",
+      "set": {
+        "target_text": "Tá m'iníon ag iarraidh níos mó focal a fhoghlaim le go mbeidh sí ábalta labhairt níos fearr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0198L02U04",
+      "set": {
+        "target_text": "Níl mé cinnte an mbeidh m'iníon ábalta é a dhéanamh in am"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0195L02U04",
+      "set": {
+        "target_text": "fiafróidh mé de an mbeidh sé ábalta an t-airgead a fháil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0193L01U02",
+      "set": {
+        "target_text": "Tá brón orm, ní raibh mé ábalta cuimhneamh ar an rud a dúirt tú liom tamall ó shin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0190L01U04",
+      "set": {
+        "target_text": "beidh mé ábalta cabhrú leat má chuirim cúpla ceist ort"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0188L03U07",
+      "set": {
+        "target_text": "níor cheart duit athrú inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0188L03U03",
+      "set": {
+        "target_text": "fiafróidh mé de an mbeidh sé ábalta athrú"
+      }
+    }
+  ]
+}

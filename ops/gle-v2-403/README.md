@@ -8,3 +8,6 @@ Recompute: python3 recompute.py [apply] (word-tile decompositions for every touc
 Follow-up: ops-followup.json / decisions-followup.json (one Q14 row the first pass missed).
 Record for Kai: python3 record.py > record.md against a fresh course.json, then publish it (not committed).
 Not done, by a missing door: the two "literally" presentation notes. intro-notes-pending.json holds the wording and says why.
+
+K1-K14 (added scope, same day): fam_ka.py (K1 enough/a lot/many, K2 yet/still, K3 instead of), fam_kb.py (K5 able, K6 should, K8 the reason), fam_kc.py (K9-K14). Same per-round steps; recompute with `python3 recompute.py apply decisions-ka.json decisions-kb.json decisions-kc.json` (result: recompute-result-k.json).
+Known gap: recompute-decompositions refreshes a phrase only when its English gloss is stale, so a straight Irish swap leaves the stored tiles spelling the old word (1,006 of 5,919 phrases at the end of this job, 243 of them from before it). No route refreshes tiles by target text.
