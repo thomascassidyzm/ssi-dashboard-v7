@@ -13,7 +13,7 @@
    "kind": "lego",
    "id": "S0027L02",
    "known": "to take too long",
-   "target": "tardar demasiado en",
+   "target": "tardar demasiado",
    "type": "M",
    "components": [
     {
@@ -23,12 +23,9 @@
     {
      "known": "too much",
      "target": "demasiado"
-    },
-    {
-     "known": "in",
-     "target": "en"
     }
-   ]
+   ],
+   "note": "Kai's cut; contains L01 demasiado (small piece first)"
   },
   {
    "kind": "lego",
@@ -36,19 +33,49 @@
    "known": "to answer",
    "target": "contestar",
    "type": "A",
-   "components": []
+   "components": [],
+   "note": "its own LEGO, new here (S0043L02 is already not-new)"
+  },
+  {
+   "kind": "lego_insert",
+   "id": "S0027L04",
+   "known": "I don't like",
+   "target": "no me gusta",
+   "type": "M",
+   "is_new": true,
+   "components": [
+    {
+     "known": "not",
+     "target": "no"
+    },
+    {
+     "known": "I like",
+     "target": "me gusta"
+    }
+   ],
+   "note": "every seed part is a LEGO (Kai 12 Nov); no LEGO teaches no me gusta today though 27+ rows use it"
+  },
+  {
+   "kind": "lego_insert",
+   "id": "S0027L05",
+   "known": "in",
+   "target": "en",
+   "type": "A",
+   "is_new": false,
+   "target_lego_id": "S0004L01",
+   "note": "the glue en, listed not-new as the existing S0004L01 in = en"
   },
   {
    "kind": "phrase",
    "id": "S0027L02B01",
    "known": "to take too long",
-   "target": "tardar demasiado en"
+   "target": "tardar demasiado"
   },
   {
    "kind": "phrase",
    "id": "S0027L02B02",
-   "known": "I don't like taking too long to speak",
-   "target": "No me gusta tardar demasiado en hablar"
+   "known": "I don't like taking too long",
+   "target": "No me gusta tardar demasiado"
   },
   {
    "kind": "phrase",
@@ -59,8 +86,8 @@
   {
    "kind": "phrase",
    "id": "S0027L02B04",
-   "known": "Are you going to take too long to come back?",
-   "target": "¿Vas a tardar demasiado en volver?"
+   "known": "Are you going to take too long today?",
+   "target": "¿Vas a tardar demasiado hoy?"
   },
   {
    "kind": "phrase",
@@ -103,6 +130,62 @@
    "id": "S0027L02U07",
    "known": "She doesn't want to take too long to explain what she means",
    "target": "Ella no quiere tardar demasiado en explicar lo que quiere decir"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04B01",
+   "known": "I don't like",
+   "target": "No me gusta",
+   "role": "build"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04B02",
+   "known": "I don't like guessing",
+   "target": "No me gusta adivinar",
+   "role": "build"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04B03",
+   "known": "I don't like speaking now",
+   "target": "No me gusta hablar ahora",
+   "role": "build"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04U01",
+   "known": "I don't like practising with another person today",
+   "target": "No me gusta practicar con otra persona hoy",
+   "role": "use"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04U02",
+   "known": "I don't like guessing what's going to happen",
+   "target": "No me gusta adivinar lo que va a pasar",
+   "role": "use"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04U03",
+   "known": "I don't like trying to explain what I mean",
+   "target": "No me gusta intentar explicar lo que quiero decir",
+   "role": "use"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04U04",
+   "known": "I don't like speaking quickly",
+   "target": "No me gusta hablar rápidamente",
+   "role": "use"
+  },
+  {
+   "kind": "phrase_insert",
+   "id": "S0027L04U05",
+   "known": "I don't like coming back later on",
+   "target": "No me gusta volver más tarde",
+   "role": "use"
   },
   {
    "kind": "phrase",
@@ -233,5 +316,6 @@
    ],
    "note": "OPTIONAL, Kai Y/N 2: keeps purpose para available from seed 26 once S0027L03 loses it"
   }
- ]
+ ],
+ "version": "v2 — Kai 12 Nov clarification: contestar own LEGO, tardar demasiado own LEGO, en is glue"
 }
