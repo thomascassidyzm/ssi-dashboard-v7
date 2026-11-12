@@ -1,0 +1,2130 @@
+{
+ "course": "gle_v2_for_eng",
+ "job": "#426",
+ "read_at": "2026-11-12",
+ "applied": false,
+ "recommended": "A",
+ "options": {
+  "A": "Keep 'cuimhneamh ar'. No row changes.",
+  "B": "Eoghan's 'cuimhneamh a dhéanamh ar' wherever a thing is remembered; bare 'cuimhneamh' rows and 'cuimhneamh conas…' rows unchanged."
+ },
+ "seeds": [
+  {
+   "seed": 6,
+   "english": "I'm trying to remember a word",
+   "ours": "Tá mé ag iarraidh cuimhneamh ar fhocal",
+   "original_gle_for_eng": "Tá mé ag triail focal a chuimhneamh",
+   "eoghan_english": "I'm trying to remember a particular word",
+   "eoghan": "Táim ag iarraidh cuimhneamh a dhéanamh ar fhocal ar leith.",
+   "option_a": "Tá mé ag iarraidh cuimhneamh ar fhocal",
+   "option_b": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar fhocal",
+   "b_changes": true,
+   "note": "Eoghan's form without 'ar leith' (English has no 'particular'). 'a dhéanamh' is first taught at seed 7, so at seed 6 it lives inside one chunk."
+  },
+  {
+   "seed": 10,
+   "english": "I'm not sure if I can remember the whole sentence",
+   "ours": "Níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán",
+   "original_gle_for_eng": "Níl mé cinnte an féidir liom an abairt iomlán a chuimhneamh",
+   "eoghan_english": null,
+   "eoghan": "Nílim cinnte an féidir liom cuimhneamh a dhéanamh ar an bhfocal iomlán",
+   "option_a": "Níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán",
+   "option_b": "Níl mé cinnte an féidir liom cuimhneamh a dhéanamh ar an abairt iomlán",
+   "b_changes": true,
+   "note": "Eoghan's form; 'abairt' kept (English says 'sentence')."
+  },
+  {
+   "seed": 24,
+   "english": "I'm not going to be able to remember that easily",
+   "ours": "Ní bheidh mé in ann cuimhneamh air sin go héasca",
+   "original_gle_for_eng": "Ní bheidh mé ábalta cuimhneamh go héasca",
+   "eoghan_english": "It will not be easy for me to remember that",
+   "eoghan": "Ní bheidh sé éasca orm cuimhneamh a dhéanamh air sin",
+   "option_a": "Ní bheidh mé in ann cuimhneamh air sin go héasca",
+   "option_b": "Ní bheidh mé in ann cuimhneamh a dhéanamh air sin go héasca",
+   "b_changes": true,
+   "note": "Eoghan's 'cuimhneamh a dhéanamh air sin' inside our sentence shape. LEGO must be re-cut (8-syllable cap)."
+  },
+  {
+   "seed": 56,
+   "english": "so I can remember how to say a few words",
+   "ours": "mar sin is féidir liom cuimhneamh conas cúpla focal a rá",
+   "original_gle_for_eng": "mar sin is féidir liom cuimhneamh conas cúpla focal a rá",
+   "eoghan_english": null,
+   "eoghan": "Mar sin, is cuimhin liom conas roinnt focal a rá",
+   "option_a": "mar sin is féidir liom cuimhneamh conas cúpla focal a rá",
+   "option_b": "mar sin is féidir liom cuimhneamh conas cúpla focal a rá",
+   "b_changes": false,
+   "note": "UNCHANGED in both options: no 'ar' here (cuimhneamh + 'conas' clause). Eoghan's 'is cuimhin liom' drops 'can' and evicts S0056L01 'so that I can | mar sin is féidir liom'."
+  },
+  {
+   "seed": 57,
+   "english": "I can't remember how to say what I wanted to say",
+   "ours": "Ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "original_gle_for_eng": "Ní féidir liom cuimhneamh conas a rá cad a bhí mé ag iarraidh a rá",
+   "eoghan_english": null,
+   "eoghan": "Ní féidir liom cuimhneamh a dhéanamh ar an rud ba mhian liom a rá.",
+   "option_a": "Ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_b": "Ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "b_changes": false,
+   "note": "UNCHANGED in both options: no 'ar' here. Eoghan's version drops 'how to say' (needs the English changed)."
+  },
+  {
+   "seed": 113,
+   "english": "Why can't I remember what you said?",
+   "ours": "Cén fáth nach féidir liom cuimhneamh ar an rud a dúirt tú?",
+   "original_gle_for_eng": "Cén fáth nach féidir liom cuimhneamh ar cad a dúirt tú?",
+   "eoghan_english": null,
+   "eoghan": "Cén fáth nach féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú?",
+   "option_a": "Cén fáth nach féidir liom cuimhneamh ar an rud a dúirt tú?",
+   "option_b": "Cén fáth nach féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú?",
+   "b_changes": true,
+   "note": "Eoghan's wording exactly. LEGO must be re-cut (8-syllable cap)."
+  },
+  {
+   "seed": 232,
+   "english": "I know an old woman who will be able to remember the answer",
+   "ours": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh ar an bhfreagra",
+   "original_gle_for_eng": "Tá aithne agam ar sheanbean a bhfuil an freagra ar cuimhin léi",
+   "eoghan_english": "I know an old woman who will be able to  remember the answer",
+   "eoghan": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh a dhéanamh ar an bhfreagra",
+   "option_a": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh ar an bhfreagra",
+   "option_b": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh a dhéanamh ar an bhfreagra",
+   "b_changes": true,
+   "note": "Eoghan's wording exactly. LEGO must be re-cut (8-syllable cap)."
+  }
+ ],
+ "legos": [
+  {
+   "lego": "S0006L02",
+   "known": "to remember",
+   "target": "cuimhneamh ar",
+   "components": [
+    {
+     "known": "to remember",
+     "target": "cuimhneamh"
+    },
+    {
+     "known": "on",
+     "target": "ar"
+    }
+   ],
+   "phrases_in_basket": 7,
+   "option_a": "keep",
+   "option_b": {
+    "action": "retext",
+    "known": "to remember",
+    "target": "cuimhneamh a dhéanamh ar",
+    "components": [
+     {
+      "known": "remembering",
+      "target": "cuimhneamh"
+     },
+     {
+      "known": "to do",
+      "target": "a dhéanamh"
+     },
+     {
+      "known": "on",
+      "target": "ar"
+     }
+    ],
+    "note": "7 by the builder estimate; under the cap of 8."
+   }
+  },
+  {
+   "lego": "S0024L02",
+   "known": "remember that easily",
+   "target": "cuimhneamh air sin go héasca",
+   "components": [
+    {
+     "known": "remember",
+     "target": "cuimhneamh"
+    },
+    {
+     "known": "on that",
+     "target": "air sin"
+    },
+    {
+     "known": "easily",
+     "target": "go héasca"
+    }
+   ],
+   "phrases_in_basket": 17,
+   "option_a": "keep",
+   "option_b": {
+    "action": "recut",
+    "known": "to remember that",
+    "target": "cuimhneamh a dhéanamh air sin",
+    "components": [
+     {
+      "known": "remembering",
+      "target": "cuimhneamh"
+     },
+     {
+      "known": "to do",
+      "target": "a dhéanamh"
+     },
+     {
+      "known": "on that",
+      "target": "air sin"
+     }
+    ],
+    "add_lego": {
+     "lego": "S0024L03",
+     "known": "easily",
+     "target": "go héasca"
+    },
+    "note": "'cuimhneamh a dhéanamh air sin go héasca' estimates 11 syllables (cap 8), so 'easily | go héasca' becomes its own LEGO. Basket phrases keep their sentences."
+   }
+  },
+  {
+   "lego": "S0113L03",
+   "known": "remember what you said",
+   "target": "cuimhneamh ar an rud a dúirt tú",
+   "components": [
+    {
+     "known": "remember",
+     "target": "cuimhneamh ar"
+    },
+    {
+     "known": "the thing that",
+     "target": "an rud a"
+    },
+    {
+     "known": "you said",
+     "target": "dúirt tú"
+    }
+   ],
+   "phrases_in_basket": 19,
+   "option_a": "keep",
+   "option_b": {
+    "action": "recut",
+    "known": "what you said",
+    "target": "an rud a dúirt tú",
+    "components": [
+     {
+      "known": "the thing that",
+      "target": "an rud a"
+     },
+     {
+      "known": "you said",
+      "target": "dúirt tú"
+     }
+    ],
+    "note": "With 'a dhéanamh' the LEGO estimates 12 syllables (cap 8; it already estimates 9 today). 'remember' is carried by S0006L02. Basket phrases keep their sentences."
+   }
+  },
+  {
+   "lego": "S0232L05",
+   "known": "to remember the answer",
+   "target": "cuimhneamh ar an bhfreagra",
+   "components": [
+    {
+     "known": "to remember",
+     "target": "cuimhneamh ar"
+    },
+    {
+     "known": "the answer",
+     "target": "an bhfreagra"
+    }
+   ],
+   "phrases_in_basket": 7,
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete_or_not_new",
+    "note": "'cuimhneamh a dhéanamh ar an bhfreagra' estimates 11 syllables (cap 8). Both halves are already taught (S0006L02 remember, S0027L04 / S0066L03 answer), so this LEGO has nothing new left; its basket phrases can move to S0232L03 or go with it. Applier to settle with Kai."
+   }
+  }
+ ],
+ "phrases": [
+  {
+   "phrase": "S0006L02B01",
+   "role": "build",
+   "known": "to remember a word",
+   "target": "cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0006L02B02",
+   "role": "build",
+   "known": "to remember something",
+   "target": "cuimhneamh ar rud éigin",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh ar rud éigin"
+   }
+  },
+  {
+   "phrase": "S0006L02B03",
+   "role": "build",
+   "known": "how to remember a word",
+   "target": "conas cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "conas cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0006L02U03",
+   "role": "use",
+   "known": "I'm trying to remember something",
+   "target": "tá mé ag iarraidh cuimhneamh ar rud éigin",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar rud éigin"
+   }
+  },
+  {
+   "phrase": "S0006L02U01",
+   "role": "use",
+   "known": "I'm trying to remember a word",
+   "target": "tá mé ag iarraidh cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0006L02U02",
+   "role": "use",
+   "known": "I want to remember a word",
+   "target": "is mian liom cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0006L02U04",
+   "role": "use",
+   "known": "I want to remember something",
+   "target": "is mian liom cuimhneamh ar rud éigin",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar rud éigin"
+   }
+  },
+  {
+   "phrase": "S0008L03B04",
+   "role": "build",
+   "known": "to try to remember a word",
+   "target": "iarracht a dhéanamh cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "iarracht a dhéanamh cuimhneamh a dhéanamh ar fhocal",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0008L03U01",
+   "role": "use",
+   "known": "I'm going to try to remember a word today",
+   "target": "tá mé chun iarracht a dhéanamh cuimhneamh ar fhocal inniu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "tá mé chun iarracht a dhéanamh cuimhneamh a dhéanamh ar fhocal inniu",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0009L01U03",
+   "role": "use",
+   "known": "I speak Irish now and I'm trying to remember",
+   "target": "tá Gaeilge agam anois agus tá mé ag iarraidh cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0010L02U01",
+   "role": "use",
+   "known": "I'm not sure if I can remember",
+   "target": "níl mé cinnte an féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0010L02U04",
+   "role": "use",
+   "known": "I'm not sure if I can remember a word",
+   "target": "níl mé cinnte an féidir liom cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl mé cinnte an féidir liom cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0010L03B04",
+   "role": "build",
+   "known": "to remember the whole sentence",
+   "target": "cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0010L03U03",
+   "role": "use",
+   "known": "I want to remember the whole sentence",
+   "target": "is mian liom cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0010L03U04",
+   "role": "use",
+   "known": "I'm not sure if I can remember the whole sentence",
+   "target": "níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl mé cinnte an féidir liom cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0011L01U13",
+   "role": "use",
+   "known": "I'd like to remember the word",
+   "target": "ba mhaith liom cuimhneamh ar an bhfocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom cuimhneamh a dhéanamh ar an bhfocal"
+   }
+  },
+  {
+   "phrase": "S0011L03U14",
+   "role": "use",
+   "known": "I'm trying to remember the whole sentence after you finish",
+   "target": "tá mé ag iarraidh cuimhneamh ar an abairt iomlán tar éis duit críochnú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán tar éis duit críochnú"
+   }
+  },
+  {
+   "phrase": "S0011L02U08",
+   "role": "use",
+   "known": "I want to be able to remember how to say something in Irish",
+   "target": "is mian liom a bheith in ann cuimhneamh conas rud éigin a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0012L01U05",
+   "role": "use",
+   "known": "I wouldn't like to try to remember the whole sentence",
+   "target": "níor mhaith liom iarracht a dhéanamh cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "níor mhaith liom iarracht a dhéanamh cuimhneamh a dhéanamh ar an abairt iomlán",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0012L01U13",
+   "role": "use",
+   "known": "I wouldn't like to remember how to say something in Irish",
+   "target": "níor mhaith liom cuimhneamh conas rud éigin a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0012L03U14",
+   "role": "use",
+   "known": "I'd like to remember how to say something in Irish tomorrow",
+   "target": "ba mhaith liom cuimhneamh conas rud éigin a rá i nGaeilge amárach",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0015L01U09",
+   "role": "use",
+   "known": "I'm trying to remember the word and say it in Irish",
+   "target": "tá mé ag iarraidh cuimhneamh ar an bhfocal agus é a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar an bhfocal agus é a rá i nGaeilge"
+   }
+  },
+  {
+   "phrase": "S0015L01U14",
+   "role": "use",
+   "known": "I want to remember words and say them in Irish",
+   "target": "is mian liom cuimhneamh ar fhocail agus iad a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar fhocail agus iad a rá i nGaeilge"
+   }
+  },
+  {
+   "phrase": "S0016L01U07",
+   "role": "use",
+   "known": "he wants to remember a word",
+   "target": "is mian leis cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian leis cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0020L02B03",
+   "role": "build",
+   "known": "I want to remember his name",
+   "target": "is mian liom cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02B02",
+   "role": "build",
+   "known": "you want to remember his name",
+   "target": "is mian leat cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian leat cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U06",
+   "role": "use",
+   "known": "he wants to remember his name",
+   "target": "is mian leis cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian leis cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U07",
+   "role": "use",
+   "known": "we want to remember his name",
+   "target": "is mian linn cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian linn cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U08",
+   "role": "use",
+   "known": "I would like to remember his name",
+   "target": "ba mhaith liom cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U01",
+   "role": "use",
+   "known": "I want to remember his name",
+   "target": "is mian liom cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U02",
+   "role": "use",
+   "known": "you want to remember his name",
+   "target": "is mian leat cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian leat cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0020L02U04",
+   "role": "use",
+   "known": "she wants to remember his name",
+   "target": "is mian léi cuimhneamh ar a ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian léi cuimhneamh a dhéanamh ar a ainm"
+   }
+  },
+  {
+   "phrase": "S0021L01U08",
+   "role": "use",
+   "known": "Why are you trying to learn the whole sentence?",
+   "target": "cén fáth a bhfuil tú ag iarraidh cuimhneamh ar an abairt iomlán?",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cén fáth a bhfuil tú ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán?"
+   }
+  },
+  {
+   "phrase": "S0024L01U09",
+   "role": "use",
+   "known": "I'm not going to be able to remember the whole sentence",
+   "target": "ní bheidh mé in ann cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní bheidh mé in ann cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0024L02B01",
+   "role": "build",
+   "known": "remember that easily",
+   "target": "cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0024L02B04",
+   "role": "build",
+   "known": "I'm not going to be able to remember that easily",
+   "target": "ní bheidh mé in ann cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní bheidh mé in ann cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0024L02B06",
+   "role": "build",
+   "known": "trying to remember that easily",
+   "target": "ag iarraidh cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ag iarraidh cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0024L02B07",
+   "role": "build",
+   "known": "I want to remember that easily",
+   "target": "is mian liom cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0024L02C01",
+   "role": "component",
+   "known": "remember",
+   "target": "cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete",
+    "note": "word tile of a LEGO that option B re-cuts; regenerated from the new components."
+   }
+  },
+  {
+   "phrase": "S0024L02U08",
+   "role": "use",
+   "known": "I would like to remember that easily and speak more",
+   "target": "ba mhaith liom cuimhneamh air sin go héasca agus labhairt níos mó",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom cuimhneamh a dhéanamh air sin go héasca agus labhairt níos mó"
+   }
+  },
+  {
+   "phrase": "S0024L02U15",
+   "role": "use",
+   "known": "I would love to remember that easily and speak Irish with everyone",
+   "target": "ba mhaith liom cuimhneamh air sin go héasca agus Gaeilge a labhairt le gach duine eile",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom cuimhneamh a dhéanamh air sin go héasca agus Gaeilge a labhairt le gach duine eile"
+   }
+  },
+  {
+   "phrase": "S0024L02U07",
+   "role": "use",
+   "known": "I want to remember that easily and meet people who speak Irish",
+   "target": "is mian liom cuimhneamh air sin go héasca agus bualadh le daoine a bhfuil Gaeilge acu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh air sin go héasca agus bualadh le daoine a bhfuil Gaeilge acu"
+   }
+  },
+  {
+   "phrase": "S0024L02U02",
+   "role": "use",
+   "known": "I'm trying to remember that easily and speak Irish",
+   "target": "tá mé ag iarraidh cuimhneamh air sin go héasca agus Gaeilge a labhairt",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh air sin go héasca agus Gaeilge a labhairt"
+   }
+  },
+  {
+   "phrase": "S0024L02U01",
+   "role": "use",
+   "known": "I'm not going to be able to remember that easily today",
+   "target": "ní bheidh mé in ann cuimhneamh air sin go héasca inniu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní bheidh mé in ann cuimhneamh a dhéanamh air sin go héasca inniu"
+   }
+  },
+  {
+   "phrase": "S0024L02U05",
+   "role": "use",
+   "known": "I want to remember that easily and speak with everyone",
+   "target": "is mian liom cuimhneamh air sin go héasca agus labhairt le gach duine eile",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh air sin go héasca agus labhairt le gach duine eile"
+   }
+  },
+  {
+   "phrase": "S0024L02U06",
+   "role": "use",
+   "known": "can I try to remember that easily in Irish?",
+   "target": "an féidir liom iarracht a dhéanamh cuimhneamh air sin go héasca i nGaeilge?",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "an féidir liom iarracht a dhéanamh cuimhneamh a dhéanamh air sin go héasca i nGaeilge?",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0024L02U10",
+   "role": "use",
+   "known": "Why are you trying to remember that easily today?",
+   "target": "cén fáth a bhfuil tú ag iarraidh cuimhneamh air sin go héasca inniu?",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cén fáth a bhfuil tú ag iarraidh cuimhneamh a dhéanamh air sin go héasca inniu?"
+   }
+  },
+  {
+   "phrase": "S0024L02U13",
+   "role": "use",
+   "known": "I'm trying to remember that easily and do my best today",
+   "target": "tá mé ag iarraidh cuimhneamh air sin go héasca agus mo dhícheall a dhéanamh inniu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh air sin go héasca agus mo dhícheall a dhéanamh inniu"
+   }
+  },
+  {
+   "phrase": "S0024L02U12",
+   "role": "use",
+   "known": "I'm not going to be able to remember that easily tomorrow",
+   "target": "ní bheidh mé in ann cuimhneamh air sin go héasca amárach",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní bheidh mé in ann cuimhneamh a dhéanamh air sin go héasca amárach"
+   }
+  },
+  {
+   "phrase": "S0027L01U08",
+   "role": "use",
+   "known": "I don't like to be trying to remember a word",
+   "target": "ní maith liom a bheith ag iarraidh cuimhneamh ar fhocal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní maith liom a bheith ag iarraidh cuimhneamh a dhéanamh ar fhocal"
+   }
+  },
+  {
+   "phrase": "S0027L04B02",
+   "role": "build",
+   "known": "I don't like remembering an answer",
+   "target": "ní maith liom cuimhneamh ar fhreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní maith liom cuimhneamh a dhéanamh ar fhreagra"
+   }
+  },
+  {
+   "phrase": "S0027L04U02",
+   "role": "use",
+   "known": "I don't like remembering an answer",
+   "target": "ní maith liom cuimhneamh ar fhreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní maith liom cuimhneamh a dhéanamh ar fhreagra"
+   }
+  },
+  {
+   "phrase": "S0037L01U13",
+   "role": "use",
+   "known": "I started trying to remember the whole sentence",
+   "target": "thosaigh mé ag iarraidh cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "thosaigh mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0037L02U09",
+   "role": "use",
+   "known": "I started thinking carefully because I was trying to remember the whole sentence",
+   "target": "thosaigh mé ag smaoineamh go cúramach mar bhí mé ag iarraidh cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "thosaigh mé ag smaoineamh go cúramach mar bhí mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0037L04U06",
+   "role": "use",
+   "known": "she started thinking carefully because she was trying to remember the whole sentence",
+   "target": "thosaigh sí ag smaoineamh go cúramach mar bhí sí ag iarraidh cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "thosaigh sí ag smaoineamh go cúramach mar bhí sí ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0037L05U12",
+   "role": "use",
+   "known": "she started trying to remember the full sentence last month",
+   "target": "thosaigh sí ag iarraidh cuimhneamh ar an abairt iomlán an mhí seo caite",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "thosaigh sí ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán an mhí seo caite"
+   }
+  },
+  {
+   "phrase": "S0038L01U03",
+   "role": "use",
+   "known": "I am trying to remember the full sentence",
+   "target": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0038L03U04",
+   "role": "use",
+   "known": "I have been trying to remember the full sentence for about a week",
+   "target": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán le timpeall seachtaine",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán le timpeall seachtaine"
+   }
+  },
+  {
+   "phrase": "S0038L04U04",
+   "role": "use",
+   "known": "I have been trying to remember the full sentence for about a week",
+   "target": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán le timpeall seachtaine",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar an abairt iomlán le timpeall seachtaine"
+   }
+  },
+  {
+   "phrase": "S0051L01U05",
+   "role": "use",
+   "known": "I enjoy remembering words",
+   "target": "bainim taitneamh as cuimhneamh ar fhocail",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "bainim taitneamh as cuimhneamh a dhéanamh ar fhocail"
+   }
+  },
+  {
+   "phrase": "S0052L01U14",
+   "role": "use",
+   "known": "he wanted to remember the whole sentence",
+   "target": "ba mhian leis cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhian leis cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0055L03U08",
+   "role": "use",
+   "known": "I'd like to be able to remember that easily when I did not sleep",
+   "target": "ba mhaith liom a bheith in ann cuimhneamh air sin go héasca nuair nár chodail mé",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom a bheith in ann cuimhneamh a dhéanamh air sin go héasca nuair nár chodail mé"
+   }
+  },
+  {
+   "phrase": "S0056L01B03",
+   "role": "build",
+   "known": "so that I can remember",
+   "target": "mar sin is féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0056L01U01",
+   "role": "use",
+   "known": "so that I can remember how to say something in Irish",
+   "target": "mar sin is féidir liom cuimhneamh conas rud éigin a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0056L01U03",
+   "role": "use",
+   "known": "so that I can remember",
+   "target": "mar sin is féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0056L01U05",
+   "role": "use",
+   "known": "so that I can try to remember",
+   "target": "mar sin is féidir liom iarracht a dhéanamh cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0056L02U01",
+   "role": "use",
+   "known": "so that I can remember how to say a couple of words",
+   "target": "mar sin is féidir liom cuimhneamh conas cúpla focal a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0057L01B03",
+   "role": "build",
+   "known": "I can't remember",
+   "target": "ní féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0057L01U01",
+   "role": "use",
+   "known": "I can't remember how to say it",
+   "target": "ní féidir liom cuimhneamh conas é a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0057L01U07",
+   "role": "use",
+   "known": "I can't remember how to say something in Irish",
+   "target": "ní féidir liom cuimhneamh conas rud éigin a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0057L01U02",
+   "role": "use",
+   "known": "I can't remember what I wanted to say",
+   "target": "ní féidir liom cuimhneamh cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0058L01U04",
+   "role": "use",
+   "known": "I can't remember that easily but it is interesting today",
+   "target": "ní féidir liom cuimhneamh air sin go héasca ach tá sé suimiúil inniu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh air sin go héasca ach tá sé suimiúil inniu"
+   }
+  },
+  {
+   "phrase": "S0059L01U02",
+   "role": "use",
+   "known": "I enjoy Irish and I know how to remember that easily",
+   "target": "Bainim taitneamh as Gaeilge agus tá a fhios agam conas cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Bainim taitneamh as Gaeilge agus tá a fhios agam conas cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0059L01U06",
+   "role": "use",
+   "known": "I can't remember that easily but I know how to try as hard as I can",
+   "target": "Ní féidir liom cuimhneamh air sin go héasca ach tá a fhios agam conas mo dhícheall a dhéanamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Ní féidir liom cuimhneamh a dhéanamh air sin go héasca ach tá a fhios agam conas mo dhícheall a dhéanamh"
+   }
+  },
+  {
+   "phrase": "S0060L02U05",
+   "role": "use",
+   "known": "I'm not sure how to remember that easily at the moment",
+   "target": "níl mé cinnte conas cuimhneamh air sin go héasca faoi láthair",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl mé cinnte conas cuimhneamh a dhéanamh air sin go héasca faoi láthair"
+   }
+  },
+  {
+   "phrase": "S0061L03B04",
+   "role": "build",
+   "known": "I wasn't able to say what I wanted to say",
+   "target": "ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0061L03U03",
+   "role": "use",
+   "known": "I can't remember how to say what I wanted to say",
+   "target": "ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0061L03U08",
+   "role": "use",
+   "known": "I was trying to remember how to say what I wanted to say",
+   "target": "bhí mé ag iarraidh cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0062L02U05",
+   "role": "use",
+   "known": "I can't remember at the same time",
+   "target": "ní féidir liom cuimhneamh ag an am céanna",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0064L01U02",
+   "role": "use",
+   "known": "it isn't easy to remember",
+   "target": "níl sé éasca cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0064L01U07",
+   "role": "use",
+   "known": "it isn't easy to remember a couple of words",
+   "target": "níl sé éasca cúpla focal cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl sé éasca cuimhneamh a dhéanamh ar chúpla focal",
+    "note": "'cúpla focal cuimhneamh' is the old object-first form Eoghan removed; becomes 'cuimhneamh a dhéanamh ar chúpla focal' (option A: 'cuimhneamh ar chúpla focal')."
+   }
+  },
+  {
+   "phrase": "S0065L01U07",
+   "role": "use",
+   "known": "it is useful to take time to think about how to say something",
+   "target": "Tá sé úsáideach am a chaitheamh chun cuimhneamh conas rud éigin a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0065L04B05",
+   "role": "build",
+   "known": "in order to remember",
+   "target": "chun cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0065L04U05",
+   "role": "use",
+   "known": "he wanted to take time in order to remember enough words",
+   "target": "ba mhian leis am a chaitheamh chun cuimhneamh conas dóthain focal a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0065L03U08",
+   "role": "use",
+   "known": "he doesn't want to take time to remember enough words right now",
+   "target": "ní mian leis am a chaitheamh chun cuimhneamh conas dóthain focal a rá anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0066L01U03",
+   "role": "use",
+   "known": "it is not easy to remember how to say enough different words in Irish",
+   "target": "Níl sé éasca cuimhneamh conas dóthain focal éagsúil a rá i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0066L02B04",
+   "role": "build",
+   "known": "it is difficult to remember enough words",
+   "target": "tá sé deacair cuimhneamh ar dóthain focal éagsúil",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá sé deacair cuimhneamh a dhéanamh ar dóthain focal éagsúil"
+   }
+  },
+  {
+   "phrase": "S0066L02U03",
+   "role": "use",
+   "known": "it is difficult to remember enough different words at the same time",
+   "target": "tá sé deacair cuimhneamh ar dóthain focal éagsúil ag an am céanna",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá sé deacair cuimhneamh a dhéanamh ar dóthain focal éagsúil ag an am céanna"
+   }
+  },
+  {
+   "phrase": "S0066L02U10",
+   "role": "use",
+   "known": "I'd like to know how to speak Irish but it is difficult to remember",
+   "target": "ba mhaith liom a fhios a bheith agam conas labhairt Gaeilge ach tá sé deacair cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0066L02U07",
+   "role": "use",
+   "known": "I think it is difficult to remember everything quickly but I enjoy trying",
+   "target": "ceapaim go bhfuil sé deacair cuimhneamh ar gach rud go tapa ach bainim taitneamh as iarracht a dhéanamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ceapaim go bhfuil sé deacair cuimhneamh a dhéanamh ar gach rud go tapa ach bainim taitneamh as iarracht a dhéanamh"
+   }
+  },
+  {
+   "phrase": "S0066L04U10",
+   "role": "use",
+   "known": "I was trying to find a word in Irish but it was difficult to remember today",
+   "target": "bhí mé ag iarraidh focal a fháil i nGaeilge ach bhí sé deacair cuimhneamh inniu",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0066L04U05",
+   "role": "use",
+   "known": "it is difficult to find a word in Irish when you cannot remember it",
+   "target": "tá sé deacair focal a fháil i nGaeilge nuair nach bhfuil tú in ann cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0067L02U08",
+   "role": "use",
+   "known": "why do you want to remember the whole sentence",
+   "target": "cén fáth ar mian leat cuimhneamh ar an abairt iomlán",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cén fáth ar mian leat cuimhneamh a dhéanamh ar an abairt iomlán"
+   }
+  },
+  {
+   "phrase": "S0068L01U10",
+   "role": "use",
+   "known": "what answer were you trying to find but it is difficult to remember now",
+   "target": "cad é an freagra a bhí tú ag iarraidh a fháil ach tá sé deacair cuimhneamh anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0068L02B04",
+   "role": "build",
+   "known": "I am trying to remember what you are talking about right now",
+   "target": "tá mé ag iarraidh cuimhneamh ar an rud atá tú ag caint faoi anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar an rud atá tú ag caint faoi anois"
+   }
+  },
+  {
+   "phrase": "S0068L02U03",
+   "role": "use",
+   "known": "I am trying to remember carefully what you are talking about now",
+   "target": "tá mé ag iarraidh cuimhneamh go cúramach ar an rud atá tú ag caint faoi anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh go cúramach ar an rud atá tú ag caint faoi anois"
+   }
+  },
+  {
+   "phrase": "S0068L03U04",
+   "role": "use",
+   "known": "he is looking for a word in Irish but it is difficult to remember everything now",
+   "target": "tá sé ag lorg focal i nGaeilge ach tá sé deacair cuimhneamh ar gach rud anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá sé ag lorg focal i nGaeilge ach tá sé deacair cuimhneamh a dhéanamh ar gach rud anois"
+   }
+  },
+  {
+   "phrase": "S0068L03U07",
+   "role": "use",
+   "known": "I was looking for the answer before I have to go but it is not easy to remember",
+   "target": "bhí mé ag lorg an freagra sula gcaithfidh mé dul ach níl sé éasca cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0069L05U09",
+   "role": "use",
+   "known": "I can't remember how to say what I wanted to say but I'm trying to learn more this afternoon",
+   "target": "ní féidir liom cuimhneamh conas a rá cad ba mhian liom a rá ach tá mé ag iarraidh foghlaim níos mó an tráthnóna seo",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0069L05U14",
+   "role": "use",
+   "known": "I am not sure if I can remember the whole sentence this afternoon but I want to try my best",
+   "target": "níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán an tráthnóna seo ach is mian liom mo dhícheall a dhéanamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl mé cinnte an féidir liom cuimhneamh a dhéanamh ar an abairt iomlán an tráthnóna seo ach is mian liom mo dhícheall a dhéanamh"
+   }
+  },
+  {
+   "phrase": "S0069L05U07",
+   "role": "use",
+   "known": "I think it is interesting when you understand enough words and I am going to try to remember more this afternoon",
+   "target": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú dóthain focal agus tá mé chun iarracht a dhéanamh cuimhneamh ar níos mó an tráthnóna seo",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú dóthain focal agus tá mé chun iarracht a dhéanamh cuimhneamh a dhéanamh ar níos mó an tráthnóna seo",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0070L02U06",
+   "role": "use",
+   "known": "I can't remember where it was",
+   "target": "ní féidir liom cuimhneamh cá raibh sé",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0081L01U06",
+   "role": "use",
+   "known": "when do you want to remember?",
+   "target": "cathain ar mian leat cuimhneamh?",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0088L05U08",
+   "role": "use",
+   "known": "I can't remember how to say what I was trying to say yet, and I'm not sure if anyone else knows how to say it either",
+   "target": "Ní féidir liom cuimhneamh conas a rá cad a bhí mé ag iarraidh a rá go fóill, agus níl mé cinnte an bhfuil a fhios ag aon duine eile",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0088L05U11",
+   "role": "use",
+   "known": "I'm not sure yet if I will be able to remember the whole sentence, but I'm going to practise speaking with someone else soon",
+   "target": "Níl mé cinnte go fóill an féidir liom cuimhneamh ar an abairt iomlán, ach tá mé chun labhairt a chleachtadh le duine éigin eile",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Níl mé cinnte go fóill an féidir liom cuimhneamh a dhéanamh ar an abairt iomlán, ach tá mé chun labhairt a chleachtadh le duine éigin eile"
+   }
+  },
+  {
+   "phrase": "S0094L01U07",
+   "role": "use",
+   "known": "this is his name but I can't remember that easily",
+   "target": "is é seo a ainm ach ní féidir liom cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is é seo a ainm ach ní féidir liom cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0098L01U02",
+   "role": "use",
+   "known": "I should try to remember",
+   "target": "ba chóir dom iarracht a dhéanamh cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0102L01U04",
+   "role": "use",
+   "known": "we are talking together and trying to remember what we have learned",
+   "target": "Tá muid ag caint le chéile agus ag iarraidh cuimhneamh ar an rud atá foghlamtha againn",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá muid ag caint le chéile agus ag iarraidh cuimhneamh a dhéanamh ar an rud atá foghlamtha againn"
+   }
+  },
+  {
+   "phrase": "S0102L02U03",
+   "role": "use",
+   "known": "I am trying to remember how to say what I wanted to say",
+   "target": "Tá mé ag iarraidh cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0102L04U08",
+   "role": "use",
+   "known": "I know that it is not easy to remember enough different words",
+   "target": "Tá a fhios agam nach bhfuil sé éasca cuimhneamh ar dóthain focal éagsúil",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá a fhios agam nach bhfuil sé éasca cuimhneamh a dhéanamh ar dóthain focal éagsúil"
+   }
+  },
+  {
+   "phrase": "S0102L05U02",
+   "role": "use",
+   "known": "like that I can remember how to say what I want in Irish",
+   "target": "mar sin is féidir liom cuimhneamh conas a rá cad atá i gceist agam i nGaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0103L01U08",
+   "role": "use",
+   "known": "we are not sure if it is easy to remember so many different words",
+   "target": "Níl muid cinnte an bhfuil sé éasca cuimhneamh ar mórán focal éagsúil",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Níl muid cinnte an bhfuil sé éasca cuimhneamh a dhéanamh ar mórán focal éagsúil"
+   }
+  },
+  {
+   "phrase": "S0103L04B05",
+   "role": "build",
+   "known": "I can remember a few words",
+   "target": "is féidir liom cuimhneamh ar chúpla focal",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is féidir liom cuimhneamh a dhéanamh ar chúpla focal"
+   }
+  },
+  {
+   "phrase": "S0103L04U01",
+   "role": "use",
+   "known": "I am trying to remember every word I have learned in Irish so far",
+   "target": "Tá mé ag iarraidh cuimhneamh ar gach focal atá foghlamtha agam i nGaeilge fós",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar gach focal atá foghlamtha agam i nGaeilge fós"
+   }
+  },
+  {
+   "phrase": "S0103L04U12",
+   "role": "use",
+   "known": "I can remember a few words from last week and I think that is very good",
+   "target": "is féidir liom cuimhneamh ar chúpla focal ón tseachtain seo caite agus ceapaim gur rud maith é sin",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is féidir liom cuimhneamh a dhéanamh ar chúpla focal ón tseachtain seo caite agus ceapaim gur rud maith é sin"
+   }
+  },
+  {
+   "phrase": "S0103L04U04",
+   "role": "use",
+   "known": "I can remember a few words in Irish now and I know I am doing well",
+   "target": "is féidir liom cuimhneamh ar chúpla focal i nGaeilge anois agus tá a fhios agam go bhfuil mé ag déanamh go maith",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is féidir liom cuimhneamh a dhéanamh ar chúpla focal i nGaeilge anois agus tá a fhios agam go bhfuil mé ag déanamh go maith"
+   }
+  },
+  {
+   "phrase": "S0103L05U04",
+   "role": "use",
+   "known": "I know there is something else important that I am trying to remember",
+   "target": "Tá a fhios agam go bhfuil rud éigin eile tábhachtach a bhfuil mé ag iarraidh cuimhneamh air",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá a fhios agam go bhfuil rud éigin eile tábhachtach a bhfuil mé ag iarraidh cuimhneamh a dhéanamh air"
+   }
+  },
+  {
+   "phrase": "S0104L04U02",
+   "role": "use",
+   "known": "I can't remember what is important",
+   "target": "ní féidir liom cuimhneamh ar an rud atá tábhachtach",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar an rud atá tábhachtach"
+   }
+  },
+  {
+   "phrase": "S0104L05U06",
+   "role": "use",
+   "known": "I can't remember everything that we're doing",
+   "target": "ní féidir liom cuimhneamh ar gach rud atá á dhéanamh againn",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar gach rud atá á dhéanamh againn"
+   }
+  },
+  {
+   "phrase": "S0110L04U02",
+   "role": "use",
+   "known": "I would like to finish today but I was not able to remember everything I was trying to say",
+   "target": "ba mhaith liom críochnú inniu ach ní raibh mé in ann cuimhneamh ar gach rud a bhí mé ag iarraidh a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ba mhaith liom críochnú inniu ach ní raibh mé in ann cuimhneamh a dhéanamh ar gach rud a bhí mé ag iarraidh a rá"
+   }
+  },
+  {
+   "phrase": "S0113L02U01",
+   "role": "use",
+   "known": "why can't i remember that easily",
+   "target": "cén fáth nach féidir liom cuimhneamh air sin go héasca",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cén fáth nach féidir liom cuimhneamh a dhéanamh air sin go héasca"
+   }
+  },
+  {
+   "phrase": "S0113L03B01",
+   "role": "build",
+   "known": "remember what you said",
+   "target": "cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03B03",
+   "role": "build",
+   "known": "I can't remember what you said",
+   "target": "ní féidir liom cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03B04",
+   "role": "build",
+   "known": "I can remember what you said",
+   "target": "is féidir liom cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03B05",
+   "role": "build",
+   "known": "try to remember what you said",
+   "target": "iarracht a dhéanamh cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "iarracht a dhéanamh cuimhneamh a dhéanamh ar an rud a dúirt tú",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0113L03B06",
+   "role": "build",
+   "known": "I want to remember what you said",
+   "target": "is mian liom cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is mian liom cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03B07",
+   "role": "build",
+   "known": "it's hard to remember what you said",
+   "target": "tá sé deacair cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá sé deacair cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03C01",
+   "role": "component",
+   "known": "remember",
+   "target": "cuimhneamh ar",
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete",
+    "note": "word tile of a LEGO that option B re-cuts; regenerated from the new components."
+   }
+  },
+  {
+   "phrase": "S0113L03U01",
+   "role": "use",
+   "known": "I can't remember what you said at the time",
+   "target": "Ní féidir liom cuimhneamh ar an rud a dúirt tú ag an am",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Ní féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú ag an am"
+   }
+  },
+  {
+   "phrase": "S0113L03U04",
+   "role": "use",
+   "known": "I was trying to remember what you said about the language last month",
+   "target": "bhí mé ag iarraidh cuimhneamh ar an rud a dúirt tú faoin teanga an mhí seo caite",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "bhí mé ag iarraidh cuimhneamh a dhéanamh ar an rud a dúirt tú faoin teanga an mhí seo caite"
+   }
+  },
+  {
+   "phrase": "S0113L03U07",
+   "role": "use",
+   "known": "I can't remember what you said about that last night",
+   "target": "Ní féidir liom cuimhneamh ar an rud a dúirt tú faoi sin aréir",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Ní féidir liom cuimhneamh a dhéanamh ar an rud a dúirt tú faoi sin aréir"
+   }
+  },
+  {
+   "phrase": "S0113L03U09",
+   "role": "use",
+   "known": "I want to remember what you said last month",
+   "target": "Is mian liom cuimhneamh ar an rud a dúirt tú an mhí seo caite",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Is mian liom cuimhneamh a dhéanamh ar an rud a dúirt tú an mhí seo caite"
+   }
+  },
+  {
+   "phrase": "S0113L03U10",
+   "role": "use",
+   "known": "she said she can't remember what you said last night",
+   "target": "dúirt sí nach féidir léi cuimhneamh ar an rud a dúirt tú aréir",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "dúirt sí nach féidir léi cuimhneamh a dhéanamh ar an rud a dúirt tú aréir"
+   }
+  },
+  {
+   "phrase": "S0113L03U11",
+   "role": "use",
+   "known": "I want to try to remember what you said about speaking as often as possible",
+   "target": "Is mian liom iarracht a dhéanamh cuimhneamh ar an rud a dúirt tú faoi labhairt chomh minic agus is féidir",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "Is mian liom iarracht a dhéanamh cuimhneamh a dhéanamh ar an rud a dúirt tú faoi labhairt chomh minic agus is féidir",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0113L03U15",
+   "role": "use",
+   "known": "I want to try to remember what you said about this last week",
+   "target": "Is mian liom iarracht a dhéanamh cuimhneamh ar an rud a dúirt tú faoi seo an tseachtain seo caite",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "target": "Is mian liom iarracht a dhéanamh cuimhneamh a dhéanamh ar an rud a dúirt tú faoi seo an tseachtain seo caite",
+    "note": "doubles 'a dhéanamh' (iarracht a dhéanamh cuimhneamh a dhéanamh ar…): clumsy; reword or delete, applier to settle with Kai."
+   }
+  },
+  {
+   "phrase": "S0113L03U03",
+   "role": "use",
+   "known": "I'm starting to remember what you said",
+   "target": "Tá mé ag tosú ag cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete",
+    "note": "progressive 'ag cuimhneamh ar': Eoghan's form would need 'ag déanamh cuimhnimh ar', which he never wrote. No precedent, so delete."
+   }
+  },
+  {
+   "phrase": "S0113L03U06",
+   "role": "use",
+   "known": "she is trying to remember what you said",
+   "target": "Tá sí ag iarraidh cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá sí ag iarraidh cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0113L03U08",
+   "role": "use",
+   "known": "I know it's hard to remember what you said",
+   "target": "Tá a fhios agam go bhfuil sé deacair cuimhneamh ar an rud a dúirt tú",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá a fhios agam go bhfuil sé deacair cuimhneamh a dhéanamh ar an rud a dúirt tú"
+   }
+  },
+  {
+   "phrase": "S0114L01U08",
+   "role": "use",
+   "known": "I feel it is hard when you can't remember what you were trying to say",
+   "target": "mothaím go bhfuil sé deacair nuair nach féidir leat cuimhneamh ar an rud a bhí tú ag iarraidh a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím go bhfuil sé deacair nuair nach féidir leat cuimhneamh a dhéanamh ar an rud a bhí tú ag iarraidh a rá"
+   }
+  },
+  {
+   "phrase": "S0114L02U03",
+   "role": "use",
+   "known": "I feel as if I am able to remember more words now",
+   "target": "mothaím go bhfuil mé in ann cuimhneamh ar níos mó focal anois",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím go bhfuil mé in ann cuimhneamh a dhéanamh ar níos mó focal anois"
+   }
+  },
+  {
+   "phrase": "S0114L02U15",
+   "role": "use",
+   "known": "I feel as if I am able to remember what I was trying to say",
+   "target": "mothaím go bhfuil mé in ann cuimhneamh ar an rud a bhí mé ag iarraidh a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím go bhfuil mé in ann cuimhneamh a dhéanamh ar an rud a bhí mé ag iarraidh a rá"
+   }
+  },
+  {
+   "phrase": "S0114L03U11",
+   "role": "use",
+   "known": "I feel as if I am doing something good when I try to remember what I said",
+   "target": "mothaím go bhfuil mé ag déanamh rud maith nuair atá mé ag iarraidh cuimhneamh ar an rud a dúirt mé",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím go bhfuil mé ag déanamh rud maith nuair atá mé ag iarraidh cuimhneamh a dhéanamh ar an rud a dúirt mé"
+   }
+  },
+  {
+   "phrase": "S0114L04U07",
+   "role": "use",
+   "known": "I feel worse when I can't remember what I was trying to say",
+   "target": "mothaím níos measa nuair nach féidir liom cuimhneamh ar an rud a bhí mé ag iarraidh a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím níos measa nuair nach féidir liom cuimhneamh a dhéanamh ar an rud a bhí mé ag iarraidh a rá"
+   }
+  },
+  {
+   "phrase": "S0114L06U09",
+   "role": "use",
+   "known": "I feel I can remember more than yesterday at speaking Irish",
+   "target": "mothaím go bhfuil mé in ann cuimhneamh ar níos mó ná inné ag labhairt Gaeilge",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "mothaím go bhfuil mé in ann cuimhneamh a dhéanamh ar níos mó ná inné ag labhairt Gaeilge"
+   }
+  },
+  {
+   "phrase": "S0114L06U06",
+   "role": "use",
+   "known": "I feel as if I am a little better than yesterday at remembering words",
+   "target": "mothaím go bhfuil mé beagán níos fearr ná inné ag cuimhneamh ar focail",
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete",
+    "note": "progressive 'ag cuimhneamh ar focail' (also unlenited): same as S0113L03U03."
+   }
+  },
+  {
+   "phrase": "S0114L06U13",
+   "role": "use",
+   "known": "I can remember more words than yesterday which is good",
+   "target": "is féidir liom cuimhneamh ar níos mó focal ná inné agus tá sin go maith",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "is féidir liom cuimhneamh a dhéanamh ar níos mó focal ná inné agus tá sin go maith"
+   }
+  },
+  {
+   "phrase": "S0124L01U06",
+   "role": "use",
+   "known": "I thought that was very interesting but I wasn't sure whether I would be able to remember how to say what I wanted to say",
+   "target": "cheap mé go raibh sé sin an-suimiúil ach ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0127L02U13",
+   "role": "use",
+   "known": "That isn't the reason why I wanted to see you and I wasn't sure whether I would be able to remember what I wanted to say",
+   "target": "Ní hé sin an chúis ar mhian liom tú a fheiceáil agus ní raibh mé cinnte an féidir liom cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0130L01U06",
+   "role": "use",
+   "known": "what a surprise that you can remember",
+   "target": "Cén iontas go bhfuil tú in ann cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0132L05U06",
+   "role": "use",
+   "known": "I can't remember what she was saying",
+   "target": "ní féidir liom cuimhneamh ar an méid a bhí á rá aici",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar an méid a bhí á rá aici"
+   }
+  },
+  {
+   "phrase": "S0136L01U06",
+   "role": "use",
+   "known": "of course I can remember",
+   "target": "ar ndóigh is féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0149L01U08",
+   "role": "use",
+   "known": "it's very difficult to remember everything",
+   "target": "Tá sé an-deacair cuimhneamh ar gach rud",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá sé an-deacair cuimhneamh a dhéanamh ar gach rud"
+   }
+  },
+  {
+   "phrase": "S0149L02U04",
+   "role": "use",
+   "known": "I hope that I can remember",
+   "target": "Tá súil agam gur féidir liom cuimhneamh",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0150L03U01",
+   "role": "use",
+   "known": "I can't remember your name",
+   "target": "ní féidir liom cuimhneamh ar d'ainm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar d'ainm"
+   }
+  },
+  {
+   "phrase": "S0153L03U11",
+   "role": "use",
+   "known": "I cannot remember exactly what you said, but I know it was something very interesting",
+   "target": "Ní féidir liom cuimhneamh díreach cad a dúirt tú, ach tá a fhios agam go raibh sé rud éigin an-suimiúil",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0153L03U06",
+   "role": "use",
+   "known": "That is exactly the reason why I was not able to remember how to say what I wanted",
+   "target": "sin díreach an chúis nach raibh mé in ann cuimhneamh conas a rá cad ba mhian liom a rá",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0160L02B04",
+   "role": "build",
+   "known": "I cannot remember this word right now",
+   "target": "ní féidir liom cuimhneamh ar an bhfocal seo faoi láthair",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar an bhfocal seo faoi láthair"
+   }
+  },
+  {
+   "phrase": "S0160L02B05",
+   "role": "build",
+   "known": "I am trying to remember this word",
+   "target": "tá mé ag iarraidh cuimhneamh ar an bhfocal seo",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "tá mé ag iarraidh cuimhneamh a dhéanamh ar an bhfocal seo"
+   }
+  },
+  {
+   "phrase": "S0160L02U08",
+   "role": "use",
+   "known": "this word is not easy to remember but I think it will come with time and regular practice",
+   "target": "Níl sé éasca cuimhneamh ar an bhfocal seo ach ceapaim gur rud maith é leanúint ar aghaidh ag cleachtadh go minic",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Níl sé éasca cuimhneamh a dhéanamh ar an bhfocal seo ach ceapaim gur rud maith é leanúint ar aghaidh ag cleachtadh go minic"
+   }
+  },
+  {
+   "phrase": "S0160L02U03",
+   "role": "use",
+   "known": "I am trying to remember this word but there are too many thoughts going around in my head",
+   "target": "Tá mé ag iarraidh cuimhneamh ar an bhfocal seo ach tá an iomarca smaointe ag dul timpeall i mo cheann",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá mé ag iarraidh cuimhneamh a dhéanamh ar an bhfocal seo ach tá an iomarca smaointe ag dul timpeall i mo cheann"
+   }
+  },
+  {
+   "phrase": "S0160L02U13",
+   "role": "use",
+   "known": "I was not able to remember this word last night even though I had been thinking about it all day",
+   "target": "Ní raibh mé in ann cuimhneamh ar an bhfocal seo aréir cé go raibh mé ag smaoineamh air an lá ar fad",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Ní raibh mé in ann cuimhneamh a dhéanamh ar an bhfocal seo aréir cé go raibh mé ag smaoineamh air an lá ar fad"
+   }
+  },
+  {
+   "phrase": "S0193L01U02",
+   "role": "use",
+   "known": "I am sorry, I was not able to remember what you said to me a little while ago",
+   "target": "Tá brón orm, ní raibh mé in ann cuimhneamh ar an rud a dúirt tú liom tamall ó shin",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá brón orm, ní raibh mé in ann cuimhneamh a dhéanamh ar an rud a dúirt tú liom tamall ó shin"
+   }
+  },
+  {
+   "phrase": "S0202L02U11",
+   "role": "use",
+   "known": "I remember how to answer the question now but when I was starting it was very difficult",
+   "target": "Tá a fhios agam anois conas an cheist a fhreagairt ach nuair a bhí mé ag tosú bhí sé an-deacair orm",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0208L02U06",
+   "role": "use",
+   "known": "do you know how to say it in Irish because I really cannot remember at all",
+   "target": "an bhfuil a fhios agat conas é a rá i nGaeilge mar ní féidir liom cuimhneamh ar chor ar bith",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep",
+    "note": "'ar chor ar bith' is 'at all', not the preposition of remember: no change."
+   }
+  },
+  {
+   "phrase": "S0208L02U07",
+   "role": "use",
+   "known": "I have been trying to remember how to say it all day but I cannot manage it",
+   "target": "bhí mé ag iarraidh cuimhneamh conas é a rá an lá ar fad ach ní féidir liom déileáil leis",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0208L02U04",
+   "role": "use",
+   "known": "I could not remember how to say it so I had to ask someone else",
+   "target": "ní raibh mé in ann cuimhneamh conas é a rá mar sin bhí orm ceist a chur ar dhuine éigin eile",
+   "option_a": "keep",
+   "option_b": {
+    "action": "keep"
+   }
+  },
+  {
+   "phrase": "S0232L05B01",
+   "role": "build",
+   "known": "to remember the answer",
+   "target": "cuimhneamh ar an bhfreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "cuimhneamh a dhéanamh ar an bhfreagra"
+   }
+  },
+  {
+   "phrase": "S0232L05B04",
+   "role": "build",
+   "known": "I can't remember the answer",
+   "target": "ní féidir liom cuimhneamh ar an bhfreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "ní féidir liom cuimhneamh a dhéanamh ar an bhfreagra"
+   }
+  },
+  {
+   "phrase": "S0232L05C01",
+   "role": "component",
+   "known": "to remember",
+   "target": "cuimhneamh ar",
+   "option_a": "keep",
+   "option_b": {
+    "action": "delete",
+    "note": "word tile of a LEGO that option B re-cuts; regenerated from the new components."
+   }
+  },
+  {
+   "phrase": "S0232L05U11",
+   "role": "use",
+   "known": "I'm not sure if I can remember the answer",
+   "target": "níl mé cinnte an féidir liom cuimhneamh ar an bhfreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl mé cinnte an féidir liom cuimhneamh a dhéanamh ar an bhfreagra"
+   }
+  },
+  {
+   "phrase": "S0232L05U12",
+   "role": "use",
+   "known": "it isn't easy to remember the answer",
+   "target": "níl sé éasca cuimhneamh ar an bhfreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "níl sé éasca cuimhneamh a dhéanamh ar an bhfreagra"
+   }
+  },
+  {
+   "phrase": "S0232L05U01",
+   "role": "use",
+   "known": "I know an old woman who will be able to remember the answer",
+   "target": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh ar an bhfreagra",
+   "option_a": "keep",
+   "option_b": {
+    "action": "update",
+    "target": "Tá aithne agam ar sheanbean a bheidh in ann cuimhneamh a dhéanamh ar an bhfreagra"
+   }
+  },
+  {
+   "phrase": "S0288L03U13",
+   "role": "use",
+   "known": "I was trying to remember how many of the people I know were there",
+   "target": "bhí mé ag iarraidh cuimhneamh ar cé mhéad de na daoine a bhfuil aithne agam orthu a bhí ann",
+   "option_a": "keep",
+   "option_b": {
+    "action": "hold",
+    "note": "'cuimhneamh ar cé mhéad…' is remember + a question clause; no Eoghan precedent for 'a dhéanamh ar' before a question word. Hold for Eoghan."
+   }
+  }
+ ],
+ "counts": {
+  "seeds": 7,
+  "legos": 4,
+  "phrases": 173,
+  "option_a": {
+   "seeds_changed": 0,
+   "legos_changed": 0,
+   "phrases_changed": 0
+  },
+  "option_b": {
+   "seeds_changed": 5,
+   "legos_retexted": 1,
+   "legos_recut": 2,
+   "legos_deleted_or_not_new": 1,
+   "legos_added": 1,
+   "phrases_updated": 112,
+   "phrases_deleted": 5,
+   "phrases_held": 9,
+   "phrases_unchanged": 47,
+   "seeds_rehomed": 0
+  }
+ }
+}
