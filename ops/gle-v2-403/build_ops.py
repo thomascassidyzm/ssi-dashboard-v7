@@ -24,7 +24,7 @@ for k,v in sorted(PH.items()):
         ops.append({"op":"phrase.update","phrase_id":r['id'],"set":sd,"expect":{"known_text":r['known_text'],"target_text":r['target_text']}})
 for k in sorted(DEL_LEGO): ops.append({"op":"lego.delete","lego_id":k,"cascade_phrases":True,"expect":{"target_text":LA[k]["target_text"]}})
 for r in INS_PH: ops.append({"op":"phrase.insert","row":r})
-pri={"phrase.insert":0,"seed.update":1,"lego.update":2,"phrase.update":3,"phrase.delete":4,"lego.delete":5}; ops.sort(key=lambda x:pri[x["op"]])  # new practice first: Popty refuses a debut left without practice
+pri={"lego.insert":-1,"phrase.insert":0,"seed.update":1,"lego.update":2,"phrase.update":3,"phrase.delete":4,"lego.delete":5}; ops.sort(key=lambda x:pri[x["op"]])  # new practice first: Popty refuses a debut left without practice
 json.dump({"ops":ops},open("ops.json","w"),ensure_ascii=False,indent=0)
 dec={"seeds":{str(n):{"before":S[str(n)],"known":k,"target":t,"family":f,"why":w} for n,(k,t,f,w) in sorted(SEED.items())},
  "legos":{k:{"before":{x:LA[k][x] for x in('known_text','target_text','components','is_new','type')},"set":sd,"family":f,"why":w} for k,(sd,f,w) in sorted(LEGO.items())},

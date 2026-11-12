@@ -1,0 +1,439 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "d05dd13b-7b63-4ab0-9c60-5e136cb783f6",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:20:04.646Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-20-04-645Z-d05dd13b-7b63-4ab0-9c60-5e136cb783f6.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L02U06",
+      "set": {
+        "target_text": "duine a labhraíonn Gaeilge bheadh sé sin go hiontach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L02U02",
+      "set": {
+        "target_text": "níl aithne agam ar dhuine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L02U01",
+      "set": {
+        "target_text": "tá tú cosúil le duine a labhraíonn Gaeilge go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L02B02",
+      "set": {
+        "target_text": "duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L01U06",
+      "set": {
+        "target_text": "go cinnte tá tú cosúil le gach duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0128L01U01",
+      "set": {
+        "target_text": "tá tú cosúil le gach duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0127L03U04",
+      "set": {
+        "target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0125L01U07",
+      "set": {
+        "target_text": "creidim gur rud maith é leanúint ar aghaidh nuair atá sé deacair agus bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U07",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U05",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0124L02U02",
+      "set": {
+        "target_text": "cheap mé gur smaoineamh maith é sin tosú ag caint le daoine chomh luath agus is féidir leat agus bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0123L02U08",
+      "set": {
+        "target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0120L01U03",
+      "set": {
+        "target_text": "ach tá sé suimiúil bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L06U12",
+      "set": {
+        "known_text": "I feel as if I am thinking more quickly than yesterday when I speak",
+        "target_text": "mothaím go bhfuil mé ag smaoineamh níos tapa ná inné nuair a labhraím"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0114L03U03",
+      "set": {
+        "known_text": "I feel as if I am doing something useful when I speak Irish",
+        "target_text": "mothaím go bhfuil mé ag déanamh rud úsáideach nuair a labhraím Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0113L02U07",
+      "set": {
+        "target_text": "cén fáth nach féidir liom bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0103L05U01",
+      "set": {
+        "known_text": "I want to practise speaking with someone else who knows Irish well",
+        "target_text": "ba mhaith liom labhairt a chleachtadh le duine éigin eile a labhraíonn Gaeilge go maith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0100L01U09",
+      "set": {
+        "target_text": "níor cheart duit bualadh le daoine a labhraíonn Gaeilge inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0099L01U04",
+      "set": {
+        "target_text": "ba cheart duit bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0097L02U08",
+      "set": {
+        "target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le dul níos déanaí"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0094L01U02",
+      "set": {
+        "known_text": "this is your friend who speaks Irish",
+        "target_text": "is é seo do chara a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0093L01U03",
+      "set": {
+        "target_text": "go hiontach tá sé in am bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0090L01B04",
+      "set": {
+        "target_text": "agus dá bhféadfá bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L04U02",
+      "set": {
+        "target_text": "Níl aithne agam ar aon duine anseo fós, ach is mian liom bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01U06",
+      "set": {
+        "target_text": "ba mhian linn daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01U05",
+      "set": {
+        "target_text": "is maith liom daoine a labhraíonn Gaeilge mar tá sé suimiúil"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01U04",
+      "set": {
+        "target_text": "bhí sí ag lorg daoine a labhraíonn Gaeilge inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01U02",
+      "set": {
+        "target_text": "cén fáth a bhfuil tú ag lorg daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01U01",
+      "set": {
+        "target_text": "tá mé ag lorg daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0085L01B01",
+      "set": {
+        "target_text": "daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0082L03U05",
+      "set": {
+        "target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge nach bhfuil?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0071L04U03",
+      "set": {
+        "known_text": "I know how to read the whole sentence to anyone who speaks Irish",
+        "target_text": "tá a fhios agam conas an abairt iomlán a léamh d'aon duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0071L04B01",
+      "set": {
+        "known_text": "to anyone who speaks Irish",
+        "target_text": "d'aon duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0071L03U02",
+      "set": {
+        "target_text": "ceapaim gur rud maith é ligean don mhadra óg bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0066L01U09",
+      "set": {
+        "target_text": "Níl sé éasca bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L04U07",
+      "set": {
+        "target_text": "is mian liom bualadh le daoine a labhraíonn Gaeilge chun labhairt a chleachtadh chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L03U09",
+      "set": {
+        "target_text": "is mian liom am a thógáil chun bualadh le daoine a labhraíonn Gaeilge go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L02U10",
+      "set": {
+        "target_text": "Tá sé tábhachtach bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0065L01U09",
+      "set": {
+        "target_text": "Tá sé suimiúil ag iarraidh labhairt Gaeilge le daoine a labhraíonn Gaeilge go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0060L02U03",
+      "set": {
+        "target_text": "an bhfuil tú chun fáil amach conas bualadh le daoine a labhraíonn Gaeilge?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0059L01U03",
+      "set": {
+        "target_text": "Tá a fhios agam conas bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0058L01U01",
+      "set": {
+        "target_text": "tá sé suimiúil bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L04U05",
+      "set": {
+        "known_text": "I do not enjoy making mistakes but I speak Irish well now",
+        "target_text": "ní bhainim taitneamh as botúin a dhéanamh ach labhraím Gaeilge go maith anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L04U02",
+      "set": {
+        "known_text": "when other people are here I speak Irish well and I feel better than yesterday",
+        "target_text": "nuair atá daoine eile anseo labhraím Gaeilge go maith agus mothaím níos fearr ná inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0055L04B03",
+      "set": {
+        "known_text": "do you speak Irish well?",
+        "target_text": "an labhraíonn tú Gaeilge go maith?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0053L01U01",
+      "set": {
+        "target_text": "ba mhian léi bualadh le daoine a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0052L07U02",
+      "set": {
+        "target_text": "an tseachtain seo caite ba mhian leat bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0051L01U11",
+      "set": {
+        "target_text": "bainim taitneamh as bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0042L04U06",
+      "set": {
+        "known_text": "I speak Irish better than last night",
+        "target_text": "labhraím Gaeilge níos fearr ná aréir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0042L02U03",
+      "set": {
+        "target_text": "labhraím Gaeilge níos fearr ná aréir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0042L01U03",
+      "set": {
+        "target_text": "labhraím Gaeilge níos fearr ná inné"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0038L04U10",
+      "set": {
+        "target_text": "Tá sé ag iarraidh bualadh le daoine a labhraíonn Gaeilge le timpeall seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0038L03U13",
+      "set": {
+        "target_text": "Tá sé ag iarraidh bualadh le daoine a labhraíonn Gaeilge le timpeall seachtaine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0038L01U15",
+      "set": {
+        "target_text": "Tá mé ag iarraidh bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0038L01U08",
+      "set": {
+        "target_text": "Tá mé ag iarraidh bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0036L01U04",
+      "set": {
+        "target_text": "Ní mian linn bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0025L03U06",
+      "set": {
+        "target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé dul"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0025L01U04",
+      "set": {
+        "target_text": "an bhfuil tú chun bualadh le daoine a labhraíonn Gaeilge?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L02U07",
+      "set": {
+        "target_text": "is mian liom cuimhneamh air sin go héasca agus bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0024L01U10",
+      "set": {
+        "target_text": "ní bheidh mé ábalta bualadh le daoine a labhraíonn Gaeilge"
+      }
+    }
+  ]
+}

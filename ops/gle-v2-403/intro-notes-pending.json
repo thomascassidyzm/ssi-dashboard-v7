@@ -1,0 +1,5 @@
+{"_why":"Kai's 12 Nov rulings ask for two 'literally' notes in LEGO presentations. Neither could be stored by job #403: gle_v2_for_eng has no presentation rows (no-audio draft), a soft authorship mark needs database/changes/20261111_human_authored_presentations_soft_guard.sql (not applied; Tom's), and a hard mark is Kai's to place. Apply these when either door opens.",
+ "notes":[
+  {"ruling":"Q11","lego_id":"S0009L01","lego":"I speak Irish | tá Gaeilge agam","text":"The Irish for: 'I speak Irish' (literally, 'I have Irish'), is:","route_tried":"POST /api/production/gle_v2_for_eng/presentation/S0009L01/authorship guard=soft -> refused, guard column missing"},
+  {"ruling":"Q3","seed":456,"lego_id":null,"lego":"seed 456 has no LEGOs yet (seeds past 300 are sentence-only)","text":"literally, 'maybe he will be there'","goes_on":"the LEGO that teaches b'fhéidir go mbeidh sé ann, when seed 456 is cut"}
+ ]}

@@ -1,0 +1,2314 @@
+{
+"ops": [
+{
+"op": "lego.insert",
+"row": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"known_text": "you speak Irish very well",
+"target_text": "tá Gaeilge an-mhaith agat",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "very good",
+"target": "an-mhaith"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 1,
+"known_text": "you speak Irish very well",
+"target_text": "tá Gaeilge an-mhaith agat",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 25,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 2,
+"known_text": "you speak Irish very well now",
+"target_text": "tá Gaeilge an-mhaith agat anois",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 31,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 3,
+"known_text": "and you speak Irish very well",
+"target_text": "agus tá Gaeilge an-mhaith agat",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 30,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 4,
+"known_text": "you speak Irish very well and I'd like to speak with you",
+"target_text": "tá Gaeilge an-mhaith agat agus ba mhaith liom labhairt leat",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 59,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 5,
+"known_text": "I speak a little Irish and you speak Irish very well",
+"target_text": "tá beagán Gaeilge agam agus tá Gaeilge an-mhaith agat",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 53,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 6,
+"known_text": "you speak Irish very well and I'd like to practise with you",
+"target_text": "tá Gaeilge an-mhaith agat agus ba mhaith liom a chleachtadh leat",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 64,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 7,
+"known_text": "you speak Irish very well and I want to speak Irish with you",
+"target_text": "tá Gaeilge an-mhaith agat agus is mian liom Gaeilge a labhairt leat",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 67,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0013L03U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 13,
+"lego_index": 3,
+"position": 8,
+"known_text": "you speak Irish very well and I'd like to be able to speak very well",
+"target_text": "tá Gaeilge an-mhaith agat agus ba mhaith liom a bheith ábalta labhairt go han-mhaith",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 84,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 1,
+"known_text": "who speak Irish",
+"target_text": "a bhfuil Gaeilge acu",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 20,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 2,
+"known_text": "people who speak Irish",
+"target_text": "daoine a bhfuil Gaeilge acu",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 27,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 3,
+"known_text": "to meet people who speak Irish",
+"target_text": "bualadh le daoine a bhfuil Gaeilge acu",
+"phrase_role": "build",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 38,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 4,
+"known_text": "because I want to meet people who speak Irish",
+"target_text": "mar is mian liom bualadh le daoine a bhfuil Gaeilge acu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 55,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 5,
+"known_text": "I'd like to meet people who speak Irish",
+"target_text": "ba mhaith liom bualadh le daoine a bhfuil Gaeilge acu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 53,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 6,
+"known_text": "I want to speak with people who speak Irish",
+"target_text": "is mian liom labhairt le daoine a bhfuil Gaeilge acu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 52,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 7,
+"known_text": "I'm going to meet people who speak Irish",
+"target_text": "tá mé chun bualadh le daoine a bhfuil Gaeilge acu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 49,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0022L03U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 22,
+"lego_index": 3,
+"position": 8,
+"known_text": "I'd like to practise speaking with people who speak Irish",
+"target_text": "ba mhaith liom labhairt a chleachtadh le daoine a bhfuil Gaeilge acu",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 68,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0283L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 283,
+"lego_index": 3,
+"position": 11,
+"known_text": "which of your friends speak Irish?",
+"target_text": "cé acu de do chairde a bhfuil Gaeilge acu?",
+"phrase_role": "use",
+"status": "draft",
+"metadata": {
+"format": "build_use",
+"pipeline": "v2",
+"authored": "job #403, 12 Nov 2026",
+"family": "Q11 have Irish"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"introduce": true,
+"word_count": 42,
+"lego_count": 9
+}
+},
+{
+"op": "seed.update",
+"seed_number": 9,
+"set": {
+"target_text": "Tá beagán Gaeilge agam anois"
+},
+"expect": {
+"known_text": "I speak a little Irish now",
+"target_text": "labhraím beagán Gaeilge anois"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 13,
+"set": {
+"target_text": "Tá Gaeilge an-mhaith agat"
+},
+"expect": {
+"known_text": "you speak Irish very well",
+"target_text": "labhraíonn tú Gaeilge go han-mhaith"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 22,
+"set": {
+"target_text": "mar is mian liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "because I want to meet people who speak Irish",
+"target_text": "mar is mian liom bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 283,
+"set": {
+"target_text": "cé acu de do chairde a bhfuil Gaeilge acu?"
+},
+"expect": {
+"known_text": "which of your friends speak Irish?",
+"target_text": "cé acu de do chairde a labhraíonn Gaeilge?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 285,
+"set": {
+"target_text": "Tá Gaeilge aici"
+},
+"expect": {
+"known_text": "she speaks Irish",
+"target_text": "labhraíonn sí Gaeilge"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 297,
+"set": {
+"target_text": "Níl aithne agam ar mhórán daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I don't know many people who speak Irish",
+"target_text": "Níl aithne agam ar mhórán daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0009L01",
+"set": {
+"known_text": "I speak Irish",
+"target_text": "tá Gaeilge agam",
+"type": "M",
+"components": [
+{
+"known": "there is",
+"target": "tá"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "I have",
+"target": "agam"
+}
+]
+},
+"expect": {
+"known_text": "I speak",
+"target_text": "labhraím"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0013L02",
+"set": {
+"known_text": "you speak Irish",
+"target_text": "tá Gaeilge agat",
+"components": [
+{
+"known": "there is",
+"target": "tá"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "you have",
+"target": "agat"
+}
+]
+},
+"expect": {
+"known_text": "you speak",
+"target_text": "labhraíonn tú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0022L03",
+"set": {
+"target_text": "a bhfuil Gaeilge acu",
+"is_new": true,
+"components": [
+{
+"known": "that",
+"target": "a"
+},
+{
+"known": "is",
+"target": "bhfuil"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "they have",
+"target": "acu"
+}
+]
+},
+"expect": {
+"known_text": "who speak Irish",
+"target_text": "a labhraíonn Gaeilge"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0283L03",
+"set": {
+"target_text": "a bhfuil Gaeilge acu",
+"components": [
+{
+"known": "that",
+"target": "a"
+},
+{
+"known": "is",
+"target": "bhfuil"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "they have",
+"target": "acu"
+}
+]
+},
+"expect": {
+"known_text": "who speak Irish",
+"target_text": "a labhraíonn Gaeilge"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0285L01",
+"set": {
+"target_text": "tá Gaeilge aici",
+"components": [
+{
+"known": "there is",
+"target": "tá"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "she has",
+"target": "aici"
+}
+]
+},
+"expect": {
+"known_text": "she speaks Irish",
+"target_text": "labhraíonn sí gaeilge"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0297L04",
+"set": {
+"known_text": "who speak Irish",
+"target_text": "a bhfuil Gaeilge acu",
+"components": [
+{
+"known": "that",
+"target": "a"
+},
+{
+"known": "is",
+"target": "bhfuil"
+},
+{
+"known": "Irish",
+"target": "Gaeilge"
+},
+{
+"known": "they have",
+"target": "acu"
+}
+]
+},
+"expect": {
+"known_text": "who speak",
+"target_text": "a labhraíonn"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01B01",
+"set": {
+"known_text": "I speak Irish",
+"target_text": "tá Gaeilge agam"
+},
+"expect": {
+"known_text": "I speak now",
+"target_text": "labhraím anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01B02",
+"set": {
+"known_text": "I speak Irish now",
+"target_text": "tá Gaeilge agam anois"
+},
+"expect": {
+"known_text": "I speak Irish",
+"target_text": "labhraím Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01B03",
+"set": {
+"known_text": "I speak Irish and I want to speak",
+"target_text": "tá Gaeilge agam agus is mian liom labhairt"
+},
+"expect": {
+"known_text": "I speak Irish with you",
+"target_text": "labhraím Gaeilge leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01U01",
+"set": {
+"known_text": "I speak Irish and I want to speak with you now",
+"target_text": "tá Gaeilge agam agus is mian liom labhairt leat anois"
+},
+"expect": {
+"known_text": "I speak Irish now",
+"target_text": "labhraím Gaeilge anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01U02",
+"set": {
+"known_text": "I speak Irish and I'm trying to learn",
+"target_text": "tá Gaeilge agam agus tá mé ag iarraidh foghlaim"
+},
+"expect": {
+"known_text": "I speak Irish with you now",
+"target_text": "labhraím Gaeilge leat anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01U03",
+"set": {
+"known_text": "I speak Irish now and I'm trying to remember",
+"target_text": "tá Gaeilge agam anois agus tá mé ag iarraidh cuimhneamh"
+},
+"expect": {
+"known_text": "I speak with someone else",
+"target_text": "labhraím le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L01U04",
+"set": {
+"known_text": "I speak Irish and I'm going to practise speaking with someone else",
+"target_text": "tá Gaeilge agam agus tá mé chun labhairt a chleachtadh le duine éigin eile"
+},
+"expect": {
+"known_text": "I speak Irish with someone else",
+"target_text": "labhraím Gaeilge le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L02B03",
+"set": {
+"known_text": "I speak a little Irish",
+"target_text": "tá beagán Gaeilge agam"
+},
+"expect": {
+"known_text": "I speak a little now",
+"target_text": "labhraím beagán anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L02U01",
+"set": {
+"known_text": "I speak a little Irish now",
+"target_text": "Tá beagán Gaeilge agam anois"
+},
+"expect": {
+"known_text": "I speak a little Irish",
+"target_text": "labhraím beagán Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L02U02",
+"set": {
+"known_text": "I speak a little Irish and I want to speak with you",
+"target_text": "tá beagán Gaeilge agam agus is mian liom labhairt leat"
+},
+"expect": {
+"known_text": "I speak a little Irish with you",
+"target_text": "labhraím beagán Gaeilge leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L02U03",
+"set": {
+"known_text": "I speak a little Irish and I'm trying to learn",
+"target_text": "tá beagán Gaeilge agam agus tá mé ag iarraidh foghlaim"
+},
+"expect": {
+"known_text": "I speak a little Irish now",
+"target_text": "labhraím beagán Gaeilge anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0009L02U04",
+"set": {
+"known_text": "I want to speak a little with someone else",
+"target_text": "is mian liom labhairt beagán le duine éigin eile"
+},
+"expect": {
+"known_text": "I speak a little with someone else",
+"target_text": "labhraím beagán le duine éigin eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02B01",
+"set": {
+"known_text": "you speak Irish",
+"target_text": "tá Gaeilge agat"
+},
+"expect": {
+"known_text": "you speak",
+"target_text": "labhraíonn tú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02B02",
+"set": {
+"known_text": "you speak Irish now",
+"target_text": "tá Gaeilge agat anois"
+},
+"expect": {
+"known_text": "you speak Irish",
+"target_text": "labhraíonn tú Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02B03",
+"set": {
+"known_text": "and you speak Irish",
+"target_text": "agus tá Gaeilge agat"
+},
+"expect": {
+"known_text": "you speak a little Irish",
+"target_text": "labhraíonn tú beagán Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02B04",
+"set": {
+"known_text": "you speak Irish and I speak a little Irish",
+"target_text": "tá Gaeilge agat agus tá beagán Gaeilge agam"
+},
+"expect": {
+"known_text": "you speak now",
+"target_text": "labhraíonn tú anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U01",
+"set": {
+"known_text": "you speak Irish and I'd like to speak with you",
+"target_text": "tá Gaeilge agat agus ba mhaith liom labhairt leat"
+},
+"expect": {
+"known_text": "you speak Irish today, and I'd like to speak",
+"target_text": "labhraíonn tú Gaeilge inniu, agus ba mhaith liom labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U04",
+"set": {
+"known_text": "you speak Irish and I'm trying to learn",
+"target_text": "tá Gaeilge agat agus tá mé ag iarraidh foghlaim"
+},
+"expect": {
+"known_text": "you speak very well. I wouldn't like to guess what's going to happen tomorrow",
+"target_text": "labhraíonn tú go han-mhaith. níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U05",
+"set": {
+"known_text": "you speak Irish and I want to practise with you",
+"target_text": "tá Gaeilge agat agus is mian liom a chleachtadh leat"
+},
+"expect": {
+"known_text": "you speak Irish as often as possible, and that's very well done",
+"target_text": "labhraíonn tú Gaeilge chomh minic agus is féidir, agus tá sin go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U06",
+"set": {
+"known_text": "you speak Irish now and I'd like to be able to speak",
+"target_text": "tá Gaeilge agat anois agus ba mhaith liom a bheith ábalta labhairt"
+},
+"expect": {
+"known_text": "you speak, and I'd like to practise",
+"target_text": "labhraíonn tú, agus ba mhaith liom a chleachtadh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U07",
+"set": {
+"known_text": "you speak Irish and I'd like to practise speaking with you",
+"target_text": "tá Gaeilge agat agus ba mhaith liom labhairt a chleachtadh leat"
+},
+"expect": {
+"known_text": "you speak Irish with someone else today, and I'd like that too",
+"target_text": "labhraíonn tú Gaeilge le duine éigin eile inniu, agus ba mhaith liom sin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0013L02U08",
+"set": {
+"known_text": "you speak Irish and I want to speak Irish with you now",
+"target_text": "tá Gaeilge agat agus is mian liom Gaeilge a labhairt leat anois"
+},
+"expect": {
+"known_text": "you speak Irish tomorrow as well as today",
+"target_text": "labhraíonn tú Gaeilge amárach chomh maith le inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0014L02B02",
+"set": {
+"known_text": "do you speak Irish with someone else?",
+"target_text": "an labhraíonn tú Gaeilge le duine éigin eile?"
+},
+"expect": {
+"known_text": "do you speak Irish very well?",
+"target_text": "an labhraíonn tú Gaeilge go han-mhaith?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0014L02U04",
+"set": {
+"known_text": "do you speak Irish all day today?",
+"target_text": "an labhraíonn tú Gaeilge an lá ar fad inniu?"
+},
+"expect": {
+"known_text": "do you speak Irish very well all day today?",
+"target_text": "an labhraíonn tú Gaeilge go han-mhaith an lá ar fad inniu?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0015L01U11",
+"set": {
+"target_text": "tá beagán Gaeilge agam anois agus is mian liom labhairt leat"
+},
+"expect": {
+"known_text": "I speak a little Irish now and I want to speak with you",
+"target_text": "labhraím beagán Gaeilge anois agus is mian liom labhairt leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0015L05U05",
+"set": {
+"target_text": "tá beagán Gaeilge agam anois agus is mian liom go labhrófá liom"
+},
+"expect": {
+"known_text": "I speak a little Irish now and I want you to speak with me",
+"target_text": "labhraím beagán Gaeilge anois agus is mian liom go labhrófá liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0022L02U07",
+"set": {
+"target_text": "tá beagán Gaeilge agam anois agus is mian liom bualadh le daoine"
+},
+"expect": {
+"known_text": "I speak a little Irish and I want to meet people",
+"target_text": "labhraím beagán Gaeilge anois agus is mian liom bualadh le daoine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0023L02U08",
+"set": {
+"target_text": "is mian liom labhairt níos mó le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I want to speak more with people who speak Irish",
+"target_text": "is mian liom labhairt níos mó le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0023L03U03",
+"set": {
+"target_text": "is mian liom bualadh le daoine a bhfuil Gaeilge acu go luath"
+},
+"expect": {
+"known_text": "I want to meet people who speak Irish soon",
+"target_text": "is mian liom bualadh le daoine a labhraíonn Gaeilge go luath"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0023L03U06",
+"set": {
+"target_text": "ba mhaith liom bualadh le daoine a bhfuil Gaeilge acu go luath"
+},
+"expect": {
+"known_text": "I'd like to meet people who speak Irish soon",
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go luath"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0024L01U10",
+"set": {
+"target_text": "ní bheidh mé ábalta bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I'm not going to be able to meet people who speak Irish",
+"target_text": "ní bheidh mé ábalta bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0024L02U07",
+"set": {
+"target_text": "is mian liom cuimhneamh air sin go héasca agus bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I want to remember that easily and meet people who speak Irish",
+"target_text": "is mian liom cuimhneamh air sin go héasca agus bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L01U04",
+"set": {
+"target_text": "an bhfuil tú chun bualadh le daoine a bhfuil Gaeilge acu?"
+},
+"expect": {
+"known_text": "are you going to meet people who speak Irish?",
+"target_text": "an bhfuil tú chun bualadh le daoine a labhraíonn Gaeilge?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0025L03U06",
+"set": {
+"target_text": "ba mhaith liom bualadh le daoine a bhfuil Gaeilge acu sula gcaithfidh mé dul"
+},
+"expect": {
+"known_text": "I'd like to meet people who speak Irish before I have to go",
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge sula gcaithfidh mé dul"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L01U04",
+"set": {
+"target_text": "Ní mian linn bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "we don't want to meet people who speak Irish",
+"target_text": "Ní mian linn bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L01U08",
+"set": {
+"target_text": "Tá mé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I am trying to meet people who speak Irish",
+"target_text": "Tá mé ag iarraidh bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L01U15",
+"set": {
+"target_text": "Tá mé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "I am trying to meet people who speak Irish as often as possible",
+"target_text": "Tá mé ag iarraidh bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L03U13",
+"set": {
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu le timpeall seachtaine"
+},
+"expect": {
+"known_text": "he has been trying to meet people who speak Irish for about a week",
+"target_text": "Tá sé ag iarraidh bualadh le daoine a labhraíonn Gaeilge le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U10",
+"set": {
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu le timpeall seachtaine"
+},
+"expect": {
+"known_text": "he has been trying to meet people who speak Irish for about a week",
+"target_text": "Tá sé ag iarraidh bualadh le daoine a labhraíonn Gaeilge le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0042L01U03",
+"set": {
+"target_text": "tá Gaeilge níos fearr agam ná inné"
+},
+"expect": {
+"known_text": "I speak Irish better than yesterday",
+"target_text": "labhraím Gaeilge níos fearr ná inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0042L02U03",
+"set": {
+"target_text": "tá Gaeilge níos fearr agam ná aréir"
+},
+"expect": {
+"known_text": "I speak Irish better than last night",
+"target_text": "labhraím Gaeilge níos fearr ná aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0042L04U06",
+"set": {
+"known_text": "I want to speak Irish better than last night",
+"target_text": "is mian liom Gaeilge a labhairt níos fearr ná aréir"
+},
+"expect": {
+"known_text": "I speak Irish better than last night",
+"target_text": "labhraím Gaeilge níos fearr ná aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0051L01U11",
+"set": {
+"target_text": "bainim taitneamh as bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I enjoy meeting with people who speak Irish",
+"target_text": "bainim taitneamh as bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0052L07U02",
+"set": {
+"target_text": "an tseachtain seo caite ba mhian leat bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "last week you wanted to meet people who speak irish",
+"target_text": "an tseachtain seo caite ba mhian leat bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0053L01U01",
+"set": {
+"target_text": "ba mhian léi bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "she wanted to meet people who speak irish",
+"target_text": "ba mhian léi bualadh le daoine a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L04B03",
+"set": {
+"known_text": "to speak Irish well",
+"target_text": "Gaeilge a labhairt go maith"
+},
+"expect": {
+"known_text": "do you speak Irish well?",
+"target_text": "an labhraíonn tú Gaeilge go maith?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L04U02",
+"set": {
+"known_text": "when other people are here I want to speak Irish well",
+"target_text": "nuair atá daoine eile anseo is mian liom Gaeilge a labhairt go maith"
+},
+"expect": {
+"known_text": "when other people are here I speak Irish well and I feel better than yesterday",
+"target_text": "nuair atá daoine eile anseo labhraím Gaeilge go maith agus mothaím níos fearr ná inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0055L04U05",
+"set": {
+"known_text": "I do not enjoy making mistakes but I want to speak Irish well now",
+"target_text": "ní bhainim taitneamh as botúin a dhéanamh ach is mian liom Gaeilge a labhairt go maith anois"
+},
+"expect": {
+"known_text": "I do not enjoy making mistakes but I speak Irish well now",
+"target_text": "ní bhainim taitneamh as botúin a dhéanamh ach labhraím Gaeilge go maith anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0058L01U01",
+"set": {
+"target_text": "tá sé suimiúil bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "it is interesting to meet people who speak Irish",
+"target_text": "tá sé suimiúil bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L01U03",
+"set": {
+"target_text": "Tá a fhios agam conas bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I know how to meet people who speak Irish",
+"target_text": "Tá a fhios agam conas bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0060L02U03",
+"set": {
+"target_text": "an bhfuil tú chun fáil amach conas bualadh le daoine a bhfuil Gaeilge acu?"
+},
+"expect": {
+"known_text": "are you going to find out how to meet people who speak Irish?",
+"target_text": "an bhfuil tú chun fáil amach conas bualadh le daoine a labhraíonn Gaeilge?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U09",
+"set": {
+"target_text": "Tá sé suimiúil ag iarraidh labhairt Gaeilge le daoine a bhfuil Gaeilge an-mhaith acu"
+},
+"expect": {
+"known_text": "it is interesting to try to speak Irish with people who speak it well",
+"target_text": "Tá sé suimiúil ag iarraidh labhairt Gaeilge le daoine a labhraíonn Gaeilge go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L02U10",
+"set": {
+"target_text": "Tá sé tábhachtach bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "it is important to meet up with people who speak Irish",
+"target_text": "Tá sé tábhachtach bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U09",
+"set": {
+"target_text": "is mian liom am a thógáil chun bualadh le daoine a bhfuil Gaeilge an-mhaith acu"
+},
+"expect": {
+"known_text": "I want to take time to meet people who speak Irish well",
+"target_text": "is mian liom am a thógáil chun bualadh le daoine a labhraíonn Gaeilge go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L04U07",
+"set": {
+"target_text": "is mian liom bualadh le daoine a bhfuil Gaeilge acu chun labhairt a chleachtadh chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "I want to meet people who speak Irish in order to practise as often as possible",
+"target_text": "is mian liom bualadh le daoine a labhraíonn Gaeilge chun labhairt a chleachtadh chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L01U09",
+"set": {
+"target_text": "Níl sé éasca bualadh le daoine a bhfuil Gaeilge acu chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "it is not easy to meet up with people who speak Irish very often",
+"target_text": "Níl sé éasca bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L03U02",
+"set": {
+"target_text": "ceapaim gur rud maith é ligean don mhadra óg bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I think that it's a good thing to let the young dog meet people who speak Irish",
+"target_text": "ceapaim gur rud maith é ligean don mhadra óg bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L04B01",
+"set": {
+"known_text": "to anyone here",
+"target_text": "d'aon duine anseo"
+},
+"expect": {
+"known_text": "to anyone who speaks Irish",
+"target_text": "d'aon duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L04U03",
+"set": {
+"known_text": "I know how to read the whole sentence to anyone",
+"target_text": "tá a fhios agam conas an abairt iomlán a léamh d'aon duine"
+},
+"expect": {
+"known_text": "I know how to read the whole sentence to anyone who speaks Irish",
+"target_text": "tá a fhios agam conas an abairt iomlán a léamh d'aon duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0082L03U05",
+"set": {
+"target_text": "is mian leat bualadh le daoine a bhfuil Gaeilge acu nach bhfuil?"
+},
+"expect": {
+"known_text": "you want to meet people who speak Irish, is that not so?",
+"target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge nach bhfuil?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01B01",
+"set": {
+"target_text": "daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "people who speak Irish",
+"target_text": "daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01U01",
+"set": {
+"target_text": "tá mé ag lorg daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I am looking for people who speak Irish",
+"target_text": "tá mé ag lorg daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01U02",
+"set": {
+"target_text": "cén fáth a bhfuil tú ag lorg daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "why are you looking for people who speak Irish",
+"target_text": "cén fáth a bhfuil tú ag lorg daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01U04",
+"set": {
+"target_text": "bhí sí ag lorg daoine a bhfuil Gaeilge acu inné"
+},
+"expect": {
+"known_text": "she was looking for people who speak Irish yesterday",
+"target_text": "bhí sí ag lorg daoine a labhraíonn Gaeilge inné"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01U05",
+"set": {
+"target_text": "is maith liom daoine a bhfuil Gaeilge acu mar tá sé suimiúil"
+},
+"expect": {
+"known_text": "I like people who speak Irish because it is interesting",
+"target_text": "is maith liom daoine a labhraíonn Gaeilge mar tá sé suimiúil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L01U06",
+"set": {
+"target_text": "ba mhian linn daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "we wanted people who speak Irish",
+"target_text": "ba mhian linn daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0085L04U02",
+"set": {
+"target_text": "Níl aithne agam ar aon duine anseo fós, ach is mian liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I do not know anyone here yet, but I want to meet people who speak Irish",
+"target_text": "Níl aithne agam ar aon duine anseo fós, ach is mian liom bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0090L01B04",
+"set": {
+"target_text": "agus dá bhféadfá bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "and if you could meet people who speak Irish",
+"target_text": "agus dá bhféadfá bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0093L01U03",
+"set": {
+"target_text": "go hiontach tá sé in am bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "great it's time to meet people who speak Irish",
+"target_text": "go hiontach tá sé in am bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0094L01U02",
+"set": {
+"known_text": "this is your friend and he wants to speak Irish",
+"target_text": "is é seo do chara agus is mian leis Gaeilge a labhairt"
+},
+"expect": {
+"known_text": "this is your friend who speaks Irish",
+"target_text": "is é seo do chara a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0097L02U08",
+"set": {
+"target_text": "is mian leat bualadh le daoine a bhfuil Gaeilge acu agus tá mé réidh le dul níos déanaí"
+},
+"expect": {
+"known_text": "you want to meet people who speak Irish and I am ready to go later on",
+"target_text": "is mian leat bualadh le daoine a labhraíonn Gaeilge agus tá mé réidh le dul níos déanaí"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0099L01U04",
+"set": {
+"target_text": "ba cheart duit bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "you should meet people who speak Irish",
+"target_text": "ba cheart duit bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0100L01U09",
+"set": {
+"target_text": "níor cheart duit bualadh le daoine a bhfuil Gaeilge acu inniu"
+},
+"expect": {
+"known_text": "you shouldn't meet people who speak Irish today",
+"target_text": "níor cheart duit bualadh le daoine a labhraíonn Gaeilge inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0103L05U01",
+"set": {
+"known_text": "I'd like to practise speaking with other people who speak Irish well",
+"target_text": "ba mhaith liom labhairt a chleachtadh le daoine eile a bhfuil Gaeilge mhaith acu"
+},
+"expect": {
+"known_text": "I want to practise speaking with someone else who knows Irish well",
+"target_text": "ba mhaith liom labhairt a chleachtadh le duine éigin eile a labhraíonn Gaeilge go maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0113L02U07",
+"set": {
+"target_text": "cén fáth nach féidir liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "why can't i meet people who speak irish",
+"target_text": "cén fáth nach féidir liom bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L03U03",
+"set": {
+"known_text": "I feel as if I am doing something useful when we speak Irish",
+"target_text": "mothaím go bhfuil mé ag déanamh rud úsáideach nuair a labhraíonn muid Gaeilge"
+},
+"expect": {
+"known_text": "I feel as if I am doing something useful when I speak Irish",
+"target_text": "mothaím go bhfuil mé ag déanamh rud úsáideach nuair a labhraím Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L06U12",
+"set": {
+"known_text": "I feel as if I am thinking more quickly than yesterday when we speak",
+"target_text": "mothaím go bhfuil mé ag smaoineamh níos tapa ná inné nuair a labhraíonn muid"
+},
+"expect": {
+"known_text": "I feel as if I am thinking more quickly than yesterday when I speak",
+"target_text": "mothaím go bhfuil mé ag smaoineamh níos tapa ná inné nuair a labhraím"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0120L01U03",
+"set": {
+"target_text": "ach tá sé suimiúil bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "but it's interesting to meet people who speak Irish",
+"target_text": "ach tá sé suimiúil bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0123L02U08",
+"set": {
+"target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a bhfuil Gaeilge acu mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+},
+"expect": {
+"known_text": "I think that it's a good idea to meet people who speak Irish because that is the reason I want to keep going forward",
+"target_text": "ceapaim gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge mar sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U02",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin tosú ag caint le daoine chomh luath agus is féidir leat agus bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to start speaking with people as soon as possible and to find people who speak Irish",
+"target_text": "cheap mé gur smaoineamh maith é sin tosú ag caint le daoine chomh luath agus is féidir leat agus bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U05",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I thought that it was a good idea and I wanted to ask you before you leave about meeting people who speak Irish",
+"target_text": "cheap mé gur smaoineamh maith é sin agus ba mhian liom ceist a chur ort sula n-imíonn tú faoi bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U07",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a bhfuil Gaeilge acu agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+},
+"expect": {
+"known_text": "I thought that it was a good idea to meet people who speak Irish and that was the reason I wanted to keep learning this language",
+"target_text": "cheap mé gur smaoineamh maith é sin bualadh le daoine a labhraíonn Gaeilge agus sin é an fáth ar mian liom leanúint ar aghaidh ag foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L01U07",
+"set": {
+"target_text": "creidim gur rud maith é leanúint ar aghaidh nuair atá sé deacair agus bualadh le daoine a bhfuil Gaeilge acu chomh minic agus is féidir"
+},
+"expect": {
+"known_text": "I believe it's a good thing to keep going even when it's difficult and to meet people who speak Irish as often as possible",
+"target_text": "creidim gur rud maith é leanúint ar aghaidh nuair atá sé deacair agus bualadh le daoine a labhraíonn Gaeilge chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L03U04",
+"set": {
+"target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a bhfuil Gaeilge acu chomh luath agus is féidir liom"
+},
+"expect": {
+"known_text": "That isn't the reason why I wanted to see you and I want to meet people who speak Irish as soon as possible",
+"target_text": "Ní hé sin an fáth ar mhian liom tú a fheiceáil agus is mian liom bualadh le daoine a labhraíonn Gaeilge chomh luath agus is féidir liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L01U01",
+"set": {
+"target_text": "tá tú cosúil le gach duine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "you're like everyone who speaks Irish",
+"target_text": "tá tú cosúil le gach duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L01U06",
+"set": {
+"target_text": "go cinnte tá tú cosúil le gach duine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "definitely, you're like everyone who speaks Irish",
+"target_text": "go cinnte tá tú cosúil le gach duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L02B02",
+"set": {
+"target_text": "duine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "someone who speaks Irish",
+"target_text": "duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L02U01",
+"set": {
+"target_text": "tá tú cosúil le duine a bhfuil Gaeilge an-mhaith aige"
+},
+"expect": {
+"known_text": "you're like someone who speaks Irish very well",
+"target_text": "tá tú cosúil le duine a labhraíonn Gaeilge go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L02U02",
+"set": {
+"target_text": "níl aithne agam ar dhuine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "I don't know someone who speaks Irish",
+"target_text": "níl aithne agam ar dhuine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0128L02U06",
+"set": {
+"target_text": "duine a bhfuil Gaeilge aige bheadh sé sin go hiontach"
+},
+"expect": {
+"known_text": "someone who speaks Irish? that would be great",
+"target_text": "duine a labhraíonn Gaeilge bheadh sé sin go hiontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0137L01U07",
+"set": {
+"target_text": "tá sé níos tábhachtaí bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "it is more important to meet people who speak Irish",
+"target_text": "tá sé níos tábhachtaí bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0138L01U06",
+"set": {
+"target_text": "seo an áit ar mhian liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "this is the place where I wanted to meet people who speak Irish",
+"target_text": "seo an áit ar mhian liom bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L02B02",
+"set": {
+"target_text": "duine an-chineálta a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "someone very kind who speaks Irish",
+"target_text": "duine an-chineálta a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0189L02U03",
+"set": {
+"target_text": "Is ea, is smaoineamh maith é sin mar is mian liom bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "yes that's a good idea because I want to meet people who speak Irish",
+"target_text": "Is ea, is smaoineamh maith é sin mar is mian liom bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0201L01U05",
+"set": {
+"target_text": "ba mhian linn bualadh le daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "we wanted to meet people who speak irish",
+"target_text": "ba mhian linn bualadh le daoine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0231L02U05",
+"set": {
+"target_text": "ar ndóigh tá aithne agam ar sheanfhear a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "of course i know an old man who speaks irish",
+"target_text": "ar ndóigh tá aithne agam ar sheanfhear a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0234L01B03",
+"set": {
+"target_text": "duine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "someone who speaks Irish",
+"target_text": "duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0234L01U10",
+"set": {
+"target_text": "Tá mé ag iarraidh labhairt le duine a oibríonn anseo agus a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "I'm trying to talk to someone who works here and who speaks Irish",
+"target_text": "Tá mé ag iarraidh labhairt le duine a oibríonn anseo agus a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0234L05B06",
+"set": {
+"target_text": "bhuail mé le duine a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "I met someone who speaks Irish",
+"target_text": "bhuail mé le duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0264L01U05",
+"set": {
+"target_text": "tá Gaeilge an-mhaith ag an seanfhear sin"
+},
+"expect": {
+"known_text": "That old man speaks Irish very well",
+"target_text": "labhraíonn an seanfhear sin Gaeilge go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03B01",
+"set": {
+"known_text": "who speak Irish",
+"target_text": "a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "who speak Irish at work",
+"target_text": "a labhraíonn Gaeilge ag an obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03B02",
+"set": {
+"target_text": "do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "your friends who speak Irish",
+"target_text": "do chairde a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03B03",
+"set": {
+"target_text": "cúpla cara a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "a few friends who speak Irish",
+"target_text": "cúpla cara a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03B04",
+"set": {
+"target_text": "chonaic mé cúpla cara a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I saw a few friends who speak Irish",
+"target_text": "chonaic mé cúpla cara a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U01",
+"set": {
+"target_text": "chonaic mé cúpla cara a bhfuil Gaeilge acu aréir"
+},
+"expect": {
+"known_text": "I saw a few friends who speak Irish last night",
+"target_text": "chonaic mé cúpla cara a labhraíonn Gaeilge aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U02",
+"set": {
+"target_text": "an bhfaca tú do chairde a bhfuil Gaeilge acu inniu"
+},
+"expect": {
+"known_text": "have you seen your friends who speak Irish today",
+"target_text": "an bhfaca tú do chairde a labhraíonn Gaeilge inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U03",
+"set": {
+"target_text": "tá brón orm ach ní fhaca mé do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I am sorry but I did not see your friends who speak Irish",
+"target_text": "tá brón orm ach ní fhaca mé do chairde a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U04",
+"set": {
+"target_text": "bhuail mé le do chairde a bhfuil Gaeilge acu sa teach tábhairne"
+},
+"expect": {
+"known_text": "I met your friends who speak Irish in the pub",
+"target_text": "bhuail mé le do chairde a labhraíonn Gaeilge sa teach tábhairne"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U05",
+"set": {
+"target_text": "d'oibríodh do chairde a bhfuil Gaeilge acu anseo"
+},
+"expect": {
+"known_text": "your friends who speak Irish used to work here",
+"target_text": "d'oibríodh do chairde a labhraíonn Gaeilge anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0283L03U06",
+"set": {
+"target_text": "aréir bhuail mé le cúpla cara a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "last night I met a few friends who speak Irish",
+"target_text": "aréir bhuail mé le cúpla cara a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0284L02U01",
+"set": {
+"target_text": "an bhfuil aithne agat ar chara le m'athair a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "do you know a friend of my father who speaks Irish",
+"target_text": "an bhfuil aithne agat ar chara le m'athair a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01B01",
+"set": {
+"known_text": "she speaks Irish",
+"target_text": "tá Gaeilge aici"
+},
+"expect": {
+"known_text": "she speaks Irish now",
+"target_text": "labhraíonn sí gaeilge anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01B02",
+"set": {
+"known_text": "she speaks Irish now",
+"target_text": "tá Gaeilge aici anois"
+},
+"expect": {
+"known_text": "of course she speaks Irish",
+"target_text": "ar ndóigh labhraíonn sí gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01B03",
+"set": {
+"known_text": "of course she speaks Irish",
+"target_text": "ar ndóigh tá Gaeilge aici"
+},
+"expect": {
+"known_text": "she speaks Irish with your brother",
+"target_text": "labhraíonn sí gaeilge le do dheartháir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01B04",
+"set": {
+"known_text": "but she speaks Irish",
+"target_text": "ach tá Gaeilge aici"
+},
+"expect": {
+"known_text": "but she speaks Irish in the office",
+"target_text": "ach labhraíonn sí gaeilge san oifig"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U01",
+"set": {
+"target_text": "ní fadhb é sin tá Gaeilge aici"
+},
+"expect": {
+"known_text": "that's not a problem she speaks Irish",
+"target_text": "ní fadhb é sin labhraíonn sí gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U02",
+"set": {
+"known_text": "of course she speaks Irish now",
+"target_text": "ar ndóigh tá Gaeilge aici anois"
+},
+"expect": {
+"known_text": "of course she speaks Irish in the pub",
+"target_text": "ar ndóigh labhraíonn sí gaeilge sa teach tábhairne"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U03",
+"set": {
+"known_text": "I don't know but she speaks Irish",
+"target_text": "níl a fhios agam ach tá Gaeilge aici"
+},
+"expect": {
+"known_text": "she speaks Irish with them at work",
+"target_text": "labhraíonn sí gaeilge leo ag an obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U04",
+"set": {
+"known_text": "she speaks Irish and she wants to meet your brother",
+"target_text": "tá Gaeilge aici agus is mian léi bualadh le do dheartháir"
+},
+"expect": {
+"known_text": "I don't know but she speaks Irish with your brother",
+"target_text": "níl a fhios agam ach labhraíonn sí gaeilge le do dheartháir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U05",
+"set": {
+"known_text": "she speaks Irish and she wants to speak Irish with them at work",
+"target_text": "tá Gaeilge aici agus is mian léi Gaeilge a labhairt leo ag an obair"
+},
+"expect": {
+"known_text": "she speaks Irish often at work",
+"target_text": "labhraíonn sí gaeilge go minic ag an obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0285L01U06",
+"set": {
+"target_text": "tá Gaeilge aici anois agus tá mé sásta"
+},
+"expect": {
+"known_text": "she speaks Irish now and I am happy",
+"target_text": "labhraíonn sí gaeilge anois agus tá mé sásta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0287L01B03",
+"set": {
+"target_text": "cé mhéad duine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "how many people speak Irish",
+"target_text": "cé mhéad duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0287L01U04",
+"set": {
+"target_text": "cé mhéad duine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "how many people speak Irish",
+"target_text": "cé mhéad duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0287L02U01",
+"set": {
+"target_text": "cé mhéad duine a bhfuil aithne agat orthu a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "how many people do you know who speak Irish",
+"target_text": "cé mhéad duine a bhfuil aithne agat orthu a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0288L03U04",
+"set": {
+"target_text": "dúirt sí liom gur mhian léi bualadh le daoine a bhfuil aithne agam orthu a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "she told me she wanted to meet the people I know who speak Irish",
+"target_text": "dúirt sí liom gur mhian léi bualadh le daoine a bhfuil aithne agam orthu a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0289L01U01",
+"set": {
+"target_text": "ní fheadar cé acu de do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I wonder which of your friends speak Irish",
+"target_text": "ní fheadar cé acu de do chairde a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L01U05",
+"set": {
+"target_text": "níl duine ar bith anseo a bhfuil Gaeilge aige"
+},
+"expect": {
+"known_text": "there isn't anyone here who speaks irish",
+"target_text": "níl duine ar bith anseo a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L02B04",
+"set": {
+"target_text": "an bhfuil aithne agat ar mhórán a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "do you know of many who speak Irish",
+"target_text": "an bhfuil aithne agat ar mhórán a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L02U01",
+"set": {
+"target_text": "níl aithne agam ar mhórán a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "I don't know of many who speak Irish",
+"target_text": "níl aithne agam ar mhórán a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04B01",
+"set": {
+"known_text": "your friends who speak Irish",
+"target_text": "do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "your friends who speak irish",
+"target_text": "do chairde a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04B02",
+"set": {
+"known_text": "a few friends who speak Irish",
+"target_text": "cúpla cara a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "a few friends who speak more slowly",
+"target_text": "cúpla cara a labhraíonn níos moille"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04B03",
+"set": {
+"known_text": "most people who speak Irish",
+"target_text": "formhór na ndaoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "most people who speak irish",
+"target_text": "formhór na ndaoine a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04B04",
+"set": {
+"known_text": "many people who speak Irish",
+"target_text": "mórán daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "who speak quickly enough",
+"target_text": "a labhraíonn go tapa go leor"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04U01",
+"set": {
+"known_text": "I saw your friends who speak Irish",
+"target_text": "chonaic mé do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "which of your friends speak irish",
+"target_text": "cé acu de do chairde a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04U02",
+"set": {
+"known_text": "how many people do you know who speak Irish",
+"target_text": "cé mhéad duine a bhfuil aithne agat orthu a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "how many people do you know who speak irish",
+"target_text": "cé mhéad duine a bhfuil aithne agat orthu a labhraíonn gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04U03",
+"set": {
+"known_text": "I met a few friends who speak Irish",
+"target_text": "bhuail mé le cúpla cara a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "i met a few friends who speak with them in irish",
+"target_text": "bhuail mé le cúpla cara a labhraíonn leo i ngaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04U04",
+"set": {
+"known_text": "I don't know your friends who speak Irish",
+"target_text": "níl aithne agam ar do chairde a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "i don't know which of your friends speak with them",
+"target_text": "níl a fhios agam cé acu de do chairde a labhraíonn leo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0297L04U05",
+"set": {
+"known_text": "I don't know many people who speak Irish",
+"target_text": "níl aithne agam ar mhórán daoine a bhfuil Gaeilge acu"
+},
+"expect": {
+"known_text": "i think that your friends who speak more slowly are ready",
+"target_text": "ceapaim go bhfuil do chairde a labhraíonn níos moille réidh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0013L01U01",
+"expect": {
+"target_text": "labhraíonn tú Gaeilge go han-mhaith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0013L01U08",
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh, ach labhraíonn tú go han-mhaith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0013L02C01",
+"expect": {
+"target_text": "labhraíonn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0013L02C02",
+"expect": {
+"target_text": "tú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0014L01U01",
+"expect": {
+"target_text": "labhraíonn tú Gaeilge an lá ar fad. tá sin go han-mhaith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0042L01U06",
+"expect": {
+"target_text": "labhraím beagán Gaeilge níos fearr ná inné"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0055L04U06",
+"expect": {
+"target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé dul"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0071L04U05",
+"expect": {
+"target_text": "tá sé suimiúil d'aon duine a labhraíonn Gaeilge"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0087L03U04",
+"expect": {
+"target_text": "labhraíonn tú Gaeilge níos fearr ná iad faoi láthair"
+}
+}
+]
+}

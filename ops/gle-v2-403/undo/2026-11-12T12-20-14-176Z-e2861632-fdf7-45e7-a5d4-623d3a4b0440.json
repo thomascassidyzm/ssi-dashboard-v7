@@ -1,0 +1,993 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "e2861632-fdf7-45e7-a5d4-623d3a4b0440",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:20:14.176Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-20-14-176Z-e2861632-fdf7-45e7-a5d4-623d3a4b0440.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0087L03U04",
+        "seed_number": 87,
+        "lego_index": 3,
+        "position": 8,
+        "known_text": "you speak Irish better than they at the moment",
+        "target_text": "labhraíonn tú Gaeilge níos fearr ná iad faoi láthair",
+        "word_count": 52,
+        "lego_count": 9,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-09-10T14:25:23.240Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:44:55.387Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "you speak",
+            "legoId": "S0013L02",
+            "target": "labhraíonn tú",
+            "isGhost": false
+          },
+          {
+            "known": "Irish",
+            "legoId": "S0001L03",
+            "target": " Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "better than",
+            "legoId": "S0042L04",
+            "target": " níos fearr ná",
+            "isGhost": false
+          },
+          {
+            "known": "they",
+            "legoId": "S0087L03",
+            "target": " iad",
+            "isGhost": false
+          },
+          {
+            "known": "at the moment",
+            "legoId": "S0040L02",
+            "target": " faoi láthair",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0071L04U05",
+        "seed_number": 71,
+        "lego_index": 4,
+        "position": 12,
+        "known_text": "it is interesting to anyone who speaks Irish",
+        "target_text": "tá sé suimiúil d'aon duine a labhraíonn Gaeilge",
+        "word_count": 47,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-09-10T12:35:01.823Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:44:04.408Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "it is interesting",
+            "legoId": "S0058L01",
+            "target": "tá sé suimiúil",
+            "isGhost": false
+          },
+          {
+            "known": "to anyone",
+            "legoId": "S0071L04",
+            "target": " d'aon duine",
+            "isGhost": false
+          },
+          {
+            "known": "who speak Irish",
+            "legoId": "S0022L03",
+            "target": " a labhraíonn Gaeilge",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 220,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0055L04U06",
+        "seed_number": 55,
+        "lego_index": 4,
+        "position": 10,
+        "known_text": "I'd like to meet people who speak Irish well before I have to go",
+        "target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go maith sula gcaithfidh mé dul",
+        "word_count": 89,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-09-10T11:07:23.045Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:41:29.877Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": null,
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I'd like",
+            "legoId": "S0011L01",
+            "target": "ba mhaith liom",
+            "isGhost": false
+          },
+          {
+            "known": "to meet people",
+            "legoId": "S0022L02",
+            "target": " bualadh le daoine",
+            "isGhost": false
+          },
+          {
+            "known": "who speak Irish",
+            "legoId": "S0022L03",
+            "target": " a labhraíonn Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "well",
+            "legoId": "S0055L04",
+            "target": " go maith",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "before I have to go",
+            "legoId": "S0025L03",
+            "target": " sula gcaithfidh mé imeacht",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": 218,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0042L01U06",
+        "seed_number": 42,
+        "lego_index": 1,
+        "position": 9,
+        "known_text": "I speak a little Irish better than yesterday",
+        "target_text": "labhraím beagán Gaeilge níos fearr ná inné",
+        "word_count": 42,
+        "lego_count": 8,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 7,
+          "format": "build_use",
+          "scored_at": "2026-02-18T01:03:43.404Z"
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:40:36.029Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:29.382Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I speak",
+            "legoId": "S0009L01",
+            "target": "labhraím",
+            "isGhost": false
+          },
+          {
+            "known": "a little",
+            "legoId": "S0009L02",
+            "target": " beagán",
+            "isGhost": false
+          },
+          {
+            "known": "Irish",
+            "legoId": "S0001L03",
+            "target": " Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "better",
+            "legoId": "S0029L02",
+            "target": " níos fearr",
+            "isGhost": false
+          },
+          {
+            "known": "than",
+            "legoId": "S0042L01",
+            "target": " ná",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "yesterday",
+            "legoId": "S0030L04",
+            "target": " inné",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0014L01U01",
+        "seed_number": 14,
+        "lego_index": 1,
+        "position": 7,
+        "known_text": "you speak Irish all day. That is very well",
+        "target_text": "labhraíonn tú Gaeilge an lá ar fad. tá sin go han-mhaith",
+        "word_count": 57,
+        "lego_count": 9,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T01:55:29.604Z",
+          "known_score": 6,
+          "target_score": 8
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:37:52.338Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:28.420Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "you speak",
+            "legoId": "S0013L02",
+            "target": "labhraíonn tú",
+            "isGhost": false
+          },
+          {
+            "known": "Irish",
+            "legoId": "S0001L03",
+            "target": " Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "all day",
+            "legoId": "S0014L01",
+            "target": " an lá ar fad",
+            "isGhost": false,
+            "isSalient": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": ".",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " tá",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " sin",
+            "isGhost": true
+          },
+          {
+            "known": "very well",
+            "legoId": "S0013L01",
+            "target": " go han-mhaith",
+            "isGhost": false
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0013L02C02",
+        "seed_number": 13,
+        "lego_index": 2,
+        "position": 2,
+        "known_text": "you",
+        "target_text": "tú",
+        "word_count": 2,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 1
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:36:55.263Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:28.420Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "tú",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0013L02C01",
+        "seed_number": 13,
+        "lego_index": 2,
+        "position": 1,
+        "known_text": "speaks",
+        "target_text": "labhraíonn",
+        "word_count": 10,
+        "lego_count": 1,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "buildup": "component",
+          "component_index": 0
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:36:55.263Z",
+        "target_syllable_count": null,
+        "phrase_role": "component",
+        "connected_lego_ids": [],
+        "lego_position": "middle",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:28.420Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "",
+            "legoId": null,
+            "target": "labhraíonn",
+            "isGhost": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0013L01U08",
+        "seed_number": 13,
+        "lego_index": 1,
+        "position": 17,
+        "known_text": "I wouldn't like to guess what's going to happen, but you speak very well",
+        "target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh, ach labhraíonn tú go han-mhaith",
+        "word_count": 107,
+        "lego_count": 14,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 9,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T01:54:24.867Z",
+          "known_score": 8,
+          "target_score": 9
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:36:55.263Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:28.420Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "I wouldn't like",
+            "legoId": "S0012L01",
+            "target": "níor mhaith liom",
+            "isGhost": false
+          },
+          {
+            "known": "to guess what's going to happen",
+            "legoId": "S0012L02",
+            "target": " buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+            "isGhost": false
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": ",",
+            "isGhost": true
+          },
+          {
+            "known": "",
+            "legoId": null,
+            "target": " ach",
+            "isGhost": true
+          },
+          {
+            "known": "you speak",
+            "legoId": "S0013L02",
+            "target": " labhraíonn tú",
+            "isGhost": false
+          },
+          {
+            "known": "very well",
+            "legoId": "S0013L01",
+            "target": " go han-mhaith",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.insert",
+      "row": {
+        "id": "gle_v2_for_eng:S0013L01U01",
+        "seed_number": 13,
+        "lego_index": 1,
+        "position": 10,
+        "known_text": "you speak Irish very well",
+        "target_text": "labhraíonn tú Gaeilge go han-mhaith",
+        "word_count": 36,
+        "lego_count": 5,
+        "difficulty": null,
+        "register": null,
+        "metadata": {
+          "score": 6,
+          "format": "build_use",
+          "pipeline": "v2",
+          "scored_at": "2026-02-18T01:54:24.867Z",
+          "known_score": 5,
+          "target_score": 6
+        },
+        "status": "draft",
+        "release_batch": null,
+        "created_at": "2026-11-09T14:36:55.263Z",
+        "target_syllable_count": null,
+        "phrase_role": "use",
+        "connected_lego_ids": [],
+        "lego_position": "end",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "qa_checked": "2026-02-18T03:21:28.420Z",
+        "target1_duration_ms": null,
+        "target2_duration_ms": null,
+        "lego_id": null,
+        "target_text_roman": null,
+        "target_phrase_id": null,
+        "presentation_audio_id": null,
+        "introduce": true,
+        "decomposition": [
+          {
+            "known": "you speak",
+            "legoId": "S0013L02",
+            "target": "labhraíonn tú",
+            "isGhost": false
+          },
+          {
+            "known": "Irish",
+            "legoId": "S0001L03",
+            "target": " Gaeilge",
+            "isGhost": false
+          },
+          {
+            "known": "very well",
+            "legoId": "S0013L01",
+            "target": " go han-mhaith",
+            "isGhost": false,
+            "isSalient": true
+          }
+        ],
+        "decomposition_course_version": null,
+        "display_tiling": null,
+        "display_tiling_version": null,
+        "known_gloss_segments": null
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04U05",
+      "set": {
+        "known_text": "i think that your friends who speak more slowly are ready",
+        "target_text": "ceapaim go bhfuil do chairde a labhraíonn níos moille réidh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04U04",
+      "set": {
+        "known_text": "i don't know which of your friends speak with them",
+        "target_text": "níl a fhios agam cé acu de do chairde a labhraíonn leo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04U03",
+      "set": {
+        "known_text": "i met a few friends who speak with them in irish",
+        "target_text": "bhuail mé le cúpla cara a labhraíonn leo i ngaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04U02",
+      "set": {
+        "known_text": "how many people do you know who speak irish",
+        "target_text": "cé mhéad duine a bhfuil aithne agat orthu a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04U01",
+      "set": {
+        "known_text": "which of your friends speak irish",
+        "target_text": "cé acu de do chairde a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04B04",
+      "set": {
+        "known_text": "who speak quickly enough",
+        "target_text": "a labhraíonn go tapa go leor"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04B03",
+      "set": {
+        "known_text": "most people who speak irish",
+        "target_text": "formhór na ndaoine a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04B02",
+      "set": {
+        "known_text": "a few friends who speak more slowly",
+        "target_text": "cúpla cara a labhraíonn níos moille"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L04B01",
+      "set": {
+        "known_text": "your friends who speak irish",
+        "target_text": "do chairde a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L02U01",
+      "set": {
+        "target_text": "níl aithne agam ar mhórán a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0297L02B04",
+      "set": {
+        "target_text": "an bhfuil aithne agat ar mhórán a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0294L01U05",
+      "set": {
+        "target_text": "níl duine ar bith anseo a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0289L01U01",
+      "set": {
+        "target_text": "ní fheadar cé acu de do chairde a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0288L03U04",
+      "set": {
+        "target_text": "dúirt sí liom gur mhian léi bualadh le daoine a bhfuil aithne agam orthu a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0287L02U01",
+      "set": {
+        "target_text": "cé mhéad duine a bhfuil aithne agat orthu a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0287L01U04",
+      "set": {
+        "target_text": "cé mhéad duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0287L01B03",
+      "set": {
+        "target_text": "cé mhéad duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U06",
+      "set": {
+        "target_text": "labhraíonn sí gaeilge anois agus tá mé sásta"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U05",
+      "set": {
+        "known_text": "she speaks Irish often at work",
+        "target_text": "labhraíonn sí gaeilge go minic ag an obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U04",
+      "set": {
+        "known_text": "I don't know but she speaks Irish with your brother",
+        "target_text": "níl a fhios agam ach labhraíonn sí gaeilge le do dheartháir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U03",
+      "set": {
+        "known_text": "she speaks Irish with them at work",
+        "target_text": "labhraíonn sí gaeilge leo ag an obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U02",
+      "set": {
+        "known_text": "of course she speaks Irish in the pub",
+        "target_text": "ar ndóigh labhraíonn sí gaeilge sa teach tábhairne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01U01",
+      "set": {
+        "target_text": "ní fadhb é sin labhraíonn sí gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01B04",
+      "set": {
+        "known_text": "but she speaks Irish in the office",
+        "target_text": "ach labhraíonn sí gaeilge san oifig"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01B03",
+      "set": {
+        "known_text": "she speaks Irish with your brother",
+        "target_text": "labhraíonn sí gaeilge le do dheartháir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01B02",
+      "set": {
+        "known_text": "of course she speaks Irish",
+        "target_text": "ar ndóigh labhraíonn sí gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0285L01B01",
+      "set": {
+        "known_text": "she speaks Irish now",
+        "target_text": "labhraíonn sí gaeilge anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0284L02U01",
+      "set": {
+        "target_text": "an bhfuil aithne agat ar chara le m'athair a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U06",
+      "set": {
+        "target_text": "aréir bhuail mé le cúpla cara a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U05",
+      "set": {
+        "target_text": "d'oibríodh do chairde a labhraíonn Gaeilge anseo"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U04",
+      "set": {
+        "target_text": "bhuail mé le do chairde a labhraíonn Gaeilge sa teach tábhairne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U03",
+      "set": {
+        "target_text": "tá brón orm ach ní fhaca mé do chairde a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U02",
+      "set": {
+        "target_text": "an bhfaca tú do chairde a labhraíonn Gaeilge inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03U01",
+      "set": {
+        "target_text": "chonaic mé cúpla cara a labhraíonn Gaeilge aréir"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03B04",
+      "set": {
+        "target_text": "chonaic mé cúpla cara a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03B03",
+      "set": {
+        "target_text": "cúpla cara a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03B02",
+      "set": {
+        "target_text": "do chairde a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0283L03B01",
+      "set": {
+        "known_text": "who speak Irish at work",
+        "target_text": "a labhraíonn Gaeilge ag an obair"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0264L01U05",
+      "set": {
+        "target_text": "labhraíonn an seanfhear sin Gaeilge go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0234L05B06",
+      "set": {
+        "target_text": "bhuail mé le duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0234L01U10",
+      "set": {
+        "target_text": "Tá mé ag iarraidh labhairt le duine a oibríonn anseo agus a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0234L01B03",
+      "set": {
+        "target_text": "duine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0231L02U05",
+      "set": {
+        "target_text": "ar ndóigh tá aithne agam ar sheanfhear a labhraíonn gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0201L01U05",
+      "set": {
+        "target_text": "ba mhian linn bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0189L02U03",
+      "set": {
+        "target_text": "Is ea, is smaoineamh maith é sin mar is mian liom bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0142L02B02",
+      "set": {
+        "target_text": "duine an-chineálta a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0138L01U06",
+      "set": {
+        "target_text": "seo an áit ar mhian liom bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0137L01U07",
+      "set": {
+        "target_text": "tá sé níos tábhachtaí bualadh le daoine a labhraíonn Gaeilge"
+      }
+    }
+  ]
+}

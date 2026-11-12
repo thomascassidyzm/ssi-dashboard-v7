@@ -1,0 +1,450 @@
+{
+  "course_code": "gle_v2_for_eng",
+  "event_id": "35b469dc-be09-4bf1-a7fe-e71e2ba26680",
+  "actor": "kai-watson-job-403",
+  "created_at": "2026-11-12T12:19:55.515Z",
+  "how_to_undo": "POST /api/production/gle_v2_for_eng/edit-batch {\"undo_file\":\"2026-11-12T12-19-55-515Z-35b469dc-be09-4bf1-a7fe-e71e2ba26680.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0023L03U06",
+      "set": {
+        "target_text": "ba mhaith liom bualadh le daoine a labhraíonn Gaeilge go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0023L03U03",
+      "set": {
+        "target_text": "is mian liom bualadh le daoine a labhraíonn Gaeilge go luath"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0023L02U08",
+      "set": {
+        "target_text": "is mian liom labhairt níos mó le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0022L02U07",
+      "set": {
+        "target_text": "labhraím beagán Gaeilge anois agus is mian liom bualadh le daoine"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0015L05U05",
+      "set": {
+        "target_text": "labhraím beagán Gaeilge anois agus is mian liom go labhrófá liom"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0015L01U11",
+      "set": {
+        "target_text": "labhraím beagán Gaeilge anois agus is mian liom labhairt leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0014L02U04",
+      "set": {
+        "known_text": "do you speak Irish very well all day today?",
+        "target_text": "an labhraíonn tú Gaeilge go han-mhaith an lá ar fad inniu?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0014L02B02",
+      "set": {
+        "known_text": "do you speak Irish very well?",
+        "target_text": "an labhraíonn tú Gaeilge go han-mhaith?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U08",
+      "set": {
+        "known_text": "you speak Irish tomorrow as well as today",
+        "target_text": "labhraíonn tú Gaeilge amárach chomh maith le inniu"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U07",
+      "set": {
+        "known_text": "you speak Irish with someone else today, and I'd like that too",
+        "target_text": "labhraíonn tú Gaeilge le duine éigin eile inniu, agus ba mhaith liom sin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U06",
+      "set": {
+        "known_text": "you speak, and I'd like to practise",
+        "target_text": "labhraíonn tú, agus ba mhaith liom a chleachtadh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U05",
+      "set": {
+        "known_text": "you speak Irish as often as possible, and that's very well done",
+        "target_text": "labhraíonn tú Gaeilge chomh minic agus is féidir, agus tá sin go han-mhaith"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U04",
+      "set": {
+        "known_text": "you speak very well. I wouldn't like to guess what's going to happen tomorrow",
+        "target_text": "labhraíonn tú go han-mhaith. níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02U01",
+      "set": {
+        "known_text": "you speak Irish today, and I'd like to speak",
+        "target_text": "labhraíonn tú Gaeilge inniu, agus ba mhaith liom labhairt"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02B04",
+      "set": {
+        "known_text": "you speak now",
+        "target_text": "labhraíonn tú anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02B03",
+      "set": {
+        "known_text": "you speak a little Irish",
+        "target_text": "labhraíonn tú beagán Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02B02",
+      "set": {
+        "known_text": "you speak Irish",
+        "target_text": "labhraíonn tú Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0013L02B01",
+      "set": {
+        "known_text": "you speak",
+        "target_text": "labhraíonn tú"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L02U04",
+      "set": {
+        "known_text": "I speak a little with someone else",
+        "target_text": "labhraím beagán le duine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L02U03",
+      "set": {
+        "known_text": "I speak a little Irish now",
+        "target_text": "labhraím beagán Gaeilge anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L02U02",
+      "set": {
+        "known_text": "I speak a little Irish with you",
+        "target_text": "labhraím beagán Gaeilge leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L02U01",
+      "set": {
+        "known_text": "I speak a little Irish",
+        "target_text": "labhraím beagán Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L02B03",
+      "set": {
+        "known_text": "I speak a little now",
+        "target_text": "labhraím beagán anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01U04",
+      "set": {
+        "known_text": "I speak Irish with someone else",
+        "target_text": "labhraím Gaeilge le duine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01U03",
+      "set": {
+        "known_text": "I speak with someone else",
+        "target_text": "labhraím le duine éigin eile"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01U02",
+      "set": {
+        "known_text": "I speak Irish with you now",
+        "target_text": "labhraím Gaeilge leat anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01U01",
+      "set": {
+        "known_text": "I speak Irish now",
+        "target_text": "labhraím Gaeilge anois"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01B03",
+      "set": {
+        "known_text": "I speak Irish with you",
+        "target_text": "labhraím Gaeilge leat"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01B02",
+      "set": {
+        "known_text": "I speak Irish",
+        "target_text": "labhraím Gaeilge"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "gle_v2_for_eng:S0009L01B01",
+      "set": {
+        "known_text": "I speak now",
+        "target_text": "labhraím anois"
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "7033a2b5-6bde-41cb-966e-25d584a4c5d6",
+      "set": {
+        "known_text": "who speak",
+        "target_text": "a labhraíonn",
+        "components": [
+          {
+            "known": "who",
+            "target": "a"
+          },
+          {
+            "known": "speak",
+            "target": "labhraíonn"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "09e50ee1-d155-4cd4-9e58-b3968f46f8a9",
+      "set": {
+        "target_text": "labhraíonn sí gaeilge",
+        "components": [
+          {
+            "known": "she speaks",
+            "target": "labhraíonn sí"
+          },
+          {
+            "known": "Irish",
+            "target": "gaeilge"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "f7f2c554-0e42-462a-a2ec-21a043b79339",
+      "set": {
+        "target_text": "a labhraíonn Gaeilge",
+        "components": [
+          {
+            "known": "who",
+            "target": "a"
+          },
+          {
+            "known": "speak",
+            "target": "labhraíonn"
+          },
+          {
+            "known": "Irish",
+            "target": "Gaeilge"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "bd99b0f9-6e1e-4d66-8921-725a382e319b",
+      "set": {
+        "is_new": false,
+        "target_text": "a labhraíonn Gaeilge",
+        "components": null
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "5ef263de-0eb0-474c-9ce5-7a1579c17187",
+      "set": {
+        "known_text": "you speak",
+        "target_text": "labhraíonn tú",
+        "components": [
+          {
+            "known": "speaks",
+            "target": "labhraíonn"
+          },
+          {
+            "known": "you",
+            "target": "tú"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "9e5136e8-ad0c-42ff-ac67-4699fa875930",
+      "set": {
+        "type": "A",
+        "known_text": "I speak",
+        "target_text": "labhraím",
+        "components": null
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 297,
+      "set": {
+        "target_text": "Níl aithne agam ar mhórán daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 285,
+      "set": {
+        "target_text": "labhraíonn sí Gaeilge"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 283,
+      "set": {
+        "target_text": "cé acu de do chairde a labhraíonn Gaeilge?"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 22,
+      "set": {
+        "target_text": "mar is mian liom bualadh le daoine a labhraíonn Gaeilge"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 13,
+      "set": {
+        "target_text": "labhraíonn tú Gaeilge go han-mhaith"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 9,
+      "set": {
+        "target_text": "labhraím beagán Gaeilge anois"
+      }
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0283L03U07"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03U05"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03U04"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03U03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03U02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03B03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03B02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0022L03B01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03U05"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03U04"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03U03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03U02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03U01"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03B03"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03B02"
+    },
+    {
+      "op": "phrase.delete",
+      "phrase_id": "gle_v2_for_eng:S0013L03B01"
+    },
+    {
+      "op": "lego.delete",
+      "id": "5fd2f3a9-352e-4c53-9a24-07c58dde493c"
+    }
+  ]
+}
