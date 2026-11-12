@@ -177,6 +177,51 @@ N.update({
 })
 DONE253-={433,434}
 PEND=[n for n in PEND if n not in DONE253]
+
+# Job #403 (12 Nov): Kai's rulings on the 15 open questions (d/7e7ff563), applied to the course. Only the 'taitin' seeds still wait.
+HV="For 'speaks Irish' we now say 'tá Gaeilge ag' in every seed (9, 13, 22, 283, 285, 297), following your 13 and 22. Our English still says 'speak'."
+HP="We took your point that 'sásta' is 'satisfied': 'happy' is now 'áthas ar' in every seed (76, 106, 129, 145, 187, 245, 344, 448, 599), and 'happy with' is 'áthas … as'."
+FQ="'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"
+N.update({
+9:(D,HV,"Is 'Tá beagán Gaeilge agam anois' right for 'I speak a little Irish now'?"),
+13:(S,HV,""),
+14:(None,None,"We kept 'an labhraíonn tú Gaeilge an lá ar fad?' here because it is about the act of speaking all day, not about being able to speak. Is that right, next to 'Tá Gaeilge agat'?"),
+22:(S,HV,""),
+283:(D,HV,"Is 'cé acu de do chairde a bhfuil Gaeilge acu?' right?"),
+285:(D,"We took the form you name as the usual one, 'Tá Gaeilge aici'. "+HV,""),
+297:(D,"We took your second version and kept 'daoine'. "+HV,"Is 'ar mhórán daoine a bhfuil Gaeilge acu' right with 'daoine' kept?"),
+76:(S,HP,""),
+106:(D,MU+" The course uses 'caithfidh' for 'need to'. "+HP,"Is 'Ní chaithfidh muid áthas a bheith orainn' correct for 'we don't need to feel happy'?"),
+129:(D,HP+" We kept our 'ag déanamh chomh maith sin' for 'doing so well'.","Is 'Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin' natural, or does 'doing so well' need 'ag éirí go maith leat'?"),
+145:(S,HP,""),
+187:(S,HP,""),
+245:(D,HP+" We kept 'in am gearr'.","Is 'in am gearr' acceptable here, or should it be 'in achar gearr'?"),
+344:(S,HP,""),
+448:(D,EN+" "+HP,""),
+599:(D,HP+" We left out 'an-' so that 'happy' and 'very happy' stay apart for the learner.",""),
+107:(D,"We took your 'á dhéanamh agat' form. We kept 'bhí muid ag súil le' and 'cad a' for 'what', which the course teaches.","Is 'bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat' correct?"),
+174:(S,EN,""),
+281:(D,EN+" The English is 'do you mind', so we kept 'an miste leat'. We took your 'sula dtosóidh tú'.",""),
+494:(S,EN,""),
+533:(S,EN,""),
+384:(S,"",""),
+390:(S,"",""),
+391:(None,None,"You write 'an té' at 390 and 'an duine' here, both for 'the one who'. Should this one be 'an té atá ag siúl' too?"),
+399:(D,EN+" "+WA+" We took your 'ár misneach'.",""),
+154:(D,EN+" "+WA+" We kept 'leat', for one person, and took your 'oíche' without 'Dé'.","Is 'leat' fine for one person? And is the spelling 'oíche Shathairn' right?"),
+215:(D,"We took your 'oíche' without 'Dé', spelt 'oíche Shathairn' as at 154.",""),
+150:(S,"",""),
+53:(D,"Thank you for the point about 'a litir'. We kept 'a litir' so that the learner does not meet a new mutation here.",""),
+112:(D,"Thank you for the idiom. We kept the plainer 'ní raibh mé ag súil leis', which follows the English.","Are you OK with 'ní raibh mé ag súil leis'? We can put 'tháinig sé aniar aduaidh orm' in the listening exercises."),
+139:(D,"We use 'imeacht' for 'leave' in every seed; you mention either is fine.","Would you prefer 'fág' for 'leave' throughout? We would switch all of them."),
+119:(None,None,"Is 'faoi' OK here, or does it need 'maidir le'?"),
+99:(None,None,"Is 'faoin bhfáth' needed, or is 'ceist a chur ort féin cén fáth nach bhfuil sé ag obair' acceptable?"),
+433:(D,"We kept 'ní fhéadfadh siad': you write 'could' with 'féad-' in most seeds (311 to 314, 358, 412 to 414, 435, 644), and 435 answers 434 with 'd'fhéadfadh'.",FQ),
+434:(D,"We kept 'an bhféadfadh siad': you write 'could' with 'féad-' in most seeds, and 435 answers 434 with 'd'fhéadfadh'.",FQ),
+456:(O,EN+" Ours matches your first option.",""),
+})
+FIX.pop(139,None)
+PEND=[n for n in PEND if n in (27,55,120,121,239,240)]   # 'taitin': held for Eoghan's answer at seed 27
 rows=[];unnoted=[]
 for n in sorted(old):
     r=dict(old[n]); s=live[n]

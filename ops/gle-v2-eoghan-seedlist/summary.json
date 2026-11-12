@@ -1,9 +1,9 @@
 {
  "counts": {
-  "Same as yours": 205,
-  "Different": 429,
-  "Pending Kai": 25,
-  "Same as one of your options": 6,
+  "Same as yours": 216,
+  "Different": 436,
+  "Pending Kai": 6,
+  "Same as one of your options": 7,
   "Irish same as yours; English differs": 3
  },
  "questions": [
@@ -12,6 +12,12 @@
    "I'm trying to remember a word",
    "Tá mé ag iarraidh cuimhneamh ar fhocal",
    "Is 'ag iarraidh cuimhneamh ar fhocal' (without 'a dhéanamh') correct and natural?"
+  ],
+  [
+   "9",
+   "I speak a little Irish now",
+   "Tá beagán Gaeilge agam anois",
+   "Is 'Tá beagán Gaeilge agam anois' right for 'I speak a little Irish now'?"
   ],
   [
    "11",
@@ -24,6 +30,12 @@
    "I wouldn't like to guess what's going to happen tomorrow",
    "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach",
    "Did you mean the impersonal 'a tharlófar' on purpose?"
+  ],
+  [
+   "14",
+   "do you speak Irish all day?",
+   "an labhraíonn tú Gaeilge an lá ar fad?",
+   "We kept 'an labhraíonn tú Gaeilge an lá ar fad?' here because it is about the act of speaking all day, not about being able to speak. Is that right, next to 'Tá Gaeilge agat'?"
   ],
   [
    "15",
@@ -83,13 +95,31 @@
    "99",
    "you should ask yourself why it's not working",
    "ba cheart duit ceist a chur ort féin cén fáth nach bhfuil sé ag obair",
-   "Is 'ceist a chur ort féin cén fáth nach bhfuil sé ag obair' acceptable?"
+   "Is 'faoin bhfáth' needed, or is 'ceist a chur ort féin cén fáth nach bhfuil sé ag obair' acceptable?"
+  ],
+  [
+   "106",
+   "we don't need to feel happy, we just need to work hard",
+   "Ní chaithfidh muid áthas a bheith orainn, caithfidh muid obair go dian",
+   "Is 'Ní chaithfidh muid áthas a bheith orainn' correct for 'we don't need to feel happy'?"
+  ],
+  [
+   "107",
+   "we hoped to see what you were doing",
+   "bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat",
+   "Is 'bhí muid ag súil le feiceáil cad a bhí á dhéanamh agat' correct?"
+  ],
+  [
+   "112",
+   "That was very interesting, and I wasn't expecting it",
+   "bhí sé sin an-suimiúil, agus ní raibh mé ag súil leis",
+   "Are you OK with 'ní raibh mé ag súil leis'? We can put 'tháinig sé aniar aduaidh orm' in the listening exercises."
   ],
   [
    "119",
    "can I ask you about something before you leave?",
    "an féidir liom ceist a chur ort faoi rud éigin sula n-imíonn tú?",
-   "Is 'ceist a chur ort faoi rud éigin' as natural as your 'maidir le rud éigin'?"
+   "Is 'faoi' OK here, or does it need 'maidir le'?"
   ],
   [
    "127",
@@ -100,8 +130,8 @@
   [
    "129",
    "I'm so happy that you're doing so well",
-   "Tá mé chomh sásta go bhfuil tú ag déanamh chomh maith sin",
-   "Is 'Tá mé chomh sásta go…' natural here, or would you really need 'Tá an-áthas orm'?"
+   "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin",
+   "Is 'Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin' natural, or does 'doing so well' need 'ag éirí go maith leat'?"
   ],
   [
    "132",
@@ -116,6 +146,12 @@
    "Is 'seo an áit ar mhian le mo chara bualadh linn' correct for 'this was where my friend wanted to meet us'?"
   ],
   [
+   "139",
+   "I'm sorry that I need to leave so early",
+   "Tá brón orm go gcaithfidh mé imeacht chomh luath sin",
+   "Would you prefer 'fág' for 'leave' throughout? We would switch all of them."
+  ],
+  [
    "142",
    "that's very kind of you and I'm grateful to you for helping",
    "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú",
@@ -126,12 +162,6 @@
    "nothing seems to be working since we tried to fix it",
    "Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú",
    "You write 'ag obair' at 99 and 'ag feidhmiú' at 146 for a thing that is working. Can 'ag obair' serve in both?"
-  ],
-  [
-   "150",
-   "can you tell me what your name is?",
-   "an féidir leat insint dom cad is ainm duit?",
-   "You note 'Cad is ainm duit?' is the natural question. Is it also fine inside 'an féidir leat insint dom cad is ainm duit?'"
   ],
   [
    "151",
@@ -152,6 +182,12 @@
    "For 'the way' you use 'slí' (94, 122, 408), 'bealach' (152, 327, 607) and 'caoi' (153, 208, 491). Could one word serve in all of them, and which?"
   ],
   [
+   "154",
+   "where do you want to meet on Saturday night?",
+   "cén áit ar mian leat bualadh le chéile oíche Shathairn?",
+   "Is 'leat' fine for one person? And is the spelling 'oíche Shathairn' right?"
+  ],
+  [
    "169",
    "what do you want me to do?",
    "cad is mian leat go ndéanfainn?",
@@ -166,7 +202,7 @@
   [
    "245",
    "I'm happy with how much I've done in a short time",
-   "Tá mé sásta leis an méid atá déanta agam in am gearr",
+   "Tá áthas orm as an méid atá déanta agam in am gearr",
    "Is 'in am gearr' acceptable here, or should it be 'in achar gearr'?"
   ],
   [
@@ -174,6 +210,18 @@
    "who was that man you were talking to yesterday?",
    "cé hé an fear sin a raibh tú ag caint leis inné?",
    "Should 'cé hé' be the past 'cérbh é', since the English is 'who was'?"
+  ],
+  [
+   "283",
+   "which of your friends speak Irish?",
+   "cé acu de do chairde a bhfuil Gaeilge acu?",
+   "Is 'cé acu de do chairde a bhfuil Gaeilge acu?' right?"
+  ],
+  [
+   "297",
+   "I don't know many people who speak Irish",
+   "Níl aithne agam ar mhórán daoine a bhfuil Gaeilge acu",
+   "Is 'ar mhórán daoine a bhfuil Gaeilge acu' right with 'daoine' kept?"
   ],
   [
    "299",
@@ -212,10 +260,28 @@
    "Should 'áit ar bith sa domhan' be 'áit ar bith ar domhan'?"
   ],
   [
+   "391",
+   "the one who is walking towards the bus",
+   "an duine atá ag siúl i dtreo an bhus",
+   "You write 'an té' at 390 and 'an duine' here, both for 'the one who'. Should this one be 'an té atá ag siúl' too?"
+  ],
+  [
    "426",
    "they would like to love each other but they're unhappy",
    "ba mhaith leo grá a thabhairt dá chéile ach tá siad míshásta",
    "Is 'míshásta' fine for 'unhappy' here, or should it be 'míshona'?"
+  ],
+  [
+   "433",
+   "they couldn't find out when the film started",
+   "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán",
+   "'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"
+  ],
+  [
+   "434",
+   "could they cut the number of students they take?",
+   "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?",
+   "'couldn't' is 'ní fhéadfadh' at 311 and 'níorbh fhéidir leo' at 433; 'could' is 'an bhféadfadh' at 358 and 'arbh fhéidir' at 434 and 659. Can it be the 'féad-' form throughout?"
   ],
   [
    "531",
@@ -248,12 +314,6 @@
    "Is 'a íoc ar do thicéad' wrong for 'pay for your ticket'? You wrote 'i leith do thicéid', and 'íoc as' elsewhere."
   ],
   [
-   "599",
-   "I'd have been happy to drive if you'd told me about it",
-   "Bheinn sásta tiomáint dá n-inseofá dom faoi",
-   "You note at 344 that 'sásta' means 'satisfied'. Is 'Bheinn sásta tiomáint' wrong for 'I'd have been happy to drive'?"
-  ],
-  [
    "613",
    "we probably would have bought a house there",
    "is dócha go gceannódh muid teach ansin",
@@ -268,40 +328,16 @@
  ],
  "pending": [
   [
-   "13",
-   "you speak Irish very well",
-   "labhraíonn tú Gaeilge go han-mhaith",
-   "Tá Gaeilge an-mhaith agat"
-  ],
-  [
-   "22",
-   "because I want to meet people who speak Irish",
-   "mar is mian liom bualadh le daoine a labhraíonn Gaeilge",
-   "Mar is mian liom bualadh le daoine a bhfuil Gaeilge acu"
-  ],
-  [
    "27",
    "I don't like taking too much time to answer",
    "Ní maith liom an iomarca ama a thógáil le freagra a thabhairt",
    "Ní thaitníonn sé liom an-iomarca ama a chaitheamh le freagra a thabhairt"
   ],
   [
-   "53",
-   "she wanted to put his letter in her bag",
-   "ba mhian léi a litir a chur ina mála",
-   "Ba mhian léi a chomhfhreagras a chur isteach ina mála  [note: L' is not lenited in Irish. 'a litir' can mean either her or his letter.  'C' can be lenited to mean his (a chom… ) rather than  her (a com..)]"
-  ],
-  [
    "55",
    "I don't enjoy waking up when I didn't sleep very well",
    "Ní bhainim taitneamh as dúiseacht nuair nár chodail mé go maith",
    "Ní thaitníonn sé líom nuair a dhúisím agus nuair nach raibh codladh sámh agam"
-  ],
-  [
-   "112",
-   "That was very interesting, and I wasn't expecting it",
-   "bhí sé sin an-suimiúil, agus ní raibh mé ag súil leis",
-   "bhí sé sin an-suimiúil, agus tháinig sé aniar aduaidh orm (this is used to express surprise rather than not knowind in advance)"
   ],
   [
    "120",
@@ -316,24 +352,6 @@
    "Is neamhghnách é nach dtaitníonn sé leat úsáid a bhaint as do charr"
   ],
   [
-   "139",
-   "I'm sorry that I need to leave so early",
-   "Tá brón orm go gcaithfidh mé imeacht chomh luath sin",
-   "Tá brón orm go gcaithfidh mé fágáil chomh luath sin (fág = leave: imeacht = go. you can use either but I would use fág for leave)"
-  ],
-  [
-   "150",
-   "can you tell me what your name is?",
-   "an féidir leat insint dom cad is ainm duit?",
-   "An féidir leat d'ainm a insint dom? (Cad is ainm duit = what is your name is the more natural thaing to say)"
-  ],
-  [
-   "154",
-   "where do you want to meet on Saturday night?",
-   "cén áit ar mian leat bualadh le chéile oíche Dé Sathairn?",
-   "Cén áit ar mhaith libh bualadh le chéile oíche Sathairn? (libh = leat plural; more than one meeting together)"
-  ],
-  [
    "239",
    "my mother likes to read",
    "is maith le mo mháthair léamh",
@@ -344,78 +362,6 @@
    "my father doesn't like to stop talking",
    "Ní maith le m'athair stopadh ag caint",
    "Ní thaitníonn sé le m'athair stop a chur lena chuid cainte."
-  ],
-  [
-   "281",
-   "do you mind if I finish my coffee before you start?",
-   "an miste leat má chríochnaím mo chaife sula dtosaíonn tú?",
-   "Ar mhiste leat má chríochnaím mo chaife sula dtosóidh tú?"
-  ],
-  [
-   "285",
-   "she speaks Irish",
-   "labhraíonn sí Gaeilge",
-   "labhraíonn sí Gaeilge (usually this is said as tá Gaeilge aici = she has Irish)"
-  ],
-  [
-   "297",
-   "I don't know many people who speak Irish",
-   "Níl aithne agam ar mhórán daoine a labhraíonn Gaeilge",
-   "Níl aithne agam ar mhórán daoine a labhraíonn Gaeilge (níl aithne agam ar mhórán a bhfuil Gaeilge acu)"
-  ],
-  [
-   "344",
-   "who said that he's happy to help you",
-   "a dúirt go bhfuil sé sásta cabhrú leat",
-   "a dúirt go bhfuil  áthas air cabhrú leat (sásta = satisfied)"
-  ],
-  [
-   "384",
-   "I couldn't agree with what he said a moment ago",
-   "Ní fhéadfainn aontú leis an méid a dúirt sé nóiméad ó shin",
-   "Ní fhéadfainn aontú leis an méid a dúirt sé bomaite  ó shin (nóiméad = minute: bomaite = moment)"
-  ],
-  [
-   "390",
-   "the one who is standing near the entrance",
-   "an duine atá ina sheasamh in aice leis an mbealach isteach",
-   "an té atá ina sheasamh in aice leis an mbealach isteach (an duine = the person; an té = the one"
-  ],
-  [
-   "399",
-   "we don't want to lose hope",
-   "Ní mian linn dóchas a chailleadh",
-   "Níor mhaith linn ár misneach a chailleadh (misneach = dóchas in this case; it is idiomatic but better)"
-  ],
-  [
-   "433",
-   "they couldn't find out when the film started",
-   "Ní fhéadfadh siad fáil amach cathain a thosaigh an scannán",
-   "Níorbh fhéidir leo a fháil amach cathain a thosaigh an scannán"
-  ],
-  [
-   "434",
-   "could they cut the number of students they take?",
-   "an bhféadfadh siad líon na mac léinn a ghlacann siad a laghdú?",
-   "Arbh fhéidir leo líon na mac léinn a ghlacann siad leo a laghdú?"
-  ],
-  [
-   "456",
-   "he might be there but it's not very likely",
-   "b'fhéidir go mbeidh sé ann ach ní dócha é",
-   "b'fhéidir go mbeidh sé ann ach ní dócha é / b'fhéidir go mbeadh sé ann ach ní dócha é"
-  ],
-  [
-   "494",
-   "what happens after the first part of the show?",
-   "cad a tharlaíonn tar éis an chéad chuid den seó?",
-   "cad a tharlóidh tar éis an chéad chuid den seó?"
-  ],
-  [
-   "533",
-   "she won't listen to every word you say",
-   "Ní éistfidh sí le gach focal a deir tú",
-   "Ní éistfidh sí le gach focal a déarfaidh tú"
   ]
  ]
 }

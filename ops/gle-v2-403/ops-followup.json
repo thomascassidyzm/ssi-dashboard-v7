@@ -1,0 +1,15 @@
+{
+"ops": [
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0127L01U11",
+"set": {
+"target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit an-áthas a bheith ort as an méid atá foghlamtha agam cheana féin"
+},
+"expect": {
+"known_text": "That isn't the reason and I think there's a lot done already in a short time and you should be very happy with everything you've learned",
+"target_text": "Ní hé sin an fáth agus ceapaim go bhfuil go leor déanta agam in am gearr agus ba cheart duit a bheith an-sásta leis an méid atá foghlamtha agam cheana féin"
+}
+}
+]
+}
