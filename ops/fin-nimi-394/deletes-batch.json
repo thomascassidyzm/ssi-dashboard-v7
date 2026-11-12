@@ -1,0 +1,6 @@
+{"ops":[
+{"op":"phrase.delete","phrase_id":"fin_for_eng:S0033L02U06","expect":{"target_text":"kuinka kauan sä oot oppinut sen nimeä?"}},
+{"op":"phrase.delete","phrase_id":"fin_for_eng:S0021L03B04","expect":{"target_text":"mä yritän muistaa sen nimeä"}},
+{"op":"phrase.delete","phrase_id":"fin_for_eng:S0021L03U04","expect":{"target_text":"mä yritän muistaa sen nimeä, mutta mä en oo varma"}},
+{"op":"phrase.delete","phrase_id":"fin_for_eng:S0021L03U05","expect":{"target_text":"mä yritän muistaa sen nimeä nyt"}}
+],"why":"#394·AH Kai 12 Nov nimi rulings: pull S0033L02U06; delete the seed-21 yritän muistaa sen nimeä rows"}

@@ -1,0 +1,150 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0654L01U06",
+   "expect": {
+    "known_text": "i'm not sure what his name is",
+    "target_text": "en ole varma, mikä sen nimi on"
+   },
+   "set": {
+    "known_text": "I'm not sure what his name is, sir",
+    "target_text": "en ole varma, mikä sen nimi on, herra",
+    "known_audio_id": "d5c079ef-c381-4d3d-b3f3-6e4ffd3325b2",
+    "target1_audio_id": "4967a741-e486-4169-bd49-2560e6b8fea7",
+    "target2_audio_id": "b0643013-bc30-40f5-a761-aa8d4cba6ed1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0465L02U05",
+   "expect": {
+    "known_text": "i'm not sure what her name is"
+   },
+   "set": {
+    "known_text": "I'm not sure what her name is",
+    "known_audio_id": "fcb265bc-4f05-41f1-85fe-3e37233af3fd"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fin_for_eng:S0222L01U06",
+    "seed_number": 222,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "he's trying to remember her name",
+    "target_text": "se yrittää muistaa sen nimeä",
+    "word_count": 28,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "source": "#394·AH Kai 12 Nov nimi ruling"
+    },
+    "status": "draft",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "dfe420f0-9f00-4d98-acfb-580810fd8bbd",
+    "target1_audio_id": "4e6730cf-162d-4fec-b611-dfbb185b6755",
+    "target2_audio_id": "a2661c0e-d653-4905-8003-a3c6b3f6aa9b",
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fin_for_eng:S0372L02U06",
+    "seed_number": 372,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "she was trying to remember his name",
+    "target_text": "se yritti muistaa sen nimeä",
+    "word_count": 27,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "source": "#394·AH Kai 12 Nov nimi ruling"
+    },
+    "status": "draft",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "68965307-4a28-4e49-99dd-a8304fe08f21",
+    "target1_audio_id": "986d45e2-617e-49ad-9b40-d2874bbf3943",
+    "target2_audio_id": "c1e92619-2529-4592-ad6a-d355bfb6ed3d",
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fin_for_eng:S0496L02U06",
+    "seed_number": 496,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "I'm really trying to remember her name",
+    "target_text": "mä yritän oikeesti muistaa sen nimeä",
+    "word_count": 36,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "source": "#394·AH Kai 12 Nov nimi ruling"
+    },
+    "status": "draft",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "c19c7afc-8a9b-4276-801b-926e6ca22bc3",
+    "target1_audio_id": "ec524c90-2044-42e6-a4eb-1bf447687579",
+    "target2_audio_id": "79fd6430-ec2f-498f-8970-432786369c27",
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0020L02",
+   "slot": "presentation",
+   "audio_id": "08c9b72c-a19d-4519-a5eb-f611525f8dac"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0021L03",
+   "slot": "presentation",
+   "audio_id": "e19cbbae-7593-45c6-920a-78052cbeac2f"
+  }
+ ],
+ "why": "#394·AH Kai 12 Nov nimi rulings: fix S0654L01U06 (formal marker, clears the ZUT clash with S0465L02U05) + S0465L02U05 casing; 3 later yrittää muistaa sen nimeä phrases; both nimi intros say his name or her name"
+}
