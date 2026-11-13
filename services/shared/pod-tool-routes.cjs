@@ -102,9 +102,9 @@ function buildPodToolArgv (toolName, courseCode, body) {
     }
   }
   for (const r of tool.required) if (!b[r]) return { error: `${r} is required` }
-  // clone-pod copies the SOURCE's visibility when none is named, so a copy of a
-  // live pod-1 would be born live. Through this route a clone is held unless the
-  // caller names draft: a held slug is the whole point of the copy.
+  // clone-pod itself now defaults a clone to 'held' (2026-11-13); the route still
+  // names it explicitly so a clone through here is held unless the caller names
+  // draft, whatever the tool's default ever becomes.
   if (toolName === 'clone' && !b.visibility) argv.push('--visibility=held')
   const apply = b.apply === true
   if (apply) argv.push('--apply')

@@ -85,7 +85,7 @@ async function linkClips (links, dryRun) {
   // 2. held pod: clone unless a previous run already made it
   let held = await getPod(HELD)
   if (!held) {
-    const c = tool(['tools/pods/clone-pod.cjs', `--course=${course}`, `--to=${HELD}`, '--apply'])
+    const c = tool(['tools/pods/clone-pod.cjs', `--course=${course}`, `--to=${HELD}`, '--visibility=held', '--apply'])
     if (c.code !== 0 || !/verified_rows/.test(c.out)) stop('held', `clone refused: ${c.out.split('\n').filter(l => /REFUSED|FAILED|Error/.test(l)).join(' ').slice(0, 400)}`)
     held = await getPod(HELD)
     if (!held || held.sentences.length !== live.sentences.length) stop('held', `clone row count ${held && held.sentences.length} != live ${live.sentences.length}`)
