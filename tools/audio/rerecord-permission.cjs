@@ -14,6 +14,8 @@
  *
  * Only Tom grants: an agent sets TOM_SAID_RERECORD=yes only after Tom has said
  * so in chat, and `why` carries his words. Anyone may revoke (it only tightens).
+ *
+ * @db-live-write: grant/revoke write one tts_rerecord_permissions row on live; a Tom-signed grant on the read-only copy is no grant (job #766)
  */
 const db = require('../../services/shared/agent-db.cjs')
 
