@@ -29,7 +29,8 @@
  * A veracity-failed clip still counts as usable: the transcript check is a
  * signal for a human, not a licence to re-render.
  *
- * PERMISSION is a row in public.tts_rerecord_permissions, written only by
+ * PERMISSION is a row in public.tts_rerecord_permissions, written by the attested
+ * door (rerecord-grant-door.cjs, Tom's own message via his Watson; job #772) or by Tom at a terminal with
  * `TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant …`:
  * course (+ optional roles), signed `by` Tom with his words in `why`, in date
  * (at most 31 days), not revoked, optional max_clips. No row → the door throws

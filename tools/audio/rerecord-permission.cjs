@@ -9,17 +9,39 @@
  *
  *   node tools/audio/rerecord-permission.cjs status [course]
  *   node tools/audio/rerecord-permission.cjs refused [course] [hours=24]
- *   TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant <course> <days 1..31> "<why, in Tom's words>" [--roles target1,target2] [--max N]
+ *   TOM_SAID_RERECORD=yes node tools/audio/rerecord-permission.cjs grant   (Tom at a terminal only) <course> <days 1..31> "<why, in Tom's words>" [--roles target1,target2] [--max N]
  *   node tools/audio/rerecord-permission.cjs revoke <id>
  *
- * Only Tom grants: an agent sets TOM_SAID_RERECORD=yes only after Tom has said
- * so in chat, and `why` carries his words. Anyone may revoke (it only tightens).
+ * Only Tom grants. FROM AN AGENT SESSION `grant` IS REFUSED, before any
+ * connection is opened (job #772, 13 Nov 2026): TOM_SAID_RERECORD=yes was the
+ * only check, and any agent can type it. An agent's grant goes through the
+ * attested door instead: Tom's Watson calls the Command Surface
+ * POST /api/rerecord-grant quoting Tom's own message, the surface checks its
+ * stored author stamp says Tom typed it, and Popty's
+ * /api/rerecord-permission/attested writes the row
+ * (services/shared/rerecord-grant-door.cjs). `grant` here stays for Tom himself
+ * at a terminal. Anyone may revoke (it only tightens).
  *
- * @db-live-write: grant/revoke write one tts_rerecord_permissions row on live; a Tom-signed grant on the read-only copy is no grant (job #766)
+ * @db-live-write: revoke (and Tom's own terminal grant) write one tts_rerecord_permissions row on live; a grant on the read-only copy is no grant (job #766)
  */
 const db = require('../../services/shared/agent-db.cjs')
 
+/** Why this process belongs to an agent, or null. The db-worker-guard's markers, plus Claude Code's and Codex's own. */
+function agentSession() {
+  if (process.env.CS_SCRATCH) return 'CS_SCRATCH is set'
+  if (/^cs-job:/.test(process.env.PGAPPNAME || '')) return 'PGAPPNAME is a cs-job'
+  if (process.env.CLAUDECODE || process.env.CLAUDE_CODE_ENTRYPOINT) return 'inside Claude Code'
+  if (process.env.CODEX_SANDBOX || process.env.CODEX_HOME) return 'inside Codex'
+  try { if (/cs-workers\.slice/.test(require('fs').readFileSync('/proc/self/cgroup', 'utf8'))) return 'under cs-workers.slice' } catch {}
+  return null
+}
+
 async function main() {
+  if (process.argv[2] === 'grant' && agentSession()) {
+    const err = new Error(`REFUSED: a re-record grant is never written from an agent session (${agentSession()}), whatever TOM_SAID_RERECORD says. Tom's Watson records one through the attested door: POST http://localhost:4317/api/rerecord-grant {"course","roles","days","max","quote":"<Tom's own words, as he typed them>"} with its conversation token; the Command Surface checks Tom typed that message himself. Nothing was written.`)
+    err.exitCode = 2
+    throw err
+  }
   const client = await db.connect()
   try {
     async function queryScalar(sql) {

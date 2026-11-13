@@ -6858,6 +6858,20 @@ app.post('/api/audio/render', async (req, res) => {
   }
 })
 
+// THE ATTESTED RE-RECORD GRANT DOOR (job #772): inserts one tts_rerecord_permissions row, and only for a
+// nonce the Command Surface attests (Tom's own message, quoted by Tom's Watson). The body is never trusted
+// beyond the nonce — see services/shared/rerecord-grant-door.cjs for why and how.
+app.post('/api/rerecord-permission/attested', async (req, res) => {
+  try {
+    const out = await require('./shared/rerecord-grant-door.cjs').handleAttestedGrant(req.body || {})
+    if (!out.json.ok) logger.warn(`[rerecord-grant-door] refused: ${out.json.error}`)
+    res.status(out.status).json(out.json)
+  } catch (error) {
+    logger.error('rerecord-grant-door error:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
 // ABAIR voices for a trial audition (job #525): which abair_<voice> ids POST /api/audio/render (trial:true) can name.
 app.get('/api/audio/abair/voices', async (req, res) => {
   try {
