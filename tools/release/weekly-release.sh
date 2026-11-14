@@ -2,10 +2,10 @@
 # Popty weekly release (cs #948, Tom 14 Nov: "Only builds to production when there is an update. Which should be on a
 # weekly cadence. Apart from hot fixes, which do happen." / "Popty shouldn't need 98 builds a week").
 # Vercel's ignored-build step for ssi-dashboard-v7 (dashboard setting, command-surface ops/vercel-production-filter.cjs
-# --release) builds popty.app ONLY from a main commit whose message carries [release] or [hotfix]. This script makes the
+# --release) builds popty.app ONLY from a main commit whose message STARTS with [release] or [hotfix]. This script makes the
 # weekly [release] commit — an EMPTY commit on main — and only when main has moved since the last [release]/[hotfix].
 # Run by popty-weekly-release.timer (ops/systemd/). By hand: systemctl --user start popty-weekly-release.service
-# A hot fix: put [hotfix] in the commit message of the fix itself (or push an empty `[hotfix] <why>` commit on main).
+# A hot fix: START the fix commit subject with [hotfix] (or push an empty `[hotfix] <why>` commit on main).
 # Undo the whole thing: node ops/vercel-production-filter.cjs --apply --restore <record> prj_FUHJ5A3KZjnJqIBIpk1syH6ttHPY
 # (command-surface; the record is in ~/.local/state/cs-vercel-gate/production-filter-history.jsonl), and disable the timer.
 # The whole body is one function so sh has parsed it before the clone holding this file is reset.
