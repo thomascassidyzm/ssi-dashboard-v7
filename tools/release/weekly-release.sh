@@ -18,7 +18,7 @@ main() {
   for try in 1 2 3; do
     git fetch -q --depth 300 origin main && git reset -q --hard origin/main
     head=$(git rev-parse HEAD)
-    last=$(git log -1 --format=%H -E --grep='\[(release|hotfix)\]' HEAD || true)
+    last=$(git log -1 --format=%H -E --grep='^\[(release|hotfix)\]' HEAD || true)
     if [ -n "$last" ] && [ "$last" = "$head" ]; then
       echo "popty-release: main unchanged since the last release ($(git rev-parse --short HEAD)) — no build"; exit 0
     fi
