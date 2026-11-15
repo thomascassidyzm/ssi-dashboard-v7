@@ -58,7 +58,9 @@ function plan(rows, cache) {
     const have = row.frame_mask === undefined || row.frame_mask === null ? null : Number(row.frame_mask);
     if (have === mask) { bump(cls, 'unchanged'); return; }
     bump(cls, 'to_write');
-    if (op) ops.push({ ...op, set: { frame_mask: mask }, expect: { frame_mask: have } });
+    // expect the read known_text as well (review 9dbf075d #4): the mask was derived from that text, so an edit
+    // between read and batch post must abort as DRIFT rather than write the old text's frames.
+    if (op) ops.push({ ...op, set: { frame_mask: mask }, expect: { frame_mask: have, known_text: row.known_text } });
   };
   for (const s of rows.seeds || []) consider('seed', s, { op: 'seed.update', seed_number: s.seed_number });
   for (const p of rows.phrases || []) {

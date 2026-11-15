@@ -376,7 +376,9 @@ module.exports = function (ctx) {
   // restores the seed's decomposed/approved/flagged stamps.
   router.post('/build/redo-undo/:courseCode', async (req, res) => {
     const { courseCode } = req.params;
-    const { seed, snapshot_id, dry_run = false } = req.body || {};
+    // require_newest / require_empty: sent by the redo watchdog (review 9dbf075d #1) so an automatic restore
+    // refuses when a later Redo owns the seed or content arrived. A human undo sends neither.
+    const { seed, snapshot_id, dry_run = false, require_newest = false, require_empty = false } = req.body || {};
 
     try {
       if (!seed && !snapshot_id) {
@@ -388,6 +390,8 @@ module.exports = function (ctx) {
         seedNumber: seed,
         snapshotId: snapshot_id,
         dryRun: !!dry_run,
+        requireNewest: !!require_newest,
+        requireEmpty: !!require_empty,
         restoredBy: req.get('x-agent-role') || 'dashboard',
       });
 

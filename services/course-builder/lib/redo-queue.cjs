@@ -32,7 +32,7 @@
  */
 
 const crypto = require('crypto');
-const { snapshotSeeds, restoreSnapshot } = require('./redo-snapshot.cjs');
+const { snapshotSeeds, restoreSnapshot, withSeedLocks } = require('./redo-snapshot.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 
@@ -226,18 +226,21 @@ async function performRedo(ctx, { courseCode, seedNumbers, notes = '', recordEdi
   const bump = deps.bumpCourseVersion || bumpCourseVersion;
 
   // SNAPSHOT BEFORE DELETE — feeds the undo and the redo brief's "previous decomposition". Throws → nothing deleted.
-  const { batchId, snapshots } = await snapshot(ctx.supabase, courseCode, seedNumbers, { reason: 'redo', notes });
-  console.log(`[REDO] ${courseCode} snapshot batch ${batchId}: ${snapshots.length} seed(s) captured before delete`);
-  const eventId = recordEdit ? await recordEdit({ scope: { seed_numbers: seedNumbers, rows: seedNumbers.length } }) : null;
-
+  // Snapshot→wipe runs under the seed locks the watchdog's guarded restore also takes (review 9dbf075d #1).
   let totalPhrasesDeleted = 0, totalLegosDeleted = 0, totalSeedsReset = 0;
-  for (const seedNum of seedNumbers) {
-    const { phrases_deleted: p, legos_deleted: l } = await wipe(ctx.supabase, courseCode, [seedNum]);
-    const { count } = await ctx.supabase.from('course_seeds')
-      .update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })
-      .eq('course_code', courseCode).eq('seed_number', seedNum);
-    totalPhrasesDeleted += p || 0; totalLegosDeleted += l || 0; totalSeedsReset += count || 0;
-  }
+  const { batchId, snapshots } = await withSeedLocks(courseCode, seedNumbers, async () => {
+    const taken = await snapshot(ctx.supabase, courseCode, seedNumbers, { reason: 'redo', notes });
+    console.log(`[REDO] ${courseCode} snapshot batch ${taken.batchId}: ${taken.snapshots.length} seed(s) captured before delete`);
+    const eventId = recordEdit ? await recordEdit({ scope: { seed_numbers: seedNumbers, rows: seedNumbers.length } }) : null;
+    for (const seedNum of seedNumbers) {
+      const { phrases_deleted: p, legos_deleted: l } = await wipe(ctx.supabase, courseCode, [seedNum]);
+      const { count } = await ctx.supabase.from('course_seeds')
+        .update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })
+        .eq('course_code', courseCode).eq('seed_number', seedNum);
+      totalPhrasesDeleted += p || 0; totalLegosDeleted += l || 0; totalSeedsReset += count || 0;
+    }
+    return taken;
+  });
   ctx.courseVocabCache?.delete(courseCode);
   await bump(ctx.supabase, courseCode, 'minor');
 

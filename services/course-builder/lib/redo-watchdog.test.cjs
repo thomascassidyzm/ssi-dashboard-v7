@@ -200,3 +200,28 @@ describe('findStuckRedoSeeds — read-only census of older redos', () => {
     expect(stuck.map((s) => s.seed_number)).toEqual([5])
   })
 })
+
+// Review 9dbf075d #1: a finished batch must never act on a seed a LATER Redo has taken over.
+describe('sweepRedos — a second Redo of the same seed within 48 h', () => {
+  for (const attempt of [1, 2]) {
+    it(`batch A finished on attempt ${attempt}; Redo B wipes and runs → A neither retries nor restores`, async () => {
+      const { db, ctx, calls, deps, t0 } = scenario()
+      const at = (min) => new Date(t0.getTime() + min * MIN).toISOString()
+      db.tables.course_seeds = [{ course_code: 'tst', seed_number: 200, decomposed_at: at(10) }]
+      db.tables.course_legos = [{ course_code: 'tst', seed_number: 200 }]
+      db.tables.seed_redo_snapshots = db.tables.seed_redo_snapshots.filter((s) => s.seed_number === 200)
+      Object.assign(db.tables.orchestrator_messages[0].metadata, { seeds: [200], attempt })
+      deps.isProcessAlive = (pid) => pid === 7777
+      await sweepRedos(ctx, { now: new Date(at(20)), deps })
+      expect(db.tables.orchestrator_messages.some((m) => m.metadata.action === 'redo_watchdog_done' && m.metadata.final)).toBe(true)
+      db.tables.seed_redo_snapshots.push({ id: 'snap-B', batch_id: 'B2', course_code: 'tst', seed_number: 200, reason: 'redo', restored_at: null, created_at: at(60) })
+      db.tables.course_legos = []
+      db.tables.course_seeds[0].decomposed_at = null
+      db.tables.orchestrator_messages.push({ course_code: 'tst', created_at: at(60), metadata: { action: 'redo_spawned', redo_watchdog: 'v1', snapshot_batch_id: 'B2', seeds: [200], attempt: 1, spawned_at: at(60), machine_name: 'box', pid: 7777, log_file: null, log_offset: 0, account: 'claude@x' } })
+      const r = await sweepRedos(ctx, { now: new Date(at(61)), deps })
+      expect(calls.restore).toEqual([])
+      expect(calls.spawn).toEqual([])
+      expect(r.map((x) => [x.batch, x.action])).toEqual([['B2', 'wait']])
+    })
+  }
+})

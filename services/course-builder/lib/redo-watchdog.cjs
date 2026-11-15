@@ -154,7 +154,12 @@ function opsEventSafe(kind, detail) {
   try { require('../../shared/ops-event.cjs').opsEvent(OPS_SOURCE, kind, detail); } catch { /* best effort */ }
 }
 
-/** Seeds of `seeds` still empty: decomposed_at null, no LEGOs, and this batch's snapshot not restored. */
+/**
+ * Seeds of `seeds` this batch still OWNS and that are still empty: decomposed_at null, no LEGOs, this batch's
+ * snapshot not restored, and NO NEWER snapshot of the seed (review 9dbf075d #1). A later Redo of the same seed
+ * snapshots before it wipes, so a newer snapshot means a newer batch owns the seed: the old batch must neither
+ * retry nor restore its older snapshot over the newer redo. Superseded seeds are reported, never pending.
+ */
 async function pendingSeedsOf(ctx, courseCode, seeds, batchId) {
   const { data: seedRows, error: e1 } = await ctx.supabase.from('course_seeds')
     .select('seed_number, decomposed_at').eq('course_code', courseCode).in('seed_number', seeds);
@@ -162,14 +167,36 @@ async function pendingSeedsOf(ctx, courseCode, seeds, batchId) {
   const { data: legoRows, error: e2 } = await ctx.supabase.from('course_legos')
     .select('seed_number').eq('course_code', courseCode).in('seed_number', seeds);
   if (e2) throw new Error(`LEGO read failed: ${e2.message}`);
-  const { data: snaps, error: e3 } = await ctx.supabase.from(SNAPSHOT_TABLE)
-    .select('id, seed_number, restored_at').eq('batch_id', batchId);
+  const { data: allSnaps, error: e3 } = await ctx.supabase.from(SNAPSHOT_TABLE)
+    .select('id, batch_id, seed_number, restored_at, created_at').eq('course_code', courseCode).in('seed_number', seeds);
   if (e3) throw new Error(`snapshot read failed: ${e3.message}`);
+  const snaps = (allSnaps || []).filter((s) => s.batch_id === batchId);
+  const mineAt = new Map(snaps.map((s) => [s.seed_number, s.created_at]));
+  const superseded = new Set((allSnaps || [])
+    .filter((s) => s.batch_id !== batchId && mineAt.has(s.seed_number) && s.created_at > mineAt.get(s.seed_number))
+    .map((s) => s.seed_number));
   const withLegos = new Set((legoRows || []).map((r) => r.seed_number));
   const decomposed = new Set((seedRows || []).filter((r) => r.decomposed_at).map((r) => r.seed_number));
-  const restored = new Set((snaps || []).filter((s) => s.restored_at).map((s) => s.seed_number));
-  const pending = seeds.filter((n) => !withLegos.has(n) && !decomposed.has(n) && !restored.has(n));
-  return { pending, snapshotBySeed: new Map((snaps || []).map((s) => [s.seed_number, s.id])) };
+  const restored = new Set(snaps.filter((s) => s.restored_at).map((s) => s.seed_number));
+  const pending = seeds.filter((n) => !withLegos.has(n) && !decomposed.has(n) && !restored.has(n) && !superseded.has(n));
+  return { pending, superseded: seeds.filter((n) => superseded.has(n)), snapshotBySeed: new Map(snaps.map((s) => [s.seed_number, s.id])) };
+}
+
+/**
+ * PERSIST a finished batch (review 9dbf075d #1): without this a successful batch stayed in the sweep for 48 h and
+ * became "pending" again the moment anything emptied its seed. Status 'responded': a line in the course chat,
+ * never a prompt waiting on Kai.
+ */
+async function closeBatch(ctx, courseCode, batchId, seeds, superseded = []) {
+  const plural = seeds.length > 1 ? 's' : '';
+  const message = superseded.length
+    ? `Redo watchdog stood down for seed${plural} ${seeds.join(', ')}: a later Redo now owns seed${superseded.length > 1 ? 's' : ''} ${superseded.join(', ')}.`
+    : `Redo of seed${plural} ${seeds.join(', ')} is complete — the watchdog has stopped watching it.`;
+  const { error } = await ctx.supabase.from('orchestrator_messages').insert({
+    course_code: courseCode, direction: 'agent_to_human', status: 'responded', message,
+    metadata: { action: 'redo_watchdog_done', redo_watchdog: WATCHDOG_TAG, snapshot_batch_id: batchId, seeds, superseded, final: true },
+  });
+  if (error) console.error(`[REDO-WATCHDOG] could not record batch ${batchId} as done: ${error.message}`);
 }
 
 /** Restore through the existing undo route so it is gated, attributed, versioned and chat-logged like a human undo. */
@@ -178,7 +205,9 @@ async function restoreViaUndoRoute(ctx, courseCode, snapshotId) {
   const r = await fetch(`http://localhost:${port}/api/build/redo-undo/${courseCode}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-service-name': 'course-builder:redo-watchdog', 'x-agent-role': 'redo-watchdog' },
-    body: JSON.stringify({ snapshot_id: snapshotId }),
+    // require_newest + require_empty: the undo route re-checks, under the seed lock and just before the wipe,
+    // that no later Redo owns the seed and nothing was submitted since the sweep looked (review 9dbf075d #1).
+    body: JSON.stringify({ snapshot_id: snapshotId, require_newest: true, require_empty: true }),
   });
   const body = await r.json().catch(() => ({}));
   if (!r.ok || !body.ok) throw new Error(body.error || `undo route answered ${r.status}`);
@@ -218,7 +247,9 @@ async function loadRecordedRedos(ctx, now) {
   for (const row of data || []) {
     const m = row.metadata || {};
     if (!m.snapshot_batch_id) continue;
-    if (m.action === 'redo_watchdog_alert' && m.final) { finished.add(m.snapshot_batch_id); continue; }
+    // Closed by a final alert (restored / could not restore) OR a final done record (every seed submitted,
+    // restored or superseded): a closed batch never becomes pending again (review 9dbf075d #1).
+    if ((m.action === 'redo_watchdog_alert' || m.action === 'redo_watchdog_done') && m.final) { finished.add(m.snapshot_batch_id); continue; }
     if (m.action !== 'redo_spawned' && m.action !== 'redo_retry_spawned') continue;
     const prev = latest.get(m.snapshot_batch_id);
     if (!prev || (m.attempt || 1) >= (prev.metadata.attempt || 1)) latest.set(m.snapshot_batch_id, { course_code: row.course_code, metadata: m });
@@ -240,7 +271,7 @@ async function sweepRedos(ctx, { now = new Date(), deps = {} } = {}) {
     const courseCode = redo.course_code;
     const batch = m.snapshot_batch_id;
     try {
-      const { pending, snapshotBySeed } = await pendingSeedsOf(ctx, courseCode, m.seeds || [], batch);
+      const { pending, superseded, snapshotBySeed } = await pendingSeedsOf(ctx, courseCode, m.seeds || [], batch);
       const mine = Number.isInteger(m.pid) && (!m.machine_name || !ctx.MACHINE_NAME || m.machine_name === ctx.MACHINE_NAME);
       const agentAlive = mine ? alive(m.pid) : null;
       const decision = decideRedoAction({
@@ -252,8 +283,9 @@ async function sweepRedos(ctx, { now = new Date(), deps = {} } = {}) {
         spentAccount: m.account,
         altAccount,
       });
-      results.push({ batch, course: courseCode, seeds: pending, ...decision });
-      if (decision.action === 'done' || decision.action === 'wait') continue;
+      results.push({ batch, course: courseCode, seeds: pending, superseded, ...decision });
+      if (decision.action === 'done') { await closeBatch(ctx, courseCode, batch, m.seeds || [], superseded); continue; }
+      if (decision.action === 'wait') continue;
       if (decision.kill && mine) await kill(m.pid);
 
       if (decision.action === 'retry') {
@@ -267,16 +299,26 @@ async function sweepRedos(ctx, { now = new Date(), deps = {} } = {}) {
         }
       }
 
-      const restored = [], failed = [];
+      const restored = [], failed = [], stoodDown = [];
       for (const n of pending) {
         const id = snapshotBySeed.get(n);
         try {
           if (!id) throw new Error('no snapshot in this batch');
           await restore(ctx, courseCode, id);
           restored.push(n);
-        } catch (e) { failed.push(`${n} (${e.message})`); }
+        } catch (e) {
+          // The guarded restore refused because a later Redo took the seed, or content arrived, after the sweep
+          // looked: the seed is not empty-and-ours any more, so there is nothing to put back.
+          if (/^(SUPERSEDED|NOT_EMPTY):/.test(e.message)) stoodDown.push(`${n} (${e.message})`);
+          else failed.push(`${n} (${e.message})`);
+        }
+      }
+      if (!restored.length && !failed.length && stoodDown.length) {
+        await closeBatch(ctx, courseCode, batch, m.seeds || [], pending);
+        continue;
       }
       const parts = [`Redo of ${courseCode} seed${pending.length > 1 ? 's' : ''} ${pending.join(', ')} did not submit: ${decision.why}.`];
+      if (stoodDown.length) parts.push(`Left alone (a later Redo or a submission got there first): ${stoodDown.join('; ')}.`);
       if (restored.length) parts.push(`Restored the pre-redo decomposition for seed${restored.length > 1 ? 's' : ''} ${restored.join(', ')} — press Redo again when an agent can run.`);
       if (failed.length) parts.push(`COULD NOT RESTORE ${failed.join('; ')} — these seeds are EMPTY; undo them by hand (POST /api/build/redo-undo/${courseCode}).`);
       await alert(ctx, courseCode, parts.join(' '), { snapshot_batch_id: batch, seeds: pending, restored, failed, outcome: failed.length ? 'restore_failed' : 'restored', final: true });

@@ -105,7 +105,14 @@ function foldTypography(text) {
 /** The stored spellings of these characters a keyed lookup must ask for: as given, typography folded, and the house style (… and ’). */
 function typographySpellings(text) {
   const folded = foldTypography(text)
-  return [...new Set([String(text), folded, folded.replace(/\.{3}/g, '…').replace(/'/g, '\u2019')])]
+  // Curly double quotes too (review 9dbf075d #3): a straight-quoted request must reach a stored “…” recording.
+  const house = folded.replace(/\.{3}/g, '…').replace(/'/g, '\u2019')
+  return [...new Set([String(text), folded, house, curlDoubleQuotes(folded), curlDoubleQuotes(house)])]
+}
+
+/** Straight " → opening curly quote at the start or after whitespace/an opening bracket, closing curly quote elsewhere. */
+function curlDoubleQuotes(s) {
+  return s.replace(/(^|[\s([{])"/g, '$1“').replace(/"/g, '”')
 }
 
 /** Do two texts name ONE recording? Same audio key once pod pause cues and typography (foldTypography) are folded. */

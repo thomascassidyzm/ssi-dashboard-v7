@@ -18,7 +18,9 @@ main() {
   for try in 1 2 3; do
     git fetch -q --depth 300 origin main && git reset -q --hard origin/main
     head=$(git rev-parse HEAD)
-    last=$(git log -1 --format=%H -E --grep='^\[(release|hotfix)\]' HEAD || true)
+    # Match the SUBJECT only: --grep searches the whole message, so a body line starting [hotfix] made an ordinary
+    # commit look like a release and skipped the week (review 9dbf075d #2). Same test as the Vercel gate.
+    last=$(git log --format='%H %s' HEAD | grep -m1 -E '^[0-9a-f]{40} \[(release|hotfix)\]' | cut -d' ' -f1 || true)
     if [ -n "$last" ] && [ "$last" = "$head" ]; then
       echo "popty-release: main unchanged since the last release ($(git rev-parse --short HEAD)) — no build"; exit 0
     fi
