@@ -80,3 +80,17 @@ describe('audioKeyCandidates', () => {
     expect(audioKeyCandidates('...')).toEqual([])
   })
 })
+
+// cs #984 (lane review #977 P2): the library held She said “hello”; a request for She said "hello" generated no
+// curly-quoted key, so the lookup missed it and the render route could pay for a second take. Both directions.
+describe('recordingTextKeys finds a clip whichever double quotes either side used', () => {
+  const { recordingTextKeys } = require('./text-normalize.cjs')
+  const straight = 'She said "hello"'
+  const curly = 'She said “hello”'
+  it('a straight-quoted request asks for the curly-quoted stored key', () => {
+    expect(recordingTextKeys(straight)).toContain(normalizeForDb(curly))
+  })
+  it('a curly-quoted request asks for the straight-quoted stored key', () => {
+    expect(recordingTextKeys(curly)).toContain(normalizeForDb(straight))
+  })
+})

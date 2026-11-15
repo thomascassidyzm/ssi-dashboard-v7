@@ -10,7 +10,7 @@ const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-ma
 const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
-const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
+const { snapshotSeeds, listSnapshots, restoreSnapshot, withSeedLocks } = require('../lib/redo-snapshot.cjs');
 const { findStuckRedoSeeds } = require('../lib/redo-watchdog.cjs');
 const { liveBlocker, setHold, currentHold, loadOpenEntries, overlapping, enqueueRedo, queueStatus, cancelQueuedRedo, performRedo, drainNow } = require('../lib/redo-queue.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
@@ -217,27 +217,33 @@ module.exports = function (ctx) {
       // row per seed, written first; if it throws, nothing is deleted.
       const rangeSeeds = [];
       for (let n = Number(from_seed); n <= Number(to_seed); n++) rangeSeeds.push(n);
-      const { batchId: rebuildBatchId } = await snapshotSeeds(ctx.supabase, courseCode, rangeSeeds, {
-        reason: 'rebuild-range',
-        notes: `rebuild ${from_seed}-${to_seed}`,
+      // Snapshot→wipe under the same seed locks as performRedo and the watchdog's guarded restore (cs #984): without
+      // them a restore that has just passed its newest-snapshot check could wipe and refill a seed in the middle of
+      // this rebuild, putting an older snapshot over the range being rebuilt.
+      let rebuildBatchId, phrasesDeleted, legosDeleted, seedsReset;
+      await withSeedLocks(courseCode, rangeSeeds, async () => {
+        ({ batchId: rebuildBatchId } = await snapshotSeeds(ctx.supabase, courseCode, rangeSeeds, {
+          reason: 'rebuild-range',
+          notes: `rebuild ${from_seed}-${to_seed}`,
+        }));
+        console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
+
+        // One event for the wipe — the deleted rows leave nothing to stamp, so this is the record.
+        const eventId = req.contentEdit
+          ? await req.contentEdit.record({
+              scope: { seed_numbers: rangeSeeds, rows: totalItems },
+            })
+          : null;
+
+        // Execute the wipe — phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912)
+        ({ phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
+          await wipeSeedTeaching(ctx.supabase, courseCode, rangeSeeds));
+
+        ({ count: seedsReset } = await ctx.supabase
+          .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
+          .eq('course_code', courseCode)
+          .gte('seed_number', from_seed).lte('seed_number', to_seed));
       });
-      console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
-
-      // One event for the wipe — the deleted rows leave nothing to stamp, so this is the record.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({
-            scope: { seed_numbers: rangeSeeds, rows: totalItems },
-          })
-        : null;
-
-      // Execute the wipe — phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912)
-      const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
-        await wipeSeedTeaching(ctx.supabase, courseCode, rangeSeeds);
-
-      const { count: seedsReset } = await ctx.supabase
-        .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
-        .eq('course_code', courseCode)
-        .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
       ctx.courseVocabCache.delete(courseCode);
 
@@ -412,7 +418,11 @@ module.exports = function (ctx) {
 
       res.json({ ok: true, ...result });
     } catch (err) {
-      res.status(500).json({ ok: false, error: err.message });
+      // A guarded restore that stood down (a later Redo owns the seed, or content arrived) is a refusal, not a fault:
+      // 409 with the code, so a caller can tell it from a failed restore (cs #984). The message keeps its prefix,
+      // which is what the watchdog matches on.
+      const refused = /^(SUPERSEDED|NOT_EMPTY):/.exec(err.message || '');
+      res.status(refused ? 409 : 500).json({ ok: false, error: err.message, code: refused ? refused[1] : null });
     }
   });
 
