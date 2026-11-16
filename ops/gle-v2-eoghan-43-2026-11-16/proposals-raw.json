@@ -1,0 +1,1168 @@
+{
+ "7": {
+  "seed": 7,
+  "his": "Is mian liom m'iarracht is fearr a dhéanamh inniu",
+  "ours": "Is mian liom mo dhícheall a dhéanamh inniu",
+  "english": "I want to try as hard as I can today",
+  "proposed": "Is mian liom m'iarracht is fearr a dhéanamh inniu",
+  "lego_upd": [
+   [
+    "S0007L03",
+    "mo dhícheall a dhéanamh",
+    "m'iarracht is fearr a dhéanamh",
+    null
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 1,
+  "other": {
+   "11": 4,
+   "12": 5,
+   "14": 1,
+   "15": 1,
+   "22": 2,
+   "24": 2,
+   "26": 3,
+   "36": 1,
+   "37": 5,
+   "38": 2,
+   "42": 1,
+   "43": 1,
+   "44": 2,
+   "45": 2,
+   "46": 1,
+   "49": 1,
+   "56": 1,
+   "57": 1,
+   "59": 2,
+   "65": 7,
+   "66": 5,
+   "68": 2,
+   "69": 2,
+   "76": 2,
+   "82": 1,
+   "88": 1,
+   "98": 1,
+   "102": 2,
+   "108": 1,
+   "114": 2,
+   "153": 2,
+   "160": 1,
+   "198": 2,
+   "200": 1
+  },
+  "own_reworded": 8,
+  "examples": [
+   [
+    11,
+    "ba mhaith liom mo dhícheall a dhéanamh inniu",
+    "ba mhaith liom m'iarracht is fearr a dhéanamh inniu"
+   ],
+   [
+    11,
+    "ba mhaith liom mo dhícheall a dhéanamh Gaeilge a labhairt inniu",
+    "ba mhaith liom m'iarracht is fearr a dhéanamh Gaeilge a labhairt inniu"
+   ],
+   [
+    11,
+    "ba mhaith liom a bheith in ann mo dhícheall a dhéanamh Gaeilge a labhairt",
+    "ba mhaith liom a bheith in ann m'iarracht is fearr a dhéanamh Gaeilge a labhairt"
+   ]
+  ],
+  "findings": [
+   [
+    "DUP",
+    "S0068L02",
+    "['S0068L02B06', 'S0068L02U07']",
+    "níl mé cinnte cad atá tú ag caint faoi ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+   ]
+  ],
+  "other_total": 70
+ },
+ "36": {
+  "seed": 36,
+  "his": "Níl fonn orainn briseadh isteach ar an scéal",
+  "ours": "Ní mian linn cur isteach ar an scéal",
+  "english": "we don't want to interrupt the story",
+  "proposed": "Ní mian linn briseadh isteach ar an scéal",
+  "lego_upd": [
+   [
+    "S0036L03",
+    "cur isteach ar",
+    "briseadh isteach ar",
+    null
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {
+   "53": 1,
+   "64": 1,
+   "69": 1,
+   "71": 1
+  },
+  "own_reworded": 12,
+  "examples": [
+   [
+    53,
+    "ní mian léi cur isteach, ach is mian léi ceist a chur",
+    "ní mian léi briseadh isteach, ach is mian léi ceist a chur"
+   ],
+   [
+    64,
+    "níl sé úsáideach cur isteach nuair atá daoine eile anseo",
+    "níl sé úsáideach briseadh isteach nuair atá daoine eile anseo"
+   ],
+   [
+    69,
+    "bhí sé ag iarraidh litir a scríobh chuig a chara an tráthnóna seo agus ní mian linn cur isteach ar an scéal",
+    "bhí sé ag iarraidh litir a scríobh chuig a chara an tráthnóna seo agus ní mian linn briseadh isteach ar an scéal"
+   ]
+  ],
+  "findings": [],
+  "other_total": 4
+ },
+ "38": {
+  "seed": 38,
+  "his": "Tá mé ag foghlaim thart ar sheachtain",
+  "ours": "Tá mé ag foghlaim le timpeall seachtaine",
+  "english": "I've been learning for about a week",
+  "proposed": "Tá mé ag foghlaim thart ar sheachtain",
+  "lego_upd": [
+   [
+    "S0038L04",
+    "timpeall seachtaine",
+    "thart ar sheachtain",
+    null
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [
+   [
+    "S0038L05",
+    "for about a week",
+    "le timpeall seachtaine",
+    12
+   ]
+  ],
+  "ph_added": 0,
+  "ph_deleted": 3,
+  "other": {
+   "69": 1,
+   "76": 3,
+   "89": 1,
+   "125": 1
+  },
+  "own_reworded": 18,
+  "examples": [
+   [
+    69,
+    "is mian léi fáil amach cad é an freagra an tráthnóna seo mar tá sí ag smaoineamh air go cúramach le timpeall seachtaine",
+    "is mian léi fáil amach cad é an freagra an tráthnóna seo mar tá sí ag smaoineamh air go cúramach thart ar sheachtain"
+   ],
+   [
+    76,
+    "tá áthas air as an méid Gaeilge ar fad atá foghlamtha agam le timpeall seachtaine",
+    "tá áthas air as an méid Gaeilge ar fad atá foghlamtha agam thart ar sheachtain"
+   ],
+   [
+    76,
+    "bhí an-áthas air as an méid focal ar fad atá foghlamtha agam le timpeall seachtaine ag foghlaim Gaeilge",
+    "bhí an-áthas air as an méid focal ar fad atá foghlamtha agam thart ar sheachtain ag foghlaim Gaeilge"
+   ]
+  ],
+  "findings": [],
+  "other_total": 6
+ },
+ "247": {
+  "seed": 247,
+  "his": "Cheap mé go raibh an leabhar cuíosach maith",
+  "ours": "cheap mé go raibh an leabhar sin réasúnta maith",
+  "english": "I thought that book was fairly good",
+  "proposed": "cheap mé go raibh an leabhar sin cuíosach maith",
+  "lego_upd": [
+   [
+    "S0247L04",
+    "réasúnta",
+    "cuíosach",
+    null
+   ],
+   [
+    "S0247L05",
+    "réasúnta maith",
+    "cuíosach maith",
+    null
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {
+   "248": 1
+  },
+  "own_reworded": 13,
+  "examples": [
+   [
+    248,
+    "ceapaim go bhfuil an scannán réasúnta gearr",
+    "ceapaim go bhfuil an scannán cuíosach gearr"
+   ]
+  ],
+  "findings": [
+   [
+    "DUP",
+    "S0247L04",
+    "['S0247L04B03', 'S0247L04U02']",
+    "bhí sé cuíosach maith"
+   ]
+  ],
+  "other_total": 1
+ },
+ "61": {
+  "seed": 61,
+  "his": "an bhféadfá é sin a rá arís, ach beagán níos moille?",
+  "ours": "an bhféadfá é sin a rá arís beagán níos moille?",
+  "english": "could you say that again a little more slowly?",
+  "proposed": "an bhféadfá é sin a rá arís, ach beagán níos moille?",
+  "lego_upd": [],
+  "lego_new": [
+   [
+    "again a little more slowly",
+    "arís, ach beagán níos moille"
+   ]
+  ],
+  "lego_del": [],
+  "ph_added": 5,
+  "ph_deleted": 6,
+  "other": {
+   "78": 1,
+   "150": 1,
+   "160": 2
+  },
+  "own_reworded": 0,
+  "examples": [
+   [
+    78,
+    "an bhféadfá é a mhíniú arís beagán níos moille mar ní thuigim",
+    "an bhféadfá é a mhíniú arís, ach beagán níos moille mar ní thuigim"
+   ],
+   [
+    150,
+    "an féidir leat é sin a rá arís beagán níos moille",
+    "an féidir leat é sin a rá arís, ach beagán níos moille"
+   ],
+   [
+    160,
+    "conas a deir tú é seo i nGaeilge agus an bhféadfá é sin a rá arís beagán níos moille",
+    "conas a deir tú é seo i nGaeilge agus an bhféadfá é sin a rá arís, ach beagán níos moille"
+   ]
+  ],
+  "findings": [],
+  "other_total": 4
+ },
+ "69": {
+  "seed": 69,
+  "his": "Níor mhian leis aire a thabhairt don mhadra óg um tráthnóna ar fad",
+  "ours": "Níor mhian leis aire a thabhairt don mhadra óg an tráthnóna ar fad",
+  "english": "he didn't want to look after the young dog all afternoon",
+  "proposed": "Níor mhian leis aire a thabhairt don mhadra óg um thráthnóna ar fad",
+  "lego_upd": [],
+  "lego_new": [
+   [
+    "all afternoon",
+    "um thráthnóna ar fad"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0069L05",
+    "the afternoon",
+    "an tráthnóna",
+    20
+   ]
+  ],
+  "ph_added": 7,
+  "ph_deleted": 6,
+  "other": {
+   "102": 1,
+   "150": 1
+  },
+  "own_reworded": 0,
+  "examples": [
+   [
+    102,
+    "bhí sé ag iarraidh aire a thabhairt don mhadra óg an tráthnóna ar fad",
+    "bhí sé ag iarraidh aire a thabhairt don mhadra óg um thráthnóna ar fad"
+   ],
+   [
+    150,
+    "an féidir leat aire a thabhairt don mhadra óg an tráthnóna ar fad",
+    "an féidir leat aire a thabhairt don mhadra óg um thráthnóna ar fad"
+   ]
+  ],
+  "findings": [],
+  "other_total": 2
+ },
+ "77": {
+  "seed": 77,
+  "his": "Cuireann sé ionadh orm cé chomh tapaidh is atá tuiscint á fáil agam air",
+  "ours": "Tá ionadh orm cé chomh tapa is atá tuiscint á fáil agam air",
+  "english": "I'm surprised at how quickly I'm understanding it",
+  "proposed": "Cuireann sé ionadh orm cé chomh tapa is atá tuiscint á fáil agam air",
+  "lego_upd": [
+   [
+    "S0077L01",
+    "Tá ionadh orm",
+    "Cuireann sé ionadh orm",
+    "I'm surprised"
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 3,
+  "other": {
+   "78": 1,
+   "79": 1,
+   "101": 1,
+   "121": 2,
+   "128": 1,
+   "146": 1,
+   "185": 1
+  },
+  "own_reworded": 13,
+  "examples": [
+   [
+    78,
+    "tá ionadh orm mar dúirt tú é sin",
+    "cuireann sé ionadh orm mar dúirt tú é sin"
+   ],
+   [
+    79,
+    "tá ionadh orm cathain a thosaigh tú mar labhraíonn tú go han-mhaith anois",
+    "cuireann sé ionadh orm cathain a thosaigh tú mar labhraíonn tú go han-mhaith anois"
+   ],
+   [
+    101,
+    "tá ionadh orm faoin teanga ach tá sé suimiúil",
+    "cuireann sé ionadh orm faoin teanga ach tá sé suimiúil"
+   ]
+  ],
+  "findings": [],
+  "other_total": 8
+ },
+ "102": {
+  "seed": 102,
+  "his": "Táímid ag  iarraidh a rá nach mar sin atá sé",
+  "ours": "Tá muid ag iarraidh a rá nach bhfuil sé mar sin",
+  "english": "we're trying to say that it's not like that",
+  "proposed": "Tá muid ag iarraidh a rá nach mar sin atá sé",
+  "lego_upd": [],
+  "lego_new": [
+   [
+    "that it's not like that",
+    "nach mar sin atá sé"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0102L04",
+    "that it is not",
+    "nach bhfuil sé",
+    17
+   ]
+  ],
+  "ph_added": 5,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "142": {
+  "seed": 142,
+  "his": "Is an-chineálta atá tú agus táim an-bhuíoch díot as do chabhair",
+  "ours": "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú",
+  "english": "that's very kind of you and I'm grateful to you for helping",
+  "proposed": "Is an-chineálta atá tú agus tá mé an-bhuíoch díot as do chabhair",
+  "lego_upd": [
+   [
+    "S0142L05",
+    "tá mé buíoch díot",
+    "tá mé an-bhuíoch díot",
+    "I'm very grateful to you"
+   ],
+   [
+    "S0142L07",
+    "as cabhrú",
+    "as do chabhair",
+    null
+   ]
+  ],
+  "lego_new": [
+   [
+    "that's very kind of you",
+    "is an-chineálta atá tú"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0142L01",
+    "That is",
+    "Tá sé sin",
+    11
+   ],
+   [
+    "S0142L03",
+    "very kind of you",
+    "an-chineálta uait",
+    2
+   ]
+  ],
+  "ph_added": 4,
+  "ph_deleted": 0,
+  "other": {
+   "143": 1,
+   "148": 3,
+   "149": 1,
+   "185": 1
+  },
+  "own_reworded": 21,
+  "examples": [
+   [
+    143,
+    "go raibh maith agat as cabhrú níos luaithe",
+    "go raibh maith agat as do chabhair níos luaithe"
+   ],
+   [
+    148,
+    "tá mé buíoch díot mar bhí tú an-fhoighneach liom",
+    "tá mé an-bhuíoch díot mar bhí tú an-fhoighneach liom"
+   ],
+   [
+    148,
+    "ceapaim go bhfuil do chara an-fhoighneach liom agus tá mé buíoch díot",
+    "ceapaim go bhfuil do chara an-fhoighneach liom agus tá mé an-bhuíoch díot"
+   ]
+  ],
+  "findings": [],
+  "other_total": 6
+ },
+ "147": {
+  "seed": 147,
+  "his": "Ba an-chineálta a bhí sí nuair a thug sí faoi deara go raibh faitíos orm",
+  "ours": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach",
+  "english": "she was very kind when she saw me feeling nervous",
+  "proposed": "B'an-chineálta a bhí sí nuair a thug sí faoi deara go raibh faitíos orm",
+  "lego_upd": [
+   [
+    "S0147L03",
+    "neirbhíseach",
+    "go raibh faitíos orm",
+    "that I was nervous"
+   ],
+   [
+    "S0147L04",
+    "nuair a chonaic sí go raibh mé",
+    "nuair a thug sí faoi deara",
+    "when she noticed"
+   ]
+  ],
+  "lego_new": [
+   [
+    "she was very kind",
+    "b'an-chineálta a bhí sí"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0147L01",
+    "she was",
+    "bhí sí",
+    2
+   ]
+  ],
+  "ph_added": 5,
+  "ph_deleted": 12,
+  "other": {
+   "191": 1,
+   "202": 1,
+   "222": 1,
+   "228": 2,
+   "236": 2,
+   "270": 1,
+   "300": 1
+  },
+  "own_reworded": 6,
+  "examples": [
+   [
+    191,
+    "ní raibh mé neirbhíseach ar chor ar bith",
+    "ní raibh faitíos orm ar chor ar bith"
+   ],
+   [
+    202,
+    "bhí sé deacair a fhios a bheith agam conas an cheist a fhreagairt nuair a bhí mé neirbhíseach faoi labhairt",
+    "bhí sé deacair a fhios a bheith agam conas an cheist a fhreagairt nuair a bhí faitíos orm"
+   ],
+   [
+    222,
+    "tá sé neirbhíseach faoi láthair",
+    "tá sé tuirseach faoi láthair"
+   ]
+  ],
+  "findings": [
+   [
+    "NOT IN SEED",
+    "147",
+    "S0147L02",
+    "an-chineálta"
+   ]
+  ],
+  "other_total": 9
+ },
+ "148": {
+  "seed": 148,
+  "his": "Ní ró-fhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thahairt dó",
+  "ours": "Ní raibh sé an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt dó",
+  "english": "he wasn't very patient with me when I couldn't answer him",
+  "proposed": "Ní rófhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thabhairt dó",
+  "lego_upd": [
+   [
+    "S0148L02",
+    "an-fhoighneach liom",
+    "ní rófhoighneach",
+    "not very patient"
+   ],
+   [
+    "S0148L03",
+    "nuair nach raibh mé in ann",
+    "nuair nárbh fhéidir liom",
+    null
+   ]
+  ],
+  "lego_new": [
+   [
+    "he wasn't very patient with me",
+    "ní rófhoighneach a bhí sé liom"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0148L01",
+    "he wasn't",
+    "Ní raibh sé",
+    11
+   ]
+  ],
+  "ph_added": 6,
+  "ph_deleted": 14,
+  "other": {
+   "168": 1,
+   "181": 1,
+   "197": 1,
+   "226": 1,
+   "228": 1,
+   "231": 1,
+   "236": 1,
+   "250": 1
+  },
+  "own_reworded": 8,
+  "examples": [
+   [
+    168,
+    "ní raibh áthas orm nuair nach raibh mé in ann teacht agus cabhrú leat",
+    "ní raibh áthas orm nuair nárbh fhéidir liom teacht agus cabhrú leat"
+   ],
+   [
+    181,
+    "ach ceapaim go bhfuil mo mháthair an-fhoighneach liom",
+    "ach ceapaim go bhfuil mo mháthair an-chineálta liom"
+   ],
+   [
+    197,
+    "ceapaim go bhfuil mo mhac an-fhoighneach liom",
+    "ceapaim go bhfuil mo mhac an-chineálta liom"
+   ]
+  ],
+  "findings": [],
+  "other_total": 8
+ },
+ "159": {
+  "seed": 159,
+  "his": "Ní hé sin an rud atáim ag iarraidh a rá leat",
+  "ours": "Ní hé sin atá mé ag iarraidh a rá leat",
+  "english": "That isn't what I'm trying to say to you",
+  "proposed": "Ní hé sin an rud atá mé ag iarraidh a rá leat",
+  "lego_upd": [],
+  "lego_new": [
+   [
+    "that isn't what",
+    "Ní hé sin an rud"
+   ]
+  ],
+  "lego_del": [],
+  "ph_added": 8,
+  "ph_deleted": 7,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "166": {
+  "seed": 166,
+  "his": "Níl ainm an-neamhghnách orm",
+  "ours": "Níl m'ainm an-neamhghnách",
+  "english": "my name is not very unusual",
+  "proposed": "Níl ainm an-neamhghnách orm",
+  "lego_upd": [],
+  "lego_new": [
+   [
+    "my name is not very unusual",
+    "níl ainm an-neamhghnách orm"
+   ]
+  ],
+  "lego_del": [
+   [
+    "S0166L01",
+    "my name",
+    "m'ainm",
+    9
+   ],
+   [
+    "S0166L02",
+    "my name is not",
+    "níl m'ainm",
+    1
+   ]
+  ],
+  "ph_added": 4,
+  "ph_deleted": 1,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "178": {
+  "seed": 178,
+  "his": "Ní raibh an t-am agam, in ainneoin  go raibh mé ag iarraidh tú a fheiceáil",
+  "ours": "Ní raibh am agam, cé gur mhian liom tú a fheiceáil",
+  "english": "I didn't have time, although I wanted to see you",
+  "proposed": "Ní raibh an t-am agam, in ainneoin gur mhian liom tú a fheiceáil",
+  "lego_upd": [
+   [
+    "S0178L01",
+    "ní raibh am agam",
+    "ní raibh an t-am agam",
+    null
+   ],
+   [
+    "S0178L02",
+    "cé gur mhian liom",
+    "in ainneoin gur mhian liom",
+    null
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {
+   "69": 1,
+   "93": 1,
+   "149": 1,
+   "154": 1,
+   "179": 2,
+   "180": 2,
+   "181": 2,
+   "183": 1,
+   "185": 1,
+   "188": 1,
+   "190": 2,
+   "191": 1,
+   "193": 2,
+   "195": 1,
+   "196": 1,
+   "210": 1,
+   "214": 1,
+   "215": 2,
+   "216": 1,
+   "218": 2,
+   "219": 1,
+   "225": 1,
+   "235": 1,
+   "236": 1,
+   "243": 1,
+   "250": 1,
+   "266": 1,
+   "268": 1,
+   "269": 1,
+   "275": 1,
+   "276": 2,
+   "278": 1,
+   "281": 1,
+   "282": 1,
+   "295": 1
+  },
+  "own_reworded": 22,
+  "examples": [
+   [
+    69,
+    "is mian liom aire a thabhairt don mhadra óg ach níl am agam inniu",
+    "is mian liom aire a thabhairt don mhadra óg ach níl an t-am agam inniu"
+   ],
+   [
+    93,
+    "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin",
+    "Ní raibh sí réidh le dul cé go raibh gach duine eile ag iarraidh dul cheana féin"
+   ],
+   [
+    149,
+    "ní raibh am agam mar sin",
+    "ní raibh an t-am agam mar sin"
+   ]
+  ],
+  "findings": [],
+  "other_total": 43
+ },
+ "228": {
+  "seed": 228,
+  "his": "Tá an fear sin díreach tar éis tosú ar a chuid cainte a chleachtadh",
+  "ours": "Tá an fear sin díreach tar éis tosú ag cleachtadh labhartha",
+  "english": "That man has just started to practise speaking",
+  "proposed": "Tá an fear sin díreach tar éis tosú ar labhairt a chleachtadh",
+  "lego_upd": [
+   [
+    "S0228L04",
+    "ag cleachtadh labhartha",
+    "tosú ar labhairt a chleachtadh",
+    "to start to practise speaking"
+   ]
+  ],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 5,
+  "ph_deleted": 12,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "304": {
+  "seed": 304,
+  "his": "ceapaim nach mian léi go mbeidh sí  ag obair ón mbaile",
+  "ours": "ceapaim nach mian léi obair ón mbaile",
+  "english": "I think that she doesn't want to work from home",
+  "proposed": "ceapaim nach mian léi go mbeadh sí ag obair ón mbaile",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "332": {
+  "seed": 332,
+  "his": "is féidir leis saol nua a chur ar bun dá dheirfiúr",
+  "ours": "is féidir leis saol nua a thógáil dá dheirfiúr",
+  "english": "he can build a new life for his sister",
+  "proposed": "is féidir leis saol nua a chur ar bun dá dheirfiúr",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "335": {
+  "seed": 335,
+  "his": "ceapaim gur féidir leis smaointe tairbheacha a chur leis",
+  "ours": "ceapaim gur féidir leis smaointe luachmhara a chur leis",
+  "english": "I think that he can add some valuable ideas",
+  "proposed": "ceapaim gur féidir leis smaointe tairbheacha a chur leis",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "356": {
+  "seed": 356,
+  "his": "bhí, bhí rud éigin tábhachtach le plé acu",
+  "ours": "bhí, bhí rud tábhachtach le plé acu",
+  "english": "yes they had something important to discuss",
+  "proposed": "bhí, bhí rud éigin tábhachtach le plé acu",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "357": {
+  "seed": 357,
+  "his": "Ní raibh, ní raibh ann ach gur mhian léi  teachtaireacht a sheoladh chuici",
+  "ours": "Ní raibh, níor mhian léi ach teachtaireacht a sheoladh chuici",
+  "english": "no she just wanted to send her a message",
+  "proposed": "Ní raibh, ní raibh ann ach gur mhian léi teachtaireacht a sheoladh chuici",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "374": {
+  "seed": 374,
+  "his": "Chonaic, cheap mé go raibh sé go hálainn",
+  "ours": "Chonaic, cheap mé go raibh sé an-álainn",
+  "english": "yes I thought it was very beautiful",
+  "proposed": "Chonaic, cheap mé go raibh sé go hálainn",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "378": {
+  "seed": 378,
+  "his": "Ní dheachaigh, ní raibh dóthain airgid agam i leith laethanta saoire",
+  "ours": "Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire",
+  "english": "no I didn't have enough money for holidays",
+  "proposed": "Ní dheachaigh, ní raibh dóthain airgid agam i leith laethanta saoire",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "411": {
+  "seed": 411,
+  "his": "ba mhaith linn bord i leith ceathrar a chur in áirithe don oíche anocht",
+  "ours": "ba mhaith linn bord a chur in áirithe do cheathrar anocht",
+  "english": "we would like to reserve a table for four tonight",
+  "proposed": "ba mhaith linn bord i leith ceathrar a chur in áirithe don oíche anocht",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "415": {
+  "seed": 415,
+  "his": "Ní bheadh fadhb ar bith leis sin, dar liom",
+  "ours": "Ní bheadh sé sin ina fhadhb dar liom",
+  "english": "That wouldn't be a problem if you ask me",
+  "proposed": "Ní bheadh fadhb ar bith leis sin, dar liom",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "423": {
+  "seed": 423,
+  "his": "an gcaithfidh siad ceist atá  chomh ríiléir sin a chur?",
+  "ours": "an gcaithfidh siad ceist chomh soiléir sin a chur?",
+  "english": "do they need to ask such an obvious question?",
+  "proposed": "an gcaithfidh siad ceist atá chomh ríshoiléir sin a chur?",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "454": {
+  "seed": 454,
+  "his": "tháinig ár gcairde anseol thart ar a sé a chlog",
+  "ours": "tháinig ár gcairde thart timpeall a sé a chlog",
+  "english": "our friends came round at about six o'clock",
+  "proposed": "tháinig ár gcairde anseo thart ar a sé a chlog",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "460": {
+  "seed": 460,
+  "his": "Is mian liom siopa atá gar don teach ósta a aimsiú",
+  "ours": "Is mian liom siopa a fháil in aice leis an óstán",
+  "english": "I want to find a shop near the hotel",
+  "proposed": "Is mian liom siopa atá gar don teach ósta a fháil",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "461": {
+  "seed": 461,
+  "his": "siopa inar féidir liom roinnt cártaí poist a cheannach",
+  "ours": "siopa inar féidir liom cártaí poist a cheannach",
+  "english": "a shop where I can buy some postcards",
+  "proposed": "siopa inar féidir liom roinnt cártaí poist a cheannach",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "481": {
+  "seed": 481,
+  "his": "Is é an fíor-dhóchas amháin atá fágtha againn",
+  "ours": "is é an t-aon dóchas fíor atá fágtha againn",
+  "english": "it's the only real hope we have left",
+  "proposed": "Is é an fíordhóchas amháin atá fágtha againn",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "483": {
+  "seed": 483,
+  "his": "Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca",
+  "ours": "Níl an saol éasca ach níl sé ceaptha a bheith éasca",
+  "english": "life isn't easy but it's not meant to be easy",
+  "proposed": "Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "489": {
+  "seed": 489,
+  "his": "mura ndéanann tú cupán de caife láidir dom aláithreach bonn",
+  "ours": "mura ndéanann tú cupán de chaife láidir dom anois díreach",
+  "english": "if you don't make me a strong cup of coffee right now",
+  "proposed": "mura ndéanann tú cupán de chaife láidir dom láithreach bonn",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "490": {
+  "seed": 490,
+  "his": "Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís",
+  "ours": "Ní bheidh muinín agam as aon duine go deo arís",
+  "english": "then I will never trust anyone ever again",
+  "proposed": "Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "492": {
+  "seed": 492,
+  "his": "cé acu de na háiteanna sin atá ina áit is siúmúla duit?",
+  "ours": "cé acu de na háiteanna sin a cheapann tú is suimiúla?",
+  "english": "which of those places do you think is the most interesting?",
+  "proposed": "cé acu de na háiteanna sin atá ina áit is suimiúla duit?",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "496": {
+  "seed": 496,
+  "his": "Nílím ag beartú go gcailleoidh mé nuair atá fíor-thábhacht ag baint leis",
+  "ours": "níl mé ag pleanáil cailleadh nuair a bhíonn sé fíorthábhachtach",
+  "english": "I'm not planning to lose when it really matters",
+  "proposed": "Níl mé ag beartú go gcailleoidh mé nuair atá fíorthábhacht ag baint leis",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "498": {
+  "seed": 498,
+  "his": "Tá sé ina sheasamh thall ina aonar laistigh den tslí isteach",
+  "ours": "Tá sé ina sheasamh leis féin thall ansin laistigh den bhealach isteach",
+  "english": "he's standing alone over there inside the entrance",
+  "proposed": "Tá sé ina sheasamh thall ansin ina aonar laistigh den tslí isteach",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "501": {
+  "seed": 501,
+  "his": "Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint",
+  "ours": "dá bhféadfainn muinín a bheith agam asaibh imirt le chéile gan argóint",
+  "english": "if only I could trust you to play together without arguing",
+  "proposed": "Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "542": {
+  "seed": 542,
+  "his": "gach uair a mhothaíonn tú feargach",
+  "ours": "aon uair a bhíonn fearg ort",
+  "english": "whenever you feel angry",
+  "proposed": "gach uair a mhothaíonn tú feargach",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "601": {
+  "seed": 601,
+  "his": "bhí muid ag caint faoi conas a thosaigh an rud ar fad",
+  "ours": "bhí muid ag caint faoin gcaoi ar thosaigh an rud ar fad",
+  "english": "we were talking about how it all started",
+  "proposed": "bhí muid ag caint faoi conas a thosaigh an rud ar fad",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ },
+ "614": {
+  "seed": 614,
+  "his": "Tá sé in aice le cá bhfuil do chlann ina gcónaí",
+  "ours": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí",
+  "english": "it's near where your family live",
+  "proposed": "Tá sé in aice le cá bhfuil do chlann ina gcónaí",
+  "lego_upd": [],
+  "lego_new": [],
+  "lego_del": [],
+  "ph_added": 0,
+  "ph_deleted": 0,
+  "other": {},
+  "own_reworded": 0,
+  "examples": [],
+  "findings": [],
+  "other_total": 0
+ }
+}

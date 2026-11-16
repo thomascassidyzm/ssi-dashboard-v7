@@ -58,3 +58,4 @@ Sheet rebuilt on the live course (build.py unchanged except QUIET/HAND for these
   deleted rows back. The course is as it was before this job.
 - The sheet rebuild (caac281fc) is withdrawn: the sheet files are back to #324·AI's version (28e52a28f). d/985d9e1a is stale.
 - The batches above are now PROPOSALS only; per-row knock-ons and fixes for Kai: proposals43.md.
+Per-row proposals for Kai: proposals43.md, published https://watson-1.tail4968cb.ts.net:10000/d/c9a203f1
