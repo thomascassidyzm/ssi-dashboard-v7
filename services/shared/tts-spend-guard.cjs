@@ -246,15 +246,24 @@ const CYCLE_STOPS = new Set(['POOL_SHARE', 'PROVIDER_POOL'])
  */
 const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
 /**
- * THE DAILY TOTAL CAP (job #692, Tom 2026-09-29 00:25Z: "limit it to 50,000
- * characters per day TOTAL without my express approval"), raised to 100,000 by
- * Tom 2026-09-29 14:31Z ("Maybe 100,000 characters per day automatic. Exceeding
- * this needs approvals", job #844). Enforced INSIDE
- * tts_spend_reserve (ops/sql/20260929-tts-spend-total-cap.sql), summed over every
- * provider for the UTC day — the guard passes no figure, so no caller, budget
- * file or job raise can loosen it. Only a signed raise naming Tom, a row in
- * tts_spend_total_cap_raises (tools/tts-cap.cjs raise). The memory store below
- * mirrors it for tests.
+ * THE DAILY TOTAL CAP IN FORCE: 1,000,000 characters per UTC day, summed over
+ * every provider (Tom 2026-10-07, job #147, ruling
+ * r-2026-10-07-tts-daily-cap-is-a-runaway: a runaway guard far above the monthly
+ * average, not the average itself). It resets at 00:00 UTC. Above it, only a
+ * Tom-signed raise or approval counts, and nothing passes the hard ceiling
+ * (TOTAL_DAILY_CEILING_CHARS below).
+ *
+ * Enforced INSIDE tts_spend_reserve (last defined in
+ * ops/sql/20261025-tts-spend-daily-rollup.sql: greatest(1000000, signed raise),
+ * capped by the ceiling) — the guard passes no figure, so no caller, budget file
+ * or job raise can loosen it. Only a signed raise naming Tom, a row in
+ * tts_spend_total_cap_raises (tools/tts-cap.cjs raise). `node tools/tts-cap.cjs
+ * status` prints the cap in force. The memory store below mirrors it for tests.
+ *
+ * History (superseded, NOT the current figure): 50,000 (job #692, Tom
+ * 2026-09-29 00:25Z) → 100,000 (Tom 2026-09-29 14:31Z, job #844) → 260,000
+ * (ops/sql/20261003-tts-spend-total-cap-260k.sql) → 1,000,000 (job #147,
+ * ops/sql/20261007-tts-spend-base-1m.sql).
  */
 const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
 const TOTAL_DAILY_CAP_CHARS = 1_000_000 // Tom 2026-10-07 (job #147): a runaway guard far above the monthly average, not the average itself; was 260,000
@@ -264,7 +273,7 @@ const TOTAL_DAILY_CAP_CHARS = 1_000_000 // Tom 2026-10-07 (job #147): a runaway 
  * run, we can just go ahead and do it. It would probably be sensible to have a cap
  * at something like maybe 300,000"; raised to 1,000,000 by Tom's ruling r-2026-09-30-audio-automatic-cap-stays-100-000: automatic stays 100k for everyone, a run Tom approves may go to 1M/day"). A tts_spend_total_cap_raises row naming a job
  * ('#913') is Tom's approval for that one run: its calls spend from their own
- * allowance, never above this ceiling, and the automatic 100k is counted without
+ * allowance, never above this ceiling, and the automatic cap (1M since 2026-10-07) is counted without
  * them. Nothing — approved or not — takes a UTC day past the ceiling. Written only
  * by tools/tts-cap.cjs approve. Job #859 (Tom 2026-10-05): ceiling raised to 1,000,000, JS and DB together; was 300,000 (job #596)
  * (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling).

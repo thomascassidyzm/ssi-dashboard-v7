@@ -117,7 +117,7 @@ function validate(input) {
     spokenText: input.spokenText ? String(input.spokenText) : null,
     // The job this render belongs to ("#913"). It rides into the spend ledger, and a
     // job Tom has approved (tools/tts-cap.cjs approve) spends from its own
-    // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
+    // allowance up to the 3M ceiling instead of the automatic 1M cap (job #913; figures since 2026-10-07/12).
     job: input.job ? String(input.job).slice(0, 100) : null,
     // ADOPT (job #140): file an object a paid render already put in S3 but could not save a row for. No provider call.
     adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
