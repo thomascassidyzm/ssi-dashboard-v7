@@ -1,0 +1,22 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U08"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0243L01B04"
+  }
+ ],
+ "apply": false,
+ "reason": "undo of cs #124 event c1f5160c-5b1d-4350-91f1-02a0f64cdace"
+}
