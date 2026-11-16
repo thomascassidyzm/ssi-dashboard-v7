@@ -7,3 +7,5 @@ Every batch: built by `plan.py` from a fresh Popty `GET /api/production/gle_v2_f
 | Batch | Seeds | Ops | Event |
 |---|---|---|---|
 | A (probe) | 7, 36, 38, 247 | 145 | 399cead4 |
+| B | 61, 69, 77, 102 | 69 | bb8739b0 |
+| C | 142, 147, 148 | 112 | 638e44f9 |

@@ -1,0 +1,1472 @@
+{
+"batch": "C",
+"seeds": [
+142,
+147,
+148
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 142,
+"set": {
+"target_text": "Is an-chineálta atá tú agus tá mé an-bhuíoch díot as do chabhair"
+},
+"expect": {
+"known_text": "that's very kind of you and I'm grateful to you for helping",
+"target_text": "Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 142,
+"lego_index": 8,
+"known_text": "that's very kind of you",
+"target_text": "is an-chineálta atá tú",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "is",
+"target": "is"
+},
+{
+"known": "very kind",
+"target": "an-chineálta"
+},
+{
+"known": "that you are",
+"target": "atá tú"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0142L05",
+"set": {
+"known_text": "I'm very grateful to you",
+"target_text": "tá mé an-bhuíoch díot",
+"components": [
+{
+"known": "I am",
+"target": "tá mé"
+},
+{
+"known": "very grateful",
+"target": "an-bhuíoch"
+},
+{
+"known": "to you",
+"target": "díot"
+}
+]
+},
+"expect": {
+"known_text": "I am grateful to you",
+"target_text": "tá mé buíoch díot",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0142L07",
+"set": {
+"target_text": "as do chabhair",
+"components": [
+{
+"known": "for",
+"target": "as"
+},
+{
+"known": "your help",
+"target": "do chabhair"
+}
+]
+},
+"expect": {
+"known_text": "for helping",
+"target_text": "as cabhrú",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0142L08B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 142,
+"lego_index": 8,
+"position": 101,
+"known_text": "that's very kind of you",
+"target_text": "is an-chineálta atá tú",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0142L08B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 142,
+"lego_index": 8,
+"position": 102,
+"known_text": "thank you very much, that's very kind of you",
+"target_text": "go raibh míle maith agat, is an-chineálta atá tú",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0142L08U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 142,
+"lego_index": 8,
+"position": 103,
+"known_text": "that's very kind of you and I'm very grateful to you",
+"target_text": "is an-chineálta atá tú agus tá mé an-bhuíoch díot",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0142L08U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 142,
+"lego_index": 8,
+"position": 104,
+"known_text": "that's very kind of you and I'm grateful to you for helping",
+"target_text": "Is an-chineálta atá tú agus tá mé an-bhuíoch díot as do chabhair",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 12,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05B01",
+"set": {
+"target_text": "tá mé an-bhuíoch díot anois",
+"known_text": "I'm very grateful to you now"
+},
+"expect": {
+"known_text": "I am grateful to you now",
+"target_text": "tá mé buíoch díot anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05B02",
+"set": {
+"target_text": "ar ndóigh tá mé an-bhuíoch díot",
+"known_text": "of course I'm very grateful to you"
+},
+"expect": {
+"known_text": "of course I am grateful to you",
+"target_text": "ar ndóigh tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05B03",
+"set": {
+"target_text": "tá mé an-bhuíoch díot inniu",
+"known_text": "I'm very grateful to you today"
+},
+"expect": {
+"known_text": "I am grateful to you today",
+"target_text": "tá mé buíoch díot inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05B04",
+"set": {
+"target_text": "go raibh maith agat agus tá mé an-bhuíoch díot",
+"known_text": "thank you and I'm very grateful to you"
+},
+"expect": {
+"known_text": "thank you and I am grateful to you",
+"target_text": "go raibh maith agat agus tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U03",
+"set": {
+"target_text": "go raibh míle maith agat agus tá mé an-bhuíoch díot",
+"known_text": "thank you very much and I'm very grateful to you"
+},
+"expect": {
+"known_text": "thank you very much and I am grateful to you",
+"target_text": "go raibh míle maith agat agus tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U04",
+"set": {
+"target_text": "mothaím níos fearr agus tá mé an-bhuíoch díot",
+"known_text": "I feel better and I'm very grateful to you"
+},
+"expect": {
+"known_text": "I feel better and I am grateful to you",
+"target_text": "mothaím níos fearr agus tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U01",
+"set": {
+"target_text": "ar ndóigh tá mé an-bhuíoch díot mar bhí tú an-chineálta",
+"known_text": "of course I'm very grateful to you because you were very kind"
+},
+"expect": {
+"known_text": "of course I am grateful to you because you were very kind",
+"target_text": "ar ndóigh tá mé buíoch díot mar bhí tú an-chineálta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U05",
+"set": {
+"target_text": "tá mé an-bhuíoch díot agus creidim go raibh do smaoineamh go han-mhaith",
+"known_text": "I'm very grateful to you and I believe that your idea was very good"
+},
+"expect": {
+"known_text": "I am grateful to you and I believe that your idea was very good",
+"target_text": "tá mé buíoch díot agus creidim go raibh do smaoineamh go han-mhaith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U06",
+"set": {
+"target_text": "tá mé an-bhuíoch díot agus tá sé in am imeacht anois",
+"known_text": "I'm very grateful to you and it's time to leave now"
+},
+"expect": {
+"known_text": "I am grateful to you and it's time to leave now",
+"target_text": "tá mé buíoch díot agus tá sé in am imeacht anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U07",
+"set": {
+"target_text": "tá brón orm go gcaithfidh mé imeacht anois ach tá mé an-bhuíoch díot",
+"known_text": "I'm sorry that I need to leave now but I'm very grateful to you"
+},
+"expect": {
+"known_text": "I'm sorry that I need to leave now but I am grateful to you",
+"target_text": "tá brón orm go gcaithfidh mé imeacht anois ach tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L05U02",
+"set": {
+"target_text": "tá mé an-bhuíoch díot ach níl mé réidh go fóill",
+"known_text": "I'm very grateful to you but I'm not ready yet"
+},
+"expect": {
+"known_text": "I am grateful to you but I'm not ready yet",
+"target_text": "tá mé buíoch díot ach níl mé réidh go fóill"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B01",
+"set": {
+"target_text": "as do chabhair inniu"
+},
+"expect": {
+"known_text": "for helping today",
+"target_text": "as cabhrú inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B02",
+"set": {
+"target_text": "as do chabhair aréir"
+},
+"expect": {
+"known_text": "for helping last night",
+"target_text": "as cabhrú aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B03",
+"set": {
+"target_text": "an-bhuíoch as do chabhair",
+"known_text": "very grateful for helping"
+},
+"expect": {
+"known_text": "grateful for helping",
+"target_text": "buíoch as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B04",
+"set": {
+"target_text": "go raibh míle maith agat as do chabhair"
+},
+"expect": {
+"known_text": "thank you very much for helping",
+"target_text": "go raibh míle maith agat as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U01",
+"set": {
+"target_text": "go raibh maith agat as do chabhair"
+},
+"expect": {
+"known_text": "thank you for helping",
+"target_text": "go raibh maith agat as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U02",
+"set": {
+"target_text": "go raibh maith agat as do chabhair tráthnóna"
+},
+"expect": {
+"known_text": "thank you for helping this evening",
+"target_text": "go raibh maith agat as cabhrú tráthnóna"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U03",
+"set": {
+"target_text": "tá mé an-bhuíoch díot as do chabhair",
+"known_text": "I'm very grateful to you for helping"
+},
+"expect": {
+"known_text": "I am grateful to you for helping",
+"target_text": "tá mé buíoch díot as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U04",
+"set": {
+"target_text": "ar ndóigh tá mé an-bhuíoch díot as do chabhair"
+},
+"expect": {
+"known_text": "of course I'm grateful to you for helping",
+"target_text": "ar ndóigh tá mé buíoch díot as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U05",
+"set": {
+"target_text": "is cairde muid agus tá mé an-bhuíoch díot as do chabhair aréir"
+},
+"expect": {
+"known_text": "we are friends and I'm grateful to you for helping last night",
+"target_text": "is cairde muid agus tá mé buíoch díot as cabhrú aréir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07U06",
+"set": {
+"target_text": "go raibh maith agat as do chabhair agus tá mé an-bhuíoch díot"
+},
+"expect": {
+"known_text": "thank you for helping and I'm grateful to you",
+"target_text": "go raibh maith agat as cabhrú agus tá mé buíoch díot"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0142L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "Tá sé sin"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0142L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "an-chineálta uait"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0143L04U06",
+"set": {
+"target_text": "go raibh maith agat as do chabhair níos luaithe"
+},
+"expect": {
+"known_text": "thank you for helping earlier",
+"target_text": "go raibh maith agat as cabhrú níos luaithe"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 147,
+"set": {
+"target_text": "B'an-chineálta a bhí sí nuair a thug sí faoi deara go raibh faitíos orm"
+},
+"expect": {
+"known_text": "she was very kind when she saw me feeling nervous",
+"target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 147,
+"lego_index": 5,
+"known_text": "she was very kind",
+"target_text": "b'an-chineálta a bhí sí",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "was",
+"target": "b'"
+},
+{
+"known": "very kind",
+"target": "an-chineálta"
+},
+{
+"known": "that she was",
+"target": "a bhí sí"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0147L03",
+"set": {
+"known_text": "that I was nervous",
+"target_text": "go raibh faitíos orm",
+"type": "M",
+"components": [
+{
+"known": "that I was",
+"target": "go raibh"
+},
+{
+"known": "fear",
+"target": "faitíos"
+},
+{
+"known": "on me",
+"target": "orm"
+}
+]
+},
+"expect": {
+"known_text": "nervous",
+"target_text": "neirbhíseach",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0147L04",
+"set": {
+"known_text": "when she noticed",
+"target_text": "nuair a thug sí faoi deara",
+"components": [
+{
+"known": "when",
+"target": "nuair a"
+},
+{
+"known": "she gave",
+"target": "thug sí"
+},
+{
+"known": "notice",
+"target": "faoi deara"
+}
+]
+},
+"expect": {
+"known_text": "when she saw that I was",
+"target_text": "nuair a chonaic sí go raibh mé",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0147L03B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 147,
+"lego_index": 3,
+"position": 101,
+"known_text": "he said that I was nervous",
+"target_text": "dúirt sé go raibh faitíos orm",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0147L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 147,
+"lego_index": 3,
+"position": 102,
+"known_text": "I didn't know that I was nervous",
+"target_text": "ní raibh a fhios agam go raibh faitíos orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0147L05B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 147,
+"lego_index": 5,
+"position": 101,
+"known_text": "she was very kind",
+"target_text": "b'an-chineálta a bhí sí",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0147L05B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 147,
+"lego_index": 5,
+"position": 102,
+"known_text": "she was very kind last night",
+"target_text": "b'an-chineálta a bhí sí aréir",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0147L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 147,
+"lego_index": 5,
+"position": 103,
+"known_text": "she was very kind when she saw me feeling nervous",
+"target_text": "B'an-chineálta a bhí sí nuair a thug sí faoi deara go raibh faitíos orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0147L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 14,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L03B01",
+"set": {
+"target_text": "go raibh faitíos orm",
+"known_text": "that I was nervous"
+},
+"expect": {
+"known_text": "nervous",
+"target_text": "neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L04B01",
+"set": {
+"target_text": "nuair a thug sí faoi deara go raibh faitíos orm",
+"known_text": "when she noticed that I was nervous"
+},
+"expect": {
+"known_text": "when she saw that I was nervous",
+"target_text": "nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L04U04",
+"set": {
+"target_text": "bhí ionadh orm nuair a thug sí faoi deara go raibh faitíos orm",
+"known_text": "I was surprised when she noticed that I was nervous"
+},
+"expect": {
+"known_text": "I was surprised when she saw that I was nervous",
+"target_text": "bhí ionadh orm nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L04U03",
+"set": {
+"target_text": "bhí áthas orm nuair a thug sí faoi deara go raibh faitíos orm",
+"known_text": "I was happy when she noticed that I was nervous"
+},
+"expect": {
+"known_text": "I was happy when she saw that I was nervous",
+"target_text": "bhí áthas orm nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L04U05",
+"set": {
+"target_text": "bhí mé sásta go raibh sí an-chineálta nuair a thug sí faoi deara go raibh faitíos orm",
+"known_text": "I was glad she was very kind when she noticed that I was nervous"
+},
+"expect": {
+"known_text": "I was glad she was very kind when she saw that I was nervous",
+"target_text": "bhí mé sásta go raibh sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0147L04U02",
+"set": {
+"target_text": "bhí áthas uirthi cabhrú nuair a thug sí faoi deara go raibh faitíos orm",
+"known_text": "she was happy to help when she noticed that I was nervous"
+},
+"expect": {
+"known_text": "she was happy to help when she saw that I was nervous",
+"target_text": "bhí áthas uirthi cabhrú nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L04C01",
+"expect": {
+"target_text": "nuair a"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L04C02",
+"expect": {
+"target_text": "chonaic"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L04C03",
+"expect": {
+"target_text": "sí"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L04C04",
+"expect": {
+"target_text": "go raibh mé"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03B02",
+"expect": {
+"target_text": "tá mé neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U05",
+"expect": {
+"target_text": "bhí mé neirbhíseach nuair a thosaigh mé"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U02",
+"expect": {
+"target_text": "Tá mé beagán neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U03",
+"expect": {
+"target_text": "bhí sí neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U04",
+"expect": {
+"target_text": "bhí sé neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U01",
+"expect": {
+"target_text": "bhí mé neirbhíseach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L03U06",
+"expect": {
+"target_text": "an bhfuil tú neirbhíseach?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0147L04U01",
+"expect": {
+"target_text": "bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0147L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "bhí sí"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 148,
+"set": {
+"target_text": "Ní rófhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thabhairt dó"
+},
+"expect": {
+"known_text": "he wasn't very patient with me when I couldn't answer him",
+"target_text": "Ní raibh sé an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt dó"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 148,
+"lego_index": 5,
+"known_text": "he wasn't very patient with me",
+"target_text": "ní rófhoighneach a bhí sé liom",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "not very patient",
+"target": "ní rófhoighneach"
+},
+{
+"known": "that he was",
+"target": "a bhí sé"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0148L02",
+"set": {
+"known_text": "not very patient",
+"target_text": "ní rófhoighneach",
+"components": [
+{
+"known": "not",
+"target": "ní"
+},
+{
+"known": "too patient",
+"target": "rófhoighneach"
+}
+]
+},
+"expect": {
+"known_text": "very patient with me",
+"target_text": "an-fhoighneach liom",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0148L03",
+"set": {
+"target_text": "nuair nárbh fhéidir liom",
+"components": [
+{
+"known": "when",
+"target": "nuair"
+},
+{
+"known": "it wasn't possible",
+"target": "nárbh fhéidir"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+]
+},
+"expect": {
+"known_text": "when I couldn't",
+"target_text": "nuair nach raibh mé in ann",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L02B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 2,
+"position": 111,
+"known_text": "not very patient",
+"target_text": "ní rófhoighneach",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L02B06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 2,
+"position": 112,
+"known_text": "she wasn't very patient",
+"target_text": "ní rófhoighneach a bhí sí",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L02U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 2,
+"position": 113,
+"known_text": "you weren't very patient with me",
+"target_text": "ní rófhoighneach a bhí tú liom",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 5,
+"position": 101,
+"known_text": "he wasn't very patient with me when I couldn't answer him",
+"target_text": "Ní rófhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thabhairt dó",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026, moved from S0148L04U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 14,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L05B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 5,
+"position": 102,
+"known_text": "he wasn't very patient with me",
+"target_text": "ní rófhoighneach a bhí sé liom",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0148L05U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 148,
+"lego_index": 5,
+"position": 103,
+"known_text": "he wasn't very patient with me last night",
+"target_text": "ní rófhoighneach a bhí sé liom aréir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #343·AI, Eoghan line taken, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03B01",
+"set": {
+"target_text": "nuair nárbh fhéidir liom é a dheisiú"
+},
+"expect": {
+"known_text": "when I couldn't fix it",
+"target_text": "nuair nach raibh mé in ann é a dheisiú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03B02",
+"set": {
+"target_text": "nuair nárbh fhéidir liom dul abhaile"
+},
+"expect": {
+"known_text": "when I couldn't go home",
+"target_text": "nuair nach raibh mé in ann dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03B03",
+"set": {
+"target_text": "mhothaigh mé tuirseach nuair nárbh fhéidir liom dul abhaile"
+},
+"expect": {
+"known_text": "I felt tired when I couldn't go home",
+"target_text": "mhothaigh mé tuirseach nuair nach raibh mé in ann dul abhaile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03B04",
+"set": {
+"target_text": "nuair nárbh fhéidir liom a mhíniú cad atá i gceist agam"
+},
+"expect": {
+"known_text": "when I couldn't explain what I mean",
+"target_text": "nuair nach raibh mé in ann a mhíniú cad atá i gceist agam"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03U03",
+"set": {
+"target_text": "go raibh maith agat as do chabhair nuair nárbh fhéidir liom críochnú"
+},
+"expect": {
+"known_text": "thank you for helping when I couldn't finish",
+"target_text": "go raibh maith agat as cabhrú nuair nach raibh mé in ann críochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03U05",
+"set": {
+"target_text": "nuair nárbh fhéidir liom tú a fheiceáil an tseachtain seo caite ní raibh áthas orm"
+},
+"expect": {
+"known_text": "when I couldn't see you last week I wasn't happy",
+"target_text": "nuair nach raibh mé in ann tú a fheiceáil an tseachtain seo caite ní raibh áthas orm"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03U06",
+"set": {
+"target_text": "bhí tú an-chineálta nuair nárbh fhéidir liom an freagra a fháil"
+},
+"expect": {
+"known_text": "you were very kind when I couldn't find the answer",
+"target_text": "bhí tú an-chineálta nuair nach raibh mé in ann an freagra a fháil"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0148L03U02",
+"set": {
+"target_text": "rinne muid iarracht é a dheisiú nuair nárbh fhéidir liom"
+},
+"expect": {
+"known_text": "we tried to fix it when I couldn't",
+"target_text": "rinne muid iarracht é a dheisiú nuair nach raibh mé in ann"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02C01",
+"expect": {
+"target_text": "an-"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02C02",
+"expect": {
+"target_text": "fhoighneach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02C03",
+"expect": {
+"target_text": "liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02B01",
+"expect": {
+"target_text": "an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02B02",
+"expect": {
+"target_text": "an-fhoighneach liom inniu"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02B03",
+"expect": {
+"target_text": "bhí sí an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02B04",
+"expect": {
+"target_text": "bhí tú an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U01",
+"expect": {
+"target_text": "ní raibh sé an-fhoighneach liom aréir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U03",
+"expect": {
+"target_text": "tá mé buíoch díot mar bhí tú an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U04",
+"expect": {
+"target_text": "cén fáth a bhfuil tú an-fhoighneach liom inniu?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U05",
+"expect": {
+"target_text": "bhí sí an-fhoighneach liom go cinnte"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U02",
+"expect": {
+"target_text": "bhí tú an-fhoighneach liom agus an-chineálta"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L02U06",
+"expect": {
+"target_text": "ceapaim go bhfuil do chara an-fhoighneach liom agus tá mé buíoch díot"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0148L04U06",
+"expect": {
+"target_text": "ní raibh sé an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt dó"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0148L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "Ní raibh sé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0149L03U03",
+"set": {
+"target_text": "mar sin go raibh maith agat as do chabhair"
+},
+"expect": {
+"known_text": "so thank you for helping",
+"target_text": "mar sin go raibh maith agat as cabhrú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0168L03U07",
+"set": {
+"target_text": "ní raibh áthas orm nuair nárbh fhéidir liom teacht agus cabhrú leat"
+},
+"expect": {
+"known_text": "I wasn't happy when I couldn't come and help you",
+"target_text": "ní raibh áthas orm nuair nach raibh mé in ann teacht agus cabhrú leat"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0181L03U05",
+"set": {
+"target_text": "ach ceapaim go bhfuil mo mháthair an-chineálta liom",
+"known_text": "but I think that my mother is very kind with me"
+},
+"expect": {
+"known_text": "but I think that my mother is very patient with me",
+"target_text": "ach ceapaim go bhfuil mo mháthair an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0185L03U05",
+"set": {
+"target_text": "go raibh maith agat as do chabhair ag an obair"
+},
+"expect": {
+"known_text": "thank you for helping at work",
+"target_text": "go raibh maith agat as cabhrú ag an obair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0191L02U05",
+"set": {
+"target_text": "ní raibh faitíos orm ar chor ar bith"
+},
+"expect": {
+"known_text": "I wasn't nervous at all",
+"target_text": "ní raibh mé neirbhíseach ar chor ar bith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0197L02U02",
+"set": {
+"target_text": "ceapaim go bhfuil mo mhac an-chineálta liom",
+"known_text": "I think my son is very kind with me"
+},
+"expect": {
+"known_text": "I think my son is very patient with me",
+"target_text": "ceapaim go bhfuil mo mhac an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L02U10",
+"set": {
+"target_text": "bhí sé deacair a fhios a bheith agam conas an cheist a fhreagairt nuair a bhí faitíos orm",
+"known_text": "it was always difficult to know how to answer the question when I was nervous"
+},
+"expect": {
+"known_text": "it was always difficult to know how to answer the question when I was nervous about speaking",
+"target_text": "bhí sé deacair a fhios a bheith agam conas an cheist a fhreagairt nuair a bhí mé neirbhíseach faoi labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0222L01U07",
+"set": {
+"target_text": "tá sé tuirseach faoi láthair",
+"known_text": "he is tired at the moment"
+},
+"expect": {
+"known_text": "he is nervous at the moment",
+"target_text": "tá sé neirbhíseach faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0226L01U06",
+"set": {
+"target_text": "tá an fear an-chineálta liom nuair nárbh fhéidir liom freagra a thabhairt",
+"known_text": "the man is very kind with me when I couldn't answer"
+},
+"expect": {
+"known_text": "the man is very patient with me when I couldn't answer",
+"target_text": "tá an fear an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0228L01B04",
+"set": {
+"target_text": "tá an fear sin tuirseach inniu",
+"known_text": "that man is tired today"
+},
+"expect": {
+"known_text": "that man is nervous today",
+"target_text": "tá an fear sin neirbhíseach inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0228L01U03",
+"set": {
+"target_text": "tá mé réidh le himeacht ach tá an fear sin tuirseach",
+"known_text": "I am ready to leave but that man is tired"
+},
+"expect": {
+"known_text": "I am ready to leave but that man is nervous",
+"target_text": "tá mé réidh le himeacht ach tá an fear sin neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0228L01U04",
+"set": {
+"target_text": "tá an fear sin an-chineálta liom nuair nárbh fhéidir liom freagra a thabhairt",
+"known_text": "that man is very kind with me when I couldn't give an answer"
+},
+"expect": {
+"known_text": "that man is very patient with me when I couldn't give an answer",
+"target_text": "tá an fear sin an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0231L02U01",
+"set": {
+"target_text": "tá aithne agam ar sheanfhear a bhíodh an-chineálta liom",
+"known_text": "i know an old man who used to be very kind with me"
+},
+"expect": {
+"known_text": "i know an old man who used to be very patient with me",
+"target_text": "tá aithne agam ar sheanfhear a bhíodh an-fhoighneach liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L04B04",
+"set": {
+"target_text": "cheap mé go raibh sí tuirseach",
+"known_text": "i thought that she was tired"
+},
+"expect": {
+"known_text": "i thought that she was nervous",
+"target_text": "cheap mé go raibh sí neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L04U04",
+"set": {
+"target_text": "ní fhaca mé go raibh sí tuirseach",
+"known_text": "i did not see that she was tired"
+},
+"expect": {
+"known_text": "i did not see that she was nervous",
+"target_text": "ní fhaca mé go raibh sí neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0236L04U08",
+"set": {
+"target_text": "an tseachtain seo caite chuala go raibh sí an-chineálta leo",
+"known_text": "last week I heard that she was very kind with them"
+},
+"expect": {
+"known_text": "last week I heard that she was very patient with them",
+"target_text": "an tseachtain seo caite chuala go raibh sí an-fhoighneach leo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0250L04U03",
+"set": {
+"target_text": "sula dtabharfaidh mé freagra duit, is mian liom a rá nach raibh sé an-chineálta liom nuair nárbh fhéidir liom freagra a thabhairt dó",
+"known_text": "before I give you an answer, I want to say that he wasn't very kind with me when I wasn't able to answer him"
+},
+"expect": {
+"known_text": "before I give you an answer, I want to say that he wasn't very patient with me when I wasn't able to answer him",
+"target_text": "sula dtabharfaidh mé freagra duit, is mian liom a rá nach raibh sé an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt dó"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0270L03U06",
+"set": {
+"target_text": "níl a fhios agam cén fáth ach tá mé buartha go mbeidh mé tuirseach",
+"known_text": "I don't know why but I'm worried that I'm going to be tired"
+},
+"expect": {
+"known_text": "I don't know why but I'm worried that I'm going to be nervous",
+"target_text": "níl a fhios agam cén fáth ach tá mé buartha go mbeidh mé neirbhíseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0300L03U06",
+"set": {
+"target_text": "bhí sí míchairdiúil agus tuirseach aréir",
+"known_text": "she was unfriendly and tired last night"
+},
+"expect": {
+"known_text": "she was unfriendly and nervous last night",
+"target_text": "bhí sí míchairdiúil agus neirbhíseach aréir"
+}
+}
+]
+}

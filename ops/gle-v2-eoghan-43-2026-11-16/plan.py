@@ -34,7 +34,8 @@ def s61():
     E.seed(61,"an bhféadfá é sin a rá arís, ach beagán níos moille?")
     l=E.newlego(61,7,'again a little more slowly','arís, ach beagán níos moille',[('again','arís'),('but','ach'),('a little more slowly','beagán níos moille')])
     E.sub(r"\barís beagán níos moille","arís, ach beagán níos moille")
-    for k in ['S0061L04B03','S0061L06B04','S0061L04U01','S0061L04U06','S0061L06U15','S0061L06U01']: E.move(k,l)
+    for k in ['S0061L04U01','S0061L04U06','S0061L06U15','S0061L06U01']: E.move(k,l)
+    E.delp('S0061L04B03'); E.delp('S0061L06B04')   # the same sentence as L04U01
     E.add(l,'build','again a little more slowly','arís, ach beagán níos moille')
 def s69():
     E.seed(69,"Níor mhian leis aire a thabhairt don mhadra óg um thráthnóna ar fad")   # 'um tráthnóna' spelt with the lenition 'um' takes
@@ -62,7 +63,7 @@ def s142():
     E.lego('S0142L05',known_text="I'm very grateful to you",target_text='tá mé an-bhuíoch díot',components=[{'known':'I am','target':'tá mé'},{'known':'very grateful','target':'an-bhuíoch'},{'known':'to you','target':'díot'}])
     E.lego('S0142L07',target_text='as do chabhair',components=[{'known':'for','target':'as'},{'known':'your help','target':'do chabhair'}])
     E.sub(r"\btá mé buíoch díot","tá mé an-bhuíoch díot",r"\bI a?'?m grateful to you|\bI am grateful to you","I'm very grateful to you")
-    E.sub(r"\bas cabhrú\b","as do chabhair")
+    E.sub(r"\bas cabhrú\b(?! liom)","as do chabhair",only=lambda p:p['seed']>=142)   # 'as cabhrú liom' (for helping me, 74) is another phrase
     E.set('S0142L07B03',known='very grateful for helping',target='an-bhuíoch as do chabhair')
     l=E.newlego(142,8,"that's very kind of you",'is an-chineálta atá tú',[('is','is'),('very kind','an-chineálta'),('that you are','atá tú')])
     for kn,tg,r in [("that's very kind of you",'is an-chineálta atá tú','build'),("thank you very much, that's very kind of you",'go raibh míle maith agat, is an-chineálta atá tú','build'),
@@ -80,7 +81,11 @@ def s147():
     E.add(l3,'build','he said that I was nervous','dúirt sé go raibh faitíos orm')
     E.add(l3,'use',"I didn't know that I was nervous",'ní raibh a fhios agam go raibh faitíos orm')
     # 'nervous' after 147 still said 'neirbhíseach' (148, 228): those phrases say 'tired' instead, so 'nervous' keeps one answer
-    E.sub(r"\bneirbhíseach\b","tuirseach",r"\bnervous\b","tired",only=lambda p:p['seed']!=147)
+    # 'nervous' after 147 said 'neirbhíseach': it now takes the 'faitíos ar' form; where a phrase must keep its LEGO's words
+    # (228 'tá an fear sin', 222 'tá sé', 236 'go raibh sí', 270 'go mbeidh mé', 300) it says 'tired' instead, so 'nervous' keeps one answer
+    E.set('S0191L02U05',target='ní raibh faitíos orm ar chor ar bith')
+    E.set('S0202L02U10',known='it was always difficult to know how to answer the question when I was nervous',target='bhí sé deacair a fhios a bheith agam conas an cheist a fhreagairt nuair a bhí faitíos orm')
+    E.sub(r"\bneirbhíseach\b","tuirseach",r"\bnervous\b","tired",only=lambda p:p['seed']!=147 and p['id'].split(':')[1] in('S0228L01B04','S0228L01U03','S0300L03U06','S0222L01U07','S0236L04B04','S0236L04U04','S0270L03U06'))
     l=E.newlego(147,5,'she was very kind',"b'an-chineálta a bhí sí",[('was',"b'"),('very kind','an-chineálta'),('that she was','a bhí sí')])
     E.add(l,'build','she was very kind',"b'an-chineálta a bhí sí")
     E.add(l,'build','she was very kind last night',"b'an-chineálta a bhí sí aréir")
@@ -93,6 +98,7 @@ def s148():
     for kn,tg,r in [('not very patient','ní rófhoighneach','build'),("she wasn't very patient",'ní rófhoighneach a bhí sí','build'),("you weren't very patient with me",'ní rófhoighneach a bhí tú liom','use')]: E.add('S0148L02',r,kn,tg)
     E.lego('S0148L03',target_text='nuair nárbh fhéidir liom',components=[{'known':'when','target':'nuair'},{'known':"it wasn't possible",'target':'nárbh fhéidir'},{'known':'with me','target':'liom'}])
     E.sub(r"\bnuair nach raibh mé in ann\b","nuair nárbh fhéidir liom")
+    E.sub(r"\ban-fhoighneach\b","an-chineálta",r"\bvery patient\b","very kind",only=lambda p:p['seed']!=148)   # 'an-fhoighneach' is no longer taught at 148
     E.set('S0148L04U06',target="Ní rófhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thabhairt dó")
     l=E.newlego(148,5,"he wasn't very patient with me",'ní rófhoighneach a bhí sé liom',[("not very patient",'ní rófhoighneach'),('that he was','a bhí sé'),('with me','liom')])
     E.move('S0148L04U06',l)
