@@ -24,6 +24,7 @@
  */
 
 const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
 const { normalizeForAudio, recordingTextKeys } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
@@ -161,7 +162,7 @@ function entriesFromRows(rows, indexedBy, courseOf = noCourses, resolvers = null
   return { entries: [...best.values()].map(v => v.e), collisions, skipped }
 }
 
-const ROW_COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker'
+const ROW_COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, audio_revision, duration_ms, word_boundaries, word_timings, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker'
 
 const FALLBACK_PAGE = 1000
 const FALLBACK_MAX_PAGES = 20
@@ -272,6 +273,7 @@ function supabaseClipSource(supabase, { log = console, indexedBy = 'write-throug
     indexed: (language, text) => lookupIndexed(supabase, language, text),
     own: (courseCode, text) => ownCourseRows(supabase, courseCode, text),
     fallback: (text, opts) => fallbackRows(supabase, text, opts),
+    spoken: ids => spokenWords.readVerdicts(supabase, ids),
     write: async rows => writeThrough(supabase, rows, indexedBy, log, await courses(rows.map(r => r.course_code)), await resolversFor(rows)),
   }
 }
@@ -281,7 +283,7 @@ function supabaseClipSource(supabase, { log = console, indexedBy = 'write-throug
  * clip_index entries ({ language, text_key, voice_id, audio_id }); `rows` is
  * course_audio. Written-through entries land in `index`, so a test can see them.
  */
-function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
+function memoryClipSource({ index = [], rows = [], courses = [], spoken = [] } = {}) {
   const byId = new Map(rows.map(r => [r.id, r]))
   const courseMap = new Map(courses.map(c => [c.course_code, c]))
   const courseOf = code => (code && courseMap.get(code)) || null
@@ -296,6 +298,7 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
     index,
     calls,
     async courses() { return courseOf },
+    async spoken(ids) { const want = new Set(ids.map(String)); return new Map(spoken.filter(v => want.has(String(v.audio_id))).map(v => [String(v.audio_id), v])) },
     async indexed(language, text) {
       calls.indexed++
       const keys = new Set(recordingTextKeys(text).map(clipTextKey))
@@ -341,7 +344,14 @@ async function resolveClip(source, want, rawPick) {
   // that goes through here — the TTS door, the render route's library-first link, the phase8 fill pass — gets it.
   // POD-ONLY clips (shared/pod-audio.cjs, job #628) are dropped before every pick: a Pod Drill piece or Talk Bollocks line
   // is never linked into a seed, LEGO or phrase slot, and never cited as "already recorded in this language".
-  const pick = async rows => rawPick(await allowedForOverride(withoutPodOnly(rows), want))
+  // A clip known to SAY other words than these (clip_spoken_text: the in-place female-form re-records, cs #160·AI,
+  // shared/clip-spoken-words.cjs) is dropped before every pick too, so no reuse path can answer "sono sicuro" with "sono sicura".
+  const spoken = source.spoken || (() => new Map())
+  const pick = async rows => {
+    const live = withoutPodOnly(rows)
+    const marked = spokenWords.attachVerdicts(live, live.length ? await spoken(live.map(r => r && r.id)) : new Map())
+    return rawPick(await allowedForOverride(marked.filter(r => !spokenWords.saysOtherWords(r, want.text)), want))
+  }
   if (!tryCanonicalLanguage(want.language)) return await pick([])
   const courseOf = source.courses ? await source.courses([want.courseCode]) : noCourses
   const language = clipLanguageKey(want.language, courseOf(want.courseCode))

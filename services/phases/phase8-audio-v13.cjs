@@ -2380,7 +2380,7 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
     audioRows = await readAllPages(() => {
       let q = supabase
         .from('course_audio')
-        .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id')
+        .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id, audio_revision')
         .eq('course_code', courseCode)
         .not('s3_key', 'like', 'pending/%')
       if (humanOnly) q = q.eq('origin', 'human')
@@ -2393,6 +2393,8 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   if (humanOnly && !(audioRows || []).length) return result
   // A line this course renders through a pronunciation override links only a clip rendered WITH it (job #262·AD).
   audioRows = await pronunciationReuseGuard.filterRowsByOwnText(audioRows, courseCode)
+  // A clip that SAYS other words than its text (clip_spoken_text, cs #160·AI) is never filled into a slot by its text.
+  audioRows = await require('../shared/clip-spoken-words.cjs').withoutMislabelled(supabase, audioRows)
 
   // Two maps. `audioMap` holds only clips whose voice matches the config — the
   // only ones eligible to be linked. `rejectedMap` holds the text-matching clips
@@ -5890,7 +5892,7 @@ function buildRenderDeps() {
         return data
       },
       // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
-      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose }) => {
+      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose, spokenVerdict }) => {
         trialMode.assertNotTrial(replaceAudioId, s3Key)
         let newKey = s3Key, durationMs = null
         const said = spokenText || text
@@ -5907,6 +5909,13 @@ function buildRenderDeps() {
           verifyObject: async (k) => { try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: k })); return true } catch { return false } },
           logger,
         })
+        // The words this revision SAYS, when they are not its label (cs #160·AI, shared/clip-spoken-words.cjs), keyed to the
+        // new revision. A failed write is LOUD: the clip is live and unmarked, so it must be marked (edit op audio.spoken).
+        if (spokenVerdict && out.revision != null) {
+          const { error: vErr } = await supabase.from('clip_spoken_text').upsert({ audio_id: replaceAudioId, spoken_text: spokenVerdict.spoken_text,
+            basis: `audio-render-rerecord spokenText (${requestedBy})`, audio_revision: out.revision, checked_at: new Date().toISOString() }, { onConflict: 'audio_id' })
+          if (vErr) throw new RenderRequestError(`re-recorded ${replaceAudioId} (revision ${out.revision}) but its spoken words were NOT recorded (${vErr.message}) — mark it with edit op audio.spoken before reuse`, 500, 'SPOKEN_TEXT_UNRECORDED')
+        }
         // clip_index points at the row by audio_id, and the id never moves — nothing to re-index.
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
