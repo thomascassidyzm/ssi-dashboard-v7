@@ -148,11 +148,16 @@ def strip_family(c):
         c2=(c2+' ').replace("Otherwise this is yours. ",'').strip()
         c2=re.sub(r'\s*(Is this OK\?)?$',lambda m:' Otherwise this is yours.'+(' '+m.group(1) if m.group(1) else ''),c2,count=1).strip()
     return c2,hit
-KEEPQ={613}   # family-only, but the comment asks him something separate ('is dócha'): keep it
+KEEPQ=set()
 HAND[405]=("ar chóir dúinn fiafraí de an gcaithfidh muid áirithint a dhéanamh?","We wrote 'fiafraí de' without 'a' before it. Is this OK?")
 HAND[568]=("Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfidh muid le chéile","We kept the future 'a bhuailfidh' for 'next time we meet', as in your earlier version of this sentence. Is this OK?")
 HAND[406]=("Níor chóir, tá mé cinnte go mbeidh sé ceart go leor","We left out 'de' after 'cinnte', as you do at 340. Is this OK?")
 once_at=None; fam_blank=[]
+# Kai, 16 Nov 19:52Z/19:53Z: Eoghan knows what the Irish and English mean, so a comment never restates meaning. Each one is a
+# nod to what HE suggested and why we kept ours, one line ("You suggested X; we've kept Y because …"), the reason naming
+# the other sentence it would clash with where there is one, in plain words (no course-building jargon). No real departure
+# from his line → blank. Written by hand for the live Irish beside each; the build refuses a row whose Irish has moved.
+V2=json.load(open(os.path.join(HERE,'comments-v2.json')))
 rows=[];stale=[];counts={'blank':0,'hand':0,'planned':0,'later':0,'option':0,'base':0}
 for r in his:
     n=int(r['A']); s=live[n]; ours=s['target_text']; b=base[n]
@@ -188,6 +193,11 @@ for r in his:
         c=(ONCE+' '+c).strip() if c else ONCE
     elif hit and not c and not fo: stale.append(n)   # it differs in more than the analytic forms but only that was said
     assert not FAMILY_LEFT.search(c) or n==once_at,('analytic-form note left in a later row',n,c)
+    if c and n!=once_at:   # cs #323·AI, Kai 16 Nov 19:52Z: every comment rewritten by hand in comments-v2.json (see V2 below)
+        if str(n) not in V2: stale.append(n)
+        elif nrm(V2[str(n)]['irish'])!=nrm(ours): stale.append(n)
+        else: c=V2[str(n)]['comment']
+    assert 'Is this OK' not in c and 'both are standard' not in c.lower(),(n,c)
     rows.append((n,ours,s['known_text'],c))
 assert not stale, ('rows needing a hand-written comment', stale)
 H=['Gaeilge (anois)','English','Ár nóta / Our comment','Do thuairimí / Your comments']
