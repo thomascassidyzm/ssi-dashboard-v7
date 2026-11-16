@@ -1,0 +1,99 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 392
+},
+"before": {
+"id": "478c49d4-f159-4f4b-93af-ce767adefd16",
+"seed_number": 392,
+"known_text": "That child with the black hair opposite the post office",
+"target_text": "an páiste sin leis an ngruaig dhubh os comhair an phoist",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "478c49d4-f159-4f4b-93af-ce767adefd16",
+"seed_number": 392,
+"known_text": "That child with the black hair who's standing opposite the post office",
+"target_text": "an páiste sin a bhfuil gruaig dhubh air agus atá ina sheasamh os comhair na hoifige poist",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 394
+},
+"before": {
+"id": "8ac18071-43a1-4f35-a74d-0c85f355ccbb",
+"seed_number": 394,
+"known_text": "That girl with the yellow dress",
+"target_text": "an cailín sin leis an ngúna buí",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "8ac18071-43a1-4f35-a74d-0c85f355ccbb",
+"seed_number": 394,
+"known_text": "That girl who is wearing a yellow dress",
+"target_text": "an cailín sin a bhfuil gúna buí á chaitheamh aici",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 570
+},
+"before": {
+"id": "47c5a7cf-1d79-401c-8194-77af5ef05055",
+"seed_number": 570,
+"target_text": "cé mhéad atá tú toilteanach a íoc ar do thicéad?",
+"known_text": "how much are you willing to pay for your ticket?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "47c5a7cf-1d79-401c-8194-77af5ef05055",
+"seed_number": 570,
+"target_text": "cé mhéad atá tú toilteanach a íoc as do thicéad?",
+"known_text": "how much are you willing to pay for your ticket?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 0.8,
+"_family": "s392",
+"_seeds": [
+392,
+394,
+570
+],
+"_ops": 3
+}

@@ -1,0 +1,303 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 260
+},
+"before": {
+"id": "33bfb878-cc92-4a95-874b-e6ae6a1b3785",
+"seed_number": 260,
+"known_text": "I don't have the faintest idea",
+"target_text": "Níl an tuairim is lú agam",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "33bfb878-cc92-4a95-874b-e6ae6a1b3785",
+"seed_number": 260,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 2
+},
+"before": null,
+"after": {
+"id": "d41abb2e-44d1-4f45-95ed-8fad721f67a4",
+"seed_number": 260,
+"lego_index": 2,
+"lego_id": "S0260L02",
+"known_text": "an idea",
+"target_text": "smaoineamh",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 3
+},
+"before": null,
+"after": {
+"id": "3e32e322-c83a-492e-8b7c-fd9049ab3207",
+"seed_number": 260,
+"lego_index": 3,
+"lego_id": "S0260L03",
+"known_text": "the faintest",
+"target_text": "dá laghad",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "84146395-fb84-4864-b205-7cb9cd073bf5",
+"seed_number": 260,
+"lego_index": 4,
+"lego_id": "S0260L04",
+"known_text": "I don't have an idea",
+"target_text": "níl smaoineamh agam",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 5
+},
+"before": null,
+"after": {
+"id": "56f9a91e-3445-4f17-8b40-f1c13a73d76e",
+"seed_number": 260,
+"lego_index": 5,
+"lego_id": "S0260L05",
+"known_text": "but",
+"target_text": "ach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 6
+},
+"before": null,
+"after": {
+"id": "9c4d7691-0341-4f26-bb69-8c801f95c03e",
+"seed_number": 260,
+"lego_index": 6,
+"lego_id": "S0260L06",
+"known_text": "I can",
+"target_text": "is féidir liom",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 7
+},
+"before": null,
+"after": {
+"id": "c563d269-b161-4fd9-b73c-ad442d28ea29",
+"seed_number": 260,
+"lego_index": 7,
+"lego_id": "S0260L07",
+"known_text": "a guess",
+"target_text": "buille faoi thuairim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "lego.insert",
+"key": {
+"seed_number": 260,
+"lego_index": 8
+},
+"before": null,
+"after": {
+"id": "ec799deb-c392-491d-b80b-6700145c08f6",
+"seed_number": 260,
+"lego_index": 8,
+"lego_id": "S0260L08",
+"known_text": "to guess",
+"target_text": "buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0260L03U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0260L03U01",
+"seed_number": 260,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0260L04U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0260L04U01",
+"seed_number": 260,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0260L07U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0260L07U01",
+"seed_number": 260,
+"lego_index": 7,
+"lego_id": null,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0260L08U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0260L08U01",
+"seed_number": 260,
+"lego_index": 8,
+"lego_id": null,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0260L01"
+},
+"before": {
+"id": "af156a8d-71c6-44b4-b8b9-5bad4d28a710",
+"seed_number": 260,
+"lego_index": 1,
+"lego_id": "S0260L01",
+"known_text": "idea",
+"target_text": "tuairim",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 3.8,
+"_family": "guess",
+"_seeds": [
+260
+],
+"_ops": 13
+}
