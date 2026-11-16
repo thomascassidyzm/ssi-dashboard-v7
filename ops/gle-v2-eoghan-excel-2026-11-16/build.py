@@ -81,6 +81,34 @@ PLANNED={
  260:("Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt","We made your sentence longer to teach 'guess' ('I don't have the faintest idea, but I can guess'). Is it natural?"),
  518:("Ní fhéadfainn mé féin a shamhlú leis an bhfadhb dhíreach chéanna","You wrote 'chéanna díreach' here and 'dhíreach chéanna' at 153. We'd like one pattern for 'exactly the same', and 153 comes first, so we used 'dhíreach chéanna'. Is that fine?"),
 }
+
+# cs #253·AI, 16 Nov (after the #107·AI plan went live): comments for rows whose live Irish changed, written for the live
+# text quoted beside each, so the same guard refuses them if live moves on.
+LATER="We used the wording you sent us later for this one."
+MUID="We use 'muid' for 'we' in every tense"
+HAND.update({
+ 110:("is cairde muid, agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean",EN+" 'To relax' is taught here as 'mo scíth a ligean', and learners use it only about themselves for a long time; 'ár scíth' and the other forms come later in the course. Is this OK?"),
+ 143:("is é an rud céanna é a raibh muid ag caint faoi níos luaithe","We took your 'a raibh … faoi'. "+MUID+" ('a raibh muid' for 'a rabhamar'). Is this OK?"),
+ 153:("Ní déarfainn é ar an mbealach díreach céanna","We took your 'díreach céanna' order (the same at 518). We kept 'ar an mbealach', because learners already have 'bealach' for 'way', and 'é' straight after the verb. Is this OK?"),
+ 196:("ar chuala tú an smaoineamh is déanaí?","We used 'ar chuala tú?', the form you gave us later for 'have you heard?' (also at 267 and 366). Is this OK?"),
+ 267:("ar chuala tú aon rud ó do chara?","We used 'ar chuala tú?', the form you gave us later for 'have you heard?' (also at 196 and 366). Is this OK?"),
+ 366:("ar chuala tú cad ba mhian leis a fhás?","We used 'ar chuala tú?', as you gave us later, and 'ba mhian leis' for 'he wanted' ('want' is 'is mian' throughout, as you suggested). Is this OK?"),
+ 232:("Tá aithne agam ar sheanbhean a bheidh in ann cuimhneamh ar an bhfreagra","We took your 'a bheidh' and wrote 'sheanbhean' with 'bh'. We kept 'cuimhneamh ar', the form the course teaches for 'remember'. Is this OK?"),
+ 235:("bhuail mé le duine éigin a dúirt gur mhian leis rud éigin a insint duit",EN+" So the Irish follows it with 'a dúirt' ('who said'), and we use 'mian' for 'want' ('gur mhian leis'). We took your 'duine éigin'. Is this OK?"),
+ 236:("Tá aithne agam ar dhuine éigin a dúirt go raibh sí chun iarracht a dhéanamh cabhrú leat",EN+" The English says 'who said that she was going to', which the course teaches as 'a dúirt go raibh sí chun'. We took your 'duine éigin'. Is this OK?"),
+ 256:("ceapaim go mbeidh mé réidh in achar níos lú ná uair","We took your 'in achar níos lú ná uair'. We kept 'réidh' for 'ready': both are standard, and 'réidh' is used throughout the course. Is this OK?"),
+ 287:("cé mhéad duine a bhfuil aithne agat orthu ar maith leo a bheith ag féachaint ar an teilifís?","Your line, with 'ar an teilifís': in the standard, 't' is not changed after 'ar an'. Is this OK?"),
+ 288:("is maith le formhór na ndaoine a bhfuil aithne agam orthu a bheith ag féachaint ar an teilifís","We kept 'is maith le formhór na ndaoine …', which keeps the English order and 'is maith le' as learners have it, and 'ar an teilifís' as at 287. Is this OK?"),
+ 489:("mura ndéanann tú cupán de chaife láidir dom anois díreach","We took your 'cupán de chaife láidir', with 'chaife' lenited after 'de', and kept 'anois díreach' for 'right now', which learners already have. Is this OK?"),
+ 549:("mar caithfidh mé a bheith ciúin",LATER+" Is this OK?"),
+ 610:("caithfidh sé obair a lorg",LATER+" Is this OK?"),
+ 510:("D'imigh sí chun áit shábháilte a fháil agus an carr a pháirceáil ann",LATER+" We spelt it 'shábháilte' and 'pháirceáil'. Is this OK?"),
+ 552:("Tá cuma ghránna ar an séipéal atá ag an gceann eile den tsráidbhaile","This sentence already had your September correction, 'cuma ghránna ar an séipéal'; your sheet was written over the older text. We took your 'ag an gceann eile', and write 'den tsráidbhaile' with 't', the standard form after 'den'. Is this OK?"),
+ 570:("cé mhéad atá tú toilteanach a íoc as do thicéad?","We took 'toilteanach' from your later notes, and 'íoc as' for 'pay for', the form you use at 508 and 509. Is this OK?"),
+ 613:("is dócha go mbeadh muid tar éis teach a cheannach ansin","Your line, with 'go mbeadh muid' ("+MUID+"). You noted later that 'is dócha' is 'I suppose': is it all right for 'probably' here, or would you say 'b'fhéidir'?"),
+})
+# Rows that now carry his line with only a slip of his put right (Kai 16 Nov: 220 spelling and 394 fixed quietly): blank.
+QUIET={125,220,248,341,394,328}   # 328: his line differs from ours only by accents
 def tidy(t):
     t=re.sub(r"Kai decided to keep '([Tt])á … uaim'","We use 'tá … uaim'",t)
     t=re.sub(r'\bseeds\b','sentences',re.sub(r'\bseed\b','sentence',t))
@@ -89,7 +117,7 @@ rows=[];stale=[];counts={'blank':0,'hand':0,'planned':0,'later':0,'option':0,'ba
 for r in his:
     n=int(r['A']); s=live[n]; ours=s['target_text']; b=base[n]
     opts=options(r.get('F',''))
-    if nrm(ours)==nrm(r.get('F','')) or (opts and nrm(ours)==opts[0]): c=''; counts['blank']+=1
+    if nrm(ours)==nrm(r.get('F','')) or (opts and nrm(ours)==opts[0]) or n in QUIET: c=''; counts['blank']+=1
     elif n in PLANNED and nrm(ours)==nrm(PLANNED[n][0]): c=PLANNED[n][1]; counts['planned']+=1
     elif n in HAND:
         if nrm(ours)!=nrm(HAND[n][0]): stale.append(n); c=''
@@ -100,7 +128,7 @@ for r in his:
         assert nrm(b['Irish now (our draft)'])==nrm(ours),('base note written for other text',n)
         bh=options(b['Your Irish'])
         later = bh and nrm(ours)==bh[0] and nrm(b['Your Irish'])!=nrm(r.get('F',''))
-        w=tidy(b['Why we differ']); q=tidy(b['Our question for you'])
+        w=tidy(b['Why we differ']); q=''   # the 12 Nov questions are settled by his own sheet (Kai, 16 Nov 18:45Z: "If he left it as it was, it's fine like that and if he changed it, we have an answer. Same for any other questions"); the comment keeps what and why, and asks if it is OK
         if later:
             c=('We used the wording you sent us later for this one.'+(' '+w if w and 'Same' not in b['Same as yours?'] else '')).strip(); counts['later']+=1
         elif not w and not q:
