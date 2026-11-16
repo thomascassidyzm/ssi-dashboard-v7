@@ -1,0 +1,792 @@
+{
+ "family": "wordorder",
+ "event_id": "16f4021a-09fa-4fd5-a818-e01946eed506",
+ "undo_file_on_popty": "2026-11-16T12-39-58-072Z-16f4021a-09fa-4fd5-a818-e01946eed506.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0072L01U01",
+  "S0072L01U02",
+  "S0093L02B01",
+  "S0093L02B02",
+  "S0093L02U03",
+  "S0099L02B03",
+  "S0099L02U04",
+  "S0116L02U03",
+  "S0117L02B02",
+  "S0121L01B02",
+  "S0132L02B03",
+  "S0133L01B03",
+  "S0134L01B01",
+  "S0141L01U05",
+  "S0147L01B01",
+  "S0149L01B01",
+  "S0149L01B02",
+  "S0152L01B02",
+  "S0152L01U06",
+  "S0153L02B01",
+  "S0172L01B01",
+  "S0187L02B01",
+  "S0187L02U03",
+  "S0189L01U02",
+  "S0198L02B02",
+  "S0198L02B03",
+  "S0200L01B02",
+  "S0200L01B03",
+  "S0200L01U01",
+  "S0200L01U02",
+  "S0201L01B02",
+  "S0205L02B01",
+  "S0205L02U02",
+  "S0207L01U01",
+  "S0207L01U02",
+  "S0209L03U04",
+  "S0211L01B01",
+  "S0223L01B02",
+  "S0223L01B03",
+  "S0223L01B04",
+  "S0223L01U01",
+  "S0224L01B01",
+  "S0225L02B01",
+  "S0225L02B02",
+  "S0225L02U02",
+  "S0225L02U05",
+  "S0239L01B01",
+  "S0240L02B02",
+  "S0244L01B02",
+  "S0245L01B02",
+  "S0246L01B01",
+  "S0246L01B02",
+  "S0268L02B01",
+  "S0285L01B01",
+  "S0285L01B02"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0541L01U01",
+   "set": {
+    "target_text": "sy seine it is in goed idee om in goed foarbyld te jaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0541L01B02",
+   "set": {
+    "target_text": "sy seine it is in goed idee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0531L01U01",
+   "set": {
+    "target_text": "dyn freon sei it is net wier datstû betelje silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0531L01B01",
+   "set": {
+    "target_text": "dyn freon sei it is net wier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01U06",
+   "set": {
+    "target_text": "dyn freon sei sy giene fuort foar't elkenien it nijs wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01U03",
+   "set": {
+    "target_text": "hy sei sy giene fuort nei it earste diel fan 'e foarstelling"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01B02",
+   "set": {
+    "target_text": "dyn freon sei sy giene fuort"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L02U01",
+   "set": {
+    "target_text": "sy seine sy kamen beide allinne nei it iten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L02B02",
+   "set": {
+    "target_text": "sy seine sy kamen beide allinne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L01U03",
+   "set": {
+    "target_text": "sy seine sy kamen beide sawat om seis oere"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L01B03",
+   "set": {
+    "target_text": "sy seine sy kamen beide"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0513L01U05",
+   "set": {
+    "target_text": "sy seine it docht it measte sear nei it earste diel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0513L01B02",
+   "set": {
+    "target_text": "hy sei it docht it measte sear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0307L02U03",
+   "set": {
+    "target_text": "ik leau ik ken dy jonge man dêre"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0307L02B03",
+   "set": {
+    "target_text": "ik leau ik ken dy jonge man"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01B02",
+   "set": {
+    "target_text": "sy sizze sy praat Frysk",
+    "target1_audio_id": "93a4b6c8-0cab-4fd3-906a-6aa06d96597c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01B01",
+   "set": {
+    "target_text": "ik tink sy praat Frysk",
+    "target1_audio_id": "faca6f7c-a3a8-4049-8ac8-edddf6d3c388"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0272L01U03",
+   "set": {
+    "target_text": "sy sizze it is in geweldich idee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U06",
+   "set": {
+    "target_text": "ik tink sy hat my twa e-mails stjoerd en dat wie in ferrassing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02B01",
+   "set": {
+    "target_text": "ik leau sy hat my twa e-mails stjoerd",
+    "target1_audio_id": "d6eb8c2c-2789-423d-97e0-4fd5bfd08eca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01U01",
+   "set": {
+    "target_text": "sy sizze se hie it te drok om de ôfspraken te regeljen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01B02",
+   "set": {
+    "target_text": "sy sizze se hie it te drok",
+    "target1_audio_id": "f5136cc6-7a7d-430b-95aa-0efa465dc5c1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01B01",
+   "set": {
+    "target_text": "ik tink se hie it te drok",
+    "target1_audio_id": "f73f0fdf-b6bb-47be-b7a2-055ace68e958"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0245L01B02",
+   "set": {
+    "target_text": "ik tink ik bin bliid mei hoefolle ik dien haw",
+    "target1_audio_id": "2fb20705-d162-4ed5-b4b1-bcd362c20f65"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01B02",
+   "set": {
+    "target_text": "ik tink ik haw al in soad leard",
+    "target1_audio_id": "bc694f3d-2b98-4c4b-bea0-654b0659440f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0240L02B02",
+   "set": {
+    "target_text": "ik tink myn soan hâldt net graach op mei praten",
+    "target1_audio_id": "18be65eb-14c1-490f-b0ab-56f1f43b0e57"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0239L01B01",
+   "set": {
+    "target_text": "ik tink ús mem lêst graach",
+    "target1_audio_id": "06c3d4b3-6ac8-4571-bd71-7f5fab4f90f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02U04",
+   "set": {
+    "target_text": "sy sizze myn freon soe dy helpe sa gau astû wolst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02U03",
+   "set": {
+    "target_text": "ik leau myn dochter soe dy helpe om de ôfspraken te regeljen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02B02",
+   "set": {
+    "target_text": "sy sizze nimmen soe dy helpe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02B01",
+   "set": {
+    "target_text": "ik tink myn soan soe dy helpe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U05",
+   "set": {
+    "target_text": "ik wit hy soe dy in antwurd jaan",
+    "target1_audio_id": "01350f9c-a20c-46d1-8f9b-ab0c52c798e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U04",
+   "set": {
+    "target_text": "sy sizze hy soe dy in antwurd jaan sa gau astû wolst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U03",
+   "set": {
+    "target_text": "ik leau hy soe dy in antwurd jaan en dat soe my tige helpe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U02",
+   "set": {
+    "target_text": "sy sizze hy soe dy in antwurd jaan om't er myn freon is",
+    "target1_audio_id": "844e202c-849c-4237-af57-905dcdedcd26"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02B02",
+   "set": {
+    "target_text": "sy sizze hy soe dy in antwurd jaan",
+    "target1_audio_id": "23904b59-16e0-4bce-82f5-98b07827db6c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02B01",
+   "set": {
+    "target_text": "ik leau hy soe dy in antwurd jaan",
+    "target1_audio_id": "21e332a1-46c5-4341-b4a6-112e9133878f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0224L01B01",
+   "set": {
+    "target_text": "ik tink hy is krekt begûn",
+    "target1_audio_id": "d47d7201-fe8f-4b23-98af-840543d6f718"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U04",
+   "set": {
+    "target_text": "ik hoopje hy sil dy freegje foar'tstû fuortgiest"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U03",
+   "set": {
+    "target_text": "ik leau hy sil dy freegje wêr't se hinne gean wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U01",
+   "set": {
+    "target_text": "ik wit hy sil dy freegje wat dyn namme is",
+    "target1_audio_id": "107fe9b3-9aa8-43b9-a927-53b8fc2e6108"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B04",
+   "set": {
+    "target_text": "ik hoopje hy sil dy freegje",
+    "target1_audio_id": "5786ca48-a836-4995-aae1-253e05c7a333"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B03",
+   "set": {
+    "target_text": "sy sizze hy sil dy freegje",
+    "target1_audio_id": "3446b3a1-3ea8-4bc5-baa9-9e8a0dc62d8c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B02",
+   "set": {
+    "target_text": "ik tink hy sil dy freegje",
+    "target1_audio_id": "180be03b-0add-4e42-867e-14388cabf1b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0219L02U05",
+   "set": {
+    "target_text": "ik tink it is in goed idee om in skoftke te ûntspannen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0211L01B01",
+   "set": {
+    "target_text": "ik tink sy hawwe ús ferteld",
+    "target1_audio_id": "82e483d2-a07c-4402-9dd6-de6a9c662895"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0209L03U04",
+   "set": {
+    "target_text": "sy sizze wy wolle mear tiid byinoar trochbringe",
+    "target1_audio_id": "f8cffbc3-1e98-4b5a-8102-b69132652f08"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L01U02",
+   "set": {
+    "target_text": "ik wit dû hast dien wat ik dwaan moat",
+    "target1_audio_id": "e9fc44b2-946c-4a00-93e2-cb63d0a2e74b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L01U01",
+   "set": {
+    "target_text": "ik leau dû hast dien wat er sein hat",
+    "target1_audio_id": "51e97586-004b-43b5-96e4-c290b81cb1a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L02U02",
+   "set": {
+    "target_text": "ik tink ik bin it wurd fergetten om't ik in bytsje wurch bin",
+    "target1_audio_id": "5e90f000-079e-4118-9ecf-81a39f8f50ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L02B01",
+   "set": {
+    "target_text": "ik leau ik bin it wurd fergetten",
+    "target1_audio_id": "8e258a41-9839-4a45-9656-e03bcf0c516f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L01B02",
+   "set": {
+    "target_text": "ik tink wy woene witte",
+    "target1_audio_id": "6efa3db7-9737-4724-b9e2-e21bc51cc9f7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01U02",
+   "set": {
+    "target_text": "sy sizze wy moatte gewoan hurd wurkje",
+    "target1_audio_id": "bb6c1b69-50ef-4fc6-ba6a-1f73d545f66f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01U01",
+   "set": {
+    "target_text": "sy sizze ik doch it grif better as de lêste kear",
+    "target1_audio_id": "5d451f85-f289-4c06-a0b3-cff4b0ed4a28"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01B03",
+   "set": {
+    "target_text": "sy sizze it is wichtich",
+    "target1_audio_id": "9e172e62-0f4f-4941-96a7-7ac18fd1006a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01B02",
+   "set": {
+    "target_text": "sy sizze it wie net mooglik",
+    "target1_audio_id": "4bd0109b-3c70-4c63-accd-4d0fd2148af5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02U02",
+   "set": {
+    "target_text": "ik wit syn freon wurket by de gemeente"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02B03",
+   "set": {
+    "target_text": "ik wit sy wurket by de gemeente",
+    "target1_audio_id": "b6482ba7-e53f-40da-9e3f-add6b02a784f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02B02",
+   "set": {
+    "target_text": "ik tink sy wurket by de gemeente",
+    "target1_audio_id": "3d2ccfd0-1652-4e4d-b05c-115c5fe3febd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0189L01U02",
+   "set": {
+    "target_text": "ik tink dat is in goed idee en ik sjoch dernei út",
+    "target1_audio_id": "599d7ec4-97a3-4879-854b-19a4dc62205c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0189L01U01",
+   "set": {
+    "target_text": "ik bin der net wis fan mar ik tink dat is in goed idee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0187L02U03",
+   "set": {
+    "target_text": "ik tink ik bin der bliid mei mar ik haw mear tiid nedich",
+    "target1_audio_id": "2664d4ca-92ed-4d46-916f-547fea11c50a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0187L02B01",
+   "set": {
+    "target_text": "ik tink ik bin der bliid mei",
+    "target1_audio_id": "1028ab89-955b-4ad3-bb73-75512762efe5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0172L01B01",
+   "set": {
+    "target_text": "ik tink dat soe my tige helpe",
+    "target1_audio_id": "86b0c47b-f369-4c65-bb73-b643fd345f17"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0153L02B01",
+   "set": {
+    "target_text": "ik tink ik hie it net sein",
+    "target1_audio_id": "060176c2-4899-4105-8c21-b4aed2249852"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L01U06",
+   "set": {
+    "target_text": "it is dreech mar ik tink ik hie it oars dien",
+    "target1_audio_id": "52928b7d-03dc-4abe-975b-7359dd0042ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L01B02",
+   "set": {
+    "target_text": "ik tink ik hie it oars dien",
+    "target1_audio_id": "514d0139-7e9d-4dbd-aa12-aa0e675fda94"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01U05",
+   "set": {
+    "target_text": "ik wit dit is net sa dreech mar ik bin noch net klear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01B02",
+   "set": {
+    "target_text": "ik wit dit is net sa dreech",
+    "target1_audio_id": "1aa31884-0840-4c63-aa4a-1c371563fab0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01B01",
+   "set": {
+    "target_text": "ik tink dit is net sa dreech",
+    "target1_audio_id": "dbb061d9-bb33-4c6c-869d-0fe58bea43c5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0147L01U03",
+   "set": {
+    "target_text": "ik tink sy wie hiel freonlik en ik bin hiel bliid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0147L01B01",
+   "set": {
+    "target_text": "ik tink sy wie hiel freonlik",
+    "target1_audio_id": "fbce89a7-d860-4e8b-8fc2-8b856968c3d3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0141L01U05",
+   "set": {
+    "target_text": "ik tink it is gjin probleem",
+    "target1_audio_id": "b4cccce8-bcaf-42a7-8a2c-64b611873033"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0134L01U01",
+   "set": {
+    "target_text": "ik tink it is gjin probleem astû stadiger prate kinst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0134L01B01",
+   "set": {
+    "target_text": "ik tink it is gjin probleem",
+    "target1_audio_id": "b4cccce8-bcaf-42a7-8a2c-64b611873033"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0133L01B03",
+   "set": {
+    "target_text": "ik tink dû learst ien kennen",
+    "target1_audio_id": "45164042-4d45-4c2a-9e18-c006de22f734"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0132L02B03",
+   "set": {
+    "target_text": "ik tink dat is minder spannend",
+    "target1_audio_id": "d02c6e93-38e7-41a5-950e-af47cc63d894"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0128L01B02",
+   "set": {
+    "target_text": "ik tink dû bist krekt as ien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01U01",
+   "set": {
+    "target_text": "ik tink it is ûngewoan datstû it net slim fynst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01B02",
+   "set": {
+    "target_text": "ik tink it is ûngewoan",
+    "target1_audio_id": "cbf1cff3-99f2-40a9-b8ae-a3f08c2767cc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L02B02",
+   "set": {
+    "target_text": "ik tink ik doch it grif better",
+    "target1_audio_id": "b2332631-8ffb-443e-bac8-490da85bcacc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0116L02U03",
+   "set": {
+    "target_text": "ik tink dit is net de bêste kar",
+    "target1_audio_id": "e461bffd-055b-4ae9-bdb7-021d2333360d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03U04",
+   "set": {
+    "target_text": "ik tink wy moatte hurd wurkje om mear wurden te hearren"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03B02",
+   "set": {
+    "target_text": "ik wit wy moatte hurd wurkje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03B01",
+   "set": {
+    "target_text": "ik tink wy moatte hurd wurkje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L03B02",
+   "set": {
+    "target_text": "ik tink wy moatte gewoan hurd wurkje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L02U03",
+   "set": {
+    "target_text": "ik tink it is wichtich om ús bliid te fielen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0099L02U04",
+   "set": {
+    "target_text": "ik tink dû soest freegje moatte wannear't ik klear wêze sil",
+    "target1_audio_id": "cbc15eb8-aae3-45ba-8dac-72e1647e2a0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0099L02B03",
+   "set": {
+    "target_text": "ik tink dû soest freegje moatte",
+    "target1_audio_id": "1ec52b2b-8abd-460f-b713-45a18fe3ecd3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02U03",
+   "set": {
+    "target_text": "ik tink it is no tiid om te gean om't ik in bytsje wurch bin",
+    "target1_audio_id": "1d895a2f-33e7-4e3d-b03b-c9c14801ee3c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02U02",
+   "set": {
+    "target_text": "ik wit it is no tiid om te gean mar ik wol net ophâlde mei praten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02B02",
+   "set": {
+    "target_text": "ik wit it is no tiid om te gean",
+    "target1_audio_id": "9f76703d-57b4-4308-adad-2b0ce7b48118"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02B01",
+   "set": {
+    "target_text": "ik tink it is no tiid om te gean",
+    "target1_audio_id": "22e8aec6-6c7f-4b15-bcf9-2d8fdc132709"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U05",
+   "set": {
+    "target_text": "ik bin der net wis fan mar ik tink sy wol neat lêze"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U02",
+   "set": {
+    "target_text": "ik tink sy wol witte wat it antwurd is",
+    "target1_audio_id": "e112b587-1004-4cc7-9800-8f404e3bd083"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U01",
+   "set": {
+    "target_text": "ik tink hy wol letter weromkomme",
+    "target1_audio_id": "28b0cfb9-d885-4de9-a330-6688637a3f0e"
+   }
+  }
+ ]
+}

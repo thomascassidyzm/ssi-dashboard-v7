@@ -1,0 +1,864 @@
+{
+ "family": "heuge-wit-net-mear",
+ "note": "Kai 16 Nov ruling 5a: heuge is dropped; recall is 'ik wit (it) net mear' and the English STAYS 'I can't / couldn't remember'. Frisian and the two deletions are from auke-held-97-heuge; its 'don't know any more' English is NOT used. S0270L01B03/U03 take Auke's 16 Nov dat-clause in this form. Plus three English-only witte leftovers (S0464L03, S0010L04 tile, S0077L02U05).",
+ "rows": [
+  {
+   "key": "SEED57",
+   "old": [
+    "I can't remember how to say what I wanted to say.",
+    "Ik kin my net heuge hoe't ik sizze moat wat ik sizze woe."
+   ],
+   "new": [
+    "I can't remember how to say what I wanted to say.",
+    "Ik wit net mear hoe't ik sizze moat wat ik sizze woe."
+   ]
+  },
+  {
+   "key": "LEGO:S0057L01",
+   "old": [
+    "I can't remember",
+    "ik kin my net heuge"
+   ],
+   "new": [
+    "I can't remember",
+    "ik wit net mear"
+   ],
+   "components": [
+    {
+     "known": "I know",
+     "target": "ik wit"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    },
+    {
+     "known": "any more",
+     "target": "mear"
+    }
+   ]
+  },
+  {
+   "key": "S0057L01C01",
+   "old": [
+    "I can",
+    "ik kin"
+   ],
+   "new": [
+    "I know",
+    "ik wit"
+   ]
+  },
+  {
+   "key": "S0057L01C03",
+   "old": [
+    "to recall",
+    "heuge"
+   ],
+   "new": [
+    "any more",
+    "mear"
+   ]
+  },
+  {
+   "key": "S0057L01B01",
+   "old": [
+    "I can't remember how to answer",
+    "ik kin my net heuge hoe't ik antwurdzje soe"
+   ],
+   "new": [
+    "I can't remember how to answer",
+    "ik wit net mear hoe't ik antwurdzje soe"
+   ]
+  },
+  {
+   "key": "S0057L01B02",
+   "old": [
+    "I can't remember what the answer is",
+    "ik kin my net heuge wat it antwurd is"
+   ],
+   "new": [
+    "I can't remember what the answer is",
+    "ik wit net mear wat it antwurd is"
+   ]
+  },
+  {
+   "key": "S0057L01B03",
+   "old": [
+    "I can't remember how long I've been learning",
+    "ik kin my net heuge hoe lang ik al lear"
+   ],
+   "new": [
+    "I can't remember how long I've been learning",
+    "ik wit net mear hoe lang ik al lear"
+   ]
+  },
+  {
+   "key": "S0057L01B04",
+   "old": [
+    "I'm tired and I can't remember",
+    "ik bin wurch en ik kin my net heuge"
+   ],
+   "new": [
+    "I'm tired and I can't remember",
+    "ik bin wurch en ik wit it net mear"
+   ]
+  },
+  {
+   "key": "S0057L01U01",
+   "old": [
+    "I'm a little tired this morning and I can't remember how to answer",
+    "ik bin fan 'e moarn in bytsje wurch en ik kin my net heuge hoe't ik antwurdzje soe"
+   ],
+   "new": [
+    "I'm a little tired this morning and I can't remember how to answer",
+    "ik bin fan 'e moarn in bytsje wurch en ik wit net mear hoe't ik antwurdzje soe"
+   ]
+  },
+  {
+   "key": "S0057L01U02",
+   "old": [
+    "it's like this I can't remember what the answer is",
+    "it sit sa, ik kin my net heuge wat it antwurd is"
+   ],
+   "new": [
+    "it's like this I can't remember what the answer is",
+    "it sit sa, ik wit net mear wat it antwurd is"
+   ]
+  },
+  {
+   "key": "S0057L01U03",
+   "old": [
+    "I'm trying to learn but I can't remember how to say what I mean",
+    "ik besykje te learen mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   ],
+   "new": [
+    "I'm trying to learn but I can't remember how to say what I mean",
+    "ik besykje te learen mar ik wit net mear hoe't ik sizze moat wat ik bedoel"
+   ]
+  },
+  {
+   "key": "S0057L01U04",
+   "old": [
+    "I can't remember how long I've been learning Frisian",
+    "ik kin my net heuge hoe lang ik al Frysk lear"
+   ],
+   "new": [
+    "I can't remember how long I've been learning Frisian",
+    "ik wit net mear hoe lang ik al Frysk lear"
+   ]
+  },
+  {
+   "key": "S0057L01U05",
+   "old": [
+    "I don't need to know everything but I can't remember what the answer is",
+    "ik hoech net alles te witten mar ik kin my net heuge wat it antwurd is"
+   ],
+   "new": [
+    "I don't need to know everything but I can't remember what the answer is",
+    "ik hoech net alles te witten mar ik wit net mear wat it antwurd is"
+   ]
+  },
+  {
+   "key": "S0057L01U06",
+   "old": [
+    "I can't remember how to answer because I'm a little tired",
+    "ik kin my net heuge hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   ],
+   "new": [
+    "I can't remember how to answer because I'm a little tired",
+    "ik wit net mear hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   ]
+  },
+  {
+   "key": "S0057L01U07",
+   "old": [
+    "I'd like to be able to speak Frisian but I can't remember how to say what I mean",
+    "ik wol graach Frysk prate mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   ],
+   "new": [
+    "I'd like to be able to speak Frisian but I can't remember how to say what I mean",
+    "ik wol graach Frysk prate mar ik wit net mear hoe't ik sizze moat wat ik bedoel"
+   ]
+  },
+  {
+   "key": "S0057L02U07",
+   "old": [
+    "I can't remember how to say what I wanted to say",
+    "ik kin my net heuge hoe't ik sizze moat wat ik sizze woe"
+   ],
+   "new": [
+    "I can't remember how to say what I wanted to say",
+    "ik wit net mear hoe't ik sizze moat wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0059L03B01",
+   "old": [
+    "I can't remember what I need to do",
+    "ik kin my net heuge wat ik dwaan moat"
+   ],
+   "new": [
+    "I can't remember what I need to do",
+    "ik wit net mear wat ik dwaan moat"
+   ]
+  },
+  {
+   "key": "S0059L03U01",
+   "old": [
+    "I can't remember what I need to do when I didn't sleep very well",
+    "ik kin my net heuge wat ik dwaan moat as ik net goed slept haw"
+   ],
+   "new": [
+    "I can't remember what I need to do when I didn't sleep very well",
+    "ik wit net mear wat ik dwaan moat as ik net goed slept haw"
+   ]
+  },
+  {
+   "key": "S0059L04U01",
+   "old": [
+    "I can't remember how I do that",
+    "ik kin my net heuge hoe't ik dat doch"
+   ],
+   "new": [
+    "I can't remember how I do that",
+    "ik wit net mear hoe't ik dat doch"
+   ]
+  },
+  {
+   "key": "S0060L01U06",
+   "old": [
+    "I can't remember and I don't know yet what the answer is",
+    "ik kin my net heuge en ik wit noch net wat it antwurd is"
+   ],
+   "new": [
+    "I can't remember and I don't know yet what the answer is",
+    "ik wit it net mear en ik wit noch net wat it antwurd is"
+   ]
+  },
+  {
+   "key": "S0063L01B03",
+   "old": [
+    "I can't remember, are you sure?",
+    "ik kin my net heuge, bistû der wis fan?"
+   ],
+   "new": [
+    "I can't remember, are you sure?",
+    "ik wit it net mear, bistû der wis fan?"
+   ]
+  },
+  {
+   "key": "S0064L03U02",
+   "old": [
+    "I can't remember what I wanted to say but it is fun",
+    "ik kin my net heuge wat ik sizze woe mar it is wol moai om te dwaan"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but it is fun",
+    "ik wit net mear wat ik sizze woe mar it is wol moai om te dwaan"
+   ]
+  },
+  {
+   "key": "S0066L02U06",
+   "old": [
+    "I'm trying to find the answer but I can't remember",
+    "ik besykje om it antwurd te finen mar ik kin my net heuge"
+   ],
+   "new": [
+    "I'm trying to find the answer but I can't remember",
+    "ik besykje om it antwurd te finen mar ik wit it net mear"
+   ]
+  },
+  {
+   "key": "S0070L03U07",
+   "old": [
+    "I can't remember where it was",
+    "ik kin my net heuge wêr't it wie"
+   ],
+   "new": [
+    "I can't remember where it was",
+    "ik wit net mear wêr't it wie"
+   ]
+  },
+  {
+   "key": "S0082L03U04",
+   "old": [
+    "I can't remember why not",
+    "ik kin my net heuge wêrom net"
+   ],
+   "new": [
+    "I can't remember why not",
+    "ik wit net mear wêrom net"
+   ]
+  },
+  {
+   "key": "S0083L01U01",
+   "old": [
+    "I can't remember what I wanted to say but I agree with you",
+    "ik kin my net heuge wat ik sizze woe mar ik bin it iens mei dy"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but I agree with you",
+    "ik wit net mear wat ik sizze woe mar ik bin it iens mei dy"
+   ]
+  },
+  {
+   "key": "S0084L01U03",
+   "old": [
+    "I don't agree but I can't remember what I wanted to say",
+    "ik bin it net iens mar ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "I don't agree but I can't remember what I wanted to say",
+    "ik bin it net iens mar ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0084L02B01",
+   "old": [
+    "I can't remember what he said",
+    "ik kin my net heuge wat er sein hat"
+   ],
+   "new": [
+    "I can't remember what he said",
+    "ik wit net mear wat er sein hat"
+   ]
+  },
+  {
+   "key": "S0084L03U05",
+   "old": [
+    "I wanted to write a letter about my friend but I can't remember what I wanted to say",
+    "ik woe in brief oer myn freon skriuwe mar ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "I wanted to write a letter about my friend but I can't remember what I wanted to say",
+    "ik woe in brief oer myn freon skriuwe mar ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0085L02U03",
+   "old": [
+    "I can't remember his name and I don't know those people",
+    "ik kin my syn namme net heuge en ik ken dy minsken net"
+   ],
+   "new": [
+    "I can't remember his name and I don't know those people",
+    "ik wit syn namme net mear en ik ken dy minsken net"
+   ]
+  },
+  {
+   "key": "S0086L01U01",
+   "old": [
+    "I can't remember what I wanted to say unfortunately",
+    "spitigernôch kin ik my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "I can't remember what I wanted to say unfortunately",
+    "spitigernôch wit ik net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0091L01U03",
+   "old": [
+    "I can't remember what I wanted to say and it's difficult",
+    "ik kin my net heuge wat ik sizze woe en it is dreech"
+   ],
+   "new": [
+    "I can't remember what I wanted to say and it's difficult",
+    "ik wit net mear wat ik sizze woe en it is dreech"
+   ]
+  },
+  {
+   "key": "S0096L02U05",
+   "old": [
+    "I need more time, I can't remember what I wanted to say",
+    "ik haw mear tiid nedich, ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "I need more time, I can't remember what I wanted to say",
+    "ik haw mear tiid nedich, ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0105L01U06",
+   "old": [
+    "that is why I can't remember what I wanted to say",
+    "dêrom kin ik my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "that is why I can't remember what I wanted to say",
+    "dêrom wit ik net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0110L01U01",
+   "old": [
+    "I can't remember her name but we're friends",
+    "ik kin my har namme net heuge mar wy binne freonen"
+   ],
+   "new": [
+    "I can't remember her name but we're friends",
+    "ik wit har namme net mear mar wy binne freonen"
+   ]
+  },
+  {
+   "key": "S0112L01U02",
+   "old": [
+    "that was very interesting, but I can't remember what I wanted to say",
+    "dat wie hiel nijsgjirrich, mar ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "that was very interesting, but I can't remember what I wanted to say",
+    "dat wie hiel nijsgjirrich, mar ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0117L04U04",
+   "old": [
+    "I can't remember that we talked",
+    "ik kin my net heuge dat wy inoar sprutsen"
+   ],
+   "new": "DELETE",
+   "why": "'I can't remember that we talked' is odd English already (flagged 11 Nov); delete. S0117L04 keeps 3 BUILD + 5 USE."
+  },
+  {
+   "key": "S0122L01U02",
+   "old": [
+    "I can't remember what I wanted to say but it's getting easier",
+    "ik kin my net heuge wat ik sizze woe mar it begjint makliker te wurden"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but it's getting easier",
+    "ik wit net mear wat ik sizze woe mar it begjint makliker te wurden"
+   ]
+  },
+  {
+   "key": "S0122L02U07",
+   "old": [
+    "I can't remember what I wanted to say but I'm happy with what you said",
+    "ik kin my net heuge wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but I'm happy with what you said",
+    "ik wit net mear wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   ]
+  },
+  {
+   "key": "S0127L01U06",
+   "old": [
+    "I can't remember what I wanted to say but that isn't important",
+    "ik kin my net heuge wat ik sizze woe mar dat is net wichtich"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but that isn't important",
+    "ik wit net mear wat ik sizze woe mar dat is net wichtich"
+   ]
+  },
+  {
+   "key": "S0127L02B03",
+   "old": [
+    "I can't remember why I wanted to see you",
+    "ik kin my net heuge wêrom't ik dy sjen woe"
+   ],
+   "new": [
+    "I can't remember why I wanted to see you",
+    "ik wit net mear wêrom't ik dy sjen woe"
+   ]
+  },
+  {
+   "key": "S0131L03U05",
+   "old": [
+    "there are too many ideas going around in my head and I can't remember what I wanted to say",
+    "der geane tefolle ideeën om yn myn holle en ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "there are too many ideas going around in my head and I can't remember what I wanted to say",
+    "der geane tefolle ideeën om yn myn holle en ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0136L02B03",
+   "old": [
+    "I can't remember but of course you can ask her",
+    "ik kin my net heuge, mar fansels kinstû har freegje"
+   ],
+   "new": [
+    "I can't remember but of course you can ask her",
+    "ik wit it net mear, mar fansels kinstû har freegje"
+   ]
+  },
+  {
+   "key": "S0136L03U05",
+   "old": [
+    "I can't remember her name but she's my friend",
+    "ik kin my har namme net heuge, mar se is myn freon"
+   ],
+   "new": [
+    "I can't remember her name but she's my friend",
+    "ik wit har namme net mear, mar se is myn freon"
+   ]
+  },
+  {
+   "key": "S0138L02U03",
+   "old": [
+    "I can't remember where my friend wanted to meet us",
+    "ik kin my net heuge wêr't myn freon ús moetsje woe"
+   ],
+   "new": [
+    "I can't remember where my friend wanted to meet us",
+    "ik wit net mear wêr't myn freon ús moetsje woe"
+   ]
+  },
+  {
+   "key": "S0139L01U02",
+   "old": [
+    "I'm sorry I can't remember what I wanted to say",
+    "it spyt my, ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "I'm sorry I can't remember what I wanted to say",
+    "it spyt my, ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0148L01U03",
+   "old": [
+    "he wasn't very patient and I couldn't remember what I wanted to say",
+    "hy wie net hiel geduldich en ik koe my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "he wasn't very patient and I couldn't remember what I wanted to say",
+    "hy wie net hiel geduldich en ik wist net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0150L01U03",
+   "old": [
+    "I can't remember your name",
+    "ik kin my dyn namme net heuge"
+   ],
+   "new": [
+    "I can't remember your name",
+    "ik wit dyn namme net mear"
+   ]
+  },
+  {
+   "key": "S0150L03U02",
+   "old": [
+    "I can't remember what your name is because I was tired",
+    "ik kin my net heuge wat dyn namme is om't ik wurch wie"
+   ],
+   "new": [
+    "I can't remember what your name is because I was tired",
+    "ik wit net mear wat dyn namme is om't ik wurch wie"
+   ]
+  },
+  {
+   "key": "S0151L02U05",
+   "old": [
+    "I can't remember what I was hoping",
+    "ik kin my net heuge wat ik hope"
+   ],
+   "new": [
+    "I can't remember what I was hoping",
+    "ik wit net mear wat ik hope"
+   ]
+  },
+  {
+   "key": "S0152L03U03",
+   "old": [
+    "I can't remember what you wanted",
+    "ik kin my net heuge watstû woest"
+   ],
+   "new": [
+    "I can't remember what you wanted",
+    "ik wit net mear watstû woest"
+   ]
+  },
+  {
+   "key": "S0158L03U05",
+   "old": [
+    "I can't remember what I wanted to say, let's talk about something else",
+    "ik kin my net heuge wat ik sizze woe, litte wy oer wat oars prate"
+   ],
+   "new": [
+    "I can't remember what I wanted to say, let's talk about something else",
+    "ik wit net mear wat ik sizze woe, litte wy oer wat oars prate"
+   ]
+  },
+  {
+   "key": "S0176L02U02",
+   "old": [
+    "I can't remember but I'll ask him where it was",
+    "ik kin my net heuge mar ik sil him freegje wêr't it wie"
+   ],
+   "new": [
+    "I can't remember but I'll ask him where it was",
+    "ik wit it net mear mar ik sil him freegje wêr't it wie"
+   ]
+  },
+  {
+   "key": "S0177L02U02",
+   "old": [
+    "I can't remember where she wants to go",
+    "ik kin my net heuge wêr't se hinne gean wol"
+   ],
+   "new": [
+    "I can't remember where she wants to go",
+    "ik wit net mear wêr't se hinne gean wol"
+   ]
+  },
+  {
+   "key": "S0182L01U02",
+   "old": [
+    "I can't remember where my keys are",
+    "ik kin my net heuge wêr't myn kaaien binne"
+   ],
+   "new": [
+    "I can't remember where my keys are",
+    "ik wit net mear wêr't myn kaaien binne"
+   ]
+  },
+  {
+   "key": "S0182L02U03",
+   "old": [
+    "I can't remember where it was, have you seen my keys anywhere?",
+    "ik kin my net heuge wêr't it wie, hastû myn kaaien earne sjoen?"
+   ],
+   "new": [
+    "I can't remember where it was, have you seen my keys anywhere?",
+    "ik wit net mear wêr't it wie, hastû myn kaaien earne sjoen?"
+   ]
+  },
+  {
+   "key": "S0183L01B01",
+   "old": [
+    "I'm afraid I can't remember",
+    "ik kin my spitigernôch net heuge"
+   ],
+   "new": [
+    "I'm afraid I can't remember",
+    "ik wit it spitigernôch net mear"
+   ]
+  },
+  {
+   "key": "S0184L03U03",
+   "old": [
+    "yes, I saw them, but I can't remember where it was",
+    "ja, ik haw se sjoen, mar ik kin my net heuge wêr't it wie"
+   ],
+   "new": [
+    "yes, I saw them, but I can't remember where it was",
+    "ja, ik haw se sjoen, mar ik wit net mear wêr't it wie"
+   ]
+  },
+  {
+   "key": "S0191L01U04",
+   "old": [
+    "I can't remember what I wanted to say but I don't mind at all",
+    "ik kin my net heuge wat ik sizze woe mar ik fyn it hielendal net slim"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but I don't mind at all",
+    "ik wit net mear wat ik sizze woe mar ik fyn it hielendal net slim"
+   ]
+  },
+  {
+   "key": "S0201L02U07",
+   "old": [
+    "I can't remember what was going to happen",
+    "ik kin my net heuge wat der barre soe"
+   ],
+   "new": [
+    "I can't remember what was going to happen",
+    "ik wit net mear wat der barre soe"
+   ]
+  },
+  {
+   "key": "S0202L03B03",
+   "old": [
+    "I can't remember how he had to answer",
+    "ik kin my net heuge hoe't er antwurdzje moast"
+   ],
+   "new": [
+    "I can't remember how he had to answer",
+    "ik wit net mear hoe't er antwurdzje moast"
+   ]
+  },
+  {
+   "key": "S0205L01U01",
+   "old": [
+    "I can't remember the word",
+    "ik kin my it wurd net heuge"
+   ],
+   "new": [
+    "I can't remember the word",
+    "ik wit it wurd net mear"
+   ]
+  },
+  {
+   "key": "S0205L03U02",
+   "old": [
+    "I can't remember a word that I wanted to say",
+    "ik kin my in wurd dat ik sizze woe net heuge"
+   ],
+   "new": "DELETE",
+   "why": "a long object inside 'wit ... net mear' reads badly; no precedent for a clean rewrite (Kai 11 Nov: fix needs precedent, else delete). S0205L03 keeps 3 BUILD + 5 USE."
+  },
+  {
+   "key": "S0206L01U02",
+   "old": [
+    "I can't remember what I wanted to say but I like that you helped me",
+    "ik kin my net heuge wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   ],
+   "new": [
+    "I can't remember what I wanted to say but I like that you helped me",
+    "ik wit net mear wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   ]
+  },
+  {
+   "key": "S0207L02U01",
+   "old": [
+    "I can't remember what you needed to do",
+    "ik kin my net heuge watstû dwaan moast"
+   ],
+   "new": [
+    "I can't remember what you needed to do",
+    "ik wit net mear watstû dwaan moast"
+   ]
+  },
+  {
+   "key": "S0234L02U03",
+   "old": [
+    "I met someone but I can't remember her name",
+    "ik haw ien moete mar ik kin my har namme net heuge"
+   ],
+   "new": [
+    "I met someone but I can't remember her name",
+    "ik haw ien moete mar ik wit har namme net mear"
+   ]
+  },
+  {
+   "key": "S0262L01U01",
+   "old": [
+    "I can't remember, who was that man yesterday?",
+    "ik kin my net heuge, wa wie dy man juster?"
+   ],
+   "new": [
+    "I can't remember, who was that man yesterday?",
+    "ik wit it net mear, wa wie dy man juster?"
+   ]
+  },
+  {
+   "key": "S0266L03U03",
+   "old": [
+    "I can't remember what he said but he was an old friend",
+    "ik kin my net heuge wat er sein hat mar hy wie in âlde freon"
+   ],
+   "new": [
+    "I can't remember what he said but he was an old friend",
+    "ik wit net mear wat er sein hat mar hy wie in âlde freon"
+   ]
+  },
+  {
+   "key": "S0268L02U04",
+   "old": [
+    "she sent me two emails but I can't remember what I wanted to say",
+    "sy hat my twa e-mails stjoerd mar ik kin my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "she sent me two emails but I can't remember what I wanted to say",
+    "sy hat my twa e-mails stjoerd mar ik wit net mear wat ik sizze woe"
+   ]
+  },
+  {
+   "key": "S0270L01B03",
+   "old": [
+    "because I'm worried I can't remember",
+    "om't ik der oer ynsit, kin ik my net heuge"
+   ],
+   "new": [
+    "because I'm worried I can't remember",
+    "om't ik der oer ynsit dat ik it net mear wit"
+   ],
+   "why": "Auke's 16 Nov dat-clause fix, put in the 'ik wit net mear' form (Kai ruling 8); Auke to confirm"
+  },
+  {
+   "key": "S0270L01U03",
+   "old": [
+    "because I'm worried I can't remember what I wanted to say",
+    "om't ik der oer ynsit, kin ik my net heuge wat ik sizze woe"
+   ],
+   "new": [
+    "because I'm worried I can't remember what I wanted to say",
+    "om't ik der oer ynsit dat ik net mear wit wat ik sizze woe"
+   ],
+   "why": "Auke's 16 Nov dat-clause fix, put in the 'ik wit net mear' form (Kai ruling 8); Auke to confirm"
+  },
+  {
+   "key": "S0077L02U05",
+   "old": [
+    "I'm surprised at how quickly I can remember the whole sentence",
+    "ik bin fernuvere oer hoe fluch ik de hiele sin noch wit"
+   ],
+   "new": [
+    "I'm surprised at how quickly I still know the whole sentence",
+    "ik bin fernuvere oer hoe fluch ik de hiele sin noch wit"
+   ],
+   "why": "held from the 11 Nov remember pass: recall is 'still know', never 'remember'; English only"
+  },
+  {
+   "key": "LEGO:S0464L03",
+   "old": [
+    "but she didn't remember it",
+    "mar se wist it net mear"
+   ],
+   "new": [
+    "but she didn't know it any more",
+    "mar se wist it net mear"
+   ],
+   "why": "its own seed and all 10 phrases already say 'didn't know it any more'; English only"
+  },
+  {
+   "key": "S0010L04C03",
+   "old": [
+    "can remember",
+    "noch wit"
+   ],
+   "new": [
+    "still know",
+    "noch wit"
+   ],
+   "why": "tile under LEGO 'if I still know the whole sentence'; English only"
+  },
+  {
+   "key": "LEGO:S0010L04",
+   "old": [
+    "if I still know the whole sentence",
+    "oft ik de hiele sin noch wit"
+   ],
+   "new": [
+    "if I still know the whole sentence",
+    "oft ik de hiele sin noch wit"
+   ],
+   "components": [
+    {
+     "known": "if",
+     "target": "oft"
+    },
+    {
+     "known": "I",
+     "target": "ik"
+    },
+    {
+     "known": "the whole sentence",
+     "target": "de hiele sin"
+    },
+    {
+     "known": "still know",
+     "target": "noch wit"
+    }
+   ]
+  }
+ ]
+}

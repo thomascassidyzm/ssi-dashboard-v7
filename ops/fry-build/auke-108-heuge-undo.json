@@ -1,0 +1,659 @@
+{
+ "family": "heuge",
+ "event_id": "07dc1256-8c36-41e1-a073-076f21dce9d3",
+ "undo_file_on_popty": "2026-11-16T12-37-14-912Z-07dc1256-8c36-41e1-a073-076f21dce9d3.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0110L01U01",
+  "S0136L02B03",
+  "S0138L02U03",
+  "S0152L03U03",
+  "S0202L03B03",
+  "S0205L03U02",
+  "S0270L01B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "c7d2b2db-0fb6-4adf-b870-de37260e5343",
+   "set": {
+    "components": [
+     {
+      "known": "if",
+      "target": "oft"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "the whole sentence",
+      "target": "de hiele sin"
+     },
+     {
+      "known": "can remember",
+      "target": "noch wit"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L04C03",
+   "set": {
+    "known_text": "can remember"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "21046612-a704-4dec-b0f9-7d7d0ffb2b02",
+   "set": {
+    "known_text": "but she didn't remember it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0077L02U05",
+   "set": {
+    "known_text": "I'm surprised at how quickly I can remember the whole sentence"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01U03",
+   "set": {
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01B03",
+   "set": {
+    "target_text": "om't ik der oer ynsit, kin ik my net heuge",
+    "target1_audio_id": "c5e5173b-029d-42de-ba58-555ad7fb73ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U04",
+   "set": {
+    "target_text": "sy hat my twa e-mails stjoerd mar ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0266L03U03",
+   "set": {
+    "target_text": "ik kin my net heuge wat er sein hat mar hy wie in âlde freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U01",
+   "set": {
+    "target_text": "ik kin my net heuge, wa wie dy man juster?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0234L02U03",
+   "set": {
+    "target_text": "ik haw ien moete mar ik kin my har namme net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L02U01",
+   "set": {
+    "target_text": "ik kin my net heuge watstû dwaan moast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0206L01U02",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it moai datstû my holpen hast"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0205L03U02",
+    "seed_number": 205,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "I can't remember a word that I wanted to say",
+    "target_text": "ik kin my in wurd dat ik sizze woe net heuge",
+    "word_count": 48,
+    "lego_count": 10,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T22:05:28.094Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T22:05:28.142Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": "599b53fd-e53a-4a96-bd00-3888e2ed1f1e",
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": 3815,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L01U01",
+   "set": {
+    "target_text": "ik kin my it wurd net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0202L03B03",
+   "set": {
+    "target_text": "ik kin my net heuge hoe't er antwurdzje moast",
+    "target1_audio_id": "8a7cb30c-a735-4697-8364-945a7701364d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L02U07",
+   "set": {
+    "target_text": "ik kin my net heuge wat der barre soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0191L01U04",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik fyn it hielendal net slim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0184L03U03",
+   "set": {
+    "target_text": "ja, ik haw se sjoen, mar ik kin my net heuge wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0183L01B01",
+   "set": {
+    "target_text": "ik kin my spitigernôch net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L02U03",
+   "set": {
+    "target_text": "ik kin my net heuge wêr't it wie, hastû myn kaaien earne sjoen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0182L01U02",
+   "set": {
+    "target_text": "ik kin my net heuge wêr't myn kaaien binne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L02U02",
+   "set": {
+    "target_text": "ik kin my net heuge wêr't se hinne gean wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U02",
+   "set": {
+    "target_text": "ik kin my net heuge mar ik sil him freegje wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U05",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe, litte wy oer wat oars prate"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L03U03",
+   "set": {
+    "target_text": "ik kin my net heuge watstû woest",
+    "target1_audio_id": "9ead9b5f-43a6-4d46-8fbe-b1f6c907961b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L02U05",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L03U02",
+   "set": {
+    "target_text": "ik kin my net heuge wat dyn namme is om't ik wurch wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L01U03",
+   "set": {
+    "target_text": "ik kin my dyn namme net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0148L01U03",
+   "set": {
+    "target_text": "hy wie net hiel geduldich en ik koe my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0139L01U02",
+   "set": {
+    "target_text": "it spyt my, ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0138L02U03",
+   "set": {
+    "target_text": "ik kin my net heuge wêr't myn freon ús moetsje woe",
+    "target1_audio_id": "40c750e7-c971-433d-99f6-59b5aa734006"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L03U05",
+   "set": {
+    "target_text": "ik kin my har namme net heuge, mar se is myn freon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B03",
+   "set": {
+    "target_text": "ik kin my net heuge, mar fansels kinstû har freegje",
+    "target1_audio_id": "baed2683-2aef-404e-ae29-1fc578c38545"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0131L03U05",
+   "set": {
+    "target_text": "der geane tefolle ideeën om yn myn holle en ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L02B03",
+   "set": {
+    "target_text": "ik kin my net heuge wêrom't ik dy sjen woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0127L01U06",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar dat is net wichtich"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L02U07",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin bliid mei watstû sein hast"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0122L01U02",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it begjint makliker te wurden"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0117L04U04",
+    "seed_number": 117,
+    "lego_index": 4,
+    "position": 11,
+    "known_text": "I can't remember that we talked",
+    "target_text": "ik kin my net heuge dat wy inoar sprutsen",
+    "word_count": 45,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T21:02:25.919Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T21:02:25.960Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0112L01U02",
+   "set": {
+    "target_text": "dat wie hiel nijsgjirrich, mar ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0110L01U01",
+   "set": {
+    "target_text": "ik kin my har namme net heuge mar wy binne freonen",
+    "target1_audio_id": "216fd656-18b2-4ba5-90ff-dca73985a90d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0105L01U06",
+   "set": {
+    "target_text": "dêrom kin ik my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0096L02U05",
+   "set": {
+    "target_text": "ik haw mear tiid nedich, ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U03",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe en it is dreech"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0086L01U01",
+   "set": {
+    "target_text": "spitigernôch kin ik my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02U03",
+   "set": {
+    "target_text": "ik kin my syn namme net heuge en ik ken dy minsken net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L03U05",
+   "set": {
+    "target_text": "ik woe in brief oer myn freon skriuwe mar ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L02B01",
+   "set": {
+    "target_text": "ik kin my net heuge wat er sein hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0084L01U03",
+   "set": {
+    "target_text": "ik bin it net iens mar ik kin my net heuge wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0083L01U01",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar ik bin it iens mei dy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0082L03U04",
+   "set": {
+    "target_text": "ik kin my net heuge wêrom net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L03U07",
+   "set": {
+    "target_text": "ik kin my net heuge wêr't it wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0066L02U06",
+   "set": {
+    "target_text": "ik besykje om it antwurd te finen mar ik kin my net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U02",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik sizze woe mar it is wol moai om te dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01B03",
+   "set": {
+    "target_text": "ik kin my net heuge, bistû der wis fan?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U06",
+   "set": {
+    "target_text": "ik kin my net heuge en ik wit noch net wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L04U01",
+   "set": {
+    "target_text": "ik kin my net heuge hoe't ik dat doch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03U01",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik dwaan moat as ik net goed slept haw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L03B01",
+   "set": {
+    "target_text": "ik kin my net heuge wat ik dwaan moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L02U07",
+   "set": {
+    "target_text": "ik kin my net heuge hoe't ik sizze moat wat ik sizze woe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U07",
+   "set": {
+    "target_text": "ik wol graach Frysk prate mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U06",
+   "set": {
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe om't ik in bytsje wurch bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U05",
+   "set": {
+    "target_text": "ik hoech net alles te witten mar ik kin my net heuge wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U04",
+   "set": {
+    "target_text": "ik kin my net heuge hoe lang ik al Frysk lear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U03",
+   "set": {
+    "target_text": "ik besykje te learen mar ik kin my net heuge hoe't ik sizze moat wat ik bedoel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U02",
+   "set": {
+    "target_text": "it sit sa, ik kin my net heuge wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01U01",
+   "set": {
+    "target_text": "ik bin fan 'e moarn in bytsje wurch en ik kin my net heuge hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B04",
+   "set": {
+    "target_text": "ik bin wurch en ik kin my net heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B03",
+   "set": {
+    "target_text": "ik kin my net heuge hoe lang ik al lear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B02",
+   "set": {
+    "target_text": "ik kin my net heuge wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B01",
+   "set": {
+    "target_text": "ik kin my net heuge hoe't ik antwurdzje soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C03",
+   "set": {
+    "known_text": "to recall",
+    "target_text": "heuge"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01C01",
+   "set": {
+    "known_text": "I can",
+    "target_text": "ik kin"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+   "set": {
+    "target_text": "ik kin my net heuge",
+    "components": [
+     {
+      "known": "I can",
+      "target": "ik kin"
+     },
+     {
+      "known": "myself",
+      "target": "my"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     },
+     {
+      "known": "to recall",
+      "target": "heuge"
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 57,
+   "set": {
+    "target_text": "Ik kin my net heuge hoe't ik sizze moat wat ik sizze woe."
+   }
+  }
+ ]
+}
