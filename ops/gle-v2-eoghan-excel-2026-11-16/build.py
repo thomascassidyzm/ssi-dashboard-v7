@@ -1,5 +1,5 @@
 # Builds the sheet for Eoghan (gle_v2_for_eng), mirroring his Bileog1 row for row (cs #251·AI, 16 Nov 2026).
-#   python3 -I build.py <seeds.json from Popty GET /api/production/gle_v2_for_eng/seeds>
+#   python3 -I build.py <live seeds: Popty GET /api/production/gle_v2_for_eng/seeds, or live-snapshot-2026-11-16.json>
 # Columns: A = our live Irish, B = our live English, C = our comment (blank where ours is his line), D = empty, for him.
 # Comment sources, in order: HAND (written for the live text quoted beside it; the build FAILS if live has moved on, so
 # a stale comment can never ship), then the notes already sent to him in ../gle-v2-eoghan-seedlist (the 12 Nov list),
