@@ -1,0 +1,1717 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0089L06U10"
+},
+"before": {
+"id": "gle_v2_for_eng:S0089L06U10",
+"seed_number": 89,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán den rud a dúirt duine, agus mothaím go bhfuil sé an-tábhachtach",
+"known_text": "I think it is interesting when you understand a lot of what someone said, and I feel that it is very important",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0089L06U10",
+"seed_number": 89,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "ceapaim go bhfuil sé suimiúil nuair a thuigeann tú a lán den rud a dúirt duine éigin, agus mothaím go bhfuil sé an-tábhachtach",
+"known_text": "I think it is interesting when you understand a lot of what someone said, and I feel that it is very important",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0102L05U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0102L05U04",
+"seed_number": 102,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá sé mar sin nuair atá duine ag iarraidh rud éigin a thaispeáint duit",
+"known_text": "it is like that when someone is trying to show you how to do it",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0102L05U04",
+"seed_number": 102,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá sé mar sin nuair atá duine éigin ag iarraidh rud éigin a thaispeáint duit",
+"known_text": "it is like that when someone is trying to show you how to do it",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0103L01U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0103L01U09",
+"seed_number": 103,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Níl muid ag lorg duine le cabhrú linn an freagra a fháil anois",
+"known_text": "we are not looking for someone to tell us the answer right now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0103L01U09",
+"seed_number": 103,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Níl muid ag lorg duine éigin le cabhrú linn an freagra a fháil anois",
+"known_text": "we are not looking for someone to tell us the answer right now",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0107L01B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0107L01B02",
+"seed_number": 107,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "bhí muid ag súil le duine insint dom",
+"known_text": "we were hoping someone could tell me",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0107L01B02",
+"seed_number": 107,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "bhí muid ag súil le duine éigin insint dom",
+"known_text": "we were hoping someone could tell me",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0125L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0125L02U04",
+"seed_number": 125,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "creidim go raibh do smaoineamh go han-mhaith agus go bhfuil tú ag déanamh go han-mhaith do dhuine atá ag foghlaim le timpeall seachtaine",
+"known_text": "I believe that your idea was very good and you are doing very well for someone who has only been learning for about a week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0125L02U04",
+"seed_number": 125,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "creidim go raibh do smaoineamh go han-mhaith agus go bhfuil tú ag déanamh go han-mhaith do dhuine éigin atá ag foghlaim le timpeall seachtaine",
+"known_text": "I believe that your idea was very good and you are doing very well for someone who has only been learning for about a week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0142L02B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0142L02B02",
+"seed_number": 142,
+"lego_index": 2,
+"lego_id": "S0142L02",
+"target_text": "duine an-chineálta a bhfuil Gaeilge aige",
+"known_text": "someone very kind who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0142L02B02",
+"seed_number": 142,
+"lego_index": 2,
+"lego_id": "S0142L02",
+"target_text": "duine éigin an-chineálta a bhfuil Gaeilge aige",
+"known_text": "someone very kind who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0163L01U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0163L01U07",
+"seed_number": 163,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "ceapaim go bhfuil sé úsáideach nuair is féidir le duine insint dom cad ba chóir dom a dhéanamh",
+"known_text": "I really think it is useful when someone is able to tell me what I should work on",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0163L01U07",
+"seed_number": 163,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "ceapaim go bhfuil sé úsáideach nuair is féidir le duine éigin insint dom cad ba chóir dom a dhéanamh",
+"known_text": "I really think it is useful when someone is able to tell me what I should work on",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0163L01U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0163L01U09",
+"seed_number": 163,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "dúirt duine liom go bhfuil tú ag iarraidh Gaeilge a fhoghlaim agus ceapaim go bhfuil sé sin go maith",
+"known_text": "someone told me that you are trying to learn Irish and I think that is great",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0163L01U09",
+"seed_number": 163,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "dúirt duine éigin liom go bhfuil tú ag iarraidh Gaeilge a fhoghlaim agus ceapaim go bhfuil sé sin go maith",
+"known_text": "someone told me that you are trying to learn Irish and I think that is great",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0172L03U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0172L03U07",
+"seed_number": 172,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "dúirt sé go raibh sé an-chabhrach duine a bheith agat le labhairt a chleachtadh leis",
+"known_text": "he said that it was very helpful to have someone to practise speaking with",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0172L03U07",
+"seed_number": 172,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "dúirt sé go raibh sé an-chabhrach duine éigin a bheith agat le labhairt a chleachtadh leis",
+"known_text": "he said that it was very helpful to have someone to practise speaking with",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0176L03U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0176L03U04",
+"seed_number": 176,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "bhí mé ag lorg duine a bhfuil an freagra ar eolas aige agus a d'fhéadfainn cabhrú linn inniu",
+"known_text": "I was looking for someone who knows the answer and could help us today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0176L03U04",
+"seed_number": 176,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "bhí mé ag lorg duine éigin a bhfuil an freagra ar eolas aige agus a d'fhéadfainn cabhrú linn inniu",
+"known_text": "I was looking for someone who knows the answer and could help us today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0184L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0184L02U04",
+"seed_number": 184,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "Tá aithne aici ar dhuine atá ag iarraidh an freagra a fháil tamall ó shin",
+"known_text": "she knows someone who has been trying to find the answer since a while ago",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0184L02U04",
+"seed_number": 184,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "Tá aithne aici ar dhuine éigin atá ag iarraidh an freagra a fháil tamall ó shin",
+"known_text": "she knows someone who has been trying to find the answer since a while ago",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0195L01U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0195L01U07",
+"seed_number": 195,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Tá mé ag iarraidh labhairt le duine a oibríonn anseo agus a bhfuil Gaeilge aige",
+"known_text": "I'm trying to talk to someone who works here and who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0195L01U07",
+"seed_number": 195,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Tá mé ag iarraidh labhairt le duine éigin a oibríonn anseo agus a bhfuil Gaeilge aige",
+"known_text": "I'm trying to talk to someone who works here and who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0202L02U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0202L02U08",
+"seed_number": 202,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus bhí gach duine ag lorg duine le cabhrú",
+"known_text": "nobody was sure how to answer the question and everyone was looking for someone to help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0202L02U08",
+"seed_number": 202,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "Ní raibh duine ar bith cinnte conas an cheist a fhreagairt agus bhí gach duine ag lorg duine éigin le cabhrú",
+"known_text": "nobody was sure how to answer the question and everyone was looking for someone to help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0230L01B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0230L01B02",
+"seed_number": 230,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "tá aithne agam ar dhuine a dúirt",
+"known_text": "I know someone who said",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0230L01B02",
+"seed_number": 230,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "tá aithne agam ar dhuine éigin a dúirt",
+"known_text": "I know someone who said",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L03U06",
+"seed_number": 234,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "dúirt duine a oibríonn anseo liom go bhfuil tú an-mhaith ag foghlaim Gaeilge",
+"known_text": "someone who works here told me you are very good at learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L03U06",
+"seed_number": 234,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "dúirt duine éigin a oibríonn anseo liom go bhfuil tú an-mhaith ag foghlaim Gaeilge",
+"known_text": "someone who works here told me you are very good at learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 15,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L04U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L04U08",
+"seed_number": 234,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "bhuail mé le duine aréir a oibríonn le do dheartháir",
+"known_text": "I met someone last night who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L04U08",
+"seed_number": 234,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin aréir a oibríonn le do dheartháir",
+"known_text": "I met someone last night who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 16,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05B03",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine inné",
+"known_text": "I met someone yesterday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05B03",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin inné",
+"known_text": "I met someone yesterday",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05B06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05B06",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine a bhfuil Gaeilge aige",
+"known_text": "I met someone who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05B06",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin a bhfuil Gaeilge aige",
+"known_text": "I met someone who speaks Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05B02",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine",
+"known_text": "I met someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05B02",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin",
+"known_text": "I met someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U01",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine inné a oibríonn le do dheartháir",
+"known_text": "I met someone yesterday who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U01",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin inné a oibríonn le do dheartháir",
+"known_text": "I met someone yesterday who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 20,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U08",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine a oibríonn anseo agus a labhraíonn Gaeilge an lá ar fad",
+"known_text": "I met someone who works near here and speaks Irish every day",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U08",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin a oibríonn anseo agus a labhraíonn Gaeilge an lá ar fad",
+"known_text": "I met someone who works near here and speaks Irish every day",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 21,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U09",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine ag an deireadh seachtaine a bhíodh ar aithne agam",
+"known_text": "I met someone at the weekend who used to know my family",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U09",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin ag an deireadh seachtaine a bhíodh ar aithne agam",
+"known_text": "I met someone at the weekend who used to know my family",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 22,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U04",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine anseo a bhfuil aithne mhaith aige ar do dheirfiúr",
+"known_text": "I met someone near here who knows your sister very well",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U04",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin anseo a bhfuil aithne mhaith aige ar do dheirfiúr",
+"known_text": "I met someone near here who knows your sister very well",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 23,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U05",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine aréir a dúirt liom go bhfuil tú ag foghlaim Gaeilge",
+"known_text": "I met someone last night who told me you are learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U05",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin aréir a dúirt liom go bhfuil tú ag foghlaim Gaeilge",
+"known_text": "I met someone last night who told me you are learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U12"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U12",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine a dúirt gur mhian leis labhairt a chleachtadh leat",
+"known_text": "I met someone who said they want to practise speaking Irish with you",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U12",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin a dúirt gur mhian leis labhairt a chleachtadh leat",
+"known_text": "I met someone who said they want to practise speaking Irish with you",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 25,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U13",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine a dúirt liom go raibh sé ag iarraidh Gaeilge a fhoghlaim le tamall",
+"known_text": "I met someone who told me they have been trying to learn Irish for a long time",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U13",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin a dúirt liom go raibh sé ag iarraidh Gaeilge a fhoghlaim le tamall",
+"known_text": "I met someone who told me they have been trying to learn Irish for a long time",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0234L05U14"
+},
+"before": {
+"id": "gle_v2_for_eng:S0234L05U14",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine an tseachtain seo caite a dúirt go raibh aithne aige ort nuair a bhí tú anseo",
+"known_text": "I met someone last week who said they used to know you when you lived near here",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0234L05U14",
+"seed_number": 234,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin an tseachtain seo caite a dúirt go raibh aithne aige ort nuair a bhí tú anseo",
+"known_text": "I met someone last week who said they used to know you when you lived near here",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L03B01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L03B01",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "duine a dúirt",
+"known_text": "someone who said",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L03B01",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "duine éigin a dúirt",
+"known_text": "someone who said",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 28,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L03U01",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "bhuail mé le duine a dúirt gur fhág tú an t-airgead ar an mbord",
+"known_text": "i met someone who said that you left the money on the table",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L03U01",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "bhuail mé le duine éigin a dúirt gur fhág tú an t-airgead ar an mbord",
+"known_text": "i met someone who said that you left the money on the table",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 29,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L03U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L03U06",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "go raibh maith agat bhuail mé le duine aréir a dúirt go n-inseofá dom cad atá de dhíth ort",
+"known_text": "thank you i met someone last night who said that you would tell me what you need",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L03U06",
+"seed_number": 235,
+"lego_index": 3,
+"lego_id": "S0235L03",
+"target_text": "go raibh maith agat bhuail mé le duine éigin aréir a dúirt go n-inseofá dom cad atá de dhíth ort",
+"known_text": "thank you i met someone last night who said that you would tell me what you need",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 30,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L04U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L04U07",
+"seed_number": 235,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "bhuail mé le duine ag an deireadh seachtaine a dúirt gur mhian leis Gaeilge a labhairt leat",
+"known_text": "I met someone at the weekend who said they want to speak Irish with you",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L04U07",
+"seed_number": 235,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin ag an deireadh seachtaine a dúirt gur mhian leis Gaeilge a labhairt leat",
+"known_text": "I met someone at the weekend who said they want to speak Irish with you",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 31,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L04U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L04U08",
+"seed_number": 235,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "Tá duine ansin a dúirt go bhfuil an freagra ar eolas aige agus gur mhian leis cabhrú",
+"known_text": "there is someone there who said they know the answer and want to help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L04U08",
+"seed_number": 235,
+"lego_index": 4,
+"lego_id": null,
+"target_text": "Tá duine éigin ansin a dúirt go bhfuil an freagra ar eolas aige agus gur mhian leis cabhrú",
+"known_text": "there is someone there who said they know the answer and want to help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 32,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L06B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L06B04",
+"seed_number": 235,
+"lego_index": 6,
+"lego_id": "S0235L06",
+"target_text": "duine ar mhian leis rud éigin a insint duit",
+"known_text": "someone who wanted to tell you something",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L06B04",
+"seed_number": 235,
+"lego_index": 6,
+"lego_id": "S0235L06",
+"target_text": "duine éigin ar mhian leis rud éigin a insint duit",
+"known_text": "someone who wanted to tell you something",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 33,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0235L06U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0235L06U01",
+"seed_number": 235,
+"lego_index": 6,
+"lego_id": "S0235L06",
+"target_text": "bhuail mé le duine aréir ar mhian leis rud éigin a insint duit",
+"known_text": "I met someone last night who wanted to tell you something",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0235L06U01",
+"seed_number": 235,
+"lego_index": 6,
+"lego_id": "S0235L06",
+"target_text": "bhuail mé le duine éigin aréir ar mhian leis rud éigin a insint duit",
+"known_text": "I met someone last night who wanted to tell you something",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 34,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L03B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L03B03",
+"seed_number": 236,
+"lego_index": 3,
+"lego_id": "S0236L03",
+"target_text": "duine a dúirt go raibh sí",
+"known_text": "someone who said that she was",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L03B03",
+"seed_number": 236,
+"lego_index": 3,
+"lego_id": "S0236L03",
+"target_text": "duine éigin a dúirt go raibh sí",
+"known_text": "someone who said that she was",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 35,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L03U01",
+"seed_number": 236,
+"lego_index": 3,
+"lego_id": "S0236L03",
+"target_text": "bhuail mé le duine a dúirt go raibh sí ró-ghnóthach inniu",
+"known_text": "i met someone who said that she was too busy today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L03U01",
+"seed_number": 236,
+"lego_index": 3,
+"lego_id": "S0236L03",
+"target_text": "bhuail mé le duine éigin a dúirt go raibh sí ró-ghnóthach inniu",
+"known_text": "i met someone who said that she was too busy today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 36,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01B02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01B02",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "ar ndóigh tá aithne agam ar dhuine",
+"known_text": "of course I know someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01B02",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "ar ndóigh tá aithne agam ar dhuine éigin",
+"known_text": "of course I know someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 37,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01B03",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "ach tá aithne agam ar dhuine ag an obair",
+"known_text": "but I know someone at work",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01B03",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "ach tá aithne agam ar dhuine éigin ag an obair",
+"known_text": "but I know someone at work",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 38,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01B04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01B04",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "go cinnte tá aithne agam ar dhuine san oifig",
+"known_text": "definitely I know someone in the office",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01B04",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "go cinnte tá aithne agam ar dhuine éigin san oifig",
+"known_text": "definitely I know someone in the office",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 39,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U01",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "tá aithne agam ar dhuine a oibríonn don chomhairle",
+"known_text": "I know someone who works for the council",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U01",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "tá aithne agam ar dhuine éigin a oibríonn don chomhairle",
+"known_text": "I know someone who works for the council",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 40,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U03",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "faraor tá aithne agam ar dhuine a dúirt go raibh sé ró-ghnóthach inniu",
+"known_text": "unfortunately I know someone who said that he was too busy today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U03",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "faraor tá aithne agam ar dhuine éigin a dúirt go raibh sé ró-ghnóthach inniu",
+"known_text": "unfortunately I know someone who said that he was too busy today",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 41,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U04",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "tá brón orm ach tá aithne agam ar dhuine a oibríonn le do dheartháir",
+"known_text": "I am sorry but I know someone who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U04",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "tá brón orm ach tá aithne agam ar dhuine éigin a oibríonn le do dheartháir",
+"known_text": "I am sorry but I know someone who works with your brother",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 42,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U07"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U07",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "níl a fhios agam cad atá uaidh ach tá aithne agam ar dhuine san oifig",
+"known_text": "I don't know what he wants but I know someone in the office",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U07",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "níl a fhios agam cad atá uaidh ach tá aithne agam ar dhuine éigin san oifig",
+"known_text": "I don't know what he wants but I know someone in the office",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 43,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U02",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "go raibh maith agat tá aithne agam ar dhuine ar mhian leis cabhair a iarraidh",
+"known_text": "thank you I know someone who wanted to ask for help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U02",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "go raibh maith agat tá aithne agam ar dhuine éigin ar mhian leis cabhair a iarraidh",
+"known_text": "thank you I know someone who wanted to ask for help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 44,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U05",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "fadhb ar bith tá aithne agam ar dhuine a oibríonn mar mhúinteoir",
+"known_text": "no problem I know someone who works as a teacher",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U05",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "fadhb ar bith tá aithne agam ar dhuine éigin a oibríonn mar mhúinteoir",
+"known_text": "no problem I know someone who works as a teacher",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 45,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L01U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L01U06",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "níl mé réidh go fóill ach tá aithne agam ar dhuine",
+"known_text": "I'm not ready yet but I know someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L01U06",
+"seed_number": 236,
+"lego_index": 1,
+"lego_id": "S0236L01",
+"target_text": "níl mé réidh go fóill ach tá aithne agam ar dhuine éigin",
+"known_text": "I'm not ready yet but I know someone",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 46,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0236L04U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0236L04U03",
+"seed_number": 236,
+"lego_index": 4,
+"lego_id": "S0236L04",
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh sé chun iarracht a dhéanamh cabhrú leat anocht",
+"known_text": "I know someone who said that he was going to try to help you tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0236L04U03",
+"seed_number": 236,
+"lego_index": 4,
+"lego_id": "S0236L04",
+"target_text": "tá aithne agam ar dhuine éigin a dúirt go raibh sé chun iarracht a dhéanamh cabhrú leat anocht",
+"known_text": "I know someone who said that he was going to try to help you tonight",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 47,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0243L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0243L02U04",
+"seed_number": 243,
+"lego_index": 2,
+"lego_id": "S0243L02",
+"target_text": "tá aithne agam ar dhuine a dúirt an rud céanna",
+"known_text": "I know someone who said the same thing",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0243L02U04",
+"seed_number": 243,
+"lego_index": 2,
+"lego_id": "S0243L02",
+"target_text": "tá aithne agam ar dhuine éigin a dúirt an rud céanna",
+"known_text": "I know someone who said the same thing",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 48,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L03U05"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L03U05",
+"seed_number": 248,
+"lego_index": 3,
+"lego_id": "S0248L03",
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an scannán an-mhaith",
+"known_text": "i know someone who said the film was very good",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L03U05",
+"seed_number": 248,
+"lego_index": 3,
+"lego_id": "S0248L03",
+"target_text": "tá aithne agam ar dhuine éigin a dúirt go raibh an scannán an-mhaith",
+"known_text": "i know someone who said the film was very good",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 49,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0248L04U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0248L04U02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an leabhar ina phraiseach iomlán",
+"known_text": "I know someone who said that the book was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0248L04U02",
+"seed_number": 248,
+"lego_index": 4,
+"lego_id": "S0248L04",
+"target_text": "tá aithne agam ar dhuine éigin a dúirt go raibh an leabhar ina phraiseach iomlán",
+"known_text": "I know someone who said that the book was complete rubbish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 50,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0288L03U09"
+},
+"before": {
+"id": "gle_v2_for_eng:S0288L03U09",
+"seed_number": 288,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "bhuail mé le duine aréir a bhfuil aithne aige ar na daoine a bhfuil aithne agam orthu",
+"known_text": "I met someone yesterday who also knows the people I know",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0288L03U09",
+"seed_number": 288,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "bhuail mé le duine éigin aréir a bhfuil aithne aige ar na daoine a bhfuil aithne agam orthu",
+"known_text": "I met someone yesterday who also knows the people I know",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 7.3,
+"_family": "someone2",
+"_seeds": [
+89,
+102,
+103,
+107,
+125,
+142,
+163,
+172,
+176,
+184,
+195,
+202,
+230,
+234,
+235,
+236,
+243,
+248,
+288
+],
+"_ops": 51
+}

@@ -1,0 +1,2676 @@
+{
+"ok": true,
+"dryRun": false,
+"applied": true,
+"event_id": "c7f60011-a0db-46ee-b08b-74fd1beedbd6",
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 220
+},
+"before": {
+"id": "c30edd54-28c3-498e-a53a-227d1066c0fa",
+"seed_number": 220,
+"known_text": "Did you watch a bit of television?",
+"target_text": "ar fhéach tú ar bheagán teilifíse?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "c30edd54-28c3-498e-a53a-227d1066c0fa",
+"seed_number": 220,
+"known_text": "Do you watch much television?",
+"target_text": "An mbíonn tú ag féachaint ar an teilifís mórán?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "lego.insert",
+"key": {
+"seed_number": 220,
+"lego_index": 3
+},
+"before": null,
+"after": {
+"id": "aa130471-2617-46d4-a091-ad7c437f26b7",
+"seed_number": 220,
+"lego_index": 3,
+"lego_id": "S0220L03",
+"known_text": "do you watch",
+"target_text": "an mbíonn tú ag féachaint ar",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "lego.insert",
+"key": {
+"seed_number": 220,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "68033364-4c16-473e-a8a0-23ad6902ce47",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": "S0220L04",
+"known_text": "the television",
+"target_text": "an teilifís",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "lego.insert",
+"key": {
+"seed_number": 220,
+"lego_index": 5
+},
+"before": null,
+"after": {
+"id": "23a565ae-2e69-4471-bff5-cea14f5fa1dd",
+"seed_number": 220,
+"lego_index": 5,
+"lego_id": "S0220L05",
+"known_text": "much",
+"target_text": "mórán",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04B01",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "watching television tonight",
+"target_text": "féachaint ar an teilifís anocht",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04B02",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "watching television with them",
+"target_text": "féachaint ar an teilifís leo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04B03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04B03",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I like watching television",
+"target_text": "is maith liom féachaint ar an teilifís",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04U01",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I enjoy watching television on Sunday",
+"target_text": "bainim taitneamh as féachaint ar an teilifís ar an Domhnach",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04U02",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "it's unusual that you don't like watching television",
+"target_text": "tá sé neamhghnách nach maith leat féachaint ar an teilifís",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04U03",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I enjoy watching television with them",
+"target_text": "bainim taitneamh as féachaint ar an teilifís leo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L04U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L04U04",
+"seed_number": 220,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "do you know of many who like watching television",
+"target_text": "an bhfuil aithne agat ar mhórán ar maith leo féachaint ar an teilifís",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0220L03U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0220L03U01",
+"seed_number": 220,
+"lego_index": 3,
+"lego_id": null,
+"known_text": "Do you watch much television?",
+"target_text": "An mbíonn tú ag féachaint ar an teilifís mórán?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0220L01"
+},
+"before": {
+"id": "821acb4d-0717-4fe2-8c30-35f4215fe736",
+"seed_number": 220,
+"lego_index": 1,
+"lego_id": "S0220L01",
+"known_text": "did you watch",
+"target_text": "ar fhéach tú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 13,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0220L02"
+},
+"before": {
+"id": "f9d3197d-6bb3-4e5d-bdf1-646de8a4c801",
+"seed_number": 220,
+"lego_index": 2,
+"lego_id": "S0220L02",
+"known_text": "a bit of television",
+"target_text": "ar bheagán teilifíse",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+}
+],
+"undo_ops": [
+{
+"op": "lego.insert",
+"row": {
+"id": "f9d3197d-6bb3-4e5d-bdf1-646de8a4c801",
+"seed_number": 220,
+"lego_index": 2,
+"type": "M",
+"is_new": true,
+"known_text": "a bit of television",
+"target_text": "ar bheagán teilifíse",
+"components": [
+{
+"known": "a bit of",
+"target": "ar bheagán"
+},
+{
+"known": "television",
+"target": "teilifíse"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B01",
+"seed_number": 220,
+"lego_index": 2,
+"position": 3,
+"known_text": "a bit of television",
+"target_text": "ar bheagán teilifíse",
+"word_count": 20,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "lego"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": "ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B02",
+"seed_number": 220,
+"lego_index": 2,
+"position": 4,
+"known_text": "Did you watch a bit of television last night?",
+"target_text": "ar fhéach tú ar bheagán teilifíse aréir?",
+"word_count": 40,
+"lego_count": 9,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B04",
+"seed_number": 220,
+"lego_index": 2,
+"position": 6,
+"known_text": "Did you watch a bit of television together last Saturday?",
+"target_text": "ar fhéach tú ar bheagán teilifíse le chéile dé sathairn?",
+"word_count": 56,
+"lego_count": 10,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " chéile",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " dé",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " sathairn?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B05",
+"seed_number": 220,
+"lego_index": 2,
+"position": 7,
+"known_text": "Did you watch a bit of television last night with your friend?",
+"target_text": "ar fhéach tú ar bheagán teilifíse aréir le do chara?",
+"word_count": 52,
+"lego_count": 12,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "your friend",
+"legoId": "S0083L05",
+"target": " do chara",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B06",
+"seed_number": 220,
+"lego_index": 2,
+"position": 8,
+"known_text": "Did you watch a bit of television this evening?",
+"target_text": "ar fhéach tú ar bheagán teilifíse tráthnóna inniu?",
+"word_count": 50,
+"lego_count": 9,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "this evening",
+"legoId": "S0018L04",
+"target": " tráthnóna",
+"isGhost": false
+},
+{
+"known": "today",
+"legoId": "S0193L05",
+"target": " inniu",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02B03",
+"seed_number": 220,
+"lego_index": 2,
+"position": 5,
+"known_text": "Did you watch a bit of television at the weekend?",
+"target_text": "ar fhéach tú ar bheagán teilifíse ag an deireadh seachtaine?",
+"word_count": 60,
+"lego_count": 10,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ag",
+"isGhost": true
+},
+{
+"known": "the weekend",
+"legoId": "S0214L04",
+"target": " an deireadh seachtaine",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02C01",
+"seed_number": 220,
+"lego_index": 2,
+"position": 1,
+"known_text": "a bit of",
+"target_text": "ar bheagán",
+"word_count": 10,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 0
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "about",
+"legoId": "S0043L01",
+"target": "ar",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " bheagán",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02C02",
+"seed_number": 220,
+"lego_index": 2,
+"position": 2,
+"known_text": "television",
+"target_text": "teilifíse",
+"word_count": 9,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 1
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "teilifíse",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02U01",
+"seed_number": 220,
+"lego_index": 2,
+"position": 9,
+"known_text": "Did you watch a bit of television last night, or were you too busy to do anything at all?",
+"target_text": "ar fhéach tú ar bheagán teilifíse aréir, nó an raibh tú ró-ghnóthach le rud ar bith a dhéanamh ar chor ar bith?",
+"word_count": 111,
+"lego_count": 19,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:10:08.081Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "or",
+"legoId": "S0044L01",
+"target": " nó",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "too busy",
+"legoId": "S0193L04",
+"target": " ró-ghnóthach",
+"isGhost": false
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " rud",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bith",
+"isGhost": true
+},
+{
+"known": "to do",
+"legoId": "S0007L02",
+"target": " a dhéanamh",
+"isGhost": false
+},
+{
+"known": "at all",
+"legoId": "S0191L02",
+"target": " ar chor ar bith",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02U08",
+"seed_number": 220,
+"lego_index": 2,
+"position": 16,
+"known_text": "Did you watch a bit of television last night, or did you go to the pub to meet your friends instead?",
+"target_text": "ar fhéach tú ar bheagán teilifíse aréir, nó ar chuaigh tú amach chuig an teach tábhairne le bualadh le do chairde?",
+"word_count": 114,
+"lego_count": 21,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:10:08.081Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "or",
+"legoId": "S0044L01",
+"target": " nó",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " chuaigh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "out",
+"legoId": "S0215L02",
+"target": " amach",
+"isGhost": false
+},
+{
+"known": "to",
+"legoId": "S0052L04",
+"target": " chuig",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " teach",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tábhairne",
+"isGhost": true
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " bualadh",
+"isGhost": true
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " do",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " chairde?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L02U03",
+"seed_number": 220,
+"lego_index": 2,
+"position": 11,
+"known_text": "Did you watch a bit of television at the weekend, or were you too busy doing other things with your friends?",
+"target_text": "ar fhéach tú ar bheagán teilifíse ag an deireadh seachtaine, nó an raibh tú ró-ghnóthach ag déanamh rudaí eile?",
+"word_count": 111,
+"lego_count": 21,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:10:08.081Z",
+"known_score": 7,
+"target_score": 7
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "a bit of television",
+"legoId": "S0220L02",
+"target": " ar bheagán teilifíse",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ag",
+"isGhost": true
+},
+{
+"known": "the weekend",
+"legoId": "S0214L04",
+"target": " an deireadh seachtaine",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "or",
+"legoId": "S0044L01",
+"target": " nó",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "too busy",
+"legoId": "S0193L04",
+"target": " ró-ghnóthach",
+"isGhost": false
+},
+{
+"known": "doing",
+"legoId": "S0114L03",
+"target": " ag déanamh",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " rudaí",
+"isGhost": true
+},
+{
+"known": "other",
+"legoId": "S0103L05",
+"target": " eile",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "821acb4d-0717-4fe2-8c30-35f4215fe736",
+"seed_number": 220,
+"lego_index": 1,
+"type": "M",
+"is_new": true,
+"known_text": "did you watch",
+"target_text": "ar fhéach tú",
+"components": [
+{
+"known": "did",
+"target": "Ar"
+},
+{
+"known": "watched",
+"target": "fhéach"
+},
+{
+"known": "you",
+"target": "tú"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B01",
+"seed_number": 220,
+"lego_index": 1,
+"position": 4,
+"known_text": "did you watch",
+"target_text": "ar fhéach tú",
+"word_count": 12,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "lego"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B02",
+"seed_number": 220,
+"lego_index": 1,
+"position": 5,
+"known_text": "Did you watch it last night?",
+"target_text": "ar fhéach tú air aréir?",
+"word_count": 23,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "about it",
+"legoId": "S0037L03",
+"target": " air",
+"isGhost": false
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B05",
+"seed_number": 220,
+"lego_index": 1,
+"position": 8,
+"known_text": "Did you watch it together last Saturday?",
+"target_text": "ar fhéach tú air le chéile oíche Shathairn?",
+"word_count": 45,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "about it",
+"legoId": "S0037L03",
+"target": " air",
+"isGhost": false
+},
+{
+"known": "for",
+"legoId": "S0038L03",
+"target": " le",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " chéile",
+"isGhost": true
+},
+{
+"known": "Saturday night",
+"legoId": "S0215L03",
+"target": " oíche Shathairn",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B03",
+"seed_number": 220,
+"lego_index": 1,
+"position": 6,
+"known_text": "Did you watch something at the weekend?",
+"target_text": "ar fhéach tú ar rud éigin ag an deireadh seachtaine?",
+"word_count": 52,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " ag",
+"isGhost": true
+},
+{
+"known": "the weekend",
+"legoId": "S0214L04",
+"target": " an deireadh seachtaine",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B04",
+"seed_number": 220,
+"lego_index": 1,
+"position": 7,
+"known_text": "Did you watch something interesting last night?",
+"target_text": "ar fhéach tú ar rud éigin suimiúil aréir?",
+"word_count": 41,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "interesting",
+"legoId": "S0163L03",
+"target": " suimiúil",
+"isGhost": false
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01B06",
+"seed_number": 220,
+"lego_index": 1,
+"position": 9,
+"known_text": "Did you watch anything unusual last night?",
+"target_text": "ar fhéach tú ar rud éigin neamhghnách aréir?",
+"word_count": 44,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"pipeline": "v2"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01C01",
+"seed_number": 220,
+"lego_index": 1,
+"position": 1,
+"known_text": "did",
+"target_text": "ar",
+"word_count": 2,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 0
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "about",
+"legoId": "S0043L01",
+"target": "ar",
+"isGhost": false
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01C02",
+"seed_number": 220,
+"lego_index": 1,
+"position": 2,
+"known_text": "watched",
+"target_text": "fhéach",
+"word_count": 6,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 1
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "fhéach",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01C03",
+"seed_number": 220,
+"lego_index": 1,
+"position": 3,
+"known_text": "you",
+"target_text": "tú",
+"word_count": 2,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 2
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "tú",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01U01",
+"seed_number": 220,
+"lego_index": 1,
+"position": 10,
+"known_text": "Did you watch something interesting at the weekend, or were you too busy to sit down at all?",
+"target_text": "ar fhéach tú ar rud éigin suimiúil ag an deireadh seachtaine, nó an raibh tú ró-ghnóthach ar chor ar bith?",
+"word_count": 106,
+"lego_count": 18,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:07.317Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "interesting",
+"legoId": "S0163L03",
+"target": " suimiúil",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " ag",
+"isGhost": true
+},
+{
+"known": "the weekend",
+"legoId": "S0214L04",
+"target": " an deireadh seachtaine",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "or",
+"legoId": "S0044L01",
+"target": " nó",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "too busy",
+"legoId": "S0193L04",
+"target": " ró-ghnóthach",
+"isGhost": false
+},
+{
+"known": "at all",
+"legoId": "S0191L02",
+"target": " ar chor ar bith",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01U08",
+"seed_number": 220,
+"lego_index": 1,
+"position": 17,
+"known_text": "Did you watch something that you thought was very unusual last night, or was it something you expected to see?",
+"target_text": "ar fhéach tú ar rud éigin a cheap tú a bhí an-neamhghnách aréir, nó an raibh tú ag súil leis?",
+"word_count": 93,
+"lego_count": 20,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:07.317Z",
+"known_score": 7,
+"target_score": 7
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "his",
+"legoId": "S0052L05",
+"target": " a",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " cheap",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "his",
+"legoId": "S0052L05",
+"target": " a",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhí",
+"isGhost": true
+},
+{
+"known": "very unusual",
+"legoId": "S0166L02",
+"target": " an-neamhghnách",
+"isGhost": false
+},
+{
+"known": "last night",
+"legoId": "S0042L02",
+"target": " aréir",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "or",
+"legoId": "S0044L01",
+"target": " nó",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " tú",
+"isGhost": true
+},
+{
+"known": "expecting it",
+"legoId": "S0112L03",
+"target": " ag súil leis",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01U07",
+"seed_number": 220,
+"lego_index": 1,
+"position": 16,
+"known_text": "Did you watch anything at the weekend, because your friend was trying to find out if you had watched it?",
+"target_text": "ar fhéach tú ar rud éigin ag an deireadh seachtaine, mar bhí do chara ag iarraidh a fháil amach ar fhéach tú air?",
+"word_count": 113,
+"lego_count": 19,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:07.317Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": "ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ar",
+"isGhost": true
+},
+{
+"known": "something",
+"legoId": "S0004L01",
+"target": " rud éigin",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " ag",
+"isGhost": true
+},
+{
+"known": "the weekend",
+"legoId": "S0214L04",
+"target": " an deireadh seachtaine",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "because",
+"legoId": "S0022L01",
+"target": " mar",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhí",
+"isGhost": true
+},
+{
+"known": "your friend",
+"legoId": "S0083L05",
+"target": " do chara",
+"isGhost": false
+},
+{
+"known": "I'm trying to",
+"legoId": "S0002L01",
+"target": " ag iarraidh",
+"isGhost": false
+},
+{
+"known": "finding out",
+"legoId": "S0101L04",
+"target": " a fháil amach",
+"isGhost": false
+},
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": " ar fhéach tú",
+"isGhost": false
+},
+{
+"known": "about it",
+"legoId": "S0037L03",
+"target": " air",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01U03",
+"seed_number": 220,
+"lego_index": 1,
+"position": 12,
+"known_text": "I am not sure if you watched it but I thought it was very interesting and I would like to talk about it",
+"target_text": "Níl mé cinnte ar fhéach tú air, ach cheap mé go raibh sé an-suimiúil agus ba mhaith liom labhairt faoi sin",
+"word_count": 107,
+"lego_count": 23,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:07.317Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": null,
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I'm not sure",
+"legoId": "S0010L01",
+"target": "Níl mé cinnte",
+"isGhost": false
+},
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": " ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "about it",
+"legoId": "S0037L03",
+"target": " air",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "but",
+"legoId": "S0019L01",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "I thought",
+"legoId": "S0124L01",
+"target": " cheap mé",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " go",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "it",
+"legoId": "S0163L02",
+"target": " sé",
+"isGhost": false
+},
+{
+"known": "very interesting",
+"legoId": "S0112L01",
+"target": " an-suimiúil",
+"isGhost": false
+},
+{
+"known": "and",
+"legoId": "S0112L02",
+"target": " agus",
+"isGhost": false
+},
+{
+"known": "I would like",
+"legoId": "S0110L03",
+"target": " ba mhaith liom",
+"isGhost": false
+},
+{
+"known": "speak",
+"legoId": "S0090L02",
+"target": " labhairt",
+"isGhost": false
+},
+{
+"known": "about that",
+"legoId": "S0162L02",
+"target": " faoi sin",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0220L01U06",
+"seed_number": 220,
+"lego_index": 1,
+"position": 15,
+"known_text": "I am not sure whether you had a chance to watch it but I thought it was something really worth seeing",
+"target_text": "Níl mé cinnte ar fhéach tú air ach ceapaim gur rud maith é agus go raibh sé an-suimiúil ar fad",
+"word_count": 95,
+"lego_count": 21,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:07.317Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:57:31.410Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": null,
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:22:31.498Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I'm not sure",
+"legoId": "S0010L01",
+"target": "Níl mé cinnte",
+"isGhost": false
+},
+{
+"known": "did you watch",
+"legoId": "S0220L01",
+"target": " ar fhéach tú",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "about it",
+"legoId": "S0037L03",
+"target": " air",
+"isGhost": false
+},
+{
+"known": "but",
+"legoId": "S0019L01",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "I think that it's a good thing",
+"legoId": "S0047L02",
+"target": " ceapaim gur rud maith é",
+"isGhost": false
+},
+{
+"known": "and",
+"legoId": "S0112L02",
+"target": " agus",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " go",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " raibh",
+"isGhost": true
+},
+{
+"known": "it",
+"legoId": "S0163L02",
+"target": " sé",
+"isGhost": false
+},
+{
+"known": "very interesting",
+"legoId": "S0112L01",
+"target": " an-suimiúil",
+"isGhost": false
+},
+{
+"known": "all",
+"legoId": "S0069L06",
+"target": " ar fad",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1135,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L03U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04U04"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04U03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04B03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04B02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0220L04B01"
+},
+{
+"op": "lego.delete",
+"id": "23a565ae-2e69-4471-bff5-cea14f5fa1dd"
+},
+{
+"op": "lego.delete",
+"id": "68033364-4c16-473e-a8a0-23ad6902ce47"
+},
+{
+"op": "lego.delete",
+"id": "aa130471-2617-46d4-a091-ad7c437f26b7"
+},
+{
+"op": "seed.update",
+"seed_number": 220,
+"set": {
+"known_text": "Did you watch a bit of television?",
+"target_text": "ar fhéach tú ar bheagán teilifíse?"
+}
+}
+],
+"undo_file": "2026-11-16T19-14-04-878Z-c7f60011-a0db-46ee-b08b-74fd1beedbd6.json",
+"_seconds": 5.7,
+"_family": "s220",
+"_seeds": [
+220
+],
+"_ops": 14
+}
