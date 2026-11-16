@@ -144,6 +144,43 @@ function standInPodPace({ courseCode, voiceId } = {}) {
   return isStandInVoice(voiceId) && isWelshCourse(courseCode) ? STANDIN_POD_PACE : 1
 }
 
+/**
+ * ARAN'S PRO CLONE IS THE ENGLISH KNOWN VOICE OF THE LIVE WELSH COURSES cym_n_for_eng / cym_s_for_eng.
+ *
+ * RULING, Tom 2026-11-16 11:40Z, verbatim: "We have Aran's Pro clone which is all we need for the English. We need to speed it
+ * up a bit for the known language English". Tom's Watson read it (thread ww-03084ac1, msg 496) as covering Aran's PRO clone for
+ * the cym_n_for_eng and cym_s_for_eng known-side English — "the VOICE_POLICY refusal is the policy lagging his words" — and Tom
+ * at 11:42Z: "Just tell Kai's Watson this". Kai approved the build 2026-11-16 12:38Z: "yes make the rule change and render the 11
+ * cues" — the ENGLISH (known) side of the Welsh courses only; the Welsh stays human (r-2026-11-08-welsh-courses-the-welsh-stays-human).
+ *
+ * Before this, resolveVoice answered english-known (Tom-006) for these slots, and welsh-no-tom-clone refused it, so every course-slot
+ * English cue on cym_n/cym_s was refused VOICE_POLICY (job #111·AI). Now resolveVoice answers STANDIN_VOICE here, and its one-voice
+ * check (the render route refuses any named voice that differs) makes it the ONLY voice for these slots.
+ *
+ * NARROW BY CONSTRUCTION, like the nv2/sv2 rule above it — but a SIBLING list, not that one: the nv2/sv2 rule also carries the
+ * belt paces, the take-replaces-stand-in rule and a one-voice provider ladder (tts-provider-policy), and the live courses' POD
+ * English must keep Charlotte for women (pod-line-voice.cjs englishPodKnownVoice), which that ladder rule would refuse.
+ *   - two course codes, listed here; every other cym_* course, Breton and pdc are not in it;
+ *   - role 'known' and a stated English language only; target1/target2 (Welsh) and presentation never match;
+ *   - one voice, STANDIN_VOICE; Tom's clone stays refused on every Welsh course (welsh-no-tom-clone.cjs, untouched);
+ *   - course SLOTS only: pod lines never reach resolveVoice. Bulk queues still skip Welsh courses whole (human-voice-courses.cjs).
+ */
+const ARAN_PRO_KNOWN_COURSES = Object.freeze(['cym_n_for_eng', 'cym_s_for_eng'])
+const ARAN_PRO_KNOWN_RULING = 'Tom 2026-11-16 11:40Z ("We have Aran\'s Pro clone which is all we need for the English"), ww-03084ac1 msg 496; Kai approved 12:38Z (job #112·AI)'
+
+/** May Aran's PRO clone speak this live-Welsh-course slot? course ∈ cym_n/cym_s, role 'known', language English (stated). */
+function isAranProKnownSlot({ courseCode, course, role, language } = {}) {
+  return ARAN_PRO_KNOWN_COURSES.includes(String(codeOf(courseCode || course) || '')) && role === 'known' && isEnglish(language)
+}
+
+/**
+ * THE KNOWN-SIDE PACE for those slots (Tom 2026-11-16: "We need to speed it up a bit"). A post-render tempo like the belt paces
+ * (Cartesia ignores request-time speed on this Professional clone). 1.1 is a DEFAULT, the smallest speed-up step on Tom's pod
+ * ear sample (1.0 / 1.1 / 1.15 / 1.2, job #913), set by job #112·AI pending Kai's ear on the listening page — change it here.
+ * A sibling of STANDIN_POD_PACE, not that dial: the pod pace was never picked and stays as it is.
+ */
+const ARAN_PRO_KNOWN_PACE = 1.1
+
 /** The seed position of a slot: { seedNumber } or { phraseId: 'course:S0014L01B08' } or { legoId: 'S0014L01' }. */
 function seedPositionOfSlot(slot = {}) {
   if (Number.isInteger(slot.seedNumber) && slot.seedNumber > 0) return slot.seedNumber
@@ -166,6 +203,10 @@ module.exports = {
   ARAN_ENGLISH_PRO_CLONE,
   RETIRED_STANDIN_VOICES,
   ARAN_CLONE_STANDIN_COURSES,
+  ARAN_PRO_KNOWN_COURSES,
+  ARAN_PRO_KNOWN_RULING,
+  ARAN_PRO_KNOWN_PACE,
+  isAranProKnownSlot,
   RULING,
   isCloneStandInCourse,
   isCloneStandInSlot,
