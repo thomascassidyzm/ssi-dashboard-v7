@@ -2091,6 +2091,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       role: w.role,
       rerecordWanted: true,
       rerecordReason: w.rerecord_wanted.reason || null,
+      // The same NAMED RE-QUEUE GRANT a pod line takes (requeueGrant), for a clip that is already
+      // this reader's take: Kai 16 Nov (cs #207·AI) linked Aran's June angry-eyes takes as stopgaps
+      // and wants them read again, so they stay on his list until his new take clears the want.
+      ...(grant ? { requeueFor: grant.voiceId, requeueBy: grant.by } : {}),
     }
     seen.set(key, line)
     byBucket.get(bucket).push(line)
