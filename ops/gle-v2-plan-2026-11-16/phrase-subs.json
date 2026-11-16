@@ -1,0 +1,11 @@
+[{"find":"(?i)\\ban gcuala\\b","repl":"ar chuala","why":"A8: ar chuala (196, 267, 366)"},
+{"find":"sheanbean","repl":"sheanbhean","why":"A8: seanbhean (232)"},
+{"find":"seanbean","repl":"seanbhean","why":"A8: seanbhean (232)"},
+{"find":"cruth mo chinn","repl":"cruth m'inchinne","why":"A3: seed 126 says m'inchinne"},
+{"find":"gloine nó dhó uisce","repl":"gloine uisce nó dhó","why":"A8: 217"},
+{"find":"céanna díreach","repl":"díreach céanna","why":"A8: 153"},
+{"find":"féachaint ar theilifís","repl":"féachaint ar an teilifís","why":"A8: 287, 288"},
+{"find":"(?<!mo )(?<!do )(?<!ár )(?<!a )scíth a ligean","known":"^(?!.*\\b(you|we|he|she|they|us|him|her|them)\\b)","repl":"mo scíth a ligean","why":"A8: 110, 219 (I-subject rows only; other persons are deleted below)"},
+{"find":"\\bi níos lú ná uair an chloig","repl":"in achar níos lú ná uair","why":"A8: 256"},
+{"find":"do smaoineamh an-mhaith","repl":"do smaoineamh go han-mhaith","why":"A8: 125"},
+{"find":"(?i)cé hé an fear sin","repl":"cérbh é an fear sin","known":"who was","why":"A8: 262"}]
