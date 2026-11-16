@@ -13,7 +13,7 @@
  *        ElevenLabs only: --model eleven_v3|eleven_v4|eleven_v4_turbo|eleven_multilingual_v2 and
  *        --voice-settings '{"stability":0.5,"similarity_boost":0.75,"speed":0.85,"style":0}'. Cartesia: --speed 0.7..1.
  *   --job "#913": the job this render belongs to; a Tom-approved job (tools/tts-cap.cjs approve)
- *        spends from its own allowance up to the 300k/day ceiling instead of the automatic 100k.
+ *        spends from its own allowance up to the 3M/day ceiling instead of the automatic 1M/day cap.
  *
  *   SHARED AUDIO (job #464): --role welcome (the course welcome; --text may be left out, the course's welcome script is said),
  *        --role encouragement | instruction [--sequence N] (shared by every course of that known language, in its presentation voice).

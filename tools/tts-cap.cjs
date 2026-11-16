@@ -2,16 +2,19 @@
 /**
  * THE DAILY TOTAL CAP — status, Tom's raise, and Tom's approval of one run (jobs #692, #913).
  *
- * Tom, 2026-09-29 00:25Z: "limit it to 50,000 characters per day TOTAL without my
- * express approval." The cap lives in tts_spend_reserve (ops/sql/20260930-tts-spend-tom-approved-run.sql):
- * 1,000,000 chars per UTC day (Tom 2026-10-07, was 260,000) summed over every provider.
+ * The cap IN FORCE: 1,000,000 chars per UTC day summed over every provider (Tom 2026-10-07,
+ * job #147, r-2026-10-07-tts-daily-cap-is-a-runaway), enforced in tts_spend_reserve (last
+ * defined in ops/sql/20261025-tts-spend-daily-rollup.sql); hard ceiling 3,000,000 over a
+ * Tom-signed run. History: 50,000 (Tom 2026-09-29 00:25Z, "limit it to 50,000 characters per
+ * day TOTAL without my express approval") → 100,000 → 260,000 → 1,000,000.
  *
  * Tom, 2026-09-30 11:38Z (job #913): "If other people want to generate audio, we still
  * have 100,000 character cap. But if I am approving a run, we can just go ahead and do
  * it. It would probably be sensible to have a cap at something like maybe 300,000."
  * So an APPROVAL names one job; that job's renders (POST /api/audio/render with
  * job "#NNN", or tools/audio/render.cjs --job) spend from their own allowance, the
- * automatic 100k is counted without them, and nothing takes a day past 300,000.
+ * automatic cap (1,000,000 since 2026-10-07) is counted without them, and nothing takes a day
+ * past the 3,000,000 ceiling.
  * Pair it with a jobRaises entry for the same job in ops/tts-spend-budgets.json, which
  * lifts the per-provider daily caps for that job alone.
  *
