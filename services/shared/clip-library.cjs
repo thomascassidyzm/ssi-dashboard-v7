@@ -52,6 +52,7 @@ const clipIndex = require('./clip-index.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')
 const { issueTicket } = require('./door-ticket.cjs')
 const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
+const { wordsOf, withSpokenText } = require('./clip-spoken-words.cjs')
 
 const PAGE = 1000
 const MAX_PAGES = 20
@@ -113,14 +114,15 @@ function usableClips(rows, want) {
     !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
     row.veracity_pass !== false &&
     // One recording, two spellings (job #813): a clip stored with phase 8's pod pause cue answers the plain words and back.
-    row.text != null && sameRecordedWords(row.text, want.text) &&
+    // Matched on the words the clip SAYS (cs #160·AI): a clip_spoken_text verdict, when the row carries one, replaces its label.
+    wordsOf(row) != null && sameRecordedWords(wordsOf(row), want.text) &&
     tryCanonicalLanguage(row.language) === want.language &&
     (!want.voiceBound || tryCanonicalVoiceId(row.voice_id) === want.voiceId) &&
     // An intro slot is answered only by its own course (Tom, 2026-08-07).
     (!want.ownCourseOnly || (want.courseCode != null && row.course_code === want.courseCode)))
 }
 
-const COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_pass'
+const COLUMNS = 'id, course_code, text, language, voice_id, role, s3_key, origin, audio_revision, duration_ms, word_boundaries, word_timings, veracity_pass'
 
 /**
  * The live library: course_audio in Supabase, bytes from S3. Created lazily so
@@ -166,7 +168,8 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
         // a library outage turns into a render bill. Refuse instead.
         if (error) throw new Error(`TTS door: clip lookup failed (${error.message}) — refusing to render blind`)
         out.push(...(data || []))
-        if (!data || data.length < PAGE) return out
+        // With the clip_spoken_text verdicts attached (cs #160·AI), so usableClips matches on the words each clip says.
+        if (!data || data.length < PAGE) return withSpokenText(db(), out)
       }
       throw new Error(`TTS door: more than ${PAGE * MAX_PAGES} clips share the words "${String(text).slice(0, 40)}" — refusing to render on a truncated lookup`)
     },
@@ -283,7 +286,7 @@ function clipsInLanguage(rows, { language, text }) {
   for (const row of rows || []) {
     if (!row || !row.s3_key || String(row.s3_key).startsWith('pending/')) continue
     if (isPodOnlyClip(row)) continue // a pod piece is not "the recording of these words" for a slot (job #628)
-    if (row.text == null || !sameRecordedWords(row.text, text)) continue
+    if (wordsOf(row) == null || !sameRecordedWords(wordsOf(row), text)) continue // the words it SAYS (cs #160·AI)
     if (!oneLanguage(language, row.language)) continue
     if (!out.has(String(row.id))) out.set(String(row.id), row)
   }
