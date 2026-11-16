@@ -252,7 +252,7 @@ const {
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
-const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
+const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast, COURSE_FIELDS: COURSE_FIELDS_FOR_CAST } = require('../shared/resolve-voice.cjs')
 const { slotVoiceException } = require('../shared/slot-voice-exceptions.cjs')
 const { mayReplace: mayReplaceHumanTake } = require('../shared/human-take-guard.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
@@ -5714,8 +5714,27 @@ function sharedAudioDeps() {
   }
 }
 
-function buildRenderDeps() {
+function buildRenderDeps({ verifiedApproval = null } = {}) {
   const deps = {
+      // The approval string /render verified the ORIGIN of (approval-origin.cjs), or null. Set only by the handler, never from
+      // the request body: audio-render-entry approvedCastMove (cs #243·AI) moves a re-record onto the cast voice only under it.
+      verifiedApproval,
+      // The course's CURRENT cast voice for a slot role, from the cast itself (resolveVoice status 'voice'), or null.
+      castVoice: async ({ courseCode, role, language }) => {
+        const { data: course, error } = await supabase.from('courses').select(COURSE_FIELDS_FOR_CAST).eq('course_code', courseCode).maybeSingle()
+        if (error) throw new Error(`courses unreadable: ${error.message}`)
+        if (!course) return null
+        const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
+        return rv.status === 'voice' ? rv.voiceId : null
+      },
+      // Does another row already hold this clip's identity in `voiceId`? (unique_course_audio_per_voice — checked before spend.)
+      identityTaken: async ({ row, voiceId }) => {
+        const { data, error } = await supabase.from('course_audio').select('id')
+          .eq('course_code', row.course_code).eq('language', row.language).eq('role', row.role).eq('voice_id', voiceId)
+          .eq('text_normalized', row.text_normalized != null ? row.text_normalized : normalizeForAudio(row.text)).neq('id', row.id).limit(1)
+        if (error) throw new Error(`course_audio unreadable: ${error.message}`)
+        return !!(data && data.length)
+      },
       immersionTurn: immersionTurnForRender,
       // Per-language stop (job #352): every recording of these words in this language, any course / side / voice, and the
       // route's existing re-record authority that may let a second performance past it.
@@ -5880,7 +5899,7 @@ function buildRenderDeps() {
         return out
       },
       loadClip: async (audioId) => {
-        const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text').eq('id', audioId).maybeSingle()
+        const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text, text_normalized').eq('id', audioId).maybeSingle()
         if (error) throw new Error(`course_audio unreadable: ${error.message}`)
         return data
       },
@@ -6140,11 +6159,13 @@ app.post('/render', async (req, res) => {
     // APPROVAL ORIGIN (job #116·AI): a kai:/tom: approval counts only if the sending conversation is on that seat — the
     // surface says so from the caller's x-cs-conv token (services/shared/approval-origin.cjs). Checked on this port because it
     // is reachable directly on loopback; production-api forwards the header. A request with no approval is untouched.
+    let verifiedApproval = null
     if (req.body && req.body.approval) {
       const v = await approvalOrigin.verifyApprovalOrigin(String(req.body.approval), req.get('x-cs-conv'))
       logger.info(`[approval-origin] ${v.approver}: approval verified (seat ${v.seat}) who=${who}`)
+      verifiedApproval = String(req.body.approval)
     }
-    const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps(), supabase, logger })
+    const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps({ verifiedApproval }), supabase, logger })
     res.json(out)
   } catch (error) {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}), ...(error.existing ? { existing: error.existing } : {}) })

@@ -37,6 +37,7 @@ const existsInLanguage = require('./exists-in-language-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
 const standIn = require('./aran-clone-standin.cjs')
 const pronunciation = require('./pronunciation-overrides.cjs')
+const { sameVoice } = require('./resolve-voice.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -485,8 +486,16 @@ async function rerecord(req, deps) {
         purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
     }
   }
-  const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
+  let r
+  try {
+    r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
+  } catch (e) {
+    if (!e || e.code !== 'VOICE_POLICY') throw e
+    r = await approvedCastMove(req, row, deps, e)   // throws `e` itself unless every condition below holds
+  }
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  // ident.voiceId is what deps.replace writes into the row's voice_id (rerecordPatch), so a cast move leaves the clip
+  // recorded as the cast voice, and later passes never treat it as the old one.
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
   // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
   const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job, podLine: !!req.podSentenceId } }
@@ -496,12 +505,46 @@ async function rerecord(req, deps) {
   const spoke = await deps.speak(said, r.provider, cfg, 1)
   // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
   const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode, row.language) }
-  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said, ...(spokenVerdict ? { spokenVerdict: spokenVerdict.spoken_text } : {}) }
+  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said, voiceId: r.voiceId, ...(r.castMoveFrom ? { castMoveFrom: r.castMoveFrom } : {}), ...(spokenVerdict ? { spokenVerdict: spokenVerdict.spoken_text } : {}) }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
     ? await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
     : await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
+}
+
+/**
+ * AN APPROVED RE-RECORD MAY MOVE A CLIP ONTO THE CAST (cs #243·AI; Kai 2026-11-16 17:37Z, "Sure, rerecord the French. With
+ * cartesia, yes?"). A re-record keeps the clip's own voice, and resolveVoice refuses VOICE_POLICY when that voice is no longer
+ * the course's cast for the role (fra_for_eng's female clips in retired xAI eve). Re-recording such a clip in its old voice
+ * would pay for the wrong voice, and the only other way was a fresh cast render plus a relink (#155·AI's two-step, twice the
+ * characters). So the refusal is lifted for ONE shape of request, and only when ALL of these hold:
+ *   1. it is a re-record of an existing clip (we are inside rerecord(), the row was loaded and passed its checks);
+ *   2. it carries an approval whose ORIGIN the /render handler verified (deps.verifiedApproval is that very string — set by
+ *      the handler after approval-origin.cjs passed, never by the caller) AND the re-record gate grants it (rerecordGranted);
+ *   3. the caller named no voice of their own (a named voice already had to equal the row's — VOICE_MISMATCH above);
+ *   4. the voice rendered is EXACTLY the course's current cast voice for the slot, read from the cast by deps.castVoice
+ *      (resolveVoice status 'voice'), and deps.resolve without a named voice answers that same voice;
+ *   5. no other row of this course already holds the clip's identity in the cast voice (unique_course_audio_per_voice):
+ *      the swap would fail AFTER the render was paid for, so it is refused here, before any spend (CAST_IDENTITY_TAKEN).
+ * Anything else re-throws the original VOICE_POLICY refusal unchanged. Library-first, the spend guard, one render, the
+ * swap (make-before-break: new object uploaded and HEADed before the row moves; old object kept) are untouched.
+ */
+async function approvedCastMove(req, row, deps, refusal) {
+  if (!req.approval || !deps.verifiedApproval || deps.verifiedApproval !== req.approval) throw refusal
+  if (req.voiceId) throw refusal
+  if (!deps.castVoice || !deps.rerecordGranted) throw refusal
+  const grant = await deps.rerecordGranted({ courseCode: req.courseCode, role: req.role, approval: req.approval })
+  if (!grant) throw refusal
+  const role = voiceSlotFor(req.role)
+  const cast = await deps.castVoice({ courseCode: req.courseCode, role, language: row.language })
+  if (!cast) throw refusal
+  const r = await deps.resolve({ ...req, role, language: row.language, voiceId: null })
+  if (!sameVoice(r.voiceId, cast)) throw refusal
+  if (deps.identityTaken && await deps.identityTaken({ row, voiceId: r.voiceId })) {
+    throw new RenderRequestError(`${row.id}: ${req.courseCode} already has a ${row.role} row for these words in the cast voice ${r.voiceId} — the move would collide (unique_course_audio_per_voice); link that clip instead`, 409, 'CAST_IDENTITY_TAKEN')
+  }
+  return { ...r, castMoveFrom: row.voice_id }
 }
 
 const RERECORD_IDEMPOTENT_MS = 24 * 3600 * 1000 // the spend guard's REPEAT window: a day
