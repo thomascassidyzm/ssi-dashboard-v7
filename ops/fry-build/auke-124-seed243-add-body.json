@@ -1,0 +1,94 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0243L01B04",
+    "seed_number": 243,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "I'm going to give you the same thing to eat",
+    "target_text": "ik sil dy itselde te iten jaan",
+    "word_count": 30,
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "metadata": {
+     "format": "build_use",
+     "source": "cs #124 (proposed #121, Kai YES 16 Nov)"
+    },
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0243L01U06",
+    "seed_number": 243,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "I didn't want to give you the same thing to eat",
+    "target_text": "ik woe dy net itselde te iten jaan",
+    "word_count": 34,
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "metadata": {
+     "format": "build_use",
+     "source": "cs #124 (proposed #121, Kai YES 16 Nov)"
+    },
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0243L01U07",
+    "seed_number": 243,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "I can't give you the same thing to eat",
+    "target_text": "ik kin dy net itselde te iten jaan",
+    "word_count": 34,
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "metadata": {
+     "format": "build_use",
+     "source": "cs #124 (proposed #121, Kai YES 16 Nov)"
+    },
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0243L01U08",
+    "seed_number": 243,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "have you got the same thing to eat?",
+    "target_text": "hastû itselde te iten?",
+    "word_count": 22,
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "metadata": {
+     "format": "build_use",
+     "source": "cs #124 (proposed #121, Kai YES 16 Nov)"
+    },
+    "lego_count": 8
+   }
+  }
+ ],
+ "reason": "cs #124: Kai 16 Nov 'Add all four seed-243 phrases? Y' - te iten replacements for the 4 deleted wolle lines (event 1b5ee41b); proposed #121 d/22c50ec8",
+ "apply": true
+}
