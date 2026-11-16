@@ -1,0 +1,242 @@
+{
+"family": "guess",
+"seeds": [
+260
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 260,
+"set": {
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt"
+},
+"expect": {
+"known_text": "I don't have the faintest idea",
+"target_text": "Níl an tuairim is lú agam"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 2,
+"known_text": "an idea",
+"target_text": "smaoineamh",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 3,
+"known_text": "the faintest",
+"target_text": "dá laghad",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "the faintest",
+"target": "dá laghad"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 4,
+"known_text": "I don't have an idea",
+"target_text": "níl smaoineamh agam",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "no",
+"target": "níl"
+},
+{
+"known": "an idea",
+"target": "smaoineamh"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 5,
+"known_text": "but",
+"target_text": "ach",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 6,
+"known_text": "I can",
+"target_text": "is féidir liom",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "with me",
+"target": "liom"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 7,
+"known_text": "a guess",
+"target_text": "buille faoi thuairim",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "a guess",
+"target": "buille faoi thuairim"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 260,
+"lego_index": 8,
+"known_text": "to guess",
+"target_text": "buille faoi thuairim a thabhairt",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "a guess",
+"target": "buille faoi thuairim"
+},
+{
+"known": "to give",
+"target": "a thabhairt"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0260L03U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 260,
+"lego_index": 3,
+"position": 101,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 82,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0260L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 260,
+"lego_index": 4,
+"position": 101,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 82,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0260L07U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 260,
+"lego_index": 7,
+"position": 101,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 82,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0260L08U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 260,
+"lego_index": 8,
+"position": 101,
+"known_text": "I don't have the faintest idea, but I can guess",
+"target_text": "Níl smaoineamh dá laghad agam, ach is féidir liom buille faoi thuairim a thabhairt",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 82,
+"lego_count": 14
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0260L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "tuairim"
+}
+}
+]
+}

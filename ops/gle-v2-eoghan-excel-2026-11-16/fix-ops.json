@@ -1,0 +1,366 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 109,
+   "expect": {
+    "target_text": "caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+   },
+   "set": {
+    "target_text": "caithfidh muid obair go dian chun a lán focal nua a fhoghlaim"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 318,
+   "expect": {
+    "target_text": "Ní cheapaim, is é mo thuairim nach bhféadfadh sí é a thabhairt léi an uair seo"
+   },
+   "set": {
+    "target_text": "Ní cheapaim, i mo thuairim féin ní fhéadfadh sí é a thabhairt léi an uair seo"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 597,
+   "expect": {
+    "target_text": "Is é mo thuairim go bhfuil na céadta scéal cloiste aige faoi"
+   },
+   "set": {
+    "target_text": "I mo thuairim féin, tá na céadta scéal cloiste aige faoi"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 414,
+   "expect": {
+    "target_text": "an bhféadfadh muid buidéal fíona deirg a fháil le do thoil?"
+   },
+   "set": {
+    "target_text": "an bhféadfadh muid buidéal fíona dheirg a fháil le do thoil?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0109L01U01",
+   "expect": {
+    "target_text": "caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+   },
+   "set": {
+    "target_text": "caithfidh muid obair go dian chun a lán focal nua a fhoghlaim",
+    "decomposition": [
+     {
+      "known": "we must",
+      "legoId": "S0104L01",
+      "target": "caithfidh muid",
+      "isGhost": false
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "in order to",
+      "legoId": "S0065L04",
+      "target": " chun",
+      "isGhost": false
+     },
+     {
+      "known": "enough words",
+      "legoId": "S0058L03",
+      "target": " go leor focal",
+      "isGhost": false
+     },
+     {
+      "known": "new",
+      "legoId": "S0109L01",
+      "target": " nua",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to learn it",
+      "legoId": "S0020L03",
+      "target": " a fhoghlaim",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0123L02U07",
+   "expect": {
+    "target_text": "ceapaim gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+   },
+   "set": {
+    "target_text": "ceapaim gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian chun a lán focal nua a fhoghlaim",
+    "decomposition": [
+     {
+      "known": "I think",
+      "legoId": "S0123L01",
+      "target": "ceapaim",
+      "isGhost": false
+     },
+     {
+      "known": "that it's a good idea",
+      "legoId": "S0123L02",
+      "target": " gur smaoineamh maith é sin",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " mar",
+      "isGhost": false
+     },
+     {
+      "known": "we do not need to",
+      "legoId": "S0106L01",
+      "target": " ní chaithfidh muid",
+      "isGhost": false
+     },
+     {
+      "known": "to be",
+      "legoId": "S0106L02",
+      "target": " a bheith",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " sásta",
+      "isGhost": true
+     },
+     {
+      "known": "we must",
+      "legoId": "S0104L01",
+      "target": " caithfidh muid",
+      "isGhost": false
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "in order to",
+      "legoId": "S0065L04",
+      "target": " chun",
+      "isGhost": false
+     },
+     {
+      "known": "enough words",
+      "legoId": "S0058L03",
+      "target": " go leor focal",
+      "isGhost": false
+     },
+     {
+      "known": "new",
+      "legoId": "S0109L01",
+      "target": " nua",
+      "isGhost": false
+     },
+     {
+      "known": "to learn it",
+      "legoId": "S0020L03",
+      "target": " a fhoghlaim",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02B06",
+   "expect": {
+    "target_text": "cheap mé gur smaoineamh maith é sin obair go dian le a lán focal nua a fhoghlaim"
+   },
+   "set": {
+    "target_text": "cheap mé gur smaoineamh maith é sin obair go dian chun a lán focal nua a fhoghlaim",
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0124L01",
+      "target": "cheap mé",
+      "isGhost": false
+     },
+     {
+      "known": "that it was a good idea",
+      "legoId": "S0124L02",
+      "target": " gur smaoineamh maith é sin",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "in order to",
+      "legoId": "S0065L04",
+      "target": " chun",
+      "isGhost": false
+     },
+     {
+      "known": "enough words",
+      "legoId": "S0058L03",
+      "target": " go leor focal",
+      "isGhost": false
+     },
+     {
+      "known": "new",
+      "legoId": "S0109L01",
+      "target": " nua",
+      "isGhost": false
+     },
+     {
+      "known": "to learn it",
+      "legoId": "S0020L03",
+      "target": " a fhoghlaim",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "gle_v2_for_eng:S0124L02U15",
+   "expect": {
+    "target_text": "cheap mé gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian le a lán focal nua a fhoghlaim"
+   },
+   "set": {
+    "target_text": "cheap mé gur smaoineamh maith é sin obair go dian mar ní chaithfidh muid a bheith sásta caithfidh muid obair go dian chun a lán focal nua a fhoghlaim",
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0124L01",
+      "target": "cheap mé",
+      "isGhost": false
+     },
+     {
+      "known": "that it was a good idea",
+      "legoId": "S0124L02",
+      "target": " gur smaoineamh maith é sin",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0022L01",
+      "target": " mar",
+      "isGhost": false
+     },
+     {
+      "known": "we do not need to",
+      "legoId": "S0106L01",
+      "target": " ní chaithfidh muid",
+      "isGhost": false
+     },
+     {
+      "known": "to be",
+      "legoId": "S0106L02",
+      "target": " a bheith",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " sásta",
+      "isGhost": true
+     },
+     {
+      "known": "we must",
+      "legoId": "S0104L01",
+      "target": " caithfidh muid",
+      "isGhost": false
+     },
+     {
+      "known": "to work",
+      "legoId": "S0106L05",
+      "target": " obair",
+      "isGhost": false
+     },
+     {
+      "known": "hard",
+      "legoId": "S0106L06",
+      "target": " go dian",
+      "isGhost": false
+     },
+     {
+      "known": "in order to",
+      "legoId": "S0065L04",
+      "target": " chun",
+      "isGhost": false
+     },
+     {
+      "known": "enough words",
+      "legoId": "S0058L03",
+      "target": " go leor focal",
+      "isGhost": false
+     },
+     {
+      "known": "new",
+      "legoId": "S0109L01",
+      "target": " nua",
+      "isGhost": false
+     },
+     {
+      "known": "to learn it",
+      "legoId": "S0020L03",
+      "target": " a fhoghlaim",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}

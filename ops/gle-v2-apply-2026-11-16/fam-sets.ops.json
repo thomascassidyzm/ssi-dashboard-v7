@@ -1,0 +1,1669 @@
+{
+"family": "sets",
+"seeds": [
+37,
+38,
+74,
+78,
+79,
+104,
+130,
+155,
+181,
+188,
+214,
+263
+],
+"ops": [
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 37,
+"lego_index": 6,
+"known_text": "to think about it",
+"target_text": "ag smaoineamh air",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "to think",
+"target": "ag smaoineamh"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 101,
+"known_text": "I started thinking about it",
+"target_text": "thosaigh mé ag smaoineamh air",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 102,
+"known_text": "thinking about it carefully",
+"target_text": "ag smaoineamh air go cúramach",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 103,
+"known_text": "I started thinking about it carefully last month",
+"target_text": "thosaigh mé ag smaoineamh air go cúramach an mhí seo caite",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03B06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 58,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 104,
+"known_text": "I started thinking about it after you finished talking",
+"target_text": "thosaigh mé ag smaoineamh air tar éis duit críochnú ag caint",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 60,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 105,
+"known_text": "he started thinking about it last month",
+"target_text": "thosaigh sé ag smaoineamh air an mhí seo caite",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 46,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 106,
+"known_text": "I started thinking about it as soon as possible",
+"target_text": "thosaigh mé ag smaoineamh air chomh luath agus is féidir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03U11"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 56,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 107,
+"known_text": "I started thinking about it because I want to get better",
+"target_text": "thosaigh mé ag smaoineamh air mar is mian liom labhairt níos fearr",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0037L03U15"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 66,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0037L06B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 37,
+"lego_index": 6,
+"position": 108,
+"known_text": "you started to think about it",
+"target_text": "thosaigh tú ag smaoineamh air",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0079L02B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L04U04",
+"set": {
+"target_text": "thosaigh sé ag smaoineamh go cúramach faoi cad a tharlóidh amárach"
+},
+"expect": {
+"target_text": "thosaigh sé ag smaoineamh go cúramach faoin rud a tharlóidh amárach",
+"known_text": "he started thinking carefully about what is going to happen tomorrow"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0037L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "air"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 38,
+"lego_index": 5,
+"known_text": "for about a week",
+"target_text": "le timpeall seachtaine",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "about a week",
+"target": "timpeall seachtaine"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0038L01",
+"set": {
+"is_new": false
+},
+"expect": {
+"known_text": "I am",
+"target_text": "tá mé",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 101,
+"known_text": "I am trying for about a week",
+"target_text": "Tá mé ag iarraidh le timpeall seachtaine",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 40,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 102,
+"known_text": "I have been learning for about a week",
+"target_text": "Tá mé ag foghlaim le timpeall seachtaine",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 40,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 103,
+"known_text": "I have been thinking carefully for about a week",
+"target_text": "Tá mé ag smaoineamh go cúramach le timpeall seachtaine",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03B06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 54,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 104,
+"known_text": "I have been learning Irish for about a week now",
+"target_text": "Tá mé ag foghlaim Gaeilge le timpeall seachtaine anois",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 54,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 105,
+"known_text": "I have been thinking about it carefully for about a week",
+"target_text": "Tá mé ag smaoineamh air go cúramach le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 58,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 106,
+"known_text": "I have been trying to talk to people here for about a week",
+"target_text": "Tá mé ag iarraidh labhairt le daoine anseo le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 65,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 107,
+"known_text": "I have been trying to remember the full sentence for about a week",
+"target_text": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 71,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 108,
+"known_text": "I have been looking forward to talking to you for about a week",
+"target_text": "Tá mé ag tnúth le labhairt leat le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 54,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 109,
+"known_text": "he has been thinking carefully about what he wants to say for about a week",
+"target_text": "Tá sé ag smaoineamh go cúramach le timpeall seachtaine mar ba mhian leis rud éigin a rá",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 87,
+"lego_count": 17
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 110,
+"known_text": "I have been trying to find out the answer for about a week",
+"target_text": "Tá mé ag iarraidh fáil amach cad é an freagra le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U09"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 68,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 111,
+"known_text": "I have been trying to explain what I mean for about a week",
+"target_text": "Tá mé ag iarraidh cad atá i gceist agam a mhíniú le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U11"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 71,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0038L05U09",
+"course_code": "gle_v2_for_eng",
+"seed_number": 38,
+"lego_index": 5,
+"position": 112,
+"known_text": "he has been trying to meet people who speak Irish for about a week",
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu le timpeall seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0038L03U13"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 79,
+"lego_count": 14
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L01B01",
+"expect": {
+"target_text": "tá mé"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L01B02",
+"expect": {
+"target_text": "Tá mé ag iarraidh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L01B03",
+"expect": {
+"target_text": "Tá mé ag foghlaim"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0038L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "le"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0074L03",
+"set": {
+"known_text": "for helping me",
+"target_text": "as cabhrú liom",
+"components": [
+{
+"known": "for helping",
+"target": "as cabhrú"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+]
+},
+"expect": {
+"known_text": "helping me",
+"target_text": "cabhrú liom",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0074L03U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 74,
+"lego_index": 3,
+"position": 101,
+"known_text": "thank you very much for helping me to understand it",
+"target_text": "go raibh míle maith agat as cabhrú liom tuiscint a fháil air",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 60,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03B01",
+"expect": {
+"target_text": "cabhrú liom arís"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03B02",
+"expect": {
+"target_text": "níl sé deacair cabhrú liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03B03",
+"expect": {
+"target_text": "nach miste leat cabhrú liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03B04",
+"expect": {
+"target_text": "cabhrú liom faoi láthair"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U01",
+"expect": {
+"target_text": "an bhfuil tú cinnte nach miste leat cabhrú liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U02",
+"expect": {
+"target_text": "níl sé éasca cabhrú liom faoi láthair"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U03",
+"expect": {
+"target_text": "go raibh míle maith agat mar níl sé éasca cabhrú liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U04",
+"expect": {
+"target_text": "níl sé deacair cabhrú liom ach níl sé spraíúil"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U05",
+"expect": {
+"target_text": "tá sé suimiúil cabhrú liom nuair a thuigeann tú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0074L03U06",
+"expect": {
+"target_text": "an bhfuil tú cinnte nach miste leat cabhrú liom arís amárach"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0074L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "as"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0078L02",
+"set": {
+"known_text": "what you said",
+"target_text": "cad a dúirt tú",
+"components": [
+{
+"known": "that you said",
+"target": "a dúirt tú"
+}
+]
+},
+"expect": {
+"known_text": "what",
+"target_text": "cad a",
+"is_new": true
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0078L02B03",
+"expect": {
+"target_text": "a mhíniú cad a thuigeann tú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0078L02U03",
+"expect": {
+"target_text": "níl mé cinnte cad a thuigeann tú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0078L02U06",
+"expect": {
+"target_text": "cad a thuigeann tú anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0078L02U07",
+"expect": {
+"target_text": "níl a fhios agam go fóill cad a thuigeann tú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0079L01",
+"set": {
+"known_text": "when did you start",
+"target_text": "cathain a thosaigh tú"
+},
+"expect": {
+"known_text": "when",
+"target_text": "cathain a",
+"is_new": true
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01B01",
+"expect": {
+"target_text": "cathain a"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01B05",
+"expect": {
+"target_text": "cathain a bhfuil tú ag iarraidh tosú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01B06",
+"expect": {
+"target_text": "níl mé cinnte cathain a bheidh mé réidh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01C01",
+"expect": {
+"target_text": "cathain"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01C02",
+"expect": {
+"target_text": "a"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U02",
+"expect": {
+"target_text": "níl mé cinnte cathain a bheidh mé réidh ach ceapaim go mbeidh sé go luath"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U03",
+"expect": {
+"target_text": "cathain a bhfuil tú ag iarraidh tosú ag caint níos mó sa teanga"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U06",
+"expect": {
+"target_text": "cathain a bhfuil tú ag iarraidh bualadh liom an tseachtain seo"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U08",
+"expect": {
+"target_text": "cathain a bheidh tú réidh le teacht ar ais agus labhairt níos mó le gach duine eile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U09",
+"expect": {
+"target_text": "níl mé cinnte cathain a thosaigh mé ag foghlaim ach is mian liom labhairt níos fearr go luath"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U10",
+"expect": {
+"target_text": "cathain a bhfuil tú ag iarraidh tosú ag cleachtadh labhairt le duine éigin eile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0079L01U13",
+"expect": {
+"target_text": "cathain a bhfuil tú ag iarraidh dul ar ais ag caint chomh minic agus is féidir"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0079L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "thosaigh tú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0104L04",
+"set": {
+"known_text": "the thing that is"
+},
+"expect": {
+"known_text": "what",
+"target_text": "an rud atá",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0104L04U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 104,
+"lego_index": 4,
+"position": 111,
+"known_text": "I know it is difficult but I am thinking about what you are talking about",
+"target_text": "tá a fhios agam go bhfuil sé deacair ach tá mé ag smaoineamh ar an rud atá tú ag caint faoi",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0068L02U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 91,
+"lego_count": 21
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0104L04B05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 104,
+"lego_index": 4,
+"position": 112,
+"known_text": "the thing you mean",
+"target_text": "an rud atá i gceist agat",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L03B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 24,
+"lego_count": 6
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 130,
+"lego_index": 4,
+"known_text": "because",
+"target_text": "mar",
+"type": "A",
+"is_new": false,
+"status": "draft"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0130L01",
+"set": {
+"known_text": "a surprise"
+},
+"expect": {
+"known_text": "surprise",
+"target_text": "iontas",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0130L02",
+"set": {
+"known_text": "that was a surprise",
+"target_text": "iontas a bhí ann",
+"components": [
+{
+"known": "a surprise",
+"target": "iontas"
+},
+{
+"known": "who was there",
+"target": "a bhí ann"
+}
+]
+},
+"expect": {
+"known_text": "that was there",
+"target_text": "a bhí ann",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0130L03",
+"set": {
+"known_text": "he's my friend",
+"target_text": "is cara liom é",
+"components": [
+{
+"known": "a friend",
+"target": "cara"
+},
+{
+"known": "with me",
+"target": "liom"
+}
+]
+},
+"expect": {
+"known_text": "my friend",
+"target_text": "cara liom",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0130L01U09",
+"course_code": "gle_v2_for_eng",
+"seed_number": 130,
+"lego_index": 1,
+"position": 112,
+"known_text": "That was a good surprise",
+"target_text": "iontas maith a bhí ann",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0130L02U02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 22,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L02B01",
+"expect": {
+"target_text": "a bhí ann"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L02C01",
+"expect": {
+"target_text": "a bhí"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L02C02",
+"expect": {
+"target_text": "ann"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L02U02",
+"expect": {
+"target_text": "iontas maith a bhí ann"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L02U04",
+"expect": {
+"target_text": "cad a bhí ann?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03B01",
+"expect": {
+"target_text": "cara liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03C01",
+"expect": {
+"target_text": "cara"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03C02",
+"expect": {
+"target_text": "liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03U03",
+"expect": {
+"target_text": "Ní cara liom é"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03U04",
+"expect": {
+"target_text": "bhí cara liom ag caint i nGaeilge"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03U05",
+"expect": {
+"target_text": "Is mian le cara liom foghlaim"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03U06",
+"expect": {
+"target_text": "bhí cara liom ag iarraidh Gaeilge a labhairt liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0130L03U08",
+"expect": {
+"target_text": "bhí cara liom ag foghlaim Gaeilge"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0155L02",
+"set": {
+"is_new": false
+},
+"expect": {
+"known_text": "to wait",
+"target_text": "fanacht",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0155L03",
+"set": {
+"known_text": "for a few minutes",
+"target_text": "ar feadh cúpla nóiméad",
+"components": [
+{
+"known": "a few minutes",
+"target": "cúpla nóiméad"
+}
+]
+},
+"expect": {
+"known_text": "for",
+"target_text": "ar feadh",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0155L03U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 155,
+"lego_index": 3,
+"position": 101,
+"known_text": "I don't mind waiting for a few minutes tomorrow morning",
+"target_text": "Ní miste liom fanacht ar feadh cúpla nóiméad maidin amárach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 59,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B01",
+"expect": {
+"target_text": "ar feadh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B03",
+"expect": {
+"target_text": "ar feadh tamaill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B04",
+"expect": {
+"target_text": "bhí mé ag fanacht ar feadh tamaill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B05",
+"expect": {
+"target_text": "Ní miste liom fanacht ar feadh tamaill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B06",
+"expect": {
+"target_text": "is mian liom leanúint ar aghaidh ag déanamh seo ar feadh tamaill eile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03B07",
+"expect": {
+"target_text": "ba mhaith liom leanúint ar aghaidh leis seo ar feadh tamaill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03C01",
+"expect": {
+"target_text": "ar"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03C02",
+"expect": {
+"target_text": "feadh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U01",
+"expect": {
+"target_text": "ba mhaith liom leanúint ar aghaidh leis seo ar feadh tamaill, mar ceapaim go bhfuil muid ag déanamh go han-mhaith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U02",
+"expect": {
+"target_text": "bhí sé ag fanacht anseo ar feadh tamaill sula raibh sé réidh le himeacht agus dul abhaile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U03",
+"expect": {
+"target_text": "Ní miste liom fanacht ar feadh tamaill, mar tá a fhios agam go bhfuil beagán níos mó ama de dhíth ort le smaoineamh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U05",
+"expect": {
+"target_text": "bhí sí ag caint linn ar feadh tamaill, agus ansin dúirt sí go gcaithfidh sí imeacht le dul abhaile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U06",
+"expect": {
+"target_text": "Ní raibh mé in ann stopadh ag smaoineamh faoi ar feadh tamaill, mar bhí an iomarca smaointe agam"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U07",
+"expect": {
+"target_text": "ceapaim gur smaoineamh maith é labhairt a chleachtadh ar feadh tamaill gach lá más mian leat feabhsú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U08",
+"expect": {
+"target_text": "bhí muid ag obair ar seo le chéile ar feadh tamaill, agus ceapaim go bhfuil muid tar éis déanamh go han-mhaith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U10",
+"expect": {
+"target_text": "Ní miste liom cabhrú leat ar feadh tamaill, mar níl mé chun dul áit ar bith faoi láthair"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U11",
+"expect": {
+"target_text": "dúirt sí go bhfuil sí chun fanacht agus caint linn ar feadh tamaill sula gcaithfidh sí imeacht"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U12",
+"expect": {
+"target_text": "bhí a fhios agam go raibh mé chun fanacht ar feadh tamaill, mar sin thosaigh mé ag smaoineamh ar rud éigin eile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U13",
+"expect": {
+"target_text": "Tá sé ag iarraidh an teanga a fhoghlaim ar feadh tamaill, agus tá sé ag déanamh go han-mhaith cheana féin"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0155L03U15",
+"expect": {
+"target_text": "dúirt mé léi go raibh mé ag fanacht ar feadh tamaill, ach dúirt mé nach miste liom ar chor ar bith"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0181L03",
+"set": {
+"known_text": "to take my mother",
+"target_text": "mo mháthair a thabhairt",
+"components": [
+{
+"known": "my mother",
+"target": "mo mháthair"
+},
+{
+"known": "to give",
+"target": "a thabhairt"
+}
+]
+},
+"expect": {
+"known_text": "to take",
+"target_text": "a thabhairt",
+"is_new": true
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03B03",
+"expect": {
+"target_text": "ba mhaith liom mo leabhar a thabhairt"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03B04",
+"expect": {
+"target_text": "caithfidh muid do charr a thabhairt abhaile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03U02",
+"expect": {
+"target_text": "cad atá tú chun a thabhairt amárach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03U03",
+"expect": {
+"target_text": "ach níl mé chun mo leabhar a thabhairt"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03U04",
+"expect": {
+"target_text": "ba chóir duit do chara a thabhairt abhaile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03U07",
+"expect": {
+"target_text": "an mian leat do charr a thabhairt maidin amárach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0181L03U08",
+"expect": {
+"target_text": "go raibh maith agat is féidir liom mo leabhar a thabhairt abhaile anois"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 188,
+"lego_index": 4,
+"known_text": "I don't need to change",
+"target_text": "ní chaithfidh mé athrú",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "I don't need to",
+"target": "ní chaithfidh mé"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0188L01",
+"set": {
+"is_new": false
+},
+"expect": {
+"known_text": "so",
+"target_text": "mar sin",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0188L02",
+"set": {
+"known_text": "I don't need to",
+"is_new": false
+},
+"expect": {
+"known_text": "I do not have to",
+"target_text": "ní chaithfidh mé",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0188L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 188,
+"lego_index": 4,
+"position": 101,
+"known_text": "so I don't need to change",
+"target_text": "mar sin ní chaithfidh mé athrú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 30,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01B01",
+"expect": {
+"target_text": "mar sin anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01B02",
+"expect": {
+"target_text": "mar sin níos déanaí"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01B03",
+"expect": {
+"target_text": "mar sin ba mhaith liom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01B04",
+"expect": {
+"target_text": "ní raibh am agam mar sin"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01U01",
+"expect": {
+"target_text": "tá mé tuirseach mar sin ba mhaith liom imeacht anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01U04",
+"expect": {
+"target_text": "mar sin níl a fhios agam cá bhfuil sí"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01U05",
+"expect": {
+"target_text": "mar sin go raibh maith agat as cabhrú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0188L01U06",
+"expect": {
+"target_text": "níl mé réidh go fóill mar sin ní féidir liom imeacht anois"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0188L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "athrú"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0214L01",
+"set": {
+"known_text": "did you have a good time at"
+},
+"expect": {
+"known_text": "did you enjoy",
+"target_text": "ar bhain tú sult as",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0214L04U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 214,
+"lego_index": 4,
+"position": 112,
+"known_text": "are you going to go home at the weekend",
+"target_text": "an bhfuil tú chun dul abhaile ag an deireadh seachtaine",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0237L05U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 55,
+"lego_count": 10
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0263L03",
+"set": {
+"known_text": "who you mean",
+"target_text": "cé atá i gceist agat"
+},
+"expect": {
+"known_text": "you mean",
+"target_text": "atá i gceist agat",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0263L03U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 263,
+"lego_index": 3,
+"position": 101,
+"known_text": "I don't know who you mean",
+"target_text": "Níl a fhios agam cé atá i gceist agat",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 37,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03B01",
+"expect": {
+"target_text": "an rud atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03B02",
+"expect": {
+"target_text": "an fear sin atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03B03",
+"expect": {
+"target_text": "an rud gorm sin atá i gceist agat thall ansin"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03B04",
+"expect": {
+"target_text": "an smaoineamh atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U01",
+"expect": {
+"target_text": "chonaic mé an fear sin atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U02",
+"expect": {
+"target_text": "ní fhaca mé an fear sin atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U03",
+"expect": {
+"target_text": "cheap mé go raibh an scannán atá i gceist agat go hiomlán uafásach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U04",
+"expect": {
+"target_text": "an féidir leat an leabhar sin atá i gceist agat a thabhairt dom"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U05",
+"expect": {
+"target_text": "is maith liom an smaoineamh atá i gceist agat"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U06",
+"expect": {
+"target_text": "ceapaim go bhfuil an rud atá i gceist agat an-suimiúil"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0263L03U07",
+"expect": {
+"target_text": "tá brón orm ach ní fhaca mé an leabhar sin atá i gceist agat"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0263L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "cé"
+}
+}
+]
+}

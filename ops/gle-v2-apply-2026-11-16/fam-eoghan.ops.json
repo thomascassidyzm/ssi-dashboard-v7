@@ -1,0 +1,790 @@
+{
+"family": "eoghan",
+"seeds": [
+248,
+299,
+300,
+339,
+531,
+548,
+593,
+613
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 248,
+"set": {
+"known_text": "I thought the film was complete rubbish and I want to get my money back",
+"target_text": "Cheap mé go raibh an scannán ina phraiseach iomlán agus is mian liom mo chuid airgid a fháil ar ais"
+},
+"expect": {
+"known_text": "I thought the film was complete rubbish and I want my money back",
+"target_text": "cheap mé go raibh an scannán go hiomlán uafásach agus tá m'airgead ar ais uaim"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 248,
+"lego_index": 7,
+"known_text": "I want",
+"target_text": "is mian liom",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "with me",
+"target": "liom"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 248,
+"lego_index": 8,
+"known_text": "my money",
+"target_text": "mo chuid airgid",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "my money",
+"target": "mo chuid airgid"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0248L02",
+"set": {
+"known_text": "that the film was",
+"target_text": "go raibh an scannán",
+"components": [
+{
+"known": "the film",
+"target": "an scannán"
+}
+]
+},
+"expect": {
+"known_text": "that it was",
+"target_text": "go raibh",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0248L04",
+"set": {
+"target_text": "ina phraiseach iomlán"
+},
+"expect": {
+"known_text": "complete rubbish",
+"target_text": "go hiomlán uafásach",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0248L06",
+"set": {
+"known_text": "to get my money back",
+"target_text": "mo chuid airgid a fháil ar ais",
+"components": [
+{
+"known": "my money",
+"target": "mo chuid airgid"
+},
+{
+"known": "to find",
+"target": "a fháil"
+}
+]
+},
+"expect": {
+"known_text": "I want my money back",
+"target_text": "tá m'airgead ar ais uaim",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0248L02U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 248,
+"lego_index": 2,
+"position": 101,
+"known_text": "I thought that the film you mean was complete rubbish",
+"target_text": "cheap mé go raibh an scannán atá i gceist agat ina phraiseach iomlán",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L03U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 68,
+"lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0248L08U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 248,
+"lego_index": 8,
+"position": 101,
+"known_text": "I thought the film was complete rubbish and I want to get my money back",
+"target_text": "Cheap mé go raibh an scannán ina phraiseach iomlán agus is mian liom mo chuid airgid a fháil ar ais",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 99,
+"lego_count": 20
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04B01",
+"set": {
+"target_text": "bhí sé ina phraiseach iomlán ar an Domhnach"
+},
+"expect": {
+"target_text": "bhí sé go hiomlán uafásach ar an Domhnach",
+"known_text": "it was complete rubbish on Sunday"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04B02",
+"set": {
+"target_text": "níl sé ina phraiseach iomlán"
+},
+"expect": {
+"target_text": "níl sé go hiomlán uafásach",
+"known_text": "it is not complete rubbish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04B03",
+"set": {
+"target_text": "go raibh an leabhar ina phraiseach iomlán inné"
+},
+"expect": {
+"target_text": "go raibh an leabhar go hiomlán uafásach inné",
+"known_text": "that the book was complete rubbish yesterday"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04B04",
+"set": {
+"target_text": "go raibh an smaoineamh ina phraiseach iomlán ach"
+},
+"expect": {
+"target_text": "go raibh an smaoineamh go hiomlán uafásach ach",
+"known_text": "that the idea was complete rubbish but"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U01",
+"set": {
+"target_text": "cheap mé go raibh an scannán ina phraiseach iomlán aréir"
+},
+"expect": {
+"target_text": "cheap mé go raibh an scannán go hiomlán uafásach aréir",
+"known_text": "I thought that the film was complete rubbish last night"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U02",
+"set": {
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an leabhar ina phraiseach iomlán"
+},
+"expect": {
+"target_text": "tá aithne agam ar dhuine a dúirt go raibh an leabhar go hiomlán uafásach",
+"known_text": "I know someone who said that the book was complete rubbish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U03",
+"set": {
+"target_text": "tá brón orm ach bhí sé ina phraiseach iomlán inniu"
+},
+"expect": {
+"target_text": "tá brón orm ach bhí sé go hiomlán uafásach inniu",
+"known_text": "I am sorry but it was complete rubbish today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U04",
+"set": {
+"target_text": "bhí sé ina phraiseach iomlán ach bhí sé go deas mo scíth a ligean ar feadh tamaill"
+},
+"expect": {
+"target_text": "bhí sé go hiomlán uafásach ach bhí sé go deas scíth a ligean ar feadh tamaill",
+"known_text": "it was complete rubbish but it was nice to relax for a while"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U05",
+"set": {
+"target_text": "bhí sé ina phraiseach iomlán agus chuaigh mé amach oíche Shathairn"
+},
+"expect": {
+"target_text": "bhí sé go hiomlán uafásach agus chuaigh mé amach oíche Shathairn",
+"known_text": "it was complete rubbish and I went out on Saturday night"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U06",
+"set": {
+"target_text": "níl sé ina phraiseach iomlán nach bhfuil?"
+},
+"expect": {
+"target_text": "níl sé go hiomlán uafásach nach bhfuil?",
+"known_text": "it is not complete rubbish is that not so?"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L04U07",
+"set": {
+"target_text": "creidim go raibh an smaoineamh ina phraiseach iomlán"
+},
+"expect": {
+"target_text": "creidim go raibh an smaoineamh go hiomlán uafásach",
+"known_text": "I believe that the idea was complete rubbish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06B01",
+"set": {
+"target_text": "is mian liom mo chuid airgid a fháil ar ais anois",
+"known_text": "I want to get my money back now"
+},
+"expect": {
+"target_text": "tá m'airgead ar ais uaim anois",
+"known_text": "I want my money back now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06B02",
+"set": {
+"target_text": "agus is mian liom mo chuid airgid a fháil ar ais",
+"known_text": "and I want to get my money back"
+},
+"expect": {
+"target_text": "agus tá m'airgead ar ais uaim",
+"known_text": "and I want my money back"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06B03",
+"set": {
+"target_text": "ach is mian liom mo chuid airgid a fháil ar ais inniu",
+"known_text": "but I want to get my money back today"
+},
+"expect": {
+"target_text": "ach tá m'airgead ar ais uaim inniu",
+"known_text": "but I want my money back today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06B04",
+"set": {
+"target_text": "ar ndóigh is mian liom mo chuid airgid a fháil ar ais",
+"known_text": "of course I want to get my money back"
+},
+"expect": {
+"target_text": "ar ndóigh tá m'airgead ar ais uaim",
+"known_text": "of course I want my money back"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06U01",
+"set": {
+"target_text": "tá brón orm ach is mian liom mo chuid airgid a fháil ar ais anois",
+"known_text": "I am sorry but I want to get my money back now"
+},
+"expect": {
+"target_text": "tá brón orm ach tá m'airgead ar ais uaim anois",
+"known_text": "I am sorry but I want my money back now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06U02",
+"set": {
+"target_text": "is mian liom mo chuid airgid a fháil ar ais mar go raibh an scannán ina phraiseach iomlán",
+"known_text": "I want to get my money back because the film was complete rubbish"
+},
+"expect": {
+"target_text": "tá m'airgead ar ais uaim mar go raibh an scannán go hiomlán uafásach",
+"known_text": "I want my money back because the film was complete rubbish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06U04",
+"set": {
+"target_text": "is mian liom mo chuid airgid a fháil ar ais agus ansin beidh mé in ann dul abhaile",
+"known_text": "I want to get my money back and then I'll be able to go home"
+},
+"expect": {
+"target_text": "tá m'airgead ar ais uaim agus ansin beidh mé in ann dul abhaile",
+"known_text": "I want my money back and then I'll be able to go home"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06U05",
+"set": {
+"target_text": "is mian liom mo chuid airgid a fháil ar ais chomh tapa agus is féidir",
+"known_text": "I want to get my money back as quickly as possible"
+},
+"expect": {
+"target_text": "tá m'airgead ar ais uaim chomh tapa agus is féidir",
+"known_text": "I want my money back as quickly as possible"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L06U06",
+"set": {
+"target_text": "faraor is mian liom mo chuid airgid a fháil ar ais inniu",
+"known_text": "unfortunately I want to get my money back today"
+},
+"expect": {
+"target_text": "faraor tá m'airgead ar ais uaim inniu",
+"known_text": "unfortunately I want my money back today"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02B02",
+"expect": {
+"target_text": "go raibh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02B03",
+"expect": {
+"target_text": "cheap mé go raibh sé maith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02B04",
+"expect": {
+"target_text": "creidim go raibh sé ina smaoineamh maith"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02B05",
+"expect": {
+"target_text": "dúirt mé leis go raibh sé tábhachtach labhairt go minic"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02C01",
+"expect": {
+"target_text": "go"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02C02",
+"expect": {
+"target_text": "raibh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U01",
+"expect": {
+"target_text": "cheap mé go raibh sé ina smaoineamh an-mhaith leanúint ar aghaidh ag cleachtadh labhartha le chéile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U03",
+"expect": {
+"target_text": "creidim go raibh sé ceart iarracht a dhéanamh chomh minic agus is féidir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U04",
+"expect": {
+"target_text": "dúirt sí go raibh sé ró-ghnóthach san oifig inniu le stopadh agus labhairt linn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U05",
+"expect": {
+"target_text": "cheap mé go raibh sé suimiúil go raibh a fhios agat faoi seo cheana féin"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U07",
+"expect": {
+"target_text": "dúirt mé léi go raibh sé deacair a mhíniú cad a bhí mé ag iarraidh a dhéanamh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U08",
+"expect": {
+"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U09",
+"expect": {
+"target_text": "cheap mé go raibh sé níos fearr fanacht agus labhairt léi nuair nach raibh sí chomh gnóthach"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U10",
+"expect": {
+"target_text": "dúirt sé go raibh sé an-chabhrach duine a bheith agat le labhairt a chleachtadh leis"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U11",
+"expect": {
+"target_text": "dúirt mé leis go raibh sé ina smaoineamh maith Gaeilge a fhoghlaim le chéile"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U13",
+"expect": {
+"target_text": "creidim go raibh sé indéanta a lán a bhaint amach in achar gearr"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L02U15",
+"expect": {
+"target_text": "cheap mé go raibh sé go hiontach go raibh tú ag obair chomh dian sin ar seo"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0248L06U03",
+"expect": {
+"target_text": "cheap mé go raibh an scannán uafásach agus tá m'airgead ar ais uaim"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 299,
+"set": {
+"target_text": "Is mian leis íoc as leath den chostas"
+},
+"expect": {
+"known_text": "he wants to pay half of the cost",
+"target_text": "Is mian leis leath den chostas a íoc"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0299L01",
+"set": {
+"known_text": "he wants",
+"is_new": false
+},
+"expect": {
+"known_text": "he wants to",
+"target_text": "is mian leis",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0299L03",
+"set": {
+"known_text": "to pay for",
+"target_text": "íoc as"
+},
+"expect": {
+"known_text": "to pay",
+"target_text": "a íoc",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L02B02",
+"set": {
+"target_text": "is mian liom íoc as leath den chostas"
+},
+"expect": {
+"target_text": "is mian liom leath den chostas a íoc",
+"known_text": "I want to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L02B03",
+"set": {
+"target_text": "is mian leis íoc as leath den chostas"
+},
+"expect": {
+"target_text": "is mian leis leath den chostas a íoc",
+"known_text": "he wants to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L02B04",
+"set": {
+"target_text": "ba mhaith liom íoc as leath den chostas"
+},
+"expect": {
+"target_text": "ba mhaith liom leath den chostas a íoc",
+"known_text": "I'd like to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L02U01",
+"set": {
+"target_text": "tá mé chun íoc as leath den chostas amárach"
+},
+"expect": {
+"target_text": "tá mé chun leath den chostas a íoc amárach",
+"known_text": "I'm going to pay half of the cost tomorrow"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L02U03",
+"set": {
+"target_text": "go raibh maith agat, is féidir liom íoc as leath den chostas"
+},
+"expect": {
+"target_text": "go raibh maith agat, is féidir liom leath den chostas a íoc",
+"known_text": "thank you, I can pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L03B03",
+"set": {
+"target_text": "tá mé chun íoc as leath den chostas"
+},
+"expect": {
+"target_text": "tá mé chun leath den chostas a íoc",
+"known_text": "I am going to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L03U01",
+"set": {
+"target_text": "is mian leo íoc as leath den chostas"
+},
+"expect": {
+"target_text": "is mian leo leath den chostas a íoc",
+"known_text": "they want to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L03U03",
+"set": {
+"target_text": "ní dúirt mé gur mhian liom íoc as leath den chostas"
+},
+"expect": {
+"target_text": "ní dúirt mé gur mhian liom leath den chostas a íoc",
+"known_text": "I didn't say that I wanted to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0299L03U05",
+"set": {
+"target_text": "ar mhaith leat íoc as leath den chostas"
+},
+"expect": {
+"target_text": "ar mhaith leat leath den chostas a íoc",
+"known_text": "would you like to pay half of the cost"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L01B01",
+"expect": {
+"target_text": "is mian leis labhairt"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03B01",
+"expect": {
+"target_text": "an t-airgead a íoc"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03B02",
+"expect": {
+"target_text": "an t-airgead a íoc anocht"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03B04",
+"expect": {
+"target_text": "caithfidh muid an t-airgead a íoc"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03U02",
+"expect": {
+"target_text": "an mian leat an t-airgead a íoc anocht"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03U04",
+"expect": {
+"target_text": "an raibh ort an t-airgead a íoc aréir"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03U06",
+"expect": {
+"target_text": "ba chóir duit an t-airgead a íoc an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0299L03U07",
+"expect": {
+"target_text": "go raibh maith agat is féidir liom an t-airgead a íoc amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0300L01B03",
+"set": {
+"target_text": "ní mian léi íoc as leath den chostas"
+},
+"expect": {
+"target_text": "ní mian léi leath den chostas a íoc",
+"known_text": "she doesn't want to pay half of the cost"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0300L01U01",
+"set": {
+"target_text": "is mian leis íoc as leath den chostas ach ní mian léi"
+},
+"expect": {
+"target_text": "is mian leis leath den chostas a íoc ach ní mian léi",
+"known_text": "he wants to pay half of the cost but she doesn't want to"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 339,
+"set": {
+"target_text": "Ní cheapaim, ceapaim gur ghortaigh sé é féin go dona"
+},
+"expect": {
+"known_text": "no I think he's hurt himself quite badly",
+"target_text": "Ní cheapaim, ceapaim go bhfuil sé gortaithe go dona"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 531,
+"set": {
+"target_text": "Ní fíor gur féidir le haon duine an cluiche a bhuachan"
+},
+"expect": {
+"known_text": "it isn't true that anyone can win the game",
+"target_text": "Níl sé fíor gur féidir le duine ar bith an cluiche a bhuachan"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 548,
+"set": {
+"known_text": "I am feeling sad at the moment",
+"target_text": "Tá mé ag mothú brónach faoi láthair"
+},
+"expect": {
+"known_text": "I'm sad at the moment",
+"target_text": "Tá mé brónach faoi láthair"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 593,
+"set": {
+"known_text": "however much I argued I still had to share",
+"target_text": "cibé méid a d'argóin mé bhí orm roinnt fós"
+},
+"expect": {
+"known_text": "however much I argued I still had to share it with him",
+"target_text": "cibé méid a d'argóin mé bhí orm é a roinnt leis fós"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 613,
+"set": {
+"target_text": "is dócha go mbeadh muid tar éis teach a cheannach ansin"
+},
+"expect": {
+"known_text": "we probably would have bought a house there",
+"target_text": "is dócha go gceannódh muid teach ansin"
+}
+}
+]
+}

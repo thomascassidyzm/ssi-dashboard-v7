@@ -1,0 +1,551 @@
+{
+"family": "relax",
+"seeds": [
+110,
+113,
+119,
+124,
+134,
+219,
+224,
+251,
+280
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 110,
+"set": {
+"target_text": "is cairde muid, agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean"
+},
+"expect": {
+"known_text": "we're friends, and after we finish I'd like to relax",
+"target_text": "is cairde muid, agus tar éis dúinn críochnú ba mhaith liom scíth a ligean"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0110L06",
+"set": {
+"known_text": "after we finish",
+"target_text": "tar éis dúinn críochnú",
+"components": [
+{
+"known": "to finish",
+"target": "críochnú"
+}
+]
+},
+"expect": {
+"known_text": "after we",
+"target_text": "tar éis dúinn",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0110L03",
+"set": {
+"known_text": "I'd like",
+"is_new": false
+},
+"expect": {
+"known_text": "I would like",
+"target_text": "ba mhaith liom",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0110L05",
+"set": {
+"target_text": "mo scíth a ligean",
+"components": [
+{
+"known": "to let",
+"target": "ligean"
+}
+]
+},
+"expect": {
+"known_text": "to relax",
+"target_text": "scíth a ligean",
+"is_new": true
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0110L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 110,
+"lego_index": 6,
+"position": 106,
+"known_text": "we are friends and after we finish I would like to relax for a while",
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean ar feadh tamaill",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0110L04U01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 92,
+"lego_count": 18
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0110L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 110,
+"lego_index": 6,
+"position": 107,
+"known_text": "after we finish today I would like to go home and try to learn more tomorrow",
+"target_text": "tar éis dúinn críochnú inniu ba mhaith liom dul abhaile agus iarracht a dhéanamh níos mó a fhoghlaim amárach",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0110L04U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 108,
+"lego_count": 19
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0110L01U08",
+"course_code": "gle_v2_for_eng",
+"seed_number": 110,
+"lego_index": 1,
+"position": 112,
+"known_text": "I know you because we are friends",
+"target_text": "tá aithne agam ort mar is cairde muid",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0231L01U06"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 37,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05B01",
+"set": {
+"target_text": "mo scíth a ligean"
+},
+"expect": {
+"target_text": "scíth a ligean",
+"known_text": "to relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05B03",
+"set": {
+"target_text": "is mian liom mo scíth a ligean"
+},
+"expect": {
+"target_text": "is mian liom scíth a ligean",
+"known_text": "I want to relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05B04",
+"set": {
+"target_text": "tá sé tábhachtach mo scíth a ligean"
+},
+"expect": {
+"target_text": "tá sé tábhachtach scíth a ligean",
+"known_text": "it's important to relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05B05",
+"set": {
+"target_text": "ní raibh mé in ann mo scíth a ligean"
+},
+"expect": {
+"target_text": "ní raibh mé in ann scíth a ligean",
+"known_text": "I wasn't able to relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05B06",
+"set": {
+"target_text": "ba mhaith liom mo scíth a ligean ar feadh tamaill"
+},
+"expect": {
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill",
+"known_text": "I'd like to relax for a while"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U01",
+"set": {
+"target_text": "Is mian liom mo scíth a ligean agus stopadh ag smaoineamh ar obair ar feadh tamaill"
+},
+"expect": {
+"target_text": "Is mian liom scíth a ligean agus stopadh ag smaoineamh ar obair ar feadh tamaill",
+"known_text": "I want to relax and stop thinking about work for a while"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U03",
+"set": {
+"target_text": "Ní raibh mé in ann mo scíth a ligean aréir mar bhí mé ag smaoineamh ar an iomarca rudaí"
+},
+"expect": {
+"target_text": "Ní raibh mé in ann scíth a ligean aréir mar bhí mé ag smaoineamh ar an iomarca rudaí",
+"known_text": "I wasn't able to relax last night because I was thinking about too many things"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U07",
+"set": {
+"target_text": "ba mhaith liom mo scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna"
+},
+"expect": {
+"target_text": "ba mhaith liom scíth a ligean ar feadh tamaill sula gcaithfidh mé dul tráthnóna",
+"known_text": "I'd like to relax for a while before I have to go this evening"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U11",
+"set": {
+"target_text": "Tá a fhios agam go bhfuil sé tábhachtach mo scíth a ligean agus am a chaitheamh le smaoineamh go cúramach"
+},
+"expect": {
+"target_text": "Tá a fhios agam go bhfuil sé tábhachtach scíth a ligean agus am a chaitheamh le smaoineamh go cúramach",
+"known_text": "I know that it's important to relax and take some time to think carefully"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L05U15",
+"set": {
+"target_text": "bainim taitneamh as iarracht a dhéanamh mo scíth a ligean tráthnóna tar éis lá ag foghlaim rudaí nua"
+},
+"expect": {
+"target_text": "bainim taitneamh as iarracht a dhéanamh scíth a ligean tráthnóna tar éis lá ag foghlaim rudaí nua",
+"known_text": "I always enjoy trying to relax in the evening after spending a day learning"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L06B06",
+"set": {
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom mo scíth a ligean"
+},
+"expect": {
+"target_text": "is cairde muid agus tar éis dúinn críochnú ba mhaith liom scíth a ligean",
+"known_text": "we are friends and after we finish I would like to relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0110L06U04",
+"set": {
+"target_text": "tar éis dúinn críochnú ba mhaith liom mo scíth a ligean ar feadh tamaill mar bhí mé ag obair go dian an lá ar fad"
+},
+"expect": {
+"target_text": "tar éis dúinn críochnú ba mhaith liom scíth a ligean ar feadh tamaill mar bhí mé ag obair go dian an lá ar fad",
+"known_text": "after we finish I would like to relax for a while because I was working hard all day"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05C01",
+"expect": {
+"target_text": "scíth"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05C02",
+"expect": {
+"target_text": "a ligean"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U02",
+"expect": {
+"target_text": "Tá sé tábhachtach scíth a ligean nuair atá tú ag foghlaim rud nua gach lá"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U05",
+"expect": {
+"target_text": "ceapaim gur rud maith é scíth a ligean agus baint taitnimh as rudaí suimiúla le do chairde"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U06",
+"expect": {
+"target_text": "Ní raibh sé in ann scíth a ligean ar chor ar bith mar bhí an iomarca daoine timpeall"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U08",
+"expect": {
+"target_text": "an ceapaim go bhfuil sé éasca scíth a ligean nuair atá a lán le foghlaim agus le déanamh agat?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U10",
+"expect": {
+"target_text": "ba mhian linn scíth a ligean le chéile ach bhí an iomarca oibre fós le déanamh againn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U12",
+"expect": {
+"target_text": "Níor mhian léi scíth a ligean go dtí go raibh gach rud ar fad déanta aici"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L05U13",
+"expect": {
+"target_text": "Níl sé éasca scíth a ligean nuair nach bhfuil tú cinnte cad a tharlóidh anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06B01",
+"expect": {
+"target_text": "tar éis dúinn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06B03",
+"expect": {
+"target_text": "tar éis dúinn labhairt"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06B04",
+"expect": {
+"target_text": "tar éis dúinn é seo a dhéanamh"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06C01",
+"expect": {
+"target_text": "tar éis"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06C02",
+"expect": {
+"target_text": "dúinn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06U03",
+"expect": {
+"target_text": "tar éis dúinn labhairt inniu tá a fhios agam cad atá le déanamh agam an tseachtain seo chugainn"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0110L06U07",
+"expect": {
+"target_text": "tar éis dúinn é seo a dhéanamh ba mhaith liom dul abhaile agus smaoineamh faoin rud atá foghlamtha agam"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0110L04",
+"cascade_phrases": true,
+"expect": {
+"target_text": "críochnú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0113L02B04",
+"set": {
+"target_text": "ach cén fáth nach féidir liom mo scíth a ligean"
+},
+"expect": {
+"target_text": "ach cén fáth nach féidir liom scíth a ligean",
+"known_text": "but why can't i relax"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0113L02U06",
+"set": {
+"target_text": "caithfidh muid obair go dian ach nach féidir liom mo scíth a ligean anocht"
+},
+"expect": {
+"target_text": "caithfidh muid obair go dian ach nach féidir liom scíth a ligean anocht",
+"known_text": "we must work hard but can't i relax tonight"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0119L01U04",
+"set": {
+"target_text": "an féidir liom mo scíth a ligean tar éis dúinn críochnú"
+},
+"expect": {
+"target_text": "an féidir liom scíth a ligean tar éis dúinn críochnú",
+"known_text": "can I relax after we finish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0124L02U10",
+"set": {
+"target_text": "cheap mé gur smaoineamh maith é sin am a chaitheamh chun mo scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul"
+},
+"expect": {
+"target_text": "cheap mé gur smaoineamh maith é sin am a chaitheamh chun scíth a ligean tar éis dúinn críochnú sula gcaithfidh mé dul",
+"known_text": "I thought that it was a good idea to take time to rest after we finish before I have to go"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0134L03B03",
+"set": {
+"target_text": "mo scíth a ligean leo anois"
+},
+"expect": {
+"target_text": "scíth a ligean leo anois",
+"known_text": "to relax with them now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0134L03U06",
+"set": {
+"target_text": "ba mhaith liom mo scíth a ligean leo tar éis dúinn críochnú"
+},
+"expect": {
+"target_text": "ba mhaith liom scíth a ligean leo tar éis dúinn críochnú",
+"known_text": "I would like to relax with them after we finish"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 219,
+"set": {
+"target_text": "bhí sé go deas mo scíth a ligean ar feadh tamaill"
+},
+"expect": {
+"known_text": "it was nice to relax for a while",
+"target_text": "bhí sé go deas scíth a ligean ar feadh tamaill"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0219L03",
+"set": {
+"target_text": "mo scíth a ligean",
+"components": [
+{
+"known": "to let",
+"target": "ligean"
+}
+]
+},
+"expect": {
+"known_text": "to relax",
+"target_text": "scíth a ligean",
+"is_new": false
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0224L02B04",
+"set": {
+"target_text": "mo scíth a ligean díreach tar éis duit críochnú"
+},
+"expect": {
+"target_text": "scíth a ligean díreach tar éis duit críochnú",
+"known_text": "to relax just after you finish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0224L02U01",
+"set": {
+"target_text": "ba mhaith liom mo scíth a ligean díreach tar éis dúinn críochnú"
+},
+"expect": {
+"target_text": "ba mhaith liom scíth a ligean díreach tar éis dúinn críochnú",
+"known_text": "I'd like to relax just after we finish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0251L02B03",
+"set": {
+"target_text": "mo scíth a ligean go dtí tar éis dúinn críochnú inniu"
+},
+"expect": {
+"target_text": "scíth a ligean go dtí tar éis dúinn críochnú inniu",
+"known_text": "to relax until after we finish today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0251L02U04",
+"set": {
+"target_text": "go raibh maith agat ach níl mé chun mo scíth a ligean go dtí tar éis dúinn críochnú"
+},
+"expect": {
+"target_text": "go raibh maith agat ach níl mé chun scíth a ligean go dtí tar éis dúinn críochnú",
+"known_text": "thank you but i'm not going to relax until after we finish"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0280L01U05",
+"set": {
+"target_text": "Ní raibh, ní raibh orm ach mo scíth a ligean ar feadh tamaill"
+},
+"expect": {
+"target_text": "Ní raibh, ní raibh orm ach scíth a ligean ar feadh tamaill",
+"known_text": "no I only had to relax for a while"
+}
+}
+]
+}

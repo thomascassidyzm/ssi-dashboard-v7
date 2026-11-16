@@ -1,0 +1,815 @@
+{
+"family": "seed12",
+"seeds": [
+12,
+60,
+135
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 12,
+"set": {
+"known_text": "I wouldn't like to say what's going to happen tomorrow",
+"target_text": "níor mhaith liom a rá cad a tharlóidh amárach"
+},
+"expect": {
+"known_text": "I wouldn't like to guess what's going to happen tomorrow",
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 12,
+"lego_index": 4,
+"known_text": "to say",
+"target_text": "a rá",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "to say",
+"target": "a rá"
+}
+]
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0012L02",
+"set": {
+"known_text": "what's going to happen",
+"target_text": "cad a tharlóidh"
+},
+"expect": {
+"known_text": "to guess what's going to happen",
+"target_text": "buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02B01",
+"set": {
+"target_text": "a rá cad a tharlóidh",
+"known_text": "to say what's going to happen"
+},
+"expect": {
+"target_text": "buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02B03",
+"set": {
+"target_text": "ba mhaith liom a rá cad a tharlóidh",
+"known_text": "I'd like to say what's going to happen"
+},
+"expect": {
+"target_text": "ba mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I'd like to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02B04",
+"set": {
+"target_text": "níor mhaith liom a rá cad a tharlóidh",
+"known_text": "I wouldn't like to say what's going to happen"
+},
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I wouldn't like to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02B06",
+"set": {
+"target_text": "a bheith in ann a rá cad a tharlóidh",
+"known_text": "to be able to say what's going to happen"
+},
+"expect": {
+"target_text": "a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "to be able to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02B07",
+"set": {
+"target_text": "is mian liom a rá cad a tharlóidh",
+"known_text": "I want to say what's going to happen"
+},
+"expect": {
+"target_text": "is mian liom buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I want to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U01",
+"set": {
+"target_text": "ba mhaith liom a rá cad a tharlóidh inniu",
+"known_text": "I'd like to say what's going to happen today"
+},
+"expect": {
+"target_text": "ba mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu",
+"known_text": "I'd like to guess what's going to happen today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U02",
+"set": {
+"target_text": "níor mhaith liom a rá cad a tharlóidh anois",
+"known_text": "I wouldn't like to say what's going to happen now"
+},
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh anois",
+"known_text": "I wouldn't like to guess what's going to happen now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U03",
+"set": {
+"target_text": "is mian liom a rá cad a tharlóidh",
+"known_text": "I want to say what's going to happen"
+},
+"expect": {
+"target_text": "is mian liom buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I want to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U05",
+"set": {
+"target_text": "ba mhaith liom a bheith in ann a rá cad a tharlóidh",
+"known_text": "I'd like to be able to say what's going to happen"
+},
+"expect": {
+"target_text": "ba mhaith liom a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I'd like to be able to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U07",
+"set": {
+"target_text": "níor mhaith liom a rá cad a tharlóidh inniu",
+"known_text": "I wouldn't like to say what's going to happen today"
+},
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu",
+"known_text": "I wouldn't like to guess what's going to happen today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U08",
+"set": {
+"target_text": "níl mé cinnte, ach ba mhaith liom a rá cad a tharlóidh",
+"known_text": "I'm not sure, but I'd like to say what's going to happen"
+},
+"expect": {
+"target_text": "níl mé cinnte, ach ba mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I'm not sure, but I'd like to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U10",
+"set": {
+"target_text": "ba mhaith liom iarracht a dhéanamh a rá cad a tharlóidh anois",
+"known_text": "I'd like to try to say what's going to happen now"
+},
+"expect": {
+"target_text": "ba mhaith liom iarracht a dhéanamh buille faoi thuairim a thabhairt faoin rud a tharlóidh anois",
+"known_text": "I'd like to try to guess what's going to happen now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U11",
+"set": {
+"target_text": "níor mhaith liom iarracht a dhéanamh a rá cad a tharlóidh inniu",
+"known_text": "I wouldn't like to try to say what's going to happen today"
+},
+"expect": {
+"target_text": "níor mhaith liom iarracht a dhéanamh buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu",
+"known_text": "I wouldn't like to try to guess what's going to happen today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U12",
+"set": {
+"target_text": "ba mhaith liom a bheith in ann a rá cad a tharlóidh inniu",
+"known_text": "I'd like to be able to say what's going to happen today"
+},
+"expect": {
+"target_text": "ba mhaith liom a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu",
+"known_text": "I'd like to be able to guess what's going to happen today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U13",
+"set": {
+"target_text": "níl mé cinnte ba mhaith liom a rá cad a tharlóidh anois",
+"known_text": "I'm not sure I'd like to say what's going to happen now"
+},
+"expect": {
+"target_text": "níl mé cinnte ba mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh anois",
+"known_text": "I'm not sure I'd like to guess what's going to happen now"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U14",
+"set": {
+"target_text": "is mian liom a bheith in ann a rá cad a tharlóidh inniu",
+"known_text": "I want to be able to say what's going to happen today"
+},
+"expect": {
+"target_text": "is mian liom a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu",
+"known_text": "I want to be able to guess what's going to happen today"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L02U15",
+"set": {
+"target_text": "níor mhaith liom a bheith in ann a rá cad a tharlóidh",
+"known_text": "I wouldn't like to be able to say what's going to happen"
+},
+"expect": {
+"target_text": "níor mhaith liom a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh",
+"known_text": "I wouldn't like to be able to guess what's going to happen"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L03U02",
+"set": {
+"target_text": "níor mhaith liom a rá cad a tharlóidh amárach",
+"known_text": "I wouldn't like to say what's going to happen tomorrow"
+},
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach",
+"known_text": "I wouldn't like to guess what's going to happen tomorrow"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L03U08",
+"set": {
+"target_text": "níl mé cinnte ba mhaith liom a rá cad a tharlóidh amárach",
+"known_text": "I'm not sure I'd like to say what's going to happen tomorrow"
+},
+"expect": {
+"target_text": "níl mé cinnte ba mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach",
+"known_text": "I'm not sure I'd like to guess what's going to happen tomorrow"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L03U10",
+"set": {
+"target_text": "níor mhaith liom a rá cad a tharlóidh inniu nó amárach",
+"known_text": "I wouldn't like to say what's going to happen today or tomorrow"
+},
+"expect": {
+"target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoin rud a tharlóidh inniu nó amárach",
+"known_text": "I wouldn't like to guess what's going to happen today or tomorrow"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L03U15",
+"set": {
+"target_text": "ba mhaith liom a bheith in ann a rá cad a tharlóidh amárach",
+"known_text": "I'd like to be able to say what's going to happen tomorrow"
+},
+"expect": {
+"target_text": "ba mhaith liom a bheith in ann buille faoi thuairim a thabhairt faoin rud a tharlóidh amárach",
+"known_text": "I'd like to be able to guess what's going to happen tomorrow"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0012L02C01",
+"expect": {
+"target_text": "buille faoi thuairim"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0012L02C02",
+"expect": {
+"target_text": "a thabhairt faoin rud a tharlóidh"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0060L01",
+"set": {
+"is_new": true
+},
+"expect": {
+"known_text": "I don't know",
+"target_text": "níl a fhios agam",
+"is_new": false
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0060L06",
+"set": {
+"is_new": true
+},
+"expect": {
+"known_text": "yet",
+"target_text": "go fóill",
+"is_new": false
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 101,
+"known_text": "I don't know yet how quickly you understand but it doesn't matter",
+"target_text": "níl a fhios agam go fóill cé chomh tapa a thuigeann tú ach is cuma",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0077L02U04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 66,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 102,
+"known_text": "I don't know yet what you understand",
+"target_text": "níl a fhios agam go fóill cad a thuigeann tú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0078L02U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 44,
+"lego_count": 10
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 103,
+"known_text": "thank you, I don't know how to say something about my friends yet",
+"target_text": "go raibh maith agat, níl a fhios agam conas rud éigin a rá faoi mo chairde go fóill",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0083L04U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 83,
+"lego_count": 18
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 101,
+"known_text": "I don't know how to say enough different words yet",
+"target_text": "Níl a fhios agam conas dóthain focal éagsúil a rá go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 58,
+"lego_count": 12
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 102,
+"known_text": "I'm not ready to go yet",
+"target_text": "níl mé réidh le dul go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 28,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 103,
+"known_text": "I'm not ready yet",
+"target_text": "níl mé réidh go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05B04"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 21,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 104,
+"known_text": "yet",
+"target_text": "go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05B05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 8,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 105,
+"known_text": "he doesn't want to be quiet yet while other people are here, so he tries to talk to everyone around him",
+"target_text": "Ní mian leis a bheith ciúin go fóill nuair atá daoine eile anseo, mar sin tá sé ag iarraidh labhairt le gach duine eile",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 119,
+"lego_count": 24
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 106,
+"known_text": "I can't remember how to say what I was trying to say yet, and I'm not sure if anyone else knows how to say it either",
+"target_text": "Ní féidir liom cuimhneamh conas a rá cad a bhí mé ag iarraidh a rá go fóill, agus níl mé cinnte an bhfuil a fhios ag aon duine eile",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05U08"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 131,
+"lego_count": 29
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 107,
+"known_text": "she still doesn't want to find out what the answer is yet, and I think that is very interesting",
+"target_text": "Ní mian léi fáil amach cad é an freagra go fóill, agus ceapaim go bhfuil sé sin suimiúil",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05U10"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 88,
+"lego_count": 18
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 108,
+"known_text": "I'm not sure yet if I will be able to remember the whole sentence, but I'm going to practise speaking with someone else soon",
+"target_text": "Níl mé cinnte go fóill an féidir liom cuimhneamh ar an abairt iomlán, ach tá mé chun labhairt a chleachtadh le duine éigin eile",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0088L05U11"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 127,
+"lego_count": 24
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 104,
+"known_text": "I don't know about the bag yet",
+"target_text": "níl a fhios agam faoin mála go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L05B03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 36,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 6,
+"position": 109,
+"known_text": "I can't read this whole sentence yet",
+"target_text": "ní féidir liom an abairt iomlán seo a léamh go fóill",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0101L07U07"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 52,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 105,
+"known_text": "I don't know yet",
+"target_text": "níl a fhios agam go fóill",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0135L01B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 25,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 106,
+"known_text": "but I don't know why",
+"target_text": "ach níl a fhios agam cén fáth",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0135L01B02"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 29,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 107,
+"known_text": "I'm not ready yet because I don't know how it's going",
+"target_text": "níl mé réidh go fóill mar níl a fhios agam conas atá sé ag dul",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0135L01U03"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 62,
+"lego_count": 15
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 108,
+"known_text": "thank you but I don't know",
+"target_text": "go raibh maith agat ach níl a fhios agam",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0135L01U05"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 40,
+"lego_count": 9
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0060L01B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 60,
+"lego_index": 1,
+"position": 109,
+"known_text": "I don't know who",
+"target_text": "níl a fhios agam cé",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0263L02B01"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 19,
+"lego_count": 5
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0135L01",
+"set": {
+"is_new": false
+},
+"expect": {
+"known_text": "I don't know",
+"target_text": "níl a fhios agam",
+"is_new": true
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0135L01B01",
+"expect": {
+"target_text": "níl a fhios agam go fóill"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0135L01B02",
+"expect": {
+"target_text": "ach níl a fhios agam cén fáth"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0135L01U03",
+"expect": {
+"target_text": "níl mé réidh go fóill mar níl a fhios agam conas atá sé ag dul"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0135L01U05",
+"expect": {
+"target_text": "go raibh maith agat ach níl a fhios agam"
+}
+}
+]
+}
