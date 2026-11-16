@@ -186,7 +186,7 @@ function editOps(p, db) {
 
 async function post(url, body, agent = AGENT) {
   try {
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': agent }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': agent, ...(body && body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
 }

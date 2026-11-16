@@ -6233,7 +6233,7 @@ async function handleRecordingUpload(req, res) {
 app.post('/api/production/:courseCode/recording/upload', handleRecordingUpload)
 
 // Helper function to proxy requests to Phase 8 Audio Generator (port 3465)
-async function proxyToPhase8(method, path, body = null) {
+async function proxyToPhase8(method, path, body = null, extraHeaders = {}) {
   const http = require('http')
 
   return new Promise((resolve, reject) => {
@@ -6244,7 +6244,8 @@ async function proxyToPhase8(method, path, body = null) {
       path,
       method,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...extraHeaders
       }
     }
 
@@ -6848,7 +6849,10 @@ app.post('/api/audio/render', async (req, res) => {
     }
     if (cap.waitMs > 1000) { logger.warn(`[agent-rate-cap] held ${cap.waitMs}ms who=${who}`); audioRenderOpsEvent('agent-rate-cap', 'held', `/api/audio/render ${cap.waitMs}ms who=${who}`) }
     if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
-    const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who })
+    // The caller's conversation token rides through ONLY when it carries an approval, so phase8 can ask the surface which seat
+    // issued it (job #116·AI, services/shared/approval-origin.cjs). Never logged.
+    const conv = req.body && req.body.approval && req.headers['x-cs-conv'] ? { 'x-cs-conv': String(req.headers['x-cs-conv']) } : {}
+    const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who }, conv)
     res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Render proxy error:', error)

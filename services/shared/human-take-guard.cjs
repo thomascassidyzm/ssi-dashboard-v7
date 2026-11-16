@@ -26,7 +26,8 @@
  */
 
 // Kai may authorise any audio work up to the daily cap (Tom 2026-10-30, r-2026-10-30-kai-can-authorise-any-audio-work), so his
-// `kai:YYYY-MM-DD:<reason>` is a grant like Tom's. It is a bare string: nothing proves who typed it (see approverOf; the log names the approver).
+// `kai:YYYY-MM-DD:<reason>` is a grant like Tom's. On POST /api/audio/render its ORIGIN is verified (services/shared/approval-origin.cjs, #116·AI: the
+// caller's x-cs-conv must be on the named seat). link-clip and edit-batch still check its shape only here.
 const APPROVAL_TOKEN = /^(tom|kai):\d{4}-\d{2}-\d{2}:\S.{6,}$/
 
 /** Who a valid approval token speaks for: 'tom' | 'kai' | null. */

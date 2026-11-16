@@ -123,7 +123,8 @@ function validate(input) {
     adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
     // INSTRUCTION ONLY (job #464): its place in the ordered sequence the player plays (shared_audio.sequence).
     sequence: input.sequence == null ? null : Number(input.sequence),
-    // KAI'S (or Tom's) APPROVAL TOKEN `kai:YYYY-MM-DD:<reason>` (Tom 2026-10-30): lets a re-record past the permission gate. Shape-checked only.
+    // KAI'S (or Tom's) APPROVAL TOKEN `kai:YYYY-MM-DD:<reason>` (Tom 2026-10-30): lets a re-record past the permission gate. Shape-checked here;
+    // its ORIGIN is verified before this runs — phase8 /render refuses APPROVAL_UNVERIFIED unless the caller's x-cs-conv is on the named seat (approval-origin.cjs, #116·AI).
     approval: input.approval ? String(input.approval) : null,
     // COURSE POSITION of the line (its seed number; a phrase's LEGO S0014L01 → 14). Read only by the clone stand-in's
     // pace-by-belt rule (aran-clone-standin.cjs, Aran 2026-11-03, job #579); every other slot ignores it.

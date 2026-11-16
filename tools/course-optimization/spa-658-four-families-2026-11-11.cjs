@@ -109,7 +109,7 @@ function planAudio(api) {
   return { asks: [...asks.values()], problems };
 }
 
-async function post(url, body) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; }
+async function post(url, body) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...(body && body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; }
 const batch = (body) => post(`${POPTY}/api/production/${COURSE}/edit-batch`, body);
 const save = (name, obj) => { const f = path.join(__dirname, '../../ops/spa-658-apply', name); fs.writeFileSync(f, JSON.stringify(obj, null, 1)); console.log('wrote', f); };
 
