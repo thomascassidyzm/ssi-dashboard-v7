@@ -1,0 +1,1642 @@
+{
+"batch": "A",
+"seeds": [
+7,
+36,
+38,
+247
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 7,
+"set": {
+"target_text": "Is mian liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I want to try as hard as I can today",
+"target_text": "Is mian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0007L03",
+"set": {
+"target_text": "m'iarracht is fearr a dhéanamh",
+"components": [
+{
+"known": "my attempt",
+"target": "m'iarracht"
+},
+{
+"known": "best",
+"target": "is fearr"
+},
+{
+"known": "to do",
+"target": "a dhéanamh"
+}
+]
+},
+"expect": {
+"known_text": "to try as hard as I can",
+"target_text": "mo dhícheall a dhéanamh",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03B01",
+"set": {
+"target_text": "m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "to try as hard as I can",
+"target_text": "mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03B02",
+"set": {
+"target_text": "m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "to try my best today",
+"target_text": "mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03B04",
+"set": {
+"target_text": "tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I'm trying to do my best",
+"target_text": "tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03B03",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I want to try my best",
+"target_text": "is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03U01",
+"set": {
+"target_text": "tá mé chun m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm going to try my best today",
+"target_text": "tá mé chun mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03U03",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I want to try my best today",
+"target_text": "is mian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03U02",
+"set": {
+"target_text": "tá mé chun m'iarracht is fearr a dhéanamh anois"
+},
+"expect": {
+"known_text": "I'm going to try my best now",
+"target_text": "tá mé chun mo dhícheall a dhéanamh anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0007L03U04",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh anois"
+},
+"expect": {
+"known_text": "I want to try my best now",
+"target_text": "is mian liom mo dhícheall a dhéanamh anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0007L03C01",
+"expect": {
+"target_text": "mo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0011L01U06",
+"set": {
+"target_text": "ba mhaith liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'd like to do my best today",
+"target_text": "ba mhaith liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0011L01U14",
+"set": {
+"target_text": "ba mhaith liom m'iarracht is fearr a dhéanamh Gaeilge a labhairt inniu"
+},
+"expect": {
+"known_text": "I'd like to do my best to speak Irish today",
+"target_text": "ba mhaith liom mo dhícheall a dhéanamh Gaeilge a labhairt inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0011L02U03",
+"set": {
+"target_text": "ba mhaith liom a bheith in ann m'iarracht is fearr a dhéanamh Gaeilge a labhairt"
+},
+"expect": {
+"known_text": "I'd like to be able to do my best to speak Irish",
+"target_text": "ba mhaith liom a bheith in ann mo dhícheall a dhéanamh Gaeilge a labhairt"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0011L03U10",
+"set": {
+"target_text": "tar éis duit críochnú, ba mhaith liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "after you finish, I'd like to do my best",
+"target_text": "tar éis duit críochnú, ba mhaith liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L01B07",
+"set": {
+"target_text": "níor mhaith liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I wouldn't like to do my best today",
+"target_text": "níor mhaith liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L01U09",
+"set": {
+"target_text": "níor mhaith liom m'iarracht is fearr a dhéanamh Gaeilge a labhairt leat inniu"
+},
+"expect": {
+"known_text": "I wouldn't like to do my best to speak Irish with you today",
+"target_text": "níor mhaith liom mo dhícheall a dhéanamh Gaeilge a labhairt leat inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L04B06",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh amárach"
+},
+"expect": {
+"known_text": "I want to do my best tomorrow",
+"target_text": "is mian liom mo dhícheall a dhéanamh amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L04U07",
+"set": {
+"target_text": "ba mhaith liom m'iarracht is fearr a dhéanamh Gaeilge a labhairt amárach"
+},
+"expect": {
+"known_text": "I'd like to do my best to speak Irish tomorrow",
+"target_text": "ba mhaith liom mo dhícheall a dhéanamh Gaeilge a labhairt amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0012L04U13",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh Gaeilge a labhairt leat amárach"
+},
+"expect": {
+"known_text": "I want to do my best to speak Irish with you tomorrow",
+"target_text": "is mian liom mo dhícheall a dhéanamh Gaeilge a labhairt leat amárach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0014L01U07",
+"set": {
+"target_text": "ba mhaith liom m'iarracht is fearr a dhéanamh labhairt le duine éigin eile an lá ar fad"
+},
+"expect": {
+"known_text": "I'd like to do my best to speak with someone else all day",
+"target_text": "ba mhaith liom mo dhícheall a dhéanamh labhairt le duine éigin eile an lá ar fad"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0015L01U08",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh agus labhairt a chleachtadh i nGaeilge"
+},
+"expect": {
+"known_text": "I want to do my best and practise speaking Irish",
+"target_text": "is mian liom mo dhícheall a dhéanamh agus labhairt a chleachtadh i nGaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0022L01U04",
+"set": {
+"target_text": "mar is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "because I want to do my best",
+"target_text": "mar is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0022L02U11",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh agus bualadh le daoine inniu"
+},
+"expect": {
+"known_text": "I want to do my best and meet people today",
+"target_text": "is mian liom mo dhícheall a dhéanamh agus bualadh le daoine inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0024L01U11",
+"set": {
+"target_text": "ní bheidh mé in ann m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm not going to be able to do my best today",
+"target_text": "ní bheidh mé in ann mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0024L02U13",
+"set": {
+"target_text": "tá mé ag iarraidh cuimhneamh air sin go héasca agus m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm trying to remember that easily and do my best today",
+"target_text": "tá mé ag iarraidh cuimhneamh air sin go héasca agus mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L03U05",
+"set": {
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I like to be feeling as if I'm trying to do my best",
+"target_text": "is maith liom a bheith ag mothú go bhfuil mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L03U08",
+"set": {
+"target_text": "is mian liom a bheith ag mothú go bhfuil mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I want to be feeling as if I'm trying to do my best",
+"target_text": "is mian liom a bheith ag mothú go bhfuil mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0026L03U06",
+"set": {
+"target_text": "tá mé ag mothú go bhfuil mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I'm feeling as if I'm trying to do my best",
+"target_text": "tá mé ag mothú go bhfuil mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 36,
+"set": {
+"target_text": "Ní mian linn briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "we don't want to interrupt the story",
+"target_text": "Ní mian linn cur isteach ar an scéal"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0036L03",
+"set": {
+"target_text": "briseadh isteach ar",
+"components": [
+{
+"known": "breaking",
+"target": "briseadh"
+},
+{
+"known": "in",
+"target": "isteach"
+},
+{
+"known": "on",
+"target": "ar"
+}
+]
+},
+"expect": {
+"known_text": "to interrupt",
+"target_text": "cur isteach ar",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L02U15",
+"set": {
+"target_text": "is mian liom an scéal a léamh agus m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I want to read the story and do my best today",
+"target_text": "is mian liom an scéal a léamh agus mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03B02",
+"set": {
+"target_text": "is mian liom briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "I want to interrupt the story",
+"target_text": "is mian liom cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03B08",
+"set": {
+"target_text": "ní mian léi briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "she doesn't want to interrupt the story",
+"target_text": "ní mian léi cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03B09",
+"set": {
+"target_text": "ní mian leis briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "he doesn't want to interrupt the story",
+"target_text": "ní mian leis cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03B10",
+"set": {
+"target_text": "ag iarraidh briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "trying to interrupt the story",
+"target_text": "ag iarraidh cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U11",
+"set": {
+"target_text": "ní mian liom briseadh isteach ar an scéal nuair atá tú ag caint"
+},
+"expect": {
+"known_text": "I don't want to interrupt the story when you are talking",
+"target_text": "ní mian liom cur isteach ar an scéal nuair atá tú ag caint"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U12",
+"set": {
+"target_text": "ní mian léi briseadh isteach ar an scéal nuair atá daoine eile anseo"
+},
+"expect": {
+"known_text": "she doesn't want to interrupt the story when other people are here",
+"target_text": "ní mian léi cur isteach ar an scéal nuair atá daoine eile anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U14",
+"set": {
+"target_text": "ní mian liom briseadh isteach ar an scéal, ach is mian liom rud éigin a rá"
+},
+"expect": {
+"known_text": "I don't want to interrupt the story, but I want to say something",
+"target_text": "ní mian liom cur isteach ar an scéal, ach is mian liom rud éigin a rá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U16",
+"set": {
+"target_text": "níl sé úsáideach briseadh isteach ar an scéal nuair atá gach duine ag caint"
+},
+"expect": {
+"known_text": "it is not useful to interrupt the story when everyone is talking",
+"target_text": "níl sé úsáideach cur isteach ar an scéal nuair atá gach duine ag caint"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U17",
+"set": {
+"target_text": "ní mian leis briseadh isteach ar an scéal nuair atá daoine eile anseo"
+},
+"expect": {
+"known_text": "he doesn't want to interrupt the story when other people are here",
+"target_text": "ní mian leis cur isteach ar an scéal nuair atá daoine eile anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U18",
+"set": {
+"target_text": "ní mian liom briseadh isteach ar an scéal mar ní maith liom briseadh isteach"
+},
+"expect": {
+"known_text": "I don't want to interrupt the story because it is not good",
+"target_text": "ní mian liom cur isteach ar an scéal mar ní maith liom cur isteach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U19",
+"set": {
+"target_text": "ní mian leis briseadh isteach ar an scéal, ach tá sé ag iarraidh foghlaim"
+},
+"expect": {
+"known_text": "he doesn't want to interrupt the story, but he is trying to learn",
+"target_text": "ní mian leis cur isteach ar an scéal, ach tá sé ag iarraidh foghlaim"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0036L03U20",
+"set": {
+"target_text": "ní mian liom briseadh isteach ar an scéal nuair atá tú ag caint le daoine eile"
+},
+"expect": {
+"known_text": "I don't want to interrupt the story when you are talking to other people",
+"target_text": "ní mian liom cur isteach ar an scéal nuair atá tú ag caint le daoine eile"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L01U02",
+"set": {
+"target_text": "thosaigh mé ag foghlaim Gaeilge an mhí seo caite agus is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I started learning Irish last month and I want to do my best",
+"target_text": "thosaigh mé ag foghlaim Gaeilge an mhí seo caite agus is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L02U12",
+"set": {
+"target_text": "thosaigh mé ag smaoineamh go cúramach mar is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I started thinking about this carefully because I want to do my best",
+"target_text": "thosaigh mé ag smaoineamh go cúramach mar is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L05U05",
+"set": {
+"target_text": "thosaigh mé ag smaoineamh go cúramach mar is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I started thinking carefully because I want to do my best",
+"target_text": "thosaigh mé ag smaoineamh go cúramach mar is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L05U09",
+"set": {
+"target_text": "thosaigh sé ag smaoineamh go cúramach mar is mian leis m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "he started thinking carefully because he wants to do his best",
+"target_text": "thosaigh sé ag smaoineamh go cúramach mar is mian leis mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0037L06U01",
+"set": {
+"target_text": "thosaigh mé ag foghlaim Gaeilge an mhí seo caite agus is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I started learning Irish last month and I want to do my best",
+"target_text": "thosaigh mé ag foghlaim Gaeilge an mhí seo caite agus is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 38,
+"set": {
+"target_text": "Tá mé ag foghlaim thart ar sheachtain"
+},
+"expect": {
+"known_text": "I've been learning for about a week",
+"target_text": "Tá mé ag foghlaim le timpeall seachtaine"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0038L04",
+"set": {
+"target_text": "thart ar sheachtain",
+"components": [
+{
+"known": "about",
+"target": "thart ar"
+},
+{
+"known": "a week",
+"target": "sheachtain"
+}
+]
+},
+"expect": {
+"known_text": "about a week",
+"target_text": "timpeall seachtaine",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L01U02",
+"set": {
+"target_text": "Tá mé ag foghlaim Gaeilge agus is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am learning Irish and I want to do my best",
+"target_text": "Tá mé ag foghlaim Gaeilge agus is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04B04",
+"set": {
+"target_text": "Tá mé ag foghlaim thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been learning for about a week",
+"target_text": "Tá mé ag foghlaim le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04B01",
+"set": {
+"target_text": "thart ar sheachtain"
+},
+"expect": {
+"known_text": "about a week",
+"target_text": "timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04B05",
+"set": {
+"target_text": "Tá mé ag iarraidh thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been trying for about a week",
+"target_text": "Tá mé ag iarraidh le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04B06",
+"set": {
+"target_text": "Tá mé ag smaoineamh go cúramach thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been thinking carefully for about a week",
+"target_text": "Tá mé ag smaoineamh go cúramach le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04B07",
+"set": {
+"target_text": "Tá sí ag foghlaim thart ar sheachtain"
+},
+"expect": {
+"known_text": "she has been learning for about a week",
+"target_text": "Tá sí ag foghlaim le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U13",
+"set": {
+"target_text": "Tá mé ag iarraidh labhairt le duine éigin eile thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been trying to talk to someone else for about a week",
+"target_text": "Tá mé ag iarraidh labhairt le duine éigin eile le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U07",
+"set": {
+"target_text": "Tá sí ag foghlaim thart ar sheachtain agus tá sé úsáideach"
+},
+"expect": {
+"known_text": "she has been learning for about a week and she thinks it is very useful",
+"target_text": "Tá sí ag foghlaim le timpeall seachtaine agus tá sé úsáideach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U10",
+"set": {
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu thart ar sheachtain"
+},
+"expect": {
+"known_text": "he has been trying to meet people who speak Irish for about a week",
+"target_text": "Tá sé ag iarraidh bualadh le daoine a bhfuil Gaeilge acu le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U08",
+"set": {
+"target_text": "Tá mé ag tnúth le bualadh le gach duine anseo thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been waiting to meet everyone here for about a week",
+"target_text": "Tá mé ag tnúth le bualadh le gach duine anseo le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U03",
+"set": {
+"target_text": "Tá sí ag iarraidh Gaeilge a labhairt thart ar sheachtain"
+},
+"expect": {
+"known_text": "she has been trying to speak Irish for about a week",
+"target_text": "Tá sí ag iarraidh Gaeilge a labhairt le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U05",
+"set": {
+"target_text": "Tá sé ag smaoineamh go cúramach thart ar sheachtain mar is mian leis m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "he has been thinking carefully for about a week because he wants to do his best",
+"target_text": "Tá sé ag smaoineamh go cúramach le timpeall seachtaine mar is mian leis mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U02",
+"set": {
+"target_text": "Tá mé ag smaoineamh go cúramach air thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been thinking carefully about it for about a week",
+"target_text": "Tá mé ag smaoineamh go cúramach air le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U09",
+"set": {
+"target_text": "Tá mé ag iarraidh cad atá i gceist agam a mhíniú thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been trying to explain what I mean for about a week",
+"target_text": "Tá mé ag iarraidh cad atá i gceist agam a mhíniú le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U14",
+"set": {
+"target_text": "Tá sí ag iarraidh foghlaim chomh luath agus is féidir thart ar sheachtain"
+},
+"expect": {
+"known_text": "she has been trying to learn as quickly as possible for about a week",
+"target_text": "Tá sí ag iarraidh foghlaim chomh luath agus is féidir le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U12",
+"set": {
+"target_text": "Tá sí ag iarraidh fáil amach cad é an freagra thart ar sheachtain"
+},
+"expect": {
+"known_text": "she has been trying to find out the answer for about a week",
+"target_text": "Tá sí ag iarraidh fáil amach cad é an freagra le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U06",
+"set": {
+"target_text": "Tá mé ag iarraidh labhairt a chleachtadh chomh minic agus is féidir thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been trying to practice talking as often as possible for about a week",
+"target_text": "Tá mé ag iarraidh labhairt a chleachtadh chomh minic agus is féidir le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U04",
+"set": {
+"target_text": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán thart ar sheachtain"
+},
+"expect": {
+"known_text": "I have been trying to remember the full sentence for about a week",
+"target_text": "Tá mé ag iarraidh cuimhneamh ar an abairt iomlán le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0038L04U01",
+"set": {
+"target_text": "Tá mé ag foghlaim Gaeilge thart ar sheachtain anois"
+},
+"expect": {
+"known_text": "I have been learning Irish for about a week now",
+"target_text": "Tá mé ag foghlaim Gaeilge le timpeall seachtaine anois"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L04C01",
+"expect": {
+"target_text": "timpeall"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L04C02",
+"expect": {
+"target_text": "seachtaine"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0038L04B03",
+"expect": {
+"target_text": "le timpeall seachtaine"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0038L05",
+"cascade_phrases": true,
+"expect": {
+"target_text": "le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0042L01U04",
+"set": {
+"target_text": "bhí mé ag tosú ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I was starting to try to do my best",
+"target_text": "bhí mé ag tosú ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0043L02U06",
+"set": {
+"target_text": "Ní raibh mé cinnte conas é a rá ach bhí mé ag iarraidh m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I wasn't sure how to say it but I tried to do my best",
+"target_text": "Ní raibh mé cinnte conas é a rá ach bhí mé ag iarraidh mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0044L02U08",
+"set": {
+"target_text": "má chaithfidh mé labhairt Gaeilge inniu, is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "if I need to speak Irish today, I want to do my best",
+"target_text": "má chaithfidh mé labhairt Gaeilge inniu, is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0044L03U03",
+"set": {
+"target_text": "má chaithfidh mé feabhsú, is mian liom m'iarracht is fearr a dhéanamh",
+"known_text": "if I need to improve, I want to try my best"
+},
+"expect": {
+"known_text": "if I need to improve, I want to try to do my best",
+"target_text": "má chaithfidh mé feabhsú, is mian liom iarracht a dhéanamh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0045L01U05",
+"set": {
+"target_text": "ní chaithfidh mé m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I don't need to do my best today",
+"target_text": "ní chaithfidh mé mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0045L03U03",
+"set": {
+"target_text": "má chaithfidh mé gach rud a bheith ar eolas agam, is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "if I need to know everything, I want to try my best",
+"target_text": "má chaithfidh mé gach rud a bheith ar eolas agam, is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0046L02U08",
+"set": {
+"target_text": "ní bhím buartha faoi m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I don't worry about doing my best",
+"target_text": "ní bhím buartha faoi mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0049L02U07",
+"set": {
+"target_text": "is mian liom m'iarracht is fearr a dhéanamh mar seo"
+},
+"expect": {
+"known_text": "I want to do my best like this",
+"target_text": "is mian liom mo dhícheall a dhéanamh mar seo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0053L02U08",
+"set": {
+"target_text": "ní mian léi briseadh isteach, ach is mian léi ceist a chur"
+},
+"expect": {
+"known_text": "she doesn't want to interrupt, but she wants to ask a question",
+"target_text": "ní mian léi cur isteach, ach is mian léi ceist a chur"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0056L01U06",
+"set": {
+"target_text": "mar sin is féidir liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "so that I can do my best",
+"target_text": "mar sin is féidir liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0057L01U05",
+"set": {
+"target_text": "ní féidir liom m'iarracht is fearr a dhéanamh faoi láthair"
+},
+"expect": {
+"known_text": "I can't do my best at the moment",
+"target_text": "ní féidir liom mo dhícheall a dhéanamh faoi láthair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L01U05",
+"set": {
+"target_text": "Tá a fhios agam conas m'iarracht is fearr a dhéanamh má chaithfidh mé"
+},
+"expect": {
+"known_text": "I know how to try as hard as I can if I need to",
+"target_text": "Tá a fhios agam conas mo dhícheall a dhéanamh má chaithfidh mé"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0059L01U06",
+"set": {
+"target_text": "Ní féidir liom cuimhneamh air sin go héasca ach tá a fhios agam conas m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I can't remember that easily but I know how to try as hard as I can",
+"target_text": "Ní féidir liom cuimhneamh air sin go héasca ach tá a fhios agam conas mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0064L05U01",
+"set": {
+"target_text": "níl sé úsáideach briseadh isteach nuair atá daoine eile anseo"
+},
+"expect": {
+"known_text": "it is not useful to interrupt when other people are here",
+"target_text": "níl sé úsáideach cur isteach nuair atá daoine eile anseo"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U08",
+"set": {
+"target_text": "Tá sé tábhachtach m'iarracht is fearr a dhéanamh inniu ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "it is important to try your best every day when learning a language",
+"target_text": "Tá sé tábhachtach mo dhícheall a dhéanamh inniu ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L02U07",
+"set": {
+"target_text": "Tá sé tábhachtach m'iarracht is fearr a dhéanamh inniu agus gach lá"
+},
+"expect": {
+"known_text": "it is important to try your best today and every day",
+"target_text": "Tá sé tábhachtach mo dhícheall a dhéanamh inniu agus gach lá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L02U12",
+"set": {
+"target_text": "Tá sé tábhachtach m'iarracht is fearr a dhéanamh ag labhairt Gaeilge"
+},
+"expect": {
+"known_text": "it is important to do your best when you are speaking Irish",
+"target_text": "Tá sé tábhachtach mo dhícheall a dhéanamh ag labhairt Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U13",
+"set": {
+"target_text": "is mian liom am a chaitheamh chun m'iarracht is fearr a dhéanamh inniu agus gach seachtaine"
+},
+"expect": {
+"known_text": "I want to take time to do my best today and every week",
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U14",
+"set": {
+"target_text": "níl sé tábhachtach am a chaitheamh an iomarca ach Tá sé tábhachtach m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "it is not important to take too much time but it is important to try your best",
+"target_text": "níl sé tábhachtach am a chaitheamh an iomarca ach Tá sé tábhachtach mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L04U11",
+"set": {
+"target_text": "Tá sé tábhachtach m'iarracht is fearr a dhéanamh chun feabhsú chomh luath agus is féidir"
+},
+"expect": {
+"known_text": "it is important to do your best in order to improve as soon as possible",
+"target_text": "Tá sé tábhachtach mo dhícheall a dhéanamh chun feabhsú chomh luath agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L04U04",
+"set": {
+"target_text": "tá mé chun ag iarraidh m'iarracht is fearr a dhéanamh chun labhairt Gaeilge go han-mhaith chomh luath agus is féidir"
+},
+"expect": {
+"known_text": "I am going to try harder in order to speak Irish well as soon as possible",
+"target_text": "tá mé chun ag iarraidh mo dhícheall a dhéanamh chun labhairt Gaeilge go han-mhaith chomh luath agus is féidir"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L01U02",
+"set": {
+"target_text": "Níl sé tábhachtach gach focal a bheith ar eolas agam ach Tá sé tábhachtach m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "it is not important to know every word but it is important to try your best",
+"target_text": "Níl sé tábhachtach gach focal a bheith ar eolas agam ach Tá sé tábhachtach mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L01U15",
+"set": {
+"target_text": "Níl sé tábhachtach gach rud go han-mhaith ach Tá sé tábhachtach m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "it is not important to be perfect but it is important to do your best every day",
+"target_text": "Níl sé tábhachtach gach rud go han-mhaith ach Tá sé tábhachtach mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L02U12",
+"set": {
+"target_text": "ní bhíonn sé deacair ach is mian liom m'iarracht is fearr a dhéanamh gach lá"
+},
+"expect": {
+"known_text": "it is not always difficult but I want to do my best every day",
+"target_text": "ní bhíonn sé deacair ach is mian liom mo dhícheall a dhéanamh gach lá"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L02U02",
+"set": {
+"target_text": "tá a fhios agam go bhfuil sé deacair ach is mian liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I know it is difficult but I want to do my best today",
+"target_text": "tá a fhios agam go bhfuil sé deacair ach is mian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0066L04U06",
+"set": {
+"target_text": "níl mé in ann an freagra a fháil ach is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not able to find the answer but I want to do my best",
+"target_text": "níl mé in ann an freagra a fháil ach is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L02B06",
+"set": {
+"target_text": "níl mé cinnte cad atá tú ag caint faoi ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not sure what you are talking about but I am trying my best",
+"target_text": "níl mé cinnte cad atá tú ag caint faoi ach tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0068L02U07",
+"set": {
+"target_text": "níl mé cinnte cad atá tú ag caint faoi ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not sure what you are talking about but I am trying my best today",
+"target_text": "níl mé cinnte cad atá tú ag caint faoi ach tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L05U01",
+"set": {
+"target_text": "níor mhian liom stopadh ag caint Gaeilge an tráthnóna seo mar tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I did not want to stop speaking Irish this afternoon because I am trying to do my best",
+"target_text": "níor mhian liom stopadh ag caint Gaeilge an tráthnóna seo mar tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L05U13",
+"set": {
+"target_text": "bhí sé ag iarraidh litir a scríobh chuig a chara an tráthnóna seo agus ní mian linn briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "he was trying to write a letter to his friend this afternoon and we don't want to interrupt the story",
+"target_text": "bhí sé ag iarraidh litir a scríobh chuig a chara an tráthnóna seo agus ní mian linn cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L05U14",
+"set": {
+"target_text": "níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán an tráthnóna seo ach is mian liom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not sure if I can remember the whole sentence this afternoon but I want to try my best",
+"target_text": "níl mé cinnte an féidir liom cuimhneamh ar an abairt iomlán an tráthnóna seo ach is mian liom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0069L05U15",
+"set": {
+"target_text": "is mian léi fáil amach cad é an freagra an tráthnóna seo mar tá sí ag smaoineamh air go cúramach thart ar sheachtain"
+},
+"expect": {
+"known_text": "she wants to find out what the answer is this afternoon because she has been thinking about it carefully for a while",
+"target_text": "is mian léi fáil amach cad é an freagra an tráthnóna seo mar tá sí ag smaoineamh air go cúramach le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0071L01U07",
+"set": {
+"target_text": "níor mhian linn briseadh isteach ar an scéal"
+},
+"expect": {
+"known_text": "we didn't want to interrupt the story",
+"target_text": "níor mhian linn cur isteach ar an scéal"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L04U13",
+"set": {
+"target_text": "bhí an-áthas air as an méid focal ar fad atá foghlamtha agam thart ar sheachtain ag foghlaim Gaeilge"
+},
+"expect": {
+"known_text": "he was very happy with all the words I have learned in about a week of learning Irish",
+"target_text": "bhí an-áthas air as an méid focal ar fad atá foghlamtha agam le timpeall seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L04U02",
+"set": {
+"target_text": "tá mé ag iarraidh m'iarracht is fearr a dhéanamh an Gaeilge atá foghlamtha agam a labhairt ar fad"
+},
+"expect": {
+"known_text": "I always try to speak the Irish I have learned so that I do not forget it",
+"target_text": "tá mé ag iarraidh mo dhícheall a dhéanamh an Gaeilge atá foghlamtha agam a labhairt ar fad"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L04U10",
+"set": {
+"target_text": "níl mé cinnte faoin Gaeilge ar fad atá foghlamtha agam ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not always sure about using everything I have learned but I always try my best",
+"target_text": "níl mé cinnte faoin Gaeilge ar fad atá foghlamtha agam ach tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L04U03",
+"set": {
+"target_text": "tá áthas air as an méid Gaeilge ar fad atá foghlamtha agam thart ar sheachtain"
+},
+"expect": {
+"known_text": "he is happy with all the Irish I have learned in about a week",
+"target_text": "tá áthas air as an méid Gaeilge ar fad atá foghlamtha agam le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0076L05U01",
+"set": {
+"target_text": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam cheana féin thart ar sheachtain"
+},
+"expect": {
+"known_text": "I am very happy with how much Irish I have already learned in such a short time",
+"target_text": "tá an-áthas orm as an méid Gaeilge atá foghlamtha agam cheana féin le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0082L01U04",
+"set": {
+"target_text": "níl mé chun m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm not going to do my best today",
+"target_text": "níl mé chun mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0088L05U03",
+"set": {
+"target_text": "Níl mé cinnte go fóill an féidir liom cabhrú leat ag an am céanna, ach is mian liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I'm not sure yet if I can help you at the same time, but I want to try my best today",
+"target_text": "Níl mé cinnte go fóill an féidir liom cabhrú leat ag an am céanna, ach is mian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0089L04U10",
+"set": {
+"target_text": "Níl mé cinnte go fóill cé mhéad atá déanta, ach tá a fhios agam go bhfuil mé ag foghlaim Gaeilge thart ar sheachtain anois"
+},
+"expect": {
+"known_text": "I'm not sure yet how much is done, but I know I've been learning Irish for about a week now and I feel good",
+"target_text": "Níl mé cinnte go fóill cé mhéad atá déanta, ach tá a fhios agam go bhfuil mé ag foghlaim Gaeilge le timpeall seachtaine anois"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0098L01U07",
+"set": {
+"target_text": "ba chóir dom m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I should do my best",
+"target_text": "ba chóir dom mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L02U06",
+"set": {
+"target_text": "Tá mé ag iarraidh m'iarracht is fearr a dhéanamh inniu agus gan a bheith buartha faoi bhotúin"
+},
+"expect": {
+"known_text": "I am trying to do my best today and not worry about mistakes",
+"target_text": "Tá mé ag iarraidh mo dhícheall a dhéanamh inniu agus gan a bheith buartha faoi bhotúin"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0102L04U05",
+"set": {
+"target_text": "Tá a fhios agam nach bhfuil sé éasca ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I know that it is not easy but I am trying to do my best",
+"target_text": "Tá a fhios agam nach bhfuil sé éasca ach tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0108L03U02",
+"set": {
+"target_text": "ní bhainim taitneamh as dúiseacht nuair nár chodail mé go maith ach ba mhian liom m'iarracht is fearr a dhéanamh inniu"
+},
+"expect": {
+"known_text": "I do not enjoy waking when I did not sleep well but I wanted to try to do my best today",
+"target_text": "ní bhainim taitneamh as dúiseacht nuair nár chodail mé go maith ach ba mhian liom mo dhícheall a dhéanamh inniu"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L02U11",
+"set": {
+"target_text": "mothaím go bhfuil mé ag iarraidh m'iarracht is fearr a dhéanamh inniu labhairt níos mó"
+},
+"expect": {
+"known_text": "I feel as if I am trying to do my best today to speak more",
+"target_text": "mothaím go bhfuil mé ag iarraidh mo dhícheall a dhéanamh inniu labhairt níos mó"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0114L03U13",
+"set": {
+"target_text": "mothaím go bhfuil mé ag déanamh m'iarracht is fearr a dhéanamh le foghlaim chomh maith agus is féidir liom"
+},
+"expect": {
+"known_text": "I feel as if I am doing my best to learn as much as I can",
+"target_text": "mothaím go bhfuil mé ag déanamh mo dhícheall a dhéanamh le foghlaim chomh maith agus is féidir liom"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0125L04U04",
+"set": {
+"target_text": "creidim go raibh do smaoineamh go han-mhaith agus go bhfuil tú ag déanamh go han-mhaith do dhuine éigin atá ag foghlaim thart ar sheachtain"
+},
+"expect": {
+"known_text": "I believe that your idea was very good and you are doing very well for someone who has only been learning for about a week",
+"target_text": "creidim go raibh do smaoineamh go han-mhaith agus go bhfuil tú ag déanamh go han-mhaith do dhuine éigin atá ag foghlaim le timpeall seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0153L02U07",
+"set": {
+"target_text": "Níl mé cinnte díreach conas a mhíniú cad atá i gceist agam, ach tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not sure exactly how to explain what I mean, but I will try my best",
+"target_text": "Níl mé cinnte díreach conas a mhíniú cad atá i gceist agam, ach tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0153L03U05",
+"set": {
+"target_text": "ceapaim gur fearr iarracht a dhéanamh rudaí a dhéanamh ar an mbealach céanna, agus tá mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I think it is better to try to do things in the same way, and I am trying my best",
+"target_text": "ceapaim gur fearr iarracht a dhéanamh rudaí a dhéanamh ar an mbealach céanna, agus tá mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0160L01U13",
+"set": {
+"target_text": "Ní raibh a fhios agam conas a deir tú rud éigin cosúil le sin i nGaeilge ach bhí mé ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I was not sure how do you say something like that in Irish but I tried my best to do it well",
+"target_text": "Ní raibh a fhios agam conas a deir tú rud éigin cosúil le sin i nGaeilge ach bhí mé ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0198L02U09",
+"set": {
+"target_text": "ba mhian liom go mbeadh a fhios ag m'iníon cén fáth go raibh mé ag iarraidh m'iarracht is fearr a dhéanamh a bheith ann"
+},
+"expect": {
+"known_text": "I wanted my daughter to know why I was trying my best to be there",
+"target_text": "ba mhian liom go mbeadh a fhios ag m'iníon cén fáth go raibh mé ag iarraidh mo dhícheall a dhéanamh a bheith ann"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0198L03U10",
+"set": {
+"target_text": "ceapaim go bhfuil sé tábhachtach m'iarracht is fearr a dhéanamh nuair atá mé ag obair don chomhairle"
+},
+"expect": {
+"known_text": "I think it is very important to do your best when you are working for the council",
+"target_text": "ceapaim go bhfuil sé tábhachtach mo dhícheall a dhéanamh nuair atá mé ag obair don chomhairle"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0200L04U03",
+"set": {
+"target_text": "Níl mé cinnte go gcríochnóidh muid gach rud in am ach tá muid ag iarraidh m'iarracht is fearr a dhéanamh"
+},
+"expect": {
+"known_text": "I am not sure that we will finish everything in time but we are going to try",
+"target_text": "Níl mé cinnte go gcríochnóidh muid gach rud in am ach tá muid ag iarraidh mo dhícheall a dhéanamh"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 247,
+"set": {
+"target_text": "cheap mé go raibh an leabhar sin cuíosach maith"
+},
+"expect": {
+"known_text": "I thought that book was fairly good",
+"target_text": "cheap mé go raibh an leabhar sin réasúnta maith"
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0247L04",
+"set": {
+"target_text": "cuíosach"
+},
+"expect": {
+"known_text": "fairly",
+"target_text": "réasúnta",
+"is_new": true
+}
+},
+{
+"op": "lego.update",
+"lego_id": "S0247L05",
+"set": {
+"target_text": "cuíosach maith",
+"components": [
+{
+"known": "fairly",
+"target": "cuíosach"
+},
+{
+"known": "good",
+"target": "maith"
+}
+]
+},
+"expect": {
+"known_text": "fairly good",
+"target_text": "réasúnta maith",
+"is_new": true
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L03U01",
+"set": {
+"target_text": "cheap mé go raibh an leabhar sin suimiúil",
+"known_text": "I thought that book was interesting"
+},
+"expect": {
+"known_text": "I thought that book was fairly good",
+"target_text": "cheap mé go raibh an leabhar sin réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04B01",
+"set": {
+"target_text": "cuíosach"
+},
+"expect": {
+"known_text": "fairly",
+"target_text": "réasúnta"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04B02",
+"set": {
+"target_text": "cuíosach maith"
+},
+"expect": {
+"known_text": "fairly good",
+"target_text": "réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04B03",
+"set": {
+"target_text": "bhí sé cuíosach maith"
+},
+"expect": {
+"known_text": "it was fairly good",
+"target_text": "bhí sé réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U01",
+"set": {
+"target_text": "cheap mé go raibh an leabhar sin cuíosach maith"
+},
+"expect": {
+"known_text": "I thought that book was fairly good",
+"target_text": "cheap mé go raibh an leabhar sin réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U02",
+"set": {
+"target_text": "bhí sé cuíosach maith"
+},
+"expect": {
+"known_text": "it was fairly good",
+"target_text": "bhí sé réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U04",
+"set": {
+"target_text": "Tá sé cuíosach deacair"
+},
+"expect": {
+"known_text": "it's fairly difficult",
+"target_text": "Tá sé réasúnta deacair"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U03",
+"set": {
+"target_text": "ceapaim go bhfuil sé cuíosach maith"
+},
+"expect": {
+"known_text": "I think it's fairly good",
+"target_text": "ceapaim go bhfuil sé réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U06",
+"set": {
+"target_text": "bhí sé cuíosach tábhachtach"
+},
+"expect": {
+"known_text": "it was fairly important",
+"target_text": "bhí sé réasúnta tábhachtach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U08",
+"set": {
+"target_text": "Tá sé cuíosach éasca"
+},
+"expect": {
+"known_text": "it's fairly easy",
+"target_text": "Tá sé réasúnta éasca"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U07",
+"set": {
+"target_text": "Tá súil agam go bhfuil sé cuíosach maith"
+},
+"expect": {
+"known_text": "I hope it's fairly good",
+"target_text": "Tá súil agam go bhfuil sé réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L04U05",
+"set": {
+"target_text": "bhí mé cuíosach tuirseach"
+},
+"expect": {
+"known_text": "I was fairly tired",
+"target_text": "bhí mé réasúnta tuirseach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0247L05U01",
+"set": {
+"target_text": "cheap mé go raibh an leabhar sin cuíosach maith"
+},
+"expect": {
+"known_text": "I thought that book was fairly good",
+"target_text": "cheap mé go raibh an leabhar sin réasúnta maith"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0248L02U03",
+"set": {
+"target_text": "ceapaim go bhfuil an scannán cuíosach gearr"
+},
+"expect": {
+"known_text": "i think the film is fairly short",
+"target_text": "ceapaim go bhfuil an scannán réasúnta gearr"
+}
+}
+]
+}
