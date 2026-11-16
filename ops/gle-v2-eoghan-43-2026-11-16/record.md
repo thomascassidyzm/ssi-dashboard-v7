@@ -45,3 +45,5 @@ No LEGO in the course has an intro clip, so nothing is out of step. No audio ren
 ## Not changed by this job, flagged
 - 492: his line drops 'do you think' (no LEGOs past 300 yet, so nothing clashes today).
 - 614 'do chlann' vs 'teaghlach' at 408 (both past 300; 408 is one of the 28).
+
+28-row recommendation list: rows28.md, published https://watson-1.tail4968cb.ts.net:10000/d/7a83019a
