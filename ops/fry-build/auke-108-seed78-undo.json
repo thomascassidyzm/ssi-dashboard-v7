@@ -1,0 +1,51 @@
+{
+ "family": "seed78",
+ "event_id": "b2763bfc-12d7-43f0-a24a-cdaed2ddcbe2",
+ "undo_file_on_popty": "2026-11-16T12-34-20-593Z-b2763bfc-12d7-43f0-a24a-cdaed2ddcbe2.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U07",
+   "set": {
+    "known_text": "I don't understand and I don't care"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U06",
+   "set": {
+    "known_text": "I'm a little tired this afternoon and I don't understand"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U05",
+   "set": {
+    "known_text": "I'm not sure if I still know the whole sentence and I don't understand"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U04",
+   "set": {
+    "known_text": "you speak very well but I don't understand"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01U01",
+   "set": {
+    "known_text": "he wants to come back later on but I don't understand"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01B02",
+   "set": {
+    "known_text": "I'm trying but I don't understand"
+   }
+  }
+ ]
+}
