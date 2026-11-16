@@ -190,6 +190,42 @@ for r in his:
     assert not FAMILY_LEFT.search(c) or n==once_at,('analytic-form note left in a later row',n,c)
     rows.append((n,ours,s['known_text'],c))
 assert not stale, ('rows needing a hand-written comment', stale)
+# cs #324·AI, Kai 16 Nov 19:49-19:53Z: column C is rewritten in Kai's style from comments-kai-style.txt (rules in its
+# header). The rules above still decide WHICH rows needed a comment; every such row must have an entry there, written for
+# the live Irish quoted beside it, or the build fails. Each 'quoted' piece must be in his line, our line, a sentence the
+# comment names by number, or the course's English; internal words are refused outright.
+def load_kai(p):
+    out={}; cur=None
+    for ln in open(p,encoding='utf-8').read().split('\n'):
+        if ln.startswith('#'): continue
+        m=re.match(r'@(\d+) \| (.*?)( #nr)?$',ln)
+        if m: cur=int(m.group(1)); out[cur]=[m.group(2),'',bool(m.group(3))]; continue
+        if cur is not None and ln.strip() and not out[cur][1]: out[cur][1]=ln.strip()
+    return out
+KAI=load_kai(os.path.join(HERE,'comments-kai-style.txt'))
+fnrm=lambda s:fada(nrm(s))
+ENGLISH=' '.join(fnrm(x['known_text']) for x in live.values())
+BANNED=re.compile(r'lego|frame|basket|syllab|\bboth\b|standard|word for word|the english is|seed part|\bzut\b|\btile|phrase role|\bseed',re.I)
+hisF={int(r['A']):r.get('F','') for r in his}
+missing=[];kstale=[];badq=[];banned=[];final=[]
+for n,ours,en,c in rows:
+    if c and n not in KAI: missing.append(n)
+    if n in KAI:
+        if nrm(KAI[n][0])!=nrm(ours): kstale.append(n)
+        c=KAI[n][1]
+        pool=[fnrm(hisF[n]),fnrm(ours)]+[fnrm(live[int(x)]['target_text']) for x in re.findall(r'\b(\d{1,3})\b',c) if int(x) in live]
+        for q in re.findall(r'‘([^’]*)’',c):
+            for frag in [fnrm(x) for x in q.split('…') if fnrm(x)]:
+                if not any(frag in p for p in pool) and frag not in ENGLISH: badq.append((n,frag))
+        if BANNED.search(c): banned.append((n,c))
+    final.append((n,ours,en,c))
+assert not missing,('rows with no Kai-style comment',missing)
+assert not kstale,('Kai-style comment written for other Irish',kstale)
+assert not badq,('quoted pieces not found',badq)
+assert not banned,('internal or banned words',banned)
+assert dict((n,c) for n,_,_,c in final)[once_at]==ONCE
+rows=final
+print('kai-style:',sum(1 for x in rows if x[3]),'commented,',sum(1 for x in rows if not x[3]),'blank; no reason found:',sorted(n for n in KAI if KAI[n][2] and KAI[n][1]))
 H=['Gaeilge (anois)','English','Ár nóta / Our comment','Do thuairimí / Your comments']
 with open(os.path.join(HERE,'gle-v2-sheet-for-eoghan.csv'),'w',newline='') as f:
     w=csv.writer(f); w.writerow(['Seed']+H); [w.writerow([n,a,b,c,'']) for n,a,b,c in rows]
