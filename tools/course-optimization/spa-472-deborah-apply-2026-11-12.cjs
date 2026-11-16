@@ -121,7 +121,7 @@ function planText(api, dz = require('../../services/phrase-decomposer.cjs')) {
   return { ops, problems };
 }
 
-async function post(url, body) { let r; try { r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) }); } catch (e) { return { status: 0, body: { code: 'TRANSPORT', error: String(e.cause || e.message) } }; } return { status: r.status, body: await r.json().catch(() => ({})) }; }
+async function post(url, body) { let r; try { r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...(body && body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body) }); } catch (e) { return { status: 0, body: { code: 'TRANSPORT', error: String(e.cause || e.message) } }; } return { status: r.status, body: await r.json().catch(() => ({})) }; }
 const batch = (body) => post(`${POPTY}/api/production/${COURSE}/edit-batch`, body);
 const renderBody = (a) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, approval: APPROVAL, job: '#472', ...(a.legoId ? { legoId: a.legoId } : {}) });
 

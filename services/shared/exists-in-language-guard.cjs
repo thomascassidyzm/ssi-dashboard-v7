@@ -66,7 +66,7 @@ function existsInLanguageRefusal(found, { voiceId, courseCode, role, language, t
   const named = existing.map(e => `${e.audioId} (voice ${e.voiceId}, ${e.courseCode} ${e.side || '?'})`).join('; ')
   const message = `"${String(text).slice(0, 60)}" is already recorded in ${language} — ${prior.length} clip(s): ${named}${prior.length > existing.length ? ' …' : ''}. ` +
     `Recordings are per language: link an existing clip (POST /api/production/${courseCode}/link-clip), or take the voice question to a person. ` +
-    `A second performance in ${voiceId} needs a re-record grant for ${courseCode} ${role} (Tom's tts_rerecord_permissions row, or Kai's approval token) — do not retry or route around this.`
+    `A second performance in ${voiceId} needs a re-record grant for ${courseCode} ${role} (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.`
   return { status: 409, code: EXISTS_IN_LANGUAGE, message, existing }
 }
 

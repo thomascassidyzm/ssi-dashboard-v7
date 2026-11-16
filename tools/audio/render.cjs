@@ -27,14 +27,17 @@
  * Exit 0 = clip exists (source: library|rendered), 2 = refused/failed (the reason
  * is printed; do NOT retry — a refusal is the answer), 1 = bad usage.
  *
- * Env: POPTY_URL (default http://localhost:3470), AGENT_ID (who you are; default $USER).
+ *   --approval kai:YYYY-MM-DD:<reason> (or tom:…): a re-record / EXISTS_IN_LANGUAGE grant. The route verifies it came from the
+ *        seat it names (#116·AI): this tool sends CS_CONV_TOKEN (the surface session's own token, already in its env) as x-cs-conv.
+ *
+ * Env: POPTY_URL (default http://localhost:3470), AGENT_ID (who you are; default $USER), CS_CONV_TOKEN (only sent with --approval).
  */
 const argv = process.argv.slice(2)
 const opt = f => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : undefined }
 const body = {
   courseCode: opt('--course'), role: opt('--role'), text: opt('--text'), purpose: opt('--purpose'),
   language: opt('--lang'), voiceId: opt('--voice'), legoId: opt('--lego'), dryRun: argv.includes('--dry-run'),
-  replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'), trial: argv.includes('--trial') || undefined,
+  replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'), approval: opt('--approval'), trial: argv.includes('--trial') || undefined,
   sequence: opt('--sequence') == null ? undefined : Number(opt('--sequence')),
   startedBy: opt('--started-by'), model: opt('--model'), speed: opt('--speed') == null ? undefined : Number(opt('--speed')),
   voiceSettings: opt('--voice-settings') == null ? undefined : JSON.parse(opt('--voice-settings')),
@@ -45,7 +48,7 @@ const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '
 ;(async () => {
   const res = await fetch(`${base}/api/audio/render`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-agent-id': process.env.AGENT_ID || process.env.USER || 'unknown-agent' },
+    headers: { 'Content-Type': 'application/json', 'x-agent-id': process.env.AGENT_ID || process.env.USER || 'unknown-agent', ...require('../../services/shared/approval-origin.cjs').approvalHeaders(body) },
     body: JSON.stringify(body),
   })
   const out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))

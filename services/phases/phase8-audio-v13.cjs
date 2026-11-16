@@ -6114,6 +6114,7 @@ app.get('/trial-audio/:id', async (req, res) => {
 // Calls proxied from the capped API keep the same identity, so they pass within the same budget.
 // Every refusal and every hold over 1 s goes to ops_events (source agent-rate-cap).
 const phase8RenderRateCap = require('../shared/agent-rate-cap.cjs').createAgentRateCap()
+const approvalOrigin = require('../shared/approval-origin.cjs')
 const { opsEvent: phase8OpsEvent } = require('../shared/ops-event.cjs')
 app.post('/render', async (req, res) => {
   try {
@@ -6127,12 +6128,20 @@ app.post('/render', async (req, res) => {
     }
     if (cap.waitMs > 1000) { logger.warn(`[agent-rate-cap] phase8 /render held ${cap.waitMs}ms who=${who}`); phase8OpsEvent('agent-rate-cap', 'held', `phase8 /render ${cap.waitMs}ms who=${who}`) }
     if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
+    // APPROVAL ORIGIN (job #116·AI): a kai:/tom: approval counts only if the sending conversation is on that seat — the
+    // surface says so from the caller's x-cs-conv token (services/shared/approval-origin.cjs). Checked on this port because it
+    // is reachable directly on loopback; production-api forwards the header. A request with no approval is untouched.
+    if (req.body && req.body.approval) {
+      const v = await approvalOrigin.verifyApprovalOrigin(String(req.body.approval), req.get('x-cs-conv'))
+      logger.info(`[approval-origin] ${v.approver}: approval verified (seat ${v.seat}) who=${who}`)
+    }
     const out = await auditWriteLog.renderWithEditLog({ renderFn: renderClip, input: req.body || {}, deps: buildRenderDeps(), supabase, logger })
     res.json(out)
   } catch (error) {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}), ...(error.existing ? { existing: error.existing } : {}) })
     if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
+    if (error && error.code === 'APPROVAL_UNVERIFIED') { logger.warn(`[approval-origin] REFUSED: ${error.message.slice(0, 200)}`); return res.status(403).json({ ok: false, code: error.code, error: error.message }) }
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
     const refused = /\(402\)/.test(error.message)
     logger.error('Render error:', error)

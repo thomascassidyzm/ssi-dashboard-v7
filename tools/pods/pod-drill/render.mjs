@@ -10,7 +10,8 @@
  *   node tools/pods/pod-drill/render.mjs <course>            dry run: asks the route what each would cost
  *   node tools/pods/pod-drill/render.mjs <course> --render   for real, then verifies and wires
  *        [--rejected]   only the pieces a person did not accept in <course>.ear.json (reject or borderline, job #750)
- *        [--approval=kai:YYYY-MM-DD:<reason>]  Kai's own approval token, passed to the route as he gave it
+ *        [--approval=kai:YYYY-MM-DD:<reason>]  Kai's own approval token, passed to the route as he gave it; sent with this
+ *                                               session's CS_CONV_TOKEN as x-cs-conv so the route can verify its seat (#116·AI)
  *        (r-2026-10-30-kai-can-authorise-any-audio-work). Most English pieces are already recorded in some
  *        OTHER voice, which the route refuses as a second performance (EXISTS_IN_LANGUAGE) without it.
  *        Never invented here: no token, no field.
@@ -103,7 +104,7 @@ process.stderr.write(`${course}: ${jobs.filter((j) => j.kind === 'tight').length
 
 async function ask(job) {
   const body = { courseCode: course, role: 'pod_fine_known', language: KNOWN_LANG, text: sayText(job.known), voiceId: job.voice, purpose: `Pod Drill standalone known piece (#707, r-2026-11-03): ${job.kind === 'tight' ? 'cut too tight' : 'cannot be cut'} — ${job.why}`.slice(0, 300), ...(APPROVAL ? { approval: APPROVAL } : {}), ...(REAL ? {} : { dryRun: true }) }
-  const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body) })
+  const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...(body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body) })
   let j = null; try { j = await r.json() } catch { j = { ok: false, error: `HTTP ${r.status}, no JSON` } }
   return { status: r.status, ...j, text: body.text, voiceId: body.voiceId }
 }

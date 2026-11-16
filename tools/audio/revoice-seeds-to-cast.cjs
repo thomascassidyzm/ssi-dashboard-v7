@@ -105,7 +105,7 @@ async function postWith(fetchFn, wait, p, body, tries = 8) {
   for (let a = 1; ; a++) {
     let r;
     try {
-      const res = await fetchFn(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
+      const res = await fetchFn(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, ...(body && body.approval && process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {}) }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
       r = { status: res.status, body: await res.json().catch(() => ({})) };
     } catch (e) { r = { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.code || e.name) } }; }
     if (!isDropped(r) || a >= tries) return r;
