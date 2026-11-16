@@ -146,7 +146,7 @@ GT={304:"ceapaim nach mian léi go mbeadh sí ag obair ón mbaile",   # 'go mbei
  415:"Ní bheadh fadhb ar bith leis sin, dar liom",
  423:"an gcaithfidh siad ceist atá chomh ríshoiléir sin a chur?",       # 'ríiléir' slip
  454:"tháinig ár gcairde anseo thart ar a sé a chlog",                 # 'anseol' slip
- 460:"Is mian liom siopa atá gar don teach ósta a aimsiú",
+ 460:"Is mian liom siopa atá gar don teach ósta a fháil",      # his 'a aimsiú' unified on 'a fháil' ('to find' from 69's phrases on; LEGO 'a fháil')
  461:"siopa inar féidir liom roinnt cártaí poist a cheannach",
  481:"Is é an fíordhóchas amháin atá fágtha againn",
  483:"Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca",
@@ -154,7 +154,7 @@ GT={304:"ceapaim nach mian léi go mbeadh sí ag obair ón mbaile",   # 'go mbei
  490:"Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís",
  492:"cé acu de na háiteanna sin atá ina áit is suimiúla duit?",        # 'siúmúla' slip
  496:"Níl mé ag beartú go gcailleoidh mé nuair atá fíorthábhacht ag baint leis",   # 'Nílím' in the course's 'níl mé'
- 498:"Tá sé ina sheasamh thall ina aonar laistigh den tslí isteach",
+ 498:"Tá sé ina sheasamh thall ansin ina aonar laistigh den tslí isteach",   # 'over there' is 'thall ansin' (taught)
  501:"Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint",
  542:"gach uair a mhothaíonn tú feargach",
  601:"bhí muid ag caint faoi conas a thosaigh an rud ar fad",

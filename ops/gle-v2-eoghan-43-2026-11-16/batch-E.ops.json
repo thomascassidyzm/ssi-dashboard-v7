@@ -1,0 +1,295 @@
+{
+"batch": "E",
+"seeds": [
+304,
+332,
+335,
+356,
+357,
+374,
+378,
+411,
+415,
+423,
+454,
+460,
+461,
+481,
+483,
+489,
+490,
+492,
+496,
+498,
+501,
+542,
+601,
+614
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 304,
+"set": {
+"target_text": "ceapaim nach mian léi go mbeadh sí ag obair ón mbaile"
+},
+"expect": {
+"known_text": "I think that she doesn't want to work from home",
+"target_text": "ceapaim nach mian léi obair ón mbaile"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 332,
+"set": {
+"target_text": "is féidir leis saol nua a chur ar bun dá dheirfiúr"
+},
+"expect": {
+"known_text": "he can build a new life for his sister",
+"target_text": "is féidir leis saol nua a thógáil dá dheirfiúr"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 335,
+"set": {
+"target_text": "ceapaim gur féidir leis smaointe tairbheacha a chur leis"
+},
+"expect": {
+"known_text": "I think that he can add some valuable ideas",
+"target_text": "ceapaim gur féidir leis smaointe luachmhara a chur leis"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 356,
+"set": {
+"target_text": "bhí, bhí rud éigin tábhachtach le plé acu"
+},
+"expect": {
+"known_text": "yes they had something important to discuss",
+"target_text": "bhí, bhí rud tábhachtach le plé acu"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 357,
+"set": {
+"target_text": "Ní raibh, ní raibh ann ach gur mhian léi teachtaireacht a sheoladh chuici"
+},
+"expect": {
+"known_text": "no she just wanted to send her a message",
+"target_text": "Ní raibh, níor mhian léi ach teachtaireacht a sheoladh chuici"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 374,
+"set": {
+"target_text": "Chonaic, cheap mé go raibh sé go hálainn"
+},
+"expect": {
+"known_text": "yes I thought it was very beautiful",
+"target_text": "Chonaic, cheap mé go raibh sé an-álainn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 378,
+"set": {
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam i leith laethanta saoire"
+},
+"expect": {
+"known_text": "no I didn't have enough money for holidays",
+"target_text": "Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 411,
+"set": {
+"target_text": "ba mhaith linn bord i leith ceathrar a chur in áirithe don oíche anocht"
+},
+"expect": {
+"known_text": "we would like to reserve a table for four tonight",
+"target_text": "ba mhaith linn bord a chur in áirithe do cheathrar anocht"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 415,
+"set": {
+"target_text": "Ní bheadh fadhb ar bith leis sin, dar liom"
+},
+"expect": {
+"known_text": "That wouldn't be a problem if you ask me",
+"target_text": "Ní bheadh sé sin ina fhadhb dar liom"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 423,
+"set": {
+"target_text": "an gcaithfidh siad ceist atá chomh ríshoiléir sin a chur?"
+},
+"expect": {
+"known_text": "do they need to ask such an obvious question?",
+"target_text": "an gcaithfidh siad ceist chomh soiléir sin a chur?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 454,
+"set": {
+"target_text": "tháinig ár gcairde anseo thart ar a sé a chlog"
+},
+"expect": {
+"known_text": "our friends came round at about six o'clock",
+"target_text": "tháinig ár gcairde thart timpeall a sé a chlog"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 460,
+"set": {
+"target_text": "Is mian liom siopa atá gar don teach ósta a fháil"
+},
+"expect": {
+"known_text": "I want to find a shop near the hotel",
+"target_text": "Is mian liom siopa a fháil in aice leis an óstán"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 461,
+"set": {
+"target_text": "siopa inar féidir liom roinnt cártaí poist a cheannach"
+},
+"expect": {
+"known_text": "a shop where I can buy some postcards",
+"target_text": "siopa inar féidir liom cártaí poist a cheannach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 481,
+"set": {
+"target_text": "Is é an fíordhóchas amháin atá fágtha againn"
+},
+"expect": {
+"known_text": "it's the only real hope we have left",
+"target_text": "is é an t-aon dóchas fíor atá fágtha againn"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 483,
+"set": {
+"target_text": "Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca"
+},
+"expect": {
+"known_text": "life isn't easy but it's not meant to be easy",
+"target_text": "Níl an saol éasca ach níl sé ceaptha a bheith éasca"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 489,
+"set": {
+"target_text": "mura ndéanann tú cupán de chaife láidir dom láithreach bonn"
+},
+"expect": {
+"known_text": "if you don't make me a strong cup of coffee right now",
+"target_text": "mura ndéanann tú cupán de chaife láidir dom anois díreach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 490,
+"set": {
+"target_text": "Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís"
+},
+"expect": {
+"known_text": "then I will never trust anyone ever again",
+"target_text": "Ní bheidh muinín agam as aon duine go deo arís"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 492,
+"set": {
+"target_text": "cé acu de na háiteanna sin atá ina áit is suimiúla duit?"
+},
+"expect": {
+"known_text": "which of those places do you think is the most interesting?",
+"target_text": "cé acu de na háiteanna sin a cheapann tú is suimiúla?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 496,
+"set": {
+"target_text": "Níl mé ag beartú go gcailleoidh mé nuair atá fíorthábhacht ag baint leis"
+},
+"expect": {
+"known_text": "I'm not planning to lose when it really matters",
+"target_text": "níl mé ag pleanáil cailleadh nuair a bhíonn sé fíorthábhachtach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 498,
+"set": {
+"target_text": "Tá sé ina sheasamh thall ansin ina aonar laistigh den tslí isteach"
+},
+"expect": {
+"known_text": "he's standing alone over there inside the entrance",
+"target_text": "Tá sé ina sheasamh leis féin thall ansin laistigh den bhealach isteach"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 501,
+"set": {
+"target_text": "Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint"
+},
+"expect": {
+"known_text": "if only I could trust you to play together without arguing",
+"target_text": "dá bhféadfainn muinín a bheith agam asaibh imirt le chéile gan argóint"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 542,
+"set": {
+"target_text": "gach uair a mhothaíonn tú feargach"
+},
+"expect": {
+"known_text": "whenever you feel angry",
+"target_text": "aon uair a bhíonn fearg ort"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 601,
+"set": {
+"target_text": "bhí muid ag caint faoi conas a thosaigh an rud ar fad"
+},
+"expect": {
+"known_text": "we were talking about how it all started",
+"target_text": "bhí muid ag caint faoin gcaoi ar thosaigh an rud ar fad"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 614,
+"set": {
+"target_text": "Tá sé in aice le cá bhfuil do chlann ina gcónaí"
+},
+"expect": {
+"known_text": "it's near where your family live",
+"target_text": "Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí"
+}
+}
+]
+}
