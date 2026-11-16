@@ -1,0 +1,16 @@
+# cym_n_for_eng S0272L05 intro splice (cs #204·AI, 2026-11-16). UNHEARD, NOT LINKED, not registered in Popty. Listening page /d/04c5b658.
+# Times in seconds, measured from 5 ms RMS envelopes (dBFS) of the decoded PCM, plus ffmpeg silencedetect. No transcript was used.
+item	value	note
+source_A	s3://ssi-audio-stage/mastered/D0BA506B-1D65-4200-85B2-690960B703B4.mp3	June en12-intro: 9.79 s, 44.1 kHz mono, 128k, integrated -16.2 LUFS
+source_B	s3://ssi-audio-stage/mastered/13361AD6-6847-4293-8AF9-35AB98CCF45D.mp3	June cy01 'y llygaid blin yma': 2.06 s, -16.0 LUFS
+A_english	0.000-3.890	silence 3.890-4.266 (0.376 s)
+A_welsh_rep1	4.266-6.735	ends below -45 dBFS at 6.735; floor -60..-76 dBFS until 7.18
+A_welsh_rep2	7.185-9.790	cut off at file end (Kai: second repeat cuts off); DROPPED
+gap_between_repeats	0.450	A's own pause, rep1 end 6.735 to rep2 onset 7.185; used as the join gap
+A_kept	0.000-7.150	-16.2 LUFS; fade-out 7.140-7.150 (the fade sits in room tone at about -70 dBFS)
+room_pad	A 6.850-6.880	30 ms of A's own room tone, so the gap = (7.150-6.735)+0.030+cy01 lead 0.005 = 0.450
+B_kept	0.000-1.970	speech at 0.005, decays below -45 dBFS by 1.94; -15.9 LUFS; fade-in 0-0.005, fade-out 1.900-1.970
+B_gain_dB	0.0	B -15.9 vs A kept -16.2 / A rep1 -15.7 LUFS: within 0.3 dB, so no gain
+tail_room	A 6.800-7.050	0.25 s of A's room tone appended after cy01
+result	9.400 s	integrated -16.7 LUFS (room tone included), true peak -1.7 dBFS; seam measured at A speech end 6.735, B onset 7.184 (gap 0.449)
+clip_tail_audit	NOT RUN	tools/audio/clip-tail-audit.py needs numpy, and this box has no numpy or pip; the seams sit at -64..-76 dBFS

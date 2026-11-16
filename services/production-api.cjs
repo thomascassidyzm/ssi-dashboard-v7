@@ -5867,7 +5867,15 @@ async function handleRecordingUpload(req, res) {
     // covers them. Same order, same outcomes: refuse BEFORE the S3 PUT, raw already archived,
     // an UNCHECKED result logged and let through.
     const gateText = takeGateText(metadata, podContext)
-    const gateRefusal = await refuseProcessedTake({ speechGate, processedBuffer, audioMeta, gateText, courseCode, kind: metadata.kind, audioId, rawKey, logger })
+    let gateRefusal = await refuseProcessedTake({ speechGate, processedBuffer, audioMeta, gateText, courseCode, kind: metadata.kind, audioId, rawKey, logger })
+    // A CUT-OFF SOMEBODY HAS ALREADY HEARD AND ACCEPTED (cs #207·AI, Kai 16 Nov on the June angry-eyes
+    // takes: "They mostly cut off at the end. I think you can use them for now"). Only the in-tray
+    // (add-recording) can set req.acceptBoundaryCut, in-process, with a named person and basis; the
+    // booth cannot. It waives the BOUNDARY verdict alone: speech and steady-noise run first and still refuse.
+    if (gateRefusal && gateRefusal.body && gateRefusal.body.truncated && req.acceptBoundaryCut) {
+      logger.warn(`[Upload] boundary refusal WAIVED for ${audioId} (${gateRefusal.body.reason}) by ${req.acceptBoundaryCut.by}: ${req.acceptBoundaryCut.basis} ${JSON.stringify(gateRefusal.body.detail)}`)
+      gateRefusal = null
+    }
     if (gateRefusal) {
       return res.status(gateRefusal.status).json(gateRefusal.body)
     }
@@ -6913,6 +6921,10 @@ app.post('/api/audio/add-recording', async (req, res) => {
       if (error) throw new Error(`voices registry unreadable: ${error.message}`)
       return data || []
     }
+    const cut = req.body && req.body.acceptBoundaryCut
+    const boundaryCut = cut && typeof cut.by === 'string' && cut.by.trim() && typeof cut.basis === 'string' && cut.basis.trim()
+      ? { by: `${cut.by.trim()} (via ${who})`, basis: cut.basis.trim() } : null
+    if (cut && !boundaryCut) return res.status(400).json({ ok: false, code: 'BOUNDARY_CUT_UNNAMED', error: 'acceptBoundaryCut needs { by: who heard it, basis: what they said }' })
     const out = await intake.addRecording({ ...(req.body || {}), requestedBy: who }, {
       findArtist: async q => {
         const all = await humanVoices(), k = q.toLowerCase()
@@ -6957,6 +6969,8 @@ app.post('/api/audio/add-recording', async (req, res) => {
           const fakeRes = { code: 200, status(c) { this.code = c; return this }, json(b) { resolve({ status: this.code, body: b }) } }
           handleRecordingUpload({
             params: { courseCode }, headers: {}, libraryArtistVoiceId: voiceId,
+            // body.acceptBoundaryCut: { by, basis } — the person who heard the cut-off and accepted it (see the waiver in handleRecordingUpload)
+            acceptBoundaryCut: boundaryCut,
             body: { audioData: audio, mimeType,
               metadata: { mode: 'script', role, text, cadence: 'natural', voiceId, recordedBy: requestedBy, kind: role },
               provenance: { recorded_by: requestedBy, speaker_dialect: artist.dialect || null } },

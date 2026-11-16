@@ -668,6 +668,8 @@ function wantVoiceId(course, register, gender) {
  * route falls back to its language and course gates alone.
  */
 function clipVoiceId(clip, course, register) {
+  const named = wantNamedVoiceId(clip, register)
+  if (named) return named
   const stored = String(clip && clip.voice_id ? clip.voice_id : '').trim()
   if (tryCanonicalVoiceId(stored)) {
     const owner = register.aliasOwner.get(stored)
@@ -677,6 +679,20 @@ function clipVoiceId(clip, course, register) {
   const gender = String(want && want.voice_gender ? want.voice_gender : '').toLowerCase()
   if (gender !== 'm' && gender !== 'f' || !course) return null
   return wantVoiceId(course, register, gender)
+}
+
+/**
+ * A WANT THAT NAMES ITS READER (cs #207·AI, Kai 16 Nov: the cym_n angry-eyes English cues and intro
+ * "on Aran's booth"). rerecord_wanted.voice_id, when it is a spelling of one of THIS register's
+ * policy voices, is the owner, ahead of the clip's stored voice and the want's gender. It is how an
+ * English clip of a Welsh course reaches the English reader the course is cast on: neither the
+ * stored voice (a clone, legacy_import, or the Welsh artist's id) nor a gender can name a cast-on-only
+ * reader. A name another register does not know falls through, so nothing reaches anyone unnamed.
+ */
+function wantNamedVoiceId(clip, register) {
+  const want = clip && clip.rerecord_wanted && typeof clip.rerecord_wanted === 'object' ? clip.rerecord_wanted : null
+  const entry = want && typeof want.voice_id === 'string' ? register.aliasOwner.get(want.voice_id.trim()) : null
+  return entry ? entry.voiceId : null
 }
 
 function castEntryFor(podCast, speaker) {
@@ -1986,8 +2002,13 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // These deliberately share the dedupe map above: if a wanted re-record has the
   // same normalised text as a pod line, it is the same clip identity and one
   // take serves both.
-  const wanted = await fetchRerecordWanted(db, [...byCourse.keys()])
+  // The castOn courses' KNOWN side too (knownSideCourses), but there ONLY a want that names this
+  // register's reader (wantNamedVoiceId, cs #207·AI): an English clip of a Welsh course is offered to
+  // the cast-on English reader when somebody asked for that reader by name, and to nobody by gender.
+  const wantCourses = new Map([...knownSideCourses.entries(), ...byCourse.entries()])
+  const wanted = await fetchRerecordWanted(db, [...wantCourses.keys()])
   for (const w of wanted) {
+    if (!byCourse.has(w.course_code) && !wantNamedVoiceId(w, register)) continue
     // A NAMED RE-QUEUE GRANT puts this one pod line back on one reader's list
     // (see requeueGrant). Read before every filter below, because it is about
     // the pod line this clip serves, not about the clip as a queue item.
@@ -2004,7 +2025,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // flagged clip was queued to Bea because both are female and the want
     // said only 'f' (job #351). The want's gender is the rule for the untagged
     // narration bucket, where the clip itself names nobody.
-    const owner = clipVoiceId(w, byCourse.get(w.course_code), register)
+    const owner = clipVoiceId(w, wantCourses.get(w.course_code), register)
     const ownerGender = owner && register.aliasOwner.has(owner) ? String(register.aliasOwner.get(owner).gender || '').toLowerCase() : ''
     const gender = String(w.rerecord_wanted.voice_gender || ownerGender || '').toLowerCase()
     // AN OWNED CLIP IS ITS OWNER'S QUEUE LINE, GENDER OR NO GENDER -- the same
@@ -2036,7 +2057,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // A clip belongs to a course, and the course states the dialect. Nothing is
     // read off the clip itself: a presentation clip is stored under the shared
     // untagged voice 'human', so it carries no dialect of its own to trust.
-    const course = byCourse.get(w.course_code)
+    const course = wantCourses.get(w.course_code)
     const bucket = bucketKey(courseDialect(course), gender)
     if (!byBucket.has(bucket)) byBucket.set(bucket, [])
     const voiceId = owner
@@ -2070,6 +2091,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       role: w.role,
       rerecordWanted: true,
       rerecordReason: w.rerecord_wanted.reason || null,
+      // The same NAMED RE-QUEUE GRANT a pod line takes (requeueGrant), for a clip that is already
+      // this reader's take: Kai 16 Nov (cs #207·AI) linked Aran's June angry-eyes takes as stopgaps
+      // and wants them read again, so they stay on his list until his new take clears the want.
+      ...(grant ? { requeueFor: grant.voiceId, requeueBy: grant.by } : {}),
     }
     seen.set(key, line)
     byBucket.get(bucket).push(line)
