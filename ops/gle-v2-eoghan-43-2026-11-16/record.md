@@ -49,3 +49,12 @@ No LEGO in the course has an intro clip, so nothing is out of step. No audio ren
 28-row recommendation list: rows28.md, published https://watson-1.tail4968cb.ts.net:10000/d/7a83019a
 
 Sheet rebuilt on the live course (build.py unchanged except QUIET/HAND for these rows): 206 commented / 462 blank, was 239 / 429. xlsx https://watson-1.tail4968cb.ts.net:10000/d/985d9e1a/file
+
+## UNDONE (Kai 20:52Z: "APPLY NOTHING … If you already applied events, undo them")
+- `undo.py`: the undo ops of E, D, C, B, A in one event, each update/delete guarded by `expect` = the text our batches left
+  (so any later edit by someone else would have aborted it). Dry run clean, 554 ops; applied as event **1c4fe571**.
+- Tiles recomputed again on the same 101 seeds: events da08c1fd, 24eeed92, 54b3d6bd (the other four groups were already fresh).
+- `undo_check.py` on a fresh Popty read: all 463 rows the batches touched are back to their before-state text; inserted rows gone,
+  deleted rows back. The course is as it was before this job.
+- The sheet rebuild (caac281fc) is withdrawn: the sheet files are back to #324·AI's version (28e52a28f). d/985d9e1a is stale.
+- The batches above are now PROPOSALS only; per-row knock-ons and fixes for Kai: proposals43.md.
