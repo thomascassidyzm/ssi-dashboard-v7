@@ -21,7 +21,10 @@ if (!fs.existsSync(outF)) fs.writeFileSync(outF, 'role\ttext\tdry\tsource\taudio
 let stop = false
 async function one(j) {
   const body = { courseCode: 'hrv_for_eng', role: j.role, text: j.text, purpose: process.env.RENDER_PURPOSE || '#127·AI želim switch (#119·AI), Kai approved 16 Nov', dryRun: !real, ...(j.legoId ? { legoId: j.legoId } : {}) }
-  const res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': process.env.RENDER_AGENT_ID || 'cs-127-hrv-zelim' }, body: JSON.stringify(body) })
+  // A dropped connection (Popty restarting) stops the run; --skip-done resumes it and the route's library-first lookup
+  // links anything paid for mid-flight, free (cs #148·AI: a 16:18Z restart killed the run uncaught).
+  let res
+  try { res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': process.env.RENDER_AGENT_ID || 'cs-127-hrv-zelim' }, body: JSON.stringify(body) }) } catch (e) { stop = true; console.error(`transport failure, stopping: ${e.message}`); return }
   const o = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
   const line = [j.role, j.text, real ? 'real' : 'dry', o.ok ? o.source : 'REFUSED', o.audioId || '', o.charsSpent ?? '', o.wouldSpendChars ?? '', o.code || (o.ok ? '' : res.status), (o.error || o.message || '').replace(/\s+/g, ' ').slice(0, 300)]
   fs.appendFileSync(outF, line.join('\t') + '\n')
