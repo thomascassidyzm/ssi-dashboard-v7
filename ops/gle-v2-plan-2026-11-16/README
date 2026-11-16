@@ -1,0 +1,26 @@
+gle_v2_for_eng whole-course plan, job cs #107, 16 Nov 2026. A PLAN ONLY: nothing here was applied, and no script here can apply (dry.py has no apply mode).
+
+Hand-written, does not regenerate:
+  cuts.txt              the target LEGO cut for every seed 1-300 that needs a hand decision (format in build.py's header; family tag after "##")
+  seeds-over-300.json   the 15 seed texts past 300 that change (Eoghan's corrections, family A8)
+  phrase-subs.json      course-wide phrase rewordings that follow a seed-text correction
+  doc-front.md, doc-back.md, summary.md   the prose of the two published documents
+  build.py mkops.py gendoc.py assemble.py dry.py mkcourse.py show.py cover.py syl.py   the tools
+
+Regenerates:
+  live-snapshot.json    python3 mkcourse.py <saved answer of GET :3470/api/production/gle_v2_for_eng/seeds>  (read 16 Nov; course last edited 12 Nov 12:47Z)
+  plan.json             python3 build.py     target layer + new/not-new + checks (coverage, 8 syllables, clashes)
+  ops.json knockons.json baskets.json   python3 mkops.py   the edit-batch ops, the per-seed record of every change, thin and non-playing baskets
+  dry-run-whole.json dry-run-per-seed.json   python3 dry.py all | seed   Popty's dry-run answers (no "apply" is ever sent)
+  plan-seeds.md plan-stageA.md plan-document.md   python3 gendoc.py; python3 assemble.py
+
+For whoever applies it (a separate job, only on Kai's yes):
+  - the expect values in ops.json match the course as of 16 Nov; re-run mkcourse/build/mkops against a fresh read first
+  - one request with all 1,880 ops did not answer within 300 s; send it per seed (ops carry "_seed"; strip that key), ascending
+  - Popty has no op to re-order LEGOs inside a seed (lego_index is not settable): 75 seeds are flagged order_differs in knockons.json
+  - 129 new LEGOs have under 4 practice phrases (baskets.json "thin"); 383 phrases sit in baskets that no longer play ("dark")
+  - word tiles (decompositions) are not recomputed by edit-batch: POST /api/admin/recompute-decompositions afterwards (see ops/gle-v2-403/README.md)
+  - open items not in ops.json: "we don't want" at seed 50, the 36 non-I "scíth a ligean" rows, fuller baskets, intros
+
+Published 16 Nov: plan document https://watson-1.tail4968cb.ts.net:10000/d/34eb7d4e ; Kai's item-by-item summary https://watson-1.tail4968cb.ts.net:10000/d/5d5d0e87 (d/73611f3c is an accidental second copy of the summary).
+Dry run result: 266 per-seed requests, 1,880 ops, all accepted, none refused; course re-read afterwards and unchanged (913 LEGOs, 9,471 rows, last edit 12 Nov).
