@@ -1,0 +1,1071 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01B01",
+   "expect": {
+    "known_text": "I think he wants",
+    "target_text": "ik tink hy wol"
+   },
+   "set": {
+    "target_text": "ik tink dat hy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U01",
+   "expect": {
+    "known_text": "I think he wants to come back later on",
+    "target_text": "ik tink hy wol letter weromkomme"
+   },
+   "set": {
+    "target_text": "ik tink dat hy letter weromkomme wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U02",
+   "expect": {
+    "known_text": "I think she wants to know what the answer is",
+    "target_text": "ik tink sy wol witte wat it antwurd is"
+   },
+   "set": {
+    "target_text": "ik tink dat sy witte wol wat it antwurd is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0072L01U05",
+   "expect": {
+    "known_text": "I'm not sure but I think she doesn't want to read anything",
+    "target_text": "ik bin der net wis fan mar ik tink sy wol neat lêze"
+   },
+   "set": {
+    "target_text": "ik bin der net wis fan mar ik tink dat sy neat lêze wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02B01",
+   "expect": {
+    "known_text": "I think it's time to go now",
+    "target_text": "ik tink it is no tiid om te gean"
+   },
+   "set": {
+    "target_text": "ik tink dat it no tiid is om te gean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02B02",
+   "expect": {
+    "known_text": "I know it's time to go now",
+    "target_text": "ik wit it is no tiid om te gean"
+   },
+   "set": {
+    "target_text": "ik wit dat it no tiid is om te gean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02U02",
+   "expect": {
+    "known_text": "I know it's time to go now but I don't want to stop talking",
+    "target_text": "ik wit it is no tiid om te gean mar ik wol net ophâlde mei praten"
+   },
+   "set": {
+    "target_text": "ik wit dat it no tiid is om te gean mar ik wol net ophâlde mei praten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0093L02U03",
+   "expect": {
+    "known_text": "I think it's time to go now because I'm a little tired",
+    "target_text": "ik tink it is no tiid om te gean om't ik in bytsje wurch bin"
+   },
+   "set": {
+    "target_text": "ik tink dat it no tiid is om te gean om't ik in bytsje wurch bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0099L02B03",
+   "expect": {
+    "known_text": "I think you should ask",
+    "target_text": "ik tink dû soest freegje moatte"
+   },
+   "set": {
+    "target_text": "ik tink datstû freegje moatte soest"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0099L02U04",
+   "expect": {
+    "known_text": "I think you should ask when I'll be ready",
+    "target_text": "ik tink dû soest freegje moatte wannear't ik klear wêze sil"
+   },
+   "set": {
+    "target_text": "ik tink datstû freegje moatte soest wannear't ik klear wêze sil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L02U03",
+   "expect": {
+    "known_text": "I think it's important to feel happy",
+    "target_text": "ik tink it is wichtich om ús bliid te fielen"
+   },
+   "set": {
+    "target_text": "ik tink dat it wichtich is om ús bliid te fielen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L03B02",
+   "expect": {
+    "known_text": "I think we just need to work hard",
+    "target_text": "ik tink wy moatte gewoan hurd wurkje"
+   },
+   "set": {
+    "target_text": "ik tink dat wy gewoan hurd wurkje moatte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03B01",
+   "expect": {
+    "known_text": "I think we must work hard",
+    "target_text": "ik tink wy moatte hurd wurkje"
+   },
+   "set": {
+    "target_text": "ik tink dat wy hurd wurkje moatte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03B02",
+   "expect": {
+    "known_text": "I know we must work hard",
+    "target_text": "ik wit wy moatte hurd wurkje"
+   },
+   "set": {
+    "target_text": "ik wit dat wy hurd wurkje moatte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0109L03U04",
+   "expect": {
+    "known_text": "I think we must work hard to hear more words",
+    "target_text": "ik tink wy moatte hurd wurkje om mear wurden te hearren"
+   },
+   "set": {
+    "target_text": "ik tink dat wy hurd wurkje moatte om mear wurden te hearren"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0116L02U03",
+   "expect": {
+    "known_text": "I think this isn't the best choice",
+    "target_text": "ik tink dit is net de bêste kar"
+   },
+   "set": {
+    "target_text": "ik tink dat dit net de bêste kar is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L02B02",
+   "expect": {
+    "known_text": "I think I'm definitely doing better",
+    "target_text": "ik tink ik doch it grif better"
+   },
+   "set": {
+    "target_text": "ik tink dat ik it grif better doch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01B02",
+   "expect": {
+    "known_text": "I think it's unusual",
+    "target_text": "ik tink it is ûngewoan"
+   },
+   "set": {
+    "target_text": "ik tink dat it ûngewoan is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01U01",
+   "expect": {
+    "known_text": "I think it's unusual that you don't mind",
+    "target_text": "ik tink it is ûngewoan datstû it net slim fynst"
+   },
+   "set": {
+    "target_text": "ik tink dat it ûngewoan is datstû it net slim fynst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0128L01B02",
+   "expect": {
+    "known_text": "I think you're like someone",
+    "target_text": "ik tink dû bist krekt as ien"
+   },
+   "set": {
+    "target_text": "ik tink datstû krekt as ien bist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0132L02B03",
+   "expect": {
+    "known_text": "I think that's less exciting",
+    "target_text": "ik tink dat is minder spannend"
+   },
+   "set": {
+    "target_text": "ik tink dat dat minder spannend is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0133L01B03",
+   "expect": {
+    "known_text": "I think you get to know someone",
+    "target_text": "ik tink dû learst ien kennen"
+   },
+   "set": {
+    "target_text": "ik tink datstû ien kennen learst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0134L01B01",
+   "expect": {
+    "known_text": "I think it's not a problem",
+    "target_text": "ik tink it is gjin probleem"
+   },
+   "set": {
+    "target_text": "ik tink dat it gjin probleem is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0134L01U01",
+   "expect": {
+    "known_text": "I think it's not a problem if you can speak more slowly",
+    "target_text": "ik tink it is gjin probleem astû stadiger prate kinst"
+   },
+   "set": {
+    "target_text": "ik tink dat it gjin probleem is astû stadiger prate kinst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0141L01U05",
+   "expect": {
+    "known_text": "I think it's no problem",
+    "target_text": "ik tink it is gjin probleem"
+   },
+   "set": {
+    "target_text": "ik tink dat it gjin probleem is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0147L01B01",
+   "expect": {
+    "known_text": "I think she was very kind",
+    "target_text": "ik tink sy wie hiel freonlik"
+   },
+   "set": {
+    "target_text": "ik tink dat sy hiel freonlik wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0147L01U03",
+   "expect": {
+    "known_text": "I think she was very kind and I'm very happy",
+    "target_text": "ik tink sy wie hiel freonlik en ik bin hiel bliid"
+   },
+   "set": {
+    "target_text": "ik tink dat sy hiel freonlik wie en ik bin hiel bliid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01B01",
+   "expect": {
+    "known_text": "I think this isn't very difficult",
+    "target_text": "ik tink dit is net sa dreech"
+   },
+   "set": {
+    "target_text": "ik tink dat dit net sa dreech is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01B02",
+   "expect": {
+    "known_text": "I know this isn't very difficult",
+    "target_text": "ik wit dit is net sa dreech"
+   },
+   "set": {
+    "target_text": "ik wit dat dit net sa dreech is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0149L01U05",
+   "expect": {
+    "known_text": "I know this isn't very difficult but I'm not ready yet",
+    "target_text": "ik wit dit is net sa dreech mar ik bin noch net klear"
+   },
+   "set": {
+    "target_text": "ik wit dat dit net sa dreech is mar ik bin noch net klear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L01B02",
+   "expect": {
+    "known_text": "I think I would have done it differently",
+    "target_text": "ik tink ik hie it oars dien"
+   },
+   "set": {
+    "target_text": "ik tink dat ik it oars dien hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L01U06",
+   "expect": {
+    "known_text": "it's difficult but I think I would have done it differently",
+    "target_text": "it is dreech mar ik tink ik hie it oars dien"
+   },
+   "set": {
+    "target_text": "it is dreech mar ik tink dat ik it oars dien hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0153L02B01",
+   "expect": {
+    "known_text": "I think I wouldn't have said it",
+    "target_text": "ik tink ik hie it net sein"
+   },
+   "set": {
+    "target_text": "ik tink dat ik it net sein hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0172L01B01",
+   "expect": {
+    "known_text": "I think that would help me a lot",
+    "target_text": "ik tink dat soe my tige helpe"
+   },
+   "set": {
+    "target_text": "ik tink dat dat my tige helpe soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0187L02B01",
+   "expect": {
+    "known_text": "I think I'm happy with it",
+    "target_text": "ik tink ik bin der bliid mei"
+   },
+   "set": {
+    "target_text": "ik tink dat ik der bliid mei bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0187L02U03",
+   "expect": {
+    "known_text": "I think I'm happy with it but I need more time",
+    "target_text": "ik tink ik bin der bliid mei mar ik haw mear tiid nedich"
+   },
+   "set": {
+    "target_text": "ik tink dat ik der bliid mei bin mar ik haw mear tiid nedich"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0189L01U01",
+   "expect": {
+    "known_text": "I'm not sure but I think that's a good idea",
+    "target_text": "ik bin der net wis fan mar ik tink dat is in goed idee"
+   },
+   "set": {
+    "target_text": "ik bin der net wis fan mar ik tink dat dat in goed idee is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0189L01U02",
+   "expect": {
+    "known_text": "I think that's a good idea and I'm looking forward to it",
+    "target_text": "ik tink dat is in goed idee en ik sjoch dernei út"
+   },
+   "set": {
+    "target_text": "ik tink dat dat in goed idee is en ik sjoch dernei út"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02B02",
+   "expect": {
+    "known_text": "I think she works for the council",
+    "target_text": "ik tink sy wurket by de gemeente"
+   },
+   "set": {
+    "target_text": "ik tink dat sy by de gemeente wurket"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02B03",
+   "expect": {
+    "known_text": "I know she works for the council",
+    "target_text": "ik wit sy wurket by de gemeente"
+   },
+   "set": {
+    "target_text": "ik wit dat sy by de gemeente wurket"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0198L02U02",
+   "expect": {
+    "known_text": "I know his friend works for the council",
+    "target_text": "ik wit syn freon wurket by de gemeente"
+   },
+   "set": {
+    "target_text": "ik wit dat syn freon by de gemeente wurket"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01B02",
+   "expect": {
+    "known_text": "they say it wasn't possible",
+    "target_text": "sy sizze it wie net mooglik"
+   },
+   "set": {
+    "target_text": "sy sizze dat it net mooglik wie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01B03",
+   "expect": {
+    "known_text": "they say it's important",
+    "target_text": "sy sizze it is wichtich"
+   },
+   "set": {
+    "target_text": "sy sizze dat it wichtich is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01U01",
+   "expect": {
+    "known_text": "they say I'm definitely doing better than last time",
+    "target_text": "sy sizze ik doch it grif better as de lêste kear"
+   },
+   "set": {
+    "target_text": "sy sizze dat ik it grif better doch as de lêste kear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0200L01U02",
+   "expect": {
+    "known_text": "they say we just need to work hard",
+    "target_text": "sy sizze wy moatte gewoan hurd wurkje"
+   },
+   "set": {
+    "target_text": "sy sizze dat wy gewoan hurd wurkje moatte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L01B02",
+   "expect": {
+    "known_text": "I think we wanted to know",
+    "target_text": "ik tink wy woene witte"
+   },
+   "set": {
+    "target_text": "ik tink dat wy witte woene"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L02B01",
+   "expect": {
+    "known_text": "I believe I've forgotten the word",
+    "target_text": "ik leau ik bin it wurd fergetten"
+   },
+   "set": {
+    "target_text": "ik leau dat ik it wurd fergetten bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0205L02U02",
+   "expect": {
+    "known_text": "I think I've forgotten the word because I'm a little tired",
+    "target_text": "ik tink ik bin it wurd fergetten om't ik in bytsje wurch bin"
+   },
+   "set": {
+    "target_text": "ik tink dat ik it wurd fergetten bin om't ik in bytsje wurch bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L01U01",
+   "expect": {
+    "known_text": "I believe you've done what he said",
+    "target_text": "ik leau dû hast dien wat er sein hat"
+   },
+   "set": {
+    "target_text": "ik leau datstû dien hast wat er sein hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0207L01U02",
+   "expect": {
+    "known_text": "I know you've done what I need to do",
+    "target_text": "ik wit dû hast dien wat ik dwaan moat"
+   },
+   "set": {
+    "target_text": "ik wit datstû dien hast wat ik dwaan moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0209L03U04",
+   "expect": {
+    "known_text": "they say we want to spend more time meeting",
+    "target_text": "sy sizze wy wolle mear tiid byinoar trochbringe"
+   },
+   "set": {
+    "target_text": "sy sizze dat wy mear tiid byinoar trochbringe wolle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0211L01B01",
+   "expect": {
+    "known_text": "I think they told us",
+    "target_text": "ik tink sy hawwe ús ferteld"
+   },
+   "set": {
+    "target_text": "ik tink dat sy ús ferteld hawwe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0219L02U05",
+   "expect": {
+    "known_text": "I think it's a good idea to relax for a while",
+    "target_text": "ik tink it is in goed idee om in skoftke te ûntspannen"
+   },
+   "set": {
+    "target_text": "ik tink dat it in goed idee is om in skoftke te ûntspannen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B02",
+   "expect": {
+    "known_text": "I think he's going to ask you",
+    "target_text": "ik tink hy sil dy freegje"
+   },
+   "set": {
+    "target_text": "ik tink dat hy dy freegje sil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B03",
+   "expect": {
+    "known_text": "they say he's going to ask you",
+    "target_text": "sy sizze hy sil dy freegje"
+   },
+   "set": {
+    "target_text": "sy sizze dat hy dy freegje sil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01B04",
+   "expect": {
+    "known_text": "I hope he's going to ask you",
+    "target_text": "ik hoopje hy sil dy freegje"
+   },
+   "set": {
+    "target_text": "ik hoopje dat hy dy freegje sil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U01",
+   "expect": {
+    "known_text": "I know he's going to ask you what your name is",
+    "target_text": "ik wit hy sil dy freegje wat dyn namme is"
+   },
+   "set": {
+    "target_text": "ik wit dat hy dy freegje sil wat dyn namme is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U03",
+   "expect": {
+    "known_text": "I believe he's going to ask you where she wants to go",
+    "target_text": "ik leau hy sil dy freegje wêr't se hinne gean wol"
+   },
+   "set": {
+    "target_text": "ik leau dat hy dy freegje sil wêr't se hinne gean wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0223L01U04",
+   "expect": {
+    "known_text": "I hope he's going to ask you before you leave",
+    "target_text": "ik hoopje hy sil dy freegje foar'tstû fuortgiest"
+   },
+   "set": {
+    "target_text": "ik hoopje dat hy dy freegje sil foar'tstû fuortgiest"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0224L01B01",
+   "expect": {
+    "known_text": "I think he's just started",
+    "target_text": "ik tink hy is krekt begûn"
+   },
+   "set": {
+    "target_text": "ik tink dat hy krekt begûn is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02B01",
+   "expect": {
+    "known_text": "I believe he would give you an answer",
+    "target_text": "ik leau hy soe dy in antwurd jaan"
+   },
+   "set": {
+    "target_text": "ik leau dat hy dy in antwurd jaan soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02B02",
+   "expect": {
+    "known_text": "they say he would give you an answer",
+    "target_text": "sy sizze hy soe dy in antwurd jaan"
+   },
+   "set": {
+    "target_text": "sy sizze dat hy dy in antwurd jaan soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U02",
+   "expect": {
+    "known_text": "they say he would give you an answer because he's my friend",
+    "target_text": "sy sizze hy soe dy in antwurd jaan om't er myn freon is"
+   },
+   "set": {
+    "target_text": "sy sizze dat hy dy in antwurd jaan soe om't er myn freon is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U03",
+   "expect": {
+    "known_text": "I believe he would give you an answer and that would help me a lot",
+    "target_text": "ik leau hy soe dy in antwurd jaan en dat soe my tige helpe"
+   },
+   "set": {
+    "target_text": "ik leau dat hy dy in antwurd jaan soe en dat soe my tige helpe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U04",
+   "expect": {
+    "known_text": "they say he would give you an answer as soon as you want",
+    "target_text": "sy sizze hy soe dy in antwurd jaan sa gau astû wolst"
+   },
+   "set": {
+    "target_text": "sy sizze dat hy dy in antwurd jaan soe sa gau astû wolst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0225L02U05",
+   "expect": {
+    "known_text": "I know he would give you an answer",
+    "target_text": "ik wit hy soe dy in antwurd jaan"
+   },
+   "set": {
+    "target_text": "ik wit dat hy dy in antwurd jaan soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02B01",
+   "expect": {
+    "known_text": "I think my son would help you",
+    "target_text": "ik tink myn soan soe dy helpe"
+   },
+   "set": {
+    "target_text": "ik tink dat myn soan dy helpe soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02B02",
+   "expect": {
+    "known_text": "they say nobody would help you",
+    "target_text": "sy sizze nimmen soe dy helpe"
+   },
+   "set": {
+    "target_text": "sy sizze dat nimmen dy helpe soe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02U03",
+   "expect": {
+    "known_text": "I believe my daughter would help you to deal with the arrangements",
+    "target_text": "ik leau myn dochter soe dy helpe om de ôfspraken te regeljen"
+   },
+   "set": {
+    "target_text": "ik leau dat myn dochter dy helpe soe om de ôfspraken te regeljen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0229L02U04",
+   "expect": {
+    "known_text": "they say my friend would help you as soon as you want",
+    "target_text": "sy sizze myn freon soe dy helpe sa gau astû wolst"
+   },
+   "set": {
+    "target_text": "sy sizze dat myn freon dy helpe soe sa gau astû wolst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0239L01B01",
+   "expect": {
+    "known_text": "I think Mum likes to read",
+    "target_text": "ik tink ús mem lêst graach"
+   },
+   "set": {
+    "target_text": "ik tink dat ús mem graach lêst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0240L02B02",
+   "expect": {
+    "known_text": "I think my son doesn't like to stop talking",
+    "target_text": "ik tink myn soan hâldt net graach op mei praten"
+   },
+   "set": {
+    "target_text": "ik tink dat myn soan net graach ophâldt mei praten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01B02",
+   "expect": {
+    "known_text": "I think I've learnt a lot already",
+    "target_text": "ik tink ik haw al in soad leard"
+   },
+   "set": {
+    "target_text": "ik tink dat ik al in soad leard haw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0245L01B02",
+   "expect": {
+    "known_text": "I think I'm happy with how much I've done",
+    "target_text": "ik tink ik bin bliid mei hoefolle ik dien haw"
+   },
+   "set": {
+    "target_text": "ik tink dat ik bliid bin mei hoefolle ik dien haw"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01B01",
+   "expect": {
+    "known_text": "I think she was too busy",
+    "target_text": "ik tink se hie it te drok"
+   },
+   "set": {
+    "target_text": "ik tink dat se it te drok hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01B02",
+   "expect": {
+    "known_text": "they say she was too busy",
+    "target_text": "sy sizze se hie it te drok"
+   },
+   "set": {
+    "target_text": "sy sizze dat se it te drok hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0246L01U01",
+   "expect": {
+    "known_text": "they say she was too busy to deal with the arrangements",
+    "target_text": "sy sizze se hie it te drok om de ôfspraken te regeljen"
+   },
+   "set": {
+    "target_text": "sy sizze dat se it te drok hie om de ôfspraken te regeljen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02B01",
+   "expect": {
+    "known_text": "I believe she sent me two emails",
+    "target_text": "ik leau sy hat my twa e-mails stjoerd"
+   },
+   "set": {
+    "target_text": "ik leau dat sy my twa e-mails stjoerd hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U06",
+   "expect": {
+    "known_text": "I think she sent me two emails and that was a surprise",
+    "target_text": "ik tink sy hat my twa e-mails stjoerd en dat wie in ferrassing"
+   },
+   "set": {
+    "target_text": "ik tink dat sy my twa e-mails stjoerd hat en dat wie in ferrassing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0272L01U03",
+   "expect": {
+    "known_text": "they say it's a great idea",
+    "target_text": "sy sizze it is in geweldich idee"
+   },
+   "set": {
+    "target_text": "sy sizze dat it in geweldich idee is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01B01",
+   "expect": {
+    "known_text": "I think she speaks Frisian",
+    "target_text": "ik tink sy praat Frysk"
+   },
+   "set": {
+    "target_text": "ik tink dat sy Frysk praat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01B02",
+   "expect": {
+    "known_text": "they say she speaks Frisian",
+    "target_text": "sy sizze sy praat Frysk"
+   },
+   "set": {
+    "target_text": "sy sizze dat sy Frysk praat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0307L02B03",
+   "expect": {
+    "known_text": "I believe I know that young man",
+    "target_text": "ik leau ik ken dy jonge man"
+   },
+   "set": {
+    "target_text": "ik leau dat ik dy jonge man ken"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0307L02U03",
+   "expect": {
+    "known_text": "I believe I know that young man over there",
+    "target_text": "ik leau ik ken dy jonge man dêre"
+   },
+   "set": {
+    "target_text": "ik leau dat ik dy jonge man dêre ken"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0513L01B02",
+   "expect": {
+    "known_text": "he said it hurts most",
+    "target_text": "hy sei it docht it measte sear"
+   },
+   "set": {
+    "target_text": "hy sei dat it it measte sear docht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0513L01U05",
+   "expect": {
+    "known_text": "they said it hurts most after the first part",
+    "target_text": "sy seine it docht it measte sear nei it earste diel"
+   },
+   "set": {
+    "target_text": "sy seine dat it it measte sear docht nei it earste diel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L01B03",
+   "expect": {
+    "known_text": "they said they both came",
+    "target_text": "sy seine sy kamen beide"
+   },
+   "set": {
+    "target_text": "sy seine dat sy beide kamen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L01U03",
+   "expect": {
+    "known_text": "they said they both came at about six o'clock",
+    "target_text": "sy seine sy kamen beide sawat om seis oere"
+   },
+   "set": {
+    "target_text": "sy seine dat sy beide sawat om seis oere kamen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L02B02",
+   "expect": {
+    "known_text": "they said they both came on their own",
+    "target_text": "sy seine sy kamen beide allinne"
+   },
+   "set": {
+    "target_text": "sy seine dat sy beide allinne kamen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0516L02U01",
+   "expect": {
+    "known_text": "they said they both came on their own after the meal",
+    "target_text": "sy seine sy kamen beide allinne nei it iten"
+   },
+   "set": {
+    "target_text": "sy seine dat sy beide allinne nei it iten kamen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01B02",
+   "expect": {
+    "known_text": "your friend said they left",
+    "target_text": "dyn freon sei sy giene fuort"
+   },
+   "set": {
+    "target_text": "dyn freon sei dat sy fuortgiene"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01U03",
+   "expect": {
+    "known_text": "he said they left after the first part of the show",
+    "target_text": "hy sei sy giene fuort nei it earste diel fan 'e foarstelling"
+   },
+   "set": {
+    "target_text": "hy sei dat sy nei it earste diel fan 'e foarstelling fuortgiene"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0517L01U06",
+   "expect": {
+    "known_text": "your friend said they left before everyone knew the news",
+    "target_text": "dyn freon sei sy giene fuort foar't elkenien it nijs wist"
+   },
+   "set": {
+    "target_text": "dyn freon sei dat sy fuortgiene foar't elkenien it nijs wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0531L01B01",
+   "expect": {
+    "known_text": "your friend said it isn't true",
+    "target_text": "dyn freon sei it is net wier"
+   },
+   "set": {
+    "target_text": "dyn freon sei dat it net wier is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0531L01U01",
+   "expect": {
+    "known_text": "your friend said it isn't true that you're going to pay",
+    "target_text": "dyn freon sei it is net wier datstû betelje silst"
+   },
+   "set": {
+    "target_text": "dyn freon sei dat it net wier is datstû betelje silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0541L01B02",
+   "expect": {
+    "known_text": "they said it's a good idea",
+    "target_text": "sy seine it is in goed idee"
+   },
+   "set": {
+    "target_text": "sy seine dat it in goed idee is"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0541L01U01",
+   "expect": {
+    "known_text": "they said it's a good idea to set a good example",
+    "target_text": "sy seine it is in goed idee om in goed foarbyld te jaan"
+   },
+   "set": {
+    "target_text": "sy seine dat it in goed idee is om in goed foarbyld te jaan"
+   }
+  }
+ ]
+}

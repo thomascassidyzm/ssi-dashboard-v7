@@ -1,0 +1,222 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 126,
+   "expect": {
+    "known_text": "This work is changing the shape of my brain.",
+    "target_text": "Dit wurk feroaret de foarm fan myn harsens."
+   },
+   "set": {
+    "known_text": "This work is changing the way I think.",
+    "target_text": "Dit wurk feroaret de manier wêrop't ik tink."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0126L03",
+   "expect": {
+    "known_text": "the shape of my brain",
+    "target_text": "de foarm fan myn harsens"
+   },
+   "set": {
+    "known_text": "the way I think",
+    "target_text": "de manier wêrop't ik tink",
+    "components": [
+     {
+      "known": "the way",
+      "target": "de manier"
+     },
+     {
+      "known": "in which",
+      "target": "wêrop't"
+     },
+     {
+      "known": "I think",
+      "target": "ik tink"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C01",
+   "expect": {
+    "known_text": "the shape",
+    "target_text": "de foarm"
+   },
+   "set": {
+    "known_text": "the way",
+    "target_text": "de manier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C02",
+   "expect": {
+    "known_text": "of",
+    "target_text": "fan"
+   },
+   "set": {
+    "known_text": "in which",
+    "target_text": "wêrop't"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03C03",
+   "expect": {
+    "known_text": "my brain",
+    "target_text": "myn harsens"
+   },
+   "set": {
+    "known_text": "I think",
+    "target_text": "ik tink"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B01",
+   "expect": {
+    "known_text": "to change the shape of my brain",
+    "target_text": "de foarm fan myn harsens feroarje"
+   },
+   "set": {
+    "known_text": "to change the way I think",
+    "target_text": "de manier wêrop't ik tink feroarje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B02",
+   "expect": {
+    "known_text": "the shape of my brain changes",
+    "target_text": "de foarm fan myn harsens feroaret"
+   },
+   "set": {
+    "known_text": "the way I think changes",
+    "target_text": "de manier wêrop't ik tink feroaret"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B03",
+   "expect": {
+    "known_text": "I'm happy with the shape of my brain",
+    "target_text": "ik bin bliid mei de foarm fan myn harsens"
+   },
+   "set": {
+    "known_text": "I'm happy with the way I think",
+    "target_text": "ik bin bliid mei de manier wêrop't ik tink"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03B04",
+   "expect": {
+    "known_text": "this is the shape of my brain",
+    "target_text": "dit is de foarm fan myn harsens"
+   },
+   "set": {
+    "known_text": "this is the way I think",
+    "target_text": "dit is de manier wêrop't ik tink"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U01",
+   "expect": {
+    "known_text": "I don't want to change the shape of my brain",
+    "target_text": "ik wol de foarm fan myn harsens net feroarje"
+   },
+   "set": {
+    "known_text": "I don't want to change the way I think",
+    "target_text": "ik wol de manier wêrop't ik tink net feroarje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U02",
+   "expect": {
+    "known_text": "I'm going to change the shape of my brain",
+    "target_text": "ik sil de foarm fan myn harsens feroarje"
+   },
+   "set": {
+    "known_text": "I'm going to change the way I think",
+    "target_text": "ik sil de manier wêrop't ik tink feroarje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U03",
+   "expect": {
+    "known_text": "do you want to change the shape of my brain?",
+    "target_text": "wolstû de foarm fan myn harsens feroarje?"
+   },
+   "set": {
+    "known_text": "do you want to change the way I think?",
+    "target_text": "wolstû de manier wêrop't ik tink feroarje?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U04",
+   "expect": {
+    "known_text": "this language changes the shape of my brain",
+    "target_text": "dizze taal feroaret de foarm fan myn harsens"
+   },
+   "set": {
+    "known_text": "this language changes the way I think",
+    "target_text": "dizze taal feroaret de manier wêrop't ik tink"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U05",
+   "expect": {
+    "known_text": "when we learn something new the shape of my brain changes very quickly",
+    "target_text": "as wy wat nijs leare feroaret de foarm fan myn harsens hiel fluch"
+   },
+   "set": {
+    "known_text": "when we learn something new the way I think changes very quickly",
+    "target_text": "as wy wat nijs leare feroaret de manier wêrop't ik tink hiel fluch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U06",
+   "expect": {
+    "known_text": "I'm happy because the shape of my brain changes",
+    "target_text": "ik bin bliid om't de foarm fan myn harsens feroaret"
+   },
+   "set": {
+    "known_text": "I'm happy because the way I think changes",
+    "target_text": "ik bin bliid om't de manier wêrop't ik tink feroaret"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U07",
+   "expect": {
+    "known_text": "the shape of my brain is important",
+    "target_text": "de foarm fan myn harsens is wichtich"
+   },
+   "set": {
+    "known_text": "the way I think is important",
+    "target_text": "de manier wêrop't ik tink is wichtich"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0126L03U08",
+   "expect": {
+    "known_text": "this work is changing the shape of my brain",
+    "target_text": "dit wurk feroaret de foarm fan myn harsens"
+   },
+   "set": {
+    "known_text": "this work is changing the way I think",
+    "target_text": "dit wurk feroaret de manier wêrop't ik tink"
+   }
+  }
+ ]
+}
