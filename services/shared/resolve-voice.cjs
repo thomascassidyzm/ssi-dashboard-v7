@@ -61,6 +61,8 @@ const POLICY = Object.freeze([
     ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
   { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's PRO clone (STANDIN_VOICE; a stand-in his real take replaces)",
     ruling: aranStandIn.RULING },
+  { rule: 'aran-pro-known', when: `known, English, on ${aranStandIn.ARAN_PRO_KNOWN_COURSES.join(' / ')} only (course slots, not pod lines)`, voice: "Aran's PRO clone (STANDIN_VOICE)",
+    ruling: aranStandIn.ARAN_PRO_KNOWN_RULING },
   // COURSE SLOTS ONLY, NOT POD LINES (Tom 2026-11-08 10:16Z: pods use "Tom-006 and Charlotte ... which is how we did all the other
   // pods"). A pod line's English is its speaker's: female → Charlotte, male → Tom-006 (EXPECTED_ENGLISH_TARGET; the pod cast,
   // shared/pod-line-voice.cjs). Pods never reach this function: voicing-policy assertRenderAllowed skips it for door.podLine, which
@@ -145,6 +147,9 @@ function resolveVoiceUnguarded({ course, role, language = null, gender = null } 
   if (role === 'known') {
     // Before english-known: on the two stand-in courses the English known side is Aran's clone, never Tom-006 (which the Welsh rule refuses).
     if (lang === 'eng' && aranStandIn.isCloneStandInSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-clone-standin')
+    // Tom 2026-11-16 11:40Z, Kai 12:38Z (aran-clone-standin.cjs isAranProKnownSlot): the live Welsh courses' English known slots are
+    // Aran's PRO clone — before english-known, whose Tom-006 the Welsh rule refuses. The Welsh and presentation slots never reach here.
+    if (lang === 'eng' && aranStandIn.isAranProKnownSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-pro-known')
     if (lang === 'eng') return voice(TOM_006, 'english-known')
     return noRuling(`known side in ${lang} — no ruling covers a non-English known voice`)
   }

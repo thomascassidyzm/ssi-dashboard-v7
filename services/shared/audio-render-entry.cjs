@@ -219,6 +219,11 @@ function standInPace(req, r) {
     const podPace = standIn.standInPodPace({ courseCode: req.courseCode, voiceId: r.voiceId })
     return podPace === 1 ? {} : { speed: 1, paceTempo: podPace }
   }
+  // The live Welsh courses' English known slots (Tom 2026-11-16, "speed it up a bit"): one known-side pace, ARAN_PRO_KNOWN_PACE.
+  if (standIn.isAranProKnownSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) {
+    const t = standIn.ARAN_PRO_KNOWN_PACE
+    return t === 1 ? { speed: 1 } : { speed: 1, paceTempo: t }
+  }
   if (!standIn.isCloneStandInSlot({ courseCode: req.courseCode, role: req.role, language: r.language })) return {}
   const tempo = standIn.standInSpeed(req.seedPosition)
   return tempo === 1 ? { speed: 1 } : { speed: 1, paceTempo: tempo }
