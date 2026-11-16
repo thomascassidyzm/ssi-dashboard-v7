@@ -99,8 +99,10 @@ const OP_HELP = {
   'lego.reorder':  { key: 'seed_number', order: 'every LEGO of the seed, each named once, in the NEW teaching order: lego_ids (S0012L03) or uuids',
                      moves: 'lego_index is the teaching order and lego_id is generated from it, so a reorder RELABELS the seed\'s LEGOs. Moved with them, in one transaction: the seed\'s phrases (lego_index, lego_id, and the label inside the text id …:S0012L01B01), their course_qa_flags (phrase_id, lego_id), every decomposition tile and connected_lego_ids entry anywhere in the course, course_audio.lego_id, lego_introductions, course_lego_positions, course_audio_usage. uuids, texts and audio links are untouched.',
                      never: 'learner state (lego_progress, learner_lego_metrics, learner_l1_state, course_enrollments cursors, classes / class_sessions cursors): an apply is REFUSED (LEARNER_STATE) while any row names a moved LEGO; the dry run counts them. course_round_signoffs are counted, not carried (a sign-off is a verdict on the round as it was).',
-                     refusals: 'ORDER_MISMATCH (order is not exactly the seed\'s LEGOs), REORDER_NOOP (order is the current order), NO_SUCH_SEED, TOO_MANY_LEGOS (an index above 49 leaves no room to park), LEARNER_STATE (apply only)',
-                     note: 'structural: on a beta/released course an apply needs "tom_go" (or kai_go). The undo is the reverse lego.reorder, by uuid.' },
+                     phrases: 'optional {"<phrase id, before or after the reorder>": "keep"|"move"|"delete"}. The dry run lists, under results[].phrases, every phrase of the seed whose basket now uses a piece of the seed taught LATER (status newly_reaches_forward) with a proposal: move (to the first basket where all its pieces are taught, as a USE phrase, QA flags following) / keep / delete; to edit one instead, add a phrase.update after this op in the same batch and mark it keep. An apply is REFUSED (PHRASES_UNDECIDED) until every newly_reaches_forward phrase has a decision. already_reached_forward / fixed_by_reorder / unchecked (no tiles) are listed for information. Decisions run in the dry run too.',
+                     phrases_default: '"keep": keep every flagged phrase without naming them (the undo uses it)',
+                     refusals: 'PHRASES_UNDECIDED (apply only), PHRASE_NOT_FLAGGED, MOVE_UNSUPPORTED, ORDER_MISMATCH (order is not exactly the seed\'s LEGOs), REORDER_NOOP (order is the current order), NO_SUCH_SEED, TOO_MANY_LEGOS (an index above 49 leaves no room to park), LEARNER_STATE (apply only)',
+                     note: 'structural: on a beta/released course an apply needs "tom_go" (or kai_go). The undo puts moved/deleted phrases back, then runs the reverse lego.reorder by uuid.' },
   'audio.link':    { key: 'target: seed|lego|phrase + seed_number|lego_id|phrase_id', slot: SLOTS,
                      audio_id: 'course_audio id, or null to unlink',
                      note: 'refused unless the clip speaks the row\'s words (normalize_text); allow_text_mismatch:true overrides. presentation is exempt.' },
@@ -219,7 +221,13 @@ function planOp(op, index, courseCode) {
       const order = op.order.map(String);
       const bad = order.filter(x => !UUID_RE.test(x) && !LEGO_ID_RE.test(x));
       if (bad.length) throw new EditOpError(index, `lego.reorder order entries must be lego_ids (S0012L03) or uuids; not: ${bad.join(', ')}`, 'ORDER_MISMATCH');
-      return { ...base, table: 'course_legos', kind: 'reorder', structural: true, where: { course_code: courseCode, seed_number: n }, order };
+      const phrases = op.phrases === undefined ? {} : op.phrases;
+      if (!phrases || typeof phrases !== 'object' || Array.isArray(phrases)) throw new EditOpError(index, 'lego.reorder "phrases" must be {"<phrase id>": "keep"|"move"|"delete"}');
+      const badAct = Object.entries(phrases).filter(([, v]) => !legoReorder.PHRASE_ACTIONS.includes(v));
+      if (badAct.length) throw new EditOpError(index, `lego.reorder phrase decisions must be ${legoReorder.PHRASE_ACTIONS.join('|')}; not: ${badAct.map(([k, v]) => `${k}=${v}`).join(', ')}`);
+      if (op.phrases_default !== undefined && op.phrases_default !== 'keep') throw new EditOpError(index, 'lego.reorder phrases_default may only be "keep"');
+      return { ...base, table: 'course_legos', kind: 'reorder', structural: true, where: { course_code: courseCode, seed_number: n }, order,
+        phrases, phrasesDefault: op.phrases_default === 'keep' ? 'keep' : null };
     }
     case 'audio.link': {
       const slot = op.slot;
@@ -462,7 +470,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
         touched.seed_numbers.add(plan.where.seed_number);
         for (const id of r.lego_ids) touched.lego_ids.add(id);
         for (const id of r.phrase_ids) touched.phrase_ids.add(id);
-        undo.unshift(r.undo);
+        undo.unshift(...r.undo_ops);
         results.push({ index: plan.index, op: plan.name, key: plan.where, ...r.result, changed: true });
         continue;
       }

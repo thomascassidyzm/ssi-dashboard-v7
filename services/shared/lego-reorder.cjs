@@ -235,6 +235,10 @@ async function runReorder(client, plan, courseCode, { evId, apply, types, fail: 
       `UPDATE ${q(table)} SET lego_id = $2::jsonb ->> replace(lego_id, '${PARK_TAG}', '') WHERE course_code = $1 AND lego_id = ANY($3::text[])`,
       [courseCode, labelJson, oldLabels.map(l => l + PARK_TAG)]);
   }
+  // Step 4: the PRACTICE PHRASES the new order affects (Kai, 16 Nov 18:25Z).
+  const phraseReview = await reviewPhrases(client, { plan, courseCode, seed, legos, picked, evId, apply, phraseStamp, fail });
+  for (const [k, v] of Object.entries(phraseReview.counts)) counts[k] = v;
+
   let signoffs = null;
   if (await columnsExist(client, 'course_round_signoffs', ['course_code', 'lego_id'])) {
     signoffs = (await client.query(
@@ -249,9 +253,13 @@ async function runReorder(client, plan, courseCode, { evId, apply, types, fail: 
 
   return {
     lego_ids: oldLabels,
-    phrase_ids: [...idRename.values()],
-    // The reverse reorder, by uuid: the labels are permuted, so this restores every label exactly.
-    undo: { op: 'lego.reorder', seed_number: seed, order: legos.map(l => l.id) },
+    phrase_ids: [...idRename.values(), ...phraseReview.touchedIds],
+    // Undo, in replay order: put the reviewed phrases back as they stood just after the
+    // relabel, THEN the reverse reorder, by uuid (the labels are permuted, so this restores
+    // every label exactly). The reverse reorder keeps every phrase: it is a restore, and the
+    // phrases it would flag are exactly the ones that reached forward before this op ran.
+    undo_ops: [...phraseReview.undo,
+      { op: 'lego.reorder', seed_number: seed, order: legos.map(l => l.id), phrases_default: 'keep' }],
     result: {
       before: legos.map(l => ({ id: l.id, lego_id: l.lego_id, known_text: l.known_text, target_text: l.target_text })),
       after: after.map(r => ({ id: r.id, lego_id: r.lego_id, known_text: r.known_text, target_text: r.target_text })),
@@ -259,9 +267,142 @@ async function runReorder(client, plan, courseCode, { evId, apply, types, fail: 
       phrase_id_map: Object.fromEntries(idRename),
       moved: counts,
       learner_state: { ...learner, total: learnerRows, ...(learnerRows ? { on_apply: 'REFUSED (LEARNER_STATE)' } : {}) },
+      phrases: phraseReview.report,
       not_carried: { course_round_signoffs: signoffs },
     },
   };
 }
 
-module.exports = { runReorder, reorderLabelMap, renamedPhraseId };
+// ─── The phrases a reorder affects (Kai, 2026-11-16 18:25Z) ─────────────────
+//
+// A basket may only use pieces already taught. Moving a LEGO earlier can leave a
+// phrase in its basket using a piece of the same seed that is now taught LATER.
+// Moving one later cannot break its own basket, but it can break the baskets that
+// now come before it. Earlier seeds are always taught, and a later seed is taught
+// after this whole seed, so only THIS seed's baskets can change status.
+// "Uses" = the phrase's decomposition tiles (legoId, ghosts skipped) plus its
+// connected_lego_ids; a phrase with neither is listed as `unchecked`.
+//
+// Every phrase whose status changes is listed with a proposal. A phrase that
+// NEWLY reaches forward needs a decision before an apply:
+//   keep   — leave it (e.g. after a phrase.update later in the same batch edits it)
+//   move   — to the earliest basket where every piece it uses is taught, as a USE
+//            phrase there (position >= 8, id …U<nn>), its QA flags following it
+//   delete — drop it; its QA flags go with it (and come back on undo)
+// Phrases that ALREADY reached forward before the reorder, and ones the reorder
+// FIXES, are listed for information; they may be given a decision too.
+// The decisions run in the dry run as well, so the preview is the real result.
+const PHRASE_ACTIONS = ['keep', 'move', 'delete'];
+const { computeLegoPosition } = require('../course-builder/lib/phrase-structure.cjs');
+
+async function reviewPhrases(client, { plan, courseCode, seed, legos, picked, evId, apply, phraseStamp, fail }) {
+  const afterLegos = (await client.query(
+    `SELECT id, lego_index, lego_id, target_text FROM course_legos WHERE course_code = $1 AND seed_number = $2`, [courseCode, seed])).rows;
+  const oldIdx = new Map(legos.map(l => [l.id, l.lego_index]));
+  const newIdx = new Map(afterLegos.map(l => [l.id, l.lego_index]));
+  const uuidAt = new Map(afterLegos.map(l => [l.lego_index, l.id]));
+  const byLabel = new Map(afterLegos.map(l => [l.lego_id, l]));
+  // Pre-reorder phrase id, for the caller who names phrases as they knew them.
+  const oldLabelOf = new Map(legos.map(l => [afterLegos.find(a => a.id === l.id).lego_id, l.lego_id]));
+  const beforeId = (id) => renamedPhraseId(id, oldLabelOf) || id;
+
+  const rows = (await client.query(
+    `SELECT * FROM course_practice_phrases WHERE course_code = $1 AND seed_number = $2 ORDER BY lego_index, position`, [courseCode, seed])).rows;
+
+  const report = [];
+  for (const r of rows) {
+    const basket = uuidAt.get(r.lego_index);
+    const labels = new Set();
+    if (Array.isArray(r.decomposition)) for (const t of r.decomposition) if (t && t.legoId && !t.isGhost) labels.add(t.legoId);
+    for (const l of r.connected_lego_ids || []) labels.add(l);
+    const uses = [...labels].map(l => byLabel.get(l)).filter(l => l && l.id !== basket);
+    const checked = Array.isArray(r.decomposition) || (r.connected_lego_ids || []).length > 0;
+    const laterNew = uses.filter(l => newIdx.get(l.id) > newIdx.get(basket));
+    const laterOld = uses.filter(l => oldIdx.get(l.id) > oldIdx.get(basket));
+    let status;
+    if (!checked) status = 'unchecked';
+    else if (laterNew.length && !laterOld.length) status = 'newly_reaches_forward';
+    else if (laterNew.length) status = 'already_reached_forward';
+    else if (laterOld.length) status = 'fixed_by_reorder';
+    else continue;
+    const entry = { id: r.id, id_before_reorder: beforeId(r.id), phrase_role: r.phrase_role, basket: afterLegos.find(a => a.id === basket).lego_id,
+      known_text: r.known_text, target_text: r.target_text, status, uses_later_pieces: laterNew.map(l => l.lego_id) };
+    if (laterNew.length) {
+      const to = laterNew.reduce((a, l) => (newIdx.get(l.id) > newIdx.get(a.id) ? l : a));
+      entry.move_to = to.lego_id;
+      entry.proposed = r.phrase_role === 'component' ? 'keep' : 'move';
+      entry.why = r.phrase_role === 'component'
+        ? 'a component is a part of its own M LEGO, not practice; keep'
+        : `move to ${to.lego_id}'s basket, the first where every piece it uses is taught (or edit it with a phrase.update and keep, or delete)`;
+      entry.options = PHRASE_ACTIONS;
+    }
+    report.push(entry);
+  }
+
+  // Decisions, by current or pre-reorder id.
+  const decisions = new Map();
+  const unknown = [];
+  for (const [k, v] of Object.entries(plan.phrases || {})) {
+    const e = report.find(x => x.id === k || x.id_before_reorder === k);
+    if (!e || !e.options) unknown.push(k); else decisions.set(e.id, v);
+  }
+  if (unknown.length) fail(`phrase decisions name phrases this reorder does not flag: ${unknown.join(', ')}`, 'PHRASE_NOT_FLAGGED');
+  const undecided = report.filter(e => e.status === 'newly_reaches_forward' && !decisions.has(e.id) && !plan.phrasesDefault);
+  if (apply && undecided.length) {
+    fail(`${undecided.length} phrase(s) would use a piece taught later and have no decision: ${undecided.map(e => `${e.id_before_reorder} (proposed ${e.proposed})`).join(', ')}. Send "phrases": {"<id>": "keep"|"move"|"delete"}; the dry run lists each with its proposal.`, 'PHRASES_UNDECIDED');
+  }
+
+  const undoDel = [], undoIns = [], undoFlags = [], touchedIds = [];
+  const counts = { 'phrases kept': 0, 'phrases moved': 0, 'phrases deleted': 0 };
+  const stripRow = (row) => { const o = { ...row }; for (const c of ['last_edit_event_id', 'version', 'updated_at']) delete o[c]; return o; };
+  const types = (await client.query(
+    `SELECT column_name, data_type FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'course_practice_phrases'`)).rows;
+  const isJson = new Set(types.filter(t => t.data_type === 'json' || t.data_type === 'jsonb').map(t => t.column_name));
+
+  for (const e of report) {
+    const action = decisions.get(e.id) || (e.options && plan.phrasesDefault) || null;
+    if (!action) continue;
+    e.decision = action;
+    if (action === 'keep') { counts['phrases kept'] += 1; continue; }
+    const row = rows.find(r => r.id === e.id);
+    const flags = (await client.query(`SELECT * FROM course_qa_flags WHERE course_code = $1 AND phrase_id = $2`, [courseCode, row.id])).rows;
+    undoIns.push({ op: 'phrase.insert', row: stripRow(row) });
+    for (const f of flags) undoFlags.push({ op: 'qaflag.restore', row: f });
+    if (action === 'delete') {
+      await client.query(`DELETE FROM course_qa_flags WHERE course_code = $1 AND phrase_id = $2`, [courseCode, row.id]);
+      await client.query(`DELETE FROM course_practice_phrases WHERE id = $1`, [row.id]);
+      counts['phrases deleted'] += 1; touchedIds.push(row.id);
+      e.result = 'deleted';
+      continue;
+    }
+    // move
+    const target = byLabel.get(e.move_to);
+    const m = /^(.*:)S\d{4}L\d{2}[A-Z]\d+$/.exec(row.id);
+    if (!m) fail(`cannot move ${row.id}: its id is not of the form <course>:S0000L00X00`, 'MOVE_UNSUPPORTED');
+    const there = (await client.query(
+      `SELECT id, position FROM course_practice_phrases WHERE course_code = $1 AND seed_number = $2 AND lego_index = $3`,
+      [courseCode, seed, target.lego_index])).rows;
+    const position = Math.max(8, ...there.map(x => x.position + 1));
+    const used = new Set(there.map(x => x.id));
+    let n = 1; let newId;
+    do { newId = `${m[1]}${target.lego_id}U${String(n).padStart(2, '0')}`; n += 1; } while (used.has(newId));
+    const moved = { ...row, id: newId, lego_index: target.lego_index, position, phrase_role: 'use', lego_id: target.lego_id,
+      lego_position: computeLegoPosition(row.target_text, target.target_text) };
+    delete moved.version; delete moved.updated_at;
+    if (evId && 'last_edit_event_id' in row) moved.last_edit_event_id = evId;
+    const cols = Object.keys(moved);
+    await client.query(
+      `INSERT INTO course_practice_phrases (${cols.map(q).join(', ')}) VALUES (${cols.map((_, i) => `$${i + 1}`).join(', ')})`,
+      cols.map(c => (moved[c] !== null && moved[c] !== undefined && isJson.has(c) ? JSON.stringify(moved[c]) : moved[c])));
+    await client.query(`UPDATE course_qa_flags SET phrase_id = $3 WHERE course_code = $1 AND phrase_id = $2`, [courseCode, row.id, newId]);
+    await client.query(`DELETE FROM course_practice_phrases WHERE id = $1`, [row.id]);
+    undoDel.push({ op: 'phrase.delete', phrase_id: newId });
+    counts['phrases moved'] += 1; touchedIds.push(row.id, newId);
+    e.result = `moved to ${newId} (position ${position}, use)`;
+  }
+  void phraseStamp;
+  // Replay order: remove the moved copies, put the originals back, then their flags.
+  return { report, counts, touchedIds, undo: [...undoDel, ...undoIns, ...undoFlags] };
+}
+
+module.exports = { runReorder, reorderLabelMap, renamedPhraseId, PHRASE_ACTIONS };
