@@ -47,3 +47,5 @@ No LEGO in the course has an intro clip, so nothing is out of step. No audio ren
 - 614 'do chlann' vs 'teaghlach' at 408 (both past 300; 408 is one of the 28).
 
 28-row recommendation list: rows28.md, published https://watson-1.tail4968cb.ts.net:10000/d/7a83019a
+
+Sheet rebuilt on the live course (build.py unchanged except QUIET/HAND for these rows): 206 commented / 462 blank, was 239 / 429. xlsx https://watson-1.tail4968cb.ts.net:10000/d/985d9e1a/file

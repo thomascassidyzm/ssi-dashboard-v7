@@ -8,6 +8,9 @@
 # its first row, and later rows whose only difference is that choice are blank, as with tá mé at 2.
 # Every ‘quoted’ piece must be found in his line, our line or a sentence the comment names by number (the build checks).
 #
+# cs #343·AI (16 Nov): the 43 rows marked #nr were settled by Kai ("take his every time"): his line is live on 39 of them
+# (blank, or a note where the course keeps one of its own forms); 70, 82, 272 and 280 were stopped, and say why.
+#
 # Format:  @<seed> | <live Irish>      (add  #nr  when no recorded reason was found: those carry a plain "is that OK?")
 #          <comment, or an empty line for blank>
 
@@ -20,8 +23,8 @@ You suggested ‘Bainfidh mé cleachtadh as’; we've kept ‘Tá mé chun’ be
 @6 | Tá mé ag iarraidh cuimhneamh ar fhocal
 You suggested ‘cuimhneamh a dhéanamh ar fhocal ar leith’; we've kept the shorter ‘cuimhneamh ar fhocal’ because the longer form is too much to learn this early, and ‘ar leith’ has nothing to match it in our English, which all our courses share.
 
-@7 | Is mian liom mo dhícheall a dhéanamh inniu #nr
-You suggested ‘m'iarracht is fearr a dhéanamh’; we've gone with ‘mo dhícheall a dhéanamh’. Is that OK?
+@7 | Is mian liom m'iarracht is fearr a dhéanamh inniu
+
 
 @8 | Tá mé chun iarracht a dhéanamh a mhíniú cad atá i gceist agam
 
@@ -39,7 +42,7 @@ You suggested ‘nuair a bheidh tú críochnaithe’; we've kept ‘tar éis dui
 You suggested ‘buille faoi thuairim a thabhairt faoin rud a tharlófar’; we've changed this one to ‘a rá cad a tharlóidh’ because ‘buille faoi thuairim a thabhairt’ is too long to learn this early, so the course now teaches it at 260.
 
 @14 | an labhraíonn tú Gaeilge an lá ar fad?
-You suggested ‘An mbíonn Gaeilge á labhairt agat an lá uilig’; we've kept ‘an labhraíonn tú’ because the ‘á … agat’ pattern is a big step this early, and ‘ar fad’ because it's how we say ‘all’ right through the course (as at 69, ‘an tráthnóna ar fad’).
+You suggested ‘An mbíonn Gaeilge á labhairt agat an lá uilig’; we've kept ‘an labhraíonn tú’ because the ‘á … agat’ pattern is a big step this early, and ‘ar fad’ because it's how we say ‘all’ right through the course (as at 69, ‘um thráthnóna ar fad’).
 
 @15 | agus is mian liom go labhrófá Gaeilge liom amárach
 You suggested ‘go labhróidh tú’; we've kept ‘go labhrófá’ because that's how you write it after ‘is mian liom go’ at 171 and 237, so the learner meets one pattern.
@@ -80,14 +83,14 @@ You suggested ‘Ní theastaíonn uaidh’; we've used ‘Ní mian leis’ becau
 @35 | Ní mian léi aon rud a léamh tráthnóna inniu
 
 
-@36 | Ní mian linn cur isteach ar an scéal #nr
-You suggested ‘briseadh isteach ar an scéal’; we've gone with ‘cur isteach ar an scéal’. Is that OK?
+@36 | Ní mian linn briseadh isteach ar an scéal
+
 
 @37 | thosaigh mé ag smaoineamh air go cúramach an mhí seo caite
 You suggested ‘ag déanamh machnamh cúramach air’; we've kept ‘ag smaoineamh air go cúramach’ because learners keep using ‘smaoineamh’ after this (43, 91, 98).
 
-@38 | Tá mé ag foghlaim le timpeall seachtaine #nr
-You suggested ‘thart ar sheachtain’; we've gone with ‘le timpeall seachtaine’. Is that OK?
+@38 | Tá mé ag foghlaim thart ar sheachtain
+
 
 @39 | ach tá mé beagán tuirseach ar maidin
 You suggested ‘tá beagáinín tuirse orm’; we've kept ‘tá mé beagán tuirseach’ because that's how ‘tired’ comes up through the course (455, 600), with ‘beagán’ as at 9.
@@ -128,8 +131,8 @@ You suggested ‘cuimhneamh a dhéanamh ar an rud ba mhian liom a rá’; we've 
 @59 | Tá a fhios agam conas a dhéanamh cad atá le déanamh agam an tseachtain seo chugainn
 You suggested ‘an rud atá le déanamh’; we've kept ‘cad atá le déanamh’ because ‘cad atá’ is what learners have had since 8 (‘cad atá i gceist agam’).
 
-@61 | an bhféadfá é sin a rá arís beagán níos moille? #nr
-You suggested ‘arís, ach beagán níos moille’; we've gone without the ‘ach’. Is that OK?
+@61 | an bhféadfá é sin a rá arís, ach beagán níos moille?
+
 
 @64 | Níl sé éasca Gaeilge a fhoghlaim ach tá sé spraíúil
 You suggested ‘tá spraoí ag baint léi’; we've kept ‘tá sé spraíúil’ because the learner reuses it in about thirty other practice lines about all sorts of things, and with ‘léi’ each of those would need its own form.
@@ -143,14 +146,14 @@ You suggested ‘tá spraoí ag baint léi’; we've kept ‘tá sé spraíúil�
 @68 | cad atá tú ag lorg?
 
 
-@69 | Níor mhian leis aire a thabhairt don mhadra óg an tráthnóna ar fad #nr
-You suggested ‘um tráthnóna ar fad’; we've gone with ‘an tráthnóna ar fad’. Is that OK?
+@69 | Níor mhian leis aire a thabhairt don mhadra óg um thráthnóna ar fad
 
-@70 | Níor mhian léi insint dom cá raibh sé #nr
-You suggested ‘an áit ina raibh sé’; we've gone with ‘cá raibh sé’. Is that OK?
 
-@77 | Tá ionadh orm cé chomh tapa is atá tuiscint á fáil agam air #nr
-You suggested ‘Cuireann sé ionadh orm’; we've gone with ‘Tá ionadh orm’, and taken the rest of your line. Is that OK?
+@70 | Níor mhian léi insint dom cá raibh sé
+You suggested ‘an áit ina raibh sé’; we've kept ‘cá raibh sé’ because learners say ‘where it was’ that way in many other sentences, so it needs to stay one answer.
+
+@77 | Cuireann sé ionadh orm cé chomh tapa is atá tuiscint á fáil agam air
+You suggested ‘tapaidh’; we've kept ‘tapa’, the spelling learners have had since 20.
 
 @78 | Ní thuigim cad a dúirt tú
 
@@ -161,8 +164,8 @@ You suggested ‘Cuireann sé ionadh orm’; we've gone with ‘Tá ionadh orm�
 @81 | cathain ar mian leat tosú?
 You suggested ‘Cathain ar mhaith leat’; we've kept ‘ar mian leat’ because ‘ar mhaith leat’ is how we say ‘would you like’ (as at 428, ‘ar mhaith leo’), so ‘want’ keeps ‘mian’.
 
-@82 | níl mé chun fanacht leat. Cén fáth nach bhfuil? #nr
-You suggested ‘Cén fáth’ on its own; we've gone with ‘Cén fáth nach bhfuil?’. Is that OK?
+@82 | níl mé chun fanacht leat. Cén fáth nach bhfuil?
+You suggested ‘Ní fhanfaidh mé leat’ and ‘Cén fáth’; we've kept ‘níl mé chun’ for ‘going to’, as at 5, and ‘Cén fáth nach bhfuil?’ for ‘Why not?’.
 
 @83 | aontaím leis an méid a dúirt tú faoi do chara
 You suggested ‘atá ráite agat maidir le’; we've kept ‘a dúirt tú faoi’ because learners have just had ‘a dúirt tú’ at 78.
@@ -203,8 +206,8 @@ You suggested ‘níor chóir go mbeadh tú buartha’; we've kept ‘níor chó
 @101 | Tá mé ag baint taitnimh as níos mó a fháil amach faoin teanga seo
 You suggested ‘Tá taitneamh á bhaint agam’; we've kept ‘Tá mé ag baint taitnimh as … a fháil amach’ because it builds straight on ‘bainim taitneamh as’ and ‘fáil amach’, which learners already have (17, 206).
 
-@102 | Tá muid ag iarraidh a rá nach bhfuil sé mar sin #nr
-You suggested ‘nach mar sin atá sé’; we've gone with ‘nach bhfuil sé mar sin’. Is that OK?
+@102 | Tá muid ag iarraidh a rá nach mar sin atá sé
+
 
 @106 | Ní chaithfidh muid áthas a bheith orainn, caithfidh muid obair go dian
 You suggested ‘Níl sé riachtanach’ and ‘níl de dhíth orainn ach’; we've kept ‘caithfidh muid’ for each, as at 44, so ‘need to’ has one answer. And following your note about sásta, ‘happy’ is now ‘áthas’ everywhere.
@@ -272,8 +275,8 @@ You suggested ‘seachas’; we've kept ‘ná’ because ‘seachas’ already 
 @140 | Tá brón orm nach féidir liom feiceáil cad atá tú ag iarraidh a thaispeáint dom
 
 
-@142 | Tá sé sin an-chineálta uait agus tá mé buíoch díot as cabhrú #nr
-You suggested ‘Is an-chineálta atá tú’ and ‘as do chabhair’; we've taken your ‘an-chineálta’ and gone with ‘Tá sé sin an-chineálta uait’ and ‘as cabhrú’. Is that OK?
+@142 | Is an-chineálta atá tú agus tá mé an-bhuíoch díot as do chabhair
+
 
 @144 | dhúisigh mé níos luaithe ná mar ba mhian liom ar maidin
 
@@ -281,17 +284,17 @@ You suggested ‘Is an-chineálta atá tú’ and ‘as do chabhair’; we've ta
 @146 | Tá an chuma air nach bhfuil rud ar bith ag obair ó rinne muid iarracht é a dheisiú
 You suggested ‘ag feidhmiú’; we've kept ‘ag obair’ to match ‘nach bhfuil sé ag obair’ at 99.
 
-@147 | bhí sí an-chineálta nuair a chonaic sí go raibh mé neirbhíseach #nr
-You suggested ‘thug sí faoi deara’ and ‘faitíos orm’; we've taken your ‘an-chineálta’ and gone with ‘chonaic sí’ and ‘neirbhíseach’. Is that OK?
+@147 | B'an-chineálta a bhí sí nuair a thug sí faoi deara go raibh faitíos orm
 
-@148 | Ní raibh sé an-fhoighneach liom nuair nach raibh mé in ann freagra a thabhairt dó #nr
-You suggested ‘Ní ró-fhoighneach a bhí sé’; we've gone with ‘Ní raibh sé an-fhoighneach’, and taken your ‘liom’ and ‘dó’. Is that OK?
+
+@148 | Ní rófhoighneach a bhí sé liom nuair nárbh fhéidir liom freagra a thabhairt dó
+
 
 @149 | Níl sé seo an-deacair, mar sin tá súil agam go gcríochnóidh tú go luath
 You suggested ‘Níl deacracht mhór ag baint leis seo’; we've kept ‘Níl sé seo an-deacair’ to match ‘Tá sé deacair’ at 91.
 
 @151 | Ní hé sin a raibh mé ag súil go dtarlódh
-You suggested ‘Ní mar sin a bhí mé’; we've kept ‘Ní hé sin’ to match ‘Ní hé sin an chúis’ at 127 and ‘Ní hé sin atá mé’ at 159.
+You suggested ‘Ní mar sin a bhí mé’; we've kept ‘Ní hé sin’ to match ‘Ní hé sin an chúis’ at 127 and ‘Ní hé sin an rud’ at 159.
 
 @152 | Dhéanfainn é ar bhealach difriúil dá mbeadh a fhios agam cad a bhí uait
 You suggested ‘ar bhealach eile’ and ‘dá raibh’; we've kept ‘ar bhealach difriúil’ and ‘dá mbeadh’, the way you write them yourself at 607.
@@ -308,14 +311,14 @@ You suggested ‘libh’; we've kept ‘leat’ because the course keeps ‘libh
 @157 | Ní bheidh mé in ann a bheith ann an mhí seo chugainn
 You suggested ‘Ní féidir liom’; we've kept ‘Ní bheidh mé in ann’ to match 24.
 
-@159 | Ní hé sin atá mé ag iarraidh a rá leat #nr
-You suggested ‘Ní hé sin an rud atáim’; we've gone without ‘an rud’. Is that OK?
+@159 | Ní hé sin an rud atá mé ag iarraidh a rá leat
+
 
 @160 | conas a deir tú an focal seo i nGaeilge?
 You suggested ‘conas a déarfá’; we've kept ‘conas a deir tú’ because ours has to cover all of the English.
 
-@166 | Níl m'ainm an-neamhghnách #nr
-You suggested ‘Níl ainm an-neamhghnách orm’; we've gone with ‘Níl m'ainm an-neamhghnách’. Is that OK?
+@166 | Níl ainm an-neamhghnách orm
+
 
 @167 | cad atá le déanamh agat tráthnóna amárach?
 You suggested ‘cad a bheidh le déanamh’; we've kept ‘cad atá le déanamh’ to match 59 (‘cad atá le déanamh agam’).
@@ -335,8 +338,8 @@ You suggested the line without ‘ansin’; we've kept it in because ours has to
 @177 | fiafróidh mé di cén áit ar mian léi dul
 
 
-@178 | Ní raibh am agam, cé gur mhian liom tú a fheiceáil #nr
-You suggested ‘in ainneoin go raibh mé’; we've gone with ‘cé gur mhian liom’. Is that OK?
+@178 | Ní raibh an t-am agam, in ainneoin gur mhian liom tú a fheiceáil
+
 
 @179 | cad atá tú chun a dhéanamh tráthnóna Domhnaigh?
 
@@ -419,8 +422,8 @@ You suggested ‘ina dhiadh sin’; we've kept ‘ansin’ to match 168 (‘agus
 @224 | Tá sé díreach tar éis tosú ag foghlaim
 You suggested ‘Thosaigh sé ag foghlaim le déanaí’; we've kept ‘Tá sé díreach tar éis tosú’, the way you write it yourself at 228.
 
-@228 | Tá an fear sin díreach tar éis tosú ag cleachtadh labhartha #nr
-You suggested ‘tosú ar a chuid cainte a chleachtadh’; we've gone with ‘tosú ag cleachtadh labhartha’. Is that OK?
+@228 | Tá an fear sin díreach tar éis tosú ar labhairt a chleachtadh
+You suggested ‘a chuid cainte a chleachtadh’; we've used ‘labhairt a chleachtadh’ because that is how ‘practise speaking’ is said from 5 on.
 
 @230 | Tá aithne agam ar fhear óg ar mian leis obair leat
 
@@ -458,8 +461,8 @@ You suggested ‘Iarrfaidh mé air … a thabhairt dom’; we've kept ‘Tá mé
 @246 | ba mhian liom go gcabhródh sí leat ach bhí sí ró-ghnóthach
 You suggested ‘go dtabharfadh sí cabhair duit’; we've kept ‘go gcabhródh sí leat’ to match 204.
 
-@247 | cheap mé go raibh an leabhar sin réasúnta maith #nr
-You suggested ‘cuíosach maith’; we've gone with ‘réasúnta maith’. Is that OK?
+@247 | cheap mé go raibh an leabhar sin cuíosach maith
+You suggested ‘an leabhar cuíosach maith’; we've kept ‘sin’ in ‘an leabhar sin’ for ‘that book’.
 
 @249 | Is mian liom go gcabhrófá liom sula rachaidh tú
 
@@ -503,8 +506,8 @@ You suggested ‘Tá’; we've kept ‘chuala’ to answer ‘ar chuala tú…?�
 @269 | Cén fáth nach mian leat fanacht le d'athair?
 You suggested ‘nach bhfanann tú’; we've kept ‘nach mian leat fanacht’ because ours has to cover all of the English.
 
-@272 | Ba mhaith, sin smaoineamh iontach #nr
-You suggested ‘is smaoineamh iontach é sin’; we've taken your ‘Ba mhaith’ and gone with ‘sin smaoineamh iontach’. Is that OK?
+@272 | Ba mhaith, sin smaoineamh iontach
+You suggested ‘is smaoineamh iontach é sin’; we've kept ‘sin smaoineamh iontach’ because with ‘Ba mhaith’ in front yours is too long to learn in one go at this point.
 
 @273 | Níor mhaith, faraor tá an iomarca oibre agam
 You suggested ‘an-iomarca oibre le déanamh’; we've kept ‘an iomarca oibre’ as at 27 (‘an iomarca ama’).
@@ -512,8 +515,8 @@ You suggested ‘an-iomarca oibre le déanamh’; we've kept ‘an iomarca oibre
 @275 | níos faide
 
 
-@280 | Ní raibh, ní raibh orm ach an jab is tábhachtaí a dhéanamh #nr
-You suggested ‘ní raibh ach an jab is tábhachtaí le déanamh agam’; we've gone with ‘ní raibh orm ach … a dhéanamh’. Is that OK?
+@280 | Ní raibh, ní raibh orm ach an jab is tábhachtaí a dhéanamh
+You suggested ‘ní raibh ach an jab is tábhachtaí le déanamh agam’; we've kept ‘ní raibh orm ach … a dhéanamh’ because learners say ‘to do’ as ‘a dhéanamh’ from 7, and yours is too long to learn as one piece.
 
 @281 | an miste leat má chríochnaím mo chaife sula dtosóidh tú?
 You suggested ‘Ar mhiste leat’; we've kept ‘an miste leat’ to match ‘nach miste leat’ at 63.
@@ -558,13 +561,13 @@ You suggested ‘Níl faic’; we've kept ‘aon rud’, which learners have had
 You suggested ‘go mbeidh cuma mhíchairdiúil uirthi’; we've kept ‘a bheith míchairdiúil’ because yours is too long for the learner to take in one go at this point in the course.
 
 @302 | dúirt sí nach mian léi cónaí i gcathair
-You suggested ‘cur fuithi’; we've kept ‘cónaí’ because it comes back at 506 (‘i mo chónaí’) and 614 (‘ina chónaí’).
+You suggested ‘cur fuithi’; we've kept ‘cónaí’ because it comes back at 506 (‘i mo chónaí’) and 614 (‘ina gcónaí’).
 
 @303 | ceapaim gur mian leis suí síos
 You suggested ‘gur mhian leis’; we've kept ‘gur mian leis’ because ours has to cover all of the English.
 
-@304 | ceapaim nach mian léi obair ón mbaile #nr
-You suggested ‘go mbeidh sí ag obair’; we've gone with plain ‘obair’. Is that OK?
+@304 | ceapaim nach mian léi go mbeadh sí ag obair ón mbaile
+You suggested ‘go mbeidh sí ag obair’; we've used ‘go mbeadh’ because after ‘want’ the course always says ‘go mbeadh’.
 
 @308 | Tá, is cara le mo mháthair í
 You suggested ‘de chuid’; we've kept ‘le’, as in ‘seanchara le m'athair’ at 266.
@@ -590,11 +593,11 @@ You suggested ‘Tá tábhacht ag baint leis’; we've kept ‘Tá sé tábhacht
 @330 | Níl, ní cheapaim go bhfuil sé an-tábhachtach
 
 
-@332 | is féidir leis saol nua a thógáil dá dheirfiúr #nr
-You suggested ‘saol nua a chur ar bun’; we've gone with ‘saol nua a thógáil’. Is that OK?
+@332 | is féidir leis saol nua a chur ar bun dá dheirfiúr
 
-@335 | ceapaim gur féidir leis smaointe luachmhara a chur leis #nr
-You suggested ‘tairbheacha’; we've gone with ‘luachmhara’. Is that OK?
+
+@335 | ceapaim gur féidir leis smaointe tairbheacha a chur leis
+
 
 @340 | Ceapaim, tá mé cinnte go mbeidh sé ceart go leor
 You suggested ‘go mbeidh sé car feabhas ar an lá’; we've kept ‘go mbeidh sé ceart go leor’ to match 406.
@@ -620,11 +623,11 @@ You suggested ‘Níor mhaith’; we've kept ‘Níor mhian’ to answer the sam
 @355 | an raibh gá di labhairt leis an mbean sin a bhfuil aithne agat uirthi?
 
 
-@356 | bhí, bhí rud tábhachtach le plé acu #nr
-You suggested ‘rud éigin tábhachtach’; we've gone with ‘rud tábhachtach’. Is that OK?
+@356 | bhí, bhí rud éigin tábhachtach le plé acu
 
-@357 | Ní raibh, níor mhian léi ach teachtaireacht a sheoladh chuici #nr
-You suggested ‘ní raibh ann ach gur mhian léi’; we've gone with ‘níor mhian léi ach’. Is that OK?
+
+@357 | Ní raibh, ní raibh ann ach gur mhian léi teachtaireacht a sheoladh chuici
+
 
 @361 | bhí sé ciúin
 You suggested ‘Bhí ciúnas air’; we've kept ‘bhí sé ciúin’ to match ‘a bheith ciúin’ at 34 and ‘sách ciúin’ at 362.
@@ -650,11 +653,11 @@ You suggested ‘bhí’; we've kept ‘Dúirt’ to answer the same question at
 @373 | bhí sé go hálainn
 You suggested starting with ‘Chonaic’; we've left it out because this one isn't an answer in the English.
 
-@374 | Chonaic, cheap mé go raibh sé an-álainn #nr
-You suggested ‘go hálainn’; we've gone with ‘an-álainn’. Is that OK?
+@374 | Chonaic, cheap mé go raibh sé go hálainn
 
-@378 | Ní dheachaigh, ní raibh dóthain airgid agam do laethanta saoire #nr
-You suggested ‘i leith laethanta saoire’; we've gone with ‘do laethanta saoire’. Is that OK?
+
+@378 | Ní dheachaigh, ní raibh dóthain airgid agam i leith laethanta saoire
+
 
 @379 | chuaigh, bhí an t-ádh orm taisteal go dtí an Afraic
 You suggested ‘go raibh deis agam taisteal’; we've kept the wording you corrected for us in September.
@@ -731,14 +734,14 @@ You suggested ‘Ní bheadh’; we've kept ‘Níor chóir’ to answer the same
 @410 | bíonn siad fós ag troid le chéile
 
 
-@411 | ba mhaith linn bord a chur in áirithe do cheathrar anocht #nr
-You suggested ‘bord i leith ceathrar’ and ‘don oíche anocht’; we've gone with ‘do cheathrar anocht’. Is that OK?
+@411 | ba mhaith linn bord i leith ceathrar a chur in áirithe don oíche anocht
+
 
 @414 | an bhféadfadh muid buidéal fíona dheirg a fháil le do thoil?
 You suggested adding ‘buidéal de fhíon geal’; we've kept the red wine only because ours only needs to cover the English.
 
-@415 | Ní bheadh sé sin ina fhadhb dar liom #nr
-You suggested ‘Ní bheadh fadhb ar bith leis sin’; we've gone with ‘Ní bheadh sé sin ina fhadhb’. Is that OK?
+@415 | Ní bheadh fadhb ar bith leis sin, dar liom
+
 
 @416 | Is mian leo an bealach a threorú an bhliain seo chugainn
 You suggested ‘a bheith ina gceannródaithe san earnáil seo’; we've kept ‘an bealach a threorú’ because ours has to cover all of the English.
@@ -755,8 +758,8 @@ You suggested ‘a bheith ina gceannródaithe san earnáil seo’; we've kept �
 @420 | Níl sé riachtanach orthu a aois a iarraidh air
 
 
-@423 | an gcaithfidh siad ceist chomh soiléir sin a chur? #nr
-You suggested ‘ceist atá chomh ríiléir sin’; we've gone with ‘ceist chomh soiléir sin’. Is that OK?
+@423 | an gcaithfidh siad ceist atá chomh ríshoiléir sin a chur?
+
 
 @424 | Ní chaithfidh, tá siad ag cur am gach duine amú
 You suggested ‘Caithfidh’; we've kept ‘Ní chaithfidh’ because the English answers ‘no’.
@@ -818,8 +821,8 @@ You suggested ‘Ní thabharfaidh’; we've kept ‘Ní bheidh’ to answer ‘a
 @452 | Ní dúirt siad cad ba mhian leo a dhéanamh
 
 
-@454 | tháinig ár gcairde thart timpeall a sé a chlog #nr
-You suggested ‘thart ar a sé a chlog’; we've gone with ‘thart timpeall a sé a chlog’. Is that OK?
+@454 | tháinig ár gcairde anseo thart ar a sé a chlog
+
 
 @455 | bhí orainn imeacht mar bhí na páistí tuirseach
 
@@ -830,11 +833,11 @@ You suggested ‘Is cuid den fhadhb é’; we've kept ‘cuid den fhadhb ná’,
 @459 | Ní raibh sé os comhair an chomhartha ghoirm
 
 
-@460 | Is mian liom siopa a fháil in aice leis an óstán #nr
-You suggested ‘siopa atá gar don teach ósta a aimsiú’; we've gone with ‘siopa a fháil in aice leis an óstán’. Is that OK?
+@460 | Is mian liom siopa atá gar don teach ósta a fháil
+You suggested ‘a aimsiú’; we've used ‘a fháil’ because that is how learners say ‘to find’ all through, as at 195.
 
-@461 | siopa inar féidir liom cártaí poist a cheannach #nr
-You suggested ‘roinnt cártaí poist’; we've gone without ‘roinnt’. Is that OK?
+@461 | siopa inar féidir liom roinnt cártaí poist a cheannach
+
 
 @465 | an chéad uair eile fiafróidh mé di cad is ainm di
 You suggested ‘fiafróidh mé a hainm dí’; we've kept ‘cad is ainm di’ because ours has to cover all of the English.
@@ -851,14 +854,14 @@ You suggested ‘fiafróidh mé a hainm dí’; we've kept ‘cad is ainm di’ 
 @475 | Tá mórán cúiseanna ann le smaoineamh ar fhanacht
 You suggested ‘a lán’; we've kept ‘mórán’ because it's how we say ‘many’ elsewhere (103, 297), with ‘a lán’ kept for ‘a lot’ (109).
 
-@481 | is é an t-aon dóchas fíor atá fágtha againn #nr
-You suggested ‘an fíor-dhóchas amháin’; we've gone with ‘an t-aon dóchas fíor’. Is that OK?
+@481 | Is é an fíordhóchas amháin atá fágtha againn
+
 
 @482 | is é an t-aon dóchas fíor ná nach bhfuil siad dáiríre
 
 
-@483 | Níl an saol éasca ach níl sé ceaptha a bheith éasca #nr
-You suggested ‘níl sé amuigh air go bhfuil sé éasca’; we've gone with ‘níl sé ceaptha a bheith éasca’. Is that OK?
+@483 | Níl an saol éasca ach níl sé amuigh air go bhfuil sé éasca
+
 
 @484 | Tá sé ceaptha a bheith ina dhúshlán
 
@@ -866,17 +869,17 @@ You suggested ‘níl sé amuigh air go bhfuil sé éasca’; we've gone with �
 @485 | Ní chuirfeadh aon rud níos mó áthais orm ná éalú
 You suggested ‘Ní chuirfeadh aon rud áthas orm ach éalú’; we've kept the wording you corrected for us in September.
 
-@489 | mura ndéanann tú cupán de chaife láidir dom anois díreach #nr
-You suggested ‘aláithreach bonn’; we've gone with ‘anois díreach’ and taken the rest of your line. Is that OK?
+@489 | mura ndéanann tú cupán de chaife láidir dom láithreach bonn
 
-@490 | Ní bheidh muinín agam as aon duine go deo arís #nr
-You suggested starting with ‘Dá bharr sin’; we've gone without it. Is that OK?
+
+@490 | Dá bharr sin, ní bheidh muinín agam as aon duine go deo arís
+
 
 @491 | is breá liom an chaoi a ndéanann tú iarracht cabhrú linn
 You suggested ‘a n-iarrann tú’; we've kept ‘a ndéanann tú iarracht’ because ‘iarracht a dhéanamh’ is ‘try’ throughout (as at 541), as you suggested.
 
-@492 | cé acu de na háiteanna sin a cheapann tú is suimiúla? #nr
-You suggested ‘atá ina áit is siúmúla duit’; we've gone with ‘a cheapann tú is suimiúla’. Is that OK?
+@492 | cé acu de na háiteanna sin atá ina áit is suimiúla duit?
+
 
 @493 | cad é an chéad rud eile?
 You suggested ‘Cad a bheidh ag teacht tar éis seo?’; we've kept the wording you corrected for us in September.
@@ -884,20 +887,20 @@ You suggested ‘Cad a bheidh ag teacht tar éis seo?’; we've kept the wording
 @495 | nuair a bhíonn sé tábhachtach
 
 
-@496 | níl mé ag pleanáil cailleadh nuair a bhíonn sé fíorthábhachtach #nr
-You suggested ‘ag beartú go gcailleoidh mé’ and ‘fíor-thábhacht ag baint leis’; we've gone with ‘ag pleanáil cailleadh’ and ‘fíorthábhachtach’. Is that OK?
+@496 | Níl mé ag beartú go gcailleoidh mé nuair atá fíorthábhacht ag baint leis
+
 
 @497 | Is cosúil go gcaithfidh tú beagán codlata a fháil
 You suggested ‘Tá an chuma ort’; we've kept the wording you corrected for us in September.
 
-@498 | Tá sé ina sheasamh leis féin thall ansin laistigh den bhealach isteach #nr
-You suggested ‘ina aonar’ and ‘den tslí isteach’; we've gone with ‘leis féin’ and ‘den bhealach isteach’. Is that OK?
+@498 | Tá sé ina sheasamh thall ansin ina aonar laistigh den tslí isteach
+You suggested ‘thall’ on its own; we've kept ‘thall ansin’ because that is how learners already say ‘over there’.
 
 @500 | Cén fáth nach mian leat suí idir an dá chailín?
 
 
-@501 | dá bhféadfainn muinín a bheith agam asaibh imirt le chéile gan argóint #nr
-You suggested ‘Mura mbeadh ann ach go bhféadfainn’; we've gone with the shorter ‘dá bhféadfainn’. Is that OK?
+@501 | Mura mbeadh ann ach go bhféadfainn muinín a bheith as sibh a bheith in ann imirt le chéile gan argóint
+
 
 @502 | Dóbair di dul ar strae mar chas sí ar chlé seachas ar dheis
 You suggested ‘in áit ar dheis’; we've kept ‘seachas’ to match 523, where you gave us ‘seachas’ later.
@@ -959,8 +962,8 @@ This is the wording you sent us later.
 @541 | is smaoineamh maith é iarracht a dhéanamh análú go mall
 This is the wording you sent us later.
 
-@542 | aon uair a bhíonn fearg ort #nr
-You suggested ‘gach uair a mhothaíonn tú feargach’; we've gone with ‘aon uair a bhíonn fearg ort’. Is that OK?
+@542 | gach uair a mhothaíonn tú feargach
+
 
 @547 | mar go raibh sé ag súgradh sa láib
 This is the wording you sent us later.
@@ -1055,8 +1058,8 @@ This is the wording you sent us later.
 @600 | Thiomáinfinn dá n-inseofá dom cé chomh tuirseach is a bhí tú
 This is the wording you sent us later.
 
-@601 | bhí muid ag caint faoin gcaoi ar thosaigh an rud ar fad #nr
-You suggested ‘faoi conas a thosaigh’; we've gone with ‘faoin gcaoi ar thosaigh’. Is that OK?
+@601 | bhí muid ag caint faoi conas a thosaigh an rud ar fad
+
 
 @606 | dá mbeadh a fhios agam an uair sin cad atá ar eolas agam faoi anois d'fhanfainn anseo
 
@@ -1082,8 +1085,8 @@ This is the wording you sent us later.
 @613 | is dócha go mbeadh muid tar éis teach a cheannach ansin
 
 
-@614 | Tá sé in aice leis an áit a bhfuil do theaghlach ina chónaí #nr
-You suggested ‘in aice le cá bhfuil’; we've taken your ‘do theaghlach’ and gone with ‘in aice leis an áit a bhfuil’. Is that OK?
+@614 | Tá sé in aice le cá bhfuil do chlann ina gcónaí
+
 
 @617 | cheap tú gur bhotún a bhí ann
 This is the wording you sent us later.

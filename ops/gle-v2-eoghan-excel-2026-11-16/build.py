@@ -107,7 +107,7 @@ HAND.update({
  613:("is dócha go mbeadh muid tar éis teach a cheannach ansin","Your line. You noted later that 'is dócha' is 'I suppose': is it all right for 'probably' here, or would you say 'b'fhéidir'?"),
 })
 # Rows that now carry his line with only a slip of his put right (Kai 16 Nov: 220 spelling and 394 fixed quietly): blank.
-QUIET={125,220,248,341,394,328,104}   # 328: his line differs from ours only by accents; 104: only by his slips ('caithfinid', 'ata') and 'muid'
+QUIET={125,220,248,341,394,328,104,69,147,148,423,454,489,492}   # 69…492 (cs #343·AI): his line, with his spelling slips put right   # 328: his line differs from ours only by accents; 104: only by his slips ('caithfinid', 'ata') and 'muid'
 def tidy(t):
     t=re.sub(r"Kai decided to keep '([Tt])á … uaim'","We use 'tá … uaim'",t)
     t=re.sub(r'\bseeds\b','sentences',re.sub(r'\bseed\b','sentence',t))
@@ -152,6 +152,7 @@ KEEPQ={613}   # family-only, but the comment asks him something separate ('is d�
 HAND[405]=("ar chóir dúinn fiafraí de an gcaithfidh muid áirithint a dhéanamh?","We wrote 'fiafraí de' without 'a' before it. Is this OK?")
 HAND[568]=("Tá mé ag súil le feabhas a fheiceáil an chéad uair eile a bhuailfidh muid le chéile","We kept the future 'a bhuailfidh' for 'next time we meet', as in your earlier version of this sentence. Is this OK?")
 HAND[406]=("Níor chóir, tá mé cinnte go mbeidh sé ceart go leor","We left out 'de' after 'cinnte', as you do at 340. Is this OK?")
+HAND.update({n:(live[n]['target_text'],'(cs #343·AI: his line with one course-wide form kept; column C is in comments-kai-style.txt)') for n in (36,77,178,228,247,304,460,498)})
 once_at=None; fam_blank=[]
 rows=[];stale=[];counts={'blank':0,'hand':0,'planned':0,'later':0,'option':0,'base':0}
 for r in his:
