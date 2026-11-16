@@ -29,6 +29,7 @@
 const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
 const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
 const spokenWords = require('./clip-spoken-words.cjs');
+const legoReorder = require('./lego-reorder.cjs');
 
 const MAX_OPS = 2000;
 
@@ -95,6 +96,11 @@ const OP_HELP = {
                      note: 'structural: on a beta/released course an apply needs "tom_go". The undo is lego.delete.' },
   'lego.delete':   { key: 'lego_id (S0001L02) or id (uuid)', cascade_phrases: 'true to delete its BUILD/USE/component rows with it; otherwise refused while any remain',
                      note: 'structural: on a beta/released course an apply needs "tom_go". Clips are never deleted. The undo re-inserts the LEGO and its phrases whole.' },
+  'lego.reorder':  { key: 'seed_number', order: 'every LEGO of the seed, each named once, in the NEW teaching order: lego_ids (S0012L03) or uuids',
+                     moves: 'lego_index is the teaching order and lego_id is generated from it, so a reorder RELABELS the seed\'s LEGOs. Moved with them, in one transaction: the seed\'s phrases (lego_index, lego_id, and the label inside the text id …:S0012L01B01), their course_qa_flags (phrase_id, lego_id), every decomposition tile and connected_lego_ids entry anywhere in the course, course_audio.lego_id, lego_introductions, course_lego_positions, course_audio_usage. uuids, texts and audio links are untouched.',
+                     never: 'learner state (lego_progress, learner_lego_metrics, learner_l1_state, course_enrollments cursors, classes / class_sessions cursors): an apply is REFUSED (LEARNER_STATE) while any row names a moved LEGO; the dry run counts them. course_round_signoffs are counted, not carried (a sign-off is a verdict on the round as it was).',
+                     refusals: 'ORDER_MISMATCH (order is not exactly the seed\'s LEGOs), REORDER_NOOP (order is the current order), NO_SUCH_SEED, TOO_MANY_LEGOS (an index above 49 leaves no room to park), LEARNER_STATE (apply only)',
+                     note: 'structural: on a beta/released course an apply needs "tom_go" (or kai_go). The undo is the reverse lego.reorder, by uuid.' },
   'audio.link':    { key: 'target: seed|lego|phrase + seed_number|lego_id|phrase_id', slot: SLOTS,
                      audio_id: 'course_audio id, or null to unlink',
                      note: 'refused unless the clip speaks the row\'s words (normalize_text); allow_text_mismatch:true overrides. presentation is exempt.' },
@@ -205,6 +211,15 @@ function planOp(op, index, courseCode) {
         if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text`, 'NON_EXAMPLE_TEXT');
       }
       return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode, ...(copyOf ? { copyOf } : {}) };
+    }
+    case 'lego.reorder': {
+      const n = Number(op.seed_number);
+      if (!Number.isInteger(n) || n < 1) throw new EditOpError(index, 'lego.reorder needs seed_number');
+      if (!Array.isArray(op.order) || op.order.length < 2) throw new EditOpError(index, 'lego.reorder needs "order": the seed\'s LEGOs (lego_id or uuid) in the new order', 'ORDER_MISMATCH');
+      const order = op.order.map(String);
+      const bad = order.filter(x => !UUID_RE.test(x) && !LEGO_ID_RE.test(x));
+      if (bad.length) throw new EditOpError(index, `lego.reorder order entries must be lego_ids (S0012L03) or uuids; not: ${bad.join(', ')}`, 'ORDER_MISMATCH');
+      return { ...base, table: 'course_legos', kind: 'reorder', structural: true, where: { course_code: courseCode, seed_number: n }, order };
     }
     case 'audio.link': {
       const slot = op.slot;
@@ -440,6 +455,17 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
         results.push({ index: plan.index, op: plan.name, key: { audio_id: clip.id }, clip_text: clip.text, audio_revision: clip.audio_revision, before, after, changed });
         continue;
       }
+      if (plan.kind === 'reorder') {
+        const r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
+          fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        touched.legos = true;
+        touched.seed_numbers.add(plan.where.seed_number);
+        for (const id of r.lego_ids) touched.lego_ids.add(id);
+        for (const id of r.phrase_ids) touched.phrase_ids.add(id);
+        undo.unshift(r.undo);
+        results.push({ index: plan.index, op: plan.name, key: plan.where, ...r.result, changed: true });
+        continue;
+      }
       const t = await types(plan.table);
       let before = null, after = null, cascadeUndo = null;
 
@@ -609,7 +635,7 @@ const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs');
 module.exports = { planOp, planOps, runPlans, undoFor, OP_HELP, UPDATABLE, EditOpError, MAX_OPS };
 
 /**
- * The live-course gate for STRUCTURAL ops (lego.insert, lego.delete). They move the
+ * The live-course gate for STRUCTURAL ops (lego.insert, lego.delete, lego.reorder). They move the
  * rounds a learner walks, so on a beta/released course an APPLY needs Tom's words
  * ("tom_go"), exactly as the v4 gap-fill door asks. A preview never needs it.
  * Returns null when fine, else {status, error, code}. Pure.
@@ -618,7 +644,7 @@ function structuralGate({ plans, courseStatus, apply, tomGo, kaiGo }) {
   if (!apply || !plans.some(p => p.structural)) return null;
   if (['beta', 'released'].includes(courseStatus) && !String(tomGo || '').trim() && !String(kaiGo || '').trim()) {
     return { status: 409, code: 'TOM_GO_REQUIRED',
-      error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts/deletes a LEGO; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
+      error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts, deletes or reorders LEGOs; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
   }
   return null;
 }
