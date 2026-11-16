@@ -28,6 +28,7 @@
 
 const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
 const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
+const spokenWords = require('./clip-spoken-words.cjs');
 
 const MAX_OPS = 2000;
 
@@ -98,6 +99,7 @@ const OP_HELP = {
                      audio_id: 'course_audio id, or null to unlink',
                      note: 'refused unless the clip speaks the row\'s words (normalize_text); allow_text_mismatch:true overrides. presentation is exempt.' },
   'audio.update':  { key: 'audio_id', set: UPDATABLE.course_audio },
+  'audio.spoken':  { key: 'audio_id', spoken_text: 'the words the clip SAYS where they differ from its text (or null to remove)', basis: 'the evidence', note: 'clip_spoken_text, pinned to the clip\'s current audio_revision; every reuse path then refuses the clip for its text (cs #160·AI)' },
   'gender.update': { key: 'id', set: UPDATABLE.course_gender_expansions },
   'gender.insert': { row: 'course_gender_expansions row (id optional)' },
   'gender.delete': { key: 'id' },
@@ -230,6 +232,17 @@ function planOp(op, index, courseCode) {
     case 'audio.update': {
       if (!UUID_RE.test(String(op.audio_id || ''))) throw new EditOpError(index, 'audio.update needs audio_id (uuid)');
       return { ...base, table: 'course_audio', kind: 'update', where: { course_code: courseCode, id: op.audio_id }, set: needSet('course_audio') };
+    }
+    case 'audio.spoken': {
+      // The words a clip SAYS where they are not its label (clip_spoken_text; cs #160·AI, shared/clip-spoken-words.cjs).
+      // spoken_text null removes the verdict. The verdict is pinned to the clip's CURRENT audio_revision, read in the
+      // transaction; a later re-record makes it stale and every reuse path ignores it again.
+      if (!UUID_RE.test(String(op.audio_id || ''))) throw new EditOpError(index, 'audio.spoken needs audio_id (uuid)');
+      const spoken = op.spoken_text === null ? null : (typeof op.spoken_text === 'string' && op.spoken_text.trim() ? op.spoken_text : undefined);
+      if (spoken === undefined) throw new EditOpError(index, 'audio.spoken needs spoken_text (the words the clip says), or null to remove the verdict');
+      if (spoken !== null && !(typeof op.basis === 'string' && op.basis.trim())) throw new EditOpError(index, 'audio.spoken needs basis: the evidence for the spoken words');
+      return { ...base, table: 'clip_spoken_text', kind: 'spoken', where: { course_code: courseCode, id: op.audio_id },
+        audioId: op.audio_id, spokenText: spoken, basis: spoken === null ? null : op.basis };
     }
     case 'gender.update': {
       if (!UUID_RE.test(String(op.id || ''))) throw new EditOpError(index, 'gender.update needs id (uuid)');
@@ -398,6 +411,35 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
     const types = async (t) => { if (!typesCache.has(t)) typesCache.set(t, await columnTypes(client, t)); return typesCache.get(t); };
 
     for (const plan of plans) {
+      if (plan.kind === 'spoken') {
+        // audio.spoken: the clip must be this course's; expect asserts against the CLIP row (e.g. {text, audio_revision}).
+        const clip = (await selectRow(client, 'course_audio', plan.where, { lock: true }))[0];
+        if (!clip) throw new EditOpError(plan.index, `audio.spoken: no course_audio row ${plan.audioId} in ${courseCode}`, 'NOT_FOUND');
+        if (plan.expect) {
+          const drift = Object.entries(plan.expect).filter(([c, v]) => !same(clip[c], v));
+          if (drift.length) throw new EditOpError(plan.index, `before-state drift on ${drift.map(([c, v]) => `${c} (expected ${JSON.stringify(v)}, found ${JSON.stringify(clip[c])})`).join('; ')}`, 'DRIFT');
+        }
+        const before = (await selectRow(client, 'clip_spoken_text', { audio_id: clip.id }, { lock: true }))[0] || null;
+        let after = null;
+        if (plan.spokenText === null) {
+          await client.query(`DELETE FROM clip_spoken_text WHERE audio_id = $1`, [clip.id]);
+        } else {
+          const { rows } = await client.query(
+            `INSERT INTO clip_spoken_text (audio_id, spoken_text, basis, audio_revision, checked_at) VALUES ($1, $2, $3, $4, now())
+             ON CONFLICT (audio_id) DO UPDATE SET spoken_text = EXCLUDED.spoken_text, basis = EXCLUDED.basis,
+               audio_revision = EXCLUDED.audio_revision, checked_at = EXCLUDED.checked_at RETURNING *`,
+            [clip.id, plan.spokenText, plan.basis, clip.audio_revision ?? 1]);
+          after = rows[0];
+        }
+        touched.audio_ids.add(clip.id);
+        const changed = !(before && after && before.spoken_text === after.spoken_text && before.basis === after.basis && Number(before.audio_revision) === Number(after.audio_revision)) && !(!before && !after);
+        const u = !changed ? null : before
+          ? { op: 'audio.spoken', audio_id: clip.id, spoken_text: before.spoken_text, basis: before.basis }
+          : { op: 'audio.spoken', audio_id: clip.id, spoken_text: null };
+        if (u) undo.unshift(u);
+        results.push({ index: plan.index, op: plan.name, key: { audio_id: clip.id }, clip_text: clip.text, audio_revision: clip.audio_revision, before, after, changed });
+        continue;
+      }
       const t = await types(plan.table);
       let before = null, after = null, cascadeUndo = null;
 
@@ -539,6 +581,16 @@ async function checkLink(client, plan, before, courseCode) {
     throw new EditOpError(plan.index,
       `audio.link: clip ${audioId} says ${JSON.stringify(rows[0].text)} but the ${slot} text is ${JSON.stringify(rowText)} (allow_text_mismatch:true to link anyway)`,
       'TEXT_MISMATCH');
+  }
+  // The words the clip SAYS (cs #160·AI, shared/clip-spoken-words.cjs): a clip filed under this text that says other words
+  // (an in-place female-form re-record) is refused too, unless allow_text_mismatch.
+  const { rows: sp } = await client.query(
+    `SELECT s.spoken_text FROM clip_spoken_text s JOIN course_audio a ON a.id = s.audio_id
+      WHERE s.audio_id = $1 AND s.audio_revision = a.audio_revision`, [audioId]);
+  if (sp.length && spokenWords.saysOtherWords({ spoken_text: sp[0].spoken_text }, rowText)) {
+    throw new EditOpError(plan.index,
+      `audio.link: clip ${audioId} is filed as ${JSON.stringify(rows[0].text)} but says ${JSON.stringify(sp[0].spoken_text)} (clip_spoken_text); the ${slot} text is ${JSON.stringify(rowText)} (allow_text_mismatch:true to link anyway)`,
+      'SPOKEN_WORDS_MISMATCH');
   }
 }
 

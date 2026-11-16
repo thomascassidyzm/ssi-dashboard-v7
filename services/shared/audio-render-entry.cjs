@@ -28,6 +28,7 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
 const { approverOf } = require('./human-take-guard.cjs')
 const adoptException = require('./adopt-exception.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
@@ -463,7 +464,12 @@ async function rerecord(req, deps) {
   if (req.voiceId && req.voiceId !== row.voice_id) throw new RenderRequestError(`a re-record keeps the clip's own voice (${row.voice_id}); voiceId ${req.voiceId} differs`, 409, 'VOICE_MISMATCH')
   // A line on the course's pronunciation-override list (shared/pronunciation-overrides.cjs) is re-recorded in its spoken
   // form: sent as the words, the door cannot answer with another (misread) clip of the same characters in its place.
-  const said = req.spokenText || pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || req.text
+  const overrideSpoken = pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || null
+  // DIFFERENT WORDS, SAME LABEL (cs #160·AI): a re-record told to say other words than its stored text (the female-form
+  // re-records) leaves a clip_spoken_text verdict, so no reuse path ever answers the stored text with it. A pronunciation
+  // override's respelling is the SAME words and leaves none (shared/clip-spoken-words.cjs spokenVerdictFor).
+  const spokenVerdict = spokenWords.spokenVerdictFor({ text: req.text, explicitSpoken: req.spokenText, overrideSpoken })
+  const said = req.spokenText || overrideSpoken || req.text
   if (said !== req.text && !req.spokenText) req.spokenText = said
   // A RE-RECORD IS IDEMPOTENT (job #749). The door below is told to EXCLUDE the row's current clip (`replacing`), so a
   // repeat of a re-record that already landed can never be answered from the library: it pays for a fresh take every time.
@@ -490,11 +496,11 @@ async function rerecord(req, deps) {
   const spoke = await deps.speak(said, r.provider, cfg, 1)
   // Timings echo the words SENT: a spoken-form token goes back to the stored character (null if it cannot).
   const out = said === req.text ? spoke : { ...spoke, wordTimings: pronunciation.restoreWordTimings(spoke.wordTimings || null, req.courseCode, row.language) }
-  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
+  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said, ...(spokenVerdict ? { spokenVerdict: spokenVerdict.spoken_text } : {}) }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
-    ? await deps.replace({ ...ident, replaceAudioId: row.id, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
-    : await deps.replace({ ...ident, replaceAudioId: row.id, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+    ? await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
+    : await deps.replace({ ...ident, replaceAudioId: row.id, spokenVerdict, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
 }
 

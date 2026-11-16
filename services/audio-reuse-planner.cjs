@@ -666,6 +666,10 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
       rowsByText.get(k).push(row)
     }
   }
+  // A clip that SAYS other words than its text (clip_spoken_text, cs #160·AI) is never a candidate for that text.
+  const spoken = require('./shared/clip-spoken-words.cjs')
+  const verdicts = await spoken.readVerdicts(supabase, [...rowsByText.values()].flat().map(r => r.id))
+  for (const [k, rows] of rowsByText) rowsByText.set(k, spoken.attachVerdicts(rows, verdicts).filter(r => !spoken.saysOtherWords(r, r.text)))
 
   const out = new Map()
   for (const clip of list) {

@@ -24,6 +24,7 @@ const { triggerApprovalFor, approverOf } = require('./human-take-guard.cjs')
 const resolveVoiceLib = require('./resolve-voice.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')
 const { slotVoiceException } = require('./slot-voice-exceptions.cjs')
+const spokenWords = require('./clip-spoken-words.cjs')
 
 /**
  * VOICE, not just words (Tom, 2026-10-31; 9 Oct: Alessandra's female clips linked into Lorenzo's male Italian slots, ~3,400 slots).
@@ -104,7 +105,7 @@ async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheck
     }
   }
 
-  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin, role').eq('id', link.audioId).maybeSingle()
+  const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id, language, origin, role, audio_revision').eq('id', link.audioId).maybeSingle()
   if (clipErr) return { ...base, ok: false, code: 'READ_FAILED', error: clipErr.message }
   if (!clip) return { ...base, ok: false, code: 'NO_CLIP', error: `no course_audio row ${link.audioId}` }
   // POD-ONLY (job #628, shared/pod-audio.cjs): a Pod Drill piece or Talk Bollocks line is never a seed, LEGO or phrase slot's clip.
@@ -112,6 +113,14 @@ async function linkOne(db, courseCode, link, { dryRun, checkVoice = defaultCheck
   if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text
+    // The words the clip SAYS, not only its label (cs #160·AI): an in-place female-form re-record is filed under the male
+    // text, so its stored text passes the check below while the learner would hear "sicura" for "sicuro". Refused.
+    let verdicts
+    try { verdicts = await spokenWords.readVerdicts(db, [clip.id]) } catch (e) { return { ...base, ok: false, code: 'READ_FAILED', error: e.message } }
+    const said = spokenWords.attachVerdicts([clip], verdicts)[0]
+    if (spokenWords.saysOtherWords(said, want)) {
+      return { ...base, ok: false, code: 'SPOKEN_WORDS_MISMATCH', error: `clip ${clip.id} is filed as "${clip.text}" but says "${said.spoken_text}" (clip_spoken_text); slot says "${want}"` }
+    }
     // A pod line's words and its clip's words are compared with the pod pause cue folded (job #813): "A. … B." is the
     // recording of "A. B.", so moving a line onto the one shared take of its words is never a TEXT_MISMATCH.
     const sameWords = slot.kind === 'pod_sentence'
