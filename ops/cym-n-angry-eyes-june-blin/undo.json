@@ -491,5 +491,31 @@
     }
    }
   ]
+ },
+ "intro_want_move_218": {
+  "event_id": "dbaa5985-00f8-4868-beea-771eedcc6f14",
+  "note": "cs #218: intro booth want moved 739866d3 -> e6e40d3f (human_aran_eng booth, requeue_for human_aran_eng); undo via POST /api/production/cym_n_for_eng/edit-batch apply:true",
+  "undo_ops": [
+   {
+    "op": "audio.update",
+    "audio_id": "739866d3-c0fe-486d-ad64-d7ffc43df7bc",
+    "set": {
+     "rerecord_wanted": {
+      "reason": "angry eyes LEGO intro (S0272L05): live clip is a splice whose Welsh says 'del'; Kai 16 Nov wants Aran's real take on his booth",
+      "voice_id": "human_aran_eng",
+      "requested_at": "2026-11-16",
+      "requested_by": "kai (cs #207·AI)",
+      "voice_gender": "m"
+     }
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "e6e40d3f-efd1-49f6-b4fc-6a4644d4b161",
+    "set": {
+     "rerecord_wanted": null
+    }
+   }
+  ]
  }
 }
