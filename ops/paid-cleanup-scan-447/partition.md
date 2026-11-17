@@ -28,3 +28,6 @@ Each course is in exactly one slice.
 The orchestrator itself (#447·AI) runs on kai-gmail, model fable.
 
 CORRECTION 17 Nov 13:50Z: only THREE workers are running (spa #453·AI, por #454·AI, fra #455·AI), all on kai-gmail, opus. The surface acknowledged ita/deu/ara/jpn and then refused them; an earlier note here called them running. Eleven slices (41 courses) wait on the room raising the child ceiling.
+
+17 Nov, later: fra slice DONE (#455·AI, kai-gmail, opus): report d/2119e6af, files on branch cs/455-cleanup-scan-fra (d51c827c1) under ops/paid-cleanup-scan-447/reports/. fra_ca 137 new real items + the 96-phrase formal block (~14,300 chars); fra_for_eng 193 new real items; 487 in-basket duplicate rows.
+A retry of the ita slice after fra finished was acknowledged (#464·AI, void) and refused again: the three-child ceiling is a TOTAL, not a live count. No further retries; eleven slices wait on the room.
