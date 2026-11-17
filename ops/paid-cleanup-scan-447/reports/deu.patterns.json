@@ -1,0 +1,17 @@
+{
+ "_readme": "deu slice (#468) additions, same shape as patterns.json. Each kp is pre-fix text from ops/deu-435 or a still-live deu_for_eng row. Target-side 'deu' regexes run on deu_for_eng, deu_at_for_eng and deu_ch_for_eng (dialect courses: they rarely match standard-German forms, which is expected). Two-sided rules (want|möchte, könnte|konnte K45, yet|noch/schon K46, sir/madam K32, basket-drills-its-LEGO P17) cannot be one regex; they were run as a separate read of the dumps: reports/deu-checks/*.py.",
+ "deu": [
+  {"id": "fand_dass_belief", "side": "target", "re": "\\b(fand|fanden|fandest),? dass\\b", "kp": "sie fand, dass es nicht genug Geld war", "src": "#435 de-wrong-verb (S0376L02U06 etc. ich fand, dass → ich dachte, dass); live sibling S0378L02U05"},
+  {"id": "dort_untaught", "side": "target", "re": "\\bdort\\b", "kp": "deine Familie war auch dort", "src": "'there' is taught as da (S0157, S0456); dort is never taught; live S0614L03U07"},
+  {"id": "fernsehen_doubled", "side": "target", "re": "\\bFernsehen\\b.*\\bferngesehen\\b", "kp": "Ich habe gestern Abend zu Hause mit meinen Freunden das Fernsehen ferngesehen", "src": "#435 de-grammar S0220L03U01 (pre-fix)"},
+  {"id": "klingt_wie", "side": "target", "re": "\\bklingt wie\\b", "kp": "das klingt wie eine Herausforderung", "src": "#435 de-lego-form S0497L01U03 (sounds like = klingt nach, S0272L01)"},
+  {"id": "moegen_wollten", "side": "target", "re": "\\bmögen wollt", "kp": "ich dachte, dass die Leute sie mögen wollten", "src": "live S0419L01U03 (would like them = mögen würden)"},
+  {"id": "beide_es", "side": "target", "re": "\\bbeide es\\b", "kp": "sie wollen beide es machen", "src": "#435 de-word-order S0516L01U07 (pre-fix)"},
+  {"id": "bewege_no_reflexive", "side": "target", "re": "\\b(ich|du|er|sie|wir) (bewege|bewegst|bewegt|bewegen)\\b", "kp": "wenn ich bewege", "src": "#435 de-grammar S0513L03B03 (pre-fix)"}
+ ],
+ "known:eng": [
+  {"id": "feel_myself_calque", "side": "known", "re": "\\bfeels? (myself|yourself|himself|herself|ourselves|themselves)\\b|\\bfeel better myself\\b", "kp": "I feel myself much better since I started to learn more", "src": "#435 en-calque S0185L01U11; live S0056L02U13 (#435 fix never landed)"},
+  {"id": "already_been_ing", "side": "known", "re": "\\balready been \\w+ing\\b", "kp": "How long have you already been learning German, and is it useful?", "src": "#435 en-calque S0033L02U01 (fix never landed)"},
+  {"id": "want_ing", "side": "known", "re": "\\bwants? (learning|speaking|going|doing|trying)\\b", "kp": "I want learning German", "src": "#435 en-calque S0064L01U07 (fix never landed)"}
+ ]
+}
