@@ -1,0 +1,510 @@
+{
+"ops": [
+{
+"op": "lego.update",
+"id": "74f18196-85a2-4d5f-a6bc-86a54e455418",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "74f18196-85a2-4d5f-a6bc-86a54e455418",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0453L03U07",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0453L03U07",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0453L03U07",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0276L01U01",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0276L01U01",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0276L01U01",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0165L02U01",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0165L02U01",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0165L02U01",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "8dbbb171-6b2e-4a79-bcd0-d1a6d72817b2",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "216b11f8-81f0-4ecc-9803-a88b57d2a0bd",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0130L02U01",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0130L02U01",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0130L02U01",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "63884478-6e03-4620-abfc-b90d14549716",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U07",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U07",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U07",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "55d2d3c9-8636-4ee4-b15e-ad4113d4152f",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U01",
+"set": {
+"target2_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U01",
+"set": {
+"target1_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U01",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01C01",
+"set": {
+"known_audio_id": null
+}
+},
+{
+"op": "lego.update",
+"id": "f2a11986-b9d4-43f3-be28-b9ee967638c8",
+"set": {
+"presentation_audio_id": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0264L01B01",
+"set": {
+"target_text": "Ein alter Mann"
+}
+},
+{
+"op": "lego.update",
+"id": "74f18196-85a2-4d5f-a6bc-86a54e455418",
+"set": {
+"is_new": false,
+"known_text": "I saw an old man",
+"known_audio_id": "49734c00-7a52-43dd-a8cd-c40e6a30acbd",
+"presentation_audio_id": "008c99e1-b80e-492d-9ce2-73f00ec91e0e"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0453L03U07"
+},
+{
+"op": "seed.update",
+"seed_number": 453,
+"set": {
+"known_text": "did they say who they saw last night?",
+"known_audio_id": "82ef213a-5b56-457d-90b1-f949f32676e6"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0276L01U01"
+},
+{
+"op": "seed.update",
+"seed_number": 500,
+"set": {
+"known_text": "Why don't you want to sit between the two girls?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 269,
+"set": {
+"known_text": "Why don't you want to wait for your father?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 145,
+"set": {
+"known_text": "Why are you not happy any more?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 113,
+"set": {
+"known_text": "Why can't I remember what you said?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 67,
+"set": {
+"known_text": "Why do you want to stop?"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 21,
+"set": {
+"known_text": "Why are you learning her name?"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0165L02U01"
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0165L02B01",
+"set": {
+"known_text": "If it is true",
+"known_audio_id": "db0425f0-6107-4b3b-a32c-706221a55df4"
+}
+},
+{
+"op": "lego.update",
+"id": "8dbbb171-6b2e-4a79-bcd0-d1a6d72817b2",
+"set": {
+"known_text": "if it is true",
+"known_audio_id": "db0425f0-6107-4b3b-a32c-706221a55df4",
+"presentation_audio_id": "84bfc521-d98c-44b9-b645-99001cb3fbee"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0165L01B01",
+"set": {
+"known_text": "But I am not sure",
+"known_audio_id": "0dc9ef8f-4d45-42a8-8baa-b5029865777b"
+}
+},
+{
+"op": "lego.update",
+"id": "216b11f8-81f0-4ecc-9803-a88b57d2a0bd",
+"set": {
+"known_text": "but I am not sure",
+"known_audio_id": "0dc9ef8f-4d45-42a8-8baa-b5029865777b",
+"presentation_audio_id": "1073f602-3638-43d6-b002-06aabc9a7424"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0130L02U01"
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0130L02B01",
+"set": {
+"known_text": "Because he is my friend",
+"known_audio_id": "c8ad07be-258f-4ea1-8522-526ccb968416"
+}
+},
+{
+"op": "lego.update",
+"id": "63884478-6e03-4620-abfc-b90d14549716",
+"set": {
+"known_text": "because he is my friend",
+"known_audio_id": "c8ad07be-258f-4ea1-8522-526ccb968416",
+"presentation_audio_id": "a317a2c8-5345-4085-9b57-95dddae0aafd"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0301L01U07"
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U06",
+"set": {
+"known_text": "he has said that he is nearly ready",
+"known_audio_id": "aaade4d3-0364-427f-8a8a-ee0ecf77bd72"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U05",
+"set": {
+"known_text": "he has said that he does not want to go",
+"known_audio_id": "982634b4-def2-4cd9-9d13-15308679e877"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U04",
+"set": {
+"known_text": "he has said that he wants to help",
+"known_audio_id": "4342ac34-5453-44bb-96bf-d88732ed0ddf"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U03",
+"set": {
+"known_text": "he has said that he wants to go",
+"known_audio_id": "16f2376f-46ef-425f-ac5e-342d4e3c97db"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U02",
+"set": {
+"known_text": "he has said that he is not ready",
+"known_audio_id": "19bf905d-e1f1-41e8-b7fb-9e5c7e247620"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01U01",
+"set": {
+"known_text": "he has said that he wants to speak German",
+"known_audio_id": "67425f61-a3e7-4e47-8d78-bbc9d7f9f396"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01B03",
+"set": {
+"known_text": "he has said that he does not know",
+"known_audio_id": "72ac52de-9a78-4d35-9e81-da45bd9edc15"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01B02",
+"set": {
+"known_text": "he has said that he wants",
+"known_audio_id": "b1c12c62-d598-46fe-bd88-e0e9cf8b7719"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01B01",
+"set": {
+"known_text": "he has said that",
+"known_audio_id": "fd12ca39-705a-4d77-bcfb-fa43a5298df7"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0301L01C02",
+"set": {
+"known_text": "has said that",
+"known_audio_id": "86a4b87c-a03e-43a8-b022-73c2751faf6c"
+}
+},
+{
+"op": "lego.update",
+"id": "55d2d3c9-8636-4ee4-b15e-ad4113d4152f",
+"set": {
+"known_text": "he has said that",
+"components": [
+{
+"known": "he",
+"target": "er"
+},
+{
+"known": "has said that",
+"target": "hat gesagt"
+}
+],
+"known_audio_id": "fd12ca39-705a-4d77-bcfb-fa43a5298df7",
+"presentation_audio_id": "9f6b8c87-3414-4412-91f8-5c75ae675264"
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "deu_for_eng:S0158L01U01"
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U08",
+"set": {
+"known_text": "Being nervous is not good so let us talk tomorrow morning",
+"known_audio_id": "527c8b9a-eef3-45e3-9efa-b1de9dbd210a"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U06",
+"set": {
+"known_text": "I think something is not good so let us talk and make it better",
+"known_audio_id": "37732ec8-a933-4968-a9b1-b72278d8b25e"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U05",
+"set": {
+"known_text": "There are some things we need to talk about so let us talk soon",
+"known_audio_id": "b25cfe21-3e5d-494c-b965-a756df767ff1"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01U03",
+"set": {
+"known_text": "If you have time later let us talk about the new work",
+"known_audio_id": "6a2f7b4b-df80-4553-8c0a-d1b03ba23cc7"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01B04",
+"set": {
+"known_text": "Let us talk tomorrow",
+"known_audio_id": "ebfb4154-69ea-4ab0-ad4c-c7b2a2e20d1d"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01B02",
+"set": {
+"known_text": "Let us talk later",
+"known_audio_id": "704caa4e-e552-49e6-88b6-9a676899e239"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01B01",
+"set": {
+"known_text": "Let us talk",
+"known_audio_id": "10834000-4059-43a8-b8a3-302f9543ece5"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "deu_for_eng:S0158L01C01",
+"set": {
+"known_text": "Let us",
+"known_audio_id": "e888c707-cce2-41df-9e73-a20785cfee60"
+}
+},
+{
+"op": "lego.update",
+"id": "f2a11986-b9d4-43f3-be28-b9ee967638c8",
+"set": {
+"known_text": "let us talk",
+"components": [
+{
+"known": "let us",
+"target": "lass uns"
+},
+{
+"known": "talk",
+"target": "reden"
+}
+],
+"known_audio_id": "10834000-4059-43a8-b8a3-302f9543ece5",
+"presentation_audio_id": "ca94f42b-ded7-4340-b23e-17bb6d42eb9c"
+}
+}
+]
+}
