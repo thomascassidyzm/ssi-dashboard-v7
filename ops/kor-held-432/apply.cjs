@@ -247,10 +247,20 @@ function units(db, p, clip, withAudio) {
       if (a.known_text === b.known_text && !c.intro && b.presentation_audio_id) ops.push(...link('lego', 'lego_id', id, 'presentation', b.presentation_audio_id, true));
       if (c.introClip) ops.push(...link('lego', 'lego_id', id, 'presentation', c.introClip));
     }
+    // a LEGO switched to new (is_new) must carry its practice in the SAME transaction, or DEBUT_WITHOUT_PRACTICE refuses it (S0189L01)
+    if (!SKIP.has(`lego ${id}`)) for (const r of p.phr.filter((r) => r.op === 'insert' && r.lego === id && !insertedPhrases.has(r.id))) { ops.push({ op: 'phrase.insert', row: phraseRow(r) }); insertedPhrases.add(r.id); }
     U.push({ tag: `lego ${id}`, seed: b.seed_number, ops });
   }
   // phrases
+  // resume after a partial apply: an insert already live (LIVE dump) is never sent again; one whose LEGO unit was already
+  // committed rides with that LEGO's first phrase change, so the debut never loses its practice mid-way
+  for (const r of p.phr) if (r.op === 'insert' && LIVE_IDS.has(r.id)) insertedPhrases.add(r.id);
+  const pending = (lego) => { const o = []; for (const r of p.phr.filter((r) => r.op === 'insert' && r.lego === lego && !insertedPhrases.has(r.id))) { o.push({ op: 'phrase.insert', row: phraseRow(r) }); insertedPhrases.add(r.id); } return o; };
   for (const r of p.phr) {
+    if ((r.op === 'delete' || r.op === 'update') && SKIP.has(`lego ${r.lego}`) && !SKIP.has(`${r.op === 'delete' ? 'del' : 'upd'} ${r.id}`)) {
+      const pre = pending(r.lego);
+      if (pre.length) U.push({ tag: `pre ${r.lego}`, seed: r.before.seed_number, ops: pre });
+    }
     if (r.op === 'delete') U.push({ tag: `del ${r.id}`, seed: r.before.seed_number, ops: [{ op: 'phrase.delete', phrase_id: pid(r.id), expect: { target_text: r.before.target_text } }] });
     if (r.op === 'insert' && !insertedPhrases.has(r.id)) U.push({ tag: `ins ${r.id}`, seed: p.after.get(r.lego).seed_number, ops: [{ op: 'phrase.insert', row: phraseRow(r) }] });
     if (r.op === 'update') {
@@ -282,6 +292,7 @@ async function post(url, body, extra = {}) {
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { error: String((e.cause && e.cause.code) || e.name) } }; }
 }
+// Signed calls go to /api/admin/... : only that prefix passes the agent front door, so only there does the Kai key count as kai_go.
 async function postSigned(urlPath, body) {
   const header = execFileSync('sudo', ['-n', '-u', 'popty', 'node', path.join(ROOT, 'tools/agent-admin/sign.cjs')], { input: JSON.stringify({ agentId: KAI_AGENT, method: 'POST', path: urlPath, body, key: 'kai' }), encoding: 'utf8' }).trim();
   try {
@@ -291,13 +302,15 @@ async function postSigned(urlPath, body) {
 }
 const APPROVAL = 'kai:2026-11-17:Kai approved applying the 34 kor_for_eng held items and re-recording the fixes (~5,500 chars), job #432';
 const renderBody = (a, dry) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, approval: APPROVAL, job: '#432·AI', ...(dry ? { dryRun: true } : {}), ...(a.legoId ? { legoId: a.legoId } : {}) });
+const SKIP = new Set((process.env.SKIP_TAGS || '').split('|').filter(Boolean));
+const LIVE_IDS = new Set(process.env.LIVE ? JSON.parse(fs.readFileSync(process.env.LIVE, 'utf8')).seeds.flatMap((s) => (s.legos || []).flatMap((l) => (l.basket_phrases || []).map((q) => sid(q.id)))) : []);
 const CONV = process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {};
 
 async function main() {
   const [mode, file] = process.argv.slice(2);
   if (!mode || !file) throw new Error('usage: plan|dry-text|audio-dry|render|apply|intros|verify <seeds.json>');
   const db = load(file);
-  const p = plan(db);
+  const p = mode === 'verify' ? null : plan(db); // verify reads a post-apply dump, where deleted LEGOs are gone
   const confirm = process.env.APPLY_CONFIRM === '1';
   if (mode === 'plan') {
     const counts = {}; for (const r of p.phr) counts[r.op] = (counts[r.op] || 0) + 1;
@@ -316,7 +329,7 @@ async function main() {
     const batches = pack(units(db, p, () => undefined, false));
     let ok = 0;
     for (let i = 0; i < batches.length; i++) {
-      const r = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops: batches[i] });
+      const r = await postSigned(`/api/admin/course-edit/${COURSE}/edit-batch`, { ops: batches[i] });
       if (r.status === 200) ok++;
       else console.log(`batch ${i + 1}/${batches.length} DRY ${r.status} ${r.body.code || ''} ${r.body.error || ''} op#${r.body.index}`, JSON.stringify(batches[i][r.body.index] || {}).slice(0, 400));
     }
@@ -384,17 +397,19 @@ async function main() {
     for (const a of need) if (!clip(a.role, a.text)) for (const w of a.where) bad.add(w.kind === 'seed' ? w.id : (p.after.get(w.kind === 'lego' ? w.id : (p.phr.find((r) => r.id === w.id) || {}).lego) || {}).seed_number);
     // a LEGO change pulls its phrases' seed with it (same seed by construction); an unvoiced seed holds every unit tagged with it
     const only = process.env.SEEDS ? new Set(process.env.SEEDS.split(',').map(Number)) : null;
-    const U = per.filter((u) => !bad.has(u.seed) && (!only || only.has(u.seed)));
+    // SKIP_TAGS: units an earlier partial apply already committed (see `tags` mode), never sent twice
+    const skip = new Set((process.env.SKIP_TAGS || '').split('|').filter(Boolean));
+    const U = per.filter((u) => !bad.has(u.seed) && (!only || only.has(u.seed)) && !skip.has(u.tag));
     console.log(`seeds held for audio: ${[...bad].sort((a, b) => a - b).join(',') || 'none'}; units going ${U.length}/${per.length}`);
     save('apply-scope.json', { held: [...bad].sort((a, b) => a - b), going: [...new Set(U.map((u) => u.seed))].sort((a, b) => a - b) });
     const batches = pack(U);
     console.log(`${batches.length} batches, ${batches.reduce((n, b) => n + b.length, 0)} ops`);
     const log = fs.existsSync(path.join(OUT, 'applied.json')) ? read('applied.json') : [];
     for (let i = 0; i < batches.length; i++) {
-      const dry = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops: batches[i] });
+      const dry = await postSigned(`/api/admin/course-edit/${COURSE}/edit-batch`, { ops: batches[i] });
       if (dry.status !== 200) { console.log(`batch ${i + 1} DRY ${dry.status} ${dry.body.code || ''} ${dry.body.error || ''} op#${dry.body.index}`, JSON.stringify(batches[i][dry.body.index] || {}).slice(0, 300)); process.exitCode = 1; return; }
       if (!confirm) continue;
-      const ap = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops: batches[i], apply: true });
+      const ap = await postSigned(`/api/admin/course-edit/${COURSE}/edit-batch`, { ops: batches[i], apply: true });
       log.push({ batch: i + 1, status: ap.status, event_id: ap.body.event_id, undo_file: ap.body.undo_file, undo: ap.body.undo_ops || ap.body.undo, error: ap.body.error, code: ap.body.code, ops: batches[i].length });
       save('applied.json', log);
       console.log(`batch ${i + 1}/${batches.length} APPLY ${ap.status} event ${ap.body.event_id || ''} ${ap.body.code || ''} ${ap.body.error || ''}`);
@@ -403,8 +418,22 @@ async function main() {
     if (!confirm) console.log('dry run clean for every batch (with clip links)');
     return;
   }
+  if (mode === 'tags') {
+    // which unit tags each batch of `apply` holds (same filter, same packing) — to resume after a partial apply
+    const real = read('audio-real.json');
+    const clips = new Map(real.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
+    const U0 = units(db, p, (r, t) => clips.get(`${r}\u0000${t}`), true);
+    const only = process.env.SEEDS ? new Set(process.env.SEEDS.split(',').map(Number)) : null;
+    const skip = new Set((process.env.SKIP_TAGS || '').split('|').filter(Boolean));
+    const U = U0.filter((u) => (!only || only.has(u.seed)) && !skip.has(u.tag));
+    const max = Number(process.env.BATCH) || 30; let b = 1, n = 0; const out = [];
+    for (const u of U) { if (n && n + u.ops.length > max) { b++; n = 0; } n += u.ops.length; out.push({ batch: b, tag: u.tag, ops: u.ops.length }); }
+    save('tags.json', out); console.log(out.filter((x) => x.batch <= 3).map((x) => `${x.batch} ${x.tag}`).join('\n'));
+    return;
+  }
   if (mode === 'intros') {
-    const need = asks(db, p).filter((a) => a.role === 'presentation');
+    const only = process.env.SEEDS ? new Set(process.env.SEEDS.split(',').map(Number)) : null; // held seeds get no intro
+    const need = asks(db, p).filter((a) => a.role === 'presentation' && (!only || only.has(a.seed)));
     const out = [];
     for (const a of need) {
       const legoId = a.where[0].id;

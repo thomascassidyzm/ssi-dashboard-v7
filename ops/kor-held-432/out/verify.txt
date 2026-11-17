@@ -1,0 +1,53 @@
+verify: 473 ok, 52 bad
+  BAD S0077L01U01 known 140a762b-1586-4219-b57f-b5b2ead6a670 is not this job's clip
+  BAD S0558L02U01 known 55723bf4-5e72-49b9-b816-eab4fe72001c is not this job's clip
+  BAD S0618L02U01 known 59dadbfb-129d-45ab-b4e3-2f6b4d189b9a is not this job's clip
+  BAD S0631L02U01 known 742e7211-e242-4ba2-9db3-2870d4a0f42b is not this job's clip
+  BAD S0633L01B02 STILL PRESENT
+  BAD S0633L01B03 STILL PRESENT
+  BAD S0633L01U02 STILL PRESENT
+  BAD S0633L01U04 STILL PRESENT
+  BAD S0633L01U03 STILL PRESENT
+  BAD S0633L01U06 STILL PRESENT
+  BAD S0633L01U05 STILL PRESENT
+  BAD S0633L01U01 STILL PRESENT
+  BAD S0633L02B01 known "if one glass"; target "한 잔이면"; known 1024d739-5677-4a8c-86ae-61b4a74e56aa is not this job's clip; target1 b7fc4094-3bc8-40f7-b00f-94964cbe3d28 is not this job's clip; target2 6dbdb083-01a2-4f7d-8a63-3791ead4e6b9 is not this job's clip
+  BAD S0633L02B03 STILL PRESENT
+  BAD S0633L02B02 known "if a glass of water"; target "물 한 잔이면"; known 16febfc8-5450-4809-b355-77b9641aaef2 is not this job's clip; target1 ba10b0b9-7017-45ac-957a-2ae42eebe7d1 is not this job's clip; target2 27a4fbd4-ed8a-4f9e-af67-9d925d7e23f5 is not this job's clip
+  BAD S0633L02U06 STILL PRESENT
+  BAD S0633L02U02 known "so if a large glass would be fine"; target "그래서 큰 컵으로 한 잔이면 좋겠어요"; known 33a889ba-65e8-4831-bd92-953b07366660 is not this job's clip; target1 305f6e31-c9a3-4af1-aa73-da5f84ca0ae3 is not this job's clip; target2 d007c599-7e49-4663-a433-7e81efc29584 is not this job's clip
+  BAD S0633L02U03 STILL PRESENT
+  BAD S0633L02U05 STILL PRESENT
+  BAD S0633L02U04 known "still a glass of water would be fine"; target "아직도 물 한 잔이면 좋겠어요"; target1 55a10dd2-13bf-4c67-b556-304138f42542 is not this job's clip; target2 9d876299-6586-47d3-91b8-b4b76d92c5e0 is not this job's clip
+  BAD S0633L02U01 known "if a glass of water would be fine"; target "물 한 잔이면 좋겠어요"; known f2d06621-3c94-43ec-8a63-84c8ab78e17f is not this job's clip; target1 755cbe50-1fd5-4b09-8834-41c0fb3ee544 is not this job's clip; target2 9044e5cd-5f0f-4ff0-b55b-7586347d59dc is not this job's clip
+  BAD S0633L03B01 STILL PRESENT
+  BAD S0633L03B03 STILL PRESENT
+  BAD S0633L03B02 STILL PRESENT
+  BAD S0633L03U05 STILL PRESENT
+  BAD S0633L03U01 STILL PRESENT
+  BAD S0633L03U02 STILL PRESENT
+  BAD S0633L03U06 STILL PRESENT
+  BAD S0633L03U04 STILL PRESENT
+  BAD S0633L03U03 STILL PRESENT
+  BAD S0656L01B02 known "with everyone"; target "여러분과 함께"
+  BAD S0656L01U23 target "우리는 여러분과 그 문제를 의논해야 해요"
+  BAD S0662L02B02 known "sir said it"; target "교회가 선생님을 그걸 말해요"
+  BAD S0662L02B03 STILL PRESENT
+  BAD S0662L02B01 known "it"; target "그걸"
+  BAD S0662L02B04 STILL PRESENT
+  BAD S0662L02U06 STILL PRESENT
+  BAD S0662L02U04 STILL PRESENT
+  BAD S0662L02U02 known "sir knows it"; target "선생님을 그걸 알아요"
+  BAD S0662L02U01 known "everyone speaks it"; target "여러분 그걸 말해요"
+  BAD S0662L02U03 STILL PRESENT
+  BAD S0662L02U05 STILL PRESENT
+  BAD S0664L02U01 target "여러분 준비됐어요?"; target1 89c6bd94-7fea-4a19-8006-a2d2ff92b09e is not this job's clip; target2 5f4a2129-327e-4d38-b290-1061be9c10b6 is not this job's clip
+  BAD S0662L01B01 MISSING
+  BAD S0662L01U01 MISSING
+  BAD S0662L01U02 MISSING
+  BAD S0633L02 known_text=if one glass; target_text=한 잔이면
+  BAD S0662L01 target_text=여러분; is_new=false; presentation_audio_id EMPTY
+  BAD S0662L02 known_text=it; target_text=그걸; is_new=false
+  BAD S0656L02 STILL PRESENT
+  BAD S0633L03 STILL PRESENT
+  BAD seed 633 target

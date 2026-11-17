@@ -16151,5 +16151,113 @@
    "audioId": "84705f5f-c250-47e5-9dfb-41548cbde24b",
    "charsSpent": 12
   }
+ },
+ {
+  "role": "target1",
+  "text": "오래된 것 같아요",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7ce95bf5-50f1-4591-8db3-1e8f969dc97c",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "target2",
+  "text": "오래된 것 같아요",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82872f9f-d517-465d-aeaa-bfd3072906ed",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "known",
+  "text": "it feels like a long time",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6efbb586-a0ab-4131-a58a-3b68df6ea18f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "하지만 오래된 것 같아요",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U08",
+    "slot": "target1"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fbd65282-234c-4a54-a589-c4b4462cca59",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "하지만 오래된 것 같아요",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U08",
+    "slot": "target2"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e98a2811-0811-44ec-8034-76e97d51b1d4",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "but it feels like a long time",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0618L01U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 618,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f52d873d-8dd8-4b8c-8110-a77ff6511c62",
+   "charsSpent": 29
+  }
  }
 ]

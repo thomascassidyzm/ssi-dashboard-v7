@@ -8998,6 +8998,74 @@
    "decKind": "exact"
   },
   {
+   "id": "S0618L01U07",
+   "op": "insert",
+   "lego": "S0618L01",
+   "role": "use",
+   "known": "it feels like a long time",
+   "target": "오래된 것 같아요",
+   "position": 12,
+   "decomposition": [
+    {
+     "legoId": "S0618L01",
+     "target": "오래된",
+     "known": "a long time",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0497L01",
+     "target": " 것",
+     "known": "thing",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " 같아요",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
+   "id": "S0618L01U08",
+   "op": "insert",
+   "lego": "S0618L01",
+   "role": "use",
+   "known": "but it feels like a long time",
+   "target": "하지만 오래된 것 같아요",
+   "position": 13,
+   "decomposition": [
+    {
+     "legoId": "S0019L01",
+     "target": "하지만",
+     "known": "but",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0618L01",
+     "target": " 오래된",
+     "known": "a long time",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0497L01",
+     "target": " 것",
+     "known": "thing",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " 같아요",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact"
+  },
+  {
    "id": "S0662L01B01",
    "op": "insert",
    "lego": "S0662L01",
@@ -9117,6 +9185,8 @@
   "untiled S0351L02U12 [S0351L02] \"아니요 그는 저를 혼자 두고 가고 싶어하지 않았어요\": 저를 | 싶어하지",
   "untiled S0077L04U04 [S0077L04] \"이해하기 시작하고 있는지 알고 싶어요\": 알고 | 싶어요",
   "untiled S0077L04U05 [S0077L04] \"얼마나 빨리 말하기 시작하고 있는지\": 말하기",
+  "untiled S0618L01U07 [S0618L01] \"오래된 것 같아요\": 같아요",
+  "untiled S0618L01U08 [S0618L01] \"하지만 오래된 것 같아요\": 같아요",
   "untiled S0662L01U01 [S0662L01] \"여러분 다 알아요\": 알아요"
  ],
  "problems": [],
@@ -15499,6 +15569,78 @@
     {
      "kind": "phrase",
      "id": "S0618L02U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "target1",
+   "text": "오래된 것 같아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U07",
+     "slot": "target1"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "target2",
+   "text": "오래된 것 같아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U07",
+     "slot": "target2"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "known",
+   "text": "it feels like a long time",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U07",
+     "slot": "known"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "target1",
+   "text": "하지만 오래된 것 같아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U08",
+     "slot": "target1"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "target2",
+   "text": "하지만 오래된 것 같아요",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U08",
+     "slot": "target2"
+    }
+   ],
+   "seed": 618
+  },
+  {
+   "role": "known",
+   "text": "but it feels like a long time",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0618L01U08",
      "slot": "known"
     }
    ],

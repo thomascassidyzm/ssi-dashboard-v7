@@ -316,6 +316,11 @@ ph({ S0618L01B01: ['a long time', '오래된'], S0618L01B02: null, S0618L01B03: 
   S0618L02U03: ["but it doesn't feel like a long time", '하지만 오래된 것 같지 않아요'], S0618L02U04: ["really, it doesn't feel like a long time", '정말 오래된 것 같지 않아요'],
   S0618L02U05: null, S0618L02U06: null });
 
+// S0618L01 debuts, so it keeps real practice beyond the bare LEGO (DB rule DEBUT_WITHOUT_PRACTICE refused the first apply):
+// 오래된 is taught at 266/350, and -것 같아요 runs through the course (114, 123, 146, 163), so both rows use only taught pieces.
+ins('S0618L01', 'use', 'it feels like a long time', '오래된 것 같아요');
+ins('S0618L01', 'use', 'but it feels like a long time', '하지만 오래된 것 같아요');
+
 // 633 — fix the seed Korean (큰 컵으로 물 한 잔이면 괜찮아요); L02 grows to the "…would be fine" frame; L03 (좋겠어요, not in the seed) goes.
 item(84, 'seed 633 seed Korean → 큰 컵으로 물 한 잔이면 괜찮아요; L02 a glass of water would be fine | 물 한 잔이면 괜찮아요; L03 deleted', 'held-11', '#734 option B (L01 already says 큰 컵으로)');
 D.seeds[633] = { target_text: '큰 컵으로 물 한 잔이면 괜찮아요' };
