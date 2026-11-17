@@ -1,0 +1,155 @@
+[
+ {
+  "role": "presentation",
+  "text": "The Korean for: 'a glass of water would be fine', is:",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0633L02",
+    "slot": "presentation"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "큰 컵으로 드릴까요?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "큰 컵으로 드릴까요?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 11
+  }
+ },
+ {
+  "role": "known",
+  "text": "would you like a large glass?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "그래서 큰 컵으로 드릴까요?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U08",
+    "slot": "target1"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 15
+  }
+ },
+ {
+  "role": "target2",
+  "text": "그래서 큰 컵으로 드릴까요?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U08",
+    "slot": "target2"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 15
+  }
+ },
+ {
+  "role": "known",
+  "text": "so would you like a large glass?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0633L01U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 633,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 32
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Korean for: 'speak it', is:",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0662L02",
+    "slot": "presentation"
+   }
+  ],
+  "seed": 662,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 31
+  }
+ },
+ {
+  "role": "presentation",
+  "text": "The Korean for: 'you all', is:",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0662L01",
+    "slot": "presentation"
+   }
+  ],
+  "seed": 662,
+  "dry": {
+   "status": 200,
+   "source": "would-render",
+   "chars": 30
+  }
+ }
+]
