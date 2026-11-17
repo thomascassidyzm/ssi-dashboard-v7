@@ -38,26 +38,32 @@ async function render(role, text, approval) {
     const role = slot; const text = slot === 'presentation' ? intro(r.known) : slot === 'known' ? r.known : r.target;
     want.push({ role, text });
   }
-  let chars = 0;
-  for (const { role, text } of want) {
+  let chars = 0; let stop = null;
+  const seen = new Set();
+  const todo = want.filter(({ role, text }) => { const k = `${role}|${text}`; if (seen.has(k)) return false; seen.add(k); return !(plan[k] && plan[k].audioId); });
+  // a small pool (--conc=N, default 1): the route's own rate cap queues past 10/s per caller; provider latency is the bottleneck.
+  const CONC = Number((process.argv.find((a) => a.startsWith('--conc=')) || '--conc=1').split('=')[1]);
+  async function one({ role, text }) {
     const key = `${role}|${text}`;
-    if (plan[key] && plan[key].audioId) continue;
     const dumpHit = idx.get(`${role}|${n(text)}`);
-    if (dumpHit && role !== 'presentation') { plan[key] = { role, text, audioId: dumpHit[0], source: 'linked-in-course', chars: 0 }; continue; }
+    if (dumpHit && role !== 'presentation') { plan[key] = { role, text, audioId: dumpHit[0], source: 'linked-in-course', chars: 0 }; return; }
     let a = await render(role, text);
     if (RENDER && a.code === 'EXISTS_IN_LANGUAGE' && !(a.existing || []).some((e) => e.courseCode === d.course)) a = { ...(await render(role, text, APPROVAL)), approved: true };
     if (a.ok && a.audioId) plan[key] = { role, text, audioId: a.audioId, source: a.source + (a.approved ? '+kai-approval' : ''), chars: a.charsSpent || 0, voiceId: a.voiceId };
-    else if (a.ok && a.source === 'would-render') { plan[key] = { role, text, audioId: null, source: 'would-render', chars: a.wouldSpendChars }; chars += a.wouldSpendChars; }
+    else if (a.ok && a.source === 'would-render') { plan[key] = { role, text, audioId: null, source: 'would-render', chars: a.wouldSpendChars }; }
     else if (a.code === 'EXISTS_IN_LANGUAGE') {
       const ex = (a.existing || []).filter((e) => e.courseCode === d.course);
       const pick = ex.find((e) => e.side === role) || ex[0];
       plan[key] = { role, text, audioId: pick ? pick.audioId : null, source: pick ? `exists-in-language:${pick.side}:${pick.voiceId}` : 'EXISTS_ELSEWHERE', chars: 0, existing: pick ? undefined : a.existing };
     } else plan[key] = { role, text, audioId: null, source: 'REFUSED', code: a.code, error: a.error };
     if (RENDER && a.ok) chars += a.charsSpent || 0;
-    if (RENDER && chars > 32000) { console.log('STOP: over 32,000 characters'); break; }
-    if (RENDER && !a.ok && a.code !== 'EXISTS_IN_LANGUAGE') { console.log('STOP: refusal is the answer —', a.code, a.error); break; }
+    if (RENDER && chars > 32000) stop = 'over 32,000 characters';
+    if (RENDER && !a.ok && a.code !== 'EXISTS_IN_LANGUAGE') stop = `refusal is the answer — ${a.code} ${a.error}`;
     fs.writeFileSync(planFile, JSON.stringify(plan, null, 1));
   }
+  let i = 0;
+  await Promise.all(Array.from({ length: CONC }, async () => { while (!stop && i < todo.length) await one(todo[i++]); }));
+  if (stop) console.log('STOP:', stop);
   fs.writeFileSync(planFile, JSON.stringify(plan, null, 1));
   const v = Object.values(plan); const by = {}; for (const x of v) by[x.source.split(':')[0]] = (by[x.source.split(':')[0]] || 0) + 1;
   console.log(JSON.stringify(by), 'chars', v.reduce((s, x) => s + (x.chars || 0), 0));
