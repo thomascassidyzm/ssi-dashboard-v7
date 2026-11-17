@@ -1,0 +1,766 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "4c9a3675-6d54-4752-a13b-a585b1adc66b",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "thought",
+    "target_text": "gedacht",
+    "known_audio_id": "17612809-bd34-4990-a13e-380c0a39b634",
+    "target1_audio_id": "c9c1c59c-cea7-49d3-8309-bda676954d51",
+    "target2_audio_id": "7ffb6925-f4aa-413b-8849-9069ae9ecf62",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "known_audio_id": null,
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "known_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "known_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "known_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B01",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5",
+    "known_text": "you thought that",
+    "target_text": "du das gedacht hast",
+    "known_audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+    "target1_audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he has also thought about it",
+    "target_text": "er hat auch darüber gedacht",
+    "known_audio_id": "5a21dc23-6166-4326-a6e2-dcd7c71eed30",
+    "target1_audio_id": "fe688e3c-b978-4d13-9367-2370b8d5b348",
+    "target2_audio_id": "3a184322-b445-44df-a10f-0f1d7d4f1b62",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "e0e7d6b8-277f-466c-817f-c38b073e637e",
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "target1_audio_id": "e0e7d6b8-277f-466c-817f-c38b073e637e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B02",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "9c46ed18-8934-48a4-ac82-01917156de52",
+    "known_text": "that you thought that",
+    "target_text": "dass du das gedacht hast",
+    "known_audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8",
+    "target1_audio_id": "e0e7d6b8-277f-466c-817f-c38b073e637e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I have also thought about it",
+    "target_text": "ich habe auch darüber gedacht",
+    "known_audio_id": "e295df39-ce3b-4f7a-bc3d-425e4c9e781d",
+    "target1_audio_id": "c5a90527-1a05-412f-9c8b-02566c5356cc",
+    "target2_audio_id": "149fcfbc-5706-4a62-b2c0-7108d46b38a0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "febf4b90-626c-4f03-9276-ec0ce1d8b6bf",
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "target1_audio_id": "febf4b90-626c-4f03-9276-ec0ce1d8b6bf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02B03",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "618f2708-025b-4711-90c3-b8d3cee728b9",
+    "known_text": "I know that you thought that",
+    "target_text": "ich weiß, dass du das gedacht hast",
+    "known_audio_id": "89381a79-742d-46e9-80a9-2478af8170e0",
+    "target1_audio_id": "febf4b90-626c-4f03-9276-ec0ce1d8b6bf",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.insert",
+   "key": {
+    "id": "deu_for_eng:S0616L02U08"
+   },
+   "before": null,
+   "after": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e",
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "known_audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "207a0313-9542-4840-b5f4-e95efa1ebb02",
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "known_audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "known_audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e",
+    "target1_audio_id": "207a0313-9542-4840-b5f4-e95efa1ebb02",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U08",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "b9748a96-a1a7-436f-a656-126d94da4471",
+    "known_text": "she said that you thought that",
+    "target_text": "sie hat gesagt, dass du das gedacht hast",
+    "known_audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e",
+    "target1_audio_id": "207a0313-9542-4840-b5f4-e95efa1ebb02",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.insert",
+   "key": {
+    "id": "deu_for_eng:S0616L02U09"
+   },
+   "before": null,
+   "after": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635",
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "known_audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "09fdad17-93d2-4a2a-ab76-944b2f5fb872",
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "known_audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0616L02U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "known_audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635",
+    "target1_audio_id": "09fdad17-93d2-4a2a-ab76-944b2f5fb872",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0616L02U09",
+    "seed_number": 616,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "9cae831f-4745-4ac5-8d4e-7cdfccade819",
+    "known_text": "because you thought that",
+    "target_text": "weil du das gedacht hast",
+    "known_audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635",
+    "target1_audio_id": "09fdad17-93d2-4a2a-ab76-944b2f5fb872",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U09",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U09",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0616L02U09"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U08",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U08",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0616L02U08"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B03",
+   "set": {
+    "known_text": "I have also thought about it",
+    "target_text": "ich habe auch darüber gedacht",
+    "known_audio_id": "e295df39-ce3b-4f7a-bc3d-425e4c9e781d",
+    "target1_audio_id": "c5a90527-1a05-412f-9c8b-02566c5356cc",
+    "target2_audio_id": "149fcfbc-5706-4a62-b2c0-7108d46b38a0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B02",
+   "set": {
+    "known_text": "he has also thought about it",
+    "target_text": "er hat auch darüber gedacht",
+    "known_audio_id": "5a21dc23-6166-4326-a6e2-dcd7c71eed30",
+    "target1_audio_id": "fe688e3c-b978-4d13-9367-2370b8d5b348",
+    "target2_audio_id": "3a184322-b445-44df-a10f-0f1d7d4f1b62"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0616L02B01",
+   "set": {
+    "known_text": "thought",
+    "target_text": "gedacht",
+    "known_audio_id": "17612809-bd34-4990-a13e-380c0a39b634",
+    "target1_audio_id": "c9c1c59c-cea7-49d3-8309-bda676954d51",
+    "target2_audio_id": "7ffb6925-f4aa-413b-8849-9069ae9ecf62"
+   }
+  }
+ ],
+ "undo_file": "2026-11-17T17-46-21-061Z-4c9a3675-6d54-4752-a13b-a585b1adc66b.json"
+}

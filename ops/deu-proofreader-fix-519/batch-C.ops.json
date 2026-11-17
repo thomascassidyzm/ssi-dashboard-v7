@@ -1,0 +1,189 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0630L01B01",
+  "expect": {
+   "known_text": "I can",
+   "target_text": "ich kann"
+  },
+  "set": {
+   "known_text": "can I",
+   "target_text": "kann ich"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B01",
+  "slot": "known",
+  "audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B01",
+  "slot": "target1",
+  "audio_id": "d87c3551-58e6-4b22-aa03-36dc05f1dfb0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B01",
+  "slot": "target2",
+  "audio_id": "bf9b70ca-25c4-47f8-8384-2e320b368608"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0630L01B02",
+  "expect": {
+   "known_text": "he also can do it",
+   "target_text": "er kann das auch machen"
+  },
+  "set": {
+   "known_text": "can I stay?",
+   "target_text": "kann ich bleiben?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B02",
+  "slot": "known",
+  "audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B02",
+  "slot": "target1",
+  "audio_id": "7e0ef305-a1fe-4f96-9402-ac697fe51d3b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B02",
+  "slot": "target2",
+  "audio_id": "f08d60f4-f383-44c4-a9a0-d0fa73003eff"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0630L01B03",
+  "expect": {
+   "known_text": "I can stay",
+   "target_text": "ich kann bleiben"
+  },
+  "set": {
+   "known_text": "can I do it?",
+   "target_text": "kann ich das machen?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B03",
+  "slot": "known",
+  "audio_id": "4071cf5b-56c9-471f-a017-078d371127f4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B03",
+  "slot": "target1",
+  "audio_id": "3ebd1ecb-3a82-452a-a40b-c8733eb6db9f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01B03",
+  "slot": "target2",
+  "audio_id": "33c27e67-1dd8-4054-b1a0-1b4fefb3a905"
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0630L01U08",
+   "course_code": "deu_for_eng",
+   "seed_number": 630,
+   "lego_index": 1,
+   "position": 11,
+   "known_text": "can I also stay?",
+   "target_text": "kann ich auch bleiben?",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "middle",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #519·AI, deu proofreader items passed by Kai 17 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 4,
+   "lego_count": 1
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U08",
+  "slot": "known",
+  "audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U08",
+  "slot": "target1",
+  "audio_id": "0232d5c2-98d0-4a5c-8dd0-e2a3f02a288e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U08",
+  "slot": "target2",
+  "audio_id": "beb7b522-3507-45ad-abaa-bec31f879ea8"
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0630L01U09",
+   "course_code": "deu_for_eng",
+   "seed_number": 630,
+   "lego_index": 1,
+   "position": 12,
+   "known_text": "can I do it today?",
+   "target_text": "kann ich das heute machen?",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "middle",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #519·AI, deu proofreader items passed by Kai 17 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 5,
+   "lego_count": 1
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U09",
+  "slot": "known",
+  "audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U09",
+  "slot": "target1",
+  "audio_id": "6583c84a-9ec7-44f1-b171-4fdda8324ff6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0630L01U09",
+  "slot": "target2",
+  "audio_id": "b926630d-b99d-48ac-abb0-5e5e8df85a26"
+ }
+]
