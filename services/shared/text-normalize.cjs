@@ -20,6 +20,8 @@
  * ("Tu viens ?" and "tu viens?" are one recording). A run with no ? is stripped.
  * A leading ¿ or ¡ is left alone.
  */
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./postgrest-in-quote.cjs')
 const QUESTION_TAIL = /\s*[.!?。？！¡]*[?？][.!?。？！]*$/
 const ENDS_IN_QUESTION = /[?？][.!?。？！]*$/
 

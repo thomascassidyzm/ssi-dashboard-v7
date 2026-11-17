@@ -47,6 +47,8 @@
  */
 
 const { podTtsText, sameRecordedWords, recordingTextKeys } = require('./text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./postgrest-in-quote.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
 const { isPodOnlyClip } = require('./pod-audio.cjs')

@@ -1,0 +1,1828 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 5,
+   "expect": {
+    "known_text": "I'm going to practise speaking with someone else",
+    "target_text": "voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking with someone else",
+    "target_text": "voy a practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 206,
+   "expect": {
+    "known_text": "I enjoy the chance to practise speaking with you",
+    "target_text": "disfruto la oportunidad de practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "I enjoy the chance to practise Spanish with you",
+    "target_text": "disfruto la oportunidad de practicar español contigo"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 228,
+   "expect": {
+    "known_text": "that man has just started to practise speaking",
+    "target_text": "ese hombre acaba de empezar a practicar hablando"
+   },
+   "set": {
+    "known_text": "that man has just started to practise Spanish",
+    "target_text": "ese hombre acaba de empezar a practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03B02",
+   "expect": {
+    "known_text": "To practise speaking",
+    "target_text": "Practicar hablando"
+   },
+   "set": {
+    "known_text": "To practise Spanish by speaking",
+    "target_text": "Practicar español hablando"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03B03",
+   "expect": {
+    "known_text": "I'm going to practise speaking",
+    "target_text": "Voy a practicar hablando"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking",
+    "target_text": "Voy a practicar español hablando"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03U01",
+   "expect": {
+    "known_text": "I'm going to practise speaking now",
+    "target_text": "Voy a practicar hablando ahora"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking now",
+    "target_text": "Voy a practicar español hablando ahora"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03U02",
+   "expect": {
+    "known_text": "I'm going to practise speaking Spanish",
+    "target_text": "Voy a practicar hablando español"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking with you",
+    "target_text": "Voy a practicar español hablando contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03U03",
+   "expect": {
+    "known_text": "I want to practise speaking with you",
+    "target_text": "Quiero practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish by speaking with you",
+    "target_text": "Quiero practicar español hablando contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03U04",
+   "expect": {
+    "known_text": "I want to practise speaking Spanish with you",
+    "target_text": "Quiero practicar hablando español contigo"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish by speaking with you now",
+    "target_text": "Quiero practicar español hablando contigo ahora"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L03U05",
+   "expect": {
+    "known_text": "I'm trying to practise speaking as frequently as possible",
+    "target_text": "Estoy intentando practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I'm trying to practise Spanish by speaking as frequently as possible",
+    "target_text": "Estoy intentando practicar español hablando lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L04U04",
+   "expect": {
+    "known_text": "I want to practise speaking with someone else",
+    "target_text": "Quiero practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish by speaking with someone else",
+    "target_text": "Quiero practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L04U05",
+   "expect": {
+    "known_text": "I want to practise speaking with someone else now",
+    "target_text": "Quiero practicar hablando con otra persona ahora"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish by speaking with someone else now",
+    "target_text": "Quiero practicar español hablando con otra persona ahora"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0005L04U06",
+   "expect": {
+    "known_text": "I'm going to practise speaking with someone else",
+    "target_text": "voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking with someone else",
+    "target_text": "voy a practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0007L01U03",
+   "expect": {
+    "known_text": "I want to try to practise speaking",
+    "target_text": "Quiero intentar practicar hablando"
+   },
+   "set": {
+    "known_text": "I want to try to practise Spanish",
+    "target_text": "Quiero intentar practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0010L01U03",
+   "expect": {
+    "known_text": "I can practise speaking with you today",
+    "target_text": "Puedo practicar hablando contigo hoy"
+   },
+   "set": {
+    "known_text": "I can practise Spanish by speaking with you today",
+    "target_text": "Puedo practicar español hablando contigo hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L01B04",
+   "expect": {
+    "known_text": "I'd like to practise speaking",
+    "target_text": "Me gustaría practicar hablando"
+   },
+   "set": {
+    "known_text": "I'd like to practise Spanish",
+    "target_text": "Me gustaría practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L01U03",
+   "expect": {
+    "known_text": "I'd like to practise speaking with another person",
+    "target_text": "Me gustaría practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I'd like to practise Spanish by speaking with another person",
+    "target_text": "Me gustaría practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L01U07",
+   "expect": {
+    "known_text": "I'd like to practise speaking as frequently as possible",
+    "target_text": "Me gustaría practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I'd like to practise Spanish as frequently as possible",
+    "target_text": "Me gustaría practicar español lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L02U05",
+   "expect": {
+    "known_text": "I want to be able to practise speaking with another person today",
+    "target_text": "Quiero poder practicar hablando con otra persona hoy"
+   },
+   "set": {
+    "known_text": "I want to be able to practise Spanish by speaking with another person today",
+    "target_text": "Quiero poder practicar español hablando con otra persona hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L02U08",
+   "expect": {
+    "known_text": "I'd like to be able to practise speaking as frequently as possible",
+    "target_text": "Me gustaría poder practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I'd like to be able to practise Spanish as frequently as possible",
+    "target_text": "Me gustaría poder practicar español lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L03U06",
+   "expect": {
+    "known_text": "I'd like to be able to practise speaking with you after you finish",
+    "target_text": "Me gustaría poder practicar hablando contigo después de que termines"
+   },
+   "set": {
+    "known_text": "I'd like to be able to practise Spanish by speaking with you after you finish",
+    "target_text": "Me gustaría poder practicar español hablando contigo después de que termines"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0011L03U08",
+   "expect": {
+    "known_text": "I'd like to practise speaking as frequently as possible after you finish",
+    "target_text": "Me gustaría practicar hablando lo más a menudo posible después de que termines"
+   },
+   "set": {
+    "known_text": "I'd like to practise Spanish as frequently as possible after you finish",
+    "target_text": "Me gustaría practicar español lo más a menudo posible después de que termines"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0012L01B03",
+   "expect": {
+    "known_text": "I want to practise speaking tomorrow",
+    "target_text": "Quiero practicar hablando mañana"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish tomorrow",
+    "target_text": "Quiero practicar español mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0012L01U03",
+   "expect": {
+    "known_text": "I'm going to practise speaking with another person tomorrow",
+    "target_text": "Voy a practicar hablando con otra persona mañana"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish by speaking with another person tomorrow",
+    "target_text": "Voy a practicar español hablando con otra persona mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0012L01U07",
+   "expect": {
+    "known_text": "I'd like to practise speaking a little Spanish tomorrow",
+    "target_text": "Me gustaría practicar hablando un poco de español mañana"
+   },
+   "set": {
+    "known_text": "I'd like to practise a little Spanish tomorrow",
+    "target_text": "Me gustaría practicar un poco de español mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0012L04U05",
+   "expect": {
+    "known_text": "I wouldn't like to practise speaking with another person tomorrow",
+    "target_text": "No me gustaría practicar hablando con otra persona mañana"
+   },
+   "set": {
+    "known_text": "I wouldn't like to practise Spanish by speaking with another person tomorrow",
+    "target_text": "No me gustaría practicar español hablando con otra persona mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0013L01U03",
+   "expect": {
+    "known_text": "I want to be able to practise speaking very well tomorrow",
+    "target_text": "Quiero poder practicar hablando muy bien mañana"
+   },
+   "set": {
+    "known_text": "I want to be able to speak Spanish very well tomorrow",
+    "target_text": "Quiero poder hablar español muy bien mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0013L01U05",
+   "expect": {
+    "known_text": "I'd like to practise speaking with you very well today",
+    "target_text": "Me gustaría practicar hablando contigo muy bien hoy"
+   },
+   "set": {
+    "known_text": "I'd like to speak Spanish very well with you today",
+    "target_text": "Me gustaría hablar español muy bien contigo hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0013L02U08",
+   "expect": {
+    "known_text": "You speak Spanish very well — I want to practise speaking with you",
+    "target_text": "Hablas español muy bien, quiero practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "You speak Spanish very well — I want to practise with you",
+    "target_text": "Hablas español muy bien, quiero practicar contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0014L01U03",
+   "expect": {
+    "known_text": "I'm going to practise speaking all day tomorrow",
+    "target_text": "Voy a practicar hablando todo el día mañana"
+   },
+   "set": {
+    "known_text": "I'm going to practise Spanish all day tomorrow",
+    "target_text": "Voy a practicar español todo el día mañana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0014L01U05",
+   "expect": {
+    "known_text": "I'm trying to practise speaking all day",
+    "target_text": "Estoy intentando practicar hablando todo el día"
+   },
+   "set": {
+    "known_text": "I'm trying to practise Spanish all day",
+    "target_text": "Estoy intentando practicar español todo el día"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0014L01U06",
+   "expect": {
+    "known_text": "I'd like to be able to practise speaking all day",
+    "target_text": "Me gustaría poder practicar hablando todo el día"
+   },
+   "set": {
+    "known_text": "I'd like to be able to practise Spanish all day",
+    "target_text": "Me gustaría poder practicar español todo el día"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0015L03U08",
+   "expect": {
+    "known_text": "And I'd like to learn — I'm going to practise speaking all day",
+    "target_text": "Y me gustaría aprender, voy a practicar hablando todo el día"
+   },
+   "set": {
+    "known_text": "And I'd like to learn — I'm going to practise Spanish all day",
+    "target_text": "Y me gustaría aprender, voy a practicar español todo el día"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0016L01U03",
+   "expect": {
+    "known_text": "He wants to practise speaking with someone else",
+    "target_text": "Él quiere practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "He wants to practise Spanish by speaking with someone else",
+    "target_text": "Él quiere practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0016L01U07",
+   "expect": {
+    "known_text": "He wants to practise speaking as often as possible",
+    "target_text": "Él quiere practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "He wants to practise Spanish as often as possible",
+    "target_text": "Él quiere practicar español lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0016L03U06",
+   "expect": {
+    "known_text": "He wants to practise speaking with everyone else today",
+    "target_text": "Él quiere practicar hablando con todos los demás hoy"
+   },
+   "set": {
+    "known_text": "He wants to practise Spanish by speaking with everyone else today",
+    "target_text": "Él quiere practicar español hablando con todos los demás hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0016L04U07",
+   "expect": {
+    "known_text": "He wants to practise speaking with everyone else later on today",
+    "target_text": "Él quiere practicar hablando con todos los demás más tarde hoy"
+   },
+   "set": {
+    "known_text": "He wants to practise Spanish by speaking with everyone else later on today",
+    "target_text": "Él quiere practicar español hablando con todos los demás más tarde hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0017L01U04",
+   "expect": {
+    "known_text": "She wants to practise speaking with someone else",
+    "target_text": "ella quiere practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "She wants to practise Spanish by speaking with someone else",
+    "target_text": "ella quiere practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0018L01U05",
+   "expect": {
+    "known_text": "We want to practise speaking with someone else",
+    "target_text": "queremos practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "We want to practise Spanish by speaking with someone else",
+    "target_text": "queremos practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0019L01U05",
+   "expect": {
+    "known_text": "But I want to practise speaking today",
+    "target_text": "Pero quiero practicar hablando hoy"
+   },
+   "set": {
+    "known_text": "But I want to practise Spanish today",
+    "target_text": "Pero quiero practicar español hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0019L02U02",
+   "expect": {
+    "known_text": "I don't want to practise speaking today",
+    "target_text": "No quiero practicar hablando hoy"
+   },
+   "set": {
+    "known_text": "I don't want to practise Spanish today",
+    "target_text": "No quiero practicar español hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0019L02U06",
+   "expect": {
+    "known_text": "But I don't want to practise speaking as often as possible",
+    "target_text": "Pero no quiero practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "But I don't want to practise Spanish as often as possible",
+    "target_text": "Pero no quiero practicar español lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0020L01U05",
+   "expect": {
+    "known_text": "You want to practise speaking with someone else",
+    "target_text": "Quieres practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "You want to practise Spanish by speaking with someone else",
+    "target_text": "Quieres practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0020L03U08",
+   "expect": {
+    "known_text": "He wants to practise speaking quickly as often as possible",
+    "target_text": "Él quiere practicar hablando rápidamente lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "He wants to speak Spanish quickly as often as possible",
+    "target_text": "Él quiere hablar español rápidamente lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0021L01B02",
+   "expect": {
+    "known_text": "Why try to practise speaking?",
+    "target_text": "¿Por qué intentar practicar hablando?"
+   },
+   "set": {
+    "known_text": "Why try to practise Spanish?",
+    "target_text": "¿Por qué intentar practicar español?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0021L01U03",
+   "expect": {
+    "known_text": "Why try to practise speaking with another person?",
+    "target_text": "¿Por qué intentar practicar hablando con otra persona?"
+   },
+   "set": {
+    "known_text": "Why try to practise Spanish by speaking with another person?",
+    "target_text": "¿Por qué intentar practicar español hablando con otra persona?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0021L01U06",
+   "expect": {
+    "known_text": "Why try to practise speaking today?",
+    "target_text": "¿Por qué intentar practicar hablando hoy?"
+   },
+   "set": {
+    "known_text": "Why try to practise Spanish today?",
+    "target_text": "¿Por qué intentar practicar español hoy?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0022L01B03",
+   "expect": {
+    "known_text": "Because I would like to practise speaking",
+    "target_text": "Porque me gustaría practicar hablando"
+   },
+   "set": {
+    "known_text": "Because I would like to practise Spanish",
+    "target_text": "Porque me gustaría practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0022L01U03",
+   "expect": {
+    "known_text": "Because I would like to practise speaking with another person",
+    "target_text": "Porque me gustaría practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "Because I would like to practise Spanish by speaking with another person",
+    "target_text": "Porque me gustaría practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0022L01U08",
+   "expect": {
+    "known_text": "Because I am going to practise speaking with another person",
+    "target_text": "Porque voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "Because I am going to practise Spanish by speaking with another person",
+    "target_text": "Porque voy a practicar español hablando con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0023L02B03",
+   "expect": {
+    "known_text": "I am going to practise speaking more soon",
+    "target_text": "Voy a practicar hablando más pronto"
+   },
+   "set": {
+    "known_text": "I am going to practise Spanish more soon",
+    "target_text": "Voy a practicar español más pronto"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0023L02U04",
+   "expect": {
+    "known_text": "I would like to practise speaking more soon",
+    "target_text": "Me gustaría practicar hablando más pronto"
+   },
+   "set": {
+    "known_text": "I would like to practise Spanish more soon",
+    "target_text": "Me gustaría practicar español más pronto"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0024L01B04",
+   "expect": {
+    "known_text": "I am not going to be able to practise speaking today",
+    "target_text": "No voy a poder practicar hablando hoy"
+   },
+   "set": {
+    "known_text": "I am not going to be able to practise Spanish today",
+    "target_text": "No voy a poder practicar español hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0024L01U06",
+   "expect": {
+    "known_text": "I am not going to be able to practise speaking with another person today",
+    "target_text": "No voy a poder practicar hablando con otra persona hoy"
+   },
+   "set": {
+    "known_text": "I am not going to be able to practise Spanish by speaking with another person today",
+    "target_text": "No voy a poder practicar español hablando con otra persona hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0025L01U01",
+   "expect": {
+    "known_text": "Are you going to practise speaking with another person today?",
+    "target_text": "¿Vas a practicar hablando con otra persona hoy?"
+   },
+   "set": {
+    "known_text": "Are you going to practise Spanish by speaking with another person today?",
+    "target_text": "¿Vas a practicar español hablando con otra persona hoy?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0025L02U05",
+   "expect": {
+    "known_text": "Are you going to help me practise speaking more frequently?",
+    "target_text": "¿Vas a ayudarme a practicar hablando más a menudo?"
+   },
+   "set": {
+    "known_text": "Are you going to help me practise Spanish more frequently?",
+    "target_text": "¿Vas a ayudarme a practicar español más a menudo?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0025L03B03",
+   "expect": {
+    "known_text": "Are you going to practise speaking before I have to go?",
+    "target_text": "¿Vas a practicar hablando antes de que tenga que irme?"
+   },
+   "set": {
+    "known_text": "Are you going to practise Spanish before I have to go?",
+    "target_text": "¿Vas a practicar español antes de que tenga que irme?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0025L03U02",
+   "expect": {
+    "known_text": "He wants to practise speaking with you before I have to go",
+    "target_text": "Él quiere practicar hablando contigo antes de que tenga que irme"
+   },
+   "set": {
+    "known_text": "He wants to practise Spanish by speaking with you before I have to go",
+    "target_text": "Él quiere practicar español hablando contigo antes de que tenga que irme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0025L03U08",
+   "expect": {
+    "known_text": "I want to practise speaking more before I have to go",
+    "target_text": "Quiero practicar hablando más antes de que tenga que irme"
+   },
+   "set": {
+    "known_text": "I want to practise Spanish more before I have to go",
+    "target_text": "Quiero practicar español más antes de que tenga que irme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0029L01U06",
+   "expect": {
+    "known_text": "I am going to practise speaking better as soon as possible",
+    "target_text": "Voy a practicar hablando mejor lo antes posible"
+   },
+   "set": {
+    "known_text": "I'm going to practise to speak better as soon as possible",
+    "target_text": "Voy a practicar para hablar mejor lo antes posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0030L01U03",
+   "expect": {
+    "known_text": "I wanted to practise speaking with another person",
+    "target_text": "Quería practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I wanted to speak with another person to practise",
+    "target_text": "Quería hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0030L03U02",
+   "expect": {
+    "known_text": "I wanted to practise speaking with another person yesterday",
+    "target_text": "Quería practicar hablando con otra persona ayer"
+   },
+   "set": {
+    "known_text": "I wanted to speak with another person yesterday to practise",
+    "target_text": "Quería hablar con otra persona ayer para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L01U02",
+   "expect": {
+    "known_text": "You wanted to practise speaking Spanish",
+    "target_text": "Querías practicar hablando español"
+   },
+   "set": {
+    "known_text": "You wanted to speak Spanish to practise",
+    "target_text": "Querías hablar español para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L01U05",
+   "expect": {
+    "known_text": "You wanted to practise speaking as frequently as possible",
+    "target_text": "Querías practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "You wanted to speak as frequently as possible to practise",
+    "target_text": "Querías hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L01U08",
+   "expect": {
+    "known_text": "You wanted to practise speaking frequently",
+    "target_text": "Querías practicar hablando a menudo"
+   },
+   "set": {
+    "known_text": "You wanted to speak frequently to practise",
+    "target_text": "Querías hablar a menudo para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L02U07",
+   "expect": {
+    "known_text": "She wants to practise speaking with me today",
+    "target_text": "Ella quiere practicar hablando conmigo hoy"
+   },
+   "set": {
+    "known_text": "She wants to speak with me today to practise",
+    "target_text": "Ella quiere hablar conmigo hoy para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L03U02",
+   "expect": {
+    "known_text": "I want to practise speaking Spanish tonight",
+    "target_text": "Quiero practicar hablando español esta noche"
+   },
+   "set": {
+    "known_text": "I want to speak Spanish tonight to practise",
+    "target_text": "Quiero hablar español esta noche para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0031L03U06",
+   "expect": {
+    "known_text": "She wants to practise speaking tonight",
+    "target_text": "Ella quiere practicar hablando esta noche"
+   },
+   "set": {
+    "known_text": "She wants to speak tonight to practise",
+    "target_text": "Ella quiere hablar esta noche para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0034L01U02",
+   "expect": {
+    "known_text": "He doesn't want to practise speaking Spanish now",
+    "target_text": "Él no quiere practicar hablando español ahora"
+   },
+   "set": {
+    "known_text": "He doesn't want to speak Spanish now to practise",
+    "target_text": "Él no quiere hablar español ahora para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0034L01U06",
+   "expect": {
+    "known_text": "He doesn't want to practise speaking frequently",
+    "target_text": "Él no quiere practicar hablando a menudo"
+   },
+   "set": {
+    "known_text": "He doesn't want to speak frequently to practise",
+    "target_text": "Él no quiere hablar a menudo para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0034L03U06",
+   "expect": {
+    "known_text": "I want to practise speaking when other people are here",
+    "target_text": "Quiero practicar hablando cuando hay otras personas aquí"
+   },
+   "set": {
+    "known_text": "I want to speak to practise when other people are here",
+    "target_text": "Quiero hablar para practicar cuando hay otras personas aquí"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0035L01U02",
+   "expect": {
+    "known_text": "She doesn't want to practise speaking as frequently as possible",
+    "target_text": "Ella no quiere practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "She doesn't want to speak as frequently as possible to practise",
+    "target_text": "Ella no quiere hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0035L04U02",
+   "expect": {
+    "known_text": "I want to practise speaking this afternoon",
+    "target_text": "Quiero practicar hablando esta tarde"
+   },
+   "set": {
+    "known_text": "I want to speak this afternoon to practise",
+    "target_text": "Quiero hablar esta tarde para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0036L01U08",
+   "expect": {
+    "known_text": "We don't want to practise speaking today",
+    "target_text": "No queremos practicar hablando hoy"
+   },
+   "set": {
+    "known_text": "We don't want to speak today to practise",
+    "target_text": "No queremos hablar hoy para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0037L01U02",
+   "expect": {
+    "known_text": "I started to practise speaking today",
+    "target_text": "Empecé a practicar hablando hoy"
+   },
+   "set": {
+    "known_text": "I started to speak to practise today",
+    "target_text": "Empecé a hablar para practicar hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0037L03U05",
+   "expect": {
+    "known_text": "I started to practise speaking carefully",
+    "target_text": "Empecé a practicar hablando con cuidado"
+   },
+   "set": {
+    "known_text": "I started to practise carefully",
+    "target_text": "Empecé a practicar con cuidado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0037L04U02",
+   "expect": {
+    "known_text": "I started to practise speaking last month",
+    "target_text": "Empecé a practicar hablando el mes pasado"
+   },
+   "set": {
+    "known_text": "I started to speak to practise last month",
+    "target_text": "Empecé a hablar para practicar el mes pasado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0039L03U02",
+   "expect": {
+    "known_text": "I want to practise speaking this morning",
+    "target_text": "Quiero practicar hablando esta mañana"
+   },
+   "set": {
+    "known_text": "I want to speak this morning to practise",
+    "target_text": "Quiero hablar esta mañana para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0041L01U08",
+   "expect": {
+    "known_text": "I feel well, I want to practise speaking with another person",
+    "target_text": "Me siento bien, quiero practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I feel well, I want to speak with another person to practise",
+    "target_text": "Me siento bien, quiero hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0041L02U01",
+   "expect": {
+    "known_text": "I feel tired but I want to practise speaking",
+    "target_text": "Me siento cansado pero quiero practicar hablando"
+   },
+   "set": {
+    "known_text": "I feel tired but I want to speak to practise",
+    "target_text": "Me siento cansado pero quiero hablar para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0041L03U04",
+   "expect": {
+    "known_text": "I'm starting to practise speaking with another person",
+    "target_text": "Estoy empezando a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I'm starting to speak with another person to practise",
+    "target_text": "Estoy empezando a hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0042L01U05",
+   "expect": {
+    "known_text": "I was starting to practise speaking with another person",
+    "target_text": "Estaba empezando a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I was starting to speak with another person to practise",
+    "target_text": "Estaba empezando a hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0042L03U02",
+   "expect": {
+    "known_text": "I was starting to practise speaking last night",
+    "target_text": "Estaba empezando a practicar hablando anoche"
+   },
+   "set": {
+    "known_text": "I was starting to speak to practise last night",
+    "target_text": "Estaba empezando a hablar para practicar anoche"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0043L01B04",
+   "expect": {
+    "known_text": "I wasn't thinking about practicing speaking",
+    "target_text": "No estaba pensando en practicar hablando"
+   },
+   "set": {
+    "known_text": "I wasn't thinking about speaking to practise",
+    "target_text": "No estaba pensando en hablar para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0044L01U07",
+   "expect": {
+    "known_text": "I can speak in Spanish or practise speaking",
+    "target_text": "Puedo hablar en español o practicar hablando"
+   },
+   "set": {
+    "known_text": "I can speak in Spanish or practise with someone else",
+    "target_text": "Puedo hablar en español o practicar con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0044L02B03",
+   "expect": {
+    "known_text": "I need to practise speaking",
+    "target_text": "Necesito practicar hablando"
+   },
+   "set": {
+    "known_text": "I need to speak to practise",
+    "target_text": "Necesito hablar para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0046L02U03",
+   "expect": {
+    "known_text": "I can make mistakes, I don't worry about practising speaking",
+    "target_text": "Puedo cometer errores, no me preocupo por practicar hablando"
+   },
+   "set": {
+    "known_text": "I can make mistakes, I don't worry about speaking Spanish",
+    "target_text": "Puedo cometer errores, no me preocupo por hablar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0046L02U06",
+   "expect": {
+    "known_text": "I'm going to practise speaking with another person, I don't worry about making mistakes",
+    "target_text": "Voy a practicar hablando con otra persona, no me preocupo por cometer errores"
+   },
+   "set": {
+    "known_text": "I'm going to speak with another person to practise, I don't worry about making mistakes",
+    "target_text": "Voy a hablar con otra persona para practicar, no me preocupo por cometer errores"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0047L01U02",
+   "expect": {
+    "known_text": "I think that I want to practise speaking with another person",
+    "target_text": "Creo que quiero practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I think that I want to speak with another person to practise",
+    "target_text": "Creo que quiero hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0047L01U06",
+   "expect": {
+    "known_text": "I think that I want to go back and practise speaking more",
+    "target_text": "Creo que quiero volver y practicar hablando más"
+   },
+   "set": {
+    "known_text": "I think that I want to go back and speak more to practise",
+    "target_text": "Creo que quiero volver y hablar más para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0047L02U01",
+   "expect": {
+    "known_text": "I think that it's good to practise speaking with another person",
+    "target_text": "Creo que es bueno practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I think that it's good to speak with another person to practise",
+    "target_text": "Creo que es bueno hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0047L02U05",
+   "expect": {
+    "known_text": "It's good to practise speaking Spanish now",
+    "target_text": "Es bueno practicar hablando español ahora"
+   },
+   "set": {
+    "known_text": "It's good to speak Spanish now to practise",
+    "target_text": "Es bueno hablar español ahora para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0051L03U03",
+   "expect": {
+    "known_text": "I like to practise speaking with my friends",
+    "target_text": "Me gusta practicar hablando con mis amigos"
+   },
+   "set": {
+    "known_text": "I like to speak with my friends to practise",
+    "target_text": "Me gusta hablar con mis amigos para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0058L03U07",
+   "expect": {
+    "known_text": "She wants to learn enough words to practise speaking Spanish",
+    "target_text": "Ella quiere aprender suficientes palabras para practicar hablando español"
+   },
+   "set": {
+    "known_text": "She wants to learn enough words to speak Spanish",
+    "target_text": "Ella quiere aprender suficientes palabras para hablar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0058L03U14",
+   "expect": {
+    "known_text": "She wants to remember enough words to practise speaking with you",
+    "target_text": "Ella quiere recordar suficientes palabras para practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "She wants to remember enough words to speak with you",
+    "target_text": "Ella quiere recordar suficientes palabras para hablar contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0071L01U01",
+   "expect": {
+    "known_text": "We wanted to give you a little more time to practise speaking Spanish",
+    "target_text": "Queríamos darte un poco más de tiempo para practicar hablando español"
+   },
+   "set": {
+    "known_text": "We wanted to give you a little more time to practise Spanish",
+    "target_text": "Queríamos darte un poco más de tiempo para practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0084L02U06",
+   "expect": {
+    "known_text": "I want to practise talking with my friend as often as possible",
+    "target_text": "Quiero practicar hablando con mi amigo lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I want to speak with my friend as often as possible to practise",
+    "target_text": "Quiero hablar con mi amigo lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0090L04U06",
+   "expect": {
+    "known_text": "It would be important to practise talking with another person",
+    "target_text": "Sería importante practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "It would be important to speak with another person to practise",
+    "target_text": "Sería importante hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0090L05U08",
+   "expect": {
+    "known_text": "That would be great for practising speaking Spanish every day",
+    "target_text": "Eso sería genial para practicar hablando español todos los días"
+   },
+   "set": {
+    "known_text": "That would be great for practising Spanish every day",
+    "target_text": "Eso sería genial para practicar español todos los días"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0098L01U13",
+   "expect": {
+    "known_text": "I think I should practise speaking with another person",
+    "target_text": "Creo que debería practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "I think I should speak with another person to practise",
+    "target_text": "Creo que debería hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0099L01U03",
+   "expect": {
+    "known_text": "I think you should practise speaking Spanish more frequently",
+    "target_text": "Creo que deberías practicar hablando español más a menudo"
+   },
+   "set": {
+    "known_text": "I think you should speak Spanish more frequently to practise",
+    "target_text": "Creo que deberías hablar español más a menudo para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0099L01U08",
+   "expect": {
+    "known_text": "You should practise speaking with other people",
+    "target_text": "Deberías practicar hablando con otras personas"
+   },
+   "set": {
+    "known_text": "You should speak with other people to practise",
+    "target_text": "Deberías hablar con otras personas para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0099L01U15",
+   "expect": {
+    "known_text": "You should try to practise speaking with another person today",
+    "target_text": "Deberías intentar practicar hablando con otra persona hoy"
+   },
+   "set": {
+    "known_text": "You should try to speak with another person today to practise",
+    "target_text": "Deberías intentar hablar con otra persona hoy para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0104L01U02",
+   "expect": {
+    "known_text": "We need to practise speaking with another person",
+    "target_text": "Necesitamos practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "We need to speak with another person to practise",
+    "target_text": "Necesitamos hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0106L01U06",
+   "expect": {
+    "known_text": "We need to feel happy to practise speaking with another person",
+    "target_text": "Necesitamos sentirnos contentos para practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "We need to feel happy to speak with another person",
+    "target_text": "Necesitamos sentirnos contentos para hablar con otra persona"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0106L02U02",
+   "expect": {
+    "known_text": "We just need to practise speaking as soon as possible",
+    "target_text": "Solo necesitamos practicar hablando lo antes posible"
+   },
+   "set": {
+    "known_text": "We just need to speak as soon as possible to practise",
+    "target_text": "Solo necesitamos hablar lo antes posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0106L04U12",
+   "expect": {
+    "known_text": "It is hard to practise speaking with another person as often as possible",
+    "target_text": "Es duro practicar hablando con otra persona lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "It is hard to speak with another person as often as possible to practise",
+    "target_text": "Es duro hablar con otra persona lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0107L01U05",
+   "expect": {
+    "known_text": "We were hoping to practise speaking with another person",
+    "target_text": "Esperábamos practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "We were hoping to speak with another person to practise",
+    "target_text": "Esperábamos hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0109L01U02",
+   "expect": {
+    "known_text": "We must try to practise speaking as much as possible every day",
+    "target_text": "Tenemos que intentar practicar hablando lo más posible todos los días"
+   },
+   "set": {
+    "known_text": "We must try to speak as much as possible every day to practise",
+    "target_text": "Tenemos que intentar hablar lo más posible todos los días para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0109L01U04",
+   "expect": {
+    "known_text": "We must find a way to practise speaking with people as much as possible",
+    "target_text": "Tenemos que encontrar una manera de practicar hablando con personas lo más posible"
+   },
+   "set": {
+    "known_text": "We must find a way to speak with people as much as possible to practise",
+    "target_text": "Tenemos que encontrar una manera de hablar con personas lo más posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0109L01U06",
+   "expect": {
+    "known_text": "If we want to get better we have to practise speaking a little every day",
+    "target_text": "Si queremos mejorar tenemos que practicar hablando un poco todos los días"
+   },
+   "set": {
+    "known_text": "If we want to get better we have to practise a little every day",
+    "target_text": "Si queremos mejorar tenemos que practicar un poco todos los días"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0109L02U03",
+   "expect": {
+    "known_text": "I think the best way to learn new words is to practise speaking with people as much as possible",
+    "target_text": "Creo que la mejor manera de aprender palabras nuevas es practicar hablando con personas lo más posible"
+   },
+   "set": {
+    "known_text": "I think the best way to learn new words is to speak with people as much as possible",
+    "target_text": "Creo que la mejor manera de aprender palabras nuevas es hablar con personas lo más posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0110L03U06",
+   "expect": {
+    "known_text": "I want to relax a little now and then I'm going to try to practise speaking again later",
+    "target_text": "Quiero relajarme un poco ahora y después voy a intentar practicar hablando otra vez más tarde"
+   },
+   "set": {
+    "known_text": "I want to relax a little now and then I'm going to try to speak again later to practise",
+    "target_text": "Quiero relajarme un poco ahora y después voy a intentar hablar otra vez más tarde para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0115L01U09",
+   "expect": {
+    "known_text": "I should have more time to practise speaking with my friends",
+    "target_text": "Debería tener más tiempo para practicar hablando con mis amigos"
+   },
+   "set": {
+    "known_text": "I should have more time to practise Spanish with my friends",
+    "target_text": "Debería tener más tiempo para practicar español con mis amigos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0117L01U14",
+   "expect": {
+    "known_text": "I definitely need to practise speaking more before I feel ready",
+    "target_text": "Sin duda necesito practicar hablando más antes de sentirme listo"
+   },
+   "set": {
+    "known_text": "I definitely need to practise more before I feel ready",
+    "target_text": "Sin duda necesito practicar más antes de sentirme listo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0121L03U18",
+   "expect": {
+    "known_text": "I think it is very good to use your time to practise speaking Spanish",
+    "target_text": "Creo que es muy bueno usar tu tiempo para practicar hablando español"
+   },
+   "set": {
+    "known_text": "I think it is very good to use your time to practise Spanish",
+    "target_text": "Creo que es muy bueno usar tu tiempo para practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0135L03U05",
+   "expect": {
+    "known_text": "It's so good to practise talking with another person",
+    "target_text": "Es tan bueno practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "It's so good to speak with another person to practise",
+    "target_text": "Es tan bueno hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0137L03U14",
+   "expect": {
+    "known_text": "I think it's more important to practise speaking than to be perfect",
+    "target_text": "Creo que es más importante practicar hablando que ser perfecto"
+   },
+   "set": {
+    "known_text": "I think it's more important to practise than to be perfect",
+    "target_text": "Creo que es más importante practicar que ser perfecto"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0157L02U06",
+   "expect": {
+    "known_text": "Next month I'm going to practise talking with another person",
+    "target_text": "El mes que viene voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "Next month I'm going to speak with another person to practise",
+    "target_text": "El mes que viene voy a hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0157L02U14",
+   "expect": {
+    "known_text": "So I'm going to practise talking with another person next month as often as possible",
+    "target_text": "Así que el mes que viene voy a practicar hablando con otra persona lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "So next month I'm going to speak with another person as often as possible to practise",
+    "target_text": "Así que el mes que viene voy a hablar con otra persona lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0161L04U03",
+   "expect": {
+    "known_text": "On Sunday I'm going to practise talking with another person",
+    "target_text": "El domingo voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "On Sunday I'm going to speak with another person to practise",
+    "target_text": "El domingo voy a hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0161L05U03",
+   "expect": {
+    "known_text": "On Sunday morning I'm going to practise talking with another person",
+    "target_text": "El domingo por la mañana voy a practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "On Sunday morning I'm going to speak with another person to practise",
+    "target_text": "El domingo por la mañana voy a hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0161L05U14",
+   "expect": {
+    "known_text": "On Sunday morning I think it's useful to practise talking with another person",
+    "target_text": "El domingo por la mañana creo que es útil practicar hablando con otra persona"
+   },
+   "set": {
+    "known_text": "On Sunday morning I think it's useful to speak with another person to practise",
+    "target_text": "El domingo por la mañana creo que es útil hablar con otra persona para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0163L01U01",
+   "expect": {
+    "known_text": "I think that it's very important to practise talking as frequently as possible",
+    "target_text": "Creo que es muy importante practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I think that it's very important to speak as frequently as possible to practise",
+    "target_text": "Creo que es muy importante hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0163L03U05",
+   "expect": {
+    "known_text": "I think that it is interesting to practise talking with them",
+    "target_text": "Creo que es interesante practicar hablando con ellos"
+   },
+   "set": {
+    "known_text": "I think that it is interesting to speak with them to practise",
+    "target_text": "Creo que es interesante hablar con ellos para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0172L03U14",
+   "expect": {
+    "known_text": "That would be the perfect time to practise speaking",
+    "target_text": "Ese sería el momento perfecto para practicar hablando"
+   },
+   "set": {
+    "known_text": "That would be the perfect time to practise Spanish",
+    "target_text": "Ese sería el momento perfecto para practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0172L04U01",
+   "expect": {
+    "known_text": "It's very helpful to practise speaking as often as possible",
+    "target_text": "Es muy útil practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "It's very helpful to speak as often as possible to practise",
+    "target_text": "Es muy útil hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0190L01U05",
+   "expect": {
+    "known_text": "What I do is try to practise speaking a little every day",
+    "target_text": "Lo que hago es intentar practicar hablando un poco todos los días"
+   },
+   "set": {
+    "known_text": "What I do is try to speak a little every day to practise",
+    "target_text": "Lo que hago es intentar hablar un poco todos los días para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0192L02U06",
+   "expect": {
+    "known_text": "I think it's better to practise speaking at night when it's quiet",
+    "target_text": "Creo que es mejor practicar hablando por la noche cuando está callado"
+   },
+   "set": {
+    "known_text": "I think it's better to practise at night when it's quiet",
+    "target_text": "Creo que es mejor practicar por la noche cuando está callado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0200L02U10",
+   "expect": {
+    "known_text": "They want to practise speaking and I think that is very interesting",
+    "target_text": "Quieren practicar hablando y creo que es muy interesante"
+   },
+   "set": {
+    "known_text": "They want to speak to practise and I think that is very interesting",
+    "target_text": "Quieren hablar para practicar y creo que es muy interesante"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L02B03",
+   "expect": {
+    "known_text": "I enjoy the opportunity to practise talking with you",
+    "target_text": "Disfruto la oportunidad de practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "I enjoy the opportunity to practise Spanish with you",
+    "target_text": "Disfruto la oportunidad de practicar español contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L02U01",
+   "expect": {
+    "known_text": "I enjoy the opportunity to practise talking with you as often as possible",
+    "target_text": "Disfruto la oportunidad de practicar hablando contigo lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I enjoy the opportunity to practise Spanish with you as often as possible",
+    "target_text": "Disfruto la oportunidad de practicar español contigo lo más a menudo posible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L02U02",
+   "expect": {
+    "known_text": "This is a good opportunity to practise speaking Spanish before we start",
+    "target_text": "Esta es una buena oportunidad de practicar hablando español antes de empezar"
+   },
+   "set": {
+    "known_text": "This is a good opportunity to practise Spanish before we start",
+    "target_text": "Esta es una buena oportunidad de practicar español antes de empezar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L02U06",
+   "expect": {
+    "known_text": "I had a good opportunity to practise talking with other people today",
+    "target_text": "Tuve una buena oportunidad de practicar hablando con otras personas hoy"
+   },
+   "set": {
+    "known_text": "I had a good opportunity to practise Spanish with other people today",
+    "target_text": "Tuve una buena oportunidad de practicar español con otras personas hoy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0206L02U16",
+   "expect": {
+    "known_text": "I enjoy the chance to practise speaking with you",
+    "target_text": "disfruto la oportunidad de practicar hablando contigo"
+   },
+   "set": {
+    "known_text": "I enjoy the chance to practise Spanish with you",
+    "target_text": "disfruto la oportunidad de practicar español contigo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0212L01U05",
+   "expect": {
+    "known_text": "They wanted to practise speaking as soon as possible",
+    "target_text": "Querían practicar hablando lo antes posible"
+   },
+   "set": {
+    "known_text": "They wanted to speak as soon as possible to practise",
+    "target_text": "Querían hablar lo antes posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0217L01U13",
+   "expect": {
+    "known_text": "I took some time at the weekend to practise speaking and it went well",
+    "target_text": "Tomé tiempo el fin de semana para practicar hablando y fue bien"
+   },
+   "set": {
+    "known_text": "I took some time at the weekend to practise Spanish and it went well",
+    "target_text": "Tomé tiempo el fin de semana para practicar español y fue bien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0219L02U03",
+   "expect": {
+    "known_text": "It would be nice to practise speaking with you here",
+    "target_text": "Sería agradable practicar hablando contigo aquí"
+   },
+   "set": {
+    "known_text": "It would be nice to speak with you here to practise",
+    "target_text": "Sería agradable hablar contigo aquí para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0219L02U13",
+   "expect": {
+    "known_text": "It's nice to practise speaking when you work with someone",
+    "target_text": "Es agradable practicar hablando cuando trabajas con alguien"
+   },
+   "set": {
+    "known_text": "It's nice to speak to practise when you work with someone",
+    "target_text": "Es agradable hablar para practicar cuando trabajas con alguien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0228L01U16",
+   "expect": {
+    "known_text": "that man has just started to practise speaking",
+    "target_text": "ese hombre acaba de empezar a practicar hablando"
+   },
+   "set": {
+    "known_text": "that man has just started to practise Spanish",
+    "target_text": "ese hombre acaba de empezar a practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0244L03U13",
+   "expect": {
+    "known_text": "I already know how important it is to practise speaking as often as possible",
+    "target_text": "Ya sé lo importante que es practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I already know how important it is to speak as often as possible to practise",
+    "target_text": "Ya sé lo importante que es hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0247L01U14",
+   "expect": {
+    "known_text": "I think it's fairly important to practise speaking as often as possible",
+    "target_text": "Creo que es bastante importante practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "I think it's fairly important to speak as often as possible to practise",
+    "target_text": "Creo que es bastante importante hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0259L01U05",
+   "expect": {
+    "known_text": "An idea would be to practise speaking as often as possible",
+    "target_text": "Una idea sería practicar hablando lo más a menudo posible"
+   },
+   "set": {
+    "known_text": "An idea would be to speak as often as possible to practise",
+    "target_text": "Una idea sería hablar lo más a menudo posible para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0259L01U09",
+   "expect": {
+    "known_text": "A useful idea is to practise speaking every day",
+    "target_text": "Una idea útil es practicar hablando todos los días"
+   },
+   "set": {
+    "known_text": "A useful idea is to speak every day to practise",
+    "target_text": "Una idea útil es hablar todos los días para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0259L01U17",
+   "expect": {
+    "known_text": "An idea would be to practise speaking with you tomorrow",
+    "target_text": "Una idea sería practicar hablando contigo mañana"
+   },
+   "set": {
+    "known_text": "An idea would be to speak with you tomorrow to practise",
+    "target_text": "Una idea sería hablar contigo mañana para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0262L02U02",
+   "expect": {
+    "known_text": "That man has just started practising speaking",
+    "target_text": "Ese hombre acaba de empezar a practicar hablando"
+   },
+   "set": {
+    "known_text": "That man has just started to practise Spanish",
+    "target_text": "Ese hombre acaba de empezar a practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0281L02U07",
+   "expect": {
+    "known_text": "If I finish this I want to practise speaking Spanish",
+    "target_text": "Si termino esto quiero practicar hablando español"
+   },
+   "set": {
+    "known_text": "If I finish this I want to speak Spanish to practise",
+    "target_text": "Si termino esto quiero hablar español para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0295L01U09",
+   "expect": {
+    "known_text": "I said that I wanted to practise talking with other people",
+    "target_text": "Dije que quería practicar hablando con otras personas"
+   },
+   "set": {
+    "known_text": "I said that I wanted to speak with other people to practise",
+    "target_text": "Dije que quería hablar con otras personas para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0296L01U04",
+   "expect": {
+    "known_text": "I said I needed more time to practise speaking Spanish",
+    "target_text": "Dije que necesitaba más tiempo para practicar hablando español"
+   },
+   "set": {
+    "known_text": "I said I needed more time to practise Spanish",
+    "target_text": "Dije que necesitaba más tiempo para practicar español"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0296L02U11",
+   "expect": {
+    "known_text": "I said that I needed a little more time to practise speaking with other people",
+    "target_text": "Dije que necesitaba un poco más de tiempo para practicar hablando con otras personas"
+   },
+   "set": {
+    "known_text": "I said that I needed a little more time to practise Spanish with other people",
+    "target_text": "Dije que necesitaba un poco más de tiempo para practicar español con otras personas"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0301L02U03",
+   "expect": {
+    "known_text": "he said that he wants to practise speaking",
+    "target_text": "Él dijo que él quiere practicar hablando"
+   },
+   "set": {
+    "known_text": "he said that he wants to speak to practise",
+    "target_text": "Él dijo que él quiere hablar para practicar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0502L03U02",
+   "expect": {
+    "known_text": "I want to practise speaking instead of writing",
+    "target_text": "quiero practicar hablando en vez de escribir"
+   },
+   "set": {
+    "known_text": "I want to speak instead of writing",
+    "target_text": "quiero hablar en vez de escribir"
+   }
+  }
+ ]
+}
