@@ -1,0 +1,5 @@
+{"ops":[
+ {"op":"phrase.update","phrase_id":"ita_for_eng:S0629L02U05","set":{"target_text":"non voglio lo zucchero nel mio caffè"}},
+ {"op":"audio.link","target":"phrase","phrase_id":"ita_for_eng:S0629L02U05","slot":"target1","audio_id":"c4a30340-9132-4ff1-b30e-10f7a84ddaca"},
+ {"op":"audio.link","target":"phrase","phrase_id":"ita_for_eng:S0629L02U05","slot":"target2","audio_id":"5b794d16-47a5-4d58-a3f6-e2aabc4bff8c"}
+]}
