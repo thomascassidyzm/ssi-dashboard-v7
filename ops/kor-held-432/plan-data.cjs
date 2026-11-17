@@ -279,10 +279,15 @@ ph({ S0149L01B01: ["this isn't very difficult, so", '이건 별로 어렵지 않
   S0149L02U07: ["but I hope you'll finish soon", '하지만 곧 끝나면 좋겠어요'] });
 
 // 77 — follow the seed: 놀라워요, how quickly | 얼마나 빨리, I'm starting to understand | 이해하기 시작하고 있는지 (new).
-item(19, 'seed 77 L01 I\'m surprised | 놀라워요 (basket restricted to "I"), L02 how quickly | 얼마나 빨리, new L03 | 이해하기 시작하고 있는지', 'held-11', '#734 option A');
+item(19, 'seed 77 L01 I\'m surprised | 놀라워요 (basket restricted to "I"), L02 how quickly | 얼마나 빨리, new L03 to understand | 이해하기 + new L04 I\'m starting | 시작하고 있는지', 'held-11', '#734 option A, cut short per Kai 17 Nov');
+// Kai 17 Nov (shortest LEGO cut): #734's single L03 이해하기 시작하고 있는지 is 11 syllables, over the 8 cap. Cut in two: 이해하기 (4) and the
+// frame 시작하고 있는지 (6) — "I'm starting (to …)", the verb comes from the part before it, so phrases can swap 이해하기 for 말하기 (taught 23/28).
+// Precedent: 피곤해지기 시작하고 있어요 (S0041L02) teaches V-기 시작하고 있- as one move. The "to understand" | 이해하기 LEGO differs from the
+// S0074L01C01 component (이해하게): components are not ZUT units in this course (152 of 890 component prompts differ from a LEGO's).
 D.legos.S0077L01 = { known_text: "I'm surprised", target_text: '놀라워요' };
 D.legos.S0077L02 = { known_text: 'how quickly', target_text: '얼마나 빨리', comps: [['how much', '얼마나'], ['quickly', '빨리']] };
-D.legoInsert.push({ seed: 77, index: 3, known_text: "I'm starting to understand", target_text: '이해하기 시작하고 있는지', type: 'M', comps: [['to understand', '이해하기'], ["I'm starting", '시작하고 있는지']] });
+D.legoInsert.push({ seed: 77, index: 3, known_text: 'to understand', target_text: '이해하기', type: 'A', comps: [] });
+D.legoInsert.push({ seed: 77, index: 4, known_text: "I'm starting", target_text: '시작하고 있는지', type: 'A', comps: [] });
 ph({ S0077L01B01: ["I'm surprised", '놀라워요'], S0077L01B02: ["I'm really surprised", '정말 놀라워요'], S0077L01B03: ["I'm very surprised", '아주 놀라워요'],
   S0077L01U01: ["I'm surprised", '놀라워요'], S0077L01U05: ["but I'm surprised", '하지만 놀라워요'], S0077L01U06: ["I'm really surprised", '정말 놀라워요'],
   S0077L01U07: ["so I'm surprised", '그래서 놀라워요'], S0077L01U02: null, S0077L01U03: null, S0077L01U04: null, S0077L01U08: null,
@@ -290,12 +295,15 @@ ph({ S0077L01B01: ["I'm surprised", '놀라워요'], S0077L01B02: ["I'm really s
   S0077L02U01: ['how quickly do you want to learn?', '얼마나 빨리 배우고 싶어요?'], S0077L02U02: ['how quickly do you want to do it?', '얼마나 빨리 하고 싶어요?'],
   S0077L02B03: null, S0077L02B04: null, S0077L02U03: null, S0077L02U04: null, S0077L02U05: null, S0077L02U06: null, S0077L02U07: null, S0077L02U08: null,
   S0097L01U08: ["yes I'm surprised", '네 놀라워요'], S0384L03U10: ["I'm surprised because I can agree", '동의할 수 있어서 놀라워요'] });
-ins('S0077L03', 'build', "I'm starting to understand", '이해하기 시작하고 있는지');
-ins('S0077L03', 'build', "how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지');
-ins('S0077L03', 'use', "I'm surprised at how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지 놀라워요');
-ins('S0077L03', 'use', "I'm really surprised at how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지 정말 놀라워요');
-ins('S0077L03', 'use', "but I'm surprised at how quickly I'm starting to understand", '하지만 얼마나 빨리 이해하기 시작하고 있는지 놀라워요');
-ins('S0077L03', 'use', "I want to know if I'm starting to understand", '이해하기 시작하고 있는지 알고 싶어요');
+ins('S0077L03', 'build', 'to understand', '이해하기');
+ins('S0077L04', 'build', "I'm starting", '시작하고 있는지');
+ins('S0077L04', 'build', "I'm starting to understand", '이해하기 시작하고 있는지');
+ins('S0077L04', 'build', "how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지');
+ins('S0077L04', 'use', "I'm surprised at how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지 놀라워요');
+ins('S0077L04', 'use', "I'm really surprised at how quickly I'm starting to understand", '얼마나 빨리 이해하기 시작하고 있는지 정말 놀라워요');
+ins('S0077L04', 'use', "but I'm surprised at how quickly I'm starting to understand", '하지만 얼마나 빨리 이해하기 시작하고 있는지 놀라워요');
+ins('S0077L04', 'use', "I want to know if I'm starting to understand", '이해하기 시작하고 있는지 알고 싶어요');
+ins('S0077L04', 'use', "how quickly I'm starting to talk", '얼마나 빨리 말하기 시작하고 있는지');
 
 // 618 — re-cut to the seed: a long time | 오래된 + doesn't feel like | 것 같지 않아요.
 item(81, 'seed 618 re-cut: a long time | 오래된, doesn\'t feel like | 것 같지 않아요', 'held-11', '#734 option A; 115 already teaches 것 같지 않아요');
