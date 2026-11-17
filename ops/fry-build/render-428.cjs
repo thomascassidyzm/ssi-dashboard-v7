@@ -92,7 +92,7 @@ async function post(p, body) {
         if (status >= 500 && !out.code) throw new Error(`popty ${status}: ${out.error}`)
         if (!out.ok) { log({ kind: 'refused', key: j.key, text: j.text, status, code: out.code || null, error: out.error || null, slots: j.slots || [j.legoId] }); done.set(j.key, { kind: 'refused' }); return }
         spent += out.charsSpent || 0; audioId = out.audioId
-        const e = { kind: 'render', key: j.key, text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null }
+        const e = { kind: 'render', key: j.key, text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null, ...(out.pieces ? { pieces: out.pieces } : {}) }
         log(e); done.set(j.key, e)
       }
       if (j.kind === 'known' && audioId) {
