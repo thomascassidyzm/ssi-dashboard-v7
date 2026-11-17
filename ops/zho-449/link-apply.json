@@ -1,0 +1,2331 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "b69159ee-a913-4a12-9a03-e9fb7aed1e7c",
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05B01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05B01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05B01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05B01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": "445a443f-0d25-49fa-b316-0f25c3e7496a",
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05U01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05U01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "can you help me now?",
+    "target_text": "你现在能帮我吗？",
+    "target1_audio_id": "d8d7bea8-e3d0-4150-b744-a35f197ba0c8",
+    "target2_audio_id": "faa58315-8703-4b3a-b890-3912746de9ac",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05U01",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "known_audio_id": "501c64e7-08ac-4b8c-95f3-d481f5f4ad23",
+    "known_text": "can you help me now?",
+    "target_text": "你现在能帮我吗？",
+    "target1_audio_id": "d8d7bea8-e3d0-4150-b744-a35f197ba0c8",
+    "target2_audio_id": "faa58315-8703-4b3a-b890-3912746de9ac",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05U02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05U02",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can you help me tomorrow?",
+    "target_text": "你明天能帮我吗？",
+    "known_audio_id": "509f3b3e-0df1-45d3-ae69-2b56c8c03a77",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05U02",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": "70c63c0d-6ac9-4ced-a0a8-161b70a4ec7e",
+    "known_text": "can you help me tomorrow?",
+    "target_text": "你明天能帮我吗？",
+    "known_audio_id": "509f3b3e-0df1-45d3-ae69-2b56c8c03a77",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05U02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05U02",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can you help me tomorrow?",
+    "target_text": "你明天能帮我吗？",
+    "known_audio_id": "509f3b3e-0df1-45d3-ae69-2b56c8c03a77",
+    "target1_audio_id": "70c63c0d-6ac9-4ced-a0a8-161b70a4ec7e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05U02",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": "743a33c9-5364-4b9b-aea9-6be203d796b6",
+    "known_text": "can you help me tomorrow?",
+    "target_text": "你明天能帮我吗？",
+    "known_audio_id": "509f3b3e-0df1-45d3-ae69-2b56c8c03a77",
+    "target1_audio_id": "70c63c0d-6ac9-4ced-a0a8-161b70a4ec7e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05U07"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05U07",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "are you going to help me tomorrow?",
+    "target_text": "你明天会帮我吗？",
+    "known_audio_id": "ca749972-02e0-4f76-96d2-3bf45ab887cb",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05U07",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target1_audio_id": "ef56d887-2da3-4822-9639-2eac5dbe00a6",
+    "known_text": "are you going to help me tomorrow?",
+    "target_text": "你明天会帮我吗？",
+    "known_audio_id": "ca749972-02e0-4f76-96d2-3bf45ab887cb",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0025L05U07"
+   },
+   "before": {
+    "id": "zho_for_eng:S0025L05U07",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "are you going to help me tomorrow?",
+    "target_text": "你明天会帮我吗？",
+    "known_audio_id": "ca749972-02e0-4f76-96d2-3bf45ab887cb",
+    "target1_audio_id": "ef56d887-2da3-4822-9639-2eac5dbe00a6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0025L05U07",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": null,
+    "target2_audio_id": "daf425b9-71b0-4d89-8d84-70d69fe5d4aa",
+    "known_text": "are you going to help me tomorrow?",
+    "target_text": "你明天会帮我吗？",
+    "known_audio_id": "ca749972-02e0-4f76-96d2-3bf45ab887cb",
+    "target1_audio_id": "ef56d887-2da3-4822-9639-2eac5dbe00a6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02B01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "52d1a726-f526-46f0-90b1-702d938d0a02",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02B03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I've got more to learn",
+    "target_text": "我还有很多要学",
+    "known_audio_id": "d227410b-b039-447b-a42f-b7e200cea0c6",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02B03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "ed48c112-8e0a-4c0b-869f-30713921fdfc",
+    "known_text": "I've got more to learn",
+    "target_text": "我还有很多要学",
+    "known_audio_id": "d227410b-b039-447b-a42f-b7e200cea0c6",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02B03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I've got more to learn",
+    "target_text": "我还有很多要学",
+    "known_audio_id": "d227410b-b039-447b-a42f-b7e200cea0c6",
+    "target1_audio_id": "ed48c112-8e0a-4c0b-869f-30713921fdfc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02B03",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "f9ab978b-4c9b-42e4-9bd6-6af722e54c97",
+    "known_text": "I've got more to learn",
+    "target_text": "我还有很多要学",
+    "known_audio_id": "d227410b-b039-447b-a42f-b7e200cea0c6",
+    "target1_audio_id": "ed48c112-8e0a-4c0b-869f-30713921fdfc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02C01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "30f66033-cd0b-49b5-8524-acbea330d9b0",
+    "known_text": "still have",
+    "target_text": "还有",
+    "known_audio_id": "1a82e2bc-e9ad-4e5f-ab8b-ca4f2d6b5c8d",
+    "target2_audio_id": "78ddf32b-9bec-400a-8203-378ece6fa347",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02C01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "0acdabc9-b8ce-4fe1-849a-41489f379d6f",
+    "known_text": "still have",
+    "target_text": "还有",
+    "known_audio_id": "1a82e2bc-e9ad-4e5f-ab8b-ca4f2d6b5c8d",
+    "target2_audio_id": "78ddf32b-9bec-400a-8203-378ece6fa347",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02C01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "78ddf32b-9bec-400a-8203-378ece6fa347",
+    "known_text": "still have",
+    "target_text": "还有",
+    "known_audio_id": "1a82e2bc-e9ad-4e5f-ab8b-ca4f2d6b5c8d",
+    "target1_audio_id": "0acdabc9-b8ce-4fe1-849a-41489f379d6f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02C01",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "9596b477-2965-490a-9eb7-077612d1afe1",
+    "known_text": "still have",
+    "target_text": "还有",
+    "known_audio_id": "1a82e2bc-e9ad-4e5f-ab8b-ca4f2d6b5c8d",
+    "target1_audio_id": "0acdabc9-b8ce-4fe1-849a-41489f379d6f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02U05"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02U05",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I know I've got more to learn",
+    "target_text": "我知道我还有很多要学",
+    "known_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02U05",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "57855090-1bc5-4456-aa9f-c013f4f67e39",
+    "known_text": "I know I've got more to learn",
+    "target_text": "我知道我还有很多要学",
+    "known_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0073L02U05"
+   },
+   "before": {
+    "id": "zho_for_eng:S0073L02U05",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I know I've got more to learn",
+    "target_text": "我知道我还有很多要学",
+    "known_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "target1_audio_id": "57855090-1bc5-4456-aa9f-c013f4f67e39",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0073L02U05",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "f973a39d-2a24-4d9f-bc67-e7f43b620e53",
+    "known_text": "I know I've got more to learn",
+    "target_text": "我知道我还有很多要学",
+    "known_audio_id": "b1d6cfe2-e9c2-4c7d-aded-7dea21fd2357",
+    "target1_audio_id": "57855090-1bc5-4456-aa9f-c013f4f67e39",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01B04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01B04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01B04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01B04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01B04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01B04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "ddd28c3a-2486-40c5-a4fe-be501c2f77f8",
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01C01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "think",
+    "target_text": "想得",
+    "known_audio_id": "e3422124-822c-4cbc-aeec-d869d2c09262",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01C01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "b06e6c29-4b43-4749-9171-65de35e7d5ea",
+    "known_text": "think",
+    "target_text": "想得",
+    "known_audio_id": "e3422124-822c-4cbc-aeec-d869d2c09262",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01C01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "think",
+    "target_text": "想得",
+    "known_audio_id": "e3422124-822c-4cbc-aeec-d869d2c09262",
+    "target1_audio_id": "b06e6c29-4b43-4749-9171-65de35e7d5ea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01C01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "c208d554-6ee2-4dae-8214-3210eb83d93d",
+    "known_text": "think",
+    "target_text": "想得",
+    "known_audio_id": "e3422124-822c-4cbc-aeec-d869d2c09262",
+    "target1_audio_id": "b06e6c29-4b43-4749-9171-65de35e7d5ea",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01C02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01C02",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "quickly enough",
+    "target_text": "够快",
+    "known_audio_id": "bcfd1e43-c127-4994-86fa-b143317d4e52",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01C02",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "bba478c2-9456-4688-ab7f-b2da94fcb3ac",
+    "known_text": "quickly enough",
+    "target_text": "够快",
+    "known_audio_id": "bcfd1e43-c127-4994-86fa-b143317d4e52",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01C02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01C02",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "quickly enough",
+    "target_text": "够快",
+    "known_audio_id": "bcfd1e43-c127-4994-86fa-b143317d4e52",
+    "target1_audio_id": "bba478c2-9456-4688-ab7f-b2da94fcb3ac",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01C02",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "b654898b-a15b-4828-b1b4-31d4bba02c75",
+    "known_text": "quickly enough",
+    "target_text": "够快",
+    "known_audio_id": "bcfd1e43-c127-4994-86fa-b143317d4e52",
+    "target1_audio_id": "bba478c2-9456-4688-ab7f-b2da94fcb3ac",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01U01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "92625392-872c-44c7-babd-4b039d1afb2c",
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01U01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "known_audio_id": "92625392-872c-44c7-babd-4b039d1afb2c",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "39f69be5-0798-4304-bd38-93aeed8f6431",
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "known_audio_id": "92625392-872c-44c7-babd-4b039d1afb2c",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01U01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "known_audio_id": "92625392-872c-44c7-babd-4b039d1afb2c",
+    "target1_audio_id": "39f69be5-0798-4304-bd38-93aeed8f6431",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01U01",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "d6d24397-7e2c-421b-8f53-3ae49343791c",
+    "known_text": "I need to think quickly enough",
+    "target_text": "我需要想得够快",
+    "known_audio_id": "92625392-872c-44c7-babd-4b039d1afb2c",
+    "target1_audio_id": "39f69be5-0798-4304-bd38-93aeed8f6431",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01U04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01U04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "it's difficult to think quickly enough",
+    "target_text": "很难想得够快",
+    "known_audio_id": "68289fb9-a386-486e-9302-17bd4db3b678",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01U04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "64334b63-2545-4cd5-801a-92671aa9af46",
+    "known_text": "it's difficult to think quickly enough",
+    "target_text": "很难想得够快",
+    "known_audio_id": "68289fb9-a386-486e-9302-17bd4db3b678",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0091L01U04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0091L01U04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "it's difficult to think quickly enough",
+    "target_text": "很难想得够快",
+    "known_audio_id": "68289fb9-a386-486e-9302-17bd4db3b678",
+    "target1_audio_id": "64334b63-2545-4cd5-801a-92671aa9af46",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0091L01U04",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "7b921871-c52e-4294-b691-2a15101aeb81",
+    "known_text": "it's difficult to think quickly enough",
+    "target_text": "很难想得够快",
+    "known_audio_id": "68289fb9-a386-486e-9302-17bd4db3b678",
+    "target1_audio_id": "64334b63-2545-4cd5-801a-92671aa9af46",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0117L01B05"
+   },
+   "before": {
+    "id": "zho_for_eng:S0117L01B05",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "last time we",
+    "target_text": "上次我们",
+    "target1_audio_id": "fbd6e4dd-df3d-4692-a5d5-041961185dc0",
+    "target2_audio_id": "69697779-8d7e-4920-a449-ce9988a6a290",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0117L01B05",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "6d76e338-24ac-476d-a839-aeca89e76079",
+    "known_text": "last time we",
+    "target_text": "上次我们",
+    "target1_audio_id": "fbd6e4dd-df3d-4692-a5d5-041961185dc0",
+    "target2_audio_id": "69697779-8d7e-4920-a449-ce9988a6a290",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0117L01C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0117L01C01",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "ef623c4b-1cfe-4f6e-9841-4305e8b5b989",
+    "known_text": "last",
+    "target_text": "上",
+    "known_audio_id": "8bfae64d-5634-4cf2-8fd8-d77a272ea3ea",
+    "target2_audio_id": "25dd8659-f20e-454e-80d4-e490b213175a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0117L01C01",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "234d3834-1a6e-40b3-addb-5069625b797b",
+    "known_text": "last",
+    "target_text": "上",
+    "known_audio_id": "8bfae64d-5634-4cf2-8fd8-d77a272ea3ea",
+    "target2_audio_id": "25dd8659-f20e-454e-80d4-e490b213175a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0117L01C01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0117L01C01",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "25dd8659-f20e-454e-80d4-e490b213175a",
+    "known_text": "last",
+    "target_text": "上",
+    "known_audio_id": "8bfae64d-5634-4cf2-8fd8-d77a272ea3ea",
+    "target1_audio_id": "234d3834-1a6e-40b3-addb-5069625b797b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0117L01C01",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "f7c95ce9-4162-46ff-ac66-38726079e0b6",
+    "known_text": "last",
+    "target_text": "上",
+    "known_audio_id": "8bfae64d-5634-4cf2-8fd8-d77a272ea3ea",
+    "target1_audio_id": "234d3834-1a6e-40b3-addb-5069625b797b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0117L01U02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0117L01U02",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "I did better last time",
+    "target_text": "我上次做得更好",
+    "target1_audio_id": "14ece45a-d1dc-4ed5-8209-7032c2d81df2",
+    "target2_audio_id": "645660a2-d502-4a36-9d37-d76c568b18c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0117L01U02",
+    "seed_number": 117,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1eca427d-61d1-4b36-b1ff-d8d2178a6609",
+    "known_text": "I did better last time",
+    "target_text": "我上次做得更好",
+    "target1_audio_id": "14ece45a-d1dc-4ed5-8209-7032c2d81df2",
+    "target2_audio_id": "645660a2-d502-4a36-9d37-d76c568b18c4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0293L02B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0293L02B01",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0293L02B01",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0293L02B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0293L02B01",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0293L02B01",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "c89d9dcb-e1df-4f8e-b516-7f0e1468f0a6",
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0293L02B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0293L02B03",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "he wants to meet me",
+    "target_text": "他想见我",
+    "known_audio_id": "03ce0400-81c8-4447-8d15-e1ee52baaae5",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0293L02B03",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "4f1a9f8f-6773-4165-9f1d-3b43752277e3",
+    "known_text": "he wants to meet me",
+    "target_text": "他想见我",
+    "known_audio_id": "03ce0400-81c8-4447-8d15-e1ee52baaae5",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0293L02B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0293L02B03",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "he wants to meet me",
+    "target_text": "他想见我",
+    "known_audio_id": "03ce0400-81c8-4447-8d15-e1ee52baaae5",
+    "target1_audio_id": "4f1a9f8f-6773-4165-9f1d-3b43752277e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0293L02B03",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "b8cc9481-c47f-4b2b-a96d-cb1a44998f9b",
+    "known_text": "he wants to meet me",
+    "target_text": "他想见我",
+    "known_audio_id": "03ce0400-81c8-4447-8d15-e1ee52baaae5",
+    "target1_audio_id": "4f1a9f8f-6773-4165-9f1d-3b43752277e3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0336L01B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0336L01B03",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I like that door",
+    "target_text": "我喜欢那扇门",
+    "known_audio_id": "16eefbc8-a411-4dbb-a0b4-85a50ad8464d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0336L01B03",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "25e0dbb3-9873-4744-91ee-8f807a088946",
+    "known_text": "I like that door",
+    "target_text": "我喜欢那扇门",
+    "known_audio_id": "16eefbc8-a411-4dbb-a0b4-85a50ad8464d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0336L01B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0336L01B03",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I like that door",
+    "target_text": "我喜欢那扇门",
+    "known_audio_id": "16eefbc8-a411-4dbb-a0b4-85a50ad8464d",
+    "target1_audio_id": "25e0dbb3-9873-4744-91ee-8f807a088946",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0336L01B03",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "fd7d5a3a-bd2f-48f0-a123-a40e194dddeb",
+    "known_text": "I like that door",
+    "target_text": "我喜欢那扇门",
+    "known_audio_id": "16eefbc8-a411-4dbb-a0b4-85a50ad8464d",
+    "target1_audio_id": "25e0dbb3-9873-4744-91ee-8f807a088946",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0336L01U02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0336L01U02",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "she wants to see that door",
+    "target_text": "她想看那扇门",
+    "known_audio_id": "4bdfb375-f712-4040-b8ec-42d0aeafde3d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0336L01U02",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "38d3735a-fa74-4169-a518-653e2ff84ce0",
+    "known_text": "she wants to see that door",
+    "target_text": "她想看那扇门",
+    "known_audio_id": "4bdfb375-f712-4040-b8ec-42d0aeafde3d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0336L01U02"
+   },
+   "before": {
+    "id": "zho_for_eng:S0336L01U02",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "she wants to see that door",
+    "target_text": "她想看那扇门",
+    "known_audio_id": "4bdfb375-f712-4040-b8ec-42d0aeafde3d",
+    "target1_audio_id": "38d3735a-fa74-4169-a518-653e2ff84ce0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0336L01U02",
+    "seed_number": 336,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "28c6c112-f9c0-4aa9-94c0-4887963e6676",
+    "known_text": "she wants to see that door",
+    "target_text": "她想看那扇门",
+    "known_audio_id": "4bdfb375-f712-4040-b8ec-42d0aeafde3d",
+    "target1_audio_id": "38d3735a-fa74-4169-a518-653e2ff84ce0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0337L01B01"
+   },
+   "before": {
+    "id": "zho_for_eng:S0337L01B01",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "to keep playing",
+    "target_text": "继续玩",
+    "target1_audio_id": "47ada9ca-21dd-4c12-ad73-cecbb2f3829a",
+    "target2_audio_id": "32059cfd-4f73-4646-b3b6-f6c347147c1e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0337L01B01",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a434d4ee-5629-4aa5-901c-1fc06ad8c9ac",
+    "known_text": "to keep playing",
+    "target_text": "继续玩",
+    "target1_audio_id": "47ada9ca-21dd-4c12-ad73-cecbb2f3829a",
+    "target2_audio_id": "32059cfd-4f73-4646-b3b6-f6c347147c1e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0337L01B04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0337L01B04",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "I want to keep playing",
+    "target_text": "我想继续玩",
+    "target1_audio_id": "95486f1a-9b69-498c-9c12-71cc932db26c",
+    "target2_audio_id": "999f8a1b-7084-49cd-9ffc-2011c3bf3a81",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0337L01B04",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a005df5d-53d0-4b09-aa1f-8ba72e1fdbda",
+    "known_text": "I want to keep playing",
+    "target_text": "我想继续玩",
+    "target1_audio_id": "95486f1a-9b69-498c-9c12-71cc932db26c",
+    "target2_audio_id": "999f8a1b-7084-49cd-9ffc-2011c3bf3a81",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0337L01U04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0337L01U04",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "he can't keep playing",
+    "target_text": "他不能继续玩",
+    "target1_audio_id": "c990b53c-0602-42c3-9c0c-141ac76d5f5a",
+    "target2_audio_id": "c209428d-7a4a-427f-863a-f87547133807",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0337L01U04",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "659466c6-c888-4f29-a6d6-f11665a06005",
+    "known_text": "he can't keep playing",
+    "target_text": "他不能继续玩",
+    "target1_audio_id": "c990b53c-0602-42c3-9c0c-141ac76d5f5a",
+    "target2_audio_id": "c209428d-7a4a-427f-863a-f87547133807",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0082L01U08"
+   },
+   "before": {
+    "id": "zho_for_eng:S0082L01U08",
+    "seed_number": 82,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I'm not going to wait for you",
+    "target_text": "我不会等你",
+    "known_audio_id": "ea3771b1-06cc-43f1-8456-0155495aab35",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0082L01U08",
+    "seed_number": 82,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "efe64b7d-d791-4362-a975-b3e3d73f75c3",
+    "known_text": "I'm not going to wait for you",
+    "target_text": "我不会等你",
+    "known_audio_id": "ea3771b1-06cc-43f1-8456-0155495aab35",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0082L01U08"
+   },
+   "before": {
+    "id": "zho_for_eng:S0082L01U08",
+    "seed_number": 82,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I'm not going to wait for you",
+    "target_text": "我不会等你",
+    "known_audio_id": "ea3771b1-06cc-43f1-8456-0155495aab35",
+    "target1_audio_id": "efe64b7d-d791-4362-a975-b3e3d73f75c3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0082L01U08",
+    "seed_number": 82,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "0322ec3f-2b48-46ad-b983-b2c713c0b1f0",
+    "known_text": "I'm not going to wait for you",
+    "target_text": "我不会等你",
+    "known_audio_id": "ea3771b1-06cc-43f1-8456-0155495aab35",
+    "target1_audio_id": "efe64b7d-d791-4362-a975-b3e3d73f75c3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0162L01B03"
+   },
+   "before": {
+    "id": "zho_for_eng:S0162L01B03",
+    "seed_number": 162,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "what do you think about this",
+    "target_text": "这个你觉得怎么样",
+    "target1_audio_id": "3e08458f-a19c-46c2-9f33-ef1f1b047915",
+    "target2_audio_id": "6c6ecc74-21b5-4d11-87fb-9bd991e3974a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0162L01B03",
+    "seed_number": 162,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "c8dd6cec-e335-4c4a-bf7e-d2a725fad62f",
+    "known_text": "what do you think about this",
+    "target_text": "这个你觉得怎么样",
+    "target1_audio_id": "3e08458f-a19c-46c2-9f33-ef1f1b047915",
+    "target2_audio_id": "6c6ecc74-21b5-4d11-87fb-9bd991e3974a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0551L01U06"
+   },
+   "before": {
+    "id": "zho_for_eng:S0551L01U06",
+    "seed_number": 551,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "I saw the church",
+    "target_text": "我看到了教堂",
+    "target1_audio_id": "0116e9cf-d539-47b2-b547-52fd206b8cf4",
+    "target2_audio_id": "8b0d8153-b026-4280-b3ee-f0818d1734d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0551L01U06",
+    "seed_number": 551,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "b3c7a36c-b994-4bc2-96f6-c87b6521e8a8",
+    "known_text": "I saw the church",
+    "target_text": "我看到了教堂",
+    "target1_audio_id": "0116e9cf-d539-47b2-b547-52fd206b8cf4",
+    "target2_audio_id": "8b0d8153-b026-4280-b3ee-f0818d1734d7",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0025L05"
+   },
+   "before": {
+    "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": "S0025L05",
+    "target1_audio_id": null,
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target2_audio_id": null,
+    "presentation_audio_id": "0f2d902e-d542-4f04-9852-91eec7315694"
+   },
+   "after": {
+    "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": "S0025L05",
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target2_audio_id": null,
+    "presentation_audio_id": "0f2d902e-d542-4f04-9852-91eec7315694"
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0025L05"
+   },
+   "before": {
+    "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": "S0025L05",
+    "target2_audio_id": null,
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "presentation_audio_id": "0f2d902e-d542-4f04-9852-91eec7315694"
+   },
+   "after": {
+    "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+    "seed_number": 25,
+    "lego_index": 5,
+    "lego_id": "S0025L05",
+    "target2_audio_id": "445a443f-0d25-49fa-b316-0f25c3e7496a",
+    "known_text": "help me?",
+    "target_text": "帮我吗",
+    "known_audio_id": "cd96e8db-1c54-4fa1-86b5-31db22ea49f0",
+    "target1_audio_id": "2b45676a-05d9-437d-8c93-6342e2022206",
+    "presentation_audio_id": "0f2d902e-d542-4f04-9852-91eec7315694"
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0073L02"
+   },
+   "before": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "known_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "after": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "changed": true
+  },
+  {
+   "index": 49,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0073L02"
+   },
+   "before": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "target1_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target2_audio_id": null,
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "after": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target2_audio_id": null,
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "changed": true
+  },
+  {
+   "index": 50,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0073L02"
+   },
+   "before": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "target2_audio_id": null,
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "after": {
+    "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+    "seed_number": 73,
+    "lego_index": 2,
+    "lego_id": "S0073L02",
+    "target2_audio_id": "52d1a726-f526-46f0-90b1-702d938d0a02",
+    "known_text": "got more to learn",
+    "target_text": "还有很多要学",
+    "known_audio_id": "679f85cf-9538-402a-8f37-1408c466c49f",
+    "target1_audio_id": "968e2d10-1b84-419c-8bf2-90fc747e4d98",
+    "presentation_audio_id": "a643fc2f-5701-4ec8-a6f8-ae7e01217b31"
+   },
+   "changed": true
+  },
+  {
+   "index": 51,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0091L01"
+   },
+   "before": {
+    "id": "7aa9389f-839d-486e-be19-123906f93531",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": "S0091L01",
+    "target1_audio_id": null,
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target2_audio_id": null,
+    "presentation_audio_id": "85296195-2483-43ef-9e2c-fd53f88afd51"
+   },
+   "after": {
+    "id": "7aa9389f-839d-486e-be19-123906f93531",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": "S0091L01",
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target2_audio_id": null,
+    "presentation_audio_id": "85296195-2483-43ef-9e2c-fd53f88afd51"
+   },
+   "changed": true
+  },
+  {
+   "index": 52,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0091L01"
+   },
+   "before": {
+    "id": "7aa9389f-839d-486e-be19-123906f93531",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": "S0091L01",
+    "target2_audio_id": null,
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "presentation_audio_id": "85296195-2483-43ef-9e2c-fd53f88afd51"
+   },
+   "after": {
+    "id": "7aa9389f-839d-486e-be19-123906f93531",
+    "seed_number": 91,
+    "lego_index": 1,
+    "lego_id": "S0091L01",
+    "target2_audio_id": "ddd28c3a-2486-40c5-a4fe-be501c2f77f8",
+    "known_text": "to think quickly enough",
+    "target_text": "想得够快",
+    "known_audio_id": "4723317f-d30f-47dc-a4dd-937689fceb27",
+    "target1_audio_id": "0e656543-0c85-46b6-83c2-35ab95dead9e",
+    "presentation_audio_id": "85296195-2483-43ef-9e2c-fd53f88afd51"
+   },
+   "changed": true
+  },
+  {
+   "index": 53,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0147L01"
+   },
+   "before": {
+    "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": "S0147L01",
+    "target1_audio_id": null,
+    "known_text": "nervous",
+    "target_text": "紧张",
+    "known_audio_id": "22e25692-c218-4cb3-a58f-3737e5b2885c",
+    "target2_audio_id": null,
+    "presentation_audio_id": "3868ac53-3e64-4e34-9ef4-0fc5dfbde26d"
+   },
+   "after": {
+    "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": "S0147L01",
+    "target1_audio_id": "e3dca576-938d-4691-ab20-b211ff18b81b",
+    "known_text": "nervous",
+    "target_text": "紧张",
+    "known_audio_id": "22e25692-c218-4cb3-a58f-3737e5b2885c",
+    "target2_audio_id": null,
+    "presentation_audio_id": "3868ac53-3e64-4e34-9ef4-0fc5dfbde26d"
+   },
+   "changed": true
+  },
+  {
+   "index": 54,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0147L01"
+   },
+   "before": {
+    "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": "S0147L01",
+    "target2_audio_id": null,
+    "known_text": "nervous",
+    "target_text": "紧张",
+    "known_audio_id": "22e25692-c218-4cb3-a58f-3737e5b2885c",
+    "target1_audio_id": "e3dca576-938d-4691-ab20-b211ff18b81b",
+    "presentation_audio_id": "3868ac53-3e64-4e34-9ef4-0fc5dfbde26d"
+   },
+   "after": {
+    "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+    "seed_number": 147,
+    "lego_index": 1,
+    "lego_id": "S0147L01",
+    "target2_audio_id": "4e1aebd7-81c1-4f1f-afe9-fe77aeea684d",
+    "known_text": "nervous",
+    "target_text": "紧张",
+    "known_audio_id": "22e25692-c218-4cb3-a58f-3737e5b2885c",
+    "target1_audio_id": "e3dca576-938d-4691-ab20-b211ff18b81b",
+    "presentation_audio_id": "3868ac53-3e64-4e34-9ef4-0fc5dfbde26d"
+   },
+   "changed": true
+  },
+  {
+   "index": 55,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0293L02"
+   },
+   "before": {
+    "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": "S0293L02",
+    "target1_audio_id": null,
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target2_audio_id": null,
+    "presentation_audio_id": "6adcd479-533c-4977-b0e7-032311cda143"
+   },
+   "after": {
+    "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": "S0293L02",
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target2_audio_id": null,
+    "presentation_audio_id": "6adcd479-533c-4977-b0e7-032311cda143"
+   },
+   "changed": true
+  },
+  {
+   "index": 56,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0293L02"
+   },
+   "before": {
+    "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": "S0293L02",
+    "target2_audio_id": null,
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "presentation_audio_id": "6adcd479-533c-4977-b0e7-032311cda143"
+   },
+   "after": {
+    "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+    "seed_number": 293,
+    "lego_index": 2,
+    "lego_id": "S0293L02",
+    "target2_audio_id": "c89d9dcb-e1df-4f8e-b516-7f0e1468f0a6",
+    "known_text": "to meet me",
+    "target_text": "见我",
+    "known_audio_id": "d52d3180-8cb5-4275-9b30-514a764c4742",
+    "target1_audio_id": "3632f656-278f-4437-a17e-9489c0fce7da",
+    "presentation_audio_id": "6adcd479-533c-4977-b0e7-032311cda143"
+   },
+   "changed": true
+  },
+  {
+   "index": 57,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_eng",
+    "lego_id": "S0337L01"
+   },
+   "before": {
+    "id": "51b04163-6ffa-43c2-8172-ef89234006e8",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": "S0337L01",
+    "known_audio_id": null,
+    "known_text": "to keep playing",
+    "target_text": "继续玩",
+    "target1_audio_id": "47ada9ca-21dd-4c12-ad73-cecbb2f3829a",
+    "target2_audio_id": "32059cfd-4f73-4646-b3b6-f6c347147c1e",
+    "presentation_audio_id": "c910968c-0f23-40c6-9fa4-57aebffcd5b6"
+   },
+   "after": {
+    "id": "51b04163-6ffa-43c2-8172-ef89234006e8",
+    "seed_number": 337,
+    "lego_index": 1,
+    "lego_id": "S0337L01",
+    "known_audio_id": "a434d4ee-5629-4aa5-901c-1fc06ad8c9ac",
+    "known_text": "to keep playing",
+    "target_text": "继续玩",
+    "target1_audio_id": "47ada9ca-21dd-4c12-ad73-cecbb2f3829a",
+    "target2_audio_id": "32059cfd-4f73-4646-b3b6-f6c347147c1e",
+    "presentation_audio_id": "c910968c-0f23-40c6-9fa4-57aebffcd5b6"
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "51b04163-6ffa-43c2-8172-ef89234006e8",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7aa9389f-839d-486e-be19-123906f93531",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7aa9389f-839d-486e-be19-123906f93531",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01U06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0162L01B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0082L01U08",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0082L01U08",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01U02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01U02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01C01",
+   "set": {
+    "target2_audio_id": "25dd8659-f20e-454e-80d4-e490b213175a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01C01",
+   "set": {
+    "target1_audio_id": "ef623c4b-1cfe-4f6e-9841-4305e8b5b989"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U04",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U04",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01B04",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01B04",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U05",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U05",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02C01",
+   "set": {
+    "target2_audio_id": "78ddf32b-9bec-400a-8203-378ece6fa347"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02C01",
+   "set": {
+    "target1_audio_id": "30f66033-cd0b-49b5-8524-acbea330d9b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U07",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U07",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B01",
+   "set": {
+    "target1_audio_id": null
+   }
+  }
+ ],
+ "undo_file": "2026-11-17T13-40-39-960Z-b69159ee-a913-4a12-9a03-e9fb7aed1e7c.json"
+}
