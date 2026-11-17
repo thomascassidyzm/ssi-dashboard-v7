@@ -312,11 +312,38 @@ async function writeOrSwapClip ({
   if (!insertError) return { audioId: inserted.id, created: true, revision: null }
   if (insertError.code !== '23505') throw insertError
 
-  // Lost the race. Someone created the row after our lookup — swap onto it
-  // rather than letting the collision either 500 or overwrite unversioned.
-  const raced = await findHolder()
-  if (!raced) throw insertError
-  return swapOnto(raced.id, reason ? `${reason} (concurrent-create race)` : 'concurrent-create race')
+  // 23505: a row holds this key, whether it was created after our lookup (a race) or our lookup could not
+  // see it (cs #460: supabase-js .in() sent a garbled list for a value with a comma AND a double quote, so
+  // an SSML intro with <break time="300ms"/> missed its own row, was paid for, and was dropped here).
+  // Re-read by EXACT EQUALITY on unique_course_audio_per_voice's own columns (course_code, text_normalized,
+  // language, role, voice_id — ssi-learning-app/supabase/schema.sql), one key spelling at a time: .eq()
+  // needs no list quoting, so this path cannot share whatever blinded the first lookup. The holder is then
+  // the same course, voice, role, language and text by construction, and the paid object is ADOPTED onto
+  // it through the versioned swap (revision + 1, the previous object retained, never deleted) — the same
+  // outcome a lookup that worked would have produced, and the paid bytes are filed rather than orphaned.
+  const raced = (await findHolder()) || (await findHolderExact())
+  if (!raced) {
+    insertError.message = `${insertError.message} — and an exact re-read of the key finds no holder ` +
+      `(lookup cannot see the row, not a race); paid object ${newS3Key} is unfiled`
+    throw insertError
+  }
+  if (logger?.warn) logger.warn(`[RevisionSwap] 23505 on insert of ${newS3Key}: adopting it onto holder ${raced.id}`)
+  return swapOnto(raced.id, reason ? `${reason} (23505: adopted onto existing holder)` : '23505: adopted onto existing holder')
+
+  async function findHolderExact() {
+    for (const key of keyCandidates) {
+      let q = supabase.from('course_audio').select('id, text_normalized, course_code, language, role, voice_id')
+      for (const col of UNIQUE_KEY_COLUMNS) q = q.eq(col, col === 'text_normalized' ? key : identity[col])
+      const { data, error } = await q
+      if (error) { if (logger?.warn) logger.warn(`[RevisionSwap] exact holder re-read failed: ${error.message}`); continue }
+      const hit = (data || []).find(r => UNIQUE_KEY_COLUMNS.every(c => r[c] === (c === 'text_normalized' ? key : identity[c])))
+      if (hit) return hit
+    }
+    return null
+  }
 }
 
-module.exports = { swapClipInPlace, writeOrSwapClip }
+/** unique_course_audio_per_voice, verbatim from the schema: the columns a 23505 on course_audio collides on. */
+const UNIQUE_KEY_COLUMNS = ['course_code', 'text_normalized', 'language', 'role', 'voice_id']
+
+module.exports = { swapClipInPlace, writeOrSwapClip, UNIQUE_KEY_COLUMNS }
