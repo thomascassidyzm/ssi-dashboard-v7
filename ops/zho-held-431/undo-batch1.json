@@ -1,0 +1,1755 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0162L01B03",
+   "set": {
+    "known_text": "what do you think about that",
+    "target_text": "那个你觉得怎么样",
+    "known_audio_id": "cc17f925-73bd-49c9-b36c-7b2c902a5341",
+    "target1_audio_id": "6bb5a27d-9091-4987-ae00-6c7546691838",
+    "target2_audio_id": "fbb68490-b743-4739-a546-a15aa5ac664a",
+    "target_text_roman": "nàge nǐ juéde zěnmeyàng"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "fb728870-5e3e-4ade-aa28-9f847186c792",
+   "set": {
+    "components": [
+     {
+      "known": "a while",
+      "target": "一会"
+     },
+     {
+      "known": "儿",
+      "target": "儿"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0659L01U01",
+   "set": {
+    "known_text": "could you all say that?",
+    "known_audio_id": "0f831d26-0e94-458f-8219-69b4077cc01a"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 659,
+   "set": {
+    "known_text": "Could you all say that?",
+    "known_audio_id": "0f831d26-0e94-458f-8219-69b4077cc01a"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0643L01B02",
+    "seed_number": 643,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "do you want it, sir?",
+    "target_text": "先生，您想要它吗",
+    "word_count": 7,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-09T00:12:50.520Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "695301df-f995-490b-bc87-adb0252ab25a",
+    "target1_audio_id": "df9e7170-e91d-41c2-82ec-b1cff4cc4336",
+    "target2_audio_id": "e61bae1c-3afd-4f6f-a23a-e24a88e2c116",
+    "qa_checked": null,
+    "target1_duration_ms": 1760,
+    "target2_duration_ms": 1600,
+    "lego_id": null,
+    "target_text_roman": "xiānsheng, nín xiǎngyào tā ma",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0643L01U01",
+   "set": {
+    "known_text": "do you want sir?",
+    "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0643L01B01",
+   "set": {
+    "known_text": "do you want, sir?",
+    "known_audio_id": "4d585403-1b10-4b49-be90-4b0ca3f08fe5"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "6c1beae9-dba8-4101-8ea3-99ca66896d79",
+   "set": {
+    "known_text": "do you want, sir?",
+    "known_audio_id": "4d585403-1b10-4b49-be90-4b0ca3f08fe5",
+    "presentation_audio_id": "542bec65-8ba5-4fc0-907d-e97656f30ce7"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 643,
+   "set": {
+    "known_text": "Do you want sir?",
+    "known_audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0141L02U09"
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "set": {
+    "known_text": "no problem. Everything is okay",
+    "known_audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0082L01U08"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0061L03U09"
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 61,
+   "set": {
+    "target_text": "你能再说一遍吗？慢一点",
+    "target1_audio_id": "0843b31d-812c-4976-9b4c-c63e16993192",
+    "target2_audio_id": "98bb8e91-294d-4ef0-b28b-95725c838b65",
+    "target_text_roman": "nǐ néng zài shuō yī biàn ma？màn yīdiǎn。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0120L01U05",
+   "set": {
+    "known_text": "Can we go by bus?",
+    "known_audio_id": "a0921fb6-ab92-4af9-b2ac-a9d7e6d8482a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0428L01B01",
+   "set": {
+    "known_text": "tuesday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0404L02B01",
+   "set": {
+    "known_text": "thursday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0064L02B04",
+   "set": {
+    "known_text": "fun chinese"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "886a8680-1aa0-4e60-98d1-759d3a12fc1a",
+   "set": {
+    "known_text": "tuesday"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d66bf775-2c84-47e7-8f10-a080d6cd974c",
+   "set": {
+    "known_text": "thursday"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "276c9380-ff38-42a1-b9a1-3b3fb4e37980",
+   "set": {
+    "known_text": "wednesday"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "65208094-7585-42bb-8b56-98c40a89e556",
+   "set": {
+    "known_text": "monday"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "79849584-9ea5-4e30-970f-45248c59f250",
+   "set": {
+    "known_text": "chinese"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01U07",
+   "set": {
+    "known_text": "do you think he likes to play?",
+    "target_text": "你觉得他喜欢玩吗？",
+    "known_audio_id": "d3430d89-10b6-4674-95e6-5c8cee1fe878",
+    "target1_audio_id": "78071524-6170-42cc-9ddc-254f5280c724",
+    "target2_audio_id": "a91f2aa6-fda8-4eb1-a0d7-cf3ee6917c9b",
+    "target_text_roman": "nǐ juéde tā xǐhuān wán ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01U06",
+   "set": {
+    "known_text": "I think she likes to play",
+    "target_text": "我觉得她喜欢玩",
+    "known_audio_id": "8e8e7e11-e4f4-4093-8122-4316b654b831",
+    "target1_audio_id": "1bc83b28-601b-4874-b6e4-cae674e2a840",
+    "target2_audio_id": "210e7f2a-e459-4946-90f7-22c00f8601af",
+    "target_text_roman": "wǒ juéde tā xǐhuan wán."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01U04",
+   "set": {
+    "known_text": "he doesn't like to play",
+    "target_text": "他不喜欢玩",
+    "known_audio_id": "18090ffd-b359-4a87-b9c0-23cf9072126e",
+    "target1_audio_id": "35eff6ac-8d13-4653-86f0-2f8dd100bfea",
+    "target2_audio_id": "fb3ab0ed-98c9-4d07-93b8-a3582508bd09",
+    "target_text_roman": "tā bù xǐhuān wán."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01U03",
+   "set": {
+    "known_text": "do you like to play?",
+    "target_text": "你喜欢玩吗？",
+    "known_audio_id": "2a632f26-60cf-4723-81f1-1a017f3eebe7",
+    "target1_audio_id": "d9b70944-4524-42b2-bc03-3aabd5ed424c",
+    "target2_audio_id": "35bd4ef5-b342-435e-8b1f-5391b96a4e3a",
+    "target_text_roman": "nǐ xǐhuān wán ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01C01",
+   "set": {
+    "known_text": "like",
+    "target_text": "喜欢",
+    "known_audio_id": "8507300e-45df-4b0d-a558-8a0e890a3fcb",
+    "target1_audio_id": "ae1eb656-1bd3-4d7e-8d3d-08cf215c634d",
+    "target2_audio_id": "217d8f0d-32ea-47c6-9fd9-4fbf292f6c8a",
+    "target_text_roman": "xǐhuān"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01B04",
+   "set": {
+    "known_text": "I like to play",
+    "target_text": "我喜欢玩",
+    "known_audio_id": "07e6110d-c4c9-418c-ad12-bae14d374393",
+    "target1_audio_id": "23678d42-83f1-493e-a449-019f0812a848",
+    "target2_audio_id": "faf85a46-e364-4257-aa23-4eb1779d1ee6",
+    "target_text_roman": "wǒ xǐhuān wán"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01B03",
+   "set": {
+    "known_text": "she likes to play",
+    "target_text": "她喜欢玩",
+    "known_audio_id": "1838c96a-95b8-43a0-b636-13c3ee4ad656",
+    "target1_audio_id": "8d73a303-9ec8-45f6-97fc-189bdb4b4248",
+    "target2_audio_id": "664666bb-7e58-4089-b903-36b5c455a287",
+    "target_text_roman": "tā xǐhuān wán"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0337L01B01",
+   "set": {
+    "known_text": "to like to play",
+    "target_text": "喜欢玩",
+    "known_audio_id": "c3e8fb55-3b2e-47f8-abfc-f4a78cfae629",
+    "target1_audio_id": "38710a78-fbe2-4bd2-b275-76bff0f39d7f",
+    "target2_audio_id": "30419fda-a9a1-4397-8b40-b0e802472c0c",
+    "target_text_roman": "xǐhuān wán"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "51b04163-6ffa-43c2-8172-ef89234006e8",
+   "set": {
+    "known_text": "to like to play",
+    "target_text": "喜欢玩",
+    "components": [
+     {
+      "known": "like",
+      "target": "喜欢"
+     },
+     {
+      "known": "play",
+      "target": "玩"
+     }
+    ],
+    "known_audio_id": "c3e8fb55-3b2e-47f8-abfc-f4a78cfae629",
+    "target1_audio_id": "38710a78-fbe2-4bd2-b275-76bff0f39d7f",
+    "target2_audio_id": "30419fda-a9a1-4397-8b40-b0e802472c0c",
+    "presentation_audio_id": "a00738d7-437a-41eb-bda6-dd6288a01f0c",
+    "target_text_roman": "xǐhuān wán"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0259L01C02",
+    "seed_number": 259,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "idea",
+    "target_text": "想法",
+    "word_count": 2,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-02T03:14:07.452Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "3438dfe5-2805-4bd0-88e0-9e15a8b4cd82",
+    "target1_audio_id": "0bcc9b39-87e3-45f4-9272-be3364370566",
+    "target2_audio_id": "771dc0a4-dea8-4bf4-8b72-17be0eecd352",
+    "qa_checked": null,
+    "target1_duration_ms": 1512,
+    "target2_duration_ms": 960,
+    "lego_id": null,
+    "target_text_roman": "xiǎngfǎ",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "想",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "法",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0259L01C01",
+    "seed_number": 259,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "good",
+    "target_text": "好",
+    "word_count": 1,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 0
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-02T03:14:07.452Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "131fac0a-8908-4f00-90e3-ffcebe429af4",
+    "target1_audio_id": "24b6d796-5579-44b3-8e9d-ba75815b2e0d",
+    "target2_audio_id": "02beca4f-f525-477c-9f68-c2a29ebf30ef",
+    "qa_checked": null,
+    "target1_duration_ms": 1584,
+    "target2_duration_ms": 888,
+    "lego_id": null,
+    "target_text_roman": "hǎo",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "good",
+      "legoId": "S0013L03",
+      "target": "好",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "1d4ecbdd-0cc8-409a-a793-ad26bafcef76",
+   "set": {
+    "type": "M",
+    "known_text": "good idea",
+    "target_text": "好想法",
+    "components": [
+     {
+      "known": "good",
+      "target": "好"
+     },
+     {
+      "known": "idea",
+      "target": "想法"
+     }
+    ],
+    "known_audio_id": "f66a7aad-4306-4e95-b21f-3a397961cc57",
+    "target1_audio_id": "dc199e40-5dfd-4020-8355-2c210f3cdc5d",
+    "target2_audio_id": "8a105d74-82dd-423a-870f-0798197a8c76",
+    "presentation_audio_id": "3fdae2d8-e02e-4166-8ded-e44a97cfa3e2",
+    "target_text_roman": "hǎo xiǎngfǎ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01U07",
+   "set": {
+    "known_text": "she said she likes this door",
+    "target_text": "她说她喜欢这扇门",
+    "known_audio_id": "21376c37-3e58-44ed-bb75-2c199cffa948",
+    "target1_audio_id": "6b2d339c-42f3-4123-8941-09fb6d5cf16a",
+    "target2_audio_id": "8bcf5a0c-6f04-4032-be67-041a34b8136e",
+    "target_text_roman": "tā shuō tā xǐhuān zhè shàn mén"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01U04",
+   "set": {
+    "known_text": "he needs to find the door",
+    "known_audio_id": "014bd071-13a9-491b-ab46-46526a2713fb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01U02",
+   "set": {
+    "known_text": "she wants to see this door",
+    "target_text": "她想看这扇门",
+    "known_audio_id": "3d9843ab-4a95-4f8c-a15b-bcbc4e4470e6",
+    "target1_audio_id": "2f5e4023-7bf4-491b-afc1-6ed4cc299786",
+    "target2_audio_id": "3f3d5b32-c6a1-4149-9f5d-d6aa1da05ff0",
+    "target_text_roman": "tā xiǎng kàn zhè shàn mén"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01B03",
+   "set": {
+    "known_text": "one door",
+    "target_text": "一扇门",
+    "known_audio_id": "8f7b4d36-cade-436b-9447-aed113e8043e",
+    "target1_audio_id": "9f76ab0c-1572-4851-b70e-032514be9cb0",
+    "target2_audio_id": "3306db4d-b628-49cf-9ec4-cdbf42a20ba4",
+    "target_text_roman": "yī shàn mén"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0336L01B02",
+   "set": {
+    "known_text": "this door",
+    "target_text": "这扇门",
+    "known_audio_id": "09e5b385-3824-484e-8cfb-889a0f607e6b",
+    "target1_audio_id": "c34ca5bb-6f65-48ad-8558-cdec12f5b492",
+    "target2_audio_id": "427c45b4-05a9-4cf0-bd69-cc005bdc3df8",
+    "target_text_roman": "zhè shàn mén"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b5ae94f1-8ebe-402b-9410-e6229e5e9482",
+   "set": {
+    "type": "A",
+    "known_text": "door",
+    "target_text": "扇",
+    "components": null,
+    "known_audio_id": "963e9114-1752-462f-9920-ffea1a95d87a",
+    "target1_audio_id": "1ccde6db-3f49-4760-8057-3b016f669305",
+    "target2_audio_id": "122d10a0-0de8-44ca-9e28-e526658b7135",
+    "presentation_audio_id": "a8ddadd5-27ea-4b9e-b926-d3d82277daa6",
+    "target_text_roman": "shàn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U08",
+   "set": {
+    "known_text": "do you know when I can meet you?",
+    "target_text": "你知道我什么时候能见你吗？",
+    "known_audio_id": "75ad4f19-5e00-4d4d-8609-0b8b0269bed8",
+    "target1_audio_id": "627812c7-b95c-4de7-b911-5f90ea88fb3f",
+    "target2_audio_id": "d3174508-102a-43b4-926f-34b9f456dd6e",
+    "target_text_roman": "nǐ zhīdào wǒ shénme shíhou néng jiàn nǐ ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U07",
+   "set": {
+    "known_text": "can I meet you tomorrow?",
+    "target_text": "我明天能见你吗？",
+    "known_audio_id": "3585b455-bbdf-4d76-9c8e-12874c504230",
+    "target1_audio_id": "5356f041-84e6-4f91-b565-c23a0ee9e154",
+    "target2_audio_id": "e52f910c-42fd-4996-9a93-f5ea57141301",
+    "target_text_roman": "wǒ míngtiān néng jiàn nǐ ma?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U06",
+   "set": {
+    "known_text": "I have to find out where she wants to meet you",
+    "target_text": "我得弄清楚她想在哪里见你",
+    "known_audio_id": "e3c153c0-5816-4222-9612-bca7dd20995e",
+    "target1_audio_id": "79f81d7a-6d70-46d9-8d67-675deebe05ab",
+    "target2_audio_id": "b4aac938-134b-4240-aa83-5227b56a120f",
+    "target_text_roman": "wǒ děi nòng qīngchǔ tā xiǎng zài nǎlǐ jiàn nǐ。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U05",
+   "set": {
+    "known_text": "I think it would be better if I could meet you today",
+    "target_text": "我觉得如果我今天能见你会更好",
+    "known_audio_id": "d0b47d3c-806d-4c12-9fe6-2c9fe85a6d59",
+    "target1_audio_id": "b06b15ba-c225-4701-b067-1730091f2273",
+    "target2_audio_id": "41c04e1b-2b66-4367-b366-1225d4295f0c",
+    "target_text_roman": "wǒ juéde rúguǒ wǒ jīntiān néng jiàn nǐ huì gèng hǎo."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U04",
+   "set": {
+    "known_text": "I need to find out when I can meet you",
+    "target_text": "我需要弄清楚我什么时候能见你",
+    "known_audio_id": "2e2ea1ae-8e3b-4012-816c-6fe5437361f5",
+    "target1_audio_id": "8600d0b8-3c8d-4c6e-9d37-ba209e63f6cc",
+    "target2_audio_id": "7842cd24-b415-40d5-bb4a-7bd9e1c89c69",
+    "target_text_roman": "wǒ xūyào nòngqīngchǔ wǒ shénme shíhou néng jiàn nǐ。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U03",
+   "set": {
+    "known_text": "I don't know where I'm going to meet you",
+    "target_text": "我不知道我要在哪里见你",
+    "known_audio_id": "7ca857f7-cea7-451d-bcd3-ea88f5954ad8",
+    "target1_audio_id": "ac50b20c-3a84-4200-8110-c9c55d825a83",
+    "target2_audio_id": "0bbeafd4-bb78-4640-838f-145d7948b2f4",
+    "target_text_roman": "wǒ bù zhīdào wǒ yào zài nǎlǐ jiàn nǐ."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U02",
+   "set": {
+    "known_text": "I want to meet you tonight",
+    "target_text": "我想今晚见你",
+    "known_audio_id": "cf637584-6cbd-4d78-a758-b21189b195fe",
+    "target1_audio_id": "39b4895d-035d-4099-9754-a91ffe3e1b38",
+    "target2_audio_id": "0b05465c-bade-4ef2-9231-592a586d4dc5",
+    "target_text_roman": "wǒ xiǎng jīnwǎn jiàn nǐ。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02U01",
+   "set": {
+    "known_text": "I hope I can meet you soon",
+    "target_text": "我希望我很快能见你",
+    "known_audio_id": "220b3597-563d-4e94-90b8-5f0a9846dc76",
+    "target1_audio_id": "622672d0-4279-4b59-806d-76c2157b923c",
+    "target2_audio_id": "9a16dcbc-01e9-44f0-8dd5-08413162cc32",
+    "target_text_roman": "wǒ xīwàng wǒ hěn kuài néng jiàn nǐ。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02C02",
+   "set": {
+    "known_text": "you",
+    "target_text": "你",
+    "known_audio_id": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+    "target1_audio_id": "6bccf6fb-0f18-48e3-aa92-b40785d535b7",
+    "target2_audio_id": "ae3fc686-1dd5-43b4-9b6a-2b29e12d691a",
+    "target_text_roman": "nǐ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B04",
+   "set": {
+    "known_text": "I can meet you",
+    "target_text": "我能见你",
+    "known_audio_id": "f8a8e1d7-f82c-4d42-8355-283578b16560",
+    "target1_audio_id": "fa588459-e5ed-47b4-8f9c-629f60618601",
+    "target2_audio_id": "a7388ab9-0e03-452c-8ada-dcc18bb9f4f7",
+    "target_text_roman": "wǒ néng jiàn nǐ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B03",
+   "set": {
+    "known_text": "I want to meet you",
+    "target_text": "我想见你",
+    "known_audio_id": "4a202253-339b-49f3-b5c5-fd4e40170606",
+    "target1_audio_id": "90fe48b7-c46d-4f60-9b36-16db44465a08",
+    "target2_audio_id": "21accb5a-d4b3-45db-acc6-2c89dc1262dc",
+    "target_text_roman": "wǒ xiǎng jiàn nǐ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0293L02B01",
+   "set": {
+    "known_text": "to meet you",
+    "target_text": "见你",
+    "known_audio_id": "f35277f7-ec54-4109-a6a4-d0fc89f6a288",
+    "target1_audio_id": "302e2e92-0125-4a51-a8c7-99e0eecb57f7",
+    "target2_audio_id": "75f17e28-6cd7-4686-b3f8-2b06a1e2a03c",
+    "target_text_roman": "jiàn nǐ"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "917c85cd-3ec5-4253-8429-7a57b82dc34b",
+   "set": {
+    "known_text": "to meet you",
+    "target_text": "见你",
+    "components": [
+     {
+      "known": "meet",
+      "target": "见"
+     },
+     {
+      "known": "you",
+      "target": "你"
+     }
+    ],
+    "known_audio_id": "f35277f7-ec54-4109-a6a4-d0fc89f6a288",
+    "target1_audio_id": "302e2e92-0125-4a51-a8c7-99e0eecb57f7",
+    "target2_audio_id": "75f17e28-6cd7-4686-b3f8-2b06a1e2a03c",
+    "presentation_audio_id": "b8348948-f95b-4645-b8fd-b47efd838baa",
+    "target_text_roman": "jiàn nǐ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0147L01C02",
+    "seed_number": 147,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "nervous",
+    "target_text": "紧张",
+    "word_count": 2,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-02T03:13:52.675Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "54a68014-e03c-466b-977f-13c7c4fd8665",
+    "target1_audio_id": "d5310fda-df51-4418-9d70-7755b629351a",
+    "target2_audio_id": "28a070f9-4e6a-4680-98c7-41a95c5ced1f",
+    "qa_checked": null,
+    "target1_duration_ms": 1656,
+    "target2_duration_ms": 1176,
+    "lego_id": null,
+    "target_text_roman": "jǐnzhāng",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "紧",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "张",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0147L01C01",
+    "seed_number": 147,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "very",
+    "target_text": "非常",
+    "word_count": 2,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 0
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-02T03:13:52.675Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "5dd92315-19a3-494f-88f3-407ad19de6cf",
+    "target1_audio_id": "dce3c4ef-5a3b-4b62-8072-bb812dced028",
+    "target2_audio_id": "6c2f99b6-3036-471f-b812-6aca47108376",
+    "qa_checked": null,
+    "target1_duration_ms": 1800,
+    "target2_duration_ms": 936,
+    "lego_id": null,
+    "target_text_roman": "fēicháng",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "extremely",
+      "legoId": "S0125L01",
+      "target": "非常",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cf7a8067-0313-4a4f-8eae-b816e665d6d2",
+   "set": {
+    "type": "M",
+    "known_text": "very nervous",
+    "target_text": "非常紧张",
+    "components": [
+     {
+      "known": "very",
+      "target": "非常"
+     },
+     {
+      "known": "nervous",
+      "target": "紧张"
+     }
+    ],
+    "known_audio_id": "e6d22c1f-a24f-42a3-a390-1228955bb271",
+    "target1_audio_id": "ab814a21-0c15-442c-9358-39f4e5157543",
+    "target2_audio_id": "ce4cc70e-8f35-470b-83e6-eb1b4b945fa2",
+    "presentation_audio_id": "484e2211-f516-4597-8573-e7c7d198b802",
+    "target_text_roman": "fēicháng jǐnzhāng"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L03U03",
+   "set": {
+    "known_text": "we can chat this time",
+    "target_text": "我们这次能聊天",
+    "known_audio_id": "44e996cc-42f4-474c-9daa-57ec03c325ce",
+    "target1_audio_id": "f4c90bfd-faff-43c9-92d6-3f87d2e4a7b8",
+    "target2_audio_id": "093d0576-352c-481c-ab51-c124528f310c",
+    "target_text_roman": "wǒmen zhè cì néng liáotiān."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U08",
+   "set": {
+    "known_text": "I want to do better this time",
+    "target_text": "我这次想做得更好",
+    "known_audio_id": "ab6bd729-29ea-43ad-bf6d-61c70900ff54",
+    "target1_audio_id": "2f1a032f-8ac0-4c53-8138-a83257a3163c",
+    "target2_audio_id": "f081beff-1104-4976-936c-a53d4b7032e2",
+    "target_text_roman": "wǒ zhècì xiǎng zuò de gèng hǎo。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U07",
+   "set": {
+    "known_text": "this time I need to think more",
+    "target_text": "这次我需要多想想",
+    "known_audio_id": "c33cf73b-4228-4487-ad1f-d8403a3bf3cf",
+    "target1_audio_id": "876c7d67-61b1-45f1-8d13-7e630e4c5793",
+    "target2_audio_id": "1720bed4-c7ee-4c8d-a0d9-fa6c5a4738da",
+    "target_text_roman": "zhè cì wǒ xūyào duō xiǎng xiǎng。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U06",
+   "set": {
+    "known_text": "can you do better this time?",
+    "target_text": "你这次能做得更好吗？",
+    "known_audio_id": "7352c0a3-6939-4b25-8ece-54360e1b4e84",
+    "target1_audio_id": "8256e65f-3c1b-4b59-88bc-ef6edfcb09ec",
+    "target2_audio_id": "8c9200df-e12c-435a-8d06-99ec7ec1edc6",
+    "target_text_roman": "nǐ zhè cì néng zuò de gèng hǎo ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U05",
+   "set": {
+    "known_text": "I think this time will be better",
+    "target_text": "我觉得这次会更好",
+    "known_audio_id": "69075e05-dbe9-4f9a-aaad-c92238209cce",
+    "target1_audio_id": "5c47efee-9bd5-4253-93da-e24a9f7924db",
+    "target2_audio_id": "76442752-09b8-48ac-9bbe-cc62c7ade45e",
+    "target_text_roman": "wǒ juéde zhè cì huì gèng hǎo。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U04",
+   "set": {
+    "known_text": "this time I know what to do",
+    "target_text": "这次我知道做什么",
+    "known_audio_id": "fbfd8ba0-f060-4e3d-a832-2d0e03a0f924",
+    "target1_audio_id": "e7e381b9-b568-45e8-bb59-89a464fefb3d",
+    "target2_audio_id": "9bbc405a-6085-4902-854c-2c2cd87e9688",
+    "target_text_roman": "zhè cì wǒ zhīdào zuò shénme。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U03",
+   "set": {
+    "known_text": "this time is different",
+    "target_text": "这次不一样",
+    "known_audio_id": "a9fe8dfc-343c-4c04-8097-f5e665890bba",
+    "target1_audio_id": "f2566b75-af99-4f60-a45d-c55b7e4e8311",
+    "target2_audio_id": "7b9c920f-7db1-4816-9c72-8b912f5bf1b8",
+    "target_text_roman": "zhè cì bù yīyàng。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U02",
+   "set": {
+    "known_text": "I'm doing better this time",
+    "target_text": "我这次做得更好",
+    "known_audio_id": "a5db4074-de7d-4264-b7e1-75a951c13215",
+    "target1_audio_id": "7e09bc3a-55ef-4240-b1f0-d780562e907c",
+    "target2_audio_id": "9006b909-fef0-4773-8913-11a1e0261c03",
+    "target_text_roman": "wǒ zhècì zuò de gèng hǎo。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01U01",
+   "set": {
+    "known_text": "this time I understand",
+    "target_text": "这次我懂了",
+    "known_audio_id": "999cae16-b44e-4a63-8298-e511283aa83f",
+    "target1_audio_id": "4170f0c1-a23f-47f4-bb32-1875c6a73d35",
+    "target2_audio_id": "73a62797-b9c7-4be7-bd5d-65b603e16202",
+    "target_text_roman": "zhè cì wǒ dǒng le。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01C01",
+   "set": {
+    "known_text": "this",
+    "target_text": "这",
+    "known_audio_id": "4b9ca578-c431-4d77-8b34-b354eb69e5e8",
+    "target1_audio_id": "d0cb9bd9-6a16-467c-bda3-a13523802e62",
+    "target2_audio_id": "0b7173f7-5332-4e6f-84f3-b949f6522bb1",
+    "target_text_roman": "zhè"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01B05",
+   "set": {
+    "known_text": "this time we",
+    "target_text": "这次我们",
+    "known_audio_id": "63f5307e-6f8d-4144-b42d-49f781f2bc4f",
+    "target1_audio_id": "0241a070-0f4b-42e4-853d-d244257bcc44",
+    "target2_audio_id": "d286ce94-d7a0-48f9-a8fd-6127592fed4a",
+    "target_text_roman": "zhè cì wǒmen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01B04",
+   "set": {
+    "known_text": "this time you",
+    "target_text": "这次你",
+    "known_audio_id": "61878619-5361-4c6b-bbe1-feb900ec7e4b",
+    "target1_audio_id": "0d75a082-ff7c-48be-b3d4-ed3e31eca253",
+    "target2_audio_id": "ae4b70fc-649f-4539-84b4-373ef9a51f43",
+    "target_text_roman": "zhè cì nǐ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01B03",
+   "set": {
+    "known_text": "this time I",
+    "target_text": "这次我",
+    "known_audio_id": "d502aa48-bfcc-416f-8b30-1a3a55fa2183",
+    "target1_audio_id": "ef51a4cb-8c2b-41ad-b7be-c5cce542f2e0",
+    "target2_audio_id": "cbe4ebb5-2123-4afd-8bd9-e7078c5a2dee",
+    "target_text_roman": "zhè cì wǒ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0117L01B01",
+   "set": {
+    "known_text": "this time",
+    "target_text": "这次",
+    "known_audio_id": "596864d3-99fd-4eed-8813-4d3f851e0299",
+    "target1_audio_id": "3e416dc0-d149-4b7b-a528-bc58d0070d9b",
+    "target2_audio_id": "ec429966-b150-4d2d-a50f-b9a7086f3060",
+    "target_text_roman": "zhè cì"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "58c588c3-57d6-4628-ab89-b397b9b2fd9e",
+   "set": {
+    "known_text": "this time",
+    "target_text": "这次",
+    "components": [
+     {
+      "known": "this",
+      "target": "这"
+     },
+     {
+      "known": "time",
+      "target": "次"
+     }
+    ],
+    "known_audio_id": "596864d3-99fd-4eed-8813-4d3f851e0299",
+    "target1_audio_id": "3e416dc0-d149-4b7b-a528-bc58d0070d9b",
+    "target2_audio_id": "ec429966-b150-4d2d-a50f-b9a7086f3060",
+    "presentation_audio_id": "ff4ed082-34ac-4f73-9732-2a57a2c4b847",
+    "target_text_roman": "zhè cì"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U08",
+   "set": {
+    "known_text": "she needs to speak more quickly",
+    "target_text": "她需要说得更快",
+    "known_audio_id": "bc24ccd4-97a1-47c6-a050-c0cfc99bc28f",
+    "target1_audio_id": "8de7467d-ea14-40de-9673-9cf67631ce28",
+    "target2_audio_id": "328fd0bd-b5d0-4f9d-9df7-bc34a609687a",
+    "target_text_roman": "tā xūyào shuō de gèng kuài."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U07",
+   "set": {
+    "known_text": "I'd like to speak more quickly now",
+    "target_text": "我现在想说得更快",
+    "known_audio_id": "9fa42e61-a0ba-4a61-9cbf-ae7a8d68d15c",
+    "target1_audio_id": "5843a713-1dcc-4348-a185-b84baabeb58d",
+    "target2_audio_id": "225639e0-8f68-4c97-adc0-0dccc4659624",
+    "target_text_roman": "wǒ xiànzài xiǎng shuō de gèng kuài。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U06",
+   "set": {
+    "known_text": "do you want to speak more quickly?",
+    "target_text": "你想说得更快吗？",
+    "known_audio_id": "3e6589e2-6fef-434c-b4fb-c714975bfee8",
+    "target1_audio_id": "939b9cbe-a501-4b8c-8dfd-0d52420d708c",
+    "target2_audio_id": "1a122a0b-59bb-45af-8ece-5317030639b8",
+    "target_text_roman": "nǐ xiǎng shuō de gèng kuài ma?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U05",
+   "set": {
+    "known_text": "I think you can speak more quickly",
+    "target_text": "我觉得你能说得更快",
+    "known_audio_id": "eab05cb1-f7de-4b19-a446-597032733102",
+    "target1_audio_id": "b1a56a45-ecfb-4ca6-8e55-d56ae48fa1cb",
+    "target2_audio_id": "cbbb0754-a45e-4b5d-954a-95358d9869d1",
+    "target_text_roman": "wǒ juéde nǐ néng shuō de gèng kuài."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U04",
+   "set": {
+    "known_text": "it's difficult to speak more quickly",
+    "target_text": "说得更快很难",
+    "known_audio_id": "6a5d54fa-cef3-40ad-8b0f-b5a97f1c363b",
+    "target1_audio_id": "aa0a4824-e453-4d28-a9de-97a15fba977c",
+    "target2_audio_id": "a5c963e5-86b6-46ab-ab04-b06fd13f867f",
+    "target_text_roman": "shuō de gèng kuài hěn nán."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U03",
+   "set": {
+    "known_text": "I need to speak more quickly",
+    "target_text": "我需要说得更快",
+    "known_audio_id": "5f9b7176-7eb1-4d68-8794-80bace75b44e",
+    "target1_audio_id": "e20ddcba-85ec-42d1-8527-17f526feda97",
+    "target2_audio_id": "7dbec054-90d2-4b4b-8619-dd2f9def3581",
+    "target_text_roman": "wǒ xūyào shuō de gèng kuài."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U02",
+   "set": {
+    "known_text": "can you speak more quickly?",
+    "target_text": "你能说得更快吗？",
+    "known_audio_id": "c6a26c44-f09d-4942-ad07-a1fd8d053291",
+    "target1_audio_id": "a8c85e8c-d6ae-47b0-939e-7a9223bca51a",
+    "target2_audio_id": "8d8b8cd8-cf30-4d16-97c7-37f33fe5cb22",
+    "target_text_roman": "nǐ néng shuō de gèng kuài ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01U01",
+   "set": {
+    "known_text": "I want to speak more quickly",
+    "target_text": "我想说得更快",
+    "known_audio_id": "7d10ad01-c13d-48b5-8a2d-a2b0cb7c821e",
+    "target1_audio_id": "6fdd6f9f-6314-46bd-8224-03cce10a75a9",
+    "target2_audio_id": "8de6188d-e32f-4e32-bbfd-67c35811bec3",
+    "target_text_roman": "wǒ xiǎng shuō de gèng kuài。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C02",
+   "set": {
+    "known_text": "more quickly",
+    "target_text": "更快",
+    "known_audio_id": "770a77f7-3fa8-4103-a6da-4511255d244d",
+    "target1_audio_id": "f3c1ce42-5cba-4a7f-a967-78ac9a15ba41",
+    "target2_audio_id": "4ade4206-7fee-46ba-8f03-cddac35ce21f",
+    "target_text_roman": "gèng kuài"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01C01",
+   "set": {
+    "known_text": "speak",
+    "target_text": "说得",
+    "known_audio_id": "9693ba14-ac16-43af-8a71-ee8b60845c6c",
+    "target1_audio_id": "cdc33530-e0f8-4153-8a80-577323303f4e",
+    "target2_audio_id": "786de309-cd32-4620-9179-059dc15bb2ad",
+    "target_text_roman": "shuō de"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01B04",
+   "set": {
+    "known_text": "to speak more quickly",
+    "target_text": "说得更快",
+    "known_audio_id": "089eb44a-250f-498d-9bf4-7879a6d0b9e4",
+    "target1_audio_id": "6cb3d65a-d65c-4306-b585-06c5014ee0fd",
+    "target2_audio_id": "031715a5-ced1-437a-9cef-19110b666107",
+    "target_text_roman": "shuō de gèng kuài"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0091L01B03",
+   "set": {
+    "known_text": "I speak more quickly",
+    "target_text": "我说得更快",
+    "known_audio_id": "3ba5a12b-19e7-458b-9224-11ca3e87c91e",
+    "target1_audio_id": "8e532916-4636-4ab2-844e-d8faa18579bf",
+    "target2_audio_id": "1c58cfc7-4680-43f3-81df-36214f356ac3",
+    "target_text_roman": "wǒ shuō de gèng kuài"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7aa9389f-839d-486e-be19-123906f93531",
+   "set": {
+    "known_text": "to speak more quickly",
+    "target_text": "说得更快",
+    "components": [
+     {
+      "known": "speak",
+      "target": "说得"
+     },
+     {
+      "known": "more quickly",
+      "target": "更快"
+     }
+    ],
+    "known_audio_id": "089eb44a-250f-498d-9bf4-7879a6d0b9e4",
+    "target1_audio_id": "6cb3d65a-d65c-4306-b585-06c5014ee0fd",
+    "target2_audio_id": "031715a5-ced1-437a-9cef-19110b666107",
+    "presentation_audio_id": "4c3b3284-cb99-4c6b-9019-ed3f1fa36979",
+    "target_text_roman": "shuō de gèng kuài"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01U08",
+   "set": {
+    "target_text": "但是你还有更多要学吗？",
+    "target1_audio_id": "f3ac2e7b-4846-4521-8478-1fa85eae5201",
+    "target2_audio_id": "99796ad8-1cee-4ec9-bb78-25edccb82492",
+    "target_text_roman": "dànshì nǐ hái yǒu gèng duō yào xué ma?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01U07",
+   "set": {
+    "target_text": "告诉我，你还有更多要学吗？",
+    "target1_audio_id": "3b89dd27-5521-4cb0-ba13-dd4c2979cf30",
+    "target2_audio_id": "8c9adb46-8c48-4e58-9d69-f221fed8b89c",
+    "target_text_roman": "gàosu wǒ, nǐ hái yǒu gèng duō yào xué ma?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01U05",
+   "set": {
+    "target_text": "我问你，你还有更多要学吗？",
+    "target1_audio_id": "d61113d1-f844-4250-9c45-0161503ecc0a",
+    "target2_audio_id": "2b122421-b0eb-45ce-a08c-65320c725147",
+    "target_text_roman": "wǒ wèn nǐ，nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01U04",
+   "set": {
+    "target_text": "她想知道，你还有更多要学吗？",
+    "target1_audio_id": "bc626f81-efcd-4e70-8383-72aecda09ec9",
+    "target2_audio_id": "cd84baa7-24c7-41b2-8fa8-d44089e98c5a",
+    "target_text_roman": "tā xiǎng zhīdào，nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01C03",
+   "set": {
+    "known_text": "more",
+    "target_text": "更多",
+    "known_audio_id": "25cb11f6-1613-4abb-8d89-4358e0bf1d78",
+    "target1_audio_id": "af148620-cb2a-4dee-8a5f-083894edfb14",
+    "target2_audio_id": "98fc4a78-6e6a-4bc0-8d54-d542fcfb1559",
+    "target_text_roman": "gèng duō"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01B04",
+   "set": {
+    "target_text": "你还有更多要学吗？",
+    "target1_audio_id": "4e2fb47c-52c7-4911-9d06-d2d16b5ba811",
+    "target2_audio_id": "5340dd3d-6811-4297-a5fd-884df1ee76f1",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01B03",
+   "set": {
+    "target_text": "你还有更多要学吗？",
+    "target1_audio_id": "4e2fb47c-52c7-4911-9d06-d2d16b5ba811",
+    "target2_audio_id": "5340dd3d-6811-4297-a5fd-884df1ee76f1",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0075L01B02",
+   "set": {
+    "target_text": "你还有更多要学吗？",
+    "target1_audio_id": "4e2fb47c-52c7-4911-9d06-d2d16b5ba811",
+    "target2_audio_id": "5340dd3d-6811-4297-a5fd-884df1ee76f1",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "a7d44124-3df8-446e-9820-83c2f60a7aa6",
+   "set": {
+    "target_text": "你还有更多要学吗",
+    "components": [
+     {
+      "known": "you",
+      "target": "你"
+     },
+     {
+      "known": "have",
+      "target": "还有"
+     },
+     {
+      "known": "more",
+      "target": "更多"
+     },
+     {
+      "known": "to",
+      "target": "要"
+     },
+     {
+      "known": "learn",
+      "target": "学"
+     },
+     {
+      "known": "",
+      "target": "吗"
+     }
+    ],
+    "target1_audio_id": "f6fac299-efa2-4173-8d7c-72e3fddf6295",
+    "target2_audio_id": "2337c697-e601-42dd-9762-17ff0c5a08b2",
+    "presentation_audio_id": "12125580-6e2e-472b-8934-951321236576",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué ma"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 75,
+   "set": {
+    "target_text": "你还有更多要学吗？",
+    "target1_audio_id": "4e2fb47c-52c7-4911-9d06-d2d16b5ba811",
+    "target2_audio_id": "5340dd3d-6811-4297-a5fd-884df1ee76f1",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U08",
+   "set": {
+    "known_text": "thank you, but I've got more to learn",
+    "target_text": "谢谢，但是我还有更多要学",
+    "known_audio_id": "2b5040fa-53ad-4cfa-9b51-ba7401d1c83d",
+    "target1_audio_id": "45b90e87-9558-470e-9a53-4cbc6434f237",
+    "target2_audio_id": "823ba1f9-8989-45d1-b61a-74830bc0df40",
+    "target_text_roman": "xièxiè, dànshì wǒ hái yǒu gèng duō yào xué."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U07",
+   "set": {
+    "known_text": "they've got more to learn",
+    "target_text": "他们还有更多要学",
+    "known_audio_id": "6cbc8eaa-8c90-4b46-b2fd-45d548da57e3",
+    "target1_audio_id": "9c53b93e-0564-48d4-9510-2ef84a9b5d7f",
+    "target2_audio_id": "67efb719-970a-40ad-950d-291831ccf8e8",
+    "target_text_roman": "tāmen hái yǒu gèng duō yào xué."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U06",
+   "set": {
+    "known_text": "do you think I've got more to learn?",
+    "target_text": "你认为我还有更多要学吗？",
+    "known_audio_id": "863b5dee-dc43-4a59-9cd3-0b175e54eac1",
+    "target1_audio_id": "064aacc2-2131-4c4e-89e9-f3aff24522b8",
+    "target2_audio_id": "7a3c810e-5519-43bd-ae83-c2138f43e998",
+    "target_text_roman": "nǐ rènwéi wǒ hái yǒu gèng duō yào xué ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U05",
+   "set": {
+    "target_text": "我知道我还有更多要学",
+    "target1_audio_id": "23fc8df6-d5cc-4a42-b63c-c6a563ab7e97",
+    "target2_audio_id": "4c183e2d-e3e4-4f1a-8578-9e45d71b0de8",
+    "target_text_roman": "wǒ zhīdào wǒ hái yǒu gèng duō yào xué。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U04",
+   "set": {
+    "target_text": "她还有更多要学",
+    "target1_audio_id": "9261713a-23cb-4e32-92f8-e7462ad6c7aa",
+    "target2_audio_id": "c382ef9a-af38-4f62-9ab7-d58137fa0420",
+    "target_text_roman": "tā hái yǒu gèng duō yào xué."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02U03",
+   "set": {
+    "target_text": "我觉得我还有更多要学",
+    "target1_audio_id": "a1c74e7b-fa45-4c84-be6b-095d474c425d",
+    "target2_audio_id": "b1962947-bc82-46b3-aa5e-931d394f1487",
+    "target_text_roman": "wǒ juéde wǒ hái yǒu gèng duō yào xué."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02C01",
+   "set": {
+    "known_text": "more",
+    "target_text": "更多",
+    "known_audio_id": "25cb11f6-1613-4abb-8d89-4358e0bf1d78",
+    "target1_audio_id": "af148620-cb2a-4dee-8a5f-083894edfb14",
+    "target2_audio_id": "98fc4a78-6e6a-4bc0-8d54-d542fcfb1559",
+    "target_text_roman": "gèng duō"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B04",
+   "set": {
+    "target_text": "你还有更多要学",
+    "target1_audio_id": "90fd4db5-0fa4-4b55-ba37-0762b4bb9284",
+    "target2_audio_id": "dd7f4e0e-4980-4c51-b031-bbb0da2edb0e",
+    "target_text_roman": "nǐ hái yǒu gèng duō yào xué"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B03",
+   "set": {
+    "target_text": "我还有更多要学",
+    "target1_audio_id": "021b62df-826d-4dc2-9728-e1ae1bf5eea0",
+    "target2_audio_id": "22b49ea1-c1ae-4a99-a5a8-da7405f718e9",
+    "target_text_roman": "wǒ hái yǒu gèng duō yào xué"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0073L02B01",
+   "set": {
+    "known_text": "more to learn",
+    "target_text": "更多要学",
+    "known_audio_id": "33c91187-3dcf-4283-b565-e270e9927bf3",
+    "target1_audio_id": "a1ac32d3-15a7-4aae-ae3e-d62de9f572b0",
+    "target2_audio_id": "8be3d5ad-93de-491d-bee5-e073b98a6c53",
+    "target_text_roman": "gèng duō yào xué"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "bbf55a63-82c2-4448-a72f-f465f2f5e83a",
+   "set": {
+    "known_text": "more to learn",
+    "target_text": "更多要学",
+    "components": [
+     {
+      "known": "more",
+      "target": "更多"
+     },
+     {
+      "known": "to",
+      "target": "要"
+     },
+     {
+      "known": "learn",
+      "target": "学"
+     }
+    ],
+    "known_audio_id": "33c91187-3dcf-4283-b565-e270e9927bf3",
+    "target1_audio_id": "a1ac32d3-15a7-4aae-ae3e-d62de9f572b0",
+    "target2_audio_id": "8be3d5ad-93de-491d-bee5-e073b98a6c53",
+    "presentation_audio_id": "71cca9c3-75b8-4a4c-9e32-f6db03602a8e",
+    "target_text_roman": "gèng duō yào xué"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0092L03U04",
+   "set": {
+    "known_text": "let's speak Chinese together for a while, okay?",
+    "target_text": "我们一起说一会儿中文，好吗？",
+    "known_audio_id": "c7754416-00cd-4e83-9082-9d468f445a09",
+    "target1_audio_id": "e2f36b2b-423f-4c83-8f96-838d8acf7ee9",
+    "target2_audio_id": "a29771b9-af93-4d13-8ec4-9d0ba0d42f2f",
+    "target_text_roman": "wǒmen yìqǐ shuō yíhuìr zhōngwén hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U08",
+   "set": {
+    "known_text": "before six o'clock, okay?",
+    "target_text": "六点之前好吗？",
+    "known_audio_id": "3b4bcd8b-cedc-4932-82d3-e293ec73bfdd",
+    "target1_audio_id": "1a434171-6627-494e-8e4b-63d1d7e3e40e",
+    "target2_audio_id": "c1195365-0074-4c7e-8a8a-dd6cafcd962d",
+    "target_text_roman": "liù diǎn zhīqián hǎo ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U07",
+   "set": {
+    "known_text": "is tomorrow okay?",
+    "target_text": "明天好吗？",
+    "known_audio_id": "21813f0e-b3e2-49d4-9e35-80facad0d382",
+    "target1_audio_id": "2be4b55d-b871-4206-b460-c27cfa582927",
+    "target2_audio_id": "1b89aa78-f027-4d01-99f5-e716df19e139",
+    "target_text_roman": "míngtiān hǎo ma?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U06",
+   "set": {
+    "known_text": "is tonight okay?",
+    "target_text": "今晚好吗？",
+    "known_audio_id": "2341f01b-982c-4916-80f3-c8d52f35bb54",
+    "target1_audio_id": "80708e01-8c41-4c79-abe0-c6c643f8e81e",
+    "target2_audio_id": "b451f954-a0f6-4151-a75a-2c683df42782",
+    "target_text_roman": "jīnwǎn hǎo ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U05",
+   "set": {
+    "known_text": "we'll go together, okay?",
+    "target_text": "我们一起走，好吗？",
+    "known_audio_id": "72c1e824-280f-46b2-8d09-817aba591248",
+    "target1_audio_id": "d7303c49-8658-4f81-a901-e26e9312b315",
+    "target2_audio_id": "1ba8fc83-c441-4fd5-b2da-549966d4fd6b",
+    "target_text_roman": "wǒmen yīqǐ zǒu，hǎo ma？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U02",
+   "set": {
+    "known_text": "are you okay now",
+    "target_text": "你现在好吗",
+    "known_audio_id": "28e4c5b2-0f3a-494c-852a-7200d69c67d9",
+    "target1_audio_id": "f4fcf74e-722e-4c61-a229-5e5f15bba13a",
+    "target2_audio_id": "9cff5076-ad07-405c-b319-4cb41eff7754",
+    "target_text_roman": "nǐ xiànzài hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05U01",
+   "set": {
+    "known_text": "shall we go now",
+    "target_text": "现在走好吗",
+    "known_audio_id": "fb80ea23-027f-4c64-baea-7de6ef3fc1e5",
+    "target1_audio_id": "6f5c654f-b79e-4bf6-99da-250fd8867b9f",
+    "target2_audio_id": "97932b9f-f770-478c-993a-1a95f28f466d",
+    "target_text_roman": "xiànzài zǒu hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05C01",
+   "set": {
+    "known_text": "good",
+    "target_text": "好",
+    "known_audio_id": "131fac0a-8908-4f00-90e3-ffcebe429af4",
+    "target1_audio_id": "24b6d796-5579-44b3-8e9d-ba75815b2e0d",
+    "target2_audio_id": "02beca4f-f525-477c-9f68-c2a29ebf30ef",
+    "target_text_roman": "hǎo"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L05B06",
+    "seed_number": 25,
+    "lego_index": 5,
+    "position": 7,
+    "known_text": "will you help me",
+    "target_text": "你帮我好吗",
+    "word_count": 5,
+    "lego_count": 4,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T11:30:50.701Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "86bb27af-5368-4d94-ae5d-8830c92ab32e",
+    "target1_audio_id": "911b2fe8-7aa3-4b56-8fae-d170e064e4fb",
+    "target2_audio_id": "f256834b-87b3-462f-b2be-20ae59f0817f",
+    "qa_checked": "2026-02-11T11:49:00.158Z",
+    "target1_duration_ms": 1152,
+    "target2_duration_ms": 984,
+    "lego_id": null,
+    "target_text_roman": "nǐ bāng wǒ hǎo ma",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "you",
+      "legoId": "S0020L01",
+      "target": "你",
+      "isGhost": false
+     },
+     {
+      "known": "to help",
+      "legoId": "S0025L04",
+      "target": "帮",
+      "isGhost": false
+     },
+     {
+      "known": "I",
+      "legoId": "S0024L01",
+      "target": "我",
+      "isGhost": false
+     },
+     {
+      "known": "okay?",
+      "legoId": "S0025L05",
+      "target": "好吗",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 78,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L05B05",
+    "seed_number": 25,
+    "lego_index": 5,
+    "position": 6,
+    "known_text": "shall we go",
+    "target_text": "我们走好吗",
+    "word_count": 5,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T11:30:50.701Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "da3dabce-5881-46f7-b1ef-40808c1e4da1",
+    "target1_audio_id": "918765c0-7d6d-4bec-8ff9-df1bf98a164b",
+    "target2_audio_id": "19ee91df-02cc-4957-88cc-4ab79eee2771",
+    "qa_checked": "2026-02-11T11:49:00.158Z",
+    "target1_duration_ms": 840,
+    "target2_duration_ms": 912,
+    "lego_id": null,
+    "target_text_roman": "wǒmen zǒu hǎo ma",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "we",
+      "legoId": "S0018L01",
+      "target": "我们",
+      "isGhost": false
+     },
+     {
+      "known": "to go",
+      "legoId": "S0025L03",
+      "target": "走",
+      "isGhost": false
+     },
+     {
+      "known": "okay?",
+      "legoId": "S0025L05",
+      "target": "好吗",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 78,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B04",
+   "set": {
+    "known_text": "shall I go",
+    "target_text": "我走好吗",
+    "known_audio_id": "608017ce-a2de-4a03-99a9-93caa5187748",
+    "target1_audio_id": "50eac4a1-ca58-4ed3-b8cf-9d1aa65311f2",
+    "target2_audio_id": "220f72d9-66c6-46c9-ba4f-6b54454c68c5",
+    "target_text_roman": "wǒ zǒu hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B03",
+   "set": {
+    "known_text": "is now okay",
+    "target_text": "现在好吗",
+    "known_audio_id": "41099a18-34ac-4d6c-82ea-6602fc63f6be",
+    "target1_audio_id": "89d8c7a6-d3a3-452e-b206-0260ecf2d78a",
+    "target2_audio_id": "29db1845-7ee3-4e7c-aa57-6544c0d54bcc",
+    "target_text_roman": "xiànzài hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B02",
+   "set": {
+    "known_text": "how are you",
+    "target_text": "你好吗",
+    "known_audio_id": "2778ec16-17fb-4e64-979c-b921115671f8",
+    "target1_audio_id": "eb57f3b8-77cf-4fd1-8eda-ec2f7744c8b3",
+    "target2_audio_id": "c7eb97de-8145-4e44-a969-dcc632917f6c",
+    "target_text_roman": "nǐ hǎo ma"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0025L05B01",
+   "set": {
+    "known_text": "okay?",
+    "target_text": "好吗",
+    "known_audio_id": "d4c8e76b-2259-472c-b23c-b7c284667cb8",
+    "target1_audio_id": "01f4540f-7495-47fb-85fb-e87105a1fc88",
+    "target2_audio_id": "5bed80ea-b520-4dbc-987b-bf68afb2add4",
+    "target_text_roman": "hǎo ma"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "90c481e0-b5a1-48f6-8e60-b8203f9ef6d8",
+   "set": {
+    "known_text": "okay?",
+    "target_text": "好吗",
+    "components": [
+     {
+      "known": "good",
+      "target": "好",
+      "introduce": false
+     },
+     {
+      "known": "yes-no question",
+      "target": "吗",
+      "introduce": false
+     }
+    ],
+    "known_audio_id": "d4c8e76b-2259-472c-b23c-b7c284667cb8",
+    "target1_audio_id": "01f4540f-7495-47fb-85fb-e87105a1fc88",
+    "target2_audio_id": "5bed80ea-b520-4dbc-987b-bf68afb2add4",
+    "presentation_audio_id": "441d073b-c698-4753-abef-c6aaa3aa2864",
+    "target_text_roman": "hǎo ma"
+   }
+  }
+ ]
+}
