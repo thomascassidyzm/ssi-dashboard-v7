@@ -1,0 +1,893 @@
+{
+"batch": "move-166",
+"seeds": [
+166,
+300
+],
+"ops": [
+{
+"op": "seed.update",
+"seed_number": 166,
+"set": {
+"target_text": "Ní mian léi a bheith míchairdiúil",
+"known_text": "she doesn't want to seem unfriendly"
+},
+"expect": {
+"known_text": "my name is not very unusual",
+"target_text": "Níl m'ainm an-neamhghnách"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 166,
+"lego_index": 4,
+"known_text": "she doesn't want to",
+"target_text": "ní mian léi",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "not a wish",
+"target": "ní mian"
+},
+{
+"known": "with her",
+"target": "léi"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 166,
+"lego_index": 5,
+"known_text": "to be",
+"target_text": "a bheith",
+"type": "M",
+"is_new": false,
+"status": "draft",
+"components": [
+{
+"known": "to",
+"target": "a"
+},
+{
+"known": "be",
+"target": "bheith"
+}
+]
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 166,
+"lego_index": 6,
+"known_text": "unfriendly",
+"target_text": "míchairdiúil",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 101,
+"known_text": "unfriendly with them",
+"target_text": "míchairdiúil leo",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 102,
+"known_text": "unfriendly at work",
+"target_text": "míchairdiúil ag an obair",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06B03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 103,
+"known_text": "she was unfriendly",
+"target_text": "bhí sí míchairdiúil",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 3,
+"lego_count": 3
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 104,
+"known_text": "I thought that she was unfriendly",
+"target_text": "cheap mé go raibh sí míchairdiúil",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 105,
+"known_text": "I was unfriendly last night and I am sorry",
+"target_text": "bhí mé míchairdiúil aréir agus tá brón orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 8,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 106,
+"known_text": "she was unfriendly and nervous last night",
+"target_text": "bhí sí míchairdiúil agus neirbhíseach aréir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06B04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 107,
+"known_text": "to be unfriendly",
+"target_text": "a bheith míchairdiúil",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 3,
+"lego_count": 3
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 108,
+"known_text": "he doesn't want to be unfriendly with them",
+"target_text": "ní mian leis a bheith míchairdiúil leo",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 166,
+"lego_index": 6,
+"position": 109,
+"known_text": "she doesn't want to seem unfriendly",
+"target_text": "Ní mian léi a bheith míchairdiúil",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0166L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "m'ainm"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0166L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "níl m'ainm"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0166L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "an-neamhghnách"
+}
+},
+{
+"op": "seed.update",
+"seed_number": 300,
+"set": {
+"target_text": "Níl ainm an-neamhghnách orm",
+"known_text": "I don't have a very unusual name"
+},
+"expect": {
+"known_text": "she doesn't want to seem unfriendly",
+"target_text": "Ní mian léi a bheith míchairdiúil"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 300,
+"lego_index": 4,
+"known_text": "a name",
+"target_text": "ainm",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 300,
+"lego_index": 5,
+"known_text": "unusual",
+"target_text": "neamhghnách",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 300,
+"lego_index": 6,
+"known_text": "very unusual",
+"target_text": "an-neamhghnách",
+"type": "A",
+"is_new": true,
+"status": "draft"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"seed_number": 300,
+"lego_index": 7,
+"known_text": "I don't have a very unusual name",
+"target_text": "níl ainm an-neamhghnách orm",
+"type": "M",
+"is_new": true,
+"status": "draft",
+"components": [
+{
+"known": "is not",
+"target": "níl"
+},
+{
+"known": "a name",
+"target": "ainm"
+},
+{
+"known": "very unusual",
+"target": "an-neamhghnách"
+},
+{
+"known": "on me",
+"target": "orm"
+}
+]
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L04B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 4,
+"position": 101,
+"known_text": "a new name",
+"target_text": "ainm nua",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L04B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 4,
+"position": 102,
+"known_text": "a good name",
+"target_text": "ainm maith",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L04U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 4,
+"position": 103,
+"known_text": "I think that it's a good name",
+"target_text": "ceapaim gur ainm maith é",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L04U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 4,
+"position": 104,
+"known_text": "that's a good name",
+"target_text": "is ainm maith é sin",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L05B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 5,
+"position": 101,
+"known_text": "an unusual name",
+"target_text": "ainm neamhghnách",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L05B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 5,
+"position": 102,
+"known_text": "it's an unusual name",
+"target_text": "is ainm neamhghnách é",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L05U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 5,
+"position": 103,
+"known_text": "I think that it's an unusual name",
+"target_text": "ceapaim gur ainm neamhghnách é",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L05U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 5,
+"position": 104,
+"known_text": "that's an unusual idea",
+"target_text": "is smaoineamh neamhghnách é sin",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 101,
+"known_text": "it's very unusual",
+"target_text": "tá sé an-neamhghnách",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 3,
+"lego_count": 3
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 102,
+"known_text": "is it very unusual?",
+"target_text": "an bhfuil sé an-neamhghnách?",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 103,
+"known_text": "she told me that it was very unusual for him not to want to help",
+"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 11,
+"lego_count": 11
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 104,
+"known_text": "I know that it's very unusual",
+"target_text": "Tá a fhios agam go bhfuil sé an-neamhghnách",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 8,
+"lego_count": 8
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U04",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 105,
+"known_text": "I'm not sure if it's very unusual",
+"target_text": "Níl mé cinnte an bhfuil sé an-neamhghnách",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U05",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 106,
+"known_text": "it's not very unusual",
+"target_text": "Níl sé an-neamhghnách",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 3,
+"lego_count": 3
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U06",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 107,
+"known_text": "I think it's very unusual",
+"target_text": "ceapaim go bhfuil sé an-neamhghnách",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06U07",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 108,
+"known_text": "I hope that it's not very unusual",
+"target_text": "Tá súil agam nach bhfuil sé an-neamhghnách",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L06B02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 6,
+"position": 109,
+"known_text": "a very unusual name",
+"target_text": "ainm an-neamhghnách",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 2,
+"lego_count": 2
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L07B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 7,
+"position": 101,
+"known_text": "I don't have a very unusual name",
+"target_text": "níl ainm an-neamhghnách orm",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L07U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 7,
+"position": 102,
+"known_text": "of course I don't have a very unusual name",
+"target_text": "ar ndóigh níl ainm an-neamhghnách orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L07U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 7,
+"position": 103,
+"known_text": "unfortunately I don't have a very unusual name",
+"target_text": "faraor níl ainm an-neamhghnách orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L07U03",
+"course_code": "gle_v2_for_eng",
+"seed_number": 300,
+"lego_index": 7,
+"position": 104,
+"known_text": "thank you, but I don't have a very unusual name",
+"target_text": "go raibh maith agat, ach níl ainm an-neamhghnách orm",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 9,
+"lego_count": 9
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0300L01",
+"cascade_phrases": true,
+"expect": {
+"target_text": "ní mian léi"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0300L02",
+"cascade_phrases": true,
+"expect": {
+"target_text": "a bheith"
+}
+},
+{
+"op": "lego.delete",
+"lego_id": "S0300L03",
+"cascade_phrases": true,
+"expect": {
+"target_text": "míchairdiúil"
+}
+}
+]
+}

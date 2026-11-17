@@ -1,0 +1,26 @@
+{
+ "batch-1": {
+  "ok": true,
+  "dryRun": true,
+  "applied": false,
+  "event_id": null,
+  "undo_file": null,
+  "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+  "_seconds": 168.3,
+  "_ops": 1030
+ },
+ "move-166": {
+  "ok": true,
+  "dryRun": true,
+  "applied": false,
+  "event_id": null,
+  "undo_file": null,
+  "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+  "_seconds": 12.6,
+  "_ops": 45
+ },
+ "live_before_after_signature": [
+  "68afb364c604d250",
+  "68afb364c604d250"
+ ]
+}

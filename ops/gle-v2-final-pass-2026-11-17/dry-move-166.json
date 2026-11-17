@@ -1,0 +1,4163 @@
+{
+"ok": true,
+"dryRun": true,
+"applied": false,
+"event_id": null,
+"results": [
+{
+"index": 0,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 166
+},
+"before": {
+"id": "a5048c01-972c-4e93-beba-144ccadaaafc",
+"seed_number": 166,
+"target_text": "Níl m'ainm an-neamhghnách",
+"known_text": "my name is not very unusual",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "a5048c01-972c-4e93-beba-144ccadaaafc",
+"seed_number": 166,
+"target_text": "Ní mian léi a bheith míchairdiúil",
+"known_text": "she doesn't want to seem unfriendly",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "lego.insert",
+"key": {
+"seed_number": 166,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "3c290f3f-fac3-4535-937c-6f803927d328",
+"seed_number": 166,
+"lego_index": 4,
+"lego_id": "S0166L04",
+"known_text": "she doesn't want to",
+"target_text": "ní mian léi",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "lego.insert",
+"key": {
+"seed_number": 166,
+"lego_index": 5
+},
+"before": null,
+"after": {
+"id": "508b9d26-b780-4712-9e72-d204e3048d73",
+"seed_number": 166,
+"lego_index": 5,
+"lego_id": "S0166L05",
+"known_text": "to be",
+"target_text": "a bheith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "lego.insert",
+"key": {
+"seed_number": 166,
+"lego_index": 6
+},
+"before": null,
+"after": {
+"id": "2224b35c-e162-4ffd-a167-cbbcb9f10c16",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": "S0166L06",
+"known_text": "unfriendly",
+"target_text": "míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06B01",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "unfriendly with them",
+"target_text": "míchairdiúil leo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06B02",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "unfriendly at work",
+"target_text": "míchairdiúil ag an obair",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06B03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06B03",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "she was unfriendly",
+"target_text": "bhí sí míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06U01",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I thought that she was unfriendly",
+"target_text": "cheap mé go raibh sí míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06U02",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I was unfriendly last night and I am sorry",
+"target_text": "bhí mé míchairdiúil aréir agus tá brón orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06U03",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "she was unfriendly and nervous last night",
+"target_text": "bhí sí míchairdiúil agus neirbhíseach aréir",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06B04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06B04",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "to be unfriendly",
+"target_text": "a bheith míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06U04",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "he doesn't want to be unfriendly with them",
+"target_text": "ní mian leis a bheith míchairdiúil leo",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0166L06U05"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0166L06U05",
+"seed_number": 166,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "she doesn't want to seem unfriendly",
+"target_text": "Ní mian léi a bheith míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0166L01"
+},
+"before": {
+"id": "ae90dce4-61f2-44bd-899c-6218147bf909",
+"seed_number": 166,
+"lego_index": 1,
+"lego_id": "S0166L01",
+"known_text": "my name",
+"target_text": "m'ainm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 14,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0166L02"
+},
+"before": {
+"id": "a87d0d09-8169-4c69-83f1-6a5284730eec",
+"seed_number": 166,
+"lego_index": 2,
+"lego_id": "S0166L02",
+"known_text": "my name is not",
+"target_text": "níl m'ainm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 15,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0166L03"
+},
+"before": {
+"id": "c634ae5b-fb7b-449c-923a-bb470db00b08",
+"seed_number": 166,
+"lego_index": 3,
+"lego_id": "S0166L03",
+"known_text": "very unusual",
+"target_text": "an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 16,
+"op": "seed.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"seed_number": 300
+},
+"before": {
+"id": "7234d439-eae4-421d-9659-34aa2a6cf42b",
+"seed_number": 300,
+"target_text": "Ní mian léi a bheith míchairdiúil",
+"known_text": "she doesn't want to seem unfriendly",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"after": {
+"id": "7234d439-eae4-421d-9659-34aa2a6cf42b",
+"seed_number": 300,
+"target_text": "Níl ainm an-neamhghnách orm",
+"known_text": "I don't have a very unusual name",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null
+},
+"changed": true
+},
+{
+"index": 17,
+"op": "lego.insert",
+"key": {
+"seed_number": 300,
+"lego_index": 4
+},
+"before": null,
+"after": {
+"id": "4a79f8a4-1b44-4c2c-bd60-c6555bae7794",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": "S0300L04",
+"known_text": "a name",
+"target_text": "ainm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 18,
+"op": "lego.insert",
+"key": {
+"seed_number": 300,
+"lego_index": 5
+},
+"before": null,
+"after": {
+"id": "7bd65ed9-0de3-493d-a0df-351a48159d90",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": "S0300L05",
+"known_text": "unusual",
+"target_text": "neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 19,
+"op": "lego.insert",
+"key": {
+"seed_number": 300,
+"lego_index": 6
+},
+"before": null,
+"after": {
+"id": "1c5040cb-b871-4e12-b251-ec2ee1df6bae",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": "S0300L06",
+"known_text": "very unusual",
+"target_text": "an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 20,
+"op": "lego.insert",
+"key": {
+"seed_number": 300,
+"lego_index": 7
+},
+"before": null,
+"after": {
+"id": "31a0c597-c9b7-42e2-8408-2738ca3ec3b3",
+"seed_number": 300,
+"lego_index": 7,
+"lego_id": "S0300L07",
+"known_text": "I don't have a very unusual name",
+"target_text": "níl ainm an-neamhghnách orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 21,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L04B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L04B01",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "a new name",
+"target_text": "ainm nua",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 22,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L04B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L04B02",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "a good name",
+"target_text": "ainm maith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 23,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L04U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L04U01",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "I think that it's a good name",
+"target_text": "ceapaim gur ainm maith é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L04U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L04U02",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "that's a good name",
+"target_text": "is ainm maith é sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 25,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05B01",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "an unusual name",
+"target_text": "ainm neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05B02",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "it's an unusual name",
+"target_text": "is ainm neamhghnách é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05U01",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I think that it's an unusual name",
+"target_text": "ceapaim gur ainm neamhghnách é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 28,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05U02",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "that's an unusual idea",
+"target_text": "is smaoineamh neamhghnách é sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 29,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06B01",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "it's very unusual",
+"target_text": "tá sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 30,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U01",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "is it very unusual?",
+"target_text": "an bhfuil sé an-neamhghnách?",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 31,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U02",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "she told me that it was very unusual for him not to want to help",
+"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 32,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U03",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I know that it's very unusual",
+"target_text": "Tá a fhios agam go bhfuil sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 33,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U04"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U04",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I'm not sure if it's very unusual",
+"target_text": "Níl mé cinnte an bhfuil sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 34,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U05"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U05",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "it's not very unusual",
+"target_text": "Níl sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 35,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U06"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U06",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I think it's very unusual",
+"target_text": "ceapaim go bhfuil sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 36,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06U07"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06U07",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "I hope that it's not very unusual",
+"target_text": "Tá súil agam nach bhfuil sé an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 37,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06B02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06B02",
+"seed_number": 300,
+"lego_index": 6,
+"lego_id": null,
+"known_text": "a very unusual name",
+"target_text": "ainm an-neamhghnách",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 38,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L07B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L07B01",
+"seed_number": 300,
+"lego_index": 7,
+"lego_id": null,
+"known_text": "I don't have a very unusual name",
+"target_text": "níl ainm an-neamhghnách orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 39,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L07U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L07U01",
+"seed_number": 300,
+"lego_index": 7,
+"lego_id": null,
+"known_text": "of course I don't have a very unusual name",
+"target_text": "ar ndóigh níl ainm an-neamhghnách orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 40,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L07U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L07U02",
+"seed_number": 300,
+"lego_index": 7,
+"lego_id": null,
+"known_text": "unfortunately I don't have a very unusual name",
+"target_text": "faraor níl ainm an-neamhghnách orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 41,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L07U03"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L07U03",
+"seed_number": 300,
+"lego_index": 7,
+"lego_id": null,
+"known_text": "thank you, but I don't have a very unusual name",
+"target_text": "go raibh maith agat, ach níl ainm an-neamhghnách orm",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 42,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0300L01"
+},
+"before": {
+"id": "69481dc7-dd4e-4c1c-8047-c0c562e600f0",
+"seed_number": 300,
+"lego_index": 1,
+"lego_id": "S0300L01",
+"known_text": "she doesn't want to",
+"target_text": "ní mian léi",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 43,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0300L02"
+},
+"before": {
+"id": "a999c98a-065a-4290-9515-742c110c8bfd",
+"seed_number": 300,
+"lego_index": 2,
+"lego_id": "S0300L02",
+"known_text": "to be",
+"target_text": "a bheith",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 44,
+"op": "lego.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"lego_id": "S0300L03"
+},
+"before": {
+"id": "20620551-e0b3-4e0e-be1c-ce2e9b5bcd1d",
+"seed_number": 300,
+"lego_index": 3,
+"lego_id": "S0300L03",
+"known_text": "unfriendly",
+"target_text": "míchairdiúil",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+}
+],
+"undo_ops": [
+{
+"op": "lego.insert",
+"row": {
+"id": "20620551-e0b3-4e0e-be1c-ce2e9b5bcd1d",
+"seed_number": 300,
+"lego_index": 3,
+"type": "A",
+"is_new": true,
+"known_text": "unfriendly",
+"target_text": "míchairdiúil",
+"components": null,
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03B01",
+"seed_number": 300,
+"lego_index": 3,
+"position": 1,
+"known_text": "unfriendly with them",
+"target_text": "míchairdiúil leo",
+"word_count": 16,
+"lego_count": 3,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03B02",
+"seed_number": 300,
+"lego_index": 3,
+"position": 2,
+"known_text": "unfriendly at work",
+"target_text": "míchairdiúil ag an obair",
+"word_count": 24,
+"lego_count": 3,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03B03",
+"seed_number": 300,
+"lego_index": 3,
+"position": 3,
+"known_text": "she was unfriendly",
+"target_text": "bhí sí míchairdiúil",
+"word_count": 19,
+"lego_count": 3,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03B04",
+"seed_number": 300,
+"lego_index": 3,
+"position": 4,
+"known_text": "that man is unfriendly",
+"target_text": "tá an fear sin míchairdiúil",
+"word_count": 27,
+"lego_count": 4,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U01",
+"seed_number": 300,
+"lego_index": 3,
+"position": 5,
+"known_text": "I thought that she was unfriendly",
+"target_text": "cheap mé go raibh sí míchairdiúil",
+"word_count": 33,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U02",
+"seed_number": 300,
+"lego_index": 3,
+"position": 6,
+"known_text": "I didn't say that he was unfriendly",
+"target_text": "ní dúirt mé go raibh sé míchairdiúil",
+"word_count": 36,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U03",
+"seed_number": 300,
+"lego_index": 3,
+"position": 7,
+"known_text": "I think that man is unfriendly",
+"target_text": "ceapaim go bhfuil an fear sin míchairdiúil",
+"word_count": 42,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U04",
+"seed_number": 300,
+"lego_index": 3,
+"position": 8,
+"known_text": "I was unfriendly last night and I am sorry",
+"target_text": "bhí mé míchairdiúil aréir agus tá brón orm",
+"word_count": 42,
+"lego_count": 9,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U05",
+"seed_number": 300,
+"lego_index": 3,
+"position": 9,
+"known_text": "the man is unfriendly today",
+"target_text": "tá an fear míchairdiúil inniu",
+"word_count": 29,
+"lego_count": 5,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L03U06",
+"seed_number": 300,
+"lego_index": 3,
+"position": 10,
+"known_text": "she was unfriendly and nervous last night",
+"target_text": "bhí sí míchairdiúil agus neirbhíseach aréir",
+"word_count": 43,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L03",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "a999c98a-065a-4290-9515-742c110c8bfd",
+"seed_number": 300,
+"lego_index": 2,
+"type": "M",
+"is_new": false,
+"known_text": "to be",
+"target_text": "a bheith",
+"components": null,
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "69481dc7-dd4e-4c1c-8047-c0c562e600f0",
+"seed_number": 300,
+"lego_index": 1,
+"type": "M",
+"is_new": true,
+"known_text": "she doesn't want to",
+"target_text": "ní mian léi",
+"components": [
+{
+"known": "is not a wish",
+"target": "ní mian"
+},
+{
+"known": "with her",
+"target": "léi"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01B02",
+"seed_number": 300,
+"lego_index": 1,
+"position": 2,
+"known_text": "unfortunately she doesn't want to",
+"target_text": "faraor ní mian léi",
+"word_count": 25,
+"lego_count": 5,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "unfortunately",
+"legoId": "S0086L03",
+"target": "faraor",
+"isGhost": false
+},
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": " ní mian léi",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01B04",
+"seed_number": 300,
+"lego_index": 1,
+"position": 4,
+"known_text": "she doesn't want to call you tonight",
+"target_text": "ní mian léi glaoch ort anocht",
+"word_count": 36,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": "ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " glaoch",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ort",
+"isGhost": true
+},
+{
+"known": "tonight",
+"legoId": "S0156L04",
+"target": " anocht",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01B01",
+"seed_number": 300,
+"lego_index": 1,
+"position": 1,
+"known_text": "she doesn't want to leave",
+"target_text": "ní mian léi imeacht",
+"word_count": 26,
+"lego_count": 5,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": "ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to leave",
+"legoId": "S0139L02",
+"target": " imeacht",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1092,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01B03",
+"seed_number": 300,
+"lego_index": 1,
+"position": 3,
+"known_text": "she doesn't want to pay half of the cost",
+"target_text": "ní mian léi íoc as leath den chostas",
+"word_count": 33,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": "ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to pay for",
+"legoId": "S0299L03",
+"target": " íoc as",
+"isGhost": false
+},
+{
+"known": "half of the cost",
+"legoId": "S0299L02",
+"target": " leath den chostas",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U02",
+"seed_number": 300,
+"lego_index": 1,
+"position": 6,
+"known_text": "unfortunately she doesn't want to come with us next month",
+"target_text": "faraor ní mian léi teacht linn an mhí seo chugainn",
+"word_count": 57,
+"lego_count": 10,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "unfortunately",
+"legoId": "S0086L03",
+"target": "faraor",
+"isGhost": false
+},
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": " ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to come with us",
+"legoId": "S0271L02",
+"target": " teacht linn",
+"isGhost": false
+},
+{
+"known": "next month",
+"legoId": "S0157L03",
+"target": " an mhí seo chugainn",
+"isGhost": false
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U05",
+"seed_number": 300,
+"lego_index": 1,
+"position": 9,
+"known_text": "thank you but she doesn't want to come with us",
+"target_text": "go raibh maith agat ach ní mian léi teacht linn",
+"word_count": 54,
+"lego_count": 10,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "thank you",
+"legoId": "S0073L01",
+"target": "go raibh maith agat",
+"isGhost": false
+},
+{
+"known": "but",
+"legoId": "S0019L01",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": " ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to come with us",
+"legoId": "S0271L02",
+"target": " teacht linn",
+"isGhost": false
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U01",
+"seed_number": 300,
+"lego_index": 1,
+"position": 5,
+"known_text": "he wants to pay half of the cost but she doesn't want to",
+"target_text": "is mian leis íoc as leath den chostas ach ní mian léi",
+"word_count": 55,
+"lego_count": 11,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "he wants",
+"legoId": "S0016L01",
+"target": "is mian leis",
+"isGhost": false
+},
+{
+"known": "to pay for",
+"legoId": "S0299L03",
+"target": " íoc as",
+"isGhost": false
+},
+{
+"known": "half of the cost",
+"legoId": "S0299L02",
+"target": " leath den chostas",
+"isGhost": false
+},
+{
+"known": "but",
+"legoId": "S0165L01",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": " ní mian léi",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U06",
+"seed_number": 300,
+"lego_index": 1,
+"position": 10,
+"known_text": "she doesn't want to stop and I'm worried",
+"target_text": "ní mian léi stopadh agus tá mé buartha",
+"word_count": 43,
+"lego_count": 8,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": "ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to stop",
+"legoId": "S0067L04",
+"target": " stopadh",
+"isGhost": false
+},
+{
+"known": "and",
+"legoId": "S0015L01",
+"target": " agus",
+"isGhost": false
+},
+{
+"known": "I'm worried",
+"legoId": "S0270L02",
+"target": " tá imní orm",
+"isGhost": false
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U04",
+"seed_number": 300,
+"lego_index": 1,
+"position": 8,
+"known_text": "she doesn't want to leave in a few days",
+"target_text": "ní mian léi imeacht i gceann cúpla lá",
+"word_count": 44,
+"lego_count": 9,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": "ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "to leave",
+"legoId": "S0139L02",
+"target": " imeacht",
+"isGhost": false
+},
+{
+"known": "in a few days",
+"legoId": "S0274L03",
+"target": " i gceann cúpla lá",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1092,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0300L01U03",
+"seed_number": 300,
+"lego_index": 1,
+"position": 7,
+"known_text": "I'm sorry but she doesn't want to call you tonight",
+"target_text": "tá brón orm ach ní mian léi glaoch ort anocht",
+"word_count": 52,
+"lego_count": 10,
+"difficulty": null,
+"register": null,
+"metadata": {
+"job": "#906",
+"model": "opus",
+"format": "build_use",
+"source": "regenerate-debut-practice",
+"pipeline": "v3"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T15:03:11.896Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": "S0300L01",
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I am sorry",
+"legoId": "S0193L01",
+"target": "tá brón orm",
+"isGhost": false
+},
+{
+"known": "but",
+"legoId": "S0165L01",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "she doesn't want to",
+"legoId": "S0300L01",
+"target": " ní mian léi",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " glaoch",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " ort",
+"isGhost": true
+},
+{
+"known": "tonight",
+"legoId": "S0156L04",
+"target": " anocht",
+"isGhost": false
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L07U03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L07U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L07U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L07B01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06B02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U07"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U06"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U05"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U04"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L06B01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L05U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L05U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L05B02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L05B01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L04U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L04U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L04B02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0300L04B01"
+},
+{
+"op": "lego.delete",
+"id": "31a0c597-c9b7-42e2-8408-2738ca3ec3b3"
+},
+{
+"op": "lego.delete",
+"id": "1c5040cb-b871-4e12-b251-ec2ee1df6bae"
+},
+{
+"op": "lego.delete",
+"id": "7bd65ed9-0de3-493d-a0df-351a48159d90"
+},
+{
+"op": "lego.delete",
+"id": "4a79f8a4-1b44-4c2c-bd60-c6555bae7794"
+},
+{
+"op": "seed.update",
+"seed_number": 300,
+"set": {
+"known_text": "she doesn't want to seem unfriendly",
+"target_text": "Ní mian léi a bheith míchairdiúil"
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "c634ae5b-fb7b-449c-923a-bb470db00b08",
+"seed_number": 166,
+"lego_index": 3,
+"type": "M",
+"is_new": true,
+"known_text": "very unusual",
+"target_text": "an-neamhghnách",
+"components": [
+{
+"known": "very",
+"target": "an-"
+},
+{
+"known": "unusual",
+"target": "neamhghnách"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03B04",
+"seed_number": 166,
+"lego_index": 3,
+"position": 6,
+"known_text": "my name is not very unusual",
+"target_text": "níl m'ainm an-neamhghnách",
+"word_count": 25,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "no",
+"legoId": "S0096L01",
+"target": "níl",
+"isGhost": false
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03B03",
+"seed_number": 166,
+"lego_index": 3,
+"position": 5,
+"known_text": "it's very unusual",
+"target_text": "tá sé an-neamhghnách",
+"word_count": 20,
+"lego_count": 3,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "it is",
+"legoId": "S0049L01",
+"target": "tá sé",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03B01",
+"seed_number": 166,
+"lego_index": 3,
+"position": 3,
+"known_text": "very unusual",
+"target_text": "an-neamhghnách",
+"word_count": 14,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "lego"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": "an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03C02",
+"seed_number": 166,
+"lego_index": 3,
+"position": 2,
+"known_text": "unusual",
+"target_text": "neamhghnách",
+"word_count": 11,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 1
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03C01",
+"seed_number": 166,
+"lego_index": 3,
+"position": 1,
+"known_text": "very",
+"target_text": "an-",
+"word_count": 3,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 0
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "an-",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U04",
+"seed_number": 166,
+"lego_index": 3,
+"position": 10,
+"known_text": "is it very unusual?",
+"target_text": "an bhfuil sé an-neamhghnách?",
+"word_count": 28,
+"lego_count": 4,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "if it's",
+"legoId": "S0165L03",
+"target": "an bhfuil sé",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": "?",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U09",
+"seed_number": 166,
+"lego_index": 3,
+"position": 112,
+"known_text": "she told me that it was very unusual for him not to want to help",
+"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú",
+"word_count": 62,
+"lego_count": 11,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026",
+"moved_from": "S0248L02U08"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-16T19:12:20.389Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U05",
+"seed_number": 166,
+"lego_index": 3,
+"position": 11,
+"known_text": "I know that it's very unusual",
+"target_text": "Tá a fhios agam go bhfuil sé an-neamhghnách",
+"word_count": 44,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "yes",
+"legoId": "S0097L01",
+"target": "Tá",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " a",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " fhios",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " agam",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " go",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " sé",
+"isGhost": true
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U07",
+"seed_number": 166,
+"lego_index": 3,
+"position": 13,
+"known_text": "I'm not sure if it's very unusual",
+"target_text": "Níl mé cinnte an bhfuil sé an-neamhghnách",
+"word_count": 42,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I'm not sure",
+"legoId": "S0062L03",
+"target": "Níl mé cinnte",
+"isGhost": false
+},
+{
+"known": "if it's",
+"legoId": "S0165L03",
+"target": " an bhfuil sé",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U03",
+"seed_number": 166,
+"lego_index": 3,
+"position": 9,
+"known_text": "it's not very unusual",
+"target_text": "Níl sé an-neamhghnách",
+"word_count": 22,
+"lego_count": 4,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "it is not",
+"legoId": "S0066L01",
+"target": "Níl sé",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U02",
+"seed_number": 166,
+"lego_index": 3,
+"position": 8,
+"known_text": "I think it's very unusual",
+"target_text": "ceapaim go bhfuil sé an-neamhghnách",
+"word_count": 36,
+"lego_count": 5,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I think that it's",
+"legoId": "S0163L01",
+"target": "ceapaim go bhfuil sé",
+"isGhost": false
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U01",
+"seed_number": 166,
+"lego_index": 3,
+"position": 7,
+"known_text": "my name is not very unusual",
+"target_text": "Níl m'ainm an-neamhghnách",
+"word_count": 26,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "no",
+"legoId": "S0096L01",
+"target": "Níl",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " m'ainm",
+"isGhost": true
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 2107,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U06",
+"seed_number": 166,
+"lego_index": 3,
+"position": 12,
+"known_text": "I hope that it's not very unusual",
+"target_text": "Tá súil agam nach bhfuil sé an-neamhghnách",
+"word_count": 43,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I hope",
+"legoId": "S0149L04",
+"target": "Tá súil agam",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " nach",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " sé",
+"isGhost": true
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 2107,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L03U08",
+"seed_number": 166,
+"lego_index": 3,
+"position": 14,
+"known_text": "it's true that my name is not very unusual",
+"target_text": "Tá sé fíor nach bhfuil m'ainm an-neamhghnách",
+"word_count": 45,
+"lego_count": 9,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 9,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.304Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "end",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "it is",
+"legoId": "S0091L03",
+"target": "Tá sé",
+"isGhost": false
+},
+{
+"known": "true",
+"legoId": "S0165L04",
+"target": " fíor",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " nach",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " m'ainm",
+"isGhost": true
+},
+{
+"known": "very unusual",
+"legoId": "S0166L03",
+"target": " an-neamhghnách",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": 2107,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "a87d0d09-8169-4c69-83f1-6a5284730eec",
+"seed_number": 166,
+"lego_index": 2,
+"type": "M",
+"is_new": true,
+"known_text": "my name is not",
+"target_text": "níl m'ainm",
+"components": [
+{
+"known": "no",
+"target": "níl"
+},
+{
+"known": "my name",
+"target": "m'ainm"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-16T19:12:20.389Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L02U01",
+"seed_number": 166,
+"lego_index": 2,
+"position": 101,
+"known_text": "my name is not very unusual",
+"target_text": "Níl m'ainm an-neamhghnách",
+"word_count": 25,
+"lego_count": 3,
+"difficulty": null,
+"register": null,
+"metadata": {
+"format": "build_use",
+"authored": "plan cs #107 applied by cs #253, 16 Nov 2026"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-16T19:12:20.389Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": null,
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "lego.insert",
+"row": {
+"id": "ae90dce4-61f2-44bd-899c-6218147bf909",
+"seed_number": 166,
+"lego_index": 1,
+"type": "M",
+"is_new": true,
+"known_text": "my name",
+"target_text": "m'ainm",
+"components": [
+{
+"known": "my",
+"target": "mo"
+},
+{
+"known": "name",
+"target": "ainm"
+}
+],
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null,
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"target_text_roman": null,
+"target_lego_id": null,
+"known_gloss_segments": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01B01",
+"seed_number": 166,
+"lego_index": 1,
+"position": 3,
+"known_text": "my name",
+"target_text": "m'ainm",
+"word_count": 6,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "lego"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "build",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": "m'ainm",
+"isGhost": false,
+"isSalient": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01C01",
+"seed_number": 166,
+"lego_index": 1,
+"position": 1,
+"known_text": "my",
+"target_text": "mo",
+"word_count": 2,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 0
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "my",
+"legoId": "S0051L05",
+"target": "mo",
+"isGhost": false
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01C02",
+"seed_number": 166,
+"lego_index": 1,
+"position": 2,
+"known_text": "name",
+"target_text": "ainm",
+"word_count": 4,
+"lego_count": 1,
+"difficulty": null,
+"register": null,
+"metadata": {
+"buildup": "component",
+"component_index": 1
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "component",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "ainm",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U03",
+"seed_number": 166,
+"lego_index": 1,
+"position": 9,
+"known_text": "I'm not sure if my name is unusual",
+"target_text": "Níl mé cinnte an bhfuil m'ainm neamhghnách",
+"word_count": 43,
+"lego_count": 8,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I'm not sure",
+"legoId": "S0010L01",
+"target": "Níl mé cinnte",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U04",
+"seed_number": 166,
+"lego_index": 1,
+"position": 10,
+"known_text": "it's true that my name is not unusual",
+"target_text": "Tá sé fíor nach bhfuil m'ainm neamhghnách",
+"word_count": 42,
+"lego_count": 8,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "it is",
+"legoId": "S0049L01",
+"target": "Tá sé",
+"isGhost": false
+},
+{
+"known": "true",
+"legoId": "S0165L04",
+"target": " fíor",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " nach",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U06",
+"seed_number": 166,
+"lego_index": 1,
+"position": 12,
+"known_text": "is my name unusual?",
+"target_text": "an bhfuil m'ainm neamhghnách?",
+"word_count": 29,
+"lego_count": 4,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "",
+"legoId": null,
+"target": "an",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách?",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U07",
+"seed_number": 166,
+"lego_index": 1,
+"position": 13,
+"known_text": "I hope my name is not unusual",
+"target_text": "Tá súil agam nach bhfuil m'ainm neamhghnách",
+"word_count": 44,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I hope",
+"legoId": "S0149L04",
+"target": "Tá súil agam",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " nach",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U02",
+"seed_number": 166,
+"lego_index": 1,
+"position": 8,
+"known_text": "my name is not unusual",
+"target_text": "Níl m'ainm neamhghnách",
+"word_count": 23,
+"lego_count": 5,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "no",
+"legoId": "S0096L01",
+"target": "Níl",
+"isGhost": false
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U08",
+"seed_number": 166,
+"lego_index": 1,
+"position": 14,
+"known_text": "my name is unusual",
+"target_text": "Tá m'ainm neamhghnách",
+"word_count": 22,
+"lego_count": 4,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "yes",
+"legoId": "S0097L01",
+"target": "Tá",
+"isGhost": false
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": null,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U01",
+"seed_number": 166,
+"lego_index": 1,
+"position": 7,
+"known_text": "I think my name is unusual",
+"target_text": "ceapaim go bhfuil m'ainm neamhghnách",
+"word_count": 37,
+"lego_count": 6,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 7,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I think",
+"legoId": "S0123L01",
+"target": "ceapaim",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " go",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0166L01U05",
+"seed_number": 166,
+"lego_index": 1,
+"position": 11,
+"known_text": "I know that my name is unusual",
+"target_text": "Tá a fhios agam go bhfuil m'ainm neamhghnách",
+"word_count": 45,
+"lego_count": 7,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"scored_at": "2026-02-18T01:26:54.179Z"
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:56.464Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:20:52.845Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "yes",
+"legoId": "S0097L01",
+"target": "Tá",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " a",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " fhios",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " agam",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " go",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhfuil",
+"isGhost": true
+},
+{
+"known": "my name",
+"legoId": "S0166L01",
+"target": " m'ainm",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " neamhghnách",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06U05"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06U04"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06B04"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06U03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06U02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06U01"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06B03"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06B02"
+},
+{
+"op": "phrase.delete",
+"phrase_id": "gle_v2_for_eng:S0166L06B01"
+},
+{
+"op": "lego.delete",
+"id": "2224b35c-e162-4ffd-a167-cbbcb9f10c16"
+},
+{
+"op": "lego.delete",
+"id": "508b9d26-b780-4712-9e72-d204e3048d73"
+},
+{
+"op": "lego.delete",
+"id": "3c290f3f-fac3-4535-937c-6f803927d328"
+},
+{
+"op": "seed.update",
+"seed_number": 166,
+"set": {
+"known_text": "my name is not very unusual",
+"target_text": "Níl m'ainm an-neamhghnách"
+}
+}
+],
+"undo_file": null,
+"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
+"_seconds": 12.6,
+"_ops": 45
+}
