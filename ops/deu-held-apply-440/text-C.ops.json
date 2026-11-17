@@ -1,0 +1,2121 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0149L01",
+   "expect": {
+    "known_text": "I hope you",
+    "target_text": "ich hoffe du"
+   },
+   "set": {
+    "known_text": "so I hope",
+    "target_text": "also hoffe ich",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01C01",
+   "expect": {
+    "known_text": "I hope",
+    "target_text": "Ich hoffe"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01C02",
+   "expect": {
+    "known_text": "You",
+    "target_text": "Du"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "so I hope",
+    "target_text": "also hoffe ich",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B02",
+   "expect": {
+    "known_text": "I hope you understand",
+    "target_text": "Ich hoffe du verstehst"
+   },
+   "set": {
+    "known_text": "so I hope you understand",
+    "target_text": "also hoffe ich, dass du verstehst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B03",
+   "expect": {
+    "known_text": "I hope you can help",
+    "target_text": "Ich hoffe du kannst helfen"
+   },
+   "set": {
+    "known_text": "so I hope you can help",
+    "target_text": "also hoffe ich, dass du helfen kannst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B04",
+   "expect": {
+    "known_text": "I hope you know",
+    "target_text": "Ich hoffe du weißt"
+   },
+   "set": {
+    "known_text": "so I hope you know",
+    "target_text": "also hoffe ich, dass du es weißt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01U01",
+   "expect": {
+    "known_text": "I hope you can help me with the problem tomorrow",
+    "target_text": "Ich hoffe du kannst mir morgen mit dem Problem helfen"
+   },
+   "set": {
+    "known_text": "so I hope you can help me tomorrow",
+    "target_text": "also hoffe ich, dass du mir morgen helfen kannst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01U02",
+   "expect": {
+    "known_text": "I hope you know how important this is for me",
+    "target_text": "Ich hoffe du weißt wie wichtig das für mich ist"
+   },
+   "set": {
+    "known_text": "so I hope you know how important this is",
+    "target_text": "also hoffe ich, dass du weißt, wie wichtig das ist"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U03",
+   "expect": {
+    "known_text": "I hope you understand what I am trying to say here",
+    "target_text": "Ich hoffe du verstehst was ich hier sagen will"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U04",
+   "expect": {
+    "known_text": "I hope you think this is a good idea",
+    "target_text": "Ich hoffe du denkst das ist eine gute Idee"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U06",
+   "expect": {
+    "known_text": "I hope you know I am very happy about this",
+    "target_text": "Ich hoffe du weißt ich bin sehr glücklich darüber"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U08",
+   "expect": {
+    "known_text": "I hope you can find the time to read this",
+    "target_text": "Ich hoffe du kannst die Zeit finden um das zu lesen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U09",
+   "expect": {
+    "known_text": "I hope you get to know my friend",
+    "target_text": "ich hoffe, du lernst meinen Freund kennen"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 149,
+    "lego_index": 2,
+    "known_text": "that you'll finish soon",
+    "target_text": "dass du bald fertig wirst",
+    "type": "A",
+    "is_new": true,
+    "status": "draft",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "that you'll finish soon",
+    "target_text": "dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 102,
+    "known_text": "I hope that you'll finish soon",
+    "target_text": "ich hoffe, dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 103,
+    "known_text": "so I hope that you'll finish soon",
+    "target_text": "also hoffe ich, dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 104,
+    "known_text": "I think that you'll finish soon",
+    "target_text": "ich denke, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 105,
+    "known_text": "I know that you'll finish soon",
+    "target_text": "ich weiß, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 106,
+    "known_text": "this isn't very difficult, so I hope you'll finish soon",
+    "target_text": "das ist nicht sehr schwierig, also hoffe ich, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 13,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0197L01",
+   "expect": {
+    "known_text": "the son",
+    "target_text": "der Sohn"
+   },
+   "set": {
+    "known_text": "my son",
+    "target_text": "mein Sohn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B01",
+   "expect": {
+    "known_text": "The son will come tomorrow",
+    "target_text": "Der Sohn wird morgen kommen"
+   },
+   "set": {
+    "known_text": "My son will come tomorrow",
+    "target_text": "Mein Sohn wird morgen kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B02",
+   "expect": {
+    "known_text": "The son was here yesterday",
+    "target_text": "Der Sohn war gestern hier"
+   },
+   "set": {
+    "known_text": "My son was here yesterday",
+    "target_text": "Mein Sohn war gestern hier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B03",
+   "expect": {
+    "known_text": "The son would like to help me",
+    "target_text": "Der Sohn möchte mir helfen"
+   },
+   "set": {
+    "known_text": "My son would like to help me",
+    "target_text": "Mein Sohn möchte mir helfen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U04",
+   "expect": {
+    "known_text": "I heard that the son will come on Saturday evening",
+    "target_text": "Ich habe gehört dass der Sohn am Samstagabend kommen wird"
+   },
+   "set": {
+    "known_text": "I heard that my son will come on Saturday evening",
+    "target_text": "Ich habe gehört, dass mein Sohn am Samstagabend kommen wird"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U06",
+   "expect": {
+    "known_text": "The son told me he needs money before tomorrow morning",
+    "target_text": "Der Sohn hat mir gesagt er brauche Geld vor morgen früh"
+   },
+   "set": {
+    "known_text": "My son told me he needs money before tomorrow morning",
+    "target_text": "Mein Sohn hat mir gesagt, er brauche Geld vor morgen früh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U07",
+   "expect": {
+    "known_text": "I do not know if the son has heard about the problem",
+    "target_text": "Ich weiß nicht ob der Sohn über das Problem gehört hat"
+   },
+   "set": {
+    "known_text": "I do not know if my son has heard about the problem",
+    "target_text": "Ich weiß nicht, ob mein Sohn über das Problem gehört hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U08",
+   "expect": {
+    "known_text": "The son would like to read but he does not have time now",
+    "target_text": "Der Sohn möchte lesen aber er hat jetzt keine Zeit"
+   },
+   "set": {
+    "known_text": "My son would like to read but he does not have time now",
+    "target_text": "Mein Sohn möchte lesen, aber er hat jetzt keine Zeit"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0197L02",
+   "expect": {
+    "known_text": "the teacher",
+    "target_text": "der Lehrer"
+   },
+   "set": {
+    "known_text": "as a teacher",
+    "target_text": "als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B01",
+   "expect": {
+    "known_text": "The teacher is here",
+    "target_text": "Der Lehrer ist hier"
+   },
+   "set": {
+    "known_text": "as a teacher",
+    "target_text": "als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B02",
+   "expect": {
+    "known_text": "Where is the teacher?",
+    "target_text": "Wo ist der Lehrer"
+   },
+   "set": {
+    "known_text": "he works as a teacher",
+    "target_text": "er arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B03",
+   "expect": {
+    "known_text": "The teacher will help",
+    "target_text": "Der Lehrer wird helfen"
+   },
+   "set": {
+    "known_text": "my friend works as a teacher",
+    "target_text": "mein Freund arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U01",
+   "expect": {
+    "known_text": "The teacher is working in the office on Sunday morning",
+    "target_text": "Der Lehrer arbeitet am Sonntagmorgen im Büro"
+   },
+   "set": {
+    "known_text": "he wants to work as a teacher",
+    "target_text": "er will als Lehrer arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U02",
+   "expect": {
+    "known_text": "I heard that the teacher would like to read the latest book",
+    "target_text": "Ich habe gehört dass der Lehrer das neueste Buch lesen möchte"
+   },
+   "set": {
+    "known_text": "my son would like to work as a teacher",
+    "target_text": "mein Sohn möchte als Lehrer arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U03",
+   "expect": {
+    "known_text": "The teacher told me the son will come tomorrow evening",
+    "target_text": "Der Lehrer hat mir gesagt der Sohn wird morgen Abend kommen"
+   },
+   "set": {
+    "known_text": "does he work as a teacher?",
+    "target_text": "arbeitet er als Lehrer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U04",
+   "expect": {
+    "known_text": "I do not know if the teacher has heard the story",
+    "target_text": "Ich weiß nicht ob der Lehrer die Geschichte gehört hat"
+   },
+   "set": {
+    "known_text": "my son works as a teacher",
+    "target_text": "mein Sohn arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U06",
+   "expect": {
+    "known_text": "The teacher was talking about the money yesterday I heard",
+    "target_text": "Der Lehrer hat gestern über das Geld geredet habe ich gehört"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U07",
+   "expect": {
+    "known_text": "The teacher would like to find the latest answer before tomorrow",
+    "target_text": "Der Lehrer möchte die neueste Antwort vor morgen finden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U08",
+   "expect": {
+    "known_text": "I think the teacher will be at home this evening",
+    "target_text": "Ich glaube der Lehrer wird heute Abend zu Hause sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U09",
+   "expect": {
+    "known_text": "The teacher was here yesterday but he is not here today",
+    "target_text": "Der Lehrer war gestern hier aber er ist heute nicht hier"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U10",
+   "expect": {
+    "known_text": "The son is a teacher and he is very good I think",
+    "target_text": "Der Sohn ist ein Lehrer und er ist sehr gut glaube ich"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0239L01",
+   "expect": {
+    "known_text": "reads",
+    "target_text": "liest"
+   },
+   "set": {
+    "known_text": "likes to read",
+    "target_text": "liest gern"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0239L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 239,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "likes to read",
+    "target_text": "liest gern",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 2,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01B02",
+   "expect": {
+    "known_text": "I think she reads a lot",
+    "target_text": "Ich denke, sie liest viel"
+   },
+   "set": {
+    "known_text": "I think she likes to read",
+    "target_text": "Ich denke, sie liest gern"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01B03",
+   "expect": {
+    "known_text": "He often reads at home",
+    "target_text": "Er liest oft zu Hause"
+   },
+   "set": {
+    "known_text": "He likes to read at home",
+    "target_text": "Er liest gern zu Hause"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01U01",
+   "expect": {
+    "known_text": "My friend reads a book in the morning before work",
+    "target_text": "Mein Freund liest am Morgen vor der Arbeit ein Buch"
+   },
+   "set": {
+    "known_text": "My friend likes to read in the morning",
+    "target_text": "Mein Freund liest gern am Morgen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01U02",
+   "expect": {
+    "known_text": "She reads a book in the evening, when she is at home alone and wants to relax",
+    "target_text": "Sie liest ein Buch am Abend, wenn sie alleine zu Hause ist und sich entspannen will"
+   },
+   "set": {
+    "known_text": "She likes to read in the evening when she is at home",
+    "target_text": "Sie liest gern am Abend, wenn sie zu Hause ist"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U05",
+   "expect": {
+    "known_text": "My mother reads many interesting things about history and many other different topics that are very interesting to her",
+    "target_text": "Meine Mutter liest viele interessante Sachen über Geschichte und viele andere verschiedene Sachen, die für sie sehr interessant sind"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U06",
+   "expect": {
+    "known_text": "She reads very quickly and easily but my brother reads much more slowly than she does",
+    "target_text": "Sie liest sehr schnell und leicht, aber mein Bruder liest viel langsamer als sie"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U07",
+   "expect": {
+    "known_text": "My teacher reads a new book often to learn more about many different and very interesting things",
+    "target_text": "Mein Lehrer liest oft ein neues Buch, um mehr über viele verschiedene und sehr interessante Sachen zu lernen"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0239L01U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 239,
+    "lego_index": 1,
+    "position": 101,
+    "known_text": "my mother likes to read",
+    "target_text": "meine Mutter liest gern",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0195L02",
+   "expect": {
+    "known_text": "the table",
+    "target_text": "der Tisch"
+   },
+   "set": {
+    "known_text": "left on the table",
+    "target_text": "auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02B01",
+   "expect": {
+    "known_text": "The table is here",
+    "target_text": "Der Tisch ist hier"
+   },
+   "set": {
+    "known_text": "left on the table",
+    "target_text": "auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02B03",
+   "expect": {
+    "known_text": "Where is the table?",
+    "target_text": "Wo ist der Tisch"
+   },
+   "set": {
+    "known_text": "I left it on the table",
+    "target_text": "ich habe es auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U01",
+   "expect": {
+    "known_text": "I think the table is in the office where we work today",
+    "target_text": "Ich glaube der Tisch ist im Büro wo wir heute arbeiten"
+   },
+   "set": {
+    "known_text": "I left the money on the table",
+    "target_text": "ich habe das Geld auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U03",
+   "expect": {
+    "known_text": "The table is not good enough for the work we do",
+    "target_text": "Der Tisch ist nicht gut genug für die Arbeit die wir machen"
+   },
+   "set": {
+    "known_text": "she left the book on the table",
+    "target_text": "sie hat das Buch auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U04",
+   "expect": {
+    "known_text": "I saw that the table with many things on it is in the office",
+    "target_text": "Ich habe gesehen, dass der Tisch mit vielen Sachen darauf im Büro ist"
+   },
+   "set": {
+    "known_text": "did you leave it on the table?",
+    "target_text": "hast du es auf dem Tisch gelassen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U06",
+   "expect": {
+    "known_text": "Do you think the table is good for this work we need to do?",
+    "target_text": "Denkst du der Tisch ist gut für diese Arbeit die wir machen müssen"
+   },
+   "set": {
+    "known_text": "he left something on the table",
+    "target_text": "er hat etwas auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U08",
+   "expect": {
+    "known_text": "The money is here on the table for you",
+    "target_text": "Das Geld ist hier auf dem Tisch für dich"
+   },
+   "set": {
+    "known_text": "I left the money here on the table for you",
+    "target_text": "ich habe das Geld hier auf dem Tisch für dich gelassen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0195L02U07",
+   "expect": {
+    "known_text": "I don't know if the table is good enough for the meeting tomorrow",
+    "target_text": "Ich weiß nicht ob der Tisch gut genug für das Treffen morgen ist"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0231L01",
+   "expect": {
+    "known_text": "an old man",
+    "target_text": "einen alten Mann"
+   },
+   "set": {
+    "known_text": "I know an old man",
+    "target_text": "ich kenne einen alten Mann",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L01B01",
+   "expect": {
+    "known_text": "An old man",
+    "target_text": "Einen alten Mann"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0231L02",
+   "expect": {
+    "known_text": "a man who",
+    "target_text": "ein Mann, der"
+   },
+   "set": {
+    "known_text": "who wanted to do it",
+    "target_text": "der es machen wollte",
+    "components": [
+     {
+      "known": "who",
+      "target": "der"
+     },
+     {
+      "known": "wanted to do it",
+      "target": "es machen wollte"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B01",
+   "expect": {
+    "known_text": "who",
+    "target_text": "Der"
+   },
+   "set": {
+    "known_text": "who wanted to do it",
+    "target_text": "der es machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B02",
+   "expect": {
+    "known_text": "The man who",
+    "target_text": "Der Mann, der"
+   },
+   "set": {
+    "known_text": "the man who wanted to do it",
+    "target_text": "der Mann, der es machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B03",
+   "expect": {
+    "known_text": "The woman who",
+    "target_text": "Die Frau, die"
+   },
+   "set": {
+    "known_text": "someone who wanted to try it",
+    "target_text": "jemand, der es versuchen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B04",
+   "expect": {
+    "known_text": "The one who knows",
+    "target_text": "Der, der weiß"
+   },
+   "set": {
+    "known_text": "the man who wanted to help",
+    "target_text": "der Mann, der helfen wollte"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02B06",
+   "expect": {
+    "known_text": "Someone who helps",
+    "target_text": "Jemand, der hilft"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02B07",
+   "expect": {
+    "known_text": "The man who works here is very nice",
+    "target_text": "Der Mann, der hier arbeitet, ist sehr nett"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U02",
+   "expect": {
+    "known_text": "The woman who speaks German is my friend",
+    "target_text": "Die Frau, die Deutsch spricht, ist meine Freundin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U03",
+   "expect": {
+    "known_text": "The man who helped me is very nice",
+    "target_text": "Der Mann, der mir geholfen hat, ist sehr nett"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U04",
+   "expect": {
+    "known_text": "Someone who speaks German well can help me",
+    "target_text": "Jemand, der gut Deutsch spricht, kann mir helfen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U05",
+   "expect": {
+    "known_text": "The son who was here yesterday is my friend",
+    "target_text": "Der Sohn, der gestern hier war, ist mein Freund"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L02U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "I know an old man who wanted to do it",
+    "target_text": "ich kenne einen alten Mann, der es machen wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 231,
+    "lego_index": 3,
+    "known_text": "to ask for help",
+    "target_text": "um Hilfe bitten",
+    "type": "A",
+    "is_new": true,
+    "status": "draft",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "to ask for help",
+    "target_text": "um Hilfe bitten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 102,
+    "known_text": "I want to ask for help",
+    "target_text": "ich will um Hilfe bitten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 103,
+    "known_text": "who wanted to ask for help",
+    "target_text": "der um Hilfe bitten wollte",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 104,
+    "known_text": "the man who wanted to ask for help",
+    "target_text": "der Mann, der um Hilfe bitten wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 105,
+    "known_text": "can I ask for help?",
+    "target_text": "kann ich um Hilfe bitten?",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L01U07",
+   "expect": {
+    "known_text": "I know an old man who wanted to ask for help",
+    "target_text": "Ich kenne einen alten Mann, der um Hilfe bitten wollte"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 106,
+    "known_text": "I know an old man who wanted to ask for help",
+    "target_text": "Ich kenne einen alten Mann, der um Hilfe bitten wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 10,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0307L03",
+   "expect": {
+    "known_text": "right over there",
+    "target_text": "dort drüben"
+   },
+   "set": {
+    "known_text": "who's sitting over there",
+    "target_text": "der da drüben sitzt",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03C01",
+   "expect": {
+    "known_text": "right over",
+    "target_text": "dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03C02",
+   "expect": {
+    "known_text": "there",
+    "target_text": "drüben"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B01",
+   "expect": {
+    "known_text": "right over there",
+    "target_text": "dort drüben"
+   },
+   "set": {
+    "known_text": "who's sitting over there",
+    "target_text": "der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B02",
+   "expect": {
+    "known_text": "sitting right over there",
+    "target_text": "dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "the man who's sitting over there",
+    "target_text": "der Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B03",
+   "expect": {
+    "known_text": "who is sitting right over there",
+    "target_text": "der dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "I know the man who's sitting over there",
+    "target_text": "ich kenne den Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03U01",
+   "expect": {
+    "known_text": "I know that young man who is sitting over there",
+    "target_text": "ich kenne diesen jungen Mann, der dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "do you know the man who's sitting over there?",
+    "target_text": "kennst du den Mann, der da drüben sitzt?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U02",
+   "expect": {
+    "known_text": "that young woman is talking right over there",
+    "target_text": "diese junge Frau redet dort drüben"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U03",
+   "expect": {
+    "known_text": "I think he wants to work right over there",
+    "target_text": "ich denke, dass er dort drüben arbeiten will"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U04",
+   "expect": {
+    "known_text": "he is sitting right over there with your friend",
+    "target_text": "er sitzt dort drüben mit deinem Freund"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U05",
+   "expect": {
+    "known_text": "I know the woman who is sitting right over there",
+    "target_text": "ich kenne die Frau, die dort drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U06",
+   "expect": {
+    "known_text": "he is sitting right over there",
+    "target_text": "er sitzt dort drüben"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L02U07",
+   "expect": {
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "Ich kenne diesen jungen Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0307L03U07",
+    "course_code": "deu_for_eng",
+    "seed_number": 307,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "Ich kenne diesen jungen Mann, der da drüben sitzt",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0391L01",
+   "expect": {
+    "known_text": "to the bus",
+    "target_text": "zum Bus"
+   },
+   "set": {
+    "known_text": "towards the bus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L01B01",
+   "expect": {
+    "known_text": "to the bus",
+    "target_text": "zum Bus"
+   },
+   "set": {
+    "known_text": "towards the bus"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0391L02",
+   "expect": {
+    "known_text": "goes",
+    "target_text": "geht"
+   },
+   "set": {
+    "known_text": "who is walking towards the bus",
+    "target_text": "die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B01",
+   "expect": {
+    "known_text": "she goes to the bus",
+    "target_text": "sie geht zum Bus"
+   },
+   "set": {
+    "known_text": "who is walking towards the bus",
+    "target_text": "die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B02",
+   "expect": {
+    "known_text": "he goes now",
+    "target_text": "er geht jetzt"
+   },
+   "set": {
+    "known_text": "the woman who is walking towards the bus",
+    "target_text": "die Frau, die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B03",
+   "expect": {
+    "known_text": "is he going to the bus?",
+    "target_text": "geht er zum Bus?"
+   },
+   "set": {
+    "known_text": "I know the woman who is walking towards the bus",
+    "target_text": "ich kenne die Frau, die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02U01",
+   "expect": {
+    "known_text": "he goes to the bus",
+    "target_text": "er geht zum Bus"
+   },
+   "set": {
+    "known_text": "do you know the woman who is walking towards the bus?",
+    "target_text": "kennst du die Frau, die zum Bus geht?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U02",
+   "expect": {
+    "known_text": "she goes to the bus now",
+    "target_text": "sie geht jetzt zum Bus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U03",
+   "expect": {
+    "known_text": "where is he going?",
+    "target_text": "wohin geht er?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U04",
+   "expect": {
+    "known_text": "she goes to the bus with someone else",
+    "target_text": "sie geht mit jemand anderem zum Bus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U05",
+   "expect": {
+    "known_text": "he's going to the bus now",
+    "target_text": "er geht jetzt zum Bus"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0391L02U06",
+    "course_code": "deu_for_eng",
+    "seed_number": 391,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "the one who is walking towards the bus",
+    "target_text": "die Person, die zum Bus geht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0134L03",
+   "expect": {
+    "known_text": "difficult",
+    "target_text": "schwierig"
+   },
+   "set": {
+    "known_text": "at something difficult",
+    "target_text": "an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "at something difficult",
+    "target_text": "an etwas Schwierigem",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "to work at something difficult",
+    "target_text": "an etwas Schwierigem arbeiten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "she works at something difficult",
+    "target_text": "sie arbeitet an etwas Schwierigem",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U06",
+   "expect": {
+    "known_text": "That is difficult but I want to try it",
+    "target_text": "Das ist schwierig, aber ich will es versuchen"
+   },
+   "set": {
+    "known_text": "he is working at something difficult",
+    "target_text": "er arbeitet an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U07",
+   "expect": {
+    "known_text": "I think that is not so difficult",
+    "target_text": "Ich denke das ist nicht so schwierig"
+   },
+   "set": {
+    "known_text": "we are working at something difficult",
+    "target_text": "wir arbeiten an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U08",
+   "expect": {
+    "known_text": "It is difficult to learn something new",
+    "target_text": "Es ist schwierig etwas Neues zu lernen"
+   },
+   "set": {
+    "known_text": "I want to work at something difficult",
+    "target_text": "ich will an etwas Schwierigem arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U09",
+   "expect": {
+    "known_text": "I know that is difficult but we can do it together",
+    "target_text": "Ich weiß dass das schwierig ist aber wir können es zusammen machen"
+   },
+   "set": {
+    "known_text": "it's not a problem when you work at something difficult",
+    "target_text": "es ist kein Problem, wenn man an etwas Schwierigem arbeitet"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0134L02U12",
+   "expect": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "es ist kein Problem, wenn man mit ihnen an etwas Schwierigem arbeitet"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "es ist kein Problem, wenn man mit ihnen an etwas Schwierigem arbeitet",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 12,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0050L01",
+   "expect": {
+    "known_text": "to become",
+    "target_text": "werden"
+   },
+   "set": {
+    "known_text": "to finish",
+    "target_text": "fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0050L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 50,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "to finish",
+    "target_text": "fertig zu werden",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01B02",
+   "expect": {
+    "known_text": "To get better",
+    "target_text": "Besser zu werden"
+   },
+   "set": {
+    "known_text": "I'm trying to finish",
+    "target_text": "ich versuche, fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01B03",
+   "expect": {
+    "known_text": "To get tired",
+    "target_text": "Müde zu werden"
+   },
+   "set": {
+    "known_text": "I want to finish",
+    "target_text": "ich will fertig werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01U02",
+   "expect": {
+    "known_text": "I want to get better, and I think that mistakes are good",
+    "target_text": "Ich will besser werden, und ich denke, dass Fehler gut sind"
+   },
+   "set": {
+    "known_text": "I want to finish quickly",
+    "target_text": "ich will schnell fertig werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01U03",
+   "expect": {
+    "known_text": "I don't want to get tired, but I feel okay at the moment",
+    "target_text": "Ich will nicht müde werden, aber ich fühle mich im Moment okay"
+   },
+   "set": {
+    "known_text": "I'm trying to finish quickly",
+    "target_text": "ich versuche, schnell fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U04",
+   "expect": {
+    "known_text": "I think that I want to get better, and I have no worries about mistakes",
+    "target_text": "Ich denke, dass ich besser werden will, und ich mache mir keine Sorgen über Fehler"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U06",
+   "expect": {
+    "known_text": "You know that I don't want to get tired, and I should try more",
+    "target_text": "Du weißt, dass ich nicht müde werden will, und ich soll mehr versuchen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U08",
+   "expect": {
+    "known_text": "I want to get better, and I'm looking forward to speaking more German",
+    "target_text": "Ich will besser werden, und ich freue mich darauf, mehr Deutsch zu sprechen"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0050L01U07",
+    "course_code": "deu_for_eng",
+    "seed_number": 50,
+    "lego_index": 1,
+    "position": 101,
+    "known_text": "I'm not trying to finish as quickly as possible",
+    "target_text": "Ich versuche nicht, so schnell wie möglich fertig zu werden",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 10,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0200L02",
+   "expect": {
+    "known_text": "finish",
+    "target_text": "fertig machen"
+   },
+   "set": {
+    "known_text": "finish everything",
+    "target_text": "alles fertig machen",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0200L02C01",
+   "expect": {
+    "known_text": "Finish",
+    "target_text": "Fertig"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0200L02C02",
+   "expect": {
+    "known_text": "Make",
+    "target_text": "Machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B01",
+   "expect": {
+    "known_text": "Finish",
+    "target_text": "Fertig machen"
+   },
+   "set": {
+    "known_text": "finish everything",
+    "target_text": "alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B02",
+   "expect": {
+    "known_text": "I'd like to finish this",
+    "target_text": "Ich möchte das fertig machen"
+   },
+   "set": {
+    "known_text": "I'd like to finish everything",
+    "target_text": "ich möchte alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B04",
+   "expect": {
+    "known_text": "We need to finish",
+    "target_text": "Wir müssen fertig machen"
+   },
+   "set": {
+    "known_text": "we need to finish everything",
+    "target_text": "wir müssen alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B05",
+   "expect": {
+    "known_text": "Can you finish soon?",
+    "target_text": "Kannst du bald fertig machen"
+   },
+   "set": {
+    "known_text": "can you finish everything soon?",
+    "target_text": "kannst du bald alles fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B06",
+   "expect": {
+    "known_text": "I will finish later",
+    "target_text": "Ich werde später fertig machen"
+   },
+   "set": {
+    "known_text": "I will finish everything later",
+    "target_text": "ich werde später alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U01",
+   "expect": {
+    "known_text": "I need to finish this work before I can go home today",
+    "target_text": "Ich muss diese Arbeit fertig machen bevor ich heute nach Hause gehen kann"
+   },
+   "set": {
+    "known_text": "I need to finish everything before I can go home today",
+    "target_text": "ich muss alles fertig machen, bevor ich heute nach Hause gehen kann"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U03",
+   "expect": {
+    "known_text": "She told me that she wanted to finish the book this week",
+    "target_text": "Sie hat mir gesagt dass sie das Buch diese Woche fertig machen wollte"
+   },
+   "set": {
+    "known_text": "She told me that she wanted to finish everything this week",
+    "target_text": "Sie hat mir gesagt, dass sie diese Woche alles fertig machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U11",
+   "expect": {
+    "known_text": "I think it is important that we can finish this work in a short time",
+    "target_text": "Ich denke, es ist wichtig, dass wir diese Arbeit in kurzer Zeit fertig machen können"
+   },
+   "set": {
+    "known_text": "I think it is important that we can finish everything in a short time",
+    "target_text": "Ich denke, es ist wichtig, dass wir alles in kurzer Zeit fertig machen können"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0278L01",
+   "expect": {
+    "known_text": "to finish",
+    "target_text": "fertig machen"
+   },
+   "set": {
+    "known_text": "to finish everything",
+    "target_text": "alles fertig machen",
+    "type": "A",
+    "components": [],
+    "is_new": false
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B01",
+   "expect": {
+    "known_text": "to finish",
+    "target_text": "Fertig machen"
+   },
+   "set": {
+    "known_text": "to finish everything",
+    "target_text": "alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B02",
+   "expect": {
+    "known_text": "I need to finish this",
+    "target_text": "Ich muss das fertig machen"
+   },
+   "set": {
+    "known_text": "I need to finish everything",
+    "target_text": "ich muss alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B03",
+   "expect": {
+    "known_text": "Can you finish it today?",
+    "target_text": "Kannst du es heute fertig machen?"
+   },
+   "set": {
+    "known_text": "can you finish everything today?",
+    "target_text": "kannst du heute alles fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B04",
+   "expect": {
+    "known_text": "I want to finish my work",
+    "target_text": "Ich möchte meine Arbeit fertig machen"
+   },
+   "set": {
+    "known_text": "I'd like to finish everything",
+    "target_text": "Ich möchte alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0278L01B06",
+   "expect": {
+    "known_text": "When will you finish?",
+    "target_text": "Wann wirst du fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0278L01U11",
+   "expect": {
+    "known_text": "I think it is important that we finish this work before we start anything new",
+    "target_text": "Ich denke es ist wichtig dass wir diese Arbeit fertig machen bevor wir etwas Neues anfangen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U03",
+   "expect": {
+    "known_text": "I need to finish this today because I have a meeting early tomorrow morning",
+    "target_text": "Ich muss das heute fertig machen weil ich morgen früh ein Treffen habe"
+   },
+   "set": {
+    "known_text": "I need to finish everything today because I have a meeting early tomorrow morning",
+    "target_text": "Ich muss heute alles fertig machen, weil ich morgen früh ein Treffen habe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U10",
+   "expect": {
+    "known_text": "She tells me she would like to finish it this week if that is possible",
+    "target_text": "Sie sagt mir sie möchte es diese Woche fertig machen wenn das möglich ist"
+   },
+   "set": {
+    "known_text": "She tells me she would like to finish everything this week",
+    "target_text": "Sie sagt mir, sie möchte diese Woche alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U12",
+   "expect": {
+    "known_text": "We need to finish this today if we can",
+    "target_text": "Wir müssen das heute fertig machen wenn wir können"
+   },
+   "set": {
+    "known_text": "We need to finish everything today if we can",
+    "target_text": "Wir müssen heute alles fertig machen, wenn wir können"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0211L01",
+   "expect": {
+    "known_text": "test",
+    "target_text": "Test"
+   },
+   "set": {
+    "known_text": "that they didn't want to explain",
+    "target_text": "dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B01",
+   "expect": {
+    "known_text": "I need to do a test tomorrow",
+    "target_text": "Ich muss morgen einen Test machen"
+   },
+   "set": {
+    "known_text": "that they didn't want to explain",
+    "target_text": "dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B02",
+   "expect": {
+    "known_text": "The test was difficult",
+    "target_text": "Der Test war schwierig"
+   },
+   "set": {
+    "known_text": "they said that they didn't want to explain",
+    "target_text": "sie haben gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B03",
+   "expect": {
+    "known_text": "I want to do the test well",
+    "target_text": "Ich möchte den Test gut machen"
+   },
+   "set": {
+    "known_text": "I know that they didn't want to explain",
+    "target_text": "ich weiß, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U02",
+   "expect": {
+    "known_text": "My friend wanted to know if I did the test yesterday",
+    "target_text": "Mein Freund wollte wissen ob ich den Test gestern gemacht habe"
+   },
+   "set": {
+    "known_text": "I think that they didn't want to explain",
+    "target_text": "ich denke, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U03",
+   "expect": {
+    "known_text": "We have to do a test next week at the office",
+    "target_text": "Wir müssen nächste Woche im Büro einen Test machen"
+   },
+   "set": {
+    "known_text": "she told me that they didn't want to explain",
+    "target_text": "sie hat mir gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U04",
+   "expect": {
+    "known_text": "I was nervous before the test but then it was okay",
+    "target_text": "Ich war nervös vor dem Test aber dann war es okay"
+   },
+   "set": {
+    "known_text": "they told us that they didn't want to explain",
+    "target_text": "Sie haben uns gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U06",
+   "expect": {
+    "known_text": "I think the test will be easier than the last one we did",
+    "target_text": "Ich denke der Test wird leichter sein als der letzte den wir gemacht haben"
+   },
+   "set": {
+    "known_text": "it's not a problem that they didn't want to explain",
+    "target_text": "es ist kein Problem, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0211L01U07",
+   "expect": {
+    "known_text": "She wanted to know if I was ready for the test tomorrow",
+    "target_text": "Sie wollte wissen ob ich bereit für den Test morgen bin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0211L01U08",
+   "expect": {
+    "known_text": "I need to finish reading the book before I do the test",
+    "target_text": "Ich muss das Buch fertig lesen bevor ich den Test mache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0242L02U11",
+   "expect": {
+    "known_text": "My brother told me he will need more time for the test",
+    "target_text": "Mein Bruder hat mir gesagt er wird mehr Zeit für den Test brauchen"
+   },
+   "set": {
+    "known_text": "My brother told me he will need more time for the work",
+    "target_text": "Mein Bruder hat mir gesagt, er wird mehr Zeit für die Arbeit brauchen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0246L01U02",
+   "expect": {
+    "known_text": "I wanted her to help you but she was too busy talking to the teacher about the test",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, mit dem Lehrer über den Test zu reden"
+   },
+   "set": {
+    "known_text": "I wanted her to help you but she was too busy talking to the teacher about the work",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, mit dem Lehrer über die Arbeit zu reden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0246L01U10",
+   "expect": {
+    "known_text": "I wanted her to help you but she was too busy making sure that everything was ready for the test",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, dass alles für den Test bereit war"
+   },
+   "set": {
+    "known_text": "I wanted her to help you but she was too busy making sure that everything was ready for the work",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, dass alles für die Arbeit bereit war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0258L01U06",
+   "expect": {
+    "known_text": "When I was over there yesterday I heard them talking about the test they have to do",
+    "target_text": "Als ich gestern drüben war habe ich sie über den Test reden hören den sie machen müssen"
+   },
+   "set": {
+    "known_text": "When I was over there yesterday I heard them talking about the work they have to do",
+    "target_text": "Als ich gestern drüben war, habe ich sie über die Arbeit reden hören, die sie machen müssen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0260L01U08",
+   "expect": {
+    "known_text": "There is not the faintest chance that I will be ready before the test tomorrow morning",
+    "target_text": "Es gibt nicht die geringste Gelegenheit dass ich bereit bin bevor der Test morgen früh ist"
+   },
+   "set": {
+    "known_text": "There is not the faintest chance that I will be ready before tomorrow morning",
+    "target_text": "Es gibt nicht die geringste Gelegenheit, dass ich vor morgen früh bereit bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0269L01U11",
+   "expect": {
+    "known_text": "I will wait for the answer from my teacher about the test",
+    "target_text": "Ich werde auf die Antwort von meinem Lehrer über den Test warten"
+   },
+   "set": {
+    "known_text": "I will wait for the answer from my teacher about the book",
+    "target_text": "Ich werde auf die Antwort von meinem Lehrer über das Buch warten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0284L02U09",
+   "expect": {
+    "known_text": "I need to ask my sister's friend about the test",
+    "target_text": "Ich muss den Freund meiner Schwester über den Test fragen"
+   },
+   "set": {
+    "known_text": "I need to ask my sister's friend about the work",
+    "target_text": "Ich muss den Freund meiner Schwester über die Arbeit fragen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0291L01U06",
+   "expect": {
+    "known_text": "I hope this test is not going to be too difficult because I haven't had time to learn",
+    "target_text": "Ich hoffe dieser Test wird nicht zu schwierig sein weil ich keine Zeit hatte zu lernen"
+   },
+   "set": {
+    "known_text": "I hope this work is not going to be too difficult because I haven't had time to learn",
+    "target_text": "Ich hoffe, diese Arbeit wird nicht zu schwierig sein, weil ich keine Zeit hatte zu lernen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0291L02U04",
+   "expect": {
+    "known_text": "I hope I will be able to find the answer to this question before the test tomorrow",
+    "target_text": "Ich hoffe ich kann die Antwort auf diese Frage finden vor dem Test morgen"
+   },
+   "set": {
+    "known_text": "I hope I will be able to find the answer to this question before tomorrow",
+    "target_text": "Ich hoffe, ich kann die Antwort auf diese Frage vor morgen finden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0292L01U08",
+   "expect": {
+    "known_text": "I hope you will be able to finish the test on time because it is very important for your work",
+    "target_text": "Ich hoffe du kannst den Test rechtzeitig fertig machen weil es sehr wichtig für deine Arbeit ist"
+   },
+   "set": {
+    "known_text": "I hope you will be able to finish the work on time because it is very important for your work",
+    "target_text": "Ich hoffe, du kannst die Arbeit rechtzeitig fertig machen, weil es sehr wichtig für deine Arbeit ist"
+   }
+  }
+ ]
+}
