@@ -1,0 +1,287 @@
+{
+ "ops": [
+  {
+   "op": "lego.reorder",
+   "seed_number": 551,
+   "order": [
+    "S0551L02",
+    "S0551L01",
+    "S0551L03"
+   ]
+  },
+  {
+   "op": "lego.update",
+   "id": "ede3ee9a-a9de-45a2-96af-21d6d01e0e3b",
+   "set": {
+    "known_text": "that church",
+    "target_text": "那座教堂",
+    "target_text_roman": "nà zuò jiàotáng",
+    "components": [
+     {
+      "known": "that",
+      "target": "那"
+     },
+     {
+      "known": "(measure word for buildings)",
+      "target": "座"
+     },
+     {
+      "known": "church",
+      "target": "教堂"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "that one",
+    "target_text": "那座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01B02",
+   "set": {
+    "known_text": "go to church",
+    "target_text": "去教堂",
+    "target_text_roman": "qù jiào táng"
+   },
+   "expect": {
+    "known_text": "that church",
+    "target_text": "那座教堂"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01U01",
+   "set": {
+    "target_text": "教堂很美",
+    "target_text_roman": "jiào táng hěn měi"
+   },
+   "expect": {
+    "known_text": "the church is beautiful",
+    "target_text": "那座教堂很美"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01U03",
+   "set": {
+    "known_text": "I want to go to church",
+    "target_text": "我想去教堂",
+    "target_text_roman": "wǒ xiǎng qù jiào táng"
+   },
+   "expect": {
+    "known_text": "I don't know that church",
+    "target_text": "我不知道那座教堂"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01U04",
+   "set": {
+    "target_text": "没有人去教堂",
+    "target_text_roman": "méi yǒu rén qù jiào táng"
+   },
+   "expect": {
+    "known_text": "nobody goes to the church",
+    "target_text": "没有人去那座教堂"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L01U06",
+   "set": {
+    "known_text": "I saw the church",
+    "target_text": "我看到了教堂",
+    "target_text_roman": "wǒ kàn dào le jiào táng"
+   },
+   "expect": {
+    "known_text": "I saw that church",
+    "target_text": "我看到了那座教堂"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02B02",
+   "set": {
+    "known_text": "that church",
+    "target_text": "那座教堂",
+    "target_text_roman": "nà zuò jiàotáng"
+   },
+   "expect": {
+    "known_text": "that one",
+    "target_text": "那座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02B03",
+   "set": {
+    "known_text": "in that church",
+    "target_text": "在那座教堂里",
+    "target_text_roman": "zài nà zuò jiào táng lǐ"
+   },
+   "expect": {
+    "known_text": "one building",
+    "target_text": "一座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U01",
+   "set": {
+    "known_text": "she was in that church",
+    "target_text": "她在那座教堂里",
+    "target_text_roman": "tā zài nà zuò jiào táng lǐ"
+   },
+   "expect": {
+    "known_text": "she lives in that one",
+    "target_text": "她住在那座里"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U02",
+   "set": {
+    "known_text": "I saw that church",
+    "target_text": "我看到了那座教堂",
+    "target_text_roman": "wǒ kàndào le nà zuò jiàotáng"
+   },
+   "expect": {
+    "known_text": "I saw that one",
+    "target_text": "我看到了那座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U03",
+   "set": {
+    "known_text": "nobody knows that church",
+    "target_text": "没有人知道那座教堂",
+    "target_text_roman": "méi yǒu rén zhī dào nà zuò jiào táng"
+   },
+   "expect": {
+    "known_text": "nobody knows that one",
+    "target_text": "没有人知道那座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U04",
+   "set": {
+    "known_text": "that big church",
+    "target_text": "那座大教堂",
+    "target_text_roman": "nà zuò dà jiào táng"
+   },
+   "expect": {
+    "known_text": "that big one",
+    "target_text": "那座大的"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U05",
+   "set": {
+    "known_text": "she chose that church",
+    "target_text": "她选了那座教堂",
+    "target_text_roman": "tā xuǎn le nà zuò jiào táng"
+   },
+   "expect": {
+    "known_text": "she chose that one",
+    "target_text": "她选了那座"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L02U06",
+   "set": {
+    "known_text": "that church is very beautiful",
+    "target_text": "那座教堂很美",
+    "target_text_roman": "nà zuò jiàotáng hěn měi"
+   },
+   "expect": {
+    "known_text": "that one is very beautiful",
+    "target_text": "那座很美"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L03U01",
+   "set": {
+    "known_text": "that church is ugly"
+   },
+   "expect": {
+    "known_text": "the church is ugly",
+    "target_text": "那座教堂很丑"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L03U03",
+   "set": {
+    "known_text": "that church is very ugly",
+    "target_text": "那座教堂非常丑",
+    "target_text_roman": "nà zuò jiào táng fēi cháng chǒu"
+   },
+   "expect": {
+    "known_text": "that building is ugly",
+    "target_text": "那座很丑"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L03U07",
+   "set": {
+    "known_text": "I think that church is ugly"
+   },
+   "expect": {
+    "known_text": "I think the church is ugly",
+    "target_text": "我觉得那座教堂很丑"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0551L03U09",
+   "set": {
+    "known_text": "I think that small church is very ugly"
+   },
+   "expect": {
+    "known_text": "I think the small church is very ugly",
+    "target_text": "我觉得那座小教堂非常丑"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 551,
+   "set": {
+    "known_text": "that church is ugly"
+   },
+   "expect": {
+    "known_text": "the church is ugly.",
+    "target_text": "那座教堂很丑"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 634,
+   "set": {
+    "known_text": "I'd like that one"
+   },
+   "expect": {
+    "known_text": "I'd like one of those.",
+    "target_text": "我想要那个"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0634L01U01",
+   "set": {
+    "known_text": "I'd like that one"
+   },
+   "expect": {
+    "known_text": "I'd like one of those",
+    "target_text": "我想要那个"
+   }
+  }
+ ],
+ "kai_go": "Kai, 17 Nov 2026 12:42Z, to 'Apply all six Chinese families as recommended, with a trial run first and the clips re-recorded? Y/N': Yes I think. Hard to say without more detail but if you're reasonably confident it doesn't clash with mine or tom's rulings and it has a precedent, you're welcome to fix."
+}
