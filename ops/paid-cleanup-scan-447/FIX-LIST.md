@@ -61,7 +61,7 @@ One headline claim per slice was re-read from a fresh live dump. All held.
 
 ## Coverage
 
-The 17 mechanical families in `patterns.md` were run on all 50 courses. They were read by hand in 42. Language patterns mined from the fix history, each calibrated on a pre-fix example: Spanish 33, Portuguese 11, French 19, Italian 14, German 3, Arabic 1, Japanese 7, Korean 7, Chinese 9, English-target 17 + 14 + 10 (5 more dropped because they had no known example).
+The 17 mechanical families in `patterns.md` were run on all 50 courses. They were read by hand in 42. Language patterns mined from the fix history, each calibrated on a pre-fix example: Spanish 33, Portuguese 11, French 19, Italian 14, German 10, Arabic 8, Japanese 7, Korean 7, Chinese 8, English-target 17 + 14 + 10 (5 more dropped because they had no known example).
 
 Detector faults the workers found and worked round by hand (the shared tool was not changed): the untaught-word check blames an early seed word whose first LEGO comes later; it cannot run on Japanese or Chinese (no spaces); the syllable count is wrong for Arabic, Japanese and under-counts English; the seed-not-played check does not strip the Hindi full stop.
 
