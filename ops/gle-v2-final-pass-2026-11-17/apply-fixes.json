@@ -1,0 +1,848 @@
+{
+"ok": true,
+"dryRun": false,
+"applied": true,
+"event_id": "90cb60c7-c79e-4996-adba-b7d620aa2211",
+"results": [
+{
+"index": 0,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L01U14"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L01U14",
+"seed_number": 65,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Tá sé úsáideach teacht ar ais arís chun labhairt a chleachtadh gach seachtaine",
+"known_text": "it is useful to come back again and practise speaking every week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L01U14",
+"seed_number": 65,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Tá sé úsáideach teacht ar ais arís chun labhairt a chleachtadh gach seachtain",
+"known_text": "it is useful to come back again and practise speaking every week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 1,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L03U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L03U01",
+"seed_number": 65,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge",
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L03U01",
+"seed_number": 65,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtain ag foghlaim Gaeilge",
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 2,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L03U13"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L03U13",
+"seed_number": 65,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtaine",
+"known_text": "I want to take time to do my best today and every week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L03U13",
+"seed_number": 65,
+"lego_index": 3,
+"lego_id": null,
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtain",
+"known_text": "I want to take time to do my best today and every week",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 3,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L05U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L05U01",
+"seed_number": 65,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge",
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L05U01",
+"seed_number": 65,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtain ag foghlaim Gaeilge",
+"known_text": "it is important to take time to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 4,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L05U12"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L05U12",
+"seed_number": 65,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ceapaim Tá sé spraíúil tú féin a thástáil gach seachtaine ag foghlaim Gaeilge",
+"known_text": "I think it is fun to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L05U12",
+"seed_number": 65,
+"lego_index": 5,
+"lego_id": null,
+"target_text": "ceapaim go bhfuil sé spraíúil tú féin a thástáil gach seachtain ag foghlaim Gaeilge",
+"known_text": "I think it is fun to test yourself every week when learning Irish",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 5,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0065L06U03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0065L06U03",
+"seed_number": 65,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "Tá sé spraíúil tú féin a thástáil gach seachtaine nuair a thuigeann tú feabhsú",
+"known_text": "it is fun to test yourself every week when you can see how much you have improved",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0065L06U03",
+"seed_number": 65,
+"lego_index": 6,
+"lego_id": null,
+"target_text": "Tá sé spraíúil tú féin a thástáil gach seachtain nuair a thuigeann tú feabhsú",
+"known_text": "it is fun to test yourself every week when you can see how much you have improved",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 6,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0111L04U15"
+},
+"before": {
+"id": "gle_v2_for_eng:S0111L04U15",
+"seed_number": 111,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "learning something new together is good for our brain and it changes everything",
+"target_text": "Tá rud nua a fhoghlaim le chéile go maith do ár n-inchinn agus athraíonn sé gach rud",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 7,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0142L07B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0142L07B03",
+"seed_number": 142,
+"lego_index": 7,
+"lego_id": "S0142L07",
+"target_text": "buíoch as do chabhair",
+"known_text": "grateful for your help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0142L07B03",
+"seed_number": 142,
+"lego_index": 7,
+"lego_id": "S0142L07",
+"target_text": "an-bhuíoch as do chabhair",
+"known_text": "very grateful for your help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 8,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0199L02U04"
+},
+"before": {
+"id": "gle_v2_for_eng:S0199L02U04",
+"seed_number": 199,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "ba mhian leis rud éigin ó mo chara a fháil agus dúirt sé go raibh sé buíoch",
+"known_text": "he wanted to get something from my friend and he said he was grateful for the help",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0199L02U04",
+"seed_number": 199,
+"lego_index": 2,
+"lego_id": null,
+"target_text": "ba mhian leis rud éigin ó mo chara a fháil agus dúirt sé go raibh sé an-bhuíoch",
+"known_text": "he wanted to get something from my friend and he said he was very grateful",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 9,
+"op": "phrase.delete",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0155L02U08"
+},
+"before": {
+"id": "gle_v2_for_eng:S0155L02U08",
+"seed_number": 155,
+"lego_index": 2,
+"lego_id": null,
+"known_text": "I don't mind waiting, but I would be grateful if you could tell me how long it will take",
+"target_text": "Ní miste liom fanacht, ach bhí mé buíoch dá bhféadfá insint dom cé chomh fada is atá sé",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": null,
+"changed": true
+},
+{
+"index": 10,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0202L01U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0202L01U01",
+"seed_number": 202,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí muid ag iarraidh a rá agus bhí sé sin an-neamhghnách dúinn ar fad",
+"known_text": "nobody was sure what we were trying to say and that was very strange for all of us",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0202L01U01",
+"seed_number": 202,
+"lego_index": 1,
+"lego_id": null,
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí muid ag iarraidh a rá agus bhí sé sin neamhghnách dúinn ar fad",
+"known_text": "nobody was sure what we were trying to say and that was unusual for all of us",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 11,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0252L01B03"
+},
+"before": {
+"id": "gle_v2_for_eng:S0252L01B03",
+"seed_number": 252,
+"lego_index": 1,
+"lego_id": "S0252L01",
+"target_text": "cathain a bheidh tú réidh le tosú ag cleachtadh labhartha",
+"known_text": "when will you be ready to start practising speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0252L01B03",
+"seed_number": 252,
+"lego_index": 1,
+"lego_id": "S0252L01",
+"target_text": "cathain a bheidh tú réidh le tosú ar labhairt a chleachtadh",
+"known_text": "when will you be ready to start practising speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 12,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0252L01U02"
+},
+"before": {
+"id": "gle_v2_for_eng:S0252L01U02",
+"seed_number": 252,
+"lego_index": 1,
+"lego_id": "S0252L01",
+"target_text": "níl a fhios agam cathain a bheidh tú réidh le tosú ag cleachtadh labhartha",
+"known_text": "I don't know when you will be ready to start practising speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0252L01U02",
+"seed_number": 252,
+"lego_index": 1,
+"lego_id": "S0252L01",
+"target_text": "níl a fhios agam cathain a bheidh tú réidh le tosú ar labhairt a chleachtadh",
+"known_text": "I don't know when you will be ready to start practising speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 13,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0242L02U06"
+},
+"before": {
+"id": "gle_v2_for_eng:S0242L02U06",
+"seed_number": 242,
+"lego_index": 2,
+"lego_id": "S0242L02",
+"target_text": "dá bhféadfá níos mó ama a chaitheamh ag cleachtadh labhartha bheadh sé sin go hiontach",
+"known_text": "if you could spend more time practising speaking that would be great",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0242L02U06",
+"seed_number": 242,
+"lego_index": 2,
+"lego_id": "S0242L02",
+"target_text": "dá bhféadfá níos mó ama a chaitheamh ag caint bheadh sé sin go hiontach",
+"known_text": "if you could spend more time speaking that would be great",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 14,
+"op": "phrase.update",
+"key": {
+"course_code": "gle_v2_for_eng",
+"id": "gle_v2_for_eng:S0294L02U01"
+},
+"before": {
+"id": "gle_v2_for_eng:S0294L02U01",
+"seed_number": 294,
+"lego_index": 2,
+"lego_id": "S0294L02",
+"target_text": "ba chóir duit dóthain ama a chaitheamh ag cleachtadh labhartha",
+"known_text": "you should spend enough time practising speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"after": {
+"id": "gle_v2_for_eng:S0294L02U01",
+"seed_number": 294,
+"lego_index": 2,
+"lego_id": "S0294L02",
+"target_text": "ba chóir duit dóthain ama a chaitheamh ag caint",
+"known_text": "you should spend enough time speaking",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+}
+],
+"undo_ops": [
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0294L02U01",
+"set": {
+"known_text": "you should spend enough time practising speaking",
+"target_text": "ba chóir duit dóthain ama a chaitheamh ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0242L02U06",
+"set": {
+"known_text": "if you could spend more time practising speaking that would be great",
+"target_text": "dá bhféadfá níos mó ama a chaitheamh ag cleachtadh labhartha bheadh sé sin go hiontach"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0252L01U02",
+"set": {
+"target_text": "níl a fhios agam cathain a bheidh tú réidh le tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0252L01B03",
+"set": {
+"target_text": "cathain a bheidh tú réidh le tosú ag cleachtadh labhartha"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0202L01U01",
+"set": {
+"known_text": "nobody was sure what we were trying to say and that was very strange for all of us",
+"target_text": "Ní raibh duine ar bith cinnte cad a bhí muid ag iarraidh a rá agus bhí sé sin an-neamhghnách dúinn ar fad"
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0155L02U08",
+"seed_number": 155,
+"lego_index": 2,
+"position": 14,
+"known_text": "I don't mind waiting, but I would be grateful if you could tell me how long it will take",
+"target_text": "Ní miste liom fanacht, ach bhí mé buíoch dá bhféadfá insint dom cé chomh fada is atá sé",
+"word_count": 88,
+"lego_count": 19,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:09:10.636Z",
+"known_score": 7,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:52:02.981Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "start",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:27:56.447Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "I don't mind",
+"legoId": "S0155L01",
+"target": "Ní miste liom",
+"isGhost": false
+},
+{
+"known": "to wait",
+"legoId": "S0155L02",
+"target": " fanacht",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "",
+"legoId": null,
+"target": ",",
+"isGhost": true
+},
+{
+"known": "but",
+"legoId": "S0073L03",
+"target": " ach",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " bhí",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " mé",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " buíoch",
+"isGhost": true
+},
+{
+"known": "if you can",
+"legoId": "S0090L01",
+"target": " dá bhféadfá",
+"isGhost": false
+},
+{
+"known": "to tell me",
+"legoId": "S0070L02",
+"target": " insint dom",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " cé",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " chomh",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " fada",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " is",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " atá",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " sé",
+"isGhost": true
+}
+],
+"decomposition_course_version": 1589,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0199L02U04",
+"set": {
+"known_text": "he wanted to get something from my friend and he said he was grateful for the help",
+"target_text": "ba mhian leis rud éigin ó mo chara a fháil agus dúirt sé go raibh sé buíoch"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0142L07B03",
+"set": {
+"known_text": "grateful for your help",
+"target_text": "buíoch as do chabhair"
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0111L04U15",
+"seed_number": 111,
+"lego_index": 4,
+"position": 23,
+"known_text": "learning something new together is good for our brain and it changes everything",
+"target_text": "Tá rud nua a fhoghlaim le chéile go maith do ár n-inchinn agus athraíonn sé gach rud",
+"word_count": 85,
+"lego_count": 13,
+"difficulty": null,
+"register": null,
+"metadata": {
+"score": 8,
+"format": "build_use",
+"pipeline": "v2",
+"scored_at": "2026-02-18T02:07:52.493Z",
+"known_score": 8,
+"target_score": 8
+},
+"status": "draft",
+"release_batch": null,
+"created_at": "2026-11-09T14:47:41.155Z",
+"target_syllable_count": null,
+"phrase_role": "use",
+"connected_lego_ids": [],
+"lego_position": "middle",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"qa_checked": "2026-02-18T03:27:56.447Z",
+"target1_duration_ms": null,
+"target2_duration_ms": null,
+"lego_id": null,
+"target_text_roman": null,
+"target_phrase_id": null,
+"presentation_audio_id": null,
+"introduce": true,
+"decomposition": [
+{
+"known": "yes",
+"legoId": "S0097L01",
+"target": "Tá",
+"isGhost": false
+},
+{
+"known": "something new",
+"legoId": "S0111L02",
+"target": " rud nua",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " a",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " fhoghlaim",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " le",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " chéile",
+"isGhost": true
+},
+{
+"known": "well",
+"legoId": "S0055L04",
+"target": " go maith",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " do",
+"isGhost": true
+},
+{
+"known": "our brain",
+"legoId": "S0111L04",
+"target": " ár n-inchinn",
+"isGhost": false,
+"isSalient": true
+},
+{
+"known": "and",
+"legoId": "S0015L01",
+"target": " agus",
+"isGhost": false
+},
+{
+"known": "",
+"legoId": null,
+"target": " athraíonn",
+"isGhost": true
+},
+{
+"known": "",
+"legoId": null,
+"target": " sé",
+"isGhost": true
+},
+{
+"known": "everything",
+"legoId": "S0045L02",
+"target": " gach rud",
+"isGhost": false
+}
+],
+"decomposition_course_version": 2214,
+"display_tiling": null,
+"display_tiling_version": null,
+"known_gloss_segments": null,
+"frame_mask": null
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L06U03",
+"set": {
+"target_text": "Tá sé spraíúil tú féin a thástáil gach seachtaine nuair a thuigeann tú feabhsú"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L05U12",
+"set": {
+"target_text": "ceapaim Tá sé spraíúil tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L05U01",
+"set": {
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U13",
+"set": {
+"target_text": "is mian liom am a chaitheamh chun mo dhícheall a dhéanamh inniu agus gach seachtaine"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L03U01",
+"set": {
+"target_text": "Tá sé tábhachtach am a chaitheamh chun tú féin a thástáil gach seachtaine ag foghlaim Gaeilge"
+}
+},
+{
+"op": "phrase.update",
+"phrase_id": "gle_v2_for_eng:S0065L01U14",
+"set": {
+"target_text": "Tá sé úsáideach teacht ar ais arís chun labhairt a chleachtadh gach seachtaine"
+}
+}
+],
+"undo_file": "2026-11-17T12-38-31-944Z-90cb60c7-c79e-4996-adba-b7d620aa2211.json",
+"_seconds": 2.6,
+"_ops": 15
+}

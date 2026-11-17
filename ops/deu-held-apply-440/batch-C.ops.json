@@ -1,0 +1,4809 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0149L01",
+   "expect": {
+    "known_text": "I hope you",
+    "target_text": "ich hoffe du"
+   },
+   "set": {
+    "known_text": "so I hope",
+    "target_text": "also hoffe ich",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01C01",
+   "expect": {
+    "known_text": "I hope",
+    "target_text": "Ich hoffe"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01C02",
+   "expect": {
+    "known_text": "You",
+    "target_text": "Du"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "so I hope",
+    "target_text": "also hoffe ich",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B02",
+   "expect": {
+    "known_text": "I hope you understand",
+    "target_text": "Ich hoffe du verstehst"
+   },
+   "set": {
+    "known_text": "so I hope you understand",
+    "target_text": "also hoffe ich, dass du verstehst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B03",
+   "expect": {
+    "known_text": "I hope you can help",
+    "target_text": "Ich hoffe du kannst helfen"
+   },
+   "set": {
+    "known_text": "so I hope you can help",
+    "target_text": "also hoffe ich, dass du helfen kannst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01B04",
+   "expect": {
+    "known_text": "I hope you know",
+    "target_text": "Ich hoffe du weißt"
+   },
+   "set": {
+    "known_text": "so I hope you know",
+    "target_text": "also hoffe ich, dass du es weißt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01U01",
+   "expect": {
+    "known_text": "I hope you can help me with the problem tomorrow",
+    "target_text": "Ich hoffe du kannst mir morgen mit dem Problem helfen"
+   },
+   "set": {
+    "known_text": "so I hope you can help me tomorrow",
+    "target_text": "also hoffe ich, dass du mir morgen helfen kannst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0149L01U02",
+   "expect": {
+    "known_text": "I hope you know how important this is for me",
+    "target_text": "Ich hoffe du weißt wie wichtig das für mich ist"
+   },
+   "set": {
+    "known_text": "so I hope you know how important this is",
+    "target_text": "also hoffe ich, dass du weißt, wie wichtig das ist"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U03",
+   "expect": {
+    "known_text": "I hope you understand what I am trying to say here",
+    "target_text": "Ich hoffe du verstehst was ich hier sagen will"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U04",
+   "expect": {
+    "known_text": "I hope you think this is a good idea",
+    "target_text": "Ich hoffe du denkst das ist eine gute Idee"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U06",
+   "expect": {
+    "known_text": "I hope you know I am very happy about this",
+    "target_text": "Ich hoffe du weißt ich bin sehr glücklich darüber"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U08",
+   "expect": {
+    "known_text": "I hope you can find the time to read this",
+    "target_text": "Ich hoffe du kannst die Zeit finden um das zu lesen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0149L01U09",
+   "expect": {
+    "known_text": "I hope you get to know my friend",
+    "target_text": "ich hoffe, du lernst meinen Freund kennen"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 149,
+    "lego_index": 2,
+    "known_text": "that you'll finish soon",
+    "target_text": "dass du bald fertig wirst",
+    "type": "A",
+    "is_new": true,
+    "status": "draft",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "that you'll finish soon",
+    "target_text": "dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 102,
+    "known_text": "I hope that you'll finish soon",
+    "target_text": "ich hoffe, dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 103,
+    "known_text": "so I hope that you'll finish soon",
+    "target_text": "also hoffe ich, dass du bald fertig wirst",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 104,
+    "known_text": "I think that you'll finish soon",
+    "target_text": "ich denke, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 105,
+    "known_text": "I know that you'll finish soon",
+    "target_text": "ich weiß, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0149L02U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 106,
+    "known_text": "this isn't very difficult, so I hope you'll finish soon",
+    "target_text": "das ist nicht sehr schwierig, also hoffe ich, dass du bald fertig wirst",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 13,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0197L01",
+   "expect": {
+    "known_text": "the son",
+    "target_text": "der Sohn"
+   },
+   "set": {
+    "known_text": "my son",
+    "target_text": "mein Sohn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B01",
+   "expect": {
+    "known_text": "The son will come tomorrow",
+    "target_text": "Der Sohn wird morgen kommen"
+   },
+   "set": {
+    "known_text": "My son will come tomorrow",
+    "target_text": "Mein Sohn wird morgen kommen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B02",
+   "expect": {
+    "known_text": "The son was here yesterday",
+    "target_text": "Der Sohn war gestern hier"
+   },
+   "set": {
+    "known_text": "My son was here yesterday",
+    "target_text": "Mein Sohn war gestern hier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01B03",
+   "expect": {
+    "known_text": "The son would like to help me",
+    "target_text": "Der Sohn möchte mir helfen"
+   },
+   "set": {
+    "known_text": "My son would like to help me",
+    "target_text": "Mein Sohn möchte mir helfen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U04",
+   "expect": {
+    "known_text": "I heard that the son will come on Saturday evening",
+    "target_text": "Ich habe gehört dass der Sohn am Samstagabend kommen wird"
+   },
+   "set": {
+    "known_text": "I heard that my son will come on Saturday evening",
+    "target_text": "Ich habe gehört, dass mein Sohn am Samstagabend kommen wird"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U06",
+   "expect": {
+    "known_text": "The son told me he needs money before tomorrow morning",
+    "target_text": "Der Sohn hat mir gesagt er brauche Geld vor morgen früh"
+   },
+   "set": {
+    "known_text": "My son told me he needs money before tomorrow morning",
+    "target_text": "Mein Sohn hat mir gesagt, er brauche Geld vor morgen früh"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U07",
+   "expect": {
+    "known_text": "I do not know if the son has heard about the problem",
+    "target_text": "Ich weiß nicht ob der Sohn über das Problem gehört hat"
+   },
+   "set": {
+    "known_text": "I do not know if my son has heard about the problem",
+    "target_text": "Ich weiß nicht, ob mein Sohn über das Problem gehört hat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L01U08",
+   "expect": {
+    "known_text": "The son would like to read but he does not have time now",
+    "target_text": "Der Sohn möchte lesen aber er hat jetzt keine Zeit"
+   },
+   "set": {
+    "known_text": "My son would like to read but he does not have time now",
+    "target_text": "Mein Sohn möchte lesen, aber er hat jetzt keine Zeit"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0197L02",
+   "expect": {
+    "known_text": "the teacher",
+    "target_text": "der Lehrer"
+   },
+   "set": {
+    "known_text": "as a teacher",
+    "target_text": "als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B01",
+   "expect": {
+    "known_text": "The teacher is here",
+    "target_text": "Der Lehrer ist hier"
+   },
+   "set": {
+    "known_text": "as a teacher",
+    "target_text": "als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B02",
+   "expect": {
+    "known_text": "Where is the teacher?",
+    "target_text": "Wo ist der Lehrer"
+   },
+   "set": {
+    "known_text": "he works as a teacher",
+    "target_text": "er arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02B03",
+   "expect": {
+    "known_text": "The teacher will help",
+    "target_text": "Der Lehrer wird helfen"
+   },
+   "set": {
+    "known_text": "my friend works as a teacher",
+    "target_text": "mein Freund arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U01",
+   "expect": {
+    "known_text": "The teacher is working in the office on Sunday morning",
+    "target_text": "Der Lehrer arbeitet am Sonntagmorgen im Büro"
+   },
+   "set": {
+    "known_text": "he wants to work as a teacher",
+    "target_text": "er will als Lehrer arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U02",
+   "expect": {
+    "known_text": "I heard that the teacher would like to read the latest book",
+    "target_text": "Ich habe gehört dass der Lehrer das neueste Buch lesen möchte"
+   },
+   "set": {
+    "known_text": "my son would like to work as a teacher",
+    "target_text": "mein Sohn möchte als Lehrer arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U03",
+   "expect": {
+    "known_text": "The teacher told me the son will come tomorrow evening",
+    "target_text": "Der Lehrer hat mir gesagt der Sohn wird morgen Abend kommen"
+   },
+   "set": {
+    "known_text": "does he work as a teacher?",
+    "target_text": "arbeitet er als Lehrer?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0197L02U04",
+   "expect": {
+    "known_text": "I do not know if the teacher has heard the story",
+    "target_text": "Ich weiß nicht ob der Lehrer die Geschichte gehört hat"
+   },
+   "set": {
+    "known_text": "my son works as a teacher",
+    "target_text": "mein Sohn arbeitet als Lehrer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U06",
+   "expect": {
+    "known_text": "The teacher was talking about the money yesterday I heard",
+    "target_text": "Der Lehrer hat gestern über das Geld geredet habe ich gehört"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U07",
+   "expect": {
+    "known_text": "The teacher would like to find the latest answer before tomorrow",
+    "target_text": "Der Lehrer möchte die neueste Antwort vor morgen finden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U08",
+   "expect": {
+    "known_text": "I think the teacher will be at home this evening",
+    "target_text": "Ich glaube der Lehrer wird heute Abend zu Hause sein"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U09",
+   "expect": {
+    "known_text": "The teacher was here yesterday but he is not here today",
+    "target_text": "Der Lehrer war gestern hier aber er ist heute nicht hier"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0197L02U10",
+   "expect": {
+    "known_text": "The son is a teacher and he is very good I think",
+    "target_text": "Der Sohn ist ein Lehrer und er ist sehr gut glaube ich"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0239L01",
+   "expect": {
+    "known_text": "reads",
+    "target_text": "liest"
+   },
+   "set": {
+    "known_text": "likes to read",
+    "target_text": "liest gern"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0239L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 239,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "likes to read",
+    "target_text": "liest gern",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 2,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01B02",
+   "expect": {
+    "known_text": "I think she reads a lot",
+    "target_text": "Ich denke, sie liest viel"
+   },
+   "set": {
+    "known_text": "I think she likes to read",
+    "target_text": "Ich denke, sie liest gern"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01B03",
+   "expect": {
+    "known_text": "He often reads at home",
+    "target_text": "Er liest oft zu Hause"
+   },
+   "set": {
+    "known_text": "He likes to read at home",
+    "target_text": "Er liest gern zu Hause"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01U01",
+   "expect": {
+    "known_text": "My friend reads a book in the morning before work",
+    "target_text": "Mein Freund liest am Morgen vor der Arbeit ein Buch"
+   },
+   "set": {
+    "known_text": "My friend likes to read in the morning",
+    "target_text": "Mein Freund liest gern am Morgen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0239L01U02",
+   "expect": {
+    "known_text": "She reads a book in the evening, when she is at home alone and wants to relax",
+    "target_text": "Sie liest ein Buch am Abend, wenn sie alleine zu Hause ist und sich entspannen will"
+   },
+   "set": {
+    "known_text": "She likes to read in the evening when she is at home",
+    "target_text": "Sie liest gern am Abend, wenn sie zu Hause ist"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U05",
+   "expect": {
+    "known_text": "My mother reads many interesting things about history and many other different topics that are very interesting to her",
+    "target_text": "Meine Mutter liest viele interessante Sachen über Geschichte und viele andere verschiedene Sachen, die für sie sehr interessant sind"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U06",
+   "expect": {
+    "known_text": "She reads very quickly and easily but my brother reads much more slowly than she does",
+    "target_text": "Sie liest sehr schnell und leicht, aber mein Bruder liest viel langsamer als sie"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0239L01U07",
+   "expect": {
+    "known_text": "My teacher reads a new book often to learn more about many different and very interesting things",
+    "target_text": "Mein Lehrer liest oft ein neues Buch, um mehr über viele verschiedene und sehr interessante Sachen zu lernen"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0239L01U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 239,
+    "lego_index": 1,
+    "position": 101,
+    "known_text": "my mother likes to read",
+    "target_text": "meine Mutter liest gern",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0195L02",
+   "expect": {
+    "known_text": "the table",
+    "target_text": "der Tisch"
+   },
+   "set": {
+    "known_text": "left on the table",
+    "target_text": "auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02B01",
+   "expect": {
+    "known_text": "The table is here",
+    "target_text": "Der Tisch ist hier"
+   },
+   "set": {
+    "known_text": "left on the table",
+    "target_text": "auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02B03",
+   "expect": {
+    "known_text": "Where is the table?",
+    "target_text": "Wo ist der Tisch"
+   },
+   "set": {
+    "known_text": "I left it on the table",
+    "target_text": "ich habe es auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U01",
+   "expect": {
+    "known_text": "I think the table is in the office where we work today",
+    "target_text": "Ich glaube der Tisch ist im Büro wo wir heute arbeiten"
+   },
+   "set": {
+    "known_text": "I left the money on the table",
+    "target_text": "ich habe das Geld auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U03",
+   "expect": {
+    "known_text": "The table is not good enough for the work we do",
+    "target_text": "Der Tisch ist nicht gut genug für die Arbeit die wir machen"
+   },
+   "set": {
+    "known_text": "she left the book on the table",
+    "target_text": "sie hat das Buch auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U04",
+   "expect": {
+    "known_text": "I saw that the table with many things on it is in the office",
+    "target_text": "Ich habe gesehen, dass der Tisch mit vielen Sachen darauf im Büro ist"
+   },
+   "set": {
+    "known_text": "did you leave it on the table?",
+    "target_text": "hast du es auf dem Tisch gelassen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U06",
+   "expect": {
+    "known_text": "Do you think the table is good for this work we need to do?",
+    "target_text": "Denkst du der Tisch ist gut für diese Arbeit die wir machen müssen"
+   },
+   "set": {
+    "known_text": "he left something on the table",
+    "target_text": "er hat etwas auf dem Tisch gelassen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0195L02U08",
+   "expect": {
+    "known_text": "The money is here on the table for you",
+    "target_text": "Das Geld ist hier auf dem Tisch für dich"
+   },
+   "set": {
+    "known_text": "I left the money here on the table for you",
+    "target_text": "ich habe das Geld hier auf dem Tisch für dich gelassen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0195L02U07",
+   "expect": {
+    "known_text": "I don't know if the table is good enough for the meeting tomorrow",
+    "target_text": "Ich weiß nicht ob der Tisch gut genug für das Treffen morgen ist"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0231L01",
+   "expect": {
+    "known_text": "an old man",
+    "target_text": "einen alten Mann"
+   },
+   "set": {
+    "known_text": "I know an old man",
+    "target_text": "ich kenne einen alten Mann",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L01B01",
+   "expect": {
+    "known_text": "An old man",
+    "target_text": "Einen alten Mann"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0231L02",
+   "expect": {
+    "known_text": "a man who",
+    "target_text": "ein Mann, der"
+   },
+   "set": {
+    "known_text": "who wanted to do it",
+    "target_text": "der es machen wollte",
+    "components": [
+     {
+      "known": "who",
+      "target": "der"
+     },
+     {
+      "known": "wanted to do it",
+      "target": "es machen wollte"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B01",
+   "expect": {
+    "known_text": "who",
+    "target_text": "Der"
+   },
+   "set": {
+    "known_text": "who wanted to do it",
+    "target_text": "der es machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B02",
+   "expect": {
+    "known_text": "The man who",
+    "target_text": "Der Mann, der"
+   },
+   "set": {
+    "known_text": "the man who wanted to do it",
+    "target_text": "der Mann, der es machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B03",
+   "expect": {
+    "known_text": "The woman who",
+    "target_text": "Die Frau, die"
+   },
+   "set": {
+    "known_text": "someone who wanted to try it",
+    "target_text": "jemand, der es versuchen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0231L02B04",
+   "expect": {
+    "known_text": "The one who knows",
+    "target_text": "Der, der weiß"
+   },
+   "set": {
+    "known_text": "the man who wanted to help",
+    "target_text": "der Mann, der helfen wollte"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02B06",
+   "expect": {
+    "known_text": "Someone who helps",
+    "target_text": "Jemand, der hilft"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02B07",
+   "expect": {
+    "known_text": "The man who works here is very nice",
+    "target_text": "Der Mann, der hier arbeitet, ist sehr nett"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U02",
+   "expect": {
+    "known_text": "The woman who speaks German is my friend",
+    "target_text": "Die Frau, die Deutsch spricht, ist meine Freundin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U03",
+   "expect": {
+    "known_text": "The man who helped me is very nice",
+    "target_text": "Der Mann, der mir geholfen hat, ist sehr nett"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U04",
+   "expect": {
+    "known_text": "Someone who speaks German well can help me",
+    "target_text": "Jemand, der gut Deutsch spricht, kann mir helfen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L02U05",
+   "expect": {
+    "known_text": "The son who was here yesterday is my friend",
+    "target_text": "Der Sohn, der gestern hier war, ist mein Freund"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L02U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "I know an old man who wanted to do it",
+    "target_text": "ich kenne einen alten Mann, der es machen wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 231,
+    "lego_index": 3,
+    "known_text": "to ask for help",
+    "target_text": "um Hilfe bitten",
+    "type": "A",
+    "is_new": true,
+    "status": "draft",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "to ask for help",
+    "target_text": "um Hilfe bitten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 102,
+    "known_text": "I want to ask for help",
+    "target_text": "ich will um Hilfe bitten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 103,
+    "known_text": "who wanted to ask for help",
+    "target_text": "der um Hilfe bitten wollte",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 104,
+    "known_text": "the man who wanted to ask for help",
+    "target_text": "der Mann, der um Hilfe bitten wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U02",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 105,
+    "known_text": "can I ask for help?",
+    "target_text": "kann ich um Hilfe bitten?",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0231L01U07",
+   "expect": {
+    "known_text": "I know an old man who wanted to ask for help",
+    "target_text": "Ich kenne einen alten Mann, der um Hilfe bitten wollte"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0231L03U03",
+    "course_code": "deu_for_eng",
+    "seed_number": 231,
+    "lego_index": 3,
+    "position": 106,
+    "known_text": "I know an old man who wanted to ask for help",
+    "target_text": "Ich kenne einen alten Mann, der um Hilfe bitten wollte",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 10,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0307L03",
+   "expect": {
+    "known_text": "right over there",
+    "target_text": "dort drüben"
+   },
+   "set": {
+    "known_text": "who's sitting over there",
+    "target_text": "der da drüben sitzt",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03C01",
+   "expect": {
+    "known_text": "right over",
+    "target_text": "dort"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03C02",
+   "expect": {
+    "known_text": "there",
+    "target_text": "drüben"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B01",
+   "expect": {
+    "known_text": "right over there",
+    "target_text": "dort drüben"
+   },
+   "set": {
+    "known_text": "who's sitting over there",
+    "target_text": "der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B02",
+   "expect": {
+    "known_text": "sitting right over there",
+    "target_text": "dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "the man who's sitting over there",
+    "target_text": "der Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03B03",
+   "expect": {
+    "known_text": "who is sitting right over there",
+    "target_text": "der dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "I know the man who's sitting over there",
+    "target_text": "ich kenne den Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0307L03U01",
+   "expect": {
+    "known_text": "I know that young man who is sitting over there",
+    "target_text": "ich kenne diesen jungen Mann, der dort drüben sitzt"
+   },
+   "set": {
+    "known_text": "do you know the man who's sitting over there?",
+    "target_text": "kennst du den Mann, der da drüben sitzt?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U02",
+   "expect": {
+    "known_text": "that young woman is talking right over there",
+    "target_text": "diese junge Frau redet dort drüben"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U03",
+   "expect": {
+    "known_text": "I think he wants to work right over there",
+    "target_text": "ich denke, dass er dort drüben arbeiten will"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U04",
+   "expect": {
+    "known_text": "he is sitting right over there with your friend",
+    "target_text": "er sitzt dort drüben mit deinem Freund"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U05",
+   "expect": {
+    "known_text": "I know the woman who is sitting right over there",
+    "target_text": "ich kenne die Frau, die dort drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L03U06",
+   "expect": {
+    "known_text": "he is sitting right over there",
+    "target_text": "er sitzt dort drüben"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0307L02U07",
+   "expect": {
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "Ich kenne diesen jungen Mann, der da drüben sitzt"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0307L03U07",
+    "course_code": "deu_for_eng",
+    "seed_number": 307,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "Ich kenne diesen jungen Mann, der da drüben sitzt",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0391L01",
+   "expect": {
+    "known_text": "to the bus",
+    "target_text": "zum Bus"
+   },
+   "set": {
+    "known_text": "towards the bus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L01B01",
+   "expect": {
+    "known_text": "to the bus",
+    "target_text": "zum Bus"
+   },
+   "set": {
+    "known_text": "towards the bus"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0391L02",
+   "expect": {
+    "known_text": "goes",
+    "target_text": "geht"
+   },
+   "set": {
+    "known_text": "who is walking towards the bus",
+    "target_text": "die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B01",
+   "expect": {
+    "known_text": "she goes to the bus",
+    "target_text": "sie geht zum Bus"
+   },
+   "set": {
+    "known_text": "who is walking towards the bus",
+    "target_text": "die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B02",
+   "expect": {
+    "known_text": "he goes now",
+    "target_text": "er geht jetzt"
+   },
+   "set": {
+    "known_text": "the woman who is walking towards the bus",
+    "target_text": "die Frau, die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02B03",
+   "expect": {
+    "known_text": "is he going to the bus?",
+    "target_text": "geht er zum Bus?"
+   },
+   "set": {
+    "known_text": "I know the woman who is walking towards the bus",
+    "target_text": "ich kenne die Frau, die zum Bus geht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0391L02U01",
+   "expect": {
+    "known_text": "he goes to the bus",
+    "target_text": "er geht zum Bus"
+   },
+   "set": {
+    "known_text": "do you know the woman who is walking towards the bus?",
+    "target_text": "kennst du die Frau, die zum Bus geht?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U02",
+   "expect": {
+    "known_text": "she goes to the bus now",
+    "target_text": "sie geht jetzt zum Bus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U03",
+   "expect": {
+    "known_text": "where is he going?",
+    "target_text": "wohin geht er?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U04",
+   "expect": {
+    "known_text": "she goes to the bus with someone else",
+    "target_text": "sie geht mit jemand anderem zum Bus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0391L02U05",
+   "expect": {
+    "known_text": "he's going to the bus now",
+    "target_text": "er geht jetzt zum Bus"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0391L02U06",
+    "course_code": "deu_for_eng",
+    "seed_number": 391,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "the one who is walking towards the bus",
+    "target_text": "die Person, die zum Bus geht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0134L03",
+   "expect": {
+    "known_text": "difficult",
+    "target_text": "schwierig"
+   },
+   "set": {
+    "known_text": "at something difficult",
+    "target_text": "an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "at something difficult",
+    "target_text": "an etwas Schwierigem",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B02",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "to work at something difficult",
+    "target_text": "an etwas Schwierigem arbeiten",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03B03",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "she works at something difficult",
+    "target_text": "sie arbeitet an etwas Schwierigem",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U06",
+   "expect": {
+    "known_text": "That is difficult but I want to try it",
+    "target_text": "Das ist schwierig, aber ich will es versuchen"
+   },
+   "set": {
+    "known_text": "he is working at something difficult",
+    "target_text": "er arbeitet an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U07",
+   "expect": {
+    "known_text": "I think that is not so difficult",
+    "target_text": "Ich denke das ist nicht so schwierig"
+   },
+   "set": {
+    "known_text": "we are working at something difficult",
+    "target_text": "wir arbeiten an etwas Schwierigem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U08",
+   "expect": {
+    "known_text": "It is difficult to learn something new",
+    "target_text": "Es ist schwierig etwas Neues zu lernen"
+   },
+   "set": {
+    "known_text": "I want to work at something difficult",
+    "target_text": "ich will an etwas Schwierigem arbeiten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0134L03U09",
+   "expect": {
+    "known_text": "I know that is difficult but we can do it together",
+    "target_text": "Ich weiß dass das schwierig ist aber wir können es zusammen machen"
+   },
+   "set": {
+    "known_text": "it's not a problem when you work at something difficult",
+    "target_text": "es ist kein Problem, wenn man an etwas Schwierigem arbeitet"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0134L02U12",
+   "expect": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "es ist kein Problem, wenn man mit ihnen an etwas Schwierigem arbeitet"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0134L03U01",
+    "course_code": "deu_for_eng",
+    "seed_number": 134,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "es ist kein Problem, wenn man mit ihnen an etwas Schwierigem arbeitet",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 12,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0050L01",
+   "expect": {
+    "known_text": "to become",
+    "target_text": "werden"
+   },
+   "set": {
+    "known_text": "to finish",
+    "target_text": "fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0050L01B01",
+    "course_code": "deu_for_eng",
+    "seed_number": 50,
+    "lego_index": 1,
+    "position": 1,
+    "known_text": "to finish",
+    "target_text": "fertig zu werden",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01B02",
+   "expect": {
+    "known_text": "To get better",
+    "target_text": "Besser zu werden"
+   },
+   "set": {
+    "known_text": "I'm trying to finish",
+    "target_text": "ich versuche, fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01B03",
+   "expect": {
+    "known_text": "To get tired",
+    "target_text": "Müde zu werden"
+   },
+   "set": {
+    "known_text": "I want to finish",
+    "target_text": "ich will fertig werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01U02",
+   "expect": {
+    "known_text": "I want to get better, and I think that mistakes are good",
+    "target_text": "Ich will besser werden, und ich denke, dass Fehler gut sind"
+   },
+   "set": {
+    "known_text": "I want to finish quickly",
+    "target_text": "ich will schnell fertig werden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0050L01U03",
+   "expect": {
+    "known_text": "I don't want to get tired, but I feel okay at the moment",
+    "target_text": "Ich will nicht müde werden, aber ich fühle mich im Moment okay"
+   },
+   "set": {
+    "known_text": "I'm trying to finish quickly",
+    "target_text": "ich versuche, schnell fertig zu werden"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U04",
+   "expect": {
+    "known_text": "I think that I want to get better, and I have no worries about mistakes",
+    "target_text": "Ich denke, dass ich besser werden will, und ich mache mir keine Sorgen über Fehler"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U06",
+   "expect": {
+    "known_text": "You know that I don't want to get tired, and I should try more",
+    "target_text": "Du weißt, dass ich nicht müde werden will, und ich soll mehr versuchen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0050L01U08",
+   "expect": {
+    "known_text": "I want to get better, and I'm looking forward to speaking more German",
+    "target_text": "Ich will besser werden, und ich freue mich darauf, mehr Deutsch zu sprechen"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0050L01U07",
+    "course_code": "deu_for_eng",
+    "seed_number": 50,
+    "lego_index": 1,
+    "position": 101,
+    "known_text": "I'm not trying to finish as quickly as possible",
+    "target_text": "Ich versuche nicht, so schnell wie möglich fertig zu werden",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026 (seed row, P26)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 10,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0200L02",
+   "expect": {
+    "known_text": "finish",
+    "target_text": "fertig machen"
+   },
+   "set": {
+    "known_text": "finish everything",
+    "target_text": "alles fertig machen",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0200L02C01",
+   "expect": {
+    "known_text": "Finish",
+    "target_text": "Fertig"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0200L02C02",
+   "expect": {
+    "known_text": "Make",
+    "target_text": "Machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B01",
+   "expect": {
+    "known_text": "Finish",
+    "target_text": "Fertig machen"
+   },
+   "set": {
+    "known_text": "finish everything",
+    "target_text": "alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B02",
+   "expect": {
+    "known_text": "I'd like to finish this",
+    "target_text": "Ich möchte das fertig machen"
+   },
+   "set": {
+    "known_text": "I'd like to finish everything",
+    "target_text": "ich möchte alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B04",
+   "expect": {
+    "known_text": "We need to finish",
+    "target_text": "Wir müssen fertig machen"
+   },
+   "set": {
+    "known_text": "we need to finish everything",
+    "target_text": "wir müssen alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B05",
+   "expect": {
+    "known_text": "Can you finish soon?",
+    "target_text": "Kannst du bald fertig machen"
+   },
+   "set": {
+    "known_text": "can you finish everything soon?",
+    "target_text": "kannst du bald alles fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02B06",
+   "expect": {
+    "known_text": "I will finish later",
+    "target_text": "Ich werde später fertig machen"
+   },
+   "set": {
+    "known_text": "I will finish everything later",
+    "target_text": "ich werde später alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U01",
+   "expect": {
+    "known_text": "I need to finish this work before I can go home today",
+    "target_text": "Ich muss diese Arbeit fertig machen bevor ich heute nach Hause gehen kann"
+   },
+   "set": {
+    "known_text": "I need to finish everything before I can go home today",
+    "target_text": "ich muss alles fertig machen, bevor ich heute nach Hause gehen kann"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U03",
+   "expect": {
+    "known_text": "She told me that she wanted to finish the book this week",
+    "target_text": "Sie hat mir gesagt dass sie das Buch diese Woche fertig machen wollte"
+   },
+   "set": {
+    "known_text": "She told me that she wanted to finish everything this week",
+    "target_text": "Sie hat mir gesagt, dass sie diese Woche alles fertig machen wollte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0200L02U11",
+   "expect": {
+    "known_text": "I think it is important that we can finish this work in a short time",
+    "target_text": "Ich denke, es ist wichtig, dass wir diese Arbeit in kurzer Zeit fertig machen können"
+   },
+   "set": {
+    "known_text": "I think it is important that we can finish everything in a short time",
+    "target_text": "Ich denke, es ist wichtig, dass wir alles in kurzer Zeit fertig machen können"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0278L01",
+   "expect": {
+    "known_text": "to finish",
+    "target_text": "fertig machen"
+   },
+   "set": {
+    "known_text": "to finish everything",
+    "target_text": "alles fertig machen",
+    "type": "A",
+    "components": [],
+    "is_new": false
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B01",
+   "expect": {
+    "known_text": "to finish",
+    "target_text": "Fertig machen"
+   },
+   "set": {
+    "known_text": "to finish everything",
+    "target_text": "alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B02",
+   "expect": {
+    "known_text": "I need to finish this",
+    "target_text": "Ich muss das fertig machen"
+   },
+   "set": {
+    "known_text": "I need to finish everything",
+    "target_text": "ich muss alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B03",
+   "expect": {
+    "known_text": "Can you finish it today?",
+    "target_text": "Kannst du es heute fertig machen?"
+   },
+   "set": {
+    "known_text": "can you finish everything today?",
+    "target_text": "kannst du heute alles fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01B04",
+   "expect": {
+    "known_text": "I want to finish my work",
+    "target_text": "Ich möchte meine Arbeit fertig machen"
+   },
+   "set": {
+    "known_text": "I'd like to finish everything",
+    "target_text": "Ich möchte alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0278L01B06",
+   "expect": {
+    "known_text": "When will you finish?",
+    "target_text": "Wann wirst du fertig machen?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0278L01U11",
+   "expect": {
+    "known_text": "I think it is important that we finish this work before we start anything new",
+    "target_text": "Ich denke es ist wichtig dass wir diese Arbeit fertig machen bevor wir etwas Neues anfangen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U03",
+   "expect": {
+    "known_text": "I need to finish this today because I have a meeting early tomorrow morning",
+    "target_text": "Ich muss das heute fertig machen weil ich morgen früh ein Treffen habe"
+   },
+   "set": {
+    "known_text": "I need to finish everything today because I have a meeting early tomorrow morning",
+    "target_text": "Ich muss heute alles fertig machen, weil ich morgen früh ein Treffen habe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U10",
+   "expect": {
+    "known_text": "She tells me she would like to finish it this week if that is possible",
+    "target_text": "Sie sagt mir sie möchte es diese Woche fertig machen wenn das möglich ist"
+   },
+   "set": {
+    "known_text": "She tells me she would like to finish everything this week",
+    "target_text": "Sie sagt mir, sie möchte diese Woche alles fertig machen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0278L01U12",
+   "expect": {
+    "known_text": "We need to finish this today if we can",
+    "target_text": "Wir müssen das heute fertig machen wenn wir können"
+   },
+   "set": {
+    "known_text": "We need to finish everything today if we can",
+    "target_text": "Wir müssen heute alles fertig machen, wenn wir können"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0211L01",
+   "expect": {
+    "known_text": "test",
+    "target_text": "Test"
+   },
+   "set": {
+    "known_text": "that they didn't want to explain",
+    "target_text": "dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B01",
+   "expect": {
+    "known_text": "I need to do a test tomorrow",
+    "target_text": "Ich muss morgen einen Test machen"
+   },
+   "set": {
+    "known_text": "that they didn't want to explain",
+    "target_text": "dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B02",
+   "expect": {
+    "known_text": "The test was difficult",
+    "target_text": "Der Test war schwierig"
+   },
+   "set": {
+    "known_text": "they said that they didn't want to explain",
+    "target_text": "sie haben gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01B03",
+   "expect": {
+    "known_text": "I want to do the test well",
+    "target_text": "Ich möchte den Test gut machen"
+   },
+   "set": {
+    "known_text": "I know that they didn't want to explain",
+    "target_text": "ich weiß, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U02",
+   "expect": {
+    "known_text": "My friend wanted to know if I did the test yesterday",
+    "target_text": "Mein Freund wollte wissen ob ich den Test gestern gemacht habe"
+   },
+   "set": {
+    "known_text": "I think that they didn't want to explain",
+    "target_text": "ich denke, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U03",
+   "expect": {
+    "known_text": "We have to do a test next week at the office",
+    "target_text": "Wir müssen nächste Woche im Büro einen Test machen"
+   },
+   "set": {
+    "known_text": "she told me that they didn't want to explain",
+    "target_text": "sie hat mir gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U04",
+   "expect": {
+    "known_text": "I was nervous before the test but then it was okay",
+    "target_text": "Ich war nervös vor dem Test aber dann war es okay"
+   },
+   "set": {
+    "known_text": "they told us that they didn't want to explain",
+    "target_text": "Sie haben uns gesagt, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0211L01U06",
+   "expect": {
+    "known_text": "I think the test will be easier than the last one we did",
+    "target_text": "Ich denke der Test wird leichter sein als der letzte den wir gemacht haben"
+   },
+   "set": {
+    "known_text": "it's not a problem that they didn't want to explain",
+    "target_text": "es ist kein Problem, dass sie nicht erklären wollten"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0211L01U07",
+   "expect": {
+    "known_text": "She wanted to know if I was ready for the test tomorrow",
+    "target_text": "Sie wollte wissen ob ich bereit für den Test morgen bin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0211L01U08",
+   "expect": {
+    "known_text": "I need to finish reading the book before I do the test",
+    "target_text": "Ich muss das Buch fertig lesen bevor ich den Test mache"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0242L02U11",
+   "expect": {
+    "known_text": "My brother told me he will need more time for the test",
+    "target_text": "Mein Bruder hat mir gesagt er wird mehr Zeit für den Test brauchen"
+   },
+   "set": {
+    "known_text": "My brother told me he will need more time for the work",
+    "target_text": "Mein Bruder hat mir gesagt, er wird mehr Zeit für die Arbeit brauchen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0246L01U02",
+   "expect": {
+    "known_text": "I wanted her to help you but she was too busy talking to the teacher about the test",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, mit dem Lehrer über den Test zu reden"
+   },
+   "set": {
+    "known_text": "I wanted her to help you but she was too busy talking to the teacher about the work",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, mit dem Lehrer über die Arbeit zu reden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0246L01U10",
+   "expect": {
+    "known_text": "I wanted her to help you but she was too busy making sure that everything was ready for the test",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, dass alles für den Test bereit war"
+   },
+   "set": {
+    "known_text": "I wanted her to help you but she was too busy making sure that everything was ready for the work",
+    "target_text": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, dass alles für die Arbeit bereit war"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0258L01U06",
+   "expect": {
+    "known_text": "When I was over there yesterday I heard them talking about the test they have to do",
+    "target_text": "Als ich gestern drüben war habe ich sie über den Test reden hören den sie machen müssen"
+   },
+   "set": {
+    "known_text": "When I was over there yesterday I heard them talking about the work they have to do",
+    "target_text": "Als ich gestern drüben war, habe ich sie über die Arbeit reden hören, die sie machen müssen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0260L01U08",
+   "expect": {
+    "known_text": "There is not the faintest chance that I will be ready before the test tomorrow morning",
+    "target_text": "Es gibt nicht die geringste Gelegenheit dass ich bereit bin bevor der Test morgen früh ist"
+   },
+   "set": {
+    "known_text": "There is not the faintest chance that I will be ready before tomorrow morning",
+    "target_text": "Es gibt nicht die geringste Gelegenheit, dass ich vor morgen früh bereit bin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0269L01U11",
+   "expect": {
+    "known_text": "I will wait for the answer from my teacher about the test",
+    "target_text": "Ich werde auf die Antwort von meinem Lehrer über den Test warten"
+   },
+   "set": {
+    "known_text": "I will wait for the answer from my teacher about the book",
+    "target_text": "Ich werde auf die Antwort von meinem Lehrer über das Buch warten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0284L02U09",
+   "expect": {
+    "known_text": "I need to ask my sister's friend about the test",
+    "target_text": "Ich muss den Freund meiner Schwester über den Test fragen"
+   },
+   "set": {
+    "known_text": "I need to ask my sister's friend about the work",
+    "target_text": "Ich muss den Freund meiner Schwester über die Arbeit fragen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0291L01U06",
+   "expect": {
+    "known_text": "I hope this test is not going to be too difficult because I haven't had time to learn",
+    "target_text": "Ich hoffe dieser Test wird nicht zu schwierig sein weil ich keine Zeit hatte zu lernen"
+   },
+   "set": {
+    "known_text": "I hope this work is not going to be too difficult because I haven't had time to learn",
+    "target_text": "Ich hoffe, diese Arbeit wird nicht zu schwierig sein, weil ich keine Zeit hatte zu lernen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0291L02U04",
+   "expect": {
+    "known_text": "I hope I will be able to find the answer to this question before the test tomorrow",
+    "target_text": "Ich hoffe ich kann die Antwort auf diese Frage finden vor dem Test morgen"
+   },
+   "set": {
+    "known_text": "I hope I will be able to find the answer to this question before tomorrow",
+    "target_text": "Ich hoffe, ich kann die Antwort auf diese Frage vor morgen finden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0292L01U08",
+   "expect": {
+    "known_text": "I hope you will be able to finish the test on time because it is very important for your work",
+    "target_text": "Ich hoffe du kannst den Test rechtzeitig fertig machen weil es sehr wichtig für deine Arbeit ist"
+   },
+   "set": {
+    "known_text": "I hope you will be able to finish the work on time because it is very important for your work",
+    "target_text": "Ich hoffe, du kannst die Arbeit rechtzeitig fertig machen, weil es sehr wichtig für deine Arbeit ist"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L01",
+   "slot": "known",
+   "audio_id": "7889ad13-7cfc-4c53-b024-2d83c4c4e9df"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L01",
+   "slot": "target1",
+   "audio_id": "b23b5c20-c26b-4ea6-9ba4-6c4402b55da7"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L01",
+   "slot": "target2",
+   "audio_id": "aa89a1b9-6ad8-4a76-9e48-a118bd8fff5a"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L01",
+   "slot": "presentation",
+   "audio_id": "30399c70-e887-43dc-8ce1-c6e65323c247"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B01",
+   "slot": "known",
+   "audio_id": "7889ad13-7cfc-4c53-b024-2d83c4c4e9df"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B01",
+   "slot": "target1",
+   "audio_id": "b23b5c20-c26b-4ea6-9ba4-6c4402b55da7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B01",
+   "slot": "target2",
+   "audio_id": "aa89a1b9-6ad8-4a76-9e48-a118bd8fff5a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B02",
+   "slot": "known",
+   "audio_id": "4128f22b-5a8f-48c7-91d7-d04dc9c95a1c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B02",
+   "slot": "target1",
+   "audio_id": "d6e48815-c4f1-411a-89a8-fd0f80fac7d5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B02",
+   "slot": "target2",
+   "audio_id": "ecf17c6f-41cf-4e26-9b78-3572bfdf0ddf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B03",
+   "slot": "known",
+   "audio_id": "326bde9c-5ecb-4d23-b1c3-bee091d07866"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B03",
+   "slot": "target1",
+   "audio_id": "9900dd33-0473-4165-a9a3-c1c8869badbc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B03",
+   "slot": "target2",
+   "audio_id": "1a46a99b-d960-4979-9258-07c1eb06eb2c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B04",
+   "slot": "known",
+   "audio_id": "7c773518-eda1-40de-84d1-787faeb9f134"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B04",
+   "slot": "target1",
+   "audio_id": "56974b1e-d27f-442e-bca9-7ef05a5f5493"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01B04",
+   "slot": "target2",
+   "audio_id": "44545ff2-336f-498f-982e-c1375b992f4d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U01",
+   "slot": "known",
+   "audio_id": "236676be-0b88-4c18-a54a-32422f51138c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U01",
+   "slot": "target1",
+   "audio_id": "5e20ae56-cea0-4435-984d-3c0b5a4fac57"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U01",
+   "slot": "target2",
+   "audio_id": "5dc8b48e-3239-4475-992a-9904e267e30f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U02",
+   "slot": "known",
+   "audio_id": "fef5be46-bf7c-4ee6-8227-6873d16bdec7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U02",
+   "slot": "target1",
+   "audio_id": "cd4d9cbe-330e-473c-8f2a-4cfa8b669f2a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L01U02",
+   "slot": "target2",
+   "audio_id": "d197bd33-2570-4c7f-af11-065f6878a14c"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L02",
+   "slot": "known",
+   "audio_id": "68732285-5f9a-470f-8e40-24905f4ab8e2"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L02",
+   "slot": "target1",
+   "audio_id": "1d582dde-b975-4ce9-b568-d1d5ccdc30c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L02",
+   "slot": "target2",
+   "audio_id": "d4693faf-6731-4277-ac17-80f3febd677d"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0149L02",
+   "slot": "presentation",
+   "audio_id": "cf46dba0-e1e4-48e9-a2f7-5d621eb92610"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B01",
+   "slot": "known",
+   "audio_id": "68732285-5f9a-470f-8e40-24905f4ab8e2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B01",
+   "slot": "target1",
+   "audio_id": "1d582dde-b975-4ce9-b568-d1d5ccdc30c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B01",
+   "slot": "target2",
+   "audio_id": "d4693faf-6731-4277-ac17-80f3febd677d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B02",
+   "slot": "known",
+   "audio_id": "469404b4-d6b7-4dcf-b7fe-10f8bfe5a2ec"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B02",
+   "slot": "target1",
+   "audio_id": "d443ff09-b916-470d-a9a7-8cc52286f6c4"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B02",
+   "slot": "target2",
+   "audio_id": "d49a0e09-25f1-4cb3-abbb-48070bb9184f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B03",
+   "slot": "known",
+   "audio_id": "33819c37-b4d8-4c1d-8104-25f97b604393"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B03",
+   "slot": "target1",
+   "audio_id": "48e475f5-0072-493d-bf91-565f3ba2370f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02B03",
+   "slot": "target2",
+   "audio_id": "be10cbae-8a6a-47ee-bbac-0b7750bf9b1e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U01",
+   "slot": "known",
+   "audio_id": "be4f350c-ff5f-4ef1-89fa-45c7b8905c07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U01",
+   "slot": "target1",
+   "audio_id": "da3b9aae-d89d-46de-9656-1719410b3b48"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U01",
+   "slot": "target2",
+   "audio_id": "7de2cf10-86f4-40d9-820b-430ffd82f167"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U02",
+   "slot": "known",
+   "audio_id": "4f3cf174-89f6-42d9-9f2d-334ffa5bf43b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U02",
+   "slot": "target1",
+   "audio_id": "8736089a-4ac8-47f2-b7a1-ac22909d0364"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U02",
+   "slot": "target2",
+   "audio_id": "283e2aa3-9acb-4621-b3f3-28072252f685"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U03",
+   "slot": "known",
+   "audio_id": "741b7be4-6122-4207-8e59-323ad862fcd8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U03",
+   "slot": "target1",
+   "audio_id": "a3474a3e-9366-4496-b548-832457c5d99e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0149L02U03",
+   "slot": "target2",
+   "audio_id": "86f2c021-58d6-4546-b71e-1be0e807ab0c"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L01",
+   "slot": "known",
+   "audio_id": "318e3d03-faeb-4c72-a673-27db8d9b2bfb"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L01",
+   "slot": "target1",
+   "audio_id": "b83012de-2791-446b-ac31-783ebfdf9a21"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L01",
+   "slot": "target2",
+   "audio_id": "e23f8391-8d4e-426c-a6f3-0b9082a88578"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L01",
+   "slot": "presentation",
+   "audio_id": "26bbd8c5-9eb0-4e61-8d85-16f6d1611427"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B01",
+   "slot": "known",
+   "audio_id": "60b1dac1-99ff-4558-9fd2-e7cc681468b9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B01",
+   "slot": "target1",
+   "audio_id": "ec701399-cc2a-43f1-9f73-dd2f353091a6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B01",
+   "slot": "target2",
+   "audio_id": "d81ce4f5-481c-4e73-a9b8-3173ab4cae43"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B02",
+   "slot": "known",
+   "audio_id": "c55e8297-3d04-47ab-ab6a-edf8202a5bba"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B02",
+   "slot": "target1",
+   "audio_id": "629cf85d-b575-4900-bbd4-d9dd74c99fce"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B02",
+   "slot": "target2",
+   "audio_id": "dfe24e7c-a44a-407b-af33-93cbb88b4e11"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B03",
+   "slot": "known",
+   "audio_id": "eaedd0ca-7d07-4911-8bde-f4dae7e7517b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B03",
+   "slot": "target1",
+   "audio_id": "ccd33a85-c660-4be9-af62-286e9d2ae543"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01B03",
+   "slot": "target2",
+   "audio_id": "6649b44c-19a2-40c4-b056-74f04bc7663b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U04",
+   "slot": "known",
+   "audio_id": "046feee0-f468-4fbf-b8c5-a0aec8ff3401"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U04",
+   "slot": "target1",
+   "audio_id": "4118ab4d-b146-4f08-b13b-a05de4bdc635"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U04",
+   "slot": "target2",
+   "audio_id": "402f15d8-e18e-49fb-969a-c1e1b2ee1213"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U06",
+   "slot": "known",
+   "audio_id": "578706fb-505f-4d5f-ba48-9a5680eb856c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U06",
+   "slot": "target1",
+   "audio_id": "9bd8b15a-96ca-4bea-99d4-e71be5c36b5b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U06",
+   "slot": "target2",
+   "audio_id": "958cbf9f-4aef-4c4b-b761-fc6a1fa9142e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U07",
+   "slot": "known",
+   "audio_id": "4a1a1e19-f58e-486a-b56c-e9c66b219284"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U07",
+   "slot": "target1",
+   "audio_id": "aa191a5a-5836-4142-833b-4773cbff6755"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U07",
+   "slot": "target2",
+   "audio_id": "d35ab89e-1890-4e04-a60b-7e2b682a9d4c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U08",
+   "slot": "known",
+   "audio_id": "5e668844-0b0c-4a0d-b892-cb58f2026071"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U08",
+   "slot": "target1",
+   "audio_id": "1f08c9ce-9331-4fec-a1df-3f411269d8d7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L01U08",
+   "slot": "target2",
+   "audio_id": "d4823a68-5f81-4413-b9b3-978e8b1b7104"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L02",
+   "slot": "known",
+   "audio_id": "f347c755-32a9-41ba-87c2-8fc8b06bdb33"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L02",
+   "slot": "target1",
+   "audio_id": "3e7f9c42-f929-4869-bae1-089320f827ad"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L02",
+   "slot": "target2",
+   "audio_id": "3894761c-1469-41f9-9c43-140409652496"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0197L02",
+   "slot": "presentation",
+   "audio_id": "ec0e1843-bb0c-4fe4-b201-013b23b7a360"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B01",
+   "slot": "known",
+   "audio_id": "f347c755-32a9-41ba-87c2-8fc8b06bdb33"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B01",
+   "slot": "target1",
+   "audio_id": "3e7f9c42-f929-4869-bae1-089320f827ad"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B01",
+   "slot": "target2",
+   "audio_id": "3894761c-1469-41f9-9c43-140409652496"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B02",
+   "slot": "known",
+   "audio_id": "ed01f1e9-0a03-47bc-b50a-6c99f46af4b1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B02",
+   "slot": "target1",
+   "audio_id": "fe928607-ba9f-4361-bfaf-5dc08ac11972"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B02",
+   "slot": "target2",
+   "audio_id": "f9e92cee-f2ca-4f80-a533-859e5e4d97fd"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B03",
+   "slot": "known",
+   "audio_id": "0f9779eb-967e-482e-8984-2ecb17133a9d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B03",
+   "slot": "target1",
+   "audio_id": "8276caf7-0a8e-4a7a-88a3-960c900b5835"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02B03",
+   "slot": "target2",
+   "audio_id": "c73c941e-6873-4d31-bcca-4fe5f49b89f9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U01",
+   "slot": "known",
+   "audio_id": "ac930977-ed2a-4cc1-868f-4da0aea41d5c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U01",
+   "slot": "target1",
+   "audio_id": "bfc6f6ac-8ddf-43d5-ac2a-13f25a997495"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U01",
+   "slot": "target2",
+   "audio_id": "362a2b7c-91f4-42f2-8b9c-ebe362503e3e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U02",
+   "slot": "known",
+   "audio_id": "84598450-a8d9-4ef2-93fd-f66d80974ba0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U02",
+   "slot": "target1",
+   "audio_id": "9e79efec-aa6b-4e88-a8b8-e9a73390586c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U02",
+   "slot": "target2",
+   "audio_id": "6f76da41-fb5a-4e9c-9175-1e7478829d7a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U03",
+   "slot": "known",
+   "audio_id": "4b5a0665-8121-40d4-bbf2-73eb07a60beb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U03",
+   "slot": "target1",
+   "audio_id": "a0016fb7-8c80-430b-81d5-fc16957f167d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U03",
+   "slot": "target2",
+   "audio_id": "58406c6d-c9f9-4d2e-a802-e4fcaabeafb7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U04",
+   "slot": "known",
+   "audio_id": "1ecea96c-19fc-45dc-bdbe-e8aa72ee6d39"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U04",
+   "slot": "target1",
+   "audio_id": "9c893244-ec89-41f8-9fa9-b746f6d66103"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0197L02U04",
+   "slot": "target2",
+   "audio_id": "c973457c-7cb8-4c10-83b0-d56aef17bbe7"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0239L01",
+   "slot": "known",
+   "audio_id": "c572fbaa-c05a-440a-ab49-e44a057e2629"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0239L01",
+   "slot": "target1",
+   "audio_id": "1d926ef9-7828-4b56-ac8b-283438c13091"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0239L01",
+   "slot": "target2",
+   "audio_id": "5ea2d174-4860-4027-a6d8-5398fc183f03"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0239L01",
+   "slot": "presentation",
+   "audio_id": "a55c546a-27d4-470e-8f1a-5c3e6cd16d84"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B01",
+   "slot": "known",
+   "audio_id": "c572fbaa-c05a-440a-ab49-e44a057e2629"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B01",
+   "slot": "target1",
+   "audio_id": "1d926ef9-7828-4b56-ac8b-283438c13091"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B01",
+   "slot": "target2",
+   "audio_id": "5ea2d174-4860-4027-a6d8-5398fc183f03"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B02",
+   "slot": "known",
+   "audio_id": "238964c9-38a2-4328-bc65-82b91075a70e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B02",
+   "slot": "target1",
+   "audio_id": "44da43ce-11b3-4b4b-84b7-105311819d6d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B02",
+   "slot": "target2",
+   "audio_id": "309d0a32-11bd-435c-ae3b-c3c94b1feda4"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B03",
+   "slot": "known",
+   "audio_id": "8aa18af6-18e1-4e9d-b289-abfcb5d4df07"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B03",
+   "slot": "target1",
+   "audio_id": "f820b4ef-b4af-4c56-8b08-46818145114c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01B03",
+   "slot": "target2",
+   "audio_id": "ff0dcedc-de62-4e8b-a7e5-cbaab4df2b2d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U01",
+   "slot": "known",
+   "audio_id": "de78bd52-bafd-4a2b-813e-991cb576cdcc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U01",
+   "slot": "target1",
+   "audio_id": "542710c3-f5c6-40c1-8647-d15871bb3a4f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U01",
+   "slot": "target2",
+   "audio_id": "02ddc6a0-d4c3-4310-a4db-f2894a507877"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U02",
+   "slot": "known",
+   "audio_id": "294b9939-d255-4cf2-9591-eeb208c0b916"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U02",
+   "slot": "target1",
+   "audio_id": "a324da78-9f80-421a-8c72-895a01236d86"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U02",
+   "slot": "target2",
+   "audio_id": "4b5fc9fe-9703-4b73-b262-7f6ac8bf539d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U03",
+   "slot": "known",
+   "audio_id": "cea2b3a8-49e7-4ae3-8609-96d95699e937"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U03",
+   "slot": "target1",
+   "audio_id": "b2e5613a-3bb2-44ed-91b2-a2621d4482da"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0239L01U03",
+   "slot": "target2",
+   "audio_id": "007404a3-a327-4db7-b9eb-2b8743a19691"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0195L02",
+   "slot": "known",
+   "audio_id": "0816e413-f7a7-40e8-b540-59bf298c354f"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0195L02",
+   "slot": "target1",
+   "audio_id": "2cb0c82d-2d3d-42db-8900-53ccf7cca49f"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0195L02",
+   "slot": "target2",
+   "audio_id": "b9cd8f22-1166-4275-9ce2-d403a79c63f1"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0195L02",
+   "slot": "presentation",
+   "audio_id": "b4bcabe1-fe43-4ddf-95f7-ad38d4ffced0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B01",
+   "slot": "known",
+   "audio_id": "0816e413-f7a7-40e8-b540-59bf298c354f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B01",
+   "slot": "target1",
+   "audio_id": "2cb0c82d-2d3d-42db-8900-53ccf7cca49f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B01",
+   "slot": "target2",
+   "audio_id": "b9cd8f22-1166-4275-9ce2-d403a79c63f1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B03",
+   "slot": "known",
+   "audio_id": "f8174949-c7d6-459f-ace5-ef49fb5698db"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B03",
+   "slot": "target1",
+   "audio_id": "d3f93fa9-f577-4f33-b156-5314b5f32935"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02B03",
+   "slot": "target2",
+   "audio_id": "03b6e261-a3ce-4c92-bfbb-c2dc9765956d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U01",
+   "slot": "known",
+   "audio_id": "7fa35fd5-4bbd-4bed-a1d4-53ff2b30d5c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U01",
+   "slot": "target1",
+   "audio_id": "d986c66d-5eb1-4f49-b823-8713e6351041"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U01",
+   "slot": "target2",
+   "audio_id": "579683f3-8a93-442a-a064-d1eb1036c33d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U03",
+   "slot": "known",
+   "audio_id": "0dec3678-d5e5-420c-b996-76036c4c2fe5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U03",
+   "slot": "target1",
+   "audio_id": "0fd4a1db-4749-4d8c-826d-bb35a3926d85"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U03",
+   "slot": "target2",
+   "audio_id": "dffc566e-00d7-40ba-ba5c-cdd0f14f8bc5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U04",
+   "slot": "known",
+   "audio_id": "aa8799c3-6d8a-4646-90cf-48d41d0477eb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U04",
+   "slot": "target1",
+   "audio_id": "7eaa10ab-b998-46ff-a9f4-d8326fcc82fe"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U04",
+   "slot": "target2",
+   "audio_id": "3106726b-6372-40ff-b88b-769123fadea3"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U06",
+   "slot": "known",
+   "audio_id": "8fd8b1fd-dc2f-45cb-bb7d-eaa38a942166"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U06",
+   "slot": "target1",
+   "audio_id": "0d53b189-f817-40e2-b1d5-a90b690245c5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U06",
+   "slot": "target2",
+   "audio_id": "fb4737f6-c62d-4f11-8341-b365ba88bdc6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U08",
+   "slot": "known",
+   "audio_id": "da405dae-5e52-49f8-ab11-d21b7e64cf02"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U08",
+   "slot": "target1",
+   "audio_id": "a34d4124-1073-491f-b6b1-9b8081c6b0d5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0195L02U08",
+   "slot": "target2",
+   "audio_id": "8734699c-d686-4744-ae70-077d49383aed"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L01",
+   "slot": "known",
+   "audio_id": "f95ffc1f-f460-480b-91f0-3180dd9079e8"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L01",
+   "slot": "target1",
+   "audio_id": "c000e337-f7ef-4a0a-8e59-0e2721d88de2"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L01",
+   "slot": "target2",
+   "audio_id": "4448b423-a452-4df2-a82d-151c8f3fd450"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L01",
+   "slot": "presentation",
+   "audio_id": "98cd3923-056d-4b84-af01-c1faaf585d1b"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L02",
+   "slot": "known",
+   "audio_id": "c8ef1610-10d1-4bea-9d7a-0eab32d6f7f0"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L02",
+   "slot": "target1",
+   "audio_id": "31b7bc22-de53-433d-b4e2-ae99c062c777"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L02",
+   "slot": "target2",
+   "audio_id": "e1502e30-4aff-488b-b6ba-dc69f959ab33"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L02",
+   "slot": "presentation",
+   "audio_id": "004ca6c3-803a-4fca-b734-f05abc82dfbf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B01",
+   "slot": "known",
+   "audio_id": "c8ef1610-10d1-4bea-9d7a-0eab32d6f7f0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B01",
+   "slot": "target1",
+   "audio_id": "31b7bc22-de53-433d-b4e2-ae99c062c777"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B01",
+   "slot": "target2",
+   "audio_id": "e1502e30-4aff-488b-b6ba-dc69f959ab33"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B02",
+   "slot": "known",
+   "audio_id": "47aac70c-42b1-4c25-af1b-0d2e1f8ddae2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B02",
+   "slot": "target1",
+   "audio_id": "206a0c56-4001-481d-91b7-7313c60e0019"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B02",
+   "slot": "target2",
+   "audio_id": "d9ce60d5-e3ee-4090-afec-e940d2949ff2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B03",
+   "slot": "known",
+   "audio_id": "870d66b2-bde2-415d-b276-b043ee2e24ce"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B03",
+   "slot": "target1",
+   "audio_id": "512720f6-337f-417b-a859-1652381a11e9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B03",
+   "slot": "target2",
+   "audio_id": "0f5dae8c-8bca-4ba5-bb19-978932ad1b75"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B04",
+   "slot": "known",
+   "audio_id": "a1aa2a70-141f-4c24-8190-cf7a978267b9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B04",
+   "slot": "target1",
+   "audio_id": "03c916e5-66bf-4137-abf6-276dc4b3afda"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02B04",
+   "slot": "target2",
+   "audio_id": "e4629657-9d55-4719-b23a-667bae053db7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02U01",
+   "slot": "known",
+   "audio_id": "3e211df8-fb76-4679-9ee1-c4bd888b1844"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02U01",
+   "slot": "target1",
+   "audio_id": "311ad332-8c7a-4dad-b5f5-cb25f030c255"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L02U01",
+   "slot": "target2",
+   "audio_id": "c646617c-801d-4826-8e53-c1b90433f841"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L03",
+   "slot": "known",
+   "audio_id": "f3579d70-8cca-49f1-8ef6-ed8d0126280e"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L03",
+   "slot": "target1",
+   "audio_id": "0dc11db3-ebfb-4201-9372-70b0386711ac"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L03",
+   "slot": "target2",
+   "audio_id": "a04b0747-aaa6-48bb-a3ed-a4e3ec5bb266"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0231L03",
+   "slot": "presentation",
+   "audio_id": "ce2dc63f-9fe3-4fdc-a916-688ca14b6221"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B01",
+   "slot": "known",
+   "audio_id": "f3579d70-8cca-49f1-8ef6-ed8d0126280e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B01",
+   "slot": "target1",
+   "audio_id": "0dc11db3-ebfb-4201-9372-70b0386711ac"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B01",
+   "slot": "target2",
+   "audio_id": "a04b0747-aaa6-48bb-a3ed-a4e3ec5bb266"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B02",
+   "slot": "known",
+   "audio_id": "e47f0699-e3b2-4aea-82e7-893a4151ae88"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B02",
+   "slot": "target1",
+   "audio_id": "5c5b1412-94ca-403f-a020-f87ec5f5b073"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B02",
+   "slot": "target2",
+   "audio_id": "289d850e-912d-48d3-8df5-ac9b93ef25b0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B03",
+   "slot": "known",
+   "audio_id": "c1fc82c4-bbf0-47bb-b4ba-145662bced77"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B03",
+   "slot": "target1",
+   "audio_id": "1deb5a3a-8900-449d-8fa1-446c7959e1e4"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03B03",
+   "slot": "target2",
+   "audio_id": "034241c3-cf16-4359-9a4d-0b89c8ea9b25"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U01",
+   "slot": "known",
+   "audio_id": "41cd1a57-11a0-4bd8-8bf1-4b7327b557ed"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U01",
+   "slot": "target1",
+   "audio_id": "b31b1bc9-77d9-41e4-8ba5-7e2b246ee0f8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U01",
+   "slot": "target2",
+   "audio_id": "25faacc0-e846-4a86-bd2c-1b06f6a1211a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U02",
+   "slot": "known",
+   "audio_id": "21ddddfb-78ab-41d0-ac0d-9c88a71d6040"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U02",
+   "slot": "target1",
+   "audio_id": "93f65504-6373-46b4-9425-476b30c28275"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U02",
+   "slot": "target2",
+   "audio_id": "45d9c192-31a3-43f9-a40d-678dab1a4876"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U03",
+   "slot": "known",
+   "audio_id": "21fa8541-f7e8-4309-9b5d-5c5d282bc59b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U03",
+   "slot": "target1",
+   "audio_id": "410a4726-9011-4f90-8009-9e8f02b7d8e7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0231L03U03",
+   "slot": "target2",
+   "audio_id": "cedec6b9-56a9-42f2-87e5-84c047808f4c"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0307L03",
+   "slot": "known",
+   "audio_id": "14aaff99-7195-41ca-a806-6bab77144615"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0307L03",
+   "slot": "target1",
+   "audio_id": "9df6dc8e-9d6e-4333-aa97-1c68d6273a55"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0307L03",
+   "slot": "target2",
+   "audio_id": "833139a8-95bd-43b8-ab26-3240d757b54f"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0307L03",
+   "slot": "presentation",
+   "audio_id": "f7cdc4f2-5068-4f48-8841-22a293795fb5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B01",
+   "slot": "known",
+   "audio_id": "14aaff99-7195-41ca-a806-6bab77144615"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B01",
+   "slot": "target1",
+   "audio_id": "9df6dc8e-9d6e-4333-aa97-1c68d6273a55"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B01",
+   "slot": "target2",
+   "audio_id": "833139a8-95bd-43b8-ab26-3240d757b54f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B02",
+   "slot": "known",
+   "audio_id": "4b96c5a2-dd01-4f09-aac3-c256138a990c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B02",
+   "slot": "target1",
+   "audio_id": "7af90438-40b9-435a-9f43-f42a65ad29b5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B02",
+   "slot": "target2",
+   "audio_id": "d55f189e-5af8-4680-9730-8115d38ca386"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B03",
+   "slot": "known",
+   "audio_id": "1e9e9b55-cd1e-4bb8-9104-fde3cad5a9c2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B03",
+   "slot": "target1",
+   "audio_id": "cb911aee-e2bc-439e-96fd-f4d852d03b32"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03B03",
+   "slot": "target2",
+   "audio_id": "1397d3f1-53f3-47b9-b520-f447c8abc0a3"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U01",
+   "slot": "known",
+   "audio_id": "da07cd86-3787-4161-8822-d3466db3dfc1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U01",
+   "slot": "target1",
+   "audio_id": "2ca8d5a7-2f83-4b95-ab64-92d87eb699c7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U01",
+   "slot": "target2",
+   "audio_id": "34254dc1-9b81-4bf6-9682-df061f97a481"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U07",
+   "slot": "known",
+   "audio_id": "f203f0f9-aba8-4517-8ec3-e653cf17a42e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U07",
+   "slot": "target1",
+   "audio_id": "4df1ed36-51f5-4845-9cde-50192dc2ccb8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0307L03U07",
+   "slot": "target2",
+   "audio_id": "4c764bc6-816d-4127-aadf-084f69b441b0"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L01",
+   "slot": "known",
+   "audio_id": "57ec6ef6-6ffd-490f-9e6d-3fb8894ca84a"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L01",
+   "slot": "presentation",
+   "audio_id": "b62a5f7f-04fc-403b-844e-7773a98a3bd9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L01B01",
+   "slot": "known",
+   "audio_id": "57ec6ef6-6ffd-490f-9e6d-3fb8894ca84a"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L02",
+   "slot": "known",
+   "audio_id": "2f97e93c-c382-4c81-86c0-ab97950ec020"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L02",
+   "slot": "target1",
+   "audio_id": "f52f5dfa-6c4c-40f9-a19b-b9b12bef21ca"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L02",
+   "slot": "target2",
+   "audio_id": "03acdedc-11e5-4611-b2ba-34418f9bef9f"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0391L02",
+   "slot": "presentation",
+   "audio_id": "2cc727c3-bef4-4179-89a8-775f821543dd"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B01",
+   "slot": "known",
+   "audio_id": "2f97e93c-c382-4c81-86c0-ab97950ec020"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B01",
+   "slot": "target1",
+   "audio_id": "f52f5dfa-6c4c-40f9-a19b-b9b12bef21ca"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B01",
+   "slot": "target2",
+   "audio_id": "03acdedc-11e5-4611-b2ba-34418f9bef9f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B02",
+   "slot": "known",
+   "audio_id": "82302db3-8fb7-4868-a6c1-6548809f54bf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B02",
+   "slot": "target1",
+   "audio_id": "7fe07d70-aa2b-4519-9890-d3f81e318e23"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B02",
+   "slot": "target2",
+   "audio_id": "80256c32-2e37-4802-a930-06a4d7dee7b5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B03",
+   "slot": "known",
+   "audio_id": "94459217-f25e-4f5a-9976-cd0ccecfa9bc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B03",
+   "slot": "target1",
+   "audio_id": "9d8141c5-d37b-4c9f-bf46-0b4a23a5e4b7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02B03",
+   "slot": "target2",
+   "audio_id": "1569eebd-56b4-41d7-a633-59d1574d2e2e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U01",
+   "slot": "known",
+   "audio_id": "82d1e9d4-7e21-45e0-92e4-6d43006ce2b5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U01",
+   "slot": "target1",
+   "audio_id": "a2f812db-d548-4b40-9538-3ad82c63fb35"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U01",
+   "slot": "target2",
+   "audio_id": "bf013d2c-3ae0-4892-9e26-7bef48794795"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U06",
+   "slot": "known",
+   "audio_id": "9139cd5b-4f9c-4cc8-b1ba-4bc7abfcee2e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U06",
+   "slot": "target1",
+   "audio_id": "9a74368b-0abf-4552-ae8d-78ef6d1335ba"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0391L02U06",
+   "slot": "target2",
+   "audio_id": "c5145617-23eb-4d41-8eda-c2c8182dc928"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0134L03",
+   "slot": "known",
+   "audio_id": "2a52a7fe-2521-4f9d-b6dd-d85f76c917b6"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0134L03",
+   "slot": "target1",
+   "audio_id": "87943f8e-45d2-48c9-9cac-b418aa1cf724"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0134L03",
+   "slot": "target2",
+   "audio_id": "240adf93-1266-4ce7-8d94-709089ccfb1e"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0134L03",
+   "slot": "presentation",
+   "audio_id": "5868eeaa-11f9-4a34-bb3a-9da75787c107"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B01",
+   "slot": "known",
+   "audio_id": "2a52a7fe-2521-4f9d-b6dd-d85f76c917b6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B01",
+   "slot": "target1",
+   "audio_id": "87943f8e-45d2-48c9-9cac-b418aa1cf724"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B01",
+   "slot": "target2",
+   "audio_id": "240adf93-1266-4ce7-8d94-709089ccfb1e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B02",
+   "slot": "known",
+   "audio_id": "85070abd-23eb-41a0-9452-655f1f101b8d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B02",
+   "slot": "target1",
+   "audio_id": "ce7077d8-e949-48f4-ae62-0847bf000a1a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B02",
+   "slot": "target2",
+   "audio_id": "bf8dce4b-87f1-46a9-bb78-0dc2a6934fe5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B03",
+   "slot": "known",
+   "audio_id": "eecce154-ac47-451b-9e13-93df191a6fc3"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B03",
+   "slot": "target1",
+   "audio_id": "0b3cc07a-b4e1-407b-88c7-863b624fae06"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03B03",
+   "slot": "target2",
+   "audio_id": "c8a1234c-c5ae-4ab5-b66c-4219c4a0c90d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U06",
+   "slot": "known",
+   "audio_id": "15066b58-bcc1-4087-bb54-754e145d7ff8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U06",
+   "slot": "target1",
+   "audio_id": "4f73f99b-1f98-464e-a321-5636b41f1eb2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U06",
+   "slot": "target2",
+   "audio_id": "48e5e156-0fe4-4704-9196-526bc8d0d5a9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U07",
+   "slot": "known",
+   "audio_id": "3e8a5dc6-467c-443e-b2e8-6237e26ea2ef"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U07",
+   "slot": "target1",
+   "audio_id": "cb55ac38-f377-4098-9952-a4d3b64d317f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U07",
+   "slot": "target2",
+   "audio_id": "dc3aab6d-9711-40e9-a82c-db44b82127b6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U08",
+   "slot": "known",
+   "audio_id": "94fae50e-3bc0-4b2d-93fc-671747418f68"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U08",
+   "slot": "target1",
+   "audio_id": "380337f1-5ea4-4b20-8b81-acf673a54b87"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U08",
+   "slot": "target2",
+   "audio_id": "5fc50514-3c3d-43f8-bd1e-15d47d968475"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U09",
+   "slot": "known",
+   "audio_id": "84970f09-2824-42d3-a6df-6597ef10e8a5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U09",
+   "slot": "target1",
+   "audio_id": "b7f33728-2009-4ee4-9364-ed45180cdddb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U09",
+   "slot": "target2",
+   "audio_id": "a7041019-bd35-4a16-a8ae-cfc2120eaabc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U01",
+   "slot": "known",
+   "audio_id": "7905f342-2385-45aa-b5fb-a1a28b12464f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U01",
+   "slot": "target1",
+   "audio_id": "d5b1aa0c-92fb-4d40-b0c7-88f1ac3de7f5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0134L03U01",
+   "slot": "target2",
+   "audio_id": "198847d1-b75f-4bc4-be36-e91e34ec51b8"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0050L01",
+   "slot": "known",
+   "audio_id": "9838f915-0b52-49fb-9f1d-f7265069e42d"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0050L01",
+   "slot": "target1",
+   "audio_id": "8d4db880-010b-471b-a525-a41477a0b790"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0050L01",
+   "slot": "target2",
+   "audio_id": "115e98fd-5e65-4eca-bcbe-f1b3d0a35c5a"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0050L01",
+   "slot": "presentation",
+   "audio_id": "00d194f2-541c-4dbd-9d00-0cd6f50dc66f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B01",
+   "slot": "known",
+   "audio_id": "9838f915-0b52-49fb-9f1d-f7265069e42d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B01",
+   "slot": "target1",
+   "audio_id": "8d4db880-010b-471b-a525-a41477a0b790"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B01",
+   "slot": "target2",
+   "audio_id": "115e98fd-5e65-4eca-bcbe-f1b3d0a35c5a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B02",
+   "slot": "known",
+   "audio_id": "05923292-c402-4b14-9e6d-25b960a90d55"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B02",
+   "slot": "target1",
+   "audio_id": "81749335-80c7-433b-bda2-0d5ea4b5868f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B02",
+   "slot": "target2",
+   "audio_id": "0f9db363-2ec9-4dea-8656-07ec7f41b0f0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B03",
+   "slot": "known",
+   "audio_id": "2a8f8a55-e974-46df-9385-92b69959ef9e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B03",
+   "slot": "target1",
+   "audio_id": "8e1adaac-7d4a-4f68-8b0b-80630f53c3ea"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01B03",
+   "slot": "target2",
+   "audio_id": "999bb208-08b5-4659-81ac-13dbea444434"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U02",
+   "slot": "known",
+   "audio_id": "30f8bde4-6cf2-46cc-ad22-3ac26bfaeb4d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U02",
+   "slot": "target1",
+   "audio_id": "012edb81-3109-4e13-9b5c-bf1f443f5498"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U02",
+   "slot": "target2",
+   "audio_id": "7f4bfb7c-00ab-44b2-b6ec-422554528cfb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U03",
+   "slot": "known",
+   "audio_id": "081174c1-725f-4454-9201-b8f70f662e25"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U03",
+   "slot": "target1",
+   "audio_id": "2f9ef23d-592c-472c-b271-9dd59d65943e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U03",
+   "slot": "target2",
+   "audio_id": "d870f416-b82b-4629-8ee2-4476e5eb9b71"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U07",
+   "slot": "known",
+   "audio_id": "28543c83-ab38-4d48-9761-dc79822e1486"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U07",
+   "slot": "target1",
+   "audio_id": "f471dad5-afef-484d-9819-7f9f18afccef"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0050L01U07",
+   "slot": "target2",
+   "audio_id": "22779b8e-adb6-46e2-85d4-15c9f449f922"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0200L02",
+   "slot": "known",
+   "audio_id": "2ea8fc3e-3e27-4e4a-bbd0-99359c5b5867"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0200L02",
+   "slot": "target1",
+   "audio_id": "00ba108e-7422-48f8-8063-b372deb3c000"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0200L02",
+   "slot": "target2",
+   "audio_id": "8b534133-e3fd-41b6-bc7e-bf7de1f74ef7"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0200L02",
+   "slot": "presentation",
+   "audio_id": "2154dbbf-4936-47fc-9efb-1acbe38031e7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B01",
+   "slot": "known",
+   "audio_id": "2ea8fc3e-3e27-4e4a-bbd0-99359c5b5867"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B01",
+   "slot": "target1",
+   "audio_id": "00ba108e-7422-48f8-8063-b372deb3c000"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B01",
+   "slot": "target2",
+   "audio_id": "8b534133-e3fd-41b6-bc7e-bf7de1f74ef7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B02",
+   "slot": "known",
+   "audio_id": "8684eb4e-6255-4663-b863-79b9e7fb94cc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B02",
+   "slot": "target1",
+   "audio_id": "2c3f8ba1-6021-41a7-9bc0-d38baafe6b7f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B02",
+   "slot": "target2",
+   "audio_id": "bc07b266-0744-4076-b671-a86b6760d35f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B04",
+   "slot": "known",
+   "audio_id": "bcb797e4-cd70-4766-bdc7-e20e6d444951"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B04",
+   "slot": "target1",
+   "audio_id": "f8f631c2-bf47-4b99-959b-6e0cbc657a60"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B04",
+   "slot": "target2",
+   "audio_id": "6c65f71a-cbc8-4743-99ac-f295b50a5573"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B05",
+   "slot": "known",
+   "audio_id": "4ae59c76-88de-464a-b978-001e7b4e833c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B05",
+   "slot": "target1",
+   "audio_id": "d00a4069-28c3-48ad-b45b-a6ccb988ab68"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B05",
+   "slot": "target2",
+   "audio_id": "cb183a82-bd25-406c-801b-f3bb23f6ee10"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B06",
+   "slot": "known",
+   "audio_id": "ecd8fd16-01f2-4d74-bc6d-aac097e24c3b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B06",
+   "slot": "target1",
+   "audio_id": "052d39c2-ce82-407c-b040-54e28f75b4c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02B06",
+   "slot": "target2",
+   "audio_id": "3898afb2-c970-4a02-8d7e-a6110fe4ddf0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U01",
+   "slot": "known",
+   "audio_id": "660c2405-e727-47b2-9b86-cc90e0095583"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U01",
+   "slot": "target1",
+   "audio_id": "c2ce5a61-e9d2-4276-a4c2-8908cd600aef"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U01",
+   "slot": "target2",
+   "audio_id": "7217b44e-477e-47ca-bc36-ba66c3658859"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U03",
+   "slot": "known",
+   "audio_id": "56236e15-43f5-4be9-a9c6-8154a8841cbd"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U03",
+   "slot": "target1",
+   "audio_id": "cf645314-ca84-44df-9d04-afd4b08db695"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U03",
+   "slot": "target2",
+   "audio_id": "70cf574f-2000-4b61-841e-93bd1d3eb347"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U11",
+   "slot": "known",
+   "audio_id": "1ad63fbe-227c-4e2f-bfe2-3fe1bd27de6b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U11",
+   "slot": "target1",
+   "audio_id": "90d191ca-18c0-4d0f-87f0-b3cf701489d6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0200L02U11",
+   "slot": "target2",
+   "audio_id": "47f3ebff-801c-46ab-88e9-13d7709394ef"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0278L01",
+   "slot": "known",
+   "audio_id": "4afcf7f8-bf43-46bb-b35d-c388e36960ab"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0278L01",
+   "slot": "target1",
+   "audio_id": "00ba108e-7422-48f8-8063-b372deb3c000"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0278L01",
+   "slot": "target2",
+   "audio_id": "8b534133-e3fd-41b6-bc7e-bf7de1f74ef7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B01",
+   "slot": "known",
+   "audio_id": "4afcf7f8-bf43-46bb-b35d-c388e36960ab"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B01",
+   "slot": "target1",
+   "audio_id": "00ba108e-7422-48f8-8063-b372deb3c000"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B01",
+   "slot": "target2",
+   "audio_id": "8b534133-e3fd-41b6-bc7e-bf7de1f74ef7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B02",
+   "slot": "known",
+   "audio_id": "f3417833-8024-4b8b-9dce-052148a2cee5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B02",
+   "slot": "target1",
+   "audio_id": "455fb499-e324-438b-9705-74fdd38f4f2c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B02",
+   "slot": "target2",
+   "audio_id": "48b234b0-7b9e-4569-b961-9c0256874351"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B03",
+   "slot": "known",
+   "audio_id": "b47ad167-a4e7-45ab-b125-eef453b3b59d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B03",
+   "slot": "target1",
+   "audio_id": "b3e903a5-a0ed-4ab6-b191-c9735444a98b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B03",
+   "slot": "target2",
+   "audio_id": "670f108a-9a67-4501-8cbc-880bf8922fde"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B04",
+   "slot": "known",
+   "audio_id": "8684eb4e-6255-4663-b863-79b9e7fb94cc"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B04",
+   "slot": "target1",
+   "audio_id": "2c3f8ba1-6021-41a7-9bc0-d38baafe6b7f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01B04",
+   "slot": "target2",
+   "audio_id": "bc07b266-0744-4076-b671-a86b6760d35f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U03",
+   "slot": "known",
+   "audio_id": "2b2ac4c9-b706-4211-8e78-1e666b914e09"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U03",
+   "slot": "target1",
+   "audio_id": "28cc0015-5bed-4783-ae78-c95a52f4e455"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U03",
+   "slot": "target2",
+   "audio_id": "993c2baa-b46a-4671-b56e-923c6f33a77d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U10",
+   "slot": "known",
+   "audio_id": "185610d8-2ecd-4bb5-8fd1-3925eb23a36e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U10",
+   "slot": "target1",
+   "audio_id": "983edfc1-ea80-4c97-8473-90553342b0e6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U10",
+   "slot": "target2",
+   "audio_id": "ee8ccd06-7aa8-4c1e-ba27-b19759e14e7c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U12",
+   "slot": "known",
+   "audio_id": "cb9f7a8e-cf2b-4b3d-bcf7-bf010d563167"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U12",
+   "slot": "target1",
+   "audio_id": "941c9839-2b82-4748-9616-d518f9eb2f82"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0278L01U12",
+   "slot": "target2",
+   "audio_id": "cafd55db-0d8b-4679-966f-8a6c141fa0c0"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0211L01",
+   "slot": "known",
+   "audio_id": "a720c4f3-38f4-4661-8dee-edf832d355d8"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0211L01",
+   "slot": "target1",
+   "audio_id": "bedd5837-efa2-46db-9398-c4bdcfe22868"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0211L01",
+   "slot": "target2",
+   "audio_id": "c4247346-2694-4c7e-a2ea-84d05467aa6c"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0211L01",
+   "slot": "presentation",
+   "audio_id": "7f5381d9-b78f-4309-944a-62eaee996b3c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B01",
+   "slot": "known",
+   "audio_id": "a720c4f3-38f4-4661-8dee-edf832d355d8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B01",
+   "slot": "target1",
+   "audio_id": "bedd5837-efa2-46db-9398-c4bdcfe22868"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B01",
+   "slot": "target2",
+   "audio_id": "c4247346-2694-4c7e-a2ea-84d05467aa6c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B02",
+   "slot": "known",
+   "audio_id": "1cd01830-7dfe-40dd-80fd-43863f464331"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B02",
+   "slot": "target1",
+   "audio_id": "aba19b5a-036b-453c-8511-2c151ea31706"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B02",
+   "slot": "target2",
+   "audio_id": "ac494f31-f767-4a3d-a63d-35eaf69fc9c2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B03",
+   "slot": "known",
+   "audio_id": "cf0cda8a-9da6-44fd-9d24-4d1d17ad048e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B03",
+   "slot": "target1",
+   "audio_id": "97ceac44-5991-4038-a380-98c5844f98f2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01B03",
+   "slot": "target2",
+   "audio_id": "2b01a73d-7a0a-49a2-ad5d-d6d2522cb1e6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U02",
+   "slot": "known",
+   "audio_id": "c3eaf5fa-342f-41ce-8e93-9ce1df13afdb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U02",
+   "slot": "target1",
+   "audio_id": "40f9ff32-d5b4-41a2-8129-9c800f33106e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U02",
+   "slot": "target2",
+   "audio_id": "51bb7419-cada-45b7-81f9-670bb3bacfdb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U03",
+   "slot": "known",
+   "audio_id": "b7cf98ec-8d95-4156-afd4-3beae27c2675"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U03",
+   "slot": "target1",
+   "audio_id": "5914833c-1063-4338-a3a6-6e6372944f3d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U03",
+   "slot": "target2",
+   "audio_id": "ce9697ea-cf81-4cce-856c-0f3e752863b3"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U04",
+   "slot": "known",
+   "audio_id": "0244fbc6-0188-4dfd-8c5b-2b5758664311"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U04",
+   "slot": "target1",
+   "audio_id": "b384dbc3-423e-4330-85d5-dc86cd823900"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U04",
+   "slot": "target2",
+   "audio_id": "7749999a-d006-4ad7-afed-0273b735f5da"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U06",
+   "slot": "known",
+   "audio_id": "8fb79f14-7ca3-45bf-b7f0-453bafe29532"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U06",
+   "slot": "target1",
+   "audio_id": "164ab759-7c43-4d99-b77a-89249e18e510"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0211L01U06",
+   "slot": "target2",
+   "audio_id": "02c5db4b-47fa-4bfe-bd38-e18e6c356437"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0242L02U11",
+   "slot": "known",
+   "audio_id": "1c4af78e-6aaa-436a-a6fd-a25536f4e3c9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0242L02U11",
+   "slot": "target1",
+   "audio_id": "afeb4f04-3fe9-4737-8ce1-755d0be773bf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0242L02U11",
+   "slot": "target2",
+   "audio_id": "c72071c7-4a85-450a-b5ed-6bb5f8c3fdfa"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U02",
+   "slot": "known",
+   "audio_id": "0454a451-ca43-4ca8-879b-c196c05eb46d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U02",
+   "slot": "target1",
+   "audio_id": "712aa338-81c9-4eb6-a8ce-dfd6f2c9066c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U02",
+   "slot": "target2",
+   "audio_id": "3a934bbd-a86a-40bf-8718-a441e11bbe6d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U10",
+   "slot": "known",
+   "audio_id": "30c64707-2136-4b09-9cac-16ead1170d2e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U10",
+   "slot": "target1",
+   "audio_id": "644d8213-b199-485d-b05a-d2fc211761bd"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0246L01U10",
+   "slot": "target2",
+   "audio_id": "22ccd209-e04a-4cf2-9a72-afd7a8ebdec7"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0258L01U06",
+   "slot": "known",
+   "audio_id": "5c0a1f24-e15a-4c6d-81f4-6dc2cec0688e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0258L01U06",
+   "slot": "target1",
+   "audio_id": "1bb7062b-dd3a-47a1-ab4c-a27d95f46c6e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0258L01U06",
+   "slot": "target2",
+   "audio_id": "9995c999-e50d-4b8b-9223-1fa906ade751"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0260L01U08",
+   "slot": "known",
+   "audio_id": "bf97718b-ea19-41d4-941a-a69b7b7b5b09"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0260L01U08",
+   "slot": "target1",
+   "audio_id": "02ba34a1-82d7-46a3-b43d-549094523922"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0260L01U08",
+   "slot": "target2",
+   "audio_id": "42f69276-8a8c-47b7-8538-f7b92106ae6c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0269L01U11",
+   "slot": "known",
+   "audio_id": "db66d874-fb1c-444b-a3a7-a92f7c600802"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0269L01U11",
+   "slot": "target1",
+   "audio_id": "da3ef9bc-cbe2-472f-a4b6-307bd43d7c08"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0269L01U11",
+   "slot": "target2",
+   "audio_id": "2ccbab4d-3aab-4f36-a06e-6efabe04e6c6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0284L02U09",
+   "slot": "known",
+   "audio_id": "225c3673-59f5-4d25-bc5f-523d2db82f84"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0284L02U09",
+   "slot": "target1",
+   "audio_id": "1bc4846b-4566-4fe6-ae96-52170dccfe97"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0284L02U09",
+   "slot": "target2",
+   "audio_id": "a8df4741-3f47-4045-abc0-68662f927fcb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L01U06",
+   "slot": "known",
+   "audio_id": "16d7f3d1-4fa2-4b14-81eb-d376473aa88b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L01U06",
+   "slot": "target1",
+   "audio_id": "68413b01-5dc2-4b1a-9a77-f18c8e882ba9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L01U06",
+   "slot": "target2",
+   "audio_id": "09752672-2edd-4f0b-9d00-b9480552a3d8"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L02U04",
+   "slot": "known",
+   "audio_id": "6f93c48e-f7b2-454c-a32b-f3569afc2cff"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L02U04",
+   "slot": "target1",
+   "audio_id": "56d66a14-c229-44e8-b152-03c54a1f2d8d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0291L02U04",
+   "slot": "target2",
+   "audio_id": "7b7f57d3-7704-45b3-8639-75c3049b8bc5"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0292L01U08",
+   "slot": "known",
+   "audio_id": "b2504fbb-d997-4863-a15f-db69ecc452af"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0292L01U08",
+   "slot": "target1",
+   "audio_id": "cedd3825-a04a-4438-bc70-ae7fffc5b4f9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "deu_for_eng:S0292L01U08",
+   "slot": "target2",
+   "audio_id": "02031a57-7221-49bb-aef5-baa18203f47f"
+  }
+ ]
+}

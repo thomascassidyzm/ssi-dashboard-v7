@@ -1,0 +1,141 @@
+{
+ "job": "cs #437·AI",
+ "at": "2026-11-17",
+ "outcome": "REFUSED — probe on S0096L01 answered 409; other 19 not tried; all 20 left HARD",
+ "probe": {
+  "lego_id": "S0096L01",
+  "request": {
+   "guard": "soft",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "(unchanged todo text)"
+  },
+  "http": 409,
+  "body": {
+   "error": "gle_v2_for_eng/S0096L01 already carries a HARD human-authored mark (by Kai (rulings 17 Nov 2026), worded by cs #398·AI); a soft mark would weaken it — not changed"
+  },
+  "after_text_unchanged": true,
+  "after_last_guard": "hard"
+ },
+ "before_readback": [
+  {
+   "lego_id": "S0096L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0097L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0172L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0173L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0183L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0184L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0191L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0268L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0272L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0273L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0276L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0277L03",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0279L02",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0280L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0282L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0142L08",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0147L01",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0148L05",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0045L03",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  },
+  {
+   "lego_id": "S0300L06",
+   "text_matches_todo": true,
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI"
+  }
+ ]
+}
