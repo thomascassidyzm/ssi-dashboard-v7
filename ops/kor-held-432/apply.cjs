@@ -182,7 +182,9 @@ function units(db, p, clip, withAudio) {
   const posNext = new Map();
   const allocPos = (lego) => { if (!posNext.has(lego)) posNext.set(lego, Math.max(0, ...[...db.phrases.values()].filter((q) => q._lego === lego).map((q) => q.position || 0), ...p.phr.filter((r) => r.op === 'insert' && r.lego === lego).map((r) => r.position || 0)) + 1); const v = posNext.get(lego); posNext.set(lego, v + 1); return v; };
   const slotOf = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' };
-  const link = (target, keyName, key, slot, id) => (id ? [{ op: 'audio.link', target, [keyName]: key, slot, audio_id: id }] : []);
+  // keep=true: re-linking the row's OWN pre-existing clip to an unchanged slot (the text trigger drops it); its clip text may differ by
+  // punctuation only ("why not?" vs "why not") and it is already what learners hear, so the mismatch guard is waived for it alone.
+  const link = (target, keyName, key, slot, id, keep) => (id ? [{ op: 'audio.link', target, [keyName]: key, slot, audio_id: id, ...(keep ? { allow_text_mismatch: true } : {}) }] : []);
   // LEGO deletes first (they free nothing the others need, and their phrases go with them)
   for (const id of D.legoDelete) U.push({ tag: `delete ${id}`, seed: db.legos.get(id).seed_number, ops: [{ op: 'lego.delete', lego_id: id, cascade_phrases: true, expect: { target_text: db.legos.get(id).target_text } }] });
   // seeds
@@ -195,7 +197,7 @@ function units(db, p, clip, withAudio) {
       for (const slot of ['known', 'target1', 'target2']) {
         const text = slot === 'known' ? (c.known_text || s.known_text) : (c.target_text || s.target_text);
         const changed = slot === 'known' ? !!c.known_text : !!c.target_text;
-        ops.push(...link('seed', 'seed_number', +n, slot, changed ? clip(slot, text) : s[slotOf[slot]]));
+        ops.push(...link('seed', 'seed_number', +n, slot, changed ? clip(slot, text) : s[slotOf[slot]], !changed));
       }
     }
     U.push({ tag: `seed ${n}`, seed: +n, ops });
@@ -239,10 +241,10 @@ function units(db, p, clip, withAudio) {
     if (withAudio) {
       for (const slot of ['known', 'target1', 'target2']) {
         const changed = slot === 'known' ? a.known_text !== b.known_text : a.target_text !== b.target_text;
-        ops.push(...link('lego', 'lego_id', id, slot, changed ? clip(slot, slot === 'known' ? a.known_text : a.target_text) : b[slotOf[slot]]));
+        ops.push(...link('lego', 'lego_id', id, slot, changed ? clip(slot, slot === 'known' ? a.known_text : a.target_text) : b[slotOf[slot]], !changed));
       }
       // English unchanged and no custom intro → the same intro clip goes back (the text trigger drops it); otherwise `intros` renders + binds
-      if (a.known_text === b.known_text && !c.intro && b.presentation_audio_id) ops.push(...link('lego', 'lego_id', id, 'presentation', b.presentation_audio_id));
+      if (a.known_text === b.known_text && !c.intro && b.presentation_audio_id) ops.push(...link('lego', 'lego_id', id, 'presentation', b.presentation_audio_id, true));
       if (c.introClip) ops.push(...link('lego', 'lego_id', id, 'presentation', c.introClip));
     }
     U.push({ tag: `lego ${id}`, seed: b.seed_number, ops });
@@ -259,7 +261,7 @@ function units(db, p, clip, withAudio) {
       const ops = [{ op: 'phrase.update', phrase_id: pid(r.id), set, expect: { known_text: r.before.known_text, target_text: r.before.target_text } }];
       if (withAudio) for (const slot of ['known', 'target1', 'target2']) {
         const changed = slot === 'known' ? r.known !== r.before.known_text : r.target !== r.before.target_text;
-        ops.push(...link('phrase', 'phrase_id', pid(r.id), slot, changed ? clip(slot, slot === 'known' ? r.known : r.target) : r.before[slotOf[slot]]));
+        ops.push(...link('phrase', 'phrase_id', pid(r.id), slot, changed ? clip(slot, slot === 'known' ? r.known : r.target) : r.before[slotOf[slot]], !changed));
       }
       U.push({ tag: `upd ${r.id}`, seed: r.before.seed_number, ops });
     }
