@@ -52,7 +52,6 @@
 125,
 126,
 127,
-129,
 130,
 131,
 135,
@@ -3631,6 +3630,52 @@
 {
 "op": "phrase.insert",
 "row": {
+"id": "gle_v2_for_eng:S0098L02B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 98,
+"lego_index": 2,
+"position": 102,
+"known_text": "to consider something",
+"target_text": "smaoineamh ar rud éigin",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 4,
+"lego_count": 4
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0098L02U02",
+"course_code": "gle_v2_for_eng",
+"seed_number": 98,
+"lego_index": 2,
+"position": 103,
+"known_text": "I should consider something",
+"target_text": "ba chóir dom smaoineamh ar rud éigin",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 7,
+"lego_count": 7
+}
+},
+{
+"op": "phrase.insert",
+"row": {
 "id": "gle_v2_for_eng:S0098L03B04",
 "course_code": "gle_v2_for_eng",
 "seed_number": 98,
@@ -5688,184 +5733,6 @@
 "phrase_id": "gle_v2_for_eng:S0127L03C02",
 "expect": {
 "target_text": "a fheiceáil"
-}
-},
-{
-"op": "seed.update",
-"seed_number": 129,
-"set": {
-"target_text": "Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat"
-},
-"expect": {
-"known_text": "I'm so happy that you're doing so well",
-"target_text": "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin"
-}
-},
-{
-"op": "lego.insert",
-"row": {
-"seed_number": 129,
-"lego_index": 5,
-"known_text": "you're doing so well",
-"target_text": "ag éirí chomh maith sin leat",
-"type": "M",
-"is_new": true,
-"status": "draft",
-"components": [
-{
-"known": "getting on",
-"target": "ag éirí"
-},
-{
-"known": "so well",
-"target": "chomh maith sin"
-},
-{
-"known": "with you",
-"target": "leat"
-}
-]
-}
-},
-{
-"op": "phrase.insert",
-"row": {
-"id": "gle_v2_for_eng:S0129L05B01",
-"course_code": "gle_v2_for_eng",
-"seed_number": 129,
-"lego_index": 5,
-"position": 101,
-"known_text": "that you're doing so well",
-"target_text": "go bhfuil ag éirí chomh maith sin leat",
-"phrase_role": "build",
-"status": "draft",
-"introduce": true,
-"metadata": {
-"format": "build_use",
-"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
-},
-"connected_lego_ids": [],
-"lego_position": "middle",
-"word_count": 8,
-"lego_count": 8
-}
-},
-{
-"op": "phrase.insert",
-"row": {
-"id": "gle_v2_for_eng:S0129L05B02",
-"course_code": "gle_v2_for_eng",
-"seed_number": 129,
-"lego_index": 5,
-"position": 102,
-"known_text": "I think that you're doing so well",
-"target_text": "ceapaim go bhfuil ag éirí chomh maith sin leat",
-"phrase_role": "build",
-"status": "draft",
-"introduce": true,
-"metadata": {
-"format": "build_use",
-"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
-},
-"connected_lego_ids": [],
-"lego_position": "middle",
-"word_count": 9,
-"lego_count": 9
-}
-},
-{
-"op": "phrase.insert",
-"row": {
-"id": "gle_v2_for_eng:S0129L05U01",
-"course_code": "gle_v2_for_eng",
-"seed_number": 129,
-"lego_index": 5,
-"position": 103,
-"known_text": "it's interesting that you're doing so well",
-"target_text": "tá sé suimiúil go bhfuil ag éirí chomh maith sin leat",
-"phrase_role": "use",
-"status": "draft",
-"introduce": true,
-"metadata": {
-"format": "build_use",
-"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
-},
-"connected_lego_ids": [],
-"lego_position": "middle",
-"word_count": 11,
-"lego_count": 11
-}
-},
-{
-"op": "phrase.insert",
-"row": {
-"id": "gle_v2_for_eng:S0129L05U02",
-"course_code": "gle_v2_for_eng",
-"seed_number": 129,
-"lego_index": 5,
-"position": 104,
-"known_text": "I'm so happy that you're doing so well",
-"target_text": "Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat",
-"phrase_role": "use",
-"status": "draft",
-"introduce": true,
-"metadata": {
-"format": "build_use",
-"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
-},
-"connected_lego_ids": [],
-"lego_position": "middle",
-"word_count": 11,
-"lego_count": 11
-}
-},
-{
-"op": "phrase.update",
-"phrase_id": "gle_v2_for_eng:S0129L01U01",
-"set": {
-"target_text": "Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat"
-},
-"expect": {
-"known_text": "I'm so happy that you're doing so well",
-"target_text": "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin"
-}
-},
-{
-"op": "phrase.update",
-"phrase_id": "gle_v2_for_eng:S0129L04U01",
-"set": {
-"target_text": "Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat"
-},
-"expect": {
-"known_text": "I'm so happy that you're doing so well",
-"target_text": "Tá an-áthas orm go bhfuil tú ag déanamh chomh maith sin"
-}
-},
-{
-"op": "lego.delete",
-"lego_id": "S0129L02",
-"cascade_phrases": true,
-"expect": {
-"target_text": "go bhfuil tú"
-}
-},
-{
-"op": "lego.delete",
-"lego_id": "S0129L03",
-"cascade_phrases": true,
-"expect": {
-"target_text": "ag déanamh"
-}
-},
-{
-"op": "phrase.update",
-"phrase_id": "gle_v2_for_eng:S0130L01U03",
-"set": {
-"target_text": "Cén iontas go bhfuil ag éirí chomh maith sin leat"
-},
-"expect": {
-"known_text": "what a surprise that you are doing so well",
-"target_text": "Cén iontas go bhfuil tú ag déanamh chomh maith sin"
 }
 },
 {
@@ -10563,6 +10430,52 @@
 "lego_position": "middle",
 "word_count": 13,
 "lego_count": 13
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0221L01B01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 221,
+"lego_index": 1,
+"position": 102,
+"known_text": "I watched something",
+"target_text": "d'fhéach mé ar rud éigin",
+"phrase_role": "build",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 5,
+"lego_count": 5
+}
+},
+{
+"op": "phrase.insert",
+"row": {
+"id": "gle_v2_for_eng:S0221L01U01",
+"course_code": "gle_v2_for_eng",
+"seed_number": 221,
+"lego_index": 1,
+"position": 103,
+"known_text": "I watched something last night",
+"target_text": "d'fhéach mé ar rud éigin aréir",
+"phrase_role": "use",
+"status": "draft",
+"introduce": true,
+"metadata": {
+"format": "build_use",
+"authored": "cs #398·AI final pass, Kai rulings 16+17 Nov 2026"
+},
+"connected_lego_ids": [],
+"lego_position": "middle",
+"word_count": 6,
+"lego_count": 6
 }
 },
 {

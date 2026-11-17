@@ -201,6 +201,8 @@ def rows28():
     for k in E.under('S0098L03')+E.under('S0098L02'):
         if 'luiche' in E.cur[k][1] or not contains(E.cur[k][1],E.L[E.P[k]['lego']]['target_text'] if E.P[k]['lego']!='S0098L03' else 'cluiche eile'): E.delp(k)
     E.delp('S0098L04B03')                                   # now the same sentence as L04U01
+    # cs #410·AI: the loop above takes S0098L02's only phrase; the commit-time trigger DEBUT_WITHOUT_PRACTICE refused the apply. Two lines from taught pieces (rud éigin, 4):
+    E.many('S0098L02',[('b','to consider something','smaoineamh ar rud éigin'),('u','I should consider something','ba chóir dom smaoineamh ar rud éigin')])
     E.many('S0098L03',[('b','another game','cluiche eile'),('b','to find another game','cluiche eile a fháil'),('u',"I'm looking for another game",'tá mé ag lorg cluiche eile'),
                        ('u','I should consider another game','ba chóir dom smaoineamh ar chluiche eile')])
     E.many('S0098L04',[('u',"I'd like to play another game with my friends",'ba mhaith liom cluiche eile a imirt le mo chairde')])
@@ -233,14 +235,16 @@ def rows28():
     E.lego('S0178L03',is_new=True)
     E.many('S0178L03',[('b','to see you','tú a fheiceáil'),('b','I wanted to see you','ba mhian liom tú a fheiceáil'),('u',"I'd like to see you tomorrow night",'ba mhaith liom tú a fheiceáil oíche amárach'),
                        ('u',"I didn't have the time, although I wanted to see you",'Ní raibh an t-am agam, cé gur mhian liom tú a fheiceáil')])
-    # 129 (10:38Z): …go bhfuil ag éirí chomh maith sin leat
-    E.seed(129,"Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat")
-    E.dellego('S0129L02'); E.dellego('S0129L03')
-    pp={'mé':'liom','tú':'leat','sé':'leis','sí':'léi','muid':'linn','siad':'leo','sibh':'libh'}
-    E.sub(r"\b(mé|tú|sé|sí|muid|siad|sibh) ag déanamh chomh maith sin",lambda m:"ag éirí chomh maith sin "+pp[m.group(1)])
-    l=E.newlego(129,5,"you're doing so well",'ag éirí chomh maith sin leat',[('getting on','ag éirí'),('so well','chomh maith sin'),('with you','leat')])
-    E.many(l,[('b',"that you're doing so well",'go bhfuil ag éirí chomh maith sin leat'),('b',"I think that you're doing so well",'ceapaim go bhfuil ag éirí chomh maith sin leat'),
-              ('u',"it's interesting that you're doing so well",'tá sé suimiúil go bhfuil ag éirí chomh maith sin leat'),('u',S[129]['known_text'],'Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat')])
+    # 129: Kai 17 Nov 12:19Z took #398's recommendation (report item 4) — KEEP OURS at 129 (ag déanamh stays; 72/114/117 agree). Ops dropped (cs #410·AI).
+    if False:
+        # 129 (10:38Z): …go bhfuil ag éirí chomh maith sin leat
+        E.seed(129,"Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat")
+        E.dellego('S0129L02'); E.dellego('S0129L03')
+        pp={'mé':'liom','tú':'leat','sé':'leis','sí':'léi','muid':'linn','siad':'leo','sibh':'libh'}
+        E.sub(r"\b(mé|tú|sé|sí|muid|siad|sibh) ag déanamh chomh maith sin",lambda m:"ag éirí chomh maith sin "+pp[m.group(1)])
+        l=E.newlego(129,5,"you're doing so well",'ag éirí chomh maith sin leat',[('getting on','ag éirí'),('so well','chomh maith sin'),('with you','leat')])
+        E.many(l,[('b',"that you're doing so well",'go bhfuil ag éirí chomh maith sin leat'),('b',"I think that you're doing so well",'ceapaim go bhfuil ag éirí chomh maith sin leat'),
+                  ('u',"it's interesting that you're doing so well",'tá sé suimiúil go bhfuil ag éirí chomh maith sin leat'),('u',S[129]['known_text'],'Tá an-áthas orm go bhfuil ag éirí chomh maith sin leat')])
     # 160 (10:38Z): conas a déarfá; "how would you say"
     E.seed(160,"conas a déarfá an focal seo i nGaeilge?","how would you say this word in Irish?")
     E.lego('S0160L01',known_text='how would you say',target_text='conas a déarfá',components=C(('how','conas'),('you would say','a déarfá')))
@@ -253,6 +257,8 @@ def rows28():
     for k in [k for k,p in E.P.items() if p['seed']==221 and k not in E.deleted and p['phrase_role']!='component' and 'ina dhiaidh sin' in E.cur[k][1]]: E.delp(k)
     E.many(l,[('b','after that','ina dhiaidh sin'),('b','I watched a film after that',"d'fhéach mé ar scannán ina dhiaidh sin"),('u','I went out after that','chuaigh mé amach ina dhiaidh sin'),
               ('u','I watched the football and I watched a film after that',"d'fhéach mé ar an bpeil agus d'fhéach mé ar scannán ina dhiaidh sin")])
+    # cs #410·AI: S0221L01 'I watched' (new) lost its only phrase above (DEBUT_WITHOUT_PRACTICE). Two lines from taught pieces (rud éigin 4, aréir before 221):
+    E.many('S0221L01',[('b','I watched something',"d'fhéach mé ar rud éigin"),('u','I watched something last night',"d'fhéach mé ar rud éigin aréir")])
     # 184 (10:45Z + ECHO FINAL): Chonaic, bhí siad san oifig tamall ó shin; English plain "yes" (his own English)
     E.seed(184,"chonaic, bhí siad san oifig tamall ó shin","yes they were in the office a while ago")
     E.lego('S0184L01',known_text='yes they were',target_text='chonaic, bhí siad',components=C(('I saw','chonaic'),('they were','bhí siad')))
@@ -501,6 +507,27 @@ if __name__=='__main__':
     bad=[x for x in check(E,[n for n in seeds if n<=300]) if not ok(x)]
     for x in bad: print(*x)
     print(len(bad),'check lines')
+    # cs #410·AI: the commit-time trigger DEBUT_WITHOUT_PRACTICE is not seen by the dry run — every surviving LEGO must keep >=1 phrase
+    def lid_of(pid): return pid.split(':')[-1][:8]
+    new={l['lego_id']:l['is_new'] for n,sd in S.items() for l in sd['legos']}
+    for o in ops:
+        if o['op']=='lego.update' and 'is_new' in o['set']: new[o['lego_id']]=o['set']['is_new']
+        if o['op']=='lego.insert': new['S%04dL%02d'%(o['row']['seed_number'],o['row']['lego_index'])]=o['row'].get('is_new',True)
+    alive={l for l,v in new.items() if v}-{o['lego_id'] for o in ops if o['op']=='lego.delete'}   # debut LEGOs only (the trigger's scope)
+    # mirror of debut_is_practised (database/migrations/20260930_debut_practice_guard.sql): build/use row whose normalised target != the LEGO's
+    def nrm(t): return re.sub(r'\s+',' ',re.sub(r'[.,!?;:¿¡«»"\']','',(t or '').lower())).strip()
+    lt={l['lego_id']:l['target_text'] for n,sd in S.items() for l in sd['legos']}
+    for o in ops:
+        if o['op']=='lego.update' and 'target_text' in o['set']: lt[o['lego_id']]=o['set']['target_text']
+        if o['op']=='lego.insert': lt['S%04dL%02d'%(o['row']['seed_number'],o['row']['lego_index'])]=o['row']['target_text']
+    pt={p['id']:p['target_text'] for n,sd in S.items() for l in sd['legos'] for p in (l.get('basket_phrases') or []) if p['phrase_role'] in('build','use')}
+    for o in ops:
+        if o['op']=='phrase.delete': pt.pop(o['phrase_id'],None)
+        if o['op']=='phrase.update' and 'target_text' in o['set'] and o['phrase_id'] in pt: pt[o['phrase_id']]=o['set']['target_text']
+        if o['op']=='phrase.insert' and o['row']['phrase_role'] in('build','use'): pt[o['row']['id']]=o['row']['target_text']
+    has=collections.Counter(lid_of(p) for p,t in pt.items() if nrm(t)!=nrm(lt.get(lid_of(p))))
+    bare=sorted(l for l in alive if not has[l])
+    print('LEGOs left without a phrase:',bare)
     # batches: cut at seed boundaries, <=1500 ops
     def seed_of(o): return o.get('seed_number') or (o.get('row') or {}).get('seed_number') or int((o.get('lego_id') or o.get('phrase_id').split(':')[1])[1:5])
     mv=[o for o in ops if seed_of(o) in MOVE]; ops=[o for o in ops if seed_of(o) not in MOVE]

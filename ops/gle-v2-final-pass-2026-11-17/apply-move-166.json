@@ -1,8 +1,8 @@
 {
 "ok": true,
-"dryRun": true,
-"applied": false,
-"event_id": null,
+"dryRun": false,
+"applied": true,
+"event_id": "44aae3e8-6788-499d-8d68-2b8218f72966",
 "results": [
 {
 "index": 0,
@@ -40,7 +40,7 @@
 },
 "before": null,
 "after": {
-"id": "b3f3caa3-bd02-4963-a5bd-79e534126e25",
+"id": "78beface-c370-4a9a-8ffc-0cc9e944b30f",
 "seed_number": 166,
 "lego_index": 4,
 "lego_id": "S0166L04",
@@ -62,7 +62,7 @@
 },
 "before": null,
 "after": {
-"id": "fd33a8d8-4771-4879-9b41-497b3cb3ccd2",
+"id": "acc49662-b190-4352-840d-2841ebb1f87c",
 "seed_number": 166,
 "lego_index": 5,
 "lego_id": "S0166L05",
@@ -84,7 +84,7 @@
 },
 "before": null,
 "after": {
-"id": "7a5baf41-9955-46ad-9079-a24ef0ae1d10",
+"id": "dbf63234-3d5f-4460-94ae-b4bca330a734",
 "seed_number": 166,
 "lego_index": 6,
 "lego_id": "S0166L06",
@@ -388,7 +388,7 @@
 },
 "before": null,
 "after": {
-"id": "6e9af43e-5f6e-4514-8edc-32792334e0f3",
+"id": "5d88ea86-8406-4a4b-b587-24f239eaea86",
 "seed_number": 300,
 "lego_index": 4,
 "lego_id": "S0300L04",
@@ -410,7 +410,7 @@
 },
 "before": null,
 "after": {
-"id": "f1596e21-7417-44b9-a257-d5ccbe899cd7",
+"id": "99630568-0a95-434f-9024-c2b79a92a684",
 "seed_number": 300,
 "lego_index": 5,
 "lego_id": "S0300L05",
@@ -432,7 +432,7 @@
 },
 "before": null,
 "after": {
-"id": "a2c7cd65-5b6e-452a-86a7-d08369a6a1a4",
+"id": "11805c14-61d6-4228-be4d-b0aa3d644c90",
 "seed_number": 300,
 "lego_index": 6,
 "lego_id": "S0300L06",
@@ -2061,15 +2061,15 @@
 },
 {
 "op": "lego.delete",
-"id": "a2c7cd65-5b6e-452a-86a7-d08369a6a1a4"
+"id": "11805c14-61d6-4228-be4d-b0aa3d644c90"
 },
 {
 "op": "lego.delete",
-"id": "f1596e21-7417-44b9-a257-d5ccbe899cd7"
+"id": "99630568-0a95-434f-9024-c2b79a92a684"
 },
 {
 "op": "lego.delete",
-"id": "6e9af43e-5f6e-4514-8edc-32792334e0f3"
+"id": "5d88ea86-8406-4a4b-b587-24f239eaea86"
 },
 {
 "op": "seed.update",
@@ -3886,15 +3886,15 @@
 },
 {
 "op": "lego.delete",
-"id": "7a5baf41-9955-46ad-9079-a24ef0ae1d10"
+"id": "dbf63234-3d5f-4460-94ae-b4bca330a734"
 },
 {
 "op": "lego.delete",
-"id": "fd33a8d8-4771-4879-9b41-497b3cb3ccd2"
+"id": "acc49662-b190-4352-840d-2841ebb1f87c"
 },
 {
 "op": "lego.delete",
-"id": "b3f3caa3-bd02-4963-a5bd-79e534126e25"
+"id": "78beface-c370-4a9a-8ffc-0cc9e944b30f"
 },
 {
 "op": "seed.update",
@@ -3905,8 +3905,7 @@
 }
 }
 ],
-"undo_file": null,
-"note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
-"_seconds": 11.9,
+"undo_file": "2026-11-17T12-31-22-840Z-44aae3e8-6788-499d-8d68-2b8218f72966.json",
+"_seconds": 10.5,
 "_ops": 35
 }

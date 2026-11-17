@@ -4,7 +4,7 @@ import json,sys,urllib.request,time,glob,re
 for f in (sys.argv[1:] or sorted(glob.glob('batch-*.ops.json'))+['move-166.ops.json']):
     body=json.load(open(f)); req={'ops':body['ops']}
     r=urllib.request.Request('http://localhost:3470/api/production/gle_v2_for_eng/edit-batch',data=json.dumps(req).encode(),
-        headers={'Content-Type':'application/json','x-agent-id':'worker-gle-v2-final-pass-398','x-agent-role':'content-dry-run'})
+        headers={'Content-Type':'application/json','x-agent-id':'worker-gle-v2-final-pass-410','x-agent-role':'content-dry-run'})
     t=time.time()
     try: res=json.load(urllib.request.urlopen(r,timeout=1200))
     except urllib.error.HTTPError as e: res={'http':e.code,'body':e.read().decode()[:6000]}

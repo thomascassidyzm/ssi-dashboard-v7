@@ -1,0 +1,642 @@
+[
+ {
+  "lego_id": "S0096L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0096L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no', when you answer a question like 'are you ready?', is:"
+  },
+  "readback_text": "The Irish for 'no', when you answer a question like 'are you ready?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:34:59.263+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:34:59.263Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no",
+      "target_text": "Níl"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no', when you answer a question like 'are you ready?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0097L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0097L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes', when you answer a question like 'are you ready?', is:"
+  },
+  "readback_text": "The Irish for 'yes', when you answer a question like 'are you ready?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:01.096+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:01.096Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes",
+      "target_text": "Tá"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes', when you answer a question like 'are you ready?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0172L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0172L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes that would be', when you answer a question like 'do you want me to help you?', is:"
+  },
+  "readback_text": "The Irish for 'yes that would be', when you answer a question like 'do you want me to help you?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:01.778+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:01.778Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes that would be",
+      "target_text": "Is mian, bheadh sé sin"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes that would be', when you answer a question like 'do you want me to help you?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0173L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0173L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no thank you', when you answer a question like 'do you want me to help you?', is:"
+  },
+  "readback_text": "The Irish for 'no thank you', when you answer a question like 'do you want me to help you?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:02.469+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:02.469Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no thank you",
+      "target_text": "Ní mian, go raibh maith agat"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no thank you', when you answer a question like 'do you want me to help you?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0183L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0183L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no I'm sorry', when you answer a question like 'have you seen my keys?', is:"
+  },
+  "readback_text": "The Irish for 'no I'm sorry', when you answer a question like 'have you seen my keys?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:03.124+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:03.124Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no I'm sorry",
+      "target_text": "Ní fhaca, tá brón orm"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no I'm sorry', when you answer a question like 'have you seen my keys?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0184L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0184L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes they were', when you answer a question like 'have you seen my keys?', is:"
+  },
+  "readback_text": "The Irish for 'yes they were', when you answer a question like 'have you seen my keys?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:03.797+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:03.797Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes they were",
+      "target_text": "chonaic, bhí siad"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes they were', when you answer a question like 'have you seen my keys?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0191L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0191L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no I do not mind', when you answer a question like 'do you mind if I ask you some questions?', is:"
+  },
+  "readback_text": "The Irish for 'no I do not mind', when you answer a question like 'do you mind if I ask you some questions?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:04.474+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:04.474Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no I do not mind",
+      "target_text": "Ní miste liom"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no I do not mind', when you answer a question like 'do you mind if I ask you some questions?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0268L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0268L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes she sent', when you answer a question like 'have you heard anything from your friend?', is:"
+  },
+  "readback_text": "The Irish for 'yes she sent', when you answer a question like 'have you heard anything from your friend?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:05.182+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:05.182Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes she sent",
+      "target_text": "chuala, sheol sí"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes she sent', when you answer a question like 'have you heard anything from your friend?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0272L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0272L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes', when you answer a question like 'would you like to come with us?', is:"
+  },
+  "readback_text": "The Irish for 'yes', when you answer a question like 'would you like to come with us?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:05.898+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:05.898Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes",
+      "target_text": "Ba mhaith"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes', when you answer a question like 'would you like to come with us?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0273L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0273L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no unfortunately', when you answer a question like 'would you like to come with us?', is:"
+  },
+  "readback_text": "The Irish for 'no unfortunately', when you answer a question like 'would you like to come with us?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:06.534+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:06.534Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no unfortunately",
+      "target_text": "Níor mhaith, faraor"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no unfortunately', when you answer a question like 'would you like to come with us?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0276L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0276L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no I can', when you answer a question like 'do you have to leave?', is:"
+  },
+  "readback_text": "The Irish for 'no I can', when you answer a question like 'do you have to leave?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:07.239+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:07.239Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no I can",
+      "target_text": "Ní chaithfidh, is féidir liom"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no I can', when you answer a question like 'do you have to leave?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0277L03",
+  "write": {
+   "success": true,
+   "lego_id": "S0277L03",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes I've got a meeting', when you answer a question like 'do you have to leave?', is:"
+  },
+  "readback_text": "The Irish for 'yes I've got a meeting', when you answer a question like 'do you have to leave?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:07.941+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:07.941Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes I've got a meeting",
+      "target_text": "Caithfidh, tá cruinniú agam"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes I've got a meeting', when you answer a question like 'do you have to leave?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0279L02",
+  "write": {
+   "success": true,
+   "lego_id": "S0279L02",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'yes because', when you answer a question like 'did you have to finish everything?', is:"
+  },
+  "readback_text": "The Irish for 'yes because', when you answer a question like 'did you have to finish everything?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:08.68+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:08.680Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "yes because",
+      "target_text": "bhí, mar"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'yes because', when you answer a question like 'did you have to finish everything?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0280L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0280L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no', when you answer a question like 'did you have to finish everything?', is:"
+  },
+  "readback_text": "The Irish for 'no', when you answer a question like 'did you have to finish everything?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:09.356+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:09.356Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no",
+      "target_text": "Ní raibh"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no', when you answer a question like 'did you have to finish everything?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0282L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0282L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'no that's fine', when you answer a question like 'do you mind?', is:"
+  },
+  "readback_text": "The Irish for 'no that's fine', when you answer a question like 'do you mind?', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:10.013+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:10.013Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "no that's fine",
+      "target_text": "ní miste"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'no that's fine', when you answer a question like 'do you mind?', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0142L08",
+  "write": {
+   "success": true,
+   "lego_id": "S0142L08",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'that's very kind of you', when you thank someone warmly, is:"
+  },
+  "readback_text": "The Irish for 'that's very kind of you', when you thank someone warmly, is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:10.673+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:10.673Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "that's very kind of you",
+      "target_text": "is an-chineálta atá tú"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'that's very kind of you', when you thank someone warmly, is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0147L01",
+  "write": {
+   "success": true,
+   "lego_id": "S0147L01",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'she was very kind', when you want to stress how kind, is:"
+  },
+  "readback_text": "The Irish for 'she was very kind', when you want to stress how kind, is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:11.338+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:11.338Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "she was very kind",
+      "target_text": "b'an-chineálta a bhí sí"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'she was very kind', when you want to stress how kind, is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0148L05",
+  "write": {
+   "success": true,
+   "lego_id": "S0148L05",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'he wasn't very patient with me', when you want to stress it, is:"
+  },
+  "readback_text": "The Irish for 'he wasn't very patient with me', when you want to stress it, is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:12.09+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:12.090Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "he wasn't very patient with me",
+      "target_text": "ní rófhoighneach a bhí sé liom"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'he wasn't very patient with me', when you want to stress it, is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0045L03",
+  "write": {
+   "success": true,
+   "lego_id": "S0045L03",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "The Irish for 'to know it', in phrases like 'I don't have to know everything', is:"
+  },
+  "readback_text": "The Irish for 'to know it', in phrases like 'I don't have to know everything', is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:12.773+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:12.773Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "to know it",
+      "target_text": "é a bheith ar eolas agam"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "The Irish for 'to know it', in phrases like 'I don't have to know everything', is:"
+    }
+   ]
+  },
+  "match": true
+ },
+ {
+  "lego_id": "S0300L06",
+  "write": {
+   "success": true,
+   "lego_id": "S0300L06",
+   "guard": "hard",
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "text": "In Irish a name sits on you, like a feeling. The Irish for 'I don't have a very unusual name' is:"
+  },
+  "readback_text": "In Irish a name sits on you, like a feeling. The Irish for 'I don't have a very unusual name' is:",
+  "human_authored": {
+   "author": "Kai (rulings 17 Nov 2026), worded by cs #398·AI",
+   "authored_on": null,
+   "source": "marked via /presentation/:legoId/authorship by worker-gle-v2-final-pass-410",
+   "reconciled_at": "2026-11-17T12:35:13.518+00:00",
+   "decisions": [
+    {
+     "at": "2026-11-17T12:35:13.518Z",
+     "by": "worker-gle-v2-final-pass-410",
+     "why": "Kai 17 Nov 2026 12:19Z: echo context / heads-up line (cs #398·AI plan, applied by cs #410·AI). HARD because the soft-guard column (database/changes/20261111_human_authored_presentations_soft_guard.sql) is not applied; re-mark soft once it is",
+     "lego": {
+      "known_text": "I don't have a very unusual name",
+      "target_text": "níl ainm an-neamhghnách orm"
+     },
+     "guard": "hard",
+     "action": "marked",
+     "new_text": "In Irish a name sits on you, like a feeling. The Irish for 'I don't have a very unusual name' is:"
+    }
+   ]
+  },
+  "match": true
+ }
+]
