@@ -1,0 +1,189 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0616L02B01",
+  "expect": {
+   "known_text": "thought",
+   "target_text": "gedacht"
+  },
+  "set": {
+   "known_text": "you thought that",
+   "target_text": "du das gedacht hast"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B01",
+  "slot": "known",
+  "audio_id": "ece965a6-c57c-490c-8cad-f00a1d36d5f8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B01",
+  "slot": "target1",
+  "audio_id": "a196d777-e3a5-488f-aff3-dbadd20ed7fd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B01",
+  "slot": "target2",
+  "audio_id": "6b9c43c1-7c8d-4325-b55a-9faa99e366e5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0616L02B02",
+  "expect": {
+   "known_text": "he has also thought about it",
+   "target_text": "er hat auch darüber gedacht"
+  },
+  "set": {
+   "known_text": "that you thought that",
+   "target_text": "dass du das gedacht hast"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B02",
+  "slot": "known",
+  "audio_id": "430cb680-25a5-4fe5-8603-6a1e52d3fde8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B02",
+  "slot": "target1",
+  "audio_id": "e0e7d6b8-277f-466c-817f-c38b073e637e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B02",
+  "slot": "target2",
+  "audio_id": "9c46ed18-8934-48a4-ac82-01917156de52"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0616L02B03",
+  "expect": {
+   "known_text": "I have also thought about it",
+   "target_text": "ich habe auch darüber gedacht"
+  },
+  "set": {
+   "known_text": "I know that you thought that",
+   "target_text": "ich weiß, dass du das gedacht hast"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B03",
+  "slot": "known",
+  "audio_id": "89381a79-742d-46e9-80a9-2478af8170e0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B03",
+  "slot": "target1",
+  "audio_id": "febf4b90-626c-4f03-9276-ec0ce1d8b6bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02B03",
+  "slot": "target2",
+  "audio_id": "618f2708-025b-4711-90c3-b8d3cee728b9"
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0616L02U08",
+   "course_code": "deu_for_eng",
+   "seed_number": 616,
+   "lego_index": 2,
+   "position": 11,
+   "known_text": "she said that you thought that",
+   "target_text": "sie hat gesagt, dass du das gedacht hast",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "middle",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #519·AI, deu proofreader items passed by Kai 17 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 8,
+   "lego_count": 1
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U08",
+  "slot": "known",
+  "audio_id": "89aa36fc-f369-4bf8-a820-9ce8dfeb080e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U08",
+  "slot": "target1",
+  "audio_id": "207a0313-9542-4840-b5f4-e95efa1ebb02"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U08",
+  "slot": "target2",
+  "audio_id": "b9748a96-a1a7-436f-a656-126d94da4471"
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0616L02U09",
+   "course_code": "deu_for_eng",
+   "seed_number": 616,
+   "lego_index": 2,
+   "position": 12,
+   "known_text": "because you thought that",
+   "target_text": "weil du das gedacht hast",
+   "phrase_role": "use",
+   "status": "draft",
+   "introduce": true,
+   "lego_position": "middle",
+   "metadata": {
+    "format": "build_use",
+    "authored": "cs #519·AI, deu proofreader items passed by Kai 17 Nov 2026"
+   },
+   "connected_lego_ids": [],
+   "word_count": 5,
+   "lego_count": 1
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U09",
+  "slot": "known",
+  "audio_id": "4ea62be8-878c-4bfe-9cfc-e612ad0c0635"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U09",
+  "slot": "target1",
+  "audio_id": "09fdad17-93d2-4a2a-ab76-944b2f5fb872"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0616L02U09",
+  "slot": "target2",
+  "audio_id": "9cae831f-4745-4ac5-8d4e-7cdfccade819"
+ }
+]

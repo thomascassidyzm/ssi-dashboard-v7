@@ -1,0 +1,780 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "654b0ed4-7d53-496a-a0b2-3d0cd9e512ee",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I can",
+    "target_text": "ich kann",
+    "known_audio_id": "2ad2bd84-9c52-4448-aeb9-9c9834189d36",
+    "target1_audio_id": "75ae412c-80fe-46cf-88d6-5b2c5b3b8a7c",
+    "target2_audio_id": "7e7b1f83-be69-40c5-acea-d54b6040ebf2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "known_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "d87c3551-58e6-4b22-aa03-36dc05f1dfb0",
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "known_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B01"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "known_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+    "target1_audio_id": "d87c3551-58e6-4b22-aa03-36dc05f1dfb0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B01",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "bf9b70ca-25c4-47f8-8384-2e320b368608",
+    "known_text": "can I",
+    "target_text": "kann ich",
+    "known_audio_id": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+    "target1_audio_id": "d87c3551-58e6-4b22-aa03-36dc05f1dfb0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he also can do it",
+    "target_text": "er kann das auch machen",
+    "known_audio_id": "219a6473-8994-47f9-bd4e-7d33a7f19207",
+    "target1_audio_id": "fcf72423-aa57-4377-9e36-ad30a2a9dc1c",
+    "target2_audio_id": "6a21cc31-6af0-42d0-8373-217b2549cf78",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "7e0ef305-a1fe-4f96-9402-ac697fe51d3b",
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B02"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "target1_audio_id": "7e0ef305-a1fe-4f96-9402-ac697fe51d3b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B02",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "f08d60f4-f383-44c4-a9a0-d0fa73003eff",
+    "known_text": "can I stay?",
+    "target_text": "kann ich bleiben?",
+    "known_audio_id": "acff6be9-f11a-4e30-b96e-65a4b10a1019",
+    "target1_audio_id": "7e0ef305-a1fe-4f96-9402-ac697fe51d3b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I can stay",
+    "target_text": "ich kann bleiben",
+    "known_audio_id": "c0d52977-3d12-4394-998b-3eb879572396",
+    "target1_audio_id": "d2c5e89a-d8c6-4116-b21c-928b8ed026bd",
+    "target2_audio_id": "441b9e10-d95e-4b40-9981-13d143b597d9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "3ebd1ecb-3a82-452a-a40b-c8733eb6db9f",
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01B03"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "target1_audio_id": "3ebd1ecb-3a82-452a-a40b-c8733eb6db9f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01B03",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "33c27e67-1dd8-4054-b1a0-1b4fefb3a905",
+    "known_text": "can I do it?",
+    "target_text": "kann ich das machen?",
+    "known_audio_id": "4071cf5b-56c9-471f-a017-078d371127f4",
+    "target1_audio_id": "3ebd1ecb-3a82-452a-a40b-c8733eb6db9f",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.insert",
+   "key": {
+    "id": "deu_for_eng:S0630L01U08"
+   },
+   "before": null,
+   "after": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1",
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "known_audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "0232d5c2-98d0-4a5c-8dd0-e2a3f02a288e",
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "known_audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U08"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "known_audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1",
+    "target1_audio_id": "0232d5c2-98d0-4a5c-8dd0-e2a3f02a288e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U08",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "beb7b522-3507-45ad-abaa-bec31f879ea8",
+    "known_text": "can I also stay?",
+    "target_text": "kann ich auch bleiben?",
+    "known_audio_id": "ae580615-fd86-4558-9fa1-772ab20fe0e1",
+    "target1_audio_id": "0232d5c2-98d0-4a5c-8dd0-e2a3f02a288e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.insert",
+   "key": {
+    "id": "deu_for_eng:S0630L01U09"
+   },
+   "before": null,
+   "after": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96",
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "known_audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "6583c84a-9ec7-44f1-b171-4fdda8324ff6",
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "known_audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "deu_for_eng",
+    "id": "deu_for_eng:S0630L01U09"
+   },
+   "before": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "known_audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96",
+    "target1_audio_id": "6583c84a-9ec7-44f1-b171-4fdda8324ff6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_for_eng:S0630L01U09",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "b926630d-b99d-48ac-abb0-5e5e8df85a26",
+    "known_text": "can I do it today?",
+    "target_text": "kann ich das heute machen?",
+    "known_audio_id": "aa8bb0d0-b78a-4b74-a528-6d2775a02e96",
+    "target1_audio_id": "6583c84a-9ec7-44f1-b171-4fdda8324ff6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U09",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U09",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0630L01U09"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U08",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U08",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01U08",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0630L01U08"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B03",
+   "set": {
+    "known_text": "I can stay",
+    "target_text": "ich kann bleiben",
+    "known_audio_id": "c0d52977-3d12-4394-998b-3eb879572396",
+    "target1_audio_id": "d2c5e89a-d8c6-4116-b21c-928b8ed026bd",
+    "target2_audio_id": "441b9e10-d95e-4b40-9981-13d143b597d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B02",
+   "set": {
+    "known_text": "he also can do it",
+    "target_text": "er kann das auch machen",
+    "known_audio_id": "219a6473-8994-47f9-bd4e-7d33a7f19207",
+    "target1_audio_id": "fcf72423-aa57-4377-9e36-ad30a2a9dc1c",
+    "target2_audio_id": "6a21cc31-6af0-42d0-8373-217b2549cf78"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0630L01B01",
+   "set": {
+    "known_text": "I can",
+    "target_text": "ich kann",
+    "known_audio_id": "2ad2bd84-9c52-4448-aeb9-9c9834189d36",
+    "target1_audio_id": "75ae412c-80fe-46cf-88d6-5b2c5b3b8a7c",
+    "target2_audio_id": "7e7b1f83-be69-40c5-acea-d54b6040ebf2"
+   }
+  }
+ ],
+ "undo_file": "2026-11-17T17-46-30-140Z-654b0ed4-7d53-496a-a0b2-3d0cd9e512ee.json"
+}
