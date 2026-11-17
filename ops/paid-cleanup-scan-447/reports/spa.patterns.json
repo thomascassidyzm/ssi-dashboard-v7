@@ -1,0 +1,237 @@
+{
+ "_readme": "Added by the spa slice worker (#453) from spa_for_eng fix records. kp = the PRE-FIX spa_for_eng text (or the Deborah question text) the regex must match. Run: merge into patterns.json under 'spa' / 'known:eng'.",
+ "spa": [
+  {
+   "id": "pensar_que_opinion",
+   "side": "target",
+   "re": "(^|[^¿¡\\w])(no )?(pienso|piensas|piensa|piensan|pensamos) que(?![\\wáéíóúüñ])",
+   "kp": "No sé por qué piensas que es tan bueno",
+   "src": "creer switch d/6321f2cd (2 Nov, ev 22bc1d01) + Deborah Oct ('I think' = creo que throughout, d/85773ddc)"
+  },
+  {
+   "id": "podriamos_tener_request",
+   "side": "target",
+   "re": "\\bpodr[\\wí]+ tener (una|un|agua|unos|unas)(?![\\wáéíóúüñ])",
+   "kp": "¿podríamos tener una mesa, por favor?",
+   "src": "Deborah 12 Nov item 1, #472 ev 75145f11 (S0414 → pedir)"
+  },
+  {
+   "id": "liderar_el_camino",
+   "side": "target",
+   "re": "\\bliderar el camino(?![\\wáéíóúüñ])",
+   "kp": "quieren liderar el camino el año que viene",
+   "src": "Deborah 12 Nov, #472 (S0416 → liderar el proyecto)"
+  },
+  {
+   "id": "para_caridad",
+   "side": "target",
+   "re": "\\bpara caridad(?![\\wáéíóúüñ])",
+   "kp": "querían recaudar lo máximo posible para caridad",
+   "src": "Deborah 12 Nov, #472 (S0437 → una causa benéfica)"
+  },
+  {
+   "id": "ha_sido_encantador",
+   "side": "target",
+   "re": "\\bsido encantador(?![\\wáéíóúüñ])",
+   "kp": "ha sido encantador pasar tiempo al aire libre",
+   "src": "Deborah 12 Nov, #472 (S0567 → estupendo); S0567L01U05 held as nonsense"
+  },
+  {
+   "id": "dejarnos_quedarnos",
+   "side": "target",
+   "re": "\\bdejarnos quedarnos(?![\\wáéíóúüñ])",
+   "kp": "ella se ofreció a dejarnos quedarnos con ella",
+   "src": "Deborah 12 Nov, #472 (S0604 → acogernos)"
+  },
+  {
+   "id": "lo_siento_que",
+   "side": "target",
+   "re": "\\blo siento que(?![\\wáéíóúüñ])",
+   "kp": "lo siento que necesito irme tan temprano",
+   "src": "Deborah Oct item 71 (S0139/S0140 → lo siento, pero), d/8287a39d"
+  },
+  {
+   "id": "sentirse_mas_facil",
+   "side": "target",
+   "re": "\\bsentir\\w* m[aá]s f[aá]cil(?![\\wáéíóúüñ])",
+   "kp": "está empezando a sentirse más fácil",
+   "src": "Deborah Oct item 61 (S0122 → ser más fácil)"
+  },
+  {
+   "id": "sintiendome",
+   "side": "target",
+   "re": "\\b(vio|ve|veo|vi) sinti[eé]ndo(me|te|se)(?![\\wáéíóúüñ])",
+   "kp": "ella fue muy amable cuando me vio sintiéndome nervioso",
+   "src": "Deborah Oct item 76 (S0147 → me vio nervioso)"
+  },
+  {
+   "id": "siento_como_si",
+   "side": "target",
+   "re": "\\b(no )?siento como si(?![\\wáéíóúüñ])",
+   "kp": "no siento como si estuviera listo para tener una conversación",
+   "src": "Deborah Oct (S0115 → no me siento listo, listed in d/85773ddc's message). kp is the spa_mx seed text = the pre-fix spa seed (inferred, not seen in a spa record)"
+  },
+  {
+   "id": "definitivamente",
+   "side": "target",
+   "re": "\\bdefinitivamente(?![\\wáéíóúüñ])",
+   "kp": "No sé si definitivamente…",
+   "src": "Deborah Oct item 57 (S0117 definitivamente → sin duda)"
+  },
+  {
+   "id": "intentar_bare_end",
+   "side": "target",
+   "re": "\\b(voy a|quiero|vamos a|puedo|necesito|debería|tengo que|quieres|vas a) intentar[.?!]*$",
+   "kp": "Voy a intentar",
+   "src": "Deborah Oct item 16 (bare intentar → intentarlo; 38 rows applied in spa)"
+  },
+  {
+   "id": "pensar_sobre",
+   "side": "target",
+   "re": "\\bpens\\w* (mucho |bastante )?sobre(?![\\wáéíóúüñ])",
+   "kp": "Estaba pensando mucho sobre tu amigo",
+   "src": "Deborah Oct item 33 (pensar en / pensar de)"
+  },
+  {
+   "id": "hacer_errores",
+   "side": "target",
+   "re": "\\b(hago|haces|hace|hacer|hacemos|hacen|hice) (\\w+ )?errores(?![\\wáéíóúüñ])",
+   "kp": "Hago errores cuando hablo",
+   "src": "Deborah Oct item 121 (cometer errores)"
+  },
+  {
+   "id": "como_esto",
+   "side": "target",
+   "re": "\\bcomo esto(?![\\wáéíóúüñ])",
+   "kp": "algo como esto",
+   "src": "Deborah Oct item 66 (así)"
+  },
+  {
+   "id": "que_lo_que_comparison",
+   "side": "target",
+   "re": "\\b(m[aá]s|menos|mejor|peor) (\\w+ )?que lo que(?![\\wáéíóúüñ])",
+   "kp": "eso es menos emocionante que lo que ella estaba diciendo",
+   "src": "Deborah Oct (comparisons use 'de lo que', d/85773ddc message). kp = spa_mx seed 132 = pre-fix spa seed (inferred)"
+  },
+  {
+   "id": "practicar_infinitive",
+   "side": "target",
+   "re": "\\bpracticar (decir|hablar|escuchar|leer)(?![\\wáéíóúüñ])",
+   "kp": "Necesito practicar decir eso en español",
+   "src": "Deborah Oct item 10; S0206L02U02/S0212L01U05/S0502L03U02 'practicar hablar' (item 44b)"
+  },
+  {
+   "id": "seria_si_present",
+   "side": "target",
+   "re": "\\bser[ií]a \\w+ si (puedes|puedo|lo intentas|quieres)(?![\\wáéíóúüñ])",
+   "kp": "Sería genial si puedes",
+   "src": "Deborah Oct item 107 (needs pudieras)"
+  },
+  {
+   "id": "cuando_termino_future",
+   "side": "target",
+   "re": "\\bcuando termin(o|as|a|amos|an) (\\w+ )?(quiero|me gustaría|voy a|vamos a)(?![\\wáéíóúüñ])|(quiero|gustaría|voy a) [^.]* cuando termin(o|as|a|amos)(?![\\wáéíóúüñ])",
+   "kp": "Cuando termino esto quiero practicar hablando español",
+   "src": "682-fix doc d/86704d26 'cuando + present about the future' (S0281 → si termino)"
+  },
+  {
+   "id": "sabia_que_present",
+   "side": "target",
+   "re": "\\b(sab[ií]a|estaba seguro de) que (\\w+ )?(tenemos|tiene|tienen|saben|entienden|están|es|son|puede|podemos)(?![\\wáéíóúüñ])",
+   "kp": "sabía que tiene todo",
+   "src": "682-fix doc 'past frame, present verb' (sabía que tiene → sé que tiene)"
+  },
+  {
+   "id": "estoy_de_acuerdo_contigo_que",
+   "side": "target",
+   "re": "\\bde acuerdo (contigo|con usted|con ustedes) que(?![\\wáéíóúüñ])",
+   "kp": "Estoy de acuerdo contigo que eso fue muy interesante",
+   "src": "#167 missing word (en que), d/2777c565"
+  },
+  {
+   "id": "decir_de",
+   "side": "target",
+   "re": "\\b(dije|dijo|dijiste|decir|digo) de (la|el|los|las)(?![\\wáéíóúüñ])",
+   "kp": "le dije de la guerra",
+   "src": "682-fix doc calques (decir de)"
+  },
+  {
+   "id": "ir_aqui",
+   "side": "target",
+   "re": "\\b(ir|voy|vamos|vas) aquí(?![\\wáéíóúüñ])",
+   "kp": "Quiero ir aquí esta tarde",
+   "src": "682-fix doc calques ('ir aquí' is not Spanish)"
+  },
+  {
+   "id": "hay_determiner",
+   "side": "target",
+   "re": "\\bhay (esa|ese|esos|esas|el|la|los|las)(?![\\wáéíóúüñ])",
+   "kp": "¿por qué hay esa línea amarilla?",
+   "src": "682-fix doc calques ('hay esa línea' impossible)"
+  },
+  {
+   "id": "mientras_gerund",
+   "side": "target",
+   "re": "\\bmientras \\w+ndo(?![\\wáéíóúüñ])",
+   "kp": "ponen música mientras caminando hacia la oficina",
+   "src": "682-fix doc clumsy ('mientras caminando' not Spanish)"
+  },
+  {
+   "id": "no_hay_un",
+   "side": "target",
+   "re": "\\bno hay un (problema)(?![\\wáéíóúüñ])",
+   "kp": "así que no hay un problema",
+   "src": "682-fix doc calques"
+  },
+  {
+   "id": "que_es_el_value",
+   "side": "target",
+   "re": "¿?qu[eé] es (el|la) (n[uú]mero|nombre|mejor|precio)(?![\\wáéíóúüñ])",
+   "kp": "¿qué es el número mínimo?",
+   "src": "682-fix doc calques (cuál)"
+  },
+  {
+   "id": "antes_hoy",
+   "side": "target",
+   "re": "\\bantes hoy(?![\\wáéíóúüñ])",
+   "kp": "las vio en el trabajo antes hoy",
+   "src": "682-fix doc calques"
+  },
+  {
+   "id": "como_si_indicative",
+   "side": "target",
+   "re": "\\bcomo si (no )?(me |te |se )?(es|está|queda|tengo|tiene|puedo|puede|sé|hay)(?![\\wáéíóúüñ])",
+   "kp": "Siento como si no me queda nada que decir",
+   "src": "682-fix doc mood ('como si' + present indicative)"
+  },
+  {
+   "id": "neg_algun_sitio",
+   "side": "target",
+   "re": "\\bno\\b[^.?]*\\ben alg[uú]n (sitio|lado|lugar)(?![\\wáéíóúüñ])",
+   "kp": "No he visto mis llaves en algún sitio",
+   "src": "#194 group B / #212 (negatives need ningún)"
+  },
+  {
+   "id": "sabe_mejor",
+   "side": "target",
+   "re": "\\bsabe mejor(?![\\wáéíóúüñ])",
+   "kp": "diga lo que diga, ella sabe mejor",
+   "src": "d/85773ddc Deborah-held wrong-word (sabe más)"
+  },
+  {
+   "id": "por_mas_tiempo_ya_no",
+   "side": "target",
+   "re": "\\bno nos vemos por más tiempo(?![\\wáéíóúüñ])",
+   "kp": "no nos vemos por más tiempo",
+   "src": "d/85773ddc (ya no nos vemos)"
+  },
+  {
+   "id": "equivocado_sobre_todo",
+   "side": "target",
+   "re": "\\bequivocad\\w+ sobre todo(?![\\wáéíóúüñ])",
+   "kp": "pero estaba equivocado sobre todo",
+   "src": "d/85773ddc (en todo)"
+  }
+ ],
+ "known:eng": []
+}
