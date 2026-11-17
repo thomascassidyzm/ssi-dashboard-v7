@@ -209,7 +209,8 @@ ph({ S0656L01B02: ['with you all', '여러분과 같이'] });
 
 // 92 — follow the seed: for a while | 잠시 동안.
 item(86, 'seed 92 L02 → for a while | 잠시 동안 (seed)', 'held-11', '#734 rec; 180 uses 잠시 동안 too');
-D.legos.S0092L02 = { known_text: 'for a while', target_text: '잠시 동안', comps: [['a moment', '잠시'], ['during', '동안']] };
+// intro: the course already has "The Korean for: 'for a while', is:" (clip ae2600be, today S0596L01's); the door refuses a second take (RERECORD_NOT_PERMITTED), so it is linked
+D.legos.S0092L02 = { known_text: 'for a while', target_text: '잠시 동안', comps: [['a moment', '잠시'], ['during', '동안']], introClip: 'ae2600be-b7af-49eb-9966-6d2bef73ce4b' };
 ph({ S0092L02B01: ['for a while', '잠시 동안'], S0092L02B02: ['for a while', '잠시 동안'],
   S0092L02B03: ['keep on doing this for a while', '잠시 동안 이걸 계속하고'],
   S0092L02B04: ["I'd like to keep on doing this for a while", '잠시 동안 이걸 계속하고 싶어요'],

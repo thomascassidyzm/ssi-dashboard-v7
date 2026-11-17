@@ -165,7 +165,7 @@ function asks(db, p) {
     if (kChanged) add('known', l.known_text, 'lego', id, 'known', l.seed_number);
     const c = D.legos[id] || {};
     const needsIntro = kChanged || c.intro || (l.is_new && b && !b.is_new && !b.presentation_audio_id);
-    if (needsIntro) add('presentation', c.intro || intro(l.known_text), 'lego', id, 'presentation', l.seed_number);
+    if (needsIntro && !c.introClip) add('presentation', c.intro || intro(l.known_text), 'lego', id, 'presentation', l.seed_number);
   }
   for (const r of p.phr) {
     if (r.op !== 'update' && r.op !== 'insert') continue;
@@ -179,6 +179,8 @@ function asks(db, p) {
 /** Edit-batch op UNITS (each self-contained). clip(role,text) -> audio id | undefined. withAudio=false for the text-only dry run. */
 function units(db, p, clip, withAudio) {
   const U = [];
+  const posNext = new Map();
+  const allocPos = (lego) => { if (!posNext.has(lego)) posNext.set(lego, Math.max(0, ...[...db.phrases.values()].filter((q) => q._lego === lego).map((q) => q.position || 0), ...p.phr.filter((r) => r.op === 'insert' && r.lego === lego).map((r) => r.position || 0)) + 1); const v = posNext.get(lego); posNext.set(lego, v + 1); return v; };
   const slotOf = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' };
   const link = (target, keyName, key, slot, id) => (id ? [{ op: 'audio.link', target, [keyName]: key, slot, audio_id: id }] : []);
   // LEGO deletes first (they free nothing the others need, and their phrases go with them)
@@ -203,7 +205,7 @@ function units(db, p, clip, withAudio) {
   const phraseRow = (r) => {
     const l = p.after.get(r.lego);
     const row = { id: pid(r.id), course_code: COURSE, seed_number: l.seed_number, lego_index: l.lego_index, known_text: r.known, target_text: r.target,
-      phrase_role: r.role, position: r.position, status: 'draft', introduce: true, metadata: { job: '#432·AI' } };
+      phrase_role: r.role, position: r.position, word_count: r.target.length, lego_count: Math.max(1, (r.decomposition || []).filter((b) => b.legoId).length), lego_position: 'middle', status: 'draft', introduce: true, metadata: { job: '#432·AI' } };
     if (r.decomposition) row.decomposition = r.decomposition;
     if (withAudio) for (const slot of ['known', 'target1', 'target2']) { const a = clip(slot, slot === 'known' ? r.known : r.target); if (a) row[slotOf[slot]] = a; }
     return row;
@@ -213,7 +215,7 @@ function units(db, p, clip, withAudio) {
     const row = { seed_number: x.seed, lego_index: x.index, known_text: x.known_text, target_text: x.target_text, type: x.type, is_new: true, components: l.components, status: 'draft' };
     if (withAudio) for (const slot of ['known', 'target1', 'target2']) { const a = clip(slot, slot === 'known' ? x.known_text : x.target_text); if (a) row[slotOf[slot]] = a; }
     const ops = [{ op: 'lego.insert', row }];
-    l.components.forEach((c, i) => ops.push({ op: 'phrase.insert', row: { id: pid(`${id}C${String(i + 1).padStart(2, '0')}`), course_code: COURSE, seed_number: x.seed, lego_index: x.index, known_text: c.known, target_text: c.target, phrase_role: 'component', position: i + 1, status: 'draft', introduce: true, metadata: { buildup: 'component', component_index: i, job: '#432·AI' }, decomposition: [{ known: '', legoId: null, target: c.target, isGhost: true }] } }));
+    l.components.forEach((c, i) => ops.push({ op: 'phrase.insert', row: { id: pid(`${id}C${String(i + 1).padStart(2, '0')}`), course_code: COURSE, seed_number: x.seed, lego_index: x.index, known_text: c.known, target_text: c.target, phrase_role: 'component', position: allocPos(id), word_count: c.target.length, lego_count: 1, lego_position: 'middle', status: 'draft', introduce: true, metadata: { buildup: 'component', component_index: i, job: '#432·AI' }, decomposition: [{ known: '', legoId: null, target: c.target, isGhost: true }] } }));
     for (const r of p.phr.filter((r) => r.op === 'insert' && r.lego === id)) { ops.push({ op: 'phrase.insert', row: phraseRow(r) }); insertedPhrases.add(r.id); }
     U.push({ tag: `insert ${id}`, seed: x.seed, ops });
   }
@@ -230,7 +232,7 @@ function units(db, p, clip, withAudio) {
         const q = rows[i];
         const dec = [{ known: '', legoId: null, target: cc.target, isGhost: true }];
         if (q) { if (q.known_text !== cc.known || q.target_text !== cc.target) ops.push({ op: 'phrase.update', phrase_id: q.id, set: { known_text: cc.known, target_text: cc.target, target_text_roman: null, decomposition: dec }, expect: { target_text: q.target_text } }); }
-        else ops.push({ op: 'phrase.insert', row: { id: pid(`${id}C${String(i + 1).padStart(2, '0')}`), course_code: COURSE, seed_number: b.seed_number, lego_index: b.lego_index, known_text: cc.known, target_text: cc.target, phrase_role: 'component', position: i + 1, status: 'draft', introduce: true, metadata: { buildup: 'component', component_index: i, job: '#432·AI' }, decomposition: dec } });
+        else ops.push({ op: 'phrase.insert', row: { id: pid(`${id}C${String(i + 1).padStart(2, '0')}`), course_code: COURSE, seed_number: b.seed_number, lego_index: b.lego_index, known_text: cc.known, target_text: cc.target, phrase_role: 'component', position: allocPos(id), word_count: cc.target.length, lego_count: 1, lego_position: 'middle', status: 'draft', introduce: true, metadata: { buildup: 'component', component_index: i, job: '#432·AI' }, decomposition: dec } });
       });
       for (const q of rows.slice(a.components.length)) ops.push({ op: 'phrase.delete', phrase_id: q.id, expect: { target_text: q.target_text } });
     }
@@ -241,6 +243,7 @@ function units(db, p, clip, withAudio) {
       }
       // English unchanged and no custom intro → the same intro clip goes back (the text trigger drops it); otherwise `intros` renders + binds
       if (a.known_text === b.known_text && !c.intro && b.presentation_audio_id) ops.push(...link('lego', 'lego_id', id, 'presentation', b.presentation_audio_id));
+      if (c.introClip) ops.push(...link('lego', 'lego_id', id, 'presentation', c.introClip));
     }
     U.push({ tag: `lego ${id}`, seed: b.seed_number, ops });
   }
@@ -251,7 +254,7 @@ function units(db, p, clip, withAudio) {
     if (r.op === 'update') {
       const set = {};
       if (r.known !== r.before.known_text) set.known_text = r.known;
-      if (r.target !== r.before.target_text) { set.target_text = r.target; set.target_text_roman = null; }
+      if (r.target !== r.before.target_text) { set.target_text = r.target; set.target_text_roman = null; set.word_count = r.target.length; }
       if (r.decomposition) set.decomposition = r.decomposition;
       const ops = [{ op: 'phrase.update', phrase_id: pid(r.id), set, expect: { known_text: r.before.known_text, target_text: r.before.target_text } }];
       if (withAudio) for (const slot of ['known', 'target1', 'target2']) {
@@ -284,7 +287,9 @@ async function postSigned(urlPath, body) {
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { error: String((e.cause && e.cause.code) || e.name) } }; }
 }
-const renderBody = (a, dry) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(dry ? { dryRun: true } : {}), ...(a.legoId ? { legoId: a.legoId } : {}) });
+const APPROVAL = 'kai:2026-11-17:Kai approved applying the 34 kor_for_eng held items and re-recording the fixes (~5,500 chars), job #432';
+const renderBody = (a, dry) => ({ courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, approval: APPROVAL, job: '#432·AI', ...(dry ? { dryRun: true } : {}), ...(a.legoId ? { legoId: a.legoId } : {}) });
+const CONV = process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKEN } : {};
 
 async function main() {
   const [mode, file] = process.argv.slice(2);
@@ -334,28 +339,30 @@ async function main() {
     return;
   }
   if (mode === 'render') {
-    const dry = read('audio-dry.json');
+    // Real renders in LEARNER ORDER (earliest seed first). Library-first is automatic. Stops at the first SEED BOUNDARY at or past
+    // MAX_CHARS, so a seed is either fully voiced or not started. No bulk dry run on live (agent-rate-cap: 100/h); every call here is real.
+    const A = asks(db, p).filter((a) => a.role !== 'presentation');
     const MAX = Number(process.env.MAX_CHARS || 5500);
     const prev = fs.existsSync(path.join(OUT, 'audio-real.json')) ? read('audio-real.json') : [];
-    const done = new Map(prev.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a]));
-    let spent = prev.reduce((s, a) => s + ((a.real && a.real.charsSpent) || 0), 0);
+    const have = new Map(prev.map((a) => [`${a.role}\u0000${a.text}`, a]));
+    let spent = prev.reduce((s2, a) => s2 + ((a.real && a.real.charsSpent) || 0), 0);
     const out = [...prev];
-    for (const a of dry) {
-      if (a.role === 'presentation') continue; // intros render after the apply, bound to their LEGO
+    let stopAt = null;
+    for (const a of A) {
       const k = `${a.role}\u0000${a.text}`;
-      if (done.has(k) || out.some((x) => `${x.role}\u0000${x.text}` === k && x.real && x.real.code)) continue;
-      if (a.dry.status !== 200) { out.push({ ...a, real: { skipped: 'refused in dry run', code: a.dry.code } }); continue; }
-      if (a.dry.source === 'would-render' && spent + a.dry.chars > MAX) { out.push({ ...a, real: { skipped: `over MAX_CHARS ${MAX}` } }); continue; }
-      if (!confirm) continue;
-      const r = await post(`${POPTY}/api/audio/render`, renderBody(a, false));
-      const real = { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent || 0, code: r.status === 200 ? undefined : r.body.code, error: r.status === 200 ? undefined : (r.body.error || '').slice(0, 300) };
+      if (have.has(k) && have.get(k).real && (have.get(k).real.audioId || have.get(k).real.code)) continue;
+      if (stopAt !== null && a.seed > stopAt) break;
+      if (stopAt === null && spent >= MAX) { stopAt = a.seed - 1; if (a.seed > stopAt) break; }
+      if (!confirm) { console.log('would ask', a.seed, a.role, a.text); continue; }
+      const r = await post(`${POPTY}/api/audio/render`, renderBody(a, false), CONV);
+      const real = { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent || 0, code: r.status === 200 ? undefined : r.body.code, error: r.status === 200 ? undefined : (r.body.error || '').slice(0, 400) };
       spent += real.charsSpent;
-      out.push({ ...a, real });
-      if (r.status !== 200) console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, r.body.code, (r.body.error || '').slice(0, 200));
+      const row = { ...a, real }; out.push(row); have.set(k, row);
+      if (r.status !== 200) console.log('  REFUSED', a.seed, a.role, JSON.stringify(a.text), r.status, r.body.code, (r.body.error || '').slice(0, 200));
       save('audio-real.json', out);
-      await new Promise((res) => setTimeout(res, 150));
     }
-    console.log(`render: ${out.filter((a) => a.real && a.real.audioId).length} clips (library or rendered), ${spent} chars spent, ${out.filter((a) => a.real && a.real.skipped).length} skipped`);
+    const left = A.filter((a) => !have.has(`${a.role}\u0000${a.text}`));
+    console.log(`render: ${out.filter((a) => a.real && a.real.audioId).length} clips linked/rendered, ${spent} chars spent, ${out.filter((a) => a.real && a.real.code).length} refused; ${left.length} asks not yet made (seeds ${[...new Set(left.map((a) => a.seed))].join(',')}), naive ${left.reduce((s2, a) => s2 + [...a.text].length, 0)} chars`);
     save('audio-real.json', out);
     return;
   }
@@ -363,7 +370,21 @@ async function main() {
     const real = read('audio-real.json');
     const clips = new Map(real.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
     const clip = (role, text) => clips.get(`${role}\u0000${text}`);
-    const U = units(db, p, clip, true);
+    const missing = new Set();
+    const clipG = (role, text) => { const a = clip(role, text); if (!a) missing.add(`${role}\u0000${text}`); return a; };
+    const U0 = units(db, p, clipG, true);
+    // which seeds have every clip? (re-run units per unit to attribute misses)
+    const bad = new Set();
+    for (const u of units(db, p, () => undefined, false)) { /* structure only */ }
+    const per = [];
+    for (const u of U0) { per.push(u); }
+    const need = asks(db, p).filter((a) => a.role !== 'presentation');
+    for (const a of need) if (!clip(a.role, a.text)) for (const w of a.where) bad.add(w.kind === 'seed' ? w.id : (p.after.get(w.kind === 'lego' ? w.id : (p.phr.find((r) => r.id === w.id) || {}).lego) || {}).seed_number);
+    // a LEGO change pulls its phrases' seed with it (same seed by construction); an unvoiced seed holds every unit tagged with it
+    const only = process.env.SEEDS ? new Set(process.env.SEEDS.split(',').map(Number)) : null;
+    const U = per.filter((u) => !bad.has(u.seed) && (!only || only.has(u.seed)));
+    console.log(`seeds held for audio: ${[...bad].sort((a, b) => a - b).join(',') || 'none'}; units going ${U.length}/${per.length}`);
+    save('apply-scope.json', { held: [...bad].sort((a, b) => a - b), going: [...new Set(U.map((u) => u.seed))].sort((a, b) => a - b) });
     const batches = pack(U);
     console.log(`${batches.length} batches, ${batches.reduce((n, b) => n + b.length, 0)} ops`);
     const log = fs.existsSync(path.join(OUT, 'applied.json')) ? read('applied.json') : [];
@@ -385,7 +406,7 @@ async function main() {
     const out = [];
     for (const a of need) {
       const legoId = a.where[0].id;
-      const r = await post(`${POPTY}/api/audio/render`, { ...renderBody(a, !confirm), legoId });
+      const r = await post(`${POPTY}/api/audio/render`, { ...renderBody(a, !confirm), legoId }, CONV);
       out.push({ legoId, text: a.text, status: r.status, source: r.body.source, audioId: r.body.audioId, legoLinked: r.body.legoLinked, charsSpent: r.body.charsSpent || 0, chars: r.body.wouldSpendChars, code: r.body.code, error: r.status === 200 ? undefined : (r.body.error || '').slice(0, 300) });
       console.log(legoId, r.status, r.body.source || r.body.code, r.body.audioId || '', r.body.legoLinked ? 'bound' : '', r.body.charsSpent || r.body.wouldSpendChars || 0);
     }
