@@ -1,0 +1,512 @@
+{
+ "edits": [
+  {
+   "id": "S0206L02U03",
+   "item": "1",
+   "old_known": "I enjoy having the opportunity to talk with you because we learn a lot",
+   "old_target": "Disfruto tener la oportunidad de hablar contigo porque aprendemos mucho",
+   "new_known": "I enjoy having the opportunity to talk with you because we learn a lot",
+   "new_target": "Disfruto teniendo la oportunidad de hablar contigo porque aprendemos mucho",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "0f5c4b19-886e-494f-8c88-59132187cf76",
+    "target1": "956fe061-48ae-4039-b3f7-651073b33292",
+    "target2": "5d7b32e5-e899-4e4a-913d-f83b92c09a3d"
+   }
+  },
+  {
+   "id": "S0206L02U09",
+   "item": "1",
+   "old_known": "I enjoy having this opportunity to practise even when it is difficult sometimes",
+   "old_target": "Disfruto tener esta oportunidad de practicar aunque es difícil de vez en cuando",
+   "new_known": "I enjoy having this opportunity to practise even when it is difficult sometimes",
+   "new_target": "Disfruto teniendo esta oportunidad de practicar aunque es difícil de vez en cuando",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "4th disfrutar+inf row found in the same basket (not on #430's list); same fix",
+   "old_audio": {
+    "known": "364ea86c-a9df-43a5-a002-cc0c75ea410b",
+    "target1": "b0be81d0-f740-4689-b040-9c09883f552b",
+    "target2": "d629c900-47d7-45f3-8daf-dd4293ea144d"
+   }
+  },
+  {
+   "id": "S0214L02U06",
+   "item": "1",
+   "old_known": "I enjoy talking with you at the weekend",
+   "old_target": "Disfruto hablar contigo el fin de semana",
+   "new_known": "I enjoy talking with you at the weekend",
+   "new_target": "Disfruto hablando contigo el fin de semana",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "05dba40b-69d2-4b5f-b625-c07075fb25cf",
+    "target1": "b211da87-4b49-4513-a35e-37f6ef6b0715",
+    "target2": "5b82e323-9977-4548-9e9e-24fd1d6f0cd7"
+   }
+  },
+  {
+   "id": "S0110L03U11",
+   "item": "1",
+   "old_known": "I know I need to relax but I find it hard to stop when I am enjoying learning a lot",
+   "old_target": "Sé que necesito relajarme pero me es difícil parar cuando estoy disfrutando aprender mucho",
+   "new_known": "I know I need to relax but I find it hard to stop when I am enjoying learning a lot",
+   "new_target": "Sé que necesito relajarme pero me es difícil parar cuando estoy disfrutando aprendiendo mucho",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "one-word change",
+   "old_audio": {
+    "known": "a42fe62e-9c63-4192-a17c-07d53c88ce90",
+    "target1": "cafcaf2f-0808-45bb-bb3c-17ca3ee5ff21",
+    "target2": "985f68be-167e-4a1c-90a5-4f51443b5efe"
+   }
+  },
+  {
+   "id": "S0567L03B03",
+   "item": "2",
+   "old_known": "I love watching the children play",
+   "old_target": "me encanta viendo a los niños jugar",
+   "new_known": "I love watching the children play",
+   "new_target": "me encanta ver a los niños jugar",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "ver taught S0107L02; me encanta S0491L01",
+   "old_audio": {
+    "known": "3d65feb0-e616-4abc-8480-67f0339638af",
+    "target1": "2d6d01bf-f4aa-4abc-8b57-8d7d42266c84",
+    "target2": "5ddcdf24-f749-4453-bd4e-467ecc9eeb01"
+   }
+  },
+  {
+   "id": "S0567L03B04",
+   "item": "2",
+   "old_known": "in my opinion watching the children play",
+   "old_target": "en mi opinión viendo a los niños jugar",
+   "new_known": "I'm watching the children play",
+   "new_target": "estoy viendo a los niños jugar",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "fragment rewritten, not deleted: deleting both fragments would leave L03 at 2 BUILD (floor 3)",
+   "old_audio": {
+    "known": "71af3295-1daa-4524-81a2-b9df3211dff1",
+    "target1": "38e671dd-5356-432b-8cf8-f07e81bf382c",
+    "target2": "f8724c22-af46-437d-a5d0-d44fe2be4c42"
+   }
+  },
+  {
+   "id": "S0567L03U03",
+   "item": "2",
+   "old_known": "it's been lovely watching the children play",
+   "old_target": "ha sido estupendo viendo a los niños jugar",
+   "new_known": "it's been lovely watching the children play",
+   "new_target": "ha sido estupendo ver a los niños jugar",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "c00eb806-842c-4d82-8121-4cbfaff99574",
+    "target1": "28ec12f3-c2b5-47fe-b948-0247efc9129a",
+    "target2": "661b6e06-7c61-4701-9964-21646d4538d9"
+   }
+  },
+  {
+   "id": "S0515L01U04",
+   "item": "3",
+   "old_known": "the first day of the journey was good",
+   "old_target": "el primer día del camino fue bueno",
+   "new_known": "the first day of the challenge was good",
+   "new_target": "el primer día del desafío fue bueno",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "rewritten not deleted: L01 has 4 USE, floor 5; desafío taught S0484L01",
+   "old_audio": {
+    "known": "4feb31d4-1719-4499-9986-d75acb143a2e",
+    "target1": "d8f9df7f-b344-437f-8a14-866dabd64ee2",
+    "target2": "184692c5-ae7b-49f8-a7ec-2c0433a8571b"
+   }
+  },
+  {
+   "id": "S0515L01U05",
+   "item": "3",
+   "old_known": "on the first day of the journey",
+   "old_target": "el primer día del camino",
+   "new_known": "on the first day of the month",
+   "new_target": "el primer día del mes",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "rewritten not deleted (floor); mes taught S0037L04",
+   "old_audio": {
+    "known": "e673f665-de6d-42d5-afdc-35dec7e825d3",
+    "target1": "488ed881-fc22-4d83-a369-8caa7c830fe8",
+    "target2": "23a57f78-892b-4e47-8d8e-08749435c071"
+   }
+  },
+  {
+   "id": "S0535L02B03",
+   "item": "3",
+   "old_known": "she wouldn't choose the way",
+   "old_target": "no elegiría el camino",
+   "new_known": "he wouldn't choose that",
+   "new_target": "no elegiría eso",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "rewritten not deleted: L02 BUILD would fall to 2 (one a duplicate)",
+   "old_audio": {
+    "known": "e81647cb-bb83-439c-893e-43ac51081484",
+    "target1": "7b065209-2e7b-4d00-84e5-4bef917f3aec",
+    "target2": "60c8c7b2-c802-48bd-82da-c9e56970329d"
+   }
+  },
+  {
+   "id": "S0535L01U04",
+   "item": "4",
+   "old_known": "she made a promise that it was yesterday",
+   "old_target": "hizo la promesa de que fue ayer",
+   "new_known": "she made a promise that it would be different",
+   "new_target": "hizo la promesa de que sería diferente",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "rewritten not deleted: L01 has 3 USE (floor 5); own choice",
+   "old_audio": {
+    "known": "eab9d4d0-fc06-4682-ac11-d9f82772589e",
+    "target1": "e8aba9f4-e1e3-4c70-8ded-5004cdcd24ae",
+    "target2": "5e47530d-1ea6-4a21-9907-9d98632177a7"
+   }
+  },
+  {
+   "id": "S0480L01U01",
+   "item": "5",
+   "old_known": "whatever he says, she knows better",
+   "old_target": "diga lo que diga, ella sabe mejor",
+   "new_known": "whatever he says, she knows better",
+   "new_target": "diga lo que diga, ella sabe más",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "English 'she knows better' kept",
+   "old_audio": {
+    "known": "1003e8b1-8632-4532-9966-94bf3ad29642",
+    "target1": "54998c40-4e90-4fdc-943f-ec43c7998c75",
+    "target2": "bcac07c5-17fc-448c-8f64-e6a06e401ddc"
+   }
+  },
+  {
+   "id": "S0537L01U04",
+   "item": "5",
+   "old_known": "but I was wrong about everything",
+   "old_target": "pero estaba equivocado sobre todo",
+   "new_known": "but I was wrong about everything",
+   "new_target": "pero estaba equivocado en todo",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "4543a78c-c0a0-401c-8c30-68bf44818e0b",
+    "target1": "bb8cd94c-5937-443c-9e74-6d201c47fb41",
+    "target2": "2cb3e27b-0168-46e8-9746-cbabf1169db5"
+   }
+  },
+  {
+   "id": "S0619L01U06",
+   "item": "5",
+   "old_known": "we don't see each other any longer",
+   "old_target": "no nos vemos por más tiempo",
+   "new_known": "we don't see each other any more",
+   "new_target": "ya no nos vemos",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "English moved to 'any more': 'any longer' is taught as por más tiempo (S0563L03), 'not any more' as ya no (S0145L01)",
+   "old_audio": {
+    "known": "50c8b012-67c9-4766-8ff7-3bc062416003",
+    "target1": "ee83693b-62f6-44dd-ba3c-f68622e3f3e5",
+    "target2": "d55f9ab6-eb6b-405f-bbda-0668f05f48fa"
+   }
+  },
+  {
+   "id": "S0144L01U06",
+   "item": "6",
+   "old_known": "I woke up this morning with the idea that I want to practise Spanish more",
+   "old_target": "Me desperté esta mañana con la idea de que quiero practicar español más",
+   "new_known": "I woke up this morning with the idea that I want to practise more",
+   "new_target": "Me desperté esta mañana con la idea de que quiero practicar más",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "46884a66-b67c-48f8-aaa9-2f85dd2cbdf2",
+    "target1": "ff67df79-eceb-4e18-ad17-35ba28037518",
+    "target2": "8be6c812-9711-4673-ba67-f04a303623fc"
+   }
+  },
+  {
+   "id": "S0213L01U09",
+   "item": "6",
+   "old_known": "He told me not to explain anything about it",
+   "old_target": "Me dijo que no debería explicar nada sobre eso",
+   "new_known": "He told me I shouldn't explain anything about it",
+   "new_target": "Me dijo que no debería explicar nada sobre eso",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "b7ce4997-7b93-456f-9bd4-7f6fdb1bba28",
+    "target1": "c33327d3-c9b2-4ae4-9347-711f52c13020",
+    "target2": "fddde710-7c2e-4806-a4c7-b132c48db5c1"
+   }
+  },
+  {
+   "id": "S0647L01U05",
+   "item": "6",
+   "old_known": "I can hear you speak it",
+   "old_target": "puedo escuchar que lo habla",
+   "new_known": "I know that you speak it",
+   "new_target": "sé que lo habla",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "e00162ef-3b5e-4129-ada4-38cfeccacfca",
+    "target1": "e7042fb8-fb4f-4400-970e-ebf3a404f3ea",
+    "target2": "80e80816-382f-4b83-bc76-1cf850366a80"
+   }
+  },
+  {
+   "id": "S0662L01U03",
+   "item": "6",
+   "old_known": "I can hear you all speak it",
+   "old_target": "puedo escuchar que lo habláis",
+   "new_known": "I know that you all speak it",
+   "new_target": "sé que lo habláis",
+   "known_changed": true,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "75830a01-f486-4590-8f2b-b36344fb48fd",
+    "target1": "bb01f2fb-947b-490e-9ab4-d256d3f8a89c",
+    "target2": "5fe045db-257f-4513-a5e1-0e23abbabfdb"
+   }
+  },
+  {
+   "id": "S0427L01C01",
+   "item": "7",
+   "old_known": "you thought",
+   "old_target": "pensaras",
+   "new_known": "you to think",
+   "new_target": "pensaras",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only; the LEGO row itself still says 'you thought' (not touched)",
+   "old_audio": {
+    "known": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+    "target1": "87bc162f-d8b1-45fe-b30a-0f5ca828df0c",
+    "target2": "f3ce12e2-096c-40e4-aeb4-75972d544715"
+   }
+  },
+  {
+   "id": "S0133L01U05",
+   "item": "9",
+   "old_known": "When you get to know someone new it can be less exciting than what you thought",
+   "old_target": "Cuando llegas a conocer a alguien nuevo puede ser menos emocionante de lo que pensaste",
+   "new_known": "When you get to know someone new it can be less exciting than what you thought",
+   "new_target": "Cuando llegas a conocer a alguien nuevo puede ser menos emocionante de lo que pensabas",
+   "known_changed": false,
+   "target_changed": true,
+   "note": "",
+   "old_audio": {
+    "known": "6d07ce9d-7162-44c0-87c6-bbb390cef2ba",
+    "target1": "457f5c8d-5a05-4bf3-9590-00ee2e7244c5",
+    "target2": "55a7478c-b70e-4092-9c0e-3e368eadbc5c"
+   }
+  },
+  {
+   "id": "S0231L02B02",
+   "item": "8",
+   "old_known": "An elderly man",
+   "old_target": "Un hombre mayor",
+   "new_known": "An old man",
+   "new_target": "Un hombre mayor",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only; not one of the 7 'ese' rows but same basket, same word",
+   "old_audio": {
+    "known": "fbdbe986-82a3-4df6-a6ee-afbcff74898b",
+    "target1": "f0ae5813-6be5-42bc-81f5-39ae984e4a43",
+    "target2": "965c17b5-537f-49ee-b0cc-9238a7497f7c"
+   }
+  },
+  {
+   "id": "S0231L02B05",
+   "item": "8",
+   "old_known": "That elderly man works in the same place as my friend and is very helpful",
+   "old_target": "Ese hombre mayor trabaja en el mismo sitio que mi amigo y es muy útil",
+   "new_known": "That old man works in the same place as my friend and is very helpful",
+   "new_target": "Ese hombre mayor trabaja en el mismo sitio que mi amigo y es muy útil",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "d1e9d2c4-87a0-41b9-9342-76d2e67597cd",
+    "target1": "40dfbd9c-879a-4304-957a-a633a92d93d1",
+    "target2": "c78a897a-d40d-446a-a5a5-0bbb7d781b93"
+   }
+  },
+  {
+   "id": "S0231L02U04",
+   "item": "8",
+   "old_known": "He said he did not want to talk to that elderly man about what he was doing",
+   "old_target": "Dijo que no quería hablar con ese hombre mayor sobre lo que estaba haciendo",
+   "new_known": "He said he did not want to talk to that old man about what he was doing",
+   "new_target": "Dijo que no quería hablar con ese hombre mayor sobre lo que estaba haciendo",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "ebb6e539-0725-47ff-a1ef-41282e86fb38",
+    "target1": "b71ca68c-c517-428d-8dd4-ab10a7abfd73",
+    "target2": "59da3734-e7a2-40bd-a361-aed28fe6614c"
+   }
+  },
+  {
+   "id": "S0231L02U06",
+   "item": "8",
+   "old_known": "That elderly man seems to know a lot about this language and wants to talk about it",
+   "old_target": "Ese hombre mayor parece saber mucho sobre este idioma y quiere hablar sobre eso",
+   "new_known": "That old man seems to know a lot about this language and wants to talk about it",
+   "new_target": "Ese hombre mayor parece saber mucho sobre este idioma y quiere hablar sobre eso",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "5feef6db-9e6e-4829-90f4-0423f0c85d84",
+    "target1": "a0722fd2-a176-4847-9abe-ab5b2c4ea14d",
+    "target2": "7696374e-15fd-4da3-912b-7d2c6fc139ed"
+   }
+  },
+  {
+   "id": "S0231L02U07",
+   "item": "8",
+   "old_known": "I think that elderly man wanted to talk to you about something interesting",
+   "old_target": "Creo que ese hombre mayor quería hablar contigo sobre algo interesante",
+   "new_known": "I think that old man wanted to talk to you about something interesting",
+   "new_target": "Creo que ese hombre mayor quería hablar contigo sobre algo interesante",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "8368cf3a-19fc-4710-bc7a-8544a0386d73",
+    "target1": "3d607903-05c7-43e9-83a7-f60a74320619",
+    "target2": "31aa381c-48b5-406e-a537-7c9a51089d78"
+   }
+  },
+  {
+   "id": "S0231L02U09",
+   "item": "8",
+   "old_known": "I will ask that elderly man if he wants to talk about what we need",
+   "old_target": "Le preguntaré a ese hombre mayor si quiere hablar sobre lo que necesitamos",
+   "new_known": "I will ask that old man if he wants to talk about what we need",
+   "new_target": "Le preguntaré a ese hombre mayor si quiere hablar sobre lo que necesitamos",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "480e7610-d9cc-44b0-af54-bbd25ef29885",
+    "target1": "61fa9e0b-43d5-4d1f-aaf9-e70448f8cea6",
+    "target2": "3ad17a67-0c1c-47bf-a252-15737f2afcbe"
+   }
+  },
+  {
+   "id": "S0231L02U10",
+   "item": "8",
+   "old_known": "I know an elderly man who knew the answer to what we were trying to find out",
+   "old_target": "Conozco a un hombre mayor que sabía la respuesta a lo que estábamos intentando descubrir",
+   "new_known": "I know an old man who knew the answer to what we were trying to find out",
+   "new_target": "Conozco a un hombre mayor que sabía la respuesta a lo que estábamos intentando descubrir",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only; not one of the 7 'ese' rows but same basket, same word",
+   "old_audio": {
+    "known": "e6e47357-1102-47bc-9c85-3cdd46fd38fc",
+    "target1": "4e236fc5-0d34-4134-a000-93406d01d2d3",
+    "target2": "36bb00b1-d035-468f-9142-a7a5a017a894"
+   }
+  },
+  {
+   "id": "S0231L02U11",
+   "item": "8",
+   "old_known": "That elderly man wanted to tell me something new but I did not have time to listen",
+   "old_target": "Ese hombre mayor quería decirme algo nuevo pero no tuve tiempo de escuchar",
+   "new_known": "That old man wanted to tell me something new but I did not have time to listen",
+   "new_target": "Ese hombre mayor quería decirme algo nuevo pero no tuve tiempo de escuchar",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "cd3d81a7-2cd5-45ce-8355-a12d439d34df",
+    "target1": "e2d0e486-4e4f-4722-a916-9313a2f7a92f",
+    "target2": "66d971a7-452b-4222-a76d-cb015706d2c4"
+   }
+  },
+  {
+   "id": "S0231L02U15",
+   "item": "8",
+   "old_known": "That elderly man was working in the same office as my friend a while ago",
+   "old_target": "Ese hombre mayor trabajaba en la misma oficina que mi amigo hace un rato",
+   "new_known": "That old man was working in the same office as my friend a while ago",
+   "new_target": "Ese hombre mayor trabajaba en la misma oficina que mi amigo hace un rato",
+   "known_changed": true,
+   "target_changed": false,
+   "note": "English only",
+   "old_audio": {
+    "known": "911c13ed-51bd-467d-b8c0-9b5fa8bf8080",
+    "target1": "3dc71c1f-4d4d-42b2-bedf-a43af537f417",
+    "target2": "53d403de-363c-4ccf-be76-87e9861c3625"
+   }
+  }
+ ],
+ "deletes": [
+  {
+   "id": "S0567L03B02",
+   "item": "2",
+   "old_known": "I'm sure that watching the children play",
+   "old_target": "estoy seguro de que viendo a los niños jugar",
+   "note": "fragment 'estoy seguro de que viendo…'"
+  },
+  {
+   "id": "S0550L01B03",
+   "item": "3",
+   "old_known": "I'm sure that the end of the village is the way",
+   "old_target": "estoy seguro de que el final del pueblo es el camino",
+   "note": "camino before S0559; B stays at 3"
+  },
+  {
+   "id": "S0535L01B02",
+   "item": "4",
+   "old_known": "he made a promise that",
+   "old_target": "hizo la promesa de que",
+   "note": "exact duplicate of B01 (same clips)"
+  },
+  {
+   "id": "S0197L03U10",
+   "item": "4",
+   "old_known": "My friend works in the language and he says it is very interesting",
+   "old_target": "Mi amigo trabaja en el idioma y dice que es muy interesante",
+   "note": "'trabaja en el idioma'"
+  },
+  {
+   "id": "S0150L03U02",
+   "item": "6",
+   "old_known": "I know what you are called but I am trying to remember now",
+   "old_target": "Sé cómo te llamas pero estoy intentando recordar ahora",
+   "note": "'recordar ahora'"
+  },
+  {
+   "id": "S0623L01U07",
+   "item": "6",
+   "old_known": "we had tea",
+   "old_target": "teníamos té",
+   "note": "'teníamos té'"
+  }
+ ]
+}
