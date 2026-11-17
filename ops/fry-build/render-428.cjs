@@ -65,18 +65,32 @@ async function post(p, body) {
   }
   console.log(`seeds ${lo}-${hi}: ${jobs.filter(j => j.kind === 'known').length} known texts, ${jobs.filter(j => j.kind === 'intro').length} intros; ledger has ${done.size} done, ${spent} chars spent`)
   let i = 0, stopped = false
+  // A Popty restart (deploys happen under us) closes the socket mid-call. That is not a refusal: wait for health, put the
+  // item back at the end of the queue (library-first answers it free if the clip was stored), and give up after 30.
+  let transport = 0
+  const waitHealthy = async () => { for (let t = 0; t < 60; t++) { try { if ((await fetch(POPTY + '/api/audio/health')).ok) return } catch {} await new Promise(r => setTimeout(r, 5000)) } }
   const work = async () => {
     while (!stopped && i < jobs.length) {
       const j = jobs[i++]
+      try { await one(j) } catch (e) {
+        transport++; log({ kind: 'transport', key: j.key, error: String(e && (e.cause?.code || e.message)) })
+        if (transport > 30) { stopped = true; console.log('STOPPED: 30 transport errors'); return }
+        await waitHealthy(); jobs.push(j)
+      }
+    }
+  }
+  const one = async (j) => {
+    {
       const prior = done.get(j.key)
-      if (prior && prior.kind === 'refused') continue
+      if (prior && prior.kind === 'refused') return
       let audioId = prior && prior.audioId
       if (!prior) {
         if (spent + j.text.length * 1.2 > STOP_AT) { stopped = true; log({ kind: 'hard-stop', spent, next: j.key }); console.log('HARD STOP at', spent); return }
         const body = { courseCode: COURSE, role: j.kind === 'known' ? 'known' : 'presentation', text: j.text, purpose: j.kind === 'known' ? PURPOSE_K : PURPOSE_I, ...(j.legoId ? { legoId: j.legoId } : {}) }
         let { status, j: out } = await post('/api/audio/render', body)
         if (!out.ok && stopCode(out)) { stopped = true; log({ kind: 'cap-stop', key: j.key, status, code: stopCode(out), error: out.error }); console.log('STOPPED by', stopCode(out), out.error); return }
-        if (!out.ok) { log({ kind: 'refused', key: j.key, text: j.text, status, code: out.code || null, error: out.error || null, slots: j.slots || [j.legoId] }); done.set(j.key, { kind: 'refused' }); continue }
+        if (status >= 500 && !out.code) throw new Error(`popty ${status}: ${out.error}`)
+        if (!out.ok) { log({ kind: 'refused', key: j.key, text: j.text, status, code: out.code || null, error: out.error || null, slots: j.slots || [j.legoId] }); done.set(j.key, { kind: 'refused' }); return }
         spent += out.charsSpent || 0; audioId = out.audioId
         const e = { kind: 'render', key: j.key, text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null }
         log(e); done.set(j.key, e)
