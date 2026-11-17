@@ -1,4 +1,4 @@
-# Corrected sheet for Eoghan (cs #450·AI, 17 Nov 2026).  python3 -I classify.py live.json && python3 -I build.py live.json
+# Corrected sheet for Eoghan (cs #450·AI, 17 Nov 2026; re-run on his completed workbook by cs #452·AI).  python3 -I classify.py live.json && python3 -I build.py live.json
 # Yellow = live still differs from his line (or from the line he passed unchanged). TAKEN / no-suggestion rows: blank, no yellow.
 import json,re,sys,os,zipfile
 from xml.sax.saxutils import escape
@@ -45,6 +45,14 @@ for x in rows:
             for q in re.findall(r'‘([^’]*)’',com):
                 for f in [fn(p) for p in q.split('…') if fn(p)]:
                     if not any(f in p for p in pool) and f not in ENG: bad.append((n,'quote not found',q))
+            # cs #452·AI: a sentence named by number must hold one of the quoted pieces (0 quotes = nothing to check)
+            fr=[fn(p) for q in re.findall(r'‘([^’]*)’',com) for p in q.split('…') if fn(p)]
+            for z in nums:
+                if fr and not any(f in fn(live[z]['target_text']) for f in fr) and (n,z) not in CITE_OK: bad.append((n,'named sentence holds none of the quotes',z))
+            # cs #452·AI: 'Kept ‘X’' is only said of words he saw in the line we sent him
+            for seg in re.split(r'(?<=[.;])\s+|, and (?=kept)|, but (?=kept)',com):
+                m=re.match(r'(?:Also |and |but )?[Kk]ept (?:plain |the shorter |just )?‘([^’]*)’',seg.strip())
+                if m and not all(fn(p) in fn(x['sent']) for p in m.group(1).split('…') if fn(p)): bad.append((n,'Kept, but not in the line he saw',m.group(1)))
     x.update(group=g,sub=sub,yellow=yellow,comment=com); out.append(x)
 for x in out:   # a shared pointer must land on a row that carries a note (0 = top note)
     sh=x.get('shared_with')

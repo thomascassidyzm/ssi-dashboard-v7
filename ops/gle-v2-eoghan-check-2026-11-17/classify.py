@@ -1,17 +1,14 @@
 # gle_v2 Eoghan sheet FULL CHECK (cs #450·AI, 17 Nov 2026). Classifies every row of Eoghan's returned sheet against LIVE.
 #   curl -s http://localhost:3470/api/production/gle_v2_for_eng/seeds > live.json ; python3 -I classify.py live.json
-# HIS LINE, per row:
-#   seeds 1-500, 668: his own workbook, sheet Bileog1 (saved by him 3 Nov; ../gle-v2-eoghan-excel-2026-11-16/his-bileog1.json
-#                     is a cell-for-cell dump of it). C = our line as sent, F = his line, G = his note.
-#   seeds 501-667:    he had not reached these on 3 Nov (F repeats C). His completed sheet was uploaded 9 Nov and is no longer
-#                     on disk; the only copy of his column is the 10 Nov transcript, 'Your Irish' in
-#                     ../gle-v2-eoghan-seedlist/base-2026-11-10.csv. That transcript equals his workbook on all of 1-500.
+# HIS LINE, per row (cs #452·AI): his own COMPLETED workbook, sheet Bileog1, as Kai uploaded it on 17 Nov —
+#   his-complete.json is a cell-for-cell dump of it (../gle-v2-eoghan-excel-2026-11-16/read_his.py). C = our line as sent,
+#   E = his English, F = his line, G = his note. It equals the 3 Nov workbook on 1-500 and 668, and the 10 Nov transcript
+#   (../gle-v2-eoghan-seedlist/base-2026-11-10.csv 'Your Irish') on all of 501-667, so #450·AI's reading of those rows stands.
 import json,re,sys,os,csv
 HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,os.path.join(HERE,'..','gle-v2-eoghan-sheet-2026-11-17'))
 from helpers import nrm,options,famonly,fada
 live={s['seed_number']:s for s in json.load(open(sys.argv[1]))['seeds']}
-his={int(r['A']):r for r in json.load(open(os.path.join(HERE,'..','gle-v2-eoghan-excel-2026-11-16','his-bileog1.json')))[1:]}
-base={int(r['Seed']):r for r in csv.DictReader(open(os.path.join(HERE,'..','gle-v2-eoghan-seedlist','base-2026-11-10.csv')))}
+his={int(r['A']):r for r in json.load(open(os.path.join(HERE,'his-complete.json')))[1:]}
 f=lambda s:fada(nrm(s))
 SYN1X={'táim':'tá mé','nílim':'níl mé','nílím':'níl mé','atáim':'atá mé','bhfuilim':'bhfuil mé','táimid':'tá muid','táímid':'tá muid','nílimid':'níl muid'}
 def tight(s):
@@ -27,8 +24,7 @@ rows=[]
 for n in sorted(his):
     r=his[n]; sent=r['C']; src='workbook'
     H=r.get('F','')
-    if 501<=n<=667: H=strip_note(base[n]['Your Irish']); src='10 Nov transcript'
-    hisEn=r.get('E','') if src=='workbook' else (base[n]['Your English (only if different)'] or r['B'])
+    hisEn=r.get('E','')
     L=live[n]['target_text']; opts=options(H) or [nrm(H)]
     made = tight(sent) not in hopts(H)[:1]   # he changed the Irish
     fadaonly = False
