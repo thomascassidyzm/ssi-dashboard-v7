@@ -62,7 +62,7 @@ $$;
 
 -- Canary: a soft mark admits different words; a hard mark still refuses them.
 DO $$
-DECLARE c text;
+DECLARE c text; msg text;
 BEGIN
   SELECT course_code INTO c FROM public.courses ORDER BY course_code LIMIT 1;
   INSERT INTO public.human_authored_presentations (course_code, lego_id, text, author, source, guard)
@@ -75,7 +75,12 @@ BEGIN
       VALUES (c, 'The template for: hard canary, is:', 'the template for: hard canary, is:', 'eng', 'presentation', 'azure_en-GB-CanaryNeural', 'tts', 'pending/__CANARY_SOFT_2__.mp3', 'S9999L96');
     RAISE EXCEPTION 'canary: a hard mark admitted different words';
   EXCEPTION WHEN check_violation THEN
-    NULL;
+    -- Only the authorship guard's own refusal counts; another course_audio CHECK must not satisfy the canary
+    -- (tightened after application, cs #438·AI — this file is applied and is not to be re-run).
+    GET STACKED DIAGNOSTICS msg = MESSAGE_TEXT;
+    IF msg NOT LIKE 'REFUSED: the presentation line of ' || c || '/S9999L96 %' THEN
+      RAISE EXCEPTION 'canary: a check_violation that is not the authorship guard: %', msg;
+    END IF;
   END;
   DELETE FROM public.course_audio WHERE voice_id = 'azure_en-GB-CanaryNeural' AND s3_key LIKE '%__CANARY_SOFT_%';
   DELETE FROM public.human_authored_presentations WHERE source = '__canary_20261111_soft__';
