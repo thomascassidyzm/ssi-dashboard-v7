@@ -1,0 +1,84 @@
+{
+ "_readme": "#454 (slice por) lexical patterns for por_for_eng + por_br_for_eng. Same shape as ../patterns.json. detect.cjs keys patterns by the TARGET language prefix, so 'por' runs on BOTH courses: ep_forms_in_br is only a defect in por_br_for_eng, br_forms_in_ep only in por_for_eng. Every kp is live or pre-fix text and passes calibration.",
+ "por": [
+  {
+   "id": "ep_forms_in_br",
+   "side": "target",
+   "re": "\\b(factos?|ouviste|perguntaste|concordaste|conheces|trabalhas|camisola|demasiad[oa]s?|entusiasmante|magoou|magoar)\\b|\\bà espera\\b|\\b(tinha|tenho|tem|tens) a certeza\\b|\\ba sério\\b",
+   "kp": "ele não conseguia acreditar nos três factos mais importantes",
+   "src": "por_br held list d/86cf198f + d/4a804f2e (factos/ouviste/trabalhas/conheces/camisola/demasiado/à espera); #454 adds perguntaste, concordaste, a certeza, a sério, magoou. Defect only in por_br_for_eng."
+  },
+  {
+   "id": "br_forms_in_ep",
+   "side": "target",
+   "re": "\\bvocê(?![a-zà-ÿ])|\\b(trem|ônibus|pegar|banheiro|celular|cachorro|xícara|legal)\\b|(?<!toda )\\ba gente\\b|\\b(estou|está|estás|estamos|estão|estava|estavam) \\w+(ando|endo|indo)\\b|\\btomar o comboio\\b",
+   "kp": "não, eles têm que pegar o trem",
+   "src": "mirror of ep_forms_in_br; kp is por_br seed 450 (a BR form, right in BR). Defect only in por_for_eng: 1 hit there (S0450L01U05 tomar o comboio, lean-BR)."
+  },
+  {
+   "id": "subjunctive_after_said",
+   "side": "target",
+   "re": "\\b(disse|disseram) que (\\w+ ){0,2}(não )?(estejam|esteja|sejam|seja|tenham|possam)\\b",
+   "kp": "ele disse que eles não estejam a falar a sério desta vez",
+   "src": "#454 por S0482L03U05 (live): a report after 'disse que' takes the indicative; the seed's subjunctive belongs to 'a esperança é que'."
+  },
+  {
+   "id": "sorte_suficiente_calque",
+   "side": "target",
+   "re": "\\bsorte suficiente para\\b",
+   "kp": "sim, tive sorte suficiente para viajar para África",
+   "src": "por seed 379 copy, held #416 d/0e7d884d, #426 d/f1e11f9f (Infopédia: tive a sorte de)."
+  },
+  {
+   "id": "entusiasmado_para",
+   "side": "target",
+   "re": "\\bentusiasmad[oa]s? para\\b",
+   "kp": "estou entusiasmado para te ver",
+   "src": "#454 por S0122L02U04 / S0127L02U07 (live); EP says entusiasmado por / ansioso por."
+  },
+  {
+   "id": "pensar_em_for_consider",
+   "side": "target",
+   "re": "\\bpensar em (jogar|esperar|fazer)\\b",
+   "kp": "eu devia pensar em jogar outra coisa",
+   "src": "por_br #432 d/ab7cd466 fixed seed 98 copy (pensar em → considerar, S0098L02 teaches consider → considerar); #454 runs it on both courses."
+  },
+  {
+   "id": "nao_plus_infinitive",
+   "side": "target",
+   "re": "\\b(eles|elas|ela|ele|eu|nós) não (servir|reservar|liderar|ganhar|viajar)\\b",
+   "kp": "eles não servir",
+   "src": "#454 por_br S0438L01B02 (live): generator filler verbs after a bare 'não'."
+  },
+  {
+   "id": "tenho_certeza_comma",
+   "side": "target",
+   "re": "\\btenho certeza, |\\bisso é verdade, ",
+   "kp": "tenho certeza, eles não conseguiram",
+   "src": "#454 por_br S0433L01U05 (live): the 'I'm sure X / that's true, X' USE template."
+  },
+  {
+   "id": "praticar_gerund",
+   "side": "target",
+   "re": "\\bpratic\\w+ (\\w+ )?\\w+ndo\\b",
+   "kp": "eu vou praticar falando com outra pessoa",
+   "src": "mirror of spa practicar_gerund (Deborah: 'speech therapy', spa #443 pending with Kai). por_br S0005L02 live, 47 rows; por_for_eng says 'praticar a falar' (0 hits)."
+  }
+ ],
+ "known:eng": [
+  {
+   "id": "invented_emphasis_gloss",
+   "side": "known",
+   "re": "\\bI myself\\b|\\bpersonally, I think\\b|\\bI truly\\b|\\btruly happy\\b|\\bso I myself\\b",
+   "kp": "I myself think that",
+   "src": "por_br held family 1 d/4a804f2e (S0636L01, S0486L01, S0615L01); #454 finds S0590L01, S0599L02, S0530L01."
+  },
+  {
+   "id": "asked_do_you",
+   "side": "known",
+   "re": "\\b(she|he|they) asked (do|did|can|could|are|is) (you|they|he|she)\\b",
+   "kp": "she asked do you mind madam?",
+   "src": "#454 por S0653L02U01 (live): reported question left in direct word order in the English."
+  }
+ ]
+}
