@@ -1,0 +1,103 @@
+{
+ "_readme": "eng-indic-south (#476): TARGET=English lexical patterns for eng_for_* courses, each with a live known positive from this scan. Key \"eng\" is read by detect.cjs as the target language.",
+ "eng": [
+  {
+   "id": "en_did_plus_past",
+   "side": "target",
+   "re": "\\b(did|didn't|does|doesn't) (I|you|he|she|we|they|it) (saw|woke|went|came|took|ate|gave|got|made|told|knew|thought|found|left|bought|brought)\\b",
+   "kp": "did you woke early?",
+   "src": "eng_for_sin S0144L01U02, S0147L01U01 (live, #476)"
+  },
+  {
+   "id": "en_a_before_vowel",
+   "side": "target",
+   "re": "\\ba (?!one\\b|uni|use|usu|euro|u\\b)[aeio]\\w+|\\ba (unusual|interesting|easier)\\b",
+   "kp": "that is a unusual idea",
+   "src": "eng_for_sin S0123L01U05, eng_for_tam S0051L04U02"
+  },
+  {
+   "id": "en_missing_apostrophe",
+   "side": "target",
+   "re": "\\b(thats|im|dont|cant|wont|didnt|isnt|youre|theyre|ive|doesnt|wasnt|arent|couldnt|wouldnt|whats)\\b",
+   "kp": "thats very kind of you and im",
+   "src": "eng_for_tam S0142L05"
+  },
+  {
+   "id": "en_more_plus_short_adj",
+   "side": "target",
+   "re": "\\bmore (good|bad|warm|big|long|small|old|young|cold|hot|fast|slow|easy|hard|quick|early|late)\\b",
+   "kp": "that is more warm",
+   "src": "eng_for_kan S0578L02 (seed 578 says \"warmer\")"
+  },
+  {
+   "id": "en_he_she_bare_verb",
+   "side": "target",
+   "re": "^(he|she) (speak|learn|meet|want|need|like|go|say|know|think)\\b",
+   "kp": "he speak tomorrow",
+   "src": "eng_for_tam S0016L01B02, S0017L01B03, S0128L03U02"
+  },
+  {
+   "id": "en_want_ing",
+   "side": "target",
+   "re": "\\b(want|wants|wanted)\\s(?!some|any|every|no)(\\w+ing)\\b",
+   "kp": "I don't want taking too much time",
+   "src": "eng_for_sin S0027L02U03, eng_for_kan S0034L03B02"
+  },
+  {
+   "id": "en_looking_forward_to_to",
+   "side": "target",
+   "re": "\\bforward to to\\b|\\blooking forward to (learn|practise|meet|speak|see)\\b",
+   "kp": "I'm looking forward to to learn",
+   "src": "eng_for_sin S0029L01"
+  },
+  {
+   "id": "en_present_with_last",
+   "side": "target",
+   "re": "^(I|you|we|they) (learn|speak|feel|go|practise)\\b(?!.*\\bthan\\b).*\\blast (night|week|month|year)\\b|^how do you feel last",
+   "kp": "I learn English last week",
+   "src": "eng_for_tam S0052L01U01, S0040L03U03"
+  },
+  {
+   "id": "en_perfect_with_last",
+   "side": "target",
+   "re": "\\b(I've|I have|you've|we've) (been \\w+ing|done \\w+)\\b.*\\blast (week|month|year|night)\\b",
+   "kp": "I've done it last week",
+   "src": "eng_for_sin S0089L01U06, eng_for_tam S0038L03B02 (deu #435 \"has met someone a few days ago\" family)"
+  },
+  {
+   "id": "en_modal_to",
+   "side": "target",
+   "re": "\\b(can|could|will|would|should) (you|I|we|they|he|she) to\\b",
+   "kp": "can you to help us to learn?",
+   "src": "eng_for_sin S0138L01U09"
+  },
+  {
+   "id": "en_stray_d_start",
+   "side": "target",
+   "re": "^'d\\b",
+   "kp": "'d told me",
+   "src": "eng_for_tel S0600L02"
+  },
+  {
+   "id": "en_filler_near_field_top",
+   "side": "target",
+   "re": "\\bnear the (field|top)\\??$",
+   "kp": "we need to go home near the top",
+   "src": "eng_for_sin seeds 371-455 USE rows"
+  },
+  {
+   "id": "en_template_build",
+   "side": "target",
+   "re": "^(liked|want|said) (the|a|my|your|our) \\w+",
+   "kp": "liked the field",
+   "src": "eng_for_sin seeds 353-640 B01-B04 template builds"
+  },
+  {
+   "id": "en_bare_past_today",
+   "side": "target",
+   "re": "^(I|you|they|he|she)? ?(thought|were|was quiet)( that)? today\\??$",
+   "kp": "they thought today",
+   "src": "eng_for_kan S0444L03B03, eng_for_tam S0124L01U03"
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "_readme": "eng-eu (#447 worker): English-TARGET patterns for eng_for_spa/fra/deu/ita/por, side=target. Key \"eng\" runs in detect.cjs; \"eng_dropped_no_kp\" had no known positive in any fix record and found nothing real live, so it is dropped as a detector (kept for the record only).",
+ "eng": [
+  {
+   "id": "embedded_q_order",
+   "side": "target",
+   "re": "\\b(know|tell (me|us|him|her|them)|wonder|ask(ed)?|understand|sure|idea|remember|forget|explain|see|guess|imagine)\\s+(what|when|where|why|how|who|which|if|whether)( \\w+)?\\s+(do|does|did|are|is|was|were|have|has|can|could|will|would|should)\\s+(you|I|we|they|he|she|it)\\b",
+   "kp": "I want to know what do you think about that",
+   "src": "spa_for_eng #181 family A (pre-fix S0162L01B03 'know what do you think'), d/ff0787c4"
+  },
+  {
+   "id": "present_for_ongoing",
+   "side": "target",
+   "re": "\\bwhat (you|they|he|she|we) (try|tries) to\\b|\\b(at the moment|right now|now) (I|you|we|they|he|she) (learn|speak|try|work|read|go|think|practise|practice|study|live|wait|look)s?\\b",
+   "kp": "I know what you try to say",
+   "src": "spa_for_eng #181 family C (S0140L01U02 pre-fix) + deu #435 en-calque S0040L02B05 'At the moment I learn German'; known:eng en_progressive_calque copied to the target side"
+  },
+  {
+   "id": "verb_plus_gerund_calque",
+   "side": "target",
+   "re": "\\b(want|wants|wanted|would like|'d like|need to|decided?|hope|hoped|try to|can|could|must|should)\\s+(?!(nothing|something|anything|everything|evening|morning|thing|king|during)\\b)\\w+ing\\b",
+   "kp": "we'd like spending time outdoors",
+   "src": "spa #181 family C S0567L02B02 pre-fix + deu #435 S0064L01U07 'I want learning German'"
+  },
+  {
+   "id": "feel_reflexive",
+   "side": "target",
+   "re": "\\bfeel(s|ing)? (myself|yourself|himself|herself|ourselves|themselves)\\b|\\bfeel better (myself|yourself)\\b",
+   "kp": "I feel myself much better since I started to learn more",
+   "src": "deu #435 en-calque S0056L02U13, S0185L01U11"
+  },
+  {
+   "id": "how_long_already",
+   "side": "target",
+   "re": "\\bhow long (have|has) (you|they|we|he|she|it) already\\b",
+   "kp": "How long have you already been learning German, and is it useful?",
+   "src": "deu #435 en-calque S0033L02U01"
+  },
+  {
+   "id": "perfect_with_past_time",
+   "side": "target",
+   "re": "\\b(have|has|'ve|'s) (\\w+ )?(met|lived|seen|been|done|gone|had|bought|told|said|found|made|left|come|written|spoken|eaten|arrived|started|finished|called|tried|worked|learned|learnt|visited)\\b[^.?!]*\\b(ago|yesterday|last (week|year|night|month|time)|in (19|20)\\d\\d)\\b",
+   "kp": "I think she has met someone a few days ago",
+   "src": "deu #435 en-calque S0341L02U02, S0506L03U06"
+  },
+  {
+   "id": "glued_or_bad_preposition",
+   "side": "target",
+   "re": "\\b(much lot|round by|consider about|discuss about|allow to (him|her|them|me|us|you)|at the (first|second|last) day|with the (next |last )?(bus|train|plane|tram|taxi))\\b",
+   "kp": "allow to them to win",
+   "src": "deu #435 en-calque S0412L05B02, S0454L06, S0475L04, S0569L02, S0515L02U04, S0095L01U09"
+  },
+  {
+   "id": "adverb_after_object",
+   "side": "target",
+   "re": "\\b(know|knew|want|wanted|told me|play|plays|speak|speaks|like|likes) (definitely|also|always|already|often|never)\\b|\\b(play|plays|speak|speaks|read|reads) \\w+ (always|often|never)\\b",
+   "kp": "I know definitely I want to learn more German",
+   "src": "deu #435 en-calque S0117L01U08, S0556L01U06"
+  },
+  {
+   "id": "reported_no_backshift",
+   "side": "target",
+   "re": "\\b(thought|knew|said|told me|was sure|believed|didn't know|wanted to know) (that )?(you|he|she|they|it|we|I)('re|'s| are| is| am|'m)\\b",
+   "kp": "I thought you're going home",
+   "src": "deu #435 en-calque S0124L01U13; spa model past_frame_present_verb read on English target"
+  },
+  {
+   "id": "double_negative",
+   "side": "target",
+   "re": "\\b(not|n't|never)\\b[^.?!,]{0,25}\\b(no|nothing|nobody|none|no one|never)\\b",
+   "kp": "he does not need to buy no other television this year",
+   "src": "deu #435 en-calque S0320L03B03"
+  },
+  {
+   "id": "elderly",
+   "side": "target",
+   "re": "\\belderly\\b",
+   "kp": "I saw that elderly man yesterday",
+   "src": "known:eng elderly copied to target side (spa S0231L02 #446)"
+  },
+  {
+   "id": "bare_yes_no_echo",
+   "side": "target",
+   "re": "^(yes|no),? (I|we|you|he|she|they|it) (did|do|does|would|will|am|are|is|was|were|have|has|can|could)(n't| not)?[.!]?$",
+   "kp": "No, I didn't",
+   "src": "known:eng bare_yes_no_echo copied to target side (gle_v2 echo rule 17 Nov)"
+  }
+ ],
+ "eng_dropped_no_kp": [
+  {
+   "id": "future_in_time_clause",
+   "side": "target",
+   "re": "\\b(when|as soon as|before|after|until|once) (I|you|he|she|we|they|it) (will|'ll)\\b",
+   "kp": null,
+   "src": "Romance/German calque (cuando + futuro / quand + futur); spa #348 'cuando + present' mirror; live positive needed",
+   "kp_kind": "live"
+  },
+  {
+   "id": "duration_present_simple",
+   "side": "target",
+   "re": "\\b(I|you|we|they|he|she) ('m|'re|am|are|is|live|lives|work|works|learn|learns|know|knows|study|studies|wait|waits)\\b[^.?!,]{0,30}\\b(since|for) (two|three|four|five|six|many|a few|several|some|a long|a while|ten|years|months|weeks)\\b",
+   "kp": null,
+   "src": "duration with present simple (llevo/depuis/da/seit calque); deu #435 'how long' family; live positive needed",
+   "kp_kind": "live"
+  },
+  {
+   "id": "false_friend_preps",
+   "side": "target",
+   "re": "\\b(depends? of|married with|dream(s|ed|ing)? with|think(s|ing)? in (you|him|her|it|that|me|them)|arriv\\w+ to\\b|listen(s|ed|ing)? (?!to\\b)(the|my|your|this|that|music|him|her|me|us|them)\\b|explain(s|ed)? (me|him|her|us|them)\\b|say(s)? me\\b|go(es|ing)? to home|went to home|(am|is|are|'m) agree)",
+   "kp": null,
+   "src": "Romance/German preposition calques (depender de, casarse con, soñar con, pensar en, llegar a, escuchar, explicar me); live positive needed",
+   "kp_kind": "live"
+  },
+  {
+   "id": "uncountable_plural",
+   "side": "target",
+   "re": "\\b(informations|advices|furnitures|homeworks|luggages|knowledges|feedbacks|researches|equipments)\\b|\\bpeople (is|was|has)\\b",
+   "kp": null,
+   "src": "classic L1-calque plurals; live positive needed",
+   "kp_kind": "live"
+  },
+  {
+   "id": "have_state_calque",
+   "side": "target",
+   "re": "\\b(have|has|had) (hunger|thirst|fear|reason|heat|sleep|cold)\\b|\\b(I|you|he|she|we|they) (have|has) \\w+ years\\b(?! ago)|\\bmake (sport|sports|a walk|a photo|photos|a question)\\b",
+   "kp": null,
+   "src": "tener/avoir/avere/Hunger haben calques; live positive needed",
+   "kp_kind": "live"
+  }
+ ]
+}

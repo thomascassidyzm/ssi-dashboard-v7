@@ -1,0 +1,68 @@
+{
+ "ara": [
+  {
+   "id": "ara_romanised_known",
+   "side": "known",
+   "re": "\\b(yaskot|yihki|bido|baddha|biddi|baddi|biddak|shu|kifak|kifik|habibi|yalla|ktir|hayda|hal2|ma3|3am|mish|mesh|aywa|la2|inshallah|wallah|ana|enta|inti)\\b",
+   "kp": "doesn't want yaskot",
+   "why": "canon ara_lb seven rows had romanised Lebanese in the English prompt (Deborah rewrote them); an English voice read Arabic aloud",
+   "source": "canon (ara_lb yaskot record)"
+  },
+  {
+   "id": "ara_mabsat_typo",
+   "side": "target",
+   "re": "(^|\\s)مبسط(\\s|$|[،.؟])",
+   "kp": "مبسط لأنك ساعدتني أفهم",
+   "why": "#641 found lb screen text مبسط ('simplified') for مبسوط ('happy'); voices fixed, screen text not",
+   "source": "d/468045e4 (#641)"
+  },
+  {
+   "id": "ara_ghalta",
+   "side": "target",
+   "re": "كنت غلطة",
+   "kp": "بس كنت غلطة",
+   "why": "#630/#641: 'I was wrong' became 'I was a mistake' in the female text",
+   "source": "d/22ebe80e, d/468045e4"
+  },
+  {
+   "id": "ara_aayza_malformed",
+   "side": "target",
+   "re": "عايزةها|عايزتها|عايزتك|عايزته(?![\\u0600-\\u06FF])",
+   "kp": "كنت عايزتها تساعدك",
+   "why": "#630: malformed female form; Egyptian is عايزاها",
+   "source": "d/22ebe80e"
+  },
+  {
+   "id": "ara_anna_nominative",
+   "side": "target",
+   "re": "[أإ]َنَّ\\s+\\S*ؤُ",
+   "kp": "تَعْرِفُ أَنَّ أَصْدِقاؤُنا جاءوا إِلَيْنا",
+   "why": "noun after anna must be accusative (asdiqa'ana); found in this scan, ara_for_eng S0454",
+   "source": "this scan"
+  },
+  {
+   "id": "ara_laysa_khabar_nominative",
+   "side": "target",
+   "re": "لَيْسَتْ?\\s+\\S+(ٌ|ةٌ)(\\s|$|[؟.])",
+   "kp": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةٌ",
+   "why": "the predicate of laysa is accusative (jahizatan); found in this scan, ara_for_eng S0627",
+   "source": "this scan"
+  },
+  {
+   "id": "ara_odd_english_gloss",
+   "side": "known",
+   "re": "\\b(yonder|azure|therein|wherein|beachward|leftward|rightward|upward|patienter|yall|yalls|noggin|all's|yest|diff|cos|sis|numeral|primed|heeds)\\b|(^|\\s)(u|th)(\\s|$)",
+   "kp": "That is yonder bag",
+   "why": "invented or clipped English synonyms in LEGO glosses (K9, L26); found in this scan in ara_eg/ara_lb",
+   "source": "this scan"
+  },
+  {
+   "id": "ara_broken_english_ithink",
+   "side": "known",
+   "re": "\\bI think (are|do|what|how|is|can|did)\\b|\\bbecause do you\\b|\\b(I'm afraid|I suppose|I don't care) willing\\b",
+   "kp": "I think are you ready sir now",
+   "why": "ungrammatical English prompts (K9); found in this scan",
+   "source": "this scan"
+  }
+ ]
+}
