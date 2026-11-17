@@ -18,9 +18,12 @@ const { normalizeForAudio, foldTypography } = require('../../services/shared/tex
 const COURSE = 'fry_for_eng', POPTY = 'http://localhost:3470', WHO = 'cs-428-fry-english'
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const [lo, hi] = String(opt('--seeds', '1-668')).split('-').map(Number)
-// --again EXISTS_IN_LANGUAGE: the second pass Kai approved 17 Nov 13:18Z — re-ask items refused with that code, run ONLY once
-// Popty's voice-aware fix to the check is live (never with an approval token to route round it).
-const AGAIN = opt('--again', null)
+// --again EXISTS_IN_LANGUAGE --approval 'kai:2026-11-17:<reason>': the second pass Kai approved 17 Nov 13:18Z. The voice-blind
+// EXISTS_IN_LANGUAGE refusal is deliberate (a33c9be16): a second performance in Tom-006 needs re-record authority, i.e. Kai's
+// approval token, whose ORIGIN Popty verifies from this conversation's x-cs-conv (env CS_CONV_TOKEN, never on argv). The
+// approval rides ONLY on items previously refused with --again's code; nothing else in the run carries it.
+const AGAIN = opt('--again', null), APPROVAL = opt('--approval', null)
+const againKeys = new Set()
 const CONC = Number(opt('--concurrency', 2)), STOP_AT = Number(opt('--stop-at', 600000))
 const LEDGER = process.env.LEDGER || path.join(process.env.HOME, 'ssi-evidence/ssi-dashboard-v7/ops/fry-build/428/ledger.jsonl')
 fs.mkdirSync(path.dirname(LEDGER), { recursive: true })
@@ -37,12 +40,13 @@ const STOP_CODES = ['DAILY_TOTAL_CAP', 'DAILY_CAP', 'POOL_SHARE', 'STOPPED_BY_TO
 const stopCode = (out) => STOP_CODES.find(c => out.code === c || String(out.error || '').includes(`(402) ${c}`))
 const done = new Map(); let spent = 0
 if (fs.existsSync(LEDGER)) for (const l of fs.readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean)) {
-  const e = JSON.parse(l); if (e.kind === 'render' || (e.kind === 'refused' && e.code !== AGAIN)) done.set(e.key, e); else if (e.kind === 'refused' && !(done.get(e.key) || {}).audioId) done.delete(e.key); if (e.kind === 'render') spent += e.charsSpent || 0
+  const e = JSON.parse(l); if (e.kind === 'render' || (e.kind === 'refused' && e.code !== AGAIN)) { done.set(e.key, e); againKeys.delete(e.key) } else if (e.kind === 'refused' && !(done.get(e.key) || {}).audioId) { done.delete(e.key); againKeys.add(e.key) }; if (e.kind === 'render') spent += e.charsSpent || 0
 }
 const log = (e) => fs.appendFileSync(LEDGER, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n')
 const hdr = { 'Content-Type': 'application/json', 'x-agent-id': WHO, 'x-agent-role': 'audio-render' }
 async function post(p, body) {
-  const r = await fetch(POPTY + p, { method: 'POST', headers: hdr, body: JSON.stringify(body) })
+  const h = body.approval ? { ...hdr, 'x-cs-conv': process.env.CS_CONV_TOKEN || '' } : hdr
+  const r = await fetch(POPTY + p, { method: 'POST', headers: h, body: JSON.stringify(body) })
   let j; try { j = await r.json() } catch { j = { ok: false, error: `non-JSON ${r.status}` } }
   return { status: r.status, j }
 }
@@ -89,13 +93,13 @@ async function post(p, body) {
       let audioId = prior && prior.audioId
       if (!prior) {
         if (spent + j.text.length * 1.2 > STOP_AT) { stopped = true; why = 'HARD STOP 600k'; log({ kind: 'hard-stop', spent, next: j.key }); console.log('HARD STOP at', spent); return }
-        const body = { courseCode: COURSE, role: j.kind === 'known' ? 'known' : 'presentation', text: j.text, purpose: j.kind === 'known' ? PURPOSE_K : PURPOSE_I, ...(j.legoId ? { legoId: j.legoId } : {}) }
+        const body = { courseCode: COURSE, role: j.kind === 'known' ? 'known' : 'presentation', text: j.text, purpose: j.kind === 'known' ? PURPOSE_K : PURPOSE_I, ...(j.legoId ? { legoId: j.legoId } : {}), ...(APPROVAL && againKeys.has(j.key) ? { approval: APPROVAL } : {}) }
         let { status, j: out } = await post('/api/audio/render', body)
         if (!out.ok && stopCode(out)) { stopped = true; why = 'cap/stop refusal'; log({ kind: 'cap-stop', key: j.key, status, code: stopCode(out), error: out.error }); console.log('STOPPED by', stopCode(out), out.error); return }
         if (status >= 500 && !out.code) throw new Error(`popty ${status}: ${out.error}`)
         if (!out.ok) { log({ kind: 'refused', key: j.key, text: j.text, status, code: out.code || null, error: out.error || null, slots: j.slots || [j.legoId] }); done.set(j.key, { kind: 'refused' }); return }
         spent += out.charsSpent || 0; audioId = out.audioId
-        const e = { kind: 'render', key: j.key, text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null, ...(out.pieces ? { pieces: out.pieces } : {}) }
+        const e = { kind: 'render', key: j.key, ...(body.approval ? { approval: body.approval } : {}), text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null, ...(out.pieces ? { pieces: out.pieces } : {}) }
         log(e); done.set(j.key, e)
       }
       if (j.kind === 'known' && audioId) {
