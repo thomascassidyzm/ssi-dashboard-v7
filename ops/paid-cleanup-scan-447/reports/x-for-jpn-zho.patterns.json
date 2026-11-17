@@ -1,0 +1,130 @@
+{
+ "_readme": "Added by the x-for-jpn-zho wave-2 worker (#481) from main-course seed fixes (spa/fra/deu/ita_for_eng seeds 1-300 vs the variants). kp = live variant text = the pre-fix main text. Each passes detect.cjs calibration. Run: merge under the language key. Also used in this slice (not repeated here): every target-side pattern of patterns.json and of reports/{spa,fra,ita,deu}.patterns.json on their branches.",
+ "spa": [
+  {
+   "id": "x_seguro_si",
+   "side": "target",
+   "re": "\\bsegur[oa]s? si\\b",
+   "kp": "No estoy seguro si puedo recordar toda la frase.",
+   "src": "#481 new: spa_for_eng seeds 10/165 now 'seguro de si' (queísmo fix); live spa_for_jpn S0010"
+  },
+  {
+   "id": "x_espero_que_indicative",
+   "side": "target",
+   "re": "\\bespero que (puedes|puede|pueden|podemos|vienes|viene|vienen|estás|está|tienes|tiene|eres|es)\\b",
+   "kp": "Espero que puedes venir a la fiesta.",
+   "src": "#481 new: spa_for_eng S0292 'espero que puedas'; live spa_for_jpn S0292"
+  },
+  {
+   "id": "x_mayoria_sin_a",
+   "side": "target",
+   "re": "^(?!.*\\ba la mayoría).*\\bla mayoría de [^,]* les gusta",
+   "kp": "La mayoría de las personas que conozco les gusta ver la televisión.",
+   "src": "#481 new: spa_for_eng S0288 'a la mayoría…'; live spa_for_jpn S0288"
+  },
+  {
+   "id": "x_siento_que_regret",
+   "side": "target",
+   "re": "^(lo )?siento que (necesito|no puedo|tengo que)",
+   "kp": "Siento que necesito irme tan temprano.",
+   "src": "#481 new: spa_for_eng S0139/S0140 'lo siento, pero' (Deborah item 71); live spa_for_jpn S0139/S0140"
+  },
+  {
+   "id": "x_me_preocupo_que",
+   "side": "target",
+   "re": "\\bme preocupo que\\b",
+   "kp": "Porque me preocupo que voy a llegar tarde.",
+   "src": "#481 new: spa_for_eng S0270 'me preocupa que'; live spa_for_jpn S0270"
+  },
+  {
+   "id": "x_no_conozco_que_indic",
+   "side": "target",
+   "re": "\\bno conozco a (muchas |muchos )?(personas|gente) que (hablan|habla)\\b",
+   "kp": "No conozco a muchas personas que hablan español.",
+   "src": "#481 new: spa_for_eng S0297 'que hablen'; live spa_for_jpn S0297"
+  }
+ ],
+ "fra": [
+  {
+   "id": "x_sur_si",
+   "side": "target",
+   "re": "\\bs[ûu]re?s? si\\b",
+   "kp": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+   "src": "#481 new: fra_for_eng S0010/S0062 now 'sûr de pouvoir'; live fra_for_jpn S0010"
+  },
+  {
+   "id": "x_vu_me_sentir",
+   "side": "target",
+   "re": "\\bvue? me sentir\\b",
+   "kp": "Elle était très gentille quand elle m'a vu me sentir nerveux.",
+   "src": "#481 new: fra_for_eng S0147 'm'a vu nerveux' (same Deborah fix as spa item 76); live fra_for_jpn S0147"
+  },
+  {
+   "id": "x_souvenir_comment",
+   "side": "target",
+   "re": "\\bsouvenir (comment|quand|où)\\b",
+   "kp": "Je ne peux pas me souvenir comment dire ce que je voulais dire.",
+   "src": "#481 new: fra_for_eng S0057/S0056 'se souvenir de comment'; live fra_for_jpn S0057"
+  },
+  {
+   "id": "x_lui_verb_no_object",
+   "side": "target",
+   "re": "\\b(pas|veux|vais|peux|voulais) lui (donner|dire|montrer|envoyer)\\s*[.?!]?\\s*$",
+   "kp": "Je ne veux pas lui donner.",
+   "src": "#481 new: fra_for_eng S0241 'le lui donner' (dropped object, same class as #195); live fra_for_jpn S0241"
+  }
+ ],
+ "deu": [
+  {
+   "id": "x_erinnern_no_reflexive",
+   "side": "target",
+   "re": "^(?!.*\\b(mich|dich|sich|uns|euch)\\b).*\\berinner(n|e|st|t)\\b",
+   "kp": "Ich versuche, ein Wort zu erinnern.",
+   "src": "#481 new: deu_for_eng S0006/S0010/S0024/S0056 'mich (an …) erinnern'; live deu_for_jpn S0006"
+  },
+  {
+   "id": "x_gut_machen_no_object",
+   "side": "target",
+   "re": "\\b(du|ich|er|sie|wir) (sehr |so |wirklich )?gut mach(st|e|t|en)\\b",
+   "kp": "Ich denke, dass du sehr gut machst.",
+   "src": "#481 new: deu_for_eng S0072/S0129 'dass du das/es gut machst'; live deu_for_jpn S0072"
+  },
+  {
+   "id": "x_das_war_wo",
+   "side": "target",
+   "re": "\\b(das|es) (war|ist), wo\\b",
+   "kp": "Das war, wo mein Freund uns treffen wollte.",
+   "src": "#481 new: deu_for_eng S0138 'hier wollte mein Freund uns treffen'; live deu_for_jpn S0138"
+  },
+  {
+   "id": "x_hatte_glaeser",
+   "side": "target",
+   "re": "\\b(hatte|habe|hatten) (ein|zwei|ein oder zwei) (Glas|Gläser|Tasse|Tassen)\\b",
+   "kp": "Ich hatte ein oder zwei Gläser Wasser.",
+   "src": "#481 new: deu_for_eng S0217 'getrunken' (have = drink calque); live deu_for_jpn S0217"
+  }
+ ],
+ "ita": [
+  {
+   "id": "x_andare_a_futuro",
+   "side": "target",
+   "re": "\\b(vado|vai|va|andiamo|andate|vanno) (a|ad) (riuscire|aspettar\\w*|chieder\\w*|dir\\w*|iniziare|cominciare|esercitar\\w*|provare|cercare|aiutar\\w*|fare|imparare|parlare|essere|avere|spiegare|ricordare|finire)\\b",
+   "kp": "Non vado a riuscire a ricordare facilmente.",
+   "src": "#481 new: 'andare a + infinito' used as a 'going to' future (calque); ita_for_eng S0024 'non potrò ricordare', S0223 'ti chiederà'; live ita_for_jpn S0024/S0223"
+  },
+  {
+   "id": "x_penso_che_indicativo",
+   "side": "target",
+   "re": "\\bpenso che (tu )?(l[aoei] |gli |ci |mi |ti )?(hai|ha)\\b",
+   "kp": "Penso che le hai lasciate al lavoro.",
+   "src": "#481 new: ita_for_eng S0185 'penso che tu le abbia lasciate' (pensare che + congiuntivo, cf. K40/K35); live ita_for_jpn S0185"
+  },
+  {
+   "id": "x_visto_sentirmi",
+   "side": "target",
+   "re": "\\bvist[oa] sentirmi\\b",
+   "kp": "È stata molto gentile quando mi ha visto sentirmi nervoso.",
+   "src": "#481 new: same calque Deborah removed from spa S0147 (me vio nervioso); ita_for_jpn S0147 already says 'mi ha visto nervoso'; live ita_for_zho S0147 (ita_for_eng main also has it)"
+  }
+ ]
+}
