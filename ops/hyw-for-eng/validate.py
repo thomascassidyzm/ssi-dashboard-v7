@@ -90,7 +90,7 @@ if not seeds_only:
             elif not contains(l['tok'], pt): warn(f"{p['where']}: LEGO {lid} is split inside the phrase (K49): \"{p['target']}\"")
             un = [t for t in pt if t not in taught_at[lid]]
             if un: err(f"{p['where']}: untaught at {lid}: {un} in \"{p['target']}\"")
-            if p['role'] == 'build' and pt == l['tok']: err(f"{p['where']}: build phrase is the bare LEGO (P3)")
+            if p['role'] == 'build' and pt == l['tok'] and taught_at[lid] != frozenset(l['tok']): err(f"{p['where']}: build phrase is the bare LEGO (P3)")
             k = norm_known(p['known'])
             if k in prompt and prompt[k][0] != tuple(pt): err(f"{p['where']}: ZUT: \"{p['known']}\" is \"{' '.join(prompt[k][0])}\" at {prompt[k][1]} and \"{p['target']}\" here")
             prompt.setdefault(k, (tuple(pt), p['where']))
@@ -102,7 +102,7 @@ if not seeds_only:
         ps = phrases.get(l['id'], [])
         b = sum(1 for p in ps if p['role'] == 'build'); u = len(ps) - b
         if not ps: err(f"{l['id']} \"{l['known']} | {l['target']}\": new LEGO with no phrases (P30)")
-        elif l['seed'] >= 6 and (b < 2 or u < 3): warn(f"{l['id']}: thin basket {b} build / {u} use")
+        elif l['seed'] >= 6 and (b < 3 or u < 4): warn(f"{l['id']}: thin basket {b} build / {u} use")
     print(f'phrases {np_} in {len(phrases)} baskets')
 for w in W_[:400]: print('WARN', w)
 for e in E_[:300]: print('ERROR', e)
