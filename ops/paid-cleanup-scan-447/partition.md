@@ -13,10 +13,10 @@ Each course is in exactly one slice.
 | spa | spa_for_eng, spa_mx_for_eng | #453·AI | kai-gmail | opus | running |
 | por | por_for_eng, por_br_for_eng | #454·AI | kai-gmail | opus | running |
 | fra | fra_for_eng, fra_ca_for_eng | #455·AI | kai-gmail | opus | running |
-| ita | ita_for_eng | #456·AI | - | - | running |
-| deu | deu_for_eng, deu_at_for_eng, deu_ch_for_eng | #457·AI | - | - | running |
-| ara | ara_for_eng, ara_eg_for_eng, ara_lb_for_eng, ara_sy_for_eng | #458·AI | - | - | running |
-| jpn | jpn_for_eng | #459·AI | - | - | running |
+| ita | ita_for_eng | NOT DISPATCHED (number #456·AI is void) | - | - | acknowledged, then REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
+| deu | deu_for_eng, deu_at_for_eng, deu_ch_for_eng | NOT DISPATCHED (number #457·AI is void) | - | - | acknowledged, then REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
+| ara | ara_for_eng, ara_eg_for_eng, ara_lb_for_eng, ara_sy_for_eng | NOT DISPATCHED (number #458·AI is void) | - | - | acknowledged, then REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
+| jpn | jpn_for_eng | NOT DISPATCHED (number #459·AI is void) | - | - | acknowledged, then REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
 | kor | kor_for_eng, kor_for_hin, kor_for_tam | NOT DISPATCHED | - | - | REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
 | zho | zho_for_eng, zho_for_hin, zho_for_tam, zho_for_jpn, zho_for_gle | NOT DISPATCHED | - | - | REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
 | eng-eu | eng_for_spa, eng_for_fra, eng_for_deu, eng_for_ita, eng_for_por | NOT DISPATCHED | - | - | REFUSED by the surface: child ceiling ("Three children already dispatched: Watson must approve more") |
@@ -26,3 +26,5 @@ Each course is in exactly one slice.
 | x-for-jpn-zho (wave 2) | spa_for_jpn, spa_for_zho, fra_for_jpn, fra_for_zho, deu_for_jpn, deu_for_zho, ita_for_jpn, ita_for_zho | NOT DISPATCHED | - | - | planned after wave 1 so it can use the main-course patterns; same ceiling applies |
 
 The orchestrator itself (#447·AI) runs on kai-gmail, model fable.
+
+CORRECTION 17 Nov 13:50Z: only THREE workers are running (spa #453·AI, por #454·AI, fra #455·AI), all on kai-gmail, opus. The surface acknowledged ita/deu/ara/jpn and then refused them; an earlier note here called them running. Eleven slices (41 courses) wait on the room raising the child ceiling.
