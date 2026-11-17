@@ -2,7 +2,7 @@
 
 **Nothing is applied.** Everything below was built as edit ops and passed Popty's dry run with 0 errors.
 
-**What worked (one line):** 1,030 ops in the main file + 45 for the seed 166 move. By family: Eoghan rows 1-300: 335 · the 28-list rows: 418 · need → have to: 217 · had-to before 278: 14 · I'm afraid: 7 · to know: 2 · -ing rule: 2 · echo: 5 · sentences past 300: 30. In the seeds this pass touches: no piece with a gap, none over 8 syllables, nothing used before it is taught, no English with two Irish answers apart from the cases below.
+**What worked (one line):** 1,030 ops in the main file + 35 for the seed 166 move. By family: Eoghan rows 1-300: 335 · the 28-list rows: 418 · need → have to: 217 · had-to before 278: 14 · I'm afraid: 7 · to know: 2 · -ing rule: 2 · echo: 5 · sentences past 300: 30. In the seeds this pass touches: no piece with a gap, none over 8 syllables, nothing used before it is taught, no English with two Irish answers apart from the cases below.
 
 ## Where a ruling did not work out (12)
 
@@ -28,7 +28,7 @@ Each is built as described; only item 4 is built as you ruled rather than as I r
 
 **10. Seed 492, "ina háit" or "ina áit": I could not settle it online.** *áit* is feminine (teanglann.ie), which gives *ina háit*; Eoghan wrote *ina áit*. Built with *ina háit*. Least sure item in the pass.
 
-**11. Seed 166 move: there is no op that moves a seed.** What works with the existing ops is a swap: 166's sentence goes to slot 300 ("I don't have a very unusual name | Níl ainm an-neamhghnách orm", pieces a name → unusual → very unusual → whole), and 300's ("she doesn't want to seem unfriendly") comes to 166, where its only new word is *míchairdiúil*. Dry run clean, in its own file. Costs: "my name | m'ainm" leaves the course (11 phrases, used nowhere else), and seeds 166 and 300 no longer match Eoghan's sheet rows. **Recommend:** yes.
+**11. Seed 166 (your 11:42Z ruling, rebuilt): his *orm* line, three steps, by swap with slot 300.** There is no op that moves a seed, so 166's sentence goes to slot 300 and 300's ("she doesn't want to seem unfriendly") comes to 166, where its only new word is *míchairdiúil*. At 300 it is: "an unusual name | ainm neamhghnách" → "a very unusual name | ainm an-neamhghnách" → "I don't have a very unusual name | níl ainm an-neamhghnách orm" (the whole sentence, since a piece with a gap is not allowed), with the intro line "In Irish a name sits on you, like a feeling". Dry run clean, 35 ops, own file. Checks you asked for: feelings on *orm* are taught well before it (76 *tá an-áthas orm*, 77, 129, 139, 140, 145, 187, 193), so the pattern is in place at either slot; "I don't have… | níl … agam" is at 260 and 294, which is why it sits after them. Costs: "my name | m'ainm" leaves the course (11 phrases, used nowhere else); the 8 "it's very unusual" phrases under the old piece are dropped, because your three steps have no "very unusual" piece for them to sit under (say if you want it as a fourth, not-new piece); step 1 is not word for word in the sentence (the seed says *an-*), accepted on your ruling; 166 and 300 no longer match Eoghan's sheet rows. No phrase outside seed 166 depended on it. **Recommend:** yes.
 
 **12. Echo intro lines: written, not tested.** 16 lines of the form "The Irish for 'yes', when you answer a question like 'would you like to come with us?', is:" are saved, but the Popty route that stores intro text has no dry run. Pairings checked: 97, 339/340, 362/363, 374/375 each answer a question two seeds back and are right; 308/309 answer no question in the course, so their intro line has to carry it. 5 phrases that used an echo bare or against the wrong question are dropped.
 
@@ -42,6 +42,7 @@ Each is built as described; only item 4 is built as you ruled rather than as I r
 - 374: English loses "very" to match his *go hálainn*. 416: *a bheith*, as the course writes it.
 - 432: English "they hope" (hoping is *ag súil*, 108). 447: *tar éis an bhéile* kept (his own, and the course's "after").
 - "What I need to do" over *le déanamh agam* is now "what I've got to do" (the course's own pattern at 73 and 75); 207 is "what there was for you to do".
+- Stand-in "it" frames (100, 105, 290 and the like): left as they are and not flagged, per your 11:39Z ruling.
 - To know (45): "to know it | é a bheith ar eolas agam", 8 syllables, like 105 and 290.
 - 82: "why not" was taught nowhere else, so nothing else changed. 98: "something else" is still taught at 158.
 - Small-word recheck of the 16 Nov merges: of 18 merged words only "to you | duit" (225) passes your test; the others change the next word or have no single English. Not built: say if you want it split out.

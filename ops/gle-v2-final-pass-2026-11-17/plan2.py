@@ -469,20 +469,21 @@ def move166():
     E.many(a,[('b','to be unfriendly','a bheith míchairdiúil'),('u',"he doesn't want to be unfriendly with them",'ní mian leis a bheith míchairdiúil leo'),('u',k300,t300)])
     # slot 300
     E.seed(300,"Níl ainm an-neamhghnách orm","I don't have a very unusual name")
-    n1=E.newlego(300,4,'a name','ainm',[])
-    n2=E.newlego(300,5,'unusual','neamhghnách',[])
-    n3=E.newlego(300,6,'very unusual','an-neamhghnách',[('very','an-'),('unusual','neamhghnách')])
-    n4=E.newlego(300,7,"I don't have a very unusual name",'níl ainm an-neamhghnách orm',[('is not','níl'),('a name','ainm'),('very unusual','an-neamhghnách'),('on me','orm')])
-    E.many(n1,[('b','a new name','ainm nua'),('b','a good name','ainm maith'),('u',"I think that it's a good name",'ceapaim gur ainm maith é'),('u',"that's a good name",'is ainm maith é sin')])
-    E.many(n2,[('b','an unusual name','ainm neamhghnách'),('b',"it's an unusual name",'is ainm neamhghnách é'),('u',"I think that it's an unusual name",'ceapaim gur ainm neamhghnách é'),
-               ('u',"that's an unusual idea",'is smaoineamh neamhghnách é sin')])
-    for r,kn,tg in vu: E.add(n3,r,kn,tg)
-    E.add(n3,'build','a very unusual name','ainm an-neamhghnách')
-    E.many(n4,[('b',"I don't have a very unusual name",'níl ainm an-neamhghnách orm'),('u',"of course I don't have a very unusual name",'ar ndóigh níl ainm an-neamhghnách orm'),
+    # Kai 17 Nov 11:42Z: Eoghan's orm line, in the THREE steps of the ag/ar study (d/03eeff75): an unusual name -> a very unusual name ->
+    # the orm sentence. No gapped LEGO (Kai), so the third step is the whole sentence, not 'níl … orm'. Step 1 is not literally in the
+    # seed (the seed says an-neamhghnách); it is the ruled first step, whitelisted in the check below.
+    n1=E.newlego(300,4,'an unusual name','ainm neamhghnách',[('a name','ainm'),('unusual','neamhghnách')])
+    n2=E.newlego(300,5,'a very unusual name','ainm an-neamhghnách',[('a name','ainm'),('very unusual','an-neamhghnách')])
+    n3=E.newlego(300,6,"I don't have a very unusual name",'níl ainm an-neamhghnách orm',[('is not','níl'),('a very unusual name','ainm an-neamhghnách'),('on me','orm')])
+    E.many(n1,[('b','an unusual name','ainm neamhghnách'),('b',"it's an unusual name",'is ainm neamhghnách é'),('u',"I think that it's an unusual name",'ceapaim gur ainm neamhghnách é'),
+               ('u',"that's an unusual name",'is ainm neamhghnách é sin')])
+    E.many(n2,[('b','a very unusual name','ainm an-neamhghnách'),('b',"it's a very unusual name",'is ainm an-neamhghnách é'),('u',"I think that it's a very unusual name",'ceapaim gur ainm an-neamhghnách é'),
+               ('u',"that's a very unusual name",'is ainm an-neamhghnách é sin')])
+    E.many(n3,[('b',"I don't have a very unusual name",'níl ainm an-neamhghnách orm'),('u',"of course I don't have a very unusual name",'ar ndóigh níl ainm an-neamhghnách orm'),
                ('u',"unfortunately I don't have a very unusual name",'faraor níl ainm an-neamhghnách orm'),('u',"thank you, but I don't have a very unusual name",'go raibh maith agat, ach níl ainm an-neamhghnách orm')])
 if __name__=='__main__':
     # ruled shapes the static check cannot see: stand-in "it" frames (L33: 45 new; 96, 207 from #253), Kai's 280 pieces, echo yes/no
-    WL_LEGO={'S0045L03','S0096L04','S0207L03','S0250L03','S0280L04','S0280L05','S0300L05'}
+    WL_LEGO={'S0045L03','S0096L04','S0207L03','S0250L03','S0280L04','S0280L05','S0300L04'}
     def ok(x):
         if x[0]=='CLASH' and x[1] in('yes','no'): return True
         if x[0]=='CLASH' and x[1]=="she doesn't want to": return True   # 300 marks it new today; at 166 it is not new

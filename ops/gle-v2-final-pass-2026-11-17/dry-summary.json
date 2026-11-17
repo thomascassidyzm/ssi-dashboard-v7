@@ -16,8 +16,9 @@
   "event_id": null,
   "undo_file": null,
   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
-  "_seconds": 12.6,
-  "_ops": 45
+  "_seconds": 11.9,
+  "_ops": 35,
+  "note2": "rebuilt 17 Nov after Kai 11:42Z (three steps); batch-1 unchanged since its dry run"
  },
  "live_before_after_signature": [
   "68afb364c604d250",

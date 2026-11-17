@@ -40,7 +40,7 @@
 },
 "before": null,
 "after": {
-"id": "3c290f3f-fac3-4535-937c-6f803927d328",
+"id": "b3f3caa3-bd02-4963-a5bd-79e534126e25",
 "seed_number": 166,
 "lego_index": 4,
 "lego_id": "S0166L04",
@@ -62,7 +62,7 @@
 },
 "before": null,
 "after": {
-"id": "508b9d26-b780-4712-9e72-d204e3048d73",
+"id": "fd33a8d8-4771-4879-9b41-497b3cb3ccd2",
 "seed_number": 166,
 "lego_index": 5,
 "lego_id": "S0166L05",
@@ -84,7 +84,7 @@
 },
 "before": null,
 "after": {
-"id": "2224b35c-e162-4ffd-a167-cbbcb9f10c16",
+"id": "7a5baf41-9955-46ad-9079-a24ef0ae1d10",
 "seed_number": 166,
 "lego_index": 6,
 "lego_id": "S0166L06",
@@ -388,12 +388,12 @@
 },
 "before": null,
 "after": {
-"id": "4a79f8a4-1b44-4c2c-bd60-c6555bae7794",
+"id": "6e9af43e-5f6e-4514-8edc-32792334e0f3",
 "seed_number": 300,
 "lego_index": 4,
 "lego_id": "S0300L04",
-"known_text": "a name",
-"target_text": "ainm",
+"known_text": "an unusual name",
+"target_text": "ainm neamhghnách",
 "known_audio_id": null,
 "target1_audio_id": null,
 "target2_audio_id": null,
@@ -410,12 +410,12 @@
 },
 "before": null,
 "after": {
-"id": "7bd65ed9-0de3-493d-a0df-351a48159d90",
+"id": "f1596e21-7417-44b9-a257-d5ccbe899cd7",
 "seed_number": 300,
 "lego_index": 5,
 "lego_id": "S0300L05",
-"known_text": "unusual",
-"target_text": "neamhghnách",
+"known_text": "a very unusual name",
+"target_text": "ainm an-neamhghnách",
 "known_audio_id": null,
 "target1_audio_id": null,
 "target2_audio_id": null,
@@ -432,32 +432,10 @@
 },
 "before": null,
 "after": {
-"id": "1c5040cb-b871-4e12-b251-ec2ee1df6bae",
+"id": "a2c7cd65-5b6e-452a-86a7-d08369a6a1a4",
 "seed_number": 300,
 "lego_index": 6,
 "lego_id": "S0300L06",
-"known_text": "very unusual",
-"target_text": "an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 20,
-"op": "lego.insert",
-"key": {
-"seed_number": 300,
-"lego_index": 7
-},
-"before": null,
-"after": {
-"id": "31a0c597-c9b7-42e2-8408-2738ca3ec3b3",
-"seed_number": 300,
-"lego_index": 7,
-"lego_id": "S0300L07",
 "known_text": "I don't have a very unusual name",
 "target_text": "níl ainm an-neamhghnách orm",
 "known_audio_id": null,
@@ -468,7 +446,7 @@
 "changed": true
 },
 {
-"index": 21,
+"index": 20,
 "op": "phrase.insert",
 "key": {
 "id": "gle_v2_for_eng:S0300L04B01"
@@ -478,90 +456,6 @@
 "id": "gle_v2_for_eng:S0300L04B01",
 "seed_number": 300,
 "lego_index": 4,
-"lego_id": null,
-"known_text": "a new name",
-"target_text": "ainm nua",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 22,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L04B02"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L04B02",
-"seed_number": 300,
-"lego_index": 4,
-"lego_id": null,
-"known_text": "a good name",
-"target_text": "ainm maith",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 23,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L04U01"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L04U01",
-"seed_number": 300,
-"lego_index": 4,
-"lego_id": null,
-"known_text": "I think that it's a good name",
-"target_text": "ceapaim gur ainm maith é",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 24,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L04U02"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L04U02",
-"seed_number": 300,
-"lego_index": 4,
-"lego_id": null,
-"known_text": "that's a good name",
-"target_text": "is ainm maith é sin",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 25,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L05B01"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L05B01",
-"seed_number": 300,
-"lego_index": 5,
 "lego_id": null,
 "known_text": "an unusual name",
 "target_text": "ainm neamhghnách",
@@ -573,16 +467,16 @@
 "changed": true
 },
 {
-"index": 26,
+"index": 21,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L05B02"
+"id": "gle_v2_for_eng:S0300L04B02"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L05B02",
+"id": "gle_v2_for_eng:S0300L04B02",
 "seed_number": 300,
-"lego_index": 5,
+"lego_index": 4,
 "lego_id": null,
 "known_text": "it's an unusual name",
 "target_text": "is ainm neamhghnách é",
@@ -594,16 +488,16 @@
 "changed": true
 },
 {
-"index": 27,
+"index": 22,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L05U01"
+"id": "gle_v2_for_eng:S0300L04U01"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L05U01",
+"id": "gle_v2_for_eng:S0300L04U01",
 "seed_number": 300,
-"lego_index": 5,
+"lego_index": 4,
 "lego_id": null,
 "known_text": "I think that it's an unusual name",
 "target_text": "ceapaim gur ainm neamhghnách é",
@@ -615,205 +509,37 @@
 "changed": true
 },
 {
-"index": 28,
+"index": 23,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L05U02"
+"id": "gle_v2_for_eng:S0300L04U02"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L05U02",
+"id": "gle_v2_for_eng:S0300L04U02",
+"seed_number": 300,
+"lego_index": 4,
+"lego_id": null,
+"known_text": "that's an unusual name",
+"target_text": "is ainm neamhghnách é sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 24,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05B01",
 "seed_number": 300,
 "lego_index": 5,
-"lego_id": null,
-"known_text": "that's an unusual idea",
-"target_text": "is smaoineamh neamhghnách é sin",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 29,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06B01"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06B01",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "it's very unusual",
-"target_text": "tá sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 30,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U01"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U01",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "is it very unusual?",
-"target_text": "an bhfuil sé an-neamhghnách?",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 31,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U02"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U02",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "she told me that it was very unusual for him not to want to help",
-"target_text": "dúirt sí liom go raibh sé an-neamhghnách nár mhian leis cabhrú",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 32,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U03"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U03",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "I know that it's very unusual",
-"target_text": "Tá a fhios agam go bhfuil sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 33,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U04"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U04",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "I'm not sure if it's very unusual",
-"target_text": "Níl mé cinnte an bhfuil sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 34,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U05"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U05",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "it's not very unusual",
-"target_text": "Níl sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 35,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U06"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U06",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "I think it's very unusual",
-"target_text": "ceapaim go bhfuil sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 36,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06U07"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06U07",
-"seed_number": 300,
-"lego_index": 6,
-"lego_id": null,
-"known_text": "I hope that it's not very unusual",
-"target_text": "Tá súil agam nach bhfuil sé an-neamhghnách",
-"known_audio_id": null,
-"target1_audio_id": null,
-"target2_audio_id": null,
-"presentation_audio_id": null
-},
-"changed": true
-},
-{
-"index": 37,
-"op": "phrase.insert",
-"key": {
-"id": "gle_v2_for_eng:S0300L06B02"
-},
-"before": null,
-"after": {
-"id": "gle_v2_for_eng:S0300L06B02",
-"seed_number": 300,
-"lego_index": 6,
 "lego_id": null,
 "known_text": "a very unusual name",
 "target_text": "ainm an-neamhghnách",
@@ -825,16 +551,79 @@
 "changed": true
 },
 {
-"index": 38,
+"index": 25,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L07B01"
+"id": "gle_v2_for_eng:S0300L05B02"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L07B01",
+"id": "gle_v2_for_eng:S0300L05B02",
 "seed_number": 300,
-"lego_index": 7,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "it's a very unusual name",
+"target_text": "is ainm an-neamhghnách é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 26,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05U01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05U01",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "I think that it's a very unusual name",
+"target_text": "ceapaim gur ainm an-neamhghnách é",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 27,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L05U02"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L05U02",
+"seed_number": 300,
+"lego_index": 5,
+"lego_id": null,
+"known_text": "that's a very unusual name",
+"target_text": "is ainm an-neamhghnách é sin",
+"known_audio_id": null,
+"target1_audio_id": null,
+"target2_audio_id": null,
+"presentation_audio_id": null
+},
+"changed": true
+},
+{
+"index": 28,
+"op": "phrase.insert",
+"key": {
+"id": "gle_v2_for_eng:S0300L06B01"
+},
+"before": null,
+"after": {
+"id": "gle_v2_for_eng:S0300L06B01",
+"seed_number": 300,
+"lego_index": 6,
 "lego_id": null,
 "known_text": "I don't have a very unusual name",
 "target_text": "níl ainm an-neamhghnách orm",
@@ -846,16 +635,16 @@
 "changed": true
 },
 {
-"index": 39,
+"index": 29,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L07U01"
+"id": "gle_v2_for_eng:S0300L06U01"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L07U01",
+"id": "gle_v2_for_eng:S0300L06U01",
 "seed_number": 300,
-"lego_index": 7,
+"lego_index": 6,
 "lego_id": null,
 "known_text": "of course I don't have a very unusual name",
 "target_text": "ar ndóigh níl ainm an-neamhghnách orm",
@@ -867,16 +656,16 @@
 "changed": true
 },
 {
-"index": 40,
+"index": 30,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L07U02"
+"id": "gle_v2_for_eng:S0300L06U02"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L07U02",
+"id": "gle_v2_for_eng:S0300L06U02",
 "seed_number": 300,
-"lego_index": 7,
+"lego_index": 6,
 "lego_id": null,
 "known_text": "unfortunately I don't have a very unusual name",
 "target_text": "faraor níl ainm an-neamhghnách orm",
@@ -888,16 +677,16 @@
 "changed": true
 },
 {
-"index": 41,
+"index": 31,
 "op": "phrase.insert",
 "key": {
-"id": "gle_v2_for_eng:S0300L07U03"
+"id": "gle_v2_for_eng:S0300L06U03"
 },
 "before": null,
 "after": {
-"id": "gle_v2_for_eng:S0300L07U03",
+"id": "gle_v2_for_eng:S0300L06U03",
 "seed_number": 300,
-"lego_index": 7,
+"lego_index": 6,
 "lego_id": null,
 "known_text": "thank you, but I don't have a very unusual name",
 "target_text": "go raibh maith agat, ach níl ainm an-neamhghnách orm",
@@ -909,7 +698,7 @@
 "changed": true
 },
 {
-"index": 42,
+"index": 32,
 "op": "lego.delete",
 "key": {
 "course_code": "gle_v2_for_eng",
@@ -931,7 +720,7 @@
 "changed": true
 },
 {
-"index": 43,
+"index": 33,
 "op": "lego.delete",
 "key": {
 "course_code": "gle_v2_for_eng",
@@ -953,7 +742,7 @@
 "changed": true
 },
 {
-"index": 44,
+"index": 34,
 "op": "lego.delete",
 "key": {
 "course_code": "gle_v2_for_eng",
@@ -2224,42 +2013,6 @@
 },
 {
 "op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L07U03"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L07U02"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L07U01"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L07B01"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L06B02"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L06U07"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L06U06"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L06U05"
-},
-{
-"op": "phrase.delete",
-"phrase_id": "gle_v2_for_eng:S0300L06U04"
-},
-{
-"op": "phrase.delete",
 "phrase_id": "gle_v2_for_eng:S0300L06U03"
 },
 {
@@ -2308,19 +2061,15 @@
 },
 {
 "op": "lego.delete",
-"id": "31a0c597-c9b7-42e2-8408-2738ca3ec3b3"
+"id": "a2c7cd65-5b6e-452a-86a7-d08369a6a1a4"
 },
 {
 "op": "lego.delete",
-"id": "1c5040cb-b871-4e12-b251-ec2ee1df6bae"
+"id": "f1596e21-7417-44b9-a257-d5ccbe899cd7"
 },
 {
 "op": "lego.delete",
-"id": "7bd65ed9-0de3-493d-a0df-351a48159d90"
-},
-{
-"op": "lego.delete",
-"id": "4a79f8a4-1b44-4c2c-bd60-c6555bae7794"
+"id": "6e9af43e-5f6e-4514-8edc-32792334e0f3"
 },
 {
 "op": "seed.update",
@@ -4137,15 +3886,15 @@
 },
 {
 "op": "lego.delete",
-"id": "2224b35c-e162-4ffd-a167-cbbcb9f10c16"
+"id": "7a5baf41-9955-46ad-9079-a24ef0ae1d10"
 },
 {
 "op": "lego.delete",
-"id": "508b9d26-b780-4712-9e72-d204e3048d73"
+"id": "fd33a8d8-4771-4879-9b41-497b3cb3ccd2"
 },
 {
 "op": "lego.delete",
-"id": "3c290f3f-fac3-4535-937c-6f803927d328"
+"id": "b3f3caa3-bd02-4963-a5bd-79e534126e25"
 },
 {
 "op": "seed.update",
@@ -4158,6 +3907,6 @@
 ],
 "undo_file": null,
 "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit.",
-"_seconds": 12.6,
-"_ops": 45
+"_seconds": 11.9,
+"_ops": 35
 }
