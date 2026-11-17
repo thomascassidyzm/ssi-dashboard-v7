@@ -9,13 +9,13 @@ HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,HERE)
 from helpers import nrm,options,famonly,fada
 live={s['seed_number']:s for s in json.load(open(sys.argv[1]))['seeds']}
 his=json.load(open(os.path.join(HERE,'..','gle-v2-eoghan-excel-2026-11-16','his-bileog1.json')))[1:]
-SEPT="This one already had your September correction; your sheet was written over the older text, so we've kept that. Happy to change it if you'd rather have this version."
-LATER="We've used the wording you sent us later for this one."
+SEPT="This already had your September correction (your sheet was written over the older text), so we've kept that."
+LATER="We've gone with your later suggestion here."
+# Lighter tone (cs #448·AI, Kai 17 Nov 13:31Z): the openness is said ONCE, in this note above the header; rows stay short.
+NOTE="Where we've kept ours it's usually to avoid a clash with another sentence, and the note names it. Happy to change any of these another way."
+APOLOGY=re.compile(r"\bsorry\b|hope (that|it)|acceptable|happy to change|\{T\}",re.I)
 import csv as _csv
 BASE={int(x['Seed']):x for x in _csv.DictReader(open(os.path.join(HERE,'..','gle-v2-eoghan-seedlist','irish-seed-list-for-eoghan.csv')))}
-TAILS=["Hope that's acceptable; we're happy to change it another way if not.",
-       "We hope that's OK, and we're happy to find another way if not.",
-       "We hope it's acceptable even if it isn't your preference; happy to change it if not."]
 C={};cur=None
 for ln in open(os.path.join(HERE,'comments.txt'),encoding='utf-8').read().split('\n'):
     if ln.startswith('#'): continue
@@ -47,7 +47,7 @@ for r in his:
         if not ok: badq.append((n,com))
         com=SEPT if com=='{SEPT}' else LATER
     if com:
-        if '{T}' in com: com=com.replace('{T}',TAILS[k%3]); k+=1
+        if APOLOGY.search(com): banned.append((n,APOLOGY.search(com).group(0)))
         nums=[int(x) for x in re.findall(r'\b(\d{1,3})\b',com) if int(x) in live and int(x)!=n]
         pool=[fnrm(F),fnrm(ours)]+[fnrm(live[x]['target_text']) for x in nums]
         frags=[fnrm(x) for q in re.findall(r'‘([^’]*)’',com) for x in q.split('…') if fnrm(x)]
@@ -61,6 +61,7 @@ assert not stale,('entry written for Irish no longer live',stale)
 assert os.environ.get('PARTIAL') or not missing,('rows differing from his line with no entry',missing)
 assert not badq,('quoted pieces not found',badq)
 assert not banned,('banned words',banned)
+assert not BANNED.search(NOTE)
 if cite: print('WARN cited sentence holds none of the quotes:',cite)
 from collections import Counter
 print('rows',len(rows),'commented',sum(1 for x in rows if x[3]),'blank',sum(1 for x in rows if not x[3]),Counter(cls.values()))
@@ -69,13 +70,14 @@ json.dump([dict(seed=n,irish=a,english=b,comment=c,cls=z) for n,a,b,c,z in rows]
 H=['Seed','Gaeilge (anois)','English','Ár nóta / Our comment','Do thuairimí / Your comments']
 col=lambda i:chr(65+i)
 def cell(ci,ri,v,st): return f'<c r="{col(ci)}{ri}" t="inlineStr" s="{st}"><is><t xml:space="preserve">{escape(str(v))}</t></is></c>'
-sh=['<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols><col min="1" max="1" width="6" customWidth="1"/><col min="2" max="3" width="45" customWidth="1"/><col min="4" max="4" width="70" customWidth="1"/><col min="5" max="5" width="40" customWidth="1"/></cols><sheetData>']
-sh.append('<row r="1">'+''.join(cell(i,1,h,1) for i,h in enumerate(H))+'</row>')
-for ri,(n,a,b,c,_) in enumerate(rows,2):
+sh=['<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="2" topLeftCell="A3" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols><col min="1" max="1" width="6" customWidth="1"/><col min="2" max="3" width="45" customWidth="1"/><col min="4" max="4" width="70" customWidth="1"/><col min="5" max="5" width="40" customWidth="1"/></cols><sheetData>']
+sh.append('<row r="1" ht="32" customHeight="1">'+cell(0,1,NOTE,5)+'</row>')
+sh.append('<row r="2">'+''.join(cell(i,2,h,1) for i,h in enumerate(H))+'</row>')
+for ri,(n,a,b,c,_) in enumerate(rows,3):
     st=2 if c else 3
     sh.append(f'<row r="{ri}"><c r="A{ri}" s="{st}"><v>{n}</v></c>'+cell(1,ri,a,st)+cell(2,ri,b,st)+(cell(3,ri,c,st) if c else '')+f'<c r="E{ri}" s="4"/></row>')
-sh.append('</sheetData></worksheet>')
-styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="4"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFF2A8"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFEAF4FF"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="5"><xf/><xf fontId="1" applyFont="1"><alignment wrapText="1" vertical="top"/></xf><xf fillId="2" applyFill="1"><alignment wrapText="1" vertical="top"/></xf><xf><alignment wrapText="1" vertical="top"/></xf><xf fillId="3" applyFill="1"><alignment wrapText="1" vertical="top"/></xf></cellXfs></styleSheet>'
+sh.append('</sheetData><mergeCells count="1"><mergeCell ref="A1:E1"/></mergeCells></worksheet>')
+styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="4"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFF2A8"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFEAF4FF"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="6"><xf/><xf fontId="1" applyFont="1"><alignment wrapText="1" vertical="top"/></xf><xf fillId="2" applyFill="1"><alignment wrapText="1" vertical="top"/></xf><xf><alignment wrapText="1" vertical="top"/></xf><xf fillId="3" applyFill="1"><alignment wrapText="1" vertical="top"/></xf><xf fontId="1" applyFont="1"><alignment wrapText="1" vertical="center"/></xf></cellXfs></styleSheet>'
 out=os.path.join(os.environ.get('OUT_DIR',HERE),'gle-v2-sheet-for-eoghan-17nov.xlsx')
 z=zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED)
 z.writestr('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>')

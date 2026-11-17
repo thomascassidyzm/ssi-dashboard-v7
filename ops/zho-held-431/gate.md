@@ -19,11 +19,19 @@ Spec: #425·AI d/58d93baf + d/1fce4b85. Ops: `plan.py` → `batch.ops.json` (bat
 | 20 | Seed 61: ZH becomes one question 你能慢一点再说一遍吗？, + P26 copy S0061L03U09 | APPLY | S15: the seed failed P20/P26 (two sentences, so it had no copy). S0061L01 能再 is kept: both of its words are in the seed (L26 holds). | #435 seed fixes 19/396/413 in this course (ev a45edf7a, fc878c38) |
 | 21 | Seed 82: + USE S0082L01U08 "I'm not going to wait for you" | APPLY | none | P26 |
 | 22 | Seed 141: EN comma; + P26 copy S0141L02U09 on the seed's clips | APPLY | none | A7; P26 |
-| 23 | Seed 643 → "do you want it, sir?" (seed, LEGO, B01, U01); B02 deleted (same English, 您想要它吗) | APPLY | K55: 想要 takes a thing | plate A-186 (643/659 English fixed across courses); K55 |
-| 24 | Seed 659 → "could you all say that again?" (seed + U01) | APPLY | none | A-186 |
+| 23 | Seed 643 → "do you want it, sir?" (seed, LEGO, B01, U01); B02 deleted (same English, 您想要它吗) | **HELD — applied then REVERTED ev 76ac6e61** (Kai 12:45Z: hold anything touching a Tom decision; Tom's plate A-186, 20 Aug, settled 643/659's shared English across all courses) | K55: 想要 takes a thing | plate A-186 (643/659 English fixed across courses); K55 |
+| 24 | Seed 659 → "could you all say that again?" (seed + U01) | **HELD — applied then REVERTED ev 76ac6e61** (Tom's plate A-186) | none | A-186 |
 | 25 | F5: 教堂 taught first (reorder), 那座 → 那座教堂 "that church", 8 + 5 + 4 phrases, seed 551/634 English | APPLY (batch 2, kai_go) | L34 / K23(d) / K47. 0 learner-state rows (dry run). | L34 (Kai, 16 Nov); lego.reorder used on gle_v2 (#248·AI / #410·AI) |
 | 26 | S0092L03 drop the {儿} component | APPLY | none | #425 (Wiktionary 一會兒) |
 | x1 | Extra: seed 162, S0162L01B03 → "what do you think about this" 这个你觉得怎么样 | APPLY | It removed a ZUT clash with the seed | R0.3 (rewording a phrase is legitimate) |
 | x2 | Extra: S0413L02 靠 glossed "close to", phrases say "lean" | **HELD** | No fix was settled. Choosing between re-glossing and re-cutting to 靠得太近 is a new design, and no precedent was cited. | none |
 
 The pod-1 check: none of the 231 pod-1 sentences shares a text with any touched row. Pod lines are their own rows, so no pod migration is needed.
+
+## Tom-ruling check (Kai's 12:45Z addition, run after the apply)
+Kai's addition reached this job after batches 1 and 2 had been applied (13:06–13:08Z) and the audio linked (~13:30Z). So every applied fix was checked against Tom's zho decisions afterwards. Sources checked: command-surface ops/rulings.jsonl, the canon, docs/DECISIONS.md, the plate archive, and Kai's zho memories (#214, #219, #435, #545).
+- **r-2026-11-04 (prefer reduplicated 试试-type forms):** no 试试 or reduplicated row was touched. 多想想 is kept in S0117L01U07.
+- **r-2026-10-24 (Chinese clips are rendered whole):** every clip was rendered whole.
+- **r-2026-10-12 (LEGO split belongs to the direction):** no conflict.
+- **Plate A-186 (Tom, 20 Aug, the 643/659 shared English):** touched, so items 23 and 24 were reverted in full (ev 76ac6e61). This includes re-inserting S0643L01B02. Every 643/659 row read back identical to its state before this job.
+- **Gap:** no Popty route reads edit-event authorship, and direct DB reads are banned. So a row Tom edited by hand with no recorded ruling could not be detected. Seed 61's Chinese is the one changed seed whose authorship is unknown.
