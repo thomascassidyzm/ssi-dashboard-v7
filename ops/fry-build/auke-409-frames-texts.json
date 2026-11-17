@@ -1,0 +1,512 @@
+{
+ "family": "frames",
+ "rows": [
+  {
+   "key": "LEGO:S0049L02",
+   "old": [
+    "if you know",
+    "astû witst"
+   ],
+   "new": [
+    "if you know",
+    "astû it witst"
+   ],
+   "components": [
+    {
+     "known": "if you",
+     "target": "astû"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "know",
+     "target": "witst"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0050L01",
+   "old": [
+    "I'm not trying",
+    "ik besykje net"
+   ],
+   "new": [
+    "I'm not trying",
+    "ik besykje it net"
+   ],
+   "components": [
+    {
+     "known": "I'm trying",
+     "target": "ik besykje"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0057L01",
+   "old": [
+    "I can't remember",
+    "ik wit net mear"
+   ],
+   "new": [
+    "I can't remember",
+    "ik wit it net mear"
+   ],
+   "components": [
+    {
+     "known": "I know",
+     "target": "ik wit"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    },
+    {
+     "known": "any more",
+     "target": "mear"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0060L01",
+   "old": [
+    "I don't know yet",
+    "ik wit noch net"
+   ],
+   "new": [
+    "I don't know yet",
+    "ik wit it noch net"
+   ],
+   "components": [
+    {
+     "known": "I know",
+     "target": "ik wit"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "still",
+     "target": "noch"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0078L01",
+   "old": [
+    "I don't understand",
+    "ik begryp net"
+   ],
+   "new": [
+    "I don't understand",
+    "ik begryp it net"
+   ],
+   "components": [
+    {
+     "known": "I understand",
+     "target": "ik begryp"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0146L02",
+   "old": [
+    "since we tried",
+    "sûnt wy besocht hawwe"
+   ],
+   "new": [
+    "since we tried",
+    "sûnt wy it besocht hawwe"
+   ],
+   "components": [
+    {
+     "known": "since",
+     "target": "sûnt"
+    },
+    {
+     "known": "we",
+     "target": "wy"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "tried",
+     "target": "besocht"
+    },
+    {
+     "known": "have",
+     "target": "hawwe"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0152L02",
+   "old": [
+    "if I had known",
+    "as ik witten hie"
+   ],
+   "new": [
+    "if I had known",
+    "as ik it witten hie"
+   ],
+   "components": [
+    {
+     "known": "if",
+     "target": "as"
+    },
+    {
+     "known": "I",
+     "target": "ik"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "known",
+     "target": "witten"
+    },
+    {
+     "known": "had",
+     "target": "hie"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0174L01",
+   "old": [
+    "can you understand",
+    "kinstû begripe"
+   ],
+   "new": [
+    "can you understand",
+    "kinstû it begripe"
+   ],
+   "components": [
+    {
+     "known": "can you",
+     "target": "kinstû"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "to understand",
+     "target": "begripe"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0346L01",
+   "old": [
+    "I wanted her to know",
+    "ik woe dat se wist"
+   ],
+   "new": [
+    "I wanted her to know",
+    "ik woe dat se it wist"
+   ],
+   "components": [
+    {
+     "known": "I wanted",
+     "target": "ik woe"
+    },
+    {
+     "known": "that she",
+     "target": "dat se"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "knew",
+     "target": "wist"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0421L01",
+   "old": [
+    "because they already know",
+    "om't se no al witte"
+   ],
+   "new": [
+    "because they already know",
+    "om't se it no al witte"
+   ],
+   "components": [
+    {
+     "known": "because",
+     "target": "om't"
+    },
+    {
+     "known": "they",
+     "target": "se"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "already",
+     "target": "no al"
+    },
+    {
+     "known": "know",
+     "target": "witte"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0521L02",
+   "old": [
+    "that you'll forget",
+    "datstû ferjitte silst"
+   ],
+   "new": [
+    "that you'll forget",
+    "datstû it ferjitte silst"
+   ],
+   "components": [
+    {
+     "known": "that you",
+     "target": "datstû"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "to forget",
+     "target": "ferjitte"
+    },
+    {
+     "known": "will",
+     "target": "silst"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0606L01",
+   "old": [
+    "if I'd known then",
+    "as ik doe witten hie"
+   ],
+   "new": [
+    "if I'd known then",
+    "as ik it doe witten hie"
+   ],
+   "components": [
+    {
+     "known": "if",
+     "target": "as"
+    },
+    {
+     "known": "I",
+     "target": "ik"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "then",
+     "target": "doe"
+    },
+    {
+     "known": "known",
+     "target": "witten"
+    },
+    {
+     "known": "had",
+     "target": "hie"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0135L01",
+   "old": [
+    "I don't know",
+    "ik wit net"
+   ],
+   "new": [
+    "I don't know",
+    "ik wit it net"
+   ],
+   "components": [
+    {
+     "known": "I know",
+     "target": "ik wit"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0113L01",
+   "old": [
+    "why don't I know any more",
+    "wêrom wit ik net mear"
+   ],
+   "new": [
+    "why don't I know any more",
+    "wêrom wit ik it net mear"
+   ],
+   "components": [
+    {
+     "known": "why",
+     "target": "wêrom"
+    },
+    {
+     "known": "do I know",
+     "target": "wit ik"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not any more",
+     "target": "net mear"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0213L01",
+   "old": [
+    "we don't know",
+    "wy witte net"
+   ],
+   "new": [
+    "we don't know",
+    "wy witte it net"
+   ],
+   "components": [
+    {
+     "known": "we know",
+     "target": "wy witte"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0103L01",
+   "old": [
+    "we're not trying",
+    "wy besykje net"
+   ],
+   "new": [
+    "we're not trying",
+    "wy besykje it net"
+   ],
+   "components": [
+    {
+     "known": "we",
+     "target": "wy"
+    },
+    {
+     "known": "are trying",
+     "target": "besykje"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "not",
+     "target": "net"
+    }
+   ]
+  },
+  {
+   "key": "LEGO:S0059L01",
+   "old": [
+    "I know",
+    "ik wit"
+   ],
+   "new": [
+    "I know",
+    "ik wit it"
+   ],
+   "components": [
+    {
+     "known": "I",
+     "target": "ik"
+    },
+    {
+     "known": "know",
+     "target": "wit"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    }
+   ]
+  },
+  {
+   "key": "S0113L01B02",
+   "old": [
+    "and why don't I know any more?",
+    "en wêrom wit ik net mear?"
+   ],
+   "new": [
+    "and why don't I know any more?",
+    "en wêrom wit ik it net mear?"
+   ]
+  },
+  {
+   "key": "S0113L01U02",
+   "old": [
+    "I have learnt a few new words but why don't I know any more",
+    "ik haw in pear nije wurden leard mar wêrom wit ik net mear"
+   ],
+   "new": [
+    "I have learnt a few new words but why don't I know any more",
+    "ik haw in pear nije wurden leard mar wêrom wit ik it net mear"
+   ]
+  }
+ ]
+}
