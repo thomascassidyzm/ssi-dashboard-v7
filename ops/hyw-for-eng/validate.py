@@ -44,7 +44,7 @@ for s in sorted(seeds, key=lambda s: s['n']):
         lid = lego_id(n, l['idx']); l['id'] = lid
         lt = norm_tokens(l['target']); l['tok'] = lt
         if not lt or not l['known']: err(f"{l['where']}: empty side"); continue
-        pos = subseq(lt, st)
+        pos = all_positions(lt, st)
         if pos is None: err(f"{l['where']}: LEGO \"{l['target']}\" is not in seed {n} \"{s['target']}\"")
         else: covered.update(pos)
         syl = syllables(l['target'])

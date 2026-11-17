@@ -81,6 +81,13 @@ def subseq(needle, hay):
     for i, t in enumerate(hay):
         if j < n and t == needle[j]: pos.append(i); j += 1
     return pos if j == n else None
+def all_positions(needle, hay):
+    """every position covered by a contiguous occurrence; falls back to the in-order subsequence"""
+    n = len(needle); pos = set()
+    for i in range(len(hay) - n + 1):
+        if hay[i:i+n] == needle: pos.update(range(i, i + n))
+    if pos: return sorted(pos)
+    return subseq(needle, hay)
 def contains(needle, hay):
     n = len(needle)
     return any(hay[i:i+n] == needle for i in range(len(hay) - n + 1))
