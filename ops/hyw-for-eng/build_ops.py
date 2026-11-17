@@ -23,6 +23,12 @@ def chunks(per_seed):
         cur.append((n, ops))
     if cur: out.append(cur)
     return out
+def lego_position(phrase, lego):
+    # same rule as computeLegoPosition in services/course-builder/lib/phrase-structure.cjs
+    phrase = phrase.strip(); lego = lego.strip(); i = phrase.find(lego)
+    if i == -1 or not phrase: return None
+    c = (i + i + len(lego)) / 2 / len(phrase)
+    return 'start' if c < 0.33 else 'end' if c > 0.67 else 'middle'
 def seed_ops():
     seeds, errs = load_seeds(); assert not errs, errs
     eng = load_english(); gloss = load_gloss(); per = []
@@ -52,6 +58,10 @@ def phrase_ops():
             cand = [l for l in new if contains(l['tok'], st) and set(st) <= taught_at[l['id']]]
             earlier = [l for l in cand if l['seed'] < s['n']]
             host = earlier[-1] if earlier else (cand[0] if cand else None)
+        if host is None:
+            # the seed's own new LEGO is split inside the seed (a gapped LEGO): the sentence still belongs in its basket
+            split = [l for l in s['legos'] if l['new'] and subseq(l['tok'], st) is not None]
+            host = split[-1] if split else None
         if host is None: print(f"P26: seed {s['n']} has no basket to sit in"); continue
         have = [p for p in phrases.get(host['id'], []) if norm_tokens(p['target']) == st]
         if not have: extra.setdefault(host['id'], []).append({'role': 'use', 'known': s['known'], 'target': s['target'], 'seed_sentence': s['n']})
@@ -66,9 +76,12 @@ def phrase_ops():
             for pos, p in enumerate(ordered, 1):
                 if p['role'] == 'build': nb += 1; pid = f"{COURSE}:{l['id']}B{nb:02d}"
                 else: nu += 1; pid = f"{COURSE}:{l['id']}U{nu:02d}"
+                # the row shape the app's own phrase writers use (course-builder seed-complete.cjs, shared/phrase-v4-door.cjs):
+                # word_count is the target's character length, lego_count the known side's word count
                 ops.append({'op': 'phrase.insert', 'row': {'id': pid, 'seed_number': s['n'], 'lego_index': l['idx'], 'known_text': p['known'], 'target_text': p['target'],
-                            'phrase_role': p['role'], 'position': pos, 'introduce': True, 'status': 'draft', 'metadata': {'format': 'build_use'},
-                            'target_text_roman': roman(p['target'])}})
+                            'phrase_role': p['role'], 'position': pos, 'introduce': True, 'status': 'draft', 'version': 1, 'metadata': {'format': 'build_use'},
+                            'word_count': len(p['target']), 'lego_count': len(p['known'].split()), 'connected_lego_ids': [],
+                            'lego_position': lego_position(p['target'], l['target']), 'target_text_roman': roman(p['target'])}})
         total += len(ops)
         if ops: per.append((s['n'], ops))
     print(f'{total} phrase rows ({sum(len(v) for v in extra.values())} of them seed sentences added under P26)')
