@@ -109,7 +109,7 @@ No cuts are drafted.
 
 **Detector families that came back clean or not a defect (main):**
 - **qmark_mismatch, 96:** 92 are a Chinese question with 吗/什么… but no "？". That is punctuation only, and the meaning is carried by the question word. 3 more have a question word. 1 is a formal-you row (KNOWN).
-- **seed_not_played, 85:** 41 seeds have no new LEGO, which is fine (Kai, 4 Nov). 37 have a played copy with slightly different English. 7 are not played at all: 82, 129 and 259 are KNOWN (#431/#435); 293, 345, 469 and 1 more are listed in the JSON family "seed not played".
+- **seed_not_played, 85:** 41 seeds have no new LEGO, which is fine (Kai, 4 Nov). 37 have a played copy with slightly different English. 7 are not played at all: 82, 129 and 259 are KNOWN (#431/#435); 293, 345, 469 and 529 are REAL: add the seed copy on the seed clips (0 chars).
 - **notnew_untaught, 7:** all labels already KNOWN (K26, A10), or unplayed.
 - **empty_audio:** 0 live. The orchestrator's 27 were fixed today by #449/#451.
 - **27 seed numbers are absent from the course** (31, 119, 124, 127 …). I did not check whether that is intended (see GAPS).
