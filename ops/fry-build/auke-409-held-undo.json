@@ -1,0 +1,58 @@
+{
+ "family": "held",
+ "event_id": "5c5970e9-a5d7-481e-9328-7caa938c7b26",
+ "undo_file_on_popty": "2026-11-17T12-13-09-198Z-5c5970e9-a5d7-481e-9328-7caa938c7b26.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0024L02B01",
+  "S0024L02B02",
+  "S0024L03U06",
+  "S0052L01U04"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0052L01U04",
+   "set": {
+    "known_text": "he wanted to ask his name yesterday",
+    "target_text": "hy woe juster syn namme freegje",
+    "target1_audio_id": "f16cd958-bbe7-40c4-883c-8c8079705afa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0034L04U04",
+   "set": {
+    "known_text": "I must ask her name when other people are here",
+    "target_text": "ik moat har namme freegje as hjir oare minsken binne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03U06",
+   "set": {
+    "known_text": "I'd like to be able to remember what I mean",
+    "target_text": "ik wol graach ûnthâlde kinne wat ik bedoel",
+    "target1_audio_id": "9d980154-7b11-4c30-9fef-d58f3d534eac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02B02",
+   "set": {
+    "known_text": "we want to remember each other",
+    "target_text": "wy wolle inoar ûnthâlde",
+    "target1_audio_id": "b5a31ed3-b19a-41fe-8cfe-9ff529472b30"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02B01",
+   "set": {
+    "known_text": "to remember what I mean",
+    "target_text": "ûnthâlde wat ik bedoel",
+    "target1_audio_id": "caebba35-00f1-4112-af31-fa428d7d5c97"
+   }
+  }
+ ]
+}

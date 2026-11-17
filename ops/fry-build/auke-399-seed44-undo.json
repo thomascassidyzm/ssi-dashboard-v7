@@ -1,0 +1,169 @@
+{
+ "family": "seed44",
+ "event_id": "e8970c65-9eb7-45d0-a20d-7c7f081fd9de",
+ "undo_file_on_popty": "2026-11-17T11-48-03-144Z-e8970c65-9eb7-45d0-a20d-7c7f081fd9de.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "SEED44",
+  "LEGO:S0044L02",
+  "S0044L02B02",
+  "S0044L02B03",
+  "S0044L02B04",
+  "S0044L02B01",
+  "S0044L02U01",
+  "S0044L02U02",
+  "S0044L02U03",
+  "S0049L02B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0044L02C06"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02C02",
+   "set": {
+    "known_text": "it",
+    "target_text": "it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L02U05",
+   "set": {
+    "target_text": "astû witst oft it noch better moat, sil ik myn bêst dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L02B03",
+   "set": {
+    "target_text": "astû witst oft it noch better moat",
+    "target1_audio_id": "07893b7c-b2c9-4dcd-bb8a-4b2fbce8cecb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U03",
+   "set": {
+    "target_text": "hy wol net witte oft it noch better moat",
+    "target1_audio_id": "a019f3e3-1f76-4e43-9c86-2b463d0b80ed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U02",
+   "set": {
+    "target_text": "ik sil freegje oft it noch better moat",
+    "target1_audio_id": "e5643aca-38e9-456d-931a-24be1e517434"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U07",
+   "set": {
+    "target_text": "ik wol graach sa gau mooglik witte oft it noch better moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U06",
+   "set": {
+    "target_text": "ik bin der net wis fan oft it noch better moat mar ik sil myn bêst dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U04",
+   "set": {
+    "target_text": "ik fiel my goed mar ik bin der net wis fan oft it noch better moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U05",
+   "set": {
+    "target_text": "sy wol witte oft it noch better moat foar't ik gean moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02U01",
+   "set": {
+    "target_text": "woestû witte oft it noch better moat?",
+    "target1_audio_id": "af90480a-80b7-4799-af12-ba313ba9e8ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02B01",
+   "set": {
+    "target_text": "ik bin der net wis fan oft it noch better moat",
+    "target1_audio_id": "e2cece98-3b8d-49c0-ba48-76a5f52814ef"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02B04",
+   "set": {
+    "target_text": "oft it noch better moat foar't ik gean moat",
+    "target1_audio_id": "d51e5272-fc4e-4579-84ed-76bf3c4d8a6d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02B03",
+   "set": {
+    "target_text": "ik woe freegje oft it noch better moat",
+    "target1_audio_id": "1d923e50-6253-480c-b4f8-e8facb6fef43"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0044L02B02",
+   "set": {
+    "target_text": "witte oft it noch better moat",
+    "target1_audio_id": "41a5f83d-f3a8-41c6-a159-37c1d68e6cf1"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "28e8e2c4-fa86-49b5-be6c-3050dadd1dc4",
+   "set": {
+    "target_text": "oft it noch better moat",
+    "components": [
+     {
+      "known": "whether",
+      "target": "oft"
+     },
+     {
+      "known": "it",
+      "target": "it"
+     },
+     {
+      "known": "still",
+      "target": "noch"
+     },
+     {
+      "known": "better",
+      "target": "better"
+     },
+     {
+      "known": "must",
+      "target": "moat"
+     }
+    ],
+    "target1_audio_id": "d54f891f-ee8f-4573-98a5-4728099ddc19"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 44,
+   "set": {
+    "target_text": "Of oft it noch better moat.",
+    "target1_audio_id": "581d113e-86d5-443b-9381-03c2e399ecc7"
+   }
+  }
+ ]
+}

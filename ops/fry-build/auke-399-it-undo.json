@@ -1,0 +1,483 @@
+{
+ "family": "it",
+ "event_id": "fd441f20-3390-4725-81e4-6d145a284c68",
+ "undo_file_on_popty": "2026-11-17T11-49-43-367Z-fd441f20-3390-4725-81e4-6d145a284c68.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0049L02U02",
+  "S0059L01B01",
+  "S0060L01B03",
+  "S0060L01U02",
+  "S0060L01U03",
+  "S0060L01U04",
+  "S0091L01U01",
+  "S0136L02B02",
+  "S0150L02B04",
+  "S0150L02U03",
+  "S0152L02U01",
+  "S0152L02U02",
+  "S0152L02U05",
+  "S0153L02U05",
+  "S0154L02U05",
+  "S0175L01U03",
+  "S0177L01U01",
+  "S0179L02U01",
+  "S0236L01U03",
+  "S0255L01U04",
+  "S0261L02U04",
+  "S0287L01U02",
+  "S0174L01B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0453L01B02",
+   "set": {
+    "target_text": "seine se net?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0464L02U01",
+   "set": {
+    "target_text": "ik frege wat myn keamernûmer wie, mar sy seine net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0544L01U03",
+   "set": {
+    "target_text": "wa't ek sei datstû ferjitte silst, hie it mis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02U06",
+   "set": {
+    "target_text": "sy seine net datstû ferjitte silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02U05",
+   "set": {
+    "target_text": "dyn freon sei datstû ferjitte silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B04",
+   "set": {
+    "target_text": "dat betsjut net datstû ferjitte silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B03",
+   "set": {
+    "target_text": "sy seine datstû ferjitte silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B02",
+   "set": {
+    "target_text": "ik bin der wis fan datstû ferjitte silst"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0311L03B03",
+   "set": {
+    "target_text": "net leauwe kinne"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0311L03B02",
+   "set": {
+    "target_text": "sy koe net leauwe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01U02",
+   "set": {
+    "target_text": "ik besykje út te lizzen wat ik bedoel, kinstû begripe?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01B03",
+   "set": {
+    "target_text": "it is dreech, kinstû begripe?",
+    "target1_audio_id": "33bb4c6c-9b94-4d66-9311-479a17859894"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0511L02B02",
+   "set": {
+    "target_text": "ik woe dat se wist foar't elkenien it nijs wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0642L01U01",
+   "set": {
+    "target_text": "as ik doe witten hie, mefrou, hie ik wachte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L02U05",
+   "set": {
+    "target_text": "as ik doe witten hie, hie ik de dingen oars dien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01U05",
+   "set": {
+    "target_text": "as ik doe witten hie, hie ik dy holpen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01U01",
+   "set": {
+    "target_text": "as ik doe witten hie, hie ik soarchfâldiger neitocht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01B02",
+   "set": {
+    "target_text": "ik hie mear neitocht as ik doe witten hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0537L01B02",
+   "set": {
+    "target_text": "ik wist net en ik hie it mis"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0523L02U04",
+   "set": {
+    "target_text": "hy stiet dêre allinne ynpleats fan in ekskús te jaan om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0458L04U06",
+   "set": {
+    "target_text": "it is folle makliker om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0455L01U01",
+   "set": {
+    "target_text": "wy moasten fuortgean om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0438L01U01",
+   "set": {
+    "target_text": "sy woene net sa'n dúdlike fraach stelle om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0435L02U01",
+   "set": {
+    "target_text": "sy koene it om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0432L04U02",
+   "set": {
+    "target_text": "it is better datstû fregest om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0421L01U05",
+   "set": {
+    "target_text": "sy binne stil om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0421L01U04",
+   "set": {
+    "target_text": "wy hoege net te freegjen om't se no al witte"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01U03",
+   "set": {
+    "target_text": "ik hie gjin tiid hoewol't ik woe dat se wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01B03",
+   "set": {
+    "target_text": "hoewol't ik woe dat se wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01B01",
+   "set": {
+    "target_text": "om't ik woe dat se wist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0287L01U02",
+   "set": {
+    "target_text": "ik wit net, hoefolle minsken kenstû?",
+    "target1_audio_id": "c7c61234-38c1-41a3-8b34-437882d82d36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0280L01U05",
+   "set": {
+    "target_text": "ik hie it wichtichste putsje dien as ik witten hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0261L02U04",
+   "set": {
+    "target_text": "ik tink dat it wat wichtichs is mar ik wit noch net",
+    "target1_audio_id": "14913605-b7ce-432c-93f8-2f110ebd22a8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0255L01U04",
+   "set": {
+    "target_text": "ik wit net, wannear tinkstû?",
+    "target1_audio_id": "98636c77-9c91-4f59-b16e-901d26ea5f59"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0236L01U03",
+   "set": {
+    "target_text": "ik wit noch net mar ik ken ien",
+    "target1_audio_id": "299795d3-de2f-4df8-9f21-f40cb39e78c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0221L01U03",
+   "set": {
+    "target_text": "ik hie it fuotbal sjoen as ik witten hie"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0196L02B03",
+   "set": {
+    "target_text": "ik wit noch net, hastû it lêste idee heard?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0190L02U05",
+   "set": {
+    "target_text": "ik wit noch net mar ik haw in pear fragen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0179L02U01",
+   "set": {
+    "target_text": "ik wit noch net, wat silstû dwaan?",
+    "target1_audio_id": "0190bc81-b7ec-427e-acde-3396aeebca1d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L01U01",
+   "set": {
+    "target_text": "ik wit noch net mar ik sil har freegje",
+    "target1_audio_id": "d24f1c85-9ff2-42d8-93c0-fe87f2660394"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U01",
+   "set": {
+    "target_text": "ik wit noch net mar ik sil him freegje wat ik dwaan moat"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0175L01U03",
+   "set": {
+    "target_text": "ik wit noch net, wat wolstû dwaan?",
+    "target1_audio_id": "027d381e-a6ab-4b7c-8648-7c628e7857b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0154L02U05",
+   "set": {
+    "target_text": "ik wit noch net, wêr wolstû moetsje?",
+    "target1_audio_id": "539ce0eb-9670-4ecd-ad5a-b7f8569eaecf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0153L02U05",
+   "set": {
+    "target_text": "ik hie it net sein as ik witten hie",
+    "target1_audio_id": "927424d1-b789-49d7-a2ca-447653b0d294"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U05",
+   "set": {
+    "target_text": "ik hie dy holpen as ik witten hie",
+    "target1_audio_id": "02428b2b-d729-4628-983c-a83014a2f99e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U02",
+   "set": {
+    "target_text": "as ik witten hie, hie ik it oars dien",
+    "target1_audio_id": "abe113c9-fb1b-46b8-9029-b8fa9a192ac0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U01",
+   "set": {
+    "target_text": "ik hie it oars dien as ik witten hie",
+    "target1_audio_id": "9774177a-18ca-4cf8-b95f-39efa47b8b81"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02U03",
+   "set": {
+    "target_text": "astû witst kinstû my fertelle wêr't it wie",
+    "target1_audio_id": "e255ca6a-e609-4c7b-9910-4b1380c7b5bb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02B04",
+   "set": {
+    "target_text": "astû witst kinstû my fertelle",
+    "target1_audio_id": "b538d46e-5f3e-441e-884a-a2806405ae28"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B02",
+   "set": {
+    "target_text": "ik wit noch net, mar fansels kinstû har freegje",
+    "target1_audio_id": "4a7969a8-209c-4100-88bf-f192ff87406f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U01",
+   "set": {
+    "target_text": "ik wit noch net mar it is dreech",
+    "target1_audio_id": "99b710f0-49ed-4354-8189-2bc237aeac17"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0068L02U01",
+   "set": {
+    "target_text": "ik wit noch net, wat sikestû hjir?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L01U06",
+   "set": {
+    "target_text": "ik wit noch net, wolstû letter weromkomme?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U07",
+   "set": {
+    "target_text": "ik wit noch net mar ik wol graach in bytsje mear tiid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U04",
+   "set": {
+    "target_text": "ik wit noch net mar ik sil myn bêst dwaan",
+    "target1_audio_id": "60df17fc-8dd3-47d1-9e3a-73250833a9c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U03",
+   "set": {
+    "target_text": "sy wol witte mar ik wit noch net",
+    "target1_audio_id": "769731ac-bec2-416c-bebe-c203f0a97895"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U02",
+   "set": {
+    "target_text": "ik wit noch net en it makket my neat út",
+    "target1_audio_id": "71add29f-32a8-43d1-868d-f2587ad73a23"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U01",
+   "set": {
+    "target_text": "ik lear al sawat in wike mar ik wit noch net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01B03",
+   "set": {
+    "target_text": "ik besykje it, mar ik wit noch net",
+    "target1_audio_id": "c15ecbb6-c882-42f0-a820-847df1354c4c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L01B01",
+   "set": {
+    "target_text": "ik wit net",
+    "target1_audio_id": "84b004ff-7b57-4ef5-9071-38f3504f40da"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L02U02",
+   "set": {
+    "target_text": "sy wol witte wat it antwurd is, astû witst",
+    "target1_audio_id": "0dcdbef5-61a7-4a0b-85bc-2262599f2dfd"
+   }
+  }
+ ]
+}
