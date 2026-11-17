@@ -18,6 +18,9 @@ const { normalizeForAudio, foldTypography } = require('../../services/shared/tex
 const COURSE = 'fry_for_eng', POPTY = 'http://localhost:3470', WHO = 'cs-428-fry-english'
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const [lo, hi] = String(opt('--seeds', '1-668')).split('-').map(Number)
+// --again EXISTS_IN_LANGUAGE: the second pass Kai approved 17 Nov 13:18Z — re-ask items refused with that code, run ONLY once
+// Popty's voice-aware fix to the check is live (never with an approval token to route round it).
+const AGAIN = opt('--again', null)
 const CONC = Number(opt('--concurrency', 2)), STOP_AT = Number(opt('--stop-at', 600000))
 const LEDGER = process.env.LEDGER || path.join(process.env.HOME, 'ssi-evidence/ssi-dashboard-v7/ops/fry-build/428/ledger.jsonl')
 fs.mkdirSync(path.dirname(LEDGER), { recursive: true })
@@ -34,7 +37,7 @@ const STOP_CODES = ['DAILY_TOTAL_CAP', 'DAILY_CAP', 'POOL_SHARE', 'STOPPED_BY_TO
 const stopCode = (out) => STOP_CODES.find(c => out.code === c || String(out.error || '').includes(`(402) ${c}`))
 const done = new Map(); let spent = 0
 if (fs.existsSync(LEDGER)) for (const l of fs.readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean)) {
-  const e = JSON.parse(l); if (e.kind === 'render' || e.kind === 'refused') done.set(e.key, e); if (e.kind === 'render') spent += e.charsSpent || 0
+  const e = JSON.parse(l); if (e.kind === 'render' || (e.kind === 'refused' && e.code !== AGAIN)) done.set(e.key, e); else if (e.kind === 'refused' && !(done.get(e.key) || {}).audioId) done.delete(e.key); if (e.kind === 'render') spent += e.charsSpent || 0
 }
 const log = (e) => fs.appendFileSync(LEDGER, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n')
 const hdr = { 'Content-Type': 'application/json', 'x-agent-id': WHO, 'x-agent-role': 'audio-render' }
