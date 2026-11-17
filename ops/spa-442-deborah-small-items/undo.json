@@ -1,5 +1,780 @@
-{
- "event_id": null,
- "undo_file": null,
- "undo_ops": null
-}
+[
+ {
+  "ops_range": [
+   0,
+   5
+  ],
+  "event_id": "e803b5ad-3b4c-44b4-bd02-0eb61964d49e",
+  "undo_file": "2026-11-17T14-57-53-919Z-e803b5ad-3b4c-44b4-bd02-0eb61964d49e.json",
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0567L03B04",
+    "set": {
+     "known_text": "in my opinion watching the children play",
+     "target_text": "en mi opinión viendo a los niños jugar",
+     "known_audio_id": "71af3295-1daa-4524-81a2-b9df3211dff1",
+     "target1_audio_id": "38e671dd-5356-432b-8cf8-f07e81bf382c",
+     "target2_audio_id": "f8724c22-af46-437d-a5d0-d44fe2be4c42"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0567L03B03",
+    "set": {
+     "target_text": "me encanta viendo a los niños jugar",
+     "target1_audio_id": "2d6d01bf-f4aa-4abc-8b57-8d7d42266c84",
+     "target2_audio_id": "5ddcdf24-f749-4453-bd4e-467ecc9eeb01"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0110L03U11",
+    "set": {
+     "target_text": "Sé que necesito relajarme pero me es difícil parar cuando estoy disfrutando aprender mucho",
+     "target1_audio_id": "cafcaf2f-0808-45bb-bb3c-17ca3ee5ff21",
+     "target2_audio_id": "985f68be-167e-4a1c-90a5-4f51443b5efe"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0214L02U06",
+    "set": {
+     "target_text": "Disfruto hablar contigo el fin de semana",
+     "target1_audio_id": "b211da87-4b49-4513-a35e-37f6ef6b0715",
+     "target2_audio_id": "5b82e323-9977-4548-9e9e-24fd1d6f0cd7"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0206L02U09",
+    "set": {
+     "target_text": "Disfruto tener esta oportunidad de practicar aunque es difícil de vez en cuando",
+     "target1_audio_id": "b0be81d0-f740-4689-b040-9c09883f552b",
+     "target2_audio_id": "d629c900-47d7-45f3-8daf-dd4293ea144d"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0206L02U03",
+    "set": {
+     "target_text": "Disfruto tener la oportunidad de hablar contigo porque aprendemos mucho",
+     "target1_audio_id": "956fe061-48ae-4039-b3f7-651073b33292",
+     "target2_audio_id": "5d7b32e5-e899-4e4a-913d-f83b92c09a3d"
+    }
+   }
+  ]
+ },
+ {
+  "ops_range": [
+   6,
+   11
+  ],
+  "event_id": "36c692ea-5ecd-4530-b20f-f26e5af72b76",
+  "undo_file": "2026-11-17T14-58-11-783Z-36c692ea-5ecd-4530-b20f-f26e5af72b76.json",
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0480L01U01",
+    "set": {
+     "target_text": "diga lo que diga, ella sabe mejor",
+     "target1_audio_id": "54998c40-4e90-4fdc-943f-ec43c7998c75",
+     "target2_audio_id": "bcac07c5-17fc-448c-8f64-e6a06e401ddc"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0535L01U04",
+    "set": {
+     "known_text": "she made a promise that it was yesterday",
+     "target_text": "hizo la promesa de que fue ayer",
+     "known_audio_id": "eab9d4d0-fc06-4682-ac11-d9f82772589e",
+     "target1_audio_id": "e8aba9f4-e1e3-4c70-8ded-5004cdcd24ae",
+     "target2_audio_id": "5e47530d-1ea6-4a21-9907-9d98632177a7"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0535L02B03",
+    "set": {
+     "known_text": "she wouldn't choose the way",
+     "target_text": "no elegiría el camino",
+     "known_audio_id": "e81647cb-bb83-439c-893e-43ac51081484",
+     "target1_audio_id": "7b065209-2e7b-4d00-84e5-4bef917f3aec",
+     "target2_audio_id": "60c8c7b2-c802-48bd-82da-c9e56970329d"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0515L01U05",
+    "set": {
+     "known_text": "on the first day of the journey",
+     "target_text": "el primer día del camino",
+     "known_audio_id": "e673f665-de6d-42d5-afdc-35dec7e825d3",
+     "target1_audio_id": "488ed881-fc22-4d83-a369-8caa7c830fe8",
+     "target2_audio_id": "23a57f78-892b-4e47-8d8e-08749435c071"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0515L01U04",
+    "set": {
+     "known_text": "the first day of the journey was good",
+     "target_text": "el primer día del camino fue bueno",
+     "known_audio_id": "4feb31d4-1719-4499-9986-d75acb143a2e",
+     "target1_audio_id": "d8f9df7f-b344-437f-8a14-866dabd64ee2",
+     "target2_audio_id": "184692c5-ae7b-49f8-a7ec-2c0433a8571b"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0567L03U03",
+    "set": {
+     "target_text": "ha sido estupendo viendo a los niños jugar",
+     "target1_audio_id": "28ec12f3-c2b5-47fe-b948-0247efc9129a",
+     "target2_audio_id": "661b6e06-7c61-4701-9964-21646d4538d9"
+    }
+   }
+  ]
+ },
+ {
+  "ops_range": [
+   12,
+   17
+  ],
+  "event_id": "d410ca4c-119c-47b1-87a6-683216cf19f1",
+  "undo_file": "2026-11-17T14-58-24-885Z-d410ca4c-119c-47b1-87a6-683216cf19f1.json",
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0662L01U03",
+    "set": {
+     "known_text": "I can hear you all speak it",
+     "target_text": "puedo escuchar que lo habláis",
+     "known_audio_id": "75830a01-f486-4590-8f2b-b36344fb48fd",
+     "target1_audio_id": "bb01f2fb-947b-490e-9ab4-d256d3f8a89c",
+     "target2_audio_id": "5fe045db-257f-4513-a5e1-0e23abbabfdb"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0647L01U05",
+    "set": {
+     "known_text": "I can hear you speak it",
+     "target_text": "puedo escuchar que lo habla",
+     "known_audio_id": "e00162ef-3b5e-4129-ada4-38cfeccacfca",
+     "target1_audio_id": "e7042fb8-fb4f-4400-970e-ebf3a404f3ea",
+     "target2_audio_id": "80e80816-382f-4b83-bc76-1cf850366a80"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0213L01U09",
+    "set": {
+     "known_text": "He told me not to explain anything about it",
+     "known_audio_id": "b7ce4997-7b93-456f-9bd4-7f6fdb1bba28"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0144L01U06",
+    "set": {
+     "known_text": "I woke up this morning with the idea that I want to practise Spanish more",
+     "target_text": "Me desperté esta mañana con la idea de que quiero practicar español más",
+     "known_audio_id": "46884a66-b67c-48f8-aaa9-2f85dd2cbdf2",
+     "target1_audio_id": "ff67df79-eceb-4e18-ad17-35ba28037518",
+     "target2_audio_id": "8be6c812-9711-4673-ba67-f04a303623fc"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0619L01U06",
+    "set": {
+     "known_text": "we don't see each other any longer",
+     "target_text": "no nos vemos por más tiempo",
+     "known_audio_id": "50c8b012-67c9-4766-8ff7-3bc062416003",
+     "target1_audio_id": "ee83693b-62f6-44dd-ba3c-f68622e3f3e5",
+     "target2_audio_id": "d55f9ab6-eb6b-405f-bbda-0668f05f48fa"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0537L01U04",
+    "set": {
+     "target_text": "pero estaba equivocado sobre todo",
+     "target1_audio_id": "bb8cd94c-5937-443c-9e74-6d201c47fb41",
+     "target2_audio_id": "2cb3e27b-0168-46e8-9746-cbabf1169db5"
+    }
+   }
+  ]
+ },
+ {
+  "ops_range": [
+   18,
+   23
+  ],
+  "event_id": "302c07da-6daa-4092-b3c9-edb2dd2e8ca9",
+  "undo_file": "2026-11-17T14-58-32-980Z-302c07da-6daa-4092-b3c9-edb2dd2e8ca9.json",
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U06",
+    "set": {
+     "known_text": "That elderly man seems to know a lot about this language and wants to talk about it",
+     "known_audio_id": "5feef6db-9e6e-4829-90f4-0423f0c85d84"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U04",
+    "set": {
+     "known_text": "He said he did not want to talk to that elderly man about what he was doing",
+     "known_audio_id": "ebb6e539-0725-47ff-a1ef-41282e86fb38"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02B05",
+    "set": {
+     "known_text": "That elderly man works in the same place as my friend and is very helpful",
+     "known_audio_id": "d1e9d2c4-87a0-41b9-9342-76d2e67597cd"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02B02",
+    "set": {
+     "known_text": "An elderly man",
+     "known_audio_id": "fbdbe986-82a3-4df6-a6ee-afbcff74898b"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0133L01U05",
+    "set": {
+     "target_text": "Cuando llegas a conocer a alguien nuevo puede ser menos emocionante de lo que pensaste",
+     "target1_audio_id": "457f5c8d-5a05-4bf3-9590-00ee2e7244c5",
+     "target2_audio_id": "55a7478c-b70e-4092-9c0e-3e368eadbc5c"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0427L01C01",
+    "set": {
+     "known_text": "you thought",
+     "known_audio_id": "42c9a6db-9c72-47dc-9906-eb6ddc361edf"
+    }
+   }
+  ]
+ },
+ {
+  "ops_range": [
+   24,
+   29
+  ],
+  "event_id": "f22bb830-ab85-4b0f-95cc-033a65485c97",
+  "undo_file": "2026-11-17T14-58-40-310Z-f22bb830-ab85-4b0f-95cc-033a65485c97.json",
+  "undo_ops": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0567L03B02",
+     "seed_number": 567,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "I'm sure that watching the children play",
+     "target_text": "estoy seguro de que viendo a los niños jugar",
+     "word_count": 44,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "prev_target": "viendo a los niños jugar, sí",
+      "regen_model": "sonnet",
+      "regenerated": "template-stamp-2026-07-24"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:58:36.667Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8e74cdd0-7875-4f46-aa98-4ff72178afb0",
+     "target1_audio_id": "9d4779a8-1db8-4029-9469-de14fc69fdbc",
+     "target2_audio_id": "572041f1-e869-471b-b168-1acf48d6977a",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "watching the children play",
+       "legoId": "S0567L03",
+       "target": "viendo a los niños jugar",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U15",
+    "set": {
+     "known_text": "That elderly man was working in the same office as my friend a while ago",
+     "known_audio_id": "911c13ed-51bd-467d-b8c0-9b5fa8bf8080"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U11",
+    "set": {
+     "known_text": "That elderly man wanted to tell me something new but I did not have time to listen",
+     "known_audio_id": "cd3d81a7-2cd5-45ce-8355-a12d439d34df"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U10",
+    "set": {
+     "known_text": "I know an elderly man who knew the answer to what we were trying to find out",
+     "known_audio_id": "e6e47357-1102-47bc-9c85-3cdd46fd38fc"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U09",
+    "set": {
+     "known_text": "I will ask that elderly man if he wants to talk about what we need",
+     "known_audio_id": "480e7610-d9cc-44b0-af54-bbd25ef29885"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0231L02U07",
+    "set": {
+     "known_text": "I think that elderly man wanted to talk to you about something interesting",
+     "known_audio_id": "8368cf3a-19fc-4710-bc7a-8544a0386d73"
+    }
+   }
+  ]
+ },
+ {
+  "ops_range": [
+   30,
+   34
+  ],
+  "event_id": "a9536496-a7cc-40ba-a68b-e1aa82d182cd",
+  "undo_file": "2026-11-17T14-58-41-892Z-a9536496-a7cc-40ba-a68b-e1aa82d182cd.json",
+  "undo_ops": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0623L01U07",
+     "seed_number": 623,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "we had tea",
+     "target_text": "teníamos té",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-27T11:27:31.539Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-07-27T11:27:31.592Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "510571a8-be54-476e-b38c-a5b9dda50f35",
+     "target1_audio_id": "c457bcc6-4d51-4199-abec-b36ccfb8e16e",
+     "target2_audio_id": "057e938c-c274-47b6-8f02-066578bf0e55",
+     "qa_checked": null,
+     "target1_duration_ms": 800,
+     "target2_duration_ms": 880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0150L03U02",
+     "seed_number": 150,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "I know what you are called but I am trying to remember now",
+     "target_text": "Sé cómo te llamas pero estoy intentando recordar ahora",
+     "word_count": 54,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T20:29:20.372Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-02-17T20:29:20.406Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "45ea2ce3-168e-4f13-bb0b-47d15863a185",
+     "target1_audio_id": "b5a48df2-7c2a-45a6-a455-052eaa255267",
+     "target2_audio_id": "9a5e3c92-e3ff-40b3-82f1-948e66e6c768",
+     "qa_checked": "2026-02-17T21:56:18.454Z",
+     "target1_duration_ms": 3200,
+     "target2_duration_ms": 3440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": "Sé",
+       "isGhost": false
+      },
+      {
+       "known": "how",
+       "legoId": "S0003L01",
+       "target": " cómo",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " te",
+       "isGhost": true
+      },
+      {
+       "known": "you are called",
+       "legoId": "S0150L03",
+       "target": " llamas",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "but I'm",
+       "legoId": "S0039L01",
+       "target": " pero estoy",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " intentando",
+       "isGhost": true
+      },
+      {
+       "known": "to remember",
+       "legoId": "S0006L01",
+       "target": " recordar",
+       "isGhost": false
+      },
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": " ahora",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0197L03U10",
+     "seed_number": 197,
+     "lego_index": 3,
+     "position": 16,
+     "known_text": "My friend works in the language and he says it is very interesting",
+     "target_text": "Mi amigo trabaja en el idioma y dice que es muy interesante",
+     "word_count": 59,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T20:36:16.384Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-02-17T20:36:16.428Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e05c3189-9618-4407-88f2-842adfcd56df",
+     "target1_audio_id": "8ce554eb-5bb6-42d0-a2cf-cd2d680e272c",
+     "target2_audio_id": "fa609e56-1338-435c-ad15-c7d7a7914b11",
+     "qa_checked": "2026-02-17T21:56:45.154Z",
+     "target1_duration_ms": 3280,
+     "target2_duration_ms": 3280,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "my friend",
+       "legoId": "S0084L02",
+       "target": "Mi amigo",
+       "isGhost": false
+      },
+      {
+       "known": "works",
+       "legoId": "S0197L03",
+       "target": " trabaja",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0004L01",
+       "target": " en",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " el",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " idioma",
+       "isGhost": true
+      },
+      {
+       "known": "and",
+       "legoId": "S0015L03",
+       "target": " y",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dice",
+       "isGhost": true
+      },
+      {
+       "known": "who",
+       "legoId": "S0163L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " es",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muy",
+       "isGhost": true
+      },
+      {
+       "known": "interesting",
+       "legoId": "S0163L02",
+       "target": " interesante",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0535L01B02",
+     "seed_number": 535,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "he made a promise that",
+     "target_text": "hizo la promesa de que",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:50:12.009Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "14197d06-33a4-4359-b842-6c78fc5c5c1c",
+     "target1_audio_id": "cbf25d0c-7524-4963-9c36-a3ee33c2e564",
+     "target2_audio_id": "0763c571-81d0-49fa-89df-2f74ce4ff99b",
+     "qa_checked": null,
+     "target1_duration_ms": 1280,
+     "target2_duration_ms": 1600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he made a promise that",
+       "legoId": "S0535L01",
+       "target": "hizo la promesa de que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "yes",
+       "legoId": "S0097L01",
+       "target": " sí",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "spa_for_eng:S0550L01B03",
+     "seed_number": 550,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "I'm sure that the end of the village is the way",
+     "target_text": "estoy seguro de que el final del pueblo es el camino",
+     "word_count": 52,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "prev_target": "el final del pueblo aquí, bien",
+      "regen_model": "sonnet",
+      "regenerated": "template-stamp-2026-07-24"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-05-28T15:53:35.738Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e816824c-1f38-4ac4-ad84-c47eb34ea46b",
+     "target1_audio_id": "073d9c85-9262-4ba4-8421-f47ed7e1da12",
+     "target2_audio_id": "0c33e9d9-1c13-4833-aadd-5e0fbca2843d",
+     "qa_checked": null,
+     "target1_duration_ms": 3040,
+     "target2_duration_ms": 3360,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "the end of the village",
+       "legoId": "S0550L01",
+       "target": "el final del pueblo",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aquí,",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bien",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   }
+  ]
+ }
+]
