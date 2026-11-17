@@ -1,0 +1,212 @@
+{
+ "family": "seed7",
+ "event_id": "0a2fe0a0-39c8-4b17-af99-62578a4f6c12",
+ "undo_file_on_popty": "2026-11-17T11-47-43-536Z-0a2fe0a0-39c8-4b17-af99-62578a4f6c12.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "SEED7",
+  "LEGO:S0007L03",
+  "S0038L03U03",
+  "S0007L03B03",
+  "S0007L03B01",
+  "S0007L03B02",
+  "S0007L03B04",
+  "S0007L03U03",
+  "S0007L03U02",
+  "S0007L03U05",
+  "S0007L03U01",
+  "S0007L03U04",
+  "S0010L02U06",
+  "S0010L04U05",
+  "S0011L03U04",
+  "S0026L02U04",
+  "S0056L02U07",
+  "S0085L02U04"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03C01",
+   "set": {
+    "known_text": "hard",
+    "target_text": "hurd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02U04",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan mar ik ken dy minsken net",
+    "target1_audio_id": "7857a0a0-5f29-46d7-a8fe-94c4f16aab06"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U07",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan sadat ik ûnthâlde kin",
+    "target1_audio_id": "7c3dfb54-2a98-4394-91c2-e1e7bdd96ad6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0030L01U03",
+   "set": {
+    "target_text": "hy wol letter weromkomme en ik woe hurd myn bêst dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U04",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan as ik it gefoel ha dat sy my helpe sil",
+    "target1_audio_id": "6766941a-5c34-45e0-a331-030f2290204d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L04U07",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan foar't ik gean moat om't ik minsken moetsje wol"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L01U07",
+   "set": {
+    "target_text": "ik moat moarn hurd myn bêst dwaan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U04",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan astû útpraat bist",
+    "target1_audio_id": "b0bbdff2-1bd4-4170-a77d-8c4f2d099766"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L04U05",
+   "set": {
+    "target_text": "ik wol hjoed hurd myn bêst dwaan, ik bin der net wis fan oft ik de hiele sin noch wit",
+    "target1_audio_id": "a00ae11a-dde0-4d2e-a14d-8dc6b69a22ed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L02U06",
+   "set": {
+    "target_text": "ik sil hjoed hurd myn bêst dwaan, ik bin der net wis fan oft ik Frysk prate kin",
+    "target1_audio_id": "a4125495-5748-4c17-91c0-0c3f367b362d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U04",
+   "set": {
+    "target_text": "ik moat safolle mooglik hurd myn bêst dwaan",
+    "target1_audio_id": "5ceae3ea-9421-40ed-8d31-036854e0cfb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U01",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan mei it praten",
+    "target1_audio_id": "9a344ce0-61b7-4bd8-a8eb-9c0c901feaa9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U05",
+   "set": {
+    "target_text": "ik sil no hurd myn bêst dwaan mei dy",
+    "target1_audio_id": "56c304ad-65c8-4b99-bd01-efa0019ceb98"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U02",
+   "set": {
+    "target_text": "ik wol mei in oar hurd myn bêst dwaan",
+    "target1_audio_id": "e6a46af6-d166-4993-aa62-e0a73c67ce98"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U03",
+   "set": {
+    "target_text": "moat ik no hurd myn bêst dwaan?",
+    "target1_audio_id": "94aeb7fe-e0fe-4475-ba45-bc2a41104d00"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B04",
+   "set": {
+    "target_text": "hurd myn bêst dwaan mei it praten",
+    "target1_audio_id": "6853dbeb-59f2-4076-8207-394c1f3f26c8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B02",
+   "set": {
+    "target_text": "ik sil hurd myn bêst dwaan",
+    "target1_audio_id": "c722d6a3-6953-4cb0-93fc-2a57488943c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B01",
+   "set": {
+    "target_text": "ik wol hurd myn bêst dwaan",
+    "target1_audio_id": "614c871f-f522-495c-bbc0-84c38be5253a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B03",
+   "set": {
+    "target_text": "safolle mooglik hurd myn bêst dwaan",
+    "target1_audio_id": "c271a97d-9643-4622-a719-db3d78b9751f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0038L03U03",
+   "set": {
+    "known_text": "I speak a little Frisian but I've been learning hard",
+    "target_text": "ik praat in bytsje Frysk mar ik lear al hurd",
+    "target1_audio_id": "bed7751c-d6e7-4272-981a-679e37dd9d2b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4a9ec8be-b4f6-4bfa-b9e1-b630536c5a1e",
+   "set": {
+    "target_text": "hurd myn bêst dwaan",
+    "components": [
+     {
+      "known": "hard",
+      "target": "hurd"
+     },
+     {
+      "known": "to do my best",
+      "target": "myn bêst dwaan"
+     }
+    ],
+    "target1_audio_id": "6e5e444f-133c-46f2-9284-378ad2a013d2"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 7,
+   "set": {
+    "target_text": "Ik wol hjoed hurd myn bêst dwaan.",
+    "target1_audio_id": "af195bed-61fd-45d5-bddf-2bfe0129745f"
+   }
+  }
+ ]
+}
