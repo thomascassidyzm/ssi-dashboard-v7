@@ -4,7 +4,7 @@
 import json,sys,os,subprocess
 CALL=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','tools','agent-admin','call.cjs')
 seeds=set()
-for b in ['batch-1','move-166']:
+for b in (sys.argv[2:] or ['batch-1','move-166']):
     for o in json.load(open(f'{b}.ops.json'))['ops']:
         n=o.get('seed_number') or (o.get('row') or {}).get('seed_number')
         if not n: k=(o.get('phrase_id') or o.get('lego_id') or '').split(':')[-1]; n=int(k[1:5]) if k.startswith('S') else None
@@ -20,4 +20,4 @@ for i in range(0,len(seeds),15):
     slim={'seeds':seeds[i:i+15],'ok':r.get('ok'),'applied':r.get('applied'),'event_id':r.get('event_id'),'summary':r.get('summary'),'error':r.get('error')}
     out.append(slim); print(slim['seeds'][0],'-',slim['seeds'][-1],slim['ok'],slim['applied'],slim['event_id'],json.dumps(slim['summary'])[:200],(slim['error'] or '')[:200])
     if not slim['ok']: break
-json.dump(out,open(f'recompute-{sys.argv[1]}.json','w'),indent=1); print(len(seeds),'seeds')
+json.dump(out,open(f'recompute-{sys.argv[1]}'+('-'+'-'.join(sys.argv[2:]) if sys.argv[2:] else '')+'.json','w'),indent=1); print(len(seeds),'seeds')

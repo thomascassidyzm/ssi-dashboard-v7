@@ -1,6 +1,6 @@
 import sys; sys.path.insert(0,'../gle-v2-eoghan-43-2026-11-16')
 from lib import *
-S=load('live.json')
+S=load(sys.argv.pop(1) if len(sys.argv)>1 and sys.argv[1].endswith('.json') else 'live.json')
 for a in sys.argv[1:]:
     n=int(a.split(':')[0]); only=a.split(':')[1].split(',') if ':' in a else None
     s=S[n]; print(f"=== {n} | {s['known_text']} | {s['target_text']}")

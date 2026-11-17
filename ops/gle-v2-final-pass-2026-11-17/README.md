@@ -1,4 +1,4 @@
-# gle_v2_for_eng final dry-run pass (cs #398·AI, 17 Nov 2026) — NOTHING HERE IS APPLIED
+# gle_v2_for_eng final pass (cs #398·AI dry run, 17 Nov 2026) — APPLIED by cs #410·AI on Kai's 12:19Z yes: see report-410.md (events, undo in apply-*.json)
 
 Kai's rulings of 16 and 17 Nov turned into Popty edit-batch ops and run through the edit-batch DRY RUN only.
 
