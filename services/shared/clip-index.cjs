@@ -26,6 +26,8 @@
 const { allowedForOverride } = require('./pronunciation-reuse-guard.cjs')
 const spokenWords = require('./clip-spoken-words.cjs')
 const { normalizeForAudio, recordingTextKeys } = require('./text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./postgrest-in-quote.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const { supabaseResolversFor } = require('./named-voices.cjs')
 const { isPodOnlyClip, withoutPodOnly } = require('./pod-audio.cjs')

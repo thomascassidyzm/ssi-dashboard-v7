@@ -13,6 +13,8 @@ const createLogger = require('./shared/logger.cjs')
 const { readAllPages } = require('./shared/paged-read.cjs')
 const speakabilityGrid = require('./shared/speakability-grid.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+// Every key lookup below is a free-text .in(); this makes supabase-js quote it correctly process-wide (cs #460).
+require('./shared/postgrest-in-quote.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 const { identity: buildIdentity } = require('./shared/build-identity.cjs')
 const { fetchAuditStats } = require('./shared/audit-stats.cjs')
