@@ -1,0 +1,90 @@
+{
+ "_readme": "eng-indic-north (#447 worker #475): English-TARGET lexical patterns mined from the eng_for_mar broken-English repair (6 Aug, commits 54f405e6c/dcf026128, before-texts in archive/docs-retired-2026-08-24/audio/mar-repair/eng-for-mar-broken-english-repair-2026-08-06.md) and KNOWN-side speaker-form patterns mined from the eng_for_hin speaker-form fixes (#710, #770, #941·H, tools/course-optimization/eng-for-hin-speaker-form-fix-2026-09-29.cjs). Indic regexes avoid \\b (JS \\b is ASCII-only). A hit is a candidate to READ.",
+ "eng": [
+  {
+   "id": "glue_very_well",
+   "side": "target",
+   "re": "\\b(?!(?:sleep|slept|done|doing|speak|speaks|spoke|it|know|someone|works|work|worked|very|english|well|people|answer|them|someone|else)\\b)[\\w']+ very well[?.!]?$",
+   "kp": "I thought the film was complete rubbish very well",
+   "src": "eng_for_mar repair 6 Aug: tag-glue 'very well' bolted onto hosts (S0248)"
+  },
+  {
+   "id": "glue_not_sure",
+   "side": "target",
+   "re": "\\b(?:going to|to|want to|'s|'re) not sure\\b",
+   "kp": "he's going to not sure",
+   "src": "eng_for_mar repair 6 Aug (S0223 family)"
+  },
+  {
+   "id": "glue_yet_already_after_copula",
+   "side": "target",
+   "re": "\\b(?:that's|it's|he's|she's|that is|it is) (?:\\w+ )?(?:yet|already)(?: in English)?[?.!]?$",
+   "kp": "I think that's yet",
+   "src": "eng_for_mar repair 6 Aug (S0130-family 'I think that's ...')"
+  },
+  {
+   "id": "glue_here_after_fragment",
+   "side": "target",
+   "re": "^(?:felt|great|better|enough|important|difficult|different|perfect|true|unusual|helpful|short|similar|best|definitely|unfortunately|yes|no|only|just|then|maybe|whatever|which|this|those|they|bus|home|way|time|course|those|starting|while|should|last|changing|brain|pub|choice|make|than|feel|friends|ready|book|morning|minutes|someone|together|she's|to be|would be|on the|wasn't|did you|I'd like|about|the end|nothing|alone) here[?.!]?$",
+   "kp": "felt here",
+   "src": "eng_for_mar repair 6 Aug ('felt here', S0118)"
+  },
+  {
+   "id": "in_english_tag_on_non_speech",
+   "side": "target",
+   "re": "^(?!.*\\b(?:speak|speaking|say|said|saying|explain|write|read|talk|talking|learn|learning|learnt|words?|story|conversation|practise|practising|answer|question|book|idea|mean|tell|discuss)\\b).+ in English[?.!]?$",
+   "kp": "last month in English",
+   "src": "eng_for_mar 'in English' drill slot (3355555fd called it the drill format; K9 says target English must be grammatical) — e.g. S0161L02U02 'Sunday in English'"
+  },
+  {
+   "id": "again_tag_on_state",
+   "side": "target",
+   "re": "\\b(?:ugly|lucky|right|dry|wet|sad|late|true|stupid|difficult|tired|lost|crazy|bad) again[?.!]?$",
+   "kp": "the small church is very ugly again",
+   "src": "eng_for_pan 'again' filler from seed ~500 (this scan; same generator family as the mar tag-glue)"
+  }
+ ],
+ "known:urd": [
+  {
+   "id": "speaker_masc_1p_urd",
+   "side": "known",
+   "re": "(?:^|\\s)میں(?:\\s|$).*(?:\\S+تا|رہا|گیا|سکا|سکتا|چکا) (?:ہوں|تھا)|(?:^|\\s)میں(?:\\s|$).*\\S+وں گا",
+   "kp": "میں چاہتا ہوں",
+   "src": "eng_for_hin speaker-form fixes (#710/#770/#941·H): the known line's first-person verb agrees with the voice. eng_for_urd known voice = Azure ur-PK-UzmaNeural (female) — masculine rows are AT RISK, not heard"
+  }
+ ],
+ "known:pan": [
+  {
+   "id": "speaker_masc_1p_pan",
+   "side": "known",
+   "re": "(?:^|\\s)ਮੈਂ(?:\\s|$).*(?:\\S+(?:ਦਾ|ਿਆ|ਰਿਹਾ) (?:ਹਾਂ|ਸੀ)|\\S+ਾਂਗਾ|ਸਕਦਾ)",
+   "kp": "ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "src": "as speaker_masc_1p_urd; eng_for_pan known voice = Azure pa-IN-VaaniNeural (female)"
+  }
+ ],
+ "known:guj": [
+  {
+   "id": "speaker_masc_1p_guj",
+   "side": "known",
+   "re": "(?:^|\\s)હું(?:\\s|$).*(?:\\S+(?:તો|યો|ગયો) (?:છું|હતો)|રહ્યો|હતો(?:\\s|$)|શકતો)",
+   "kp": "હું કોશિશ કરી રહ્યો છું",
+   "src": "as speaker_masc_1p_urd; eng_for_guj known voice = Azure gu-IN-DhwaniNeural (female)"
+  }
+ ],
+ "known:ben": [
+  {
+   "id": "gapped_known_lego",
+   "side": "known",
+   "re": "\\.\\.\\.|…",
+   "kp": "আমাকে ... থাকতে হবে",
+   "src": "eng_for_hin seed 128 gap-free re-cut (#871/#943·H) and L32; ben S0549L02"
+  },
+  {
+   "id": "pronoun_gender_ambiguous_ben",
+   "side": "known",
+   "re": "(?:^|\\s)(?:সে|তাকে|তার|ওর|ওকে|ও)(?:\\s|$|[?।])",
+   "kp": "তাকে",
+   "src": "eng_for_hin his/her ruling (S0020L01 explanation, #870/#880·H): one known pronoun → he/she English. Bengali সে/তাকে/তার carry no gender; ben S0176L02 him / S0177L01 her"
+  }
+ ]
+}

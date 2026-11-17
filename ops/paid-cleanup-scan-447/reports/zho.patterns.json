@@ -1,0 +1,61 @@
+{
+ "_readme": "zho slice (#472) lexical patterns, target side, drawn from zho_for_eng fix records; each kp is a pre-fix or still-live text the regex must match.",
+ "zho": [
+  {
+   "id": "modal_before_time",
+   "side": "target",
+   "re": "(?<![可觉])(要|能|应该|需要|可以)(今天|明天|昨天|现在|今晚|很快|晚点|周[一二三四五六日末]|星期[一二三四五六日天]|下周|下个|早上|晚上|下午|今年|明年)",
+   "kp": "我要现在说中文",
+   "src": "zho_for_eng S0005L01U03 pre-fix (#545 B, edited to 我现在要说中文)"
+  },
+  {
+   "id": "zuo_object",
+   "side": "target",
+   "re": "坐(这个|那个|它|药|照片|课)",
+   "kp": "我想坐这个",
+   "src": "zho_for_eng S0095L02U01 pre-fix (#545 C, deleted; LEGO 坐 grown)"
+  },
+  {
+   "id": "tan_non_instrument",
+   "side": "target",
+   "re": "弹(这个|那个|别的|什么|足球|篮球|游戏)",
+   "kp": "我想弹这个",
+   "src": "zho_for_eng S0098L03U01 pre-fix (#545 C, 弹→玩)"
+  },
+  {
+   "id": "xiangyao_verb",
+   "side": "target",
+   "re": "想要(?:现在|今天|明天|今晚)?(?:说|学|去|做|看|买|吃|喝|知道|帮|练|开始|认识|记|回|来|见|听|写|读|试|玩|找|用|住|工作|休息|睡|走|跟|和|在|再|一起|继续|成为|当|告诉|问|让|给|带|了解|放|改变|搬|离开|留|等|参加|尝|拿|打|旅行|唱|跳|跑|开|理解|变|得到|有|及时|回答|解释|照顾|准备|结婚|生|过|上|进|出|停|完成|保持|确定|弄|搞|知|表达|分享|尽快|能|会|要|安静|成功|赢|帮助|发现|参观|访问|拜访|呆|待|陪|感谢|谢|学习|穿|戴|关|教|退|搬家|聊|谈|讨论|考虑|想|相信|担心|离)(?!具|值|价|助|款)",
+   "kp": "我想要及时回答。",
+   "src": "K55; live zho_for_hin S0091L01U01 (eng #214 reworded every 想要+verb row to 想+verb)"
+  },
+  {
+   "id": "xue_name",
+   "side": "target",
+   "re": "学(她|他|你|我|别人)?的?名字",
+   "kp": "你为什么学她的名字？",
+   "src": "zho_for_eng seed 21 (#545 other, HELD; eng row edits 学→记住 at S0021L03U03/U08)"
+  },
+  {
+   "id": "obj_then_yihuier",
+   "side": "target",
+   "re": "(这个|那个|它|书)一会儿",
+   "kp": "我想做这个一会儿",
+   "src": "zho_for_eng S0092L03U01 pre-fix (#545 B)"
+  },
+  {
+   "id": "zai_shishi",
+   "side": "target",
+   "re": "(?<!现)在试试",
+   "kp": "他在试试告诉我他想要什么",
+   "src": "zho_for_eng seed 222 (#545, held: 在 + reduplicated 试试 ungrammatical)"
+  },
+  {
+   "id": "woxiang_think",
+   "side": "target",
+   "re": "我想(?=[我你他她它这那](?!个周末|么做))",
+   "kp": "我想我自己能行",
+   "src": "zho_for_eng S0173L01B04 (#233: 我想 is taught as \"I want\"; \"I think\" = 我觉得) — reconstructed pre-fix"
+  }
+ ]
+}

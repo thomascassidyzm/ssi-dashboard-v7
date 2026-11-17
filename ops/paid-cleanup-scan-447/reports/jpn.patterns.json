@@ -1,0 +1,14 @@
+{
+ "_readme": "jpn_for_eng lexical candidates (#447 jpn slice, 17 Nov). Target script is spaceless: these are substring regexes, not token checks. kp = a pre-fix or still-live text the regex must match (detect.cjs exits 3 otherwise). A hit is a candidate to READ.",
+ "jpn": [
+  {"id": "jpn_glued_tail", "side": "target", "re": "[一-龯ァ-ヴー]ことがある|ますかから|[一-龯ァ-ヴー]があるから[。]?$", "kp": "先生ことがある", "src": "#195 follow-up d/6be32406: June generator glued ことがある/から onto seeds 301-668 targets (S0639L01B02); KNOWN family, basket rebuild"},
+  {"id": "jpn_two_sentences", "side": "target", "re": "。\\s*\\S", "kp": "ありがとう。でも、まだ学ぶことがある", "src": "#434 held A (seeds 73/96/173/193/248), d/af659c82; P20"},
+  {"id": "jpn_third_person_tai", "side": "target", "re": "^(彼|彼女|彼ら|父|母|兄|姉|弟|妹|息子|娘|友だち|みんな)は[^？?]*(たい|たくない)[。]?$", "kp": "彼は戻りたい", "src": "#421 held 428 'たい is only you or I' (d/71221f73); live S0016L03U01. Bare -tai with a stated third-person subject needs -tagaru or an evidential (Makino & Tsutsui, Dictionary of Basic Japanese Grammar, -tai)"},
+  {"id": "jpn_te_hoshikatta", "side": "target", "re": "て(ほし|欲し)かった", "kp": "昨夜会ってほしかった", "src": "#447 jpn: S0151L02 'I was hoping = ほしかった' basket; ～てほしい = want SOMEONE ELSE to do (DBJG -te hoshii), so 'I was hoping to see you' rows say the wrong thing"},
+  {"id": "jpn_ni_aru_tail", "side": "target", "re": "の(隣|下|上|前|後ろ|近く|中)にある[。]?$", "kp": "駐車場の隣にある", "src": "#434 held 467/487 (d/af659c82): '…にある' rows whose English lacks 'it's'"},
+  {"id": "jpn_particle_lego", "side": "target", "re": "^(ね|よ|から|だけ|ほど|のか|のが|ことが|ばかり|だろう|らしい|たかった|たくない|たくなかった|ほしかった|てほしい|なかった|なくても|ほうが)$", "kp": "ね", "src": "canon L7 (particle never an atomic LEGO) + L22 (bound element grows to the verb in its own seed); live S0120L01 'right = ね'"}
+ ],
+ "known:eng": [
+  {"id": "en_no_over_un", "side": "known", "re": "^no\\b", "kp": "no, I like it", "src": "#447 jpn: S0282L01 'no = うん' basket (うん is yes)"}
+ ]
+}

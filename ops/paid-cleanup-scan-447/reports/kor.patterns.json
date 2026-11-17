@@ -1,0 +1,12 @@
+{
+ "_readme": "#471 kor slice (cs #447 scan). Korean lexical candidates mined from kor_for_eng fix records. Each kp is pre-fix or still-live text from those records. A hit is a candidate to READ.",
+ "kor": [
+  {"id": "phantom_church", "side": "target", "re": "교회", "kp": "교회가 방금", "src": "d/6be32406 S0589L01B02 'she just arrived | 교회가 방금'; d/f0ab5817 198 rows (565-668). Legit where the seed is about a church (hin/tam S0551)."},
+  {"id": "dangling_isseoyo", "side": "target", "re": "(면|을|를|다고|라고) 있(어요|었어요)[.?!]?$", "kp": "지금 갈 수 있으면 있어요", "src": "d/6be32406 S0668L02U06; also S0645L01U04 '아이들이 여사님을 있어요'; #433 fixed S0550L02U01 '마을의 끝 있어요'"},
+  {"id": "bare_noun_heard", "side": "target", "re": "^\\S+ (들었어요|알아요)[.?]?$", "kp": "옆에 들었어요", "src": "d/6be32406 S0467L01U01 'I heard about next to it | 옆에 들었어요' (template English over broken Korean)"},
+  {"id": "jom_deo_vs_jogeum_deo", "side": "target", "re": "좀 더", "kp": "그게 어떤지 좀 더 알고 싶어해요", "src": "#420 d/c38294a1 item 581 (seed 좀 더 vs taught 조금 더 'a little more'); d/f0ab5817 seed 92"},
+  {"id": "hamkke_vs_gachi", "side": "target", "re": "함께", "kp": "선생님과 함께", "src": "#433 d/8516600e S0639L02U01 'with you sir | 선생님과 함께' -> 같이; #420 639/656"},
+  {"id": "plain_register_pronoun", "side": "target", "re": "(^|\\s)(나는|나를|내가|나도|나한테|내)(\\s|$)", "kp": "나를", "src": "kor_for_eng S0591L02 'me | 나를' (live) in a 저/제 course; K19 one register per course"},
+  {"id": "honorific_drift", "side": "target", "re": "(시겠어요|하세요\\?|으세요|세요\\?)$", "kp": "좋아하세요?", "src": "#420 d/c38294a1 item 628 L02 '좋아하세요?' vs seed '좋아해요?'; #433 S0650L02U01 '가시고 싶으세요?'"}
+ ]
+}

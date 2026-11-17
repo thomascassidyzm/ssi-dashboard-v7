@@ -1,0 +1,25 @@
+{
+ "_readme": "fra slice (#455) additions. Same shape as patterns.json. Each kp is the PRE-FIX (or still-live) text of a fra_for_eng row, so the regex is calibrated on a real defect. Target-side regexes run on fra_for_eng AND fra_ca_for_eng (tlang 'fra'); known-side ones under 'known:eng' run on every English-known course. Two-sided checks (here|là, sir|monsieur, bare-verb LEGO, pronoun-less LEGO) cannot be expressed in one regex and were run as a separate read of the dump (named in the report).",
+ "fra": [
+  {"id": "ne_pense_pas_indicatif", "side": "target", "re": "\\b(pense|pensais|crois|croyais) pas qu(e |['’] ?)(c['’]est|c['’]était|il est|elle est|ils sont|elles sont|tu es|vous êtes|nous sommes|on est|il a|elle a|il avait|elle avait|a l['’]avait|y['’]est|il va|elle va|y va|a va|tu vas|il peut|elle peut|y peut|tu peux)\\b", "kp": "je ne pense pas que c'est vrai", "src": "fra_for_eng S0318L01 USE rows (live): negative opinion verb + indicative; S0330 teaches 'je ne pense pas que ce soit' — zut_use clash 'I don't think it's true'"},
+  {"id": "indirect_question_inversion", "side": "target", "re": "\\b(savoir|sais|sait|dire|demande|demander) (comment|où|quand|pourquoi|si) (\\p{L}+ )?\\p{L}+-(vous|tu|il|elle|nous|ils|elles)\\b", "kp": "j'aimerais savoir comment vous sentez-vous madame", "src": "#195/#452: S0642L02U03/U04 (held native check, d/1d0c7e9f D)"},
+  {"id": "indirect_qu_est_ce_que", "side": "target", "re": "\\b(sais|sait|savoir|savons|savez|dire|dis|demande|comprends|explique|expliquer) (pas )?qu['’]est-ce qu", "kp": "je sais qu'est-ce que vous devez faire demain après-midi", "src": "#419 held S0167L01B04 ungrammatical (d/562e6297); also S0666L01U04 'savoir qu'est-ce que' live"},
+  {"id": "doubled_en_de", "side": "target", "re": "\\bqu['’]en \\p{L}+-(vous|tu) de\\b", "kp": "qu'en pensez-vous de cela ?", "src": "#195 held S0651L01B02/U04, noticed U03 (d/281de4ee)"},
+  {"id": "si_tu_m_avais_dit_no_object", "side": "target", "re": "si tu m['’]avais dit( (avant|plus tôt|ça))?\\s*[?.!]?$", "kp": "j'aurais conduit si tu m'avais dit", "src": "#424 held 600 family (d/b6a2a5d7)"},
+  {"id": "dropped_object_atteindre", "side": "target", "re": "\\b(pouvait|pouvais|voulait|voulais|peut|peux|veut|veux|pas|pouvoir) atteindre\\s*[?.!]?$", "kp": "elle ne pouvait pas atteindre", "src": "#195 dropped-object class, S0358L01U01-05 (held, d/281de4ee)"},
+  {"id": "dropped_object_discuter", "side": "target", "re": "\\b(devons|dois|doit|veux|voulons|aimerais) discuter (aujourd['’]hui|maintenant|avec|ce matin)\\b", "kp": "nous devons discuter aujourd'hui", "src": "#195 dropped-object class, S0210L02U01-05 (held)"},
+  {"id": "dropped_object_bu", "side": "target", "re": "\\bj['’]ai bu (hier|avec|au|chez)\\b", "kp": "j'ai bu avec mes amis", "src": "#195 dropped-object class, S0217L01 (held)"},
+  {"id": "grand_chose_unhyphenated", "side": "target", "re": "\\bgrand chose\\b", "kp": "on ne peut pas faire grand chose", "src": "#195 fixed S0469L02U05 (d/281de4ee)"},
+  {"id": "stray_la_after_verb", "side": "target", "re": "\\b(partir|aller|rester|venir) là\\s*[?.!]?$", "kp": "nous devrions partir là", "src": "#452 stray là, 6 rows fixed (d/1d0c7e9f)"},
+  {"id": "elision_missing", "side": "target", "re": "\\bsi ils?\\b|\\bque (il|ils|elle|elles|on)\\b|jusqu['’]à ce que (il|elle)\\b", "kp": "jusqu'à ce que il soit là", "src": "fix-fra-contractions-2026-08-05 (fra 'si il', 'jusqu'à ce que il'; fra_ca 'que on')"},
+  {"id": "encore_after_participle", "side": "target", "re": "\\bpas (fini|prêt|prête|prêts|sèche|deviner|compris|commencé|arrivé) encore\\b", "kp": "je ne suis pas prêt encore", "src": "#355 F: seed 60 order 'pas encore X', 10 rows fixed"},
+  {"id": "te_then_vous_disputer", "side": "target", "re": "\\bte \\p{L}+ .*\\bsans vous\\b", "kp": "si seulement je pouvais te faire confiance pour jouer ensemble sans vous disputer", "src": "#452 held seed 501 tu/vous mix (d/1d0c7e9f A)"},
+  {"id": "nous_rencontrer_bare", "side": "target", "re": "^nous rencontrer$", "kp": "nous rencontrer", "src": "Kai 14 Oct seed 18 ruling (#449): 'to meet | nous rencontrer' is the pair ruled out"}
+ ],
+ "known:eng": [
+  {"id": "might_need_over_ait_besoin", "side": "known", "re": "\\bmight need\\b", "kp": "I don't think she might need to", "src": "#424 held 326 (d/b6a2a5d7)"},
+  {"id": "have_need", "side": "known", "re": "\\bhave need\\b|\\bhas need\\b", "kp": "I'd like you to tell me what you have need of", "src": "#424 held 170"},
+  {"id": "past_modal_future_time", "side": "known", "re": "\\b(had to|needed to|'ve had to|have had to)\\b.*\\b(next week|in a few days|next month|tomorrow)\\b", "kp": "unfortunately I've had to leave in a few days", "src": "#424 held 278/280: past tense + future time = nonsense"},
+  {"id": "question_without_qmark", "side": "known", "re": "^(are|do|does|did|can|could|would|will|is|have|has|should|shall) (you|we|they|he|she|it|I)\\b[^?]*$", "kp": "are you learning his name", "src": "fra_for_eng dup_rows: 34 BUILD twins of USE questions lost their '?' (A7: question marks are significant)"}
+ ]
+}

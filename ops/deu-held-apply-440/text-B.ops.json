@@ -1,0 +1,619 @@
+{
+ "ops": [
+  {
+   "op": "lego.delete",
+   "lego_id": "S0634L02",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "one",
+    "target_text": "eines"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0634L03",
+   "expect": {
+    "known_text": "those",
+    "target_text": "denen"
+   },
+   "set": {
+    "known_text": "one of those",
+    "target_text": "eines von denen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0634L03B01",
+   "expect": {
+    "known_text": "those",
+    "target_text": "denen"
+   },
+   "set": {
+    "known_text": "one of those",
+    "target_text": "eines von denen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0634L03B03",
+   "expect": {
+    "known_text": "he also said something about those",
+    "target_text": "er hat auch etwas von denen gesagt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0634L03U02",
+   "expect": {
+    "known_text": "one of those",
+    "target_text": "eines von denen"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0634L03U04",
+   "expect": {
+    "known_text": "she said something about those",
+    "target_text": "sie hat etwas von denen gesagt"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0634L03U07",
+   "expect": {
+    "known_text": "she also said something about those",
+    "target_text": "sie hat auch etwas von denen gesagt"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0634L03U09",
+    "course_code": "deu_for_eng",
+    "seed_number": 634,
+    "lego_index": 3,
+    "position": 101,
+    "known_text": "she also wanted one of those",
+    "target_text": "sie wollte auch eines von denen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0634L03U10",
+    "course_code": "deu_for_eng",
+    "seed_number": 634,
+    "lego_index": 3,
+    "position": 102,
+    "known_text": "he said he has one of those",
+    "target_text": "er hat gesagt, er hat eines von denen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0377L02",
+   "expect": {
+    "known_text": "somewhere",
+    "target_text": "irgendwohin"
+   },
+   "set": {
+    "known_text": "go anywhere",
+    "target_text": "irgendwohin gefahren",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02B01",
+   "expect": {
+    "known_text": "somewhere",
+    "target_text": "irgendwohin"
+   },
+   "set": {
+    "known_text": "go anywhere",
+    "target_text": "irgendwohin gefahren"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02B02",
+   "expect": {
+    "known_text": "went somewhere",
+    "target_text": "irgendwohin gegangen"
+   },
+   "set": {
+    "known_text": "did you go anywhere?",
+    "target_text": "bist du irgendwohin gefahren?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02B03",
+   "expect": {
+    "known_text": "went somewhere last year",
+    "target_text": "letztes Jahr irgendwohin gegangen"
+   },
+   "set": {
+    "known_text": "did you go anywhere last year?",
+    "target_text": "bist du letztes Jahr irgendwohin gefahren?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02U01",
+   "expect": {
+    "known_text": "I went somewhere last year",
+    "target_text": "ich bin letztes Jahr irgendwohin gegangen"
+   },
+   "set": {
+    "known_text": "did she go anywhere?",
+    "target_text": "ist sie irgendwohin gefahren?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02U02",
+   "expect": {
+    "known_text": "I knew that she wanted to go somewhere",
+    "target_text": "ich wusste, dass sie irgendwohin gehen wollte"
+   },
+   "set": {
+    "known_text": "did he go anywhere last year?",
+    "target_text": "ist er letztes Jahr irgendwohin gefahren?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0377L02U03",
+   "expect": {
+    "known_text": "nobody told me that she had gone somewhere",
+    "target_text": "niemand hat mir gesagt, dass sie irgendwohin gegangen war"
+   },
+   "set": {
+    "known_text": "did they go anywhere last year?",
+    "target_text": "sind sie letztes Jahr irgendwohin gefahren?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0377L02U04",
+   "expect": {
+    "known_text": "she has said that she wanted to go somewhere new",
+    "target_text": "sie hat gesagt, dass sie irgendwohin Neues gehen wollte"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0377L02U05",
+   "expect": {
+    "known_text": "I have heard that she had gone somewhere",
+    "target_text": "ich habe gehört, dass sie irgendwohin gegangen war"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0377L02U06",
+   "expect": {
+    "known_text": "I thought she had gone somewhere important",
+    "target_text": "ich fand, dass sie irgendwohin Wichtiges gegangen war"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0537L02",
+   "expect": {
+    "known_text": "wrong",
+    "target_text": "unrecht"
+   },
+   "set": {
+    "known_text": "I was wrong",
+    "target_text": "ich hatte unrecht"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0537L02B01",
+   "expect": {
+    "known_text": "wrong",
+    "target_text": "unrecht"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0564L01",
+   "expect": {
+    "known_text": "your",
+    "target_text": "deine"
+   },
+   "set": {
+    "known_text": "your help",
+    "target_text": "deine Hilfe",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01B01",
+   "expect": {
+    "known_text": "your",
+    "target_text": "deine"
+   },
+   "set": {
+    "known_text": "your help",
+    "target_text": "deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01B02",
+   "expect": {
+    "known_text": "your idea",
+    "target_text": "deine Idee"
+   },
+   "set": {
+    "known_text": "without your help",
+    "target_text": "ohne deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01B03",
+   "expect": {
+    "known_text": "she found your idea",
+    "target_text": "sie hat deine Idee gefunden"
+   },
+   "set": {
+    "known_text": "he wants your help",
+    "target_text": "er will deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U01",
+   "expect": {
+    "known_text": "she wants your idea",
+    "target_text": "sie will deine Idee"
+   },
+   "set": {
+    "known_text": "I need your help",
+    "target_text": "ich brauche deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U02",
+   "expect": {
+    "known_text": "she wants your idea now",
+    "target_text": "sie will jetzt deine Idee"
+   },
+   "set": {
+    "known_text": "she wants your help now",
+    "target_text": "sie will jetzt deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U03",
+   "expect": {
+    "known_text": "she went without your idea",
+    "target_text": "sie ist ohne deine Idee gegangen"
+   },
+   "set": {
+    "known_text": "she did it without your help",
+    "target_text": "sie hat das ohne deine Hilfe gemacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U04",
+   "expect": {
+    "known_text": "she has your idea",
+    "target_text": "sie hat deine Idee"
+   },
+   "set": {
+    "known_text": "she has your help",
+    "target_text": "sie hat deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U05",
+   "expect": {
+    "known_text": "is that your idea?",
+    "target_text": "ist das deine Idee?"
+   },
+   "set": {
+    "known_text": "I want your help",
+    "target_text": "ich will deine Hilfe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U06",
+   "expect": {
+    "known_text": "she wants your idea here",
+    "target_text": "sie will deine Idee hier"
+   },
+   "set": {
+    "known_text": "she wants your help here",
+    "target_text": "sie will deine Hilfe hier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0564L01U07",
+   "expect": {
+    "known_text": "she doesn't want your idea",
+    "target_text": "sie will deine Idee nicht"
+   },
+   "set": {
+    "known_text": "she doesn't want your help",
+    "target_text": "sie will deine Hilfe nicht"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0514L01",
+   "expect": {
+    "known_text": "perfect",
+    "target_text": "perfekte"
+   },
+   "set": {
+    "known_text": "the perfect house",
+    "target_text": "das perfekte Haus",
+    "type": "A",
+    "components": []
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01B01",
+   "expect": {
+    "known_text": "perfect",
+    "target_text": "perfekte"
+   },
+   "set": {
+    "known_text": "the perfect house",
+    "target_text": "das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01B02",
+   "expect": {
+    "known_text": "the perfect one",
+    "target_text": "das perfekte"
+   },
+   "set": {
+    "known_text": "that is the perfect house",
+    "target_text": "das ist das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01B03",
+   "expect": {
+    "known_text": "it is the perfect one",
+    "target_text": "das perfekte ist es"
+   },
+   "set": {
+    "known_text": "I want the perfect house",
+    "target_text": "ich will das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01U01",
+   "expect": {
+    "known_text": "that is the perfect one",
+    "target_text": "das ist das perfekte"
+   },
+   "set": {
+    "known_text": "do you want the perfect house?",
+    "target_text": "willst du das perfekte Haus?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01U02",
+   "expect": {
+    "known_text": "do you want the perfect one?",
+    "target_text": "willst du das perfekte?"
+   },
+   "set": {
+    "known_text": "he wants the perfect house",
+    "target_text": "er will das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01U03",
+   "expect": {
+    "known_text": "she wants the perfect one",
+    "target_text": "sie will das perfekte"
+   },
+   "set": {
+    "known_text": "she has the perfect house",
+    "target_text": "sie hat das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01U04",
+   "expect": {
+    "known_text": "is that the perfect one?",
+    "target_text": "ist das das perfekte?"
+   },
+   "set": {
+    "known_text": "the perfect house is here",
+    "target_text": "das perfekte Haus ist hier"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0514L01U05",
+   "expect": {
+    "known_text": "he wants the perfect one",
+    "target_text": "er will das perfekte"
+   },
+   "set": {
+    "known_text": "he has the perfect house",
+    "target_text": "er hat das perfekte Haus"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0514L01U06",
+   "expect": {
+    "known_text": "she has the perfect one",
+    "target_text": "sie hat das perfekte"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0514L01U07",
+   "expect": {
+    "known_text": "the perfect one is here",
+    "target_text": "das perfekte ist hier"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0499L02",
+   "expect": {
+    "known_text": "we should",
+    "target_text": "sollten wir"
+   },
+   "set": {
+    "known_text": "maybe we should",
+    "target_text": "vielleicht sollten wir",
+    "components": [
+     {
+      "known": "maybe",
+      "target": "vielleicht"
+     },
+     {
+      "known": "should",
+      "target": "sollten"
+     },
+     {
+      "known": "we",
+      "target": "wir"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "deu_for_eng:S0499L02B01",
+   "expect": {
+    "known_text": "we should",
+    "target_text": "Sollten wir"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0478L02",
+   "expect": {
+    "known_text": "such a",
+    "target_text": "so ein"
+   },
+   "set": {
+    "known_text": "such a kind heart",
+    "target_text": "so ein gutes Herz",
+    "components": [
+     {
+      "known": "such",
+      "target": "so"
+     },
+     {
+      "known": "a",
+      "target": "ein"
+     },
+     {
+      "known": "kind heart",
+      "target": "gutes Herz"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0478L02B01",
+   "expect": {
+    "known_text": "such a",
+    "target_text": "so ein"
+   },
+   "set": {
+    "known_text": "such a kind heart",
+    "target_text": "so ein gutes Herz"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0478L02U06",
+    "course_code": "deu_for_eng",
+    "seed_number": 478,
+    "lego_index": 2,
+    "position": 101,
+    "known_text": "he has such a kind heart",
+    "target_text": "er hat so ein gutes Herz",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_for_eng:S0478L02U07",
+    "course_code": "deu_for_eng",
+    "seed_number": 478,
+    "lego_index": 2,
+    "position": 102,
+    "known_text": "I think she has such a kind heart",
+    "target_text": "ich denke, sie hat so ein gutes Herz",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #440·AI, deu held items, Kai rulings 17 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "word_count": 8,
+    "lego_count": 1
+   }
+  }
+ ]
+}

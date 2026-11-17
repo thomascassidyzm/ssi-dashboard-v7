@@ -1,0 +1,21 @@
+{
+ "_readme": "Added by the ita slice worker (#467) from ita_for_eng fix records and the Italian canon entries (K33-K44, P27, P28). kp = PRE-FIX ita_for_eng text (or the canon's own example) the regex must match. Merge into patterns.json under 'ita' / 'known:eng'. A hit is a candidate to read, never a defect.",
+ "ita": [
+  {"id": "k35_poteva_se_volesse", "side": "target", "re": "\\bpotev\\w*\\b.*\\bse volesse\\b", "kp": "ha detto che poteva girare a sinistra se volesse", "src": "K35: 'poteva … se volesse is not standard'; S0359L02U02 → se voleva (job #886·I)"},
+  {"id": "k35_said_conditional", "side": "target", "re": "\\b(ha|hanno|ho|mi ha|le ho|aveva) detto che (non )?potre(i|bbe|mmo|bbero)\\b", "kp": "ha detto che potremmo cadere se andiamo troppo vicino al bordo", "src": "K35 said/told … could → imperfect; S0413L04U02 Sonnet fix reverted by job #36 (d/df9ba1cb)"},
+  {"id": "k35_opinion_possa", "side": "target", "re": "\\b(penso|pensi|pensa|credo|sembra|sono sicur[oa]) che (non )?(lei |lui )?(possa|possano)\\b", "kp": "sembra che possa essere importante", "src": "K35: think/sure … could → potrebbe, NOT possa; possa stays only under 'can'/'will be able' (S0335, S0292). kp = live S0497L03U03 under 'could'"},
+  {"id": "k36_couldnt_riuscire", "side": "target", "re": "\\bnon (riusciva|riuscivo|riuscivano|riuscivamo|sono riusciti|è riuscit[oa]) a\\b", "kp": "non riusciva a", "src": "K36: plain couldn't = non poteva; S0311L01 was 'he couldn't | non riusciva a' (job #889·I)"},
+  {"id": "k44_chiedere_domanda", "side": "target", "re": "\\bchie\\w*\\b(\\s+\\w+){0,3}\\s+(una |delle |alcune |la |le )?domand", "kp": "voglio chiederti una domanda", "src": "K44: chiedere una domanda 'non si dice' (job #345, d/f76d2340)"},
+  {"id": "k40_bare_subjunctive", "side": "target", "re": "^(che )?(tu |lei |lui )?(non )?(stia|sia|vada|abbia|possa|faccia|debba|dica|potesse|potessi|volesse|avessi|dicessi|aiutasse)\\b", "kp": "che stia andando", "src": "K40: bare complementiser is not the trigger; S0655L01 'that you're doing | che stia andando' named as the violation. Read LEGO hits only."},
+  {"id": "p27_c_e_elided", "side": "target", "re": "\\bc['’](è|era|erano)(?![\\wàèéìòù])", "kp": "c'erano cento persone", "src": "#427/#435: S0597L04U04 c'erano (no LEGO teaches it) → ho visto cento persone; c'è is taught at S0436L01 only"},
+  {"id": "p27_raggiungere_clitic", "side": "target", "re": "\\braggiunger(lo|li|la|le)\\b", "kp": "sono sicuro che non poteva raggiungerlo", "src": "#427/#435 S0358L01U04 → raggiungere il gruppo (ev 70c35c08)"},
+  {"id": "p28_nella_mia_testa", "side": "target", "re": "\\bnella (mia|tua|sua) testa\\b", "kp": "ho troppe idee nella mia testa", "src": "P28 seed 131: in testa only, never nella mia testa (job #630·I)"},
+  {"id": "possessive_dropped_629", "side": "target", "re": "\\bnel (caffè|tè)(?![\\wàèéìòù])", "kp": "vuoi il latte nel caffè?", "src": "#427/#435 S0629L01U01/U04/U07, #439 S0629L02U05: 'your coffee' drilled as il tuo caffè at S0627 → nel tuo caffè"},
+  {"id": "dovere_plus_noun", "side": "target", "re": "\\b(devo|devi|deve|dobbiamo|devono)( sicuramente)? (più|molto|un po' di) tempo\\b", "kp": "devo sicuramente più tempo", "src": "new (this scan): live S0117L01U04 'I definitely need more time' — dovere + noun means 'owe'; need = avere bisogno di"},
+  {"id": "di_acqua_vs_taught_dacqua", "side": "target", "re": "\\bun po' di acqua\\b", "kp": "voglio un po' di acqua", "src": "new (this scan): S0217 teaches 'un po' d'acqua'; S0220L02U01/U04 say 'un po' di acqua' (P28 taught form)"}
+ ],
+ "known:eng": [
+  {"id": "it_object_dropped_195", "side": "known", "re": "\\b(change|discuss|use|carry|break|offer|finish|allow|catch) it\\b", "kp": "we need to change it", "src": "#195 wave 1 / job #36: English 'it' with no Italian object (dobbiamo cambiare) → questo/quello or a taught clitic (d/df9ba1cb)"},
+  {"id": "k33_what_would_happen", "side": "known", "re": "\\bwhat would happen\\b", "kp": "I couldn't imagine what would happen", "src": "K33: phrase English follows the LEGO gloss 'what was going to happen' (S0518L04U02, S0350L01U06)"}
+ ]
+}
