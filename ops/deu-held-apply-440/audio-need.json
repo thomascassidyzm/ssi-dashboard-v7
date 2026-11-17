@@ -1,0 +1,3247 @@
+{
+ "A": [
+  {
+   "kind": "seed",
+   "id": 339,
+   "seed": 339,
+   "known": "no I think he's hurt himself quite badly",
+   "target": "nein, ich denke, er hat sich ziemlich schwer verletzt",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "3d4b05f8-aa4b-4d7a-8d37-23b1e57b0909"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0339L02",
+   "seed": 339,
+   "known": "hurt himself quite badly",
+   "target": "sich ziemlich schwer verletzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0339L02C02",
+   "seed": 339,
+   "known": "quite",
+   "target": "ziemlich",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0339L02C03",
+   "seed": 339,
+   "known": "badly hurt",
+   "target": "schwer verletzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0339L02U01",
+   "seed": 339,
+   "known": "no I think he's hurt himself quite badly",
+   "target": "nein, ich denke, er hat sich ziemlich schwer verletzt",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "cd5ca656-448b-45e5-8407-62c97d65c8e0",
+    "target2": "b27552f5-33d6-43f6-a69b-c5923014a15a"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0339L02U03",
+   "seed": 339,
+   "known": "do you think he has hurt himself quite badly?",
+   "target": "denkst du, dass er sich ziemlich schwer verletzt hat?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0339L02U05",
+   "seed": 339,
+   "known": "I think it is important to know if he has hurt himself quite badly",
+   "target": "ich denke, dass es wichtig ist zu wissen, ob er sich ziemlich schwer verletzt hat",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "seed",
+   "id": 151,
+   "seed": 151,
+   "known": "that wasn't what I was hoping would happen",
+   "target": "das war nicht das, was ich mir erhofft hatte",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "96c48ed9-d19b-40b2-a14d-d31f24eebe08"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0151L03",
+   "seed": 151,
+   "known": "what I was hoping would happen",
+   "target": "das, was ich mir erhofft hatte",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "inserted": true
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0151L03B01",
+   "seed": 151,
+   "known": "what I was hoping would happen",
+   "target": "das, was ich mir erhofft hatte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0151L03B02",
+   "seed": 151,
+   "known": "that was what I was hoping would happen",
+   "target": "das war das, was ich mir erhofft hatte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0151L03U02",
+   "seed": 151,
+   "known": "it wasn't what I was hoping would happen",
+   "target": "es war nicht das, was ich mir erhofft hatte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0151L03U03",
+   "seed": 151,
+   "known": "that wasn't what I was hoping would happen",
+   "target": "das war nicht das, was ich mir erhofft hatte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "seed",
+   "id": 522,
+   "seed": 522,
+   "known": "let's agree that it was stupid to tell the truth",
+   "target": "einigen wir uns darauf, dass es dumm war, die Wahrheit zu sagen",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "e9eddd94-1935-49da-830a-db88f48350be"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0522L05",
+   "seed": 522,
+   "known": "let's agree that",
+   "target": "einigen wir uns darauf, dass",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05B01",
+   "seed": 522,
+   "known": "let's agree that",
+   "target": "einigen wir uns darauf, dass",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05B02",
+   "seed": 522,
+   "known": "they agreed",
+   "target": "sie haben sich geeinigt",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "b0235b0f-1f51-47ff-a7c0-851b29d31991"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05B03",
+   "seed": 522,
+   "known": "we can agree",
+   "target": "wir können uns einigen",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "38a8b673-8b77-4adf-b948-d40c0edc6e1d"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U01",
+   "seed": 522,
+   "known": "let's agree that it was stupid to tell the truth",
+   "target": "einigen wir uns darauf, dass es dumm war, die Wahrheit zu sagen",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "e9eddd94-1935-49da-830a-db88f48350be"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U02",
+   "seed": 522,
+   "known": "let's agree",
+   "target": "einigen wir uns",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "bb7754d1-6203-471e-bdd0-0a86c6edda72"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U03",
+   "seed": 522,
+   "known": "she wants us to agree",
+   "target": "sie will, dass wir uns einigen",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "f09fae4b-c7c3-46cd-aebf-c81c9c7eca04"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U04",
+   "seed": 522,
+   "known": "can we agree?",
+   "target": "können wir uns einigen?",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "ca42f527-5438-43e5-b06f-e7e645dc7207"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U05",
+   "seed": 522,
+   "known": "let's agree that it was stupid",
+   "target": "einigen wir uns darauf, dass es dumm war",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "7384db6f-75ca-4c7d-a60e-6641dbc5f1a6"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U06",
+   "seed": 522,
+   "known": "she wants to agree",
+   "target": "sie will sich einigen",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "3560339b-0b7f-4907-af91-27c82cea8fe8"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0522L05U07",
+   "seed": 522,
+   "known": "can we agree that that was stupid?",
+   "target": "können wir uns darauf einigen, dass das dumm war?",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "43b5183e-eb12-4352-99f7-fbcbdc9c937f"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0270L01",
+   "seed": 270,
+   "known": "to be late",
+   "target": "zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01B01",
+   "seed": 270,
+   "known": "to be late",
+   "target": "zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01B02",
+   "seed": 270,
+   "known": "I don't want to be late",
+   "target": "ich will nicht zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01B03",
+   "seed": 270,
+   "known": "I'm going to be late",
+   "target": "ich werde zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01B04",
+   "seed": 270,
+   "known": "he's going to be late",
+   "target": "er wird zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01U01",
+   "seed": 270,
+   "known": "you're going to be late",
+   "target": "du wirst zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01U03",
+   "seed": 270,
+   "known": "she doesn't want to be late",
+   "target": "sie will nicht zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01U04",
+   "seed": 270,
+   "known": "I think I'm going to be late",
+   "target": "ich denke, ich werde zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L01U05",
+   "seed": 270,
+   "known": "we don't want to be late",
+   "target": "wir wollen nicht zu spät kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0270L02",
+   "seed": 270,
+   "known": "that I'm going to do it",
+   "target": "dass ich es machen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "inserted": true
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02B01",
+   "seed": 270,
+   "known": "that I'm going to do it",
+   "target": "dass ich es machen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02B02",
+   "seed": 270,
+   "known": "I think that I'm going to do it",
+   "target": "ich denke, dass ich es machen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02B03",
+   "seed": 270,
+   "known": "that I'm going to be late",
+   "target": "dass ich zu spät kommen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02U01",
+   "seed": 270,
+   "known": "I know that I'm going to be late",
+   "target": "ich weiß, dass ich zu spät kommen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02U02",
+   "seed": 270,
+   "known": "she knows that I'm going to try it",
+   "target": "sie weiß, dass ich es versuchen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0270L02U03",
+   "seed": 270,
+   "known": "because I'm worried that I'm going to be late",
+   "target": "weil ich mir Sorgen mache, dass ich zu spät kommen werde",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  }
+ ],
+ "B": [
+  {
+   "kind": "lego",
+   "id": "S0634L03",
+   "seed": 634,
+   "known": "one of those",
+   "target": "eines von denen",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0634L03B01",
+   "seed": 634,
+   "known": "one of those",
+   "target": "eines von denen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0634L03U09",
+   "seed": 634,
+   "known": "she also wanted one of those",
+   "target": "sie wollte auch eines von denen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0634L03U10",
+   "seed": 634,
+   "known": "he said he has one of those",
+   "target": "er hat gesagt, er hat eines von denen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "lego",
+   "id": "S0377L02",
+   "seed": 377,
+   "known": "go anywhere",
+   "target": "irgendwohin gefahren",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02B01",
+   "seed": 377,
+   "known": "go anywhere",
+   "target": "irgendwohin gefahren",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02B02",
+   "seed": 377,
+   "known": "did you go anywhere?",
+   "target": "bist du irgendwohin gefahren?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02B03",
+   "seed": 377,
+   "known": "did you go anywhere last year?",
+   "target": "bist du letztes Jahr irgendwohin gefahren?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02U01",
+   "seed": 377,
+   "known": "did she go anywhere?",
+   "target": "ist sie irgendwohin gefahren?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02U02",
+   "seed": 377,
+   "known": "did he go anywhere last year?",
+   "target": "ist er letztes Jahr irgendwohin gefahren?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0377L02U03",
+   "seed": 377,
+   "known": "did they go anywhere last year?",
+   "target": "sind sie letztes Jahr irgendwohin gefahren?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0537L02",
+   "seed": 537,
+   "known": "I was wrong",
+   "target": "ich hatte unrecht",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0564L01",
+   "seed": 564,
+   "known": "your help",
+   "target": "deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01B01",
+   "seed": 564,
+   "known": "your help",
+   "target": "deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01B02",
+   "seed": 564,
+   "known": "without your help",
+   "target": "ohne deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01B03",
+   "seed": 564,
+   "known": "he wants your help",
+   "target": "er will deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U01",
+   "seed": 564,
+   "known": "I need your help",
+   "target": "ich brauche deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U02",
+   "seed": 564,
+   "known": "she wants your help now",
+   "target": "sie will jetzt deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U03",
+   "seed": 564,
+   "known": "she did it without your help",
+   "target": "sie hat das ohne deine Hilfe gemacht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U04",
+   "seed": 564,
+   "known": "she has your help",
+   "target": "sie hat deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U05",
+   "seed": 564,
+   "known": "I want your help",
+   "target": "ich will deine Hilfe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U06",
+   "seed": 564,
+   "known": "she wants your help here",
+   "target": "sie will deine Hilfe hier",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0564L01U07",
+   "seed": 564,
+   "known": "she doesn't want your help",
+   "target": "sie will deine Hilfe nicht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0514L01",
+   "seed": 514,
+   "known": "the perfect house",
+   "target": "das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01B01",
+   "seed": 514,
+   "known": "the perfect house",
+   "target": "das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01B02",
+   "seed": 514,
+   "known": "that is the perfect house",
+   "target": "das ist das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01B03",
+   "seed": 514,
+   "known": "I want the perfect house",
+   "target": "ich will das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01U01",
+   "seed": 514,
+   "known": "do you want the perfect house?",
+   "target": "willst du das perfekte Haus?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01U02",
+   "seed": 514,
+   "known": "he wants the perfect house",
+   "target": "er will das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01U03",
+   "seed": 514,
+   "known": "she has the perfect house",
+   "target": "sie hat das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01U04",
+   "seed": 514,
+   "known": "the perfect house is here",
+   "target": "das perfekte Haus ist hier",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0514L01U05",
+   "seed": 514,
+   "known": "he has the perfect house",
+   "target": "er hat das perfekte Haus",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0499L02",
+   "seed": 499,
+   "known": "maybe we should",
+   "target": "vielleicht sollten wir",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0478L02",
+   "seed": 478,
+   "known": "such a kind heart",
+   "target": "so ein gutes Herz",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0478L02B01",
+   "seed": 478,
+   "known": "such a kind heart",
+   "target": "so ein gutes Herz",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0478L02U06",
+   "seed": 478,
+   "known": "he has such a kind heart",
+   "target": "er hat so ein gutes Herz",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0478L02U07",
+   "seed": 478,
+   "known": "I think she has such a kind heart",
+   "target": "ich denke, sie hat so ein gutes Herz",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  }
+ ],
+ "C": [
+  {
+   "kind": "lego",
+   "id": "S0149L01",
+   "seed": 149,
+   "known": "so I hope",
+   "target": "also hoffe ich",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01B01",
+   "seed": 149,
+   "known": "so I hope",
+   "target": "also hoffe ich",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01B02",
+   "seed": 149,
+   "known": "so I hope you understand",
+   "target": "also hoffe ich, dass du verstehst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01B03",
+   "seed": 149,
+   "known": "so I hope you can help",
+   "target": "also hoffe ich, dass du helfen kannst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01B04",
+   "seed": 149,
+   "known": "so I hope you know",
+   "target": "also hoffe ich, dass du es weißt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01U01",
+   "seed": 149,
+   "known": "so I hope you can help me tomorrow",
+   "target": "also hoffe ich, dass du mir morgen helfen kannst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L01U02",
+   "seed": 149,
+   "known": "so I hope you know how important this is",
+   "target": "also hoffe ich, dass du weißt, wie wichtig das ist",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0149L02",
+   "seed": 149,
+   "known": "that you'll finish soon",
+   "target": "dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "inserted": true
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02B01",
+   "seed": 149,
+   "known": "that you'll finish soon",
+   "target": "dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02B02",
+   "seed": 149,
+   "known": "I hope that you'll finish soon",
+   "target": "ich hoffe, dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02B03",
+   "seed": 149,
+   "known": "so I hope that you'll finish soon",
+   "target": "also hoffe ich, dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02U01",
+   "seed": 149,
+   "known": "I think that you'll finish soon",
+   "target": "ich denke, dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02U02",
+   "seed": 149,
+   "known": "I know that you'll finish soon",
+   "target": "ich weiß, dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0149L02U03",
+   "seed": 149,
+   "known": "this isn't very difficult, so I hope you'll finish soon",
+   "target": "das ist nicht sehr schwierig, also hoffe ich, dass du bald fertig wirst",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0197L01",
+   "seed": 197,
+   "known": "my son",
+   "target": "mein Sohn",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01B01",
+   "seed": 197,
+   "known": "My son will come tomorrow",
+   "target": "Mein Sohn wird morgen kommen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01B02",
+   "seed": 197,
+   "known": "My son was here yesterday",
+   "target": "Mein Sohn war gestern hier",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01B03",
+   "seed": 197,
+   "known": "My son would like to help me",
+   "target": "Mein Sohn möchte mir helfen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01U04",
+   "seed": 197,
+   "known": "I heard that my son will come on Saturday evening",
+   "target": "Ich habe gehört, dass mein Sohn am Samstagabend kommen wird",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01U06",
+   "seed": 197,
+   "known": "My son told me he needs money before tomorrow morning",
+   "target": "Mein Sohn hat mir gesagt, er brauche Geld vor morgen früh",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01U07",
+   "seed": 197,
+   "known": "I do not know if my son has heard about the problem",
+   "target": "Ich weiß nicht, ob mein Sohn über das Problem gehört hat",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L01U08",
+   "seed": 197,
+   "known": "My son would like to read but he does not have time now",
+   "target": "Mein Sohn möchte lesen, aber er hat jetzt keine Zeit",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0197L02",
+   "seed": 197,
+   "known": "as a teacher",
+   "target": "als Lehrer",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02B01",
+   "seed": 197,
+   "known": "as a teacher",
+   "target": "als Lehrer",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02B02",
+   "seed": 197,
+   "known": "he works as a teacher",
+   "target": "er arbeitet als Lehrer",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02B03",
+   "seed": 197,
+   "known": "my friend works as a teacher",
+   "target": "mein Freund arbeitet als Lehrer",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02U01",
+   "seed": 197,
+   "known": "he wants to work as a teacher",
+   "target": "er will als Lehrer arbeiten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02U02",
+   "seed": 197,
+   "known": "my son would like to work as a teacher",
+   "target": "mein Sohn möchte als Lehrer arbeiten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02U03",
+   "seed": 197,
+   "known": "does he work as a teacher?",
+   "target": "arbeitet er als Lehrer?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0197L02U04",
+   "seed": 197,
+   "known": "my son works as a teacher",
+   "target": "mein Sohn arbeitet als Lehrer",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0239L01",
+   "seed": 239,
+   "known": "likes to read",
+   "target": "liest gern",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01B01",
+   "seed": 239,
+   "known": "likes to read",
+   "target": "liest gern",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01B02",
+   "seed": 239,
+   "known": "I think she likes to read",
+   "target": "Ich denke, sie liest gern",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01B03",
+   "seed": 239,
+   "known": "He likes to read at home",
+   "target": "Er liest gern zu Hause",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01U01",
+   "seed": 239,
+   "known": "My friend likes to read in the morning",
+   "target": "Mein Freund liest gern am Morgen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01U02",
+   "seed": 239,
+   "known": "She likes to read in the evening when she is at home",
+   "target": "Sie liest gern am Abend, wenn sie zu Hause ist",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0239L01U03",
+   "seed": 239,
+   "known": "my mother likes to read",
+   "target": "meine Mutter liest gern",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0195L02",
+   "seed": 195,
+   "known": "left on the table",
+   "target": "auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02B01",
+   "seed": 195,
+   "known": "left on the table",
+   "target": "auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02B03",
+   "seed": 195,
+   "known": "I left it on the table",
+   "target": "ich habe es auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02U01",
+   "seed": 195,
+   "known": "I left the money on the table",
+   "target": "ich habe das Geld auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02U03",
+   "seed": 195,
+   "known": "she left the book on the table",
+   "target": "sie hat das Buch auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02U04",
+   "seed": 195,
+   "known": "did you leave it on the table?",
+   "target": "hast du es auf dem Tisch gelassen?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02U06",
+   "seed": 195,
+   "known": "he left something on the table",
+   "target": "er hat etwas auf dem Tisch gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0195L02U08",
+   "seed": 195,
+   "known": "I left the money here on the table for you",
+   "target": "ich habe das Geld hier auf dem Tisch für dich gelassen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0231L01",
+   "seed": 231,
+   "known": "I know an old man",
+   "target": "ich kenne einen alten Mann",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0231L02",
+   "seed": 231,
+   "known": "who wanted to do it",
+   "target": "der es machen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L02B01",
+   "seed": 231,
+   "known": "who wanted to do it",
+   "target": "der es machen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L02B02",
+   "seed": 231,
+   "known": "the man who wanted to do it",
+   "target": "der Mann, der es machen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L02B03",
+   "seed": 231,
+   "known": "someone who wanted to try it",
+   "target": "jemand, der es versuchen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L02B04",
+   "seed": 231,
+   "known": "the man who wanted to help",
+   "target": "der Mann, der helfen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L02U01",
+   "seed": 231,
+   "known": "I know an old man who wanted to do it",
+   "target": "ich kenne einen alten Mann, der es machen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "lego",
+   "id": "S0231L03",
+   "seed": 231,
+   "known": "to ask for help",
+   "target": "um Hilfe bitten",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "inserted": true
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03B01",
+   "seed": 231,
+   "known": "to ask for help",
+   "target": "um Hilfe bitten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03B02",
+   "seed": 231,
+   "known": "I want to ask for help",
+   "target": "ich will um Hilfe bitten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03B03",
+   "seed": 231,
+   "known": "who wanted to ask for help",
+   "target": "der um Hilfe bitten wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03U01",
+   "seed": 231,
+   "known": "the man who wanted to ask for help",
+   "target": "der Mann, der um Hilfe bitten wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03U02",
+   "seed": 231,
+   "known": "can I ask for help?",
+   "target": "kann ich um Hilfe bitten?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0231L03U03",
+   "seed": 231,
+   "known": "I know an old man who wanted to ask for help",
+   "target": "Ich kenne einen alten Mann, der um Hilfe bitten wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0307L03",
+   "seed": 307,
+   "known": "who's sitting over there",
+   "target": "der da drüben sitzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0307L03B01",
+   "seed": 307,
+   "known": "who's sitting over there",
+   "target": "der da drüben sitzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0307L03B02",
+   "seed": 307,
+   "known": "the man who's sitting over there",
+   "target": "der Mann, der da drüben sitzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0307L03B03",
+   "seed": 307,
+   "known": "I know the man who's sitting over there",
+   "target": "ich kenne den Mann, der da drüben sitzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0307L03U01",
+   "seed": 307,
+   "known": "do you know the man who's sitting over there?",
+   "target": "kennst du den Mann, der da drüben sitzt?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0307L03U07",
+   "seed": 307,
+   "known": "I know that young man who's sitting over there",
+   "target": "Ich kenne diesen jungen Mann, der da drüben sitzt",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0391L01",
+   "seed": 391,
+   "known": "towards the bus",
+   "target": "zum Bus",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "c56f0ee0-4451-4760-8d75-b3f12554aeca",
+    "target2": "fd0d8dff-8414-4591-95f6-687352d4426d"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L01B01",
+   "seed": 391,
+   "known": "towards the bus",
+   "target": "zum Bus",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "c56f0ee0-4451-4760-8d75-b3f12554aeca",
+    "target2": "fd0d8dff-8414-4591-95f6-687352d4426d"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0391L02",
+   "seed": 391,
+   "known": "who is walking towards the bus",
+   "target": "die zum Bus geht",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L02B01",
+   "seed": 391,
+   "known": "who is walking towards the bus",
+   "target": "die zum Bus geht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L02B02",
+   "seed": 391,
+   "known": "the woman who is walking towards the bus",
+   "target": "die Frau, die zum Bus geht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L02B03",
+   "seed": 391,
+   "known": "I know the woman who is walking towards the bus",
+   "target": "ich kenne die Frau, die zum Bus geht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L02U01",
+   "seed": 391,
+   "known": "do you know the woman who is walking towards the bus?",
+   "target": "kennst du die Frau, die zum Bus geht?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0391L02U06",
+   "seed": 391,
+   "known": "the one who is walking towards the bus",
+   "target": "die Person, die zum Bus geht",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0134L03",
+   "seed": 134,
+   "known": "at something difficult",
+   "target": "an etwas Schwierigem",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03B01",
+   "seed": 134,
+   "known": "at something difficult",
+   "target": "an etwas Schwierigem",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03B02",
+   "seed": 134,
+   "known": "to work at something difficult",
+   "target": "an etwas Schwierigem arbeiten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03B03",
+   "seed": 134,
+   "known": "she works at something difficult",
+   "target": "sie arbeitet an etwas Schwierigem",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03U06",
+   "seed": 134,
+   "known": "he is working at something difficult",
+   "target": "er arbeitet an etwas Schwierigem",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03U07",
+   "seed": 134,
+   "known": "we are working at something difficult",
+   "target": "wir arbeiten an etwas Schwierigem",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03U08",
+   "seed": 134,
+   "known": "I want to work at something difficult",
+   "target": "ich will an etwas Schwierigem arbeiten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03U09",
+   "seed": 134,
+   "known": "it's not a problem when you work at something difficult",
+   "target": "es ist kein Problem, wenn man an etwas Schwierigem arbeitet",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0134L03U01",
+   "seed": 134,
+   "known": "it's not a problem when you work at something difficult with them",
+   "target": "es ist kein Problem, wenn man mit ihnen an etwas Schwierigem arbeitet",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0050L01",
+   "seed": 50,
+   "known": "to finish",
+   "target": "fertig zu werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01B01",
+   "seed": 50,
+   "known": "to finish",
+   "target": "fertig zu werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": false
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01B02",
+   "seed": 50,
+   "known": "I'm trying to finish",
+   "target": "ich versuche, fertig zu werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01B03",
+   "seed": 50,
+   "known": "I want to finish",
+   "target": "ich will fertig werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01U02",
+   "seed": 50,
+   "known": "I want to finish quickly",
+   "target": "ich will schnell fertig werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01U03",
+   "seed": 50,
+   "known": "I'm trying to finish quickly",
+   "target": "ich versuche, schnell fertig zu werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0050L01U07",
+   "seed": 50,
+   "known": "I'm not trying to finish as quickly as possible",
+   "target": "Ich versuche nicht, so schnell wie möglich fertig zu werden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0200L02",
+   "seed": 200,
+   "known": "finish everything",
+   "target": "alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02B01",
+   "seed": 200,
+   "known": "finish everything",
+   "target": "alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02B02",
+   "seed": 200,
+   "known": "I'd like to finish everything",
+   "target": "ich möchte alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02B04",
+   "seed": 200,
+   "known": "we need to finish everything",
+   "target": "wir müssen alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02B05",
+   "seed": 200,
+   "known": "can you finish everything soon?",
+   "target": "kannst du bald alles fertig machen?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02B06",
+   "seed": 200,
+   "known": "I will finish everything later",
+   "target": "ich werde später alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02U01",
+   "seed": 200,
+   "known": "I need to finish everything before I can go home today",
+   "target": "ich muss alles fertig machen, bevor ich heute nach Hause gehen kann",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02U03",
+   "seed": 200,
+   "known": "She told me that she wanted to finish everything this week",
+   "target": "Sie hat mir gesagt, dass sie diese Woche alles fertig machen wollte",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0200L02U11",
+   "seed": 200,
+   "known": "I think it is important that we can finish everything in a short time",
+   "target": "Ich denke, es ist wichtig, dass wir alles in kurzer Zeit fertig machen können",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0278L01",
+   "seed": 278,
+   "known": "to finish everything",
+   "target": "alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01B01",
+   "seed": 278,
+   "known": "to finish everything",
+   "target": "alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01B02",
+   "seed": 278,
+   "known": "I need to finish everything",
+   "target": "ich muss alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01B03",
+   "seed": 278,
+   "known": "can you finish everything today?",
+   "target": "kannst du heute alles fertig machen?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01B04",
+   "seed": 278,
+   "known": "I'd like to finish everything",
+   "target": "Ich möchte alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01U03",
+   "seed": 278,
+   "known": "I need to finish everything today because I have a meeting early tomorrow morning",
+   "target": "Ich muss heute alles fertig machen, weil ich morgen früh ein Treffen habe",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01U10",
+   "seed": 278,
+   "known": "She tells me she would like to finish everything this week",
+   "target": "Sie sagt mir, sie möchte diese Woche alles fertig machen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0278L01U12",
+   "seed": 278,
+   "known": "We need to finish everything today if we can",
+   "target": "Wir müssen heute alles fertig machen, wenn wir können",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "lego",
+   "id": "S0211L01",
+   "seed": 211,
+   "known": "that they didn't want to explain",
+   "target": "dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2",
+    "presentation"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01B01",
+   "seed": 211,
+   "known": "that they didn't want to explain",
+   "target": "dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01B02",
+   "seed": 211,
+   "known": "they said that they didn't want to explain",
+   "target": "sie haben gesagt, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01B03",
+   "seed": 211,
+   "known": "I know that they didn't want to explain",
+   "target": "ich weiß, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01U02",
+   "seed": 211,
+   "known": "I think that they didn't want to explain",
+   "target": "ich denke, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01U03",
+   "seed": 211,
+   "known": "she told me that they didn't want to explain",
+   "target": "sie hat mir gesagt, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01U04",
+   "seed": 211,
+   "known": "they told us that they didn't want to explain",
+   "target": "Sie haben uns gesagt, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0211L01U06",
+   "seed": 211,
+   "known": "it's not a problem that they didn't want to explain",
+   "target": "es ist kein Problem, dass sie nicht erklären wollten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0242L02U11",
+   "seed": 242,
+   "known": "My brother told me he will need more time for the work",
+   "target": "Mein Bruder hat mir gesagt, er wird mehr Zeit für die Arbeit brauchen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0246L01U02",
+   "seed": 246,
+   "known": "I wanted her to help you but she was too busy talking to the teacher about the work",
+   "target": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, mit dem Lehrer über die Arbeit zu reden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0246L01U10",
+   "seed": 246,
+   "known": "I wanted her to help you but she was too busy making sure that everything was ready for the work",
+   "target": "Ich wollte, dass sie dir hilft, aber sie war zu beschäftigt damit, dass alles für die Arbeit bereit war",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0258L01U06",
+   "seed": 258,
+   "known": "When I was over there yesterday I heard them talking about the work they have to do",
+   "target": "Als ich gestern drüben war, habe ich sie über die Arbeit reden hören, die sie machen müssen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0260L01U08",
+   "seed": 260,
+   "known": "There is not the faintest chance that I will be ready before tomorrow morning",
+   "target": "Es gibt nicht die geringste Gelegenheit, dass ich vor morgen früh bereit bin",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0269L01U11",
+   "seed": 269,
+   "known": "I will wait for the answer from my teacher about the book",
+   "target": "Ich werde auf die Antwort von meinem Lehrer über das Buch warten",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0284L02U09",
+   "seed": 284,
+   "known": "I need to ask my sister's friend about the work",
+   "target": "Ich muss den Freund meiner Schwester über die Arbeit fragen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0291L01U06",
+   "seed": 291,
+   "known": "I hope this work is not going to be too difficult because I haven't had time to learn",
+   "target": "Ich hoffe, diese Arbeit wird nicht zu schwierig sein, weil ich keine Zeit hatte zu lernen",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0291L02U04",
+   "seed": 291,
+   "known": "I hope I will be able to find the answer to this question before tomorrow",
+   "target": "Ich hoffe, ich kann die Antwort auf diese Frage vor morgen finden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0292L01U08",
+   "seed": 292,
+   "known": "I hope you will be able to finish the work on time because it is very important for your work",
+   "target": "Ich hoffe, du kannst die Arbeit rechtzeitig fertig machen, weil es sehr wichtig für deine Arbeit ist",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "keep": {}
+  }
+ ],
+ "D": [
+  {
+   "kind": "lego",
+   "id": "S0158L01",
+   "seed": 158,
+   "known": "let's talk",
+   "target": "lass uns reden",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "e40d96b4-c9b0-4a0f-a9f0-3d8e3f053c76",
+    "target2": "c902bdc2-1043-4d03-873f-8782bfa641a4"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01C01",
+   "seed": 158,
+   "known": "let's",
+   "target": "Lass uns",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "afc37282-f26f-49b2-87b1-6626b5165284",
+    "target2": "0e8860ed-2b9a-46f9-a8b0-029e2e7f2601"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01B01",
+   "seed": 158,
+   "known": "let's talk",
+   "target": "Lass uns reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "e40d96b4-c9b0-4a0f-a9f0-3d8e3f053c76",
+    "target2": "c902bdc2-1043-4d03-873f-8782bfa641a4"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01B02",
+   "seed": 158,
+   "known": "let's talk later",
+   "target": "Lass uns später reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "16cdaed1-68b1-4a8a-a511-ca939c77142a",
+    "target2": "f41ccc84-3f7a-4216-b2f4-bd286eef37e0"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01B04",
+   "seed": 158,
+   "known": "let's talk tomorrow",
+   "target": "Lass uns morgen reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "cdec8b20-242b-434f-a5d8-49976fc4e0a5",
+    "target2": "530285ca-3f4b-4be5-a380-e8eeb634500e"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01U03",
+   "seed": 158,
+   "known": "If you have time later let's talk about the new work",
+   "target": "Wenn du später Zeit hast, lass uns über die neue Arbeit reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "a9ff25d4-cf81-4e96-8269-f9e24e094805",
+    "target2": "6d037d10-1492-4306-9ddb-9a28a4cf6272"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01U05",
+   "seed": 158,
+   "known": "There are some things we need to talk about so let's talk soon",
+   "target": "Es gibt ein paar Sachen, über die wir reden müssen, also lass uns bald reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "2eb49219-3482-447c-b366-5f36cf696d08",
+    "target2": "52a04558-1255-43b6-adf0-494c28a35221"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01U06",
+   "seed": 158,
+   "known": "I think something is not good so let's talk and make it better",
+   "target": "Ich denke, etwas ist nicht gut, also lass uns reden und es besser machen",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "97974f2a-d901-4c03-aec0-9eabc59ec884",
+    "target2": "2bd5c325-007a-4005-9d85-706bcc7e2d26"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01U08",
+   "seed": 158,
+   "known": "Being nervous is not good so let's talk tomorrow morning",
+   "target": "Nervös sein ist nicht gut, also lass uns morgen früh reden",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "42e2589f-a9ce-4220-a1a2-bcbb6ca499e0",
+    "target2": "f8ed2109-9129-4403-bc2f-7f6ba8347f65"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0158L01U01",
+   "seed": 158,
+   "known": "let's talk about something else",
+   "target": "lass uns über etwas anderes reden",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0301L01",
+   "seed": 301,
+   "known": "he said that",
+   "target": "er hat gesagt, dass",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "1510a4c7-d20e-4b8d-9eca-95db46701c56",
+    "target2": "5916c586-7d17-4953-b2cd-90ddd42922c6"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01C02",
+   "seed": 301,
+   "known": "has said",
+   "target": "hat gesagt",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "4355352d-ebc6-49a6-895c-668bb7c8bc80",
+    "target2": "9ced836c-4d67-49eb-91bb-057641fadc17"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01B01",
+   "seed": 301,
+   "known": "he said that",
+   "target": "er hat gesagt, dass",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "1510a4c7-d20e-4b8d-9eca-95db46701c56",
+    "target2": "5916c586-7d17-4953-b2cd-90ddd42922c6"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01B02",
+   "seed": 301,
+   "known": "he said that he wants",
+   "target": "er hat gesagt, dass er will",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "725cb1b8-043c-4bb0-903c-406e03848e28",
+    "target2": "6bdc9972-09a3-4394-bc51-b4cd7b5d3b5f"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01B03",
+   "seed": 301,
+   "known": "he said that he doesn't know",
+   "target": "er hat gesagt, dass er nicht weiß",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "3b06b45c-98c5-40e7-9550-49841e9d7c3a",
+    "target2": "570ad7c8-9634-4924-a407-00f87a5b306b"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U01",
+   "seed": 301,
+   "known": "he said that he wants to speak German",
+   "target": "er hat gesagt, dass er Deutsch sprechen will",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "99af930d-d169-4804-98cc-2a824b6d2da9",
+    "target2": "4daeb1a8-0ef0-43de-b085-b84af5dbb322"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U02",
+   "seed": 301,
+   "known": "he said that he isn't ready",
+   "target": "er hat gesagt, dass er nicht bereit ist",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "f45e42a6-362b-4671-90f5-4bcf600af514",
+    "target2": "230b5771-7a95-4bf5-8676-f2dbc0d72c93"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U03",
+   "seed": 301,
+   "known": "he said that he wants to go",
+   "target": "er hat gesagt, dass er gehen will",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "03a15a31-ad29-440b-84c2-39da42045629",
+    "target2": "8db99525-22ad-4f66-af5a-8bd4ec8aa9b0"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U04",
+   "seed": 301,
+   "known": "he said that he wants to help",
+   "target": "er hat gesagt, dass er helfen will",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "a9a04ba0-6864-4b43-9c49-d73fd2053447",
+    "target2": "62ab9495-45aa-4e18-a472-e28323cd6a98"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U05",
+   "seed": 301,
+   "known": "he said that he doesn't want to go",
+   "target": "er hat gesagt, dass er nicht gehen will",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "f897998e-ceea-4017-bd74-b4fb276bf225",
+    "target2": "de3ae7f5-ae3c-4630-82e0-c61e1b1cccc1"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U06",
+   "seed": 301,
+   "known": "he said that he's nearly ready",
+   "target": "er hat gesagt, dass er fast bereit ist",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "3c553571-4fff-4c0b-ab24-ef354a140c97",
+    "target2": "fb8d05c0-e7b7-4c98-bab5-5a3446e29907"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0301L01U07",
+   "seed": 301,
+   "known": "he said that he wants to show you something",
+   "target": "er hat gesagt, dass er dir etwas zeigen will",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0130L02",
+   "seed": 130,
+   "known": "because he's my friend",
+   "target": "weil er mein Freund ist",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "143b2b42-3ed3-4eea-be89-5c086c412cb7",
+    "target2": "4ef610a7-b2df-4332-9068-ef6a59920585"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0130L02B01",
+   "seed": 130,
+   "known": "because he's my friend",
+   "target": "Weil er mein Freund ist",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "143b2b42-3ed3-4eea-be89-5c086c412cb7",
+    "target2": "4ef610a7-b2df-4332-9068-ef6a59920585"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0130L02U01",
+   "seed": 130,
+   "known": "that was a surprise, because he's my friend",
+   "target": "das war eine Überraschung, weil er mein Freund ist",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0165L01",
+   "seed": 165,
+   "known": "but I'm not sure",
+   "target": "aber ich bin mir nicht sicher",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "7c681fd4-e634-4300-aa2c-d19db1f5ff25",
+    "target2": "2b35f143-7428-4e54-a862-b6b66ce42c8e"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0165L01B01",
+   "seed": 165,
+   "known": "but I'm not sure",
+   "target": "Aber ich bin mir nicht sicher",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "7c681fd4-e634-4300-aa2c-d19db1f5ff25",
+    "target2": "2b35f143-7428-4e54-a862-b6b66ce42c8e"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S0165L02",
+   "seed": 165,
+   "known": "if it's true",
+   "target": "ob es wahr ist",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "cd7546e0-9853-4f03-abd2-8bfc58bdcc2b",
+    "target2": "a4d27e9c-3be1-4c29-8995-df11b38e1b35"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0165L02B01",
+   "seed": 165,
+   "known": "if it's true",
+   "target": "Ob es wahr ist",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "cd7546e0-9853-4f03-abd2-8bfc58bdcc2b",
+    "target2": "a4d27e9c-3be1-4c29-8995-df11b38e1b35"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0165L02U01",
+   "seed": 165,
+   "known": "but I'm not sure if it's true",
+   "target": "aber ich bin mir nicht sicher, ob es wahr ist",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "seed",
+   "id": 21,
+   "seed": 21,
+   "known": "why are you learning her name?",
+   "target": "Warum lernst du ihren Namen?",
+   "slots": [],
+   "keep": {
+    "target1": "5957db37-693c-48e3-9881-ddac0aca0089",
+    "target2": "713a3ee9-cdb4-438c-9e30-7ecb45fdf5d3",
+    "known": "aca8b5e4-39b7-4179-add8-c21066475d45"
+   }
+  },
+  {
+   "kind": "seed",
+   "id": 67,
+   "seed": 67,
+   "known": "why do you want to stop?",
+   "target": "Warum willst du aufhören?",
+   "slots": [],
+   "keep": {
+    "target1": "c5a16f7b-7ab6-4cc0-9469-1fdc019d111c",
+    "target2": "7795dfdc-dc57-476f-b605-cb3d7a2542c2",
+    "known": "f6d964eb-467a-49da-83d8-d14f28425955"
+   }
+  },
+  {
+   "kind": "seed",
+   "id": 113,
+   "seed": 113,
+   "known": "why can't I remember what you said?",
+   "target": "Warum kann ich mich nicht erinnern, was du gesagt hast?",
+   "slots": [],
+   "keep": {
+    "target1": "622f0d77-b95d-4f88-8e29-f409a971ecca",
+    "target2": "be10c9ca-9cc9-4032-a4c4-23e2b29c102d",
+    "known": "2edfe1f1-327f-4a6b-beb3-ef005a2e096f"
+   }
+  },
+  {
+   "kind": "seed",
+   "id": 145,
+   "seed": 145,
+   "known": "why are you not happy any more?",
+   "target": "Warum bist du nicht mehr glücklich?",
+   "slots": [],
+   "keep": {
+    "target1": "3828478d-93f9-44e6-b932-c445bcb182ea",
+    "target2": "a5741eec-2e4a-47d0-85ea-cd87be29641a",
+    "known": "32755c4d-ad2c-478a-a29d-14939d9cd81d"
+   }
+  },
+  {
+   "kind": "seed",
+   "id": 269,
+   "seed": 269,
+   "known": "why don't you want to wait for your father?",
+   "target": "Warum willst du nicht auf deinen Vater warten?",
+   "slots": [],
+   "keep": {
+    "target1": "d94933c6-acfa-43f1-a8c1-b455af38003f",
+    "target2": "4bfcb8e5-884a-4011-887c-8c3251cc00e5",
+    "known": "7f334618-442a-421e-ab31-b9adb0742a57"
+   }
+  },
+  {
+   "kind": "seed",
+   "id": 500,
+   "seed": 500,
+   "known": "why don't you want to sit between the two girls?",
+   "target": "Warum willst du nicht zwischen den beiden Mädchen sitzen?",
+   "slots": [],
+   "keep": {
+    "target1": "9a49768a-ef60-466e-a546-97a9e333a9bc",
+    "target2": "2c5c0365-a487-48e6-9790-3630262540ef",
+    "known": "bb8b5ff3-8ff2-4d10-961c-f92cd07d00d5"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0276L01U01",
+   "seed": 276,
+   "known": "no I can stay here for a little longer",
+   "target": "nein, ich kann noch ein bisschen länger hier bleiben",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "seed",
+   "id": 453,
+   "seed": 453,
+   "known": "did they say who they saw yesterday evening?",
+   "target": "haben sie gesagt, wen sie gestern Abend gesehen haben?",
+   "slots": [
+    "known"
+   ],
+   "keep": {
+    "target1": "44eed1b3-1e00-439c-ac0a-16169cc08379",
+    "target2": "0d0f6e20-2540-4e48-8810-a7fccd8de5df"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0453L03U07",
+   "seed": 453,
+   "known": "did they say who they saw yesterday evening?",
+   "target": "haben sie gesagt, wen sie gestern Abend gesehen haben?",
+   "slots": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "seedClips": true
+  },
+  {
+   "kind": "lego",
+   "id": "S0264L01",
+   "seed": 264,
+   "known": "an old man",
+   "target": "ein alter Mann",
+   "slots": [
+    "known",
+    "presentation"
+   ],
+   "keep": {
+    "target1": "a1c68f27-4682-409f-80d8-5ef0d86b6826",
+    "target2": "fa1ee907-10c0-451b-9423-96425000b60f"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "deu_for_eng:S0264L01B01",
+   "seed": 264,
+   "known": "an old man",
+   "target": "ein alter Mann",
+   "slots": [
+    "target1",
+    "target2"
+   ],
+   "keep": {
+    "known": "e9a9c1f7-1d94-4a2d-9031-be1d7be0c664"
+   }
+  }
+ ]
+}
