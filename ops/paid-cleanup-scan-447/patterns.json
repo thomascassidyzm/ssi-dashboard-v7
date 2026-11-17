@@ -1,0 +1,19 @@
+{
+ "_readme": "Per-TARGET-language lexical candidates drawn from the fix history. side = which text the regex reads. kp = a known positive (pre-fix or still-live text) the regex must match, or detect.cjs exits 3. A hit is a candidate to READ, never a defect. Workers ADD patterns for their languages here-shaped, in their own report.",
+ "spa": [
+  {"id": "practicar_gerund", "side": "target", "re": "\\bpractic\\w+ (\\w+ )?\\w+[aei]ndo\\b", "kp": "Si termino esto quiero practicar hablando español", "src": "Deborah Oct: 'sounds like speech therapy'; ~77 rows live in spa_for_eng, Kai parked (item 44b), d/85773ddc"},
+  {"id": "disfrutar_infinitive", "side": "target", "re": "\\bdisfrut\\w+ (?!de\\b)(\\w+ )?\\w+[aei]r(me|te|se|nos|lo|la|los|las)?\\b", "kp": "Disfruto hablar contigo el fin de semana", "src": "Deborah ruling; S0206L02, S0214L02, S0110L03U11 live, d/85773ddc"},
+  {"id": "gustar_gerund", "side": "target", "re": "\\b(encanta|encantan|gusta|gustan|gustaría|sido \\w+|seguro de que|opinión) \\w+[aei]ndo\\b", "kp": "me encanta viendo a los niños jugar", "src": "S0567L03 'watching' basket, #430·AI 17 Nov"},
+  {"id": "tomar_tiempo_para", "side": "target", "re": "\\btom\\w+ (\\w+ ){0,2}tiempo para\\b", "kp": "no me gusta tomar demasiado tiempo para contestar", "src": "Deborah answer 6, S0027 (tardar en), d/19f41c76"},
+  {"id": "tener_request_calque", "side": "target", "re": "\\b(puedo|podemos|podría|podríamos) (tener|tomar)\\b", "kp": "¿Podríamos tener una botella de vino tinto, por favor?", "src": "#472 S0414 pedir; S0630-634 puedo tomar flagged open"},
+  {"id": "cuando_present_future", "side": "target", "re": "\\bcuando (me |te |se |nos )?(termino|entiendo|estoy|siento|tengo|puedo|llego|vuelvo|sé)\\b", "kp": "Cuando termino me gustaría leer mi libro por un rato", "src": "#348 family 'cuando + present about the future', d/86704d26"},
+  {"id": "past_frame_present_verb", "side": "target", "re": "\\b(sabía|estaba segur[oa] de|dijo|pensé|pensaba) que (\\w+ )?(tiene|están|está|entienden|saben|puede|tenemos|se pelean|quiere)\\b", "kp": "sabía que tiene todo", "src": "#348 family 'past frame, present verb', d/86704d26"},
+  {"id": "antes_de_que_indicative", "side": "target", "re": "\\bantes de que (\\w+ )?(es|está|tengo|tiene|puedo|voy|va)\\b", "kp": "antes de que es demasiado difícil", "src": "#348 mood family"},
+  {"id": "calques_misc", "side": "target", "re": "\\bsabe mejor\\b|\\bpor más tiempo\\b|\\bequivocad[oa] sobre todo\\b", "kp": "ella sabe mejor", "src": "Deborah-held wrong-word rows, d/85773ddc"}
+ ],
+ "known:eng": [
+  {"id": "elderly", "side": "known", "re": "\\belderly\\b", "kp": "I saw that elderly man yesterday", "src": "spa S0231L02: English says elderly under LEGO 'an old man' (#446 hold)"},
+  {"id": "en_progressive_calque", "side": "known", "re": "\\b(at the moment|right now|now) (I|you|we|they|he|she) (learn|speak|try|work|read|go|think|practise|practice)s?\\b", "kp": "At the moment I learn German", "src": "deu #435 en-calque family"},
+  {"id": "bare_yes_no_echo", "side": "known", "re": "^(yes|no),? (I|we|you|he|she|they|it) (did|do|does|would|will|am|are|is|was|were|have|has|can|could)(n't| not)?[.!]?$", "kp": "No, I didn't", "src": "gle_v2 echo rule final (17 Nov 11:25Z): English never a bare echo, phrases heard out of context"}
+ ]
+}
