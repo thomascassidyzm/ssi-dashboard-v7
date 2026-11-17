@@ -280,9 +280,12 @@ async function renderClip(input, deps) {
     // voice, any course, either side, makes this a second performance — refused (409 EXISTS_IN_LANGUAGE, dry run too) naming
     // the clips, unless the route's existing re-record authority covers it (Tom's permission row, Kai's token). Trial renders
     // returned above and never reach this; intros (presentation) are rendered fresh per course and are not guarded.
+    // castVoice (job #446): no voiceId named by the caller means resolve() gave the course's cast voice of record — filling
+    // that voice's gap is expected (r-2026-10-17, r-2026-10-14, r-2026-10-29) and is not refused; a caller-named voice is.
+    // Pod lines (podSentenceId) keep the full stop: pod audio is repointed, never re-recorded (r-2026-10-26-pod-audio-is-per-language-a).
     if (deps.clipsInLanguage && existsInLanguage.guardsSlot(req.role)) {
       const found = await deps.clipsInLanguage({ language: r.language, text: req.text, courseCode: req.courseCode })
-      const refusal = existsInLanguage.existsInLanguageRefusal(found, { voiceId: r.voiceId, courseCode: req.courseCode, role: req.role, language: r.language, text: req.text })
+      const refusal = existsInLanguage.existsInLanguageRefusal(found, { voiceId: r.voiceId, courseCode: req.courseCode, role: req.role, language: r.language, text: req.text, castVoice: !req.voiceId && !req.podSentenceId })
       if (refusal) {
         const grant = deps.rerecordGranted ? await deps.rerecordGranted({ courseCode: req.courseCode, role: req.role, approval: req.approval }) : null
         if (!grant) throw Object.assign(new RenderRequestError(refusal.message, refusal.status, refusal.code), { existing: refusal.existing })
