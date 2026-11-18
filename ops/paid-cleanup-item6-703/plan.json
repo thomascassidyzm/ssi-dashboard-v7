@@ -6734,19 +6734,22 @@
     "target": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
    },
    "defect": "English says he/she/her while the Portuguese says estás/teu (you/your)",
-   "action": "edit",
-   "new": {
-    "known": "she asked how much you're willing to pay for your ticket",
-    "target": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Reported speech keeps the reported clause's own person when the reporter repeats what someone said about \"us/you\": the Portuguese says nós/tua, so the English says we/your (Cunha & Cintra, Nova Gramática do Português Contemporâneo, discurso indireto). The Portuguese is correct and is the seed's own; only the English changes (known-side clip only).",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket (R0.4 step 3)",
    "checks": "",
-   "audio_slots": [
-    "known"
-   ],
-   "audio_chars_est": 56
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "she asked how much you're willing to pay for your ticket",
+     "target": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "por_for_eng",
@@ -6758,19 +6761,22 @@
     "target": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
    },
    "defect": "English says he/she/her while the Portuguese says estás/teu (you/your)",
-   "action": "edit",
-   "new": {
-    "known": "he asked how much you're willing to pay for your ticket",
-    "target": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Reported speech keeps the reported clause's own person when the reporter repeats what someone said about \"us/you\": the Portuguese says nós/tua, so the English says we/your (Cunha & Cintra, Nova Gramática do Português Contemporâneo, discurso indireto). The Portuguese is correct and is the seed's own; only the English changes (known-side clip only).",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket (R0.4 step 3)",
    "checks": "",
-   "audio_slots": [
-    "known"
-   ],
-   "audio_chars_est": 55
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "he asked how much you're willing to pay for your ticket",
+     "target": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "por_for_eng",
@@ -6782,19 +6788,22 @@
     "target": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
    },
    "defect": "English says he/she/her while the Portuguese says estás/teu (you/your)",
-   "action": "edit",
-   "new": {
-    "known": "they asked how much you're willing to pay for your ticket",
-    "target": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Reported speech keeps the reported clause's own person when the reporter repeats what someone said about \"us/you\": the Portuguese says nós/tua, so the English says we/your (Cunha & Cintra, Nova Gramática do Português Contemporâneo, discurso indireto). The Portuguese is correct and is the seed's own; only the English changes (known-side clip only).",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket (R0.4 step 3)",
    "checks": "",
-   "audio_slots": [
-    "known"
-   ],
-   "audio_chars_est": 57
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "they asked how much you're willing to pay for your ticket",
+     "target": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "por_for_eng",
@@ -6922,21 +6931,22 @@
     "target": "disseram se ao menos pudesse confiar em ti para brincarem juntos sem discutir"
    },
    "defect": "target broken: plural \"they said … they could\" over singular pudesse … em ti",
-   "action": "edit",
-   "new": {
-    "known": "I can't trust you to play together without arguing",
-    "target": "não consigo confiar em ti para brincarem juntos sem discutir"
-   },
+   "action": "delete",
+   "new": null,
    "source": "rewritten from taught pieces (não consigo S0057L01; confiar em ti para brincarem juntos sem discutir is the seed's own) to hold the USE floor",
    "confidence": "likely",
    "note": "",
    "checks": "",
-   "audio_slots": [
-    "known",
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 170
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I can't trust you to play together without arguing",
+     "target": "não consigo confiar em ti para brincarem juntos sem discutir"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "por_for_eng",
@@ -6948,21 +6958,22 @@
     "target": "ela disse se ao menos pudesse confiar em ti para brincarem juntos sem discutir hoje"
    },
    "defect": "target broken: \"trust them\" over em ti, plus a filler hoje",
-   "action": "edit",
-   "new": {
-    "known": "can I trust you to play together without arguing?",
-    "target": "posso confiar em ti para brincarem juntos sem discutir?"
-   },
+   "action": "delete",
+   "new": null,
    "source": "as U04; posso S0119L01",
    "confidence": "likely",
    "note": "",
    "checks": "",
-   "audio_slots": [
-    "known",
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 159
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "can I trust you to play together without arguing?",
+     "target": "posso confiar em ti para brincarem juntos sem discutir?"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "por_for_eng",
@@ -7450,17 +7461,22 @@
     "target": "disseram quem viram"
    },
    "defect": "question English, statement text",
-   "action": "edit",
-   "new": {
-    "known": "did they say who they saw?",
-    "target": "disseram quem viram?"
-   },
+   "action": "delete",
+   "new": null,
    "source": "punctuation only; clip unchanged",
    "confidence": "sure",
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "did they say who they saw?",
+     "target": "disseram quem viram?"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "ara_for_eng",
@@ -8072,20 +8088,22 @@
     "target": "هَلْ تَظُنَّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟"
    },
    "defect": "هَلْ تَظُنَّ: subjunctive with no governor",
-   "action": "edit",
-   "new": {
-    "known": "do you think they didn't want to collect?",
-    "target": "هَلْ تَظُنُّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Ryding, A Reference Grammar of Modern Standard Arabic (CUP 2005) §moods",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket (R0.4 step 3)",
    "checks": "",
-   "audio_slots": [
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 102
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "do you think they didn't want to collect?",
+     "target": "هَلْ تَظُنُّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "ara_for_eng",
@@ -8123,21 +8141,22 @@
     "target": "هَلْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ؟"
    },
    "defect": "هَلْ تَظُنَّ: subjunctive with no governor; not its LEGO",
-   "action": "edit",
-   "new": {
-    "known": "I don't want you to think they understand each other",
-    "target": "لا أُريدُ أَنْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Ryding, A Reference Grammar of Modern Standard Arabic (CUP 2005) §moods",
    "confidence": "sure",
    "note": "",
    "checks": "",
-   "audio_slots": [
-    "known",
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 160
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't want you to think they understand each other",
+     "target": "لا أُريدُ أَنْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "ara_for_eng",
@@ -8188,7 +8207,8 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 68
+   "audio_chars_est": 68,
+   "review": "#723 DISPUTE rejected: sentence-final السَّبْت is the pausal (waqf) form, the norm at utterance end, and matches the LEGO surface لَيْلَةَ السَّبْت (Ryding 2005, ch. 2 pause forms)"
   },
   {
    "course": "ara_for_eng",
@@ -8213,7 +8233,8 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 52
+   "audio_chars_est": 52,
+   "review": "#723 DISPUTE rejected: sentence-final السَّبْت is the pausal (waqf) form, the norm at utterance end, and matches the LEGO surface لَيْلَةَ السَّبْت (Ryding 2005, ch. 2 pause forms)"
   },
   {
    "course": "ara_for_eng",
@@ -9473,17 +9494,27 @@
    "defect": "English \"after that\" over \"dopo tutto questo\" (after all this)",
    "action": "edit",
    "new": {
-    "known": "how do you feel after all this?",
-    "target": "come si sente dopo tutto questo?"
+    "known": "how do you feel after all this, madam?",
+    "target": "come si sente dopo tutto questo, signora?"
    },
    "source": "meaning",
    "confidence": "sure",
    "note": "",
    "checks": "",
    "audio_slots": [
-    "known"
+    "known",
+    "target1",
+    "target2"
    ],
-   "audio_chars_est": 31
+   "audio_chars_est": 113,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "how do you feel after all this?",
+     "target": "come si sente dopo tutto questo?"
+    }
+   },
+   "review": "#723 DISPUTE accepted: formal si sente needs the register signal (K10/K32)"
   },
   {
    "course": "ita_for_eng",
@@ -9701,21 +9732,22 @@
     "target": "Disfruto mucho poder hablar con mis amigos el fin de semana"
    },
    "defect": "disfrutar + infinitive",
-   "action": "edit",
-   "new": {
-    "known": "I really like being able to talk with my friends at the weekend",
-    "target": "Me gusta mucho poder hablar con mis amigos el fin de semana"
-   },
+   "action": "delete",
+   "new": null,
    "source": "disfrutar takes de + noun or a gerund (\"disfruto leyendo\"); \"disfrutar + infinitivo\" is a calque (Fundéu, \"disfrutar de / disfrutar + gerundio\"; precedent #442·AI applied the same fix). The gerund despertándome is untaught and would break the LEGO despertarme (P17), so these rows take the seed's own \"me gusta\" and the English \"like\" (one Spanish verb per English verb, P16)",
    "confidence": "sure",
    "note": "",
    "checks": "",
-   "audio_slots": [
-    "known",
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 181
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I really like being able to talk with my friends at the weekend",
+     "target": "Me gusta mucho poder hablar con mis amigos el fin de semana"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "spa_for_eng",
@@ -10314,20 +10346,22 @@
     "target": "你会说chinese吗？"
    },
    "defect": "English word \"chinese\" in the Chinese",
-   "action": "edit",
-   "new": {
-    "known": "中国語を話せますか？",
-    "target": "你会说中文吗？"
-   },
+   "action": "delete",
+   "new": null,
    "source": "as seed 283",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket",
    "checks": "",
-   "audio_slots": [
-    "target1",
-    "target2"
-   ],
-   "audio_chars_est": 14
+   "audio_slots": [],
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "中国語を話せますか？",
+     "target": "你会说中文吗？"
+    }
+   },
+   "review": "#723 DISPUTE accepted: the planned edit keeps an untaught or broken element; deleted instead (K15 delete-or-edit; basket keeps its other rows)"
   },
   {
    "course": "deu_for_eng",
