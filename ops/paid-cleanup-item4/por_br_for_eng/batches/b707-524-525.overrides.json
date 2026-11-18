@@ -1,0 +1,292 @@
+[
+ {
+  "seed_number": 524,
+  "phrases": {
+   "524:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "te",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "call",
+     "target_text": "ligo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "back",
+     "target_text": "de volta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'll call you back",
+     "target_text": "eu te ligo de volta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'll call you back tomorrow",
+     "target_text": "eu te ligo de volta amanhã",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'll call you back later",
+     "target_text": "eu te ligo de volta mais tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm busy, I'll call you back",
+     "target_text": "estou ocupado, eu te ligo de volta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll call you back after the meeting",
+     "target_text": "eu te ligo de volta depois da reunião",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll call you back as soon as I can",
+     "target_text": "eu te ligo de volta assim que eu puder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll call you back after you finish",
+     "target_text": "eu te ligo de volta depois de você acabar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll call you back as quickly as possible",
+     "target_text": "eu te ligo de volta o mais rápido possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll call you back tonight",
+     "target_text": "eu te ligo de volta esta noite",
+     "phrase_role": "build"
+    }
+   ],
+   "524:2": [
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "three",
+     "target_text": "três",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "or",
+     "target_text": "ou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "four",
+     "target_text": "quatro",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "minutes",
+     "target_text": "minutos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in three or four minutes",
+     "target_text": "em três ou quatro minutos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "back in three or four minutes",
+     "target_text": "de volta em três ou quatro minutos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ready in three or four minutes",
+     "target_text": "pronto em três ou quatro minutos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'll call you back in three or four minutes",
+     "target_text": "eu te ligo de volta em três ou quatro minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the coffee will be ready in three or four minutes",
+     "target_text": "o café vai estar pronto em três ou quatro minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll be there in three or four minutes",
+     "target_text": "vou estar lá em três ou quatro minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's going to arrive in three or four minutes",
+     "target_text": "ela vai chegar em três ou quatro minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we're going to start in three or four minutes",
+     "target_text": "vamos começar em três ou quatro minutos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "here in three or four minutes",
+     "target_text": "aqui em três ou quatro minutos",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 525,
+  "phrases": {
+   "525:1": [
+    {
+     "known_text": "to see",
+     "target_text": "para ver",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to check if",
+     "target_text": "para ver se",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to check if he's here",
+     "target_text": "para ver se ele está aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to check if it's ready",
+     "target_text": "para ver se está pronto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to call to check if she's at home",
+     "target_text": "vou ligar para ver se ela está em casa",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm here to check if everything is OK",
+     "target_text": "estou aqui para ver se está tudo bem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to the office to check if the keys are there",
+     "target_text": "vou ao escritório para ver se as chaves estão lá",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's wait a little to check if it's going to work",
+     "target_text": "vamos esperar um pouco para ver se vai funcionar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to try again to check if it's possible",
+     "target_text": "vou tentar outra vez para ver se é possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to check if it could be done",
+     "target_text": "para ver se podia ser feito",
+     "phrase_role": "build"
+    }
+   ],
+   "525:2": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "have been able to",
+     "target_text": "conseguiu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you've been able to",
+     "target_text": "você conseguiu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to check if you've been able to",
+     "target_text": "para ver se você conseguiu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you've been able to sleep",
+     "target_text": "você conseguiu dormir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm happy that you've been able to come",
+     "target_text": "estou feliz que você conseguiu vir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you been able to find the keys?",
+     "target_text": "você conseguiu encontrar as chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you been able to talk to him?",
+     "target_text": "você conseguiu falar com ele?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know if you've been able to rest",
+     "target_text": "não sei se você conseguiu descansar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "have you been able to sleep a little?",
+     "target_text": "você conseguiu dormir um pouco?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to check if you've been able to finish",
+     "target_text": "para ver se você conseguiu acabar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you've been able to help",
+     "target_text": "você conseguiu ajudar",
+     "phrase_role": "build"
+    }
+   ],
+   "525:3": [
+    {
+     "known_text": "to finish",
+     "target_text": "acabar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you've been able to finish",
+     "target_text": "você conseguiu acabar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to check if you've been able to finish",
+     "target_text": "para ver se você conseguiu acabar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to finish",
+     "target_text": "espero que você consiga acabar",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

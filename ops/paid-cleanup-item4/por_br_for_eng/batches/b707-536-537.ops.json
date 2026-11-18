@@ -1,0 +1,474 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0536L01B04",
+    "seed_number": 536,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I used to think he was right",
+    "target_text": "eu costumava achar que ele tinha razão",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 38,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0536L02B04",
+    "seed_number": 536,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "she said that being crazy was fun",
+    "target_text": "ela disse que ser maluco era divertido",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 38,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0536L03B04",
+    "seed_number": 536,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "the coffee was bad",
+    "target_text": "o café era ruim",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0537L01B04",
+    "seed_number": 537,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "but I was at home",
+    "target_text": "mas eu estava em casa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0537L02B04",
+    "seed_number": 537,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "he's mistaken",
+    "target_text": "ele está enganado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01B03",
+   "expect": {
+    "known_text": "yes, I used to think",
+    "target_text": "sim, eu costumava achar"
+   },
+   "set": {
+    "known_text": "I used to think it was easy",
+    "target_text": "eu costumava achar que era fácil",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U01",
+   "expect": {
+    "known_text": "I'm sure I used to think",
+    "target_text": "tenho certeza de que eu costumava achar"
+   },
+   "set": {
+    "known_text": "I used to think Portuguese was difficult",
+    "target_text": "eu costumava achar que português era difícil",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U02",
+   "expect": {
+    "known_text": "she said I used to think",
+    "target_text": "ela disse que eu costumava achar"
+   },
+   "set": {
+    "known_text": "I used to think that nobody could help me",
+    "target_text": "eu costumava achar que ninguém podia me ajudar",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U03",
+   "expect": {
+    "known_text": "we know I used to think",
+    "target_text": "sabemos que eu costumava achar"
+   },
+   "set": {
+    "known_text": "I used to think that money was important",
+    "target_text": "eu costumava achar que dinheiro era importante",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U04",
+   "expect": {
+    "known_text": "they said I used to think",
+    "target_text": "disseram que eu costumava achar"
+   },
+   "set": {
+    "known_text": "I used to think that I couldn't learn",
+    "target_text": "eu costumava achar que eu não conseguia aprender",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L01U05",
+   "expect": {
+    "known_text": "I still used to think",
+    "target_text": "eu ainda costumava achar"
+   },
+   "set": {
+    "known_text": "when I was a child, I used to think the world was very big",
+    "target_text": "quando eu era criança, eu costumava achar que o mundo era muito grande",
+    "decomposition": null,
+    "word_count": 70,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02B02",
+   "expect": {
+    "known_text": "I still used to think that being crazy",
+    "target_text": "eu ainda costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "that being crazy is fun",
+    "target_text": "que ser maluco é divertido",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02B03",
+   "expect": {
+    "known_text": "yes, that being crazy",
+    "target_text": "sim, que ser maluco"
+   },
+   "set": {
+    "known_text": "I think that being crazy isn't a problem",
+    "target_text": "eu acho que ser maluco não é um problema",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U01",
+   "expect": {
+    "known_text": "I used to think that being crazy",
+    "target_text": "eu costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "I used to think that being crazy was fun",
+    "target_text": "eu costumava achar que ser maluco era divertido",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U02",
+   "expect": {
+    "known_text": "she said I used to think that being crazy",
+    "target_text": "ela disse que eu costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "he thinks that being crazy is interesting",
+    "target_text": "ele acha que ser maluco é interessante",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U03",
+   "expect": {
+    "known_text": "we know I used to think that being crazy",
+    "target_text": "sabemos que eu costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "I know that being crazy isn't easy",
+    "target_text": "eu sei que ser maluco não é fácil",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U04",
+   "expect": {
+    "known_text": "they said I used to think that being crazy",
+    "target_text": "disseram que eu costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "my brother thinks that being crazy is a good thing",
+    "target_text": "meu irmão acha que ser maluco é uma coisa boa",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L02U05",
+   "expect": {
+    "known_text": "I'm sure I used to think that being crazy",
+    "target_text": "tenho certeza de que eu costumava achar que ser maluco"
+   },
+   "set": {
+    "known_text": "she told me that being crazy was better",
+    "target_text": "ela me disse que ser maluco era melhor",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03B03",
+   "expect": {
+    "known_text": "yes, was bad",
+    "target_text": "sim, era ruim"
+   },
+   "set": {
+    "known_text": "the film was bad",
+    "target_text": "o filme era ruim",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03U03",
+   "expect": {
+    "known_text": "we know being crazy was bad",
+    "target_text": "sabemos que ser maluco era ruim"
+   },
+   "set": {
+    "known_text": "the hotel was bad, but the city was interesting",
+    "target_text": "o hotel era ruim, mas a cidade era interessante",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0536L03U05",
+   "expect": {
+    "known_text": "I'm sure being crazy was bad",
+    "target_text": "tenho certeza de que ser maluco era ruim"
+   },
+   "set": {
+    "known_text": "I knew that the idea was bad",
+    "target_text": "eu sabia que a ideia era ruim",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01B03",
+   "expect": {
+    "known_text": "yes, but I was",
+    "target_text": "sim, mas eu estava"
+   },
+   "set": {
+    "known_text": "but I was tired",
+    "target_text": "mas eu estava cansado",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U02",
+   "expect": {
+    "known_text": "but I was still here",
+    "target_text": "mas eu ainda estava aqui"
+   },
+   "set": {
+    "known_text": "I wanted to go, but I was busy",
+    "target_text": "eu queria ir, mas eu estava ocupado",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U03",
+   "expect": {
+    "known_text": "I'm sure, but I was here",
+    "target_text": "tenho certeza, mas eu estava aqui"
+   },
+   "set": {
+    "known_text": "I wanted to help, but I was in Italy",
+    "target_text": "eu queria ajudar, mas eu estava na Itália",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U04",
+   "expect": {
+    "known_text": "she said, but I was here",
+    "target_text": "ela disse, mas eu estava aqui"
+   },
+   "set": {
+    "known_text": "they came, but I was at the café",
+    "target_text": "eles vieram, mas eu estava no café",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L01U05",
+   "expect": {
+    "known_text": "yes, but I was still here",
+    "target_text": "sim, mas eu ainda estava aqui"
+   },
+   "set": {
+    "known_text": "I wanted to call you, but I was at the meeting",
+    "target_text": "eu queria te ligar, mas eu estava na reunião",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02B02",
+   "expect": {
+    "known_text": "but I was mistaken now",
+    "target_text": "mas eu estava enganado agora"
+   },
+   "set": {
+    "known_text": "I was mistaken",
+    "target_text": "eu estava enganado",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02B03",
+   "expect": {
+    "known_text": "yes, mistaken",
+    "target_text": "sim, enganado"
+   },
+   "set": {
+    "known_text": "you're mistaken",
+    "target_text": "você está enganado",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0537L02U03",
+   "expect": {
+    "known_text": "we know I was wrong",
+    "target_text": "sabemos que eu estava enganado"
+   },
+   "set": {
+    "known_text": "I think you're mistaken",
+    "target_text": "eu acho que você está enganado",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

@@ -1,0 +1,805 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0512L01B04",
+    "seed_number": 512,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "can you hold the kitten?",
+    "target_text": "você pode segurar o gatinho?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0512L02B04",
+    "seed_number": 512,
+    "lego_index": 2,
+    "position": 14,
+    "known_text": "with the door open",
+    "target_text": "com a porta aberta",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0512L03B04",
+    "seed_number": 512,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "while I fetch my bag",
+    "target_text": "enquanto eu vou pegar minha mala",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0513L01B04",
+    "seed_number": 513,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "it hurts most after work",
+    "target_text": "dói mais depois do trabalho",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0513L02B04",
+    "seed_number": 513,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "it hurts when I move",
+    "target_text": "dói quando mexo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0513L03B04",
+    "seed_number": 513,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "my head and my eyes",
+    "target_text": "a cabeça e os olhos",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0513L04B04",
+    "seed_number": 513,
+    "lego_index": 4,
+    "position": 12,
+    "known_text": "my head up and down",
+    "target_text": "a cabeça para cima e para baixo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01B03",
+   "expect": {
+    "known_text": "yes, can you hold",
+    "target_text": "sim, você pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold my bag?",
+    "target_text": "você pode segurar minha mala?",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01U01",
+   "expect": {
+    "known_text": "no, can you hold",
+    "target_text": "não, você pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold this for a few minutes?",
+    "target_text": "você pode segurar isso por uns minutos?",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01U02",
+   "expect": {
+    "known_text": "that's true, can you hold",
+    "target_text": "isso é verdade, você pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold my coffee, please?",
+    "target_text": "você pode segurar meu café, por favor?",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01U03",
+   "expect": {
+    "known_text": "I'm sure, can you hold",
+    "target_text": "tenho certeza, você pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold my keys?",
+    "target_text": "você pode segurar minhas chaves?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01U04",
+   "expect": {
+    "known_text": "yes, that's true, can you hold",
+    "target_text": "sim, isso é verdade, você pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold the bag with both hands?",
+    "target_text": "você pode segurar a mala com as duas mãos?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L01U05",
+   "expect": {
+    "known_text": "can you still hold",
+    "target_text": "você ainda pode segurar"
+   },
+   "set": {
+    "known_text": "can you hold the door?",
+    "target_text": "você pode segurar a porta?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02B03",
+   "expect": {
+    "known_text": "yes, the door open",
+    "target_text": "sim, a porta aberta"
+   },
+   "set": {
+    "known_text": "to leave the door open",
+    "target_text": "deixar a porta aberta",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02U01",
+   "expect": {
+    "known_text": "no, the door open",
+    "target_text": "não, a porta aberta"
+   },
+   "set": {
+    "known_text": "I slept with the door open",
+    "target_text": "dormi com a porta aberta",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02U02",
+   "expect": {
+    "known_text": "that's true, the door open",
+    "target_text": "isso é verdade, a porta aberta"
+   },
+   "set": {
+    "known_text": "who left the door open?",
+    "target_text": "quem deixou a porta aberta?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02U03",
+   "expect": {
+    "known_text": "I have the door open",
+    "target_text": "tenho a porta aberta"
+   },
+   "set": {
+    "known_text": "I can't work with the door open",
+    "target_text": "não consigo trabalhar com a porta aberta",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02U04",
+   "expect": {
+    "known_text": "yes, can you hold the door open",
+    "target_text": "sim, você pode segurar a porta aberta"
+   },
+   "set": {
+    "known_text": "she wants the door open",
+    "target_text": "ela quer a porta aberta",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L02U05",
+   "expect": {
+    "known_text": "can you still hold the door open",
+    "target_text": "você ainda pode segurar a porta aberta"
+   },
+   "set": {
+    "known_text": "can you hold the door open for her?",
+    "target_text": "você pode segurar a porta aberta para ela?",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03B03",
+   "expect": {
+    "known_text": "yes, while I fetch",
+    "target_text": "sim, enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "while I fetch the car",
+    "target_text": "enquanto eu vou pegar o carro",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03U01",
+   "expect": {
+    "known_text": "no, while I fetch",
+    "target_text": "não, enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "you can wait here while I fetch the car",
+    "target_text": "você pode esperar aqui enquanto eu vou pegar o carro",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03U02",
+   "expect": {
+    "known_text": "that's true, while I fetch",
+    "target_text": "isso é verdade, enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "can you hold my coffee while I fetch my bag?",
+    "target_text": "você pode segurar meu café enquanto eu vou pegar minha mala?",
+    "decomposition": null,
+    "word_count": 60,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03U03",
+   "expect": {
+    "known_text": "I'm sure, while I fetch",
+    "target_text": "tenho certeza, enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "you can sit down while I fetch something to eat",
+    "target_text": "você pode se sentar enquanto eu vou pegar algo para comer",
+    "decomposition": null,
+    "word_count": 57,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03U04",
+   "expect": {
+    "known_text": "yes, can you hold the door open while I fetch",
+    "target_text": "sim, você pode segurar a porta aberta enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "can you stay with the children while I fetch the car?",
+    "target_text": "você pode ficar com as crianças enquanto eu vou pegar o carro?",
+    "decomposition": null,
+    "word_count": 62,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L03U05",
+   "expect": {
+    "known_text": "can you still hold the door open while I fetch",
+    "target_text": "você ainda pode segurar a porta aberta enquanto eu vou pegar"
+   },
+   "set": {
+    "known_text": "she's waiting at the door while I fetch the bag",
+    "target_text": "ela está esperando na porta enquanto eu vou pegar a mala",
+    "decomposition": null,
+    "word_count": 56,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0512L04B03",
+   "expect": {
+    "known_text": "yes, the keys",
+    "target_text": "sim, as chaves"
+   },
+   "set": {
+    "known_text": "the car keys",
+    "target_text": "as chaves do carro",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01B02",
+   "expect": {
+    "known_text": "it hurts most now",
+    "target_text": "dói mais agora"
+   },
+   "set": {
+    "known_text": "it hurts most in the morning",
+    "target_text": "dói mais de manhã",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01B03",
+   "expect": {
+    "known_text": "yes, it hurts most",
+    "target_text": "sim, dói mais"
+   },
+   "set": {
+    "known_text": "it hurts most here",
+    "target_text": "dói mais aqui",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U01",
+   "expect": {
+    "known_text": "no, it hurts most",
+    "target_text": "não, dói mais"
+   },
+   "set": {
+    "known_text": "it hurts most when I'm tired",
+    "target_text": "dói mais quando estou cansado",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U02",
+   "expect": {
+    "known_text": "that's true, it hurts most",
+    "target_text": "isso é verdade, dói mais"
+   },
+   "set": {
+    "known_text": "it hurts most after I eat",
+    "target_text": "dói mais depois de comer",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U03",
+   "expect": {
+    "known_text": "I'm sure it hurts most",
+    "target_text": "tenho certeza, dói mais"
+   },
+   "set": {
+    "known_text": "where does it hurt most?",
+    "target_text": "onde dói mais?",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U04",
+   "expect": {
+    "known_text": "yes, that's true, it hurts most",
+    "target_text": "sim, isso é verdade, dói mais"
+   },
+   "set": {
+    "known_text": "it hurts most when I have to work",
+    "target_text": "dói mais quando tenho que trabalhar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U05",
+   "expect": {
+    "known_text": "it still hurts most",
+    "target_text": "ainda dói mais"
+   },
+   "set": {
+    "known_text": "it hurts most when I talk",
+    "target_text": "dói mais quando eu falo",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02B03",
+   "expect": {
+    "known_text": "yes, when I move",
+    "target_text": "sim, quando mexo"
+   },
+   "set": {
+    "known_text": "only when I move",
+    "target_text": "só quando mexo",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U01",
+   "expect": {
+    "known_text": "no, when I move",
+    "target_text": "não, quando mexo"
+   },
+   "set": {
+    "known_text": "it only hurts when I move",
+    "target_text": "só dói quando mexo",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U02",
+   "expect": {
+    "known_text": "that's true, when I move",
+    "target_text": "isso é verdade, quando mexo"
+   },
+   "set": {
+    "known_text": "it's worse when I move",
+    "target_text": "é pior quando mexo",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U03",
+   "expect": {
+    "known_text": "I'm sure, when I move",
+    "target_text": "tenho certeza, quando mexo"
+   },
+   "set": {
+    "known_text": "it hurts a little when I move",
+    "target_text": "dói um pouco quando mexo",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U04",
+   "expect": {
+    "known_text": "yes, it hurts most when I move",
+    "target_text": "sim, dói mais quando mexo"
+   },
+   "set": {
+    "known_text": "I feel it when I move",
+    "target_text": "sinto isso quando mexo",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03B03",
+   "expect": {
+    "known_text": "yes, my head",
+    "target_text": "sim, a cabeça"
+   },
+   "set": {
+    "known_text": "my head hurts",
+    "target_text": "a cabeça dói",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U01",
+   "expect": {
+    "known_text": "no, my head",
+    "target_text": "não, a cabeça"
+   },
+   "set": {
+    "known_text": "my head hurts a little",
+    "target_text": "a cabeça dói um pouco",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U02",
+   "expect": {
+    "known_text": "that's true, my head",
+    "target_text": "isso é verdade, a cabeça"
+   },
+   "set": {
+    "known_text": "my head hurts a lot today",
+    "target_text": "a cabeça dói muito hoje",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U03",
+   "expect": {
+    "known_text": "I have my head",
+    "target_text": "tenho a cabeça"
+   },
+   "set": {
+    "known_text": "it hurts when I move my head",
+    "target_text": "dói quando mexo a cabeça",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U04",
+   "expect": {
+    "known_text": "yes, it hurts most when I move my head",
+    "target_text": "sim, dói mais quando mexo a cabeça"
+   },
+   "set": {
+    "known_text": "my head hurts when I work too much",
+    "target_text": "a cabeça dói quando trabalho demais",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04B03",
+   "expect": {
+    "known_text": "yes, up and down",
+    "target_text": "sim, para cima e para baixo"
+   },
+   "set": {
+    "known_text": "when I move up and down",
+    "target_text": "quando mexo para cima e para baixo",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U02",
+   "expect": {
+    "known_text": "no, up and down",
+    "target_text": "não, para cima e para baixo"
+   },
+   "set": {
+    "known_text": "I'm going up and down all day",
+    "target_text": "estou indo para cima e para baixo o dia todo",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U03",
+   "expect": {
+    "known_text": "that's true, up and down",
+    "target_text": "isso é verdade, para cima e para baixo"
+   },
+   "set": {
+    "known_text": "he's walking up and down",
+    "target_text": "ele está andando para cima e para baixo",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U04",
+   "expect": {
+    "known_text": "yes, it hurts most when I move my head up and down",
+    "target_text": "sim, dói mais quando mexo a cabeça para cima e para baixo"
+   },
+   "set": {
+    "known_text": "it hurts when I move my head up and down",
+    "target_text": "dói quando mexo a cabeça para cima e para baixo",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U05",
+   "expect": {
+    "known_text": "I'm sure, up and down",
+    "target_text": "tenho certeza, para cima e para baixo"
+   },
+   "set": {
+    "known_text": "she was walking up and down in the office",
+    "target_text": "ela estava andando para cima e para baixo no escritório",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0512L04U02",
+   "expect": {
+    "known_text": "no, the keys",
+    "target_text": "não, as chaves"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0512L04U03",
+   "expect": {
+    "known_text": "that's true, the keys",
+    "target_text": "isso é verdade, as chaves"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0512L04U04",
+   "expect": {
+    "known_text": "yes, can you hold the door open while I fetch the keys?",
+    "target_text": "sim, você pode segurar a porta aberta enquanto eu vou pegar as chaves?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0512L04U05",
+   "expect": {
+    "known_text": "I'm sure, the keys",
+    "target_text": "tenho certeza, as chaves"
+   }
+  }
+ ]
+}

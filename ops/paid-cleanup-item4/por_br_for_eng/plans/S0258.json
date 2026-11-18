@@ -1,0 +1,60 @@
+{
+ "seed": 258,
+ "notes": "L01 rebuilt: BUILDs and two USEs lacked the LEGO aquela coisa (o que é aquela? is also wrong)",
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "that blue thing",
+     "aquela coisa azul"
+    ],
+    "B02": [
+     "I want that thing",
+     "quero aquela coisa"
+    ],
+    "B03": [
+     "what is that thing?",
+     "o que é aquela coisa?"
+    ],
+    "U02": [
+     "I don't know what that thing is",
+     "não sei o que é aquela coisa"
+    ],
+    "U03": [
+     "I'd like to know what that thing is",
+     "eu gostaria de saber o que é aquela coisa"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "I left that thing on the table",
+     "deixei aquela coisa em cima da mesa"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "that thing over there",
+     "aquela coisa ali"
+    ],
+    "B03": [
+     "my keys are over there",
+     "minhas chaves estão ali"
+    ],
+    "U03": [
+     "I left the money over there",
+     "deixei o dinheiro ali"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "over there on the table",
+     "ali em cima da mesa"
+    ]
+   ]
+  }
+ }
+}
