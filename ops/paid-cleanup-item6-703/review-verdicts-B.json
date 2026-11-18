@@ -1147,9 +1147,9 @@
   {
     "course": "spa_for_eng",
     "row": "S0216L04U14",
-    "verdict": "AGREE",
-    "reason": "Accept the planned edit for the stated defect; no additional defect found in this textual review.",
-    "source": "disfrutar takes de + noun or a gerund (\"disfruto leyendo\"); \"disfrutar + infinitivo\" is a calque (Fundéu, \"disfrutar de / disfrutar + gerundio\"; precedent #442·AI applied the same fix). The gerund despertándome is untaught and would break the LEGO despertarme (P17), so these rows take the seed's own \"me gusta\" and the English \"like\" (one Spanish verb per English verb, P16)",
+    "verdict": "DISPUTE",
+    "reason": "The rewrite correctly uses me gusta with an infinitive but retains mucho, which no LEGO/component has taught by seed 216. The earlier muy does not license mucho (K21). Leave out, or drop really/mucho on both sides after a collision check.",
+    "source": "Independent live Popty spa_for_eng dump after 14:10Z; S0013L01 teaches Muy bien; S0216L04U14 retains mucho; no earlier teaching LEGO/component for mucho. Canon P1/K21/K14.",
     "proposed": null
   },
   {
