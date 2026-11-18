@@ -119,8 +119,12 @@ def fetch_components(course, seed, cache_dir, offline):
 def main():
     course, dumpf = sys.argv[1], sys.argv[2]
     offline = '--no-fetch' in sys.argv
+    # cs #743: --tag -b reads decisions/<course>-b.json and writes plans/<course>-b.json (a second shard of one course);
+    # --base plans/<course>.json overlays that plan's LEGO AFTER state on the ZUT / duplicate views (shard b is planned against shard a)
+    tag = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''
+    basef = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else None
     dump = json.load(open(dumpf))
-    dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}.json')))
+    dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}{tag}.json')))
     SD, L, P = {}, {}, {}
     for s in dump['seeds']:
         SD[s['n']] = s
@@ -135,6 +139,7 @@ def main():
     after = {i: {'known': l['known'], 'target': l['target'], 'is_new': l['is_new']} for i, l in L.items()}
     plans, ops, problems, autos = [], [], [], []
     seed_known_after = {}
+    all_seed_copies = set()
     touched_seeds = set()
     for d in dec['legos']:
         lid = d['id']
@@ -183,8 +188,9 @@ def main():
             for pid in copies:
                 ops.append({'op': 'phrase.update', 'phrase_id': pid, 'set': {'known_text': nsk}, 'expect': {'known_text': P[pid]['known'], 'target_text': P[pid]['target']}})
             rec['seed_copies_updated'] = copies
+            all_seed_copies.update(copies)
             seed_known_after[s['n']] = nsk
-        seed_copy_ids = set(rec.get('seed_copies_updated', []))
+        seed_copy_ids = all_seed_copies
         comps = d.get('components')
         rec['after'] = {'known': nk, 'target': nt, 'type': d.get('type', l['type']), 'components': comps, 'is_new': d.get('is_new', l['is_new'])}
         after[lid] = {'known': nk, 'target': nt, 'is_new': rec['after']['is_new']}
@@ -303,6 +309,13 @@ def main():
                 m[norm(v['known'])].add(norm(v['target']).replace(' ', '') if SPACELESS.search(v['target'] or '') else norm(v['target']))
         return {k: sorted(v) for k, v in m.items() if len(v) > 1}
     before = {i: {'known': l['known'], 'target': l['target'], 'is_new': l['is_new']} for i, l in L.items()}
+    if basef:
+        decided = {d['id'] for d in dec['legos']}
+        for o in json.load(open(basef))['ops']:
+            if o['op'] == 'lego.update' and o['lego_id'] not in decided and o['lego_id'] in after:
+                for view in (before, after):
+                    view[o['lego_id']] = {'known': o['set'].get('known_text', view[o['lego_id']]['known']), 'target': o['set'].get('target_text', view[o['lego_id']]['target']),
+                                          'is_new': o['set'].get('is_new', view[o['lego_id']]['is_new'])}
     zb, za = zut(before), zut(after)
     new_clash = {k: v for k, v in za.items() if k not in zb or v != zb[k]}
     changed_glosses = {norm(after[r['id']]['known']) for r in plans if r.get('after')}
@@ -377,7 +390,7 @@ def main():
            'touched_seeds': sorted(touched_seeds), 'problems': problems, 'auto_substitutions': autos,
            'zut_after_changed': {k: v for k, v in new_clash.items()}, 'later_duplicates': later_dups, 'legos': plans, 'ops': ops}
     os.makedirs(os.path.join(ROOT, 'plans'), exist_ok=True)
-    json.dump(out, open(os.path.join(ROOT, 'plans', f'{course}.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump(out, open(os.path.join(ROOT, 'plans', f'{course}{tag}.json'), 'w'), ensure_ascii=False, indent=1)
     print('  later duplicates:', later_dups)
     print(f'{course}: {len(plans)} LEGOs, verdicts {out["verdicts"]}, {len(ops)} ops, {len(autos)} auto known-subs, {len(problems)} problems')
     for x in problems[:400]:

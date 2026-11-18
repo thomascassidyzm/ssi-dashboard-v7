@@ -7,8 +7,9 @@ import json, os, sys, urllib.request, urllib.error, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 course = sys.argv[1]
+tag = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''  # cs #743: plans/<course><tag>.json
 chunk = int(sys.argv[sys.argv.index('--chunk') + 1]) if '--chunk' in sys.argv else 50
-pf = os.path.join(ROOT, 'plans', f'{course}.json')
+pf = os.path.join(ROOT, 'plans', f'{course}{tag}.json')
 plan = json.load(open(pf))
 ops = plan['ops']
 results = []

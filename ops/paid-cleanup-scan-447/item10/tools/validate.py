@@ -8,7 +8,8 @@ import json, os, sys, urllib.request, collections, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 course, dumpf = sys.argv[1], sys.argv[2]
-plan = json.load(open(os.path.join(ROOT, 'plans', f'{course}.json')))
+tag = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''  # cs #743: plans/<course><tag>.json
+plan = json.load(open(os.path.join(ROOT, 'plans', f'{course}{tag}.json')))
 dump = json.load(open(dumpf))
 SD = {s['n']: s for s in dump['seeds']}
 cache = os.path.join(os.environ.get('CS_SCRATCH', '/tmp'), 'components', course)
@@ -82,5 +83,5 @@ for n in plan['touched_seeds']:
     print(n, 'NEW' if new else 'ok', json.dumps(new, ensure_ascii=False)[:400])
 plan['validator'] = {'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'baseline_failing_seeds': len(basefail),
                      'per_seed': results, 'seeds_with_new_issues': sorted(k for k, v in results.items() if v['new_issues_anywhere'])}
-json.dump(plan, open(os.path.join(ROOT, 'plans', f'{course}.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(plan, open(os.path.join(ROOT, 'plans', f'{course}{tag}.json'), 'w'), ensure_ascii=False, indent=1)
 print('baseline failing seeds', len(basefail), '| seeds with NEW issues', plan['validator']['seeds_with_new_issues'])
