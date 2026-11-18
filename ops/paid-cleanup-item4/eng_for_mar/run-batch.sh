@@ -10,4 +10,15 @@ set -e; date -u +%T
 node ../tools/build.cjs $c $b $f $t 2>&1 | grep --line-buffered -v language-code
 node ../tools/post.cjs validate $c $b 2>&1 | grep --line-buffered -v language-code | grep -v pre-existing
 node ../tools/post.cjs dry $c $b 2>&1 | grep --line-buffered -v language-code
-node ../tools/post.cjs apply $c $b 2>&1 | grep --line-buffered -v language-code
+# Popty restarts (other jobs deploying) cut in-flight applies. Retry: the expect guards refuse a second write
+# if the first one did commit; a new undo file means it committed and must be recorded by hand, not retried.
+U=~/ssi-evidence/ssi-dashboard-v7/ops/course-edit-undo/$c
+for i in 1 2 3 4; do
+  n0=$(ls $U | wc -l)
+  if node ../tools/post.cjs apply $c $b 2>&1 | grep --line-buffered -v language-code | grep -E "apply:|refusing|ERROR|error" ; then
+    grep -q '"applied": true' batches/$b.apply.json 2>/dev/null && exit 0
+  fi
+  [ "$(ls $U | wc -l)" != "$n0" ] && { echo "$b: NEW UNDO FILE after failed apply: record by hand"; ls -t $U | head -1; exit 1; }
+  echo "$b: apply attempt $i failed, retrying in 60s"; sleep 60
+done
+exit 1
