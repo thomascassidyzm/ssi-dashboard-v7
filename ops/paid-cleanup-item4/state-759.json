@@ -1,6 +1,8 @@
 {"job":"cs #759·AI resume of #700·AI item 4",
- "authoring_workers_running":{"#773·AI":"por_br 591-630","#760·AI":"por_br 189,309-430","#761·AI":"por_br 431-450 done sha 115082acc; 451-480 via its children #768·AI #769·AI","#762·AI":"por_br 546-590"},
- "authoring_to_dispatch_when_a_slot_frees (surface caps this job at 3 children; T=<token> node tools/dispatch-slice.cjs <course> <seeds> <extra>)":["por_br 631-668","eng_for_mar 161-230","eng_for_mar 231-662"],
- "apply_queue":"tools/queue-unit.sh in systemd unit cs-long-759-porbr-a: por_br 251-298,485-545 (log por_br_for_eng/queue-759-a.log)",
- "next_apply":["por_br worker plans as merged","eng_for_mar 41-160 (#708 plans, fresh fetch first) then worker plans"],
+ "workers":{"#760·AI":"por_br 189,309-430 DONE merged","#761·AI":"por_br 431-480 DONE merged (incl. its children #768/#769)","#762·AI":"por_br 546-590 DONE merged","note":"surface caps this job at 3 children: no more workers; #759 authors the rest itself"},
+ "authored_by_759":"por_br 591-668 (plans-src/m759-*.txt), eng_for_mar 162-183 so far (eng_for_mar/plans-src/m759-*.txt)",
+ "applied":"por_br events in por_br_for_eng/events-759.json (+ events-706/707/main); queue b: 30 batches 15:00-15:37Z",
+ "running":"systemd unit cs-long-keep-759-porbr-c: por_br 413-423,431-480,489-490,546-668 (log por_br_for_eng/queue-759-c.log)",
+ "held":{"S0339":"collide.json (another job owns S0339L01)"},
+ "next":["eng_for_mar: fetch.sh fresh, then queue 41-160 (#708 plans) + 161-300 as authored","author eng_for_mar 184-300 + 363,491,538,601,618,647,660,662","post.cjs after for both courses","audio back-fill via tools/audio.cjs (Popty render route), one unit"],
  "not_in_brief":["por_for_eng","eng_for_sin"]}
