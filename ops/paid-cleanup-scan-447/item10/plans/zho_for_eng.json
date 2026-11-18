@@ -1,0 +1,6362 @@
+{
+ "course": "zho_for_eng",
+ "roman_flags": [
+  "问你一件事 -> wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "他想在走之前问你一件事 -> tā xiǎng zài zǒu zhīqián wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "想问你一件事 -> xiǎng wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "我问你一件事 -> wǒ wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "他问你一件事 -> tā wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "她昨天想问你一件事 -> tā zuótiān xiǎng wèn nǐ yī jiàn shì: 事: shì (also shi)",
+  "我能问你一件事吗？ -> wǒ néng wèn nǐ yī jiàn shì ma?: 事: shì (also shi)"
+ ],
+ "dumped": "2026-11-18T13:10:00Z",
+ "decisions": 22,
+ "verdicts": {
+  "grow": 14,
+  "seed": 5,
+  "regloss": 1,
+  "keep": 1,
+  "kai": 1
+ },
+ "touched_seeds": [
+  3,
+  8,
+  9,
+  10,
+  11,
+  14,
+  16,
+  21,
+  22,
+  24,
+  25,
+  26,
+  27,
+  29,
+  30,
+  32,
+  36
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [
+  "S0291L01 now duplicates S0029L02 (better | 更好)",
+  "S0140L01 now duplicates S0032L01 (show me | 给我看)"
+ ],
+ "legos": [
+  {
+   "id": "S0003L03",
+   "verdict": "grow",
+   "why": "尽可能 alone was glossed \"as much as possible\"; the seed says \"as often as possible\" = 尽可能经常. Grows by the next word; L02 \"often | 经常\" is taught first (L13).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 3,
+    "known": "how to speak as often as possible",
+    "target": "怎么尽可能经常说"
+   },
+   "before": {
+    "known": "as much as possible",
+    "target": "尽可能",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "as often as possible",
+    "target": "尽可能经常",
+    "type": "M",
+    "components": [
+     [
+      "as much as possible",
+      "尽可能"
+     ],
+     [
+      "often",
+      "经常"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0003L03B01",
+     "role": "build",
+     "before": [
+      "as often as possible",
+      "尽可能经常"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03B02",
+     "role": "build",
+     "before": [
+      "speak Chinese as much as possible",
+      "尽可能说中文"
+     ],
+     "action": [
+      "speak as often as possible",
+      "尽可能经常说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0003L03B03",
+     "role": "build",
+     "before": [
+      "learn as much as possible",
+      "尽可能学习"
+     ],
+     "action": [
+      "learn as often as possible",
+      "尽可能经常学习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0003L03B04",
+     "role": "build",
+     "before": [
+      "speak Chinese as often as possible",
+      "尽可能经常说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U01",
+     "role": "use",
+     "before": [
+      "I want to speak Chinese as often as possible",
+      "我想尽可能经常说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U02",
+     "role": "use",
+     "before": [
+      "I want to speak Chinese with you as often as possible",
+      "我想尽可能经常和你说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U03",
+     "role": "use",
+     "before": [
+      "I want to try to study as often as possible",
+      "我想试试尽可能经常学习"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U04",
+     "role": "use",
+     "before": [
+      "I want to speak Chinese as often as possible now",
+      "我现在想尽可能经常说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U05",
+     "role": "use",
+     "before": [
+      "I want to learn as much as possible",
+      "我想尽可能学习"
+     ],
+     "action": [
+      "I want to learn Chinese as often as possible",
+      "我想尽可能经常学习中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0003L03U06",
+     "role": "use",
+     "before": [
+      "you want to speak Chinese as often as possible",
+      "你想尽可能经常说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0003L03U07",
+     "role": "use",
+     "before": [
+      "how to speak as often as possible",
+      "怎么尽可能经常说"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 7
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 7,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0025L04U13",
+      "known": "I want to help you as much as possible",
+      "target": "我想尽可能帮你",
+      "seed": 25
+     },
+     {
+      "id": "zho_for_eng:S0197L01U15",
+      "known": "I speak Chinese with the teacher as much as possible",
+      "target": "我尽可能和老师说中文",
+      "seed": 197
+     },
+     {
+      "id": "zho_for_eng:S0403L01U05",
+      "known": "let's keep this as much as possible",
+      "target": "我们尽可能保持这个",
+      "seed": 403
+     },
+     {
+      "id": "zho_for_eng:S0437L02B03",
+      "known": "raise as much as possible",
+      "target": "尽可能筹集",
+      "seed": 437
+     },
+     {
+      "id": "zho_for_eng:S0437L02U01",
+      "known": "they wanted to raise as much as possible for charity",
+      "target": "他们想为慈善筹集尽可能多的钱",
+      "seed": 437
+     },
+     {
+      "id": "zho_for_eng:S0437L02U02",
+      "known": "let's try to raise as much as possible",
+      "target": "让我们尽可能筹集",
+      "seed": 437
+     },
+     {
+      "id": "zho_for_eng:S0660L01U20",
+      "known": "I want to help you all as much as possible",
+      "target": "我想尽可能帮你们",
+      "seed": 660
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0008L02",
+   "verdict": "grow",
+   "why": "\"my\" is not in the seed; 我的意思 is the seed's \"what I mean\". \"my | 我的\" stays as a literal component, so later rows may use 我的 bare (K29). L13 note: L03 \"meaning | 意思\" is taught after this chunk and overlaps it (S4).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 8,
+    "known": "I'm going to try to explain what I mean",
+    "target": "我要试试解释我的意思"
+   },
+   "before": {
+    "known": "my",
+    "target": "我的",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "what I mean",
+    "target": "我的意思",
+    "type": "M",
+    "components": [
+     [
+      "my",
+      "我的"
+     ],
+     [
+      "meaning",
+      "意思"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0008L02B01",
+     "role": "build",
+     "before": [
+      "my",
+      "我的"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02B02",
+     "role": "build",
+     "before": [
+      "my Chinese",
+      "我的中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U01",
+     "role": "use",
+     "before": [
+      "I want to practise my Chinese",
+      "我想练习我的中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U02",
+     "role": "use",
+     "before": [
+      "I'm going to practise my Chinese today",
+      "我今天要练习我的中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U03",
+     "role": "use",
+     "before": [
+      "I want to try to practise my Chinese",
+      "我想试试练习我的中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U04",
+     "role": "use",
+     "before": [
+      "I want to practise my Chinese now",
+      "我现在想练习我的中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U05",
+     "role": "use",
+     "before": [
+      "I'm going to practise my Chinese hard today",
+      "我今天要努力练习我的中文"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0008L02B03",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "explain what I mean",
+     "target_text": "解释我的意思",
+     "phrase_role": "build",
+     "position": 10,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "jiěshì wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "try to explain what I mean",
+     "target_text": "试试解释我的意思",
+     "phrase_role": "build",
+     "position": 11,
+     "word_count": 8,
+     "lego_position": "end",
+     "target_text_roman": "shìshi jiěshì wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "say what I mean",
+     "target_text": "说我的意思",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 5,
+     "lego_position": "middle",
+     "target_text_roman": "shuō wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U06",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "I'm going to explain what I mean",
+     "target_text": "我要解释我的意思",
+     "phrase_role": "use",
+     "position": 13,
+     "word_count": 8,
+     "lego_position": "end",
+     "target_text_roman": "wǒ yào jiěshì wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U07",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "I want to try to explain what I mean",
+     "target_text": "我想试试解释我的意思",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 10,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xiǎng shìshi jiěshì wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U08",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "I want to explain what I mean in Chinese",
+     "target_text": "我想用中文解释我的意思",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 11,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xiǎng yòng zhōngwén jiěshì wǒ de yìsi"
+    },
+    {
+     "id": "zho_for_eng:S0008L02U09",
+     "course_code": "zho_for_eng",
+     "seed_number": 8,
+     "lego_index": 2,
+     "known_text": "I'm going to try to explain what I mean",
+     "target_text": "我要试试解释我的意思",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 10,
+     "lego_position": "end",
+     "target_text_roman": "wǒ yào shìshi jiěshì wǒ de yìsi"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 91,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0008L03B01",
+      "known": "my meaning",
+      "target": "我的意思",
+      "seed": 8
+     },
+     {
+      "id": "zho_for_eng:S0011L04U03",
+      "known": "after you finish, I'm going to explain my meaning.",
+      "target": "你说完之后我要解释我的意思",
+      "seed": 11
+     },
+     {
+      "id": "zho_for_eng:S0013L03U03",
+      "known": "I hope my Chinese can also be very good",
+      "target": "我希望我的中文也能很好",
+      "seed": 13
+     },
+     {
+      "id": "zho_for_eng:S0013L03U06",
+      "known": "my Chinese is not good",
+      "target": "我的中文不好",
+      "seed": 13
+     },
+     {
+      "id": "zho_for_eng:S0017L03B06",
+      "known": "my answer",
+      "target": "我的答案",
+      "seed": 17
+     },
+     {
+      "id": "zho_for_eng:S0020L04B03",
+      "known": "my name",
+      "target": "我的名字",
+      "seed": 20
+     },
+     {
+      "id": "zho_for_eng:S0020L04U02",
+      "known": "can you remember my name?",
+      "target": "你能不能记住我的名字？",
+      "seed": 20
+     },
+     {
+      "id": "zho_for_eng:S0020L04U07",
+      "known": "he also wants to remember my name",
+      "target": "他也想记住我的名字",
+      "seed": 20
+     },
+     {
+      "id": "zho_for_eng:S0026L03B02",
+      "known": "my feeling",
+      "target": "我的感觉",
+      "seed": 26
+     },
+     {
+      "id": "zho_for_eng:S0027L03B03",
+      "known": "my time",
+      "target": "我的时间",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0042L01U01",
+      "known": "my Chinese is better than last month",
+      "target": "我的中文比上个月好",
+      "seed": 42
+     },
+     {
+      "id": "zho_for_eng:S0051L02B03",
+      "known": "my friends",
+      "target": "我的朋友",
+      "seed": 51
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0009L01",
+   "verdict": "seed",
+   "why": "会说 is \"can speak\"; the Chinese seed says \"I can speak a little Chinese now\". Editing the English seed keeps \"can | 会\" (whose 7 rows all say \"can\") instead of growing it over L02. KAI: seed edit (S15/L25 rung 3).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 9,
+    "known": "I speak a little Chinese now",
+    "target": "我现在会说一点中文"
+   },
+   "before": {
+    "known": "can",
+    "target": "会",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "I can speak a little Chinese now",
+   "seed_copies_updated": [],
+   "extra": []
+  },
+  {
+   "id": "S0010L03",
+   "verdict": "grow",
+   "why": "\"whether can\" is a literal gloss; the seed says \"if I can\" = 我能不能 (contiguous). Every row already says 我能不能.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 10,
+    "known": "I'm not sure if I can remember the whole sentence",
+    "target": "我不确定我能不能记住整个句子"
+   },
+   "before": {
+    "known": "whether can",
+    "target": "能不能",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "if I can",
+    "target": "我能不能",
+    "type": "M",
+    "components": [
+     [
+      "I",
+      "我"
+     ],
+     [
+      "can",
+      "能"
+     ],
+     [
+      "can't",
+      "不能"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0010L03C01",
+     "role": "component",
+     "before": [
+      "can",
+      "能"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0010L03C02",
+     "role": "component",
+     "before": [
+      "cannot",
+      "不能"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0010L03B01",
+     "role": "build",
+     "before": [
+      "whether I can",
+      "我能不能"
+     ],
+     "action": [
+      "if I can",
+      "我能不能"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03B02",
+     "role": "build",
+     "before": [
+      "whether I can speak",
+      "我能不能说"
+     ],
+     "action": [
+      "if I can speak",
+      "我能不能说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03B03",
+     "role": "build",
+     "before": [
+      "whether I can speak Chinese",
+      "我能不能说中文"
+     ],
+     "action": [
+      "if I can speak Chinese",
+      "我能不能说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03B04",
+     "role": "build",
+     "before": [
+      "whether I can explain",
+      "我能不能解释"
+     ],
+     "action": [
+      "if I can explain",
+      "我能不能解释"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03B05",
+     "role": "build",
+     "before": [
+      "whether I can learn",
+      "我能不能学习"
+     ],
+     "action": [
+      "if I can learn",
+      "我能不能学习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03U01",
+     "role": "use",
+     "before": [
+      "I'm not sure if I can speak Chinese",
+      "我不确定我能不能说中文"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0010L03U02",
+     "role": "use",
+     "before": [
+      "I'm not sure if I can explain what I mean",
+      "我不确定我能不能解释我的意思"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "zho_for_eng:S0010L03U03",
+     "role": "use",
+     "before": [
+      "I'm not sure if I can practise today",
+      "我不确定我今天能不能练习"
+     ],
+     "action": [
+      "I'm not sure if I can practise",
+      "我不确定我能不能练习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0010L03U04",
+     "role": "use",
+     "before": [
+      "I'm not sure if I can learn how to say it",
+      "我不确定我能不能学习怎么说"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 5,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 5,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0010L04U05",
+      "known": "I'm not sure whether I can remember the whole sentence",
+      "target": "我不确定我能不能记住整个句子",
+      "seed": 10
+     },
+     {
+      "id": "zho_for_eng:S0010L04U07",
+      "known": "today I'm not sure whether I can remember the whole sentence",
+      "target": "今天我不确定我能不能记住整个句子",
+      "seed": 10
+     },
+     {
+      "id": "zho_for_eng:S0010L04U08",
+      "known": "I'm not sure whether you can remember the whole sentence",
+      "target": "我不确定你能不能记住整个句子",
+      "seed": 10
+     },
+     {
+      "id": "zho_for_eng:S0010L05U09",
+      "known": "I'm not sure whether I can explain the whole sentence",
+      "target": "我不确定我能不能解释整个句子",
+      "seed": 10
+     },
+     {
+      "id": "zho_for_eng:S0011L04U04",
+      "known": "after you finish, I'm not sure whether I can remember the whole sentence.",
+      "target": "你说完之后我不确定能不能记住整个句子",
+      "seed": 11
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0011L01",
+   "verdict": "seed",
+   "why": "The Chinese says 我希望…我也能说 \"I hope … I can speak too\". Both flagged LEGOs (\"to hope\", \"I too can speak\") are right for the Chinese; the English seed is the loose side. KAI: seed edit.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 11,
+    "known": "I'd like to be able to speak after you finish",
+    "target": "我希望你说完之后我也能说"
+   },
+   "before": {
+    "known": "to hope",
+    "target": "希望",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "I hope I can speak too after you finish",
+   "seed_copies_updated": [
+    "zho_for_eng:S0011L04U06"
+   ],
+   "extra": []
+  },
+  {
+   "id": "S0011L03",
+   "verdict": "regloss",
+   "why": "\"I too can speak\" is not English; with the seed edit the seed says \"I can speak too\".",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 11,
+    "known": "I'd like to be able to speak after you finish",
+    "target": "我希望你说完之后我也能说"
+   },
+   "before": {
+    "known": "I too can speak",
+    "target": "我也能说",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "I can speak too",
+    "target": "我也能说",
+    "type": "M",
+    "components": [
+     [
+      "I",
+      "我"
+     ],
+     [
+      "also",
+      "也"
+     ],
+     [
+      "able to",
+      "能"
+     ],
+     [
+      "speak",
+      "说"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0011L03C01",
+     "role": "component",
+     "before": [
+      "I",
+      "我"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0011L03C02",
+     "role": "component",
+     "before": [
+      "also",
+      "也"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0011L03C03",
+     "role": "component",
+     "before": [
+      "able to",
+      "能"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0011L03C04",
+     "role": "component",
+     "before": [
+      "speak",
+      "说"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0011L03B01",
+     "role": "build",
+     "before": [
+      "I too can speak",
+      "我也能说"
+     ],
+     "action": [
+      "I can speak too",
+      "我也能说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03B02",
+     "role": "build",
+     "before": [
+      "I can also speak Chinese",
+      "我也能说中文"
+     ],
+     "action": [
+      "I can speak Chinese too",
+      "我也能说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03B03",
+     "role": "build",
+     "before": [
+      "I can also speak a little",
+      "我也能说一点"
+     ],
+     "action": [
+      "I can speak a little too",
+      "我也能说一点"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03U02",
+     "role": "use",
+     "before": [
+      "now I too can speak",
+      "现在我也能说"
+     ],
+     "action": [
+      "now I can speak too",
+      "现在我也能说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03U03",
+     "role": "use",
+     "before": [
+      "I hope I can also speak",
+      "我希望我也能说"
+     ],
+     "action": [
+      "I hope I can speak too",
+      "我希望我也能说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03U04",
+     "role": "use",
+     "before": [
+      "I can also speak a little Chinese",
+      "我也能说一点中文"
+     ],
+     "action": [
+      "I can speak a little Chinese too",
+      "我也能说一点中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03U05",
+     "role": "use",
+     "before": [
+      "I hope I too can speak now",
+      "我希望现在我也能说"
+     ],
+     "action": [
+      "I hope I can speak too now",
+      "我希望现在我也能说"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0011L03U06",
+     "role": "use",
+     "before": [
+      "I hope I can also speak Chinese",
+      "我希望我也能说中文"
+     ],
+     "action": [
+      "I hope I can speak Chinese too",
+      "我希望我也能说中文"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 2,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0011L04B03",
+      "known": "after you finish, I too can speak",
+      "target": "你说完之后我也能说",
+      "seed": 11
+     },
+     {
+      "id": "zho_for_eng:S0636L01U09",
+      "known": "I think I can speak Chinese too",
+      "target": "我觉得我也能说中文",
+      "seed": 636
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0012L03",
+   "verdict": "keep",
+   "why": "\"what\" IS in the seed (\"what's going to happen\"); detector tokenised \"what's\" as one word. Not a defect.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 12,
+    "known": "I wouldn't like to guess what's going to happen tomorrow",
+    "target": "我不想猜明天会发生什么"
+   },
+   "before": {
+    "known": "what",
+    "target": "什么",
+    "type": "A",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0013L01",
+   "verdict": "kai",
+   "why": "你的中文说得很好 = \"your Chinese is spoken very well\"; no contiguous Chinese span of 8 syllables or fewer says \"you … speak Chinese\". L25 rung 2: recommend the TARGET seed 你中文说得很好 (drops 的; the usual compliment form, same meaning), then L01 \"your | 你的\" becomes \"you | 你\" not-new (S0020L01), and L03 regrows to \"very well | 很好\". Not drafted as ops until Kai rules (target-side seed change).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 13,
+    "known": "you speak Chinese very well",
+    "target": "你的中文说得很好"
+   },
+   "before": {
+    "known": "your",
+    "target": "你的",
+    "type": "M",
+    "is_new": true
+   },
+   "extra": []
+  },
+  {
+   "id": "S0014L02",
+   "verdict": "grow",
+   "why": "\"all day long\" is not in the seed; re-glossing to \"all day\" would clash with L01 \"all day | 一整天\". Grows to the verb the 都 belongs to (L22).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 14,
+    "known": "do you speak Chinese all day?",
+    "target": "你一整天都说中文吗？"
+   },
+   "before": {
+    "known": "all day long",
+    "target": "一整天都",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "speak Chinese all day",
+    "target": "一整天都说中文",
+    "type": "M",
+    "components": [
+     [
+      "all day",
+      "一整天"
+     ],
+     [
+      "throughout",
+      "都"
+     ],
+     [
+      "speak",
+      "说"
+     ],
+     [
+      "Chinese",
+      "中文"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 7
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0014L02C01",
+     "role": "component",
+     "before": [
+      "all day",
+      "一整天"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0014L02C02",
+     "role": "component",
+     "before": [
+      "throughout",
+      "都"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "zho_for_eng:S0014L02B01",
+     "role": "build",
+     "before": [
+      "all day long",
+      "一整天都"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0014L02B02",
+     "role": "build",
+     "before": [
+      "speak Chinese all day long",
+      "一整天都说中文"
+     ],
+     "action": [
+      "speak Chinese all day",
+      "一整天都说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0014L02B03",
+     "role": "build",
+     "before": [
+      "I want to speak all day long",
+      "我想一整天都说"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0014L02B04",
+     "role": "build",
+     "before": [
+      "I speak Chinese all day long",
+      "我一整天都说中文"
+     ],
+     "action": [
+      "I speak Chinese all day",
+      "我一整天都说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0014L02B05",
+     "role": "build",
+     "before": [
+      "you speak Chinese all day long",
+      "你一整天都说中文"
+     ],
+     "action": [
+      "you speak Chinese all day",
+      "你一整天都说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0014L02U01",
+     "role": "use",
+     "before": [
+      "I want to speak Chinese all day long",
+      "我想一整天都说中文"
+     ],
+     "action": [
+      "I want to speak Chinese all day",
+      "我想一整天都说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0014L02U02",
+     "role": "use",
+     "before": [
+      "speak a little Chinese all day long",
+      "一整天都说一点中文"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0014L02U03",
+     "role": "use",
+     "before": [
+      "you want to speak Chinese all day long",
+      "你想一整天都说中文"
+     ],
+     "action": [
+      "you want to speak Chinese all day",
+      "你想一整天都说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0014L02U04",
+     "role": "use",
+     "before": [
+      "you speak a little Chinese all day long",
+      "你一整天都说一点中文"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0014L02U05",
+     "course_code": "zho_for_eng",
+     "seed_number": 14,
+     "lego_index": 2,
+     "known_text": "I hope to speak Chinese all day",
+     "target_text": "我希望一整天都说中文",
+     "phrase_role": "use",
+     "position": 12,
+     "word_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ xīwàng yìzhěng tiān dōu shuō zhōngwén"
+    },
+    {
+     "id": "zho_for_eng:S0014L02U06",
+     "course_code": "zho_for_eng",
+     "seed_number": 14,
+     "lego_index": 2,
+     "known_text": "do you want to speak Chinese all day?",
+     "target_text": "你想一整天都说中文吗？",
+     "phrase_role": "use",
+     "position": 13,
+     "word_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ xiǎng yìzhěng tiān dōu shuō zhōngwén ma?"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0014L03U10",
+      "known": "do you want to speak Chinese all day long?",
+      "target": "你想一整天都说中文吗",
+      "seed": 14
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0016L03",
+   "verdict": "grow",
+   "why": "\"together\" is not in the seed; 和别人一起 is \"with everyone else\", and 和别人 had no LEGO at all (S3). \"together | 一起\" stays a component.",
+   "closes": [
+    "10"
+   ],
+   "knock": "S0388L01 and S0517L01 \"together | 一起\" are not-new on this LEGO; they lose their pair (L31) and are re-judged at their own seeds.",
+   "seed": {
+    "n": 16,
+    "known": "he wants to come back with everyone else later on",
+    "target": "他想晚点和别人一起回来"
+   },
+   "before": {
+    "known": "together",
+    "target": "一起",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "with everyone else",
+    "target": "和别人一起",
+    "type": "M",
+    "components": [
+     [
+      "with",
+      "和"
+     ],
+     [
+      "others",
+      "别人"
+     ],
+     [
+      "together",
+      "一起"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0016L03B01",
+     "role": "build",
+     "before": [
+      "study together",
+      "一起学习"
+     ],
+     "action": [
+      "study with everyone else",
+      "和别人一起学习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03B02",
+     "role": "build",
+     "before": [
+      "practise together",
+      "一起练习"
+     ],
+     "action": [
+      "practise with everyone else",
+      "和别人一起练习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03B03",
+     "role": "build",
+     "before": [
+      "speak Chinese together",
+      "一起说中文"
+     ],
+     "action": [
+      "speak Chinese with everyone else",
+      "和别人一起说中文"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03U01",
+     "role": "use",
+     "before": [
+      "I want to study together with you",
+      "我想和你一起学习"
+     ],
+     "action": [
+      "I want to study with everyone else",
+      "我想和别人一起学习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03U02",
+     "role": "use",
+     "before": [
+      "he also wants to practise together",
+      "他也想一起练习"
+     ],
+     "action": [
+      "he also wants to practise with everyone else",
+      "他也想和别人一起练习"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03U03",
+     "role": "use",
+     "before": [
+      "can you speak Chinese together with me?",
+      "你能和我一起说中文吗？"
+     ],
+     "action": [
+      "can you speak Chinese with everyone else?",
+      "你能和别人一起说中文吗？"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0016L03U04",
+     "role": "use",
+     "before": [
+      "I hope we can study together tomorrow",
+      "我希望明天能一起学习"
+     ],
+     "action": [
+      "I hope I can study with everyone else tomorrow",
+      "我希望我明天能和别人一起学习"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 65,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0016L04B02",
+      "known": "come back together",
+      "target": "一起回来",
+      "seed": 16
+     },
+     {
+      "id": "zho_for_eng:S0016L04U04",
+      "known": "he hopes to come back together with others",
+      "target": "他希望和别人一起回来",
+      "seed": 16
+     },
+     {
+      "id": "zho_for_eng:S0017L01U04",
+      "known": "she hopes to practise together",
+      "target": "她希望一起练习",
+      "seed": 17
+     },
+     {
+      "id": "zho_for_eng:S0018L01U01",
+      "known": "we're going to study Chinese together tomorrow",
+      "target": "我们明天要一起学习中文",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L01U03",
+      "known": "we also want to practise together",
+      "target": "我们也想一起练习",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L01U04",
+      "known": "we can explain it together",
+      "target": "我们能一起解释",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L01U06",
+      "known": "we hope to practise together today",
+      "target": "我们希望今天一起练习",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L01U07",
+      "known": "we're going to try hard together",
+      "target": "我们要一起努力",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L01U09",
+      "known": "we often practise together",
+      "target": "我们经常一起练习",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L02U01",
+      "known": "we're going to practise together this evening",
+      "target": "我们今晚要一起练习",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L03B02",
+      "known": "meet together",
+      "target": "一起见面",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L03U06",
+      "known": "we're going to meet together this evening",
+      "target": "我们今晚要一起见面",
+      "seed": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0021L02",
+   "verdict": "grow",
+   "why": "\"to study\" is not in the seed; re-glossing 学 to \"to learn\" clashes with S0002L02 \"to learn | 学习\" (ZUT), so it grows to the seed's object (L25). L03 \"her | 她的\" overlaps (S4).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 21,
+    "known": "why are you learning her name?",
+    "target": "你为什么学她的名字？"
+   },
+   "before": {
+    "known": "to study",
+    "target": "学",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "learning her name",
+    "target": "学她的名字",
+    "type": "M",
+    "components": [
+     [
+      "to learn",
+      "学"
+     ],
+     [
+      "her",
+      "她的"
+     ],
+     [
+      "name",
+      "名字"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0021L02B01",
+     "role": "build",
+     "before": [
+      "study Chinese",
+      "学中文"
+     ],
+     "action": [
+      "learn her name",
+      "学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02B02",
+     "role": "build",
+     "before": [
+      "study a word",
+      "学一个词"
+     ],
+     "action": [
+      "want to learn her name",
+      "想学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02B03",
+     "role": "build",
+     "before": [
+      "study quickly",
+      "尽快学"
+     ],
+     "action": [
+      "learn her name quickly",
+      "尽快学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U01",
+     "role": "use",
+     "before": [
+      "I want to study Chinese with you",
+      "我想和你学中文"
+     ],
+     "action": [
+      "I want to learn her name",
+      "我想学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U03",
+     "role": "use",
+     "before": [
+      "why does he want to study Chinese?",
+      "他为什么想学中文？"
+     ],
+     "action": [
+      "why does he want to learn her name?",
+      "他为什么想学她的名字？"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U04",
+     "role": "use",
+     "before": [
+      "we hope to study Chinese together",
+      "我们希望一起学中文"
+     ],
+     "action": [
+      "we hope to learn her name",
+      "我们希望学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U05",
+     "role": "use",
+     "before": [
+      "you want to study quickly",
+      "你想尽快学"
+     ],
+     "action": [
+      "you want to learn her name quickly",
+      "你想尽快学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U06",
+     "role": "use",
+     "before": [
+      "but I also want to study",
+      "但是我也想学"
+     ],
+     "action": [
+      "but I also want to learn her name",
+      "但是我也想学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U07",
+     "role": "use",
+     "before": [
+      "I'm going to study Chinese with him",
+      "我要和他学中文"
+     ],
+     "action": [
+      "I'm going to learn her name",
+      "我要学她的名字"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0021L02U08",
+     "role": "use",
+     "before": [
+      "why don't you want to study?",
+      "你为什么不想学？"
+     ],
+     "action": [
+      "why don't you want to learn her name?",
+      "你为什么不想学她的名字？"
+     ]
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 7
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 21,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0003L02U04",
+      "known": "I want to study with you often",
+      "target": "我想经常和你学习",
+      "seed": 3
+     },
+     {
+      "id": "zho_for_eng:S0003L03U03",
+      "known": "I want to try to study as often as possible",
+      "target": "我想试试尽可能经常学习",
+      "seed": 3
+     },
+     {
+      "id": "zho_for_eng:S0005L01B03",
+      "known": "I'm going to study",
+      "target": "我要学习",
+      "seed": 5
+     },
+     {
+      "id": "zho_for_eng:S0007L02U01",
+      "known": "I want to study hard today",
+      "target": "我今天想努力学习",
+      "seed": 7
+     },
+     {
+      "id": "zho_for_eng:S0010L01U02",
+      "known": "I don't want to study",
+      "target": "我不想学习",
+      "seed": 10
+     },
+     {
+      "id": "zho_for_eng:S0011L01B04",
+      "known": "I hope to be able to study",
+      "target": "我希望能学习",
+      "seed": 11
+     },
+     {
+      "id": "zho_for_eng:S0011L01B06",
+      "known": "I hope to study Chinese",
+      "target": "我希望学习中文",
+      "seed": 11
+     },
+     {
+      "id": "zho_for_eng:S0015L01U04",
+      "known": "do you want to study with me?",
+      "target": "你想和我学习吗？",
+      "seed": 15
+     },
+     {
+      "id": "zho_for_eng:S0016L03U01",
+      "known": "I want to study together with you",
+      "target": "我想和你一起学习",
+      "seed": 16
+     },
+     {
+      "id": "zho_for_eng:S0018L01U01",
+      "known": "we're going to study Chinese together tomorrow",
+      "target": "我们明天要一起学习中文",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0018L02U04",
+      "known": "he hopes to study Chinese this evening",
+      "target": "他希望今晚学习中文",
+      "seed": 18
+     },
+     {
+      "id": "zho_for_eng:S0022L01U06",
+      "known": "because I want to study Chinese",
+      "target": "因为我想学中文",
+      "seed": 22
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0022L02",
+   "verdict": "seed",
+   "why": "认识 is \"get to know\"; \"to meet\" would clash with S0018L03 \"to meet | 见面\", and the Chinese chunk that says \"meet people who speak Chinese\" is 9 syllables. The English seed is the loose side. KAI: seed edit.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 22,
+    "known": "because I want to meet people who speak Chinese",
+    "target": "因为我想认识会说中文的人"
+   },
+   "before": {
+    "known": "to get to know",
+    "target": "认识",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "because I want to get to know people who speak Chinese",
+   "seed_copies_updated": [
+    "zho_for_eng:S0022L03U09"
+   ],
+   "extra": []
+  },
+  {
+   "id": "S0024L02",
+   "verdict": "seed",
+   "why": "The Chinese says 我可能不容易记住 \"I might not remember easily\"; \"might | 可能\" is right for it. KAI: seed edit (L01 \"I\", L03 below stay in the seed).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 24,
+    "known": "I'm not going to be able to remember easily",
+    "target": "我可能不容易记住"
+   },
+   "before": {
+    "known": "might",
+    "target": "可能",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "I might not remember easily",
+   "seed_copies_updated": [
+    "zho_for_eng:S0024L03U09"
+   ],
+   "extra": []
+  },
+  {
+   "id": "S0024L03",
+   "verdict": "grow",
+   "why": "\"easy\" is not in the seed; 容易记住 is \"remember easily\" in both the old and the edited seed.",
+   "closes": [
+    "10"
+   ],
+   "knock": "S0483L02 \"easy | 容易\" is not-new on this LEGO; it loses its pair (L31) and is re-judged at seed 483.",
+   "seed": {
+    "n": 24,
+    "known": "I'm not going to be able to remember easily",
+    "target": "我可能不容易记住"
+   },
+   "before": {
+    "known": "easy",
+    "target": "容易",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "remember easily",
+    "target": "容易记住",
+    "type": "M",
+    "components": [
+     [
+      "easy",
+      "容易"
+     ],
+     [
+      "to remember",
+      "记住"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0024L03B01",
+     "role": "build",
+     "before": [
+      "not easy",
+      "不容易"
+     ],
+     "action": [
+      "not remember easily",
+      "不容易记住"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0024L03B02",
+     "role": "build",
+     "before": [
+      "very easy",
+      "很容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03B03",
+     "role": "build",
+     "before": [
+      "easy to remember",
+      "容易记住"
+     ],
+     "action": [
+      "remember easily",
+      "容易记住"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0024L03U01",
+     "role": "use",
+     "before": [
+      "Chinese is not easy",
+      "中文不容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U02",
+     "role": "use",
+     "before": [
+      "it's not easy to remember",
+      "记住不容易"
+     ],
+     "action": [
+      "I can't remember easily",
+      "我不容易记住"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0024L03U03",
+     "role": "use",
+     "before": [
+      "it's very easy to explain",
+      "解释很容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U04",
+     "role": "use",
+     "before": [
+      "it might not be easy to start",
+      "开始可能不容易"
+     ],
+     "action": [
+      "I might not remember easily",
+      "我可能不容易记住"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0024L03U05",
+     "role": "use",
+     "before": [
+      "getting to know people is not easy",
+      "认识人不容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U06",
+     "role": "use",
+     "before": [
+      "but it's not easy to find out",
+      "但是弄清楚不容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U07",
+     "role": "use",
+     "before": [
+      "speaking more is not easy",
+      "多说不容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U08",
+     "role": "use",
+     "before": [
+      "it's easy to get to know him",
+      "认识他很容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U09",
+     "role": "use",
+     "before": [
+      "I'm not going to be able to remember easily",
+      "我可能不容易记住"
+     ],
+     "action": [
+      "I might not remember easily",
+      "我可能不容易记住"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0024L03B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 24,
+     "lego_index": 3,
+     "known_text": "you can't remember easily",
+     "target_text": "你不容易记住",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ bù róngyì jìzhù"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 24,
+     "lego_index": 3,
+     "known_text": "he can't remember the whole sentence easily",
+     "target_text": "他不容易记住整个句子",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "tā bù róngyì jìzhù zhěnggè jùzi"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U11",
+     "course_code": "zho_for_eng",
+     "seed_number": 24,
+     "lego_index": 3,
+     "known_text": "I hope I can remember easily",
+     "target_text": "我希望我能容易记住",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 9,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xīwàng wǒ néng róngyì jìzhù"
+    },
+    {
+     "id": "zho_for_eng:S0024L03U12",
+     "course_code": "zho_for_eng",
+     "seed_number": 24,
+     "lego_index": 3,
+     "known_text": "she can't remember Chinese easily",
+     "target_text": "她不容易记住中文",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 8,
+     "lego_position": "middle",
+     "target_text_roman": "tā bù róngyì jìzhù zhōngwén"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 6
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 38,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0027L01B02",
+      "known": "too easy",
+      "target": "太容易",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L01U02",
+      "known": "getting to know people isn't too easy",
+      "target": "认识人不太容易",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L01U03",
+      "known": "she feels it's not too easy",
+      "target": "她感觉不太容易",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L01U07",
+      "known": "it's not too easy to remember",
+      "target": "记住不太容易",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L01U08",
+      "known": "because it's not too easy to explain",
+      "target": "因为解释不太容易",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0029L03U07",
+      "known": "but speaking better isn't easy",
+      "target": "但是说得更好不容易",
+      "seed": 29
+     },
+     {
+      "id": "zho_for_eng:S0036L01U05",
+      "known": "this is not easy",
+      "target": "这个不容易",
+      "seed": 36
+     },
+     {
+      "id": "zho_for_eng:S0041L02U03",
+      "known": "she thinks it's too easy",
+      "target": "她觉得太容易了",
+      "seed": 41
+     },
+     {
+      "id": "zho_for_eng:S0044L03U05",
+      "known": "it's not easy to improve",
+      "target": "进步不容易",
+      "seed": 44
+     },
+     {
+      "id": "zho_for_eng:S0047L01B02",
+      "known": "is not easy",
+      "target": "不是容易的",
+      "seed": 47
+     },
+     {
+      "id": "zho_for_eng:S0049L03B03",
+      "known": "just is not easy",
+      "target": "就是不容易",
+      "seed": 49
+     },
+     {
+      "id": "zho_for_eng:S0049L03U01",
+      "known": "it's just not easy",
+      "target": "就是不容易",
+      "seed": 49
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0025L01",
+   "verdict": "grow",
+   "why": "在 here opens the 在…之前 frame (\"before\"); \"at\" is not in the seed. Taught as the whole contiguous frame with its middle (L32): \"before I go\" (5 syllables). The old basket drilled 在 = \"be here\", which this seed never says.",
+   "closes": [
+    "10"
+   ],
+   "knock": "在 = \"be here/at\" phrases elsewhere lean on this LEGO; \"at | 在\" stays a component (K29). Census below.",
+   "seed": {
+    "n": 25,
+    "known": "are you going to help me before I have to go?",
+    "target": "你会在我走之前帮我吗？"
+   },
+   "before": {
+    "known": "at",
+    "target": "在",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "before I go",
+    "target": "在我走之前",
+    "type": "M",
+    "components": [
+     [
+      "at",
+      "在"
+     ],
+     [
+      "I",
+      "我"
+     ],
+     [
+      "to go",
+      "走"
+     ],
+     [
+      "before",
+      "之前"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0025L01B01",
+     "role": "build",
+     "before": [
+      "I'm here",
+      "我在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01B02",
+     "role": "build",
+     "before": [
+      "she's here",
+      "她在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01B03",
+     "role": "build",
+     "before": [
+      "he's here",
+      "他在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U01",
+     "role": "use",
+     "before": [
+      "she's not here now",
+      "她现在不在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U02",
+     "role": "use",
+     "before": [
+      "but she might not be here this evening",
+      "但是她今晚可能不在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U03",
+     "role": "use",
+     "before": [
+      "he is also here today",
+      "他今天也在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U04",
+     "role": "use",
+     "before": [
+      "I'm not sure if he's here",
+      "我不确定他在不在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U05",
+     "role": "use",
+     "before": [
+      "I hope she's here tomorrow",
+      "我希望她明天在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U06",
+     "role": "use",
+     "before": [
+      "but I'm not here tomorrow",
+      "但是我明天不在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U07",
+     "role": "use",
+     "before": [
+      "because she's also here",
+      "因为她也在"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U08",
+     "role": "use",
+     "before": [
+      "he's not here this evening",
+      "他今晚不在"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0025L01B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "help me before I go",
+     "target_text": "在我走之前帮我",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 7,
+     "lego_position": "middle",
+     "target_text_roman": "zài wǒ zǒu zhīqián bāng wǒ"
+    },
+    {
+     "id": "zho_for_eng:S0025L01B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "ask before I go",
+     "target_text": "在我走之前问",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "zài wǒ zǒu zhīqián wèn"
+    },
+    {
+     "id": "zho_for_eng:S0025L01B06",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "explain before I go",
+     "target_text": "在我走之前解释",
+     "phrase_role": "build",
+     "position": 14,
+     "word_count": 7,
+     "lego_position": "middle",
+     "target_text_roman": "zài wǒ zǒu zhīqián jiěshì"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U09",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "can you help me before I go?",
+     "target_text": "你能在我走之前帮我吗？",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ néng zài wǒ zǒu zhīqián bāng wǒ ma?"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "I want to ask you before I go",
+     "target_text": "我想在我走之前问你",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 9,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ xiǎng zài wǒ zǒu zhīqián wèn nǐ"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U11",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "he wants to come back before I go",
+     "target_text": "他想在我走之前回来",
+     "phrase_role": "use",
+     "position": 17,
+     "word_count": 9,
+     "lego_position": "middle",
+     "target_text_roman": "tā xiǎng zài wǒ zǒu zhīqián huílái"
+    },
+    {
+     "id": "zho_for_eng:S0025L01U12",
+     "course_code": "zho_for_eng",
+     "seed_number": 25,
+     "lego_index": 1,
+     "known_text": "I hope to practise before I go",
+     "target_text": "我希望在我走之前练习",
+     "phrase_role": "use",
+     "position": 18,
+     "word_count": 10,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ xīwàng zài wǒ zǒu zhīqián liànxí"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 82,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0032L02U08",
+      "known": "he wants to look at it now",
+      "target": "他现在想看",
+      "seed": 32
+     },
+     {
+      "id": "zho_for_eng:S0043L02U08",
+      "known": "I wasn't thinking about how to answer at that time",
+      "target": "我当时没在想怎么回答",
+      "seed": 43
+     },
+     {
+      "id": "zho_for_eng:S0048L01U04",
+      "known": "she didn't care at that time",
+      "target": "她当时没在乎",
+      "seed": 48
+     },
+     {
+      "id": "zho_for_eng:S0108L01U03",
+      "known": "she was working at midnight",
+      "target": "她半夜在工作",
+      "seed": 108
+     },
+     {
+      "id": "zho_for_eng:S0108L01U05",
+      "known": "why are you in the process of working at midnight?",
+      "target": "你为什么正在半夜工作？",
+      "seed": 108
+     },
+     {
+      "id": "zho_for_eng:S0118L01B04",
+      "known": "at the pub",
+      "target": "在酒吧",
+      "seed": 118
+     },
+     {
+      "id": "zho_for_eng:S0118L01U01",
+      "known": "I'm at the pub",
+      "target": "我在酒吧",
+      "seed": 118
+     },
+     {
+      "id": "zho_for_eng:S0118L01U02",
+      "known": "are you at the pub?",
+      "target": "你在酒吧吗？",
+      "seed": 118
+     },
+     {
+      "id": "zho_for_eng:S0118L01U07",
+      "known": "I wasn't expecting to see you at the pub",
+      "target": "我没想到在酒吧看到你",
+      "seed": 118
+     },
+     {
+      "id": "zho_for_eng:S0156L02B04",
+      "known": "at the restaurant",
+      "target": "在餐厅",
+      "seed": 156
+     },
+     {
+      "id": "zho_for_eng:S0156L02U03",
+      "known": "I'll meet you at the restaurant",
+      "target": "我在餐厅和你见面",
+      "seed": 156
+     },
+     {
+      "id": "zho_for_eng:S0156L02U06",
+      "known": "can we meet at the restaurant on Saturday?",
+      "target": "周六我们能在餐厅见面吗？",
+      "seed": 156
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0026L02",
+   "verdict": "grow",
+   "why": "\"about to\" is not in the seed; 快要走 is the seed's \"nearly ready to go\" (3 syllables).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 26,
+    "known": "I like feeling as if I'm nearly ready to go",
+    "target": "我喜欢快要走的感觉"
+   },
+   "before": {
+    "known": "about to",
+    "target": "快要",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "nearly ready to go",
+    "target": "快要走",
+    "type": "M",
+    "components": [
+     [
+      "about to",
+      "快要"
+     ],
+     [
+      "to go",
+      "走"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0026L02B01",
+     "role": "build",
+     "before": [
+      "about to go",
+      "快要走"
+     ],
+     "action": [
+      "nearly ready to go",
+      "快要走"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0026L02B02",
+     "role": "build",
+     "before": [
+      "about to start",
+      "快要开始"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02B03",
+     "role": "build",
+     "before": [
+      "about to come back",
+      "快要回来"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U01",
+     "role": "use",
+     "before": [
+      "I'm about to go",
+      "我快要走"
+     ],
+     "action": [
+      "I'm nearly ready to go",
+      "我快要走"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0026L02U02",
+     "role": "use",
+     "before": [
+      "she's about to start",
+      "她快要开始"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U03",
+     "role": "use",
+     "before": [
+      "he's about to come back",
+      "他快要回来"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U04",
+     "role": "use",
+     "before": [
+      "we're about to meet",
+      "我们快要见面"
+     ],
+     "action": [
+      "we're nearly ready to go",
+      "我们快要走"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0026L02U05",
+     "role": "use",
+     "before": [
+      "I'm about to start speaking more",
+      "我快要开始多说"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U06",
+     "role": "use",
+     "before": [
+      "she's about to go",
+      "她快要走"
+     ],
+     "action": [
+      "she's nearly ready to go",
+      "她快要走"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0026L02U07",
+     "role": "use",
+     "before": [
+      "but he's about to stop",
+      "但是他快要停下来"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U08",
+     "role": "use",
+     "before": [
+      "we're about to start practising together",
+      "我们快要开始一起练习"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0026L02B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 26,
+     "lego_index": 2,
+     "known_text": "he's nearly ready to go",
+     "target_text": "他快要走",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 4,
+     "lego_position": "middle",
+     "target_text_roman": "tā kuàiyào zǒu"
+    },
+    {
+     "id": "zho_for_eng:S0026L02B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 26,
+     "lego_index": 2,
+     "known_text": "you're nearly ready to go",
+     "target_text": "你快要走",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 4,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ kuàiyào zǒu"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U09",
+     "course_code": "zho_for_eng",
+     "seed_number": 26,
+     "lego_index": 2,
+     "known_text": "I like feeling as if I'm nearly ready to go",
+     "target_text": "我喜欢快要走的感觉",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 9,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ xǐhuān kuàiyào zǒu de gǎnjué"
+    },
+    {
+     "id": "zho_for_eng:S0026L02U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 26,
+     "lego_index": 2,
+     "known_text": "I'm not sure if he's nearly ready to go",
+     "target_text": "我不确定他是不是快要走",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 11,
+     "lego_position": "end",
+     "target_text_roman": "wǒ búquèdìng tā shì bù shì kuàiyào zǒu"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 3,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0026L03U04",
+      "known": "he likes the feeling of being about to go",
+      "target": "他喜欢快要走的感觉",
+      "seed": 26
+     },
+     {
+      "id": "zho_for_eng:S0026L03U07",
+      "known": "she likes the feeling of being about to start",
+      "target": "她喜欢快要开始的感觉",
+      "seed": 26
+     },
+     {
+      "id": "zho_for_eng:S0027L04U06",
+      "known": "I'm about to answer",
+      "target": "我快要回答",
+      "seed": 27
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0027L02",
+   "verdict": "grow",
+   "why": "\"to spend\" is not in the seed; 花太多时间 is its \"taking too much time\" (5 syllables). L03 \"time | 时间\" overlaps (S4).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 27,
+    "known": "I don't like taking too much time to answer",
+    "target": "我不喜欢花太多时间回答"
+   },
+   "before": {
+    "known": "to spend",
+    "target": "花",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "taking too much time",
+    "target": "花太多时间",
+    "type": "M",
+    "components": [
+     [
+      "to spend",
+      "花"
+     ],
+     [
+      "too",
+      "太"
+     ],
+     [
+      "much",
+      "多"
+     ],
+     [
+      "time",
+      "时间"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0027L02B01",
+     "role": "build",
+     "before": [
+      "spend too much",
+      "花太多"
+     ],
+     "action": [
+      "take too much time",
+      "花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02B02",
+     "role": "build",
+     "before": [
+      "spend a little",
+      "花一点"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0027L02B03",
+     "role": "build",
+     "before": [
+      "not spend",
+      "不花"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0027L02U01",
+     "role": "use",
+     "before": [
+      "I don't want to spend too much",
+      "我不想花太多"
+     ],
+     "action": [
+      "I don't want to take too much time",
+      "我不想花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U02",
+     "role": "use",
+     "before": [
+      "she doesn't like spending too much",
+      "她不喜欢花太多"
+     ],
+     "action": [
+      "she doesn't like taking too much time",
+      "她不喜欢花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U03",
+     "role": "use",
+     "before": [
+      "he might spend too much",
+      "他可能花太多"
+     ],
+     "action": [
+      "he might take too much time",
+      "他可能花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U04",
+     "role": "use",
+     "before": [
+      "I don't like spending too much",
+      "我不喜欢花太多"
+     ],
+     "action": [
+      "I don't like taking too much time",
+      "我不喜欢花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U05",
+     "role": "use",
+     "before": [
+      "because I don't want to spend too much",
+      "因为我不想花太多"
+     ],
+     "action": [
+      "because I don't want to take too much time",
+      "因为我不想花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U06",
+     "role": "use",
+     "before": [
+      "we might spend a little",
+      "我们可能花一点"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0027L02U07",
+     "role": "use",
+     "before": [
+      "but she doesn't want to spend too much",
+      "但是她不想花太多"
+     ],
+     "action": [
+      "but she doesn't want to take too much time",
+      "但是她不想花太多时间"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0027L02U08",
+     "role": "use",
+     "before": [
+      "why does he like spending too much?",
+      "他为什么喜欢花太多？"
+     ],
+     "action": [
+      "why does he like taking too much time?",
+      "他为什么喜欢花太多时间？"
+     ]
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0027L02B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 27,
+     "lego_index": 2,
+     "known_text": "don't take too much time",
+     "target_text": "不花太多时间",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "bù huā tài duō shíjiān"
+    }
+   ],
+   "basket_after": {
+    "build": 2,
+    "use": 7
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 20,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0027L03U02",
+      "known": "I don't want to spend too much time",
+      "target": "我不想花太多时间",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L03U05",
+      "known": "he doesn't want to spend too much time",
+      "target": "他不想花太多时间",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0027L03U08",
+      "known": "we don't want to spend too much time",
+      "target": "我们不想花太多时间",
+      "seed": 27
+     },
+     {
+      "id": "zho_for_eng:S0033L01B03",
+      "known": "how long to spend",
+      "target": "花多久",
+      "seed": 33
+     },
+     {
+      "id": "zho_for_eng:S0033L01U01",
+      "known": "how long do you want to spend?",
+      "target": "你想花多久？",
+      "seed": 33
+     },
+     {
+      "id": "zho_for_eng:S0209L01B01",
+      "known": "they want to spend more time meeting as a group",
+      "target": "他们想花更多时间一起见面",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01B03",
+      "known": "they want to spend more time meeting as a group today",
+      "target": "他们想今天花更多时间一起见面",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01B04",
+      "known": "they want to spend more time meeting as a group now",
+      "target": "他们想现在花更多时间一起见面",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01U02",
+      "known": "they want to spend more time meeting as a group this week",
+      "target": "他们这周想花更多时间一起见面",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01U03",
+      "known": "they want to spend more time meeting as a group tomorrow",
+      "target": "他们想明天花更多时间一起见面",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01U04",
+      "known": "they want to spend more time meeting as a group to help",
+      "target": "他们想花更多时间一起见面帮忙",
+      "seed": 209
+     },
+     {
+      "id": "zho_for_eng:S0209L01U05",
+      "known": "they want to spend more time meeting as a group to practise",
+      "target": "他们想花更多时间一起见面练习",
+      "seed": 209
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0029L02",
+   "verdict": "grow",
+   "why": "\"even more\" is not in the seed; \"better\" is, and 更好 is contiguous in 说得更好. L03 \"to speak better\" follows it (L13 order holds).",
+   "closes": [
+    "10"
+   ],
+   "knock": "S0291L01 \"better | 更好\" (new) becomes a duplicate of this LEGO and should go not-new (planned at 291 if flagged; otherwise listed as a knock-on).",
+   "seed": {
+    "n": 29,
+    "known": "I'm looking forward to speaking better as soon as I can",
+    "target": "我期待尽快说得更好"
+   },
+   "before": {
+    "known": "even more",
+    "target": "更",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "better",
+    "target": "更好",
+    "type": "M",
+    "components": [
+     [
+      "more",
+      "更"
+     ],
+     [
+      "good",
+      "好"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 2
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0029L02B01",
+     "role": "build",
+     "before": [
+      "even more useful",
+      "更有用"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02B02",
+     "role": "build",
+     "before": [
+      "even easier",
+      "更容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02B03",
+     "role": "build",
+     "before": [
+      "even better",
+      "更好"
+     ],
+     "action": [
+      "even better",
+      "更好"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0029L02U01",
+     "role": "use",
+     "before": [
+      "Chinese is even more useful",
+      "中文更有用"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U02",
+     "role": "use",
+     "before": [
+      "she hopes it will be even easier",
+      "她希望更容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U03",
+     "role": "use",
+     "before": [
+      "his Chinese is even better",
+      "他的中文更好"
+     ],
+     "action": [
+      "his Chinese is better",
+      "他的中文更好"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0029L02U04",
+     "role": "use",
+     "before": [
+      "getting to know people is even more useful",
+      "认识人更有用"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U06",
+     "role": "use",
+     "before": [
+      "practising is even more useful",
+      "练习更有用"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U07",
+     "role": "use",
+     "before": [
+      "I look forward to it being even easier",
+      "我期待更容易"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U08",
+     "role": "use",
+     "before": [
+      "starting is even more useful",
+      "开始更有用"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0029L02B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "better now",
+     "target_text": "现在更好",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 4,
+     "lego_position": "end",
+     "target_text_roman": "xiànzài gèng hǎo"
+    },
+    {
+     "id": "zho_for_eng:S0029L02B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "a little better",
+     "target_text": "更好一点",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 4,
+     "lego_position": "start",
+     "target_text_roman": "gèng hǎo yīdiǎn"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U09",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "my Chinese is better now",
+     "target_text": "我现在的中文更好",
+     "phrase_role": "use",
+     "position": 14,
+     "word_count": 8,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xiànzài de zhōngwén gèng hǎo"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "I hope my Chinese can be better",
+     "target_text": "我希望我的中文能更好",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 10,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xīwàng wǒ de zhōngwén néng gèng hǎo"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U11",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "this way is better",
+     "target_text": "这样更好",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 4,
+     "lego_position": "end",
+     "target_text_roman": "zhèyàng gèng hǎo"
+    },
+    {
+     "id": "zho_for_eng:S0029L02U12",
+     "course_code": "zho_for_eng",
+     "seed_number": 29,
+     "lego_index": 2,
+     "known_text": "her Chinese is better than before",
+     "target_text": "她的中文比以前更好",
+     "phrase_role": "use",
+     "position": 17,
+     "word_count": 9,
+     "lego_position": "end",
+     "target_text_roman": "tā de zhōngwén bǐ yǐqián gèng hǎo"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 4,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0036L03U03",
+      "known": "I like her story even more",
+      "target": "我更喜欢她的故事",
+      "seed": 36
+     },
+     {
+      "id": "zho_for_eng:S0042L01U02",
+      "known": "she speaks even more than him",
+      "target": "她说得比他更多",
+      "seed": 42
+     },
+     {
+      "id": "zho_for_eng:S0181L02U09",
+      "known": "my mother is even more tired than me",
+      "target": "我妈比我更累",
+      "seed": 181
+     },
+     {
+      "id": "zho_for_eng:S0222L03U06",
+      "known": "I want this even more",
+      "target": "我更想要这个",
+      "seed": 222
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0030L03",
+   "verdict": "grow",
+   "why": "\"a thing\" is not in the seed; \"something\" alone would clash with S0004L02 \"something | 点什么\", so it grows to \"ask you something\" (L02 \"to ask\" taught first).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 30,
+    "known": "I wanted to ask you something yesterday",
+    "target": "我昨天想问你一件事"
+   },
+   "before": {
+    "known": "a thing",
+    "target": "一件事",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "ask you something",
+    "target": "问你一件事",
+    "type": "M",
+    "components": [
+     [
+      "to ask",
+      "问"
+     ],
+     [
+      "you",
+      "你"
+     ],
+     [
+      "a thing",
+      "一件事"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0030L03B01",
+     "role": "build",
+     "before": [
+      "ask about a thing",
+      "问一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03B02",
+     "role": "build",
+     "before": [
+      "explain a thing",
+      "解释一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03B03",
+     "role": "build",
+     "before": [
+      "want to say a thing",
+      "想说一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U01",
+     "role": "use",
+     "before": [
+      "I want to ask you a thing",
+      "我想问你一件事"
+     ],
+     "action": [
+      "I want to ask you something",
+      "我想问你一件事"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0030L03U02",
+     "role": "use",
+     "before": [
+      "she asked me a thing yesterday",
+      "她昨天问我一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U03",
+     "role": "use",
+     "before": [
+      "he wants to explain a thing to me",
+      "他想和我解释一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U04",
+     "role": "use",
+     "before": [
+      "I want to say a thing",
+      "我想说一件事"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U07",
+     "role": "use",
+     "before": [
+      "he asked her a thing before he left",
+      "他在走之前问她一件事"
+     ],
+     "action": [
+      "he wants to ask you something before he goes",
+      "他想在走之前问你一件事"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0030L03U08",
+     "role": "use",
+     "before": [
+      "I want to ask you a thing today",
+      "我今天想问你一件事"
+     ],
+     "action": [
+      "I want to ask you something today",
+      "我今天想问你一件事"
+     ]
+    },
+    {
+     "id": "zho_for_eng:S0030L03U09",
+     "role": "use",
+     "before": [
+      "I wanted to ask you something yesterday",
+      "我昨天想问你一件事"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0030L03B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 30,
+     "lego_index": 3,
+     "known_text": "want to ask you something",
+     "target_text": "想问你一件事",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "xiǎng wèn nǐ yī jiàn shì"
+    },
+    {
+     "id": "zho_for_eng:S0030L03B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 30,
+     "lego_index": 3,
+     "known_text": "I ask you something",
+     "target_text": "我问你一件事",
+     "phrase_role": "build",
+     "position": 14,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ wèn nǐ yī jiàn shì"
+    },
+    {
+     "id": "zho_for_eng:S0030L03B06",
+     "course_code": "zho_for_eng",
+     "seed_number": 30,
+     "lego_index": 3,
+     "known_text": "he asked you something",
+     "target_text": "他问你一件事",
+     "phrase_role": "build",
+     "position": 15,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "tā wèn nǐ yī jiàn shì"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 30,
+     "lego_index": 3,
+     "known_text": "she wanted to ask you something yesterday",
+     "target_text": "她昨天想问你一件事",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 9,
+     "lego_position": "end",
+     "target_text_roman": "tā zuótiān xiǎng wèn nǐ yī jiàn shì"
+    },
+    {
+     "id": "zho_for_eng:S0030L03U11",
+     "course_code": "zho_for_eng",
+     "seed_number": 30,
+     "lego_index": 3,
+     "known_text": "can I ask you something?",
+     "target_text": "我能问你一件事吗？",
+     "phrase_role": "use",
+     "position": 17,
+     "word_count": 8,
+     "lego_position": "middle",
+     "target_text_roman": "wǒ néng wèn nǐ yī jiàn shì ma?"
+    }
+   ],
+   "basket_after": {
+    "use": 6,
+    "build": 3
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 1,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0034L01U02",
+      "known": "when he came back yesterday, she wanted to ask him a thing",
+      "target": "他昨天回来的时候，她想问他一件事",
+      "seed": 34
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0032L01",
+   "verdict": "grow",
+   "why": "给 alone (\"to give\") is not in the seed; 给我看 is its \"show me\". L02 below becomes the seed's other part.",
+   "closes": [
+    "10"
+   ],
+   "knock": "S0140L01 \"show me | 给我看\" (new) becomes a duplicate and should go not-new; S0301L01 \"to give | 给\" (not-new on this LEGO) loses its pair (L31, handled at 301). 给 = give and 看 = look stay as components (K29).",
+   "seed": {
+    "n": 32,
+    "known": "did you want to show me something?",
+    "target": "你想给我看点什么吗？"
+   },
+   "before": {
+    "known": "to give",
+    "target": "给",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "show me",
+    "target": "给我看",
+    "type": "M",
+    "components": [
+     [
+      "to give",
+      "给"
+     ],
+     [
+      "me",
+      "我"
+     ],
+     [
+      "to look at",
+      "看"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0032L01B01",
+     "role": "build",
+     "before": [
+      "give me",
+      "给我"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01B02",
+     "role": "build",
+     "before": [
+      "give him",
+      "给他"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01B03",
+     "role": "build",
+     "before": [
+      "give her",
+      "给她"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U02",
+     "role": "use",
+     "before": [
+      "I want to give him more time",
+      "我想给他更多时间"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U04",
+     "role": "use",
+     "before": [
+      "he gave her the answer yesterday",
+      "他昨天给她答案"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U05",
+     "role": "use",
+     "before": [
+      "why don't you want to give me the answer?",
+      "你为什么不想给我答案？"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U06",
+     "role": "use",
+     "before": [
+      "I'm going to give him more time before I ask",
+      "我要在问之前给他更多时间"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U08",
+     "role": "use",
+     "before": [
+      "she gave me the answer yesterday",
+      "她昨天给我答案"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [
+    {
+     "id": "zho_for_eng:S0032L01B04",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "want to show me",
+     "target_text": "想给我看",
+     "phrase_role": "build",
+     "position": 12,
+     "word_count": 4,
+     "lego_position": "middle",
+     "target_text_roman": "xiǎng gěi wǒ kàn"
+    },
+    {
+     "id": "zho_for_eng:S0032L01B05",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "show me now",
+     "target_text": "现在给我看",
+     "phrase_role": "build",
+     "position": 13,
+     "word_count": 5,
+     "lego_position": "end",
+     "target_text_roman": "xiànzài gěi wǒ kàn"
+    },
+    {
+     "id": "zho_for_eng:S0032L01B06",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "show me this",
+     "target_text": "给我看这个",
+     "phrase_role": "build",
+     "position": 14,
+     "word_count": 5,
+     "lego_position": "start",
+     "target_text_roman": "gěi wǒ kàn zhège"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U09",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "did you want to show me something?",
+     "target_text": "你想给我看点什么吗？",
+     "phrase_role": "use",
+     "position": 15,
+     "word_count": 9,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ xiǎng gěi wǒ kàn diǎn shénme ma?"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U10",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "can you show me?",
+     "target_text": "你能给我看吗？",
+     "phrase_role": "use",
+     "position": 16,
+     "word_count": 6,
+     "lego_position": "middle",
+     "target_text_roman": "nǐ néng gěi wǒ kàn ma?"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U11",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "he doesn't want to show me",
+     "target_text": "他不想给我看",
+     "phrase_role": "use",
+     "position": 17,
+     "word_count": 6,
+     "lego_position": "end",
+     "target_text_roman": "tā bù xiǎng gěi wǒ kàn"
+    },
+    {
+     "id": "zho_for_eng:S0032L01U12",
+     "course_code": "zho_for_eng",
+     "seed_number": 32,
+     "lego_index": 1,
+     "known_text": "I hope you can show me tomorrow",
+     "target_text": "我希望你明天能给我看",
+     "phrase_role": "use",
+     "position": 18,
+     "word_count": 10,
+     "lego_position": "end",
+     "target_text_roman": "wǒ xīwàng nǐ míngtiān néng gěi wǒ kàn"
+    }
+   ],
+   "basket_after": {
+    "build": 3,
+    "use": 4
+   },
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 20,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0052L05U07",
+      "known": "he wants to give me a letter",
+      "target": "他想给我一封信",
+      "seed": 52
+     },
+     {
+      "id": "zho_for_eng:S0054L01U09",
+      "known": "we want to give you this again",
+      "target": "我们想再给你这个",
+      "seed": 54
+     },
+     {
+      "id": "zho_for_eng:S0054L01U10",
+      "known": "we wanted to give you a little more time",
+      "target": "我们想再给你一点时间",
+      "seed": 54
+     },
+     {
+      "id": "zho_for_eng:S0070L01U09",
+      "known": "I don't want to give it to him",
+      "target": "我不想把它给他",
+      "seed": 70
+     },
+     {
+      "id": "zho_for_eng:S0242L01B01",
+      "known": "to give more time",
+      "target": "给更多时间",
+      "seed": 242
+     },
+     {
+      "id": "zho_for_eng:S0242L01B03",
+      "known": "I want to give more time",
+      "target": "我想给更多时间",
+      "seed": 242
+     },
+     {
+      "id": "zho_for_eng:S0242L01U02",
+      "known": "I need to give more time",
+      "target": "我需要给更多时间",
+      "seed": 242
+     },
+     {
+      "id": "zho_for_eng:S0242L01U03",
+      "known": "she wants to give more time",
+      "target": "她想给更多时间",
+      "seed": 242
+     },
+     {
+      "id": "zho_for_eng:S0242L01U05",
+      "known": "I want to give her more time",
+      "target": "我想给她更多时间",
+      "seed": 242
+     },
+     {
+      "id": "zho_for_eng:S0301L01U02",
+      "known": "I want to give you something",
+      "target": "我想给你一个东西",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L01U03",
+      "known": "she doesn't want to give me the key",
+      "target": "她不想给我钥匙",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L01U04",
+      "known": "he said he wants to give her flowers",
+      "target": "他说他想给她花",
+      "seed": 301
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0032L02",
+   "verdict": "grow",
+   "why": "\"to look at\" is not in the seed (看 is inside 给我看, now L01). The seed's remaining part 点什么 is S0004L02 \"something | 点什么\", so this LEGO takes that pair and goes not-new (every seed part is a LEGO).",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 32,
+    "known": "did you want to show me something?",
+    "target": "你想给我看点什么吗？"
+   },
+   "before": {
+    "known": "to look at",
+    "target": "看",
+    "type": "A",
+    "is_new": true
+   },
+   "after": {
+    "known": "something",
+    "target": "点什么",
+    "type": "A",
+    "components": [],
+    "is_new": false
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "zho_for_eng:S0032L02B02",
+     "role": "build",
+     "before": [
+      "want to look",
+      "想看"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02B03",
+     "role": "build",
+     "before": [
+      "show me",
+      "给我看"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U01",
+     "role": "use",
+     "before": [
+      "I want to look at it",
+      "我想看"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U03",
+     "role": "use",
+     "before": [
+      "she wants to show you something",
+      "她想给你看点什么"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U04",
+     "role": "use",
+     "before": [
+      "he doesn't want to show me",
+      "他不想给我看"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U06",
+     "role": "use",
+     "before": [
+      "I looked at the answer yesterday",
+      "我昨天看答案"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U08",
+     "role": "use",
+     "before": [
+      "he wants to look at it now",
+      "他现在想看"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U09",
+     "role": "use",
+     "before": [
+      "she looks at this",
+      "她看这个"
+     ],
+     "action": "del"
+    },
+    {
+     "id": "zho_for_eng:S0032L02U10",
+     "role": "use",
+     "before": [
+      "did you want to show me something?",
+      "你想给我看点什么吗？"
+     ],
+     "action": "del"
+    }
+   ],
+   "add": [],
+   "basket_after": {},
+   "extra": [],
+   "knock_census": {
+    "rows_pairing_old_gloss": 13,
+    "sample": [
+     {
+      "id": "zho_for_eng:S0036L03U02",
+      "known": "I want to look at his story",
+      "target": "我想看他的故事",
+      "seed": 36
+     },
+     {
+      "id": "zho_for_eng:S0301L02B01",
+      "known": "to want to look at",
+      "target": "想看",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02B03",
+      "known": "I want to look at",
+      "target": "我想看",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02B04",
+      "known": "want to look at that",
+      "target": "想看那个",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U02",
+      "known": "I really want to look at that",
+      "target": "我很想看那个",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U03",
+      "known": "she doesn't want to look at it",
+      "target": "她不想看它",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U04",
+      "known": "do you want to look at this now?",
+      "target": "你现在想看这个吗？",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U05",
+      "known": "he said he wants to look at the new place",
+      "target": "他说他想看新的地方",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U06",
+      "known": "I want to look at that before I go",
+      "target": "我去之前想看那个",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0301L02U08",
+      "known": "she wants to look at her letters in the morning",
+      "target": "她早上想看她的信",
+      "seed": 301
+     },
+     {
+      "id": "zho_for_eng:S0303L01U06",
+      "known": "I think I need to look at that",
+      "target": "我觉得我需要看那个",
+      "seed": 303
+     },
+     {
+      "id": "zho_for_eng:S0303L02U09",
+      "known": "he wants to sit down and look at the book",
+      "target": "他想坐下来看书",
+      "seed": 303
+     }
+    ]
+   }
+  },
+  {
+   "id": "S0036L01",
+   "verdict": "seed",
+   "why": "这个故事 is \"this story\"; \"this | 这个\" is the course's only teaching of 这个 (13 rows). Editing the English seed keeps it. KAI: seed edit.",
+   "closes": [
+    "10"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 36,
+    "known": "we don't want to interrupt the story",
+    "target": "我们不想打断这个故事"
+   },
+   "before": {
+    "known": "this",
+    "target": "这个",
+    "type": "A",
+    "is_new": true
+   },
+   "seed_after": "we don't want to interrupt this story",
+   "seed_copies_updated": [
+    "zho_for_eng:S0036L03U08"
+   ],
+   "extra": []
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0003L03",
+   "set": {
+    "known_text": "as often as possible",
+    "target_text": "尽可能经常",
+    "type": "M",
+    "components": [
+     {
+      "known": "as much as possible",
+      "target": "尽可能"
+     },
+     {
+      "known": "often",
+      "target": "经常"
+     }
+    ],
+    "target_text_roman": "jǐnkěnéng jīngcháng"
+   },
+   "expect": {
+    "known_text": "as much as possible",
+    "target_text": "尽可能"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0003L03B02",
+   "set": {
+    "known_text": "speak as often as possible",
+    "target_text": "尽可能经常说",
+    "target_text_roman": "jǐnkěnéng jīngcháng shuō"
+   },
+   "expect": {
+    "known_text": "speak Chinese as much as possible",
+    "target_text": "尽可能说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0003L03B03",
+   "set": {
+    "known_text": "learn as often as possible",
+    "target_text": "尽可能经常学习",
+    "target_text_roman": "jǐnkěnéng jīngcháng xuéxí"
+   },
+   "expect": {
+    "known_text": "learn as much as possible",
+    "target_text": "尽可能学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0003L03U05",
+   "set": {
+    "known_text": "I want to learn Chinese as often as possible",
+    "target_text": "我想尽可能经常学习中文",
+    "target_text_roman": "wǒ xiǎng jǐnkěnéng jīngcháng xuéxí zhōngwén"
+   },
+   "expect": {
+    "known_text": "I want to learn as much as possible",
+    "target_text": "我想尽可能学习"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0008L02",
+   "set": {
+    "known_text": "what I mean",
+    "target_text": "我的意思",
+    "components": [
+     {
+      "known": "my",
+      "target": "我的"
+     },
+     {
+      "known": "meaning",
+      "target": "意思"
+     }
+    ],
+    "target_text_roman": "wǒ de yìsi"
+   },
+   "expect": {
+    "known_text": "my",
+    "target_text": "我的"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02B01",
+   "expect": {
+    "known_text": "my",
+    "target_text": "我的"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02B02",
+   "expect": {
+    "known_text": "my Chinese",
+    "target_text": "我的中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02U01",
+   "expect": {
+    "known_text": "I want to practise my Chinese",
+    "target_text": "我想练习我的中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02U02",
+   "expect": {
+    "known_text": "I'm going to practise my Chinese today",
+    "target_text": "我今天要练习我的中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02U03",
+   "expect": {
+    "known_text": "I want to try to practise my Chinese",
+    "target_text": "我想试试练习我的中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02U04",
+   "expect": {
+    "known_text": "I want to practise my Chinese now",
+    "target_text": "我现在想练习我的中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0008L02U05",
+   "expect": {
+    "known_text": "I'm going to practise my Chinese hard today",
+    "target_text": "我今天要努力练习我的中文"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02B03",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "explain what I mean",
+    "target_text": "解释我的意思",
+    "phrase_role": "build",
+    "position": 10,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "try to explain what I mean",
+    "target_text": "试试解释我的意思",
+    "phrase_role": "build",
+    "position": 11,
+    "word_count": 8,
+    "lego_position": "end",
+    "target_text_roman": "shìshi jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "say what I mean",
+    "target_text": "说我的意思",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 5,
+    "lego_position": "middle",
+    "target_text_roman": "shuō wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02U06",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "I'm going to explain what I mean",
+    "target_text": "我要解释我的意思",
+    "phrase_role": "use",
+    "position": 13,
+    "word_count": 8,
+    "lego_position": "end",
+    "target_text_roman": "wǒ yào jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02U07",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "I want to try to explain what I mean",
+    "target_text": "我想试试解释我的意思",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 10,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xiǎng shìshi jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02U08",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "I want to explain what I mean in Chinese",
+    "target_text": "我想用中文解释我的意思",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 11,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xiǎng yòng zhōngwén jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0008L02U09",
+    "course_code": "zho_for_eng",
+    "seed_number": 8,
+    "lego_index": 2,
+    "known_text": "I'm going to try to explain what I mean",
+    "target_text": "我要试试解释我的意思",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 10,
+    "lego_position": "end",
+    "target_text_roman": "wǒ yào shìshi jiěshì wǒ de yìsi"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 9,
+   "set": {
+    "known_text": "I can speak a little Chinese now"
+   },
+   "expect": {
+    "known_text": "I speak a little Chinese now",
+    "target_text": "我现在会说一点中文"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0010L03",
+   "set": {
+    "known_text": "if I can",
+    "target_text": "我能不能",
+    "components": [
+     {
+      "known": "I",
+      "target": "我"
+     },
+     {
+      "known": "can",
+      "target": "能"
+     },
+     {
+      "known": "can't",
+      "target": "不能"
+     }
+    ],
+    "target_text_roman": "wǒ néng bù néng"
+   },
+   "expect": {
+    "known_text": "whether can",
+    "target_text": "能不能"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03B01",
+   "set": {
+    "known_text": "if I can"
+   },
+   "expect": {
+    "known_text": "whether I can",
+    "target_text": "我能不能"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03B02",
+   "set": {
+    "known_text": "if I can speak"
+   },
+   "expect": {
+    "known_text": "whether I can speak",
+    "target_text": "我能不能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03B03",
+   "set": {
+    "known_text": "if I can speak Chinese"
+   },
+   "expect": {
+    "known_text": "whether I can speak Chinese",
+    "target_text": "我能不能说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03B04",
+   "set": {
+    "known_text": "if I can explain"
+   },
+   "expect": {
+    "known_text": "whether I can explain",
+    "target_text": "我能不能解释"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03B05",
+   "set": {
+    "known_text": "if I can learn"
+   },
+   "expect": {
+    "known_text": "whether I can learn",
+    "target_text": "我能不能学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0010L03U03",
+   "set": {
+    "known_text": "I'm not sure if I can practise",
+    "target_text": "我不确定我能不能练习",
+    "target_text_roman": "wǒ búquèdìng wǒ néng bù néng liànxí"
+   },
+   "expect": {
+    "known_text": "I'm not sure if I can practise today",
+    "target_text": "我不确定我今天能不能练习"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 11,
+   "set": {
+    "known_text": "I hope I can speak too after you finish"
+   },
+   "expect": {
+    "known_text": "I'd like to be able to speak after you finish",
+    "target_text": "我希望你说完之后我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L04U06",
+   "set": {
+    "known_text": "I hope I can speak too after you finish"
+   },
+   "expect": {
+    "known_text": "I'd like to be able to speak after you finish",
+    "target_text": "我希望你说完之后我也能说"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0011L03",
+   "set": {
+    "known_text": "I can speak too",
+    "components": [
+     {
+      "known": "I",
+      "target": "我"
+     },
+     {
+      "known": "also",
+      "target": "也"
+     },
+     {
+      "known": "able to",
+      "target": "能"
+     },
+     {
+      "known": "speak",
+      "target": "说"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I too can speak",
+    "target_text": "我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03B01",
+   "set": {
+    "known_text": "I can speak too"
+   },
+   "expect": {
+    "known_text": "I too can speak",
+    "target_text": "我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03B02",
+   "set": {
+    "known_text": "I can speak Chinese too"
+   },
+   "expect": {
+    "known_text": "I can also speak Chinese",
+    "target_text": "我也能说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03B03",
+   "set": {
+    "known_text": "I can speak a little too"
+   },
+   "expect": {
+    "known_text": "I can also speak a little",
+    "target_text": "我也能说一点"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03U02",
+   "set": {
+    "known_text": "now I can speak too"
+   },
+   "expect": {
+    "known_text": "now I too can speak",
+    "target_text": "现在我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03U03",
+   "set": {
+    "known_text": "I hope I can speak too"
+   },
+   "expect": {
+    "known_text": "I hope I can also speak",
+    "target_text": "我希望我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03U04",
+   "set": {
+    "known_text": "I can speak a little Chinese too"
+   },
+   "expect": {
+    "known_text": "I can also speak a little Chinese",
+    "target_text": "我也能说一点中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03U05",
+   "set": {
+    "known_text": "I hope I can speak too now"
+   },
+   "expect": {
+    "known_text": "I hope I too can speak now",
+    "target_text": "我希望现在我也能说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0011L03U06",
+   "set": {
+    "known_text": "I hope I can speak Chinese too"
+   },
+   "expect": {
+    "known_text": "I hope I can also speak Chinese",
+    "target_text": "我希望我也能说中文"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0014L02",
+   "set": {
+    "known_text": "speak Chinese all day",
+    "target_text": "一整天都说中文",
+    "components": [
+     {
+      "known": "all day",
+      "target": "一整天"
+     },
+     {
+      "known": "throughout",
+      "target": "都"
+     },
+     {
+      "known": "speak",
+      "target": "说"
+     },
+     {
+      "known": "Chinese",
+      "target": "中文"
+     }
+    ],
+    "target_text_roman": "yìzhěng tiān dōu shuō zhōngwén"
+   },
+   "expect": {
+    "known_text": "all day long",
+    "target_text": "一整天都"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0014L02B01",
+   "expect": {
+    "known_text": "all day long",
+    "target_text": "一整天都"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0014L02B02",
+   "set": {
+    "known_text": "speak Chinese all day"
+   },
+   "expect": {
+    "known_text": "speak Chinese all day long",
+    "target_text": "一整天都说中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0014L02B03",
+   "expect": {
+    "known_text": "I want to speak all day long",
+    "target_text": "我想一整天都说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0014L02B04",
+   "set": {
+    "known_text": "I speak Chinese all day"
+   },
+   "expect": {
+    "known_text": "I speak Chinese all day long",
+    "target_text": "我一整天都说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0014L02B05",
+   "set": {
+    "known_text": "you speak Chinese all day"
+   },
+   "expect": {
+    "known_text": "you speak Chinese all day long",
+    "target_text": "你一整天都说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0014L02U01",
+   "set": {
+    "known_text": "I want to speak Chinese all day"
+   },
+   "expect": {
+    "known_text": "I want to speak Chinese all day long",
+    "target_text": "我想一整天都说中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0014L02U02",
+   "expect": {
+    "known_text": "speak a little Chinese all day long",
+    "target_text": "一整天都说一点中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0014L02U03",
+   "set": {
+    "known_text": "you want to speak Chinese all day"
+   },
+   "expect": {
+    "known_text": "you want to speak Chinese all day long",
+    "target_text": "你想一整天都说中文"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0014L02U04",
+   "expect": {
+    "known_text": "you speak a little Chinese all day long",
+    "target_text": "你一整天都说一点中文"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0014L02U05",
+    "course_code": "zho_for_eng",
+    "seed_number": 14,
+    "lego_index": 2,
+    "known_text": "I hope to speak Chinese all day",
+    "target_text": "我希望一整天都说中文",
+    "phrase_role": "use",
+    "position": 12,
+    "word_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ xīwàng yìzhěng tiān dōu shuō zhōngwén"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0014L02U06",
+    "course_code": "zho_for_eng",
+    "seed_number": 14,
+    "lego_index": 2,
+    "known_text": "do you want to speak Chinese all day?",
+    "target_text": "你想一整天都说中文吗？",
+    "phrase_role": "use",
+    "position": 13,
+    "word_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ xiǎng yìzhěng tiān dōu shuō zhōngwén ma?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0016L03",
+   "set": {
+    "known_text": "with everyone else",
+    "target_text": "和别人一起",
+    "type": "M",
+    "components": [
+     {
+      "known": "with",
+      "target": "和"
+     },
+     {
+      "known": "others",
+      "target": "别人"
+     },
+     {
+      "known": "together",
+      "target": "一起"
+     }
+    ],
+    "target_text_roman": "hé biérén yīqǐ"
+   },
+   "expect": {
+    "known_text": "together",
+    "target_text": "一起"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03B01",
+   "set": {
+    "known_text": "study with everyone else",
+    "target_text": "和别人一起学习",
+    "target_text_roman": "hé biérén yīqǐ xuéxí"
+   },
+   "expect": {
+    "known_text": "study together",
+    "target_text": "一起学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03B02",
+   "set": {
+    "known_text": "practise with everyone else",
+    "target_text": "和别人一起练习",
+    "target_text_roman": "hé biérén yīqǐ liànxí"
+   },
+   "expect": {
+    "known_text": "practise together",
+    "target_text": "一起练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03B03",
+   "set": {
+    "known_text": "speak Chinese with everyone else",
+    "target_text": "和别人一起说中文",
+    "target_text_roman": "hé biérén yīqǐ shuō zhōngwén"
+   },
+   "expect": {
+    "known_text": "speak Chinese together",
+    "target_text": "一起说中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03U01",
+   "set": {
+    "known_text": "I want to study with everyone else",
+    "target_text": "我想和别人一起学习",
+    "target_text_roman": "wǒ xiǎng hé biérén yīqǐ xuéxí"
+   },
+   "expect": {
+    "known_text": "I want to study together with you",
+    "target_text": "我想和你一起学习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03U02",
+   "set": {
+    "known_text": "he also wants to practise with everyone else",
+    "target_text": "他也想和别人一起练习",
+    "target_text_roman": "tā yě xiǎng hé biérén yīqǐ liànxí"
+   },
+   "expect": {
+    "known_text": "he also wants to practise together",
+    "target_text": "他也想一起练习"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03U03",
+   "set": {
+    "known_text": "can you speak Chinese with everyone else?",
+    "target_text": "你能和别人一起说中文吗？",
+    "target_text_roman": "nǐ néng hé biérén yīqǐ shuō zhōngwén ma?"
+   },
+   "expect": {
+    "known_text": "can you speak Chinese together with me?",
+    "target_text": "你能和我一起说中文吗？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0016L03U04",
+   "set": {
+    "known_text": "I hope I can study with everyone else tomorrow",
+    "target_text": "我希望我明天能和别人一起学习",
+    "target_text_roman": "wǒ xīwàng wǒ míngtiān néng hé biérén yīqǐ xuéxí"
+   },
+   "expect": {
+    "known_text": "I hope we can study together tomorrow",
+    "target_text": "我希望明天能一起学习"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0021L02",
+   "set": {
+    "known_text": "learning her name",
+    "target_text": "学她的名字",
+    "type": "M",
+    "components": [
+     {
+      "known": "to learn",
+      "target": "学"
+     },
+     {
+      "known": "her",
+      "target": "她的"
+     },
+     {
+      "known": "name",
+      "target": "名字"
+     }
+    ],
+    "target_text_roman": "xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "to study",
+    "target_text": "学"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02B01",
+   "set": {
+    "known_text": "learn her name",
+    "target_text": "学她的名字",
+    "target_text_roman": "xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "study Chinese",
+    "target_text": "学中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02B02",
+   "set": {
+    "known_text": "want to learn her name",
+    "target_text": "想学她的名字",
+    "target_text_roman": "xiǎng xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "study a word",
+    "target_text": "学一个词"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02B03",
+   "set": {
+    "known_text": "learn her name quickly",
+    "target_text": "尽快学她的名字",
+    "target_text_roman": "jǐnkuài xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "study quickly",
+    "target_text": "尽快学"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U01",
+   "set": {
+    "known_text": "I want to learn her name",
+    "target_text": "我想学她的名字",
+    "target_text_roman": "wǒ xiǎng xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "I want to study Chinese with you",
+    "target_text": "我想和你学中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U03",
+   "set": {
+    "known_text": "why does he want to learn her name?",
+    "target_text": "他为什么想学她的名字？",
+    "target_text_roman": "tā wèishénme xiǎng xué tā de míngzi?"
+   },
+   "expect": {
+    "known_text": "why does he want to study Chinese?",
+    "target_text": "他为什么想学中文？"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U04",
+   "set": {
+    "known_text": "we hope to learn her name",
+    "target_text": "我们希望学她的名字",
+    "target_text_roman": "wǒmen xīwàng xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "we hope to study Chinese together",
+    "target_text": "我们希望一起学中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U05",
+   "set": {
+    "known_text": "you want to learn her name quickly",
+    "target_text": "你想尽快学她的名字",
+    "target_text_roman": "nǐ xiǎng jǐnkuài xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "you want to study quickly",
+    "target_text": "你想尽快学"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U06",
+   "set": {
+    "known_text": "but I also want to learn her name",
+    "target_text": "但是我也想学她的名字",
+    "target_text_roman": "dànshì wǒ yě xiǎng xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "but I also want to study",
+    "target_text": "但是我也想学"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U07",
+   "set": {
+    "known_text": "I'm going to learn her name",
+    "target_text": "我要学她的名字",
+    "target_text_roman": "wǒ yào xué tā de míngzi"
+   },
+   "expect": {
+    "known_text": "I'm going to study Chinese with him",
+    "target_text": "我要和他学中文"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0021L02U08",
+   "set": {
+    "known_text": "why don't you want to learn her name?",
+    "target_text": "你为什么不想学她的名字？",
+    "target_text_roman": "nǐ wèishénme bù xiǎng xué tā de míngzi?"
+   },
+   "expect": {
+    "known_text": "why don't you want to study?",
+    "target_text": "你为什么不想学？"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 22,
+   "set": {
+    "known_text": "because I want to get to know people who speak Chinese"
+   },
+   "expect": {
+    "known_text": "because I want to meet people who speak Chinese",
+    "target_text": "因为我想认识会说中文的人"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0022L03U09",
+   "set": {
+    "known_text": "because I want to get to know people who speak Chinese"
+   },
+   "expect": {
+    "known_text": "because I want to meet people who speak Chinese",
+    "target_text": "因为我想认识会说中文的人"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 24,
+   "set": {
+    "known_text": "I might not remember easily"
+   },
+   "expect": {
+    "known_text": "I'm not going to be able to remember easily",
+    "target_text": "我可能不容易记住"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03U09",
+   "set": {
+    "known_text": "I might not remember easily"
+   },
+   "expect": {
+    "known_text": "I'm not going to be able to remember easily",
+    "target_text": "我可能不容易记住"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0024L03",
+   "set": {
+    "known_text": "remember easily",
+    "target_text": "容易记住",
+    "type": "M",
+    "components": [
+     {
+      "known": "easy",
+      "target": "容易"
+     },
+     {
+      "known": "to remember",
+      "target": "记住"
+     }
+    ],
+    "target_text_roman": "róngyì jìzhù"
+   },
+   "expect": {
+    "known_text": "easy",
+    "target_text": "容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03B01",
+   "set": {
+    "known_text": "not remember easily",
+    "target_text": "不容易记住",
+    "target_text_roman": "bù róngyì jìzhù"
+   },
+   "expect": {
+    "known_text": "not easy",
+    "target_text": "不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03B02",
+   "expect": {
+    "known_text": "very easy",
+    "target_text": "很容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03B03",
+   "set": {
+    "known_text": "remember easily"
+   },
+   "expect": {
+    "known_text": "easy to remember",
+    "target_text": "容易记住"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U01",
+   "expect": {
+    "known_text": "Chinese is not easy",
+    "target_text": "中文不容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03U02",
+   "set": {
+    "known_text": "I can't remember easily",
+    "target_text": "我不容易记住",
+    "target_text_roman": "wǒ bù róngyì jìzhù"
+   },
+   "expect": {
+    "known_text": "it's not easy to remember",
+    "target_text": "记住不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U03",
+   "expect": {
+    "known_text": "it's very easy to explain",
+    "target_text": "解释很容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03U04",
+   "set": {
+    "known_text": "I might not remember easily",
+    "target_text": "我可能不容易记住",
+    "target_text_roman": "wǒ kěnéng bù róngyì jìzhù"
+   },
+   "expect": {
+    "known_text": "it might not be easy to start",
+    "target_text": "开始可能不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U05",
+   "expect": {
+    "known_text": "getting to know people is not easy",
+    "target_text": "认识人不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U06",
+   "expect": {
+    "known_text": "but it's not easy to find out",
+    "target_text": "但是弄清楚不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U07",
+   "expect": {
+    "known_text": "speaking more is not easy",
+    "target_text": "多说不容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0024L03U08",
+   "expect": {
+    "known_text": "it's easy to get to know him",
+    "target_text": "认识他很容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0024L03U09",
+   "set": {
+    "known_text": "I might not remember easily"
+   },
+   "expect": {
+    "known_text": "I'm not going to be able to remember easily",
+    "target_text": "我可能不容易记住"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0024L03B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 24,
+    "lego_index": 3,
+    "known_text": "you can't remember easily",
+    "target_text": "你不容易记住",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ bù róngyì jìzhù"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0024L03U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 24,
+    "lego_index": 3,
+    "known_text": "he can't remember the whole sentence easily",
+    "target_text": "他不容易记住整个句子",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "tā bù róngyì jìzhù zhěnggè jùzi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0024L03U11",
+    "course_code": "zho_for_eng",
+    "seed_number": 24,
+    "lego_index": 3,
+    "known_text": "I hope I can remember easily",
+    "target_text": "我希望我能容易记住",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 9,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xīwàng wǒ néng róngyì jìzhù"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0024L03U12",
+    "course_code": "zho_for_eng",
+    "seed_number": 24,
+    "lego_index": 3,
+    "known_text": "she can't remember Chinese easily",
+    "target_text": "她不容易记住中文",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 8,
+    "lego_position": "middle",
+    "target_text_roman": "tā bù róngyì jìzhù zhōngwén"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0025L01",
+   "set": {
+    "known_text": "before I go",
+    "target_text": "在我走之前",
+    "type": "M",
+    "components": [
+     {
+      "known": "at",
+      "target": "在"
+     },
+     {
+      "known": "I",
+      "target": "我"
+     },
+     {
+      "known": "to go",
+      "target": "走"
+     },
+     {
+      "known": "before",
+      "target": "之前"
+     }
+    ],
+    "target_text_roman": "zài wǒ zǒu zhīqián"
+   },
+   "expect": {
+    "known_text": "at",
+    "target_text": "在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01B01",
+   "expect": {
+    "known_text": "I'm here",
+    "target_text": "我在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01B02",
+   "expect": {
+    "known_text": "she's here",
+    "target_text": "她在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01B03",
+   "expect": {
+    "known_text": "he's here",
+    "target_text": "他在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U01",
+   "expect": {
+    "known_text": "she's not here now",
+    "target_text": "她现在不在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U02",
+   "expect": {
+    "known_text": "but she might not be here this evening",
+    "target_text": "但是她今晚可能不在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U03",
+   "expect": {
+    "known_text": "he is also here today",
+    "target_text": "他今天也在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U04",
+   "expect": {
+    "known_text": "I'm not sure if he's here",
+    "target_text": "我不确定他在不在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U05",
+   "expect": {
+    "known_text": "I hope she's here tomorrow",
+    "target_text": "我希望她明天在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U06",
+   "expect": {
+    "known_text": "but I'm not here tomorrow",
+    "target_text": "但是我明天不在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U07",
+   "expect": {
+    "known_text": "because she's also here",
+    "target_text": "因为她也在"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0025L01U08",
+   "expect": {
+    "known_text": "he's not here this evening",
+    "target_text": "他今晚不在"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "help me before I go",
+    "target_text": "在我走之前帮我",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 7,
+    "lego_position": "middle",
+    "target_text_roman": "zài wǒ zǒu zhīqián bāng wǒ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "ask before I go",
+    "target_text": "在我走之前问",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "zài wǒ zǒu zhīqián wèn"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01B06",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "explain before I go",
+    "target_text": "在我走之前解释",
+    "phrase_role": "build",
+    "position": 14,
+    "word_count": 7,
+    "lego_position": "middle",
+    "target_text_roman": "zài wǒ zǒu zhīqián jiěshì"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01U09",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "can you help me before I go?",
+    "target_text": "你能在我走之前帮我吗？",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ néng zài wǒ zǒu zhīqián bāng wǒ ma?"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "I want to ask you before I go",
+    "target_text": "我想在我走之前问你",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 9,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ xiǎng zài wǒ zǒu zhīqián wèn nǐ"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01U11",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "he wants to come back before I go",
+    "target_text": "他想在我走之前回来",
+    "phrase_role": "use",
+    "position": 17,
+    "word_count": 9,
+    "lego_position": "middle",
+    "target_text_roman": "tā xiǎng zài wǒ zǒu zhīqián huílái"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0025L01U12",
+    "course_code": "zho_for_eng",
+    "seed_number": 25,
+    "lego_index": 1,
+    "known_text": "I hope to practise before I go",
+    "target_text": "我希望在我走之前练习",
+    "phrase_role": "use",
+    "position": 18,
+    "word_count": 10,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ xīwàng zài wǒ zǒu zhīqián liànxí"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0026L02",
+   "set": {
+    "known_text": "nearly ready to go",
+    "target_text": "快要走",
+    "type": "M",
+    "components": [
+     {
+      "known": "about to",
+      "target": "快要"
+     },
+     {
+      "known": "to go",
+      "target": "走"
+     }
+    ],
+    "target_text_roman": "kuàiyào zǒu"
+   },
+   "expect": {
+    "known_text": "about to",
+    "target_text": "快要"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0026L02B01",
+   "set": {
+    "known_text": "nearly ready to go"
+   },
+   "expect": {
+    "known_text": "about to go",
+    "target_text": "快要走"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02B02",
+   "expect": {
+    "known_text": "about to start",
+    "target_text": "快要开始"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02B03",
+   "expect": {
+    "known_text": "about to come back",
+    "target_text": "快要回来"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0026L02U01",
+   "set": {
+    "known_text": "I'm nearly ready to go"
+   },
+   "expect": {
+    "known_text": "I'm about to go",
+    "target_text": "我快要走"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02U02",
+   "expect": {
+    "known_text": "she's about to start",
+    "target_text": "她快要开始"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02U03",
+   "expect": {
+    "known_text": "he's about to come back",
+    "target_text": "他快要回来"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0026L02U04",
+   "set": {
+    "known_text": "we're nearly ready to go",
+    "target_text": "我们快要走",
+    "target_text_roman": "wǒmen kuàiyào zǒu"
+   },
+   "expect": {
+    "known_text": "we're about to meet",
+    "target_text": "我们快要见面"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02U05",
+   "expect": {
+    "known_text": "I'm about to start speaking more",
+    "target_text": "我快要开始多说"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0026L02U06",
+   "set": {
+    "known_text": "she's nearly ready to go"
+   },
+   "expect": {
+    "known_text": "she's about to go",
+    "target_text": "她快要走"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02U07",
+   "expect": {
+    "known_text": "but he's about to stop",
+    "target_text": "但是他快要停下来"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0026L02U08",
+   "expect": {
+    "known_text": "we're about to start practising together",
+    "target_text": "我们快要开始一起练习"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0026L02B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 26,
+    "lego_index": 2,
+    "known_text": "he's nearly ready to go",
+    "target_text": "他快要走",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 4,
+    "lego_position": "middle",
+    "target_text_roman": "tā kuàiyào zǒu"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0026L02B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 26,
+    "lego_index": 2,
+    "known_text": "you're nearly ready to go",
+    "target_text": "你快要走",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 4,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ kuàiyào zǒu"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0026L02U09",
+    "course_code": "zho_for_eng",
+    "seed_number": 26,
+    "lego_index": 2,
+    "known_text": "I like feeling as if I'm nearly ready to go",
+    "target_text": "我喜欢快要走的感觉",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 9,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ xǐhuān kuàiyào zǒu de gǎnjué"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0026L02U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 26,
+    "lego_index": 2,
+    "known_text": "I'm not sure if he's nearly ready to go",
+    "target_text": "我不确定他是不是快要走",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 11,
+    "lego_position": "end",
+    "target_text_roman": "wǒ búquèdìng tā shì bù shì kuàiyào zǒu"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0027L02",
+   "set": {
+    "known_text": "taking too much time",
+    "target_text": "花太多时间",
+    "type": "M",
+    "components": [
+     {
+      "known": "to spend",
+      "target": "花"
+     },
+     {
+      "known": "too",
+      "target": "太"
+     },
+     {
+      "known": "much",
+      "target": "多"
+     },
+     {
+      "known": "time",
+      "target": "时间"
+     }
+    ],
+    "target_text_roman": "huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "to spend",
+    "target_text": "花"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02B01",
+   "set": {
+    "known_text": "take too much time",
+    "target_text": "花太多时间",
+    "target_text_roman": "huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "spend too much",
+    "target_text": "花太多"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0027L02B02",
+   "expect": {
+    "known_text": "spend a little",
+    "target_text": "花一点"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0027L02B03",
+   "expect": {
+    "known_text": "not spend",
+    "target_text": "不花"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U01",
+   "set": {
+    "known_text": "I don't want to take too much time",
+    "target_text": "我不想花太多时间",
+    "target_text_roman": "wǒ bù xiǎng huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "I don't want to spend too much",
+    "target_text": "我不想花太多"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U02",
+   "set": {
+    "known_text": "she doesn't like taking too much time",
+    "target_text": "她不喜欢花太多时间",
+    "target_text_roman": "tā bù xǐhuān huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "she doesn't like spending too much",
+    "target_text": "她不喜欢花太多"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U03",
+   "set": {
+    "known_text": "he might take too much time",
+    "target_text": "他可能花太多时间",
+    "target_text_roman": "tā kěnéng huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "he might spend too much",
+    "target_text": "他可能花太多"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U04",
+   "set": {
+    "known_text": "I don't like taking too much time",
+    "target_text": "我不喜欢花太多时间",
+    "target_text_roman": "wǒ bù xǐhuān huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "I don't like spending too much",
+    "target_text": "我不喜欢花太多"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U05",
+   "set": {
+    "known_text": "because I don't want to take too much time",
+    "target_text": "因为我不想花太多时间",
+    "target_text_roman": "yīnwèi wǒ bù xiǎng huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "because I don't want to spend too much",
+    "target_text": "因为我不想花太多"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0027L02U06",
+   "expect": {
+    "known_text": "we might spend a little",
+    "target_text": "我们可能花一点"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U07",
+   "set": {
+    "known_text": "but she doesn't want to take too much time",
+    "target_text": "但是她不想花太多时间",
+    "target_text_roman": "dànshì tā bù xiǎng huā tài duō shíjiān"
+   },
+   "expect": {
+    "known_text": "but she doesn't want to spend too much",
+    "target_text": "但是她不想花太多"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0027L02U08",
+   "set": {
+    "known_text": "why does he like taking too much time?",
+    "target_text": "他为什么喜欢花太多时间？",
+    "target_text_roman": "tā wèishénme xǐhuān huā tài duō shíjiān?"
+   },
+   "expect": {
+    "known_text": "why does he like spending too much?",
+    "target_text": "他为什么喜欢花太多？"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0027L02B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 27,
+    "lego_index": 2,
+    "known_text": "don't take too much time",
+    "target_text": "不花太多时间",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "bù huā tài duō shíjiān"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0029L02",
+   "set": {
+    "known_text": "better",
+    "target_text": "更好",
+    "type": "M",
+    "components": [
+     {
+      "known": "more",
+      "target": "更"
+     },
+     {
+      "known": "good",
+      "target": "好"
+     }
+    ],
+    "target_text_roman": "gèng hǎo"
+   },
+   "expect": {
+    "known_text": "even more",
+    "target_text": "更"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02B01",
+   "expect": {
+    "known_text": "even more useful",
+    "target_text": "更有用"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02B02",
+   "expect": {
+    "known_text": "even easier",
+    "target_text": "更容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U01",
+   "expect": {
+    "known_text": "Chinese is even more useful",
+    "target_text": "中文更有用"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U02",
+   "expect": {
+    "known_text": "she hopes it will be even easier",
+    "target_text": "她希望更容易"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0029L02U03",
+   "set": {
+    "known_text": "his Chinese is better"
+   },
+   "expect": {
+    "known_text": "his Chinese is even better",
+    "target_text": "他的中文更好"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U04",
+   "expect": {
+    "known_text": "getting to know people is even more useful",
+    "target_text": "认识人更有用"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U06",
+   "expect": {
+    "known_text": "practising is even more useful",
+    "target_text": "练习更有用"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U07",
+   "expect": {
+    "known_text": "I look forward to it being even easier",
+    "target_text": "我期待更容易"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0029L02U08",
+   "expect": {
+    "known_text": "starting is even more useful",
+    "target_text": "开始更有用"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "better now",
+    "target_text": "现在更好",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 4,
+    "lego_position": "end",
+    "target_text_roman": "xiànzài gèng hǎo"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "a little better",
+    "target_text": "更好一点",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 4,
+    "lego_position": "start",
+    "target_text_roman": "gèng hǎo yīdiǎn"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02U09",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "my Chinese is better now",
+    "target_text": "我现在的中文更好",
+    "phrase_role": "use",
+    "position": 14,
+    "word_count": 8,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xiànzài de zhōngwén gèng hǎo"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "I hope my Chinese can be better",
+    "target_text": "我希望我的中文能更好",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 10,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xīwàng wǒ de zhōngwén néng gèng hǎo"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02U11",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "this way is better",
+    "target_text": "这样更好",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 4,
+    "lego_position": "end",
+    "target_text_roman": "zhèyàng gèng hǎo"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0029L02U12",
+    "course_code": "zho_for_eng",
+    "seed_number": 29,
+    "lego_index": 2,
+    "known_text": "her Chinese is better than before",
+    "target_text": "她的中文比以前更好",
+    "phrase_role": "use",
+    "position": 17,
+    "word_count": 9,
+    "lego_position": "end",
+    "target_text_roman": "tā de zhōngwén bǐ yǐqián gèng hǎo"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0030L03",
+   "set": {
+    "known_text": "ask you something",
+    "target_text": "问你一件事",
+    "type": "M",
+    "components": [
+     {
+      "known": "to ask",
+      "target": "问"
+     },
+     {
+      "known": "you",
+      "target": "你"
+     },
+     {
+      "known": "a thing",
+      "target": "一件事"
+     }
+    ],
+    "target_text_roman": "wèn nǐ yī jiàn shì"
+   },
+   "expect": {
+    "known_text": "a thing",
+    "target_text": "一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03B01",
+   "expect": {
+    "known_text": "ask about a thing",
+    "target_text": "问一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03B02",
+   "expect": {
+    "known_text": "explain a thing",
+    "target_text": "解释一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03B03",
+   "expect": {
+    "known_text": "want to say a thing",
+    "target_text": "想说一件事"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0030L03U01",
+   "set": {
+    "known_text": "I want to ask you something"
+   },
+   "expect": {
+    "known_text": "I want to ask you a thing",
+    "target_text": "我想问你一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03U02",
+   "expect": {
+    "known_text": "she asked me a thing yesterday",
+    "target_text": "她昨天问我一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03U03",
+   "expect": {
+    "known_text": "he wants to explain a thing to me",
+    "target_text": "他想和我解释一件事"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0030L03U04",
+   "expect": {
+    "known_text": "I want to say a thing",
+    "target_text": "我想说一件事"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0030L03U07",
+   "set": {
+    "known_text": "he wants to ask you something before he goes",
+    "target_text": "他想在走之前问你一件事",
+    "target_text_roman": "tā xiǎng zài zǒu zhīqián wèn nǐ yī jiàn shì"
+   },
+   "expect": {
+    "known_text": "he asked her a thing before he left",
+    "target_text": "他在走之前问她一件事"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0030L03U08",
+   "set": {
+    "known_text": "I want to ask you something today"
+   },
+   "expect": {
+    "known_text": "I want to ask you a thing today",
+    "target_text": "我今天想问你一件事"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0030L03B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 30,
+    "lego_index": 3,
+    "known_text": "want to ask you something",
+    "target_text": "想问你一件事",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "xiǎng wèn nǐ yī jiàn shì"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0030L03B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 30,
+    "lego_index": 3,
+    "known_text": "I ask you something",
+    "target_text": "我问你一件事",
+    "phrase_role": "build",
+    "position": 14,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ wèn nǐ yī jiàn shì"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0030L03B06",
+    "course_code": "zho_for_eng",
+    "seed_number": 30,
+    "lego_index": 3,
+    "known_text": "he asked you something",
+    "target_text": "他问你一件事",
+    "phrase_role": "build",
+    "position": 15,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "tā wèn nǐ yī jiàn shì"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0030L03U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 30,
+    "lego_index": 3,
+    "known_text": "she wanted to ask you something yesterday",
+    "target_text": "她昨天想问你一件事",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 9,
+    "lego_position": "end",
+    "target_text_roman": "tā zuótiān xiǎng wèn nǐ yī jiàn shì"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0030L03U11",
+    "course_code": "zho_for_eng",
+    "seed_number": 30,
+    "lego_index": 3,
+    "known_text": "can I ask you something?",
+    "target_text": "我能问你一件事吗？",
+    "phrase_role": "use",
+    "position": 17,
+    "word_count": 8,
+    "lego_position": "middle",
+    "target_text_roman": "wǒ néng wèn nǐ yī jiàn shì ma?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0032L01",
+   "set": {
+    "known_text": "show me",
+    "target_text": "给我看",
+    "type": "M",
+    "components": [
+     {
+      "known": "to give",
+      "target": "给"
+     },
+     {
+      "known": "me",
+      "target": "我"
+     },
+     {
+      "known": "to look at",
+      "target": "看"
+     }
+    ],
+    "target_text_roman": "gěi wǒ kàn"
+   },
+   "expect": {
+    "known_text": "to give",
+    "target_text": "给"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01B01",
+   "expect": {
+    "known_text": "give me",
+    "target_text": "给我"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01B02",
+   "expect": {
+    "known_text": "give him",
+    "target_text": "给他"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01B03",
+   "expect": {
+    "known_text": "give her",
+    "target_text": "给她"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01U02",
+   "expect": {
+    "known_text": "I want to give him more time",
+    "target_text": "我想给他更多时间"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01U04",
+   "expect": {
+    "known_text": "he gave her the answer yesterday",
+    "target_text": "他昨天给她答案"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01U05",
+   "expect": {
+    "known_text": "why don't you want to give me the answer?",
+    "target_text": "你为什么不想给我答案？"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01U06",
+   "expect": {
+    "known_text": "I'm going to give him more time before I ask",
+    "target_text": "我要在问之前给他更多时间"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L01U08",
+   "expect": {
+    "known_text": "she gave me the answer yesterday",
+    "target_text": "她昨天给我答案"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01B04",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "want to show me",
+    "target_text": "想给我看",
+    "phrase_role": "build",
+    "position": 12,
+    "word_count": 4,
+    "lego_position": "middle",
+    "target_text_roman": "xiǎng gěi wǒ kàn"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01B05",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "show me now",
+    "target_text": "现在给我看",
+    "phrase_role": "build",
+    "position": 13,
+    "word_count": 5,
+    "lego_position": "end",
+    "target_text_roman": "xiànzài gěi wǒ kàn"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01B06",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "show me this",
+    "target_text": "给我看这个",
+    "phrase_role": "build",
+    "position": 14,
+    "word_count": 5,
+    "lego_position": "start",
+    "target_text_roman": "gěi wǒ kàn zhège"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01U09",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "did you want to show me something?",
+    "target_text": "你想给我看点什么吗？",
+    "phrase_role": "use",
+    "position": 15,
+    "word_count": 9,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ xiǎng gěi wǒ kàn diǎn shénme ma?"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01U10",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "can you show me?",
+    "target_text": "你能给我看吗？",
+    "phrase_role": "use",
+    "position": 16,
+    "word_count": 6,
+    "lego_position": "middle",
+    "target_text_roman": "nǐ néng gěi wǒ kàn ma?"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01U11",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "he doesn't want to show me",
+    "target_text": "他不想给我看",
+    "phrase_role": "use",
+    "position": 17,
+    "word_count": 6,
+    "lego_position": "end",
+    "target_text_roman": "tā bù xiǎng gěi wǒ kàn"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_eng:S0032L01U12",
+    "course_code": "zho_for_eng",
+    "seed_number": 32,
+    "lego_index": 1,
+    "known_text": "I hope you can show me tomorrow",
+    "target_text": "我希望你明天能给我看",
+    "phrase_role": "use",
+    "position": 18,
+    "word_count": 10,
+    "lego_position": "end",
+    "target_text_roman": "wǒ xīwàng nǐ míngtiān néng gěi wǒ kàn"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0032L02",
+   "set": {
+    "known_text": "something",
+    "target_text": "点什么",
+    "components": [],
+    "is_new": false,
+    "target_text_roman": "diǎn shénme"
+   },
+   "expect": {
+    "known_text": "to look at",
+    "target_text": "看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02B02",
+   "expect": {
+    "known_text": "want to look",
+    "target_text": "想看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02B03",
+   "expect": {
+    "known_text": "show me",
+    "target_text": "给我看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U01",
+   "expect": {
+    "known_text": "I want to look at it",
+    "target_text": "我想看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U03",
+   "expect": {
+    "known_text": "she wants to show you something",
+    "target_text": "她想给你看点什么"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U04",
+   "expect": {
+    "known_text": "he doesn't want to show me",
+    "target_text": "他不想给我看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U06",
+   "expect": {
+    "known_text": "I looked at the answer yesterday",
+    "target_text": "我昨天看答案"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U08",
+   "expect": {
+    "known_text": "he wants to look at it now",
+    "target_text": "他现在想看"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U09",
+   "expect": {
+    "known_text": "she looks at this",
+    "target_text": "她看这个"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_eng:S0032L02U10",
+   "expect": {
+    "known_text": "did you want to show me something?",
+    "target_text": "你想给我看点什么吗？"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 36,
+   "set": {
+    "known_text": "we don't want to interrupt this story"
+   },
+   "expect": {
+    "known_text": "we don't want to interrupt the story",
+    "target_text": "我们不想打断这个故事"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0036L03U08",
+   "set": {
+    "known_text": "we don't want to interrupt this story"
+   },
+   "expect": {
+    "known_text": "we don't want to interrupt the story",
+    "target_text": "我们不想打断这个故事"
+   }
+  }
+ ]
+}
