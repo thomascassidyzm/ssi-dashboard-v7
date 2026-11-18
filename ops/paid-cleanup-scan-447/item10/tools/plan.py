@@ -51,9 +51,27 @@ def stem(w):
     return w.rstrip('e')
 
 
+KANJI = re.compile(r'[㐀-鿿]')
+
+
+def jstem(w):
+    """Japanese known side (no spaces): a verb/adjective LEGO is met inflected (話す/話したい/話して), so containment uses
+    the part up to the last kanji (K6). Pure-kana chunks drop one final okurigana (いる/いて) only when 3+ long."""
+    w = w.replace(' ', '')
+    m = list(KANJI.finditer(w))
+    if m and re.fullmatch(r'[ぁ-ゖ]*', w[m[-1].end():]) and m[-1].end() < len(w):
+        return w[:m[-1].end()]
+    if not m and len(w) >= 3 and w[-1] in 'うくすつぬぶむるぐいた':
+        return w[:-1]
+    return w
+
+
 def words_in(phrase, lego):
     """known-side containment: every word of the LEGO's known text appears in the phrase (K49: split/reordered is fine;
     K6: an inflection of the word counts — learn/learning, want/wants)"""
+    if SPACELESS.search(norm(lego)):
+        a, b = norm(lego).replace(' ', ''), norm(phrase).replace(' ', '')
+        return a in b or jstem(a) in b
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
     for w in [stem(x) for x in norm(lego).split()]:
@@ -188,7 +206,10 @@ def main():
         # --- checks on the LEGO itself
         chk = {}
         sk_after = d.get('seed_known') or seed_known_after.get(s['n']) or s['known']
-        miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+        if SPACELESS.search(norm(nk)):  # Japanese known: the gloss must be the seed's own chunk (inflection tolerated)
+            miss = [] if words_in(sk_after, nk) else [nk]
+        else:
+            miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
         chk['known_in_seed'] = not miss or miss
         chk['target_in_seed'] = has(s['target'], nt)
         chk['syllables'] = syl(nt, course)
