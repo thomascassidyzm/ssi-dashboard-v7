@@ -48,7 +48,7 @@
 // Dependency-free. The probe uses the pg Client class its host hands it (configure({ Client, probe })).
 "use strict";
 
-const GOVERNOR_VERSION = 1;
+const GOVERNOR_VERSION = 2;   // 2: partial-visibility = blind; measuredAt/refresh (#838 findings)
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
@@ -65,8 +65,11 @@ const RECORDER_DIR = process.env.DB_GOVERNOR_RECORDER_DIR || path.join(os.homedi
 const CACHE_FILE = path.join("/tmp", `db-load-governor-signal-${typeof process.getuid === "function" ? process.getuid() : "x"}.json`);
 
 // One read-only count. Every column comes back null for other logins' backends when the probe's login
-// lacks pg_read_all_stats — "visible" says so, and a blind probe counts as no signal (red).
-const PROBE_SQL = `select count(*) filter (where state is not null)::int as visible,
+// lacks pg_read_all_stats. ANY hidden backend makes the reading blind (#838: a login that sees only its own
+// role's backends would otherwise count the learners it cannot see as zero — a false green), and a blind
+// reading counts as no signal (red).
+const PROBE_SQL = `select count(*) filter (where state is null)::int as hidden,
+       count(*) filter (where state is not null)::int as visible,
        count(*) filter (where state = 'active' and usename = any($1::text[]))::int as learner_active,
        count(*) filter (where state = 'active' and usename = any($1::text[])
                           and wait_event_type is not null and wait_event_type not in ('Client', 'Activity'))::int as learner_waiting,
@@ -107,6 +110,9 @@ function reduceActivity(rows, { at = Date.now(), source = "rows" } = {}) {
   const waits = (a) => a.state === "active" && a.wait_event_type && a.wait_event_type !== "Client" && a.wait_event_type !== "Activity";
   const client = rows.filter((a) => !a.backend_type || a.backend_type === "client backend");
   const la = client.filter((a) => learner.has(a.usename) && a.state === "active");
+  // A sampler that could not see a backend's state is partly blind: never read that as calm (#838).
+  const hidden = client.filter((a) => a.state == null).length;
+  if (hidden) return { at, source, ok: false, why: `${source} blind to ${hidden} backend(s)` };
   return {
     at, source, ok: true,
     learnerActive: la.length,
@@ -135,7 +141,7 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
     next: 0, lastTick: 0, signal: null, done: 0, doneAtTick: 0,
     latFast: null, latSlow: null, learnerBase: null, unbounded: 0,
     heldMs: 0, heldWindowStart: now(), lastHeldLog: 0, lastHeldEvent: 0, lastLevelLog: 0,
-    queue: [], ticking: null, probeClient: null, probeBlindSaid: false,
+    queue: [], ticking: null, probeClient: null, probeBlindSaid: false, measuredAt: 0,
   };
 
   async function readSignal() {
@@ -153,8 +159,8 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
       }
       const res = await g.probeClient.query(PROBE_SQL, [LEARNER_USERS]);
       const row = res.rows[0];
-      if (!row.visible) {
-        if (!g.probeBlindSaid) { g.probeBlindSaid = true; log(`db-load-governor[${g.writer}]: probe login cannot see other backends (no pg_read_all_stats) and no fresh freeze-recorder sample — running SLOW (red) until one appears`); }
+      if (row.hidden > 0 || !row.visible) {
+        if (!g.probeBlindSaid) { g.probeBlindSaid = true; log(`db-load-governor[${g.writer}]: probe login cannot see every backend (${row.hidden} hidden; no pg_read_all_stats) and no fresh freeze-recorder sample — running SLOW (red) until one appears`); }
         return { at: t, source: "probe", ok: false, why: "probe blind" };
       }
       const sig = { at: t, source: "probe", ok: true, learnerActive: row.learner_active, learnerWaiting: row.learner_waiting, allWaiting: row.all_waiting, learnerMaxSecs: Number(row.learner_max_secs) || 0 };
@@ -183,6 +189,7 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
     const secs = Math.max(0.001, (t - (g.lastTick || t - TICK_MS)) / 1000);
     const used = (g.done - g.doneAtTick) / secs;               // statements/s the writer actually ran last tick
     g.doneAtTick = g.done; g.lastTick = t; g.signal = s;
+    if (s && s.ok) g.measuredAt = t;
     const floor = 1000 / FLOOR_GAP_MS;
     if (level === "green") {
       if (s.ok) g.learnerBase = g.learnerBase == null ? s.learnerActive : 0.9 * g.learnerBase + 0.1 * s.learnerActive;
@@ -266,14 +273,18 @@ function createGovernor({ writer = "writer", Client = null, probe = null, now = 
     try { const out = await fn(); release(); return out; } catch (e) { release(e); throw e; }
   }
 
+  /** True only while the governor holds a REAL load reading under maxAgeMs old (#838: never "governed" on faith). */
+  const measured = (maxAgeMs = 30000) => g.measuredAt > 0 && now() - g.measuredAt < maxAgeMs;
+  /** Take a reading now if one is due (for idle processes whose status is read without traffic). */
+  const refresh = () => maybeTick() || Promise.resolve();
   function status() {
-    return { writer: g.writer, level: g.level, rate: fmtRate(g.rate), inflight: g.inflight, inflightMax: Number.isFinite(g.inflightMax) ? g.inflightMax : "unlimited",
+    return { writer: g.writer, level: g.level, measured: measured(), measuredAt: g.measuredAt ? new Date(g.measuredAt).toISOString() : null, rate: fmtRate(g.rate), inflight: g.inflight, inflightMax: Number.isFinite(g.inflightMax) ? g.inflightMax : "unlimited",
       signal: g.signal, ownLatencyMs: g.latFast == null ? null : Math.round(g.latFast), baselineMs: g.latSlow == null ? null : Math.round(g.latSlow) };
   }
 
   async function close() { try { g.probeClient && await g.probeClient.end(); } catch {} g.probeClient = null; }
 
-  return { acquire, run, status, close, configure(o) { Object.assign(g, o || {}); }, _state: g, _tick: tick, _classify: classify };
+  return { acquire, run, status, close, measured, refresh, configure(o) { Object.assign(g, o || {}); }, _state: g, _tick: tick, _classify: classify };
 }
 
 const PROBE = Symbol.for("cs.dbLoadGovernor.probe");

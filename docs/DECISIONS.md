@@ -1,3 +1,13 @@
+## 2026-11-18 — Load gate: cold verifier #838 findings fixed before promotion (cs job #835)
+
+Four defects, fixed before any promotion to main:
+- **The probe deadlocked.** `db-load-gate.cjs` read its patched-once flag off `Client.prototype`, so every client looked governed, including the governor's own probe, which re-entered `acquire()`. Governed connections now carry their own instance symbol, and the probe is never one of them.
+- **Partial visibility read as green.** A reading that cannot see every backend's state (probe or recorder) used to count the hidden learners as zero. It is now blind, which means red.
+- **`/health` claimed governed too early.** It reported `governed: true` on install. `governed` is now true only while the gate holds a real load reading under 30 s old. The gate takes a reading every 10 s even with no traffic: one recorder-file read, or the probe's one count.
+- **Bundled fetch could bypass the gate.** That was the worker side (command-surface): a declared live writer loading `@supabase/supabase-js` / `@supabase/postgrest-js` is now refused (`UNGOVERNED_DRIVER`), because a bundled fetch can bypass the gate. This affects `tools/course-optimization/regenerate-debut-practice.cjs`, which is a declared live writer on supabase-js. Its next live run must move to pg or a changeset.
+
+Governor v2, vendored.
+
 ## 2026-11-18 — Live writes are changesets: compute on the copy, apply only the difference (cs job #835)
 
 **Tom, 2026-11-18:** "There should be no need to write to the live database in a heavy way. We want a single db still but we need a clever way to update it." Design: https://watson-1.tail4968cb.ts.net/d/973c9f34

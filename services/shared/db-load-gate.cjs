@@ -33,6 +33,10 @@ const path = require('path')
 const os = require('os')
 
 const MARK = Symbol.for('popty.dbLoadGate')
+// The INSTANCE mark: a live, governed connection. Never read MARK off a client: MARK sits on Client.prototype
+// (the patched-once flag), so every client inherited it and the governor's own probe re-entered acquire() —
+// a deadlock (cold verifier #838).
+const GOVERNED = Symbol.for('popty.dbLoadGate.governedClient')
 const isLiveHost = (h) => /(^|\.)supabase\.(co|com)$/i.test(String(h || '').trim())
 const isLiveRestUrl = (u) => /^https:\/\/[a-z0-9-]+\.supabase\.co\/rest\/v1\//i.test(String(u || ''))
 
@@ -75,7 +79,7 @@ function patchPg(gm, gov, writer) {
   proto.connect = function (...args) {
     try {
       if (isLiveHost(this.host) && !this[gm.PROBE]) {
-        this[MARK] = true
+        this[GOVERNED] = true
         const p = this.connectionParameters
         if (p) p.application_name = gm.governedAppName(writer, p.application_name)
       }
@@ -84,7 +88,7 @@ function patchPg(gm, gov, writer) {
   }
   const origQuery = proto.query
   proto.query = function (...args) {
-    if (!this[MARK]) return origQuery.apply(this, args)
+    if (!Object.prototype.hasOwnProperty.call(this, GOVERNED) || this[gm.PROBE]) return origQuery.apply(this, args)
     const last = args[args.length - 1]
     if (args[0] && typeof args[0].submit === 'function') {
       const sub = args[0]
@@ -137,6 +141,9 @@ function install(writer = path.basename(process.argv[1] || 'popty'), { startRate
   if (Client && probe) gov.configure({ Client, probe })
   patchFetch(gov)
   state = { gov, writer, from: f, version: gm.GOVERNOR_VERSION }
+  // Keep a real reading on hand even with no traffic, so /health's "governed" is earned, not assumed (#838).
+  // One recorder-file read every 10 s (or, with no fresh sample, the probe's one light count).
+  if (typeof gov.refresh === 'function') { gov.refresh().catch(() => {}); setInterval(() => { gov.refresh().catch(() => {}) }, 10000).unref() }
   globalThis[MARK] = true
   try { process.stderr.write(`db-load-gate: ${writer} governed (governor v${gm.GOVERNOR_VERSION} from ${f}; probe ${probe ? 'owner login' : 'none — freeze recorder only'})\n`) } catch {}
   return gov
@@ -144,8 +151,12 @@ function install(writer = path.basename(process.argv[1] || 'popty'), { startRate
 
 /** For /health: is this process governed, and how is the governor reading the database right now. */
 function status() {
-  if (!state) return { governed: false }
-  return { governed: true, governor: `v${state.version}`, ...state.gov.status() }
+  if (!state) return { installed: false, governed: false }
+  const st = state.gov.status()
+  // governed = installed AND holding a real load reading < 30 s old. An installed gate with no reading is
+  // running slow (red) and says so, rather than claiming to see the database (#838).
+  const measured = typeof state.gov.measured === 'function' ? state.gov.measured() : false
+  return { installed: true, governed: measured, governor: `v${state.version}`, ...st, ...(measured ? {} : { why: 'no real load reading yet (or none in 30 s): running slow until one arrives' }) }
 }
 
 /** Throws when this process reaches for the live DB without the gate installed (call where a client is built). */
