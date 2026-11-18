@@ -1,0 +1,38 @@
+{
+ "seed": 315,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "insert": [
+    [
+     "build",
+     "એ ગાડી ખરીદી ન શક્યો",
+     "he couldn't afford the car",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "કદાચ એ એ ગાડી છે જે એ ઈચ્છતો હતો",
+     "it might be the car that he wanted",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "તો કદાચ એ એ ગાડી છે જે એ ઈચ્છતો હતો",
+     "so it might be the car that he wanted",
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

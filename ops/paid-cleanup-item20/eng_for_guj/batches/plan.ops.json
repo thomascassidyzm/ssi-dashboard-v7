@@ -466,6 +466,160 @@
    }
   },
   {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0315L01B03",
+    "seed_number": 315,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "એ ગાડી ખરીદી ન શક્યો",
+    "target_text": "he couldn't afford the car",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0315L02B04",
+    "seed_number": 315,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "તો કદાચ એ એ ગાડી છે જે એ ઈચ્છતો હતો",
+    "target_text": "so it might be the car that he wanted",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 37,
+    "lego_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0331L03B04",
+    "seed_number": 331,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "હું બધા જવાબ જાણવા માગું છું",
+    "target_text": "I want to find out all the answers",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 34,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0335L02B04",
+    "seed_number": 335,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "એ આજે કેટલાક ઉપયોગી વિચારો ઉમેરી શકે",
+    "target_text": "she could add some valuable ideas today",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 39,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0409L02B03",
+    "seed_number": 409,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "ફર્ક નથી આપણે હવે ગમે તે કરીએ",
+    "target_text": "it doesn't matter what we do now",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 32,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0413L03B03",
+    "seed_number": 413,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "એ કિનારાની ઘણી નજીક છે",
+    "target_text": "it's too close to the edge",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_guj:S0420L02B04",
+    "seed_number": 420,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "મેં પૂછ્યું કે તેની ઉંમર કેટલી છે",
+    "target_text": "I asked how old he is",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 21,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
    "op": "phrase.update",
    "phrase_id": "eng_for_guj:S0001L02B01",
    "expect": {
@@ -9357,6 +9511,1536 @@
     "target_text": "can you tell me the three most important facts?",
     "decomposition": null,
     "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0312L01B01",
+   "expect": {
+    "known_text": "બીજો ઓરડો",
+    "target_text": "the other room"
+   },
+   "set": {
+    "known_text": "કદાચ એ બીજો ઓરડો છે",
+    "target_text": "it might be the other room",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0313L01B01",
+   "expect": {
+    "known_text": "બધી પાંચ રમતો",
+    "target_text": "all five games"
+   },
+   "set": {
+    "known_text": "એણે કહ્યું કે એ અહીં બધી પાંચ રમતો જોઈ ન શક્યો",
+    "target_text": "he said that he couldn't watch all five games here",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0314L01B01",
+   "expect": {
+    "known_text": "એ ટેબલ પર મૂકવા",
+    "target_text": "put it on the table"
+   },
+   "set": {
+    "known_text": "એ આજે એ ટેબલ પર મૂકી શકે",
+    "target_text": "she could put it on the table today",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0315L02B01",
+   "expect": {
+    "known_text": "એ ગાડી જે એ ઈચ્છતો હતો",
+    "target_text": "the car that he wanted"
+   },
+   "set": {
+    "known_text": "કદાચ એ એ ગાડી છે જે એ ઈચ્છતો હતો",
+    "target_text": "it might be the car that he wanted",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0317L01B01",
+   "expect": {
+    "known_text": "જો એ ઈચ્છતી હોય તો",
+    "target_text": "if she wanted to"
+   },
+   "set": {
+    "known_text": "હા, જો એ ઈચ્છતી હોય તો એ કરી શકે",
+    "target_text": "yes she could if she wanted to",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0319L02B01",
+   "expect": {
+    "known_text": "અલગ દેશમાં જવા",
+    "target_text": "move to a different country"
+   },
+   "set": {
+    "known_text": "એને હવે અલગ દેશમાં જવું પડશે",
+    "target_text": "she needs to move to a different country now",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0320L02B01",
+   "expect": {
+    "known_text": "બીજું ટેલિવિઝન ખરીદવા",
+    "target_text": "buy another television"
+   },
+   "set": {
+    "known_text": "બીજું ટેલિવિઝન ખરીદવું",
+    "target_text": "to buy another television",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0323L01B01",
+   "expect": {
+    "known_text": "શાળા સુધી ચાલવા",
+    "target_text": "walk to school"
+   },
+   "set": {
+    "known_text": "મારે શાળા સુધી ચાલવું જરૂરી નથી",
+    "target_text": "I don't need to walk to school",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0324L01B01",
+   "expect": {
+    "known_text": "એ વિદ્યાર્થી",
+    "target_text": "that student"
+   },
+   "set": {
+    "known_text": "કદાચ એ એ વિદ્યાર્થી છે",
+    "target_text": "it might be that student",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0324L02B01",
+   "expect": {
+    "known_text": "એના બે હાથ ઊંચા",
+    "target_text": "both of her hands up"
+   },
+   "set": {
+    "known_text": "તો એ વિદ્યાર્થીના બે હાથ ઊંચા છે",
+    "target_text": "so that student has both of her hands up",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0325L01B01",
+   "expect": {
+    "known_text": "દસ શક્ય સમસ્યાઓ",
+    "target_text": "ten possible problems"
+   },
+   "set": {
+    "known_text": "એને હવે દસ શક્ય સમસ્યાઓ ધ્યાનમાં લેવાની જરૂર છે",
+    "target_text": "she needs to consider ten possible problems now",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0327L02B01",
+   "expect": {
+    "known_text": "બીજો રસ્તો",
+    "target_text": "another way"
+   },
+   "set": {
+    "known_text": "હવે બીજો રસ્તો",
+    "target_text": "another way now",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0329L01B01",
+   "expect": {
+    "known_text": "એ મહત્ત્વનું છે",
+    "target_text": "it's important"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એ મહત્ત્વનું છે",
+    "target_text": "I think that it's important",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0330L01B01",
+   "expect": {
+    "known_text": "એ ઘણું મહત્ત્વનું છે",
+    "target_text": "it's very important"
+   },
+   "set": {
+    "known_text": "ના, એ ઘણું મહત્ત્વનું છે",
+    "target_text": "no it's very important",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0331L03B01",
+   "expect": {
+    "known_text": "બધા જવાબ",
+    "target_text": "all the answers"
+   },
+   "set": {
+    "known_text": "શું તમે મને બધા જવાબ કહી શકો?",
+    "target_text": "can you tell me all the answers?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0332L02B01",
+   "expect": {
+    "known_text": "નવું જીવન બનાવવા",
+    "target_text": "build a new life"
+   },
+   "set": {
+    "known_text": "એ ટૂંક સમયમાં નવું જીવન બનાવી શકે",
+    "target_text": "he can build a new life soon",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0332L03B01",
+   "expect": {
+    "known_text": "પોતાની બહેન માટે",
+    "target_text": "for his sister"
+   },
+   "set": {
+    "known_text": "એ ટૂંક સમયમાં પોતાની બહેન માટે નવું જીવન બનાવી શકે",
+    "target_text": "he can build a new life for his sister soon",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0334L01B01",
+   "expect": {
+    "known_text": "તમને દેવા",
+    "target_text": "let you"
+   },
+   "set": {
+    "known_text": "એ તમને જવા દઈ શકે",
+    "target_text": "he can let you go",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0334L02B01",
+   "expect": {
+    "known_text": "બિલ્લી પકડવા",
+    "target_text": "hold the kitten"
+   },
+   "set": {
+    "known_text": "એણે કહ્યું કે એ તમને અહીં બિલ્લી પકડવા દઈ શકે",
+    "target_text": "he said that he can let you hold the kitten here",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0335L02B01",
+   "expect": {
+    "known_text": "કેટલાક ઉપયોગી વિચારો",
+    "target_text": "some valuable ideas"
+   },
+   "set": {
+    "known_text": "હું કેટલાક ઉપયોગી વિચારો માગું છું",
+    "target_text": "I want some valuable ideas",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0341L01B01",
+   "expect": {
+    "known_text": "થોડા દિવસ પહેલાં",
+    "target_text": "a few days ago"
+   },
+   "set": {
+    "known_text": "એ થોડા દિવસ પહેલાં ખૂબ વ્યસ્ત હતી",
+    "target_text": "she was too busy a few days ago",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0342L01B01",
+   "expect": {
+    "known_text": "જેણે કંઈ કહ્યું",
+    "target_text": "who said something"
+   },
+   "set": {
+    "known_text": "મને કોઈ મળ્યું જેણે કંઈ નવું કહ્યું",
+    "target_text": "I met someone who said something new",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0344L01B01",
+   "expect": {
+    "known_text": "એ તમને મદદ કરવા ખુશ છે",
+    "target_text": "he's happy to help you"
+   },
+   "set": {
+    "known_text": "મને ખાતરી છે, એ તમને મદદ કરવા ખુશ છે",
+    "target_text": "I'm sure he's happy to help you",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0345L01B01",
+   "expect": {
+    "known_text": "એ હજી નીકળવા તૈયાર નથી",
+    "target_text": "he's not ready to leave yet"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એ હજી નીકળવા તૈયાર નથી",
+    "target_text": "I think he's not ready to leave yet",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0346L01B01",
+   "expect": {
+    "known_text": "હું ઈચ્છતો હતો કે એ જાણે કે",
+    "target_text": "I wanted her to know that"
+   },
+   "set": {
+    "known_text": "હું ઈચ્છતો હતો કે એ જાણે કે એ મહત્ત્વનું છે",
+    "target_text": "I wanted her to know that it's important",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0346L02B01",
+   "expect": {
+    "known_text": "મને એ પુસ્તક ગમ્યું",
+    "target_text": "I liked her book"
+   },
+   "set": {
+    "known_text": "મેં કહ્યું કે મને એ પુસ્તક ગમ્યું",
+    "target_text": "I said that I liked her book",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0347L01B01",
+   "expect": {
+    "known_text": "એ જાણવા ઈચ્છતો હતો કે",
+    "target_text": "he wanted to know"
+   },
+   "set": {
+    "known_text": "એ જાણવા ઈચ્છતો હતો કે તમે કોની વાત કરો છો",
+    "target_text": "he wanted to know who you mean",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0347L02B01",
+   "expect": {
+    "known_text": "એક અઠવાડિયા પહેલાં",
+    "target_text": "a week ago"
+   },
+   "set": {
+    "known_text": "એ એક અઠવાડિયા પહેલાં ખૂબ વ્યસ્ત હતી",
+    "target_text": "she was too busy a week ago",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0347L03B01",
+   "expect": {
+    "known_text": "શું થઈ રહ્યું હતું?",
+    "target_text": "what was happening?"
+   },
+   "set": {
+    "known_text": "હું જાણતો નથી કે શું થઈ રહ્યું હતું",
+    "target_text": "I don't know what was happening",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0348L01B01",
+   "expect": {
+    "known_text": "ઈચ્છતી ન હતી",
+    "target_text": "she didn't want"
+   },
+   "set": {
+    "known_text": "એ જાણવા ઈચ્છતી ન હતી કે તમે કોની વાત કરો છો",
+    "target_text": "she didn't want to know who you mean",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0349L01B01",
+   "expect": {
+    "known_text": "શું એ બહાર જવા ઈચ્છતો હતો?",
+    "target_text": "did he want to go out?"
+   },
+   "set": {
+    "known_text": "શું એ અમારી સાથે બહાર જવા ઈચ્છતો હતો?",
+    "target_text": "did he want to go out with us?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0349L02B01",
+   "expect": {
+    "known_text": "શુક્રવારની રાત્રે",
+    "target_text": "on Friday night"
+   },
+   "set": {
+    "known_text": "હું શુક્રવારની રાત્રે તૈયાર થઈ જઈશ",
+    "target_text": "I'll be ready on Friday night",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0350L01B01",
+   "expect": {
+    "known_text": "મળવા ઈચ્છતો હતો",
+    "target_text": "he wanted to see"
+   },
+   "set": {
+    "known_text": "એ તમારા મિત્રને મળવા ઈચ્છતો હતો",
+    "target_text": "he wanted to see your friend",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0350L02B01",
+   "expect": {
+    "known_text": "એ જૂના મિત્રોને",
+    "target_text": "some old friends"
+   },
+   "set": {
+    "known_text": "હું આજે જૂના મિત્રોને મળવા માગું છું",
+    "target_text": "I want to see some old friends today",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0351L01B01",
+   "expect": {
+    "known_text": "ઈચ્છતો ન હતો",
+    "target_text": "he didn't want"
+   },
+   "set": {
+    "known_text": "એ આજે મને એકલો છોડવા ઈચ્છતો ન હતો",
+    "target_text": "he didn't want to leave me on my own today",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0351L02B01",
+   "expect": {
+    "known_text": "એ મને એકલો છોડવા",
+    "target_text": "to leave me on my own"
+   },
+   "set": {
+    "known_text": "શું એ મને એકલો છોડવા ઈચ્છતો હતો?",
+    "target_text": "did he want to leave me on my own?",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0352L01B01",
+   "expect": {
+    "known_text": "એ ન કરી શક્યો હોત",
+    "target_text": "he wouldn't be able to"
+   },
+   "set": {
+    "known_text": "એ આજે ન કરી શક્યો હોત",
+    "target_text": "he wouldn't be able to today",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0352L02B01",
+   "expect": {
+    "known_text": "ભલે એ ઈચ્છ્યું હોત",
+    "target_text": "even if he wanted to"
+   },
+   "set": {
+    "known_text": "ભલે એ મદદ કરવા ઈચ્છ્યું હોત",
+    "target_text": "even if he wanted to help",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0353L01B01",
+   "expect": {
+    "known_text": "એને દોડવું પડ્યું",
+    "target_text": "she needed to run"
+   },
+   "set": {
+    "known_text": "એને અહીં દોડવું પડ્યું",
+    "target_text": "she needed to run here",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0353L02B01",
+   "expect": {
+    "known_text": "મેદાનની ફરતે",
+    "target_text": "around the field"
+   },
+   "set": {
+    "known_text": "હવે મેદાનની ફરતે",
+    "target_text": "around the field now",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0354L01B01",
+   "expect": {
+    "known_text": "એને જરૂર ન હતી",
+    "target_text": "he didn't need to"
+   },
+   "set": {
+    "known_text": "એને નીકળવાની જરૂર ન હતી",
+    "target_text": "he didn't need to leave",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0354L02B01",
+   "expect": {
+    "known_text": "ગુસ્સો બતાવવાની",
+    "target_text": "appear angry"
+   },
+   "set": {
+    "known_text": "ગુસ્સો બતાવવાની જરૂર ન હતી",
+    "target_text": "didn't need to appear angry",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0355L01B01",
+   "expect": {
+    "known_text": "શું એને જરૂર હતી?",
+    "target_text": "did she need to?"
+   },
+   "set": {
+    "known_text": "શું એને એની સાથે વાત કરવાની જરૂર હતી?",
+    "target_text": "did she need to talk to him?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0355L02B01",
+   "expect": {
+    "known_text": "તમે ઓળખો છો એ સ્ત્રી સાથે વાત કરવાની",
+    "target_text": "talk to that woman you know"
+   },
+   "set": {
+    "known_text": "શું તમારે તમે ઓળખો છો એ સ્ત્રી સાથે વાત કરવાની જરૂર હતી?",
+    "target_text": "did you need to talk to that woman you know?",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0356L01B01",
+   "expect": {
+    "known_text": "એમની પાસે કંઈ મહત્ત્વનું હતું",
+    "target_text": "they had something important"
+   },
+   "set": {
+    "known_text": "આજે એમની પાસે ચર્ચા કરવા માટે કંઈ મહત્ત્વનું હતું",
+    "target_text": "they had something important to discuss today",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0356L02B01",
+   "expect": {
+    "known_text": "ચર્ચા કરવા માટે",
+    "target_text": "to discuss"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એમની પાસે ચર્ચા કરવા માટે કંઈ મહત્ત્વનું હતું",
+    "target_text": "I think they had something important to discuss",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0357L01B01",
+   "expect": {
+    "known_text": "એ ફક્ત ઈચ્છતી હતી",
+    "target_text": "she just wanted"
+   },
+   "set": {
+    "known_text": "એ ફક્ત મદદ કરવા ઈચ્છતી હતી",
+    "target_text": "she just wanted to help",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0358L01B01",
+   "expect": {
+    "known_text": "તમારા મિત્રે કહ્યું કે",
+    "target_text": "your friend said that"
+   },
+   "set": {
+    "known_text": "તમારા મિત્રે કહ્યું કે એ મહત્ત્વનું છે",
+    "target_text": "your friend said that it's important",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0358L02B01",
+   "expect": {
+    "known_text": "એ ટોચ સુધી પહોંચી ન શકી",
+    "target_text": "she couldn't reach the top"
+   },
+   "set": {
+    "known_text": "એ આજે ટોચ સુધી પહોંચી ન શકી",
+    "target_text": "she couldn't reach the top today",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0359L01B01",
+   "expect": {
+    "known_text": "એ ડાબી તરફ વળી શક્યો",
+    "target_text": "he could turn left"
+   },
+   "set": {
+    "known_text": "એ આજે ડાબી તરફ વળી શક્યો",
+    "target_text": "he could turn left today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0360L01B01",
+   "expect": {
+    "known_text": "શું તમારા મિત્રે કહ્યું?",
+    "target_text": "did your friend say?"
+   },
+   "set": {
+    "known_text": "શું તમારા મિત્રે એ કહ્યું?",
+    "target_text": "did your friend say that?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0360L02B01",
+   "expect": {
+    "known_text": "બીજું કંઈ",
+    "target_text": "anything else"
+   },
+   "set": {
+    "known_text": "તો શું તમારા મિત્રે બીજું કંઈ કહ્યું?",
+    "target_text": "so did your friend say anything else?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0361L01B01",
+   "expect": {
+    "known_text": "એ શાંત હતો",
+    "target_text": "he was quiet"
+   },
+   "set": {
+    "known_text": "એ આજે શાંત હતો",
+    "target_text": "he was quiet today",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0362L01B01",
+   "expect": {
+    "known_text": "એ ઘણો શાંત હતો",
+    "target_text": "he was rather quiet"
+   },
+   "set": {
+    "known_text": "એ આજે ઘણો શાંત હતો",
+    "target_text": "he was rather quiet today",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0362L02B01",
+   "expect": {
+    "known_text": "તમે ગયા પછી",
+    "target_text": "after you left"
+   },
+   "set": {
+    "known_text": "તમે ગયા પછી એ ખૂબ વ્યસ્ત હતી",
+    "target_text": "she was too busy after you left",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0363L01B01",
+   "expect": {
+    "known_text": "એને મન થયું",
+    "target_text": "he felt like"
+   },
+   "set": {
+    "known_text": "એને હવે બોલવાનું મન થયું",
+    "target_text": "he felt like talking now",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0363L02B01",
+   "expect": {
+    "known_text": "ઘણું બોલવાનું",
+    "target_text": "talking a lot"
+   },
+   "set": {
+    "known_text": "ઘણું બોલવાનું મન થયું",
+    "target_text": "felt like talking a lot",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0364L01B01",
+   "expect": {
+    "known_text": "મેં સાંભળ્યું કે",
+    "target_text": "I heard that"
+   },
+   "set": {
+    "known_text": "મેં સાંભળ્યું કે એ અહીં હતો",
+    "target_text": "I heard that he was here",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0364L02B01",
+   "expect": {
+    "known_text": "એને એ જગ્યા ગમી ન હતી",
+    "target_text": "he didn't like that place"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એને એ જગ્યા ગમી ન હતી",
+    "target_text": "I think he didn't like that place",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0365L01B01",
+   "expect": {
+    "known_text": "એ મેં ન સાંભળ્યું",
+    "target_text": "I didn't hear"
+   },
+   "set": {
+    "known_text": "મેં ન સાંભળ્યું કે એ અહીં હતો",
+    "target_text": "I didn't hear that he was here",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0365L02B01",
+   "expect": {
+    "known_text": "એણે એને શું કહ્યું",
+    "target_text": "what she said to him"
+   },
+   "set": {
+    "known_text": "એણે આજે એને શું કહ્યું",
+    "target_text": "what she said to him today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0366L01B01",
+   "expect": {
+    "known_text": "શું તમે સાંભળ્યું કે?",
+    "target_text": "did you hear?"
+   },
+   "set": {
+    "known_text": "અને શું તમે સાંભળ્યું કે એ જે કહ્યું?",
+    "target_text": "and did you hear what he said?",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0366L02B01",
+   "expect": {
+    "known_text": "એ શું ઉગાડવા ઈચ્છતો હતો",
+    "target_text": "what he wanted to grow"
+   },
+   "set": {
+    "known_text": "એ શું ઉગાડવા ઈચ્છતો હતો એ હું જાણતો નથી",
+    "target_text": "I don't know what he wanted to grow",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0367L01B01",
+   "expect": {
+    "known_text": "કોઈએ મને કહ્યું નહીં",
+    "target_text": "nobody told me"
+   },
+   "set": {
+    "known_text": "આજે કોઈએ મને કહ્યું નહીં",
+    "target_text": "nobody told me today",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0368L01B01",
+   "expect": {
+    "known_text": "એ ટામેટાં ઉગાડવા ઈચ્છતો હતો",
+    "target_text": "he wanted to grow tomatoes"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એ ટામેટાં ઉગાડવા ઈચ્છતો હતો",
+    "target_text": "I think he wanted to grow tomatoes",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0369L01B01",
+   "expect": {
+    "known_text": "મેં ઘણા ઘોડા જોયા",
+    "target_text": "I saw several horses"
+   },
+   "set": {
+    "known_text": "મને લાગે છે કે મેં ઘણા ઘોડા જોયા",
+    "target_text": "I think I saw several horses",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0369L02B01",
+   "expect": {
+    "known_text": "રસ્તા પર",
+    "target_text": "on the road"
+   },
+   "set": {
+    "known_text": "મેં આજે રસ્તા પર ઘણા ઘોડા જોયા",
+    "target_text": "I saw several horses on the road today",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0370L01B01",
+   "expect": {
+    "known_text": "મેં એકેય ન જોયો",
+    "target_text": "I didn't see anyone"
+   },
+   "set": {
+    "known_text": "મેં ઑફિસમાં એકેય ન જોયો",
+    "target_text": "I didn't see anyone in the office",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0370L02B01",
+   "expect": {
+    "known_text": "મારા ઓળખીતો",
+    "target_text": "that I knew"
+   },
+   "set": {
+    "known_text": "મેં આજે મારા ઓળખીતો એકેય ન જોયો",
+    "target_text": "I didn't see anyone that I knew today",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0371L01B01",
+   "expect": {
+    "known_text": "હું ફિલ્મ જોવા ગયો",
+    "target_text": "I went to see a film"
+   },
+   "set": {
+    "known_text": "મને લાગે છે કે હું ફિલ્મ જોવા ગયો",
+    "target_text": "I think I went to see a film",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0371L02B01",
+   "expect": {
+    "known_text": "બુધવારે",
+    "target_text": "on Wednesday"
+   },
+   "set": {
+    "known_text": "હું બુધવારે તૈયાર થઈ જઈશ",
+    "target_text": "I'll be ready on Wednesday",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0372L01B01",
+   "expect": {
+    "known_text": "શું તમે જોયું કે?",
+    "target_text": "did you see?"
+   },
+   "set": {
+    "known_text": "અને શું તમે જોયું કે એ જે કહ્યું?",
+    "target_text": "and did you see what he said?",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0372L02B01",
+   "expect": {
+    "known_text": "એ શું બનાવવાની કોશિશ કરી રહી હતી",
+    "target_text": "what she was trying to create"
+   },
+   "set": {
+    "known_text": "એ શું બનાવવાની કોશિશ કરી રહી હતી એ હું જાણતો નથી",
+    "target_text": "I don't know what she was trying to create",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0373L01B01",
+   "expect": {
+    "known_text": "એ સુંદર હતું",
+    "target_text": "it was beautiful"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે એ સુંદર હતું",
+    "target_text": "I think it was beautiful",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0374L01B01",
+   "expect": {
+    "known_text": "મને લાગ્યું",
+    "target_text": "I thought"
+   },
+   "set": {
+    "known_text": "મને લાગ્યું એ ઘણું સારું હતું",
+    "target_text": "I thought it was very good",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0374L02B01",
+   "expect": {
+    "known_text": "કે એ ઘણું સુંદર હતું",
+    "target_text": "it was very beautiful"
+   },
+   "set": {
+    "known_text": "મને લાગે છે કે એ ઘણું સુંદર હતું",
+    "target_text": "I think it was very beautiful",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0375L01B01",
+   "expect": {
+    "known_text": "મને ખ્યાલ ન હતો કે",
+    "target_text": "I didn't know"
+   },
+   "set": {
+    "known_text": "મને ખ્યાલ ન હતો કે એ અહીં હતો",
+    "target_text": "I didn't know that he was here",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0375L02B01",
+   "expect": {
+    "known_text": "એ શું કરી રહી હતી",
+    "target_text": "what she was doing"
+   },
+   "set": {
+    "known_text": "એ શું કરી રહી હતી એ હું જાણતો નથી",
+    "target_text": "I don't know what she was doing",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0376L01B01",
+   "expect": {
+    "known_text": "હું ક્યાંય ન ગયો",
+    "target_text": "I didn't go anywhere"
+   },
+   "set": {
+    "known_text": "હું આજે ક્યાંય ન ગયો",
+    "target_text": "I didn't go anywhere today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0377L01B01",
+   "expect": {
+    "known_text": "શું તમે ક્યાંય ગયા?",
+    "target_text": "did you go anywhere?"
+   },
+   "set": {
+    "known_text": "તો શું તમે ક્યાંય ગયા?",
+    "target_text": "so did you go anywhere?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0377L02B01",
+   "expect": {
+    "known_text": "દુનિયામાં",
+    "target_text": "in the world"
+   },
+   "set": {
+    "known_text": "હું દુનિયામાં ક્યાંય ન ગયો",
+    "target_text": "I didn't go anywhere in the world",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0377L03B01",
+   "expect": {
+    "known_text": "ગયા વર્ષે",
+    "target_text": "last year"
+   },
+   "set": {
+    "known_text": "એ ગયા વર્ષે ખૂબ વ્યસ્ત હતી",
+    "target_text": "she was too busy last year",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0378L01B01",
+   "expect": {
+    "known_text": "મારી પાસે પૂરતા પૈસા ન હતા",
+    "target_text": "I didn't have enough money"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે મારી પાસે પૂરતા પૈસા ન હતા",
+    "target_text": "I think I didn't have enough money",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0378L02B01",
+   "expect": {
+    "known_text": "રજા માટે",
+    "target_text": "for holidays"
+   },
+   "set": {
+    "known_text": "મારી પાસે રજા માટે પૂરતો સમય નથી",
+    "target_text": "I don't have enough time for holidays",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0379L01B01",
+   "expect": {
+    "known_text": "હું નસીબદાર હતો કે",
+    "target_text": "I was lucky enough"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે હું નસીબદાર હતો કે",
+    "target_text": "I think I was lucky enough",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0379L02B01",
+   "expect": {
+    "known_text": "આફ્રિકા ફરવા ગયો",
+    "target_text": "to travel to Africa"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે હું નસીબદાર હતો કે આફ્રિકા ફરવા ગયો",
+    "target_text": "I think I was lucky enough to travel to Africa",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0380L01B01",
+   "expect": {
+    "known_text": "મેં પૂછ્યું કે",
+    "target_text": "I asked"
+   },
+   "set": {
+    "known_text": "મેં પૂછ્યું કે એણે એને શું કહ્યું",
+    "target_text": "I asked what she said to him",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0380L02B01",
+   "expect": {
+    "known_text": "એ શું સામેલ કરવા ઇચ્છતી હતી",
+    "target_text": "what she wanted to include"
+   },
+   "set": {
+    "known_text": "એ શું સામેલ કરવા ઇચ્છતી હતી એ હું જાણતો નથી",
+    "target_text": "I don't know what she wanted to include",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0387L02B01",
+   "expect": {
+    "known_text": "એ સાચી હતી",
+    "target_text": "she was right"
+   },
+   "set": {
+    "known_text": "મને લાગે છે કે એ સાચી હતી",
+    "target_text": "I think she was right",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0402L03B01",
+   "expect": {
+    "known_text": "ખોરાક માટે",
+    "target_text": "for food"
+   },
+   "set": {
+    "known_text": "હું ખોરાક માટે ક્યાંક ઊભા રહેવા માગું છું",
+    "target_text": "I want to stop somewhere for food",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0409L02B01",
+   "expect": {
+    "known_text": "આપણે ગમે તે કરીએ",
+    "target_text": "what we do"
+   },
+   "set": {
+    "known_text": "હું માનું છું કે ફર્ક નથી આપણે ગમે તે કરીએ",
+    "target_text": "I think it doesn't matter what we do",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0411L03B01",
+   "expect": {
+    "known_text": "ચાર જણ માટે",
+    "target_text": "for four"
+   },
+   "set": {
+    "known_text": "શું આપણે ચાર જણ માટે એક ટેબલ રિઝર્વ કરવા માગીએ છીએ?",
+    "target_text": "do we want to reserve a table for four?",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0412L02B01",
+   "expect": {
+    "known_text": "એઓને દઈ",
+    "target_text": "allow them to"
+   },
+   "set": {
+    "known_text": "અમે એઓને જવા દઈ ન શક્યા",
+    "target_text": "we couldn't allow them to go",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0413L01B01",
+   "expect": {
+    "known_text": "આપણે પડી શકીએ",
+    "target_text": "we could fall"
+   },
+   "set": {
+    "known_text": "આપણે આજે પડી શકીએ",
+    "target_text": "we could fall today",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0413L02B01",
+   "expect": {
+    "known_text": "જો આપણે જઈએ",
+    "target_text": "if we go"
+   },
+   "set": {
+    "known_text": "આપણે પડી શકીએ જો આપણે જઈએ",
+    "target_text": "we could fall if we go",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0413L03B01",
+   "expect": {
+    "known_text": "કિનારાની ઘણી નજીક",
+    "target_text": "too close to the edge"
+   },
+   "set": {
+    "known_text": "તે કિનારાની ઘણી નજીક છે",
+    "target_text": "that's too close to the edge",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0414L02B01",
+   "expect": {
+    "known_text": "એક બોટલ લાલ વાઇન",
+    "target_text": "a bottle of red wine"
+   },
+   "set": {
+    "known_text": "હું એક બોટલ લાલ વાઇન માગું છું",
+    "target_text": "I want a bottle of red wine",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0415L02B01",
+   "expect": {
+    "known_text": "જો તમે મને પૂછો",
+    "target_text": "if you ask me"
+   },
+   "set": {
+    "known_text": "જો તમે મને પૂછો તો એ મહત્ત્વનું છે",
+    "target_text": "it's important if you ask me",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0419L01B01",
+   "expect": {
+    "known_text": "જો તેઓ ઇચ્છે",
+    "target_text": "if they want"
+   },
+   "set": {
+    "known_text": "જો તેઓ મદદ કરવા ઇચ્છે",
+    "target_text": "if they want to help",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0419L02B01",
+   "expect": {
+    "known_text": "લોકોને તેઓ ગમે",
+    "target_text": "people to like them"
+   },
+   "set": {
+    "known_text": "મને લાગે છે કે તેઓ ઇચ્છે છે કે લોકોને તેઓ ગમે",
+    "target_text": "I think they want people to like them",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0421L02B01",
+   "expect": {
+    "known_text": "તેઓ જાણે છે",
+    "target_text": "they know"
+   },
+   "set": {
+    "known_text": "તેઓ સત્ય જાણે છે",
+    "target_text": "they know the truth",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0421L04B01",
+   "expect": {
+    "known_text": "તે થઈ રહ્યો છે",
+    "target_text": "he's getting"
+   },
+   "set": {
+    "known_text": "તે વૃદ્ધ થઈ રહ્યો છે",
+    "target_text": "he's getting old",
+    "decomposition": null,
+    "word_count": 16,
     "lego_position": "middle"
    }
   }
