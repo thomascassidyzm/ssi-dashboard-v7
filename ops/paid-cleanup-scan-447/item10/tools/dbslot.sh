@@ -5,6 +5,12 @@
 # usage: tools/dbslot.sh <command...>     exits 75 if the DB stayed busy for 20 min (report it; do not loop by hand).
 set -u
 LOCK="$HOME/.cs-locks/item10-db.lock"; mkdir -p "$(dirname "$LOCK")"
+# Tom 18 Nov 19:57Z: never hammer the shared store. Nothing passes until Popty's load gate is governed AND Tom's Watson
+# has said writers may resume (recorded by a person as the file below). Until then every step is refused with 75.
+g=$(curl -s -m 10 http://localhost:3470/health | python3 -I -c "import json,sys;print((json.load(sys.stdin).get('dbLoadGate') or {}).get('governed'))" 2>/dev/null)
+if [ "$g" != "True" ] || [ ! -f "$HOME/.cs-locks/item10-writers-may-resume" ]; then
+  echo "dbslot: REFUSED — store paused (Tom 18 Nov 19:57Z); load gate governed=$g; no go-file. Record the step as pending." >&2; exit 75
+fi
 exec 9>"$LOCK"; flock 9
 for i in $(seq 1 40); do
   f=$(ls -t "$HOME"/.local/state/db-watchdog/freezes/samples-*.jsonl 2>/dev/null | head -1)
