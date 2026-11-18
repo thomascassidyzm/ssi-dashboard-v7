@@ -1,0 +1,768 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Мы не надеялись просыпаться посреди ночи."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "in the middle of",
+    "target_text": "посреди",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "rus_for_eng:S0108L01B01",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "in the middle",
+     "target_text": "посреди",
+     "word_count": 7,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-10-12T11:24:52.427794+00:00",
+     "created_at": "2026-05-12T15:11:16.770167+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9bc78274-455f-4daf-83a5-2fda27e57ebe",
+     "target1_audio_id": "81fd85d9-4a4b-403c-8f6f-55e17169b739",
+     "target2_audio_id": "a50b8cd4-f848-4aea-99d6-1be5bccde8a3",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": "posredi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": "посреди",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "81217b18-d393-4455-863a-c44725c87b92",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L01B02",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "wake in the middle of the night",
+     "target_text": "просыпаться посреди",
+     "word_count": 19,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-12T16:29:01.400752+00:00",
+     "created_at": "2026-05-12T15:11:16.770167+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+     "target1_audio_id": "1b8b06cd-8c6b-4587-896c-a412c26e952d",
+     "target2_audio_id": "a44f673d-bdc2-4e69-bf83-9c5ca9f11a51",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": "prosypatsya posredi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": "просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "29cd1f66-60ee-4298-8b5b-f690ba814cfd",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L01U01",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "I don't want to wake up in the middle",
+     "target_text": "Я не хочу просыпаться посреди",
+     "word_count": 29,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.731Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 96,
+     "updated_at": "2026-06-02T22:58:25.345178+00:00",
+     "created_at": "2026-05-12T15:11:16.770167+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "e328a16f-cd7e-4a5b-b200-034c0239f1c0",
+     "target1_audio_id": "260498df-b950-4692-9b1c-09ee946e85d9",
+     "target2_audio_id": "c46a31b8-fb71-4689-a5cc-c4b984ce6644",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": "ya ne khochu prosypatsya posredi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L03",
+       "target": "Я не хочу",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L01U02",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "I don't like waking in the middle",
+     "target_text": "Мне не нравится просыпаться посреди",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.731Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 96,
+     "updated_at": "2026-06-04T14:45:25.529107+00:00",
+     "created_at": "2026-05-12T15:11:16.770167+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "84112af8-637e-4a60-a086-b64827f80823",
+     "target1_audio_id": "19d89c47-d1a7-4d86-91d3-e7353989075f",
+     "target2_audio_id": "82e4ef52-38d5-44bc-ae54-665cd9db8ea9",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": "mne ne nravitsya prosypatʹsya posredi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't like",
+       "legoId": "S0027L06",
+       "target": "Мне не нравится",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L01U03",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we didn't hope to wake up in the middle",
+     "target_text": "Мы не надеялись просыпаться посреди",
+     "word_count": 35,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.731Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 96,
+     "updated_at": "2026-06-04T14:45:53.296771+00:00",
+     "created_at": "2026-05-12T15:11:16.770167+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "52b640f8-b1ad-4e5d-b3ec-f3613aaff840",
+     "target1_audio_id": "0a0a4550-bfff-4cf6-b4af-350f3d9e8fef",
+     "target2_audio_id": "10842b87-579c-4778-9e2f-e18bd4b11d03",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": "my ne nadeyalis prosypatsya posredi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Мы",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " надеялись",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "night",
+    "target_text": "ночи",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "rus_for_eng:S0108L02B01",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "in the middle of the night",
+     "target_text": "посреди ночи",
+     "word_count": 12,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 98,
+     "updated_at": "2026-10-12T16:57:17.293175+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "9d45419d-5a0d-46a4-aca0-14b306fadd19",
+     "target2_audio_id": "daccd059-7615-4e96-ba36-35974687a2ca",
+     "qa_checked": null,
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 2016,
+     "lego_id": null,
+     "target_text_roman": "posredi nochi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": "посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d32e5b6f-8da8-48d7-ac3b-65f835f8d7b7",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L02B03",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "in the middle of the night we wake",
+     "target_text": "посреди ночи просыпаться",
+     "word_count": 24,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 96,
+     "updated_at": "2026-06-02T22:58:14.886706+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "393f444e-202d-4ce6-a0a2-3ddb383fd538",
+     "target1_audio_id": "19f935e4-bce1-4ace-b999-966ed5955ff8",
+     "target2_audio_id": "a61b2556-c6fd-4eca-ad76-9945d7f74838",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": "posredi nochi prosypatsya",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": "посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L02U01",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "Мы не надеялись просыпаться посреди ночи",
+     "word_count": 40,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.822Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 98,
+     "updated_at": "2026-10-12T16:29:10.781616+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "b614647f-781d-42b4-b051-171cf8583271",
+     "target2_audio_id": "8a0a42ed-b9ee-41dd-9594-364b26aa468a",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": "my ne nadeyalis prosypatsya posredi nochi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Мы",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " надеялись",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "29cd1f66-60ee-4298-8b5b-f690ba814cfd",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L02U02",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "I don't like waking in the middle of the night",
+     "target_text": "Мне не нравится просыпаться посреди ночи",
+     "word_count": 40,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.822Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 97,
+     "updated_at": "2026-10-12T20:38:08.770435+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ce6f2c30-6c41-4d0d-8b15-95a06345543c",
+     "target1_audio_id": "90d31509-d372-4840-8ba2-4ef1740a9fea",
+     "target2_audio_id": "54b2d1d2-42a2-4864-bd28-4dea37ecad5f",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": "mne ne nravitsya prosypatʹsya posredi nochi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't like",
+       "legoId": "S0027L06",
+       "target": "Мне не нравится",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d32e5b6f-8da8-48d7-ac3b-65f835f8d7b7",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L02U03",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "it happened in the middle of the night",
+     "target_text": "Это было посреди ночи",
+     "word_count": 21,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.822Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 99,
+     "updated_at": "2026-10-12T16:29:01.400752+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2311b223-2759-4ee7-bf24-3ca1656e5872",
+     "target1_audio_id": "7f197fe4-ccdd-40ea-b29b-0c8f7e7a7502",
+     "target2_audio_id": "3a1518cd-52af-4b40-ad53-ce4c6d999220",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": "eto bylo posredi nochi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "this is",
+       "legoId": "S0047L01",
+       "target": "Это",
+       "isGhost": false
+      },
+      {
+       "known": "it was",
+       "legoId": "S0070L01",
+       "target": " было",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "29cd1f66-60ee-4298-8b5b-f690ba814cfd",
+     "frame_mask": null
+    },
+    {
+     "id": "rus_for_eng:S0108L02U05",
+     "course_code": "rus_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "I don't want to wake up at night",
+     "target_text": "Я не хочу просыпаться посреди ночи",
+     "word_count": 34,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-12T15:11:16.822Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 96,
+     "updated_at": "2026-06-02T22:58:16.969874+00:00",
+     "created_at": "2026-05-12T15:11:16.858399+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ea452b9a-343b-4f22-a7c9-f131b695f1bf",
+     "target1_audio_id": "740c2acb-b320-4b79-a4fb-37fa98348900",
+     "target2_audio_id": "a5cd8454-200c-4cb5-b779-7e4835cbadbd",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": "ya ne khochu prosypatsya posredi nochi",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L03",
+       "target": "Я не хочу",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L03",
+       "target": " просыпаться",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of",
+       "legoId": "S0108L01",
+       "target": " посреди",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " ночи",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

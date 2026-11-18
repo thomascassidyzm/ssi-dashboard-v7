@@ -1,0 +1,1373 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Nedoufali jsme, že se probudíme uprostřed noci."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we didn't hope",
+    "target_text": "nedoufali jsme",
+    "components": [
+     {
+      "known": "not hoped",
+      "target": "nedoufali"
+     },
+     {
+      "known": "we were",
+      "target": "jsme"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ces_for_eng:S0108L01C01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "not hoped",
+     "target_text": "nedoufali",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 998,
+     "updated_at": "2026-06-02T22:29:37.812623+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "75a8af56-0e4b-4305-bda2-62a306a3c8c9",
+     "target1_audio_id": "972d7909-04bf-44cf-9ee7-0d141505eb97",
+     "target2_audio_id": "3d40c2f1-14b9-4330-9de4-69b7f93ea022",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "f5828fee-327a-487e-b803-e19f593b9b33",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "nedoufali",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01C02",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "we were",
+     "target_text": "jsme",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 952,
+     "updated_at": "2026-10-12T16:59:25.425731+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d1e4d3d5-95e2-4828-b30b-82504842b727",
+     "target1_audio_id": "cc165cf9-ab2e-4aa5-97ee-5a96e32a5d28",
+     "target2_audio_id": "f155b24c-6470-45fd-9cac-8f40525b62dd",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "43ceeaed-dac9-45db-8725-7606529bc968",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "jsme",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c974e066-f2cd-4b5a-944c-69b649d72692",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01B01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "we didn't hope",
+     "target_text": "nedoufali jsme",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 998,
+     "updated_at": "2026-10-13T06:34:57.605702+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+     "target1_audio_id": "dfc049ca-120c-4feb-be85-35e7a300308f",
+     "target2_audio_id": "ea53c78f-02d3-4486-bc79-eacf19405360",
+     "qa_checked": null,
+     "target1_duration_ms": 2016,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "5b22be6e-89c7-42d5-8d3b-54240b8ff1f3",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01B02",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we didn't hope to speak Czech now with me",
+     "target_text": "nedoufali jsme mluvit česky teď se mnou",
+     "word_count": 39,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:27.746795+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f0367928-f257-4d3c-9a24-01b4350bf772",
+     "target1_audio_id": "67c8d940-85fe-4e96-80f5-b54d36d24ce7",
+     "target2_audio_id": "30726d0b-ef3b-4aa0-91d0-9afa3b7e9469",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L03",
+       "target": " mluvit",
+       "isGhost": false
+      },
+      {
+       "known": "czech",
+       "legoId": "S0001L02",
+       "target": " česky",
+       "isGhost": false
+      },
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": " teď",
+       "isGhost": false
+      },
+      {
+       "known": "with me",
+       "legoId": "S0015L03",
+       "target": " se mnou",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01B03",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we didn't hope today with you",
+     "target_text": "nedoufali jsme dnes s tebou",
+     "word_count": 27,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:34.694968+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ab9fe2a0-6f09-4491-bd4c-8603fb45db8d",
+     "target1_audio_id": "bda9e8e8-f3a4-4bf0-87bf-15026a16162f",
+     "target2_audio_id": "cf819a1b-c854-4539-ae59-14615e27ded1",
+     "qa_checked": null,
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "today",
+       "legoId": "S0007L01",
+       "target": " dnes",
+       "isGhost": false
+      },
+      {
+       "known": "with you",
+       "legoId": "S0001L04",
+       "target": " s tebou",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01B04",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we didn't hope to hear with everyone",
+     "target_text": "nedoufali jsme slyšet se všemi",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:47.597345+00:00",
+     "created_at": "2026-05-05T14:49:30.634216+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fa163a06-d848-4983-91ce-2811bea1f8e9",
+     "target1_audio_id": "ab3aaac4-dfa2-4994-8bd4-a5d8092860db",
+     "target2_audio_id": "3e4841ac-f2c9-48ba-a7c1-a2b30d26ccb2",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to hear",
+       "legoId": "S0071L02",
+       "target": " slyšet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " všemi",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01U01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "we didn't hope we would learn Czech",
+     "target_text": "nedoufali jsme, že se naučíme česky",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:26.803Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:44.415873+00:00",
+     "created_at": "2026-05-06T10:53:26.845061+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "92ee9e5f-ce95-44c1-b270-cc86b7c8a231",
+     "target1_audio_id": "bea74ed2-f10c-4add-9462-638c8aecde84",
+     "target2_audio_id": "95fcd885-a567-4bcc-b7fc-da2dfe528187",
+     "qa_checked": null,
+     "target1_duration_ms": 3408,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " naučíme",
+       "isGhost": true
+      },
+      {
+       "known": "czech",
+       "legoId": "S0001L02",
+       "target": " česky",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01U02",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "we didn't hope it would be possible",
+     "target_text": "nedoufali jsme, že to bude možné",
+     "word_count": 32,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:26.803Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:37.557796+00:00",
+     "created_at": "2026-05-06T10:53:26.845061+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f3299867-06ef-4337-b248-7992fe4a2310",
+     "target1_audio_id": "738c55df-a756-4095-9fc3-e5b694d632b1",
+     "target2_audio_id": "43af162f-6957-4b71-a07b-a13a64029623",
+     "qa_checked": null,
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bude",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " možné",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01U03",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "we didn't hope we would speak so well",
+     "target_text": "nedoufali jsme, že budeme mluvit tak dobře",
+     "word_count": 42,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:26.803Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:27.913862+00:00",
+     "created_at": "2026-05-06T10:53:26.845061+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7d74b349-2f05-409d-a1e5-8ec467c67cf8",
+     "target1_audio_id": "33bd59cc-01c6-4b19-b328-fa7c9e63fee6",
+     "target2_audio_id": "daa42161-1cec-4352-ba0d-42eb7d976df4",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " budeme",
+       "isGhost": true
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L03",
+       "target": " mluvit",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tak",
+       "isGhost": true
+      },
+      {
+       "known": "well",
+       "legoId": "S0013L02",
+       "target": " dobře",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L01U04",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "we didn't hope we would see so much",
+     "target_text": "nedoufali jsme, že uvidíme tolik",
+     "word_count": 32,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:26.803Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:27.774912+00:00",
+     "created_at": "2026-05-06T10:53:26.845061+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "40ca4663-61df-42e5-bdc8-ff2418fed235",
+     "target1_audio_id": "db909acb-dee4-4043-beea-22aeadb153b7",
+     "target2_audio_id": "28ff3d35-8198-4cb7-a93f-f0d0ecab1b79",
+     "qa_checked": null,
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uvidíme",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tolik",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "to wake in the middle of the night",
+    "target_text": "se probudíme uprostřed noci",
+    "components": [
+     {
+      "known": "we'll wake up",
+      "target": "probudíme se"
+     },
+     {
+      "known": "in the middle of",
+      "target": "uprostřed"
+     },
+     {
+      "known": "night",
+      "target": "noci"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "ces_for_eng:S0108L02C01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "we'll wake up",
+     "target_text": "probudíme se",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 998,
+     "updated_at": "2026-06-02T22:29:23.885831+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91338ab9-7485-44c2-bfaf-5f996750c81d",
+     "target1_audio_id": "47b8161a-a35f-4374-a2a1-c3c38eea0f08",
+     "target2_audio_id": "abde0b69-f7ec-4bc1-a815-a9f1b0852d75",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9c6ed3d4-662f-4e03-bd79-50a67d4e8922",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "probudíme",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02C02",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "in the middle of",
+     "target_text": "uprostřed",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 1001,
+     "updated_at": "2026-10-12T16:29:48.299712+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "015ec61e-cb05-4bef-99ba-c2b1be2ab42d",
+     "target1_audio_id": "60797c87-4c5e-4303-9d97-f6b6edf4d7cd",
+     "target2_audio_id": "58e48710-d76f-4894-b1ad-ff3c8e2b9262",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "ecf4ccbc-5abf-4d0e-907f-3ccf2ce32233",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "uprostřed",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2b22a937-81ea-4c5d-85b8-733fcffba481",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02C03",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "night",
+     "target_text": "noci",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 980,
+     "updated_at": "2026-10-12T16:29:52.741812+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "target1_audio_id": "c5f6541b-c6c8-40af-87fc-49926dbc2e5e",
+     "target2_audio_id": "6d5f51ac-1d63-4d15-a0ef-9ea8b0a7c62e",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "c2f8985a-9f3d-4260-b822-b0d57d33e3e3",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "noci",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2b22a937-81ea-4c5d-85b8-733fcffba481",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02B01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "to wake in the middle of the night",
+     "target_text": "se probudíme uprostřed noci",
+     "word_count": 27,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 999,
+     "updated_at": "2026-10-12T17:27:29.533604+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+     "target1_audio_id": "93b7a75f-674a-4d25-83a8-b78c42f8dc2e",
+     "target2_audio_id": "fa1654f7-827a-4d8f-9d08-4cc7c212a13c",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c974e066-f2cd-4b5a-944c-69b649d72692",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02B03",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "wake in the middle of the night today with me",
+     "target_text": "se probudíme uprostřed noci dnes se mnou",
+     "word_count": 40,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:31.977645+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "41107523-ca2c-4d23-bedf-2f9ac819d892",
+     "target1_audio_id": "fd1c2183-3751-4e50-9401-2ba23cee11f2",
+     "target2_audio_id": "a7262854-0761-4590-a5cf-44cd2929c369",
+     "qa_checked": null,
+     "target1_duration_ms": 3624,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "today",
+       "legoId": "S0007L01",
+       "target": " dnes",
+       "isGhost": false
+      },
+      {
+       "known": "with me",
+       "legoId": "S0015L03",
+       "target": " se mnou",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02B04",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "wake in the middle of the night with everyone",
+     "target_text": "se probudíme uprostřed noci se všemi",
+     "word_count": 36,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:29.623832+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "68684ad2-5f3d-4585-97fc-02ebed2164bd",
+     "target1_audio_id": "c54df46f-00c4-4f41-90b1-01c30eade28a",
+     "target2_audio_id": "e0c48ff2-dd88-46f7-9212-6f65f254dcb6",
+     "qa_checked": null,
+     "target1_duration_ms": 3336,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " všemi",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02U01",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "nedoufali jsme, že se probudíme uprostřed noci",
+     "word_count": 46,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-05-05T14:49:30.690Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 999,
+     "updated_at": "2026-10-12T16:29:53.608932+00:00",
+     "created_at": "2026-05-05T14:49:30.742558+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "a7c99ed2-f5b7-4c0a-998d-caa15778881b",
+     "target2_audio_id": "98199459-6a20-46b5-969c-d7e4a1b08dcc",
+     "qa_checked": null,
+     "target1_duration_ms": 3960,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nedoufali jsme",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2b22a937-81ea-4c5d-85b8-733fcffba481",
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02U02",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "I hope we wake up in the middle of the night",
+     "target_text": "doufám, že se probudíme uprostřed noci",
+     "word_count": 38,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:27.030Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:44.254903+00:00",
+     "created_at": "2026-05-06T10:53:27.067384+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "204f63a1-5f21-423c-b775-558997a8a35c",
+     "target1_audio_id": "853413bb-59b0-4d28-b628-1b4367084f98",
+     "target2_audio_id": "43c55f5e-d19f-4dab-8ab7-3d507d51e920",
+     "qa_checked": null,
+     "target1_duration_ms": 3768,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "doufám,",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02U03",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "I know we'll wake up in the middle of the night",
+     "target_text": "vím, že se probudíme uprostřed noci",
+     "word_count": 35,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:27.030Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:27.801999+00:00",
+     "created_at": "2026-05-06T10:53:27.067384+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0104d5fc-a677-4cc6-8493-fa20a1f4a8db",
+     "target1_audio_id": "16ec7f9a-5795-436e-a69b-38d1636ef29e",
+     "target2_audio_id": "1e0a8e52-6269-4efb-a8c6-1942c564a552",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "vím,",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "ces_for_eng:S0108L02U04",
+     "course_code": "ces_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "I think we'll wake up in the middle of the night",
+     "target_text": "myslím, že se probudíme uprostřed noci",
+     "word_count": 38,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-06T10:53:27.030Z",
+      "target_score": 6
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 997,
+     "updated_at": "2026-06-02T22:29:37.571502+00:00",
+     "created_at": "2026-05-06T10:53:27.067384+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f9c407a1-4131-4386-945c-0bf8b7a5cab0",
+     "target1_audio_id": "e17a1395-86c7-4af7-90dd-22216f5cd150",
+     "target2_audio_id": "f35d6199-2d72-44f7-962c-99c3d44d908f",
+     "qa_checked": null,
+     "target1_duration_ms": 3480,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I think",
+       "legoId": "S0047L01",
+       "target": "myslím",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0029L03",
+       "target": " že",
+       "isGhost": false
+      },
+      {
+       "known": "to wake in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " se probudíme uprostřed noci",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

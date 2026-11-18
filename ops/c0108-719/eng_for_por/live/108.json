@@ -1,0 +1,1959 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "Não esperávamos acordar a meio da noite.",
+  "target": "We didn't hope to wake in the middle of the night."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "acordar",
+    "target_text": "to wake up",
+    "components": null,
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0108L01B01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "acordar",
+     "target_text": "to wake up",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T21:48:27.983099+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91f696b6-6695-4c3a-a860-d9dd4b04e11f",
+     "target1_audio_id": "c81dd1f2-c56e-4499-a8a9-10a0b9b2485b",
+     "target2_audio_id": "a10d4f59-3cf0-4071-80d7-930ac574949f",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": "to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01B02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "não quero acordar",
+     "target_text": "I don't want to wake up",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T23:18:52.455364+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "91a2a148-a50e-481b-bd90-04b78a3492a8",
+     "target1_audio_id": "f017306f-3a52-4ec8-b6c1-55f63c8b41ab",
+     "target2_audio_id": "8167e200-9a54-4fe5-bbf3-e31ee0ccafaf",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 1704,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não quero",
+       "legoId": "S0019L03",
+       "target": "I don't want",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c01106ca-0e5f-4a97-9e32-1a71a1b401a7",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01B03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "é difícil acordar",
+     "target_text": "it's difficult to wake up",
+     "word_count": 25,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:52.848482+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "637320b3-4b50-484a-a5a8-a82dc6b0b242",
+     "target1_audio_id": "31a3003b-2c0f-45b1-ac5a-64e11c7064a9",
+     "target2_audio_id": "3b4cb1e7-4cd4-40d1-92c5-807cfa2c804c",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "difícil",
+       "legoId": "S0066L01",
+       "target": " difficult",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01U01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "É difícil acordar depressa o suficiente",
+     "target_text": "it's difficult to wake up quickly enough",
+     "word_count": 40,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:34.962Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:00.482223+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bdf636b0-e48c-4042-a224-513997797b23",
+     "target1_audio_id": "81974744-ec4a-4142-bde2-4afac49cd2d2",
+     "target2_audio_id": "f4a0248e-97eb-4065-adf8-59b927641733",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "difícil",
+       "legoId": "S0066L01",
+       "target": " difficult",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "depressa o suficiente",
+       "legoId": "S0091L01",
+       "target": " quickly enough",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01U02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "não quero acordar quando não estou pronta",
+     "target_text": "I don't want to wake up when I'm not ready",
+     "word_count": 42,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:34.962Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-06-02T22:37:43.36402+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d4ddd2f2-a099-40ab-a20e-add981bed11f",
+     "target1_audio_id": "193e7d15-9b6e-4066-b379-5f4622c397af",
+     "target2_audio_id": "da75d9fb-dd7e-4bf6-856d-a51450afd21a",
+     "qa_checked": null,
+     "target1_duration_ms": 3456,
+     "target2_duration_ms": 3336,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não quero",
+       "legoId": "S0019L03",
+       "target": "I don't want",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " when",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I'm",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ready",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01U03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "só quero acordar e ir",
+     "target_text": "I just want to wake up and go",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:34.962Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:58.510872+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "cfff8f26-0264-4f12-8ff4-bab9e63026df",
+     "target1_audio_id": "6e8b3cb0-27de-41f8-896a-62484587b922",
+     "target2_audio_id": "9ae1befb-2cc8-40cc-aad0-bdf373209970",
+     "qa_checked": null,
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "só",
+       "legoId": "S0106L01",
+       "target": " just",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "e",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01U04",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "precisamos de acordar antes de ir",
+     "target_text": "we need to wake up before we go",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:34.962Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:55.186165+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "335df510-24a1-4b8d-8804-9fedb3caf846",
+     "target1_audio_id": "e9c5f64f-5119-4d05-b9dd-c7c6c5080350",
+     "target2_audio_id": "850a9080-bfaf-463d-8cb0-978531ef33d0",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " need",
+       "isGhost": true
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "antes de",
+       "legoId": "S0025L01",
+       "target": " before",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L01U05",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "gostaria de acordar e ir logo",
+     "target_text": "I'd like to wake up and go already",
+     "word_count": 34,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:34.962Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:37:50.363928+00:00",
+     "created_at": "2026-02-25T03:43:35.024978+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "bd6fe51b-e6f3-4420-bc0e-63bf4b3bf68c",
+     "target1_audio_id": "18a07345-d82e-41dc-b393-e5a1fc3b10a0",
+     "target2_audio_id": "83e0acc4-2ff0-45e3-b6bb-84b94e72d93e",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "gostaria de",
+       "legoId": "S0011L03",
+       "target": "I'd like",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "e",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go",
+       "isGhost": true
+      },
+      {
+       "known": "já",
+       "legoId": "S0076L01",
+       "target": " already",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "não esperávamos acordar",
+    "target_text": "we didn't hope to wake up",
+    "components": [
+     {
+      "known": "não esperávamos",
+      "target": "we didn't hope"
+     },
+     {
+      "known": "acordar",
+      "target": "to wake up"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0108L02C01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "não esperávamos",
+     "target_text": "we didn't hope",
+     "word_count": 14,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T22:52:07.196953+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "361f5cb8-c164-4854-b25f-08ce98d558e9",
+     "target1_audio_id": "19c65c76-5948-4542-8638-ee4eb84becd3",
+     "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hope",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02C02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "acordar",
+     "target_text": "to wake up",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T21:48:27.983099+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "91f696b6-6695-4c3a-a860-d9dd4b04e11f",
+     "target1_audio_id": "c81dd1f2-c56e-4499-a8a9-10a0b9b2485b",
+     "target2_audio_id": "a10d4f59-3cf0-4071-80d7-930ac574949f",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1392,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": "to wake up",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02B01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "não esperávamos acordar",
+     "target_text": "we didn't hope to wake up",
+     "word_count": 25,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T22:52:07.312682+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d3efd536-82c0-453b-a8fa-2e3f85575daf",
+     "target1_audio_id": "b2dcdedd-1c0f-48fd-9a36-c5e227865038",
+     "target2_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02B02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "não esperávamos acordar assim",
+     "target_text": "we didn't hope to wake up like that",
+     "word_count": 35,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:05.020475+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "11a0a305-ade9-43dd-b047-fec8898b2dcb",
+     "target1_audio_id": "ae6d73b2-be67-4cf5-a4a4-3d0d49abd25a",
+     "target2_audio_id": "c9895ead-2732-4478-9f0b-ee98fd735336",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3408,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "assim",
+       "legoId": "S0102L01",
+       "target": " like that",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02B03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "não esperávamos acordar antes",
+     "target_text": "we didn't hope to wake up before",
+     "word_count": 32,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:01.431902+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8c4774de-f718-4dc7-93cd-2e0d3f258c5f",
+     "target1_audio_id": "de0eb771-e5c1-4cc0-880f-28edfead3f72",
+     "target2_audio_id": "6c42de3b-a028-4112-a29d-b48a7252a2af",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "antes de",
+       "legoId": "S0025L01",
+       "target": " before",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02U01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "não esperávamos acordar antes de ir",
+     "target_text": "we didn't hope to wake up before we go",
+     "word_count": 38,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.088Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:50.830955+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "858734be-7068-4616-86a6-28c4ef658732",
+     "target1_audio_id": "faa3b71e-a18b-43a5-9779-8109acd0c3bb",
+     "target2_audio_id": "d37d3809-78d1-4f41-af18-39fe17767be2",
+     "qa_checked": null,
+     "target1_duration_ms": 3384,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "antes de",
+       "legoId": "S0025L01",
+       "target": " before",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " go",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02U02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "não esperávamos acordar tão depressa",
+     "target_text": "we didn't hope to wake up so quickly",
+     "word_count": 36,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.088Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:01.628554+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7a574064-5a34-476e-986e-3c72a6e4f827",
+     "target1_audio_id": "cdda16a1-7bb5-4401-89db-4c79ae7ffb16",
+     "target2_audio_id": "364abe68-3c51-4cfb-9ba4-bc3cd45f27e3",
+     "qa_checked": null,
+     "target1_duration_ms": 3168,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "então",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "depressa",
+       "legoId": "S0020L01",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02U03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "acho que não esperávamos acordar",
+     "target_text": "I think we didn't hope to wake up",
+     "word_count": 33,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.088Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:53.860704+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "765ae6ce-ff80-488a-9aa1-566338716225",
+     "target1_audio_id": "655c4511-64fb-4c6d-841d-f74a16a2dfbc",
+     "target2_audio_id": "17c22257-2dcc-4439-a185-d164da01f581",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": " we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02U04",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "não esperávamos acordar e não sabia o que fazer",
+     "target_text": "we didn't hope to wake up and I didn't know what to do",
+     "word_count": 54,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.088Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:55.522073+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "012a1fc7-0641-4332-a5f6-8dedc82275b5",
+     "target1_audio_id": "d2bb0daa-d5bb-4050-a685-204660c5af88",
+     "target2_audio_id": "83b018e4-b62b-4278-8857-0a22ac7411ec",
+     "qa_checked": null,
+     "target1_duration_ms": 4272,
+     "target2_duration_ms": 4248,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "e",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "fazer",
+       "legoId": "S0059L01",
+       "target": " to do",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L02U05",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "não esperávamos acordar quando não estamos prontos",
+     "target_text": "we didn't hope to wake up when we're not ready",
+     "word_count": 46,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.088Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:05.71094+00:00",
+     "created_at": "2026-02-25T03:43:35.153251+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f9a6abef-a298-464e-ab2b-dec415d65066",
+     "target1_audio_id": "e7b8f3b9-1822-4ba0-95bd-ea2a5f1542dc",
+     "target2_audio_id": "abe14189-dff5-434e-a917-e865ec18d1a4",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " when",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " we're",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ready",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "a meio da noite",
+    "target_text": "in the middle of the night",
+    "components": [
+     {
+      "known": "a meio",
+      "target": "in the middle"
+     },
+     {
+      "known": "da noite",
+      "target": "of the night"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_por:S0108L03C01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "a meio",
+     "target_text": "in the middle",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-10-28T18:40:24.262171+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "4306bb28-1f4a-4091-b540-ed0988b8eddd",
+     "target1_audio_id": "8e115d97-5a7f-4090-af97-73ffa19bfff2",
+     "target2_audio_id": "9bc78274-455f-4daf-83a5-2fda27e57ebe",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1080,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " middle",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "658f4cac-0e75-4058-8a04-b91f003e1599",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03C02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "da noite",
+     "target_text": "of the night",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-13T07:51:39.529167+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d1e24ad1-a7fb-4123-80ab-1148f0008bb7",
+     "target1_audio_id": "bb50eaff-f84d-4f97-a9b7-951f8bd88e40",
+     "target2_audio_id": "0702421a-505b-45f5-86ff-39aefe1bf1d6",
+     "qa_checked": null,
+     "target1_duration_ms": 1464,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "of",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " night",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03B01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "a meio da noite",
+     "target_text": "in the middle of the night",
+     "word_count": 26,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-28T17:29:08.612783+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7371d11b-37b2-4e8e-ac18-101c96de4c09",
+     "target1_audio_id": "e2e37263-0458-439a-8fd0-9bb32bbe7611",
+     "target2_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": "in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "38cff5a3-7da4-456d-9deb-ed54b1c7d678",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03B02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "acordar a meio da noite",
+     "target_text": "to wake up in the middle of the night",
+     "word_count": 37,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-29T03:33:16.153152+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "38f867c9-4800-40ad-bac7-5dda9c86a52e",
+     "target1_audio_id": "82a604bd-4340-48af-8338-060b1fa696ae",
+     "target2_audio_id": "b1eaff55-2c62-4a2a-8377-bdbe3cb1e0d6",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": "to wake up",
+       "isGhost": false
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03B03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "não esperávamos acordar a meio da noite",
+     "target_text": "we didn't hope to wake up in the middle of the night",
+     "word_count": 52,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-29T02:33:59.449286+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "12cf0ffb-5bef-412e-848a-54dd49462369",
+     "target1_audio_id": "44796fcc-99c5-4644-9113-97ae2e47a02a",
+     "target2_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não esperávamos acordar",
+       "legoId": "S0108L02",
+       "target": "we didn't hope to wake up",
+       "isGhost": false
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fb505d52-f41c-4e8d-b674-cd77bca380c8",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03U01",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "É difícil acordar a meio da noite",
+     "target_text": "it's difficult to wake up in the middle of the night",
+     "word_count": 52,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.191Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:05.560149+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "59593865-632b-4c58-9c55-1a4ed67a9dfd",
+     "target1_audio_id": "8038b65a-465c-4db7-8a79-f93e27f43404",
+     "target2_audio_id": "c937cd5f-9d5e-44a0-9b28-4243a643a2ee",
+     "qa_checked": null,
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "it's",
+       "isGhost": true
+      },
+      {
+       "known": "difícil",
+       "legoId": "S0066L01",
+       "target": " difficult",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03U02",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "não quero acordar a meio da noite",
+     "target_text": "I don't want to wake up in the middle of the night",
+     "word_count": 50,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.191Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:48.700973+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f031c6fd-2742-4b3c-9a78-b449c2ec8411",
+     "target1_audio_id": "f61d3d5d-fb5d-413e-854c-d26edc87b7ec",
+     "target2_audio_id": "0d59d2c0-e0b9-4aaf-9d61-963087d3afee",
+     "qa_checked": null,
+     "target1_duration_ms": 3696,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "não quero",
+       "legoId": "S0019L03",
+       "target": "I don't want",
+       "isGhost": false
+      },
+      {
+       "known": "acordar",
+       "legoId": "S0108L01",
+       "target": " to wake up",
+       "isGhost": false
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03U03",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "É por isso que não sabia o que estava a fazer a meio da noite",
+     "target_text": "that is why I didn't know what you were doing in the middle of the night",
+     "word_count": 72,
+     "lego_count": 15,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.191Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:04.363908+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "01f015b0-9b1e-4bff-99e2-4b576dc43dba",
+     "target1_audio_id": "a502eb29-3426-4037-a886-5871068f8136",
+     "target2_audio_id": "86470fde-0fc7-4fa0-b458-b0a0081ec784",
+     "qa_checked": null,
+     "target1_duration_ms": 4848,
+     "target2_duration_ms": 4848,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "é por isso que",
+       "legoId": "S0105L02",
+       "target": "that is why",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "não sabia",
+       "legoId": "S0105L01",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " you",
+       "isGhost": true
+      },
+      {
+       "known": "estava a fazer",
+       "legoId": "S0107L02",
+       "target": " were doing",
+       "isGhost": false
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03U04",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "acho que precisamos de acordar a meio da noite",
+     "target_text": "I think we need to wake up in the middle of the night",
+     "word_count": 53,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.191Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:37:49.936712+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f30eee1f-125c-4d22-98c8-166a45078460",
+     "target1_audio_id": "a17f03c4-c02f-4f1a-9e4b-6526577103e5",
+     "target2_audio_id": "e5830bbe-3c89-4aeb-8176-8b9b1fa6dedb",
+     "qa_checked": null,
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "precisamos de",
+       "legoId": "S0104L03",
+       "target": " we need to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wake",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " up",
+       "isGhost": true
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_por:S0108L03U05",
+     "course_code": "eng_for_por",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "não esperávamos isto a meio da noite",
+     "target_text": "we didn't hope for this in the middle of the night",
+     "word_count": 50,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-25T03:43:35.191Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:38:04.891996+00:00",
+     "created_at": "2026-02-25T03:43:35.25122+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "408f7f26-6edc-44af-b02f-daac4f41572c",
+     "target1_audio_id": "270ff02f-3f76-4a32-a039-9b4cb555719a",
+     "target2_audio_id": "ee2446db-4629-4689-8510-69355cc95b00",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3768,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hope",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " this",
+       "isGhost": true
+      },
+      {
+       "known": "a meio da noite",
+       "legoId": "S0108L03",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

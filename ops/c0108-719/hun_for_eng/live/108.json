@@ -1,0 +1,559 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Nem reméltük, hogy az éjszaka közepén felébredünk."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "az éjszaka közepén",
+    "components": [
+     {
+      "known": "the night",
+      "target": "az éjszaka"
+     },
+     {
+      "known": "in the middle",
+      "target": "közepén"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hun_for_eng:S0108L01C01",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "the night",
+     "target_text": "az éjszaka",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 93,
+     "updated_at": "2026-10-12T16:28:32.372148+00:00",
+     "created_at": "2026-05-11T15:08:17.918769+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "480efbc4-cad0-4837-8ee7-a85a3165b304",
+     "target2_audio_id": "3bfc2eb6-c00f-47ab-9157-87397f9afecb",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1752,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "52f5e226-cb85-4aae-ad3a-6560269b1675",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "az",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " éjszaka",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "328bf529-7ada-4dc0-8393-c8aef61cd286",
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L01C02",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "in the middle",
+     "target_text": "közepén",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 91,
+     "updated_at": "2026-10-12T11:24:52.937877+00:00",
+     "created_at": "2026-05-11T15:08:17.918769+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9bc78274-455f-4daf-83a5-2fda27e57ebe",
+     "target1_audio_id": "5893d852-8aa7-4f24-b21e-227a25b83fd1",
+     "target2_audio_id": "b4f899c7-c3f0-4f56-8f51-40e5f2f2ffb1",
+     "qa_checked": null,
+     "target1_duration_ms": 1800,
+     "target2_duration_ms": 1536,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "c52d4f0c-7931-435d-a31e-44d5e64da73a",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "közepén",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "84748942-3262-403f-a1d8-0604a7d213e4",
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L01B01",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "az éjszaka közepén",
+     "word_count": 18,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 91,
+     "updated_at": "2026-10-12T16:57:14.323454+00:00",
+     "created_at": "2026-05-11T15:08:17.918769+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "6a81a18e-d167-4fd4-8bc7-6b5cf617afd8",
+     "target2_audio_id": "c0a1d134-e001-42cc-8c12-262fa0ac4160",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "az éjszaka közepén",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "cc197bd2-3c9e-426d-a4ce-8cd87b76d9de",
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L01U02",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "in the middle of the night now",
+     "target_text": "most az éjszaka közepén",
+     "word_count": 23,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-11T15:08:17.871Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 89,
+     "updated_at": "2026-06-02T22:48:34.301435+00:00",
+     "created_at": "2026-05-11T15:08:17.918769+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "287da87f-cac4-468d-9e93-e3d57cbf8c89",
+     "target1_audio_id": "08c639d1-ef9a-4be8-a288-b75cc8980cf2",
+     "target2_audio_id": "6e821278-35a2-4b52-b3e5-c4ff448095e0",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": "most",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " az éjszaka közepén",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L01U04",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "meet in the middle of the night",
+     "target_text": "az éjszaka közepén találkozni",
+     "word_count": 29,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-11T15:08:17.871Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 89,
+     "updated_at": "2026-06-02T22:48:34.256501+00:00",
+     "created_at": "2026-05-11T15:08:17.918769+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "cdaa7c07-8a68-4fc0-b2c9-176eda55ff3d",
+     "target1_audio_id": "c616f9ad-835e-40c0-98c5-511a6bdaf4ae",
+     "target2_audio_id": "a4084ab5-d94d-4bde-a532-08fd3d96dc89",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "az éjszaka közepén",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to meet",
+       "legoId": "S0018L03",
+       "target": " találkozni",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "we",
+    "target_text": "felébredünk",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hun_for_eng:S0108L02B01",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "we wake up now",
+     "target_text": "most felébredünk",
+     "word_count": 16,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 91,
+     "updated_at": "2026-06-02T22:48:33.716233+00:00",
+     "created_at": "2026-05-11T15:08:18.018171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2014eb2f-ea70-441f-b0ce-aa7778368b65",
+     "target1_audio_id": "4047f16f-b72c-4d43-a3d3-ec9751a722bc",
+     "target2_audio_id": "3daf2b5c-e100-4225-8e59-050563704b6b",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": "most",
+       "isGhost": false
+      },
+      {
+       "known": "we",
+       "legoId": "S0108L02",
+       "target": " felébredünk",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L02U03",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "we wake up early",
+     "target_text": "hamar felébredünk",
+     "word_count": 17,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-05-11T15:08:17.971Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 92,
+     "updated_at": "2026-06-02T22:48:34.64828+00:00",
+     "created_at": "2026-05-11T15:08:18.018171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "529c626c-884f-42f6-9cfe-c75346e5916b",
+     "target1_audio_id": "244b8c70-fd3d-43a5-8dba-2a7da60f4cbd",
+     "target2_audio_id": "25b4a362-89b4-416c-abaa-b48aa50816b9",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "as soon as possible",
+       "legoId": "S0028L03",
+       "target": "hamar",
+       "isGhost": false
+      },
+      {
+       "known": "we",
+       "legoId": "S0108L02",
+       "target": " felébredünk",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L02U04",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "we wake up in the middle of the night",
+     "target_text": "az éjszaka közepén felébredünk",
+     "word_count": 30,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-05-11T15:08:17.971Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 93,
+     "updated_at": "2026-10-13T06:35:01.769365+00:00",
+     "created_at": "2026-05-11T15:08:18.018171+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "2aaa7688-d012-450c-a162-a89e93370f53",
+     "target1_audio_id": "03e42d2b-0b14-4649-b0e2-9209a2dc1bdd",
+     "target2_audio_id": "7caa914a-a7fa-46fb-a9ab-2bb9b348aee0",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "az éjszaka közepén",
+       "isGhost": false
+      },
+      {
+       "known": "we",
+       "legoId": "S0108L02",
+       "target": " felébredünk",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "581ac6f2-29e5-4535-8d42-952117c29e38",
+     "frame_mask": null
+    },
+    {
+     "id": "hun_for_eng:S0108L02U05",
+     "course_code": "hun_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we wake up at six o'clock",
+     "target_text": "hat órakor felébredünk",
+     "word_count": 22,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-05-12T10:18:59.584Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 92,
+     "updated_at": "2026-06-02T22:48:34.517664+00:00",
+     "created_at": "2026-05-12T10:18:59.620955+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c8c37fad-d244-456b-b680-4ada25d164c1",
+     "target1_audio_id": "c8b0c7c4-bbe9-4729-83f9-ba5454ff46c2",
+     "target2_audio_id": "98626f05-0c5f-4edc-91d0-0752c4ebc2de",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "at six o'clock",
+       "legoId": "S0018L02",
+       "target": "hat órakor",
+       "isGhost": false
+      },
+      {
+       "known": "we",
+       "legoId": "S0108L02",
+       "target": " felébredünk",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

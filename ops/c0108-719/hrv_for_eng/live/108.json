@@ -1,0 +1,1952 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Nismo se nadali probuditi se usred noći."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we didn't hope",
+    "target_text": "nismo se nadali",
+    "components": [
+     {
+      "known": "hoped",
+      "target": "nadali"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hrv_for_eng:S0108L01C01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "we didn't",
+     "target_text": "nismo",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-06-02T22:47:59.730861+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a731ccc7-4ee2-45b3-9336-0d0de9ccd9db",
+     "target1_audio_id": "293dbe05-53b8-4569-b87c-df045d6bef33",
+     "target2_audio_id": "651c5b3a-b396-46fe-96d5-495152134d78",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "51b9281b-c5a3-4023-b70e-fc907a67f85f",
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "nismo",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01C02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "oneself",
+     "target_text": "se",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-12T22:20:25.243416+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fcae823d-343b-4758-908a-b05fbb7b5c01",
+     "target1_audio_id": "3ce14fa9-ed3c-450d-826b-38b549f3a151",
+     "target2_audio_id": "7c0f55ca-6fd0-41c9-9a43-c244aaf24534",
+     "qa_checked": null,
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "se",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f19ec720-8f5f-471a-9c91-da3ba9ca875e",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01C03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "hoped",
+     "target_text": "nadali",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 18,
+     "updated_at": "2026-10-12T17:30:00.513933+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "90292786-2405-4270-881b-934905a57912",
+     "target1_audio_id": "fef8efdb-e02a-43bb-a6bb-084cababd1a1",
+     "target2_audio_id": "f5458c03-6345-472c-a5c9-efb74882b14c",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "nadali",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f19ec720-8f5f-471a-9c91-da3ba9ca875e",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01B01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we didn't hope",
+     "target_text": "nismo se nadali",
+     "word_count": 15,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-10-13T06:34:57.457533+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+     "target1_audio_id": "b3bb87c0-d50e-4d4d-887a-5dd96ade7af0",
+     "target2_audio_id": "90b8bb4f-ef62-467e-931b-4ee8725ec5fa",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "35128cc1-0c09-4440-aea6-a226decb8ed3",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01B02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we didn't hope to hear that",
+     "target_text": "nismo se nadali čuti to",
+     "word_count": 23,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:09.229881+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7a2a3f09-6d75-44aa-a442-7e27a7425afd",
+     "target1_audio_id": "c4cfe622-2362-46e3-92c3-f75932bee2f0",
+     "target2_audio_id": "bfa2ff1c-5126-49bd-877b-fbcbec7fea16",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to hear",
+       "legoId": "S0103L02",
+       "target": " čuti",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0061L02",
+       "target": " to",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01B03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "I think we didn't hope",
+     "target_text": "mislim da se nismo nadali",
+     "word_count": 25,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:19.819931+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "9d01a994-9706-41c2-aa27-ef808498aa83",
+     "target1_audio_id": "cfe4f513-9a79-411b-9415-20c1acd90410",
+     "target2_audio_id": "a4781cf9-a671-4a0a-88df-c4d04a5040c7",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I think that",
+       "legoId": "S0047L02",
+       "target": "mislim da",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nismo",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nadali",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01U01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "we didn't hope to see that",
+     "target_text": "nismo se nadali vidjeti to",
+     "word_count": 26,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:17.440Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:18.163987+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2c452670-7438-4b24-b212-341b15db4c2b",
+     "target1_audio_id": "7568bebf-8794-4cbe-bcb7-1b113de1dbdc",
+     "target2_audio_id": "41db416c-cdca-4d27-acf0-560064371925",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to see",
+       "legoId": "S0107L02",
+       "target": " vidjeti",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0061L02",
+       "target": " to",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01U02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "we didn't hope to change what we're doing",
+     "target_text": "nismo se nadali promijeniti što radimo",
+     "word_count": 38,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:17.440Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:16.33666+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2dc03e80-4189-4426-b2cf-7a0e714030af",
+     "target1_audio_id": "09792227-15b6-4076-b3cc-393b8e9fcdf2",
+     "target2_audio_id": "3462e96f-8123-4e5e-8ab1-905230f17827",
+     "qa_checked": null,
+     "target1_duration_ms": 3312,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to change",
+       "legoId": "S0104L02",
+       "target": " promijeniti",
+       "isGhost": false
+      },
+      {
+       "known": "what we're doing",
+       "legoId": "S0104L03",
+       "target": " što radimo",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01U03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "I'm surprised that we didn't hope for more",
+     "target_text": "iznenađen sam da se nismo nadali više",
+     "word_count": 37,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:17.440Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-07-16T15:03:24.243569+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "30311d02-7777-48f0-a7f9-29851ba64f1e",
+     "target1_audio_id": "3f4c1c1a-d793-41ac-b72f-d3c2b3f9d80e",
+     "target2_audio_id": "eb1d0642-08f5-40a3-9ede-cf33afcdd10b",
+     "qa_checked": null,
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 3264,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm surprised",
+       "legoId": "S0077L01",
+       "target": "iznenađen sam",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " da",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nismo",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nadali",
+       "isGhost": true
+      },
+      {
+       "known": "more",
+       "legoId": "S0101L02",
+       "target": " više",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01U04",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "that's why we didn't hope to continue",
+     "target_text": "zato se nismo nadali nastaviti",
+     "word_count": 30,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:17.440Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:20.949907+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "7729cb54-4c34-4637-a776-87fbe77f86e8",
+     "target1_audio_id": "45dafdc9-17cc-4570-a94a-e68d93259b1e",
+     "target2_audio_id": "ed4ab6c4-4456-4576-b225-dff829323a01",
+     "qa_checked": null,
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "that's why",
+       "legoId": "S0105L01",
+       "target": "zato",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nismo",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nadali",
+       "isGhost": true
+      },
+      {
+       "known": "to continue",
+       "legoId": "S0092L02",
+       "target": " nastaviti",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L01U05",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "unfortunately we didn't hope for that",
+     "target_text": "nažalost nismo se nadali tome",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:17.440Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:10.229128+00:00",
+     "created_at": "2026-03-12T16:21:17.486043+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "77ba4672-1e29-40c7-a795-f5164edd2f09",
+     "target1_audio_id": "ddc5ff0c-112d-4d74-b2f1-6d2948fbe81f",
+     "target2_audio_id": "cd6380db-a85e-4512-bbad-1f56a04ef274",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "unfortunately",
+       "legoId": "S0086L02",
+       "target": "nažalost",
+       "isGhost": false
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " nismo se nadali",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tome",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "to awaken",
+    "target_text": "probuditi se",
+    "components": [
+     {
+      "known": "to awaken",
+      "target": "probuditi"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hrv_for_eng:S0108L02C01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "to awaken",
+     "target_text": "probuditi",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-06-02T22:47:59.088684+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a0e42812-e436-45f4-929c-7743b1c4ab5d",
+     "target1_audio_id": "be2fab1f-8b00-46e6-bd96-5db9fc279b8e",
+     "target2_audio_id": "5b054fa7-7b1e-4a75-bc79-88ce19016222",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "68ad7b28-d273-4d1c-97a3-257813b9a475",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "probuditi",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02C02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "oneself",
+     "target_text": "se",
+     "word_count": 2,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-12T22:20:25.103023+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fcae823d-343b-4758-908a-b05fbb7b5c01",
+     "target1_audio_id": "3ce14fa9-ed3c-450d-826b-38b549f3a151",
+     "target2_audio_id": "7c0f55ca-6fd0-41c9-9a43-c244aaf24534",
+     "qa_checked": null,
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 1296,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": false,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "se",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "f19ec720-8f5f-471a-9c91-da3ba9ca875e",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02B01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "to awaken",
+     "target_text": "probuditi se",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:17.839977+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a0e42812-e436-45f4-929c-7743b1c4ab5d",
+     "target1_audio_id": "f45c1dd5-7642-467b-89ce-47a31a054ee3",
+     "target2_audio_id": "bbbd5989-c51d-4b0f-a950-d4ad5059fd41",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": "probuditi se",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02B02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we didn't hope to awaken",
+     "target_text": "nismo se nadali probuditi se",
+     "word_count": 28,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:16.463884+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b159cd50-0fc1-4123-aa52-c366d1c88479",
+     "target1_audio_id": "135abceb-04d9-492c-8e45-43ce7281e3c2",
+     "target2_audio_id": "7ad5349a-e36a-4187-bfda-03c5a16603b9",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false
+      },
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": " probuditi se",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02B03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "I don't want to awaken",
+     "target_text": "ne želim se probuditi",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-16T16:32:05.24451+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "5f67a6ee-feca-42bd-af6a-6b5efc1a526f",
+     "target1_audio_id": "06accd14-0a65-4869-8383-9d9f4962007d",
+     "target2_audio_id": "ae08f10e-05f1-4c9d-91a5-de8afdddefdf",
+     "qa_checked": null,
+     "target1_duration_ms": 1840,
+     "target2_duration_ms": 1760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't want",
+       "legoId": "S0019L02",
+       "target": "ne želim",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " probuditi",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a97a73d2-e413-4511-8047-e2ae2d07b6f1",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02U01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "I'm not sure if I want to awaken now",
+     "target_text": "nisam siguran želim li se probuditi sada",
+     "word_count": 39,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.065Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 17,
+     "updated_at": "2026-11-16T16:32:05.380477+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "654aa7e6-f324-4bd0-857e-afec82a41226",
+     "target1_audio_id": "94521e90-e0db-4b3b-aa16-705a64033dc5",
+     "target2_audio_id": "58a03b7b-2483-414c-bdfd-599fdaa3a613",
+     "qa_checked": null,
+     "target1_duration_ms": 2960,
+     "target2_duration_ms": 3040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm not sure",
+       "legoId": "S0010L01",
+       "target": "nisam siguran",
+       "isGhost": false
+      },
+      {
+       "known": "I want",
+       "legoId": "S0001L01",
+       "target": " želim",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " li",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " probuditi",
+       "isGhost": true
+      },
+      {
+       "known": "now",
+       "legoId": "S0001L05",
+       "target": " sada",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a97a73d2-e413-4511-8047-e2ae2d07b6f1",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02U02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "it's difficult to awaken quickly enough",
+     "target_text": "teško je probuditi se dovoljno brzo",
+     "word_count": 35,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.065Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:23.698193+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e8a93169-ae37-4af9-b14b-8d219b859c92",
+     "target1_audio_id": "87ffdf22-85de-47c2-aa49-024f3c67a33d",
+     "target2_audio_id": "d6b40269-baa9-4cfd-b9bb-154e0296a13d",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "difficult",
+       "legoId": "S0091L01",
+       "target": "teško",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " je",
+       "isGhost": true
+      },
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": " probuditi se",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "enough",
+       "legoId": "S0091L02",
+       "target": " dovoljno",
+       "isGhost": false
+      },
+      {
+       "known": "quickly",
+       "legoId": "S0077L02",
+       "target": " brzo",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02U03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "I'd like to awaken ready",
+     "target_text": "htio bih se probuditi spreman",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.065Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-07-16T15:02:07.333683+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "5ef7f65d-b200-48fe-a104-bda6ba3b401b",
+     "target1_audio_id": "586fe921-8dc9-4dc6-b321-e71a04285edb",
+     "target2_audio_id": "fe0da39b-c512-4942-ac0a-3248628081c6",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "i'd like",
+       "legoId": "S0011L01",
+       "target": "htio bih",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " probuditi",
+       "isGhost": true
+      },
+      {
+       "known": "ready",
+       "legoId": "S0088L01",
+       "target": " spreman",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L02U04",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "I think it's time to awaken",
+     "target_text": "mislim da je vrijeme probuditi se",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.065Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:08.692861+00:00",
+     "created_at": "2026-03-12T16:21:19.099873+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "64eb9dcb-a9f3-4021-bb73-349cdf2a7790",
+     "target1_audio_id": "593b6c13-807c-4724-bf30-b7bce3733274",
+     "target2_audio_id": "7c39d762-9751-46b2-b848-35fca3780467",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I think that",
+       "legoId": "S0047L02",
+       "target": "mislim da",
+       "isGhost": false
+      },
+      {
+       "known": "it is time",
+       "legoId": "S0093L02",
+       "target": " je vrijeme",
+       "isGhost": false
+      },
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": " probuditi se",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "mid-night",
+    "target_text": "usred noći",
+    "components": [
+     {
+      "known": "in the middle of",
+      "target": "usred"
+     },
+     {
+      "known": "night",
+      "target": "noći"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hrv_for_eng:S0108L03C01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "in the middle of",
+     "target_text": "usred",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-12T16:29:36.729553+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "015ec61e-cb05-4bef-99ba-c2b1be2ab42d",
+     "target1_audio_id": "cacf1f5e-11e1-4cdc-9948-b9045e133b89",
+     "target2_audio_id": "60a8d4c6-c7e3-480e-82f8-c3b70d7d9d92",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "usred",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9619e852-418f-4450-98ff-8fb7611d2fbd",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03C02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "night",
+     "target_text": "noći",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-10-12T16:29:38.108051+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+     "target1_audio_id": "4fcd1349-57a2-4553-a5c1-4f5b6e08a2fe",
+     "target2_audio_id": "cb2069ad-b54c-477f-be7c-404e5c284638",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "61d90edc-db48-4786-9b15-d50767017b85",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "noći",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9619e852-418f-4450-98ff-8fb7611d2fbd",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03B01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "mid-night",
+     "target_text": "usred noći",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:05.289175+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "49b54ca7-5412-4c72-80ce-34d4771cc2bd",
+     "target1_audio_id": "d67d1970-dbd5-4bd3-8c8f-61fa7c9f7d3b",
+     "target2_audio_id": "97788b04-236d-41e2-8965-233d80cdaeec",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": "usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03B02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "to awaken mid-night",
+     "target_text": "probuditi se usred noći",
+     "word_count": 23,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:15.353448+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "7a1517de-e015-4278-9e80-1ceecf12bd2c",
+     "target1_audio_id": "da3bbe88-8d85-443f-97dd-211af7d24a4d",
+     "target2_audio_id": "96ad9812-a7ce-40ae-a111-6adefa1fbf48",
+     "qa_checked": null,
+     "target1_duration_ms": 2688,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": "probuditi se",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03B03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "we didn't hope to awaken mid-night",
+     "target_text": "nismo se nadali probuditi se usred noći",
+     "word_count": 39,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:11.057249+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "31fac621-e5ec-4f61-b4e8-124411df0fed",
+     "target1_audio_id": "83756133-1ae5-4251-b653-703f2277475b",
+     "target2_audio_id": "31acc172-2bf6-4d45-b794-4459a388c65e",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "nismo se nadali",
+       "isGhost": false
+      },
+      {
+       "known": "to awaken",
+       "legoId": "S0108L02",
+       "target": " probuditi se",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03U01",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "it's difficult to work mid-night",
+     "target_text": "teško je raditi usred noći",
+     "word_count": 26,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.447Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:12.921887+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "21ba5fe7-35d7-43bb-8a2a-d1618b2ed5f2",
+     "target1_audio_id": "0489916d-18ae-40c6-b441-3d55aedd10f6",
+     "target2_audio_id": "d8c33fcf-91b1-4323-8990-fdc428374249",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "difficult",
+       "legoId": "S0091L01",
+       "target": "teško",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " je",
+       "isGhost": true
+      },
+      {
+       "known": "doing this",
+       "legoId": "S0092L03",
+       "target": " raditi",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03U02",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "I don't want to awaken mid-night",
+     "target_text": "ne želim se probuditi usred noći",
+     "word_count": 31,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.447Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 20,
+     "updated_at": "2026-11-16T16:32:05.563825+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ee35cc6b-9c4e-409f-a240-4a640327abe9",
+     "target1_audio_id": "02d2092d-4abc-4cd9-94e5-a0993649b1d7",
+     "target2_audio_id": "5250216d-6d96-4aef-ae94-a5552a42f09c",
+     "qa_checked": null,
+     "target1_duration_ms": 2480,
+     "target2_duration_ms": 2480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't want",
+       "legoId": "S0019L02",
+       "target": "ne želim",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " se",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " probuditi",
+       "isGhost": true
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "a97a73d2-e413-4511-8047-e2ae2d07b6f1",
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03U03",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "it wasn't possible to continue mid-night",
+     "target_text": "nije bilo moguće nastaviti usred noći",
+     "word_count": 37,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.447Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:11.979592+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "62900033-be0f-4817-846f-220309f71f08",
+     "target1_audio_id": "f1b06f10-5e6b-4b3e-9fce-11cbbd0c93f7",
+     "target2_audio_id": "4afedb40-04ba-49ac-b7c5-036d18753969",
+     "qa_checked": null,
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3240,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it wasn't possible",
+       "legoId": "S0086L01",
+       "target": "nije bilo moguće",
+       "isGhost": false
+      },
+      {
+       "known": "to continue",
+       "legoId": "S0092L02",
+       "target": " nastaviti",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03U04",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "I'm not sure why we need to work mid-night",
+     "target_text": "nisam siguran zašto trebamo raditi usred noći",
+     "word_count": 45,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.447Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-07-16T15:04:02.3761+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4a405544-b8ce-4822-855f-b6aafc1301c3",
+     "target1_audio_id": "cbf45fb9-e464-42c5-bd4c-f2d69091f181",
+     "target2_audio_id": "b235cea4-f4e0-4eca-a924-db28d242d524",
+     "qa_checked": null,
+     "target1_duration_ms": 4248,
+     "target2_duration_ms": 3840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm not sure",
+       "legoId": "S0010L01",
+       "target": "nisam siguran",
+       "isGhost": false
+      },
+      {
+       "known": "why",
+       "legoId": "S0067L01",
+       "target": " zašto",
+       "isGhost": false
+      },
+      {
+       "known": "we need",
+       "legoId": "S0104L01",
+       "target": " trebamo",
+       "isGhost": false
+      },
+      {
+       "known": "doing this",
+       "legoId": "S0092L03",
+       "target": " raditi",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "hrv_for_eng:S0108L03U05",
+     "course_code": "hrv_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "unfortunately I need to work mid-night",
+     "target_text": "nažalost trebam raditi usred noći",
+     "word_count": 33,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-12T16:21:19.447Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:48:17.3289+00:00",
+     "created_at": "2026-03-12T16:21:19.487774+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "03fa073e-1b30-4f9f-a14c-3bf6e5b9d66c",
+     "target1_audio_id": "f826bcb3-f6af-4bbb-94dd-e76ffccc6814",
+     "target2_audio_id": "09fdd4dd-dd4e-4caa-b131-a3714c09bd77",
+     "qa_checked": null,
+     "target1_duration_ms": 3552,
+     "target2_duration_ms": 3192,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "unfortunately",
+       "legoId": "S0086L02",
+       "target": "nažalost",
+       "isGhost": false
+      },
+      {
+       "known": "I need",
+       "legoId": "S0096L01",
+       "target": " trebam",
+       "isGhost": false
+      },
+      {
+       "known": "doing this",
+       "legoId": "S0092L03",
+       "target": " raditi",
+       "isGhost": false
+      },
+      {
+       "known": "mid-night",
+       "legoId": "S0108L03",
+       "target": " usred noći",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}
