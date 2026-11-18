@@ -1,0 +1,502 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "b6-s071-073-d2.tsv",
+ "at": "2026-11-18T14:32:54.273Z",
+ "rows": [
+  {
+   "id": "S0071L01B04",
+   "role": "build",
+   "target": "didn't want to stop talking",
+   "old": "止まりたくありませんでした",
+   "new": "話すのをやめたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L01B06",
+   "role": "build",
+   "target": "didn't want to look after the young dog",
+   "old": "世話をしたくありませんでした",
+   "new": "若い犬の世話をしたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L01B07",
+   "role": "build",
+   "target": "didn't want to read anything this afternoon",
+   "old": "何も読みたくありませんでした",
+   "new": "今日の午後何も読みたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L01U12",
+   "role": "use",
+   "target": "she didn't want to read anything this afternoon",
+   "old": "彼女はその話を読みたくありませんでした",
+   "new": "彼女は今日の午後何も読みたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L01U14",
+   "role": "use",
+   "target": "he didn't want to be quiet when other people are here",
+   "old": "彼は昨日の午後ずっと静かにしたくありませんでした",
+   "new": "他の人がここにいるとき、彼は静かにしたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L02U08",
+   "role": "use",
+   "target": "she didn't want to let anyone hear the truth",
+   "old": "彼女は誰にもその答えを聞かせたくありませんでした",
+   "new": "彼女は誰にも本当のことを聞かせたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she didn't want to let anyone hear the truth\",\"unknown\":\"anyone hear truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L02U12",
+   "role": "use",
+   "target": "he didn't want to let anyone hear the truth",
+   "old": "彼は誰にも聞かせたくなかった",
+   "new": "彼は誰にも本当のことを聞かせたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"he didn't want to let anyone hear the truth\",\"unknown\":\"anyone hear truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L03B04",
+   "role": "build",
+   "target": "didn't want to let anyone hear the truth",
+   "old": "誰にも本当のことを聞かせない",
+   "new": "誰にも本当のことを聞かせたくありませんでした。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"didn't want to let anyone hear the truth\",\"unknown\":\"hear truth\"}],\"total\":1}",
+    "ZUT whole course: \"誰にも本当のことを聞かせたくありませんでした。\" is \"we didn't want to let anyone hear the truth\" at seed 71"
+   ]
+  },
+  {
+   "id": "S0071L03U05",
+   "role": "use",
+   "target": "did you want to let anyone know the answer?",
+   "old": "あなたは誰にも答えを教えたくありませんでしたか",
+   "new": "誰かに答えを知らせたかったですか？",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L03U06",
+   "role": "use",
+   "target": "she didn't want to let anyone hear the truth",
+   "old": "彼女は誰にも話を聞かれたくなかった",
+   "new": "彼女は誰にも本当のことを聞かせたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she didn't want to let anyone hear the truth\",\"unknown\":\"hear truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L03U15",
+   "role": "use",
+   "target": "we didn't want to let anyone know the truth",
+   "old": "誰にも話の邪魔をさせたくなかった",
+   "new": "誰にも本当のことを知らせたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"we didn't want to let anyone know the truth\",\"unknown\":\"truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L04B02",
+   "role": "build",
+   "target": "I didn't want to hear",
+   "old": "聞きたい",
+   "new": "聞きたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"聞きたくありませんでした\" is \"I didn't want to ask you\" at seed 208"
+   ]
+  },
+  {
+   "id": "S0071L04U02",
+   "role": "use",
+   "target": "she didn't want to let anyone hear the truth",
+   "old": "彼女は誰にも話を聞かれたくなかった",
+   "new": "彼女は誰にも本当のことを聞かせたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she didn't want to let anyone hear the truth\",\"unknown\":\"truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L04U03",
+   "role": "use",
+   "target": "I didn't want to hear the truth",
+   "old": "私は本当のことを聞きたかったです",
+   "new": "本当のことを聞きたくありませんでした",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I didn't want to hear the truth\",\"unknown\":\"truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L04U06",
+   "role": "use",
+   "target": "he didn't want to let anyone hear the story",
+   "old": "彼は話を聞かれたくなかった",
+   "new": "彼は誰にもその話を聞かせたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L04U11",
+   "role": "use",
+   "target": "I wanted to hear what you wanted to say",
+   "old": "私はあなたの言葉を聞きたかったです",
+   "new": "あなたが言いたかったことを聞きたかったです",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L04U14",
+   "role": "use",
+   "target": "I wanted to hear the truth yesterday",
+   "old": "私は昨日あなたに本当のことを聞きたかったです",
+   "new": "昨日、本当のことを聞きたかったです",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I wanted to hear the truth yesterday\",\"unknown\":\"truth\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0071L05B05",
+   "role": "build",
+   "target": "didn't want to let anyone hear the truth",
+   "old": "誰にも本当のことを聞かせない",
+   "new": "誰にも本当のことを聞かせたくありませんでした。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"誰にも本当のことを聞かせたくありませんでした。\" is \"we didn't want to let anyone hear the truth\" at seed 71"
+   ]
+  },
+  {
+   "id": "S0071L05U02",
+   "role": "use",
+   "target": "she didn't want to tell me the truth",
+   "old": "彼女は本当のことを誰にも言いたくなかった",
+   "new": "彼女は私に本当のことを言いたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L05U05",
+   "role": "use",
+   "target": "it's not difficult to tell the truth",
+   "old": "本当のことを言うのは難しくありませんでした",
+   "new": "本当のことを言うのは難しくありません",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L05U06",
+   "role": "use",
+   "target": "I didn't want to tell the truth because I wasn't sure what to say",
+   "old": "私は本当のことを言いたくなかったので少し時間がかかりました",
+   "new": "何を言えばいいかわからなかったので、本当のことを言いたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L05U08",
+   "role": "use",
+   "target": "it's important to take time to tell the truth",
+   "old": "私は本当のことを言うのに少し時間がかかりました",
+   "new": "本当のことを言う時間を取ることが大切です",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0071L05U12",
+   "role": "use",
+   "target": "I didn't want to tell the truth because I wasn't sure what to say",
+   "old": "私は本当のことを言いたくなかったので少し時間がかかりました",
+   "new": "何を言えばいいかわからなかったので、本当のことを言いたくありませんでした",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0072L01B05",
+   "role": "build",
+   "target": "you're doing interesting things",
+   "old": "今面白いことをやっている",
+   "new": "面白いことをしています",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0072L01U08",
+   "role": "use",
+   "target": "I think that you're doing very well now",
+   "old": "あなたは今日英語でとてもよくやっていると思いますよ",
+   "new": "今とても上手にやっていると思います",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L01B03",
+   "role": "build",
+   "target": "thank you very much but I've got more to learn",
+   "old": "でもまだ学ぶことがあります",
+   "new": "でももっと学ぶことがあります",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT within this request: \"でももっと学ぶことがあります\" is given 2 different translations"
+   ]
+  },
+  {
+   "id": "S0073L01B05",
+   "role": "build",
+   "target": "thank you very much but I've got",
+   "old": "どうもありがとうございますがまだ",
+   "new": "どうもありがとうございます、でも",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"thank you very much but I've got\",\"unknown\":\"got\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0073L01U08",
+   "role": "use",
+   "target": "thank you very much",
+   "old": "ありがとうございます、とても親切です",
+   "new": "どうもありがとうございます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"0 bare BUILD + 1 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0073L01U09",
+   "role": "use",
+   "target": "thank you very much",
+   "old": "昨日のことについてどうもありがとうございます",
+   "new": "どうもありがとうございます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"0 bare BUILD + 1 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0073L01U10",
+   "role": "use",
+   "target": "thank you very much but I've got more to learn",
+   "old": "どうもありがとうでも英語はまだ難しいです",
+   "new": "どうもありがとうございます、でももっと学ぶことがあります。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"thank you very much but I've got more to learn\",\"unknown\":\"got\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0073L01U11",
+   "role": "use",
+   "target": "thank you very much but I've got more to learn",
+   "old": "ありがとうございますがもっとうまく話せるように頑張ります",
+   "new": "どうもありがとうございます、でももっと学ぶことがあります。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"thank you very much but I've got more to learn\",\"unknown\":\"got\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0073L01U12",
+   "role": "use",
+   "target": "thank you very much",
+   "old": "あなたはとてもよくやっていてどうもありがとうございます",
+   "new": "どうもありがとうございます",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"0 bare BUILD + 1 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
+  },
+  {
+   "id": "S0073L01U14",
+   "role": "use",
+   "target": "thank you very much but I've got more to learn",
+   "old": "ありがとうございます、私はもっと上手になれると思います",
+   "new": "どうもありがとうございます、でももっと学ぶことがあります。",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"thank you very much but I've got more to learn\",\"unknown\":\"got\"}],\"total\":1}"
+   ]
+  },
+  {
+   "id": "S0073L02B05",
+   "role": "build",
+   "target": "but I've got more to learn",
+   "old": "ありがとうでももっと学ぶことがあります",
+   "new": "でももっと学ぶことがあります",
+   "del": false,
+   "verdict": "FAIL",
+   "why": [
+    "ZUT within this request: \"でももっと学ぶことがあります\" is given 2 different translations"
+   ]
+  },
+  {
+   "id": "S0073L02U02",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U03",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U04",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U06",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U07",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U09",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U10",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U12",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U13",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  },
+  {
+   "id": "S0073L02U15",
+   "role": "use",
+   "target": "I've got more to learn but I enjoy doing this with you",
+   "old": "まだもっと英語を学ぶことがあるのでもっと練習したいです",
+   "new": "もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PASS"
+  }
+ ],
+ "seeds": {
+  "71": {
+   "before": [
+    "L1: 4 duplicate phrase(s) within this LEGO: \"didn't want to\", \"she didn't want to tell me where it was\", \"she didn't want to read anything this afternoon\"",
+    "L2: 8 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\"",
+    "L4: 6 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"she didn't want to let anyone hear the truth\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\""
+   ],
+   "after": [
+    "L1: 4 duplicate phrase(s) within this LEGO: \"didn't want to\", \"she didn't want to tell me where it was\", \"she didn't want to read anything this afternoon\"",
+    "L2: 8 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\"",
+    "L4: 6 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"she didn't want to let anyone hear the truth\"",
+    "L4: vocab violations in 1 phrase(s)",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\", \"we didn't want to let anyone hear the truth\""
+   ],
+   "newFailures": []
+  },
+  "72": {
+   "before": [
+    "L1: 9 duplicate phrase(s) within this LEGO: \"you're doing\", \"I think that you're doing very well\", \"I think that you're doing very well\""
+   ],
+   "after": [
+    "L1: 9 duplicate phrase(s) within this LEGO: \"you're doing\", \"I think that you're doing very well\", \"I think that you're doing very well\""
+   ],
+   "newFailures": []
+  },
+  "73": {
+   "before": [
+    "L1: 16 duplicate phrase(s) within this LEGO: \"thank you very much\", \"thank you very much but I've got more to learn\", \"thank you very much but I've got more to learn\"",
+    "L2: 18 duplicate phrase(s) within this LEGO: \"I've got more to learn\", \"I've got more to learn\", \"I've got more to learn\""
+   ],
+   "after": [
+    "L1: 16 duplicate phrase(s) within this LEGO: \"thank you very much\", \"thank you very much but I've got more to learn\", \"thank you very much but I've got more to learn\"",
+    "L2: 18 duplicate phrase(s) within this LEGO: \"I've got more to learn\", \"I've got more to learn\", \"I've got more to learn\""
+   ],
+   "newFailures": []
+  }
+ }
+}
