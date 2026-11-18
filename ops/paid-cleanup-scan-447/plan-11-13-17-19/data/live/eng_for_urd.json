@@ -1,0 +1,378 @@
+{
+"119": {
+"at": "2026-11-18T18:34:06Z",
+"known": "کیا میں جانے سے پہلے آپ سے کچھ پوچھ سکتا ہوں؟",
+"legos": [
+{
+"id": "S0119L01",
+"idx": 1,
+"is_new": true,
+"known": "چھوڑنا",
+"phrases": [
+{
+"id": "b444b921-3756-44c7-be13-2ac721296dde",
+"ka": "e4d2bb83-a880-4102-ac87-97056d3ee006",
+"known": "چھوڑنا",
+"pos": 0,
+"t1": "6be273c2-6676-4a8f-aab3-ea30b6c5c33f",
+"t2": "2776d864-31b2-4e30-acf7-131528864164",
+"target": "leave",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_urd:S0119L01B01",
+"ka": "79ddef41-394b-4a57-85a8-92c07a15d951",
+"known": "ابھی چھوڑنا",
+"pos": 1,
+"t1": "1d633670-dc51-41b7-b474-e64b816ba05e",
+"t2": "5534060c-c456-4db7-92ec-6ea839529834",
+"target": "leave now",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L01B02",
+"ka": "6970a8ae-a043-41d6-a845-59341bffbef9",
+"known": "چھوڑنا چاہتا ہوں",
+"pos": 2,
+"t1": "629f968a-b909-4d6f-9adc-6cccd22e9cd4",
+"t2": "846e0ff5-bc6e-4b7a-88ce-2d01b271cda3",
+"target": "want to leave",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L01B03",
+"ka": "4464effb-70b9-4850-bbab-4e69ae8babf4",
+"known": "چھوڑنا پڑے گا",
+"pos": 3,
+"t1": "0d8f01b5-ea02-4251-bb88-e430acaeef67",
+"t2": "947fadcb-4ff3-48f3-bc8b-407aefe87d61",
+"target": "need to leave",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L01U01",
+"ka": "a7537fbc-d4ea-4267-911a-4d6e987f240b",
+"known": "مجھے ابھی چھوڑنا ہے",
+"pos": 4,
+"t1": "bd382d0a-5d4f-4308-ae83-0cf6f43faa3d",
+"t2": "a6281bc7-951e-4bd1-b5fc-234ab6fb7c9b",
+"target": "I need to leave now",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L01U02",
+"ka": "e9a5856d-4179-4413-bf81-3068da0ef43d",
+"known": "میں چھوڑنا نہیں چاہتا",
+"pos": 5,
+"t1": "5e5ac786-0c32-4a5e-92f2-1fc2be8db96f",
+"t2": "6aa2ba35-6b16-4cb8-a2af-3c35ffa319f8",
+"target": "I don't want to leave",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L01U03",
+"ka": "03b75d67-dea3-4e76-a1c3-15678a3ab36a",
+"known": "کیا آپ ابھی چھوڑنا چاہتے ہیں؟",
+"pos": 6,
+"t1": "9dc0a6bc-8497-426d-ab88-729bac02eebe",
+"t2": "f6e81821-14b6-465c-a0df-e548a7f96136",
+"target": "do you want to leave now?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L01U04",
+"ka": "36e30af7-14ba-4cc9-85fe-4c426cfb3e55",
+"known": "آپ کب چھوڑنا چاہتے ہیں؟",
+"pos": 7,
+"t1": "d7a635d2-3b08-4154-a99e-a0721edf59f6",
+"t2": "54945c1a-681c-4048-9599-a95fc6434179",
+"target": "when do you want to leave?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L01U05",
+"ka": "758001e2-61c7-44d0-a496-8d8f597c9f2a",
+"known": "میں جلد چھوڑنا نہیں چاہتا",
+"pos": 8,
+"t1": "391a3cf4-0103-4add-9dad-ed1d99b70ca2",
+"t2": "3240094e-b81b-48db-8dca-62e6e2e23197",
+"target": "I don't want to leave soon",
+"type": "use"
+}
+],
+"target": "leave",
+"type": "A"
+},
+{
+"id": "S0119L02",
+"idx": 2,
+"is_new": true,
+"known": "کیا میں ... سکتا ہوں",
+"phrases": [
+{
+"id": "a598a490-f574-4862-9714-49059b112eb6",
+"ka": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+"known": "کیا میں ... سکتا ہوں",
+"pos": 0,
+"t1": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+"t2": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+"target": "can I",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_urd:S0119L02C01",
+"ka": "2f70adb9-ba24-49b9-851f-cac2792f18ea",
+"known": "میں",
+"pos": 1,
+"t1": "5c813aa1-229d-43f5-8874-f85ff715cba6",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_urd:S0119L02C02",
+"ka": "fb3fecbf-5ef1-44df-a578-14f89afd7ab0",
+"known": "سکتا ہوں",
+"pos": 2,
+"t1": "41a6ca1d-38ec-4125-bd1f-bfc4ff782ef7",
+"t2": "2214039c-045e-4a42-9f13-9f933289f2e5",
+"target": "can",
+"type": "component"
+},
+{
+"id": "eng_for_urd:S0119L02B01",
+"ka": "35fbd015-71e4-4e3e-b5a8-6da8ba7f68c6",
+"known": "کیا میں ... سکتا ہوں",
+"pos": 3,
+"t1": "c65c2cd8-0fb2-4722-9850-fb66dbca11f2",
+"t2": "dc4ffacb-a203-42ae-89d2-25da0b7e9a27",
+"target": "can I",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L02B02",
+"ka": "28d75b4b-9ed1-4141-aafe-353b345a1da6",
+"known": "کیا میں پوچھ سکتا ہوں؟",
+"pos": 4,
+"t1": "bbafddde-6412-4084-b25e-a9d3c02480ad",
+"t2": "2c16ba39-1807-47a6-84ee-c148b3ad77c9",
+"target": "can I ask?",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L02B03",
+"ka": "4ee73092-96b5-4e0b-a24d-a85e35de8c19",
+"known": "کیا میں چھوڑ سکتا ہوں؟",
+"pos": 5,
+"t1": "3807cc8d-fc59-43d9-aa17-69d11581d12e",
+"t2": "a74815ae-32bf-44dd-b709-74b9283943fd",
+"target": "can I leave?",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L02B04",
+"ka": "f59c4a8f-9705-479f-a480-a7a41fefe046",
+"known": "کیا میں ابھی چھوڑ سکتا ہوں؟",
+"pos": 6,
+"t1": "ef40f5b9-ce5b-4d6a-910b-31a24abb4987",
+"t2": "f1ce1a53-0bec-4a8f-8d98-66bbc739b1f4",
+"target": "can I leave now?",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0119L02U01",
+"ka": "9fae253e-c2e4-4017-a32d-b3c165bc1314",
+"known": "کیا میں کچھ پوچھ سکتا ہوں؟",
+"pos": 7,
+"t1": "dd1862d6-f6c2-485b-8b34-f432ce86bcff",
+"t2": "e8fa8dc1-972f-4604-857b-544e5337f3d6",
+"target": "can I ask something?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L02U02",
+"ka": "9fae253e-c2e4-4017-a32d-b3c165bc1314",
+"known": "کیا میں کچھ پوچھ سکتا ہوں؟",
+"pos": 8,
+"t1": "dd1862d6-f6c2-485b-8b34-f432ce86bcff",
+"t2": "e8fa8dc1-972f-4604-857b-544e5337f3d6",
+"target": "can I ask something?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L02U03",
+"ka": "1b032a31-f45a-4135-9b78-5f48231107ed",
+"known": "کیا میں چھوڑنے سے پہلے پوچھ سکتا ہوں؟",
+"pos": 9,
+"t1": "bf0dd575-006b-40d1-875f-c8fccfec4501",
+"t2": "9c75a55e-5ae1-4ea8-9a3b-8daeef11bfc6",
+"target": "can I ask before I leave?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L02U04",
+"ka": "4cc192b4-f19f-4d9f-991b-2e4d5cb72890",
+"known": "کیا میں کچھ اور پوچھ سکتا ہوں؟",
+"pos": 10,
+"t1": "c60b5abc-3264-4192-893a-8a1b4b9d5122",
+"t2": "d8479fdd-755e-442a-a442-b294debfad81",
+"target": "can I ask something else?",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0119L02U05",
+"ka": "5b10cfd9-569e-46eb-8585-e73dc5169692",
+"known": "کیا میں آپ سے کچھ پوچھ سکتا ہوں چھوڑنے سے پہلے؟",
+"pos": 11,
+"t1": "fae885cc-5a2f-4234-9430-ef04e7579379",
+"t2": "768af793-4d1e-4e39-b2d1-59cf82d17846",
+"target": "can I ask you something before you leave?",
+"type": "use"
+}
+],
+"target": "can I",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Can I ask you something before you leave?"
+},
+"80": {
+"at": "2026-11-18T18:34:06Z",
+"known": "مجھے یقین نہیں کب میں تیار ہوں گا۔",
+"legos": [
+{
+"id": "S0080L01",
+"idx": 1,
+"is_new": true,
+"known": "میں ... ہوں گا",
+"phrases": [
+{
+"id": "372f9dce-650b-4d4e-9dc2-948694ee0b92",
+"ka": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae",
+"known": "میں ... ہوں گا",
+"pos": 0,
+"t1": "6976905c-3f33-414c-8574-68dbdc04e6af",
+"t2": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+"target": "I'll be",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_urd:S0080L01C01",
+"ka": "2f70adb9-ba24-49b9-851f-cac2792f18ea",
+"known": "میں",
+"pos": 1,
+"t1": "be272962-65cb-4744-afa9-e7ea1f2e43a0",
+"t2": "fd525273-a816-4424-9d0e-402d65401110",
+"target": "I'll",
+"type": "component"
+},
+{
+"id": "eng_for_urd:S0080L01C02",
+"ka": "f95d30f8-76a2-46ef-a2b8-68879989630b",
+"known": "ہوں گا",
+"pos": 2,
+"t1": "2a50c496-3625-472c-b64a-92b5ed429a66",
+"t2": "a125ada3-0b81-4573-95d4-0b10d20c62ff",
+"target": "be",
+"type": "component"
+},
+{
+"id": "eng_for_urd:S0080L01B01",
+"ka": "f4381aa7-a0a4-494b-a5f6-3d436a4d7bae",
+"known": "میں ... ہوں گا",
+"pos": 3,
+"t1": "6976905c-3f33-414c-8574-68dbdc04e6af",
+"t2": "7ab84a16-1f30-40ad-8dcb-1d63ac5b968d",
+"target": "I'll be",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0080L01B02",
+"ka": "d251014e-5b1a-4467-91d5-48559af38b2f",
+"known": "میں تیار ہوں گا",
+"pos": 4,
+"t1": "4f8bd5be-da6a-4aac-8e7e-02b5bde2d499",
+"t2": "1e5a9aec-9aa2-4492-b38d-d19157dfdc64",
+"target": "I'll be ready",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0080L01B03",
+"ka": "ef4e2a4a-c07a-4459-98ec-7b2211063500",
+"known": "میں خوش ہوں گا",
+"pos": 5,
+"t1": "23eb0977-4569-4c7f-a7e3-35548d40b3ff",
+"t2": "9546175b-b140-4ee9-91b9-9b400dc99163",
+"target": "I'll be happy",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0080L01B04",
+"ka": "12af6f35-5756-4c03-bce7-e4f07b734eda",
+"known": "میں ابھی تیار ہوں گا",
+"pos": 6,
+"t1": "ec17ded8-43e8-4b01-8523-b854597eb802",
+"t2": "84bcd783-a239-4b28-b669-072d0620f038",
+"target": "I'll be ready now",
+"type": "build"
+},
+{
+"id": "eng_for_urd:S0080L01U01",
+"ka": "489fda9c-507d-4ede-aedc-32607c7f9555",
+"known": "میں جلد تیار ہوں گا",
+"pos": 7,
+"t1": "bf3e81ee-e305-4843-9db1-57bf5c151633",
+"t2": "889afbf6-d5fb-4e45-851a-f2ab172c5bfd",
+"target": "I'll be ready soon",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0080L01U02",
+"ka": "f473624a-4821-4876-8b0f-3c21affc97f2",
+"known": "مجھے یقین نہیں کب میں تیار ہوں گا",
+"pos": 8,
+"t1": "57900242-7c2d-493b-8439-8b5548c72cc0",
+"t2": "07018051-a51d-4cbc-8ed1-ce6515d5a452",
+"target": "I'm not sure when I'll be ready",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0080L01U03",
+"ka": "70685391-c9d3-429a-91a0-f66679946de5",
+"known": "میں جلد خوش ہوں گا",
+"pos": 9,
+"t1": "e3b443af-ad42-4343-b4a2-e91d601e2f0f",
+"t2": "83624a41-9ff3-45d8-91b0-a857004d9e31",
+"target": "I'll be happy soon",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0080L01U05",
+"ka": "65b33949-b8d1-4625-9774-bec0e30884e9",
+"known": "میں ابھی تک تیار نہیں لیکن جلد ہوں گا",
+"pos": 11,
+"t1": "46696bac-ea37-4a4a-b19b-415e37ef614e",
+"t2": "5f8da235-9edd-432e-851b-35375119218a",
+"target": "I'm not ready yet but I'll be ready soon",
+"type": "use"
+},
+{
+"id": "eng_for_urd:S0080L01U06",
+"ka": "4414bf94-f720-4cdc-a472-7144571a6615",
+"known": "میں خوش ہوں گا اگر آپ مدد کر سکیں",
+"pos": 12,
+"t1": "174452e5-e4e4-452f-9bbb-4364acdfaffb",
+"t2": "c34447a4-5566-4e6d-a904-9aff2c892773",
+"target": "I'll be happy if you can help",
+"type": "use"
+}
+],
+"target": "I'll be",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'm not sure when I'll be ready."
+}
+}

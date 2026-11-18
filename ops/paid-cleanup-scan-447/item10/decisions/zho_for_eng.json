@@ -1,0 +1,939 @@
+{
+ "course": "zho_for_eng",
+ "legos": [
+  {
+   "known": "as often as possible",
+   "target": "尽可能经常",
+   "type": "M",
+   "why": "尽可能 alone was glossed \"as much as possible\"; the seed says \"as often as possible\" = 尽可能经常. Grows by the next word; L02 \"often | 经常\" is taught first (L13).",
+   "id": "S0003L03",
+   "verdict": "grow",
+   "basket": {
+    "B02": [
+     "speak as often as possible",
+     "尽可能经常说"
+    ],
+    "B03": [
+     "learn as often as possible",
+     "尽可能经常学习"
+    ],
+    "U05": [
+     "I want to learn Chinese as often as possible",
+     "我想尽可能经常学习中文"
+    ]
+   },
+   "components": [
+    [
+     "as much as possible",
+     "尽可能"
+    ],
+    [
+     "often",
+     "经常"
+    ]
+   ]
+  },
+  {
+   "known": "what I mean",
+   "target": "我的意思",
+   "type": "M",
+   "why": "\"my\" is not in the seed; 我的意思 is the seed's \"what I mean\". \"my | 我的\" stays as a literal component, so later rows may use 我的 bare (K29). L13 note: L03 \"meaning | 意思\" is taught after this chunk and overlaps it (S4).",
+   "add": [
+    [
+     "b",
+     "explain what I mean",
+     "解释我的意思"
+    ],
+    [
+     "b",
+     "try to explain what I mean",
+     "试试解释我的意思"
+    ],
+    [
+     "b",
+     "say what I mean",
+     "说我的意思"
+    ],
+    [
+     "u",
+     "I'm going to explain what I mean",
+     "我要解释我的意思"
+    ],
+    [
+     "u",
+     "I want to try to explain what I mean",
+     "我想试试解释我的意思"
+    ],
+    [
+     "u",
+     "I want to explain what I mean in Chinese",
+     "我想用中文解释我的意思"
+    ],
+    [
+     "u",
+     "I'm going to try to explain what I mean",
+     "我要试试解释我的意思"
+    ]
+   ],
+   "id": "S0008L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del"
+   },
+   "components": [
+    [
+     "my",
+     "我的"
+    ],
+    [
+     "meaning",
+     "意思"
+    ]
+   ]
+  },
+  {
+   "seed_known": "I can speak a little Chinese now",
+   "why": "会说 is \"can speak\"; the Chinese seed says \"I can speak a little Chinese now\". Editing the English seed keeps \"can | 会\" (whose 7 rows all say \"can\") instead of growing it over L02. KAI: seed edit (S15/L25 rung 3).",
+   "id": "S0009L01",
+   "verdict": "seed"
+  },
+  {
+   "known": "if I can",
+   "target": "我能不能",
+   "type": "M",
+   "why": "\"whether can\" is a literal gloss; the seed says \"if I can\" = 我能不能 (contiguous). Every row already says 我能不能.",
+   "id": "S0010L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "if I can",
+     "我能不能"
+    ],
+    "B02": [
+     "if I can speak",
+     "我能不能说"
+    ],
+    "B03": [
+     "if I can speak Chinese",
+     "我能不能说中文"
+    ],
+    "B04": [
+     "if I can explain",
+     "我能不能解释"
+    ],
+    "B05": [
+     "if I can learn",
+     "我能不能学习"
+    ],
+    "U03": [
+     "I'm not sure if I can practise",
+     "我不确定我能不能练习"
+    ]
+   },
+   "components": [
+    [
+     "I",
+     "我"
+    ],
+    [
+     "can",
+     "能"
+    ],
+    [
+     "can't",
+     "不能"
+    ]
+   ]
+  },
+  {
+   "seed_known": "I hope I can speak too after you finish",
+   "why": "The Chinese says 我希望…我也能说 \"I hope … I can speak too\". Both flagged LEGOs (\"to hope\", \"I too can speak\") are right for the Chinese; the English seed is the loose side. KAI: seed edit.",
+   "id": "S0011L01",
+   "verdict": "seed"
+  },
+  {
+   "known": "I can speak too",
+   "why": "\"I too can speak\" is not English; with the seed edit the seed says \"I can speak too\".",
+   "id": "S0011L03",
+   "verdict": "regloss",
+   "basket": {
+    "B01": [
+     "I can speak too",
+     "我也能说"
+    ],
+    "B02": [
+     "I can speak Chinese too",
+     "我也能说中文"
+    ],
+    "B03": [
+     "I can speak a little too",
+     "我也能说一点"
+    ],
+    "U02": [
+     "now I can speak too",
+     "现在我也能说"
+    ],
+    "U03": [
+     "I hope I can speak too",
+     "我希望我也能说"
+    ],
+    "U04": [
+     "I can speak a little Chinese too",
+     "我也能说一点中文"
+    ],
+    "U05": [
+     "I hope I can speak too now",
+     "我希望现在我也能说"
+    ],
+    "U06": [
+     "I hope I can speak Chinese too",
+     "我希望我也能说中文"
+    ]
+   },
+   "components": [
+    [
+     "I",
+     "我"
+    ],
+    [
+     "also",
+     "也"
+    ],
+    [
+     "able to",
+     "能"
+    ],
+    [
+     "speak",
+     "说"
+    ]
+   ]
+  },
+  {
+   "why": "\"what\" IS in the seed (\"what's going to happen\"); detector tokenised \"what's\" as one word. Not a defect.",
+   "id": "S0012L03",
+   "verdict": "keep"
+  },
+  {
+   "why": "你的中文说得很好 = \"your Chinese is spoken very well\"; no contiguous Chinese span of 8 syllables or fewer says \"you … speak Chinese\". L25 rung 2: recommend the TARGET seed 你中文说得很好 (drops 的; the usual compliment form, same meaning), then L01 \"your | 你的\" becomes \"you | 你\" not-new (S0020L01), and L03 regrows to \"very well | 很好\". Not drafted as ops until Kai rules (target-side seed change).",
+   "id": "S0013L01",
+   "verdict": "kai"
+  },
+  {
+   "known": "speak Chinese all day",
+   "target": "一整天都说中文",
+   "type": "M",
+   "why": "\"all day long\" is not in the seed; re-glossing to \"all day\" would clash with L01 \"all day | 一整天\". Grows to the verb the 都 belongs to (L22).",
+   "add": [
+    [
+     "u",
+     "I hope to speak Chinese all day",
+     "我希望一整天都说中文"
+    ],
+    [
+     "u",
+     "do you want to speak Chinese all day?",
+     "你想一整天都说中文吗？"
+    ]
+   ],
+   "id": "S0014L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": [
+     "speak Chinese all day",
+     "一整天都说中文"
+    ],
+    "B03": "del",
+    "B04": [
+     "I speak Chinese all day",
+     "我一整天都说中文"
+    ],
+    "B05": [
+     "you speak Chinese all day",
+     "你一整天都说中文"
+    ],
+    "U01": [
+     "I want to speak Chinese all day",
+     "我想一整天都说中文"
+    ],
+    "U02": "del",
+    "U03": [
+     "you want to speak Chinese all day",
+     "你想一整天都说中文"
+    ],
+    "U04": "del"
+   },
+   "components": [
+    [
+     "all day",
+     "一整天"
+    ],
+    [
+     "throughout",
+     "都"
+    ],
+    [
+     "speak",
+     "说"
+    ],
+    [
+     "Chinese",
+     "中文"
+    ]
+   ]
+  },
+  {
+   "known": "with everyone else",
+   "target": "和别人一起",
+   "type": "M",
+   "why": "\"together\" is not in the seed; 和别人一起 is \"with everyone else\", and 和别人 had no LEGO at all (S3). \"together | 一起\" stays a component.",
+   "knock": "S0388L01 and S0517L01 \"together | 一起\" are not-new on this LEGO; they lose their pair (L31) and are re-judged at their own seeds.",
+   "id": "S0016L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "study with everyone else",
+     "和别人一起学习"
+    ],
+    "B02": [
+     "practise with everyone else",
+     "和别人一起练习"
+    ],
+    "B03": [
+     "speak Chinese with everyone else",
+     "和别人一起说中文"
+    ],
+    "U01": [
+     "I want to study with everyone else",
+     "我想和别人一起学习"
+    ],
+    "U02": [
+     "he also wants to practise with everyone else",
+     "他也想和别人一起练习"
+    ],
+    "U03": [
+     "can you speak Chinese with everyone else?",
+     "你能和别人一起说中文吗？"
+    ],
+    "U04": [
+     "I hope I can study with everyone else tomorrow",
+     "我希望我明天能和别人一起学习"
+    ]
+   },
+   "components": [
+    [
+     "with",
+     "和"
+    ],
+    [
+     "others",
+     "别人"
+    ],
+    [
+     "together",
+     "一起"
+    ]
+   ]
+  },
+  {
+   "known": "learning her name",
+   "target": "学她的名字",
+   "type": "M",
+   "why": "\"to study\" is not in the seed; re-glossing 学 to \"to learn\" clashes with S0002L02 \"to learn | 学习\" (ZUT), so it grows to the seed's object (L25). L03 \"her | 她的\" overlaps (S4).",
+   "id": "S0021L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "learn her name",
+     "学她的名字"
+    ],
+    "B02": [
+     "want to learn her name",
+     "想学她的名字"
+    ],
+    "B03": [
+     "learn her name quickly",
+     "尽快学她的名字"
+    ],
+    "U01": [
+     "I want to learn her name",
+     "我想学她的名字"
+    ],
+    "U03": [
+     "why does he want to learn her name?",
+     "他为什么想学她的名字？"
+    ],
+    "U04": [
+     "we hope to learn her name",
+     "我们希望学她的名字"
+    ],
+    "U05": [
+     "you want to learn her name quickly",
+     "你想尽快学她的名字"
+    ],
+    "U06": [
+     "but I also want to learn her name",
+     "但是我也想学她的名字"
+    ],
+    "U07": [
+     "I'm going to learn her name",
+     "我要学她的名字"
+    ],
+    "U08": [
+     "why don't you want to learn her name?",
+     "你为什么不想学她的名字？"
+    ]
+   },
+   "components": [
+    [
+     "to learn",
+     "学"
+    ],
+    [
+     "her",
+     "她的"
+    ],
+    [
+     "name",
+     "名字"
+    ]
+   ]
+  },
+  {
+   "seed_known": "because I want to get to know people who speak Chinese",
+   "why": "认识 is \"get to know\"; \"to meet\" would clash with S0018L03 \"to meet | 见面\", and the Chinese chunk that says \"meet people who speak Chinese\" is 9 syllables. The English seed is the loose side. KAI: seed edit.",
+   "id": "S0022L02",
+   "verdict": "seed"
+  },
+  {
+   "seed_known": "I might not remember easily",
+   "why": "The Chinese says 我可能不容易记住 \"I might not remember easily\"; \"might | 可能\" is right for it. KAI: seed edit (L01 \"I\", L03 below stay in the seed).",
+   "id": "S0024L02",
+   "verdict": "seed"
+  },
+  {
+   "known": "remember easily",
+   "target": "容易记住",
+   "type": "M",
+   "why": "\"easy\" is not in the seed; 容易记住 is \"remember easily\" in both the old and the edited seed.",
+   "add": [
+    [
+     "b",
+     "you can't remember easily",
+     "你不容易记住"
+    ],
+    [
+     "u",
+     "he can't remember the whole sentence easily",
+     "他不容易记住整个句子"
+    ],
+    [
+     "u",
+     "I hope I can remember easily",
+     "我希望我能容易记住"
+    ],
+    [
+     "u",
+     "she can't remember Chinese easily",
+     "她不容易记住中文"
+    ]
+   ],
+   "knock": "S0483L02 \"easy | 容易\" is not-new on this LEGO; it loses its pair (L31) and is re-judged at seed 483.",
+   "id": "S0024L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "not remember easily",
+     "不容易记住"
+    ],
+    "B02": "del",
+    "B03": [
+     "remember easily",
+     "容易记住"
+    ],
+    "U01": "del",
+    "U02": [
+     "I can't remember easily",
+     "我不容易记住"
+    ],
+    "U03": "del",
+    "U04": [
+     "I might not remember easily",
+     "我可能不容易记住"
+    ],
+    "U05": "del",
+    "U06": "del",
+    "U07": "del",
+    "U08": "del",
+    "U09": [
+     "I might not remember easily",
+     "我可能不容易记住"
+    ]
+   },
+   "components": [
+    [
+     "easy",
+     "容易"
+    ],
+    [
+     "to remember",
+     "记住"
+    ]
+   ]
+  },
+  {
+   "known": "before I go",
+   "target": "在我走之前",
+   "type": "M",
+   "why": "在 here opens the 在…之前 frame (\"before\"); \"at\" is not in the seed. Taught as the whole contiguous frame with its middle (L32): \"before I go\" (5 syllables). The old basket drilled 在 = \"be here\", which this seed never says.",
+   "add": [
+    [
+     "b",
+     "help me before I go",
+     "在我走之前帮我"
+    ],
+    [
+     "b",
+     "ask before I go",
+     "在我走之前问"
+    ],
+    [
+     "b",
+     "explain before I go",
+     "在我走之前解释"
+    ],
+    [
+     "u",
+     "can you help me before I go?",
+     "你能在我走之前帮我吗？"
+    ],
+    [
+     "u",
+     "I want to ask you before I go",
+     "我想在我走之前问你"
+    ],
+    [
+     "u",
+     "he wants to come back before I go",
+     "他想在我走之前回来"
+    ],
+    [
+     "u",
+     "I hope to practise before I go",
+     "我希望在我走之前练习"
+    ]
+   ],
+   "knock": "在 = \"be here/at\" phrases elsewhere lean on this LEGO; \"at | 在\" stays a component (K29). Census below.",
+   "id": "S0025L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "at",
+     "在"
+    ],
+    [
+     "I",
+     "我"
+    ],
+    [
+     "to go",
+     "走"
+    ],
+    [
+     "before",
+     "之前"
+    ]
+   ]
+  },
+  {
+   "known": "nearly ready to go",
+   "target": "快要走",
+   "type": "M",
+   "why": "\"about to\" is not in the seed; 快要走 is the seed's \"nearly ready to go\" (3 syllables).",
+   "add": [
+    [
+     "b",
+     "he's nearly ready to go",
+     "他快要走"
+    ],
+    [
+     "b",
+     "you're nearly ready to go",
+     "你快要走"
+    ],
+    [
+     "u",
+     "I like feeling as if I'm nearly ready to go",
+     "我喜欢快要走的感觉"
+    ],
+    [
+     "u",
+     "I'm not sure if he's nearly ready to go",
+     "我不确定他是不是快要走"
+    ]
+   ],
+   "id": "S0026L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "nearly ready to go",
+     "快要走"
+    ],
+    "B02": "del",
+    "B03": "del",
+    "U01": [
+     "I'm nearly ready to go",
+     "我快要走"
+    ],
+    "U02": "del",
+    "U03": "del",
+    "U04": [
+     "we're nearly ready to go",
+     "我们快要走"
+    ],
+    "U05": "del",
+    "U06": [
+     "she's nearly ready to go",
+     "她快要走"
+    ],
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "about to",
+     "快要"
+    ],
+    [
+     "to go",
+     "走"
+    ]
+   ]
+  },
+  {
+   "known": "taking too much time",
+   "target": "花太多时间",
+   "type": "M",
+   "why": "\"to spend\" is not in the seed; 花太多时间 is its \"taking too much time\" (5 syllables). L03 \"time | 时间\" overlaps (S4).",
+   "add": [
+    [
+     "b",
+     "don't take too much time",
+     "不花太多时间"
+    ]
+   ],
+   "id": "S0027L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": [
+     "take too much time",
+     "花太多时间"
+    ],
+    "B02": "del",
+    "B03": "del",
+    "U01": [
+     "I don't want to take too much time",
+     "我不想花太多时间"
+    ],
+    "U02": [
+     "she doesn't like taking too much time",
+     "她不喜欢花太多时间"
+    ],
+    "U03": [
+     "he might take too much time",
+     "他可能花太多时间"
+    ],
+    "U04": [
+     "I don't like taking too much time",
+     "我不喜欢花太多时间"
+    ],
+    "U05": [
+     "because I don't want to take too much time",
+     "因为我不想花太多时间"
+    ],
+    "U06": "del",
+    "U07": [
+     "but she doesn't want to take too much time",
+     "但是她不想花太多时间"
+    ],
+    "U08": [
+     "why does he like taking too much time?",
+     "他为什么喜欢花太多时间？"
+    ]
+   },
+   "components": [
+    [
+     "to spend",
+     "花"
+    ],
+    [
+     "too",
+     "太"
+    ],
+    [
+     "much",
+     "多"
+    ],
+    [
+     "time",
+     "时间"
+    ]
+   ]
+  },
+  {
+   "known": "better",
+   "target": "更好",
+   "type": "M",
+   "why": "\"even more\" is not in the seed; \"better\" is, and 更好 is contiguous in 说得更好. L03 \"to speak better\" follows it (L13 order holds).",
+   "add": [
+    [
+     "b",
+     "better now",
+     "现在更好"
+    ],
+    [
+     "b",
+     "a little better",
+     "更好一点"
+    ],
+    [
+     "u",
+     "my Chinese is better now",
+     "我现在的中文更好"
+    ],
+    [
+     "u",
+     "I hope my Chinese can be better",
+     "我希望我的中文能更好"
+    ],
+    [
+     "u",
+     "this way is better",
+     "这样更好"
+    ],
+    [
+     "u",
+     "her Chinese is better than before",
+     "她的中文比以前更好"
+    ]
+   ],
+   "knock": "S0291L01 \"better | 更好\" (new) becomes a duplicate of this LEGO and should go not-new (planned at 291 if flagged; otherwise listed as a knock-on).",
+   "id": "S0029L02",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": [
+     "even better",
+     "更好"
+    ],
+    "U01": "del",
+    "U02": "del",
+    "U03": [
+     "his Chinese is better",
+     "他的中文更好"
+    ],
+    "U04": "del",
+    "U06": "del",
+    "U07": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "more",
+     "更"
+    ],
+    [
+     "good",
+     "好"
+    ]
+   ]
+  },
+  {
+   "known": "ask you something",
+   "target": "问你一件事",
+   "type": "M",
+   "why": "\"a thing\" is not in the seed; \"something\" alone would clash with S0004L02 \"something | 点什么\", so it grows to \"ask you something\" (L02 \"to ask\" taught first).",
+   "add": [
+    [
+     "b",
+     "want to ask you something",
+     "想问你一件事"
+    ],
+    [
+     "b",
+     "I ask you something",
+     "我问你一件事"
+    ],
+    [
+     "b",
+     "he asked you something",
+     "他问你一件事"
+    ],
+    [
+     "u",
+     "she wanted to ask you something yesterday",
+     "她昨天想问你一件事"
+    ],
+    [
+     "u",
+     "can I ask you something?",
+     "我能问你一件事吗？"
+    ]
+   ],
+   "id": "S0030L03",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U01": [
+     "I want to ask you something",
+     "我想问你一件事"
+    ],
+    "U02": "del",
+    "U03": "del",
+    "U04": "del",
+    "U07": [
+     "he wants to ask you something before he goes",
+     "他想在走之前问你一件事"
+    ],
+    "U08": [
+     "I want to ask you something today",
+     "我今天想问你一件事"
+    ],
+    "U09": "keep"
+   },
+   "components": [
+    [
+     "to ask",
+     "问"
+    ],
+    [
+     "you",
+     "你"
+    ],
+    [
+     "a thing",
+     "一件事"
+    ]
+   ]
+  },
+  {
+   "known": "show me",
+   "target": "给我看",
+   "type": "M",
+   "why": "给 alone (\"to give\") is not in the seed; 给我看 is its \"show me\". L02 below becomes the seed's other part.",
+   "add": [
+    [
+     "b",
+     "want to show me",
+     "想给我看"
+    ],
+    [
+     "b",
+     "show me now",
+     "现在给我看"
+    ],
+    [
+     "b",
+     "show me this",
+     "给我看这个"
+    ],
+    [
+     "u",
+     "did you want to show me something?",
+     "你想给我看点什么吗？"
+    ],
+    [
+     "u",
+     "can you show me?",
+     "你能给我看吗？"
+    ],
+    [
+     "u",
+     "he doesn't want to show me",
+     "他不想给我看"
+    ],
+    [
+     "u",
+     "I hope you can show me tomorrow",
+     "我希望你明天能给我看"
+    ]
+   ],
+   "knock": "S0140L01 \"show me | 给我看\" (new) becomes a duplicate and should go not-new; S0301L01 \"to give | 给\" (not-new on this LEGO) loses its pair (L31, handled at 301). 给 = give and 看 = look stay as components (K29).",
+   "id": "S0032L01",
+   "verdict": "grow",
+   "basket": {
+    "B01": "del",
+    "B02": "del",
+    "B03": "del",
+    "U02": "del",
+    "U04": "del",
+    "U05": "del",
+    "U06": "del",
+    "U08": "del"
+   },
+   "components": [
+    [
+     "to give",
+     "给"
+    ],
+    [
+     "me",
+     "我"
+    ],
+    [
+     "to look at",
+     "看"
+    ]
+   ]
+  },
+  {
+   "known": "something",
+   "target": "点什么",
+   "is_new": false,
+   "why": "\"to look at\" is not in the seed (看 is inside 给我看, now L01). The seed's remaining part 点什么 is S0004L02 \"something | 点什么\", so this LEGO takes that pair and goes not-new (every seed part is a LEGO).",
+   "id": "S0032L02",
+   "verdict": "grow",
+   "basket": {
+    "B02": "del",
+    "B03": "del",
+    "U01": "del",
+    "U03": "del",
+    "U04": "del",
+    "U06": "del",
+    "U08": "del",
+    "U09": "del",
+    "U10": "del"
+   },
+   "components": []
+  },
+  {
+   "seed_known": "we don't want to interrupt this story",
+   "why": "这个故事 is \"this story\"; \"this | 这个\" is the course's only teaching of 这个 (13 rows). Editing the English seed keeps it. KAI: seed edit.",
+   "id": "S0036L01",
+   "verdict": "seed"
+  }
+ ]
+}

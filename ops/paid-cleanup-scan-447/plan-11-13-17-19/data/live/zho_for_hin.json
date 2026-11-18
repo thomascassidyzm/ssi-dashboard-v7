@@ -1,0 +1,1242 @@
+{
+"182": {
+"at": "2026-11-18T18:34:21Z",
+"known": "क्या आपने मेरी चाबियाँ कहीं देखी हैं?",
+"legos": [
+{
+"id": "S0182L01",
+"idx": 1,
+"is_new": true,
+"known": "क्या ... है",
+"phrases": [
+{
+"id": "271a3a2c-b805-4dcb-8831-02791f54047a",
+"ka": "020148b0-0610-4765-a73e-d50b6a334c1e",
+"known": "क्या ... है",
+"pos": 0,
+"t1": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+"t2": "bb50c17e-612b-4f95-a03a-cd23a6231f50",
+"target": "有没有",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0182L01C01",
+"ka": "5802a846-ef57-4312-a63b-8f86411a6c1e",
+"known": "है",
+"pos": 1,
+"t1": "2f80d820-9303-4aad-9aee-663c2b0890e7",
+"t2": "ba46e524-631a-462b-a35b-1a84a3350b7a",
+"target": "有",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0182L01C02",
+"ka": "50019f06-5c3d-47ee-91ed-c292f19557d3",
+"known": "नहीं है",
+"pos": 2,
+"t1": "8bfd98e8-564e-4069-8213-3255aa3e8e93",
+"t2": "85f04369-f90a-4027-a4bc-a8eb5d51ec1e",
+"target": "没有",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0182L01B01",
+"ka": "020148b0-0610-4765-a73e-d50b6a334c1e",
+"known": "क्या ... है",
+"pos": 3,
+"t1": "9c02d303-9ab9-4bc6-a2b2-d98963209434",
+"t2": "bb50c17e-612b-4f95-a03a-cd23a6231f50",
+"target": "有没有",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L01B02",
+"ka": "56ca18bd-f879-4fe7-8d16-c0227403fff8",
+"known": "समय है या नहीं",
+"pos": 4,
+"t1": "eeb76515-9ebc-42af-a283-52b0cf537d32",
+"t2": "1c4d2efb-c641-4d86-bb75-051fdadb3810",
+"target": "有没有时间",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L01B03",
+"ka": "46ff56c3-bd5f-440c-ae7f-4aea9a8bc226",
+"known": "देखा या नहीं",
+"pos": 5,
+"t1": "c0951ae2-446b-49fd-a286-d919f8e9811f",
+"t2": "c4a6d587-6796-460b-bbd6-9c90ed3ffd74",
+"target": "有没有看到",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L01B04",
+"ka": "165135f0-f13b-4a03-86ff-f437c3822df2",
+"known": "किताब है या नहीं",
+"pos": 6,
+"t1": "92c119ca-241e-44a7-a9ad-dd848367907d",
+"t2": "ebcd8616-0a4c-4ea9-b158-ab32e31e89e4",
+"target": "有没有书",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L01U01",
+"ka": "573c2857-3007-4d1a-b25e-6feea7400113",
+"known": "क्या आपके पास समय है?",
+"pos": 7,
+"t1": "d642cfc2-79ef-4bad-aaf1-17206a4566c5",
+"t2": "d16375ba-14d0-4e65-aeea-eb28b5ed1ac9",
+"target": "你有没有时间？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L01U02",
+"ka": "8ae5238c-4439-4003-b3a6-dc3aaa2b7739",
+"known": "क्या आपके पास चीनी किताब है?",
+"pos": 8,
+"t1": "f2513bdf-1230-4f2b-9f88-42502a1b4bd1",
+"t2": "5d3fdd28-5a3c-4165-b2db-b55f10f0dcaa",
+"target": "你有没有中文书？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L01U03",
+"ka": "79460fb3-3c10-4f43-aeae-9a2757fc7b21",
+"known": "क्या आपने मेरी किताब देखी?",
+"pos": 9,
+"t1": "1a75a814-d11c-4a7d-95d9-f0123c5dd67b",
+"t2": "5c51d8bd-c2ea-4355-954b-307dd3c655b8",
+"target": "你有没有看到我的书？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L01U04",
+"ka": "bf0d087b-5f4b-4dfa-83ba-7eba9f601807",
+"known": "क्या आपके पास अभ्यास करने का समय है?",
+"pos": 10,
+"t1": "e7edd3a3-674f-4726-bcda-6f926bbefad8",
+"t2": "b3e137c6-3613-446e-9d20-504ca07386db",
+"target": "你有没有时间练习？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L01U05",
+"ka": "5a6c5ad0-d10a-4878-b4e1-21747abbed85",
+"known": "क्या आपने उसे देखा?",
+"pos": 11,
+"t1": "1f228fff-5963-4e8e-9b32-47d5017ec5ac",
+"t2": "5af2d001-5f21-40cd-8185-d0647aee1e70",
+"target": "你有没有看到他？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L01U06",
+"ka": "dc62859d-415c-464b-a141-c39d9a2f7846",
+"known": "क्या आप चीनी सीखते हैं?",
+"pos": 12,
+"t1": "fb468c1e-0d09-4b48-a461-fd6fb02ab52a",
+"t2": "ed8a7db3-6c79-4921-8b03-110d3d321327",
+"target": "你有没有学中文？",
+"type": "use"
+}
+],
+"target": "有没有",
+"type": "M"
+},
+{
+"id": "S0182L02",
+"idx": 2,
+"is_new": true,
+"known": "चाबी",
+"phrases": [
+{
+"id": "05626323-acf8-4aa3-b85e-d7b283f39c9c",
+"ka": "7b9ef76e-cb99-4f54-985f-093dcfce09a3",
+"known": "चाबी",
+"pos": 0,
+"t1": "583414d6-1260-4341-a60d-12ad1396203d",
+"t2": "8b74f29b-f1ac-4546-8819-495a26e0bc92",
+"target": "钥匙",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0182L02B01",
+"ka": "9542d2e8-2283-4615-8c61-a60ba082693a",
+"known": "मेरी चाबी",
+"pos": 1,
+"t1": "50e7d2d5-b80d-4fe4-962f-27edcd38defc",
+"t2": "395f76bd-6716-4137-8612-987f246863ef",
+"target": "我的钥匙",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L02B02",
+"ka": "46ce4648-5dec-4dd3-8eb9-73fb0a93858d",
+"known": "आपकी चाबी",
+"pos": 2,
+"t1": "37d2a52f-9fdb-4d46-b9df-d3e9ec5e71b5",
+"t2": "3c248ced-17b4-4617-acd8-40aae2356c5f",
+"target": "你的钥匙",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L02B03",
+"ka": "9df426b6-f2a6-4c22-8288-8201c04b8cc7",
+"known": "चाबी ढूँढना",
+"pos": 3,
+"t1": "464523b8-7ad9-4a40-ad26-51bea538ba6b",
+"t2": "05c30f90-33d3-43fd-9688-15817ea321b8",
+"target": "找钥匙",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0182L02U01",
+"ka": "b6ce8b1c-f3b5-46fd-8a4b-b494406eaf9c",
+"known": "क्या आपने मेरी चाबियाँ कहीं देखी हैं?",
+"pos": 4,
+"t1": "2cc2e18f-0d0d-4c6d-818f-f5f96b536bfa",
+"t2": "7a8faa78-a818-4dec-aa1a-b417b0845d7d",
+"target": "你有没有看到我的钥匙？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L02U02",
+"ka": "aaa80351-7d91-40bb-a175-178a5b6e21e2",
+"known": "मेरी चाबी कहाँ है?",
+"pos": 5,
+"t1": "c6ecfe8b-474c-436e-bd92-e751b8abdb01",
+"t2": "529ef109-b5e1-47a5-859f-f3a380f5c490",
+"target": "我的钥匙在哪里？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L02U03",
+"ka": "efbc1c55-704b-4d58-85f5-694d3eef137d",
+"known": "मैंने आपकी चाबी देख ली।",
+"pos": 6,
+"t1": "acc7bcbe-1fc5-483e-989c-52e4d9a53f3c",
+"t2": "af50c801-fcec-4838-9470-fecbe1eb37f2",
+"target": "我看到你的钥匙了。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L02U04",
+"ka": "5d337028-aa3b-40b4-9fac-6a26e43602e9",
+"known": "वह मेरी चाबी है।",
+"pos": 7,
+"t1": "71042ff6-ba72-4b03-a514-ea7b13d0c93c",
+"t2": "3d76955c-3d35-4f32-91b9-f81e8c99df6c",
+"target": "那是我的钥匙。",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0182L02U05",
+"ka": "110640fa-16ca-4619-b038-0fbf0a06826e",
+"known": "क्या मेरी चाबी आपके पास है?",
+"pos": 8,
+"t1": "e36a0314-72f6-423f-a6ca-931898e8003f",
+"t2": "b57e66c5-72f6-421a-99ab-e38641b5490b",
+"target": "你有没有我的钥匙？",
+"type": "use"
+}
+],
+"target": "钥匙",
+"type": "A"
+}
+],
+"status": "released",
+"target": "你有没有看到我的钥匙？"
+},
+"395": {
+"at": "2026-11-18T18:34:21Z",
+"known": "हमें अगले मोड़ पर बाएँ मुड़ना है।",
+"legos": [
+{
+"id": "S0395L01",
+"idx": 1,
+"is_new": true,
+"known": "हमें ...ना है",
+"phrases": [
+{
+"id": "e83b488b-4b8b-49b2-ae17-e86c4ed4aa5c",
+"ka": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+"known": "हमें ...ना है",
+"pos": 0,
+"t1": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+"t2": "622aa03b-71c9-4511-b7cb-de32452f66bf",
+"target": "我们要",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0395L01C01",
+"ka": "a4495d31-eec8-484e-a6f4-3fc36654f359",
+"known": "हमें",
+"pos": 1,
+"t1": "a8f26df8-4b3e-4e3d-af8e-f2775f0309d8",
+"t2": "da58ed47-0b80-4287-a871-9351d0aeb38c",
+"target": "我们",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0395L01C02",
+"ka": "49ebae9a-78bf-4ebc-8c30-7588c31be160",
+"known": "ना है",
+"pos": 2,
+"t1": "dd90bbfd-26af-4269-b42f-225201bb8079",
+"t2": "8d845c99-7c46-4f21-938a-5e5b52f99901",
+"target": "要",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0395L01B01",
+"ka": "db43d0b2-4768-4af1-b132-ce49c9660b11",
+"known": "हमें ...ना है",
+"pos": 3,
+"t1": "9cd0dddc-ef35-4e44-8cbf-34e73bc6d9f2",
+"t2": "622aa03b-71c9-4511-b7cb-de32452f66bf",
+"target": "我们要",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L01B02",
+"ka": "4b07bfbc-cec9-4b24-b436-630eaa5059e7",
+"known": "हमें अभ्यास करना है",
+"pos": 4,
+"t1": "8f370a72-47ca-4e1c-8d1c-7af7e011262f",
+"t2": "8c85bdda-8d6c-4bad-a1de-c1b9a8999c15",
+"target": "我们要练习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L01B03",
+"ka": "f7d2a592-768d-4e68-8fde-502025e91249",
+"known": "हमें सीखना है",
+"pos": 5,
+"t1": "e9d30ce5-083e-41bf-b39c-874d267de7c1",
+"t2": "3d27ff64-f277-4d82-8351-4f1942081cac",
+"target": "我们要学习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L01U01",
+"ka": "31f33246-36cc-44e9-b694-27cf4d8121cf",
+"known": "हमें चीनी सीखनी है",
+"pos": 6,
+"t1": "4e4106e1-6558-4ecd-aa11-4d03b1bcc1f1",
+"t2": "c9432f0b-f7c5-4cd2-af15-03c40849526b",
+"target": "我们要学习中文",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L01U02",
+"ka": "83320974-0c43-4533-817b-12d3648d2418",
+"known": "हमें कुछ कहना है",
+"pos": 7,
+"t1": "11d835eb-4a49-41e8-978e-1db966aeb0e4",
+"t2": "0ece8ba0-94eb-41c4-b69f-96ad7f90f65c",
+"target": "我们要说点什么",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L01U03",
+"ka": "c578f79a-753a-43ec-9042-cfc371b94b51",
+"known": "आज हमें अभ्यास करना है",
+"pos": 8,
+"t1": "e636a74a-e7a6-49c5-b4ed-b5c57516f1a2",
+"t2": "9e9f541c-53e0-4d37-b121-df223ae466e2",
+"target": "今天我们要练习",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L01U04",
+"ka": "9c24530f-c490-4aa5-90b5-af7595107ca2",
+"known": "हमें उससे पूछना है",
+"pos": 9,
+"t1": "44ff9bba-6c6d-4efc-af48-79428a50217f",
+"t2": "4b8c3221-9aa8-4ef8-93eb-a77a7a46c203",
+"target": "我们要问他",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L01U05",
+"ka": "f0243026-0ee3-4ad2-83ed-6eb2edecac4c",
+"known": "हमें तैयार होना है",
+"pos": 10,
+"t1": "ba2d40f9-f0fa-470a-bc7b-c00f72eaf9d3",
+"t2": "fe6a3108-ab2f-4e19-83f7-7cfded3ab050",
+"target": "我们要准备好",
+"type": "use"
+}
+],
+"target": "我们要",
+"type": "M"
+},
+{
+"id": "S0395L02",
+"idx": 2,
+"is_new": true,
+"known": "अगले मोड़ पर",
+"phrases": [
+{
+"id": "d685aa20-ffed-42ff-a8fe-23e0ab14b7a1",
+"ka": "18d028f6-a576-4298-9fdb-cb7865277765",
+"known": "अगले मोड़ पर",
+"pos": 0,
+"t1": "176ce6db-2553-4abf-b451-5c35fcaafe7c",
+"t2": "c1381434-5787-4d07-9d8f-02944f2fb469",
+"target": "在下一个路口",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0395L02C01",
+"ka": "997a9e68-64da-424e-aeeb-9382aee8c68b",
+"known": "पर",
+"pos": 1,
+"t1": "17c087cb-cd1e-4b05-908d-f522d1b2ef36",
+"t2": "39f77954-10b7-4b47-b6fb-863177f195ff",
+"target": "在",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0395L02C02",
+"ka": "b83bf9c9-ddaa-49f6-981e-475abc2f5d1d",
+"known": "अगले",
+"pos": 2,
+"t1": "98deafbe-1424-46ea-8db7-059b59cd5ff7",
+"t2": "779e877d-e3d3-49c9-aca4-b4f52cef68c9",
+"target": "下一个",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0395L02C03",
+"ka": "e6f25ccd-eb76-4533-8221-1da56c111516",
+"known": "मोड़",
+"pos": 3,
+"t1": "96f6b710-0caf-410b-b8e6-35d369917050",
+"t2": "2ee7479f-25fd-4bbd-8065-89fe1f9855a8",
+"target": "路口",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0395L02B01",
+"ka": "18d028f6-a576-4298-9fdb-cb7865277765",
+"known": "अगले मोड़ पर",
+"pos": 4,
+"t1": "176ce6db-2553-4abf-b451-5c35fcaafe7c",
+"t2": "c1381434-5787-4d07-9d8f-02944f2fb469",
+"target": "在下一个路口",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L02B02",
+"ka": "f0a474a0-59e1-460c-ab28-bd20ed878e47",
+"known": "हम अगले मोड़ पर मुड़ते हैं",
+"pos": 5,
+"t1": "6761ceb5-9017-4f8b-83bd-b6c259f4b02a",
+"t2": "69d4feb4-105b-4d26-ae7c-88c7d6124728",
+"target": "我们在下一个路口向左转",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L02B03",
+"ka": "9cecf499-bab8-464b-8a4f-0f79c12ecfc4",
+"known": "क्या हमें अगले मोड़ पर मुड़ना है",
+"pos": 6,
+"t1": "18821940-463c-44bc-aaba-6d19d3bba42c",
+"t2": "8cb5be1f-c207-4c5a-85b3-ba48905c49a6",
+"target": "我们要在下一个路口向左转吗",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0395L02U01",
+"ka": "364f8dc4-5731-418c-bb73-6014553acae4",
+"known": "हमें अगले मोड़ पर बाएँ मुड़ना है",
+"pos": 7,
+"t1": "00663200-61c5-4d9e-804d-90ecfa453ae6",
+"t2": "10a04114-3eff-4d48-b9c9-c2dbbb21f06d",
+"target": "我们要在下一个路口向左转",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L02U02",
+"ka": "1347928f-9ea2-4a92-897e-f352be2c4d8e",
+"known": "क्या हमें अगले मोड़ पर बाएँ मुड़ना है",
+"pos": 8,
+"t1": "b5469c9c-b4d4-48b8-9f09-7cad98206c9b",
+"t2": "16a92b5f-308a-4dcc-80e9-36c1ec28455b",
+"target": "你在下一个路口向左转吗",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L02U03",
+"ka": "1b609fe2-6384-4b59-9160-ada8975bc3a8",
+"known": "मुझे लगता है हमें अगले मोड़ पर मुड़ना है",
+"pos": 9,
+"t1": "4b685c9c-284d-449f-bfcc-049af43e3ddc",
+"t2": "9701379d-4d19-4bfc-b055-f578c97ebb68",
+"target": "我觉得我们要在下一个路口向左转",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L02U04",
+"ka": "d2061b76-a363-48ce-8268-0e4f80a9ca14",
+"known": "मुझे नहीं लगता कि हमें अगले मोड़ पर मुड़ना है",
+"pos": 10,
+"t1": "d503ad1e-f288-4ca3-8c2b-1b736b1f2410",
+"t2": "d396c219-e2c2-45a8-9b9f-3a5f27f9511f",
+"target": "我不觉得我们要在下一个路口向左转",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0395L02U05",
+"ka": "24197d3d-8ee3-4a90-8ffe-1c4c80f703b9",
+"known": "हम अभी अगले मोड़ पर हैं",
+"pos": 11,
+"t1": "a0f26708-cad3-4da1-bacc-589c9394411b",
+"t2": "e07a7aa4-67c8-4361-9c2c-329fac0c566b",
+"target": "我们现在在下一个路口",
+"type": "use"
+}
+],
+"target": "在下一个路口",
+"type": "M"
+}
+],
+"status": "released",
+"target": "我们要在下一个路口向左转。"
+},
+"418": {
+"at": "2026-11-18T18:34:22Z",
+"known": "उन्हें समुदाय की सेवा करनी है।",
+"legos": [
+{
+"id": "S0418L01",
+"idx": 1,
+"is_new": true,
+"known": "उन्हें ...ना है",
+"phrases": [
+{
+"id": "3367bedd-4fd6-43ff-acd2-b6315bf1ad13",
+"ka": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+"known": "उन्हें ...ना है",
+"pos": 0,
+"t1": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+"t2": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1",
+"target": "他们需要",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0418L01C01",
+"ka": "e963b3ea-5a78-4cf0-8a05-f8dc2267399b",
+"known": "उन्हें",
+"pos": 1,
+"t1": "1826d905-8731-476b-a8f7-6e9ce849ae95",
+"t2": "bd598c5b-67b7-4758-8586-cfb7c814f8a2",
+"target": "他们",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0418L01C02",
+"ka": "49ebae9a-78bf-4ebc-8c30-7588c31be160",
+"known": "ना है",
+"pos": 2,
+"t1": "9dbe6974-11bb-4675-884a-da2325067f90",
+"t2": "af130e62-3e6e-406d-942d-d1f6de4cc584",
+"target": "需要",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0418L01B01",
+"ka": "0ba62518-c4c5-473f-835b-0325c8abc3bd",
+"known": "उन्हें ...ना है",
+"pos": 3,
+"t1": "e0bc1daa-63a8-434a-ab62-69fa00940250",
+"t2": "4bdad5e5-1519-4f97-ae72-18585fe6f4a1",
+"target": "他们需要",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L01B02",
+"ka": "f6be3e9e-bfaf-4501-a2bc-9b89cc29e442",
+"known": "उन्हें सीखना है",
+"pos": 4,
+"t1": "5630528c-7a54-42bf-a16c-7e34340be444",
+"t2": "2717dddd-212a-45f7-9a35-35e03dffb9e5",
+"target": "他们需要学习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L01B03",
+"ka": "4f4ce329-ea52-4192-816e-02f8090f0a17",
+"known": "उन्हें अभ्यास करना है",
+"pos": 5,
+"t1": "eb836876-4a10-4366-a285-2b828ab02b32",
+"t2": "8e5cf54d-f7e1-4af2-891b-4089e363d47b",
+"target": "他们需要练习",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L01U01",
+"ka": "5fbaf7fd-7aa2-4ae6-8b89-17c6ec4553df",
+"known": "उन्हें चीनी सीखनी है",
+"pos": 6,
+"t1": "27819e72-eca7-4e53-826d-ecab261075c5",
+"t2": "ff7c40e8-54c0-4961-9335-0f6af259d0ec",
+"target": "他们需要学习中文",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L01U02",
+"ka": "6dbb874f-e11c-40c2-b55a-b24c7d114978",
+"known": "उन्हें तैयार होना है",
+"pos": 7,
+"t1": "b0b26d1f-2690-4988-8fb0-b73b6d553b4b",
+"t2": "dada5f58-9616-4c95-b6b1-3ac53b95afb3",
+"target": "他们需要准备好",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L01U03",
+"ka": "b5cd0adb-2e4b-417c-8520-4a061b900393",
+"known": "उन्हें उससे पूछना है",
+"pos": 8,
+"t1": "8b37461e-d781-40fb-b9e7-a9a4c0277d94",
+"t2": "2c6e82e4-75dd-413f-8d2e-cba5a0a5af86",
+"target": "他们需要问他",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L01U04",
+"ka": "00284b85-231b-4ec0-a812-7269a7e20c27",
+"known": "आज उन्हें अभ्यास करना है",
+"pos": 9,
+"t1": "a4923b44-f814-4006-8ff6-d1ef4f7e5545",
+"t2": "1327bf60-a91e-405f-b46d-80530ed4914e",
+"target": "今天他们需要练习",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L01U05",
+"ka": "6eae62bc-eb78-494c-8390-d7b7c6f1179e",
+"known": "उन्हें कुछ कहना है",
+"pos": 10,
+"t1": "ae10f03d-ec29-457b-b133-99f3385e7c25",
+"t2": "dc190b9f-f8f7-4ce2-b8e9-1d88d8e07916",
+"target": "他们需要说点什么",
+"type": "use"
+}
+],
+"target": "他们需要",
+"type": "M"
+},
+{
+"id": "S0418L02",
+"idx": 2,
+"is_new": true,
+"known": "समुदाय की सेवा करना",
+"phrases": [
+{
+"id": "48056176-691d-4685-81e6-fbe27a4cb3a9",
+"ka": "eda7440e-8ede-4f24-bb84-b0b87c1ddc24",
+"known": "समुदाय की सेवा करना",
+"pos": 0,
+"t1": "741a2ca0-78a3-4554-aad4-6c9a6650b018",
+"t2": "ba909ae2-6912-4c68-9c0d-8c05ff530d12",
+"target": "服务社区",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0418L02C01",
+"ka": "b6e2c1de-c6cf-4963-9032-2fe17f74ef24",
+"known": "सेवा करना",
+"pos": 1,
+"t1": "bea2af1f-7f7e-4070-a30a-ba754bb60155",
+"t2": "5d2623ed-234b-4856-b67b-bdbaf3e7fa00",
+"target": "服务",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0418L02C02",
+"ka": "f0a92b28-4665-481a-bc11-a655ab591b82",
+"known": "समुदाय",
+"pos": 2,
+"t1": "235459c7-f957-4a06-8b49-87eab2f7e31d",
+"t2": "f29bdf19-5015-4925-a5da-945887578ca4",
+"target": "社区",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0418L02B01",
+"ka": "eda7440e-8ede-4f24-bb84-b0b87c1ddc24",
+"known": "समुदाय की सेवा करना",
+"pos": 3,
+"t1": "741a2ca0-78a3-4554-aad4-6c9a6650b018",
+"t2": "ba909ae2-6912-4c68-9c0d-8c05ff530d12",
+"target": "服务社区",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L02B02",
+"ka": "0d74270a-85fd-4cbc-8ba5-9a2066f33abf",
+"known": "उन्हें समुदाय की सेवा करनी है",
+"pos": 4,
+"t1": "b7fea2e4-a50c-4354-b883-29caa42eb2d9",
+"t2": "e23813f8-bbe8-4632-a65b-2d5d76f3d854",
+"target": "他们需要服务社区",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L02B03",
+"ka": "6bd0df26-941e-4224-ac88-f3a95f381d56",
+"known": "वे समुदाय की सेवा करना चाहते हैं",
+"pos": 5,
+"t1": "39909155-4df7-453c-9e46-95e9121bde9c",
+"t2": "f95e9937-3413-4f21-9e32-552deb77f523",
+"target": "他们想服务社区",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0418L02U01",
+"ka": "f5d9ce5f-a1a9-40ba-b008-4e813eda24bf",
+"known": "हम समुदाय की सेवा करना चाहते हैं",
+"pos": 6,
+"t1": "0e9f2c97-a741-440f-b9ac-8236f8a1b736",
+"t2": "49c81afe-6677-4f8e-b208-a8089f690789",
+"target": "我们想服务社区",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L02U02",
+"ka": "9f091812-b4db-4cd7-9e78-87c1c2bbfd30",
+"known": "क्या आप समुदाय की सेवा करना चाहते हैं",
+"pos": 7,
+"t1": "e09f2058-c174-4fc9-bb61-c2dd08e5d895",
+"t2": "6946f180-39ff-409f-b4f6-d3e2e0563ed4",
+"target": "你想服务社区吗",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L02U03",
+"ka": "15ab0f29-eef9-496b-adaf-509bee929923",
+"known": "मैं समुदाय की सेवा करना चाहता हूँ",
+"pos": 8,
+"t1": "c0db8985-ba62-434a-b25e-c8ec71dd569a",
+"t2": "eb228c26-3d85-4680-bb73-ea82f2165db2",
+"target": "我想服务社区",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L02U04",
+"ka": "fcff32af-fdf7-44cb-a7d1-f640001419e4",
+"known": "हमें समुदाय की सेवा करनी चाहिए",
+"pos": 9,
+"t1": "0a3bf17b-9c32-4844-af67-49ded7f8e587",
+"t2": "ffd3d76d-cfe7-4fd8-949d-328aa9628de5",
+"target": "我们应该服务社区",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0418L02U05",
+"ka": "d9073abd-da20-4495-a418-1e54203e7222",
+"known": "वे समुदाय की सेवा नहीं करना चाहते",
+"pos": 10,
+"t1": "a893758e-e71d-4e9e-9765-ddf79eae7b6b",
+"t2": "88b5ffb2-09b7-4aae-b612-81a77b03cf33",
+"target": "他们不想服务社区",
+"type": "use"
+}
+],
+"target": "服务社区",
+"type": "M"
+}
+],
+"status": "released",
+"target": "他们需要服务社区。"
+},
+"530": {
+"at": "2026-11-18T18:34:22Z",
+"known": "ताकि मैं उन्हें गिन सकूँ",
+"legos": [
+{
+"id": "S0530L01",
+"idx": 1,
+"is_new": true,
+"known": "गिनना",
+"phrases": [
+{
+"id": "9ede18cd-9ba1-449b-aff4-8e36d7d2286e",
+"ka": "0c62d6df-2f73-41fa-8212-250218a32636",
+"known": "गिनना",
+"pos": 0,
+"t1": "1cb2e4a3-c63c-4fca-a90c-2e6450d1aabe",
+"t2": "21b9a021-9ca3-44e4-b645-9a85f54c1216",
+"target": "数",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0530L01B01",
+"ka": "1ce6ce52-6dad-4511-b4e2-bba987f1ea0f",
+"known": "उन्हें गिनना",
+"pos": 1,
+"t1": "051aaf5f-b739-4d0e-9729-66091aec02c0",
+"t2": "3a6492e9-e3c1-4774-8971-f73cd3f32c56",
+"target": "数一数",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L01B02",
+"ka": "966c8667-9411-488a-9c23-63df19289a45",
+"known": "उन चीज़ों को गिनना",
+"pos": 2,
+"t1": "ddcac16a-882a-4dee-9b01-20888fc3cc83",
+"t2": "144a96a5-b34c-4eee-a218-d93a65e79b0e",
+"target": "数那些东西",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L01B03",
+"ka": "87bf8d32-5995-4e50-bacf-185372a9cf1d",
+"known": "लोगों को गिनना",
+"pos": 3,
+"t1": "d3b9c822-8bd8-4662-b28e-1d335c6fa5e5",
+"t2": "fb73ea61-a002-48d5-a9a1-f78e78a76052",
+"target": "数人",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L01U01",
+"ka": "4ecace10-fce5-4737-a9f9-09d0996580db",
+"known": "मैं उन्हें गिनना चाहता हूँ",
+"pos": 4,
+"t1": "7ccb933b-f6ed-41d2-8faf-d0e94555d7e2",
+"t2": "8dd077d7-1983-43b9-bc31-13528533be20",
+"target": "我想数一数",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L01U02",
+"ka": "9b1fffd3-4d59-4a6c-845e-58de199be428",
+"known": "क्या आप उन लोगों को गिन सकते हैं?",
+"pos": 5,
+"t1": "54a71518-4146-4173-b2bc-92e568908514",
+"t2": "2db41ab9-2c2c-49dc-b3cf-2e1ea81cb9d9",
+"target": "你能数一数那些人吗？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L01U03",
+"ka": "fe131e2f-e791-4ac6-ab75-87ad7d94eb2a",
+"known": "मुझे उन चीज़ों को गिनना है",
+"pos": 6,
+"t1": "30aa9fa9-e040-42f1-a9e3-664bef7a816a",
+"t2": "da49aa46-6ea3-46a6-a3f0-2bc85b5dec33",
+"target": "我要数那些东西",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L01U04",
+"ka": "96bdd401-341d-4d82-b078-cd420d61e2ca",
+"known": "वह उन्हें गिन रहा है",
+"pos": 7,
+"t1": "441968a3-f0b2-4aeb-8508-c92099e2ede2",
+"t2": "aea1035e-5cb5-4df8-8ad5-25e7075b0963",
+"target": "他在数那些东西",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L01U05",
+"ka": "24088e76-15c5-4976-ad1f-7b02dc798bb3",
+"known": "मैं फिर से गिनना चाहता हूँ",
+"pos": 8,
+"t1": "0bb8ea3b-f2b9-4fd1-a7f7-3b3ae5e0a33e",
+"t2": "cbc39b8e-b06e-473e-a17f-d34de3b58c3f",
+"target": "我想再数一数",
+"type": "use"
+}
+],
+"target": "数",
+"type": "A"
+},
+{
+"id": "S0530L02",
+"idx": 2,
+"is_new": true,
+"known": "ताकि मैं ... सकूँ",
+"phrases": [
+{
+"id": "d33ecd79-cc49-4161-b491-abce46142576",
+"ka": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+"known": "ताकि मैं ... सकूँ",
+"pos": 0,
+"t1": "ecc21496-4df9-45ee-933d-f584000a66da",
+"t2": "d93c1263-761c-419a-9ba5-2a42a95fa886",
+"target": "这样我就能",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0530L02C01",
+"ka": "e60924fb-8b17-4cc7-97eb-6776c7045e67",
+"known": "ताकि",
+"pos": 1,
+"t1": "6ec52c21-a9fa-4a0f-851a-39133a766bf1",
+"t2": "eb20d128-87c2-4353-a913-5618061d478c",
+"target": "这样",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0530L02C02",
+"ka": "fc9b9454-7901-4e48-8555-6931c12db686",
+"known": "मैं",
+"pos": 2,
+"t1": "c21229de-8623-4966-b9ee-859372cb6d11",
+"t2": "b32b7af0-ccb6-4cd1-bc36-bda17d3381c9",
+"target": "我",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0530L02C03",
+"ka": "295210a0-e1b5-4837-aa9b-65b78985f0fc",
+"known": "सकूँ",
+"pos": 3,
+"t1": "426d0c20-53b6-462f-adc9-7619b190865f",
+"t2": "1e183055-a5db-4cc4-b240-5e35dbacc581",
+"target": "就能",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0530L02B01",
+"ka": "a4899b6c-73cd-4c35-baf1-107bb57dea4d",
+"known": "ताकि मैं ... सकूँ",
+"pos": 4,
+"t1": "ecc21496-4df9-45ee-933d-f584000a66da",
+"t2": "d93c1263-761c-419a-9ba5-2a42a95fa886",
+"target": "这样我就能",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L02B02",
+"ka": "a45950fd-5c11-4093-a552-cdcdd919792c",
+"known": "ताकि मैं गिन सकूँ",
+"pos": 5,
+"t1": "9f9bf331-7b07-4df4-87b3-91e9ff9b876b",
+"t2": "9c821daa-ddd5-4f2a-96d6-c97dfcf4e058",
+"target": "这样我就能数",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L02B03",
+"ka": "ba046e66-cbb6-4027-9b9f-678b909f9bde",
+"known": "ताकि मैं जा सकूँ",
+"pos": 6,
+"t1": "9a1173e7-baa4-4b04-8c8a-4a1043f96f57",
+"t2": "0342e599-0b65-4c92-a765-bb457253edcd",
+"target": "这样我就能去",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L02B04",
+"ka": "6af244d9-4cc0-44c4-9f48-865cfab0cbe9",
+"known": "ताकि मैं देख सकूँ",
+"pos": 7,
+"t1": "00423bc2-c37e-4b6b-b111-b79770bc0968",
+"t2": "68018aa9-6bc4-4b7a-84f4-5628032ec115",
+"target": "这样我就能看",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0530L02U01",
+"ka": "7e244d1e-dc44-4b18-b066-5b25252afa4d",
+"known": "ताकि मैं उन्हें गिन सकूँ",
+"pos": 8,
+"t1": "284995b1-c980-4534-9a85-feff734f51aa",
+"t2": "91ade479-abbb-4a7a-a5c8-d687e88e7d37",
+"target": "这样我就能数了",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L02U02",
+"ka": "2922e480-b339-4bc4-85fe-6a8b7a8ce62f",
+"known": "मुझे बताइए ताकि मैं समझ सकूँ",
+"pos": 9,
+"t1": "edfb7cca-f67e-4602-8969-aa82ba1941de",
+"t2": "6b3d434f-87d2-4d5e-b038-3864fbed4fb9",
+"target": "告诉我，这样我就能理解",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L02U03",
+"ka": "a06250de-6583-4af0-ae9e-554b971c29e7",
+"known": "इसे यहाँ रखिए ताकि मैं देख सकूँ",
+"pos": 10,
+"t1": "c0803ccc-1fcb-4d95-93dd-14facf9dd28e",
+"t2": "d23a223f-8dd6-4426-bb46-12d88a9a3aa3",
+"target": "放在这里，这样我就能看",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L02U04",
+"ka": "6175b016-8938-4351-a29b-24b9d0b4c2c0",
+"known": "मुझे थोड़ा समय दीजिए ताकि मैं ख़त्म कर सकूँ",
+"pos": 11,
+"t1": "f26d8f5d-1dac-45aa-b2d4-c8243651ce6c",
+"t2": "d577a95b-c49d-4e3c-9d4c-136a3001478b",
+"target": "给我一点时间，这样我就能做完",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0530L02U05",
+"ka": "3057325d-e89a-4e11-9feb-b9a07fc6469c",
+"known": "मुझे बताइए ताकि मैं आपकी मदद कर सकूँ",
+"pos": 12,
+"t1": "1dd4128c-088b-4148-95e5-256e6f6028ef",
+"t2": "442573d4-9f46-4c5d-908a-4c2a2e5a602c",
+"target": "告诉我，这样我就能帮你",
+"type": "use"
+}
+],
+"target": "这样我就能",
+"type": "M"
+}
+],
+"status": "released",
+"target": "这样我就能数了"
+},
+"570": {
+"at": "2026-11-18T18:34:23Z",
+"known": "आप अपनी टिकट के लिए कितना भुगतान करने को तैयार हैं?",
+"legos": [
+{
+"id": "S0570L01",
+"idx": 1,
+"is_new": true,
+"known": "टिकट",
+"phrases": [
+{
+"id": "e11f3841-ee2f-452d-8310-01d0025861cf",
+"ka": "a10164ea-d21d-444b-8aa7-a760492dbff8",
+"known": "टिकट",
+"pos": 0,
+"t1": "89290673-4f93-4f80-9285-4b99c4c2e498",
+"t2": "2350d5a7-6d74-4c40-8547-794859168222",
+"target": "票",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0570L01B01",
+"ka": "d658d407-5c0e-4f31-bfd3-fc6a5e37bf17",
+"known": "एक टिकट",
+"pos": 1,
+"t1": "f522e15c-6707-416d-8e40-73e11175fd7b",
+"t2": "94fc39bf-75fe-441a-8743-daebfd7bafc4",
+"target": "一张票",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L01B02",
+"ka": "672bf9f9-c910-4663-a15a-739f2c3da370",
+"known": "मेरी टिकट",
+"pos": 2,
+"t1": "ae8e9015-541a-4c03-bd20-c23970395969",
+"t2": "7a19f485-8445-4f09-824a-8f5ff85c611d",
+"target": "我的票",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L01B03",
+"ka": "b2c1058c-9da4-456c-9898-eb4401eb5bb9",
+"known": "आपकी टिकट",
+"pos": 3,
+"t1": "2e1c2036-950f-4a0f-a5c7-4d46ea64c6ad",
+"t2": "3afba1fb-510a-42fb-850a-0dc1ff2c9e91",
+"target": "你的票",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L01U01",
+"ka": "e4ec2bad-f6e9-4c21-9a16-288da46b8ce1",
+"known": "मुझे एक टिकट चाहिए",
+"pos": 4,
+"t1": "c9baf851-5615-40e2-9b9b-d1fb1b1aa255",
+"t2": "2c28d0a2-db1d-43c5-9a12-30cf645be2f4",
+"target": "我要一张票",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L01U02",
+"ka": "51e640e5-afbc-4c1f-a8cd-5bb50d9ef70b",
+"known": "क्या आपके पास टिकट है?",
+"pos": 5,
+"t1": "6e43939b-f26a-442f-8abf-a351bfbb7f55",
+"t2": "615cb4e5-23c8-4769-86a3-d1121c441d3a",
+"target": "你有票吗？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L01U03",
+"ka": "81467ad3-b501-494b-84da-97db80b93999",
+"known": "यह मेरी टिकट है",
+"pos": 6,
+"t1": "2adb25f5-989e-482e-a833-d6680d5d78e3",
+"t2": "cc935dc9-32e1-4836-832f-d11e74975b49",
+"target": "这是我的票",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L01U04",
+"ka": "a7e855de-4a82-44d1-ab3d-636a9765f67f",
+"known": "मैंने टिकट के पैसे दिए",
+"pos": 7,
+"t1": "f298b806-bffc-4b81-980d-124348df931e",
+"t2": "508e416f-9a03-46ff-8df5-bd5896679878",
+"target": "我付了票钱",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L01U05",
+"ka": "25697b29-58cf-4813-afb8-0ba63348b63b",
+"known": "मुझे आपकी टिकट मिल गई",
+"pos": 8,
+"t1": "f48b0bf2-2473-426e-bd9c-e811cc30deca",
+"t2": "7ad5e20e-a62b-4c3f-b182-679f879347be",
+"target": "我找到你的票了",
+"type": "use"
+}
+],
+"target": "票",
+"type": "A"
+},
+{
+"id": "S0570L02",
+"idx": 2,
+"is_new": true,
+"known": "अपनी ... के लिए",
+"phrases": [
+{
+"id": "b77060eb-c216-4d0e-85b4-adeafca38149",
+"ka": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+"known": "अपनी ... के लिए",
+"pos": 0,
+"t1": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+"t2": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292",
+"target": "为你的",
+"type": "lego_debut"
+},
+{
+"id": "zho_for_hin:S0570L02C01",
+"ka": "d68a1dd2-bc51-48ae-a2ee-52ba78584692",
+"known": "के लिए",
+"pos": 1,
+"t1": "00a51a8e-66be-4416-9705-b3199b18e211",
+"t2": "11d529fc-3846-4bdb-86c7-031e0b6d1437",
+"target": "为",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0570L02C02",
+"ka": "8cf6e21c-a207-47e1-bffe-e08390a77eef",
+"known": "अपनी",
+"pos": 2,
+"t1": "c5b54129-fd63-481b-baba-c264f908bac9",
+"t2": "5704ef31-3a97-4412-875a-5d7bf555f904",
+"target": "你的",
+"type": "component"
+},
+{
+"id": "zho_for_hin:S0570L02B01",
+"ka": "9b2cf5f7-8ffe-42cf-91a5-7ce4b9bf7ca5",
+"known": "अपनी ... के लिए",
+"pos": 3,
+"t1": "999afcbf-6cbd-4ebe-834d-f600168f1991",
+"t2": "1cd7f79f-cc32-4b4d-89ca-5f8fa51b9292",
+"target": "为你的",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L02B02",
+"ka": "603e512e-d37c-40e2-8ecf-796f9ea6e1f3",
+"known": "अपनी टिकट के लिए",
+"pos": 4,
+"t1": "359df375-d931-4c1b-b979-ef01140759ff",
+"t2": "360657e2-5d66-4ecb-9f13-71dcba7db782",
+"target": "为你的票",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L02B03",
+"ka": "25d61a22-8f8a-446f-bef1-806546576c70",
+"known": "अपने काम के लिए",
+"pos": 5,
+"t1": "0bb321e0-e1b3-4709-88a7-35c698251f82",
+"t2": "97974c91-4df3-4f92-95bd-7bb858e9a65b",
+"target": "为你的工作",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L02B04",
+"ka": "bb79bc09-33b2-4afe-8a38-ee720bfc7747",
+"known": "अपने घर के लिए",
+"pos": 6,
+"t1": "f82f5464-6879-446f-90bc-8aea616c82da",
+"t2": "afb29e2f-0f03-41bb-9954-5fd3798a5b52",
+"target": "为你的家",
+"type": "build"
+},
+{
+"id": "zho_for_hin:S0570L02U01",
+"ka": "51096b22-9b71-4a80-826f-2e52cf27e46f",
+"known": "आप अपनी टिकट के लिए कितना भुगतान करेंगे?",
+"pos": 7,
+"t1": "8046c656-1ad5-4df7-8164-dc83ba91509d",
+"t2": "b5b62303-689d-445c-bde4-d6cefadeb79f",
+"target": "你愿意为你的票付多少钱？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L02U02",
+"ka": "047ef0d5-c8f8-406a-b557-7f64c5f334e3",
+"known": "मैं आपके काम के लिए भुगतान करूँगा",
+"pos": 8,
+"t1": "beb1898a-301b-406b-9f4e-91ddba8985f9",
+"t2": "bc9ddb23-3a71-4149-b180-52949defa05e",
+"target": "我为你的工作付钱",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L02U03",
+"ka": "4ce9f092-93c5-4c08-b64a-25aed2df31cf",
+"known": "क्या आप अपनी टिकट के लिए भुगतान करेंगे?",
+"pos": 9,
+"t1": "45710322-aa4b-4c26-b538-2e11d8e455a6",
+"t2": "4337eec2-e26b-4823-b283-1ff8ba8f6403",
+"target": "你为你的票付钱吗？",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L02U04",
+"ka": "8f6dcded-9007-4b55-9bd7-abe0cef9dfbb",
+"known": "मैं आपके घर के लिए काम करता हूँ",
+"pos": 10,
+"t1": "987525b9-417b-4fa8-88e7-8123ed45bc62",
+"t2": "8e143595-51ba-4af9-9108-0ddcac95f012",
+"target": "我为你的家工作",
+"type": "use"
+},
+{
+"id": "zho_for_hin:S0570L02U05",
+"ka": "6ea407df-debe-41a0-9199-413ff3d4322c",
+"known": "वे आपकी टिकट के लिए भुगतान करेंगे",
+"pos": 11,
+"t1": "b0ce7975-dfef-40b1-9b0c-3c5499d6801e",
+"t2": "6b7fbc3c-9bf6-4c28-b1ee-524c3e7388ff",
+"target": "他们为你的票付钱",
+"type": "use"
+}
+],
+"target": "为你的",
+"type": "M"
+}
+],
+"status": "released",
+"target": "你愿意为你的票付多少钱？"
+}
+}

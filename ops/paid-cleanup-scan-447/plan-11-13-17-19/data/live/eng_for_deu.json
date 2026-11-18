@@ -1,0 +1,868 @@
+{
+"10": {
+"at": "2026-11-18T18:34:01Z",
+"known": "Ich bin nicht sicher, ob ich mich an den ganzen Satz erinnern kann.",
+"legos": [
+{
+"id": "S0010L01",
+"idx": 1,
+"is_new": true,
+"known": "ich bin mir nicht sicher",
+"phrases": [
+{
+"id": "1bff1142-82e3-46c1-848f-ca57b20ea95b",
+"ka": "adeedd68-a9da-4629-8aa0-43904c89d34a",
+"known": "ich bin mir nicht sicher",
+"pos": 0,
+"t1": "f139e1e0-b2fc-4535-86f2-134d2d494769",
+"t2": "22b4d519-88a7-4965-a44e-d6594d259665",
+"target": "I'm not sure",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0010L01C01",
+"ka": "900afdd8-cac6-4cff-aee6-05196e9d0344",
+"known": "ich",
+"pos": 1,
+"t1": "b73bdd9c-028c-4338-81db-1a4ba68b6f5a",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L01C02",
+"ka": "b2273d8f-5daa-49fd-9fe9-ed94ffa80180",
+"known": "nicht",
+"pos": 2,
+"t1": "6acce372-39fd-40ec-a13e-44b54f3c91a5",
+"t2": "13c97600-d075-443b-b66a-978a4012586b",
+"target": "not",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L01C03",
+"ka": "e5b768f3-0367-47d0-81c5-073571a3f8b4",
+"known": "sicher",
+"pos": 3,
+"t1": "7b16c4ed-5317-40b0-a03d-14b89f9ec6a4",
+"t2": "58115c79-4fd3-4058-a2df-9b38d89ef9bf",
+"target": "sure",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L01B01",
+"ka": "adeedd68-a9da-4629-8aa0-43904c89d34a",
+"known": "ich bin mir nicht sicher",
+"pos": 4,
+"t1": "f139e1e0-b2fc-4535-86f2-134d2d494769",
+"t2": "22b4d519-88a7-4965-a44e-d6594d259665",
+"target": "I'm not sure",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L01B02",
+"ka": "be5eee3e-1c51-49aa-8919-1738d3b173b6",
+"known": "ich bin mir jetzt nicht sicher",
+"pos": 5,
+"t1": "c65cbed1-a439-4d9f-97f4-a3f59d7212ea",
+"t2": "7eda048f-4d09-4ec6-a8c8-14a00ba3bae2",
+"target": "I'm not sure now",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L01B03",
+"ka": "f1dbdb10-1fdc-4f5e-8284-a452c522346e",
+"known": "ich bin mir heute nicht sicher",
+"pos": 6,
+"t1": "ba2459d6-8a80-4993-99ba-8bc41de44edc",
+"t2": "9baee98c-526e-4957-849b-bff1ce7664e8",
+"target": "I'm not sure today",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L01U01",
+"ka": "8b837b9b-4f1c-43c5-9360-326f5adfef51",
+"known": "ich bin mir nicht sicher, was ich meine",
+"pos": 7,
+"t1": "00b5c9a7-75de-4143-82b7-616bfeacd9ec",
+"t2": "e9957396-499c-43d7-9b26-3f9348ef18ae",
+"target": "I'm not sure what I mean",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L01U02",
+"ka": "b172b682-7711-4558-acc3-2531127526c2",
+"known": "ich bin mir nicht sicher, was ich erklären möchte",
+"pos": 8,
+"t1": "c0576b3f-ddcc-47cd-b22d-f9e1d242e2ea",
+"t2": "60da501a-0801-4a07-b001-c8e6559bee04",
+"target": "I'm not sure what I want to explain",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L01U03",
+"ka": "67e9d5f4-b615-4adc-9279-9a174f4bc549",
+"known": "ich bin mir nicht sicher, was ich heute versuchen möchte",
+"pos": 9,
+"t1": "72426a3b-7ac9-4122-b208-b8492444689a",
+"t2": "4218a01c-7b30-4f4e-8fac-210da4c99fd1",
+"target": "I'm not sure what I want to try today",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L01U04",
+"ka": "b8d323bb-7058-43b8-a216-29004397696a",
+"known": "ich bin mir nicht sicher, was ich jetzt sagen möchte",
+"pos": 10,
+"t1": "25c3494c-5fe8-4c31-8291-aa26f13add1f",
+"t2": "8434decf-1a6d-43a3-95f9-3e8730d87854",
+"target": "I'm not sure what I want to say now",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L01U05",
+"ka": "bbe788f8-bfc7-481d-a682-f02286115727",
+"known": "ich bin mir nicht sicher, was ich ein bisschen üben möchte",
+"pos": 11,
+"t1": "de55f14a-2eb6-4f21-9cb2-ed7955cfc77f",
+"t2": "02c21d3d-6e92-4965-95ac-c7d211034cab",
+"target": "I'm not sure what I want to practise a little",
+"type": "use"
+}
+],
+"target": "I'm not sure",
+"type": "M"
+},
+{
+"id": "S0010L02",
+"idx": 2,
+"is_new": true,
+"known": "ob ich ... kann",
+"phrases": [
+{
+"id": "40c57482-cbe7-48be-87f8-1572eb06787c",
+"ka": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb",
+"known": "ob ich ... kann",
+"pos": 0,
+"t1": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+"t2": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+"target": "if I can",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0010L02C01",
+"ka": "7721462e-fc17-4a0f-be6b-6554aab634ed",
+"known": "ob",
+"pos": 1,
+"t1": "e6c3de1d-5f6e-489b-99fa-493413c4307f",
+"t2": "f3f28e26-b4e0-4658-bc78-668916a9fa79",
+"target": "if",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L02C02",
+"ka": "900afdd8-cac6-4cff-aee6-05196e9d0344",
+"known": "ich",
+"pos": 2,
+"t1": "b73bdd9c-028c-4338-81db-1a4ba68b6f5a",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L02C03",
+"ka": "e07359ec-e53a-414c-af3f-ee0964e7b735",
+"known": "kann",
+"pos": 3,
+"t1": "fd5f2f90-fd60-40b7-9004-fb7138fd8c04",
+"t2": "2214039c-045e-4a42-9f13-9f933289f2e5",
+"target": "can",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L02B01",
+"ka": "b53ef985-fb6a-4ebb-b5cd-bd6b152cc4cb",
+"known": "ob ich ... kann",
+"pos": 4,
+"t1": "b265c2d3-a3f7-4fda-b1e1-2317bc335894",
+"t2": "1dc2b73c-9bc0-48a6-a063-470ccb4ca3f9",
+"target": "if I can",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L02B02",
+"ka": "b04235d2-bad5-4d45-9772-938d9ef1880d",
+"known": "ob ich ein bisschen üben kann",
+"pos": 5,
+"t1": "38ddd93b-6e49-4f11-bca5-83c77ebf37cf",
+"t2": "fd28c267-59f8-4a95-a263-ea9ca951fd5f",
+"target": "if I can practise a little",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L02B03",
+"ka": "cba09e72-577b-4f27-b7f9-c8201fff365d",
+"known": "ob ich ein bisschen Englisch sprechen kann",
+"pos": 6,
+"t1": "d5d1a5d4-4cbd-462c-9e13-b642e63d9318",
+"t2": "2b68921a-31cc-44de-9326-109c801474d7",
+"target": "if I can speak a little English",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L02U01",
+"ka": "d53dca87-860e-4d40-8ebd-9e56e283f31e",
+"known": "ich bin mir nicht sicher, ob ich heute ein bisschen üben kann",
+"pos": 7,
+"t1": "d7cf511a-ce94-47b2-961a-a447ca8b2dce",
+"t2": "70f839b9-3ae6-4654-a5ae-4e301b3f58c6",
+"target": "I'm not sure if I can practise a little today",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L02U02",
+"ka": "21c51c0c-daa5-4a7e-a9aa-13509577dbed",
+"known": "ich bin mir nicht sicher, ob ich heute ein bisschen Englisch üben kann",
+"pos": 8,
+"t1": "6887e042-9025-4c67-bba7-b83fe839f765",
+"t2": "d8157541-52aa-411d-9c06-2f414baf8a18",
+"target": "I'm not sure if I can practise a little English today",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L02U03",
+"ka": "d89b28b1-aa08-4cdb-8658-e3b8a23c9ab3",
+"known": "ich bin mir nicht sicher, ob ich jetzt mit dir üben kann",
+"pos": 9,
+"t1": "e4e5574e-8f84-4582-821b-dda46c9fdfc4",
+"t2": "a09a12db-d27c-4d0f-94de-13137b7f0f56",
+"target": "I'm not sure if I can practise with you now",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L02U04",
+"ka": "f0e4223d-d419-40ef-bc96-5c61f3365590",
+"known": "ich bin mir nicht sicher, ob ich jetzt ein bisschen sprechen kann",
+"pos": 10,
+"t1": "dd84dcd3-cade-430e-94d5-ba2b4921d0cd",
+"t2": "04bf6b55-35bd-488d-9026-d9b3565e7ab8",
+"target": "I'm not sure if I can speak a little now",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L02U05",
+"ka": "98370cfb-0477-4630-9518-32988ea894c4",
+"known": "ich bin mir nicht sicher, ob ich mit jemand anderem üben kann",
+"pos": 11,
+"t1": "c0014136-8062-433b-b69d-3f016a78eb1a",
+"t2": "3453123f-9dd7-4307-a852-2ba9c9a4ee35",
+"target": "I'm not sure if I can practise with someone else",
+"type": "use"
+}
+],
+"target": "if I can",
+"type": "M"
+},
+{
+"id": "S0010L03",
+"idx": 3,
+"is_new": true,
+"known": "den ganzen Satz",
+"phrases": [
+{
+"id": "13d12fe2-d135-4723-a5a0-c8a3624041da",
+"ka": "63fb7d70-5ea3-4c93-bc8d-81631099b60a",
+"known": "den ganzen Satz",
+"pos": 0,
+"t1": "d61c1aa9-1f9a-4a3f-8da8-3a5981bbabf5",
+"t2": "865af7ee-799e-4419-80b8-29ad744187d3",
+"target": "the whole sentence",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0010L03C01",
+"ka": "e9cc3be5-3573-4303-ae6f-6ec339ccd606",
+"known": "ganzen",
+"pos": 1,
+"t1": "8cab8f0d-e305-4e05-a0d5-a5a8a6b1f4f1",
+"t2": "756e7a9b-bbf9-4a89-aadf-ddeadfeb1e29",
+"target": "whole",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L03C02",
+"ka": "9e4c3918-baeb-451a-8e62-a1ac85255365",
+"known": "Satz",
+"pos": 2,
+"t1": "0f460be3-57fa-45a0-90eb-96d80468ccc8",
+"t2": "ecd01373-6ad4-4d43-9805-02b21b7c0264",
+"target": "sentence",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0010L03B01",
+"ka": "63fb7d70-5ea3-4c93-bc8d-81631099b60a",
+"known": "den ganzen Satz",
+"pos": 3,
+"t1": "d61c1aa9-1f9a-4a3f-8da8-3a5981bbabf5",
+"t2": "865af7ee-799e-4419-80b8-29ad744187d3",
+"target": "the whole sentence",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L03B02",
+"ka": "f6992f43-9da4-4031-b11c-a033f9861dc3",
+"known": "den ganzen Satz lernen",
+"pos": 4,
+"t1": "7d5887ad-4ada-4cff-989b-eb78e6e56ef2",
+"t2": "b238ce9a-826f-48b9-bd94-f0b1b748b87b",
+"target": "to learn the whole sentence",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L03B03",
+"ka": "11b01b9e-a818-4b66-b53a-25f7aba18675",
+"known": "mich an den ganzen Satz erinnern",
+"pos": 5,
+"t1": "696c59a9-5ccf-4381-9240-9f9b4a7cf856",
+"t2": "98940be0-6856-400e-82ee-96c5f4b1106e",
+"target": "to remember the whole sentence",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0010L03U01",
+"ka": "a83d3e64-25a2-4916-9a78-f62cd481d4da",
+"known": "ich versuche, mich an den ganzen Satz zu erinnern",
+"pos": 6,
+"t1": "1c9e8364-d1ce-472b-bb6d-4de643aeb619",
+"t2": "66eda5f4-eab1-43b6-a81e-ae92411c41a1",
+"target": "I'm trying to remember the whole sentence",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L03U02",
+"ka": "b1224628-1ffb-4a10-993f-44d6761582f5",
+"known": "ich möchte den ganzen Satz lernen",
+"pos": 7,
+"t1": "763605d1-74dd-4248-801a-c3540d5da7ce",
+"t2": "bfc3b706-996e-4ac9-acff-02f0c8c21b68",
+"target": "I want to learn the whole sentence",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L03U03",
+"ka": "745f94da-3abf-4b57-9f1f-77ba0961efe7",
+"known": "ich möchte den ganzen Satz heute lernen",
+"pos": 8,
+"t1": "00b81539-4bb1-47ae-8c26-466807b8aa9c",
+"t2": "fb9369c7-fca4-4f9a-8b03-6fa39af91686",
+"target": "I want to learn the whole sentence today",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L03U04",
+"ka": "5602f2fd-6ec2-4cdf-aee2-98db19b97a67",
+"known": "ich möchte mich an den ganzen Satz erinnern",
+"pos": 9,
+"t1": "a60fe83d-163d-4c94-8090-c8f0549de11b",
+"t2": "92fa8102-faa1-4bf6-a424-c4ce29d4ebbc",
+"target": "I want to remember the whole sentence",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0010L03U05",
+"ka": "a862374b-0c70-49f1-9e54-1a461d04fa0f",
+"known": "ich versuche, den ganzen Satz so gut ich kann zu sagen",
+"pos": 10,
+"t1": "d4c45262-8451-40cd-adf7-8edfdf99b333",
+"t2": "483ebea2-34df-47bc-9866-ad57fcaf49ae",
+"target": "I'm trying to say the whole sentence as well as I can",
+"type": "use"
+}
+],
+"target": "the whole sentence",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'm not sure if I can remember the whole sentence."
+},
+"42": {
+"at": "2026-11-18T18:34:02Z",
+"known": "Ich fing an, mich besser zu fühlen als gestern Abend.",
+"legos": [
+{
+"id": "S0042L01",
+"idx": 1,
+"is_new": true,
+"known": "mich besser zu fühlen",
+"phrases": [
+{
+"id": "adc4f28c-e071-4f31-a5f1-20752616df7f",
+"ka": "263ce6b1-2e3c-41cb-99ea-0f2f004ff107",
+"known": "mich besser zu fühlen",
+"pos": 0,
+"t1": "74f9ca57-a33c-4177-ab07-b9ab25cee1b3",
+"t2": "40e10f6b-4fc1-4ada-8774-1fca9bcd61df",
+"target": "to feel better",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0042L01C01",
+"ka": "77874e1d-bcb6-44ca-b01e-aa617b6783e9",
+"known": "zu fühlen",
+"pos": 1,
+"t1": "67626742-9541-4dab-b277-82eb36fef36a",
+"t2": "968391e7-ed94-4bb6-b3e5-f6f5de432a77",
+"target": "to feel",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L01C02",
+"ka": "f55eb4cd-714e-445d-896c-21dd34882620",
+"known": "besser",
+"pos": 2,
+"t1": "f4c8bd22-ff31-4dc4-915d-63edeb2169b9",
+"t2": "27e7222e-d5c4-4e91-b306-f377aa6314e9",
+"target": "better",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L01B01",
+"ka": "263ce6b1-2e3c-41cb-99ea-0f2f004ff107",
+"known": "mich besser zu fühlen",
+"pos": 3,
+"t1": "74f9ca57-a33c-4177-ab07-b9ab25cee1b3",
+"t2": "40e10f6b-4fc1-4ada-8774-1fca9bcd61df",
+"target": "to feel better",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L01B02",
+"ka": "5ff20e4a-1f16-4759-9029-e782d07329cb",
+"known": "ich möchte mich besser fühlen",
+"pos": 4,
+"t1": "644b4732-55fa-45c5-897f-12e27dc1feee",
+"t2": "8dd3a620-e048-4648-9ef2-4fc4930d902f",
+"target": "I want to feel better",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L01B03",
+"ka": "5c0693a8-6ddd-4de2-8f90-aaaff6defc0b",
+"known": "ich kann mich besser fühlen",
+"pos": 5,
+"t1": "640341c7-358a-40ad-8358-ece15767ab97",
+"t2": "6b4be25e-9728-478d-a835-8ae7bc437e54",
+"target": "I can feel better",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L01U01",
+"ka": "40d84335-8258-450a-a977-1247b3159e0d",
+"known": "ich möchte mich besser fühlen, wenn ich Leute treffe",
+"pos": 6,
+"t1": "ba20644d-56cb-4741-a624-0d92d06b967b",
+"t2": "422d47e3-7a13-4817-a668-a6cf1d604db4",
+"target": "I want to feel better when I meet people",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L01U02",
+"ka": "8842c020-3d9e-4a1b-ac2a-d1b2e47a2ea4",
+"known": "sie möchte sich besser fühlen",
+"pos": 7,
+"t1": "4bab372d-4701-43ca-8a25-9ae0c25744f3",
+"t2": "dfda9f3d-a4ac-4c4f-8cfc-6e2923cd4351",
+"target": "she wants to feel better",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L01U03",
+"ka": "b080c162-fb94-4f85-81d3-5be9693f3b06",
+"known": "er möchte sich besser fühlen, wenn er Englisch spricht",
+"pos": 8,
+"t1": "4419229b-fa1f-476e-b7c1-4f4f7d11daaf",
+"t2": "442af43c-d22e-4fe0-8529-c28439d5538f",
+"target": "he wants to feel better when he speaks English",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L01U04",
+"ka": "8df6238b-4178-4b42-90f0-b9aebf789803",
+"known": "ich möchte mich besser fühlen, bevor ich gehen muss",
+"pos": 9,
+"t1": "1d3063de-ca23-40e8-8dff-457bb55bfeac",
+"t2": "e4706178-7e3a-4bd7-afc3-91669e00821d",
+"target": "I want to feel better before I have to go",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L01U05",
+"ka": "47cb6dc0-0b4e-423f-b77e-8f28834f0865",
+"known": "es ist nützlich, sich besser zu fühlen, wenn man Leute trifft",
+"pos": 10,
+"t1": "9c3b2401-7290-408e-bca4-959328ef8456",
+"t2": "5fc54eaa-e701-4cdd-8302-e14ac5cb8b7c",
+"target": "it's useful to feel better when you meet people",
+"type": "use"
+}
+],
+"target": "to feel better",
+"type": "M"
+},
+{
+"id": "S0042L02",
+"idx": 2,
+"is_new": true,
+"known": "ich fing an",
+"phrases": [
+{
+"id": "5115f244-464c-41f9-8477-6ab1843f2c47",
+"ka": "133662dd-d24e-4548-880b-010ad911cc58",
+"known": "ich fing an",
+"pos": 0,
+"t1": "6cae5633-7a02-4511-9ccf-93be7c0c0ba7",
+"t2": "a42ee337-a218-49a5-8eab-c431c5974bdb",
+"target": "I was starting",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0042L02C01",
+"ka": "900afdd8-cac6-4cff-aee6-05196e9d0344",
+"known": "ich",
+"pos": 1,
+"t1": "b73bdd9c-028c-4338-81db-1a4ba68b6f5a",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L02C02",
+"ka": "74b13a04-3c25-4859-8800-f1d8660d64bc",
+"known": "fing an",
+"pos": 2,
+"t1": "12de8c00-b778-40c1-922e-4a2d388d287f",
+"t2": "9db5adfd-ff4b-4f1c-ad1c-cbb644a7aff0",
+"target": "was starting",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L02B01",
+"ka": "133662dd-d24e-4548-880b-010ad911cc58",
+"known": "ich fing an",
+"pos": 3,
+"t1": "6cae5633-7a02-4511-9ccf-93be7c0c0ba7",
+"t2": "a42ee337-a218-49a5-8eab-c431c5974bdb",
+"target": "I was starting",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L02B02",
+"ka": "5a8a9b1a-37d5-4fa2-863c-f7b794d2bcf3",
+"known": "ich fing an zu sprechen",
+"pos": 4,
+"t1": "68b3fb01-37db-4008-934a-d08d8f07ead7",
+"t2": "e6409cc5-275d-4966-8a4b-faaca449149a",
+"target": "I was starting to speak",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L02B03",
+"ka": "a419d9ac-5b96-4303-897f-2c164527f0ba",
+"known": "ich fing an zu lernen",
+"pos": 5,
+"t1": "9d39ae6a-8f42-419f-9aee-f76a68852fb6",
+"t2": "d65c6dbb-e4f1-45b1-abd6-576200bee15b",
+"target": "I was starting to learn",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L02B04",
+"ka": "33b5ef38-910e-4fb0-97d7-05484c3161f1",
+"known": "ich fing an, mich müde zu fühlen",
+"pos": 6,
+"t1": "1506fcc9-1583-4953-b12d-7c2ff9b56127",
+"t2": "e74bcfd3-5dc3-40dd-bcf3-b4d0ff3a8afd",
+"target": "I was starting to feel tired",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L02U01",
+"ka": "2101b3f6-f988-4c35-9ea3-56863331519c",
+"known": "ich fing an, mich besser zu fühlen",
+"pos": 7,
+"t1": "9e19eb0e-885d-471a-a3ce-f8df4610a179",
+"t2": "b1f2d8f7-c354-4ced-a889-997b86437778",
+"target": "I was starting to feel better",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L02U02",
+"ka": "26301ec2-f7f2-4604-a4d0-c8a149cb05f7",
+"known": "ich fing an, mich okay zu fühlen",
+"pos": 8,
+"t1": "87dcd75c-e2ac-44b7-9e8a-3ef73bae6dec",
+"t2": "7f0a0040-f6eb-465e-9aee-23dfc1dcbd14",
+"target": "I was starting to feel okay",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L02U03",
+"ka": "24c2a9fc-6d92-49b2-bddc-1cdf8fa0ea42",
+"known": "ich fing an, mehr Englisch zu sprechen",
+"pos": 9,
+"t1": "855fd288-bdae-4462-8b4e-cbe2e3c71b70",
+"t2": "f1b11909-6f1d-4717-aae3-db42a14d465e",
+"target": "I was starting to speak more English",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L02U04",
+"ka": "ed25266a-4b86-4122-8363-0a8c96901179",
+"known": "ich fing an, andere Leute zu treffen",
+"pos": 10,
+"t1": "ad8dd71b-5f9e-400d-83e7-45115589b190",
+"t2": "c6e03997-7d89-436e-b227-e72a2fb0de5f",
+"target": "I was starting to meet other people",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L02U05",
+"ka": "b42b4311-0587-4e4a-bef4-d3cd522ff135",
+"known": "ich fing an, müde zu werden",
+"pos": 11,
+"t1": "6379fa3a-f4d9-48e3-86c1-8471a5163853",
+"t2": "0d3c3131-fed5-408f-9cad-0f3ff3458916",
+"target": "I was starting to get tired",
+"type": "use"
+}
+],
+"target": "I was starting",
+"type": "M"
+},
+{
+"id": "S0042L03",
+"idx": 3,
+"is_new": true,
+"known": "als",
+"phrases": [
+{
+"id": "1ac7a6a5-dd1a-4d0f-a902-919452db4947",
+"ka": "862a3577-f9b3-4124-aa66-b20cdc91fb99",
+"known": "als",
+"pos": 0,
+"t1": "4ef719b4-131e-4246-8d74-4ac90046adde",
+"t2": "a87a115d-5555-419f-ba96-1e99002819ad",
+"target": "than…",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0042L03B01",
+"ka": "90a914f6-19e2-4f96-baa8-7a71caea6322",
+"known": "besser als",
+"pos": 1,
+"t1": "93b4b8a6-5466-4055-9464-332c91f81f7b",
+"t2": "0924d8d9-ba98-4ede-89a9-0a5bd12bc3d0",
+"target": "better than",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L03B02",
+"ka": "495aa9ec-a06d-4cf5-9727-78e33e3ff929",
+"known": "besser als gestern",
+"pos": 2,
+"t1": "d2aa6be6-aa3e-4272-bec5-2be1e2ceaac3",
+"t2": "5a159bba-e424-4ee2-9e48-585ad907d67c",
+"target": "better than yesterday",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L03B03",
+"ka": "6e2fc112-b024-45dd-b72e-57d1b9d19da0",
+"known": "ich fühle mich besser als gestern",
+"pos": 3,
+"t1": "2a2adb7c-2d6f-4c13-9d89-ec7a07fb3688",
+"t2": "8644a6a5-7ca6-4ea5-a5ca-5cb7421017c3",
+"target": "I feel better than yesterday",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L03U01",
+"ka": "04f06a27-d71f-4586-a712-85d44f000ca8",
+"known": "ich fühle mich besser als gestern, wenn ich Englisch spreche",
+"pos": 4,
+"t1": "af47a85d-45c7-4f53-9ee6-09943e919243",
+"t2": "cebc21cc-0ff4-4ef2-ae43-f0af0ba7e08e",
+"target": "I feel better than yesterday when I speak English",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L03U02",
+"ka": "5b1b4130-6459-4da6-b901-da7da4d464f7",
+"known": "ich fühle mich besser als heute Morgen",
+"pos": 5,
+"t1": "9859c8cb-d427-4818-a392-caa0deb0b94f",
+"t2": "4bbbddbd-c664-4296-a946-4398b1c1655c",
+"target": "I feel better than this morning",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L03U03",
+"ka": "52c58ef6-3911-409e-aec0-397779f7b93e",
+"known": "ich fing an, mich besser zu fühlen als gestern",
+"pos": 6,
+"t1": "d82a679a-1c42-4edb-9567-090c91a21d5b",
+"t2": "83bcfc1c-899b-48ad-b2bf-bc4b8ed8c8c0",
+"target": "I was starting to feel better than yesterday",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L03U04",
+"ka": "a206653b-b65d-4f98-9fde-b925932b4e4b",
+"known": "ich spreche besser Englisch als letzten Monat",
+"pos": 7,
+"t1": "7499231f-3e46-4427-8b01-d6680d51d611",
+"t2": "8369d268-c70d-4646-a7dd-d32e011e2aab",
+"target": "I speak English better than last month",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L03U05",
+"ka": "9769737f-e5e0-4622-936c-889724c50c77",
+"known": "ich fühle mich besser als heute Nachmittag",
+"pos": 8,
+"t1": "a736ca29-6279-4680-a472-47676cd639cc",
+"t2": "5aa984cd-b99c-4cb4-863f-2c766d940a18",
+"target": "I feel better than this afternoon",
+"type": "use"
+}
+],
+"target": "than…",
+"type": "A"
+},
+{
+"id": "S0042L04",
+"idx": 4,
+"is_new": true,
+"known": "gestern Abend",
+"phrases": [
+{
+"id": "c8245121-0de2-494b-90b9-cc87cc4fdf6c",
+"ka": "96f32e43-3b0c-4ac8-a1cd-3a81867dbbea",
+"known": "gestern Abend",
+"pos": 0,
+"t1": "c5d895d8-e0e4-489d-aaae-1d7ae477e123",
+"t2": "b3e9635b-d44e-4102-aeeb-b3a91b8e39ae",
+"target": "last night",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_deu:S0042L04C01",
+"ka": "dc0e2b37-3608-49f8-96a7-c58a2cdae6e8",
+"known": "gestern",
+"pos": 1,
+"t1": "6cedb2ad-1b9b-4351-a13e-cda83d24384f",
+"t2": "a710fc59-3d8e-40aa-ac96-9742ace5d414",
+"target": "last",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L04C02",
+"ka": "c6abf3c1-a41d-4be6-a686-61fbd6c87344",
+"known": "Abend",
+"pos": 2,
+"t1": "766c8598-15c5-4b69-8b77-b54510165a52",
+"t2": "449df3b0-e4aa-4f5c-a6b5-579a04bca4ce",
+"target": "night",
+"type": "component"
+},
+{
+"id": "eng_for_deu:S0042L04B01",
+"ka": "96f32e43-3b0c-4ac8-a1cd-3a81867dbbea",
+"known": "gestern Abend",
+"pos": 3,
+"t1": "c5d895d8-e0e4-489d-aaae-1d7ae477e123",
+"t2": "b3e9635b-d44e-4102-aeeb-b3a91b8e39ae",
+"target": "last night",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L04B02",
+"ka": "ddd5413d-6f3f-47c9-a9c6-8aaf1a8c5438",
+"known": "gestern Abend fing ich an, mich besser zu fühlen",
+"pos": 4,
+"t1": "7a5aa125-7d39-48ca-b353-969147ca0975",
+"t2": "f74ba4e2-51e3-48c9-baae-ecc0344a6a31",
+"target": "last night I was starting to feel better",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L04B03",
+"ka": "1d9a054e-7c8c-4111-8b1c-34b423bc9823",
+"known": "ich fing gestern Abend an zu sprechen",
+"pos": 5,
+"t1": "3f124dc3-6d03-4144-b511-47e35c98a9e1",
+"t2": "83ca61b2-5f5b-4b22-b9a2-57e0caa544a3",
+"target": "I was starting to speak last night",
+"type": "build"
+},
+{
+"id": "eng_for_deu:S0042L04U01",
+"ka": "7d93ec62-0e4a-4365-970f-93be1474fd0e",
+"known": "ich fühle mich besser als gestern Abend",
+"pos": 6,
+"t1": "2139e373-d5fa-4a71-8072-1e6747400f0e",
+"t2": "5a44f4f0-2f84-49e8-9b23-ddc4668428dc",
+"target": "I feel better than last night",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L04U02",
+"ka": "074b4b87-374d-49aa-95c9-80d157eb717c",
+"known": "gestern Abend fing ich an, mich okay zu fühlen",
+"pos": 7,
+"t1": "da8ffb86-6017-4715-b73c-3a0e904b5d23",
+"t2": "081d9e53-c83d-4168-a3f2-26768f30f95c",
+"target": "last night I was starting to feel okay",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L04U03",
+"ka": "dd5314b5-25b7-47a3-a457-cf176cc5fe9d",
+"known": "gestern Abend fing ich an, mich müde zu fühlen",
+"pos": 8,
+"t1": "d330f336-1520-4470-ad3a-45a7d42ab3db",
+"t2": "f159d090-dca6-4106-adce-90c254e8974b",
+"target": "last night I was starting to feel tired",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L04U04",
+"ka": "cd9b95f5-23fb-46e6-88b1-54863baa7f03",
+"known": "gestern Abend wollte ich Englisch sprechen",
+"pos": 9,
+"t1": "855192ea-57d9-4f04-8ebd-c78b3678f1db",
+"t2": "79547b0a-7e65-4935-80b4-b7d1f19172a9",
+"target": "last night I wanted to speak English",
+"type": "use"
+},
+{
+"id": "eng_for_deu:S0042L04U05",
+"ka": "7849c881-224b-493a-b391-d788b769dfdf",
+"known": "ich fing gestern Abend an, mehr zu lesen",
+"pos": 10,
+"t1": "d6fbb137-9fe5-4521-832d-c32676ef2da3",
+"t2": "76728038-d818-44ad-a461-816efd6ec8cb",
+"target": "I was starting to read more last night",
+"type": "use"
+}
+],
+"target": "last night",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I was starting to feel better than last night."
+}
+}
