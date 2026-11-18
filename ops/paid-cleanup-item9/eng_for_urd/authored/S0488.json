@@ -1,0 +1,62 @@
+{
+ "seed": 488,
+ "lego_ops": {
+  "L01": {
+   "set": {
+    "known_text": "اس پیلی لکیر کی دوسری طرف",
+    "target_text": "other side of that yellow line",
+    "type": "M",
+    "components": [
+     {
+      "known": "دوسری طرف",
+      "target": "other side of"
+     },
+     {
+      "known": "اس پیلی لکیر",
+      "target": "that yellow line"
+     }
+    ]
+   },
+   "why": "S3: 'side' is in the seed ('It's on the other side of that yellow line') and no LEGO carries it; L01 'line' is the seed's only LEGO. The shortest piece that holds both 'side' and 'line' with an honest Urdu side is 'other side of that yellow line' (8 syllables, at the cap; with 'the' it would be 9)."
+  }
+ },
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "اس پیلی لکیر کے دوسری طرف",
+     "on the other side of that yellow line"
+    ],
+    "B02": [
+     "اس پیلی لکیر کے دوسری طرف نہیں",
+     "not on the other side of that yellow line"
+    ],
+    "B03": [
+     "یہاں، اس پیلی لکیر کے دوسری طرف",
+     "here on the other side of that yellow line"
+    ],
+    "U02": [
+     "اس پیلی لکیر کے دوسری طرف کھڑے ہو جائیں",
+     "stand on the other side of that yellow line"
+    ],
+    "U03": [
+     "میں اس پیلی لکیر کی دوسری طرف دیکھ سکتا ہوں",
+     "I can see the other side of that yellow line"
+    ],
+    "U04": [
+     "اس پیلی لکیر کے دوسری طرف کیا ہے؟",
+     "what is on the other side of that yellow line?"
+    ],
+    "U05": [
+     "کیا آپ اس پیلی لکیر کی دوسری طرف دیکھ سکتے ہیں؟",
+     "can you see the other side of that yellow line?"
+    ],
+    "U06": [
+     "وہ اس پیلی لکیر کے دوسری طرف ہیں",
+     "they're on the other side of that yellow line"
+    ]
+   }
+  }
+ },
+ "notes": "cs #813: re-cut: 'line' -> 'other side of that yellow line'. U01 (the seed sentence) already contains it. THE WEAKEST TRADE IN THIS SET, for Kai to weigh: a one-word LEGO with a varied basket becomes an 8-syllable LEGO with nine near-identical long rows. A separate LEGO for 'the other side of' would be far better but needs Kai's key; dropping this file leaves S0488 as it is."
+}
