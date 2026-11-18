@@ -1,0 +1,1051 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0135L02B05",
+    "seed_number": 135,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "तुम्हाला असं का वाटतं ते मला समजतं",
+    "target_text": "I understand why you think that",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0136L01B04",
+    "seed_number": 136,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "अर्थातच मी करू शकतो",
+    "target_text": "of course I can",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0136L02B04",
+    "seed_number": 136,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "ती माझी मैत्रीण आहे",
+    "target_text": "she's my friend",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0137L01B04",
+    "seed_number": 137,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "वारंवार गप्पा मारणे",
+    "target_text": "to talk often",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0137L02B04",
+    "seed_number": 137,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "इथे असणे",
+    "target_text": "to be here",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 10,
+    "lego_count": 2,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0137L03B04",
+    "seed_number": 137,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "परिपूर्ण नाही",
+    "target_text": "not perfect",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 11,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L01B02",
+   "expect": {
+    "known_text": "त्यांच्याबरोबर आधीच",
+    "target_text": "with them already"
+   },
+   "set": {
+    "known_text": "त्यांच्याबरोबर काम करणे",
+    "target_text": "to work with them",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L01U01",
+   "expect": {
+    "known_text": "आम्ही त्यांच्याबरोबर एकत्र आहोत",
+    "target_text": "we're together with them"
+   },
+   "set": {
+    "known_text": "मला त्यांच्याबरोबर जायचं आहे",
+    "target_text": "I want to go with them",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L01U02",
+   "expect": {
+    "known_text": "मला त्यांच्याबरोबर आठवत नाही",
+    "target_text": "I can't remember with them"
+   },
+   "set": {
+    "known_text": "मला त्यांच्याबरोबर काम करायला आवडतं",
+    "target_text": "I like working with them",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L01U03",
+   "expect": {
+    "known_text": "कारण आम्ही त्यांच्याबरोबर एकत्र आहोत",
+    "target_text": "because we're together with them"
+   },
+   "set": {
+    "known_text": "मी त्यांच्याबरोबर येऊ शकतो का?",
+    "target_text": "can I come with them?",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L01U05",
+   "expect": {
+    "known_text": "आम्ही त्यांच्याबरोबर एकत्र पुन्हा आहोत",
+    "target_text": "we're together with them again"
+   },
+   "set": {
+    "known_text": "मी त्यांच्याबरोबर पबमध्ये होतो",
+    "target_text": "I was in the pub with them",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02B03",
+   "expect": {
+    "known_text": "अवघड गोष्टीवर पुन्हा",
+    "target_text": "at something difficult again"
+   },
+   "set": {
+    "known_text": "अवघड गोष्टीवर काम करणे",
+    "target_text": "to work at something difficult",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02B04",
+   "expect": {
+    "known_text": "अवघड गोष्टीवर इंग्रजीत",
+    "target_text": "at something difficult in English"
+   },
+   "set": {
+    "known_text": "अवघड गोष्टीवर काम करत",
+    "target_text": "working at something difficult",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02U01",
+   "expect": {
+    "known_text": "आम्ही त्यांच्याबरोबर एकत्र एखाद्या अवघड गोष्टीवर आहोत",
+    "target_text": "we're together at something difficult with them"
+   },
+   "set": {
+    "known_text": "आम्ही एका अवघड गोष्टीवर काम करतोय",
+    "target_text": "we're working at something difficult",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02U02",
+   "expect": {
+    "known_text": "मला अवघड गोष्टीवर त्यांच्याबरोबर आठवत नाही",
+    "target_text": "I can't remember at something difficult with them"
+   },
+   "set": {
+    "known_text": "मला अवघड गोष्टीवर काम करायला आवडतं",
+    "target_text": "I like to work at something difficult",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02U03",
+   "expect": {
+    "known_text": "आम्ही आधीच अवघड गोष्टीवर आहोत",
+    "target_text": "we're already at something difficult"
+   },
+   "set": {
+    "known_text": "आम्ही त्यांच्याबरोबर एका अवघड गोष्टीवर काम करतोय",
+    "target_text": "we're working at something difficult with them",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02U04",
+   "expect": {
+    "known_text": "कारण आम्ही एकत्र अवघड गोष्टीवर आहोत",
+    "target_text": "because we're together at something difficult"
+   },
+   "set": {
+    "known_text": "अवघड गोष्टीवर काम करणं मजेशीर आहे",
+    "target_text": "it's fun to work at something difficult",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L02U05",
+   "expect": {
+    "known_text": "आम्ही इंग्रजीत अवघड गोष्टीवर आहोत",
+    "target_text": "we're at something difficult in English"
+   },
+   "set": {
+    "known_text": "तुम्ही अवघड गोष्टीवर काम करता तेव्हा तुम्ही बरंच काही शिकता",
+    "target_text": "when you work at something difficult, you learn a lot",
+    "decomposition": null,
+    "word_count": 53,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03B02",
+   "expect": {
+    "known_text": "ती काही समस्या नसते त्यांच्याबरोबर इंग्रजीत",
+    "target_text": "it's not a problem with them in English"
+   },
+   "set": {
+    "known_text": "माझ्यासाठी ती काही समस्या नाही",
+    "target_text": "it's not a problem for me",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03B03",
+   "expect": {
+    "known_text": "ती काही समस्या नसते काम करता अवघड गोष्टीवर त्यांच्याबरोबर पुन्हा",
+    "target_text": "it's not a problem when you work at something difficult with them again"
+   },
+   "set": {
+    "known_text": "त्यांच्याबरोबर ती काही समस्या नसते",
+    "target_text": "it's not a problem with them",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03B04",
+   "expect": {
+    "known_text": "ती काही समस्या नसते अवघड गोष्टीवर",
+    "target_text": "it's not a problem at something difficult"
+   },
+   "set": {
+    "known_text": "आज ती काही समस्या नाही",
+    "target_text": "it's not a problem today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03U02",
+   "expect": {
+    "known_text": "ती काही समस्या नसते त्यांच्याबरोबर",
+    "target_text": "it's not a problem with them"
+   },
+   "set": {
+    "known_text": "ती काही समस्या नाही, मी वाट पाहू शकतो",
+    "target_text": "it's not a problem, I can wait",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03U03",
+   "expect": {
+    "known_text": "ती काही समस्या नसते अवघड गोष्टीवर त्यांच्याबरोबर",
+    "target_text": "it's not a problem at something difficult with them"
+   },
+   "set": {
+    "known_text": "तुम्ही चुका केल्या तर ती काही समस्या नाही",
+    "target_text": "it's not a problem if you make mistakes",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03U04",
+   "expect": {
+    "known_text": "कारण ती काही समस्या नसते",
+    "target_text": "because it's not a problem"
+   },
+   "set": {
+    "known_text": "ती काही समस्या नाही, आपण बसने जाऊ शकतो",
+    "target_text": "it's not a problem, we can go by bus",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0134L03U05",
+   "expect": {
+    "known_text": "मला आठवत नाही ती काही समस्या नसते",
+    "target_text": "I can't remember it's not a problem"
+   },
+   "set": {
+    "known_text": "मला वाटतं ती काही समस्या नाही",
+    "target_text": "I think it's not a problem",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01B03",
+   "expect": {
+    "known_text": "इतकं चांगलं अजून",
+    "target_text": "it's so good yet"
+   },
+   "set": {
+    "known_text": "इथे इतकं चांगलं आहे",
+    "target_text": "it's so good here",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01B04",
+   "expect": {
+    "known_text": "इतकं चांगलं रात्री",
+    "target_text": "it's so good tonight"
+   },
+   "set": {
+    "known_text": "इतकं चांगलं आहे, धन्यवाद",
+    "target_text": "it's so good, thank you",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01U01",
+   "expect": {
+    "known_text": "मला ते आठवत नाही ते इतकं चांगलं आहे",
+    "target_text": "I can't remember it's so good"
+   },
+   "set": {
+    "known_text": "मला ही गोष्ट आवडते, ती इतकी चांगली आहे",
+    "target_text": "I like this story, it's so good",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01U02",
+   "expect": {
+    "known_text": "आम्ही एकत्र आहोत कारण ते इतकं चांगलं आहे",
+    "target_text": "we're together because it's so good"
+   },
+   "set": {
+    "known_text": "तुमच्याशी बोलून इतकं चांगलं वाटतं",
+    "target_text": "it's so good to talk with you",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01U04",
+   "expect": {
+    "known_text": "ते इंग्रजीत इतकं चांगलं आहे",
+    "target_text": "it's so good in English"
+   },
+   "set": {
+    "known_text": "का ते माहित नाही, पण ते इतकं चांगलं आहे",
+    "target_text": "I don't know why, but it's so good",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L01U05",
+   "expect": {
+    "known_text": "ते आधीच इतकं चांगलं आहे",
+    "target_text": "it's so good already"
+   },
+   "set": {
+    "known_text": "आम्ही एकत्र शिकतो तेव्हा ते इतकं चांगलं असतं",
+    "target_text": "it's so good when we learn together",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L02B02",
+   "expect": {
+    "known_text": "तुम्हाला का वाटतं ते इतकं चांगलं",
+    "target_text": "why you think that it's so good"
+   },
+   "set": {
+    "known_text": "ते इतकं चांगलं आहे असं तुम्हाला का वाटतं",
+    "target_text": "why you think that it's so good",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L02B04",
+   "expect": {
+    "known_text": "तुम्हाला का वाटतं इंग्रजीत",
+    "target_text": "why you think that in English"
+   },
+   "set": {
+    "known_text": "तुम्हाला असं का वाटतं ते मला माहित आहे",
+    "target_text": "I know why you think that",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L02U02",
+   "expect": {
+    "known_text": "मला का वाटतं ते आठवत नाही",
+    "target_text": "I can't remember why you think that"
+   },
+   "set": {
+    "known_text": "तुम्हाला असं का वाटतं ते मला जाणून घ्यायला आवडेल",
+    "target_text": "I'd like to know why you think that",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L02U03",
+   "expect": {
+    "known_text": "कारण मला का वाटतं ते आठवत नाही",
+    "target_text": "because I can't remember why you think that"
+   },
+   "set": {
+    "known_text": "तुम्हाला असं का वाटतं ते तुम्ही मला सांगाल का?",
+    "target_text": "could you tell me why you think that?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0135L02U05",
+   "expect": {
+    "known_text": "तुम्हाला का वाटतं ते इतकं चांगलं ते मला आठवत नाही",
+    "target_text": "I can't remember why you think that it's so good"
+   },
+   "set": {
+    "known_text": "ते अवघड आहे असं तुम्हाला का वाटतं ते मला समजत नाही",
+    "target_text": "I don't understand why you think that it's difficult",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01B02",
+   "expect": {
+    "known_text": "अर्थातच तुम्ही शकता",
+    "target_text": "course you can"
+   },
+   "set": {
+    "known_text": "अर्थातच तुम्ही करू शकता",
+    "target_text": "of course you can",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01B03",
+   "expect": {
+    "known_text": "अर्थातच तुम्ही",
+    "target_text": "course you"
+   },
+   "set": {
+    "known_text": "अर्थातच नाही",
+    "target_text": "of course not",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01U02",
+   "expect": {
+    "known_text": "अर्थातच",
+    "target_text": "of course"
+   },
+   "set": {
+    "known_text": "अर्थातच मला यायला आवडेल",
+    "target_text": "of course I'd like to come",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01U03",
+   "expect": {
+    "known_text": "अर्थातच तुम्ही",
+    "target_text": "of course you"
+   },
+   "set": {
+    "known_text": "अर्थातच तुम्ही माझ्याबरोबर येऊ शकता",
+    "target_text": "of course you can come with me",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01U04",
+   "expect": {
+    "known_text": "अर्थातच इथे",
+    "target_text": "of course here"
+   },
+   "set": {
+    "known_text": "अर्थातच मला तुमचं नाव आठवतं",
+    "target_text": "of course I remember your name",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L01U05",
+   "expect": {
+    "known_text": "अर्थातच तुम्ही शकता",
+    "target_text": "of course you can"
+   },
+   "set": {
+    "known_text": "अर्थातच तुम्ही मला विचारू शकता",
+    "target_text": "of course you can ask me",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L02B02",
+   "expect": {
+    "known_text": "ती माझी",
+    "target_text": "she's my"
+   },
+   "set": {
+    "known_text": "ती तयार आहे",
+    "target_text": "she's ready",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L02U02",
+   "expect": {
+    "known_text": "इंग्रजीत ती",
+    "target_text": "she's in English"
+   },
+   "set": {
+    "known_text": "ती इंग्रजी शिकतेय",
+    "target_text": "she's learning English",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L02U03",
+   "expect": {
+    "known_text": "ती माझी मैत्रीण",
+    "target_text": "she's my friend"
+   },
+   "set": {
+    "known_text": "ती आज खूप खूश आहे",
+    "target_text": "she's very happy today",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L02U04",
+   "expect": {
+    "known_text": "कारण ती माझी",
+    "target_text": "because she's my"
+   },
+   "set": {
+    "known_text": "मला वाटतं ती थकलीय",
+    "target_text": "I think she's tired",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0136L02U05",
+   "expect": {
+    "known_text": "ती माझी मैत्रीण आज",
+    "target_text": "she's my friend today"
+   },
+   "set": {
+    "known_text": "ती तिची बॅग शोधतेय",
+    "target_text": "she's looking for her bag",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01B02",
+   "expect": {
+    "known_text": "मला गप्पा मारणे",
+    "target_text": "I want to talk"
+   },
+   "set": {
+    "known_text": "गप्पा मारायच्या आहेत",
+    "target_text": "want to talk",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01B03",
+   "expect": {
+    "known_text": "गप्पा मारणे इथे",
+    "target_text": "to talk here"
+   },
+   "set": {
+    "known_text": "मित्रांबरोबर गप्पा मारणे",
+    "target_text": "to talk with friends",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01U01",
+   "expect": {
+    "known_text": "महत्त्वाचं गप्पा मारणे",
+    "target_text": "important to talk"
+   },
+   "set": {
+    "known_text": "गप्पा मारणं महत्त्वाचं आहे",
+    "target_text": "it's important to talk",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01U02",
+   "expect": {
+    "known_text": "वारंवार गप्पा मारणे",
+    "target_text": "to talk often"
+   },
+   "set": {
+    "known_text": "मला तुमच्याशी गप्पा मारायला आवडेल",
+    "target_text": "I'd like to talk with you",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01U03",
+   "expect": {
+    "known_text": "इंग्रजीत गप्पा मारणे",
+    "target_text": "to talk in English"
+   },
+   "set": {
+    "known_text": "तुम्हाला गप्पा मारायच्या आहेत का?",
+    "target_text": "do you want to talk?",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01U04",
+   "expect": {
+    "known_text": "जास्त महत्त्वाचं गप्पा मारणे",
+    "target_text": "more important to talk"
+   },
+   "set": {
+    "known_text": "गप्पा मारणं जास्त महत्त्वाचं आहे",
+    "target_text": "it's more important to talk",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L01U05",
+   "expect": {
+    "known_text": "गप्पा मारणे वारंवार इथे",
+    "target_text": "to talk often here"
+   },
+   "set": {
+    "known_text": "आम्हाला पबमध्ये गप्पा मारायला आवडतं",
+    "target_text": "we like to talk in the pub",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02B02",
+   "expect": {
+    "known_text": "असणे आत्ता",
+    "target_text": "to be now"
+   },
+   "set": {
+    "known_text": "तयार असणे",
+    "target_text": "to be ready",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02B03",
+   "expect": {
+    "known_text": "असणे आज",
+    "target_text": "to be today"
+   },
+   "set": {
+    "known_text": "खूश असणे",
+    "target_text": "to be happy",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02U01",
+   "expect": {
+    "known_text": "त्यापेक्षा असणे",
+    "target_text": "than to be"
+   },
+   "set": {
+    "known_text": "मला तयार असायचं आहे",
+    "target_text": "I want to be ready",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02U02",
+   "expect": {
+    "known_text": "वारंवार त्यापेक्षा असणे",
+    "target_text": "often than to be"
+   },
+   "set": {
+    "known_text": "इथे असणं महत्त्वाचं आहे",
+    "target_text": "it's important to be here",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02U03",
+   "expect": {
+    "known_text": "इंग्रजीत असणे",
+    "target_text": "to be in English"
+   },
+   "set": {
+    "known_text": "मला माझ्या मित्रांबरोबर असायला आवडेल",
+    "target_text": "I'd like to be with my friends",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02U04",
+   "expect": {
+    "known_text": "असणे महत्त्वाचं",
+    "target_text": "to be important"
+   },
+   "set": {
+    "known_text": "तुम्हाला गप्प असायची गरज नाही",
+    "target_text": "you don't need to be quiet",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L02U05",
+   "expect": {
+    "known_text": "हे जास्त महत्त्वाचं असणे",
+    "target_text": "it's more important to be"
+   },
+   "set": {
+    "known_text": "खूश असणं जास्त महत्त्वाचं आहे",
+    "target_text": "it's more important to be happy",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03B02",
+   "expect": {
+    "known_text": "असता परिपूर्ण",
+    "target_text": "be perfect"
+   },
+   "set": {
+    "known_text": "परिपूर्ण असणे",
+    "target_text": "to be perfect",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03B03",
+   "expect": {
+    "known_text": "परिपूर्ण आज",
+    "target_text": "perfect today"
+   },
+   "set": {
+    "known_text": "परिपूर्ण इंग्रजी",
+    "target_text": "perfect English",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03U02",
+   "expect": {
+    "known_text": "इंग्रजीत परिपूर्ण",
+    "target_text": "perfect in English"
+   },
+   "set": {
+    "known_text": "माझं इंग्रजी परिपूर्ण नाही",
+    "target_text": "my English isn't perfect",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03U03",
+   "expect": {
+    "known_text": "असणे परिपूर्ण",
+    "target_text": "to be perfect"
+   },
+   "set": {
+    "known_text": "तुम्हाला परिपूर्ण असायची गरज नाही",
+    "target_text": "you don't need to be perfect",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03U04",
+   "expect": {
+    "known_text": "त्यापेक्षा असणे परिपूर्ण",
+    "target_text": "than to be perfect"
+   },
+   "set": {
+    "known_text": "ते परिपूर्ण नाही, पण चांगलं आहे",
+    "target_text": "it isn't perfect, but it's good",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0137L03U05",
+   "expect": {
+    "known_text": "परिपूर्ण इथे",
+    "target_text": "perfect here"
+   },
+   "set": {
+    "known_text": "मला परिपूर्ण असायचं नाही",
+    "target_text": "I don't want to be perfect",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  }
+ ]
+}
