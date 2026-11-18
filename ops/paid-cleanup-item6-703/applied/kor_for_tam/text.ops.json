@@ -1,0 +1,1314 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 126,
+   "set": {
+    "target_text": "이 일이 제 뇌의 모양을 바꾸고 있어요."
+   },
+   "expect": {
+    "known_text": "இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது.",
+    "target_text": "이 일이 내 뇌의 모양을 바꾸고 있어요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0126L03",
+   "set": {
+    "target_text": "제 뇌의"
+   },
+   "expect": {
+    "known_text": "என் மூளையின்",
+    "target_text": "내 뇌의"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03C01",
+   "set": {
+    "target_text": "제"
+   },
+   "expect": {
+    "known_text": "என்",
+    "target_text": "내"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03B01",
+   "set": {
+    "target_text": "제 뇌의"
+   },
+   "expect": {
+    "known_text": "என் மூளையின்",
+    "target_text": "내 뇌의"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03B02",
+   "set": {
+    "target_text": "제 뇌의 모양을"
+   },
+   "expect": {
+    "known_text": "என் மூளையின் வடிவத்தை",
+    "target_text": "내 뇌의 모양을"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03B03",
+   "set": {
+    "target_text": "지금 제 뇌의"
+   },
+   "expect": {
+    "known_text": "இப்போது என் மூளையின்",
+    "target_text": "지금 내 뇌의"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03U01",
+   "set": {
+    "target_text": "제 뇌의 모양을 바꾸고 있어요"
+   },
+   "expect": {
+    "known_text": "என் மூளையின் வடிவத்தை மாற்றுகிறேன்",
+    "target_text": "내 뇌의 모양을 바꾸고 있어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03U02",
+   "set": {
+    "target_text": "제 뇌의 모양을 기억하려고 해요"
+   },
+   "expect": {
+    "known_text": "என் மூளையின் வடிவத்தை நினைவில் கொள்ள முயற்சிக்கிறேன்",
+    "target_text": "내 뇌의 모양을 기억하려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03U03",
+   "set": {
+    "target_text": "지금 제 뇌의 모양을 바꾸고 있어요"
+   },
+   "expect": {
+    "known_text": "இப்போது என் மூளையின் வடிவத்தை மாற்றுகிறேன்",
+    "target_text": "지금 내 뇌의 모양을 바꾸고 있어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03U04",
+   "set": {
+    "target_text": "오늘 제 뇌의 모양을 바꾸고 있어요"
+   },
+   "expect": {
+    "known_text": "இன்று என் மூளையின் வடிவத்தை மாற்றுகிறேன்",
+    "target_text": "오늘 내 뇌의 모양을 바꾸고 있어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L03U05",
+   "set": {
+    "target_text": "제 뇌의 모양을 바꾸고 있어요, 왜냐하면 그것이 좋은 생각이라고 믿어요"
+   },
+   "expect": {
+    "known_text": "என் மூளையின் வடிவத்தை மாற்றுகிறேன், ஏனென்றால் அது ஒரு நல்ல யோசனை என்று நம்புகிறேன்",
+    "target_text": "내 뇌의 모양을 바꾸고 있어요, 왜냐하면 그것이 좋은 생각이라고 믿어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0126L04U01",
+   "set": {
+    "target_text": "이 일이 제 뇌의 모양을 바꾸고 있어요"
+   },
+   "expect": {
+    "known_text": "இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது",
+    "target_text": "이 일이 내 뇌의 모양을 바꾸고 있어요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 130,
+   "set": {
+    "target_text": "그것은 놀라웠어요, 왜냐하면 그는 제 친구이니까요."
+   },
+   "expect": {
+    "known_text": "அது ஒரு ஆச்சரியமாக இருந்தது, ஏனென்றால் அவர் என் நண்பர்.",
+    "target_text": "그것은 놀라웠어요, 왜냐하면 그는 내 친구이니까요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0130L02",
+   "set": {
+    "target_text": "제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "என் நண்பர் என்பதால்",
+    "target_text": "내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02C01",
+   "set": {
+    "target_text": "제"
+   },
+   "expect": {
+    "known_text": "என்",
+    "target_text": "내"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02B01",
+   "set": {
+    "target_text": "제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "என் நண்பர் என்பதால்",
+    "target_text": "내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02B02",
+   "set": {
+    "target_text": "그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அவர் என் நண்பர் என்பதால்",
+    "target_text": "그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02B03",
+   "set": {
+    "target_text": "지금 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "இப்போது என் நண்பர் என்பதால்",
+    "target_text": "지금 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02U01",
+   "set": {
+    "target_text": "그것은 놀라웠어요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அது ஒரு ஆச்சரியமாக இருந்தது, ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "그것은 놀라웠어요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02U02",
+   "set": {
+    "target_text": "왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02U03",
+   "set": {
+    "target_text": "그것은 흥미롭네요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அந்த விஷயம் சுவாரஸ்யமாக இருக்கிறது, ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "그것은 흥미롭네요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02U04",
+   "set": {
+    "target_text": "오늘 정말 기뻐요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "இன்று மிகவும் மகிழ்ச்சியாக இருக்கிறேன், ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "오늘 정말 기뻐요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0130L02U05",
+   "set": {
+    "target_text": "그게 좋은 생각이라고 믿어요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அது ஒரு நல்ல யோசனை என்று நம்புகிறேன், ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "그게 좋은 생각이라고 믿어요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0132L01U04",
+   "set": {
+    "target_text": "그것은 덜 흥미로워요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அது குறைவாக சுவாரஸ்யமாக இருக்கும், ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "그것은 덜 흥미로워요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 136,
+   "set": {
+    "target_text": "물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 제 친구이니까요."
+   },
+   "expect": {
+    "known_text": "நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பர்.",
+    "target_text": "물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 내 친구이니까요."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0136L03U01",
+   "set": {
+    "target_text": "물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பர்",
+    "target_text": "물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0139L02U03",
+   "set": {
+    "target_text": "정말 미안해요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "மிகவும் வருந்துகிறேன், ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "정말 미안해요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 147,
+   "set": {
+    "target_text": "그녀는 제가 긴장하는 걸 봤을 때 매우 친절했어요."
+   },
+   "expect": {
+    "known_text": "நான் பதற்றமாக உணர்வதைப் பார்த்தபோது அவள் மிகவும் இரக்கமாக இருந்தாள்.",
+    "target_text": "그녀는 내가 긴장하는 걸 봤을 때 매우 친절했어요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0147L01",
+   "set": {
+    "target_text": "제가"
+   },
+   "expect": {
+    "known_text": "நான்தான்",
+    "target_text": "내가"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01B01",
+   "set": {
+    "target_text": "제가"
+   },
+   "expect": {
+    "known_text": "நான்தான்",
+    "target_text": "내가"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01B02",
+   "set": {
+    "target_text": "제가 생각해요"
+   },
+   "expect": {
+    "known_text": "நான்தான் நினைக்கிறேன்",
+    "target_text": "내가 생각해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01B03",
+   "set": {
+    "target_text": "제가 믿어요"
+   },
+   "expect": {
+    "known_text": "நான்தான் நம்புகிறேன்",
+    "target_text": "내가 믿어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01U01",
+   "set": {
+    "target_text": "제가 정말 기뻐요"
+   },
+   "expect": {
+    "known_text": "நான்தான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்",
+    "target_text": "내가 정말 기뻐요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01U02",
+   "set": {
+    "target_text": "제가 그게 좋은 생각이라고 믿어요"
+   },
+   "expect": {
+    "known_text": "நான்தான் அது ஒரு நல்ல யோசனை என்று நம்புகிறேன்",
+    "target_text": "내가 그게 좋은 생각이라고 믿어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01U03",
+   "set": {
+    "target_text": "제가 한국어를 배우려고 해요"
+   },
+   "expect": {
+    "known_text": "நான்தான் கொரிய மொழியை கற்றுக்கொள்ள முயற்சிக்கிறேன்",
+    "target_text": "내가 한국어를 배우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01U04",
+   "set": {
+    "target_text": "오늘 제가 정말 기뻐요"
+   },
+   "expect": {
+    "known_text": "இன்று நான்தான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்",
+    "target_text": "오늘 내가 정말 기뻐요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L01U05",
+   "set": {
+    "target_text": "제가 그게 좋다고 생각해요"
+   },
+   "expect": {
+    "known_text": "நான்தான் அது நன்றாக இருக்கிறது என்று நினைக்கிறேன்",
+    "target_text": "내가 그게 좋다고 생각해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L02U02",
+   "set": {
+    "target_text": "제가 긴장하는 걸 좋아하지 않아요"
+   },
+   "expect": {
+    "known_text": "நான் பதற்றமாக உணர்வதை பிடிக்காது",
+    "target_text": "내가 긴장하는 걸 좋아하지 않아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L02U05",
+   "set": {
+    "target_text": "제가 긴장하는 걸 물어봐도 될까요?"
+   },
+   "expect": {
+    "known_text": "நான் பதற்றமாக உணர்வதைக் கேட்கலாமா?",
+    "target_text": "내가 긴장하는 걸 물어봐도 될까요?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L03U05",
+   "set": {
+    "target_text": "제가 봤을 때 좋은 생각이라고 생각했어요"
+   },
+   "expect": {
+    "known_text": "நான் பார்த்தபோது ஒரு நல்ல யோசனை என்று நினைத்தேன்",
+    "target_text": "내가 봤을 때 좋은 생각이라고 생각했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L04U01",
+   "set": {
+    "target_text": "그녀는 제가 긴장하는 걸 봤을 때 매우 친절했어요"
+   },
+   "expect": {
+    "known_text": "நான் பதற்றமாக உணர்வதைப் பார்த்தபோது அவள் மிகவும் இரக்கமாக இருந்தாள்",
+    "target_text": "그녀는 내가 긴장하는 걸 봤을 때 매우 친절했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L04U03",
+   "set": {
+    "target_text": "그녀는 친절했어요, 왜냐하면 그는 제 친구이니까요"
+   },
+   "expect": {
+    "known_text": "அவள் இரக்கமாக இருந்தாள், ஏனென்றால் அவர் என் நண்பர்",
+    "target_text": "그녀는 친절했어요, 왜냐하면 그는 내 친구이니까요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0147L04U05",
+   "set": {
+    "target_text": "제가 긴장하는 걸 봤을 때 친절했어요"
+   },
+   "expect": {
+    "known_text": "நான் பதற்றமாக உணர்வதைப் பார்த்தபோது இரக்கமாக இருந்தாள்",
+    "target_text": "내가 긴장하는 걸 봤을 때 친절했어요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 148,
+   "set": {
+    "target_text": "제가 대답하지 못했을 때 그는 그다지 인내심이 없었어요."
+   },
+   "expect": {
+    "known_text": "என்னால் பதில் சொல்ல முடியாதபோது அவர் மிகவும் பொறுமையாக இல்லை.",
+    "target_text": "내가 대답하지 못했을 때 그는 그다지 인내심이 없었어요."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0148L04B02",
+   "set": {
+    "target_text": "제가 대답하지 못했을"
+   },
+   "expect": {
+    "known_text": "நான் பதில் சொல்ல முடியாத",
+    "target_text": "내가 대답하지 못했을"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0148L04U01",
+   "set": {
+    "target_text": "제가 대답하지 못했을 때 그는 그다지 인내심이 없었어요"
+   },
+   "expect": {
+    "known_text": "என்னால் பதில் சொல்ல முடியாதபோது அவர் மிகவும் பொறுமையாக இல்லை",
+    "target_text": "내가 대답하지 못했을 때 그는 그다지 인내심이 없었어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0148L04U03",
+   "set": {
+    "target_text": "제가 대답하지 못했을 때 미안해요"
+   },
+   "expect": {
+    "known_text": "நான் பதில் சொல்ல முடியாதபோது வருந்துகிறேன்",
+    "target_text": "내가 대답하지 못했을 때 미안해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0148L04U05",
+   "set": {
+    "target_text": "오늘 제가 대답하지 못했을 때 놀라웠어요"
+   },
+   "expect": {
+    "known_text": "இன்று நான் பதில் சொல்ல முடியாதபோது ஆச்சரியமாக இருந்தது",
+    "target_text": "오늘 내가 대답하지 못했을 때 놀라웠어요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 166,
+   "set": {
+    "target_text": "제 이름은 그다지 특이하지 않아요."
+   },
+   "expect": {
+    "known_text": "என் பெயர் மிகவும் வழக்கத்துக்கு மாறானது அல்ல.",
+    "target_text": "내 이름은 그다지 특이하지 않아요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0166L01",
+   "set": {
+    "target_text": "제 이름은"
+   },
+   "expect": {
+    "known_text": "என் பெயர்",
+    "target_text": "내 이름은"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01C01",
+   "set": {
+    "target_text": "제"
+   },
+   "expect": {
+    "known_text": "என்",
+    "target_text": "내"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01B01",
+   "set": {
+    "target_text": "제 이름은"
+   },
+   "expect": {
+    "known_text": "என் பெயர்",
+    "target_text": "내 이름은"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01B02",
+   "set": {
+    "target_text": "제 이름은 좋은"
+   },
+   "expect": {
+    "known_text": "என் பெயர் நல்ல",
+    "target_text": "내 이름은 좋은"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01B03",
+   "set": {
+    "target_text": "오늘 제 이름은"
+   },
+   "expect": {
+    "known_text": "இன்று என் பெயர்",
+    "target_text": "오늘 내 이름은"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01B04",
+   "set": {
+    "target_text": "어제 제 이름은"
+   },
+   "expect": {
+    "known_text": "நேற்று என் பெயர்",
+    "target_text": "어제 내 이름은"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01U01",
+   "set": {
+    "target_text": "제 이름은 좋아요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் பிடிக்கும்",
+    "target_text": "내 이름은 좋아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01U02",
+   "set": {
+    "target_text": "제 이름은 어려워요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் கடினம்",
+    "target_text": "내 이름은 어려워요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01U03",
+   "set": {
+    "target_text": "제 이름은 흥미롭네요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் சுவாரஸ்யமாக இருக்கிறது",
+    "target_text": "내 이름은 흥미롭네요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01U04",
+   "set": {
+    "target_text": "제 이름은 괜찮아요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் பரவாயில்லை",
+    "target_text": "내 이름은 괜찮아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L01U05",
+   "set": {
+    "target_text": "오늘 제 이름은 좋아요"
+   },
+   "expect": {
+    "known_text": "இன்று என் பெயர் பிடிக்கும்",
+    "target_text": "오늘 내 이름은 좋아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L03U01",
+   "set": {
+    "target_text": "제 이름은 그다지 특이하지 않아요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் மிகவும் வழக்கத்துக்கு மாறானது அல்ல",
+    "target_text": "내 이름은 그다지 특이하지 않아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0166L03U04",
+   "set": {
+    "target_text": "제 이름은 특이하지 않아요"
+   },
+   "expect": {
+    "known_text": "என் பெயர் மாறானது அல்ல",
+    "target_text": "내 이름은 특이하지 않아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0187L02U05",
+   "set": {
+    "target_text": "지금까지는 제 이름은 좋아요"
+   },
+   "expect": {
+    "known_text": "இதுவரை என் பெயர் பிடிக்கும்",
+    "target_text": "지금까지는 내 이름은 좋아요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 226,
+   "set": {
+    "target_text": "그 남자는 저를 도우려고 해요."
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்கு உதவ முயற்சிக்கிறார்.",
+    "target_text": "그 남자는 나를 도우려고 해요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0226L02",
+   "set": {
+    "target_text": "저를"
+   },
+   "expect": {
+    "known_text": "என்னை",
+    "target_text": "나를"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02B01",
+   "set": {
+    "target_text": "저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "என்னை உதவ முயற்சிக்கிறார்",
+    "target_text": "나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02B02",
+   "set": {
+    "target_text": "지금 저를"
+   },
+   "expect": {
+    "known_text": "இப்போது என்னை",
+    "target_text": "지금 나를"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02B03",
+   "set": {
+    "target_text": "저를 봤어요"
+   },
+   "expect": {
+    "known_text": "என்னைப் பார்த்தார்",
+    "target_text": "나를 봤어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02U01",
+   "set": {
+    "target_text": "그는 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அவர் எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그는 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02U02",
+   "set": {
+    "target_text": "그는 지금 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அவர் இப்போது எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그는 지금 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02U03",
+   "set": {
+    "target_text": "그는 어제 저를 봤어요"
+   },
+   "expect": {
+    "known_text": "அவர் நேற்று என்னைப் பார்த்தார்",
+    "target_text": "그는 어제 나를 봤어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02U04",
+   "set": {
+    "target_text": "그는 오늘 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அவர் இன்று எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그는 오늘 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L02U05",
+   "set": {
+    "target_text": "그는 저를 알아요"
+   },
+   "expect": {
+    "known_text": "அவர் என்னை அறிவார்",
+    "target_text": "그는 나를 알아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L03U01",
+   "set": {
+    "target_text": "그 남자는 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그 남자는 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L03U02",
+   "set": {
+    "target_text": "그 남자는 지금 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் இப்போது எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그 남자는 지금 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L03U04",
+   "set": {
+    "target_text": "그 남자는 어제 저를 봤어요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் நேற்று என்னைப் பார்த்தார்",
+    "target_text": "그 남자는 어제 나를 봤어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0226L03U05",
+   "set": {
+    "target_text": "그 남자는 오늘 저를 도우려고 해요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் இன்று எனக்கு உதவ முயற்சிக்கிறார்",
+    "target_text": "그 남자는 오늘 나를 도우려고 해요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 227,
+   "set": {
+    "target_text": "그 남자는 저에게 새로운 것을 말해줄 거예요."
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்லப் போகிறார்.",
+    "target_text": "그 남자는 나에게 새로운 것을 말해줄 거예요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0227L01",
+   "set": {
+    "target_text": "저에게"
+   },
+   "expect": {
+    "known_text": "என்னிடம்",
+    "target_text": "나에게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01B01",
+   "set": {
+    "target_text": "저에게 말하려고 해요"
+   },
+   "expect": {
+    "known_text": "எனக்குச் சொல்ல முயற்சிக்கிறார்",
+    "target_text": "나에게 말하려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01B02",
+   "set": {
+    "target_text": "지금 저에게"
+   },
+   "expect": {
+    "known_text": "இப்போது எனக்கு",
+    "target_text": "지금 나에게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01B03",
+   "set": {
+    "target_text": "저에게 물어볼 거예요"
+   },
+   "expect": {
+    "known_text": "எனக்குக் கேட்பார்",
+    "target_text": "나에게 물어볼 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01U01",
+   "set": {
+    "target_text": "그는 저에게 말하려고 해요"
+   },
+   "expect": {
+    "known_text": "அவர் எனக்குச் சொல்ல முயற்சிக்கிறார்",
+    "target_text": "그는 나에게 말하려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01U02",
+   "set": {
+    "target_text": "그 남자는 저에게 물어볼 거예요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்குக் கேட்பார்",
+    "target_text": "그 남자는 나에게 물어볼 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01U03",
+   "set": {
+    "target_text": "그는 지금 저에게 말하려고 해요"
+   },
+   "expect": {
+    "known_text": "அவர் இப்போது எனக்குச் சொல்ல முயற்சிக்கிறார்",
+    "target_text": "그는 지금 나에게 말하려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01U04",
+   "set": {
+    "target_text": "그는 저에게 대답을 줄 거예요"
+   },
+   "expect": {
+    "known_text": "அவர் எனக்குப் பதில் கொடுப்பார்",
+    "target_text": "그는 나에게 대답을 줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L01U05",
+   "set": {
+    "target_text": "그 남자는 저에게 말하려고 해요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்குச் சொல்ல முயற்சிக்கிறார்",
+    "target_text": "그 남자는 나에게 말하려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L02B02",
+   "set": {
+    "target_text": "저에게 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "எனக்குச் சொல்வார்",
+    "target_text": "나에게 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L02U01",
+   "set": {
+    "target_text": "그 남자는 저에게 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்குச் சொல்வார்",
+    "target_text": "그 남자는 나에게 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L02U04",
+   "set": {
+    "target_text": "그 남자는 지금 저에게 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் இப்போது எனக்குச் சொல்வார்",
+    "target_text": "그 남자는 지금 나에게 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L02U05",
+   "set": {
+    "target_text": "그가 저에게 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "அவரும் எனக்குச் சொல்வார்",
+    "target_text": "그가 나에게 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L03U01",
+   "set": {
+    "target_text": "그 남자는 저에게 새로운 것을 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்வார்",
+    "target_text": "그 남자는 나에게 새로운 것을 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0227L03U05",
+   "set": {
+    "target_text": "그가 저에게 새로운 것을 말해줄 거예요"
+   },
+   "expect": {
+    "known_text": "அவரும் எனக்குப் புதிதாக ஏதாவது சொல்வார்",
+    "target_text": "그가 나에게 새로운 것을 말해줄 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0229L01U03",
+   "set": {
+    "target_text": "그는 저를 도울 거예요"
+   },
+   "expect": {
+    "known_text": "அவர் எனக்கு உதவுவார்",
+    "target_text": "그는 나를 도울 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0229L01U05",
+   "set": {
+    "target_text": "그가 할 수 있다면 저를 도울 거예요"
+   },
+   "expect": {
+    "known_text": "அவரால் முடிந்தால் எனக்கு உதவுவார்",
+    "target_text": "그가 할 수 있다면 나를 도울 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0229L02U03",
+   "set": {
+    "target_text": "그 여자는 저를 도울 거예요"
+   },
+   "expect": {
+    "known_text": "அந்தப் பெண் எனக்கு உதவுவாள்",
+    "target_text": "그 여자는 나를 도울 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0229L02U05",
+   "set": {
+    "target_text": "그 여자는 할 수 있다면 저를 도울 거예요"
+   },
+   "expect": {
+    "known_text": "அந்தப் பெண்ணால் முடிந்தால் எனக்கு உதவுவாள்",
+    "target_text": "그 여자는 할 수 있다면 나를 도울 거예요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0237L02B03",
+   "set": {
+    "target_text": "저에게 말해주길"
+   },
+   "expect": {
+    "known_text": "எனக்குச் சொல்லும்படி",
+    "target_text": "나에게 말해주길"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0237L02U03",
+   "set": {
+    "target_text": "그는 저에게 말해주길 원했어요"
+   },
+   "expect": {
+    "known_text": "அவர் எனக்குச் சொல்லும்படி விரும்பினார்",
+    "target_text": "그는 나에게 말해주길 원했어요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 293,
+   "set": {
+    "target_text": "그가 어디서 저를 만날지 알아야 해요."
+   },
+   "expect": {
+    "known_text": "அவர் என்னை எங்கே சந்திக்கப் போகிறார் என்று நான் கண்டுபிடிக்க வேண்டும்.",
+    "target_text": "그가 어디서 나를 만날지 알아야 해요."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L01B01",
+   "set": {
+    "target_text": "저를 만날지"
+   },
+   "expect": {
+    "known_text": "என்னை சந்திப்பாரா என்று",
+    "target_text": "나를 만날지"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L01B03",
+   "set": {
+    "target_text": "그가 어디서 저를 만날지"
+   },
+   "expect": {
+    "known_text": "அவர் எங்கே என்னை சந்திப்பாரா என்று",
+    "target_text": "그가 어디서 나를 만날지"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L01U01",
+   "set": {
+    "target_text": "그가 저를 만날지 궁금해요"
+   },
+   "expect": {
+    "known_text": "அவர் என்னை சந்திப்பாரா என்று யோசிக்கிறேன்",
+    "target_text": "그가 나를 만날지 궁금해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L01U03",
+   "set": {
+    "target_text": "그가 어디서 저를 만날지 궁금해요"
+   },
+   "expect": {
+    "known_text": "அவர் எங்கே என்னை சந்திப்பாரா என்று யோசிக்கிறேன்",
+    "target_text": "그가 어디서 나를 만날지 궁금해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L01U04",
+   "set": {
+    "target_text": "그녀가 저를 만날지 궁금해요"
+   },
+   "expect": {
+    "known_text": "அவள் என்னை சந்திப்பாளா என்று யோசிக்கிறேன்",
+    "target_text": "그녀가 나를 만날지 궁금해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L02U01",
+   "set": {
+    "target_text": "그가 어디서 저를 만날지 알아야 해요"
+   },
+   "expect": {
+    "known_text": "அவர் எங்கே என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்",
+    "target_text": "그가 어디서 나를 만날지 알아야 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L02U02",
+   "set": {
+    "target_text": "그가 저를 만날지 알아야 해요"
+   },
+   "expect": {
+    "known_text": "அவர் என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்",
+    "target_text": "그가 나를 만날지 알아야 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L02U04",
+   "set": {
+    "target_text": "오늘 그가 저를 만날지 알아야 해요"
+   },
+   "expect": {
+    "known_text": "இன்று அவர் என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்",
+    "target_text": "오늘 그가 나를 만날지 알아야 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0293L02U05",
+   "set": {
+    "target_text": "그녀가 저를 만날지 알아야 해요"
+   },
+   "expect": {
+    "known_text": "அவள் என்னை சந்திப்பாளா என்று தெரிந்துகொள்ள வேண்டும்",
+    "target_text": "그녀가 나를 만날지 알아야 해요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0642L01U04",
+   "expect": {
+    "known_text": "நீங்கள் எப்படி உணர்கிறீர்கள்",
+    "target_text": "기분이 어때요"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0666L01",
+   "set": {
+    "known_text": "நீங்கள் அனைவரும் என்ன"
+   },
+   "expect": {
+    "known_text": "அனைவரும் எப்படி",
+    "target_text": "여러분 어떻게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0666L01B01",
+   "set": {
+    "known_text": "நீங்கள் அனைவரும் என்ன"
+   },
+   "expect": {
+    "known_text": "அனைவரும் எப்படி",
+    "target_text": "여러분 어떻게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0666L01B02",
+   "set": {
+    "known_text": "இப்போது நீங்கள் அனைவரும் என்ன"
+   },
+   "expect": {
+    "known_text": "இப்போது அனைவரும் எப்படி",
+    "target_text": "지금 여러분 어떻게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0666L01B03",
+   "set": {
+    "known_text": "அடிக்கடி நீங்கள் அனைவரும் என்ன"
+   },
+   "expect": {
+    "known_text": "அடிக்கடி அனைவரும் எப்படி",
+    "target_text": "자주 여러분 어떻게"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0666L01B04",
+   "set": {
+    "known_text": "இன்று நீங்கள் அனைவரும் என்ன"
+   },
+   "expect": {
+    "known_text": "இன்று அனைவரும் எப்படி",
+    "target_text": "오늘 여러분 어떻게"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0666L01U03",
+   "expect": {
+    "known_text": "நீங்கள் அனைவரும் அப்படி நினைக்கிறீர்கள்",
+    "target_text": "여러분 그렇게 생각하세요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0354L01U01",
+   "expect": {
+    "known_text": "அவர் கோபமாகத் தெரிய வேண்டிய அவசியமில்லை",
+    "target_text": "보일 필요가 없었어요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_tam:S0038L01U02",
+   "expect": {
+    "known_text": "சுமார் ஆறு மணிக்கு",
+    "target_text": "약 6시에"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0651L01U03",
+   "set": {
+    "known_text": "அதைப் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் மேடம்",
+    "target_text": "그것에 대해 어떻게 생각하세요, 선생님"
+   },
+   "expect": {
+    "known_text": "நீங்கள் என்ன நினைக்கிறீர்கள்",
+    "target_text": "어떻게 생각하세요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_tam:S0077L03U01",
+   "set": {
+    "known_text": "எவ்வளவு விரைவாக என்று தெரியவில்லை",
+    "target_text": "얼마나 빠른지 모르겠어요"
+   },
+   "expect": {
+    "known_text": "விரைவாகப் தெரியும்",
+    "target_text": "빠른지 알아요"
+   }
+  }
+ ]
+}

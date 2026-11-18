@@ -121,11 +121,8 @@
     "target": "助けを求めたかった"
    },
    "defect": "canonical English \"they wanted…\" over subjectless 助けを求めたかった, which means \"I/we wanted…\"",
-   "action": "edit",
-   "new": {
-    "known": "we wanted to ask for help",
-    "target": "助けを求めたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\". English follows the Japanese, as Kai accepted for 37 jpn seeds on 29 Oct (held group B, edit event ce05e9f6) and as #421 recommended for 428 (\"たい is only you or I\"). The seed English moves to \"we\" (a plural first person, the nearest to the canonical \"they\" that bare たい can carry).",
    "confidence": "sure",
    "note": "",
@@ -133,7 +130,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 25
+   "audio_chars_est": 25,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "we wanted to ask for help",
+     "target": "助けを求めたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -145,11 +150,8 @@
     "target": "助けを求めたかった"
    },
    "defect": "seed copy follows the seed",
-   "action": "edit",
-   "new": {
-    "known": "we wanted to ask for help",
-    "target": "助けを求めたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "P26 seed copy",
    "confidence": "sure",
    "note": "",
@@ -157,7 +159,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 25
+   "audio_chars_est": 25,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "we wanted to ask for help",
+     "target": "助けを求めたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -169,14 +179,19 @@
     "target": "助けを求めたかった"
    },
    "defect": "\"we wanted to ask for help\" would now be an exact copy of the seed row U10",
-   "action": "delete",
+   "action": "keep",
    "new": null,
    "source": "duplicate",
    "confidence": "sure",
    "note": "BUILD floor 3 → 2 (warn-only, P23)",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "delete",
+    "new": null
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -188,11 +203,8 @@
     "target": "助けを求めたかった"
    },
    "defect": "\"she wanted…\" over bare たかった (= I/we)",
-   "action": "edit",
-   "new": {
-    "known": "they say they wanted to ask for help",
-    "target": "助けを求めたかったらしい"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\" — a third person's past wish with the hearsay らしい (taught S0200, the seed before) is correct Japanese and keeps a \"they\" row",
    "confidence": "sure",
    "note": "",
@@ -202,7 +214,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 60
+   "audio_chars_est": 60,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "they say they wanted to ask for help",
+     "target": "助けを求めたかったらしい"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -214,11 +234,8 @@
     "target": "昨日助けを求めたかった"
    },
    "defect": "\"he wanted…\" over bare たかった",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to ask for help yesterday",
-    "target": "昨日助けを求めたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"",
    "confidence": "sure",
    "note": "",
@@ -226,7 +243,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 34
+   "audio_chars_est": 34,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to ask for help yesterday",
+     "target": "昨日助けを求めたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -262,11 +287,8 @@
     "target": "その時助けを求めたかった"
    },
    "defect": "\"he wanted…\" over bare たかった",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to ask for help then",
-    "target": "その時助けを求めたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"",
    "confidence": "sure",
    "note": "",
@@ -274,7 +296,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 29
+   "audio_chars_est": 29,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to ask for help then",
+     "target": "その時助けを求めたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -286,11 +316,8 @@
     "target": "忙しい時助けを求めたかった"
    },
    "defect": "\"they wanted … when they were busy\" over bare たかった",
-   "action": "edit",
-   "new": {
-    "known": "they say they wanted to ask for help when they were busy",
-    "target": "忙しい時助けを求めたかったらしい"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; らしい S0200",
    "confidence": "sure",
    "note": "",
@@ -300,7 +327,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 88
+   "audio_chars_est": 88,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "they say they wanted to ask for help when they were busy",
+     "target": "忙しい時助けを求めたかったらしい"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -312,11 +347,8 @@
     "target": "助けを求めたかったけどしなかった"
    },
    "defect": "\"they wanted…\" over bare たかった",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to ask for help but didn't",
-    "target": "助けを求めたかったけどしなかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"",
    "confidence": "sure",
    "note": "not in the scan list; same defect in the same basket (R0.4 step 3)",
@@ -324,7 +356,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 35
+   "audio_chars_est": 35,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to ask for help but didn't",
+     "target": "助けを求めたかったけどしなかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -481,11 +521,8 @@
     "target": "戻りたかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to come back",
-    "target": "戻りたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -493,7 +530,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 21
+   "audio_chars_est": 21,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to come back",
+     "target": "戻りたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -505,11 +550,8 @@
     "target": "日本語を話したかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to speak Japanese",
-    "target": "日本語を話したかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -517,7 +559,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 26
+   "audio_chars_est": 26,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to speak Japanese",
+     "target": "日本語を話したかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -577,11 +627,8 @@
     "target": "方法を説明したくない"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I don't want to explain the method",
-    "target": "方法を説明したくない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -589,7 +636,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 34
+   "audio_chars_est": 34,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't want to explain the method",
+     "target": "方法を説明したくない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: known \"method\" untaught before S0327L01; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -673,11 +728,8 @@
     "target": "週末休みたかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to rest at the weekend",
-    "target": "週末休みたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -685,7 +737,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 31
+   "audio_chars_est": 31,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to rest at the weekend",
+     "target": "週末休みたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -697,11 +757,8 @@
     "target": "土曜働きたかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to work on Saturday",
-    "target": "土曜働きたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -709,7 +766,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 28
+   "audio_chars_est": 28,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to work on Saturday",
+     "target": "土曜働きたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -721,11 +786,8 @@
     "target": "土曜の夜出かけたかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "I wanted to go out on Saturday night",
-    "target": "土曜の夜出かけたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -733,7 +795,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 36
+   "audio_chars_est": 36,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I wanted to go out on Saturday night",
+     "target": "土曜の夜出かけたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -745,11 +815,8 @@
     "target": "何人か友だちに会いたかった"
    },
    "defect": "he/she/they English over bare たい/たかった, which says \"I/we\"",
-   "action": "edit",
-   "new": {
-    "known": "we wanted to meet a few friends",
-    "target": "何人か友だちに会いたかった"
-   },
+   "action": "keep",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; English follows the Japanese (precedent ce05e9f6)",
    "confidence": "sure",
    "note": "",
@@ -757,7 +824,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 31
+   "audio_chars_est": 31,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "we wanted to meet a few friends",
+     "target": "何人か友だちに会いたかった"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (DBJG (Makino & Tsutsui) -tai Note 1 exception: past -takatta may report a third person; course precedent SEED52 書きたかった)"
   },
   {
    "course": "jpn_for_eng",
@@ -788,14 +863,22 @@
     "target": "他の人がいると、彼は静かにしたくない"
    },
    "defect": "stated third person + present -tai in the seed sentence",
-   "action": "hold",
-   "new": null,
+   "action": "edit",
+   "new": {
+    "known": "I don't want to be quiet when other people are here",
+    "target": "他の人がいると、静かにしたくない"
+   },
    "source": "The seed sentence itself has the defect (stated 彼は/彼女は + -tai). The grammatical fix (-たがる) would replace the seed's LEGO, and that LEGO is the ONLY place the course teaches 戻りたい (16) / 静かにしたくない (34) / 読みたくない (35): 52 rows depend on them (incl. 10 in seeds 313–407), which would become untaught (P1). The other correct forms (…たいって, …たいらしい, …たいみたい) are untaught at seeds 16–35 and need a new LEGO on a released course (structural; Tom's or Kai's go). A seed rebuild with whole-course blast radius (S11/O1), not a row fix: left as is and listed. Bare たい after 彼は is common in casual speech; textbooks mark it (DBJG), so the scan rated this \"likely\", not \"sure\".",
    "confidence": "n/a",
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "hold",
+    "new": null
+   },
+   "review": "#722 DISPUTE accepted: held seed repaired the reviewer's way"
   },
   {
    "course": "jpn_for_eng",
@@ -807,14 +890,22 @@
     "target": "彼女は今日の午後、何も読みたくない"
    },
    "defect": "stated third person + present -tai in the seed sentence",
-   "action": "hold",
-   "new": null,
+   "action": "edit",
+   "new": {
+    "known": "I don't want to read anything this afternoon",
+    "target": "今日の午後、何も読みたくない"
+   },
    "source": "The seed sentence itself has the defect (stated 彼は/彼女は + -tai). The grammatical fix (-たがる) would replace the seed's LEGO, and that LEGO is the ONLY place the course teaches 戻りたい (16) / 静かにしたくない (34) / 読みたくない (35): 52 rows depend on them (incl. 10 in seeds 313–407), which would become untaught (P1). The other correct forms (…たいって, …たいらしい, …たいみたい) are untaught at seeds 16–35 and need a new LEGO on a released course (structural; Tom's or Kai's go). A seed rebuild with whole-course blast radius (S11/O1), not a row fix: left as is and listed. Bare たい after 彼は is common in casual speech; textbooks mark it (DBJG), so the scan rated this \"likely\", not \"sure\".",
    "confidence": "n/a",
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "plan_before_review": {
+    "action": "hold",
+    "new": null
+   },
+   "review": "#722 DISPUTE accepted: held seed repaired the reviewer's way"
   },
   {
    "course": "jpn_for_eng",
@@ -880,8 +971,8 @@
    "defect": "彼は/彼女は + 戻りたい (a stated third person with -tai)",
    "action": "edit",
    "new": {
-    "known": "he'll go back together",
-    "target": "彼は一緒に戻る"
+    "known": "he'll go back with everyone later",
+    "target": "彼はあとでみんなと戻る"
    },
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\". The fix stays inside what the course teaches: -たがってる is taught only as the whole chunk 知りたがってる (seed 17), so 戻りたがってる/会いたがってる/やめたがらない do not tile (K21, P2); each row moves to the first person (keeping its LEGO, P17) or, in a 彼は/彼女は basket, to the plain verb (戻る is S0016L01's component, usable alone — K29)",
    "confidence": "sure",
@@ -892,7 +983,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 36
+   "audio_chars_est": 36,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "he'll go back together",
+     "target": "彼は一緒に戻る"
+    }
+   },
+   "review": "#722 DISPUTE accepted: reviewer's proposal taken"
   },
   {
    "course": "jpn_for_eng",
@@ -1346,11 +1445,8 @@
     "target": "友だちは大事なことであなたを助けたい"
    },
    "defect": "stated third person (彼は/彼女は/友だちは) + -tai",
-   "action": "edit",
-   "new": {
-    "known": "I want to help my friend with something important",
-    "target": "大事なことで友だちを助けたい"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\". The fix stays inside what the course teaches: -たがってる is taught only as the whole chunk 知りたがってる (seed 17), so 戻りたがってる/会いたがってる/やめたがらない do not tile (K21, P2); each row moves to the first person (keeping its LEGO, P17) or, in a 彼は/彼女は basket, to the plain verb (戻る is S0016L01's component, usable alone — K29)",
    "confidence": "sure",
    "note": "",
@@ -1360,7 +1456,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 77
+   "audio_chars_est": 77,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I want to help my friend with something important",
+     "target": "大事なことで友だちを助けたい"
+    }
+   },
+   "review": "#722 DISPUTE accepted: 助けたい is taught nowhere; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -1372,11 +1476,8 @@
     "target": "母は二日間待ちたくない"
    },
    "defect": "母は … 待ちたくない: stated third person with -tai",
-   "action": "edit",
-   "new": {
-    "known": "I don't want to wait for two days",
-    "target": "二日間待ちたくない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "Makino & Tsutsui, A Dictionary of Basic Japanese Grammar, \"-tai\" (Note 3: -tai expresses the speaker's own wish, or the listener's in a question; a third person's wish needs -tagaru, or an evidential such as らしい/そうだ) and \"-garu\"; the LEGO is 待ちたくない, so -たがらない would break containment (P17): the row moves to the first person instead",
    "confidence": "sure",
    "note": "",
@@ -1386,7 +1487,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 51
+   "audio_chars_est": 51,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't want to wait for two days",
+     "target": "二日間待ちたくない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: 二日間 is taught nowhere; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -1694,8 +1803,8 @@
    "defect": "\"no, …\" over うん、…",
    "action": "edit",
    "new": {
-    "known": "no, I want coffee",
-    "target": "ううん、コーヒー飲みたい"
+    "known": "no, I want to go tomorrow",
+    "target": "ううん、明日行きたい"
    },
    "source": "うん is \"yes\"; casual \"no\" is ううん (大辞林 \"ううん\": 否定・不承知の返事; DBJG appendix on responses). Kept the canonical English and fixed the Japanese instead of the scan's \"yes\" + not-new + 12 deletes: the course has no other \"no\" before 309 (\"nope | いや\"), and ううん + positive answer to a negative question (\"ううん、好き\") is natural",
    "confidence": "sure",
@@ -1705,7 +1814,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 24
+   "audio_chars_est": 24,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "no, I want coffee",
+     "target": "ううん、コーヒー飲みたい"
+    }
+   },
+   "review": "#722 DISPUTE accepted: reviewer's proposal taken"
   },
   {
    "course": "jpn_for_eng",
@@ -2194,11 +2311,8 @@
     "target": "どんな気分"
    },
    "defect": "\"what kind of feeling\" is not English",
-   "action": "edit",
-   "new": {
-    "known": "how do you feel",
-    "target": "どんな気分"
-   },
+   "action": "keep",
+   "new": null,
    "source": "L26 (seed \"how do you feel at the moment?\"); presentation follows",
    "confidence": "sure",
    "note": "",
@@ -2207,7 +2321,15 @@
     "known",
     "presentation"
    ],
-   "audio_chars_est": 60
+   "audio_chars_est": 60,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "how do you feel",
+     "target": "どんな気分"
+    }
+   },
+   "review": "#722 DISPUTE accepted: plan edit withdrawn, current row kept (re-gloss \"how do you feel\" clashes with S0657L02 いかがですか)"
   },
   {
    "course": "jpn_for_eng",
@@ -2370,11 +2492,8 @@
     "target": "覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "I don't remember",
-    "target": "覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2382,7 +2501,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 16
+   "audio_chars_est": 16,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't remember",
+     "target": "覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: exact duplicate of B01 after the re-gloss; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -2442,11 +2569,8 @@
     "target": "疲れた時、よく覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "when I'm tired, I don't remember things well",
-    "target": "疲れた時、よく覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2454,7 +2578,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 44
+   "audio_chars_est": 44,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "when I'm tired, I don't remember things well",
+     "target": "疲れた時、よく覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: 疲れた untaught; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -2514,11 +2646,8 @@
     "target": "何をしようとしてたか覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "I don't remember what I was trying to do",
-    "target": "何をしようとしてたか覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2526,7 +2655,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 40
+   "audio_chars_est": 40,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't remember what I was trying to do",
+     "target": "何をしようとしてたか覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: しようとしてた untaught; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -2538,11 +2675,8 @@
     "target": "昨日彼が言った説明を覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "I don't remember the explanation he gave yesterday",
-    "target": "昨日彼が言った説明を覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2550,7 +2684,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 50
+   "audio_chars_est": 50,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't remember the explanation he gave yesterday",
+     "target": "昨日彼が言った説明を覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: 言った first taught at SEED296; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -2562,11 +2704,8 @@
     "target": "話そうとすると、言葉を覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "when I try to speak, I don't remember the words",
-    "target": "話そうとすると、言葉を覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2574,7 +2713,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 47
+   "audio_chars_est": 47,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "when I try to speak, I don't remember the words",
+     "target": "話そうとすると、言葉を覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: 話そうとすると untaught; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -2586,11 +2733,8 @@
     "target": "なんでそれをしたかったか覚えてない"
    },
    "defect": "row English follows the re-glossed LEGO (O12)",
-   "action": "edit",
-   "new": {
-    "known": "I don't remember why I wanted to do that",
-    "target": "なんでそれをしたかったか覚えてない"
-   },
+   "action": "delete",
+   "new": null,
    "source": "S0113L03 \"I can't remember | 覚えてない\" and S0057L01 \"can't remember | 思い出せない\": one English, two answers (P16/K22). 覚えてない = \"don't remember\" (stative -te iru of 覚える, DBJG \"oboeru\"); English follows the Japanese (precedent ce05e9f6), seed included so the LEGO still uses only the seed's words (L26)",
    "confidence": "sure",
    "note": "",
@@ -2598,7 +2742,15 @@
    "audio_slots": [
     "known"
    ],
-   "audio_chars_est": 40
+   "audio_chars_est": 40,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "I don't remember why I wanted to do that",
+     "target": "なんでそれをしたかったか覚えてない"
+    }
+   },
+   "review": "#722 DISPUTE accepted: standalone したかった untaught; deleted (K15) rather than left with the defect"
   },
   {
    "course": "jpn_for_eng",
@@ -5310,7 +5462,8 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 28
+   "audio_chars_est": 28,
+   "review": "#722 DISPUTE rejected for item 6: the 저에게 register fix is right and independent; the missing அவரும்/도 is a pre-existing prompt mismatch (item 3 family), recorded as residual"
   },
   {
    "course": "kor_for_tam",
@@ -5360,7 +5513,8 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 42
+   "audio_chars_est": 42,
+   "review": "#722 DISPUTE rejected for item 6: the 저에게 register fix is right and independent; the missing அவரும்/도 is a pre-existing prompt mismatch (item 3 family), recorded as residual"
   },
   {
    "course": "kor_for_tam",
@@ -8929,7 +9083,8 @@
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "review": "#722 DISPUTE: stays held — the K23(e)(2) route needs a hand-written presentation plus a course-wide audit of every later 그녀의/그의 USE prompt (reviewer: \"prerequisites, not already verified fixes\"); bigger than item 6"
   },
   {
    "course": "kor_for_hin",
@@ -8948,7 +9103,8 @@
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "review": "#722 DISPUTE: stays held — the K23(e)(2) route needs a hand-written presentation plus a course-wide audit of every later 그녀의/그의 USE prompt (reviewer: \"prerequisites, not already verified fixes\"); bigger than item 6"
   },
   {
    "course": "kor_for_hin",
@@ -8967,7 +9123,8 @@
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "review": "#722 DISPUTE: stays held — the K23(e)(2) route needs a hand-written presentation plus a course-wide audit of every later 그녀의/그의 USE prompt (reviewer: \"prerequisites, not already verified fixes\"); bigger than item 6"
   },
   {
    "course": "kor_for_hin",
@@ -8986,7 +9143,8 @@
    "note": "",
    "checks": "",
    "audio_slots": [],
-   "audio_chars_est": 0
+   "audio_chars_est": 0,
+   "review": "#722 DISPUTE: stays held — the K23(e)(2) route needs a hand-written presentation plus a course-wide audit of every later 그녀의/그의 USE prompt (reviewer: \"prerequisites, not already verified fixes\"); bigger than item 6"
   },
   {
    "course": "kor_for_hin",
@@ -9229,11 +9387,8 @@
     "target": "정말 잘하고 계신 것 같습니다"
    },
    "defect": "row in the formal sir/madam block (seed 655: 것 같습니다, 선생님) with no address in the Hindi: no visible register signal (K10)",
-   "action": "edit",
-   "new": {
-    "known": "मुझे लगता है कि आप सच में अच्छा कर रही हैं, श्रीमती",
-    "target": "정말 잘하고 계신 것 같습니다, 선생님"
-   },
+   "action": "hold",
+   "new": null,
    "source": "K10 rule 1; the scan proposed 같아요, but the LEGO is 것 같습니다 and that would break containment (P17); श्रीमती|선생님 is the seed's own",
    "confidence": "sure",
    "note": "",
@@ -9243,7 +9398,15 @@
     "target1",
     "target2"
    ],
-   "audio_chars_est": 93
+   "audio_chars_est": 93,
+   "plan_before_review": {
+    "action": "edit",
+    "new": {
+     "known": "मुझे लगता है कि आप सच में अच्छा कर रही हैं, श्रीमती",
+     "target": "정말 잘하고 계신 것 같습니다, 선생님"
+    }
+   },
+   "review": "#722 DISPUTE accepted, left out: bare श्रीमती is a pre-name title, not a stand-alone madam (Hindwi)"
   },
   {
    "course": "kor_for_hin",
@@ -10429,6 +10592,237 @@
    "checks": "",
    "audio_slots": [],
    "audio_chars_est": 0
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0034L01",
+   "kind": "lego",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to be quiet",
+    "target": "静かにしたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to be quiet",
+    "target": "静かにしたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0034L01B01",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to be quiet",
+    "target": "静かにしたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to be quiet",
+    "target": "静かにしたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0034L01B04",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to be quiet now",
+    "target": "今、静かにしたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to be quiet now",
+    "target": "今、静かにしたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0034L02U04",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "when other people are here, he doesn't want to be quiet",
+    "target": "他の人がいると、彼は静かにしたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "I don't want to be quiet when other people are here",
+    "target": "他の人がいると、静かにしたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L01",
+   "kind": "lego",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to read",
+    "target": "読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to read",
+    "target": "読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L01B01",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to read",
+    "target": "読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to read",
+    "target": "読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L01B02",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to read now",
+    "target": "今、読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to read now",
+    "target": "今、読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L01B03",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to read the sentence",
+    "target": "文を読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to read the sentence",
+    "target": "文を読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L01B04",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "doesn't want to read more",
+    "target": "もっと読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "don't want to read more",
+    "target": "もっと読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0035L03U08",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "she doesn't want to read anything this afternoon",
+    "target": "彼女は今日の午後、何も読みたくない"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "I don't want to read anything this afternoon",
+    "target": "今日の午後、何も読みたくない"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
+  },
+  {
+   "course": "jpn_for_eng",
+   "row": "S0113L03U09",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "why can't I remember what you said?",
+    "target": "なんで今のを覚えてないんだろう"
+   },
+   "defect": "knock-on of the seed 34/35/113 repair (seed copy / LEGO gloss in step with the seed, O12/L26)",
+   "action": "edit",
+   "new": {
+    "known": "why don't I remember what you said?",
+    "target": "なんで今のを覚えてないんだろう"
+   },
+   "source": "review #722·AI; DBJG -tai Note 1 (present -tai is first person)",
+   "confidence": "sure",
+   "note": "added after review",
+   "checks": "",
+   "review": "#722: added"
   }
  ]
 }
