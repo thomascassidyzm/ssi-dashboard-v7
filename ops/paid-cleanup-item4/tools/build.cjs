@@ -32,8 +32,9 @@ const lo = Number(fromS), hi = Number(toS);
 const cdir = path.join(L.ITEM_DIR, course);
 const chinese = L.isChinese(course);
 const seeds = L.loadLive(course);
-const collide = new Set(fs.existsSync(path.join(cdir, 'collide.json')) ? JSON.parse(fs.readFileSync(path.join(cdir, 'collide.json'), 'utf8')).map(String) : []);
-const ourEvents = new Set(fs.existsSync(path.join(cdir, 'events.json')) ? JSON.parse(fs.readFileSync(path.join(cdir, 'events.json'), 'utf8')).map(e => e.event_id) : []);
+const collide = new Set(fs.existsSync(path.join(cdir, 'collide.json')) ? JSON.parse(fs.readFileSync(path.join(cdir, 'collide.json'), 'utf8')).map(x => String(x).split(':').pop()) : []);
+// Every event this job wrote, whichever worker wrote it (events-<owner>.json, one per worker, so branches never conflict).
+const ourEvents = new Set(fs.readdirSync(cdir).filter(f => /^events.*\.json$/.test(f)).flatMap(f => JSON.parse(fs.readFileSync(path.join(cdir, f), 'utf8')).map(e => e.event_id)));
 
 const plans = [];
 for (const f of fs.readdirSync(path.join(cdir, 'plans')).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
@@ -41,7 +42,8 @@ for (const f of fs.readdirSync(path.join(cdir, 'plans')).filter(f => /^S\d{4}\.j
   if (p.seed >= lo && p.seed <= hi) plans.push(p);
 }
 const planBySeed = new Map(plans.map(p => [p.seed, p]));
-const errors = [], warnings = [], checks = [];
+const errors = [], warnings = [], checks = [], recordedToday = [];
+const scan = L.scanRows(course);
 const E = (where, msg) => errors.push(`${where}: ${msg}`);
 const W = (where, msg) => warnings.push(`${where}: ${msg}`);
 const zk = (t) => L.normalizeForZUT(t, chinese);
@@ -90,7 +92,14 @@ for (const s of seeds) {
       const w = `${l.lego_id}${sfx}`;
       if (!p) { E(w, 'row not in the live basket'); continue; }
       if (collide.has(w) || collide.has(l.lego_id)) E(w, 'on the collide list (another job owns it)');
-      if (p.updated_at >= L.TODAY && !ourEvents.has(p.last_edit_event_id)) E(w, `edited today by event ${p.last_edit_event_id} (not ours): collision`);
+      const sc = scan.get(w);
+      if (sc && (sc.known !== p.known_text || sc.target !== p.target_text) && !ourEvents.has(p.last_edit_event_id)) E(w, 'text differs from the 17 Nov scan: another job changed it, leave it alone');
+      else if (p.updated_at >= L.TODAY && !ourEvents.has(p.last_edit_event_id)) {
+        // The brief's one allowance: #694 fills EMPTY audio slots in these courses today. A scan row whose
+        // words are still the scan's and that now has audio was only recorded, not re-worded: go ahead, count it.
+        if (sc && (p.known_audio_id || p.target1_audio_id)) { W(w, `recorded today by another job (event ${p.last_edit_event_id}), words unchanged: proceeding`); recordedToday.push(w); }
+        else E(w, `edited today by event ${p.last_edit_event_id} (not ours): collision, leave it alone`);
+      }
       const sv = seen && seen[w];
       if (seen && (!sv || sv.known !== p.known_text || sv.target !== p.target_text)) E(w, 'row changed since it was seen: re-dump and re-read');
       if (p.phrase_role === 'component') E(w, 'component rows are not touched by this pass');
@@ -164,7 +173,7 @@ const out = path.join(cdir, 'batches'); fs.mkdirSync(out, { recursive: true });
 const all = [...ops.inserts, ...ops.updates, ...ops.deletes];
 fs.writeFileSync(path.join(out, `${batch}.ops.json`), JSON.stringify({ ops: all }, null, 1));
 fs.writeFileSync(path.join(out, `${batch}.overrides.json`), JSON.stringify(overrides, null, 1));
-fs.writeFileSync(path.join(out, `${batch}.check.json`), JSON.stringify({ course, batch, seeds: plans.map(p => p.seed), counts: { insert: ops.inserts.length, update: ops.updates.length, delete: ops.deletes.length }, errors, warnings, checks }, null, 1));
+fs.writeFileSync(path.join(out, `${batch}.check.json`), JSON.stringify({ course, batch, seeds: plans.map(p => p.seed), counts: { insert: ops.inserts.length, update: ops.updates.length, delete: ops.deletes.length }, recorded_today_by_others: recordedToday, errors, warnings, checks }, null, 1));
 console.log(`${course} ${batch}: seeds ${plans.length}, insert ${ops.inserts.length}, rewrite ${ops.updates.length}, delete ${ops.deletes.length}; ${errors.length} errors, ${warnings.length} warnings`);
 for (const x of errors) console.log('ERROR', x);
 for (const x of warnings) console.log('warn ', x);

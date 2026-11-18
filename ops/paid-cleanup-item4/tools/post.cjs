@@ -6,6 +6,7 @@
 //   node post.cjs dry      <course> <batch>  edit-batch dry run (real transaction, rolled back) -> batches/<batch>.dry.json
 //   node post.cjs apply    <course> <batch>  needs validate + dry to have passed; applies; saves event id,
 //                                            undo file name and undo ops -> batches/<batch>.apply.json, events.json
+//   (set ITEM4_OWNER=<your job label digits> so each worker keeps its own events-<owner>.json)
 //   node post.cjs after    <course>          full /v2/validate after the edits -> validate-after.json + diff vs before
 const fs = require('fs');
 const path = require('path');
@@ -81,7 +82,7 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
     wr(path.join(bdir, `${batch}.${mode}.json`), slim);
     if (mode === 'apply' && b.applied) {
       wr(path.join(bdir, `${batch}.undo.json`), { event_id: b.event_id, undo_file: b.undo_file, undo_ops: b.undo_ops });
-      const ef = path.join(cdir, 'events.json');
+      const ef = path.join(cdir, `events-${process.env.ITEM4_OWNER || 'main'}.json`);
       const ev = fs.existsSync(ef) ? rd(ef) : [];
       ev.push({ batch, event_id: b.event_id, undo_file: b.undo_file, at: slim.at, seeds: chk.seeds, counts: chk.counts });
       wr(ef, ev);
