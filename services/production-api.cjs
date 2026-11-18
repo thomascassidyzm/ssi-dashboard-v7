@@ -1,5 +1,8 @@
 // services/production-api.cjs
 require('dotenv').config()
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('./shared/db-load-gate.cjs').install('popty-production-api')
 const express = require('express')
 const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
 const { isStageEventLine, parseStageEventLine } = require('./shared/stage-event-line.cjs')
@@ -1906,6 +1909,8 @@ app.get('/health', (req, res) => {
     port: PORT || 3470,
     timestamp: new Date().toISOString(),
     supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized',
+    // The live DB load gate (cs #835): governed?, the level it reads (green/amber/red), its current rate.
+    dbLoadGate: require('./shared/db-load-gate.cjs').status(),
     // Which commit is THIS PROCESS running? Frozen at start, never re-read —
     // see services/shared/build-identity.cjs. This is what the staleness
     // watchdog compares against origin/main.

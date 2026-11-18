@@ -22,6 +22,9 @@
  */
 
 require('dotenv').config({ quiet: true })
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('../shared/db-load-gate.cjs').install('popty-voicelab-playground')
 
 const http = require('http')
 const fs = require('fs')

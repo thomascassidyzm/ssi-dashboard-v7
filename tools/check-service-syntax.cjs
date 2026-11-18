@@ -164,6 +164,33 @@ for (const file of targets) {
 
 const rel = (f) => path.relative(REPO_ROOT, f) || f
 
+// THE LOAD-GATE PRE-FLIGHT (cs #835, 2026-11-18; Tom's ruling r-2026-11-18-no-watson-or-worker-any-owner:
+// "A job that bypasses the gate fails its pre-flight"). A unit entrypoint that reaches the live SSi DB
+// (supabase / pg / a database url in its source) must install services/shared/db-load-gate.cjs in its first
+// lines, before any client exists. This runs as every unit's ExecStartPre, so an ungoverned service does
+// not start — it is refused, loudly, here.
+const REACHES_DB = /supabase|require\(['"]pg['"]\)|DATABASE_URL/
+const INSTALLS_GATE = /require\(['"][./]*(?:shared\/)?db-load-gate\.cjs['"]\)\.install\(/
+const unitFiles = new Set(unitEntrypoints())
+const ungoverned = targets.filter((f) => unitFiles.has(f) && fs.existsSync(f)).filter((f) => {
+  const src = fs.readFileSync(f, 'utf-8')
+  if (!REACHES_DB.test(src)) return false
+  return !INSTALLS_GATE.test(src.split('\n').slice(0, 60).join('\n'))
+})
+if (ungoverned.length) {
+  console.error('')
+  console.error('=========================================================')
+  console.error(' LOAD GATE MISSING — these service entrypoints reach the live')
+  console.error(' SSi DB without services/shared/db-load-gate.cjs (cs #835)')
+  console.error('=========================================================')
+  for (const f of ungoverned) console.error(`  ${rel(f)}`)
+  console.error('')
+  console.error(" Add, in the first lines, before any Supabase/pg client: require('./shared/db-load-gate.cjs').install('<name>')")
+  console.error(" Tom's ruling r-2026-11-18-no-watson-or-worker-any-owner: no writer hammers the live DB; bypassing the gate fails pre-flight.")
+  console.error('')
+  process.exit(1)
+}
+
 if (failures.length) {
   console.error('')
   console.error('=========================================================')

@@ -19,6 +19,9 @@
  */
 
 require('dotenv').config()
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('../shared/db-load-gate.cjs').install('popty-phase8-audio')
 
 const express = require('express')
 const cors = require('cors')
