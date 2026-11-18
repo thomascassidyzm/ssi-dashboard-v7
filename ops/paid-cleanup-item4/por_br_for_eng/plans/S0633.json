@@ -1,0 +1,75 @@
+{
+ "seed": 633,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "a large glass, please",
+     "um copo grande, por favor"
+    ],
+    "B03": [
+     "I'd like a large glass",
+     "eu gostaria de um copo grande"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "a large glass of water, please",
+     "um copo grande de água, por favor"
+    ],
+    "B03": [
+     "I'd like a glass of water",
+     "eu gostaria de um copo de água"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I want a large glass of water",
+     "quero um copo grande de água"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "it would be a glass of water",
+     "seria um copo de água"
+    ],
+    "B03": [
+     "it would be better",
+     "seria melhor"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I think it would be better",
+     "eu acho que seria melhor"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B02": [
+     "that would be fine",
+     "isso seria ótimo"
+    ],
+    "B03": [
+     "a glass of water would be fine",
+     "um copo de água seria ótimo"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "it would be fine today",
+     "seria ótimo hoje"
+    ]
+   ]
+  }
+ },
+ "notes": "A/B sonnet arm, item 4: filler rows rewritten from taught chunks"
+}

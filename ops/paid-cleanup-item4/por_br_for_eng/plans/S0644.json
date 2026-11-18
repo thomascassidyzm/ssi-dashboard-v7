@@ -1,0 +1,31 @@
+{
+ "seed": 644,
+ "legos": {
+  "L01": {
+   "delete": [
+    "B02",
+    "B03"
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "could you say something",
+     "poderia dizer algo"
+    ],
+    "B03": [
+     "could you say that slowly",
+     "poderia dizer isso devagar"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "could you say that a little more slowly",
+     "poderia dizer isso um pouco mais devagar"
+    ]
+   ]
+  }
+ },
+ "notes": "A/B sonnet arm, item 4: filler rows rewritten from taught chunks"
+}

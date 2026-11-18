@@ -1,0 +1,37 @@
+{
+ "seed": 635,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I can find that bag",
+     "posso encontrar aquela bolsa"
+    ],
+    "B03": [
+     "I want that bag",
+     "eu quero aquela bolsa"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "it is Jane's",
+     "é da Jane"
+    ],
+    "B03": [
+     "I think that bag is Jane's",
+     "eu acho que aquela bolsa é da Jane"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I think it's Jane's",
+     "eu acho que é da Jane"
+    ]
+   ]
+  }
+ },
+ "notes": "A/B sonnet arm, item 4: filler rows rewritten from taught chunks"
+}
