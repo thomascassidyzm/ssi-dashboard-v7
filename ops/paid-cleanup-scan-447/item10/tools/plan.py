@@ -4,7 +4,7 @@ GET /api/production/<course>/seed/<S####>/baskets (components), plus a hand-auth
 plans/<course>.json: per LEGO before -> after, basket ops, back-fill rows, checks, knock-on census, and the exact
 edit-batch op list. It never writes to a course: the ops are sent ONLY as a dry run by dryrun.py.
 
-usage: python3 -I plan.py <course> <dump.json> [--no-fetch]
+usage: python3 -I plan.py <course> <dump.json> [--no-fetch] [--tag b]   (--tag b: reads decisions/<course>-b.json, writes plans/<course>-b.json — a second shard of one course)
 decisions/<course>.json = {"course":..,"legos":[{
    "id":"S0003L03", "verdict":"regloss|grow|recut|keep|kai|misfiled",
    "known":..,"target":..,"type":"A|M","components":[[known,target],..],   # the LEGO after (omit = unchanged)
@@ -42,8 +42,18 @@ def has(phrase, lego):
     return (' ' + a + ' ') in (' ' + b + ' ')
 
 
+# K6 (cs #742·AI): the known side may inflect a taught word, so containment treats an irregular form as its base word
+IRREG = {'got': 'get', 'gotten': 'get', 'went': 'go', 'gone': 'go', 'said': 'say', 'left': 'leave', 'took': 'take', 'taken': 'take',
+         'made': 'make', 'thought': 'think', 'saw': 'see', 'seen': 'see', 'bought': 'buy', 'found': 'find', 'came': 'come',
+         'told': 'tell', 'knew': 'know', 'known': 'know', 'did': 'do', 'done': 'do', 'had': 'have', 'has': 'have',
+         'heard': 'hear', 'were': 'was', "wasn't": 'was', "weren't": 'was', 'put': 'put'}
+SKIP = {'to', 'be'}  # K54 "to" and the copula are never what a row is checked for
+
+
 def stem(w):
-    w = w.replace("'s", '')
+    w = IRREG.get(w, w)
+    for c in ("'s", "'re", "'d", "'ll", "'ve", "'m"):
+        w = w.replace(c, '')
     for suf in ('ing', 'ed', 'es', 's'):
         if len(w) > 4 and w.endswith(suf):
             w = w[:-len(suf)]
@@ -56,7 +66,7 @@ def words_in(phrase, lego):
     K6: an inflection of the word counts — learn/learning, want/wants)"""
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
-    for w in [stem(x) for x in norm(lego).split()]:
+    for w in [stem(x) for x in norm(lego).split() if x not in SKIP]:
         if pool[w] <= 0:
             return False
         pool[w] -= 1
@@ -117,8 +127,9 @@ def fetch_components(course, seed, cache_dir, offline):
 def main():
     course, dumpf = sys.argv[1], sys.argv[2]
     offline = '--no-fetch' in sys.argv
+    tag = ('-' + sys.argv[sys.argv.index('--tag') + 1]) if '--tag' in sys.argv else ''
     dump = json.load(open(dumpf))
-    dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}.json')))
+    dec = json.load(open(os.path.join(ROOT, 'decisions', f'{course}{tag}.json')))
     SD, L, P = {}, {}, {}
     for s in dump['seeds']:
         SD[s['n']] = s
@@ -188,7 +199,7 @@ def main():
         # --- checks on the LEGO itself
         chk = {}
         sk_after = d.get('seed_known') or seed_known_after.get(s['n']) or s['known']
-        miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w != 'to']
+        miss = [w for w in norm(nk).split() if stem(w) not in [stem(x) for x in norm(sk_after).split()] and w not in SKIP]
         chk['known_in_seed'] = not miss or miss
         chk['target_in_seed'] = has(s['target'], nt)
         chk['syllables'] = syl(nt, course)
@@ -349,7 +360,7 @@ def main():
            'touched_seeds': sorted(touched_seeds), 'problems': problems, 'auto_substitutions': autos,
            'zut_after_changed': {k: v for k, v in new_clash.items()}, 'later_duplicates': later_dups, 'legos': plans, 'ops': ops}
     os.makedirs(os.path.join(ROOT, 'plans'), exist_ok=True)
-    json.dump(out, open(os.path.join(ROOT, 'plans', f'{course}.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump(out, open(os.path.join(ROOT, 'plans', f'{course}{tag}.json'), 'w'), ensure_ascii=False, indent=1)
     print('  later duplicates:', later_dups)
     print(f'{course}: {len(plans)} LEGOs, verdicts {out["verdicts"]}, {len(ops)} ops, {len(autos)} auto known-subs, {len(problems)} problems')
     for x in problems[:400]:
