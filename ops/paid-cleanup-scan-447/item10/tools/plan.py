@@ -56,7 +56,10 @@ def words_in(phrase, lego):
     K6: an inflection of the word counts — learn/learning, want/wants)"""
     st = [stem(w) for w in norm(phrase).split()]
     pool = collections.Counter(st)
-    for w in [stem(x) for x in norm(lego).split()]:
+    lw = norm(lego).split()
+    if len(lw) > 1 and lw[0] == 'to':  # K54: a verb LEGO's infinitive "to" is not required in the phrase (I feel / he feels)
+        lw = lw[1:]
+    for w in [stem(x) for x in lw]:
         if pool[w] <= 0:
             return False
         pool[w] -= 1
@@ -222,6 +225,8 @@ def main():
                         act = 'UNDECIDED'
                 else:
                     act = 'UNDECIDED'
+            if act == 'UNDECIDED' and '*' in bd:  # decisions may name a default for rows that no longer carry the LEGO
+                act = bd['*']
             if act == 'UNDECIDED':
                 problems.append(f'{lid} {sid} UNDECIDED: {p["known"]} | {p["target"]}')
             bas.append({'id': p['id'], 'role': p['type'], 'before': [p['known'], p['target']], 'action': act})

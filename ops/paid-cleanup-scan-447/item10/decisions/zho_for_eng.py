@@ -168,6 +168,71 @@ D('S0032L02', 'grow', known='something', target='点什么', is_new=False, comps
 D('S0036L01', 'seed', seed_known="we don't want to interrupt this story",
   why='这个故事 is "this story"; "this | 这个" is the course\'s only teaching of 这个 (13 rows). Editing the English seed keeps it. KAI: seed edit.')
 
+# ======== successor (18 Nov evening): seeds 39-49. Rows a decision does not name and that no longer carry the LEGO
+# take the '*' default (here: delete — the old rows drilled the dictionary gloss the seed never says).
+
+# ---- seed 39 "but I'm a little tired this morning | 但是我今天早上有点累"
+D('S0039L02', 'grow', known='a little tired', target='有点累', type='M', comps=[['a bit', '有点'], ['tired', '累']],
+  why='"a bit" is not in the seed; "a little" alone would clash with S0009L01 "a little | 一点" (ZUT), so it grows by the next word to the seed\'s "a little tired" (3 syllables). L03 "tired | 累" overlaps (S4, the S0008L02 precedent). "a bit | 有点" stays a literal component, so later bare 有点 rows stay licensed (K29).',
+  b={'*': 'd'},
+  add=[('b', "I'm a little tired", '我有点累'), ('b', 'a little tired now', '现在有点累'), ('b', 'a little tired today', '今天有点累'),
+       ('u', "he's a little tired this afternoon", '他今天下午有点累'), ('u', "she's a little tired now", '她现在有点累'),
+       ('u', "we're a little tired this morning", '我们今天早上有点累'), ('u', "I'm a little tired too", '我也有点累'),
+       ('u', "but I'm a little tired this morning", '但是我今天早上有点累')])
+
+# ---- seed 40 "how do you feel at the moment? | 你现在感觉怎么样？"
+D('S0040L01', 'grow', known='how do you feel', target='感觉怎么样', type='M', comps=[['feeling', '感觉'], ['how', '怎么'], ['like', '样']],
+  why='"how is it" is not in the seed; the seed\'s "how do you feel" is 感觉怎么样 (5 syllables; 你 is pro-dropped in the chunk and present in the phrases). 感觉 is taught at 26.',
+  b={'U04': 'k', 'U07': ('how do you feel at the moment?', '你现在感觉怎么样？'), '*': 'd'},
+  add=[('b', 'how do you feel today', '你今天感觉怎么样'), ('b', 'how do you feel this afternoon', '你今天下午感觉怎么样'),
+       ('b', 'how do you feel now', '现在感觉怎么样'), ('u', 'how do you feel after you finish?', '你说完之后感觉怎么样？'),
+       ('u', 'but how do you feel today?', '但是你今天感觉怎么样？'), ('u', 'how do you feel this evening?', '你今晚感觉怎么样？')],
+  knock='Later rows "how is your Chinese | 你的中文怎么样" lean on 怎么样 = "how is it": it stays a literal component pair (how 怎么 + like 样); the census below lists them for the knock-on pass.')
+
+# ---- seed 41 "I feel okay, but I'm starting to feel tired | 我感觉还行，但是我开始觉得累了"
+D('S0041L02', 'grow', known='to feel tired', target='觉得累', type='M', comps=[['to think', '觉得'], ['tired', '累']],
+  why='"think" is not in the seed; 觉得累 is its "feel tired" (3 syllables). "to feel" alone would clash with 感觉 (S0026, S0040). 觉得 = "to think" stays a literal component, so seed 47\'s 我觉得 "I think" and later bare rows stay licensed (K29).',
+  b={'*': 'd'},
+  add=[('b', 'I feel tired', '我觉得累'), ('b', 'I feel tired today', '我今天觉得累'), ('b', 'he feels tired', '他觉得累'),
+       ('u', "I'm starting to feel tired", '我开始觉得累'), ('u', 'she feels tired this morning', '她今天早上觉得累'),
+       ('u', "I don't feel tired", '我不觉得累'), ('u', 'why do you feel tired?', '你为什么觉得累？'), ('u', 'we feel tired this evening', '我们今晚觉得累')],
+  knock='U12 (the seed copy) goes: it carries 了, which no LEGO teaches; the seed itself still plays.')
+
+# ---- seed 43 "I wasn't thinking about how to answer | 我当时没在想怎么回答"
+D('S0043L01', 'grow', known="wasn't thinking", target='没在想', type='M', comps=[["didn't", '没'], ['at', '在'], ['to think', '想']],
+  why='"didn\'t" is not in the seed; 没在想 is its "wasn\'t thinking" (3 syllables). "didn\'t | 没" stays a literal component, so later bare 没 rows (他没回来) stay licensed (K29).',
+  b={'*': 'd'},
+  add=[('b', "I wasn't thinking", '我没在想'), ('b', "he wasn't thinking", '他没在想'), ('b', "wasn't thinking about how to answer", '没在想怎么回答'),
+       ('u', "she wasn't thinking about how to explain", '她没在想怎么解释'), ('u', "I wasn't thinking about the answer", '我没在想答案'),
+       ('u', "but he wasn't thinking about how to answer", '但是他没在想怎么回答'), ('u', "why wasn't he thinking?", '他为什么没在想？'),
+       ('u', "I wasn't thinking about what's going to happen", '我没在想会发生什么')])
+D('S0043L02', 'grow', known="I wasn't thinking", target='我当时没在想', type='M', comps=[['I', '我'], ['at that time', '当时'], ["wasn't thinking", '没在想']],
+  why='"at that time" is not in the seed: 当时 carries the past that the English puts in "wasn\'t". 当时 cannot be glossed from the seed\'s words alone (L25), so it grows to "I wasn\'t thinking | 我当时没在想" (6 syllables, kept at 6 because the shorter 当时没在想 would need "I" missing from the seed\'s match and 我 is the seed\'s own). L01 is taught first (L13).',
+  b={'U08': ("I wasn't thinking about how to answer", '我当时没在想怎么回答'), '*': 'd'},
+  add=[('b', "I wasn't thinking about the answer", '我当时没在想答案'), ('b', "I wasn't thinking about how to explain", '我当时没在想怎么解释'),
+       ('b', "but I wasn't thinking", '但是我当时没在想'), ('u', "I wasn't thinking about tomorrow", '我当时没在想明天'),
+       ('u', "I wasn't thinking about his name", '我当时没在想他的名字'), ('u', "because I wasn't thinking", '因为我当时没在想'),
+       ('u', "I wasn't thinking about how to say something in Chinese", '我当时没在想怎么用中文说点什么')],
+  knock='当时 "at that time" no longer exists as a standalone pair; the census lists later rows that used it, and they are rebuilt or deleted in the knock-on pass.')
+
+# ---- seed 47: "is" IS in the seed ("it's a good thing") — the scanner split the contraction
+D('S0047L01', 'keep', why='"is" IS in the seed ("it\'s a good thing"); the detector tokenised "it\'s" as one word. Not a defect.')
+
+# ---- seed 49 "it's like this, if you know what I mean | 就是这样，如果你懂我的意思"
+D('S0049L02', 'grow', known='know what I mean', target='懂我的意思', type='M', comps=[['to understand', '懂'], ['what I mean', '我的意思']],
+  why='"understand" is not in the seed; 懂我的意思 is its "know what I mean" (5 syllables). "know" alone would clash with 认识 "to get to know" and later 知道. "to understand | 懂" stays a literal component (K29).',
+  b={'*': 'd'},
+  add=[('b', 'you know what I mean', '你懂我的意思'), ('b', 'he knows what I mean', '他懂我的意思'), ("b", "don't know what I mean", '不懂我的意思'),
+       ('u', 'if you know what I mean', '如果你懂我的意思'), ('u', "she doesn't know what I mean", '她不懂我的意思'),
+       ('u', 'I hope you know what I mean', '我希望你懂我的意思'), ('u', "why don't you know what I mean?", '你为什么不懂我的意思？'),
+       ('u', 'because you know what I mean', '因为你懂我的意思')])
+D('S0049L03', 'grow', known="it's like this", target='就是这样', type='M', comps=[['just', '就'], ['is', '是'], ['like this', '这样']],
+  why='"just is" is not English and not in the seed; 就是这样 is its "it\'s like this" (4 syllables). L04 "like this | 这样" overlaps (S4).',
+  b={'*': 'd'},
+  add=[('b', "it's like this now", '现在就是这样'), ('b', "it's like this today", '今天就是这样'), ('b', "but it's like this", '但是就是这样'),
+       ('u', "it's like this, if you know what I mean", '就是这样，如果你懂我的意思'), ('u', "because it's like this", '因为就是这样'),
+       ('u', "I think it's like this", '我觉得就是这样'), ("u", "I'm not sure it's like this", '我不确定就是这样'), ('u', "she says it's like this", '她说就是这样')])
+
 # ---- validator-floor + taught-words fixes (successor of #714·AI, 18 Nov evening). tools/plan.py now mirrors the
 # course-builder validator (build 3+/use 5+ not counting a bare-LEGO row; every target chunk taught by this seed) and named
 # these rows; each fix below uses only LEGOs/components taught by its seed.
