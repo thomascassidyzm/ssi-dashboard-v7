@@ -1,3 +1,10 @@
+## 2026-11-18 — Live writes are changesets: compute on the copy, apply only the difference (cs job #835)
+
+**Tom, 2026-11-18:** "There should be no need to write to the live database in a heavy way. We want a single db still but we need a clever way to update it." Design: https://watson-1.tail4968cb.ts.net/d/973c9f34
+
+**Decision (better × simpler × cheaper):** `services/shared/changeset.cjs` writes a changeset (only the rows that differ, `expect` = the copy's values). `tools/changeset/apply-changeset.cjs` is the one applier. It sends 25 ops per edit-batch transaction, is paced by the load governor, runs 22:00-07:00 UK, keeps a ledger so it can resume, and isolates drift per op (live already at the target = applied; otherwise set aside, never overwritten). edit-batch now refuses more than 100 ops in one request (`BULK_EDIT`, 413; undo replays exempt), and the content event records the changeset id and batch. **Better:** live sees only the difference, at night, in tiny undoable transactions. **Simpler:** the existing edit door is the only write path. **Cheaper:** a re-run that changes nothing writes nothing.
+**Known caller now refused:** `tools/course-copy/copy-course-text.cjs` sends 400-op chunks. Its next use must emit a changeset instead.
+
 ## 2026-11-18 — Every live DB call from a Popty process goes through one adaptive load gate (cs job #835)
 
 **Tom, 2026-11-18** (r-2026-11-18-no-watson-or-worker-any-owner): "No Watson or worker, any owner (Kai included), ever hammers the live SSi database: bulk/background writes are throttled by a code-enforced load governor that backs off when the DB is busy, so learners never feel it." And: "no fixed cap, adapt to measured load". Context: at 19:54Z production sat on a spinner while course-content jobs wrote hard through Popty's routes.

@@ -8439,8 +8439,19 @@ async function editBatch(req, res) {
       return res.status(404).json({ error: `undo_file ${name}: ${e.message}`, code: 'NO_UNDO_FILE' })
     }
   }
-  return runCourseEdit(req, res, ops, { apply: body.apply === true })
+  // NO HEAVY WRITES THROUGH THIS DOOR (cs #835; Tom 2026-11-18: "There should be no need to write to the live
+  // database in a heavy way"). More than EDIT_BATCH_MAX_OPS ops in one request is refused before any DB work:
+  // compute on the nightly copy, emit a changeset (services/shared/changeset.cjs), and let
+  // tools/changeset/apply-changeset.cjs push it in small governed batches at night. Replaying an undo is exempt,
+  // because an undo must always be able to run whole.
+  if (!body.undo_file && Array.isArray(ops) && ops.length > EDIT_BATCH_MAX_OPS) {
+    req.contentEdit?.wroteNothing()
+    return res.status(413).json({ error: `${ops.length} ops in one request (max ${EDIT_BATCH_MAX_OPS}): a heavy write to the live DB. Compute on the nightly copy, write a changeset (services/shared/changeset.cjs) and apply it with tools/changeset/apply-changeset.cjs (small governed batches, quiet hours). Design: https://watson-1.tail4968cb.ts.net/d/973c9f34`, code: 'BULK_EDIT', applied: false })
+  }
+  const eventDetail = body.changeset && typeof body.changeset === 'object' ? { changeset: { id: String(body.changeset.id || '').slice(0, 120), batch: Number(body.changeset.batch) || null } } : {}
+  return runCourseEdit(req, res, ops, { apply: body.apply === true, eventDetail })
 }
+const EDIT_BATCH_MAX_OPS = 100
 app.post('/api/production/:courseCode/edit-batch', editBatch)
 // The same door for a SIGNED agent (tools/agent-admin/call.cjs): /api/admin is the prefix the
 // agent front door verifies, so the content-edit event names the agent, not "undeclared-loopback".
