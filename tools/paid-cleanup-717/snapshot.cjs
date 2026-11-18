@@ -25,7 +25,7 @@ async function main() {
   try {
     const dbName = (await pg.query('SELECT current_database() AS d')).rows[0].d;
     const seeds = (await pg.query(
-      `SELECT seed_number, known_text, target_text, status, known_audio_id::text AS ka, target1_audio_id::text AS t1, target2_audio_id::text AS t2
+      `SELECT seed_number, known_text, target_text, target_text_roman, status, known_audio_id::text AS ka, target1_audio_id::text AS t1, target2_audio_id::text AS t2
          FROM course_seeds WHERE course_code = $1 ORDER BY seed_number`, [course])).rows;
     const legos = (await pg.query(
       `SELECT id::text AS uuid, lego_id, seed_number, lego_index, type, is_new, known_text, target_text, components,
