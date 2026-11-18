@@ -1,0 +1,1076 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Me ei lootnud ärgata kesköö paiku."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "we didn't hope",
+    "target_text": "ei lootnud",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "est_for_eng:S0108L01B01",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "we didn't hope",
+     "target_text": "ei lootnud",
+     "word_count": 10,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 200,
+     "updated_at": "2026-10-13T06:34:56.264658+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+     "target1_audio_id": "345c657a-afcf-4bd3-bf9b-0c641263bd6c",
+     "target2_audio_id": "3b14d23b-c484-412f-9dcc-a2f586ef5e56",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "d5a9a799-5c8e-4941-bae0-386c70ef3fb6",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01B02",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "we didn't hope to speak",
+     "target_text": "ei lootnud rääkida",
+     "word_count": 18,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:33.951901+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f93b669a-32b9-46f8-94c3-ef5fd8558689",
+     "target1_audio_id": "3ff3de91-24f6-45be-9f77-9d9e71c5caa1",
+     "target2_audio_id": "50877d06-a3c7-4768-8cf6-c3a7eafedcfa",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " rääkida",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01B03",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "we didn't hope to see",
+     "target_text": "ei lootnud näha",
+     "word_count": 15,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 202,
+     "updated_at": "2026-10-12T16:27:41.567052+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+     "target1_audio_id": "58cd9b2e-ab64-4e7d-b5ac-986c8ed569e1",
+     "target2_audio_id": "aef075e6-3702-4aae-abf9-3082f31758f5",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 1896,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to see",
+       "legoId": "S0107L02",
+       "target": " näha",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "48216c36-0a80-465f-966d-9de3aed189eb",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01U01",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we didn't hope to see you today",
+     "target_text": "me ei lootnud sind täna näha",
+     "word_count": 28,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.221Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:52.697325+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "1b8bf392-6422-4779-a630-eb2a3d14c7b2",
+     "target1_audio_id": "94783810-d835-4125-b1e6-959d4a93e76e",
+     "target2_audio_id": "da77cfca-a458-45b5-b2c7-3302fd68075d",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "me",
+       "isGhost": true
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you",
+       "legoId": "S0062L03",
+       "target": " sind",
+       "isGhost": false
+      },
+      {
+       "known": "today",
+       "legoId": "S0007L01",
+       "target": " täna",
+       "isGhost": false
+      },
+      {
+       "known": "to see",
+       "legoId": "S0107L02",
+       "target": " näha",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01U02",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we didn't hope to speak so much",
+     "target_text": "me ei lootnud nii palju rääkida",
+     "word_count": 31,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.221Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:50.156323+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "25c944a5-f151-4b07-9418-913ba12333a3",
+     "target1_audio_id": "78fab3ef-b823-471a-a938-2d6d3889fbdb",
+     "target2_audio_id": "928e6b2f-6a87-439e-955e-5d3b52e3d420",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "me",
+       "isGhost": true
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "so",
+       "legoId": "S0049L02",
+       "target": " nii",
+       "isGhost": false
+      },
+      {
+       "known": "much",
+       "legoId": "S0027L03",
+       "target": " palju",
+       "isGhost": false
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " rääkida",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01U03",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "we didn't hope to be ready",
+     "target_text": "me ei lootnud olla valmis",
+     "word_count": 25,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.221Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:34.682588+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "82d2c533-9aa2-4c8c-92c1-0ea9a49ad2dd",
+     "target1_audio_id": "c5898c4a-ae8d-4446-b0ba-e36e0965974f",
+     "target2_audio_id": "125b98c6-6e47-4a4c-ba65-4126ba5664db",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "me",
+       "isGhost": true
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to be",
+       "legoId": "S0034L01",
+       "target": " olla",
+       "isGhost": false
+      },
+      {
+       "known": "ready",
+       "legoId": "S0026L03",
+       "target": " valmis",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L01U05",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "we didn't hope to learn so many words",
+     "target_text": "me ei lootnud nii palju sõnu õppida",
+     "word_count": 35,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.221Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:39.145247+00:00",
+     "created_at": "2026-04-16T13:25:17.287347+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "3ec2b838-82b7-4888-a1bf-d0e20ff04937",
+     "target1_audio_id": "ec599e2f-1579-4658-8a0c-b71a2cc2261b",
+     "target2_audio_id": "f1d1c715-feb6-479b-90ae-99134116cfd0",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "me",
+       "isGhost": true
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " ei lootnud",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "so",
+       "legoId": "S0049L02",
+       "target": " nii",
+       "isGhost": false
+      },
+      {
+       "known": "much",
+       "legoId": "S0027L03",
+       "target": " palju",
+       "isGhost": false
+      },
+      {
+       "known": "words",
+       "legoId": "S0060L03",
+       "target": " sõnu",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L02",
+       "target": " õppida",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "kesköö paiku",
+    "components": [
+     {
+      "known": "\"midnight\"",
+      "target": "\"kesköö\""
+     },
+     {
+      "known": "around",
+      "target": "\"paiku\""
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "est_for_eng:S0108L02C01",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "\"midnight\"",
+     "target_text": "\"kesköö\"",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 200,
+     "updated_at": "2026-06-02T22:40:36.277885+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3116bb74-33ad-44c4-acf8-6d74ab09a7ef",
+     "target1_audio_id": "6b55e151-c37a-4912-9bd8-a4ec045ec5f9",
+     "target2_audio_id": "9c33510f-2a5a-473f-8e1f-4bc94a15990e",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9925f2cb-5cce-4977-9449-bc35b6ee9bbe",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "\"kesköö\"",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02C02",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "around",
+     "target_text": "\"paiku\"",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 202,
+     "updated_at": "2026-10-13T16:22:08.555891+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": "83eb35ed-7d73-4dd3-8832-e475b93ab636",
+     "target2_audio_id": "7024790a-37b2-4c38-a7dd-d2371703198c",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "9b46f291-cc49-4732-939f-1e35169beea6",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "\"paiku\"",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02B01",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "in the middle of the night",
+     "target_text": "kesköö paiku",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 201,
+     "updated_at": "2026-10-12T16:57:18.020413+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "d2f47c6e-de9d-4416-97f7-6d7d4544945b",
+     "target2_audio_id": "04f6a0d2-d2f5-4164-8f68-535a530c9b48",
+     "qa_checked": null,
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1872,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "101cc9a6-4767-4c66-a96b-cd06675df064",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02B02",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "ei lootnud ärgata kesköö paiku",
+     "word_count": 30,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 201,
+     "updated_at": "2026-10-12T16:27:48.227351+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "74118765-6e67-4adc-aa6d-0e1db0016557",
+     "target2_audio_id": "39ef0ca4-4020-4ab8-a4c6-01d40888954d",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": "ei lootnud",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "48216c36-0a80-465f-966d-9de3aed189eb",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02B03",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "to wake in the middle of the night",
+     "target_text": "ärgata kesköö paiku",
+     "word_count": 19,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 201,
+     "updated_at": "2026-10-12T17:27:30.279605+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+     "target1_audio_id": "c54ede51-a8b9-45e7-9f05-cb86df986078",
+     "target2_audio_id": "c8671115-9edd-4e72-b236-df716f8ba2b1",
+     "qa_checked": null,
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": "ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "101cc9a6-4767-4c66-a96b-cd06675df064",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02U01",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "me ei lootnud ärgata kesköö paiku",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.365Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 201,
+     "updated_at": "2026-10-12T16:27:48.227351+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "c5df0c80-9e92-4816-b534-78f2be3ac0bb",
+     "target2_audio_id": "aedf0f78-a502-4509-b0d4-aab886ab631f",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "me",
+       "isGhost": true
+      },
+      {
+       "known": "we didn't hope",
+       "legoId": "S0108L01",
+       "target": " ei lootnud",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "48216c36-0a80-465f-966d-9de3aed189eb",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02U02",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "i don't want to wake in the middle of the night",
+     "target_text": "ma ei taha ärgata kesköö paiku",
+     "word_count": 30,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.365Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 200,
+     "updated_at": "2026-10-12T16:57:07.989446+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+     "target1_audio_id": "c05e2048-c839-47c4-ba0f-6bfa19effcd0",
+     "target2_audio_id": "670edfeb-97f9-4b42-a82c-720853b88124",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L02",
+       "target": "ma ei taha",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "101cc9a6-4767-4c66-a96b-cd06675df064",
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02U03",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "i didn't want to wake in the middle of the night",
+     "target_text": "ma ei tahtnud ärgata kesköö paiku",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.365Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:42.476446+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "42783f06-a109-4029-a2fb-899760b02fdf",
+     "target1_audio_id": "00d08bdd-7a26-4f84-8110-f1167c647e42",
+     "target2_audio_id": "895a5434-a62b-4ce7-b307-eecdc0d189d7",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ma",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ei",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tahtnud",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "est_for_eng:S0108L02U05",
+     "course_code": "est_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "it's not good to wake in the middle of the night",
+     "target_text": "ei ole hea ärgata kesköö paiku",
+     "word_count": 30,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-16T13:25:17.365Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 199,
+     "updated_at": "2026-06-02T22:40:43.967528+00:00",
+     "created_at": "2026-04-16T13:25:17.432035+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "41dc7b47-cbce-44ac-a45d-21a3a8ff1311",
+     "target1_audio_id": "fa45c781-a3d0-4ac7-bd7e-0c89cba7b33d",
+     "target2_audio_id": "f24f3d8b-dbcb-4870-be25-623a3ed28853",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "is not",
+       "legoId": "S0066L02",
+       "target": "ei ole",
+       "isGhost": false
+      },
+      {
+       "known": "good",
+       "legoId": "S0047L02",
+       "target": " hea",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " ärgata",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " kesköö paiku",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}
