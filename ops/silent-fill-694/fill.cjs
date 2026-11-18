@@ -8,15 +8,21 @@
 // Spend: running total of every answer's charsSpent across ALL courses (results/*.jsonl). A render is not sent if
 // total + len(text) would pass STOP_AT (45,000 — the brief's "something changed" line; the hard cap is 72,000).
 // Resumable: a slot already answered (ok, or refused — a refusal is the answer, never retried) is skipped.
+// Options (cs #712·AI): --voice <voiceId> names the voice in every render body (dry run and real) and in each results line;
+// without it Popty uses the course's cast voice (tel/mar: the uncast Sept draft → VOICE_NOT_CAST). --dir <path> reads
+// <dir>/live/slots.json and writes <dir>/results (default: this directory); --who / --job / --purpose label the calls.
+// Slots carrying a non-empty held_job (another live job is changing that row) are held like the #447 holds.
 const fs = require('fs'); const path = require('path')
-const DIR = __dirname; const RES = path.join(DIR, 'results')
-const API = 'http://localhost:3470'; const WHO = 'cs-694-silent-fill'; const HARD_CAP = 72000
-const STOP_AT = Number(process.env.STOP_AT || 45000)
 const [mode, course, ...rest] = process.argv.slice(2)
 const arg = (k, d) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] : d }
+const DIR = path.resolve(arg('--dir', __dirname)); const RES = path.join(DIR, 'results')
+const API = 'http://localhost:3470'; const WHO = arg('--who', 'cs-694-silent-fill'); const HARD_CAP = 72000
+const STOP_AT = Number(process.env.STOP_AT || 45000)
+const VOICE = arg('--voice', null); const JOB = arg('--job', '#694·AI')
+const vo = VOICE ? { voiceId: VOICE } : {}
 const slots = JSON.parse(fs.readFileSync(path.join(DIR, 'live/slots.json'), 'utf8')).filter(s => s.course === course)
-const ARA = fs.existsSync(path.join(DIR, 'live/ara-candidates.json')) && ['ara_eg_for_eng', 'ara_lb_for_eng'].includes(course)
-  ? JSON.parse(fs.readFileSync(path.join(DIR, 'live/ara-candidates.json'), 'utf8')) : {}
+const ARA = fs.existsSync(path.join(__dirname, 'live/ara-candidates.json')) && ['ara_eg_for_eng', 'ara_lb_for_eng'].includes(course)
+  ? JSON.parse(fs.readFileSync(path.join(__dirname, 'live/ara-candidates.json'), 'utf8')) : {}
 // A lego_debut row whose id is a bare uuid is script-view's stand-in for the LEGO itself: its slot is course_legos (link by legoId).
 const slotRef = s => /^[0-9a-f-]{36}$/i.test(s.phraseId) ? { legoId: s.lego } : { phraseId: s.phraseId }
 // --roles target1,target2: send only these roles (tel/mar known: one probe answered VOICE_NOT_CAST for the whole language).
@@ -30,17 +36,17 @@ async function post(url, body) {
   let j; try { j = await r.json() } catch { j = { ok: false, error: 'non-JSON answer' } }
   return { status: r.status, ...j }
 }
-const held = s => (s.held_text_fix && s.held_text_fix.length) || (s.lego_fix_pending && s.lego_fix_pending.length)
-const purpose = 'cs #694·AI: fill a silent played-row slot (paid-course cleanup item 1, Kai approved 18 Nov)'
+const held = s => (s.held_text_fix && s.held_text_fix.length) || (s.lego_fix_pending && s.lego_fix_pending.length) || (s.held_job && s.held_job.length)
+const purpose = arg('--purpose', 'cs #694·AI: fill a silent played-row slot (paid-course cleanup item 1, Kai approved 18 Nov)')
 ;(async () => {
   if (!course || !slots.length) { console.error('no slots for', course); process.exit(1) }
   fs.mkdirSync(RES, { recursive: true })
   if (mode === 'probe') {
-    const n = Number(rest[0] || 2); const out = path.join(RES, `probe-${course}.jsonl`)
-    for (const role of ['known', 'target1', 'target2']) {
+    const n = Number(/^\d+$/.test(rest[0] || '') ? rest[0] : 2); const out = path.join(RES, `probe-${course}.jsonl`)
+    for (const role of ROLES || ['known', 'target1', 'target2']) {
       for (const s of slots.filter(x => x.role === role && !held(x)).slice(0, n)) {
-        const r = await post('/api/audio/render', { courseCode: course, role, text: s.text, purpose, job: '#694·AI', dryRun: true })
-        const rec = { at: new Date().toISOString(), dryRun: true, phraseId: s.phraseId, row: s.row, role, text: s.text, render: r }
+        const r = await post('/api/audio/render', { courseCode: course, role, text: s.text, purpose, job: JOB, ...vo, dryRun: true })
+        const rec = { at: new Date().toISOString(), dryRun: true, voiceAsked: VOICE, phraseId: s.phraseId, row: s.row, role, text: s.text, render: r }
         fs.appendFileSync(out, JSON.stringify(rec) + '\n')
         console.log(role, s.row, r.status, r.code || '', r.source || '', r.charsSpent ?? '', r.voiceId || r.voice || '', (r.error || '').slice(0, 140))
       }
@@ -78,9 +84,9 @@ const purpose = 'cs #694·AI: fill a silent played-row slot (paid-course cleanup
       continue
     }
     sent++
-    const r = await post('/api/audio/render', { courseCode: course, role: s.role, text: s.text, purpose, job: '#694·AI', dryRun: false })
+    const r = await post('/api/audio/render', { courseCode: course, role: s.role, text: s.text, purpose, job: JOB, ...vo, dryRun: false })
     spent += Number(r.charsSpent) || 0
-    const rec = { at: new Date().toISOString(), key: key(s), phraseId: s.phraseId, row: s.row, lego: s.lego, role: s.role, text: s.text,
+    const rec = { at: new Date().toISOString(), key: key(s), phraseId: s.phraseId, row: s.row, lego: s.lego, role: s.role, text: s.text, voiceAsked: VOICE,
       render: { status: r.status, ok: r.ok, code: r.code, source: r.source, audioId: r.audioId, charsSpent: r.charsSpent, voiceId: r.voiceId, error: r.error && String(r.error).slice(0, 300), existing: r.existing } }
     if (r.ok && r.audioId) {
       const l = await post(`/api/production/${course}/link-clip`, { links: [{ ...slotRef(s), role: s.role, audioId: r.audioId }] })

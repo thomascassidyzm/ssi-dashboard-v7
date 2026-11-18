@@ -1,0 +1,30 @@
+{"seed":506,"notes":"probe seed (cs #700·AI): every template row rewritten from taught chunks; unflagged junk (U04/U05 L01, U05 L02, U03/U05 L03, U05 L04) too",
+"legos":{
+ "L01":{"update":{
+   "B02":["I used to live here","eu costumava morar aqui"],
+   "B03":["I used to live in Italy","eu costumava morar na Itália"],
+   "U01":["when I was a child, I used to live in Italy","quando eu era criança, eu costumava morar na Itália"],
+   "U02":["I used to live with someone else","eu costumava morar com outra pessoa"],
+   "U03":["I used to live near the hotel with my friends","eu costumava morar perto do hotel com meus amigos"],
+   "U04":["I used to live in a city with my friends","eu costumava morar numa cidade com meus amigos"],
+   "U05":["I used to live with them in a city in Italy","eu costumava morar com eles numa cidade na Itália"]},
+  "insert":[["build","I used to live with them","eu costumava morar com eles"]]},
+ "L02":{"update":{
+   "B03":["my friends are around here","meus amigos estão por aqui"],
+   "U01":["I don't want to live around here","não quero morar por aqui"],
+   "U02":["I used to have friends around here","eu costumava ter amigos por aqui"],
+   "U05":["I met a friend around here last year","conheci um amigo por aqui no ano passado"]}},
+ "L03":{"update":{
+   "B03":["I met a friend years ago","conheci um amigo há muitos anos"],
+   "U01":["I started to learn Portuguese years ago","comecei a aprender português há muitos anos"],
+   "U02":["that was years ago","isso foi há muitos anos"],
+   "U03":["I used to live in Italy years ago","eu costumava morar na Itália há muitos anos"],
+   "U05":["I met my friends in Italy years ago","conheci meus amigos na Itália há muitos anos"]},
+  "insert":[["build","years ago in Italy","há muitos anos na Itália"]]},
+ "L04":{"update":{
+   "B03":["I used to live here before we moved","eu costumava morar aqui antes de nos mudarmos"],
+   "U02":["I met my friends before we moved","conheci meus amigos antes de nos mudarmos"],
+   "U03":["I started to learn Portuguese before we moved","comecei a aprender português antes de nos mudarmos"],
+   "U05":["that was years ago, before we moved","isso foi há muitos anos, antes de nos mudarmos"]},
+  "insert":[["build","in Italy before we moved","na Itália antes de nos mudarmos"]]}
+}}
