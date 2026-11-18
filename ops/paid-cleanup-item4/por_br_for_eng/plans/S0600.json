@@ -1,0 +1,40 @@
+{
+ "seed": 600,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "I'd have driven the car",
+     "eu teria dirigido o carro"
+    ],
+    "U05": [
+     "I'd have driven to the city",
+     "eu teria dirigido para a cidade"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I'd have driven home",
+     "eu teria dirigido para casa"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "I didn't know how tired you were",
+     "eu não sabia como estava cansado"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I know how tired you were",
+     "eu sei como estava cansado"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

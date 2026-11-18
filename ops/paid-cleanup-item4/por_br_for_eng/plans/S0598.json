@@ -1,0 +1,102 @@
+{
+ "seed": 598,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "he has heard the answer",
+     "ele ouviu a resposta"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "he has heard about it",
+     "ele ouviu sobre isso"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "a thousand stories about it",
+     "mil histórias sobre isso"
+    ],
+    "B03": [
+     "she knows a thousand stories",
+     "ela conhece mil histórias"
+    ],
+    "U05": [
+     "I think he has heard a thousand stories",
+     "acho que ele ouviu mil histórias"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "there are a thousand stories",
+     "há mil histórias"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "about what you said",
+     "sobre o que você disse"
+    ],
+    "B03": [
+     "about what happened",
+     "sobre o que aconteceu"
+    ],
+    "U01": [
+     "he has heard a thousand stories about what happened",
+     "ele ouviu mil histórias sobre o que aconteceu"
+    ],
+    "U02": [
+     "I want to talk about what happened",
+     "quero falar sobre o que aconteceu"
+    ],
+    "U03": [
+     "I'd like to know more about what happened",
+     "gostaria de saber mais sobre o que aconteceu"
+    ],
+    "U04": [
+     "she doesn't want to talk about what happened",
+     "ela não quer falar sobre o que aconteceu"
+    ],
+    "U05": [
+     "I want to talk about what you said",
+     "quero falar sobre o que você disse"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "about what I want",
+     "sobre o que eu quero"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B03": [
+     "what they were doing",
+     "o que eles estavam fazendo"
+    ],
+    "U05": [
+     "I want to know what they were doing",
+     "eu quero saber o que eles estavam fazendo"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I know what they were doing",
+     "eu sei o que eles estavam fazendo"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}
