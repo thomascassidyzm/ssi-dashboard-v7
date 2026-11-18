@@ -7,7 +7,7 @@ import json, os, sys, urllib.request, urllib.error, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 course = sys.argv[1]
-chunk = int(sys.argv[sys.argv.index('--chunk') + 1]) if '--chunk' in sys.argv else 1900
+chunk = int(sys.argv[sys.argv.index('--chunk') + 1]) if '--chunk' in sys.argv else 50
 pf = os.path.join(ROOT, 'plans', f'{course}.json')
 plan = json.load(open(pf))
 ops = plan['ops']
@@ -25,6 +25,7 @@ for i in range(0, max(1, len(ops)), chunk):
     except urllib.error.HTTPError as e:
         status, ans = e.code, json.loads(e.read() or b'{}')
     results.append({'from': i, 'n': len(part), 'status': status, 'secs': round(time.time() - t, 1), 'answer': ans})
+    time.sleep(1.5)
     print(course, f'ops {i}-{i + len(part) - 1}', status, json.dumps(ans, ensure_ascii=False)[:600])
 plan['dryRun'] = {'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'chunks': results}
 json.dump(plan, open(pf, 'w'), ensure_ascii=False, indent=1)

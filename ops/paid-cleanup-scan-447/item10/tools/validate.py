@@ -70,6 +70,7 @@ for n in plan['touched_seeds']:
             r = o['row']
             phrases[f"{n}:{r['lego_index']}"].append({'known_text': r['known_text'], 'target_text': r['target_text'], 'phrase_role': r['phrase_role']})
     seed_known = next((o['set']['known_text'] for o in ops if o['op'] == 'seed.update' and o['seed_number'] == n and 'known_text' in o['set']), s['known'])
+    time.sleep(1)
     ans = post({'fromSeed': n, 'override': {'seed_number': n, 'known_text': seed_known, 'target_text': s['target'], 'legos': legos, 'phrases': dict(phrases)}})
     fails = {f['seed']: f['issues'] for f in ans.get('failures', [])}
     new = {}
