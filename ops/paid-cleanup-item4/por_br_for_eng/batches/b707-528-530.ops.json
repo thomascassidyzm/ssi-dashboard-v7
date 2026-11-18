@@ -1,0 +1,739 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0528L01B04",
+    "seed_number": 528,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I'm probably supposed to pay",
+    "target_text": "provavelmente devia pagar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0528L02B04",
+    "seed_number": 528,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "I need to keep those things",
+    "target_text": "preciso guardar essas coisas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0528L03B04",
+    "seed_number": 528,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "to sleep in another room",
+    "target_text": "dormir em outro quarto",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0529L01B04",
+    "seed_number": 529,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "can you all wait?",
+    "target_text": "podem todos esperar?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0529L02B04",
+    "seed_number": 529,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "you need to put your hands up",
+    "target_text": "você precisa levantar as mãos",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0530L01B04",
+    "seed_number": 530,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "so I can sleep",
+    "target_text": "para eu poder dormir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01B02",
+   "expect": {
+    "known_text": "I'm probably supposed to serve",
+    "target_text": "provavelmente devia servir"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to wait",
+    "target_text": "provavelmente devia esperar",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01B03",
+   "expect": {
+    "known_text": "yes, I'm probably supposed to",
+    "target_text": "sim, provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to ask",
+    "target_text": "provavelmente devia perguntar",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U01",
+   "expect": {
+    "known_text": "no, I'm probably supposed to",
+    "target_text": "não, provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to be at work",
+    "target_text": "provavelmente devia estar no trabalho",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U02",
+   "expect": {
+    "known_text": "that's true, I'm probably supposed to",
+    "target_text": "isso é verdade, provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to call my mother",
+    "target_text": "provavelmente devia ligar para a minha mãe",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U03",
+   "expect": {
+    "known_text": "I'm sure, I'm probably supposed to",
+    "target_text": "tenho certeza, provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to say something",
+    "target_text": "provavelmente devia dizer algo",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U04",
+   "expect": {
+    "known_text": "yes, that's true, I'm probably supposed to",
+    "target_text": "sim, isso é verdade, provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to stay here",
+    "target_text": "provavelmente devia ficar aqui",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L01U05",
+   "expect": {
+    "known_text": "I'm still probably supposed to",
+    "target_text": "ainda provavelmente devia"
+   },
+   "set": {
+    "known_text": "I'm probably supposed to learn more Portuguese",
+    "target_text": "provavelmente devia aprender mais português",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02B03",
+   "expect": {
+    "known_text": "yes, to keep those things",
+    "target_text": "sim, guardar essas coisas"
+   },
+   "set": {
+    "known_text": "to keep those things at home",
+    "target_text": "guardar essas coisas em casa",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U01",
+   "expect": {
+    "known_text": "no, keep those things",
+    "target_text": "não, guardar essas coisas"
+   },
+   "set": {
+    "known_text": "where can I keep those things?",
+    "target_text": "onde posso guardar essas coisas?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U02",
+   "expect": {
+    "known_text": "that's true, keep those things",
+    "target_text": "isso é verdade, guardar essas coisas"
+   },
+   "set": {
+    "known_text": "I'm going to keep those things in the car",
+    "target_text": "vou guardar essas coisas no carro",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U04",
+   "expect": {
+    "known_text": "yes, I'm probably supposed to keep those things",
+    "target_text": "sim, provavelmente devia guardar essas coisas"
+   },
+   "set": {
+    "known_text": "you can keep those things here",
+    "target_text": "você pode guardar essas coisas aqui",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L02U05",
+   "expect": {
+    "known_text": "I'm still probably supposed to keep those things",
+    "target_text": "ainda provavelmente devia guardar essas coisas"
+   },
+   "set": {
+    "known_text": "she doesn't want to keep those things",
+    "target_text": "ela não quer guardar essas coisas",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03B03",
+   "expect": {
+    "known_text": "yes, in another room",
+    "target_text": "sim, em outro quarto"
+   },
+   "set": {
+    "known_text": "he's in another room",
+    "target_text": "ele está em outro quarto",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U02",
+   "expect": {
+    "known_text": "no, in another room",
+    "target_text": "não, em outro quarto"
+   },
+   "set": {
+    "known_text": "the children are in another room",
+    "target_text": "as crianças estão em outro quarto",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U03",
+   "expect": {
+    "known_text": "that's true, in another room",
+    "target_text": "isso é verdade, em outro quarto"
+   },
+   "set": {
+    "known_text": "I'm going to sleep in another room tonight",
+    "target_text": "vou dormir em outro quarto esta noite",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U04",
+   "expect": {
+    "known_text": "yes, I'm probably supposed to keep those things in another room",
+    "target_text": "sim, provavelmente devia guardar essas coisas em outro quarto"
+   },
+   "set": {
+    "known_text": "can I talk to you in another room?",
+    "target_text": "posso falar com você em outro quarto?",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0528L03U05",
+   "expect": {
+    "known_text": "I'm sure, in another room",
+    "target_text": "tenho certeza, em outro quarto"
+   },
+   "set": {
+    "known_text": "my things are in another room",
+    "target_text": "minhas coisas estão em outro quarto",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01B02",
+   "expect": {
+    "known_text": "can you all now",
+    "target_text": "podem todos agora"
+   },
+   "set": {
+    "known_text": "can you all help?",
+    "target_text": "podem todos ajudar?",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01B03",
+   "expect": {
+    "known_text": "yes, can you all",
+    "target_text": "sim, podem todos"
+   },
+   "set": {
+    "known_text": "can you all come?",
+    "target_text": "podem todos vir?",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01U01",
+   "expect": {
+    "known_text": "no, can you all",
+    "target_text": "não, podem todos"
+   },
+   "set": {
+    "known_text": "can you all sit down, please?",
+    "target_text": "podem todos se sentar, por favor?",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01U02",
+   "expect": {
+    "known_text": "that's true, can you all",
+    "target_text": "isso é verdade, podem todos"
+   },
+   "set": {
+    "known_text": "can you all come on Sunday?",
+    "target_text": "podem todos vir no domingo?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01U03",
+   "expect": {
+    "known_text": "I'm sure, can you all",
+    "target_text": "tenho certeza, podem todos"
+   },
+   "set": {
+    "known_text": "can you all speak more slowly?",
+    "target_text": "podem todos falar mais devagar?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01U04",
+   "expect": {
+    "known_text": "yes, that's true, can you all",
+    "target_text": "sim, isso é verdade, podem todos"
+   },
+   "set": {
+    "known_text": "can you all wait a few minutes?",
+    "target_text": "podem todos esperar uns minutos?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L01U05",
+   "expect": {
+    "known_text": "can you all still",
+    "target_text": "podem todos ainda"
+   },
+   "set": {
+    "known_text": "can you all help me?",
+    "target_text": "podem todos me ajudar?",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02B02",
+   "expect": {
+    "known_text": "can you all still put your hands up",
+    "target_text": "podem todos ainda levantar as mãos"
+   },
+   "set": {
+    "known_text": "you have to put your hands up",
+    "target_text": "você tem que levantar as mãos",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02B03",
+   "expect": {
+    "known_text": "yes, to put your hands up",
+    "target_text": "sim, levantar as mãos"
+   },
+   "set": {
+    "known_text": "can you put your hands up?",
+    "target_text": "você pode levantar as mãos?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02U02",
+   "expect": {
+    "known_text": "no, put your hands up",
+    "target_text": "não, levantar as mãos"
+   },
+   "set": {
+    "known_text": "we have to put our hands up before we speak",
+    "target_text": "temos que levantar as mãos antes de falar",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02U03",
+   "expect": {
+    "known_text": "that's true, put your hands up",
+    "target_text": "isso é verdade, levantar as mãos"
+   },
+   "set": {
+    "known_text": "don't forget to put your hands up",
+    "target_text": "não esqueça de levantar as mãos",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02U04",
+   "expect": {
+    "known_text": "yes, can you all put your hands up?",
+    "target_text": "sim, podem todos levantar as mãos?"
+   },
+   "set": {
+    "known_text": "who wants to put their hands up?",
+    "target_text": "quem quer levantar as mãos?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0529L02U05",
+   "expect": {
+    "known_text": "I'm sure, put your hands up",
+    "target_text": "tenho certeza, levantar as mãos"
+   },
+   "set": {
+    "known_text": "the children want to put their hands up",
+    "target_text": "as crianças querem levantar as mãos",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01B02",
+   "expect": {
+    "known_text": "so I myself can serve",
+    "target_text": "para eu poder servir"
+   },
+   "set": {
+    "known_text": "so I can help",
+    "target_text": "para eu poder ajudar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01B03",
+   "expect": {
+    "known_text": "yes, so I myself can",
+    "target_text": "sim, para eu poder"
+   },
+   "set": {
+    "known_text": "so I can rest",
+    "target_text": "para eu poder descansar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01U01",
+   "expect": {
+    "known_text": "no, so I myself can",
+    "target_text": "não, para eu poder"
+   },
+   "set": {
+    "known_text": "I need the keys so I can open the door",
+    "target_text": "preciso das chaves para eu poder abrir a porta",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01U02",
+   "expect": {
+    "known_text": "that's true, so I myself can",
+    "target_text": "isso é verdade, para eu poder"
+   },
+   "set": {
+    "known_text": "he speaks slowly so I can understand",
+    "target_text": "ele fala devagar para eu poder entender",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01U03",
+   "expect": {
+    "known_text": "I'm sure, so I myself can",
+    "target_text": "tenho certeza, para eu poder"
+   },
+   "set": {
+    "known_text": "I'm going to work on Saturday so I can rest on Sunday",
+    "target_text": "vou trabalhar no sábado para eu poder descansar no domingo",
+    "decomposition": null,
+    "word_count": 58,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01U04",
+   "expect": {
+    "known_text": "yes, that's true, so I myself can",
+    "target_text": "sim, isso é verdade, para eu poder"
+   },
+   "set": {
+    "known_text": "I need money so I can buy a car",
+    "target_text": "preciso de dinheiro para eu poder comprar um carro",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0530L01U05",
+   "expect": {
+    "known_text": "so I myself still can",
+    "target_text": "para eu ainda poder"
+   },
+   "set": {
+    "known_text": "she left the door open so I can see",
+    "target_text": "ela deixou a porta aberta para eu poder ver",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02B02",
+   "expect": {
+    "known_text": "so I myself can still count them",
+    "target_text": "para eu ainda poder contar elas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02B03",
+   "expect": {
+    "known_text": "yes, to count them",
+    "target_text": "sim, contar elas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02U02",
+   "expect": {
+    "known_text": "no, count them",
+    "target_text": "não, contar elas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02U03",
+   "expect": {
+    "known_text": "that's true, count them",
+    "target_text": "isso é verdade, contar elas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02U04",
+   "expect": {
+    "known_text": "yes, so I can count them",
+    "target_text": "sim, para eu poder contar elas"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0530L02U05",
+   "expect": {
+    "known_text": "I'm sure, count them",
+    "target_text": "tenho certeza, contar elas"
+   }
+  }
+ ]
+}
