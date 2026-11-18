@@ -1,0 +1,46 @@
+{
+ "seed": 203,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਤੁਸੀਂ ਅੱਜ ਕੀ ਕਰਦੇ?",
+     "what would you do today?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਤੁਸੀਂ ਸਾਰਾ ਦਿਨ ਕੀ ਕਰਦੇ?",
+     "what would you do all day?",
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਜੇ ਮੈਂ ਤੁਹਾਨੂੰ ਮੇਰੀ ਮਦਦ ਕਰਨ ਲਈ ਕਹਿੰਦਾ ਤਾਂ ਤੁਸੀਂ ਅਗਲੇ ਹਫ਼ਤੇ ਕੀ ਕਰਦੇ?",
+     "what would you do next week if I asked you to help me?",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਜੇ ਮੈਂ ਤੁਹਾਨੂੰ ਮੇਰੀ ਮਦਦ ਕਰਨ ਲਈ ਕਹਿੰਦਾ ਤਾਂ ਤੁਸੀਂ ਕੀ ਕਹਿੰਦੇ?",
+     "what would you say if I asked you to help me?",
+     null,
+     "m"
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}
