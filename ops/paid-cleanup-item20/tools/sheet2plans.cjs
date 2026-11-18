@@ -21,8 +21,8 @@ for (const [seed, lns] of bySeed) {
   for (const ln of lns) {
     const e = plan.legos[ln.lego.slice(5)] ||= {};
     if (ln.slot.startsWith('update:')) (e.update ||= {})[ln.slot.slice(7)] = [ln.known, ln.en, null, ln.gender || undefined];
-    else (e.insert ||= []).push(['build', ln.known, ln.en, null, ln.gender || undefined]);
-    if (ln.known_ok) plan.known_ok[`${ln.lego}${ln.slot.startsWith('update:') ? ln.slot.slice(7) : ''}`] = ln.known_ok;
+    else (e.insert ||= []).push(['build', ln.known, ln.en, null, ln.gender || null, ln.known_ok || null]);
+    if (ln.known_ok && ln.slot.startsWith('update:')) plan.known_ok[`${ln.lego}${ln.slot.slice(7)}`] = ln.known_ok;
     st.planned++;
   }
   fs.writeFileSync(f, JSON.stringify(plan, null, 1));

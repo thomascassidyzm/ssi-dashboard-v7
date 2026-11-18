@@ -130,11 +130,11 @@ for (const s of seeds) {
     const maxN = { build: 0, use: 0 };
     for (const p of l.basket_phrases) { const m = L.short(p.id).slice(8).match(/^([BU])(\d+)$/); if (m) { const r = m[1] === 'B' ? 'build' : 'use'; maxN[r] = Math.max(maxN[r], Number(m[2])); } }
     let pos = Math.max(0, ...l.basket_phrases.map(p => p.position));
-    for (const [role, known, target, roman, gender] of ins) {
+    for (const [role, known, target, roman, gender, knownOk] of ins) {
       if (!['build', 'use'].includes(role)) { E(l.lego_id, `insert role must be build|use, not ${role}`); continue; }
       maxN[role]++; pos++;
       const id = L.makePhraseId(course, s.seed_number, l.lego_index, role, maxN[role]);
-      after.push({ id, role, known, target, roman, gender, fresh: true, insert: true, position: pos });
+      after.push({ id, role, known, target, roman, gender, knownOk, fresh: true, insert: true, position: pos });
     }
     ov.phrases[`${s.seed_number}:${l.lego_index}`] = after.map(a => ({ known_text: a.known, target_text: a.target, phrase_role: a.role }));
     if (!touched) continue;
@@ -157,7 +157,8 @@ for (const s of seeds) {
       const pk = `${zk(a.known)}|${key}`;
       if (pairs.has(pk) && pairs.get(pk) !== w) E(w, `duplicate: "${a.known} | ${a.target}" already exists at ${pairs.get(pk)} (Kai's rule)`);
       pairs.set(pk, w);
-      const okK = new Set(((plan.known_ok || {})[w] || '').split('|')[0].split(/\s+/).filter(Boolean));
+      // An insert's id is only minted here, so its known_ok rides on the insert tuple (6th field, sheet2plans.cjs).
+      const okK = new Set(((plan.known_ok || {})[w] || a.knownOk || '').split('|')[0].split(/\s+/).filter(Boolean));
       const unk = L.knownTokens(a.known).filter(t => !kv.has(t) && !okK.has(t));
       // K6: the known side may use uninstructed FORMS of taught words, so this is a review list, not a block.
       if (unk.length) W(w, `known side untaught: ${unk.join(', ')} in "${a.known}" (or list them in plan.known_ok["${w}"] = "words|why")`);
